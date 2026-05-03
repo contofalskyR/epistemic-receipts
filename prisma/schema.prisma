@@ -1,0 +1,219 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum ReviewConfidence {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+model Claim {
+  id                    String            @id @default(cuid())
+  text                  String
+  createdAt             DateTime          @default(now())
+  currentStatus         String            @default("DISPUTED") // DISPUTED | HARD_FACT | NEVER_RESOLVES
+  claimType             String            @default("EMPIRICAL") // EMPIRICAL | INSTITUTIONAL | INTERPRETIVE | HYBRID
+  parentClaimId         String?
+  claimEmergedAt        DateTime?
+  claimEmergedPrecision String?           // DAY | MONTH | QUARTER | YEAR
+  ingestedBy            String            @default("manual")
+  humanReviewed         Boolean           @default(false)
+  reviewConfidence      ReviewConfidence?
+  reviewedAt            DateTime?
+  reviewedBy            String?
+  externalId            String?           @unique
+  deleted               Boolean           @default(false)
+  autoApproved          Boolean           @default(false)
+
+  parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
+  children Claim[] @relation("ClaimHierarchy")
+
+  edges                    Edge[]
+  metaEdges                MetaEdge[]
+  suggestedThresholdEvents SuggestedThresholdEvent[]
+  thresholdEvents          ThresholdEvent[]
+  topics                   ClaimTopic[]
+}
+
+model Source {
+  id               String            @id @default(cuid())
+  name             String
+  url              String?
+  publishedAt      DateTime?
+  methodologyType  String            // primary | derivative | opinion
+  createdAt        DateTime          @default(now())
+  ingestedBy       String            @default("manual")
+  humanReviewed    Boolean           @default(false)
+  reviewConfidence ReviewConfidence?
+  reviewedAt       DateTime?
+  reviewedBy       String?
+  externalId       String?           @unique
+  deleted          Boolean           @default(false)
+  autoApproved     Boolean           @default(false)
+
+  edges                       Edge[]
+  metaEdgesActed              MetaEdge[]               @relation("MetaEdgeActor")
+  credibilityEvents           SourceCredibilityEvent[]
+  relationshipsA              SourceRelationship[]     @relation("RelationshipSourceA")
+  relationshipsB              SourceRelationship[]     @relation("RelationshipSourceB")
+  thresholdEventsTriggered    ThresholdEvent[]         @relation("ThresholdTriggerSource")
+  suggestedEventsTriggered    SuggestedThresholdEvent[] @relation("SuggestedTriggerSource")
+}
+
+model SourceRelationship {
+  id        String   @id @default(cuid())
+  sourceAId String
+  sourceBId String
+  type      String   // funder_of | affiliated_with | co_authored_with | employed_by
+  createdAt DateTime @default(now())
+
+  sourceA Source @relation("RelationshipSourceA", fields: [sourceAId], references: [id])
+  sourceB Source @relation("RelationshipSourceB", fields: [sourceBId], references: [id])
+}
+
+model SourceCredibilityEvent {
+  id        String   @id @default(cuid())
+  sourceId  String
+  eventType String   // CREDIBILITY_DOWNGRADED | RESTORED
+  reason    String
+  createdAt DateTime @default(now())
+
+  source Source @relation(fields: [sourceId], references: [id])
+}
+
+// No score field — current score = latest EdgeRevision
+model Edge {
+  id               String            @id @default(cuid())
+  sourceId         String
+  claimId          String
+  type             String            // FOR | AGAINST | CITES | RETRACTS | CORRECTED
+  evidenceType     String            @default("EVIDENTIARY") // EVIDENTIARY | PROCEDURAL | ARGUMENTATIVE
+  deleted          Boolean           @default(false)
+  createdAt        DateTime          @default(now())
+  ingestedBy       String            @default("manual")
+  humanReviewed    Boolean           @default(false)
+  reviewConfidence ReviewConfidence?
+  reviewedAt       DateTime?
+  reviewedBy       String?
+  autoApproved     Boolean           @default(false)
+
+  source    Source         @relation(fields: [sourceId], references: [id])
+  claim     Claim          @relation(fields: [claimId], references: [id])
+  revisions EdgeRevision[]
+  metaEdges MetaEdge[]
+}
+
+// Source of truth for all scores — initial score written here on Edge creation
+model EdgeRevision {
+  id         String   @id @default(cuid())
+  edgeId     String
+  priorScore Int?
+  newScore   Int
+  reason     String?
+  changedAt  DateTime @default(now())
+
+  edge Edge @relation(fields: [edgeId], references: [id])
+}
+
+// Edges targeting other edges — suppression, labels, demotion
+model MetaEdge {
+  id               String            @id @default(cuid())
+  actorSourceId    String
+  targetEdgeId     String
+  claimId          String
+  type             String            // SUPPRESSED | AMPLIFIED | LABELED | DEMOTED
+  reason           String?
+  deleted          Boolean           @default(false)
+  createdAt        DateTime          @default(now())
+  ingestedBy       String            @default("manual")
+  humanReviewed    Boolean           @default(false)
+  reviewConfidence ReviewConfidence?
+  reviewedAt       DateTime?
+  reviewedBy       String?
+
+  actorSource Source @relation("MetaEdgeActor", fields: [actorSourceId], references: [id])
+  targetEdge  Edge   @relation(fields: [targetEdgeId], references: [id])
+  claim       Claim  @relation(fields: [claimId], references: [id])
+}
+
+// AI writes here — not authoritative
+model SuggestedThresholdEvent {
+  id                   String   @id @default(cuid())
+  claimId              String
+  aiReasoning          String
+  evidenceSnapshot     String   // JSON
+  triggeredBySourceId  String?  // nullable FK — the source the AI thinks resolved the claim
+  createdAt            DateTime @default(now())
+
+  claim              Claim           @relation(fields: [claimId], references: [id])
+  triggeredBySource  Source?         @relation("SuggestedTriggerSource", fields: [triggeredBySourceId], references: [id])
+  thresholdEvent     ThresholdEvent?
+}
+
+// Humans promote suggestions here — the receipt
+model ThresholdEvent {
+  id                   String            @id @default(cuid())
+  claimId              String
+  suggestedEventId     String?           @unique
+  confirmedBy          String
+  triggeredBy          String            // free text — e.g. "FDA NDA approval"
+  triggeredBySourceId  String?           // nullable FK — the auditable resolver source
+  note                 String?
+  evidenceSnapshot     String            // JSON
+  createdAt            DateTime          @default(now())
+  ingestedBy           String            @default("manual")
+  humanReviewed        Boolean           @default(false)
+  reviewConfidence     ReviewConfidence?
+  reviewedAt           DateTime?
+  reviewedBy           String?
+  deleted              Boolean           @default(false)
+  autoApproved         Boolean           @default(false)
+
+  claim              Claim                    @relation(fields: [claimId], references: [id])
+  suggestedEvent     SuggestedThresholdEvent? @relation(fields: [suggestedEventId], references: [id])
+  triggeredBySource  Source?                  @relation("ThresholdTriggerSource", fields: [triggeredBySourceId], references: [id])
+}
+
+model Topic {
+  id            String       @id @default(cuid())
+  name          String
+  slug          String       @unique
+  description   String?
+  domain        String
+  parentTopicId String?
+  parentTopic   Topic?       @relation("TopicHierarchy", fields: [parentTopicId], references: [id])
+  children      Topic[]      @relation("TopicHierarchy")
+  claims        ClaimTopic[]
+  createdAt     DateTime     @default(now())
+
+  @@index([domain])
+  @@index([parentTopicId])
+}
+
+model ClaimTopic {
+  claimId   String
+  topicId   String
+  claim     Claim    @relation(fields: [claimId], references: [id])
+  topic     Topic    @relation(fields: [topicId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@id([claimId, topicId])
+  @@index([topicId])
+}
+
+// AI job queue stub — no worker in v1
+model AiJob {
+  id           String   @id @default(cuid())
+  jobType      String   // CLASSIFY_SOURCE | DETECT_CONTRADICTIONS | PROPOSE_THRESHOLD
+  inputPayload String   // JSON
+  status       String   @default("pending") // pending | running | done | failed
+  result       String?
+  createdAt    DateTime @default(now())
+}
