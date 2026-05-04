@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export async function GET() {
+  const rows = await prisma.feedback.findMany({
+    orderBy: { submittedAt: "desc" },
+  });
+  return NextResponse.json(rows);
+}
+
 // In-memory rate limiter: max 5 submissions per IP per hour
 const rateLimitMap = new Map<string, number[]>();
 
