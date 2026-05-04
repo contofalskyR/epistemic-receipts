@@ -174,7 +174,7 @@ export default function BlackHoleCanvas() {
         position: "fixed",
         inset: 0,
         zIndex: -1,
-        opacity: 0.4,
+        opacity: 0.8,
         pointerEvents: "none",
       }}
     />
