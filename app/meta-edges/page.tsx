@@ -111,7 +111,7 @@ export default function MetaEdgesPage() {
       {isReadOnly() ? (
         <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
       ) : (
-      <form onSubmit={submit} className="space-y-5 rounded-lg border border-gray-800 p-5">
+      <form onSubmit={submit} className="space-y-5 rounded-lg border border-gray-800 bg-gray-900 p-5">
         <h3 className="text-sm font-medium text-gray-300">Record a meta-event</h3>
 
         <div className="grid grid-cols-2 gap-4">
@@ -144,7 +144,7 @@ export default function MetaEdgesPage() {
             {META_TYPES.map(mt => (
               <label key={mt.value}
                 className={`flex items-start gap-3 rounded-md border px-3 py-2.5 cursor-pointer transition-colors ${
-                  type === mt.value ? "border-gray-500 bg-gray-800/60" : "border-gray-800 hover:border-gray-700"
+                  type === mt.value ? "border-gray-500 bg-gray-800" : "border-gray-800 bg-gray-900 hover:border-gray-700"
                 }`}>
                 <input type="radio" name="type" value={mt.value}
                   checked={type === mt.value} onChange={() => setType(mt.value)}
@@ -188,7 +188,7 @@ export default function MetaEdgesPage() {
           <p className="text-gray-600 text-sm italic">No meta-events recorded yet.</p>
         )}
         {metaEdges.map(me => (
-          <div key={me.id} className="rounded-lg border border-gray-800 px-4 py-3">
+          <div key={me.id} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3">
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">

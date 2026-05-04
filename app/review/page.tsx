@@ -129,7 +129,7 @@ function ReviewContent() {
             return (
               <div
                 key={claim.id}
-                className="rounded-lg border border-gray-800 px-4 py-4 space-y-3"
+                className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-4 space-y-3"
               >
                 {/* Claim text */}
                 <Link href={`/claims/${claim.id}`} className="block">

@@ -165,9 +165,9 @@ export default function TimelinePage() {
           const offsets = assignOffsets(datedEdges, xFn);
 
           return (
-            <div key={claim.id} className="rounded-lg border border-gray-800 overflow-hidden">
+            <div key={claim.id} className="rounded-lg border border-gray-800 bg-gray-900 overflow-hidden">
               {/* Claim label */}
-              <div className="px-4 py-2 border-b border-gray-800 bg-gray-900/50">
+              <div className="px-4 py-2 border-b border-gray-800 bg-gray-900">
                 <Link href={`/claims/${claim.id}`} className="text-xs text-gray-300 hover:text-white leading-snug block transition-colors">
                   {claim.text}
                 </Link>

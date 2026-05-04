@@ -123,7 +123,7 @@ function ClaimCard({ claim, searchQuery }: { claim: TopClaim; searchQuery: strin
     <div>
       <div
         onClick={() => router.push(`/claims/${claim.id}`)}
-        className="block rounded-lg border border-gray-800 px-4 py-3 hover:border-gray-600 transition-colors group cursor-pointer"
+        className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group cursor-pointer"
       >
         <p className="text-sm text-gray-200 group-hover:text-white transition-colors leading-snug line-clamp-2">
           {claim.text}
@@ -142,8 +142,8 @@ function ClaimCard({ claim, searchQuery }: { claim: TopClaim; searchQuery: strin
                 href={`/timeline#${child.id}`}
                 className={`block rounded-md border px-3 py-2 transition-colors group ${
                   isMatch
-                    ? "border-blue-800/60 bg-blue-900/20 hover:border-blue-700 hover:bg-blue-900/30"
-                    : "border-gray-800/60 bg-gray-900/40 hover:border-gray-700 hover:bg-gray-900/70"
+                    ? "border-blue-800/60 bg-blue-950 hover:border-blue-700"
+                    : "border-gray-800/60 bg-gray-900 hover:border-gray-700"
                 }`}
               >
                 <p className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors leading-snug line-clamp-2">

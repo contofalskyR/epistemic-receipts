@@ -64,7 +64,7 @@ export default function ClaimsPage() {
       {isReadOnly() ? (
         <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
       ) : (
-      <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 p-5">
+      <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 bg-gray-900 p-5">
         <h3 className="text-sm font-medium text-gray-300">Add a claim</h3>
 
         <div>
@@ -158,7 +158,7 @@ export default function ClaimsPage() {
 
       <div className="space-y-2">
         {claims.map(c => (
-          <div key={c.id} className="rounded-lg border border-gray-800 px-4 py-3">
+          <div key={c.id} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3">
             <div className="flex items-start justify-between gap-4">
               <p className="text-sm text-white">{c.text}</p>
               <div className="shrink-0 flex items-center gap-1.5">

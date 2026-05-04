@@ -174,7 +174,7 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   }
 
   return (
-    <div className="rounded-lg border border-gray-800 overflow-hidden">
+    <div className="rounded-lg border border-gray-800 bg-gray-900 overflow-hidden">
       <div className="relative h-24 px-4">
         <div className="absolute left-4 right-4 top-1/2 h-px bg-gray-800" />
 
@@ -472,7 +472,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
             let snapshot: { edges?: { id: string; score: number }[] } = {};
             try { snapshot = JSON.parse(te.evidenceSnapshot); } catch { /* raw */ }
             return (
-              <div key={te.id} className="rounded-lg border border-gray-700 bg-gray-900/50 px-4 py-4 space-y-2">
+              <div key={te.id} className="rounded-lg border border-gray-700 bg-gray-900 px-4 py-4 space-y-2">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <p className="text-sm font-medium text-white">{te.triggeredBy}</p>
                   <span className="text-xs text-gray-500 shrink-0">{formatDate(te.createdAt)}</span>
@@ -558,7 +558,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           <div className="space-y-2">
             {claim.children.map(child => (
               <Link key={child.id} href={`/claims/${child.id}`}
-                className="block rounded-md border border-gray-800 bg-gray-900/40 px-4 py-3 hover:border-gray-600 hover:bg-gray-900/70 transition-colors group">
+                className="block rounded-md border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 hover:bg-gray-800 transition-colors group">
                 <p className="text-sm text-gray-300 group-hover:text-white transition-colors leading-snug line-clamp-2">
                   {child.text}
                 </p>

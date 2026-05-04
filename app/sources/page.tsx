@@ -52,7 +52,7 @@ export default function SourcesPage() {
       {isReadOnly() ? (
         <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
       ) : (
-      <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 p-5">
+      <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 bg-gray-900 p-5">
         <h3 className="text-sm font-medium text-gray-300">Add a source</h3>
 
         <div>
@@ -115,7 +115,7 @@ export default function SourcesPage() {
 
       <div className="space-y-2">
         {sources.map(s => (
-          <div key={s.id} className="rounded-lg border border-gray-800 px-4 py-3">
+          <div key={s.id} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm text-white">{s.name}</p>

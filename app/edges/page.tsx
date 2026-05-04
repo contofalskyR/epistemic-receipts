@@ -76,7 +76,7 @@ export default function EdgesPage() {
       {isReadOnly() && <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>}
       {!isReadOnly() && (
 
-      <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 p-5">
+      <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 bg-gray-900 p-5">
         <h3 className="text-sm font-medium text-gray-300">Link a source to a claim</h3>
 
         <div className="grid grid-cols-2 gap-4">
@@ -181,7 +181,7 @@ export default function EdgesPage() {
 
       <div className="space-y-2">
         {edges.map(e => (
-          <div key={e.id} className="rounded-lg border border-gray-800 px-4 py-3">
+          <div key={e.id} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3">
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-0.5">
                 <p className="text-xs text-gray-500">{e.source.name}</p>

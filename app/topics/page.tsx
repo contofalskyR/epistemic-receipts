@@ -88,7 +88,7 @@ export default function TopicsPage() {
               </Link>
               <span className="text-gray-700 text-xs">({totalTopics} topics)</span>
             </div>
-            <div className="rounded-lg border border-gray-800 py-1">
+            <div className="rounded-lg border border-gray-800 bg-gray-900 py-1">
               {roots.map(topic => (
                 <TopicTreeItem key={topic.id} topic={topic} depth={0} />
               ))}

@@ -151,7 +151,7 @@ function TopicSlugContent() {
               <Link
                 key={c.id}
                 href={`/topics/${c.slug}`}
-                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border border-gray-700 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border border-gray-700 bg-gray-900 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
               >
                 {c.name}
                 <span className="text-xs text-gray-600">({c.claimCount})</span>
@@ -172,7 +172,7 @@ function TopicSlugContent() {
               <Link
                 key={s.id}
                 href={`/topics/${s.slug}`}
-                className="text-xs px-2.5 py-1 rounded border border-gray-800 text-gray-500 hover:border-gray-600 hover:text-gray-300 transition-colors"
+                className="text-xs px-2.5 py-1 rounded border border-gray-800 bg-gray-900 text-gray-500 hover:border-gray-600 hover:text-gray-300 transition-colors"
               >
                 {s.name} <span className="text-gray-700">({s.claimCount})</span>
               </Link>
@@ -197,7 +197,7 @@ function TopicSlugContent() {
         </div>
 
         {total === 0 ? (
-          <div className="rounded-lg border border-gray-800 px-4 py-8 text-center">
+          <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-8 text-center">
             <p className="text-gray-600 text-sm">No claims tagged with this topic yet.</p>
             <p className="text-gray-700 text-xs mt-1">
               Claims are tagged via their edit page or the topic management API.
@@ -209,7 +209,7 @@ function TopicSlugContent() {
               <Link
                 key={c.id}
                 href={`/claims/${c.id}`}
-                className="block rounded-lg border border-gray-800 px-4 py-3 hover:border-gray-600 transition-colors group"
+                className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group"
               >
                 <p className="text-sm text-gray-200 group-hover:text-white transition-colors leading-snug line-clamp-2">
                   {c.text}
