@@ -2,6 +2,7 @@ export default function ForthcomingPage() {
   return (
     <div className="max-w-xl space-y-8 text-sm text-gray-300 leading-relaxed">
       <h1 className="text-lg font-semibold text-white">Forthcoming</h1>
+      <p className="text-xs text-gray-500">Last updated May 4, 2026</p>
 
       <p>
         What the tool becomes next. These are not aspirations — they are queued work,
