@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 export async function GET() {
   const sources = await prisma.source.findMany({
@@ -9,6 +10,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
   const {
     name, url, publishedAt, methodologyType,
     ingestedBy, humanReviewed, reviewConfidence, reviewedAt, reviewedBy,

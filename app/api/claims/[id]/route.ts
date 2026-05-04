@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 const VALID_PRECISIONS = ["DAY", "MONTH", "QUARTER", "YEAR"];
 const VALID_STATUSES = ["DISPUTED", "HARD_FACT", "NEVER_RESOLVES"];
@@ -43,6 +44,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
   const { id } = await params;
   const { text, claimEmergedAt, claimEmergedPrecision, currentStatus, claimType, topicIds } = await req.json();
 

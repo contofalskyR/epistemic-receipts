@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum ReviewConfidence {
@@ -216,4 +217,12 @@ model AiJob {
   status       String   @default("pending") // pending | running | done | failed
   result       String?
   createdAt    DateTime @default(now())
+}
+
+model Feedback {
+  id          String   @id @default(cuid())
+  body        String
+  pageContext String?
+  email       String?
+  submittedAt DateTime @default(now())
 }

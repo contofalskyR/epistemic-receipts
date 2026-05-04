@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 type Claim = {
   id: string;
@@ -60,6 +61,9 @@ export default function ClaimsPage() {
     <div className="space-y-8">
       <h2 className="text-xl font-semibold text-white">Claims</h2>
 
+      {isReadOnly() ? (
+        <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
+      ) : (
       <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 p-5">
         <h3 className="text-sm font-medium text-gray-300">Add a claim</h3>
 
@@ -150,6 +154,7 @@ export default function ClaimsPage() {
           Add claim
         </button>
       </form>
+      )}
 
       <div className="space-y-2">
         {claims.map(c => (

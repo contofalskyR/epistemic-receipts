@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 type Claim = { id: string; text: string };
 type Source = { id: string; name: string };
@@ -72,6 +73,8 @@ export default function EdgesPage() {
   return (
     <div className="space-y-8">
       <h2 className="text-xl font-semibold text-white">Edges</h2>
+      {isReadOnly() && <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>}
+      {!isReadOnly() && (
 
       <form onSubmit={submit} className="space-y-4 rounded-lg border border-gray-800 p-5">
         <h3 className="text-sm font-medium text-gray-300">Link a source to a claim</h3>
@@ -174,6 +177,7 @@ export default function EdgesPage() {
           Add edge
         </button>
       </form>
+      )}
 
       <div className="space-y-2">
         {edges.map(e => (

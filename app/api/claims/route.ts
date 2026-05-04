@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 const VALID_PRECISIONS = ["DAY", "MONTH", "QUARTER", "YEAR"];
 const VALID_CLAIM_TYPES = ["EMPIRICAL", "INSTITUTIONAL", "INTERPRETIVE", "HYBRID"];
@@ -19,6 +20,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
   const {
     text, parentClaimId, claimEmergedAt, claimEmergedPrecision, claimType, currentStatus,
     ingestedBy, humanReviewed, reviewConfidence, reviewedAt, reviewedBy,

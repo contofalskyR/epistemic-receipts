@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 export async function GET() {
   const edges = await prisma.edge.findMany({
@@ -17,6 +18,7 @@ export async function GET() {
 const VALID_EVIDENCE_TYPES = ["EVIDENTIARY", "PROCEDURAL", "ARGUMENTATIVE"];
 
 export async function POST(req: NextRequest) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
   const {
     sourceId, claimId, type, evidenceType, score, reason,
     ingestedBy, humanReviewed, reviewConfidence, reviewedAt, reviewedBy,

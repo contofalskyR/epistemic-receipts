@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 const STATUSES = ["DISPUTED", "HARD_FACT", "NEVER_RESOLVES"] as const;
 const CLAIM_TYPES = ["EMPIRICAL", "INSTITUTIONAL", "INTERPRETIVE", "HYBRID"] as const;
@@ -194,6 +195,12 @@ export default function EditClaimPage() {
   }
 
   if (loading) return <p className="text-gray-500 text-sm">Loading…</p>;
+  if (isReadOnly()) return (
+    <div>
+      <a href={returnTo} className="text-xs text-gray-500 hover:text-gray-300">← Back</a>
+      <p className="text-sm text-gray-500 italic mt-4">Editing is disabled in this deployment.</p>
+    </div>
+  );
 
   const btnBase = "text-sm px-3 py-1 rounded font-medium transition-colors";
 

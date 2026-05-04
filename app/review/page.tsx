@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 type ThresholdPreview = { triggeredBy: string; createdAt: string };
 
@@ -95,6 +96,10 @@ function ReviewContent() {
         )}
       </div>
 
+      {isReadOnly() && (
+        <p className="text-sm text-gray-500 italic mb-4">Editing is disabled in this deployment. Approve and Reject are read-only.</p>
+      )}
+
       {/* Filter */}
       <div className="mb-5">
         <select
@@ -119,6 +124,7 @@ function ReviewContent() {
           {data.claims.map(claim => {
             const te = claim.thresholdEvents[0];
             const isActing = acting === claim.id;
+            const readOnly = isReadOnly();
 
             return (
               <div
@@ -162,7 +168,7 @@ function ReviewContent() {
                 <div className="flex gap-2 pt-1">
                   <button
                     onClick={() => act(claim.id, "approve")}
-                    disabled={isActing}
+                    disabled={isActing || readOnly}
                     className="text-xs px-3 py-1.5 rounded bg-green-900 text-green-300 hover:bg-green-800 disabled:opacity-40 transition-colors"
                   >
                     {isActing ? "…" : "Approve"}
@@ -179,7 +185,7 @@ function ReviewContent() {
                         act(claim.id, "reject");
                       }
                     }}
-                    disabled={isActing}
+                    disabled={isActing || readOnly}
                     className="text-xs px-3 py-1.5 rounded bg-red-950 text-red-400 hover:bg-red-900 disabled:opacity-40 transition-colors"
                   >
                     {isActing ? "…" : "Reject"}

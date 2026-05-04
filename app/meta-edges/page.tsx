@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 type Source = { id: string; name: string };
 type EdgeOption = {
@@ -107,6 +108,9 @@ export default function MetaEdgesPage() {
         </p>
       </div>
 
+      {isReadOnly() ? (
+        <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
+      ) : (
       <form onSubmit={submit} className="space-y-5 rounded-lg border border-gray-800 p-5">
         <h3 className="text-sm font-medium text-gray-300">Record a meta-event</h3>
 
@@ -176,6 +180,7 @@ export default function MetaEdgesPage() {
           Record meta-event
         </button>
       </form>
+      )}
 
       {/* List */}
       <div className="space-y-2">
