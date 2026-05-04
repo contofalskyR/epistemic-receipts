@@ -4,7 +4,7 @@
 // Run: npx tsx scripts/seed-topics.ts
 
 import 'dotenv/config'
-import { PrismaClient } from '../app/generated/prisma/client'
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 

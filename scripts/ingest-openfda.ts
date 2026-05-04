@@ -4,7 +4,7 @@
 // Run: npm run ingest-openfda -- --limit 5
 
 import 'dotenv/config'
-import { PrismaClient } from '../app/generated/prisma/client'
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
