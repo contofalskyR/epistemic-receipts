@@ -12,48 +12,57 @@ export default function ForthcomingPage() {
       <section className="space-y-4">
         <h2 className="text-base font-semibold text-white">Ingestion Pipelines</h2>
         <p>
-          Manual entry built the case studies. Pipelines build the infrastructure. Each source below
-          produces institutional hard facts — dated, attributable, auditable — which become the
-          reference layer the curated case studies sit on top of.
+          Phase 2 is hard-fact substrate. Six ingestion pipelines that build the bedrock layer of
+          institutionally-verifiable, time-stable, non-interpretive facts. Bedrock under contested
+          case studies.
         </p>
         <ul className="space-y-3 list-none pl-0">
           <li>
-            <span className="text-white font-medium">ClinicalTrials.gov</span>
-            <span className="text-gray-500"> — </span>
-            Trial registrations, interventions, primary outcomes, and result dates. The NCT registry
-            is a precondition for FDA approval; these are the upstream receipts.
-          </li>
-          <li>
             <span className="text-white font-medium">NIH Reporter</span>
             <span className="text-gray-500"> — </span>
-            Grant awards: who funded what, when, and for how much. Directly populates funding
-            relationships between sources — the coordination-network layer the platform is built to surface.
+            Federal research grant database. Every grant is a funder_of SourceRelationship between
+            the funding institution and the recipient researcher or institution. Auto-populates
+            entity-to-entity edges that would otherwise be entered manually. Strengthens the lab leak
+            case study (NIH–EcoHealth–WIV grant chain) and opens biomedical research provenance generally.
           </li>
           <li>
-            <span className="text-white font-medium">PubMed Retractions + Retraction Watch</span>
+            <span className="text-white font-medium">PubChem</span>
             <span className="text-gray-500"> — </span>
-            Retracted papers with dates and stated reasons. The platform&apos;s thesis is that source
-            credibility changes over time; retractions are the canonical example.
+            NIH chemical compound database. Molecular formulas, structures, CAS numbers, IUPAC names.
+            Chemistry bedrock — as close to physical reality as institutional records get. Strengthens
+            smoking (carcinogens) and Ozempic (semaglutide structure). The first ingester to create
+            cross-reference edges between existing FDA approval claims and chemistry HARD_FACTs.
           </li>
           <li>
-            <span className="text-white font-medium">FDA Safety Communications</span>
+            <span className="text-white font-medium">ClinicalTrials.gov</span>
             <span className="text-gray-500"> — </span>
-            Black box warnings, market withdrawals, and safety signal updates — the post-approval
-            arc that the initial drug approval record doesn&apos;t capture.
+            Trial registrations, protocols, primary endpoints. Trial registration is HARD_FACT; results
+            are EMPIRICAL. Provides clinical evidence substrate for medical case studies. Strengthens
+            Ozempic and opens case studies on contested medical questions (Vioxx, opioid trials,
+            hormone replacement, ivermectin).
           </li>
           <li>
-            <span className="text-white font-medium">WHO PHEIC Declarations</span>
+            <span className="text-white font-medium">GenBank / NCBI</span>
             <span className="text-gray-500"> — </span>
-            Public Health Emergencies of International Concern with declaration and termination dates.
-            Geopolitical health events as institutional hard facts.
+            Genetic sequence database. DNA and RNA sequences are physical reality. Strengthens lab leak
+            (SARS-CoV-2 sequence provenance) and opens infectious disease provenance broadly.
           </li>
           <li>
-            <span className="text-white font-medium">EMA Approvals</span>
+            <span className="text-white font-medium">USPTO</span>
             <span className="text-gray-500"> — </span>
-            European Medicines Agency drug approvals, parallel to the existing FDA pipeline.
-            Jurisdiction divergence — when EMA and FDA disagree — is itself a signal.
+            Patent grants. Each patent is a timestamped institutional fact about who claimed what
+            invention when. Opens innovation provenance, pharmaceutical patent histories (relevant to
+            pricing and access case studies), and technology consensus formation.
+          </li>
+          <li>
+            <span className="text-white font-medium">IAU + NASA Exoplanet Archive</span>
+            <span className="text-gray-500"> — </span>
+            Astronomical catalogs and reclassifications. Strengthens Pluto and opens space science generally.
           </li>
         </ul>
+        <p className="text-gray-500 text-xs">
+          Phase 2 is hard-fact substrate. Curated case studies sit on top. Both grow together.
+        </p>
       </section>
 
       <section className="space-y-4">
