@@ -10,7 +10,9 @@
     "ingest-openfda": "tsx scripts/ingest-openfda.ts",
     "ingest-scotus": "tsx scripts/ingest-courtlistener-scotus.ts",
     "ingest-pubchem": "tsx scripts/ingest-pubchem.ts",
-    "ingest-nih-reporter": "tsx scripts/ingest-nih-reporter.ts"
+    "ingest-nih-reporter": "tsx scripts/ingest-nih-reporter.ts",
+    "ingest-clinicaltrials": "tsx scripts/ingest-clinicaltrials.ts",
+    "ingest-genbank": "tsx scripts/ingest-genbank.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
