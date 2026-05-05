@@ -21,10 +21,18 @@ function spawnParticle(rMax: number): Particle {
   };
 }
 
-// Collapse canvas to top-right corner as user scrolls past the hero (1vh of scroll).
-// Desktop: shrinks to 40% scale, parked top-right.
-// Mobile (<768px): fades to 0 scale (hidden) — avoids perf pressure on small screens.
-// Direct DOM manipulation via ref — no React re-renders on scroll.
+// Collapse canvas to a corner accent as user scrolls past the hero (1 viewport height).
+//
+// Key geometry:
+//   The black hole renders at (W*0.7, H*0.4) in canvas space.
+//   transform-origin is fixed at 70% 40% so scale() pivots around the black hole.
+//   At collapse, translate() shifts the black hole ~10% past the top-right viewport edges,
+//   so only ~65% of the swirl arc is visible — the "atmospheric vignette" effect.
+//   An animated radial-gradient mask dissolves the hard canvas rectangle into nothing.
+//
+// Desktop: collapses to ~28% scale, black hole parked just off top-right corner.
+// Mobile (<768px): collapses to scale 0 (hidden) — no perf cost on small screens.
+// Direct DOM manipulation via ref — zero React re-renders on scroll.
 function setupScrollAnimation(el: HTMLCanvasElement) {
   let heroScroll = window.innerHeight;
   let rafId = 0;
@@ -32,11 +40,27 @@ function setupScrollAnimation(el: HTMLCanvasElement) {
   function applyTransform() {
     rafId = 0;
     const raw = Math.min(1, Math.max(0, window.scrollY / heroScroll));
-    // Ease-out quadratic: perceptibly starts slow, accelerates past hero
+    // Ease-out quadratic: slow start, accelerates through the hero section
     const eased = 1 - Math.pow(1 - raw, 2);
-    const targetScale = window.innerWidth < 768 ? 0 : 0.4;
+    const isMob = window.innerWidth < 768;
+    const targetScale = isMob ? 0 : 0.28;
     const scale = 1 - eased * (1 - targetScale);
-    el.style.transform = `scale(${scale})`;
+
+    // Translate the black hole from its natural position (70%, 40%) to just off the
+    // top-right viewport edges. At eased=1: black hole lands at (1.1W, -0.1H).
+    const tx = isMob ? 0 : eased * 0.4 * window.innerWidth;
+    const ty = isMob ? 0 : eased * -0.5 * window.innerHeight;
+
+    el.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+
+    // Soft mask: at scroll=0 fully visible everywhere; at scroll=1 a radial fade
+    // centered on the black hole dissolves the hard canvas edges.
+    // Stops are in element space (pre-transform), so they scale proportionally.
+    const inner = (100 - 75 * eased).toFixed(1);
+    const outer = (100 - 40 * eased).toFixed(1);
+    const mask = `radial-gradient(circle at 70% 40%, black ${inner}%, transparent ${outer}%)`;
+    el.style.maskImage = mask;
+    (el.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask;
   }
 
   function onScroll() {
@@ -48,8 +72,8 @@ function setupScrollAnimation(el: HTMLCanvasElement) {
     applyTransform();
   }
 
-  // Set transform-origin once — top-right anchors the corner collapse
-  el.style.transformOrigin = "top right";
+  // Pivot transforms around the black hole center, not the canvas corner
+  el.style.transformOrigin = "70% 40%";
   applyTransform();
 
   window.addEventListener("scroll", onScroll, { passive: true });
