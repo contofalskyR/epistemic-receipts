@@ -345,62 +345,12 @@ async function tagClaim(claimId: string, topicIds: string[]): Promise<void> {
   }
 }
 
-// ── Cross-reference ───────────────────────────────────────────────────────────
-
-async function findClaimsByTopic(slug: string): Promise<{ id: string }[]> {
-  const topicId = await findTopic(slug)
-  if (!topicId) return []
-  const rows = await prisma.claimTopic.findMany({
-    where: { topicId },
-    include: { claim: { select: { id: true, deleted: true } } },
-  })
-  return rows.filter(r => !r.claim.deleted).map(r => ({ id: r.claim.id }))
-}
-
-async function createCitesEdge(
-  grantSourceId: string,
-  claimId: string,
-  reason: string,
-  date: Date | null,
-): Promise<void> {
-  const exists = await prisma.edge.findFirst({
-    where: { sourceId: grantSourceId, claimId, type: 'CITES' },
-  })
-  if (exists) return
-  try {
-    const edge = await prisma.edge.create({
-      data: {
-        sourceId: grantSourceId,
-        claimId,
-        type: 'CITES',
-        evidenceType: 'EVIDENTIARY',
-        ingestedBy: 'nih_reporter_v1',
-        humanReviewed: false,
-        autoApproved: true,
-      },
-    })
-    await prisma.edgeRevision.create({
-      data: {
-        edgeId: edge.id,
-        priorScore: null,
-        newScore: 75,
-        reason,
-        changedAt: date ?? new Date(),
-      },
-    })
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
-    console.warn(`    Warning: CITES edge failed — ${msg}`)
-  }
-}
-
 // ── Core: ingest one grant ────────────────────────────────────────────────────
 
 async function ingestGrant(
   project: NIHProject,
   extraTopicIds: string[],
   coreTopicIds: string[],
-  crossRefTopicSlugs: string[],
 ): Promise<IngestResult> {
   if (!isValidProjectNum(project.project_num)) {
     console.warn(`  Skipped (invalid project_num): ${project.project_num}`)
@@ -513,20 +463,6 @@ async function ingestGrant(
   // Tag claim (outside transaction — tag failures don't roll back the claim)
   await tagClaim(claimId, [...coreTopicIds, ...extraTopicIds])
 
-  // Cross-reference CITES edges to existing case study claims
-  for (const slug of crossRefTopicSlugs) {
-    const targets = await findClaimsByTopic(slug)
-    for (const target of targets) {
-      await createCitesEdge(
-        grantSourceId,
-        target.id,
-        `NIH grant ${project.project_num} funded research at ${orgName} relevant to this claim`,
-        startDate,
-      )
-      console.log(`    + CITES → ${slug}`)
-    }
-  }
-
   // SourceRelationship: funder_of (NIH → awardee org)
   const nihId = await ensureNIHFunder()
   const orgId = await ensureOrgSource(project.organization!)
@@ -548,7 +484,6 @@ interface CaseStudySearch {
   label: string
   criteria: Record<string, unknown>
   extraTopicSlugs: string[]
-  crossRefTopicSlugs: string[]
   cap: number
 }
 
@@ -557,7 +492,6 @@ const CASE_STUDY_SEARCHES: CaseStudySearch[] = [
     label: 'EcoHealth Alliance grants',
     criteria: { org_names: ['ECOHEALTH ALLIANCE'] },
     extraTopicSlugs: ['pandemic-origins'],
-    crossRefTopicSlugs: ['pandemic-origins'],
     cap: 30,
   },
   {
@@ -567,21 +501,18 @@ const CASE_STUDY_SEARCHES: CaseStudySearch[] = [
       fiscal_years: [2020, 2021, 2022, 2023, 2024],
     },
     extraTopicSlugs: ['pandemic-origins', 'medicine'],
-    crossRefTopicSlugs: ['pandemic-origins'],
     cap: 30,
   },
   {
     label: 'Tobacco / smoking research',
     criteria: { text_search: 'tobacco smoking cigarette nicotine carcinogen' },
     extraTopicSlugs: ['tobacco-control', 'epidemiology'],
-    crossRefTopicSlugs: ['tobacco-control'],
     cap: 30,
   },
   {
     label: 'Semaglutide / GLP-1 / obesity research',
     criteria: { text_search: 'semaglutide GLP-1 glucagon-like peptide obesity' },
     extraTopicSlugs: ['drug-approval', 'medicine'],
-    crossRefTopicSlugs: ['drug-approval'],
     cap: 20,
   },
 ]
@@ -612,7 +543,7 @@ async function runCaseStudyBucket(limit: number, coreTopicIds: string[]): Promis
       if (seenNums.has(grant.project_num)) continue
       seenNums.add(grant.project_num)
 
-      const result = await ingestGrant(grant, extraIds, coreTopicIds, search.crossRefTopicSlugs)
+      const result = await ingestGrant(grant, extraIds, coreTopicIds)
       if (result === 'ingested') counts.ingested++
       else if (result === 'skipped') counts.skipped++
       else counts.errors++
@@ -642,7 +573,7 @@ async function runPrestigeBucket(limit: number, coreTopicIds: string[]): Promise
   const extraIds = medicineId ? [medicineId] : []
 
   for (const grant of grants) {
-    const result = await ingestGrant(grant, extraIds, coreTopicIds, [])
+    const result = await ingestGrant(grant, extraIds, coreTopicIds)
     if (result === 'ingested') counts.ingested++
     else if (result === 'skipped') counts.skipped++
     else counts.errors++
@@ -703,7 +634,7 @@ async function runReferenceBucket(limit: number, coreTopicIds: string[]): Promis
   console.log(`  Found ${grants.length} reference grants\n`)
 
   for (const grant of grants) {
-    const result = await ingestGrant(grant, [], coreTopicIds, [])
+    const result = await ingestGrant(grant, [], coreTopicIds)
     if (result === 'ingested') counts.ingested++
     else if (result === 'skipped') counts.skipped++
     else counts.errors++
