@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-full bg-black/80 text-gray-100 antialiased">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full bg-gray-950`}>
+      <body className="min-h-full text-gray-100 antialiased">
         <nav className="border-b border-gray-800 px-6 py-3 flex gap-6 text-sm">
           <Link href="/" className="font-semibold text-white">Epistemic Receipts</Link>
           <Link href="/claims" className="text-gray-400 hover:text-white transition-colors">Claims</Link>

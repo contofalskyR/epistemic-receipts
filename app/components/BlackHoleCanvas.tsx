@@ -21,6 +21,47 @@ function spawnParticle(rMax: number): Particle {
   };
 }
 
+// Collapse canvas to top-right corner as user scrolls past the hero (1vh of scroll).
+// Desktop: shrinks to 40% scale, parked top-right.
+// Mobile (<768px): fades to 0 scale (hidden) — avoids perf pressure on small screens.
+// Direct DOM manipulation via ref — no React re-renders on scroll.
+function setupScrollAnimation(el: HTMLCanvasElement) {
+  let heroScroll = window.innerHeight;
+  let rafId = 0;
+
+  function applyTransform() {
+    rafId = 0;
+    const raw = Math.min(1, Math.max(0, window.scrollY / heroScroll));
+    // Ease-out quadratic: perceptibly starts slow, accelerates past hero
+    const eased = 1 - Math.pow(1 - raw, 2);
+    const targetScale = window.innerWidth < 768 ? 0 : 0.4;
+    const scale = 1 - eased * (1 - targetScale);
+    el.style.transform = `scale(${scale})`;
+  }
+
+  function onScroll() {
+    if (rafId === 0) rafId = requestAnimationFrame(applyTransform);
+  }
+
+  function onResize() {
+    heroScroll = window.innerHeight;
+    applyTransform();
+  }
+
+  // Set transform-origin once — top-right anchors the corner collapse
+  el.style.transformOrigin = "top right";
+  applyTransform();
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", onResize);
+    if (rafId) cancelAnimationFrame(rafId);
+  };
+}
+
 export default function BlackHoleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -60,6 +101,8 @@ export default function BlackHoleCanvas() {
 
     resize();
 
+    const cleanupScroll = setupScrollAnimation(el);
+
     // Reduced-motion: static snapshot, no animation loop
     if (prefersReduced) {
       ctx.fillStyle = "#000";
@@ -77,7 +120,7 @@ export default function BlackHoleCanvas() {
       ctx.arc(cx, cy, EVENT_HORIZON, 0, Math.PI * 2);
       ctx.fillStyle = "#000";
       ctx.fill();
-      return;
+      return cleanupScroll;
     }
 
     // Seed canvas black so the first frame isn't a transparency flash
@@ -164,6 +207,7 @@ export default function BlackHoleCanvas() {
       cancelAnimationFrame(animId);
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("resize", resize);
+      cleanupScroll();
     };
   }, []);
 
@@ -174,8 +218,8 @@ export default function BlackHoleCanvas() {
         position: "fixed",
         inset: 0,
         zIndex: -1,
-        opacity: 1,
         pointerEvents: "none",
+        willChange: "transform",
       }}
     />
   );
