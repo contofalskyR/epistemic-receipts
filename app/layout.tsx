@@ -29,6 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/feedback" className="text-gray-400 hover:text-white transition-colors">Feedback</Link>
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
+        <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-700">
+          last updated May 4, 2026
+        </footer>
       </body>
     </html>
   );
