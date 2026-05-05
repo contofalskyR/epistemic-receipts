@@ -29,7 +29,8 @@ interface SolarBodyDef {
   discoveredBy?: string        // blank for planets known since antiquity
   discoveryYear?: number
   claimText: string
-  sourceUrl: string            // verified: browser-accessible NASA URL
+  sourceUrl: string            // verified: browser-accessible URL (NASA or JPL SBDB)
+  sourceName?: string          // overrides default "NASA: {name}" when source is not NASA Science
   ingestedBy: 'solar_system_v1'
 }
 
@@ -332,13 +333,13 @@ const SOLAR_SYSTEM_BODIES: SolarBodyDef[] = [
     sourceUrl: 'https://science.nasa.gov/solar-system/moons/titan/', ingestedBy: 'solar_system_v1' },
   { name: 'Enceladus', bodyType: 'moon', parentBody: 'Saturn', discoveredBy: 'William Herschel', discoveryYear: 1789,
     claimText: 'Enceladus is a moon of Saturn discovered by William Herschel in 1789. NASA\'s Cassini mission confirmed active cryovolcanism and a subsurface ocean, making it a prime target in the search for extraterrestrial life.',
-    sourceUrl: 'https://science.nasa.gov/solar-system/moons/enceladus/', ingestedBy: 'solar_system_v1' },
+    sourceUrl: 'https://science.nasa.gov/saturn/moons/enceladus/', ingestedBy: 'solar_system_v1' },
   { name: 'Iapetus', bodyType: 'moon', parentBody: 'Saturn', discoveredBy: 'Giovanni Cassini', discoveryYear: 1671,
     claimText: 'Iapetus is a moon of Saturn discovered by Giovanni Cassini in 1671. It has a distinctive two-toned appearance: one hemisphere is as dark as coal and the other as bright as snow.',
     sourceUrl: 'https://science.nasa.gov/solar-system/moons/iapetus/', ingestedBy: 'solar_system_v1' },
   { name: 'Mimas', bodyType: 'moon', parentBody: 'Saturn', discoveredBy: 'William Herschel', discoveryYear: 1789,
     claimText: 'Mimas is a moon of Saturn discovered by William Herschel in 1789. Its large Herschel crater gives it a resemblance to the fictional Death Star.',
-    sourceUrl: 'https://science.nasa.gov/solar-system/moons/mimas/', ingestedBy: 'solar_system_v1' },
+    sourceUrl: 'https://science.nasa.gov/saturn/moons/mimas/', ingestedBy: 'solar_system_v1' },
 
   // Neptune's major moon
   { name: 'Triton', bodyType: 'moon', parentBody: 'Neptune', discoveredBy: 'William Lassell', discoveryYear: 1846,
@@ -348,7 +349,7 @@ const SOLAR_SYSTEM_BODIES: SolarBodyDef[] = [
   // Pluto's largest moon
   { name: 'Charon', bodyType: 'moon', parentBody: 'Pluto', discoveredBy: 'James Christy', discoveryYear: 1978,
     claimText: 'Charon is the largest of Pluto\'s five known moons, discovered by James Christy in 1978. The Pluto-Charon system is sometimes considered a double dwarf planet because their barycenter lies between the two bodies.',
-    sourceUrl: 'https://science.nasa.gov/solar-system/moons/charon/', ingestedBy: 'solar_system_v1' },
+    sourceUrl: 'https://science.nasa.gov/dwarf-planets/pluto/moons/charon/', ingestedBy: 'solar_system_v1' },
 
   // Key asteroids
   { name: 'Vesta', bodyType: 'asteroid', discoveredBy: 'Heinrich Wilhelm Olbers', discoveryYear: 1807,
@@ -356,13 +357,19 @@ const SOLAR_SYSTEM_BODIES: SolarBodyDef[] = [
     sourceUrl: 'https://science.nasa.gov/solar-system/asteroids/4-vesta/', ingestedBy: 'solar_system_v1' },
   { name: 'Pallas', bodyType: 'asteroid', discoveredBy: 'Heinrich Wilhelm Olbers', discoveryYear: 1802,
     claimText: 'Pallas (2 Pallas) is the third-largest asteroid in the asteroid belt, discovered by Heinrich Wilhelm Olbers on March 28, 1802. It was the second asteroid ever discovered.',
-    sourceUrl: 'https://science.nasa.gov/solar-system/asteroids/2-pallas/', ingestedBy: 'solar_system_v1' },
+    sourceUrl: 'https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=2%20pallas',
+    sourceName: 'JPL Small-Body Database: 2 Pallas',
+    ingestedBy: 'solar_system_v1' },
   { name: 'Juno', bodyType: 'asteroid', discoveredBy: 'Karl Ludwig Harding', discoveryYear: 1804,
     claimText: 'Juno (3 Juno) is a large asteroid in the main asteroid belt, discovered by Karl Ludwig Harding on September 1, 1804. It was the third asteroid ever discovered.',
-    sourceUrl: 'https://science.nasa.gov/solar-system/asteroids/3-juno/', ingestedBy: 'solar_system_v1' },
+    sourceUrl: 'https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=3%20juno',
+    sourceName: 'JPL Small-Body Database: 3 Juno',
+    ingestedBy: 'solar_system_v1' },
   { name: 'Hygiea', bodyType: 'asteroid', discoveredBy: 'Annibale de Gasparis', discoveryYear: 1849,
     claimText: 'Hygiea (10 Hygiea) is the fourth-largest object in the asteroid belt, discovered by Annibale de Gasparis on April 12, 1849. It is a candidate for dwarf planet status due to its nearly spherical shape.',
-    sourceUrl: 'https://science.nasa.gov/solar-system/asteroids/10-hygiea/', ingestedBy: 'solar_system_v1' },
+    sourceUrl: 'https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=10%20hygiea',
+    sourceName: 'JPL Small-Body Database: 10 Hygiea',
+    ingestedBy: 'solar_system_v1' },
 ]
 
 async function ingestSolarBody(def: SolarBodyDef, topicIds: string[], counts: Counts): Promise<void> {
@@ -376,9 +383,9 @@ async function ingestSolarBody(def: SolarBodyDef, topicIds: string[], counts: Co
     const { claimId } = await prisma.$transaction(async tx => {
       const source = await tx.source.upsert({
         where:  { externalId: sourceExternalId },
-        update: {},
+        update: { url: def.sourceUrl, name: def.sourceName ?? `NASA: ${def.name}` },
         create: {
-          name:            `NASA: ${def.name}`,
+          name:            def.sourceName ?? `NASA: ${def.name}`,
           url:             def.sourceUrl,
           methodologyType: 'primary',
           ingestedBy:      def.ingestedBy,
