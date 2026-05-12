@@ -620,6 +620,15 @@ function HomeContent() {
           </p>
         </div>
 
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-[11px] font-mono text-gray-600 uppercase tracking-widest">May 12, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">+2,798</span> UN Security Council resolutions (1946–2025) — every adopted resolution, vote record, and subject classification from the CR-UNSC v2025 dataset</li>
+            <li><span className="text-gray-400">Verification status</span> system added — claims now carry VERIFIED, PROVISIONAL, or DEPRECATED badges reflecting pipeline audit state</li>
+            <li><span className="text-gray-400">Pipeline 5</span> (USPTO patents) retired — fabricated records confirmed on audit; 182 claims flagged DEPRECATED and preserved for audit trail</li>
+          </ul>
+        </div>
+
         <div className="space-y-2 text-sm text-gray-500 leading-relaxed">
           <p>
             <span className="text-gray-400 font-medium">What it tracks:</span>{" "}
