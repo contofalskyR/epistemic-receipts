@@ -1,3 +1,10 @@
+// !! RETIRED PIPELINE — DO NOT RUN !!
+// Pipeline 5 (uspto_v1) retired 2026-05-12.
+// Failure modes: (a) fabricated patent metadata from training-data recall (confirmed US4431740
+// had correct number but wrong title/inventors — contents from US4237224 Cohen-Boyer chimeras);
+// (b) structural field contamination on tobacco bucket (court-case citations in assignee_in_db).
+// All 182 records in DB flagged verificationStatus=DEPRECATED. Kept for forensic reference.
+//
 // USPTO patent ingestion — curated utility patents across pharma, tobacco, foundational
 // Hardcoded curated list (USPTO API killed in late 2024, no working free replacement)
 // No CITES cross-references — editorial connections handled separately

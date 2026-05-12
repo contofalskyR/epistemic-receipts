@@ -32,7 +32,7 @@ model Claim {
   externalId            String?           @unique
   deleted               Boolean           @default(false)
   autoApproved          Boolean           @default(false)
-  verificationStatus    String?           // VERIFIED | PROVISIONAL | DISPUTED
+  verificationStatus    String?           // VERIFIED | PROVISIONAL | DISPUTED | DEPRECATED
   metadata              Json?
 
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])

@@ -50,7 +50,14 @@ export async function GET(
       })
     : [];
 
-  const claimWhere = { topicId: topic.id, claim: { deleted: false } };
+  const showDeprecated = req.nextUrl.searchParams.get("deprecated") === "1";
+  const claimWhere = {
+    topicId: topic.id,
+    claim: {
+      deleted: false,
+      ...(showDeprecated ? {} : { NOT: { verificationStatus: "DEPRECATED" } }),
+    },
+  };
 
   const claimOrderBy =
     sort === "most_sources"

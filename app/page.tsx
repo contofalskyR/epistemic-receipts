@@ -66,6 +66,7 @@ const VS_STYLE: Record<string, string> = {
   VERIFIED:    "bg-blue-950 text-blue-400 border border-blue-800/50",
   PROVISIONAL: "bg-gray-800/60 text-gray-500 border border-gray-700/50",
   DISPUTED:    "bg-red-950 text-red-400 border border-red-800/50",
+  DEPRECATED:  "bg-gray-900 text-gray-600 border border-gray-800",
 };
 
 function ClaimMeta({ claim, small }: { claim: ChildClaim; small?: boolean }) {
@@ -130,13 +131,23 @@ function TopicChips({ topics }: { topics: TopicTag[] }) {
 function ClaimCard({ claim, searchQuery }: { claim: TopClaim; searchQuery: string }) {
   const router = useRouter();
   const q = searchQuery.toLowerCase();
+  const isDeprecated = claim.verificationStatus === "DEPRECATED";
   return (
     <div>
       <div
         onClick={() => router.push(`/claims/${claim.id}`)}
-        className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group cursor-pointer"
+        className={`block rounded-lg border px-4 py-3 transition-colors group cursor-pointer ${
+          isDeprecated
+            ? "border-gray-800/50 bg-gray-950 hover:border-gray-700 opacity-60"
+            : "border-gray-800 bg-gray-900 hover:border-gray-600"
+        }`}
       >
-        <p className="text-sm text-gray-200 group-hover:text-white transition-colors leading-snug line-clamp-2">
+        {isDeprecated && (
+          <p className="text-[10px] text-gray-600 font-mono mb-1.5">
+            Pipeline retired — preserved for audit purposes, do not cite as authoritative
+          </p>
+        )}
+        <p className={`text-sm leading-snug line-clamp-2 transition-colors ${isDeprecated ? "text-gray-500 group-hover:text-gray-400" : "text-gray-200 group-hover:text-white"}`}>
           {claim.text}
         </p>
         <ClaimMeta claim={claim} />
@@ -377,13 +388,14 @@ function HomeContent() {
   }, []); // mount only
 
   // Parse current URL filter state
-  const urlQ            = searchParams.get("q") || "";
-  const urlTypes        = searchParams.get("types")?.split(",").filter(Boolean) ?? [...ALL_TYPES];
-  const urlStatuses     = searchParams.get("statuses")?.split(",").filter(Boolean) ?? [...ALL_STATUSES];
-  const urlVerification = searchParams.get("verification") || "all";
-  const urlSource       = searchParams.get("source") || "all";
-  const urlSort         = searchParams.get("sort") || "recent";
-  const urlTopics       = searchParams.get("topics")?.split(",").filter(Boolean) ?? [];
+  const urlQ              = searchParams.get("q") || "";
+  const urlTypes          = searchParams.get("types")?.split(",").filter(Boolean) ?? [...ALL_TYPES];
+  const urlStatuses       = searchParams.get("statuses")?.split(",").filter(Boolean) ?? [...ALL_STATUSES];
+  const urlVerification   = searchParams.get("verification") || "all";
+  const urlShowDeprecated = searchParams.get("deprecated") === "1";
+  const urlSource         = searchParams.get("source") || "all";
+  const urlSort           = searchParams.get("sort") || "recent";
+  const urlTopics         = searchParams.get("topics")?.split(",").filter(Boolean) ?? [];
 
   // Local search input, debounced into URL (doesn't trigger re-fetch)
   const [searchInput, setSearchInput] = useState(urlQ);
@@ -399,10 +411,15 @@ function HomeContent() {
     const q      = urlQ.trim().toLowerCase();
     const isSearchActive = q.length > 0;
 
+    // Exclude DEPRECATED by default unless toggle is on
+    let filtered = urlShowDeprecated
+      ? allClaims
+      : allClaims.filter(c => c.verificationStatus !== "DEPRECATED");
+
     // Verification status
-    let filtered = allClaims;
     if (urlVerification === "verified")    filtered = filtered.filter(c => c.verificationStatus === "VERIFIED");
     if (urlVerification === "provisional") filtered = filtered.filter(c => c.verificationStatus === "PROVISIONAL");
+    if (urlVerification === "deprecated")  filtered = allClaims.filter(c => c.verificationStatus === "DEPRECATED");
 
     // Type
     if (urlTypes.length < ALL_TYPES.length) {
@@ -481,7 +498,7 @@ function HomeContent() {
     return { sections: result, isSearch: isSearchActive };
   // searchParams as a dep: stable reference when URL unchanged, changes when URL changes
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allClaims, searchParams, urlQ, urlTypes.join(","), urlStatuses.join(","), urlVerification, urlSource, urlSort, urlTopics.join(",")]);
+  }, [allClaims, searchParams, urlQ, urlTypes.join(","), urlStatuses.join(","), urlVerification, urlShowDeprecated, urlSource, urlSort, urlTopics.join(",")]);
 
   // Distinct ingestion sources for filter dropdown, derived client-side
   const ingestedBySources = useMemo(
@@ -534,6 +551,7 @@ function HomeContent() {
 
     // Strip defaults
     if (p.get("verification") === "all") p.delete("verification");
+    if (p.get("deprecated") !== "1")     p.delete("deprecated");
     if (p.get("source") === "all")       p.delete("source");
     if (p.get("sort") === "recent")     p.delete("sort");
     if ((p.get("q") ?? "") === "")      p.delete("q");
@@ -577,6 +595,7 @@ function HomeContent() {
     urlTypes.length    !== ALL_TYPES.length ||
     urlStatuses.length !== ALL_STATUSES.length ||
     urlVerification !== "all" ||
+    urlShowDeprecated ||
     urlSource !== "all" ||
     urlTopics.length > 0;
 
@@ -656,6 +675,17 @@ function HomeContent() {
             ]}
             onChange={v => updateFilter({ verification: v })}
           />
+
+          <button
+            onClick={() => updateFilter({ deprecated: urlShowDeprecated ? null : "1" })}
+            className={`text-xs px-2.5 py-1.5 rounded border transition-colors whitespace-nowrap ${
+              urlShowDeprecated
+                ? "border-gray-600 text-gray-400 bg-gray-800/40"
+                : "border-gray-800 text-gray-700 hover:border-gray-700 hover:text-gray-500"
+            }`}
+          >
+            {urlShowDeprecated ? "Hide deprecated" : "Show deprecated"}
+          </button>
 
           <SingleSelect
             value={urlSource}
