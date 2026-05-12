@@ -16,4 +16,16 @@ Curated lists in HARD_FACT pipelines must be sourced from a verifiable external 
 When live APIs are unavailable, the curated list itself becomes the verification surface: every entry must trace to a fetchable URL or document that confirms the patent number, accession, or identifier. Before a pipeline is run against production, spot-check at least the anchor entries against their canonical URLs.
 
 The GenBank pipeline got this right: accessions were verified against ncbi.nlm.nih.gov before approval. The USPTO pipeline (Pipeline 5) did not: the absence of a working API made model memory feel like an acceptable substitute. It was not. At least two patent numbers in the initial run were confirmed fabrications pointing to unrelated patents.
+
+## Source/Edge/MetaEdge metadata fields (pending)
+`metadata: Json?` exists on `Claim` only. Until the field is added to `Source`, `Edge`, and `MetaEdge` (queued for a future migration), source-level provenance for bulk-ingested records goes in `Claim.metadata` under a `dataset` or `source` key.
+
+## Verify ingester counters against DB state
+Do not trust in-script progress logs as the source of truth for how many rows were written. Verify ingester results against DB state (count queries) after every run. Closure-scope bugs and transaction rollbacks can cause counters to misreport while the DB is correct — or vice versa.
+
+## Transaction timeout for large pipelines
+For pipelines over ~1,000 rows: set `prisma.$transaction(fn, { timeout: 30000 })` to avoid the default 5-second timeout on batches. The default will silently fail mid-batch on slow connections or complex writes.
+
+## humanReviewed and autoApproved must reflect reality
+`humanReviewed: true` means a human reviewed the record. `autoApproved: true` means the pipeline's own quality gates passed. These are separate signals — do not conflate them. If a visibility or filtering bug makes auto-ingested records invisible, fix the filter, not the field. Setting `humanReviewed: true` on auto-ingested records to work around a filter is documentation drift that corrupts the audit trail.
 <!-- END:hard-fact-pipeline-rules -->

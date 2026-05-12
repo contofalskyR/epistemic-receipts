@@ -16,7 +16,7 @@ type ChildClaim = {
   createdAt: string;
   claimEmergedAt: string | null;
   claimEmergedPrecision: EmergedPrecision | null;
-  humanReviewed: boolean;
+  verificationStatus: string | null;
   _count: { edges: number };
 };
 
@@ -62,6 +62,12 @@ const SORT_OPTIONS = [
 
 // ─── Claim card (unchanged visual logic) ─────────────────────────────────────
 
+const VS_STYLE: Record<string, string> = {
+  VERIFIED:    "bg-blue-950 text-blue-400 border border-blue-800/50",
+  PROVISIONAL: "bg-gray-800/60 text-gray-500 border border-gray-700/50",
+  DISPUTED:    "bg-red-950 text-red-400 border border-red-800/50",
+};
+
 function ClaimMeta({ claim, small }: { claim: ChildClaim; small?: boolean }) {
   return (
     <div className="flex items-center gap-2 mt-1.5 flex-wrap">
@@ -71,6 +77,11 @@ function ClaimMeta({ claim, small }: { claim: ChildClaim; small?: boolean }) {
       <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
         {claim.claimType}
       </span>
+      {claim.verificationStatus && (
+        <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"}`}>
+          {claim.verificationStatus}
+        </span>
+      )}
       <span className={`text-gray-600 ${small ? "text-[11px]" : "text-xs"}`}>
         {claim._count.edges} {claim._count.edges === 1 ? "source" : "sources"}
       </span>
@@ -366,13 +377,13 @@ function HomeContent() {
   }, []); // mount only
 
   // Parse current URL filter state
-  const urlQ        = searchParams.get("q") || "";
-  const urlTypes    = searchParams.get("types")?.split(",").filter(Boolean) ?? [...ALL_TYPES];
-  const urlStatuses = searchParams.get("statuses")?.split(",").filter(Boolean) ?? [...ALL_STATUSES];
-  const urlReview   = searchParams.get("review") || "reviewed";
-  const urlSource   = searchParams.get("source") || "all";
-  const urlSort     = searchParams.get("sort") || "recent";
-  const urlTopics   = searchParams.get("topics")?.split(",").filter(Boolean) ?? [];
+  const urlQ            = searchParams.get("q") || "";
+  const urlTypes        = searchParams.get("types")?.split(",").filter(Boolean) ?? [...ALL_TYPES];
+  const urlStatuses     = searchParams.get("statuses")?.split(",").filter(Boolean) ?? [...ALL_STATUSES];
+  const urlVerification = searchParams.get("verification") || "all";
+  const urlSource       = searchParams.get("source") || "all";
+  const urlSort         = searchParams.get("sort") || "recent";
+  const urlTopics       = searchParams.get("topics")?.split(",").filter(Boolean) ?? [];
 
   // Local search input, debounced into URL (doesn't trigger re-fetch)
   const [searchInput, setSearchInput] = useState(urlQ);
@@ -388,10 +399,10 @@ function HomeContent() {
     const q      = urlQ.trim().toLowerCase();
     const isSearchActive = q.length > 0;
 
-    // Review
+    // Verification status
     let filtered = allClaims;
-    if (urlReview === "reviewed")   filtered = filtered.filter(c => c.humanReviewed);
-    if (urlReview === "unreviewed") filtered = filtered.filter(c => !c.humanReviewed);
+    if (urlVerification === "verified")    filtered = filtered.filter(c => c.verificationStatus === "VERIFIED");
+    if (urlVerification === "provisional") filtered = filtered.filter(c => c.verificationStatus === "PROVISIONAL");
 
     // Type
     if (urlTypes.length < ALL_TYPES.length) {
@@ -470,7 +481,7 @@ function HomeContent() {
     return { sections: result, isSearch: isSearchActive };
   // searchParams as a dep: stable reference when URL unchanged, changes when URL changes
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allClaims, searchParams, urlQ, urlTypes.join(","), urlStatuses.join(","), urlReview, urlSource, urlSort, urlTopics.join(",")]);
+  }, [allClaims, searchParams, urlQ, urlTypes.join(","), urlStatuses.join(","), urlVerification, urlSource, urlSort, urlTopics.join(",")]);
 
   // Distinct ingestion sources for filter dropdown, derived client-side
   const ingestedBySources = useMemo(
@@ -522,8 +533,8 @@ function HomeContent() {
     }
 
     // Strip defaults
-    if (p.get("review") === "reviewed") p.delete("review");
-    if (p.get("source") === "all")      p.delete("source");
+    if (p.get("verification") === "all") p.delete("verification");
+    if (p.get("source") === "all")       p.delete("source");
     if (p.get("sort") === "recent")     p.delete("sort");
     if ((p.get("q") ?? "") === "")      p.delete("q");
 
@@ -565,7 +576,7 @@ function HomeContent() {
     urlQ !== "" ||
     urlTypes.length    !== ALL_TYPES.length ||
     urlStatuses.length !== ALL_STATUSES.length ||
-    urlReview !== "reviewed" ||
+    urlVerification !== "all" ||
     urlSource !== "all" ||
     urlTopics.length > 0;
 
@@ -637,13 +648,13 @@ function HomeContent() {
           />
 
           <SingleSelect
-            value={urlReview}
+            value={urlVerification}
             options={[
-              { value: "reviewed",   label: "Reviewed only" },
-              { value: "unreviewed", label: "Unreviewed only" },
-              { value: "all",        label: "All" },
+              { value: "all",         label: "All verification" },
+              { value: "verified",    label: "Verified only" },
+              { value: "provisional", label: "Provisional only" },
             ]}
-            onChange={v => updateFilter({ review: v })}
+            onChange={v => updateFilter({ verification: v })}
           />
 
           <SingleSelect

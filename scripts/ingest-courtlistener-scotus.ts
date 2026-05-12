@@ -267,15 +267,11 @@ async function main() {
       const claimText  =
         `The U.S. Supreme Court in ${caseName}${displayYear} issued a ruling on the legal questions presented in the case.`
 
-      const reviewFields = gatesPassed
-        ? {
-            humanReviewed:    true,
-            reviewedBy:       'courtlistener_scotus_v1_auto',
-            reviewedAt:       new Date(),
-            reviewConfidence: 'MEDIUM' as const,
-            autoApproved:     true,
-          }
-        : { humanReviewed: false as const }
+      const reviewFields = {
+        humanReviewed:    false,
+        autoApproved:     gatesPassed,
+        reviewConfidence: gatesPassed ? 'MEDIUM' as const : undefined,
+      }
 
       if (!gatesPassed) {
         console.warn(`  Warning: cluster ${clusterId} (${caseName}) failed quality gates — leaving unreviewed`)

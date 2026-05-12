@@ -355,7 +355,7 @@ async function writeRow(
       currentStatus: 'HARD_FACT',
       verificationStatus: 'PROVISIONAL',
       autoApproved: true,
-      humanReviewed: true,
+      humanReviewed: false,
       ingestedBy: INGESTED_BY,
       externalId: row.symbol,
       claimEmergedAt: row.date,
