@@ -266,7 +266,8 @@ function parseCSV(csvPath: string): { parsed: ParsedRow[]; dead: DeadLetter[] } 
 
 // ── Metadata builder ──────────────────────────────────────────────────────────
 
-function buildMetadata(r: ParsedRow): Record<string, unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function buildMetadata(r: ParsedRow): any {
   const meta: Record<string, unknown> = {
     res_no: r.res_no,
     symbol: r.symbol,
