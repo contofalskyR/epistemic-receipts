@@ -1,0 +1,27 @@
+[
+  {
+    "drug_name": "IBUPROFEN TABLET, FILM-COATED",
+    "count": 195018,
+    "reason": "slug collision: externalId 'faers_ibuprofen-tablet-film-coated' already assigned in this run"
+  },
+  {
+    "drug_name": "ANTI-ITCH",
+    "count": 65081,
+    "reason": "slug collision: externalId 'faers_anti-itch' already assigned in this run"
+  },
+  {
+    "drug_name": "ESTRADIOL,",
+    "count": 43061,
+    "reason": "slug collision: externalId 'faers_estradiol' already assigned in this run"
+  },
+  {
+    "drug_name": "NOREPINEPHRINE (BITARTRATE)",
+    "count": 12680,
+    "reason": "slug collision: externalId 'faers_norepinephrine-bitartrate' already assigned in this run"
+  },
+  {
+    "drug_name": "POLYETHYLENE GLYCOL (3350)",
+    "count": 12018,
+    "reason": "slug collision: externalId 'faers_polyethylene-glycol-3350' already assigned in this run"
+  }
+]

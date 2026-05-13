@@ -79,19 +79,19 @@ function ClaimMeta({ claim, small }: { claim: ChildClaim; small?: boolean }) {
         {claim.claimType}
       </span>
       {claim.verificationStatus && (
-        <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"}`}>
+        <span className={`text-xs px-1.5 py-0.5 rounded font-mono ${VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"}`}>
           {claim.verificationStatus}
         </span>
       )}
-      <span className={`text-gray-600 ${small ? "text-[11px]" : "text-xs"}`}>
+      <span className={`text-gray-500 ${small ? "text-xs" : "text-xs"}`}>
         {claim._count.edges} {claim._count.edges === 1 ? "source" : "sources"}
       </span>
       {claim.claimEmergedAt && claim.claimEmergedPrecision ? (
-        <span className={`text-gray-600 ${small ? "text-[11px]" : "text-xs"}`}>
+        <span className={`text-gray-500 ${small ? "text-xs" : "text-xs"}`}>
           {formatAge(claim.claimEmergedAt, claim.claimEmergedPrecision)} · emerged {formatEmerged(claim.claimEmergedAt, claim.claimEmergedPrecision)}
         </span>
       ) : (
-        <span className={`text-gray-700 ${small ? "text-[11px]" : "text-xs"}`}>
+        <span className={`text-gray-500 ${small ? "text-xs" : "text-xs"}`}>
           added {new Date(claim.createdAt).toLocaleDateString()}
         </span>
       )}
@@ -110,7 +110,7 @@ function TopicChips({ topics }: { topics: TopicTag[] }) {
         <Link
           key={ct.topic.id}
           href={`/topics/${ct.topic.slug}`}
-          className="text-[11px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300 transition-colors"
+          className="text-xs px-1.5 py-0.5 rounded bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-gray-200 transition-colors"
           onClick={e => e.stopPropagation()}
         >
           {ct.topic.name}
@@ -118,7 +118,7 @@ function TopicChips({ topics }: { topics: TopicTag[] }) {
       ))}
       {!expanded && overflow > 0 && (
         <button
-          className="text-[11px] px-1.5 py-0.5 rounded bg-gray-800/60 text-gray-600 hover:text-gray-400 transition-colors"
+          className="text-xs px-1.5 py-0.5 rounded bg-gray-800/60 text-gray-500 hover:text-gray-400 transition-colors"
           onClick={e => { e.preventDefault(); e.stopPropagation(); setExpanded(true); }}
         >
           +{overflow} more
@@ -143,11 +143,11 @@ function ClaimCard({ claim, searchQuery }: { claim: TopClaim; searchQuery: strin
         }`}
       >
         {isDeprecated && (
-          <p className="text-[10px] text-gray-600 font-mono mb-1.5">
+          <p className="text-xs text-gray-500 font-mono mb-1.5">
             Pipeline retired — preserved for audit purposes, do not cite as authoritative
           </p>
         )}
-        <p className={`text-sm leading-snug line-clamp-2 transition-colors ${isDeprecated ? "text-gray-500 group-hover:text-gray-400" : "text-gray-200 group-hover:text-white"}`}>
+        <p className={`text-sm leading-relaxed line-clamp-2 transition-colors ${isDeprecated ? "text-gray-500 group-hover:text-gray-400" : "text-gray-200 group-hover:text-white"}`}>
           {claim.text}
         </p>
         <ClaimMeta claim={claim} />
@@ -168,7 +168,7 @@ function ClaimCard({ claim, searchQuery }: { claim: TopClaim; searchQuery: strin
                     : "border-gray-800/60 bg-gray-900 hover:border-gray-700"
                 }`}
               >
-                <p className="text-xs text-gray-400 group-hover:text-gray-200 transition-colors leading-snug line-clamp-2">
+                <p className="text-[13px] text-gray-400 group-hover:text-gray-200 transition-colors leading-relaxed line-clamp-2">
                   {child.text}
                 </p>
                 <ClaimMeta claim={child} small />
@@ -226,7 +226,7 @@ function MultiSelect({
         }`}
       >
         {displayLabel}
-        <span className="text-gray-600 text-[10px]">{open ? "▴" : "▾"}</span>
+        <span className="text-gray-500 text-[10px]">{open ? "▴" : "▾"}</span>
       </button>
       {open && (
         <div className="absolute top-full mt-1 left-0 bg-gray-900 border border-gray-700 rounded-lg py-1 z-30 min-w-[170px] max-h-64 overflow-y-auto shadow-2xl">
@@ -320,13 +320,13 @@ function ClaimSection({
         onClick={onToggle}
         className="flex items-center gap-1.5 w-full text-left mb-3 group"
       >
-        <span className="text-gray-700 text-[10px] group-hover:text-gray-500 transition-colors mt-px">
+        <span className="text-gray-500 text-[10px] group-hover:text-gray-400 transition-colors mt-px">
           {isCollapsed ? "▸" : "▾"}
         </span>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500 group-hover:text-gray-400 transition-colors">
           {label} claims
         </h2>
-        <span className="text-gray-700 text-xs font-normal normal-case tracking-normal ml-0.5">
+        <span className="text-gray-500 text-xs font-normal normal-case tracking-normal ml-0.5">
           ({section.total})
         </span>
       </button>
@@ -334,7 +334,7 @@ function ClaimSection({
       {!isCollapsed && (
         <>
           {section.total === 0 ? (
-            <p className="text-sm text-gray-700 italic">No {label.toLowerCase()} claims match.</p>
+            <p className="text-sm text-gray-500 italic">No {label.toLowerCase()} claims match.</p>
           ) : (
             <div className="space-y-3">
               {section.claims.map(c => (
@@ -344,21 +344,21 @@ function ClaimSection({
           )}
 
           {!isSearch && section.pages > 1 && (
-            <div className="flex items-center gap-2 mt-4 text-xs text-gray-600">
+            <div className="flex items-center gap-2 mt-4 text-xs text-gray-500">
               <button
                 onClick={() => onPageChange(section.page - 1)}
                 disabled={section.page <= 1}
-                className="hover:text-gray-400 disabled:opacity-30 transition-colors"
+                className="hover:text-gray-300 disabled:opacity-30 transition-colors"
               >
                 ← Previous
               </button>
-              <span className="text-gray-800">·</span>
+              <span className="text-gray-700">·</span>
               <span>Page {section.page} of {section.pages}</span>
-              <span className="text-gray-800">·</span>
+              <span className="text-gray-700">·</span>
               <button
                 onClick={() => onPageChange(section.page + 1)}
                 disabled={section.page >= section.pages}
-                className="hover:text-gray-400 disabled:opacity-30 transition-colors"
+                className="hover:text-gray-300 disabled:opacity-30 transition-colors"
               >
                 Next →
               </button>
@@ -615,13 +615,20 @@ function HomeContent() {
             A claim-provenance tool for tracking how consensus gets made — and unmade. Not a fact-checker.
             Not a verdict machine. The receipts are the product; auditability is the principle.
           </p>
-          <p className="mt-3 text-xs text-gray-700 font-mono tracking-wide">
+          <p className="mt-3 text-xs text-gray-500 font-mono tracking-wide">
             invented May 2, 2026
           </p>
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
-          <p className="text-[11px] font-mono text-gray-600 uppercase tracking-widest">May 12, 2026</p>
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 13, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">+995</span> FAERS drug-level adverse event counts — openFDA generic_name normalization, 1,000-drug cap, tagged adverse-events (Pipeline 8)</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 12, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">+2,798</span> UN Security Council resolutions (1946–2025) — every adopted resolution, vote record, and subject classification from the CR-UNSC v2025 dataset</li>
             <li><span className="text-gray-400">Verification status</span> system added — claims now carry VERIFIED, PROVISIONAL, or DEPRECATED badges reflecting pipeline audit state</li>
@@ -690,7 +697,7 @@ function HomeContent() {
             className={`text-xs px-2.5 py-1.5 rounded border transition-colors whitespace-nowrap ${
               urlShowDeprecated
                 ? "border-gray-600 text-gray-400 bg-gray-800/40"
-                : "border-gray-800 text-gray-700 hover:border-gray-700 hover:text-gray-500"
+                : "border-gray-800 text-gray-600 hover:border-gray-700 hover:text-gray-400"
             }`}
           >
             {urlShowDeprecated ? "Hide deprecated" : "Show deprecated"}
@@ -765,7 +772,7 @@ function HomeContent() {
       )}
 
       {totalVisible > 0 && (
-        <p className="text-xs text-gray-700 text-center pb-4">
+        <p className="text-xs text-gray-500 text-center pb-4">
           {totalVisible} {totalVisible === 1 ? "claim" : "claims"} · audit index · not a feed
         </p>
       )}

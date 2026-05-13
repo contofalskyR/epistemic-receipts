@@ -43,9 +43,27 @@ The test: of the next 20 case studies you might build, how many would directly c
 
 These datasets are editorially valuable but fail the reference-tier test. Add specific records or query URLs as Sources within case studies; do not build bulk ingesters.
 
-## FAERS (FDA Adverse Event Reporting System)
-Use openFDA query URLs as Sources within case studies, e.g., `https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:semaglutide&count=patient.reaction.reactionmeddrapt.exact`
+## FAERS — individual event reports
+Raw adverse event records (individual report-level data) are background-tier. Use openFDA query URLs as Sources within case studies, e.g., `https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:semaglutide&count=patient.reaction.reactionmeddrapt.exact`
+
+**Note:** Drug-level aggregate counts from FAERS are reference-tier and have been ingested as Pipeline 8 (`faers_normalized_drugs_v1`). The distinction: a case study citing "SEMAGLUTIDE has 93,543 adverse event reports" is citing an aggregate claim directly. A case study citing a specific adverse event record is background use.
 <!-- END:background-tier-sources -->
+
+<!-- BEGIN:active-pipelines -->
+# Active Pipeline Registry
+
+| # | Ingester tag | Script | Claims | Run date | Notes |
+|---|---|---|---|---|---|
+| 1 | `congress_bills_v1` | `ingest-congress-bills.ts` | — | — | Bills, Congress.gov |
+| 2 | `cr_unsc_v1` | `ingest-cr-unsc.ts` | — | — | UN Security Council resolutions |
+| 3 | `genbank_v1` | `ingest-genbank.ts` | — | — | GenBank accessions, NCBI |
+| 4 | `scotus_v1` | `ingest-scotus.ts` | — | — | SCOTUS opinions |
+| 6 | `ncbi_gene_v1` | `ingest-ncbi-gene.ts` | — | — | NCBI gene entries |
+| 7 | `nih_clinical_trials_v1` | `ingest-nih-clinical-trials.ts` | — | — | ClinicalTrials.gov |
+| 8 | `faers_normalized_drugs_v1` | `ingest-faers-current-drugs.ts` | 995 | 2026-05-13 | Drug-level aggregate AE counts, openFDA generic_name.exact, 1,000-drug cap |
+
+**Pipeline 5 (`uspto_v1`) retired 2026-05-12** — see Known-Bad Pipelines.
+<!-- END:active-pipelines -->
 
 <!-- BEGIN:known-bad-pipelines -->
 # Known-Bad Pipelines (Retired)

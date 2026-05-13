@@ -1,0 +1,45 @@
+Pipeline 8 Dry-Run Summary — 2026-05-13T16:30:06.049Z
+Query date: 2026-05-13
+Dataset last_updated: 2026-04-28
+
+## Drug List
+  Raw entries from openFDA: 1000
+  Valid records built: 995
+  Dead-lettered: 5
+  Rows to process (after --limit): 995
+
+## Topic IDs (confirmed in DB)
+  pharmacovigilance: cmp491n2z00008opa4gtjxz63
+  adverse-events:    cmp491n8f00028opath6rwywy
+
+## Estimated DB rows (full run)
+  Claims:        995
+  Sources:       995
+  Edges:         995
+  EdgeRevisions: 995
+  ClaimTopics:   995
+  Total:         ~4975
+
+## Spec Conflicts Noted
+
+1. SPEC CONFLICT — Source.metadata field.
+   Spec specifies a metadata object on Source (openfda_endpoint, data_freshness,
+   query_date). The Source model in schema.prisma has no metadata column (confirmed
+   in pipeline-8-verification.md §4). Per AGENTS.md, source-level provenance goes
+   in Claim.metadata. Resolution: data_last_updated stored in Claim.metadata
+   as 'data_last_updated'. No data lost. If Source.metadata is required, a
+   schema migration is needed before it can be written.
+
+2. SPEC CONFLICT — openFDA count endpoint pagination.
+   Spec says to paginate using skip parameter (increment by 1000). The openFDA API
+   returns BAD_REQUEST when skip is used with count= queries (confirmed in
+   pipeline-8-verification.md Q7: "Should not use skip param when using count.").
+   Resolution: single-page fetch with limit=1000 (API max for authenticated tier).
+   Pagination loop catches BAD_REQUEST and stops gracefully. All 1000
+   returned terms are processed. No data lost within the API's maximum.
+
+## API Key
+  OPENFDA_API_KEY: present (loaded from .env)
+
+## Next step (after Robert approves)
+  npx tsx scripts/ingest-faers-current-drugs.ts --sample 10
