@@ -26,10 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/review" className="text-gray-400 hover:text-white transition-colors">Review</Link>
           <Link href="/forthcoming" className="text-gray-400 hover:text-white transition-colors ml-auto">Forthcoming</Link>
           <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
+          <Link href="/glossary" className="text-gray-400 hover:text-white transition-colors">Glossary</Link>
           <Link href="/feedback" className="text-gray-400 hover:text-white transition-colors">Feedback</Link>
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
-        <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-700">
+        <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
           last updated May 12, 2026
         </footer>
       </body>
