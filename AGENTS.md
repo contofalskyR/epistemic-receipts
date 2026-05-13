@@ -31,7 +31,21 @@ For pipelines over ~1,000 rows: set `prisma.$transaction(fn, { timeout: 30000 })
 
 ## Receipt value must exceed audit cost per record
 A HARD_FACT pipeline whose individual records cost more to verify than they contribute to editorial understanding is in the wrong scope. When a pipeline's per-record audit cost exceeds its per-record editorial value, the pipeline is retired rather than audited. Records are flagged `verificationStatus: DEPRECATED`, excluded from default views, and preserved for audit trail purposes only.
+
+## Reference-tier vs. background-tier sources
+A dataset is reference-tier (suitable for bulk ingestion) only if individual records will be directly cited by case-study Claims. If only aggregated views or third-party analyses of the dataset will be cited, the dataset is background-tier — link to specific records or analyses as Sources within case studies, do not ingest in bulk.
+
+The test: of the next 20 case studies you might build, how many would directly cite an individual record from this dataset? Congress.gov passes (case studies cite specific bills, votes, hearings). CR-UNSC passes (case studies cite specific resolutions). FAERS fails (case studies cite analyses, not individual reports).
 <!-- END:hard-fact-pipeline-rules -->
+
+<!-- BEGIN:background-tier-sources -->
+# Background-tier sources (link, don't ingest)
+
+These datasets are editorially valuable but fail the reference-tier test. Add specific records or query URLs as Sources within case studies; do not build bulk ingesters.
+
+## FAERS (FDA Adverse Event Reporting System)
+Use openFDA query URLs as Sources within case studies, e.g., `https://api.fda.gov/drug/event.json?search=patient.drug.medicinalproduct:semaglutide&count=patient.reaction.reactionmeddrapt.exact`
+<!-- END:background-tier-sources -->
 
 <!-- BEGIN:known-bad-pipelines -->
 # Known-Bad Pipelines (Retired)
