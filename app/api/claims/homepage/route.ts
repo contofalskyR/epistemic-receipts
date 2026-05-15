@@ -5,7 +5,15 @@ import { prisma } from "@/lib/prisma";
 // Works fine up to ~2000 claims. Above that, server-side pagination becomes necessary — not built yet.
 export async function GET() {
   const claims = await prisma.claim.findMany({
-    where: { deleted: false, parentClaimId: null },
+    where: {
+      deleted: false,
+      parentClaimId: null,
+      AND: [
+        { NOT: { text: { contains: "SARS", mode: "insensitive" } } },
+        { NOT: { text: { contains: "COVID", mode: "insensitive" } } },
+        { NOT: { text: { contains: "coronavirus", mode: "insensitive" } } },
+      ],
+    },
     orderBy: { createdAt: "desc" },
     include: {
       _count: { select: { edges: { where: { deleted: false } } } },
