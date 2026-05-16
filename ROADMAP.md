@@ -54,7 +54,7 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 ## Tier 4 — Small but editorially loaded
 
-- [ ] **Nobel Prize records** — Nobel Foundation has every laureate, year, field, and citation. Volume: ~1,000 records total. Mullis (PCR), Doudna/Charpentier (CRISPR), Watson/Crick/Wilkins (DNA). Connects to existing GenBank and USPTO substrate.
+- [x] **Nobel Prize records** — Pipeline 10 (`nobel_v1`). 1,026 laureate records (1901–2024), all 6 categories. Nobel Foundation API. Dry-run complete 2026-05-16. Awaiting production run approval.
 
 - [ ] **Retraction Watch Database** — every retracted paper. Free API key available. Volume: ~50,000. High editorial value for case studies where consensus shifted because of fabricated research. Pairs with PubMed.
 

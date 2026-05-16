@@ -1,0 +1,196 @@
+{
+  "runDate": "2026-05-16T15:00:57.932Z",
+  "totalPrizeYears": 682,
+  "totalLaureateRecords": 1026,
+  "unAwardedYearsSkipped": 49,
+  "categoryBreakdown": {
+    "Chemistry": 200,
+    "Literature": 122,
+    "Peace": 143,
+    "Physics": 230,
+    "Physiology or Medicine": 232,
+    "Economic Sciences": 99
+  },
+  "sample": [
+    {
+      "claimText": "Jacobus H. van 't Hoff was awarded The Nobel Prize in Chemistry 1901 \"in recognition of the extraordinary services he has rendered by the discovery of the laws of chemical dynamics and osmotic pressure in solutions\".",
+      "externalId": "nobel_laureate_160_chemistry_1901",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1901",
+      "category": "Chemistry",
+      "topicSlug": "nobel-chemistry",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/chemistry/1901/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Sully Prudhomme was awarded The Nobel Prize in Literature 1901 \"in special recognition of his poetic composition, which gives evidence of lofty idealism, artistic perfection and a rare combination of the qualities of both heart and intellect\".",
+      "externalId": "nobel_laureate_569_literature_1901",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1901",
+      "category": "Literature",
+      "topicSlug": "nobel-literature",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/literature/1901/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Henry Dunant was awarded The Nobel Peace Prize 1901 \"for his humanitarian efforts to help wounded soldiers and create international understanding\".",
+      "externalId": "nobel_laureate_462_peace_1901",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1901",
+      "category": "Peace",
+      "topicSlug": "nobel-peace",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/peace/1901/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Frédéric Passy was awarded The Nobel Peace Prize 1901 \"for his lifelong work for international peace conferences, diplomacy and arbitration\".",
+      "externalId": "nobel_laureate_463_peace_1901",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1901",
+      "category": "Peace",
+      "topicSlug": "nobel-peace",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/peace/1901/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Wilhelm Conrad Röntgen was awarded The Nobel Prize in Physics 1901 \"in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him\".",
+      "externalId": "nobel_laureate_1_physics_1901",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1901",
+      "category": "Physics",
+      "topicSlug": "nobel-physics",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/physics/1901/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Emil von Behring was awarded The Nobel Prize in Physiology or Medicine 1901 \"for his work on serum therapy, especially its application against diphtheria, by which he has opened a new road in the domain of medical science and thereby placed in the hands of the physician a victorious weapon against illness and deaths\".",
+      "externalId": "nobel_laureate_293_medicine_1901",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1901",
+      "category": "Physiology or Medicine",
+      "topicSlug": "nobel-medicine",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/medicine/1901/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Emil Fischer was awarded The Nobel Prize in Chemistry 1902 \"in recognition of the extraordinary services he has rendered by his work on sugar and purine syntheses\".",
+      "externalId": "nobel_laureate_161_chemistry_1902",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1902",
+      "category": "Chemistry",
+      "topicSlug": "nobel-chemistry",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/chemistry/1902/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Theodor Mommsen was awarded The Nobel Prize in Literature 1902 \"the greatest living master of the art of historical writing, with special reference to his monumental work, <I>A history of Rome</I>\".",
+      "externalId": "nobel_laureate_571_literature_1902",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1902",
+      "category": "Literature",
+      "topicSlug": "nobel-literature",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/literature/1902/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Élie Ducommun was awarded The Nobel Peace Prize 1902 \"for his untiring and skilful directorship of the Bern Peace Bureau\".",
+      "externalId": "nobel_laureate_464_peace_1902",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1902",
+      "category": "Peace",
+      "topicSlug": "nobel-peace",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/peace/1902/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    },
+    {
+      "claimText": "Albert Gobat was awarded The Nobel Peace Prize 1902 \"for his eminently practical administration of the Inter-Parliamentary Union\".",
+      "externalId": "nobel_laureate_465_peace_1902",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nobel_v1",
+      "year": "1902",
+      "category": "Peace",
+      "topicSlug": "nobel-peace",
+      "source": {
+        "url": "https://www.nobelprize.org/prizes/peace/1902/summary/",
+        "methodologyType": "primary",
+        "ingestedBy": "nobel_v1"
+      }
+    }
+  ]
+}
