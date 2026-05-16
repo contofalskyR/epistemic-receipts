@@ -61,6 +61,7 @@ Raw adverse event records (individual report-level data) are background-tier. Us
 | 6 | `ncbi_gene_v1` | `ingest-ncbi-gene.ts` | — | — | NCBI gene entries |
 | 7 | `nih_clinical_trials_v1` | `ingest-nih-clinical-trials.ts` | — | — | ClinicalTrials.gov |
 | 8 | `faers_normalized_drugs_v1` | `ingest-faers-current-drugs.ts` | 995 | 2026-05-13 | Drug-level aggregate AE counts, openFDA generic_name.exact, 1,000-drug cap |
+| 9 | `sec_edgar_v1` | `ingest-sec-edgar.ts` | — | — | SEC EDGAR historically significant filings — Enron, WorldCom/MCI, Lehman, Boeing, GE |
 
 **Pipeline 5 (`uspto_v1`) retired 2026-05-12** — see Known-Bad Pipelines.
 <!-- END:active-pipelines -->

@@ -12,14 +12,13 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 - [x] Pipeline 4 — (internal — see git log)
 - [x] Pipeline 5 — USPTO Patents (hardcoded curated list; audit in progress)
 - [x] Pipeline 6 — Astronomy (NASA TAP exoplanets + IAU resolutions + solar system bodies)
+- [x] Pipeline 7 – FDA Adverse Event Reporting System (FAERS)
 
 ---
 
 ## Tier 1 — High volume, clean APIs, strong editorial fit
 
-- [ ] **SEC EDGAR** — every public company filing since the 1990s. 10-Ks, 10-Qs, 8-Ks, S-1s, executive compensation, insider transactions. Free API. HARD_FACT shape: "Company X filed a 10-K on date Y reporting revenue of Z." Volume: tens of thousands of filings/year, decades of history. Strengthens corporate accountability case studies — Enron, Theranos, FTX, pharma financial disclosures vs public claims.
-
-- [ ] **FDA Adverse Event Reporting System (FAERS)** — every reported adverse event for every FDA-approved drug. Live API. HARD_FACT: "Adverse event X was reported for drug Y on date Z." Volume: millions of records. Strengthens Ozempic, smoking, opioid, Vioxx-era case studies. Direct sibling to existing OpenFDA pipeline.
+- [x] **SEC EDGAR** — Pipeline 9 (`sec_edgar_v1`). Curated historically significant filings: Enron, WorldCom/MCI, Lehman Brothers, Boeing (737 MAX), General Electric. 379 filings (8-Ks, 10-Ks, 10-Qs), all CIKs verified against live EDGAR API. Dry-run complete 2026-05-16. Awaiting production run approval.
 
 - [ ] **WHO ICTRP / EU Clinical Trials Register** — non-US clinical trials, complementing ClinicalTrials.gov. API exists. Volume: tens of thousands of trials. Catches trials missed by US registry — global pharma history, hydroxychloroquine/ivermectin international coverage, non-US vaccine development.
 
