@@ -38,7 +38,7 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 - [ ] **OpenSecrets / FEC** — campaign finance, lobbying disclosures. API live. Volume: massive. Tobacco industry lobbying, pharma PACs, climate denial funding. Anchors institutional-influence claims.
 
-- [x] **USGS Earthquake Hazards Program** — Pipeline 12 (`usgs_eq_v1`). M6.5+ earthquakes since 1900, ~4,700 events. No auth required. Script written 2026-05-16. Dry-run pending.
+- [x] **USGS Earthquake Hazards Program** — Pipeline 12 (`usgs_eq_v1`). M6.5+ earthquakes since 1900, ~4,700 events. No auth required. Dry-run complete 2026-05-17 (4,696 candidates: 17 exceptional M8.5+, 1,590 great M7.0–8.4, 3,089 major M6.5–6.9). Awaiting production run approval.
 
 ---
 

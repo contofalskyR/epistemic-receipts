@@ -64,7 +64,7 @@ Raw adverse event records (individual report-level data) are background-tier. Us
 | 9 | `sec_edgar_v1` | `ingest-sec-edgar.ts` | — | — | SEC EDGAR historically significant filings — Enron, WorldCom/MCI, Lehman, Boeing, GE |
 | 10 | `nobel_v1` | `ingest-nobel-prizes.ts` | — | — | Nobel Prize laureates 1901–2024, all categories, Nobel Foundation API |
 | 11 | `icd11_v1` | `ingest-icd11.ts` | — | — | WHO ICD-11 MMS disease classifications, 2024-01 release. Requires ICD_API_CLIENT_ID + ICD_API_CLIENT_SECRET env vars. |
-| 12 | `usgs_eq_v1` | `ingest-usgs-earthquakes.ts` | — | — | USGS M6.5+ earthquakes since 1900 (~4,700 events). No auth required. Dry-run pending. |
+| 12 | `usgs_eq_v1` | `ingest-usgs-earthquakes.ts` | — | — | USGS M6.5+ earthquakes since 1900 (~4,700 events). No auth required. Dry-run complete 2026-05-17 (4,696 candidates). Awaiting production run approval. |
 | 13 | `crossref_retractions_v1` | `ingest-retractions.ts` | — | — | Retracted papers via CrossRef (~26,500 records). No auth required. Dry-run pending. |
 | 14 | `fr_rules_v1` | `ingest-federal-register.ts` | — | — | Federal Register significant final rules (EO 12866): EPA, FDA, OSHA, CMS, DEA, FTC, FCC since 1994. ~1,921 records. No auth required. Dry-run complete 2026-05-17. Awaiting production run approval. |
 

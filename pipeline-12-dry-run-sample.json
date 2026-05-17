@@ -1,0 +1,213 @@
+{
+  "runDate": "2026-05-17T06:11:18.483Z",
+  "minMagnitude": 6.5,
+  "since": "1900-01-01",
+  "totalCandidates": 4696,
+  "tierBreakdown": {
+    "major": 3089,
+    "great": 1590,
+    "exceptional": 17
+  },
+  "sample": [
+    {
+      "claimText": "A magnitude 7.0 MS earthquake struck Southern Sumatra, Indonesia on 1900-01-05.",
+      "externalId": "usgs_eq_cent19000105190000000",
+      "magnitude": 7,
+      "magType": "ms",
+      "place": "Southern Sumatra, Indonesia",
+      "date": "1900-01-05T19:00:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000105190000000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.0 MS earthquake struck Bismarck Sea on 1900-01-11.",
+      "externalId": "usgs_eq_cent19000111090700000",
+      "magnitude": 7,
+      "magType": "ms",
+      "place": "Bismarck Sea",
+      "date": "1900-01-11T09:07:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000111090700000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.3 MW earthquake struck Jalisco, Mexico on 1900-01-20.",
+      "externalId": "usgs_eq_cent19000120063300000",
+      "magnitude": 7.3,
+      "magType": "mw",
+      "place": "Jalisco, Mexico",
+      "date": "1900-01-20T06:33:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000120063300000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.5 MJ earthquake struck Sea of Okhotsk on 1900-01-31.",
+      "externalId": "usgs_eq_cent19000131192200000",
+      "magnitude": 7.5,
+      "magType": "mj",
+      "place": "Sea of Okhotsk",
+      "date": "1900-01-31T19:22:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000131192200000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.0 MJ earthquake struck Northern Honshu, Japan on 1900-05-11.",
+      "externalId": "usgs_eq_cent19000511172300000",
+      "magnitude": 7,
+      "magType": "mj",
+      "place": "Northern Honshu, Japan",
+      "date": "1900-05-11T17:23:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000511172300000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.2 MW earthquake struck Costa Rica on 1900-06-21.",
+      "externalId": "usgs_eq_cent19000621205200000",
+      "magnitude": 7.2,
+      "magType": "mw",
+      "place": "Costa Rica",
+      "date": "1900-06-21T20:52:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000621205200000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.6 MW earthquake struck Santa Cruz Islands on 1900-07-29.",
+      "externalId": "usgs_eq_cent19000729065900000",
+      "magnitude": 7.6,
+      "magType": "mw",
+      "place": "Santa Cruz Islands",
+      "date": "1900-07-29T06:59:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000729065900000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.1 MW earthquake struck Bismarck Sea on 1900-09-17.",
+      "externalId": "usgs_eq_cent19000917214500000",
+      "magnitude": 7.1,
+      "magType": "mw",
+      "place": "Bismarck Sea",
+      "date": "1900-09-17T21:45:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19000917214500000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.9 MW earthquake struck Kodiak Island region, Alaska on 1900-10-09.",
+      "externalId": "usgs_eq_official19001009122400000",
+      "magnitude": 7.86,
+      "magType": "mw",
+      "place": "Kodiak Island region, Alaska",
+      "date": "1900-10-09T12:28:30.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/official19001009122400000",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "A magnitude 7.7 MW earthquake struck Near the coast of Venezuela on 1900-10-29.",
+      "externalId": "usgs_eq_cent19001029091100000",
+      "magnitude": 7.7,
+      "magType": "mw",
+      "place": "Near the coast of Venezuela",
+      "date": "1900-10-29T09:11:00.000Z",
+      "magTier": "great",
+      "tsunami": false,
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "usgs_eq_v1",
+      "source": {
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/cent19001029091100000",
+        "methodologyType": "primary"
+      }
+    }
+  ]
+}
