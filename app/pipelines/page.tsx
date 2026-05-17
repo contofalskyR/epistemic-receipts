@@ -16,7 +16,7 @@ const PIPELINE_REGISTRY: PipelineMeta[] = [
   { tag: "sec_edgar_v1", description: "SEC EDGAR historically significant filings — Enron, WorldCom, Lehman, Boeing, GE", status: "awaiting-approval" },
   { tag: "nobel_v1", description: "Nobel Prize laureates 1901–2024, all categories, Nobel Foundation API", status: "awaiting-approval" },
   { tag: "icd11_v1", description: "WHO ICD-11 MMS disease classifications, 2024-01 release", status: "dry-run-pending", notes: "Requires ICD API credentials" },
-  { tag: "usgs_eq_v1", description: "USGS M6.5+ earthquakes since 1900 (~4,700 events)", status: "dry-run-pending" },
+  { tag: "usgs_eq_v1", description: "USGS M6.5+ earthquakes since 1900 (~4,700 events)", status: "awaiting-approval", notes: "4,696 candidates (17 exceptional M8.5+, 1,590 great M7.0–8.4, 3,089 major M6.5–6.9)" },
   { tag: "crossref_retractions_v1", description: "Retracted papers via CrossRef (~26,500 records)", status: "dry-run-pending" },
   { tag: "fr_rules_v1", description: "Federal Register significant final rules (EO 12866): EPA, FDA, OSHA, CMS, DEA, FTC, FCC since 1994", status: "awaiting-approval", notes: "~1,921 records" },
   { tag: "congress_bills_v1", description: "Bills, Congress.gov", status: "dry-run-pending" },
