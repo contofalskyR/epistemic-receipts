@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, useMemo, useCallback, Suspense } from "react";
+import { useEffect, useState, useRef, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
@@ -39,12 +39,19 @@ type SectionData = {
   pages: number;
 };
 
+type HomepageResponse = {
+  sections: Record<string, SectionData>;
+  meta: {
+    ingestedBySources: string[];
+    topics: { slug: string; name: string; domain: string }[];
+  };
+};
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const ALL_TYPES    = ["EMPIRICAL", "INSTITUTIONAL", "INTERPRETIVE", "HYBRID"] as const;
 const ALL_STATUSES = ["DISPUTED", "HARD_FACT", "NEVER_RESOLVES"] as const;
 const PAGE_SIZE    = 10;
-const SEARCH_LIMIT = 50;
 
 const STATUS_STYLE: Record<string, string> = {
   HARD_FACT:      "bg-green-900 text-green-300",
@@ -376,16 +383,9 @@ function HomeContent() {
   const router       = useRouter();
   const searchParams = useSearchParams();
 
-  // Cached claim list — fetched once on mount, never re-fetched on filter change
-  const [allClaims, setAllClaims] = useState<TopClaim[]>([]);
-  const [loading, setLoading]     = useState(true);
-
-  useEffect(() => {
-    fetch("/api/claims/homepage")
-      .then(r => r.json())
-      .then(d => { setAllClaims(d.claims ?? []); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, []); // mount only
+  // Server-driven data — re-fetched whenever URL params change
+  const [data, setData]       = useState<HomepageResponse | null>(null);
+  const [loading, setLoading] = useState(true);
 
   // Parse current URL filter state
   const urlQ              = searchParams.get("q") || "";
@@ -397,135 +397,39 @@ function HomeContent() {
   const urlSort           = searchParams.get("sort") || "recent";
   const urlTopics         = searchParams.get("topics")?.split(",").filter(Boolean) ?? [];
 
-  // Local search input, debounced into URL (doesn't trigger re-fetch)
+  // Re-fetch from server whenever URL params change
+  useEffect(() => {
+    setLoading(true);
+    const p = new URLSearchParams(searchParams.toString());
+    fetch(`/api/claims/homepage?${p.toString()}`)
+      .then(r => r.json())
+      .then((d: HomepageResponse) => { setData(d); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, [searchParams]);
+
+  // Local search input, debounced into URL
   const [searchInput, setSearchInput] = useState(urlQ);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => { setSearchInput(urlQ); }, [urlQ]);
 
-  // Per-section collapse (local only, resets when data changes)
+  // Per-section collapse (local only)
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
 
-  // ── Client-side filter + sort + paginate — all derived from cached allClaims ──
+  const sections       = data?.sections ?? {} as Record<string, SectionData>;
+  const isSearch       = urlQ.trim().length > 0;
 
-  const { sections, isSearch } = useMemo(() => {
-    const q      = urlQ.trim().toLowerCase();
-    const isSearchActive = q.length > 0;
+  const ingestedBySources = data?.meta.ingestedBySources ?? [];
+  const allTopicOptions   = data?.meta.topics ?? [];
 
-    // Exclude DEPRECATED by default unless toggle is on
-    let filtered = urlShowDeprecated
-      ? allClaims
-      : allClaims.filter(c => c.verificationStatus !== "DEPRECATED");
-
-    // Verification status
-    if (urlVerification === "verified")    filtered = filtered.filter(c => c.verificationStatus === "VERIFIED");
-    if (urlVerification === "provisional") filtered = filtered.filter(c => c.verificationStatus === "PROVISIONAL");
-    if (urlVerification === "deprecated")  filtered = allClaims.filter(c => c.verificationStatus === "DEPRECATED");
-
-    // Type
-    if (urlTypes.length < ALL_TYPES.length) {
-      filtered = filtered.filter(c => urlTypes.includes(c.claimType));
-    }
-
-    // Status
-    if (urlStatuses.length < ALL_STATUSES.length) {
-      filtered = filtered.filter(c => urlStatuses.includes(c.currentStatus));
-    }
-
-    // Ingestion source
-    if (urlSource !== "all") {
-      filtered = filtered.filter(c => c.ingestedBy === urlSource);
-    }
-
-    // Topic filter
-    if (urlTopics.length > 0) {
-      filtered = filtered.filter(c =>
-        c.topics.some(ct => urlTopics.includes(ct.topic.slug))
-      );
-    }
-
-    // Search — substring match across claim text, child text, source names/URLs, threshold notes
-    if (q) {
-      filtered = filtered.filter(c =>
-        c.text.toLowerCase().includes(q) ||
-        c.children.some(ch => ch.text.toLowerCase().includes(q)) ||
-        c.edges.some(e =>
-          e.source.name.toLowerCase().includes(q) ||
-          (e.source.url?.toLowerCase().includes(q) ?? false)
-        ) ||
-        c.thresholdEvents.some(te => te.note?.toLowerCase().includes(q) ?? false)
-      );
-    }
-
-    // Sort
-    const sorted = [...filtered].sort((a, b) => {
-      switch (urlSort) {
-        case "oldest_emerged":
-          if (!a.claimEmergedAt) return 1;
-          if (!b.claimEmergedAt) return -1;
-          return a.claimEmergedAt < b.claimEmergedAt ? -1 : 1;
-        case "newest_emerged":
-          if (!a.claimEmergedAt) return 1;
-          if (!b.claimEmergedAt) return -1;
-          return a.claimEmergedAt > b.claimEmergedAt ? -1 : 1;
-        case "most_sources":
-        case "most_edges":
-          return b._count.edges - a._count.edges;
-        default: // recent
-          return b.createdAt > a.createdAt ? -1 : 1;
-      }
-    });
-
-    // Build per-type sections with pagination
-    const result: Record<string, SectionData> = {};
-    for (const type of ALL_TYPES) {
-      const typeClaims = sorted.filter(c => c.claimType === type);
-      const total      = typeClaims.length;
-      if (isSearchActive) {
-        result[type] = { total, claims: typeClaims.slice(0, SEARCH_LIMIT), page: 1, pages: 1 };
-      } else {
-        const page  = Math.max(1, parseInt(searchParams.get(`${type.toLowerCase()}_page`) || "1", 10));
-        const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-        const safePg = Math.min(page, pages);
-        result[type] = {
-          total,
-          claims: typeClaims.slice((safePg - 1) * PAGE_SIZE, safePg * PAGE_SIZE),
-          page: safePg,
-          pages,
-        };
-      }
-    }
-
-    return { sections: result, isSearch: isSearchActive };
-  // searchParams as a dep: stable reference when URL unchanged, changes when URL changes
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allClaims, searchParams, urlQ, urlTypes.join(","), urlStatuses.join(","), urlVerification, urlShowDeprecated, urlSource, urlSort, urlTopics.join(",")]);
-
-  // Distinct ingestion sources for filter dropdown, derived client-side
-  const ingestedBySources = useMemo(
-    () => [...new Set(allClaims.map(c => c.ingestedBy))].sort(),
-    [allClaims]
-  );
-
-  // All topics present in the loaded claims, for the filter dropdown
-  const allTopicOptions = useMemo(() => {
-    const seen = new Map<string, { slug: string; name: string; domain: string }>();
-    for (const c of allClaims) {
-      for (const ct of c.topics) {
-        if (!seen.has(ct.topic.slug)) seen.set(ct.topic.slug, ct.topic);
-      }
-    }
-    return [...seen.values()].sort((a, b) => a.name.localeCompare(b.name));
-  }, [allClaims]);
-
-  // Auto-collapse sections with > 10 results on first data load
+  // Auto-collapse sections with > PAGE_SIZE results on first data load
   useEffect(() => {
-    if (!allClaims.length) return;
+    if (!data) return;
     const next: Record<string, boolean> = {};
     for (const type of ALL_TYPES) {
-      next[type] = allClaims.filter(c => c.claimType === type).length > 10;
+      next[type] = (data.sections[type]?.total ?? 0) > PAGE_SIZE;
     }
     setCollapsed(next);
-  }, [allClaims]);
+  }, [data]);
 
   // ── URL helpers ──
 
