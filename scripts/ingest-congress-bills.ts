@@ -1,9 +1,10 @@
 // Pipeline 1 — Congress Enacted Bills
 // Dataset: Congress.gov API (api.congress.gov/v3) — requires CONGRESS_API_KEY env var.
-// Scope: Enacted bills (HR, S, HJRES, SJRES) from 113th–119th Congress (2013–present).
+// Scope: Enacted bills (HR, S, HJRES, SJRES). Default 93rd–119th Congress (1973–present).
+// Each bill gets three topic tags: root, per-congress, and presidential era.
 // Run: npx tsx scripts/ingest-congress-bills.ts --dry-run
 //      npx tsx scripts/ingest-congress-bills.ts --sample 10
-//      npx tsx scripts/ingest-congress-bills.ts --full [--from 113] [--to 119] [--limit N] [--verbose]
+//      npx tsx scripts/ingest-congress-bills.ts --full [--from 93] [--to 119] [--limit N] [--verbose]
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
@@ -16,8 +17,39 @@ const API_KEY = process.env.CONGRESS_API_KEY
 if (!API_KEY) { console.error('CONGRESS_API_KEY not set'); process.exit(1) }
 
 const PAGE_SIZE = 250
-const DEFAULT_FROM = 113
+const DEFAULT_FROM = 93
 const DEFAULT_TO = 119
+
+// ── Presidential era mapping ──────────────────────────────────────────────────
+
+interface PresidentialEra {
+  slug: string
+  name: string
+  presidents: string   // display label
+  congresses: number[] // inclusive congress numbers
+}
+
+const PRESIDENTIAL_ERAS: PresidentialEra[] = [
+  { slug: 'era-nixon-ford',   name: 'Nixon–Ford Era',      presidents: 'Nixon / Ford',   congresses: [93, 94]                   },
+  { slug: 'era-carter',       name: 'Carter Era',           presidents: 'Carter',         congresses: [95, 96]                   },
+  { slug: 'era-reagan',       name: 'Reagan Era',           presidents: 'Reagan',         congresses: [97, 98, 99, 100]          },
+  { slug: 'era-bush-sr',      name: 'Bush Sr. Era',         presidents: 'Bush Sr.',       congresses: [101, 102]                 },
+  { slug: 'era-clinton',      name: 'Clinton Era',          presidents: 'Clinton',        congresses: [103, 104, 105, 106]       },
+  { slug: 'era-bush-jr',      name: 'Bush Jr. Era',         presidents: 'Bush Jr.',       congresses: [107, 108, 109, 110]       },
+  { slug: 'era-obama',        name: 'Obama Era',            presidents: 'Obama',          congresses: [111, 112, 113, 114]       },
+  { slug: 'era-trump-1',      name: 'Trump 1st Term',       presidents: 'Trump (1st)',    congresses: [115, 116]                 },
+  { slug: 'era-biden',        name: 'Biden Era',            presidents: 'Biden',          congresses: [117, 118]                 },
+  { slug: 'era-trump-2',      name: 'Trump 2nd Term',       presidents: 'Trump (2nd)',    congresses: [119]                      },
+]
+
+const eraByCongressMap = new Map<number, PresidentialEra>()
+for (const era of PRESIDENTIAL_ERAS) {
+  for (const c of era.congresses) eraByCongressMap.set(c, era)
+}
+
+function eraForCongress(congress: number): PresidentialEra | null {
+  return eraByCongressMap.get(congress) ?? null
+}
 
 // Bill types that can become public law
 const BILL_TYPES = ['hr', 's', 'hjres', 'sjres'] as const
@@ -223,6 +255,7 @@ async function ensureTopic(tx: TxClient, slug: string, name: string, domain: str
 
 async function ensureTopicsForRecord(tx: TxClient, rec: CandidateRecord): Promise<string[]> {
   const rootId = await ensureTopic(tx, 'congress-enacted-bills', 'Congress — Enacted Bills', 'government')
+
   const congressSlug = `congress-${rec.congress}th-enacted`
   const congressId = await ensureTopic(
     tx,
@@ -231,7 +264,22 @@ async function ensureTopicsForRecord(tx: TxClient, rec: CandidateRecord): Promis
     'government',
     'congress-enacted-bills',
   )
-  return [rootId, congressId]
+
+  const topicIds = [rootId, congressId]
+
+  const era = eraForCongress(rec.congress)
+  if (era) {
+    const eraId = await ensureTopic(
+      tx,
+      era.slug,
+      `${era.name} — Enacted Legislation`,
+      'government',
+      'congress-enacted-bills',
+    )
+    topicIds.push(eraId)
+  }
+
+  return topicIds
 }
 
 // ── Core: write one record ────────────────────────────────────────────────────
