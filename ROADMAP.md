@@ -24,7 +24,7 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 - [ ] **Congress.gov / GovTrack** — every bill, vote, sponsor, cosponsor, committee action. API live. HARD_FACT: "Senator X voted Y on bill Z on date W." Volume: massive — every roll call vote since 1990s. Voting records on public health legislation, tobacco regulation, climate, confirmation votes. Pairs with SCOTUS for legislative-judicial axis.
 
-- [ ] **Federal Register** — every federal agency rule, proposed rule, notice. API live. Volume: ~80,000 documents/year. EPA rulemaking, FDA guidance, OSHA standards. Completes the executive-branch layer alongside SCOTUS (judicial) and Congress (legislative).
+- [x] **Federal Register** — Pipeline 14 (`fr_rules_v1`). Significant final rules (EO 12866) from EPA, FDA, OSHA, CMS, DEA, FTC, FCC since 1994. ~1,921 records. No auth required. Dry-run complete 2026-05-17. Awaiting production run approval.
 
 ---
 
@@ -38,7 +38,7 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 - [ ] **OpenSecrets / FEC** — campaign finance, lobbying disclosures. API live. Volume: massive. Tobacco industry lobbying, pharma PACs, climate denial funding. Anchors institutional-influence claims.
 
-- [ ] **USGS Earthquake Hazards Program** — every recorded earthquake, GeoJSON API. Volume: hundreds of thousands. Niche unless geology/disaster case study built. Pure HARD_FACT, trivial to ingest.
+- [x] **USGS Earthquake Hazards Program** — Pipeline 12 (`usgs_eq_v1`). M6.5+ earthquakes since 1900, ~4,700 events. No auth required. Dry-run complete 2026-05-17 (4,696 candidates: 17 exceptional M8.5+, 1,590 great M7.0–8.4, 3,089 major M6.5–6.9). Awaiting production run approval.
 
 ---
 
@@ -46,7 +46,7 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 - [ ] **Wikidata** — structured data on millions of entities. SPARQL endpoint. Use as cross-reference layer for entities other pipelines already created (linking Source records to Wikidata Q-numbers), not as primary ingestion source. Quality variance too high to grandfather as HARD_FACT.
 
-- [ ] **ICD-10 / ICD-11 codes (WHO)** — every disease classification code with name and hierarchy. Volume: ~70,000 codes. Medical taxonomy substrate. Smaller pipeline, ~one afternoon.
+- [x] **ICD-11 codes (WHO)** — Pipeline 11 (`icd11_v1`). WHO ICD-11 MMS linearization, 2024-01 release. Blocks + categories across all 26 chapters. Script written 2026-05-16. Requires ICD API credentials (free registration). Dry-run pending.
 
 - [ ] **OECD / World Bank statistical APIs** — country-level economic and social indicators. Comparative public health (smoking rates by country, drug pricing internationally), economic context for policy claims.
 
@@ -56,7 +56,7 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 - [x] **Nobel Prize records** — Pipeline 10 (`nobel_v1`). 1,026 laureate records (1901–2024), all 6 categories. Nobel Foundation API. Dry-run complete 2026-05-16. Awaiting production run approval.
 
-- [ ] **Retraction Watch Database** — every retracted paper. Free API key available. Volume: ~50,000. High editorial value for case studies where consensus shifted because of fabricated research. Pairs with PubMed.
+- [x] **Retraction Watch / CrossRef Retractions** — Pipeline 13 (`crossref_retractions_v1`). Publisher-reported retractions via CrossRef API (~26,500 records). Note: Retraction Watch dedicated API (api.retractionwatch.com) was unreachable; CrossRef is the primary DOI authority and equally verifiable. No auth required. Script written 2026-05-16. Dry-run pending.
 
 ---
 

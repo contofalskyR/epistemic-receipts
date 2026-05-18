@@ -1,0 +1,295 @@
+{
+  "runDate": "2026-05-17T06:05:32.605Z",
+  "since": "1994-01-01",
+  "agencies": [
+    "EPA",
+    "FDA",
+    "OSHA",
+    "CMS",
+    "DEA",
+    "FTC",
+    "FCC"
+  ],
+  "totalCandidates": 1921,
+  "agencyBreakdown": {
+    "EPA": 841,
+    "FDA": 248,
+    "OSHA": 144,
+    "CMS": 586,
+    "DEA": 78,
+    "FTC": 22,
+    "FCC": 2
+  },
+  "sample": [
+    {
+      "claimText": "The EPA published \"Extension of Postponement of Effectiveness for Certain Provisions of Trichloroethylene (TCE); Regulation Under the Toxic Substances Control Act (TSCA)\" as a final rule on 2026-05-05. The Environmental Protection Agency (EPA or Agency) is extending the postponement of the effectiveness of certain regulatory provisions of the final rule entitled \"Trichloroethylene (TCE); Regulation Under the Toxic Sub…",
+      "externalId": "fr_rule_2026-08750",
+      "documentNumber": "2026-08750",
+      "agency": "EPA",
+      "publicationDate": "2026-05-05",
+      "effectiveDate": null,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/05/05/2026-08750/extension-of-postponement-of-effectiveness-for-certain-provisions-of-trichloroethylene-tce",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"National Emission Standards for Hazardous Air Pollutants: Coal- and Oil-Fired Electric Utility Steam Generating Units: Final Repeal; Correction\" as a final rule on 2026-04-16, effective 2026-04-27. The U.",
+      "externalId": "fr_rule_2026-07396",
+      "documentNumber": "2026-07396",
+      "agency": "EPA",
+      "publicationDate": "2026-04-16",
+      "effectiveDate": "2026-04-27",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/04/16/2026-07396/national-emission-standards-for-hazardous-air-pollutants-coal--and-oil-fired-electric-utility-steam",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Reconsideration of Standards of Performance for New, Reconstructed, and Modified Sources and Emissions Guidelines for Existing Sources: Oil and Natural Gas Sector Climate Review\" as a final rule on 2026-04-09, effective 2026-06-08. The U.",
+      "externalId": "fr_rule_2026-06808",
+      "documentNumber": "2026-06808",
+      "agency": "EPA",
+      "publicationDate": "2026-04-09",
+      "effectiveDate": "2026-06-08",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/04/09/2026-06808/reconsideration-of-standards-of-performance-for-new-reconstructed-and-modified-sources-and-emissions",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Renewable Fuel Standard (RFS) Program: Standards for 2026 and 2027, Partial Waiver of 2025 Cellulosic Biofuel Volume Requirement, and Other Changes\" as a final rule on 2026-04-01, effective 2026-06-15. Under the Clean Air Act (CAA), the U.",
+      "externalId": "fr_rule_2026-06275",
+      "documentNumber": "2026-06275",
+      "agency": "EPA",
+      "publicationDate": "2026-04-01",
+      "effectiveDate": "2026-06-15",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/04/01/2026-06275/renewable-fuel-standard-rfs-program-standards-for-2026-and-2027-partial-waiver-of-2025-cellulosic",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Standards of Performance for New Stationary Sources and Emission Guidelines for Existing Sources: Large Municipal Waste Combustors Voluntary Remand Response and Five-Year Review\" as a final rule on 2026-03-10, effective 2026-05-11. The U.",
+      "externalId": "fr_rule_2026-04646",
+      "documentNumber": "2026-04646",
+      "agency": "EPA",
+      "publicationDate": "2026-03-10",
+      "effectiveDate": "2026-05-11",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/03/10/2026-04646/standards-of-performance-for-new-stationary-sources-and-emission-guidelines-for-existing-sources",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"National Emission Standards for Hazardous Air Pollutants: Coal- and Oil-Fired Electric Utility Steam Generating Units: Final Repeal\" as a final rule on 2026-02-24, effective 2026-04-27. The U.",
+      "externalId": "fr_rule_2026-03638",
+      "documentNumber": "2026-03638",
+      "agency": "EPA",
+      "publicationDate": "2026-02-24",
+      "effectiveDate": "2026-04-27",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/02/24/2026-03638/national-emission-standards-for-hazardous-air-pollutants-coal--and-oil-fired-electric-utility-steam",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Extension of Postponement of Effectiveness for Certain Provisions of Trichloroethylene (TCE); Regulation Under the Toxic Substances Control Act (TSCA)\" as a final rule on 2026-02-18. The Environmental Protection Agency (EPA or Agency) is extending the postponement of the effectiveness of certain regulatory provisions of the final rule entitled \"Trichloroethylene (TCE); Regulation Under the Toxic Sub…",
+      "externalId": "fr_rule_2026-03155",
+      "documentNumber": "2026-03155",
+      "agency": "EPA",
+      "publicationDate": "2026-02-18",
+      "effectiveDate": null,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/02/18/2026-03155/extension-of-postponement-of-effectiveness-for-certain-provisions-of-trichloroethylene-tce",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Rescission of the Greenhouse Gas Endangerment Finding and Motor Vehicle Greenhouse Gas Emission Standards Under the Clean Air Act\" as a final rule on 2026-02-18, effective 2026-04-20. In this action, the U.",
+      "externalId": "fr_rule_2026-03157",
+      "documentNumber": "2026-03157",
+      "agency": "EPA",
+      "publicationDate": "2026-02-18",
+      "effectiveDate": "2026-04-20",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/02/18/2026-03157/rescission-of-the-greenhouse-gas-endangerment-finding-and-motor-vehicle-greenhouse-gas-emission",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"New Source Performance Standards Review for Stationary Combustion Turbines and Stationary Gas Turbines\" as a final rule on 2026-01-15, effective 2026-01-15. The U.",
+      "externalId": "fr_rule_2026-00677",
+      "documentNumber": "2026-00677",
+      "agency": "EPA",
+      "publicationDate": "2026-01-15",
+      "effectiveDate": "2026-01-15",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2026/01/15/2026-00677/new-source-performance-standards-review-for-stationary-combustion-turbines-and-stationary-gas",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Oil and Natural Gas Sector Climate Review: Extension of Deadlines in Standards of Performance for New, Reconstructed, and Modified Sources and Emissions Guidelines for Existing Sources\" as a final rule on 2025-12-03, effective 2025-12-03. The U.",
+      "externalId": "fr_rule_2025-21788",
+      "documentNumber": "2025-21788",
+      "agency": "EPA",
+      "publicationDate": "2025-12-03",
+      "effectiveDate": "2025-12-03",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2025/12/03/2025-21788/oil-and-natural-gas-sector-climate-review-extension-of-deadlines-in-standards-of-performance-for-new",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Extension of Postponement of Effectiveness for Certain Provisions of Trichloroethylene (TCE); Regulation Under the Toxic Substances Control Act (TSCA)\" as a final rule on 2025-11-14, effective 2026-02-17. The Environmental Protection Agency (EPA or Agency) is extending the postponement of the effectiveness of certain regulatory provisions of the final rule entitled \"Trichloroethylene (TCE); Regulation Under the Toxic Sub…",
+      "externalId": "fr_rule_2025-19887",
+      "documentNumber": "2025-19887",
+      "agency": "EPA",
+      "publicationDate": "2025-11-14",
+      "effectiveDate": "2026-02-17",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2025/11/14/2025-19887/extension-of-postponement-of-effectiveness-for-certain-provisions-of-trichloroethylene-tce",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Water Quality Standards To Protect Aquatic Life in the Delaware River\" as a final rule on 2025-09-29, effective 2025-11-28. The U.",
+      "externalId": "fr_rule_2025-18816",
+      "documentNumber": "2025-18816",
+      "agency": "EPA",
+      "publicationDate": "2025-09-29",
+      "effectiveDate": "2025-11-28",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2025/09/29/2025-18816/water-quality-standards-to-protect-aquatic-life-in-the-delaware-river",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Clean Water Act Effluent Limitations Guidelines and Standards for the Meat and Poultry Products Point Source Category\" as a final rule on 2025-09-03. The United States Environmental Protection Agency (the EPA or Agency) is withdrawing the proposed rule entitled \"Clean Water Act Effluent Limitations Guidelines and Standards for the Meat and Poultry Products Point Sour…",
+      "externalId": "fr_rule_2025-16868",
+      "documentNumber": "2025-16868",
+      "agency": "EPA",
+      "publicationDate": "2025-09-03",
+      "effectiveDate": null,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2025/09/03/2025-16868/clean-water-act-effluent-limitations-guidelines-and-standards-for-the-meat-and-poultry-products",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Phasedown of Hydrofluorocarbons: Review and Renewal of Eligibility for Application-Specific Allowances\" as a final rule on 2025-08-26, effective 2025-09-25. The U.",
+      "externalId": "fr_rule_2025-16357",
+      "documentNumber": "2025-16357",
+      "agency": "EPA",
+      "publicationDate": "2025-08-26",
+      "effectiveDate": "2025-09-25",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2025/08/26/2025-16357/phasedown-of-hydrofluorocarbons-review-and-renewal-of-eligibility-for-application-specific",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "The EPA published \"Extension of Postponement of Effectiveness for Certain Provisions of Trichloroethylene (TCE); Regulation Under the Toxic Substances Control Act (TSCA)\" as a final rule on 2025-08-20. The Environmental Protection Agency (EPA or Agency) is extending the postponement of the effectiveness of certain regulatory provisions of the final rule entitled \"Trichloroethylene (TCE); Regulation Under the Toxic Sub…",
+      "externalId": "fr_rule_2025-15885",
+      "documentNumber": "2025-15885",
+      "agency": "EPA",
+      "publicationDate": "2025-08-20",
+      "effectiveDate": null,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "fr_rules_v1",
+      "source": {
+        "url": "https://www.federalregister.gov/documents/2025/08/20/2025-15885/extension-of-postponement-of-effectiveness-for-certain-provisions-of-trichloroethylene-tce",
+        "methodologyType": "primary"
+      }
+    }
+  ]
+}
