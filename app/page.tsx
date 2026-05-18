@@ -525,6 +525,16 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 18, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">+205</span> U.S. Congress enacted bills — full text, sponsor, committees, vote record (Pipeline 1)</li>
+            <li><span className="text-gray-400">Federal Register</span> significant final rules added — rulemaking records with agency, docket, and effective dates (Pipeline 14)</li>
+            <li><span className="text-gray-400">/pipelines</span> status page launched — live pipeline counts and audit state</li>
+            <li><span className="text-gray-400">Homepage</span> rebuilt with server-side filtering and pagination for 47k-claim scale</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 13, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">+995</span> FAERS drug-level adverse event counts — openFDA generic_name normalization, 1,000-drug cap, tagged adverse-events (Pipeline 8)</li>
