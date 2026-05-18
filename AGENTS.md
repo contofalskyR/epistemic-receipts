@@ -54,7 +54,7 @@ Raw adverse event records (individual report-level data) are background-tier. Us
 
 | # | Ingester tag | Script | Claims | Run date | Notes |
 |---|---|---|---|---|---|
-| 1 | `congress_bills_v1` | `ingest-congress-bills.ts` | — | — | Bills, Congress.gov |
+| 1 | `congress_bills_v1` | `ingest-congress-bills.ts` | 205 | 2026-05-18 | Enacted bills 113th–119th Congress (HR, S, HJRES, SJRES). Requires CONGRESS_API_KEY. |
 | 2 | `cr_unsc_v1` | `ingest-cr-unsc.ts` | — | — | UN Security Council resolutions |
 | 3 | `genbank_v1` | `ingest-genbank.ts` | — | — | GenBank accessions, NCBI |
 | 4 | `scotus_v1` | `ingest-scotus.ts` | — | — | SCOTUS opinions |
