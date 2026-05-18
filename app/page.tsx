@@ -527,8 +527,12 @@ function HomeContent() {
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 18, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">+4,696</span> USGS M6.5+ earthquakes (1900–present) — epicenter, magnitude, depth, tsunami flag (Pipeline 12)</li>
+            <li><span className="text-gray-400">+1,915</span> Federal Register significant final rules — EPA, FDA, OSHA, CMS, DEA, FTC, FCC since 1994 (Pipeline 14)</li>
+            <li><span className="text-gray-400">+1,026</span> Nobel Prize laureates (1901–2024) — all six categories, Nobel Foundation API v2.1 (Pipeline 10)</li>
+            <li><span className="text-gray-400">+379</span> SEC EDGAR filings — Enron, WorldCom, Lehman, Boeing 737 MAX, GE Power (Pipeline 9)</li>
             <li><span className="text-gray-400">+205</span> U.S. Congress enacted bills — full text, sponsor, committees, vote record (Pipeline 1)</li>
-            <li><span className="text-gray-400">Federal Register</span> significant final rules added — rulemaking records with agency, docket, and effective dates (Pipeline 14)</li>
+            <li><span className="text-gray-400">662</span> stale Nobel records deprecated — prior script version with incompatible externalId scheme, superseded by Pipeline 10 re-ingestion, retained for audit trail</li>
             <li><span className="text-gray-400">/pipelines</span> status page launched — live pipeline counts and audit state</li>
             <li><span className="text-gray-400">Homepage</span> rebuilt with server-side filtering and pagination for 47k-claim scale</li>
           </ul>
