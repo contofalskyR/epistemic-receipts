@@ -237,8 +237,8 @@ async function ensureAllTopics(congresses: number[]): Promise<Map<string, string
   map.set('root', rootId)
   for (const c of congresses) {
     const id = await ensureTopic(
-      `congress-${c}`,
-      `${ordinalCongress(c)} Congress`,
+      `congress-${c}-enacted-bills`,
+      `${ordinalCongress(c)} Congress — Enacted Bills`,
       'government',
       'us-enacted-legislation',
     )
