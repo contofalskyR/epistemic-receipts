@@ -231,16 +231,44 @@ async function ensureTopic(slug: string, name: string, domain: string, parentSlu
   return created.id
 }
 
+// Maps each congress number to its president era slug and display name
+const PRESIDENT_ERA: Record<number, { slug: string; name: string }> = {
+  97: { slug: 'era-reagan',  name: 'Reagan Era — Enacted Legislation' },
+  98: { slug: 'era-reagan',  name: 'Reagan Era — Enacted Legislation' },
+  99: { slug: 'era-reagan',  name: 'Reagan Era — Enacted Legislation' },
+  100: { slug: 'era-reagan', name: 'Reagan Era — Enacted Legislation' },
+  101: { slug: 'era-bush-sr', name: 'Bush Sr. Era — Enacted Legislation' },
+  102: { slug: 'era-bush-sr', name: 'Bush Sr. Era — Enacted Legislation' },
+  103: { slug: 'era-clinton', name: 'Clinton Era — Enacted Legislation' },
+  104: { slug: 'era-clinton', name: 'Clinton Era — Enacted Legislation' },
+  105: { slug: 'era-clinton', name: 'Clinton Era — Enacted Legislation' },
+  106: { slug: 'era-clinton', name: 'Clinton Era — Enacted Legislation' },
+  107: { slug: 'era-bush-jr', name: 'Bush Jr. Era — Enacted Legislation' },
+  108: { slug: 'era-bush-jr', name: 'Bush Jr. Era — Enacted Legislation' },
+  109: { slug: 'era-bush-jr', name: 'Bush Jr. Era — Enacted Legislation' },
+  110: { slug: 'era-bush-jr', name: 'Bush Jr. Era — Enacted Legislation' },
+  111: { slug: 'era-obama',   name: 'Obama Era — Enacted Legislation' },
+  112: { slug: 'era-obama',   name: 'Obama Era — Enacted Legislation' },
+  113: { slug: 'era-obama',   name: 'Obama Era — Enacted Legislation' },
+  114: { slug: 'era-obama',   name: 'Obama Era — Enacted Legislation' },
+  115: { slug: 'era-trump-1', name: 'Trump Era (2017–21) — Enacted Legislation' },
+  116: { slug: 'era-trump-1', name: 'Trump Era (2017–21) — Enacted Legislation' },
+  117: { slug: 'era-biden',   name: 'Biden Era — Enacted Legislation' },
+  118: { slug: 'era-biden',   name: 'Biden Era — Enacted Legislation' },
+  119: { slug: 'era-trump-2', name: 'Trump Era (2025–) — Enacted Legislation' },
+}
+
 async function ensureAllTopics(congresses: number[]): Promise<Map<string, string>> {
-  const rootId = await ensureTopic('us-enacted-legislation', 'U.S. Enacted Legislation', 'government')
   const map = new Map<string, string>()
-  map.set('root', rootId)
   for (const c of congresses) {
+    const era = PRESIDENT_ERA[c]
+    if (!era) { console.warn(`No president era mapping for ${c}th Congress`); continue }
+    const eraId = await ensureTopic(era.slug, era.name, 'government', 'congress-enacted-bills')
     const id = await ensureTopic(
       `congress-${c}th-enacted`,
       `${ordinalCongress(c)} Congress — Enacted Bills`,
       'government',
-      'congress-enacted-bills',
+      era.slug,
     )
     map.set(String(c), id)
   }
