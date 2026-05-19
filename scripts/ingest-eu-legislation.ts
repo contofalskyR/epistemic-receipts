@@ -32,9 +32,14 @@ interface EPTerm {
   topicName: string
 }
 
-// Terms 1–7 (1979–2014) omitted: EUR-Lex joint-acts API does not surface pre-2014 data reliably.
-// Add back if a backfill source is found.
+// Terms 1–3 (1979–1994): co-decision procedure did not exist yet (pre-Maastricht).
+// No joint EP+Council acts exist — topics intentionally omitted.
+// Terms 4–10 (1994–present): co-decision/ordinary legislative procedure active.
 const EP_TERMS: EPTerm[] = [
+  { term: 4,  ordinal: '4th',  startYear: 1994, endYear: 1999, startDate: '1994-07-19', endDate: '1999-07-20', topicSlug: 'ep-term-4-legislation',  topicName: 'EP 4th Term (1994–1999) — Legislation' },
+  { term: 5,  ordinal: '5th',  startYear: 1999, endYear: 2004, startDate: '1999-07-20', endDate: '2004-07-20', topicSlug: 'ep-term-5-legislation',  topicName: 'EP 5th Term (1999–2004) — Legislation' },
+  { term: 6,  ordinal: '6th',  startYear: 2004, endYear: 2009, startDate: '2004-07-20', endDate: '2009-07-14', topicSlug: 'ep-term-6-legislation',  topicName: 'EP 6th Term (2004–2009) — Legislation' },
+  { term: 7,  ordinal: '7th',  startYear: 2009, endYear: 2014, startDate: '2009-07-14', endDate: '2014-07-01', topicSlug: 'ep-term-7-legislation',  topicName: 'EP 7th Term (2009–2014) — Legislation' },
   { term: 8,  ordinal: '8th',  startYear: 2014, endYear: 2019, startDate: '2014-07-01', endDate: '2019-07-02', topicSlug: 'ep-term-8-legislation',  topicName: 'EP 8th Term (2014–2019) — Legislation' },
   { term: 9,  ordinal: '9th',  startYear: 2019, endYear: 2024, startDate: '2019-07-02', endDate: '2024-07-16', topicSlug: 'ep-term-9-legislation',  topicName: 'EP 9th Term (2019–2024) — Legislation' },
   { term: 10, ordinal: '10th', startYear: 2024, endYear: 2099, startDate: '2024-07-16', endDate: '2099-12-31', topicSlug: 'ep-term-10-legislation', topicName: 'EP 10th Term (2024–2029) — Legislation' },
@@ -88,7 +93,7 @@ SELECT DISTINCT ?celex ?date ?title WHERE {
   ?expr cdm:expression_belongs_to_work ?work ;
         cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/ENG> .
   ?expr cdm:expression_title ?title .
-  FILTER(REGEX(STR(?title), "^(Regulation|Directive) \\\\(E[UEC]+\\\\) [0-9]{4}/[0-9]+ of the European Parliament and of the Council"))
+  FILTER(REGEX(STR(?title), "^(Regulation|Directive) .* of the European Parliament and of the Council"))
 }`
 
   const rows = await sparqlQuery(query)
