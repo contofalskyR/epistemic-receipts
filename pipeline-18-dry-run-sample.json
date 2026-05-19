@@ -1,0 +1,70 @@
+{
+  "runDate": "2026-05-19T17:26:13.501Z",
+  "mode": "dry-run",
+  "totalFetched": 3110,
+  "eraBreakdown": {
+    "sea": 3110
+  },
+  "sample": [
+    {
+      "externalId": "eec_council_31987r3764",
+      "claimText": "Council Regulation (EEC) No 3764/87 of 14 December 1987 fixing the guide prices for the fishery products listed in Annex II to Regulation (EEC) No 3796/81 for the 1988 fishing year",
+      "eraKey": "sea",
+      "date": "1987-12-14"
+    },
+    {
+      "externalId": "eec_council_31987r3981",
+      "claimText": "Council Regulation (EEC) No 3981/87 of 15 December 1987 allocating for 1988 certain catch quotas between the Member States for vessels fishing in the Faroese waters",
+      "eraKey": "sea",
+      "date": "1987-12-15"
+    },
+    {
+      "externalId": "eec_council_31987r1974",
+      "claimText": "Council Regulation (EEC) No 1974/87 of 2 July 1987 amending Regulation (EEC) No 727/70 on the common organization of the market in raw tobacco",
+      "eraKey": "sea",
+      "date": "1987-07-02"
+    },
+    {
+      "externalId": "eec_council_31987r1910",
+      "claimText": "Council Regulation (EEC) No 1910/87 of 2 July 1987 fixing the monthly price increases for paddy rice and husked rice for the 1987/88 marketing year",
+      "eraKey": "sea",
+      "date": "1987-07-02"
+    },
+    {
+      "externalId": "eec_council_31987r0996",
+      "claimText": "Council Regulation (EEC) No 996/87 of 23 March 1987 on the application of Decision No 3/86 of the EEC-Iceland Joint Committee supplementing and amending Protocol No 3 concerning the definition of the concept of ' originating products' and methods of administrative cooperation with a view to simplifying the documentation relating to evidence of origin",
+      "eraKey": "sea",
+      "date": "1987-03-23"
+    },
+    {
+      "externalId": "eec_council_31987r2199",
+      "claimText": "Council Regulation (EEC) No 2199/87 of 23 July 1987 amending Regulation (EEC) No 483/86 fixing the level of quantitative restrictions in Spain for certain fruit and vegetables coming from the Community as constituted on 31 December 1985",
+      "eraKey": "sea",
+      "date": "1987-07-23"
+    },
+    {
+      "externalId": "eec_council_31987r1897",
+      "claimText": "Council Regulation (EEC) No 1897/87 of 2 July 1987 amending and derogating from Regulation (EEC) No 985/68 laying down general rules for intervention on the market in butter and cream",
+      "eraKey": "sea",
+      "date": "1987-07-02"
+    },
+    {
+      "externalId": "eec_council_31987r4171",
+      "claimText": "Council Regulation (EEC) No 4171/87 of 21 December 1987 opening, allocating and providing for the administration of a Community tariff quota for wine of fresh grapes, falling within subheadings 2204 21 25, 2204 21 29, ex 2204 21 35 or ex 2204 21 39 of the combined nomenclature and originating in Cyprus (1988)",
+      "eraKey": "sea",
+      "date": "1987-12-21"
+    },
+    {
+      "externalId": "eec_council_31987r0500",
+      "claimText": "Council Regulation (EEC) No 500/87 of 16 February 1987 fixing catch possibilities for 1987 for certain fish stocks and groups of fish stocks in the Regulatory Area as defined in the NAFO Convention",
+      "eraKey": "sea",
+      "date": "1987-02-16"
+    },
+    {
+      "externalId": "eec_council_31987r3904",
+      "claimText": "Council Regulation (EEC) No 3904/87 of 22 December 1987 amending Regulation (EEC) No 804/68 on the common organization of the market in milk and milk products",
+      "eraKey": "sea",
+      "date": "1987-12-22"
+    }
+  ]
+}
