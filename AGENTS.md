@@ -77,6 +77,13 @@ Last synced from DB: 2026-05-19. Total claims (excl. deprecated): ~49,302.
 | `iau_v1` | — | 5 | IAU |
 | `icd11_v1` | `ingest-icd11.ts` | 0 | WHO ICD-11 MMS — script exists, never run. Requires ICD_API_CLIENT_ID + ICD_API_CLIENT_SECRET. |
 | `nato_official_texts_v1` | `ingest-nato-official-texts.ts` | 0 | NATO CPS official texts — script exists, dry-run validated 2026-05-19 against 481 Wayback-CDX-enumerated IDs. Awaiting approval before full ingest. |
+| `riksdag_v1` | `ingest-riksdag.ts` | 9989 | Swedish Riksdag bills and resolutions (1994/95–present) via riksdag.se open API |
+| `tweedekamer_v1` | `ingest-tweedekamer.ts` | 1530 | Dutch Tweede Kamer enacted legislation via OData API |
+| `bundestag_v1` | `ingest-bundestag.ts` | 6343 | German Bundestag enacted laws (Vorgänge type=Gesetzgebung) via DIP REST API |
+| `nationalrat_v1` | `ingest-nationalrat.ts` | 3868 | Austrian Nationalrat enacted laws (Beschlüsse des Nationalrates) via Parlament.gv.at |
+| `oireachtas_v1` | `ingest-oireachtas.ts` | 4040 | Irish Oireachtas enacted Acts via api.oireachtas.ie open API |
+| `canada_bills_v1` | `ingest-canada-bills.ts` | 1067 | Canadian federal bills with Royal Assent (35th–45th Parliament) via LEGISinfo API |
+| `uk_legislation_v1` | `ingest-uk-legislation.ts` | 0 | UK Public General Acts via legislation.gov.uk — ingestion in progress (2026-05-19) |
 
 **Pipeline 5 (`uspto_v1`) retired 2026-05-12** — 182 DEPRECATED records — see Known-Bad Pipelines.
 <!-- END:active-pipelines -->
