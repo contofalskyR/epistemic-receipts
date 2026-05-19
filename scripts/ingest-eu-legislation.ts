@@ -297,7 +297,7 @@ async function main() {
         const result = await writeRow(tx, row, topics.rootId, topics.termId)
         counts[result === 'ingested' ? 'ingested' : result === 'skipped' ? 'skipped' : 'errors']++
       }
-    })
+    }, { timeout: 30000 })
     if ((i / BATCH) % 10 === 0) {
       process.stdout.write(`  ${i + batch.length}/${deduped.length} processed...\r`)
     }

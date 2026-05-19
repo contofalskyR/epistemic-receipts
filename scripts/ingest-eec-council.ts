@@ -155,42 +155,65 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, rootId: string, eraI
   const existing = await tx.claim.findUnique({ where: { externalId: rec.externalId }, select: { id: true } })
   if (existing) return 'skipped'
 
-  const source = await tx.source.create({
-    data: {
-      name: `EUR-Lex: ${rec.celex}`,
-      url: rec.sourceUrl,
-      publishedAt: new Date(rec.date),
-      methodologyType: 'primary',
-      ingestedBy: INGESTED_BY,
-      humanReviewed: false,
-      autoApproved: false,
-      externalId: `eec_council_source_${rec.celex.toLowerCase()}`,
-    },
-  })
+  try {
+    const adoptedDate = new Date(rec.date + 'T00:00:00Z')
+    if (isNaN(adoptedDate.getTime())) throw new Error(`Invalid date: ${rec.date}`)
 
-  const claim = await tx.claim.create({
-    data: {
-      text: rec.claimText,
-      claimType: 'INSTITUTIONAL',
-      currentStatus: 'HARD_FACT',
-      verificationStatus: 'VERIFIED',
-      claimEmergedAt: new Date(rec.date),
-      claimEmergedPrecision: 'DAY',
-      ingestedBy: INGESTED_BY,
-      humanReviewed: false,
-      autoApproved: true,
-      externalId: rec.externalId,
-      sources: { connect: [{ id: source.id }] },
-      edges: {
-        create: [
-          { topicId: rootId },
-          { topicId: eraId },
-        ],
+    const source = await tx.source.upsert({
+      where: { externalId: `eec_council_source_${rec.celex.toLowerCase()}` },
+      update: {},
+      create: {
+        externalId: `eec_council_source_${rec.celex.toLowerCase()}`,
+        name: rec.celex,
+        url: rec.sourceUrl,
+        publishedAt: adoptedDate,
+        methodologyType: 'primary',
+        ingestedBy: INGESTED_BY,
       },
-    },
-  })
+    })
 
-  return 'ingested'
+    const claim = await tx.claim.create({
+      data: {
+        text: rec.claimText,
+        claimType: 'INSTITUTIONAL',
+        currentStatus: 'HARD_FACT',
+        verificationStatus: 'VERIFIED',
+        claimEmergedAt: adoptedDate,
+        claimEmergedPrecision: 'DAY',
+        ingestedBy: INGESTED_BY,
+        autoApproved: true,
+        externalId: rec.externalId,
+        metadata: {
+          celex: rec.celex,
+          eraKey: rec.eraKey,
+          sourceType: rec.celex.match(/^3[0-9]{4}L/) ? 'directive' : 'regulation',
+        },
+      },
+    })
+
+    await tx.claimTopic.createMany({
+      data: [
+        { claimId: claim.id, topicId: rootId },
+        { claimId: claim.id, topicId: eraId },
+      ],
+      skipDuplicates: true,
+    })
+
+    await tx.edge.create({
+      data: {
+        claimId: claim.id,
+        sourceId: source.id,
+        type: 'CITES',
+        ingestedBy: INGESTED_BY,
+        autoApproved: true,
+      },
+    })
+
+    return 'ingested'
+  } catch (err) {
+    console.error(`  Error writing ${rec.externalId}: ${err}`)
+    return 'failed'
+  }
 }
 
 // ── CLI ───────────────────────────────────────────────────────────────────────
@@ -201,9 +224,9 @@ async function main() {
   const isSample = args.includes('--sample')
   const isFull = args.includes('--full')
   const isVerbose = args.includes('--verbose')
-  const limitArg = args.find(a => a.startsWith('--limit ') || a === '--limit')
-  const limitVal = args[args.indexOf('--limit') + 1]
-  const limit = limitVal ? parseInt(limitVal) : Infinity
+  const limitIdx = args.indexOf('--limit')
+  const limitVal = limitIdx >= 0 ? args[limitIdx + 1] : null
+  const limit = (limitVal && !isNaN(parseInt(limitVal))) ? parseInt(limitVal) : Infinity
   const erasIdx = args.indexOf('--eras')
   const selectedEras = erasIdx >= 0 && args[erasIdx + 1]
     ? args[erasIdx + 1].split(',')
