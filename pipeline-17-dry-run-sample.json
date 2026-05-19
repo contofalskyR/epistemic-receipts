@@ -1,0 +1,183 @@
+{
+  "runDate": "2026-05-19T14:56:28.607Z",
+  "mode": "dry-run",
+  "cdxTotalIds": 481,
+  "docsFetched": 10,
+  "docsParsedOk": 9,
+  "notFound": 1,
+  "fetchErrors": 0,
+  "fetchErrorDetails": [],
+  "sample": [
+    {
+      "externalId": "nato_official_texts_1291",
+      "claimText": "NATO official text \"Chairman's statement\" was issued on 2008-06-13.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "1291",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_1291.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2008/06/13/chairmans-statement",
+        "title": "Chairman's statement",
+        "documentDate": "2008-06-13",
+        "documentDateRaw": "13 June 2008",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_1292",
+      "claimText": "NATO official text \"Joint Statement\" was issued on 2008-06-13.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "1292",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_1292.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2008/06/13/joint-statement",
+        "title": "Joint Statement",
+        "documentDate": "2008-06-13",
+        "documentDateRaw": "13 June 2008",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_8439",
+      "claimText": "NATO official text \"Statement\" was issued on 2008-03-28.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "8439",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_8439.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2008/03/28/statement",
+        "title": "Statement",
+        "documentDate": "2008-03-28",
+        "documentDateRaw": "28 March 2008",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_8443",
+      "claimText": "NATO official text \"Bucharest Summit Declaration\" was issued on 2008-04-03.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "8443",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_8443.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2008/04/03/bucharest-summit-declaration",
+        "title": "Bucharest Summit Declaration",
+        "documentDate": "2008-04-03",
+        "documentDateRaw": "03 April 2008",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_8444",
+      "claimText": "NATO official text \"ISAF’s Strategic Vision\" was issued on 2008-04-03.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "8444",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_8444.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2008/04/03/isafs-strategic-vision",
+        "title": "ISAF’s Strategic Vision",
+        "documentDate": "2008-04-03",
+        "documentDateRaw": "03 April 2008",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_8797",
+      "claimText": "NATO official text \"Speech\" was issued on 2007-11-09.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "8797",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_8797.htm",
+        "finalUrl": "https://www.nato.int/en/news-and-events/events/transcripts/2007/11/09/speech",
+        "title": "Speech",
+        "documentDate": "2007-11-09",
+        "documentDateRaw": "09 November 2007",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_8813",
+      "claimText": "NATO official text \"Remarks\" was issued on 2007-11-09.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "8813",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_8813.htm",
+        "finalUrl": "https://www.nato.int/en/news-and-events/events/transcripts/2007/11/09/remarks",
+        "title": "Remarks",
+        "documentDate": "2007-11-09",
+        "documentDateRaw": "09 November 2007",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_8962",
+      "claimText": "NATO official text \"Chairman’s statement\" was issued on 2008-04-04.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "8962",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_8962.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2008/04/04/chairmans-statement",
+        "title": "Chairman’s statement",
+        "documentDate": "2008-04-04",
+        "documentDateRaw": "04 April 2008",
+        "documentDatePrecision": "DAY"
+      }
+    },
+    {
+      "externalId": "nato_official_texts_16912",
+      "claimText": "NATO official text \"'The Atlantic Charter'\" was issued on 1941-08-14.",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "nato_official_texts_v1",
+      "metadata": {
+        "docId": "16912",
+        "cpsUrl": "https://www.nato.int/cps/en/natohq/official_texts_16912.htm",
+        "finalUrl": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/1941/08/14/the-atlantic-charter",
+        "title": "'The Atlantic Charter'",
+        "documentDate": "1941-08-14",
+        "documentDateRaw": "14 August 1941",
+        "documentDatePrecision": "DAY"
+      }
+    }
+  ]
+}

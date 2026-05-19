@@ -1,7 +1,7 @@
 // Pipeline 15 — Congress.gov Enacted Laws (congress_v1)
 // Dataset: Congress.gov API (api.congress.gov/v3) — requires CONGRESS_API_KEY.
 //          Falls back to DEMO_KEY (30 req/hr) if key is absent; dry-run only.
-// Scope: Enacted public laws from 118th and 119th Congress.
+// Scope: Enacted public laws from 97th–119th Congress.
 // Run: npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-congress.ts --dry-run
 //      npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-congress.ts --sample 10
 //      npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-congress.ts --full [--congress 118,119] [--limit N] [--verbose]
@@ -237,10 +237,10 @@ async function ensureAllTopics(congresses: number[]): Promise<Map<string, string
   map.set('root', rootId)
   for (const c of congresses) {
     const id = await ensureTopic(
-      `congress-${c}-enacted-bills`,
+      `congress-${c}th-enacted`,
       `${ordinalCongress(c)} Congress — Enacted Bills`,
       'government',
-      'us-enacted-legislation',
+      'congress-enacted-bills',
     )
     map.set(String(c), id)
   }

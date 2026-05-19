@@ -156,19 +156,21 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, rootId: string, term
   if (existing) return 'skipped'
 
   try {
-    const epTerm = EP_TERMS.find(t => t.term === rec.term)!
+    const epTerm = EP_TERMS.find(t => t.term === rec.term)
+    if (!epTerm) throw new Error(`EP term ${rec.term} not found`)
+
     const adoptedDate = new Date(rec.date + 'T00:00:00Z')
+    if (isNaN(adoptedDate.getTime())) throw new Error(`Invalid date: ${rec.date}`)
 
     const source = await tx.source.upsert({
       where: { externalId: `eu_legislation_source_${rec.celex.toLowerCase()}` },
       update: {},
       create: {
         externalId: `eu_legislation_source_${rec.celex.toLowerCase()}`,
+        name: rec.celex,
         url: rec.sourceUrl,
-        title: rec.celex,
-        description: `EUR-Lex: ${rec.celex}`,
-        publisher: 'EUR-Lex (Publications Office of the EU)',
         publishedAt: adoptedDate,
+        methodologyType: 'primary',
         ingestedBy: INGESTED_BY,
       },
     })
@@ -207,13 +209,15 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, rootId: string, term
       data: {
         claimId: claim.id,
         sourceId: source.id,
-        relationship: 'DOCUMENTED_BY',
-        description: `Official EUR-Lex record for ${rec.celex}`,
+        type: 'CITES',
+        ingestedBy: INGESTED_BY,
+        autoApproved: true,
       },
     })
 
     return 'ingested'
   } catch (err) {
+    console.error(`  Error writing ${rec.externalId}: ${err}`)
     return 'failed'
   }
 }

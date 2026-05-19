@@ -35,6 +35,11 @@ export async function GET() {
     }
   }
 
+  // Sort children numerically so "97th" < "100th" instead of alphabetical "100th" < "97th"
+  for (const node of byId.values()) {
+    node.children.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+  }
+
   const domains: Record<string, Node[]> = {};
   for (const root of roots) {
     if (!domains[root.domain]) domains[root.domain] = [];

@@ -52,23 +52,33 @@ Raw adverse event records (individual report-level data) are background-tier. Us
 <!-- BEGIN:active-pipelines -->
 # Active Pipeline Registry
 
-| # | Ingester tag | Script | Claims | Run date | Notes |
-|---|---|---|---|---|---|
-| 1 | `congress_bills_v1` | `ingest-congress-bills.ts` | 205 | 2026-05-18 | Enacted bills 113th–119th Congress (HR, S, HJRES, SJRES). Requires CONGRESS_API_KEY. |
-| 2 | `cr_unsc_v1` | `ingest-cr-unsc.ts` | — | — | UN Security Council resolutions |
-| 3 | `genbank_v1` | `ingest-genbank.ts` | — | — | GenBank accessions, NCBI |
-| 4 | `scotus_v1` | `ingest-scotus.ts` | — | — | SCOTUS opinions |
-| 6 | `ncbi_gene_v1` | `ingest-ncbi-gene.ts` | — | — | NCBI gene entries |
-| 7 | `nih_clinical_trials_v1` | `ingest-nih-clinical-trials.ts` | — | — | ClinicalTrials.gov |
-| 8 | `faers_normalized_drugs_v1` | `ingest-faers-current-drugs.ts` | 995 | 2026-05-13 | Drug-level aggregate AE counts, openFDA generic_name.exact, 1,000-drug cap |
-| 9 | `sec_edgar_v1` | `ingest-sec-edgar.ts` | — | — | SEC EDGAR historically significant filings — Enron, WorldCom/MCI, Lehman, Boeing, GE |
-| 10 | `nobel_v1` | `ingest-nobel-prizes.ts` | — | — | Nobel Prize laureates 1901–2024, all categories, Nobel Foundation API |
-| 11 | `icd11_v1` | `ingest-icd11.ts` | — | — | WHO ICD-11 MMS disease classifications, 2024-01 release. Requires ICD_API_CLIENT_ID + ICD_API_CLIENT_SECRET env vars. |
-| 12 | `usgs_eq_v1` | `ingest-usgs-earthquakes.ts` | — | — | USGS M6.5+ earthquakes since 1900 (~4,700 events). No auth required. Dry-run complete 2026-05-17 (4,696 candidates). Awaiting production run approval. |
-| 13 | `crossref_retractions_v1` | `ingest-retractions.ts` | — | — | Retracted papers via CrossRef (~26,500 records). No auth required. Dry-run pending. |
-| 14 | `fr_rules_v1` | `ingest-federal-register.ts` | — | — | Federal Register significant final rules (EO 12866): EPA, FDA, OSHA, CMS, DEA, FTC, FCC since 1994. ~1,921 records. No auth required. Dry-run complete 2026-05-17. Awaiting production run approval. |
+Last synced from DB: 2026-05-19. Total claims (excl. deprecated): ~49,302.
 
-**Pipeline 5 (`uspto_v1`) retired 2026-05-12** — see Known-Bad Pipelines.
+| Tag | Script | Claims | Notes |
+|---|---|---|---|
+| `crossref_retractions_v1` | `ingest-retractions.ts` | 26,595 | Retracted papers via CrossRef |
+| `nasa_exoplanet_v1` | `ingest-astronomy.ts` | 6,277 | NASA exoplanet archive |
+| `usgs_eq_v1` | `ingest-usgs-earthquakes.ts` | 4,696 | USGS M6.5+ earthquakes since 1900 |
+| `un_sc_resolutions_v1` | `ingest-un-sc-resolutions.ts` | 2,798 | UN Security Council resolutions |
+| `fr_rules_v1` | `ingest-federal-register.ts` | 1,915 | Federal Register significant final rules (EO 12866) since 1994 |
+| `nobel_v1` | `ingest-nobel-prizes.ts` | 1,688 | Nobel Prize laureates 1901–2024, all categories |
+| `nih_reporter_v1` | `ingest-nih-reporter.ts` | 1,354 | NIH RePORTER grants |
+| `clinicaltrials_v1` | `ingest-clinicaltrials.ts` | 1,053 | ClinicalTrials.gov |
+| `faers_normalized_drugs_v1` | `ingest-faers-current-drugs.ts` | 995 | Drug-level aggregate AE counts, openFDA, 1,000-drug cap |
+| `sec_edgar_v1` | `ingest-sec-edgar.ts` | 379 | SEC EDGAR historically significant filings |
+| `congress_v1` | `ingest-congress.ts` | 366 | Congress enacted laws (congress_v1) |
+| `pubchem_v1` | `ingest-pubchem.ts` | 355 | PubChem compounds |
+| `courtlistener_scotus_v1` | `ingest-courtlistener-scotus.ts` | 300 | SCOTUS opinions via CourtListener |
+| `openfda_v1` | `ingest-openfda.ts` | 233 | openFDA |
+| `genbank_v1` | `ingest-genbank.ts` | 99 | GenBank accessions, NCBI |
+| `iau_constellations_v1` | `ingest-astronomy.ts` | 88 | IAU constellations |
+| `retraction_watch_v1` | — | 55 | Retraction Watch |
+| `solar_system_v1` | — | 28 | Solar system bodies |
+| `iau_v1` | — | 5 | IAU |
+| `icd11_v1` | `ingest-icd11.ts` | 0 | WHO ICD-11 MMS — script exists, never run. Requires ICD_API_CLIENT_ID + ICD_API_CLIENT_SECRET. |
+| `nato_official_texts_v1` | `ingest-nato-official-texts.ts` | 0 | NATO CPS official texts — script exists, dry-run validated 2026-05-19 against 481 Wayback-CDX-enumerated IDs. Awaiting approval before full ingest. |
+
+**Pipeline 5 (`uspto_v1`) retired 2026-05-12** — 182 DEPRECATED records — see Known-Bad Pipelines.
 <!-- END:active-pipelines -->
 
 <!-- BEGIN:known-bad-pipelines -->

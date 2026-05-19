@@ -1,8 +1,8 @@
-// Astronomy ingestion — NASA Exoplanet Archive, Solar System bodies, IAU resolutions
+// Astronomy ingestion — NASA Exoplanet Archive, Solar System bodies, IAU resolutions, IAU Constellations
 // Exoplanets: live NASA TAP API (no hardcoded list needed)
-// Solar system + IAU: hardcoded, every entry traces to a verified fetchable URL
+// Solar system + IAU + Constellations: hardcoded, every entry traces to a verified fetchable URL
 // No CITES cross-references — editorial-not-algorithmic principle applies
-// Run: npx tsx scripts/ingest-astronomy.ts --bucket [exoplanets|solar-system|iau]
+// Run: npx tsx scripts/ingest-astronomy.ts --bucket [exoplanets|solar-system|iau|constellations]
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
@@ -32,6 +32,15 @@ interface SolarBodyDef {
   sourceUrl: string            // verified: browser-accessible URL (NASA or JPL SBDB)
   sourceName?: string          // overrides default "NASA: {name}" when source is not NASA Science
   ingestedBy: 'solar_system_v1'
+}
+
+interface ConstellationDef {
+  name: string
+  abbr: string           // IAU 3-letter abbreviation
+  genitive: string       // IAU official genitive form (used in star names)
+  areaSqDeg: number      // area in square degrees (IAU 1930 Delporte boundaries)
+  hemisphere: 'N' | 'S' | 'both'
+  ingestedBy: 'iau_constellations_v1'
 }
 
 interface IAUResolutionDef {
@@ -611,6 +620,220 @@ async function runIAUBucket(): Promise<Counts> {
   return counts
 }
 
+// ── ══════════════════════════════════════════════════════════════════════════ ──
+// ── CONSTELLATIONS BUCKET                                                      ──
+// ── ══════════════════════════════════════════════════════════════════════════ ──
+
+// All 88 IAU constellations. Boundaries formally adopted 1930 (Eugène Delporte).
+// Area figures and genitives from the IAU official catalog.
+// Source: https://www.iau.org/public/themes/constellations/ (browser-accessible; anti-bot blocks curl)
+const IAU_CONSTELLATIONS: ConstellationDef[] = [
+  { name: 'Andromeda',         abbr: 'And', genitive: 'Andromedae',         areaSqDeg: 722,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Antlia',            abbr: 'Ant', genitive: 'Antliae',             areaSqDeg: 239,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Apus',              abbr: 'Aps', genitive: 'Apodis',              areaSqDeg: 206,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Aquarius',          abbr: 'Aqr', genitive: 'Aquarii',             areaSqDeg: 980,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Aquila',            abbr: 'Aql', genitive: 'Aquilae',             areaSqDeg: 652,  hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Ara',               abbr: 'Ara', genitive: 'Arae',                areaSqDeg: 237,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Aries',             abbr: 'Ari', genitive: 'Arietis',             areaSqDeg: 441,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Auriga',            abbr: 'Aur', genitive: 'Aurigae',             areaSqDeg: 657,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Boötes',            abbr: 'Boo', genitive: 'Boötis',              areaSqDeg: 907,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Caelum',            abbr: 'Cae', genitive: 'Caeli',               areaSqDeg: 125,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Camelopardalis',    abbr: 'Cam', genitive: 'Camelopardalis',      areaSqDeg: 757,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Cancer',            abbr: 'Cnc', genitive: 'Cancri',              areaSqDeg: 506,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Canes Venatici',    abbr: 'CVn', genitive: 'Canum Venaticorum',   areaSqDeg: 465,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Canis Major',       abbr: 'CMa', genitive: 'Canis Majoris',       areaSqDeg: 380,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Canis Minor',       abbr: 'CMi', genitive: 'Canis Minoris',       areaSqDeg: 183,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Capricornus',       abbr: 'Cap', genitive: 'Capricorni',          areaSqDeg: 414,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Carina',            abbr: 'Car', genitive: 'Carinae',             areaSqDeg: 494,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Cassiopeia',        abbr: 'Cas', genitive: 'Cassiopeiae',         areaSqDeg: 598,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Centaurus',         abbr: 'Cen', genitive: 'Centauri',            areaSqDeg: 1060, hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Cepheus',           abbr: 'Cep', genitive: 'Cephei',              areaSqDeg: 588,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Cetus',             abbr: 'Cet', genitive: 'Ceti',                areaSqDeg: 1231, hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Chamaeleon',        abbr: 'Cha', genitive: 'Chamaeleontis',       areaSqDeg: 132,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Circinus',          abbr: 'Cir', genitive: 'Circini',             areaSqDeg: 93,   hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Columba',           abbr: 'Col', genitive: 'Columbae',            areaSqDeg: 270,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Coma Berenices',    abbr: 'Com', genitive: 'Comae Berenices',     areaSqDeg: 386,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Corona Australis',  abbr: 'CrA', genitive: 'Coronae Australis',   areaSqDeg: 128,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Corona Borealis',   abbr: 'CrB', genitive: 'Coronae Borealis',    areaSqDeg: 179,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Corvus',            abbr: 'Crv', genitive: 'Corvi',               areaSqDeg: 184,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Crater',            abbr: 'Crt', genitive: 'Crateris',            areaSqDeg: 282,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Crux',              abbr: 'Cru', genitive: 'Crucis',              areaSqDeg: 68,   hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Cygnus',            abbr: 'Cyg', genitive: 'Cygni',               areaSqDeg: 804,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Delphinus',         abbr: 'Del', genitive: 'Delphini',            areaSqDeg: 189,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Dorado',            abbr: 'Dor', genitive: 'Doradus',             areaSqDeg: 179,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Draco',             abbr: 'Dra', genitive: 'Draconis',            areaSqDeg: 1083, hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Equuleus',          abbr: 'Equ', genitive: 'Equulei',             areaSqDeg: 72,   hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Eridanus',          abbr: 'Eri', genitive: 'Eridani',             areaSqDeg: 1138, hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Fornax',            abbr: 'For', genitive: 'Fornacis',            areaSqDeg: 398,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Gemini',            abbr: 'Gem', genitive: 'Geminorum',           areaSqDeg: 514,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Grus',              abbr: 'Gru', genitive: 'Gruis',               areaSqDeg: 366,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Hercules',          abbr: 'Her', genitive: 'Herculis',            areaSqDeg: 1225, hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Horologium',        abbr: 'Hor', genitive: 'Horologii',           areaSqDeg: 249,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Hydra',             abbr: 'Hya', genitive: 'Hydrae',              areaSqDeg: 1303, hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Hydrus',            abbr: 'Hyi', genitive: 'Hydri',               areaSqDeg: 243,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Indus',             abbr: 'Ind', genitive: 'Indi',                areaSqDeg: 294,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Lacerta',           abbr: 'Lac', genitive: 'Lacertae',            areaSqDeg: 201,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Leo',               abbr: 'Leo', genitive: 'Leonis',              areaSqDeg: 947,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Leo Minor',         abbr: 'LMi', genitive: 'Leonis Minoris',      areaSqDeg: 232,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Lepus',             abbr: 'Lep', genitive: 'Leporis',             areaSqDeg: 290,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Libra',             abbr: 'Lib', genitive: 'Librae',              areaSqDeg: 538,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Lupus',             abbr: 'Lup', genitive: 'Lupi',                areaSqDeg: 334,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Lynx',              abbr: 'Lyn', genitive: 'Lyncis',              areaSqDeg: 545,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Lyra',              abbr: 'Lyr', genitive: 'Lyrae',               areaSqDeg: 286,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Mensa',             abbr: 'Men', genitive: 'Mensae',              areaSqDeg: 153,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Microscopium',      abbr: 'Mic', genitive: 'Microscopii',         areaSqDeg: 210,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Monoceros',         abbr: 'Mon', genitive: 'Monocerotis',         areaSqDeg: 482,  hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Musca',             abbr: 'Mus', genitive: 'Muscae',              areaSqDeg: 138,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Norma',             abbr: 'Nor', genitive: 'Normae',              areaSqDeg: 165,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Octans',            abbr: 'Oct', genitive: 'Octantis',            areaSqDeg: 291,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Ophiuchus',         abbr: 'Oph', genitive: 'Ophiuchi',            areaSqDeg: 948,  hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Orion',             abbr: 'Ori', genitive: 'Orionis',             areaSqDeg: 594,  hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Pavo',              abbr: 'Pav', genitive: 'Pavonis',             areaSqDeg: 378,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Pegasus',           abbr: 'Peg', genitive: 'Pegasi',              areaSqDeg: 1121, hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Perseus',           abbr: 'Per', genitive: 'Persei',              areaSqDeg: 615,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Phoenix',           abbr: 'Phe', genitive: 'Phoenicis',           areaSqDeg: 469,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Pictor',            abbr: 'Pic', genitive: 'Pictoris',            areaSqDeg: 247,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Pisces',            abbr: 'Psc', genitive: 'Piscium',             areaSqDeg: 889,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Piscis Austrinus',  abbr: 'PsA', genitive: 'Piscis Austrini',     areaSqDeg: 245,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Puppis',            abbr: 'Pup', genitive: 'Puppis',              areaSqDeg: 673,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Pyxis',             abbr: 'Pyx', genitive: 'Pyxidis',             areaSqDeg: 221,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Reticulum',         abbr: 'Ret', genitive: 'Reticuli',            areaSqDeg: 114,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Sagitta',           abbr: 'Sge', genitive: 'Sagittae',            areaSqDeg: 80,   hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Sagittarius',       abbr: 'Sgr', genitive: 'Sagittarii',          areaSqDeg: 867,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Scorpius',          abbr: 'Sco', genitive: 'Scorpii',             areaSqDeg: 497,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Sculptor',          abbr: 'Scl', genitive: 'Sculptoris',          areaSqDeg: 475,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Scutum',            abbr: 'Sct', genitive: 'Scuti',               areaSqDeg: 109,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Serpens',           abbr: 'Ser', genitive: 'Serpentis',           areaSqDeg: 637,  hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Sextans',           abbr: 'Sex', genitive: 'Sextantis',           areaSqDeg: 314,  hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Taurus',            abbr: 'Tau', genitive: 'Tauri',               areaSqDeg: 797,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Telescopium',       abbr: 'Tel', genitive: 'Telescopii',          areaSqDeg: 252,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Triangulum',        abbr: 'Tri', genitive: 'Trianguli',           areaSqDeg: 132,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Triangulum Australe', abbr: 'TrA', genitive: 'Trianguli Australis', areaSqDeg: 110, hemisphere: 'S',  ingestedBy: 'iau_constellations_v1' },
+  { name: 'Tucana',            abbr: 'Tuc', genitive: 'Tucanae',             areaSqDeg: 295,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Ursa Major',        abbr: 'UMa', genitive: 'Ursae Majoris',       areaSqDeg: 1280, hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Ursa Minor',        abbr: 'UMi', genitive: 'Ursae Minoris',       areaSqDeg: 256,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Vela',              abbr: 'Vel', genitive: 'Velorum',             areaSqDeg: 500,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Virgo',             abbr: 'Vir', genitive: 'Virginis',            areaSqDeg: 1294, hemisphere: 'both', ingestedBy: 'iau_constellations_v1' },
+  { name: 'Volans',            abbr: 'Vol', genitive: 'Volantis',            areaSqDeg: 141,  hemisphere: 'S',    ingestedBy: 'iau_constellations_v1' },
+  { name: 'Vulpecula',         abbr: 'Vul', genitive: 'Vulpeculae',          areaSqDeg: 268,  hemisphere: 'N',    ingestedBy: 'iau_constellations_v1' },
+]
+
+function constellationClaimText(c: ConstellationDef): string {
+  const hemisphereNote = c.hemisphere === 'N'
+    ? 'northern hemisphere'
+    : c.hemisphere === 'S'
+    ? 'southern hemisphere'
+    : 'both hemispheres'
+  return `${c.name} (${c.abbr}) is one of the 88 constellations formally recognized by the International Astronomical Union, covering ${c.areaSqDeg} square degrees of the celestial sphere in the ${hemisphereNote}. IAU official genitive: ${c.genitive}.`
+}
+
+async function ingestConstellation(
+  def: ConstellationDef,
+  sharedSourceId: string,
+  topicIds: string[],
+  counts: Counts,
+): Promise<void> {
+  const externalId = `constellation_${def.abbr.toLowerCase()}`
+
+  const existing = await prisma.claim.findUnique({ where: { externalId } })
+  if (existing) { console.log(`  Skipped (exists): ${def.name}`); counts.skipped++; return }
+
+  try {
+    const { claimId } = await prisma.$transaction(async tx => {
+      const claim = await tx.claim.create({
+        data: {
+          text:                  constellationClaimText(def),
+          claimType:             'EMPIRICAL',
+          currentStatus:         'HARD_FACT',
+          claimEmergedAt:        new Date('1930-01-01'),
+          claimEmergedPrecision: 'YEAR',
+          ingestedBy:            def.ingestedBy,
+          humanReviewed:         false,
+          autoApproved:          true,
+          externalId,
+          metadata: {
+            abbr:       def.abbr,
+            genitive:   def.genitive,
+            areaSqDeg:  def.areaSqDeg,
+            hemisphere: def.hemisphere,
+          },
+        },
+      })
+
+      const edge = await tx.edge.create({
+        data: {
+          sourceId:      sharedSourceId,
+          claimId:       claim.id,
+          type:          'FOR',
+          evidenceType:  'EVIDENTIARY',
+          ingestedBy:    def.ingestedBy,
+          humanReviewed: false,
+          autoApproved:  true,
+        },
+      })
+
+      await tx.edgeRevision.create({
+        data: {
+          edgeId:     edge.id,
+          priorScore: null,
+          newScore:   98,
+          reason:     'IAU official constellation catalog — formal boundary defined 1930 (Delporte), unchanged since',
+        },
+      })
+
+      return { claimId: claim.id }
+    })
+
+    for (const topicId of topicIds) {
+      await prisma.claimTopic.upsert({
+        where:  { claimId_topicId: { claimId, topicId } },
+        update: {},
+        create: { claimId, topicId },
+      })
+    }
+
+    console.log(`  Ingested: ${def.name} (${def.abbr})`)
+    counts.ingested++
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error(`  Failed: ${def.name} — ${msg}`)
+    counts.errors++
+  }
+}
+
+async function runConstellationsBucket(): Promise<Counts> {
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0, sourcesCreated: 0, topicSkips: 0 }
+
+  const astronomy      = await ensureTopic('astronomy', 'Astronomy', 'astronomy')
+  const constellations = await ensureTopic('constellations', 'Constellations', 'astronomy', 'astronomy')
+  const topicIds = [astronomy, constellations]
+
+  // One shared source for all 88 — they all trace to the IAU constellation catalog page
+  const sharedSourceExId = 'iau_constellation_catalog_1930'
+  const sharedSource = await prisma.source.upsert({
+    where:  { externalId: sharedSourceExId },
+    update: {},
+    create: {
+      name:            'IAU: The 88 Constellations (Official Catalog)',
+      url:             'https://www.iau.org/public/themes/constellations/',
+      publishedAt:     new Date('1930-01-01'),
+      methodologyType: 'primary',
+      ingestedBy:      'iau_constellations_v1',
+      humanReviewed:   false,
+      autoApproved:    true,
+      externalId:      sharedSourceExId,
+    },
+  })
+  counts.sourcesCreated++
+
+  console.log(`  Processing ${IAU_CONSTELLATIONS.length} IAU constellations…\n`)
+  for (const def of IAU_CONSTELLATIONS) {
+    await ingestConstellation(def, sharedSource.id, topicIds, counts)
+  }
+
+  return counts
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -629,8 +852,11 @@ async function main() {
     case 'iau':
       result = await runIAUBucket()
       break
+    case 'constellations':
+      result = await runConstellationsBucket()
+      break
     default:
-      console.error(`Unknown bucket: ${bucket}. Use: exoplanets | solar-system | iau`)
+      console.error(`Unknown bucket: ${bucket}. Use: exoplanets | solar-system | iau | constellations`)
       await prisma.$disconnect()
       process.exit(1)
   }

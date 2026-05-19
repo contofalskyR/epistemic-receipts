@@ -525,6 +525,13 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 19, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">Pipeline 17</span> (NATO Official Texts) ingester built — 481 documents enumerated from the Wayback CDX index of nato.int/cps/en/natohq/official_texts_, dry-run validated end-to-end (titles + document dates parsed correctly across 1941–2025), awaiting approval before full ingest</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 18, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">+4,696</span> USGS M6.5+ earthquakes (1900–present) — epicenter, magnitude, depth, tsunami flag (Pipeline 12)</li>
