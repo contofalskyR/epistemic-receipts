@@ -14,6 +14,7 @@ type TopicNode = {
 
 const DOMAIN_LABELS: Record<string, string> = {
   astronomy:    "Astronomy",
+  government:   "Government & Legislation",
   history:      "History",
   law:          "Law",
   medicine:     "Medicine",
