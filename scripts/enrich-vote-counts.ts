@@ -6,7 +6,7 @@
 //   us       — VoteView API (congress_v1 / congress_bills_v1); also scans
 //              existing congress_votes_v1 claim metadata
 //   canada   — OpenParliament.ca /votes/ endpoint
-//   uk       — TheyWorkForYou API (requires TWFY_API_KEY env var)
+//   uk       — UK Parliament Divisions API (free, no key required)
 //   eu       — EP Open Data Portal adopted-texts vote data
 //   de       — Bundestag DIP named votes (Namentliche Abstimmungen)
 //   il       — Knesset OData KNS_Vote
@@ -290,8 +290,8 @@ async function enrichCanadaVotes(
   return counts
 }
 
-// ── UK: TheyWorkForYou divisions API ────────────────────────────────────────
-// Requires TWFY_API_KEY env var. Free key available at theyworkforyou.com/api.
+// ── UK: Official UK Parliament Divisions API ─────────────────────────────────
+// Free, no key required. https://votes.parliament.uk/Votes/Commons/Divisions
 
 async function enrichUkVotes(
   sources: { id: string; externalId: string | null; publishedAt: Date | null }[],
@@ -299,42 +299,29 @@ async function enrichUkVotes(
   verbose: boolean,
 ): Promise<Counts> {
   const counts: Counts = { enriched: 0, skipped: 0, failed: 0 }
-  const apiKey = process.env.TWFY_API_KEY
-
-  if (!apiKey) {
-    console.warn('  TWFY_API_KEY not set — skipping UK vote enrichment')
-    console.warn('  Get a free key at: https://www.theyworkforyou.com/api/')
-    counts.skipped += sources.length
-    return counts
-  }
-
-  // TheyWorkForYou divisions list: matches by date proximity to enactment
-  // For each UK legislation source, fetch divisions near its publishedAt date
   const PAGE_DELAY = 300
   let fetched = 0
 
   for (const source of sources) {
     if (!source.publishedAt) { counts.skipped++; continue }
 
-    const existing = await prisma.legislativeVote.findFirst({ where: { sourceId: source.id, dataSource: 'theyworkforyou' } })
+    const existing = await prisma.legislativeVote.findFirst({ where: { sourceId: source.id, dataSource: 'uk-parliament' } })
     if (existing) { counts.skipped++; continue }
 
     const dateStr = source.publishedAt.toISOString().slice(0, 10)
 
     try {
-      const url = `https://www.theyworkforyou.com/api/getDivisions?key=${apiKey}&date=${dateStr}&output=js`
-      const divisions = await fetchJson<Array<{ division_id: number; date: string; yes_votes: number; no_votes: number; house: string }>>(url)
+      // Query Commons divisions on the enactment date
+      const url = `https://votes.parliament.uk/Votes/Commons/Divisions?startDate=${dateStr}&endDate=${dateStr}&format=json`
+      const data = await fetchJson<{ value: Array<{ DivisionId: number; Date: string; AyeCount: number; NoeCount: number; Title: string }> }>(url)
 
-      if (!Array.isArray(divisions) || divisions.length === 0) {
-        counts.skipped++
-        continue
-      }
+      const divisions = data?.value ?? []
+      if (divisions.length === 0) { counts.skipped++; continue }
 
-      // Use the first matching division on that date (most relevant for enacted law)
       const div = divisions[0]!
 
       if (dryRun) {
-        if (verbose) console.log(`    [dry-run] ${source.externalId}: yes=${div.yes_votes} no=${div.no_votes}`)
+        if (verbose) console.log(`    [dry-run] ${source.externalId}: aye=${div.AyeCount} no=${div.NoeCount}`)
         counts.enriched++
         continue
       }
@@ -342,13 +329,13 @@ async function enrichUkVotes(
       await prisma.legislativeVote.create({
         data: {
           sourceId: source.id,
-          chamber: div.house ?? 'House of Commons',
-          yesCount: div.yes_votes,
-          noCount: div.no_votes,
+          chamber: 'House of Commons',
+          yesCount: div.AyeCount,
+          noCount: div.NoeCount,
           passageThreshold: 'simple_majority',
-          voteDate: new Date(div.date),
+          voteDate: new Date(div.Date),
           passageType: 'legislative_vote',
-          dataSource: 'theyworkforyou',
+          dataSource: 'uk-parliament',
         },
       })
       counts.enriched++
@@ -362,7 +349,7 @@ async function enrichUkVotes(
     await sleep(PAGE_DELAY)
   }
 
-  console.log(`  TheyWorkForYou: matched ${fetched} votes`)
+  console.log(`  UK Parliament: matched ${fetched} votes`)
   return counts
 }
 
