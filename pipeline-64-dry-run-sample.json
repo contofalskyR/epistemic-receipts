@@ -1,0 +1,8 @@
+{
+  "runDate": "2026-05-20T17:28:54.682Z",
+  "pipeline": "Pipeline 64",
+  "ingestedBy": "pakistan_legislation_v1",
+  "totalCandidates": 0,
+  "error": "Site unreachable — geo-restricted (Pakistan IP required)",
+  "note": "www.pakistancode.gov.pk (175.107.60.206) has 100% packet loss from outside Pakistan."
+}
