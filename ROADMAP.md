@@ -60,6 +60,53 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 
 ---
 
+## Long-horizon features
+
+- **Legal force status on legislation** — laws that are no longer in force should remain as HARD_FACT (the fact that they existed and were enacted is still true) but carry a `status: repealed | expired | superseded` label and an `endOfValidity` date. EUR-Lex already exposes this explicitly (e.g. "No longer in force, Date of end of validity: 06/01/1987"). Should apply to EEC/EU legislation, US Federal Register rules, and any other law pipeline. Requires a `legalStatus` field on the Claim or Source schema. Lets users query "what was the law at time X" without conflating historical facts with current law.
+
+- **Geographic fact distribution** — tag claims and case studies with the geography of their source institution (e.g. US university, Russian state outlet, EU regulatory body) and eventually of the subject matter itself. Goal: surface which facts are geographically clustered vs. universal. Phase 1: source-institution geo-tagging. Phase 2: map disputed claims by accepting/rejecting geography — e.g. Stalin's culpability for mass death is accepted as settled in the West but contested or minimized in certain post-Soviet contexts; similarly, some climate or pharma facts vary by jurisdiction. Phase 3: enable queries like "which facts about X are accepted in geography A but disputed in geography B." Requires entity tagging infrastructure and a geo dimension on Claim/Source records.
+
+---
+
+## Future Legislative Pipelines (Post-P52)
+
+Extend the legislative queue after Russia. Ordered by API quality + editorial value.
+
+### Tier A — Strong APIs, English available
+
+| P# | Country / Body | API | Notes |
+|----|----------------|-----|-------|
+| 53 | New Zealand (retry) | api.legislation.govt.nz | P27 script exists — needs API key from legislation.govt.nz |
+| 54 | Israel (Knesset) | knesset.gov.il/Odata/ParliamentInfo.svc | **Shipped 2026-05-20 (`israel_knesset_v1`) — 2,009 primary Israeli laws via KNS_IsraelLaw** |
+| 55 | Kenya | kenyalaw.org | Solid REST API, English |
+| 56 | European Parliament | europarl.europa.eu/PortalPage/opensearch | Separate from EU Legislation (P16) |
+| 57 | Scotland | parliament.scot | **Shipped 2026-05-20 (`scotland_legislation_v1`) — 408 acts** |
+| 58 | Wales (Senedd) | senedd.wales | Devolved legislation |
+| 59 | Indonesia | peraturan.bpk.go.id | Large democracy, public API |
+| 60 | ECHR (Council of Europe) | hudoc.echr.coe.int | Excellent free API — landmark rulings, high citation value |
+| 61 | WTO Dispute Settlement | docs.wto.org | Panel reports + appellate body rulings |
+| 62 | ICJ (Int'l Court of Justice) | icj-cij.org | Judgments + advisory opinions |
+| 63 | Nigeria | nassnig.org | English, large legislature |
+| 64 | Ghana | parliament.gh | English |
+| 65 | Malaysia | agc.gov.my | English legal system |
+
+### Tier B — Good data, lower-priority
+
+| P# | Country / Body | API | Notes |
+|----|----------------|-----|-------|
+| 66 | Czech Republic | psp.cz open data | Collection of Laws |
+| 67 | Ukraine | zakon.rada.gov.ua | Open API, Ukrainian text |
+| 68 | Hungary | njt.hu | National Legislation Database |
+| 69 | Romania | cdep.ro/pls/legis | |
+| 70 | Slovakia | nrsr.sk | |
+| 71 | Vietnam | vbpl.vn | |
+| 72 | Pakistan | na.gov.pk | |
+| 73 | Thailand | parliament.go.th | |
+| 74 | UN General Assembly | unbisnet.un.org | Resolutions — complements UN SC (P already done) |
+| 75 | ICC (Int'l Criminal Court) | icc-cpi.int | Indictments + judgments |
+
+---
+
 ## Anti-recommendations
 
 - **Wikidata as primary source** — quality variance forces audit cycles. Use only as cross-reference layer (linking Source records to Wikidata Q-numbers). Never ingest Wikidata claims as HARD_FACT.

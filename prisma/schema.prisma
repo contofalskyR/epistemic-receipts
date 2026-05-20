@@ -68,6 +68,8 @@ model Source {
   relationshipsB              SourceRelationship[]     @relation("RelationshipSourceB")
   thresholdEventsTriggered    ThresholdEvent[]         @relation("ThresholdTriggerSource")
   suggestedEventsTriggered    SuggestedThresholdEvent[] @relation("SuggestedTriggerSource")
+  politicalContext            PoliticalContext?
+  legislativeVotes            LegislativeVote[]
 }
 
 model SourceRelationship {
@@ -227,4 +229,41 @@ model Feedback {
   pageContext String?
   email       String?
   submittedAt DateTime @default(now())
+}
+
+model PoliticalContext {
+  id                String    @id @default(cuid())
+  sourceId          String    @unique
+  source            Source    @relation(fields: [sourceId], references: [id])
+  country           String
+  enactmentDate     DateTime?
+  headOfGovernment  String?
+  hogParty          String?
+  hogWikidataId     String?
+  governingParty    String?
+  majorityType      String?   // "majority", "minority", "coalition", "decree"
+  majoritySeats     Int?
+  totalSeats        Int?
+  coalitionPartners String?   // JSON array
+  wikidataItemId    String?
+  enrichedAt        DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model LegislativeVote {
+  id               String    @id @default(cuid())
+  sourceId         String
+  source           Source    @relation(fields: [sourceId], references: [id])
+  chamber          String
+  yesCount         Int?
+  noCount          Int?
+  abstainCount     Int?
+  totalSeats       Int?
+  passageThreshold String?   // "simple_majority", "supermajority", "unanimous", etc.
+  voteDate         DateTime?
+  passageType      String?   // "legislative_vote", "executive_decree", "committee_only"
+  dataSource       String?   // "govtrack", "theyworkforyou", "wikidata", etc.
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 }
