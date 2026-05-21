@@ -1,0 +1,108 @@
+{
+  "runDate": "2026-05-21T05:39:59.427Z",
+  "mode": "dry-run",
+  "eligibleTotal": 92624,
+  "byPipeline": {
+    "nobel_v1": 1378,
+    "un_sc_resolutions_v1": 2798,
+    "bundestag_v1": 6343,
+    "eu_legislation_v1": 2052,
+    "riksdag_v1": 9989,
+    "tweedekamer_v1": 1530,
+    "oireachtas_v1": 4040,
+    "uk_legislation_v1": 11777,
+    "nationalrat_v1": 3868,
+    "canada_bills_v1": 1067,
+    "australia_legislation_v1": 4734,
+    "singapore_legislation_v1": 507,
+    "iceland_legislation_v1": 1068,
+    "finland_legislation_v1": 1651,
+    "portugal_legislation_v1": 1292,
+    "taiwan_legislation_v1": 1015,
+    "mexico_legislation_v1": 308,
+    "south_africa_legislation_v1": 557,
+    "bangladesh_legislation_v1": 1610,
+    "uruguay_legislation_v1": 4297,
+    "scotland_legislation_v1": 408,
+    "israel_knesset_v1": 2009,
+    "wales_senedd_v1": 100,
+    "eu_parliament_v1": 4331,
+    "malta_legislation_v1": 563,
+    "georgia_legislation_v1": 301,
+    "jamaica_legislation_v1": 528,
+    "srilanka_legislation_v1": 1704,
+    "tt_legislation_v1": 368,
+    "brunei_legislation_v1": 288,
+    "peru_legislation_v1": 5202,
+    "malaysia_legislation_v1": 881,
+    "estonia_legislation_v1": 5870,
+    "nz_legislation_v1": 1039,
+    "nz_local_acts_v1": 611,
+    "nz_bills_v1": 1868,
+    "nz_repealed_acts_v1": 4372,
+    "courtlistener_scotus_v1": 300
+  },
+  "spotCheckPipelines": [
+    "nobel_v1",
+    "un_sc_resolutions_v1",
+    "bundestag_v1"
+  ],
+  "matchCount": 6,
+  "matchRate": "1.0%",
+  "sample": [
+    {
+      "sourceId": "cmovn1fnr0066xnqgpt4pfn99",
+      "externalId": "nobel-source-med-2012",
+      "sourceName": "Nobel Prize in Physiology or Medicine 2012 — Sir John B. Gurdon / Shinya Yamanaka",
+      "wikidataQid": "Q48913757",
+      "wikidataLabel": "Nobel Prize in Physiology or Medicine 2012",
+      "matchMethod": "nobel_category_year",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "cmovn1g1c006lxnqgpxefyqzg",
+      "externalId": "nobel-source-med-2013",
+      "sourceName": "Nobel Prize in Physiology or Medicine 2013 — James E. Rothman / Randy W. Schekman / Thomas C. Südhof",
+      "wikidataQid": "Q48913751",
+      "wikidataLabel": "Nobel Prize in Physiology or Medicine 2013",
+      "matchMethod": "nobel_category_year",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "cmovn1glv0077xnqg76s44uyv",
+      "externalId": "nobel-source-med-2014",
+      "sourceName": "Nobel Prize in Physiology or Medicine 2014 — John O'Keefe / May-Britt Moser / Edvard I. Moser",
+      "wikidataQid": "Q48913745",
+      "wikidataLabel": "Nobel Prize in Physiology or Medicine 2014",
+      "matchMethod": "nobel_category_year",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "cmovn1h7q007txnqgbhx4m0i8",
+      "externalId": "nobel-source-med-2015",
+      "sourceName": "Nobel Prize in Physiology or Medicine 2015 — William C. Campbell / Satoshi Ōmura / Tu Youyou",
+      "wikidataQid": "Q48913738",
+      "wikidataLabel": "Nobel Prize in Physiology or Medicine 2015",
+      "matchMethod": "nobel_category_year",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "cmovn1hrp008fxnqg063s53cx",
+      "externalId": "nobel-source-med-2016",
+      "sourceName": "Nobel Prize in Physiology or Medicine 2016 — Yoshinori Ohsumi",
+      "wikidataQid": "Q48913727",
+      "wikidataLabel": "Nobel Prize in Physiology or Medicine 2016",
+      "matchMethod": "nobel_category_year",
+      "confidence": "high"
+    },
+    {
+      "sourceId": "cmovn1hz8008nxnqgxrklwcko",
+      "externalId": "nobel-source-med-2017",
+      "sourceName": "Nobel Prize in Physiology or Medicine 2017 — Jeffrey C. Hall / Michael Rosbash / Michael W. Young",
+      "wikidataQid": "Q48913666",
+      "wikidataLabel": "Nobel Prize in Physiology or Medicine 2017",
+      "matchMethod": "nobel_category_year",
+      "confidence": "high"
+    }
+  ]
+}
