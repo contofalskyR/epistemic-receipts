@@ -19,6 +19,13 @@ const DOMAIN_LABELS: Record<string, string> = {
   public_health: "Public Health",
 };
 
+function partyEmoji(party: string): string {
+  if (/conservative/i.test(party)) return "🔵";
+  if (/labour/i.test(party)) return "🔴";
+  if (/liberal/i.test(party)) return "🟡";
+  return "⚪";
+}
+
 const SORT_OPTIONS = [
   { value: "emerged_desc", label: "Newest emerged" },
   { value: "emerged_asc",  label: "Oldest emerged" },
@@ -52,6 +59,7 @@ type TopicData = {
   total: number;
   page: number;
   pages: number;
+  availableParties: string[];
 };
 
 function TopicChips({ topics, exclude }: { topics: { topic: TopicTag }[]; exclude?: string }) {
@@ -79,6 +87,7 @@ function TopicSlugContent() {
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get("page") ?? "1", 10);
   const sort = searchParams.get("sort") ?? "emerged_desc";
+  const party = searchParams.get("party") ?? "";
 
   const [data, setData] = useState<TopicData | null>(null);
   const [notFound, setNotFound] = useState(false);
@@ -86,14 +95,20 @@ function TopicSlugContent() {
   useEffect(() => {
     setData(null);
     setNotFound(false);
-    fetch(`/api/topics/${slug}?page=${page}&sort=${sort}`)
+    const qs = new URLSearchParams({ page: String(page), sort });
+    if (party) qs.set("party", party);
+    fetch(`/api/topics/${slug}?${qs.toString()}`)
       .then(r => { if (!r.ok) { setNotFound(true); return null; } return r.json(); })
       .then(d => { if (d) setData(d); });
-  }, [slug, page, sort]);
+  }, [slug, page, sort, party]);
 
   function setParam(key: string, value: string) {
     const p = new URLSearchParams(searchParams.toString());
-    p.set(key, value);
+    if (value === "") {
+      p.delete(key);
+    } else {
+      p.set(key, value);
+    }
     if (key !== "page") p.delete("page");
     router.push(`/topics/${slug}?${p.toString()}`);
   }
@@ -109,7 +124,7 @@ function TopicSlugContent() {
 
   if (!data) return <p className="text-gray-600 text-sm">Loading…</p>;
 
-  const { topic, parentChain, siblings, claims, total, pages } = data;
+  const { topic, parentChain, siblings, claims, total, pages, availableParties } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
 
   return (
@@ -183,6 +198,33 @@ function TopicSlugContent() {
 
       {/* Claims */}
       <section className="space-y-4">
+        {availableParties.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setParam("party", "")}
+              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                !party
+                  ? "border-gray-400 bg-gray-700 text-white"
+                  : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200"
+              }`}
+            >
+              All
+            </button>
+            {availableParties.map(p => (
+              <button
+                key={p}
+                onClick={() => setParam("party", p)}
+                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                  party === p
+                    ? "border-gray-400 bg-gray-700 text-white"
+                    : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200"
+                }`}
+              >
+                {partyEmoji(p)} {p}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
             Claims{total > 0 && ` (${total})`}

@@ -1,12 +1,14 @@
-// Pipeline 27 — New Zealand Public Acts (nz_legislation_v1)
+// Pipeline 27 — New Zealand Legislation
 // Dataset: New Zealand Parliamentary Counsel Office (PCO) Legislation API v0
 // API: https://api.legislation.govt.nz/v0/works/
 // Key: NZ_LEGISLATION_API_KEY env var — request via https://www.legislation.govt.nz
-// Scope: Acts of Parliament currently in force (type=act, act_type=public, act_status=in_force)
-// Topic: nz-parliament (NZ Parliament, domain=government)
-// Run: npx tsx scripts/ingest-nz-legislation.ts --dry-run
-//      npx tsx scripts/ingest-nz-legislation.ts --sample 10
-//      npx tsx scripts/ingest-nz-legislation.ts --full [--limit N] [--verbose]
+// Modes (--mode flag):
+//   in-force  (default): Public acts in force        → nz_legislation_v1
+//   repealed           : Repealed public acts         → nz_repealed_acts_v1
+//   bills              : Bills                        → nz_bills_v1
+//   local              : Local acts in force          → nz_local_acts_v1
+// Run: npx dotenv-cli -e .env.local -- npx ts-node --project tsconfig.scripts.json scripts/ingest-nz-legislation.ts --mode in-force --dry-run
+//      npx dotenv-cli -e .env.local -- npx ts-node --project tsconfig.scripts.json scripts/ingest-nz-legislation.ts --mode repealed --full
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
@@ -14,8 +16,6 @@ import * as fs from 'fs'
 
 const prisma = new PrismaClient()
 
-const INGESTED_BY = 'nz_legislation_v1'
-const PIPELINE = 'Pipeline 27'
 const API_BASE = 'https://api.legislation.govt.nz'
 const PAGE_SIZE = 100
 const PAGE_DELAY_MS = 300
@@ -35,10 +35,10 @@ interface NzVersion {
 interface NzWork {
   work_id: string
   legislation_type: string
-  legislation_status: string
-  act_type: string
-  act_status: string
-  act_classification: string
+  legislation_status?: string
+  act_type?: string
+  act_status?: string
+  act_classification?: string
   latest_matching_version: NzVersion
 }
 
@@ -62,24 +62,115 @@ interface CandidateRecord {
   sourceName: string
 }
 
+interface ModeConfig {
+  ingestedBy: string
+  pipeline: string
+  topicSlug: string
+  topicName: string
+  topicDomain: string
+  apiParams: Record<string, string>
+  dryRunFile: string
+  legislationType: string
+  externalIdPrefix: string
+  buildSourceName: (year: string, num: string) => string
+}
+
+// ── Mode configs ───────────────────────────────────────────────────────────────
+
+const MODES: Record<string, ModeConfig> = {
+  'in-force': {
+    ingestedBy: 'nz_legislation_v1',
+    pipeline: 'Pipeline 27 — NZ Public Acts in Force',
+    topicSlug: 'nz-parliament',
+    topicName: 'NZ Parliament',
+    topicDomain: 'government',
+    apiParams: {
+      legislation_type: 'act',
+      act_type: 'public',
+      act_status: 'in_force',
+      act_classification: 'principal',
+    },
+    dryRunFile: 'pipeline-27-dry-run-sample.json',
+    legislationType: 'act',
+    // Preserved for backward compat — existing DB records use this prefix
+    externalIdPrefix: 'nz_legislation',
+    buildSourceName: (year, num) => `NZ Public Act ${year} No ${num}`,
+  },
+  repealed: {
+    ingestedBy: 'nz_repealed_acts_v1',
+    pipeline: 'Pipeline 27 — NZ Repealed Public Acts',
+    topicSlug: 'nz-parliament-repealed',
+    topicName: 'NZ Parliament — Repealed Acts',
+    topicDomain: 'government',
+    apiParams: {
+      legislation_type: 'act',
+      act_type: 'public',
+      act_status: 'repealed',
+      act_classification: 'principal',
+    },
+    dryRunFile: 'nz-repealed-dry-run-sample.json',
+    legislationType: 'act',
+    externalIdPrefix: 'nz_repealed_acts',
+    buildSourceName: (year, num) => `NZ Repealed Public Act ${year} No ${num}`,
+  },
+  bills: {
+    ingestedBy: 'nz_bills_v1',
+    pipeline: 'Pipeline 27 — NZ Bills',
+    topicSlug: 'nz-parliament-bills',
+    topicName: 'NZ Parliament — Bills',
+    topicDomain: 'government',
+    apiParams: {
+      legislation_type: 'bill',
+    },
+    dryRunFile: 'nz-bills-dry-run-sample.json',
+    legislationType: 'bill',
+    externalIdPrefix: 'nz_bills',
+    buildSourceName: (year, num) => `NZ Bill ${year} No ${num}`,
+  },
+  local: {
+    ingestedBy: 'nz_local_acts_v1',
+    pipeline: 'Pipeline 27 — NZ Local Acts in Force',
+    topicSlug: 'nz-parliament-local',
+    topicName: 'NZ Parliament — Local Acts',
+    topicDomain: 'government',
+    apiParams: {
+      legislation_type: 'act',
+      act_type: 'local',
+      act_status: 'in_force',
+    },
+    dryRunFile: 'nz-local-dry-run-sample.json',
+    legislationType: 'act',
+    externalIdPrefix: 'nz_local_acts',
+    buildSourceName: (year, num) => `NZ Local Act ${year} No ${num}`,
+  },
+}
+
 // ── CLI ────────────────────────────────────────────────────────────────────────
 
 function parseArgs() {
   const args = process.argv.slice(2)
 
-  const mode = args.includes('--dry-run') ? 'dry-run'
+  const runMode = args.includes('--dry-run') ? 'dry-run'
     : args.includes('--sample') ? 'sample'
     : args.includes('--full') ? 'full'
     : (() => {
-        console.error('Usage: --dry-run | --sample N | --full  [--limit N] [--verbose]')
+        console.error('Usage: --dry-run | --sample N | --full  [--mode in-force|repealed|bills|local] [--limit N] [--verbose]')
         process.exit(1) as never
       })()
+
+  const mi = args.indexOf('--mode')
+  const datasetMode = mi !== -1 ? (args[mi + 1] ?? 'in-force') : 'in-force'
+  if (!MODES[datasetMode]) {
+    console.error(`Unknown --mode "${datasetMode}". Valid: ${Object.keys(MODES).join(', ')}`)
+    process.exit(1)
+  }
 
   const li = args.indexOf('--limit')
   const sai = args.indexOf('--sample')
 
   return {
-    mode: mode as 'dry-run' | 'sample' | 'full',
+    runMode: runMode as 'dry-run' | 'sample' | 'full',
+    datasetMode,
     limit: li !== -1 ? (parseInt(args[li + 1] ?? '0', 10) || 0) : 0,
     sampleN: sai !== -1 ? (parseInt(args[sai + 1] ?? '10', 10) || 10) : 10,
     verbose: args.includes('--verbose'),
@@ -104,12 +195,14 @@ function getApiKey(): string {
   return key
 }
 
-async function fetchPage(apiKey: string, page: number, retries = 4): Promise<NzWorksResponse> {
+async function fetchPage(
+  apiKey: string,
+  page: number,
+  apiParams: Record<string, string>,
+  retries = 4,
+): Promise<NzWorksResponse> {
   const url = new URL(`${API_BASE}/v0/works/`)
-  url.searchParams.set('legislation_type', 'act')
-  url.searchParams.set('act_type', 'public')
-  url.searchParams.set('act_status', 'in_force')
-  url.searchParams.set('act_classification', 'principal')
+  for (const [k, v] of Object.entries(apiParams)) url.searchParams.set(k, v)
   url.searchParams.set('per_page', String(PAGE_SIZE))
   url.searchParams.set('page', String(page))
   url.searchParams.set('sort_by', 'year_asc')
@@ -150,7 +243,7 @@ async function fetchPage(apiKey: string, page: number, retries = 4): Promise<NzW
 
 // ── Candidate building ─────────────────────────────────────────────────────────
 
-function buildCandidate(work: NzWork, verbose: boolean): CandidateRecord | null {
+function buildCandidate(work: NzWork, cfg: ModeConfig, verbose: boolean): CandidateRecord | null {
   const { work_id, latest_matching_version } = work
   if (!work_id || !latest_matching_version) {
     if (verbose) console.log(`  Skip: missing work_id or version (${work_id})`)
@@ -163,14 +256,13 @@ function buildCandidate(work: NzWork, verbose: boolean): CandidateRecord | null 
     return null
   }
 
-  // work_id format: act_{subtype}_{year}_{number}
+  // work_id format: {type}_{subtype}_{year}_{number[_suffix]}
   const parts = work_id.split('_')
   if (parts.length < 4) {
     if (verbose) console.log(`  Skip ${work_id}: unexpected work_id format`)
     return null
   }
 
-  // parts[0]=act, parts[1]=subtype, parts[2]=year, parts[3]=number (may have suffix)
   const year = parts[2]
   const actNumber = parts.slice(3).join('_')
   if (!year || !actNumber) {
@@ -178,12 +270,12 @@ function buildCandidate(work: NzWork, verbose: boolean): CandidateRecord | null 
     return null
   }
 
-  // Construct the legislation.govt.nz URL
   const subtype = parts[1]
-  const sourceUrl = `https://www.legislation.govt.nz/act/${subtype}/${year}/${actNumber}/en/latest/`
+  const urlSuffix = cfg.legislationType === 'bill' ? 'versions/' : 'en/latest/'
+  const sourceUrl = `https://www.legislation.govt.nz/${cfg.legislationType}/${subtype}/${year}/${actNumber}/${urlSuffix}`
 
-  const externalId = `nz_legislation_${year}_${actNumber}`
-  const sourceExternalId = `nz_legislation_source_${year}_${actNumber}`
+  const externalId = `${cfg.externalIdPrefix}_${year}_${actNumber}`
+  const sourceExternalId = `${cfg.externalIdPrefix}_source_${year}_${actNumber}`
 
   return {
     workId: work_id,
@@ -195,14 +287,15 @@ function buildCandidate(work: NzWork, verbose: boolean): CandidateRecord | null 
     sourceUrl,
     externalId,
     sourceExternalId,
-    sourceName: `NZ Public Act ${year} No ${actNumber}`,
+    sourceName: cfg.buildSourceName(year, actNumber),
   }
 }
 
-// ── Fetch all acts ─────────────────────────────────────────────────────────────
+// ── Fetch all works ────────────────────────────────────────────────────────────
 
-async function fetchAllActs(
+async function fetchAllWorks(
   apiKey: string,
+  cfg: ModeConfig,
   hardLimit: number,
   verbose: boolean,
 ): Promise<CandidateRecord[]> {
@@ -213,10 +306,10 @@ async function fetchAllActs(
   let totalFromApi = 0
 
   while (true) {
-    const data = await fetchPage(apiKey, page)
+    const data = await fetchPage(apiKey, page, cfg.apiParams)
     if (page === 1) {
       totalFromApi = data.total
-      console.log(`  API reports ${totalFromApi} total acts in force`)
+      console.log(`  API reports ${totalFromApi} total records`)
     }
 
     const results = data.results ?? []
@@ -224,7 +317,7 @@ async function fetchAllActs(
 
     let newOnPage = 0
     for (const work of results) {
-      const rec = buildCandidate(work, verbose)
+      const rec = buildCandidate(work, cfg, verbose)
       if (!rec) { skippedMalformed++; continue }
       if (seenIds.has(rec.externalId)) continue
       seenIds.add(rec.externalId)
@@ -264,7 +357,12 @@ async function ensureTopic(slug: string, name: string, domain: string): Promise<
 
 type TxClient = Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>
 
-async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Promise<IngestResult> {
+async function writeRow(
+  tx: TxClient,
+  rec: CandidateRecord,
+  topicId: string,
+  ingestedBy: string,
+): Promise<IngestResult> {
   const existing = await tx.claim.findUnique({ where: { externalId: rec.externalId }, select: { id: true } })
   if (existing) return 'skipped'
 
@@ -277,7 +375,7 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
         name: rec.sourceName,
         url: rec.sourceUrl,
         methodologyType: 'primary',
-        ingestedBy: INGESTED_BY,
+        ingestedBy,
       },
     })
 
@@ -291,12 +389,12 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
         verificationStatus: 'VERIFIED',
         claimEmergedAt: enactedDate,
         claimEmergedPrecision: 'YEAR',
-        ingestedBy: INGESTED_BY,
+        ingestedBy,
         autoApproved: true,
         humanReviewed: false,
         externalId: rec.externalId,
         metadata: {
-          dataset: INGESTED_BY,
+          dataset: ingestedBy,
           workId: rec.workId,
           year: rec.year,
           actNumber: rec.actNumber,
@@ -311,7 +409,7 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
         claimId: claim.id,
         sourceId: source.id,
         type: 'CITES',
-        ingestedBy: INGESTED_BY,
+        ingestedBy,
         autoApproved: true,
       },
     })
@@ -332,27 +430,28 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
 // ── Main ───────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, limit, sampleN, verbose } = parseArgs()
+  const { runMode, datasetMode, limit, sampleN, verbose } = parseArgs()
+  const cfg = MODES[datasetMode]
 
-  console.log(`\n── ${PIPELINE}: New Zealand Public Acts ─────────────────────────────────────`)
-  console.log(`Mode: ${mode} | Limit: ${limit || 'all'}`)
+  console.log(`\n── ${cfg.pipeline} ─────────────────────────────────────────────────────────`)
+  console.log(`Run mode: ${runMode} | Dataset: ${datasetMode} | Limit: ${limit || 'all'}`)
 
   const apiKey = getApiKey()
 
   let topicId = ''
-  if (mode !== 'dry-run') {
+  if (runMode !== 'dry-run') {
     console.log('\nStep 1: Ensuring topics...')
-    topicId = await ensureTopic('nz-parliament', 'NZ Parliament', 'government')
+    topicId = await ensureTopic(cfg.topicSlug, cfg.topicName, cfg.topicDomain)
   } else {
     console.log('\nStep 1: Skipping topic DB writes (dry-run mode).')
   }
 
-  console.log('\nStep 2: Fetching NZ Public Acts in force from PCO API...')
-  const candidates = await fetchAllActs(apiKey, limit, verbose)
+  console.log(`\nStep 2: Fetching from PCO API (${cfg.ingestedBy})...`)
+  const candidates = await fetchAllWorks(apiKey, cfg, limit, verbose)
   console.log(`\nTotal candidates: ${candidates.length}`)
 
   // ── Dry-run ────────────────────────────────────────────────────────────────
-  if (mode === 'dry-run') {
+  if (runMode === 'dry-run') {
     console.log('\nStep 3: Writing dry-run sample (no DB writes)...')
 
     const sample = candidates.slice(0, 15).map(r => ({
@@ -370,20 +469,22 @@ async function main() {
       verificationStatus: 'VERIFIED',
       autoApproved: true,
       humanReviewed: false,
-      ingestedBy: INGESTED_BY,
+      ingestedBy: cfg.ingestedBy,
     }))
+
+    const apiParamStr = Object.entries(cfg.apiParams).map(([k, v]) => `${k}=${v}`).join('&')
 
     const output = {
       runDate: new Date().toISOString(),
-      pipeline: PIPELINE,
-      ingestedBy: INGESTED_BY,
-      apiEndpoint: `${API_BASE}/v0/works/?legislation_type=act&act_type=public&act_status=in_force&act_classification=principal`,
+      pipeline: cfg.pipeline,
+      ingestedBy: cfg.ingestedBy,
+      apiEndpoint: `${API_BASE}/v0/works/?${apiParamStr}`,
       totalCandidates: candidates.length,
       sample,
     }
 
-    fs.writeFileSync('pipeline-27-dry-run-sample.json', JSON.stringify(output, null, 2))
-    console.log('  Written: pipeline-27-dry-run-sample.json')
+    fs.writeFileSync(cfg.dryRunFile, JSON.stringify(output, null, 2))
+    console.log(`  Written: ${cfg.dryRunFile}`)
 
     if (candidates.length > 0) {
       console.log('\nSample titles:')
@@ -398,7 +499,7 @@ async function main() {
   }
 
   // ── Sample / Full ──────────────────────────────────────────────────────────
-  const rows = mode === 'sample'
+  const rows = runMode === 'sample'
     ? candidates.slice(0, sampleN)
     : (limit > 0 ? candidates.slice(0, limit) : candidates)
 
@@ -412,7 +513,7 @@ async function main() {
     try {
       await prisma.$transaction(async (tx) => {
         for (const row of batch) {
-          const result = await writeRow(tx, row, topicId)
+          const result = await writeRow(tx, row, topicId, cfg.ingestedBy)
           if (result === 'ingested') counts.ingested++
           else if (result === 'skipped') counts.skipped++
           else counts.errors++
@@ -436,14 +537,14 @@ async function main() {
   console.log(`  Ingested: ${counts.ingested} | Skipped: ${counts.skipped} | Errors: ${counts.errors}`)
 
   console.log('\nPost-ingestion DB verification...')
-  const dbClaims = await prisma.claim.count({ where: { ingestedBy: INGESTED_BY } })
-  const dbSources = await prisma.source.count({ where: { ingestedBy: INGESTED_BY } })
-  const dbEdges = await prisma.edge.count({ where: { ingestedBy: INGESTED_BY } })
+  const dbClaims = await prisma.claim.count({ where: { ingestedBy: cfg.ingestedBy } })
+  const dbSources = await prisma.source.count({ where: { ingestedBy: cfg.ingestedBy } })
+  const dbEdges = await prisma.edge.count({ where: { ingestedBy: cfg.ingestedBy } })
   console.log(`  Claims:  ${dbClaims}`)
   console.log(`  Sources: ${dbSources}`)
   console.log(`  Edges:   ${dbEdges}`)
 
-  if (mode === 'sample') {
+  if (runMode === 'sample') {
     console.log('\nAwaiting explicit go-ahead before full run.')
   }
 }

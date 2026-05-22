@@ -1,7 +1,7 @@
 # Legislative Pipeline Queue
 
 Two agents run at a time. Spin up next pair when a slot opens.
-Last updated: 2026-05-20
+Last updated: 2026-05-20 19:43 EDT
 
 ## Status Key
 - ✅ Done (committed + ingested)
@@ -49,14 +49,45 @@ Last updated: 2026-05-20
 | 49 | South Africa | south_africa_legislation_v1 | 557 |
 | 51 | France | france_legislation_v1 | 3,046 |
 | 54 | Israel (Knesset) | israel_knesset_v1 | 2,009 |
+| 53 | South Korea (KLRI) | korea_legislation_v1 | 2,114 |
+| 57 | Scotland | scotland_legislation_v1 | 408 |
+| 58 | Wales (Senedd) | wales_senedd_v1 | 100 |
+| 56 | European Parliament | eu_parliament_v1 | 4,331 |
+| 78 | Georgia | georgia_legislation_v1 | 301 |
+| 77 | Malta | malta_legislation_v1 | 563 |
+| 79 | Jamaica | jamaica_legislation_v1 | 528 |
+| 80 | Sri Lanka | srilanka_legislation_v1 | 1,704 |
+| 81 | Peru | peru_legislation_v1 | 5,202 |
+| 85 | UAE | uae_legislation_v1 | 177 |
+| — | Trinidad & Tobago | tt_legislation_v1 | 368 |
+| — | Brunei | brunei_legislation_v1 | 288 |
+| 62 | Malaysia | malaysia_legislation_v1 | 881 |
+| 63 | Estonia | estonia_legislation_v1 | 5,870 |
+| 61 | WTO Disputes | wto_disputes_v1 | 645 |
+| 27 | New Zealand (in-force public acts) | nz_legislation_v1 | 1,039 |
+
+## Currently Running
+| P# | Country / Body | Tag | Progress |
+|----|----------------|-----|----------|
+| 82 | Uruguay | uruguay_legislation_v1 | ~750/4,300 — scanning IMPO, nohup running |
+| 87 | PacLII (Pacific Islands) | paclii_legislation_v1 | ~800/1,254 — fetching via Wayback |
+
+## Next Queue
+| P# | Country / Body | Script | Notes |
+|----|----------------|--------|-------|
+| 27b | NZ repealed public acts | ingest-nz-legislation.ts (extend) | 4,372 acts — NZ API key in .env.local |
+| 27c | NZ bills | ingest-nz-legislation.ts (extend) | 1,868 bills |
+| 27d | NZ local acts | ingest-nz-legislation.ts (extend) | 611 acts |
+| 84 | Turkey | needs new scraper | mevzuat.gov.tr, ~5–10k laws |
+| 88 | Costa Rica | needs new scraper | pgrweb.go.cr/scij, ~3–5k laws |
 
 ## Missing / Skipped
 | P# | Country | Blocker | Resolution |
 |----|---------|---------|------------|
-| 27 | New Zealand | `NZ_LEGISLATION_API_KEY` not set — PCO API requires browser registration | Register at legislation.govt.nz, add key to .env.local, script ready |
+| 27 | New Zealand (repealed + bills + local) | In-force public acts done (1,039). Repealed (4,372), bills (1,868), local (611) pending — extend script | NZ API key in .env.local |
 | 42 | South Korea | law.go.kr DRF API requires IP-registered Open API key | Register at open.law.go.kr, add key to .env.local, script ready |
 | 52 | Russia | kremlin.ru IP-blocked; api.duma.gov.ru + pravo.gov.ru geo-blocked | Retry when IP ban lifts — script exists at ingest-russia-legislation.ts |
-| 66 | Czech Republic | psp.cz returns HTML only, no JSON API | No path forward currently |
+| 66 | Czech Republic | psp.cz HTML scraper (windows-1250, year-by-year) — 24,118 candidates found (1945–2026). Sample(5) written. Awaiting --full go-ahead | Script: ingest-czech-legislation.ts |
 | 67 | Ukraine | zakon.rada.gov.ua 403s non-UA IPs | Retry via Ukrainian IP/proxy, or wait for public API |
 | 68 | Hungary | njt.hu API endpoint 404 | No path forward currently |
 | 69 | Romania | cdep.ro connection timeout | No path forward currently |

@@ -49,10 +49,51 @@ Raw adverse event records (individual report-level data) are background-tier. Us
 **Note:** Drug-level aggregate counts from FAERS are reference-tier and have been ingested as Pipeline 8 (`faers_normalized_drugs_v1`). The distinction: a case study citing "SEMAGLUTIDE has 93,543 adverse event reports" is citing an aggregate claim directly. A case study citing a specific adverse event record is background use.
 <!-- END:background-tier-sources -->
 
+<!-- BEGIN:science-medicine-pipeline-notes -->
+# Science / Medicine / History Pipeline Notes (added 2026-05-21)
+
+The non-legislative pipeline expansion mirrors the legislative exhaustiveness goal. Same reference-tier test applies — individual records must be directly citable in case studies, not just background context.
+
+## Medical / Biology (in progress or partial)
+- `rxnorm_v1` — NLM canonical drug names + relationships. In progress (target ~14,632). Script: `ingest-rxnorm.ts`
+- `chebi_v1` — EBI chemical ontology, ~62,000 compounds. In progress. Script: `ingest-chebi.ts`
+- `omim_v1` — OMIM phenotype entries, ~15,000. Partial (1,512 ingested, hit rate limit 2026-05-21). **OMIM_API_KEY provided ✅ — in .env.local.** Rate limit: ~250 requests per window; use 500ms delay. Resuming via cron 2026-05-22 02:15 EDT. Script: `ingest-omim.ts`
+- `openfda_labels_v1` — 258k FDA drug labels (partition-fixed). **BLOCKED** pending CONSULTANT.md decisions. Script: `ingest-openfda-labels.ts`
+
+## Science / Physics / History pipeline scripts (built 2026-05-21)
+
+### Ready to run — no API key needed (agent-verified 2026-05-21 ✅, scheduled 2am 2026-05-22)
+These three were verified by coding agents on 2026-05-21. No external tokens required.
+- `nuclear_tests_v1` — `ingest-nuclear-tests.ts`. 202 curated tests: US(62) USSR(39) China(34) France(27) UK(26) DPRK(6) India(6) Pakistan(2). All entries sourced to Wikipedia test pages. Yields null where classified.
+- `periodic_table_v1` — `ingest-periodic-table.ts`. All 118 elements from Bowserinator/IUPAC GitHub JSON.
+- `who_essential_medicines_v1` — `ingest-who-essential-medicines.ts`. 147 drugs from WHO EML 23rd ed. (2023), hardcoded with ATC codes + therapeutic categories.
+
+### Ready to run — no API key needed (pending scheduling)
+- `volcanic_eruptions_v1` — `ingest-volcanic-eruptions.ts`. ~745 significant eruptions since 1500. NOAA NGDC API primary, GVP fallback.
+- `space_missions_v1` — `ingest-space-missions.ts`. 7,313 orbital launches from GCAT TSV (OrbPay > 0 filter). Sputnik 1957 → 2020s.
+
+### Needs API key before running
+- `fred_v1` — `ingest-fred.ts`. ~4–5k observations across 6 series: UNRATE, GDP, CPIAUCSL, FEDFUNDS, M2SL, CSUSHPINSA. **Needs FRED_API_KEY** (free at fred.stlouisfed.org/docs/api/api_key.html). Add to .env.local before running.
+
+### No script yet (next batch)
+- IUCN Red List — ~44,000 threatened species. Needs IUCN API token (free at iucnredlist.org/api/v4).
+- PDG particle properties — ~600 particles. Machine-readable tables at pdg.lbl.gov/2024/tables/.
+- EM-DAT disasters — ~25,000 since 1900. Requires academic registration at emdat.be.
+- Olympic results (Olympedia) — olympedia.org structured format.
+- Earth impact craters — Earth Impact Database, ~200 confirmed craters.
+- World Bank Open Data — data.worldbank.org, free API.
+- SIPRI arms transfers — sipri.org, free downloads.
+
+## Rate limit notes
+- OMIM: ~250 requests per window. Do NOT use `search=*` (returns HTTP 500). Use `search=the` which covers ~28k of ~29k entries. Rate: 500ms/request.
+- IUCN: rate limits documented at iucnredlist.org/api/v4/docs — use token from registration.
+- FRED: 120 requests/minute, no daily cap. API key required (free at fred.stlouisfed.org/docs/api/api_key.html).
+<!-- END:science-medicine-pipeline-notes -->
+
 <!-- BEGIN:active-pipelines -->
 # Active Pipeline Registry
 
-Last synced from DB: 2026-05-19. Total claims (excl. deprecated): ~49,302.
+Last synced from DB: 2026-05-21. Total claims (excl. deprecated): ~336,900+ across 90+ pipelines.
 
 | Tag | Script | Claims | Notes |
 |---|---|---|---|

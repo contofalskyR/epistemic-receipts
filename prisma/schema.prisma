@@ -70,6 +70,7 @@ model Source {
   suggestedEventsTriggered    SuggestedThresholdEvent[] @relation("SuggestedTriggerSource")
   politicalContext            PoliticalContext?
   legislativeVotes            LegislativeVote[]
+  wikidataLink                WikidataLink?
 }
 
 model SourceRelationship {
@@ -263,7 +264,24 @@ model LegislativeVote {
   passageThreshold String?   // "simple_majority", "supermajority", "unanimous", etc.
   voteDate         DateTime?
   passageType      String?   // "legislative_vote", "executive_decree", "committee_only"
+  byPartyJson      String?   // JSON: {PartyName: {yes: N, no: N, abstain: N}, ...}
   dataSource       String?   // "govtrack", "theyworkforyou", "wikidata", etc.
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
+}
+
+// Wikidata cross-reference enrichment — links Source records to Wikidata Q-numbers.
+// Enrichment only; never primary HARD_FACT source. One record per source (best match wins).
+model WikidataLink {
+  id            String   @id @default(cuid())
+  sourceId      String   @unique
+  source        Source   @relation(fields: [sourceId], references: [id])
+  wikidataQid   String   // e.g., "Q189760" (without "wd:" prefix)
+  wikidataLabel String?  // entity label from Wikidata, for readability
+  matchMethod   String   // "p3306_un_symbol" | "p5765_courtlistener" | "title_jurisdiction"
+  confidence    String   // "high" | "medium" | "low"
+  enrichedAt    DateTime @default(now())
+
+  @@index([wikidataQid])
+  @@index([matchMethod])
 }

@@ -69,9 +69,44 @@ const LEGISLATION_PIPELINES: Record<string, CountryInfo> = {
   eu_legislation_v1:         { country: 'European Union',  wikidataQid: 'Q458',  hogProperty: 'P6'  },
   un_sc_resolutions_v1:      { country: 'United Nations',  wikidataQid: 'Q1065', hogProperty: 'P6'  },
   nato_official_texts_v1:    { country: 'NATO',            wikidataQid: 'Q7184', hogProperty: 'P6'  },
+  // Pipelines shipped 2026-05-20
+  malaysia_legislation_v1:   { country: 'Malaysia',        wikidataQid: 'Q833',  hogProperty: 'P6'  },
+  estonia_legislation_v1:    { country: 'Estonia',         wikidataQid: 'Q191',  hogProperty: 'P6'  },
+  malta_legislation_v1:      { country: 'Malta',           wikidataQid: 'Q233',  hogProperty: 'P6'  },
+  georgia_legislation_v1:    { country: 'Georgia',         wikidataQid: 'Q230',  hogProperty: 'P6'  },
+  jamaica_legislation_v1:    { country: 'Jamaica',         wikidataQid: 'Q766',  hogProperty: 'P6'  },
+  // Pipelines in queue (add as they ship)
+  srilanka_legislation_v1:   { country: 'Sri Lanka',       wikidataQid: 'Q854',  hogProperty: 'P6'  },
+  pakistan_legislation_v1:   { country: 'Pakistan',        wikidataQid: 'Q843',  hogProperty: 'P35' }, // P35 = President (parliamentary system uses PM P6, but P35 safer cross-era)
+  tt_legislation_v1:         { country: 'Trinidad and Tobago', wikidataQid: 'Q754', hogProperty: 'P6' },
+  brunei_legislation_v1:     { country: 'Brunei',          wikidataQid: 'Q921',  hogProperty: 'P35' }, // Sultan = head of state + government
+  uruguay_legislation_v1:    { country: 'Uruguay',         wikidataQid: 'Q77',   hogProperty: 'P6'  },
+  peru_legislation_v1:       { country: 'Peru',            wikidataQid: 'Q419',  hogProperty: 'P6'  },
+  costarica_legislation_v1:  { country: 'Costa Rica',      wikidataQid: 'Q800',  hogProperty: 'P6'  },
+  uae_legislation_v1:        { country: 'United Arab Emirates', wikidataQid: 'Q878', hogProperty: 'P35' }, // President of UAE
 }
 
 const ALL_INGEST_TAGS = Object.keys(LEGISLATION_PIPELINES)
+
+// ── Static fallback: US Presidents ───────────────────────────────────────────
+// Wikidata P35 on Q30 lacks P580 qualifiers for historical terms, so SPARQL
+// returns nothing. Use a hardcoded list instead.
+
+const US_PRESIDENTS: HogTerm[] = [
+  { personQid: 'Q9960',  personLabel: 'Ronald Reagan',     partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('1981-01-20'), end: new Date('1989-01-20') },
+  { personQid: 'Q23505', personLabel: 'George H. W. Bush', partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('1989-01-20'), end: new Date('1993-01-20') },
+  { personQid: 'Q1124',  personLabel: 'Bill Clinton',      partyQid: 'Q29552', partyLabel: 'Democratic Party', start: new Date('1993-01-20'), end: new Date('2001-01-20') },
+  { personQid: 'Q207',   personLabel: 'George W. Bush',    partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('2001-01-20'), end: new Date('2009-01-20') },
+  { personQid: 'Q76',    personLabel: 'Barack Obama',      partyQid: 'Q29552', partyLabel: 'Democratic Party', start: new Date('2009-01-20'), end: new Date('2017-01-20') },
+  { personQid: 'Q22686', personLabel: 'Donald Trump',      partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('2017-01-20'), end: new Date('2021-01-20') },
+  { personQid: 'Q6279',  personLabel: 'Joe Biden',         partyQid: 'Q29552', partyLabel: 'Democratic Party', start: new Date('2021-01-20'), end: new Date('2025-01-20') },
+  { personQid: 'Q22686', personLabel: 'Donald Trump',      partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('2025-01-20'), end: null },
+]
+
+async function getHogTerms(info: CountryInfo): Promise<HogTerm[]> {
+  if (info.wikidataQid === 'Q30') return US_PRESIDENTS
+  return fetchHogTerms(info)
+}
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -305,7 +340,7 @@ async function main() {
 
     let hogTerms: HogTerm[] = []
     try {
-      hogTerms = await fetchHogTerms(info)
+      hogTerms = await getHogTerms(info)
       console.log(`  Found ${hogTerms.length} HoG terms`)
       hogTerms.slice(0, 5).forEach(t =>
         console.log(`  ${t.start.toISOString().slice(0, 10)} – ${t.end?.toISOString().slice(0, 10) ?? 'present'}: ${t.personLabel} (${t.partyLabel ?? 'no party'})`)
@@ -355,7 +390,7 @@ async function main() {
 
     let hogTerms: HogTerm[] = []
     try {
-      hogTerms = await fetchHogTerms(info)
+      hogTerms = await getHogTerms(info)
       console.log(`  Wikidata: ${hogTerms.length} HoG terms found`)
       if (verbose && hogTerms.length > 0) {
         hogTerms.forEach(t =>

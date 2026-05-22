@@ -23,6 +23,7 @@ export async function GET(
   const { slug } = await params;
   const page = Math.max(1, parseInt(req.nextUrl.searchParams.get("page") ?? "1", 10));
   const sort = req.nextUrl.searchParams.get("sort") ?? "emerged_desc";
+  const party = req.nextUrl.searchParams.get("party") ?? "";
 
   const topic = await prisma.topic.findUnique({
     where: { slug },
@@ -51,11 +52,17 @@ export async function GET(
     : [];
 
   const showDeprecated = req.nextUrl.searchParams.get("deprecated") === "1";
+  const baseClaimFilter = {
+    deleted: false,
+    ...(showDeprecated ? {} : { NOT: { verificationStatus: "DEPRECATED" } }),
+  };
   const claimWhere = {
     topicId: topic.id,
     claim: {
-      deleted: false,
-      ...(showDeprecated ? {} : { NOT: { verificationStatus: "DEPRECATED" } }),
+      ...baseClaimFilter,
+      ...(party ? {
+        edges: { some: { source: { politicalContext: { hogParty: party } } } },
+      } : {}),
     },
   };
 
@@ -66,7 +73,7 @@ export async function GET(
         ? { claim: { claimEmergedAt: "asc" as const } }
         : { claim: { claimEmergedAt: "desc" as const } };
 
-  const [total, claimTopics] = await Promise.all([
+  const [total, claimTopics, partyContexts] = await Promise.all([
     prisma.claimTopic.count({ where: claimWhere }),
     prisma.claimTopic.findMany({
       where: claimWhere,
@@ -82,7 +89,30 @@ export async function GET(
         },
       },
     }),
+    prisma.politicalContext.findMany({
+      where: {
+        hogParty: { not: null },
+        source: {
+          edges: {
+            some: {
+              deleted: false,
+              claim: {
+                ...baseClaimFilter,
+                topics: { some: { topicId: topic.id } },
+              },
+            },
+          },
+        },
+      },
+      distinct: ["hogParty"],
+      select: { hogParty: true },
+      orderBy: { hogParty: "asc" },
+    }),
   ]);
+
+  const availableParties = partyContexts
+    .map(pc => pc.hogParty)
+    .filter((p): p is string => p !== null);
 
   return NextResponse.json({
     topic: {
@@ -100,5 +130,6 @@ export async function GET(
     total,
     page,
     pages: Math.max(1, Math.ceil(total / PAGE_SIZE)),
+    availableParties,
   });
 }

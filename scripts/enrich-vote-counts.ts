@@ -49,6 +49,12 @@ type Counts = { enriched: number; skipped: number; failed: number }
 
 // ── HTTP helpers ──────────────────────────────────────────────────────────────
 
+class HttpError extends Error {
+  constructor(public status: number, url: string) {
+    super(`HTTP ${status} at ${url}`)
+  }
+}
+
 async function fetchJson<T>(url: string, headers: Record<string, string> = {}, retries = 3): Promise<T> {
   let delay = 2000
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -59,7 +65,7 @@ async function fetchJson<T>(url: string, headers: Record<string, string> = {}, r
       delay *= 2
       continue
     }
-    if (!res.ok) throw new Error(`HTTP ${res.status} at ${url}`)
+    if (!res.ok) throw new HttpError(res.status, url)
     return res.json() as Promise<T>
   }
   throw new Error('Failed after retries')
@@ -342,8 +348,13 @@ async function enrichUkVotes(
       fetched++
       if (verbose) console.log(`    [enriched] ${source.externalId}`)
     } catch (err) {
-      if (verbose) console.error(`    [failed] ${source.externalId}: ${err}`)
-      counts.failed++
+      // 403 = API doesn't cover this date range (pre-~2001 legislation) — not a real failure
+      if (err instanceof HttpError && err.status === 403) {
+        counts.skipped++
+      } else {
+        if (verbose) console.error(`    [failed] ${source.externalId}: ${err}`)
+        counts.failed++
+      }
     }
 
     await sleep(PAGE_DELAY)

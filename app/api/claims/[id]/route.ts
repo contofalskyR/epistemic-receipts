@@ -20,7 +20,27 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
       edges: {
         where: { deleted: false },
         include: {
-          source: true,
+          source: {
+            include: {
+              politicalContext: {
+                select: { headOfGovernment: true, hogParty: true, country: true },
+              },
+              legislativeVotes: {
+                select: {
+                  chamber: true,
+                  yesCount: true,
+                  noCount: true,
+                  abstainCount: true,
+                  totalSeats: true,
+                  passageThreshold: true,
+                  voteDate: true,
+                  passageType: true,
+                  byPartyJson: true,
+                  dataSource: true,
+                },
+              },
+            },
+          },
           revisions: { orderBy: { changedAt: "asc" } },
           metaEdges: {
             where: { deleted: false },

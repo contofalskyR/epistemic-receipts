@@ -52,3 +52,4 @@ prisma/*.db-shm
 # Local backups (do not commit)
 prisma/dev.db.backup-*
 prisma/migrations.sqlite-backup/
+.env*.local

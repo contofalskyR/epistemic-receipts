@@ -22,6 +22,19 @@ type MetaEdgeDetail = {
   actorSource: { id: string; name: string };
 };
 
+type LegislativeVoteRecord = {
+  chamber: string;
+  yesCount: number | null;
+  noCount: number | null;
+  abstainCount: number | null;
+  totalSeats: number | null;
+  passageThreshold: string | null;
+  voteDate: string | null;
+  passageType: string | null;
+  byPartyJson: string | null;
+  dataSource: string | null;
+};
+
 type EdgeDetail = {
   id: string;
   type: string;
@@ -33,6 +46,12 @@ type EdgeDetail = {
     url: string | null;
     publishedAt: string | null;
     methodologyType: string;
+    politicalContext: {
+      headOfGovernment: string | null;
+      hogParty: string | null;
+      country: string;
+    } | null;
+    legislativeVotes: LegislativeVoteRecord[];
   };
   revisions: Revision[];
   metaEdges: MetaEdgeDetail[];
@@ -275,6 +294,12 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
           style={{ left: hovered.x, top: hovered.y - 8, transform: "translate(-50%, -100%)" }}>
           <p className="text-white font-medium">{hovered.edge.source.name}</p>
           {hovered.edge.source.publishedAt && <p className="text-gray-400 mt-0.5">{formatDate(hovered.edge.source.publishedAt)}</p>}
+          {hovered.edge.source.politicalContext?.headOfGovernment && (
+            <p className="text-gray-500 mt-0.5 text-[10px]">
+              {hovered.edge.source.politicalContext.headOfGovernment}
+              {hovered.edge.source.politicalContext.hogParty ? ` · ${hovered.edge.source.politicalContext.hogParty}` : ""}
+            </p>
+          )}
           <div className="flex items-center gap-1.5 mt-1">
             <span className={`px-1.5 py-0.5 rounded-full font-medium ${TYPE_COLOR[hovered.edge.type]?.label}`}>{hovered.edge.type}</span>
             <span className="text-gray-400">{latestScore(hovered.edge)}/100</span>
@@ -349,6 +374,13 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
         <td className="py-2.5 pr-4 text-sm font-mono text-gray-300">{score}/100</td>
         <td className="py-2.5 pr-4 text-xs text-gray-500">
           {edge.source.publishedAt ? formatDate(edge.source.publishedAt) : "—"}
+          {edge.source.politicalContext?.headOfGovernment && (
+            <span className="block text-xs text-gray-600 mt-0.5">
+              {edge.source.politicalContext.hogParty === "Conservative Party" ? "🔵 " :
+               edge.source.politicalContext.hogParty === "Labour Party" ? "🔴 " : ""}
+              {edge.source.politicalContext.headOfGovernment}
+            </span>
+          )}
         </td>
         <td className="py-2.5 text-xs text-gray-600">{edge.source.methodologyType}</td>
         <td className="py-2.5 pl-4 text-gray-600 text-xs">{expanded ? "▲" : "▼"}</td>
@@ -368,6 +400,42 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
                 </div>
               ))}
             </div>
+            {edge.source.legislativeVotes.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-gray-800">
+                <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wide">Vote record</p>
+                {edge.source.legislativeVotes.map((v, i) => {
+                  const total = (v.yesCount ?? 0) + (v.noCount ?? 0) + (v.abstainCount ?? 0);
+                  const yesPct = total > 0 ? Math.round(((v.yesCount ?? 0) / total) * 100) : 0;
+                  const noPct  = total > 0 ? Math.round(((v.noCount ?? 0) / total) * 100) : 0;
+                  return (
+                    <div key={i} className="space-y-1.5">
+                      <div className="flex items-center gap-3 text-xs">
+                        <span className="text-gray-400">{v.chamber}</span>
+                        {v.voteDate && <span className="text-gray-600">{new Date(v.voteDate).toLocaleDateString()}</span>}
+                        {v.passageType && <span className="text-gray-600">{v.passageType}</span>}
+                      </div>
+                      <div className="flex items-center gap-2 text-xs font-mono">
+                        <span className="text-green-400">{v.yesCount ?? "—"} aye</span>
+                        <span className="text-gray-700">·</span>
+                        <span className="text-red-400">{v.noCount ?? "—"} no</span>
+                        {v.abstainCount !== null && v.abstainCount > 0 && (
+                          <>
+                            <span className="text-gray-700">·</span>
+                            <span className="text-gray-500">{v.abstainCount} abstain</span>
+                          </>
+                        )}
+                      </div>
+                      {total > 0 && (
+                        <div className="h-1.5 w-full rounded-full bg-gray-800 overflow-hidden flex">
+                          <div className="h-full bg-green-700" style={{ width: `${yesPct}%` }} />
+                          <div className="h-full bg-red-800" style={{ width: `${noPct}%` }} />
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </td>
         </tr>
       )}
