@@ -381,6 +381,24 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
               {edge.source.politicalContext.headOfGovernment}
             </span>
           )}
+          {edge.source.legislativeVotes[0] && (() => {
+            const v = edge.source.legislativeVotes[0];
+            const yes = v.yesCount ?? 0, no = v.noCount ?? 0;
+            const total = yes + no;
+            if (total === 0) return null;
+            const yesPct = Math.round((yes / total) * 100);
+            return (
+              <span className="flex items-center gap-1 mt-1">
+                <span className="inline-flex h-1.5 w-12 rounded overflow-hidden">
+                  <span className="bg-green-600" style={{ width: `${yesPct}%` }} />
+                  <span className="bg-red-700" style={{ width: `${100 - yesPct}%` }} />
+                </span>
+                <span className="text-green-500">{yes}</span>
+                <span className="text-gray-700">/</span>
+                <span className="text-red-500">{no}</span>
+              </span>
+            );
+          })()}
         </td>
         <td className="py-2.5 text-xs text-gray-600">{edge.source.methodologyType}</td>
         <td className="py-2.5 pl-4 text-gray-600 text-xs">{expanded ? "▲" : "▼"}</td>
