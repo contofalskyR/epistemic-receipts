@@ -35,7 +35,13 @@ export async function GET(
         },
       },
       children: {
-        include: { _count: { select: { claims: true } } },
+        include: {
+          _count: { select: { claims: true } },
+          children: {
+            include: { _count: { select: { claims: true } } },
+            orderBy: { name: "asc" },
+          },
+        },
         orderBy: { name: "asc" },
       },
     },
@@ -70,9 +76,10 @@ export async function GET(
     },
   } : {};
 
-  // Include claims from immediate children when the topic is a container.
-  // This makes parent topics like "Obama Era" aggregate their children's claims.
-  const topicIds = [topic.id, ...topic.children.map(c => c.id)];
+  // Include claims from children and grandchildren so container topics
+  // (Congress → Era → Session) aggregate all descendant claims.
+  const grandchildIds = topic.children.flatMap(c => c.children.map((gc: { id: string }) => gc.id));
+  const topicIds = [topic.id, ...topic.children.map(c => c.id), ...grandchildIds];
   const claimWhere = {
     topicId: { in: topicIds },
     claim: { ...baseClaimFilter, ...pcFilter },
