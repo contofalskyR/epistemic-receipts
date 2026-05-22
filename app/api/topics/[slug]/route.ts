@@ -70,8 +70,11 @@ export async function GET(
     },
   } : {};
 
+  // Include claims from immediate children when the topic is a container.
+  // This makes parent topics like "Obama Era" aggregate their children's claims.
+  const topicIds = [topic.id, ...topic.children.map(c => c.id)];
   const claimWhere = {
-    topicId: topic.id,
+    topicId: { in: topicIds },
     claim: { ...baseClaimFilter, ...pcFilter },
   };
 
@@ -107,7 +110,7 @@ export async function GET(
               deleted: false,
               claim: {
                 ...baseClaimFilter,
-                topics: { some: { topicId: topic.id } },
+                topics: { some: { topicId: { in: topicIds } } },
               },
             },
           },
@@ -127,7 +130,7 @@ export async function GET(
     partyNames.map(p =>
       prisma.claimTopic.count({
         where: {
-          topicId: topic.id,
+          topicId: { in: topicIds },
           claim: {
             ...baseClaimFilter,
             edges: { some: { source: { politicalContext: { hogParty: p } } } },
@@ -150,7 +153,7 @@ export async function GET(
           edges: {
             some: {
               deleted: false,
-              claim: { ...baseClaimFilter, topics: { some: { topicId: topic.id } } },
+              claim: { ...baseClaimFilter, topics: { some: { topicId: { in: topicIds } } } },
             },
           },
         },
@@ -167,7 +170,7 @@ export async function GET(
       leaderNames.map(l =>
         prisma.claimTopic.count({
           where: {
-            topicId: topic.id,
+            topicId: { in: topicIds },
             claim: {
               ...baseClaimFilter,
               edges: {
