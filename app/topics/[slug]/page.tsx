@@ -109,6 +109,7 @@ type ClaimItem = {
   humanReviewed: boolean;
   _count: { edges: number };
   topics: { topic: TopicTag }[];
+  edges: { source: { politicalContext: { hogParty: string | null; headOfGovernment: string | null } | null } | null }[];
 };
 
 type TopicData = {
@@ -368,6 +369,18 @@ function TopicSlugContent() {
                   <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">
                     {c.claimType}
                   </span>
+                  {(() => {
+                    const pc = c.edges.find(e => e.source?.politicalContext?.hogParty)?.source?.politicalContext;
+                    if (!pc?.hogParty) return null;
+                    return (
+                      <span
+                        className="text-[11px] px-2 py-0.5 rounded-full font-medium text-white"
+                        style={{ backgroundColor: partyColor(pc.hogParty) }}
+                      >
+                        {partyEmoji(pc.hogParty)} {pc.headOfGovernment ?? pc.hogParty}
+                      </span>
+                    );
+                  })()}
                   <span className="text-xs text-gray-600">
                     {c._count.edges} {c._count.edges === 1 ? "source" : "sources"}
                   </span>

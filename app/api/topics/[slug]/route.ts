@@ -104,6 +104,11 @@ export async function GET(
           include: {
             _count: { select: { edges: { where: { deleted: false } } } },
             topics: { select: { topic: { select: { id: true, name: true, slug: true, domain: true } } } },
+            edges: {
+              where: { deleted: false },
+              select: { source: { select: { politicalContext: { select: { hogParty: true, headOfGovernment: true } } } } },
+              take: 5,
+            },
           },
         },
       },
