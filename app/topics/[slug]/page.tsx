@@ -20,10 +20,74 @@ const DOMAIN_LABELS: Record<string, string> = {
 };
 
 function partyEmoji(party: string): string {
-  if (/conservative/i.test(party)) return "🔵";
-  if (/labour/i.test(party)) return "🔴";
-  if (/liberal/i.test(party)) return "🟡";
+  if (/conservative|republican|tory/i.test(party)) return "🔵";
+  if (/labour|democrat/i.test(party)) return "🔴";
+  if (/liberal|ndp|green/i.test(party)) return "🟡";
   return "⚪";
+}
+
+function partyColor(party: string): string {
+  if (/conservative|republican|tory/i.test(party)) return "#3b82f6"; // blue
+  if (/labour|democrat/i.test(party)) return "#ef4444";              // red
+  if (/liberal/i.test(party)) return "#f59e0b";                      // amber
+  if (/ndp|new democratic/i.test(party)) return "#f97316";           // orange
+  if (/green/i.test(party)) return "#22c55e";                        // green
+  return "#6b7280";                                                   // gray
+}
+
+function PartyBreakdownBar({
+  availableParties,
+  activeParty,
+  onSelect,
+}: {
+  availableParties: { party: string; claimCount: number }[];
+  activeParty: string;
+  onSelect: (party: string) => void;
+}) {
+  if (availableParties.length < 2) return null;
+  const total = availableParties.reduce((s, p) => s + p.claimCount, 0);
+  if (total === 0) return null;
+
+  return (
+    <div className="space-y-1.5">
+      {/* Stacked bar */}
+      <div className="flex h-6 w-full rounded overflow-hidden">
+        {availableParties.map(({ party, claimCount }) => {
+          const pct = (claimCount / total) * 100;
+          const isActive = activeParty === party;
+          return (
+            <button
+              key={party}
+              onClick={() => onSelect(activeParty === party ? "" : party)}
+              title={`${party}: ${claimCount} claims (${pct.toFixed(1)}%)`}
+              style={{ width: `${pct}%`, backgroundColor: partyColor(party), opacity: activeParty && !isActive ? 0.35 : 1 }}
+              className="transition-opacity hover:opacity-90 focus:outline-none"
+            />
+          );
+        })}
+      </div>
+      {/* Legend */}
+      <div className="flex flex-wrap gap-x-4 gap-y-0.5">
+        {availableParties.map(({ party, claimCount }) => {
+          const pct = ((claimCount / total) * 100).toFixed(1);
+          return (
+            <button
+              key={party}
+              onClick={() => onSelect(activeParty === party ? "" : party)}
+              className="flex items-center gap-1.5 text-[11px] text-gray-400 hover:text-gray-200 transition-colors"
+            >
+              <span
+                className="inline-block w-2.5 h-2.5 rounded-sm flex-shrink-0"
+                style={{ backgroundColor: partyColor(party) }}
+              />
+              <span className={activeParty === party ? "text-white font-medium" : ""}>{party}</span>
+              <span className="opacity-50">{pct}%</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 const SORT_OPTIONS = [
@@ -204,8 +268,13 @@ function TopicSlugContent() {
       {/* Claims */}
       <section className="space-y-4">
         {availableParties.length > 0 && (
-          <div className="space-y-2">
-            {/* Party row */}
+          <div className="space-y-3">
+            <PartyBreakdownBar
+              availableParties={availableParties}
+              activeParty={party}
+              onSelect={p => setParam("party", p)}
+            />
+            {/* Party chips row */}
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setParam("party", "")}
