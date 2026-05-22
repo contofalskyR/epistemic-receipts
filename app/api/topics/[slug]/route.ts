@@ -202,7 +202,7 @@ export async function GET(
       parentTopicId: topic.parentTopicId,
       children: topic.children.map(c => ({
         id: c.id, name: c.name, slug: c.slug,
-        claimCount: c._count.claims,
+        claimCount: c._count.claims + c.children.reduce((sum: number, gc: { _count: { claims: number } }) => sum + gc._count.claims, 0),
       })),
     },
     parentChain: buildParentChain(topic),
