@@ -232,7 +232,7 @@ function TopicSlugContent() {
               ))}
             </div>
             {/* Leader sub-row — shown when a party is selected */}
-            {party && availableLeaders && availableLeaders.length > 1 && (
+            {party && availableLeaders && availableLeaders.length > 0 && (
               <div className="flex flex-wrap gap-1.5 pl-1 border-l-2 border-gray-700">
                 <button
                   onClick={() => setParam("leader", "")}
