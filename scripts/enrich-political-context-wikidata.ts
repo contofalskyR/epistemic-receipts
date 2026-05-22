@@ -88,23 +88,37 @@ const LEGISLATION_PIPELINES: Record<string, CountryInfo> = {
 
 const ALL_INGEST_TAGS = Object.keys(LEGISLATION_PIPELINES)
 
-// ── Static fallback: US Presidents ───────────────────────────────────────────
-// Wikidata P35 on Q30 lacks P580 qualifiers for historical terms, so SPARQL
-// returns nothing. Use a hardcoded list instead.
+// ── Static fallbacks ──────────────────────────────────────────────────────────
+// Used when Wikidata SPARQL returns wrong/ambiguous party data.
+// US: P35 on Q30 lacks P580 qualifiers → SPARQL returns nothing.
+// Canada: Wikidata returns all historical party affiliations per PM, dedup
+//         takes the first alphabetically — Harper ends up as "Liberal". Hardcode
+//         to guarantee correct Conservative/Liberal/NDP mapping.
 
 const US_PRESIDENTS: HogTerm[] = [
-  { personQid: 'Q9960',  personLabel: 'Ronald Reagan',     partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('1981-01-20'), end: new Date('1989-01-20') },
-  { personQid: 'Q23505', personLabel: 'George H. W. Bush', partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('1989-01-20'), end: new Date('1993-01-20') },
-  { personQid: 'Q1124',  personLabel: 'Bill Clinton',      partyQid: 'Q29552', partyLabel: 'Democratic Party', start: new Date('1993-01-20'), end: new Date('2001-01-20') },
-  { personQid: 'Q207',   personLabel: 'George W. Bush',    partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('2001-01-20'), end: new Date('2009-01-20') },
-  { personQid: 'Q76',    personLabel: 'Barack Obama',      partyQid: 'Q29552', partyLabel: 'Democratic Party', start: new Date('2009-01-20'), end: new Date('2017-01-20') },
-  { personQid: 'Q22686', personLabel: 'Donald Trump',      partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('2017-01-20'), end: new Date('2021-01-20') },
-  { personQid: 'Q6279',  personLabel: 'Joe Biden',         partyQid: 'Q29552', partyLabel: 'Democratic Party', start: new Date('2021-01-20'), end: new Date('2025-01-20') },
-  { personQid: 'Q22686', personLabel: 'Donald Trump',      partyQid: 'Q29468', partyLabel: 'Republican Party', start: new Date('2025-01-20'), end: null },
+  { personQid: 'Q9960',  personLabel: 'Ronald Reagan',     partyQid: 'Q29468', partyLabel: 'Republican Party',            start: new Date('1981-01-20'), end: new Date('1989-01-20') },
+  { personQid: 'Q23505', personLabel: 'George H. W. Bush', partyQid: 'Q29468', partyLabel: 'Republican Party',            start: new Date('1989-01-20'), end: new Date('1993-01-20') },
+  { personQid: 'Q1124',  personLabel: 'Bill Clinton',      partyQid: 'Q29552', partyLabel: 'Democratic Party',            start: new Date('1993-01-20'), end: new Date('2001-01-20') },
+  { personQid: 'Q207',   personLabel: 'George W. Bush',    partyQid: 'Q29468', partyLabel: 'Republican Party',            start: new Date('2001-01-20'), end: new Date('2009-01-20') },
+  { personQid: 'Q76',    personLabel: 'Barack Obama',      partyQid: 'Q29552', partyLabel: 'Democratic Party',            start: new Date('2009-01-20'), end: new Date('2017-01-20') },
+  { personQid: 'Q22686', personLabel: 'Donald Trump',      partyQid: 'Q29468', partyLabel: 'Republican Party',            start: new Date('2017-01-20'), end: new Date('2021-01-20') },
+  { personQid: 'Q6279',  personLabel: 'Joe Biden',         partyQid: 'Q29552', partyLabel: 'Democratic Party',            start: new Date('2021-01-20'), end: new Date('2025-01-20') },
+  { personQid: 'Q22686', personLabel: 'Donald Trump',      partyQid: 'Q29468', partyLabel: 'Republican Party',            start: new Date('2025-01-20'), end: null },
+]
+
+const CANADA_PMS: HogTerm[] = [
+  { personQid: 'Q7799',  personLabel: 'Brian Mulroney',    partyQid: 'Q488523', partyLabel: 'Progressive Conservative Party of Canada', start: new Date('1984-09-17'), end: new Date('1993-06-25') },
+  { personQid: 'Q209626',personLabel: 'Kim Campbell',      partyQid: 'Q488523', partyLabel: 'Progressive Conservative Party of Canada', start: new Date('1993-06-25'), end: new Date('1993-11-04') },
+  { personQid: 'Q3731',  personLabel: 'Jean Chrétien',     partyQid: 'Q138345', partyLabel: 'Liberal Party of Canada',                  start: new Date('1993-11-04'), end: new Date('2003-12-12') },
+  { personQid: 'Q156504',personLabel: 'Paul Martin',       partyQid: 'Q138345', partyLabel: 'Liberal Party of Canada',                  start: new Date('2003-12-12'), end: new Date('2006-02-06') },
+  { personQid: 'Q41665', personLabel: 'Stephen Harper',    partyQid: 'Q488523', partyLabel: 'Conservative Party of Canada',             start: new Date('2006-02-06'), end: new Date('2015-11-03') },
+  { personQid: 'Q3099714',personLabel: 'Justin Trudeau',   partyQid: 'Q138345', partyLabel: 'Liberal Party of Canada',                  start: new Date('2015-11-04'), end: new Date('2025-03-13') },
+  { personQid: 'Q7199',  personLabel: 'Mark Carney',       partyQid: 'Q138345', partyLabel: 'Liberal Party of Canada',                  start: new Date('2025-03-14'), end: null },
 ]
 
 async function getHogTerms(info: CountryInfo): Promise<HogTerm[]> {
   if (info.wikidataQid === 'Q30') return US_PRESIDENTS
+  if (info.wikidataQid === 'Q16') return CANADA_PMS
   return fetchHogTerms(info)
 }
 

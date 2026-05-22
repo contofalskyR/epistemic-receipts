@@ -73,7 +73,7 @@ export async function GET(
         ? { claim: { claimEmergedAt: "asc" as const } }
         : { claim: { claimEmergedAt: "desc" as const } };
 
-  const [total, claimTopics, partyContexts] = await Promise.all([
+  const [total, claimTopics, distinctParties] = await Promise.all([
     prisma.claimTopic.count({ where: claimWhere }),
     prisma.claimTopic.findMany({
       where: claimWhere,
@@ -110,9 +110,25 @@ export async function GET(
     }),
   ]);
 
-  const availableParties = partyContexts
+  const partyNames = distinctParties
     .map(pc => pc.hogParty)
     .filter((p): p is string => p !== null);
+
+  const partyCounts = await Promise.all(
+    partyNames.map(p =>
+      prisma.claimTopic.count({
+        where: {
+          topicId: topic.id,
+          claim: {
+            ...baseClaimFilter,
+            edges: { some: { source: { politicalContext: { hogParty: p } } } },
+          },
+        },
+      }).then(count => ({ party: p, claimCount: count }))
+    )
+  );
+
+  const availableParties = partyCounts.sort((a, b) => b.claimCount - a.claimCount);
 
   return NextResponse.json({
     topic: {

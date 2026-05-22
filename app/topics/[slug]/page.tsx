@@ -59,7 +59,7 @@ type TopicData = {
   total: number;
   page: number;
   pages: number;
-  availableParties: string[];
+  availableParties: { party: string; claimCount: number }[];
 };
 
 function TopicChips({ topics, exclude }: { topics: { topic: TopicTag }[]; exclude?: string }) {
@@ -210,7 +210,7 @@ function TopicSlugContent() {
             >
               All
             </button>
-            {availableParties.map(p => (
+            {availableParties.map(({ party: p, claimCount }) => (
               <button
                 key={p}
                 onClick={() => setParam("party", p)}
@@ -220,7 +220,7 @@ function TopicSlugContent() {
                     : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200"
                 }`}
               >
-                {partyEmoji(p)} {p}
+                {partyEmoji(p)} {p} <span className="opacity-60">({claimCount})</span>
               </button>
             ))}
           </div>
