@@ -24,6 +24,7 @@ export async function GET(
   const page = Math.max(1, parseInt(req.nextUrl.searchParams.get("page") ?? "1", 10));
   const sort = req.nextUrl.searchParams.get("sort") ?? "emerged_desc";
   const party = req.nextUrl.searchParams.get("party") ?? "";
+  const leader = req.nextUrl.searchParams.get("leader") ?? "";
 
   const topic = await prisma.topic.findUnique({
     where: { slug },
@@ -56,14 +57,22 @@ export async function GET(
     deleted: false,
     ...(showDeprecated ? {} : { NOT: { verificationStatus: "DEPRECATED" } }),
   };
+  const pcFilter = party || leader ? {
+    edges: {
+      some: {
+        source: {
+          politicalContext: {
+            ...(party ? { hogParty: party } : {}),
+            ...(leader ? { headOfGovernment: leader } : {}),
+          },
+        },
+      },
+    },
+  } : {};
+
   const claimWhere = {
     topicId: topic.id,
-    claim: {
-      ...baseClaimFilter,
-      ...(party ? {
-        edges: { some: { source: { politicalContext: { hogParty: party } } } },
-      } : {}),
-    },
+    claim: { ...baseClaimFilter, ...pcFilter },
   };
 
   const claimOrderBy =
@@ -130,6 +139,52 @@ export async function GET(
 
   const availableParties = partyCounts.sort((a, b) => b.claimCount - a.claimCount);
 
+  // When a party is selected, return the distinct leaders within that party for sub-filtering
+  let availableLeaders: { leader: string; claimCount: number }[] = [];
+  if (party) {
+    const distinctLeaders = await prisma.politicalContext.findMany({
+      where: {
+        hogParty: party,
+        headOfGovernment: { not: null },
+        source: {
+          edges: {
+            some: {
+              deleted: false,
+              claim: { ...baseClaimFilter, topics: { some: { topicId: topic.id } } },
+            },
+          },
+        },
+      },
+      distinct: ["headOfGovernment"],
+      select: { headOfGovernment: true },
+    });
+
+    const leaderNames = distinctLeaders
+      .map(l => l.headOfGovernment)
+      .filter((l): l is string => l !== null);
+
+    availableLeaders = await Promise.all(
+      leaderNames.map(l =>
+        prisma.claimTopic.count({
+          where: {
+            topicId: topic.id,
+            claim: {
+              ...baseClaimFilter,
+              edges: {
+                some: {
+                  source: {
+                    politicalContext: { hogParty: party, headOfGovernment: l },
+                  },
+                },
+              },
+            },
+          },
+        }).then(count => ({ leader: l, claimCount: count }))
+      )
+    );
+    availableLeaders.sort((a, b) => b.claimCount - a.claimCount);
+  }
+
   return NextResponse.json({
     topic: {
       id: topic.id, name: topic.name, slug: topic.slug,
@@ -147,5 +202,6 @@ export async function GET(
     page,
     pages: Math.max(1, Math.ceil(total / PAGE_SIZE)),
     availableParties,
+    availableLeaders,
   });
 }

@@ -60,6 +60,7 @@ type TopicData = {
   page: number;
   pages: number;
   availableParties: { party: string; claimCount: number }[];
+  availableLeaders: { leader: string; claimCount: number }[];
 };
 
 function TopicChips({ topics, exclude }: { topics: { topic: TopicTag }[]; exclude?: string }) {
@@ -88,6 +89,7 @@ function TopicSlugContent() {
   const page = parseInt(searchParams.get("page") ?? "1", 10);
   const sort = searchParams.get("sort") ?? "emerged_desc";
   const party = searchParams.get("party") ?? "";
+  const leader = searchParams.get("leader") ?? "";
 
   const [data, setData] = useState<TopicData | null>(null);
   const [notFound, setNotFound] = useState(false);
@@ -97,10 +99,11 @@ function TopicSlugContent() {
     setNotFound(false);
     const qs = new URLSearchParams({ page: String(page), sort });
     if (party) qs.set("party", party);
+    if (leader) qs.set("leader", leader);
     fetch(`/api/topics/${slug}?${qs.toString()}`)
       .then(r => { if (!r.ok) { setNotFound(true); return null; } return r.json(); })
       .then(d => { if (d) setData(d); });
-  }, [slug, page, sort, party]);
+  }, [slug, page, sort, party, leader]);
 
   function setParam(key: string, value: string) {
     const p = new URLSearchParams(searchParams.toString());
@@ -110,6 +113,8 @@ function TopicSlugContent() {
       p.set(key, value);
     }
     if (key !== "page") p.delete("page");
+    // Clearing party should also clear leader
+    if (key === "party") p.delete("leader");
     router.push(`/topics/${slug}?${p.toString()}`);
   }
 
@@ -124,7 +129,7 @@ function TopicSlugContent() {
 
   if (!data) return <p className="text-gray-600 text-sm">Loading…</p>;
 
-  const { topic, parentChain, siblings, claims, total, pages, availableParties } = data;
+  const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
 
   return (
@@ -199,30 +204,61 @@ function TopicSlugContent() {
       {/* Claims */}
       <section className="space-y-4">
         {availableParties.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setParam("party", "")}
-              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                !party
-                  ? "border-gray-400 bg-gray-700 text-white"
-                  : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200"
-              }`}
-            >
-              All
-            </button>
-            {availableParties.map(({ party: p, claimCount }) => (
+          <div className="space-y-2">
+            {/* Party row */}
+            <div className="flex flex-wrap gap-2">
               <button
-                key={p}
-                onClick={() => setParam("party", p)}
+                onClick={() => setParam("party", "")}
                 className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                  party === p
+                  !party
                     ? "border-gray-400 bg-gray-700 text-white"
                     : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200"
                 }`}
               >
-                {partyEmoji(p)} {p} <span className="opacity-60">({claimCount})</span>
+                All
               </button>
-            ))}
+              {availableParties.map(({ party: p, claimCount }) => (
+                <button
+                  key={p}
+                  onClick={() => setParam("party", p)}
+                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                    party === p
+                      ? "border-gray-400 bg-gray-700 text-white"
+                      : "border-gray-700 bg-gray-900 text-gray-400 hover:border-gray-500 hover:text-gray-200"
+                  }`}
+                >
+                  {partyEmoji(p)} {p} <span className="opacity-60">({claimCount})</span>
+                </button>
+              ))}
+            </div>
+            {/* Leader sub-row — shown when a party is selected */}
+            {party && availableLeaders && availableLeaders.length > 1 && (
+              <div className="flex flex-wrap gap-1.5 pl-1 border-l-2 border-gray-700">
+                <button
+                  onClick={() => setParam("leader", "")}
+                  className={`text-xs px-2.5 py-0.5 rounded-full border transition-colors ${
+                    !leader
+                      ? "border-gray-500 bg-gray-800 text-gray-200"
+                      : "border-gray-800 bg-transparent text-gray-500 hover:border-gray-600 hover:text-gray-300"
+                  }`}
+                >
+                  All eras
+                </button>
+                {availableLeaders.map(({ leader: l, claimCount }) => (
+                  <button
+                    key={l}
+                    onClick={() => setParam("leader", l)}
+                    className={`text-xs px-2.5 py-0.5 rounded-full border transition-colors ${
+                      leader === l
+                        ? "border-gray-500 bg-gray-800 text-gray-200"
+                        : "border-gray-800 bg-transparent text-gray-500 hover:border-gray-600 hover:text-gray-300"
+                    }`}
+                  >
+                    {l} <span className="opacity-60">({claimCount})</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
         <div className="flex items-center justify-between gap-4">
