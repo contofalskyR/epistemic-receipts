@@ -106,7 +106,17 @@ export async function GET(
             topics: { select: { topic: { select: { id: true, name: true, slug: true, domain: true } } } },
             edges: {
               where: { deleted: false },
-              select: { source: { select: { politicalContext: { select: { hogParty: true, headOfGovernment: true } } } } },
+              select: {
+                source: {
+                  select: {
+                    politicalContext: { select: { hogParty: true, headOfGovernment: true } },
+                    legislativeVotes: {
+                      select: { chamber: true, yesCount: true, noCount: true, abstainCount: true, totalSeats: true },
+                      take: 1,
+                    },
+                  },
+                },
+              },
               take: 5,
             },
           },

@@ -109,7 +109,12 @@ type ClaimItem = {
   humanReviewed: boolean;
   _count: { edges: number };
   topics: { topic: TopicTag }[];
-  edges: { source: { politicalContext: { hogParty: string | null; headOfGovernment: string | null } | null } | null }[];
+  edges: {
+    source: {
+      politicalContext: { hogParty: string | null; headOfGovernment: string | null } | null;
+      legislativeVotes: { chamber: string | null; yesCount: number | null; noCount: number | null; abstainCount: number | null; totalSeats: number | null }[];
+    } | null;
+  }[];
 };
 
 type TopicData = {
@@ -378,6 +383,25 @@ function TopicSlugContent() {
                         style={{ backgroundColor: partyColor(pc.hogParty) }}
                       >
                         {partyEmoji(pc.hogParty)} {pc.headOfGovernment ?? pc.hogParty}
+                      </span>
+                    );
+                  })()}
+                  {(() => {
+                    const vote = c.edges.find(e => e.source?.legislativeVotes?.length)?.source?.legislativeVotes?.[0];
+                    if (!vote || vote.yesCount == null || vote.noCount == null) return null;
+                    const yes = vote.yesCount, no = vote.noCount;
+                    const total = yes + no;
+                    if (total === 0) return null;
+                    const yesPct = Math.round((yes / total) * 100);
+                    return (
+                      <span className="inline-flex items-center gap-1 text-[11px]">
+                        <span className="inline-flex h-2 w-16 rounded overflow-hidden">
+                          <span className="bg-green-600" style={{ width: `${yesPct}%` }} />
+                          <span className="bg-red-700" style={{ width: `${100 - yesPct}%` }} />
+                        </span>
+                        <span className="text-green-500">{yes}</span>
+                        <span className="text-gray-600">/</span>
+                        <span className="text-red-500">{no}</span>
                       </span>
                     );
                   })()}
