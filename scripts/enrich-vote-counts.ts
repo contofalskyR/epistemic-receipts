@@ -7,9 +7,9 @@
 //              existing congress_votes_v1 claim metadata
 //   canada   — OpenParliament.ca /votes/ endpoint
 //   uk       — UK Parliament Divisions API (free, no key required)
-//   eu       — EP Open Data Portal adopted-texts vote data
-//   de       — Bundestag DIP named votes (Namentliche Abstimmungen)
-//   il       — Knesset OData KNS_Vote
+//   eu       — HowTheyVote.eu votes.csv release joined by texts_adopted_reference
+//   de       — pending (Bundestag named votes require HTML scrape + drucksache→vorgang map)
+//   il       — pending (no schema linkage from Knesset OData votes to IsraelLawID)
 //
 // Run: npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-vote-counts.ts --dry-run
 //      npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-vote-counts.ts --full [--country us] [--limit N] [--verbose]
@@ -296,8 +296,95 @@ async function enrichCanadaVotes(
   return counts
 }
 
-// ── UK: Official UK Parliament Divisions API ─────────────────────────────────
-// Free, no key required. https://votes.parliament.uk/Votes/Commons/Divisions
+// ── UK: commonsvotes-api.parliament.uk (Cloudflare-free) ────────────────────
+// Strategy:
+//   1. Skip pre-2017 sources (electronic division records are sparse before then)
+//   2. Fetch short title from legislation.gov.uk HTML <title> tag
+//   3. Convert "Foo Act 2023" → search term → query commonsvotes-api by searchTerm
+//   4. Pick division with highest total votes (most contested)
+//   5. Fetch byPartyJson from groupedbyparty endpoint
+//
+// votes.parliament.uk is Cloudflare-protected; commonsvotes-api.parliament.uk is not.
+// Many UK Acts pass without a division (uncontested) — skip rate will be high.
+
+interface UkDivision {
+  DivisionId: number
+  Date: string
+  Title: string
+  AyeCount: number
+  NoCount: number
+}
+
+interface UkDivisionGrouped extends UkDivision {
+  Ayes: { PartyName: string; VoteCount: number }[]
+  Noes: { PartyName: string; VoteCount: number }[]
+}
+
+const ukTitleCache = new Map<string, string | null>()
+const ukDivisionCache = new Map<string, UkDivision | null>()
+
+async function fetchUkTitle(type: string, year: string, chapter: string): Promise<string | null> {
+  const key = `${type}/${year}/${chapter}`
+  if (ukTitleCache.has(key)) return ukTitleCache.get(key) ?? null
+
+  try {
+    // Fetch HTML page — <title> element contains the short title cleanly
+    const res = await fetch(`https://www.legislation.gov.uk/${type}/${year}/${chapter}`, {
+      headers: { 'User-Agent': 'EpistemicReceipts/1.0 (+https://epistemic-receipts.vercel.app)' },
+      signal: AbortSignal.timeout(15_000),
+      redirect: 'follow',
+    })
+    if (!res.ok) { ukTitleCache.set(key, null); return null }
+    const html = await res.text()
+    const m = html.match(/<title>([^<]+)<\/title>/)
+    const raw = m ? m[1].trim() : null
+    // Strip any " | legislation.gov.uk" suffix if present
+    const title = raw ? raw.replace(/\s*\|.*$/, '').trim() : null
+    ukTitleCache.set(key, title)
+    return title
+  } catch {
+    ukTitleCache.set(key, null)
+    return null
+  }
+}
+
+async function findUkDivisionByBillName(actTitle: string): Promise<UkDivision | null> {
+  // "Online Safety Act 2023" → "Online Safety Bill"
+  // Appending "Bill" narrows the search to the legislative bill, excluding derived SIs
+  const searchTerm = actTitle
+    .replace(/\s+Act(\s+\d{4})?$/, ' Bill')
+    .trim()
+  const cacheKey = searchTerm.toLowerCase()
+  if (ukDivisionCache.has(cacheKey)) return ukDivisionCache.get(cacheKey) ?? null
+
+  try {
+    const url = `https://commonsvotes-api.parliament.uk/data/divisions.json/search?queryParameters.searchTerm=${encodeURIComponent(searchTerm)}`
+    const divs = await fetchJson<UkDivision[]>(url)
+    if (!divs || divs.length === 0) {
+      ukDivisionCache.set(cacheKey, null)
+      return null
+    }
+    // Prefer Third Reading; fall back to division with highest total votes
+    const thirdReading = divs.find(d => /third\s*reading/i.test(d.Title))
+    const byVotes = [...divs].sort((a, b) => (b.AyeCount + b.NoCount) - (a.AyeCount + a.NoCount))
+    const result = thirdReading ?? byVotes[0] ?? null
+    ukDivisionCache.set(cacheKey, result)
+    return result
+  } catch {
+    ukDivisionCache.set(cacheKey, null)
+    return null
+  }
+}
+
+async function fetchUkDivisionGrouped(divisionId: number): Promise<UkDivisionGrouped | null> {
+  try {
+    const url = `https://commonsvotes-api.parliament.uk/data/divisions.json/groupedbyparty?queryParameters.divisionId=${divisionId}`
+    const rows = await fetchJson<UkDivisionGrouped[]>(url)
+    return Array.isArray(rows) && rows.length > 0 ? rows[0]! : null
+  } catch {
+    return null
+  }
+}
 
 async function enrichUkVotes(
   sources: { id: string; externalId: string | null; publishedAt: Date | null }[],
@@ -305,179 +392,285 @@ async function enrichUkVotes(
   verbose: boolean,
 ): Promise<Counts> {
   const counts: Counts = { enriched: 0, skipped: 0, failed: 0 }
-  const PAGE_DELAY = 300
-  let fetched = 0
+  let written = 0
+
+  // Electronic division records are sparse before 2017
+  const CUTOFF = new Date('2017-01-01')
 
   for (const source of sources) {
-    if (!source.publishedAt) { counts.skipped++; continue }
+    // Skip ancient legislation — commonsvotes-api won't have records
+    if (!source.publishedAt || source.publishedAt < CUTOFF) {
+      if (verbose) console.log(`    [skip] pre-2017: ${source.externalId}`)
+      counts.skipped++
+      continue
+    }
 
     const existing = await prisma.legislativeVote.findFirst({ where: { sourceId: source.id, dataSource: 'uk-parliament' } })
     if (existing) { counts.skipped++; continue }
 
-    const dateStr = source.publishedAt.toISOString().slice(0, 10)
+    const extId = source.externalId ?? ''
+
+    // Parse: uk_legislation_source_ukpga_2023_45
+    const m = extId.match(/^uk_legislation_source_(ukpga|uksi|asp|anaw|mwa|ukcm|nia|apni)_(\d{4})_(\d+)$/)
+    if (!m) {
+      if (verbose) console.log(`    [skip] unparseable externalId: ${extId}`)
+      counts.skipped++
+      continue
+    }
+    const [, legType, year, chapter] = m as [string, string, string, string]
+
+    const title = await fetchUkTitle(legType, year, chapter)
+    await sleep(400)
+
+    if (!title) {
+      if (verbose) console.log(`    [skip] no title from legislation.gov.uk: ${legType}/${year}/${chapter}`)
+      counts.skipped++
+      continue
+    }
+
+    const division = await findUkDivisionByBillName(title)
+    await sleep(300)
+
+    if (!division) {
+      if (verbose) console.log(`    [skip] no division found for "${title}"`)
+      counts.skipped++
+      continue
+    }
+
+    if (dryRun) {
+      console.log(`    [dry-run] ${extId}: "${title}" → [${division.DivisionId}] "${division.Title}" aye=${division.AyeCount} noe=${division.NoCount}`)
+      counts.enriched++
+      continue
+    }
 
     try {
-      // Query Commons divisions on the enactment date
-      const url = `https://votes.parliament.uk/Votes/Commons/Divisions?startDate=${dateStr}&endDate=${dateStr}&format=json`
-      const data = await fetchJson<{ value: Array<{ DivisionId: number; Date: string; AyeCount: number; NoeCount: number; Title: string }> }>(url)
+      // Fetch grouped party breakdown for byPartyJson
+      const grouped = await fetchUkDivisionGrouped(division.DivisionId)
+      await sleep(200)
 
-      const divisions = data?.value ?? []
-      if (divisions.length === 0) { counts.skipped++; continue }
-
-      const div = divisions[0]!
-
-      if (dryRun) {
-        if (verbose) console.log(`    [dry-run] ${source.externalId}: aye=${div.AyeCount} no=${div.NoeCount}`)
-        counts.enriched++
-        continue
-      }
+      const byPartyJson = grouped
+        ? { ayes: grouped.Ayes, noes: grouped.Noes }
+        : null
 
       await prisma.legislativeVote.create({
         data: {
           sourceId: source.id,
           chamber: 'House of Commons',
-          yesCount: div.AyeCount,
-          noCount: div.NoeCount,
+          yesCount: division.AyeCount,
+          noCount: division.NoCount,
           passageThreshold: 'simple_majority',
-          voteDate: new Date(div.Date),
+          voteDate: new Date(division.Date),
           passageType: 'legislative_vote',
           dataSource: 'uk-parliament',
+          byPartyJson: byPartyJson ? JSON.stringify(byPartyJson) : undefined,
         },
       })
       counts.enriched++
-      fetched++
-      if (verbose) console.log(`    [enriched] ${source.externalId}`)
+      written++
+      if (verbose) console.log(`    [enriched] ${extId}: "${title}" aye=${division.AyeCount} noe=${division.NoCount}`)
     } catch (err) {
-      // 403 = API doesn't cover this date range (pre-~2001 legislation) — not a real failure
-      if (err instanceof HttpError && err.status === 403) {
-        counts.skipped++
-      } else {
-        if (verbose) console.error(`    [failed] ${source.externalId}: ${err}`)
-        counts.failed++
-      }
+      console.error(`    [failed] ${extId}: ${err}`)
+      counts.failed++
     }
-
-    await sleep(PAGE_DELAY)
   }
 
-  console.log(`  UK Parliament: matched ${fetched} votes`)
+  console.log(`  UK Parliament: written ${written} votes`)
   return counts
 }
 
-// ── Germany: Bundestag named votes (Namentliche Abstimmungen) ─────────────────
-// DIP API endpoint for roll-call votes linked to Vorgänge.
-
-interface DipAbstimmung {
-  id: string
-  vorgang_id?: string | null
-  datum?: string | null
-  titel?: string | null
-  ja?: number | null
-  nein?: number | null
-  enthalten?: number | null
-  nichtabgegeben?: number | null
-}
-
-interface DipAbstimmungPage {
-  documents: DipAbstimmung[]
-  cursor?: string
-  numFound?: number
-}
-
+// ── Germany: Bundestag named votes (Namentliche Abstimmungen) — pending ───────
+// Status: investigated 2026-05-22. The DIP REST API exposes no roll-call endpoint.
+// Named-vote data is published only as Excel/PDF lists and as HTML cards under
+// https://www.bundestag.de/parlament/plenum/abstimmung/liste (ajax filterlist
+// returns chart-values="ja,nein,enthalten,nichtabg" + Drucksache references).
+// Linking a named vote back to a bundestag_v1 vorgang requires resolving the
+// Drucksache numbers shown on each vote card to a vorgang via DIP's
+// /vorgangsposition?f.drucksache=... query — a separate scrape-and-resolve
+// pipeline, not a simple REST call.
 async function enrichGermanyVotes(
   sources: { id: string; externalId: string | null; publishedAt: Date | null }[],
-  dryRun: boolean,
-  verbose: boolean,
+  _dryRun: boolean,
+  _verbose: boolean,
 ): Promise<Counts> {
-  const counts: Counts = { enriched: 0, skipped: 0, failed: 0 }
-  const API_KEY = 'OSOegLs.PR2lwJ1dwCeje9vTj7FPOt3hvpYKtwKkhw' // public Bundestag key
-  const PAGE_DELAY = 300
-
-  // Build lookup: bundestag vorgang id → source id
-  // bundestag_v1 source externalId: bundestag_source_{id}
-  // DIP abstimmung records have vorgang_id matching the numeric portion
-  const vorgangToSource = new Map<string, string>()
-  for (const s of sources) {
-    const m = s.externalId?.match(/^bundestag_source_(.+)$/)
-    if (m) vorgangToSource.set(m[1]!, s.id)
-  }
-
-  if (vorgangToSource.size === 0) {
-    console.log('  No Bundestag sources with parseable externalIds')
-    counts.skipped += sources.length
-    return counts
-  }
-
-  // The DIP search API (search.dip.bundestag.de/api/v1) does not expose an
-  // abstimmung/vote endpoint. Bundestag Namentliche Abstimmungen (named votes)
-  // are published as XML files via https://www.bundestag.de/services/opendata
-  // and require a separate download-and-parse pipeline (not a simple REST call).
-  // This handler is a placeholder — implement by downloading the XML roll-call
-  // vote files and matching them to vorgang IDs.
-  console.log(`  NOTE: Bundestag DIP API has no abstimmung endpoint.`)
-  console.log(`  Named vote data requires XML download from bundestag.de/services/opendata.`)
-  console.log(`  This enrichment step is pending a dedicated download-and-parse implementation.`)
-  counts.skipped += sources.length
-  return counts
+  console.log(`  NOTE: Bundestag named votes require an HTML-scrape + drucksache→vorgang resolution pipeline.`)
+  console.log(`  Endpoint surveyed: https://www.bundestag.de/ajax/filterlist/de/parlament/plenum/abstimmung/liste/484422-484422`)
+  console.log(`  Vote cards expose ja/nein/enthalten/nichtabg counts but only Drucksache refs, not vorgang IDs.`)
+  console.log(`  Skipping in this run; track as a separate ingester proposal.`)
+  return { enriched: 0, skipped: sources.length, failed: 0 }
 }
 
-// ── Israel: Knesset OData KNS_Vote ───────────────────────────────────────────
-
-interface KnessetVote {
-  VoteID: number
-  IsraelLawID?: number | null
-  KnessetNum?: number | null
-  Name?: string | null
-  VoteDate?: string | null
-  AcceptedText?: string | null
-  For?: number | null
-  Against?: number | null
-  Abstain?: number | null
-}
-
-interface KnessetODataPage {
-  value: KnessetVote[]
-  'odata.nextLink'?: string
-}
-
+// ── Israel: Knesset OData votes — pending ────────────────────────────────────
+// Status: investigated 2026-05-22. The Knesset operates two OData services:
+//   ParliamentInfo.svc — KNS_IsraelLaw (our source records), KNS_Bill, KNS_PlmSessionItem
+//   Votes.svc          — View_vote_rslts_hdr_Approved with vote_id, sess_item_id,
+//                        sess_item_dscr, total_for/against/abstain
+// Both work. However, the Vote → IsraelLaw relationship is not expressed in the
+// OData schema: votes attach to sess_item_id (plenary session items), and there
+// is no documented pivot from session items back to a specific IsraelLawID.
+// Linking would require fuzzy Hebrew text matching of sess_item_dscr against
+// KNS_IsraelLaw.Name, which is brittle. Defer to a separate pipeline.
 async function enrichIsraelVotes(
   sources: { id: string; externalId: string | null; publishedAt: Date | null }[],
-  dryRun: boolean,
-  verbose: boolean,
+  _dryRun: boolean,
+  _verbose: boolean,
 ): Promise<Counts> {
-  const counts: Counts = { enriched: 0, skipped: 0, failed: 0 }
-
-  // Build lookup: IsraelLawID → source id
-  // israel_knesset_v1 source externalId: israel_knesset_source_{id}
-  const lawIdToSource = new Map<number, string>()
-  for (const s of sources) {
-    const m = s.externalId?.match(/^israel_knesset_source_(\d+)$/)
-    if (m) lawIdToSource.set(parseInt(m[1]!, 10), s.id)
-  }
-
-  if (lawIdToSource.size === 0) {
-    console.log('  No Israel Knesset sources with parseable externalIds')
-    counts.skipped += sources.length
-    return counts
-  }
-
-  // The Knesset OData service (knesset.gov.il/Odata/ParliamentInfo.svc) does
-  // not expose a KNS_Vote entity. Available entities include KNS_PlenumSession
-  // and KNS_PlmSessionItem, which contain the plenary session schedule but
-  // not individual division vote counts. Knesset roll-call vote data is
-  // published separately on knesset.gov.il/Odata/Votes.svc (a different
-  // service path). This handler is a placeholder pending verification of
-  // that alternate endpoint.
-  console.log(`  NOTE: KNS_Vote not available in the ParliamentInfo OData service.`)
-  console.log(`  Knesset vote data may be at knesset.gov.il/Odata/Votes.svc — pending verification.`)
-  counts.skipped += sources.length
-  return counts
+  console.log(`  NOTE: Knesset Votes.svc exists with total_for/against/abstain but has no schema linkage to IsraelLawID.`)
+  console.log(`  Votes attach to sess_item_id (session items); linking back to IsraelLaw needs Hebrew text matching.`)
+  console.log(`  Skipping in this run; track as a separate ingester proposal.`)
+  return { enriched: 0, skipped: sources.length, failed: 0 }
 }
 
-// ── EU Parliament vote data ───────────────────────────────────────────────────
-// EP Open Data Portal /api/v2/adopted-texts includes vote metadata in some records.
-// We check the existing eu_parliament_v1 sources and look for vote data via
-// the EP voting lists endpoint.
+// ── EU Parliament vote data via HowTheyVote.eu ────────────────────────────────
+// Strategy:
+//   1. Download HowTheyVote.eu's latest votes.csv release (gzip).
+//   2. Build map of texts_adopted_reference (e.g. P9_TA(2022)0040) → main RCV
+//      vote counts (count_for / against / abstention / did_not_vote).
+//   3. Match by parsing eu_parliament_v1 externalIds: ep_src_TA-X-YYYY-NNNN
+//      → P{X}_TA({YYYY}){NNNN}.
+// Source: github.com/HowTheyVote/data — releases include votes.csv.gz with
+// the texts_adopted_reference column joining each RCV to its TA document.
+// Coverage: EP-9 (Jul 2019 →) through current EP-10 plenaries; only TAs with
+// recorded roll-call votes are present.
+
+import * as path from 'path'
+import * as zlib from 'zlib'
+import { pipeline } from 'stream/promises'
+import { Readable } from 'stream'
+
+interface HtvVote {
+  id: string
+  timestamp: string
+  is_main: boolean
+  count_for: number
+  count_against: number
+  count_abstention: number
+  count_did_not_vote: number
+  result: string
+  reference: string
+  display_title: string
+  texts_adopted_reference: string
+}
+
+const HTV_RELEASES_API = 'https://api.github.com/repos/HowTheyVote/data/releases/latest'
+const CACHE_DIR = path.join(process.cwd(), '.cache', 'howtheyvote')
+
+async function ensureHtvVotesCsv(verbose: boolean): Promise<string> {
+  if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true })
+
+  // Find the latest release tag and download its votes.csv.gz once.
+  const releaseInfo = await fetchJson<{ tag_name: string; assets: { name: string; browser_download_url: string }[] }>(
+    HTV_RELEASES_API,
+    { 'User-Agent': 'EpistemicReceipts/1.0' },
+  )
+  const tag = releaseInfo.tag_name
+  const csvPath = path.join(CACHE_DIR, `votes-${tag}.csv`)
+  if (fs.existsSync(csvPath)) {
+    if (verbose) console.log(`  Cache hit: ${csvPath}`)
+    return csvPath
+  }
+
+  const asset = releaseInfo.assets.find(a => a.name === 'votes.csv.gz')
+  if (!asset) throw new Error('votes.csv.gz not found in HowTheyVote release assets')
+
+  console.log(`  Downloading HowTheyVote votes.csv.gz (release ${tag})...`)
+  const res = await fetch(asset.browser_download_url, { headers: { 'User-Agent': 'EpistemicReceipts/1.0' } })
+  if (!res.ok || !res.body) throw new Error(`HTV download failed: HTTP ${res.status}`)
+
+  const tmpGz = path.join(CACHE_DIR, `votes-${tag}.csv.gz`)
+  await pipeline(Readable.fromWeb(res.body as any), fs.createWriteStream(tmpGz))
+
+  await pipeline(fs.createReadStream(tmpGz), zlib.createGunzip(), fs.createWriteStream(csvPath))
+  fs.unlinkSync(tmpGz)
+  console.log(`  Cached: ${csvPath}`)
+  return csvPath
+}
+
+// Minimal RFC-4180 CSV parser sufficient for HowTheyVote's votes.csv (no embedded newlines inside quotes).
+function parseCsvLine(line: string): string[] {
+  const out: string[] = []
+  let cur = ''
+  let inQuotes = false
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i]
+    if (inQuotes) {
+      if (ch === '"') {
+        if (line[i + 1] === '"') { cur += '"'; i++ }
+        else inQuotes = false
+      } else cur += ch
+    } else {
+      if (ch === ',') { out.push(cur); cur = '' }
+      else if (ch === '"') inQuotes = true
+      else cur += ch
+    }
+  }
+  out.push(cur)
+  return out
+}
+
+async function loadHtvVoteMap(verbose: boolean): Promise<Map<string, HtvVote>> {
+  const csvPath = await ensureHtvVotesCsv(verbose)
+  const text = fs.readFileSync(csvPath, 'utf-8')
+  // HowTheyVote ships CSVs with CRLF — strip trailing CRs before parsing.
+  const lines = text.split('\n').map(l => l.replace(/\r$/, '')).filter(l => l.length > 0)
+  const header = parseCsvLine(lines[0]!)
+
+  const col = (name: string) => {
+    const idx = header.indexOf(name)
+    if (idx === -1) throw new Error(`HTV CSV missing column: ${name}`)
+    return idx
+  }
+  const iTa = col('texts_adopted_reference')
+  const iIsMain = col('is_main')
+  const iFor = col('count_for')
+  const iAgainst = col('count_against')
+  const iAbs = col('count_abstention')
+  const iDnv = col('count_did_not_vote')
+  const iId = col('id')
+  const iTs = col('timestamp')
+  const iRef = col('reference')
+  const iTitle = col('display_title')
+  const iResult = col('result')
+
+  // Map: TA reference (e.g. P9_TA(2022)0040) → best vote (main + latest timestamp wins)
+  const map = new Map<string, HtvVote>()
+  for (let i = 1; i < lines.length; i++) {
+    const f = parseCsvLine(lines[i]!)
+    const ta = f[iTa]
+    if (!ta) continue
+    const vote: HtvVote = {
+      id: f[iId]!,
+      timestamp: f[iTs]!,
+      is_main: f[iIsMain] === 'True',
+      count_for: parseInt(f[iFor] ?? '0', 10) || 0,
+      count_against: parseInt(f[iAgainst] ?? '0', 10) || 0,
+      count_abstention: parseInt(f[iAbs] ?? '0', 10) || 0,
+      count_did_not_vote: parseInt(f[iDnv] ?? '0', 10) || 0,
+      result: f[iResult] ?? '',
+      reference: f[iRef] ?? '',
+      display_title: f[iTitle] ?? '',
+      texts_adopted_reference: ta,
+    }
+    const existing = map.get(ta)
+    if (!existing) { map.set(ta, vote); continue }
+    // Prefer main vote; if both main, prefer later timestamp.
+    if (vote.is_main && !existing.is_main) { map.set(ta, vote); continue }
+    if (vote.is_main === existing.is_main && vote.timestamp > existing.timestamp) {
+      map.set(ta, vote)
+    }
+  }
+
+  if (verbose) console.log(`  HTV loaded: ${map.size} unique TA references`)
+  return map
+}
+
+// Convert ep_src_TA-9-2022-0040 → P9_TA(2022)0040
+function externalIdToTaRef(extId: string): string | null {
+  const m = extId.match(/^ep_src_TA-(\d+)-(\d{4})-(\d+)$/)
+  if (!m) return null
+  const [, term, year, num] = m
+  const padded = num!.padStart(4, '0')
+  return `P${term}_TA(${year})${padded}`
+}
 
 async function enrichEuVotes(
   sources: { id: string; externalId: string | null; publishedAt: Date | null }[],
@@ -486,40 +679,64 @@ async function enrichEuVotes(
 ): Promise<Counts> {
   const counts: Counts = { enriched: 0, skipped: 0, failed: 0 }
 
-  // EP voting list API: /api/v2/votes?activity-id=<adopted-text-id>
-  // externalId pattern for eu_parliament_v1: eu_parliament_{eliId}_source or similar
-  // Check a few sources to understand the externalId pattern
-  const sampleExtIds = sources.slice(0, 5).map(s => s.externalId)
-  if (verbose) console.log(`  Sample EU source externalIds: ${JSON.stringify(sampleExtIds)}`)
+  let htv: Map<string, HtvVote>
+  try {
+    htv = await loadHtvVoteMap(verbose)
+  } catch (err) {
+    console.error(`  HTV load failed: ${err}`)
+    counts.failed += sources.length
+    return counts
+  }
 
-  let processed = 0
-  for (const source of sources.slice(0, dryRun ? 5 : sources.length)) {
-    const existing = await prisma.legislativeVote.findFirst({ where: { sourceId: source.id, dataSource: 'ep_opendata' } })
-    if (existing) { counts.skipped++; continue }
-
-    // Extract doc reference from externalId to build vote API URL
-    // eu_parliament_v1 externalIds are based on ELI IDs — format varies
+  for (const source of sources) {
     const extId = source.externalId
     if (!extId) { counts.skipped++; continue }
+    const ref = externalIdToTaRef(extId)
+    if (!ref) {
+      if (verbose) console.log(`    [skip] unparseable externalId: ${extId}`)
+      counts.skipped++
+      continue
+    }
+    const vote = htv.get(ref)
+    if (!vote) {
+      if (verbose) console.log(`    [skip] no HTV vote for ${ref}`)
+      counts.skipped++
+      continue
+    }
 
-    // Attempt vote lookup by adopted text ID from EP API
-    // The EP voting endpoint: /api/v2/activities?activity-type=VOTE&reference=<ref>
-    // For simplicity, we flag as skipped unless we can extract a usable reference
-    // More complete matching would require storing the EP document reference
-    // in the claim metadata during initial ingestion
-    if (verbose) console.log(`    [skip] EU vote lookup requires doc reference not stored in current externalId: ${extId}`)
-    counts.skipped++
-    processed++
+    if (dryRun) {
+      if (verbose) console.log(`    [dry-run] ${extId} → ${ref}: for=${vote.count_for} against=${vote.count_against} abs=${vote.count_abstention} (main=${vote.is_main})`)
+      counts.enriched++
+      continue
+    }
+
+    const existing = await prisma.legislativeVote.findFirst({ where: { sourceId: source.id, dataSource: 'howtheyvote_eu' } })
+    if (existing) { counts.skipped++; continue }
+
+    const totalSeats = vote.count_for + vote.count_against + vote.count_abstention + vote.count_did_not_vote
+    try {
+      await prisma.legislativeVote.create({
+        data: {
+          sourceId: source.id,
+          chamber: 'European Parliament',
+          yesCount: vote.count_for,
+          noCount: vote.count_against,
+          abstainCount: vote.count_abstention,
+          totalSeats: totalSeats > 0 ? totalSeats : null,
+          passageThreshold: 'simple_majority',
+          voteDate: vote.timestamp ? new Date(vote.timestamp.replace(' ', 'T') + 'Z') : null,
+          passageType: 'legislative_vote',
+          dataSource: 'howtheyvote_eu',
+        },
+      })
+      counts.enriched++
+      if (verbose) console.log(`    [enriched] ${extId} → ${ref}: ${vote.count_for}–${vote.count_against}`)
+    } catch (err) {
+      console.error(`    [failed] ${extId}: ${err}`)
+      counts.failed++
+    }
   }
 
-  if (!dryRun && sources.length > 0) {
-    console.log(`  EP vote enrichment: needs doc reference stored in source metadata.`)
-    console.log(`  Current eu_parliament_v1 sources store ELI IDs but not the EP internal vote reference.`)
-    console.log(`  Recommendation: update ingest-eu-parliament.ts to store voteRef in externalId or metadata,`)
-    console.log(`  then re-run this enrichment step.`)
-  }
-
-  counts.skipped = sources.length
   return counts
 }
 
@@ -535,6 +752,9 @@ interface CountryConfig {
   label: string
   ingestedByTags: string[]
   handler: Handler
+  // If true, dry-run scans the full source list instead of the default 20-row
+  // slice. Set on handlers whose matching is in-memory (no per-source HTTP).
+  cheapDryRun?: boolean
 }
 
 const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
@@ -542,6 +762,7 @@ const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     label: 'United States',
     ingestedByTags: ['congress_v1', 'congress_bills_v1'],
     handler: enrichUsCongressVotes,
+    cheapDryRun: true,
   },
   canada: {
     label: 'Canada',
@@ -567,6 +788,7 @@ const COUNTRY_CONFIGS: Record<string, CountryConfig> = {
     label: 'European Union',
     ingestedByTags: ['eu_parliament_v1', 'eu_legislation_v1'],
     handler: enrichEuVotes,
+    cheapDryRun: true,
   },
 }
 
@@ -596,13 +818,15 @@ async function main() {
   for (const [code, config] of countriesToProcess) {
     console.log(`\n── ${config.label} (${code}) ──────────────────────────`)
 
-    // Fetch eligible sources
+    // Fetch eligible sources. Order by publishedAt desc so dry-run samples
+    // bias toward recent records (which have better external-API coverage).
     const sources = await prisma.source.findMany({
       where: {
         ingestedBy: { in: config.ingestedByTags },
         deleted: false,
       },
       select: { id: true, externalId: true, publishedAt: true },
+      orderBy: { publishedAt: 'desc' },
       ...(limit > 0 ? { take: limit } : {}),
     })
 
@@ -611,8 +835,9 @@ async function main() {
       continue
     }
 
-    // In dry-run, work on a small subset
-    const workSources = dryRun ? sources.slice(0, 20) : sources
+    // In dry-run, work on a small subset to keep slow per-source handlers fast.
+    // Handlers flagged cheapDryRun do in-memory matching and process everything.
+    const workSources = dryRun && !config.cheapDryRun ? sources.slice(0, 20) : sources
     console.log(`  Sources: ${sources.length} (processing: ${workSources.length})`)
 
     const counts = await config.handler(workSources, dryRun, verbose)

@@ -53,3 +53,6 @@ prisma/*.db-shm
 prisma/dev.db.backup-*
 prisma/migrations.sqlite-backup/
 .env*.local
+
+# Enrichment caches (regenerable downloads)
+.cache/
