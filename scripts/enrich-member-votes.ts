@@ -1,8 +1,7 @@
 // Enrichment: Individual Member Votes for US Congress
 // Fetches per-member vote positions for each LegislativeVote record
-// with dataSource='congress_votes_v1', using Congress.gov API v3.
-//
-// Requires CONGRESS_API_KEY in .env.local.
+// with dataSource='congress_votes_v1', using the rollUrl stored in claim metadata.
+// House votes come from clerk.house.gov XML; Senate from senate.gov XML.
 //
 // Run: npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-member-votes.ts --dry-run
 //      npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-member-votes.ts --full [--limit N] [--verbose]
@@ -11,7 +10,6 @@ import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
-const CONGRESS_BASE = 'https://api.congress.gov/v3'
 const MIN_INTERVAL = 300 // ms between requests
 
 // ── CLI ───────────────────────────────────────────────────────────────────────
@@ -41,66 +39,85 @@ async function throttle() {
   lastReqAt = Date.now()
 }
 
-async function congressGet<T>(url: string, retries = 3): Promise<T> {
+async function fetchXml(url: string, retries = 3): Promise<string> {
   let delay = 2000
   for (let attempt = 0; attempt <= retries; attempt++) {
     await throttle()
-    const res = await fetch(url, { headers: { Accept: 'application/json' } })
+    const res = await fetch(url, { headers: { Accept: 'text/xml, application/xml, */*' } })
     if ([429, 502, 503, 504].includes(res.status) && attempt < retries) {
       console.warn(`  HTTP ${res.status} — retrying in ${delay}ms`)
       await sleep(delay)
       delay *= 2
       continue
     }
-    if (!res.ok) {
-      const safeUrl = url.replace(/api_key=[^&]+/, 'api_key=REDACTED')
-      throw new Error(`Congress API ${res.status} at ${safeUrl}`)
-    }
-    return res.json() as Promise<T>
+    if (!res.ok) throw new Error(`HTTP ${res.status} at ${url}`)
+    return res.text()
   }
   throw new Error('Failed after retries')
 }
 
-// ── Session number: 1 = first (odd) year of congress, 2 = second (even) year ──
-// 113th starts 2013, 114th 2015, etc.
-function getSessionNumber(congress: number, voteDate: Date): 1 | 2 {
-  const firstYear = 2013 + (congress - 113) * 2
-  return voteDate.getFullYear() === firstYear ? 1 : 2
+// ── XML parsers ───────────────────────────────────────────────────────────────
+
+interface ParsedMember {
+  memberId: string | null
+  memberName: string
+  memberState: string | null
+  memberParty: string | null
+  vote: string
 }
 
-// ── Normalize chamber name to congress.gov API slug ───────────────────────────
+// House XML: <recorded-vote><legislator name-id="A000055" sort-field="..." party="R" state="AL">Aderholt</legislator><vote>Yea</vote></recorded-vote>
+function parseHouseXml(xml: string): ParsedMember[] {
+  const results: ParsedMember[] = []
+  const blockRe = /<recorded-vote>([\s\S]*?)<\/recorded-vote>/g
+  let block: RegExpExecArray | null
+  while ((block = blockRe.exec(xml)) !== null) {
+    const inner = block[1]!
+    const nameId = /name-id="([^"]*)"/.exec(inner)?.[1] ?? null
+    const party = /party="([^"]*)"/.exec(inner)?.[1] ?? null
+    const state = /state="([^"]*)"/.exec(inner)?.[1] ?? null
+    const name = /<legislator[^>]*>([^<]+)<\/legislator>/.exec(inner)?.[1]?.trim() ?? 'Unknown'
+    const voteText = /<vote>([^<]+)<\/vote>/.exec(inner)?.[1]?.trim() ?? 'Not Voting'
+    results.push({ memberId: nameId, memberName: name, memberState: state, memberParty: party, vote: voteText })
+  }
+  return results
+}
+
+// Senate XML: <member><last_name>X</last_name><first_name>Y</first_name><party>R</party><state>TN</state><vote_cast>Yea</vote_cast><lis_member_id>S289</lis_member_id></member>
+function parseSenateXml(xml: string): ParsedMember[] {
+  const results: ParsedMember[] = []
+  const blockRe = /<member>([\s\S]*?)<\/member>/g
+  let block: RegExpExecArray | null
+  while ((block = blockRe.exec(xml)) !== null) {
+    const inner = block[1]!
+    const tag = (t: string) => new RegExp(`<${t}>([^<]*)<\/${t}>`).exec(inner)?.[1]?.trim() ?? null
+    const lastName = tag('last_name') ?? ''
+    const firstName = tag('first_name') ?? ''
+    const party = tag('party')
+    const state = tag('state')
+    const voteCast = tag('vote_cast') ?? 'Not Voting'
+    const lisId = tag('lis_member_id')
+    const name = [firstName, lastName].filter(Boolean).join(' ') || 'Unknown'
+    results.push({ memberId: lisId, memberName: name, memberState: state, memberParty: party, vote: voteCast })
+  }
+  return results
+}
+
+function parseVoteXml(url: string, xml: string): ParsedMember[] {
+  if (url.includes('clerk.house.gov')) return parseHouseXml(xml)
+  if (url.includes('senate.gov')) return parseSenateXml(xml)
+  throw new Error(`Unknown roll URL host: ${url}`)
+}
+
+// ── Normalize chamber name ────────────────────────────────────────────────────
 function normalizeChamber(chamber: string): 'house' | 'senate' {
   return chamber.toLowerCase().includes('house') ? 'house' : 'senate'
-}
-
-// ── Congress.gov API response types ──────────────────────────────────────────
-
-interface CgMember {
-  bioguideId?: string
-  fullName?: string
-  lastName?: string
-  firstName?: string
-  party?: string
-  state?: string
-  votePosition?: string
-}
-
-interface CgVoteResponse {
-  vote?: {
-    members?: { member?: CgMember[] }
-  }
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
   const { mode, limit, verbose } = parseArgs()
-
-  const apiKey = process.env.CONGRESS_API_KEY
-  if (!apiKey) {
-    console.error('ERROR: CONGRESS_API_KEY not set in environment')
-    process.exit(1)
-  }
 
   console.log(`\n── Enrich Member Votes ─────────────────────────────────────────────────`)
   console.log(`Mode: ${mode} | Limit: ${limit || 'all'}`)
@@ -115,7 +132,7 @@ async function main() {
   })
   console.log(`Found ${legislativeVotes.length} congress_votes_v1 LegislativeVote records`)
 
-  // Load congress_votes_v1 claims for roll number lookup
+  // Load congress_votes_v1 claims for rollUrl lookup
   type VoteClaim = {
     id: string
     externalId: string | null
@@ -139,7 +156,7 @@ async function main() {
   }
   console.log(`Loaded ${voteClaims.length} congress_votes_v1 claims (${claimsByBillKey.size} unique bill keys)`)
 
-  let enriched = 0, skipped = 0, failed = 0, noRoll = 0
+  let enriched = 0, skipped = 0, failed = 0, noRollUrl = 0
   const toProcess = limit > 0 ? legislativeVotes.slice(0, limit) : legislativeVotes
 
   for (const lv of toProcess) {
@@ -157,7 +174,6 @@ async function main() {
       continue
     }
 
-    const congress = parseInt(sm[1]!, 10)
     const billKey = `${sm[1]}_${sm[2]}_${sm[3]}`
     const candidates = claimsByBillKey.get(billKey) ?? []
 
@@ -183,37 +199,28 @@ async function main() {
       continue
     }
 
+    const rollUrl = typeof meta.rollUrl === 'string' ? meta.rollUrl : null
     const rollNumber = typeof meta.rollNumber === 'number' ? meta.rollNumber : null
-    if (!rollNumber) {
-      if (verbose) console.log(`  [no-roll] ${billKey} (${lv.chamber}): no roll number`)
-      noRoll++
+
+    if (!rollUrl) {
+      if (verbose) console.log(`  [no-url] ${billKey} (${lv.chamber}): no rollUrl in metadata`)
+      noRollUrl++
       continue
     }
-
-    const voteDate = lv.voteDate ?? matchedClaim.claimEmergedAt
-    if (!voteDate) {
-      if (verbose) console.log(`  [skip] no vote date for ${billKey}`)
-      skipped++
-      continue
-    }
-
-    const session = getSessionNumber(congress, voteDate)
-    const url = `${CONGRESS_BASE}/vote/${congress}/${chamberApi}/${session}/${rollNumber}?api_key=${encodeURIComponent(apiKey)}&format=json`
 
     if (mode === 'dry-run') {
-      const safeUrl = url.replace(/api_key=[^&]+/, 'api_key=REDACTED')
-      console.log(`  [dry-run] ${billKey} | ${lv.chamber} | roll ${rollNumber} session ${session}`)
-      if (verbose) console.log(`    URL: ${safeUrl}`)
+      console.log(`  [dry-run] ${billKey} | ${lv.chamber} | roll ${rollNumber ?? 'unknown'}`)
+      if (verbose) console.log(`    URL: ${rollUrl}`)
       enriched++
       continue
     }
 
     try {
-      const data = await congressGet<CgVoteResponse>(url)
-      const members = data.vote?.members?.member ?? []
+      const xml = await fetchXml(rollUrl)
+      const members = parseVoteXml(rollUrl, xml)
 
       if (members.length === 0) {
-        if (verbose) console.log(`  [empty] ${billKey} roll ${rollNumber}: no member records in API response`)
+        if (verbose) console.log(`  [empty] ${billKey} roll ${rollNumber}: no member records in XML`)
         skipped++
         continue
       }
@@ -221,12 +228,12 @@ async function main() {
       await prisma.memberVote.createMany({
         data: members.map(m => ({
           legislativeVoteId: lv.id,
-          memberName: m.fullName ?? (`${m.firstName ?? ''} ${m.lastName ?? ''}`.trim() || 'Unknown'),
-          memberState: m.state ?? null,
-          memberParty: m.party ?? null,
-          memberId: m.bioguideId ?? null,
+          memberName: m.memberName,
+          memberState: m.memberState,
+          memberParty: m.memberParty,
+          memberId: m.memberId,
           chamber: lv.chamber,
-          vote: m.votePosition ?? 'Not Voting',
+          vote: m.vote,
         })),
         skipDuplicates: true,
       })
@@ -240,7 +247,7 @@ async function main() {
     }
   }
 
-  console.log(`\nResults: enriched=${enriched} skipped=${skipped} no-roll=${noRoll} failed=${failed}`)
+  console.log(`\nResults: enriched=${enriched} skipped=${skipped} no-url=${noRollUrl} failed=${failed}`)
   await prisma.$disconnect()
 }
 
