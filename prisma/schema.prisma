@@ -253,21 +253,38 @@ model PoliticalContext {
 }
 
 model LegislativeVote {
-  id               String    @id @default(cuid())
+  id               String        @id @default(cuid())
   sourceId         String
-  source           Source    @relation(fields: [sourceId], references: [id])
+  source           Source        @relation(fields: [sourceId], references: [id])
   chamber          String
   yesCount         Int?
   noCount          Int?
   abstainCount     Int?
   totalSeats       Int?
-  passageThreshold String?   // "simple_majority", "supermajority", "unanimous", etc.
+  passageThreshold String?       // "simple_majority", "supermajority", "unanimous", etc.
   voteDate         DateTime?
-  passageType      String?   // "legislative_vote", "executive_decree", "committee_only"
-  byPartyJson      String?   // JSON: {PartyName: {yes: N, no: N, abstain: N}, ...}
-  dataSource       String?   // "govtrack", "theyworkforyou", "wikidata", etc.
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  passageType      String?       // "legislative_vote", "executive_decree", "committee_only"
+  byPartyJson      String?       // JSON: {PartyName: {yes: N, no: N, abstain: N}, ...}
+  dataSource       String?       // "govtrack", "theyworkforyou", "wikidata", etc.
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  memberVotes      MemberVote[]
+}
+
+model MemberVote {
+  id                String          @id @default(cuid())
+  legislativeVoteId String
+  legislativeVote   LegislativeVote @relation(fields: [legislativeVoteId], references: [id])
+  memberName        String
+  memberState       String?
+  memberParty       String?
+  memberId          String?         // bioguide ID
+  chamber           String          // "House of Representatives" | "Senate"
+  vote              String          // "Yea" | "Nay" | "Not Voting" | "Present"
+  createdAt         DateTime        @default(now())
+
+  @@index([legislativeVoteId])
+  @@index([memberId])
 }
 
 // Wikidata cross-reference enrichment — links Source records to Wikidata Q-numbers.

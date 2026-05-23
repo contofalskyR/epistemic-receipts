@@ -22,7 +22,18 @@ type MetaEdgeDetail = {
   actorSource: { id: string; name: string };
 };
 
+type MemberVoteRecord = {
+  id: string;
+  memberName: string;
+  memberState: string | null;
+  memberParty: string | null;
+  memberId: string | null;
+  chamber: string;
+  vote: string;
+};
+
 type LegislativeVoteRecord = {
+  id: string;
   chamber: string;
   yesCount: number | null;
   noCount: number | null;
@@ -33,6 +44,7 @@ type LegislativeVoteRecord = {
   passageType: string | null;
   byPartyJson: string | null;
   dataSource: string | null;
+  memberVotes: MemberVoteRecord[];
 };
 
 type EdgeDetail = {
@@ -341,6 +353,105 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   );
 }
 
+// ── Individual member votes ───────────────────────────────────────────────────
+
+function MemberVotesSection({ votes }: { votes: MemberVoteRecord[] }) {
+  const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState("");
+
+  const yea = votes.filter(v => v.vote === "Yea").length;
+  const nay = votes.filter(v => v.vote === "Nay").length;
+  const nv  = votes.filter(v => v.vote === "Not Voting").length;
+  const present = votes.filter(v => v.vote === "Present").length;
+
+  const filtered = filter
+    ? votes.filter(v =>
+        v.memberName.toLowerCase().includes(filter.toLowerCase()) ||
+        (v.memberState ?? "").toLowerCase().includes(filter.toLowerCase()) ||
+        (v.memberParty ?? "").toLowerCase().includes(filter.toLowerCase()) ||
+        v.vote.toLowerCase().includes(filter.toLowerCase())
+      )
+    : votes;
+
+  return (
+    <div className="mt-2">
+      <button
+        className="flex items-center gap-1.5 text-xs hover:opacity-80 transition-opacity"
+        onClick={() => setOpen(v => !v)}
+      >
+        <span className="text-gray-400 font-medium">{votes.length} individual votes</span>
+        <span className="text-gray-700">·</span>
+        <span className="text-green-500">{yea} yea</span>
+        <span className="text-gray-700">·</span>
+        <span className="text-red-500">{nay} nay</span>
+        {nv > 0 && (
+          <>
+            <span className="text-gray-700">·</span>
+            <span className="text-gray-500">{nv} NV</span>
+          </>
+        )}
+        {present > 0 && (
+          <>
+            <span className="text-gray-700">·</span>
+            <span className="text-gray-500">{present} present</span>
+          </>
+        )}
+        <span className="text-gray-600 ml-1">{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div className="mt-2 space-y-2">
+          <input
+            className="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-gray-300 placeholder-gray-600 focus:outline-none focus:border-gray-500"
+            placeholder="Filter by name, state, party, or vote…"
+            value={filter}
+            onChange={e => setFilter(e.target.value)}
+          />
+          <div className="max-h-64 overflow-y-auto rounded border border-gray-800">
+            <table className="w-full text-xs">
+              <thead className="sticky top-0 bg-gray-900 z-10">
+                <tr className="text-gray-600 border-b border-gray-800">
+                  <th className="py-1 px-2 text-left font-medium">Member</th>
+                  <th className="py-1 px-2 text-left font-medium">St</th>
+                  <th className="py-1 px-2 text-left font-medium">Party</th>
+                  <th className="py-1 px-2 text-left font-medium">Vote</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map(m => (
+                  <tr key={m.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
+                    <td className="py-0.5 px-2 text-gray-300">{m.memberName}</td>
+                    <td className="py-0.5 px-2 text-gray-500">{m.memberState ?? "—"}</td>
+                    <td className="py-0.5 px-2">
+                      <span className={`px-1 rounded text-[10px] font-medium ${
+                        m.memberParty === "D" ? "bg-blue-900/60 text-blue-300" :
+                        m.memberParty === "R" ? "bg-red-900/60 text-red-300" :
+                        "bg-gray-800 text-gray-400"
+                      }`}>{m.memberParty ?? "—"}</span>
+                    </td>
+                    <td className="py-0.5 px-2">
+                      <span className={`px-1 rounded text-[10px] font-medium ${
+                        m.vote === "Yea"        ? "bg-green-900/60 text-green-300" :
+                        m.vote === "Nay"        ? "bg-red-900/60 text-red-300" :
+                        m.vote === "Present"    ? "bg-yellow-900/60 text-yellow-400" :
+                        "bg-gray-800 text-gray-500"
+                      }`}>{m.vote}</span>
+                    </td>
+                  </tr>
+                ))}
+                {filtered.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="py-2 px-2 text-gray-600 italic">No matching members.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Edges table row ───────────────────────────────────────────────────────────
 
 function EdgeRow({ edge }: { edge: EdgeDetail }) {
@@ -448,6 +559,9 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
                           <div className="h-full bg-green-700" style={{ width: `${yesPct}%` }} />
                           <div className="h-full bg-red-800" style={{ width: `${noPct}%` }} />
                         </div>
+                      )}
+                      {v.memberVotes && v.memberVotes.length > 0 && (
+                        <MemberVotesSection votes={v.memberVotes} />
                       )}
                     </div>
                   );

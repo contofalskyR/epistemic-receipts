@@ -27,6 +27,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
               },
               legislativeVotes: {
                 select: {
+                  id: true,
                   chamber: true,
                   yesCount: true,
                   noCount: true,
@@ -37,6 +38,18 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
                   passageType: true,
                   byPartyJson: true,
                   dataSource: true,
+                  memberVotes: {
+                    select: {
+                      id: true,
+                      memberName: true,
+                      memberState: true,
+                      memberParty: true,
+                      memberId: true,
+                      chamber: true,
+                      vote: true,
+                    },
+                    orderBy: [{ vote: "asc" }, { memberParty: "asc" }, { memberName: "asc" }],
+                  },
                 },
               },
             },

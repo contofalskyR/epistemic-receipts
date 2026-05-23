@@ -68,12 +68,11 @@ Scripts exist for all; architectural review pending before full production runs.
 - `openfda_labels_v1`: 0 — BLOCKED pending CONSULTANT.md decisions (258k drug labels, FDA)
 - `ingest-faers-current-drugs.ts` → `faers_normalized_drugs_v1`: 999 (see P7)
 
-## In Progress / Scheduled (as of 2026-05-21 ~13:30 EDT)
+## In Progress (as of 2026-05-22 evening)
 
-- [ ] **RxNorm** (`rxnorm_v1`) — completed ~12:50 EDT. NLM canonical drug naming + relationships. Verify final DB count.
-- [ ] **ChEBI** (`chebi_v1`) — running all afternoon. EBI chemical ontology (~62,000 compounds). Est. completion: late afternoon/evening.
-- [ ] **OMIM** (`omim_v1`) — 1,512 ingested, hit rate limit. **OMIM_API_KEY provided ✅.** Scheduled to resume 2026-05-22 02:15 EDT via cron. Target: ~15k phenotype entries.
-- [ ] **OpenFDA Labels** (`ingest-openfda-labels.ts`) — Script built (258k partition fix verified ✅). **BLOCKED** — two architectural decisions pending in `CONSULTANT.md`: (1) reference vs background tier for drug labels, (2) VERIFIED vs PROVISIONAL+autoApproved flag policy. Do not run until resolved.
+- 🔄 **UK vote enrichment** — `enrich-vote-counts.ts --full --country uk` running. 11,777 sources, LV rows incrementing.
+- 🔄 **US Congress votes ingest** — `ingest-congress-votes.ts --full` running (113–119). After completion → run `enrich-vote-counts.ts --full --country us`.
+- ⏳ **OpenFDA Labels** (`ingest-openfda-labels.ts`) — Script built. **BLOCKED** — architectural decisions pending in `CONSULTANT.md`. Do not run until resolved.
 
 ## 2026-05-22 Pipeline Batch — Status as of 2026-05-22 evening
 
@@ -154,7 +153,31 @@ These pipelines passed dry-run but full runs were partial or didn't complete. Sc
 ## Long-horizon features
 
 - **Legislative vote data — Layer 1: Aggregate counts per source** ✅ Infrastructure shipped 2026-05-22
-  `LegislativeVote` model fully wired: `byPartyJson` field added + migrated, `legislativeVotes` included in claims API, vote breakdown UI (Aye/No bar) in expanded EdgeRow on claim detail page. `scripts/enrich-vote-counts.ts` supports UK/US/Canada/EU/DE/IL. **UK full run started 2026-05-22 ~18:17 EDT** (11,777 sources, est. 1–3 hours). US, Canada, EU runs pending.
+  `LegislativeVote` model fully wired: `byPartyJson` field added + migrated, `legislativeVotes` included in claims API, vote breakdown UI (Aye/No bar) in expanded EdgeRow on claim detail page. `scripts/enrich-vote-counts.ts` supports UK/US/Canada/EU/DE/IL.
+  - **UK:** `enrich-vote-counts.ts --full --country uk` running as of 2026-05-22 ~18:17 EDT (11,777 sources, est. 1–3 hours). LV rows growing in real-time.
+  - **US:** `ingest-congress-votes.ts --full` running as of 2026-05-22 ~19:50 EDT (Congress 113–119, all enacted bills). Once complete → run `enrich-vote-counts.ts --full --country us`.
+  - **Canada, EU:** pending.
+  - **Contested bills feature (planned):** After enrichment completes, build a contested vs. unanimous breakdown table — rank topics/bills by party disagreement score (e.g. |Aye% - No%| per party). Enables case studies showing "what do legislators actually fight about." Requires Layer 1 data fully populated across at least US + UK.
+
+  **Voting statistics to compute (future):**
+  - **Passage margin tiers:** `yea/(yea+nay)` → buckets: <55% bare majority, 55–70% moderate, 70–85% strong, 85%+ near-unanimous. Surface bills at constitutional minimums (simple majority for passage, 3/5 = 60% for cloture, 2/3 = 67% for veto overrides).
+  - **Polarization trend:** average passage margin by Congress (113→119). Does it trend tighter over time? The slope is the polarization story.
+  - **Chamber divergence:** compare House vs. Senate margins on the same bill. House parties vote in lockstep more; Senate is looser. Flag bills where one chamber squeaked and the other was lopsided.
+  - **Cloture as a predictor:** when cloture barely passes (<65%), does final passage also squeak? Or do senators fall in line? Compare cloture margin vs. passage margin on paired votes.
+  - **Zombie bills flag:** bills with more than one `voteType = 'passage'` row — failed, then revoted. Worth surfacing as a category ("rejected and reintroduced").
+  - **By policy area:** once bill subjects/topic tags are available (Congress.gov subjects field), rank which policy areas have tightest margins. Requires additional enrichment step.
+  - **Note on re-vote behavior:** the ingest DOES capture multiple votes on the same bill — each roll call has a unique roll number, so fail→revote shows as two separate `LegislativeVote` rows linked to the same Source. Only `passage` and `cloture` vote types are captured; intermediate amendment votes and procedural motions between those are filtered. So the "zombie" count is knowable from existing data with no schema changes.
+
+- **Legislative vote data — Zeitgeist contrast: votes vs. media coverage**
+  Cross-reference what legislators voted on (and how they voted) against what the press was covering at the same time. The hypothesis: newsrooms spotlight certain bills while ignoring others, even when the votes are close or consequential. Data approach: match `LegislativeVote` dates against a news article corpus (NYT, Guardian, etc.) for the same time window; score each bill by media mentions; rank bills by "contested but underreported" vs. "unanimous but over-covered." Opens a category of case studies — "what were legislators doing while the media looked away?" Requires a news ingest pipeline (NYT API is already keyed; Guardian API is free) as a complementary data source. Can also flip the lens: given a news story, find the legislation being passed simultaneously and ask whether the vote outcome aligned with public pressure or ignored it.
+
+  **Implementation sketch (2026-05-22):**
+  - Step 1: Pull NYT articles via Article Search API (key in TOOLS.md) for a date range. Store as Sources tagged `nyt_v1` with headline + section + date.
+  - Step 2: For each `LegislativeVote` with a `voteDate`, query articles published within ±7 days. Count mentions of the bill title or keywords.
+  - Step 3: Score the gap — "underreported contested" = small `|yesCount - noCount|` + low mention count; "over-covered unanimous" = near-100% passage + many articles.
+  - Step 4: Surface as a ranked table — "10 most contested bills with zero news coverage" — or a scatter plot (x = vote margin, y = media attention).
+  - Hardest part: title matching — bill names in voting records don't always match press shorthand. Fuzzy match or keyword extraction needed. Congress.gov bill subjects field helps.
+  - Prototype path: start with the 505 US votes already in DB + NYT API. Could be built in a weekend.
 
 - **Legislative vote data — Layer 2: Member-level votes + `Person` entities**
   Who specifically voted how on each bill. Requires a new `Person` model (MP/Senator with name, party, wikidataId) and a `Vote` junction table linking `Person` → `Source` with a vote direction. Significant schema addition. Prerequisite: Layer 1 done and validated.
