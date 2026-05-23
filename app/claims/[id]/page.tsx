@@ -353,6 +353,70 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   );
 }
 
+// ── EU party colors ───────────────────────────────────────────────────────────
+
+const EU_PARTY_COLORS: Record<string, string> = {
+  EPP:       "bg-blue-900/70 text-blue-300",
+  SD:        "bg-red-900/70 text-red-300",
+  RENEW:     "bg-yellow-900/70 text-yellow-300",
+  ECR:       "bg-teal-900/70 text-teal-300",
+  GUE_NGL:   "bg-rose-900/70 text-rose-300",
+  GREENS:    "bg-green-900/70 text-green-300",
+  GREEN_EFA: "bg-green-900/70 text-green-300",
+  ID:        "bg-indigo-900/70 text-indigo-300",
+  ESN:       "bg-purple-900/70 text-purple-300",
+  PFE:       "bg-orange-900/70 text-orange-300",
+  NI:        "bg-gray-800 text-gray-400",
+};
+
+// US parties
+const US_PARTY_COLORS: Record<string, string> = {
+  D: "bg-blue-900/70 text-blue-300",
+  R: "bg-red-900/70 text-red-300",
+};
+
+function partyColor(party: string | null): string {
+  if (!party) return "bg-gray-800 text-gray-400";
+  return EU_PARTY_COLORS[party] ?? US_PARTY_COLORS[party] ?? "bg-gray-800 text-gray-400";
+}
+
+// ── Country code → flag emoji ─────────────────────────────────────────────────
+
+function countryFlag(code: string | null): string {
+  if (!code || code.length !== 3) {
+    // Try 2-letter codes
+    if (code && code.length === 2) {
+      return String.fromCodePoint(
+        ...code.toUpperCase().split("").map(c => 0x1F1E6 + c.charCodeAt(0) - 65)
+      );
+    }
+    return "";
+  }
+  // ISO 3166-1 alpha-3 → alpha-2 for common EU countries + US states (skip state codes)
+  const alpha3to2: Record<string, string> = {
+    AUT:"AT", BEL:"BE", BGR:"BG", HRV:"HR", CYP:"CY", CZE:"CZ", DNK:"DK",
+    EST:"EE", FIN:"FI", FRA:"FR", DEU:"DE", GRC:"GR", HUN:"HU", IRL:"IE",
+    ITA:"IT", LVA:"LV", LTU:"LT", LUX:"LU", MLT:"MT", NLD:"NL", POL:"PL",
+    PRT:"PT", ROU:"RO", SVK:"SK", SVN:"SI", ESP:"ES", SWE:"SE", GBR:"GB",
+    USA:"US", CAN:"CA", AUS:"AU", NZL:"NZ", JPN:"JP", CHN:"CN",
+  };
+  const a2 = alpha3to2[code.toUpperCase()];
+  if (!a2) return code; // fallback to raw code
+  return String.fromCodePoint(
+    ...a2.split("").map(c => 0x1F1E6 + c.charCodeAt(0) - 65)
+  );
+}
+
+// EU Parliament MEP profile URL
+function mepProfileUrl(memberId: string | null, chamber: string): string | null {
+  if (!memberId) return null;
+  if (chamber === "European Parliament") {
+    return `https://howtheyvote.eu/members/${memberId}`;
+  }
+  // US Congress: bioguide
+  return `https://bioguide.congress.gov/search/bio/${memberId}`;
+}
+
 // ── Individual member votes ───────────────────────────────────────────────────
 
 function MemberVotesSection({ votes }: { votes: MemberVoteRecord[] }) {
@@ -417,27 +481,39 @@ function MemberVotesSection({ votes }: { votes: MemberVoteRecord[] }) {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map(m => (
-                  <tr key={m.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
-                    <td className="py-0.5 px-2 text-gray-300">{m.memberName}</td>
-                    <td className="py-0.5 px-2 text-gray-500">{m.memberState ?? "—"}</td>
-                    <td className="py-0.5 px-2">
-                      <span className={`px-1 rounded text-[10px] font-medium ${
-                        m.memberParty === "D" ? "bg-blue-900/60 text-blue-300" :
-                        m.memberParty === "R" ? "bg-red-900/60 text-red-300" :
-                        "bg-gray-800 text-gray-400"
-                      }`}>{m.memberParty ?? "—"}</span>
-                    </td>
-                    <td className="py-0.5 px-2">
-                      <span className={`px-1 rounded text-[10px] font-medium ${
-                        m.vote === "Yea"        ? "bg-green-900/60 text-green-300" :
-                        m.vote === "Nay"        ? "bg-red-900/60 text-red-300" :
-                        m.vote === "Present"    ? "bg-yellow-900/60 text-yellow-400" :
-                        "bg-gray-800 text-gray-500"
-                      }`}>{m.vote}</span>
-                    </td>
-                  </tr>
-                ))}
+                {filtered.map(m => {
+                  const profileUrl = mepProfileUrl(m.memberId, m.chamber);
+                  const flag = countryFlag(m.memberState);
+                  return (
+                    <tr key={m.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
+                      <td className="py-0.5 px-2 text-gray-300">
+                        {profileUrl ? (
+                          <a href={profileUrl} target="_blank" rel="noopener noreferrer"
+                            className="hover:text-white hover:underline">
+                            {m.memberName}
+                          </a>
+                        ) : m.memberName}
+                      </td>
+                      <td className="py-0.5 px-2 text-gray-500 text-center" title={m.memberState ?? undefined}>
+                        {flag || m.memberState || "—"}
+                      </td>
+                      <td className="py-0.5 px-2">
+                        <span className={`px-1 rounded text-[10px] font-medium ${partyColor(m.memberParty)}`}>
+                          {m.memberParty ?? "—"}
+                        </span>
+                      </td>
+                      <td className="py-0.5 px-2">
+                        <span className={`px-1 rounded text-[10px] font-medium ${
+                          m.vote === "Yea"     ? "bg-green-900/60 text-green-300" :
+                          m.vote === "Nay"     ? "bg-red-900/60 text-red-300" :
+                          m.vote === "Abstain" ? "bg-yellow-900/60 text-yellow-400" :
+                          m.vote === "Present" ? "bg-yellow-900/60 text-yellow-400" :
+                          "bg-gray-800 text-gray-500"
+                        }`}>{m.vote}</span>
+                      </td>
+                    </tr>
+                  );
+                })}
                 {filtered.length === 0 && (
                   <tr>
                     <td colSpan={4} className="py-2 px-2 text-gray-600 italic">No matching members.</td>
