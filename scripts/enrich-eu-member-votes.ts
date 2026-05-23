@@ -178,7 +178,9 @@ async function loadMemberMap(): Promise<Map<string, MemberInfo>> {
   const iId = header.indexOf('id')
   const iFirst = header.indexOf('first_name')
   const iLast = header.indexOf('last_name')
-  const iCountry = header.indexOf('country')
+  const iCountry = header.indexOf('country_code') !== -1
+    ? header.indexOf('country_code')
+    : header.indexOf('country')
 
   if (iId === -1) throw new Error('members.csv missing "id" column')
 
@@ -215,9 +217,11 @@ async function loadGroupMap(): Promise<Map<string, string>> {
   const groupsHeader = parseCsvLine(groupsLines[0]!)
   console.log(`  groups.csv columns: ${groupsHeader.join(', ')}`)
 
-  const iGId = groupsHeader.indexOf('id')
-  // Try common column names for the abbreviation
-  const iAbbr = ['abbreviation', 'abbr', 'short_label', 'code'].reduce(
+  // groups.csv columns: code, official_label, label, short_label
+  const iGId = groupsHeader.indexOf('code') !== -1
+    ? groupsHeader.indexOf('code')
+    : groupsHeader.indexOf('id')
+  const iAbbr = ['short_label', 'abbreviation', 'abbr'].reduce(
     (found, name) => found !== -1 ? found : groupsHeader.indexOf(name),
     -1
   )
@@ -247,11 +251,14 @@ async function loadGroupMap(): Promise<Map<string, string>> {
   console.log(`  group_memberships.csv columns: ${gmHeader.join(', ')}`)
 
   const iMembId = gmHeader.indexOf('member_id')
-  const iGrpId = gmHeader.indexOf('group_id')
+  // group_memberships.csv uses 'group_code', not 'group_id'
+  const iGrpId = gmHeader.indexOf('group_code') !== -1
+    ? gmHeader.indexOf('group_code')
+    : gmHeader.indexOf('group_id')
   const iEnd = gmHeader.indexOf('end_date')
 
   if (iMembId === -1 || iGrpId === -1) {
-    console.warn('  group_memberships.csv missing member_id or group_id columns — skipping')
+    console.warn('  group_memberships.csv missing member_id or group_code columns — skipping')
     return new Map()
   }
 
@@ -283,7 +290,8 @@ async function loadGroupMap(): Promise<Map<string, string>> {
 interface MvRow {
   memberId: string
   position: string
-  groupId: string | null
+  groupCode: string | null
+  countryCode: string | null
 }
 
 async function streamMemberVotes(
@@ -292,7 +300,7 @@ async function streamMemberVotes(
 ): Promise<Map<string, MvRow[]>> {
   const rowsByVoteId = new Map<string, MvRow[]>()
   let headerParsed = false
-  let iVoteId = -1, iMembId = -1, iPos = -1, iGroupId = -1
+  let iVoteId = -1, iMembId = -1, iPos = -1, iGroupCode = -1, iCountryCode = -1
   let totalLines = 0
   let relevantCount = 0
 
@@ -309,7 +317,8 @@ async function streamMemberVotes(
       iVoteId = f.indexOf('vote_id')
       iMembId = f.indexOf('member_id')
       iPos = f.indexOf('position')
-      iGroupId = f.indexOf('group_id')
+      iGroupCode = f.indexOf('group_code')
+      iCountryCode = f.indexOf('country_code')
       console.log(`  member_votes.csv columns: ${f.join(', ')}`)
       if (iVoteId === -1 || iMembId === -1 || iPos === -1) {
         throw new Error(`member_votes.csv missing required columns (found: ${f.join(', ')})`)
@@ -325,10 +334,11 @@ async function streamMemberVotes(
 
     const memberId = f[iMembId] ?? ''
     const position = f[iPos] ?? ''
-    const groupId = iGroupId !== -1 ? (f[iGroupId] || null) : null
+    const groupCode = iGroupCode !== -1 ? (f[iGroupCode] || null) : null
+    const countryCode = iCountryCode !== -1 ? (f[iCountryCode] || null) : null
 
     const arr = rowsByVoteId.get(voteId) ?? []
-    arr.push({ memberId, position, groupId })
+    arr.push({ memberId, position, groupCode, countryCode })
     rowsByVoteId.set(voteId, arr)
     relevantCount++
 
@@ -440,8 +450,13 @@ async function main() {
       const taRef = externalIdToTaRef(lv.source.externalId ?? '') ?? voteId
       const sample = rows.slice(0, 3).map(r => {
         const info = memberMap.get(r.memberId)
-        const group = r.groupId ? (groupMap.get(r.groupId) ?? r.groupId) : (info?.group ?? null)
-        return `${info?.name ?? `MEP ${r.memberId}`} (${info?.country ?? '?'}, ${group ?? '?'}): ${r.position}`
+        // country: prefer per-row country_code, fall back to members.csv
+        const country = r.countryCode ?? info?.country ?? '?'
+        // party: prefer per-row group_code mapped to short_label, fall back to group_memberships
+        const group = r.groupCode
+          ? (groupMap.get(r.groupCode) ?? r.groupCode)
+          : (info?.group ?? '?')
+        return `${info?.name ?? `MEP ${r.memberId}`} (${country}, ${group}): ${r.position}`
       })
       console.log(`  [dry-run] vote ${voteId} → ${taRef}: ${rows.length} members`)
       if (verbose) sample.forEach(s => console.log(`    ${s}`))
@@ -451,11 +466,14 @@ async function main() {
         await prisma.memberVote.createMany({
           data: rows.map(r => {
             const info = memberMap.get(r.memberId)
-            const group = r.groupId ? (groupMap.get(r.groupId) ?? r.groupId) : (info?.group ?? null)
+            const country = r.countryCode ?? info?.country ?? null
+            const group = r.groupCode
+              ? (groupMap.get(r.groupCode) ?? r.groupCode)
+              : (info?.group ?? null)
             return {
               legislativeVoteId: lv.id,
               memberName: info?.name ?? `MEP ${r.memberId}`,
-              memberState: info?.country ?? null,
+              memberState: country,
               memberParty: group,
               memberId: r.memberId,
               chamber: 'European Parliament',
