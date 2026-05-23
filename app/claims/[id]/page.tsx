@@ -382,29 +382,20 @@ function partyColor(party: string | null): string {
 
 // ── Country code → flag emoji ─────────────────────────────────────────────────
 
+const COUNTRY_FLAGS: Record<string, string> = {
+  // EU member states (ISO 3166-1 alpha-3)
+  AUT:"🇦🇹", BEL:"🇧🇪", BGR:"🇧🇬", HRV:"🇭🇷", CYP:"🇨🇾", CZE:"🇨🇿", DNK:"🇩🇰",
+  EST:"🇪🇪", FIN:"🇫🇮", FRA:"🇫🇷", DEU:"🇩🇪", GRC:"🇬🇷", HUN:"🇭🇺", IRL:"🇮🇪",
+  ITA:"🇮🇹", LVA:"🇱🇻", LTU:"🇱🇹", LUX:"🇱🇺", MLT:"🇲🇹", NLD:"🇳🇱", POL:"🇵🇱",
+  PRT:"🇵🇹", ROU:"🇷🇴", SVK:"🇸🇰", SVN:"🇸🇮", ESP:"🇪🇸", SWE:"🇸🇪", GBR:"🇬🇧",
+  // Others
+  USA:"🇺🇸", CAN:"🇨🇦", AUS:"🇦🇺", NZL:"🇳🇿", JPN:"🇯🇵", CHN:"🇨🇳", NOR:"🇳🇴",
+  CHE:"🇨🇭", ISL:"🇮🇸", UKR:"🇺🇦", TUR:"🇹🇷",
+};
+
 function countryFlag(code: string | null): string {
-  if (!code || code.length !== 3) {
-    // Try 2-letter codes
-    if (code && code.length === 2) {
-      return String.fromCodePoint(
-        ...code.toUpperCase().split("").map(c => 0x1F1E6 + c.charCodeAt(0) - 65)
-      );
-    }
-    return "";
-  }
-  // ISO 3166-1 alpha-3 → alpha-2 for common EU countries + US states (skip state codes)
-  const alpha3to2: Record<string, string> = {
-    AUT:"AT", BEL:"BE", BGR:"BG", HRV:"HR", CYP:"CY", CZE:"CZ", DNK:"DK",
-    EST:"EE", FIN:"FI", FRA:"FR", DEU:"DE", GRC:"GR", HUN:"HU", IRL:"IE",
-    ITA:"IT", LVA:"LV", LTU:"LT", LUX:"LU", MLT:"MT", NLD:"NL", POL:"PL",
-    PRT:"PT", ROU:"RO", SVK:"SK", SVN:"SI", ESP:"ES", SWE:"SE", GBR:"GB",
-    USA:"US", CAN:"CA", AUS:"AU", NZL:"NZ", JPN:"JP", CHN:"CN",
-  };
-  const a2 = alpha3to2[code.toUpperCase()];
-  if (!a2) return code; // fallback to raw code
-  return String.fromCodePoint(
-    ...a2.split("").map(c => 0x1F1E6 + c.charCodeAt(0) - 65)
-  );
+  if (!code) return "";
+  return COUNTRY_FLAGS[code.toUpperCase()] ?? "";
 }
 
 // EU Parliament MEP profile URL
@@ -495,7 +486,7 @@ function MemberVotesSection({ votes }: { votes: MemberVoteRecord[] }) {
                         ) : m.memberName}
                       </td>
                       <td className="py-0.5 px-2 text-gray-500 text-center" title={m.memberState ?? undefined}>
-                        {flag || m.memberState || "—"}
+                        {flag ? flag : (m.memberState || "—")}
                       </td>
                       <td className="py-0.5 px-2">
                         <span className={`px-1 rounded text-[10px] font-medium ${partyColor(m.memberParty)}`}>
