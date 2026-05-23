@@ -175,6 +175,20 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-23 (US Congress member votes — fix visibility on vote claims + lazy-load to unblock bill claims)
+
+Two coupled fixes around the `congress_votes_v1` member-vote feature surfaced after the 2026-05-22 enrichment that wrote 505 `LegislativeVote` rows (each with ~400 `MemberVote` children).
+
+- **Issue 1 (vote claim pages had no member breakdown).** `enrich-member-votes.ts` attaches `LegislativeVote` rows to **bill sources** (externalId `congress_law_source_{congress}_{type}_{number}`), not to the **vote-claim sources** that the roll-call vote claim pages render (externalId `congress_vote_{chamberSlug}_{congress}_{type}_{number}_{rollKey}_source`). Result: opening a roll-call vote claim showed Revision History only — no LV summary, no member list. Fix is at the API layer, not data layer — no migration needed. In `app/api/claims/[id]/route.ts`, after the main `findUnique`, any edge whose `source.externalId` matches `/^congress_vote_([^_]+)_(\d+)_([a-z]+)_(\d+)_.+_source$/` and has zero direct LVs triggers a one-shot lookup against the corresponding `congress_law_source_*` bill source. Matched LVs are filtered by chamber (`normalizeChamber()` collapses `"house-of-representatives" / "House" → "house"`, etc.) and grafted into `edge.source.legislativeVotes`. If chamber filtering returns nothing (defensive — e.g. unparseable slug), the unfiltered LVs are used. This keeps data ownership on bill sources (existing UI flows untouched) while letting both views render the same LV.
+
+- **Issue 2 (bill claim pages timed out on Vercel Hobby's 10s limit).** Bill claim sources usually carry 1–2 LVs each with ~400 `MemberVote` rows, and the prior `include` shape (`legislativeVotes.memberVotes`) eagerly loaded all of them in the main claim query. Hot-pathing ~800 joined rows through the API was reliably tripping the 10s function timeout, leaving the page hung on "Loading…". Fix: drop `memberVotes` from the eager include and replace it with `_count: { select: { memberVotes: true } }` so the trigger button can still render the count badge. Added new route `app/api/legislative-votes/[id]/members/route.ts` that returns the `MemberVote[]` for a single LV, sorted `vote asc, party asc, name asc` (same order the prior eager include used). `MemberVotesSection` in `app/claims/[id]/page.tsx` now takes `{ legislativeVoteId, count }` and fetches via the new endpoint on first expand (`useEffect` guarded by `open && votes === null && !loading`). Loading/error states inlined.
+
+- **Type plumbing.** `LegislativeVoteRecord.memberVotes: MemberVoteRecord[]` was replaced with `_count: { memberVotes: number }`. The call site (`{v._count.memberVotes > 0 && <MemberVotesSection ... />}`) now gates the trigger button on the count without needing the full payload. `npx tsc --noEmit` clean.
+
+- **Scope discipline.** No DB migration. No changes to `enrich-member-votes.ts` (the existing enrichment continues to write to bill sources, which is fine given the API-layer fallback). The fallback regex is intentionally tight (`congress_vote_*_source` only) so non-Congress vote rows are not accidentally rewritten. Lazy-load endpoint is read-only — no auth gate added since the rest of the API is read-only public.
+
+- **Files changed:** `app/api/claims/[id]/route.ts`, `app/api/legislative-votes/[id]/members/route.ts` (new), `app/claims/[id]/page.tsx`, `app/layout.tsx` (footer date → May 23, 2026), `app/page.tsx` (homepage changelog entry).
+
 ### 2026-05-21 (no-token science/medicine scripts agent-verified — scheduled for 2am cron)
 
 Three pipeline scripts were verified by coding agents and confirmed working with no external API keys. Scheduled to run at 2am EDT 2026-05-22:

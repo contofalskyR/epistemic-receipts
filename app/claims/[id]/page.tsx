@@ -44,7 +44,7 @@ type LegislativeVoteRecord = {
   passageType: string | null;
   byPartyJson: string | null;
   dataSource: string | null;
-  memberVotes: MemberVoteRecord[];
+  _count: { memberVotes: number };
 };
 
 type EdgeDetail = {
@@ -410,23 +410,35 @@ function mepProfileUrl(memberId: string | null, chamber: string): string | null 
 
 // ── Individual member votes ───────────────────────────────────────────────────
 
-function MemberVotesSection({ votes }: { votes: MemberVoteRecord[] }) {
+function MemberVotesSection({ legislativeVoteId, count }: { legislativeVoteId: string; count: number }) {
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState("");
+  const [votes, setVotes] = useState<MemberVoteRecord[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const yea = votes.filter(v => v.vote === "Yea").length;
-  const nay = votes.filter(v => v.vote === "Nay").length;
-  const nv  = votes.filter(v => v.vote === "Not Voting").length;
-  const present = votes.filter(v => v.vote === "Present").length;
+  useEffect(() => {
+    if (!open || votes !== null || loading) return;
+    setLoading(true);
+    setError(null);
+    fetch(`/api/legislative-votes/${legislativeVoteId}/members`)
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data: MemberVoteRecord[]) => setVotes(data))
+      .catch(e => setError(e instanceof Error ? e.message : String(e)))
+      .finally(() => setLoading(false));
+  }, [open, votes, loading, legislativeVoteId]);
 
-  const filtered = filter
+  const filtered = (votes && filter)
     ? votes.filter(v =>
         v.memberName.toLowerCase().includes(filter.toLowerCase()) ||
         (v.memberState ?? "").toLowerCase().includes(filter.toLowerCase()) ||
         (v.memberParty ?? "").toLowerCase().includes(filter.toLowerCase()) ||
         v.vote.toLowerCase().includes(filter.toLowerCase())
       )
-    : votes;
+    : (votes ?? []);
 
   return (
     <div className="mt-2">
@@ -434,85 +446,75 @@ function MemberVotesSection({ votes }: { votes: MemberVoteRecord[] }) {
         className="flex items-center gap-1.5 text-xs hover:opacity-80 transition-opacity"
         onClick={() => setOpen(v => !v)}
       >
-        <span className="text-gray-400 font-medium">{votes.length} individual votes</span>
-        <span className="text-gray-700">·</span>
-        <span className="text-green-500">{yea} yea</span>
-        <span className="text-gray-700">·</span>
-        <span className="text-red-500">{nay} nay</span>
-        {nv > 0 && (
-          <>
-            <span className="text-gray-700">·</span>
-            <span className="text-gray-500">{nv} NV</span>
-          </>
-        )}
-        {present > 0 && (
-          <>
-            <span className="text-gray-700">·</span>
-            <span className="text-gray-500">{present} present</span>
-          </>
-        )}
+        <span className="text-gray-400 font-medium">{count} individual votes</span>
         <span className="text-gray-600 ml-1">{open ? "▲" : "▼"}</span>
       </button>
       {open && (
         <div className="mt-2 space-y-2">
-          <input
-            className="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-gray-300 placeholder-gray-600 focus:outline-none focus:border-gray-500"
-            placeholder="Filter by name, state, party, or vote…"
-            value={filter}
-            onChange={e => setFilter(e.target.value)}
-          />
-          <div className="max-h-64 overflow-y-auto rounded border border-gray-800">
-            <table className="w-full text-xs">
-              <thead className="sticky top-0 bg-gray-900 z-10">
-                <tr className="text-gray-600 border-b border-gray-800">
-                  <th className="py-1 px-2 text-left font-medium">Member</th>
-                  <th className="py-1 px-2 text-left font-medium">St</th>
-                  <th className="py-1 px-2 text-left font-medium">Party</th>
-                  <th className="py-1 px-2 text-left font-medium">Vote</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map(m => {
-                  const profileUrl = mepProfileUrl(m.memberId, m.chamber);
-                  const flag = countryFlag(m.memberState);
-                  return (
-                    <tr key={m.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
-                      <td className="py-0.5 px-2 text-gray-300">
-                        {profileUrl ? (
-                          <a href={profileUrl} target="_blank" rel="noopener noreferrer"
-                            className="hover:text-white hover:underline">
-                            {m.memberName}
-                          </a>
-                        ) : m.memberName}
-                      </td>
-                      <td className="py-0.5 px-2 text-gray-500 text-center" title={m.memberState ?? undefined}>
-                        {flag ? flag : (m.memberState || "—")}
-                      </td>
-                      <td className="py-0.5 px-2">
-                        <span className={`px-1 rounded text-[10px] font-medium ${partyColor(m.memberParty)}`}>
-                          {m.memberParty ?? "—"}
-                        </span>
-                      </td>
-                      <td className="py-0.5 px-2">
-                        <span className={`px-1 rounded text-[10px] font-medium ${
-                          m.vote === "Yea"     ? "bg-green-900/60 text-green-300" :
-                          m.vote === "Nay"     ? "bg-red-900/60 text-red-300" :
-                          m.vote === "Abstain" ? "bg-yellow-900/60 text-yellow-400" :
-                          m.vote === "Present" ? "bg-yellow-900/60 text-yellow-400" :
-                          "bg-gray-800 text-gray-500"
-                        }`}>{m.vote}</span>
-                      </td>
+          {loading && <p className="text-xs text-gray-500 italic">Loading member votes…</p>}
+          {error && <p className="text-xs text-red-400">Failed to load: {error}</p>}
+          {votes && (
+            <>
+              <input
+                className="w-full bg-gray-800 border border-gray-700 rounded px-2 py-1 text-xs text-gray-300 placeholder-gray-600 focus:outline-none focus:border-gray-500"
+                placeholder="Filter by name, state, party, or vote…"
+                value={filter}
+                onChange={e => setFilter(e.target.value)}
+              />
+              <div className="max-h-64 overflow-y-auto rounded border border-gray-800">
+                <table className="w-full text-xs">
+                  <thead className="sticky top-0 bg-gray-900 z-10">
+                    <tr className="text-gray-600 border-b border-gray-800">
+                      <th className="py-1 px-2 text-left font-medium">Member</th>
+                      <th className="py-1 px-2 text-left font-medium">St</th>
+                      <th className="py-1 px-2 text-left font-medium">Party</th>
+                      <th className="py-1 px-2 text-left font-medium">Vote</th>
                     </tr>
-                  );
-                })}
-                {filtered.length === 0 && (
-                  <tr>
-                    <td colSpan={4} className="py-2 px-2 text-gray-600 italic">No matching members.</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+                  </thead>
+                  <tbody>
+                    {filtered.map(m => {
+                      const profileUrl = mepProfileUrl(m.memberId, m.chamber);
+                      const flag = countryFlag(m.memberState);
+                      return (
+                        <tr key={m.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
+                          <td className="py-0.5 px-2 text-gray-300">
+                            {profileUrl ? (
+                              <a href={profileUrl} target="_blank" rel="noopener noreferrer"
+                                className="hover:text-white hover:underline">
+                                {m.memberName}
+                              </a>
+                            ) : m.memberName}
+                          </td>
+                          <td className="py-0.5 px-2 text-gray-500 text-center" title={m.memberState ?? undefined}>
+                            {flag ? flag : (m.memberState || "—")}
+                          </td>
+                          <td className="py-0.5 px-2">
+                            <span className={`px-1 rounded text-[10px] font-medium ${partyColor(m.memberParty)}`}>
+                              {m.memberParty ?? "—"}
+                            </span>
+                          </td>
+                          <td className="py-0.5 px-2">
+                            <span className={`px-1 rounded text-[10px] font-medium ${
+                              m.vote === "Yea"     ? "bg-green-900/60 text-green-300" :
+                              m.vote === "Nay"     ? "bg-red-900/60 text-red-300" :
+                              m.vote === "Abstain" ? "bg-yellow-900/60 text-yellow-400" :
+                              m.vote === "Present" ? "bg-yellow-900/60 text-yellow-400" :
+                              "bg-gray-800 text-gray-500"
+                            }`}>{m.vote}</span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                    {filtered.length === 0 && (
+                      <tr>
+                        <td colSpan={4} className="py-2 px-2 text-gray-600 italic">No matching members.</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
         </div>
       )}
     </div>
@@ -627,8 +629,8 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
                           <div className="h-full bg-red-800" style={{ width: `${noPct}%` }} />
                         </div>
                       )}
-                      {v.memberVotes && v.memberVotes.length > 0 && (
-                        <MemberVotesSection votes={v.memberVotes} />
+                      {v._count.memberVotes > 0 && (
+                        <MemberVotesSection legislativeVoteId={v.id} count={v._count.memberVotes} />
                       )}
                     </div>
                   );
