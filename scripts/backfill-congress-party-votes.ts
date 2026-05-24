@@ -177,58 +177,68 @@ async function fetchBillActions(ref: BillRef, apiKey: string): Promise<RecordedV
   return all
 }
 
-// ── Vote detail (party breakdown) ─────────────────────────────────────────────
-
-interface PartyVoteRow {
-  partyName?: string
-  voteType?: string // 'Yea' | 'Nay' | 'Present' | 'Not Voting' | …
-  memberCount?: number
-}
-
-interface VoteDetailResponse {
-  vote?: { partyVotes?: PartyVoteRow[] }
-  partyVotes?: PartyVoteRow[]
-}
+// ── Vote detail (party breakdown) — XML from Clerk/Senate ────────────────────
 
 type PartyTally = { yes: number; no: number; abstain: number }
 
-function normalizeVoteType(t: string | undefined): keyof PartyTally | null {
-  if (!t) return null
-  const v = t.trim().toLowerCase()
-  if (v === 'yea' || v === 'aye' || v === 'yes') return 'yes'
-  if (v === 'nay' || v === 'no') return 'no'
-  if (v === 'present' || v === 'not voting' || v === 'abstain' || v === 'absent') return 'abstain'
-  return null
+function extractTag(xml: string, tag: string): string | null {
+  const m = xml.match(new RegExp(`<${tag}[^>]*>([^<]*)<\\/${tag}>`))
+  return m ? m[1]!.trim() : null
 }
 
-function buildByPartyJson(rows: PartyVoteRow[]): Record<string, PartyTally> | null {
+function expandPartyAbbrev(abbrev: string): string {
+  const map: Record<string, string> = { D: 'Democrat', R: 'Republican', I: 'Independent' }
+  return map[abbrev.toUpperCase()] ?? abbrev
+}
+
+function parseHouseXml(xml: string): Record<string, PartyTally> | null {
   const out: Record<string, PartyTally> = {}
-  for (const r of rows) {
-    const party = r.partyName?.trim()
-    const slot = normalizeVoteType(r.voteType)
-    const count = typeof r.memberCount === 'number' ? r.memberCount : Number(r.memberCount ?? 0)
-    if (!party || !slot || !Number.isFinite(count) || count <= 0) continue
+  const blockRe = /<totals-by-party>([\s\S]*?)<\/totals-by-party>/g
+  let m: RegExpExecArray | null
+  while ((m = blockRe.exec(xml)) !== null) {
+    const block = m[1]!
+    const party = extractTag(block, 'party')
+    if (!party) continue
+    const yes = parseInt(extractTag(block, 'yea-total') ?? '0', 10)
+    const no = parseInt(extractTag(block, 'nay-total') ?? '0', 10)
+    const abstain = parseInt(extractTag(block, 'present-total') ?? '0', 10)
+    out[party] = { yes: isNaN(yes) ? 0 : yes, no: isNaN(no) ? 0 : no, abstain: isNaN(abstain) ? 0 : abstain }
+  }
+  return Object.keys(out).length > 0 ? out : null
+}
+
+function parseSenateXml(xml: string): Record<string, PartyTally> | null {
+  const out: Record<string, PartyTally> = {}
+  const memberRe = /<member>([\s\S]*?)<\/member>/g
+  let m: RegExpExecArray | null
+  while ((m = memberRe.exec(xml)) !== null) {
+    const block = m[1]!
+    const partyRaw = extractTag(block, 'party')
+    if (!partyRaw) continue
+    const party = expandPartyAbbrev(partyRaw)
+    const castRaw = (extractTag(block, 'vote_cast') ?? '').trim().toLowerCase()
+    const slot: keyof PartyTally = (castRaw === 'yea' || castRaw === 'aye') ? 'yes'
+      : (castRaw === 'nay' || castRaw === 'no') ? 'no' : 'abstain'
     const prev = out[party] ?? { yes: 0, no: 0, abstain: 0 }
-    prev[slot] += count
+    prev[slot]++
     out[party] = prev
   }
   return Object.keys(out).length > 0 ? out : null
 }
 
-async function fetchVoteDetail(
-  congress: number,
-  chamber: string,
-  session: number,
-  roll: number,
-  apiKey: string,
-): Promise<PartyVoteRow[] | null> {
-  const chamberLower = chamber.toLowerCase()
-  const url =
-    `${CONGRESS_BASE}/vote/${congress}/${chamberLower}/${session}/${roll}` +
-    `?format=json&api_key=${encodeURIComponent(apiKey)}`
-  const data = await congressGet<VoteDetailResponse>(url)
-  if (!data) return null
-  return data.vote?.partyVotes ?? data.partyVotes ?? null
+async function fetchVoteDetailFromUrl(xmlUrl: string): Promise<Record<string, PartyTally> | null> {
+  await throttle()
+  let res: Response
+  try {
+    res = await fetch(xmlUrl, { headers: { Accept: 'application/xml, text/xml, */*' } })
+  } catch {
+    return null
+  }
+  if (!res.ok) return null
+  const xml = await res.text()
+  if (xmlUrl.includes('clerk.house.gov')) return parseHouseXml(xml)
+  if (xmlUrl.includes('senate.gov')) return parseSenateXml(xml)
+  return null
 }
 
 // ── Matching logic ────────────────────────────────────────────────────────────
@@ -370,33 +380,28 @@ async function main(): Promise<void> {
 
     counts.matched++
 
-    let partyRows: PartyVoteRow[] | null
+    if (!rv.url) {
+      counts.noPartyDetail++
+      if (verbose) console.log(`  [skip:no-xml-url] ${row.id} ${cacheKey}`)
+      continue
+    }
+
+    let byParty: Record<string, PartyTally> | null
     try {
-      partyRows = await fetchVoteDetail(ref.congress, rv.chamber, rv.sessionNumber, rv.rollNumber, apiKey)
+      byParty = await fetchVoteDetailFromUrl(rv.url)
     } catch (err) {
       counts.errors++
       console.error(
-        `  [error:vote-detail] ${row.id} ${cacheKey} ${rv.chamber}/${rv.sessionNumber}/${rv.rollNumber}: ${
+        `  [error:vote-xml] ${row.id} ${cacheKey} ${rv.url}: ${
           err instanceof Error ? err.message : String(err)
         }`,
       )
       continue
     }
 
-    if (!partyRows || partyRows.length === 0) {
-      counts.noPartyDetail++
-      if (verbose) {
-        console.log(
-          `  [skip:no-party] ${row.id} ${cacheKey} ${rv.chamber}/${rv.sessionNumber}/${rv.rollNumber}`,
-        )
-      }
-      continue
-    }
-
-    const byParty = buildByPartyJson(partyRows)
     if (!byParty) {
       counts.noPartyDetail++
-      if (verbose) console.log(`  [skip:empty-party] ${row.id} ${cacheKey}`)
+      if (verbose) console.log(`  [skip:no-party] ${row.id} ${cacheKey} ${rv.url}`)
       continue
     }
 
