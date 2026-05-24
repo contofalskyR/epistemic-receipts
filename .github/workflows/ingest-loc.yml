@@ -36,7 +36,7 @@ jobs:
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             npx tsx scripts/ingest-loc-collections.ts --dry-run
           else
-            npx tsx scripts/ingest-loc-collections.ts
+            npx tsx scripts/ingest-loc-collections.ts --full
           fi
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
