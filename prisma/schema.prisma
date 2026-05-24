@@ -266,6 +266,8 @@ model LegislativeVote {
   passageType      String?       // "legislative_vote", "executive_decree", "committee_only"
   byPartyJson      String?       // JSON: {PartyName: {yes: N, no: N, abstain: N}, ...}
   dataSource       String?       // "govtrack", "theyworkforyou", "wikidata", etc.
+  result           String?       // "passed" | "failed" | "tied" | "unknown"
+  topics           String?       // JSON array: ["health", "defense", "environment"]
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
   memberVotes      MemberVote[]
@@ -285,6 +287,19 @@ model MemberVote {
 
   @@index([legislativeVoteId])
   @@index([memberId])
+}
+
+model Polity {
+  id             String    @id @default(cuid())
+  name           String
+  countryCode    String?
+  governmentType String    // "democracy"|"republic"|"monarchy"|"empire"|"fascist"|"communist"|"authoritarian"|"theocracy"|"city_state"|"tribal"|"colonial"|"other"
+  startYear      Int?      // can be negative (BCE)
+  endYear        Int?      // null = still active
+  wikidataId     String?   @unique
+  successorOf    String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }
 
 // Wikidata cross-reference enrichment — links Source records to Wikidata Q-numbers.

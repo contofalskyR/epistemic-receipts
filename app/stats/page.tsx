@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { prisma } from "@/lib/prisma";
+import { getTopTopicsByLegislature, getPassRateByTopic } from "@/lib/stats-queries";
 
 const MIN_TOTAL = 10;
 
@@ -113,8 +114,25 @@ function BillCell({ row }: { row: VoteRow }) {
   return <span className="text-zinc-100">{label}</span>;
 }
 
+const TOPIC_LABELS: Record<string, string> = {
+  defense: "Defense",
+  health: "Health",
+  economy: "Economy",
+  environment: "Environment",
+  justice: "Justice",
+  immigration: "Immigration",
+  education: "Education",
+  infrastructure: "Infrastructure",
+  foreign_policy: "Foreign Policy",
+  social: "Social",
+};
+
 export default async function StatsPage() {
-  const rows = await loadVotes();
+  const [rows, topicsByLeg, passRateByTopic] = await Promise.all([
+    loadVotes(),
+    getTopTopicsByLegislature(),
+    getPassRateByTopic(),
+  ]);
   const legislatures = aggregateByLegislature(rows);
   const totalVotes = rows.length;
   const totalLegislatures = legislatures.length;
@@ -280,6 +298,172 @@ export default async function StatsPage() {
           </table>
         </div>
       </section>
+
+      {/* ── Phase 2 ── */}
+      <div className="pt-4 border-t border-zinc-800">
+        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Phase 2</p>
+        <h2 className="mt-1 text-lg font-semibold text-white">Topic Analysis</h2>
+        <p className="mt-1 text-xs text-zinc-500">
+          Keyword-clustered from bill titles. UK, EU, and Canada sources use numeric identifiers —
+          topic classification applies to US Congress only.
+        </p>
+      </div>
+
+      {/* Topics by Legislature */}
+      {topicsByLeg.length > 0 && (
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-base font-semibold text-white">Topics by Legislature</h2>
+            <p className="text-xs text-zinc-500 mt-1">
+              Top topics per legislature by vote count. Votes may have multiple topics.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {topicsByLeg.map((leg) => {
+              const maxCount = Math.max(1, ...leg.topics.map((t) => t.count));
+              return (
+                <div
+                  key={leg.legislature}
+                  className="rounded border border-zinc-800 bg-zinc-950 p-4 space-y-3"
+                >
+                  <div>
+                    <p className="text-sm font-medium text-zinc-100">
+                      {LEGISLATURE_LABELS[leg.legislature] ?? leg.legislature}
+                    </p>
+                    <p className="text-xs text-zinc-500 font-mono">{leg.legislature}</p>
+                  </div>
+                  {leg.topics.length === 0 ? (
+                    <p className="text-xs text-zinc-600 italic">No topic data</p>
+                  ) : (
+                    leg.topics.slice(0, 5).map((t) => (
+                      <div key={t.topic} className="space-y-1">
+                        <div className="flex items-baseline justify-between gap-2">
+                          <span className="text-xs text-zinc-300">
+                            {TOPIC_LABELS[t.topic] ?? t.topic}
+                          </span>
+                          <span className="text-xs text-zinc-500 tabular-nums">
+                            {t.count.toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="h-2 rounded-sm bg-zinc-900 overflow-hidden">
+                          <div
+                            className="h-full bg-blue-700/70"
+                            style={{ width: `${(t.count / maxCount) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* Pass Rate by Topic */}
+      {passRateByTopic.length > 0 && (
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-base font-semibold text-white">Pass Rate by Topic</h2>
+            <p className="text-xs text-zinc-500 mt-1">
+              Share of votes that passed, aggregated across all legislatures with topic data.
+            </p>
+          </div>
+          <div className="rounded border border-zinc-800 bg-zinc-950 p-4 space-y-3">
+            {passRateByTopic.map((t) => {
+              const passPct = t.passRate * 100;
+              const failPct = 100 - passPct;
+              return (
+                <div key={t.topic} className="space-y-1">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-zinc-100">
+                      {TOPIC_LABELS[t.topic] ?? t.topic}
+                    </span>
+                    <div className="text-xs text-zinc-400 tabular-nums whitespace-nowrap">
+                      {t.total.toLocaleString()} votes ·{" "}
+                      <span className="text-green-300">{pct(passPct)}</span> pass ·{" "}
+                      <span className="text-red-300">{pct(failPct)}</span> fail
+                    </div>
+                  </div>
+                  <div className="flex h-3 rounded-sm overflow-hidden bg-zinc-900">
+                    <div
+                      className="h-full bg-green-700/70"
+                      style={{ width: `${passPct}%` }}
+                    />
+                    <div
+                      className="h-full bg-red-700/60"
+                      style={{ width: `${failPct}%` }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* Cross-Country Topic Comparison */}
+      {topicsByLeg.length > 0 && (
+        <section className="space-y-2">
+          <div>
+            <h2 className="text-base font-semibold text-white">Cross-Country Topic Comparison</h2>
+            <p className="text-xs text-zinc-500 mt-1">
+              Vote counts per topic across legislatures. Zero indicates no matching bills or no
+              descriptive title data.
+            </p>
+          </div>
+          <div className="rounded border border-zinc-800 overflow-hidden">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-zinc-800 bg-zinc-900/60">
+                  <th className="px-3 py-2 text-left font-medium text-zinc-500">Topic</th>
+                  {topicsByLeg.map((l) => (
+                    <th
+                      key={l.legislature}
+                      className="px-3 py-2 text-right font-medium text-zinc-500 whitespace-nowrap"
+                    >
+                      {LEGISLATURE_LABELS[l.legislature] ?? l.legislature}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(TOPIC_LABELS).map((topic, i) => {
+                  const counts = topicsByLeg.map((l) => {
+                    const entry = l.topics.find((t) => t.topic === topic);
+                    return entry?.count ?? 0;
+                  });
+                  const maxCount = Math.max(1, ...counts);
+                  return (
+                    <tr
+                      key={topic}
+                      className={`border-b border-zinc-800/50 last:border-0 ${
+                        i % 2 === 0 ? "" : "bg-zinc-900/20"
+                      }`}
+                    >
+                      <td className="px-3 py-2 text-zinc-300">
+                        {TOPIC_LABELS[topic]}
+                      </td>
+                      {counts.map((count, j) => (
+                        <td
+                          key={j}
+                          className="px-3 py-2 text-right tabular-nums"
+                          style={{
+                            color: count === 0 ? "rgb(63 63 70)" : `rgba(147,197,253,${0.3 + (count / maxCount) * 0.7})`,
+                          }}
+                        >
+                          {count === 0 ? "—" : count.toLocaleString()}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
