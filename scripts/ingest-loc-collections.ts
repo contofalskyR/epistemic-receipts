@@ -13,11 +13,11 @@ const prisma = new PrismaClient()
 
 const INGESTED_BY = 'loc_collections_v1'
 const LOC_BASE = 'https://www.loc.gov'
-const PAGE_SIZE = 25
-const THROTTLE_MS = 600
-const RETRY_BASE_DELAY_MS = 5000
+const PAGE_SIZE = 100
+const THROTTLE_MS = 2000
+const RETRY_BASE_DELAY_MS = 60000
 const MAX_RETRIES = 4
-const BETWEEN_COLLECTIONS_SLEEP_MS = 30000
+const BETWEEN_COLLECTIONS_SLEEP_MS = 120000
 const DRY_RUN_SAMPLE_COUNT = 20
 const FULL_RUN_CAP = 5000
 const PER_COLLECTION_CAP = 1000
