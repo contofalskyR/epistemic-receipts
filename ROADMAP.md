@@ -44,7 +44,8 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 - `clinicaltrials_v1`: 1,053 US clinical trials
 - `nih_reporter_v1`: 1,362 NIH grants
 - `pubchem_v1`: 355 compounds (partial — more available)
-- `nato_official_texts_v1`: 454 texts
+- `nato_official_texts_v1`: 459 texts. Shipped 2026-05-23.
+- `nationalrat_v1`: 3,868 records (Austria Nationalrat). Shipped 2026-05-23.
 - `south_africa_legislation_v1`: 557 acts
 - `singapore_legislation_v1`: 507 acts
 - `mexico_legislation_v1`: 308 laws
@@ -59,6 +60,10 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 - `nist_webbook_v1`: 20 compounds
 - `congress_votes_v1`: 505 roll call votes
 - `omim_v1`: 1,512 phenotype entries (partial — resuming 2026-05-22)
+- `echr_judgments_v1`: 10,296 ECHR judgments (hudoc.echr.coe.int). Shipped 2026-05-23.
+- `un_ga_resolutions_v1`: 598 UN General Assembly resolutions. Shipped 2026-05-23.
+- `who_gho_v1`: 1,001 WHO Global Health Observatory stats (life expectancy, child mortality, PM2.5, obesity, alcohol — best year per country, 5 indicators). Shipped 2026-05-23.
+- `openfda_labels_v1`: 52,354 FDA drug labels. Shipped 2026-05-23 (partial — full corpus ~258k, architectural gate applied).
 
 ### Medical/Science Pipelines — New 2026-05-21 (scripts built by agents)
 Scripts exist for all; architectural review pending before full production runs.
@@ -68,11 +73,47 @@ Scripts exist for all; architectural review pending before full production runs.
 - `openfda_labels_v1`: 0 — BLOCKED pending CONSULTANT.md decisions (258k drug labels, FDA)
 - `ingest-faers-current-drugs.ts` → `faers_normalized_drugs_v1`: 999 (see P7)
 
-## In Progress (as of 2026-05-22 evening)
+## Archives & Declassified Documents Track — 2026-05-23
 
-- 🔄 **UK vote enrichment** — `enrich-vote-counts.ts --full --country uk` running. 11,777 sources, LV rows incrementing.
-- 🔄 **US Congress votes ingest** — `ingest-congress-votes.ts --full` running (113–119). After completion → run `enrich-vote-counts.ts --full --country us`.
-- ⏳ **OpenFDA Labels** (`ingest-openfda-labels.ts`) — Script built. **BLOCKED** — architectural decisions pending in `CONSULTANT.md`. Do not run until resolved.
+New pipeline category added: `domain: "archives"`. Topics page updated with "Archives & Declassified Documents" section.
+
+| P# | Pipeline | Script | Status | Notes |
+|----|----------|--------|--------|-------|
+| P110 | Wilson Center Digital Archive | `ingest-wilson-center.ts` | ⏳ DNS blocked | Domain updated to `archives`. Retry when DNS resolves. |
+| P115 | UK National Archives | `ingest-uk-national-archives.ts` | ⏳ In progress | CAB, FCO, PREM, HO, DEFE series. No key needed. |
+| P116 | Miller Center Presidential Speeches | `ingest-miller-center.ts` | 🔄 Full run in progress | ~600 US presidential speeches. Dry-run passed. |
+| P117 | JFK Assassination Records (NARA) | `ingest-jfk-records.ts` | ⛔ BLOCKED — NARA API key required. Returns HTML without key. Script built + validated (mock). | Ship immediately once NARA key arrives. |
+| P118 | CIA FOIA Reading Room | `ingest-cia-foia.ts` | ⛔ BLOCKED | Wayback CDX stalled. CIA Reading Room blocks all automated access. Script built but no viable path. |
+| P119 | IPN — Polish Institute of National Remembrance | `ingest-ipn.ts` | 🔄 Full run in progress (50k cap) | 2.98M total records; capped at 50k for now. |
+| P120 | JACAR (Japan Center for Asian Historical Records) | `ingest-jacar.ts` | 🔄 Full run in progress | B+C series 1931–1945. Shipped 2026-05-23. |
+| P121 | Taiwan ROC National Archives | `ingest-taiwan-archives.ts` | ✅ Shipped 2026-05-23 | 3,935 records. archives.gov.tw. |
+| P122 | Romania CNSAS (Securitate files) | `ingest-romania-cnsas.ts` | ✅ Shipped 2026-05-23 | 1,980 records. Institutional records (CC member lists, org charts) via Wayback CDX on cnsas.ro. |
+| P123 | Czech ABS (StB files) | `ingest-czech-abs.ts` | ✅ Shipped 2026-05-23 | 104 records. abscr.cz structured database. |
+| P124 | Bundesarchiv-BStU (Stasi) | `ingest-stasi.ts` | ⛔ BLOCKED | Script built, full run returned only 2 records. BStU site (stasi-mediathek.de) is TYPO3 CMS with noindex/nofollow, no API. No journalism bulk datasets found (Der Spiegel, Die Zeit, GitHub all checked). Formal research application to Bundesarchiv required — out of scope. |
+| P128 | Commonwealth War Graves Commission | `ingest-cwgc.ts` | ❌ DROPPED | Failed reference-tier test — 1.7M individual casualty rows won't be directly cited by case studies. Script built but Azure WAF requires subscription key. Not worth pursuing. |
+| P125 | FRUS — Foreign Relations of the United States | `ingest-frus.ts` | ✅ Shipped 2026-05-23 | 551 records. history.state.gov — WWI/WWII/Cold War US diplomacy. |
+| P126 | Europeana WWI Collection | `ingest-europeana-wwi.ts` | ✅ Shipped 2026-05-23 | 10,000 records. WWI items across European archives (heavily Romanian). Language badge for non-EN claims: tabled, pending implementation. |
+| P127 | Library of Congress Collections | `ingest-loc-collections.ts` | 🔄 Running via GitHub Actions | Both Mac Mini and Air IPs Cloudflare-banned. Workflow committed to repo; running from fresh GH runner. Script + workflow at .github/workflows/ingest-loc.yml. |
+
+**Blocked on NARA key:**
+- P117 JFK Records + full NARA bulk catalog — key requested 2026-05-23 via Catalog_API@nara.gov. Expected reply Tue/Wed. Key unlocks: P117 JFK + CIA, State Dept, DoD, Church Committee bulk.
+
+**Blocked / No viable path currently:**
+- P118 CIA FOIA — blocks all automation; Wayback CDX insufficient
+- P124 Stasi (Bundesarchiv-BStU) — no API, no journalism datasets, formal application required
+- China national archive (no open archive)
+- Ukraine SBU (access complicated by war)
+- Lithuania (Cloudflare blocking confirmed)
+
+---
+
+## In Progress / Pending (as of 2026-05-23)
+
+- ✅ **UK vote enrichment** — `enrich-vote-counts.ts --full --country uk` — complete. 11,777 sources processed.
+- ✅ **US Congress votes ingest** — `ingest-congress-votes.ts --full` — complete (113–119).
+- ⏳ **US member-level vote enrichment** — `scripts/enrich-member-votes.ts`. Congress.gov API 404 bug under investigation. Fix pending; will run `--full` after fix confirmed.
+- ⏳ **Wilson Center Digital Archive** (P110) — script built (`ingest-wilson-center.ts`), dry-run blocked by DNS failure on `digitalarchive.wilsoncenter.org`. Retry when network resolves.
+- ⏳ **ProPublica Congress Votes** (P111) — script built (`ingest-propublica-congress.ts`), requires free `PROPUBLICA_API_KEY` from propublica.org/datastore. Get key → add to `.env.local` → run.
 
 ## 2026-05-22 Pipeline Batch — Status as of 2026-05-22 evening
 
@@ -150,6 +191,14 @@ These pipelines passed dry-run but full runs were partial or didn't complete. Sc
 
 ---
 
+## Medium-impact features — Shipped 2026-05-23
+
+- [x] **Full-text search** (`/search`) — ILIKE across claims + sources, filter by type, linked in nav.
+- [x] **Topic pages** (`/topics`, `/topics/[slug]`) — party breakdown, timeline, vote patterns per topic.
+- [x] **Parliamentary majority enrichment** — `enrich-parliamentary-majority.ts` built. Schema extended: `governingParty`, `majorityType`, `coalitionPartners`, `seatCount` on PoliticalContext. Dry-run: 219,965 rows across 49 countries eligible. Run `--full` to populate.
+
+---
+
 ## Long-horizon features
 
 - **Legislative vote data — Layer 1: Aggregate counts per source** ✅ Infrastructure shipped 2026-05-22
@@ -180,12 +229,20 @@ These pipelines passed dry-run but full runs were partial or didn't complete. Sc
   - Prototype path: start with the 505 US votes already in DB + NYT API. Could be built in a weekend.
 
 - **Legislative vote data — Layer 2: Member-level votes + `Person` entities**
-  Who specifically voted how on each bill. Requires a new `Person` model (MP/Senator with name, party, wikidataId) and a `Vote` junction table linking `Person` → `Source` with a vote direction. Significant schema addition. Prerequisite: Layer 1 done and validated.
+  Who specifically voted how on each bill. Significant schema work — new `Person` model (MP/Senator, wikidataId) + `Vote` junction → `Person` → `Source`. Prerequisite: Layer 1 fully populated.
+
+  **EU Parliament: SHIPPED 2026-05-22** — `MemberVote` model added (no `Person` model needed; MEP identity stored as `memberId` + `memberName`). Enrichment script: `scripts/enrich-eu-member-votes.ts`. 1,348,631 rows across 1,900 EU Parliament LegislativeVotes. Full run: `enriched=1900 skipped=0 failed=0`. UI: claim detail page MEP table shows flag emoji (ISO 3166-1 alpha-3 → hardcoded lookup), colored party badge (EPP/SD/RENEW/ECR/GUE_NGL/GREEN_EFA/PFE/NI), and clickable HowTheyVote.eu profile link. Abstain votes styled in yellow.
+
+  **US Congress: PENDING** — `scripts/enrich-member-votes.ts` exists. All 505 `congress_votes_v1` records returning 404 from Congress.gov API v3. Opus agent investigating correct URL format. After fix: run `--full`; UI already wired (bioguide.congress.gov profile links via `mepProfileUrl()`).
+
+  **UK / Canada / Germany / Israel:** Not yet implemented for member-level.
 
 - **Legislative vote data — Layer 3: Person pages (`/people/[id]`)**
   Individual MP/Senator profiles — all their votes, party history, legislation they sponsored, cross-referenced with the knowledge graph. Becomes its own section of the site. Prerequisite: Layer 2 done.
 
 - **Legal force status on legislation** — laws that are no longer in force should remain as HARD_FACT (the fact that they existed and were enacted is still true) but carry a `status: repealed | expired | superseded` label and an `endOfValidity` date. EUR-Lex already exposes this explicitly (e.g. "No longer in force, Date of end of validity: 06/01/1987"). Should apply to EEC/EU legislation, US Federal Register rules, and any other law pipeline. Requires a `legalStatus` field on the Claim or Source schema. Lets users query "what was the law at time X" without conflating historical facts with current law.
+
+- **Interactive globe — geotracked claims** — a spinning 3D globe (`/globe` route) where every ingested claim is plotted by source country. Aesthetic target: **Black Ops 2 multiplayer lobby** — dark globe, dim country outlines, glowing cyan arc lines pulsing between jurisdictions, animated particles traveling along arcs, atmospheric rim glow, pulsing dots per country sized by claim count. Implementation: `react-globe.gl` (Three.js/WebGL) — supports dark Earth textures, `arcDashOffset` animation for pulse effect, atmosphere layer, custom point markers. Fits the existing dark theme naturally (`bg-gray-950`). Scope: Phase 1 — source-country tagging (most legislative pipelines already carry country in `ingestedBy`/`metadata.country`); Phase 2 — build the globe component with BO2 aesthetic; Phase 3 — click country → filtered claim list for that jurisdiction. Pairs with the geographic fact distribution feature below.
 
 - **Geographic fact distribution** — tag claims and case studies with the geography of their source institution (e.g. US university, Russian state outlet, EU regulatory body) and eventually of the subject matter itself. Goal: surface which facts are geographically clustered vs. universal. Phase 1: source-institution geo-tagging. Phase 2: map disputed claims by accepting/rejecting geography — e.g. Stalin's culpability for mass death is accepted as settled in the West but contested or minimized in certain post-Soviet contexts; similarly, some climate or pharma facts vary by jurisdiction. Phase 3: enable queries like "which facts about X are accepted in geography A but disputed in geography B." Requires entity tagging infrastructure and a geo dimension on Claim/Source records.
 
@@ -206,7 +263,7 @@ Extend the legislative queue after Russia. Ordered by API quality + editorial va
 | 57 | ~~Scotland~~ | — | **Shipped 2026-05-20 — 408 acts** |
 | 58 | Wales (Senedd) | senedd.wales | Devolved legislation |
 | 59 | Indonesia | peraturan.go.id/eng | 58k+ regulations, English interface |
-| 60 | ECHR (Council of Europe) | hudoc.echr.coe.int | Excellent free API — landmark rulings, high citation value |
+| 60 | ~~ECHR (Council of Europe)~~ | hudoc.echr.coe.int | **Shipped 2026-05-23 — 10,296 judgments (`echr_judgments_v1`)** |
 | 61 | ~~WTO Dispute Settlement~~ | — | **Shipped 2026-05-20 — 645 cases** |
 | 62 | ~~ICJ (Int'l Court of Justice)~~ | — | **Shipped 2026-05-20 — 800 decisions** |
 | 65 | ~~Malaysia~~ | — | **Shipped 2026-05-20 — 881 acts** |
@@ -229,7 +286,7 @@ Extend the legislative queue after Russia. Ordered by API quality + editorial va
 | 71 | Vietnam | vbpl.vn/en | English portal exists; **blocked — connection timeout** |
 | 72 | Pakistan | pakistancode.gov.pk | Pakistan Code has ~900+ consolidated acts in English — **better path than na.gov.pk (which was blocked). New candidate.** |
 | 73 | Thailand | krisdika.go.th | English translations of major laws, official Council of State source |
-| 74 | UN General Assembly | unbisnet.un.org | Resolutions — complements UN SC |
+| 74 | ~~UN General Assembly~~ | unbisnet.un.org | **Shipped 2026-05-23 — 598 resolutions (`un_ga_resolutions_v1`)** |
 | 75 | ICC (Int'l Criminal Court) | icc-cpi.int | Indictments + judgments |
 | 82 | ~~Uruguay~~ | impo.com.uy | **Running 2026-05-20 — ~4,300 laws, nohup active** |
 | 83 | AfricanLII expansion | africanlii.org + per-country | 12 additional countries beyond P55 Laws.Africa 9: Malawi, Mauritius, Seychelles, Sierra Leone, Rwanda, Tanzania, Botswana, Liberia, eSwatini, Mozambique, Ethiopia, Zanzibar — check Laws.Africa REST API first, fall back to LII HTML |
@@ -271,10 +328,21 @@ Extend the legislative queue after Russia. Ordered by API quality + editorial va
 
 ---
 
-## Master Pipeline Queue (as of 2026-05-20 — DB-verified)
+## Master Pipeline Queue
 
 **DB totals at last audit (2026-05-20): 306,646 sources / 305,593 claims**
 **DB totals at 2026-05-21 ~12:30 EDT (verified): ~336,900+ claims across 90+ pipelines. RxNorm + ChEBI still writing.**
+**DB totals at 2026-05-23 ~17:30 EDT (verified): ~400k+ claims. Added today: NATO 459, Austria Nationalrat 3,868, ECHR 10,296, UN GA 598, WHO GHO 1,001, OpenFDA Labels 52,354.**
+
+### Shipped Today — 2026-05-23
+| Tag | Pipeline | Records |
+|-----|----------|---------|
+| `nato_official_texts_v1` | NATO Official Texts (P17) | 459 |
+| `nationalrat_v1` | Austria Nationalrat (P22) | 3,868 |
+| `echr_judgments_v1` | ECHR Judgments (P60/P114) | 10,296 |
+| `un_ga_resolutions_v1` | UN General Assembly (P74/P113) | 598 |
+| `who_gho_v1` | WHO Global Health Observatory (P112) | 1,001 |
+| `openfda_labels_v1` | OpenFDA Drug Labels | 52,354 |
 
 ### Currently Running (2026-05-21)
 | P# | Pipeline | Status |
@@ -387,6 +455,13 @@ Domains beyond legislation — same reference-tier standard applies. Individual 
 | — | CDC WONDER | pending | Public health numbers |
 
 ---
+
+## UI Features — Shipped / Tabled
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| `/stats` page — legislative vote analysis | ✅ Shipped 2026-05-23 | Polarization by legislature, top contested + unanimous votes. Server-rendered. |
+| Language badge on claim cards | 🔜 Tabled | Small RO/EN/DE pill badge, same style as HARD_FACT. Triggered by Europeana WWI Romanian data. No translate button — Chrome handles it. Needs language field on ingest or backfill from Europeana dc:language metadata. |
 
 ## Notes
 
