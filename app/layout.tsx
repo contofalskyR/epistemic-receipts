@@ -17,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full text-gray-100 antialiased">
         <nav className="border-b border-gray-800 px-6 py-3 flex gap-6 text-sm">
           <Link href="/" className="font-semibold text-white">Epistemic Receipts</Link>
+          <Link href="/search" className="text-gray-400 hover:text-white transition-colors">Search</Link>
           <Link href="/claims" className="text-gray-400 hover:text-white transition-colors">Claims</Link>
           <Link href="/sources" className="text-gray-400 hover:text-white transition-colors">Sources</Link>
           <Link href="/edges" className="text-gray-400 hover:text-white transition-colors">Edges</Link>
@@ -26,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/review" className="text-gray-400 hover:text-white transition-colors">Review</Link>
           <Link href="/pipelines" className="text-gray-400 hover:text-white transition-colors">Pipelines</Link>
           <Link href="/datasets" className="text-gray-400 hover:text-white transition-colors">Datasets</Link>
+          <Link href="/analysis/votes" className="text-gray-400 hover:text-white transition-colors">Analysis</Link>
+          <Link href="/stats" className="text-gray-400 hover:text-white transition-colors">Stats</Link>
           <Link href="/forthcoming" className="text-gray-400 hover:text-white transition-colors ml-auto">Forthcoming</Link>
           <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
           <Link href="/glossary" className="text-gray-400 hover:text-white transition-colors">Glossary</Link>
