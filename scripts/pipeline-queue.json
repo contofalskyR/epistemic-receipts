@@ -1,0 +1,172 @@
+{
+  "_comment": "Sequential pipeline queue. One at a time. AUTO-APPROVE MODE ENABLED 2026-05-20: Robert has pre-approved all pipelines. Dry-run then immediately commit — no approval ping needed. Send one final Telegram after full commit: 'P{n} {Name} done: {X} laws committed. Starting P{n+1} {Next} now.'",
+  "_instructions": "Set status to 'running' when starting. Run dry-run, log count, then immediately run full commit without asking for approval. Mark 'done' after DB commit confirmed. Read next 'pending' entry and start it. Skip 'blocked' entries.",
+  "auto_approve": true,
+
+  "queue": [
+    {
+      "p": 78,
+      "name": "Georgia",
+      "script": "ingest-georgia.ts",
+      "source": "https://matsne.gov.ge/en/document/search",
+      "language": "English",
+      "actual_count": 301,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 301 laws."
+    },
+    {
+      "p": 79,
+      "name": "Jamaica",
+      "script": "ingest-jamaica.ts",
+      "source": "https://laws.moj.gov.jm/",
+      "language": "English",
+      "actual_count": 528,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 528 acts across years 2000–2023 via DataTables AJAX."
+    },
+    {
+      "p": 80,
+      "name": "Sri Lanka",
+      "script": "ingest-srilanka.ts",
+      "source": "https://documents.gov.lk/view/act/acts.html",
+      "source_alt": "https://www.lawnet.gov.lk/ (parked — returns 'root directory' only; mybluehost cert. Use documents.gov.lk Department of Government Printing instead)",
+      "language": "English",
+      "actual_count": 1704,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 1,704 acts 1981–2026 from Dept. of Government Printing static HTML tables. 100% DAY-precision dates; English/Sinhala/Tamil PDF links captured in metadata."
+    },
+    {
+      "p": 72,
+      "name": "Pakistan",
+      "script": "ingest-pakistan.ts",
+      "source": "https://www.pakistancode.gov.pk/",
+      "language": "English",
+      "estimated_count": 900,
+      "status": "blocked",
+      "block_reason": "Probed 2026-05-20: www.pakistancode.gov.pk, molaw.gov.pk, senate.gov.pk, na.gov.pk all TCP-timeout from this network (geo-blocked or hard down). supremecourt.gov.pk returns 403. No reachable .gov.pk legal portal available. Skipped per task protocol; revisit when alternate route (VPN/mirror) is found.",
+      "notes": "Pakistan Code consolidated statute book. ~900+ federal acts in English from colonial era to present. Use pakistancode.gov.pk NOT na.gov.pk (which was geo-blocked). No API — scrape act list."
+    },
+    {
+      "p": 82,
+      "name": "Uruguay",
+      "script": "ingest-uruguay.ts",
+      "source": "https://www.impo.com.uy/",
+      "language": "Spanish",
+      "estimated_count": 20000,
+      "status": "running",
+      "notes": "Cleanest LatAm structure. IMPO (Centro de Información Oficial). URL pattern: /bases/leyes/{number}-{year} (DASH not slash). Sequential scan 16100-20400. In progress 2026-05-20."
+    },
+    {
+      "p": 81,
+      "name": "Peru",
+      "script": "ingest-peru.ts",
+      "source": "https://leyes.congreso.gob.pe/",
+      "source_alt": "https://www.datosabiertos.gob.pe/dataset/sistematizaci%C3%B3n-de-normas-legales-en-el-sistema-peruano-de-informaci%C3%B3n-jur%C3%ADdica-spij-desde",
+      "language": "Spanish",
+      "actual_count": 5202,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 5,202 laws 1990–2025 from leyes.congreso.gob.pe month-by-month POST search. Types: LEY, RESOLUCION LEGISLATIVA, DECRETO LEY. DAY-precision dates. 437 months fetched."
+    },
+    {
+      "p": 87,
+      "name": "PacLII — Pacific Islands",
+      "script": "ingest-paclii.ts",
+      "source": "https://www.paclii.org/",
+      "language": "English",
+      "estimated_count": 1786,
+      "status": "running",
+      "notes": "paclii.org Cloudflare-protected — direct blocked. Strategy: enumerate slugs via Wayback CDX API, fetch act pages from Wayback Machine, parse <title> tag. CDX confirmed counts: fj=269, sb=191, vu=329, to=178, ws=320, ki=126, tv=120, pg=252. Countries: Fiji, Solomon Islands, Vanuatu, Tonga, Samoa, Kiribati, Tuvalu, Papua New Guinea. Nauru/Cook Islands have 0/1 acts in CDX. Dry-run in progress 2026-05-20."
+    },
+    {
+      "p": 89,
+      "name": "Trinidad and Tobago",
+      "script": "ingest-tt.ts",
+      "source": "https://rgd.legalaffairs.gov.tt/laws2/",
+      "language": "English",
+      "actual_count": 368,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 368 consolidated chapter laws from Ministry of Legal Affairs Apache index. 27 chapter pages, 367 with 2018-12-05 PDF mtimes. claimEmergedAt = PDF Last-Modified (consolidated revision date)."
+    },
+    {
+      "p": 90,
+      "name": "Brunei",
+      "script": "ingest-brunei.ts",
+      "source": "https://www.agc.gov.bn/",
+      "language": "English",
+      "actual_count": 288,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 288 Cap-numbered Acts from AGC BRULAW A–Y pages (90.3% with date-coming-into-force). Per-act detail-page URLs captured for 97.9%."
+    },
+    {
+      "p": 84,
+      "name": "Turkey",
+      "script": "ingest-turkey.ts",
+      "source": "https://www.mevzuat.gov.tr/",
+      "language": "Turkish",
+      "estimated_count": 5000,
+      "status": "pending",
+      "notes": "Use the unofficial internal API reverse-engineered by mevzuat-mcp (github.com/saidsurucu/mevzuat-mcp). Search endpoint: POST to mevzuat.gov.tr. Scope to KANUN (laws) type only for first pass. Turkish text — translation downstream."
+    },
+    {
+      "p": 85,
+      "name": "UAE",
+      "script": "ingest-uae.ts",
+      "source": "https://uaelegislation.gov.ae/en",
+      "language": "English",
+      "actual_count": 177,
+      "status": "done",
+      "notes": "Shipped 2026-05-20. 177 laws from uaelegislation.gov.ae via Wayback CDX enumeration (178 IDs found, 1 had no title). Cloudflare bypass via Wayback Machine fetches."
+    },
+    {
+      "p": 88,
+      "name": "Costa Rica",
+      "script": "ingest-costarica.ts",
+      "source": "http://www.pgrweb.go.cr/scij/",
+      "language": "Spanish",
+      "estimated_count": 4000,
+      "status": "blocked",
+      "block_reason": "Probed 2026-05-20. Direct access: HTTP 000 (connection timeout). Wayback CDX has only 368 random individual law text pages archived (nrm_texto_completo.aspx), not a systematic enumeration. No searchable law index in Wayback. Law names buried in full text body, not a clean title field. Not viable without direct site access."
+    }
+  ],
+
+  "post_batch": [
+    {
+      "name": "Wikidata Political Context Enrichment",
+      "script": "enrich-political-context-wikidata.ts",
+      "run_after": "all pipelines complete",
+      "command": "npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-political-context-wikidata.ts --full",
+      "status": "pending",
+      "notes": "Idempotent — backfills PoliticalContext (HoG, party) for all unenriched legislative sources via Wikidata SPARQL. Safe to re-run. Run once after each legislative batch. All new pipeline tags added to registry 2026-05-20."
+    }
+  ],
+
+  "blocked": [
+    {
+      "p": 55,
+      "name": "Laws.Africa (9 African countries)",
+      "status": "blocked",
+      "reason": "Awaiting research access approval. Email sent to Laws.Africa 2026-05-20. Once approved, builds all 9 countries in one pass via REST API v3.",
+      "countries": ["Kenya", "Ghana", "Nigeria", "Uganda", "Zimbabwe", "Zambia", "Namibia", "Lesotho"]
+    },
+    {
+      "p": 53,
+      "name": "New Zealand",
+      "status": "blocked",
+      "reason": "Awaiting API key from contact@pco.govt.nz. Email sent 2026-05-20."
+    },
+    {
+      "p": 52,
+      "name": "Russia",
+      "status": "blocked",
+      "reason": "Geo-blocked. Script ran 2026-05-20 but hit 403s from page 31+ onward. 4,335 laws 'found' but 0 committed to DB — content fetches failed due to 403s. 1,712/2,648 pages blocked. Process killed after stalling at page 2,400 with no new data.",
+      "revisit": "Needs Russian IP or mirror source (e.g. pravo.gov.ru via proxy, or a third-party aggregator)."
+    },
+    {
+      "p": 72,
+      "name": "Pakistan",
+      "status": "blocked",
+      "reason": "All .gov.pk legal portals geo-blocked 2026-05-20: pakistancode.gov.pk, molaw.gov.pk, senate.gov.pk, na.gov.pk all TCP-timeout. supremecourt.gov.pk returns 403.",
+      "revisit": "Needs Pakistani IP or VPN exit node. ~900+ English acts available at pakistancode.gov.pk once accessible."
+    }
+  ]
+}

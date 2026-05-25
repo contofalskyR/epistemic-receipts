@@ -1,0 +1,63 @@
+{
+  "runDate": "2026-05-21T03:02:27.799Z",
+  "pipeline": "Pipeline 96",
+  "ingestedBy": "serbia_legislation_v1",
+  "status": "BLOCKED",
+  "blocker": {
+    "summary": "SPA + auth-gated API — no act titles accessible without authentication",
+    "details": {
+      "liveApi": "Returns SPA HTML shell (text/html, 13 kB) for all /api/reg/actViewUuid/{uuid} requests",
+      "waybackHtml": "Wayback-cached /reg/viewAct/{uuid} pages are SPA shells with no embedded act metadata",
+      "eliEndpoint": "/eli/collection 302-redirects to SPA homepage; content negotiation (Accept: application/xml) returns SPA shell",
+      "skupstinaRs": "skupstina.rs DNS resolution failure",
+      "hasChildActs": "Only openly-indexed JSON endpoint; returns {\"hasChildActs\": bool} only",
+      "resolution": "Requires paid API subscription or browser automation (Puppeteer/Playwright) to intercept XHR calls"
+    }
+  },
+  "cdxStats": {
+    "total": 1424,
+    "yearRange": {
+      "earliest": "2024",
+      "latest": "2018"
+    },
+    "note": "Wayback has crawled 1424 unique act URLs; actual corpus on pravno-informacioni-sistem.rs is estimated at ~5,000+ acts"
+  },
+  "sampleProbes": [
+    {
+      "uuid": "00365cea-b319-4083-b289-3422041bebfa",
+      "waybackTimestamp": "20181130235912",
+      "actUrl": "https://pravno-informacioni-sistem.rs/SlGlasnikPortal/reg/viewAct/00365cea-b319-4083-b289-3422041bebfa",
+      "apiAccessible": false,
+      "title": "(SPA-gated — not resolvable without auth)"
+    },
+    {
+      "uuid": "00b5c9d0-66a6-4ea3-a94f-aab8999cc27b",
+      "waybackTimestamp": "20240716020605",
+      "actUrl": "https://pravno-informacioni-sistem.rs/SlGlasnikPortal/reg/viewAct/00b5c9d0-66a6-4ea3-a94f-aab8999cc27b",
+      "apiAccessible": false,
+      "title": "(SPA-gated — not resolvable without auth)"
+    },
+    {
+      "uuid": "00f7343f-5fcc-4cf9-8e1e-6ac8f6d6f5d2",
+      "waybackTimestamp": "20240614094540",
+      "actUrl": "https://pravno-informacioni-sistem.rs/SlGlasnikPortal/reg/viewAct/00f7343f-5fcc-4cf9-8e1e-6ac8f6d6f5d2",
+      "apiAccessible": false,
+      "title": "(SPA-gated — not resolvable without auth)"
+    },
+    {
+      "uuid": "011043b3-7cee-4488-ba2c-e95f95271713",
+      "waybackTimestamp": "20190413223402",
+      "actUrl": "https://pravno-informacioni-sistem.rs/SlGlasnikPortal/reg/viewAct/011043b3-7cee-4488-ba2c-e95f95271713",
+      "apiAccessible": false,
+      "title": "(SPA-gated — not resolvable without auth)"
+    },
+    {
+      "uuid": "011087f8-8b61-40e2-b24e-aee6f2f5eae6",
+      "waybackTimestamp": "20161209144728",
+      "actUrl": "https://pravno-informacioni-sistem.rs/SlGlasnikPortal/reg/viewAct/011087f8-8b61-40e2-b24e-aee6f2f5eae6",
+      "apiAccessible": false,
+      "title": "(SPA-gated — not resolvable without auth)"
+    }
+  ],
+  "apiAccessible": "0/5 acts had resolvable titles (expected: 0)"
+}

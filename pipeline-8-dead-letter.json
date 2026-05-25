@@ -6,17 +6,17 @@
   },
   {
     "drug_name": "ANTI-ITCH",
-    "count": 65081,
+    "count": 65076,
     "reason": "slug collision: externalId 'faers_anti-itch' already assigned in this run"
   },
   {
     "drug_name": "ESTRADIOL,",
-    "count": 43061,
+    "count": 43062,
     "reason": "slug collision: externalId 'faers_estradiol' already assigned in this run"
   },
   {
     "drug_name": "NOREPINEPHRINE (BITARTRATE)",
-    "count": 12680,
+    "count": 12681,
     "reason": "slug collision: externalId 'faers_norepinephrine-bitartrate' already assigned in this run"
   },
   {

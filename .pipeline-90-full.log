@@ -1,0 +1,47 @@
+
+── Pipeline 90: Brunei Laws (Attorney General's Chambers) ──
+Mode: full
+Source: agc.gov.bn — BRULAW alphabetical pages (A–Y, 23 pages)
+
+Step 1: Fetching BRULAW alphabetical catalogue...
+  A: 20 acts
+  B: 26 acts
+  C: 26 acts
+  D: 15 acts
+  E: 19 acts
+  F: 7 acts
+  G: 3 acts
+  H: 5 acts
+  I: 19 acts
+  K: 2 acts
+  L: 13 acts
+  M: 21 acts
+  N: 5 acts
+  O: 4 acts
+  P: 33 acts
+  Q: 1 acts
+  R: 12 acts
+  S: 27 acts
+  T: 13 acts
+  U: 6 acts
+  V: 2 acts
+  W: 8 acts
+  Y: 1 acts
+
+  Total <tr> rows scanned: 377
+  Unique CAP-numbered acts: 288
+
+Total unique candidates: 288
+
+Step 2: Ensuring topic...
+  Created topic: bn-parliament (parent: gov-region-asia-pacific)
+
+Step 3: Writing 288 rows to DB (batches of 50, txn timeout 30s)...
+  50/288 processed...  100/288 processed...  150/288 processed...  200/288 processed...  250/288 processed...  288/288 processed...
+Ingestion complete in 34.9s
+  Ingested: 288 | Skipped: 0 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims:  288
+  Sources: 288
+  Edges:   288

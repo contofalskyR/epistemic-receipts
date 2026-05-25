@@ -1,0 +1,19 @@
+{
+  "runDate": "2026-05-23T02:57:17.965Z",
+  "mode": "dry-run",
+  "totals": {
+    "enriched": 1900,
+    "skipped": 4483,
+    "failed": 0
+  },
+  "byCountry": [
+    {
+      "country": "European Union",
+      "code": "eu",
+      "sources": 6383,
+      "enriched": 1900,
+      "skipped": 4483,
+      "failed": 0
+    }
+  ]
+}

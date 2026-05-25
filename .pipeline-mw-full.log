@@ -1,0 +1,21 @@
+
+── Pipeline: Malawi Legislation (malawi_legislation_v1) ──
+Mode: full
+
+Fetching pages from https://malawilii.org/legislation…
+(node:6766) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  page 1: 50 rows (50 new)
+  page 2: 50 rows (50 new)
+  page 3: 50 rows (50 new)
+  page 4: 50 rows (50 new)
+  page 5: 50 rows (50 new)
+  page 6: 50 rows (50 new)
+  page 7: 35 rows (35 new)
+  Total unique acts: 335
+  Progress: 100/335 — ingested=100
+  Progress: 200/335 — ingested=200
+  Progress: 300/335 — ingested=300
+
+Ingestion complete. Ingested: 335 | Skipped: 0 | Errors: 0
+DB claims (malawi_legislation_v1): 335

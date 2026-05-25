@@ -1,0 +1,23 @@
+
+── Pipeline: Namibia Legislation (namibia_legislation_v1) ──
+Mode: full
+
+Fetching pages from https://namiblii.org/legislation…
+(node:6816) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  page 1: 41 rows (41 new)
+  page 2: 44 rows (44 new)
+  page 3: 25 rows (25 new)
+  page 4: 39 rows (39 new)
+  page 5: 48 rows (48 new)
+  page 6: 45 rows (45 new)
+  page 7: 45 rows (45 new)
+  page 8: 43 rows (43 new)
+  page 9: 6 rows (6 new)
+  Total unique acts: 336
+  Progress: 100/336 — ingested=100
+  Progress: 200/336 — ingested=200
+  Progress: 300/336 — ingested=300
+
+Ingestion complete. Ingested: 336 | Skipped: 0 | Errors: 0
+DB claims (namibia_legislation_v1): 336

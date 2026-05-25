@@ -1,0 +1,109 @@
+{
+  "runDate": "2026-05-21T03:50:48.881Z",
+  "eligibleSources": 20177,
+  "byPipeline": {
+    "srilanka_legislation_v1": 1704,
+    "uruguay_legislation_v1": 4297,
+    "jamaica_legislation_v1": 528,
+    "tt_legislation_v1": 368,
+    "brunei_legislation_v1": 288,
+    "peru_legislation_v1": 5202,
+    "malta_legislation_v1": 563,
+    "georgia_legislation_v1": 301,
+    "malaysia_legislation_v1": 881,
+    "estonia_legislation_v1": 5870,
+    "uae_legislation_v1": 175
+  },
+  "sample": [
+    {
+      "sourceId": "cmpehe1ke031yplra88wej5wf",
+      "externalId": "src_lk_act_1998_54",
+      "country": "Sri Lanka",
+      "enactmentDate": "1998-11-27",
+      "headOfGovernment": null,
+      "hogParty": null,
+      "hogWikidataId": null
+    },
+    {
+      "sourceId": "cmpehbkpn000qplraq6zzd82u",
+      "externalId": "src_lk_act_2026_04",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-02-17",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbjwv0002plracpn1ogfz",
+      "externalId": "src_lk_act_2026_10",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-04-09",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbk8c0006plra1mzcm5ss",
+      "externalId": "src_lk_act_2026_09",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-03-20",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbkbn000aplra12zmitfo",
+      "externalId": "src_lk_act_2026_07",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-03-06",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbkf1000eplraznwhwf6o",
+      "externalId": "src_lk_act_2026_08",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-03-06",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbkj0000iplravceli63r",
+      "externalId": "src_lk_act_2026_06",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-02-19",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbkmi000mplrarxvn6wlr",
+      "externalId": "src_lk_act_2026_03",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-02-17",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbkzo0012plrasz0fljw1",
+      "externalId": "src_lk_act_2026_01",
+      "country": "Sri Lanka",
+      "enactmentDate": "2026-01-20",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    },
+    {
+      "sourceId": "cmpehbl390016plrat7za7sdc",
+      "externalId": "src_lk_act_2025_24",
+      "country": "Sri Lanka",
+      "enactmentDate": "2025-12-26",
+      "headOfGovernment": "Harini Amarasuriya",
+      "hogParty": null,
+      "hogWikidataId": "Q98298397"
+    }
+  ]
+}

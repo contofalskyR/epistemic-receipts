@@ -1,0 +1,263 @@
+{
+  "runDate": "2026-05-20T22:00:41.313Z",
+  "pipeline": "Pipeline 87",
+  "ingestedBy": "paclii_legislation_v1",
+  "totalEnumerated": 2082,
+  "countsByCountry": {
+    "fj": 305,
+    "sb": 205,
+    "vu": 329,
+    "to": 178,
+    "ws": 320,
+    "ki": 126,
+    "tv": 120,
+    "pg": 499
+  },
+  "sampleFetched": 24,
+  "coverage": {
+    "withTitle": 24,
+    "withYear": 19
+  },
+  "sample": [
+    {
+      "countryCode": "fj",
+      "country": "Fiji",
+      "slug": "aa117",
+      "title": "Architects Act",
+      "year": 1959,
+      "waybackUrl": "https://web.archive.org/web/20110301121454/http://www.paclii.org/fj/legis/consol_act/aa117/",
+      "claimText": "Fiji enacted the Architects Act.",
+      "externalId": "paclii_fj_aa117"
+    },
+    {
+      "countryCode": "fj",
+      "country": "Fiji",
+      "slug": "aa137",
+      "title": "Arbitration Act",
+      "year": 1965,
+      "waybackUrl": "https://web.archive.org/web/20110301121249/http://www.paclii.org/fj/legis/consol_act/aa137/",
+      "claimText": "Fiji enacted the Arbitration Act.",
+      "externalId": "paclii_fj_aa137"
+    },
+    {
+      "countryCode": "fj",
+      "country": "Fiji",
+      "slug": "aa71",
+      "title": "Audit Act [Cap 70]",
+      "year": 1969,
+      "waybackUrl": "https://web.archive.org/web/20091231155745/http://www.paclii.org:80/fj/legis/consol_act/aa71/",
+      "claimText": "Fiji enacted the Audit Act [Cap 70].",
+      "externalId": "paclii_fj_aa71"
+    },
+    {
+      "countryCode": "sb",
+      "country": "Solomon Islands",
+      "slug": "aa137",
+      "title": "Arbitration Act [Cap 2]",
+      "year": 1987,
+      "waybackUrl": "https://web.archive.org/web/20050519070022/http://www.paclii.org:80/sb/legis/consol_act/aa137/",
+      "claimText": "Solomon Islands enacted the Arbitration Act [Cap 2].",
+      "externalId": "paclii_sb_aa137"
+    },
+    {
+      "countryCode": "sb",
+      "country": "Solomon Islands",
+      "slug": "aala268",
+      "title": "Agriculture and Livestock Act [Cap 35]",
+      "year": 1914,
+      "waybackUrl": "https://web.archive.org/web/20050521094324/http://www.paclii.org:80/sb/legis/consol_act/aala268/",
+      "claimText": "Solomon Islands enacted the Agriculture and Livestock Act [Cap 35].",
+      "externalId": "paclii_sb_aala268"
+    },
+    {
+      "countryCode": "sb",
+      "country": "Solomon Islands",
+      "slug": "aba167",
+      "title": "Armorial Bearings Act [Cap 136]",
+      "year": 1978,
+      "waybackUrl": "https://web.archive.org/web/20050521094236/http://www.paclii.org:80/sb/legis/consol_act/aba167/",
+      "claimText": "Solomon Islands enacted the Armorial Bearings Act [Cap 136].",
+      "externalId": "paclii_sb_aba167"
+    },
+    {
+      "countryCode": "vu",
+      "country": "Vanuatu",
+      "slug": "aa117",
+      "title": "Abattoirs Act",
+      "year": 1977,
+      "waybackUrl": "https://web.archive.org/web/20061005182440/http://www.paclii.org/vu/legis/consol_act/aa117/",
+      "claimText": "Vanuatu enacted the Abattoirs Act.",
+      "externalId": "paclii_vu_aa117"
+    },
+    {
+      "countryCode": "vu",
+      "country": "Vanuatu",
+      "slug": "aa215",
+      "title": "Absinthe (Prohibition) Act",
+      "year": 1915,
+      "waybackUrl": "https://web.archive.org/web/20061005182405/http://www.paclii.org/vu/legis/consol_act/aa215/",
+      "claimText": "Vanuatu enacted the Absinthe (Prohibition) Act.",
+      "externalId": "paclii_vu_aa215"
+    },
+    {
+      "countryCode": "vu",
+      "country": "Vanuatu",
+      "slug": "aa98",
+      "title": "Archives Act",
+      "year": 1992,
+      "waybackUrl": "https://web.archive.org/web/20190428055702/http://www.paclii.org:80/vu/legis/consol_act/aa98/",
+      "claimText": "Vanuatu enacted the Archives Act.",
+      "externalId": "paclii_vu_aa98"
+    },
+    {
+      "countryCode": "to",
+      "country": "Tonga",
+      "slug": "aa124",
+      "title": "Aerodromes Act",
+      "year": 1959,
+      "waybackUrl": "https://web.archive.org/web/20221106205345/http://www.paclii.org/to/legis/consol_act/aa124/",
+      "claimText": "Tonga enacted the Aerodromes Act.",
+      "externalId": "paclii_to_aa124"
+    },
+    {
+      "countryCode": "to",
+      "country": "Tonga",
+      "slug": "aaaa203",
+      "title": "Arms and Ammunition Act [Cap 39]",
+      "year": 1968,
+      "waybackUrl": "https://web.archive.org/web/20090331235031/http://www.paclii.org:80/to/legis/consol_act/aaaa203/",
+      "claimText": "Tonga enacted the Arms and Ammunition Act [Cap 39].",
+      "externalId": "paclii_to_aaaa203"
+    },
+    {
+      "countryCode": "to",
+      "country": "Tonga",
+      "slug": "aafa248",
+      "title": "Adultery and Fornication Act",
+      "year": 1919,
+      "waybackUrl": "https://web.archive.org/web/20110313063628/http://www.paclii.org/to/legis/consol_act/aafa248/",
+      "claimText": "Tonga enacted the Adultery and Fornication Act.",
+      "externalId": "paclii_to_aafa248"
+    },
+    {
+      "countryCode": "ws",
+      "country": "Samoa",
+      "slug": "aa1975173",
+      "title": "Administration Act 1975",
+      "year": null,
+      "waybackUrl": "https://web.archive.org/web/20220119025442/http://www.paclii.org/ws/legis/consol_act/aa1975173/",
+      "claimText": "Samoa enacted the Administration Act 1975.",
+      "externalId": "paclii_ws_aa1975173"
+    },
+    {
+      "countryCode": "ws",
+      "country": "Samoa",
+      "slug": "aa1976137",
+      "title": "Arbitration Act 1976",
+      "year": null,
+      "waybackUrl": "https://web.archive.org/web/20060710180837/http://www.paclii.org:80/ws/legis/consol_act/aa1976137/",
+      "claimText": "Samoa enacted the Arbitration Act 1976.",
+      "externalId": "paclii_ws_aa1976137"
+    },
+    {
+      "countryCode": "ws",
+      "country": "Samoa",
+      "slug": "aa201371",
+      "title": "Audit Act 2013",
+      "year": null,
+      "waybackUrl": "https://web.archive.org/web/20210817095656/http://www.paclii.org/ws/legis/consol_act/aa201371/",
+      "claimText": "Samoa enacted the Audit Act 2013.",
+      "externalId": "paclii_ws_aa201371"
+    },
+    {
+      "countryCode": "ki",
+      "country": "Kiribati",
+      "slug": "aaanao349",
+      "title": "Aerodromes and Air Navigation Aids Ordinance",
+      "year": 1962,
+      "waybackUrl": "https://web.archive.org/web/20161117165952/http://www.paclii.org:80/ki/legis/consol_act/aaanao349/",
+      "claimText": "Kiribati enacted the Aerodromes and Air Navigation Aids Ordinance.",
+      "externalId": "paclii_ki_aaanao349"
+    },
+    {
+      "countryCode": "ki",
+      "country": "Kiribati",
+      "slug": "aaao256",
+      "title": "Arms and Ammunition Ordinance",
+      "year": 1971,
+      "waybackUrl": "https://web.archive.org/web/20220529055711/http://www.paclii.org/ki/legis/consol_act/aaao256/",
+      "claimText": "Kiribati enacted the Arms and Ammunition Ordinance.",
+      "externalId": "paclii_ki_aaao256"
+    },
+    {
+      "countryCode": "ki",
+      "country": "Kiribati",
+      "slug": "abo202",
+      "title": "Armorial Bearing Ordinance",
+      "year": 1979,
+      "waybackUrl": "https://web.archive.org/web/20241214034140/https://www.paclii.org/ki/legis/consol_act/abo202/",
+      "claimText": "Kiribati enacted the Armorial Bearing Ordinance.",
+      "externalId": "paclii_ki_abo202"
+    },
+    {
+      "countryCode": "tv",
+      "country": "Tuvalu",
+      "slug": "aaanao349",
+      "title": "Aerodromes and Air Navigation Aids Ordinance",
+      "year": 1968,
+      "waybackUrl": "https://web.archive.org/web/20110315211832/http://www.paclii.org/tv/legis/consol_act/aaanao349/",
+      "claimText": "Tuvalu enacted the Aerodromes and Air Navigation Aids Ordinance.",
+      "externalId": "paclii_tv_aaanao349"
+    },
+    {
+      "countryCode": "tv",
+      "country": "Tuvalu",
+      "slug": "aaao256",
+      "title": "Arms and Ammunition Ordinance",
+      "year": 1964,
+      "waybackUrl": "https://web.archive.org/web/20110315212330/http://www.paclii.org/tv/legis/consol_act/aaao256/",
+      "claimText": "Tuvalu enacted the Arms and Ammunition Ordinance.",
+      "externalId": "paclii_tv_aaao256"
+    },
+    {
+      "countryCode": "tv",
+      "country": "Tuvalu",
+      "slug": "ada1984141",
+      "title": "Alcoholic Drink Act 1984",
+      "year": 1984,
+      "waybackUrl": "https://web.archive.org/web/20110315212018/http://www.paclii.org/tv/legis/consol_act/ada1984141/",
+      "claimText": "Tuvalu enacted the Alcoholic Drink Act 1984.",
+      "externalId": "paclii_tv_ada1984141"
+    },
+    {
+      "countryCode": "pg",
+      "country": "Papua New Guinea",
+      "slug": "aa1951137",
+      "title": "Arbitration Act 1951",
+      "year": null,
+      "waybackUrl": "https://web.archive.org/web/20050709105726/http://www.paclii.org/pg/legis/consol_act/aa1951137/",
+      "claimText": "Papua New Guinea enacted the Arbitration Act 1951.",
+      "externalId": "paclii_pg_aa1951137"
+    },
+    {
+      "countryCode": "pg",
+      "country": "Papua New Guinea",
+      "slug": "aa1952140",
+      "title": "Auctioneers Act 1952",
+      "year": null,
+      "waybackUrl": "https://web.archive.org/web/20101115061834/http://www.paclii.org:80/pg/legis/consol_act/aa1952140/",
+      "claimText": "Papua New Guinea enacted the Auctioneers Act 1952.",
+      "externalId": "paclii_pg_aa1952140"
+    },
+    {
+      "countryCode": "pg",
+      "country": "Papua New Guinea",
+      "slug": "aa195283",
+      "title": "Animals Act 1952",
+      "year": 1976,
+      "waybackUrl": "https://web.archive.org/web/20050521041011/http://www.paclii.org:80/pg/legis/consol_act/aa195283/",
+      "claimText": "Papua New Guinea enacted the Animals Act 1952.",
+      "externalId": "paclii_pg_aa195283"
+    }
+  ]
+}

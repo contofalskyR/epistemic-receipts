@@ -1,0 +1,60 @@
+
+── Pipeline: World Bank Open Data (worldbank_v1) ──
+Mode: full | Limit: all
+
+Fetching countries…
+(node:5630) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  217 real countries
+
+Fetching observations for 5 indicators × 217 countries (1990–2022)…
+  20/217 countries — 3223 observations so far
+  40/217 countries — 6472 observations so far
+  60/217 countries — 9657 observations so far
+  80/217 countries — 12885 observations so far
+  100/217 countries — 16128 observations so far
+  120/217 countries — 19284 observations so far
+  140/217 countries — 22478 observations so far
+  160/217 countries — 25712 observations so far
+  180/217 countries — 28798 observations so far
+  200/217 countries — 32005 observations so far
+  Total observations: 34643
+  Progress: 500/34643 — ingested=500
+  Progress: 1000/34643 — ingested=1000
+  Progress: 1500/34643 — ingested=1500
+  Progress: 2000/34643 — ingested=2000
+  Progress: 2500/34643 — ingested=2500
+  Progress: 3000/34643 — ingested=3000
+  Progress: 3500/34643 — ingested=3500
+  Progress: 4000/34643 — ingested=4000
+  Progress: 4500/34643 — ingested=4500
+  Progress: 5000/34643 — ingested=5000
+  Progress: 5500/34643 — ingested=5500
+  Progress: 6000/34643 — ingested=6000
+  Progress: 6500/34643 — ingested=6500
+  Progress: 7000/34643 — ingested=7000
+  Progress: 7500/34643 — ingested=7500
+  Progress: 8000/34643 — ingested=8000
+  Progress: 8500/34643 — ingested=8500
+  Progress: 9000/34643 — ingested=9000
+  Progress: 9500/34643 — ingested=9500
+  Progress: 10000/34643 — ingested=10000
+  Progress: 10500/34643 — ingested=10500
+  Progress: 11000/34643 — ingested=11000
+  Progress: 11500/34643 — ingested=11500
+  Progress: 12000/34643 — ingested=12000
+  Progress: 12500/34643 — ingested=12500
+  Progress: 13000/34643 — ingested=13000
+  Progress: 13500/34643 — ingested=13500
+  Progress: 14000/34643 — ingested=14000
+  Progress: 14500/34643 — ingested=14500
+  Progress: 15000/34643 — ingested=15000
+  Progress: 15500/34643 — ingested=15500
+  Progress: 16000/34643 — ingested=16000
+  Progress: 16500/34643 — ingested=16500
+  Progress: 17000/34643 — ingested=17000
+  Progress: 17500/34643 — ingested=17500
+  Progress: 18000/34643 — ingested=18000
+  Progress: 18500/34643 — ingested=18500
+  Progress: 19000/34643 — ingested=19000
+  Progress: 19500/34643 — ingested=19500

@@ -1,0 +1,13 @@
+
+── Pipeline: Lesotho Legislation (lesotho_legislation_v1) ──
+Mode: full
+
+Fetching pages from https://lesotholii.org/legislation/…
+(node:7094) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  page 1: 59 rows (59 new)
+  page 2: 31 rows (31 new)
+  Total unique acts: 90
+
+Ingestion complete. Ingested: 90 | Skipped: 0 | Errors: 0
+DB claims (lesotho_legislation_v1): 90

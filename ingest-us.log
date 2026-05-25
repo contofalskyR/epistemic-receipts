@@ -1,0 +1,545 @@
+
+── Pipeline 16: Congress.gov Roll Call Votes ──────────────────────────
+Mode: full | Congress: 113–119 | Limit: all | API key: present
+
+Phase 1: Fetching enacted bills...
+  Fetching 113th Congress...
+(node:75124) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+    296 enacted bills
+  Fetching 114th Congress...
+    329 enacted bills
+  Fetching 115th Congress...
+    443 enacted bills
+  Fetching 116th Congress...
+    344 enacted bills
+  Fetching 117th Congress...
+    365 enacted bills
+  Fetching 118th Congress...
+    274 enacted bills
+  Fetching 119th Congress...
+    95 enacted bills
+
+Total enacted bills retrieved: 2146
+
+Phase 2: Fetching actions for 2146 bills...
+  Processed 10/2146 bills, 6 votes found...  Processed 20/2146 bills, 6 votes found...  Processed 30/2146 bills, 6 votes found...  Processed 40/2146 bills, 6 votes found...  Processed 50/2146 bills, 9 votes found...  Processed 60/2146 bills, 9 votes found...  Processed 70/2146 bills, 12 votes found...  Processed 80/2146 bills, 12 votes found...  Processed 90/2146 bills, 16 votes found...  Processed 100/2146 bills, 20 votes found...  Processed 110/2146 bills, 24 votes found...  Processed 120/2146 bills, 24 votes found...  Processed 130/2146 bills, 26 votes found...  Processed 140/2146 bills, 26 votes found...  Processed 150/2146 bills, 33 votes found...  Processed 160/2146 bills, 40 votes found...  Processed 170/2146 bills, 42 votes found...  Processed 180/2146 bills, 42 votes found...  Processed 190/2146 bills, 47 votes found...  Processed 200/2146 bills, 52 votes found...  Processed 210/2146 bills, 52 votes found...  Processed 220/2146 bills, 56 votes found...  Processed 230/2146 bills, 56 votes found...  Processed 240/2146 bills, 56 votes found...  Processed 250/2146 bills, 65 votes found...  Processed 260/2146 bills, 68 votes found...  Processed 270/2146 bills, 68 votes found...  Processed 280/2146 bills, 72 votes found...  Processed 290/2146 bills, 78 votes found...  Processed 300/2146 bills, 92 votes found...  Processed 310/2146 bills, 96 votes found...  Processed 320/2146 bills, 98 votes found...  Processed 330/2146 bills, 104 votes found...  Processed 340/2146 bills, 104 votes found...  Processed 350/2146 bills, 105 votes found...  Processed 360/2146 bills, 107 votes found...  Processed 370/2146 bills, 107 votes found...  Processed 380/2146 bills, 122 votes found...  Processed 390/2146 bills, 140 votes found...  Processed 400/2146 bills, 142 votes found...  Processed 410/2146 bills, 146 votes found...  Processed 420/2146 bills, 159 votes found...  Processed 430/2146 bills, 159 votes found...  Processed 440/2146 bills, 163 votes found...  Processed 450/2146 bills, 172 votes found...  Processed 460/2146 bills, 174 votes found...  Processed 470/2146 bills, 184 votes found...  Processed 480/2146 bills, 191 votes found...  Processed 490/2146 bills, 191 votes found...  Processed 500/2146 bills, 191 votes found...  Processed 510/2146 bills, 191 votes found...  Processed 520/2146 bills, 193 votes found...  Processed 530/2146 bills, 193 votes found...  Processed 540/2146 bills, 193 votes found...  Processed 550/2146 bills, 202 votes found...  Processed 560/2146 bills, 202 votes found...  Processed 570/2146 bills, 202 votes found...  Processed 580/2146 bills, 202 votes found...  Processed 590/2146 bills, 202 votes found...  Processed 600/2146 bills, 204 votes found...  Processed 610/2146 bills, 206 votes found...  Processed 620/2146 bills, 218 votes found...  Processed 630/2146 bills, 224 votes found...  Processed 640/2146 bills, 240 votes found...  Processed 650/2146 bills, 254 votes found...  Processed 660/2146 bills, 266 votes found...  Processed 670/2146 bills, 284 votes found...  Processed 680/2146 bills, 284 votes found...  Processed 690/2146 bills, 288 votes found...  Processed 700/2146 bills, 294 votes found...  Processed 710/2146 bills, 302 votes found...  Processed 720/2146 bills, 306 votes found...  Processed 730/2146 bills, 309 votes found...  Processed 740/2146 bills, 312 votes found...  Processed 750/2146 bills, 320 votes found...  Processed 760/2146 bills, 320 votes found...  Processed 770/2146 bills, 320 votes found...  Processed 780/2146 bills, 320 votes found...  Processed 790/2146 bills, 320 votes found...  Processed 800/2146 bills, 321 votes found...  Processed 810/2146 bills, 321 votes found...  Processed 820/2146 bills, 321 votes found...  Processed 830/2146 bills, 321 votes found...  Processed 840/2146 bills, 321 votes found...  Processed 850/2146 bills, 321 votes found...  Processed 860/2146 bills, 328 votes found...  Processed 870/2146 bills, 328 votes found...  Processed 880/2146 bills, 328 votes found...  Processed 890/2146 bills, 328 votes found...  Processed 900/2146 bills, 328 votes found...  Processed 910/2146 bills, 333 votes found...  Processed 920/2146 bills, 338 votes found...  Processed 930/2146 bills, 340 votes found...  Processed 940/2146 bills, 340 votes found...  Processed 950/2146 bills, 341 votes found...  Processed 960/2146 bills, 343 votes found...  Processed 970/2146 bills, 358 votes found...  Processed 980/2146 bills, 364 votes found...  Processed 990/2146 bills, 364 votes found...  Processed 1000/2146 bills, 364 votes found...  Processed 1010/2146 bills, 364 votes found...  Processed 1020/2146 bills, 364 votes found...  Processed 1030/2146 bills, 367 votes found...  Processed 1040/2146 bills, 379 votes found...  Processed 1050/2146 bills, 384 votes found...  Processed 1060/2146 bills, 384 votes found...  Processed 1070/2146 bills, 385 votes found...  Processed 1080/2146 bills, 385 votes found...  Processed 1090/2146 bills, 385 votes found...  Processed 1100/2146 bills, 387 votes found...  Processed 1110/2146 bills, 402 votes found...  Processed 1120/2146 bills, 415 votes found...  Processed 1130/2146 bills, 424 votes found...  Processed 1140/2146 bills, 440 votes found...  Processed 1150/2146 bills, 457 votes found...  Processed 1160/2146 bills, 457 votes found...  Processed 1170/2146 bills, 457 votes found...  Processed 1180/2146 bills, 457 votes found...  Processed 1190/2146 bills, 457 votes found...  Processed 1200/2146 bills, 457 votes found...  Processed 1210/2146 bills, 457 votes found...  Processed 1220/2146 bills, 457 votes found...  Processed 1230/2146 bills, 457 votes found...  Processed 1240/2146 bills, 457 votes found...  Processed 1250/2146 bills, 459 votes found...  Processed 1260/2146 bills, 459 votes found...  Processed 1270/2146 bills, 459 votes found...  Processed 1280/2146 bills, 459 votes found...  Processed 1290/2146 bills, 459 votes found...  Processed 1300/2146 bills, 459 votes found...  Processed 1310/2146 bills, 459 votes found...  Processed 1320/2146 bills, 459 votes found...  Processed 1330/2146 bills, 459 votes found...  Processed 1340/2146 bills, 459 votes found...  Processed 1350/2146 bills, 459 votes found...  Processed 1360/2146 bills, 461 votes found...  Processed 1370/2146 bills, 461 votes found...  Processed 1380/2146 bills, 461 votes found...  Processed 1390/2146 bills, 461 votes found...  Processed 1400/2146 bills, 461 votes found...  Processed 1410/2146 bills, 461 votes found...  Processed 1420/2146 bills, 470 votes found...  Processed 1430/2146 bills, 474 votes found...  Processed 1440/2146 bills, 476 votes found...  Processed 1450/2146 bills, 479 votes found...  Processed 1460/2146 bills, 484 votes found...  Processed 1470/2146 bills, 496 votes found...  Processed 1480/2146 bills, 499 votes found...  Processed 1490/2146 bills, 499 votes found...  Processed 1500/2146 bills, 499 votes found...  Processed 1510/2146 bills, 501 votes found...  Processed 1520/2146 bills, 501 votes found...  Processed 1530/2146 bills, 501 votes found...  Processed 1540/2146 bills, 501 votes found...  Processed 1550/2146 bills, 501 votes found...  Processed 1560/2146 bills, 501 votes found...  Processed 1570/2146 bills, 501 votes found...  Processed 1580/2146 bills, 503 votes found...  Processed 1590/2146 bills, 503 votes found...  Processed 1600/2146 bills, 509 votes found...  Processed 1610/2146 bills, 509 votes found...  Processed 1620/2146 bills, 511 votes found...  Processed 1630/2146 bills, 511 votes found...  Processed 1640/2146 bills, 514 votes found...  Processed 1650/2146 bills, 514 votes found...  Processed 1660/2146 bills, 514 votes found...  Processed 1670/2146 bills, 526 votes found...  Processed 1680/2146 bills, 559 votes found...  Processed 1690/2146 bills, 570 votes found...  Processed 1700/2146 bills, 576 votes found...  Processed 1710/2146 bills, 576 votes found...  Processed 1720/2146 bills, 584 votes found...  Processed 1730/2146 bills, 588 votes found...  Processed 1740/2146 bills, 588 votes found...  Processed 1750/2146 bills, 588 votes found...  Processed 1760/2146 bills, 588 votes found...  Processed 1770/2146 bills, 596 votes found...  Processed 1780/2146 bills, 600 votes found...  Processed 1790/2146 bills, 600 votes found...  Processed 1800/2146 bills, 607 votes found...  Processed 1810/2146 bills, 607 votes found...  Processed 1820/2146 bills, 607 votes found...  Processed 1830/2146 bills, 607 votes found...  Processed 1840/2146 bills, 607 votes found...  Processed 1850/2146 bills, 607 votes found...  Processed 1860/2146 bills, 608 votes found...  Processed 1870/2146 bills, 608 votes found...  Processed 1880/2146 bills, 608 votes found...  Processed 1890/2146 bills, 608 votes found...  Processed 1900/2146 bills, 608 votes found...  Processed 1910/2146 bills, 610 votes found...  Processed 1920/2146 bills, 610 votes found...  Processed 1930/2146 bills, 612 votes found...  Processed 1940/2146 bills, 612 votes found...  Processed 1950/2146 bills, 612 votes found...  Processed 1960/2146 bills, 615 votes found...  Processed 1970/2146 bills, 615 votes found...  Processed 1980/2146 bills, 615 votes found...  Processed 1990/2146 bills, 615 votes found...  Processed 2000/2146 bills, 621 votes found...  Processed 2010/2146 bills, 621 votes found...  Processed 2020/2146 bills, 642 votes found...  Processed 2030/2146 bills, 650 votes found...  Processed 2040/2146 bills, 650 votes found...  Processed 2050/2146 bills, 654 votes found...  Processed 2060/2146 bills, 667 votes found...  Processed 2070/2146 bills, 673 votes found...  Processed 2080/2146 bills, 688 votes found...  Processed 2090/2146 bills, 691 votes found...  Processed 2100/2146 bills, 703 votes found...  Processed 2110/2146 bills, 715 votes found...  Processed 2120/2146 bills, 758 votes found...  Processed 2130/2146 bills, 770 votes found...  Processed 2140/2146 bills, 806 votes found...
+  Done. Bills processed: 2146, errors: 0
+  Raw vote candidates: 831 → deduplicated: 505
+  By type: {"passage":325,"cloture":180}
+
+Full ingestion: 505 vote records (per-row transactions)...
+  Progress: 1/505 — congress_vote_senate_113_hr_527_roll203
+  Progress: 2/505 — congress_vote_house_113_hr_527_roll128
+  Progress: 3/505 — congress_vote_house_113_hr_4681_roll271
+  Progress: 4/505 — congress_vote_senate_113_s_1086_roll275
+  Progress: 5/505 — congress_vote_senate_113_s_1086_roll77
+  Progress: 6/505 — congress_vote_senate_113_s_540_roll33
+  Progress: 7/505 — congress_vote_house_113_s_540_roll61
+  Progress: 8/505 — congress_vote_senate_113_hr_5771_roll364
+  Progress: 9/505 — congress_vote_house_113_hr_5771_roll544
+  Progress: 10/505 — congress_vote_house_113_s_47_roll55
+  Progress: 11/505 — congress_vote_senate_113_s_47_roll19
+  Progress: 12/505 — congress_vote_senate_113_hr_5021_roll248
+  Progress: 13/505 — congress_vote_house_113_hr_5021_roll414
+  Progress: 14/505 — congress_vote_senate_113_hr_4302_roll93
+  Progress: 15/505 — congress_vote_senate_113_hr_3979_roll322
+  Progress: 16/505 — congress_vote_senate_113_hr_3979_roll101
+  Progress: 17/505 — congress_vote_senate_113_hr_3979_roll100
+  Progress: 18/505 — congress_vote_senate_113_hr_3979_roll90
+  Progress: 19/505 — congress_vote_senate_113_hr_3547_roll12
+  Progress: 20/505 — congress_vote_senate_113_hr_3304_roll282
+  Progress: 21/505 — congress_vote_senate_113_hr_3230_roll187
+  Progress: 22/505 — congress_vote_house_113_hr_3230_roll516
+  Progress: 23/505 — congress_vote_house_113_hr_3210_roll499
+  Progress: 24/505 — congress_vote_senate_113_hr_3204_roll234
+  Progress: 25/505 — congress_vote_senate_113_hr_3370_roll78
+  Progress: 26/505 — congress_vote_senate_113_hr_2642_roll20
+  Progress: 27/505 — congress_vote_house_113_hr_2642_roll353
+  Progress: 28/505 — congress_vote_house_113_hr_3080_roll560
+  Progress: 29/505 — congress_vote_senate_113_hr_2775_roll219
+  Progress: 30/505 — congress_vote_senate_113_hr_2775_roll218
+  Progress: 31/505 — congress_vote_house_113_hr_2775_roll458
+  Progress: 32/505 — congress_vote_senate_113_hr_1911_roll185
+  Progress: 33/505 — congress_vote_house_113_hr_1911_roll183
+  Progress: 34/505 — congress_vote_senate_113_hr_803_roll214
+  Progress: 35/505 — congress_vote_house_113_hr_803_roll75
+  Progress: 36/505 — congress_vote_senate_113_hr_933_roll44
+  Progress: 37/505 — congress_vote_senate_113_hr_933_roll43
+  Progress: 38/505 — congress_vote_house_113_hr_933_roll62
+  Progress: 39/505 — congress_vote_senate_113_hr_83_roll352
+  Progress: 40/505 — congress_vote_house_113_hr_678_roll96
+  Progress: 41/505 — congress_vote_senate_113_hr_325_roll11
+  Progress: 42/505 — congress_vote_house_113_hr_325_roll30
+  Progress: 43/505 — congress_vote_senate_113_hr_152_roll4
+  Progress: 44/505 — congress_vote_house_113_hr_152_roll23
+  Progress: 45/505 — congress_vote_house_113_hjres_76_roll542
+  Progress: 46/505 — congress_vote_senate_113_hjres_124_roll270
+  Progress: 47/505 — congress_vote_senate_113_hjres_124_roll269
+  Progress: 48/505 — congress_vote_house_113_hjres_124_roll509
+  Progress: 49/505 — congress_vote_senate_113_hjres_106_roll11
+  Progress: 50/505 — congress_vote_senate_113_hjres_59_roll279
+  Progress: 51/505 — congress_vote_senate_113_hjres_59_roll209
+  Progress: 52/505 — congress_vote_senate_113_hjres_59_roll206
+  Progress: 53/505 — congress_vote_senate_113_hjres_59_roll205
+  Progress: 54/505 — congress_vote_house_113_hjres_59_roll478
+  Progress: 55/505 — congress_vote_senate_114_hr_2_roll144
+  Progress: 56/505 — congress_vote_house_114_hr_2_roll144
+  Progress: 57/505 — congress_vote_house_114_hr_2262_roll262
+  Progress: 58/505 — congress_vote_senate_114_hr_1314_roll292
+  Progress: 59/505 — congress_vote_senate_114_hr_1314_roll193
+  Progress: 60/505 — congress_vote_senate_114_hr_1314_roll192
+  Progress: 61/505 — congress_vote_senate_114_hr_1314_roll180
+  Progress: 62/505 — congress_vote_senate_114_hr_1314_roll176
+  Progress: 63/505 — congress_vote_senate_114_hr_719_roll271
+  Progress: 64/505 — congress_vote_house_114_hr_3236_roll486
+  Progress: 65/505 — congress_vote_senate_114_hr_240_roll64
+  Progress: 66/505 — congress_vote_senate_114_hr_240_roll62
+  Progress: 67/505 — congress_vote_senate_114_hr_240_roll59
+  Progress: 68/505 — congress_vote_senate_114_hr_240_roll58
+  Progress: 69/505 — congress_vote_senate_114_hr_240_roll57
+  Progress: 70/505 — congress_vote_senate_114_hr_240_roll53
+  Progress: 71/505 — congress_vote_senate_114_hr_240_roll52
+  Progress: 72/505 — congress_vote_senate_114_hr_240_roll51
+  Progress: 73/505 — congress_vote_house_114_hr_240_roll35
+  Progress: 74/505 — congress_vote_senate_114_hr_1295_roll220
+  Progress: 75/505 — congress_vote_senate_114_hr_1295_roll178
+  Progress: 76/505 — congress_vote_senate_114_hr_2146_roll218
+  Progress: 77/505 — congress_vote_senate_114_hr_203_roll50
+  Progress: 78/505 — congress_vote_senate_114_hr_26_roll2
+  Progress: 79/505 — congress_vote_senate_114_hr_2048_roll201
+  Progress: 80/505 — congress_vote_senate_114_hr_2048_roll197
+  Progress: 81/505 — congress_vote_senate_114_hr_2048_roll196
+  Progress: 82/505 — congress_vote_senate_114_hr_2048_roll194
+  Progress: 83/505 — congress_vote_house_114_hr_2048_roll224
+  Progress: 84/505 — congress_vote_senate_114_s_178_roll163
+  Progress: 85/505 — congress_vote_senate_114_s_178_roll76
+  Progress: 86/505 — congress_vote_senate_114_s_178_roll75
+  Progress: 87/505 — congress_vote_senate_114_s_178_roll74
+  Progress: 88/505 — congress_vote_senate_114_s_178_roll73
+  Progress: 89/505 — congress_vote_senate_114_s_178_roll72
+  Progress: 90/505 — congress_vote_house_114_hr_2250_roll247
+  Progress: 91/505 — congress_vote_house_114_hr_2353_roll249
+  Progress: 92/505 — congress_vote_senate_114_hr_1191_roll174
+  Progress: 93/505 — congress_vote_senate_114_s_1177_roll333
+  Progress: 94/505 — congress_vote_senate_114_s_1177_roll308
+  Progress: 95/505 — congress_vote_senate_114_s_1177_roll249
+  Progress: 96/505 — congress_vote_senate_114_s_1177_roll248
+  Progress: 97/505 — congress_vote_senate_114_hr_22_roll303
+  Progress: 98/505 — congress_vote_senate_114_hr_22_roll260
+  Progress: 99/505 — congress_vote_senate_114_hr_22_roll259
+  Progress: 100/505 — congress_vote_senate_114_hr_22_roll251
+  Progress: 101/505 — congress_vote_senate_114_hr_22_roll250
+  Progress: 102/505 — congress_vote_senate_114_hr_4511_roll152
+  Progress: 103/505 — congress_vote_senate_114_hr_5985_roll143
+  Progress: 104/505 — congress_vote_senate_114_hr_757_roll20
+  Progress: 105/505 — congress_vote_senate_114_hr_5325_roll151
+  Progress: 106/505 — congress_vote_senate_114_hr_5325_roll150
+  Progress: 107/505 — congress_vote_senate_114_hr_5325_roll147
+  Progress: 108/505 — congress_vote_senate_114_hr_5325_roll144
+  Progress: 109/505 — congress_vote_house_114_hr_5325_roll294
+  Progress: 110/505 — congress_vote_senate_114_s_2040_roll148
+  Progress: 111/505 — congress_vote_senate_114_s_764_roll121
+  Progress: 112/505 — congress_vote_senate_114_s_764_roll37
+  Progress: 113/505 — congress_vote_house_114_hr_3700_roll52
+  Progress: 114/505 — congress_vote_senate_114_s_524_roll126
+  Progress: 115/505 — congress_vote_senate_114_s_524_roll100
+  Progress: 116/505 — congress_vote_house_114_s_524_roll193
+  Progress: 117/505 — congress_vote_senate_114_s_524_roll34
+  Progress: 118/505 — congress_vote_senate_114_s_524_roll33
+  Progress: 119/505 — congress_vote_senate_114_s_524_roll27
+  Progress: 120/505 — congress_vote_senate_114_hr_636_roll47
+  Progress: 121/505 — congress_vote_senate_114_hr_636_roll46
+  Progress: 122/505 — congress_vote_senate_114_hr_636_roll40
+  Progress: 123/505 — congress_vote_house_114_hr_636_roll82
+  Progress: 124/505 — congress_vote_senate_114_s_2328_roll113
+  Progress: 125/505 — congress_vote_senate_114_s_1890_roll39
+  Progress: 126/505 — congress_vote_senate_114_s_2943_roll158
+  Progress: 127/505 — congress_vote_senate_114_s_2943_roll130
+  Progress: 128/505 — congress_vote_senate_114_s_2943_roll98
+  Progress: 129/505 — congress_vote_senate_114_s_2943_roll97
+  Progress: 130/505 — congress_vote_senate_114_s_2943_roll87
+  Progress: 131/505 — congress_vote_senate_114_s_612_roll162
+  Progress: 132/505 — congress_vote_house_114_s_612_roll622
+  Progress: 133/505 — congress_vote_senate_114_hr_6297_roll155
+  Progress: 134/505 — congress_vote_senate_114_s_2873_roll154
+  Progress: 135/505 — congress_vote_senate_114_hr_644_roll21
+  Progress: 136/505 — congress_vote_senate_114_hr_644_roll179
+  Progress: 137/505 — congress_vote_house_114_hr_644_roll80
+  Progress: 138/505 — congress_vote_senate_114_hr_34_roll156
+  Progress: 139/505 — congress_vote_senate_114_hr_2028_roll160
+  Progress: 140/505 — congress_vote_senate_114_hr_2028_roll71
+  Progress: 141/505 — congress_vote_senate_114_hr_2028_roll278
+  Progress: 142/505 — congress_vote_house_114_hr_2028_roll215
+  Progress: 143/505 — congress_vote_senate_114_hr_2029_roll336
+  Progress: 144/505 — congress_vote_senate_114_hr_2029_roll302
+  Progress: 145/505 — congress_vote_senate_114_hr_2029_roll273
+  Progress: 146/505 — congress_vote_house_114_hr_2029_roll193
+  Progress: 147/505 — congress_vote_house_115_s_114_roll438
+  Progress: 148/505 — congress_vote_senate_115_hjres_67_roll99
+  Progress: 149/505 — congress_vote_house_115_hjres_67_roll95
+  Progress: 150/505 — congress_vote_senate_115_hjres_41_roll51
+  Progress: 151/505 — congress_vote_house_115_hjres_41_roll72
+  Progress: 152/505 — congress_vote_senate_115_hjres_43_roll101
+  Progress: 153/505 — congress_vote_house_115_hjres_43_roll99
+  Progress: 154/505 — congress_vote_senate_115_hr_3364_roll175
+  Progress: 155/505 — congress_vote_house_115_sjres_34_roll202
+  Progress: 156/505 — congress_vote_senate_115_sjres_34_roll94
+  Progress: 157/505 — congress_vote_senate_115_hjres_83_roll93
+  Progress: 158/505 — congress_vote_house_115_hjres_83_roll121
+  Progress: 159/505 — congress_vote_house_115_s_1094_roll307
+  Progress: 160/505 — congress_vote_senate_115_hjres_69_roll92
+  Progress: 161/505 — congress_vote_house_115_hjres_69_roll98
+  Progress: 162/505 — congress_vote_senate_115_hjres_66_roll120
+  Progress: 163/505 — congress_vote_house_115_hjres_66_roll96
+  Progress: 164/505 — congress_vote_senate_115_hjres_42_roll87
+  Progress: 165/505 — congress_vote_house_115_hjres_42_roll97
+  Progress: 166/505 — congress_vote_senate_115_hjres_58_roll83
+  Progress: 167/505 — congress_vote_house_115_hjres_58_roll85
+  Progress: 168/505 — congress_vote_senate_115_hjres_57_roll84
+  Progress: 169/505 — congress_vote_house_115_hjres_57_roll84
+  Progress: 170/505 — congress_vote_senate_115_hjres_44_roll82
+  Progress: 171/505 — congress_vote_house_115_hjres_44_roll83
+  Progress: 172/505 — congress_vote_senate_115_hjres_37_roll81
+  Progress: 173/505 — congress_vote_house_115_hjres_37_roll76
+  Progress: 174/505 — congress_vote_senate_115_hr_72_roll28
+  Progress: 175/505 — congress_vote_house_115_s_84_roll59
+  Progress: 176/505 — congress_vote_senate_115_s_84_roll27
+  Progress: 177/505 — congress_vote_senate_115_hr_1_roll303
+  Progress: 178/505 — congress_vote_house_115_hr_1_roll637
+  Progress: 179/505 — congress_vote_senate_115_hjres_40_roll66
+  Progress: 180/505 — congress_vote_house_115_hjres_40_roll77
+  Progress: 181/505 — congress_vote_house_115_hjres_99_roll236
+  Progress: 182/505 — congress_vote_senate_115_hr_2810_roll199
+  Progress: 183/505 — congress_vote_senate_115_hr_2810_roll198
+  Progress: 184/505 — congress_vote_senate_115_hr_2810_roll193
+  Progress: 185/505 — congress_vote_house_115_hr_2810_roll378
+  Progress: 186/505 — congress_vote_house_115_hjres_123_roll670
+  Progress: 187/505 — congress_vote_senate_115_hjres_111_roll249
+  Progress: 188/505 — congress_vote_house_115_hjres_111_roll412
+  Progress: 189/505 — congress_vote_house_115_s_585_roll568
+  Progress: 190/505 — congress_vote_senate_115_hr_2266_roll246
+  Progress: 191/505 — congress_vote_house_115_hr_3823_roll542
+  Progress: 192/505 — congress_vote_senate_115_hr_601_roll191
+  Progress: 193/505 — congress_vote_senate_115_hr_2430_roll187
+  Progress: 194/505 — congress_vote_senate_115_hr_2430_roll185
+  Progress: 195/505 — congress_vote_senate_115_hjres_38_roll43
+  Progress: 196/505 — congress_vote_house_115_hjres_38_roll73
+  Progress: 197/505 — congress_vote_senate_115_hr_1892_roll30
+  Progress: 198/505 — congress_vote_senate_115_s_756_roll267
+  Progress: 199/505 — congress_vote_senate_115_hr_2_roll143
+  Progress: 200/505 — congress_vote_senate_115_hr_2_roll140
+  Progress: 201/505 — congress_vote_house_115_hr_2_roll284
+  Progress: 202/505 — congress_vote_house_115_hr_2_roll205
+  Progress: 203/505 — congress_vote_senate_115_s_140_roll240
+  Progress: 204/505 — congress_vote_senate_115_s_140_roll77
+  Progress: 205/505 — congress_vote_senate_115_s_140_roll74
+  Progress: 206/505 — congress_vote_house_115_s_140_roll11
+  Progress: 207/505 — congress_vote_senate_115_hr_6_roll210
+  Progress: 208/505 — congress_vote_house_115_hr_6_roll288
+  Progress: 209/505 — congress_vote_senate_115_s_3021_roll224
+  Progress: 210/505 — congress_vote_senate_115_s_2554_roll209
+  Progress: 211/505 — congress_vote_senate_115_hr_302_roll219
+  Progress: 212/505 — congress_vote_house_115_hr_1301_roll136
+  Progress: 213/505 — congress_vote_senate_115_s_139_roll11
+  Progress: 214/505 — congress_vote_house_115_s_139_roll16
+  Progress: 215/505 — congress_vote_senate_115_hr_6157_roll211
+  Progress: 216/505 — congress_vote_senate_115_hr_6157_roll193
+  Progress: 217/505 — congress_vote_house_115_hr_6157_roll313
+  Progress: 218/505 — congress_vote_senate_115_hr_5895_roll139
+  Progress: 219/505 — congress_vote_senate_115_hr_5895_roll129
+  Progress: 220/505 — congress_vote_house_115_hr_5895_roll257
+  Progress: 221/505 — congress_vote_senate_115_hr_195_roll16
+  Progress: 222/505 — congress_vote_senate_115_hr_195_roll14
+  Progress: 223/505 — congress_vote_senate_115_hr_5515_roll128
+  Progress: 224/505 — congress_vote_senate_115_hr_5515_roll126
+  Progress: 225/505 — congress_vote_senate_115_hr_5515_roll119
+  Progress: 226/505 — congress_vote_house_115_hr_5515_roll230
+  Progress: 227/505 — congress_vote_senate_115_s_2372_roll104
+  Progress: 228/505 — congress_vote_house_115_s_2372_roll189
+  Progress: 229/505 — congress_vote_house_115_s_204_roll214
+  Progress: 230/505 — congress_vote_house_115_s_2155_roll216
+  Progress: 231/505 — congress_vote_senate_115_s_2155_roll54
+  Progress: 232/505 — congress_vote_senate_115_s_2155_roll52
+  Progress: 233/505 — congress_vote_senate_115_s_2155_roll48
+  Progress: 234/505 — congress_vote_house_115_sjres_57_roll171
+  Progress: 235/505 — congress_vote_senate_115_sjres_57_roll76
+  Progress: 236/505 — congress_vote_senate_115_hr_1865_roll60
+  Progress: 237/505 — congress_vote_senate_115_hr_1865_roll57
+  Progress: 238/505 — congress_vote_house_115_hr_1865_roll91
+  Progress: 239/505 — congress_vote_senate_115_hr_1625_roll62
+  Progress: 240/505 — congress_vote_senate_116_s_578_roll250
+  Progress: 241/505 — congress_vote_senate_116_hr_3877_roll262
+  Progress: 242/505 — congress_vote_senate_116_hr_3877_roll261
+  Progress: 243/505 — congress_vote_house_116_hr_3877_roll511
+  Progress: 244/505 — congress_vote_senate_116_hr_4378_roll311
+  Progress: 245/505 — congress_vote_house_116_hr_4378_roll538
+  Progress: 246/505 — congress_vote_senate_116_hr_3401_roll185
+  Progress: 247/505 — congress_vote_senate_116_hr_3401_roll182
+  Progress: 248/505 — congress_vote_house_116_hr_3401_roll414
+  Progress: 249/505 — congress_vote_senate_116_hr_6395_roll292
+  Progress: 250/505 — congress_vote_senate_116_hr_6395_roll291
+  Progress: 251/505 — congress_vote_senate_116_hr_6395_roll263
+  Progress: 252/505 — congress_vote_house_116_hr_6395_roll152
+  Progress: 253/505 — congress_vote_senate_116_hr_8337_roll197
+  Progress: 254/505 — congress_vote_senate_116_hr_8337_roll196
+  Progress: 255/505 — congress_vote_senate_116_hr_5430_roll14
+  Progress: 256/505 — congress_vote_house_116_hr_5430_roll701
+  Progress: 257/505 — congress_vote_senate_116_hr_6074_roll66
+  Progress: 258/505 — congress_vote_senate_116_hr_6201_roll76
+  Progress: 259/505 — congress_vote_senate_116_s_1790_roll398
+  Progress: 260/505 — congress_vote_senate_116_s_1790_roll293
+  Progress: 261/505 — congress_vote_senate_116_s_1790_roll188
+  Progress: 262/505 — congress_vote_senate_116_s_1790_roll176
+  Progress: 263/505 — congress_vote_senate_116_hr_3055_roll364
+  Progress: 264/505 — congress_vote_senate_116_hr_3055_roll341
+  Progress: 265/505 — congress_vote_senate_116_hr_3055_roll330
+  Progress: 266/505 — congress_vote_house_116_hr_3055_roll408
+  Progress: 267/505 — congress_vote_senate_116_hr_2157_roll129
+  Progress: 268/505 — congress_vote_house_116_hr_2157_roll202
+  Progress: 269/505 — congress_vote_senate_116_hr_1957_roll121
+  Progress: 270/505 — congress_vote_senate_116_hr_1957_roll120
+  Progress: 271/505 — congress_vote_senate_116_hr_1957_roll114
+  Progress: 272/505 — congress_vote_senate_116_hr_1865_roll413
+  Progress: 273/505 — congress_vote_senate_116_hr_1158_roll427
+  Progress: 274/505 — congress_vote_senate_116_hr_1327_roll224
+  Progress: 275/505 — congress_vote_senate_116_hr_748_roll80
+  Progress: 276/505 — congress_vote_senate_116_hr_748_roll78
+  Progress: 277/505 — congress_vote_senate_116_hr_748_roll77
+  Progress: 278/505 — congress_vote_senate_116_hjres_31_roll25
+  Progress: 279/505 — congress_vote_house_116_hjres_31_roll51
+  Progress: 280/505 — congress_vote_house_116_hjres_28_roll46
+  Progress: 281/505 — congress_vote_house_116_hr_266_roll27
+  Progress: 282/505 — congress_vote_senate_116_s_47_roll22
+  Progress: 283/505 — congress_vote_senate_116_s_47_roll21
+  Progress: 284/505 — congress_vote_senate_116_s_47_roll17
+  Progress: 285/505 — congress_vote_senate_116_s_151_roll127
+  Progress: 286/505 — congress_vote_senate_116_hr_2333_roll390
+  Progress: 287/505 — congress_vote_senate_117_hr_8404_roll362
+  Progress: 288/505 — congress_vote_senate_117_hr_8404_roll356
+  Progress: 289/505 — congress_vote_house_117_hr_8404_roll373
+  Progress: 290/505 — congress_vote_senate_117_hr_1868_roll142
+  Progress: 291/505 — congress_vote_house_117_hr_1868_roll96
+  Progress: 292/505 — congress_vote_house_117_s_3905_roll524
+  Progress: 293/505 — congress_vote_house_117_s_3522_roll141
+  Progress: 294/505 — congress_vote_senate_117_hr_1652_roll272
+  Progress: 295/505 — congress_vote_senate_117_hr_7776_roll394
+  Progress: 296/505 — congress_vote_senate_117_hr_7776_roll273
+  Progress: 297/505 — congress_vote_senate_117_hr_6833_roll351
+  Progress: 298/505 — congress_vote_senate_117_hr_6833_roll349
+  Progress: 299/505 — congress_vote_house_117_hr_6833_roll102
+  Progress: 300/505 — congress_vote_house_117_s_1942_roll540
+  Progress: 301/505 — congress_vote_senate_117_hr_4346_roll268
+  Progress: 302/505 — congress_vote_house_117_hr_4346_roll239
+  Progress: 303/505 — congress_vote_senate_117_hr_4373_roll129
+  Progress: 304/505 — congress_vote_house_117_hr_4373_roll243
+  Progress: 305/505 — congress_vote_senate_117_hr_5376_roll325
+  Progress: 306/505 — congress_vote_house_117_hr_5376_roll385
+  Progress: 307/505 — congress_vote_senate_117_s_3373_roll272
+  Progress: 308/505 — congress_vote_house_117_s_3373_roll309
+  Progress: 309/505 — congress_vote_house_117_s_4003_roll525
+  Progress: 310/505 — congress_vote_house_117_hr_263_roll415
+  Progress: 311/505 — congress_vote_house_117_s_4524_roll480
+  Progress: 312/505 — congress_vote_senate_117_hjres_100_roll372
+  Progress: 313/505 — congress_vote_house_117_hjres_100_roll490
+  Progress: 314/505 — congress_vote_house_117_s_1098_roll448
+  Progress: 315/505 — congress_vote_senate_117_s_2938_roll240
+  Progress: 316/505 — congress_vote_house_117_s_2938_roll212
+  Progress: 317/505 — congress_vote_senate_117_hr_7691_roll191
+  Progress: 318/505 — congress_vote_senate_117_hr_7691_roll190
+  Progress: 319/505 — congress_vote_senate_117_hr_7691_roll177
+  Progress: 320/505 — congress_vote_house_117_hr_7691_roll145
+  Progress: 321/505 — congress_vote_senate_117_s_937_roll165
+  Progress: 322/505 — congress_vote_senate_117_s_937_roll151
+  Progress: 323/505 — congress_vote_senate_117_hr_1799_roll140
+  Progress: 324/505 — congress_vote_senate_117_hr_1799_roll136
+  Progress: 325/505 — congress_vote_senate_117_s_1301_roll411
+  Progress: 326/505 — congress_vote_house_117_s_1301_roll310
+  Progress: 327/505 — congress_vote_senate_117_hr_6119_roll477
+  Progress: 328/505 — congress_vote_house_117_hr_6119_roll399
+  Progress: 329/505 — congress_vote_senate_117_hr_5305_roll397
+  Progress: 330/505 — congress_vote_senate_117_hr_5305_roll385
+  Progress: 331/505 — congress_vote_house_117_hr_5305_roll267
+  Progress: 332/505 — congress_vote_senate_117_hr_3076_roll71
+  Progress: 333/505 — congress_vote_senate_117_hr_3076_roll69
+  Progress: 334/505 — congress_vote_senate_117_hr_3076_roll66
+  Progress: 335/505 — congress_vote_house_117_hr_3076_roll38
+  Progress: 336/505 — congress_vote_senate_117_s_1605_roll496
+  Progress: 337/505 — congress_vote_house_117_s_1605_roll405
+  Progress: 338/505 — congress_vote_senate_117_s_610_roll490
+  Progress: 339/505 — congress_vote_house_117_s_610_roll404
+  Progress: 340/505 — congress_vote_senate_117_hr_3237_roll287
+  Progress: 341/505 — congress_vote_house_117_hr_3237_roll156
+  Progress: 342/505 — congress_vote_senate_117_hr_6617_roll64
+  Progress: 343/505 — congress_vote_senate_117_hr_6617_roll60
+  Progress: 344/505 — congress_vote_house_117_hr_6617_roll39
+  Progress: 345/505 — congress_vote_senate_117_hr_3684_roll314
+  Progress: 346/505 — congress_vote_senate_117_hr_3684_roll313
+  Progress: 347/505 — congress_vote_senate_117_hr_3684_roll285
+  Progress: 348/505 — congress_vote_senate_117_hr_3684_roll276
+  Progress: 349/505 — congress_vote_house_117_hr_3684_roll208
+  Progress: 350/505 — congress_vote_senate_117_hr_1319_roll110
+  Progress: 351/505 — congress_vote_house_117_hr_1319_roll49
+  Progress: 352/505 — congress_vote_senate_117_hr_6968_roll132
+  Progress: 353/505 — congress_vote_house_117_hr_6968_roll70
+  Progress: 354/505 — congress_vote_senate_117_hr_7108_roll131
+  Progress: 355/505 — congress_vote_house_117_hr_4445_roll33
+  Progress: 356/505 — congress_vote_house_117_s_475_roll170
+  Progress: 357/505 — congress_vote_house_117_sjres_14_roll185
+  Progress: 358/505 — congress_vote_senate_117_sjres_14_roll175
+  Progress: 359/505 — congress_vote_house_117_sjres_33_roll449
+  Progress: 360/505 — congress_vote_senate_117_sjres_33_roll498
+  Progress: 361/505 — congress_vote_house_117_sjres_13_roll183
+  Progress: 362/505 — congress_vote_senate_117_sjres_13_roll195
+  Progress: 363/505 — congress_vote_house_117_sjres_15_roll181
+  Progress: 364/505 — congress_vote_senate_117_sjres_15_roll183
+  Progress: 365/505 — congress_vote_house_117_hr_335_roll18
+  Progress: 366/505 — congress_vote_house_118_s_619_roll143
+  Progress: 367/505 — congress_vote_senate_118_hjres_7_roll80
+  Progress: 368/505 — congress_vote_house_118_hjres_7_roll104
+  Progress: 369/505 — congress_vote_senate_118_hr_82_roll338
+  Progress: 370/505 — congress_vote_senate_118_hr_82_roll326
+  Progress: 371/505 — congress_vote_senate_118_hr_5009_roll324
+  Progress: 372/505 — congress_vote_senate_118_hr_10545_roll339
+  Progress: 373/505 — congress_vote_house_118_hr_8932_roll465
+  Progress: 374/505 — congress_vote_senate_118_s_870_roll94
+  Progress: 375/505 — congress_vote_senate_118_s_870_roll78
+  Progress: 376/505 — congress_vote_senate_118_hr_3935_roll162
+  Progress: 377/505 — congress_vote_senate_118_hr_3935_roll157
+  Progress: 378/505 — congress_vote_senate_118_hr_3935_roll240
+  Progress: 379/505 — congress_vote_house_118_hr_3935_roll364
+  Progress: 380/505 — congress_vote_senate_118_hr_815_roll152
+  Progress: 381/505 — congress_vote_senate_118_hr_815_roll48
+  Progress: 382/505 — congress_vote_senate_118_hr_815_roll47
+  Progress: 383/505 — congress_vote_senate_118_hr_815_roll41
+  Progress: 384/505 — congress_vote_senate_118_hr_815_roll39
+  Progress: 385/505 — congress_vote_senate_118_hr_815_roll332
+  Progress: 386/505 — congress_vote_senate_118_hr_7888_roll150
+  Progress: 387/505 — congress_vote_senate_118_hr_7888_roll141
+  Progress: 388/505 — congress_vote_house_118_hr_7888_roll119
+  Progress: 389/505 — congress_vote_senate_118_hr_4366_roll79
+  Progress: 390/505 — congress_vote_senate_118_hr_4366_roll284
+  Progress: 391/505 — congress_vote_senate_118_hr_4366_roll227
+  Progress: 392/505 — congress_vote_house_118_hr_4366_roll380
+  Progress: 393/505 — congress_vote_senate_118_hr_7463_roll67
+  Progress: 394/505 — congress_vote_senate_118_hr_6363_roll312
+  Progress: 395/505 — congress_vote_senate_118_hr_2872_roll12
+  Progress: 396/505 — congress_vote_senate_118_hr_2872_roll9
+  Progress: 397/505 — congress_vote_senate_118_hr_2670_roll341
+  Progress: 398/505 — congress_vote_house_118_hr_2670_roll328
+  Progress: 399/505 — congress_vote_senate_118_hr_3746_roll146
+  Progress: 400/505 — congress_vote_house_118_hr_3746_roll243
+  Progress: 401/505 — congress_vote_senate_118_hjres_26_roll49
+  Progress: 402/505 — congress_vote_house_118_hjres_26_roll119
+  Progress: 403/505 — congress_vote_senate_119_hr_7147_roll74
+  Progress: 404/505 — congress_vote_senate_119_hr_7147_roll71
+  Progress: 405/505 — congress_vote_senate_119_hr_7147_roll59
+  Progress: 406/505 — congress_vote_senate_119_hr_7147_roll54
+  Progress: 407/505 — congress_vote_senate_119_hr_7147_roll47
+  Progress: 408/505 — congress_vote_senate_119_hr_7147_roll39
+  Progress: 409/505 — congress_vote_senate_119_hr_7147_roll38
+  Progress: 410/505 — congress_vote_house_119_hr_7147_roll42
+  Progress: 411/505 — congress_vote_senate_119_hjres_140_roll84
+  Progress: 412/505 — congress_vote_house_119_hjres_140_roll38
+  Progress: 413/505 — congress_vote_house_119_hr_2483_roll151
+  Progress: 414/505 — congress_vote_senate_119_hjres_142_roll37
+  Progress: 415/505 — congress_vote_house_119_hjres_142_roll56
+  Progress: 416/505 — congress_vote_senate_119_hr_7148_roll20
+  Progress: 417/505 — congress_vote_senate_119_hr_7148_roll13
+  Progress: 418/505 — congress_vote_house_119_hr_7148_roll45
+  Progress: 419/505 — congress_vote_senate_119_hr_6938_roll11
+  Progress: 420/505 — congress_vote_senate_119_hr_6938_roll10
+  Progress: 421/505 — congress_vote_senate_119_hr_6938_roll7
+  Progress: 422/505 — congress_vote_house_119_hr_6938_roll7
+  Progress: 423/505 — congress_vote_senate_119_s_1071_roll647
+  Progress: 424/505 — congress_vote_house_119_s_1071_roll320
+  Progress: 425/505 — congress_vote_senate_119_hjres_131_roll632
+  Progress: 426/505 — congress_vote_house_119_hjres_131_roll295
+  Progress: 427/505 — congress_vote_senate_119_hjres_130_roll623
+  Progress: 428/505 — congress_vote_house_119_hjres_130_roll294
+  Progress: 429/505 — congress_vote_senate_119_hjres_106_roll560
+  Progress: 430/505 — congress_vote_house_119_hjres_106_roll225
+  Progress: 431/505 — congress_vote_senate_119_hjres_105_roll556
+  Progress: 432/505 — congress_vote_house_119_hjres_105_roll226
+  Progress: 433/505 — congress_vote_senate_119_hjres_104_roll549
+  Progress: 434/505 — congress_vote_house_119_hjres_104_roll224
+  Progress: 435/505 — congress_vote_house_119_sjres_80_roll296
+  Progress: 436/505 — congress_vote_senate_119_sjres_80_roll599
+  Progress: 437/505 — congress_vote_house_119_s_1582_roll200
+  Progress: 438/505 — congress_vote_senate_119_s_1582_roll318
+  Progress: 439/505 — congress_vote_senate_119_s_1582_roll312
+  Progress: 440/505 — congress_vote_senate_119_s_1582_roll262
+  Progress: 441/505 — congress_vote_senate_119_s_1582_roll240
+  Progress: 442/505 — congress_vote_senate_119_hr_5371_roll618
+  Progress: 443/505 — congress_vote_senate_119_hr_5371_roll617
+  Progress: 444/505 — congress_vote_senate_119_hr_5371_roll610
+  Progress: 445/505 — congress_vote_senate_119_hr_5371_roll603
+  Progress: 446/505 — congress_vote_senate_119_hr_5371_roll590
+  Progress: 447/505 — congress_vote_senate_119_hr_5371_roll581
+  Progress: 448/505 — congress_vote_senate_119_hr_5371_roll576
+  Progress: 449/505 — congress_vote_senate_119_hr_5371_roll573
+  Progress: 450/505 — congress_vote_senate_119_hr_5371_roll572
+  Progress: 451/505 — congress_vote_senate_119_hr_5371_roll571
+  Progress: 452/505 — congress_vote_senate_119_hr_5371_roll558
+  Progress: 453/505 — congress_vote_senate_119_hr_5371_roll551
+  Progress: 454/505 — congress_vote_senate_119_hr_5371_roll545
+  Progress: 455/505 — congress_vote_senate_119_hr_5371_roll543
+  Progress: 456/505 — congress_vote_senate_119_hr_5371_roll537
+  Progress: 457/505 — congress_vote_senate_119_hr_5371_roll535
+  Progress: 458/505 — congress_vote_senate_119_hr_5371_roll528
+  Progress: 459/505 — congress_vote_house_119_hr_5371_roll281
+  Progress: 460/505 — congress_vote_house_119_sjres_18_roll96
+  Progress: 461/505 — congress_vote_senate_119_sjres_18_roll153
+  Progress: 462/505 — congress_vote_house_119_s_331_roll166
+  Progress: 463/505 — congress_vote_senate_119_s_331_roll127
+  Progress: 464/505 — congress_vote_senate_119_s_331_roll124
+  Progress: 465/505 — congress_vote_senate_119_s_331_roll110
+  Progress: 466/505 — congress_vote_senate_119_hr_4_roll411
+  Progress: 467/505 — congress_vote_house_119_hr_4_roll168
+  Progress: 468/505 — congress_vote_senate_119_hr_1_roll372
+  Progress: 469/505 — congress_vote_house_119_hr_1_roll145
+  Progress: 470/505 — congress_vote_house_119_sjres_13_roll137
+  Progress: 471/505 — congress_vote_senate_119_sjres_13_roll237
+  Progress: 472/505 — congress_vote_house_119_sjres_31_roll143
+  Progress: 473/505 — congress_vote_senate_119_sjres_31_roll229
+  Progress: 474/505 — congress_vote_senate_119_hjres_89_roll281
+  Progress: 475/505 — congress_vote_house_119_hjres_89_roll112
+  Progress: 476/505 — congress_vote_senate_119_hjres_88_roll277
+  Progress: 477/505 — congress_vote_house_119_hjres_88_roll114
+  Progress: 478/505 — congress_vote_senate_119_hjres_87_roll279
+  Progress: 479/505 — congress_vote_house_119_hjres_87_roll111
+  Progress: 480/505 — congress_vote_house_119_sjres_28_roll95
+  Progress: 481/505 — congress_vote_senate_119_sjres_28_roll106
+  Progress: 482/505 — congress_vote_senate_119_hjres_61_roll232
+  Progress: 483/505 — congress_vote_house_119_hjres_61_roll58
+  Progress: 484/505 — congress_vote_senate_119_hjres_60_roll239
+  Progress: 485/505 — congress_vote_house_119_hjres_60_roll110
+  Progress: 486/505 — congress_vote_senate_119_hjres_75_roll228
+  Progress: 487/505 — congress_vote_house_119_hjres_75_roll78
+  Progress: 488/505 — congress_vote_senate_119_hjres_42_roll223
+  Progress: 489/505 — congress_vote_house_119_hjres_42_roll59
+  Progress: 490/505 — congress_vote_senate_119_hjres_24_roll162
+  Progress: 491/505 — congress_vote_house_119_hjres_24_roll77
+  Progress: 492/505 — congress_vote_senate_119_hjres_20_roll207
+  Progress: 493/505 — congress_vote_house_119_hjres_20_roll53
+  Progress: 494/505 — congress_vote_senate_119_hjres_25_roll151
+  Progress: 495/505 — congress_vote_house_119_hjres_25_roll71
+  Progress: 496/505 — congress_vote_house_119_hjres_35_roll52
+  Progress: 497/505 — congress_vote_senate_119_hr_1968_roll133
+  Progress: 498/505 — congress_vote_senate_119_hr_1968_roll128
+  Progress: 499/505 — congress_vote_house_119_hr_1968_roll70
+  Progress: 500/505 — congress_vote_house_119_sjres_11_roll61
+  Progress: 501/505 — congress_vote_senate_119_sjres_11_roll92
+  Progress: 502/505 — congress_vote_house_119_s_5_roll23
+  Progress: 503/505 — congress_vote_senate_119_s_5_roll7
+  Progress: 504/505 — congress_vote_senate_119_s_5_roll5
+  Progress: 505/505 — congress_vote_senate_119_s_5_roll1
+
+Ingestion complete in 20.3s
+  Ingested: 0 | Skipped: 505 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims:  505
+  Sources: 505
+  Edges:   505
+  WARNING: DB claim count (505) does not match ingested counter (0)

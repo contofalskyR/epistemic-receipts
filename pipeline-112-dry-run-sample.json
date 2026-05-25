@@ -1,0 +1,501 @@
+{
+  "runDate": "2026-05-23T20:40:20.503Z",
+  "indicators": [
+    "WHOSIS_000001",
+    "MDG_0000000001",
+    "SDGPM25",
+    "SA_0000001462",
+    "NCD_BMI_30A"
+  ],
+  "totalCandidates": 1001,
+  "indicatorBreakdown": {
+    "WHOSIS_000001": 185,
+    "MDG_0000000001": 200,
+    "SDGPM25": 227,
+    "SA_0000001462": 190,
+    "NCD_BMI_30A": 199
+  },
+  "note": "Dry-run: no DB writes. Run --full with ALLOW_EDITS=true to ingest.",
+  "sample": [
+    {
+      "claimText": "Life expectancy at birth in Singapore: 83.9 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_SGP_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "SGP",
+      "countryName": "Singapore",
+      "year": 2021,
+      "value": 83.85708962,
+      "low": 83.81972605,
+      "high": 83.94640978,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "SGP",
+        "countryName": "Singapore",
+        "year": 2021,
+        "value": 83.85708962,
+        "low": 83.81972605,
+        "high": 83.94640978,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Niger: 60.0 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_NER_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "NER",
+      "countryName": "Niger",
+      "year": 2021,
+      "value": 59.97070525,
+      "low": 58.66656152,
+      "high": 61.11411759,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "NER",
+        "countryName": "Niger",
+        "year": 2021,
+        "value": 59.97070525,
+        "low": 58.66656152,
+        "high": 61.11411759,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Lao People's Democratic Republic: 68.2 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_LAO_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "LAO",
+      "countryName": "Lao People's Democratic Republic",
+      "year": 2021,
+      "value": 68.23189407,
+      "low": 67.42843908,
+      "high": 69.23683438,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "LAO",
+        "countryName": "Lao People's Democratic Republic",
+        "year": 2021,
+        "value": 68.23189407,
+        "low": 67.42843908,
+        "high": 69.23683438,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Ecuador: 74.0 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_ECU_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "ECU",
+      "countryName": "Ecuador",
+      "year": 2021,
+      "value": 73.95801182,
+      "low": 73.44978588,
+      "high": 74.54552649,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "ECU",
+        "countryName": "Ecuador",
+        "year": 2021,
+        "value": 73.95801182,
+        "low": 73.44978588,
+        "high": 74.54552649,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Switzerland: 83.3 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_CHE_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "CHE",
+      "countryName": "Switzerland",
+      "year": 2021,
+      "value": 83.32795777,
+      "low": 83.30043632,
+      "high": 83.41706473,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "CHE",
+        "countryName": "Switzerland",
+        "year": 2021,
+        "value": 83.32795777,
+        "low": 83.30043632,
+        "high": 83.41706473,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Madagascar: 62.9 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_MDG_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "MDG",
+      "countryName": "Madagascar",
+      "year": 2021,
+      "value": 62.9342555,
+      "low": 62.10113089,
+      "high": 63.93041387,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "MDG",
+        "countryName": "Madagascar",
+        "year": 2021,
+        "value": 62.9342555,
+        "low": 62.10113089,
+        "high": 63.93041387,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Greece: 79.6 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_GRC_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "GRC",
+      "countryName": "Greece",
+      "year": 2021,
+      "value": 79.59785025,
+      "low": 79.55212594,
+      "high": 79.70438643,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "GRC",
+        "countryName": "Greece",
+        "year": 2021,
+        "value": 79.59785025,
+        "low": 79.55212594,
+        "high": 79.70438643,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in United Kingdom of Great Britain and Northern Ireland: 80.1 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_GBR_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "GBR",
+      "countryName": "United Kingdom of Great Britain and Northern Ireland",
+      "year": 2021,
+      "value": 80.10062783,
+      "low": 80.09616146,
+      "high": 80.17319359,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "GBR",
+        "countryName": "United Kingdom of Great Britain and Northern Ireland",
+        "year": 2021,
+        "value": 80.10062783,
+        "low": 80.09616146,
+        "high": 80.17319359,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Papua New Guinea: 65.5 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_PNG_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "PNG",
+      "countryName": "Papua New Guinea",
+      "year": 2021,
+      "value": 65.48786529,
+      "low": 64.55629491,
+      "high": 66.53249997,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "PNG",
+        "countryName": "Papua New Guinea",
+        "year": 2021,
+        "value": 65.48786529,
+        "low": 64.55629491,
+        "high": 66.53249997,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Antigua and Barbuda: 76.9 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_ATG_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "ATG",
+      "countryName": "Antigua and Barbuda",
+      "year": 2021,
+      "value": 76.91527032,
+      "low": null,
+      "high": null,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "ATG",
+        "countryName": "Antigua and Barbuda",
+        "year": 2021,
+        "value": 76.91527032,
+        "low": null,
+        "high": null,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Azerbaijan: 72.9 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_AZE_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "AZE",
+      "countryName": "Azerbaijan",
+      "year": 2021,
+      "value": 72.9129401,
+      "low": 72.51475035,
+      "high": 73.38248766,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "AZE",
+        "countryName": "Azerbaijan",
+        "year": 2021,
+        "value": 72.9129401,
+        "low": 72.51475035,
+        "high": 73.38248766,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Guatemala: 68.7 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_GTM_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "GTM",
+      "countryName": "Guatemala",
+      "year": 2021,
+      "value": 68.69573697,
+      "low": 68.2832215,
+      "high": 69.23222899,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "GTM",
+        "countryName": "Guatemala",
+        "year": 2021,
+        "value": 68.69573697,
+        "low": 68.2832215,
+        "high": 69.23222899,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Saudi Arabia: 76.4 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_SAU_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "SAU",
+      "countryName": "Saudi Arabia",
+      "year": 2021,
+      "value": 76.42921259,
+      "low": 76.03343649,
+      "high": 76.93474314,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "SAU",
+        "countryName": "Saudi Arabia",
+        "year": 2021,
+        "value": 76.42921259,
+        "low": 76.03343649,
+        "high": 76.93474314,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in Belgium: 81.5 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_BEL_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "BEL",
+      "countryName": "Belgium",
+      "year": 2021,
+      "value": 81.5059627,
+      "low": 81.46589972,
+      "high": 81.60981568,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "BEL",
+        "countryName": "Belgium",
+        "year": 2021,
+        "value": 81.5059627,
+        "low": 81.46589972,
+        "high": 81.60981568,
+        "unit": "years"
+      }
+    },
+    {
+      "claimText": "Life expectancy at birth in occupied Palestinian territory, including east Jerusalem: 73.5 years (2021)",
+      "externalId": "who_gho_WHOSIS_000001_PSE_2021",
+      "indicatorCode": "WHOSIS_000001",
+      "countryIso": "PSE",
+      "countryName": "occupied Palestinian territory, including east Jerusalem",
+      "year": 2021,
+      "value": 73.49178033,
+      "low": 73.07585719,
+      "high": 73.90224874,
+      "unit": "years",
+      "claimType": "EMPIRICAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "who_gho_v1",
+      "source": {
+        "url": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/WHOSIS_000001",
+        "methodologyType": "primary"
+      },
+      "metadata": {
+        "dataset": "who_gho_v1",
+        "indicatorCode": "WHOSIS_000001",
+        "indicatorName": "Life expectancy at birth",
+        "country": "PSE",
+        "countryName": "occupied Palestinian territory, including east Jerusalem",
+        "year": 2021,
+        "value": 73.49178033,
+        "low": 73.07585719,
+        "high": 73.90224874,
+        "unit": "years"
+      }
+    }
+  ]
+}

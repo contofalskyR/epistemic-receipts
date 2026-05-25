@@ -1,9 +1,8 @@
-// Pipeline 60 — ECHR Judgments (echr_judgments_v1)
-// Dataset: European Court of Human Rights HUDOC database. Free, no API key required.
-// Scope: Grand Chamber and Chamber judgments (English language), 1959–present.
-//        hudoc.echr.coe.int — landmark rulings, high citation value.
+// Pipeline 114 — ECHR (European Court of Human Rights) Judgments
+// Dataset: HUDOC case database, importance 1 (Grand Chamber) and 2 (Chamber)
+// API: https://hudoc.echr.coe.int/app/query/results
+// Scope: English full judgments (HEJUD) where importance IN (1, 2)
 // Run: npx tsx scripts/ingest-echr.ts --dry-run
-//      npx tsx scripts/ingest-echr.ts --sample 10
 //      npx tsx scripts/ingest-echr.ts --full [--limit N] [--verbose]
 
 import 'dotenv/config'
@@ -13,215 +12,168 @@ import * as https from 'https'
 
 const prisma = new PrismaClient()
 
-const INGESTED_BY = 'echr_judgments_v1'
-const PIPELINE = 'Pipeline 60'
-const API_BASE = 'https://hudoc.echr.coe.int/app/query/results'
+const INGESTED_BY = 'echr_v1'
+const HUDOC_BASE = 'https://hudoc.echr.coe.int/app/query/results'
 const PAGE_SIZE = 500
-const PAGE_DELAY_MS = 1000
+const THROTTLE_MS = 400
+const DRY_RUN_SAMPLE = 20
 
-// HUDOC query: Grand Chamber + Chamber judgments in English
-const HUDOC_QUERY = [
-  'contentsitename:ECHR',
-  'AND',
-  '(documentcollectionid2:"GRANDCHAMBER" OR documentcollectionid2:"CHAMBER")',
-  'AND',
-  'languageisocode:ENG',
-].join(' ')
-
-// ── Types ──────────────────────────────────────────────────────────────────────
+// ── HUDOC record types ─────────────────────────────────────────────────────────
 
 interface HudocResult {
-  columns: {
-    itemid: string
-    docname: string
-    kpdate: string  // ISO date string
-    originatingbody?: string
+  itemid: string
+  docname: string
+  respondent: string
+  article: string      // pipe-separated articles, e.g. "6|6-1|13"
+  conclusion: string   // pipe-separated conclusions
+  judgementdate: string
+  importance: string   // "1" | "2"
+  kpdate: string
+}
+
+interface EchrJudgment {
+  externalId: string
+  itemid: string
+  docname: string
+  respondent: string
+  articles: string[]
+  conclusion: string
+  judgmentDate: Date
+  judgmentDateStr: string
+  importance: 1 | 2
+  importanceLabel: string
+  sourceUrl: string
+  claimText: string
+}
+
+function buildJudgment(r: HudocResult): EchrJudgment | null {
+  if (!r.itemid || !r.docname) return null
+
+  const importanceNum = parseInt(r.importance, 10)
+  if (importanceNum !== 1 && importanceNum !== 2) return null
+
+  // judgementdate is "MM/DD/YYYY HH:mm:ss" — convert to ISO
+  const raw = r.judgementdate ?? ''
+  const dateParts = raw.split(' ')[0]?.split('/') // ["MM", "DD", "YYYY"]
+  if (!dateParts || dateParts.length !== 3) return null
+  const dateStr = `${dateParts[2]}-${dateParts[0].padStart(2, '0')}-${dateParts[1].padStart(2, '0')}`
+  const judgmentDate = new Date(dateStr + 'T00:00:00Z')
+  if (isNaN(judgmentDate.getTime())) return null
+
+  const articles = r.article
+    ? r.article.split(';').map(a => a.trim()).filter(Boolean)
+    : []
+
+  const importanceLabel = importanceNum === 1 ? 'Grand Chamber' : 'Chamber'
+  const respondent = r.respondent || 'Unknown respondent'
+  const docname = r.docname.slice(0, 300)
+
+  // Build article summary for claim text
+  // Use only top-level articles (no sub-articles like "6-1", "P1-1"), deduplicated
+  const topArticles = [...new Set(articles.filter(a => /^\d+$|^P\d+-\d+$/.test(a) || /^P\d+$/.test(a)))]
+  const articleSummary = topArticles.length > 0
+    ? topArticles.slice(0, 3).join(', ') + (topArticles.length > 3 ? ' +more' : '')
+    : articles.slice(0, 3).join(', ') || 'multiple articles'
+
+  const claimText = `${docname} — ${respondent} judgment (${importanceLabel}, ${dateStr}), ECHR Article ${articleSummary}`
+  const sourceUrl = `https://hudoc.echr.coe.int/eng?i=${encodeURIComponent(r.itemid)}`
+  const externalId = `echr_${r.itemid.replace(/[^a-zA-Z0-9_-]/g, '_')}`
+
+  return {
+    externalId, itemid: r.itemid, docname, respondent,
+    articles, conclusion: r.conclusion || '',
+    judgmentDate, judgmentDateStr: dateStr,
+    importance: importanceNum as 1 | 2, importanceLabel,
+    sourceUrl, claimText,
   }
 }
 
-interface HudocResponse {
-  resultcount: number
-  results: HudocResult[] | { Result: HudocResult[] }
-}
+// ── Types ─────────────────────────────────────────────────────────────────────
 
-interface CandidateRecord {
-  itemId: string
-  docName: string
-  judgmentDate: Date
-  judgmentDateStr: string
-  externalId: string
-  sourceExternalId: string
-  sourceUrl: string
-  sourceName: string
-}
+type TxClient = Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>
 
-type IngestResult = 'ingested' | 'skipped' | 'failed'
-type Counts = { ingested: number; skipped: number; errors: number }
-
-// ── CLI ────────────────────────────────────────────────────────────────────────
+// ── CLI ───────────────────────────────────────────────────────────────────────
 
 function parseArgs() {
   const args = process.argv.slice(2)
-
   const mode = args.includes('--dry-run') ? 'dry-run'
-    : args.includes('--sample') ? 'sample'
     : args.includes('--full') ? 'full'
-    : (() => {
-        console.error('Usage: --dry-run | --sample N | --full  [--limit N] [--verbose]')
-        process.exit(1) as never
-      })()
+    : (() => { console.error('Usage: --dry-run | --full  [--limit N] [--verbose]'); process.exit(1) as never })()
+
+  if (mode === 'full' && process.env.ALLOW_EDITS !== 'true') {
+    console.error('--full requires ALLOW_EDITS=true')
+    process.exit(1)
+  }
 
   const li = args.indexOf('--limit')
-  const sai = args.indexOf('--sample')
-
   return {
-    mode: mode as 'dry-run' | 'sample' | 'full',
+    mode: mode as 'dry-run' | 'full',
     limit: li !== -1 ? (parseInt(args[li + 1] ?? '0', 10) || 0) : 0,
-    sampleN: sai !== -1 ? (parseInt(args[sai + 1] ?? '10', 10) || 10) : 10,
     verbose: args.includes('--verbose'),
   }
 }
 
-// ── HTTP ───────────────────────────────────────────────────────────────────────
+// ── Rate limiting ──────────────────────────────────────────────────────────────
 
+let lastReqAt = 0
 function sleep(ms: number) { return new Promise<void>(r => setTimeout(r, ms)) }
+async function throttle() {
+  const wait = THROTTLE_MS - (Date.now() - lastReqAt)
+  if (wait > 0) await sleep(wait)
+  lastReqAt = Date.now()
+}
 
-function httpsGet(url: string, timeoutMs: number): Promise<{ status: number; body: string }> {
+// ── HTTP fetch (https module, avoids HTTP/2 issues) ───────────────────────────
+
+function httpsGet(url: string): Promise<{ status: number; body: string }> {
   return new Promise((resolve, reject) => {
-    const parsed = new URL(url)
-    const req = https.get(
-      {
-        hostname: parsed.hostname,
-        path: parsed.pathname + parsed.search,
-        port: 443,
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; EpistemicReceipts/1.0)',
-          'Accept': 'application/json',
-        },
-        timeout: timeoutMs,
-      },
-      (res) => {
-        if (res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          const nextUrl = res.headers.location.startsWith('http')
-            ? res.headers.location
-            : `https://${parsed.hostname}${res.headers.location}`
-          res.resume()
-          httpsGet(nextUrl, timeoutMs).then(resolve).catch(reject)
-          return
-        }
-        const chunks: Buffer[] = []
-        res.on('data', (c: Buffer) => chunks.push(c))
-        res.on('end', () => resolve({ status: res.statusCode ?? 0, body: Buffer.concat(chunks).toString('utf-8') }))
-        res.on('error', reject)
-      }
-    )
+    const req = https.get(url, { headers: { 'User-Agent': 'curl/7.84.0', 'Accept': 'application/json' } }, res => {
+      let body = ''
+      res.on('data', (chunk: Buffer) => { body += chunk.toString('utf8') })
+      res.on('end', () => resolve({ status: res.statusCode ?? 0, body }))
+    })
     req.on('error', reject)
-    req.on('timeout', () => { req.destroy(); reject(new Error('Request timed out')) })
+    req.setTimeout(30000, () => { req.destroy(); reject(new Error('Request timed out')) })
   })
 }
 
-async function fetchPage(start: number, retries = 4): Promise<HudocResponse> {
-  const params = new URLSearchParams({
-    query: HUDOC_QUERY,
-    select: 'itemid,docname,kpdate',
-    sort: 'kpdate Ascending',
-    start: String(start),
-    length: String(PAGE_SIZE),
-  })
-  const url = `${API_BASE}?${params.toString()}`
+async function fetchJson<T>(url: string, retries = 3): Promise<T> {
   let delay = 2000
   for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const res = await httpsGet(url, 45_000)
-      if ([429, 502, 503, 504].includes(res.status) && attempt < retries) {
-        console.warn(`  HTTP ${res.status} start=${start} — retrying in ${delay}ms`)
-        await sleep(delay)
-        delay *= 2
-        continue
-      }
-      if (res.status !== 200) throw new Error(`HTTP ${res.status} for start=${start}`)
-      return JSON.parse(res.body) as HudocResponse
-    } catch (err) {
-      if (attempt >= retries) throw err
-      const msg = err instanceof Error ? err.message : String(err)
-      console.warn(`  Error start=${start}: ${msg} — retrying in ${delay}ms`)
-      await sleep(delay)
-      delay *= 2
+    await throttle()
+    const { status, body } = await httpsGet(url)
+    if ([429, 502, 503, 504].includes(status) && attempt < retries) {
+      console.warn(`  HTTP ${status} — retrying in ${delay}ms`)
+      await sleep(delay); delay *= 2; continue
     }
+    if (status < 200 || status >= 300) throw new Error(`HUDOC HTTP ${status} at ${url}`)
+    return JSON.parse(body) as T
   }
-  throw new Error(`Failed after ${retries} retries at start=${start}`)
+  throw new Error(`Failed after ${retries} retries: ${url}`)
 }
 
-// ── Parse results ──────────────────────────────────────────────────────────────
+// ── Fetch one page of HUDOC results ───────────────────────────────────────────
 
-function getResults(resp: HudocResponse): HudocResult[] {
-  const r = resp.results
-  if (Array.isArray(r)) return r
-  if (r && typeof r === 'object' && 'Result' in r) return (r as { Result: HudocResult[] }).Result
-  return []
+interface HudocResponse {
+  resultcount: number
+  results: Array<{ columns: HudocResult }>
 }
 
-function toCandidate(item: HudocResult): CandidateRecord | null {
-  const { itemid, docname, kpdate } = item.columns
+async function fetchPage(start: number): Promise<{ total: number; items: EchrJudgment[] }> {
+  const query = encodeURIComponent(
+    'contentsitename:ECHR AND doctype:HEJUD AND (importance:1 OR importance:2)'
+  )
+  const fields = encodeURIComponent('itemid,docname,respondent,article,conclusion,judgementdate,importance,kpdate')
+  const sort = encodeURIComponent('kpdate Descending')
+  const url = `${HUDOC_BASE}?query=${query}&select=${fields}&sort=${sort}&start=${start}&length=${PAGE_SIZE}`
 
-  if (!itemid || !docname) return null
-
-  const dateStr = kpdate?.slice(0, 10) ?? ''
-  if (!dateStr || dateStr === '0001-01-01') return null
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return null
-
-  const judgmentDate = new Date(dateStr + 'T00:00:00Z')
-  if (isNaN(judgmentDate.getTime())) return null
-
-  const sourceUrl = `https://hudoc.echr.coe.int/eng?i=${encodeURIComponent(itemid)}`
-
-  return {
-    itemId: itemid,
-    docName: docname.trim(),
-    judgmentDate,
-    judgmentDateStr: dateStr,
-    externalId: `echr_${itemid}`,
-    sourceExternalId: `echr_src_${itemid}`,
-    sourceUrl,
-    sourceName: `ECHR — ${docname.trim().slice(0, 100)}`,
+  const data = await fetchJson<HudocResponse>(url)
+  const items: EchrJudgment[] = []
+  for (const row of data.results ?? []) {
+    const j = buildJudgment(row.columns)
+    if (j) items.push(j)
   }
-}
-
-// ── Fetch all candidates ───────────────────────────────────────────────────────
-
-async function fetchAllCandidates(limit: number, verbose: boolean): Promise<CandidateRecord[]> {
-  console.log('  Fetching first page to get total...')
-  const first = await fetchPage(0)
-  const total = first.resultcount
-  console.log(`  Total ECHR EN judgments (Grand+Chamber): ${total}`)
-
-  const candidates: CandidateRecord[] = []
-  let malformed = 0
-
-  const processPage = (resp: HudocResponse): boolean => {
-    const results = getResults(resp)
-    for (const item of results) {
-      const rec = toCandidate(item)
-      if (!rec) { malformed++; continue }
-      candidates.push(rec)
-      if (limit > 0 && candidates.length >= limit) return true
-    }
-    return false
-  }
-
-  if (processPage(first)) return candidates
-
-  const pages = Math.ceil(total / PAGE_SIZE)
-  for (let p = 1; p < pages; p++) {
-    await sleep(PAGE_DELAY_MS)
-    const page = await fetchPage(p * PAGE_SIZE)
-    if (verbose) process.stdout.write(`  Page ${p + 1}/${pages} (${candidates.length} so far)...\r`)
-    if (processPage(page)) break
-  }
-
-  if (verbose) console.log()
-  console.log(`    ${candidates.length} candidates, ${malformed} dropped (no date or bad data)`)
-  return candidates
+  return { total: data.resultcount ?? 0, items }
 }
 
 // ── Topic management ───────────────────────────────────────────────────────────
@@ -232,201 +184,223 @@ async function ensureTopic(slug: string, name: string, domain: string, parentSlu
   if (topicCache.has(slug)) return topicCache.get(slug)!
   const existing = await prisma.topic.findUnique({ where: { slug } })
   if (existing) { topicCache.set(slug, existing.id); return existing.id }
-
-  let parentTopicId: string | undefined
+  let parentTopicId: string | null = null
   if (parentSlug) {
     const parent = await prisma.topic.findUnique({ where: { slug: parentSlug } })
-    if (parent) parentTopicId = parent.id
-    else console.warn(`  Parent topic ${parentSlug} not found — creating ${slug} without parent`)
+    parentTopicId = parent?.id ?? null
   }
-
   const created = await prisma.topic.create({ data: { slug, name, domain, parentTopicId } })
-  console.log(`  Created topic: ${slug}${parentTopicId ? ` (parent: ${parentSlug})` : ''}`)
+  console.log(`  Created topic: ${slug}`)
   topicCache.set(slug, created.id)
   return created.id
 }
 
-// ── Write one record ───────────────────────────────────────────────────────────
+async function ensureTopics(): Promise<string> {
+  await ensureTopic('international-law', 'International Law', 'law')
+  await ensureTopic('human-rights', 'Human Rights', 'law', 'international-law')
+  return ensureTopic('echr-judgments', 'ECHR Judgments', 'law', 'human-rights')
+}
 
-type TxClient = Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>
+// ── Write one record (inside transaction) ─────────────────────────────────────
 
-async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Promise<IngestResult> {
-  const existing = await tx.claim.findUnique({ where: { externalId: rec.externalId }, select: { id: true } })
+async function writeRow(tx: TxClient, rec: EchrJudgment, topicId: string): Promise<'ingested' | 'skipped'> {
+  const existing = await tx.source.findFirst({ where: { url: rec.sourceUrl } })
   if (existing) return 'skipped'
 
-  try {
-    const source = await tx.source.upsert({
-      where: { externalId: rec.sourceExternalId },
-      update: {},
-      create: {
-        externalId: rec.sourceExternalId,
-        name: rec.sourceName,
-        url: rec.sourceUrl,
-        publishedAt: rec.judgmentDate,
-        methodologyType: 'primary',
-        ingestedBy: INGESTED_BY,
+  const source = await tx.source.create({
+    data: {
+      name: `HUDOC — ${rec.docname.slice(0, 200)}`,
+      url: rec.sourceUrl,
+      publishedAt: rec.judgmentDate,
+      methodologyType: 'primary',
+      ingestedBy: INGESTED_BY,
+      humanReviewed: false,
+      autoApproved: true,
+      externalId: `echr_source_${rec.externalId}`,
+    },
+  })
+
+  const claim = await tx.claim.create({
+    data: {
+      text: rec.claimText,
+      claimType: 'INSTITUTIONAL',
+      currentStatus: 'HARD_FACT',
+      verificationStatus: 'VERIFIED',
+      claimEmergedAt: rec.judgmentDate,
+      claimEmergedPrecision: 'DAY',
+      ingestedBy: INGESTED_BY,
+      humanReviewed: false,
+      autoApproved: true,
+      externalId: rec.externalId,
+      metadata: {
+        dataset: INGESTED_BY,
+        itemid: rec.itemid,
+        respondent: rec.respondent,
+        articles: rec.articles,
+        conclusion: rec.conclusion,
+        importance: rec.importance,
+        importanceLabel: rec.importanceLabel,
+        judgmentDate: rec.judgmentDateStr,
       },
-    })
+    },
+  })
 
-    const claim = await tx.claim.create({
-      data: {
-        text: rec.docName,
-        claimType: 'INSTITUTIONAL',
-        currentStatus: 'HARD_FACT',
-        verificationStatus: 'VERIFIED',
-        claimEmergedAt: rec.judgmentDate,
-        claimEmergedPrecision: 'DAY',
-        ingestedBy: INGESTED_BY,
-        autoApproved: true,
-        humanReviewed: false,
-        externalId: rec.externalId,
-        metadata: {
-          dataset: INGESTED_BY,
-          itemId: rec.itemId,
-        },
-      },
-    })
+  const edge = await tx.edge.create({
+    data: {
+      sourceId: source.id,
+      claimId: claim.id,
+      type: 'FOR',
+      evidenceType: 'PROCEDURAL',
+      ingestedBy: INGESTED_BY,
+      humanReviewed: false,
+      autoApproved: true,
+    },
+  })
 
-    await tx.edge.create({
-      data: {
-        claimId: claim.id,
-        sourceId: source.id,
-        type: 'CITES',
-        ingestedBy: INGESTED_BY,
-        autoApproved: true,
-      },
-    })
+  await tx.edgeRevision.create({
+    data: {
+      edgeId: edge.id,
+      priorScore: null,
+      newScore: 95,
+      reason: 'HUDOC official judgment record — ECHR Grand Chamber or Chamber, HARD_FACT',
+      changedAt: rec.judgmentDate,
+    },
+  })
 
-    await tx.claimTopic.upsert({
-      where: { claimId_topicId: { claimId: claim.id, topicId } },
-      update: {},
-      create: { claimId: claim.id, topicId },
-    })
+  await tx.claimTopic.upsert({
+    where: { claimId_topicId: { claimId: claim.id, topicId } },
+    update: {},
+    create: { claimId: claim.id, topicId },
+  })
 
-    return 'ingested'
-  } catch (err) {
-    console.error(`  Error writing ${rec.externalId}: ${err}`)
-    return 'failed'
-  }
+  return 'ingested'
 }
 
 // ── Main ───────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, limit, sampleN, verbose } = parseArgs()
+  const { mode, limit, verbose } = parseArgs()
 
-  console.log(`\n── ${PIPELINE}: ECHR Judgments ─────────────`)
+  console.log(`\n── Pipeline 114: ECHR Judgments ──────────────────────────────────────`)
   console.log(`Mode: ${mode} | Limit: ${limit || 'all'}`)
 
-  let topicId = ''
-  if (mode !== 'dry-run') {
-    console.log('\nStep 1: Ensuring topic...')
-    // ECHR is Council of Europe — parent under International
-    topicId = await ensureTopic('echr', 'European Court of Human Rights (ECHR)', 'government', 'gov-region-international')
-  } else {
-    console.log('\nStep 1: Skipping topic DB writes (dry-run mode).')
-  }
-
-  console.log('\nStep 2: Fetching ECHR judgments from HUDOC...')
-  const allCandidates = await fetchAllCandidates(limit, verbose)
-  console.log(`\nTotal candidates: ${allCandidates.length}`)
-
-  // ── Dry-run ────────────────────────────────────────────────────────────────
+  // ── Dry-run ──────────────────────────────────────────────────────────────
   if (mode === 'dry-run') {
-    console.log('\nStep 3: Writing dry-run sample (no DB writes)...')
+    console.log('\nFetching first page from HUDOC (no DB writes)...')
+    const { total, items } = await fetchPage(0)
+    console.log(`  Total corpus: ${total} | Parsed from first page: ${items.length}`)
 
-    const sample = allCandidates.slice(-15).map(r => ({
-      docName: r.docName,
+    const sample = items.slice(0, DRY_RUN_SAMPLE).map(r => ({
+      claimText: r.claimText,
       externalId: r.externalId,
+      itemid: r.itemid,
+      respondent: r.respondent,
+      articles: r.articles,
       judgmentDate: r.judgmentDateStr,
-      sourceUrl: r.sourceUrl,
+      importance: r.importance,
+      importanceLabel: r.importanceLabel,
       claimType: 'INSTITUTIONAL',
       currentStatus: 'HARD_FACT',
       verificationStatus: 'VERIFIED',
-      autoApproved: true,
-      humanReviewed: false,
       ingestedBy: INGESTED_BY,
+      source: { url: r.sourceUrl, methodologyType: 'primary' },
     }))
-
-    const byDecade: Record<string, number> = {}
-    for (const r of allCandidates) {
-      const decade = r.judgmentDateStr.slice(0, 3) + '0s'
-      byDecade[decade] = (byDecade[decade] ?? 0) + 1
-    }
 
     const output = {
       runDate: new Date().toISOString(),
-      pipeline: PIPELINE,
-      ingestedBy: INGESTED_BY,
-      totalCandidates: allCandidates.length,
-      distribution: { byDecade },
-      sampleNewest: sample,
+      pipeline: INGESTED_BY,
+      mode: 'dry-run',
+      apiUrl: HUDOC_BASE,
+      query: 'contentsitename:ECHR AND doctype:HEJUD AND (importance:1 OR importance:2)',
+      totalCorpus: total,
+      firstPageCount: items.length,
+      sampleRecords: DRY_RUN_SAMPLE,
+      sample,
     }
-
-    fs.writeFileSync('pipeline-60-dry-run-sample.json', JSON.stringify(output, null, 2))
-    console.log('  Written: pipeline-60-dry-run-sample.json')
-
-    if (allCandidates.length > 0) {
-      console.log('\nDistribution by decade:')
-      for (const [k, v] of Object.entries(byDecade).sort()) {
-        console.log(`  ${k}: ${v}`)
-      }
-      console.log('\nSample (newest first):')
-      allCandidates.slice(-5).reverse().forEach((r, i) =>
-        console.log(`  ${i + 1}. [${r.judgmentDateStr}] ${r.docName.slice(0, 110)}${r.docName.length > 110 ? '…' : ''}`)
-      )
-    }
-
+    fs.writeFileSync('pipeline-114-dry-run-sample.json', JSON.stringify(output, null, 2))
+    console.log('  Written: pipeline-114-dry-run-sample.json')
     console.log('\nDry-run complete.')
+    console.log('\nSTOP — awaiting explicit go-ahead from Robert before full run.')
     return
   }
 
-  // ── Sample / Full ──────────────────────────────────────────────────────────
-  const rows = mode === 'sample' ? allCandidates.slice(-sampleN) : allCandidates
+  // ── Full run ──────────────────────────────────────────────────────────────
+  console.log('\nStep 1: Ensuring topics...')
+  const topicId = await ensureTopics()
+  console.log(`  echr-judgments topic ID: ${topicId}`)
 
-  console.log(`\nStep 3: Writing ${rows.length} rows to DB (batches of 50, txn timeout 30s)...`)
+  console.log('\nStep 2: Fetching + ingesting from HUDOC...')
   const startTime = Date.now()
-  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
-  const BATCH = 50
+  let ingested = 0, skipped = 0, errors = 0, total = 0, page = 0
 
-  for (let i = 0; i < rows.length; i += BATCH) {
-    const batch = rows.slice(i, i + BATCH)
+  for (let start = 0; ; start += PAGE_SIZE) {
+    page++
+    if (verbose || page % 5 === 0) console.log(`  Fetching page ${page} (start=${start})...`)
+
+    let items: EchrJudgment[]
     try {
-      await prisma.$transaction(async (tx) => {
-        for (const row of batch) {
-          const result = await writeRow(tx, row, topicId)
-          if (result === 'ingested') counts.ingested++
-          else if (result === 'skipped') counts.skipped++
-          else counts.errors++
-          if (verbose) console.log(`  [${result}] ${row.externalId} — ${row.docName.slice(0, 70)}`)
-        }
-      }, { timeout: 30000 })
+      const result = await fetchPage(start)
+      if (page === 1) {
+        total = result.total
+        console.log(`  Total corpus: ${total}`)
+      }
+      items = result.items
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
-      console.error(`  Batch ${i}-${i + batch.length} failed: ${msg}`)
-      counts.errors += batch.length
+      console.error(`  Fetch failed at start=${start}: ${msg}`)
+      errors++
+      break
     }
 
-    if (!verbose) {
-      const done = Math.min(i + BATCH, rows.length)
-      process.stdout.write(`  ${done}/${rows.length} processed...\r`)
+    if (items.length === 0) {
+      console.log(`  Page ${page} returned 0 records — end of corpus`)
+      break
+    }
+
+    for (const rec of items) {
+      if (limit > 0 && ingested + skipped + errors >= limit) break
+      try {
+        const result = await prisma.$transaction(
+          async (tx) => writeRow(tx, rec, topicId),
+          { timeout: 30000 },
+        )
+        if (result === 'ingested') ingested++
+        else skipped++
+        if (verbose || ingested % 250 === 0) {
+          console.log(`  [${result}] ${rec.itemid} — ${rec.docname.slice(0, 60)}`)
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        console.error(`  Failed: ${rec.externalId} — ${msg}`)
+        errors++
+      }
+    }
+
+    if (limit > 0 && ingested + skipped + errors >= limit) {
+      console.log(`  Limit of ${limit} reached, stopping.`)
+      break
+    }
+
+    if (start + PAGE_SIZE >= total && total > 0) {
+      console.log(`  Reached end of corpus (${total} total)`)
+      break
     }
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
   console.log(`\nIngestion complete in ${elapsed}s`)
-  console.log(`  Ingested: ${counts.ingested} | Skipped: ${counts.skipped} | Errors: ${counts.errors}`)
+  console.log(`  Ingested: ${ingested} | Skipped: ${skipped} | Errors: ${errors}`)
 
   console.log('\nPost-ingestion DB verification...')
-  const dbClaims = await prisma.claim.count({ where: { ingestedBy: INGESTED_BY } })
+  const dbClaims  = await prisma.claim.count({ where: { ingestedBy: INGESTED_BY } })
   const dbSources = await prisma.source.count({ where: { ingestedBy: INGESTED_BY } })
-  const dbEdges = await prisma.edge.count({ where: { ingestedBy: INGESTED_BY } })
+  const dbEdges   = await prisma.edge.count({ where: { ingestedBy: INGESTED_BY } })
   console.log(`  Claims:  ${dbClaims}`)
   console.log(`  Sources: ${dbSources}`)
   console.log(`  Edges:   ${dbEdges}`)
 
-  if (mode === 'sample') {
-    console.log('\nAwaiting explicit go-ahead before full run.')
+  if (dbClaims !== ingested) {
+    console.error(`  WARNING: DB claim count (${dbClaims}) ≠ ingested counter (${ingested})`)
   }
 }
 

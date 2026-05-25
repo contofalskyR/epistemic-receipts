@@ -1,0 +1,43 @@
+{
+  "runDate": "2026-05-19T23:30:00.000Z",
+  "pipeline": "Pipeline 27",
+  "ingestedBy": "nz_legislation_v1",
+  "status": "BLOCKED — NZ_LEGISLATION_API_KEY not set",
+  "apiEndpoint": "https://api.legislation.govt.nz/v0/works/?legislation_type=act&act_type=public&act_status=in_force&act_classification=principal",
+  "apiDocs": "https://api.legislation.govt.nz/docs/",
+  "apiNotes": [
+    "The PCO Legislation API (api.legislation.govt.nz) requires an API key.",
+    "The API is 'Version Zero' — introduced Dec 2025, available for developer testing.",
+    "Rate limit: 10,000 requests/day per key.",
+    "To obtain a key: visit https://www.legislation.govt.nz/About/About and register.",
+    "Note: www.legislation.govt.nz is behind AWS WAF (JS challenge); registration requires a browser.",
+    "Once obtained, add NZ_LEGISLATION_API_KEY=<key> to .env.local and re-run."
+  ],
+  "expectedScope": {
+    "legislation_type": "act",
+    "act_type": "public",
+    "act_status": "in_force",
+    "act_classification": "principal",
+    "estimatedCount": "hundreds of NZ Public Acts currently in force"
+  },
+  "dataSchema": {
+    "work_id": "string — e.g. act_public_1990_109",
+    "latest_matching_version.title": "string — Act title, e.g. 'New Zealand Bill of Rights Act 1990'",
+    "act_type": "string — 'public' | 'private' | 'imperial' | 'local' | 'provincial'",
+    "act_classification": "string — 'principal' | 'amendment'",
+    "act_status": "string — 'in_force' | 'not_in_force' | 'repealed'",
+    "sourceUrl": "https://www.legislation.govt.nz/act/{subtype}/{year}/{number}/en/latest/"
+  },
+  "exampleWorkIds": [
+    "act_public_1990_109",
+    "act_public_2020_031",
+    "act_public_2022_047"
+  ],
+  "claimType": "INSTITUTIONAL",
+  "currentStatus": "HARD_FACT",
+  "verificationStatus": "VERIFIED",
+  "claimEmergedPrecision": "YEAR",
+  "autoApproved": true,
+  "humanReviewed": false,
+  "sample": []
+}

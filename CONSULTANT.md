@@ -245,7 +245,8 @@ AiJob extraction pipeline unblocks scale but must not be built until sufficient 
 
 ## Planned Features (Long-horizon)
 
-- **Interactive globe** — spinning 3D globe (`/globe` or homepage widget) plotting claims by source country. Phase 1: leverage existing `metadata.country` in legislative pipelines. Phase 2: WebGL render (react-globe.gl / deck.gl). Phase 3: click-to-filtered-claim-list. Prerequisite: country field consistent across major pipelines.
+- **Search** — `/search` page shipped 2026-05-25 (SearchClient + `/api/search` route). Needs UX review and relevance tuning.
+- **Vote analysis enrichment** — `/topics/[slug]` now includes timeline, contested/unanimous stats, party breakdowns. Needs visual polish pass.
 
 ---
 
@@ -268,6 +269,36 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 ---
 
 ## Changelog (coding agent entries go here)
+
+### 2026-05-25 — /globe fixes: country search, sidebar claim filter, accurate US claim count
+
+**Issue 1 — Country search bar in `app/globe/GlobeClient.tsx`:**
+- Floating panel top-left of the globe (above the legend). `Search countries…` input filters the existing `density` prop and renders a dropdown of up to 8 matches (flag + name + claim count). Click/mousedown opens the sidebar via `openSidebar(code)`; dropdown closes on blur (120 ms delay so click registers).
+
+**Issue 2 — Claim filter in sidebar:**
+- Below the sidebar header, a `Filter claims…` input filters `sidebar.recentClaims` client-side by claim text. Match counter (`N of M claims`). Filter resets when a new country is opened.
+
+**Issue 3 — US claim count under-reported:**
+- `app/api/globe/country/[code]/route.ts` previously counted only PoliticalContext-linked claims. Now matches the density API: counts the union of PoliticalContext-linked claims AND claims whose `ingestedBy` is in the country's pipeline set. `recentClaims` merges both buckets, deduped by claim id.
+- `PIPELINE_COUNTRY` and `PIPELINE_COUNTRY_NAME` extracted from `app/api/globe/density/route.ts` to `lib/globe-pipeline-country.ts` (new), with a reverse `COUNTRY_TO_PIPELINES` lookup. Both routes import from the shared lib.
+
+**Files changed:** `app/globe/GlobeClient.tsx`, `app/api/globe/density/route.ts`, `app/api/globe/country/[code]/route.ts`, `lib/globe-pipeline-country.ts` (new), `app/page.tsx` (changelog), `CONSULTANT.md`.
+
+**Typecheck:** `npx tsc --noEmit` clean.
+
+---
+
+### 2026-05-25 — /globe, /search, /analysis/votes, topics enrichment (RobClaw)
+
+**Shipped:**
+- `/globe` — react-globe.gl WebGL globe, heat map of claim density by country (log scale), click-to-zoom + sidebar with recent claims list. Routes: `app/globe/page.tsx` (server, queries PoliticalContext→Source→Edge grouped by country), `app/globe/GlobeClient.tsx` (client, dynamic import). API: `GET /api/globe/density`, `GET /api/globe/country/[code]`. Country name→ISO alpha-2 lookup: `lib/countryCodeMap.ts`. Globe added to nav.
+- `/search` — `app/search/page.tsx` + `SearchClient.tsx` + `GET /api/search`. Full-text search across claims.
+- `/analysis/votes` — `app/analysis/votes/page.tsx` + `GET /api/analysis/votes`. Vote analysis view.
+- `/topics/[slug]` enrichment — adds timeline (claims by year), contested vs unanimous vote stats, mean aye/nay percentages, party breakdown via `lib/voteAnalysis`.
+
+**Commits:** `992e17d` (globe), `0a2a163` (search + analysis + topics enrichment)
+
+**Note:** All local-only code was pushed immediately. Rule confirmed: always commit+push, Robert does not use localhost.
 
 ### 2026-05-25 (Academic Fields browser page — /fields, /fields/[slug], Topic.academicFieldId migration)
 

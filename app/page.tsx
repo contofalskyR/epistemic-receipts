@@ -527,6 +527,7 @@ function HomeContent() {
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 25, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">/globe</span> upgrades — country search bar (top-left floating panel) lets you jump straight to any country without spinning the globe; sidebar gains a per-country &ldquo;Filter claims…&rdquo; input with match counts; clicked-country claim totals now match the density map (previously the sidebar only counted PoliticalContext-linked claims and under-reported US/UK/DE by tens of thousands — pipeline-ingested claims are now included via shared <span className="font-mono">lib/globe-pipeline-country.ts</span>).</li>
             <li><span className="text-gray-400">/fields</span> launched — Academic Fields browser organized by Wikipedia&apos;s Outline of Academic Disciplines (2,569 fields across 5 top-level sections); drill into any field to see subfields, linked topics, and tagged claims. <span className="font-mono">Topic.academicFieldId</span> FK added; run <span className="font-mono">scripts/tag-topics-academic-field.ts</span> to link existing topics to their fields.</li>
           </ul>
         </div>

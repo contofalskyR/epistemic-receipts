@@ -1,0 +1,49 @@
+
+── Pipeline 79: Jamaica National Acts of Parliament (Laws of Jamaica) ─────────
+Mode: full
+Source: laws.moj.gov.jm (Ministry of Justice) — Acts of Parliament 2000–2023
+
+Step 1: Fetching Acts of Parliament catalogue (per year)...
+  2023: 20 acts (server reported 20)
+  2022: 12 acts (server reported 12)
+  2021: 25 acts (server reported 25)
+  2020: 17 acts (server reported 17)
+  2019: 20 acts (server reported 20)
+  2018: 19 acts (server reported 19)
+  2017: 33 acts (server reported 33)
+  2016: 23 acts (server reported 23)
+  2015: 33 acts (server reported 33)
+  2014: 24 acts (server reported 24)
+  2013: 40 acts (server reported 40)
+  2012: 14 acts (server reported 14)
+  2011: 22 acts (server reported 22)
+  2010: 32 acts (server reported 32)
+  2009: 14 acts (server reported 14)
+  2008: 16 acts (server reported 16)
+  2007: 10 acts (server reported 10)
+  2006: 11 acts (server reported 11)
+  2005: 34 acts (server reported 34)
+  2004: 0 acts (server reported 0)
+  2003: 0 acts (server reported 0)
+  2002: 42 acts (server reported 42)
+  2001: 48 acts (server reported 48)
+  2000: 19 acts (server reported 19)
+
+  Server-reported total across years: 528
+  Parsed rows (pre-dedup):            528
+  Unique candidates after dedup:      528
+
+Total unique candidates: 528
+
+Step 2: Ensuring topic...
+  Created topic: jm-parliament (parent: gov-region-americas)
+
+Step 3: Writing 528 rows to DB (batches of 50, txn timeout 30s)...
+  50/528 processed...  100/528 processed...  150/528 processed...  200/528 processed...  250/528 processed...  300/528 processed...  350/528 processed...  400/528 processed...  450/528 processed...  500/528 processed...  528/528 processed...
+Ingestion complete in 63.1s
+  Ingested: 528 | Skipped: 0 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims:  528
+  Sources: 528
+  Edges:   528

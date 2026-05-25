@@ -1,0 +1,227 @@
+{
+  "runDate": "2026-05-21T02:02:05.476Z",
+  "pipeline": "Pipeline 75",
+  "ingestedBy": "icc_judgments_v1",
+  "totalCandidates": 74,
+  "sourceNote": "Wikipedia wikitext — icc-cpi.int blocked by Cloudflare",
+  "distribution": {
+    "bySituation": {
+      "Uganda": 5,
+      "Democratic Republic of the Congo": 6,
+      "Darfur, Sudan": 7,
+      "Central African Republic I": 5,
+      "Kenya": 9,
+      "Libya": 14,
+      "Côte d'Ivoire": 3,
+      "Mali": 3,
+      "Central African Republic II": 6,
+      "Georgia": 3,
+      "Ukraine": 6,
+      "Palestine": 3,
+      "Philippines": 2,
+      "Afghanistan": 2
+    },
+    "byCharge": {
+      "crimes against humanity": 48,
+      "war crimes": 51,
+      "contempt": 8,
+      "genocide": 1
+    }
+  },
+  "sample": [
+    {
+      "name": "Joseph Kony",
+      "situation": "Uganda",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Fugitive",
+      "indictYear": 2005,
+      "externalId": "icc_indictee_uganda_joseph_kony",
+      "claimText": "The International Criminal Court indicted Joseph Kony in the Uganda situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Raska Lukwiya",
+      "situation": "Uganda",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Died on 2006; proceedings terminated on 2007",
+      "indictYear": 2005,
+      "externalId": "icc_indictee_uganda_raska_lukwiya",
+      "claimText": "The International Criminal Court indicted Raska Lukwiya in the Uganda situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Okot Odhiambo",
+      "situation": "Uganda",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Died on 2013; proceedings terminated on 2015",
+      "indictYear": 2005,
+      "externalId": "icc_indictee_uganda_okot_odhiambo",
+      "claimText": "The International Criminal Court indicted Okot Odhiambo in the Uganda situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Dominic Ongwen",
+      "situation": "Uganda",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Unknown",
+      "indictYear": 2005,
+      "externalId": "icc_indictee_uganda_dominic_ongwen",
+      "claimText": "The International Criminal Court indicted Dominic Ongwen in the Uganda situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Vincent Otti",
+      "situation": "Uganda",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Died on 2007; proceedings terminated 2023",
+      "indictYear": 2005,
+      "externalId": "icc_indictee_uganda_vincent_otti",
+      "claimText": "The International Criminal Court indicted Vincent Otti in the Uganda situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Thomas Lubanga Dyilo",
+      "situation": "Democratic Republic of the Congo",
+      "chargeTypes": [
+        "war crimes"
+      ],
+      "status": "Unknown",
+      "indictYear": 2006,
+      "externalId": "icc_indictee_democratic_republic__thomas_lubanga_dyilo",
+      "claimText": "The International Criminal Court indicted Thomas Lubanga Dyilo in the Democratic Republic of the Congo situation on charges of war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Bosco Ntaganda",
+      "situation": "Democratic Republic of the Congo",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Unknown",
+      "indictYear": 2006,
+      "externalId": "icc_indictee_democratic_republic__bosco_ntaganda",
+      "claimText": "The International Criminal Court indicted Bosco Ntaganda in the Democratic Republic of the Congo situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Ahmed Haroun",
+      "situation": "Darfur, Sudan",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Fugitive",
+      "indictYear": 2007,
+      "externalId": "icc_indictee_darfur__sudan_ahmed_haroun",
+      "claimText": "The International Criminal Court indicted Ahmed Haroun in the Darfur, Sudan situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Ali Abd-al-Rahman",
+      "situation": "Darfur, Sudan",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Unknown",
+      "indictYear": 2007,
+      "externalId": "icc_indictee_darfur__sudan_ali_abdalrahman",
+      "claimText": "The International Criminal Court indicted Ali Abd-al-Rahman in the Darfur, Sudan situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Germain Katanga",
+      "situation": "Democratic Republic of the Congo",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Unknown",
+      "indictYear": 2007,
+      "externalId": "icc_indictee_democratic_republic__germain_katanga",
+      "claimText": "The International Criminal Court indicted Germain Katanga in the Democratic Republic of the Congo situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Mathieu Ngudjolo Chui",
+      "situation": "Democratic Republic of the Congo",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Acquitted on 2015 (released on 2012)",
+      "indictYear": 2007,
+      "externalId": "icc_indictee_democratic_republic__mathieu_ngudjolo_chui",
+      "claimText": "The International Criminal Court indicted Mathieu Ngudjolo Chui in the Democratic Republic of the Congo situation on charges of crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Jean-Pierre Bemba",
+      "situation": "Central African Republic I",
+      "chargeTypes": [
+        "crimes against humanity",
+        "war crimes",
+        "contempt"
+      ],
+      "status": "Acquitted on 2018 (released on 2018)",
+      "indictYear": 2008,
+      "externalId": "icc_indictee_central_african_repu_jeanpierre_bemba",
+      "claimText": "The International Criminal Court indicted Jean-Pierre Bemba in the Central African Republic I situation on charges of crimes against humanity, war crimes, contempt.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Omar al-Bashir",
+      "situation": "Darfur, Sudan",
+      "chargeTypes": [
+        "genocide",
+        "crimes against humanity",
+        "war crimes"
+      ],
+      "status": "Fugitive",
+      "indictYear": 2009,
+      "externalId": "icc_indictee_darfur__sudan_omar_albashir",
+      "claimText": "The International Criminal Court indicted Omar al-Bashir in the Darfur, Sudan situation on charges of genocide, crimes against humanity, war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Bahr Abu Garda",
+      "situation": "Darfur, Sudan",
+      "chargeTypes": [
+        "war crimes"
+      ],
+      "status": "Unknown",
+      "indictYear": 2009,
+      "externalId": "icc_indictee_darfur__sudan_bahr_abu_garda",
+      "claimText": "The International Criminal Court indicted Bahr Abu Garda in the Darfur, Sudan situation on charges of war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    },
+    {
+      "name": "Abdallah Banda",
+      "situation": "Darfur, Sudan",
+      "chargeTypes": [
+        "war crimes"
+      ],
+      "status": "Fugitive",
+      "indictYear": 2009,
+      "externalId": "icc_indictee_darfur__sudan_abdallah_banda",
+      "claimText": "The International Criminal Court indicted Abdallah Banda in the Darfur, Sudan situation on charges of war crimes.",
+      "sourceUrl": "https://www.icc-cpi.int/cases"
+    }
+  ]
+}

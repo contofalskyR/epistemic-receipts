@@ -1,14 +1,9 @@
-// Pipeline 74 — UN General Assembly Resolutions (un_ga_resolutions_v1)
-// Dataset: UN Digital Library — OAI-PMH harvest filtered to A/RES/* symbols
-// Source: https://digitallibrary.un.org/oai2d (OAI-PMH 2.0 with MARC21)
-// Scope: All GA resolutions (A/RES/*) in the UN Digital Library OAI-PMH repository
-// Note: The JSON search API (/search?of=recjson) is WAF-protected (AWS WAF JS challenge)
-//       and inaccessible from non-browser clients. OAI-PMH is the machine-access protocol.
-//       Total collection: ~19,225 records; GA resolutions are a subset filtered by MARC 191 $a.
-//
-// Run: npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-un-ga-resolutions.ts --dry-run
-//      npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-un-ga-resolutions.ts --sample 20
-//      ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-un-ga-resolutions.ts --full
+// Pipeline 113 — UN General Assembly Resolutions
+// Dataset: UN Digital Library Voting Data collection, symbol pattern A/RES/*
+// API: https://digitallibrary.un.org/search (MARC21 text format, of=tm)
+// Scope: All GA resolutions with Plenary vote records (both recorded and without-vote)
+// Run: npx tsx scripts/ingest-un-ga-resolutions.ts --dry-run
+//      npx tsx scripts/ingest-un-ga-resolutions.ts --full [--limit N] [--verbose]
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
@@ -17,259 +12,234 @@ import * as https from 'https'
 
 const prisma = new PrismaClient()
 
-const INGESTED_BY = 'un_ga_resolutions_v1'
-const PIPELINE = 'Pipeline 74'
-const OAI_BASE = 'https://digitallibrary.un.org/oai2d'
-const REQUEST_DELAY_MS = 800
-const BATCH_SIZE = 50
+const INGESTED_BY = 'un_ga_v1'
+const UNDL_SEARCH = 'https://digitallibrary.un.org/search'
+const PAGE_SIZE = 100
+const THROTTLE_MS = 400
+const DRY_RUN_SAMPLE = 20
 
-// ── Types ──────────────────────────────────────────────────────────────────────
+// ── MARC21 text format parser ──────────────────────────────────────────────────
+// Line format: {recid:9} {tag:3}{ind1:1}{ind2:1} {value...}
+//   where subfields in value are delimited by $a, $b, etc.
 
-interface OAIRecord {
-  oaiId: string       // e.g. oai:digitallibrary.un.org:2394
-  recid: string       // numeric part of oaiId
-  symbol: string      // MARC 191 $a, e.g. A/RES/79/1
-  title: string       // MARC 245 $a + $b
-  dateStr: string     // MARC 269 $a (preferred) or extracted from MARC 260 $c
-  datePrecision: 'DAY' | 'YEAR'
-  date: Date
+interface MarcLine {
+  tag: string
+  ind1: string
+  ind2: string
+  value: string
 }
 
-interface CandidateRecord extends OAIRecord {
-  year: number
+interface ParsedRecord {
+  recId: string  // 9-digit left-padded numeric ID (key)
+  cleanId: string  // trimmed numeric ID (for URL)
+  lines: MarcLine[]
+}
+
+function parseMarcText(text: string): ParsedRecord[] {
+  const byId = new Map<string, MarcLine[]>()
+  const order: string[] = []
+
+  for (const raw of text.split('\n')) {
+    if (raw.length < 16) continue
+    const recId = raw.slice(0, 9)
+    if (!/^\d{9}$/.test(recId)) continue
+    const tag  = raw.slice(10, 13)
+    const ind1 = raw.slice(13, 14)
+    const ind2 = raw.slice(14, 15)
+    const value = raw.slice(16)
+    if (!byId.has(recId)) { byId.set(recId, []); order.push(recId) }
+    byId.get(recId)!.push({ tag, ind1, ind2, value })
+  }
+
+  return order.map(recId => ({
+    recId,
+    cleanId: String(parseInt(recId, 10)),
+    lines: byId.get(recId)!,
+  }))
+}
+
+function getField(rec: ParsedRecord, tag: string): MarcLine | null {
+  return rec.lines.find(l => l.tag === tag) ?? null
+}
+
+function getFields(rec: ParsedRecord, tag: string): MarcLine[] {
+  return rec.lines.filter(l => l.tag === tag)
+}
+
+function subfield(value: string, code: string): string | null {
+  const marker = `$$${code}`
+  const idx = value.indexOf(marker)
+  if (idx === -1) return null
+  const start = idx + marker.length
+  const next = value.indexOf('$', start)
+  const raw = next === -1 ? value.slice(start) : value.slice(start, next)
+  return raw.trim() || null
+}
+
+// ── Candidate record ───────────────────────────────────────────────────────────
+
+interface GaResolution {
   externalId: string
+  cleanId: string
+  symbol: string
+  title: string
+  adoptedDate: Date
+  adoptedDateStr: string
+  sessionNumber: string | null
+  voteType: 'without-vote' | 'recorded' | 'unknown'
+  voteYes: number
+  voteNo: number
+  voteAbstain: number
+  voteNonVoting: number
+  meetingRecord: string | null
   sourceUrl: string
+  claimText: string
 }
+
+function buildResolution(rec: ParsedRecord): GaResolution | null {
+  // Symbol from 791__ $a
+  const f791 = getField(rec, '791')
+  if (!f791) return null
+  const symbol = subfield(f791.value, 'a')
+  if (!symbol || !symbol.startsWith('A/RES/')) return null
+
+  const sessionNumber = subfield(f791.value, 'c')
+
+  // Clean record ID from 001__
+  const f001 = getField(rec, '001')
+  const cleanId = f001 ? f001.value.trim() : rec.cleanId
+
+  // Title from 24510 $a
+  const f245 = getField(rec, '245')
+  const titleRaw = f245 ? (subfield(f245.value, 'a') ?? '') : ''
+  const title = titleRaw.replace(/\s*:\s*$/, '').trim().slice(0, 300)
+  if (!title) return null
+
+  // Adoption date from 269__ $a
+  const f269 = getField(rec, '269')
+  const dateStr = f269 ? subfield(f269.value, 'a') : null
+  if (!dateStr) return null
+  const adoptedDate = new Date(dateStr + 'T00:00:00Z')
+  if (isNaN(adoptedDate.getTime())) return null
+
+  // Vote type from 590__ $a
+  const f590 = getField(rec, '590')
+  const voteSummary = f590 ? (subfield(f590.value, 'a') ?? '').toLowerCase() : ''
+  const voteType: GaResolution['voteType'] =
+    voteSummary.includes('without vote') ? 'without-vote' :
+    voteSummary.includes('vote') ? 'recorded' : 'unknown'
+
+  // Vote counts from 967__ (individual country votes)
+  let voteYes = 0, voteNo = 0, voteAbstain = 0, voteNonVoting = 0
+  for (const f of getFields(rec, '967')) {
+    const d = subfield(f.value, 'd')
+    if (d === 'Y') voteYes++
+    else if (d === 'N') voteNo++
+    else if (d === 'A') voteAbstain++
+    else voteNonVoting++
+  }
+
+  // Meeting record from 952__
+  const f952 = getField(rec, '952')
+  const meetingRecord = f952 ? subfield(f952.value, 'a') : null
+
+  const sourceUrl = `https://digitallibrary.un.org/record/${cleanId}`
+  const externalId = `un_ga_${symbol.replace(/\//g, '_')}`
+
+  const voteSuffix = voteType === 'without-vote' ? ' without vote'
+    : voteType === 'recorded' ? ` (${voteYes}-${voteNo}-${voteAbstain})`
+    : ''
+
+  const claimText = `UN General Assembly Resolution ${symbol}: ${title}, adopted ${dateStr}${voteSuffix}`
+
+  return {
+    externalId, cleanId, symbol, title,
+    adoptedDate, adoptedDateStr: dateStr,
+    sessionNumber, voteType,
+    voteYes, voteNo, voteAbstain, voteNonVoting,
+    meetingRecord, sourceUrl, claimText,
+  }
+}
+
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 type TxClient = Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>
-type IngestResult = 'ingested' | 'skipped' | 'failed'
-type Counts = { ingested: number; skipped: number; errors: number }
 
-// ── CLI ────────────────────────────────────────────────────────────────────────
+// ── CLI ───────────────────────────────────────────────────────────────────────
 
 function parseArgs() {
   const args = process.argv.slice(2)
   const mode = args.includes('--dry-run') ? 'dry-run'
-    : args.includes('--sample') ? 'sample'
     : args.includes('--full') ? 'full'
-    : (() => {
-        console.error('Usage: --dry-run | --sample N | --full  [--verbose]')
-        process.exit(1) as never
-      })()
-  const sai = args.indexOf('--sample')
+    : (() => { console.error('Usage: --dry-run | --full  [--limit N] [--verbose]'); process.exit(1) as never })()
+
+  if (mode === 'full' && process.env.ALLOW_EDITS !== 'true') {
+    console.error('--full requires ALLOW_EDITS=true')
+    process.exit(1)
+  }
+
+  const li = args.indexOf('--limit')
   return {
-    mode: mode as 'dry-run' | 'sample' | 'full',
-    sampleN: sai !== -1 ? (parseInt(args[sai + 1] ?? '20', 10) || 20) : 20,
+    mode: mode as 'dry-run' | 'full',
+    limit: li !== -1 ? (parseInt(args[li + 1] ?? '0', 10) || 0) : 0,
     verbose: args.includes('--verbose'),
   }
 }
 
-// ── HTTP ───────────────────────────────────────────────────────────────────────
+// ── Rate limiting ──────────────────────────────────────────────────────────────
 
+let lastReqAt = 0
 function sleep(ms: number) { return new Promise<void>(r => setTimeout(r, ms)) }
+async function throttle() {
+  const wait = THROTTLE_MS - (Date.now() - lastReqAt)
+  if (wait > 0) await sleep(wait)
+  lastReqAt = Date.now()
+}
 
-function httpsGet(urlStr: string, timeoutMs = 60_000): Promise<string> {
+// ── HTTP fetch with retry ──────────────────────────────────────────────────────
+
+function httpsGet(url: string): Promise<{ status: number; body: string }> {
   return new Promise((resolve, reject) => {
-    const u = new URL(urlStr)
-    const req = https.get(
-      {
-        hostname: u.hostname,
-        path: u.pathname + u.search,
-        port: 443,
-        headers: {
-          'User-Agent': 'EpistemicReceipts/1.0 (OAI-PMH harvester; https://epistemic.receipts)',
-          'Accept': 'text/xml,application/xml,*/*',
-        },
-        timeout: timeoutMs,
-      },
-      (res) => {
-        if (res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-          const next = res.headers.location.startsWith('http')
-            ? res.headers.location
-            : `https://${u.hostname}${res.headers.location}`
-          res.resume()
-          httpsGet(next, timeoutMs).then(resolve).catch(reject)
-          return
-        }
-        if (res.statusCode && res.statusCode >= 400) {
-          res.resume()
-          reject(new Error(`HTTP ${res.statusCode} from ${urlStr}`))
-          return
-        }
-        const chunks: Buffer[] = []
-        res.on('data', (c: Buffer) => chunks.push(c))
-        res.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')))
-        res.on('error', reject)
-      }
-    )
+    const req = https.get(url, { headers: { 'User-Agent': 'curl/7.84.0' } }, res => {
+      let body = ''
+      res.on('data', (chunk: Buffer) => { body += chunk.toString('utf8') })
+      res.on('end', () => resolve({ status: res.statusCode ?? 0, body }))
+    })
     req.on('error', reject)
-    req.on('timeout', () => { req.destroy(); reject(new Error(`Request timed out: ${urlStr}`)) })
+    req.setTimeout(30000, () => { req.destroy(); reject(new Error('Request timed out')) })
   })
 }
 
-// ── OAI-PMH XML parsing ───────────────────────────────────────────────────────
-
-function extractTagSubfield(xml: string, tag: string, code: string): string {
-  // Handle both <datafield> and <marc:datafield> (namespace-prefixed)
-  const dfRegex = new RegExp(`<(?:marc:)?datafield[^>]+tag="${tag}"[^>]*>([\\s\\S]*?)<\\/(?:marc:)?datafield>`, 'g')
-  let dfMatch: RegExpExecArray | null
-  while ((dfMatch = dfRegex.exec(xml)) !== null) {
-    const sfRegex = new RegExp(`<(?:marc:)?subfield[^>]+code="${code}"[^>]*>([^<]*)<\\/(?:marc:)?subfield>`)
-    const sfMatch = sfRegex.exec(dfMatch[1])
-    if (sfMatch) return sfMatch[1].trim()
+async function fetchText(url: string, retries = 3): Promise<string> {
+  let delay = 2000
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    await throttle()
+    const { status, body } = await httpsGet(url)
+    if ([429, 502, 503, 504].includes(status) && attempt < retries) {
+      console.warn(`  HTTP ${status} — retrying in ${delay}ms`)
+      await sleep(delay); delay *= 2; continue
+    }
+    if (status < 200 || status >= 300) throw new Error(`UNDL HTTP ${status} at ${url}`)
+    return body
   }
-  return ''
+  throw new Error(`Failed after ${retries} retries: ${url}`)
 }
 
-function extractAllTagSubfields(xml: string, tag: string, code: string): string[] {
-  const results: string[] = []
-  const dfRegex = new RegExp(`<(?:marc:)?datafield[^>]+tag="${tag}"[^>]*>([\\s\\S]*?)<\\/(?:marc:)?datafield>`, 'g')
-  let dfMatch: RegExpExecArray | null
-  while ((dfMatch = dfRegex.exec(xml)) !== null) {
-    const sfRegex = new RegExp(`<(?:marc:)?subfield[^>]+code="${code}"[^>]*>([^<]*)<\\/(?:marc:)?subfield>`)
-    const sfMatch = sfRegex.exec(dfMatch[1])
-    if (sfMatch) results.push(sfMatch[1].trim())
+// ── Fetch one page of MARC records ─────────────────────────────────────────────
+
+async function fetchPage(jrec: number): Promise<GaResolution[]> {
+  const url = `${UNDL_SEARCH}?p=symbol%3AA%2FRES&of=tm&rg=${PAGE_SIZE}&ln=en&c=Voting+Data&jrec=${jrec}`
+  const text = await fetchText(url)
+  const records = parseMarcText(text)
+  const results: GaResolution[] = []
+  for (const rec of records) {
+    const r = buildResolution(rec)
+    if (r) results.push(r)
   }
   return results
 }
 
-function decodeXmlEntities(s: string): string {
-  return s
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&#x27;/g, "'")
-}
-
-function parseOAIDate(raw: string): { dateStr: string; precision: 'DAY' | 'YEAR'; date: Date } | null {
-  const s = raw.trim()
-  // ISO: 1979-06-01
-  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
-    const d = new Date(s + 'T00:00:00Z')
-    if (!isNaN(d.getTime())) return { dateStr: s, precision: 'DAY', date: d }
-  }
-  // Year only
-  const ym = s.match(/\b(1[89]\d\d|20\d\d)\b/)
-  if (ym) {
-    const d = new Date(`${ym[1]}-01-01T00:00:00Z`)
-    if (!isNaN(d.getTime())) return { dateStr: `${ym[1]}-01-01`, precision: 'YEAR', date: d }
-  }
-  return null
-}
-
-function parseOAIPage(xml: string): { records: OAIRecord[]; resumptionToken: string | null } {
-  const records: OAIRecord[] = []
-
-  // Extract each <record>
-  const recRegex = /<record>([\s\S]*?)<\/record>/g
-  let recMatch: RegExpExecArray | null
-  while ((recMatch = recRegex.exec(xml)) !== null) {
-    const recXml = recMatch[1]
-
-    // Skip deleted records
-    if (/<header[^>]*status="deleted"/.test(recXml)) continue
-
-    // OAI identifier
-    const idMatch = recXml.match(/<identifier>([^<]+)<\/identifier>/)
-    if (!idMatch) continue
-    const oaiId = idMatch[1].trim()
-    const recidMatch = oaiId.match(/:(\d+)$/)
-    if (!recidMatch) continue
-    const recid = recidMatch[1]
-
-    // Only process if metadata block exists
-    if (!/<metadata>/.test(recXml)) continue
-
-    // MARC 191 $a — UN document symbol
-    const symbols = extractAllTagSubfields(recXml, '191', 'a')
-    const symbol = symbols.find(s => s.startsWith('A/RES/'))
-    if (!symbol) continue
-
-    // MARC 245 $a and $b — title
-    const titleA = extractTagSubfield(recXml, '245', 'a')
-    const titleB = extractTagSubfield(recXml, '245', 'b')
-    const rawTitle = [titleA, titleB].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
-    const title = decodeXmlEntities(rawTitle || symbol).slice(0, 500)
-
-    // Date: MARC 269 $a (ISO date), then MARC 260 $c
-    const date269 = extractTagSubfield(recXml, '269', 'a')
-    const date260 = extractTagSubfield(recXml, '260', 'c')
-    const dateParsed = parseOAIDate(date269) || parseOAIDate(date260)
-    if (!dateParsed) continue
-
-    records.push({
-      oaiId,
-      recid,
-      symbol: decodeXmlEntities(symbol),
-      title,
-      dateStr: dateParsed.dateStr,
-      datePrecision: dateParsed.precision,
-      date: dateParsed.date,
-    })
-  }
-
-  // Resumption token
-  const rtMatch = xml.match(/<resumptionToken[^>]*>([^<]+)<\/resumptionToken>/)
-  const resumptionToken = rtMatch ? rtMatch[1].trim() : null
-
-  return { records, resumptionToken }
-}
-
-// ── Fetch all candidates ───────────────────────────────────────────────────────
-
-async function fetchAllCandidates(dryRunMode: boolean, verbose: boolean): Promise<CandidateRecord[]> {
-  const candidates: CandidateRecord[] = []
-  let pageNum = 1
-  let resumptionToken: string | null = null
-  const maxPages = dryRunMode ? 3 : Infinity
-
-  while (pageNum <= maxPages) {
-    const url = resumptionToken
-      ? `${OAI_BASE}?verb=ListRecords&resumptionToken=${encodeURIComponent(resumptionToken)}`
-      : `${OAI_BASE}?verb=ListRecords&metadataPrefix=marcxml`
-
-    if (verbose || pageNum === 1) console.log(`  Page ${pageNum}${resumptionToken ? ' (token)' : ' (fresh)'}...`)
-
-    let xml: string
-    try {
-      xml = await httpsGet(url)
-    } catch (err) {
-      console.error(`  ERROR page ${pageNum}: ${(err as Error).message}`)
-      break
-    }
-
-    const { records, resumptionToken: nextToken } = parseOAIPage(xml)
-    const gaRecords = records  // already filtered to A/RES/ in parseOAIPage
-
-    for (const r of gaRecords) {
-      candidates.push({
-        ...r,
-        year: r.date.getFullYear(),
-        externalId: `unga_${r.symbol.replace(/[^a-zA-Z0-9]/g, '_').replace(/__+/g, '_').toLowerCase()}`,
-        sourceUrl: `https://digitallibrary.un.org/record/${r.recid}`,
-      })
-    }
-
-    if (!verbose) process.stdout.write(`  Page ${pageNum}: ${records.length} total, ${gaRecords.length} GA res — ${candidates.length} cumulative\r`)
-    else console.log(`  Page ${pageNum}: ${records.length} records, ${gaRecords.length} GA resolutions — ${candidates.length} cumulative`)
-
-    if (!nextToken || pageNum >= maxPages) {
-      resumptionToken = null
-      break
-    }
-
-    resumptionToken = nextToken
-    pageNum++
-    await sleep(REQUEST_DELAY_MS)
-  }
-
-  console.log()
-  return candidates
-}
-
-// ── Topic ──────────────────────────────────────────────────────────────────────
+// ── Topic management ───────────────────────────────────────────────────────────
 
 const topicCache = new Map<string, string>()
 
@@ -277,10 +247,10 @@ async function ensureTopic(slug: string, name: string, domain: string, parentSlu
   if (topicCache.has(slug)) return topicCache.get(slug)!
   const existing = await prisma.topic.findUnique({ where: { slug } })
   if (existing) { topicCache.set(slug, existing.id); return existing.id }
-  let parentTopicId: string | undefined
+  let parentTopicId: string | null = null
   if (parentSlug) {
     const parent = await prisma.topic.findUnique({ where: { slug: parentSlug } })
-    if (parent) parentTopicId = parent.id
+    parentTopicId = parent?.id ?? null
   }
   const created = await prisma.topic.create({ data: { slug, name, domain, parentTopicId } })
   console.log(`  Created topic: ${slug}`)
@@ -288,194 +258,211 @@ async function ensureTopic(slug: string, name: string, domain: string, parentSlu
   return created.id
 }
 
-// ── Write row ──────────────────────────────────────────────────────────────────
+async function ensureTopics(): Promise<string> {
+  await ensureTopic('international-law', 'International Law', 'law')
+  return ensureTopic('un-general-assembly', 'UN General Assembly', 'law', 'international-law')
+}
 
-async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Promise<IngestResult> {
-  const existing = await tx.claim.findUnique({ where: { externalId: rec.externalId }, select: { id: true } })
+// ── Write one record (inside transaction) ─────────────────────────────────────
+
+async function writeRow(tx: TxClient, rec: GaResolution, topicId: string): Promise<'ingested' | 'skipped'> {
+  const existing = await tx.source.findFirst({ where: { url: rec.sourceUrl } })
   if (existing) return 'skipped'
 
-  try {
-    const source = await tx.source.upsert({
-      where: { externalId: `src_${rec.externalId}` },
-      update: {},
-      create: {
-        externalId: `src_${rec.externalId}`,
-        name: `UN Digital Library — ${rec.symbol}`,
-        url: rec.sourceUrl,
-        publishedAt: rec.date,
-        methodologyType: 'primary',
-        ingestedBy: INGESTED_BY,
+  const source = await tx.source.create({
+    data: {
+      name: `UN Digital Library — ${rec.symbol}`,
+      url: rec.sourceUrl,
+      publishedAt: rec.adoptedDate,
+      methodologyType: 'primary',
+      ingestedBy: INGESTED_BY,
+      humanReviewed: false,
+      autoApproved: true,
+      externalId: `un_ga_source_${rec.externalId}`,
+    },
+  })
+
+  const claim = await tx.claim.create({
+    data: {
+      text: rec.claimText,
+      claimType: 'INSTITUTIONAL',
+      currentStatus: 'HARD_FACT',
+      verificationStatus: 'VERIFIED',
+      claimEmergedAt: rec.adoptedDate,
+      claimEmergedPrecision: 'DAY',
+      ingestedBy: INGESTED_BY,
+      humanReviewed: false,
+      autoApproved: true,
+      externalId: rec.externalId,
+      metadata: {
+        dataset: INGESTED_BY,
+        resolutionNumber: rec.symbol,
+        adoptedDate: rec.adoptedDateStr,
+        sessionNumber: rec.sessionNumber,
+        voteType: rec.voteType,
+        voteYes: rec.voteYes,
+        voteNo: rec.voteNo,
+        voteAbstain: rec.voteAbstain,
+        voteNonVoting: rec.voteNonVoting,
+        meetingRecord: rec.meetingRecord,
+        undlRecordId: rec.cleanId,
       },
-    })
+    },
+  })
 
-    const claimText = rec.title !== rec.symbol
-      ? `UN General Assembly adopted Resolution ${rec.symbol} on ${rec.dateStr}: ${rec.title.slice(0, 300)}`
-      : `UN General Assembly adopted Resolution ${rec.symbol} on ${rec.dateStr}.`
+  const edge = await tx.edge.create({
+    data: {
+      sourceId: source.id,
+      claimId: claim.id,
+      type: 'FOR',
+      evidenceType: 'PROCEDURAL',
+      ingestedBy: INGESTED_BY,
+      humanReviewed: false,
+      autoApproved: true,
+    },
+  })
 
-    const claim = await tx.claim.create({
-      data: {
-        text: claimText.slice(0, 500),
-        claimType: 'INSTITUTIONAL',
-        currentStatus: 'HARD_FACT',
-        verificationStatus: 'VERIFIED',
-        claimEmergedAt: rec.date,
-        claimEmergedPrecision: rec.datePrecision,
-        ingestedBy: INGESTED_BY,
-        autoApproved: true,
-        humanReviewed: false,
-        externalId: rec.externalId,
-        metadata: {
-          dataset: INGESTED_BY,
-          symbol: rec.symbol,
-          recid: rec.recid,
-          year: rec.year,
-          oaiId: rec.oaiId,
-        },
-      },
-    })
+  await tx.edgeRevision.create({
+    data: {
+      edgeId: edge.id,
+      priorScore: null,
+      newScore: 95,
+      reason: 'UN Digital Library official voting record — General Assembly resolution, HARD_FACT',
+      changedAt: rec.adoptedDate,
+    },
+  })
 
-    await tx.edge.create({
-      data: {
-        claimId: claim.id,
-        sourceId: source.id,
-        type: 'CITES',
-        ingestedBy: INGESTED_BY,
-        autoApproved: true,
-      },
-    })
+  await tx.claimTopic.upsert({
+    where: { claimId_topicId: { claimId: claim.id, topicId } },
+    update: {},
+    create: { claimId: claim.id, topicId },
+  })
 
-    await tx.claimTopic.upsert({
-      where: { claimId_topicId: { claimId: claim.id, topicId } },
-      update: {},
-      create: { claimId: claim.id, topicId },
-    })
-
-    return 'ingested'
-  } catch (err) {
-    console.error(`  Error ${rec.externalId}: ${err}`)
-    return 'failed'
-  }
+  return 'ingested'
 }
 
 // ── Main ───────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, sampleN, verbose } = parseArgs()
-  const allowEdits = process.env.ALLOW_EDITS === 'true'
+  const { mode, limit, verbose } = parseArgs()
 
-  console.log(`\n── ${PIPELINE}: UN General Assembly Resolutions ──`)
-  console.log(`Mode: ${mode}${mode === 'sample' ? ` (n=${sampleN})` : ''}`)
-  console.log(`Source: ${OAI_BASE} (OAI-PMH / MARC21)`)
+  console.log(`\n── Pipeline 113: UN General Assembly Resolutions ──────────────────────`)
+  console.log(`Mode: ${mode} | Limit: ${limit || 'all'}`)
 
-  if (mode !== 'dry-run' && !allowEdits) {
-    console.error('ALLOW_EDITS=true is required for sample/full modes.')
-    process.exit(2)
-  }
-
-  let topicId = ''
-  if (mode !== 'dry-run') {
-    console.log('\nStep 1: Ensuring topic...')
-    await ensureTopic('international-law', 'International Law', 'law')
-    topicId = await ensureTopic('un-general-assembly', 'UN General Assembly', 'government', 'international-law')
-    console.log(`  Topic ID: ${topicId}`)
-  } else {
-    console.log('\nStep 1: Skipping topic DB writes (dry-run mode).')
-  }
-
-  console.log('\nStep 2: Harvesting GA resolutions via OAI-PMH...')
-  const isDryRun = mode === 'dry-run'
-  const allCandidates = await fetchAllCandidates(isDryRun, verbose)
-  console.log(`Total GA resolutions found: ${allCandidates.length}`)
-
-  if (allCandidates.length === 0) {
-    console.error('ERROR: 0 candidates — check OAI-PMH availability.')
-    process.exit(1)
-  }
-
-  // ── Dry-run ────────────────────────────────────────────────────────────────
+  // ── Dry-run ──────────────────────────────────────────────────────────────
   if (mode === 'dry-run') {
-    const byDecade: Record<string, number> = {}
-    for (const r of allCandidates) {
-      const decade = `${Math.floor(r.year / 10) * 10}s`
-      byDecade[decade] = (byDecade[decade] ?? 0) + 1
-    }
+    console.log('\nFetching first page from UN Digital Library (no DB writes)...')
+    const firstPage = await fetchPage(1)
+    console.log(`  Parsed ${firstPage.length} records from first page`)
 
-    const sample = allCandidates.slice(0, 15).map(r => ({
-      symbol: r.symbol,
+    const sample = firstPage.slice(0, DRY_RUN_SAMPLE).map(r => ({
+      claimText: r.claimText,
       externalId: r.externalId,
-      date: r.dateStr,
-      datePrecision: r.datePrecision,
-      year: r.year,
-      title: r.title.slice(0, 120),
-      sourceUrl: r.sourceUrl,
-      claimText: (r.title !== r.symbol
-        ? `UN General Assembly adopted Resolution ${r.symbol} on ${r.dateStr}: ${r.title.slice(0, 100)}`
-        : `UN General Assembly adopted Resolution ${r.symbol} on ${r.dateStr}.`).slice(0, 200),
+      symbol: r.symbol,
+      adoptedDate: r.adoptedDateStr,
+      sessionNumber: r.sessionNumber,
+      voteType: r.voteType,
+      voteYes: r.voteYes,
+      voteNo: r.voteNo,
+      voteAbstain: r.voteAbstain,
+      voteNonVoting: r.voteNonVoting,
+      claimType: 'INSTITUTIONAL',
+      currentStatus: 'HARD_FACT',
+      verificationStatus: 'VERIFIED',
+      ingestedBy: INGESTED_BY,
+      source: { url: r.sourceUrl, methodologyType: 'primary' },
     }))
 
     const output = {
       runDate: new Date().toISOString(),
-      pipeline: PIPELINE,
-      ingestedBy: INGESTED_BY,
-      source: OAI_BASE,
-      note: 'Dry-run fetches first 3 OAI-PMH pages (~300 records) and filters to A/RES/* symbols. Full run paginates all ~19,225 records.',
-      pagesFetched: 3,
-      candidatesFromFirstThreePages: allCandidates.length,
-      distribution: { byDecade },
+      pipeline: INGESTED_BY,
+      mode: 'dry-run',
+      apiUrl: `${UNDL_SEARCH}?p=symbol%3AA%2FRES&of=tm&rg=${PAGE_SIZE}&ln=en&c=Voting+Data`,
+      estimatedTotal: '~20,774 (from UNDL HTML search count)',
+      firstPageCount: firstPage.length,
+      sampleRecords: DRY_RUN_SAMPLE,
       sample,
     }
-
-    fs.writeFileSync('pipeline-74-dry-run-sample.json', JSON.stringify(output, null, 2))
-    console.log('  Written: pipeline-74-dry-run-sample.json')
-
-    console.log('\nDistribution by decade (first 3 pages only):')
-    Object.entries(byDecade).sort((a, b) => a[0].localeCompare(b[0])).forEach(([d, n]) =>
-      console.log(`  ${d}: ${n}`)
-    )
-    console.log('\nSample (first 5):')
-    allCandidates.slice(0, 5).forEach((r, i) =>
-      console.log(`  ${i + 1}. [${r.dateStr}] ${r.symbol} — ${r.title.slice(0, 80)}${r.title.length > 80 ? '…' : ''}`)
-    )
-    console.log('\nDry-run complete. No DB writes performed.')
+    fs.writeFileSync('pipeline-113-dry-run-sample.json', JSON.stringify(output, null, 2))
+    console.log('  Written: pipeline-113-dry-run-sample.json')
+    console.log('\nDry-run complete.')
+    console.log('\nSTOP — awaiting explicit go-ahead from Robert before full run.')
     return
   }
 
-  // ── Sample / Full ──────────────────────────────────────────────────────────
-  const rows = mode === 'sample' ? allCandidates.slice(0, sampleN) : allCandidates
-  console.log(`\nStep 3: Writing ${rows.length} rows (batches of ${BATCH_SIZE}, txn timeout 30s)...`)
-  const startTime = Date.now()
-  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+  // ── Full run ──────────────────────────────────────────────────────────────
+  console.log('\nStep 1: Ensuring topics...')
+  const topicId = await ensureTopics()
+  console.log(`  un-general-assembly topic ID: ${topicId}`)
 
-  for (let i = 0; i < rows.length; i += BATCH_SIZE) {
-    const batch = rows.slice(i, i + BATCH_SIZE)
+  console.log('\nStep 2: Fetching + ingesting from UN Digital Library...')
+  const startTime = Date.now()
+  let ingested = 0, skipped = 0, errors = 0, page = 0
+
+  for (let jrec = 1; ; jrec += PAGE_SIZE) {
+    page++
+    if (verbose || page % 10 === 0) console.log(`  Fetching page ${page} (jrec=${jrec})...`)
+
+    let records: GaResolution[]
     try {
-      await prisma.$transaction(async (tx) => {
-        for (const row of batch) {
-          const result = await writeRow(tx, row, topicId)
-          if (result === 'ingested') counts.ingested++
-          else if (result === 'skipped') counts.skipped++
-          else counts.errors++
-          if (verbose) console.log(`  [${result}] ${row.symbol}`)
-        }
-      }, { timeout: 30000 })
+      records = await fetchPage(jrec)
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
-      console.error(`  Batch ${i}–${i + batch.length} failed: ${msg}`)
-      counts.errors += batch.length
+      console.error(`  Fetch failed at jrec=${jrec}: ${msg}`)
+      errors++
+      break
     }
-    if (!verbose) process.stdout.write(`  ${Math.min(i + BATCH_SIZE, rows.length)}/${rows.length} processed...\r`)
+
+    if (records.length === 0) {
+      console.log(`  Page ${page} returned 0 records — end of corpus`)
+      break
+    }
+
+    for (const rec of records) {
+      if (limit > 0 && ingested + skipped + errors >= limit) break
+      try {
+        const result = await prisma.$transaction(
+          async (tx) => writeRow(tx, rec, topicId),
+          { timeout: 30000 },
+        )
+        if (result === 'ingested') ingested++
+        else skipped++
+        if (verbose || ingested % 500 === 0) {
+          console.log(`  [${result}] ${rec.symbol} — ${rec.title.slice(0, 60)}`)
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        console.error(`  Failed: ${rec.externalId} — ${msg}`)
+        errors++
+      }
+    }
+
+    if (limit > 0 && ingested + skipped + errors >= limit) {
+      console.log(`  Limit of ${limit} reached, stopping.`)
+      break
+    }
+
+    if (records.length < PAGE_SIZE) {
+      console.log(`  Page ${page} returned ${records.length} < ${PAGE_SIZE} — end of corpus`)
+      break
+    }
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
   console.log(`\nIngestion complete in ${elapsed}s`)
-  console.log(`  Ingested: ${counts.ingested} | Skipped: ${counts.skipped} | Errors: ${counts.errors}`)
+  console.log(`  Ingested: ${ingested} | Skipped: ${skipped} | Errors: ${errors}`)
 
-  const dbClaims = await prisma.claim.count({ where: { ingestedBy: INGESTED_BY } })
+  console.log('\nPost-ingestion DB verification...')
+  const dbClaims  = await prisma.claim.count({ where: { ingestedBy: INGESTED_BY } })
   const dbSources = await prisma.source.count({ where: { ingestedBy: INGESTED_BY } })
-  const dbEdges = await prisma.edge.count({ where: { ingestedBy: INGESTED_BY } })
-  console.log(`\nDB: Claims=${dbClaims} Sources=${dbSources} Edges=${dbEdges}`)
+  const dbEdges   = await prisma.edge.count({ where: { ingestedBy: INGESTED_BY } })
+  console.log(`  Claims:  ${dbClaims}`)
+  console.log(`  Sources: ${dbSources}`)
+  console.log(`  Edges:   ${dbEdges}`)
 
-  if (mode === 'sample') console.log('\nSample complete. Review then run --full with ALLOW_EDITS=true.')
+  if (dbClaims !== ingested) {
+    console.error(`  WARNING: DB claim count (${dbClaims}) ≠ ingested counter (${ingested})`)
+  }
 }
 
 main().catch(async err => {

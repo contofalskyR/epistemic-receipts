@@ -1,0 +1,52 @@
+{
+  "runDate": "2026-05-21T02:27:51.921Z",
+  "pipeline": "Pipeline 101",
+  "ingestedBy": "central_america_v1",
+  "totalEnumerated": 1017,
+  "countsByCountry": {
+    "pa": 1017,
+    "sv": 0,
+    "gt": 0
+  },
+  "blockers": {
+    "dominican_republic": "congreso.gob.do — parked domain (redirects to GoDaddy parking)",
+    "honduras": "congreso.gob.hn — DNS resolution failure",
+    "nicaragua": "asamblea.gob.ni — DNS resolution failure"
+  },
+  "sampleFetched": 3,
+  "coverage": {
+    "withTitle": 3
+  },
+  "sample": [
+    {
+      "countryCode": "pa",
+      "country": "Panama",
+      "slug": "2009_p_055",
+      "title": "Proyecto de Ley No. 055 (2009)",
+      "year": 2009,
+      "waybackUrl": "https://web.archive.org/web/20131213214407/http://www.asamblea.gob.pa/apps/seg_legis/PDF_SEG/PDF_SEG_2000/PDF_SEG_2009/2009_P_055.pdf",
+      "claimText": "Panama enacted: Proyecto de Ley No. 055 (2009).",
+      "externalId": "central_america_v1_pa_2009_p_055"
+    },
+    {
+      "countryCode": "pa",
+      "country": "Panama",
+      "slug": "2010_p_094",
+      "title": "Proyecto de Ley No. 094 (2010)",
+      "year": 2010,
+      "waybackUrl": "https://web.archive.org/web/20140630073243/http://www.asamblea.gob.pa:80/apps/seg_legis/PDF_SEG/PDF_SEG_2010/PDF_SEG_2010/PROYECTOS/2010_P_094.pdf",
+      "claimText": "Panama enacted: Proyecto de Ley No. 094 (2010).",
+      "externalId": "central_america_v1_pa_2010_p_094"
+    },
+    {
+      "countryCode": "pa",
+      "country": "Panama",
+      "slug": "2010_p_138",
+      "title": "Proyecto de Ley No. 138 (2010)",
+      "year": 2010,
+      "waybackUrl": "https://web.archive.org/web/20120131044326/http://www.asamblea.gob.pa:80/apps/seg_legis/PDF_SEG/PDF_SEG_2010/PDF_SEG_2010/PROYECTOS/2010_P_138.pdf",
+      "claimText": "Panama enacted: Proyecto de Ley No. 138 (2010).",
+      "externalId": "central_america_v1_pa_2010_p_138"
+    }
+  ]
+}

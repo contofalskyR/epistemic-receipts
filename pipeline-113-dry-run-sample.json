@@ -1,0 +1,411 @@
+{
+  "runDate": "2026-05-23T20:39:59.679Z",
+  "pipeline": "un_ga_v1",
+  "mode": "dry-run",
+  "apiUrl": "https://digitallibrary.un.org/search?p=symbol%3AA%2FRES&of=tm&rg=100&ln=en&c=Voting+Data",
+  "estimatedTotal": "~20,774 (from UNDL HTML search count)",
+  "firstPageCount": 97,
+  "sampleRecords": 20,
+  "sample": [
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/237: Report on the activities of the Office of Internal Oversight Services, adopted 2025-12-30 without vote",
+      "externalId": "un_ga_A_RES_80_237",
+      "symbol": "A/RES/80/237",
+      "adoptedDate": "2025-12-30",
+      "sessionNumber": "80",
+      "voteType": "without-vote",
+      "voteYes": 0,
+      "voteNo": 0,
+      "voteAbstain": 0,
+      "voteNonVoting": 0,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4097144",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/229: Strengthening the United Nations Crime Prevention and Criminal Justice Programme, in particular its technical cooperation capacity, adopted 2025-12-18 without vote",
+      "externalId": "un_ga_A_RES_80_229",
+      "symbol": "A/RES/80/229",
+      "adoptedDate": "2025-12-18",
+      "sessionNumber": "80",
+      "voteType": "without-vote",
+      "voteYes": 0,
+      "voteNo": 0,
+      "voteAbstain": 0,
+      "voteNonVoting": 0,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096677",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/219: United Nations Human Rights Training and Documentation Centre for South-West Asia and the Arab Region, adopted 2025-12-18 without vote",
+      "externalId": "un_ga_A_RES_80_219",
+      "symbol": "A/RES/80/219",
+      "adoptedDate": "2025-12-18",
+      "sessionNumber": "80",
+      "voteType": "without-vote",
+      "voteYes": 0,
+      "voteNo": 0,
+      "voteAbstain": 0,
+      "voteNonVoting": 0,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096661",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/224: Situation of human rights in the Syrian Arab Republic, adopted 2025-12-18 (114-2-47)",
+      "externalId": "un_ga_A_RES_80_224",
+      "symbol": "A/RES/80/224",
+      "adoptedDate": "2025-12-18",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 114,
+      "voteNo": 2,
+      "voteAbstain": 47,
+      "voteNonVoting": 30,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096570",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/212: Subregional Centre for Human Rights and Democracy in Central Africa, adopted 2025-12-18 (178-3-0)",
+      "externalId": "un_ga_A_RES_80_212",
+      "symbol": "A/RES/80/212",
+      "adoptedDate": "2025-12-18",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 178,
+      "voteNo": 3,
+      "voteAbstain": 0,
+      "voteNonVoting": 12,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096562",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/208: Promotion of a democratic and equitable international order, adopted 2025-12-18 (119-55-7)",
+      "externalId": "un_ga_A_RES_80_208",
+      "symbol": "A/RES/80/208",
+      "adoptedDate": "2025-12-18",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 119,
+      "voteNo": 55,
+      "voteAbstain": 7,
+      "voteNonVoting": 12,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096558",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/172: Report of the Committee on Relations with the Host Country, adopted 2025-12-15 without vote",
+      "externalId": "un_ga_A_RES_80_172",
+      "symbol": "A/RES/80/172",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "without-vote",
+      "voteYes": 0,
+      "voteNo": 0,
+      "voteAbstain": 0,
+      "voteNonVoting": 0,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096120",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/170: Strengthening and promoting the international treaty framework, adopted 2025-12-15 without vote",
+      "externalId": "un_ga_A_RES_80_170",
+      "symbol": "A/RES/80/170",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "without-vote",
+      "voteYes": 0,
+      "voteNo": 0,
+      "voteAbstain": 0,
+      "voteNonVoting": 0,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096118",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/167: The rule of law at the national and international levels, adopted 2025-12-15 without vote",
+      "externalId": "un_ga_A_RES_80_167",
+      "symbol": "A/RES/80/167",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "without-vote",
+      "voteYes": 0,
+      "voteNo": 0,
+      "voteAbstain": 0,
+      "voteNonVoting": 0,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4096114",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/141: Education for sustainable development in the framework of the 2030 Agenda for Sustainable Development, adopted 2025-12-15 (179-3-0)",
+      "externalId": "un_ga_A_RES_80_141",
+      "symbol": "A/RES/80/141",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 179,
+      "voteNo": 3,
+      "voteAbstain": 0,
+      "voteNonVoting": 11,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095763",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/146: Multidimensional Vulnerability Index, adopted 2025-12-15 (177-1-2)",
+      "externalId": "un_ga_A_RES_80_146",
+      "symbol": "A/RES/80/146",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 177,
+      "voteNo": 1,
+      "voteAbstain": 2,
+      "voteNonVoting": 13,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095758",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/138: Protection of global climate for present and future generations of humankind, adopted 2025-12-15 (181-1-0)",
+      "externalId": "un_ga_A_RES_80_138",
+      "symbol": "A/RES/80/138",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 181,
+      "voteNo": 1,
+      "voteAbstain": 0,
+      "voteNonVoting": 11,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095751",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/154: Eradicating rural poverty to implement the 2030 Agenda for Sustainable Development, adopted 2025-12-15 (125-52-1)",
+      "externalId": "un_ga_A_RES_80_154",
+      "symbol": "A/RES/80/154",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 125,
+      "voteNo": 52,
+      "voteAbstain": 1,
+      "voteNonVoting": 15,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095701",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/153: Implementation of the 3rd United Nations Decade for the Eradication of Poverty (2018-2027), adopted 2025-12-15 (181-2-0)",
+      "externalId": "un_ga_A_RES_80_153",
+      "symbol": "A/RES/80/153",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 181,
+      "voteNo": 2,
+      "voteAbstain": 0,
+      "voteNonVoting": 10,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095700",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/128: Promotion of inclusive and effective international tax cooperation at the United Nations, adopted 2025-12-15 (122-3-55)",
+      "externalId": "un_ga_A_RES_80_128",
+      "symbol": "A/RES/80/128",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 122,
+      "voteNo": 3,
+      "voteAbstain": 55,
+      "voteNonVoting": 13,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095661",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/123: External debt sustainability and development, adopted 2025-12-15 (132-2-49)",
+      "externalId": "un_ga_A_RES_80_123",
+      "symbol": "A/RES/80/123",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 132,
+      "voteNo": 2,
+      "voteAbstain": 49,
+      "voteNonVoting": 10,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095656",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/121: International trade and development, adopted 2025-12-15 (131-3-47)",
+      "externalId": "un_ga_A_RES_80_121",
+      "symbol": "A/RES/80/121",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 131,
+      "voteNo": 3,
+      "voteAbstain": 47,
+      "voteNonVoting": 12,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095653",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/185: Violence against women migrant workers, adopted 2025-12-15 (175-3-3)",
+      "externalId": "un_ga_A_RES_80_185",
+      "symbol": "A/RES/80/185",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 175,
+      "voteNo": 3,
+      "voteAbstain": 3,
+      "voteNonVoting": 12,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095645",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/178: Implementation of the outcome of the World Summit for Social Development and of the 24th special session of the General Assembly, adopted 2025-12-15 (180-3-0)",
+      "externalId": "un_ga_A_RES_80_178",
+      "symbol": "A/RES/80/178",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 180,
+      "voteNo": 3,
+      "voteAbstain": 0,
+      "voteNonVoting": 10,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095640",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "UN General Assembly Resolution A/RES/80/198: Torture and other cruel, inhuman or degrading treatment or punishment, adopted 2025-12-15 (173-3-2)",
+      "externalId": "un_ga_A_RES_80_198",
+      "symbol": "A/RES/80/198",
+      "adoptedDate": "2025-12-15",
+      "sessionNumber": "80",
+      "voteType": "recorded",
+      "voteYes": 173,
+      "voteNo": 3,
+      "voteAbstain": 2,
+      "voteNonVoting": 15,
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "un_ga_v1",
+      "source": {
+        "url": "https://digitallibrary.un.org/record/4095636",
+        "methodologyType": "primary"
+      }
+    }
+  ]
+}

@@ -1,0 +1,550 @@
+{
+  "runDate": "2026-05-23T20:39:56.719Z",
+  "pipeline": "echr_v1",
+  "mode": "dry-run",
+  "apiUrl": "https://hudoc.echr.coe.int/app/query/results",
+  "query": "contentsitename:ECHR AND doctype:HEJUD AND (importance:1 OR importance:2)",
+  "totalCorpus": 2176,
+  "firstPageCount": 191,
+  "sampleRecords": 20,
+  "sample": [
+    {
+      "claimText": "CASE OF YASAK v. TÜRKİYE — TUR judgment (Chamber, 2026-05-05), ECHR Article 35, 7, 3 +more",
+      "externalId": "echr_001-250157",
+      "itemid": "001-250157",
+      "respondent": "TUR",
+      "articles": [
+        "35",
+        "35-1",
+        "35-3-a",
+        "7",
+        "7-1",
+        "3",
+        "41"
+      ],
+      "judgmentDate": "2026-05-05",
+      "importance": 2,
+      "importanceLabel": "Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-250157",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF TSAAVA AND OTHERS v. GEORGIA — GEO judgment (Grand Chamber, 2025-11-12), ECHR Article 35, 3, 10 +more",
+      "externalId": "echr_001-247738",
+      "itemid": "001-247738",
+      "respondent": "GEO",
+      "articles": [
+        "35",
+        "35-1",
+        "35-3-a",
+        "3",
+        "10",
+        "10-1",
+        "10-2",
+        "11",
+        "11-1",
+        "11-2",
+        "38",
+        "46",
+        "46-2",
+        "41",
+        "34",
+        "37",
+        "37-1",
+        "39"
+      ],
+      "judgmentDate": "2025-11-12",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-247738",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF ORTEGA ORTEGA v. SPAIN — ESP judgment (Grand Chamber, 2025-04-12), ECHR Article 14, 8, 41",
+      "externalId": "echr_001-247361",
+      "itemid": "001-247361",
+      "respondent": "ESP",
+      "articles": [
+        "14",
+        "14+8",
+        "8",
+        "8-1",
+        "41"
+      ],
+      "judgmentDate": "2025-04-12",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-247361",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF GEORGIOS PAPADOPOULOS v. CYPRUS — CYP judgment (Grand Chamber, 2025-09-10), ECHR Article 35, P1-3, 41",
+      "externalId": "echr_001-245104",
+      "itemid": "001-245104",
+      "respondent": "CYP",
+      "articles": [
+        "35",
+        "35-1",
+        "P1-3",
+        "41"
+      ],
+      "judgmentDate": "2025-09-10",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-245104",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF HELME v. ESTONIA — EST judgment (Grand Chamber, 2025-07-10), ECHR Article 6, 8",
+      "externalId": "echr_001-245085",
+      "itemid": "001-245085",
+      "respondent": "EST",
+      "articles": [
+        "6",
+        "6-1",
+        "8",
+        "8-1"
+      ],
+      "judgmentDate": "2025-07-10",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-245085",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF SEMENYA v. SWITZERLAND — CHE judgment (Grand Chamber, 2025-10-07), ECHR Article 35, 6, 1",
+      "externalId": "echr_001-244348",
+      "itemid": "001-244348",
+      "respondent": "CHE",
+      "articles": [
+        "35",
+        "35-3-a",
+        "6",
+        "6-1",
+        "1"
+      ],
+      "judgmentDate": "2025-10-07",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-244348",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF TOMENKO v. UKRAINE — UKR judgment (Grand Chamber, 2025-10-07), ECHR Article P1-3, 41",
+      "externalId": "echr_001-244007",
+      "itemid": "001-244007",
+      "respondent": "UKR",
+      "articles": [
+        "P1-3",
+        "41"
+      ],
+      "judgmentDate": "2025-10-07",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-244007",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF UKRAINE AND THE NETHERLANDS v. RUSSIA — RUS judgment (Grand Chamber, 2025-09-07), ECHR Article 35, 2, 13 +more",
+      "externalId": "echr_001-244292",
+      "itemid": "001-244292",
+      "respondent": "RUS",
+      "articles": [
+        "35",
+        "35-1",
+        "2",
+        "2-1",
+        "13",
+        "13+2",
+        "3",
+        "P1-1",
+        "P1-1-1",
+        "8",
+        "8-1",
+        "4",
+        "4-2",
+        "5",
+        "5-1",
+        "8-2",
+        "9",
+        "9-1",
+        "9-2",
+        "10",
+        "10-1",
+        "10-2",
+        "11",
+        "11-1",
+        "11-2",
+        "P1-2",
+        "14",
+        "38",
+        "46",
+        "46-2",
+        "41",
+        "1",
+        "19",
+        "58"
+      ],
+      "judgmentDate": "2025-09-07",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-244292",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF GREEN v. THE UNITED KINGDOM — GBR judgment (Grand Chamber, 2025-08-04), ECHR Article 35, 8, 10 +more",
+      "externalId": "echr_001-242635",
+      "itemid": "001-242635",
+      "respondent": "GBR",
+      "articles": [
+        "35",
+        "35-3-a",
+        "8",
+        "8-1",
+        "10",
+        "10-1",
+        "6",
+        "6-1"
+      ],
+      "judgmentDate": "2025-08-04",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-242635",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF SHIPS WASTE OIL COLLECTOR B.V. AND OTHERS v. THE NETHERLANDS\r\n\r\n — NLD judgment (Grand Chamber, 2025-01-04), ECHR Article 8, 13, 6",
+      "externalId": "echr_001-242521",
+      "itemid": "001-242521",
+      "respondent": "NLD",
+      "articles": [
+        "8",
+        "8-1",
+        "8-2",
+        "13",
+        "13+8-1",
+        "6"
+      ],
+      "judgmentDate": "2025-01-04",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-242521",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF CAVCA v. THE REPUBLIC OF MOLDOVA — MDA judgment (Grand Chamber, 2025-09-01), ECHR Article 6, 41",
+      "externalId": "echr_001-238660",
+      "itemid": "001-238660",
+      "respondent": "MDA",
+      "articles": [
+        "6",
+        "6-1",
+        "41"
+      ],
+      "judgmentDate": "2025-09-01",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-238660",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF UAB PROFARMA AND UAB BONA DIAGNOSIS v. LITHUANIA — LTU judgment (Grand Chamber, 2025-07-01), ECHR Article P1-1",
+      "externalId": "echr_001-238637",
+      "itemid": "001-238637",
+      "respondent": "LTU",
+      "articles": [
+        "P1-1",
+        "P1-1-1"
+      ],
+      "judgmentDate": "2025-07-01",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-238637",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF A.R.E. v. GREECE — GRC judgment (Grand Chamber, 2025-07-01), ECHR Article 34, 35, 3 +more",
+      "externalId": "echr_001-240242",
+      "itemid": "001-240242",
+      "respondent": "GRC",
+      "articles": [
+        "34",
+        "35",
+        "35-3-a",
+        "3",
+        "13",
+        "13+3",
+        "5",
+        "5-1",
+        "5-2",
+        "5-4",
+        "2",
+        "2-1",
+        "41"
+      ],
+      "judgmentDate": "2025-07-01",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-240242",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF F.M. AND OTHERS v. RUSSIA — RUS judgment (Grand Chamber, 2024-10-12), ECHR Article 4, 14, 41 +more",
+      "externalId": "echr_001-238319",
+      "itemid": "001-238319",
+      "respondent": "RUS",
+      "articles": [
+        "4",
+        "4-1",
+        "4-2",
+        "14",
+        "14+4",
+        "41",
+        "58"
+      ],
+      "judgmentDate": "2024-10-12",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-238319",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF NEALON AND HALLAM v. THE UNITED KINGDOM — GBR judgment (Grand Chamber, 2024-11-06), ECHR Article 6, P7-4, P7-3",
+      "externalId": "echr_001-234468",
+      "itemid": "001-234468",
+      "respondent": "GBR",
+      "articles": [
+        "6",
+        "6-2",
+        "6-1",
+        "P7-4",
+        "P7-3"
+      ],
+      "judgmentDate": "2024-11-06",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-234468",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF THE J. PAUL GETTY TRUST AND OTHERS v. ITALY — ITA judgment (Grand Chamber, 2024-02-05), ECHR Article 35, P1-1, 1 +more",
+      "externalId": "echr_001-233381",
+      "itemid": "001-233381",
+      "respondent": "ITA",
+      "articles": [
+        "35",
+        "35-3-a",
+        "P1-1",
+        "P1-1-1",
+        "1",
+        "5",
+        "5-1",
+        "5-1-f"
+      ],
+      "judgmentDate": "2024-02-05",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-233381",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF VEREIN KLIMASENIORINNEN SCHWEIZ AND OTHERS v. SWITZERLAND — CHE judgment (Grand Chamber, 2024-09-04), ECHR Article 34, 35, 8 +more",
+      "externalId": "echr_001-233206",
+      "itemid": "001-233206",
+      "respondent": "CHE",
+      "articles": [
+        "34",
+        "35",
+        "35-1",
+        "35-3-a",
+        "8",
+        "8-1",
+        "6",
+        "6-1",
+        "46",
+        "46-2",
+        "1",
+        "2",
+        "19"
+      ],
+      "judgmentDate": "2024-09-04",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-233206",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF BOGDAN v. UKRAINE — UKR judgment (Grand Chamber, 2024-08-02), ECHR Article 6, 41",
+      "externalId": "echr_001-230718",
+      "itemid": "001-230718",
+      "respondent": "UKR",
+      "articles": [
+        "6",
+        "6+6-3-c",
+        "6-3",
+        "6-3-c",
+        "6-1",
+        "41"
+      ],
+      "judgmentDate": "2024-08-02",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-230718",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF INTERNATIONALE HUMANITÄRE HILFSORGANISATION E.V. v. GERMANY — DEU judgment (Grand Chamber, 2023-10-10), ECHR Article 11, 17",
+      "externalId": "echr_001-228016",
+      "itemid": "001-228016",
+      "respondent": "DEU",
+      "articles": [
+        "11",
+        "11-1",
+        "11-2",
+        "17"
+      ],
+      "judgmentDate": "2023-10-10",
+      "importance": 1,
+      "importanceLabel": "Grand Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-228016",
+        "methodologyType": "primary"
+      }
+    },
+    {
+      "claimText": "CASE OF G.I.E.M. S.R.L. AND OTHERS v. ITALY — ITA judgment (Chamber, 2023-12-07), ECHR Article 37, 41",
+      "externalId": "echr_001-226009",
+      "itemid": "001-226009",
+      "respondent": "ITA",
+      "articles": [
+        "37",
+        "37-1",
+        "37-1-c",
+        "41"
+      ],
+      "judgmentDate": "2023-12-07",
+      "importance": 2,
+      "importanceLabel": "Chamber",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "ingestedBy": "echr_v1",
+      "source": {
+        "url": "https://hudoc.echr.coe.int/eng?i=001-226009",
+        "methodologyType": "primary"
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Legislative Pipeline Queue
 
 Two agents run at a time. Spin up next pair when a slot opens.
-Last updated: 2026-05-20 19:43 EDT
+Last updated: 2026-05-23 17:30 EDT
 
 ## Status Key
 - ✅ Done (committed + ingested)
@@ -65,6 +65,18 @@ Last updated: 2026-05-20 19:43 EDT
 | 63 | Estonia | estonia_legislation_v1 | 5,870 |
 | 61 | WTO Disputes | wto_disputes_v1 | 645 |
 | 27 | New Zealand (in-force public acts) | nz_legislation_v1 | 1,039 |
+| 17 | NATO Official Texts | nato_official_texts_v1 | 459 |
+| 22 | Austria Nationalrat | nationalrat_v1 | 3,868 |
+| 60 | ECHR Judgments | echr_judgments_v1 | 10,296 |
+| 74 | UN General Assembly | un_ga_resolutions_v1 | 598 |
+| — | WHO Global Health Observatory | who_gho_v1 | 1,001 |
+| — | OpenFDA Drug Labels | openfda_labels_v1 | 52,354 |
+
+## Pending — Script Built, Needs API Key or Network Fix
+| P# | Pipeline | Blocker |
+|----|----------|---------|
+| 110 | Wilson Center Digital Archive | DNS failure on `digitalarchive.wilsoncenter.org` — retry when network resolves |
+| 111 | ProPublica Congress Votes | Needs free `PROPUBLICA_API_KEY` from propublica.org/datastore |
 
 ## Currently Running
 | P# | Country / Body | Tag | Progress |

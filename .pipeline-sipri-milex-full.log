@@ -1,0 +1,28 @@
+
+── Pipeline: SIPRI Military Expenditure (sipri_milex_v1) ──
+Mode: full
+
+Fetching: https://www.sipri.org/sites/default/files/SIPRI-Milex-data-1949-2025_v1.2.xlsx
+(node:5922) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  922552 bytes
+  Parsed 8435 country-year records
+  Progress: 500/8435 — ingested=500
+  Progress: 1000/8435 — ingested=1000
+  Progress: 1500/8435 — ingested=1500
+  Progress: 2000/8435 — ingested=2000
+  Progress: 2500/8435 — ingested=2500
+  Progress: 3000/8435 — ingested=3000
+  Progress: 3500/8435 — ingested=3500
+  Progress: 4000/8435 — ingested=4000
+  Progress: 4500/8435 — ingested=4500
+  Progress: 5000/8435 — ingested=5000
+  Progress: 5500/8435 — ingested=5500
+  Progress: 6000/8435 — ingested=6000
+  Progress: 6500/8435 — ingested=6500
+  Progress: 7000/8435 — ingested=7000
+  Progress: 7500/8435 — ingested=7500
+  Progress: 8000/8435 — ingested=8000
+
+Ingestion complete. Ingested: 8435 | Skipped: 0 | Errors: 0
+DB claims (sipri_milex_v1): 8435

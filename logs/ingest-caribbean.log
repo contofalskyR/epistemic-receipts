@@ -1,0 +1,53 @@
+
+── Pipeline 102: Caribbean Legislation ──
+Mode: full
+Countries: Bahamas (direct), Belize (CDX)
+Blockers:
+  Barbados (lawsofbarbados.gov.bb) — DNS resolution failure
+  Guyana (legalaffairs.gov.gy) — DNS resolution failure
+
+Step 1: Fetching Bahamas acts from alphabetical index (A-Z)...
+(node:43069) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  A: 64 acts
+  B: 34 acts
+  C: 69 acts
+  D: 19 acts
+  E: 31 acts
+  F: 31 acts
+  G: 15 acts
+  H: 30 acts
+  I: 39 acts
+  J: 9 acts
+  K: 1 acts
+  L: 25 acts
+  M: 43 acts
+  N: 22 acts
+  O: 10 acts
+  P: 70 acts
+  Q: 2 acts
+  R: 36 acts
+  S: 47 acts
+  T: 41 acts
+  U: 11 acts
+  V: 11 acts
+  W: 13 acts
+  X: 0 acts
+  Y: 1 acts
+  Z: 1 acts
+  Bahamas total: 675 principal acts
+Step 2: Enumerating Belize acts via Wayback CDX...
+  Belize: 0 acts from CDX
+
+Total candidates: 675
+
+Step 3: Ensuring topics...
+  Created topic: bs-parliament
+  Created topic: bz-national-assembly
+  0 records already in DB
+
+Step 4: Writing 675 rows to DB...
+  50/675 processed...  100/675 processed...  150/675 processed...  200/675 processed...  250/675 processed...  300/675 processed...  350/675 processed...  400/675 processed...  450/675 processed...  500/675 processed...  550/675 processed...  600/675 processed...  650/675 processed...  675/675 processed...
+Ingestion complete in 96.3s
+  Ingested: 675 | Skipped: 0 | Errors: 0
+  Claims: 675 | Sources: 675 | Edges: 675

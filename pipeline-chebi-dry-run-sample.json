@@ -1,0 +1,126 @@
+{
+  "runDate": "2026-05-21T15:47:28.221Z",
+  "pipeline": "ChEBI Compounds",
+  "ingestedBy": "chebi_v1",
+  "sourceFile": "https://ftp.ebi.ac.uk/pub/databases/chebi/flat_files/compounds.tsv.gz",
+  "gates": {
+    "status": "C",
+    "star": ">= 3",
+    "canonicalOnly": true
+  },
+  "parsing": {
+    "rowsParsed": 205310,
+    "filteredByStatus": 143310,
+    "filteredByStar": 0,
+    "filteredBySecondary": 0,
+    "malformed": 0,
+    "hadDefinitionColumn": true
+  },
+  "totalCandidates": 62000,
+  "coverage": {
+    "withDefinition": 52051,
+    "withDefinitionPct": "84.0%"
+  },
+  "sample": [
+    {
+      "externalId": "chebi_7",
+      "accession": "CHEBI:7",
+      "name": "(+)-car-3-ene",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:7",
+      "claimText": "(+)-car-3-ene: A car-3-ene (3,7,7-trimethylbicyclo[4.1.0]hept-3-ene) that has <i>S</i> configuration at position 1 and <i>R</i> configuration at position 6.",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_8",
+      "accession": "CHEBI:8",
+      "name": "(+)-8-hydroxycalamenene",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:8",
+      "claimText": "(+)-8-hydroxycalamenene: A sesquiterpenoid consisting of 5,6,7,8-tetrahydronaphthalen-1-ol having two methyl substituents at the 3- and 8-positions, an isopropyl substituent at the 5-position and (+)-(5<i>R</i>,8<i>S</i>)-configuration.",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_20",
+      "accession": "CHEBI:20",
+      "name": "(+)-camphene",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:20",
+      "claimText": "(+)-camphene: A camphene (2,2-dimethyl-3-methylenebicyclo[2.2.1]heptane) that has <i>R</i> configuration at position 1 and <i>S</i> configuration at position 4.",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_25",
+      "accession": "CHEBI:25",
+      "name": "(+)-iridodial",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:25",
+      "claimText": "(+)-iridodial: An iridodial that is (1<i>R</i>,2<i>R</i>)-2-[(2<i>R</i>)-1-oxopropan-2-yl]cyclopentanecarbaldehyde substituted by a methyl group at position 2 (2<i>S</i>-stereoisomer).",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_26",
+      "accession": "CHEBI:26",
+      "name": "(+)-iridodial lactol",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:26",
+      "claimText": "(+)-iridodial lactol: An iridoid monoterpenoid that is 1,4a,5,6,7,7a-hexahydrocyclopenta[<em>c</em>]pyran substituted by methyl groups at positions 4 and 7 and a hydroxy group at position 1 (the 1<i>R</i>,4a<i>S</i>,7<i>S</i>,7a<i>R</i>-stereoisomer).",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_28",
+      "accession": "CHEBI:28",
+      "name": "(<i>R</i>)-linalool",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:28",
+      "claimText": "(<i>R</i>)-linalool: The (<i>R</i>)-enantiomer of linalool.",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_31",
+      "accession": "CHEBI:31",
+      "name": "(+)-menthone",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:31",
+      "claimText": "(+)-menthone: A menthone that is cyclohexanone substituted by a methyl and an isopropyl group at positions 5 and 2 respectively (the 2<i>R</i>,5<i>S</i>-stereoisomer).",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_32",
+      "accession": "CHEBI:32",
+      "name": "(+)-<em>N</em>-methylconiine",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:32",
+      "claimText": "(+)-<em>N</em>-methylconiine: A piperidine that is (+)-coniine bering an <em>N</em>-methyl substituent.",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_36",
+      "accession": "CHEBI:36",
+      "name": "(+)-norephedrine",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:36",
+      "claimText": "(+)-norephedrine: An amphetamine that is propylbenzene substituted by a hydroxy group at position 1 and by an amino group at position 2 (the 1<i>S</i>,2<i>R</i>-stereoisomer).",
+      "hasDefinition": true
+    },
+    {
+      "externalId": "chebi_40",
+      "accession": "CHEBI:40",
+      "name": "(+)-pinoresinol",
+      "star": 3,
+      "status": "1",
+      "sourceUrl": "https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:40",
+      "claimText": "(+)-pinoresinol: An enantiomer of pinoresinol having (+)-1<i>S</i>,3a<i>R</i>,4<i>S</i>,6a<i>R</i>-configuration.",
+      "hasDefinition": true
+    }
+  ]
+}

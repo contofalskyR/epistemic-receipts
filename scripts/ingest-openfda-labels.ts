@@ -147,15 +147,30 @@ function buildFetchUrl(skip: number, limit: number, search?: string): string {
 
 async function fetchPage(skip: number, limit: number, search?: string): Promise<OpenFDALabelResponse> {
   const url = buildFetchUrl(skip, limit, search)
-  const res = await fetch(url)
-  if (res.status === 429) {
-    // Rate limited — back off and retry once
-    console.warn(`  Rate limited at skip=${skip}, sleeping 30s and retrying...`)
-    await sleep(30000)
-    const retry = await fetch(url)
-    return retry.json() as Promise<OpenFDALabelResponse>
+  const maxAttempts = 5
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const res = await fetch(url)
+      if (res.status === 429) {
+        console.warn(`  Rate limited at skip=${skip} (attempt ${attempt}), sleeping 30s and retrying...`)
+        await sleep(30000)
+        continue
+      }
+      if (res.status >= 500) {
+        console.warn(`  Server ${res.status} at skip=${skip} (attempt ${attempt}), sleeping 15s and retrying...`)
+        await sleep(15000)
+        continue
+      }
+      return res.json() as Promise<OpenFDALabelResponse>
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e)
+      if (attempt === maxAttempts) throw e
+      const backoff = Math.min(60_000, 5000 * 2 ** (attempt - 1))
+      console.warn(`  Network error at skip=${skip} (attempt ${attempt}/${maxAttempts}): ${msg}. Sleeping ${backoff / 1000}s...`)
+      await sleep(backoff)
+    }
   }
-  return res.json() as Promise<OpenFDALabelResponse>
+  throw new Error(`fetchPage exhausted ${maxAttempts} attempts at skip=${skip}`)
 }
 
 // ── Partition discovery ──────────────────────────────────────────────────────
@@ -195,19 +210,35 @@ function midpointDayUTC(start: Date, end: Date): Date {
 
 async function probeRangeTotal(start: string, end: string): Promise<number> {
   const url = buildFetchUrl(0, 1, `effective_time:[${start} TO ${end}]`)
-  const res = await fetch(url)
-  if (res.status === 429) {
-    console.warn(`  Probe rate-limited on [${start} TO ${end}], sleeping 30s...`)
-    await sleep(30000)
-    return probeRangeTotal(start, end)
+  const maxAttempts = 5
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const res = await fetch(url)
+      if (res.status === 429) {
+        console.warn(`  Probe rate-limited on [${start} TO ${end}] (attempt ${attempt}), sleeping 30s...`)
+        await sleep(30000)
+        continue
+      }
+      if (res.status >= 500) {
+        console.warn(`  Probe server ${res.status} on [${start} TO ${end}] (attempt ${attempt}), sleeping 15s...`)
+        await sleep(15000)
+        continue
+      }
+      const data = (await res.json()) as OpenFDALabelResponse
+      if (data.error) {
+        if (data.error.code === 'NOT_FOUND') return 0
+        throw new Error(`probe [${start} TO ${end}] failed: ${data.error.code} — ${data.error.message}`)
+      }
+      return data.meta?.results?.total ?? 0
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e)
+      if (attempt === maxAttempts) throw e
+      const backoff = Math.min(60_000, 5000 * 2 ** (attempt - 1))
+      console.warn(`  Probe network error on [${start} TO ${end}] (attempt ${attempt}/${maxAttempts}): ${msg}. Sleeping ${backoff / 1000}s...`)
+      await sleep(backoff)
+    }
   }
-  const data = (await res.json()) as OpenFDALabelResponse
-  if (data.error) {
-    // NOT_FOUND means zero results in this range — legitimate, not an error.
-    if (data.error.code === 'NOT_FOUND') return 0
-    throw new Error(`probe [${start} TO ${end}] failed: ${data.error.code} — ${data.error.message}`)
-  }
-  return data.meta?.results?.total ?? 0
+  throw new Error(`probeRangeTotal exhausted ${maxAttempts} attempts on [${start} TO ${end}]`)
 }
 
 async function discoverPartitions(

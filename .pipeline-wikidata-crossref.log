@@ -1,0 +1,405 @@
+
+── Enrich: Wikidata Cross-Reference ─────────────────────────────────────
+Mode: full | Pipeline filter: all | Limit: all
+Processing 38 pipeline(s): un_sc_resolutions_v1, courtlistener_scotus_v1, nobel_v1, riksdag_v1, tweedekamer_v1...
+
+Querying eligible sources...
+(node:77111) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Eligible sources: 92624 across 38 pipeline(s)
+  courtlistener_scotus_v1: 300 sources
+  bundestag_v1: 6343 sources
+  nobel_v1: 1378 sources
+  un_sc_resolutions_v1: 2798 sources
+  eu_legislation_v1: 2052 sources
+  riksdag_v1: 9989 sources
+  tweedekamer_v1: 1530 sources
+  oireachtas_v1: 4040 sources
+  uk_legislation_v1: 11777 sources
+  nationalrat_v1: 3868 sources
+  canada_bills_v1: 1067 sources
+  australia_legislation_v1: 4734 sources
+  singapore_legislation_v1: 507 sources
+  iceland_legislation_v1: 1068 sources
+  finland_legislation_v1: 1651 sources
+  portugal_legislation_v1: 1292 sources
+  taiwan_legislation_v1: 1015 sources
+  mexico_legislation_v1: 308 sources
+  south_africa_legislation_v1: 557 sources
+  bangladesh_legislation_v1: 1610 sources
+  uruguay_legislation_v1: 4297 sources
+  scotland_legislation_v1: 408 sources
+  israel_knesset_v1: 2009 sources
+  wales_senedd_v1: 100 sources
+  eu_parliament_v1: 4331 sources
+  malta_legislation_v1: 563 sources
+  georgia_legislation_v1: 301 sources
+  jamaica_legislation_v1: 528 sources
+  srilanka_legislation_v1: 1704 sources
+  tt_legislation_v1: 368 sources
+  brunei_legislation_v1: 288 sources
+  peru_legislation_v1: 5202 sources
+  malaysia_legislation_v1: 881 sources
+  estonia_legislation_v1: 5870 sources
+  nz_legislation_v1: 1039 sources
+  nz_local_acts_v1: 611 sources
+  nz_bills_v1: 1868 sources
+  nz_repealed_acts_v1: 4372 sources
+
+Strategy: SCOTUS via P5765 CourtListener opinion ID (300 sources)
+  300 sources have parseable CourtListener IDs
+  Fetching SCOTUS items from Wikidata via P5765...
+  Wikidata returned 161 items with P5765
+  Matched: 0 / 300
+  No matches for courtlistener_scotus_v1 — skipping write
+
+  bundestag_v1 (Germany): 6343 sources
+    No matchable titles (6343 generic names skipped)
+  No matches for bundestag_v1 — skipping write
+
+Strategy: Nobel Prizes (1378 sources)
+  Wikidata returned 50 Nobel Prize year+category items
+    [match] nobel-source-med-2012 → Q48913757 (Nobel Prize in Physiology or Medicine 2012)
+    [match] nobel-source-med-2013 → Q48913751 (Nobel Prize in Physiology or Medicine 2013)
+    [match] nobel-source-med-2014 → Q48913745 (Nobel Prize in Physiology or Medicine 2014)
+    [match] nobel-source-med-2015 → Q48913738 (Nobel Prize in Physiology or Medicine 2015)
+    [match] nobel-source-med-2016 → Q48913727 (Nobel Prize in Physiology or Medicine 2016)
+    [match] nobel-source-med-2017 → Q48913666 (Nobel Prize in Physiology or Medicine 2017)
+  Matched: 6 / 1378
+  Writing 6 matches for nobel_v1...
+  [written] nobel-source-med-2012 → Q48913757
+  [written] nobel-source-med-2013 → Q48913751
+  [written] nobel-source-med-2014 → Q48913745
+  [written] nobel-source-med-2015 → Q48913738
+  [written] nobel-source-med-2016 → Q48913727
+  [written] nobel-source-med-2017 → Q48913666
+  nobel_v1: written=6 skipped=0 failed=0
+
+Strategy: UN SC Resolutions via label matching (2798 sources)
+  Fetching UNSC resolution Q-numbers from Wikidata (2064 IDs in DB)...
+  Wikidata returned 0 labeled UNSC resolution items
+  Matched: 0 / 2798
+  No matches for un_sc_resolutions_v1 — skipping write
+
+  eu_legislation_v1 (European Union): 2052 sources
+    No matchable titles (2052 generic names skipped)
+  No matches for eu_legislation_v1 — skipping write
+
+  riksdag_v1 (Sweden): 9989 sources
+    No matchable titles (9989 generic names skipped)
+  No matches for riksdag_v1 — skipping write
+
+  tweedekamer_v1 (Netherlands): 1530 sources
+    No matchable titles (1530 generic names skipped)
+  No matches for tweedekamer_v1 — skipping write
+
+  oireachtas_v1 (Ireland): 4040 sources
+    No matchable titles (4040 generic names skipped)
+  No matches for oireachtas_v1 — skipping write
+
+  uk_legislation_v1 (United Kingdom): 11777 sources
+    No matchable titles (11777 generic names skipped)
+  No matches for uk_legislation_v1 — skipping write
+
+  nationalrat_v1 (Austria): 3868 sources
+    No matchable titles (3868 generic names skipped)
+  No matches for nationalrat_v1 — skipping write
+
+  canada_bills_v1 (Canada): 1067 sources
+    No matchable titles (1067 generic names skipped)
+  No matches for canada_bills_v1 — skipping write
+
+  australia_legislation_v1 (Australia): 4734 sources
+    No matchable titles (4734 generic names skipped)
+  No matches for australia_legislation_v1 — skipping write
+
+  singapore_legislation_v1 (Singapore): 507 sources
+    507 unique normalized titles (0 generic skipped)
+    Wikidata returned 41 legislation items
+    [match] "Singapore Statutes — Carbon Pricing Act 2018" → Q137385091
+    [match] "Singapore Statutes — Active Mobility Act 2017" → Q134439925
+    [match] "Singapore Statutes — Asian Infrastructure Investment Bank Act 2015" → Q135180200
+    [match] "Singapore Statutes — Compulsory Education Act 2000" → Q135180223
+    [match] "Singapore Statutes — Computer Misuse Act 1993" → Q135911315
+    [match] "Singapore Statutes — Enlistment Act 1970" → Q24946715
+    [match] "Singapore Statutes — Geographical Indications Act 2014" → Q135911203
+    [match] "Singapore Statutes — Good Samaritan Food Donation Act 2024" → Q135492172
+    [match] "Singapore Statutes — Hostage-Taking Act 2010" → Q135917090
+    [match] "Singapore Statutes — Human Cloning and Other Prohibited Practices Act 2004" → Q135921499
+    [match] "Singapore Statutes — Human Organ Transplant Act 1987" → Q133404864
+    [match] "Singapore Statutes — Independence of Singapore Agreement 1965" → Q15991222
+    [match] "Singapore Statutes — Land Acquisition Act 1966" → Q111032561
+    [match] "Singapore Statutes — Liquor Control (Supply and Consumption) Act 2015" → Q25214344
+    [match] "Singapore Statutes — Oaths and Declarations Act 2000" → Q132144229
+    [match] "Singapore Statutes — Pawnbrokers Act 2015" → Q24908108
+    [match] "Singapore Statutes — Preservation of Monuments Act 2009" → Q135967725
+    [match] "Singapore Statutes — Prevention of Human Trafficking Act 2014" → Q23023455
+    [match] "Singapore Statutes — Protection from Harassment Act 2014" → Q19840603
+    [match] "Singapore Statutes — Protection from Online Falsehoods and Manipulation Act 2019" → Q96400318
+    [match] "Singapore Statutes — Protection from Scams Act 2025" → Q132643651
+    Matched: 21 / 507
+  Writing 21 matches for singapore_legislation_v1...
+  [written] sg_act_source_CPA2018 → Q137385091
+  [written] sg_act_source_AMA2017 → Q134439925
+  [written] sg_act_source_AIIBA2015 → Q135180200
+  [written] sg_act_source_CEA2000 → Q135180223
+  [written] sg_act_source_CMA1993 → Q135911315
+  [written] sg_act_source_EA1970 → Q24946715
+  [written] sg_act_source_GIA2014 → Q135911203
+  [written] sg_act_source_GSFDA2024 → Q135492172
+  [written] sg_act_source_HTA2010 → Q135917090
+  [written] sg_act_source_HCOPPA2004 → Q135921499
+  [written] sg_act_source_HOTA1987 → Q133404864
+  [written] sg_act_source_ISA1965 → Q15991222
+  [written] sg_act_source_LAA1966 → Q111032561
+  [written] sg_act_source_LCSCA2015 → Q25214344
+  [written] sg_act_source_ODA2000 → Q132144229
+  [written] sg_act_source_PA2015 → Q24908108
+  [written] sg_act_source_PMA2009 → Q135967725
+  [written] sg_act_source_PHTA2014 → Q23023455
+  [written] sg_act_source_PHA2014 → Q19840603
+  [written] sg_act_source_POFMA2019 → Q96400318
+  [written] sg_act_source_PSA2025 → Q132643651
+  singapore_legislation_v1: written=21 skipped=0 failed=0
+
+  iceland_legislation_v1 (Iceland): 1068 sources
+    No matchable titles (1068 generic names skipped)
+  No matches for iceland_legislation_v1 — skipping write
+
+  finland_legislation_v1 (Finland): 1651 sources
+    No matchable titles (1651 generic names skipped)
+  No matches for finland_legislation_v1 — skipping write
+
+  portugal_legislation_v1 (Portugal): 1292 sources
+    No matchable titles (1292 generic names skipped)
+  No matches for portugal_legislation_v1 — skipping write
+
+  taiwan_legislation_v1 (Taiwan): 1015 sources
+    No matchable titles (1015 generic names skipped)
+  No matches for taiwan_legislation_v1 — skipping write
+
+  mexico_legislation_v1 (Mexico): 308 sources
+    No matchable titles (308 generic names skipped)
+  No matches for mexico_legislation_v1 — skipping write
+
+  south_africa_legislation_v1 (South Africa): 557 sources
+    538 unique normalized titles (16 generic skipped)
+    Wikidata returned 230 legislation items
+    Matched: 0 / 557
+  No matches for south_africa_legislation_v1 — skipping write
+
+  bangladesh_legislation_v1 (Bangladesh): 1610 sources
+    No matchable titles (1610 generic names skipped)
+  No matches for bangladesh_legislation_v1 — skipping write
+
+  uruguay_legislation_v1 (Uruguay): 4297 sources
+    No matchable titles (4297 generic names skipped)
+  No matches for uruguay_legislation_v1 — skipping write
+
+  scotland_legislation_v1 (Scotland): 408 sources
+    No matchable titles (408 generic names skipped)
+  No matches for scotland_legislation_v1 — skipping write
+
+  israel_knesset_v1 (Israel): 2009 sources
+    No matchable titles (2009 generic names skipped)
+  No matches for israel_knesset_v1 — skipping write
+
+  wales_senedd_v1 (Wales): 100 sources
+    No matchable titles (100 generic names skipped)
+  No matches for wales_senedd_v1 — skipping write
+
+  eu_parliament_v1 (European Union): 4331 sources
+    No matchable titles (4331 generic names skipped)
+  No matches for eu_parliament_v1 — skipping write
+
+  malta_legislation_v1 (Malta): 563 sources
+    No matchable titles (563 generic names skipped)
+  No matches for malta_legislation_v1 — skipping write
+
+  georgia_legislation_v1 (Georgia): 301 sources
+    299 unique normalized titles (2 generic skipped)
+    Wikidata returned 8 legislation items
+    [match] "Matsne (Georgia) — CONSTITUTION OF GEORGIA" → Q2468398
+    Matched: 1 / 301
+  Writing 1 matches for georgia_legislation_v1...
+  [written] src_ge_law_30346 → Q2468398
+  georgia_legislation_v1: written=1 skipped=0 failed=0
+
+  jamaica_legislation_v1 (Jamaica): 528 sources
+    373 unique normalized titles (0 generic skipped)
+    Wikidata returned 0 legislation items
+  No matches for jamaica_legislation_v1 — skipping write
+
+  srilanka_legislation_v1 (Sri Lanka): 1704 sources
+    1704 unique normalized titles (0 generic skipped)
+    Wikidata returned 4 legislation items
+    Matched: 0 / 1704
+  No matches for srilanka_legislation_v1 — skipping write
+
+  tt_legislation_v1 (Trinidad and Tobago): 368 sources
+    No matchable titles (368 generic names skipped)
+  No matches for tt_legislation_v1 — skipping write
+
+  brunei_legislation_v1 (Brunei): 288 sources
+    No matchable titles (288 generic names skipped)
+  No matches for brunei_legislation_v1 — skipping write
+
+  peru_legislation_v1 (Peru): 5202 sources
+    No matchable titles (5202 generic names skipped)
+  No matches for peru_legislation_v1 — skipping write
+
+  malaysia_legislation_v1 (Malaysia): 881 sources
+    873 unique normalized titles (0 generic skipped)
+    Wikidata returned 129 legislation items
+    [match] "Malaysia Laws — FEES (PENGKALAN KUBOR FERRY) (VALIDATION) ACT 2025" → Q137808076
+    [match] "Malaysia Laws — ABOLITION OF MANDATORY DEATH PENALTY ACT 2023" → Q126737118
+    [match] "Malaysia Laws — ANTI-SEXUAL HARASSMENT ACT 2022" → Q116505588
+    [match] "Malaysia Laws — INDEPENDENT POLICE CONDUCT COMMISSION ACT 2022" → Q116483150
+    [match] "Malaysia Laws — ANTI-FAKE NEWS (REPEAL) ACT 2020" → Q138952699
+    [match] "Malaysia Laws — *SALES TAX ACT 2018" → Q113457928
+    [match] "Malaysia Laws — SPECIAL MEASURES AGAINST TERRORISM IN FOREIGN COUNTRIES ACT 2015" → Q135184735
+    [match] "Malaysia Laws — PREVENTION OF TERRORISM ACT 2015" → Q19840593
+    [match] "Malaysia Laws — *ISLAMIC FINANCIAL SERVICES ACT 2013" → Q28163630
+    [match] "Malaysia Laws — *FINANCIAL SERVICES ACT 2013" → Q28163620
+    [match] "Malaysia Laws — STRATA MANAGEMENT ACT 2013" → Q28163587
+    [match] "Malaysia Laws — *SECURITY OFFENCES (SPECIAL MEASURES) ACT 2012" → Q7444976
+    [match] "Malaysia Laws — *POSTAL SERVICES ACT 2012" → Q28163575
+    [match] "Malaysia Laws — *PEACEFUL ASSEMBLY ACT 2012" → Q7157576
+    [match] "Malaysia Laws — CREDIT REPORTING AGENCIES ACT 2010" → Q132398494
+    [match] "Malaysia Laws — MALAYSIAN ANTI-CORRUPTION COMMISSION ACT 2009" → Q27962095
+    [match] "Malaysia Laws — *INTERNATIONAL TRADE IN ENDANGERED SPECIES ACT 2008" → Q27962148
+    [match] "Malaysia Laws — SOLID WASTE AND PUBLIC CLEANSING MANAGEMENT ACT 2007" → Q27962072
+    [match] "Malaysia Laws — *CAPITAL MARKETS AND SERVICES ACT 2007" → Q28163594
+    [match] "Malaysia Laws — ANTI-TRAFFICKING IN PERSONS AND ANTI-SMUGGLING OF MIGRANTS ACT 2007" → Q27962126
+    [match] "Malaysia Laws — ARBITRATION ACT 2005" → Q27962124
+    [match] "Malaysia Laws — *MALAYSIAN MARITIME ENFORCEMENT AGENCY ACT 2004" → Q6741982
+    [match] "Malaysia Laws — *DEVELOPMENT FINANCIAL INSTITUTIONS ACT 2002" → Q28163604
+    [match] "Malaysia Laws — *COMPANIES COMMISSION OF MALAYSIA ACT 2001" → Q106571387
+    [match] "Malaysia Laws — CHILD ACT 2001" → Q5097698
+    [match] "Malaysia Laws — *HUMAN RIGHTS COMMISSION OF MALAYSIA ACT 1999" → Q139504889
+    [match] "Malaysia Laws — COMMUNICATIONS AND MULTIMEDIA ACT 1998" → Q7304627
+    [match] "Malaysia Laws — TELEMEDICINE ACT 1997" → Q7304659
+    [match] "Malaysia Laws — *COMPUTER CRIMES ACT 1997" → Q7304617
+    [match] "Malaysia Laws — DIGITAL SIGNATURE ACT 1997" → Q7304656
+    [match] "Malaysia Laws — *OCCUPATIONAL SAFETY AND HEALTH ACT 1994" → Q7075788
+    [match] "Malaysia Laws — DIRECT SALES AND ANTI-PYRAMID SCHEME ACT 1993" → Q28163608
+    [match] "Malaysia Laws — *SYARIAH COURTS (CRIMINAL JURISDICTION) ACT 1965" → Q138511782
+    [match] "Malaysia Laws — *POLICE ACT 1967" → Q7209414
+    [match] "Malaysia Laws — SOCIETIES ACT 1966" → Q7304654
+    [match] "Malaysia Laws — *DANGEROUS DRUGS (SPECIAL PREVENTIVE MEASURES) ACT 1985" → Q28163570
+    [match] "Malaysia Laws — *ATOMIC ENERGY LICENSING ACT 1984" → Q25475372
+    [match] "Malaysia Laws — PUBLIC ORDER (PRESERVATION) ACT 1958" → Q138606337
+    [match] "Malaysia Laws — EMPLOYMENT ACT 1955" → Q117829236
+    [match] "Malaysia Laws — *CUSTOMS ACT 1967" → Q27962092
+    [match] "Malaysia Laws — *DANGEROUS DRUGS ACT 1952" → Q20451247
+    [match] "Malaysia Laws — *NATIONAL PARKS ACT 1980" → Q6974759
+    [match] "Malaysia Laws — EMERGENCY (ESSENTIAL POWERS) ACT 1979" → Q135645462
+    [match] "Malaysia Laws — *EXPLOSIVES ACT 1957" → Q26905815
+    [match] "Malaysia Laws — *ARMS ACT 1960" → Q136659394
+    [match] "Malaysia Laws — DESTITUTE PERSON'S ACT 1977" → Q136412265
+    [match] "Malaysia Laws — *EXCISE ACT 1976" → Q26869451
+    [match] "Malaysia Laws — *LOCAL GOVERNMENT ACT 1976" → Q25475395
+    [match] "Malaysia Laws — *ARMED FORCES ACT 1972" → Q20454415
+    [match] "Malaysia Laws — *WEIGHTS AND MEASURES ACT 1972" → Q27962047
+    [match] "Malaysia Laws — *MEDICAL ACT 1971" → Q27962086
+    [match] "Malaysia Laws — *FIREARMS (INCREASED PENALTIES) ACT 1971" → Q24296825
+    [match] "Malaysia Laws — *UNIVERSITIES AND UNIVERSITY COLLEGES ACT 1971" → Q12682334
+    [match] "Malaysia Laws — AGE OF MAJORITY ACT 1971" → Q24950733
+    [match] "Malaysia Laws — ELECTIONS ACT 1958" → Q24950442
+    [match] "Malaysia Laws — MALAYSIAN AGRICULTURAL RESEARCH AND DEVELOPMENT INSTITUTE ACT 1969" → Q24292987
+    [match] "Malaysia Laws — REGISTRATION OF CRIMINALS AND UNDESIRABLE PERSONS ACT 1969" → Q27962093
+    [match] "Malaysia Laws — *EMPLOYEES' SOCIAL SECURITY ACT 1969" → Q24950765
+    [match] "Malaysia Laws — *CIVIL AVIATION ACT 1969" → Q24950756
+    [match] "Malaysia Laws — *MINISTERIAL FUNCTIONS ACT 1969" → Q24950747
+    [match] "Malaysia Laws — REVISION OF LAWS ACT 1968" → Q12682331
+    Matched: 61 / 881
+  Writing 61 matches for malaysia_legislation_v1...
+  [written] my_act_src_871 → Q137808076
+  [written] my_act_src_846 → Q126737118
+  [written] my_act_src_840 → Q116505588
+  [written] my_act_src_839 → Q116483150
+  [written] my_act_src_825 → Q138952699
+  [written] my_act_src_806 → Q113457928
+  [written] my_act_src_770 → Q135184735
+  [written] my_act_src_769 → Q19840593
+  [written] my_act_src_759 → Q28163630
+  [written] my_act_src_758 → Q28163620
+  [written] my_act_src_757 → Q28163587
+  [written] my_act_src_747 → Q7444976
+  [written] my_act_src_741 → Q28163575
+  [written] my_act_src_736 → Q7157576
+  [written] my_act_src_710 → Q132398494
+  [written] my_act_src_694 → Q27962095
+  [written] my_act_src_686 → Q27962148
+  [written] my_act_src_672 → Q27962072
+  [written] my_act_src_671 → Q28163594
+  [written] my_act_src_670 → Q27962126
+  [written] my_act_src_646 → Q27962124
+  [written] my_act_src_633 → Q6741982
+  [written] my_act_src_618 → Q28163604
+  [written] my_act_src_614 → Q106571387
+  [written] my_act_src_611 → Q5097698
+  [written] my_act_src_597 → Q139504889
+  [written] my_act_src_588 → Q7304627
+  [written] my_act_src_564 → Q7304659
+  [written] my_act_src_563 → Q7304617
+  [written] my_act_src_562 → Q7304656
+  [written] my_act_src_514 → Q7075788
+  [written] my_act_src_500 → Q28163608
+  [written] my_act_src_355 → Q138511782
+  [written] my_act_src_344 → Q7209414
+  [written] my_act_src_335 → Q7304654
+  [written] my_act_src_316 → Q28163570
+  [written] my_act_src_304 → Q25475372
+  [written] my_act_src_296 → Q138606337
+  [written] my_act_src_265 → Q117829236
+  [written] my_act_src_235 → Q27962092
+  [written] my_act_src_234 → Q20451247
+  [written] my_act_src_226 → Q6974759
+  [written] my_act_src_216 → Q135645462
+  [written] my_act_src_207 → Q26905815
+  [written] my_act_src_206 → Q136659394
+  [written] my_act_src_183 → Q136412265
+  [written] my_act_src_176 → Q26869451
+  [written] my_act_src_171 → Q25475395
+  [written] my_act_src_77 → Q20454415
+  [written] my_act_src_71 → Q27962047
+  [written] my_act_src_50 → Q27962086
+  [written] my_act_src_37 → Q24296825
+  [written] my_act_src_30 → Q12682334
+  [written] my_act_src_21 → Q24950733
+  [written] my_act_src_19 → Q24950442
+  [written] my_act_src_11 → Q24292987
+  [written] my_act_src_7 → Q27962093
+  [written] my_act_src_4 → Q24950765
+  [written] my_act_src_3 → Q24950756
+  [written] my_act_src_2 → Q24950747
+  [written] my_act_src_1 → Q12682331
+  malaysia_legislation_v1: written=61 skipped=0 failed=0
+
+  estonia_legislation_v1 (Estonia): 5870 sources
+    No matchable titles (5870 generic names skipped)
+  No matches for estonia_legislation_v1 — skipping write
+
+  nz_legislation_v1 (New Zealand): 1039 sources
+    No matchable titles (1039 generic names skipped)
+  No matches for nz_legislation_v1 — skipping write
+
+  nz_local_acts_v1 (New Zealand): 611 sources
+    No matchable titles (611 generic names skipped)
+  No matches for nz_local_acts_v1 — skipping write
+
+  nz_bills_v1 (New Zealand): 1868 sources
+    No matchable titles (1868 generic names skipped)
+  No matches for nz_bills_v1 — skipping write
+
+  nz_repealed_acts_v1 (New Zealand): 4372 sources
+    No matchable titles (4372 generic names skipped)
+  No matches for nz_repealed_acts_v1 — skipping write
+
+── Enrichment complete ──────────────────────────────────────────────────
+  Total written:  89
+  Total skipped:  0
+  Total failed:   0
+
+  DB WikidataLink rows: 89

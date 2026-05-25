@@ -1,0 +1,189 @@
+{
+  "runDate": "2026-05-20T20:16:57.374Z",
+  "pipeline": "Pipeline 90",
+  "ingestedBy": "brunei_legislation_v1",
+  "totalCandidates": 288,
+  "coverage": {
+    "withDate": 260,
+    "withDetailUrl": 282
+  },
+  "distribution": {
+    "byLetter": {
+      "A": 20,
+      "B": 26,
+      "C": 26,
+      "D": 15,
+      "E": 19,
+      "F": 7,
+      "G": 3,
+      "H": 5,
+      "I": 19,
+      "K": 2,
+      "L": 13,
+      "M": 21,
+      "N": 5,
+      "O": 4,
+      "P": 33,
+      "Q": 1,
+      "R": 12,
+      "S": 27,
+      "T": 13,
+      "U": 6,
+      "V": 2,
+      "W": 8,
+      "Y": 1
+    }
+  },
+  "sample": [
+    {
+      "externalId": "bn_law_cap_268",
+      "cap": "268",
+      "title": "ACCOUNTANTS ACT",
+      "enactedDate": "2012-11-01",
+      "rawDate": "01-11-2012",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ACCOUNTANTS%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ACCOUNTANTS%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ACCOUNTANTS ACT (Chapter 268 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_267",
+      "cap": "267",
+      "title": "ACCOUNTING STANDARDS ACT",
+      "enactedDate": "2011-08-01",
+      "rawDate": "01-08-2011",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ACCOUNTING%20STANDARDS%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ACCOUNTING%20STANDARDS%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ACCOUNTING STANDARDS ACT (Chapter 267 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_179",
+      "cap": "179",
+      "title": "ADMIRALTY JURISDICTION ACT",
+      "enactedDate": "1996-10-01",
+      "rawDate": "01-10-1996",
+      "actDetailUrl": null,
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/BRULAW%20A.aspx",
+      "claimText": "Brunei Darussalam enacted the ADMIRALTY JURISDICTION ACT (Chapter 179 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_205",
+      "cap": "205",
+      "title": "ADOPTION OF CHILDREN ACT",
+      "enactedDate": "2001-03-26",
+      "rawDate": "26-03-2001",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ADOPTION%20OF%20CHILDREN%20%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ADOPTION%20OF%20CHILDREN%20%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ADOPTION OF CHILDREN ACT (Chapter 205 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_43",
+      "cap": "43",
+      "title": "AGRICULTURAL PESTS AND NOXIOUS PLANTS ACT",
+      "enactedDate": "1971-08-01",
+      "rawDate": "01-08-1971",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/AGRICULTURAL%20PESTS%20AND%20NOXIOUS%20PLANTS.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/AGRICULTURAL%20PESTS%20AND%20NOXIOUS%20PLANTS.aspx",
+      "claimText": "Brunei Darussalam enacted the AGRICULTURAL PESTS AND NOXIOUS PLANTS ACT (Chapter 43 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_113",
+      "cap": "113",
+      "title": "AIR NAVIGATION ACT (Repealed by Civil Aviation Order, 2006 (S 63/2006) w.e.f. 20-5-2006)",
+      "enactedDate": null,
+      "rawDate": "Repealed",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/AIR%20%20NAVIGATION%20%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/AIR%20%20NAVIGATION%20%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the AIR NAVIGATION ACT (Repealed by Civil Aviation Order, 2006 (S 63/2006) w.e.f. 20-5-2006) (Chapter 113 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_188",
+      "cap": "188",
+      "title": "AIRPORT PASSENGER SERVICE CHARGE ACT",
+      "enactedDate": "1999-05-01",
+      "rawDate": "01-05-1999",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/AIRPORT%20PASSENGER%20SERVICE%20CHARGE%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/AIRPORT%20PASSENGER%20SERVICE%20CHARGE%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the AIRPORT PASSENGER SERVICE CHARGE ACT (Chapter 188 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_221",
+      "cap": "221",
+      "title": "ALLIED HEALTH PROFESSIONS OF BRUNEI DARUSSALAM ACT",
+      "enactedDate": "2017-07-01",
+      "rawDate": "01-07-2017",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ALLIED%20HEALTH%20PROFESSIONS%20OF%20BRUNEI%20DARUSSALAM.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ALLIED%20HEALTH%20PROFESSIONS%20OF%20BRUNEI%20DARUSSALAM.aspx",
+      "claimText": "Brunei Darussalam enacted the ALLIED HEALTH PROFESSIONS OF BRUNEI DARUSSALAM ACT (Chapter 221 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_254",
+      "cap": "254",
+      "title": "ANIMAL (DISEASES AND QUARANTINE) ACT",
+      "enactedDate": "2021-08-24",
+      "rawDate": "24-08-2021",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANIMAL%20(DISEASES%20AND%20QUARANTINE)%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANIMAL%20(DISEASES%20AND%20QUARANTINE)%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ANIMAL (DISEASES AND QUARANTINE) ACT (Chapter 254 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_209",
+      "cap": "209",
+      "title": "ANTI MONEY-LAUNDERING ACT (formerly known as MONEY-LAUNDERING ORDER) (Repealed by Criminal Asset Recovery Order, 2012 (S 47/2012) w.e.f. 16-6-2012)",
+      "enactedDate": null,
+      "rawDate": "Repealed",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTI%20MONEY-LAUNDERING%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTI%20MONEY-LAUNDERING%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ANTI MONEY-LAUNDERING ACT (formerly known as MONEY-LAUNDERING ORDER) (Repealed by Criminal Asset Recovery Order, 2012 (S 47/2012) w.e.f. 16-6-2012) (Chapter 209 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_197",
+      "cap": "197",
+      "title": "ANTI-TERRORISM (FINANCIAL AND OTHER MEASURES) ACT  (Repealed by Anti-Terrorism Order, 2011 (S 45/2011) w.e.f. 18-7-2011)",
+      "enactedDate": null,
+      "rawDate": "Repealed",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTI-TERRORISM%20(FINANCAL%20AND%20OTHER%20MEASURES)%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTI-TERRORISM%20(FINANCAL%20AND%20OTHER%20MEASURES)%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ANTI-TERRORISM (FINANCIAL AND OTHER MEASURES) ACT  (Repealed by Anti-Terrorism Order, 2011 (S 45/2011) w.e.f. 18-7-2011) (Chapter 197 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_230",
+      "cap": "230",
+      "title": "ANTI-TRAFFICKING IN PERSONS ACT",
+      "enactedDate": "2019-07-06",
+      "rawDate": "06-07-2019",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTI-TRAFFICKING%20IN%20PERSONS%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTI-TRAFFICKING%20IN%20PERSONS%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ANTI-TRAFFICKING IN PERSONS ACT (Chapter 230 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_31",
+      "cap": "31",
+      "title": "ANTIQUITIES AND TREASURE TROVE ACT",
+      "enactedDate": "1967-01-01",
+      "rawDate": "01-01-1967",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTIQUITIES%20AND%20TREASURE%20TROVE%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ANTIQUITIES%20AND%20TREASURE%20TROVE%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ANTIQUITIES AND TREASURE TROVE ACT (Chapter 31 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_2",
+      "cap": "2",
+      "title": "APPLICATION OF LAWS ACT",
+      "enactedDate": "1951-04-25",
+      "rawDate": "25-04-1951",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/APPLICATION%20OF%20LAWS%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/APPLICATION%20OF%20LAWS%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the APPLICATION OF LAWS ACT (Chapter 2 of the Laws of Brunei)."
+    },
+    {
+      "externalId": "bn_law_cap_173",
+      "cap": "173",
+      "title": "ARBITRATION ACT",
+      "enactedDate": "2010-02-23",
+      "rawDate": "23-02-2010",
+      "actDetailUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ARBITRATION%20%20ACT.aspx",
+      "sourceUrl": "https://www.agc.gov.bn/AGC%20Site%20Pages/ARBITRATION%20%20ACT.aspx",
+      "claimText": "Brunei Darussalam enacted the ARBITRATION ACT (Chapter 173 of the Laws of Brunei)."
+    }
+  ]
+}

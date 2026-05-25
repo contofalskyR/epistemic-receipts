@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { countryFlag } from "@/lib/countryCodeMap";
 
 type DensityRow = {
@@ -46,6 +46,33 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [sidebar, setSidebar] = useState<CountryDetail | null>(null);
   const [loadingSidebar, setLoadingSidebar] = useState(false);
   const [globeReady, setGlobeReady] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchFocused, setSearchFocused] = useState(false);
+  const [claimFilter, setClaimFilter] = useState("");
+
+  const sortedDensity = useMemo(
+    () => [...density].sort((a, b) => b.claimCount - a.claimCount),
+    [density]
+  );
+
+  const searchResults = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return [];
+    return sortedDensity
+      .filter(
+        (d) =>
+          d.countryName.toLowerCase().includes(q) ||
+          d.countryCode.toLowerCase().includes(q)
+      )
+      .slice(0, 8);
+  }, [searchQuery, sortedDensity]);
+
+  const filteredClaims = useMemo(() => {
+    if (!sidebar) return [];
+    const q = claimFilter.trim().toLowerCase();
+    if (!q) return sidebar.recentClaims;
+    return sidebar.recentClaims.filter((c) => c.text.toLowerCase().includes(q));
+  }, [sidebar, claimFilter]);
 
   // Build lookup: ISO A2 → claimCount
   const densityMap = new Map(density.map((d) => [d.countryCode, d]));
@@ -65,6 +92,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const openSidebar = useCallback(async (code: string) => {
     setLoadingSidebar(true);
     setSidebar(null);
+    setClaimFilter("");
     try {
       const res = await fetch(`/api/globe/country/${code}`);
       if (res.ok) setSidebar(await res.json());
@@ -72,6 +100,15 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       setLoadingSidebar(false);
     }
   }, []);
+
+  const handleSelectResult = useCallback(
+    (code: string) => {
+      setSearchQuery("");
+      setSearchFocused(false);
+      openSidebar(code);
+    },
+    [openSidebar]
+  );
 
   useEffect(() => {
     let cancelled = false;
@@ -194,6 +231,53 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       )}
 
+      {/* Search panel */}
+      <div className="absolute top-4 left-4 w-64 max-w-[calc(100%-2rem)] z-30">
+        <div className="relative">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setSearchFocused(true)}
+            onBlur={() => {
+              // Delay so click on a result registers before blur closes it.
+              setTimeout(() => setSearchFocused(false), 120);
+            }}
+            placeholder="Search countries…"
+            className="w-full px-3 py-2 text-sm rounded-lg bg-gray-900/90 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30"
+            aria-label="Search countries"
+          />
+          {searchFocused && searchResults.length > 0 && (
+            <ul className="absolute left-0 right-0 mt-1 max-h-72 overflow-y-auto rounded-lg bg-gray-950/95 border border-gray-700 shadow-2xl divide-y divide-gray-800/80">
+              {searchResults.map((row) => (
+                <li key={row.countryCode}>
+                  <button
+                    type="button"
+                    onMouseDown={(e) => {
+                      // Use onMouseDown so it fires before the input's onBlur.
+                      e.preventDefault();
+                      handleSelectResult(row.countryCode);
+                    }}
+                    className="w-full flex items-center gap-2 px-3 py-2 text-left text-sm text-gray-200 hover:bg-gray-800/80"
+                  >
+                    <span className="text-lg">{countryFlag(row.countryCode)}</span>
+                    <span className="flex-1 truncate">{row.countryName}</span>
+                    <span className="text-xs text-amber-400">
+                      {row.claimCount.toLocaleString()}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {searchFocused && searchQuery.trim() && searchResults.length === 0 && (
+            <div className="absolute left-0 right-0 mt-1 px-3 py-2 rounded-lg bg-gray-950/95 border border-gray-700 shadow-2xl text-xs text-gray-500">
+              No matching countries
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Legend */}
       <div className="absolute bottom-6 left-6 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
         <span>Low</span>
@@ -230,6 +314,23 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             </button>
           </div>
 
+          {/* Claim filter */}
+          {sidebar && sidebar.recentClaims.length > 0 && (
+            <div className="px-5 py-3 border-b border-gray-800 space-y-2">
+              <input
+                type="text"
+                value={claimFilter}
+                onChange={(e) => setClaimFilter(e.target.value)}
+                placeholder="Filter claims…"
+                className="w-full px-3 py-1.5 text-sm rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30"
+                aria-label="Filter claims"
+              />
+              <p className="text-xs text-gray-500">
+                {filteredClaims.length} of {sidebar.recentClaims.length} claims
+              </p>
+            </div>
+          )}
+
           {/* Claims list */}
           <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
             {loadingSidebar && (
@@ -237,7 +338,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
                 <div className="w-6 h-6 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
               </div>
             )}
-            {sidebar?.recentClaims.map((claim) => (
+            {filteredClaims.map((claim) => (
               <a
                 key={claim.id}
                 href={`/claims/${claim.id}`}
@@ -256,6 +357,9 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             ))}
             {sidebar && sidebar.recentClaims.length === 0 && (
               <p className="text-gray-500 text-sm py-4 text-center">No claims found for this country.</p>
+            )}
+            {sidebar && sidebar.recentClaims.length > 0 && filteredClaims.length === 0 && (
+              <p className="text-gray-500 text-sm py-4 text-center">No claims match your filter.</p>
             )}
           </div>
 

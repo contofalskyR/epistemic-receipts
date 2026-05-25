@@ -1,0 +1,264 @@
+
+── Enrich: Parliamentary majority via Wikidata ──────────────────────────
+Mode: full | Country filter: all | Limit: all
+
+Querying eligible PoliticalContext rows...
+(node:69809) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Eligible rows: 219965
+  Germany (Q183): 6343 rows
+  NATO (Q7184): 454 rows
+  United Nations (Q1065): 2798 rows
+  European Union (Q458): 6383 rows
+  Sweden (Q34): 9989 rows
+  Netherlands (Q55): 1530 rows
+  Ireland (Q27): 4040 rows
+  United Kingdom (Q145): 11777 rows
+  Austria (Q40): 3868 rows
+  Singapore (Q334): 507 rows
+  Australia (Q408): 4734 rows
+  India (Q668): 3540 rows
+  Denmark (Q35): 4550 rows
+  Norway (Q20): 2609 rows
+  Chile (Q298): 15881 rows
+  Iceland (Q189): 1068 rows
+  Switzerland (Q39): 2407 rows
+  Finland (Q33): 1651 rows
+  Italy (Q38): 16929 rows
+  Belgium (Q31): 7826 rows
+  Portugal (Q45): 1292 rows
+  Spain (Q29): 2045 rows
+  Poland (Q36): 6438 rows
+  Japan (Q17): 2077 rows
+  Argentina (Q414): 25824 rows
+  Brazil (Q155): 10966 rows
+  Taiwan (Q865): 1015 rows
+  Colombia (Q739): 8159 rows
+  Mexico (Q96): 308 rows
+  South Africa (Q258): 557 rows
+  Philippines (Q928): 11703 rows
+  France (Q142): 3046 rows
+  Bangladesh (Q902): 1610 rows
+  Scotland (Q22): 408 rows
+  Israel (Q801): 2009 rows
+  Wales (Q25): 100 rows
+  Uruguay (Q77): 4297 rows
+  Sri Lanka (Q854): 1704 rows
+  Jamaica (Q766): 528 rows
+  Malta (Q233): 563 rows
+  Peru (Q419): 5202 rows
+  Trinidad and Tobago (Q754): 368 rows
+  Brunei (Q921): 288 rows
+  Estonia (Q191): 5870 rows
+  Georgia (Q230): 301 rows
+  United Arab Emirates (Q878): 175 rows
+  Malaysia (Q833): 881 rows
+  United States (Q30): 12280 rows
+  Canada (Q16): 1067 rows
+
+Processing Germany (Q183): 6343 rows
+  Wikidata: 490 cabinets
+  Germany: enriched=6343 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing NATO (Q7184): 454 rows
+  Wikidata: 0 cabinets
+  NATO: enriched=0 unmatched=454 failed=0 (coalition=0, single=0)
+
+Processing United Nations (Q1065): 2798 rows
+  Wikidata: 0 cabinets
+  United Nations: enriched=0 unmatched=2798 failed=0 (coalition=0, single=0)
+
+Processing European Union (Q458): 6383 rows
+  Wikidata: 0 cabinets
+  European Union: enriched=0 unmatched=6383 failed=0 (coalition=0, single=0)
+
+Processing Sweden (Q34): 9989 rows
+  Wikidata: 67 cabinets
+  Sweden: enriched=9989 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Netherlands (Q55): 1530 rows
+  Wikidata: 60 cabinets
+  Netherlands: enriched=1530 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Ireland (Q27): 4040 rows
+  Wikidata: 10 cabinets
+  Ireland: enriched=4040 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing United Kingdom (Q145): 11777 rows
+  Wikidata: 85 cabinets
+  United Kingdom: enriched=5067 unmatched=6710 failed=0 (coalition=0, single=0)
+
+Processing Austria (Q40): 3868 rows
+  Wikidata: 258 cabinets
+  Austria: enriched=3805 unmatched=63 failed=0 (coalition=0, single=0)
+
+Processing Singapore (Q334): 507 rows
+  Wikidata: 4 cabinets
+  Singapore: enriched=149 unmatched=358 failed=0 (coalition=0, single=0)
+
+Processing Australia (Q408): 4734 rows
+  Wikidata: 267 cabinets
+  Australia: enriched=4734 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing India (Q668): 3540 rows
+  Wikidata: 17 cabinets
+  India: enriched=3540 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Denmark (Q35): 4550 rows
+  Wikidata: 38 cabinets
+  Denmark: enriched=4550 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Norway (Q20): 2609 rows
+  Wikidata: 41 cabinets
+  Norway: enriched=2609 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Chile (Q298): 15881 rows
+  Wikidata: 3 cabinets
+  Chile: enriched=19 unmatched=15862 failed=0 (coalition=0, single=0)
+
+Processing Iceland (Q189): 1068 rows
+  Wikidata: 48 cabinets
+  Iceland: enriched=1068 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Switzerland (Q39): 2407 rows
+  Wikidata: 2 cabinets
+  Switzerland: enriched=0 unmatched=2407 failed=0 (coalition=0, single=0)
+
+Processing Finland (Q33): 1651 rows
+  Wikidata: 82 cabinets
+  Finland: enriched=1651 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Italy (Q38): 16929 rows
+  Wikidata: 109 cabinets
+  Italy: enriched=16929 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Belgium (Q31): 7826 rows
+  Wikidata: 126 cabinets
+  Belgium: enriched=3380 unmatched=4446 failed=0 (coalition=0, single=0)
+
+Processing Portugal (Q45): 1292 rows
+  Wikidata: 87 cabinets
+  Portugal: enriched=1292 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Spain (Q29): 2045 rows
+  Wikidata: 89 cabinets
+  Spain: enriched=2003 unmatched=42 failed=0 (coalition=0, single=0)
+
+Processing Poland (Q36): 6438 rows
+  Wikidata: 53 cabinets
+  Poland: enriched=6438 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Japan (Q17): 2077 rows
+  Wikidata: 154 cabinets
+  Japan: enriched=326 unmatched=1751 failed=0 (coalition=0, single=0)
+
+Processing Argentina (Q414): 25824 rows
+  Wikidata: 22 cabinets
+  Argentina: enriched=60 unmatched=25764 failed=0 (coalition=0, single=0)
+
+Processing Brazil (Q155): 10966 rows
+  Wikidata: 80 cabinets
+  Brazil: enriched=10966 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Taiwan (Q865): 1015 rows
+  Wikidata: 28 cabinets
+  Taiwan: enriched=697 unmatched=318 failed=0 (coalition=0, single=0)
+
+Processing Colombia (Q739): 8159 rows
+  Wikidata: 3 cabinets
+  Colombia: enriched=524 unmatched=7635 failed=0 (coalition=0, single=0)
+
+Processing Mexico (Q96): 308 rows
+  Wikidata: 28 cabinets
+  Mexico: enriched=29 unmatched=279 failed=0 (coalition=0, single=0)
+
+Processing South Africa (Q258): 557 rows
+  Wikidata: 34 cabinets
+  South Africa: enriched=557 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Philippines (Q928): 11703 rows
+  Wikidata: 10 cabinets
+  Philippines: enriched=1096 unmatched=10607 failed=0 (coalition=0, single=0)
+
+Processing France (Q142): 3046 rows
+  Wikidata: 77 cabinets
+  France: enriched=2961 unmatched=85 failed=0 (coalition=0, single=0)
+
+Processing Bangladesh (Q902): 1610 rows
+  Wikidata: 3 cabinets
+  Bangladesh: enriched=780 unmatched=830 failed=0 (coalition=0, single=0)
+
+Processing Scotland (Q22): 408 rows
+  Wikidata: 0 cabinets
+  Scotland: enriched=53 unmatched=355 failed=0 (coalition=0, single=0)
+
+Processing Israel (Q801): 2009 rows
+  Wikidata: 32 cabinets
+  Israel: enriched=1601 unmatched=408 failed=0 (coalition=0, single=0)
+
+Processing Wales (Q25): 100 rows
+  Wikidata: 0 cabinets
+  Wales: enriched=100 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Uruguay (Q77): 4297 rows
+  Wikidata: 1 cabinets
+  Uruguay: enriched=1 unmatched=4296 failed=0 (coalition=0, single=0)
+
+Processing Sri Lanka (Q854): 1704 rows
+  Wikidata: 3 cabinets
+  Sri Lanka: enriched=100 unmatched=1604 failed=0 (coalition=0, single=0)
+
+Processing Jamaica (Q766): 528 rows
+  Wikidata: 0 cabinets
+  Jamaica: enriched=0 unmatched=528 failed=0 (coalition=0, single=0)
+
+Processing Malta (Q233): 563 rows
+  Wikidata: 30 cabinets
+  Malta: enriched=563 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Peru (Q419): 5202 rows
+  Wikidata: 1 cabinets
+  Peru: enriched=0 unmatched=5202 failed=0 (coalition=0, single=0)
+
+Processing Trinidad and Tobago (Q754): 368 rows
+  Wikidata: 1 cabinets
+  Trinidad and Tobago: enriched=367 unmatched=1 failed=0 (coalition=0, single=0)
+
+Processing Brunei (Q921): 288 rows
+  Wikidata: 0 cabinets
+  Brunei: enriched=0 unmatched=288 failed=0 (coalition=0, single=0)
+
+Processing Estonia (Q191): 5870 rows
+  Wikidata: 4 cabinets
+  Estonia: enriched=5870 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Georgia (Q230): 301 rows
+  Wikidata: 9 cabinets
+  Georgia: enriched=230 unmatched=71 failed=0 (coalition=0, single=0)
+
+Processing United Arab Emirates (Q878): 175 rows
+  Wikidata: 10 cabinets
+  United Arab Emirates: enriched=0 unmatched=175 failed=0 (coalition=0, single=0)
+
+Processing Malaysia (Q833): 881 rows
+  Wikidata: 23 cabinets
+  Malaysia: enriched=667 unmatched=214 failed=0 (coalition=0, single=0)
+
+Processing United States (Q30): 12280 rows
+  Wikidata: 44 cabinets
+  United States: enriched=12280 unmatched=0 failed=0 (coalition=0, single=0)
+
+Processing Canada (Q16): 1067 rows
+  Wikidata: 63 cabinets
+  Canada: enriched=1067 unmatched=0 failed=0 (coalition=0, single=0)
+
+── Enrichment complete ──────────────────────────────────────────────────
+  Total enriched:        120031
+    Coalition:           0
+    Single-party only:   0
+    HoG-only (no cabinet): 120031
+  Total unmatched:       99934
+  Total failed:          0
+
+  DB PoliticalContext with governingParty set: 112843
+  DB PoliticalContext with majorityType=coalition: 0

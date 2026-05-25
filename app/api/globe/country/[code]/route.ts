@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { COUNTRY_CODE_TO_NAME } from "@/lib/countryCodeMap";
+import { COUNTRY_TO_PIPELINES } from "@/lib/globe-pipeline-country";
 
 export const revalidate = 3600;
+
+type ClaimRow = {
+  id: string;
+  text: string;
+  currentStatus: string;
+  claimType: string;
+  createdAt: Date;
+  ingestedBy: string;
+};
 
 export async function GET(
   _req: NextRequest,
@@ -16,57 +26,89 @@ export async function GET(
     return NextResponse.json({ error: "Unknown country code" }, { status: 404 });
   }
 
-  // Get sources with PoliticalContext for this country
-  const sources = await prisma.source.findMany({
-    where: { politicalContext: { country: countryName } },
-    select: {
-      id: true,
-      edges: {
-        where: { deleted: false },
-        select: {
-          claim: {
-            select: {
-              id: true,
-              text: true,
-              currentStatus: true,
-              claimType: true,
-              createdAt: true,
-              ingestedBy: true,
+  const pipelines = COUNTRY_TO_PIPELINES[upperCode] ?? [];
+
+  // Count distinct claims that are either PoliticalContext-linked to this
+  // country OR ingested by one of its country-specific pipelines.
+  const whereUnion =
+    pipelines.length === 0
+      ? {
+          deleted: false,
+          edges: {
+            some: {
+              deleted: false,
+              source: { politicalContext: { country: countryName } },
             },
           },
+        }
+      : {
+          deleted: false,
+          OR: [
+            {
+              edges: {
+                some: {
+                  deleted: false,
+                  source: { politicalContext: { country: countryName } },
+                },
+              },
+            },
+            { ingestedBy: { in: pipelines } },
+          ],
+        };
+
+  const [claimCount, pcRecent, pipelineRecent] = await Promise.all([
+    prisma.claim.count({ where: whereUnion }),
+    prisma.claim.findMany({
+      where: {
+        deleted: false,
+        edges: {
+          some: {
+            deleted: false,
+            source: { politicalContext: { country: countryName } },
+          },
         },
-        orderBy: { createdAt: "desc" },
-        take: 50,
       },
-    },
-  });
+      select: {
+        id: true,
+        text: true,
+        currentStatus: true,
+        claimType: true,
+        createdAt: true,
+        ingestedBy: true,
+      },
+      orderBy: { createdAt: "desc" },
+      take: 25,
+    }),
+    pipelines.length === 0
+      ? Promise.resolve([] as ClaimRow[])
+      : prisma.claim.findMany({
+          where: { deleted: false, ingestedBy: { in: pipelines } },
+          select: {
+            id: true,
+            text: true,
+            currentStatus: true,
+            claimType: true,
+            createdAt: true,
+            ingestedBy: true,
+          },
+          orderBy: { createdAt: "desc" },
+          take: 25,
+        }),
+  ]);
 
-  // Collect unique claims, deduplicated by claimId
-  const seen = new Set<string>();
-  const recentClaims: Array<{
-    id: string;
-    text: string;
-    currentStatus: string;
-    claimType: string;
-    createdAt: Date;
-    ingestedBy: string;
-  }> = [];
-
-  for (const source of sources) {
-    for (const edge of source.edges) {
-      if (!seen.has(edge.claim.id)) {
-        seen.add(edge.claim.id);
-        recentClaims.push(edge.claim);
-      }
-    }
+  // Merge and dedupe recent claims (a claim can match both buckets).
+  const merged = new Map<string, ClaimRow>();
+  for (const c of [...pcRecent, ...pipelineRecent]) {
+    if (!merged.has(c.id)) merged.set(c.id, c);
   }
-
-  recentClaims.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const recentClaims = Array.from(merged.values())
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 10);
 
   return NextResponse.json({
     countryCode: upperCode,
     countryName,
-    claimCount: recentClaims.length,
-    recentClaims: recentClaims.slice(0, 10),
+    claimCount,
+    recentClaims,
   });
 }

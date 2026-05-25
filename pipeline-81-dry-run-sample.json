@@ -1,0 +1,129 @@
+{
+  "runDate": "2026-05-20T21:59:07.136Z",
+  "pipeline": "Pipeline 81",
+  "ingestedBy": "peru_legislation_v1",
+  "monthsFetched": 5,
+  "totalLaws": 41,
+  "sample": [
+    {
+      "externalId": "pe_ley_25167",
+      "tipo": "LEY",
+      "numero": "25167",
+      "fecha": "05/01/1990",
+      "denominacion": "Autorizan a los graduandos de las Escuelas de Periodismo \"Jaime Bausate y Meza\" y \"Carlos E. Uceda Meza\", para inscribir",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25167: Autorizan a los graduandos de las Escuelas de Periodismo \"Jaime Bausate y Meza\" "
+    },
+    {
+      "externalId": "pe_ley_25168",
+      "tipo": "LEY",
+      "numero": "25168",
+      "fecha": "05/01/1990",
+      "denominacion": "Modifican el artículo 2º de la ley Nº 24879",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25168: Modifican el artículo 2º de la ley Nº 24879"
+    },
+    {
+      "externalId": "pe_ley_25169",
+      "tipo": "LEY",
+      "numero": "25169",
+      "fecha": "05/01/1990",
+      "denominacion": "Amplían por un año, el ejercicio y funcionamiento de la Comisión Organizadora de la Universidad de Apurímac",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25169: Amplían por un año, el ejercicio y funcionamiento de la Comisión Organizadora de"
+    },
+    {
+      "externalId": "pe_ley_25172",
+      "tipo": "LEY",
+      "numero": "25172",
+      "fecha": "05/01/1990",
+      "denominacion": "Licenciados del SMO de las FF.AA. que reúnan requisitos para postular a Institutos Pedagógicos y Tecnológicos Superiores",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25172: Licenciados del SMO de las FF.AA. que reúnan requisitos para postular a Institut"
+    },
+    {
+      "externalId": "pe_ley_25173",
+      "tipo": "LEY",
+      "numero": "25173",
+      "fecha": "05/01/1990",
+      "denominacion": "Establecieron edad de jubilación para trabajadores de la Industria de Cueros",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25173: Establecieron edad de jubilación para trabajadores de la Industria de Cueros"
+    },
+    {
+      "externalId": "pe_ley_25174",
+      "tipo": "LEY",
+      "numero": "25174",
+      "fecha": "06/01/1990",
+      "denominacion": "Declaran de interés nacional el asfaltado de la carretera Ilave - Mazocruz - Tarata - Tacna",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25174: Declaran de interés nacional el asfaltado de la carretera Ilave - Mazocruz - Tar"
+    },
+    {
+      "externalId": "pe_ley_25175",
+      "tipo": "LEY",
+      "numero": "25175",
+      "fecha": "06/01/1990",
+      "denominacion": "Precisan en los alcances del Art. 3º de la Ley 24036, conforme a la naturaleza y modalidad de labor del Gremio de Trabaj",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25175: Precisan en los alcances del Art. 3º de la Ley 24036, conforme a la naturaleza y"
+    },
+    {
+      "externalId": "pe_ley_25176",
+      "tipo": "LEY",
+      "numero": "25176",
+      "fecha": "06/01/1990",
+      "denominacion": "Reconocen como servicios prestados al Estado el tiempo que han permanecido separados desde octubre de 1959 hasta su rein",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25176: Reconocen como servicios prestados al Estado el tiempo que han permanecido separ"
+    },
+    {
+      "externalId": "pe_ley_25177",
+      "tipo": "LEY",
+      "numero": "25177",
+      "fecha": "06/01/1990",
+      "denominacion": "Establecen la remuneración mensual ordinaria de los trabajadores titulares de los Gremios Marítimos del Puerto de Chimbo",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25177: Establecen la remuneración mensual ordinaria de los trabajadores titulares de lo"
+    },
+    {
+      "externalId": "pe_ley_25178",
+      "tipo": "LEY",
+      "numero": "25178",
+      "fecha": "06/01/1990",
+      "denominacion": "Declaran de necesidad y utilidad pública, la expropiación en favor de la Municipalidad Provincial de Huaura, terreno, pa",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25178: Declaran de necesidad y utilidad pública, la expropiación en favor de la Municip"
+    },
+    {
+      "externalId": "pe_ley_25179",
+      "tipo": "LEY",
+      "numero": "25179",
+      "fecha": "06/01/1990",
+      "denominacion": "Otorgan el título de Benemérita, a la Sociedad de Auxilios Mutuos de Señoras de Tacna",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25179: Otorgan el título de Benemérita, a la Sociedad de Auxilios Mutuos de Señoras de "
+    },
+    {
+      "externalId": "pe_ley_25180",
+      "tipo": "LEY",
+      "numero": "25180",
+      "fecha": "06/01/1990",
+      "denominacion": "Crean la Universidad Privada \"Marcelino Champagnat\", con sede en Lima",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25180: Crean la Universidad Privada \"Marcelino Champagnat\", con sede en Lima"
+    },
+    {
+      "externalId": "pe_ley_25181",
+      "tipo": "LEY",
+      "numero": "25181",
+      "fecha": "06/01/1990",
+      "denominacion": "Crean el Centro Oncológico Regional Hospitalario con sede en Trujillo",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25181: Crean el Centro Oncológico Regional Hospitalario con sede en Trujillo"
+    },
+    {
+      "externalId": "pe_ley_25182",
+      "tipo": "LEY",
+      "numero": "25182",
+      "fecha": "06/01/1990",
+      "denominacion": "Demandan de interés prioritario para el abastecimiento de cemento, la instalación de una fábrica en Tinta, Provincia de ",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25182: Demandan de interés prioritario para el abastecimiento de cemento, la instalació"
+    },
+    {
+      "externalId": "pe_ley_25183",
+      "tipo": "LEY",
+      "numero": "25183",
+      "fecha": "06/01/1990",
+      "denominacion": "Quedan comprendidos en los beneficios de la Ley 4916 los choferes y paleros de las empresas mineras",
+      "claimText": "El Congreso del Perú promulgó la Ley N° 25183: Quedan comprendidos en los beneficios de la Ley 4916 los choferes y paleros de l"
+    }
+  ]
+}

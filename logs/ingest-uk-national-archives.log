@@ -1,0 +1,114 @@
+
+── Pipeline 115: UK National Archives Discovery (uk_national_archives_v1) ──
+Mode: full | Target: 5000 records | Series: 41
+
+Step 1: Ensuring topics...
+  Created topic: uk-national-archives
+  uk-national-archives topic ID: cmpiwy4030001plq8uefze13f
+
+Step 2: Fetching + ingesting from TNA Discovery...
+
+  → Series CAB 23 (Cabinet Office)
+    [ingested] CAB 23/44B — Papers omitted from the main series: `A' minutes of meetings
+    Series CAB 23: ingested 109
+
+  → Series CAB 24 (Cabinet Office)
+    [ingested] CAB 24/250 — Papers Nos. 177(34) - 225(34)
+    [ingested] CAB 24/34 — Papers nos. 2801-2900
+    Series CAB 24: ingested 288
+
+  → Series CAB 65 (Cabinet Office)
+    [ingested] CAB 65/56 — (39) 55 - (40) 208
+    Series CAB 65: ingested 58
+
+  → Series CAB 66 (Cabinet Office)
+    [ingested] CAB 66/40 — Paper Nos. 351(43) - 400(43)
+    Series CAB 66: ingested 71
+
+  → Series CAB 128 (Cabinet Office)
+    [ingested] CAB 128/118 — Conclusions of Cabinet Meetings 20-41. (Described at item le
+    Series CAB 128: ingested 139
+
+  → Series CAB 129 (Cabinet Office)
+    [ingested] CAB 129/103 — 151-195
+    [ingested] CAB 129/3 — Paper Nos:- 201(45) -250(45)
+    [ingested] CAB 129/134 — Papers: 171(67) - 202(67)
+    Series CAB 129: ingested 235
+
+  → Series CAB 130 (Cabinet Office)
+    [ingested] CAB 130/747 — Community Ownership of Development Land: Meetings 1-3, Paper
+    [ingested] CAB 130/316 — Europe: Meetings 1-7; Papers 1-6
+    [ingested] CAB 130/551 — Inter-departmental study on cultural relations with Europe: 
+    [ingested] CAB 130/1624 — Ministerial Committee on London: meetings 1-3, papers 1-12
+    Series CAB 130: ingested 488
+
+  → Series CAB 134 (Cabinet Office)
+    [ingested] CAB 134/6331 — Ad Hoc Ministerial Group on Fuel Supply: meetings 1-2, paper
+    [ingested] CAB 134/762 — Atlantic (Official) Committee: Meetings 1-27
+    [ingested] CAB 134/6490 — Civil Contingencies Committee: sub committee on London Resil
+    [ingested] CAB 134/108 — Committee for the Control of Official Histories: Advisory Pa
+    [ingested] CAB 134/1495 — Committee on Commonwealth Education Conference: Meetings 1-4
+    Series CAB 134: ingested 488
+
+  → Series CAB 195 (Cabinet Office)
+    [ingested] CAB 195/2 — Sir Norman Brook Notebook: War Cabinet Minutes, WM (42) 156t
+    Series CAB 195: ingested 25
+
+  → Series PREM 1 (Prime Minister's Office)
+    [ingested] PREM 1/57 — Diplomatic Missions: Diplomatic representation of Canada abr
+    [ingested] PREM 1/412 — Home Affairs 1: Proposals for a National Day of Prayer
+    [ingested] PREM 1/162 — Parliament Procedure: Committee of Privileges. Sir Samuel Ho
+    [ingested] PREM 1/431 — Trade Union Congress: Deputations from Trades Union Congress
+    Series PREM 1: ingested 475
+
+  → Series PREM 4 (Prime Minister's Office)
+    [ingested] PREM 4/40/4 — Alleged slacking in factories
+    [ingested] PREM 4/7/2 — Circulation of documents to and communications with Lord Pri
+    [ingested] PREM 4/39/4C — Detention, restriction and prosecutions under Defence Regula
+    [ingested] PREM 4/89/4 — Increase in unemployment benefit
+    [ingested] PREM 4/10/3 — Meeting between H.M. the King and President Truman
+    Series PREM 4: ingested 488
+
+  → Series PREM 8 (Prime Minister's Office)
+    [ingested] PREM 8/589 — Amendments to Industrial Organisation Bill.
+    [ingested] PREM 8/611 — Cardinal Griffin wrote to Prime Minister on conscription of 
+    [ingested] PREM 8/1577 — Controversy over Lane collection of paintings
+    [ingested] PREM 8/16 — Discussions with President Truman and Mr. Byrnes on civil av
+    [ingested] PREM 8/37 — Food Policy and Future of Ministry of Food
+    Series PREM 8: ingested 488
+
+  → Series PREM 11 (Prime Minister's Office)
+    [ingested] PREM 11/4006 — Admission of Tanganyika to membership of Commonwealth follow
+    [ingested] PREM 11/64 — Appointment of a Service Ministers' Committee
+    [ingested] PREM 11/4377 — Article in Topic: correspondence between Lord President of t
+    [ingested] PREM 11/2093 — British Chamber of Shipping's views on Suez crisis; repair o
+    [ingested] PREM 11/3829 — Chinese incursion into India: comforts for Indian troops; La
+    Series PREM 11: ingested 488
+
+  → Series PREM 13 (Prime Minister's Office)
+    [ingested] PREM 13/1934 — AGRICULTURE. Outbreaks of foot and mouth disease in UK: rest
+    [ingested] PREM 13/459 — AUSTRALIA. Visit by Einar Gerhardson, Prime Minister of Norw
+    [ingested] PREM 13/3076 — CABINET COMMITTEES. Setting-up of ministerial committee on l
+    [ingested] PREM 13/762 — CIVIL AVIATION. Successor to Super VC 10 aircraft: Minister 
+    [ingested] PREM 13/185 — COMMONWEALTH. Future size and membership of Commonwealth: co
+    Series PREM 13: ingested 488
+
+  → Series PREM 15 (Prime Minister's Office)
+    [ingested] PREM 15/1287 — Annual review of agriculture industry; part 3 [See PREM 15/7
+    [ingested] PREM 15/1098 — Chancellor of Exchequer invited by Danish Conservative Party
+    [ingested] PREM 15/154 — Correspondence between Viscount Boyd, former Colonial Secret
+    [ingested] PREM 15/1762 — Discussions on oil supplies: OPEC negotiations; part 2 [See 
+    [ingested] PREM 15/1128 — Enoch Powell MP advised French Ambassador that European legi
+    Series PREM 15: ingested 488
+
+  → Series PREM 16 (Prime Minister's Office)
+    [ingested] PREM 16/1522 — BROADCASTING. Broadcasting of proceedings of Parliament
+    [ingested] PREM 16/317 — COMMONWEALTH. Commonwealth Heads of Government Meeting in Ki
+
+Ingestion complete in 1112.6s
+  Ingested: 5000 | Skipped: 0 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims:  5000
+  Sources: 5000
+  Edges:   5000

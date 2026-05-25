@@ -1,0 +1,52 @@
+{
+  "runDate": "2026-05-21T02:26:02.136Z",
+  "pipeline": "Pipeline 97",
+  "ingestedBy": "western_balkans_v1",
+  "totalEnumerated": 4061,
+  "countsByCountry": {
+    "xk": 4061,
+    "me": 0,
+    "al": 0
+  },
+  "blockers": {
+    "north_macedonia": "pravo.gov.mk — DNS resolution failure (exit code 6)",
+    "bosnia": "sluzbenilist.ba — DNS resolution failure"
+  },
+  "sampleFetched": 3,
+  "coverage": {
+    "withTitle": 3,
+    "withYear": 3
+  },
+  "sample": [
+    {
+      "countryCode": "xk",
+      "country": "Kosovo",
+      "slug": "16506",
+      "title": "LIGJI NR. 06/L-012 PËR KRYEQYTETIN E REPUBLIKËS SË KOSOVËS, PRISHTINËN",
+      "year": 2018,
+      "sourceUrl": "https://gzk.rks-gov.net/ActDetail.aspx?ActID=16506",
+      "claimText": "Kosovo enacted: LIGJI NR. 06/L-012 PËR KRYEQYTETIN E REPUBLIKËS SË KOSOVËS, PRISHTINËN.",
+      "externalId": "western_balkans_v1_xk_16506"
+    },
+    {
+      "countryCode": "xk",
+      "country": "Kosovo",
+      "slug": "2543",
+      "title": "LIGJI NR. 03/L-068 PËR ARSIMIN NË KOMUNATE REPUBLIKËS SË KOSOVËS",
+      "year": 2008,
+      "sourceUrl": "https://gzk.rks-gov.net/ActDetail.aspx?ActID=2543",
+      "claimText": "Kosovo enacted: LIGJI NR. 03/L-068 PËR ARSIMIN NË KOMUNATE REPUBLIKËS SË KOSOVËS.",
+      "externalId": "western_balkans_v1_xk_2543"
+    },
+    {
+      "countryCode": "xk",
+      "country": "Kosovo",
+      "slug": "66686",
+      "title": "LIGJI NR. 08/L-117 PËR QEVERINË E REPUBLIKËS SË KOSOVËS",
+      "year": 2004,
+      "sourceUrl": "https://gzk.rks-gov.net/ActDetail.aspx?ActID=66686",
+      "claimText": "Kosovo enacted: LIGJI NR. 08/L-117 PËR QEVERINË E REPUBLIKËS SË KOSOVËS.",
+      "externalId": "western_balkans_v1_xk_66686"
+    }
+  ]
+}

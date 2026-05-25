@@ -1,0 +1,153 @@
+{
+  "runDate": "2026-05-21T00:16:09.738Z",
+  "pipeline": "Pipeline 89",
+  "ingestedBy": "wipo_lex_v1",
+  "totalCandidates": 9628,
+  "distribution": {
+    "byCountry": {
+      "France": 331,
+      "United Kingdom": 302,
+      "China": 239,
+      "Greece": 239,
+      "Russian Federation": 158,
+      "European Union (EU)": 157,
+      "Italy": 153,
+      "Argentina": 147,
+      "Brazil": 144,
+      "Morocco": 144,
+      "Philippines": 142,
+      "Hong Kong, China": 137,
+      "Portugal": 135,
+      "Kyrgyzstan": 127,
+      "Mexico": 123,
+      "Switzerland": 118,
+      "Türkiye": 116,
+      "Australia": 114,
+      "Spain": 114,
+      "Japan": 112
+    },
+    "byType": {
+      "Main IP Laws": 900,
+      "IP-related Laws": 1529,
+      "Framework Laws": 957,
+      "Other Texts": 2629,
+      "Implementing Rules/Regulations": 3589,
+      "National IP Strategy": 24
+    }
+  },
+  "sampleFirst5": [
+    {
+      "externalId": "wipo_lex_10201",
+      "claimText": "Afghanistan enacted Trademark Registration Law (2009).",
+      "detailId": "10201",
+      "countryCode": "AF",
+      "countryName": "Afghanistan",
+      "title": "Trademark Registration Law",
+      "year": 2009,
+      "enactedYear": null,
+      "typeOfText": "Main IP Laws",
+      "subjects": [
+        "Trademarks",
+        "Geographical Indications",
+        "Enforcement of IP and Related Laws",
+        "IP Regulatory Body"
+      ],
+      "sourceUrl": "https://www.wipo.int/wipolex/en/legislation/details/10201",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "wipo_lex_v1"
+    },
+    {
+      "externalId": "wipo_lex_10197",
+      "claimText": "Afghanistan enacted Law Supporting the Rights of Authors, Composers, Artists and Researchers (Copyright Law) (2008).",
+      "detailId": "10197",
+      "countryCode": "AF",
+      "countryName": "Afghanistan",
+      "title": "Law Supporting the Rights of Authors, Composers, Artists and Researchers (Copyright Law)",
+      "year": 2008,
+      "enactedYear": null,
+      "typeOfText": "Main IP Laws",
+      "subjects": [
+        "Copyright and Related Rights (Neighboring Rights)",
+        "Enforcement of IP and Related Laws",
+        "Traditional Cultural Expressions",
+        "IP Regulatory Body"
+      ],
+      "sourceUrl": "https://www.wipo.int/wipolex/en/legislation/details/10197",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "wipo_lex_v1"
+    },
+    {
+      "externalId": "wipo_lex_11262",
+      "claimText": "Afghanistan enacted Law on the Protection of Patent Rights (1967).",
+      "detailId": "11262",
+      "countryCode": "AF",
+      "countryName": "Afghanistan",
+      "title": "Law on the Protection of Patent Rights",
+      "year": 1967,
+      "enactedYear": null,
+      "typeOfText": "Main IP Laws",
+      "subjects": [
+        "Patents (Inventions)"
+      ],
+      "sourceUrl": "https://www.wipo.int/wipolex/en/legislation/details/11262",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "wipo_lex_v1"
+    },
+    {
+      "externalId": "wipo_lex_13848",
+      "claimText": "Afghanistan enacted Law of Afghanistan Chamber of Commerce and Industries (2012).",
+      "detailId": "13848",
+      "countryCode": "AF",
+      "countryName": "Afghanistan",
+      "title": "Law of Afghanistan Chamber of Commerce and Industries",
+      "year": 2012,
+      "enactedYear": null,
+      "typeOfText": "IP-related Laws",
+      "subjects": [
+        "Enforcement of IP and Related Laws",
+        "Other"
+      ],
+      "sourceUrl": "https://www.wipo.int/wipolex/en/legislation/details/13848",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "wipo_lex_v1"
+    },
+    {
+      "externalId": "wipo_lex_13873",
+      "claimText": "Afghanistan enacted Competition Law (2010).",
+      "detailId": "13873",
+      "countryCode": "AF",
+      "countryName": "Afghanistan",
+      "title": "Competition Law",
+      "year": 2010,
+      "enactedYear": null,
+      "typeOfText": "IP-related Laws",
+      "subjects": [
+        "Competition",
+        "Other"
+      ],
+      "sourceUrl": "https://www.wipo.int/wipolex/en/legislation/details/13873",
+      "claimType": "INSTITUTIONAL",
+      "currentStatus": "HARD_FACT",
+      "verificationStatus": "VERIFIED",
+      "autoApproved": true,
+      "humanReviewed": false,
+      "ingestedBy": "wipo_lex_v1"
+    }
+  ]
+}

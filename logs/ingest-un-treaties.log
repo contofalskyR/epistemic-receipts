@@ -1,0 +1,22 @@
+
+── Pipeline 94: UN Multilateral Treaties ──────────────────────────────
+Mode: full | Limit: all
+
+Step 1: Ensuring topics...
+(node:43082) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+Step 2: Fetching treaties from UN Treaty Collection (chapters I–XXVII)...
+  Chapter 1: 7 treaties (total: 7)  Chapter 2: 1 treaties (total: 8)  Chapter 3: 38 treaties (total: 46)  Chapter 4: 27 treaties (total: 73)  Chapter 5: 5 treaties (total: 78)  Chapter 6: 22 treaties (total: 100)  Chapter 7: 12 treaties (total: 112)  Chapter 8: 6 treaties (total: 118)  Chapter 9: 13 treaties (total: 131)  Chapter 10: 33 treaties (total: 164)  Chapter 11: 18 treaties (total: 182)  Chapter 12: 17 treaties (total: 199)  Chapter 13: 4 treaties (total: 203)  Chapter 14: 10 treaties (total: 213)  Chapter 15: 3 treaties (total: 216)  Chapter 16: 3 treaties (total: 219)  Chapter 17: 1 treaties (total: 220)  Chapter 18: 27 treaties (total: 247)  Chapter 19: 74 treaties (total: 321)  Chapter 20: 1 treaties (total: 322)  Chapter 21: 11 treaties (total: 333)  Chapter 22: 4 treaties (total: 337)  Chapter 23: 3 treaties (total: 340)  Chapter 24: 2 treaties (total: 342)  Chapter 25: 8 treaties (total: 350)  Chapter 26: 13 treaties (total: 363)  Chapter 27: 53 treaties (total: 416)
+
+Total candidates: 416
+
+Step 3: Writing 416 rows to DB (batches of 50, txn timeout 30s)...
+  50/416 processed...  100/416 processed...  150/416 processed...  200/416 processed...  250/416 processed...  300/416 processed...  350/416 processed...  400/416 processed...  416/416 processed...
+Ingestion complete in 54.4s
+  Ingested: 416 | Skipped: 0 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims:  416
+  Sources: 416
+  Edges:   416

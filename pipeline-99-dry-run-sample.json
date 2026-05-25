@@ -1,0 +1,54 @@
+{
+  "runDate": "2026-05-21T02:30:42.859Z",
+  "pipeline": "Pipeline 99",
+  "ingestedBy": "central_asia_v1",
+  "totalEnumerated": 368,
+  "countsByCountry": {
+    "am": 0,
+    "az": 0,
+    "uz": 368,
+    "kg": 0
+  },
+  "notes": {
+    "coverage": "All 4 sites are JavaScript SPAs or WAF-protected. CDX coverage varies — sparse for arlis.am, moderate for lex.uz.",
+    "languages": "Titles ingested as-is in native language. No transliteration applied.",
+    "kyrgyzstan": "cbd.minjust.gov.kg returns 403 on direct access — CDX-only."
+  },
+  "sampleFetched": 3,
+  "coverage": {
+    "withTitle": 3,
+    "withYear": 3
+  },
+  "sample": [
+    {
+      "countryCode": "uz",
+      "country": "Uzbekistan",
+      "slug": "-100122",
+      "title": "&nbsp;407-XII-сон 18.11.1991.&nbsp;O‘zbekiston Respublikasining Davlat bayrog‘i to‘g‘risida",
+      "year": 1991,
+      "waybackUrl": "https://web.archive.org/web/20250426123148/https://www.lex.uz/docs/-100122?ONDATE2=08.07.2023&action=compare",
+      "claimText": "Uzbekistan enacted: &nbsp;407-XII-сон 18.11.1991.&nbsp;O‘zbekiston Respublikasining Davlat bayrog‘i to‘g‘risida.",
+      "externalId": "central_asia_v1_uz_-100122"
+    },
+    {
+      "countryCode": "uz",
+      "country": "Uzbekistan",
+      "slug": "-1003676",
+      "title": "&nbsp;97-сон 21.02.1997.&nbsp;1997-yilda Toshkent shahrida rekonstruksiya va qurulishni davom ettirish to‘g‘risida",
+      "year": 1997,
+      "waybackUrl": "https://web.archive.org/web/20250429075327/https://www.lex.uz/docs/-1003676",
+      "claimText": "Uzbekistan enacted: &nbsp;97-сон 21.02.1997.&nbsp;1997-yilda Toshkent shahrida rekonstruksiya va qurulishni davom ettirish to‘g‘risida.",
+      "externalId": "central_asia_v1_uz_-1003676"
+    },
+    {
+      "countryCode": "uz",
+      "country": "Uzbekistan",
+      "slug": "-1004436",
+      "title": "&nbsp;PQ-330-сон 21.04.2006.&nbsp;To‘qimachilik sanoati korxonalarini moliyaviy sog‘lomlashtirish va ularga paxta tolasi sotish mexanizmini takomillashtirish chora-tadbirlari to‘g‘risida",
+      "year": 2000,
+      "waybackUrl": "https://web.archive.org/web/20250502140111/https://www.lex.uz/docs/-1004436?ONDATE2=11.01.2010&action=compare",
+      "claimText": "Uzbekistan enacted: &nbsp;PQ-330-сон 21.04.2006.&nbsp;To‘qimachilik sanoati korxonalarini moliyaviy sog‘lomlashtirish va ularga paxta tolasi sotish mexanizmini takomillashtirish chora-tadbirlari to‘g‘risida.",
+      "externalId": "central_asia_v1_uz_-1004436"
+    }
+  ]
+}

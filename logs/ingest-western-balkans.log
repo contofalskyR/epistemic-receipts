@@ -1,0 +1,111 @@
+
+── Pipeline 97: Western Balkans Legislation ──
+Mode: full
+Countries: Kosovo, Montenegro, Albania
+Blockers: North Macedonia (pravo.gov.mk — DNS failure), Bosnia (sluzbenilist.ba — DNS failure)
+
+Step 1: Enumerating acts via Wayback CDX API...
+  Kosovo (xk)... (node:43090) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+4062 acts
+  Montenegro (me)...   CDX error for Montenegro: Timeout: http://web.archive.org/cdx/search/cdx?url=www.sluzbenilist.me/*&output=json&fl=original,timestamp&collapse=urlkey&filter=statuscode:200&limit=5000
+0 acts
+  Albania (al)... 0 acts
+
+Total acts enumerated: 4062
+
+Step 2: Ensuring topics...
+  Created topic: xk-parliament
+  Created topic: me-parliament
+  Created topic: al-parliament
+  0 records already in DB
+
+Step 3: Fetching + writing 4062 acts...
+  50/4062 fetched | Committed: 50 | Last: [xk] 100111
+  100/4062 fetched | Committed: 100 | Last: [xk] 100258
+  150/4062 fetched | Committed: 150 | Last: [xk] 10064
+  200/4062 fetched | Committed: 200 | Last: [xk] 100886
+  250/4062 fetched | Committed: 250 | Last: [xk] 101137
+  300/4062 fetched | Committed: 300 | Last: [xk] 101257
+  350/4062 fetched | Committed: 350 | Last: [xk] 101550
+  400/4062 fetched | Committed: 400 | Last: [xk] 101743
+  450/4062 fetched | Committed: 450 | Last: [xk] 101842
+  500/4062 fetched | Committed: 500 | Last: [xk] 10209
+  550/4062 fetched | Committed: 550 | Last: [xk] 102378
+  600/4062 fetched | Committed: 600 | Last: [xk] 102596
+  650/4062 fetched | Committed: 650 | Last: [xk] 102825
+  700/4062 fetched | Committed: 700 | Last: [xk] 10321
+  750/4062 fetched | Committed: 750 | Last: [xk] 10382
+  800/4062 fetched | Committed: 800 | Last: [xk] 10510
+  850/4062 fetched | Committed: 850 | Last: [xk] 105456
+  900/4062 fetched | Committed: 900 | Last: [xk] 105591
+  950/4062 fetched | Committed: 950 | Last: [xk] 105987
+  1000/4062 fetched | Committed: 1000 | Last: [xk] 106071
+  1050/4062 fetched | Committed: 1050 | Last: [xk] 106395
+  1100/4062 fetched | Committed: 1100 | Last: [xk] 106578
+  1150/4062 fetched | Committed: 1150 | Last: [xk] 107096
+  1200/4062 fetched | Committed: 1200 | Last: [xk] 107272
+  1250/4062 fetched | Committed: 1250 | Last: [xk] 10754
+  1300/4062 fetched | Committed: 1300 | Last: [xk] 10805
+  1350/4062 fetched | Committed: 1350 | Last: [xk] 108375
+  1400/4062 fetched | Committed: 1400 | Last: [xk] 10947
+  1450/4062 fetched | Committed: 1450 | Last: [xk] 11040
+  1500/4062 fetched | Committed: 1500 | Last: [xk] 111753
+  1550/4062 fetched | Committed: 1550 | Last: [xk] 11209
+  1600/4062 fetched | Committed: 1600 | Last: [xk] 112270
+  1650/4062 fetched | Committed: 1650 | Last: [xk] 112967
+  1700/4062 fetched | Committed: 1700 | Last: [xk] 11333
+  1750/4062 fetched | Committed: 1750 | Last: [xk] 11396
+  1800/4062 fetched | Committed: 1800 | Last: [xk] 11449
+  1850/4062 fetched | Committed: 1850 | Last: [xk] 11484
+  1900/4062 fetched | Committed: 1900 | Last: [xk] 115041
+  1950/4062 fetched | Committed: 1950 | Last: [xk] 11522
+  2000/4062 fetched | Committed: 2000 | Last: [xk] 115556
+  2050/4062 fetched | Committed: 2050 | Last: [xk] 115950
+  2100/4062 fetched | Committed: 2100 | Last: [xk] 116192
+  2150/4062 fetched | Committed: 2150 | Last: [xk] 11637
+  2200/4062 fetched | Committed: 2200 | Last: [xk] 11698
+  2250/4062 fetched | Committed: 2250 | Last: [xk] 11748
+  2300/4062 fetched | Committed: 2300 | Last: [xk] 117684
+  2350/4062 fetched | Committed: 2350 | Last: [xk] 11794
+  2400/4062 fetched | Committed: 2400 | Last: [xk] 11849
+  2450/4062 fetched | Committed: 2450 | Last: [xk] 11902
+  2500/4062 fetched | Committed: 2500 | Last: [xk] 11953
+  2550/4062 fetched | Committed: 2550 | Last: [xk] 12043
+  2600/4062 fetched | Committed: 2600 | Last: [xk] 12095
+  2650/4062 fetched | Committed: 2650 | Last: [xk] 12148
+  2700/4062 fetched | Committed: 2700 | Last: [xk] 12325
+  2750/4062 fetched | Committed: 2750 | Last: [xk] 12518
+  2800/4062 fetched | Committed: 2800 | Last: [xk] 12655
+  2850/4062 fetched | Committed: 2850 | Last: [xk] 12814
+  2900/4062 fetched | Committed: 2900 | Last: [xk] 13080
+  2950/4062 fetched | Committed: 2950 | Last: [xk] 13271
+  3000/4062 fetched | Committed: 3000 | Last: [xk] 14609
+  3050/4062 fetched | Committed: 3050 | Last: [xk] 14887
+  3100/4062 fetched | Committed: 3100 | Last: [xk] 15009
+  3150/4062 fetched | Committed: 3150 | Last: [xk] 15064
+  3200/4062 fetched | Committed: 3200 | Last: [xk] 15124
+  3250/4062 fetched | Committed: 3250 | Last: [xk] 15184
+  3300/4062 fetched | Committed: 3300 | Last: [xk] 15269
+  3350/4062 fetched | Committed: 3350 | Last: [xk] 15333
+  3400/4062 fetched | Committed: 3400 | Last: [xk] 15461
+  3450/4062 fetched | Committed: 3450 | Last: [xk] 15729
+  3500/4062 fetched | Committed: 3500 | Last: [xk] 15852
+  3550/4062 fetched | Committed: 3550 | Last: [xk] 16174
+  3600/4062 fetched | Committed: 3600 | Last: [xk] 16384
+  3650/4062 fetched | Committed: 3650 | Last: [xk] 16620
+  3700/4062 fetched | Committed: 3700 | Last: [xk] 17765
+  3750/4062 fetched | Committed: 3750 | Last: [xk] 179523
+  3800/4062 fetched | Committed: 3800 | Last: [xk] 18107
+  3850/4062 fetched | Committed: 3850 | Last: [xk] 18301
+  3900/4062 fetched | Committed: 3900 | Last: [xk] 184133
+  3950/4062 fetched | Committed: 3950 | Last: [xk] 18682
+  4000/4062 fetched | Committed: 4000 | Last: [xk] 18862
+  4050/4062 fetched | Committed: 4050 | Last: [xk] 20119
+
+Ingestion complete in 4722.6s
+  Fetched: 4062 | With title: 4062 | No title: 0
+  Ingested: 4062 | Skipped: 0 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims: 4062 | Sources: 4062 | Edges: 4062

@@ -1,0 +1,54 @@
+
+── Pipeline 89: Trinidad & Tobago Revised Laws (Ministry of Legal Affairs) ──
+Mode: full
+Source: rgd.legalaffairs.gov.tt/laws2 — chapter-numbered consolidated laws
+
+Step 1: Fetching chapter index and PDF directory...
+  Fetching chapter index...
+  Found 27 chapter HTML pages
+  Fetching PDF directory index (for mtimes)...
+  Found 532 PDFs with Last-Modified dates
+  Ch._17.htm: 7 acts
+  Ch._18.htm: 4 acts
+  Ch._19.htm: 9 acts
+  Ch._23.htm: 12 acts
+  Ch._24.htm: 1 acts
+  Ch._3.htm: 4 acts
+  Ch._47.htm: 3 acts
+  Ch._67.htm: 8 acts
+  Ch._68.htm: 1 acts
+  Ch._9.htm: 6 acts
+  Ch._90.htm: 4 acts
+  Chs._1-2.htm: 11 acts
+  Chs._10-13.htm: 48 acts
+  Chs._14-16.htm: 16 acts
+  Chs._20-22.htm: 14 acts
+  Chs._25-27.htm: 8 acts
+  Chs._28-31.htm: 23 acts
+  Chs._32-34.htm: 10 acts
+  Chs._35-38.htm: 15 acts
+  Chs._39-42.htm: 30 acts
+  Chs._4-6.htm: 27 acts
+  Chs._44-46.htm: 23 acts
+  Chs._48-53.htm: 24 acts
+  Chs._54-55.htm: 7 acts
+  Chs._56-60.htm: 18 acts
+  Chs._61-62.htm: 9 acts
+  Chs._63-66.htm: 26 acts
+
+  Unique candidates: 368
+
+Total unique candidates: 368
+
+Step 2: Ensuring topic...
+  Created topic: tt-parliament (parent: gov-region-americas)
+
+Step 3: Writing 368 rows to DB (batches of 50, txn timeout 30s)...
+  50/368 processed...  100/368 processed...  150/368 processed...  200/368 processed...  250/368 processed...  300/368 processed...  350/368 processed...  368/368 processed...
+Ingestion complete in 46.6s
+  Ingested: 368 | Skipped: 0 | Errors: 0
+
+Post-ingestion DB verification...
+  Claims:  368
+  Sources: 368
+  Edges:   368

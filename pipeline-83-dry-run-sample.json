@@ -1,0 +1,146 @@
+{
+  "runDate": "2026-05-21T02:42:32.458Z",
+  "pipeline": "Pipeline 83",
+  "ingestedBy": "africanlii_v1",
+  "blocker": "AfricanLII.org API requires authentication. Only Malawi (malawilii.org) accessible via Wayback CDX.",
+  "totalEnumerated": 1009,
+  "countsByCountry": {
+    "mw": 551,
+    "mu": 0,
+    "sc": 433,
+    "sl": 0,
+    "rw": 0,
+    "tz": 13,
+    "bw": 0,
+    "lr": 0,
+    "sz": 12,
+    "mz": 0,
+    "et": 0,
+    "tz-z": 0
+  },
+  "blockedCountries": [
+    "Mauritius",
+    "Sierra Leone",
+    "Rwanda",
+    "Botswana",
+    "Liberia",
+    "Mozambique",
+    "Ethiopia",
+    "Zanzibar"
+  ],
+  "sampleFetched": 12,
+  "coverage": {
+    "withTitle": 12,
+    "total": 12
+  },
+  "sample": [
+    {
+      "countryCode": "mw",
+      "country": "Malawi",
+      "year": 1966,
+      "actNum": "000",
+      "title": "Acts of Parliament, 1966",
+      "waybackUrl": "https://web.archive.org/web/20201030045832/https://malawilii.org/mw/legislation/act/1966/000",
+      "claimText": "Malawi enacted the Acts of Parliament, 1966."
+    },
+    {
+      "countryCode": "mw",
+      "country": "Malawi",
+      "year": 1966,
+      "actNum": "10",
+      "title": "Malawi Development Corporation (Amendment) Act, 1966",
+      "waybackUrl": "https://web.archive.org/web/20200813021328/https://malawilii.org/mw/legislation/act/1966/10",
+      "claimText": "Malawi enacted the Malawi Development Corporation (Amendment) Act, 1966."
+    },
+    {
+      "countryCode": "mw",
+      "country": "Malawi",
+      "year": 1966,
+      "actNum": "12",
+      "title": "Malawi Land (Amendment) Act, 1966",
+      "waybackUrl": "https://web.archive.org/web/20200813030319/https://malawilii.org/mw/legislation/act/1966/12",
+      "claimText": "Malawi enacted the Malawi Land (Amendment) Act, 1966."
+    },
+    {
+      "countryCode": "sc",
+      "country": "Seychelles",
+      "year": null,
+      "actNum": null,
+      "title": "Appropriation Act, 2015",
+      "waybackUrl": "https://web.archive.org/web/20190823203430/https://seylii.org/sc/legislation/act/1-0",
+      "claimText": "Seychelles enacted the Appropriation Act, 2015."
+    },
+    {
+      "countryCode": "sc",
+      "country": "Seychelles",
+      "year": null,
+      "actNum": null,
+      "title": "Animal and Plant Biosecurity Act, 2014",
+      "waybackUrl": "https://web.archive.org/web/20190823202229/https://seylii.org/sc/legislation/act/10-2",
+      "claimText": "Seychelles enacted the Animal and Plant Biosecurity Act, 2014."
+    },
+    {
+      "countryCode": "sc",
+      "country": "Seychelles",
+      "year": null,
+      "actNum": null,
+      "title": "Foreign Exchange Act",
+      "waybackUrl": "https://web.archive.org/web/20190821190701/https://seylii.org/sc/legislation/act/10-4",
+      "claimText": "Seychelles enacted the Foreign Exchange Act."
+    },
+    {
+      "countryCode": "tz",
+      "country": "Tanzania",
+      "year": 2005,
+      "actNum": "3",
+      "title": "Wayback Machine",
+      "waybackUrl": "https://web.archive.org/web/20190927140757/https://tanzlii.org/tz/legislation/act/2005/3/6-2005.pdf",
+      "claimText": "Tanzania enacted the Wayback Machine."
+    },
+    {
+      "countryCode": "tz",
+      "country": "Tanzania",
+      "year": 2009,
+      "actNum": "21",
+      "title": "Law of Child Act No.21 Of 2009",
+      "waybackUrl": "https://web.archive.org/web/20211207045656/https://tanzlii.org/tz/legislation/act/2009/21-0",
+      "claimText": "Tanzania enacted the Law of Child Act No.21 Of 2009."
+    },
+    {
+      "countryCode": "tz",
+      "country": "Tanzania",
+      "year": 2015,
+      "actNum": "12",
+      "title": "National Youth Council Act No.12 of 2015",
+      "waybackUrl": "https://web.archive.org/web/20210615121527/https://tanzlii.org/tz/legislation/act/2015/12-0",
+      "claimText": "Tanzania enacted the National Youth Council Act No.12 of 2015."
+    },
+    {
+      "countryCode": "sz",
+      "country": "eSwatini",
+      "year": null,
+      "actNum": null,
+      "title": "Public Holidays Act, 1938",
+      "waybackUrl": "https://web.archive.org/web/20140103013049/http://www.swazilii.org:80/sz/legislation/act/1938/71",
+      "claimText": "eSwatini enacted the Public Holidays Act, 1938."
+    },
+    {
+      "countryCode": "sz",
+      "country": "eSwatini",
+      "year": null,
+      "actNum": null,
+      "title": "The High Court Act",
+      "waybackUrl": "https://web.archive.org/web/20150507224219/http://www.swazilii.org:80/sz/legislation/act/1954",
+      "claimText": "eSwatini enacted the The High Court Act."
+    },
+    {
+      "countryCode": "sz",
+      "country": "eSwatini",
+      "year": null,
+      "actNum": null,
+      "title": "Immigration Act, 1964",
+      "waybackUrl": "https://web.archive.org/web/20180203082316/https://swazilii.org/sz/legislation/act/1964",
+      "claimText": "eSwatini enacted the Immigration Act, 1964."
+    }
+  ]
+}

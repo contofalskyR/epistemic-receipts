@@ -1,0 +1,54 @@
+
+── Enrich EU MEP Individual Votes ──────────────────────────────────────
+Mode: dry-run | Limit: 5 | Release: 2026-05-16
+  Loaded 2366 taRef → voteId mappings from votes.csv
+(node:93632) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Found 1900 howtheyvote_eu LegislativeVote records in DB
+  1900 unenriched, processing 5
+  5 LegislativeVotes mapped to HTV vote IDs
+
+── Loading member data ──────────────────────────────────────────────────
+  Downloading members.csv.gz from https://github.com/HowTheyVote/data/releases/download/2026-05-16/members.csv.gz...
+  Cached: members-2026-05-16.csv
+  members.csv columns: id, first_name, last_name, country_code, date_of_birth, email, facebook, twitter
+  Loaded 1274 MEP member records
+  Downloading groups.csv.gz from https://github.com/HowTheyVote/data/releases/download/2026-05-16/groups.csv.gz...
+  Cached: groups-2026-05-16.csv
+  groups.csv columns: code, official_label, label, short_label
+  Loaded 0 group abbreviations
+  Downloading group_memberships.csv.gz from https://github.com/HowTheyVote/data/releases/download/2026-05-16/group_memberships.csv.gz...
+  Cached: group_memberships-2026-05-16.csv
+  group_memberships.csv columns: member_id, group_code, term, start_date, end_date
+  group_memberships.csv missing member_id or group_id columns — skipping
+
+── Streaming member_votes.csv ───────────────────────────────────────────
+  Downloading member_votes.csv.gz from https://github.com/HowTheyVote/data/releases/download/2026-05-16/member_votes.csv.gz...
+  Cached: member_votes-2026-05-16.csv
+  member_votes.csv columns: vote_id, member_id, position, country_code, group_code
+
+  Done: 17,088,210 data rows scanned, 3,595 relevant rows for 5 vote IDs
+
+── Writing MemberVote records ───────────────────────────────────────────
+  [dry-run] vote 192341 → P10_TA(2026)0161: 719 members
+    Charles GOERENS (?, ?): FOR
+    Elio DI RUPO (?, ?): FOR
+    Bernd LANGE (?, ?): FOR
+  [dry-run] vote 192321 → P10_TA(2026)0162: 719 members
+    Charles GOERENS (?, ?): FOR
+    Elio DI RUPO (?, ?): FOR
+    Bernd LANGE (?, ?): FOR
+  [dry-run] vote 192361 → P10_TA(2026)0151: 719 members
+    Charles GOERENS (?, ?): FOR
+    Elio DI RUPO (?, ?): FOR
+    Bernd LANGE (?, ?): FOR
+  [dry-run] vote 190668 → P10_TA(2026)0157: 719 members
+    Charles GOERENS (?, ?): FOR
+    Elio DI RUPO (?, ?): FOR
+    Bernd LANGE (?, ?): AGAINST
+  [dry-run] vote 192305 → P10_TA(2026)0163: 719 members
+    Charles GOERENS (?, ?): FOR
+    Elio DI RUPO (?, ?): FOR
+    Bernd LANGE (?, ?): FOR
+
+Results: enriched=5 skipped=0 no-rows=0 failed=0

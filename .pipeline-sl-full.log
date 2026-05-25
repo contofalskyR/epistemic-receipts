@@ -1,0 +1,13 @@
+
+── Pipeline: Sierra Leone Legislation (sierra_leone_legislation_v1) ──
+Mode: full
+
+Fetching pages from https://sierralii.org/legislation…
+(node:6818) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  page 1: 51 rows (51 new)
+  page 2: 32 rows (32 new)
+  Total unique acts: 83
+
+Ingestion complete. Ingested: 83 | Skipped: 0 | Errors: 0
+DB claims (sierra_leone_legislation_v1): 83

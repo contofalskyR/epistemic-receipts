@@ -1,0 +1,38 @@
+
+── Pipeline 83: AfricanLII Legislation ──
+Mode: full
+Countries: Malawi, Mauritius, Seychelles, Sierra Leone, Rwanda, Tanzania, Botswana, Liberia, eSwatini, Mozambique, Ethiopia, Zanzibar
+Note: Only Malawi (malawilii.org) has confirmed Wayback CDX data as of 2026-05-20.
+
+Step 1: Enumerating acts via Wayback CDX API...
+  Malawi (mw)... (node:43083) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+551 acts
+  Mauritius (mu)... 0 acts
+  Seychelles (sc)... 433 acts
+  Sierra Leone (sl)... 0 acts
+  Rwanda (rw)... 0 acts
+  Tanzania (tz)... 13 acts
+  Botswana (bw)... 0 acts
+  Liberia (lr)... 0 acts
+  eSwatini (sz)... 12 acts
+  Mozambique (mz)... 0 acts
+  Ethiopia (et)... 0 acts
+  Zanzibar (tz-z)... 0 acts
+
+Total acts enumerated: 1009
+Working countries: Malawi (551), Seychelles (433), Tanzania (13), eSwatini (12)
+Blocked countries (0 CDX results): Mauritius, Sierra Leone, Rwanda, Botswana, Liberia, Mozambique, Ethiopia, Zanzibar
+
+Step 2: Ensuring topics...
+  Created topic: parliament-malawi
+  Created topic: parliament-seychelles
+  Created topic: parliament-tanzania
+  Created topic: parliament-eswatini
+
+Step 3: Fetching + writing 1009 acts from Wayback...
+
+Complete in 2497.7s | With title: 1009 | No title: 0
+  Ingested: 962 | Skipped: 47 | Errors: 0
+
+DB: Claims=962 Sources=962
