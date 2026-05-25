@@ -28,6 +28,8 @@ type SearchResponse = {
   type: "claims" | "sources" | "all";
   limit: number;
   offset: number;
+  country: string | null;
+  countryName: string | null;
   counts: { claims: number; sources: number };
   claims: ClaimHit[];
   sources: SourceHit[];
@@ -76,6 +78,7 @@ export default function SearchClient() {
   const urlType: "claims" | "sources" | "all" =
     urlTypeRaw === "claims" || urlTypeRaw === "sources" ? urlTypeRaw : "all";
   const urlOffset = Math.max(0, Number.parseInt(searchParams.get("offset") ?? "0", 10) || 0);
+  const urlCountry = (searchParams.get("country") ?? "").trim().toUpperCase();
 
   const [input, setInput] = useState(urlQ);
   const [data, setData] = useState<SearchResponse | null>(null);
@@ -88,7 +91,7 @@ export default function SearchClient() {
   }, [urlQ]);
 
   const pushUrl = useCallback(
-    (overrides: Partial<{ q: string; type: string; offset: number }>) => {
+    (overrides: Partial<{ q: string; type: string; offset: number; country: string }>) => {
       const next = new URLSearchParams(searchParams.toString());
       if (overrides.q !== undefined) {
         if (overrides.q) next.set("q", overrides.q);
@@ -102,6 +105,10 @@ export default function SearchClient() {
         if (overrides.offset > 0) next.set("offset", String(overrides.offset));
         else next.delete("offset");
       }
+      if (overrides.country !== undefined) {
+        if (overrides.country) next.set("country", overrides.country);
+        else next.delete("country");
+      }
       const qs = next.toString();
       router.replace(qs ? `/search?${qs}` : "/search");
     },
@@ -111,7 +118,8 @@ export default function SearchClient() {
   // Fetch whenever URL changes
   useEffect(() => {
     const q = urlQ.trim();
-    if (q.length < MIN_QUERY) {
+    // A country filter alone is enough to fetch even with empty q.
+    if (q.length < MIN_QUERY && !urlCountry) {
       setData(null);
       setError(null);
       setLoading(false);
@@ -121,10 +129,11 @@ export default function SearchClient() {
     setError(null);
     const controller = new AbortController();
     const p = new URLSearchParams();
-    p.set("q", q);
+    if (q) p.set("q", q);
     p.set("type", urlType);
     p.set("limit", String(PAGE_SIZE));
     p.set("offset", String(urlOffset));
+    if (urlCountry) p.set("country", urlCountry);
     fetch(`/api/search?${p.toString()}`, { signal: controller.signal })
       .then(async r => {
         if (!r.ok) throw new Error(`Search failed (${r.status})`);
@@ -140,7 +149,7 @@ export default function SearchClient() {
         setLoading(false);
       });
     return () => controller.abort();
-  }, [urlQ, urlType, urlOffset]);
+  }, [urlQ, urlType, urlOffset, urlCountry]);
 
   function onInputChange(v: string) {
     setInput(v);
@@ -166,6 +175,13 @@ export default function SearchClient() {
 
   const trimmedQ = input.trim();
   const queryTooShort = trimmedQ.length > 0 && trimmedQ.length < MIN_QUERY;
+  const hasCountry = urlCountry.length > 0;
+  const countryLabel = data?.countryName ?? (hasCountry ? urlCountry : null);
+  const showResults = trimmedQ.length >= MIN_QUERY || hasCountry;
+
+  function clearCountry() {
+    pushUrl({ country: "", offset: 0 });
+  }
 
   return (
     <div className="space-y-6">
@@ -176,6 +192,27 @@ export default function SearchClient() {
           Full-text search across every claim and source in the database. Minimum {MIN_QUERY} characters.
         </p>
       </div>
+
+      {hasCountry && countryLabel && (
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-amber-900/60 bg-amber-950/30 px-4 py-3 text-sm">
+          <span className="text-amber-200">
+            Showing claims from{" "}
+            <span className="font-semibold text-amber-100">{countryLabel}</span>
+            {data && (
+              <span className="ml-2 text-amber-400/80">
+                · {data.counts.claims.toLocaleString()}{" "}
+                {data.counts.claims === 1 ? "claim" : "claims"}
+              </span>
+            )}
+          </span>
+          <button
+            onClick={clearCountry}
+            className="text-xs text-amber-300 hover:text-amber-100 transition-colors"
+          >
+            Clear country filter ×
+          </button>
+        </div>
+      )}
 
       <div className="space-y-3">
         <input
@@ -205,7 +242,7 @@ export default function SearchClient() {
             );
           })}
 
-          {data && trimmedQ.length >= MIN_QUERY && (
+          {data && showResults && (
             <span className="text-xs text-gray-500 ml-auto">
               {data.counts.claims.toLocaleString()} {data.counts.claims === 1 ? "claim" : "claims"} ·{" "}
               {data.counts.sources.toLocaleString()} {data.counts.sources === 1 ? "source" : "sources"}
@@ -215,25 +252,25 @@ export default function SearchClient() {
       </div>
 
       {/* States */}
-      {trimmedQ.length === 0 && (
+      {trimmedQ.length === 0 && !hasCountry && (
         <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
           Type a query to begin. Searches Claim.text and Source.name/url with a case-insensitive substring match.
         </div>
       )}
 
-      {queryTooShort && (
+      {queryTooShort && !hasCountry && (
         <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
           Keep typing — at least {MIN_QUERY} characters.
         </div>
       )}
 
-      {loading && trimmedQ.length >= MIN_QUERY && (
+      {loading && showResults && (
         <p className="text-sm text-gray-500">Searching…</p>
       )}
 
       {error && <p className="text-sm text-red-400">{error}</p>}
 
-      {data && !loading && !error && trimmedQ.length >= MIN_QUERY && (
+      {data && !loading && !error && showResults && (
         <Results data={data} type={urlType} />
       )}
 

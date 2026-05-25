@@ -367,7 +367,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           {sidebar && (
             <div className="px-5 py-3 border-t border-gray-800">
               <a
-                href={`/claims?country=${sidebar.countryCode}`}
+                href={`/search?country=${sidebar.countryCode}`}
                 className="text-sm text-amber-400 hover:text-amber-300 transition-colors"
               >
                 View all claims from {sidebar.countryName} →

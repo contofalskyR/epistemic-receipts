@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { COUNTRY_TO_PIPELINES, PIPELINE_COUNTRY_NAME } from "@/lib/globe-pipeline-country";
 
 export const dynamic = "force-dynamic";
 
@@ -33,6 +34,11 @@ export async function GET(req: NextRequest) {
   const type: "claims" | "sources" | "all" =
     typeRaw === "claims" || typeRaw === "sources" ? typeRaw : "all";
 
+  const countryRaw = (url.searchParams.get("country") ?? "").trim().toUpperCase();
+  const countryPipelines = countryRaw ? COUNTRY_TO_PIPELINES[countryRaw] ?? [] : [];
+  const countryActive = countryRaw.length > 0 && countryPipelines.length > 0;
+  const countryName = countryActive ? PIPELINE_COUNTRY_NAME[countryRaw] ?? null : null;
+
   const limit = Math.max(
     1,
     Math.min(
@@ -42,12 +48,15 @@ export async function GET(req: NextRequest) {
   );
   const offset = Math.max(0, Number.parseInt(url.searchParams.get("offset") ?? "0", 10) || 0);
 
-  if (qRaw.length < MIN_QUERY) {
+  // Allow empty q when a country filter is active.
+  if (!countryActive && qRaw.length < MIN_QUERY) {
     return NextResponse.json({
       query: qRaw,
       type,
       limit,
       offset,
+      country: countryRaw || null,
+      countryName: null,
       counts: { claims: 0, sources: 0 },
       claims: [] as ClaimHit[],
       sources: [] as SourceHit[],
@@ -58,32 +67,41 @@ export async function GET(req: NextRequest) {
   const wantClaims = type === "all" || type === "claims";
   const wantSources = type === "all" || type === "sources";
 
+  const claimTextWhere = qRaw.length >= MIN_QUERY
+    ? { text: { contains: qRaw, mode: "insensitive" as const } }
+    : {};
+  const claimCountryWhere = countryActive
+    ? { ingestedBy: { in: countryPipelines } }
+    : {};
+  const claimWhere = {
+    deleted: false,
+    ...claimTextWhere,
+    ...claimCountryWhere,
+  };
+
+  const sourceTextWhere = qRaw.length >= MIN_QUERY
+    ? {
+        OR: [
+          { name: { contains: qRaw, mode: "insensitive" as const } },
+          { url: { contains: qRaw, mode: "insensitive" as const } },
+        ],
+      }
+    : {};
+  // Sources don't get country filtering — only claims do.
+  const sourceWhere = qRaw.length >= MIN_QUERY
+    ? { deleted: false, ...sourceTextWhere }
+    : null;
+
   const [claimsCount, sourcesCount, claimRows, sourceRows] = await Promise.all([
     wantClaims
-      ? prisma.claim.count({
-          where: {
-            deleted: false,
-            text: { contains: qRaw, mode: "insensitive" },
-          },
-        })
+      ? prisma.claim.count({ where: claimWhere })
       : Promise.resolve(0),
-    wantSources
-      ? prisma.source.count({
-          where: {
-            deleted: false,
-            OR: [
-              { name: { contains: qRaw, mode: "insensitive" } },
-              { url: { contains: qRaw, mode: "insensitive" } },
-            ],
-          },
-        })
+    wantSources && sourceWhere
+      ? prisma.source.count({ where: sourceWhere })
       : Promise.resolve(0),
     wantClaims
       ? prisma.claim.findMany({
-          where: {
-            deleted: false,
-            text: { contains: qRaw, mode: "insensitive" },
-          },
+          where: claimWhere,
           orderBy: { createdAt: "desc" },
           take: limit,
           skip: offset,
@@ -106,15 +124,9 @@ export async function GET(req: NextRequest) {
           verificationStatus: string | null;
           createdAt: Date;
         }>),
-    wantSources
+    wantSources && sourceWhere
       ? prisma.source.findMany({
-          where: {
-            deleted: false,
-            OR: [
-              { name: { contains: qRaw, mode: "insensitive" } },
-              { url: { contains: qRaw, mode: "insensitive" } },
-            ],
-          },
+          where: sourceWhere,
           orderBy: { createdAt: "desc" },
           take: limit,
           skip: offset,
@@ -166,6 +178,8 @@ export async function GET(req: NextRequest) {
     type,
     limit,
     offset,
+    country: countryActive ? countryRaw : null,
+    countryName,
     counts: { claims: claimsCount, sources: sourcesCount },
     claims,
     sources,

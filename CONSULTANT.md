@@ -270,6 +270,33 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-25 — Fix broken /globe sidebar claims links; add country filter to /search
+
+**Problem.** The globe sidebar's footer "View all claims from {country}" link pointed at `/claims?country=X`, which routes to `/claims/page.tsx` — the admin claim-creation form. That page ignored the `country` param entirely, so the link was effectively useless. Individual claim cards in the sidebar (`href='/claims/${claim.id}'`) were already correct.
+
+**Fix — Part A: footer link → /search with country support.**
+- `app/globe/GlobeClient.tsx`: changed the footer anchor `href` from `/claims?country=${code}` to `/search?country=${code}`. Single-line change; all other globe sidebar behavior unchanged.
+- `app/api/search/route.ts`: added an optional `country` query param. When present, looks up `COUNTRY_TO_PIPELINES[code]` from `lib/globe-pipeline-country.ts` and adds an `ingestedBy: { in: pipelines }` filter to the **claims** query. Sources are NOT country-filtered (sources don't carry the pipeline tag in the same way and the spec says claims-only). The `MIN_QUERY=3` floor is bypassed when a valid country is active, so `/api/search?country=BR` alone returns 10,966 BR claims with no `q`. Response shape extended with `country` and `countryName` fields so the client can label results. An unknown country code is treated as no filter (the standard `MIN_QUERY` rule re-applies).
+- `app/search/SearchClient.tsx`: reads `country` from `useSearchParams()`. Renders an amber `Showing claims from {country}` banner above the results with a "Clear country filter ×" button (calls `pushUrl({ country: "" })`). The fetch effect now triggers on `country` alone — debounce/q logic untouched. `pushUrl` accepts a new `country` override. Results gating switched from `trimmedQ.length >= MIN_QUERY` to `showResults = trimmedQ.length >= MIN_QUERY || hasCountry` so the empty-q + country-only path renders cleanly. The "Type a query to begin" / "Keep typing" empty states are suppressed when a country is active.
+- `app/search/page.tsx`: no change needed — already wraps the client in `<Suspense>` and the client reads search params directly.
+
+**Fix — Part B: verified `/api/claims/[id]` handles brazil_legislation_v1.**
+- Pulled a sample claim id `cmpdmihex0xuepl8pzhvb4mm6` (one of 10,966 Brazil claims). `GET /api/claims/{id}` returned 200 with the full claim payload: 1 CITES edge, source `"Brazil PLP 141/2026"`, `politicalContext = { headOfGovernment: "Luiz Inácio Lula da Silva", hogParty: "Workers' Party", country: "Brazil" }`. So the Edge → Source → PoliticalContext chain is intact for Brazil. The route already handles both 404 (`if (!claim) return 404`) and empty-edges (renders without crashing on `claim.edges.map(...)`) cases correctly — no fix needed on the route.
+
+**Verification.**
+- `npx tsc --noEmit` clean.
+- `GET /api/search?country=BR&limit=3` → `counts: { claims: 10966, sources: 0 }`, sample ingestedBy = `brazil_legislation_v1`.
+- `GET /api/search?country=BR&q=tributo` → `counts: { claims: 39, sources: 47 }` — claims filtered by both, sources filtered by text only (per spec).
+- `GET /api/search?country=BR` (no q) → 200; previously returned the under-MIN_QUERY message payload.
+- `GET /api/claims/{brazil-claim-id}` → 200 with full edge + PoliticalContext data.
+- `GET /api/claims/notarealid12345` → 404 (unchanged).
+
+**Scope discipline.** No DB migration, no schema changes, no new dependencies. Country filter applies to claims only (sources omitted by design per spec). Unknown country codes fall back to no-filter behavior. Did not touch globe rendering, density API, or the country/[code] route beyond what the task required.
+
+**Files changed:** `app/globe/GlobeClient.tsx`, `app/api/search/route.ts`, `app/search/SearchClient.tsx`, `CONSULTANT.md`.
+
+---
+
 ### 2026-05-25 — /globe fixes: country search, sidebar claim filter, accurate US claim count
 
 **Issue 1 — Country search bar in `app/globe/GlobeClient.tsx`:**
