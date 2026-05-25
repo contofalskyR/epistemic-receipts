@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/review" className="text-gray-400 hover:text-white transition-colors">Review</Link>
           <Link href="/pipelines" className="text-gray-400 hover:text-white transition-colors">Pipelines</Link>
           <Link href="/datasets" className="text-gray-400 hover:text-white transition-colors">Datasets</Link>
+          <Link href="/globe" className="text-gray-400 hover:text-white transition-colors">Globe</Link>
           <Link href="/analysis/votes" className="text-gray-400 hover:text-white transition-colors">Analysis</Link>
           <Link href="/stats" className="text-gray-400 hover:text-white transition-colors">Stats</Link>
           <Link href="/forthcoming" className="text-gray-400 hover:text-white transition-colors ml-auto">Forthcoming</Link>
