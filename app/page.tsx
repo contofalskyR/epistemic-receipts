@@ -525,10 +525,25 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 25, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">/fields</span> launched — Academic Fields browser organized by Wikipedia&apos;s Outline of Academic Disciplines (2,569 fields across 5 top-level sections); drill into any field to see subfields, linked topics, and tagged claims. <span className="font-mono">Topic.academicFieldId</span> FK added; run <span className="font-mono">scripts/tag-topics-academic-field.ts</span> to link existing topics to their fields.</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 23, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">+85,068</span> FDA drug labels — Structured Product Labeling records from openFDA spanning 1970–present (brand + generic + indication snippet), partitioned by effective_time to bypass openFDA&apos;s 25k pagination cap (Pipeline 8 — <span className="font-mono">openfda_labels_v1</span>)</li>
+            <li><span className="text-gray-400">/search</span> launched — cross-cutting full-text search across every claim and source, with filter pills for claims-only / sources-only / all, paginated 25-at-a-time, linked from the nav</li>
+            <li><span className="text-gray-400">/topics/[slug]</span> pages extended — every topic now shows a per-year timeline of claim activity, a vote-pattern summary (recorded votes, % contested vs. unanimous, mean aye/nay percentages), and a YES/NO/ABSTAIN-per-party tally aggregated from <span className="font-mono">LegislativeVote.byPartyJson</span> on linked sources</li>
+            <li><span className="text-gray-400">/analysis/votes</span> page launched — cross-body contested vs. unanimous breakdown across UK, EU Parliament, Canada, and US Congress (2,900+ recorded LegislativeVotes), with per-body tables and party-level aggregates</li>
             <li><span className="text-gray-400">Roll call vote claim pages</span> now show member-by-member breakdowns — API falls back to the matching bill source&apos;s `LegislativeVote` when the vote claim&apos;s own source has none directly attached</li>
             <li><span className="text-gray-400">Bill claim pages</span> no longer time out on Vercel Hobby — member votes (400+ per chamber) lazy-load via a new `/api/legislative-votes/[id]/members` endpoint when the user expands the vote-record section, instead of being fetched up front</li>
+            <li><span className="text-gray-400">Parliamentary-majority enrichment (Tier 2)</span> shipped — full run completed across 49 countries, <span className="font-mono">governingParty</span> populated on 112,843 of 219,965 PoliticalContext rows (107,122 stayed NULL because Tier 1 had no <span className="font-mono">hogParty</span> to fall back to); <span className="font-mono">majorityType / coalitionPartners</span> stayed NULL throughout because Wikidata cabinet items rarely carry <span className="font-mono">P102 / P1830</span> party links — script wrote NULL rather than guessing</li>
+            <li><span className="text-gray-400">+459</span> NATO official texts — summit communiqués, strategic concepts, and declarations 1941–2025 from nato.int/cps via Wayback CDX enumeration (Pipeline 17)</li>
+            <li><span className="text-gray-400">+3,868</span> Austria Nationalrat enacted laws — Beschlüsse des Nationalrates (DOKTYP=BNR) from Parlament.gv.at (Pipeline 22)</li>
+            <li><span className="text-gray-400">+528</span> Jamaica Acts of Parliament 2000–2023 — from the Ministry of Justice Laws of Jamaica catalogue (Pipeline 79)</li>
           </ul>
         </div>
 

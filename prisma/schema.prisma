@@ -193,19 +193,22 @@ model ThresholdEvent {
 }
 
 model Topic {
-  id            String       @id @default(cuid())
-  name          String
-  slug          String       @unique
-  description   String?
-  domain        String
-  parentTopicId String?
-  parentTopic   Topic?       @relation("TopicHierarchy", fields: [parentTopicId], references: [id])
-  children      Topic[]      @relation("TopicHierarchy")
-  claims        ClaimTopic[]
-  createdAt     DateTime     @default(now())
+  id              String         @id @default(cuid())
+  name            String
+  slug            String         @unique
+  description     String?
+  domain          String
+  parentTopicId   String?
+  parentTopic     Topic?         @relation("TopicHierarchy", fields: [parentTopicId], references: [id])
+  children        Topic[]        @relation("TopicHierarchy")
+  claims          ClaimTopic[]
+  createdAt       DateTime       @default(now())
+  academicFieldId Int?
+  academicField   AcademicField? @relation("TopicAcademicField", fields: [academicFieldId], references: [id])
 
   @@index([domain])
   @@index([parentTopicId])
+  @@index([academicFieldId])
 }
 
 model ClaimTopic {
@@ -229,6 +232,7 @@ model AcademicField {
   level     Int
   createdAt DateTime        @default(now())
   claims    Claim[]         @relation("ClaimAcademicField")
+  topics    Topic[]         @relation("TopicAcademicField")
 
   @@index([parentId])
   @@index([level])
