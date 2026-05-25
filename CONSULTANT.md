@@ -269,6 +269,40 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-25 (Academic Fields browser page — /fields, /fields/[slug], Topic.academicFieldId migration)
+
+Built the Academic Fields browser for Epistemic Receipts, cross-linking Topics to AcademicFields.
+
+**Schema migration (`20260525223703_link_topic_academic_field`):**
+- Added `Topic.academicFieldId Int?` → `AcademicField` FK (relation name `TopicAcademicField`).
+- Added inverse `AcademicField.topics Topic[]` relation.
+- Added `@@index([academicFieldId])` to `Topic`.
+- `npx prisma migrate dev --name link-topic-academic-field` applied successfully.
+
+**New script: `scripts/tag-topics-academic-field.ts`:**
+- Maps existing `Topic.domain` values to best-matching `AcademicField` by slug `contains` search.
+- Mapping: history→history, astronomy→astronomy, psychology→psychology, law→law, medicine→medicine, government→political-science, public_health→public-health, archives→history.
+- Dry-run by default; `ALLOW_EDITS=true` to write. Prints per-domain field match and final tagged/skipped counts.
+- **Not auto-run** — Robert runs this manually after reviewing dry-run output.
+
+**API routes:**
+- `app/api/fields/route.ts` — `GET /api/fields`: returns all 5 top-level fields (level=0) with their level-1 children, `_count.claims`, `_count.topics`, and `topics[]`. `?parent=<slug>` drills into a field's direct children.
+- `app/api/fields/[slug]/route.ts` — `GET /api/fields/[slug]`: field detail including parent breadcrumb, children array, linked topics (with claim counts), and 10 most-recent claims tagged to this field.
+
+**Pages:**
+- `app/fields/page.tsx` — index: 5 top-level section cards (Humanities, Social Sciences, Natural Sciences, Formal Sciences, Applied Sciences). Each card shows description, claim count, topic count, subfields count, and a sample of level-1 child field tags. Links to `/fields/[slug]`.
+- `app/fields/[slug]/page.tsx` — drill-down: breadcrumb (Fields > Parent > Current), subfields grid (each linking deeper), Topics section (links to `/domains/[domain]`), Recent Claims section (10 claims tagged to this field with status badge). Shows "No data linked yet" when empty.
+
+**Navigation:** Added `<Link href="/fields">Fields</Link>` to `app/layout.tsx` between Topics and Review.
+
+**Homepage / footer:** Added May 25, 2026 changelog entry for `/fields` launch. Footer bumped to `May 25, 2026`.
+
+**TypeScript:** `npx tsc --noEmit` and `npx tsc --noEmit --project tsconfig.scripts.json` clean. All new files in the `app/` tree type-check with zero errors (pre-existing errors in unrelated scripts unchanged).
+
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260525223703_link_topic_academic_field/migration.sql`, `scripts/tag-topics-academic-field.ts`, `app/api/fields/route.ts`, `app/api/fields/[slug]/route.ts`, `app/fields/page.tsx`, `app/fields/[slug]/page.tsx`, `app/layout.tsx`, `app/page.tsx`, `CONSULTANT.md`.
+
+---
+
 ### 2026-05-25 (Bugfix — Congress party backfill + member-votes enrichment now build Clerk/Senate XML URLs locally)
 
 Two related Congress.gov scripts were both failing because they trusted the `url` field returned by the `/v3/bill/.../actions` `recordedVotes` array. That field points at HTML pages (`https://clerk.house.gov/Votes/<id>` for House, `https://www.senate.gov/legislative/LIS/roll_call_lists/roll_call_vote_cfm.cfm?...` for Senate) — and in some payloads at api.congress.gov endpoints that no longer exist (v3 has no `/vote` endpoint). Neither variant is the XML the script parsers expect. Symptoms:
