@@ -13,6 +13,7 @@ type TopicNode = {
 };
 
 const DOMAIN_LABELS: Record<string, string> = {
+  archives:     "Archives & Declassified Documents",
   astronomy:    "Astronomy",
   government:   "Government & Legislation",
   history:      "History",

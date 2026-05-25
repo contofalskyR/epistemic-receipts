@@ -117,6 +117,32 @@ type ClaimItem = {
   }[];
 };
 
+type TimelinePoint = { year: number; count: number };
+
+type VoteStats = {
+  totalVotes: number;
+  contestedCount: number;
+  contestedPct: number;
+  unanimousCount: number;
+  unanimousPct: number;
+  avgAyePct: number;
+  avgNayPct: number;
+  contestedThreshold: number;
+  minTotal: number;
+};
+
+type PartyTally = {
+  party: string;
+  yes: number;
+  no: number;
+  abstain: number;
+  billCount: number;
+  totalVotes: number;
+  yesPct: number;
+  noPct: number;
+  abstainPct: number;
+};
+
 type TopicData = {
   topic: {
     id: string; name: string; slug: string; domain: string;
@@ -131,6 +157,10 @@ type TopicData = {
   pages: number;
   availableParties: { party: string; claimCount: number }[];
   availableLeaders: { leader: string; claimCount: number }[];
+  timeline: TimelinePoint[];
+  voteStats: VoteStats | null;
+  partyVoteTallies: PartyTally[];
+  partyRowsParsed: number;
 };
 
 function TopicChips({ topics, exclude }: { topics: { topic: TopicTag }[]; exclude?: string }) {
@@ -149,6 +179,151 @@ function TopicChips({ topics, exclude }: { topics: { topic: TopicTag }[]; exclud
         </Link>
       ))}
     </div>
+  );
+}
+
+function pct(n: number, digits = 0): string {
+  return `${n.toFixed(digits)}%`;
+}
+
+function TimelineSection({ points }: { points: TimelinePoint[] }) {
+  if (points.length === 0) return null;
+  const minYear = points[0].year;
+  const maxYear = points[points.length - 1].year;
+  const filled: TimelinePoint[] = [];
+  const byYear = new Map(points.map(p => [p.year, p.count]));
+  for (let y = minYear; y <= maxYear; y++) {
+    filled.push({ year: y, count: byYear.get(y) ?? 0 });
+  }
+  const max = Math.max(...filled.map(p => p.count));
+  const total = filled.reduce((s, p) => s + p.count, 0);
+  return (
+    <section className="space-y-3">
+      <div>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">Timeline</h2>
+        <p className="text-[11px] text-gray-600 mt-1">
+          {total.toLocaleString()} claims · {minYear}–{maxYear} · grouped by claim-emerged year (or createdAt fallback)
+        </p>
+      </div>
+      <div className="rounded-lg border border-gray-800 bg-gray-900 p-3">
+        <div className="flex items-end gap-0.5 h-32">
+          {filled.map(p => {
+            const h = max > 0 ? (p.count / max) * 100 : 0;
+            return (
+              <div
+                key={p.year}
+                className="flex-1 min-w-[2px] flex flex-col justify-end group relative"
+                title={`${p.year}: ${p.count} ${p.count === 1 ? "claim" : "claims"}`}
+              >
+                <div
+                  className="bg-blue-700 hover:bg-blue-500 transition-colors rounded-sm"
+                  style={{ height: `${h}%`, minHeight: p.count > 0 ? "1px" : "0" }}
+                />
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex justify-between mt-2 text-[10px] text-gray-600 font-mono">
+          <span>{minYear}</span>
+          {maxYear - minYear > 8 && (
+            <span>{Math.round((minYear + maxYear) / 2)}</span>
+          )}
+          <span>{maxYear}</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VoteStatsSection({ stats }: { stats: VoteStats }) {
+  return (
+    <section className="space-y-3">
+      <div>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">Vote patterns</h2>
+        <p className="text-[11px] text-gray-600 mt-1">
+          Recorded legislative votes on sources linked to claims in this topic. Contested when nay share &gt; {pct(stats.contestedThreshold * 100)}.
+          Procedural votes with fewer than {stats.minTotal} recorded ayes-plus-nays excluded.
+        </p>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="rounded border border-gray-800 bg-gray-900 px-3 py-2">
+          <div className="text-[11px] text-gray-500">Recorded votes</div>
+          <div className="text-lg font-semibold text-white tabular-nums">{stats.totalVotes.toLocaleString()}</div>
+        </div>
+        <div className="rounded border border-gray-800 bg-gray-900 px-3 py-2">
+          <div className="text-[11px] text-gray-500">Contested</div>
+          <div className="text-lg font-semibold text-red-300 tabular-nums">{stats.contestedCount.toLocaleString()}</div>
+          <div className="text-[10px] text-gray-600">{pct(stats.contestedPct, 1)}</div>
+        </div>
+        <div className="rounded border border-gray-800 bg-gray-900 px-3 py-2">
+          <div className="text-[11px] text-gray-500">Unanimous</div>
+          <div className="text-lg font-semibold text-green-300 tabular-nums">{stats.unanimousCount.toLocaleString()}</div>
+          <div className="text-[10px] text-gray-600">{pct(stats.unanimousPct, 1)}</div>
+        </div>
+        <div className="rounded border border-gray-800 bg-gray-900 px-3 py-2">
+          <div className="text-[11px] text-gray-500">Avg aye / nay</div>
+          <div className="text-sm font-semibold tabular-nums">
+            <span className="text-green-300">{pct(stats.avgAyePct, 1)}</span>
+            <span className="text-gray-600 mx-1">/</span>
+            <span className="text-red-300">{pct(stats.avgNayPct, 1)}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PartyTalliesSection({ tallies, partyRowsParsed, totalVotes }: { tallies: PartyTally[]; partyRowsParsed: number; totalVotes: number }) {
+  if (tallies.length === 0) return null;
+  return (
+    <section className="space-y-3">
+      <div>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">Party vote breakdown</h2>
+        <p className="text-[11px] text-gray-600 mt-1">
+          Aggregate yes / no / abstain totals per party, parsed from{" "}
+          {partyRowsParsed.toLocaleString()} of {totalVotes.toLocaleString()} vote records that include a per-party breakdown.
+        </p>
+      </div>
+      <div className="rounded border border-gray-800 overflow-hidden">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="border-b border-gray-800 bg-gray-900/50">
+              <th className="px-3 py-2 text-left font-medium text-gray-500">Party</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">Bills</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">Votes</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">Yes</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">No</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">Abstain</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">Yes %</th>
+              <th className="px-3 py-2 text-right font-medium text-gray-500">No %</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tallies.map((p, i) => (
+              <tr
+                key={p.party}
+                className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+              >
+                <td className="px-3 py-2 align-top">
+                  <span
+                    className="inline-block w-2 h-2 rounded-sm mr-1.5"
+                    style={{ backgroundColor: partyColor(p.party) }}
+                  />
+                  <span className="text-gray-100">{p.party}</span>
+                </td>
+                <td className="px-3 py-2 text-right text-gray-300 tabular-nums align-top">{p.billCount.toLocaleString()}</td>
+                <td className="px-3 py-2 text-right text-gray-300 tabular-nums align-top">{p.totalVotes.toLocaleString()}</td>
+                <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{p.yes.toLocaleString()}</td>
+                <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{p.no.toLocaleString()}</td>
+                <td className="px-3 py-2 text-right text-gray-500 tabular-nums align-top">{p.abstain.toLocaleString()}</td>
+                <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(p.yesPct, 1)}</td>
+                <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(p.noPct, 1)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   );
 }
 
@@ -199,7 +374,7 @@ function TopicSlugContent() {
 
   if (!data) return <p className="text-gray-600 text-sm">Loading…</p>;
 
-  const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders } = data;
+  const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
 
   return (
@@ -229,8 +404,25 @@ function TopicSlugContent() {
         {topic.description && (
           <p className="text-sm text-gray-400">{topic.description}</p>
         )}
-        <p className="text-xs text-gray-600">{total} {total === 1 ? "claim" : "claims"}</p>
+        <div className="flex items-center gap-3 text-xs text-gray-600">
+          <span>{total.toLocaleString()} {total === 1 ? "claim" : "claims"}</span>
+          <span className="text-gray-800">·</span>
+          <Link href={`/domains/${topic.domain}`} className="hover:text-gray-300 transition-colors">
+            {domainLabel}
+          </Link>
+        </div>
       </div>
+
+      {/* Timeline */}
+      <TimelineSection points={timeline} />
+
+      {/* Vote stats */}
+      {voteStats && <VoteStatsSection stats={voteStats} />}
+
+      {/* Party tallies from LegislativeVote.byPartyJson */}
+      {voteStats && (
+        <PartyTalliesSection tallies={partyVoteTallies} partyRowsParsed={partyRowsParsed} totalVotes={voteStats.totalVotes} />
+      )}
 
       {/* Subtopics */}
       {topic.children.length > 0 && (
