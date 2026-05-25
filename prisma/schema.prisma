@@ -23,7 +23,7 @@ model Claim {
   claimType             String            @default("EMPIRICAL") // EMPIRICAL | INSTITUTIONAL | INTERPRETIVE | HYBRID
   parentClaimId         String?
   claimEmergedAt        DateTime?
-  claimEmergedPrecision String?           // DAY | MONTH | QUARTER | YEAR
+  claimEmergedPrecision String? // DAY | MONTH | QUARTER | YEAR
   ingestedBy            String            @default("manual")
   humanReviewed         Boolean           @default(false)
   reviewConfidence      ReviewConfidence?
@@ -32,17 +32,22 @@ model Claim {
   externalId            String?           @unique
   deleted               Boolean           @default(false)
   autoApproved          Boolean           @default(false)
-  verificationStatus    String?           // VERIFIED | PROVISIONAL | DISPUTED | DEPRECATED
+  verificationStatus    String? // VERIFIED | PROVISIONAL | DISPUTED | DEPRECATED
   metadata              Json?
 
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
   children Claim[] @relation("ClaimHierarchy")
+
+  academicFieldId Int?
+  academicField   AcademicField? @relation("ClaimAcademicField", fields: [academicFieldId], references: [id])
 
   edges                    Edge[]
   metaEdges                MetaEdge[]
   suggestedThresholdEvents SuggestedThresholdEvent[]
   thresholdEvents          ThresholdEvent[]
   topics                   ClaimTopic[]
+
+  @@index([academicFieldId])
 }
 
 model Source {
@@ -50,7 +55,7 @@ model Source {
   name             String
   url              String?
   publishedAt      DateTime?
-  methodologyType  String            // primary | derivative | opinion
+  methodologyType  String // primary | derivative | opinion
   createdAt        DateTime          @default(now())
   ingestedBy       String            @default("manual")
   humanReviewed    Boolean           @default(false)
@@ -61,23 +66,23 @@ model Source {
   deleted          Boolean           @default(false)
   autoApproved     Boolean           @default(false)
 
-  edges                       Edge[]
-  metaEdgesActed              MetaEdge[]               @relation("MetaEdgeActor")
-  credibilityEvents           SourceCredibilityEvent[]
-  relationshipsA              SourceRelationship[]     @relation("RelationshipSourceA")
-  relationshipsB              SourceRelationship[]     @relation("RelationshipSourceB")
-  thresholdEventsTriggered    ThresholdEvent[]         @relation("ThresholdTriggerSource")
-  suggestedEventsTriggered    SuggestedThresholdEvent[] @relation("SuggestedTriggerSource")
-  politicalContext            PoliticalContext?
-  legislativeVotes            LegislativeVote[]
-  wikidataLink                WikidataLink?
+  edges                    Edge[]
+  metaEdgesActed           MetaEdge[]                @relation("MetaEdgeActor")
+  credibilityEvents        SourceCredibilityEvent[]
+  relationshipsA           SourceRelationship[]      @relation("RelationshipSourceA")
+  relationshipsB           SourceRelationship[]      @relation("RelationshipSourceB")
+  thresholdEventsTriggered ThresholdEvent[]          @relation("ThresholdTriggerSource")
+  suggestedEventsTriggered SuggestedThresholdEvent[] @relation("SuggestedTriggerSource")
+  politicalContext         PoliticalContext?
+  legislativeVotes         LegislativeVote[]
+  wikidataLink             WikidataLink?
 }
 
 model SourceRelationship {
   id        String   @id @default(cuid())
   sourceAId String
   sourceBId String
-  type      String   // funder_of | affiliated_with | co_authored_with | employed_by
+  type      String // funder_of | affiliated_with | co_authored_with | employed_by
   createdAt DateTime @default(now())
 
   sourceA Source @relation("RelationshipSourceA", fields: [sourceAId], references: [id])
@@ -87,7 +92,7 @@ model SourceRelationship {
 model SourceCredibilityEvent {
   id        String   @id @default(cuid())
   sourceId  String
-  eventType String   // CREDIBILITY_DOWNGRADED | RESTORED
+  eventType String // CREDIBILITY_DOWNGRADED | RESTORED
   reason    String
   createdAt DateTime @default(now())
 
@@ -99,7 +104,7 @@ model Edge {
   id               String            @id @default(cuid())
   sourceId         String
   claimId          String
-  type             String            // FOR | AGAINST | CITES | RETRACTS | CORRECTED
+  type             String // FOR | AGAINST | CITES | RETRACTS | CORRECTED
   evidenceType     String            @default("EVIDENTIARY") // EVIDENTIARY | PROCEDURAL | ARGUMENTATIVE
   deleted          Boolean           @default(false)
   createdAt        DateTime          @default(now())
@@ -134,7 +139,7 @@ model MetaEdge {
   actorSourceId    String
   targetEdgeId     String
   claimId          String
-  type             String            // SUPPRESSED | AMPLIFIED | LABELED | DEMOTED
+  type             String // SUPPRESSED | AMPLIFIED | LABELED | DEMOTED
   reason           String?
   deleted          Boolean           @default(false)
   createdAt        DateTime          @default(now())
@@ -151,40 +156,40 @@ model MetaEdge {
 
 // AI writes here — not authoritative
 model SuggestedThresholdEvent {
-  id                   String   @id @default(cuid())
-  claimId              String
-  aiReasoning          String
-  evidenceSnapshot     String   // JSON
-  triggeredBySourceId  String?  // nullable FK — the source the AI thinks resolved the claim
-  createdAt            DateTime @default(now())
+  id                  String   @id @default(cuid())
+  claimId             String
+  aiReasoning         String
+  evidenceSnapshot    String // JSON
+  triggeredBySourceId String? // nullable FK — the source the AI thinks resolved the claim
+  createdAt           DateTime @default(now())
 
-  claim              Claim           @relation(fields: [claimId], references: [id])
-  triggeredBySource  Source?         @relation("SuggestedTriggerSource", fields: [triggeredBySourceId], references: [id])
-  thresholdEvent     ThresholdEvent?
+  claim             Claim           @relation(fields: [claimId], references: [id])
+  triggeredBySource Source?         @relation("SuggestedTriggerSource", fields: [triggeredBySourceId], references: [id])
+  thresholdEvent    ThresholdEvent?
 }
 
 // Humans promote suggestions here — the receipt
 model ThresholdEvent {
-  id                   String            @id @default(cuid())
-  claimId              String
-  suggestedEventId     String?           @unique
-  confirmedBy          String
-  triggeredBy          String            // free text — e.g. "FDA NDA approval"
-  triggeredBySourceId  String?           // nullable FK — the auditable resolver source
-  note                 String?
-  evidenceSnapshot     String            // JSON
-  createdAt            DateTime          @default(now())
-  ingestedBy           String            @default("manual")
-  humanReviewed        Boolean           @default(false)
-  reviewConfidence     ReviewConfidence?
-  reviewedAt           DateTime?
-  reviewedBy           String?
-  deleted              Boolean           @default(false)
-  autoApproved         Boolean           @default(false)
+  id                  String            @id @default(cuid())
+  claimId             String
+  suggestedEventId    String?           @unique
+  confirmedBy         String
+  triggeredBy         String // free text — e.g. "FDA NDA approval"
+  triggeredBySourceId String? // nullable FK — the auditable resolver source
+  note                String?
+  evidenceSnapshot    String // JSON
+  createdAt           DateTime          @default(now())
+  ingestedBy          String            @default("manual")
+  humanReviewed       Boolean           @default(false)
+  reviewConfidence    ReviewConfidence?
+  reviewedAt          DateTime?
+  reviewedBy          String?
+  deleted             Boolean           @default(false)
+  autoApproved        Boolean           @default(false)
 
-  claim              Claim                    @relation(fields: [claimId], references: [id])
-  suggestedEvent     SuggestedThresholdEvent? @relation(fields: [suggestedEventId], references: [id])
-  triggeredBySource  Source?                  @relation("ThresholdTriggerSource", fields: [triggeredBySourceId], references: [id])
+  claim             Claim                    @relation(fields: [claimId], references: [id])
+  suggestedEvent    SuggestedThresholdEvent? @relation(fields: [suggestedEventId], references: [id])
+  triggeredBySource Source?                  @relation("ThresholdTriggerSource", fields: [triggeredBySourceId], references: [id])
 }
 
 model Topic {
@@ -214,11 +219,26 @@ model ClaimTopic {
   @@index([topicId])
 }
 
+model AcademicField {
+  id        Int             @id @default(autoincrement())
+  name      String
+  slug      String          @unique
+  parentId  Int?
+  parent    AcademicField?  @relation("AcademicFieldHierarchy", fields: [parentId], references: [id])
+  children  AcademicField[] @relation("AcademicFieldHierarchy")
+  level     Int
+  createdAt DateTime        @default(now())
+  claims    Claim[]         @relation("ClaimAcademicField")
+
+  @@index([parentId])
+  @@index([level])
+}
+
 // AI job queue stub — no worker in v1
 model AiJob {
   id           String   @id @default(cuid())
-  jobType      String   // CLASSIFY_SOURCE | DETECT_CONTRADICTIONS | PROPOSE_THRESHOLD
-  inputPayload String   // JSON
+  jobType      String // CLASSIFY_SOURCE | DETECT_CONTRADICTIONS | PROPOSE_THRESHOLD
+  inputPayload String // JSON
   status       String   @default("pending") // pending | running | done | failed
   result       String?
   createdAt    DateTime @default(now())
@@ -242,10 +262,10 @@ model PoliticalContext {
   hogParty          String?
   hogWikidataId     String?
   governingParty    String?
-  majorityType      String?   // "majority", "minority", "coalition", "decree"
+  majorityType      String? // "majority", "minority", "coalition", "decree"
   majoritySeats     Int?
   totalSeats        Int?
-  coalitionPartners String?   // JSON array
+  coalitionPartners String? // JSON array
   wikidataItemId    String?
   enrichedAt        DateTime  @default(now())
   createdAt         DateTime  @default(now())
@@ -253,23 +273,23 @@ model PoliticalContext {
 }
 
 model LegislativeVote {
-  id               String        @id @default(cuid())
+  id               String       @id @default(cuid())
   sourceId         String
-  source           Source        @relation(fields: [sourceId], references: [id])
+  source           Source       @relation(fields: [sourceId], references: [id])
   chamber          String
   yesCount         Int?
   noCount          Int?
   abstainCount     Int?
   totalSeats       Int?
-  passageThreshold String?       // "simple_majority", "supermajority", "unanimous", etc.
+  passageThreshold String? // "simple_majority", "supermajority", "unanimous", etc.
   voteDate         DateTime?
-  passageType      String?       // "legislative_vote", "executive_decree", "committee_only"
-  byPartyJson      String?       // JSON: {PartyName: {yes: N, no: N, abstain: N}, ...}
-  dataSource       String?       // "govtrack", "theyworkforyou", "wikidata", etc.
-  result           String?       // "passed" | "failed" | "tied" | "unknown"
-  topics           String?       // JSON array: ["health", "defense", "environment"]
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @updatedAt
+  passageType      String? // "legislative_vote", "executive_decree", "committee_only"
+  byPartyJson      String? // JSON: {PartyName: {yes: N, no: N, abstain: N}, ...}
+  dataSource       String? // "govtrack", "theyworkforyou", "wikidata", etc.
+  result           String? // "passed" | "failed" | "tied" | "unknown"
+  topics           String? // JSON array: ["health", "defense", "environment"]
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
   memberVotes      MemberVote[]
 }
 
@@ -280,9 +300,9 @@ model MemberVote {
   memberName        String
   memberState       String?
   memberParty       String?
-  memberId          String?         // bioguide ID
-  chamber           String          // "House of Representatives" | "Senate"
-  vote              String          // "Yea" | "Nay" | "Not Voting" | "Present"
+  memberId          String? // bioguide ID
+  chamber           String // "House of Representatives" | "Senate"
+  vote              String // "Yea" | "Nay" | "Not Voting" | "Present"
   createdAt         DateTime        @default(now())
 
   @@index([legislativeVoteId])
@@ -290,16 +310,16 @@ model MemberVote {
 }
 
 model Polity {
-  id             String    @id @default(cuid())
+  id             String   @id @default(cuid())
   name           String
   countryCode    String?
-  governmentType String    // "democracy"|"republic"|"monarchy"|"empire"|"fascist"|"communist"|"authoritarian"|"theocracy"|"city_state"|"tribal"|"colonial"|"other"
-  startYear      Int?      // can be negative (BCE)
-  endYear        Int?      // null = still active
-  wikidataId     String?   @unique
+  governmentType String // "democracy"|"republic"|"monarchy"|"empire"|"fascist"|"communist"|"authoritarian"|"theocracy"|"city_state"|"tribal"|"colonial"|"other"
+  startYear      Int? // can be negative (BCE)
+  endYear        Int? // null = still active
+  wikidataId     String?  @unique
   successorOf    String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 // Wikidata cross-reference enrichment — links Source records to Wikidata Q-numbers.
@@ -308,10 +328,10 @@ model WikidataLink {
   id            String   @id @default(cuid())
   sourceId      String   @unique
   source        Source   @relation(fields: [sourceId], references: [id])
-  wikidataQid   String   // e.g., "Q189760" (without "wd:" prefix)
-  wikidataLabel String?  // entity label from Wikidata, for readability
-  matchMethod   String   // "p3306_un_symbol" | "p5765_courtlistener" | "title_jurisdiction"
-  confidence    String   // "high" | "medium" | "low"
+  wikidataQid   String // e.g., "Q189760" (without "wd:" prefix)
+  wikidataLabel String? // entity label from Wikidata, for readability
+  matchMethod   String // "p3306_un_symbol" | "p5765_courtlistener" | "title_jurisdiction"
+  confidence    String // "high" | "medium" | "low"
   enrichedAt    DateTime @default(now())
 
   @@index([wikidataQid])
