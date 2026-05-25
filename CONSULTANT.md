@@ -297,6 +297,26 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ---
 
+### 2026-05-25 — Globe: political/heatmap view mode toggle
+
+**Feature.** Added a pill toggle (top-right of the globe, z-40) that switches between two rendering modes without reinitializing the globe instance.
+
+**Mode 1 — Heatmap (existing, default):** log-scale amber/blue density coloring, low-res 110m GeoJSON, existing stroke/altitude settings unchanged.
+
+**Mode 2 — Political (new):** high-res 50m GeoJSON (`ne_50m_admin_0_countries.geojson`), uniform dark slate cap (`#1a2035`), bright blue borders (`#4a9eff`), polygon side color `rgba(10,10,30,0.8)`, altitude `0.008`. Hover highlights the hovered country to `#263050` by calling `.polygonCapColor(fn)` on the live globe instance. Tooltip still shows claim count in both modes.
+
+**Implementation notes:**
+- Both GeoJSONs fetched in parallel at init time and stored in `geoData110Ref` / `geoData50Ref` — toggling is instant, no loading state.
+- `viewModeRef` mirrors `viewMode` state so globe callbacks (which close over stale state) always read current mode.
+- `viewMode` useEffect updates `polygonsData`, `polygonCapColor`, `polygonStrokeColor`, `polygonAltitude`, `polygonSideColor` on the existing globe instance; no reinit.
+- Legend hidden in political mode (no density scale to show).
+
+**Files changed:** `app/globe/GlobeClient.tsx`, `CONSULTANT.md`.
+
+**Typecheck:** `npx tsc --noEmit` clean.
+
+---
+
 ### 2026-05-25 — /globe fixes: country search, sidebar claim filter, accurate US claim count
 
 **Issue 1 — Country search bar in `app/globe/GlobeClient.tsx`:**
