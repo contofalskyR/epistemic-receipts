@@ -93,7 +93,7 @@ function parseListPage(html: string, country: string): Act[] {
   const acts: Act[] = []
   // Match any <a> linking to /akn/<cc>/act/... or /en/akn/<cc>/act/... — pull title from <a> text.
   const linkRegex = new RegExp(`<a\\s+href="((?:\\/[a-z]{2})?\\/akn\\/${country}\\/act\\/[^"]+)"[^>]*>([\\s\\S]*?)<\\/a>`, 'g')
-  const actPathRegex = new RegExp(`\\/akn\\/${country}\\/act\\/(?:(ln|by-law|si)\\/)?([0-9]+)\\/([^/]+)\\/[a-z]+@([0-9-]+)`)
+  const actPathRegex = new RegExp(`\\/akn\\/${country}\\/act\\/(?:([a-z][a-z-]+)\\/)?([0-9]+)\\/([^/]+)\\/[a-z]+@([0-9-]+)`)
   const seen = new Set<string>()
   let m: RegExpExecArray | null
   while ((m = linkRegex.exec(html)) !== null) {
@@ -210,7 +210,7 @@ async function main() {
   const countryName = COUNTRY_NAMES[country] ?? country.toUpperCase()
   const ingestedBy = `${countryName.toLowerCase().replace(/\s+/g, '_')}_legislation_v1`
   const base = `https://${domain}`
-  const listUrl = `${base}/legislation`
+  const listUrl = `${base}/legislation/`
 
   console.log(`\n── Pipeline: ${countryName} Legislation (${ingestedBy}) ──`)
   console.log(`Mode: ${dryRun ? 'dry-run' : 'full'}`)
