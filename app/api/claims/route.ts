@@ -6,17 +6,30 @@ const VALID_PRECISIONS = ["DAY", "MONTH", "QUARTER", "YEAR"];
 const VALID_CLAIM_TYPES = ["EMPIRICAL", "INSTITUTIONAL", "INTERPRETIVE", "HYBRID"];
 const VALID_STATUSES = ["DISPUTED", "HARD_FACT", "NEVER_RESOLVES"];
 
-export async function GET() {
-  const claims = await prisma.claim.findMany({
-    where: { deleted: false },
-    orderBy: { createdAt: "desc" },
-    include: {
-      parent: true,
-      children: true,
-      _count: { select: { edges: { where: { deleted: false } } } },
-    },
-  });
-  return NextResponse.json(claims);
+const PAGE_SIZE = 100;
+
+export async function GET(req: NextRequest) {
+  const offset = Math.max(0, parseInt(req.nextUrl.searchParams.get("offset") ?? "0", 10) || 0);
+  const [total, claims] = await Promise.all([
+    prisma.claim.count({ where: { deleted: false } }),
+    prisma.claim.findMany({
+      where: { deleted: false },
+      orderBy: { createdAt: "desc" },
+      skip: offset,
+      take: PAGE_SIZE,
+      select: {
+        id: true,
+        text: true,
+        currentStatus: true,
+        claimType: true,
+        parentClaimId: true,
+        createdAt: true,
+        claimEmergedAt: true,
+        claimEmergedPrecision: true,
+      },
+    }),
+  ]);
+  return NextResponse.json({ claims, total, offset, pageSize: PAGE_SIZE });
 }
 
 export async function POST(req: NextRequest) {

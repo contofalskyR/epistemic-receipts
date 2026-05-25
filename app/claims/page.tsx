@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { isReadOnly } from "@/lib/isReadOnly";
 
@@ -14,8 +15,13 @@ type Claim = {
   claimEmergedPrecision: EmergedPrecision | null;
 };
 
+const PAGE_SIZE = 100;
+
 export default function ClaimsPage() {
   const [claims, setClaims] = useState<Claim[]>([]);
+  const [total, setTotal] = useState(0);
+  const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
   const [parentClaimId, setParentClaimId] = useState("");
   const [claimEmergedAt, setClaimEmergedAt] = useState("");
@@ -23,12 +29,17 @@ export default function ClaimsPage() {
   const [claimType, setClaimType] = useState("EMPIRICAL");
   const [error, setError] = useState("");
 
-  async function load() {
-    const res = await fetch("/api/claims");
-    setClaims(await res.json());
+  async function load(off = 0) {
+    setLoading(true);
+    const res = await fetch(`/api/claims?offset=${off}`);
+    const data = await res.json();
+    setClaims(data.claims ?? []);
+    setTotal(data.total ?? 0);
+    setOffset(data.offset ?? 0);
+    setLoading(false);
   }
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { load(0); }, []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -54,12 +65,20 @@ export default function ClaimsPage() {
     setClaimEmergedAt("");
     setClaimEmergedPrecision("MONTH");
     setClaimType("EMPIRICAL");
-    load();
+    load(0);
   }
+
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  const currentPage = Math.floor(offset / PAGE_SIZE);
 
   return (
     <div className="space-y-8">
-      <h2 className="text-xl font-semibold text-white">Claims</h2>
+      <div className="flex items-baseline gap-3">
+        <h2 className="text-xl font-semibold text-white">Claims</h2>
+        {total > 0 && (
+          <span className="text-sm text-gray-500">{total.toLocaleString()} total</span>
+        )}
+      </div>
 
       {isReadOnly() ? (
         <p className="text-sm text-gray-500 italic">Editing is disabled in this deployment.</p>
@@ -156,37 +175,59 @@ export default function ClaimsPage() {
       </form>
       )}
 
-      <div className="space-y-2">
-        {claims.map(c => (
-          <div key={c.id} className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3">
-            <div className="flex items-start justify-between gap-4">
-              <p className="text-sm text-white">{c.text}</p>
-              <div className="shrink-0 flex items-center gap-1.5">
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                  c.currentStatus === "HARD_FACT" ? "bg-green-900 text-green-300" :
-                  c.currentStatus === "NEVER_RESOLVES" ? "bg-gray-700 text-gray-400" :
-                  "bg-yellow-900 text-yellow-300"
-                }`}>
-                  {c.currentStatus}
-                </span>
-                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
-                  {c.claimType}
-                </span>
+      {loading ? (
+        <p className="text-sm text-gray-500">Loading…</p>
+      ) : (
+        <div className="space-y-2">
+          {claims.map(c => (
+            <Link key={c.id} href={`/claims/${c.id}`}
+              className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors">
+              <div className="flex items-start justify-between gap-4">
+                <p className="text-sm text-white">{c.text}</p>
+                <div className="shrink-0 flex items-center gap-1.5">
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                    c.currentStatus === "HARD_FACT" ? "bg-green-900 text-green-300" :
+                    c.currentStatus === "NEVER_RESOLVES" ? "bg-gray-700 text-gray-400" :
+                    "bg-yellow-900 text-yellow-300"
+                  }`}>
+                    {c.currentStatus}
+                  </span>
+                  <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
+                    {c.claimType}
+                  </span>
+                </div>
               </div>
-            </div>
-            {c.claimEmergedAt && c.claimEmergedPrecision && (
-              <p className="text-xs text-gray-500 mt-1">
-                {formatAge(c.claimEmergedAt, c.claimEmergedPrecision)} · emerged {formatEmerged(c.claimEmergedAt, c.claimEmergedPrecision)}
-              </p>
-            )}
-            {c.parentClaimId && (
-              <p className="text-xs text-gray-500 mt-0.5">
-                sub-claim of {claims.find(p => p.id === c.parentClaimId)?.text ?? c.parentClaimId}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
+              {c.claimEmergedAt && c.claimEmergedPrecision && (
+                <p className="text-xs text-gray-500 mt-1">
+                  {formatAge(c.claimEmergedAt, c.claimEmergedPrecision)} · emerged {formatEmerged(c.claimEmergedAt, c.claimEmergedPrecision)}
+                </p>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {totalPages > 1 && (
+        <div className="flex items-center gap-3 pt-2">
+          <button
+            onClick={() => load(offset - PAGE_SIZE)}
+            disabled={offset === 0 || loading}
+            className="text-xs px-3 py-1.5 rounded border border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            ← Prev
+          </button>
+          <span className="text-xs text-gray-500">
+            Page {currentPage + 1} of {totalPages}
+          </span>
+          <button
+            onClick={() => load(offset + PAGE_SIZE)}
+            disabled={offset + PAGE_SIZE >= total || loading}
+            className="text-xs px-3 py-1.5 rounded border border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            Next →
+          </button>
+        </div>
+      )}
     </div>
   );
 }
