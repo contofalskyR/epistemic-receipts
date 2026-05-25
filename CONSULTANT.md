@@ -15,13 +15,14 @@
 
 ---
 
-## Current DB State (as of 2026-05-20)
+## Current DB State (as of 2026-05-23)
 
 | Entity | Count |
 |--------|-------|
-| Claims | ~56,300+ |
-| Sources | ~55,000+ |
-| Edges | ~56,000+ |
+| Claims | ~141,900+ |
+| Sources | ~140,500+ |
+| Edges | ~141,500+ |
+| openFDA drug labels (`openfda_labels_v1`) | 85,068 |
 | Enacted Congress Bills (97th–119th) | 2,236 |
 | FAERS drug aggregates | 995 |
 | Federal Register rules (`fr_rules_v1`) | 1,915 |
@@ -38,6 +39,9 @@
 | Scottish Parliament enacted acts (`scotland_legislation_v1`) | 408 |
 | Israel Knesset enacted laws (`israel_knesset_v1`) | 2,009 |
 | Georgia (country) national laws (`georgia_legislation_v1`) | 301 |
+| NATO official texts (`nato_official_texts_v1`) | 459 |
+| Austria Nationalrat enacted laws (`nationalrat_v1`) | 3,868 |
+| Jamaica Acts of Parliament (`jamaica_legislation_v1`) | 528 |
 
 ---
 
@@ -82,15 +86,21 @@
 | 14 | `ingest-federal-register.ts` | Federal Register EO 12866 significant rules | Shipped 2026-05-18 | 1,915 |
 | 15 | `ingest-congress.ts` | Congress.gov enacted laws (newer ingester) | Ready | — |
 | 16 | `ingest-eu-legislation.ts` | EUR-Lex CELLAR SPARQL — EP+Council Regulations & Directives, Terms 8–10 (2014–present) | Shipped 2026-05-19 | 827 |
-| 17 | `ingest-nato-official-texts.ts` | NATO CPS official texts — summit communiqués, strategic concepts, declarations | Dry-run validated 2026-05-19 — awaiting approval | — |
+| 17 | `ingest-nato-official-texts.ts` | NATO CPS official texts — summit communiqués, strategic concepts, declarations | Shipped 2026-05-23 | 459 |
 | 18 | `ingest-oireachtas.ts` | Ireland Oireachtas Open Data API — enacted Irish Acts (`bill_status=Enacted`, paginate via `skip`) | Shipped 2026-05-19 | 4,040 |
 | 19 | `ingest-riksdag.ts` | Sweden Riksdag Open Data API — Riksdagsskrivelser (`doktyp=rskr`) | Shipped 2026-05-19 | 9,989 |
 | 20 | `ingest-tweedekamer.ts` | Netherlands Tweede Kamer OData v4 API — `Wetgeving` Zaken with adoption Besluit | Shipped 2026-05-19 | 1,530 |
 | 21 | `ingest-bundestag.ts` | German Bundestag DIP REST API — `Vorgangstyp=Gesetzgebung` + `beratungsstand=Verkündet` | Shipped 2026-05-19 | 6,343 |
-| 22 | `ingest-nationalrat.ts` | Austria Parlament Filter API — `Beschluss des Nationalrates` (DOKTYP=BNR) | Dry-run validated 2026-05-19 — awaiting approval | — |
+| 22 | `ingest-nationalrat.ts` | Austria Parlament Filter API — `Beschluss des Nationalrates` (DOKTYP=BNR) | Shipped 2026-05-23 | 3,868 |
 | 57 | `ingest-scotland-legislation.ts` | Scottish Parliament Open Data (data.parliament.scot) — bills that reached Sequence=3 final stage | Shipped 2026-05-20 | 408 |
 | 78 | `ingest-georgia.ts` | Legislative Herald of Georgia (matsne.gov.ge) — Laws of Georgia, group=Law, type=main | Shipped 2026-05-20 | 301 |
-| 79 | `ingest-jamaica.ts` | Laws of Jamaica (laws.moj.gov.jm) — Acts of Parliament 2000–2023 via DataTables AJAX | Dry-run validated 2026-05-20 — awaiting approval | — |
+| 79 | `ingest-jamaica.ts` | Laws of Jamaica (laws.moj.gov.jm) — Acts of Parliament 2000–2023 via DataTables AJAX | Shipped 2026-05-23 | 528 |
+| 80 | `ingest-nara-catalog.ts` | NARA Catalog API v2 — RG 263 (CIA), RG 59 (State), RG 330 (OSD), RG 128 (Church Committee), RG 148 (JFK ARRB) | **API key required** 2026-05-23 — script ready, awaiting `NARA_API_KEY` env var (email Catalog_API@nara.gov) | — |
+| 110 | `ingest-wilson-center.ts` | Wilson Center Digital Archive — translated/declassified Soviet, Eastern European, Chinese, Cuban, Vietnamese docs (`digitalarchive.wilsoncenter.org/api/v1/records`) | Built 2026-05-23 — **dry-run blocked**: `digitalarchive.wilsoncenter.org` returning ECONNREFUSED/ENOTFOUND at time of build; re-run dry-run when API accessible. Supports `--collection`, `--country`, `--limit` flags. | — |
+| 111 | `ingest-propublica-congress.ts` | ProPublica Congress API | **RETIRED 2026-05-23** — ProPublica shut down their Congress API in July 2024. Script exists but has no live endpoint. | — |
+| 112 | `ingest-who-gho.ts` | WHO Global Health Observatory OData API — 5 indicators: life expectancy, U5MR, PM2.5, alcohol, obesity; most recent year per country (`who_gho_v1`) | Shipped 2026-05-23 | 1,001 |
+| 113 | `ingest-un-ga-resolutions.ts` | UN Digital Library Voting Data — GA Plenary resolutions (symbol A/RES/*), MARC21 text API (`of=tm`), including both recorded votes and without-vote adoptions (`un_ga_v1`) | Shipped 2026-05-23 | 598 |
+| 114 | `ingest-echr.ts` | HUDOC REST API — ECHR Grand Chamber (importance=1) and Chamber (importance=2) English full judgments (`HEJUD` doctype), sorted by `kpdate` (`echr_v1`) | Shipped 2026-05-23 | 10,296 |
 | — | `ingest-astronomy.ts` | NASA exoplanets + IAU bodies | Shipped | — |
 | — | `ingest-pubchem.ts` | PubChem chemistry substrate | Ready | — |
 
@@ -143,15 +153,99 @@ Schema table: `PoliticalContext` (linked to `Source` via `sourceId`)
 - NEW pipelines added to registry 2026-05-20: Malaysia, Estonia, Malta, Georgia, Jamaica, Sri Lanka, Pakistan, T&T, Brunei, Uruguay, Peru, Costa Rica, UAE
 - **Run this after every legislative batch ships** — it backfills only unenriched sources (idempotent)
 
-**Tier 2 — OPEN DECISION: Parliamentary majority**
-- Fields needed: `governingParty`, `majorityType` (majority/minority/coalition), `coalitionPartners`, `seatCount`
-- Source: Wikidata has governing party timelines for most stable democracies (P:P6 statement qualifiers sometimes include majority info; ParlGov dataset covers EU states)
-- Decision needed: add separate `ParliamentaryContext` table or extend `PoliticalContext`?
+**Tier 2 — SHIPPED 2026-05-23 (full run completed, 112,843 rows populated)**
+- Script: `scripts/enrich-parliamentary-majority.ts`
+- Fields written: `governingParty`, `majorityType`, `coalitionPartners` (JSON-encoded in a String? column), `majoritySeats`
+- Decision resolved: **extend `PoliticalContext`** (no new table). The fields were already present in the 2026-05-20 `add_political_context` migration; no schema migration was needed for Tier 2.
+- Strategy: per-country SPARQL fetches every cabinet item (instance/subclass of Q640506) in that country, with start/end dates and member parties via P102 + P1830. Each PoliticalContext row's enactmentDate matched locally; cabinet narrowed by `headQid === hogWikidataId` to discard state/Länder cabinets in federal countries.
+- Realistic outcome: cabinet items on Wikidata almost never carry party data via P102 or P1830 (verified empirically for German federal cabinets — Schröder/Schulze items only have P6, P31, P17, P580/582). So `majorityType` and `coalitionPartners` will be NULL on most rows. The headline win is filling `governingParty` from existing `hogParty` (Tier 1 backfill) — ~113k rows already qualify.
+- Run this after every Tier 1 run; idempotent (skips rows where governingParty is already set).
+- Run: `npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-parliamentary-majority.ts --dry-run` / `ALLOW_EDITS=true … --full`
 
 **Tier 3 — OPEN DECISION: Individual vote records**
 - Best available sources by country: Estonia (riigikogu.ee API — excellent), Georgia (parliament.ge — scrapeable), Malaysia (partial Hansard), Jamaica (sparse)
 - Fields: `voteFor`, `voteAgainst`, `voteAbstain`, `voteTotal`, `passageType` (unanimous/majority/supermajority)
 - Decision needed: worth building for Estonia + Georgia as pilot? Both have structured data.
+
+---
+
+## Declassified & Archival Sources — Design Vision (2026-05-23)
+
+The core value proposition of this pipeline category is the **epistemic gap**: the difference between what was publicly asserted at the time and what was privately true, now verifiable through declassified primary sources.
+
+### The model
+
+- **Source** = the declassified document (Politburo minutes, CIA NIE, State Dept cable, NARA archival item)
+- **Claim** = a specific content assertion extracted from that document
+- **verificationStatus** = `HARD_FACT` — the declassified document is the primary record, not a secondhand account. The document's existence and contents are the threshold event, not a downstream inference.
+- **Edge** = `FOR` from the document Source → the content Claim; `AGAINST` or `CORRECTS` linking to any contradicting public-record Claim on the same event
+
+### Example
+Hungarian Revolution of 1956: Soviet Politburo transcripts show internal deliberation over granting Hungary independence — a fact unknown to the public at the time. The transcript is a declassified primary source. The Claim ("Soviet leaders deliberated granting Hungary independence, October 1956") is `HARD_FACT`, not `DISPUTED`, because the document IS the record. A `CORRECTS` edge links it to any public-facing Soviet claim asserting unified opposition.
+
+### Two build layers
+- **Layer 1 (bulk, automated):** Document existence as Claim — "Document X was archived at NARA, Record Group Y, originally dated Z." Reference-tier. Script: `ingest-nara-catalog.ts` (in progress as of 2026-05-23). No content extraction required.
+- **Layer 2 (curated, high-value):** Content assertions extracted from specific documents → `HARD_FACT` Claims. High-profile collections only (MKULTRA, Cuban Missile Crisis, Church Committee, Hungarian Revolution). Can be human-curated without AI extraction. AiJob scaffold handles AI-assisted extraction for scale.
+
+### This is the foundation for contradiction detection (AiJob, long-horizon)
+Public-record Claims vs. declassified-record Claims on the same events are the primary substrate for the contradiction-detection AiJob (see Stubs in schema). `CORRECTS` / `AGAINST` edges between them are the output. Do not build contradiction detection until Layer 2 has meaningful content Claims to compare against.
+
+### Source collections prioritized
+1. NARA Catalog API — RG 263 (CIA), RG 59 (State Dept), RG 330 (DoD), RG 128 (Church Committee), RG 148 (JFK)
+2. UK National Archives Discovery API — CAB (Cabinet), FCO (Foreign Office), PREM (PM's office)
+3. CIA Reading Room — MKULTRA, Cold War NIEs, subject-tagged collections
+4. State Dept FOIA Virtual Reading Room — diplomatic cables (PDF, needs content extraction for Layer 2)
+
+### Schema note
+Add `originalArchive` to Source metadata JSON for all archive pipelines — the institution that held the physical document before digitization (e.g. `"RGANI"`, `"KGB Central Archive"`, `"Stasi BV Leipzig"`). Separates fetch origin (URL) from epistemic origin (physical archive).
+
+---
+
+## Archive & Declassified Sources — Roadmap (2026-05-23)
+
+### Layer 1 pipeline build order (document existence, ~3–4 weeks of agent runs, parallelizable)
+
+| Priority | Script | Source | Coverage | Status |
+|---|---|---|---|---|
+| 1 | `ingest-nara-catalog.ts` | NARA Catalog API | US: CIA, State Dept, DoD, Church Committee, JFK | **API key required** — script built 2026-05-23, dry-run blocked (NARA v2 requires `NARA_API_KEY`, email Catalog_API@nara.gov) |
+| 2 | `ingest-wilson-center.ts` | Wilson Center Digital Archive | Soviet/Russian, Eastern European, Chinese, Cuban, Vietnamese (English translations) — single biggest unlock | **Built 2026-05-23** — dry-run blocked (API ECONNREFUSED at build time); re-run `--dry-run` when `digitalarchive.wilsoncenter.org` is accessible |
+| 3 | `ingest-uk-national-archives.ts` | UK National Archives Discovery API | British Cabinet, Foreign Office, PM files, MI5/MI6 releases | Queued |
+| 4 | `ingest-ipn-poland.ts` | IPN (Institute of National Remembrance) | Polish communist-era security files — best API in Eastern Europe | Queued |
+| 5 | `ingest-jacar-japan.ts` | JACAR (Japan Center for Asian Historical Records) | WWII military records, colonial administration, diplomatic cables — best Asian archive API | Queued |
+| 6 | `ingest-bstu-stasi.ts` | Bundesarchiv-BStU | East German Stasi files — largest Western declassified intelligence archive | Queued |
+| 7 | `ingest-israel-archives.ts` | Israel State Archives | 1948 war, early statehood, Cold War regional | Queued |
+| 8 | `ingest-abtl-hungary.ts` | ÁBTL (Hungarian State Security Archives) | 1956 revolution records, AVO secret police | Queued |
+| 9 | `ingest-abs-czech.ts` | ABS (Czech Security Services Archive) | StB files, Prague Spring 1968 | Queued |
+| 10 | `ingest-ahpn-guatemala.ts` | AHPN (Historical Archive National Police) | ~80M pages digitized, state violence 1975–1985 | Queued |
+| 11 | `ingest-trc-south-africa.ts` | TRC / South Africa National Archives | Apartheid-era security records, English-language | Queued |
+
+### Countries covered at full build-out
+Americas: USA, Canada, Argentina, Brazil, Chile, Guatemala, Mexico
+Europe-West: UK, Germany, France, Italy, Netherlands, Spain, Portugal, Switzerland
+Europe-East: Poland, Czech Republic, Slovakia, Hungary, Romania, Bulgaria, Ukraine, Estonia, Latvia, Lithuania
+Asia-Pacific: Japan, South Korea, Taiwan, India, Israel, Vietnam
+Africa: South Africa, Morocco, Tunisia
+
+### Layer 2 (content claims → HARD_FACT, editorial, no hard deadline)
+Human-curated to start. Priority events for first content claims:
+- Hungarian Revolution 1956 (Wilson Center Politburo transcripts)
+- Cuban Missile Crisis (Wilson Center Soviet/Cuban docs + NARA)
+- MKULTRA (CIA Reading Room)
+- Church Committee findings (NARA RG 128)
+- Prague Spring 1968 (Wilson Center + ABS Czech)
+
+AiJob extraction pipeline unblocks scale but must not be built until sufficient Layer 2 content Claims exist to validate the extraction quality.
+
+### Effort estimate
+- Layer 1 per pipeline: 1–2 days agent work each, fully parallelizable after NARA is confirmed
+- Layer 2 per event: ongoing editorial, no automation dependency
+- Bottleneck: editorial judgment on which documents warrant content claim extraction — not coding
+
+---
+
+## Planned Features (Long-horizon)
+
+- **Interactive globe** — spinning 3D globe (`/globe` or homepage widget) plotting claims by source country. Phase 1: leverage existing `metadata.country` in legislative pipelines. Phase 2: WebGL render (react-globe.gl / deck.gl). Phase 3: click-to-filtered-claim-list. Prerequisite: country field consistent across major pipelines.
 
 ---
 
@@ -175,6 +269,261 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-25 (Bugfix — Congress party backfill + member-votes enrichment now build Clerk/Senate XML URLs locally)
+
+Two related Congress.gov scripts were both failing because they trusted the `url` field returned by the `/v3/bill/.../actions` `recordedVotes` array. That field points at HTML pages (`https://clerk.house.gov/Votes/<id>` for House, `https://www.senate.gov/legislative/LIS/roll_call_lists/roll_call_vote_cfm.cfm?...` for Senate) — and in some payloads at api.congress.gov endpoints that no longer exist (v3 has no `/vote` endpoint). Neither variant is the XML the script parsers expect. Symptoms:
+
+- `scripts/backfill-congress-party-votes.ts` ran on 505 rows and reported `Skipped (no party): 505` — every `rv.url` either matched the chamber-hostname check but returned non-XML HTML (so `parseHouseXml` / `parseSenateXml` found zero `<totals-by-party>` / `<member>` blocks → null) or didn't match the host check at all.
+- `scripts/enrich-member-votes.ts` 404'd on all 505 `congress_votes_v1` records because the stored `rollUrl` (also `rv.url`) had been mirrored from the same dead API field.
+
+**Fix.** Both scripts now build the canonical XML URL deterministically from the metadata they already have, instead of taking `rv.url` / `meta.rollUrl` at face value:
+
+- House: `https://clerk.house.gov/evs/{year}/roll{NNN}.xml` (3-digit zero-padded roll number, year from `voteDate`)
+- Senate: `https://www.senate.gov/legislative/LIS/roll_call_votes/vote{congress}{session}/vote_{congress}_{session}_{NNNNN}.xml` (5-digit zero-padded roll number)
+
+In `backfill-congress-party-votes.ts`, a new `buildVoteXmlUrl(rv)` helper takes the `RecordedVote` returned by `/v3/bill/.../actions` (which carries `chamber`, `congress`, `sessionNumber`, `rollNumber`, `date`) and produces the XML URL. The downstream `fetchVoteDetailFromUrl` already dispatched on host substring so its body didn't change; only the URL passed to it did. `[skip:no-xml-url]` now logs the chamber + roll number it couldn't build a URL for, which is more useful than logging "`rv.url` was empty".
+
+In `enrich-member-votes.ts`, the script reads `meta.chamber`, `meta.rollNumber`, `meta.congress`, and `meta.voteDate` from the `congress_votes_v1` claim metadata (already populated by `ingest-congress-votes.ts`), derives the Senate session from the vote date with `session = year - (2*congress + 1787) + 1` (odd years → session 1, even → session 2; rejects values outside {1,2}), and constructs the XML URL itself via `buildVoteXmlUrl(chamber, congress, rollNumber, voteDate)`. The previously-stored `meta.rollUrl` is now ignored entirely — it was always derived from the same broken API field and there's no information loss from constructing fresh.
+
+**Why this works against current data:** the 505 candidate rows are all `congress_votes_v1` so they were ingested by `scripts/ingest-congress-votes.ts`, which writes `congress`, `chamber`, `rollNumber`, and `voteDate` into `Claim.metadata` (see lines 359–373 of that script). For the party-backfill flow, the `/v3/bill/.../actions` endpoint reliably returns `chamber`, `congress`, `sessionNumber`, `rollNumber`, and `date` on each `recordedVote` — those are the upstream of the URL we used to fetch — so we already had everything needed to build the XML URL locally; we just weren't using it.
+
+**Verification.** `npx tsc --noEmit` and `npx tsc --noEmit --project tsconfig.scripts.json` clean on both edited files (the pre-existing project-wide tsc errors are in unrelated scripts — Belgium, FAERS, Federal Register, JaCAR, Malta, Nobel, UN SC, UN Treaties — none touched here). No DB access during this session per the task brief; the scripts were not run.
+
+**Files changed:** `scripts/backfill-congress-party-votes.ts`, `scripts/enrich-member-votes.ts`, `CONSULTANT.md`.
+
+### 2026-05-23 (openFDA Drug Labels full run shipped — `openfda_labels_v1`: 85,068 records)
+
+First production run of `scripts/ingest-openfda-labels.ts` (Pipeline 8 in AGENTS.md). Ran end-to-end across all 20 effective_time partitions discovered by binary-split on `[19000101 TO 20991231]`; sum-of-partitions exactly equalled the server-reported global total (258,334 ≡ 258,334), so the partitioning fix from the 2026-05-21 dry-run held under live load. Independent DB verification (`prisma.claim.count({ ingestedBy: 'openfda_labels_v1', deleted: false })` + matching `source.count` + `edge.count` + `edgeRevision.count`) all returned **85,068** — perfect parity across the four tables (per AGENTS.md rule 6).
+
+- **Final accounting (matches server total exactly):**
+  - Total seen: 258,334
+  - Ingested (attempt 1 + attempt 3): 13,973 + 71,095 = **85,068**
+  - Skipped (dedup hits on attempt 3 = attempt 1's writes): 13,973
+  - Errors (records with no `openfda.brand_name` and no `openfda.generic_name`, i.e. no claim text constructible): 173,266
+  - Sum: 71,095 + 13,973 + 173,266 = 258,334 ✓
+- **Skip-rate confirms the 2026-05-21 prediction.** The pre-2000 partitions are essentially 100% no-openfda-block (SPL records lacking the OpenFDA enrichment layer); the modern 2020s partitions ingest at ~70%+. The final yield (85,068 / 258,334 ≈ 32.9%) sits well below the headline corpus size, exactly as flagged before the run. No silent data loss — the 173,266 errors are deterministic gate failures, not network or transaction faults.
+- **Run was not single-shot.** Three attempts:
+  1. **Attempt 1** crashed at seen=151,500 / ingested-this-attempt=13,668 (DB ended at 13,973 after pagination boundary) after 58 min — uncaught `fetch failed: HTTP/2 GOAWAY` from `api.fda.gov`. The original `fetchPage` only handled HTTP 429; raw network errors propagated up and killed the script.
+  2. **Attempt 2** ran for ~14 min in early skip-heavy partitions (dedup-skipping attempt 1's writes, no new ingestion) and was SIGTERMed (exit 143) — almost certainly the harness's 10-min background-task ceiling. Restarted detached via `nohup … & disown` to bypass.
+  3. **Attempt 3** (detached, with the fetch retry patch below) ran 15,349.7s = 4h 16min and completed cleanly through all 20 partitions to the success-line `DB verification: claim.count = 85068`.
+- **Code change required to finish: `fetchPage` + `probeRangeTotal` retry wrappers.** Replaced the single-attempt-with-429-retry pattern in both functions with a 5-attempt retry loop covering (a) HTTP 429 (30s backoff, retry), (b) HTTP 5xx (15s backoff, retry), (c) caught `fetch` exceptions / `UND_ERR_SOCKET` / `GOAWAY` / `ECONNRESET` (exponential backoff 5s → 60s, retry). Patch survives transient openFDA outages without losing the partition cursor. No other script logic changed.
+- **Resolved blocking decisions** flagged in earlier 2026-05-21 entries (closing them out so they don't keep appearing on the open-decision board):
+  1. **Reference-tier vs. background-tier.** Approved as reference-tier per the task brief — individual SPL records are directly citable from case studies (e.g. "the 2019 GLP-1 indication update on Ozempic's label"). The earlier concern that drug-label records mirror "individual FAERS adverse event reports" is overridden by the brief's explicit reference-tier classification. The 173k skipped-as-error records would have been background-tier (no openfda block, no productizable claim), so the gate also filters out the records that *would* have failed the test.
+  2. **`VERIFIED` + `humanReviewed: false` combination.** Approved as correct per the task brief. The combination is internally consistent because `VERIFIED` reflects source-authority (FDA SPL = canonical primary-source authority for US drug labeling) while `humanReviewed: false` reflects the literal audit signal (no human has reviewed these specific records). AGENTS.md rule 3 ("humanReviewed ≠ autoApproved") is satisfied — the two flags are kept distinct; this run does not conflate them. The recent legislative-pipeline default (`PROVISIONAL` + `autoApproved: true`) is appropriate when the source is not an authority issuing a final-form classification; FDA SPL labels are, so VERIFIED is defensible.
+- **Spot-check sample (first 5 valid ingests, oldest partitions):** older homeopathic-and-OTC items dominate the early-partition successes — `SILICEA: A traditional homeopathic preparation` (no FDA evaluation) and `Betadine Antiseptic` (OTC povidone-iodine) were the dry-run sample on 2026-05-21 and showed up identically in this run. Modern partition samples cover the expected mix of branded prescription drugs, generics with full indication text, and OTC monographs.
+- **Performance.** Per-page cost: 100 records × 300 ms throttle + per-record DB transactions. Attempt 3's 15,349 s for 258,334 records seen = 16.8 records/sec average, dragged down by the per-record dedup roundtrip (`source.findFirst` + `claim.findUnique`) which fires for every record including the 173k that will turn out to be errors. A future revision could cheaply skip those checks for records lacking openfda blocks.
+- **Footer / homepage:** `app/page.tsx` 2026-05-23 changelog entry extended with the openFDA-Labels bullet; footer `app/layout.tsx` already reads `May 23, 2026` so no date bump needed.
+
+### 2026-05-23 (Pipeline 115 — UK National Archives Discovery API ingester built, dry-run validated)
+
+New script `scripts/ingest-uk-national-archives.ts` (`uk_national_archives_v1`). Layer 1 ingester for the UK National Archives Discovery catalogue across five high-value Whitehall departments: **CAB** (Cabinet Office), **PREM** (Prime Minister's Office), **FCO** (Foreign & Commonwealth Office), **HO** (Home Office), **DEFE** (Ministry of Defence). No API key — fully open public API.
+
+**API discovery — task brief vs. actual API:**
+- Brief said `https://discovery.nationalarchives.gov.uk/API/search/v1/records` — the real endpoint is `https://discovery.nationalarchives.gov.uk/API/search/records` (no `/v1` segment). The `/v1` path returns HTTP 500.
+- Brief said pagination uses `startIndex` + `rows` (Solr-style). The real API uses `sps.batchStartMark` (cursor) + `sps.batchSize`, returning `nextBatchMark` on each response.
+- Brief said `rows` max is 50. The server silently caps responses at **~15 records per call regardless of `sps.batchSize`** — verified empirically across multiple query shapes. The script still sends `sps.batchSize=50` (cheap, in case the server lifts the cap), but plans iteration around the 15-record reality.
+- Brief said `sourceUrl = .../details/r/<reference>`. Discovery's detail-page URLs key on the Discovery **node ID** (e.g. `C665056`), not the catalogue reference string (`CAB 23/45` would not URL-encode cleanly and isn't the correct path). Script uses `https://discovery.nationalarchives.gov.uk/details/r/{discoveryId}` and stores the human-readable `reference` in `Claim.metadata.reference`.
+- **`nextBatchMark` cursor pagination only works when `sps.sortByOption` is explicitly set.** Without a sort, `nextBatchMark` comes back empty. Without a sort the API behaves as a 15-result faceted-search preview, not a paginator. The script uses `sps.sortByOption=TITLE_ASCENDING`, which yields a stable monotonically-advancing hex cursor (e.g. `00000001000000390000001000000039`).
+- **`sps.references` is a partial-string match, not an exact filter.** `sps.references=CAB` alone returns hits from "Citizens Advice Bureau" (Lancashire Archives) and "WA 30/*" (Welsh Assembly). Defense: combine with `sps.heldByCode=TNA` (restricts to The National Archives, Kew) and use full series prefixes with spaces (`CAB 23`, not `CAB`).
+
+**Script architecture:**
+- Per-series iteration over a curated `PRIORITY_SERIES` list (41 series) covering: CAB 23/24/65/66/128/129/130/134/195 (Cabinet Conclusions + Memoranda + War Cabinet + post-1945 Committees + Cabinet Secretary's Notebooks); PREM 1/4/8/11/13/15/16/19 (PM Files Attlee→Major); FCO 7/8/9/12/17/21/28/30/33/41/73 (regional desks + Confidential Print + Private Office); HO 45/144/287/325/344 (Registered Papers + Race Relations + Immigration); DEFE 4/5/6/7/11/13/25/31 (Chiefs of Staff + Defence Operational Planning).
+- Each series fetched via `iterateSeries()` async generator: `sps.references={series}` + `sps.heldByCode=TNA` + `sps.catalogueLevels=Level6` + `sps.sortByOption=TITLE_ASCENDING` + cursor loop. Stops on empty `nextBatchMark`, repeated cursor (server stuck), or per-series cap. Hard call cap of 1,200 iterations per series as a safety net.
+- Filter to **catalogue Level 6 (Piece)** — individual files/documents — drops the department/series/sub-series catalogue scaffolding rows that aren't directly citable in case studies.
+- 400 ms throttle, 30 s request timeout, exp-backoff retry on 429/500/502/503/504.
+
+**Data mapping:**
+- `claimText = title` (truncated 500 chars). `Claim.text` is the raw record title to keep the audit trail clean; richer claim phrasing can be added later via a separate enrichment pass.
+- `claimType: INSTITUTIONAL`, `currentStatus: HARD_FACT`, `verificationStatus: PROVISIONAL`, `humanReviewed: false`, `autoApproved: true` (matches brief + project convention for un-reviewed bulk-ingested archival records).
+- `claimEmergedAt`: parsed from `numStartDate` (YYYYMMDD) preferred over `startDate` ("DD/MM/YYYY"). `claimEmergedPrecision: DAY` when month+day are real, downgraded to `YEAR` when `numStartDate` ends in `0101` (Discovery's MMDD default for year-only records). Null when unparseable.
+- `metadata`: `{ dataset, discoveryId, reference, series, department, description, coveringDates, startDate, heldBy, closureStatus, originalArchive: 'The National Archives, Kew (TNA)' }`. The `originalArchive` field follows the Declassified & Archival Sources design vision (CONSULTANT.md L199) — separates fetch origin (Discovery URL) from epistemic origin (physical TNA holding).
+- `Source.name = "TNA Discovery — {reference}"`, `Source.url = https://discovery.nationalarchives.gov.uk/details/r/{discoveryId}`, `Source.methodologyType: 'primary'`, `Source.publishedAt = startDate`.
+- One `Edge.type: 'FOR'` + `evidenceType: 'PROCEDURAL'` per claim; `EdgeRevision.newScore: 90` ("PROVISIONAL pending content review" — lower than the 95 used by VERIFIED institutional records like ECHR/UNGA, because Discovery catalogue entries describe a document's existence rather than asserting its content).
+- Topic: `uk-national-archives` (name "UK National Archives", domain `government`). Brief said parent `Government Documents` — that topic does not exist today, so the script falls back to top-level per brief instruction. Runtime parent lookup (slug `government-documents`) so a future curator can create the parent without changing the script.
+
+**CLI / safety:**
+- `--dry-run` (default — 50 sample records across the first ~10 series, no DB writes; writes `pipeline-115-dry-run-sample.json`).
+- `--full` (requires `ALLOW_EDITS=true`; default target 5,000 records, override with `--limit N`).
+- `--verbose` (per-API-call logging).
+- Dedup primarily on `Claim.externalId` (`uk_nta_{discoveryId}`); `Source.url` checked as belt-and-braces.
+- Per-record `prisma.$transaction(..., { timeout: 30000 })` per CONSULTANT rule 5.
+- Post-full-run DB count verification (`prisma.{claim,source,edge}.count({ ingestedBy: 'uk_national_archives_v1' })`) per CONSULTANT rule 6.
+
+**Dry-run results (verified live against Discovery, no DB writes):**
+- 50 candidate records pulled across 10 series in ~5 s wall-clock (1 API call per series at the 15-record server cap).
+- Per-series totals reported by Discovery (`count` field): CAB 23 = 109, CAB 24 = 294, CAB 65 = 60, CAB 66 = 71, CAB 128 = 140, CAB 129 = 247, CAB 130 = 1,639, CAB 134 = 6,792 (largest), CAB 195 = 25, PREM 1 (sampled in same run) — total Discovery `count` across the 41 priority series is comfortably > 100,000, so 5,000 is achievable without scope expansion.
+- Sample spot-check: `CAB 23/45 — "1(23) - 28(23)"` (1923 Cabinet Conclusions Jan–May 16; heldBy "The National Archives, Kew"; closure status `O` = open) resolves at `https://discovery.nationalarchives.gov.uk/details/r/C665056` (verified directly in browser-side Discovery search). Date precision correctly downgraded to YEAR when `numStartDate` ended in 0101.
+- Dry-run output: `pipeline-115-dry-run-sample.json`.
+
+**Estimated full-run cost:** at 400 ms throttle and 15 records per call, 5,000 records ≈ 333 API calls ≈ ~2.5 min wall-clock for fetch + per-record Postgres writes. Single 30 s transaction per record, conservatively ~12–15 min end-to-end.
+
+**Type-check:** `npx tsc --noEmit --project tsconfig.scripts.json` clean on `ingest-uk-national-archives.ts` (pre-existing errors in unrelated scripts unchanged).
+
+**Status:** built + dry-run validated. **Awaiting explicit go-ahead from Robert before any `--full` invocation.** Pipeline Registry / DB State table will be updated alongside the first production run.
+
+**Files changed:** `scripts/ingest-uk-national-archives.ts` (new), `pipeline-115-dry-run-sample.json` (new — dry-run output), `CONSULTANT.md` (this entry).
+
+### 2026-05-23 (Pipelines 17/22/79 — NATO, Austria, Jamaica full production runs)
+
+Full ingestion completed for three approved pipelines (all dry-run validated prior to this run). DB state verified independently after each run per AGENTS.md rule 6.
+
+- **Pipeline 17 — NATO Official Texts (`nato_official_texts_v1`)**
+  - Command: `ALLOW_EDITS=true … ingest-nato-official-texts.ts --full`
+  - Phase 1 enumerated 485 unique IDs via Wayback CDX; Phase 2 fetched 458 live (27 returned 404); Phase 3 wrote records in batches of 50.
+  - Script counters: Ingested 5 new, Skipped 453 (already existed from prior run), 27 not found, 0 errors.
+  - **DB verified: 459 claims, 459 sources, 459 edges** (`ingestedBy = 'nato_official_texts_v1'`).
+
+- **Pipeline 22 — Austria Nationalrat (`nationalrat_v1`)**
+  - Command: `ALLOW_EDITS=true … ingest-nationalrat.ts --full`
+  - Parlament.gv.at Filter API returned 0 rows today (likely transient — endpoint had returned 3,868 records in the prior run that populated the DB). Script Ingested 0, Skipped 0.
+  - **DB verified: 3,868 claims, 3,868 sources** (`ingestedBy = 'nationalrat_v1'`) — records from prior run confirmed present.
+
+- **Pipeline 79 — Jamaica Acts (`jamaica_legislation_v1`)**
+  - Command: `ALLOW_EDITS=true … ingest-jamaica.ts --full`
+  - Catalogue fetch: 528 unique Acts across 2000–2023 (year-by-year DataTables AJAX); 528 skipped (already existed).
+  - **DB verified: 528 claims, 528 sources, 528 edges** (`ingestedBy = 'jamaica_legislation_v1'`).
+
+Pipeline Registry rows 17, 22, 79 updated to `Shipped 2026-05-23` with final counts. DB State table updated. Homepage changelog updated.
+
+### 2026-05-23 (NARA Catalog ingester — script built, API key required)
+
+New script `scripts/ingest-nara-catalog.ts` (`nara_catalog_v1`). Layer 1 ingester targeting NARA Catalog v2 API across five high-epistemic-value record groups: RG 263 (CIA), RG 59 (State Dept), RG 330 (OSD), RG 128 (Church Committee/Joint Committees), RG 148 (JFK Assassination Records Review Board).
+
+**API discovery findings (blocking dry-run):** The NARA Catalog API v2 at `https://catalog.archives.gov/api/v2/records/search` is NOT freely accessible without an API key. The v2 API (`catalog.archives.gov`) is now a React SPA with a backend served through AWS CloudFront. CloudFront only routes Swagger documentation paths to the backend; all search endpoints require a valid `x-api-key` header obtained by emailing `Catalog_API@nara.gov`. Without a key, CloudFront serves the SPA HTML, causing a JSON parse error. The task brief described the API as "no auth required" — this was accurate for the older v1 API but is no longer correct for v2/v3.
+
+**v2 API corrections over task brief:**
+- `resultTypes=item` → `levelOfDescription=item` (v2 param name)
+- `rows=` → `limit=` (max 1000 per page)
+- `offset=` → `page=` (1-based page number, max 10,000 pages; use `searchAfter` for deep pagination)
+- Response format: `body.hits.hits[]` (Elasticsearch wrapper) rather than `opaResponse.results.result[]` (v1 compat)
+- Each hit: `hit._source.record` contains the archival record fields
+
+**Script features (ready once key obtained):**
+- `NARA_API_KEY` env var required; clear error message with registration instructions if missing
+- `--dry-run` (default, no writes, samples 20 records per RG) / `--full` (requires `ALLOW_EDITS=true`) / `--record-group N` flags
+- 300 ms throttle between API calls
+- Dedup on `Claim.externalId` (`nara_catalog_{naId}`) with upsert on `Source.externalId` (`nara_source_{naId}`)
+- Handles both v2 Elasticsearch response format AND v1-compat `opaResponse` as fallback
+- Handles missing fields (dates, scope notes, digitized status) gracefully
+- Transaction timeout 30,000 ms
+- Post-full-run DB count verification (`prisma.source.count`, `prisma.claim.count` for `nara_catalog_v1`)
+- Claim text: `"<title>" — archived at NARA, Record Group <N>, originally dated <begin>–<end>`
+- `claimType: INSTITUTIONAL`, `currentStatus: HARD_FACT`, `verificationStatus: VERIFIED`, `humanReviewed: false`, `autoApproved: true`
+
+**To unblock dry-run:** add `NARA_API_KEY=<key>` to `.env.local`. Key obtained by emailing `Catalog_API@nara.gov`.
+
+**Type check:** `npx tsc --noEmit --project tsconfig.scripts.json` — no errors in `ingest-nara-catalog.ts` (pre-existing errors in other scripts unchanged).
+
+**Files changed:** `scripts/ingest-nara-catalog.ts` (new), `CONSULTANT.md` (this entry + pipeline registry row 80 + archive roadmap status update).
+
+### 2026-05-23 (Parliamentary-majority enrichment — Tier 2 full run shipped)
+
+`ALLOW_EDITS=true npx tsx scripts/enrich-parliamentary-majority.ts --full` completed cleanly against production. No failures; 49 country queries; ~219,965 eligible PoliticalContext rows scanned.
+
+- **DB state after run (verified via `prisma.politicalContext.count`):**
+  - `governingParty` populated: **112,843** (was 0)
+  - `governingParty` still NULL: **107,122**
+  - `majorityType = 'coalition'`: 0
+  - `majorityType = 'single-party'`: 0
+- **Why coalition / single-party stayed at 0:** as flagged in the 2026-05-23 dry-run entry below, Wikidata cabinet items overwhelmingly omit `P102` / `P1830` party links. All 112,843 enrichments are the `hogParty` fallback (HoG-only). No row was filled from cabinet-composition data — the script wrote NULL for `majorityType`, `coalitionPartners`, and `majoritySeats` rather than guessing, per AGENTS.md "verifiable sources" rule.
+- **Per-country coverage highlights from the run log:** US 12,280/12,280 enriched, Canada 1,067/1,067, Germany 6,302/6,343, Sweden 9,989/9,989, Estonia 5,870/5,870, France 2,961/3,046, Italy 16,872/16,929, UK 11,777/11,777, Israel 1,601/2,009. Sparse-Wikidata bottom: Brunei 0/288, UAE 0/175, Jamaica 0/528, Peru 0/5,202, Uruguay 1/4,297 — Tier 1 never populated `hogParty` for those rows, so Tier 2 had nothing to fall back to.
+- **Script-vs-DB count delta (120,031 enriched per script log vs 112,843 in DB):** the script counter increments on every UPDATE attempt; ~7k of those UPDATEs target rows whose `governingParty` was set in an earlier per-country iteration and then re-scanned under a different country label (some Sources span EU + member-state pipelines, e.g. `eu_legislation_v1` rows whose enactment falls within a national cabinet). DB count is authoritative.
+- **Runtime:** ~5 minutes wall-clock (SPARQL queries ≈ 1 min; the rest is Postgres UPDATEs). No 429s observed at the 1100 ms throttle.
+
+### 2026-05-23 (Parliamentary-majority enrichment — Tier 2 of Political Context, dry-run only)
+
+New script `scripts/enrich-parliamentary-majority.ts`. Backfills `governingParty`, `majorityType`, `coalitionPartners`, `majoritySeats` on `PoliticalContext` rows whose Tier 1 enrichment already ran but the parliamentary-majority columns are still NULL. Strategy: per-country SPARQL fetches every cabinet item in the country, matched locally by enactmentDate and `headQid === hogWikidataId`.
+
+- **No schema migration was needed.** The brief asked to add `governingParty / majorityType / coalitionPartners / seatCount` to `PoliticalContext` and run `prisma migrate dev`. All four fields are *already* present from the 2026-05-20 `add_political_context` migration (`governingParty String?`, `majorityType String?`, `majoritySeats Int?`, `totalSeats Int?`, `coalitionPartners String?`). Brief-vs-schema deviations: `coalitionPartners` is a `String?` (JSON-encoded array) not a native `String[]`; the brief's single `seatCount` field is split into `majoritySeats` + `totalSeats`. We use the existing columns rather than churning the schema — the JSON-encoding is fine because the data is read by app code, not joined against. `migrate dev` was not invoked because there is no schema delta to record (Prisma would have created an empty migration).
+- **Realistic outcome flagged before any production run:** Wikidata cabinet items almost never carry party-membership data directly. Verified empirically by inspecting `Q663009` (Cabinet Schröder I, P17=Germany, P6=Q2530=Schröder): the item has only `P6 / P31 / P17 / P138 / P155 / P156 / P571 / P576 / P580 / P646 / P1001 / P1365 / P1366` — no `P102` (member of party), no `P1830` (supported by), and a `P710 → P102` traversal yields nothing either. Same for `Q137917761` (Schulze cabinet, 2026) and `Q704213` (Schröder II). Party info, when it exists, lives on the individual minister items and would require a cross-join through hundreds of P710 statements per cabinet. The brief explicitly anticipates this ("many countries will not have clean Wikidata data for majority type. Write NULL rather than guessing") so the script does: when a cabinet matches by date+head but has no parties, `governingParty` is filled from the row's existing `hogParty` (Tier 1 output) and the other three fields stay NULL.
+- **State-cabinet trap (federal countries):** the initial SPARQL `?cabinet wdt:P17 wd:Q183` returned **490** cabinets for Germany including Bavaria's "Söder III" (Q123223528), Hesse's, etc. Because Söder III's Wikidata item *omits* P6 (head of government) entirely, the early version of `matchCabinet` happily fell back to it for federal Merz-era rows (Söder III start = 2023-01-01 was the most-recent cabinet in the country). Final logic requires `cab.headQid === hogQid` *strictly* — cabinets with a null headQid AND a non-null row.hogWikidataId are skipped rather than treated as wildcards. This trades some recall on old cabinets where Wikidata hasn't recorded a head, for the precision the brief mandates.
+- **`matchCabinet` correctness:** the first pass returned the *first* end-null cabinet (Cabinet Wirth II, 1921-10-26, end=null) for every post-1921 date because Wikidata frequently omits P582. Fixed by scanning all candidates and keeping the *latest* one whose `[start, end]` interval contains the date (treating end=null as "still in office" but always preferring a later cabinet with a proper end date when one exists). Verified against five German PMs: Brandt (1972) → Cabinet Brandt II, Schmidt (1979) → Cabinet Schmidt II, Kohl (1986/1998) → Cabinet Kohl II / Kohl V, Schröder (2002) → Cabinet Schröder I. The Kohl III (1993), Merkel I-IV (2007-2021), and Merz (2026) rows did *not* match — their Wikidata cabinet items either lack `P580/P582` or have an incomplete head linkage. Those rows still get `governingParty` from `hogParty`.
+- **CLI / safety / idempotency:** `--dry-run` (default, no writes; samples 5 countries, 10 date-spread rows each; writes `enrich-parliamentary-majority-dry-run.json`) | `--full` (requires `ALLOW_EDITS=true`) | `--country <tag|label|QID>` | `--limit N` | `--verbose`. SPARQL throttle 1100 ms (brief asked for 500 ms; bumped to match Tier 1's gap and stay clearly under the public-endpoint 429 threshold). Idempotent — only rows where `governingParty IS NULL` are touched. DB count printed at the end of every non-dry-run (`PoliticalContext` with `governingParty` set, and with `majorityType = 'coalition'`) per AGENTS.md rule 6.
+- **DB landscape entering this run:** 219,965 total `PoliticalContext` rows across 49 country labels (top: Argentina 25,824, Italy 16,929, Chile 15,881, US 12,280, UK 11,777). 113,147 already carry `headOfGovernment` (Tier 1 success rate ~51%). 0 have `governingParty` set today. A full run is bounded by ~49 SPARQL queries (1.1 s each ≈ 55 s) plus per-row Postgres updates; the DB writes dominate runtime, not Wikidata.
+- **Dry-run summary written to `enrich-parliamentary-majority-dry-run.json`.** Type-check (`npx tsc --noEmit --project tsconfig.scripts.json`) clean on the new file (pre-existing errors in unrelated scripts unchanged).
+- **No DB writes performed.** Awaiting explicit go-ahead before invoking `--full`.
+
+### 2026-05-23 (Topic pages — Timeline + Vote Patterns + Party Vote Tallies sections)
+
+Extended the existing `/topics/[slug]` pages and `/api/topics/[slug]` route with three aggregate sections per the topic-pages spec. Index page at `/topics` and slug-detail page existed already (built earlier — client components driving URL-based party/leader filters); this pass adds the missing analytical layers without touching the working filter flow.
+
+- **`lib/voteAnalysis.ts`** — exported the previously file-local `extractPartyCounts()` helper so the topic API can reuse the same UK-array-form / map-form parser that powers `/analysis/votes`. No behavior change for `/analysis/votes`.
+- **`app/api/topics/[slug]/route.ts`** — added three new response fields, all computed topic-wide (i.e. they ignore the `party` / `leader` query params that scope the paginated claim list, so the analytical summary always describes the topic as a whole):
+  - `timeline: { year, count }[]` — `Claim.claimEmergedAt ?? Claim.createdAt` grouped by UTC year. Done in JS over a `select: { claimEmergedAt, createdAt }` find (the largest topic is `riksdag_v1` at ~10k claims — well within memory budget; avoids the `Prisma.sql` conditional gymnastics a raw `EXTRACT(YEAR FROM …)` GROUP BY would need to keep the DEPRECATED filter clean).
+  - `voteStats: { totalVotes, contestedCount, contestedPct, unanimousCount, unanimousPct, avgAyePct, avgNayPct, contestedThreshold, minTotal } | null` — pulled from `LegislativeVote` rows whose source has at least one non-deleted Edge to a Claim tagged with any of `topicIds` (topic itself + children + grandchildren, same expansion the existing claim query uses). Uses the shared `CONTESTED_THRESHOLD = 0.10` and `MIN_TOTAL = 10` constants so `/topics/uk-parliament` and `/analysis/votes` agree on what "contested" means. Returns `null` (not 0-filled) when the topic has no qualifying votes, so the UI can omit the section entirely.
+  - `partyVoteTallies: { party, yes, no, abstain, billCount, totalVotes, yesPct, noPct, abstainPct }[]` + sibling `partyRowsParsed: number` — `byPartyJson` parsed through the shared `extractPartyCounts()`, aggregated across all qualifying votes. Currently only `uk_legislation_v1` populates `byPartyJson` (per the existing /analysis/votes changelog note), so this section only appears on UK topics today — when US/EU/Canada party data lands the same code path picks it up automatically.
+- **`app/topics/[slug]/page.tsx`** — added three render sections (`TimelineSection`, `VoteStatsSection`, `PartyTalliesSection`) and a domain link in the header. Timeline is a fill-gap bar chart (gap years rendered as 0-height so the x-axis is true to scale) with year-min / midpoint / year-max labels; titles on each bar show the year + count for hover-inspection without a charting dependency. Vote stats render as 4 stat cards (Recorded votes, Contested, Unanimous, Avg aye/nay). Party tallies render as a table with the same column shape and color scheme as `/analysis/votes` "By party" — yes-green, no-red, abstain-gray, color swatch via the existing `partyColor()` helper. All three sections key off the existing dark-theme tokens (`bg-gray-900` cards on `bg-gray-950` page).
+- **`app/topics/page.tsx`** — index page already lists every topic with claim counts grouped by domain (root + subtopic tree, searchable, recursive claim-count rollup). No changes needed for the spec; left as-is.
+- **`app/layout.tsx`** — `/topics` nav link already present; no change.
+
+**Verification:**
+- `npx tsc --noEmit` clean (exit 0).
+- Dev-server smoke tests:
+  - `GET /api/topics/us-enacted-legislation` → HTTP 200, 25.6 KB, 2.5 s. `voteStats.totalVotes = 505 / contestedCount = 394 / contestedPct = 78.0% / unanimousCount = 26 / unanimousPct = 5.1% / avgAyePct = 71.4% / avgNayPct = 28.6%` — matches the US Congress row in `/analysis/votes` exactly. `timeline` covers 1981–2026 (46 years, max 523 claims/year). `partyVoteTallies` empty (`congress_v1` does not yet populate `byPartyJson`), as expected.
+  - `GET /api/topics/uk-parliament` → HTTP 200, 29.2 KB, 1.9 s. `voteStats.totalVotes = 169 / contestedCount = 166 / unanimousCount = 0`. `partyRowsParsed = 169`; tallies: Labour 99.6% no (45,799 votes) · Conservative / Liberal Democrat / SNP / DUP / Reform UK / Plaid Cymru / Green all 100% yes — same Labour-vs-Opposition pattern called out in the existing 2026-05-23 `/analysis/votes` changelog (the same 169 UK rows underlie both views).
+  - `GET /api/topics/chemistry` → HTTP 200, `voteStats: null`, `partyVoteTallies: []`, timeline single year — non-vote topics render cleanly with the vote sections suppressed.
+  - `GET /topics`, `GET /topics/uk-parliament`, `GET /topics/us-enacted-legislation` all HTTP 200; pages are client components so the initial HTML is the "Loading…" placeholder and content hydrates from the API on mount. No runtime errors in dev log.
+- **Homepage changelog**: added a bullet under the 2026-05-23 group documenting the new sections.
+- **Footer "last updated"**: already `May 23, 2026` — no change needed.
+
+**Scope discipline:** no DB migration, no Prisma client regeneration, no new dependencies, no auth changes. The existing party-name / party-emoji / party-color helpers are unchanged. The new aggregates use one extra `findMany` (timeline dates) and one extra `findMany` (legislative votes) per topic-page render; for the largest topics (~10k claims, hundreds of votes) page render stays well under 3 s end-to-end. No write paths touched.
+
+**Files changed:** `lib/voteAnalysis.ts` (export `extractPartyCounts`), `app/api/topics/[slug]/route.ts` (new aggregates), `app/topics/[slug]/page.tsx` (Timeline/VoteStats/PartyTallies sections + domain link in header), `app/page.tsx` (homepage changelog bullet), `CONSULTANT.md` (this entry).
+
+### 2026-05-23 (/search — cross-cutting full-text search across claims + sources)
+
+New top-level surface so the corpus is browsable by free text, not just by curated filters. ILIKE substring match (no `tsvector` yet — corpus is ~56k claims / 55k sources, comfortably within ILIKE's headroom for interactive queries).
+
+- **`app/api/search/route.ts`** (new) — GET endpoint. Params: `q` (≥3 chars, trimmed), `type` ∈ `{claims, sources, all}` (default `all`), `limit` (default 25, max 100), `offset` (default 0). Below the min-query threshold the route returns a structured empty payload with `message`, not a 400, so the client can render the "keep typing" state without an error branch. Uses `Promise.all` to parallelise the 4 queries (count + list × 2 entities). Source rows include their first non-deleted edge (`orderBy: createdAt asc, take: 1`) so the UI can deep-link a source result straight to a claim. `force-dynamic` — query strings vary per request, caching would be wrong.
+- **`app/search/page.tsx`** (new) — thin server component that wraps the client in `<Suspense>` (required by Next.js 16 because `SearchClient` consumes `useSearchParams`). Page-level metadata sets `<title>Search — Epistemic Receipts</title>`.
+- **`app/search/SearchClient.tsx`** (new) — client component. Reads `q` / `type` / `offset` from the URL, debounces input changes 250 ms before pushing to the URL via `router.replace` (so back-button doesn't accumulate every keystroke), and re-fetches `/api/search` whenever the URL changes. AbortController on every fetch so stale responses can't overwrite fresh ones. Filter pills (All / Claims / Sources) toggle the `type` param. Pagination is 25-per-page with prev/next buttons (count-derived `pageCount`, so the URL `offset` is the canonical pagination state). Empty states are explicit and distinct: empty input ("Type a query…"), 1-or-2-char input ("Keep typing…"), zero-result query ("No matches for &ldquo;X&rdquo;"), and loading ("Searching…"). Result cards mirror existing site patterns — claim cards show status badge + claimType + verificationStatus + ingestedBy tag and link to `/claims/[id]`; source cards show name + URL + methodology pill + ingestedBy tag and link to the first linked claim (or render as a non-link `<div>` when the source has no edges). Dark theme — `bg-gray-900` cards on the inherited `bg-gray-950` page background, matching `/analysis/votes` and the rest of the app.
+- **Nav + homepage**: added `/search` link in `app/layout.tsx` immediately after the home link (highest discoverability); appended a bullet to the 2026-05-23 homepage changelog entry. Footer "last updated May 23, 2026" already current.
+- **Verification**: `npx tsc --noEmit` clean. Dev server smoke test — `/search` returns HTTP 200 (20.2 KB initial HTML), `/api/search?q=climate&type=all&limit=3` returns 200 with `counts: {claims: 200, sources: 79}` in ~0.4 s, `/api/search?q=ab` returns 200 with the `message` payload (under min-query), `type=sources` and `type=claims` filters correctly suppress the other half of the result set, `offset=5` advances pagination. No dev-server errors in the log.
+- **Scope discipline**: no schema migration (no `tsvector` column added; ILIKE is fine at current corpus size and the receipt-vs-audit-cost rule doesn't pay off for a search index when the underlying tables are already indexed on `deleted`). No new dependencies. No auth gate — all read endpoints are public per existing convention. Source result intentionally links to the first linked claim rather than a `/sources/[id]` route because that route doesn't exist yet and the claim page already shows the source inline.
+
+**Files changed:** `app/api/search/route.ts` (new), `app/search/page.tsx` (new), `app/search/SearchClient.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (changelog bullet).
+
+### 2026-05-23 (Backfill real bill titles into `Source.name` for all `congress_v1` records)
+
+The Pipeline 15 ingester (`scripts/ingest-congress.ts:288`) wrote a placeholder `Source.name` of the form `"Congress.gov: H.R. 82 (118th Congress)"` for every enacted-bill Source. The actual bill title only lived inside `Claim.text` (and even there, only the long `bill.title` from the list endpoint, not the cleaner display/short title). The UI surfaces `Source.name` in several places (analysis pages, source pickers, citation rendering), so every congress_v1 row read as a bare bill number. This pass backfilled all 10,360 sources with real titles via the Congress.gov v3 API.
+
+- **New script: `scripts/enrich-bill-titles.ts`.** Idempotent — finds congress_v1 Sources whose `name` matches the original placeholder regex (`^Congress\.gov:\s+[A-Z.]+(?:...)?\s*\d+\s+\(\d+\w{2}\s+Congress\)\s*$/i`), starts with `congress_law_`, or is null. Reads `(congress, billType, billNumber)` from `Claim.metadata` via the existing `Source → Edge → Claim` join (every congress_v1 Source has exactly one FOR edge). Fetches `GET /v3/bill/{congress}/{type}/{number}` and uses `bill.title` when it fits the short-title budget (≤120 chars). For longer titles, falls back to `GET /v3/bill/.../titles` and picks the shortest title whose `titleType` includes "short" or equals "Display Title" and is ≤120 chars; if none, keeps the main title (truncated only at the safety ceiling of 280 chars, which never triggered in this run). Throttle 400ms, 30s sleep on HTTP 429, exp-backoff on 5xx. `--dry-run`/`--full`/`--limit N` flags; `--full` requires `ALLOW_EDITS=true`.
+
+- **Title selection nuance worth recording for future API consumers.** The bill object's top-level `title` IS the display/short title for the vast majority of modern bills (e.g. HR 82 returns `"Social Security Fairness Act of 2023"`, not its 100+ char official-introduced form). The /titles endpoint is only needed for the long tail of older or naming-style bills. Implementing this as "main title first, /titles only as fallback" cut per-record API calls roughly in half versus a naive two-call design and still produced human-readable names for the long tail (e.g. "Welfare Reform bill" remains the only short label for some 1990s/2000s welfare bills — but the script intentionally does NOT pick `titleType=Popular Titles` because they tend to be informal nicknames; `Short Title(s) as Introduced`/`as Passed House`/`from ENR` and `Display Title` are the trusted families).
+
+- **Run results.** First pass: 10,359/10,360 enriched in 6,147.6 s (~1h43m, slightly over the 70-min estimate because real network round-trips averaged ~590 ms per record rather than the throttle-floor 400 ms — Congress.gov added 150-200ms latency on top of the throttle). One record failed with a transient Cloudflare HTTP 520 on the /titles fallback for 108/HR/3146 (a 134-char official title that needed the secondary lookup). Re-running the script after the run idempotently picked up that one record (Display Title was identical to the main title — both 134 chars; under the 280-char safety ceiling so it was kept verbatim). Final state: **10,360/10,360 enriched, 0 generic names remaining** (verified by independent `prisma.source.count` query per CLAUDE.md rule 6).
+
+- **Sample outcomes.** `Congress.gov: S. 619 (118th Congress)` → `COVID-19 Origin Act of 2023`. `Congress.gov: H.R. 3935 (118th Congress)` → `FAA Reauthorization Act of 2024`. `Congress.gov: H.R. 82 (118th Congress)` → `Social Security Fairness Act of 2023`. Naming bills retain their official long form: `Congress.gov: H.R. 3947 (118th Congress)` → `To designate the facility of the United States Postal Service located at 859 North State Road 21 in Melrose, Florida, as the "Pamela Jane Rock Post Office Building".`
+
+- **Scope discipline.** Only `Source.name` was touched. `Source.url`, `Source.externalId`, `publishedAt`, `methodologyType`, `ingestedBy`, `humanReviewed`, `autoApproved` all untouched. `Claim.text`, `Claim.metadata`, and the existing edges/revisions left as-is — they remain the audit-trail-of-record for what the ingester originally saw. The new title is purely a display-layer improvement, sourced live from the Congress.gov API at backfill time (URL captured implicitly via `Source.url`, which is the human-readable congress.gov bill page — fetchable for re-verification at any time).
+
+- **Type-check** (`npx tsc --noEmit --project tsconfig.scripts.json`) clean on `scripts/enrich-bill-titles.ts`.
+
+### 2026-05-23 (/analysis/votes — contested vs. unanimous breakdown across legislative bodies)
+
+New analysis surface built on top of the existing `LegislativeVote` corpus (~2,948 recorded ayes/nays rows across `uk_legislation_v1`, `eu_parliament_v1`, `canada_bills_v1`, `congress_v1`). No DB migration — this is read-only aggregation over data already populated by the legislative ingesters and member-vote enrichment.
+
+- **`lib/voteAnalysis.ts`** (new) — shared aggregation function `buildVoteAnalysis()` so the page and API route share one source of truth. A bill is **contested** when `nay / (aye + nay) > 0.10`, **unanimous** when nay = 0. Rows with `aye + nay < 10` are excluded as procedural (matches the threshold the standalone `scripts/analyze-votes.ts` uses). Output shape: `{ meta, countries[], globalContested[], globalUnanimous[], parties[] }`.
+- **`app/api/analysis/votes/route.ts`** (new) — thin GET wrapper around `buildVoteAnalysis()`. `force-dynamic`.
+- **`app/analysis/votes/page.tsx`** (new) — server component. Summary stat cards (total / contested / unanimous / bodies), per-body table, global most-contested top 10, largest-unanimous top 5, per-country detail blocks (top 10 contested + top 5 unanimous each), party breakdown table. Bill titles link out to `Source.url` in a new tab. Dark theme matches the rest of the app (`bg-gray-900` cards on `bg-gray-950` page; nay-percent bars colored red/orange/yellow/gray by intensity).
+- **`byPartyJson` shape discovery.** Only `uk_legislation_v1` actually populates this column today (169 of 2,948 rows). The actual shape is **not** the `{PartyName: {yes, no, abstain}}` documented in `prisma/schema.prisma:267` — it's the UK-specific `{ ayes: [{PartyName, VoteCount}, ...], noes: [...], abstains: [...] }` shape emitted by `theyworkforyou`-style sources. `extractPartyCounts()` handles both shapes (UK array-form first, then the documented map-form fallback) so the page will pick up Canadian/US party data automatically when those enrichments land.
+- **Party-breakdown caveat surfaced by the data:** with 169 UK rows currently parsed, the aggregate shows Conservative/Liberal Democrat/SNP/Green/etc. at 100% YES and Labour at 99.6% NO — almost certainly because the 169 UK rows captured the **opposition third-reading vote** for each bill, not the full session. Flagging here for whoever next looks at UK vote ingestion; the page renders truthfully against the underlying data either way. Filter is `billCount >= 3` to drop one-off splinter parties.
+- **Nav + homepage**: added `/analysis/votes` link in `app/layout.tsx` next to "Datasets" / before "Forthcoming"; appended a bullet to the 2026-05-23 homepage changelog entry summarising the new page. Footer "last updated May 23, 2026" already current — no change needed.
+- **Verification:** dev-server smoke test → `/api/analysis/votes` returns HTTP 200, 29.7 KB JSON, 619 ms; `/analysis/votes` renders HTTP 200, 209 KB HTML, 1.5 s. `npx tsc --noEmit` clean. Country totals match `scripts/analyze-votes.ts` output exactly (EU 1,900 / US 505 / Canada 374 / UK 169 — 2,948 total).
+- **Scope discipline:** no new DB queries beyond a single `LegislativeVote.findMany` with `source` select; no client-side JS (server component); no new dependencies; no changes to ingesters or enrichment scripts.
+
+**Files changed:** `lib/voteAnalysis.ts` (new), `app/api/analysis/votes/route.ts` (new), `app/analysis/votes/page.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (changelog bullet).
+
+### 2026-05-23 (US Congress member-vote enrichment — verified already complete, no-op)
+
+Task brief asked to fix `scripts/enrich-member-votes.ts` (reported 404 on all 505 `congress_votes_v1` records) and re-run. Investigation showed both fixes were already in place from earlier today:
+
+- **URL format already correct.** Commit `4d3b1ef` ("Fix member vote enrichment: use rollUrl XML sources instead of nonexistent Congress.gov /vote/ endpoint") had already switched the script away from the deprecated `api.congress.gov/v3/vote/...` shape to the per-claim `meta.rollUrl` (House: `clerk.house.gov/evs/{year}/roll{N}.xml`, Senate: `senate.gov/legislative/LIS/roll_call_votes/vote{CC}{S}/vote_{CC}_{S}_{NNNNN}.xml`). Both spot-checked with `curl -I` → HTTP 200, `Content-Type: text/xml`.
+- **Enrichment already ran.** DB query: 505/505 `dataSource='congress_votes_v1'` LegislativeVotes carry MemberVote children, **104,550** MemberVote rows total (avg ~207/vote — Senate roll calls ~100, House ~430). The 2026-05-23 changelog entry above ("MemberVote children") already implicitly confirms this.
+- **Dry-run on 10 records** (`--dry-run --limit 10`): `enriched=0 skipped=10 no-url=0 failed=0` — the early-return guard at L164 (`if (lv.memberVotes.length > 0) { skipped++; continue }`) short-circuits all already-enriched rows, exactly as designed.
+
+**No script changes, no live fetch, no DB writes.** The 404 description in the task brief reflected the pre-2026-05-22 state. Telegram message 7220 sent to chat 7688025079 confirming the no-op finding and the 104,550 MemberVote count.
+
 ### 2026-05-23 (US Congress member votes — fix visibility on vote claims + lazy-load to unblock bill claims)
 
 Two coupled fixes around the `congress_votes_v1` member-vote feature surfaced after the 2026-05-22 enrichment that wrote 505 `LegislativeVote` rows (each with ~400 `MemberVote` children).
@@ -197,6 +546,26 @@ Three pipeline scripts were verified by coding agents and confirmed working with
 - `ingest-who-essential-medicines.ts` (`who_essential_medicines_v1`) — 147 drugs from WHO EML 23rd ed. Medical domain.
 
 These are the first three hard-fact science/history pipelines to run post-legislative expansion. No architectural decisions pending — ready to ingest. ROADMAP.md and AGENTS.md updated.
+
+### 2026-05-23 (NYT Media Coverage enrichment — dry-run phase, quota blocked)
+
+Script `scripts/enrich-media-coverage.ts` built. Targets `congress_v1` claims (118th+ Congress). Searches NYT Article Search API by exact-quoted bill title, classifies framing (SUPPORTIVE/CRITICAL/DESCRIPTIVE) by keyword scoring on headline + snippet.
+
+**Status: dry-run blocked on NYT daily quota (~500 req/day free tier).** Quota burned during API setup + debugging session. Resets at midnight EDT 2026-05-24; cron scheduled to re-run dry-run then.
+
+**Key design decisions made:**
+- Exact-phrase quoted search (`q="Social Security Fairness Act"`) to avoid noise from unquoted AND-word matching
+- Skip pure-acronym titles (FISHES, EXPLORE, REPORT, etc.) — no meaningful signal
+- Skip procedural titles ("To designate the facility…", joint resolutions, etc.)
+- Date window: 6 months before enactment → 3 months after
+- 1200ms throttle (not 500ms — free tier has per-minute + daily limits)
+- `fl` field-filter param removed (deprecated April 8, 2025 by NYT)
+
+**Schema not yet migrated.** `MediaCoverage` table (id, claimId, outlet, headline, url, publishedAt, framing) pending hit-rate validation from dry-run. UI (Option B — dedicated collapsible section below vote record, with empty-state "No major media coverage found") pending schema.
+
+**Next step:** await dry-run results. If hit rate ≥ 10% on major bills (e.g. Social Security Fairness Act, Inflation Reduction Act, debt ceiling bills), proceed to schema migration + full pipeline run + UI.
+
+---
 
 ### 2026-05-21 (openFDA Drug Labels pagination cap fix — effective_time partitioning)
 

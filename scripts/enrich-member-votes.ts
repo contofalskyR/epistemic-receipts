@@ -114,6 +114,37 @@ function normalizeChamber(chamber: string): 'house' | 'senate' {
   return chamber.toLowerCase().includes('house') ? 'house' : 'senate'
 }
 
+// Congress sessions: odd calendar years are session 1, even years are session 2
+// (1st session of the Nth Congress convenes in year 2N + 1787, second in 2N + 1788).
+function deriveSessionFromVoteDate(congress: number, voteDateIso: string): number | null {
+  const m = /^(\d{4})/.exec(voteDateIso)
+  if (!m) return null
+  const year = parseInt(m[1]!, 10)
+  if (!Number.isFinite(year)) return null
+  const firstYear = 2 * congress + 1787
+  const session = year - firstYear + 1
+  if (session !== 1 && session !== 2) return null
+  return session
+}
+
+// The Congress.gov API's recordedVotes[].url points at HTML pages (clerk.house.gov/Votes/<id>
+// or senate.gov ...roll_call_vote_cfm.cfm) — both 404 against the v3 API and aren't XML even when
+// reachable. Construct the canonical Clerk/Senate XML URL from metadata fields instead.
+function buildVoteXmlUrl(chamber: 'house' | 'senate', congress: number, rollNumber: number, voteDateIso: string): string | null {
+  if (chamber === 'house') {
+    const m = /^(\d{4})/.exec(voteDateIso)
+    if (!m) return null
+    const year = parseInt(m[1]!, 10)
+    if (!Number.isFinite(year)) return null
+    const roll = String(rollNumber).padStart(3, '0')
+    return `https://clerk.house.gov/evs/${year}/roll${roll}.xml`
+  }
+  const session = deriveSessionFromVoteDate(congress, voteDateIso)
+  if (session == null) return null
+  const roll = String(rollNumber).padStart(5, '0')
+  return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${congress}${session}/vote_${congress}_${session}_${roll}.xml`
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -199,17 +230,25 @@ async function main() {
       continue
     }
 
-    const rollUrl = typeof meta.rollUrl === 'string' ? meta.rollUrl : null
     const rollNumber = typeof meta.rollNumber === 'number' ? meta.rollNumber : null
+    const metaCongress = typeof meta.congress === 'number' ? meta.congress : null
+    const metaVoteDate = typeof meta.voteDate === 'string' ? meta.voteDate : null
 
+    if (rollNumber == null || metaCongress == null || !metaVoteDate) {
+      if (verbose) console.log(`  [no-url] ${billKey} (${lv.chamber}): missing rollNumber/congress/voteDate in metadata`)
+      noRollUrl++
+      continue
+    }
+
+    const rollUrl = buildVoteXmlUrl(chamberApi, metaCongress, rollNumber, metaVoteDate)
     if (!rollUrl) {
-      if (verbose) console.log(`  [no-url] ${billKey} (${lv.chamber}): no rollUrl in metadata`)
+      if (verbose) console.log(`  [no-url] ${billKey} (${lv.chamber}): could not build XML URL from metadata`)
       noRollUrl++
       continue
     }
 
     if (mode === 'dry-run') {
-      console.log(`  [dry-run] ${billKey} | ${lv.chamber} | roll ${rollNumber ?? 'unknown'}`)
+      console.log(`  [dry-run] ${billKey} | ${lv.chamber} | roll ${rollNumber}`)
       if (verbose) console.log(`    URL: ${rollUrl}`)
       enriched++
       continue

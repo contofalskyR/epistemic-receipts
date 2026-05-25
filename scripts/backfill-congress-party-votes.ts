@@ -226,6 +226,29 @@ function parseSenateXml(xml: string): Record<string, PartyTally> | null {
   return Object.keys(out).length > 0 ? out : null
 }
 
+// Construct the canonical roll-call XML URL from the Congress.gov recordedVote
+// fields. The `rv.url` returned by /v3/bill/.../actions points at HTML pages
+// (clerk.house.gov/Votes/<id> or senate.gov ...roll_call_vote_cfm.cfm), which
+// the XML parsers below can't read. The Clerk + Senate XML endpoints follow
+// deterministic patterns keyed on chamber/congress/session/rollNumber.
+function buildVoteXmlUrl(rv: RecordedVote): string | null {
+  if (rv.rollNumber == null || !rv.chamber) return null
+  const chamber = rv.chamber.trim().toLowerCase()
+  if (chamber === 'house') {
+    if (!rv.date) return null
+    const year = new Date(rv.date).getUTCFullYear()
+    if (!Number.isFinite(year)) return null
+    const roll = String(rv.rollNumber).padStart(3, '0')
+    return `https://clerk.house.gov/evs/${year}/roll${roll}.xml`
+  }
+  if (chamber === 'senate') {
+    if (rv.congress == null || rv.sessionNumber == null) return null
+    const roll = String(rv.rollNumber).padStart(5, '0')
+    return `https://www.senate.gov/legislative/LIS/roll_call_votes/vote${rv.congress}${rv.sessionNumber}/vote_${rv.congress}_${rv.sessionNumber}_${roll}.xml`
+  }
+  return null
+}
+
 async function fetchVoteDetailFromUrl(xmlUrl: string): Promise<Record<string, PartyTally> | null> {
   await throttle()
   let res: Response
@@ -380,19 +403,20 @@ async function main(): Promise<void> {
 
     counts.matched++
 
-    if (!rv.url) {
+    const xmlUrl = buildVoteXmlUrl(rv)
+    if (!xmlUrl) {
       counts.noPartyDetail++
-      if (verbose) console.log(`  [skip:no-xml-url] ${row.id} ${cacheKey}`)
+      if (verbose) console.log(`  [skip:no-xml-url] ${row.id} ${cacheKey} chamber=${rv.chamber} roll=${rv.rollNumber}`)
       continue
     }
 
     let byParty: Record<string, PartyTally> | null
     try {
-      byParty = await fetchVoteDetailFromUrl(rv.url)
+      byParty = await fetchVoteDetailFromUrl(xmlUrl)
     } catch (err) {
       counts.errors++
       console.error(
-        `  [error:vote-xml] ${row.id} ${cacheKey} ${rv.url}: ${
+        `  [error:vote-xml] ${row.id} ${cacheKey} ${xmlUrl}: ${
           err instanceof Error ? err.message : String(err)
         }`,
       )
@@ -410,7 +434,7 @@ async function main(): Promise<void> {
         .map(([p, t]) => `${p}=${t.yes}/${t.no}/${t.abstain}`)
         .join(' ')
       console.log(
-        `  [match] ${row.id} ${cacheKey} ${rv.chamber}/${rv.sessionNumber}/${rv.rollNumber} → ${summary}`,
+        `  [match] ${row.id} ${cacheKey} ${rv.chamber}/${rv.sessionNumber}/${rv.rollNumber} ${xmlUrl} → ${summary}`,
       )
     }
 
