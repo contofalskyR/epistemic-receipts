@@ -24,6 +24,7 @@ type CountryDetail = {
 };
 
 type TooltipState = { x: number; y: number; name: string; count: number } | null;
+type ViewMode = "heatmap" | "political";
 
 const STATUS_COLORS: Record<string, string> = {
   HARD_FACT: "bg-emerald-900/70 text-emerald-300 border-emerald-700",
@@ -38,10 +39,21 @@ function claimBadge(status: string) {
 const GEOJSON_URL =
   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson";
 
+const GEOJSON_50M_URL =
+  "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson";
+
 export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const globeRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const geoData110Ref = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const geoData50Ref = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const hoveredFeatRef = useRef<any>(null);
+  const viewModeRef = useRef<ViewMode>("heatmap");
+
   const [tooltip, setTooltip] = useState<TooltipState>(null);
   const [sidebar, setSidebar] = useState<CountryDetail | null>(null);
   const [loadingSidebar, setLoadingSidebar] = useState(false);
@@ -49,6 +61,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const [claimFilter, setClaimFilter] = useState("");
+  const [viewMode, setViewMode] = useState<ViewMode>("heatmap");
 
   const sortedDensity = useMemo(
     () => [...density].sort((a, b) => b.claimCount - a.claimCount),
@@ -110,18 +123,34 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     [openSidebar]
   );
 
+  // Keep viewModeRef in sync so globe callbacks can read it without stale closure issues
+  useEffect(() => {
+    viewModeRef.current = viewMode;
+  }, [viewMode]);
+
   useEffect(() => {
     let cancelled = false;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let globeInstance: any = null;
+    let globeInstance: any = null;
 
     async function init() {
       if (!containerRef.current) return;
       const GlobeGL = (await import("globe.gl")).default;
-      const [geoRes] = await Promise.all([fetch(GEOJSON_URL)]);
-      const geoData = await geoRes.json();
+
+      // Fetch both resolutions in parallel so toggling is instant
+      const [geo110Res, geo50Res] = await Promise.all([
+        fetch(GEOJSON_URL),
+        fetch(GEOJSON_50M_URL),
+      ]);
+      const [geo110, geo50] = await Promise.all([
+        geo110Res.json(),
+        geo50Res.json(),
+      ]);
 
       if (cancelled || !containerRef.current) return;
+
+      geoData110Ref.current = geo110;
+      geoData50Ref.current = geo50;
 
       const el = containerRef.current;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -131,7 +160,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         .backgroundColor("#0a0a0a")
         .atmosphereColor("#1a3a6e")
         .atmosphereAltitude(0.12)
-        .polygonsData(geoData.features)
+        .polygonsData(geo110.features)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .polygonCapColor((feat: any) => {
           const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
@@ -145,6 +174,10 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         .onPolygonHover((feat: any, _prev: unknown, ev: MouseEvent) => {
           if (!feat) {
             setTooltip(null);
+            if (viewModeRef.current === "political") {
+              hoveredFeatRef.current = null;
+              globeRef.current?.polygonCapColor(() => "#1a2035");
+            }
             return;
           }
           const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
@@ -156,6 +189,15 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             name,
             count: row?.claimCount ?? 0,
           });
+          if (viewModeRef.current === "political") {
+            hoveredFeatRef.current = feat;
+            // Capture the ref value so the closure stays stable
+            const hovered = feat;
+            globeRef.current?.polygonCapColor(
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              (f: any) => f === hovered ? "#263050" : "#1a2035"
+            );
+          }
         })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .onPolygonClick((feat: any) => {
@@ -201,6 +243,39 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Apply view mode switch to existing globe instance (no reinit)
+  useEffect(() => {
+    if (!globeRef.current || !globeReady) return;
+
+    hoveredFeatRef.current = null;
+
+    if (viewMode === "heatmap") {
+      const data = geoData110Ref.current;
+      if (!data) return;
+      globeRef.current
+        .polygonsData(data.features)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .polygonCapColor((feat: any) => {
+          const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
+          const row = densityMap.get(code);
+          return countToColor(row?.claimCount ?? 0);
+        })
+        .polygonStrokeColor(() => "#2a2a4a")
+        .polygonAltitude(0.005)
+        .polygonSideColor(() => "rgba(10,10,20,0.6)");
+    } else {
+      const data = geoData50Ref.current;
+      if (!data) return;
+      globeRef.current
+        .polygonsData(data.features)
+        .polygonCapColor(() => "#1a2035")
+        .polygonStrokeColor(() => "#4a9eff")
+        .polygonAltitude(0.008)
+        .polygonSideColor(() => "rgba(10,10,30,0.8)");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewMode, globeReady]);
+
   return (
     <div className="relative" style={{ width: "100%", height: "90vh", background: "#0a0a0a" }}>
       {/* Globe canvas */}
@@ -230,6 +305,41 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           )}
         </div>
       )}
+
+      {/* View mode pill toggle — top-right */}
+      <div className="absolute top-4 right-4 z-40">
+        <div className="relative flex items-center bg-gray-900/80 backdrop-blur border border-gray-700 rounded-full p-1">
+          {/* Sliding active indicator */}
+          <div
+            className="absolute top-1 bottom-1 rounded-full bg-amber-500 transition-transform duration-300 ease-in-out"
+            style={{
+              width: "calc(50% - 4px)",
+              transform:
+                viewMode === "heatmap"
+                  ? "translateX(0)"
+                  : "translateX(calc(100% + 8px))",
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => setViewMode("heatmap")}
+            className={`relative z-10 px-3 py-1 text-xs font-medium rounded-full transition-colors duration-200 ${
+              viewMode === "heatmap" ? "text-gray-900" : "text-gray-400 hover:text-gray-200"
+            }`}
+          >
+            Heatmap
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("political")}
+            className={`relative z-10 px-3 py-1 text-xs font-medium rounded-full transition-colors duration-200 ${
+              viewMode === "political" ? "text-gray-900" : "text-gray-400 hover:text-gray-200"
+            }`}
+          >
+            Political
+          </button>
+        </div>
+      </div>
 
       {/* Search panel */}
       <div className="absolute top-4 left-4 w-64 max-w-[calc(100%-2rem)] z-30">
@@ -278,16 +388,18 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       </div>
 
-      {/* Legend */}
-      <div className="absolute bottom-6 left-6 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
-        <span>Low</span>
-        <div
-          className="w-24 h-3 rounded"
-          style={{ background: "linear-gradient(to right, #1e3a5f, #f59e0b)" }}
-        />
-        <span>High</span>
-        <span className="ml-2 text-gray-500">claim density</span>
-      </div>
+      {/* Legend — only in heatmap mode */}
+      {viewMode === "heatmap" && (
+        <div className="absolute bottom-6 left-6 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
+          <span>Low</span>
+          <div
+            className="w-24 h-3 rounded"
+            style={{ background: "linear-gradient(to right, #1e3a5f, #f59e0b)" }}
+          />
+          <span>High</span>
+          <span className="ml-2 text-gray-500">claim density</span>
+        </div>
+      )}
 
       {/* Sidebar */}
       {(loadingSidebar || sidebar) && (
