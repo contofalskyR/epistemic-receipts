@@ -298,11 +298,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         })
         .pointColor((d: OriginPoint) => {
           const t = Math.log(d.claimCount + 1) / Math.log(maxCount + 1);
-          const g = Math.round(160 + t * 95);
-          const b = Math.round(t * 120);
-          const a = 0.45 + t * 0.55;
+          const g = Math.round(180 + t * 75);
+          const b = Math.round(t * 80);
+          const a = 0.18 + t * 0.32;
           return `rgba(255,${g},${b},${a})`;
         })
+        .pointsMerge(true)
         .pointLabel((d: OriginPoint) => `${d.city}: ${d.claimCount.toLocaleString()} claims`)
         .backgroundColor("#050505");
     }
