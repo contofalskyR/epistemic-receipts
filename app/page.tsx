@@ -509,6 +509,19 @@ function HomeContent() {
 
   return (
     <div className="space-y-12">
+      {/* Top loading bar */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 h-0.5 transition-opacity duration-500 ${loading ? "opacity-100" : "opacity-0"}`}
+        aria-hidden="true"
+      >
+        <div
+          className="h-full bg-blue-500"
+          style={{
+            animation: loading ? "loading-bar 2s ease-in-out infinite" : undefined,
+          }}
+        />
+      </div>
+
       <BlackHoleCanvas />
 
       {/* Mission statement — unchanged */}
