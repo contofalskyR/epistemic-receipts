@@ -277,16 +277,21 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         .pointsData([])
         .backgroundColor("#0a0a0a");
     } else {
-      // Origins mode — light pollution style
+      // Origins mode — light pollution style, keep country outlines for geography reference
       if (!originsData) return; // wait for data
       const maxCount = Math.max(...originsData.map(d => d.claimCount), 1);
+      const data = geoData110Ref.current;
 
       globeRef.current
-        .polygonsData([])
+        .polygonsData(data?.features ?? [])
+        .polygonCapColor(() => "#0d1117")
+        .polygonSideColor(() => "rgba(0,0,0,0)")
+        .polygonStrokeColor(() => "rgba(80,100,140,0.5)")
+        .polygonAltitude(0.001)
         .pointsData(originsData)
         .pointLat((d: OriginPoint) => d.lat)
         .pointLng((d: OriginPoint) => d.lon)
-        .pointAltitude(0.005)
+        .pointAltitude(0.01)
         .pointRadius((d: OriginPoint) => {
           const t = Math.log(d.claimCount + 1) / Math.log(maxCount + 1);
           return 0.15 + t * 1.8;
@@ -299,7 +304,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           return `rgba(255,${g},${b},${a})`;
         })
         .pointLabel((d: OriginPoint) => `${d.city}: ${d.claimCount.toLocaleString()} claims`)
-        .polygonStrokeColor(() => "rgba(255,255,255,0.03)")
         .backgroundColor("#050505");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
