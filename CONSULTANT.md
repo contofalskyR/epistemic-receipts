@@ -15,14 +15,17 @@
 
 ---
 
-## Current DB State (as of 2026-05-23)
+## Current DB State (as of 2026-05-25)
 
 | Entity | Count |
 |--------|-------|
-| Claims | ~141,900+ |
-| Sources | ~140,500+ |
-| Edges | ~141,500+ |
+| Claims | ~156,900+ |
+| Sources | ~155,500+ |
+| Edges | ~156,400+ |
 | openFDA drug labels (`openfda_labels_v1`) | 85,068 |
+| OpenAlex academic papers (`openalex_v1`) | 10,093+ (growing — biomedical + policy buckets running) |
+| ClinicalTrials registrations (`clinicaltrials_v1`) | 4,475 |
+| CourtListener SCOTUS opinions (`courtlistener_scotus_v1`) | 300 |
 | Enacted Congress Bills (97th–119th) | 2,236 |
 | FAERS drug aggregates | 995 |
 | Federal Register rules (`fr_rules_v1`) | 1,915 |
@@ -66,17 +69,17 @@
 
 ---
 
-## Pipeline Registry (current as of 2026-05-19)
+## Pipeline Registry (current as of 2026-05-25)
 
 | # | Script | Source | Status | Records |
 |---|--------|--------|--------|---------|
 | 1 | `ingest-congress-bills.ts` | Congress.gov enacted bills 113th–119th | Shipped | 205 |
 | 2 | `ingest-un-sc-resolutions.ts` | UN SC resolutions (Zenodo dataset) | Ready | — |
 | 3 | `ingest-genbank.ts` | NCBI GenBank sequences | Ready | — |
-| 4 | `ingest-courtlistener-scotus.ts` | CourtListener SCOTUS opinions | Ready | — |
+| 4 | `ingest-courtlistener-scotus.ts` | CourtListener SCOTUS opinions — most-cited (citation_count≥50), ordered by citation_count desc (`courtlistener_scotus_v1`). Added `--dry-run` flag and 429 Retry-After handling. | Shipped 2026-05-25 | 300 |
 | 5 | `ingest-uspto-patents.ts` | USPTO Patents | **RETIRED 2026-05-12** — fabricated metadata. Records marked DEPRECATED. | 182 |
 | 6 | `ingest-ncbi-gene.ts` | NCBI gene entries | Ready | — |
-| 7 | `ingest-clinicaltrials.ts` | ClinicalTrials.gov | Ready | — |
+| 7 | `ingest-clinicaltrials.ts` | ClinicalTrials.gov completed trials — 4 buckets: case-study (specific drugs/interventions), pivotal (15 major conditions), pharma (FDA-drug-linked trials), phase3 (Phase 3/4 by therapeutic area). Added `--dry-run` flag, `phase3` bucket, `filter.advanced` phase filter, pharma bucket fixed to use `openfda_labels_v1`. (`clinicaltrials_v1`) | Shipped 2026-05-25 | 4,475 |
 | 8 | `ingest-faers-current-drugs.ts` | openFDA FAERS drug aggregates | Shipped | 995 |
 | 9 | `ingest-sec-edgar.ts` | SEC EDGAR curated filings (Enron, Lehman, Boeing, GE, WorldCom) | Shipped 2026-05-18 | 379 |
 | 10 | `ingest-nobel-prizes.ts` | Nobel Foundation API v2.1 (1901–2024) | Shipped 2026-05-18 | 1,026 canonical + 662 DEPRECATED stale |
@@ -103,6 +106,7 @@
 | 114 | `ingest-echr.ts` | HUDOC REST API — ECHR Grand Chamber (importance=1) and Chamber (importance=2) English full judgments (`HEJUD` doctype), sorted by `kpdate` (`echr_v1`) | Shipped 2026-05-23 | 10,296 |
 | — | `ingest-astronomy.ts` | NASA exoplanets + IAU bodies | Shipped | — |
 | — | `ingest-pubchem.ts` | PubChem chemistry substrate | Ready | — |
+| 116 | `ingest-openalex.ts` | OpenAlex open academic catalog — peer-reviewed publications across 3 buckets: cognition (C15744967/C188147891 + cognitive-science search), biomedical (C71924100/C86803240 + clinical-trial search), policy (C17744445/C162324750 + policy search). Cursor pagination (per_page=200). Edge score 80 ("peer-reviewed, not independently verified"). (`openalex_v1`) | Shipped 2026-05-25 | 10,093+ (biomedical + policy still running) |
 
 ---
 
@@ -902,6 +906,75 @@ Ran the auto-approved English-language run from `scripts/pipeline-queue.json`. N
 - Homepage changelog section and footer "last updated" added; rule established: update both on every deploy
 - CrossRef Retractions (Pipeline 13) full run completed (~26,500 records via CrossRef API)
 - Deployed to production: `fix: homepage server-side filtering + pagination for 47k-claim scale`
+
+### 2026-05-25 — Whitepaper written (RobClaw subagent)
+
+Wrote `/Users/robclaw/Projects/epistemic-receipts/WHITEPAPER.md` — a 3,500-word whitepaper covering the epistemic problem (provenance gap, AI hallucination, retraction blindness, regulatory compliance blindness), the Epistemic Receipts solution (Source → Edge → Claim graph, ThresholdEvent data structure, verification status semantics), current data assets (141,900 claims across 25+ pipelines as of May 23–25 2026), architecture (Next.js 16 / Prisma 6 / Neon Postgres / Vercel, schema design principles, pipeline design rules), the self-auditing vision (AiJob scaffold, OpenAlex integration, contradiction detection roadmap), business model (3 tiers: public/API/enterprise), roadmap (SCOTUS opinions, ClinicalTrials, NCBI Gene, ICD-11, declassified archives Layer 1 and Layer 2), and positioning rationale (EU AI Act, RAG grounding demand, pre-lock-in window).
+
+Tone: arXiv preprint combined with system design paper. Targeted at two audiences: academics who would cite it as a knowledge graph reference, and compliance/regulatory intelligence buyers (pharma, law firms, policy orgs). All statistics sourced from this CONSULTANT.md (current as of 2026-05-23 to 2026-05-25).
+
+**Files changed:** `WHITEPAPER.md` (created/overwritten), `CONSULTANT.md`.
+
+---
+
+### 2026-05-25 — Ingestion push: CourtListener SCOTUS P4, ClinicalTrials P7, OpenAlex P116 (subagent)
+
+**Scope:** Ran the two "Ready" pipelines (CourtListener SCOTUS, ClinicalTrials) and shipped the new OpenAlex ingester. Three background jobs still running at time of writing (OA biomedical + policy buckets, see counts below).
+
+**Pipeline 4 — CourtListener SCOTUS (`courtlistener_scotus_v1`)**
+- Pre-existing: 300 claims from prior run (most-cited SCOTUS opinions, `date_filed < 2000`, `citation_count ≥ 50`)
+- Script improvements: added `--dry-run` flag (skips DB writes, logs would-be ingestions), 429 handling with `Retry-After` header respect (was previously throwing on 429), MAX_RETRIES bumped 3→5.
+- Note: CourtListener API hit 429 with `retry-after: 504` during this session; a separate Claude coding agent (spawned earlier by the user) was concurrently running `--limit 500 --before-year 2000` to expand coverage. That agent's run was in-progress at log cutoff (500-by-citation expansion).
+- **DB verified: 300 claims, 300 sources, 300 edges** (`courtlistener_scotus_v1`). Final expansion count pending other-agent completion.
+
+**Pipeline 7 — ClinicalTrials.gov (`clinicaltrials_v1`)**
+- Pre-existing: 1,342 claims from prior runs (case-study + pivotal + pharma buckets fully exhausted by dedup).
+- New bucket added: `phase3` — sweeps 10 therapeutic areas (oncology, cardiology, infectious, neurology, endocrinology, psychiatry, pulmonology, gastroenterology, rheumatology, hematology) for completed Phase 3/4 trials with results (`filter.advanced=AREA[Phase]Phase 3 OR AREA[Phase]Phase 4`). Per-area cap 500.
+- Bug fixes: pharma bucket was querying `openfda_v1` (wrong — no records); fixed to `openfda_labels_v1`. `extractGenericName` simplified to first-token only (was triggering "Too complicated query" API errors). Phase filter changed from unsupported `filter.phase` to correct `filter.advanced` Essie syntax.
+- Run results (this session):
+  - case-study bucket: 0 new (all 116 already ingested)
+  - pivotal bucket: 0 new (all 115 already ingested)
+  - pharma bucket: **943 ingested**, 383 skipped (2000 FDA claims iterated; first-token drug names extracted)
+  - phase3 bucket: **2,190 ingested**, 88 skipped (10 areas: oncology/cardiology/infectious/endocrinology/hematology each capped at 500; neurology=2, psychiatry=18, rheumatology=4, pulmonology/gastroenterology=0 results)
+- **DB verified: 4,475 claims, 4,475 sources, 4,475 edges** (`clinicaltrials_v1`).
+
+**Pipeline 116 — OpenAlex (`openalex_v1`)**
+- Script `scripts/ingest-openalex.ts` existed from a prior agent session (3 buckets: cognition, biomedical, policy). OpenAlex already had 5,003 records from prior cognition+biomedical+policy runs.
+- This session ran biomedical (limit 10,000, fetchCap 30,000) and policy (limit 10,000, fetchCap 30,000) to page past already-ingested records and capture new ones. Cognition was fully deduped.
+- Per-run progress:
+  - Biomedical: 2,796+ new ingested at time of count (running)
+  - Policy: 1,871+ new ingested at time of count (running)
+- **DB verified at time of writing: 10,093 claims, 10,093 sources, 10,093 edges** (`openalex_v1`). Jobs still running; final count will be higher.
+- Note: OpenAlex cursor pagination + relevance sort means top N results are the same each run. To page past already-ingested records, run with a large limit (≥10,000) so fetchCap (limit×3 or limit+200) is large enough to exhaust the initial skip zone.
+
+**Homepage / CONSULTANT.md updates:**
+- Pipeline Registry: #4 and #7 updated to Shipped with final counts; #116 added for OpenAlex.
+- DB State table: updated with 3 new pipeline entries and refreshed total counts.
+- `app/page.tsx` homepage changelog: May 25 entry updated with ingestion results.
+
+---
+
+### 2026-05-26 — Security hardening: HTTP headers, rate limiting, robots.txt
+
+**Security headers (`next.config.ts`):**
+- Added `headers()` export with rules applying to all routes (`/(.*)`).
+- Headers added: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `X-XSS-Protection: 1; mode=block`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`.
+- CSP allows: `script-src 'self' 'unsafe-eval'` (WebGL shader compilation requires unsafe-eval) plus Vercel live/scripts hosts; `style-src 'self' 'unsafe-inline'` (Tailwind v4 inline styles) + Google Fonts; `img-src 'self' data: blob: https:` (globe textures); `worker-src 'self' blob:` (three.js workers); `connect-src 'self' https:`; `frame-ancestors 'none'`; `object-src 'none'`.
+
+**Rate limiting (`middleware.ts`):**
+- Added best-effort in-memory rate limiting before the existing auth check.
+- Rules: `/api/search` → 30 req/min; `/api/stats` → 20 req/min; `/api/claims` → 30 req/min; `/api/globe/*` → 20 req/min.
+- Per-isolate sliding 60s window using a module-level `Map<string, {count, windowStart}>`. Keyed by `ip:pathname`. Returns 429 + `Retry-After: 60` when exceeded; passes `X-RateLimit-Remaining` header on successful requests.
+- IP extracted from `x-forwarded-for` (Vercel sets this). Stale entries pruned every 2 minutes.
+- Existing password auth logic fully preserved.
+
+**`public/robots.txt`:**
+- Allows all crawlers on main pages: `/`, `/claims`, `/topics`, `/sources`, `/globe`, `/search`, `/stats`, `/fields`, `/about`, `/glossary`.
+- Disallows: `/api/`, `/login`, `/review`, `/admin`.
+
+**TypeScript:** `npx tsc --noEmit` clean.
+
+**Files changed:** `next.config.ts`, `middleware.ts`, `public/robots.txt`, `app/layout.tsx` (footer date), `CONSULTANT.md`.
 
 ---
 
