@@ -1,5 +1,7 @@
 # HARD_FACT Pipeline Roadmap
 
+**Live DB (2026-05-26):** 842,061 claims · 838,349 sources · 146 pipelines · 2,948 votes · 2,361 polities
+
 Future pipelines ranked by volume + editorial value. Add to this list as new candidates emerge. Cross off as pipelines ship.
 
 ---
@@ -464,10 +466,14 @@ Domains beyond legislation — same reference-tier standard applies. Individual 
 
 | Feature | Status | Notes |
 |---------|--------|-------|
+| Performance fix — 35 DB indexes + 7 bounded API routes | ✅ Shipped 2026-05-26 | At 842k claims, site went down. CREATE INDEX CONCURRENTLY on all hot-path columns. API routes (edges, sources, timeline, threshold-events, meta-edges, homepage, domains) hardened with take/select. |
+| CSP fix — `'unsafe-inline'` in script-src | ✅ Shipped 2026-05-26 | Next.js App Router RSC streaming requires inline scripts. Without it, React never hydrates — forms stay disabled, useEffect never fires. **Do not remove.** |
 | `/stats` page — Phase 1 | ✅ Shipped 2026-05-23 | Polarization by legislature, top contested + unanimous votes. |
 | `/stats` page — Phase 2: Topic breakdown, pass/fail, cross-country | ✅ Shipped 2026-05-24 | Topics by legislature, pass rate by topic, cross-country topic comparison. `result` + `topics` populated on all 2,948 votes. |
 | `/stats` page — US Congress Deep Dive | ✅ Shipped 2026-05-24 | Close calls (<5% margin, 84 votes), House vs Senate breakdown, margin distribution, most contested topics. `getCongressStats()` in `lib/stats-queries.ts`. |
 | `/stats` page — Party Line vs Bipartisan (US Congress) | 🔄 Built, awaiting backfill | UI live, hidden until `byPartyJson` populated. Run GH Actions `backfill-congress-party.yml`. **Note:** Congress.gov API v3 has NO `/vote` endpoint — data comes from House Clerk XML and Senate LIS XML via `rv.url`. |
+| Polity linking | 🔜 Next | Link 2,361 Polity rows to LegislativeVote/Claim by countryCode + year range. Prerequisite for Historical Event Graph. |
+| Historical Event Graph | 🔜 Phase 3 endgame | `HistoricalEvent` table → event pages with vote tally, linked primary sources, participating decision-makers. Filter by Polity government type. |
 | Language badge on claim cards | 🔜 Tabled | RO/EN/DE pill badge. Needs language field on ingest or Europeana dc:language backfill. |
 
 ## Notes
