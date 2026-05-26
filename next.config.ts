@@ -12,8 +12,8 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value: [
-      // Load scripts from self and Vercel tooling
-      "script-src 'self' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com",
+      // 'unsafe-inline' required: Next.js App Router injects inline scripts for RSC streaming
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com",
       // Inline styles required by Tailwind v4
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       // Fonts
