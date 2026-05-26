@@ -11,28 +11,25 @@
 **Stack:** Next.js 16.2.6 · Prisma 6.19.3 · React 19 · PostgreSQL · TypeScript · Tailwind v4  
 **Deploy:** Vercel (production at epistemic-receipts.vercel.app)  
 **Visualization:** ReactFlow (graph edges/flow diagrams)  
-**Auth:** Stub only — `/api/login` exists, method not yet implemented
+**Auth:** Password-protected via `SITE_PASSWORD` env var (set in Vercel, encrypted). Middleware in `middleware.ts` checks a SHA-256 cookie. Login page at `/login`, API at `/api/login`.
+
+⚠️ **CSP rule:** `next.config.ts` script-src MUST include `'unsafe-inline'`. Next.js App Router injects inline `<script>` tags for RSC streaming (`self.__next_f.push(...)`). Without `'unsafe-inline'`, React never hydrates — all interactive elements (forms, data fetches via useEffect) silently break. Do not remove it.
 
 ---
 
-## Current DB State (as of 2026-05-25)
+## Current DB State (as of 2026-05-26)
 
 | Entity | Count |
 |--------|-------|
-| Claims | ~156,900+ |
-| Sources | ~155,500+ |
-| Edges | ~156,400+ |
-| openFDA drug labels (`openfda_labels_v1`) | 85,068 |
-| OpenAlex academic papers (`openalex_v1`) | 10,093+ (growing — biomedical + policy buckets running) |
-| ClinicalTrials registrations (`clinicaltrials_v1`) | 4,475 |
-| CourtListener SCOTUS opinions (`courtlistener_scotus_v1`) | 300 |
-| Enacted Congress Bills (97th–119th) | 2,236 |
-| FAERS drug aggregates | 995 |
-| Federal Register rules (`fr_rules_v1`) | 1,915 |
-| USGS earthquakes M6.5+ (`usgs_eq_v1`) | 4,696 |
-| Nobel laureates (`nobel_v1`, canonical) | 1,026 |
-| Nobel laureates (`nobel_v1`, DEPRECATED stale) | 662 |
-| SEC EDGAR filings (`sec_edgar_v1`) | 379 |
+| Active Claims | **842,061** |
+| Active Sources | **838,349** |
+| Active Edges | **842,279** |
+| Pipelines | **146** |
+| Legislative Votes | 2,948 |
+| Polities | 2,361 |
+| Threshold Events | 1,259 |
+
+**Top pipelines by volume:** OpenAlex (155k), openFDA labels (85k), ChEBI (62k), JACAR Japan archives (44.6k), World Bank (34.6k), CrossRef retractions (26.6k), Argentina legislation (25.8k), Italy legislation (16.9k), NIH Reporter (16.1k), Chile legislation (15.9k)
 | CrossRef retractions (`crossref_retractions_v1`) | ~26,500 |
 | EU legislation (`eu_legislation_v1`, Terms 8–10) | 827 |
 | German Bundestag enacted laws (`bundestag_v1`) | 6,343 |
@@ -1058,3 +1055,9 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 - Pipeline scripts live in `scripts/`. Run with `npx tsx scripts/<name>.ts`.
 - All pipeline scripts should be idempotent (skip existing records by externalId).
 - When adding a new pipeline, add it to ROADMAP.md and this registry.
+
+### 2026-05-26 — CSP fix: add 'unsafe-inline' to script-src
+
+**Why:** Next.js App Router streams RSC payload via inline `<script>` tags (`self.__next_f.push(...)`). The existing CSP `script-src 'self' 'unsafe-eval' ...` blocked these, preventing React from hydrating on any page. Symptoms: login button stuck disabled, all useEffect data fetches silently never firing, pages showing empty shells. Fix: added `'unsafe-inline'` to script-src in `next.config.ts`.
+
+**Files changed:** `next.config.ts`, `CONSULTANT.md`.
