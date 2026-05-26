@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig, Pool } from "@neondatabase/serverless";
+import { neonConfig } from "@neondatabase/serverless";
 
 // Use WebSocket for Neon serverless — eliminates TCP cold-start (~5s) on Vercel
 if (typeof WebSocket === "undefined") {
@@ -11,9 +11,7 @@ if (typeof WebSocket === "undefined") {
 
 function makePrismaClient() {
   const connectionString = process.env.DATABASE_URL!;
-  const pool = new Pool({ connectionString });
-  const adapter = new PrismaNeon(pool);
-  // @ts-expect-error driverAdapters preview feature
+  const adapter = new PrismaNeon({ connectionString });
   return new PrismaClient({ adapter });
 }
 
