@@ -58,3 +58,36 @@ Fetching observations for 5 indicators × 217 countries (1990–2022)…
   Progress: 18500/34643 — ingested=18500
   Progress: 19000/34643 — ingested=19000
   Progress: 19500/34643 — ingested=19500
+  Progress: 20000/34643 — ingested=20000
+  Progress: 20500/34643 — ingested=20500
+  Progress: 21000/34643 — ingested=21000
+  Progress: 21500/34643 — ingested=21500
+  Progress: 22000/34643 — ingested=22000
+  Progress: 22500/34643 — ingested=22500
+  Progress: 23000/34643 — ingested=23000
+  Progress: 23500/34643 — ingested=23500
+  Progress: 24000/34643 — ingested=24000
+  Progress: 24500/34643 — ingested=24500
+  Progress: 25000/34643 — ingested=25000
+  Progress: 25500/34643 — ingested=25500
+  Progress: 26000/34643 — ingested=26000
+  Progress: 26500/34643 — ingested=26500
+  Progress: 27000/34643 — ingested=27000
+  Progress: 27500/34643 — ingested=27500
+  Progress: 28000/34643 — ingested=28000
+  Progress: 28500/34643 — ingested=28500
+  Progress: 29000/34643 — ingested=29000
+  Progress: 29500/34643 — ingested=29500
+  Progress: 30000/34643 — ingested=30000
+  Progress: 30500/34643 — ingested=30500
+  Progress: 31000/34643 — ingested=31000
+  Progress: 31500/34643 — ingested=31500
+  Progress: 32000/34643 — ingested=32000
+  Progress: 32500/34643 — ingested=32500
+  Progress: 33000/34643 — ingested=33000
+  Progress: 33500/34643 — ingested=33500
+  Progress: 34000/34643 — ingested=34000
+  Progress: 34500/34643 — ingested=34500
+
+Ingestion complete. Ingested: 34643 | Skipped: 0 | Errors: 0
+DB claims (worldbank_v1): 34643

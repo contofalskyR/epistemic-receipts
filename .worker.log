@@ -168,3 +168,7 @@ NEXT_TASK: NONE
 [2026-05-25 15:49 EDT] Current block: 29,470 tokens $0.06 (window ends 08:00PM)
 [2026-05-25 15:49 EDT] Queue empty
 [2026-05-25 15:49 EDT] Worker finished. Tasks done: 0
+[2026-05-25 20:40 EDT] Worker started
+[2026-05-25 20:41 EDT] Current block: 6,532,371 tokens $3.45 (window ends 01:00AM)
+[2026-05-25 20:41 EDT] Queue empty
+[2026-05-25 20:41 EDT] Worker finished. Tasks done: 0
