@@ -52,6 +52,16 @@ function parseLimit(): number {
   return 10
 }
 
+function parseMinCitations(): number {
+  const args = process.argv.slice(2)
+  const idx = args.findIndex(a => a === '--min-citations')
+  if (idx !== -1 && args[idx + 1]) {
+    const n = parseInt(args[idx + 1], 10)
+    if (!isNaN(n) && n >= 0) return n
+  }
+  return 50
+}
+
 function parseBeforeYear(): number {
   const args = process.argv.slice(2)
   const idx = args.findIndex(a => a === '--before-year')
@@ -60,6 +70,10 @@ function parseBeforeYear(): number {
     if (!isNaN(n) && n > 1700 && n <= 2100) return n
   }
   return 2000
+}
+
+function parseDryRun(): boolean {
+  return process.argv.includes('--dry-run')
 }
 
 function sleep(ms: number): Promise<void> {
@@ -127,7 +141,7 @@ function toCitationCount(raw: number | string | null | undefined): number | null
 // ── API fetch ─────────────────────────────────────────────────────────────────
 
 const TRANSIENT_STATUSES = new Set([502, 503, 504])
-const MAX_RETRIES = 3
+const MAX_RETRIES = 5
 
 async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
   const url = urlOrPath.startsWith('http') ? urlOrPath : `${BASE_URL}${urlOrPath}`
@@ -150,6 +164,14 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
 
     if (res.status === 401) {
       throw new Error('CourtListener returned 401 — check COURTLISTENER_TOKEN in .env')
+    }
+
+    if (res.status === 429) {
+      const retryAfter = parseInt(res.headers.get('retry-after') ?? '60', 10)
+      const wait = isNaN(retryAfter) ? 60000 : retryAfter * 1000
+      console.log(`  Rate limited (429) — waiting ${Math.ceil(wait / 1000)}s before retry...`)
+      await sleep(wait)
+      continue
     }
 
     if (TRANSIENT_STATUSES.has(res.status)) {
@@ -186,7 +208,9 @@ async function main() {
 
   const limit = parseLimit()
   const beforeYear = parseBeforeYear()
-  console.log(`\n=== CourtListener SCOTUS Ingestion — limit: ${limit}, before: ${beforeYear} ===\n`)
+  const minCitations = parseMinCitations()
+  const dryRun = parseDryRun()
+  console.log(`\n=== CourtListener SCOTUS Ingestion — limit: ${limit}, before: ${beforeYear}, min-citations: ${minCitations}${dryRun ? ' [DRY RUN]' : ''} ===\n`)
 
   // Look up supreme-court-ruling topic for auto-tagging
   const scotusTopic = await prisma.topic.findUnique({ where: { slug: 'supreme-court-ruling' } })
@@ -194,7 +218,6 @@ async function main() {
     console.warn('Warning: topic "supreme-court-ruling" not found — claims will not be auto-tagged')
   }
 
-  const minCitations = 50
   const pageSize = Math.min(limit, 100)
   const firstUrl =
     `/clusters/?docket__court=scotus` +
@@ -275,6 +298,12 @@ async function main() {
 
       if (!gatesPassed) {
         console.warn(`  Warning: cluster ${clusterId} (${caseName}) failed quality gates — leaving unreviewed`)
+      }
+
+      if (dryRun) {
+        console.log(`  [DRY RUN] Would ingest: ${caseName} (${countStr} citations, ${parsed?.date?.toISOString().slice(0,10) ?? 'no date'})`)
+        ingested++
+        continue
       }
 
       try {

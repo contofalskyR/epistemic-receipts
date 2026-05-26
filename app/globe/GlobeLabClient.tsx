@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { countryFlag } from "@/lib/countryCodeMap";
+import { getGeoJSONForYear, isRemoteUrl, type GeoJSONSelection } from "@/lib/historical-geo";
 
 type DensityRow = {
   countryCode: string;
@@ -28,7 +29,7 @@ type CountryDetail = {
   }>;
 };
 
-type TooltipState = { x: number; y: number; name: string; count: number } | null;
+type TooltipState = { x: number; y: number; name: string; count: number; source: "modern" | "historical" | "paleo" | null } | null;
 
 const STATUS_COLORS: Record<string, string> = {
   HARD_FACT: "bg-emerald-900/70 text-emerald-300 border-emerald-700",
@@ -40,7 +41,7 @@ function claimBadge(status: string) {
   return STATUS_COLORS[status] ?? "bg-gray-800 text-gray-400 border-gray-700";
 }
 
-const GEOJSON_URL =
+const MODERN_GEOJSON_URL =
   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson";
 
 const EARTH_AGE = 4_500_000_000;
@@ -132,6 +133,13 @@ export default function GlobeLabClient() {
   const [totalClaimCount, setTotalClaimCount] = useState(0);
   const [loadingDensity, setLoadingDensity] = useState(false);
 
+  // Historical/paleo geo state
+  const [currentGeoSelection, setCurrentGeoSelection] = useState<GeoJSONSelection | null>(null);
+  const [loadingGeo, setLoadingGeo] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const geoCache = useRef<Map<string, any>>(new Map());
+  const currentSourceRef = useRef<"modern" | "historical" | "paleo" | null>(null);
+
   const currentYear = sliderToYear(sliderValue);
   const currentEra = getEraForYear(currentYear);
   const isAtPresent = sliderValue >= 999;
@@ -189,15 +197,88 @@ export default function GlobeLabClient() {
     return () => clearTimeout(timeoutId);
   }, [fetchDensity]);
 
+  // Load historical/paleo GeoJSON based on current year
+  useEffect(() => {
+    if (!globeReady || !globeRef.current) return;
+
+    const selection = getGeoJSONForYear(currentYear);
+    const cacheKey = selection.path;
+
+    // Check if already cached
+    if (geoCache.current.has(cacheKey)) {
+      const cachedData = geoCache.current.get(cacheKey);
+      geoDataRef.current = cachedData;
+      globeRef.current.polygonsData(cachedData.features);
+      setCurrentGeoSelection(selection);
+      return;
+    }
+
+    // Fetch new GeoJSON
+    let cancelled = false;
+    setLoadingGeo(true);
+
+    async function loadGeo() {
+      try {
+        const url = isRemoteUrl(selection.path) ? selection.path : selection.path;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+        const geoData = await res.json();
+
+        if (cancelled) return;
+
+        // Cache the result
+        geoCache.current.set(cacheKey, geoData);
+        geoDataRef.current = geoData;
+
+        // Update globe polygons
+        if (globeRef.current) {
+          globeRef.current.polygonsData(geoData.features);
+        }
+
+        setCurrentGeoSelection(selection);
+      } catch (err) {
+        console.error("Failed to load GeoJSON:", err);
+      } finally {
+        if (!cancelled) setLoadingGeo(false);
+      }
+    }
+
+    loadGeo();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [currentYear, globeReady]);
+
   useEffect(() => {
     if (!globeRef.current || !globeReady || !geoDataRef.current) return;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    globeRef.current.polygonCapColor((feat: any) => {
-      const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
-      const row = densityMap.get(code);
-      return countToColor(row?.claimCount ?? 0);
-    });
-  }, [density, globeReady, densityMap, maxCount]);
+
+    const source = currentGeoSelection?.source;
+
+    if (source === "paleo") {
+      // Paleogeographic coastlines - use a geological earth-tone color
+      globeRef.current.polygonCapColor(() => "#3d5a4c");
+      globeRef.current.polygonStrokeColor(() => "#4a7a5c");
+    } else if (source === "historical") {
+      // Historical borders - use a sepia/parchment tone
+      globeRef.current.polygonCapColor(() => "#2e2820");
+      globeRef.current.polygonStrokeColor(() => "#5a4a3a");
+    } else {
+      // Modern borders - color by claim density
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      globeRef.current.polygonCapColor((feat: any) => {
+        const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
+        const row = densityMap.get(code);
+        return countToColor(row?.claimCount ?? 0);
+      });
+      globeRef.current.polygonStrokeColor(() => "#2a2a4a");
+    }
+  }, [density, globeReady, densityMap, maxCount, currentGeoSelection]);
+
+  // Keep ref in sync with current geo source for click handler
+  useEffect(() => {
+    currentSourceRef.current = currentGeoSelection?.source ?? null;
+  }, [currentGeoSelection]);
 
   const openSidebar = useCallback(async (code: string) => {
     setLoadingSidebar(true);
@@ -237,8 +318,9 @@ export default function GlobeLabClient() {
     async function init() {
       if (!containerRef.current) return;
       const GlobeGL = (await import("globe.gl")).default;
-      const geoRes = await fetch(GEOJSON_URL);
+      const geoRes = await fetch(MODERN_GEOJSON_URL);
       const geoData = await geoRes.json();
+      geoCache.current.set(MODERN_GEOJSON_URL, geoData);
 
       if (cancelled || !containerRef.current) return;
 
@@ -264,17 +346,20 @@ export default function GlobeLabClient() {
             return;
           }
           const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
-          const name = feat.properties?.NAME ?? feat.properties?.name ?? code;
+          const name = feat.properties?.NAME ?? feat.properties?.name ?? code ?? "Unknown region";
           const row = densityMap.get(code);
           setTooltip({
             x: ev?.clientX ?? 0,
             y: ev?.clientY ?? 0,
             name,
             count: row?.claimCount ?? 0,
+            source: currentSourceRef.current,
           });
         })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .onPolygonClick((feat: any) => {
+          // Only allow clicking on modern borders (where we can look up claims)
+          if (currentSourceRef.current !== "modern") return;
           const code = feat?.properties?.ISO_A2 ?? feat?.properties?.iso_a2;
           if (code && code !== "-99") openSidebar(code);
         });
@@ -333,11 +418,17 @@ export default function GlobeLabClient() {
           style={{ left: tooltip.x + 14, top: tooltip.y - 10 }}
         >
           <span className="font-medium text-white">{tooltip.name}</span>
-          {tooltip.count > 0 ? (
-            <span className="ml-2 text-amber-400">{tooltip.count.toLocaleString()} claims</span>
-          ) : (
-            <span className="ml-2 text-gray-500">no claims</span>
-          )}
+          {tooltip.source === "modern" ? (
+            tooltip.count > 0 ? (
+              <span className="ml-2 text-amber-400">{tooltip.count.toLocaleString()} claims</span>
+            ) : (
+              <span className="ml-2 text-gray-500">no claims</span>
+            )
+          ) : tooltip.source === "historical" ? (
+            <span className="ml-2 text-amber-400/70 text-xs">historical entity</span>
+          ) : tooltip.source === "paleo" ? (
+            <span className="ml-2 text-blue-400/70 text-xs">coastline</span>
+          ) : null}
         </div>
       )}
 
@@ -429,6 +520,16 @@ export default function GlobeLabClient() {
                 `${totalClaimCount.toLocaleString()} claims visible`
               )}
             </div>
+            {currentGeoSelection && (
+              <div className="text-xs text-purple-400 mt-1 flex items-center justify-center gap-1">
+                {loadingGeo && (
+                  <div className="w-3 h-3 rounded-full border border-purple-400 border-t-transparent animate-spin" />
+                )}
+                <span className={currentGeoSelection.source === "paleo" ? "text-blue-400" : currentGeoSelection.source === "historical" ? "text-amber-400" : "text-emerald-400"}>
+                  {currentGeoSelection.label}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Slider */}
@@ -452,14 +553,34 @@ export default function GlobeLabClient() {
       </div>
 
       {/* Legend */}
-      <div className="fixed bottom-32 left-6 z-30 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
-        <span>Low</span>
-        <div
-          className="w-24 h-3 rounded"
-          style={{ background: "linear-gradient(to right, #1e3a5f, #f59e0b)" }}
-        />
-        <span>High</span>
-        <span className="ml-2 text-gray-500">claim density</span>
+      <div className="fixed bottom-32 left-6 z-30 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
+        {currentGeoSelection?.source === "modern" ? (
+          <div className="flex items-center gap-2">
+            <span>Low</span>
+            <div
+              className="w-24 h-3 rounded"
+              style={{ background: "linear-gradient(to right, #1e3a5f, #f59e0b)" }}
+            />
+            <span>High</span>
+            <span className="ml-2 text-gray-500">claim density</span>
+          </div>
+        ) : currentGeoSelection?.source === "historical" ? (
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-3 rounded" style={{ background: "#2e2820", border: "1px solid #5a4a3a" }} />
+            <span className="text-amber-400">Historical political borders</span>
+            <span className="text-gray-500 ml-1">(click disabled)</span>
+          </div>
+        ) : currentGeoSelection?.source === "paleo" ? (
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-3 rounded" style={{ background: "#3d5a4c", border: "1px solid #4a7a5c" }} />
+            <span className="text-blue-400">Paleogeographic coastlines</span>
+            <span className="text-gray-500 ml-1">(GPlates reconstruction)</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span className="text-gray-500">Loading map data…</span>
+          </div>
+        )}
       </div>
 
       {/* Sidebar */}

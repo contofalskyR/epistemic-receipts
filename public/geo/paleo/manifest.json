@@ -1,0 +1,19 @@
+{
+  "source": "GPlates Web Service (gws.gplates.org)",
+  "model": "PALEOMAP",
+  "license": "CC BY 4.0",
+  "description": "Paleogeographic coastline reconstructions for deep geological time",
+  "snapshots": [
+    { "ma": 500, "file": "coastlines_500ma.geojson", "label": "500 Ma (Late Cambrian)" },
+    { "ma": 400, "file": "coastlines_400ma.geojson", "label": "400 Ma (Devonian)" },
+    { "ma": 300, "file": "coastlines_300ma.geojson", "label": "300 Ma (Carboniferous)" },
+    { "ma": 250, "file": "coastlines_250ma.geojson", "label": "250 Ma (Permian - Pangaea)" },
+    { "ma": 200, "file": "coastlines_200ma.geojson", "label": "200 Ma (Triassic)" },
+    { "ma": 150, "file": "coastlines_150ma.geojson", "label": "150 Ma (Jurassic)" },
+    { "ma": 66, "file": "coastlines_66ma.geojson", "label": "66 Ma (K-Pg Extinction)" },
+    { "ma": 34, "file": "coastlines_34ma.geojson", "label": "34 Ma (Eocene-Oligocene)" },
+    { "ma": 5, "file": "coastlines_5ma.geojson", "label": "5 Ma (Pliocene)" },
+    { "ma": 2, "file": "coastlines_2ma.geojson", "label": "2 Ma (Pleistocene)" },
+    { "ma": 1, "file": "coastlines_1ma.geojson", "label": "1 Ma (Early Ice Age)" }
+  ]
+}

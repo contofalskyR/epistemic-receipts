@@ -49,13 +49,14 @@ type Counts = { ingested: number; skipped: number; errors: number }
 
 // ── CLI ───────────────────────────────────────────────────────────────────────
 
-function parseArgs(): { bucket: string; limit: number } {
+function parseArgs(): { bucket: string; limit: number; dryRun: boolean } {
   const args = process.argv.slice(2)
   const bucketIdx = args.indexOf('--bucket')
   const limitIdx  = args.indexOf('--limit')
   const bucket = bucketIdx !== -1 ? (args[bucketIdx + 1] ?? 'case-study') : 'case-study'
   const limit  = limitIdx  !== -1 ? (parseInt(args[limitIdx + 1] ?? '0', 10) || 0) : 0
-  return { bucket, limit }
+  const dryRun = args.includes('--dry-run')
+  return { bucket, limit, dryRun }
 }
 
 // ── Rate limiting ─────────────────────────────────────────────────────────────
@@ -166,9 +167,18 @@ function formatDateForText(dateStr: string): string {
 }
 
 // Extract generic name from openFDA claim text: "SEMAGLUTIDE (brand: OZEMPIC)..." → "semaglutide"
+// Truncate and sanitize to avoid ClinicalTrials "Too complicated query" errors.
 function extractGenericName(text: string): string | null {
-  const m = text.match(/^(.+?)(?:\s*\(brand:|\s+demonstrated\s)/i)
-  return m ? m[1].trim().toLowerCase() : null
+  const m = text.match(/^(.+?)(?:\s*\(brand:|\s+demonstrated\s|\s+is\s|\s+was\s|\s+contains\s)/i)
+  if (!m) return null
+  let name = m[1].trim().toLowerCase()
+  // Take only the first token (first word or hyphenated compound) to avoid complex multi-word names
+  const firstToken = name.match(/^[a-z0-9]+(?:[-][a-z0-9]+)*/)
+  if (!firstToken) return null
+  name = firstToken[0]
+  // Skip names that are too short or too long to be useful
+  if (name.length < 4 || name.length > 40) return null
+  return name
 }
 
 // ── Topic management ──────────────────────────────────────────────────────────
@@ -221,6 +231,7 @@ async function ingestTrial(
   study: CTStudy,
   extraTopicIds: string[],
   coreTopicIds: string[],
+  dryRun = false,
 ): Promise<IngestResult> {
   const id     = study.protocolSection?.identificationModule
   const status = study.protocolSection?.statusModule
@@ -255,10 +266,12 @@ async function ingestTrial(
   }
 
   const externalId = `nct_${nctId}`
-  const existing = await prisma.claim.findUnique({ where: { externalId } })
-  if (existing) {
-    console.log(`  Skipped (exists): ${nctId}`)
-    return 'skipped'
+  if (!dryRun) {
+    const existing = await prisma.claim.findUnique({ where: { externalId } })
+    if (existing) {
+      console.log(`  Skipped (exists): ${nctId}`)
+      return 'skipped'
+    }
   }
 
   const registrationDate = parseTrialDate(status?.studyFirstPostDateStruct?.date)
@@ -272,6 +285,11 @@ async function ingestTrial(
   const completionStr = completionRaw ? `, primary completion ${formatDateForText(completionRaw)}` : ''
 
   const claimText = `Clinical trial ${nctId}${displayTitle} registered to study ${intrDisplay}${condStr}, sponsored by ${sponsor}${completionStr}.`
+
+  if (dryRun) {
+    console.log(`  [DRY RUN] Would ingest: ${nctId} — ${intrDisplay}${acronym ? ` (${acronym})` : ''}`)
+    return 'ingested'
+  }
 
   try {
     const { claimId } = await prisma.$transaction(async tx => {
@@ -365,7 +383,7 @@ const CASE_STUDY_INTERVENTIONS: CaseStudyIntervention[] = [
   { name: 'nicotine replacement',  extraTopicSlugs: ['tobacco-control', 'medicine'], cap: 10 },
 ]
 
-async function runCaseStudyBucket(limit: number, coreTopicIds: string[]): Promise<Counts> {
+async function runCaseStudyBucket(limit: number, coreTopicIds: string[], dryRun: boolean): Promise<Counts> {
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
   const seenNCTs = new Set<string>()
 
@@ -393,7 +411,7 @@ async function runCaseStudyBucket(limit: number, coreTopicIds: string[]): Promis
       if (nctId && seenNCTs.has(nctId)) continue
       if (nctId) seenNCTs.add(nctId)
 
-      const result = await ingestTrial(study, extraIds, coreTopicIds)
+      const result = await ingestTrial(study, extraIds, coreTopicIds, dryRun)
       if (result === 'ingested') counts.ingested++
       else if (result === 'skipped') counts.skipped++
       else counts.errors++
@@ -406,11 +424,11 @@ async function runCaseStudyBucket(limit: number, coreTopicIds: string[]): Promis
 // ── Pharma bucket ─────────────────────────────────────────────────────────────
 // For each FDA-approved drug in the DB: top 5 most recently completed trials
 
-async function runPharmaBucket(limit: number, coreTopicIds: string[]): Promise<Counts> {
+async function runPharmaBucket(limit: number, coreTopicIds: string[], dryRun: boolean): Promise<Counts> {
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
 
   const fdaClaims = await prisma.claim.findMany({
-    where: { ingestedBy: 'openfda_v1', deleted: false },
+    where: { ingestedBy: 'openfda_labels_v1', deleted: false },
     select: { text: true },
     ...(limit > 0 ? { take: limit } : {}),
   })
@@ -435,7 +453,7 @@ async function runPharmaBucket(limit: number, coreTopicIds: string[]): Promise<C
       if (nctId && seenNCTs.has(nctId)) continue
       if (nctId) seenNCTs.add(nctId)
 
-      const result = await ingestTrial(study, extraIds, coreTopicIds)
+      const result = await ingestTrial(study, extraIds, coreTopicIds, dryRun)
       if (result === 'ingested') counts.ingested++
       else if (result === 'skipped') counts.skipped++
       else counts.errors++
@@ -472,7 +490,7 @@ const PIVOTAL_CONDITIONS: PivotalCondition[] = [
   { condition: 'obesity',                    extraTopicSlugs: ['drug-approval'], cap: 10 },
 ]
 
-async function runPivotalBucket(limit: number, coreTopicIds: string[]): Promise<Counts> {
+async function runPivotalBucket(limit: number, coreTopicIds: string[], dryRun: boolean): Promise<Counts> {
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
   const seenNCTs = new Set<string>()
 
@@ -506,7 +524,7 @@ async function runPivotalBucket(limit: number, coreTopicIds: string[]): Promise<
       if (nctId && seenNCTs.has(nctId)) continue
       if (nctId) seenNCTs.add(nctId)
 
-      const result = await ingestTrial(study, extraIds, coreTopicIds)
+      const result = await ingestTrial(study, extraIds, coreTopicIds, dryRun)
       if (result === 'ingested') counts.ingested++
       else if (result === 'skipped') counts.skipped++
       else counts.errors++
@@ -516,11 +534,83 @@ async function runPivotalBucket(limit: number, coreTopicIds: string[]): Promise<
   return counts
 }
 
+// ── Bulk Phase 3/4 bucket ────────────────────────────────────────────────────
+// Broad sweep of completed Phase 3 + 4 trials with results posted.
+// Target: 5,000–50,000 records. Paginate the full dataset by phase.
+
+const PHASE3_THERAPEUTIC_AREAS = [
+  { area: 'oncology',         slugs: ['medicine', 'epidemiology'] },
+  { area: 'cardiology',       slugs: ['medicine'] },
+  { area: 'infectious',       slugs: ['medicine', 'epidemiology'] },
+  { area: 'neurology',        slugs: ['medicine'] },
+  { area: 'endocrinology',    slugs: ['medicine'] },
+  { area: 'psychiatry',       slugs: ['medicine'] },
+  { area: 'pulmonology',      slugs: ['medicine'] },
+  { area: 'gastroenterology', slugs: ['medicine'] },
+  { area: 'rheumatology',     slugs: ['medicine'] },
+  { area: 'hematology',       slugs: ['medicine'] },
+]
+
+async function runPhase3Bucket(limit: number, coreTopicIds: string[], dryRun: boolean): Promise<Counts> {
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+  const seenNCTs = new Set<string>()
+
+  const perArea = limit > 0 ? Math.ceil(limit / PHASE3_THERAPEUTIC_AREAS.length) : 500
+  const medicineId = await findTopic('medicine')
+  const drugApprovalId = await findTopic('drug-approval')
+  const baseExtraIds = [medicineId, drugApprovalId].filter(Boolean) as string[]
+
+  console.log(`\n  Phase 3/4 bulk sweep — target ${perArea} per therapeutic area\n`)
+
+  for (const ta of PHASE3_THERAPEUTIC_AREAS) {
+    if (limit > 0 && counts.ingested >= limit) break
+    const remaining = limit > 0 ? limit - counts.ingested : perArea
+    const fetchCap = Math.min(remaining * 4, 2000)
+
+    console.log(`\n  Area: ${ta.area} (fetching up to ${fetchCap})\n`)
+
+    const studies = await searchTrials({
+      'query.cond': ta.area,
+      'filter.overallStatus': 'COMPLETED',
+      'filter.advanced': 'AREA[Phase]Phase 3 OR AREA[Phase]Phase 4',
+      'sort': 'LastUpdatePostDate:desc',
+    }, fetchCap)
+
+    const withResults = studies.filter(s => s.hasResults === true)
+    const batch = withResults.slice(0, Math.min(remaining, perArea))
+    console.log(`    ${withResults.length} with results → taking ${batch.length}\n`)
+
+    const extraIds: string[] = [...baseExtraIds]
+    for (const slug of ta.slugs) {
+      const id = await findTopic(slug)
+      if (id && !extraIds.includes(id)) extraIds.push(id)
+    }
+
+    for (const study of batch) {
+      if (limit > 0 && counts.ingested >= limit) break
+      const nctId = study.protocolSection?.identificationModule?.nctId
+      if (nctId && seenNCTs.has(nctId)) continue
+      if (nctId) seenNCTs.add(nctId)
+
+      const result = await ingestTrial(study, extraIds, coreTopicIds, dryRun)
+      if (result === 'ingested') counts.ingested++
+      else if (result === 'skipped') counts.skipped++
+      else counts.errors++
+    }
+
+    if (counts.ingested % 100 === 0 && counts.ingested > 0) {
+      console.log(`  Progress: ingested=${counts.ingested} skipped=${counts.skipped} errors=${counts.errors}`)
+    }
+  }
+
+  return counts
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { bucket, limit } = parseArgs()
-  console.log(`\n=== ClinicalTrials Ingestion — bucket: ${bucket}, limit: ${limit || 'all'} ===\n`)
+  const { bucket, limit, dryRun } = parseArgs()
+  console.log(`\n=== ClinicalTrials Ingestion — bucket: ${bucket}, limit: ${limit || 'all'}${dryRun ? ' [DRY RUN]' : ''} ===\n`)
 
   const { clinicalTrials, trialRegistrations } = await ensureCoreTopics()
   const coreTopicIds = [clinicalTrials, trialRegistrations]
@@ -529,16 +619,19 @@ async function main() {
 
   switch (bucket) {
     case 'case-study':
-      result = await runCaseStudyBucket(limit, coreTopicIds)
+      result = await runCaseStudyBucket(limit, coreTopicIds, dryRun)
       break
     case 'pharma':
-      result = await runPharmaBucket(limit, coreTopicIds)
+      result = await runPharmaBucket(limit, coreTopicIds, dryRun)
       break
     case 'pivotal':
-      result = await runPivotalBucket(limit, coreTopicIds)
+      result = await runPivotalBucket(limit, coreTopicIds, dryRun)
+      break
+    case 'phase3':
+      result = await runPhase3Bucket(limit, coreTopicIds, dryRun)
       break
     default:
-      console.error(`Unknown bucket: ${bucket}. Use: case-study | pharma | pivotal`)
+      console.error(`Unknown bucket: ${bucket}. Use: case-study | pharma | pivotal | phase3`)
       await prisma.$disconnect()
       process.exit(1)
   }

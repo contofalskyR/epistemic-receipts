@@ -1,202 +1,394 @@
-# Epistemic Receipts: A Provenance-First Knowledge Graph of Institutional Claims
+# Epistemic Receipts: A Structured Knowledge Graph for Verifiable Claims
 
-**Robert Contofalsky**
-*Rutgers University*
-*Draft — May 2026*
+**Robert Contofalsky**  
+Department of Psychology, Rutgers University  
+Draft: May 25, 2026
 
 ---
 
 ## Abstract
 
-Most public knowledge bases store facts as static assertions: subject, predicate, object. They tell you *what* is believed but not *when* it became believable, *who* established it, or whether it has since been disputed. We present **Epistemic Receipts**, a knowledge graph that models facts as events with explicit provenance chains rather than timeless triples. Each claim carries a status (`HARD_FACT`, `DISPUTED`, `NEVER_RESOLVES`), a type (`EMPIRICAL`, `INSTITUTIONAL`, `INTERPRETIVE`, `HYBRID`), and an append-only log of `ThresholdEvent` records that record every status transition along with the source that triggered it. The current instance holds 660,000+ structured claims drawn from 91+ primary institutional pipelines spanning national legislatures, regulatory bodies, international courts, scientific registries, and historical archives. We argue that the receipt — not the assertion — is the appropriate atomic unit for a fact base meant to survive scrutiny, AI training, and time.
+The internet has no audit trail for facts. Claims circulate without timestamps, source chains, or verification status — making it structurally impossible to determine when a claim became verifiable, by what evidence, and at whose authority. This creates compounding failures: AI hallucinations built on ungrounded corpora, citation rot in academic literature, and misinformation that exploits the absence of provenance. Epistemic Receipts is a structured knowledge graph that addresses this gap directly. The system encodes verifiable claims as typed nodes with explicit provenance chains (Source → Edge → Claim), a categorical verification status (HARD\_FACT / PROVISIONAL / DISPUTED / DEPRECATED), and a ThresholdEvent — the immutable record of the moment and source that elevated a claim to verified status. As of May 2026, the database contains approximately 141,900 claims, 140,500 sources, and 141,500 edges, drawn from 25+ authoritative API sources across FDA drug regulation, seismic science, scientific retractions, international legislation, judicial decisions, and health metrics. This paper describes the epistemic problem motivating the project, the architecture of its solution, the current data assets, and its roadmap toward a self-auditing, living knowledge graph.
 
 ---
 
-## 1. The Problem: Facts Without Receipts
+## 1. The Problem: Epistemic Infrastructure Does Not Exist
 
-Public knowledge graphs have largely converged on a triple-store abstraction: `(subject, predicate, object)`, optionally with confidence scores or named graphs. Wikidata, DBpedia, ConceptNet, and the various enterprise knowledge graphs that power consumer search treat a fact as a thing that *is true* until edited otherwise. This is a serviceable approximation for many lookup tasks. It is a poor approximation for the way institutional knowledge actually behaves.
+### 1.1 The Provenance Gap
 
-Institutional facts are not timeless. They have moments of becoming. A bill is introduced, debated, amended, voted on, signed, codified, challenged, upheld, superseded. A clinical trial is registered, enrolled, completed, reported, retracted. A patent is filed, granted, litigated, expired. At each stage, the *epistemic status* of the underlying claim changes — and the change is itself the most important data point. Yet the dominant fact-base abstraction collapses this trajectory into a single mutable cell. When the Cohen-Boyer recombinant DNA patent (US4237224) expired in 1997, no triple-store representation natively captured the difference between "claim was false before 1980," "claim was true and exclusive 1980–1997," and "claim is true and public-domain after 1997." The provenance is reconstructable from edit history if you trust the editor's notes; it is not first-class.
+Every factual claim exists in time. A drug was approved on a specific date. A law was enacted under a specific government. A scientific paper was retracted after a specific investigation. A seismic event occurred at a specific magnitude, at specific coordinates, as recorded by a specific instrument network. These timestamped, source-anchored facts are not merely useful — they are what distinguishes a verifiable claim from an assertion.
 
-This matters for three reasons that have grown more acute in the past five years.
+Yet the information environment treats facts as static and undated. Wikipedia entries do not indicate when a claim became verifiable. News articles cite facts without indicating the primary source chain behind them. Academic papers cite secondary literature that cites other secondary literature, creating chains that eventually lead to a single measurement or institutional record that itself may no longer be accessible. The result is a flattened epistemic landscape in which a 1965 finding and a 2024 replication carry the same undecorated confidence.
 
-**First, AI systems trained on these graphs inherit the flattening.** A large language model that ingests Wikidata learns that a claim either holds or does not. It does not learn — because the data does not encode — that the claim's truth value is a function of when you ask, what institution you trust to resolve it, and whether that institution has since reversed its position. The result is the well-documented behavior in which an LLM confidently asserts the title of a patent and gets the inventors wrong because the patent number it remembered was assigned to a different invention four years later (see §4 on the USPTO fabrication incident in this project's own audit log).
+This is not primarily a quality-of-information problem. It is an architectural one. The web has no native layer for provenance metadata on factual claims. HTML encodes content and presentation; it does not encode epistemic state.
 
-**Second, regulatory and legal work is structurally cross-jurisdictional and increasingly so.** A pharmaceutical compliance team needs to know not just whether semaglutide is approved, but in which jurisdictions, when, with what labeling, under what regulatory class, and whether any of those approvals have been withdrawn or amended. The relevant evidence lives in openFDA, the EMA database, the UK MHRA, Health Canada, the Therapeutic Goods Administration, and a dozen smaller national regulators. Each speaks its own schema and exposes its own audit trail. The compliance question is *fundamentally* about the receipts; the lookup is incidental.
+### 1.2 Three Downstream Failures
 
-**Third, the falsification problem is now industrial.** Generative models can fabricate plausible-sounding citations at a rate that exceeds any human reviewer's ability to debunk them. The defensive move is not "trust no source" but rather "demand a receipt" — a verifiable, timestamped pointer to a primary record at an institution that takes responsibility for that record. A fact base that cannot produce receipts cannot defend its claims against an adversarial generative substrate. The Pipeline 5 (USPTO patents) retirement documented in this project's `AGENTS.md` is the worked example: 182 records ingested from model recall rather than a primary API turned out to include at least two confirmed fabrications, including a patent number whose actual subject was a different invention with different inventors. Retiring the pipeline cost nothing structurally — every record was tagged `verificationStatus: DEPRECATED` and excluded from default views — *because the receipt model made the retirement legible*. In a flat triple-store, the same incident would have required either deletion (losing the audit trail) or trust in editor-written rationales (recreating the problem).
+The absence of epistemic infrastructure produces at least three distinct classes of failure:
 
-The premise of Epistemic Receipts is that these three pressures point at the same architectural fix: stop storing facts. Start storing receipts.
+**AI hallucination.** Large language models trained on undated, unsourced web corpora inherit all of the provenance failures embedded in that corpus. They cannot distinguish a well-sourced claim from a confidently stated falsehood. Retrieval-augmented generation (RAG) systems improve on this by grounding generation in retrieved documents, but they remain limited by the quality of their retrieval corpus: if the corpus does not encode verification status or source chains, RAG cannot recover that information at inference time. The result is confident generation with no ability to flag claims that are disputed, retracted, or jurisdiction-specific.
 
----
+**Citation rot and retraction blindness.** Approximately 10,000 scientific papers are retracted annually (Brainard & You, 2018), yet citations to retracted papers continue to accumulate after retraction at a rate that is only partially explained by publication lag (Budd et al., 1998; Schneider et al., 2020). CrossRef's retraction data — one of the sources feeding Epistemic Receipts — identifies ~26,500 retracted papers. Many of these remain cited in downstream literature without any indication of their retracted status. There is no operational infrastructure to flag, in context, that a cited paper was retracted after the citing paper was written.
 
-## 2. The Epistemic Receipt Model
+**Regulatory compliance blindness.** In highly regulated domains — pharmaceutical approval, financial compliance, legislative interpretation — the effective date of a rule change is as important as the content of the rule. A drug interaction warning added to an FDA label in 2022 did not apply to prescriptions made in 2019. A financial regulation enacted in the Bundestag under coalition government X may have been amended under government Y. Without timestamped, government-annotated regulatory records cross-referenced to a political context layer, compliance analysis requires bespoke research for every query.
 
-A receipt, in this system, is a tuple of four first-class objects: a `Claim`, a `Source`, an `Edge` connecting them, and one or more `ThresholdEvent` records that mark when the claim's epistemic status changed and which source triggered the change. We describe each in turn and then show how they compose.
+### 1.3 The Root Cause
 
-### 2.1 Claim
-
-A `Claim` is the unit of assertable content. It carries:
-
-- `text` — natural-language statement of the claim.
-- `currentStatus ∈ {HARD_FACT, DISPUTED, NEVER_RESOLVES}` — the present epistemic state. `NEVER_RESOLVES` is reserved for claims that are categorically not subject to evidentiary settlement (e.g., interpretive judgments, contested normative questions).
-- `claimType ∈ {EMPIRICAL, INSTITUTIONAL, INTERPRETIVE, HYBRID}` — what kind of claim it is, which determines what would count as resolution. An `EMPIRICAL` claim resolves to measurement; an `INSTITUTIONAL` claim resolves to an institutional act (a vote, a ruling, an enactment); an `INTERPRETIVE` claim does not resolve at all in the same sense.
-- `claimEmergedAt` with `claimEmergedPrecision ∈ {DAY, MONTH, QUARTER, YEAR}` — when the claim itself first became coherent (distinct from when it became true). A pre-Columbian claim about Australia did not exist as a contestable statement before the entity existed.
-- `verificationStatus ∈ {VERIFIED, PROVISIONAL, DISPUTED, DEPRECATED}` — an orthogonal axis tracking the *audit* state of the record itself, not the truth of the claim it asserts. A claim can be `HARD_FACT` and `DEPRECATED` simultaneously: the claim is true but the record we ingested for it has been retired (as with Pipeline 5).
-- `humanReviewed`, `autoApproved`, `ingestedBy` — provenance of the *record*, not the *fact*. These are separate signals and the AGENTS.md policy is explicit that conflating them corrupts the audit trail.
-
-Crucially, a claim does not store its own truth as a boolean. Truth, in this model, is whatever the latest valid `ThresholdEvent` says it is.
-
-### 2.2 Source
-
-A `Source` is the primary document that establishes a fact: a Federal Register notice, a Hansard transcript, a CourtListener opinion, a GenBank accession, a Nobel laureate citation. Sources carry a `methodologyType ∈ {primary, derivative, opinion}` that determines how much epistemic weight an edge from this source can carry. A primary source — the institution's own canonical record — can trigger a `HARD_FACT` transition. A derivative or opinion source cannot, no matter how reputable.
-
-Sources are themselves first-class enough to have `SourceRelationship` records (funded-by, employed-by, affiliated-with) and `SourceCredibilityEvent` records that track credibility downgrades and restorations. A retraction by a journal does not just affect the retracted paper; it leaves a credibility event on the publishing source.
-
-A separate `WikidataLink` table cross-references Sources to Wikidata Q-numbers for enrichment, with the explicit constraint that Wikidata is never authoritative for `HARD_FACT` transitions. It is an enrichment surface, not a resolver. This distinction — between enrichment and resolution — is structural, not editorial, and prevents the slow drift in which secondary aggregators become de facto authorities.
-
-### 2.3 Edge and EdgeRevision
-
-An `Edge` connects a Source to a Claim with a `type ∈ {FOR, AGAINST, CITES, RETRACTS, CORRECTED}` and an `evidenceType ∈ {EVIDENTIARY, PROCEDURAL, ARGUMENTATIVE}`. The distinction between evidence types is critical for downstream reasoning. A procedural edge (the Senate held a cloture vote) is not interchangeable with an evidentiary edge (a clinical trial measured an outcome), even when both nominally support the same claim.
-
-Edge weights are not stored on the Edge itself. They live in `EdgeRevision`, an append-only log of `(priorScore, newScore, reason, changedAt)` tuples. The current weight is the latest revision; the history is the audit trail. This mirrors how reputation actually moves in institutional settings — through documented revisions, not silent overwrites.
-
-### 2.4 MetaEdge
-
-A `MetaEdge` is an edge targeting another edge: suppression, amplification, labeling, demotion. This is the model's way of representing the act of one source acting on the epistemic standing of another's contribution — a journal retracting an article, a court vacating a lower-court opinion, a platform labeling a post. MetaEdges are necessary because the act of contesting an edge is itself a fact with provenance, and demands the same receipt treatment as the original.
-
-### 2.5 ThresholdEvent: The Receipt Proper
-
-The `ThresholdEvent` table is the heart of the model. Each row records:
-
-- `claimId` — which claim's status changed.
-- `triggeredBy` — free-text description of the institutional act (e.g., "FDA NDA approval," "Royal Assent," "Supreme Court judgment").
-- `triggeredBySourceId` — the auditable source record that documents the trigger.
-- `confirmedBy` — the human or automated agent that promoted the event.
-- `evidenceSnapshot` — a JSON freeze of the evidence as it stood at the moment of transition, so the receipt remains interpretable even if upstream records later change.
-- `suggestedEventId` — optional pointer back to a `SuggestedThresholdEvent` written by an AI agent and subsequently promoted by a human (see §6).
-
-`ThresholdEvent` is append-only. A claim's life is the ordered list of its `ThresholdEvent` rows. To ask "when did this become an established fact" is to read the first row whose transition was to `HARD_FACT`. To ask "has it ever been disputed" is to scan for transitions back to `DISPUTED`. To ask "what would change my mind" is to look at the `claimType` and read off what evidence type the model considers admissible.
-
-### 2.6 What the Composition Yields
-
-Putting these together: a fact, in this system, is not a triple. It is a `Claim` whose `text` describes the proposition, whose `currentStatus` reports the present epistemic state, whose `ThresholdEvent` log reports the trajectory by which it arrived there, whose `Edge` set documents the sources cited in each transition, and whose `MetaEdge` set documents any contestation of those edges. Reading a single claim returns not a value but a complete provenance chain.
-
-The cost of this model is verbosity. The benefit is that every assertion the system makes is challengeable in the same medium it was made in. There is no privileged narrative layer; the receipts *are* the narrative.
+These failures share a common root: the web encodes facts but not the epistemic conditions under which they became facts. There is no standard representation for *when* a claim became verifiable, *what* made it verifiable, or *what* would falsify it. Epistemic Receipts is an attempt to build that layer.
 
 ---
 
-## 3. Architecture and Scale
+## 2. The Solution: Epistemic Receipts
 
-The current production instance is a Next.js 14 application deployed on Vercel, backed by Neon Postgres through Prisma. The data layer is intentionally boring: a single relational schema with foreign keys and append-only history tables, no graph database, no triple store. The expressive work is done by the schema design, not the engine.
+### 2.1 Core Concept
 
-### 3.1 Ingestion pipelines
+An "epistemic receipt" is the immutable record of the moment a claim crossed the threshold into verified territory — analogous to a blockchain transaction receipt, but for facts rather than value transfers. Just as a financial receipt encodes the amount, timestamp, merchant, and transaction hash, an epistemic receipt encodes:
 
-As of May 2026 the system runs **91+ ingestion pipelines**, each implemented as a standalone TypeScript script in `scripts/` that calls a primary institutional API and writes `Claim`, `Source`, and `Edge` records (plus an initial `ThresholdEvent` when the institutional act warrants `HARD_FACT` status). The pipeline registry in `AGENTS.md` enumerates current state; selected anchors include:
+- **The claim**: a structured text assertion
+- **The verification status**: HARD\_FACT / PROVISIONAL / DISPUTED / DEPRECATED
+- **The provenance chain**: Source → Edge → Claim, with the edge specifying relationship type (FOR / AGAINST / CITES / RETRACTS / CORRECTED)
+- **The ThresholdEvent**: the specific source that triggered verification, the timestamp, and optionally the human reviewer who confirmed it
 
-| Domain | Pipelines (selection) | Approx. records |
+This is not a rating or a credibility score. It is a structured audit trail. The ThresholdEvent says: *at this moment, on the basis of this source, this claim became a HARD\_FACT*. The evidence is linkable, inspectable, and persistent.
+
+### 2.2 Verification Status Semantics
+
+Claims in the system carry one of four verification statuses:
+
+| Status | Meaning |
+|--------|---------|
+| `HARD_FACT` | Supported by at least one authoritative primary source with a ThresholdEvent on file |
+| `PROVISIONAL` | Supported by evidence but lacking a formal ThresholdEvent; pending review |
+| `DISPUTED` | Evidence on both sides; no consensus verification |
+| `DEPRECATED` | Previously verified but the claim has been superseded, retracted, or shown false |
+
+The DEPRECATED status preserves epistemic history: a retracted finding is not erased from the graph — it remains with its original status annotated as DEPRECATED and a deprecation reason in metadata. This is the audit trail property.
+
+### 2.3 The Source → Edge → Claim Graph
+
+The core data model is a directed bipartite graph:
+
+```
+Source --[Edge]--> Claim
+```
+
+**Sources** are producers of evidence: institutions, APIs, datasets, documents. Each Source has an `externalId` for cross-referencing and is never hard-deleted (soft-deleted only, to preserve audit trails).
+
+**Edges** represent epistemic relationships between a Source and a Claim. Relationship types include:
+- `FOR` — Source provides affirmative evidence for the Claim
+- `AGAINST` — Source provides counter-evidence
+- `CITES` — Source references the Claim without asserting truth
+- `RETRACTS` — Source explicitly withdraws a prior claim (e.g., a retraction notice)
+- `CORRECTED` — Source corrects a prior version of the claim
+
+Edges carry an evidenceType and a score. All score changes are recorded in `EdgeRevision` — an immutable audit log of how the evidentiary weight of a source-claim relationship evolved over time.
+
+**Claims** are the central entities. Each claim has:
+- A text assertion
+- A verification status
+- A type and optional parent (for hierarchical claims)
+- Human review flags (`humanReviewed`, `reviewConfidence`) — distinct from pipeline quality flags (`autoApproved`)
+- An optional ThresholdEvent — the receipt
+
+**MetaEdges** allow the graph to reason about its own structure: a MetaEdge can suppress, amplify, or label an Edge, enabling second-order epistemic reasoning (e.g., "this Edge should be downweighted because the Source has a known conflict of interest").
+
+### 2.4 ThresholdEvents: The Receipt
+
+ThresholdEvents are the defining data structure of the system. A ThresholdEvent on a Claim records:
+
+- The timestamp at which verification threshold was crossed
+- The Source that triggered it (`triggeredBySourceId`)
+- The human reviewer who confirmed it (`confirmedBy`)
+- Optional notes
+
+A Claim can have at most one ThresholdEvent — the moment of verification. Prior evidentiary accumulation is recorded via EdgeRevisions. The ThresholdEvent is the culminating record.
+
+`SuggestedThresholdEvents` provide an AI-generated analogue: the system can propose that a Claim merits a ThresholdEvent based on its edge profile, but these proposals are not authoritative until confirmed by a human reviewer. This separation between AI suggestion and human confirmation is architectural, not a workflow detail — it prevents AI hallucination from silently propagating into the verified knowledge graph.
+
+---
+
+## 3. Current Data Assets
+
+### 3.1 Database State (as of May 23–25, 2026)
+
+| Entity | Count |
+|--------|-------|
+| Claims | ~141,900 |
+| Sources | ~140,500 |
+| Edges | ~141,500 |
+
+These numbers reflect 25+ completed ingestion pipelines across multiple domains.
+
+### 3.2 Biomedical and Scientific
+
+**FDA Drug Labels (openFDA, `openfda_labels_v1`):** 85,068 claims — the single largest dataset. Each claim encodes a structured assertion from an FDA-approved drug label: indications, contraindications, dosing, warnings, interactions. Labels are dated and manufacturer-attributed. This corpus is uniquely valuable because FDA labels are primary regulatory documents — they have legal force — and they change over time, creating a natural ThresholdEvent structure.
+
+**CrossRef Retractions (`crossref_retractions_v1`):** ~26,500 claims. CrossRef maintains a retraction registry covering major scientific publishers. Each claim encodes a retracted paper: DOI, retraction reason, publisher, retraction date. These are canonical DEPRECATED-status claims — the retraction notice is the EdgeRevision that flips status. This dataset directly addresses the retraction blindness failure mode described above.
+
+**FAERS Drug Safety Data (`faers_v1`):** 995 aggregate records from the FDA Adverse Event Reporting System. Encoded as background-tier summaries (reference-tier individual FAERS reports are too granular to be directly citable by case studies).
+
+**WHO Global Health Observatory (`who_gho_v1`):** 1,001 claims across 5 indicators — life expectancy, under-5 mortality rate, PM2.5 exposure, alcohol consumption, and obesity prevalence — for the most recent available year per country. WHO GHO is a canonical health statistics source.
+
+### 3.3 Seismic and Physical Science
+
+**USGS Earthquakes M6.5+ (`usgs_eq_v1`):** 4,696 seismic events since 1900. Each claim encodes an earthquake: magnitude, date, location, depth, USGS event ID. USGS ComCat is the authoritative US seismological record. These claims are paradigmatic HARD\_FACTs: instrumented measurements from a federal scientific agency.
+
+### 3.4 Legislative and Regulatory
+
+The legislative coverage is the most distinctive data asset in the system. As of May 2026, the database contains enacted legislation from 14 jurisdictions:
+
+| Jurisdiction | Dataset Tag | Records |
 |---|---|---|
-| US legislation | Congress enacted laws, Federal Register significant rules, SCOTUS via CourtListener | 366 + 1,915 + 300 |
-| Comparative legislatures | Bundestag (DE), Riksdag (SE), Tweede Kamer (NL), Nationalrat (AT), Oireachtas (IE), Parliament of Canada, UK Public General Acts, and 40+ more | ~30,000+ |
-| Regulatory / scientific | openFDA (drug events + labels), ClinicalTrials.gov, NIH RePORTER, SEC EDGAR | ~4,000 |
-| International law | UN Security Council resolutions, ECHR, ICC, African Court | 2,798 + planned |
-| Academic | CrossRef Retractions, Nobel Prize laureates 1901–2024, OpenAlex | 26,595 + 1,688 + (in progress) |
-| Reference scientific | NASA Exoplanet Archive, USGS earthquakes M6.5+ since 1900, IAU constellations, GenBank, PubChem | 6,277 + 4,696 + 88 + 99 + 355 |
-| Historical archives | JFK files, CIA FOIA, NARA, IPN, JACAR (WWII Japanese archives, ~360k records) | (large, in progress) |
+| European Union (Terms 8–10, 2014–present) | `eu_legislation_v1` | 827 |
+| Germany (Bundestag) | `bundestag_v1` | 6,343 |
+| Ireland (Oireachtas) | `oireachtas_v1` | 4,040 |
+| Sweden (Riksdag) | `riksdag_v1` | 9,989 |
+| Netherlands (Tweede Kamer) | `tweedekamer_v1` | 1,530 |
+| Austria (Nationalrat) | `nationalrat_v1` | 3,868 |
+| Scotland | `scotland_legislation_v1` | 408 |
+| Israel (Knesset) | `israel_knesset_v1` | 2,009 |
+| Georgia (Matsne) | `georgia_legislation_v1` | 301 |
+| Jamaica (MOJ) | `jamaica_legislation_v1` | 528 |
+| US Congress (97th–119th) | `congress_bills_v1` | 2,236 |
+| Federal Register (significant rules) | `fr_rules_v1` | 1,915 |
+| NATO official texts | `nato_official_texts_v1` | 459 |
+| UN GA Resolutions | `un_ga_v1` | 598 |
 
-Each pipeline is required to satisfy the **reference-tier test** documented in `AGENTS.md`: of the next 20 plausible case studies built on the system, at least some would *directly cite individual records* from this dataset. Datasets that fail the test — for example, raw individual FAERS adverse-event reports, where case studies cite analyses rather than individual reports — are explicitly *not* ingested in bulk. They are linked as background sources from case-study claims instead. This editorial constraint is what keeps the database from drifting into a generic data lake; the receipt has to be load-bearing for the inclusion to justify itself.
+All legislative records are enriched with a **Political Context layer** via Wikidata SPARQL: each enacted law is annotated with the head of government at the time of enactment, their party, and in many cases coalition partner data. The political context enrichment covers 112,843 rows as of the Tier 2 completion on May 23, 2026. This means that for every enacted law in the database, it is possible to query: *what government was in power when this law passed?*
 
-### 3.2 Auxiliary structures
+No other publicly available dataset cross-references multi-jurisdiction legislation with contemporaneous political context in a single queryable graph.
 
-Beyond the core schema, several support tables enrich what a receipt can carry:
+### 3.5 Judicial
 
-- `PoliticalContext` attaches to legislative `Source` records and captures head of government, governing party, majority type, and coalition partners at the moment of enactment. A receipt for a German law thus carries not just the law text and date but the composition of the Bundestag that passed it.
-- `LegislativeVote` and `MemberVote` capture roll-call vote breakdowns. The current instance holds **2,948 LegislativeVote rows** across US Congress, EU Parliament, and the UK Parliament, with per-party tallies and individual member votes where the upstream API exposes them. This is what powers the polarization and party-line analysis at `/stats`.
-- `AcademicField` and `Topic` provide hierarchical classification, independent of the source's own taxonomy.
-- `Polity` separately catalogs governments with start/end years (including BCE), allowing claims to attach to political entities that no longer exist without overloading the modern country-code dimension.
+**ECHR Judgments (`echr_v1`):** 10,296 Grand Chamber and Chamber judgments from the European Court of Human Rights, sourced via the HUDOC REST API. ECHR judgments are primary legal authority for European human rights law. The corpus covers the full range of Articles and applications, with judgment dates spanning the court's history.
 
-### 3.3 Surfaces
+### 3.6 Scientific Recognition
 
-The public surfaces are deliberately thin:
+**Nobel Laureates (`nobel_v1`):** 1,026 canonical laureate records (1901–2024) from the Nobel Foundation API v2.1, plus 662 DEPRECATED stale records that were superseded in the canonical run. This is a clean demonstration of the deprecation model: old records are not deleted but are marked DEPRECATED with a deprecation reason in metadata.
 
-- `/claims` paginates the entire fact base (100 per page, ~6,600 pages at present).
-- `/search` provides full-text search across claim text.
-- `/stats` exposes legislative vote analysis: polarization scores, party-line breakdowns, cross-jurisdictional comparison.
-- `/globe` is a WebGL visualization of claim density and origin geography (heatmap and origins modes), useful for spotting jurisdictional gaps.
+### 3.7 Financial Regulatory
 
-The surfaces are deliberately not the product. The product is the schema and the discipline by which it is populated.
+**SEC EDGAR Filings (`sec_edgar_v1`):** 379 curated filings covering landmark cases: Enron, Lehman Brothers, Boeing, GE, WorldCom. These are reference-tier because individual filings are directly citable in case studies about regulatory enforcement and corporate governance.
 
-### 3.4 Engineering invariants
+### 3.8 Congressional Voting Records
 
-Three operational invariants are encoded as project policy in `AGENTS.md` and worth surfacing here because they are load-bearing for the integrity claim:
-
-1. **`humanReviewed` and `autoApproved` are separate signals and must not be conflated.** If a filtering bug hides auto-ingested records, fix the filter, not the field. Setting `humanReviewed: true` to work around visibility issues corrupts the audit trail.
-2. **Ingester counters are not the source of truth for what was written.** Closure-scope bugs and silent transaction rollbacks can cause progress logs to misreport. Every pipeline run is verified against database state with count queries.
-3. **Curated lists in `HARD_FACT` pipelines require verifiable sources.** Training-data recall is not a verifiable source. The USPTO pipeline retirement is the canonical incident here; the policy is the institutional response.
-
-These are not aspirational. They are enforced by the existence of the `verificationStatus: DEPRECATED` mechanism, by the retired-pipeline registry, and by the AGENTS.md preamble that any contributor encounters before writing a single ingester.
+An emerging pipeline covers US Congressional roll-call votes (`congress_votes_v1`). Vote records are enriched via Clerk of the House and Senate XML APIs, and member-level voting behavior is being ingested. This dataset, combined with the political context layer, enables cross-referencing of legislative outcomes with individual representatives' voting history — a uniquely queryable combination.
 
 ---
 
-## 4. Cross-Jurisdictional Intelligence
+## 4. Architecture
 
-Single-source fact bases are commodity. The structural value of Epistemic Receipts comes from holding parallel institutional records across jurisdictions in the same schema. Three observations follow from doing this systematically.
+### 4.1 Stack
 
-**Comparable acts are not comparable receipts.** When the Bundestag passes a `Gesetz` and the UK Parliament passes a `Public General Act`, the *acts* are roughly analogous; the *procedural receipts* are not. The Bundestag receipt includes coalition composition data because the DIP REST API exposes it; the UK receipt traditionally does not, because the relevant data lives separately in the Hansard transcript. Storing both in the same `LegislativeVote` and `PoliticalContext` shape forces the schema to confront the asymmetry, which in turn surfaces where downstream comparative analysis is structurally underdetermined. A flat triple-store hides this; a receipt-first model exposes it.
+The system runs on a modern, deployment-native stack:
 
-**Cross-jurisdictional contradiction is detectable mechanically.** When two `HARD_FACT` claims attached to primary regulatory sources in different jurisdictions disagree on the same underlying empirical question — e.g., approved indications for a drug, classification of a substance, designation of an organization — the contradiction is a queryable structural property of the graph, not a research finding that requires a human to assemble. The reasoning is straightforward: same claim text (or same `parentClaimId` in the claim hierarchy), incompatible status, different `triggeredBySource` jurisdictions, both with `methodologyType: primary`. This is the kind of analysis that pharma regulatory teams currently pay analysts to do by hand.
+- **Frontend:** Next.js 16.2.6 / React 19, deployed on Vercel (epistemic-receipts.vercel.app)
+- **ORM:** Prisma 6.19.3
+- **Database:** Neon Postgres (serverless, auto-scaling)
+- **Styling:** Tailwind CSS v4
+- **Graph visualization:** ReactFlow (for provenance graph display)
+- **Ingesters:** TypeScript (`tsx`) scripts run as one-shot CLI processes; all source data fetched from live APIs, no training-data recall
 
-**Editorial connections remain editorial.** A core policy in `AGENTS.md` is that cross-references between bulk-ingested claims and curated case studies are editorial work, not algorithmic. Ingesters produce facts; humans curate the `CITES` edges that compose them into narratives. This is not a limitation; it is the design. Automated cross-referencing across jurisdictions produces plausible-looking junk at industrial scale. The receipts make the editorial work *cheaper* — each curated connection has primary-source backing on both ends — without pretending to eliminate it.
+The serverless database architecture means the system scales read capacity automatically during traffic spikes — relevant for a knowledge graph that may receive burst query traffic from academic or enterprise users.
 
-The point is not that the system answers cross-jurisdictional questions better than a sufficiently skilled human researcher with sufficient time. The point is that it answers them *in a form that another human can audit in the same medium*, which a skilled researcher's notes generally cannot offer.
+### 4.2 Schema Design Principles
+
+Several architectural decisions warrant explanation:
+
+**`humanReviewed` ≠ `autoApproved`.** These are distinct boolean flags on the Claim model. `autoApproved: true` means the pipeline's own quality gates passed. `humanReviewed: true` means a human reviewer confirmed the claim. Pipeline scripts may never set `humanReviewed: true`. This separation is enforced by convention and prevents automated ingestion from silently advancing claims to human-verified status.
+
+**Audit trail always.** No records are hard-deleted. Deprecated records remain in the database with `verificationStatus: DEPRECATED` and a `metadata.deprecation_reason` field. EdgeRevisions preserve every score change with prior and new values, reason, and timestamp. This is the backbone of the audit-trail property.
+
+**Reference-tier vs. Background-tier.** Not all datasets are appropriate for bulk ingestion as individual Claims. The system applies a reference-tier test: if the next 20 case studies built on this domain would directly cite individual records, the dataset is reference-tier and warrants bulk ingestion. If case studies would cite only aggregated analyses, the dataset is background-tier — appropriate as a Source within hand-curated case studies, not as a bulk ingestion target. FAERS adverse event reports (individual reports, not aggregate tallies) are background-tier. ECHR judgments are reference-tier.
+
+**Political context as enrichment, not schema.** The PoliticalContext table is linked to Source via `sourceId` and populated by a separate enrichment script (`enrich-political-context-wikidata.ts`) after ingestion. This design keeps ingestion pipelines simple and makes political context an optional enrichment layer rather than a required schema field. The enrichment is idempotent — running it multiple times produces the same result.
+
+### 4.3 Ingestion Pipeline Design
+
+Every pipeline follows the same pattern:
+
+1. Fetch from a live, citable API (no training-data recall; no hardcoded claims)
+2. Upsert Source records with stable `externalId` values
+3. Create Claims with initial `verificationStatus` and `ingestedBy` tag
+4. Create Edges linking Sources to Claims with appropriate relationship types
+5. Write `autoApproved: true` when pipeline quality gates pass
+6. Run in a transaction with a 30-second timeout for pipelines exceeding 1,000 rows (default 5-second timeout would fail)
+7. Verify against DB counts after completion — never trust script-level progress logs
+
+Pipelines are idempotent: re-running produces no duplicate records. All retirement of pipeline data is done by status change (DEPRECATED + metadata annotation), never by deletion.
+
+### 4.4 Visualization: The Globe
+
+A WebGL globe visualization (`/globe`) renders claim density by country on a log-scale heatmap. Users can click any country to open a sidebar showing recent claims from that jurisdiction, with a filter input. The globe supports two view modes: a heat-density mode (log-scale amber/blue coloring) and a political mode (high-resolution 50m GeoJSON with country borders). The political context enrichment makes the globe a navigable political geography of the knowledge graph — each country's claims are annotated with the government under which they were produced.
 
 ---
 
 ## 5. The Self-Auditing Vision
 
-The receipt model is designed to be queryable by autonomous agents, not just human readers. The roadmap places an embedded AI agent at the center of the medium-term work, with a tightly scoped mandate:
+### 5.1 The Static Knowledge Problem
 
-1. **Re-query primary APIs on a schedule** for any `Source` whose underlying institutional process is still active (bills in committee, trials in progress, regulations under review).
-2. **Detect status changes** — a bill receives Royal Assent, a trial completes, a regulation is superseded, a paper is retracted — by diffing the latest API response against the most recent `ThresholdEvent`'s `evidenceSnapshot`.
-3. **Write `SuggestedThresholdEvent` records** with full reasoning and a pointer to the source that the agent believes resolved the change.
-4. **Surface the suggestion for human promotion** to a `ThresholdEvent` proper.
+A knowledge graph that is only ingested once is a snapshot. Primary sources change: FDA labels are updated when new safety signals emerge; scientific papers are retracted months or years after publication; legislation is amended; USGS revises earthquake magnitudes after further analysis. A snapshot graph has a reliability horizon — beyond that horizon, claims that were HARD\_FACTs at ingestion time may have become DEPRECATED or DISPUTED without the graph knowing.
 
-The schema is already shaped for this. `SuggestedThresholdEvent` exists explicitly to hold AI-authored proposals that have not yet been promoted. The promotion path — `SuggestedThresholdEvent` → `ThresholdEvent` with the suggestion's id carried in `suggestedEventId` — preserves the audit trail of "an AI thought this; a human signed off." The `AiJob` table provides a stub for the queue. Nothing in the data layer needs to change to make the agent real.
+The self-auditing vision addresses this directly: an AI agent embedded in the system continuously monitors source APIs for updates, re-queries authoritative endpoints, flags claims whose source data has changed, and proposes `SuggestedThresholdEvent` upgrades or DEPRECATED status changes. This makes the knowledge graph *living* — not a static snapshot but a continuously updated epistemic state machine.
 
-What does need to change is the operational discipline around it. Three policies will govern the agent in production:
+### 5.2 The AiJob Scaffold
 
-- **The agent never sets `humanReviewed: true` on its own output.** The promotion to a confirmed `ThresholdEvent` is a separate gesture that requires a `confirmedBy` field naming a human.
-- **The agent's suggestions are subject to the same reference-tier and verifiable-source rules as any other ingestion path.** A suggestion that cannot point to a primary source URL is discarded, not stored.
-- **Agent runs are themselves logged as `SourceCredibilityEvent`-style records** so that a future audit can ask "what did the agent claim on date X, and was it later confirmed or reversed."
+The schema includes an `AiJob` table (currently stubbed) for a queue-based AI job system. Planned job types include:
 
-The endpoint of this work is a knowledge graph that evolves in continuous conversation with the institutions it documents — bills changing status as they pass through committee, trials transitioning as they complete, retractions appearing as journals issue them — without losing the property that every transition is a receipt that a skeptical reader can challenge. This is the substantive sense in which the graph is "living": not that it is updated frequently, but that every update is itself an artifact.
+- **`classify`**: Assign verification status to newly ingested claims based on edge profile
+- **`detect_contradictions`**: Identify Claims on the same subject with conflicting verification statuses — especially relevant for the declassified archives layer, where public assertions can be compared against classified primary sources now available
+- **`propose_threshold`**: Generate `SuggestedThresholdEvents` for claims whose edge profiles cross a confidence threshold
+- **`deprecation_watch`**: Monitor source APIs for retraction notices, label updates, or amendment records
 
----
+All AiJob outputs are proposals only — they create `SuggestedThresholdEvents` or flag candidates for human review. They do not directly modify Claim status. Human confirmation is required to advance from AI suggestion to formal ThresholdEvent.
 
-## 6. Use Cases
+### 5.3 Google Scholar / OpenAlex Integration
 
-The receipt model is not optimized for any single application. The bet is that several distinct workflows share the same underlying need for verifiable provenance, and that consolidating the substrate creates leverage across them.
+A planned integration with OpenAlex (which provides a fully open alternative to Google Scholar) would surface:
 
-**Regulatory and compliance intelligence.** Pharmaceutical, legal, and compliance teams need cross-jurisdictional structured queries over current and historical regulatory state: "which drugs containing this active ingredient are approved in any G20 country as of date X, and how have those approvals changed since date Y." The current public surface answers a non-trivial subset of this question; a paid API tier that exposes the same data with SLA guarantees is a near-term path. The competitive substitute — manually maintained spreadsheets of regulatory state at large enterprises — is widespread, expensive, and consistently out of date.
+- **Citation counts** for Claims derived from academic papers — a proxy for uptake
+- **Retraction watches** — new CrossRef retraction records matched against existing Claims
+- **Altmetric scores** — social and media attention as a signal of public salience
 
-**Academic citation infrastructure.** Citation today points at documents; for institutional claims this is the wrong granularity. A historian arguing that a particular Senate vote shifted in 1972 wants to cite the *vote*, not just the Congressional Record volume. A pharmacologist arguing that a drug was withdrawn in one jurisdiction but not another wants to cite the *withdrawal event*, not just the document that announced it. Epistemic Receipts assigns durable identifiers to claims and to the `ThresholdEvent` records that establish them, making versioned citation possible: cite-by-claim-and-event rather than cite-by-document. This is a natural fit for citation infrastructure projects that have struggled to operationalize provenance below the document level.
+This integration is distinct from the main ingestion system: it provides enrichment metadata on existing Claims, not new Claims.
 
-**AI training and evaluation.** LLM fine-tuning corpora and RLHF datasets have a chronic provenance problem: the model learns assertions without the receipts that would let downstream evaluators check whether the assertion is still correct as of the model's deployment date. Epistemic Receipts emits structured records that explicitly carry the trigger source, the trigger date, and the current status, in a shape that downstream consumers can use either as training data (with claim, status, and provenance jointly modeled) or as an evaluation harness (test whether the model's output matches the current `currentStatus`). The `claimType` distinction is particularly useful for evaluation, because it prevents the common confusion in which a model is penalized for failing to "settle" an `INTERPRETIVE` claim that was never meant to settle.
+### 5.4 Contradiction Detection as Long-Horizon Feature
 
-**Newsroom verification.** Investigative reporting routinely re-derives provenance chains that another reporter derived three years ago and never structurally captured. A fact-provenance tool seeded with primary-source ingesters across legislatures, courts, and regulators reduces that re-derivation cost by an order of magnitude. The newsroom doesn't need the AI agent at all for this; they need the receipts and the search surface.
-
-These applications share a common technical posture toward the database: read-heavy, append-only, history-sensitive. The schema is shaped accordingly.
+The most epistemically interesting long-term capability is contradiction detection between public-record Claims and declassified-primary-source Claims on the same events. The AGAINST and CORRECTS edge types provide the data model; the AiJob scaffold provides the execution framework. But this capability requires a prerequisite: sufficient Layer 2 content Claims extracted from declassified documents (see Section 7) to provide meaningful comparison targets. Building the contradiction detection system before Layer 2 exists would produce nothing to compare.
 
 ---
 
-## 7. Conclusion
+## 6. Business Model
 
-Knowledge graphs that flatten institutional reality into timeless triples are no longer fit for purpose. They cannot survive the generative pressure to fabricate; they cannot represent the temporal trajectory of an institutional fact; they cannot serve the cross-jurisdictional comparative work that compliance, scholarship, and journalism increasingly demand.
+### 6.1 The Market
 
-The Epistemic Receipt model proposes a structural alternative: store facts as receipts. A receipt is a claim plus a provenance chain plus an append-only log of the institutional events by which the claim acquired and may yet lose its status. The model is built out of boring parts — Postgres, Prisma, TypeScript ingestion scripts — but the discipline by which those parts are populated is the point. 660,000+ claims across 91+ pipelines establishes that the model scales; the retirement of Pipeline 5 establishes that the model fails gracefully; the planned autonomous agent establishes that the model is ready for the next pressure wave from generative systems.
+Epistemic Receipts operates at the intersection of three growing markets:
 
-The bet is that in a world where confidently-asserted text is essentially free, the scarce resource is *the receipt*. This project is an attempt to take that scarcity seriously at the level of the data model itself.
+1. **AI grounding infrastructure.** As regulatory pressure on AI outputs increases (EU AI Act, proposed NIST AI RMF extensions), the demand for verifiable, sourced corpora for RAG systems is growing. Current RAG systems use Wikipedia, Common Crawl, or proprietary datasets — none of which encode verification status or source chains.
+
+2. **Regulatory intelligence.** Pharma, financial services, and legal firms maintain dedicated teams for tracking regulatory change across jurisdictions. A cross-jurisdictional, timestamped, politically-annotated regulatory database reduces the research burden for compliance teams.
+
+3. **Academic infrastructure.** Researchers in political science, public health, legal studies, and science policy lack a unified, queryable graph that cross-references legislation, judicial decisions, health metrics, and scientific literature.
+
+### 6.2 Revenue Tiers
+
+**Tier 1 — Public access (free):** Search, globe visualization, claim browsing, and the Academic Fields browser. This is the discovery layer that drives awareness and citation.
+
+**Tier 2 — API access (subscription):** Structured query access via the REST API. Enterprise-grade rate limits, bulk export, and programmatic access to Claims, Edges, ThresholdEvents, and political context data. Target: AI companies building RAG pipelines, academic data labs, research aggregators. Pricing: subscription-based (market-rate for similar data APIs).
+
+**Tier 3 — Regulatory Intelligence (enterprise):** Curated domain views with enriched metadata, custom ingestion pipelines for specific jurisdictions, and integration support. Target: pharma compliance, financial regulatory, legal intelligence firms. Pricing: enterprise contract, project-based.
+
+### 6.3 The Cross-Jurisdiction Advantage
+
+The core competitive moat is the multi-jurisdiction legislative layer combined with political context enrichment. No other publicly available system cross-references enacted legislation from Ireland, Germany, Sweden, the Netherlands, Austria, Israel, and the EU in a single queryable graph, further annotated with the governing party and head of government at the time of enactment.
+
+For regulatory intelligence buyers, this is a direct cost reduction: jurisdictional regulatory research that currently requires a team of analysts can be partially automated against a structured, queryable graph. The integration of ECHR judgments, WHO health metrics, and FDA data within the same schema extends this advantage into health policy and human rights domains.
 
 ---
 
-*Source code, schema, and pipeline registry are available at the project repository. Comments on this draft are welcome at robert.contofalsky@rutgers.edu.*
+## 7. Roadmap
+
+### 7.1 Near-Term (Q3 2026)
+
+**CourtListener SCOTUS opinions (`ingest-courtlistener-scotus.ts`):** Pipeline built, awaiting production run. SCOTUS opinions are reference-tier primary legal authority — individual decisions are directly citable. Coverage: full opinion corpus, searchable by term and docket.
+
+**ClinicalTrials.gov (`ingest-clinicaltrials.ts`):** Pipeline ready. Clinical trial registrations provide a unique time-stamped record of the state of evidence in human subjects research at registration. Combined with CrossRef retractions, this creates a longitudinal view of the scientific evidence lifecycle.
+
+**NCBI Gene (`ingest-ncbi-gene.ts`):** NCBI gene entries provide a molecular biology substrate — canonical identifiers for human genes, with associated disease links and literature citations. Reference-tier for biomedical claims.
+
+**ICD-11 (`ingest-icd11.ts`):** WHO ICD-11 MMS linearization — awaiting API credentials. Once provisioned, the dry-run is ready to execute.
+
+**OpenAlex academic papers:** OpenAlex provides a fully open alternative to Google Scholar for academic citation data. Integration planned as enrichment metadata on Claims derived from academic sources.
+
+### 7.2 Medium-Term: Declassified Archives (Q4 2026–Q1 2027)
+
+The declassified archives pipeline category represents the most epistemically distinctive data in the roadmap. The core model: declassified documents are primary sources; the claims they contain are HARD\_FACTs (the document's existence and contents are the threshold, not a downstream inference); and where declassified content contradicts public-record claims on the same events, AGAINST and CORRECTS edges encode the epistemic gap.
+
+**Layer 1 (document existence, automated):** Bulk ingestion of document-level claims — "Document X was archived at NARA, Record Group Y, originally dated Z." No content extraction required.
+
+Pipeline build order:
+
+1. **NARA Catalog API:** RG 263 (CIA), RG 59 (State Dept), RG 330 (DoD), RG 128 (Church Committee), RG 148 (JFK ARRB). Script built; awaiting `NARA_API_KEY`.
+2. **Wilson Center Digital Archive:** Soviet, Eastern European, Chinese, Cuban, Vietnamese translated/declassified documents. Script built; API temporarily inaccessible at build time.
+3. **UK National Archives Discovery API:** Cabinet, Foreign Office, PM files.
+4. **IPN Poland:** Polish communist-era security files.
+5. **JACAR Japan:** WWII military records, colonial administration, diplomatic cables.
+6. **Bundesarchiv-BStU (Stasi):** East German intelligence files — largest Western declassified intelligence archive.
+
+**Layer 2 (content claims, editorial):** Human-curated content assertions from specific high-value documents. Priority events:
+- Hungarian Revolution 1956 (Wilson Center Politburo transcripts)
+- Cuban Missile Crisis (Wilson Center Soviet/Cuban docs + NARA)
+- MKULTRA (CIA Reading Room)
+- Church Committee findings (NARA RG 128)
+- Prague Spring 1968 (Wilson Center + ABS Czech)
+
+Layer 2 is the prerequisite for contradiction detection — it provides the comparison targets for public-record vs. classified-record AGAINST edge analysis.
+
+### 7.3 Long-Term: Layer 2 at Scale + Contradiction Detection
+
+**AI-assisted content extraction:** The `AiJob` scaffold enables automated content claim extraction from declassified documents at scale. This is appropriate only after sufficient manually-curated Layer 2 content exists to validate extraction quality. The extraction pipeline reads structured document text, identifies factual assertions, and creates Claim + Source + Edge triples with `autoApproved: false`, pending human review.
+
+**Contradiction detection:** Once Layer 2 has meaningful coverage, AiJob jobs compare public-record Claims and declassified-record Claims on the same events, identify semantic contradictions, and propose AGAINST or CORRECTS edges. This is the highest-value epistemic output of the system: a structured record of where official public narratives diverged from classified knowledge.
+
+---
+
+## 8. Why Now
+
+### 8.1 AI Makes Provenance a First-Order Problem
+
+Until large language models became widely deployed, the provenance gap in online information was a background problem. Most users could roughly estimate the credibility of a source; hallucination was a human rather than automated failure mode.
+
+The deployment of LLMs at scale changed this. AI-generated content now circulates at volume, with the confident register of expert output and none of the conventional signals of credibility (author attribution, institutional affiliation, source citation). Fact-checking individual AI outputs is not scalable. The structural solution is a sourced, timestamped, verification-status-annotated knowledge layer that AI systems can query — a layer that allows an AI to say not just "this fact appears in my training data" but "this claim is HARD\_FACT, verified by this source, with a ThresholdEvent dated to this moment."
+
+RAG systems need this. Currently, RAG retrieval treats all documents in the corpus as equally credible. A retracted paper, an FDA label from ten years ago, and a current regulatory guideline are retrieved on the same evidence basis if their embeddings match the query. Epistemic Receipts provides the metadata layer that allows RAG systems to weight retrieved evidence by verification status — or to filter out DEPRECATED claims entirely.
+
+### 8.2 Regulation Is Coming for AI Outputs
+
+The EU AI Act (in force from 2024, with staggered rollout through 2026) imposes transparency and accuracy requirements on high-risk AI systems operating in domains including healthcare, legal services, and public administration. In these domains, AI outputs need provenance — they need to be traceable to primary sources that can be audited. Epistemic Receipts provides that substrate.
+
+More broadly, courts in multiple jurisdictions are beginning to address AI-generated evidence. A structured, citable knowledge graph with immutable audit trails is better-positioned for forensic use than raw LLM output, precisely because ThresholdEvents provide the temporal and source anchoring that legal proceedings require.
+
+### 8.3 The Moment Before Lock-In
+
+Knowledge graph infrastructure tends toward monopoly: the dominant graph captures network effects (citations, integrations, downstream dependencies) that make switching prohibitively costly. Wikidata currently holds this position for general-purpose structured knowledge, but it does not encode verification status, ThresholdEvents, or political context enrichment. Academic resources like OpenAlex and CrossRef provide domain-specific structured data without a unified graph model. The window for a new entrant that combines these properties — provenance-native, multi-domain, cross-jurisdictional — is open, but it is not indefinitely open.
+
+---
+
+## 9. Limitations and Open Questions
+
+**Human review backlog.** Approximately 47,000 pipeline records are currently queued for human review (`humanReviewed: false`). This backlog is a function of the speed of pipeline ingestion outpacing editorial review capacity. Scaling the human review process — whether through crowdsourcing, tiered reviewer networks, or AI-assisted triage — is an open operational challenge.
+
+**ThresholdEvent sparsity.** The ThresholdEvent is the defining data structure, but relatively few Claims currently have one. Most ingested claims are in PROVISIONAL status pending formal review. The ThresholdEvent layer will be populated incrementally as editorial workflows mature. The current value proposition is the graph structure and provenance chains — the ThresholdEvent layer is the long-term differentiator.
+
+**Auth is a stub.** Write endpoints are currently unprotected. This is appropriate for a development-stage system but must be addressed before any enterprise deployment.
+
+**Graph performance at scale.** ReactFlow visualization is currently adequate for the claims/edges scale being displayed in UI views. At full graph scale (141k+ nodes), client-side graph rendering will require pagination, progressive loading, or server-side layout computation.
+
+**Cross-reference edges.** The current graph contains Source → Claim edges from individual pipeline ingesters, but lacks cross-source edges: CITES edges linking an ECHR judgment to the legislation it interprets, or AGAINST edges linking a retracted paper to the corrected finding. These cross-reference edges are architecturally supported but require editorial work to populate.
+
+---
+
+## 10. Conclusion
+
+The absence of epistemic infrastructure is not an abstract problem. It produces concrete failures: AI systems that hallucinate without provenance, scientific literature that cites retracted papers, regulatory compliance work that cannot query when a rule changed and under which government. These are solvable problems — not through better content moderation or improved search ranking, but through a structural layer that encodes when claims became verifiable, by what evidence, and under what conditions they might cease to be.
+
+Epistemic Receipts is that layer. The ThresholdEvent is not a metaphor — it is a data structure that records the moment of verification with the precision of a transaction log. The Source → Edge → Claim graph is not a convenience — it is the provenance chain that makes every claim in the system auditable back to a primary source. The political context enrichment is not decoration — it is the annotation that makes cross-jurisdictional regulatory queries answerable without bespoke research.
+
+As of May 2026, the system contains approximately 141,900 structured claims across domains spanning drug safety, seismic science, scientific retractions, multi-jurisdiction legislation, judicial decisions, and health metrics — with political context enriched across 112,843 legislative records. The architecture is production-deployed, the schema is stable, and the pipeline registry is growing.
+
+The self-auditing vision — a living knowledge graph that monitors its own sources for changes, flags stale claims, and proposes new ThresholdEvents — is the long-term trajectory. The foundation is in place.
+
+---
+
+## References
+
+Brainard, J., & You, J. (2018). What a massive database of retracted papers reveals about science publishing's 'death penalty'. *Science*. https://doi.org/10.1126/science.aav8384
+
+Budd, J. M., Sievert, M., & Schultz, T. R. (1998). Phenomena of retraction: Reasons for retraction and citations to the publications. *JAMA, 280*(3), 296–297. https://doi.org/10.1001/jama.280.3.296
+
+Schneider, J., Ye, D., Hill, A. M., & Whitehorn, A. S. (2020). Continued citation of retracted alcohol studies: five years after retraction. *Alcohol and Alcoholism, 55*(1), 99–108. https://doi.org/10.1093/alcalc/agz090
+
+---
+
+*Epistemic Receipts is available at: https://epistemic-receipts.vercel.app*  
+*Database state reflects ingestion runs completed through May 25, 2026*
