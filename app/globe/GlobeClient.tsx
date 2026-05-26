@@ -432,6 +432,13 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           />
           <span>High</span>
           <span className="ml-2 text-gray-500">claim density</span>
+          <span className="mx-2 text-gray-700">|</span>
+          <a
+            href="/globe/lab"
+            className="text-purple-400 hover:text-purple-300 transition-colors"
+          >
+            Try Globe Lab
+          </a>
         </div>
       )}
 
