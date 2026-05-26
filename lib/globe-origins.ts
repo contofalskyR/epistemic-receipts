@@ -21,6 +21,7 @@ export const PIPELINE_ORIGINS: Record<string, { lat: number; lon: number; city: 
   usgs_eq_v1: { lat: 38.9072, lon: -77.0369, city: "Washington DC" },
   clinicaltrials_v1: { lat: 38.9987, lon: -77.1026, city: "Bethesda" },
   nih_reporter_v1: { lat: 38.9987, lon: -77.1026, city: "Bethesda" },
+  openalex_v1: { lat: 32.2226, lon: -110.9747, city: "Tucson" },
   courtlistener_scotus_v1: { lat: 37.7749, lon: -122.4194, city: "San Francisco" },
   // Europe
   bundestag_v1: { lat: 52.5200, lon: 13.4050, city: "Berlin" },
