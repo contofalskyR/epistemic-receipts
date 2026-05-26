@@ -131,10 +131,9 @@ export async function GET(req: NextRequest) {
   // ── Filter option metadata ─────────────────────────────────────────────────
 
   const [sourceRows, topicRows] = await Promise.all([
-    prisma.claim.findMany({
-      where: { deleted: false, parentClaimId: null },
-      select: { ingestedBy: true },
-      distinct: ["ingestedBy"],
+    prisma.claim.groupBy({
+      by: ["ingestedBy"],
+      where: { deleted: false },
       orderBy: { ingestedBy: "asc" },
     }),
     prisma.topic.findMany({

@@ -1,10 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function GET() {
+const DEFAULT_LIMIT = 50;
+const MAX_LIMIT = 200;
+
+export async function GET(req: NextRequest) {
+  const sp = req.nextUrl.searchParams;
+  const claimId = sp.get("claimId");
+  const limit = Math.min(
+    MAX_LIMIT,
+    Math.max(1, parseInt(sp.get("limit") ?? `${DEFAULT_LIMIT}`, 10) || DEFAULT_LIMIT),
+  );
+  const offset = Math.max(0, parseInt(sp.get("offset") ?? "0", 10) || 0);
+
   const events = await prisma.thresholdEvent.findMany({
+    where: {
+      deleted: false,
+      ...(claimId ? { claimId } : {}),
+    },
     orderBy: { createdAt: "desc" },
-    include: { claim: true, suggestedEvent: true, triggeredBySource: true },
+    skip: offset,
+    take: limit,
+    include: {
+      claim: { select: { id: true, text: true, currentStatus: true, claimType: true } },
+      suggestedEvent: { select: { id: true, aiReasoning: true } },
+      triggeredBySource: { select: { id: true, name: true, url: true } },
+    },
   });
   return NextResponse.json(events);
 }

@@ -1,11 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+const MAX_EDGES = 500;
+const MAX_EVENTS = 500;
+
 export async function GET(req: NextRequest) {
-  const showUnreviewed = req.nextUrl.searchParams.get("showUnreviewed") === "true";
+  const sp = req.nextUrl.searchParams;
+  const showUnreviewed = sp.get("showUnreviewed") === "true";
+  const claimId = sp.get("claimId");
+
+  if (!claimId) {
+    return NextResponse.json({
+      claims: [],
+      timeRange: null,
+      message: "Pass ?claimId=<id> to see the timeline for a specific claim. Unfiltered timeline disabled at this scale.",
+    });
+  }
+
   const [edges, thresholdEvents] = await Promise.all([
     prisma.edge.findMany({
-      where: { deleted: false, ...(showUnreviewed ? {} : { humanReviewed: true }) },
+      where: {
+        deleted: false,
+        claimId,
+        ...(showUnreviewed ? {} : { humanReviewed: true }),
+      },
+      take: MAX_EDGES,
       include: {
         source: true,
         claim: true,
@@ -18,8 +37,10 @@ export async function GET(req: NextRequest) {
       },
     }),
     prisma.thresholdEvent.findMany({
+      where: { claimId },
       include: { triggeredBySource: true },
       orderBy: { createdAt: "asc" },
+      take: MAX_EVENTS,
     }),
   ]);
 

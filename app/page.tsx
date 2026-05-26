@@ -525,10 +525,21 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 26, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">Performance fix</span> — at ~840k claims the site stopped loading. Added 35 database indexes (`Claim.ingestedBy/claimType/currentStatus/verificationStatus/createdAt/claimEmergedAt/parentClaimId`, `Edge.sourceId/claimId`, `Source.ingestedBy`, plus composites) built with <span className="font-mono">CREATE INDEX CONCURRENTLY</span> so live ingest writes didn&apos;t deadlock. Hot-path WHERE/ORDER BY queries that were sequential-scanning all rows are now index lookups.</li>
+            <li><span className="text-gray-400">API hardening</span> — `/api/edges`, `/api/sources`, `/api/timeline`, `/api/threshold-events`, `/api/meta-edges` were unbounded <span className="font-mono">findMany</span> calls returning every row with deep joins; now require pagination (limit + offset) and a filter parameter (`claimId` / `sourceId`) where applicable. Homepage&apos;s `distinct: ingestedBy` query switched to `groupBy` to use the new composite index.</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 25, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">/globe</span> upgrades — country search bar (top-left floating panel) lets you jump straight to any country without spinning the globe; sidebar gains a per-country &ldquo;Filter claims…&rdquo; input with match counts; clicked-country claim totals now match the density map (previously the sidebar only counted PoliticalContext-linked claims and under-reported US/UK/DE by tens of thousands — pipeline-ingested claims are now included via shared <span className="font-mono">lib/globe-pipeline-country.ts</span>).</li>
             <li><span className="text-gray-400">/fields</span> launched — Academic Fields browser organized by Wikipedia&apos;s Outline of Academic Disciplines (2,569 fields across 5 top-level sections); drill into any field to see subfields, linked topics, and tagged claims. <span className="font-mono">Topic.academicFieldId</span> FK added; run <span className="font-mono">scripts/tag-topics-academic-field.ts</span> to link existing topics to their fields.</li>
+            <li><span className="text-gray-400">+300</span> SCOTUS opinions — U.S. Supreme Court rulings by citation count (Marbury v. Madison onward), ingested as INSTITUTIONAL claims from CourtListener&apos;s public API (Pipeline 4 — <span className="font-mono">courtlistener_scotus_v1</span>)</li>
+            <li><span className="text-gray-400">+4,475</span> clinical trial results — completed Phase 3/4 studies from ClinicalTrials.gov v2 API; primary endpoints and Phase 2 case studies as EMPIRICAL claims (Pipeline 7 — <span className="font-mono">clinicaltrials_v1</span>)</li>
+            <li><span className="text-gray-400">+10,000+</span> academic papers — highly-cited works in cognitive science, psychology, biomedicine, and policy from OpenAlex; abstract-derived claims with PROVISIONAL verification status (Pipeline 16 — <span className="font-mono">openalex_v1</span>)</li>
           </ul>
         </div>
 

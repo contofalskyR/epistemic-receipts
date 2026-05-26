@@ -2,14 +2,41 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
 
-export async function GET() {
+const DEFAULT_LIMIT = 50;
+const MAX_LIMIT = 200;
+
+export async function GET(req: NextRequest) {
+  const sp = req.nextUrl.searchParams;
+  const claimId = sp.get("claimId");
+  const sourceId = sp.get("sourceId");
+  const limit = Math.min(
+    MAX_LIMIT,
+    Math.max(1, parseInt(sp.get("limit") ?? `${DEFAULT_LIMIT}`, 10) || DEFAULT_LIMIT),
+  );
+  const offset = Math.max(0, parseInt(sp.get("offset") ?? "0", 10) || 0);
+
+  const where = {
+    deleted: false,
+    ...(claimId ? { claimId } : {}),
+    ...(sourceId ? { sourceId } : {}),
+  };
+
   const edges = await prisma.edge.findMany({
-    where: { deleted: false },
+    where,
     orderBy: { createdAt: "desc" },
-    include: {
-      source: true,
-      claim: true,
-      revisions: { orderBy: { changedAt: "desc" }, take: 1 },
+    skip: offset,
+    take: limit,
+    select: {
+      id: true,
+      sourceId: true,
+      claimId: true,
+      type: true,
+      evidenceType: true,
+      createdAt: true,
+      humanReviewed: true,
+      source: { select: { id: true, name: true, url: true, methodologyType: true } },
+      claim: { select: { id: true, text: true, currentStatus: true, claimType: true } },
+      revisions: { orderBy: { changedAt: "desc" }, take: 1, select: { newScore: true, changedAt: true } },
     },
   });
   return NextResponse.json(edges);

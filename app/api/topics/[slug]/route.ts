@@ -226,6 +226,7 @@ export async function GET(
     prisma.claim.findMany({
       where: topicClaimFilter,
       select: { claimEmergedAt: true, createdAt: true },
+      take: 50000,
     }),
     prisma.legislativeVote.findMany({
       where: {
@@ -238,6 +239,7 @@ export async function GET(
         },
       },
       select: { id: true, yesCount: true, noCount: true, byPartyJson: true },
+      take: 10000,
     }),
   ]);
 

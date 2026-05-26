@@ -4,8 +4,18 @@ import { isReadOnly } from "@/lib/isReadOnly";
 
 const VALID_TYPES = ["SUPPRESSED", "AMPLIFIED", "LABELED", "DEMOTED"];
 
+const DEFAULT_LIMIT = 100;
+const MAX_LIMIT = 200;
+
 export async function GET(req: NextRequest) {
-  const claimId = req.nextUrl.searchParams.get("claimId");
+  const sp = req.nextUrl.searchParams;
+  const claimId = sp.get("claimId");
+  const limit = Math.min(
+    MAX_LIMIT,
+    Math.max(1, parseInt(sp.get("limit") ?? `${DEFAULT_LIMIT}`, 10) || DEFAULT_LIMIT),
+  );
+  const offset = Math.max(0, parseInt(sp.get("offset") ?? "0", 10) || 0);
+
   const metaEdges = await prisma.metaEdge.findMany({
     where: {
       deleted: false,
@@ -22,6 +32,8 @@ export async function GET(req: NextRequest) {
       claim: true,
     },
     orderBy: { createdAt: "desc" },
+    take: limit,
+    skip: offset,
   });
   return NextResponse.json(metaEdges);
 }

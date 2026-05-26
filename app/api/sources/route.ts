@@ -2,9 +2,35 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
 
-export async function GET() {
+const DEFAULT_LIMIT = 100;
+const MAX_LIMIT = 500;
+
+export async function GET(req: NextRequest) {
+  const sp = req.nextUrl.searchParams;
+  const limit = Math.min(
+    MAX_LIMIT,
+    Math.max(1, parseInt(sp.get("limit") ?? `${DEFAULT_LIMIT}`, 10) || DEFAULT_LIMIT),
+  );
+  const offset = Math.max(0, parseInt(sp.get("offset") ?? "0", 10) || 0);
+  const ingestedBy = sp.get("ingestedBy");
+
   const sources = await prisma.source.findMany({
+    where: {
+      deleted: false,
+      ...(ingestedBy ? { ingestedBy } : {}),
+    },
     orderBy: { createdAt: "desc" },
+    skip: offset,
+    take: limit,
+    select: {
+      id: true,
+      name: true,
+      url: true,
+      publishedAt: true,
+      methodologyType: true,
+      ingestedBy: true,
+      createdAt: true,
+    },
   });
   return NextResponse.json(sources);
 }

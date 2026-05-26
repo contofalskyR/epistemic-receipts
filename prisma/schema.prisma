@@ -48,6 +48,15 @@ model Claim {
   topics                   ClaimTopic[]
 
   @@index([academicFieldId])
+  @@index([ingestedBy])
+  @@index([claimType])
+  @@index([currentStatus])
+  @@index([verificationStatus])
+  @@index([createdAt])
+  @@index([claimEmergedAt])
+  @@index([parentClaimId])
+  @@index([deleted, parentClaimId, claimType])
+  @@index([deleted, ingestedBy])
 }
 
 model Source {
@@ -76,6 +85,10 @@ model Source {
   politicalContext         PoliticalContext?
   legislativeVotes         LegislativeVote[]
   wikidataLink             WikidataLink?
+
+  @@index([ingestedBy])
+  @@index([createdAt])
+  @@index([deleted, ingestedBy])
 }
 
 model SourceRelationship {
@@ -87,6 +100,9 @@ model SourceRelationship {
 
   sourceA Source @relation("RelationshipSourceA", fields: [sourceAId], references: [id])
   sourceB Source @relation("RelationshipSourceB", fields: [sourceBId], references: [id])
+
+  @@index([sourceAId])
+  @@index([sourceBId])
 }
 
 model SourceCredibilityEvent {
@@ -97,6 +113,8 @@ model SourceCredibilityEvent {
   createdAt DateTime @default(now())
 
   source Source @relation(fields: [sourceId], references: [id])
+
+  @@index([sourceId])
 }
 
 // No score field — current score = latest EdgeRevision
@@ -119,6 +137,12 @@ model Edge {
   claim     Claim          @relation(fields: [claimId], references: [id])
   revisions EdgeRevision[]
   metaEdges MetaEdge[]
+
+  @@index([sourceId])
+  @@index([claimId])
+  @@index([createdAt])
+  @@index([deleted, claimId])
+  @@index([deleted, sourceId])
 }
 
 // Source of truth for all scores — initial score written here on Edge creation
@@ -131,6 +155,8 @@ model EdgeRevision {
   changedAt  DateTime @default(now())
 
   edge Edge @relation(fields: [edgeId], references: [id])
+
+  @@index([edgeId])
 }
 
 // Edges targeting other edges — suppression, labels, demotion
@@ -152,6 +178,10 @@ model MetaEdge {
   actorSource Source @relation("MetaEdgeActor", fields: [actorSourceId], references: [id])
   targetEdge  Edge   @relation(fields: [targetEdgeId], references: [id])
   claim       Claim  @relation(fields: [claimId], references: [id])
+
+  @@index([claimId])
+  @@index([targetEdgeId])
+  @@index([actorSourceId])
 }
 
 // AI writes here — not authoritative
@@ -166,6 +196,9 @@ model SuggestedThresholdEvent {
   claim             Claim           @relation(fields: [claimId], references: [id])
   triggeredBySource Source?         @relation("SuggestedTriggerSource", fields: [triggeredBySourceId], references: [id])
   thresholdEvent    ThresholdEvent?
+
+  @@index([claimId])
+  @@index([triggeredBySourceId])
 }
 
 // Humans promote suggestions here — the receipt
@@ -190,6 +223,10 @@ model ThresholdEvent {
   claim             Claim                    @relation(fields: [claimId], references: [id])
   suggestedEvent    SuggestedThresholdEvent? @relation(fields: [suggestedEventId], references: [id])
   triggeredBySource Source?                  @relation("ThresholdTriggerSource", fields: [triggeredBySourceId], references: [id])
+
+  @@index([claimId])
+  @@index([triggeredBySourceId])
+  @@index([createdAt])
 }
 
 model Topic {
@@ -220,6 +257,7 @@ model ClaimTopic {
 
   @@id([claimId, topicId])
   @@index([topicId])
+  @@index([claimId])
 }
 
 model AcademicField {
@@ -274,6 +312,10 @@ model PoliticalContext {
   enrichedAt        DateTime  @default(now())
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
+
+  @@index([country])
+  @@index([hogParty])
+  @@index([headOfGovernment])
 }
 
 model LegislativeVote {
@@ -295,6 +337,9 @@ model LegislativeVote {
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
   memberVotes      MemberVote[]
+
+  @@index([sourceId])
+  @@index([result])
 }
 
 model MemberVote {

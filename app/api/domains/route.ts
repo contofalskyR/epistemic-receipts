@@ -1,19 +1,15 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const revalidate = 300;
+
 export async function GET() {
-  const topics = await prisma.topic.findMany({
-    select: { domain: true },
+  const groups = await prisma.topic.groupBy({
+    by: ["domain"],
+    _count: { _all: true },
+    orderBy: { domain: "asc" },
   });
 
-  const counts: Record<string, number> = {};
-  for (const t of topics) {
-    counts[t.domain] = (counts[t.domain] ?? 0) + 1;
-  }
-
-  const domains = Object.entries(counts)
-    .map(([domain, topicCount]) => ({ domain, topicCount }))
-    .sort((a, b) => a.domain.localeCompare(b.domain));
-
+  const domains = groups.map(g => ({ domain: g.domain, topicCount: g._count._all }));
   return NextResponse.json({ domains });
 }

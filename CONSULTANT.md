@@ -978,6 +978,42 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 
 ---
 
+### 2026-05-26 — Performance fix: DB indexes + bounded API routes (840k claims)
+
+**Why:** At ~840k claims the site stopped loading. Root cause was a combination of (a) zero indexes on hot-path columns (`Claim.ingestedBy`, `claimType`, `currentStatus`, `verificationStatus`, `createdAt`, `claimEmergedAt`, `parentClaimId`; `Edge.sourceId`/`claimId`; `Source.ingestedBy`; etc.) — every WHERE/ORDER BY did a full sequential scan — and (b) several API routes calling `findMany` with no `take`/pagination and deep `include` joins, pulling hundreds of thousands of rows per request.
+
+**Indexes added (35 total, all built with `CREATE INDEX CONCURRENTLY` to avoid deadlocking concurrent ingester writes):**
+- `Claim`: `ingestedBy`, `claimType`, `currentStatus`, `verificationStatus`, `createdAt`, `claimEmergedAt`, `parentClaimId`, composite `(deleted, parentClaimId, claimType)`, composite `(deleted, ingestedBy)`
+- `Source`: `ingestedBy`, `createdAt`, composite `(deleted, ingestedBy)`
+- `Edge`: `sourceId`, `claimId`, `createdAt`, composite `(deleted, claimId)`, composite `(deleted, sourceId)`
+- `MetaEdge`: `claimId`, `targetEdgeId`, `actorSourceId`
+- `ThresholdEvent`: `claimId`, `triggeredBySourceId`, `createdAt`
+- `SuggestedThresholdEvent`: `claimId`, `triggeredBySourceId`
+- `EdgeRevision`: `edgeId`
+- `ClaimTopic`: `claimId` (composite PK already covered topic-first lookup)
+- `LegislativeVote`: `sourceId`, `result`
+- `PoliticalContext`: `country`, `hogParty`, `headOfGovernment`
+- `SourceRelationship`: `sourceAId`, `sourceBId`
+- `SourceCredibilityEvent`: `sourceId`
+
+**Migration:** `prisma/migrations/20260526150151_add_perf_indexes/migration.sql`. Initial `prisma migrate dev` hit a deadlock (Process A holding `RowExclusiveLock` from concurrent ingest vs. Process B's `ShareLock` from the CREATE INDEX). Rolled back, then ran `scripts/apply-perf-indexes.ts` which executes each `CREATE INDEX CONCURRENTLY IF NOT EXISTS` outside any transaction. All 35 indexes built in 22 s total. Migration marked applied via `prisma migrate resolve --applied`.
+
+**API routes hardened:**
+- `/api/edges`: was unbounded `findMany` with full `source` + `claim` + revisions include. Now defaults to 50 rows, max 200, supports `?claimId=` / `?sourceId=` filters, switched to selective `select` (only fields the page actually renders).
+- `/api/sources`: was unbounded `findMany`. Now defaults to 100 rows, max 500, supports `?ingestedBy=`, filters `deleted: false`, selective `select`.
+- `/api/timeline`: was full `Edge` table dump with every join. Now requires `?claimId=`; without it returns an explanatory empty payload. With claimId, capped at 500 edges + 500 events.
+- `/api/threshold-events`: was full table with full claim + suggestedEvent + source include. Now defaults to 50 rows, supports `?claimId=`, selective `select` on includes.
+- `/api/meta-edges`: now bounded to 100 rows (max 200) with `?claimId=` / `offset` paging.
+- `/api/claims/homepage`: the `distinct: ["ingestedBy"]` query — which forced a `Claim` index-only scan over all 840k rows — replaced with `groupBy({ by: ["ingestedBy"] })` which uses the new `Claim_deleted_ingestedBy_idx`.
+- `/api/domains`: was `topic.findMany({select:{domain:true}})` looping client-side. Now `groupBy` with `_count` and 5-min `revalidate`.
+- `/api/topics/[slug]`: `timelineClaims` and `topicVotes` `findMany` calls capped at 50,000 and 10,000 respectively (typical hits are 100s–1000s; cap is defensive against pathological topics).
+
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260526150151_add_perf_indexes/migration.sql`, `scripts/apply-perf-indexes.ts`, `app/api/edges/route.ts`, `app/api/sources/route.ts`, `app/api/timeline/route.ts`, `app/api/threshold-events/route.ts`, `app/api/meta-edges/route.ts`, `app/api/claims/homepage/route.ts`, `app/api/domains/route.ts`, `app/api/topics/[slug]/route.ts`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+
+**TypeScript:** `npx tsc --noEmit` clean.
+
+---
+
 ## Notes for Future Agents
 
 - The project is at a scale (47k+ claims) where homepage performance is a genuine constraint. Prefer server-side filtering, pagination, and indexed queries over client-side approaches.
