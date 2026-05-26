@@ -386,7 +386,16 @@ function ClaimSection({
             </div>
           )}
 
-          {!isSearch && section.pages > 1 && (
+          {!isSearch && (section.pages === -1 ? (
+            // No count available on page 1 — show Load more if we got a full page
+            section.claims.length >= 10 && (
+              <div className="flex items-center gap-2 mt-4 text-xs text-gray-500">
+                <button onClick={() => onPageChange(2)} className="hover:text-gray-300 transition-colors">
+                  Load more →
+                </button>
+              </div>
+            )
+          ) : section.pages > 1 && (
             <div className="flex items-center gap-2 mt-4 text-xs text-gray-500">
               <button
                 onClick={() => onPageChange(section.page - 1)}
@@ -406,7 +415,7 @@ function ClaimSection({
                 Next →
               </button>
             </div>
-          )}
+          ))}
         </>
       )}
     </section>

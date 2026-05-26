@@ -114,15 +114,18 @@ export async function GET(req: NextRequest) {
     },
   } as const;
 
+  // Skip count queries on page 1 (expensive full-table scans on 800K+ rows).
+  // Return total: -1 as sentinel; client shows "Load more" instead of page numbers.
   const sections = await Promise.all(
     types.map(async (type) => {
       const where = { ...baseWhere, claimType: type };
       const page  = isSearchActive ? 1 : (typePages[type] ?? 1);
+      const needsCount = isSearchActive || page > 1;
       const [total, claims] = await Promise.all([
-        prisma.claim.count({ where }),
+        needsCount ? prisma.claim.count({ where }) : Promise.resolve(-1),
         prisma.claim.findMany({ where, orderBy, skip: (page - 1) * limit, take: limit, include }),
       ]);
-      const pages = isSearchActive ? 1 : Math.max(1, Math.ceil(total / PAGE_SIZE));
+      const pages = needsCount ? Math.max(1, Math.ceil(total / PAGE_SIZE)) : -1;
       return { type, total, claims, page, pages };
     })
   );
