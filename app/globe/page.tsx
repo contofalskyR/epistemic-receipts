@@ -53,7 +53,7 @@ async function getDensity(): Promise<Array<{ countryCode: string; countryName: s
   }
 }
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata = {
   title: "Globe — Epistemic Receipts",

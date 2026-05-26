@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { PIPELINE_ORIGINS } from "@/lib/globe-origins";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 export const revalidate = 3600;
 
 export type OriginPoint = {

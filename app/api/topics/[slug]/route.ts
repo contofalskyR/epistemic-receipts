@@ -98,7 +98,7 @@ export async function GET(
         ? { claim: { claimEmergedAt: "asc" as const } }
         : { claim: { claimEmergedAt: "desc" as const } };
 
-  const [total, claimTopics, distinctParties] = await Promise.all([
+  const [total, claimTopics] = await Promise.all([
     prisma.claimTopic.count({ where: claimWhere }),
     prisma.claimTopic.findMany({
       where: claimWhere,
@@ -129,92 +129,49 @@ export async function GET(
         },
       },
     }),
-    prisma.politicalContext.findMany({
-      where: {
-        hogParty: { not: null },
-        source: {
-          edges: {
-            some: {
-              deleted: false,
-              claim: {
-                ...baseClaimFilter,
-                topics: { some: { topicId: { in: topicIds } } },
-              },
-            },
-          },
-        },
-      },
-      distinct: ["hogParty"],
-      select: { hogParty: true },
-      orderBy: { hogParty: "asc" },
-    }),
   ]);
 
-  const partyNames = distinctParties
-    .map(pc => pc.hogParty)
-    .filter((p): p is string => p !== null);
-
-  const partyCounts = await Promise.all(
-    partyNames.map(p =>
-      prisma.claimTopic.count({
-        where: {
-          topicId: { in: topicIds },
-          claim: {
-            ...baseClaimFilter,
-            edges: { some: { source: { politicalContext: { hogParty: p } } } },
-          },
-        },
-      }).then(count => ({ party: p, claimCount: count }))
-    )
-  );
-
-  const availableParties = partyCounts.sort((a, b) => b.claimCount - a.claimCount);
-
-  // When a party is selected, return the distinct leaders within that party for sub-filtering
-  let availableLeaders: { leader: string; claimCount: number }[] = [];
-  if (party) {
-    const distinctLeaders = await prisma.politicalContext.findMany({
-      where: {
-        hogParty: party,
-        headOfGovernment: { not: null },
-        source: {
+  // Aggregate party/leader counts in a single query instead of N+1 per party/leader.
+  const partyClaimRows = await prisma.claimTopic.findMany({
+    where: { topicId: { in: topicIds }, claim: baseClaimFilter },
+    select: {
+      claim: {
+        select: {
           edges: {
-            some: {
-              deleted: false,
-              claim: { ...baseClaimFilter, topics: { some: { topicId: { in: topicIds } } } },
-            },
+            where: { deleted: false },
+            select: { source: { select: { politicalContext: { select: { hogParty: true, headOfGovernment: true } } } } },
+            take: 1,
           },
         },
       },
-      distinct: ["headOfGovernment"],
-      select: { headOfGovernment: true },
-    });
+    },
+    take: 5000,
+  });
 
-    const leaderNames = distinctLeaders
-      .map(l => l.headOfGovernment)
-      .filter((l): l is string => l !== null);
-
-    availableLeaders = await Promise.all(
-      leaderNames.map(l =>
-        prisma.claimTopic.count({
-          where: {
-            topicId: { in: topicIds },
-            claim: {
-              ...baseClaimFilter,
-              edges: {
-                some: {
-                  source: {
-                    politicalContext: { hogParty: party, headOfGovernment: l },
-                  },
-                },
-              },
-            },
-          },
-        }).then(count => ({ leader: l, claimCount: count }))
-      )
-    );
-    availableLeaders.sort((a, b) => b.claimCount - a.claimCount);
+  const partyCountMap = new Map<string, number>();
+  const leaderCountMap = new Map<string, Map<string, number>>();
+  for (const row of partyClaimRows) {
+    for (const edge of row.claim.edges) {
+      const p = edge.source.politicalContext?.hogParty;
+      const l = edge.source.politicalContext?.headOfGovernment;
+      if (p) partyCountMap.set(p, (partyCountMap.get(p) ?? 0) + 1);
+      if (p && l) {
+        if (!leaderCountMap.has(p)) leaderCountMap.set(p, new Map());
+        const lm = leaderCountMap.get(p)!;
+        lm.set(l, (lm.get(l) ?? 0) + 1);
+      }
+    }
   }
+
+  const availableParties = Array.from(partyCountMap.entries())
+    .map(([p, claimCount]) => ({ party: p, claimCount }))
+    .sort((a, b) => b.claimCount - a.claimCount);
+
+  const availableLeaders = party
+    ? Array.from(leaderCountMap.get(party)?.entries() ?? [])
+        .map(([leader, claimCount]) => ({ leader, claimCount }))
+        .sort((a, b) => b.claimCount - a.claimCount)
+    : [];
 
   // Topic-wide aggregates (ignore party/leader filter — these describe the topic as a whole).
   const topicClaimFilter = {
@@ -226,7 +183,7 @@ export async function GET(
     prisma.claim.findMany({
       where: topicClaimFilter,
       select: { claimEmergedAt: true, createdAt: true },
-      take: 50000,
+      take: 5000,
     }),
     prisma.legislativeVote.findMany({
       where: {
@@ -239,7 +196,7 @@ export async function GET(
         },
       },
       select: { id: true, yesCount: true, noCount: true, byPartyJson: true },
-      take: 10000,
+      take: 2000,
     }),
   ]);
 
@@ -315,7 +272,7 @@ export async function GET(
     })
     .sort((a, b) => b.totalVotes - a.totalVotes);
 
-  return NextResponse.json({
+  const res = NextResponse.json({
     topic: {
       id: topic.id, name: topic.name, slug: topic.slug,
       domain: topic.domain, description: topic.description,
@@ -338,4 +295,6 @@ export async function GET(
     partyVoteTallies,
     partyRowsParsed,
   });
+  res.headers.set("Cache-Control", "s-maxage=60, stale-while-revalidate=600");
+  return res;
 }

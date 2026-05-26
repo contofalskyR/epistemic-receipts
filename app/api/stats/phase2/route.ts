@@ -4,7 +4,7 @@ import {
   getPassRateByTopic,
 } from "@/lib/stats-queries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 const LEGISLATURE_LABELS: Record<string, string> = {
   uk_legislation_v1: "UK Parliament",
