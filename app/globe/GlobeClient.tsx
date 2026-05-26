@@ -306,8 +306,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       )}
 
-      {/* View mode pill toggle — top-right */}
-      <div className="absolute top-4 right-4 z-40">
+      {/* View mode pill toggle — fixed top-right, clears nav */}
+      <div className="fixed top-[52px] right-4 z-40">
         <div className="relative flex items-center bg-gray-900/80 backdrop-blur border border-gray-700 rounded-full p-1">
           {/* Sliding active indicator */}
           <div
@@ -341,8 +341,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       </div>
 
-      {/* Search panel */}
-      <div className="absolute top-4 left-4 w-64 max-w-[calc(100%-2rem)] z-30">
+      {/* Search panel — fixed top-left, clears nav */}
+      <div className="fixed top-[52px] left-4 w-64 z-30">
         <div className="relative">
           <input
             type="text"
@@ -388,9 +388,9 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       </div>
 
-      {/* Legend — only in heatmap mode */}
+      {/* Legend — fixed bottom-left, only in heatmap mode */}
       {viewMode === "heatmap" && (
-        <div className="absolute bottom-6 left-6 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
+        <div className="fixed bottom-6 left-6 z-30 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
           <span>Low</span>
           <div
             className="w-24 h-3 rounded"
@@ -401,9 +401,10 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar — fixed right panel, starts below nav */}
       {(loadingSidebar || sidebar) && (
-        <div className="absolute top-0 right-0 h-full w-80 max-w-full bg-gray-950/95 border-l border-gray-800 flex flex-col shadow-2xl overflow-hidden">
+        <div className="fixed right-0 w-80 bg-gray-950/95 border-l border-gray-800 flex flex-col shadow-2xl overflow-hidden z-40"
+          style={{ top: 45, bottom: 0 }}>
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
             {sidebar ? (
