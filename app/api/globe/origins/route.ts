@@ -3,7 +3,6 @@ import { prisma } from "@/lib/prisma";
 import { PIPELINE_ORIGINS } from "@/lib/globe-origins";
 
 export const revalidate = 3600;
-export const revalidate = 3600;
 
 export type OriginPoint = {
   city: string;
