@@ -96,14 +96,17 @@ export async function GET(req: NextRequest) {
     children: {
       where: { deleted: false },
       orderBy: { createdAt: "asc" as const },
+      take: 10,
       include: { _count: { select: { edges: { where: { deleted: false } } } } },
     },
     edges: {
       where: { deleted: false },
+      take: 8,
       select: { source: { select: { name: true, url: true } } },
     },
     thresholdEvents: {
       where: { deleted: false },
+      take: 5,
       select: { note: true },
     },
     topics: {
