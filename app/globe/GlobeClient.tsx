@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { countryFlag } from "@/lib/countryCodeMap";
+import type { OriginPoint } from "@/app/api/globe/origins/route";
 
 type DensityRow = {
   countryCode: string;
@@ -24,7 +25,7 @@ type CountryDetail = {
 };
 
 type TooltipState = { x: number; y: number; name: string; count: number } | null;
-type ViewMode = "heatmap" | "political";
+type ViewMode = "heatmap" | "origins";
 
 const STATUS_COLORS: Record<string, string> = {
   HARD_FACT: "bg-emerald-900/70 text-emerald-300 border-emerald-700",
@@ -62,6 +63,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [searchFocused, setSearchFocused] = useState(false);
   const [claimFilter, setClaimFilter] = useState("");
   const [viewMode, setViewMode] = useState<ViewMode>("heatmap");
+  const [originsData, setOriginsData] = useState<OriginPoint[] | null>(null);
 
   const sortedDensity = useMemo(
     () => [...density].sort((a, b) => b.claimCount - a.claimCount),
@@ -128,6 +130,15 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     viewModeRef.current = viewMode;
   }, [viewMode]);
 
+  // Fetch origins data on first switch to origins mode
+  useEffect(() => {
+    if (viewMode !== "origins" || originsData !== null) return;
+    fetch("/api/globe/origins")
+      .then(r => r.ok ? r.json() : [])
+      .then((data: OriginPoint[]) => setOriginsData(data))
+      .catch(() => setOriginsData([]));
+  }, [viewMode, originsData]);
+
   useEffect(() => {
     let cancelled = false;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -174,7 +185,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         .onPolygonHover((feat: any, _prev: unknown, ev: MouseEvent) => {
           if (!feat) {
             setTooltip(null);
-            if (viewModeRef.current === "political") {
+            if (viewModeRef.current === "origins") {
               hoveredFeatRef.current = null;
               globeRef.current?.polygonCapColor(() => "#1a2035");
             }
@@ -189,7 +200,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             name,
             count: row?.claimCount ?? 0,
           });
-          if (viewModeRef.current === "political") {
+          if (viewModeRef.current === "origins") {
             hoveredFeatRef.current = feat;
             // Capture the ref value so the closure stays stable
             const hovered = feat;
@@ -262,19 +273,37 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         })
         .polygonStrokeColor(() => "#2a2a4a")
         .polygonAltitude(0.005)
-        .polygonSideColor(() => "rgba(10,10,20,0.6)");
+        .polygonSideColor(() => "rgba(10,10,20,0.6)")
+        .pointsData([])
+        .backgroundColor("#0a0a0a");
     } else {
-      const data = geoData50Ref.current;
-      if (!data) return;
+      // Origins mode — light pollution style
+      if (!originsData) return; // wait for data
+      const maxCount = Math.max(...originsData.map(d => d.claimCount), 1);
+
       globeRef.current
-        .polygonsData(data.features)
-        .polygonCapColor(() => "#1a2035")
-        .polygonStrokeColor(() => "#4a9eff")
-        .polygonAltitude(0.008)
-        .polygonSideColor(() => "rgba(10,10,30,0.8)");
+        .polygonsData([])
+        .pointsData(originsData)
+        .pointLat((d: OriginPoint) => d.lat)
+        .pointLng((d: OriginPoint) => d.lon)
+        .pointAltitude(0.005)
+        .pointRadius((d: OriginPoint) => {
+          const t = Math.log(d.claimCount + 1) / Math.log(maxCount + 1);
+          return 0.15 + t * 1.8;
+        })
+        .pointColor((d: OriginPoint) => {
+          const t = Math.log(d.claimCount + 1) / Math.log(maxCount + 1);
+          const g = Math.round(160 + t * 95);
+          const b = Math.round(t * 120);
+          const a = 0.45 + t * 0.55;
+          return `rgba(255,${g},${b},${a})`;
+        })
+        .pointLabel((d: OriginPoint) => `${d.city}: ${d.claimCount.toLocaleString()} claims`)
+        .polygonStrokeColor(() => "rgba(255,255,255,0.03)")
+        .backgroundColor("#050505");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode, globeReady]);
+  }, [viewMode, globeReady, originsData]);
 
   return (
     <div className="relative" style={{ width: "100%", height: "90vh", background: "#0a0a0a" }}>
@@ -331,12 +360,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           </button>
           <button
             type="button"
-            onClick={() => setViewMode("political")}
+            onClick={() => setViewMode("origins")}
             className={`relative z-10 px-3 py-1 text-xs font-medium rounded-full transition-colors duration-200 ${
-              viewMode === "political" ? "text-gray-900" : "text-gray-400 hover:text-gray-200"
+              viewMode === "origins" ? "text-gray-900" : "text-gray-400 hover:text-gray-200"
             }`}
           >
-            Political
+            Origins
           </button>
         </div>
       </div>
