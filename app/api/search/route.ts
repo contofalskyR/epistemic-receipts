@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { COUNTRY_TO_PIPELINES, PIPELINE_COUNTRY_NAME } from "@/lib/globe-pipeline-country";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 const MIN_QUERY = 3;
 const DEFAULT_LIMIT = 25;

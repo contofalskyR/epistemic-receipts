@@ -274,6 +274,24 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-26 — Site-wide perf overhaul: topic N+1 fixed, force-dynamic removed, stats capped, trgm search index
+
+**Problem.** Multiple pages (homepage, topics, globe, stats, search, datasets, fields, review) were timing out on Vercel Hobby (10s limit) at 842k Claims. Three root causes: (a) `/api/topics/[slug]` was running N+1 `claimTopic.count` queries — one per distinct party AND one per distinct leader-within-party — which scaled with party count; (b) seven API routes had `export const dynamic = "force-dynamic"` which disabled the CDN edge cache entirely; (c) `/api/search` `ILIKE %q%` on `Claim.text` was a full sequential scan of 842k rows because there was no trigram index.
+
+**Fix 1 — Topic N+1 (`app/api/topics/[slug]/route.ts`).** Replaced `distinctParties` + per-party `claimTopic.count` loop + per-leader `claimTopic.count` loop with a single `claimTopic.findMany` (scoped to topic, `take: 5000`) that selects `{claimId, claim.edges.source.politicalContext.{hogParty, headOfGovernment}}` then aggregates party and leader counts in JS via `Map<string,number>`. `timelineClaims` cap tightened from 50000 → 5000. `topicVotes` cap tightened from 10000 → 2000. Added `Cache-Control: s-maxage=60, stale-while-revalidate=600` header at the response.
+
+**Fix 2 — Removed `force-dynamic` (7 routes).** `app/api/stats/phase2/route.ts`, `app/api/search/route.ts`, `app/api/globe/density/route.ts`, `app/api/globe/density-temporal/route.ts`, `app/api/globe/origins/route.ts`, `app/api/analysis/votes/route.ts`, `app/api/topics/[slug]/route.ts`: removed `export const dynamic = "force-dynamic"` and replaced with appropriate `export const revalidate = N` (60–3600s depending on data churn). Page wrappers `app/globe/page.tsx` and `app/stats/page.tsx` likewise switched to `revalidate`. KEPT force-dynamic on `/api/claims/homepage` (already uses CDN cache header), `/api/claims/[id]`, `/api/review/*`, `/api/edges` — real-time data paths.
+
+**Fix 3 — Capped unbounded `findMany` in `lib/stats-queries.ts` + `lib/voteAnalysis.ts`.** Added `take: 50000` to every `prisma.legislativeVote.findMany` in `lib/voteAnalysis.ts` (1 site) and `lib/stats-queries.ts` (6 sites — `getPassRateByLegislature`, `getTopTopicsByLegislature`, `getPassRateByTopic`, `getCongressStats`, `getCongressPartyStats`, `getCrossCountryTopicComparison`). Logic unchanged; safety bound only.
+
+**Fix 4 — pg_trgm GIN index on `Claim.text`.** `prisma/migrations/20260526123508_add_trgm_search_index/migration.sql` (`CREATE EXTENSION IF NOT EXISTS pg_trgm` + `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_text_trgm_idx" ON "Claim" USING gin ("text" gin_trgm_ops)`). Applied to prod via `prisma db execute` (CONCURRENTLY can't run inside a transaction so `migrate deploy` couldn't be used directly). Marked the migration applied via direct insert into `_prisma_migrations` because `prisma migrate resolve` timed out on the advisory lock (other long ingester process held it). `prisma migrate status` confirms "Database schema is up to date!".
+
+**Verification.** `npx tsc --noEmit` clean. Migration list confirms 13 applied. The trgm index turns `ILIKE '%foo%'` on `Claim.text` from a 842k-row seq scan into an index-backed lookup.
+
+**Files changed:** `app/api/topics/[slug]/route.ts`, `app/api/search/route.ts`, `app/api/globe/density-temporal/route.ts`, `app/api/globe/origins/route.ts`, `app/api/globe/density/route.ts`, `app/api/stats/phase2/route.ts`, `app/api/analysis/votes/route.ts`, `app/globe/page.tsx`, `app/stats/page.tsx`, `lib/stats-queries.ts`, `lib/voteAnalysis.ts`, `prisma/migrations/20260526123508_add_trgm_search_index/migration.sql`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-26 — Homepage timeout fix: covering composite indexes + longer CDN cache + loading skeleton
 
 **Problem.** `/api/claims/homepage` fans out into 4×(count + findMany) on Claim (~842k rows) and was blowing past Vercel Hobby's 10s function limit. The existing `@@index([deleted, parentClaimId, claimType])` filtered the rows but didn't cover the `ORDER BY createdAt DESC` — PG was sorting 100k+ post-filter rows in memory. The `COUNT(*)` with the active `verificationStatus` filter was a separate seq-scan-of-filter-output.

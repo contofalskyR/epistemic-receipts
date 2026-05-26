@@ -124,6 +124,7 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
         select: { externalId: true, url: true, name: true, ingestedBy: true },
       },
     },
+    take: 50000,
   });
 
   type ScoredRow = BillRow & { byPartyJson: string | null };

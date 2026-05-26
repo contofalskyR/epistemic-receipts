@@ -9,6 +9,7 @@ export async function getPassRateByLegislature(): Promise<
       result: true,
       source: { select: { ingestedBy: true } },
     },
+    take: 50000,
   })
 
   const byLeg = new Map<string, { passed: number; total: number }>()
@@ -38,6 +39,7 @@ export async function getTopTopicsByLegislature(): Promise<
       topics: true,
       source: { select: { ingestedBy: true } },
     },
+    take: 50000,
   })
 
   const byLeg = new Map<string, Map<string, number>>()
@@ -74,6 +76,7 @@ export async function getPassRateByTopic(): Promise<
   const rows = await prisma.legislativeVote.findMany({
     where: { topics: { not: null }, result: { in: ['passed', 'failed'] } },
     select: { topics: true, result: true },
+    take: 50000,
   })
 
   const byTopic = new Map<string, { passed: number; failed: number }>()
@@ -139,6 +142,7 @@ export async function getCongressStats(): Promise<{
       topics: true,
       source: { select: { name: true, url: true } },
     },
+    take: 50000,
   })
 
   const votes: CongressVoteRow[] = []
@@ -290,6 +294,7 @@ export async function getCongressPartyStats(): Promise<CongressPartyStats> {
       byPartyJson: true,
       source: { select: { name: true, url: true } },
     },
+    take: 50000,
   })
 
   const splits: PartyVoteSplit[] = []
@@ -358,6 +363,7 @@ export async function getCrossCountryTopicComparison(
       topics: true,
       source: { select: { ingestedBy: true } },
     },
+    take: 50000,
   })
 
   const byLeg = new Map<string, number>()

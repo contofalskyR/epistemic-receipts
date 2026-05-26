@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { COUNTRY_NAME_TO_CODE } from "@/lib/countryCodeMap";
 import { PIPELINE_COUNTRY, PIPELINE_COUNTRY_NAME } from "@/lib/globe-pipeline-country";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 type RawPcRow = { country: string; claim_count: bigint };
 type RawPipelineRow = { ingestedBy: string; claim_count: bigint };
