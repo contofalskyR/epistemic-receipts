@@ -431,6 +431,7 @@ function HomeContent() {
   // Server-driven data — re-fetched whenever URL params change
   const [data, setData]       = useState<HomepageResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   // Parse current URL filter state
   const urlQ              = searchParams.get("q") || "";
@@ -445,11 +446,18 @@ function HomeContent() {
   // Re-fetch from server whenever URL params change
   useEffect(() => {
     setLoading(true);
+    setFetchError(null);
     const p = new URLSearchParams(searchParams.toString());
     fetch(`/api/claims/homepage?${p.toString()}`)
-      .then(r => r.json())
-      .then((d: HomepageResponse) => { setData(d); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(r => {
+        if (!r.ok) {
+          setFetchError(`API error ${r.status} — ${r.url}`);
+          setLoading(false);
+          return;
+        }
+        r.json().then((d: HomepageResponse) => { setData(d); setLoading(false); });
+      })
+      .catch(err => { setFetchError(String(err)); setLoading(false); });
   }, [searchParams]);
 
   // Local search input, debounced into URL
@@ -769,6 +777,11 @@ function HomeContent() {
       </div>
 
       {/* Sections */}
+      {fetchError && (
+        <div className="rounded border border-red-800/50 bg-red-950/30 px-4 py-3 text-sm text-red-400">
+          {fetchError}
+        </div>
+      )}
       {loading && !data ? (
         <div className="space-y-10">
           {ALL_TYPES.map(type => <SkeletonSection key={type} type={type} />)}
