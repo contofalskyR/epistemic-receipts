@@ -18,6 +18,8 @@ const INDEX_STATEMENTS: { name: string; sql: string }[] = [
   { name: "Claim_claimEmergedAt_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_claimEmergedAt_idx" ON "Claim"("claimEmergedAt")` },
   { name: "Claim_parentClaimId_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_parentClaimId_idx" ON "Claim"("parentClaimId")` },
   { name: "Claim_deleted_parentClaimId_claimType_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_deleted_parentClaimId_claimType_idx" ON "Claim"("deleted", "parentClaimId", "claimType")` },
+  { name: "Claim_deleted_parentClaimId_claimType_createdAt_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_deleted_parentClaimId_claimType_createdAt_idx" ON "Claim"("deleted", "parentClaimId", "claimType", "createdAt")` },
+  { name: "Claim_deleted_parentClaimId_claimType_verificationStatus_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_deleted_parentClaimId_claimType_verificationStatus_idx" ON "Claim"("deleted", "parentClaimId", "claimType", "verificationStatus")` },
   { name: "Claim_deleted_ingestedBy_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Claim_deleted_ingestedBy_idx" ON "Claim"("deleted", "ingestedBy")` },
   { name: "ClaimTopic_claimId_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "ClaimTopic_claimId_idx" ON "ClaimTopic"("claimId")` },
   { name: "Edge_sourceId_idx", sql: `CREATE INDEX CONCURRENTLY IF NOT EXISTS "Edge_sourceId_idx" ON "Edge"("sourceId")` },

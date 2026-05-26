@@ -152,11 +152,11 @@ export async function GET(req: NextRequest) {
     },
   });
 
-  // Cache unfiltered homepage for 30s at CDN edge; serve stale up to 2min while revalidating
+  // Cache unfiltered homepage for 5min at CDN edge; serve stale up to 1hr while revalidating
   const isFiltered = q || sp.get("types") || sp.get("statuses") || sp.get("verification") ||
     sp.get("source") || sp.get("topics") || sp.get("deprecated");
   if (!isFiltered) {
-    response.headers.set("Cache-Control", "s-maxage=30, stale-while-revalidate=120");
+    response.headers.set("Cache-Control", "s-maxage=300, stale-while-revalidate=3600");
   }
 
   return response;

@@ -274,6 +274,25 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-26 — Homepage timeout fix: covering composite indexes + longer CDN cache + loading skeleton
+
+**Problem.** `/api/claims/homepage` fans out into 4×(count + findMany) on Claim (~842k rows) and was blowing past Vercel Hobby's 10s function limit. The existing `@@index([deleted, parentClaimId, claimType])` filtered the rows but didn't cover the `ORDER BY createdAt DESC` — PG was sorting 100k+ post-filter rows in memory. The `COUNT(*)` with the active `verificationStatus` filter was a separate seq-scan-of-filter-output.
+
+**Fix.**
+- `prisma/schema.prisma`: added two composites on `Claim`:
+  - `@@index([deleted, parentClaimId, claimType, createdAt])` — covers the homepage's default sort path; the planner can now walk the index in order and skip the in-memory sort.
+  - `@@index([deleted, parentClaimId, claimType, verificationStatus])` — covers `COUNT(*)` when the verification filter is active.
+- `scripts/apply-perf-indexes.ts`: appended the two new `CREATE INDEX CONCURRENTLY IF NOT EXISTS` statements. Re-ran the script against production; both built in ~2s each on the live 842k-row table without deadlocking live ingest writes.
+- `prisma/migrations/20260526190000_perf_homepage_indexes/migration.sql`: documented the indexes with `IF NOT EXISTS` so `prisma migrate deploy` on Vercel is a no-op (the script already created them concurrently).
+- `app/api/claims/homepage/route.ts`: bumped the unfiltered Cache-Control from `s-maxage=30, stale-while-revalidate=120` to `s-maxage=300, stale-while-revalidate=3600`. Five-minute edge cache means most visitors hit the CDN, not the function; one-hour SWR keeps the page snappy even if the underlying API is slow to revalidate.
+- `app/page.tsx`: added `SkeletonCard` + `SkeletonSection` and rendered them when `loading && !data`, so the page no longer blanks out during the initial fetch. The skeleton mirrors the section/card shape (4 sections × 3 cards) with `animate-pulse` placeholders.
+
+**Verification.** `npx tsc --noEmit` clean. CONCURRENTLY apply on live DB: `created=37 skipped=0 failed=0`.
+
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260526190000_perf_homepage_indexes/migration.sql`, `scripts/apply-perf-indexes.ts`, `app/api/claims/homepage/route.ts`, `app/page.tsx`, `CONSULTANT.md`.
+
+---
+
 ### 2026-05-25 — Fix broken /globe sidebar claims links; add country filter to /search
 
 **Problem.** The globe sidebar's footer "View all claims from {country}" link pointed at `/claims?country=X`, which routes to `/claims/page.tsx` — the admin claim-creation form. That page ignored the `country` param entirely, so the link was effectively useless. Individual claim cards in the sidebar (`href='/claims/${claim.id}'`) were already correct.

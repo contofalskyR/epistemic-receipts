@@ -306,6 +306,42 @@ function SingleSelect({
   );
 }
 
+// ─── Loading skeleton ─────────────────────────────────────────────────────────
+
+function SkeletonCard() {
+  return (
+    <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 animate-pulse">
+      <div className="h-3 bg-gray-800 rounded w-11/12 mb-2" />
+      <div className="h-3 bg-gray-800 rounded w-3/4 mb-3" />
+      <div className="flex gap-2">
+        <div className="h-4 w-16 bg-gray-800 rounded-full" />
+        <div className="h-4 w-20 bg-gray-800 rounded-full" />
+        <div className="h-4 w-12 bg-gray-800 rounded" />
+      </div>
+    </div>
+  );
+}
+
+function SkeletonSection({ type }: { type: string }) {
+  const label = type.charAt(0) + type.slice(1).toLowerCase();
+  return (
+    <section>
+      <div className="flex items-center gap-1.5 mb-3">
+        <span className="text-gray-700 text-[10px] mt-px">▾</span>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-700">
+          {label} claims
+        </h2>
+        <span className="h-3 w-8 bg-gray-800 rounded animate-pulse ml-0.5" />
+      </div>
+      <div className="space-y-3">
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+      </div>
+    </section>
+  );
+}
+
 // ─── Collapsible section ──────────────────────────────────────────────────────
 
 function ClaimSection({
@@ -540,6 +576,7 @@ function HomeContent() {
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 26, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">Homepage timeout fix</span> — the per-claimType section query was still sorting 100k+ rows in memory after the index filter. Added two covering composites (<span className="font-mono">deleted, parentClaimId, claimType, createdAt</span> and <span className="font-mono">…, verificationStatus</span>) so the planner can satisfy ORDER BY + verification filter from the index alone. CDN cache on the unfiltered homepage extended from 30s/2min to 5min/1hr so most visitors hit the edge, not the function. Loading skeleton replaces the empty page during fetch.</li>
             <li><span className="text-gray-400">Performance fix</span> — at ~840k claims the site stopped loading. Added 35 database indexes (`Claim.ingestedBy/claimType/currentStatus/verificationStatus/createdAt/claimEmergedAt/parentClaimId`, `Edge.sourceId/claimId`, `Source.ingestedBy`, plus composites) built with <span className="font-mono">CREATE INDEX CONCURRENTLY</span> so live ingest writes didn&apos;t deadlock. Hot-path WHERE/ORDER BY queries that were sequential-scanning all rows are now index lookups.</li>
             <li><span className="text-gray-400">API hardening</span> — `/api/edges`, `/api/sources`, `/api/timeline`, `/api/threshold-events`, `/api/meta-edges` were unbounded <span className="font-mono">findMany</span> calls returning every row with deep joins; now require pagination (limit + offset) and a filter parameter (`claimId` / `sourceId`) where applicable. Homepage&apos;s `distinct: ingestedBy` query switched to `groupBy` to use the new composite index.</li>
           </ul>
@@ -722,8 +759,10 @@ function HomeContent() {
       </div>
 
       {/* Sections */}
-      {loading ? (
-        <p className="text-gray-600 text-sm">Loading…</p>
+      {loading && !data ? (
+        <div className="space-y-10">
+          {ALL_TYPES.map(type => <SkeletonSection key={type} type={type} />)}
+        </div>
       ) : (
         <div className="space-y-10">
           {ALL_TYPES.map(type => {
