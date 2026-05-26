@@ -144,11 +144,20 @@ export async function GET(req: NextRequest) {
   const result: Record<string, object> = {};
   for (const s of sections) result[s.type] = { total: s.total, claims: s.claims, page: s.page, pages: s.pages };
 
-  return NextResponse.json({
+  const response = NextResponse.json({
     sections: result,
     meta: {
       ingestedBySources: sourceRows.map(r => r.ingestedBy),
       topics: topicRows,
     },
   });
+
+  // Cache unfiltered homepage for 30s at CDN edge; serve stale up to 2min while revalidating
+  const isFiltered = q || sp.get("types") || sp.get("statuses") || sp.get("verification") ||
+    sp.get("source") || sp.get("topics") || sp.get("deprecated");
+  if (!isFiltered) {
+    response.headers.set("Cache-Control", "s-maxage=30, stale-while-revalidate=120");
+  }
+
+  return response;
 }
