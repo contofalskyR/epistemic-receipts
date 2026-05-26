@@ -41,11 +41,7 @@ export async function GET(req: NextRequest) {
 
   // ── Base where clause ──────────────────────────────────────────────────────
 
-  const andClauses: object[] = [
-    { NOT: { text: { contains: "SARS",       mode: "insensitive" } } },
-    { NOT: { text: { contains: "COVID",      mode: "insensitive" } } },
-    { NOT: { text: { contains: "coronavirus", mode: "insensitive" } } },
-  ];
+  const andClauses: object[] = [];
 
   if (!showDeprecated && verification !== "deprecated") {
     andClauses.push({ NOT: { verificationStatus: "DEPRECATED" } });
