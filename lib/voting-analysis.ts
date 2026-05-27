@@ -36,6 +36,9 @@ export type PartyBreakdownRow = {
   nay: number;
   total: number;
   yeaRate: number;
+  posteriorMean: number;
+  posteriorCiLower: number;
+  posteriorCiUpper: number;
 };
 
 export type ChiSquareResult = {
@@ -99,6 +102,24 @@ function significanceFor(p: number): "***" | "**" | "*" | "ns" {
   return "ns";
 }
 
+function betaBinomialPosterior(yea: number, nay: number): {
+  posteriorMean: number;
+  posteriorCiLower: number;
+  posteriorCiUpper: number;
+} {
+  const n = yea + nay;
+  if (n === 0) {
+    return { posteriorMean: 0.5, posteriorCiLower: 0, posteriorCiUpper: 1 };
+  }
+  const mean = (1 + yea) / (2 + n);
+  const se = Math.sqrt((mean * (1 - mean)) / (n + 2));
+  return {
+    posteriorMean: mean,
+    posteriorCiLower: Math.max(0, mean - 1.96 * se),
+    posteriorCiUpper: Math.min(1, mean + 1.96 * se),
+  };
+}
+
 function buildContingency(
   groups: RawGroup[],
   partyList: readonly string[],
@@ -127,6 +148,7 @@ function buildContingency(
     n += rowTotal;
     totalYea += c.yea;
     totalNay += c.nay;
+    const posterior = betaBinomialPosterior(c.yea, c.nay);
     parties.push({
       party: p,
       label: labels[p] ?? p,
@@ -134,6 +156,9 @@ function buildContingency(
       nay: c.nay,
       total: rowTotal,
       yeaRate: rowTotal > 0 ? c.yea / rowTotal : 0,
+      posteriorMean: posterior.posteriorMean,
+      posteriorCiLower: posterior.posteriorCiLower,
+      posteriorCiUpper: posterior.posteriorCiUpper,
     });
   }
 
