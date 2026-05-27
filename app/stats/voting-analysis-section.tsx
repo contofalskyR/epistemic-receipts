@@ -1,76 +1,25 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
 import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+  getVotingAnalysis,
+  type ChamberAnalysis,
+  type PartyBreakdownRow,
+  type UnityPoint,
+} from "@/lib/voting-analysis";
 
-type PartyKey = "Democrat" | "Republican" | "Other";
-
-type TopicChiSquare = {
-  topic: string;
-  chiSquare: number;
-  pValue: number;
-  cramersV: number;
-  n: number;
-  significance: "***" | "**" | "*" | "";
+const EU_PARTY_COLORS: Record<string, string> = {
+  EPP: "#2563eb",
+  SD: "#ef4444",
+  RENEW: "#f59e0b",
+  GREEN_EFA: "#10b981",
+  ECR: "#0ea5e9",
+  ID: "#8b5cf6",
+  GUE_NGL: "#be123c",
 };
 
-type UnityRow = {
-  year: number;
-  party: PartyKey;
-  unity_rate: number;
-  total: number;
+const US_PARTY_COLORS: Record<string, string> = {
+  D: "#3b82f6",
+  R: "#ef4444",
+  I: "#a3a3a3",
 };
-
-type BayesianRow = {
-  topic: string;
-  party: PartyKey;
-  posterior_mean: number;
-  ci_lower: number;
-  ci_upper: number;
-  yea: number;
-  nay: number;
-};
-
-type VotingAnalysisResponse = {
-  chiSquareByTopic: TopicChiSquare[];
-  partyUnityOverTime: UnityRow[];
-  bayesianPosteriors: BayesianRow[];
-};
-
-type SortKey = "topic" | "chiSquare" | "pValue" | "cramersV";
-type SortDir = "asc" | "desc";
-
-const TOPIC_LABELS: Record<string, string> = {
-  defense: "Defense",
-  health: "Health",
-  economy: "Economy",
-  environment: "Environment",
-  justice: "Justice",
-  immigration: "Immigration",
-  education: "Education",
-  infrastructure: "Infrastructure",
-  foreign_policy: "Foreign Policy",
-  social: "Social",
-};
-
-const PARTY_COLORS: Record<PartyKey, string> = {
-  Democrat: "#60a5fa",
-  Republican: "#f87171",
-  Other: "#a3a3a3",
-};
-
-function topicLabel(slug: string): string {
-  return TOPIC_LABELS[slug] ?? slug;
-}
 
 function fmtPct(n: number, digits = 1): string {
   return `${(n * 100).toFixed(digits)}%`;
@@ -80,91 +29,324 @@ function fmtNum(n: number, digits = 2): string {
   return n.toFixed(digits);
 }
 
-function pValueLabel(p: number): string {
-  if (p <= 0.001) return "<0.001";
-  if (p <= 0.01) return "<0.01";
-  if (p <= 0.05) return "<0.05";
-  return "≥0.05";
+function ratioToColor(rate: number): string {
+  if (rate >= 0.8) return "#16a34a";
+  if (rate >= 0.6) return "#65a30d";
+  if (rate >= 0.45) return "#ca8a04";
+  if (rate >= 0.3) return "#ea580c";
+  return "#dc2626";
 }
 
-export default function VotingAnalysisSection() {
-  const [data, setData] = useState<VotingAnalysisResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [sortKey, setSortKey] = useState<SortKey>("chiSquare");
-  const [sortDir, setSortDir] = useState<SortDir>("desc");
+function PartyBreakdownTable({
+  parties,
+  test,
+  title,
+  description,
+}: {
+  parties: PartyBreakdownRow[];
+  test: ChamberAnalysis["test"];
+  title: string;
+  description: string;
+}) {
+  const hasData = parties.some((p) => p.total > 0);
+  return (
+    <section className="space-y-3">
+      <div>
+        <h3 className="text-base font-semibold text-white">{title}</h3>
+        <p className="text-xs text-zinc-500 mt-1">{description}</p>
+      </div>
+      <div className="rounded border border-zinc-800 bg-zinc-950 p-4 space-y-3">
+        {!hasData ? (
+          <p className="text-xs text-zinc-600 italic">No vote data available.</p>
+        ) : (
+          parties.map((p) => {
+            const widthPct = p.yeaRate * 100;
+            const color = ratioToColor(p.yeaRate);
+            return (
+              <div key={p.party} className="space-y-1">
+                <div className="flex items-baseline justify-between gap-4">
+                  <div>
+                    <span className="text-zinc-100">{p.label}</span>
+                    <span className="ml-2 text-xs text-zinc-500 font-mono">{p.party}</span>
+                  </div>
+                  <div className="text-xs text-zinc-400 tabular-nums whitespace-nowrap">
+                    {p.total.toLocaleString()} votes ·{" "}
+                    <span style={{ color }}>{fmtPct(p.yeaRate)}</span> yea
+                  </div>
+                </div>
+                <div className="h-3 rounded-sm bg-zinc-900 overflow-hidden">
+                  <div
+                    className="h-full"
+                    style={{ width: `${widthPct}%`, background: color }}
+                  />
+                </div>
+                <div className="text-[10px] text-zinc-600 tabular-nums">
+                  yea {p.yea.toLocaleString()} · nay {p.nay.toLocaleString()}
+                </div>
+              </div>
+            );
+          })
+        )}
+        <div className="pt-3 mt-2 border-t border-zinc-800 flex flex-wrap gap-x-6 gap-y-1 text-xs text-zinc-400">
+          <span>
+            χ² <span className="text-amber-300 tabular-nums">{fmtNum(test.chiSquare)}</span>{" "}
+            <span className="text-zinc-600">(df={test.df})</span>
+          </span>
+          <span>
+            p-value{" "}
+            <span className="text-zinc-200 tabular-nums">{test.pValueLabel}</span>
+          </span>
+          <span>
+            Cramér V{" "}
+            <span className="text-blue-300 tabular-nums">{fmtNum(test.cramersV, 3)}</span>
+          </span>
+          <span>
+            n <span className="text-zinc-500 tabular-nums">{test.n.toLocaleString()}</span>
+          </span>
+          <span className="font-mono text-red-300">
+            {test.significance === "ns" ? "" : test.significance}
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/stats/voting-analysis")
-      .then(async (r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return (await r.json()) as VotingAnalysisResponse;
-      })
-      .then((d) => {
-        if (!cancelled) setData(d);
-      })
-      .catch((e: unknown) => {
-        if (!cancelled) {
-          setError(e instanceof Error ? e.message : "failed to load");
-        }
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+type UnitySeries = { key: string; label: string; color: string; points: { year: number; rate: number }[] };
 
-  const sortedChi = useMemo<TopicChiSquare[]>(() => {
-    if (!data) return [];
-    const arr = [...data.chiSquareByTopic];
-    const dir = sortDir === "asc" ? 1 : -1;
-    arr.sort((a, b) => {
-      if (sortKey === "topic") return topicLabel(a.topic).localeCompare(topicLabel(b.topic)) * dir;
-      if (sortKey === "pValue") return (a.pValue - b.pValue) * dir;
-      if (sortKey === "cramersV") return (a.cramersV - b.cramersV) * dir;
-      return (a.chiSquare - b.chiSquare) * dir;
+function aggregateSeries(
+  points: UnityPoint[],
+  colors: Record<string, string>,
+  labels: Record<string, string>,
+  chamberFilter?: string,
+): UnitySeries[] {
+  const filtered = chamberFilter
+    ? points.filter((p) => p.chamber === chamberFilter)
+    : points;
+  // Bucket by party + year; if chamberFilter not set, sum across chambers.
+  const byParty = new Map<string, Map<number, { yea: number; nay: number; total: number }>>();
+  // We lost yea/nay here — points already are unityRate. We need to recompute.
+  // But UnityPoint only stores unityRate + total. To merge across chambers we'd need raw counts.
+  // Since EU has chamber=null only, we can pass through directly.
+  // For US single-chamber view, we filter to that chamber and pass through.
+  for (const p of filtered) {
+    const inner = byParty.get(p.party) ?? new Map();
+    inner.set(p.year, {
+      yea: p.unityRate * p.total,
+      nay: (1 - p.unityRate) * p.total,
+      total: p.total,
     });
-    return arr;
-  }, [data, sortKey, sortDir]);
-
-  const chartData = useMemo(() => {
-    if (!data) return [];
-    const byYear = new Map<number, { year: number; Democrat?: number; Republican?: number }>();
-    for (const row of data.partyUnityOverTime) {
-      if (row.party === "Other") continue;
-      const entry = byYear.get(row.year) ?? { year: row.year };
-      entry[row.party] = Number((row.unity_rate * 100).toFixed(2));
-      byYear.set(row.year, entry);
-    }
-    return Array.from(byYear.values()).sort((a, b) => a.year - b.year);
-  }, [data]);
-
-  const topPolarized = useMemo(() => {
-    if (!data) return [] as { topic: string; rows: BayesianRow[] }[];
-    const topTopics = data.chiSquareByTopic.slice(0, 5).map((t) => t.topic);
-    return topTopics.map((topic) => {
-      const rows = data.bayesianPosteriors
-        .filter((b) => b.topic === topic)
-        .sort((a, b) => {
-          const order: Record<PartyKey, number> = { Democrat: 0, Republican: 1, Other: 2 };
-          return order[a.party] - order[b.party];
-        });
-      return { topic, rows };
+    byParty.set(p.party, inner);
+  }
+  const series: UnitySeries[] = [];
+  for (const [party, inner] of byParty.entries()) {
+    const points = Array.from(inner.entries())
+      .map(([year, agg]) => ({
+        year,
+        rate: agg.total > 0 ? Math.max(agg.yea, agg.nay) / agg.total : 0,
+      }))
+      .sort((a, b) => a.year - b.year);
+    series.push({
+      key: party,
+      label: labels[party] ?? party,
+      color: colors[party] ?? "#a3a3a3",
+      points,
     });
-  }, [data]);
+  }
+  return series.sort((a, b) => a.label.localeCompare(b.label));
+}
 
-  function toggleSort(key: SortKey) {
-    if (sortKey === key) {
-      setSortDir(sortDir === "asc" ? "desc" : "asc");
-    } else {
-      setSortKey(key);
-      setSortDir(key === "topic" ? "asc" : "desc");
-    }
+function UnityLineChart({
+  series,
+  title,
+  description,
+  caption,
+}: {
+  series: UnitySeries[];
+  title: string;
+  description: string;
+  caption?: string;
+}) {
+  const width = 600;
+  const height = 220;
+  const padding = { top: 16, right: 16, bottom: 30, left: 40 };
+  const innerW = width - padding.left - padding.right;
+  const innerH = height - padding.top - padding.bottom;
+
+  const allPoints = series.flatMap((s) => s.points);
+  if (allPoints.length === 0) {
+    return (
+      <section className="space-y-2">
+        <div>
+          <h3 className="text-base font-semibold text-white">{title}</h3>
+          <p className="text-xs text-zinc-500 mt-1">{description}</p>
+        </div>
+        <div className="rounded border border-zinc-800 bg-zinc-950 p-4">
+          <p className="text-xs text-zinc-600 italic">No time-series data.</p>
+        </div>
+      </section>
+    );
   }
 
-  function sortIndicator(key: SortKey): string {
-    if (sortKey !== key) return "";
-    return sortDir === "asc" ? " ↑" : " ↓";
+  const minYear = Math.min(...allPoints.map((p) => p.year));
+  const maxYear = Math.max(...allPoints.map((p) => p.year));
+  const yMin = 0.5;
+  const yMax = 1;
+
+  const xScale = (year: number) =>
+    maxYear === minYear
+      ? padding.left + innerW / 2
+      : padding.left + ((year - minYear) / (maxYear - minYear)) * innerW;
+  const yScale = (rate: number) =>
+    padding.top + (1 - (rate - yMin) / (yMax - yMin)) * innerH;
+
+  const yTicks = [0.5, 0.6, 0.7, 0.8, 0.9, 1];
+  const yearSpan = maxYear - minYear;
+  const xTickStep = yearSpan <= 6 ? 1 : yearSpan <= 20 ? 2 : yearSpan <= 50 ? 5 : 10;
+  const xTicks: number[] = [];
+  for (let y = Math.ceil(minYear / xTickStep) * xTickStep; y <= maxYear; y += xTickStep) {
+    xTicks.push(y);
   }
+
+  return (
+    <section className="space-y-2">
+      <div>
+        <h3 className="text-base font-semibold text-white">{title}</h3>
+        <p className="text-xs text-zinc-500 mt-1">{description}</p>
+      </div>
+      <div className="rounded border border-zinc-800 bg-zinc-950 p-4 space-y-3">
+        <div className="overflow-x-auto">
+          <svg
+            viewBox={`0 0 ${width} ${height}`}
+            width="100%"
+            preserveAspectRatio="xMidYMid meet"
+            role="img"
+            aria-label={title}
+            style={{ maxWidth: 720 }}
+          >
+            {/* Y gridlines + labels */}
+            {yTicks.map((t) => (
+              <g key={`y-${t}`}>
+                <line
+                  x1={padding.left}
+                  x2={width - padding.right}
+                  y1={yScale(t)}
+                  y2={yScale(t)}
+                  stroke="#27272a"
+                  strokeDasharray="3 3"
+                />
+                <text
+                  x={padding.left - 6}
+                  y={yScale(t) + 3}
+                  fill="#71717a"
+                  fontSize={10}
+                  textAnchor="end"
+                >
+                  {Math.round(t * 100)}%
+                </text>
+              </g>
+            ))}
+            {/* X labels */}
+            {xTicks.map((y) => (
+              <text
+                key={`x-${y}`}
+                x={xScale(y)}
+                y={height - padding.bottom + 14}
+                fill="#71717a"
+                fontSize={10}
+                textAnchor="middle"
+              >
+                {y}
+              </text>
+            ))}
+            {/* Axes */}
+            <line
+              x1={padding.left}
+              x2={padding.left}
+              y1={padding.top}
+              y2={height - padding.bottom}
+              stroke="#3f3f46"
+            />
+            <line
+              x1={padding.left}
+              x2={width - padding.right}
+              y1={height - padding.bottom}
+              y2={height - padding.bottom}
+              stroke="#3f3f46"
+            />
+            {/* Series */}
+            {series.map((s) => {
+              if (s.points.length === 0) return null;
+              const d = s.points
+                .map(
+                  (p, i) => `${i === 0 ? "M" : "L"}${xScale(p.year).toFixed(2)},${yScale(p.rate).toFixed(2)}`,
+                )
+                .join(" ");
+              return (
+                <g key={s.key}>
+                  <path d={d} stroke={s.color} strokeWidth={1.5} fill="none" />
+                  {s.points.map((p) => (
+                    <circle
+                      key={`${s.key}-${p.year}`}
+                      cx={xScale(p.year)}
+                      cy={yScale(p.rate)}
+                      r={2}
+                      fill={s.color}
+                    />
+                  ))}
+                </g>
+              );
+            })}
+          </svg>
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+          {series.map((s) => (
+            <span key={s.key} className="inline-flex items-center gap-1.5">
+              <span
+                className="inline-block w-3 h-0.5"
+                style={{ background: s.color }}
+              />
+              <span className="text-zinc-300">{s.label}</span>
+              <span className="text-zinc-600 font-mono">{s.key}</span>
+            </span>
+          ))}
+        </div>
+        {caption && <p className="text-xs text-zinc-600">{caption}</p>}
+      </div>
+    </section>
+  );
+}
+
+export default async function VotingAnalysisSection() {
+  const data = await getVotingAnalysis();
+  const { euParliament, usCongress } = data;
+
+  const euSeries = aggregateSeries(
+    euParliament.unityOverTime,
+    EU_PARTY_COLORS,
+    {
+      EPP: "EPP",
+      SD: "S&D",
+      RENEW: "Renew",
+      GREEN_EFA: "Greens/EFA",
+      ECR: "ECR",
+      ID: "ID",
+      GUE_NGL: "The Left",
+    },
+  );
+
+  const houseSeries = aggregateSeries(
+    usCongress.unityOverTime,
+    US_PARTY_COLORS,
+    { D: "Democrat", R: "Republican", I: "Independent" },
+    "House",
+  );
+  const senateSeries = aggregateSeries(
+    usCongress.unityOverTime,
+    US_PARTY_COLORS,
+    { D: "Democrat", R: "Republican", I: "Independent" },
+    "Senate",
+  );
 
   return (
     <>
@@ -172,249 +354,50 @@ export default function VotingAnalysisSection() {
         <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Phase 3</p>
         <h2 className="mt-1 text-lg font-semibold text-white">Voting Pattern Analysis</h2>
         <p className="mt-1 text-xs text-zinc-500">
-          Chi-square independence tests, party unity over time, and Bayesian posteriors over
-          Congress votes with party-level data.
+          Per-member roll-call data from EU Parliament and US Congress. Chi-square independence
+          tests treat party affiliation and yea/nay direction as categorical variables; party
+          unity is the share of recorded yea+nay votes on the majority side.
         </p>
       </div>
 
-      {error && (
-        <p className="text-xs text-red-400">Failed to load voting analysis: {error}</p>
-      )}
-      {!data && !error && (
-        <p className="text-xs text-zinc-500">Loading voting analysis…</p>
-      )}
+      <PartyBreakdownTable
+        parties={euParliament.parties}
+        test={euParliament.test}
+        title="EU Parliament — Yea Rate by Group"
+        description="Share of recorded yea votes per group across all roll-calls. 7×2 contingency table on yea/nay (Not Voting + Present excluded). df = 6."
+      />
 
-      {data && (
-        <>
-          {/* Chi-square table */}
-          <section className="space-y-2">
-            <div>
-              <h3 className="text-base font-semibold text-white">Topic × Party Independence</h3>
-              <p className="text-xs text-zinc-500 mt-1">
-                Pearson chi-square on a 2×3 yea/nay × Democrat/Republican/Other contingency table
-                per topic. df=2. Cramér V quantifies effect size. Larger χ² = stronger party
-                association.
-              </p>
-            </div>
-            <div className="rounded border border-zinc-800 overflow-hidden">
-              <table className="w-full text-xs">
-                <thead>
-                  <tr className="border-b border-zinc-800 bg-zinc-900/60">
-                    <th
-                      className="px-3 py-2 text-left font-medium text-zinc-500 cursor-pointer select-none hover:text-zinc-300"
-                      onClick={() => toggleSort("topic")}
-                    >
-                      Topic{sortIndicator("topic")}
-                    </th>
-                    <th
-                      className="px-3 py-2 text-right font-medium text-zinc-500 cursor-pointer select-none hover:text-zinc-300"
-                      onClick={() => toggleSort("chiSquare")}
-                    >
-                      χ²{sortIndicator("chiSquare")}
-                    </th>
-                    <th
-                      className="px-3 py-2 text-right font-medium text-zinc-500 cursor-pointer select-none hover:text-zinc-300"
-                      onClick={() => toggleSort("pValue")}
-                    >
-                      p-value{sortIndicator("pValue")}
-                    </th>
-                    <th
-                      className="px-3 py-2 text-right font-medium text-zinc-500 cursor-pointer select-none hover:text-zinc-300"
-                      onClick={() => toggleSort("cramersV")}
-                    >
-                      Cramér V{sortIndicator("cramersV")}
-                    </th>
-                    <th className="px-3 py-2 text-right font-medium text-zinc-500">n</th>
-                    <th className="px-3 py-2 text-left font-medium text-zinc-500">Sig.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sortedChi.map((r, i) => (
-                    <tr
-                      key={r.topic}
-                      className={`border-b border-zinc-800/50 last:border-0 ${
-                        i % 2 === 0 ? "" : "bg-zinc-900/20"
-                      }`}
-                    >
-                      <td className="px-3 py-2 text-zinc-300">{topicLabel(r.topic)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums text-amber-300">
-                        {fmtNum(r.chiSquare, 2)}
-                      </td>
-                      <td className="px-3 py-2 text-right tabular-nums text-zinc-400">
-                        {pValueLabel(r.pValue)}
-                      </td>
-                      <td className="px-3 py-2 text-right tabular-nums text-blue-300">
-                        {fmtNum(r.cramersV, 3)}
-                      </td>
-                      <td className="px-3 py-2 text-right tabular-nums text-zinc-500">
-                        {r.n.toLocaleString()}
-                      </td>
-                      <td className="px-3 py-2 font-mono text-red-300">{r.significance}</td>
-                    </tr>
-                  ))}
-                  {sortedChi.length === 0 && (
-                    <tr>
-                      <td colSpan={6} className="px-3 py-4 text-center text-zinc-600">
-                        No topic × party data available.
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-xs text-zinc-600">
-              <span className="font-mono text-red-300">*</span> p&lt;0.05 ·{" "}
-              <span className="font-mono text-red-300">**</span> p&lt;0.01 ·{" "}
-              <span className="font-mono text-red-300">***</span> p&lt;0.001
-            </p>
-          </section>
+      <PartyBreakdownTable
+        parties={usCongress.parties}
+        test={usCongress.test}
+        title="US Congress — Yea Rate by Party"
+        description="House + Senate roll-calls combined. 3×2 contingency table on yea/nay. df = 2."
+      />
 
-          {/* Party unity trend chart */}
-          <section className="space-y-2">
-            <div>
-              <h3 className="text-base font-semibold text-white">Party Unity Over Time</h3>
-              <p className="text-xs text-zinc-500 mt-1">
-                Share of party-aggregated yes/no votes that fell on the majority side per year. 1.0
-                = perfect unity, 0.5 = even split.
-              </p>
-            </div>
-            <div className="rounded border border-zinc-800 bg-zinc-950 p-4">
-              {chartData.length === 0 ? (
-                <p className="text-xs text-zinc-600 italic">No party unity time-series data.</p>
-              ) : (
-                <div style={{ width: "100%", height: 280 }}>
-                  <ResponsiveContainer>
-                    <LineChart
-                      data={chartData}
-                      margin={{ top: 10, right: 20, bottom: 10, left: 0 }}
-                    >
-                      <CartesianGrid stroke="#27272a" strokeDasharray="3 3" />
-                      <XAxis
-                        dataKey="year"
-                        stroke="#71717a"
-                        tick={{ fill: "#a1a1aa", fontSize: 11 }}
-                      />
-                      <YAxis
-                        stroke="#71717a"
-                        tick={{ fill: "#a1a1aa", fontSize: 11 }}
-                        domain={[50, 100]}
-                        tickFormatter={(v: number) => `${v}%`}
-                      />
-                      <Tooltip
-                        contentStyle={{
-                          background: "#09090b",
-                          border: "1px solid #3f3f46",
-                          fontSize: 12,
-                        }}
-                        labelStyle={{ color: "#e4e4e7" }}
-                        formatter={(v) => {
-                          const n = typeof v === "number" ? v : Number(v);
-                          return Number.isFinite(n) ? `${n.toFixed(1)}%` : String(v);
-                        }}
-                      />
-                      <Legend wrapperStyle={{ fontSize: 12, color: "#d4d4d8" }} />
-                      <Line
-                        type="monotone"
-                        dataKey="Democrat"
-                        stroke={PARTY_COLORS.Democrat}
-                        strokeWidth={2}
-                        dot={{ r: 3 }}
-                        activeDot={{ r: 5 }}
-                        connectNulls
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="Republican"
-                        stroke={PARTY_COLORS.Republican}
-                        strokeWidth={2}
-                        dot={{ r: 3 }}
-                        activeDot={{ r: 5 }}
-                        connectNulls
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              )}
-            </div>
-          </section>
+      <UnityLineChart
+        series={euSeries}
+        title="EU Parliament — Party Unity Over Time"
+        description="Per-group unity rate by year — the share of recorded yea/nay votes that fell on the majority side. 100% = perfectly cohesive group."
+        caption="Higher = more internal cohesion. A drop below ~70% indicates a fractured group."
+      />
 
-          {/* Bayesian posteriors */}
-          <section className="space-y-3">
-            <div>
-              <h3 className="text-base font-semibold text-white">
-                Bayesian Posteriors — Top 5 Polarized Topics
-              </h3>
-              <p className="text-xs text-zinc-500 mt-1">
-                Beta(1, 1) prior updated with yea/nay tallies per topic × party. Posterior mean is
-                the estimated P(yea); 95% credible interval shown alongside. Non-overlapping
-                intervals between parties indicate the data robustly separates them.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {topPolarized.map(({ topic, rows }) => (
-                <div
-                  key={topic}
-                  className="rounded border border-zinc-800 bg-zinc-950 p-4 space-y-3"
-                >
-                  <div>
-                    <p className="text-sm font-semibold text-zinc-100">{topicLabel(topic)}</p>
-                    <p className="text-xs text-zinc-500 font-mono">{topic}</p>
-                  </div>
-                  <div className="space-y-3">
-                    {rows.map((r) => {
-                      const meanPct = r.posterior_mean * 100;
-                      const leftPct = r.ci_lower * 100;
-                      const widthPct = Math.max(0.5, (r.ci_upper - r.ci_lower) * 100);
-                      return (
-                        <div key={r.party} className="space-y-1">
-                          <div className="flex items-baseline justify-between gap-2">
-                            <span
-                              className="text-xs font-medium"
-                              style={{ color: PARTY_COLORS[r.party] }}
-                            >
-                              {r.party}
-                            </span>
-                            <span className="text-xs tabular-nums text-zinc-400">
-                              {fmtPct(r.posterior_mean)} [{fmtPct(r.ci_lower)}–
-                              {fmtPct(r.ci_upper)}]
-                            </span>
-                          </div>
-                          <div className="relative h-2 rounded-sm bg-zinc-900 overflow-hidden">
-                            <div
-                              className="absolute inset-y-0 rounded-sm opacity-40"
-                              style={{
-                                left: `${leftPct}%`,
-                                width: `${widthPct}%`,
-                                background: PARTY_COLORS[r.party],
-                              }}
-                            />
-                            <div
-                              className="absolute inset-y-0 w-0.5"
-                              style={{
-                                left: `${meanPct}%`,
-                                background: PARTY_COLORS[r.party],
-                              }}
-                            />
-                          </div>
-                          <div className="text-[10px] text-zinc-600 tabular-nums">
-                            yea {r.yea.toLocaleString()} · nay {r.nay.toLocaleString()}
-                          </div>
-                        </div>
-                      );
-                    })}
-                    {rows.length === 0 && (
-                      <p className="text-xs text-zinc-600 italic">No party data for this topic.</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-              {topPolarized.length === 0 && (
-                <p className="text-xs text-zinc-600 italic">No polarized topics to display.</p>
-              )}
-            </div>
-          </section>
-        </>
-      )}
+      <UnityLineChart
+        series={houseSeries}
+        title="US House — Party Unity Over Time"
+        description="House-only unity rate per party by year, computed from per-member yea/nay records."
+      />
+
+      <UnityLineChart
+        series={senateSeries}
+        title="US Senate — Party Unity Over Time"
+        description="Senate-only unity rate per party by year."
+      />
+
+      <p className="text-xs text-zinc-600">
+        <span className="font-mono text-red-300">*</span> p&lt;0.05 ·{" "}
+        <span className="font-mono text-red-300">**</span> p&lt;0.01 ·{" "}
+        <span className="font-mono text-red-300">***</span> p&lt;0.001
+      </p>
     </>
   );
 }
