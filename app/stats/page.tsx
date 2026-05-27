@@ -706,7 +706,7 @@ export default async function StatsPage() {
         </section>
       )}
 
-      <VotingAnalysisSection />
+      {/* VotingAnalysisSection temporarily disabled — debugging */}
 
       {/* Cross-Country Topic Comparison */}
       {topicsByLeg.length > 0 && (
