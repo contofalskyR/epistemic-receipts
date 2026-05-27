@@ -591,6 +591,13 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 27, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">Aesthetic medicine pipelines (4 buckets)</span> — new ClinicalTrials.gov <span className="font-mono">aesthetic</span> bucket (30 interventions × 9 conditions, COMPLETED filter on both, results-posted filter on conditions); new <span className="font-mono">fda_aesthetic_devices_v1</span> pipeline ingesting FDA 510(k) clearances and PMA approvals (12 device-name searches + a plastic-surgery committee sweep post-filtered to aesthetic keywords, decision_date ≥ 2000); new <span className="font-mono">cosmetic_faers_v1</span> pipeline mirroring Pipeline 8 against openFDA&apos;s cosmetic event endpoint (product-level aggregate AE counts, ≥5-report noise floor); new OpenAlex <span className="font-mono">aesthetic-medicine</span> bucket across 15 dermatology/surgery search terms (subfield-filtered via the correct <span className="font-mono">primary_topic.subfield.id</span> path — spec called for <span className="font-mono">field.display_name</span> but Dermatology/Surgery are subfields under field 27/Medicine, not fields). Dry-runs and typecheck clean; full ingest runs queued as a separate step.</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 26, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">Site-wide perf overhaul</span> — every page that touched the 842k-claim table was timing out on Vercel Hobby. Fixed the topic-page N+1 (per-party + per-leader <span className="font-mono">claimTopic.count</span> loops collapsed into one <span className="font-mono">findMany</span> aggregated in JS), removed <span className="font-mono">force-dynamic</span> from seven cacheable API routes (stats, search, globe/density, density-temporal, origins, analysis/votes, topic detail) so the CDN edge cache works again, capped every previously-unbounded <span className="font-mono">LegislativeVote.findMany</span> in <span className="font-mono">lib/stats-queries.ts</span> + <span className="font-mono">lib/voteAnalysis.ts</span> at 50k rows, and added a <span className="font-mono">pg_trgm</span> GIN index on <span className="font-mono">Claim.text</span> so /search ILIKE queries no longer seq-scan the 842k-row table.</li>

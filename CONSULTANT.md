@@ -271,6 +271,36 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-27 — Aesthetic / cosmetic medicine pipelines (4 buckets)
+
+**What.** Added four aesthetic/beauty-industry ingestion paths covering trials, devices, post-market cosmetic safety, and academic literature.
+
+**1. ClinicalTrials.gov `aesthetic` bucket (`scripts/ingest-clinicaltrials.ts`).** New combined intervention + condition sweep mirroring the existing case-study and pivotal patterns. 30 aesthetic interventions (botulinum toxins, hyaluronic/CaHA/PLLA/PMMA fillers, fat grafting, PRP, lasers/IPL/RF/HIFU, cryolipolysis, surgical procedures, hair regrowth, retinoids) and 9 aesthetic conditions (facial rejuvenation, skin aging, acne scars, alopecia, melasma, rosacea, hyperpigmentation, cellulite, gynecomastia). Intervention sub-sweep filters `overallStatus=COMPLETED`; condition sub-sweep additionally filters `hasResults=true`. Ensures `aesthetics` topic (`medicine` domain). Switch registers `aesthetic` as the 5th valid bucket.
+
+**2. FDA Aesthetic Devices pipeline (`scripts/ingest-fda-aesthetic-devices.ts`, new).** Ingests 510(k) clearances and PMA approvals via openFDA device endpoints. 12 device-name-targeted 510(k) searches (hyaluronic, botulinum, liposuction, rhinoplasty, laser+skin, breast+implant, microneedle, RF+skin, cryolipolysis, filler+injectable, fat+grafting, hair+transplant) plus one broad `advisory_committee_description.exact:"General, Plastic Surgery"` sweep that is post-filtered against an aesthetic-keyword Set, with a `decision_date >= 2000-01-01` cutoff. 5 PMA searches (breast/facial/injectable filler/botulinum/silicone implants) restricted to ORIGINAL supplements. Claims as `INSTITUTIONAL` / `currentStatus: HARD_FACT` / `verificationStatus: VERIFIED`. Edge score 95 (authoritative primary regulatory record). Source URLs link directly to accessdata.fda.gov per-record pages. Pipeline ID `fda_aesthetic_devices_v1`; topics `fda-devices`, `aesthetics`, `medicine`. Note: spec asked for `claimType: REGULATORY` and `verificationStatus: HARD_FACT`; the schema allows only `EMPIRICAL | INSTITUTIONAL | INTERPRETIVE | HYBRID` for claimType and reserves `HARD_FACT` for `currentStatus`. Used the canonical mapping that the existing regulatory pipelines (`openfda_v1`, `federal_register_v1`) already use.
+
+**3. Cosmetic FAERS Aggregates pipeline (`scripts/ingest-cosmetic-faers.ts`, new).** Single-call aggregate fetch against `api.fda.gov/cosmetic/event.json?count=products.product_name.exact&limit=1000`. Filters out terms with <5 reports (noise floor) and processes the remaining ~850 products in count-descending order. Each Claim: `"<PRODUCT_NAME> has <N> cosmetic adverse event reports filed with the FDA."` Claim type `EMPIRICAL`, `currentStatus: HARD_FACT`, edge score 85. externalId `cosmetic_faers_<slug>` (lowercased, non-alphanumerics → underscores, capped 100 chars). Pipeline ID `cosmetic_faers_v1`; topics `cosmetic-safety`, `aesthetics`, `medicine`.
+
+**4. OpenAlex `aesthetic-medicine` bucket (`scripts/ingest-openalex.ts`).** New multi-search bucket with 15 dermatology/surgery search terms (aesthetic medicine, cosmetic dermatology, botulinum toxin, dermal filler, laser skin resurfacing, rhinoplasty, breast augmentation, liposuction, facelift, androgenetic alopecia, acne scar, melasma, body contouring, hair transplant, chemical peel). Each search capped at 500 works; cursor pagination; dedupe by workId across all searches. Filter is `type:article,is_paratext:false,publication_year:>1999` plus `primary_topic.subfield.id:subfields/2708` (Dermatology) or `subfields/2746` (Surgery) where specified. Spec called for `primary_topic.field.display_name:Dermatology|Surgery`, but Dermatology and Surgery are OpenAlex *subfields* under field 27 (Medicine), not fields; OpenAlex rejects the field-display-name path with HTTP 400. Resolved by enumerating the subfields endpoint (`/subfields?filter=field.id:fields/27`) and using their numeric IDs.
+
+**Verification.**
+- `npx tsc --noEmit` clean after all edits.
+- Dry-runs (all 4): ClinicalTrials aesthetic bucket → 148 ingestion candidates across 39 intervention + condition sub-buckets; FDA devices → 5 candidates (limited by `--limit 5`); cosmetic FAERS → 5 of 848 ≥5-report products processed; OpenAlex aesthetic-medicine `--limit 5` (no dry-run flag in this script) wrote 5 sample works as designed.
+- Confirmed OpenAlex Dermatology/Surgery subfield IDs against the live API.
+
+**Files changed:**
+- `scripts/ingest-clinicaltrials.ts` (added aesthetic bucket + lists + switch case)
+- `scripts/ingest-fda-aesthetic-devices.ts` (new)
+- `scripts/ingest-cosmetic-faers.ts` (new)
+- `scripts/ingest-openalex.ts` (added aesthetic-medicine bucket + subfield mapping)
+- `app/page.tsx` (changelog entry)
+- `app/layout.tsx` (footer date)
+- `CONSULTANT.md`
+
+**Next step.** Full ingest runs remain pending and are out-of-scope for this commit. Topic `aesthetics` will be created on first run by whichever of the four pipelines fires first; subsequent runs share it.
+
+---
+
 ### 2026-05-26 — Site-wide perf overhaul: topic N+1 fixed, force-dynamic removed, stats capped, trgm search index
 
 **Problem.** Multiple pages (homepage, topics, globe, stats, search, datasets, fields, review) were timing out on Vercel Hobby (10s limit) at 842k Claims. Three root causes: (a) `/api/topics/[slug]` was running N+1 `claimTopic.count` queries — one per distinct party AND one per distinct leader-within-party — which scaled with party count; (b) seven API routes had `export const dynamic = "force-dynamic"` which disabled the CDN edge cache entirely; (c) `/api/search` `ILIKE %q%` on `Claim.text` was a full sequential scan of 842k rows because there was no trigram index.

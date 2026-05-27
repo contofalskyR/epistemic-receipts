@@ -211,6 +211,10 @@ async function ensureCoreTopics(bucket: string): Promise<string[]> {
       { slug: 'policy-research',    name: 'Policy Research',    domain: 'academic-literature' },
       { slug: 'political-science',  name: 'Political Science',  domain: 'academic-literature' },
     ],
+    'aesthetic-medicine': [
+      { slug: 'aesthetic-medicine', name: 'Aesthetic Medicine',             domain: 'academic-literature' },
+      { slug: 'aesthetics',         name: 'Aesthetics & Cosmetic Medicine', domain: 'medicine' },
+    ],
   }
   const ids = [root]
   for (const t of bucketTopics[bucket] ?? []) {
@@ -330,6 +334,122 @@ async function ingestWork(work: OAWork, topicIds: string[]): Promise<IngestResul
   }
 }
 
+// ── Aesthetic-medicine bucket ─────────────────────────────────────────────────
+// Multi-search sweep with per-search primary_topic.field filter.
+// Each search capped at 500 works; dedupe by OpenAlex workId across all searches.
+
+interface AestheticSearch {
+  search: string
+  // OpenAlex "Dermatology" and "Surgery" are subfields under Medicine (field 27),
+  // not fields — so we filter on primary_topic.subfield.id.
+  subfield?: 'Dermatology' | 'Surgery'
+}
+
+const SUBFIELD_IDS: Record<NonNullable<AestheticSearch['subfield']>, string> = {
+  Dermatology: 'subfields/2708',
+  Surgery:     'subfields/2746',
+}
+
+const AESTHETIC_SEARCHES: AestheticSearch[] = [
+  { search: 'aesthetic medicine treatment',     subfield: 'Dermatology' },
+  { search: 'cosmetic dermatology',             subfield: 'Dermatology' },
+  { search: 'botulinum toxin cosmetic',         subfield: 'Dermatology' },
+  { search: 'dermal filler injection',          subfield: 'Dermatology' },
+  { search: 'laser skin resurfacing',           subfield: 'Dermatology' },
+  { search: 'rhinoplasty outcomes',             subfield: 'Surgery' },
+  { search: 'breast augmentation outcomes',     subfield: 'Surgery' },
+  { search: 'liposuction outcomes',             subfield: 'Surgery' },
+  { search: 'facelift rhytidectomy',            subfield: 'Surgery' },
+  { search: 'androgenetic alopecia treatment',  subfield: 'Dermatology' },
+  { search: 'acne scar treatment',              subfield: 'Dermatology' },
+  { search: 'melasma treatment',                subfield: 'Dermatology' },
+  { search: 'body contouring procedures',       subfield: 'Surgery' },
+  { search: 'hair transplant outcomes',         subfield: 'Surgery' },
+  { search: 'chemical peel outcomes' },
+]
+
+const AESTHETIC_PER_SEARCH_CAP = 500
+
+async function* paginateAestheticSearch(
+  spec: AestheticSearch,
+  cap: number,
+): AsyncGenerator<OAWork> {
+  let cursor: string | null = '*'
+  let yielded = 0
+
+  const filterParts = [
+    'type:article',
+    'is_paratext:false',
+    // publication_year >= 2000 — OpenAlex `>` is strict, so >1999 means >=2000
+    'publication_year:>1999',
+  ]
+  if (spec.subfield) filterParts.push(`primary_topic.subfield.id:${SUBFIELD_IDS[spec.subfield]}`)
+  const filter = filterParts.join(',')
+
+  while (cursor) {
+    const url = new URL(OA_BASE)
+    url.searchParams.set('filter', filter)
+    url.searchParams.set('search', spec.search)
+    url.searchParams.set('per-page', '200')
+    url.searchParams.set('cursor', cursor)
+    url.searchParams.set('select', SELECT_FIELDS)
+    url.searchParams.set('mailto', MAILTO)
+
+    const res = await fetchWithRetry(url.toString())
+    if (!res.ok) {
+      const text = await res.text()
+      console.warn(`  OpenAlex API ${res.status}: ${text.slice(0, 200)}`)
+      return
+    }
+    const data = await res.json() as OAResponse
+    const results = data.results ?? []
+    if (results.length === 0) return
+
+    for (const work of results) {
+      yield work
+      yielded++
+      if (yielded >= cap) return
+    }
+    cursor = data.meta?.next_cursor ?? null
+  }
+}
+
+async function runAestheticMedicineBucket(limit: number): Promise<Counts> {
+  const topicIds = await ensureCoreTopics('aesthetic-medicine')
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+  const seenWorkIds = new Set<string>()
+  let seen = 0
+
+  for (const spec of AESTHETIC_SEARCHES) {
+    if (limit > 0 && counts.ingested >= limit) break
+
+    const remaining = limit > 0 ? limit - counts.ingested : AESTHETIC_PER_SEARCH_CAP
+    const perSearchCap = Math.min(remaining, AESTHETIC_PER_SEARCH_CAP)
+    const fieldLabel = spec.subfield ?? '(no subfield filter)'
+    console.log(`\n  Search: "${spec.search}" × ${fieldLabel} (cap ${perSearchCap})`)
+
+    for await (const work of paginateAestheticSearch(spec, perSearchCap)) {
+      if (limit > 0 && counts.ingested >= limit) break
+
+      const workId = extractWorkId(work.id)
+      if (!workId || seenWorkIds.has(workId)) continue
+      seenWorkIds.add(workId)
+
+      seen++
+      const result = await ingestWork(work, topicIds)
+      if (result === 'ingested') counts.ingested++
+      else if (result === 'skipped') counts.skipped++
+      else counts.errors++
+
+      if (seen % 100 === 0) {
+        console.log(`    Progress: seen=${seen} ingested=${counts.ingested} skipped=${counts.skipped} errors=${counts.errors}`)
+      }
+    }
+  }
+
+  return counts
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function runBucket(bucket: string, limit: number): Promise<Counts> {
@@ -362,13 +482,16 @@ async function main() {
   const { bucket, limit } = parseArgs()
   console.log(`\n=== OpenAlex Ingestion — bucket: ${bucket}, limit: ${limit || 'all'} ===\n`)
 
-  if (!BUCKETS[bucket]) {
-    console.error(`Unknown bucket: ${bucket}. Use: ${Object.keys(BUCKETS).join(' | ')}`)
+  const validBuckets = [...Object.keys(BUCKETS), 'aesthetic-medicine']
+  if (!validBuckets.includes(bucket)) {
+    console.error(`Unknown bucket: ${bucket}. Use: ${validBuckets.join(' | ')}`)
     await prisma.$disconnect()
     process.exit(1)
   }
 
-  const result = await runBucket(bucket, limit)
+  const result = bucket === 'aesthetic-medicine'
+    ? await runAestheticMedicineBucket(limit)
+    : await runBucket(bucket, limit)
 
   console.log(`\n=== Summary (${bucket}) ===`)
   console.log(`  Ingested : ${result.ingested}`)

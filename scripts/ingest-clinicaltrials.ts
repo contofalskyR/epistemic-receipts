@@ -606,6 +606,134 @@ async function runPhase3Bucket(limit: number, coreTopicIds: string[], dryRun: bo
   return counts
 }
 
+// ── Aesthetic bucket ─────────────────────────────────────────────────────────
+// Aesthetic/cosmetic medicine: combined intervention + condition sweep.
+
+const AESTHETIC_INTERVENTIONS: CaseStudyIntervention[] = [
+  { name: 'onabotulinumtoxinA',                  extraTopicSlugs: ['medicine', 'aesthetics'], cap: 25 },
+  { name: 'abobotulinumtoxinA',                  extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'incobotulinumtoxinA',                 extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'prabotulinumtoxinA',                  extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'hyaluronic acid filler',              extraTopicSlugs: ['medicine', 'aesthetics'], cap: 20 },
+  { name: 'calcium hydroxylapatite',             extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'poly-L-lactic acid',                  extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'polymethylmethacrylate filler',       extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'fat grafting',                        extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'platelet-rich plasma aesthetic',      extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'laser skin resurfacing',              extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'fractional laser',                    extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'intense pulsed light',                extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'chemical peel',                       extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'microneedling',                       extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'radiofrequency skin tightening',      extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'high-intensity focused ultrasound',   extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'cryolipolysis',                       extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'liposuction',                         extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'rhinoplasty',                         extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'blepharoplasty',                      extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'rhytidectomy',                        extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'breast augmentation',                 extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'breast implant',                      extraTopicSlugs: ['medicine', 'aesthetics'], cap: 15 },
+  { name: 'abdominoplasty',                      extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'hair transplant',                     extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'minoxidil',                           extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'finasteride alopecia',                extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'photodynamic therapy skin',           extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+  { name: 'topical retinoid',                    extraTopicSlugs: ['medicine', 'aesthetics'], cap: 10 },
+]
+
+const AESTHETIC_CONDITIONS: PivotalCondition[] = [
+  { condition: 'facial rejuvenation',            extraTopicSlugs: ['aesthetics'], cap: 15 },
+  { condition: 'skin aging',                     extraTopicSlugs: ['aesthetics'], cap: 15 },
+  { condition: 'acne scars',                     extraTopicSlugs: ['aesthetics'], cap: 10 },
+  { condition: 'androgenetic alopecia',          extraTopicSlugs: ['aesthetics'], cap: 15 },
+  { condition: 'melasma',                        extraTopicSlugs: ['aesthetics'], cap: 10 },
+  { condition: 'rosacea',                        extraTopicSlugs: ['aesthetics'], cap: 10 },
+  { condition: 'hyperpigmentation',              extraTopicSlugs: ['aesthetics'], cap: 10 },
+  { condition: 'cellulite',                      extraTopicSlugs: ['aesthetics'], cap: 10 },
+  { condition: 'gynecomastia',                   extraTopicSlugs: ['aesthetics'], cap: 10 },
+]
+
+async function runAestheticBucket(limit: number, coreTopicIds: string[], dryRun: boolean): Promise<Counts> {
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+  const seenNCTs = new Set<string>()
+
+  // Ensure 'aesthetics' topic exists (parent: medicine if present)
+  await ensureTopic('aesthetics', 'Aesthetics & Cosmetic Medicine', 'medicine')
+
+  // ── Intervention sub-sweep ────────────────────────────────────────────────
+  for (const intr of AESTHETIC_INTERVENTIONS) {
+    const cap = limit > 0 ? Math.min(limit, intr.cap) : intr.cap
+    console.log(`\n  Intervention: ${intr.name} (cap ${cap})\n`)
+
+    const studies = await searchTrials({
+      'query.intr': intr.name,
+      'filter.overallStatus': 'COMPLETED',
+      'sort': 'LastUpdatePostDate:desc',
+    }, cap)
+
+    if (studies.length === 0) { console.log(`    No results`); continue }
+    console.log(`    Fetched ${studies.length} trials\n`)
+
+    const extraIds: string[] = []
+    for (const slug of intr.extraTopicSlugs) {
+      const id = await findTopic(slug)
+      if (id) extraIds.push(id)
+      else console.warn(`    Warning: topic '${slug}' not found`)
+    }
+
+    for (const study of studies) {
+      const nctId = study.protocolSection?.identificationModule?.nctId
+      if (nctId && seenNCTs.has(nctId)) continue
+      if (nctId) seenNCTs.add(nctId)
+
+      const result = await ingestTrial(study, extraIds, coreTopicIds, dryRun)
+      if (result === 'ingested') counts.ingested++
+      else if (result === 'skipped') counts.skipped++
+      else counts.errors++
+    }
+  }
+
+  // ── Condition sub-sweep ───────────────────────────────────────────────────
+  for (const cond of AESTHETIC_CONDITIONS) {
+    const wantN = limit > 0 ? Math.min(limit, cond.cap) : cond.cap
+    console.log(`\n  Condition: ${cond.condition} (want ${wantN} with results)\n`)
+
+    const studies = await searchTrials({
+      'query.cond': cond.condition,
+      'filter.overallStatus': 'COMPLETED',
+      'sort': 'LastUpdatePostDate:desc',
+    }, Math.min(wantN * 5, 100))
+
+    const withResults = studies.filter(s => s.hasResults === true).slice(0, wantN)
+    if (withResults.length === 0) {
+      console.log(`    No completed trials with results posted`)
+      continue
+    }
+    console.log(`    ${withResults.length} trials with results\n`)
+
+    const extraIds: string[] = []
+    for (const slug of cond.extraTopicSlugs) {
+      const id = await findTopic(slug)
+      if (id) extraIds.push(id)
+      else console.warn(`    Warning: topic '${slug}' not found`)
+    }
+
+    for (const study of withResults) {
+      const nctId = study.protocolSection?.identificationModule?.nctId
+      if (nctId && seenNCTs.has(nctId)) continue
+      if (nctId) seenNCTs.add(nctId)
+
+      const result = await ingestTrial(study, extraIds, coreTopicIds, dryRun)
+      if (result === 'ingested') counts.ingested++
+      else if (result === 'skipped') counts.skipped++
+      else counts.errors++
+    }
+  }
+
+  return counts
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -630,8 +758,11 @@ async function main() {
     case 'phase3':
       result = await runPhase3Bucket(limit, coreTopicIds, dryRun)
       break
+    case 'aesthetic':
+      result = await runAestheticBucket(limit, coreTopicIds, dryRun)
+      break
     default:
-      console.error(`Unknown bucket: ${bucket}. Use: case-study | pharma | pivotal | phase3`)
+      console.error(`Unknown bucket: ${bucket}. Use: case-study | pharma | pivotal | phase3 | aesthetic`)
       await prisma.$disconnect()
       process.exit(1)
   }
