@@ -8,6 +8,7 @@ import {
   getCongressPartyStats,
   type CongressVoteRow,
 } from "@/lib/stats-queries";
+import VotingAnalysisSection from "./voting-analysis-section";
 
 const MIN_TOTAL = 10;
 
@@ -704,6 +705,8 @@ export default async function StatsPage() {
           )}
         </section>
       )}
+
+      <VotingAnalysisSection />
 
       {/* Cross-Country Topic Comparison */}
       {topicsByLeg.length > 0 && (
