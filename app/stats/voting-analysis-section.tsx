@@ -318,7 +318,13 @@ function UnityLineChart({
 }
 
 export default async function VotingAnalysisSection() {
-  const data = await getVotingAnalysis();
+  let data;
+  try {
+    data = await getVotingAnalysis();
+  } catch (e) {
+    console.error("[VotingAnalysisSection] failed to load:", e);
+    return null;
+  }
   const { euParliament, usCongress } = data;
 
   const euSeries = aggregateSeries(

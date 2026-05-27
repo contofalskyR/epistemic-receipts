@@ -8,6 +8,7 @@ import {
   getCongressPartyStats,
   type CongressVoteRow,
 } from "@/lib/stats-queries";
+import { Suspense } from "react";
 import VotingAnalysisSection from "./voting-analysis-section";
 
 const MIN_TOTAL = 10;
@@ -706,7 +707,9 @@ export default async function StatsPage() {
         </section>
       )}
 
-      {/* VotingAnalysisSection temporarily disabled — debugging */}
+      <Suspense fallback={null}>
+        <VotingAnalysisSection />
+      </Suspense>
 
       {/* Cross-Country Topic Comparison */}
       {topicsByLeg.length > 0 && (
