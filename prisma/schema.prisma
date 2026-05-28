@@ -47,6 +47,7 @@ model Claim {
   suggestedThresholdEvents SuggestedThresholdEvent[]
   thresholdEvents          ThresholdEvent[]
   topics                   ClaimTopic[]
+  bookClaimMatches         BookClaimMatch[]
 
   @@index([academicFieldId])
   @@index([ingestedBy])
@@ -388,4 +389,57 @@ model WikidataLink {
 
   @@index([wikidataQid])
   @@index([matchMethod])
+}
+
+model Book {
+  id          String      @id @default(cuid())
+  title       String
+  author      String?
+  sourceUrl   String?
+  ingestedAt  DateTime    @default(now())
+  chunks      BookChunk[]
+
+  @@index([ingestedAt])
+}
+
+model BookChunk {
+  id             String      @id @default(cuid())
+  bookId         String
+  chapterNum     Int?
+  pageNum        Int?
+  paragraphIndex Int
+  text           String
+
+  book   Book        @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  claims BookClaim[]
+
+  @@index([bookId])
+  @@index([bookId, paragraphIndex])
+}
+
+model BookClaim {
+  id            String           @id @default(cuid())
+  chunkId       String
+  claimText     String
+  positionIndex Int
+
+  chunk   BookChunk        @relation(fields: [chunkId], references: [id], onDelete: Cascade)
+  matches BookClaimMatch[]
+
+  @@index([chunkId])
+  @@index([positionIndex])
+}
+
+model BookClaimMatch {
+  id              String  @id @default(cuid())
+  bookClaimId     String
+  claimId         String
+  similarityScore Float
+  matchType       String // SUPPORTS | CONTRADICTS | RELATED | UNVERIFIED
+
+  bookClaim BookClaim @relation(fields: [bookClaimId], references: [id], onDelete: Cascade)
+  claim     Claim     @relation(fields: [claimId], references: [id])
+
+  @@index([bookClaimId])
+  @@index([claimId])
 }
