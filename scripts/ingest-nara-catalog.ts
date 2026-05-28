@@ -24,6 +24,30 @@ const NARA_BASE = 'https://catalog.archives.gov/api/v2'
 const PAGE_SIZE = 100
 const THROTTLE_MS = 300
 const DRY_RUN_SAMPLE = 20
+const CURSOR_FILE = '.nara-cursor.json'
+
+// ── Cursor / resume state ─────────────────────────────────────────────────────
+
+interface GroupCursor {
+  nextPage: number
+  fetched: number
+  total: number
+  complete: boolean
+}
+
+type CursorState = Record<string, GroupCursor>
+
+function loadCursor(): CursorState {
+  try {
+    return JSON.parse(fs.readFileSync(CURSOR_FILE, 'utf-8')) as CursorState
+  } catch {
+    return {}
+  }
+}
+
+function saveCursor(state: CursorState) {
+  fs.writeFileSync(CURSOR_FILE, JSON.stringify(state, null, 2))
+}
 
 // ── Record group config ────────────────────────────────────────────────────────
 
@@ -104,10 +128,11 @@ function parseArgs() {
   const args = process.argv.slice(2)
 
   const isFull = args.includes('--full')
-  const mode: 'dry-run' | 'full' = isFull ? 'full' : 'dry-run'
+  const isResume = args.includes('--resume')
+  const mode: 'dry-run' | 'full' = (isFull || isResume) ? 'full' : 'dry-run'
 
-  if (isFull && process.env.ALLOW_EDITS !== 'true') {
-    console.error('--full requires ALLOW_EDITS=true environment variable')
+  if ((isFull || isResume) && process.env.ALLOW_EDITS !== 'true') {
+    console.error('--full/--resume requires ALLOW_EDITS=true environment variable')
     process.exit(1)
   }
 
@@ -137,7 +162,13 @@ function parseArgs() {
     recordGroups = RECORD_GROUPS
   }
 
-  return { mode, recordGroups, apiKey }
+  const mpi = args.indexOf('--max-pages')
+  // No hard cap when --full or --resume is passed (unless explicitly set via --max-pages)
+  const maxPages: number | null = mpi !== -1
+    ? parseInt(args[mpi + 1] ?? '100', 10)
+    : (isFull || isResume ? null : 100)
+
+  return { mode, recordGroups, apiKey, maxPages, isResume }
 }
 
 // ── Rate limiting + HTTP ──────────────────────────────────────────────────────
@@ -223,37 +254,115 @@ function extractHitsAndTotal(data: NaraRawResponse): { records: NaraRecord[]; to
 }
 
 // ── Fetch items for one record group (paginated) ──────────────────────────────
+//
+// search_after / cursor-based resume: the cursor file (.nara-cursor.json) tracks
+// the last completed page number per record group. On --resume, each group starts
+// from its saved nextPage. maxPages=null removes the hard cap for full/resume runs.
 
+async function fetchRecordGroupDryRun(
+  rg: RecordGroupDef,
+  apiKey: string,
+): Promise<{ records: NaraRecord[]; total: number }> {
+  const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${DRY_RUN_SAMPLE}&recordGroupNumber=${rg.number}`
+  const data = await naraFetch(`${baseUrl}&page=1`, apiKey)
+  const { records, total } = extractHitsAndTotal(data)
+  return { records: records.slice(0, DRY_RUN_SAMPLE), total }
+}
+
+// Fetches and writes one record group page-by-page, saving cursor state after each page.
+async function fetchAndWriteGroup(
+  rg: RecordGroupDef,
+  apiKey: string,
+  topicIds: string[],
+  cursorState: CursorState,
+  maxPages: number | null,
+): Promise<{ total: number; counts: Counts }> {
+  const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${PAGE_SIZE}&recordGroupNumber=${rg.number}`
+
+  const saved = cursorState[rg.number]
+  let page = saved?.nextPage ?? 1
+  let total = saved?.total ?? 0
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+
+  if (saved?.complete) {
+    console.log(`  RG ${rg.number}: already complete (${saved.fetched} fetched) — skipping`)
+    return { total: saved.total, counts }
+  }
+
+  console.log(`  RG ${rg.number}: starting from page ${page} (fetched so far: ${saved?.fetched ?? 0})`)
+
+  for (;;) {
+    const data = await naraFetch(`${baseUrl}&page=${page}`, apiKey)
+    const { records, total: pageTotal } = extractHitsAndTotal(data)
+    if (total === 0) total = pageTotal
+
+    for (const rec of records) {
+      const candidate = buildCandidate(rec, rg)
+      if (!candidate) { counts.errors++; continue }
+      try {
+        const result = await prisma.$transaction(
+          async (tx) => writeRow(tx, candidate, topicIds),
+          { timeout: 30000 },
+        )
+        if (result === 'ingested') counts.ingested++
+        else counts.skipped++
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        console.error(`  Failed: ${candidate.externalId} — ${msg}`)
+        counts.errors++
+      }
+    }
+
+    const fetched = (saved?.fetched ?? 0) + (page - (saved?.nextPage ?? 1) + 1) * records.length
+    // Update cursor after each page
+    cursorState[rg.number] = {
+      nextPage: page + 1,
+      fetched,
+      total,
+      complete: records.length < PAGE_SIZE,
+    }
+    saveCursor(cursorState)
+
+    console.log(`    RG ${rg.number} p${page}: +${records.length} records, total ingested ${counts.ingested}, skipped ${counts.skipped}`)
+
+    if (records.length < PAGE_SIZE) {
+      console.log(`  RG ${rg.number}: complete`)
+      break
+    }
+    if (maxPages !== null && page >= maxPages) {
+      console.warn(`  RG ${rg.number}: reached page limit (${maxPages}); use --resume to continue`)
+      break
+    }
+    page++
+  }
+
+  return { total, counts }
+}
+
+// Legacy: collect all records in memory (used for dry-run candidate display only)
 async function fetchRecordGroup(
   rg: RecordGroupDef,
   apiKey: string,
   dryRun: boolean,
+  maxPages: number | null = 100,
 ): Promise<{ records: NaraRecord[]; total: number }> {
-  const limit = dryRun ? DRY_RUN_SAMPLE : PAGE_SIZE
-  // v2 API params: levelOfDescription=item, limit=N, page=N (1-based), recordGroupNumber=N
-  const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${limit}&recordGroupNumber=${rg.number}`
-
-  if (dryRun) {
-    const data = await naraFetch(`${baseUrl}&page=1`, apiKey)
-    const { records, total } = extractHitsAndTotal(data)
-    return { records: records.slice(0, DRY_RUN_SAMPLE), total }
-  }
+  if (dryRun) return fetchRecordGroupDryRun(rg, apiKey)
 
   const all: NaraRecord[] = []
   let page = 1
   let total = 0
+  const effectiveMax = maxPages ?? Infinity
 
   for (;;) {
+    const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${PAGE_SIZE}&recordGroupNumber=${rg.number}`
     const data = await naraFetch(`${baseUrl}&page=${page}`, apiKey)
     const { records, total: pageTotal } = extractHitsAndTotal(data)
     if (total === 0) total = pageTotal
     all.push(...records)
     console.log(`    RG ${rg.number}: fetched ${all.length}/${total}`)
     if (records.length < PAGE_SIZE) break
-    // NARA v2 search-after for deep pagination (> 10k results)
-    // For now, cap at 10k pages; use searchAfter if needed in future
-    if (page >= 100) {
-      console.warn(`    RG ${rg.number}: reached 100-page limit; may not have all records`)
+    if (page >= effectiveMax) {
+      console.warn(`    RG ${rg.number}: reached ${effectiveMax}-page limit; may not have all records`)
       break
     }
     page++
@@ -452,11 +561,13 @@ async function writeRow(
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, recordGroups, apiKey } = parseArgs()
+  const { mode, recordGroups, apiKey, maxPages, isResume } = parseArgs()
 
   console.log(`\n── Pipeline: NARA Catalog (${INGESTED_BY}) ────────────────────────────`)
-  console.log(`Mode: ${mode} | Record groups: ${recordGroups.map(rg => `RG ${rg.number}`).join(', ')}`)
+  console.log(`Mode: ${mode}${isResume ? ' (resume)' : ''} | Record groups: ${recordGroups.map(rg => `RG ${rg.number}`).join(', ')}`)
   console.log(`API key: ${apiKey.slice(0, 4)}${'*'.repeat(Math.max(0, apiKey.length - 4))}`)
+  if (maxPages === null) console.log('Page cap: none (full run)')
+  else console.log(`Page cap: ${maxPages} pages per group`)
 
   // Step 1: Topics (skipped in dry-run)
   let topicMap = new Map<string, { rootId: string; rgId: string }>()
@@ -467,36 +578,29 @@ async function main() {
     console.log('\nStep 1: Skipping topic DB writes (dry-run mode).')
   }
 
-  // Step 2: Fetch items from NARA Catalog API
-  console.log('\nStep 2: Fetching items from NARA Catalog API v2...')
-  const allCandidates: CandidateRecord[] = []
-  const rgBreakdown = new Map<string, { fetched: number; total: number; candidates: number }>()
-  let skippedMalformed = 0
-
-  for (const rg of recordGroups) {
-    console.log(`  Fetching RG ${rg.number} — ${rg.name}...`)
-    const { records, total } = await fetchRecordGroup(rg, apiKey, mode === 'dry-run')
-    console.log(`    Retrieved ${records.length} records (API total: ${total})`)
-
-    let candidatesThisRg = 0
-    for (const rec of records) {
-      const candidate = buildCandidate(rec, rg)
-      if (!candidate) { skippedMalformed++; continue }
-      allCandidates.push(candidate)
-      candidatesThisRg++
-    }
-    rgBreakdown.set(rg.number, { fetched: records.length, total, candidates: candidatesThisRg })
-  }
-
-  console.log(`\nTotal candidates: ${allCandidates.length} (skipped malformed: ${skippedMalformed})`)
-  console.log('Per-record-group breakdown:')
-  for (const [num, { fetched, total, candidates }] of rgBreakdown) {
-    const rg = RG_BY_NUMBER.get(num)!
-    console.log(`  RG ${num}: fetched ${fetched}, API total ${total}, candidates ${candidates} — ${rg.name}`)
-  }
-
   // ── Dry-run ────────────────────────────────────────────────────────────────
   if (mode === 'dry-run') {
+    console.log('\nStep 2: Fetching sample items from NARA Catalog API v2...')
+    const allCandidates: CandidateRecord[] = []
+    const rgBreakdown = new Map<string, { fetched: number; total: number; candidates: number }>()
+    let skippedMalformed = 0
+
+    for (const rg of recordGroups) {
+      console.log(`  Fetching RG ${rg.number} — ${rg.name}...`)
+      const { records, total } = await fetchRecordGroupDryRun(rg, apiKey)
+      console.log(`    Retrieved ${records.length} records (API total: ${total})`)
+
+      let candidatesThisRg = 0
+      for (const rec of records) {
+        const candidate = buildCandidate(rec, rg)
+        if (!candidate) { skippedMalformed++; continue }
+        allCandidates.push(candidate)
+        candidatesThisRg++
+      }
+      rgBreakdown.set(rg.number, { fetched: records.length, total, candidates: candidatesThisRg })
+    }
+
+    console.log(`\nTotal candidates: ${allCandidates.length} (skipped malformed: ${skippedMalformed})`)
     console.log('\nStep 3: Writing dry-run sample (no DB writes)...')
 
     const sample = allCandidates.map(r => ({
@@ -539,46 +643,38 @@ async function main() {
     return
   }
 
-  // ── Full run ───────────────────────────────────────────────────────────────
-  console.log(`\nStep 3: Full ingestion — ${allCandidates.length} candidates (per-row transactions)...`)
-  const startTime = Date.now()
-  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
-  const rgCounts = new Map<string, Counts>(
-    RECORD_GROUPS.map(rg => [rg.number, { ingested: 0, skipped: 0, errors: 0 }]),
-  )
+  // ── Full run (with or without --resume) ───────────────────────────────────
+  // Fetch and write group-by-group, page-by-page, saving cursor after each page.
+  // Use --resume to pick up where a previous run left off (reads .nara-cursor.json).
+  // Use --full to start fresh with no page cap.
 
-  for (const rec of allCandidates) {
-    try {
-      const topics = topicMap.get(rec.recordGroup)
-      const topicIds = topics ? [topics.rootId, topics.rgId] : []
-      const result = await prisma.$transaction(
-        async (tx) => writeRow(tx, rec, topicIds),
-        { timeout: 30000 },
-      )
-      const c = rgCounts.get(rec.recordGroup) ?? { ingested: 0, skipped: 0, errors: 0 }
-      if (result === 'ingested') { counts.ingested++; c.ingested++ }
-      else { counts.skipped++; c.skipped++ }
+  const cursorState: CursorState = isResume ? loadCursor() : {}
 
-      if ((counts.ingested + counts.skipped) % 200 === 0 && counts.ingested + counts.skipped > 0) {
-        console.log(`  Progress: ${counts.ingested + counts.skipped}/${allCandidates.length} — RG ${rec.recordGroup} — ingested ${counts.ingested}, skipped ${counts.skipped}`)
-      }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error(`  Failed: ${rec.externalId} — ${msg}`)
-      counts.errors++
+  if (isResume) {
+    console.log(`\nResume mode: loaded cursor from ${CURSOR_FILE}`)
+    for (const [rg, c] of Object.entries(cursorState)) {
+      console.log(`  RG ${rg}: nextPage=${c.nextPage}, fetched=${c.fetched}, total=${c.total}, complete=${c.complete}`)
     }
+  }
+
+  console.log('\nStep 2: Full ingestion — streaming page-by-page with cursor checkpointing...')
+  const startTime = Date.now()
+  const totals: Counts = { ingested: 0, skipped: 0, errors: 0 }
+
+  for (const rg of recordGroups) {
+    console.log(`\n  Processing RG ${rg.number} — ${rg.name}`)
+    const topics = topicMap.get(rg.number)
+    const topicIds = topics ? [topics.rootId, topics.rgId] : []
+    const { counts } = await fetchAndWriteGroup(rg, apiKey, topicIds, cursorState, maxPages)
+    totals.ingested += counts.ingested
+    totals.skipped += counts.skipped
+    totals.errors += counts.errors
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
   console.log(`\nIngestion complete in ${elapsed}s`)
-  console.log(`  Ingested: ${counts.ingested} | Skipped: ${counts.skipped} | Errors: ${counts.errors}`)
-
-  console.log('\nPer-record-group results:')
-  for (const [num, c] of rgCounts) {
-    if (c.ingested + c.skipped + c.errors > 0) {
-      console.log(`  RG ${num}: ingested ${c.ingested}, skipped ${c.skipped}, errors ${c.errors}`)
-    }
-  }
+  console.log(`  Ingested: ${totals.ingested} | Skipped: ${totals.skipped} | Errors: ${totals.errors}`)
+  console.log(`  Cursor checkpoint: ${CURSOR_FILE}`)
 
   console.log('\nPost-ingestion DB verification...')
   const dbSources = await prisma.source.count({ where: { ingestedBy: INGESTED_BY } })

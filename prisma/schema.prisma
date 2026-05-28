@@ -48,6 +48,7 @@ model Claim {
   thresholdEvents          ThresholdEvent[]
   topics                   ClaimTopic[]
   bookClaimMatches         BookClaimMatch[]
+  historicalEvents         ClaimHistoricalEvent[]
 
   @@index([academicFieldId])
   @@index([ingestedBy])
@@ -441,5 +442,32 @@ model BookClaimMatch {
   claim     Claim     @relation(fields: [claimId], references: [id])
 
   @@index([bookClaimId])
+  @@index([claimId])
+}
+
+model HistoricalEvent {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  startDate   DateTime?
+  endDate     DateTime?
+  category    String?  // DIPLOMATIC | INTELLIGENCE | MILITARY | LEGISLATIVE
+  createdAt   DateTime @default(now())
+  claims      ClaimHistoricalEvent[]
+
+  @@index([category])
+  @@index([startDate])
+}
+
+model ClaimHistoricalEvent {
+  claimId           String
+  historicalEventId String
+  claim             Claim           @relation(fields: [claimId], references: [id])
+  event             HistoricalEvent @relation(fields: [historicalEventId], references: [id])
+  createdAt         DateTime        @default(now())
+
+  @@id([claimId, historicalEventId])
+  @@index([historicalEventId])
   @@index([claimId])
 }
