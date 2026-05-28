@@ -1,12 +1,11 @@
 // Book Analysis Pipeline — ingest a plain-text book, extract per-paragraph
-// claims via Claude Haiku, and cross-reference each book claim against the
-// canonical Claim table.
+// claims via the `claude` CLI (uses your existing subscription, no API key needed),
+// and cross-reference each book claim against the canonical Claim table.
 //
 // Run: npx tsx scripts/ingest-book.ts <path> <title> [author]
 //
 // Required env (read from .env.local or process env):
-//   DATABASE_URL          — Neon Postgres (Prisma)
-//   ANTHROPIC_API_KEY     — Anthropic Messages API (claude-haiku-4-5)
+//   DATABASE_URL — Neon Postgres (Prisma)
 //
 // Matching is a placeholder text-contains query against Claim.text — every
 // stored match gets matchType=RELATED and similarityScore=0.7 until the
@@ -15,6 +14,7 @@
 import 'dotenv/config'
 import * as fs from 'node:fs'
 import * as path from 'node:path'
+import { execSync } from 'node:child_process'
 import { PrismaClient } from '@prisma/client'
 
 // Manually load .env.local so the bare `npx tsx scripts/ingest-book.ts ...`
@@ -43,8 +43,6 @@ loadEnvLocal()
 
 const prisma = new PrismaClient()
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
-const MODEL = 'claude-haiku-4-5'
 const BATCH_SIZE = 20
 const MAX_MATCHES_PER_CLAIM = 3
 const PLACEHOLDER_SIMILARITY = 0.7
@@ -63,51 +61,22 @@ function parseBookText(raw: string): ParsedChunk[] {
     .map((text, paragraphIndex) => ({ paragraphIndex, text }))
 }
 
-interface AnthropicResponse {
-  content?: Array<{ type: string; text?: string }>
-  error?: { message: string }
-}
-
-async function extractClaims(chunkText: string): Promise<string[]> {
+function extractClaims(chunkText: string): string[] {
   const prompt =
     `Extract all discrete, verifiable factual claims from this passage. ` +
     `Return ONLY a JSON array of strings, each string being one atomic factual claim. ` +
     `Example: ["The Earth orbits the Sun", "Water boils at 100°C"]. ` +
-    `Passage: ${chunkText}`
-
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': ANTHROPIC_API_KEY!,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: 1024,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  })
-
-  if (!res.ok) {
-    const body = await res.text()
-    throw new Error(`Anthropic API ${res.status}: ${body.slice(0, 300)}`)
-  }
-
-  const data = (await res.json()) as AnthropicResponse
-  if (data.error) throw new Error(`Anthropic error: ${data.error.message}`)
-
-  const text = (data.content ?? [])
-    .filter((b) => b.type === 'text' && typeof b.text === 'string')
-    .map((b) => b.text as string)
-    .join('')
-
-  const arrayStart = text.indexOf('[')
-  const arrayEnd = text.lastIndexOf(']')
-  if (arrayStart === -1 || arrayEnd === -1 || arrayEnd <= arrayStart) return []
+    `Passage: ${chunkText.replace(/'/g, "'\\''")}`
 
   try {
-    const parsed: unknown = JSON.parse(text.slice(arrayStart, arrayEnd + 1))
+    const output = execSync(`claude --print '${prompt}'`, {
+      encoding: 'utf-8',
+      timeout: 60000,
+    })
+    const arrayStart = output.indexOf('[')
+    const arrayEnd = output.lastIndexOf(']')
+    if (arrayStart === -1 || arrayEnd === -1 || arrayEnd <= arrayStart) return []
+    const parsed: unknown = JSON.parse(output.slice(arrayStart, arrayEnd + 1))
     if (!Array.isArray(parsed)) return []
     return parsed
       .filter((s): s is string => typeof s === 'string')
@@ -152,11 +121,6 @@ async function findCandidateMatches(claimText: string): Promise<string[]> {
 }
 
 async function main() {
-  if (!ANTHROPIC_API_KEY) {
-    console.error('ANTHROPIC_API_KEY is required (set in .env.local or environment).')
-    process.exit(1)
-  }
-
   const [rawFilePath, title, author] = process.argv.slice(2)
   if (!rawFilePath || !title) {
     console.error('Usage: npx tsx scripts/ingest-book.ts <path> <title> [author]')
@@ -204,19 +168,18 @@ async function main() {
         `extracting claims via ${MODEL}…`,
     )
 
-    const batchExtractions = await Promise.all(
-      batch.map(async (ch) => {
-        try {
-          const claims = await extractClaims(ch.text)
-          return { chunkId: ch.id, claims }
-        } catch (err) {
-          console.warn(
-            `  chunk ${ch.id} (¶${ch.paragraphIndex}) failed: ${(err as Error).message}`,
-          )
-          return { chunkId: ch.id, claims: [] as string[] }
-        }
-      }),
-    )
+    const batchExtractions: Array<{ chunkId: string; claims: string[] }> = []
+    for (const ch of batch) {
+      try {
+        const claims = extractClaims(ch.text)
+        batchExtractions.push({ chunkId: ch.id, claims })
+      } catch (err) {
+        console.warn(
+          `  chunk ${ch.id} (¶${ch.paragraphIndex}) failed: ${(err as Error).message}`,
+        )
+        batchExtractions.push({ chunkId: ch.id, claims: [] })
+      }
+    }
 
     for (const { chunkId, claims } of batchExtractions) {
       for (const claimText of claims) {
