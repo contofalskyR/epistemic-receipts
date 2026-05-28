@@ -6,12 +6,15 @@
 // Scope: Unrestricted archival items from high-value record groups (CIA, State, OSD, Church Committee, JFK ARRB).
 // Run: npx tsx scripts/ingest-nara-catalog.ts --dry-run (default; requires NARA_API_KEY)
 //      npx tsx scripts/ingest-nara-catalog.ts --full [--record-group 263]  (requires ALLOW_EDITS=true + NARA_API_KEY)
+//      npx tsx scripts/ingest-nara-catalog.ts --full --record-group 59 --year-start 1940 --year-end 1945 --dry-run
 //
 // API notes discovered during integration:
 //   - v2 params differ from v1: levelOfDescription=item (not resultTypes), limit= (not rows=), page= (not offset=)
 //   - v2 response wraps Elasticsearch body: data.body.hits.hits[] or data.opaResponse.results.result[] (v1 compat)
 //   - API key goes in x-api-key header per swagger docs
 //   - CloudFront at catalog.archives.gov routes /api/v2/swagger* to backend; search endpoints also require the key
+//   - NARA API v2 hard-caps at 10,000 results per query (page 1–100 × 100/page). Large RGs (RG59 ~76k, RG330 ~307k)
+//     must be sliced by date range. Year-range slicing via dateRangeStart/dateRangeEnd bypasses the cap.
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
@@ -35,6 +38,7 @@ interface GroupCursor {
   complete: boolean
 }
 
+// Cursor key format: "RG_NUMBER:YEAR_START-YEAR_END" for sliced runs, or "RG_NUMBER" for legacy full-RG runs.
 type CursorState = Record<string, GroupCursor>
 
 function loadCursor(): CursorState {
@@ -64,6 +68,10 @@ const RECORD_GROUPS: RecordGroupDef[] = [
   { number: '330', name: 'Records of the Office of the Secretary of Defense',       topicSlug: 'nara-rg-330-osd',   domain: 'defense'      },
   { number: '128', name: 'Records of Joint Committees of Congress',                 topicSlug: 'nara-rg-128-jcc',   domain: 'government'   },
   { number: '148', name: 'Records of the Assassination Records Review Board (JFK)', topicSlug: 'nara-rg-148-arrb',  domain: 'government'   },
+  { number: '65',  name: 'Records of the Federal Bureau of Investigation (FBI)',    topicSlug: 'nara-rg-65-fbi',    domain: 'intelligence' },
+  { number: '226', name: 'Records of the Office of Strategic Services (OSS)',       topicSlug: 'nara-rg-226-oss',   domain: 'intelligence' },
+  { number: '218', name: 'Records of the Joint Chiefs of Staff',                    topicSlug: 'nara-rg-218-jcs',   domain: 'defense'      },
+  { number: '84',  name: 'Records of Foreign Service Posts of the Department of State', topicSlug: 'nara-rg-84-fsp', domain: 'diplomacy' },
 ]
 
 const RG_BY_NUMBER = new Map(RECORD_GROUPS.map(rg => [rg.number, rg]))
@@ -129,10 +137,12 @@ function parseArgs() {
 
   const isFull = args.includes('--full')
   const isResume = args.includes('--resume')
-  const mode: 'dry-run' | 'full' = (isFull || isResume) ? 'full' : 'dry-run'
+  const isDryRunFlag = args.includes('--dry-run')
+  // --dry-run always wins; --full/--resume without --dry-run writes to DB
+  const mode: 'dry-run' | 'full' = isDryRunFlag ? 'dry-run' : ((isFull || isResume) ? 'full' : 'dry-run')
 
-  if ((isFull || isResume) && process.env.ALLOW_EDITS !== 'true') {
-    console.error('--full/--resume requires ALLOW_EDITS=true environment variable')
+  if ((isFull || isResume) && !isDryRunFlag && process.env.ALLOW_EDITS !== 'true') {
+    console.error('--full/--resume (without --dry-run) requires ALLOW_EDITS=true environment variable')
     process.exit(1)
   }
 
@@ -168,7 +178,12 @@ function parseArgs() {
     ? parseInt(args[mpi + 1] ?? '100', 10)
     : (isFull || isResume ? null : 100)
 
-  return { mode, recordGroups, apiKey, maxPages, isResume }
+  const ysi = args.indexOf('--year-start')
+  const yei = args.indexOf('--year-end')
+  const yearStart: number | null = ysi !== -1 ? parseInt(args[ysi + 1] ?? '0', 10) : null
+  const yearEnd: number | null = yei !== -1 ? parseInt(args[yei + 1] ?? '0', 10) : null
+
+  return { mode, recordGroups, apiKey, maxPages, isResume, isFull, yearStart, yearEnd }
 }
 
 // ── Rate limiting + HTTP ──────────────────────────────────────────────────────
@@ -221,6 +236,50 @@ async function naraFetch(url: string, apiKey: string, retries = 3): Promise<Nara
   throw new Error(`Failed after ${retries} retries: ${url}`)
 }
 
+// ── Year-slice helpers ────────────────────────────────────────────────────────
+
+const YEAR_SLICE_OVERFLOW = 9500  // treat slice as too large if total >= this
+const DEFAULT_YEAR_START = 1900
+const DEFAULT_WINDOW = 5  // 5-year slices by default
+
+interface YearSlice { start: number; end: number }
+
+function generateSlices(yearStart: number, yearEnd: number, windowSize: number): YearSlice[] {
+  const slices: YearSlice[] = []
+  let y = yearStart
+  while (y <= yearEnd) {
+    slices.push({ start: y, end: Math.min(y + windowSize - 1, yearEnd) })
+    y += windowSize
+  }
+  return slices
+}
+
+async function sliceTotal(rg: RecordGroupDef, apiKey: string, slice: YearSlice): Promise<number> {
+  const url = `${NARA_BASE}/records/search?levelOfDescription=item&limit=1&recordGroupNumber=${rg.number}` +
+    `&dateRangeStart=${slice.start}-01-01&dateRangeEnd=${slice.end}-12-31&page=1`
+  const data = await naraFetch(url, apiKey)
+  const { total } = extractHitsAndTotal(data)
+  return total
+}
+
+// Resolves initial 5-year slices, expanding any that exceed YEAR_SLICE_OVERFLOW into 1-year slices.
+async function resolveSlices(rg: RecordGroupDef, apiKey: string, yearStart: number, yearEnd: number): Promise<YearSlice[]> {
+  const initial = generateSlices(yearStart, yearEnd, DEFAULT_WINDOW)
+  const resolved: YearSlice[] = []
+
+  for (const slice of initial) {
+    const total = await sliceTotal(rg, apiKey, slice)
+    if (total >= YEAR_SLICE_OVERFLOW && slice.end > slice.start) {
+      console.log(`  RG ${rg.number} [${slice.start}–${slice.end}]: ${total} results — expanding to 1-year slices`)
+      resolved.push(...generateSlices(slice.start, slice.end, 1))
+    } else {
+      resolved.push(slice)
+    }
+  }
+
+  return resolved
+}
+
 // ── Parse NARA API response ────────────────────────────────────────────────────
 // v2 returns Elasticsearch format: { body: { hits: { hits: [...], total: { value: N } } } }
 // v1-compat may return: { opaResponse: { results: { result: [...], total: N } } }
@@ -269,27 +328,32 @@ async function fetchRecordGroupDryRun(
   return { records: records.slice(0, DRY_RUN_SAMPLE), total }
 }
 
-// Fetches and writes one record group page-by-page, saving cursor state after each page.
-async function fetchAndWriteGroup(
+// Fetches and writes one slice (year range) page-by-page, saving cursor state after each page.
+async function fetchAndWriteSlice(
   rg: RecordGroupDef,
   apiKey: string,
   topicIds: string[],
   cursorState: CursorState,
   maxPages: number | null,
+  slice: YearSlice,
+  dryRun = false,
 ): Promise<{ total: number; counts: Counts }> {
-  const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${PAGE_SIZE}&recordGroupNumber=${rg.number}`
+  const sliceKey = `${rg.number}:${slice.start}-${slice.end}`
+  const dateParams = `&dateRangeStart=${slice.start}-01-01&dateRangeEnd=${slice.end}-12-31`
+  const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${PAGE_SIZE}&recordGroupNumber=${rg.number}${dateParams}`
 
-  const saved = cursorState[rg.number]
+  const saved = cursorState[sliceKey]
   let page = saved?.nextPage ?? 1
   let total = saved?.total ?? 0
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
 
   if (saved?.complete) {
-    console.log(`  RG ${rg.number}: already complete (${saved.fetched} fetched) — skipping`)
+    console.log(`  RG ${rg.number} [${slice.start}–${slice.end}]: already complete (${saved.fetched} fetched) — skipping`)
     return { total: saved.total, counts }
   }
 
-  console.log(`  RG ${rg.number}: starting from page ${page} (fetched so far: ${saved?.fetched ?? 0})`)
+  const label = `RG ${rg.number} [${slice.start}–${slice.end}]`
+  console.log(`  ${label}: starting from page ${page}${dryRun ? ' (dry-run — no writes)' : ''}`)
 
   for (;;) {
     const data = await naraFetch(`${baseUrl}&page=${page}`, apiKey)
@@ -299,6 +363,7 @@ async function fetchAndWriteGroup(
     for (const rec of records) {
       const candidate = buildCandidate(rec, rg)
       if (!candidate) { counts.errors++; continue }
+      if (dryRun) { counts.ingested++; continue }
       try {
         const result = await prisma.$transaction(
           async (tx) => writeRow(tx, candidate, topicIds),
@@ -313,30 +378,60 @@ async function fetchAndWriteGroup(
       }
     }
 
-    const fetched = (saved?.fetched ?? 0) + (page - (saved?.nextPage ?? 1) + 1) * records.length
-    // Update cursor after each page
-    cursorState[rg.number] = {
-      nextPage: page + 1,
-      fetched,
-      total,
-      complete: records.length < PAGE_SIZE,
+    const pageFetched = (saved?.fetched ?? 0) + (page - (saved?.nextPage ?? 1) + 1) * records.length
+    if (!dryRun) {
+      cursorState[sliceKey] = {
+        nextPage: page + 1,
+        fetched: pageFetched,
+        total,
+        complete: records.length < PAGE_SIZE,
+      }
+      saveCursor(cursorState)
     }
-    saveCursor(cursorState)
 
-    console.log(`    RG ${rg.number} p${page}: +${records.length} records, total ingested ${counts.ingested}, skipped ${counts.skipped}`)
+    console.log(`    ${label} p${page}: +${records.length} records (total in slice: ${total}), ingested ${counts.ingested}, skipped ${counts.skipped}`)
 
     if (records.length < PAGE_SIZE) {
-      console.log(`  RG ${rg.number}: complete`)
+      console.log(`  ${label}: complete`)
       break
     }
     if (maxPages !== null && page >= maxPages) {
-      console.warn(`  RG ${rg.number}: reached page limit (${maxPages}); use --resume to continue`)
+      console.warn(`  ${label}: reached page limit (${maxPages}); use --resume to continue`)
       break
     }
     page++
   }
 
   return { total, counts }
+}
+
+// Fetches and writes one record group using year-range slicing to bypass the 10k result API cap.
+async function fetchAndWriteGroup(
+  rg: RecordGroupDef,
+  apiKey: string,
+  topicIds: string[],
+  cursorState: CursorState,
+  maxPages: number | null,
+  yearStart: number,
+  yearEnd: number,
+  dryRun = false,
+): Promise<{ counts: Counts }> {
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+
+  console.log(`\n  Processing RG ${rg.number} — ${rg.name}`)
+  console.log(`  Year range: ${yearStart}–${yearEnd} | resolving slices...`)
+
+  const slices = await resolveSlices(rg, apiKey, yearStart, yearEnd)
+  console.log(`  Slices: ${slices.length} (${slices.map(s => `${s.start}–${s.end}`).join(', ')})`)
+
+  for (const slice of slices) {
+    const { counts: sc } = await fetchAndWriteSlice(rg, apiKey, topicIds, cursorState, maxPages, slice, dryRun)
+    counts.ingested += sc.ingested
+    counts.skipped += sc.skipped
+    counts.errors += sc.errors
+  }
+
+  return { counts }
 }
 
 // Legacy: collect all records in memory (used for dry-run candidate display only)
@@ -561,13 +656,18 @@ async function writeRow(
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, recordGroups, apiKey, maxPages, isResume } = parseArgs()
+  const { mode, recordGroups, apiKey, maxPages, isResume, isFull, yearStart: yearStartArg, yearEnd: yearEndArg } = parseArgs()
+
+  const currentYear = new Date().getFullYear()
+  const yearStart = yearStartArg ?? DEFAULT_YEAR_START
+  const yearEnd = yearEndArg ?? currentYear
 
   console.log(`\n── Pipeline: NARA Catalog (${INGESTED_BY}) ────────────────────────────`)
   console.log(`Mode: ${mode}${isResume ? ' (resume)' : ''} | Record groups: ${recordGroups.map(rg => `RG ${rg.number}`).join(', ')}`)
   console.log(`API key: ${apiKey.slice(0, 4)}${'*'.repeat(Math.max(0, apiKey.length - 4))}`)
+  console.log(`Year range: ${yearStart}–${yearEnd} | Slice mode: year-range (5-yr windows, auto-narrow to 1-yr if >9500)`)
   if (maxPages === null) console.log('Page cap: none (full run)')
-  else console.log(`Page cap: ${maxPages} pages per group`)
+  else console.log(`Page cap: ${maxPages} pages per slice`)
 
   // Step 1: Topics (skipped in dry-run)
   let topicMap = new Map<string, { rootId: string; rgId: string }>()
@@ -580,6 +680,29 @@ async function main() {
 
   // ── Dry-run ────────────────────────────────────────────────────────────────
   if (mode === 'dry-run') {
+    // If --full or --year-start/--year-end is passed alongside --dry-run, use the year-slice path
+    // so the slicing logic is exercised without DB writes.
+    const useSlicePath = isFull || yearStartArg !== null || yearEndArg !== null
+
+    if (useSlicePath) {
+      console.log('\nStep 2: Dry-run with year-range slicing (no DB writes)...')
+      const cursorState: CursorState = {}
+      const totals: Counts = { ingested: 0, skipped: 0, errors: 0 }
+
+      for (const rg of recordGroups) {
+        const { counts } = await fetchAndWriteGroup(rg, apiKey, [], cursorState, maxPages, yearStart, yearEnd, /* dryRun= */ true)
+        totals.ingested += counts.ingested
+        totals.skipped += counts.skipped
+        totals.errors += counts.errors
+      }
+
+      console.log(`\nDry-run complete.`)
+      console.log(`  Would ingest: ${totals.ingested} | Errors: ${totals.errors}`)
+      console.log('\nSTOP — awaiting explicit go-ahead from Robert before full run.')
+      return
+    }
+
+    // Simple dry-run: just fetch a small sample to verify API connectivity
     console.log('\nStep 2: Fetching sample items from NARA Catalog API v2...')
     const allCandidates: CandidateRecord[] = []
     const rgBreakdown = new Map<string, { fetched: number; total: number; candidates: number }>()
@@ -644,7 +767,8 @@ async function main() {
   }
 
   // ── Full run (with or without --resume) ───────────────────────────────────
-  // Fetch and write group-by-group, page-by-page, saving cursor after each page.
+  // Uses year-range slicing to bypass the 10,000-result API cap.
+  // Each RG is divided into 5-year windows; windows with >9500 results are split into 1-year windows.
   // Use --resume to pick up where a previous run left off (reads .nara-cursor.json).
   // Use --full to start fresh with no page cap.
 
@@ -652,20 +776,19 @@ async function main() {
 
   if (isResume) {
     console.log(`\nResume mode: loaded cursor from ${CURSOR_FILE}`)
-    for (const [rg, c] of Object.entries(cursorState)) {
-      console.log(`  RG ${rg}: nextPage=${c.nextPage}, fetched=${c.fetched}, total=${c.total}, complete=${c.complete}`)
+    for (const [key, c] of Object.entries(cursorState)) {
+      console.log(`  ${key}: nextPage=${c.nextPage}, fetched=${c.fetched}, total=${c.total}, complete=${c.complete}`)
     }
   }
 
-  console.log('\nStep 2: Full ingestion — streaming page-by-page with cursor checkpointing...')
+  console.log('\nStep 2: Full ingestion — year-range slicing with cursor checkpointing...')
   const startTime = Date.now()
   const totals: Counts = { ingested: 0, skipped: 0, errors: 0 }
 
   for (const rg of recordGroups) {
-    console.log(`\n  Processing RG ${rg.number} — ${rg.name}`)
     const topics = topicMap.get(rg.number)
     const topicIds = topics ? [topics.rootId, topics.rgId] : []
-    const { counts } = await fetchAndWriteGroup(rg, apiKey, topicIds, cursorState, maxPages)
+    const { counts } = await fetchAndWriteGroup(rg, apiKey, topicIds, cursorState, maxPages, yearStart, yearEnd)
     totals.ingested += counts.ingested
     totals.skipped += counts.skipped
     totals.errors += counts.errors

@@ -33,6 +33,22 @@ const EVENT_PATTERNS: EventPattern[] = [
     slug: 'cold-war',
     keywords: /\bcold\s+war\b|\bsoviet\b|\bussr\b|\bkgb\b|\bnato\b|\bnuclear\b|\bcontainment\b|\bcommunis[mt]\b/i,
   },
+  {
+    slug: 'cointelpro',
+    keywords: /\bcointelpro\b|\bcounterinte[l]?ligence\s+program\b/i,
+  },
+  {
+    slug: 'world-war-ii',
+    keywords: /\bworld\s+war\s+i{2}\b|\bwwii\b|\bww2\b|\bnazi\b|\bpacific\s+(theater|war|front)\b|\bnormandy\b|\bhiroshima\b|\batomic\s+bomb\b/i,
+  },
+  {
+    slug: 'korean-war',
+    keywords: /\bkorea[n]?\b|\binchon\b|\bpusan\b|\bchosin\b/i,
+  },
+  {
+    slug: 'bay-of-pigs',
+    keywords: /\bbay\s+of\s+pigs\b|\bcuba\s+invasion\b|\bbrigade\s+2506\b|\bplaya\s+giron\b/i,
+  },
 ]
 
 async function main() {
