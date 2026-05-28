@@ -437,6 +437,7 @@ model BookClaimMatch {
   claimId         String
   similarityScore Float
   matchType       String // SUPPORTS | CONTRADICTS | RELATED | UNVERIFIED
+  reason          String?
 
   bookClaim BookClaim @relation(fields: [bookClaimId], references: [id], onDelete: Cascade)
   claim     Claim     @relation(fields: [claimId], references: [id])

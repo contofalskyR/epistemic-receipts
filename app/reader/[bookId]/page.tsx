@@ -56,6 +56,7 @@ export default async function ReaderPage({ params }: ReaderProps) {
           claimId: m.claimId,
           matchType: m.matchType,
           similarityScore: m.similarityScore,
+          reason: m.reason ?? null,
           claim: {
             id: m.claim.id,
             text: m.claim.text,

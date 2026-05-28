@@ -271,6 +271,24 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-28 — LLM match enrichment for BookClaimMatch
+
+**What.** Added LLM-powered reason enrichment to `BookClaimMatch`. Every claim↔receipt match now has a nullable `reason TEXT` field explaining the specific intellectual or evidentiary connection.
+
+**1. Schema + migration.** Added `reason String?` to `BookClaimMatch` in `prisma/schema.prisma`. Migration `20260528210000_add_match_reason` applies `ALTER TABLE "BookClaimMatch" ADD COLUMN IF NOT EXISTS "reason" TEXT`. Applied directly via `prisma db execute` (shadow DB cannot run CONCURRENTLY; same approach as the trgm index migration). Prisma client regenerated.
+
+**2. Enrichment script (`scripts/enrich-match-reasons.ts`).** Queries all `BookClaimMatch` rows where `reason IS NULL`, then calls `claude --print` at concurrency 15 to generate a one-sentence explanation per match. Prompt instructs Claude to reply with exactly `NULL` if there is no meaningful connection — those rows are deleted. Non-null responses are stored as `reason`. Supports `--dry-run` flag that logs what would happen without touching the DB. Progress logged as `[enriched] X/total | [dropped] Y | [errors] Z`. Run: `npx ts-node --project tsconfig.scripts.json scripts/enrich-match-reasons.ts`.
+
+**3. UI update (`app/reader/[bookId]/ReaderClient.tsx`, `page.tsx`).** `SerializedMatch` type extended with `reason: string | null`. Reader serialization in `page.tsx` passes `m.reason ?? null` through. In the match list, each match item now renders the reason text below the match label as small (`text-[10px]`), muted (`text-neutral-600`), italic text. Graceful degradation: if `reason` is null (not yet enriched), nothing extra renders.
+
+**4. Similarity floor raised.** `PLACEHOLDER_SIMILARITY` in `scripts/ingest-book.ts` raised from `0.7` → `0.82`. Prevents noisy keyword-matched matches from being created in the first place.
+
+**Verification.** `npx tsc --noEmit` clean. Migration applied to prod. Prisma client generated.
+
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260528210000_add_match_reason/migration.sql`, `scripts/enrich-match-reasons.ts` (new), `scripts/ingest-book.ts`, `app/reader/[bookId]/ReaderClient.tsx`, `app/reader/[bookId]/page.tsx`, `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-27 — Aesthetic / cosmetic medicine pipelines (4 buckets)
 
 **What.** Added four aesthetic/beauty-industry ingestion paths covering trials, devices, post-market cosmetic safety, and academic literature.

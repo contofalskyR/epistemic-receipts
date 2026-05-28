@@ -14,6 +14,7 @@ type SerializedMatch = {
   claimId: string;
   matchType: string;
   similarityScore: number;
+  reason: string | null;
   claim: SerializedMatchedClaim;
 };
 
@@ -274,10 +275,17 @@ export default function ReaderClient({ book }: { book: SerializedBook }) {
                               >
                                 {m.matchType}
                               </span>
-                              <span className="text-neutral-400 text-xs group-hover:text-neutral-200 transition-colors leading-snug flex-1">
-                                {m.claim.text.length > 120
-                                  ? m.claim.text.slice(0, 120) + "…"
-                                  : m.claim.text}
+                              <span className="flex-1 min-w-0">
+                                <span className="block text-neutral-400 text-xs group-hover:text-neutral-200 transition-colors leading-snug">
+                                  {m.claim.text.length > 120
+                                    ? m.claim.text.slice(0, 120) + "…"
+                                    : m.claim.text}
+                                </span>
+                                {m.reason && (
+                                  <span className="block text-neutral-600 text-[10px] leading-snug mt-0.5 italic">
+                                    {m.reason}
+                                  </span>
+                                )}
                               </span>
                               {m.similarityScore > 0 && (
                                 <span className="text-neutral-600 text-xs flex-shrink-0 tabular-nums">

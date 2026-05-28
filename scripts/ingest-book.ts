@@ -14,7 +14,7 @@
 import 'dotenv/config'
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { execSync } from 'node:child_process'
+import { exec } from 'node:child_process'
 import { PrismaClient } from '@prisma/client'
 
 // Manually load .env.local so the bare `npx tsx scripts/ingest-book.ts ...`
@@ -43,9 +43,9 @@ loadEnvLocal()
 
 const prisma = new PrismaClient()
 
-const BATCH_SIZE = 20
+const CONCURRENCY = 10
 const MAX_MATCHES_PER_CLAIM = 3
-const PLACEHOLDER_SIMILARITY = 0.7
+const PLACEHOLDER_SIMILARITY = 0.82
 
 interface ParsedChunk {
   paragraphIndex: number
@@ -61,21 +61,11 @@ function parseBookText(raw: string): ParsedChunk[] {
     .map((text, paragraphIndex) => ({ paragraphIndex, text }))
 }
 
-function extractClaims(chunkText: string): string[] {
-  const prompt =
-    `Extract all discrete, verifiable factual claims from this passage. ` +
-    `Return ONLY a JSON array of strings, each string being one atomic factual claim. ` +
-    `Example: ["The Earth orbits the Sun", "Water boils at 100°C"]. ` +
-    `Passage: ${chunkText.replace(/'/g, "'\\''")}`
-
+function parseClaimsFromOutput(output: string): string[] {
+  const arrayStart = output.indexOf('[')
+  const arrayEnd = output.lastIndexOf(']')
+  if (arrayStart === -1 || arrayEnd === -1 || arrayEnd <= arrayStart) return []
   try {
-    const output = execSync(`claude --print '${prompt}'`, {
-      encoding: 'utf-8',
-      timeout: 60000,
-    })
-    const arrayStart = output.indexOf('[')
-    const arrayEnd = output.lastIndexOf(']')
-    if (arrayStart === -1 || arrayEnd === -1 || arrayEnd <= arrayStart) return []
     const parsed: unknown = JSON.parse(output.slice(arrayStart, arrayEnd + 1))
     if (!Array.isArray(parsed)) return []
     return parsed
@@ -85,6 +75,37 @@ function extractClaims(chunkText: string): string[] {
   } catch {
     return []
   }
+}
+
+function extractClaims(chunkText: string): Promise<string[]> {
+  const escaped = chunkText.replace(/'/g, "'\\''")
+  const prompt =
+    `Extract all discrete, verifiable factual claims from this passage. ` +
+    `Return ONLY a JSON array of strings, each string being one atomic factual claim. ` +
+    `Example: ["The Earth orbits the Sun", "Water boils at 100°C"]. ` +
+    `Passage: ${escaped}`
+
+  return new Promise((resolve) => {
+    exec(`claude --print '${prompt}'`, { timeout: 90000 }, (err, stdout) => {
+      if (err) { resolve([]); return }
+      resolve(parseClaimsFromOutput(stdout))
+    })
+  })
+}
+
+async function runWithConcurrency<T>(
+  items: T[],
+  concurrency: number,
+  fn: (item: T) => Promise<void>,
+): Promise<void> {
+  let i = 0
+  async function worker() {
+    while (i < items.length) {
+      const item = items[i++]
+      await fn(item)
+    }
+  }
+  await Promise.all(Array.from({ length: concurrency }, worker))
 }
 
 const STOPWORDS = new Set([
@@ -157,53 +178,47 @@ async function main() {
   })
   console.log(`Inserted ${dbChunks.length} BookChunk rows`)
 
+  // Extract claims for all chunks in parallel (CONCURRENCY workers)
+  console.log(`Extracting claims with concurrency=${CONCURRENCY}…`)
+  const extractions: Array<{ chunkId: string; paragraphIndex: number; claims: string[] }> =
+    dbChunks.map((ch) => ({ chunkId: ch.id, paragraphIndex: ch.paragraphIndex, claims: [] }))
+
+  let done = 0
+  await runWithConcurrency(extractions, CONCURRENCY, async (entry) => {
+    const ch = dbChunks.find((c) => c.id === entry.chunkId)!
+    entry.claims = await extractClaims(ch.text)
+    done++
+    if (done % 50 === 0 || done === dbChunks.length)
+      console.log(`  ${done}/${dbChunks.length} chunks processed`)
+  })
+
+  // Store claims + matches sequentially (DB writes need ordered positionIndex)
   let positionIndex = 0
   let totalClaims = 0
   let totalMatches = 0
 
-  for (let batchStart = 0; batchStart < dbChunks.length; batchStart += BATCH_SIZE) {
-    const batch = dbChunks.slice(batchStart, batchStart + BATCH_SIZE)
-    console.log(
-      `Batch ${batchStart + 1}–${batchStart + batch.length} of ${dbChunks.length}: ` +
-        `extracting claims via ${MODEL}…`,
-    )
+  for (const { chunkId, claims } of extractions) {
+    for (const claimText of claims) {
+      const bookClaim = await prisma.bookClaim.create({
+        data: { chunkId, claimText, positionIndex: positionIndex++ },
+      })
+      totalClaims++
 
-    const batchExtractions: Array<{ chunkId: string; claims: string[] }> = []
-    for (const ch of batch) {
-      try {
-        const claims = extractClaims(ch.text)
-        batchExtractions.push({ chunkId: ch.id, claims })
-      } catch (err) {
-        console.warn(
-          `  chunk ${ch.id} (¶${ch.paragraphIndex}) failed: ${(err as Error).message}`,
-        )
-        batchExtractions.push({ chunkId: ch.id, claims: [] })
-      }
-    }
-
-    for (const { chunkId, claims } of batchExtractions) {
-      for (const claimText of claims) {
-        const bookClaim = await prisma.bookClaim.create({
-          data: { chunkId, claimText, positionIndex: positionIndex++ },
+      const matchClaimIds = await findCandidateMatches(claimText)
+      if (matchClaimIds.length > 0) {
+        await prisma.bookClaimMatch.createMany({
+          data: matchClaimIds.map((cid) => ({
+            bookClaimId: bookClaim.id,
+            claimId: cid,
+            similarityScore: PLACEHOLDER_SIMILARITY,
+            matchType: 'RELATED',
+          })),
         })
-        totalClaims++
-
-        const matchClaimIds = await findCandidateMatches(claimText)
-        if (matchClaimIds.length > 0) {
-          await prisma.bookClaimMatch.createMany({
-            data: matchClaimIds.map((cid) => ({
-              bookClaimId: bookClaim.id,
-              claimId: cid,
-              similarityScore: PLACEHOLDER_SIMILARITY,
-              matchType: 'RELATED',
-            })),
-          })
-          totalMatches += matchClaimIds.length
-        }
+        totalMatches += matchClaimIds.length
       }
     }
-    console.log(`  cumulative: ${totalClaims} book claims, ${totalMatches} matches`)
   }
+  console.log(`Claims stored: ${totalClaims}, matches: ${totalMatches}`)
 
   console.log(
     `Done. Book ${book.id}: ${totalClaims} claims across ${dbChunks.length} paragraphs, ${totalMatches} matches.`,
