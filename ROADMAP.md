@@ -1,6 +1,6 @@
 # HARD_FACT Pipeline Roadmap
 
-**Live DB (2026-05-26):** 842,061 claims · 838,349 sources · 146 pipelines · 2,948 votes · 2,361 polities
+**Live DB (2026-05-28):** 882,151+ claims (growing — RG59/RG330 running → ~1.2–1.3M projected) · 146+ pipelines · 2,948 votes · 2,361 polities · 9 HistoricalEvents
 
 Future pipelines ranked by volume + editorial value. Add to this list as new candidates emerge. Cross off as pipelines ship.
 
@@ -74,6 +74,32 @@ Scripts exist for all; architectural review pending before full production runs.
 - `omim_v1`: PARTIAL (target ~15,000 phenotypes, OMIM — see In Progress)
 - `openfda_labels_v1`: 0 — BLOCKED pending CONSULTANT.md decisions (258k drug labels, FDA)
 - `ingest-faers-current-drugs.ts` → `faers_normalized_drugs_v1`: 999 (see P7)
+
+## NARA Expansion Track — 2026-05-28
+
+Full roadmap in **`NARA-ROADMAP.md`** (committed 2026-05-28). 73 RGs across 5 tiers. Erase rows there as each RG finishes.
+
+**API key:** `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK` | **Limit:** 10k calls/month
+**Script:** `scripts/ingest-nara-catalog.ts` — `--rg <N>` flag; `--full` for uncapped pagination
+
+| RG | Collection | Status |
+|----|-----------|--------|
+| RG 263 | CIA | ✅ ingested |
+| RG 128 | Church Committee / Joint Committees | ✅ ingested |
+| RG 59 | State Department (76k records) | ⏳ running |
+| RG 330 | Office of SecDef (307k records) | ⏳ running |
+| RG 65 | FBI (COINTELPRO, surveillance) | ⚙️ configured |
+| RG 226 | OSS (WWII CIA precursor) | ⚙️ configured |
+| RG 218 | Joint Chiefs of Staff | ⚙️ configured |
+| RG 84 | Foreign Service cables | ⚙️ configured |
+| RG 326 | AEC / Manhattan Project | 📋 Tier 1 next |
+| RG 238 | Nuremberg trials | 📋 Tier 1 next |
+| RG 220 | Presidential Commissions (Warren, Kerner, Pike) | 📋 Tier 1 next |
+| RG 457 | NSA / SIGINT | 📋 Tier 1 next |
+| RG 107 | Secretary of War, WWII | 📋 Tier 1 next |
+| + 58 more | See NARA-ROADMAP.md Tiers 2–5 | 📋 queued |
+
+---
 
 ## Archives & Declassified Documents Track — 2026-05-23
 
