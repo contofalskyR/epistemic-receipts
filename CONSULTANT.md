@@ -271,6 +271,20 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-28 — NARA ingest: bypass 10k API cap with searchAfter cursor
+
+**Problem.** NARA Catalog API v2 hard-caps pagination at 10,000 results per query (page × limit ≤ 10,000). RG59 has ~76k records, RG330 has ~307k. The script failed at page 101 with "Max total results exceeded." Year-range slicing via `dateRangeStart`/`dateRangeEnd` and `startDate`/`endDate` params was investigated but the date filter bleeds through ancestor series date ranges, making it unreliable (e.g. every year ≥ 1945 in RG59 returns ~34k results because series with open-ended ranges encompass all items).
+
+**Fix.** NARA API v2 exposes a `searchAfter` Elasticsearch cursor parameter documented in the swagger as enabling "deep pagination beyond 10,000 results." First request uses `searchAfter=*`; subsequent pages use the `sort[0]` value from the last hit (which equals the naId). Replaced page-based pagination with this cursor loop. Cursor state now stores `lastSearchAfter` instead of `nextPage`.
+
+**Also added.** `--dry-run` can now be combined with `--full` to test the pagination path without DB writes. `--year-start`/`--year-end` flags retained as CLI args (no longer functionally used for full runs, but available for future use). Verified pages 1–105 all succeed without errors (old cap was page 100).
+
+**Background ingestions started (2026-05-28).** RG59 (~76k records, ~13 hrs at 300ms/req) logging to `/tmp/nara-rg59-full.log`. RG330 (~307k records, ~50 hrs) logging to `/tmp/nara-rg330-full.log`. Both use cursor checkpointing (`.nara-cursor.json`) — safe to interrupt and `--resume`.
+
+**Files changed.** `scripts/ingest-nara-catalog.ts` — cursor interface, pagination loop, `--dry-run`+`--full` interaction. Committed `3cac79f`, pushed to main.
+
+---
+
 ### 2026-05-28 — LLM match enrichment for BookClaimMatch
 
 **What.** Added LLM-powered reason enrichment to `BookClaimMatch`. Every claim↔receipt match now has a nullable `reason TEXT` field explaining the specific intellectual or evidentiary connection.
