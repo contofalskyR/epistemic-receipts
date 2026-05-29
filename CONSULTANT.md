@@ -271,6 +271,27 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-29 14:22 EDT — web book upload feature
+
+**What.** Replaced the static CLI code block on `/books` with a real upload form. Full pipeline: upload → LLM claim extraction → match against DB, all triggered from the browser.
+
+**New routes:**
+- `POST /api/books/upload` — accepts `multipart/form-data` with `file` (PDF or .txt), `title`, `author` (optional), `passphrase`. Auth: checks against `BOOK_UPLOAD_PASSPHRASE` env var (returns 403 if wrong; does not use `ALLOW_EDITS`). Parses PDF via dynamic import of `pdf-parse` (static import caused ENOENT build failure due to pdf-parse's module-level test file read). Splits on double-newline, filters chunks < 50 chars. Creates `Book` + `BookChunk` records. Returns `{ bookId, chunkCount }`.
+- `POST /api/books/[bookId]/ingest` — JSON body `{ passphrase }`. Fires LLM claim extraction (claude-haiku-4-5-20251001) as fire-and-forget background Promise. Batches 10 chunks at a time, extracts JSON array of claims per chunk, writes `BookClaim` records. Progress written to `/tmp/ingest-progress-<bookId>.json` after each batch. Returns `{ started: true, jobId }` immediately.
+- `GET /api/books/[bookId]/ingest/status` — reads progress file, returns `{ status, processed, total, claimCount, errors }` with live DB `claimCount` as ground-truth fallback.
+
+**UI (`app/books/BooksClient.tsx`):** Upload form with file/title/author/passphrase fields. After upload: auto-kicks ingest job with 2s poll for ingest progress bar (purple). After ingest done: auto-kicks match job with 2s poll for match progress bar (blue). After match done: fetches updated book list and adds new book at top. Errors surfaced inline.
+
+**New file:** `lib/bookIngestJob.ts` — progress file path helpers + `IngestJobState` type.
+
+**Bug fixed during build:** `pdf-parse` reads `./test/data/05-versions-space.pdf` at module evaluation time → ENOENT during Next.js build. Fixed by using `await import("pdf-parse")` inside the handler instead of a top-level static import.
+
+**Env:** `BOOK_UPLOAD_PASSPHRASE` added to `.env.local` (placeholder). Must also be set in Vercel env vars for production.
+
+**Commits:** `ec68519` (feature), `dbc5360` (pdf-parse build fix). **Deployed:** `dpl_DuWvTWmaXDowSwHbE5s54uk169Cc` → `epistemic-receipts.vercel.app`.
+
+**Files changed:** `app/api/books/upload/route.ts` (new), `app/api/books/[bookId]/ingest/route.ts` (new), `app/api/books/[bookId]/ingest/status/route.ts` (new), `lib/bookIngestJob.ts` (new), `app/books/BooksClient.tsx`, `app/books/page.tsx`, `.env.local`.
+
 ### 2026-05-29 10:28 EDT — build /books management UI with match button
 - **Commit:** fix: DB audit — backfill nulls, document orphaned record cleanup
 - **Files changed:**
