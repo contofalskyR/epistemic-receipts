@@ -25,7 +25,7 @@ function normSF(z: number): number {
 // P(X > chiSq) for X ~ χ²(df).
 // For df = 1, χ²(1) ≡ Z² so the result is exact via the normal SF.
 // For df ≥ 2, use the Wilson-Hilferty cube-root approximation.
-function chiSquarePValue(chiSq: number, df: number): number {
+export function chiSquarePValue(chiSq: number, df: number): number {
   if (!Number.isFinite(chiSq) || chiSq <= 0 || df < 1) return 1;
   if (df === 1) return 2 * normSF(Math.sqrt(chiSq));
   const z =
@@ -36,7 +36,7 @@ function chiSquarePValue(chiSq: number, df: number): number {
 // BIC approximation (Wagenmakers 2007): BF₁₀ = exp((χ² − df·ln n) / 2).
 // log10 of the BF is returned alongside so callers can render extreme values
 // without serializing Infinity (which JSON.stringify turns into null).
-function bayesFactorFromChiSq(
+export function bayesFactorFromChiSq(
   chiSq: number,
   df: number,
   n: number,
@@ -50,7 +50,7 @@ function bayesFactorFromChiSq(
 }
 
 // Jeffreys' scale, collapsed to 4 levels per direction.
-function interpretBF(bf10: number): string {
+export function interpretBF(bf10: number): string {
   if (Number.isNaN(bf10) || bf10 < 0) return "Undefined";
   if (!Number.isFinite(bf10)) return "Decisive for H₁";
   if (bf10 === 0) return "Decisive for H₀";

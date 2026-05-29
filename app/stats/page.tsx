@@ -12,6 +12,7 @@ import { Suspense } from "react";
 import VotingAnalysisSection from "./voting-analysis-section";
 import VotesByPresidencySection from "./VotesByPresidencySection";
 import VotingInferenceSection from "./VotingInferenceSection";
+import AdvancedVotingSection from "./AdvancedVotingSection";
 
 const MIN_TOTAL = 10;
 
@@ -725,6 +726,10 @@ export default async function StatsPage() {
 
       <Suspense fallback={null}>
         <VotingInferenceSection />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <AdvancedVotingSection />
       </Suspense>
 
       <Suspense fallback={null}>
