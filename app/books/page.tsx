@@ -55,26 +55,6 @@ export default async function BooksPage() {
       </header>
 
       <BooksClient books={enriched} />
-
-      <section className="mt-10 rounded-md border border-neutral-800 bg-neutral-900/40 p-4">
-        <h2 className="text-sm font-semibold text-neutral-200 mb-2">
-          Add a book
-        </h2>
-        <p className="text-xs text-neutral-500 leading-relaxed">
-          Book upload through the UI is not wired up yet. To ingest a new book,
-          run from the project root:
-        </p>
-        <pre className="mt-2 text-xs text-neutral-300 bg-neutral-900 border border-neutral-800 rounded p-2 overflow-x-auto">
-{`npx ts-node --project tsconfig.scripts.json scripts/ingest-book.ts <path> <title> [author]`}
-        </pre>
-        <p className="text-xs text-neutral-500 mt-2">
-          Once ingested, the book appears here and the{" "}
-          <span className="text-neutral-300">Match against DB</span> button will
-          run{" "}
-          <code className="text-neutral-300">match-book-to-graph.ts</code> as a
-          background job.
-        </p>
-      </section>
     </div>
   );
 }
