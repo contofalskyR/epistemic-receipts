@@ -2,6 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import {
+  US_PRESIDENTS,
+  ERAS,
+  partyAbbrev,
+  presidentKey,
+  presidentLabel,
+} from "@/lib/us-presidents";
 
 type VoteHit = {
   id: string;
@@ -60,6 +67,8 @@ function formatDate(iso: string | null): string {
   return d.toISOString().slice(0, 10);
 }
 
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
 export default function VotesClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -73,27 +82,42 @@ export default function VotesClient() {
     urlResultRaw === "passed" || urlResultRaw === "failed" || urlResultRaw === "tied"
       ? urlResultRaw
       : "all";
-  const urlYear = (searchParams.get("year") ?? "").trim();
+  const urlDateFrom = (searchParams.get("dateFrom") ?? "").trim();
+  const urlDateTo = (searchParams.get("dateTo") ?? "").trim();
   const urlOffset = Math.max(0, Number.parseInt(searchParams.get("offset") ?? "0", 10) || 0);
 
+  const matchedPresident =
+    ISO_DATE.test(urlDateFrom) && ISO_DATE.test(urlDateTo)
+      ? US_PRESIDENTS.find(p => p.start === urlDateFrom && p.end === urlDateTo)
+      : undefined;
+  const selectedPresidentKey = matchedPresident ? presidentKey(matchedPresident) : "";
+
+  const selectedEraLabel =
+    ISO_DATE.test(urlDateFrom) && ISO_DATE.test(urlDateTo)
+      ? ERAS.find(e => e.start === urlDateFrom && e.end === urlDateTo)?.label ?? ""
+      : "";
+
   const [input, setInput] = useState(urlQ);
-  const [yearInput, setYearInput] = useState(urlYear);
   const [data, setData] = useState<VotesResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const yearDebounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     setInput(urlQ);
   }, [urlQ]);
 
-  useEffect(() => {
-    setYearInput(urlYear);
-  }, [urlYear]);
-
   const pushUrl = useCallback(
-    (overrides: Partial<{ q: string; chamber: string; result: string; year: string; offset: number }>) => {
+    (
+      overrides: Partial<{
+        q: string;
+        chamber: string;
+        result: string;
+        dateFrom: string;
+        dateTo: string;
+        offset: number;
+      }>,
+    ) => {
       const next = new URLSearchParams(searchParams.toString());
       if (overrides.q !== undefined) {
         if (overrides.q) next.set("q", overrides.q);
@@ -107,9 +131,17 @@ export default function VotesClient() {
         if (overrides.result === "all") next.delete("result");
         else next.set("result", overrides.result);
       }
-      if (overrides.year !== undefined) {
-        if (overrides.year) next.set("year", overrides.year);
-        else next.delete("year");
+      if (overrides.dateFrom !== undefined) {
+        if (overrides.dateFrom) next.set("dateFrom", overrides.dateFrom);
+        else next.delete("dateFrom");
+      }
+      if (overrides.dateTo !== undefined) {
+        if (overrides.dateTo) next.set("dateTo", overrides.dateTo);
+        else next.delete("dateTo");
+      }
+      // Legacy: clear year whenever date range changes
+      if (overrides.dateFrom !== undefined || overrides.dateTo !== undefined) {
+        next.delete("year");
       }
       if (overrides.offset !== undefined) {
         if (overrides.offset > 0) next.set("offset", String(overrides.offset));
@@ -129,7 +161,8 @@ export default function VotesClient() {
     if (urlQ) p.set("q", urlQ);
     if (urlChamber !== "all") p.set("chamber", urlChamber);
     if (urlResult !== "all") p.set("result", urlResult);
-    if (/^\d{4}$/.test(urlYear)) p.set("year", urlYear);
+    if (ISO_DATE.test(urlDateFrom)) p.set("dateFrom", urlDateFrom);
+    if (ISO_DATE.test(urlDateTo)) p.set("dateTo", urlDateTo);
     p.set("limit", String(PAGE_SIZE));
     p.set("offset", String(urlOffset));
     fetch(`/api/votes?${p.toString()}`, { signal: controller.signal })
@@ -147,7 +180,7 @@ export default function VotesClient() {
         setLoading(false);
       });
     return () => controller.abort();
-  }, [urlQ, urlChamber, urlResult, urlYear, urlOffset]);
+  }, [urlQ, urlChamber, urlResult, urlDateFrom, urlDateTo, urlOffset]);
 
   function onInputChange(v: string) {
     setInput(v);
@@ -157,15 +190,24 @@ export default function VotesClient() {
     }, 300);
   }
 
-  function onYearChange(v: string) {
-    const cleaned = v.replace(/[^\d]/g, "").slice(0, 4);
-    setYearInput(cleaned);
-    clearTimeout(yearDebounceRef.current);
-    yearDebounceRef.current = setTimeout(() => {
-      if (cleaned === "" || /^\d{4}$/.test(cleaned)) {
-        pushUrl({ year: cleaned, offset: 0 });
-      }
-    }, 300);
+  function onPresidentChange(value: string) {
+    if (!value) {
+      pushUrl({ dateFrom: "", dateTo: "", offset: 0 });
+      return;
+    }
+    const p = US_PRESIDENTS.find(pr => presidentKey(pr) === value);
+    if (!p) return;
+    pushUrl({ dateFrom: p.start, dateTo: p.end, offset: 0 });
+  }
+
+  function onEraChange(label: string) {
+    if (!label) {
+      pushUrl({ dateFrom: "", dateTo: "", offset: 0 });
+      return;
+    }
+    const e = ERAS.find(x => x.label === label);
+    if (!e) return;
+    pushUrl({ dateFrom: e.start, dateTo: e.end, offset: 0 });
   }
 
   const total = data?.total ?? 0;
@@ -180,7 +222,7 @@ export default function VotesClient() {
         <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Votes</p>
         <h1 className="mt-1 text-2xl font-semibold text-white">Congressional Roll Calls</h1>
         <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
-          113,000+ House and Senate roll call votes, 1789–present, sourced from Voteview. Search by description, filter by chamber, result, or year.
+          113,000+ House and Senate roll call votes, 1789–present, sourced from Voteview. Search by description, filter by chamber, result, presidency, or era.
         </p>
       </div>
 
@@ -233,17 +275,55 @@ export default function VotesClient() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Year</span>
-          <input
-            type="text"
-            inputMode="numeric"
-            value={yearInput}
-            onChange={e => onYearChange(e.target.value)}
-            placeholder="e.g. 2010"
-            maxLength={4}
-            className="w-24 bg-gray-900 border border-gray-700 text-gray-100 text-sm rounded px-2 py-1 placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
-          />
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Presidency</span>
+          <select
+            value={selectedPresidentKey || ""}
+            onChange={e => onPresidentChange(e.target.value)}
+            className="bg-gray-800 border border-gray-700 text-gray-200 text-xs rounded px-2 py-1 focus:outline-none focus:border-gray-500 transition-colors"
+          >
+            <option value="">All Presidencies</option>
+            {US_PRESIDENTS.map(p => (
+              <option key={presidentKey(p)} value={presidentKey(p)}>
+                {presidentLabel(p)}
+              </option>
+            ))}
+          </select>
+          {matchedPresident && (
+            <span className="text-[10px] text-gray-600 font-mono uppercase tracking-widest">
+              ({partyAbbrev(matchedPresident.party)})
+            </span>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Era</span>
+          <button
+            onClick={() => onEraChange("")}
+            className={`text-xs px-3 py-1 rounded-full transition-colors ${
+              !selectedEraLabel && !selectedPresidentKey
+                ? "bg-blue-600 text-white"
+                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+            }`}
+          >
+            All
+          </button>
+          {ERAS.map(e => {
+            const active = selectedEraLabel === e.label;
+            return (
+              <button
+                key={e.label}
+                onClick={() => onEraChange(e.label)}
+                className={`text-xs px-3 py-1 rounded-full transition-colors ${
+                  active
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
+                }`}
+              >
+                {e.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 

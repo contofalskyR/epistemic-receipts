@@ -37,6 +37,8 @@ export async function GET(req: NextRequest) {
   const chamberRaw = (url.searchParams.get("chamber") ?? "all").toLowerCase();
   const resultRaw = (url.searchParams.get("result") ?? "all").toLowerCase();
   const yearRaw = (url.searchParams.get("year") ?? "").trim();
+  const dateFromRaw = (url.searchParams.get("dateFrom") ?? "").trim();
+  const dateToRaw = (url.searchParams.get("dateTo") ?? "").trim();
 
   const limit = Math.max(
     1,
@@ -58,7 +60,19 @@ export async function GET(req: NextRequest) {
     where.result = resultRaw;
   }
 
-  if (/^\d{4}$/.test(yearRaw)) {
+  const isoDate = /^\d{4}-\d{2}-\d{2}$/;
+  if (isoDate.test(dateFromRaw) || isoDate.test(dateToRaw)) {
+    const dateFilter: Prisma.DateTimeNullableFilter = {};
+    if (isoDate.test(dateFromRaw)) {
+      const d = new Date(`${dateFromRaw}T00:00:00.000Z`);
+      if (!Number.isNaN(d.getTime())) dateFilter.gte = d;
+    }
+    if (isoDate.test(dateToRaw)) {
+      const d = new Date(`${dateToRaw}T23:59:59.999Z`);
+      if (!Number.isNaN(d.getTime())) dateFilter.lte = d;
+    }
+    where.voteDate = dateFilter;
+  } else if (/^\d{4}$/.test(yearRaw)) {
     const year = Number.parseInt(yearRaw, 10);
     const start = new Date(Date.UTC(year, 0, 1));
     const end = new Date(Date.UTC(year + 1, 0, 1));
