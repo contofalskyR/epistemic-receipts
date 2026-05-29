@@ -2,11 +2,14 @@
 
 Track every NARA Record Group (RG) worth ingesting. Erase checkboxes as each run completes.
 
-**API key:** `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK`
-**Rate limit:** 10,000 calls/month
-**Strategy:** Register 2–3 additional free NARA keys to multiply capacity. Max page size per call. Ingest Tier 1 first.
-**Script:** `scripts/ingest-nara-catalog.ts` — use `--rg <N>` flag; `--full` for uncapped pagination (search_after)
+**API key:** `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK` (Key 1 — register 2–3 more at Catalog_API@nara.gov)
+**Rate limit:** 10,000 calls/month per key × 100 records/call = up to 1M records/month per key
+**Strategy:** Plain page-based pagination + cursor resume. Date-range slicing does NOT work (NARA ignores date filters for large RGs — see HISTORY.md). Use `--max-pages 100` to cap per run, `--resume` to continue next month.
+**Script:** `scripts/ingest-nara-catalog.ts` — flag is `--record-group <N>` (NOT `--rg`); `--full` to write DB
+**Example run:** `ALLOW_EDITS=true npx ts-node -r dotenv/config scripts/ingest-nara-catalog.ts --record-group 59 --full --max-pages 100 dotenv_config_path=.env.local`
+**Resume:** replace `--full` with `--resume` on subsequent months
 **Pipeline prefix:** `nara_rg<N>_v1`
+**Dead ends documented:** `HISTORY.md` — searchAfter, decade-slice, adaptive-slice all tried and abandoned
 
 ---
 
