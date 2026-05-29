@@ -28,7 +28,7 @@ Track every NARA Record Group (RG) worth ingesting. Erase checkboxes as each run
 |----|-----------|--------|----------------|
 | RG 263 | CIA — clandestine ops, Cold War intel, covert programs | ✅ ingested | ~5k |
 | RG 128 | Joint Committees / Church Committee — domestic surveillance, COINTELPRO | ✅ ingested | ~67 enriched |
-| RG 59 | State Department — diplomatic cables, foreign policy (1789–present) | ⏳ running | ~76k |
+| RG 59 | State Department — diplomatic cables, foreign policy (1789–present) | ✅ ingested | ~76k |
 | RG 330 | Office of the Secretary of Defense — policy, weapons, Cold War | ⏳ running | ~307k |
 | RG 65 | FBI — COINTELPRO, political surveillance, organized crime | ⚙️ configured | ~50k est. |
 | RG 226 | OSS — WWII CIA precursor, espionage, resistance networks | ⚙️ configured | ~30k est. |
@@ -152,5 +152,5 @@ To stay under the 10k/month limit while running large RGs (59 = 76k, 330 = 307k)
 |------|----|---------|-------|
 | 2026-05-28 | RG 263 (CIA) | ~5k | First run |
 | 2026-05-28 | RG 128 (Church Committee) | ~67 enriched | Church Committee COINTELPRO records |
-| 2026-05-28–29 | RG 59 (State Dept) | ⏳ running (page-based, cron monitor active) | Full run, 76k est. — cron pings every 15 min |
+| 2026-05-29 | RG 59 (State Dept) | ✅ complete | ~76k records ingested |
 | 2026-05-28–29 | RG 330 (OSD) | ⏳ running | Full run, 307k est. |
