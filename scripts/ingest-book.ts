@@ -14,8 +14,10 @@
 import 'dotenv/config'
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { exec } from 'node:child_process'
+import * as os from 'node:os'
+import { exec, execSync } from 'node:child_process'
 import { PrismaClient } from '@prisma/client'
+import pdfParse from 'pdf-parse'
 
 // Manually load .env.local so the bare `npx tsx scripts/ingest-book.ts ...`
 // command works without a dotenv-cli wrapper.
@@ -155,7 +157,34 @@ async function main() {
   }
 
   console.log(`Reading ${filePath}…`)
-  const raw = fs.readFileSync(filePath, 'utf-8')
+  let raw: string
+  if (filePath.toLowerCase().endsWith('.pdf')) {
+    const pdfBuffer = fs.readFileSync(filePath)
+    const parsed = await pdfParse(pdfBuffer)
+    if (parsed.text.trim().length > 20) {
+      raw = parsed.text
+    } else {
+      // Image-based PDF — OCR with pdftoppm + tesseract
+      console.log('No embedded text; running OCR…')
+      const tmpDir = fs.mkdtempSync(path.join(os.homedir(), '.pdf-ocr-'))
+      try {
+        execSync(`pdftoppm -r 300 -png "${filePath}" "${tmpDir}/page"`)
+        const pages = fs.readdirSync(tmpDir).filter(f => f.endsWith('.png')).sort()
+        const pageTexts: string[] = []
+        for (const pg of pages) {
+          const imgPath = path.join(tmpDir, pg)
+          const outBase = path.join(tmpDir, pg.replace('.png', ''))
+          execSync(`tesseract "${imgPath}" "${outBase}" -l eng 2>/dev/null`)
+          pageTexts.push(fs.readFileSync(`${outBase}.txt`, 'utf-8'))
+        }
+        raw = pageTexts.join('\n\n')
+      } finally {
+        fs.rmSync(tmpDir, { recursive: true, force: true })
+      }
+    }
+  } else {
+    raw = fs.readFileSync(filePath, 'utf-8')
+  }
   const chunks = parseBookText(raw)
   console.log(`Parsed ${chunks.length} paragraph chunks`)
 
