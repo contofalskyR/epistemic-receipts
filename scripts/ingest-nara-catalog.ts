@@ -522,20 +522,26 @@ async function writeRow(
   if (existing) return 'skipped'
 
   const sourceExternalId = `nara_source_${rec.naId}`
-  const source = await tx.source.upsert({
-    where: { externalId: sourceExternalId },
-    update: {},
-    create: {
-      name: rec.title.length > 500 ? rec.title.slice(0, 497) + '…' : rec.title,
-      url: rec.sourceUrl,
-      publishedAt: rec.publishedAt,
-      methodologyType: 'primary',
-      ingestedBy: INGESTED_BY,
-      humanReviewed: false,
-      autoApproved: true,
-      externalId: sourceExternalId,
-    },
-  })
+  let source = await tx.source.findUnique({ where: { externalId: sourceExternalId } })
+  if (!source) {
+    try {
+      source = await tx.source.create({
+        data: {
+          name: rec.title.length > 500 ? rec.title.slice(0, 497) + '…' : rec.title,
+          url: rec.sourceUrl,
+          publishedAt: rec.publishedAt,
+          methodologyType: 'primary',
+          ingestedBy: INGESTED_BY,
+          humanReviewed: false,
+          autoApproved: true,
+          externalId: sourceExternalId,
+        },
+      })
+    } catch {
+      // Another worker or prior partial run already created this source — fetch it
+      source = await tx.source.findUniqueOrThrow({ where: { externalId: sourceExternalId } })
+    }
+  }
 
   const claim = await tx.claim.create({
     data: {
@@ -729,8 +735,9 @@ async function main() {
     }
   }
 
-  // Build year windows: either the explicit single window or decade slices across full range
-  const WINDOW_SIZE = 10
+  // Build year windows: either the explicit single window or 1-year slices across full range.
+  // NARA caps at 10,000 results per query — 2-year windows overflow for high-volume RGs like RG59.
+  const WINDOW_SIZE = 1
   const windows: Array<{ start: number; end: number }> =
     yearStartArg != null
       ? [{ start: yearStart, end: yearEnd }]
