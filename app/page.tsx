@@ -591,6 +591,13 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 29, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">/books management UI</span> — new <span className="font-mono">/books</span> page lists every ingested book with paragraph / claim / graph-match counts and a per-book <span className="font-mono">Match against DB</span> button that triggers <span className="font-mono">scripts/match-book-to-graph.ts</span> as a detached child process. New API surface: <span className="font-mono">GET /api/books</span>, <span className="font-mono">POST /api/books/[bookId]/match</span> (ALLOW_EDITS-gated), and <span className="font-mono">GET /api/books/[bookId]/match/status</span> which the client polls every 2s during a run. Progress is streamed to the UI via a JSON tempfile (<span className="font-mono">MATCH_PROGRESS_FILE</span>) written by the script after every BookClaim; the status endpoint also reports the authoritative <span className="font-mono">bookClaimMatch</span> count from the DB.</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 28, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">LLM match enrichment</span> — added <span className="font-mono">reason</span> field to <span className="font-mono">BookClaimMatch</span>. New script <span className="font-mono">scripts/enrich-match-reasons.ts</span> calls <span className="font-mono">claude --print</span> at concurrency 15 to explain each claim↔receipt link in one sentence; replies of &quot;NULL&quot; indicate no meaningful connection and cause the match row to be deleted. Reader UI now shows the reason text (small muted italic) below each match badge. Similarity floor raised from 0.70 → 0.82 to prevent noisy matches from being created in the first place. Supports <span className="font-mono">--dry-run</span> flag.</li>

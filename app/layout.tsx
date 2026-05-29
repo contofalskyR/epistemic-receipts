@@ -31,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/globe" className="text-gray-400 hover:text-white transition-colors">Globe</Link>
           <Link href="/analysis/votes" className="text-gray-400 hover:text-white transition-colors">Analysis</Link>
           <Link href="/reader" className="text-gray-400 hover:text-white transition-colors">Reader</Link>
+          <Link href="/books" className="text-gray-400 hover:text-white transition-colors">Books</Link>
           <Link href="/stats" className="text-gray-400 hover:text-white transition-colors">Stats</Link>
           <Link href="/forthcoming" className="text-gray-400 hover:text-white transition-colors ml-auto">Forthcoming</Link>
           <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated May 28, 2026
+          last updated May 29, 2026
         </footer>
       </body>
     </html>

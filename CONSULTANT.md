@@ -271,6 +271,62 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-29 10:28 EDT — build /books management UI with match button
+- **Commit:** fix: DB audit — backfill nulls, document orphaned record cleanup
+- **Files changed:**
+  - scripts/_audit-db.ts
+  - scripts/_audit-fixes/backfill-edge-revisions.ts
+  - scripts/_audit-fixes/backfill-verification-status.ts
+  - scripts/_audit-fixes/cleanup-nih-orphaned-sources.ts
+  - scripts/_audit-fixes/cleanup-unmatched-book-claims.ts
+  - scripts/_audit-fixes/cleanup-voteview-orphaned-sources.ts
+- **Diff stat:**  6 files changed, 672 insertions(+)
+
+
+### 2026-05-29 — `/books` management UI + match-pipeline trigger API
+
+**What.** New management page at `/books` lists every ingested book with paragraph / extracted-claim / graph-match counts, and a per-book "Match against DB" button that spawns `scripts/match-book-to-graph.ts` as a detached background job and shows live progress.
+
+**API surface.**
+- `GET /api/books` — every Book with `chunkCount`, `claimCount`, `matchCount`.
+- `POST /api/books/[bookId]/match` — gated on `isReadOnly()` (i.e. `ALLOW_EDITS=true` in production). Spawns `npx ts-node --project tsconfig.scripts.json scripts/match-book-to-graph.ts --book <id>` as a detached child with `MATCH_PROGRESS_FILE=/tmp/match-progress-<id>.json`; stdout/stderr redirected to `/tmp/match-log-<id>.txt`. Returns initial state. Returns 409 if a job is already running for this book.
+- `GET /api/books/[bookId]/match/status` — reads the progress JSON tempfile and returns `{ status, processed, matched, total, errors, ...dbMatchCount }`. `dbMatchCount` is the authoritative live count of `BookClaimMatch` rows for the book and is included on every status response as a ground-truth fallback.
+
+**Script change (`scripts/match-book-to-graph.ts`).** Added `MATCH_PROGRESS_FILE` env handling: when set, the script writes a fresh `{ status, processed, matched, total, errors, startedAt, finishedAt?, errorMessage? }` JSON file after every processed BookClaim, at startup ("running"), at completion ("done"), and on fatal error ("error"). All progress writes are wrapped in try/catch — progress reporting is best-effort and never aborts the run.
+
+**UI (`app/books/page.tsx` + `app/books/BooksClient.tsx`).** Server component lists books via Prisma; client component renders each book as a row with the Match button, a status badge, an inline progress bar, and `processed / total · matched N` counters. While `status === 'running'`, the client polls `/match/status` every 2s; polling auto-stops on `done` or `error`. The book row's `matchCount` is reactively updated from `dbMatchCount` on every poll so the UI reflects rows already written to the DB. Upload UI is intentionally stubbed (informational box) — ingest still happens via `scripts/ingest-book.ts`.
+
+**Auth.** `/books` is covered by the existing site-password middleware (matcher `/((?!_next/static|_next/image|favicon\\.ico).*)`); no extra wiring needed. Nav link added in `app/layout.tsx` next to "Reader".
+
+**Notes / limits.** The `POST .../match` route relies on `child_process.spawn` and a local tempfile. This works fine for local dev and a long-running Node host, but won't run on Vercel serverless invocations — by design, this whole page is operator tooling, and the route is `ALLOW_EDITS`-gated so it can't be triggered in default production anyway.
+
+**Verification.** `npx tsc --noEmit` clean (project). `npx tsc --noEmit -p tsconfig.scripts.json` clean for `match-book-to-graph.ts` (remaining errors are pre-existing in other ingesters). Not executed end-to-end against a running process; left for user.
+
+**Files changed:** `app/books/page.tsx` (new), `app/books/BooksClient.tsx` (new), `app/api/books/route.ts` (new), `app/api/books/[bookId]/match/route.ts` (new), `app/api/books/[bookId]/match/status/route.ts` (new), `lib/bookMatchJob.ts` (new), `scripts/match-book-to-graph.ts` (progress-file emission), `app/layout.tsx` (nav link + footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+
+---
+
+### 2026-05-29 — Book↔graph external matcher (`scripts/match-book-to-graph.ts`)
+
+**What.** Built `scripts/match-book-to-graph.ts` to find genuine external cross-references between a book's `BookClaim` rows and the main `Claim` graph (842k rows). Powers the `/reader` match list. Replaces last session's self-referential matching bug.
+
+**Approach.**
+1. Pre-filter candidates via Postgres FTS — keywords extracted from the BookClaim text are joined with `|` into a `to_tsquery('english', ...)`, ranked with `ts_rank`, LIMIT 20. Falls back to keyword-ILIKE OR (which uses the existing trgm GIN index from 2026-05-26) if `to_tsquery` rejects the syntax.
+2. For each BookClaim's candidate set, one call to Claude Haiku (`claude-haiku-4-5-20251001`) judges every candidate as SUPPORTS / CONTRADICTS / RELATED / UNRELATED with a one-sentence reason. Strict instructions to reject keyword-only overlap.
+3. Genuine hits (non-UNRELATED) written to `BookClaimMatch` with `similarityScore` 0.95 / 0.9 / 0.8 by type and the LLM's reason text (already shipped 2026-05-28 as a nullable column).
+
+**Self-reference exclusion.** Claims with `ingestedBy = 'book-analysis:<bookId>'` are excluded from candidate search (this is the tag `analyze-book-connections.ts` uses when ingesting book-derived claims into the main graph).
+
+**Idempotency.** Only processes BookClaims with `matches: { none: {} }`. Re-runs skip BookClaims that already have any match row.
+
+**Other details.** Concurrency 5 BookClaims at a time. Uses `@anthropic-ai/sdk` (added to `package.json`, requires `ANTHROPIC_API_KEY` in `.env.local`). `--dry-run` previews without DB writes. Progress logged every 10 BookClaims.
+
+**Verification.** `npx tsc --noEmit -p tsconfig.scripts.json` — clean for the new script (other pre-existing script errors unrelated). Script not run; left for user.
+
+**Files changed:** `scripts/match-book-to-graph.ts` (new), `package.json` + `package-lock.json` (added `@anthropic-ai/sdk`), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-28 — NARA ingest: bypass 10k API cap with searchAfter cursor
 
 **Problem.** NARA Catalog API v2 hard-caps pagination at 10,000 results per query (page × limit ≤ 10,000). RG59 has ~76k records, RG330 has ~307k. The script failed at page 101 with "Max total results exceeded." Year-range slicing via `dateRangeStart`/`dateRangeEnd` and `startDate`/`endDate` params was investigated but the date filter bleeds through ancestor series date ranges, making it unreliable (e.g. every year ≥ 1945 in RG59 returns ~34k results because series with open-ended ranges encompass all items).
