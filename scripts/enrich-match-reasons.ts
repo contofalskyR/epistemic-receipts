@@ -35,6 +35,10 @@ loadEnvLocal()
 const prisma = new PrismaClient()
 const CONCURRENCY = 15
 const DRY_RUN = process.argv.includes('--dry-run')
+const BOOK_ID = (() => {
+  const idx = process.argv.indexOf('--book')
+  return idx !== -1 ? process.argv[idx + 1] : undefined
+})()
 
 function callClaude(sourceText: string, matchedClaim: string): Promise<string | null> {
   const prompt = [
@@ -106,9 +110,13 @@ async function processChunk(
 
 async function main() {
   if (DRY_RUN) console.log('[dry-run mode — no DB writes]\n')
+  if (BOOK_ID) console.log(`Scoped to book: ${BOOK_ID}\n`)
 
   const matches = await prisma.bookClaimMatch.findMany({
-    where: { reason: null },
+    where: {
+      reason: null,
+      ...(BOOK_ID ? { bookClaim: { chunk: { bookId: BOOK_ID } } } : {}),
+    },
     select: {
       id: true,
       bookClaim: { select: { chunk: { select: { text: true } } } },
