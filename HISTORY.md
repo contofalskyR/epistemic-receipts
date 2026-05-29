@@ -53,6 +53,12 @@ ALLOW_EDITS=true npx ts-node -r dotenv/config scripts/ingest-nara-catalog.ts \
   --record-group 59 --resume --max-pages 100 dotenv_config_path=.env.local
 ```
 
+### RG59 Batch 1 run results (2026-05-29)
+- Pages 1–100 of RG59 (76,870 total). Ingested 304 new records; 9,696 skipped as duplicates already in `nara_catalog_v1`.
+- Run time: ~692s. Cursor saved at page 101 — resume next month with `--resume --max-pages 100`.
+- Takeaway: most of the first 10k RG59 records were already captured in prior NARA runs. Incremental gain from new runs will be smaller as overlap grows. Still worth resuming for the remaining ~67k pages.
+- **DB after this run:** 988,150 total claims, 137,913 NARA records.
+
 ### Monitoring long-running ingest runs (2026-05-29)
 - Use an OpenClaw **isolated cron job** every 15 min: `ps aux | grep ingest-nara-catalog`, `tail -20 /tmp/nara-rg59-full.log`
 - Log output to file: `... 2>&1 | tee /tmp/nara-rg59-full.log &`
