@@ -282,9 +282,9 @@ export default function ReaderClient({ book }: { book: SerializedBook }) {
                                     : m.claim.text}
                                 </span>
                                 {m.reason && (
-                                  <span className="block text-neutral-600 text-[10px] leading-snug mt-0.5 italic">
-                                    {m.reason}
-                                  </span>
+                                  <blockquote className="mt-1 border-l-2 border-amber-600/50 pl-2 text-amber-200/70 text-[10px] leading-snug italic">
+                                    "{m.reason}"
+                                  </blockquote>
                                 )}
                               </span>
                               {m.similarityScore > 0 && (

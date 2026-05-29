@@ -36,13 +36,17 @@ const prisma = new PrismaClient()
 const CONCURRENCY = 15
 const DRY_RUN = process.argv.includes('--dry-run')
 
-function callClaude(claimText: string, receiptText: string): Promise<string | null> {
+function callClaude(sourceText: string, matchedClaim: string): Promise<string | null> {
   const prompt = [
-    `Claim: ${claimText}`,
-    `Receipt: ${receiptText}`,
+    'SOURCE DOCUMENT TEXT:',
+    sourceText,
     '',
-    'In exactly one sentence, explain the specific intellectual or evidentiary connection between these two.',
-    'If there is no meaningful connection (they are only superficially similar), reply with exactly: NULL',
+    'MATCHED CLAIM:',
+    matchedClaim,
+    '',
+    'Extract the exact verbatim phrase or sentence from the SOURCE DOCUMENT TEXT that most directly proves, cites, or supports the MATCHED CLAIM.',
+    'Return only the quote — no explanation, no prefix, no quotation marks.',
+    'If the source text does not contain any language that directly proves or cites the claim, reply with exactly: NULL',
   ].join('\n')
 
   const escaped = prompt.replace(/'/g, "'\\''")
@@ -59,14 +63,14 @@ function callClaude(claimText: string, receiptText: string): Promise<string | nu
 async function processChunk(
   batch: Array<{
     id: string
-    bookClaim: { claimText: string }
+    bookClaim: { chunk: { text: string } }
     claim: { text: string }
   }>,
   counters: { enriched: number; dropped: number; errors: number; total: number },
 ) {
   await Promise.all(
     batch.map(async (match) => {
-      const response = await callClaude(match.bookClaim.claimText, match.claim.text)
+      const response = await callClaude(match.bookClaim.chunk.text, match.claim.text)
 
       if (response === null) {
         counters.errors++
@@ -107,7 +111,7 @@ async function main() {
     where: { reason: null },
     select: {
       id: true,
-      bookClaim: { select: { claimText: true } },
+      bookClaim: { select: { chunk: { select: { text: true } } } },
       claim: { select: { text: true } },
     },
   })
