@@ -53,6 +53,12 @@ ALLOW_EDITS=true npx ts-node -r dotenv/config scripts/ingest-nara-catalog.ts \
   --record-group 59 --resume --max-pages 100 dotenv_config_path=.env.local
 ```
 
+### Monitoring long-running ingest runs (2026-05-29)
+- Use an OpenClaw **isolated cron job** every 15 min: `ps aux | grep ingest-nara-catalog`, `tail -20 /tmp/nara-rg59-full.log`
+- Log output to file: `... 2>&1 | tee /tmp/nara-rg59-full.log &`
+- Job removes itself when it detects "Done" in the log
+- **Gotcha:** model alias `haiku` (without provider prefix) is rejected by the allowlist. Must use full ID: `anthropic/claude-haiku-4-5`
+
 ### API keys
 - Key 1: `KSHVEuDXNd27xXkByehli5Eak8TvnKJi99Kiz7DK` (in `.env.local`)
 - Keys 2–3: register at Catalog_API@nara.gov (free, ~1 week turnaround)

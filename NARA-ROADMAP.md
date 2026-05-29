@@ -152,5 +152,5 @@ To stay under the 10k/month limit while running large RGs (59 = 76k, 330 = 307k)
 |------|----|---------|-------|
 | 2026-05-28 | RG 263 (CIA) | ~5k | First run |
 | 2026-05-28 | RG 128 (Church Committee) | ~67 enriched | Church Committee COINTELPRO records |
-| 2026-05-28 | RG 59 (State Dept) | in progress | Full run, 76k est. |
-| 2026-05-28 | RG 330 (OSD) | in progress | Full run, 307k est. |
+| 2026-05-28–29 | RG 59 (State Dept) | ⏳ running (page-based, cron monitor active) | Full run, 76k est. — cron pings every 15 min |
+| 2026-05-28–29 | RG 330 (OSD) | ⏳ running | Full run, 307k est. |
