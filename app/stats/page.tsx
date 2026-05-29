@@ -10,6 +10,7 @@ import {
 } from "@/lib/stats-queries";
 import { Suspense } from "react";
 import VotingAnalysisSection from "./voting-analysis-section";
+import VotesByPresidencySection from "./VotesByPresidencySection";
 
 const MIN_TOTAL = 10;
 
@@ -706,6 +707,20 @@ export default async function StatsPage() {
           )}
         </section>
       )}
+
+      {/* Congressional Votes by Presidential Administration */}
+      <div className="pt-4 border-t border-zinc-800">
+        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">US Focus</p>
+        <h2 className="mt-1 text-lg font-semibold text-white">
+          Congressional Votes by Presidential Administration
+        </h2>
+        <p className="mt-1 text-xs text-zinc-500">
+          Voteview roll-call records bucketed by US president and historical era.
+        </p>
+      </div>
+      <Suspense fallback={null}>
+        <VotesByPresidencySection />
+      </Suspense>
 
       <Suspense fallback={null}>
         <VotingAnalysisSection />

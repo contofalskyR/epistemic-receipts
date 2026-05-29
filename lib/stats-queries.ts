@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma'
+import { US_PRESIDENTS, ERAS, type President } from '@/lib/us-presidents'
 
 export async function getPassRateByLegislature(): Promise<
   { legislature: string; passRate: number; total: number }[]
@@ -352,6 +353,188 @@ export async function getCongressPartyStats(): Promise<CongressPartyStats> {
     bipartisanCount: bipartisanVotes.length,
     totalWithPartyData: splits.length,
   }
+}
+
+// ── Voting by US Presidency / Era ────────────────────────────────────────────
+// Buckets the 113k+ voteview_v1 votes by presidential administration and by
+// historical era (defined in lib/us-presidents.ts). Uses raw SQL aggregation
+// + LIMIT 1 queries to avoid pulling the full vote set into JS.
+
+export type PresidencyVoteRef = {
+  id: string
+  yesCount: number
+  noCount: number
+  sourceName: string | null
+  sourceUrl: string | null
+}
+
+export type PresidencyStats = {
+  name: string
+  party: President['party']
+  start: string
+  end: string
+  total: number
+  passed: number
+  failed: number
+  passRate: number
+  avgMargin: number
+  mostContested: PresidencyVoteRef | null
+  mostLopsided: PresidencyVoteRef | null
+}
+
+export type EraStats = {
+  label: string
+  start: string
+  end: string
+  total: number
+  passed: number
+  failed: number
+  passRate: number
+  avgMargin: number
+  mostContested: PresidencyVoteRef | null
+}
+
+type AggRow = {
+  total: number
+  passed: number
+  failed: number
+  avg_margin: number | null
+}
+
+type VoteRefRow = {
+  id: string
+  yesCount: number
+  noCount: number
+  sourceName: string | null
+  sourceUrl: string | null
+}
+
+async function aggregateRange(start: Date, end: Date): Promise<AggRow> {
+  const rows = await prisma.$queryRaw<AggRow[]>`
+    SELECT
+      COUNT(*)::int AS total,
+      COALESCE(SUM(CASE WHEN lv.result = 'passed' THEN 1 ELSE 0 END), 0)::int AS passed,
+      COALESCE(SUM(CASE WHEN lv.result = 'failed' THEN 1 ELSE 0 END), 0)::int AS failed,
+      AVG(
+        CASE
+          WHEN lv."yesCount" IS NOT NULL
+            AND lv."noCount" IS NOT NULL
+            AND (lv."yesCount" + lv."noCount") > 0
+          THEN lv."yesCount"::float / (lv."yesCount" + lv."noCount")
+          ELSE NULL
+        END
+      )::float AS avg_margin
+    FROM "LegislativeVote" lv
+    JOIN "Source" s ON s.id = lv."sourceId"
+    WHERE s."ingestedBy" = 'voteview_v1'
+      AND lv."voteDate" >= ${start}
+      AND lv."voteDate" <= ${end}
+  `
+  return rows[0] ?? { total: 0, passed: 0, failed: 0, avg_margin: null }
+}
+
+async function mostContestedInRange(start: Date, end: Date): Promise<PresidencyVoteRef | null> {
+  const rows = await prisma.$queryRaw<VoteRefRow[]>`
+    SELECT lv.id,
+           lv."yesCount" AS "yesCount",
+           lv."noCount" AS "noCount",
+           s.name AS "sourceName",
+           s.url AS "sourceUrl"
+    FROM "LegislativeVote" lv
+    JOIN "Source" s ON s.id = lv."sourceId"
+    WHERE s."ingestedBy" = 'voteview_v1'
+      AND lv."voteDate" >= ${start}
+      AND lv."voteDate" <= ${end}
+      AND lv."yesCount" IS NOT NULL
+      AND lv."noCount" IS NOT NULL
+      AND (lv."yesCount" + lv."noCount") > 0
+    ORDER BY ABS(lv."yesCount" - lv."noCount") ASC,
+             (lv."yesCount" + lv."noCount") DESC
+    LIMIT 1
+  `
+  return rows[0] ?? null
+}
+
+async function mostLopsidedInRange(start: Date, end: Date): Promise<PresidencyVoteRef | null> {
+  const rows = await prisma.$queryRaw<VoteRefRow[]>`
+    SELECT lv.id,
+           lv."yesCount" AS "yesCount",
+           lv."noCount" AS "noCount",
+           s.name AS "sourceName",
+           s.url AS "sourceUrl"
+    FROM "LegislativeVote" lv
+    JOIN "Source" s ON s.id = lv."sourceId"
+    WHERE s."ingestedBy" = 'voteview_v1'
+      AND lv."voteDate" >= ${start}
+      AND lv."voteDate" <= ${end}
+      AND lv."yesCount" IS NOT NULL
+      AND lv."noCount" IS NOT NULL
+      AND (lv."yesCount" + lv."noCount") > 0
+    ORDER BY (lv."yesCount"::float / (lv."yesCount" + lv."noCount")) DESC,
+             (lv."yesCount" + lv."noCount") DESC
+    LIMIT 1
+  `
+  return rows[0] ?? null
+}
+
+function toDateStart(iso: string): Date {
+  return new Date(`${iso}T00:00:00.000Z`)
+}
+
+function toDateEnd(iso: string): Date {
+  return new Date(`${iso}T23:59:59.999Z`)
+}
+
+export async function getVotingByPresidency(): Promise<PresidencyStats[]> {
+  const results = await Promise.all(
+    US_PRESIDENTS.map(async (p): Promise<PresidencyStats | null> => {
+      const start = toDateStart(p.start)
+      const end = toDateEnd(p.end)
+      const agg = await aggregateRange(start, end)
+      if (agg.total === 0) return null
+      const [mostContested, mostLopsided] = await Promise.all([
+        mostContestedInRange(start, end),
+        mostLopsidedInRange(start, end),
+      ])
+      return {
+        name: p.name,
+        party: p.party,
+        start: p.start,
+        end: p.end,
+        total: agg.total,
+        passed: agg.passed,
+        failed: agg.failed,
+        passRate: agg.total > 0 ? agg.passed / agg.total : 0,
+        avgMargin: agg.avg_margin ?? 0,
+        mostContested,
+        mostLopsided,
+      }
+    }),
+  )
+  return results.filter((r): r is PresidencyStats => r !== null)
+}
+
+export async function getVotingByEra(): Promise<EraStats[]> {
+  const results = await Promise.all(
+    ERAS.map(async (era): Promise<EraStats> => {
+      const start = toDateStart(era.start)
+      const end = toDateEnd(era.end)
+      const agg = await aggregateRange(start, end)
+      const mostContested = agg.total > 0 ? await mostContestedInRange(start, end) : null
+      return {
+        label: era.label,
+        start: era.start,
+        end: era.end,
+        total: agg.total,
+        passed: agg.passed,
+        failed: agg.failed,
+        passRate: agg.total > 0 ? agg.passed / agg.total : 0,
+        avgMargin: agg.avg_margin ?? 0,
+        mostContested,
+      }
+    }),
+  )
+  return results
 }
 
 export async function getCrossCountryTopicComparison(
