@@ -2,7 +2,6 @@
 // Set to a strong secret in Vercel env vars; use "changeme" only for local dev.
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import pdfParse from "pdf-parse";
 
 export const dynamic = "force-dynamic";
 
@@ -50,6 +49,9 @@ export async function POST(req: Request) {
 
   if (fileName.endsWith(".pdf")) {
     const buffer = Buffer.from(await file.arrayBuffer());
+    // Dynamic import avoids pdf-parse running its test-file read at module eval time,
+    // which breaks Next.js build (ENOENT on ./test/data/05-versions-space.pdf).
+    const { default: pdfParse } = await import("pdf-parse");
     const parsed = await pdfParse(buffer).catch((e: unknown) => {
       throw new Error(`PDF parse failed: ${e instanceof Error ? e.message : String(e)}`);
     });
