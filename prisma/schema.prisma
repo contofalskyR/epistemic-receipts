@@ -342,6 +342,7 @@ model LegislativeVote {
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
   memberVotes      MemberVote[]
+  historicalEvents HistoricalEventVote[]
 
   @@index([sourceId])
   @@index([result])
@@ -364,16 +365,17 @@ model MemberVote {
 }
 
 model Polity {
-  id             String   @id @default(cuid())
-  name           String
-  countryCode    String?
-  governmentType String // "democracy"|"republic"|"monarchy"|"empire"|"fascist"|"communist"|"authoritarian"|"theocracy"|"city_state"|"tribal"|"colonial"|"other"
-  startYear      Int? // can be negative (BCE)
-  endYear        Int? // null = still active
-  wikidataId     String?  @unique
-  successorOf    String?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id               String                  @id @default(cuid())
+  name             String
+  countryCode      String?
+  governmentType   String // "democracy"|"republic"|"monarchy"|"empire"|"fascist"|"communist"|"authoritarian"|"theocracy"|"city_state"|"tribal"|"colonial"|"other"
+  startYear        Int? // can be negative (BCE)
+  endYear          Int? // null = still active
+  wikidataId       String?                 @unique
+  successorOf      String?
+  createdAt        DateTime                @default(now())
+  updatedAt        DateTime                @updatedAt
+  historicalEvents HistoricalEventPolity[]
 }
 
 // Wikidata cross-reference enrichment — links Source records to Wikidata Q-numbers.
@@ -446,6 +448,26 @@ model BookClaimMatch {
   @@index([claimId])
 }
 
+model ConstituentOpinion {
+  id           String   @id @default(cuid())
+  state        String // e.g. "CA", "TX"
+  district     String? // e.g. "CA-12" — null means state-wide aggregate
+  year         Int
+  topicSlug    String // matches LegislativeVote.topics entries (snake_case) — e.g. "health"
+  supportPct   Float // 0-100; % of respondents supporting the affirmative position
+  sampleSize   Int // number of valid respondents in this aggregate
+  source       String // e.g. "cces_cumulative_2006_2024"
+  questionCode String? // CCES variable id (e.g. "CC18_320a")
+  metadata     Json?
+  createdAt    DateTime @default(now())
+
+  @@unique([state, district, year, topicSlug, questionCode])
+  @@index([year])
+  @@index([state])
+  @@index([topicSlug])
+  @@index([state, year, topicSlug])
+}
+
 model HistoricalEvent {
   id          String   @id @default(cuid())
   name        String
@@ -456,6 +478,8 @@ model HistoricalEvent {
   category    String?  // DIPLOMATIC | INTELLIGENCE | MILITARY | LEGISLATIVE
   createdAt   DateTime @default(now())
   claims      ClaimHistoricalEvent[]
+  votes       HistoricalEventVote[]
+  polities    HistoricalEventPolity[]
 
   @@index([category])
   @@index([startDate])
@@ -471,4 +495,32 @@ model ClaimHistoricalEvent {
   @@id([claimId, historicalEventId])
   @@index([historicalEventId])
   @@index([claimId])
+}
+
+model HistoricalEventVote {
+  id          String          @id @default(cuid())
+  eventId     String
+  voteId      String
+  matchReason String
+  createdAt   DateTime        @default(now())
+  event       HistoricalEvent @relation(fields: [eventId], references: [id])
+  vote        LegislativeVote @relation(fields: [voteId], references: [id])
+
+  @@unique([eventId, voteId])
+  @@index([eventId])
+  @@index([voteId])
+}
+
+model HistoricalEventPolity {
+  id        String          @id @default(cuid())
+  eventId   String
+  polityId  String
+  role      String
+  createdAt DateTime        @default(now())
+  event     HistoricalEvent @relation(fields: [eventId], references: [id])
+  polity    Polity          @relation(fields: [polityId], references: [id])
+
+  @@unique([eventId, polityId])
+  @@index([eventId])
+  @@index([polityId])
 }
