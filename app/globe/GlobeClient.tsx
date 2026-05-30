@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { countryFlag } from "@/lib/countryCodeMap";
 import type { OriginPoint } from "@/app/api/globe/origins/route";
+import { getGeoJSONForYear, type GeoJSONSelection } from "@/lib/historical-geo";
 
 type DensityRow = {
   countryCode: string;
@@ -24,7 +25,13 @@ type CountryDetail = {
   }>;
 };
 
-type TooltipState = { x: number; y: number; name: string; count: number } | null;
+type TooltipState = {
+  x: number;
+  y: number;
+  name: string;
+  count: number;
+  source: "modern" | "historical" | "paleo" | null;
+} | null;
 type ViewMode = "heatmap" | "origins";
 
 const STATUS_COLORS: Record<string, string> = {
@@ -37,23 +44,25 @@ function claimBadge(status: string) {
   return STATUS_COLORS[status] ?? "bg-gray-800 text-gray-400 border-gray-700";
 }
 
-const GEOJSON_URL =
-  "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson";
+const MIN_YEAR = 1789;
+const MAX_YEAR = 2026;
 
-const GEOJSON_50M_URL =
-  "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson";
+function formatYear(year: number): string {
+  if (year >= MAX_YEAR) return "Present";
+  return `${year}`;
+}
 
 export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const globeRef = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const geoData110Ref = useRef<any>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const geoData50Ref = useRef<any>(null);
+  const geoCache = useRef<Map<string, any>>(new Map());
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const hoveredFeatRef = useRef<any>(null);
   const viewModeRef = useRef<ViewMode>("heatmap");
+  const currentSourceRef = useRef<"modern" | "historical" | "paleo" | null>("modern");
+  const playIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const [tooltip, setTooltip] = useState<TooltipState>(null);
   const [sidebar, setSidebar] = useState<CountryDetail | null>(null);
@@ -63,11 +72,34 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [searchFocused, setSearchFocused] = useState(false);
   const [claimFilter, setClaimFilter] = useState("");
   const [viewMode, setViewMode] = useState<ViewMode>("heatmap");
+
+  // Time slider state
+  const [currentYear, setCurrentYear] = useState<number>(MAX_YEAR);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [densityState, setDensityState] = useState<DensityRow[]>(density);
+  const [totalClaimCount, setTotalClaimCount] = useState<number>(
+    density.reduce((sum, d) => sum + d.claimCount, 0)
+  );
+  const [loadingDensity, setLoadingDensity] = useState(false);
   const [originsData, setOriginsData] = useState<OriginPoint[] | null>(null);
+  const [loadingOrigins, setLoadingOrigins] = useState(false);
+  const [currentGeoSelection, setCurrentGeoSelection] = useState<GeoJSONSelection | null>(null);
+  const [loadingGeo, setLoadingGeo] = useState(false);
+
+  const isAtPresent = currentYear >= MAX_YEAR;
 
   const sortedDensity = useMemo(
-    () => [...density].sort((a, b) => b.claimCount - a.claimCount),
-    [density]
+    () => [...densityState].sort((a, b) => b.claimCount - a.claimCount),
+    [densityState]
+  );
+
+  const densityMap = useMemo(
+    () => new Map(densityState.map((d) => [d.countryCode, d])),
+    [densityState]
+  );
+  const maxCount = useMemo(
+    () => Math.max(...densityState.map((d) => d.claimCount), 1),
+    [densityState]
   );
 
   const searchResults = useMemo(() => {
@@ -89,15 +121,9 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     return sidebar.recentClaims.filter((c) => c.text.toLowerCase().includes(q));
   }, [sidebar, claimFilter]);
 
-  // Build lookup: ISO A2 → claimCount
-  const densityMap = new Map(density.map((d) => [d.countryCode, d]));
-  const maxCount = Math.max(...density.map((d) => d.claimCount), 1);
-
-  // Log scale color: 0 claims = #1a1a2e, high = #f59e0b
   function countToColor(count: number): string {
     if (count === 0) return "#1c1c2e";
     const t = Math.log(count + 1) / Math.log(maxCount + 1);
-    // interpolate dark blue (#1e3a5f) → orange-gold (#f59e0b)
     const r = Math.round(30 + t * (245 - 30));
     const g = Math.round(58 + t * (158 - 58));
     const b = Math.round(95 + t * (11 - 95));
@@ -125,20 +151,129 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     [openSidebar]
   );
 
-  // Keep viewModeRef in sync so globe callbacks can read it without stale closure issues
   useEffect(() => {
     viewModeRef.current = viewMode;
   }, [viewMode]);
 
-  // Fetch origins data on first switch to origins mode
+  // Debounced density refetch when year changes
   useEffect(() => {
-    if (viewMode !== "origins" || originsData !== null) return;
-    fetch("/api/globe/origins")
-      .then(r => r.ok ? r.json() : [])
-      .then((data: OriginPoint[]) => setOriginsData(data))
-      .catch(() => setOriginsData([]));
-  }, [viewMode, originsData]);
+    if (isAtPresent) {
+      setDensityState(density);
+      setTotalClaimCount(density.reduce((sum, d) => sum + d.claimCount, 0));
+      return;
+    }
+    let cancelled = false;
+    const t = setTimeout(async () => {
+      setLoadingDensity(true);
+      try {
+        const res = await fetch(`/api/globe/density-temporal?before=${currentYear}`);
+        if (!res.ok) return;
+        const data: { countries: DensityRow[]; totalClaimCount: number } = await res.json();
+        if (cancelled) return;
+        setDensityState(data.countries);
+        setTotalClaimCount(data.totalClaimCount);
+      } finally {
+        if (!cancelled) setLoadingDensity(false);
+      }
+    }, 200);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, [currentYear, isAtPresent, density]);
 
+  // Debounced origins refetch when in origins mode + year changes
+  useEffect(() => {
+    if (viewMode !== "origins") return;
+    let cancelled = false;
+    const t = setTimeout(async () => {
+      setLoadingOrigins(true);
+      try {
+        const url = isAtPresent
+          ? "/api/globe/origins"
+          : `/api/globe/origins?yearTo=${currentYear}`;
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const data: OriginPoint[] = await res.json();
+        if (cancelled) return;
+        setOriginsData(data);
+      } finally {
+        if (!cancelled) setLoadingOrigins(false);
+      }
+    }, 200);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, [viewMode, currentYear, isAtPresent]);
+
+  // Load historical/modern GeoJSON whenever currentYear changes
+  useEffect(() => {
+    if (!globeReady || !globeRef.current) return;
+
+    const selection = getGeoJSONForYear(currentYear);
+    const cacheKey = selection.path;
+    currentSourceRef.current = selection.source;
+
+    const cached = geoCache.current.get(cacheKey);
+    if (cached) {
+      globeRef.current.polygonsData(cached.features);
+      setCurrentGeoSelection(selection);
+      return;
+    }
+
+    let cancelled = false;
+    setLoadingGeo(true);
+    (async () => {
+      try {
+        const res = await fetch(selection.path);
+        if (!res.ok) throw new Error(`Failed to fetch ${selection.path}`);
+        const data = await res.json();
+        if (cancelled) return;
+        geoCache.current.set(cacheKey, data);
+        if (globeRef.current) {
+          globeRef.current.polygonsData(data.features);
+        }
+        setCurrentGeoSelection(selection);
+      } catch (err) {
+        console.error("Failed to load GeoJSON:", err);
+      } finally {
+        if (!cancelled) setLoadingGeo(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [currentYear, globeReady]);
+
+  // Play/pause animation: advance currentYear every 120ms when playing
+  useEffect(() => {
+    if (!isPlaying) {
+      if (playIntervalRef.current) {
+        clearInterval(playIntervalRef.current);
+        playIntervalRef.current = null;
+      }
+      return;
+    }
+    playIntervalRef.current = setInterval(() => {
+      setCurrentYear((y) => {
+        if (y >= MAX_YEAR) {
+          setIsPlaying(false);
+          return MAX_YEAR;
+        }
+        return y + 1;
+      });
+    }, 120);
+    return () => {
+      if (playIntervalRef.current) {
+        clearInterval(playIntervalRef.current);
+        playIntervalRef.current = null;
+      }
+    };
+  }, [isPlaying]);
+
+  // Initial globe init (modern GeoJSON only — historical is loaded on demand)
   useEffect(() => {
     let cancelled = false;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -147,21 +282,14 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     async function init() {
       if (!containerRef.current) return;
       const GlobeGL = (await import("globe.gl")).default;
-
-      // Fetch both resolutions in parallel so toggling is instant
-      const [geo110Res, geo50Res] = await Promise.all([
-        fetch(GEOJSON_URL),
-        fetch(GEOJSON_50M_URL),
-      ]);
-      const [geo110, geo50] = await Promise.all([
-        geo110Res.json(),
-        geo50Res.json(),
-      ]);
+      const modernSelection = getGeoJSONForYear(MAX_YEAR);
+      const res = await fetch(modernSelection.path);
+      const geo = await res.json();
 
       if (cancelled || !containerRef.current) return;
 
-      geoData110Ref.current = geo110;
-      geoData50Ref.current = geo50;
+      geoCache.current.set(modernSelection.path, geo);
+      currentSourceRef.current = "modern";
 
       const el = containerRef.current;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -171,15 +299,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         .backgroundColor("#0a0a0a")
         .atmosphereColor("#1a3a6e")
         .atmosphereAltitude(0.12)
-        .polygonsData(geo110.features)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .polygonCapColor((feat: any) => {
-          const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
-          const row = densityMap.get(code);
-          return countToColor(row?.claimCount ?? 0);
-        })
+        .polygonsData(geo.features)
         .polygonSideColor(() => "rgba(10,10,20,0.6)")
-        .polygonStrokeColor(() => "#2a2a4a")
         .polygonAltitude(0.005)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .onPolygonHover((feat: any, _prev: unknown, ev: MouseEvent) => {
@@ -187,22 +308,24 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             setTooltip(null);
             if (viewModeRef.current === "origins") {
               hoveredFeatRef.current = null;
-              globeRef.current?.polygonCapColor(() => "#1a2035");
+              if (currentSourceRef.current === "modern") {
+                globeRef.current?.polygonCapColor(() => "#1a2035");
+              }
             }
             return;
           }
           const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
-          const name = feat.properties?.NAME ?? feat.properties?.name ?? code;
-          const row = densityMap.get(code);
+          const name = feat.properties?.NAME ?? feat.properties?.name ?? code ?? "Unknown region";
+          const row = code ? densityMap.get(code) : undefined;
           setTooltip({
             x: ev?.clientX ?? 0,
             y: ev?.clientY ?? 0,
             name,
             count: row?.claimCount ?? 0,
+            source: currentSourceRef.current,
           });
-          if (viewModeRef.current === "origins") {
+          if (viewModeRef.current === "origins" && currentSourceRef.current === "modern") {
             hoveredFeatRef.current = feat;
-            // Capture the ref value so the closure stays stable
             const hovered = feat;
             globeRef.current?.polygonCapColor(
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -212,11 +335,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         })
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .onPolygonClick((feat: any) => {
+          // Only modern borders carry ISO codes that map to /api/globe/country
+          if (currentSourceRef.current !== "modern") return;
           const code = feat?.properties?.ISO_A2 ?? feat?.properties?.iso_a2;
           if (code && code !== "-99") openSidebar(code);
         });
 
-      // Auto-rotate
       globeInstance.controls().autoRotate = true;
       globeInstance.controls().autoRotateSpeed = 0.4;
       globeInstance.controls().addEventListener("start", () => {
@@ -224,6 +348,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       });
 
       globeRef.current = globeInstance;
+      setCurrentGeoSelection(modernSelection);
       setGlobeReady(true);
     }
 
@@ -232,7 +357,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       cancelled = true;
       if (globeInstance) {
         try {
-          // globe.gl cleanup
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (globeInstance as any)._destructor?.();
         } catch {}
@@ -241,7 +365,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Handle resize
+  // Resize handler
   useEffect(() => {
     function onResize() {
       if (globeRef.current && containerRef.current) {
@@ -254,50 +378,68 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Apply view mode switch to existing globe instance (no reinit)
+  // Apply view mode + geo source + density colors. This runs whenever any of
+  // these change so the globe re-renders consistently when the slider moves.
   useEffect(() => {
     if (!globeRef.current || !globeReady) return;
-
     hoveredFeatRef.current = null;
 
+    const source = currentGeoSelection?.source ?? "modern";
+
     if (viewMode === "heatmap") {
-      const data = geoData110Ref.current;
-      if (!data) return;
-      globeRef.current
-        .polygonsData(data.features)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .polygonCapColor((feat: any) => {
-          const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
-          const row = densityMap.get(code);
-          return countToColor(row?.claimCount ?? 0);
-        })
-        .polygonStrokeColor(() => "#2a2a4a")
-        .polygonAltitude(0.005)
-        .polygonSideColor(() => "rgba(10,10,20,0.6)")
-        .pointsData([])
-        .backgroundColor("#0a0a0a");
+      if (source === "modern") {
+        globeRef.current
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .polygonCapColor((feat: any) => {
+            const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
+            const row = code ? densityMap.get(code) : undefined;
+            return countToColor(row?.claimCount ?? 0);
+          })
+          .polygonStrokeColor(() => "#2a2a4a")
+          .polygonSideColor(() => "rgba(10,10,20,0.6)")
+          .polygonAltitude(0.005)
+          .pointsData([])
+          .backgroundColor("#0a0a0a");
+      } else {
+        // Historical era — sepia/parchment fill; click disabled.
+        globeRef.current
+          .polygonCapColor(() => "#2e2820")
+          .polygonStrokeColor(() => "#5a4a3a")
+          .polygonSideColor(() => "rgba(20,15,10,0.6)")
+          .polygonAltitude(0.005)
+          .pointsData([])
+          .backgroundColor("#0a0a0a");
+      }
     } else {
-      // Origins mode — light pollution style, keep country outlines for geography reference
-      if (!originsData) return; // wait for data
-      const maxCount = Math.max(...originsData.map(d => d.claimCount), 1);
-      const data = geoData110Ref.current;
+      // Origins mode
+      const pts = originsData ?? [];
+      const maxOrigin = Math.max(...pts.map((d) => d.claimCount), 1);
+
+      if (source === "modern") {
+        globeRef.current
+          .polygonCapColor(() => "#0d1117")
+          .polygonSideColor(() => "rgba(0,0,0,0)")
+          .polygonStrokeColor(() => "rgba(80,100,140,0.5)")
+          .polygonAltitude(0.001);
+      } else {
+        globeRef.current
+          .polygonCapColor(() => "#1a1610")
+          .polygonSideColor(() => "rgba(0,0,0,0)")
+          .polygonStrokeColor(() => "rgba(140,110,80,0.5)")
+          .polygonAltitude(0.001);
+      }
 
       globeRef.current
-        .polygonsData(data?.features ?? [])
-        .polygonCapColor(() => "#0d1117")
-        .polygonSideColor(() => "rgba(0,0,0,0)")
-        .polygonStrokeColor(() => "rgba(80,100,140,0.5)")
-        .polygonAltitude(0.001)
-        .pointsData(originsData)
+        .pointsData(pts)
         .pointLat((d: OriginPoint) => d.lat)
         .pointLng((d: OriginPoint) => d.lon)
         .pointAltitude(0.01)
         .pointRadius((d: OriginPoint) => {
-          const t = Math.log(d.claimCount + 1) / Math.log(maxCount + 1);
+          const t = Math.log(d.claimCount + 1) / Math.log(maxOrigin + 1);
           return 0.15 + t * 1.8;
         })
         .pointColor((d: OriginPoint) => {
-          const t = Math.log(d.claimCount + 1) / Math.log(maxCount + 1);
+          const t = Math.log(d.claimCount + 1) / Math.log(maxOrigin + 1);
           const g = Math.round(180 + t * 75);
           const b = Math.round(t * 80);
           const a = 0.18 + t * 0.32;
@@ -308,14 +450,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         .backgroundColor("#050505");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode, globeReady, originsData]);
+  }, [viewMode, globeReady, densityMap, maxCount, originsData, currentGeoSelection]);
 
   return (
     <div className="relative" style={{ width: "100%", height: "90vh", background: "#0a0a0a" }}>
-      {/* Globe canvas */}
       <div ref={containerRef} className="w-full h-full" />
 
-      {/* Loading overlay */}
       {!globeReady && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]">
           <div className="flex flex-col items-center gap-3">
@@ -325,25 +465,27 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       )}
 
-      {/* Tooltip */}
       {tooltip && (
         <div
           className="fixed z-50 pointer-events-none px-3 py-2 rounded-lg bg-gray-900/95 border border-gray-700 text-sm shadow-xl"
           style={{ left: tooltip.x + 14, top: tooltip.y - 10 }}
         >
           <span className="font-medium text-white">{tooltip.name}</span>
-          {tooltip.count > 0 ? (
-            <span className="ml-2 text-amber-400">{tooltip.count.toLocaleString()} claims</span>
-          ) : (
-            <span className="ml-2 text-gray-500">no claims</span>
-          )}
+          {tooltip.source === "modern" ? (
+            tooltip.count > 0 ? (
+              <span className="ml-2 text-amber-400">{tooltip.count.toLocaleString()} claims</span>
+            ) : (
+              <span className="ml-2 text-gray-500">no claims</span>
+            )
+          ) : tooltip.source === "historical" ? (
+            <span className="ml-2 text-amber-400/70 text-xs">historical entity</span>
+          ) : null}
         </div>
       )}
 
-      {/* View mode pill toggle — fixed top-right, clears nav */}
+      {/* View mode pill toggle */}
       <div className="fixed top-[52px] right-4 z-40">
         <div className="relative flex items-center bg-gray-900/80 backdrop-blur border border-gray-700 rounded-full p-1">
-          {/* Sliding active indicator */}
           <div
             className="absolute top-1 bottom-1 rounded-full bg-amber-500 transition-transform duration-300 ease-in-out"
             style={{
@@ -375,7 +517,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       </div>
 
-      {/* Search panel — fixed top-left, clears nav */}
+      {/* Search panel */}
       <div className="fixed top-[52px] left-4 w-64 z-30">
         <div className="relative">
           <input
@@ -384,7 +526,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setSearchFocused(true)}
             onBlur={() => {
-              // Delay so click on a result registers before blur closes it.
               setTimeout(() => setSearchFocused(false), 120);
             }}
             placeholder="Search countries…"
@@ -398,7 +539,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
                   <button
                     type="button"
                     onMouseDown={(e) => {
-                      // Use onMouseDown so it fires before the input's onBlur.
                       e.preventDefault();
                       handleSelectResult(row.countryCode);
                     }}
@@ -422,9 +562,102 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       </div>
 
-      {/* Legend — fixed bottom-left, only in heatmap mode */}
-      {viewMode === "heatmap" && (
-        <div className="fixed bottom-6 left-6 z-30 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
+      {/* Time slider — fixed bottom-center */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-2xl">
+        <div className="bg-gray-900/90 backdrop-blur border border-gray-700 rounded-xl px-5 py-3">
+          <div className="flex items-center gap-3 mb-2">
+            <button
+              type="button"
+              onClick={() => {
+                if (isAtPresent) {
+                  // Restart from MIN_YEAR when at the end
+                  setCurrentYear(MIN_YEAR);
+                  setIsPlaying(true);
+                } else {
+                  setIsPlaying((p) => !p);
+                }
+              }}
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-amber-500 hover:bg-amber-400 text-gray-900 text-xs font-bold transition-colors"
+              aria-label={isPlaying ? "Pause" : "Play"}
+              title={isPlaying ? "Pause" : "Play through history"}
+            >
+              {isPlaying ? "❚❚" : "▶"}
+            </button>
+            <div className="flex-1 text-center">
+              <div className="text-base font-semibold text-white leading-tight">
+                {formatYear(currentYear)}
+              </div>
+              <div className="text-[11px] text-gray-500 leading-tight">
+                {loadingDensity || loadingOrigins ? (
+                  "Loading…"
+                ) : isAtPresent ? (
+                  `${totalClaimCount.toLocaleString()} claims (all time)`
+                ) : (
+                  `${totalClaimCount.toLocaleString()} claims through ${currentYear}`
+                )}
+              </div>
+              {currentGeoSelection && !isAtPresent && (
+                <div className="text-[11px] mt-0.5 flex items-center justify-center gap-1">
+                  {loadingGeo && (
+                    <div className="w-2.5 h-2.5 rounded-full border border-amber-400 border-t-transparent animate-spin" />
+                  )}
+                  <span
+                    className={
+                      currentGeoSelection.source === "historical"
+                        ? "text-amber-400/80"
+                        : "text-emerald-400/80"
+                    }
+                  >
+                    {currentGeoSelection.label}
+                  </span>
+                </div>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setIsPlaying(false);
+                setCurrentYear(MAX_YEAR);
+              }}
+              disabled={isAtPresent && !isPlaying}
+              className="px-2 py-1 text-[11px] rounded border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              title="Reset to present"
+            >
+              Now
+            </button>
+          </div>
+
+          <div className="relative">
+            <input
+              type="range"
+              min={MIN_YEAR}
+              max={MAX_YEAR}
+              step={1}
+              value={currentYear}
+              onChange={(e) => {
+                setIsPlaying(false);
+                setCurrentYear(parseInt(e.target.value, 10));
+              }}
+              className="w-full h-2 bg-gradient-to-r from-amber-900 via-amber-700 to-amber-500 rounded-lg appearance-none cursor-pointer
+                [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:cursor-pointer
+                [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
+              aria-label="Year"
+            />
+            <div className="flex justify-between text-[10px] text-gray-500 mt-1">
+              <span>{MIN_YEAR}</span>
+              <span>1850</span>
+              <span>1900</span>
+              <span>1950</span>
+              <span>2000</span>
+              <span>Now</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Legend — only in heatmap mode */}
+      {viewMode === "heatmap" && currentGeoSelection?.source === "modern" && (
+        <div className="fixed bottom-[120px] left-6 z-30 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
           <span>Low</span>
           <div
             className="w-24 h-3 rounded"
@@ -441,12 +674,20 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           </a>
         </div>
       )}
+      {viewMode === "heatmap" && currentGeoSelection?.source === "historical" && (
+        <div className="fixed bottom-[120px] left-6 z-30 flex items-center gap-2 bg-gray-900/80 rounded-lg px-3 py-2 border border-gray-800 text-xs text-gray-400">
+          <div className="w-4 h-3 rounded" style={{ background: "#2e2820", border: "1px solid #5a4a3a" }} />
+          <span className="text-amber-400">Historical borders</span>
+          <span className="text-gray-500">— click disabled</span>
+        </div>
+      )}
 
-      {/* Sidebar — fixed right panel, starts below nav */}
+      {/* Sidebar */}
       {(loadingSidebar || sidebar) && (
-        <div className="fixed right-0 w-80 bg-gray-950/95 border-l border-gray-800 flex flex-col shadow-2xl overflow-hidden z-40"
-          style={{ top: 45, bottom: 0 }}>
-          {/* Header */}
+        <div
+          className="fixed right-0 w-80 bg-gray-950/95 border-l border-gray-800 flex flex-col shadow-2xl overflow-hidden z-40"
+          style={{ top: 45, bottom: 0 }}
+        >
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
             {sidebar ? (
               <div>
@@ -468,7 +709,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             </button>
           </div>
 
-          {/* Claim filter */}
           {sidebar && sidebar.recentClaims.length > 0 && (
             <div className="px-5 py-3 border-b border-gray-800 space-y-2">
               <input
@@ -485,7 +725,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             </div>
           )}
 
-          {/* Claims list */}
           <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
             {loadingSidebar && (
               <div className="flex justify-center py-8">
@@ -517,7 +756,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             )}
           </div>
 
-          {/* Footer link */}
           {sidebar && (
             <div className="px-5 py-3 border-t border-gray-800">
               <a

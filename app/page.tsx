@@ -591,6 +591,13 @@ function HomeContent() {
         </div>
 
         <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
+          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 30, 2026</p>
+          <ul className="space-y-1 text-xs text-gray-500">
+            <li><span className="text-gray-400">Globe time slider + historical borders</span> — <span className="font-mono">/globe</span> now has a 1789→2026 year slider with a play button that animates the heatmap (and origins) across history. As the year moves back, the modern Natural Earth borders swap to nearest-snapshot historical borders from <span className="font-mono">aourednik/historical-basemaps</span> (parchment fill, click disabled). Density refetches against <span className="font-mono">/api/globe/density-temporal?before=YYYY</span> and the new <span className="font-mono">/api/globe/origins?yearTo=YYYY</span> filter; both debounce at 200ms. GeoJSON files are lazy-fetched from <span className="font-mono">public/geo/historical/</span> and cached in-memory per session.</li>
+          </ul>
+        </div>
+
+        <div className="rounded-md border border-gray-800/60 bg-gray-900/40 px-4 py-3 space-y-1.5">
           <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">May 29, 2026</p>
           <ul className="space-y-1 text-xs text-gray-500">
             <li><span className="text-gray-400">/books management UI</span> — new <span className="font-mono">/books</span> page lists every ingested book with paragraph / claim / graph-match counts and a per-book <span className="font-mono">Match against DB</span> button that triggers <span className="font-mono">scripts/match-book-to-graph.ts</span> as a detached child process. New API surface: <span className="font-mono">GET /api/books</span>, <span className="font-mono">POST /api/books/[bookId]/match</span> (ALLOW_EDITS-gated), and <span className="font-mono">GET /api/books/[bookId]/match/status</span> which the client polls every 2s during a run. Progress is streamed to the UI via a JSON tempfile (<span className="font-mono">MATCH_PROGRESS_FILE</span>) written by the script after every BookClaim; the status endpoint also reports the authoritative <span className="font-mono">bookClaimMatch</span> count from the DB.</li>

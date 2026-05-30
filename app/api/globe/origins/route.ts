@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { PIPELINE_ORIGINS } from "@/lib/globe-origins";
 
@@ -12,16 +12,37 @@ export type OriginPoint = {
   pipelines: string[];
 };
 
-export async function GET() {
-  type Row = { ingestedBy: string; claim_count: bigint };
-  const rows = await prisma.$queryRaw<Row[]>`
-    SELECT "ingestedBy", COUNT(*) AS claim_count
-    FROM "Claim"
-    WHERE deleted = false AND "ingestedBy" IS NOT NULL
-    GROUP BY "ingestedBy"
-  `;
+type Row = { ingestedBy: string; claim_count: bigint };
 
-  // Merge pipelines at the same city
+function yearToDate(year: number): Date {
+  return new Date(Date.UTC(year, 11, 31, 23, 59, 59, 999));
+}
+
+export async function GET(request: NextRequest) {
+  const yearToParam = request.nextUrl.searchParams.get("yearTo");
+  const yearTo = yearToParam ? parseInt(yearToParam, 10) : null;
+
+  let rows: Row[];
+  if (yearTo !== null && !isNaN(yearTo)) {
+    const before = yearToDate(yearTo);
+    rows = await prisma.$queryRaw<Row[]>`
+      SELECT "ingestedBy", COUNT(*) AS claim_count
+      FROM "Claim"
+      WHERE deleted = false
+        AND "ingestedBy" IS NOT NULL
+        AND "claimEmergedAt" IS NOT NULL
+        AND "claimEmergedAt" <= ${before}
+      GROUP BY "ingestedBy"
+    `;
+  } else {
+    rows = await prisma.$queryRaw<Row[]>`
+      SELECT "ingestedBy", COUNT(*) AS claim_count
+      FROM "Claim"
+      WHERE deleted = false AND "ingestedBy" IS NOT NULL
+      GROUP BY "ingestedBy"
+    `;
+  }
+
   const cityMap = new Map<string, OriginPoint>();
   for (const row of rows) {
     const origin = PIPELINE_ORIGINS[row.ingestedBy];

@@ -271,6 +271,54 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-30 — Globe time slider + historical borders on `/globe`
+
+**What.** The main `/globe` page now has a focused 1789→2026 year slider (with
+play/pause and reset-to-Now controls) anchored at bottom-center. As the year
+moves, two things happen:
+
+1. **Heatmap / origins data is filtered.** When the year is at 2026 ("Present")
+   the page reuses the SSR `density` prop and the existing
+   `/api/globe/origins` payload (no extra round-trip). When the year is
+   earlier, the client debounces (200ms) and refetches
+   `/api/globe/density-temporal?before=YYYY` for heatmap mode, or
+   `/api/globe/origins?yearTo=YYYY` for origins mode. Both endpoints filter
+   `Claim` rows by `claimEmergedAt <= Dec 31, YYYY`.
+2. **Country borders swap to the nearest historical snapshot.** Uses the
+   existing `lib/historical-geo.ts` helper (`getGeoJSONForYear`) and the
+   GeoJSON files already on disk in `public/geo/historical/` (sourced from
+   `aourednik/historical-basemaps`). Below ~2010 the borders render in a
+   parchment palette (`#2e2820` fill / `#5a4a3a` stroke); click-to-open-sidebar
+   is intentionally disabled on historical polygons because ISO_A2 codes
+   don't apply.
+
+**Files touched.**
+- `app/globe/GlobeClient.tsx` — full rewrite of the client component to add
+  slider state, debounced density/origins refetch, GeoJSON cache + lazy loader
+  per year, animation interval (120ms/step), and a sepia legend for the
+  historical case. Preserves all existing UX: heatmap↔origins pill, country
+  search, click-to-sidebar, hover tooltips.
+- `app/api/globe/origins/route.ts` — now accepts `?yearTo=YYYY` and filters
+  `Claim` by `claimEmergedAt`.
+
+**Not modified.** `/api/globe/density-temporal` already supported `?before=`
+from the Globe Lab work; reused as-is. `/api/globe/density` (the simple
+non-temporal route) was left alone since the SSR path on `/globe` calls Prisma
+directly, not that route.
+
+**Verification.** `npx tsc --noEmit` clean. The GeoJSON files referenced by
+`historical-geo.ts` (e.g. `world_1800.geojson`, `world_1900.geojson`,
+`world_1945.geojson`, `world_2010.geojson`) are all present under
+`public/geo/historical/` — verified by `ls`. Modern borders use the Natural
+Earth 110m URL that the existing globe was already loading. No new env vars,
+no schema changes, no DB writes.
+
+**Why this scope.** The Globe Lab (`/globe/lab`) already had a deep-time
+logarithmic slider and the historical-GeoJSON loader, but `/globe` itself was
+static. Bringing a focused 1789-onward slider to the main page surfaces the
+legislative time-coverage story for the typical visitor without exposing them
+to paleogeography. The lab remains the experimental sandbox.
+
 ### 2026-05-29 — All-Legislative-Votes overview at top of /stats
 
 **What.** New "All Legislative Votes" overview section now leads the `/stats`
