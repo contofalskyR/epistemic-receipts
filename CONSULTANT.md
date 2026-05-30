@@ -271,6 +271,41 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-30 — Direct Polity↔Vote + Polity↔Claim linking (462k links)
+
+**What.** Ran `scripts/link-polity-votes-claims.ts` with `ALLOW_EDITS=true` to populate the `PolityVote` and `PolityClaim` junction tables that were created (but unfilled) by migration `20260530190000_add_polity_vote_claim`. Links are derived from each row's pipeline/dataSource → alpha-2 → alpha-3 country code (via `lib/globe-pipeline-country.ts`) intersected with `Polity.countryCode` and the row's date falling within `[Polity.startYear, Polity.endYear]`.
+
+**DB state.**
+- `PolityVote` rows: **114,367** (from 116,267 LegislativeVote rows; 1,900 skipped — primarily `howtheyvote_eu` multi-country and unmapped dataSources).
+- `PolityClaim` rows: **347,884** (from 701,363 Claims with `claimEmergedAt`; 346,920 skipped no-country-map, 6,559 no-polity).
+- 205 of 2,361 Polities had an ISO alpha-3 countryCode (the others are historical polities without ISO codes — Roman Empire, etc., reserved for future curation).
+
+**Why.** Unlocks "all claims/votes related to country X" browsing and a polity filter for `/globe`. Pairs with the existing `HistoricalEventPolity` Phase-3 work to give every legislative receipt a polity dimension.
+
+**Verification.** Per AGENTS.md rule — final counts read from the DB after the run match the script's reported inserts (114,367 + 347,884 = 462,251 link rows). Dry-run was executed first and matched final write counts exactly (0 pre-existing).
+
+**No schema change this run.** Models `PolityVote` and `PolityClaim` and the migration were already in place (added 2026-05-30 earlier). This run populates them.
+
+### 2026-05-30 — Party-line backfill verification (no-op)
+
+**What.** Triggered `.github/workflows/backfill-congress-party.yml` (run
+`26692826626`) to populate `LegislativeVote.byPartyJson` for any congress_v1
+rows still missing it. Workflow completed in 33s with `Loaded 0 candidate
+row(s)` — the backfill is fully drained.
+
+**DB state verified.** congress_v1 `LegislativeVote` total = 505, all 505 have
+`byPartyJson` populated (100% coverage). No rows updated.
+
+**Why.** The /stats "Party Line vs Bipartisan" section (`lib/stats-queries.ts`)
+keys off `byPartyJson`; this run confirms the surface has full congress_v1
+coverage and no further backfill work remains for that pipeline. House Clerk
+(`clerk.house.gov/evs/<year>/roll<NNN>.xml`) and Senate LIS
+(`senate.gov/.../vote_<congress>_<session>_<roll>.xml`) sources continue to be
+the canonical party-tally inputs — Congress.gov v3 has no /vote endpoint.
+
+**No code or schema changes.** Script (`scripts/backfill-congress-party-votes.ts`)
+and workflow already in place from earlier runs (2026-05-25, 2026-05-30).
+
 ### 2026-05-30 — CCES representation-gap feature (`/analysis/representation`)
 
 **What.** New end-to-end feature joining Harvard Dataverse Cooperative Election

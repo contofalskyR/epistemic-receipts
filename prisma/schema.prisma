@@ -49,6 +49,7 @@ model Claim {
   topics                   ClaimTopic[]
   bookClaimMatches         BookClaimMatch[]
   historicalEvents         ClaimHistoricalEvent[]
+  polityLinks              PolityClaim[]
 
   @@index([academicFieldId])
   @@index([ingestedBy])
@@ -343,6 +344,7 @@ model LegislativeVote {
   updatedAt        DateTime     @updatedAt
   memberVotes      MemberVote[]
   historicalEvents HistoricalEventVote[]
+  polityVotes      PolityVote[]
 
   @@index([sourceId])
   @@index([result])
@@ -376,6 +378,8 @@ model Polity {
   createdAt        DateTime                @default(now())
   updatedAt        DateTime                @updatedAt
   historicalEvents HistoricalEventPolity[]
+  polityVotes      PolityVote[]
+  polityClaimLinks PolityClaim[]
 }
 
 // Wikidata cross-reference enrichment — links Source records to Wikidata Q-numbers.
@@ -523,4 +527,34 @@ model HistoricalEventPolity {
   @@unique([eventId, polityId])
   @@index([eventId])
   @@index([polityId])
+}
+
+model PolityVote {
+  id          String          @id @default(cuid())
+  polityId    String
+  voteId      String
+  matchMethod String          // "auto_country_date" | "manual"
+  createdAt   DateTime        @default(now())
+
+  polity Polity          @relation(fields: [polityId], references: [id])
+  vote   LegislativeVote @relation(fields: [voteId], references: [id])
+
+  @@unique([polityId, voteId])
+  @@index([polityId])
+  @@index([voteId])
+}
+
+model PolityClaim {
+  id          String   @id @default(cuid())
+  polityId    String
+  claimId     String
+  matchMethod String   // "auto_country_date" | "manual"
+  createdAt   DateTime @default(now())
+
+  polity Polity @relation(fields: [polityId], references: [id])
+  claim  Claim  @relation(fields: [claimId], references: [id])
+
+  @@unique([polityId, claimId])
+  @@index([polityId])
+  @@index([claimId])
 }
