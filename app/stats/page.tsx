@@ -13,6 +13,7 @@ import VotingAnalysisSection from "./voting-analysis-section";
 import VotesByPresidencySection from "./VotesByPresidencySection";
 import VotingInferenceSection from "./VotingInferenceSection";
 import AdvancedVotingSection from "./AdvancedVotingSection";
+import AllVotesStatsSection from "./AllVotesStatsSection";
 
 const MIN_TOTAL = 10;
 
@@ -167,6 +168,21 @@ export default async function StatsPage() {
           {totalVotes.toLocaleString()} votes
         </p>
       </header>
+
+      <Suspense fallback={null}>
+        <AllVotesStatsSection />
+      </Suspense>
+
+      <div className="pt-4 border-t border-zinc-800">
+        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Phase 1</p>
+        <h2 className="mt-1 text-lg font-semibold text-white">
+          Curated Legislatures (UK / US / Canada / EU)
+        </h2>
+        <p className="mt-1 text-xs text-zinc-500">
+          Manually-classified topic data and Congress.gov roll-call records, used in the
+          deeper sections below.
+        </p>
+      </div>
 
       {/* Polarization by Legislature */}
       <section className="space-y-3">

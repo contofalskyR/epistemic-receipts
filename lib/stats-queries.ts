@@ -569,3 +569,351 @@ export async function getCrossCountryTopicComparison(
     .map(([legislature, count]) => ({ legislature, count }))
     .sort((a, b) => b.count - a.count)
 }
+
+// ── All Votes (full table aggregates) ────────────────────────────────────────
+// Aggregates across the entire LegislativeVote / MemberVote tables, not the
+// 4-legislature whitelist used by the main /stats sections. Uses raw SQL so
+// the ~116k-row Voteview corpus stays out of JS memory.
+
+export type AllVotesPipelineRow = {
+  ingestedBy: string
+  count: number
+  passedCount: number
+  failedCount: number
+  passRate: number | null
+}
+
+export type AllVotesChamberRow = {
+  chamber: string
+  count: number
+  passedCount: number
+  failedCount: number
+  passRate: number | null
+  avgNayPct: number | null
+}
+
+export type AllVotesGlobalStats = {
+  totalVotes: number
+  totalMemberVotes: number
+  pipelinesCount: number
+  byPipeline: AllVotesPipelineRow[]
+  byChamber: AllVotesChamberRow[]
+}
+
+export async function getAllVotesGlobalStats(): Promise<AllVotesGlobalStats> {
+  const [totalsRows, pipelineRows, chamberRows] = await Promise.all([
+    prisma.$queryRaw<{ total_votes: bigint; total_member_votes: bigint }[]>`
+      SELECT
+        (SELECT COUNT(*) FROM "LegislativeVote")::bigint AS total_votes,
+        (SELECT COUNT(*) FROM "MemberVote")::bigint AS total_member_votes
+    `,
+    prisma.$queryRaw<{
+      ingestedBy: string
+      count: bigint
+      passed: bigint
+      failed: bigint
+    }[]>`
+      SELECT s."ingestedBy" AS "ingestedBy",
+             COUNT(*)::bigint AS count,
+             COALESCE(SUM(CASE WHEN lv.result = 'passed' THEN 1 ELSE 0 END), 0)::bigint AS passed,
+             COALESCE(SUM(CASE WHEN lv.result = 'failed' THEN 1 ELSE 0 END), 0)::bigint AS failed
+      FROM "LegislativeVote" lv
+      JOIN "Source" s ON s.id = lv."sourceId"
+      GROUP BY s."ingestedBy"
+      ORDER BY count DESC
+    `,
+    prisma.$queryRaw<{
+      chamber: string
+      count: bigint
+      passed: bigint
+      failed: bigint
+      avg_nay_pct: number | null
+    }[]>`
+      SELECT lv.chamber,
+             COUNT(*)::bigint AS count,
+             COALESCE(SUM(CASE WHEN lv.result = 'passed' THEN 1 ELSE 0 END), 0)::bigint AS passed,
+             COALESCE(SUM(CASE WHEN lv.result = 'failed' THEN 1 ELSE 0 END), 0)::bigint AS failed,
+             AVG(
+               CASE
+                 WHEN lv."yesCount" IS NOT NULL
+                   AND lv."noCount" IS NOT NULL
+                   AND (lv."yesCount" + lv."noCount") > 0
+                 THEN (lv."noCount"::float / (lv."yesCount" + lv."noCount")) * 100
+                 ELSE NULL
+               END
+             )::float AS avg_nay_pct
+      FROM "LegislativeVote" lv
+      GROUP BY lv.chamber
+      ORDER BY count DESC
+    `,
+  ])
+
+  const totals = totalsRows[0]
+  const byPipeline: AllVotesPipelineRow[] = pipelineRows.map((r) => {
+    const passed = Number(r.passed)
+    const failed = Number(r.failed)
+    const decided = passed + failed
+    return {
+      ingestedBy: r.ingestedBy,
+      count: Number(r.count),
+      passedCount: passed,
+      failedCount: failed,
+      passRate: decided > 0 ? passed / decided : null,
+    }
+  })
+  const byChamber: AllVotesChamberRow[] = chamberRows.map((r) => {
+    const passed = Number(r.passed)
+    const failed = Number(r.failed)
+    const decided = passed + failed
+    return {
+      chamber: r.chamber,
+      count: Number(r.count),
+      passedCount: passed,
+      failedCount: failed,
+      passRate: decided > 0 ? passed / decided : null,
+      avgNayPct: r.avg_nay_pct,
+    }
+  })
+
+  return {
+    totalVotes: totals?.total_votes ? Number(totals.total_votes) : 0,
+    totalMemberVotes: totals?.total_member_votes
+      ? Number(totals.total_member_votes)
+      : 0,
+    pipelinesCount: byPipeline.length,
+    byPipeline,
+    byChamber,
+  }
+}
+
+export type VoteviewDecadeRow = {
+  decade: number
+  total: number
+  houseTotal: number
+  senateTotal: number
+  passed: number
+  failed: number
+  passRate: number | null
+  avgNayPct: number | null
+}
+
+export async function getVoteviewDecadeStats(): Promise<VoteviewDecadeRow[]> {
+  const rows = await prisma.$queryRaw<{
+    decade: number
+    total: bigint
+    house_total: bigint
+    senate_total: bigint
+    passed: bigint
+    failed: bigint
+    avg_nay_pct: number | null
+  }[]>`
+    SELECT
+      (EXTRACT(YEAR FROM lv."voteDate")::int / 10) * 10 AS decade,
+      COUNT(*)::bigint AS total,
+      SUM(CASE WHEN lv.chamber = 'House of Representatives' THEN 1 ELSE 0 END)::bigint AS house_total,
+      SUM(CASE WHEN lv.chamber = 'Senate' THEN 1 ELSE 0 END)::bigint AS senate_total,
+      COALESCE(SUM(CASE WHEN lv.result = 'passed' THEN 1 ELSE 0 END), 0)::bigint AS passed,
+      COALESCE(SUM(CASE WHEN lv.result = 'failed' THEN 1 ELSE 0 END), 0)::bigint AS failed,
+      AVG(
+        CASE
+          WHEN lv."yesCount" IS NOT NULL
+            AND lv."noCount" IS NOT NULL
+            AND (lv."yesCount" + lv."noCount") > 0
+          THEN (lv."noCount"::float / (lv."yesCount" + lv."noCount")) * 100
+          ELSE NULL
+        END
+      )::float AS avg_nay_pct
+    FROM "LegislativeVote" lv
+    JOIN "Source" s ON s.id = lv."sourceId"
+    WHERE s."ingestedBy" = 'voteview_v1'
+      AND lv."voteDate" IS NOT NULL
+    GROUP BY decade
+    ORDER BY decade ASC
+  `
+
+  return rows.map((r) => {
+    const passed = Number(r.passed)
+    const failed = Number(r.failed)
+    const decided = passed + failed
+    return {
+      decade: Number(r.decade),
+      total: Number(r.total),
+      houseTotal: Number(r.house_total),
+      senateTotal: Number(r.senate_total),
+      passed,
+      failed,
+      passRate: decided > 0 ? passed / decided : null,
+      avgNayPct: r.avg_nay_pct,
+    }
+  })
+}
+
+export type VoteviewChamberSplit = {
+  chamber: string
+  total: number
+  passed: number
+  failed: number
+  passRate: number | null
+  avgNayPct: number | null
+}
+
+export async function getVoteviewChamberBreakdown(): Promise<VoteviewChamberSplit[]> {
+  const rows = await prisma.$queryRaw<{
+    chamber: string
+    total: bigint
+    passed: bigint
+    failed: bigint
+    avg_nay_pct: number | null
+  }[]>`
+    SELECT lv.chamber,
+           COUNT(*)::bigint AS total,
+           COALESCE(SUM(CASE WHEN lv.result = 'passed' THEN 1 ELSE 0 END), 0)::bigint AS passed,
+           COALESCE(SUM(CASE WHEN lv.result = 'failed' THEN 1 ELSE 0 END), 0)::bigint AS failed,
+           AVG(
+             CASE
+               WHEN lv."yesCount" IS NOT NULL
+                 AND lv."noCount" IS NOT NULL
+                 AND (lv."yesCount" + lv."noCount") > 0
+               THEN (lv."noCount"::float / (lv."yesCount" + lv."noCount")) * 100
+               ELSE NULL
+             END
+           )::float AS avg_nay_pct
+    FROM "LegislativeVote" lv
+    JOIN "Source" s ON s.id = lv."sourceId"
+    WHERE s."ingestedBy" = 'voteview_v1'
+    GROUP BY lv.chamber
+    ORDER BY total DESC
+  `
+
+  return rows.map((r) => {
+    const passed = Number(r.passed)
+    const failed = Number(r.failed)
+    const decided = passed + failed
+    return {
+      chamber: r.chamber,
+      total: Number(r.total),
+      passed,
+      failed,
+      passRate: decided > 0 ? passed / decided : null,
+      avgNayPct: r.avg_nay_pct,
+    }
+  })
+}
+
+export type AllVotesTopicRow = {
+  topic: string
+  count: number
+  passedCount: number
+  failedCount: number
+  passRate: number | null
+}
+
+export async function getAllVotesTopTopics(limit = 20): Promise<AllVotesTopicRow[]> {
+  // topics is stored as a TEXT JSON array. Filter to rows that look like a JSON
+  // array before casting to jsonb to avoid blowing up on malformed values.
+  const rows = await prisma.$queryRaw<{
+    topic: string
+    count: bigint
+    passed: bigint
+    failed: bigint
+  }[]>`
+    WITH parsed AS (
+      SELECT lv.result, lv.topics::jsonb AS topics_json
+      FROM "LegislativeVote" lv
+      WHERE lv.topics IS NOT NULL
+        AND lv.topics LIKE '[%]'
+    )
+    SELECT topic_elem AS topic,
+           COUNT(*)::bigint AS count,
+           COALESCE(SUM(CASE WHEN parsed.result = 'passed' THEN 1 ELSE 0 END), 0)::bigint AS passed,
+           COALESCE(SUM(CASE WHEN parsed.result = 'failed' THEN 1 ELSE 0 END), 0)::bigint AS failed
+    FROM parsed
+    CROSS JOIN LATERAL jsonb_array_elements_text(parsed.topics_json) AS topic_elem
+    GROUP BY topic_elem
+    ORDER BY count DESC
+    LIMIT ${limit}
+  `
+
+  return rows.map((r) => {
+    const passed = Number(r.passed)
+    const failed = Number(r.failed)
+    const decided = passed + failed
+    return {
+      topic: r.topic,
+      count: Number(r.count),
+      passedCount: passed,
+      failedCount: failed,
+      passRate: decided > 0 ? passed / decided : null,
+    }
+  })
+}
+
+export type PartyLineDecadeRow = {
+  decade: number
+  totalWithPartyData: number
+  partyLineCount: number
+  bipartisanCount: number
+  partyLineRate: number | null
+  bipartisanRate: number | null
+}
+
+export async function getPartyLineTrendByDecade(): Promise<PartyLineDecadeRow[]> {
+  // Pull every vote that has byPartyJson + voteDate, classify each, bin by decade.
+  // Tractable in JS because byPartyJson is sparsely populated (~congress_v1 + parts of voteview).
+  const rows = await prisma.legislativeVote.findMany({
+    where: {
+      byPartyJson: { not: null },
+      voteDate: { not: null },
+    },
+    select: {
+      byPartyJson: true,
+      voteDate: true,
+    },
+    take: 200000,
+  })
+
+  const buckets = new Map<
+    number,
+    { total: number; partyLine: number; bipartisan: number }
+  >()
+
+  for (const r of rows) {
+    if (!r.byPartyJson || !r.voteDate) continue
+    const parties = parsePartyJson(r.byPartyJson)
+    if (!parties) continue
+    const demKey = matchPartyKey(parties, ['democrat', 'dem'])
+    const repKey = matchPartyKey(parties, ['republican', 'rep'])
+    if (!demKey || !repKey) continue
+    const dem = parties[demKey]!
+    const rep = parties[repKey]!
+    const demTotal = dem.yes + dem.no
+    const repTotal = rep.yes + rep.no
+    if (demTotal === 0 || repTotal === 0) continue
+    const demYes = (dem.yes / demTotal) * 100
+    const repYes = (rep.yes / repTotal) * 100
+
+    const partyLine =
+      demYes >= 80 || demYes <= 20 || repYes >= 80 || repYes <= 20
+    const bipartisan =
+      (demYes > 60 && repYes > 60) || (demYes < 40 && repYes < 40)
+
+    const year = r.voteDate.getUTCFullYear()
+    const decade = Math.floor(year / 10) * 10
+    const acc = buckets.get(decade) ?? { total: 0, partyLine: 0, bipartisan: 0 }
+    acc.total++
+    if (partyLine) acc.partyLine++
+    if (bipartisan) acc.bipartisan++
+    buckets.set(decade, acc)
+  }
+
+  return Array.from(buckets.entries())
+    .map(([decade, s]) => ({
+      decade,
+      totalWithPartyData: s.total,
+      partyLineCount: s.partyLine,
+      bipartisanCount: s.bipartisan,
+      partyLineRate: s.total > 0 ? s.partyLine / s.total : null,
+      bipartisanRate: s.total > 0 ? s.bipartisan / s.total : null,
+    }))
+    .sort((a, b) => a.decade - b.decade)
+}

@@ -271,6 +271,81 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-29 — All-Legislative-Votes overview at top of /stats
+
+**What.** New "All Legislative Votes" overview section now leads the `/stats`
+page. Replaces the prior 4-legislature-only framing; aggregates across every
+LegislativeVote row in the DB (≈116k roll calls, including the 113k+ Voteview
+corpus that was previously invisible on /stats).
+
+**Sections added (in `app/stats/AllVotesStatsSection.tsx`):**
+1. Headline KPI cards — total roll calls, total MemberVote rows, Voteview
+   corpus count, decades covered.
+2. Votes by Pipeline — full table of every `ingestedBy` that populates
+   LegislativeVote, with count, passed/failed, pass-rate, and a horizontal
+   share bar. No more 4-pipeline whitelist.
+3. By Chamber/Body — global chamber rollup with vote counts, pass-rate, and
+   avg nay %.
+4. Voteview Roll Calls by Decade — 1780s through today, with House/Senate
+   split, pass rate, and avg nay % per decade.
+5. Voteview: House vs Senate — aggregate pass-rate and opposition cards.
+6. Party-Line vs Bipartisan by Decade — bins every vote with `byPartyJson`
+   and bins by decade, classified with the same heuristics as the
+   `getCongressPartyStats` section (≥80% / >60% thresholds).
+7. Top 20 Topics (All Votes) — `jsonb_array_elements_text` over the `topics`
+   column, with pass-rate per topic.
+
+**New helpers in `lib/stats-queries.ts`:**
+- `getAllVotesGlobalStats()` — single round trip of three raw SQL queries
+  for totals + by-pipeline + by-chamber rollups.
+- `getVoteviewDecadeStats()` — raw SQL groupby on
+  `EXTRACT(YEAR FROM voteDate) / 10`, voteview_v1 only.
+- `getVoteviewChamberBreakdown()` — raw SQL chamber rollup, voteview_v1 only.
+- `getAllVotesTopTopics(limit)` — CTE that filters `topics LIKE '[%]'`
+  before `jsonb` cast, then `CROSS JOIN LATERAL jsonb_array_elements_text`.
+- `getPartyLineTrendByDecade()` — findMany on rows with `byPartyJson` +
+  `voteDate`, classified in JS (reuses `parsePartyJson` + `matchPartyKey`
+  helpers already in the file).
+
+**Why raw SQL.** The Voteview ingest grew LegislativeVote from ~3k to ~116k
+rows; the existing `findMany({ take: 50000 })` patterns silently truncate at
+~half the corpus. All five new functions use `prisma.$queryRaw` (or a
+filtered findMany for byPartyJson, which is sparsely populated) so counts are
+accurate without pulling the full table into JS.
+
+**Verification.** `npx tsc --noEmit` clean. Dev-server smoke test against
+`http://localhost:3010/stats` returned HTTP 200 with all sections rendered:
+116,267 total roll calls, 113,319 Voteview, plus the expected per-pipeline
+rollup (voteview_v1, eu_parliament_v1, congress_v1, canada_bills_v1,
+uk_legislation_v1). Top-topics query returned 20 rows ("Taxation" 13,130
+votes / 66.0% pass, "appropriations" 12,582 / 66.9%, etc).
+
+**Files changed:** `lib/stats-queries.ts`, `app/stats/page.tsx`,
+`app/stats/AllVotesStatsSection.tsx` (new).
+
+### 2026-05-29 — advanced statistical sections on /analysis/votes
+
+**What.** Extended `/analysis/votes` with seven new statistical sections, each computed in
+`lib/voteAnalysis.ts` from the existing 50k-row LegislativeVote pull plus one new
+500k-row MemberVote pull. New helper: `lib/stats.ts` (pure-TS lgamma via Lanczos,
+regularized incomplete gamma, chi-square p-value, Beta(1,1) log marginal likelihood
+for the Bayes-Factor pipeline).
+
+**Sections added:**
+1. **Chi-square partisan independence** — per-bill 2×k χ² test (k = parties with ≥2 votes), with df = k−1 and p-value from the chi-square CDF. `topPartisan` (top 10 by χ²) and `topBipartisan` (lowest χ², p > 0.5, ≥50 total votes).
+2. **Polarization score** — population stddev of per-party yes-share (parties with ≥5 yes+no), scaled 0–100. `mostPolarized` top 10.
+3. **Close-call analysis** — bills decided within 5pp of 50/50, top 25 sorted narrowest first, includes `result` (passed / failed / tied).
+4. **Decade trend** — 1780s through 2020s buckets (≥10 votes), totals + contested % + unanimous %.
+5. **Party loyalty** — from `MemberVote`: per (bill, party) majority computed, then per-member loyalty % and defection count (≥10 partisan votes). Top 50 biggest defectors + summary table of avg loyalty by party / chamber.
+6. **Topic × party matrix** — bills with both `topics` and `byPartyJson`, aggregated by (topic, party). Topics with ≥3 bills, parties with ≥2 bills in that topic, top 15 topics by total bill count.
+7. **Bayesian partisan signal** — BF₁₀ comparing pooled-rate (H₀) vs per-party rates (H₁) under Beta(1,1) conjugate priors. `strongPartisanBF` shows top 10 bills with BF₁₀ > 3 (moderate / strong partisan).
+
+**Implementation.** All computation happens server-side in `buildVoteAnalysis()`. The existing main Prisma query now also selects `voteDate`, `result`, `topics`. The new `MemberVote` query (`take: 500000`) only runs when the page (or its API route) is rendered. New optional fields on `BillRow` / `GlobalRow`: `chiSq`, `chiDf`, `chiP`, `isPartisan`, `polarizationScore`, `bayesPartisanBF`, `result`, `voteDate`. Page now has a TOC at the top linking each new section by anchor ID. No new API routes — `/api/analysis/votes` already passes through `VoteAnalysis`.
+
+**Verification.** `npx tsc --noEmit` clean.
+
+**Files changed:** `lib/stats.ts` (new), `lib/voteAnalysis.ts`, `app/analysis/votes/page.tsx`.
+
 ### 2026-05-29 14:22 EDT — web book upload feature
 
 **What.** Replaced the static CLI code block on `/books` with a real upload form. Full pipeline: upload → LLM claim extraction → match against DB, all triggered from the browser.

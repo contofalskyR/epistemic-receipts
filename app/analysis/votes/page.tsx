@@ -8,6 +8,46 @@ import {
   type PartyRow,
 } from "@/lib/voteAnalysis";
 
+const TOC = [
+  { id: "chi-square", label: "Chi-square partisan test" },
+  { id: "polarization", label: "Polarization score" },
+  { id: "close-calls", label: "Close-call analysis" },
+  { id: "decade-trend", label: "Decade trend" },
+  { id: "party-loyalty", label: "Party loyalty" },
+  { id: "topic-party", label: "Topic × party matrix" },
+  { id: "bayes-bf", label: "Bayesian partisan signal (BF₁₀)" },
+];
+
+function fmtNum(n: number | undefined | null, digits = 2): string {
+  if (n === undefined || n === null || !Number.isFinite(n)) return "—";
+  return n.toFixed(digits);
+}
+
+function fmtPVal(p: number | undefined): string {
+  if (p === undefined || !Number.isFinite(p)) return "—";
+  if (p < 0.0001) return "<0.0001";
+  if (p < 0.001) return p.toFixed(4);
+  if (p < 0.01) return p.toFixed(3);
+  return p.toFixed(3);
+}
+
+function fmtBF(bf: number | undefined): string {
+  if (bf === undefined || !Number.isFinite(bf)) return "—";
+  if (bf >= 1e6) return bf.toExponential(2);
+  if (bf >= 1000) return bf.toFixed(0);
+  if (bf >= 10) return bf.toFixed(1);
+  return bf.toFixed(2);
+}
+
+function fmtDate(iso: string | undefined | null): string {
+  if (!iso) return "—";
+  try {
+    return new Date(iso).toISOString().slice(0, 10);
+  } catch {
+    return "—";
+  }
+}
+
 function pct(n: number, digits = 0): string {
   return `${n.toFixed(digits)}%`;
 }
@@ -47,7 +87,22 @@ function NayBar({ nayPct }: { nayPct: number }) {
 
 export default async function AnalysisVotesPage() {
   const data = await buildVoteAnalysis();
-  const { meta, countries, globalContested, globalUnanimous, parties } = data;
+  const {
+    meta,
+    countries,
+    globalContested,
+    globalUnanimous,
+    parties,
+    topPartisan,
+    topBipartisan,
+    mostPolarized,
+    closeCalls,
+    decadeTrend,
+    partyLoyalty,
+    loyaltySummary,
+    topicPartyMatrix,
+    strongPartisanBF,
+  } = data;
 
   const overallContestedBills = countries.reduce((s, c) => s + c.contestedBills, 0);
   const overallUnanimousBills = countries.reduce((s, c) => s + c.unanimousBills, 0);
@@ -68,6 +123,24 @@ export default async function AnalysisVotesPage() {
           <span className="text-gray-200"> unanimous</span> means zero nays. Procedural votes with fewer
           than {meta.minTotal} total recorded ayes-plus-nays are excluded.
         </p>
+      </div>
+
+      {/* Table of contents */}
+      <div className="rounded border border-gray-800 bg-gray-900/40 px-4 py-3">
+        <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">
+          Advanced statistical sections
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+          {TOC.map((t) => (
+            <a
+              key={t.id}
+              href={`#${t.id}`}
+              className="text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              {t.label}
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Summary cards */}
@@ -363,6 +436,390 @@ export default async function AnalysisVotesPage() {
           </div>
         </section>
       )}
+
+      {/* === Section 1: Chi-square partisan independence === */}
+      <section id="chi-square" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Chi-square partisan independence test</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            Tests whether yes/no votes are independent of party. The test compares observed
+            party-by-vote counts against expected counts under the null hypothesis of no
+            party effect. A larger χ² and smaller p-value mean stronger evidence that party
+            predicts the vote. Bills marked partisan have p &lt; 0.05.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest">Top 10 most partisan</h3>
+          <div className="rounded border border-gray-800 overflow-hidden">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/50">
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Bill</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Body</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">χ²</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">df</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">p-value</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Aye %</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Nay %</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topPartisan.map((r, i) => (
+                  <tr
+                    key={r.legislativeVoteId}
+                    className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  >
+                    <td className="px-3 py-2 align-top max-w-md"><BillCell row={r} /></td>
+                    <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{r.country}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{fmtNum(r.chiSq, 1)}</td>
+                    <td className="px-3 py-2 text-right text-gray-400 tabular-nums align-top">{r.chiDf ?? "—"}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{fmtPVal(r.chiP)}</td>
+                    <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(r.ayePct, 1)}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(r.nayPct, 1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest">Top 10 most bipartisan</h3>
+          <p className="text-[11px] text-gray-600">Lowest χ², p &gt; 0.5, minimum 50 total votes.</p>
+          <div className="rounded border border-gray-800 overflow-hidden">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/50">
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Bill</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Body</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">χ²</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">df</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">p-value</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topBipartisan.map((r, i) => (
+                  <tr
+                    key={r.legislativeVoteId}
+                    className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  >
+                    <td className="px-3 py-2 align-top max-w-md"><BillCell row={r} /></td>
+                    <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{r.country}</td>
+                    <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{fmtNum(r.chiSq, 2)}</td>
+                    <td className="px-3 py-2 text-right text-gray-400 tabular-nums align-top">{r.chiDf ?? "—"}</td>
+                    <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{fmtPVal(r.chiP)}</td>
+                    <td className="px-3 py-2 text-right text-gray-300 tabular-nums align-top">{r.total.toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* === Section 2: Polarization === */}
+      <section id="polarization" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Polarization score</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            Standard deviation of per-party yes-share across parties (parties with at least
+            5 yes+no votes), scaled 0–100. Higher = parties broke harder against each other.
+            A score near 0 means parties voted alike; near 50 means the parties split.
+          </p>
+        </div>
+        <div className="rounded border border-gray-800 overflow-hidden">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-gray-800 bg-gray-900/50">
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Bill</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Body</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Chamber</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Polarization</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Aye %</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Nay %</th>
+              </tr>
+            </thead>
+            <tbody>
+              {mostPolarized.map((r, i) => (
+                <tr
+                  key={r.legislativeVoteId}
+                  className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                >
+                  <td className="px-3 py-2 align-top max-w-md"><BillCell row={r} /></td>
+                  <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{r.country}</td>
+                  <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{r.chamber}</td>
+                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{fmtNum(r.polarizationScore, 2)}</td>
+                  <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(r.ayePct, 1)}</td>
+                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(r.nayPct, 1)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* === Section 3: Close-call analysis === */}
+      <section id="close-calls" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Close-call analysis</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            Bills decided within 5 percentage points of a 50/50 split. Sorted by distance
+            from 50% — narrowest margins first.
+          </p>
+        </div>
+        <div className="rounded border border-gray-800 overflow-hidden">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-gray-800 bg-gray-900/50">
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Bill</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Body</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Result</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Aye</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Nay</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Aye %</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Margin</th>
+              </tr>
+            </thead>
+            <tbody>
+              {closeCalls.map((r, i) => {
+                const margin = Math.abs(r.ayePct - 50);
+                const resultColor =
+                  r.result === "passed" ? "text-green-300"
+                  : r.result === "failed" ? "text-red-300"
+                  : "text-gray-400";
+                return (
+                  <tr
+                    key={r.legislativeVoteId}
+                    className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  >
+                    <td className="px-3 py-2 align-top max-w-md"><BillCell row={r} /></td>
+                    <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{r.country}</td>
+                    <td className={`px-3 py-2 align-top whitespace-nowrap ${resultColor}`}>{r.result ?? "—"}</td>
+                    <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{r.yesCount.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{r.noCount.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-gray-200 tabular-nums align-top">{pct(r.ayePct, 1)}</td>
+                    <td className="px-3 py-2 text-right text-yellow-300 tabular-nums align-top">±{margin.toFixed(2)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* === Section 4: Decade trend === */}
+      <section id="decade-trend" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Contested rate by decade</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            Each decade from the 1780s through the 2020s with at least 10 recorded votes.
+            Contested = more than {pct(meta.contestedThreshold * 100)} nays of recorded aye+nay.
+            Unanimous = zero recorded nays.
+          </p>
+        </div>
+        <div className="rounded border border-gray-800 overflow-hidden">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-gray-800 bg-gray-900/50">
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Decade</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Total votes</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Contested</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Contested %</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Unanimous %</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {decadeTrend.map((d, i) => (
+                <tr
+                  key={d.decade}
+                  className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                >
+                  <td className="px-3 py-2 text-gray-100 align-top font-mono">{d.decade}</td>
+                  <td className="px-3 py-2 text-right text-white tabular-nums align-top">{d.totalVotes.toLocaleString()}</td>
+                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{d.contestedVotes.toLocaleString()}</td>
+                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(d.contestedPct, 1)}</td>
+                  <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(d.unanimousPct, 1)}</td>
+                  <td className="px-3 py-2 align-top">
+                    <NayBar nayPct={d.contestedPct} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* === Section 5: Party loyalty === */}
+      <section id="party-loyalty" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Party loyalty (individual members)</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            For each bill we compute the majority vote (yea/nay) within each party, then
+            measure how often each member voted with their party majority. Loyalty % is the
+            share of partisan votes matching majority; defections are the count that didn&apos;t.
+            Members with fewer than 10 partisan votes are excluded. From{" "}
+            {meta.memberVotesParsed.toLocaleString()} individual recorded member votes.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest">Loyalty summary by party / chamber</h3>
+          <div className="rounded border border-gray-800 overflow-hidden">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/50">
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Party</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Chamber</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Members</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Avg loyalty %</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loyaltySummary.map((s, i) => (
+                  <tr
+                    key={`${s.party}::${s.chamber}`}
+                    className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  >
+                    <td className="px-3 py-2 text-gray-100 align-top">{s.party}</td>
+                    <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{s.chamber}</td>
+                    <td className="px-3 py-2 text-right text-gray-300 tabular-nums align-top">{s.memberCount.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(s.avgLoyalty, 1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest">Top 50 biggest defectors</h3>
+          <div className="rounded border border-gray-800 overflow-hidden">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/50">
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Member</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Party</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Chamber</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Total votes</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Defections</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Loyalty %</th>
+                </tr>
+              </thead>
+              <tbody>
+                {partyLoyalty.map((m, i) => (
+                  <tr
+                    key={`${m.memberName}::${m.chamber}::${m.memberParty}::${i}`}
+                    className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  >
+                    <td className="px-3 py-2 text-gray-100 align-top">{m.memberName}</td>
+                    <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{m.memberParty}</td>
+                    <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{m.chamber}</td>
+                    <td className="px-3 py-2 text-right text-gray-300 tabular-nums align-top">{m.totalVotes.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{m.defectionCount.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-yellow-300 tabular-nums align-top">{pct(m.loyaltyPct, 1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* === Section 6: Topic × party matrix === */}
+      <section id="topic-party" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Topic × party matrix</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            For each topic with at least 3 bills, the aggregate yes / no totals contributed
+            by each party (parties present in at least 2 bills on that topic). Top 15 topics
+            by total bill count.
+          </p>
+        </div>
+        <div className="space-y-4">
+          {topicPartyMatrix.map((t) => (
+            <div key={t.topic} className="rounded border border-gray-800 overflow-hidden">
+              <div className="px-3 py-2 bg-gray-900/50 border-b border-gray-800 flex justify-between items-baseline">
+                <div className="text-gray-100 font-mono">{t.topic}</div>
+                <div className="text-xs text-gray-500">{t.totalBills.toLocaleString()} bills</div>
+              </div>
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="border-b border-gray-800/50">
+                    <th className="px-3 py-2 text-left font-medium text-gray-500">Party</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-500">Bills</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-500">Yes</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-500">No</th>
+                    <th className="px-3 py-2 text-right font-medium text-gray-500">Yes %</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {t.parties.map((p, i) => (
+                    <tr
+                      key={`${t.topic}::${p.party}`}
+                      className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                    >
+                      <td className="px-3 py-2 text-gray-100 align-top">{p.party}</td>
+                      <td className="px-3 py-2 text-right text-gray-300 tabular-nums align-top">{p.billCount.toLocaleString()}</td>
+                      <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{p.yes.toLocaleString()}</td>
+                      <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{p.no.toLocaleString()}</td>
+                      <td className="px-3 py-2 text-right text-gray-200 tabular-nums align-top">{pct(p.yesPct, 1)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* === Section 7: Bayes Factor partisan signal === */}
+      <section id="bayes-bf" className="space-y-3 scroll-mt-4">
+        <div>
+          <h2 className="text-base font-semibold text-white">Bayesian partisan signal (BF₁₀)</h2>
+          <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+            For each bill with two or more parties of at least 5 yes+no votes each, we
+            compare a model where every party shares a single yes-rate (H<sub>0</sub>) against
+            a model where each party has its own (H<sub>1</sub>). The marginal likelihoods come
+            from conjugate Beta(1, 1) priors. The result is the Bayes Factor BF<sub>10</sub>.
+          </p>
+          <p className="text-[11px] text-gray-600 italic mt-1">
+            BF<sub>10</sub> &gt; 3 = moderate partisan signal; &gt; 10 = strong;
+            &lt; 1 = bipartisan tendency. Showing top 10 with BF<sub>10</sub> &gt; 3.
+          </p>
+        </div>
+        <div className="rounded border border-gray-800 overflow-hidden">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-gray-800 bg-gray-900/50">
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Bill</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Body</th>
+                <th className="px-3 py-2 text-left font-medium text-gray-500">Date</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">BF₁₀</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Aye %</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Nay %</th>
+              </tr>
+            </thead>
+            <tbody>
+              {strongPartisanBF.map((r, i) => (
+                <tr
+                  key={r.legislativeVoteId}
+                  className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                >
+                  <td className="px-3 py-2 align-top max-w-md"><BillCell row={r} /></td>
+                  <td className="px-3 py-2 text-gray-400 align-top whitespace-nowrap">{r.country}</td>
+                  <td className="px-3 py-2 text-gray-500 align-top whitespace-nowrap tabular-nums">{fmtDate(r.voteDate)}</td>
+                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{fmtBF(r.bayesPartisanBF)}</td>
+                  <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(r.ayePct, 1)}</td>
+                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(r.nayPct, 1)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <div className="border-t border-gray-800 pt-4 text-xs text-gray-600">
         Data:{" "}
