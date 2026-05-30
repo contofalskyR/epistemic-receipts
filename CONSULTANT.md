@@ -271,6 +271,87 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-30 — CCES representation-gap feature (`/analysis/representation`)
+
+**What.** New end-to-end feature joining Harvard Dataverse Cooperative Election
+Study cumulative data (`doi:10.7910/DVN/II2DB6`, V11, 2006–2024, 702k
+respondents) to the existing US `MemberVote` corpus (`congress_v1` 104k member
+votes across 505 bills) and exposing the result as a representation-gap
+analysis page.
+
+**Schema.** New `ConstituentOpinion` model + migration
+`20260530170000_add_constituent_opinion` (id, state, district, year,
+topicSlug, supportPct, sampleSize, source, questionCode, metadata,
+createdAt). Unique on (state, district, year, topicSlug, questionCode);
+indexed on year / state / topicSlug / composite.
+
+**Extractor (`scripts/_cces_extract.py`).** Pure-Python via `pyreadstat`
+(installed under `python3.14`) — reads the 675MB `cumulative_2006-2024.dta`
+into a narrow slice of 10 columns (year, st, state, ideo5, pid3,
+no_healthins, union, union_hh, relig_bornagain, weight_cumulative), groups
+by (state-abbr, year), and emits per-bucket aggregates: liberal_pct,
+conservative_pct, dem_pct, uninsured_pct, union_pct, evangelical_pct. A
+`TOPIC_DIRECTION` map then assigns each of the 26 LegislativeVote topic
+slugs (taxation, appropriations, foreign_policy, military, banking_finance,
+labor, infrastructure, judiciary, social_welfare, public_lands, defense,
+tariff_trade, education, agriculture, health, housing, native_affairs,
+postal, environment, civil_rights, immigration, technology, prohibition,
+slavery, war, economy) to a CCES proxy (`liberal` / `conservative` / `dem` /
+`uninsured` / `union` / `evangelical`) and writes
+`/tmp/cces/cces_aggregates.json`. Output: 51 states × 19 years × 26 topics
+= 24,615 rows after the n≥30 / sample≥20 filter.
+
+**Ingester (`scripts/ingest-cces.ts`).** Reads the JSON aggregates, validates
+shape, and upserts into `ConstituentOpinion` in 200-row transactions
+(`prisma.$transaction({ timeout: 60_000 })`). `--full` requires
+`ALLOW_EDITS=true`; `--dry-run` (default) prints 5 samples without writes.
+Post-run DB count verification via `prisma.constituentOpinion.count`.
+Pipeline tag: `cces_v1`.
+
+**Analysis layer (`lib/representationGap.ts`).** `buildRepresentationAnalysis()`
+pulls every `ConstituentOpinion` row + every US `LegislativeVote` (≤50k cap)
+joined to its `MemberVote` children. For each (state, year, topic) it
+computes:
+- delegationYeaPct = state's delegation Yea share across all topic-bills
+- demYeaPct / repYeaPct = same, restricted to Dem / Rep legislators
+- gap = |delegationYeaPct − constituentSupportPct|
+- demGap = |demYeaPct − supportPct| (Dems compared to liberal baseline)
+- repGap = |repYeaPct − (100 − supportPct)| (Reps compared to its complement)
+
+Returns: top-50 individual gaps, topic summaries (≥5 cells), decade
+summaries (≥5 cells), top-25 state summaries (≥3 cells), and a party
+comparison block with per-topic Dem-vs-Rep gap breakdown.
+
+**API + page.** `app/api/analysis/representation/route.ts` (revalidate=600s,
+edge `Cache-Control: s-maxage=600, stale-while-revalidate=3600`).
+`app/analysis/representation/page.tsx` is a server component that calls the
+same library directly; sections: summary cards, TOC, largest individual
+gaps (top 50), states with biggest gaps (top 25), topic-level gaps with
+CCES-proxy column, decade trend, party comparison (Dem-vs-Rep card pair +
+per-topic table). Dark theme (bg-gray-900/950, red/orange/blue accents)
+consistent with `/analysis/votes`.
+
+**Methodology caveat (surfaced in the UI).** The CCES cumulative file only
+carries cross-year-standardized variables, NOT year-specific policy yes/no
+items, so per-topic support is a direction-mapped proxy
+(ideology + party-ID + demographic proxies for health/labor) rather than a
+literal "support bill X" measure. The page text and the per-topic table
+both label which proxy applies to each topic.
+
+**Verification.** `npx tsc --noEmit` clean. Migration applied via
+`prisma migrate deploy`. `--full` ingest run completed (background) writing
+into `ConstituentOpinion`.
+
+**Files changed.** `prisma/schema.prisma`,
+`prisma/migrations/20260530170000_add_constituent_opinion/migration.sql`,
+`scripts/_cces_extract.py` (new), `scripts/ingest-cces.ts` (new),
+`lib/representationGap.ts` (new),
+`app/api/analysis/representation/route.ts` (new),
+`app/analysis/representation/page.tsx` (new), `app/layout.tsx` (nav link +
+footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-30 — Historical Event Graph (Phase 3): wire HistoricalEvent → LegislativeVote + Polity
 
 **What.** Two new junction tables (`HistoricalEventVote`, `HistoricalEventPolity`), a curation script (`scripts/link-historical-events.ts`), two new API routes (`/api/historical-events` index + `/api/historical-events/[slug]` detail), and two new pages (`/historical-events`, `/historical-events/[slug]`). Wires the 9 curated `HistoricalEvent` rows (Cuban Missile Crisis, Church Committee, JFK, Vietnam, Cold War, COINTELPRO, WWII, Korea, Bay of Pigs) into the broader graph by linking contemporaneous `LegislativeVote` rows and historical `Polity` rows.
