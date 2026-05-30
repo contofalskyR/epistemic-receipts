@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { TopicTrendResult } from "@/lib/topic-trends";
+import { ERAS } from "@/lib/us-presidents";
 
 const TOPIC_LABELS: Record<string, string> = {
   slavery: "Slavery",
@@ -59,16 +60,26 @@ const TOPIC_COLORS: Record<string, string> = {
   technology: "bg-blue-900/40 border-blue-700/60 text-blue-200",
 };
 
+type EraStyle = { barBg: string; headerBg: string; headerText: string; abbr: string };
+
+const ERA_STYLES: Record<string, EraStyle> = {
+  "Founding Era":               { barBg: "bg-amber-950/30",  headerBg: "bg-amber-950/60",  headerText: "text-amber-400",  abbr: "Founding" },
+  "Jacksonian Era":             { barBg: "bg-amber-900/20",  headerBg: "bg-amber-900/50",  headerText: "text-amber-300",  abbr: "Jacksonian" },
+  "Civil War & Reconstruction": { barBg: "bg-red-950/30",    headerBg: "bg-red-950/60",    headerText: "text-red-300",    abbr: "Civil War" },
+  "Gilded Age":                 { barBg: "bg-orange-950/20", headerBg: "bg-orange-950/50", headerText: "text-orange-300", abbr: "Gilded Age" },
+  "Progressive Era":            { barBg: "bg-yellow-950/20", headerBg: "bg-yellow-950/50", headerText: "text-yellow-300", abbr: "Progressive" },
+  "New Deal & WWII":            { barBg: "bg-green-950/20",  headerBg: "bg-green-950/50",  headerText: "text-green-300",  abbr: "New Deal" },
+  "Cold War":                   { barBg: "bg-blue-950/20",   headerBg: "bg-blue-950/50",   headerText: "text-blue-300",   abbr: "Cold War" },
+  "Post-Cold War":              { barBg: "bg-purple-950/20", headerBg: "bg-purple-950/50", headerText: "text-purple-300", abbr: "Post-CW" },
+  "Modern":                     { barBg: "bg-slate-800/20",  headerBg: "bg-slate-800/50",  headerText: "text-slate-300",  abbr: "Modern" },
+};
+
 function topicLabel(slug: string): string {
   return TOPIC_LABELS[slug] ?? slug.replace(/_/g, " ");
 }
 
 function topicColor(slug: string): string {
   return TOPIC_COLORS[slug] ?? "bg-gray-800/60 border-gray-600/60 text-gray-200";
-}
-
-function decadeLabel(d: number): string {
-  return `${d}s`;
 }
 
 function heatClass(intensity: number): string {
@@ -81,10 +92,50 @@ function heatClass(intensity: number): string {
   return "bg-blue-500";
 }
 
+function eraForDecade(decade: number): string {
+  for (const era of ERAS) {
+    const start = parseInt(era.start.slice(0, 4), 10);
+    const end = parseInt(era.end.slice(0, 4), 10);
+    if (decade >= start && decade <= end) return era.label;
+  }
+  return "Modern";
+}
+
+function getEraStyle(eraLabel: string): EraStyle {
+  return (
+    ERA_STYLES[eraLabel] ?? {
+      barBg: "",
+      headerBg: "bg-gray-800/30",
+      headerText: "text-gray-400",
+      abbr: eraLabel.slice(0, 8),
+    }
+  );
+}
+
+type VoteItem = {
+  id: string;
+  title: string;
+  voteDate: string | null;
+  chamber: string;
+  result: string | null;
+  yesCount: number | null;
+  noCount: number | null;
+};
+
+type DrawerState = { topic: string; eraLabel: string } | null;
+
 export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) {
   const eras = data.hotTopics.map((h) => h.era);
   const [selectedEra, setSelectedEra] = useState<string>(eras[0] ?? "");
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+
+  // Drawer state
+  const [drawerState, setDrawerState] = useState<DrawerState>(null);
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [drawerVotes, setDrawerVotes] = useState<VoteItem[]>([]);
+  const [drawerTotal, setDrawerTotal] = useState(0);
+  const [drawerOffset, setDrawerOffset] = useState(0);
+  const [drawerLoading, setDrawerLoading] = useState(false);
 
   const selected = data.hotTopics.find((h) => h.era === selectedEra) ?? data.hotTopics[0];
 
@@ -93,7 +144,6 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     [data.klSequence],
   );
 
-  // Determine top topics for heat map: pick topics ranked by overall share.
   const heatmapTopics = useMemo(() => {
     return Object.entries(data.overallDist)
       .sort(([, a], [, b]) => b - a)
@@ -101,7 +151,6 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
       .map(([slug]) => slug);
   }, [data.overallDist]);
 
-  // Per-topic max proportion across decades, so heat is relative within row.
   const topicMax = useMemo(() => {
     const m: Record<string, number> = {};
     for (const slug of heatmapTopics) {
@@ -112,6 +161,81 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     return m;
   }, [data.decades, heatmapTopics]);
 
+  // Group consecutive decades by era for heatmap header
+  const decadeEraGroups = useMemo(() => {
+    const groups: { eraLabel: string; cols: number }[] = [];
+    for (const d of data.decades) {
+      const era = eraForDecade(d.decade);
+      const last = groups[groups.length - 1];
+      if (last && last.eraLabel === era) {
+        last.cols++;
+      } else {
+        groups.push({ eraLabel: era, cols: 1 });
+      }
+    }
+    return groups;
+  }, [data.decades]);
+
+  // Escape key closes drawer
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && drawerState) closeDrawer();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [drawerState]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Fetch votes when drawer opens
+  useEffect(() => {
+    if (!drawerState) return;
+    setDrawerLoading(true);
+    setDrawerVotes([]);
+    setDrawerTotal(0);
+    setDrawerOffset(0);
+    fetch(
+      `/api/analysis/topic-trends/votes?topic=${encodeURIComponent(drawerState.topic)}&era=${encodeURIComponent(drawerState.eraLabel)}&limit=20&offset=0`,
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        setDrawerVotes(data.votes ?? []);
+        setDrawerTotal(data.total ?? 0);
+      })
+      .catch(() => {})
+      .finally(() => setDrawerLoading(false));
+  }, [drawerState]);
+
+  // Sync drawerVisible when drawerState opens (one tick delay for CSS transition)
+  useEffect(() => {
+    if (!drawerState) return;
+    const id = setTimeout(() => setDrawerVisible(true), 0);
+    return () => clearTimeout(id);
+  }, [drawerState]);
+
+  function openDrawer(topic: string, eraLabel: string) {
+    setDrawerState({ topic, eraLabel });
+  }
+
+  function closeDrawer() {
+    setDrawerVisible(false);
+    setTimeout(() => setDrawerState(null), 280);
+  }
+
+  function loadMore() {
+    if (!drawerState || drawerLoading) return;
+    const nextOffset = drawerOffset + 20;
+    setDrawerLoading(true);
+    setDrawerOffset(nextOffset);
+    fetch(
+      `/api/analysis/topic-trends/votes?topic=${encodeURIComponent(drawerState.topic)}&era=${encodeURIComponent(drawerState.eraLabel)}&limit=20&offset=${nextOffset}`,
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        setDrawerVotes((prev) => [...prev, ...(data.votes ?? [])]);
+      })
+      .catch(() => {})
+      .finally(() => setDrawerLoading(false));
+  }
+
   return (
     <div className="space-y-10 text-sm text-gray-300">
       <div>
@@ -121,8 +245,10 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
         </h1>
         <p className="mt-2 text-gray-400 max-w-2xl leading-relaxed">
           Which issues dominated each era? KL/JS divergence tracks when congressional attention
-          shifted. Topics derived from {data.decades.reduce((s, d) => s + d.totalVotes, 0).toLocaleString()}{" "}
-          Voteview roll-call descriptions, matched against a hand-curated keyword taxonomy.
+          shifted. Topics derived from{" "}
+          {data.decades.reduce((s, d) => s + d.totalVotes, 0).toLocaleString()} Voteview roll-call
+          descriptions, matched against a hand-curated keyword taxonomy. Click any topic chip to
+          see the actual votes.
         </p>
       </div>
 
@@ -148,22 +274,25 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
 
         <p className="text-xs text-gray-500">
           Lift = P(topic | era) / P(topic | overall). Topics with lift &gt; 3× are strongly
-          over-represented in this era relative to the 1789–2026 baseline.
+          over-represented in this era relative to the 1789–2026 baseline. Click a chip to see
+          votes.
         </p>
 
         <div className="rounded border border-gray-800 bg-gray-900/40 px-4 py-4">
           {selected && selected.hot.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {selected.hot.map((h) => (
-                <div
+                <button
                   key={h.topic}
-                  className={`px-3 py-1.5 rounded border text-xs ${topicColor(h.topic)}`}
-                  title={`${h.count.toLocaleString()} votes`}
+                  className={`px-3 py-1.5 rounded border text-xs cursor-pointer transition-opacity hover:opacity-80 ${topicColor(h.topic)}`}
+                  title={`${h.count.toLocaleString()} votes — click to see vote list`}
+                  style={{ touchAction: 'manipulation' }}
+                  onClick={() => openDrawer(h.topic, selected.era)}
                 >
                   <span className="font-medium">{topicLabel(h.topic)}</span>
                   <span className="ml-2 font-mono opacity-80">×{h.lift.toFixed(1)}</span>
                   <span className="ml-2 text-[10px] opacity-60">{h.count.toLocaleString()}</span>
-                </div>
+                </button>
               ))}
             </div>
           ) : (
@@ -171,7 +300,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
           )}
         </div>
 
-        {/* All eras summary */}
+        {/* All eras summary — rows are clickable */}
         <div className="rounded border border-gray-800 overflow-hidden">
           <table className="w-full text-xs">
             <thead>
@@ -186,18 +315,31 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
               {data.hotTopics.map((h, i) => (
                 <tr
                   key={h.era}
-                  className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  className={`border-b border-gray-800/50 last:border-0 cursor-pointer transition-colors ${
+                    selectedEra === h.era
+                      ? "bg-blue-950/40 ring-1 ring-inset ring-blue-800/40"
+                      : i % 2 === 0
+                        ? "hover:bg-gray-800/30"
+                        : "bg-gray-900/20 hover:bg-gray-800/30"
+                  }`}
+                  onClick={() => setSelectedEra(h.era)}
                 >
                   <td className="px-3 py-2 align-top whitespace-nowrap text-gray-100">{h.era}</td>
                   <td className="px-3 py-2 align-top">
                     <div className="flex flex-wrap gap-1.5">
                       {h.hot.slice(0, 3).map((t) => (
-                        <span
+                        <button
                           key={t.topic}
-                          className={`px-2 py-0.5 rounded border text-[11px] ${topicColor(t.topic)}`}
+                          className={`px-2 py-0.5 rounded border text-[11px] cursor-pointer hover:opacity-80 transition-opacity ${topicColor(t.topic)}`}
+                          style={{ touchAction: 'manipulation' }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openDrawer(t.topic, h.era);
+                          }}
                         >
-                          {topicLabel(t.topic)} <span className="font-mono opacity-70">×{t.lift.toFixed(1)}</span>
-                        </span>
+                          {topicLabel(t.topic)}{" "}
+                          <span className="font-mono opacity-70">×{t.lift.toFixed(1)}</span>
+                        </button>
                       ))}
                     </div>
                   </td>
@@ -213,49 +355,88 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
         <h2 className="text-base font-semibold text-white">Decade-to-decade divergence</h2>
         <p className="text-xs text-gray-500">
           Jensen-Shannon divergence between consecutive decade topic distributions (0 = identical,
-          1 = maximally different). Hover a bar to see which topics shifted most.
+          1 = maximally different). Background tint shows historical era. Amber bars = high-shift
+          decades. Hover for details.
         </p>
 
         <div className="rounded border border-gray-800 bg-gray-900/40 p-4">
           <div className="relative">
-            <div className="flex items-end gap-[2px] h-40">
+            {/* Bar chart — fixed 160px height, era-colored column backgrounds */}
+            <div className="flex h-40 gap-[2px]">
               {data.klSequence.map((k, i) => {
-                const hPct = maxJs > 0 ? (k.jsDivergence / maxJs) * 100 : 0;
+                const barHeight = maxJs > 0 ? Math.max(4, (k.jsDivergence / maxJs) * 160) : 4;
                 const isHigh = k.jsDivergence >= maxJs * 0.7;
+                const eraBg = getEraStyle(eraForDecade(k.toDecade)).barBg;
                 return (
                   <div
                     key={`${k.fromDecade}-${k.toDecade}`}
-                    className="flex-1 flex flex-col items-center min-w-0"
+                    className={`flex-1 flex flex-col justify-end min-w-0 ${eraBg}`}
                     onMouseEnter={() => setHoverIdx(i)}
                     onMouseLeave={() => setHoverIdx(null)}
                   >
                     <div
                       className={`w-full rounded-t transition-colors ${
-                        isHigh ? "bg-amber-500/80 hover:bg-amber-400" : "bg-blue-700/70 hover:bg-blue-500"
+                        isHigh
+                          ? "bg-amber-500/80 hover:bg-amber-400"
+                          : "bg-blue-700/70 hover:bg-blue-500"
                       } ${hoverIdx === i ? "ring-1 ring-white/40" : ""}`}
-                      style={{ height: `${Math.max(2, hPct)}%` }}
+                      style={{ height: `${barHeight}px` }}
                     />
                   </div>
                 );
               })}
             </div>
+
+            {/* Axis labels — full decade on every 4th bar */}
             <div className="flex gap-[2px] mt-1">
               {data.klSequence.map((k, i) => (
                 <div
                   key={`label-${k.fromDecade}-${k.toDecade}`}
-                  className="flex-1 text-center text-[9px] font-mono text-gray-600 min-w-0"
+                  className="flex-1 text-center min-w-0 overflow-hidden"
                 >
-                  {i % 2 === 0 ? `${String(k.toDecade).slice(-2)}` : ""}
+                  {i % 4 === 0 ? (
+                    <span className="text-[8px] font-mono text-gray-600 whitespace-nowrap">
+                      {String(k.toDecade).slice(2)}
+                    </span>
+                  ) : null}
                 </div>
               ))}
+            </div>
+
+            {/* Era legend below axis */}
+            <div className="flex gap-[2px] mt-1">
+              {(() => {
+                const groups: { eraLabel: string; cols: number; startIdx: number }[] = [];
+                data.klSequence.forEach((k, i) => {
+                  const era = eraForDecade(k.toDecade);
+                  const last = groups[groups.length - 1];
+                  if (last && last.eraLabel === era) {
+                    last.cols++;
+                  } else {
+                    groups.push({ eraLabel: era, cols: 1, startIdx: i });
+                  }
+                });
+                return groups.map((g) => {
+                  const s = getEraStyle(g.eraLabel);
+                  return (
+                    <div
+                      key={g.eraLabel}
+                      className={`text-[7px] font-mono text-center overflow-hidden whitespace-nowrap ${s.headerText} opacity-70`}
+                      style={{ flex: g.cols }}
+                    >
+                      {g.cols >= 3 ? s.abbr : ""}
+                    </div>
+                  );
+                });
+              })()}
             </div>
           </div>
 
           {hoverIdx !== null && data.klSequence[hoverIdx] && (
             <div className="mt-4 border-t border-gray-800 pt-3 text-xs">
               <div className="text-gray-200 font-medium">
-                {decadeLabel(data.klSequence[hoverIdx]!.fromDecade)} →{" "}
-                {decadeLabel(data.klSequence[hoverIdx]!.toDecade)}
+                {data.klSequence[hoverIdx]!.fromDecade}s →{" "}
+                {data.klSequence[hoverIdx]!.toDecade}s
               </div>
               <div className="text-gray-500 mt-0.5">
                 JS divergence:{" "}
@@ -286,13 +467,30 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
       <section className="space-y-3">
         <h2 className="text-base font-semibold text-white">Topic intensity by decade</h2>
         <p className="text-xs text-gray-500">
-          Cell darkness = topic's share of votes in that decade (normalized per row, so each topic
-          row is shaded relative to its own peak decade).
+          Cell darkness = topic&apos;s share of votes in that decade (normalized per row).
+          Column headers show full decade; era bands above group them historically.
         </p>
 
         <div className="rounded border border-gray-800 overflow-x-auto">
           <table className="text-[11px] min-w-full">
             <thead>
+              {/* Era band header row */}
+              <tr className="border-b border-gray-900">
+                <th className="px-2 py-1 sticky left-0 bg-gray-900/80 z-10" />
+                {decadeEraGroups.map((g) => {
+                  const s = getEraStyle(g.eraLabel);
+                  return (
+                    <th
+                      key={g.eraLabel}
+                      colSpan={g.cols}
+                      className={`px-1 py-1 text-center text-[8px] font-medium ${s.headerBg} ${s.headerText} border-x border-gray-900 whitespace-nowrap`}
+                    >
+                      {g.cols >= 2 ? s.abbr : "·"}
+                    </th>
+                  );
+                })}
+              </tr>
+              {/* Decade header row */}
               <tr className="border-b border-gray-800 bg-gray-900/50">
                 <th className="px-2 py-2 text-left font-medium text-gray-500 sticky left-0 bg-gray-900/80 z-10">
                   Topic
@@ -302,7 +500,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                     key={d.decade}
                     className="px-1 py-2 text-center font-mono text-[10px] text-gray-500 whitespace-nowrap"
                   >
-                    {String(d.decade).slice(-2)}s
+                    {d.decade}s
                   </th>
                 ))}
               </tr>
@@ -322,7 +520,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                       <td
                         key={`${slug}-${d.decade}`}
                         className={`w-7 h-7 text-center align-middle ${heatClass(intensity)}`}
-                        title={`${topicLabel(slug)} · ${decadeLabel(d.decade)}: ${count.toLocaleString()} votes (${(p * 100).toFixed(1)}%)`}
+                        title={`${topicLabel(slug)} · ${d.decade}s: ${count.toLocaleString()} votes (${(p * 100).toFixed(1)}%)`}
                       >
                         <span className="text-[9px] text-white/60 font-mono">
                           {count > 0 ? count : ""}
@@ -339,13 +537,142 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
 
       <div className="border-t border-gray-800 pt-4 text-xs text-gray-600">
         Data:{" "}
-        <a href="/api/analysis/topic-trends" className="text-gray-500 hover:text-gray-300 underline">
+        <a
+          href="/api/analysis/topic-trends"
+          className="text-gray-500 hover:text-gray-300 underline"
+        >
           /api/analysis/topic-trends
         </a>{" "}
         · Source: <span className="font-mono">LegislativeVote</span> records ingested by{" "}
-        <span className="font-mono">voteview_v1</span>, topic-tagged via keyword taxonomy on roll-call
-        descriptions.
+        <span className="font-mono">voteview_v1</span>, topic-tagged via keyword taxonomy on
+        roll-call descriptions.
       </div>
+
+      {/* Vote drawer */}
+      {drawerState && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 z-40"
+            onClick={closeDrawer}
+            aria-hidden="true"
+          />
+          {/* Drawer panel */}
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${topicLabel(drawerState.topic)} votes — ${drawerState.eraLabel}`}
+            className="fixed right-0 top-0 h-full w-full md:w-[520px] bg-gray-950 border-l border-gray-800 z-50 flex flex-col shadow-2xl transition-transform duration-[280ms] ease-out"
+            style={{ transform: drawerVisible ? "translateX(0)" : "translateX(100%)" }}
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between px-5 py-4 border-b border-gray-800 gap-3">
+              <div>
+                <h3 className="text-sm font-semibold text-white">
+                  {topicLabel(drawerState.topic)} votes
+                </h3>
+                <p className="text-xs text-gray-500 mt-0.5">{drawerState.eraLabel}</p>
+              </div>
+              <button
+                onClick={closeDrawer}
+                className="shrink-0 text-gray-500 hover:text-gray-300 transition-colors mt-0.5"
+                aria-label="Close"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto px-5 py-3 space-y-2">
+              {drawerLoading && drawerVotes.length === 0 ? (
+                <p className="text-xs text-gray-500 py-8 text-center">Loading…</p>
+              ) : drawerVotes.length === 0 ? (
+                <p className="text-xs text-gray-500 py-8 text-center">
+                  No votes found for {topicLabel(drawerState.topic)} in {drawerState.eraLabel}.
+                </p>
+              ) : (
+                <>
+                  <p className="text-xs text-gray-600 pb-1">
+                    {drawerTotal.toLocaleString()} vote{drawerTotal !== 1 ? "s" : ""} total
+                  </p>
+                  {drawerVotes.map((v) => (
+                    <div
+                      key={v.id}
+                      className="rounded border border-gray-800 bg-gray-900/40 p-3 space-y-1.5"
+                    >
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span
+                          className={`text-[10px] px-1.5 py-0.5 rounded border font-mono ${
+                            v.chamber === "House"
+                              ? "bg-blue-950/40 border-blue-800/60 text-blue-300"
+                              : "bg-purple-950/40 border-purple-800/60 text-purple-300"
+                          }`}
+                        >
+                          {v.chamber}
+                        </span>
+                        {v.result && (
+                          <span
+                            className={`text-[10px] px-1.5 py-0.5 rounded border font-mono ${
+                              v.result === "passed"
+                                ? "bg-green-950/40 border-green-800/60 text-green-300"
+                                : v.result === "failed"
+                                  ? "bg-red-950/40 border-red-800/60 text-red-300"
+                                  : "bg-gray-800/60 border-gray-600/60 text-gray-300"
+                            }`}
+                          >
+                            {v.result}
+                          </span>
+                        )}
+                        {v.voteDate && (
+                          <span className="text-[10px] text-gray-600 font-mono">
+                            {new Date(v.voteDate).toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            })}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-300 line-clamp-2" title={v.title}>
+                        {v.title}
+                      </p>
+                      {(v.yesCount != null || v.noCount != null) && (
+                        <div className="flex gap-3 text-[10px] font-mono">
+                          {v.yesCount != null && (
+                            <span className="text-green-600">✓ {v.yesCount.toLocaleString()}</span>
+                          )}
+                          {v.noCount != null && (
+                            <span className="text-red-600">✗ {v.noCount.toLocaleString()}</span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  {drawerVotes.length < drawerTotal && (
+                    <button
+                      onClick={loadMore}
+                      disabled={drawerLoading}
+                      className="w-full py-2.5 text-xs text-gray-500 border border-gray-800 rounded hover:bg-gray-800/50 transition-colors disabled:opacity-50 mt-2"
+                    >
+                      {drawerLoading
+                        ? "Loading…"
+                        : `Load more (${(drawerTotal - drawerVotes.length).toLocaleString()} remaining)`}
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
