@@ -536,11 +536,42 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
       >
         <td className="py-2.5 pr-4">
           {edge.source.url ? (
-            <a href={edge.source.url} target="_blank" rel="noopener noreferrer"
-              className="text-gray-200 hover:text-white hover:underline text-sm"
-              onClick={e => e.stopPropagation()}>
-              {edge.source.name}
-            </a>
+            <span className="flex items-center gap-2 flex-wrap">
+              <a href={edge.source.url} target="_blank" rel="noopener noreferrer"
+                className="text-gray-200 hover:text-white hover:underline text-sm"
+                onClick={e => e.stopPropagation()}>
+                {edge.source.name}
+              </a>
+              {edge.source.url.startsWith('https://doi.org/') ? (
+                <>
+                  <a
+                    href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(edge.source.url.replace('https://doi.org/', ''))}`}
+                    target="_blank" rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="text-xs px-1.5 py-0.5 rounded bg-blue-900/50 text-blue-400 hover:text-blue-300 hover:bg-blue-900 transition-colors whitespace-nowrap"
+                    title="Search on PubMed">
+                    PubMed ↗
+                  </a>
+                  <a
+                    href={`https://www.semanticscholar.org/search?q=${encodeURIComponent(edge.source.url.replace('https://doi.org/', ''))}&sort=Relevance`}
+                    target="_blank" rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="text-xs px-1.5 py-0.5 rounded bg-purple-900/50 text-purple-400 hover:text-purple-300 hover:bg-purple-900 transition-colors whitespace-nowrap"
+                    title="Search on Semantic Scholar">
+                    S2 ↗
+                  </a>
+                </>
+              ) : (
+                <a
+                  href={`https://scholar.google.com/scholar?q=${encodeURIComponent(edge.source.name)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="text-xs px-1.5 py-0.5 rounded bg-gray-800 text-gray-400 hover:text-gray-300 hover:bg-gray-700 transition-colors whitespace-nowrap"
+                  title="Search on Google Scholar">
+                  Scholar ↗
+                </a>
+              )}
+            </span>
           ) : (
             <span className="text-gray-300 text-sm">{edge.source.name}</span>
           )}
@@ -750,10 +781,26 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
                   <p className="text-xs text-gray-400">
                     Source:{" "}
                     {te.triggeredBySource.url ? (
-                      <a href={te.triggeredBySource.url} target="_blank" rel="noopener noreferrer"
-                        className="text-gray-200 hover:underline">
-                        {te.triggeredBySource.name}
-                      </a>
+                      <span className="inline-flex items-center gap-1.5 flex-wrap">
+                        <a href={te.triggeredBySource.url} target="_blank" rel="noopener noreferrer"
+                          className="text-gray-200 hover:underline">
+                          {te.triggeredBySource.name}
+                        </a>
+                        {te.triggeredBySource.url.startsWith('https://doi.org/') ? (
+                          <>
+                            <a href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(te.triggeredBySource.url.replace('https://doi.org/', ''))}`}
+                              target="_blank" rel="noopener noreferrer"
+                              className="text-xs px-1 py-0.5 rounded bg-blue-900/50 text-blue-400 hover:text-blue-300">PubMed ↗</a>
+                            <a href={`https://www.semanticscholar.org/search?q=${encodeURIComponent(te.triggeredBySource.url.replace('https://doi.org/', ''))}&sort=Relevance`}
+                              target="_blank" rel="noopener noreferrer"
+                              className="text-xs px-1 py-0.5 rounded bg-purple-900/50 text-purple-400 hover:text-purple-300">S2 ↗</a>
+                          </>
+                        ) : (
+                          <a href={`https://scholar.google.com/scholar?q=${encodeURIComponent(te.triggeredBySource.name)}`}
+                            target="_blank" rel="noopener noreferrer"
+                            className="text-xs px-1 py-0.5 rounded bg-gray-800 text-gray-400 hover:text-gray-300">Scholar ↗</a>
+                        )}
+                      </span>
                     ) : (
                       <span>{te.triggeredBySource.name}</span>
                     )}

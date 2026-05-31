@@ -391,7 +391,27 @@ function SourceResult({ source }: { source: SourceHit }) {
         <div className="min-w-0">
           <p className="text-sm text-gray-200 group-hover:text-white truncate">{source.name}</p>
           {source.url && (
-            <p className="text-xs text-blue-400 mt-0.5 truncate">{source.url}</p>
+            <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+              <a href={source.url} target="_blank" rel="noopener noreferrer"
+                className="text-xs text-blue-400 hover:text-blue-300 hover:underline truncate"
+                onClick={e => e.stopPropagation()}>
+                {source.url}
+              </a>
+              {source.url.startsWith('https://doi.org/') ? (
+                <>
+                  <a href={`https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(source.url.replace('https://doi.org/', ''))}`}
+                    target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                    className="text-xs px-1 py-0.5 rounded bg-blue-900/40 text-blue-400 hover:text-blue-300 whitespace-nowrap">PubMed ↗</a>
+                  <a href={`https://www.semanticscholar.org/search?q=${encodeURIComponent(source.url.replace('https://doi.org/', ''))}&sort=Relevance`}
+                    target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                    className="text-xs px-1 py-0.5 rounded bg-purple-900/40 text-purple-400 hover:text-purple-300 whitespace-nowrap">S2 ↗</a>
+                </>
+              ) : (
+                <a href={`https://scholar.google.com/scholar?q=${encodeURIComponent(source.name)}`}
+                  target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                  className="text-xs px-1 py-0.5 rounded bg-gray-800 text-gray-400 hover:text-gray-300 whitespace-nowrap">Scholar ↗</a>
+              )}
+            </div>
           )}
         </div>
         <span className="shrink-0 text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">
