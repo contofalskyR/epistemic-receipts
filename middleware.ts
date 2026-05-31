@@ -92,8 +92,12 @@ export async function middleware(req: NextRequest) {
     return res;
   }
 
-  // Always allow the login page and login API through
-  if (pathname === "/login" || pathname === "/api/login") {
+  // Always allow the login page, login API, and bookmark API through
+  if (
+    pathname === "/login" ||
+    pathname === "/api/login" ||
+    pathname.startsWith("/api/bookmarks")
+  ) {
     return NextResponse.next();
   }
 
