@@ -1,7 +1,12 @@
+import { createHash } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
+
+function hashKey(key: string): string {
+  return createHash("sha256").update(key).digest("hex");
+}
 
 export async function GET(req: NextRequest) {
   const key = req.nextUrl.searchParams.get("key");
@@ -9,7 +14,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ claims: [] });
   }
   const profile = await prisma.profile.findUnique({
-    where: { key },
+    where: { key: hashKey(key) },
     select: {
       bookmarks: {
         orderBy: { createdAt: "desc" },
