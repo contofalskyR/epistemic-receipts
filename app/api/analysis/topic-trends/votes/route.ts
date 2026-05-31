@@ -44,9 +44,10 @@ export async function GET(req: NextRequest) {
         result: string | null;
         yesCount: number | null;
         noCount: number | null;
+        url: string | null;
       }>
     >`
-      SELECT lv.id, s.name AS title, lv."voteDate", lv.chamber, lv.result, lv."yesCount", lv."noCount"
+      SELECT lv.id, s.name AS title, lv."voteDate", lv.chamber, lv.result, lv."yesCount", lv."noCount", s.url
       FROM "LegislativeVote" lv
       JOIN "Source" s ON s.id = lv."sourceId"
       WHERE s."ingestedBy" = 'voteview_v1'

@@ -120,6 +120,7 @@ type VoteItem = {
   result: string | null;
   yesCount: number | null;
   noCount: number | null;
+  url: string | null;
 };
 
 type DrawerState = { topic: string; eraLabel: string } | null;
@@ -640,9 +641,21 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-gray-300 line-clamp-2" title={v.title}>
-                        {v.title}
-                      </p>
+                      {v.url ? (
+                        <a
+                          href={v.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-gray-300 hover:text-blue-300 line-clamp-2 underline decoration-gray-700 hover:decoration-blue-400 transition-colors"
+                          title={v.title}
+                        >
+                          {v.title}
+                        </a>
+                      ) : (
+                        <p className="text-xs text-gray-300 line-clamp-2" title={v.title}>
+                          {v.title}
+                        </p>
+                      )}
                       {(v.yesCount != null || v.noCount != null) && (
                         <div className="flex gap-3 text-[10px] font-mono">
                           {v.yesCount != null && (
