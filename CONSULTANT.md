@@ -271,6 +271,105 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-31 — Anonymous-key bookmarks
+
+**What.** Shipped end-to-end bookmarking for claims using an anonymous, localStorage-stored profile key — no account, no email, no OAuth. A UUID v4 is generated on first bookmark and persisted in `localStorage` as `er_profile_key`. The key maps to a `Profile` row server-side; bookmarks live in a `Bookmark` join table to `Claim`. Users can copy their key and paste it on another device to restore the same bookmark set.
+
+**Schema.** Two new models added to `prisma/schema.prisma`:
+- `Profile { id, key @unique, createdAt, bookmarks Bookmark[] }`
+- `Bookmark { id, profileId, claimId, createdAt }` with `@@unique([profileId, claimId])` plus `@@index` on each FK side. Cascade delete on both relations.
+- Reverse relation `bookmarks Bookmark[]` added to `Claim`.
+
+**Migration.** `prisma/migrations/20260531000000_add_bookmarks/migration.sql` created by `prisma migrate diff` against the live schema. Applied via `prisma db execute` (the trgm migration in this repo uses `CREATE INDEX CONCURRENTLY` which the shadow DB cannot run during `migrate dev`, so the shadow DB path is broken — same workaround used here as in the trgm fix). Marked applied with `prisma migrate resolve --applied 20260531000000_add_bookmarks`. Prisma client regenerated.
+
+**API.** `app/api/bookmarks/route.ts` with `GET`, `POST`, `DELETE` handlers:
+- `GET /api/bookmarks?key=UUID` — returns `{ claimIds, bookmarks }`; empty array if profile not found.
+- `POST /api/bookmarks` with `{ key, claimId }` — `Profile.upsert({ key })` then `Bookmark.upsert({ profileId_claimId })`. Returns `{ success: true, bookmarked: true }`. 404 if the claim doesn't exist.
+- `DELETE /api/bookmarks` with `{ key, claimId }` — `Bookmark.deleteMany({ profileId, claimId })`. Returns `{ success: true, bookmarked: false }`.
+- Public write routes (no `ALLOW_EDITS` gate — bookmarks are user-generated, not editorial content). `key` validated as 8–128 chars.
+- `app/api/bookmarks/claims/route.ts` — `GET ?key=UUID` returns the bookmarked claims hydrated with `text`, `currentStatus`, `claimType`, `verificationStatus`, `ingestedBy`, `createdAt`, and `bookmarkedAt`, filtering out soft-deleted claims.
+
+**Hook.** `hooks/useBookmarks.ts`:
+- `getOrCreateProfileKey()` reads `localStorage` `er_profile_key` and writes `crypto.randomUUID()` if missing.
+- `useBookmarks()` returns `{ profileKey, bookmarks: Set<string>, isBookmarked, toggle, copyKey, copied, restoreFromKey, loading }`.
+- SSR-safe — returns `profileKey: null` and empty set until `useEffect` runs.
+- `toggle()` is optimistic (mutates local state immediately, then PATCHes the API; reverts on failure). Lazy-creates the profile key if missing.
+- `restoreFromKey()` writes the new key to localStorage, fires an `er_bookmarks_changed` window event, and the hook re-fetches. Also listens to native `storage` events for cross-tab sync.
+- `copyKey()` writes to `navigator.clipboard` and flashes a `copied` boolean for 1.5s.
+
+**UI.**
+- Claim detail (`app/claims/[id]/page.tsx`) — `BookmarkToggle` component added inline next to the `STATUS` / `claimType` / `UNREVIEWED` badges. Uses `lucide-react` icons (`Bookmark` unfilled, `BookmarkCheck` filled). Amber when bookmarked, gray when not. Labels: "Bookmark" / "Bookmarked".
+- `/bookmarks` page (`app/bookmarks/page.tsx`) — three sections:
+  1. Profile-key card with the key shown in a monospace code box, a "Copy key" button, and a "save this key to access your bookmarks on another device" note. Key is hidden as `— will be generated when you bookmark a claim —` until the user has bookmarked at least one item.
+  2. "Restore from key" input + button — accepts a pasted key and switches the active profile.
+  3. Saved-claims list — each card shows the claim text, status / type / pipeline chips, a per-card "remove" bookmark button, and the bookmarked-at date. Empty state: "No bookmarks yet. Click the bookmark icon on any claim to save it."
+- Nav (`app/layout.tsx`) — `Bookmarks` link added between `Stats` and `Forthcoming`. Footer date bumped to May 31, 2026.
+
+**Why no auth gate.** Per AGENTS.md, `ALLOW_EDITS` protects editorial content (claims, edges, threshold events). Bookmarks are user-generated, scoped to a self-issued key, and have no editorial impact. They're treated like `Feedback`: public POST.
+
+**Dependencies.** Added `lucide-react` (^1.17.0) for the bookmark icons.
+
+**Verification.** `npx tsc --noEmit` clean.
+
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260531000000_add_bookmarks/migration.sql` (new), `app/api/bookmarks/route.ts` (new), `app/api/bookmarks/claims/route.ts` (new), `hooks/useBookmarks.ts` (new), `app/bookmarks/page.tsx` (new), `app/claims/[id]/page.tsx`, `app/layout.tsx`, `app/page.tsx`, `package.json`, `package-lock.json`, `CONSULTANT.md`.
+
+---
+
+### 2026-05-30 18:31 EDT — fix topic trends drawer + display
+- **Commit:** fix(topic-trends): drawer mobile tap, bar chart min height, decade label abbreviation
+- **Files changed:**
+  - app/analysis/topics/TopicTrendsClient.tsx
+- **Diff stat:**  1 file changed, 364 insertions(+), 37 deletions(-)
+- **Issue 1 — Drawer not opening on mobile:** Replaced double-`requestAnimationFrame` in `openDrawer` with a `useEffect` on `drawerState` that calls `setTimeout(() => setDrawerVisible(true), 0)`. The RAF approach doesn't reliably fire in iOS Telegram WebView. Also added `style={{ touchAction: 'manipulation' }}` to both sets of chip buttons (hot topics panel + era table rows) to eliminate iOS 300ms tap delay.
+- **Issue 2 — Bar chart invisible bars:** Raised minimum bar height from `Math.max(2, ...)` to `Math.max(4, ...)` and the fallback from `2` to `4` so bars are visible even for near-zero divergence values on mobile.
+- **Issue 3 — Decade axis labels truncated:** Changed `{k.toDecade}s` to `{String(k.toDecade).slice(2)}` — "1790" → "90", "1800" → "00" — intentional 2-digit compression for narrow mobile columns. The heatmap header row still uses full `{d.decade}s` labels which are inside a scrollable table.
+
+
+### 2026-05-30 — `/analysis/topics` Topic Trends overhaul
+
+**Bug 1 fixed: JS divergence chart bars were invisible.** The bars used `height: ${hPct}%` inside a `flex flex-col justify-end` child of a `flex h-40` container. Percentage heights on flex children only resolve if the parent has an explicit height in the cross axis — here the children weren't stretched to 160px because the parent used `items-end`. Fix: switched to absolute pixel heights `height: ${(jsDivergence / maxJs) * 160}px`. Bars now appear as expected.
+
+**Bug 2 fixed: decade heatmap column headers showed ambiguous 2-digit labels.** `String(d.decade).slice(-2)}s` rendered `"80s"`, `"00s"` — century-ambiguous. Fixed to `${d.decade}s` → `"1880s"`, `"1900s"`.
+
+**New: era color-bands in divergence chart.** Each bar column background is tinted by the historical era the decade belongs to (Founding = amber, Civil War = red, Cold War = blue, etc.). An era legend row sits below the axis.
+
+**New: era header row in heatmap.** A colored band above the decade columns groups them by era using `colSpan`. Each era has its own tint + abbreviated label.
+
+**New: topic chips clickable → vote list drawer.** Clicking any topic chip in the "Hot topics by era" panel or any topic badge in the era summary table opens a slide-in drawer (right side). Drawer fetches from the new `GET /api/analysis/topic-trends/votes?topic=&era=&limit=20&offset=0` endpoint (file: `app/api/analysis/topic-trends/votes/route.ts`). Shows vote cards (date, chamber badge, pass/fail badge, title, yes/no counts). Supports "Load more" pagination. Closes on Escape or backdrop click.
+
+**New: era rows in summary table are clickable.** Clicking an era row updates `selectedEra` to show that era's chips; selected row is highlighted with a blue ring.
+
+**API:** `GET /api/analysis/topic-trends/votes` — raw Prisma query joining `LegislativeVote` + `Source` with `ingestedBy = 'voteview_v1'`, `voteDate` range from `ERAS` array, and `topics::jsonb @> $1::jsonb` containment filter. Returns `{ votes, total }`.
+
+**Files changed:** `app/analysis/topics/TopicTrendsClient.tsx` (rewrite), `app/api/analysis/topic-trends/votes/route.ts` (new), `ROADMAP.md`. Deployed to prod.
+
+---
+
+### 2026-05-30 — Globe Phase 3 — click country → paginated claim list
+
+**What.** New API route `app/api/globe/country-claims/route.ts` + updated `app/globe/GlobeClient.tsx`. Clicking any country on `/globe` now opens a sidebar panel with a paginated list of claims linked to that jurisdiction via the `PolityClaim` junction table (347,884 links, 205 polities with ISO alpha-3 country codes).
+
+**API.** `GET /api/globe/country-claims?country=XX&limit=20&offset=0`
+- Resolves ISO alpha-2 → alpha-3 via inline `ALPHA2_TO_ALPHA3` map (mirrors the one in `scripts/link-polity-votes-claims.ts`)
+- Queries `Polity.countryCode` (alpha-3) → `PolityClaim.polityId` → `Claim` (where `deleted: false`)
+- Returns `{ claims, total, countryCode, countryName }` — each claim: `{ id, text, currentStatus, verificationStatus, ingestedBy, claimEmergedAt, createdAt }`
+- `revalidate = 300`
+
+**UI changes.** `GlobeClient.tsx`:
+- `openSidebar` now fires two parallel fetches: existing `/api/globe/country/[code]` (header data) + new `/api/globe/country-claims` (first 20 claims)
+- New state: `claimsPage`, `claimsOffset`, `loadingClaims`, `loadingMoreClaims`
+- Sidebar header shows `claimsPage.total` (polity-link count) with fallback to old sidebar count
+- Claim cards show: title (line-clamp-3), verification status badge (if set), pipeline tag, link to `/claims/[id]`
+- "Load more" button appends next 20 claims to list; shows remaining count
+- Empty state: "No polity-linked claims found for this country"
+- Close button resets all claim state
+
+**No schema changes.** Uses existing `PolityClaim` table and indexes (`@@index([polityId])`, `@@index([claimId])`).
+
+**Files changed.** `app/api/globe/country-claims/route.ts` (new), `app/globe/GlobeClient.tsx`, `app/page.tsx` (changelog entry), `ROADMAP.md` (Phase 3 marked shipped). Deployed to prod.
+
+---
+
 ### 2026-05-30 — Direct Polity↔Vote + Polity↔Claim linking (462k links)
 
 **What.** Ran `scripts/link-polity-votes-claims.ts` with `ALLOW_EDITS=true` to populate the `PolityVote` and `PolityClaim` junction tables that were created (but unfilled) by migration `20260530190000_add_polity_vote_claim`. Links are derived from each row's pipeline/dataSource → alpha-2 → alpha-3 country code (via `lib/globe-pipeline-country.ts`) intersected with `Polity.countryCode` and the row's date falling within `[Polity.startYear, Polity.endYear]`.

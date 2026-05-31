@@ -50,6 +50,7 @@ model Claim {
   bookClaimMatches         BookClaimMatch[]
   historicalEvents         ClaimHistoricalEvent[]
   polityLinks              PolityClaim[]
+  bookmarks                Bookmark[]
 
   @@index([academicFieldId])
   @@index([ingestedBy])
@@ -556,5 +557,26 @@ model PolityClaim {
 
   @@unique([polityId, claimId])
   @@index([polityId])
+  @@index([claimId])
+}
+
+model Profile {
+  id        String     @id @default(uuid())
+  key       String     @unique
+  createdAt DateTime   @default(now())
+  bookmarks Bookmark[]
+}
+
+model Bookmark {
+  id        String   @id @default(uuid())
+  profileId String
+  claimId   String
+  createdAt DateTime @default(now())
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  claim   Claim   @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, claimId])
+  @@index([profileId])
   @@index([claimId])
 }
