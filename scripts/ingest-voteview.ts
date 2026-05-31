@@ -95,7 +95,7 @@ async function processChunk(rows: RollcallRow[], dryRun: boolean): Promise<Count
     await prisma.source.createMany({
       data: newRows.map(r => ({
         name: buildTitle(r),
-        url: `https://voteview.com/rollcall/${r.congress}/${chamberCode(r.chamber)}/${r.rollnumber}`,
+        url: `https://voteview.com/rollcall/R${chamberCode(r.chamber).toUpperCase()}${String(r.congress).padStart(3, '0')}${String(r.rollnumber).padStart(4, '0')}`,
         publishedAt: r.date?.trim() ? new Date(r.date.trim()) : null,
         methodologyType: 'primary',
         ingestedBy: INGESTED_BY,
