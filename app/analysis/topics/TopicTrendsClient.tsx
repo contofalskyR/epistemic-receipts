@@ -177,6 +177,17 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
     return groups;
   }, [data.decades]);
 
+  // Set of decade values that are the first in their era group (for era-boundary borders)
+  const eraBoundaryDecades = useMemo(() => {
+    const boundaries = new Set<number>();
+    let idx = 0;
+    for (const g of decadeEraGroups) {
+      if (idx > 0) boundaries.add(data.decades[idx]?.decade);
+      idx += g.cols;
+    }
+    return boundaries;
+  }, [decadeEraGroups, data.decades]);
+
   // Escape key closes drawer
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -476,15 +487,17 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
           <table className="text-[11px] min-w-full">
             <thead>
               {/* Era band header row */}
-              <tr className="border-b border-gray-900">
-                <th className="px-2 py-1 sticky left-0 bg-gray-900/80 z-10" />
-                {decadeEraGroups.map((g) => {
+              <tr className="border-b border-gray-700">
+                <th className="px-2 py-1 sticky left-0 bg-gray-900/80 z-10 text-left text-[9px] font-semibold text-gray-500 uppercase tracking-wide">
+                  Era
+                </th>
+                {decadeEraGroups.map((g, i) => {
                   const s = getEraStyle(g.eraLabel);
                   return (
                     <th
                       key={g.eraLabel}
                       colSpan={g.cols}
-                      className={`px-1 py-1 text-center text-[8px] font-medium ${s.headerBg} ${s.headerText} border-x border-gray-900 whitespace-nowrap`}
+                      className={`px-1 py-1 text-center text-[8px] font-medium ${s.headerBg} ${s.headerText} whitespace-nowrap ${i > 0 ? "border-l-2 border-l-gray-500" : ""}`}
                     >
                       {g.cols >= 2 ? s.abbr : "·"}
                     </th>
@@ -499,7 +512,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                 {data.decades.map((d) => (
                   <th
                     key={d.decade}
-                    className="px-1 py-2 text-center font-mono text-[10px] text-gray-500 whitespace-nowrap"
+                    className={`px-1 py-2 text-center font-mono text-[10px] text-gray-500 whitespace-nowrap ${eraBoundaryDecades.has(d.decade) ? "border-l-2 border-l-gray-600" : ""}`}
                   >
                     {d.decade}s
                   </th>
@@ -520,7 +533,7 @@ export default function TopicTrendsClient({ data }: { data: TopicTrendResult }) 
                     return (
                       <td
                         key={`${slug}-${d.decade}`}
-                        className={`w-7 h-7 text-center align-middle ${heatClass(intensity)}`}
+                        className={`w-7 h-7 text-center align-middle ${heatClass(intensity)} ${eraBoundaryDecades.has(d.decade) ? "border-l-2 border-l-gray-600" : ""}`}
                         title={`${topicLabel(slug)} · ${d.decade}s: ${count.toLocaleString()} votes (${(p * 100).toFixed(1)}%)`}
                       >
                         <span className="text-[9px] text-white/60 font-mono">
