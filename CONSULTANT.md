@@ -271,6 +271,45 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — Academic-field badges on /topics + 348-topic backfill
+
+**What.** Each topic row on `/topics` now carries a small colored pill labelling the topic's top-level academic discipline (Social science, Natural science, Humanities, Applied science, Formal science). The pill is a `<Link href="/fields">` so it doubles as a jump-off into the `/fields` browser.
+
+**Why.** Topics were domain-grouped but the domain labels (`legislation`, `clinical-trials`, `archives`, …) say nothing about the parent discipline. The same topic surfaces in search results stripped of its section header, where users have no signal at all about whether they're looking at law, biology, or political science. The badge is a constant-width visual key that survives search, scroll, and tree depth.
+
+**Colors (per task spec).**
+- Social science → `bg-blue-500` · label `SOCIAL SCI`
+- Natural science → `bg-emerald-500` · label `NATURAL SCI`
+- Humanities → `bg-violet-500` · label `HUMANITIES`
+- Applied science → `bg-amber-500` · label `APPLIED SCI`
+- Formal science → `bg-cyan-500` · label `FORMAL SCI`
+
+**Implementation.** `app/topics/page.tsx` gains a self-contained `DOMAIN_TO_DISCIPLINE` table covering all 29 in-use domains (verified by `SELECT DISTINCT domain FROM "Topic"` — none are formal-science in current data, but the slot exists for future) plus a `<DisciplineBadge domain={…} />` component. `TopicTreeItem` and `SearchResult` were restructured from a single outer `<Link>` to a flex row containing two siblings — an inner `<Link>` covering name/count (→ `/topics/<slug>`) and a separate `<Link>` for the badge (→ `/fields`) — so nested-anchor warnings stay out of the DOM. The discipline lookup is by domain string, so the badge renders client-side without a new API field.
+
+**DB backfill (sibling concern).** `Topic.academicFieldId` was null for **all 348 topics** despite the `AcademicField` table being seeded and `/fields` already shipping. Extended `scripts/tag-topics-academic-field.ts` from its original 8-domain map to a full 29-domain map (each domain → level-1 `AcademicField` slug, e.g. `government → social-science--political-science`, `medicine → applied-science--medicine-and-health`). Re-ran with `ALLOW_EDITS=true`; **348/348 topics now carry a non-null `academicFieldId`**. The frontend badge uses domain → discipline; the DB column uses domain → level-1-field; both derive from the same canonical mapping but live in their own files (the script is run rarely, the page is shipped, so keeping them decoupled is cheaper than introducing a shared module right now).
+
+**Files changed.** `app/topics/page.tsx` (badge + restructured row), `scripts/tag-topics-academic-field.ts` (expanded mapping + idempotent backfill), `app/page.tsx` (changelog entry).
+
+**Verification.** `npx tsc --noEmit` clean. Dev server returned `HTTP 200` on `/topics` and `/api/topics`. DB query confirms `total: 348, withField: 348`.
+
+### 2026-06-01 — Sources merged into Datasets (drawer UX + /sources redirect + nav cleanup)
+
+**What.** `/sources` was a standalone flat list of every Source row in the database (~838k records) sorted by `createdAt desc`. Items looked like "OpenFEC — independent expenditures supporting GARCIA, MICHAEL (2020)" with no grouping, no filtering by pipeline, and no context tying a source back to the dataset that produced it. The page was nav-linked but unnavigable.
+
+**Resolution.** Source records now live inside `/datasets` instead of as a standalone page:
+- `app/datasets/page.tsx` — dataset cards converted from `<div>` to `<button>`; click selects the dataset and opens a right-side drawer (`<aside>` with a `fixed inset-0 bg-black/60` backdrop) that fetches `/api/sources?ingestedBy=<tag>&limit=50&offset=N`, paginated via a "Load more" button. Drawer carries the pipeline tag, label/description/flag, total count, last-ingested date, external source link, an in-drawer name/URL filter (client-side over the loaded page), and ESC-to-close.
+- `next.config.ts` gains `redirects()` mapping `/sources → /datasets` (`permanent: true`, so 308 from Next.js — semantic 301 for SEO purposes).
+- `app/sources/page.tsx` deleted along with its directory. The redirect in `next.config.ts` pre-empts the route, but the directory is removed so it cannot be revived by accident.
+- `app/layout.tsx` top nav loses the **Sources** link.
+
+**Why a drawer over inline.** Main content is constrained to `max-w-3xl mx-auto`; an inline "below" panel would force scroll past the dataset grid every selection. The drawer keeps both panes visible side-by-side on `sm:` and above (`sm:w-[28rem] lg:w-[36rem]`) and degrades to full-width on mobile, satisfying the "panel on the right, below on mobile" constraint.
+
+**API shape.** The existing `GET /api/sources` already supported `?ingestedBy=` filtering (added during the earlier API-hardening pass — see 2026-05 entry); no API change was needed. The drawer uses the existing `limit`/`offset` pagination.
+
+**Loss assessment.** The deleted `/sources` page also exposed a `POST /api/sources` manual-source creation form (gated by `isReadOnly()`). In production the form was hidden anyway. The API endpoint remains; manual source insertion via curl/script is unchanged. No editing UI was lost in production.
+
+**Files changed.** `app/datasets/page.tsx` (+drawer, ~150 lines), `app/layout.tsx` (-1 line nav link), `next.config.ts` (+redirects block), `app/sources/page.tsx` (deleted), `app/page.tsx` (changelog entry).
+
 ### 2026-06-01 — World Bank Indicators topic page rewrite (faceting + country filter + comparison chart)
 
 **What.** `/topics/world-bank-indicators` was an unnavigable flat list of 34,643 atomic country-year data points sorted by `claimEmergedAt desc` — useless because every claim emerged at roughly the same ingest time. The page now special-cases the `worldbank_v1` pipeline with three features:
