@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import Link from "next/link";
 import { countryFlag } from "@/lib/countryCodeMap";
 import type { OriginPoint } from "@/app/api/globe/origins/route";
 import { getGeoJSONForYear, type GeoJSONSelection } from "@/lib/historical-geo";
@@ -23,6 +24,22 @@ type CountryDetail = {
     createdAt: string;
     ingestedBy: string;
   }>;
+};
+
+type ClaimItem = {
+  id: string;
+  text: string;
+  currentStatus: string;
+  verificationStatus: string | null;
+  ingestedBy: string;
+  createdAt: string;
+};
+
+type CountryClaimsPage = {
+  countryCode: string;
+  countryName: string;
+  total: number;
+  claims: ClaimItem[];
 };
 
 type TooltipState = {
@@ -71,6 +88,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const [claimFilter, setClaimFilter] = useState("");
+
+  // Paginated claims panel
+  const [claimsPage, setClaimsPage] = useState<CountryClaimsPage | null>(null);
+  const [claimsOffset, setClaimsOffset] = useState(0);
+  const [loadingClaims, setLoadingClaims] = useState(false);
+  const [loadingMoreClaims, setLoadingMoreClaims] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("heatmap");
 
   // Time slider state
@@ -115,11 +138,11 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   }, [searchQuery, sortedDensity]);
 
   const filteredClaims = useMemo(() => {
-    if (!sidebar) return [];
+    if (!claimsPage) return [];
     const q = claimFilter.trim().toLowerCase();
-    if (!q) return sidebar.recentClaims;
-    return sidebar.recentClaims.filter((c) => c.text.toLowerCase().includes(q));
-  }, [sidebar, claimFilter]);
+    if (!q) return claimsPage.claims;
+    return claimsPage.claims.filter((c) => c.text.toLowerCase().includes(q));
+  }, [claimsPage, claimFilter]);
 
   function countToColor(count: number): string {
     if (count === 0) return "#1c1c2e";
@@ -133,12 +156,35 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const openSidebar = useCallback(async (code: string) => {
     setLoadingSidebar(true);
     setSidebar(null);
+    setClaimsPage(null);
+    setClaimsOffset(0);
     setClaimFilter("");
+    setLoadingClaims(true);
     try {
-      const res = await fetch(`/api/globe/country/${code}`);
-      if (res.ok) setSidebar(await res.json());
+      const [sidebarRes, claimsRes] = await Promise.all([
+        fetch(`/api/globe/country/${code}`),
+        fetch(`/api/globe/country-claims?country=${code}&limit=20&offset=0`),
+      ]);
+      if (sidebarRes.ok) setSidebar(await sidebarRes.json());
+      if (claimsRes.ok) setClaimsPage(await claimsRes.json());
     } finally {
       setLoadingSidebar(false);
+      setLoadingClaims(false);
+    }
+  }, []);
+
+  const loadMoreClaims = useCallback(async (code: string, nextOffset: number) => {
+    setLoadingMoreClaims(true);
+    try {
+      const res = await fetch(`/api/globe/country-claims?country=${code}&limit=20&offset=${nextOffset}`);
+      if (!res.ok) return;
+      const data: CountryClaimsPage = await res.json();
+      setClaimsPage((prev) =>
+        prev ? { ...prev, claims: [...prev.claims, ...data.claims] } : data
+      );
+      setClaimsOffset(nextOffset);
+    } finally {
+      setLoadingMoreClaims(false);
     }
   }, []);
 
@@ -264,7 +310,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         }
         return y + 1;
       });
-    }, 120);
+    }, 1000);
     return () => {
       if (playIntervalRef.current) {
         clearInterval(playIntervalRef.current);
@@ -666,6 +712,13 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           <span>High</span>
           <span className="ml-2 text-gray-500">claim density</span>
           <span className="mx-2 text-gray-700">|</span>
+          <Link
+            href="/globe/connections"
+            className="text-amber-400 hover:text-amber-300 transition-colors"
+          >
+            Connections →
+          </Link>
+          <span className="mx-2 text-gray-700">|</span>
           <a
             href="/globe/lab"
             className="text-purple-400 hover:text-purple-300 transition-colors"
@@ -690,69 +743,104 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         >
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
             {sidebar ? (
-              <div>
-                <span className="text-2xl mr-2">{countryFlag(sidebar.countryCode)}</span>
-                <span className="font-semibold text-white">{sidebar.countryName}</span>
-                <span className="ml-2 text-amber-400 text-sm">
-                  {sidebar.claimCount.toLocaleString()} claims
-                </span>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="text-2xl shrink-0">{countryFlag(sidebar.countryCode)}</span>
+                  <span className="font-semibold text-white truncate">{sidebar.countryName}</span>
+                </div>
+                <div className="mt-0.5 text-xs text-gray-400">
+                  {claimsPage ? (
+                    <span className="text-amber-400 font-medium">{claimsPage.total.toLocaleString()}</span>
+                  ) : (
+                    <span className="text-amber-400 font-medium">{sidebar.claimCount.toLocaleString()}</span>
+                  )}
+                  <span className="ml-1">claims via polity links</span>
+                </div>
               </div>
             ) : (
               <span className="text-gray-400 text-sm">Loading…</span>
             )}
             <button
-              onClick={() => setSidebar(null)}
-              className="text-gray-500 hover:text-white ml-4 text-lg leading-none"
+              onClick={() => { setSidebar(null); setClaimsPage(null); setClaimsOffset(0); }}
+              className="text-gray-500 hover:text-white ml-4 text-lg leading-none shrink-0"
               aria-label="Close"
             >
               ×
             </button>
           </div>
 
-          {sidebar && sidebar.recentClaims.length > 0 && (
+          {(claimsPage && claimsPage.total > 0) && (
             <div className="px-5 py-3 border-b border-gray-800 space-y-2">
               <input
                 type="text"
                 value={claimFilter}
                 onChange={(e) => setClaimFilter(e.target.value)}
-                placeholder="Filter claims…"
+                placeholder="Filter loaded claims…"
                 className="w-full px-3 py-1.5 text-sm rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30"
                 aria-label="Filter claims"
               />
               <p className="text-xs text-gray-500">
-                {filteredClaims.length} of {sidebar.recentClaims.length} claims
+                {claimFilter ? `${filteredClaims.length} matching` : `${claimsPage.claims.length} loaded`}
+                {" · "}
+                {claimsPage.total.toLocaleString()} total
               </p>
             </div>
           )}
 
           <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-            {loadingSidebar && (
+            {(loadingSidebar || loadingClaims) && (
               <div className="flex justify-center py-8">
                 <div className="w-6 h-6 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
               </div>
             )}
-            {filteredClaims.map((claim) => (
-              <a
+            {!loadingClaims && filteredClaims.map((claim) => (
+              <Link
                 key={claim.id}
                 href={`/claims/${claim.id}`}
-                className="block rounded-lg border border-gray-800 bg-gray-900 p-3 hover:border-gray-600 transition-colors"
+                prefetch={false}
+                className="block rounded-lg border border-gray-800 bg-gray-900 p-3 hover:border-gray-600 transition-colors cursor-pointer"
               >
                 <p className="text-sm text-gray-200 line-clamp-3">{claim.text}</p>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex flex-wrap items-center gap-2 mt-2">
                   <span
                     className={`text-xs px-1.5 py-0.5 rounded border ${claimBadge(claim.currentStatus)}`}
                   >
                     {claim.currentStatus.replace("_", " ")}
                   </span>
-                  <span className="text-xs text-gray-500">{claim.ingestedBy}</span>
+                  {claim.verificationStatus && (
+                    <span className="text-xs px-1.5 py-0.5 rounded border bg-gray-800/60 text-gray-400 border-gray-700">
+                      {claim.verificationStatus}
+                    </span>
+                  )}
+                  <span className="text-xs text-gray-500 truncate">{claim.ingestedBy}</span>
                 </div>
-              </a>
+              </Link>
             ))}
-            {sidebar && sidebar.recentClaims.length === 0 && (
-              <p className="text-gray-500 text-sm py-4 text-center">No claims found for this country.</p>
+            {!loadingClaims && claimsPage && claimsPage.total === 0 && (
+              <p className="text-gray-500 text-sm py-4 text-center">No polity-linked claims found for this country.</p>
             )}
-            {sidebar && sidebar.recentClaims.length > 0 && filteredClaims.length === 0 && (
-              <p className="text-gray-500 text-sm py-4 text-center">No claims match your filter.</p>
+            {!loadingClaims && claimsPage && claimsPage.total > 0 && filteredClaims.length === 0 && claimFilter && (
+              <p className="text-gray-500 text-sm py-4 text-center">No loaded claims match your filter.</p>
+            )}
+            {/* Load more */}
+            {!loadingClaims && claimsPage && !claimFilter && claimsPage.claims.length < claimsPage.total && (
+              <div className="py-2 flex justify-center">
+                <button
+                  type="button"
+                  onClick={() => sidebar && loadMoreClaims(sidebar.countryCode, claimsOffset + 20)}
+                  disabled={loadingMoreClaims}
+                  className="px-4 py-1.5 text-xs rounded border border-amber-700/60 text-amber-400 hover:bg-amber-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {loadingMoreClaims ? (
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-3 h-3 rounded-full border border-amber-400 border-t-transparent animate-spin inline-block" />
+                      Loading…
+                    </span>
+                  ) : (
+                    `Load more (${(claimsPage.total - claimsPage.claims.length).toLocaleString()} remaining)`
+                  )}
+                </button>
+              </div>
             )}
           </div>
 

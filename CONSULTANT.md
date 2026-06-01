@@ -271,6 +271,28 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-31 21:00 EDT — /globe fixes (clickable claims, slower timeline) + new /globe/connections page
+
+**What.** Three globe-page polish fixes plus a brand-new "Connected Events" view that visualizes claims involving multiple countries as arcs between country pairs.
+
+**Issue 1 — clickable claims in the sidebar.** The /globe country sidebar already wrapped each claim card in a plain `<a href="/claims/[id]">`, but anchors layered over the globe.gl WebGL canvas have a history of misbehaving (Next App Router's RSC streaming can race with canvas re-renders and intercept the navigation). Converted them to `next/link` `<Link prefetch={false}>` so client-side navigation is wired through the Next router, not a raw browser anchor. `prefetch={false}` avoids prefetching all 20 paginated claim pages on hover.
+
+**Issue 2 — timeline too fast.** Play-button interval in `app/globe/GlobeClient.tsx:312` was 120ms per year step — the slider blew through 237 years in ~28 seconds, with the GeoJSON snapshot loader also racing the year tick. Bumped to **1000ms** (1 second per year). The historical GeoJSON loader already debounces internally so it now has room to actually display each snapshot before the next year fires.
+
+**Issue 3 — Connected Events (`/globe/connections`).** New page showing arcs between countries that share at least one claim via the polity graph.
+- **API.** `app/api/globe/connections/route.ts` — single raw SQL CTE that joins `PolityClaim → Polity` (filtered to rows with `countryCode`), groups by `claimId`, keeps only claims with `COUNT(DISTINCT countryCode) >= 2`, and joins back to `Claim` with `deleted = false`. Returns `{ claim_id, country_codes[] }` rows capped at 50k. Pair counts are bucketed in JS keyed by sorted `"AAA::BBB"` (unordered). Up to 5 sample claim IDs per pair are resolved via one `claim.findMany({ where: { id: { in: [...] } } })` for the detail drawer. Limited to top 100 pairs. `revalidate = 600`.
+- **Centroids.** New `lib/country-centroids.ts` maps alpha-3 → `{alpha3, alpha2, name, lat, lng}` for every country in `PIPELINE_COUNTRY` + `ALPHA2_TO_ALPHA3` (plus UKR/TUR/EGY/SAU/IRN/IRQ/NZL/VNM/CUB for completeness). `getCentroid()` helper accepts alpha-3 or alpha-2.
+- **Page.** `app/globe/connections/page.tsx` is a server component with `revalidate = 600` and Suspense fallback; client logic lives in `ConnectionsClient.tsx`. The globe reuses the existing globe.gl init pattern (110m Natural Earth, auto-rotate stops on user drag, resize handler). Arc styling: log-scaled amber color + stroke width, dash-animated travel-time inversely proportional to claim count (denser pairs animate faster). Selected pair highlights to `#fbbf24` solid. Each country also gets a small amber point with hover label.
+- **UX.** Right sidebar lists all pairs with filter input; left detail drawer opens when a pair is selected (either by clicking an arc on the globe or a pair in the sidebar) and lists up to 5 sample claims with year + `<Link>` to `/claims/[id]`. Top nav still routes through `/globe` (parent); `/globe` legend gains a `Connections →` link.
+
+**Why this scope.** Background-tier guardrail honored: this surfaces existing PolityClaim links — no new ingest, no new cross-references generated. Centroids are static lookup data, not a new DB table; no migration needed.
+
+**Verification.** `npx tsc --noEmit` clean. Manual sanity check on PolityClaim distribution: 347,884 links across 205 country-tagged polities, so the CTE's HAVING clause should match a large subset of those. Pair-count cap at 100 + 50k-row claim limit keeps the function under Hobby's 10s ceiling.
+
+**Files changed.** `app/globe/GlobeClient.tsx` (claim card `<Link>`, 1000ms interval, Connections legend link), `lib/country-centroids.ts` (new), `app/api/globe/connections/route.ts` (new), `app/globe/connections/page.tsx` (new), `app/globe/connections/ConnectionsClient.tsx` (new), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-31 20:55 EDT — Citation graph feature: ClaimRelation table + OpenAlex enrichment + relations panel UI
 
 **What.** End-to-end citation graph for OpenAlex-sourced claims (~161,773 in DB). Each claim detail page now lazy-loads a "Citation graph" panel with three sections: **Later Work** (papers citing this one, newest first), **Related Papers** (OpenAlex `related_works`), and **References** (this paper's `referenced_works`). The panel renders nothing when a claim has no relations, so non-OpenAlex claims are unaffected.
