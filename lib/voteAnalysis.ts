@@ -10,6 +10,7 @@ export const MIN_TOTAL = 10;
 export const COUNTRY_LABELS: Record<string, string> = {
   uk_legislation_v1: "United Kingdom",
   eu_parliament_v1: "European Parliament",
+  eu_parliament_votes_v2: "European Parliament",
   canada_bills_v1: "Canada",
   congress_v1: "United States",
 };
@@ -29,7 +30,7 @@ export function getBodyKey(ingestedBy: string, chamber: string | null | undefine
     return "US Congress";
   }
   if (ingestedBy === "uk_legislation_v1") return "UK";
-  if (ingestedBy === "eu_parliament_v1") return "EU Parliament";
+  if (ingestedBy === "eu_parliament_v1" || ingestedBy === "eu_parliament_votes_v2") return "EU Parliament";
   if (ingestedBy === "canada_bills_v1") return "Canada";
   return COUNTRY_LABELS[ingestedBy] ?? ingestedBy;
 }
@@ -419,15 +420,18 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
     bayesPartisanBF: r.bayesPartisanBF,
   });
 
+  // Bucket by COUNTRY_LABEL so multi-pipeline bodies (e.g. EU Parliament's
+  // eu_parliament_v1 + eu_parliament_votes_v2) collapse into a single row.
   const byCountry = new Map<string, ScoredRow[]>();
   for (const row of scored) {
-    const arr = byCountry.get(row.ingestedBy) ?? [];
+    const label = COUNTRY_LABELS[row.ingestedBy] ?? row.ingestedBy;
+    const arr = byCountry.get(label) ?? [];
     arr.push(row);
-    byCountry.set(row.ingestedBy, arr);
+    byCountry.set(label, arr);
   }
 
   const countries: CountryStats[] = [];
-  for (const [tag, rows] of byCountry.entries()) {
+  for (const [label, rows] of byCountry.entries()) {
     const totalBills = rows.length;
     const contestedRows = rows.filter((r) => r.contested > CONTESTED_THRESHOLD);
     const unanimousRows = rows.filter((r) => r.contested === 0);
@@ -439,9 +443,14 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
       .sort((a, b) => a.contested - b.contested || b.total - a.total)
       .slice(0, 5);
 
+    // Pick the dominant ingestedBy tag for downstream reference (highest volume).
+    const tagCounts = new Map<string, number>();
+    for (const r of rows) tagCounts.set(r.ingestedBy, (tagCounts.get(r.ingestedBy) ?? 0) + 1);
+    const tag = [...tagCounts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? rows[0]!.ingestedBy;
+
     countries.push({
       ingestedBy: tag,
-      label: COUNTRY_LABELS[tag] ?? tag,
+      label,
       totalBills,
       contestedBills: contestedRows.length,
       contestedPct: (contestedRows.length / Math.max(1, totalBills)) * 100,
@@ -466,15 +475,17 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
     .map(stripGlobal);
 
   // ----- party aggregates -----
-  const partyTotals: Record<string, PartyBreakdown & { billCount: number; country: string }> = {};
+  // Bucket by country label so EU Parliament rows from both
+  // eu_parliament_v1 and eu_parliament_votes_v2 collapse into one party row.
+  const partyTotals: Record<string, PartyBreakdown & { billCount: number; country: string; ingestedBy: string }> = {};
   let partyRowsParsed = 0;
   for (const r of scored) {
     if (!r.partyMap) continue;
     partyRowsParsed++;
     const country = COUNTRY_LABELS[r.ingestedBy] ?? r.ingestedBy;
     for (const [party, counts] of Object.entries(r.partyMap)) {
-      const key = `${r.ingestedBy}::${party}`;
-      const prev = partyTotals[key] ?? { yes: 0, no: 0, abstain: 0, billCount: 0, country };
+      const key = `${country}::${party}`;
+      const prev = partyTotals[key] ?? { yes: 0, no: 0, abstain: 0, billCount: 0, country, ingestedBy: r.ingestedBy };
       prev.yes += counts.yes;
       prev.no += counts.no;
       prev.abstain += counts.abstain;
@@ -485,10 +496,10 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
 
   const parties: PartyRow[] = Object.entries(partyTotals)
     .map(([key, v]) => {
-      const [ingestedBy, party] = key.split("::");
+      const party = key.split("::")[1];
       const total = v.yes + v.no + v.abstain;
       return {
-        ingestedBy,
+        ingestedBy: v.ingestedBy,
         country: v.country,
         party,
         billCount: v.billCount,

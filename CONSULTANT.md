@@ -271,6 +271,24 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — EU Parliament votes deep-dive (24,224 plenary roll calls, full political-group breakdown)
+
+**What.** New pipeline `eu_parliament_votes_v2` adds **24,224 European Parliament plenary roll-call votes** spanning 2019–2026 (with earlier votes 2004–2018 included in the source release where available). Each `LegislativeVote` carries aggregate `yesCount` / `noCount` / `abstainCount` plus a full `byPartyJson` map keyed by political-group `short_label` (EPP, S&D, Renew, Greens/EFA, The Left, ECR, PfE, Non-attached, ESN). Per-group counts are computed by streaming the HowTheyVote.eu `member_votes.csv` (17.1M rows) once and aggregating positions by `group_code`. This expands EU coverage 13× over the prior `eu_parliament_v1` enrichment (which only had aggregate totals on ~1,900 rows — no party breakdown).
+
+**Why HowTheyVote.eu, not the EP API directly.** The task spec called for direct ingest from `data.europarl.europa.eu/api/v2`. Investigation: that EP Open Data API exposes vote *metadata* as framed JSON-LD (events, decisions, meeting structure) but does NOT publish aggregate tallies, per-MEP positions, or political-group breakdowns — those live in the EP DOCEO XML (`europarl.europa.eu/doceo/document/PV-{term}-{date}-RCV_EN.xml`). HowTheyVote.eu's data releases are extracted directly from those DOCEO files and normalised into clean CSVs covering every roll-call vote in the EP record. Using HTV gives us the EP's own vote data via a stable bulk-download surface instead of scraping ~5,000 individual DOCEO XML files. Documented transparently in script comments and pipeline registry.
+
+**Idempotent ingest.** `Source.externalId = eu_vote_htv_<id>`, `Source.url = howtheyvote.eu/votes/<id>`, `LegislativeVote.dataSource = eu_parliament_votes_v2`, `Source.ingestedBy = eu_parliament_votes_v2`. Re-running skips rows with a matching `externalId`. The legacy `eu_parliament_v1`-attached LegislativeVotes (1,900, no `byPartyJson`) are left untouched to preserve their existing `PolityVote` / `HistoricalEventVote` links.
+
+**Script flags.** `scripts/ingest-eu-parliament-votes.ts` supports `--dry-run`, `--limit N`, and `--verbose`. Writes gated on `ALLOW_EDITS=true`. Batch size 200 with `prisma.$transaction(fn, { timeout: 30000 })` per CONSULTANT rule. Full run: 17.1M member_vote rows streamed in ~30s, 24,224 vote rows written in 38s (no errors).
+
+**`/analysis/votes` UI update.** `lib/voteAnalysis.ts` now buckets the by-body table and party aggregates by `COUNTRY_LABELS[ingestedBy]` rather than raw `ingestedBy`, so legacy `eu_parliament_v1` (1,900 enriched, no byPartyJson) and new `eu_parliament_votes_v2` (24,224, full byPartyJson) collapse into a single "European Parliament" row. `getBodyKey` returns "EU Parliament" for both pipelines so the decade-trend chart treats them as one body. Existing `extractPartyCounts` already handles the generic `{ PartyName: { yes, no, abstain } }` shape my ingester emits, so the chi-square partisan test, polarization score, Bayes BF, and topic × party matrix all work for EU votes out of the box.
+
+**Verification.** `npx tsc --noEmit` clean. Post-run DB: 24,224 `eu_parliament_votes_v2` sources, 24,224 LegislativeVotes. Sample dry-run output: "The need for targeted criminal provisions" (2026-04-30, passed 378-161-12), per-group splits cleanly show EPP/S&D/Renew/Greens unified-for vs. ECR/PfE/ESN unified-against pattern.
+
+**Files changed.** `scripts/ingest-eu-parliament-votes.ts` (new), `lib/voteAnalysis.ts` (COUNTRY_LABELS + getBodyKey + bucket by label), `app/page.tsx` (changelog), `app/layout.tsx` (footer date bump), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-31 — Per-body decade trend chart on /analysis/votes
 
 **What.** Replaced the plain "Contested rate by decade" table in Section 4 of `/analysis/votes` with a Recharts `LineChart` that draws one line per legislative body (US House, US Senate, UK, EU Parliament, Canada) across decades from the 1780s through the 2020s. The pooled all-bodies table is kept as a collapsible fallback below the chart.
