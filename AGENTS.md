@@ -73,7 +73,7 @@ These three were verified by coding agents on 2026-05-21. No external tokens req
 - `space_missions_v1` — `ingest-space-missions.ts`. 7,313 orbital launches from GCAT TSV (OrbPay > 0 filter). Sputnik 1957 → 2020s.
 
 ### Needs API key before running
-- `fred_v1` — `ingest-fred.ts`. ~4–5k observations across 6 series: UNRATE, GDP, CPIAUCSL, FEDFUNDS, M2SL, CSUSHPINSA. **Needs FRED_API_KEY** (free at fred.stlouisfed.org/docs/api/api_key.html). Add to .env.local before running.
+- `fred_v1` — `ingest-fred.ts`. ~4–5k observations across 6 series: UNRATE, GDP, CPIAUCSL, FEDFUNDS, M2SL, CSUSHPINSA. **Needs FRED_API_KEY** (free at fred.stlouisfed.org/docs/api/api_key.html). Add to .env.local before running. Queued for next token reset.
 
 ### No script yet (next batch)
 - IUCN Red List — ~44,000 threatened species. Needs IUCN API token (free at iucnredlist.org/api/v4).
@@ -109,7 +109,10 @@ Last synced from DB: 2026-05-21. Total claims (excl. deprecated): ~336,900+ acro
 | `sec_edgar_v1` | `ingest-sec-edgar.ts` | 379 | SEC EDGAR historically significant filings |
 | `congress_v1` | `ingest-congress.ts` | 366 | Congress enacted laws (congress_v1) |
 | `pubchem_v1` | `ingest-pubchem.ts` | 355 | PubChem compounds |
-| `courtlistener_scotus_v1` | `ingest-courtlistener-scotus.ts` | 300 | SCOTUS opinions via CourtListener |
+| `courtlistener_scotus_v1` | `ingest-courtlistener-scotus.ts` | 300+ | SCOTUS opinions via CourtListener. Post-2000 ingest (≥10 citations) in progress 2026-06-01. |
+| `courtlistener_circuits_v1` | `ingest-courtlistener-circuits.ts` | 0 | Federal circuit courts (13 circuits, ≥20 citations). Script written 2026-06-01, not yet run. |
+| `openfec_v1` | `ingest-openfec.ts` | 600 | Candidate fundraising totals 2020/2022/2024. OpenFEC API. |
+| `openfec_ie_v1` | `ingest-openfec.ts` | 600 | Super PAC independent expenditures 2020/2022/2024. OpenFEC API. |
 | `openfda_v1` | `ingest-openfda.ts` | 233 | openFDA |
 | `genbank_v1` | `ingest-genbank.ts` | 99 | GenBank accessions, NCBI |
 | `iau_constellations_v1` | `ingest-astronomy.ts` | 88 | IAU constellations |
