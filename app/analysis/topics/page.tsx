@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 import { getTopicTrends } from "@/lib/topic-trends";
 import TopicTrendsClient from "./TopicTrendsClient";

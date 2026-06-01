@@ -271,6 +271,62 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — Nav audit + ISR caching for the slow analysis pages
+
+**What.** Top-nav audit pass on `app/layout.tsx`. Every one of the 25 nav links was probed against the local dev server (`PORT=4100 npm run dev`); every link returned `200`. No dead routes, no empty stub pages, nothing to remove. `/sources` already 308-redirects to `/datasets` via `next.config.ts` (line 53 — pre-existing redirect from the earlier Sources-merged-into-Datasets work), and per task spec the Sources nav link is intentionally retained until the explicit "merge Sources into Datasets in the nav" task ships separately.
+
+**Caching.** Three nav-reachable pages were on `export const dynamic = "force-dynamic"` and recomputing on every request:
+
+| Route | Cold timing | Was | Now |
+|---|---|---|---|
+| `/analysis/votes` | ~10–11s | `dynamic = "force-dynamic"` | `revalidate = 3600` |
+| `/analysis/topics` | ~1.5s | `dynamic = "force-dynamic"` | `revalidate = 3600` |
+| `/pipelines` | ~3.5s cold / ~900ms warm | `dynamic = "force-dynamic"` | `revalidate = 3600` |
+
+These three pages render aggregated stats over the legislative-vote and pipeline-registry tables that change at most a few times per day — hourly ISR is the right trade-off. Production builds will now serve them from the ISR cache; in dev mode the `revalidate` directive is a no-op so the cold-path timings stay as-is until the next prod deploy.
+
+**Sources vs. Datasets note.** Per task spec, *not* merged in this pass. The `/sources` redirect is already in place at the Next.js layer (next.config.ts:53), and removing the Sources nav link is queued as a separate follow-up. Keeping both links live for one more deploy so the changelog-claim "Sources merged into Datasets" doesn't lose its anchor mid-rollout.
+
+**Edges vs. Meta-edges.** Both pages are real authoring/admin UIs (forms, lists, filters — `app/edges/page.tsx` and `app/meta-edges/page.tsx`). Kept both.
+
+**Fields.** Slated to be integrated into Topics in future work; kept for now per task spec.
+
+**Footer.** `app/layout.tsx` footer is a single "last updated June 1, 2026" line with no links — nothing to audit. Today's date is already June 1, so no footer date bump needed.
+
+**Verification.** `npx tsc --noEmit` clean. Dev server probe of all 25 nav targets:
+
+```
+/                              200
+/search                        200
+/claims                        200
+/sources                       308 → /datasets   (intentional)
+/edges                         200
+/meta-edges                    200
+/timeline                      200
+/topics                        200
+/fields                        200
+/review                        200
+/pipelines                     200
+/datasets                      200
+/globe                         200
+/votes                         200
+/analysis/votes                200
+/analysis/topics               200
+/analysis/representation       200
+/historical-events             200
+/reader                        200
+/books                         200
+/stats                         200
+/bookmarks                     200
+/about                         200
+/glossary                      200
+/feedback                      200
+```
+
+**Files changed.** `app/analysis/votes/page.tsx` (force-dynamic → revalidate=3600), `app/analysis/topics/page.tsx` (force-dynamic → revalidate=3600), `app/pipelines/page.tsx` (force-dynamic → revalidate=3600), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`.
+
+---
+
 ### 2026-06-01 — Academic-field badges on /topics + 348-topic backfill
 
 **What.** Each topic row on `/topics` now carries a small colored pill labelling the topic's top-level academic discipline (Social science, Natural science, Humanities, Applied science, Formal science). The pill is a `<Link href="/fields">` so it doubles as a jump-off into the `/fields` browser.
