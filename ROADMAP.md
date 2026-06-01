@@ -11,9 +11,9 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 | Search | ✅ Shipped | `/search` |
 | Globe + time slider | ✅ Shipped 2026-05-30 | 1789–2026, historical borders, play/pause |
 | Bookmarks | ✅ Shipped 2026-05-31 | Anonymous UUID key, SHA-256 hashed server-side, no PII |
-| **Citation graph / related papers** | 🔄 In progress (Opus agent) | `ClaimRelation` table, OpenAlex enrichment, relations panel on claim detail page ("Later Work", "Related Papers", "References") |
-| **Globe fixes + Connections page** | 🔄 In progress (Opus agent) | Clickable claims in timeline mode, slower play speed (~1s/step), new `/globe/connections` page with country-to-country arcs for multi-polity claims |
-| **EU Parliament votes deep-dive** | 📋 Queued | Expand EU votes 1,900 → ~50k+ via europarl.europa.eu API (1979–present), MEP/group breakdown (EPP, S&D, Renew…), add EU Parliament tab to `/analysis/votes` |
+| Citation graph / related papers | ✅ Shipped 2026-05-31 | `ClaimRelation` table, OpenAlex enrichment, relations panel on claim detail page ("Later Work", "Related Papers", "References") |
+| Globe fixes + Connections page | ✅ Shipped 2026-05-31 | Clickable claims in timeline mode, slower play speed (~1s/step), `/globe/connections` page with country-to-country arcs |
+| **EU Parliament votes deep-dive** | 🔄 In progress (Opus agent) | Expand EU votes 1,900 → ~50k+ via europarl.europa.eu API (1979–present), MEP/group breakdown (EPP, S&D, Renew…), add EU Parliament tab to `/analysis/votes` |
 | "What's new" feed | ⏳ On hold | After bookmarks |
 
 ---
