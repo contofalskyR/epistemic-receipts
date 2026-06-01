@@ -131,7 +131,7 @@ function relativeDate(iso: string | null): string {
   return `${Math.floor(days / 365)}y ago`;
 }
 
-function DatasetCard({ stat }: { stat: DatasetStat }) {
+function DatasetCard({ stat, onSelect, isActive }: { stat: DatasetStat; onSelect: (stat: DatasetStat) => void; isActive: boolean }) {
   const meta = PIPELINE_META[stat.ingestedBy];
   const label = meta?.label ?? stat.ingestedBy;
   const description = meta?.description ?? "Ingested dataset";
@@ -140,7 +140,13 @@ function DatasetCard({ stat }: { stat: DatasetStat }) {
   const flag = meta?.flag;
 
   return (
-    <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-4 flex flex-col gap-2">
+    <button
+      type="button"
+      onClick={() => onSelect(stat)}
+      className={`text-left rounded-lg border bg-gray-900 px-4 py-4 flex flex-col gap-2 transition-colors hover:border-gray-600 ${
+        isActive ? "border-blue-500/70 ring-1 ring-blue-500/40" : "border-gray-800"
+      }`}
+    >
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-white leading-snug">
@@ -175,7 +181,169 @@ function DatasetCard({ stat }: { stat: DatasetStat }) {
           </a>
         )}
       </div>
-    </div>
+    </button>
+  );
+}
+
+type SourceRecord = {
+  id: string;
+  name: string;
+  url: string | null;
+  publishedAt: string | null;
+  methodologyType: string;
+  createdAt: string;
+};
+
+const METHODOLOGY_LABELS: Record<string, string> = {
+  primary: "Primary",
+  derivative: "Derivative",
+  opinion: "Opinion",
+};
+
+function SourcesDrawer({ stat, onClose }: { stat: DatasetStat | null; onClose: () => void }) {
+  const [sources, setSources] = useState<SourceRecord[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(false);
+  const [filter, setFilter] = useState("");
+  const PAGE_SIZE = 50;
+
+  useEffect(() => {
+    if (!stat) return;
+    setSources([]);
+    setOffset(0);
+    setFilter("");
+    setLoading(true);
+    fetch(`/api/sources?ingestedBy=${encodeURIComponent(stat.ingestedBy)}&limit=${PAGE_SIZE}&offset=0`)
+      .then(r => r.json())
+      .then((rows: SourceRecord[]) => {
+        setSources(rows);
+        setHasMore(rows.length === PAGE_SIZE);
+        setOffset(rows.length);
+      })
+      .finally(() => setLoading(false));
+  }, [stat]);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) { if (e.key === "Escape") onClose(); }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  async function loadMore() {
+    if (!stat || loading) return;
+    setLoading(true);
+    const r = await fetch(`/api/sources?ingestedBy=${encodeURIComponent(stat.ingestedBy)}&limit=${PAGE_SIZE}&offset=${offset}`);
+    const rows: SourceRecord[] = await r.json();
+    setSources(prev => [...prev, ...rows]);
+    setHasMore(rows.length === PAGE_SIZE);
+    setOffset(o => o + rows.length);
+    setLoading(false);
+  }
+
+  if (!stat) return null;
+  const meta = PIPELINE_META[stat.ingestedBy];
+  const label = meta?.label ?? stat.ingestedBy;
+  const description = meta?.description ?? "Ingested dataset";
+  const sourceUrl = meta?.sourceUrl ?? "";
+  const flag = meta?.flag;
+
+  const q = filter.trim().toLowerCase();
+  const filtered = q
+    ? sources.filter(s => s.name.toLowerCase().includes(q) || (s.url ?? "").toLowerCase().includes(q))
+    : sources;
+
+  return (
+    <>
+      <div
+        onClick={onClose}
+        className="fixed inset-0 bg-black/60 z-40"
+        aria-hidden
+      />
+      <aside className="fixed inset-y-0 right-0 z-50 w-full sm:w-[28rem] lg:w-[36rem] bg-gray-950 border-l border-gray-800 shadow-2xl flex flex-col">
+        <header className="px-5 py-4 border-b border-gray-800 flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-mono text-gray-500 uppercase tracking-wider truncate">{stat.ingestedBy}</p>
+            <h2 className="text-base font-semibold text-white mt-0.5 leading-snug">
+              {flag && <span className="mr-1.5">{flag}</span>}
+              {label}
+            </h2>
+            <p className="text-xs text-gray-500 mt-1 leading-relaxed">{description}</p>
+            <div className="flex items-center gap-2 mt-2 text-xs text-gray-500">
+              <span className="text-white font-semibold tabular-nums">{stat.count.toLocaleString()}</span>
+              <span>sources</span>
+              <span className="text-gray-700">·</span>
+              <span>last ingested {relativeDate(stat.lastIngestedAt)}</span>
+            </div>
+            {sourceUrl && (
+              <a
+                href={sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-2 text-xs text-blue-400 hover:underline"
+              >
+                {new URL(sourceUrl).hostname.replace(/^www\./, "")} ↗
+              </a>
+            )}
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="shrink-0 text-gray-500 hover:text-white text-xl leading-none -mt-1 -mr-1 px-2 py-1"
+          >
+            ×
+          </button>
+        </header>
+
+        <div className="px-5 py-3 border-b border-gray-800">
+          <input
+            value={filter}
+            onChange={e => setFilter(e.target.value)}
+            placeholder="Filter sources…"
+            className="w-full rounded bg-gray-900 border border-gray-700 px-3 py-1.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-gray-500"
+          />
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-5 py-3 space-y-2">
+          {sources.length === 0 && loading && (
+            <p className="text-xs text-gray-600 italic">Loading sources…</p>
+          )}
+          {sources.length === 0 && !loading && (
+            <p className="text-xs text-gray-600 italic">No sources found for this dataset.</p>
+          )}
+          {filtered.map(s => (
+            <div key={s.id} className="rounded border border-gray-800 bg-gray-900 px-3 py-2">
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-xs text-white leading-snug flex-1">{s.name}</p>
+                <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-gray-800 text-gray-400">
+                  {METHODOLOGY_LABELS[s.methodologyType] ?? s.methodologyType}
+                </span>
+              </div>
+              {s.url && (
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="block mt-1 text-[10px] text-blue-400 hover:underline truncate">
+                  {s.url}
+                </a>
+              )}
+              {s.publishedAt && (
+                <p className="text-[10px] text-gray-600 mt-1">{new Date(s.publishedAt).toLocaleDateString()}</p>
+              )}
+            </div>
+          ))}
+          {q && filtered.length === 0 && sources.length > 0 && (
+            <p className="text-xs text-gray-600 italic">No sources match &ldquo;{filter}&rdquo;.</p>
+          )}
+          {hasMore && !q && (
+            <button
+              onClick={loadMore}
+              disabled={loading}
+              className="w-full text-xs text-gray-400 hover:text-white border border-gray-800 hover:border-gray-700 rounded py-2 mt-2 disabled:opacity-50"
+            >
+              {loading ? "Loading…" : `Load more (${(stat.count - sources.length).toLocaleString()} remaining)`}
+            </button>
+          )}
+        </div>
+      </aside>
+    </>
   );
 }
 
@@ -183,6 +351,7 @@ export default function DatasetsPage() {
   const [stats, setStats] = useState<DatasetStat[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState<Category | "All">("All");
+  const [selected, setSelected] = useState<DatasetStat | null>(null);
 
   useEffect(() => {
     fetch("/api/datasets")
@@ -213,9 +382,9 @@ export default function DatasetsPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-xl font-semibold text-white">Data Sources</h1>
+        <h1 className="text-xl font-semibold text-white">Datasets &amp; Sources</h1>
         <p className="mt-1 text-sm text-gray-400">
-          Every dataset powering the Epistemic Receipts knowledge graph
+          Every pipeline powering the Epistemic Receipts knowledge graph. Click a dataset to inspect its underlying source records.
         </p>
       </div>
 
@@ -268,7 +437,12 @@ export default function DatasetsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {visibleStats.map(stat => (
-              <DatasetCard key={stat.ingestedBy} stat={stat} />
+              <DatasetCard
+                key={stat.ingestedBy}
+                stat={stat}
+                onSelect={setSelected}
+                isActive={selected?.ingestedBy === stat.ingestedBy}
+              />
             ))}
           </div>
 
@@ -281,6 +455,8 @@ export default function DatasetsPage() {
           </p>
         </>
       )}
+
+      <SourcesDrawer stat={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

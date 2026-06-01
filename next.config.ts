@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: "/sources", destination: "/datasets", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

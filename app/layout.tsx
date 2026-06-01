@@ -19,7 +19,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/" className="font-semibold text-white">Epistemic Receipts</Link>
           <Link href="/search" className="text-gray-400 hover:text-white transition-colors">Search</Link>
           <Link href="/claims" className="text-gray-400 hover:text-white transition-colors">Claims</Link>
-          <Link href="/sources" className="text-gray-400 hover:text-white transition-colors">Sources</Link>
           <Link href="/edges" className="text-gray-400 hover:text-white transition-colors">Edges</Link>
           <Link href="/meta-edges" className="text-gray-400 hover:text-white transition-colors">Meta-edges</Link>
           <Link href="/timeline" className="text-gray-400 hover:text-white transition-colors">Timeline</Link>
