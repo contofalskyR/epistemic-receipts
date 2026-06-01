@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import {
   buildVoteAnalysis,
@@ -7,12 +8,15 @@ import {
   type GlobalRow,
   type PartyRow,
 } from "@/lib/voteAnalysis";
+import DecadeTrendChart from "./DecadeTrendChart";
+import TopicHeatmap from "./TopicHeatmap";
 
 const TOC = [
   { id: "chi-square", label: "Chi-square partisan test" },
   { id: "polarization", label: "Polarization score" },
   { id: "close-calls", label: "Close-call analysis" },
   { id: "decade-trend", label: "Decade trend" },
+  { id: "topic-zscore", label: "Topic trajectory (z-scored)" },
   { id: "party-loyalty", label: "Party loyalty" },
   { id: "topic-party", label: "Topic × party matrix" },
   { id: "bayes-bf", label: "Bayesian partisan signal (BF₁₀)" },
@@ -98,10 +102,12 @@ export default async function AnalysisVotesPage() {
     mostPolarized,
     closeCalls,
     decadeTrend,
+    decadeTrendByBody,
     partyLoyalty,
     loyaltySummary,
     topicPartyMatrix,
     strongPartisanBF,
+    topicZScores,
   } = data;
 
   const overallContestedBills = countries.reduce((s, c) => s + c.contestedBills, 0);
@@ -170,6 +176,111 @@ export default async function AnalysisVotesPage() {
           <div className="text-xl font-semibold text-white tabular-nums">{countries.length}</div>
         </div>
       </div>
+
+      {/* Plain-language summary */}
+      {(() => {
+        const sentences: ReactNode[] = [];
+
+        sentences.push(
+          <span key="overview">
+            Across <span className="text-gray-100 tabular-nums">{meta.totalVotes.toLocaleString()}</span>{" "}
+            recorded votes spanning {countries.length} legislative {countries.length === 1 ? "body" : "bodies"},{" "}
+            <span className="text-gray-100 tabular-nums">{pct(overallContestedPct, 1)}</span> were contested
+            and{" "}
+            <span className="text-gray-100 tabular-nums">{pct(overallUnanimousPct, 1)}</span> passed unanimously.
+          </span>
+        );
+
+        const topP = topPartisan[0];
+        if (topP) {
+          const billName = topP.sourceName ?? "an untitled bill";
+          const chiP = topP.chiP;
+          const chiPhrase =
+            chiP !== undefined && Number.isFinite(chiP) && chiP < 0.0001
+              ? "essentially zero probability the split happened by chance"
+              : chiP !== undefined && Number.isFinite(chiP) && chiP < 0.001
+                ? "less than a 0.1% chance the split happened by chance"
+                : chiP !== undefined && Number.isFinite(chiP) && chiP < 0.01
+                  ? "less than a 1% chance the split happened by chance"
+                  : "a very low probability the split happened by chance";
+          const chiVal =
+            topP.chiSq !== undefined && Number.isFinite(topP.chiSq)
+              ? `χ² = ${topP.chiSq.toFixed(1)}`
+              : "the chi-square test";
+          sentences.push(
+            <span key="partisan">
+              The single most partisan vote on record was{" "}
+              <span className="text-gray-100">{billName}</span> ({topP.country}), where {chiVal} indicates{" "}
+              {chiPhrase}.
+            </span>
+          );
+        }
+
+        const majorParties = [...loyaltySummary]
+          .filter((s) => s.memberCount >= 10)
+          .sort((a, b) => b.memberCount - a.memberCount)
+          .slice(0, 2);
+        if (majorParties.length >= 2) {
+          sentences.push(
+            <span key="loyalty">
+              Individual members rarely break from their caucus: the two largest blocs in our data —{" "}
+              <span className="text-gray-100">{majorParties[0].party}</span> ({majorParties[0].chamber}) and{" "}
+              <span className="text-gray-100">{majorParties[1].party}</span> ({majorParties[1].chamber}) — voted with
+              their party {majorParties[0].avgLoyalty.toFixed(0)}% and{" "}
+              {majorParties[1].avgLoyalty.toFixed(0)}% of the time, respectively.
+            </span>
+          );
+        } else if (majorParties.length === 1) {
+          sentences.push(
+            <span key="loyalty">
+              Members of the largest party in our data —{" "}
+              <span className="text-gray-100">{majorParties[0].party}</span> ({majorParties[0].chamber}) — voted with
+              their caucus {majorParties[0].avgLoyalty.toFixed(0)}% of the time on average.
+            </span>
+          );
+        }
+
+        const topB = topBipartisan[0];
+        if (topB) {
+          const bName = topB.sourceName ?? "an untitled bill";
+          sentences.push(
+            <span key="bipartisan">
+              Despite that polarization, some bills cleared with effectively no party split at all — for example{" "}
+              <span className="text-gray-100">{bName}</span> ({topB.country}) passed with{" "}
+              {pct(topB.ayePct, 0)} in favor and no detectable partisan signal.
+            </span>
+          );
+        }
+
+        const peakDecade = [...decadeTrend]
+          .filter((d) => d.totalVotes >= 10)
+          .sort((a, b) => b.contestedPct - a.contestedPct)[0];
+        if (peakDecade) {
+          sentences.push(
+            <span key="trend">
+              Voting was most contested in the{" "}
+              <span className="text-gray-100">{peakDecade.decade}</span>, when{" "}
+              <span className="tabular-nums">{pct(peakDecade.contestedPct, 1)}</span> of{" "}
+              <span className="tabular-nums">{peakDecade.totalVotes.toLocaleString()}</span> recorded votes drew at
+              least {pct(meta.contestedThreshold * 100)} opposition.
+            </span>
+          );
+        }
+
+        return (
+          <details className="group rounded border border-gray-800 bg-gray-900/40">
+            <summary className="cursor-pointer list-none px-4 py-3 text-sm text-gray-200 hover:text-white transition-colors flex items-center gap-2">
+              <span>What does this mean?</span>
+              <span className="text-gray-500 group-open:rotate-90 transition-transform inline-block">▸</span>
+            </summary>
+            <div className="px-4 pb-4 pt-1 space-y-2 text-sm text-gray-400 leading-relaxed max-w-3xl">
+              {sentences.map((s, i) => (
+                <p key={i}>{s}</p>
+              ))}
+            </div>
+          </details>
+        );
+      })()}
 
       {/* By-country breakdown */}
       <section className="space-y-2">
@@ -614,42 +725,60 @@ export default async function AnalysisVotesPage() {
         <div>
           <h2 className="text-base font-semibold text-white">Contested rate by decade</h2>
           <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
-            Each decade from the 1780s through the 2020s with at least 10 recorded votes.
+            Each decade from the 1780s through the 2020s, broken out by legislative body.
             Contested = more than {pct(meta.contestedThreshold * 100)} nays of recorded aye+nay.
-            Unanimous = zero recorded nays.
+            A body&apos;s line only shows points for decades where it recorded at least 10 votes.
           </p>
         </div>
-        <div className="rounded border border-gray-800 overflow-hidden">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="border-b border-gray-800 bg-gray-900/50">
-                <th className="px-3 py-2 text-left font-medium text-gray-500">Decade</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Total votes</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Contested</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Contested %</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Unanimous %</th>
-                <th className="px-3 py-2 text-left font-medium text-gray-500"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {decadeTrend.map((d, i) => (
-                <tr
-                  key={d.decade}
-                  className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
-                >
-                  <td className="px-3 py-2 text-gray-100 align-top font-mono">{d.decade}</td>
-                  <td className="px-3 py-2 text-right text-white tabular-nums align-top">{d.totalVotes.toLocaleString()}</td>
-                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{d.contestedVotes.toLocaleString()}</td>
-                  <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(d.contestedPct, 1)}</td>
-                  <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(d.unanimousPct, 1)}</td>
-                  <td className="px-3 py-2 align-top">
-                    <NayBar nayPct={d.contestedPct} />
-                  </td>
+
+        <DecadeTrendChart data={decadeTrendByBody} />
+
+        <details className="group rounded border border-gray-800/60 bg-gray-900/20">
+          <summary className="cursor-pointer list-none px-3 py-2 text-xs text-gray-400 hover:text-gray-200 transition-colors flex items-center gap-2">
+            <span>Pooled decade totals (all bodies combined)</span>
+            <span className="text-gray-600 group-open:rotate-90 transition-transform inline-block">▸</span>
+          </summary>
+          <div className="border-t border-gray-800/60">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/50">
+                  <th className="px-3 py-2 text-left font-medium text-gray-500">Decade</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Total votes</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Contested</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Contested %</th>
+                  <th className="px-3 py-2 text-right font-medium text-gray-500">Unanimous %</th>
+                  <th className="px-3 py-2 text-left font-medium text-gray-500"></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {decadeTrend.map((d, i) => (
+                  <tr
+                    key={d.decade}
+                    className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
+                  >
+                    <td className="px-3 py-2 text-gray-100 align-top font-mono">{d.decade}</td>
+                    <td className="px-3 py-2 text-right text-white tabular-nums align-top">{d.totalVotes.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{d.contestedVotes.toLocaleString()}</td>
+                    <td className="px-3 py-2 text-right text-red-300 tabular-nums align-top">{pct(d.contestedPct, 1)}</td>
+                    <td className="px-3 py-2 text-right text-green-300 tabular-nums align-top">{pct(d.unanimousPct, 1)}</td>
+                    <td className="px-3 py-2 align-top">
+                      <NayBar nayPct={d.contestedPct} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      {/* === Section 4b: Topic trajectory (z-scored heatmap) === */}
+      <section id="topic-zscore" className="space-y-3 scroll-mt-4">
+        <h2 className="text-base font-semibold text-white">Topic trajectory (z-scored)</h2>
+        <p className="text-xs text-gray-500 max-w-3xl leading-relaxed">
+          Each topic standardized against its own historical mean. Red = decade was anomalously high for that topic; blue = anomalously low. Values are z-scores: ±1 = 1 standard deviation from that topic&apos;s norm.
+        </p>
+        <TopicHeatmap rows={topicZScores} decades={decadeTrend.map((d) => d.decade)} />
       </section>
 
       {/* === Section 5: Party loyalty === */}

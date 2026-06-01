@@ -14,6 +14,26 @@ export const COUNTRY_LABELS: Record<string, string> = {
   congress_v1: "United States",
 };
 
+// Minimum recorded votes a body needs in a decade before we plot a point for it.
+// Smaller and the line jitters on noise; bigger and the historical decades
+// (esp. 18th-century US House) drop off entirely.
+export const MIN_DECADE_BODY_VOTES = 10;
+
+// Body bucket for the per-body decade chart. US Congress is split by chamber
+// (House / Senate); other pipelines collapse to their country label.
+export function getBodyKey(ingestedBy: string, chamber: string | null | undefined): string {
+  if (ingestedBy === "congress_v1") {
+    const ch = (chamber ?? "").trim();
+    if (/senate/i.test(ch)) return "US Senate";
+    if (/house/i.test(ch)) return "US House";
+    return "US Congress";
+  }
+  if (ingestedBy === "uk_legislation_v1") return "UK";
+  if (ingestedBy === "eu_parliament_v1") return "EU Parliament";
+  if (ingestedBy === "canada_bills_v1") return "Canada";
+  return COUNTRY_LABELS[ingestedBy] ?? ingestedBy;
+}
+
 export type PartyBreakdown = { yes: number; no: number; abstain: number };
 type PartyMap = Record<string, PartyBreakdown>;
 
@@ -117,6 +137,24 @@ export type DecadeBucket = {
   unanimousPct: number;
 };
 
+// Per-decade × per-body contested rate, shaped for direct consumption by a
+// multi-line chart. `contestedPct[body]` is undefined when that body had fewer
+// than MIN_DECADE_BODY_VOTES recorded votes in the decade — avoids drawing
+// spurious lines on a handful of samples.
+export type DecadeBodyPoint = {
+  decade: string;
+  decadeStart: number;
+  // Numeric value per body — keyed by body label (e.g., "US House").
+  // Missing bodies (insufficient data) are simply absent so recharts skips them.
+  contestedPct: Record<string, number>;
+  totalVotes: Record<string, number>;
+};
+
+export type DecadeTrendByBody = {
+  bodies: string[];
+  points: DecadeBodyPoint[];
+};
+
 export type PartyLoyaltyRow = {
   memberName: string;
   memberParty: string;
@@ -147,6 +185,11 @@ export type TopicPartyRow = {
   totalBills: number;
 };
 
+export type TopicZRow = {
+  topic: string;
+  decades: { decade: string; z: number; raw: number }[];
+};
+
 export type VoteAnalysis = {
   meta: {
     totalVotes: number;
@@ -164,10 +207,12 @@ export type VoteAnalysis = {
   mostPolarized: GlobalRow[];
   closeCalls: GlobalRow[];
   decadeTrend: DecadeBucket[];
+  decadeTrendByBody: DecadeTrendByBody;
   partyLoyalty: PartyLoyaltyRow[];
   loyaltySummary: LoyaltySummaryRow[];
   topicPartyMatrix: TopicPartyRow[];
   strongPartisanBF: GlobalRow[];
+  topicZScores: TopicZRow[];
 };
 
 // ----- helpers -----
@@ -487,6 +532,8 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
 
   // ----- 4. decade trend -----
   const decadeAccum = new Map<number, { total: number; contested: number; unanimous: number }>();
+  // Per body × decade — `${body}::${decade}` → { total, contested }
+  const decadeByBodyAccum = new Map<string, { total: number; contested: number; body: string; decade: number }>();
   for (const r of scored) {
     if (!r.voteDate) continue;
     const year = new Date(r.voteDate).getFullYear();
@@ -498,6 +545,13 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
     if (r.contested > CONTESTED_THRESHOLD) acc.contested += 1;
     if (r.contested === 0) acc.unanimous += 1;
     decadeAccum.set(decade, acc);
+
+    const body = getBodyKey(r.ingestedBy, r.chamber);
+    const bKey = `${body}::${decade}`;
+    const bAcc = decadeByBodyAccum.get(bKey) ?? { total: 0, contested: 0, body, decade };
+    bAcc.total += 1;
+    if (r.contested > CONTESTED_THRESHOLD) bAcc.contested += 1;
+    decadeByBodyAccum.set(bKey, bAcc);
   }
   const decadeTrend: DecadeBucket[] = [];
   for (let d = 1780; d <= 2020; d += 10) {
@@ -511,6 +565,43 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
       unanimousPct: (acc.unanimous / acc.total) * 100,
     });
   }
+
+  // Per-body decade points: include every body that meets MIN_DECADE_BODY_VOTES
+  // in at least one decade. Decade is rendered only if at least one body has
+  // enough samples (avoids drawing an empty x-tick).
+  const bodyTotals = new Map<string, number>();
+  for (const acc of decadeByBodyAccum.values()) {
+    bodyTotals.set(acc.body, (bodyTotals.get(acc.body) ?? 0) + acc.total);
+  }
+  const bodies = [...bodyTotals.entries()]
+    .filter(([, total]) => total >= MIN_DECADE_BODY_VOTES)
+    .sort((a, b) => b[1] - a[1])
+    .map(([body]) => body);
+
+  const decadeBodyPoints: DecadeBodyPoint[] = [];
+  for (let d = 1780; d <= 2020; d += 10) {
+    const contestedPct: Record<string, number> = {};
+    const totalVotes: Record<string, number> = {};
+    let anyBody = false;
+    for (const body of bodies) {
+      const acc = decadeByBodyAccum.get(`${body}::${d}`);
+      if (!acc || acc.total < MIN_DECADE_BODY_VOTES) continue;
+      contestedPct[body] = (acc.contested / acc.total) * 100;
+      totalVotes[body] = acc.total;
+      anyBody = true;
+    }
+    if (!anyBody) continue;
+    decadeBodyPoints.push({
+      decade: `${d}s`,
+      decadeStart: d,
+      contestedPct,
+      totalVotes,
+    });
+  }
+  const decadeTrendByBody: DecadeTrendByBody = {
+    bodies,
+    points: decadeBodyPoints,
+  };
 
   // ----- 5. party loyalty (from MemberVote) -----
   const memberVotes = await prisma.memberVote.findMany({
@@ -668,6 +759,63 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
     .slice(0, 10)
     .map(stripGlobal);
 
+  // ----- 8. topic trajectory z-scores -----
+  // For each topic, compute its proportion of votes per decade, then z-score
+  // that trajectory against the topic's own mean. Red = anomalously high vs.
+  // baseline; blue = anomalously low.
+  const topicDecadeCounts = new Map<string, Map<number, number>>();
+  const decadeTotalsForZ = new Map<number, number>();
+  for (const r of scored) {
+    if (!r.voteDate || !r.topicsRaw) continue;
+    const year = new Date(r.voteDate).getFullYear();
+    if (!Number.isFinite(year)) continue;
+    const decade = Math.floor(year / 10) * 10;
+    decadeTotalsForZ.set(decade, (decadeTotalsForZ.get(decade) ?? 0) + 1);
+    const topics = extractTopics(safeParseJson(r.topicsRaw));
+    if (topics.length === 0) continue;
+    for (const topic of topics) {
+      const inner = topicDecadeCounts.get(topic) ?? new Map<number, number>();
+      inner.set(decade, (inner.get(decade) ?? 0) + 1);
+      topicDecadeCounts.set(topic, inner);
+    }
+  }
+
+  const validDecades = [...decadeTotalsForZ.entries()]
+    .filter(([, total]) => total >= 50)
+    .map(([d]) => d)
+    .sort((a, b) => a - b);
+
+  const topicZRows: TopicZRow[] = [];
+  for (const [topic, decadeCounts] of topicDecadeCounts.entries()) {
+    const rawByDecade: { decade: number; raw: number }[] = [];
+    for (const d of validDecades) {
+      const count = decadeCounts.get(d) ?? 0;
+      const total = decadeTotalsForZ.get(d) ?? 0;
+      if (total <= 0) continue;
+      rawByDecade.push({ decade: d, raw: count / total });
+    }
+    if (rawByDecade.length < 3) continue;
+    const values = rawByDecade.map((p) => p.raw);
+    const mean = values.reduce((s, v) => s + v, 0) / values.length;
+    const variance =
+      values.reduce((s, v) => s + (v - mean) * (v - mean), 0) / values.length;
+    const std = Math.sqrt(variance);
+    const decades = rawByDecade.map((p) => ({
+      decade: `${p.decade}s`,
+      raw: p.raw,
+      z: std === 0 ? 0 : (p.raw - mean) / std,
+    }));
+    const maxAbsZ = decades.reduce((m, d) => Math.max(m, Math.abs(d.z)), 0);
+    if (maxAbsZ < 1.0) continue;
+    topicZRows.push({ topic, decades });
+  }
+  topicZRows.sort((a, b) => {
+    const ma = a.decades.reduce((m, d) => Math.max(m, Math.abs(d.z)), 0);
+    const mb = b.decades.reduce((m, d) => Math.max(m, Math.abs(d.z)), 0);
+    return mb - ma;
+  });
+  const topicZScores = topicZRows.slice(0, 20);
+
   return {
     meta: {
       totalVotes: scored.length,
@@ -685,9 +833,11 @@ export async function buildVoteAnalysis(): Promise<VoteAnalysis> {
     mostPolarized,
     closeCalls,
     decadeTrend,
+    decadeTrendByBody,
     partyLoyalty,
     loyaltySummary,
     topicPartyMatrix: topicPartyMatrixTop,
     strongPartisanBF,
+    topicZScores,
   };
 }

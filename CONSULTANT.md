@@ -271,6 +271,57 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-31 — Z-scored topic trajectory heatmap on /analysis/votes
+
+**What.** New section on `/analysis/votes` between the decade-trend table and party-loyalty: a heatmap that standardizes each topic's per-decade share of votes against its own historical mean. Red cells flag decades where the topic was anomalously high vs. its own baseline; blue cells flag anomalously low. Each row is its own subject — not a cross-topic comparison.
+
+**Why this scope.** Pure transformation of data already in scope of `buildVoteAnalysis()` (vote dates + topic tags). No new query, no new ingest, no recharts dependency. Within the existing editorial guardrails.
+
+**Computation (lib/voteAnalysis.ts).**
+- Iterate `scored` rows that have both `voteDate` and `topicsRaw`. Bucket into `Map<topic, Map<decade, count>>` and `Map<decade, totalVotes>`.
+- Only keep decades with ≥ 50 total votes (mirrors the legacy `decadeTrend` guard, but at a higher floor since per-topic trajectories need denser baselines to avoid trivial noise).
+- For each topic: build `rawProportion[decade] = count / decadeTotal`, compute mean + population std across the topic's observed decade rows, then `z = (raw − mean) / std` (z = 0 when std === 0).
+- Filter to topics observed in ≥ 3 decades with `max(|z|) ≥ 1.0` (i.e. at least one anomalous decade). Sort by max |z| descending. Slice top 20.
+- New exported type `TopicZRow = { topic; decades: { decade; z; raw }[] }`. New return field `topicZScores: TopicZRow[]`.
+
+**Client component (`app/analysis/votes/TopicHeatmap.tsx`).** Plain CSS grid via a `<table>` with `borderSpacing: 2`. Each cell is a 24×20px colored div; row label sticky-left (`sticky left-0 bg-gray-900/40`) so long decade lists stay scannable. Color thresholds: `z ≥ 2` red-500, `≥ 1` red-800, `≥ 0` gray-800, `≥ −1` blue-900, `< −1` blue-600. Tooltip text via `title` attribute: `"<topic> <decade> z=X.XX raw=Y.Y%"`. Includes a small inline legend. Empty/missing decade cells render dark gray-950 with a faint border. No new npm packages.
+
+**Page wiring.** `app/analysis/votes/page.tsx` destructures `topicZScores` from the analysis bundle, imports `TopicHeatmap`, adds a TOC entry `{ id: "topic-zscore", label: "Topic trajectory (z-scored)" }` between the existing `decade-trend` and `party-loyalty` entries, and renders the section right after `decade-trend`. The `decades={decadeTrend.map(d => d.decade)}` prop reuses the legacy decade axis (already filtered to ≥10 total votes via the existing guard), so the heatmap's column order tracks the decade table the user just scrolled past.
+
+**Verification.** `npx tsc --noEmit` shows only pre-existing errors in `app/analysis/votes/DecadeTrendChart.tsx` (untracked from a prior agent session) — zero new errors from this change. Footer `last updated May 31, 2026` already correct (today's date). Homepage `app/page.tsx` May 31 changelog block gained a new top `<li>` for this feature.
+
+**Files changed.** `lib/voteAnalysis.ts`, `app/analysis/votes/page.tsx`, `app/analysis/votes/TopicHeatmap.tsx` (new), `app/page.tsx`, `CONSULTANT.md`.
+
+---
+
+### 2026-05-31 22:30 EDT — Paired party comparison on /analysis/representation + plain-language summary on /analysis/votes
+
+**What.** Two analysis-page polish improvements:
+
+1. **Within-subjects paired analysis** added to the party-comparison section of `/analysis/representation`. The old block compared `demAvgGap` and `repAvgGap` as two separate aggregate means — but those means are computed over *different row sets* (any row with a known Dem gap vs. any row with a known Rep gap), which leaks composition differences into the comparison and is methodologically weak.
+2. **Plain-language `What does this mean?` block** on `/analysis/votes` that converts the page's statistical aggregates (chi-square, BF₁₀, polarization, decade trend, loyalty %) into 4–5 readable sentences for a general reader.
+
+**Why this scope.** Editorial-not-algorithmic guardrail honored: no new queries, no new cross-references, no new ingest. Both improvements are pure transformations of data already computed in `buildRepresentationAnalysis()` and `buildVoteAnalysis()`.
+
+**Representation changes.**
+- `lib/representationGap.ts`: `PartyComparison` type gained four fields — `pairedCount`, `pairedMeanDiff`, `pairedMedianDiff`, `pctPairsDemHigher`. Computation iterates the existing `rows: StateTopicGapRow[]` once, collecting `(demGap − repGap)` only where both are non-null. Median is computed via in-place sort of the diff array; pct-Dem-higher counts strict `diff > 0`. Existing `demAvgGap` / `repAvgGap` fields kept for backwards compatibility (the API route consumers may rely on them).
+- `app/analysis/representation/page.tsx`: new paired-analysis card above the two legacy aggregate cards, with a headline sentence ("On N matched votes, Democrats diverged more in X% of cases"), median + mean paired difference (signed, "pp"), and a +/− legend. The legacy aggregate cards are kept with a small italic caveat below explaining they're not directly comparable. Topic-level breakdown table gained a `Paired diff` column showing `demAvgGap − repAvgGap` when both are non-null (sign-prefixed).
+
+**Votes changes.**
+- `app/analysis/votes/page.tsx`: new collapsible `<details>` block inserted between the 4-card summary grid and the by-country table. Implemented as a native HTML `<details>` element — no client component needed, no new dependencies. The `<summary>` line styles the disclosure arrow with `group-open:rotate-90` for a small affordance. Body renders 5 sentences built from existing scope variables:
+  1. Overview — total votes, bodies covered, overall contested + unanimous share.
+  2. Most partisan — `topPartisan[0]`'s sourceName + country, χ² value, and a p-value-conditional phrase ("essentially zero probability the split happened by chance" for p < 0.0001, with thresholds at 0.001 and 0.01).
+  3. Loyalty — top 2 entries from `loyaltySummary` by `memberCount` (≥10 members), showing party / chamber / avgLoyalty %.
+  4. Bipartisan — `topBipartisan[0]` as a counter-example with aye % and "no detectable partisan signal".
+  5. Trend — decade with highest `contestedPct` from `decadeTrend` (≥10 votes), with the absolute count and contested-threshold for context.
+- One small refactor: added `import type { ReactNode } from "react";` at the top of the file so the IIFE that builds the sentence array can type-annotate `ReactNode[]` (avoids `JSX` namespace import dependency, which isn't configured in this project's tsconfig).
+
+**Verification.** `npx tsc --noEmit` clean. No DB writes. No new client components. Footer `last updated May 31, 2026` already in place from earlier today's session (no change needed). Homepage `app/page.tsx` May 31 changelog block gained a new top `<li>` describing both improvements.
+
+**Files changed.** `lib/representationGap.ts`, `app/analysis/representation/page.tsx`, `app/analysis/votes/page.tsx`, `app/page.tsx`, `CONSULTANT.md`.
+
+---
+
 ### 2026-05-31 21:00 EDT — /globe fixes (clickable claims, slower timeline) + new /globe/connections page
 
 **What.** Three globe-page polish fixes plus a brand-new "Connected Events" view that visualizes claims involving multiple countries as arcs between country pairs.
