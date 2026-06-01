@@ -34,6 +34,7 @@ model Claim {
   deleted               Boolean           @default(false)
   autoApproved          Boolean           @default(false)
   verificationStatus    String? // VERIFIED | PROVISIONAL | DISPUTED | DEPRECATED
+  openAlexId            String?
   metadata              Json?
 
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
@@ -51,6 +52,8 @@ model Claim {
   historicalEvents         ClaimHistoricalEvent[]
   polityLinks              PolityClaim[]
   bookmarks                Bookmark[]
+  relationsFrom            ClaimRelation[] @relation("ClaimRelationFrom")
+  relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
 
   @@index([academicFieldId])
   @@index([ingestedBy])
@@ -60,6 +63,7 @@ model Claim {
   @@index([createdAt])
   @@index([claimEmergedAt])
   @@index([parentClaimId])
+  @@index([openAlexId])
   @@index([deleted, parentClaimId, claimType])
   @@index([deleted, parentClaimId, claimType, createdAt])
   @@index([deleted, parentClaimId, claimType, verificationStatus])
@@ -579,4 +583,21 @@ model Bookmark {
   @@unique([profileId, claimId])
   @@index([profileId])
   @@index([claimId])
+}
+
+model ClaimRelation {
+  id           String   @id @default(cuid())
+  fromClaimId  String
+  toClaimId    String
+  relationType String // "cites" | "cited_by" | "related"
+  year         Int?
+  createdAt    DateTime @default(now())
+
+  fromClaim Claim @relation("ClaimRelationFrom", fields: [fromClaimId], references: [id], onDelete: Cascade)
+  toClaim   Claim @relation("ClaimRelationTo", fields: [toClaimId], references: [id], onDelete: Cascade)
+
+  @@unique([fromClaimId, toClaimId, relationType])
+  @@index([fromClaimId])
+  @@index([toClaimId])
+  @@index([fromClaimId, relationType])
 }

@@ -271,6 +271,53 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-31 20:55 EDT — Citation graph feature: ClaimRelation table + OpenAlex enrichment + relations panel UI
+
+**What.** End-to-end citation graph for OpenAlex-sourced claims (~161,773 in DB). Each claim detail page now lazy-loads a "Citation graph" panel with three sections: **Later Work** (papers citing this one, newest first), **Related Papers** (OpenAlex `related_works`), and **References** (this paper's `referenced_works`). The panel renders nothing when a claim has no relations, so non-OpenAlex claims are unaffected.
+
+**Schema.** New `ClaimRelation { id, fromClaimId, toClaimId, relationType, year?, createdAt }` with `@@unique([fromClaimId, toClaimId, relationType])` and indexes on each FK side plus `[fromClaimId, relationType]` for grouped lookups. Cascade delete on both relations. Added `openAlexId String?` to `Claim` with its own index for fast workId lookup (avoids parsing externalId).
+
+**Migration.** `prisma/migrations/20260531200000_add_claim_relations/migration.sql` uses `IF NOT EXISTS` / `EXCEPTION WHEN duplicate_object THEN NULL` guards so it's safely re-runnable. Applied via `prisma db execute` + `prisma migrate resolve --applied` (same shadow-DB workaround used in the trgm and bookmarks migrations). Prisma client regenerated.
+
+**Enrichment script.** `scripts/enrich-openalex-relations.ts`:
+- Loads all OpenAlex claims (`externalId startsWith 'openalex_W'`, `deleted: false`).
+- Builds an in-memory `workId → claimId` index (~161k entries) for O(1) lookup.
+- For each source claim: fetches `/works/{workId}` from OpenAlex; backfills `Claim.openAlexId`; walks `referenced_works` → `cites`, `related_works` → `related`, `cited_by_api_url?sort=publication_year:desc&per-page=10` → `cited_by`.
+- Cited-by results that aren't in the DB are optionally inserted as lightweight stub claims (`ingestedBy: 'openalex_stub_v1'`, `verificationStatus: PROVISIONAL`, `metadata.stub_reason: 'created_by_enrich_openalex_relations'`) so each citing-paper link has a destination. `--no-stubs` disables this.
+- Polite: 100ms min interval, `User-Agent: epistemic-receipts/1.0 (mailto:robert.contofalsky@rutgers.edu)`, 429/Retry-After honored with exponential backoff.
+- CLI: `--dry-run` (default, no writes), `--commit` (requires `ALLOW_EDITS=true`), `--limit N`, `--no-stubs`.
+- Idempotent: unique-violation on `(fromClaimId, toClaimId, relationType)` is treated as "already exists" and counted in `relationsSkippedExisting`.
+
+**API.** `app/api/claims/[id]/relations/route.ts` — `GET` returns `{ cites, cited_by, related }` from a single `findMany` on `fromClaimId = id`, joined to the target claim (selecting title-relevant fields from `metadata` JSON when available, falling back to claim text). Each item: `{ id, title, year, sourceUrl, status, verificationStatus, isStub }`. `revalidate = 600` plus `Cache-Control: s-maxage=600, stale-while-revalidate=3600`.
+
+**UI.** `components/ClaimRelationsPanel.tsx` is a client component that fetches `/api/claims/[id]/relations` on mount. Renders three collapsible sections (cited_by open by default), each shows count + hint label. Stub claims link to the external `sourceUrl` (DOI / openalex.org / landing page) since they have no local detail page worth opening. Wired into `app/claims/[id]/page.tsx` between Sources/edges and Child claims.
+
+**Verification.** Dry-run on 3 claims confirmed 10 related matches and 0 errors. Commit run on 50 claims (`--no-stubs`) inserted **510 cites + 77 related = 587 ClaimRelation rows** in DB. `Claim.openAlexId` was backfilled on all 50 processed source claims. `npx tsc --noEmit` clean.
+
+**Files changed:** `prisma/schema.prisma`, `prisma/migrations/20260531200000_add_claim_relations/migration.sql` (new), `scripts/enrich-openalex-relations.ts` (new), `app/api/claims/[id]/relations/route.ts` (new), `components/ClaimRelationsPanel.tsx` (new), `app/claims/[id]/page.tsx`, `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+
+**Open work.** Stubbed-out: full enrichment over all 161,773 claims is not yet run — only 50 are populated. To complete: `ALLOW_EDITS=true npx tsx scripts/enrich-openalex-relations.ts --commit` (without `--limit`). Estimated time at 100ms throttle + 1–2 OpenAlex calls per claim: ~9 hours. Best run as a background process with periodic DB-count verification.
+
+---
+
+### 2026-05-31 14:55 EDT — Add anonymous-key bookmarks (Profile + Bookmark tables, /api/bookmarks routes, useBookmarks hook, /bookmarks page)
+- **Commit:** feat(bookmarks): anonymous-key bookmarks via Profile + Bookmark tables
+- **Files changed:**
+  - CONSULTANT.md
+  - app/api/bookmarks/claims/route.ts
+  - app/api/bookmarks/route.ts
+  - app/bookmarks/page.tsx
+  - app/claims/[id]/page.tsx
+  - app/layout.tsx
+  - app/page.tsx
+  - hooks/useBookmarks.ts
+  - package-lock.json
+  - package.json
+  - prisma/migrations/20260531000000_add_bookmarks/migration.sql
+  - prisma/schema.prisma
+- **Diff stat:**  12 files changed, 700 insertions(+), 1 deletion(-)
+
+
 ### 2026-05-31 — Anonymous-key bookmarks
 
 **What.** Shipped end-to-end bookmarking for claims using an anonymous, localStorage-stored profile key — no account, no email, no OAuth. A UUID v4 is generated on first bookmark and persisted in `localStorage` as `er_profile_key`. The key maps to a `Profile` row server-side; bookmarks live in a `Bookmark` join table to `Claim`. Users can copy their key and paste it on another device to restore the same bookmark set.

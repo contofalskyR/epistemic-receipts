@@ -5,6 +5,7 @@ import { use } from "react";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { useBookmarks } from "@/hooks/useBookmarks";
+import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -887,6 +888,9 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           </div>
         )}
       </section>
+
+      {/* Citation graph (lazy-loaded — renders nothing if no relations) */}
+      <ClaimRelationsPanel claimId={claim.id} />
 
       {/* Child claims */}
       {claim.children.length > 0 && (
