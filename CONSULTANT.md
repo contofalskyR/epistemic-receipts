@@ -271,6 +271,32 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — World Bank Indicators topic page rewrite (faceting + country filter + comparison chart)
+
+**What.** `/topics/world-bank-indicators` was an unnavigable flat list of 34,643 atomic country-year data points sorted by `claimEmergedAt desc` — useless because every claim emerged at roughly the same ingest time. The page now special-cases the `worldbank_v1` pipeline with three features:
+
+1. **Indicator faceting.** Chip row at the top for the 5 indicators in the pipeline (Population 7,161 · Life expectancy at birth 7,161 · GDP 6,811 · GDP per capita 6,811 · CO₂ emissions per capita 6,699). Clicking a chip refilters the claim list, the country list, and the chart. Defaults to GDP per capita.
+2. **Country filter.** Debounced (250ms) text input that filters the country chip list and the claim list. `X of Y countries` count rendered next to the heading.
+3. **Recharts comparison chart.** Replaces the old useless ingest-date timeline. `LineChart` with one line per country, x-axis = year (1990–2022 from `Claim.metadata.year`), y-axis = the numeric `value`. Defaults to USA / CHN / DEU / JPN / GBR (or first 5 by series presence if none of those are in scope). Per-indicator y/tooltip formatting ($1.23T / $4.5k / 12.3 yrs / 2.45 t / 1.23M). Click any country chip below the chart to add or remove its line; "Reset to defaults" link top-right of chart.
+
+**Why no regex parsing.** The original task spec suggested regex on claim text (`/in (\d{4}) was ([$]?[\d,\.]+)/`) but `worldbank_v1` writes a structured `Claim.metadata` object at ingest time (`countryIso3`, `countryName`, `indicatorCode`, `indicatorLabel`, `unit`, `year`, `value`). The new API endpoint reads those JSON paths directly via Postgres `metadata->>'…'` raw SQL — no regex, no new columns, no migration, no parse-error class to handle.
+
+**API design.** New endpoint `GET /api/topics/world-bank-indicators/data?indicator=CODE&country=text&page=N` returns (1) all 5 indicators with `claimCount`, (2) the country list filtered by the search text and the active indicator with per-country `claimCount`, (3) the full per-indicator time series `seriesByIso3: { [iso3]: { name, points: [{year, value}] } }` (~250–400 KB JSON when an indicator is selected — the entire ~7k row set ships to the client so toggling lines on/off is instant with no roundtrip), (4) `defaultSelectedIso3` (curated set of major economies present in the data), (5) paginated claim rows (20/page) sorted alphabetically by country then year-desc. All filtering happens via Postgres `metadata->>` JSON-path operators inside `Prisma.sql` fragments; country-list filter uses `IN (${Prisma.join(filterIso3)})`.
+
+**Wiring.** `app/topics/[slug]/page.tsx` gains a slug-check (`isWorldBank = slug === "world-bank-indicators"`) that returns `<WorldBankView />` instead of the generic page chrome. The generic topic page stays completely intact for every other topic (still fetches from `/api/topics/[slug]` and renders timeline / vote stats / party breakdown / etc.).
+
+**No new dependencies.** Recharts already in the project (`app/analysis/votes/DecadeTrendChart.tsx`). Reused the same dark-theme color palette and tooltip shape as the existing chart. Per-line color stable across selection order; legend formats iso3 → country name via `iso3ToName` map.
+
+**Verification.** `npx tsc --noEmit` clean. Dev server (`localhost:4100`) returns:
+- `GET /topics/world-bank-indicators 200` (page shell with "Loading…" — client hydrates).
+- `GET /api/topics/world-bank-indicators/data?indicator=NY.GDP.PCAP.CD 200` — 5 indicators, 214 countries, 214 series keys, default selection `["USA","CHN","DEU","JPN","GBR"]`, 6,811 total claims paginated 341 pages, USA 1990 GDP/capita = $23,888 (matches World Bank historic data ✓).
+- `?indicator=…&country=norw` returns just Norway (1 country, 33 claims for life expectancy).
+- `?country=zzzzzz` returns 0 countries, 0 claims (no-match clause `AND 1 = 0` works).
+
+**Files changed.** `app/api/topics/world-bank-indicators/data/route.ts` (new), `app/topics/[slug]/WorldBankView.tsx` (new), `app/topics/[slug]/WorldBankChart.tsx` (new), `app/topics/[slug]/page.tsx` (slug-check → WorldBankView), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`.
+
+---
+
 ### 2026-06-01 — OpenFEC campaign finance pipelines (1,200 claims across 2020/2022/2024)
 
 **What.** Two new pipelines bring U.S. federal campaign-finance data into the receipts graph:

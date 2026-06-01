@@ -345,6 +345,49 @@ export default async function RepresentationPage() {
             its in-state ideological base.
           </p>
         </div>
+        {/* Within-subjects paired analysis (rows where both party gaps are known) */}
+        <div className="rounded border border-gray-700 bg-gray-900/60 px-4 py-4">
+          <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">
+            Paired analysis — within-subjects
+          </div>
+          <p className="text-base text-gray-100 leading-snug">
+            On <span className="font-semibold tabular-nums">{partyComparison.pairedCount.toLocaleString()}</span>{" "}
+            matched votes, Democrats diverged more in{" "}
+            <span className="font-semibold tabular-nums">{partyComparison.pctPairsDemHigher.toFixed(0)}%</span> of cases.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3 text-xs">
+            <div>
+              <div className="text-gray-500">Median gap difference</div>
+              <div className="text-base text-gray-200 tabular-nums">
+                {partyComparison.pairedMedianDiff >= 0 ? "+" : ""}
+                {partyComparison.pairedMedianDiff.toFixed(1)} pp
+              </div>
+              <div className="text-[11px] text-gray-600">+ means Dem &gt; Rep</div>
+            </div>
+            <div>
+              <div className="text-gray-500">Mean gap difference</div>
+              <div className="text-base text-gray-200 tabular-nums">
+                {partyComparison.pairedMeanDiff >= 0 ? "+" : ""}
+                {partyComparison.pairedMeanDiff.toFixed(1)} pp
+              </div>
+              <div className="text-[11px] text-gray-600">Dem gap − Rep gap, per row</div>
+            </div>
+            <div>
+              <div className="text-gray-500">Paired rows</div>
+              <div className="text-base text-gray-200 tabular-nums">
+                {partyComparison.pairedCount.toLocaleString()}
+              </div>
+              <div className="text-[11px] text-gray-600">both Dem and Rep gap known</div>
+            </div>
+          </div>
+          <p className="mt-3 text-[11px] text-gray-500 leading-relaxed max-w-3xl">
+            Each row contributes a single value (demGap − repGap) computed on the same
+            (state, year, topic). This is the methodologically clean comparison: both numbers
+            describe the same delegation, year, and bill bucket — so the comparison isolates
+            the party effect rather than averaging across different row sets.
+          </p>
+        </div>
+
         <div className="grid grid-cols-2 gap-3">
           <div className="rounded border border-blue-900/50 bg-blue-950/30 px-4 py-3">
             <div className="text-xs text-blue-400 mb-1">Democratic legislators — avg gap</div>
@@ -365,6 +408,12 @@ export default async function RepresentationPage() {
             </div>
           </div>
         </div>
+        <p className="text-[11px] text-gray-500 italic max-w-3xl leading-relaxed">
+          Note: the two aggregate averages above are <span className="text-gray-400">not</span> directly comparable —
+          they count different row sets (any row with a known Dem gap vs. any row with a known
+          Rep gap), so the means absorb composition differences between those sets. For an
+          apples-to-apples read, use the paired analysis above.
+        </p>
         <div className="rounded border border-gray-800 overflow-hidden">
           <table className="w-full text-xs">
             <thead>
@@ -373,6 +422,7 @@ export default async function RepresentationPage() {
                 <th className="px-3 py-2 text-right font-medium text-gray-500">Sample cells</th>
                 <th className="px-3 py-2 text-right font-medium text-gray-500">Dem avg gap</th>
                 <th className="px-3 py-2 text-right font-medium text-gray-500">Rep avg gap</th>
+                <th className="px-3 py-2 text-right font-medium text-gray-500">Paired diff</th>
                 <th className="px-3 py-2 text-left font-medium text-gray-500">Diverges more</th>
               </tr>
             </thead>
@@ -386,6 +436,10 @@ export default async function RepresentationPage() {
                       : t.repAvgGap > t.demAvgGap
                         ? "Republicans"
                         : "tied";
+                const pairedDiff =
+                  t.demAvgGap === null || t.repAvgGap === null
+                    ? null
+                    : t.demAvgGap - t.repAvgGap;
                 return (
                   <tr
                     key={t.topicSlug}
@@ -395,6 +449,11 @@ export default async function RepresentationPage() {
                     <td className="px-3 py-2 text-right text-gray-300 tabular-nums">{t.sampleCount}</td>
                     <td className="px-3 py-2 text-right text-blue-300 tabular-nums">{fmt(t.demAvgGap)}</td>
                     <td className="px-3 py-2 text-right text-orange-300 tabular-nums">{fmt(t.repAvgGap)}</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-gray-300">
+                      {pairedDiff === null
+                        ? "—"
+                        : `${pairedDiff >= 0 ? "+" : ""}${pairedDiff.toFixed(1)}`}
+                    </td>
                     <td
                       className={`px-3 py-2 align-top ${
                         diverges === "Democrats" ? "text-blue-300" : diverges === "Republicans" ? "text-orange-300" : "text-gray-500"

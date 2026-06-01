@@ -3,6 +3,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
+import WorldBankView from "./WorldBankView";
 
 const STATUS_STYLE: Record<string, string> = {
   HARD_FACT:      "bg-green-900 text-green-300",
@@ -336,6 +337,10 @@ function TopicSlugContent() {
   const party = searchParams.get("party") ?? "";
   const leader = searchParams.get("leader") ?? "";
 
+  // Special-case the World Bank Indicators topic: the generic list view is
+  // unusable for ~35k atomic country-year data points.
+  const isWorldBank = slug === "world-bank-indicators";
+
   const [data, setData] = useState<TopicData | null>(null);
   const [notFound, setNotFound] = useState(false);
 
@@ -376,6 +381,11 @@ function TopicSlugContent() {
 
   const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
+
+  // Render the dedicated World Bank view (indicator faceting, country filter, comparison chart).
+  if (isWorldBank) {
+    return <WorldBankView topicName={topic.name} topicTotal={total} />;
+  }
 
   return (
     <div className="space-y-8">

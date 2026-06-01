@@ -1,0 +1,287 @@
+
+── Pipeline: NARA Catalog (nara_catalog_v1) ────────────────────────────
+Mode: full | Record groups: RG 59
+API key: KSHV************************************
+Page cap: none (full run)
+
+Step 1: Ensuring topics...
+(node:37556) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  Created topic: nara-rg-65-fbi
+  Created topic: nara-rg-226-oss
+  Created topic: nara-rg-218-jcs
+  Created topic: nara-rg-84-fsp
+
+Step 2: Full ingestion — streaming page-by-page with cursor checkpointing...
+
+  Processing RG 59 — General Records of the Department of State
+  RG 59: starting from page 1 (fetched so far: 0)
+    RG 59 p1: +100 records, total ingested 100, skipped 0
+    RG 59 p2: +100 records, total ingested 200, skipped 0
+    RG 59 p3: +100 records, total ingested 200, skipped 100
+    RG 59 p4: +100 records, total ingested 300, skipped 100
+    RG 59 p5: +100 records, total ingested 300, skipped 200
+    RG 59 p6: +100 records, total ingested 400, skipped 200
+    RG 59 p7: +100 records, total ingested 500, skipped 200
+    RG 59 p8: +100 records, total ingested 500, skipped 300
+    RG 59 p9: +100 records, total ingested 600, skipped 300
+    RG 59 p10: +100 records, total ingested 700, skipped 300
+    RG 59 p11: +100 records, total ingested 800, skipped 300
+    RG 59 p12: +100 records, total ingested 900, skipped 300
+    RG 59 p13: +100 records, total ingested 1000, skipped 300
+    RG 59 p14: +100 records, total ingested 1000, skipped 400
+    RG 59 p15: +100 records, total ingested 1100, skipped 400
+    RG 59 p16: +100 records, total ingested 1200, skipped 400
+    RG 59 p17: +100 records, total ingested 1300, skipped 400
+    RG 59 p18: +100 records, total ingested 1400, skipped 400
+    RG 59 p19: +100 records, total ingested 1500, skipped 400
+    RG 59 p20: +100 records, total ingested 1600, skipped 400
+    RG 59 p21: +100 records, total ingested 1700, skipped 400
+    RG 59 p22: +100 records, total ingested 1800, skipped 400
+    RG 59 p23: +100 records, total ingested 1900, skipped 400
+    RG 59 p24: +100 records, total ingested 1900, skipped 500
+    RG 59 p25: +100 records, total ingested 2000, skipped 500
+    RG 59 p26: +100 records, total ingested 2100, skipped 500
+    RG 59 p27: +100 records, total ingested 2200, skipped 500
+    RG 59 p28: +100 records, total ingested 2200, skipped 600
+    RG 59 p29: +100 records, total ingested 2300, skipped 600
+    RG 59 p30: +100 records, total ingested 2400, skipped 600
+    RG 59 p31: +100 records, total ingested 2500, skipped 600
+    RG 59 p32: +100 records, total ingested 2600, skipped 600
+    RG 59 p33: +100 records, total ingested 2700, skipped 600
+    RG 59 p34: +100 records, total ingested 2800, skipped 600
+    RG 59 p35: +100 records, total ingested 2900, skipped 600
+    RG 59 p36: +100 records, total ingested 3000, skipped 600
+    RG 59 p37: +100 records, total ingested 3100, skipped 600
+    RG 59 p38: +100 records, total ingested 3200, skipped 600
+    RG 59 p39: +100 records, total ingested 3200, skipped 700
+    RG 59 p40: +100 records, total ingested 3300, skipped 700
+    RG 59 p41: +100 records, total ingested 3300, skipped 800
+    RG 59 p42: +100 records, total ingested 3400, skipped 800
+    RG 59 p43: +100 records, total ingested 3500, skipped 800
+    RG 59 p44: +100 records, total ingested 3600, skipped 800
+    RG 59 p45: +100 records, total ingested 3700, skipped 800
+    RG 59 p46: +100 records, total ingested 3800, skipped 800
+    RG 59 p47: +100 records, total ingested 3900, skipped 800
+    RG 59 p48: +100 records, total ingested 4000, skipped 800
+    RG 59 p49: +100 records, total ingested 4000, skipped 900
+    RG 59 p50: +100 records, total ingested 4100, skipped 900
+    RG 59 p51: +100 records, total ingested 4200, skipped 900
+    RG 59 p52: +100 records, total ingested 4300, skipped 900
+    RG 59 p53: +100 records, total ingested 4400, skipped 900
+    RG 59 p54: +100 records, total ingested 4500, skipped 900
+    RG 59 p55: +100 records, total ingested 4600, skipped 900
+    RG 59 p56: +100 records, total ingested 4700, skipped 900
+    RG 59 p57: +100 records, total ingested 4700, skipped 1000
+    RG 59 p58: +100 records, total ingested 4800, skipped 1000
+    RG 59 p59: +100 records, total ingested 4800, skipped 1100
+    RG 59 p60: +100 records, total ingested 4900, skipped 1100
+    RG 59 p61: +100 records, total ingested 5000, skipped 1100
+    RG 59 p62: +100 records, total ingested 5100, skipped 1100
+    RG 59 p63: +100 records, total ingested 5100, skipped 1200
+    RG 59 p64: +100 records, total ingested 5100, skipped 1300
+    RG 59 p65: +100 records, total ingested 5100, skipped 1400
+    RG 59 p66: +100 records, total ingested 5200, skipped 1400
+    RG 59 p67: +100 records, total ingested 5200, skipped 1500
+    RG 59 p68: +100 records, total ingested 5300, skipped 1500
+    RG 59 p69: +100 records, total ingested 5400, skipped 1500
+    RG 59 p70: +100 records, total ingested 5400, skipped 1600
+    RG 59 p71: +100 records, total ingested 5500, skipped 1600
+    RG 59 p72: +100 records, total ingested 5600, skipped 1600
+    RG 59 p73: +100 records, total ingested 5700, skipped 1600
+    RG 59 p74: +100 records, total ingested 5800, skipped 1600
+    RG 59 p75: +100 records, total ingested 5900, skipped 1600
+    RG 59 p76: +100 records, total ingested 6000, skipped 1600
+    RG 59 p77: +100 records, total ingested 6100, skipped 1600
+    RG 59 p78: +100 records, total ingested 6200, skipped 1600
+    RG 59 p79: +100 records, total ingested 6200, skipped 1700
+    RG 59 p80: +100 records, total ingested 6300, skipped 1700
+    RG 59 p81: +100 records, total ingested 6300, skipped 1800
+    RG 59 p82: +100 records, total ingested 6400, skipped 1800
+    RG 59 p83: +100 records, total ingested 6500, skipped 1800
+    RG 59 p84: +100 records, total ingested 6600, skipped 1800
+    RG 59 p85: +100 records, total ingested 6600, skipped 1900
+    RG 59 p86: +100 records, total ingested 6700, skipped 1900
+    RG 59 p87: +100 records, total ingested 6800, skipped 1900
+    RG 59 p88: +100 records, total ingested 6800, skipped 2000
+    RG 59 p89: +100 records, total ingested 6800, skipped 2100
+    RG 59 p90: +100 records, total ingested 6900, skipped 2100
+    RG 59 p91: +100 records, total ingested 7000, skipped 2100
+    RG 59 p92: +100 records, total ingested 7100, skipped 2100
+    RG 59 p93: +100 records, total ingested 7200, skipped 2100
+    RG 59 p94: +100 records, total ingested 7300, skipped 2100
+    RG 59 p95: +100 records, total ingested 7400, skipped 2100
+    RG 59 p96: +100 records, total ingested 7500, skipped 2100
+    RG 59 p97: +100 records, total ingested 7600, skipped 2100
+    RG 59 p98: +100 records, total ingested 7600, skipped 2200
+    RG 59 p99: +100 records, total ingested 7700, skipped 2200
+    RG 59 p100: +100 records, total ingested 7700, skipped 2300
+Error: NARA API 400 at https://catalog.archives.gov/api/v2/records/search?levelOfDescription=item&limit=100&recordGroupNumber=59&page=101: {"error":{"message":"Max total results exceeded","description":"10,100 results were requested, but a maximum of only 10,000 results are allowed.","action":"Please modify your search to proceed.","id":
+    at naraFetch (/Users/robclaw/Projects/epistemic-receipts/scripts/ingest-nara-catalog.ts:209:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async fetchAndWriteGroup (/Users/robclaw/Projects/epistemic-receipts/scripts/ingest-nara-catalog.ts:299:18)
+    at async main (/Users/robclaw/Projects/epistemic-receipts/scripts/ingest-nara-catalog.ts:672:24)
+--full/--resume (without --dry-run) requires ALLOW_EDITS=true environment variable
+NARA_API_KEY environment variable not set.
+The NARA Catalog API v2 requires a key for all search operations.
+To obtain a free read-only key, email: Catalog_API@nara.gov
+Set the key in .env.local as: NARA_API_KEY=your-key-here
+
+── Pipeline: NARA Catalog (nara_catalog_v1) ────────────────────────────
+Mode: full | Record groups: RG 263, RG 59, RG 330, RG 128, RG 148, RG 65, RG 226, RG 218, RG 84
+API key: KSHV************************************
+Pagination: page-based with date-range slicing (stays under NARA 10k/window cap)
+Page cap: none (full run)
+
+Step 1: Ensuring topics...
+
+Step 2: Full ingestion — 13 date window(s) × 9 RG(s)...
+  RG 263 [1900–1909]: starting
+    RG 263 [1900–1909] p1: +100 records, total ingested 0, skipped 100
+    RG 263 [1900–1909] p2: +100 records, total ingested 0, skipped 200
+
+── Pipeline: NARA Catalog (nara_catalog_v1) ────────────────────────────
+Mode: full | Record groups: RG 59
+API key: KSHV************************************
+Pagination: page-based with date-range slicing (stays under NARA 10k/window cap)
+Page cap: none (full run)
+
+Step 1: Ensuring topics...
+
+Step 2: Full ingestion — 13 date window(s) × 1 RG(s)...
+  RG 59 [1900–1909]: starting
+    RG 59 [1900–1909] p1: +100 records, total ingested 0, skipped 100
+    RG 59 [1900–1909] p2: +100 records, total ingested 0, skipped 200
+    RG 59 [1900–1909] p3: +100 records, total ingested 13, skipped 287
+    RG 59 [1900–1909] p4: +100 records, total ingested 13, skipped 387
+    RG 59 [1900–1909] p5: +100 records, total ingested 13, skipped 487
+    RG 59 [1900–1909] p6: +100 records, total ingested 13, skipped 587
+    RG 59 [1900–1909] p7: +100 records, total ingested 13, skipped 687
+    RG 59 [1900–1909] p8: +100 records, total ingested 113, skipped 687
+    RG 59 [1900–1909] p9: +100 records, total ingested 113, skipped 787
+    RG 59 [1900–1909] p10: +100 records, total ingested 113, skipped 887
+    RG 59 [1900–1909] p11: +100 records, total ingested 213, skipped 887
+    RG 59 [1900–1909] p12: +100 records, total ingested 213, skipped 987
+    RG 59 [1900–1909] p13: +100 records, total ingested 213, skipped 1087
+    RG 59 [1900–1909] p14: +100 records, total ingested 213, skipped 1187
+    RG 59 [1900–1909] p15: +100 records, total ingested 213, skipped 1287
+    RG 59 [1900–1909] p16: +100 records, total ingested 231, skipped 1369
+    RG 59 [1900–1909] p17: +100 records, total ingested 231, skipped 1469
+    RG 59 [1900–1909] p18: +100 records, total ingested 231, skipped 1569
+    RG 59 [1900–1909] p19: +100 records, total ingested 231, skipped 1669
+    RG 59 [1900–1909] p20: +100 records, total ingested 231, skipped 1769
+    RG 59 [1900–1909] p21: +100 records, total ingested 231, skipped 1869
+    RG 59 [1900–1909] p22: +100 records, total ingested 231, skipped 1969
+    RG 59 [1900–1909] p23: +100 records, total ingested 231, skipped 2069
+    RG 59 [1900–1909] p24: +100 records, total ingested 231, skipped 2169
+    RG 59 [1900–1909] p25: +100 records, total ingested 231, skipped 2269
+    RG 59 [1900–1909] p26: +100 records, total ingested 231, skipped 2369
+    RG 59 [1900–1909] p27: +100 records, total ingested 231, skipped 2469
+    RG 59 [1900–1909] p28: +100 records, total ingested 231, skipped 2569
+    RG 59 [1900–1909] p29: +100 records, total ingested 231, skipped 2669
+    RG 59 [1900–1909] p30: +100 records, total ingested 231, skipped 2769
+    RG 59 [1900–1909] p31: +100 records, total ingested 231, skipped 2869
+    RG 59 [1900–1909] p32: +100 records, total ingested 231, skipped 2969
+    RG 59 [1900–1909] p33: +100 records, total ingested 231, skipped 3069
+    RG 59 [1900–1909] p34: +100 records, total ingested 231, skipped 3169
+    RG 59 [1900–1909] p35: +100 records, total ingested 231, skipped 3269
+    RG 59 [1900–1909] p36: +100 records, total ingested 231, skipped 3369
+    RG 59 [1900–1909] p37: +100 records, total ingested 231, skipped 3469
+    RG 59 [1900–1909] p38: +100 records, total ingested 231, skipped 3569
+    RG 59 [1900–1909] p39: +100 records, total ingested 231, skipped 3669
+    RG 59 [1900–1909] p40: +100 records, total ingested 231, skipped 3769
+    RG 59 [1900–1909] p41: +100 records, total ingested 231, skipped 3869
+    RG 59 [1900–1909] p42: +100 records, total ingested 231, skipped 3969
+    RG 59 [1900–1909] p43: +100 records, total ingested 231, skipped 4069
+    RG 59 [1900–1909] p44: +100 records, total ingested 231, skipped 4169
+    RG 59 [1900–1909] p45: +100 records, total ingested 231, skipped 4269
+    RG 59 [1900–1909] p46: +100 records, total ingested 231, skipped 4369
+    RG 59 [1900–1909] p47: +100 records, total ingested 231, skipped 4469
+    RG 59 [1900–1909] p48: +100 records, total ingested 231, skipped 4569
+    RG 59 [1900–1909] p49: +100 records, total ingested 231, skipped 4669
+    RG 59 [1900–1909] p50: +100 records, total ingested 231, skipped 4769
+    RG 59 [1900–1909] p51: +100 records, total ingested 231, skipped 4869
+    RG 59 [1900–1909] p52: +100 records, total ingested 231, skipped 4969
+    RG 59 [1900–1909] p53: +100 records, total ingested 231, skipped 5069
+    RG 59 [1900–1909] p54: +100 records, total ingested 231, skipped 5169
+    RG 59 [1900–1909] p55: +100 records, total ingested 231, skipped 5269
+    RG 59 [1900–1909] p56: +100 records, total ingested 231, skipped 5369
+    RG 59 [1900–1909] p57: +100 records, total ingested 231, skipped 5469
+    RG 59 [1900–1909] p58: +100 records, total ingested 231, skipped 5569
+    RG 59 [1900–1909] p59: +100 records, total ingested 231, skipped 5669
+    RG 59 [1900–1909] p60: +100 records, total ingested 231, skipped 5769
+    RG 59 [1900–1909] p61: +100 records, total ingested 231, skipped 5869
+    RG 59 [1900–1909] p62: +100 records, total ingested 231, skipped 5969
+    RG 59 [1900–1909] p63: +100 records, total ingested 231, skipped 6069
+    RG 59 [1900–1909] p64: +100 records, total ingested 231, skipped 6169
+    RG 59 [1900–1909] p65: +100 records, total ingested 231, skipped 6269
+    RG 59 [1900–1909] p66: +100 records, total ingested 231, skipped 6369
+    RG 59 [1900–1909] p67: +100 records, total ingested 231, skipped 6469
+    RG 59 [1900–1909] p68: +100 records, total ingested 231, skipped 6569
+    RG 59 [1900–1909] p69: +100 records, total ingested 231, skipped 6669
+    RG 59 [1900–1909] p70: +100 records, total ingested 231, skipped 6769
+    RG 59 [1900–1909] p71: +100 records, total ingested 231, skipped 6869
+    RG 59 [1900–1909] p72: +100 records, total ingested 231, skipped 6969
+    RG 59 [1900–1909] p73: +100 records, total ingested 231, skipped 7069
+    RG 59 [1900–1909] p74: +100 records, total ingested 231, skipped 7169
+    RG 59 [1900–1909] p75: +100 records, total ingested 231, skipped 7269
+    RG 59 [1900–1909] p76: +100 records, total ingested 231, skipped 7369
+    RG 59 [1900–1909] p77: +100 records, total ingested 231, skipped 7469
+    RG 59 [1900–1909] p78: +100 records, total ingested 231, skipped 7569
+    RG 59 [1900–1909] p79: +100 records, total ingested 231, skipped 7669
+    RG 59 [1900–1909] p80: +100 records, total ingested 231, skipped 7769
+    RG 59 [1900–1909] p81: +100 records, total ingested 231, skipped 7869
+    RG 59 [1900–1909] p82: +100 records, total ingested 231, skipped 7969
+    RG 59 [1900–1909] p83: +100 records, total ingested 231, skipped 8069
+    RG 59 [1900–1909] p84: +100 records, total ingested 231, skipped 8169
+    RG 59 [1900–1909] p85: +100 records, total ingested 231, skipped 8269
+    RG 59 [1900–1909] p86: +100 records, total ingested 231, skipped 8369
+    RG 59 [1900–1909] p87: +100 records, total ingested 231, skipped 8469
+    RG 59 [1900–1909] p88: +100 records, total ingested 231, skipped 8569
+    RG 59 [1900–1909] p89: +100 records, total ingested 231, skipped 8669
+    RG 59 [1900–1909] p90: +100 records, total ingested 231, skipped 8769
+    RG 59 [1900–1909] p91: +100 records, total ingested 231, skipped 8869
+    RG 59 [1900–1909] p92: +100 records, total ingested 231, skipped 8969
+    RG 59 [1900–1909] p93: +100 records, total ingested 231, skipped 9069
+    RG 59 [1900–1909] p94: +100 records, total ingested 231, skipped 9169
+    RG 59 [1900–1909] p95: +100 records, total ingested 231, skipped 9269
+    RG 59 [1900–1909] p96: +100 records, total ingested 231, skipped 9369
+    RG 59 [1900–1909] p97: +100 records, total ingested 231, skipped 9469
+    RG 59 [1900–1909] p98: +100 records, total ingested 231, skipped 9569
+    RG 59 [1900–1909] p99: +100 records, total ingested 231, skipped 9669
+    RG 59 [1900–1909] p100: +100 records, total ingested 231, skipped 9769
+Error: NARA API 400 at https://catalog.archives.gov/api/v2/records/search?levelOfDescription=item&limit=100&recordGroupNumber=59&dateRangeStart=1900-01-01&dateRangeEnd=1909-12-31&page=101: {"error":{"message":"Max total results exceeded","description":"10,100 results were requested, but a maximum of only 10,000 results are allowed.","action":"Please modify your search to proceed.","id":
+    at naraFetch (/Users/robclaw/Projects/epistemic-receipts/scripts/ingest-nara-catalog.ts:220:13)
+    at processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async fetchAndWriteGroup (/Users/robclaw/Projects/epistemic-receipts/scripts/ingest-nara-catalog.ts:329:18)
+    at async main (/Users/robclaw/Projects/epistemic-receipts/scripts/ingest-nara-catalog.ts:753:26)
+
+── Pipeline: NARA Catalog (nara_catalog_v1) ────────────────────────────
+Mode: full | Record groups: RG 59
+API key: KSHV************************************
+Pagination: page-based with date-range slicing (stays under NARA 10k/window cap)
+Page cap: none (full run)
+
+Step 1: Ensuring topics...
+
+Step 2: Full ingestion — 64 date window(s) × 1 RG(s)...
+  RG 59 [1900–1901]: starting
+    RG 59 [1900–1901] p1: +100 records, total ingested 0, skipped 100
+    RG 59 [1900–1901] p2: +100 records, total ingested 0, skipped 200
+    RG 59 [1900–1901] p3: +100 records, total ingested 0, skipped 300
+    RG 59 [1900–1901] p4: +100 records, total ingested 0, skipped 400
+    RG 59 [1900–1901] p5: +100 records, total ingested 0, skipped 500
+    RG 59 [1900–1901] p6: +100 records, total ingested 0, skipped 600
+    RG 59 [1900–1901] p7: +100 records, total ingested 0, skipped 700
+    RG 59 [1900–1901] p8: +100 records, total ingested 100, skipped 700
+    RG 59 [1900–1901] p9: +100 records, total ingested 200, skipped 700
+    RG 59 [1900–1901] p10: +100 records, total ingested 200, skipped 800
+    RG 59 [1900–1901] p11: +100 records, total ingested 200, skipped 900
+    RG 59 [1900–1901] p12: +100 records, total ingested 300, skipped 900
+    RG 59 [1900–1901] p13: +100 records, total ingested 300, skipped 1000
+    RG 59 [1900–1901] p14: +100 records, total ingested 398, skipped 1002
+    RG 59 [1900–1901] p15: +100 records, total ingested 398, skipped 1102
+    RG 59 [1900–1901] p16: +100 records, total ingested 398, skipped 1202
+    RG 59 [1900–1901] p17: +100 records, total ingested 398, skipped 1302
+    RG 59 [1900–1901] p18: +100 records, total ingested 398, skipped 1402
+    RG 59 [1900–1901] p19: +100 records, total ingested 398, skipped 1502

@@ -1,0 +1,17 @@
+
+── Enrich: Legislative Vote Counts ─────────────────────────────────────
+Mode: full | Country: us | Limit: all
+
+── United States (us) ──────────────────────────
+(node:98785) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  Sources: 10360 (processing: 10360)
+  congress_votes_v1 claims loaded: 505, bill keys: 230
+  Result: enriched=0 skipped=10360 failed=0
+
+── Summary ──────────────────────────────────────────────────────────────
+  Total enriched: 0
+  Total skipped:  10360
+  Total failed:   0
+
+  DB LegislativeVote rows: 2948

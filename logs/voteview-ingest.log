@@ -1,0 +1,132 @@
+
+Voteview Ingest — voteview_v1
+  congress: all
+  limit:    all
+  dry-run:  false
+
+Parsing CSV...
+  Total CSV rows: 113319
+  After filter/limit: 113319
+
+(node:38506) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  1000/113319 — inserted: 1000 skipped: 0
+  2000/113319 — inserted: 2000 skipped: 0
+  3000/113319 — inserted: 3000 skipped: 0
+  4000/113319 — inserted: 4000 skipped: 0
+  5000/113319 — inserted: 5000 skipped: 0
+  6000/113319 — inserted: 6000 skipped: 0
+  7000/113319 — inserted: 7000 skipped: 0
+  8000/113319 — inserted: 8000 skipped: 0
+  9000/113319 — inserted: 9000 skipped: 0
+  10000/113319 — inserted: 10000 skipped: 0
+  11000/113319 — inserted: 11000 skipped: 0
+  12000/113319 — inserted: 12000 skipped: 0
+  13000/113319 — inserted: 13000 skipped: 0
+  14000/113319 — inserted: 14000 skipped: 0
+  15000/113319 — inserted: 15000 skipped: 0
+  16000/113319 — inserted: 16000 skipped: 0
+  17000/113319 — inserted: 17000 skipped: 0
+  18000/113319 — inserted: 18000 skipped: 0
+  19000/113319 — inserted: 19000 skipped: 0
+  20000/113319 — inserted: 20000 skipped: 0
+  21000/113319 — inserted: 21000 skipped: 0
+  22000/113319 — inserted: 22000 skipped: 0
+  23000/113319 — inserted: 23000 skipped: 0
+  24000/113319 — inserted: 24000 skipped: 0
+  25000/113319 — inserted: 25000 skipped: 0
+  26000/113319 — inserted: 26000 skipped: 0
+  27000/113319 — inserted: 27000 skipped: 0
+  28000/113319 — inserted: 28000 skipped: 0
+  29000/113319 — inserted: 29000 skipped: 0
+  30000/113319 — inserted: 30000 skipped: 0
+  31000/113319 — inserted: 31000 skipped: 0
+  32000/113319 — inserted: 32000 skipped: 0
+  33000/113319 — inserted: 33000 skipped: 0
+  34000/113319 — inserted: 34000 skipped: 0
+  35000/113319 — inserted: 35000 skipped: 0
+  36000/113319 — inserted: 36000 skipped: 0
+  37000/113319 — inserted: 37000 skipped: 0
+  38000/113319 — inserted: 38000 skipped: 0
+  39000/113319 — inserted: 39000 skipped: 0
+  40000/113319 — inserted: 40000 skipped: 0
+  41000/113319 — inserted: 41000 skipped: 0
+  42000/113319 — inserted: 42000 skipped: 0
+  43000/113319 — inserted: 43000 skipped: 0
+  44000/113319 — inserted: 44000 skipped: 0
+  45000/113319 — inserted: 45000 skipped: 0
+  46000/113319 — inserted: 46000 skipped: 0
+  47000/113319 — inserted: 47000 skipped: 0
+  48000/113319 — inserted: 48000 skipped: 0
+  49000/113319 — inserted: 49000 skipped: 0
+  50000/113319 — inserted: 50000 skipped: 0
+  51000/113319 — inserted: 51000 skipped: 0
+  52000/113319 — inserted: 52000 skipped: 0
+  53000/113319 — inserted: 53000 skipped: 0
+  54000/113319 — inserted: 54000 skipped: 0
+  55000/113319 — inserted: 55000 skipped: 0
+  56000/113319 — inserted: 56000 skipped: 0
+  57000/113319 — inserted: 57000 skipped: 0
+  58000/113319 — inserted: 58000 skipped: 0
+  59000/113319 — inserted: 59000 skipped: 0
+  60000/113319 — inserted: 60000 skipped: 0
+  61000/113319 — inserted: 61000 skipped: 0
+  62000/113319 — inserted: 62000 skipped: 0
+  63000/113319 — inserted: 63000 skipped: 0
+  64000/113319 — inserted: 64000 skipped: 0
+  65000/113319 — inserted: 65000 skipped: 0
+  66000/113319 — inserted: 66000 skipped: 0
+  67000/113319 — inserted: 67000 skipped: 0
+  68000/113319 — inserted: 68000 skipped: 0
+  69000/113319 — inserted: 69000 skipped: 0
+  70000/113319 — inserted: 70000 skipped: 0
+  71000/113319 — inserted: 71000 skipped: 0
+  72000/113319 — inserted: 72000 skipped: 0
+  73000/113319 — inserted: 73000 skipped: 0
+  74000/113319 — inserted: 74000 skipped: 0
+  75000/113319 — inserted: 75000 skipped: 0
+  76000/113319 — inserted: 76000 skipped: 0
+  77000/113319 — inserted: 77000 skipped: 0
+  78000/113319 — inserted: 78000 skipped: 0
+  79000/113319 — inserted: 79000 skipped: 0
+  80000/113319 — inserted: 80000 skipped: 0
+  81000/113319 — inserted: 81000 skipped: 0
+  82000/113319 — inserted: 82000 skipped: 0
+  83000/113319 — inserted: 83000 skipped: 0
+  84000/113319 — inserted: 84000 skipped: 0
+  85000/113319 — inserted: 85000 skipped: 0
+  86000/113319 — inserted: 86000 skipped: 0
+  87000/113319 — inserted: 87000 skipped: 0
+  88000/113319 — inserted: 88000 skipped: 0
+  89000/113319 — inserted: 89000 skipped: 0
+  90000/113319 — inserted: 90000 skipped: 0
+  91000/113319 — inserted: 91000 skipped: 0
+  92000/113319 — inserted: 92000 skipped: 0
+  93000/113319 — inserted: 93000 skipped: 0
+  94000/113319 — inserted: 94000 skipped: 0
+  95000/113319 — inserted: 95000 skipped: 0
+  96000/113319 — inserted: 96000 skipped: 0
+  97000/113319 — inserted: 97000 skipped: 0
+  98000/113319 — inserted: 98000 skipped: 0
+  99000/113319 — inserted: 99000 skipped: 0
+  100000/113319 — inserted: 100000 skipped: 0
+  101000/113319 — inserted: 101000 skipped: 0
+  102000/113319 — inserted: 102000 skipped: 0
+  103000/113319 — inserted: 103000 skipped: 0
+  104000/113319 — inserted: 104000 skipped: 0
+  105000/113319 — inserted: 105000 skipped: 0
+  106000/113319 — inserted: 106000 skipped: 0
+  107000/113319 — inserted: 107000 skipped: 0
+  108000/113319 — inserted: 108000 skipped: 0
+  109000/113319 — inserted: 109000 skipped: 0
+  110000/113319 — inserted: 110000 skipped: 0
+  111000/113319 — inserted: 110053 skipped: 947
+  112000/113319 — inserted: 110074 skipped: 1926
+  113000/113319 — inserted: 111074 skipped: 1926
+  113319/113319 — inserted: 111393 skipped: 1926
+
+Done.
+  Inserted this run:  111393
+  Skipped (existed):  1926
+  voteview_v1 Sources in DB:          113319
+  voteview_v1 LegislativeVotes in DB: 113319

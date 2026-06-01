@@ -1,0 +1,79 @@
+
+── Pipeline: NARA Catalog (nara_catalog_v1) ────────────────────────────
+Mode: full | Record groups: RG 330
+API key: KSHV************************************
+Page cap: none (full run)
+
+Step 1: Ensuring topics...
+(node:43287) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+Step 2: Full ingestion — streaming page-by-page with cursor checkpointing...
+
+  Processing RG 330 — Records of the Office of the Secretary of Defense
+  RG 330: starting from page 1 (fetched so far: 0)
+    RG 330 p1: +100 records, total ingested 0, skipped 100
+    RG 330 p2: +100 records, total ingested 100, skipped 100
+    RG 330 p3: +100 records, total ingested 100, skipped 200
+    RG 330 p4: +100 records, total ingested 200, skipped 200
+    RG 330 p5: +100 records, total ingested 200, skipped 300
+    RG 330 p6: +100 records, total ingested 300, skipped 300
+    RG 330 p7: +100 records, total ingested 300, skipped 400
+    RG 330 p8: +100 records, total ingested 400, skipped 400
+    RG 330 p9: +100 records, total ingested 500, skipped 400
+    RG 330 p10: +100 records, total ingested 600, skipped 400
+    RG 330 p11: +100 records, total ingested 700, skipped 400
+    RG 330 p12: +100 records, total ingested 700, skipped 500
+    RG 330 p13: +100 records, total ingested 700, skipped 600
+    RG 330 p14: +100 records, total ingested 800, skipped 600
+    RG 330 p15: +100 records, total ingested 900, skipped 600
+    RG 330 p16: +100 records, total ingested 900, skipped 700
+    RG 330 p17: +100 records, total ingested 1000, skipped 700
+    RG 330 p18: +100 records, total ingested 1100, skipped 700
+    RG 330 p19: +100 records, total ingested 1100, skipped 800
+    RG 330 p20: +100 records, total ingested 1200, skipped 800
+    RG 330 p21: +100 records, total ingested 1300, skipped 800
+    RG 330 p22: +100 records, total ingested 1300, skipped 900
+    RG 330 p23: +100 records, total ingested 1400, skipped 900
+    RG 330 p24: +100 records, total ingested 1500, skipped 900
+    RG 330 p25: +100 records, total ingested 1600, skipped 900
+    RG 330 p26: +100 records, total ingested 1700, skipped 900
+    RG 330 p27: +100 records, total ingested 1800, skipped 900
+    RG 330 p28: +100 records, total ingested 1900, skipped 900
+    RG 330 p29: +100 records, total ingested 2000, skipped 900
+    RG 330 p30: +100 records, total ingested 2100, skipped 900
+    RG 330 p31: +100 records, total ingested 2100, skipped 1000
+    RG 330 p32: +100 records, total ingested 2200, skipped 1000
+    RG 330 p33: +100 records, total ingested 2200, skipped 1100
+    RG 330 p34: +100 records, total ingested 2300, skipped 1100
+    RG 330 p35: +100 records, total ingested 2400, skipped 1100
+    RG 330 p36: +100 records, total ingested 2500, skipped 1100
+    RG 330 p37: +100 records, total ingested 2500, skipped 1200
+    RG 330 p38: +100 records, total ingested 2600, skipped 1200
+    RG 330 p39: +100 records, total ingested 2600, skipped 1300
+    RG 330 p40: +100 records, total ingested 2600, skipped 1400
+    RG 330 p41: +100 records, total ingested 2600, skipped 1500
+    RG 330 p42: +100 records, total ingested 2700, skipped 1500
+    RG 330 p43: +100 records, total ingested 2700, skipped 1600
+    RG 330 p44: +100 records, total ingested 2700, skipped 1700
+    RG 330 p45: +100 records, total ingested 2700, skipped 1800
+    RG 330 p46: +100 records, total ingested 2700, skipped 1900
+    RG 330 p47: +100 records, total ingested 2800, skipped 1900
+    RG 330 p48: +100 records, total ingested 2800, skipped 2000
+    RG 330 p49: +100 records, total ingested 2900, skipped 2000
+    RG 330 p50: +100 records, total ingested 3000, skipped 2000
+    RG 330 p51: +100 records, total ingested 3100, skipped 2000
+    RG 330 p52: +100 records, total ingested 3100, skipped 2100
+    RG 330 p53: +100 records, total ingested 3100, skipped 2200
+    RG 330 p54: +100 records, total ingested 3100, skipped 2300
+    RG 330 p55: +100 records, total ingested 3200, skipped 2300
+    RG 330 p56: +100 records, total ingested 3200, skipped 2400
+    RG 330 p57: +100 records, total ingested 3300, skipped 2400
+    RG 330 p58: +100 records, total ingested 3400, skipped 2400
+    RG 330 p59: +100 records, total ingested 3500, skipped 2400
+    RG 330 p60: +100 records, total ingested 3500, skipped 2500
+    RG 330 p61: +100 records, total ingested 3600, skipped 2500
+    RG 330 p62: +100 records, total ingested 3700, skipped 2500
+    RG 330 p63: +100 records, total ingested 3800, skipped 2500
+    RG 330 p64: +100 records, total ingested 3800, skipped 2600
+    RG 330 p65: +100 records, total ingested 3800, skipped 2700

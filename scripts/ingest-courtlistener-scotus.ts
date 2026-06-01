@@ -59,17 +59,27 @@ function parseMinCitations(): number {
     const n = parseInt(args[idx + 1], 10)
     if (!isNaN(n) && n >= 0) return n
   }
-  return 50
+  return 10
 }
 
-function parseBeforeYear(): number {
+function parseBeforeYear(): number | null {
   const args = process.argv.slice(2)
   const idx = args.findIndex(a => a === '--before-year')
   if (idx !== -1 && args[idx + 1]) {
     const n = parseInt(args[idx + 1], 10)
     if (!isNaN(n) && n > 1700 && n <= 2100) return n
   }
-  return 2000
+  return null
+}
+
+function parseAfterYear(): number | null {
+  const args = process.argv.slice(2)
+  const idx = args.findIndex(a => a === '--after-year')
+  if (idx !== -1 && args[idx + 1]) {
+    const n = parseInt(args[idx + 1], 10)
+    if (!isNaN(n) && n > 1700 && n <= 2100) return n
+  }
+  return null
 }
 
 function parseDryRun(): boolean {
@@ -148,16 +158,22 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
 
   for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
     let res: Response
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), 30000)
     try {
       res = await fetch(url, {
         headers: {
           'Authorization': `Token ${token}`,
           'Accept': 'application/json',
         },
+        signal: ctrl.signal,
       })
+      clearTimeout(timer)
     } catch (networkErr) {
+      clearTimeout(timer)
       if (attempt > MAX_RETRIES) throw networkErr
-      console.log(`  Retrying after network error (attempt ${attempt}/${MAX_RETRIES})...`)
+      const reason = (networkErr as Error)?.name === 'AbortError' ? 'fetch timeout (30s)' : 'network error'
+      console.log(`  Retrying after ${reason} (attempt ${attempt}/${MAX_RETRIES})...`)
       await sleep(2 ** attempt * 1000)
       continue
     }
@@ -208,9 +224,12 @@ async function main() {
 
   const limit = parseLimit()
   const beforeYear = parseBeforeYear()
+  const afterYear = parseAfterYear()
   const minCitations = parseMinCitations()
   const dryRun = parseDryRun()
-  console.log(`\n=== CourtListener SCOTUS Ingestion — limit: ${limit}, before: ${beforeYear}, min-citations: ${minCitations}${dryRun ? ' [DRY RUN]' : ''} ===\n`)
+  const beforeLabel = beforeYear ?? 'none'
+  const afterLabel = afterYear ?? 'none'
+  console.log(`\n=== CourtListener SCOTUS Ingestion — limit: ${limit}, before: ${beforeLabel}, after: ${afterLabel}, min-citations: ${minCitations}${dryRun ? ' [DRY RUN]' : ''} ===\n`)
 
   // Look up supreme-court-ruling topic for auto-tagging
   const scotusTopic = await prisma.topic.findUnique({ where: { slug: 'supreme-court-ruling' } })
@@ -219,12 +238,15 @@ async function main() {
   }
 
   const pageSize = Math.min(limit, 100)
-  const firstUrl =
-    `/clusters/?docket__court=scotus` +
-    `&citation_count__gte=${minCitations}` +
-    `&date_filed__lt=${beforeYear}-01-01` +
-    `&order_by=-citation_count` +
-    `&page_size=${pageSize}`
+  const filterParts = [
+    `docket__court=scotus`,
+    `citation_count__gte=${minCitations}`,
+    `order_by=-citation_count`,
+    `page_size=${pageSize}`,
+  ]
+  if (beforeYear) filterParts.push(`date_filed__lt=${beforeYear}-01-01`)
+  if (afterYear) filterParts.push(`date_filed__gte=${afterYear}-01-01`)
+  const firstUrl = `/clusters/?${filterParts.join('&')}`
 
   let fetched  = 0
   let ingested = 0

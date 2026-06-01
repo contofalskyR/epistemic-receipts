@@ -53,6 +53,11 @@ export type PartyComparison = {
   repAvgGap: number | null;
   demRowCount: number;
   repRowCount: number;
+  // Within-subjects (paired) analysis across rows where BOTH demGap and repGap are non-null.
+  pairedCount: number;
+  pairedMeanDiff: number; // mean(demGap - repGap); positive ⇒ Dems diverged more
+  pairedMedianDiff: number; // median(demGap - repGap)
+  pctPairsDemHigher: number; // % of paired rows where demGap > repGap
   topicBreakdown: {
     topicSlug: string;
     demAvgGap: number | null;
@@ -391,11 +396,37 @@ export async function buildRepresentationAnalysis(): Promise<RepresentationAnaly
     }))
     .sort((a, b) => b.sampleCount - a.sampleCount);
 
+  // Paired (within-subjects) analysis: only rows where BOTH party gaps are known.
+  const pairedDiffs: number[] = [];
+  let pairsDemHigher = 0;
+  for (const r of rows) {
+    if (r.demGap === null || r.repGap === null) continue;
+    const diff = r.demGap - r.repGap;
+    pairedDiffs.push(diff);
+    if (diff > 0) pairsDemHigher += 1;
+  }
+  const pairedCount = pairedDiffs.length;
+  const pairedMeanDiff =
+    pairedCount > 0 ? pairedDiffs.reduce((s, d) => s + d, 0) / pairedCount : 0;
+  let pairedMedianDiff = 0;
+  if (pairedCount > 0) {
+    const sorted = [...pairedDiffs].sort((a, b) => a - b);
+    const mid = sorted.length >> 1;
+    pairedMedianDiff =
+      sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+  }
+  const pctPairsDemHigher =
+    pairedCount > 0 ? (100 * pairsDemHigher) / pairedCount : 0;
+
   const partyComparison: PartyComparison = {
     demAvgGap,
     repAvgGap,
     demRowCount: demRows.length,
     repRowCount: repRows.length,
+    pairedCount,
+    pairedMeanDiff,
+    pairedMedianDiff,
+    pctPairsDemHigher,
     topicBreakdown,
   };
 

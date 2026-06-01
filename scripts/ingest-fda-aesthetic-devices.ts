@@ -174,7 +174,7 @@ async function tagClaim(claimId: string, topicIds: string[]): Promise<void> {
 
 // ── 510(k) fetch strategies ───────────────────────────────────────────────────
 
-const MAX_RECORDS_PER_SEARCH = 1000   // openFDA max limit
+const MAX_RECORDS_PER_SEARCH = 5000   // openFDA supports up to 25k via skip pagination
 const PAGE_SIZE              = 100
 const DECISION_CUTOFF        = '2000-01-01'
 
@@ -191,14 +191,14 @@ const FDA_510K_SEARCHES: SearchSpec[] = [
   { label: 'botulinum',           search: 'device_name:botulinum' },
   { label: 'liposuction',         search: 'device_name:liposuction' },
   { label: 'rhinoplasty',         search: 'device_name:rhinoplasty' },
-  { label: 'laser+skin',          search: 'device_name:laser+AND+device_name:skin' },
-  { label: 'breast+implant',      search: 'device_name:breast+AND+device_name:implant' },
-  { label: 'microneedle',         search: '(device_name:microneedle+OR+device_name:microneedling)' },
-  { label: 'radiofrequency+skin', search: 'device_name:radiofrequency+AND+device_name:skin' },
+  { label: 'laser skin',          search: 'device_name:laser AND device_name:skin' },
+  { label: 'breast implant',      search: 'device_name:breast AND device_name:implant' },
+  { label: 'microneedle',         search: 'device_name:microneedle OR device_name:microneedling' },
+  { label: 'radiofrequency skin', search: 'device_name:radiofrequency AND device_name:skin' },
   { label: 'cryolipolysis',       search: 'device_name:cryolipolysis' },
-  { label: 'injectable+filler',   search: '(device_name:filler+AND+device_name:injectable)+OR+(device_name:injectable+AND+device_name:filler)' },
-  { label: 'fat+grafting',        search: 'device_name:fat+AND+device_name:grafting' },
-  { label: 'hair+transplant',     search: 'device_name:hair+AND+device_name:transplant' },
+  { label: 'injectable filler',   search: 'device_name:filler AND device_name:injectable' },
+  { label: 'fat grafting',        search: 'device_name:fat AND device_name:grafting' },
+  { label: 'hair transplant',     search: 'device_name:hair AND device_name:transplant' },
   // Plastic surgery committee sweep — broad, must post-filter
   {
     label: 'committee:plastic-surgery',
@@ -225,7 +225,7 @@ async function fetch510kSearch(spec: SearchSpec, hardCap: number): Promise<FDA51
     out.push(...data.results)
     if (data.results.length < PAGE_SIZE) break
     skip += PAGE_SIZE
-    if (skip >= MAX_RECORDS_PER_SEARCH) break // openFDA skip limit
+    if (skip >= 25000) break // openFDA hard skip ceiling
   }
 
   return out
@@ -234,11 +234,17 @@ async function fetch510kSearch(spec: SearchSpec, hardCap: number): Promise<FDA51
 // ── PMA fetch strategies ──────────────────────────────────────────────────────
 
 const FDA_PMA_SEARCHES: SearchSpec[] = [
-  { label: 'breast+implant',   search: 'device_name:breast+AND+device_name:implant' },
-  { label: 'facial+implant',   search: 'device_name:facial+AND+device_name:implant' },
-  { label: 'injectable+filler',search: 'device_name:injectable+AND+device_name:filler' },
-  { label: 'botulinum',        search: 'device_name:botulinum' },
-  { label: 'silicone+implant', search: 'generic_name:silicone+AND+generic_name:implant' },
+  // Committee sweep — most reliable source for PMA aesthetic devices
+  {
+    label: 'committee:plastic-surgery-pma',
+    search: 'advisory_committee_description.exact:"General, Plastic Surgery"',
+    cap: MAX_RECORDS_PER_SEARCH,
+    filterAesthetic: true,
+  },
+  // Supplemental targeted searches using correct PMA field (trade_name)
+  { label: 'breast implant pma',  search: 'trade_name:breast AND trade_name:implant' },
+  { label: 'silicone breast',     search: 'trade_name:silicone AND trade_name:breast' },
+  { label: 'gel breast',          search: 'trade_name:gel AND trade_name:breast' },
 ]
 
 async function fetchPMASearch(spec: SearchSpec, hardCap: number): Promise<FDAPMARecord[]> {
@@ -257,7 +263,7 @@ async function fetchPMASearch(spec: SearchSpec, hardCap: number): Promise<FDAPMA
     out.push(...data.results)
     if (data.results.length < PAGE_SIZE) break
     skip += PAGE_SIZE
-    if (skip >= MAX_RECORDS_PER_SEARCH) break
+    if (skip >= 25000) break // openFDA hard skip ceiling
   }
 
   return out
