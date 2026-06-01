@@ -271,6 +271,28 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — OpenFEC campaign finance pipelines (1,200 claims across 2020/2022/2024)
+
+**What.** Two new pipelines bring U.S. federal campaign-finance data into the receipts graph:
+- `openfec_v1` — per-cycle candidate fundraising totals from `GET /candidates/totals/`. Top 200 candidates per cycle by `-receipts`, for 2020 / 2022 / 2024 = **600 claims**. Each claim narrates total receipts, individual itemized contributions, and PAC contributions, with party / office / state context.
+- `openfec_ie_v1` — per-cycle Super-PAC independent expenditures from `GET /schedules/schedule_e/totals/by_candidate/`. Top 200 rows per cycle by `-total`, gated at **≥$100,000** per (candidate, cycle, support_oppose_indicator) tuple, for 2020 / 2022 / 2024 = **600 claims**.
+
+**Script.** `scripts/ingest-openfec.ts`. Flags: `--cycle YYYY` (repeatable), `--limit N` (default 200), `--office P|S|H`, `--dry-run`. Idempotent via Claim/Source `externalId` (`openfec_v1-{candidate_id}-{cycle}` / `openfec_ie_v1-{candidate_id}-{cycle}-{S|O}`). 200ms inter-page delay, 429 / Retry-After respected, 500 / 502 / 503 / 504 retried with exponential backoff. Transactions use `{ timeout: 30000 }` per CONSULTANT rule 5. Two new Topics auto-created: `campaign-finance` and `independent-expenditure` (domain `government`). All claims written with `verificationStatus: PROVISIONAL`, `humanReviewed: false`, `autoApproved: false`, `claimType: EMPIRICAL` per task spec.
+
+**API quirk handled.** `Schedule E by_candidate` does not return `candidate_name` — only `candidate_id`. The script populates an in-memory candidate-meta cache during the candidate-totals pass and falls back to `GET /candidates/?candidate_id=…` lookups (with cache) during the IE pass so claim text always contains a real name.
+
+**Verification (post-run DB query).**
+| Pipeline | Claims | Sources | Edges | Per-cycle (2020 / 2022 / 2024) |
+|---|---|---|---|---|
+| `openfec_v1` | 600 | 600 | 600 | 200 / 200 / 200 |
+| `openfec_ie_v1` | 600 | 600 | 600 | 200 / 200 / 200 |
+
+`npx tsc --noEmit --project tsconfig.scripts.json` clean for the new script. Pre-existing scripts had unrelated TS errors not caused by this change.
+
+**Files changed.** `scripts/ingest-openfec.ts` (new), `.env` / `.env.local` (added `OPENFEC_API_KEY`), `app/page.tsx` (June 1 changelog entry — appended above EU Parliament item in same date block), `CONSULTANT.md`. Footer date `app/layout.tsx` already at June 1, 2026 — no bump needed.
+
+---
+
 ### 2026-06-01 — EU Parliament votes deep-dive (24,224 plenary roll calls, full political-group breakdown)
 
 **What.** New pipeline `eu_parliament_votes_v2` adds **24,224 European Parliament plenary roll-call votes** spanning 2019–2026 (with earlier votes 2004–2018 included in the source release where available). Each `LegislativeVote` carries aggregate `yesCount` / `noCount` / `abstainCount` plus a full `byPartyJson` map keyed by political-group `short_label` (EPP, S&D, Renew, Greens/EFA, The Left, ECR, PfE, Non-attached, ESN). Per-group counts are computed by streaming the HowTheyVote.eu `member_votes.csv` (17.1M rows) once and aggregating positions by `group_code`. This expands EU coverage 13× over the prior `eu_parliament_v1` enrichment (which only had aggregate totals on ~1,900 rows — no party breakdown).
