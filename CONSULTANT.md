@@ -271,6 +271,26 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-05-31 — Per-body decade trend chart on /analysis/votes
+
+**What.** Replaced the plain "Contested rate by decade" table in Section 4 of `/analysis/votes` with a Recharts `LineChart` that draws one line per legislative body (US House, US Senate, UK, EU Parliament, Canada) across decades from the 1780s through the 2020s. The pooled all-bodies table is kept as a collapsible fallback below the chart.
+
+**Why "within-subjects".** The previous table pooled every body into a single contested-rate-per-decade number, so a UK-heavy decade or a Senate-only decade pulled the curve in ways the reader couldn't see. With one line per body, each curve compares each chamber against its own history — a within-subjects view.
+
+**Data layer.** `lib/voteAnalysis.ts` gained a `getBodyKey(ingestedBy, chamber)` helper that splits `congress_v1` votes into "US House" / "US Senate" via the `chamber` field (regex match) and collapses the other pipelines to their single label. The existing decade-trend pass now also accumulates a `${body}::${decade}` map. The new `decadeTrendByBody: { bodies, points }` struct in the analysis result is shaped for direct consumption by recharts: each point is `{ decade, decadeStart, contestedPct: { body → number }, totalVotes: { body → number } }`, and a body's value is **omitted** in decades where it recorded fewer than `MIN_DECADE_BODY_VOTES = 10` votes (recharts skips those points and `connectNulls` bridges across the gap so sparse early-modern data still draws a continuous line). Pooled `decadeTrend` (existing) is unchanged.
+
+**Chart component.** New client component `app/analysis/votes/DecadeTrendChart.tsx` (recharts is client-only — `'use client'` at top). 300px tall `ResponsiveContainer` at 100% width, dark theme (`#1f2937` grid on `bg-gray-900/40`, gray-400 axis labels), Y axis pinned to 0–100% with a "%" formatter, custom dark tooltip that lists each body sorted by contested % with the underlying vote-count in parens for that decade × body cell, circle-icon Legend. Each body has a stable color (US House `#60a5fa`, US Senate `#818cf8`, UK `#f87171`, EU Parliament `#fbbf24`, Canada `#34d399`).
+
+**Page wiring.** `app/analysis/votes/page.tsx` destructures `decadeTrendByBody` from `buildVoteAnalysis()` and renders `<DecadeTrendChart data={decadeTrendByBody} />` as the primary visual. The previous decade table is now wrapped in a `<details>` element ("Pooled decade totals (all bodies combined)") so it's still available but takes a click. The section's intro copy updates to mention "broken out by legislative body" and the 10-vote floor.
+
+**TypeScript note.** recharts v3.8 ships `TooltipContentProps<TValue, TName>` whose `payload` is a `readonly` array — using `TooltipProps<number, string>` directly (as is common in v2 examples) fails compilation because `payload`/`label` are in `PropertiesReadFromContext`. The tooltip is typed loosely against a minimal `{ active?, payload?: ReadonlyArray<TooltipEntry>, label? }` shape with an `unknown` cast at the call site to avoid fighting the recharts generics.
+
+**Verification.** `npx tsc --noEmit` clean.
+
+**Files changed.** `lib/voteAnalysis.ts` (added `MIN_DECADE_BODY_VOTES`, `getBodyKey`, `DecadeBodyPoint`, `DecadeTrendByBody`, per-body accumulator + emit), `app/analysis/votes/DecadeTrendChart.tsx` (new), `app/analysis/votes/page.tsx` (import chart, swap table for chart + collapsible fallback), `app/page.tsx` (changelog entry), `app/layout.tsx` (footer date bump), `CONSULTANT.md`.
+
+---
+
 ### 2026-05-31 — Z-scored topic trajectory heatmap on /analysis/votes
 
 **What.** New section on `/analysis/votes` between the decade-trend table and party-loyalty: a heatmap that standardizes each topic's per-decade share of votes against its own historical mean. Red cells flag decades where the topic was anomalously high vs. its own baseline; blue cells flag anomalously low. Each row is its own subject — not a cross-topic comparison.
