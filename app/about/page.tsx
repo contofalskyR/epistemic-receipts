@@ -34,6 +34,12 @@ export default function AboutPage() {
       <p className="text-gray-400">
         Auditability is the principle. The receipts are the product.
       </p>
+
+      <p className="text-gray-500 text-xs">
+        Ingestion pipelines, data enrichment, and continuous development are powered by{' '}
+        <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-300 transition-colors">OpenClaw</a>
+        {' '}— an AI agent runtime for autonomous research workflows.
+      </p>
     </div>
   );
 }
