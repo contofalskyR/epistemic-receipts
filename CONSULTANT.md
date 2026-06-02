@@ -271,6 +271,42 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — CrossRef retraction linker investigation (link-retractions-crossref.ts)
+
+**What.** Investigated and implemented a dedicated CrossRef retraction linker (`scripts/link-retractions-crossref.ts`) to attempt to grow the REVERSED ClaimRelation count beyond the existing plateau of 26.
+
+**Root cause confirmed (was NOT a matcher bug):**
+
+The prior analysis in `link-retraction-originals.ts` was correct: the existing DOI matcher IS working. The CrossRef retraction records in our DB store the ORIGINAL retracted paper's DOI in `metadata.doi` (not a separate retraction notice DOI). The ingester uses `filter=has-update:true,update-type:retraction` which returns the ORIGINAL papers, not retraction notices.
+
+The 26-match plateau is a **coverage** problem, not a data model or matching logic problem:
+- Our OpenAlex sample (161k papers) targets cognition, biomedical, and policy fields.
+- CrossRef retractions cluster in materials science, chemistry, and paper-mill-heavy engineering fields.
+- Those two datasets have only 26 DOI overlaps.
+
+**CrossRef API investigation results:**
+
+The new script (Step 2) probed 2,000 unmatched retraction DOIs via `https://api.crossref.org/works/{DOI}`, looking for:
+- `relation.retraction[]` entries with a DIFFERENT DOI (= separately published retraction notice paper)
+- `update-to[].DOI` entries that differ from the original paper DOI (same signal)
+
+Result: **0 alternate DOIs found** across 2,000 DOIs probed. The CrossRef `relation` field is empty for ~99.9% of our retraction records. This is because most CrossRef retractions record the retraction as an update to the same DOI (no separate retraction notice paper with its own DOI).
+
+**Final counts:** REVERSED = **26** (unchanged). The 26 existing rows were updated with enriched `followUpContext` (adds `source: 'crossref_api'`, `retractionDoi`, `originalDoi` fields for clarity).
+
+**Path to grow REVERSED count:**
+
+Ingest OpenAlex papers from the high-retraction fields:
+- Materials science: concept ID `C192562407`
+- Chemistry: concept ID `C185592680`
+- Engineering: concept ID `C41008148`
+
+Estimated yield: +500–2,000 REVERSED links based on the observed base rate (26 / 161k ≈ 0.016% of papers are retracted).
+
+**Files changed:** `scripts/link-retractions-crossref.ts` (new), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`.
+
+---
+
 ### 2026-06-01 — Follow-up linker batch: 4 new sequential pipelines
 
 **What.** Built four new follow-up-linker scripts, one per relation/corpus pair, run sequentially in order. The earlier `scripts/link-claim-followups.ts` (shipped earlier today) was the v1 of the layer — these are the v2 batch that exercises each follow-up relation type against a richer set of corpora.
