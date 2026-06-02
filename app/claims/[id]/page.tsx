@@ -6,6 +6,7 @@ import { Bookmark, BookmarkCheck } from "lucide-react";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { useBookmarks } from "@/hooks/useBookmarks";
 import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
+import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -888,6 +889,9 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           </div>
         )}
       </section>
+
+      {/* Follow-up layer — renders nothing if no follow-up relations */}
+      <WhatHappenedNextPanel claimId={claim.id} />
 
       {/* Citation graph (lazy-loaded — renders nothing if no relations) */}
       <ClaimRelationsPanel claimId={claim.id} />

@@ -271,6 +271,39 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — Claim follow-up layer ("What happened next")
+
+**What.** Built end-to-end claim follow-up tracking — a new way to surface "what came of this" links across the receipts graph. Five relation types are now first-class on `ClaimRelation`: **OUTCOME**, **STATUS_UPDATE**, **SUPERSEDED_BY**, **REVERSED**, **EXPANDED**. Each row carries a structured `followUpContext` JSON blob explaining the heuristic that produced the link.
+
+**Phase 1 — analytical survey (embedded as a doc comment at the top of `scripts/link-claim-followups.ts`).** Mapped every current pipeline to its follow-up potential:
+
+- **High potential (auto-linkable from current DB data):**
+  - `openalex_v1` ↔ `crossref_retractions_v1` → **REVERSED**, via DOI exact match (`openalex.metadata->>'doi' = 'https://doi.org/' || crossref.metadata->>'doi'`). 26 matches in current data — will grow as OpenAlex coverage expands.
+  - `clinicaltrials_v1` → `openalex_v1` → **OUTCOME**, via NCT-ID appearing in OpenAlex paper text (regex `NCT\d{8}` on `Claim.text`). 32 matches. FDA labels do NOT carry NCT IDs (verified), so the bridge is OpenAlex-only.
+  - `congress_v1` → `congress_v1` → **SUPERSEDED_BY**, via `"to amend [Act Name]"` text pattern on enacted laws, matched against earlier laws' short titles. 21 matches in current data.
+  - `openfda_labels_v1` → `openfda_labels_v1` → **SUPERSEDED_BY**, via same `generic_name` + `manufacturer_name`, ordered by `metadata->>'effective_time'`. Capped at 50 versions per drug+mfr to avoid combinatorial noise. ~35,786 chain links in current data.
+- **Future pipelines that should feed this layer (flagged for ingestion-decision use):** ClinicalTrials.gov status (trial completion → OUTCOME), FDA PDUFA action dates (trial → approval), openFDA recalls (approval → REVERSED), CourtListener `cited_with_analysis` (SCOTUS reversals → REVERSED), EUR-Lex amendment tracker (legislation → EXPANDED/SUPERSEDED_BY), PubPeer + Retraction Watch (paper → STATUS_UPDATE → REVERSED), executive order revocation chains (EO → REVERSED), ECHR subsequent decisions on same Article (ruling → STATUS_UPDATE).
+
+This analysis lives in the script's leading doc comment so future agents inherit the mapping without re-deriving it.
+
+**Phase 2 — implementation.**
+
+*DB layer.* **Extended `ClaimRelation`** rather than spinning up a new table — the existing model already keys on `(fromClaimId, toClaimId, relationType)` with both-side cascade-delete and per-type indexes; only the JSON metadata column was missing. The shape `relation { from, to, type, year, context }` covers both citation (`cites`/`cited_by`/`related`) and follow-up types cleanly. New migration `20260601120000_add_followup_relations/migration.sql` adds `followUpContext JSONB` (NULL on existing citation rows) plus an index on `(toClaimId, relationType)` to keep the inverse "what does this claim follow from" lookup fast. Both DDL statements are `IF NOT EXISTS` / `EXCEPTION WHEN duplicate_object THEN NULL` for safe re-run.
+
+*Auto-linking job.* `scripts/link-claim-followups.ts` runs all four linkers in sequence. Each linker (a) computes candidate pairs via a single DB-side query or in-memory index, (b) reports a candidate count up front, (c) upserts in dry-run-safe mode keyed on the `(from, to, type)` unique constraint (P2002 = "already exists" → counted as skip, not error). FDA labels use a 500-row batched `prisma.$transaction({ timeout: 30000 })` per CONSULTANT rule 5. `ALLOW_EDITS=true` + absence of `--dry-run` required for writes. Final summary prints inserts/skips by linker + total DB ClaimRelation counts by `relationType`.
+
+*Counts after live run:* OUTCOME 32 · REVERSED 26 · SUPERSEDED_BY 35,807 (FDA chains dominate; congressional amendments contribute 21). Existing citation-graph rows (`cites` 977k, `related` 72k) untouched.
+
+*UI.* New API route `app/api/claims/[id]/followups/route.ts` returns the five-bucket payload `{ OUTCOME, STATUS_UPDATE, SUPERSEDED_BY, REVERSED, EXPANDED }` with each item carrying `{ id, text, year, ingestedBy, sourceUrl, verificationStatus, relationType, context }`. Single `findMany` filtered by `relationType IN (...)`, sorted newest-first per bucket. `revalidate = 600` + s-maxage cache header. New client component `components/WhatHappenedNextPanel.tsx` lazy-loads it on mount and renders nothing when the total is zero — so non-follow-up claims (the vast majority) get no visual noise. Each row shows a color-coded relation-type badge (emerald OUTCOME, sky STATUS_UPDATE, amber SUPERSEDED_BY, rose REVERSED, violet EXPANDED), the linked claim's text as a `<Link>` to `/claims/[id]`, the year, the source pipeline tag, and an external-source `↗` when available. Wired into `app/claims/[id]/page.tsx` between the Sources/edges table and the Citation graph panel.
+
+**Why extend ClaimRelation, not add a `ClaimFollowUp` table.** The two are structurally identical (directed, typed, optional year, optional metadata, both-side cascade) and citation-graph queries already pay the index cost. A separate table would have doubled the maintenance surface (two unique constraints, two cascade graphs, two API routes, two clients) for zero new expressive power. Decision recorded here so future agents don't re-litigate it.
+
+**Verification.** `npx tsc --noEmit` clean. Dev server probe of `/api/claims/cmpcukc2h001jpls2ysu9cl7j/followups` (a `congress_v1` Department of Defense Authorization Act, 1982) returned a populated `SUPERSEDED_BY` array — 1985 and 1988 amending bills both surface, each with full `followUpContext` (heuristic, matched_title, amending_fragment, pipeline pair, confidence). The `/claims/[id]` page rendered `HTTP 200` with the new section above the citation graph.
+
+**Files changed.** `prisma/schema.prisma` (followUpContext + index), `prisma/migrations/20260601120000_add_followup_relations/migration.sql` (new), `scripts/link-claim-followups.ts` (new), `app/api/claims/[id]/followups/route.ts` (new), `components/WhatHappenedNextPanel.tsx` (new), `app/claims/[id]/page.tsx` (import + render), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`. Footer `last updated June 1, 2026` already correct — no bump needed.
+
+---
+
 ### 2026-06-01 — Nav audit + ISR caching for the slow analysis pages
 
 **What.** Top-nav audit pass on `app/layout.tsx`. Every one of the 25 nav links was probed against the local dev server (`PORT=4100 npm run dev`); every link returned `200`. No dead routes, no empty stub pages, nothing to remove. `/sources` already 308-redirects to `/datasets` via `next.config.ts` (line 53 — pre-existing redirect from the earlier Sources-merged-into-Datasets work), and per task spec the Sources nav link is intentionally retained until the explicit "merge Sources into Datasets in the nav" task ships separately.
