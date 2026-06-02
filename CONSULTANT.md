@@ -271,6 +271,41 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — Follow-up linker batch: 4 new sequential pipelines
+
+**What.** Built four new follow-up-linker scripts, one per relation/corpus pair, run sequentially in order. The earlier `scripts/link-claim-followups.ts` (shipped earlier today) was the v1 of the layer — these are the v2 batch that exercises each follow-up relation type against a richer set of corpora.
+
+| # | Script | Relation | Inserted | Notes |
+|---|--------|----------|----------|-------|
+| 1 | `scripts/link-legislation-amendments.ts` | `SUPERSEDED_BY` | **4,079** | Chile 810, Cyprus 3,122, Luxembourg 137, UK 10 |
+| 2 | `scripts/link-clinicaltrials-outcomes.ts` | `OUTCOME` | 0 new (32 enriched) | CT metadata is null on all 10,957 trials — status tagging via metadata.status not possible; completion parsed from claim text instead. All 32 existing trial→paper rows refreshed with `primaryCompletion` + `inferredStatus`. |
+| 3 | `scripts/link-retraction-originals.ts` | `REVERSED` | 0 new (26 enriched) | Both `crossref_retractions_v1` (26,624) and `retraction_watch_v1` (55) collapsed into a 26,645-DOI map. Three signals tried (OpenAlex `metadata.doi` URL-prefixed, bare DOI, `Source.url` DOI). Each strategy found the same 26 papers — the limiter is OpenAlex coverage of the retracted-paper set, not the matcher. |
+| 4 | `scripts/link-congress-outcomes.ts` | `SUPERSEDED_BY` + `OUTCOME` | 81 (80 SUPERSEDED_BY + 1 OUTCOME) | Index of 10,360 enacted bills → 9,565 short titles + 4,503 act-name variants. SUPERSEDED_BY via `"to amend [Act]"` / `"amend section X of [Act]"` patterns (221 candidates → 89 resolved against the act-name index). OUTCOME via `nara_catalog_v1` (137,913 records) `Public Law N-M` / `Act of YYYY` references — 12 NARA candidates, 1 act-name match (`congress_v1` ↔ `nara_catalog_v1`). |
+
+**Per-corpus tractability notes** (Pipeline 1).
+- **Chile** (`chile_legislation_v1`): cleanest signal — `"MODIFICA LA LEY Nº X.YYY"` in title + `metadata.numero` lookup on parent. 810 high-confidence matches.
+- **Cyprus** (`cyprus_legislation_v1`): `(Τροποποιητικός)` marker + title-stem ILIKE lookup. 3,122 medium-confidence matches; risk of false-positives where stem substring collides — accepted since the Cyprus title format is highly structured.
+- **Luxembourg** (`luxembourg_legislation_v1`): French date references `"modification de la loi du <D> <month-fr> <YYYY>"` → `metadata.date` ISO lookup. 137 matches.
+- **UK** (`uk_legislation_v1`): `"X Act YYYY (Amendment) Act ZZZZ"` title shape + exact-title lookup with `(repealed)` suffix tolerance. Only 10 matches (most UK Amendment-Act titles abbreviate the parent — `"Mental Capacity (Amendment) Act 2019"` has no parseable parent year).
+- **Skipped corpora** (Argentina, Italy, Brazil, Philippines, plus all other `*_legislation_v1`):
+  - *Argentina:* claim text is too short (`"MODIFICACION DE LA LEY"`, `"DEROGACION DE LA NORMA"`) — no parseable parent number.
+  - *Italy:* `legge` claims convert `decreto-legge` instruments, not amend earlier `leggi`. Cross-instrument references aren't in the same corpus.
+  - *Brazil:* ingested as `PL` projetos-de-lei, not enacted `leis`, so `"Altera a Lei nº 9.503"` references a parent that isn't in `brazil_legislation_v1`.
+  - *Philippines:* text is just `"Republic Act No. NNN"` — no parent identifier.
+  - Documented in the script doc-comment so the next agent doesn't re-derive the negative result.
+
+**Pipeline 2 nuance.** Brief specified status-tagging COMPLETED/TERMINATED trials. ClinicalTrials metadata is null on every row, so the script falls back to parsing `"primary completion <Month YYYY>"` from claim text — 10,901 of 10,957 trials parse (10,785 past, 116 future). This is attached to every linked trial→paper row's `followUpContext`. Recommendation for the next agent: when ClinicalTrials is re-ingested, store `metadata.status` directly so the link-time inference becomes a lookup.
+
+**Pipeline 3 nuance.** The brief implied a separate "retractedDoi" or "original paper DOI" field exists on retraction records. CrossRef's data model doesn't work that way — the retraction notice IS the same DOI as the original paper, with `updateType: Retraction` metadata. So the 26-match plateau isn't a matcher gap — it's the size of the OpenAlex ∩ retracted-DOI set. The new script preserves the same plateau but now also surfaces `retractionCorpus` (crossref vs RW) and `retractionYear` (parsed from text) in `followUpContext`. The `retraction_watch_v1` corpus contributes 21 unique DOIs not in `crossref_retractions_v1`, but none of those 21 are in our current OpenAlex sample either.
+
+**Pipeline 4 nuance.** Public-Law-number citations (`"amends Public Law 110-181"`) can't resolve to a bill without a PL → bill mapping in `congress_v1` metadata. The script captures the PL ref in `followUpContext.publicLawRef` as a forward-compatible hint, but the matcher proper only fires on act-name resolution.
+
+**Verification.** `npx tsc --noEmit` clean. Final `ClaimRelation` counts: `cites 977,435 · related 72,048 · SUPERSEDED_BY 39,966 · OUTCOME 33 · REVERSED 26` (total 1,089,508). The Pipeline 1 v2 batch grew SUPERSEDED_BY by 4,079 + 80 = 4,159 net (35,807 → 39,966).
+
+**Files changed.** `scripts/link-legislation-amendments.ts` (new), `scripts/link-clinicaltrials-outcomes.ts` (new), `scripts/link-retraction-originals.ts` (new), `scripts/link-congress-outcomes.ts` (new), `app/page.tsx` (June 1 changelog entry), `CONSULTANT.md`. Footer `last updated June 1, 2026` already correct.
+
+---
+
 ### 2026-06-01 — Claim follow-up layer ("What happened next")
 
 **What.** Built end-to-end claim follow-up tracking — a new way to surface "what came of this" links across the receipts graph. Five relation types are now first-class on `ClaimRelation`: **OUTCOME**, **STATUS_UPDATE**, **SUPERSEDED_BY**, **REVERSED**, **EXPANDED**. Each row carries a structured `followUpContext` JSON blob explaining the heuristic that produced the link.
