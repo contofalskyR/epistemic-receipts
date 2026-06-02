@@ -13,11 +13,14 @@ type Method = {
   figure?: string;
 };
 
+type Tier = "foundations" | "core" | "specialized";
+
 type Family = {
   slug: string;
   name: string;
   blurb: string;
   color: ColorKey;
+  tier: Tier;
   methods: Method[];
 };
 
@@ -30,7 +33,17 @@ type ColorKey =
   | "orange"
   | "teal"
   | "rose"
-  | "violet";
+  | "violet"
+  | "indigo"
+  | "sky"
+  | "cyan"
+  | "lime"
+  | "pink"
+  | "fuchsia"
+  | "red"
+  | "yellow"
+  | "zinc"
+  | "slate";
 
 const COLOR_STYLES: Record<
   ColorKey,
@@ -54,6 +67,16 @@ const COLOR_STYLES: Record<
   teal: { headerBg: "bg-teal-950/40", headerBorder: "border-teal-900", headerText: "text-teal-200", chipBg: "bg-teal-950/60", chipText: "text-teal-300", cardBorder: "border-teal-950/70", cardHover: "hover:border-teal-700", accent: "text-teal-400" },
   rose: { headerBg: "bg-rose-950/40", headerBorder: "border-rose-900", headerText: "text-rose-200", chipBg: "bg-rose-950/60", chipText: "text-rose-300", cardBorder: "border-rose-950/70", cardHover: "hover:border-rose-700", accent: "text-rose-400" },
   violet: { headerBg: "bg-violet-950/40", headerBorder: "border-violet-900", headerText: "text-violet-200", chipBg: "bg-violet-950/60", chipText: "text-violet-300", cardBorder: "border-violet-950/70", cardHover: "hover:border-violet-700", accent: "text-violet-400" },
+  indigo: { headerBg: "bg-indigo-950/40", headerBorder: "border-indigo-900", headerText: "text-indigo-200", chipBg: "bg-indigo-950/60", chipText: "text-indigo-300", cardBorder: "border-indigo-950/70", cardHover: "hover:border-indigo-700", accent: "text-indigo-400" },
+  sky: { headerBg: "bg-sky-950/40", headerBorder: "border-sky-900", headerText: "text-sky-200", chipBg: "bg-sky-950/60", chipText: "text-sky-300", cardBorder: "border-sky-950/70", cardHover: "hover:border-sky-700", accent: "text-sky-400" },
+  cyan: { headerBg: "bg-cyan-950/40", headerBorder: "border-cyan-900", headerText: "text-cyan-200", chipBg: "bg-cyan-950/60", chipText: "text-cyan-300", cardBorder: "border-cyan-950/70", cardHover: "hover:border-cyan-700", accent: "text-cyan-400" },
+  lime: { headerBg: "bg-lime-950/40", headerBorder: "border-lime-900", headerText: "text-lime-200", chipBg: "bg-lime-950/60", chipText: "text-lime-300", cardBorder: "border-lime-950/70", cardHover: "hover:border-lime-700", accent: "text-lime-400" },
+  pink: { headerBg: "bg-pink-950/40", headerBorder: "border-pink-900", headerText: "text-pink-200", chipBg: "bg-pink-950/60", chipText: "text-pink-300", cardBorder: "border-pink-950/70", cardHover: "hover:border-pink-700", accent: "text-pink-400" },
+  fuchsia: { headerBg: "bg-fuchsia-950/40", headerBorder: "border-fuchsia-900", headerText: "text-fuchsia-200", chipBg: "bg-fuchsia-950/60", chipText: "text-fuchsia-300", cardBorder: "border-fuchsia-950/70", cardHover: "hover:border-fuchsia-700", accent: "text-fuchsia-400" },
+  red: { headerBg: "bg-red-950/40", headerBorder: "border-red-900", headerText: "text-red-200", chipBg: "bg-red-950/60", chipText: "text-red-300", cardBorder: "border-red-950/70", cardHover: "hover:border-red-700", accent: "text-red-400" },
+  yellow: { headerBg: "bg-yellow-950/40", headerBorder: "border-yellow-900", headerText: "text-yellow-200", chipBg: "bg-yellow-950/60", chipText: "text-yellow-300", cardBorder: "border-yellow-950/70", cardHover: "hover:border-yellow-700", accent: "text-yellow-400" },
+  zinc: { headerBg: "bg-zinc-900/60", headerBorder: "border-zinc-700", headerText: "text-zinc-200", chipBg: "bg-zinc-800", chipText: "text-zinc-400", cardBorder: "border-zinc-800", cardHover: "hover:border-zinc-600", accent: "text-zinc-400" },
+  slate: { headerBg: "bg-slate-900/60", headerBorder: "border-slate-700", headerText: "text-slate-200", chipBg: "bg-slate-800", chipText: "text-slate-400", cardBorder: "border-slate-800", cardHover: "hover:border-slate-600", accent: "text-slate-400" },
 };
 
 const FIGURES: Record<string, string> = {
@@ -70,12 +93,336 @@ const FIGURES: Record<string, string> = {
   arima: `<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-sm"><line x1="10" y1="85" x2="190" y2="85" stroke="#374151" stroke-width="0.5"/><path d="M 12 62 L 22 56 L 32 64 L 42 50 L 52 58 L 62 44 L 72 52 L 82 38 L 92 46 L 102 34 L 112 40 L 122 30" fill="none" stroke="#14b8a6" stroke-width="1.4"/><line x1="122" y1="10" x2="122" y2="85" stroke="#6b7280" stroke-width="0.5" stroke-dasharray="2,2"/><path d="M 122 30 L 188 6 L 188 52 Z" fill="rgba(20,184,166,0.16)" stroke="none"/><path d="M 122 30 L 188 26" fill="none" stroke="#14b8a6" stroke-width="1.4" stroke-dasharray="3,2"/><text x="65" y="14" text-anchor="middle" fill="#6b7280" font-size="7" font-family="ui-monospace, monospace">observed</text><text x="155" y="16" text-anchor="middle" fill="#14b8a6" font-size="7" font-family="ui-monospace, monospace">forecast + CI</text></svg>`,
 };
 
+const TIER_LABELS: Record<Tier, string> = {
+  foundations: "Foundations",
+  core: "Core Methods",
+  specialized: "Specialized & Applied",
+};
+
 const FAMILIES: Family[] = [
+  // ── FOUNDATIONS ────────────────────────────────────────────────────────────
+  {
+    slug: "probability-distributions",
+    name: "Probability & Distributions",
+    blurb: "Random variables, the major distribution families, and the limit theorems beneath all inference.",
+    color: "indigo",
+    tier: "foundations",
+    methods: [
+      {
+        name: "Random variables",
+        description: "Outcomes mapped to numbers — the bridge from sample spaces to calculus.",
+        usedFor: ["foundations"],
+        problem: "How do you translate probabilistic outcomes into numbers you can compute with?",
+        keyInsight: "a measurable map X: Ω→ℝ that pushes a probability measure onto the real line.",
+        example: "Rolling a die defines a random variable X: each face {1,2,3,4,5,6} maps to a number, and the pushed measure assigns probability 1/6 to each.",
+      },
+      {
+        name: "Distributions (PMF/PDF/CDF)",
+        description: "How probability spreads over values — discrete mass, continuous density, cumulative function.",
+        usedFor: ["foundations"],
+        problem: "How do you describe the complete probabilistic behavior of a random variable — not just its average?",
+        keyInsight: "CDF F(x)=P(X≤x), density f=F′, discrete PMF p(x)=P(X=x); all probabilities are sums/areas under these.",
+        example: "The CDF of a blood-pressure reading tells you P(BP ≤ 140) — the fraction of the population at or below the hypertension threshold.",
+      },
+      {
+        name: "Expectation & moments",
+        description: "Summaries of a distribution — mean, variance, skewness, kurtosis.",
+        usedFor: ["foundations", "moments"],
+        problem: "How do you summarize a distribution's location, spread, and shape with a compact set of numbers?",
+        keyInsight: "E[X]=∫x f(x)dx; central moments E[(X−μ)ᵏ] give variance (k=2), skew (3), kurtosis (4).",
+        example: "The expected payout of a lottery ticket is the sum of prizes times their probabilities — usually well below the ticket price.",
+      },
+      {
+        name: "Joint, marginal & conditional distributions",
+        description: "How variables co-vary — the full relationship between two or more random variables.",
+        usedFor: ["foundations", "dependence"],
+        problem: "When two or more random variables interact, how do you describe their full relationship?",
+        keyInsight: "p(x,y)=p(x)p(y|x); marginalize by integrating out; independence ⇔ p(x,y)=p(x)p(y).",
+        example: "Height and weight are jointly distributed — the marginal of weight averages over all heights, while the conditional weight given height=6ft is a narrower distribution.",
+      },
+      {
+        name: "Normal (Gaussian) distribution",
+        description: "The bell curve — maximum-entropy distribution for fixed mean and variance.",
+        usedFor: ["distribution", "continuous"],
+        problem: "Why does the bell curve appear everywhere from measurement error to biological traits?",
+        keyInsight: "f(x)=(1/√(2πσ²))e^(−(x−μ)²/2σ²); maximum-entropy distribution for a fixed mean and variance.",
+        example: "Heights of adult men in a country are approximately normal with μ≈178cm and σ≈7cm — ±2σ captures 95% of men.",
+      },
+      {
+        name: "Binomial & Bernoulli distributions",
+        description: "Successes in independent yes/no trials — the most fundamental discrete distributions.",
+        usedFor: ["distribution", "discrete"],
+        problem: "How do you model the number of successes in a fixed number of independent yes/no trials?",
+        keyInsight: "P(X=k)=C(n,k)pᵏ(1−p)ⁿ⁻ᵏ; a sum of n iid Bernoulli(p).",
+        example: "If each drug-trial patient has a 30% response probability, the number of responders among 20 patients follows Binomial(20, 0.3) — mean 6, SD ≈ 2.05.",
+      },
+      {
+        name: "Poisson distribution",
+        description: "Counts of rare events in a fixed interval — the limit of Binomial for rare events.",
+        usedFor: ["distribution", "count"],
+        problem: "How do you model rare events arriving at a roughly constant rate in time or space?",
+        keyInsight: "P(X=k) = e^(−λ)·λ^k / k!; the limit of Binomial as n→∞, p→0, np→λ.",
+        example: "A call center receives an average of 4 calls per minute — the number in any given minute follows Poisson(4), with P(0 calls)=e⁻⁴≈1.8%.",
+      },
+      {
+        name: "Exponential & gamma distributions",
+        description: "Waiting times between Poisson events — memoryless and flexible.",
+        usedFor: ["distribution", "waiting time"],
+        problem: "How do you model the waiting time between events in a Poisson process?",
+        keyInsight: "exponential f(x) = λe^(−λx) is memoryless; Gamma(k,λ) is a sum of k exponentials.",
+        example: "Time between customer arrivals follows Exponential(λ) — the memoryless property means the time since the last arrival tells you nothing about when the next will come.",
+      },
+      {
+        name: "Beta & Dirichlet distributions",
+        description: "Distributions over proportions — conjugate priors for binomial and multinomial.",
+        usedFor: ["distribution", "conjugate"],
+        problem: "What distribution lets you model uncertainty over a probability itself?",
+        keyInsight: "Beta(α,β)∝x^(α−1)(1−x)^(β−1) is conjugate to the binomial — the posterior just adds successes/failures to α,β; Dirichlet extends this to the simplex.",
+        example: "With a Beta(2,2) prior on a coin's bias, observing 6 heads in 10 flips gives a Beta(8,6) posterior with mean ≈ 0.57 and a natural credible interval.",
+      },
+      {
+        name: "Student's t, χ², and F distributions",
+        description: "Sampling distributions arising when variance is estimated from data.",
+        usedFor: ["distribution", "sampling"],
+        problem: "When you estimate variance from a sample, the resulting uncertainty about means, variances, and variance ratios follows specific distributions — which ones?",
+        keyInsight: "χ²=ΣZ²; t=Z/√(χ²/ν); F = ratio of two scaled χ² — all arise from estimating variance from data.",
+        example: "A t-test uses Student's t (not the normal) because you're using s instead of σ; an F-test on ANOVA residuals compares two estimated variance sources.",
+      },
+      {
+        name: "Law of large numbers",
+        description: "Sample averages converge to the true mean — the theoretical basis for estimation.",
+        usedFor: ["limit theorem"],
+        problem: "When does repeated averaging guarantee convergence to the true mean?",
+        keyInsight: "X̄ₙ→μ as n→∞; independent noise cancels.",
+        example: "A casino's edge is tiny per bet, but after millions of bets the average profit per bet converges reliably to the house edge — the law makes the business model work.",
+      },
+      {
+        name: "Central limit theorem",
+        description: "Sums of independent random variables go normal — regardless of the parent distribution.",
+        usedFor: ["limit theorem"],
+        problem: "Why do so many natural phenomena follow a bell curve even when the underlying process is not normal?",
+        keyInsight: "√n(X̄ₙ−μ)/σ → N(0,1) regardless of the parent distribution (finite variance).",
+        example: "The distribution of average height across 1,000 random groups of 30 people is approximately normal even if individual heights are slightly skewed.",
+      },
+      {
+        name: "Markov chains",
+        description: "Memoryless dynamics — the future depends only on the present, not the past.",
+        usedFor: ["stochastic process"],
+        problem: "How do you model a system that evolves over time where only the current state matters for prediction?",
+        keyInsight: "P(Xₜ₊₁|past)=P(Xₜ₊₁|Xₜ); a transition matrix governs everything, with long-run behavior set by the stationary distribution.",
+        example: "A weather model with states {sunny, rainy} and a transition matrix gives a stationary distribution — the long-run fraction of rainy days regardless of starting state.",
+      },
+      {
+        name: "Poisson & point processes",
+        description: "Random events scattered in space or time — intensity-driven counting.",
+        usedFor: ["stochastic process"],
+        problem: "How do you model events scattered randomly in time or space without specifying a fixed number?",
+        keyInsight: "counts in disjoint regions are independent Poisson with mean ∫λ(s)ds.",
+        example: "Earthquakes in California's fault zones follow a nonhomogeneous Poisson process — the intensity λ(s) is higher near active faults.",
+      },
+      {
+        name: "Brownian motion & diffusions",
+        description: "Continuous random walks — independent Gaussian increments scaling with time.",
+        usedFor: ["stochastic process", "continuous time"],
+        problem: "How do you model continuous random evolution where changes are independent and scale with time?",
+        keyInsight: "independent Gaussian increments, Wₜ−Wₛ ~ N(0,t−s).",
+        example: "The Black-Scholes option pricing model assumes stock log-prices follow arithmetic Brownian motion — the workhorse model of quantitative finance for 50 years.",
+      },
+      {
+        name: "Martingales",
+        description: "Fair-game processes — no predictable drift, the basis of convergence theorems.",
+        usedFor: ["stochastic process"],
+        problem: "How do you characterize a stochastic process with no predictable drift — a 'fair game'?",
+        keyInsight: "E[Xₜ₊₁|ℱₜ]=Xₜ — no predictable drift; the basis of optional-stopping and convergence theorems.",
+        example: "A fair gambler's fortune is a martingale — no betting strategy can improve expected winnings, and optional-stopping theorems bound what a gambler can achieve.",
+      },
+    ],
+  },
+  {
+    slug: "estimation-inference-theory",
+    name: "Estimation & Inference Theory",
+    blurb: "What makes an estimate good, and why the classical procedures work.",
+    color: "sky",
+    tier: "foundations",
+    methods: [
+      {
+        name: "Maximum likelihood (MLE)",
+        description: "Fit a model by maximizing the probability of the observed data — asymptotically efficient.",
+        usedFor: ["estimation"],
+        problem: "Given observed data and a parametric model, what parameter values make the data most probable?",
+        keyInsight: "maximize ℓ(θ)=Σ log f(xᵢ;θ); asymptotically efficient and normal.",
+        example: "Fitting a normal distribution to 1,000 test scores via MLE gives μ̂=sample mean, σ̂²=sample variance — provably the most efficient estimates for large n.",
+      },
+      {
+        name: "Method of moments",
+        description: "Match sample moments to population moments — simple, consistent, not always efficient.",
+        usedFor: ["estimation"],
+        problem: "How do you estimate parameters quickly by matching the sample's moments to the distribution's moments?",
+        keyInsight: "set sample moments equal to population moments and solve; simple and consistent, not always efficient.",
+        example: "For a Gamma(α,β) distribution, set (x̄, s²) = (α/β, α/β²) and solve for α̂ and β̂ — fast even when MLE requires numerical optimization.",
+      },
+      {
+        name: "Maximum a posteriori (MAP)",
+        description: "Regularized MLE — adds a prior penalty, equivalent to ridge/lasso under specific priors.",
+        usedFor: ["estimation", "bayesian"],
+        problem: "How do you incorporate prior knowledge into an estimate without fully committing to Bayesian posterior integration?",
+        keyInsight: "maximize log-likelihood + log-prior; ridge/lasso are MAP with Gaussian/Laplace priors.",
+        example: "Image denoising with a Laplace prior on pixel differences yields MAP estimates that produce sparse, sharp-edged reconstructions — total-variation regularization.",
+      },
+      {
+        name: "Bias, consistency, efficiency",
+        description: "The three key properties for comparing estimators — MSE decomposes into bias² + variance.",
+        usedFor: ["estimator properties"],
+        problem: "What makes one estimator better than another? How do you formally compare estimators?",
+        keyInsight: "MSE = bias² + variance; consistent ⇒ θ̂→θ; efficient ⇒ hits the Cramér-Rao bound.",
+        example: "Sample variance with (n−1) is unbiased; with n it is biased but consistent — both converge for large n, but small samples demand the unbiased form.",
+      },
+      {
+        name: "Sufficiency & likelihood principle",
+        description: "A sufficient statistic captures all information about a parameter — no other data detail matters.",
+        usedFor: ["foundations"],
+        problem: "When does a summary statistic capture all the information about a parameter that the data contains?",
+        keyInsight: "T is sufficient if the likelihood factors as g(T,θ)h(x); all info about θ is in the likelihood.",
+        example: "The sum ΣXᵢ is sufficient for the Poisson rate λ — knowing the sum, the raw data adds nothing more about λ.",
+      },
+      {
+        name: "Fisher information & Cramér-Rao bound",
+        description: "The curvature of the log-likelihood sets the minimum variance any unbiased estimator can achieve.",
+        usedFor: ["parameter precision"],
+        problem: "What is the theoretical minimum variance any unbiased estimator can achieve?",
+        keyInsight: "I(θ)=−E[∂²ℓ/∂θ²]; Var(θ̂) ≥ 1/(nI(θ)) for any unbiased estimator.",
+        example: "For estimating the mean of a normal with known variance σ², I=1/σ², so no unbiased estimator can beat x̄ (which achieves the bound).",
+      },
+      {
+        name: "Likelihood-ratio, Wald & score tests",
+        description: "Three asymptotically equivalent views of hypothesis testing — drop in fit, estimate distance, gradient.",
+        usedFor: ["hypothesis testing"],
+        problem: "When testing a hypothesis about a parameter, how do different test statistics relate to each other?",
+        keyInsight: "likelihood-ratio (drop in fit), Wald (estimate's distance from the null), score (gradient at the null) — asymptotically equivalent.",
+        example: "Testing β=0 in logistic regression: the LRT compares log-likelihoods, the Wald test checks β̂/SE, the score test evaluates the gradient — all p-values converge as n→∞.",
+      },
+      {
+        name: "Neyman-Pearson lemma",
+        description: "The likelihood-ratio test maximizes power at fixed size — the optimal test for simple hypotheses.",
+        usedFor: ["hypothesis testing"],
+        problem: "When testing between two simple hypotheses, what test gives the most power for a given false-positive rate?",
+        keyInsight: "the likelihood-ratio test maximizes power at fixed size α for simple-vs-simple hypotheses.",
+        example: "Deciding between H₀: μ=0 and H₁: μ=1 for normal data — the Neyman-Pearson lemma proves no other test at α=0.05 beats the t-test on power.",
+      },
+      {
+        name: "Confidence-interval theory",
+        description: "A random interval covering θ in 95% of repetitions — built by inverting a test.",
+        usedFor: ["uncertainty"],
+        problem: "What does a 95% confidence interval actually mean, and how is it constructed?",
+        keyInsight: "a random interval covering θ in 95% of repetitions; build by inverting a test or using a pivot.",
+        example: "A 95% CI for a mean, constructed from 10,000 studies, would contain the true mean in ~9,500 of them — the CI you observe is one of those, but you don't know if it's one of the 500.",
+      },
+      {
+        name: "Asymptotics & delta method",
+        description: "Large-sample distribution of a transformed estimator — propagate uncertainty through functions.",
+        usedFor: ["asymptotics"],
+        problem: "How do you find the large-sample distribution of a transformed estimator?",
+        keyInsight: "if √n(θ̂−θ)→N(0,σ²), then √n(g(θ̂)−g(θ))→N(0, g′(θ)²σ²).",
+        example: "Estimating the odds ratio exp(β̂) from logistic regression — the delta method gives its asymptotic variance as exp(β̂)²·Var(β̂).",
+      },
+      {
+        name: "Loss & risk functions",
+        description: "Formally quantify the cost of estimation error — risk is expected loss.",
+        usedFor: ["decision theory"],
+        problem: "How do you formally quantify the cost of estimation error when different errors may have different consequences?",
+        keyInsight: "risk R(θ,δ)=E[L(θ,δ(X))]; squared-error loss yields MSE.",
+        example: "In weather forecasting, asymmetric loss — under-predicting rainfall is worse than over-predicting — motivates biased predictions that minimize expected operational cost.",
+      },
+      {
+        name: "Minimax & admissibility",
+        description: "Decision-theoretic optimality — minimize worst-case risk; inadmissible if dominated everywhere.",
+        usedFor: ["decision theory"],
+        problem: "When you can't specify a prior, how do you choose an estimator that's robust to the worst case?",
+        keyInsight: "minimax minimizes worst-case risk; a rule is inadmissible if another has ≤ risk everywhere, < somewhere.",
+        example: "The James-Stein estimator dominates the sample mean under squared error in 3+ dimensions — the mean is inadmissible, one of the most surprising results in statistics.",
+      },
+      {
+        name: "Bayes risk",
+        description: "Prior-averaged risk — the posterior mean minimizes it under squared error.",
+        usedFor: ["decision theory", "bayesian"],
+        problem: "How do you choose an estimator that performs well on average over a distribution of possible parameter values?",
+        keyInsight: "∫R(θ,δ)π(θ)dθ; the posterior mean minimizes it under squared error.",
+        example: "Hierarchical Bayes estimates for multiple clinical trials minimize Bayes risk — they shrink each site's estimate toward the grand mean, outperforming independent site-by-site analyses.",
+      },
+    ],
+  },
+  {
+    slug: "model-selection",
+    name: "Model Selection & Evaluation",
+    blurb: "Choosing among models and judging fit. Cross-validation, bootstrap, and ROC/AUC live under Machine Learning.",
+    color: "cyan",
+    tier: "foundations",
+    methods: [
+      {
+        name: "AIC",
+        description: "Akaike information criterion — penalizes complexity to estimate out-of-sample prediction error.",
+        usedFor: ["model selection"],
+        problem: "Which model minimizes out-of-sample prediction error, penalizing for complexity?",
+        keyInsight: "AIC = 2k − 2 ln L̂; estimates out-of-sample loss; lower is better.",
+        example: "Comparing an AR(2) vs. AR(4) model for monthly inflation — AIC penalizes the 2 extra lags; if they don't improve fit enough, AR(2) wins.",
+      },
+      {
+        name: "BIC",
+        description: "Bayesian information criterion — heavier complexity penalty, consistent for the true model.",
+        usedFor: ["model selection"],
+        problem: "Which of several competing models most likely generated the data, penalizing strongly for complexity?",
+        keyInsight: "BIC = k ln n − 2 ln L̂; heavier than AIC, consistent for the true model.",
+        example: "BIC consistently selects a sparser model than AIC on large datasets — for n=10,000, the per-parameter penalty grows to ln(10,000)≈9.2 vs. AIC's 2.",
+      },
+      {
+        name: "Mallows' Cp",
+        description: "Penalized fit statistic for linear model subset selection.",
+        usedFor: ["model selection"],
+        problem: "In linear regression subset selection, which predictor set balances fit and complexity?",
+        keyInsight: "Cp = RSS/σ̂² − n + 2k; Cp ≈ k indicates good fit.",
+        example: "In a housing-price regression with 20 candidate predictors, a Cp plot guides toward a 7-variable model where Cp ≈ 7, rather than the 20-variable model that overfits.",
+      },
+      {
+        name: "WAIC & DIC",
+        description: "Bayesian predictive criteria — posterior fit minus an effective-parameter penalty.",
+        usedFor: ["model selection", "bayesian"],
+        problem: "How do you compare Bayesian models by their expected predictive accuracy?",
+        keyInsight: "posterior fit minus an effective-parameter penalty; WAIC uses the log pointwise predictive density.",
+        example: "Comparing two hierarchical models for multi-site clinical trial data — WAIC selects the model with better average predictive performance on held-out sites.",
+      },
+      {
+        name: "Likelihood-ratio test (nested models)",
+        description: "Test whether adding parameters improves fit significantly — 2Δℓ ~ χ².",
+        usedFor: ["model comparison"],
+        problem: "Does adding parameters to a model improve fit significantly more than chance alone?",
+        keyInsight: "2(ℓ_full − ℓ_reduced) ~ χ²_(Δdf) under the null.",
+        example: "Testing whether adding a quadratic term improves a logistic regression: 2(ℓ_quadratic − ℓ_linear) compared to χ²₁ — the classic deviance test.",
+      },
+      {
+        name: "Adjusted R² & deviance",
+        description: "Penalized goodness-of-fit that accounts for number of predictors.",
+        usedFor: ["goodness-of-fit"],
+        problem: "How do you compare model fit across models with different numbers of predictors?",
+        keyInsight: "adj. R² = 1 − (1−R²)(n−1)/(n−k−1); deviance = −2 ln L vs a saturated model.",
+        example: "Adding 5 useless predictors to a regression raises R² trivially but lowers adjusted R² — the adjustment penalizes complexity even when fit barely improves.",
+      },
+      {
+        name: "Stepwise & best-subset selection",
+        description: "Greedy or exhaustive predictor search — convenient but prone to selection bias.",
+        usedFor: ["variable selection"],
+        problem: "With many candidate predictors, how do you systematically search for the best-fitting subset?",
+        keyInsight: "greedily add/drop (or exhaustively search) by an IC; prone to selection bias — cross-validation preferred.",
+        example: "Stepwise selection on 30 candidate biomarkers to predict recurrence often yields models that look strong in-sample but fail validation — inflated t-statistics are why.",
+      },
+    ],
+  },
+  // ── CORE METHODS ───────────────────────────────────────────────────────────
   {
     slug: "descriptive",
     name: "Descriptive Statistics",
     blurb: "Summarize the shape, center, and spread of a sample — no inference.",
     color: "gray",
+    tier: "core",
     methods: [
       {
         name: "Mean",
@@ -158,6 +505,54 @@ const FAMILIES: Family[] = [
         keyInsight: "Standardized fourth central moment: `κ = E[(X−μ)⁴] / σ⁴`. Excess kurtosis > 0 means rare extreme events are more likely than a normal predicts.",
         example: "Daily stock returns have excess kurtosis > 5 — black-swan crashes occur far more often than Gaussian models imply, which is what blew up LTCM in 1998.",
       },
+      {
+        name: "Covariance",
+        description: "Joint variability of two variables — sign gives direction, magnitude depends on units.",
+        usedFor: ["spread", "dependence"],
+        problem: "How do you measure whether two variables tend to move together or in opposite directions?",
+        keyInsight: "Cov(X,Y)=E[(X−μ_X)(Y−μ_Y)]; sign = direction, scale depends on units.",
+        example: "Covariance between portfolio stock returns is the building block of Markowitz diversification — positive covariance means they move together, reducing diversification benefit.",
+      },
+      {
+        name: "Pearson correlation",
+        description: "Unit-free linear association — r ∈ [−1, 1].",
+        usedFor: ["association"],
+        problem: "Covariance depends on units, making it hard to compare across variable pairs. How do you get a unit-free linear association measure?",
+        keyInsight: "r = Cov(X,Y)/(σ_Xσ_Y) ∈ [−1,1]; linear only.",
+        example: "The correlation between smoking pack-years and FEV₁ is r≈−0.65 in COPD patients — strong inverse linear association that survives unit changes.",
+      },
+      {
+        name: "Spearman & Kendall correlation",
+        description: "Monotone association measures based on ranks — robust to outliers and non-normality.",
+        usedFor: ["association", "robust"],
+        problem: "Pearson correlation assumes linearity — what if the relationship is monotone but not linear, or data have outliers?",
+        keyInsight: "correlation on ranks (Spearman) or concordant−discordant pairs (Kendall τ).",
+        example: "Rankings of wine vintages by two critics — Spearman rho = 0.87 shows strong agreement on order even if they disagree on absolute scores.",
+      },
+      {
+        name: "Coefficient of variation (CV)",
+        description: "Scale-free relative dispersion — standard deviation as a fraction of the mean.",
+        usedFor: ["spread"],
+        problem: "How do you compare variability across variables measured on completely different scales?",
+        keyInsight: "CV = σ/μ; compares spread across different scales.",
+        example: "Comparing precision of two analytical instruments at different concentration ranges — the one with CV=2% is more precise than CV=8%, regardless of raw SD values.",
+      },
+      {
+        name: "Geometric & harmonic mean",
+        description: "Means for multiplicative or rate data — geometric for growth, harmonic for speeds.",
+        usedFor: ["center"],
+        problem: "The arithmetic mean is wrong for multiplicative quantities like growth rates or ratios — what is the correct center summary?",
+        keyInsight: "GM = (∏xᵢ)^(1/n) for multiplicative growth; HM = n/Σ(1/xᵢ) for averaging rates.",
+        example: "An investment that grows +50% then −50% does not break even — the geometric mean return is √(1.5×0.5)−1 = −13.4%, correctly showing the loss.",
+      },
+      {
+        name: "Range & MAD",
+        description: "Simplest spread (range) and robust spread (median absolute deviation).",
+        usedFor: ["spread", "robust"],
+        problem: "Standard deviation is sensitive to outliers. What are simpler and more robust alternatives for describing spread?",
+        keyInsight: "range = max−min (fragile); MAD = median(|xᵢ − median|) (robust).",
+        example: "Hospital wait times have MAD=8 minutes but range=180 minutes — the range is dominated by one patient who waited 3 hours; the MAD reflects the typical patient's experience.",
+      },
     ],
   },
   {
@@ -165,6 +560,7 @@ const FAMILIES: Family[] = [
     name: "Inferential Statistics (Frequentist)",
     blurb: "Null-hypothesis significance testing — p-values, confidence intervals, fixed parameters, random data.",
     color: "blue",
+    tier: "core",
     methods: [
       {
         name: "One-sample t-test",
@@ -279,6 +675,46 @@ const FAMILIES: Family[] = [
         keyInsight: "Sort p-values ascending; reject all up to the largest i where `pᵢ ≤ (i/m)·q`. Controls the expected fraction of false discoveries, not the chance of any.",
         example: "An RNA-seq experiment with 20k genes finds 800 significant at FDR = 0.05 — you expect ~40 false positives, a price worth paying for real findings.",
       },
+      {
+        name: "Welch's t-test",
+        description: "Independent t-test that does not assume equal variances — the safer default.",
+        usedFor: ["means", "two groups"],
+        problem: "The standard independent t-test assumes equal variances in both groups — when that assumption fails, what do you use?",
+        keyInsight: "a t-test with Satterthwaite-adjusted df; the safer default over Student's.",
+        example: "Comparing hospital stay lengths for two insurance types — the insured group's variance is twice the uninsured's; Welch's test gives correct Type-I error whereas Student's t is anti-conservative.",
+      },
+      {
+        name: "McNemar's test",
+        description: "Test for paired binary data — compares the discordant pairs.",
+        usedFor: ["categorical", "within-subjects"],
+        problem: "How do you test whether two binary outcomes measured on the same subjects differ?",
+        keyInsight: "tests the discordant pairs: (b−c)²/(b+c) ~ χ²₁.",
+        example: "Testing whether a public-health campaign changed vaccine hesitancy: among 500 subjects, 80 switched from hesitant to willing (b=80) and 20 switched back (c=20) — McNemar χ²=40, p<0.001.",
+      },
+      {
+        name: "Friedman test",
+        description: "Nonparametric alternative to repeated-measures ANOVA — ranks within each block.",
+        usedFor: ["nonparametric", "within-subjects"],
+        problem: "Repeated-measures ANOVA assumes normality and sphericity — when data are ordinal or non-normal, what's the nonparametric alternative?",
+        keyInsight: "rank within each block, then test for differing mean ranks across conditions.",
+        example: "Five judges each rate 4 cheeses on a 1–10 scale — Friedman tests whether mean ranks differ across cheeses without assuming normality of the ratings.",
+      },
+      {
+        name: "Levene's & Bartlett's tests",
+        description: "Test equality of variances across groups — assumption check before ANOVA.",
+        usedFor: ["variance", "assumptions"],
+        problem: "Many tests assume equal group variances — how do you check this assumption before proceeding?",
+        keyInsight: "H₀ of equal variances; Levene is robust to non-normality, Bartlett is sensitive to it.",
+        example: "Before running ANOVA on 4 treatment groups, Levene's test (F=0.9, p=0.45) confirms the equal-variance assumption holds — safe to proceed with standard ANOVA.",
+      },
+      {
+        name: "Equivalence testing (TOST)",
+        description: "Demonstrate practical equivalence via two one-sided tests — required for generic drug approval.",
+        usedFor: ["equivalence"],
+        problem: "A non-significant p-value doesn't prove the effect is zero — how do you actually demonstrate practical equivalence?",
+        keyInsight: "two one-sided tests against ±margins; reject both ⇒ effect within bounds.",
+        example: "Bioequivalence testing of a generic drug: TOST establishes the generic's peak concentration is within ±20% of the brand-name — required by the FDA for generic approval.",
+      },
     ],
   },
   {
@@ -286,6 +722,7 @@ const FAMILIES: Family[] = [
     name: "Regression & Prediction",
     blurb: "Model an outcome as a function of one or more predictors — explanation or prediction.",
     color: "green",
+    tier: "core",
     methods: [
       {
         name: "Linear regression",
@@ -418,6 +855,46 @@ const FAMILIES: Family[] = [
         keyInsight: "Minimize the asymmetric absolute-error loss `Σ ρτ(yᵢ − xᵢβ)` to estimate the τ-th conditional quantile (not the mean). Robust to outliers and effects can differ across quantiles.",
         example: "A minimum-wage hike might leave median wages unchanged but lift the 10th percentile sharply — only quantile regression at τ = 0.1 reveals this.",
       },
+      {
+        name: "Generalized additive models (GAM)",
+        description: "Smooth, nonparametric terms in a GLM framework — flexible yet interpretable.",
+        usedFor: ["smoothing", "nonlinear"],
+        problem: "How do you fit nonlinear relationships in a regression model without specifying the functional form?",
+        keyInsight: "g(E[y]) = β₀ + Σ fⱼ(xⱼ), each fⱼ a smooth term.",
+        example: "Modeling ozone concentration as a function of temperature and wind speed — GAMs reveal a J-shaped ozone-temperature relationship that linear terms would miss.",
+      },
+      {
+        name: "Generalized estimating equations (GEE)",
+        description: "Population-averaged regression for clustered or repeated-measures data — robust sandwich SEs.",
+        usedFor: ["clustered data"],
+        problem: "With clustered or repeated data, you want population-averaged effects and robust standard errors rather than subject-specific estimates.",
+        keyInsight: "a working correlation structure + robust (sandwich) SEs; the marginal counterpart to mixed models.",
+        example: "Modeling whether students in a school-based program improved test scores — GEE estimates the average program effect across all students, accounting for within-school clustering.",
+      },
+      {
+        name: "Tobit / censored regression",
+        description: "Regression for outcomes bounded or censored at a threshold.",
+        usedFor: ["censored outcome"],
+        problem: "When an outcome is only observed above (or below) a threshold, OLS ignores the censoring and gives biased estimates.",
+        keyInsight: "model a latent y* observed only above/below a threshold; the likelihood mixes density and censoring probability.",
+        example: "Estimating wage determinants when top earners are top-coded at $200k — the Tobit model accounts for the right censoring that OLS would mistake for a true salary ceiling.",
+      },
+      {
+        name: "Zero-inflated & hurdle models",
+        description: "Two-component models for count data with more zeros than Poisson allows.",
+        usedFor: ["count data"],
+        problem: "Count outcomes often have far more zeros than a Poisson distribution predicts — why, and how do you model it?",
+        keyInsight: "a two-part model — one process for the zeros, one for the counts.",
+        example: "Doctor visits per year: many people visit zero times (healthy), but among visitors counts follow NB — a zero-inflated NB model fits both groups with a single likelihood.",
+      },
+      {
+        name: "Spline & polynomial regression",
+        description: "Extend linear regression with basis expansions to capture nonlinear trends.",
+        usedFor: ["nonlinear"],
+        problem: "Relationships in data are rarely linear over the full range — how do you model nonlinearity within a regression framework?",
+        keyInsight: "expand x into basis functions to fit nonlinearity.",
+        example: "Estimating the age-earnings profile: earnings rise steeply in the 20s, plateau in the 40s, and decline in the 60s — a cubic spline in age captures this shape within a standard GLM.",
+      },
     ],
   },
   {
@@ -425,6 +902,7 @@ const FAMILIES: Family[] = [
     name: "Bayesian Methods",
     blurb: "Treat parameters as random — update prior beliefs with data to get a posterior.",
     color: "purple",
+    tier: "core",
     methods: [
       {
         name: "Bayesian inference",
@@ -507,6 +985,38 @@ const FAMILIES: Family[] = [
         keyInsight: "Simulate datasets from the posterior predictive `p(ỹ | y)`, then compare a chosen statistic (max, variance, autocorrelation) of the simulated data to the observed.",
         example: "Posterior simulations of game scores all show fewer ties than the real data — a clue that the model misses a clustering mechanism worth adding.",
       },
+      {
+        name: "Gibbs sampling",
+        description: "MCMC that cycles through full conditionals — works when joint sampling is hard.",
+        usedFor: ["posterior sampling"],
+        problem: "Joint sampling from a high-dimensional posterior is intractable, but full conditionals may have closed forms — how do you exploit this?",
+        keyInsight: "draw each parameter from its full conditional p(θⱼ|θ₋ⱼ, data) in turn; converges to the joint posterior.",
+        example: "A Bayesian hierarchical model with 100 school random effects — Gibbs cycles through each school's conditional (often Normal) until convergence, without ever needing the joint.",
+      },
+      {
+        name: "Conjugate priors",
+        description: "Prior-posterior pairs from the same family — closed-form Bayesian updating.",
+        usedFor: ["priors"],
+        problem: "Bayesian updating normally requires integration — when does the posterior remain in the same family as the prior, allowing algebraic updating?",
+        keyInsight: "prior and posterior share a family (Beta-Binomial, Normal-Normal, Gamma-Poisson).",
+        example: "A Beta(10,10) prior on vaccine efficacy updated with 70 successes in 100 trials gives Beta(80,40) — closed form, no MCMC needed.",
+      },
+      {
+        name: "Prior elicitation & sensitivity",
+        description: "Systematically specify priors from expert knowledge; test robustness to prior choice.",
+        usedFor: ["priors", "robustness"],
+        problem: "Bayesian analysis requires a prior — how do you choose it responsibly, and how do you know if it matters?",
+        keyInsight: "vary the prior and check whether the posterior conclusions hold.",
+        example: "A drug trial with limited data — running the analysis with flat, weakly informative, and strong priors checks whether the posterior effect estimate changes materially; if not, conclusions are prior-robust.",
+      },
+      {
+        name: "Approximate Bayesian computation (ABC)",
+        description: "Likelihood-free Bayesian inference — simulate and compare summary statistics.",
+        usedFor: ["likelihood-free"],
+        problem: "Some models are easy to simulate but have intractable likelihoods — how do you do Bayesian inference without evaluating the likelihood?",
+        keyInsight: "simulate from θ, keep θ whose summaries fall within ε of the observed.",
+        example: "Inferring effective population size in population genetics — the demographic model simulates sequences easily but its likelihood is intractable; ABC keeps parameter values whose simulated summaries match the observed.",
+      },
     ],
   },
   {
@@ -514,6 +1024,7 @@ const FAMILIES: Family[] = [
     name: "Experimental Design",
     blurb: "Plan data collection so the resulting inference is unbiased and well-powered.",
     color: "amber",
+    tier: "core",
     methods: [
       {
         name: "Randomized controlled trial (RCT)",
