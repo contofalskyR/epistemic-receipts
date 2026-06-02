@@ -271,6 +271,44 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-02 — Retraction Watch enrichment for REVERSED follow-ups
+
+**What.** New script `scripts/enrich-retractions.ts` backfills WHY each REVERSED ClaimRelation row exists. Source: the full Retraction Watch database, published by CrossRef Labs at `https://api.labs.crossref.org/data/retractionwatch` — a single CSV (~64 MB, ~70k rows) under CC0, no registration required. The `?doi=` query parameter is ignored by the endpoint; it always returns the entire corpus, which we use as a DOI-keyed lookup table.
+
+**How.**
+- Step 1 — download (or reuse the cached copy at `.cache/retraction-watch.csv`, 24 h TTL, `--refresh` to bust). Parsed with `csv-parse/sync` using `relax_quotes` + `relax_column_count` (the CSV is loose; some Reason fields contain commas inside quoted cells).
+- Step 2 — index by lowercased `OriginalPaperDOI` → record. Throws away the literal `unavailable` / `n/a` placeholders. 61,331 unique original DOIs indexed from 70,410 raw rows.
+- Step 3 — classify each record's `Reason` token list against `CATEGORY_RULES` (11 ordered rules). Per token, the first matching rule wins; across all tokens, the highest-severity match becomes the row's primary category. Severity bands follow the brief:
+  - **HIGH** (red) — Fraud (Falsification/Fabrication, Misconduct, Hoax, Manipulation of Results/Data), Paper mill (Fake/Compromised Peer Review, Rogue Editor), Plagiarism, Image manipulation
+  - **MEDIUM** (orange) — Image issues (non-manipulation duplication), Duplication of/in Article/Text/Data, Data error (Unreliable / Results Not Reproducible / Errors), Authorship/COI (Conflict of Interest, IRB/IACUC, Authorship), Investigation by Journal/Publisher/Third Party
+  - **LOW** (yellow) — Editorial concerns, Corrections, Updates to prior notices, Reinstatements, Objections by Authors
+- Step 4 — for each REVERSED row whose `followUpContext.doi` is in the index, merge a structured patch into `followUpContext`: `retractionReason`, `retractionCategory`, `retractionSeverity`, `retractionNature`, `retractionReasonsAll[]`, `retractionWatchRecordId`, `retractionWatchUrl`, `retractionWatchRetractionDoi`, `retractionWatchRetractionDate`, `retractionReasonSource: "retraction_watch"`. Idempotent — re-runs overwrite the same keys but preserve unrelated keys.
+- Writes use `prisma.$transaction(..., { timeout: 60_000 })` in 500-row batches (CONSULTANT rule 5). `ALLOW_EDITS=true` + absence of `--dry-run` required.
+
+**Results.**
+- REVERSED total: 11,319 (unchanged — this is enrichment, not new links).
+- Enriched: **5,703 rows (50.4% coverage)** — HIGH 2,590 · MEDIUM 2,306 · LOW 807. Top categories: Paper mill 1,544, Authorship / COI 747, Plagiarism 730, Data error 690, Correction 631, Duplication 432, Image issues 238, Investigation 199, Fraud 174, Other 162, Image manipulation 142, Editorial concern 14.
+- The 5,616 unmatched REVERSED rows are mostly recent papers (e.g. 2024 `heliyon` / `matpr` records) Retraction Watch hasn't catalogued yet. The script is idempotent, so a future RW refresh + re-run will pick up new matches automatically.
+
+**UI.**
+- `components/WhatHappenedNextPanel.tsx` — when a REVERSED row has `retractionCategory` + `retractionSeverity`, a second badge renders next to "Retracted": severity-colored pill with a dot (red HIGH / orange MEDIUM / yellow LOW) showing the category label. The italicized `retractionReason` (e.g. *Falsification/Fabrication of Data*) is appended to the metadata line below the badges. When `retractionNature` is "Expression of concern" / "Correction" / "Reinstatement", the relation-type badge swaps from "Retracted" to that nature value so the row reads accurately.
+- API route `app/api/claims/[id]/followups/route.ts` already passes `followUpContext` through to the panel as `context`; no changes needed.
+
+**Why this source.** The user prompt called out three candidates: (a) the RW registration-gated CSV at retractionwatch.com, (b) `http://api.labs.crossref.org/data/retractionwatch?doi=…` (the user spec), (c) CrossRef `/works/{doi}` for `update-to` metadata. (a) requires registration. (c) was already proven empty in the 2026-06-01 `link-retractions-crossref.ts` probe (`update-to.label` is just the literal string "Retraction" for ~99.9% of records; no reason text). (b) turns out to return the entire RW database in one CSV — strictly better than (a) and (c).
+
+**Files changed.** `scripts/enrich-retractions.ts` (new), `components/WhatHappenedNextPanel.tsx` (severity badge + reason text), `app/page.tsx` (June 2 changelog block), `app/layout.tsx` (footer date bump), `CONSULTANT.md` (this entry).
+
+**Run commands.**
+```
+npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-retractions.ts --dry-run
+ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-retractions.ts
+# Optional: --refresh to bust the 24h CSV cache, --limit N for debugging
+```
+
+**Verification.** `npx tsc --noEmit` clean. DB verification post-run: `count(REVERSED where followUpContext->>'retractionReasonSource' = 'retraction_watch') = 5703`, severity buckets HIGH 2,590 / MEDIUM 2,306 / LOW 807. API probe of `/api/claims/0286c689-…/followups` returns the enriched context with `retractionCategory: "Fraud"`, `retractionSeverity: "HIGH"`, `retractionReason: "Falsification/Fabrication of Data"`.
+
+---
+
 ### 2026-06-01 — OpenAlex retraction-prone-fields bucket → REVERSED grew 26 → 11,319
 
 **What.** Extended `scripts/ingest-openalex.ts` with a new `retraction-prone-fields` bucket targeting the three OpenAlex concepts that dominate retracted-paper coverage: materials science (`C192562407`), chemistry (`C185592680`), engineering (`C41008148`). Ingested 50,163 new `openalex_v1` claims, then re-ran `scripts/link-retractions-crossref.ts` to refresh DOI-joined REVERSED ClaimRelation rows.

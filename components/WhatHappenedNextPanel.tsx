@@ -46,8 +46,38 @@ const SECTION_META: Record<FollowUpType, { label: string; hint: string; badgeCla
   },
 };
 
+type Severity = "HIGH" | "MEDIUM" | "LOW";
+
+const SEVERITY_STYLE: Record<Severity, { badgeClass: string; dotClass: string }> = {
+  HIGH:   { badgeClass: "bg-red-950 text-red-300 border-red-900",        dotClass: "bg-red-500" },
+  MEDIUM: { badgeClass: "bg-orange-950 text-orange-300 border-orange-900", dotClass: "bg-orange-500" },
+  LOW:    { badgeClass: "bg-yellow-950 text-yellow-300 border-yellow-900", dotClass: "bg-yellow-500" },
+};
+
+function readReason(ctx: Record<string, unknown> | null): {
+  category: string | null;
+  severity: Severity | null;
+  reason: string | null;
+  nature: string | null;
+} {
+  if (!ctx) return { category: null, severity: null, reason: null, nature: null };
+  const category = typeof ctx.retractionCategory === "string" ? ctx.retractionCategory : null;
+  const sevRaw = typeof ctx.retractionSeverity === "string" ? ctx.retractionSeverity : null;
+  const severity: Severity | null =
+    sevRaw === "HIGH" || sevRaw === "MEDIUM" || sevRaw === "LOW" ? sevRaw : null;
+  const reason = typeof ctx.retractionReason === "string" ? ctx.retractionReason : null;
+  const nature = typeof ctx.retractionNature === "string" ? ctx.retractionNature : null;
+  return { category, severity, reason, nature };
+}
+
 function FollowUpRow({ item }: { item: FollowUpClaim }) {
   const meta = SECTION_META[item.relationType];
+  const reason = item.relationType === "REVERSED" ? readReason(item.context) : null;
+  const sevStyle = reason?.severity ? SEVERITY_STYLE[reason.severity] : null;
+  const badgeLabel =
+    item.relationType === "REVERSED" && reason?.nature && reason.nature !== "Retraction"
+      ? reason.nature
+      : meta.label;
   return (
     <li className="border-b border-gray-800/50 last:border-b-0 py-2.5">
       <div className="flex items-start gap-2">
@@ -55,8 +85,17 @@ function FollowUpRow({ item }: { item: FollowUpClaim }) {
           className={`shrink-0 mt-0.5 px-1.5 py-0.5 rounded border text-[10px] font-medium uppercase tracking-wide ${meta.badgeClass}`}
           title={meta.hint}
         >
-          {meta.label}
+          {badgeLabel}
         </span>
+        {reason?.category && sevStyle && (
+          <span
+            className={`shrink-0 mt-0.5 inline-flex items-center gap-1 px-1.5 py-0.5 rounded border text-[10px] font-medium uppercase tracking-wide ${sevStyle.badgeClass}`}
+            title={reason.reason ?? `${reason.severity?.toLowerCase()} severity`}
+          >
+            <span className={`h-1.5 w-1.5 rounded-full ${sevStyle.dotClass}`} aria-hidden />
+            {reason.category}
+          </span>
+        )}
         <div className="min-w-0 flex-1">
           <Link
             href={`/claims/${item.id}`}
@@ -78,6 +117,14 @@ function FollowUpRow({ item }: { item: FollowUpClaim }) {
               >
                 ↗
               </a>
+            )}
+            {reason?.reason && (
+              <span
+                className="text-gray-500 italic"
+                title="Reason as catalogued by Retraction Watch"
+              >
+                · {reason.reason}
+              </span>
             )}
           </div>
         </div>

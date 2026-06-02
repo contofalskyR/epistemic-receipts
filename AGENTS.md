@@ -111,6 +111,7 @@ Last synced from DB: 2026-05-21. Total claims (excl. deprecated): ~336,900+ acro
 | `pubchem_v1` | `ingest-pubchem.ts` | 355 | PubChem compounds |
 | `courtlistener_scotus_v1` | `ingest-courtlistener-scotus.ts` | 300+ | SCOTUS opinions via CourtListener. Post-2000 ingest (≥10 citations) in progress 2026-06-01. |
 | `courtlistener_circuits_v1` | `ingest-courtlistener-circuits.ts` | 0 | Federal circuit courts (13 circuits, ≥20 citations). Script written 2026-06-01, not yet run. |
+| `doj_fara_v1` | `ingest-doj-fara.ts` | 811 | DOJ FARA active foreign-agent registrations. Bulk CSV via efile.fara.gov. One claim per registrant–FP pair. Ingested 2026-06-01. |
 | `openfec_v1` | `ingest-openfec.ts` | 600 | Candidate fundraising totals 2020/2022/2024. OpenFEC API. |
 | `openfec_ie_v1` | `ingest-openfec.ts` | 600 | Super PAC independent expenditures 2020/2022/2024. OpenFEC API. |
 | `openfda_v1` | `ingest-openfda.ts` | 233 | openFDA |

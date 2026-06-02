@@ -296,3 +296,23 @@ NEXT_TASK: NONE
 [2026-06-01 07:46 EDT] Current block: 31,116 tokens $0.07 (window ends 12:00PM)
 [2026-06-01 07:46 EDT] Queue empty
 [2026-06-01 07:46 EDT] Worker finished. Tasks done: 0
+[2026-06-01 12:46 EDT] Worker started
+[2026-06-01 12:46 EDT] Current block: 3,098,730 tokens $2.48 (window ends 05:00PM)
+[2026-06-01 12:46 EDT] Queue empty
+[2026-06-01 12:46 EDT] Worker finished. Tasks done: 0
+[2026-06-01 17:46 EDT] Worker started
+[2026-06-01 17:46 EDT] Current block: 31,286 tokens $0.07 (window ends 10:00PM)
+[2026-06-01 17:46 EDT] Queue empty
+[2026-06-01 17:46 EDT] Worker finished. Tasks done: 0
+[2026-06-01 22:46 EDT] Worker started
+[2026-06-01 22:46 EDT] Current block: 9,540,786 tokens $6.34 (window ends 03:00AM)
+[2026-06-01 22:46 EDT] Queue empty
+[2026-06-01 22:46 EDT] Worker finished. Tasks done: 0
+[2026-06-02 03:46 EDT] Worker started
+[2026-06-02 03:46 EDT] Current block: 31,279 tokens $0.07 (window ends 08:00AM)
+[2026-06-02 03:46 EDT] Queue empty
+[2026-06-02 03:46 EDT] Worker finished. Tasks done: 0
+[2026-06-02 08:46 EDT] Worker started
+[2026-06-02 08:46 EDT] Current block: 1,231,213 tokens $0.76 (window ends 01:00PM)
+[2026-06-02 08:46 EDT] Queue empty
+[2026-06-02 08:46 EDT] Worker finished. Tasks done: 0

@@ -152,6 +152,8 @@ function toCitationCount(raw: number | string | null | undefined): number | null
 
 const TRANSIENT_STATUSES = new Set([502, 503, 504])
 const MAX_RETRIES = 5
+const REQUEST_DELAY_MS = 800   // throttle between pages to avoid 429s
+const MAX_429_WAIT_MS  = 120_000 // bail if retry-after > 2 min; restart manually
 
 async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
   const url = urlOrPath.startsWith('http') ? urlOrPath : `${BASE_URL}${urlOrPath}`
@@ -185,6 +187,9 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
     if (res.status === 429) {
       const retryAfter = parseInt(res.headers.get('retry-after') ?? '60', 10)
       const wait = isNaN(retryAfter) ? 60000 : retryAfter * 1000
+      if (wait > MAX_429_WAIT_MS) {
+        throw new Error(`CourtListener rate limit too long (${Math.ceil(wait / 1000)}s) — wait and restart`)
+      }
       console.log(`  Rate limited (429) — waiting ${Math.ceil(wait / 1000)}s before retry...`)
       await sleep(wait)
       continue
@@ -256,7 +261,7 @@ async function main() {
   let nextUrl: string | null = firstUrl
 
   while (nextUrl && fetched < limit) {
-    await sleep(250)
+    await sleep(REQUEST_DELAY_MS)
 
     const page = (await clFetch(nextUrl, token)) as CLPage
     const clusters: CLCluster[] = page.results ?? []
@@ -269,7 +274,7 @@ async function main() {
     console.log(`Fetched page — ${batch.length} clusters (${fetched} total, ${page.count ?? '?'} available)\n`)
 
     for (const cluster of batch) {
-      await sleep(250)
+      await sleep(REQUEST_DELAY_MS)
 
       const clusterId    = String(cluster.id)
       const clusterIdStr = `cl-cluster-${clusterId}`
