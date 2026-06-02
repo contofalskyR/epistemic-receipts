@@ -271,6 +271,40 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-02 — Retraction UI polish + status reflect (11,319 retracted claims → DISPUTED)
+
+**What.** Three follow-ons to today's earlier Retraction Watch enrichment.
+
+1. **Inline score format** — `app/claims/[id]/page.tsx` `EdgeRow` previously rendered the score as `80/100` on one line and `at the time` stacked below in rose. Now a single inline string: `80/100, at the time` with the rose `, at the time` inline (`text-rose-500/70 font-sans font-normal`). Added `whitespace-nowrap` to the `<td>` so the inline string doesn't break mid-phrase on narrow viewports.
+
+2. **Severity description in `WhatHappenedNextPanel`** — REVERSED rows now render a graduated plain-English phrase describing *how untrue* the original finding turned out to be, derived from `retractionNature` + `retractionCategory` + `retractionSeverity`. Mapping (first match wins):
+   - `retractionNature === "Correction"` → *Finding improved/corrected*
+   - `retractionNature === "Expression of concern"` → *Findings questioned*
+   - `retractionCategory ∈ {Fraud, Paper mill}` → *Entirely fabricated*
+   - `retractionCategory ∈ {Plagiarism, Image manipulation}` → *Evidence falsified*
+   - `retractionSeverity === "HIGH"` (other) → *Completely retracted*
+   - `retractionSeverity === "MEDIUM"` → *Significantly invalidated*
+   - `retractionSeverity === "LOW"` → *Partially retracted*
+   - any category or severity present but no rule matches → *Retracted*
+   - nothing populated → no phrase rendered
+   Rendered as `→ {phrase}` in `text-[10px] text-gray-400 mt-0.5 block` below the metadata line. Pure derivation in the client component (`severityDescription()` next to `readReason()`) — no schema or API change.
+
+3. **DB tagging — retracted claims marked DISPUTED.** New script `scripts/tag-retracted-claims.ts` finds every distinct `fromClaimId` of a `ClaimRelation` with `relationType = "REVERSED"` (11,319 claims) and flips them from `verificationStatus: "PROVISIONAL"` → `"DISPUTED"` in 500-row transactions with `{ timeout: 30000 }`. Idempotent — the update is gated on `verificationStatus = "PROVISIONAL"` so re-runs are no-ops, human-reviewed HARD_FACT / DEPRECATED claims are never trampled. `ALLOW_EDITS=true` required; `--dry-run` prints the target count + a 5-row sample without writing. Pre-run state: 11,319 PROVISIONAL. Post-run state: **11,319 DISPUTED, verified via raw SQL** (`SELECT COUNT(*) FROM Claim c WHERE c.verificationStatus = 'DISPUTED' AND EXISTS (SELECT 1 FROM ClaimRelation cr WHERE cr.fromClaimId = c.id AND cr.relationType = 'REVERSED')` returns 11319). Re-running the script confirms idempotency (`To update PROVISIONAL → DISPUTED: 0 — Nothing to do.`).
+
+**Why.** The PROVISIONAL → DISPUTED tagging was the missing piece between yesterday's REVERSED ClaimRelation links and how the claim status renders in the rest of the app: status badges on `/`, `/topics/[slug]`, claim cards in the globe sidebar, and the bookmarks list now correctly mark retracted papers as DISPUTED rather than PROVISIONAL. The UI changes are the user-visible payoff: the score column is now scannable in one read, and the severity description gives a one-glance answer to *how badly was this wrong* (a coarse `HIGH/MEDIUM/LOW` badge required the reader to translate).
+
+**Files changed.** `app/claims/[id]/page.tsx` (inline score string), `components/WhatHappenedNextPanel.tsx` (`severityDescription()` + render block), `scripts/tag-retracted-claims.ts` (new), `app/page.tsx` (June 2 changelog block), `CONSULTANT.md` (this entry). Footer date in `app/layout.tsx` was already at `June 2, 2026` from the earlier enrichment ship — no bump needed.
+
+**Run commands.**
+```
+npx dotenv-cli -e .env.local -- npx tsx scripts/tag-retracted-claims.ts --dry-run
+ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/tag-retracted-claims.ts
+```
+
+**Verification.** `npx tsc --noEmit` clean. Raw SQL verification post-run returns 11,319 DISPUTED retracted claims; idempotency re-run reports 0 targets.
+
+---
+
 ### 2026-06-02 — Retraction Watch enrichment for REVERSED follow-ups
 
 **What.** New script `scripts/enrich-retractions.ts` backfills WHY each REVERSED ClaimRelation row exists. Source: the full Retraction Watch database, published by CrossRef Labs at `https://api.labs.crossref.org/data/retractionwatch` — a single CSV (~64 MB, ~70k rows) under CC0, no registration required. The `?doi=` query parameter is ignored by the endpoint; it always returns the entire corpus, which we use as a DOI-keyed lookup table.

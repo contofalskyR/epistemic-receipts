@@ -70,10 +70,30 @@ function readReason(ctx: Record<string, unknown> | null): {
   return { category, severity, reason, nature };
 }
 
+function severityDescription(
+  category: string | null,
+  severity: Severity | null,
+  nature: string | null,
+): string | null {
+  if (nature === "Correction") return "Finding improved/corrected";
+  if (nature === "Expression of concern") return "Findings questioned";
+  if (category === "Fraud" || category === "Paper mill") return "Entirely fabricated";
+  if (category === "Plagiarism" || category === "Image manipulation") return "Evidence falsified";
+  if (severity === "HIGH") return "Completely retracted";
+  if (severity === "MEDIUM") return "Significantly invalidated";
+  if (severity === "LOW") return "Partially retracted";
+  if (category || severity) return "Retracted";
+  return null;
+}
+
 function FollowUpRow({ item }: { item: FollowUpClaim }) {
   const meta = SECTION_META[item.relationType];
   const reason = item.relationType === "REVERSED" ? readReason(item.context) : null;
   const sevStyle = reason?.severity ? SEVERITY_STYLE[reason.severity] : null;
+  const sevDesc =
+    item.relationType === "REVERSED"
+      ? severityDescription(reason?.category ?? null, reason?.severity ?? null, reason?.nature ?? null)
+      : null;
   const badgeLabel =
     item.relationType === "REVERSED" && reason?.nature && reason.nature !== "Retraction"
       ? reason.nature
@@ -127,6 +147,14 @@ function FollowUpRow({ item }: { item: FollowUpClaim }) {
               </span>
             )}
           </div>
+          {sevDesc && (
+            <span
+              className="text-[10px] text-gray-400 mt-0.5 block"
+              title="How untrue the original finding turned out to be"
+            >
+              → {sevDesc}
+            </span>
+          )}
         </div>
       </div>
     </li>

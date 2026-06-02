@@ -586,11 +586,11 @@ function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: bo
         <td className="py-2.5 pr-4">
           <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">{edge.evidenceType}</span>
         </td>
-        <td className="py-2.5 pr-4 text-sm font-mono text-gray-300">
+        <td className="py-2.5 pr-4 text-sm font-mono text-gray-300 whitespace-nowrap">
           {score}/100
           {hasRetraction && (
-            <span className="block text-[10px] text-rose-500/70 font-sans font-normal mt-0.5" title="Score reflects the claim at time of publication — it was later retracted">
-              at the time
+            <span className="text-rose-500/70 font-sans font-normal" title="Score reflects the claim at time of publication — it was later retracted">
+              , at the time
             </span>
           )}
         </td>
