@@ -1069,6 +1069,13 @@ export default function StatisticsPage() {
           most iconic methods carry inline diagrams. Color codes the family; clicking a header
           collapses its section.
         </p>
+        <p className="mt-3 text-sm text-gray-300 leading-relaxed">
+          Looking for depth on the 10 most-cited methods? Try the textbook-style{" "}
+          <Link href="/statistics/methods" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">
+            interactive reference
+          </Link>{" "}
+          — problem · mechanism · worked example · figure · pitfalls · related claims from the database.
+        </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
           {FAMILIES.length} families · {totalMethods} methods
           {query && (

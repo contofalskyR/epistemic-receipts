@@ -271,6 +271,35 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-02 — /statistics/methods (interactive textbook-style reference for the 10 most-cited stats methods)
+
+**What.** New long-form companion to `/statistics` at `/statistics/methods` (`app/statistics/methods/page.tsx`, client component). Covers the 10 statistical methods most-cited in scientific receipts as full textbook entries. The taxonomy page (`/statistics`) remains the broad scannable index (105 methods, problem/keyInsight/example); the new methods page is the deep dive on the 10 every reader needs to actually understand.
+
+- **Methods covered (10):** p-value & NHST, confidence intervals, effect size (Cohen's d), correlation (and the causation trap), odds ratio & relative risk, regression (linear + logistic), meta-analysis & forest plots, statistical power & sample size, Bayesian inference, multiple comparisons / Bonferroni.
+- **Entry structure** (every method): Problem it solves (lead) → Figure → How it works (mechanism + formula in mono-block) → Worked example (concrete sentence with numbers) → Arguments for (+ list, green) & Pitfalls (− list, rose) side-by-side → Related claims (from DB).
+- **Figures** are Recharts components and inline SVG, dark-themed, no external assets:
+  - p-value: standard-normal with shaded ±1.96 rejection regions
+  - CI: 20 simulated 95% intervals around μ=0 colored by coverage (green/red)
+  - Effect size: two normals (μ=0 vs μ=0.8) with overlap
+  - Correlation: 40-point scatter with seeded RNG + fitted line
+  - Odds ratio: inline SVG 2×2 contingency table with formula
+  - Regression: logistic S-curve vs linear extrapolation
+  - Meta-analysis: synthetic forest plot SVG with weighted squares + summary diamond
+  - Power: 3-curve power vs n for d=0.2/0.5/0.8 with the 0.80 reference line
+  - Bayesian: prior Beta(2,2), likelihood (7/10), posterior Beta(9,5) all on one chart
+  - Multiple comparisons: family-wise error rate vs k + Bonferroni floor at α/k
+- **Sidebar nav:** sticky on `lg:` breakpoint; family-color dot + short name; click scrolls + auto-expands target. Filter input scans names, family, problem text, and how-it-works prose; "expand all / collapse all" toggle.
+- **Related claims API:** `app/api/statistics/related-claims/route.ts` — GET-only, `revalidate = 300`. Map of method-slug → 3 most-recent claim previews. Per method, 3–5 keywords (e.g. `["p-value", "p < 0.05", "statistical significance", "null hypothesis"]` for `p-value`); `prisma.claim.findMany` with `OR: terms.map(t => ({ text: { contains: t, mode: "insensitive" } }))`, `deleted: false`, `orderBy: { createdAt: "desc" }`, `take: 3`. Returns `{ id, text, verificationStatus, currentStatus }` per hit. When the keyword search returns nothing the page renders a "no claims yet" empty state with a link to a broader free-text search; this keeps it self-honest about coverage.
+- **Linking:** `/statistics` gained a single sentence + link at the top of its header pointing readers to `/statistics/methods`. The methods page also breadcrumbs back via the `/statistics → methods` header.
+
+**Why.** The /statistics taxonomy is great for browsing — but a reader trying to actually understand "what is a confidence interval" or "why was this paper underpowered" needs more than one sentence + a formula. The 10 methods covered here are the ones that show up over and over in receipts (every clinical trial in the DB cites p-values, CIs, OR/RR; every meta-analysis cites forest plots; ML and Bayesian work cite the rest), so building textbook depth for these specific 10 cleanly pays off without trying to deep-dive all 105.
+
+**Files changed.** `app/statistics/methods/page.tsx` (new, ~860 lines), `app/api/statistics/related-claims/route.ts` (new, ~55 lines), `app/statistics/page.tsx` (added 1 paragraph + Link at top of header), `app/page.tsx` (new top entry in June 2 changelog block), `app/layout.tsx` (footer date `June 2, 2026 (afternoon)`), `CONSULTANT.md` (this entry).
+
+**Verification.** `npx tsc --noEmit` clean. Recharts tooltip formatters narrowed to handle `ValueType | undefined` to satisfy Recharts 3.x types. Method content is static; only the related-claims block hits the DB and degrades gracefully on fetch failure (sets `{}` and renders empty states). API revalidate=300 keeps the lean query off the hot path.
+
+---
+
 ### 2026-06-02 — /statistics upgraded to textbook depth (problem / key insight / example + 11 inline SVG figures)
 
 **What.** Each of the 105 methods on `/statistics` now carries three new fields beyond `description` + `usedFor`: a one-sentence `problem` (what question the method answers / what breaks without it), a mechanistic `keyInsight` (1–2 sentences with backtick-mono formulas where useful — `t = (x̄₁ − x̄₂) / √(s²/n₁ + s²/n₂)`, `posterior ∝ prior × likelihood`, `D_KL(P‖Q) = Σ p(x) log(p(x)/q(x))`, etc.), and a concrete real-world `example` with numbers (drug trial of 50 patients per group with t ≈ 2.5, p ≈ 0.014; Card & Krueger NJ/PA minimum wage DiD; LDL-lowering MR confirming the statin causal pathway). Eleven of the most iconic methods also gained an inline 200×100 SVG figure in `FIGURES` (no external deps): bell curve with μ ± σ marked (Mean/SD), two overlapping bells (independent t-test), scatter + regression line (Linear regression), sigmoid (Logistic regression), prior × likelihood ∝ posterior triptych (Bayesian inference), Venn diagram of H(X), H(Y), I(X;Y) (Mutual information), point cloud with PC1/PC2 arrows (PCA), ROC curve with diagonal baseline and shaded AUC (ROC/AUC), two bells with α and β tails shaded (Power analysis), Kaplan-Meier step survival curve (Cox PH), and time series with forecast cone and CI fan (ARIMA).
