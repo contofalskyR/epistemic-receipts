@@ -527,7 +527,7 @@ function MemberVotesSection({ legislativeVoteId, count }: { legislativeVoteId: s
 
 // ── Edges table row ───────────────────────────────────────────────────────────
 
-function EdgeRow({ edge }: { edge: EdgeDetail }) {
+function EdgeRow({ edge, hasRetraction }: { edge: EdgeDetail; hasRetraction?: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const score = latestScore(edge);
   const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
@@ -586,7 +586,14 @@ function EdgeRow({ edge }: { edge: EdgeDetail }) {
         <td className="py-2.5 pr-4">
           <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">{edge.evidenceType}</span>
         </td>
-        <td className="py-2.5 pr-4 text-sm font-mono text-gray-300">{score}/100</td>
+        <td className="py-2.5 pr-4 text-sm font-mono text-gray-300">
+          {score}/100
+          {hasRetraction && (
+            <span className="block text-[10px] text-rose-500/70 font-sans font-normal mt-0.5" title="Score reflects the claim at time of publication — it was later retracted">
+              at the time
+            </span>
+          )}
+        </td>
         <td className="py-2.5 pr-4 text-xs text-gray-500">
           {edge.source.publishedAt ? formatDate(edge.source.publishedAt) : "—"}
           {edge.source.politicalContext?.headOfGovernment && (
@@ -707,6 +714,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
   const [claim, setClaim] = useState<ClaimDetail | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [sortDir] = useState<"desc">("desc");
+  const [hasRetraction, setHasRetraction] = useState(false);
 
   useEffect(() => {
     fetch(`/api/claims/${id}`)
@@ -883,7 +891,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
                 </tr>
               </thead>
               <tbody>
-                {sortedEdges.map(edge => <EdgeRow key={edge.id} edge={edge} />)}
+                {sortedEdges.map(edge => <EdgeRow key={edge.id} edge={edge} hasRetraction={hasRetraction} />)}
               </tbody>
             </table>
           </div>
@@ -891,7 +899,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
       </section>
 
       {/* Follow-up layer — renders nothing if no follow-up relations */}
-      <WhatHappenedNextPanel claimId={claim.id} />
+      <WhatHappenedNextPanel claimId={claim.id} onHasReversed={setHasRetraction} />
 
       {/* Citation graph (lazy-loaded — renders nothing if no relations) */}
       <ClaimRelationsPanel claimId={claim.id} />

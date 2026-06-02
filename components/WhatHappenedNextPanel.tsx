@@ -86,7 +86,13 @@ function FollowUpRow({ item }: { item: FollowUpClaim }) {
   );
 }
 
-export default function WhatHappenedNextPanel({ claimId }: { claimId: string }) {
+export default function WhatHappenedNextPanel({
+  claimId,
+  onHasReversed,
+}: {
+  claimId: string;
+  onHasReversed?: (v: boolean) => void;
+}) {
   const [data, setData] = useState<FollowUpGroup | null>(null);
 
   useEffect(() => {
@@ -94,7 +100,10 @@ export default function WhatHappenedNextPanel({ claimId }: { claimId: string }) 
     fetch(`/api/claims/${claimId}/followups`)
       .then(r => (r.ok ? r.json() : null))
       .then((d: FollowUpGroup | null) => {
-        if (!cancelled) setData(d);
+        if (!cancelled) {
+          setData(d);
+          if (d && d.REVERSED?.length > 0) onHasReversed?.(true);
+        }
       })
       .catch(() => {
         if (!cancelled) setData(null);
@@ -102,7 +111,7 @@ export default function WhatHappenedNextPanel({ claimId }: { claimId: string }) 
     return () => {
       cancelled = true;
     };
-  }, [claimId]);
+  }, [claimId, onHasReversed]);
 
   if (!data) return null;
 
