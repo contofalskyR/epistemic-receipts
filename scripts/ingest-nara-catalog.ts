@@ -7,6 +7,7 @@
 // Run: npx tsx scripts/ingest-nara-catalog.ts --dry-run (default; requires NARA_API_KEY)
 //      npx tsx scripts/ingest-nara-catalog.ts --full [--record-group 263]  (requires ALLOW_EDITS=true + NARA_API_KEY)
 //      npx tsx scripts/ingest-nara-catalog.ts --full --record-group 59 --year-start 1940 --year-end 1945 --dry-run
+//      npx tsx scripts/ingest-nara-catalog.ts --check-limits  (probe rate limit headers, 1 API call, no DB writes)
 //
 // API notes discovered during integration (2026-05-28/29):
 //   - v2 params differ from v1: levelOfDescription=item (not resultTypes), limit= (not rows=), page= (not offset=)
@@ -188,7 +189,9 @@ function parseArgs() {
   const yearStart: number | null = ysi !== -1 ? parseInt(args[ysi + 1] ?? '0', 10) : null
   const yearEnd: number | null = yei !== -1 ? parseInt(args[yei + 1] ?? '0', 10) : null
 
-  return { mode, recordGroups, apiKey, maxPages, isResume, isFull, yearStart, yearEnd }
+  const isCheckLimits = args.includes('--check-limits')
+
+  return { mode, recordGroups, apiKey, maxPages, isResume, isFull, yearStart, yearEnd, isCheckLimits }
 }
 
 // ── Rate limiting + HTTP ──────────────────────────────────────────────────────
@@ -593,7 +596,33 @@ async function writeRow(
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, recordGroups, apiKey, maxPages, isResume, isFull, yearStart: yearStartArg, yearEnd: yearEndArg } = parseArgs()
+  const { mode, recordGroups, apiKey, maxPages, isResume, isFull, yearStart: yearStartArg, yearEnd: yearEndArg, isCheckLimits } = parseArgs()
+
+  // ── --check-limits: probe rate limit headers and exit ──────────────────────
+  if (isCheckLimits) {
+    console.log('Probing NARA API rate limit headers (1 request)...')
+    const probeUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=1&recordGroupNumber=263`
+    await throttle()
+    const res = await fetch(probeUrl, {
+      headers: { 'Accept': 'application/json', 'x-api-key': apiKey },
+    })
+    console.log(`\nHTTP ${res.status}`)
+    console.log('\nAll response headers:')
+    res.headers.forEach((val, key) => {
+      console.log(`  ${key}: ${val}`)
+    })
+    const rateHeaders = ['x-ratelimit-limit', 'x-ratelimit-remaining', 'x-ratelimit-reset',
+      'ratelimit-limit', 'ratelimit-remaining', 'ratelimit-reset',
+      'retry-after', 'x-quota-limit', 'x-quota-remaining', 'x-quota-reset']
+    console.log('\nRate-limit specific headers:')
+    let found = false
+    for (const h of rateHeaders) {
+      const v = res.headers.get(h)
+      if (v) { console.log(`  ${h}: ${v}`); found = true }
+    }
+    if (!found) console.log('  (none found — NARA may not expose rate limit headers)')
+    return
+  }
 
   const currentYear = new Date().getFullYear()
   const yearStart = yearStartArg ?? DEFAULT_YEAR_START
