@@ -271,6 +271,39 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — Congress.gov vote → law linker (link-congress-relations.ts)
+
+**What.** New script `scripts/link-congress-relations.ts` builds `ClaimRelation` rows tied to the `congress_votes_v1` corpus in two passes.
+
+**Pass A — OUTCOME (no API calls).** For each of the 505 `congress_votes_v1` vote claims, looks up the matching `congress_v1` enacted-law claim by `(metadata.congress, metadata.billType, metadata.billNumber)` (case-insensitive on billType — votes store `hr` / `s` lowercase, laws store `HR` / `S` uppercase). All 505 votes resolved to a law claim → **505 OUTCOME rows inserted**, 0 unmatched. Confirmed via DB count: `OUTCOME` total 33 → 538; `heuristic = 'congress_vote_to_law_match'` exactly 505. This is expected because `ingest-congress-votes.ts` only ingested votes for bills that the `/law/{congress}` endpoint flagged as enacted — every vote bill is already in `congress_v1`.
+
+**Pass B — SUPERSEDED_BY (Congress.gov /relatedbills).** Dedupes 505 votes to **230 unique bills**, queries `https://api.congress.gov/v3/bill/{congress}/{type}/{number}/relatedbills` for each. Returns 3,353 raw related-bill records across the 230 bills. Relationship-type breakdown:
+
+| Count | relationshipDetails.type | Treated as supersede? |
+|---:|---|---|
+| 3,225 | `Related bill` | No (too generic — CRS uses this catch-all for ~96% of links) |
+| 227 | `Procedurally related` | No (procedural, not substantive) |
+| 82 | `Identical bill` | No (companion in the other chamber, parallel introduction) |
+| 4 | `Text similarities` | Yes |
+| 2 | `Related document` | No |
+| 1 | `Public law contains the text` | Yes |
+
+**Result:** 5 supersede-typed matches, but in all 5 cases the related bill has no `congress_v1` claim (the related bills are non-enacted companions or earlier versions in another chamber). **0 SUPERSEDED_BY rows inserted.** This is an accurate reflection of the data — the `/relatedbills` endpoint's vocabulary isn't structured to expose strong supersession semantics, and the strict signals it does expose target non-enacted bills not in our enacted-law corpus.
+
+**Why.** Complements the earlier `link-congress-outcomes.ts` (which does `congress_v1` → NARA OUTCOMEs + text-pattern SUPERSEDED_BY within `congress_v1`). This script is the inverse direction: vote-event → enacted-law OUTCOME, and would have surfaced API-curated supersede pairs if they existed.
+
+**Direction logic for SUPERSEDED_BY** (unused in this run but live for future corpora expansion): if both bills have `congress_v1` claims, sort by `enactedDate` (earlier → later). Tie-break by congress number. If both indistinguishable, skip rather than picking an arbitrary direction.
+
+**Whitelist classifier.** `relIsSupersede()` accepts: `public law contains | contains the text | text similarities`, plus any string containing `amend | supersed | replac | incorporat | includes provisions | provisions included | repeal`. Excludes: `companion | identical | procedurally | see also | crs source | related document | ^related bill$`. The exclusion list was tuned against the actual API response — initial run with a narrower `amend|supersed|replac|...` regex returned 0 matches; widening to the observed CRS strings gave the 5 reported.
+
+**API budget.** 230 bills × 1 request each at 250ms throttle ≈ 60 s wall clock. Congress.gov keyed limit is 5,000 req/hr — well under budget.
+
+**Followup blob.** Each OUTCOME row carries `{ outcomeType: 'enacted_law', pipeline_from: 'congress_votes_v1', pipeline_to: 'congress_v1', congress, billType, billNumber, heuristic: 'congress_vote_to_law_match', confidence: 'high' }`.
+
+**Files changed.** `scripts/link-congress-relations.ts` (new), `app/page.tsx` (June 1 homepage entry), `CONSULTANT.md`. Footer reads "last updated June 1, 2026" — no change needed.
+
+---
+
 ### 2026-06-01 — What-happened-next badge labels refreshed
 
 **What.** Refreshed the follow-up badge wording on the claim detail page panel (`components/WhatHappenedNextPanel.tsx`) to match the user-facing brief:
