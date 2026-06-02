@@ -271,6 +271,25 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-02 — Statistics taxonomy page (/statistics)
+
+**What.** New standalone interactive guide to statistical methods at `/statistics`, served by `app/statistics/page.tsx` as a pure client component (no API calls, no DB reads — all content is static/curated).
+
+- **9 families, color-coded:** Descriptive (gray), Frequentist Inferential (blue), Regression & Prediction (green), Bayesian (purple), Experimental Design (amber), Causal Inference (orange), Signal Processing & Time Series (teal), Information Theory (rose), Machine Learning (violet).
+- **117 methods total** across the 9 families. Each method carries `{ name, description, usedFor: string[] }` and renders as a card with: bold name, one-line description, 2–3 "used for" tag chips in the family color, and a per-method link to `/search?q=<method>` to find claims that mention the term.
+- **UX:** sticky search bar (top, with backdrop-blur) filters methods in real time by name / description / tags; per-family headers toggle their section collapsed via local `useState<Set<string>>`; Expand-all / Collapse-all / Clear buttons; "no matches" empty state for unmatched filter strings.
+- **Color palette** lives in a `COLOR_STYLES` map keyed by `ColorKey = "gray" | "blue" | "green" | "purple" | "amber" | "orange" | "teal" | "rose" | "violet"`. Each entry carries 8 Tailwind class strings (`headerBg`, `headerBorder`, `headerText`, `chipBg`, `chipText`, `cardBorder`, `cardHover`, `accent`) — these are statically-known Tailwind classes so they survive the JIT compile (no dynamic-class footgun).
+- **Nav integration:** `app/layout.tsx` gains a `<Link href="/statistics">Statistics</Link>` slotted between Fields and Review in the top nav.
+- **Caveat block at the bottom of the page** notes that the search link is a free-text match (not a curated cross-reference to claims that actually *apply* a given method), and that a claim-powered method explorer is on the roadmap. This avoids overselling the cross-reference quality before any editorial CITES edges have been built.
+
+**Why.** The site's `/fields` page already surfaces academic disciplines, but Statistics-the-discipline was buried inside `formal-sciences` with no dedicated entry point. The taxonomy on this page is meant to be a "stemmy" reference — dense, precise, scannable — that helps a reader cross-reference the methodological language used in claims back to a unified taxonomy. It also seeds the future direction where each method becomes a backed-by-CITES-edges entry pointing at claims that genuinely apply that technique.
+
+**Files changed.** `app/statistics/page.tsx` (new), `app/layout.tsx` (nav link), `app/page.tsx` (June 2 changelog block), `CONSULTANT.md` (this entry). Footer date in `app/layout.tsx` already at `June 2, 2026` — no bump.
+
+**Verification.** `npx tsc --noEmit` clean.
+
+---
+
 ### 2026-06-02 — Retraction UI polish + status reflect (11,319 retracted claims → DISPUTED)
 
 **What.** Three follow-ons to today's earlier Retraction Watch enrichment.
