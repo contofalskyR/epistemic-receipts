@@ -5,6 +5,7 @@
 // Run: npx tsx scripts/ingest-openalex.ts --bucket [cognition|biomedical|policy] --limit N
 
 import 'dotenv/config'
+import { randomUUID } from 'crypto'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -83,7 +84,8 @@ async function fetchWithRetry(url: string, retries = 3): Promise<Response> {
 
 interface BucketConfig {
   conceptIds: string[]       // OR-filtered
-  search: string
+  search?: string
+  extraFilters?: string[]    // additional comma-joined filter clauses (e.g. is_retracted:true)
   extraTopicSlugs: string[]  // tagged onto every claim in this bucket
 }
 
@@ -103,6 +105,14 @@ const BUCKETS: Record<string, BucketConfig> = {
     search: 'policy analysis OR regulatory impact OR legislation',
     extraTopicSlugs: ['policy-research', 'political-science'],
   },
+  // Targets the fields where CrossRef retractions cluster (paper-mill heavy domains).
+  // is_retracted:true narrows to ~71k OpenAlex works in these fields; has_doi:true
+  // is required for CrossRef DOI-based linkage in link-retractions-crossref.ts.
+  'retraction-prone-fields': {
+    conceptIds: ['C192562407', 'C185592680', 'C41008148'], // Materials science, Chemistry, Engineering
+    extraFilters: ['is_retracted:true', 'has_doi:true'],
+    extraTopicSlugs: ['materials-science', 'chemistry', 'engineering'],
+  },
 }
 
 const SELECT_FIELDS = [
@@ -114,10 +124,14 @@ async function* paginateWorks(cfg: BucketConfig, cap: number): AsyncGenerator<OA
   let cursor: string | null = '*'
   let yielded = 0
 
+  const filterParts = [`concepts.id:${cfg.conceptIds.join('|')}`]
+  if (cfg.extraFilters) filterParts.push(...cfg.extraFilters)
+  const filter = filterParts.join(',')
+
   while (cursor) {
     const url = new URL(OA_BASE)
-    url.searchParams.set('filter', `concepts.id:${cfg.conceptIds.join('|')}`)
-    url.searchParams.set('search', cfg.search)
+    url.searchParams.set('filter', filter)
+    if (cfg.search) url.searchParams.set('search', cfg.search)
     url.searchParams.set('per-page', '200')
     url.searchParams.set('cursor', cursor)
     url.searchParams.set('select', SELECT_FIELDS)
@@ -214,6 +228,11 @@ async function ensureCoreTopics(bucket: string): Promise<string[]> {
     'aesthetic-medicine': [
       { slug: 'aesthetic-medicine', name: 'Aesthetic Medicine',             domain: 'academic-literature' },
       { slug: 'aesthetics',         name: 'Aesthetics & Cosmetic Medicine', domain: 'medicine' },
+    ],
+    'retraction-prone-fields': [
+      { slug: 'materials-science', name: 'Materials Science', domain: 'academic-literature' },
+      { slug: 'chemistry',         name: 'Chemistry',         domain: 'academic-literature' },
+      { slug: 'engineering',       name: 'Engineering',       domain: 'academic-literature' },
     ],
   }
   const ids = [root]
@@ -332,6 +351,202 @@ async function ingestWork(work: OAWork, topicIds: string[]): Promise<IngestResul
     console.error(`  Failed: ${workId} — ${msg}`)
     return 'failed'
   }
+}
+
+// ── Batched ingest (fast path for large buckets) ─────────────────────────────
+// Per-page bulk inserts via createMany. Generates client-side IDs so all rows
+// (Source, Claim, Edge, EdgeRevision, ClaimTopic) can be inserted in one tx.
+
+interface PreparedRow {
+  workId: string
+  title: string
+  summary: string
+  sourceUrl: string
+  venueName: string
+  publishedAt: Date | null
+  doi: string | null
+  claimExternalId: string
+  sourceExternalId: string
+}
+
+function prepareWork(work: OAWork): PreparedRow | null {
+  const workId = extractWorkId(work.id)
+  if (!workId) return null
+  const title = work.title?.trim()
+  if (!title) return null
+  const doiUrl = doiToUrl(work.doi)
+  const landing = work.primary_location?.landing_page_url?.trim() || null
+  const sourceUrl = doiUrl ?? landing
+  if (!sourceUrl) return null
+
+  const abstract = reconstructAbstract(work.abstract_inverted_index)
+  const summary = (abstract && abstract.length > 0 ? abstract : title).slice(0, 500)
+  const publishedAt = parseDate(work.publication_date)
+  const venueName = work.primary_location?.source?.display_name?.trim()
+    ?? work.primary_location?.source?.host_organization_name?.trim()
+    ?? 'OpenAlex'
+
+  return {
+    workId,
+    title,
+    summary,
+    sourceUrl,
+    venueName,
+    publishedAt,
+    doi: work.doi ?? null,
+    claimExternalId: `openalex_${workId}`,
+    sourceExternalId: `openalex_source_${workId}`,
+  }
+}
+
+async function ingestBatch(works: OAWork[], topicIds: string[]): Promise<Counts> {
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+
+  const prepared: PreparedRow[] = []
+  for (const w of works) {
+    const r = prepareWork(w)
+    if (r) prepared.push(r)
+    else counts.skipped++
+  }
+  if (prepared.length === 0) return counts
+
+  const claimExtIds  = prepared.map(p => p.claimExternalId)
+  const sourceExtIds = prepared.map(p => p.sourceExternalId)
+
+  const [existingClaims, existingSources] = await Promise.all([
+    prisma.claim.findMany({
+      where: { externalId: { in: claimExtIds } },
+      select: { externalId: true },
+    }),
+    prisma.source.findMany({
+      where: { externalId: { in: sourceExtIds } },
+      select: { externalId: true },
+    }),
+  ])
+  const existingClaimSet  = new Set(existingClaims.map(c => c.externalId!))
+  const existingSourceSet = new Set(existingSources.map(s => s.externalId!))
+
+  const fresh = prepared.filter(p =>
+    !existingClaimSet.has(p.claimExternalId) && !existingSourceSet.has(p.sourceExternalId),
+  )
+  counts.skipped += prepared.length - fresh.length
+  if (fresh.length === 0) return counts
+
+  const rows = fresh.map(p => ({
+    ...p,
+    sourceId: randomUUID(),
+    claimId:  randomUUID(),
+    edgeId:   randomUUID(),
+  }))
+
+  try {
+    await prisma.$transaction(async tx => {
+      await tx.source.createMany({
+        data: rows.map(r => ({
+          id: r.sourceId,
+          name: r.venueName,
+          url: r.sourceUrl,
+          publishedAt: r.publishedAt,
+          methodologyType: 'primary',
+          ingestedBy: 'openalex_v1',
+          humanReviewed: false,
+          autoApproved: true,
+          externalId: r.sourceExternalId,
+        })),
+      })
+
+      await tx.claim.createMany({
+        data: rows.map(r => ({
+          id: r.claimId,
+          text: r.summary,
+          claimType: 'EMPIRICAL',
+          currentStatus: 'HARD_FACT',
+          claimEmergedAt: r.publishedAt,
+          claimEmergedPrecision: r.publishedAt ? 'DAY' : null,
+          ingestedBy: 'openalex_v1',
+          humanReviewed: false,
+          autoApproved: true,
+          externalId: r.claimExternalId,
+          metadata: {
+            dataset: 'openalex_v1',
+            openalex_id: r.workId,
+            title: r.title,
+            doi: r.doi,
+            venue: r.venueName,
+          },
+        })),
+      })
+
+      await tx.edge.createMany({
+        data: rows.map(r => ({
+          id: r.edgeId,
+          sourceId: r.sourceId,
+          claimId: r.claimId,
+          type: 'FOR',
+          evidenceType: 'EVIDENTIARY',
+          ingestedBy: 'openalex_v1',
+          humanReviewed: false,
+          autoApproved: true,
+        })),
+      })
+
+      await tx.edgeRevision.createMany({
+        data: rows.map(r => ({
+          edgeId: r.edgeId,
+          priorScore: null,
+          newScore: 80,
+          reason: 'OpenAlex — peer-reviewed publication record',
+          changedAt: r.publishedAt ?? new Date(),
+        })),
+      })
+
+      await tx.claimTopic.createMany({
+        data: rows.flatMap(r => topicIds.map(tid => ({ claimId: r.claimId, topicId: tid }))),
+        skipDuplicates: true,
+      })
+    }, { timeout: 60000 })
+
+    counts.ingested += rows.length
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error(`  Batch failed (${rows.length} rows): ${msg}`)
+    counts.errors += rows.length
+  }
+
+  return counts
+}
+
+async function runBucketBatched(bucket: string, limit: number): Promise<Counts> {
+  const cfg = BUCKETS[bucket]
+  if (!cfg) throw new Error(`Unknown bucket: ${bucket}`)
+
+  const topicIds = await ensureCoreTopics(bucket)
+  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+
+  let batch: OAWork[] = []
+  const BATCH_SIZE = 200
+  let seen = 0
+  const fetchCap = limit > 0 ? limit + 1000 : 0
+
+  async function flush() {
+    if (batch.length === 0) return
+    const r = await ingestBatch(batch, topicIds)
+    counts.ingested += r.ingested
+    counts.skipped  += r.skipped
+    counts.errors   += r.errors
+    batch = []
+    console.log(`  Progress: seen=${seen} ingested=${counts.ingested} skipped=${counts.skipped} errors=${counts.errors}`)
+  }
+
+  for await (const work of paginateWorks(cfg, fetchCap)) {
+    if (limit > 0 && counts.ingested >= limit) break
+    seen++
+    batch.push(work)
+    if (batch.length >= BATCH_SIZE) await flush()
+  }
+  await flush()
+
+  return counts
 }
 
 // ── Aesthetic-medicine bucket ─────────────────────────────────────────────────
@@ -491,7 +706,9 @@ async function main() {
 
   const result = bucket === 'aesthetic-medicine'
     ? await runAestheticMedicineBucket(limit)
-    : await runBucket(bucket, limit)
+    : bucket === 'retraction-prone-fields'
+      ? await runBucketBatched(bucket, limit)
+      : await runBucket(bucket, limit)
 
   console.log(`\n=== Summary (${bucket}) ===`)
   console.log(`  Ingested : ${result.ingested}`)

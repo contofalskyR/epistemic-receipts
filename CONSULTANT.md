@@ -271,6 +271,37 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — OpenAlex retraction-prone-fields bucket → REVERSED grew 26 → 11,319
+
+**What.** Extended `scripts/ingest-openalex.ts` with a new `retraction-prone-fields` bucket targeting the three OpenAlex concepts that dominate retracted-paper coverage: materials science (`C192562407`), chemistry (`C185592680`), engineering (`C41008148`). Ingested 50,163 new `openalex_v1` claims, then re-ran `scripts/link-retractions-crossref.ts` to refresh DOI-joined REVERSED ClaimRelation rows.
+
+**Why.** The 2026-06-01 CrossRef retraction linker investigation diagnosed the REVERSED count's 26-row plateau as a coverage problem: our 161k OpenAlex sample was weighted toward cognition / biomedical / policy, while CrossRef retractions cluster in paper-mill-heavy fields (materials, chem, engineering). The fix was to ingest the high-retraction fields directly. OpenAlex reports 71,677 retracted DOI-bearing works in these three concepts; capturing 70% of them was projected to yield ~500–2,000 REVERSED links.
+
+**How.**
+- Added `retraction-prone-fields` bucket with `extraFilters: ['is_retracted:true', 'has_doi:true']`. `is_retracted:true` is the OpenAlex filter that mirrors CrossRef's `update-type:retraction`; pairing it with `has_doi:true` guarantees DOI-keyed linkage to `crossref_retractions_v1`.
+- Made `BucketConfig.search` optional and added `extraFilters: string[]` so a bucket can layer comma-joined filter clauses on top of the concept-ID OR-filter. Existing `cognition` / `biomedical` / `policy` / `aesthetic-medicine` paths are unchanged.
+- Added three new topics (`materials-science`, `chemistry`, `engineering`) under `academic-literature`, all tagged onto every claim in this bucket.
+- **Batched fast-path (new):** the original per-record path (`runBucket`) was hitting ~16 rows/min — at 50k rows that's ~52 hours, infeasible. Added `runBucketBatched` + `ingestBatch` for the new bucket only: per page of 200 OpenAlex results, do one IN-query dedup against `Claim.externalId` and `Source.externalId`, then 5 `createMany` calls (Source / Claim / Edge / EdgeRevision / ClaimTopic) inside one `prisma.$transaction({ timeout: 60000 })`. IDs are generated client-side via `crypto.randomUUID()`. Throughput went from ~16 rows/min → ~100 rows/sec (~375× speedup); 50k rows in ~9 minutes.
+
+**Results.**
+- Claims ingested: **50,163** new (script summary) — `openalex_v1` total grew 161,819 → 212,145 (DB-verified delta 50,326, includes a ~150-row earlier partial run that was killed and re-launched against the optimized batched path).
+- 0 errors. 237 in-script skips (cross-bucket overlaps + the killed partial run).
+- REVERSED ClaimRelation: **26 → 11,319** (+11,293 new rows). Step 1 of `link-retractions-crossref.ts` produced 11,319 DOI matches; 11,293 inserts + 26 updates of pre-existing rows + 0 errors.
+- DOI-bearing original-paper claims in DB rose from ~161k → 204,490 (matches the +50k ingest, minus the small fraction without DOIs).
+- ClaimRelation totals now: `cites 977,435 · related 72,048 · SUPERSEDED_BY 39,966 · REVERSED 11,319 · OUTCOME 538`.
+
+**Why the yield blew past the projection.** The brief estimated 500–2,000 new REVERSED links from a 50k retracted-paper ingest. The actual yield (11,293) was ~5× the upper bound. Two reasons: (1) the projection extrapolated from a 0.016% base rate, which applies to a *random* OpenAlex sample, not to one pre-filtered to `is_retracted:true`; the pre-filtered match rate against our `crossref_retractions_v1` corpus is ~22% (11,319 / 50,163), three orders of magnitude denser. (2) Material/chem/engineering retractions on OpenAlex correlate heavily with CrossRef retraction coverage — they're often the *same* paper-mill records appearing in both retraction-tracking systems.
+
+**Files changed.** `scripts/ingest-openalex.ts` (added `retraction-prone-fields` bucket, `runBucketBatched`, `ingestBatch`, `prepareWork`; made `BucketConfig.search` optional; added `extraFilters`; topic mappings), `CONSULTANT.md` (this entry).
+
+**Run commands.**
+```
+npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-openalex.ts --bucket retraction-prone-fields --limit 50000
+ALLOW_EDITS=true npx dotenv-cli -e .env.local -- npx tsx scripts/link-retractions-crossref.ts --skip-api
+```
+
+---
+
 ### 2026-06-01 — Congress.gov vote → law linker (link-congress-relations.ts)
 
 **What.** New script `scripts/link-congress-relations.ts` builds `ClaimRelation` rows tied to the `congress_votes_v1` corpus in two passes.
