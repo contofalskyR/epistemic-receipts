@@ -271,6 +271,24 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-01 — What-happened-next badge labels refreshed
+
+**What.** Refreshed the follow-up badge wording on the claim detail page panel (`components/WhatHappenedNextPanel.tsx`) to match the user-facing brief:
+
+- `OUTCOME` → **Led to** (was "Outcome")
+- `REVERSED` → **Retracted** (was "Reversed")
+- `EXPANDED` → **Expanded by** (was "Expanded")
+- `SUPERSEDED_BY` → **Superseded by** (unchanged)
+- `STATUS_UPDATE` → **Status update** (unchanged)
+
+**Why.** The original labels (built earlier today as part of the "Claim follow-up layer" entry below) used the raw relation-type as the display label. The brief asked for a more natural copy that reads as a sentence fragment.
+
+**No schema, API, or data change.** The route (`/api/claims/[id]/followups`) and the relation-type buckets are unchanged. The existing `/api/claims/[id]/relations` route (citation graph: `cites`/`cited_by`/`related`) was not touched.
+
+**Files changed.** `components/WhatHappenedNextPanel.tsx`, `app/page.tsx` (homepage changelog), `CONSULTANT.md`. Footer already reads "last updated June 1, 2026".
+
+---
+
 ### 2026-06-01 — CrossRef retraction linker investigation (link-retractions-crossref.ts)
 
 **What.** Investigated and implemented a dedicated CrossRef retraction linker (`scripts/link-retractions-crossref.ts`) to attempt to grow the REVERSED ClaimRelation count beyond the existing plateau of 26.

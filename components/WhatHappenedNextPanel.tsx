@@ -20,7 +20,7 @@ type FollowUpGroup = Record<FollowUpType, FollowUpClaim[]>;
 
 const SECTION_META: Record<FollowUpType, { label: string; hint: string; badgeClass: string }> = {
   OUTCOME: {
-    label: "Outcome",
+    label: "Led to",
     hint: "what came of this",
     badgeClass: "bg-emerald-950 text-emerald-400 border-emerald-900",
   },
@@ -35,12 +35,12 @@ const SECTION_META: Record<FollowUpType, { label: string; hint: string; badgeCla
     badgeClass: "bg-amber-950 text-amber-400 border-amber-900",
   },
   REVERSED: {
-    label: "Reversed",
+    label: "Retracted",
     hint: "later overturned, retracted, or revoked",
     badgeClass: "bg-rose-950 text-rose-400 border-rose-900",
   },
   EXPANDED: {
-    label: "Expanded",
+    label: "Expanded by",
     hint: "scope broadened by a later record",
     badgeClass: "bg-violet-950 text-violet-400 border-violet-900",
   },
