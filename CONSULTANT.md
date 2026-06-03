@@ -260,6 +260,26 @@ AiJob extraction pipeline unblocks scale but must not be built until sufficient 
 - **ICD-11 (Pipeline 11):** Requires `ICD_API_CLIENT_ID` and `ICD_API_CLIENT_SECRET` env vars. Dry-run not yet done.
 - **ReactFlow graph:** Currently at claims/edges scale. Performance on 47k+ nodes untested.
 
+## Globe — Typed Density Layers (roadmap)
+
+**Current state:** `/globe` shows claim density across all facts (all pipelines merged). "All facts" is a useful baseline but editorially undifferentiated — a country with many pharma trial records looks the same as one with many human rights records.
+
+**Desired end state:** The globe should support layer/category switching so users can view density by fact type, not just total count. Example overlays:
+
+- **Pharmaceutical / Drug Discovery** — openFDA, ClinicalTrials, ChEBI, FAERS
+- **Human Rights / Rule of Law** — CourtListener, judicial disclosures, UN SC resolutions, legislation trackers
+- **Scientific Research** — NIH Reporter, OpenAlex, PubChem, GenBank, NASA
+- **Geopolitical / Legislation** — all legislative pipelines (Argentina, Italy, Chile, Bundestag, Riksdag, etc.)
+- **Financial Accountability** — CrossRef retractions, World Bank, JACAR Japan archives
+
+**Implementation sketch:**
+- Map each `ingestedBy` pipeline ID → a category enum (stored in a lookup table or hardcoded map)
+- Expose a `category` query param on `/api/globe/density`
+- Globe UI gets a category selector (pills or dropdown) above the existing heatmap/origins toggle
+- "All" remains the default — no regression for existing users
+
+**Priority:** Medium. Add category selector once the pipeline set is stable enough that the mapping won't need constant revision. Good candidate for a future globe sprint.
+
 ---
 
 ## Pending Production Runs (approved, run when ready)
