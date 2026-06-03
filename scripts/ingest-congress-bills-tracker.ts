@@ -23,7 +23,7 @@ if (!API_KEY) { console.error('CONGRESS_API_KEY not set'); process.exit(1) }
 
 const PAGE_SIZE = 250
 const REQUEST_DELAY_MS = 200
-const DEFAULT_LIMIT = 500
+const DEFAULT_LIMIT = 0 // 0 = no limit (pull all bills)
 
 const BILL_TYPES = ['hr', 's', 'hjres', 'sjres', 'hconres', 'sconres', 'hres', 'sres'] as const
 type BillType = typeof BILL_TYPES[number]
@@ -48,6 +48,7 @@ const STATUS_SLUGS = [
   'status-passed-senate',
   'status-enacted',
   'status-vetoed',
+  'status-failed',
   'status-in-progress',
 ] as const
 
@@ -78,6 +79,7 @@ function statusSlug(actionText: string | undefined): typeof STATUS_SLUGS[number]
   const t = actionText ?? ''
   if (/became public law|signed by president/i.test(t)) return 'status-enacted'
   if (/vetoed/i.test(t)) return 'status-vetoed'
+  if (/failed of passage|failed to pass|on passage.*failed|motion to suspend the rules.*failed|on motion to suspend the rules.*not agreed to|bill rejected|cloture motion rejected/i.test(t)) return 'status-failed'
   if (/passed senate|agreed to in senate/i.test(t)) return 'status-passed-senate'
   if (/passed house|agreed to in house/i.test(t)) return 'status-passed-house'
   if (/^introduced|introduced in/i.test(t)) return 'status-introduced'
@@ -91,6 +93,7 @@ function statusName(slug: typeof STATUS_SLUGS[number]): string {
     case 'status-passed-senate': return 'Status: Passed Senate'
     case 'status-enacted': return 'Status: Enacted'
     case 'status-vetoed': return 'Status: Vetoed'
+    case 'status-failed': return 'Status: Failed'
     case 'status-in-progress': return 'Status: In Progress'
   }
 }
@@ -391,7 +394,7 @@ function readPriorActionDate(metadata: unknown): string | null {
 async function main(): Promise<void> {
   const { limit, offset, verbose } = parseArgs()
   console.log(`\n── Congress Bills Status Tracker ───────────────────────────────────`)
-  console.log(`Congress: ${CURRENT_CONGRESS} | Limit: ${limit} | Offset: ${offset}`)
+  console.log(`Congress: ${CURRENT_CONGRESS} | Limit: ${limit === 0 ? 'none (full sweep)' : limit} | Offset: ${offset}`)
 
   const startTime = Date.now()
   let processed = 0
@@ -402,7 +405,7 @@ async function main(): Promise<void> {
   let errors = 0
   let currentOffset = offset
 
-  outer: while (processed < limit) {
+  outer: while (limit === 0 || processed < limit) {
     let page: BillListResponse
     try {
       page = await fetchBillList(currentOffset)
@@ -416,7 +419,7 @@ async function main(): Promise<void> {
     if (bills.length === 0) break
 
     for (const bill of bills) {
-      if (processed >= limit) break outer
+      if (limit > 0 && processed >= limit) break outer
 
       const billType = bill.type?.toLowerCase() ?? ''
       if (!BILL_TYPES.includes(billType as BillType)) {
