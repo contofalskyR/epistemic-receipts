@@ -1,11 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-type Country = "us" | "ca" | "nz";
+type Region = "Americas" | "Europe" | "Asia-Pacific" | "Africa";
+type SpecialView = "us" | "ca" | "nz";
 type Outcome = "enacted" | "passed" | "vetoed" | "failed" | "active";
 type View = "status" | "outcomes" | "full";
+
+const REGIONS: Region[] = ["Americas", "Europe", "Asia-Pacific", "Africa"];
 
 type BillHit = {
   id: string;
@@ -23,6 +26,25 @@ type BillHit = {
   outcome: Outcome;
 };
 
+type CountryListEntry = {
+  code: string;
+  label: string;
+  flag: string;
+  region: Region;
+  sourceLabel: string;
+  specialView: SpecialView | null;
+  count: number;
+};
+
+type CountryPayloadEntry = {
+  code: string;
+  label: string;
+  flag: string;
+  region: Region;
+  sourceLabel: string;
+  specialView: SpecialView | null;
+};
+
 type BillsResponse = {
   bills: BillHit[];
   total: number;
@@ -30,44 +52,11 @@ type BillsResponse = {
   limit: number;
   lastRefresh: string | null;
   outcomeCounts?: Record<Outcome, number>;
-  countries?: Record<string, { label: string }>;
+  countries?: CountryPayloadEntry[];
 };
 
 const PAGE_SIZE = 25;
 const FULL_PAGE_SIZE = 50;
-
-const COUNTRY_TABS: {
-  value: Country;
-  label: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-}[] = [
-  {
-    value: "us",
-    label: "🇺🇸 US Congress",
-    eyebrow: "Congress Tracker",
-    title: "119th Congress",
-    description:
-      "Live bill status — sourced from congress.gov. Filter by status, chamber, or search by title or bill number.",
-  },
-  {
-    value: "ca",
-    label: "🇨🇦 Canada",
-    eyebrow: "Canadian Parliament",
-    title: "Bills & Royal Assent",
-    description:
-      "Live parliamentary bill tracker — current session and historical enacted laws since 35th Parliament (1994). Sourced from LEGISinfo.",
-  },
-  {
-    value: "nz",
-    label: "🇳🇿 New Zealand",
-    eyebrow: "New Zealand Parliament",
-    title: "Acts and Bills",
-    description:
-      "Public Acts currently in force and bills before Parliament. Sourced from the Parliamentary Counsel Office legislation API.",
-  },
-];
 
 const CA_STATUSES = [
   { value: "all", label: "All" },
@@ -80,12 +69,6 @@ const NZ_STATUSES = [
   { value: "bills", label: "Bills" },
   { value: "acts", label: "Acts In Force" },
 ] as const;
-
-const COUNTRY_LINK_LABEL: Record<Country, string> = {
-  us: "congress.gov",
-  ca: "parl.ca",
-  nz: "legislation.govt.nz",
-};
 
 const VIEWS: { value: View; label: string; description: string }[] = [
   { value: "status", label: "By Status", description: "Filter by current bill status" },
@@ -173,6 +156,27 @@ const TYPE_LABEL: Record<string, string> = {
   sconres: "S.Con.Res.",
 };
 
+const SPECIAL_DESCRIPTIONS: Record<SpecialView, { eyebrow: string; title: string; description: string }> = {
+  us: {
+    eyebrow: "Congress Tracker",
+    title: "119th Congress",
+    description:
+      "Live bill status — sourced from congress.gov. Filter by status, chamber, or search by title or bill number.",
+  },
+  ca: {
+    eyebrow: "Canadian Parliament",
+    title: "Bills & Royal Assent",
+    description:
+      "Live parliamentary bill tracker — current session and historical enacted laws since 35th Parliament (1994). Sourced from LEGISinfo.",
+  },
+  nz: {
+    eyebrow: "New Zealand Parliament",
+    title: "Acts and Bills",
+    description:
+      "Public Acts currently in force and bills before Parliament. Sourced from the Parliamentary Counsel Office legislation API.",
+  },
+};
+
 function truncate(text: string, n: number): string {
   if (text.length <= n) return text;
   return text.slice(0, n).trimEnd() + "…";
@@ -200,30 +204,56 @@ function formatRelative(iso: string | null): string {
   return `${days}d ago`;
 }
 
-function parseCountry(raw: string | null): Country {
-  if (raw === "ca" || raw === "nz") return raw;
-  return "us";
-}
-
 function parseView(raw: string | null): View {
   if (raw === "outcomes" || raw === "full") return raw;
   return "status";
+}
+
+function parseRegion(raw: string | null): Region {
+  if (raw === "Europe" || raw === "Asia-Pacific" || raw === "Africa" || raw === "Americas") return raw;
+  return "Americas";
 }
 
 export default function LegislationClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const urlCountry = parseCountry(searchParams.get("country"));
-  const urlView = urlCountry === "us" ? parseView(searchParams.get("view")) : "status";
+  const [registry, setRegistry] = useState<CountryListEntry[] | null>(null);
+  const [registryError, setRegistryError] = useState<string | null>(null);
+
+  // Fetch country registry with claim counts on mount.
+  useEffect(() => {
+    const ctrl = new AbortController();
+    fetch("/api/legislation?list=1", { signal: ctrl.signal })
+      .then(async r => {
+        if (!r.ok) throw new Error(`Registry load failed (${r.status})`);
+        return (await r.json()) as { countries: CountryListEntry[] };
+      })
+      .then(d => setRegistry(d.countries))
+      .catch(err => {
+        if (err.name === "AbortError") return;
+        setRegistryError(err.message || "Failed to load country list");
+      });
+    return () => ctrl.abort();
+  }, []);
+
+  const urlCountryRaw = (searchParams.get("country") ?? "us").toLowerCase();
+  const countryEntry = registry?.find(c => c.code === urlCountryRaw) ?? null;
+  const urlCountry = countryEntry?.code ?? urlCountryRaw;
+  const specialView = countryEntry?.specialView ?? null;
+
+  const urlView = specialView === "us" ? parseView(searchParams.get("view")) : "status";
   const urlStatus = searchParams.get("status") ?? "all";
-  const urlType = urlCountry === "us" ? (searchParams.get("type") ?? "all") : "all";
+  const urlType = specialView === "us" ? (searchParams.get("type") ?? "all") : "all";
   const urlQ = searchParams.get("q") ?? "";
   const urlPage = Math.max(1, Number.parseInt(searchParams.get("page") ?? "1", 10) || 1);
+
+  const urlRegion: Region = parseRegion(searchParams.get("region") ?? (countryEntry?.region ?? null));
 
   const pageSize = urlView === "full" ? FULL_PAGE_SIZE : PAGE_SIZE;
 
   const [input, setInput] = useState(urlQ);
+  const [countryFilter, setCountryFilter] = useState("");
   const [data, setData] = useState<BillsResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -234,17 +264,21 @@ export default function LegislationClient() {
   }, [urlQ]);
 
   const pushUrl = useCallback(
-    (overrides: Partial<{ country: Country; view: View; status: string; type: string; q: string; page: number }>) => {
+    (overrides: Partial<{ country: string; region: Region; view: View; status: string; type: string; q: string; page: number }>) => {
       const next = new URLSearchParams(searchParams.toString());
 
       if (overrides.country !== undefined) {
         if (overrides.country === "us") next.delete("country");
         else next.set("country", overrides.country);
-        // Reset country-specific params on country switch
         next.delete("view");
         next.delete("status");
         next.delete("type");
         next.delete("page");
+      }
+
+      if (overrides.region !== undefined) {
+        if (overrides.region === "Americas") next.delete("region");
+        else next.set("region", overrides.region);
       }
 
       if (overrides.view !== undefined) {
@@ -280,7 +314,7 @@ export default function LegislationClient() {
     const p = new URLSearchParams();
     if (urlCountry !== "us") p.set("country", urlCountry);
     if (urlQ) p.set("q", urlQ);
-    if (urlCountry === "us") {
+    if (specialView === "us") {
       if (urlView === "outcomes") {
         p.set("status", "terminal");
       } else if (urlView === "full") {
@@ -289,7 +323,7 @@ export default function LegislationClient() {
         p.set("status", urlStatus);
       }
       if (urlType !== "all") p.set("type", urlType);
-    } else if (urlStatus !== "all") {
+    } else if (urlStatus !== "all" && (specialView === "ca" || specialView === "nz")) {
       p.set("status", urlStatus);
     }
     p.set("page", String(urlPage));
@@ -309,7 +343,7 @@ export default function LegislationClient() {
         setLoading(false);
       });
     return () => controller.abort();
-  }, [urlCountry, urlView, urlQ, urlStatus, urlType, urlPage, pageSize]);
+  }, [urlCountry, urlView, urlQ, urlStatus, urlType, urlPage, pageSize, specialView]);
 
   function onInputChange(v: string) {
     setInput(v);
@@ -319,51 +353,142 @@ export default function LegislationClient() {
     }, 300);
   }
 
+  const filteredCountries = useMemo(() => {
+    if (!registry) return [];
+    const term = countryFilter.trim().toLowerCase();
+    const inRegion = registry.filter(c => c.region === urlRegion);
+    if (!term) return inRegion;
+    return inRegion.filter(c =>
+      c.label.toLowerCase().includes(term) || c.code.toLowerCase() === term,
+    );
+  }, [registry, urlRegion, countryFilter]);
+
   const total = data?.total ?? 0;
   const pageCount = Math.max(1, Math.ceil(total / pageSize));
   const showingFrom = total === 0 ? 0 : (urlPage - 1) * pageSize + 1;
   const showingTo = Math.min(total, (urlPage - 1) * pageSize + (data?.bills.length ?? 0));
 
-  const countryInfo = COUNTRY_TABS.find(t => t.value === urlCountry)!;
+  const eyebrow = specialView
+    ? SPECIAL_DESCRIPTIONS[specialView].eyebrow
+    : countryEntry
+      ? `${countryEntry.region} · Legislation`
+      : "Legislation";
+  const title = specialView
+    ? SPECIAL_DESCRIPTIONS[specialView].title
+    : countryEntry?.label ?? "Loading…";
+  const description = specialView
+    ? SPECIAL_DESCRIPTIONS[specialView].description
+    : countryEntry
+      ? `Enacted laws and bills tracked from ${countryEntry.sourceLabel}.`
+      : "";
 
   return (
     <div className="space-y-6">
-      {/* Country switcher */}
-      <div className="flex items-center gap-1 border-b border-gray-800">
-        {COUNTRY_TABS.map(ct => {
-          const active = urlCountry === ct.value;
+      {/* Region tabs */}
+      <div className="flex items-center gap-1 border-b border-gray-800 overflow-x-auto">
+        {REGIONS.map(r => {
+          const active = urlRegion === r;
+          const regionCount = registry?.filter(c => c.region === r).length ?? 0;
           return (
             <button
-              key={ct.value}
-              onClick={() => pushUrl({ country: ct.value, page: 1 })}
-              className={`text-sm px-3 py-2 border-b-2 transition-colors -mb-px ${
+              key={r}
+              onClick={() => pushUrl({ region: r })}
+              className={`text-sm px-3 py-2 border-b-2 transition-colors -mb-px whitespace-nowrap ${
                 active
                   ? "border-white text-white font-medium"
                   : "border-transparent text-gray-500 hover:text-gray-300"
               }`}
             >
-              {ct.label}
+              {r} <span className="text-gray-600 font-mono text-xs ml-1">{regionCount}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Header */}
-      <div>
-        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">{countryInfo.eyebrow}</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">{countryInfo.title}</h1>
-        <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">{countryInfo.description}</p>
+      {/* Country grid */}
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <input
+            type="text"
+            value={countryFilter}
+            onChange={e => setCountryFilter(e.target.value)}
+            placeholder="Filter countries…"
+            className="flex-1 bg-gray-900 border border-gray-700 text-gray-100 text-xs rounded px-3 py-1.5 placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
+          />
+          <span className="text-xs text-gray-600 font-mono">
+            {filteredCountries.length}/{registry?.filter(c => c.region === urlRegion).length ?? 0}
+          </span>
+        </div>
+
+        {registryError && (
+          <p className="text-xs text-red-400">{registryError}</p>
+        )}
+
+        {!registry && !registryError && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="h-12 rounded border border-gray-800 bg-gray-900 animate-pulse" />
+            ))}
+          </div>
+        )}
+
+        {registry && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-h-72 overflow-y-auto pr-1">
+            {filteredCountries.map(c => {
+              const active = c.code === urlCountry;
+              const hasData = c.count > 0;
+              return (
+                <button
+                  key={c.code}
+                  onClick={() => pushUrl({ country: c.code, page: 1 })}
+                  className={`flex items-center gap-2 text-left rounded border px-3 py-2 transition-colors ${
+                    active
+                      ? "border-white bg-gray-800 text-white"
+                      : hasData
+                        ? "border-gray-700 bg-gray-900 text-gray-300 hover:border-gray-500 hover:text-white"
+                        : "border-gray-800 bg-gray-900/40 text-gray-500 hover:border-gray-700"
+                  }`}
+                >
+                  <span className="text-base shrink-0">{c.flag}</span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block text-xs truncate">{c.label}</span>
+                    <span className="block text-[10px] font-mono text-gray-500">
+                      {c.count.toLocaleString()} {c.count === 1 ? "claim" : "claims"}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+            {filteredCountries.length === 0 && registry && (
+              <p className="text-xs text-gray-500 col-span-full px-2 py-3">
+                No countries match the filter.
+              </p>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* AutoUpdateBanner — US + Canada (live trackers running every 12h) */}
-      {urlCountry === "us" && (
+      {/* Header */}
+      <div>
+        <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">{eyebrow}</p>
+        <h1 className="mt-1 text-2xl font-semibold text-white flex items-center gap-2">
+          {countryEntry && <span>{countryEntry.flag}</span>}
+          <span>{title}</span>
+        </h1>
+        {description && (
+          <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">{description}</p>
+        )}
+      </div>
+
+      {/* Live tracker banner — US + Canada */}
+      {specialView === "us" && (
         <AutoUpdateBanner
           lastRefresh={data?.lastRefresh ?? null}
           sourceLabel="Congress.gov API"
           sourceUrl="https://api.congress.gov/"
         />
       )}
-      {urlCountry === "ca" && (
+      {specialView === "ca" && (
         <AutoUpdateBanner
           lastRefresh={data?.lastRefresh ?? null}
           sourceLabel="LEGISinfo API"
@@ -372,7 +497,7 @@ export default function LegislationClient() {
       )}
 
       {/* View tabs — US only */}
-      {urlCountry === "us" && (
+      {specialView === "us" && (
         <div className="flex items-center gap-1 border-b border-gray-800">
           {VIEWS.map(v => {
             const active = urlView === v.value;
@@ -394,14 +519,14 @@ export default function LegislationClient() {
         </div>
       )}
 
-      {urlCountry === "us" && urlView === "outcomes" && (
+      {specialView === "us" && urlView === "outcomes" && (
         <p className="text-xs text-gray-500 leading-relaxed">
           Bills that have reached a terminal state — signed into law, vetoed, or formally failed. Sorted by the date they
           were introduced (most recent first); the final-action date is shown alongside the outcome.
         </p>
       )}
 
-      {urlCountry === "us" && urlView === "full" && data?.outcomeCounts && (() => {
+      {specialView === "us" && urlView === "full" && data?.outcomeCounts && (() => {
         const counts = data.outcomeCounts;
         return (
           <div className="flex items-center gap-3 text-xs text-gray-500 flex-wrap">
@@ -430,17 +555,17 @@ export default function LegislationClient() {
           value={input}
           onChange={e => onInputChange(e.target.value)}
           placeholder={
-            urlCountry === "us"
+            specialView === "us"
               ? "Search by title or bill number…"
-              : urlCountry === "ca"
-              ? "Search by title or bill number…"
-              : "Search by title…"
+              : specialView === "ca"
+                ? "Search by title or bill number…"
+                : "Search by title…"
           }
           className="w-full bg-gray-900 border border-gray-700 text-gray-100 text-sm rounded px-3 py-2 placeholder-gray-600 focus:outline-none focus:border-gray-500 transition-colors"
         />
 
         {/* Status filter chips — US only, status view only */}
-        {urlCountry === "us" && urlView === "status" && (
+        {specialView === "us" && urlView === "status" && (
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Status</span>
             {STATUSES.map(s => {
@@ -462,11 +587,11 @@ export default function LegislationClient() {
           </div>
         )}
 
-        {/* Foreign-country status chips */}
-        {(urlCountry === "ca" || urlCountry === "nz") && (
+        {/* Foreign-country status chips — CA/NZ only */}
+        {(specialView === "ca" || specialView === "nz") && (
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Status</span>
-            {(urlCountry === "ca" ? CA_STATUSES : NZ_STATUSES).map(s => {
+            {(specialView === "ca" ? CA_STATUSES : NZ_STATUSES).map(s => {
               const active = urlStatus === s.value;
               return (
                 <button
@@ -486,7 +611,7 @@ export default function LegislationClient() {
         )}
 
         {/* Type filter — US only */}
-        {urlCountry === "us" && (
+        {specialView === "us" && (
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Type</span>
             <select
@@ -527,7 +652,9 @@ export default function LegislationClient() {
           <div className="flex items-center justify-between text-xs text-gray-500">
             <span>
               {total === 0
-                ? "No matching results"
+                ? specialView
+                  ? "No matching results"
+                  : "No data yet — ingesting…"
                 : `Showing ${showingFrom.toLocaleString()}–${showingTo.toLocaleString()} of ${total.toLocaleString()}`}
             </span>
             {loading && <span className="text-gray-600">Refreshing…</span>}
@@ -536,21 +663,24 @@ export default function LegislationClient() {
           {total === 0 && !urlQ && urlStatus === "all" && urlType === "all" && urlView === "status" ? (
             <div className="rounded-lg border border-gray-800 bg-gray-900/50 px-6 py-12 text-center">
               <p className="text-sm text-gray-400">
-                {urlCountry === "us"
+                {specialView === "us"
                   ? "Bills are being indexed. Check back soon."
-                  : "No records available yet. Check back soon."}
+                  : countryEntry
+                    ? `No data yet for ${countryEntry.label} — the ingester is running in the background.`
+                    : "No records available yet. Check back soon."}
               </p>
             </div>
-          ) : urlCountry === "us" && urlView === "full" ? (
-            <FullRecordList bills={data.bills} country={urlCountry} />
+          ) : specialView === "us" && urlView === "full" ? (
+            <FullRecordList bills={data.bills} specialView={specialView} sourceLabel={countryEntry?.sourceLabel ?? null} />
           ) : (
             <div className="space-y-2">
               {data.bills.map(b => (
                 <BillRow
                   key={b.id}
                   bill={b}
-                  prominentOutcome={urlCountry === "us" && urlView === "outcomes"}
-                  country={urlCountry}
+                  prominentOutcome={specialView === "us" && urlView === "outcomes"}
+                  specialView={specialView}
+                  sourceLabel={countryEntry?.sourceLabel ?? null}
                 />
               ))}
             </div>
@@ -620,7 +750,15 @@ function AutoUpdateBanner({
   );
 }
 
-function FullRecordList({ bills, country }: { bills: BillHit[]; country: Country }) {
+function FullRecordList({
+  bills,
+  specialView,
+  sourceLabel,
+}: {
+  bills: BillHit[];
+  specialView: SpecialView | null;
+  sourceLabel: string | null;
+}) {
   const grouped = OUTCOME_ORDER.map(outcome => ({
     outcome,
     bills: bills.filter(b => b.outcome === outcome),
@@ -647,7 +785,13 @@ function FullRecordList({ bills, country }: { bills: BillHit[]; country: Country
           </div>
           <div className="space-y-2">
             {g.bills.map(b => (
-              <BillRow key={b.id} bill={b} prominentOutcome country={country} />
+              <BillRow
+                key={b.id}
+                bill={b}
+                prominentOutcome
+                specialView={specialView}
+                sourceLabel={sourceLabel}
+              />
             ))}
           </div>
         </div>
@@ -659,11 +803,13 @@ function FullRecordList({ bills, country }: { bills: BillHit[]; country: Country
 function BillRow({
   bill,
   prominentOutcome,
-  country,
+  specialView,
+  sourceLabel,
 }: {
   bill: BillHit;
   prominentOutcome?: boolean;
-  country: Country;
+  specialView: SpecialView | null;
+  sourceLabel: string | null;
 }) {
   const status = bill.status ?? "status-introduced";
   const isUsStatus = status.startsWith("status-");
@@ -674,7 +820,7 @@ function BillRow({
 
   // Bill reference chip
   let billRef: string | null = null;
-  if (country === "us") {
+  if (specialView === "us") {
     const typeLabel = bill.billType ? TYPE_LABEL[bill.billType] ?? bill.billType.toUpperCase() : null;
     billRef = typeLabel && bill.billNumber ? `${typeLabel} ${bill.billNumber}` : null;
   } else {
@@ -683,21 +829,26 @@ function BillRow({
 
   const outcome = bill.outcome;
   const showOutcomeBadge = prominentOutcome && outcome !== "active";
-  const linkLabel = COUNTRY_LINK_LABEL[country];
+  const linkLabel = sourceLabel ?? "source";
+  const isSpecial = specialView !== null;
 
   return (
     <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            {showOutcomeBadge ? (
-              <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${OUTCOME_BADGE_STYLE[outcome]}`}>
-                {OUTCOME_LABEL[outcome]}
-              </span>
-            ) : (
-              <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider ${statusStyle}`}>
-                {statusLabel}
-              </span>
+            {isSpecial && (
+              showOutcomeBadge ? (
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${OUTCOME_BADGE_STYLE[outcome]}`}>
+                  {OUTCOME_LABEL[outcome]}
+                </span>
+              ) : (
+                bill.status && (
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider ${statusStyle}`}>
+                    {statusLabel}
+                  </span>
+                )
+              )
             )}
             {billRef && (
               <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">

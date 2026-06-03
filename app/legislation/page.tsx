@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Legislation — Epistemic Receipts",
-  description: "Multi-country legislation tracker — US Congress (119th), Canadian Parliament, and New Zealand Parliament. Live bill status, sourced from official APIs.",
+  description: "Global legislation tracker — bills and laws across 52 countries spanning Americas, Europe, Asia-Pacific, and Africa. Live status for US Congress, Canadian Parliament, and New Zealand Parliament; bulk records for the rest.",
 };
 
 export default function LegislationPage() {

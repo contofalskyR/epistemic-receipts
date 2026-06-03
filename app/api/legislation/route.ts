@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import {
+  COUNTRY_REGISTRY,
+  COUNTRY_BY_CODE,
+  ALL_INGESTED_BY,
+  REGIONS,
+  type Region,
+  type CountryEntry,
+} from "@/lib/legislation-countries";
 
 export const revalidate = 60;
 
@@ -23,7 +31,6 @@ const VALID_STATUS_SLUGS = new Set([
 
 const VALID_TYPE_SLUGS = new Set(["hr", "s", "hjres", "sjres", "hres", "sres", "hconres", "sconres"]);
 
-type Country = "us" | "ca" | "nz";
 type Outcome = "enacted" | "passed" | "vetoed" | "failed" | "active";
 
 type BillHit = {
@@ -42,11 +49,16 @@ type BillHit = {
   outcome: Outcome;
 };
 
-const COUNTRIES: Record<Country, { label: string }> = {
-  us: { label: "US Congress" },
-  ca: { label: "Canada" },
-  nz: { label: "New Zealand" },
-};
+function countriesPayload() {
+  return COUNTRY_REGISTRY.map(c => ({
+    code: c.code,
+    label: c.label,
+    flag: c.flag,
+    region: c.region,
+    sourceLabel: c.sourceLabel,
+    specialView: c.specialView ?? null,
+  }));
+}
 
 function pickStatusSlug(slugs: string[]): string | null {
   for (const s of slugs) {
@@ -131,7 +143,6 @@ function canadaOutcomeFromMetadata(meta: unknown): Outcome {
   if (cat === "active") return "active";
   if (cat === "failed") return "failed";
   if (cat === "enacted") return "enacted";
-  // Legacy records (no outcomeCategory) are all Royal Assent.
   return "enacted";
 }
 
@@ -141,7 +152,7 @@ function canadaStatusLabel(meta: unknown, outcome: Outcome): string {
   return outcome === "enacted" ? "Royal Assent" : "In Parliament";
 }
 
-function rowToForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
+function rowToSpecialForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
   const sourceUrl = r.edges[0]?.source.url ?? null;
 
   if (country === "ca") {
@@ -176,7 +187,6 @@ function rowToForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
     };
   }
 
-  // NZ — prefer claimEmergedAt as the primary date; fall back to year-01-01.
   const dataset = readString(r.metadata, "dataset") ?? "";
   const isBill = dataset === "nz_bills_v1";
   const year = readString(r.metadata, "year");
@@ -200,6 +210,37 @@ function rowToForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
   };
 }
 
+function rowToGenericForeignBill(r: ClaimRow): BillHit {
+  const sourceUrl = readString(r.metadata, "sourceUrl") ?? r.edges[0]?.source.url ?? null;
+  const primaryIso = r.claimEmergedAt ? r.claimEmergedAt.toISOString() : null;
+  const billNumber =
+    readString(r.metadata, "billNumber") ??
+    readString(r.metadata, "actNumber") ??
+    readString(r.metadata, "lawNumber") ??
+    readString(r.metadata, "number") ??
+    null;
+  const body =
+    readString(r.metadata, "summary") ??
+    readString(r.metadata, "description") ??
+    readString(r.metadata, "body") ??
+    null;
+  return {
+    id: r.id,
+    title: readString(r.metadata, "title") ?? r.text,
+    body,
+    status: null,
+    billType: null,
+    billNumber,
+    congress: null,
+    sourceUrl,
+    introducedDate: primaryIso,
+    updatedAt: r.createdAt.toISOString(),
+    latestActionDate: primaryIso,
+    latestActionText: null,
+    outcome: "active",
+  };
+}
+
 const ROW_SELECT = {
   id: true,
   text: true,
@@ -214,14 +255,24 @@ const ROW_SELECT = {
   },
 } satisfies Prisma.ClaimSelect;
 
+function resolveCountry(raw: string | null): CountryEntry {
+  const code = (raw ?? "us").toLowerCase();
+  return COUNTRY_BY_CODE[code] ?? COUNTRY_BY_CODE.us!;
+}
+
+function isValidRegion(r: string): r is Region {
+  return (REGIONS as readonly string[]).includes(r);
+}
+
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);
 
-  // Country routing
-  const countryRaw = (url.searchParams.get("country") ?? "us").toLowerCase();
-  const country: Country = (["us", "ca", "nz"] as Country[]).includes(countryRaw as Country)
-    ? (countryRaw as Country)
-    : "us";
+  // Registry-list mode
+  if (url.searchParams.get("list") === "1") {
+    return listCountries(url);
+  }
+
+  const country = resolveCountry(url.searchParams.get("country"));
 
   const q = (url.searchParams.get("q") ?? "").trim();
   const limit = Math.max(
@@ -238,13 +289,31 @@ export async function GET(req: NextRequest) {
     ? { text: { contains: q, mode: "insensitive" } }
     : null;
 
-  // Foreign-country fast path
-  if (country !== "us") {
+  // Special-case countries
+  if (country.specialView === "ca" || country.specialView === "nz") {
     const statusParam = (url.searchParams.get("status") ?? "").trim().toLowerCase();
-    return foreignCountryView({ country, searchClause, page, limit, offset, statusParam });
+    return specialForeignCountryView({
+      country: country.specialView,
+      searchClause,
+      page,
+      limit,
+      offset,
+      statusParam,
+    });
   }
 
-  // US path — existing logic
+  if (country.specialView !== "us") {
+    // Generic bulk-ingested country
+    return genericForeignCountryView({
+      country,
+      searchClause,
+      page,
+      limit,
+      offset,
+    });
+  }
+
+  // US path
   const view = (url.searchParams.get("view") ?? "status").trim();
   const statusRaw = (url.searchParams.get("status") ?? "").trim();
   const typeRaw = (url.searchParams.get("type") ?? "").trim().toLowerCase();
@@ -302,10 +371,98 @@ export async function GET(req: NextRequest) {
   ]);
 
   const bills: BillHit[] = rows.map(rowToBill);
-  return NextResponse.json({ bills, total, page, limit, lastRefresh, countries: COUNTRIES });
+  return NextResponse.json({
+    bills,
+    total,
+    page,
+    limit,
+    lastRefresh,
+    countries: countriesPayload(),
+  });
 }
 
-async function foreignCountryView({
+async function listCountries(url: URL) {
+  const regionRaw = url.searchParams.get("region");
+  const regionFilter: Region | null = regionRaw && isValidRegion(regionRaw) ? regionRaw : null;
+
+  const grouped = await prisma.claim.groupBy({
+    by: ["ingestedBy"],
+    where: {
+      deleted: false,
+      ingestedBy: { in: ALL_INGESTED_BY },
+    },
+    _count: { _all: true },
+  });
+  const countMap = new Map<string, number>();
+  for (const g of grouped) {
+    if (g.ingestedBy) countMap.set(g.ingestedBy, g._count._all);
+  }
+
+  // NZ also includes nz_bills_v1.
+  const nzBillCount = await prisma.claim.count({
+    where: { deleted: false, ingestedBy: "nz_bills_v1" },
+  });
+  countMap.set("nz_legislation_v1", (countMap.get("nz_legislation_v1") ?? 0) + nzBillCount);
+
+  const items = COUNTRY_REGISTRY
+    .filter(c => !regionFilter || c.region === regionFilter)
+    .map(c => ({
+      code: c.code,
+      label: c.label,
+      flag: c.flag,
+      region: c.region,
+      sourceLabel: c.sourceLabel,
+      specialView: c.specialView ?? null,
+      count: countMap.get(c.ingestedBy) ?? 0,
+    }));
+
+  return NextResponse.json({ countries: items, regions: REGIONS });
+}
+
+async function genericForeignCountryView({
+  country,
+  searchClause,
+  page,
+  limit,
+  offset,
+}: {
+  country: CountryEntry;
+  searchClause: Prisma.ClaimWhereInput | null;
+  page: number;
+  limit: number;
+  offset: number;
+}) {
+  const baseClauses: Prisma.ClaimWhereInput[] = [{ ingestedBy: country.ingestedBy }];
+  if (searchClause) baseClauses.push(searchClause);
+
+  const where: Prisma.ClaimWhereInput = {
+    deleted: false,
+    AND: baseClauses,
+  };
+
+  const [total, rows] = await Promise.all([
+    prisma.claim.count({ where }),
+    prisma.claim.findMany({
+      where,
+      orderBy: [{ claimEmergedAt: "desc" }, { id: "desc" }],
+      take: limit,
+      skip: offset,
+      select: ROW_SELECT,
+    }),
+  ]);
+
+  const bills = rows.map(rowToGenericForeignBill);
+  return NextResponse.json({
+    bills,
+    total,
+    page,
+    limit,
+    lastRefresh: null,
+    countries: countriesPayload(),
+  });
+}
+
+async function specialForeignCountryView({
   country,
   searchClause,
   page,
@@ -324,8 +481,6 @@ async function foreignCountryView({
 
   if (country === "ca") {
     baseClauses.push({ ingestedBy: "canada_bills_v1" });
-    // Canada: status filter on metadata.outcomeCategory.
-    // "in-parliament" = active; "royal-assent" = enacted (treat legacy null as enacted).
     if (statusParam === "in-parliament") {
       baseClauses.push({ metadata: { path: ["outcomeCategory"], equals: "active" } });
     } else if (statusParam === "royal-assent") {
@@ -334,7 +489,6 @@ async function foreignCountryView({
       });
     }
   } else {
-    // NZ: status filter switches the ingestedBy tag.
     if (statusParam === "bills") {
       baseClauses.push({ ingestedBy: "nz_bills_v1" });
     } else if (statusParam === "acts") {
@@ -364,7 +518,7 @@ async function foreignCountryView({
     country === "ca" ? getCanadaOutcomeCounts() : Promise.resolve<Record<Outcome, number> | null>(null),
   ]);
 
-  const bills = rows.map(r => rowToForeignBill(r, country));
+  const bills = rows.map(r => rowToSpecialForeignBill(r, country));
   return NextResponse.json({
     bills,
     total,
@@ -372,7 +526,7 @@ async function foreignCountryView({
     limit,
     lastRefresh,
     ...(outcomeCounts ? { outcomeCounts } : {}),
-    countries: COUNTRIES,
+    countries: countriesPayload(),
   });
 }
 
@@ -399,7 +553,7 @@ async function getCanadaOutcomeCounts(): Promise<Record<Outcome, number>> {
     const n = Number(r.n);
     if (r.category === "active") counts.active += n;
     else if (r.category === "failed") counts.failed += n;
-    else counts.enacted += n; // 'enacted' OR legacy null = enacted
+    else counts.enacted += n;
   }
   return counts;
 }
@@ -454,7 +608,15 @@ async function fullView({
   };
   for (const b of all) outcomeCounts[b.outcome]++;
 
-  return NextResponse.json({ bills, total, page, limit, lastRefresh, outcomeCounts, countries: COUNTRIES });
+  return NextResponse.json({
+    bills,
+    total,
+    page,
+    limit,
+    lastRefresh,
+    outcomeCounts,
+    countries: countriesPayload(),
+  });
 }
 
 async function getLastRefresh(): Promise<string | null> {
