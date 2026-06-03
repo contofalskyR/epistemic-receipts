@@ -24,6 +24,10 @@ type BillHit = {
   latestActionDate: string | null;
   latestActionText: string | null;
   outcome: Outcome;
+  billId: string | null;
+  lawType: string | null;
+  introducedIn: string | null;
+  yearOnly: boolean;
 };
 
 type CountryListEntry = {
@@ -69,6 +73,14 @@ const NZ_STATUSES = [
   { value: "bills", label: "Bills" },
   { value: "acts", label: "Acts In Force" },
 ] as const;
+
+const COUNTRY_STATUS_OPTIONS: Record<string, readonly { value: string; label: string }[]> = {
+  in: [
+    { value: "all", label: "All" },
+    { value: "assented", label: "Assented" },
+    { value: "other", label: "Other" },
+  ],
+};
 
 const VIEWS: { value: View; label: string; description: string }[] = [
   { value: "status", label: "By Status", description: "Filter by current bill status" },
@@ -187,6 +199,13 @@ function formatDate(iso: string | null): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "—";
   return d.toISOString().slice(0, 10);
+}
+
+function formatYear(iso: string | null): string {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "—";
+  return d.toISOString().slice(0, 4);
 }
 
 function formatRelative(iso: string | null): string {
@@ -323,7 +342,10 @@ export default function LegislationClient() {
         p.set("status", urlStatus);
       }
       if (urlType !== "all") p.set("type", urlType);
-    } else if (urlStatus !== "all" && (specialView === "ca" || specialView === "nz")) {
+    } else if (
+      urlStatus !== "all" &&
+      (specialView === "ca" || specialView === "nz" || COUNTRY_STATUS_OPTIONS[urlCountry])
+    ) {
       p.set("status", urlStatus);
     }
     p.set("page", String(urlPage));
@@ -587,28 +609,37 @@ export default function LegislationClient() {
           </div>
         )}
 
-        {/* Foreign-country status chips — CA/NZ only */}
-        {(specialView === "ca" || specialView === "nz") && (
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Status</span>
-            {(specialView === "ca" ? CA_STATUSES : NZ_STATUSES).map(s => {
-              const active = urlStatus === s.value;
-              return (
-                <button
-                  key={s.value}
-                  onClick={() => pushUrl({ status: s.value, page: 1 })}
-                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                    active
-                      ? "bg-white text-gray-950 border-white font-medium"
-                      : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
-                  }`}
-                >
-                  {s.label}
-                </button>
-              );
-            })}
-          </div>
-        )}
+        {/* Foreign-country status chips — CA/NZ + per-country (e.g. India) */}
+        {(() => {
+          const options =
+            specialView === "ca"
+              ? CA_STATUSES
+              : specialView === "nz"
+                ? NZ_STATUSES
+                : COUNTRY_STATUS_OPTIONS[urlCountry] ?? null;
+          if (!options) return null;
+          return (
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Status</span>
+              {options.map(s => {
+                const active = urlStatus === s.value;
+                return (
+                  <button
+                    key={s.value}
+                    onClick={() => pushUrl({ status: s.value, page: 1 })}
+                    className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                      active
+                        ? "bg-white text-gray-950 border-white font-medium"
+                        : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                );
+              })}
+            </div>
+          );
+        })()}
 
         {/* Type filter — US only */}
         {specialView === "us" && (
@@ -823,14 +854,25 @@ function BillRow({
   if (specialView === "us") {
     const typeLabel = bill.billType ? TYPE_LABEL[bill.billType] ?? bill.billType.toUpperCase() : null;
     billRef = typeLabel && bill.billNumber ? `${typeLabel} ${bill.billNumber}` : null;
-  } else {
+  } else if (specialView === "ca" || specialView === "nz") {
     billRef = bill.billNumber ?? null;
+  } else {
+    billRef = bill.billId ?? bill.billNumber ?? null;
   }
 
   const outcome = bill.outcome;
   const showOutcomeBadge = prominentOutcome && outcome !== "active";
   const linkLabel = sourceLabel ?? "source";
   const isSpecial = specialView !== null;
+  const isGeneric = specialView === null;
+
+  // For generic foreign countries, show status badge whenever status data exists.
+  const showGenericStatusBadge = isGeneric && !!bill.status;
+  // Avoid duplicating the badge in lawType chip when both equal status.
+  const lawTypeChip = isGeneric && bill.lawType && bill.lawType !== bill.status ? bill.lawType : null;
+
+  const dateIso = bill.introducedDate;
+  const dateString = isGeneric && bill.yearOnly ? formatYear(dateIso) : formatDate(dateIso);
 
   return (
     <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
@@ -850,9 +892,19 @@ function BillRow({
                 )
               )
             )}
+            {showGenericStatusBadge && (
+              <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium uppercase tracking-wider ${FOREIGN_STATUS_STYLE}`}>
+                {bill.status}
+              </span>
+            )}
             {billRef && (
               <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-gray-800 text-gray-400 border border-gray-700/50">
                 {billRef}
+              </span>
+            )}
+            {lawTypeChip && (
+              <span className="text-[10px] px-2 py-0.5 rounded font-medium uppercase tracking-wider bg-gray-800/60 text-gray-400 border border-gray-700/50">
+                {lawTypeChip}
               </span>
             )}
             {showOutcomeBadge && isUsStatus && status !== "status-enacted" && status !== "status-vetoed" && status !== "status-failed" && (
@@ -869,6 +921,12 @@ function BillRow({
               {truncate(bill.body, 180)}
             </p>
           )}
+          {isGeneric && bill.introducedIn && (
+            <p className="mt-1 text-[11px] text-gray-500">
+              <span className="text-gray-600">Introduced in:</span>{" "}
+              <span className="text-gray-400">{bill.introducedIn}</span>
+            </p>
+          )}
         </div>
         <div className="shrink-0 text-right">
           {prominentOutcome ? (
@@ -880,7 +938,7 @@ function BillRow({
             </>
           ) : (
             <div className="text-xs text-gray-500 font-mono whitespace-nowrap">
-              {formatDate(bill.introducedDate)}
+              {dateString}
             </div>
           )}
           {bill.sourceUrl && (
@@ -890,7 +948,7 @@ function BillRow({
               rel="noopener noreferrer"
               className="mt-1 inline-block text-[10px] text-gray-500 hover:text-blue-300 transition-colors uppercase tracking-widest"
             >
-              {linkLabel} →
+              {isGeneric ? "→ source" : `${linkLabel} →`}
             </a>
           )}
         </div>

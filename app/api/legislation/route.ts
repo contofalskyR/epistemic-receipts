@@ -47,6 +47,10 @@ type BillHit = {
   latestActionDate: string | null;
   latestActionText: string | null;
   outcome: Outcome;
+  billId: string | null;
+  lawType: string | null;
+  introducedIn: string | null;
+  yearOnly: boolean;
 };
 
 function countriesPayload() {
@@ -84,6 +88,98 @@ function readNumber(meta: unknown, key: string): number | null {
   if (!meta || typeof meta !== "object") return null;
   const v = (meta as Record<string, unknown>)[key];
   return typeof v === "number" ? v : null;
+}
+
+function readScalar(meta: unknown, key: string): string | null {
+  if (!meta || typeof meta !== "object") return null;
+  const v = (meta as Record<string, unknown>)[key];
+  if (typeof v === "string") return v;
+  if (typeof v === "number") return String(v);
+  return null;
+}
+
+function isYearOnlyDate(d: Date | null): boolean {
+  if (!d) return false;
+  return d.getUTCMonth() === 0 && d.getUTCDate() === 1;
+}
+
+type Granularity = {
+  billId: string | null;
+  lawType: string | null;
+  status: string | null;
+  introducedIn: string | null;
+};
+
+function extractGranularity(meta: unknown, dataset: string): Granularity {
+  let billId: string | null = null;
+  let lawType: string | null = null;
+  let status: string | null = null;
+  let introducedIn: string | null = null;
+
+  switch (dataset) {
+    case "spain_legislation_v1": {
+      const t = readScalar(meta, "lawType") ?? "";
+      const n = readScalar(meta, "lawNumber");
+      billId = n ? `${t.toUpperCase()}${t ? " " : ""}${n}`.trim() : null;
+      lawType = readScalar(meta, "lawType");
+      break;
+    }
+    case "france_legislation_v1": {
+      const nat = readScalar(meta, "nature");
+      const n = readScalar(meta, "num");
+      if (nat && n) billId = `${nat} n°${n}`;
+      else if (n) billId = `n°${n}`;
+      lawType = nat;
+      break;
+    }
+    case "uk_legislation_v1": {
+      const y = readScalar(meta, "year");
+      const ch = readScalar(meta, "chapter");
+      billId = ch && y ? `c. ${ch} (${y})` : null;
+      break;
+    }
+    case "australia_legislation_v1": {
+      billId = readScalar(meta, "registerId");
+      break;
+    }
+    case "japan_legislation_v1": {
+      billId = readScalar(meta, "lawNo");
+      break;
+    }
+    case "philippines_legislation_v1": {
+      const ra = readScalar(meta, "raNumber");
+      billId = ra ? `RA ${ra}` : null;
+      break;
+    }
+    case "india_legislation_v1": {
+      const cat = readScalar(meta, "billCategory") ?? readScalar(meta, "billType");
+      const num = readScalar(meta, "billNumber");
+      const year = readScalar(meta, "billYear");
+      if (num) {
+        const prefix = cat && /bill/i.test(cat) ? cat : cat ? `${cat} Bill` : "Bill";
+        billId = `${prefix} No. ${num}${year ? `/${year}` : ""}`;
+      }
+      lawType = readScalar(meta, "billCategory") ?? readScalar(meta, "billType");
+      status = readScalar(meta, "status");
+      introducedIn = readScalar(meta, "introducedInHouse");
+      break;
+    }
+    case "brazil_legislation_v1": {
+      const tipo = readScalar(meta, "tipo");
+      const numero = readScalar(meta, "numero");
+      const ano = readScalar(meta, "ano");
+      if (tipo && numero) billId = `${tipo} ${numero}${ano ? `/${ano}` : ""}`;
+      lawType = tipo;
+      break;
+    }
+    case "argentina_legislation_v1": {
+      const n = readScalar(meta, "numeroNorma");
+      billId = n ? `Ley ${n}` : null;
+      break;
+    }
+  }
+
+  return { billId, lawType, status, introducedIn };
 }
 
 function outcomeFromStatus(slug: string | null): Outcome {
@@ -135,6 +231,10 @@ function rowToBill(r: ClaimRow): BillHit {
     latestActionDate: readString(r.metadata, "latestActionDate"),
     latestActionText: readString(r.metadata, "latestActionText"),
     outcome: outcomeFromStatus(statusSlug),
+    billId: null,
+    lawType: null,
+    introducedIn: null,
+    yearOnly: false,
   } as unknown as BillHit;
 }
 
@@ -184,6 +284,10 @@ function rowToSpecialForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
       latestActionDate: latestActionIso,
       latestActionText: null,
       outcome,
+      billId: null,
+      lawType: null,
+      introducedIn: null,
+      yearOnly: false,
     };
   }
 
@@ -207,29 +311,35 @@ function rowToSpecialForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
     latestActionDate: primaryIso,
     latestActionText: null,
     outcome: isBill ? "active" : "enacted",
+    billId: null,
+    lawType: null,
+    introducedIn: null,
+    yearOnly: false,
   };
 }
 
-function rowToGenericForeignBill(r: ClaimRow): BillHit {
+function rowToGenericForeignBill(r: ClaimRow, ingestedBy: string): BillHit {
   const sourceUrl = readString(r.metadata, "sourceUrl") ?? r.edges[0]?.source.url ?? null;
   const primaryIso = r.claimEmergedAt ? r.claimEmergedAt.toISOString() : null;
   const billNumber =
-    readString(r.metadata, "billNumber") ??
-    readString(r.metadata, "actNumber") ??
-    readString(r.metadata, "lawNumber") ??
-    readString(r.metadata, "number") ??
+    readScalar(r.metadata, "billNumber") ??
+    readScalar(r.metadata, "actNumber") ??
+    readScalar(r.metadata, "lawNumber") ??
+    readScalar(r.metadata, "number") ??
     null;
   const body =
     readString(r.metadata, "summary") ??
     readString(r.metadata, "description") ??
     readString(r.metadata, "body") ??
     null;
+  const granularity = extractGranularity(r.metadata, ingestedBy);
+  const yearOnly = isYearOnlyDate(r.claimEmergedAt);
   return {
     id: r.id,
     title: readString(r.metadata, "title") ?? r.text,
     body,
-    status: null,
-    billType: null,
+    status: granularity.status,
+    billType: granularity.lawType,
     billNumber,
     congress: null,
     sourceUrl,
@@ -238,6 +348,10 @@ function rowToGenericForeignBill(r: ClaimRow): BillHit {
     latestActionDate: primaryIso,
     latestActionText: null,
     outcome: "active",
+    billId: granularity.billId,
+    lawType: granularity.lawType,
+    introducedIn: granularity.introducedIn,
+    yearOnly,
   };
 }
 
@@ -304,12 +418,14 @@ export async function GET(req: NextRequest) {
 
   if (country.specialView !== "us") {
     // Generic bulk-ingested country
+    const genericStatusParam = (url.searchParams.get("status") ?? "").trim().toLowerCase();
     return genericForeignCountryView({
       country,
       searchClause,
       page,
       limit,
       offset,
+      statusParam: genericStatusParam,
     });
   }
 
@@ -425,15 +541,25 @@ async function genericForeignCountryView({
   page,
   limit,
   offset,
+  statusParam,
 }: {
   country: CountryEntry;
   searchClause: Prisma.ClaimWhereInput | null;
   page: number;
   limit: number;
   offset: number;
+  statusParam: string;
 }) {
   const baseClauses: Prisma.ClaimWhereInput[] = [{ ingestedBy: country.ingestedBy }];
   if (searchClause) baseClauses.push(searchClause);
+
+  if (country.ingestedBy === "india_legislation_v1") {
+    if (statusParam === "assented") {
+      baseClauses.push({ metadata: { path: ["status"], equals: "Assented" } });
+    } else if (statusParam === "other") {
+      baseClauses.push({ NOT: { metadata: { path: ["status"], equals: "Assented" } } });
+    }
+  }
 
   const where: Prisma.ClaimWhereInput = {
     deleted: false,
@@ -451,7 +577,7 @@ async function genericForeignCountryView({
     }),
   ]);
 
-  const bills = rows.map(rowToGenericForeignBill);
+  const bills = rows.map(r => rowToGenericForeignBill(r, country.ingestedBy));
   return NextResponse.json({
     bills,
     total,
