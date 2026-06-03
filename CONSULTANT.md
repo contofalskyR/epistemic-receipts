@@ -271,6 +271,23 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-03 (night) — Congress bills status tracker
+
+**What.** New perpetual ingestion pipeline for 119th Congress bills covering all bill types (`hr`, `s`, `hjres`, `sjres`, `hconres`, `sconres`, `hres`, `sres`). Polls `/v3/bill/{congress}?sort=updateDate+desc&limit=250` and upserts each bill as a `PROVISIONAL` Claim whose status tag tracks the current legislative state (`status-introduced` / `status-passed-house` / `status-passed-senate` / `status-enacted` / `status-vetoed` / `status-in-progress`).
+
+- `scripts/ingest-congress-bills-tracker.ts` (`congress_bills_tracker_v1`) — list-paginated traversal, with a per-bill `/v3/bill/{c}/{t}/{n}` detail call only when the bill is new or its `latestAction.actionDate` has changed since the last pass (cheap-skip path keeps API budget low after the first pass). Each new claim provisions a Source + FOR Edge (`evidenceType:'PROCEDURAL'`) + EdgeRevision with `newScore:70` + the five Topic tags (`legislation` → `us-federal` → `congress-119` → `bill-type-<t>` + status tag). Updates rewrite the Claim text/metadata and re-sync ClaimTopic links so stale status tags are dropped and the current status tag is added. CLI: `--limit` (default 500), `--offset`, `--verbose`. 200ms throttle (4 req/s headroom under the 1k/hr free-tier quota), 429/502/503/504-aware exponential retry. Per-bill `$transaction({ timeout: 30000 })` per CONSULTANT rule 5.
+- `scripts/congress-bills-loop.sh` — sleep 12h between passes, log to `/tmp/congress-bills-loop.log`, `set -euo pipefail` + tee pattern matching `disclosures-loop.sh`. `chmod +x`.
+
+**Filename note.** The task brief asked for `scripts/ingest-congress-bills.ts`, but that filename is taken by the shipped Pipeline 1 enacted-bills ingester (`congress_bills_v1`, 205 records, HARD_FACT / VERIFIED semantics). Overwriting would have wiped a working pipeline whose claims are already cited. The tracker uses a distinct filename + `INGESTED_BY` tag (`congress_bills_tracker_v1`) so both pipelines coexist — the enacted-bills ingester continues to emit HARD_FACT claims for laws as they're signed, while the tracker emits PROVISIONAL claims for every bill regardless of status.
+
+**Why.** Pipeline 1 only sees enacted laws. The tracker fills the editorial gap by surfacing pending bills — sponsor, latest action, committee referral implied via status — as PROVISIONAL claims that case studies can cite mid-flight, before they're signed (or fail). PROVISIONAL + `humanReviewed:false` + `autoApproved:false` is the correct triad per CONSULTANT rule 3: status-tracker outputs are neither hard facts nor passed quality gates; they're a live mirror of the upstream API.
+
+**Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — clean on the new file (pre-existing errors in unrelated scripts unchanged). Script **not launched** per task instructions; launch with `bash scripts/congress-bills-loop.sh &`.
+
+**Files.** `scripts/ingest-congress-bills-tracker.ts` (new), `scripts/congress-bills-loop.sh` (new, +x), `CONSULTANT.md` (this entry).
+
+---
+
 ### 2026-06-03 (late evening) — CourtListener Tier 4: BIA + Tax/Federal Claims
 
 **What.** Two new opinion ingesters for the Tier 4 specialised-court roadmap, each with a continuous-loop wrapper:
