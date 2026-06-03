@@ -1,23 +1,28 @@
 # CourtListener Ingestion Roadmap
 
-**Status:** Tier 1 fully automated — 4 perpetual loops running • Updated 2026-06-03
+**Status:** Tier 1 + Tier 2 complete — 5 perpetual loops running • Updated 2026-06-03 15:24 EDT
 **Author:** Subagent audit (read-only research) + RobClaw implementation
 **Scope:** CourtListener REST API v4 — what's there, what's already ingested, what to do next.
 
-### Live ingestion state (as of 2026-06-03 14:00 EDT)
+### Live ingestion state (as of 2026-06-03 15:24 EDT)
 
-All four Tier 1 sources are running as **perpetual background loops** (no cron — true infinite loops with sleep between passes):
+**5 perpetual background loops** running (no cron — true infinite loops with sleep between passes):
 
-| Script | PID | Sleep | Status |
-|---|---|---|---|
-| `scripts/scotus-loop.sh` | 76976 | 8h | Running since ~12:34pm — citation floor auto-drops 5→2→0 |
-| `scripts/circuits-loop.sh` | 74098 | 6h | Running since ~11:02am |
-| `scripts/state-supreme-loop.sh` | 79152 | 6h | Started 2:09pm — top 15 states, citation floor 20→10→5→0 |
-| `scripts/judges-loop.sh` | 79206 | 12h | Started 2:09pm — Article III appointments, all circuits + SCOTUS |
+| Script | Sleep | Status |
+|---|---|---|
+| `scripts/scotus-loop.sh` | 8h | Running — citation floor auto-drops 5→2→0 |
+| `scripts/circuits-loop.sh` | 6h | Running |
+| `scripts/state-supreme-loop.sh` | 6h | Running — top 15 states, citation floor 20→10→5→0 |
+| `scripts/judges-loop.sh` | 12h | Running — Article III appointments, all circuits + SCOTUS |
+| `scripts/disclosures-loop.sh` | 12h | **Tier 2** — financial disclosures, started 2026-06-03 |
 
-All use `--slow` mode and are idempotent via `externalId`. Logs at `/tmp/{scotus,circuits,state-supreme,judges}-loop.log`.
+All use `--slow` mode and are idempotent via `externalId`. Logs at `/tmp/{scotus,circuits,state-supreme,judges,disclosures}-loop.log`.
 
-**Claim counts at Tier 1 launch:** 873 total (400 SCOTUS + 473 circuits). State supremes and judges starting from 0.
+**Pending one-shot:** `scripts/ingest-courtlistener-courts.ts` — 3,358 courts → Topics only. Scheduled to run at 8:03pm EDT 2026-06-03 after daily quota reset. Rate-limited on first attempt due to 5 concurrent loops sharing the ~5,000 req/day quota.
+
+**Topic slug migration (2026-06-03):** 28 existing court topics renamed to canonical `court-<id>` form (13 circuits + 15 state supremes). All ingesters now write `court-<id>` slugs. `ingest-courtlistener-courts.ts` slug bug fixed (was writing bare `ca9`, now correctly writes `court-ca9`).
+
+**Claim counts at Tier 1 launch:** 873 total (400 SCOTUS + 473 circuits). State supremes, judges, and disclosures building up from 0.
 
 This roadmap follows the reference-tier discipline codified in `AGENTS.md`:
 
