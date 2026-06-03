@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/datasets" className="text-gray-400 hover:text-white transition-colors">Datasets</Link>
           <Link href="/globe" className="text-gray-400 hover:text-white transition-colors">Globe</Link>
           <Link href="/votes" className="text-gray-400 hover:text-white transition-colors">Votes</Link>
+          <Link href="/legislation" className="text-gray-400 hover:text-white transition-colors">Legislation</Link>
           <Link href="/analysis/votes" className="text-gray-400 hover:text-white transition-colors">Analysis</Link>
           <Link href="/analysis/topics" className="text-gray-400 hover:text-white transition-colors">Topic Trends</Link>
           <Link href="/analysis/representation" className="text-gray-400 hover:text-white transition-colors">Representation</Link>

@@ -271,6 +271,22 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-03 (night, follow-up) — /legislation page (Congress tracker UI)
+
+**What.** New page + API for the live 119th Congress bill tracker, the read side of the `congress_bills_tracker_v1` pipeline.
+
+- `app/api/legislation/route.ts` — `GET /api/legislation?status=&type=&q=&page=&limit=` returns `{ bills, total, page, limit }`. Filters by topic-slug joins (`congress-119` always; optional `status-*` and bill-type slug e.g. `hr`/`s`/`hjres`/`sjres`/`hres`/`sres`/`hconres`/`sconres`). `q` is case-insensitive ILIKE on `Claim.text`. Whitelists status and type slugs server-side. `revalidate = 60`, page size capped at 100. Read-time bill DTO is derived from `claim.text`, `claim.metadata` (title/body/billType/billNumber/congress/sourceUrl/introducedDate), the topic slugs, and the first related Edge → Source URL.
+- `app/legislation/page.tsx` + `app/legislation/LegislationClient.tsx` — server entrypoint + client UI. Header "Congress Tracker / 119th Congress". Status tabs (All / Introduced / In Progress / Passed House / Passed Senate / Enacted / Vetoed), bill-type `<select>`, debounced search input. Bill row: color-coded status pill (green/blue/amber/gray/red) + bill-ref chip + 2-line title + 1-line latest-action excerpt + introduced date + congress.gov link. Skeleton loader, "Bills are being indexed. Check back soon." empty state when no filters applied, paginator (25/page).
+- `app/layout.tsx` — added `/legislation` nav link between Votes and Analysis.
+
+**Schema-vs-spec note.** Task brief assumed `Claim.tags String[]`, plus `title`/`body`/`source`/`sourceUrl`/`date`/`updatedAt` columns. None of those exist on `Claim`. Mapped instead onto the actual schema: tags → `ClaimTopic`-joined `Topic.slug` (the convention `congress_bills_tracker_v1` was already designed against), title/body → `claim.text` + `claim.metadata` JSON fallbacks, sourceUrl → `metadata.sourceUrl` or first related `Edge.source.url`, date → `metadata.introducedDate` or `claim.claimEmergedAt`, updatedAt → `claim.createdAt`. No schema migration introduced.
+
+**Verification.** `npx tsc --noEmit` clean. UI not exercised in a browser (no dev server start) — the tracker ingester has not been launched yet, so the page will render the empty state until `congress_bills_tracker_v1` produces rows.
+
+**Files.** `app/api/legislation/route.ts` (new), `app/legislation/page.tsx` (new), `app/legislation/LegislationClient.tsx` (new), `app/layout.tsx` (nav link), `CONSULTANT.md` (this entry).
+
+---
+
 ### 2026-06-03 (night) — Congress bills status tracker
 
 **What.** New perpetual ingestion pipeline for 119th Congress bills covering all bill types (`hr`, `s`, `hjres`, `sjres`, `hconres`, `sconres`, `hres`, `sres`). Polls `/v3/bill/{congress}?sort=updateDate+desc&limit=250` and upserts each bill as a `PROVISIONAL` Claim whose status tag tracks the current legislative state (`status-introduced` / `status-passed-house` / `status-passed-senate` / `status-enacted` / `status-vetoed` / `status-in-progress`).
