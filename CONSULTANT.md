@@ -271,6 +271,109 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-03 (late evening) — /legislation: multi-country tracker — Canada + New Zealand
+
+**What.** Extended `/legislation` from US-only to a three-country tracker covering US Congress, Canadian Parliament, and New Zealand Parliament.
+
+**API (`app/api/legislation/route.ts`):**
+- Added `country=us|ca|nz` query param (default `us`). US path is unchanged.
+- Non-US requests short-circuit into `foreignCountryView()`, which queries by `ingestedBy` tag (`canada_bills_v1` for CA; `nz_legislation_v1` or `nz_bills_v1` for NZ) and maps rows to the shared `BillHit` shape.
+- Canada metadata extraction: `billNumber`, `parliament`, `billType` from `Claim.metadata`; `sourceUrl` from `Edge.source.url`.
+- NZ metadata extraction: `actNumber` (as billNumber), `year`, `actType` from `Claim.metadata`; NZ status (`"Bill"` vs `"In Force"`) inferred from `metadata.dataset` (`nz_bills_v1` vs `nz_legislation_v1`).
+- All responses now include `countries: { us, ca, nz }` summary.
+
+**Client (`app/legislation/LegislationClient.tsx`):**
+- Country-switcher tab row at top of page (🇺🇸 US Congress, 🇨🇦 Canada, 🇳🇿 New Zealand).
+- Switching country resets view/status/type/page params; search query is preserved.
+- US: full existing UI (view tabs, status filter chips, type selector).
+- CA/NZ: simplified UI (search + pagination only).
+- AutoUpdateBanner (live tracker indicator) rendered for US only.
+- `BillRow` renders country-appropriate source link label (congress.gov / parl.ca / legislation.govt.nz).
+- Status labels for CA/NZ fall back to the raw string if not in the US `STATUS_LABEL` map.
+- Bill reference chip: US shows `TYPE_LABEL billNumber` (e.g. "H.R. 1234"); CA/NZ shows just `billNumber`.
+
+**Loop scripts (new):**
+- `scripts/canada-bills-loop.sh` — `ingest-canada-bills.ts --full` every 12h, log → `/tmp/canada-bills-loop.log`.
+- `scripts/nz-bills-loop.sh` — `ingest-nz-legislation.ts --mode bills --full` every 12h, log → `/tmp/nz-bills-loop.log`.
+- Both follow the `set -euo pipefail` + `tee -a` + error-continue pattern from `congress-bills-loop.sh`.
+
+**Page metadata** (`app/legislation/page.tsx`): updated description to reflect multi-country scope.
+
+**Verification:**
+- `npx tsc --noEmit --project tsconfig.json` — clean.
+- `npx tsc --noEmit --project tsconfig.scripts.json` — pre-existing errors in unrelated scripts only; no errors in new or modified files.
+
+**Files changed:** `app/api/legislation/route.ts`, `app/legislation/LegislationClient.tsx`, `app/legislation/page.tsx`, `scripts/canada-bills-loop.sh` (new), `scripts/nz-bills-loop.sh` (new), `app/page.tsx` (changelog), `app/layout.tsx` (footer date), `CONSULTANT.md`.
+
+---
+
+### 2026-06-03 16:19 EDT — Legislation page: auto-update banner, terminal outcomes tab, full 119th Congress record tab
+- **Commit:** feat: /legislation page — live Congress bills tracker with status filters
+- **Files changed:**
+  - CONSULTANT.md
+  - app/api/legislation/route.ts
+  - app/layout.tsx
+  - app/legislation/LegislationClient.tsx
+  - app/legislation/page.tsx
+- **Diff stat:**  5 files changed, 519 insertions(+)
+
+
+### 2026-06-03 (late) — /legislation: auto-update banner + Terminal Outcomes + Full 119th retroactive view
+
+**What.** Three additions to `/legislation` requested by Robert, all building on the existing `congress_bills_tracker_v1` pipeline and the 12-hour `scripts/congress-bills-loop.sh` cron.
+
+- **Auto-update banner** at the top of the page — pulsing green dot, "Live tracker — auto-refreshes every 12 hours from the Congress.gov API.", plus a relative "Last pull: Xh ago" derived from `MAX(metadata->>'lastTrackedAt')` across all `congress_bills_tracker_v1` claims. Lets visitors see at a glance that the data is fresh without reading the changelog.
+- **Terminal Outcomes view** (top-of-page view tab) — filters the bill list to bills tagged with any of `status-enacted`, `status-vetoed`, `status-failed`. Outcome rendered as a prominent colored badge (ENACTED green / VETOED red / FAILED grey) plus a `LAST ACTION / <date>` block on the right. Currently empty for 119th tracked bills (most are still in committee); will populate as bills reach terminal states.
+- **Full 119th Record view** — fetches all 119th-Congress tracker claims (no per-page DB hit; sorted in API after fetch), groups by outcome (enacted → passed → vetoed → failed → still active), and within each group sorts by `latestActionDate` desc. Page-level paginator (50/page) walks the pre-sorted list. Header shows outcome counts as colored dots.
+
+**API changes (`app/api/legislation/route.ts`):**
+- Added `view` URL param: `status` (default), `full`.
+- Added support for `status=terminal` → OR of (enacted | vetoed | failed) topic slugs.
+- Extended `BillHit` to include `latestActionDate`, `latestActionText`, `outcome` (one of `enacted | passed | vetoed | failed | active`).
+- Response includes `lastRefresh` (string ISO from JSON metadata aggregate) and, for `view=full`, `outcomeCounts: Record<Outcome, number>`.
+- `MAX_LIMIT` raised to 1000 to let the `view=full` payload return up to 500+ rows in one page; default page size still 25, full-view client uses 50.
+- New `status-failed` slug added to `VALID_STATUS_SLUGS` whitelist.
+
+**Tracker change (`scripts/ingest-congress-bills-tracker.ts`):**
+- Added `status-failed` to `STATUS_SLUGS` constant + `statusName` switch (so syncTopicTags emits/clears the slug correctly).
+- Added a new regex bucket in `statusSlug()` for "failed of passage", "failed to pass", "motion to suspend the rules…failed", "cloture motion rejected", "bill rejected" — placed AFTER vetoed but BEFORE the per-chamber passed regexes so an explicit failure outranks a prior passage.
+- No DB backfill needed; future tracker passes will classify failed bills correctly. Existing in-progress claims that turn out to be failed will get re-tagged on their next `latestActionDate` change (because `syncTopicTags` deletes stale status slugs).
+
+**UI changes (`app/legislation/LegislationClient.tsx`):**
+- New view tabs (`status` | `outcomes` | `full`) rendered as an underlined tab bar above the search input.
+- Auto-update banner component renders the lastRefresh-derived "Last pull" tag using a tiny `formatRelative` helper.
+- Status filter chips hidden when not in `status` view (since the other two views fix the status filter).
+- Bill row gets a `prominentOutcome` mode that swaps the status pill for the colored outcome badge and replaces the introduced-date footer with `LAST ACTION / <date>`.
+- New `FullRecordList` component groups by outcome with a labeled section header (color-coded label + count).
+- Added `status-failed` chip to the Status tab row (label "Failed", grey).
+
+**Verification.**
+- `npx tsc --noEmit` — clean.
+- Dev server probe: `GET /legislation` 200, `GET /legislation?view=full` 200, `GET /legislation?view=outcomes` 200.
+- `GET /api/legislation?view=full` returns `outcomeCounts {enacted:0, passed:1, vetoed:0, failed:0, active:499}` against the 500 currently-tracked bills, with a passed Senate resolution surfaced first in the `passed` group.
+- `GET /api/legislation?status=terminal` returns `total:0` (no tracked bills in terminal state yet — empty-state UI exercised).
+
+**Files changed:**
+- `app/api/legislation/route.ts`
+- `app/legislation/LegislationClient.tsx`
+- `scripts/ingest-congress-bills-tracker.ts`
+- `app/page.tsx` (changelog)
+- `app/layout.tsx` (footer date)
+- `CONSULTANT.md`
+
+---
+
+### 2026-06-03 16:05 EDT — Congress bills tracker ingester + /legislation UI page built and deployed
+- **Commit:** feat: /legislation page — live Congress bills tracker with status filters
+- **Files changed:**
+  - CONSULTANT.md
+  - app/api/legislation/route.ts
+  - app/layout.tsx
+  - app/legislation/LegislationClient.tsx
+  - app/legislation/page.tsx
+- **Diff stat:**  5 files changed, 519 insertions(+)
+
+
 ### 2026-06-03 (night, follow-up) — /legislation page (Congress tracker UI)
 
 **What.** New page + API for the live 119th Congress bill tracker, the read side of the `congress_bills_tracker_v1` pipeline.
