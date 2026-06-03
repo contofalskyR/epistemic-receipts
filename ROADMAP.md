@@ -1,6 +1,6 @@
 # HARD_FACT Pipeline Roadmap
 
-**Live DB (2026-05-31):** ~988k+ claims · 146+ pipelines · 116,267 LegislativeVotes · 2,361 polities · 9 HistoricalEvents
+**Live DB (2026-06-03):** ~1.04M+ claims · 160+ pipelines · 116,267 LegislativeVotes · 2,361 polities · 9 HistoricalEvents · 88 perpetual loops running
 
 Future pipelines ranked by volume + editorial value. Add to this list as new candidates emerge. Cross off as pipelines ship.
 
@@ -14,6 +14,9 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 | Citation graph / related papers | ✅ Shipped 2026-05-31 | `ClaimRelation` table, OpenAlex enrichment, relations panel on claim detail page ("Later Work", "Related Papers", "References") |
 | Globe fixes + Connections page | ✅ Shipped 2026-05-31 | Clickable claims in timeline mode, slower play speed (~1s/step), `/globe/connections` page with country-to-country arcs |
 | **EU Parliament votes deep-dive** | 🔄 In progress (Opus agent) | Expand EU votes 1,900 → ~50k+ via europarl.europa.eu API (1979–present), MEP/group breakdown (EPP, S&D, Renew…), add EU Parliament tab to `/analysis/votes` |
+| **/legislation — global 52-country** | ✅ Shipped 2026-06-03 | Regional browser (Americas/Europe/Asia-Pacific/Africa), country grid with claim counts, 49 perpetual loops (24h), graceful empty states. Canada/NZ status chips. |
+| **/legislation — bill granularity** | ✅ Shipped 2026-06-03 | Bill ID chips (RA no., law no., act no.), law type badges (LOI/PL/Money Bill), status where available (India: Assented), year-only date display. |
+| **Globe — typed density layers** | 📋 Queued | Category-based overlays instead of all-facts heatmap. Toggle by type: pharma labs, drug discovery, human rights orgs, legislation, science, etc. Geography + type of fact, not just claim count. |
 | "What's new" feed | ⏳ On hold | After bookmarks |
 
 ---
