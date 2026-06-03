@@ -97,6 +97,19 @@ function parseDryRun(): boolean {
   return process.argv.includes('--dry-run')
 }
 
+// --slow: longer timeouts, bigger retry backoff, 10s between requests
+// --resume-from ca3: skip circuits before this code
+function parseSlow(): boolean {
+  return process.argv.includes('--slow')
+}
+
+function parseResumeFrom(): string | null {
+  const args = process.argv.slice(2)
+  const idx = args.findIndex(a => a === '--resume-from')
+  if (idx !== -1 && args[idx + 1]) return args[idx + 1].toLowerCase()
+  return null
+}
+
 function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
@@ -143,9 +156,12 @@ function toCitationCount(raw: number | string | null | undefined): number | null
 // ── API fetch (matches SCOTUS ingester's retry behaviour) ─────────────────────
 
 const TRANSIENT_STATUSES = new Set([502, 503, 504])
-const MAX_RETRIES = 5
-const REQUEST_DELAY_MS = 800
 const MAX_429_WAIT_MS  = 120_000
+
+// These are set in main() based on --slow flag
+let MAX_RETRIES    = 5
+let REQUEST_DELAY_MS = 800
+let FETCH_TIMEOUT_MS = 30_000
 
 async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
   const url = urlOrPath.startsWith('http') ? urlOrPath : `${BASE_URL}${urlOrPath}`
@@ -153,7 +169,7 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
   for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
     let res: Response
     const ctrl = new AbortController()
-    const timer = setTimeout(() => ctrl.abort(), 30000)
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
     try {
       res = await fetch(url, {
         headers: {
@@ -166,9 +182,10 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
     } catch (networkErr) {
       clearTimeout(timer)
       if (attempt > MAX_RETRIES) throw networkErr
-      const reason = (networkErr as Error)?.name === 'AbortError' ? 'fetch timeout (30s)' : 'network error'
-      console.log(`  Retrying after ${reason} (attempt ${attempt}/${MAX_RETRIES})...`)
-      await sleep(2 ** attempt * 1000)
+      const reason = (networkErr as Error)?.name === 'AbortError' ? `fetch timeout (${FETCH_TIMEOUT_MS / 1000}s)` : 'network error'
+      const backoff = Math.min(2 ** attempt * 1000, 300_000) // cap at 5 min
+      console.log(`  Retrying after ${reason} (attempt ${attempt}/${MAX_RETRIES}, waiting ${Math.ceil(backoff / 1000)}s)...`)
+      await sleep(backoff)
       continue
     }
 
@@ -430,10 +447,29 @@ async function main() {
   const minCitations = parseMinCitations()
   const courtFilter = parseCourtFilter()
   const dryRun = parseDryRun()
+  const slow = parseSlow()
+  const resumeFrom = parseResumeFrom()
 
-  const targets = courtFilter
+  if (slow) {
+    MAX_RETRIES       = 10
+    REQUEST_DELAY_MS  = 10_000  // 10s between requests
+    FETCH_TIMEOUT_MS  = 90_000  // 90s fetch timeout
+    console.log('  [slow mode] timeout=90s, delay=10s, retries=10')
+  }
+
+  let targets = courtFilter
     ? CIRCUITS.filter(c => c.code === courtFilter)
     : CIRCUITS
+
+  if (resumeFrom) {
+    const idx = targets.findIndex(c => c.code === resumeFrom)
+    if (idx === -1) {
+      console.error(`\nError: --resume-from ${resumeFrom} did not match any known circuit.\nKnown codes: ${CIRCUITS.map(c => c.code).join(', ')}\n`)
+      process.exit(1)
+    }
+    targets = targets.slice(idx)
+    console.log(`  [resuming from ${resumeFrom}] skipping ${idx} circuit(s)`)
+  }
 
   if (targets.length === 0) {
     console.error(`\nError: --court ${courtFilter} did not match any known circuit.\nKnown codes: ${CIRCUITS.map(c => c.code).join(', ')}\n`)
@@ -453,7 +489,12 @@ async function main() {
 
   const totals: CircuitResult = { fetched: 0, ingested: 0, skipped: 0, errors: 0 }
 
-  for (const circuit of targets) {
+  for (let i = 0; i < targets.length; i++) {
+    const circuit = targets[i]
+    if (slow && i > 0) {
+      console.log(`  [slow mode] waiting 30s before next circuit...`)
+      await sleep(30_000)
+    }
     console.log(`\n--- ${circuit.shortName} (${circuit.code}) ---`)
     try {
       const r = await ingestCircuit(circuit, token, limit, minCitations, dryRun, parentTopicId)
