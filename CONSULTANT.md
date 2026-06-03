@@ -271,6 +271,22 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-03 (late evening) — CourtListener Tier 3A: citation graph ETL
+
+**What.** New `scripts/ingest-courtlistener-citations.ts` — a one-shot ETL that materialises `ClaimRelation` rows with `relationType: 'cites'` between CourtListener opinion Claims already in our DB. We do **not** ingest the ~70M raw edges from `/api/rest/v4/opinions-cited/` as Claims; we only persist the edges where both endpoints are already-ingested SCOTUS / circuit / state-supreme Claims.
+
+- **Pipeline order.** (1) Load all `Claim` rows where `ingestedBy IN ('courtlistener_scotus_v1', 'courtlistener_circuits_v1', 'courtlistener_state_supreme_v1')` AND `deleted=false`. Parse the CourtListener cluster id off each Claim's `externalId` using three regexes — SCOTUS uses the legacy `cl-cluster-<id>` form, circuits and state-supreme use their pipeline-tag prefix. (2) For each chunk of 100 cluster ids, hit `/opinions/?cluster__in=<ids>&page_size=100&fields=id,cluster` and follow `next` until exhausted, building an `opinionId → clusterId` map restricted to clusters in our DB. (3) For each chunk of 100 of those opinion ids, hit `/opinions-cited/?citing_opinion__in=<ids>&page_size=100` and follow `next`, extracting trailing numeric IDs from both the `citing_opinion` and `cited_opinion` fields (which CourtListener returns as full URLs). Keep only edges where both ends map back into our DB. Drop intra-cluster references (opinion-A-of-cluster-X citing opinion-B-of-cluster-X collapses to the same Claim). Dedup pairs at collection time. (4) Persist via `prisma.claimRelation.create({ data: { fromClaimId, toClaimId, relationType: 'cites', year: <citing claim's UTC year> } })`. The schema's `@@unique([fromClaimId, toClaimId, relationType])` constraint makes the script idempotent — `P2002` errors are caught and counted as `skipped`, anything else as `errors`.
+- **CLI.** `--dry-run` (count and print sample, no DB writes), `--slow` (sets `REQUEST_DELAY_MS=1500`, `FETCH_TIMEOUT_MS=90000`, `MAX_RETRIES=10`), `--limit N` (caps the Prisma `take` on the initial Claim load — useful for smoke-testing on the first N claims). Same `clFetch`, 429-aware retry, transient-status retry, AbortController timeout pattern as `ingest-courtlistener-circuits.ts`.
+- **Output.** Prints totals at the end: claims queried, clusters parsed, opinions resolved, raw edges scanned, citation pairs found (both ends in DB), ClaimRelations created, skipped (already-existed → P2002), errors.
+
+**Why.** Tier 3A in the CourtListener roadmap: the citation graph is the editorial backbone that lets case studies surface "this opinion was cited by these later opinions also in our DB." Doing it as a `ClaimRelation` table (one row per both-ends-known pair) keeps the existing Source/Edge/MetaEdge model clean while still giving us the connective tissue. Idempotency + `P2002`-tolerance means the script can be re-run as new circuit / state-supreme Claims come in from their nightly loops without rewriting prior edges.
+
+**Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — clean on the new file (pre-existing errors in unrelated scripts unchanged). Script **not run** per task instructions — meant to be invoked once the circuits + state-supreme loops have accumulated enough Claims to make the citation graph interesting.
+
+**Files.** `scripts/ingest-courtlistener-citations.ts` (new), `CONSULTANT.md` (this entry).
+
+---
+
 ### 2026-06-03 (evening) — Canonical court Topic slugs → `court-<id>` form
 
 **What.** One-time migration `scripts/migrate-court-slugs.ts` renamed 28 ad-hoc Topic slugs created by the circuits + state-supreme ingesters to canonical `court-<CL-id>` form, and the two ingesters' static court tables were updated to write the canonical slugs going forward.
