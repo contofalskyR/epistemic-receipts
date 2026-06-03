@@ -1,8 +1,23 @@
 # CourtListener Ingestion Roadmap
 
-**Status:** Audit + plan • Drafted 2026-06-03
-**Author:** Subagent audit (read-only research)
+**Status:** Tier 1 fully automated — 4 perpetual loops running • Updated 2026-06-03
+**Author:** Subagent audit (read-only research) + RobClaw implementation
 **Scope:** CourtListener REST API v4 — what's there, what's already ingested, what to do next.
+
+### Live ingestion state (as of 2026-06-03 14:00 EDT)
+
+All four Tier 1 sources are running as **perpetual background loops** (no cron — true infinite loops with sleep between passes):
+
+| Script | PID | Sleep | Status |
+|---|---|---|---|
+| `scripts/scotus-loop.sh` | 76976 | 8h | Running since ~12:34pm — citation floor auto-drops 5→2→0 |
+| `scripts/circuits-loop.sh` | 74098 | 6h | Running since ~11:02am |
+| `scripts/state-supreme-loop.sh` | 79152 | 6h | Started 2:09pm — top 15 states, citation floor 20→10→5→0 |
+| `scripts/judges-loop.sh` | 79206 | 12h | Started 2:09pm — Article III appointments, all circuits + SCOTUS |
+
+All use `--slow` mode and are idempotent via `externalId`. Logs at `/tmp/{scotus,circuits,state-supreme,judges}-loop.log`.
+
+**Claim counts at Tier 1 launch:** 873 total (400 SCOTUS + 473 circuits). State supremes and judges starting from 0.
 
 This roadmap follows the reference-tier discipline codified in `AGENTS.md`:
 
@@ -98,19 +113,19 @@ TOTAL                                        873 Claims
   - 473 ingested so far → ~36 / circuit on average.
   - **Actively running**: `scripts/circuits-loop.sh` repeats `--slow --limit 100 --min-citations 20` every 6 h; idempotent via `externalId = courtlistener_circuits_v1-<clusterId>`.
 
-### 2.2 What's missing
+### 2.2 What's missing / still filling in
 
-| Layer | Gap |
-|---|---|
-| **Opinion text** | Only `cluster.case_name` is stored. The actual opinion text (majority + dissent) is not ingested. No `Source.metadata` (field doesn't exist yet — see AGENTS.md), so we can't store the full text per the current schema; AI-extracted holdings are deferred. |
-| **State supreme courts** | None ingested. Each state's court of last resort issues binding state-law precedent. |
-| **Specialised federal courts** | Bankruptcy, Tax Court, Court of Federal Claims, FISA, immigration BIA — none ingested. |
-| **District courts** | None. ~94 federal districts; landmark district opinions (e.g., the *Texas v. United States* immigration ruling) are missing. |
-| **Pre-2026 backlog of high-cite circuit opinions** | Only ~36 / circuit at `min-citations >= 20`. Lowering the threshold would surface another ~2–3 k legitimate precedential rulings. |
-| **Judge metadata** | `people`, `positions` — never ingested. Case studies on judicial appointments / partisan composition need this. |
-| **Financial disclosures** | None — the Clarence Thomas / Crow ProPublica investigation cites specific disclosure forms; we cannot link to them. |
-| **Citation graph** | `opinions-cited` not ingested. We currently store `citation_count` as a single integer; we don't know *which* later cases cite a given anchor. Useful for `ClaimRelation` enrichment. |
-| **Oral argument transcripts** | None. |
+| Layer | Gap | Status |
+|---|---|---|
+| **Opinion text** | Only `cluster.case_name` is stored. No `Source.metadata` field yet — AI-extracted holdings deferred. | Not started |
+| **State supreme courts** | Running via `state-supreme-loop.sh` — starting to fill in top 15 states. | **Loop running** |
+| **Specialised federal courts** | Bankruptcy, Tax Court, Court of Federal Claims, FISA, immigration BIA — none ingested. | Tier 4 — on-demand |
+| **District courts** | None. ~94 federal districts; landmark rulings (e.g., *Texas v. United States*) missing. | Tier 4 — on-demand |
+| **Pre-2026 backlog of high-cite circuit opinions** | Citation floor auto-dropping in `circuits-loop.sh`; will surface more over time. | Filling in via loop |
+| **Judge metadata** | Running via `judges-loop.sh` — Article III appointments (SCOTUS + 13 circuits). | **Loop running** |
+| **Financial disclosures** | None — Thomas/Crow/Alito investigations cite specific forms; cannot link yet. | **Tier 2 — next** |
+| **Citation graph** | `opinions-cited` not ingested. `ClaimRelation` edges deferred. | Tier 3 — deferred |
+| **Oral argument transcripts** | None. | Tier 3 — deferred |
 
 ---
 
@@ -172,11 +187,12 @@ TOTAL                                        873 Claims
 #### 2B. Court catalogue
 - **Reference-tier:** PASS — every existing Topic (`us-court-of-appeals-9th-circuit`, etc.) is informally a court. The `courts` endpoint gives the canonical list with start/end dates, jurisdiction codes, and Wikidata-friendly identifiers.
 - **Endpoint:** `/courts/` (3 358 records, confirmed).
-- **Recommended new script:** `scripts/ingest-courtlistener-courts.ts`
-  - One Topic per court (not Claim). Hierarchical Topic tree: `federal` / `state` / `tribal` / `military` / `international`.
-  - Backfills the implicit topic tree we've been creating ad-hoc in `ingest-courtlistener-circuits.ts` (`ensureTopic`).
+- **Script built:** `scripts/ingest-courtlistener-courts.ts` — **DO NOT RUN YET. Pending slug decision.**
+  - Script uses slugs `court-<id>` (e.g., `court-scotus`, `court-ca9`). This creates a **parallel topic tree** alongside the existing `us-court-of-appeals-9th-circuit` slugs from the circuits ingester.
+  - **Open decision:** either (a) run as-is and clean up duplication later, or (b) update the script to upsert using existing descriptive slugs so the court catalogue *merges* into the existing tree.
+  - Backfills descriptions from `full_name` + `start_date`/`end_date`; never renames existing topics.
 - **No Claims created** — Topics only.
-- **Rate budget:** trivial (3 358 records, single pass under 10 min).
+- **Rate budget:** trivial (3 358 records, single pass under 10 min). First run on 2026-06-03 rate-limited immediately due to 5 concurrent loops; re-run when quota resets.
 
 #### 2C. Oral argument index (metadata, not audio bytes)
 - **Reference-tier:** **MARGINAL — likely BACKGROUND-tier.** Case studies typically cite specific moments in oral argument by *quote*, not by recording. The CL audio MP3 itself rarely shows up as a citation.
