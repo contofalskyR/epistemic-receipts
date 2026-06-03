@@ -1,7 +1,8 @@
 // Pipeline 24 — Canadian Parliament Bills (canada_bills_v1)
 // Dataset: Parliament of Canada LEGISinfo Open Data. Free, no API key required.
 // Scope: Bills that received Royal Assent (enacted laws), all sessions from 35th Parliament
-//        (January 1994) to present.
+//        (January 1994) to present, PLUS all bills in the current parliamentary session
+//        regardless of stage. Current-session statuses are refreshed on each pass.
 // Topic: ca-parliament (Canadian Parliament, domain=government).
 // Run: npx tsx scripts/ingest-canada-bills.ts --dry-run
 //      npx tsx scripts/ingest-canada-bills.ts --sample 10
@@ -28,6 +29,9 @@ interface CanadaBill {
   ShortTitleEn: string
   ShortTitleFr: string
   ReceivedRoyalAssentDateTime: string | null
+  PassedHouseFirstReadingDateTime: string | null
+  PassedSenateFirstReadingDateTime: string | null
+  LatestActivityDateTime: string | null
   ParlSessionCode: string
   ParlSessionEn: string
   ParliamentNumber: number
@@ -38,8 +42,9 @@ interface CanadaBill {
   IsFromCurrentSession: boolean
 }
 
-type IngestResult = 'ingested' | 'skipped' | 'failed'
-type Counts = { ingested: number; skipped: number; errors: number }
+type IngestResult = 'ingested' | 'refreshed' | 'skipped' | 'failed'
+type Counts = { ingested: number; refreshed: number; skipped: number; errors: number }
+type OutcomeCategory = 'enacted' | 'active' | 'failed'
 
 interface CandidateRecord {
   billId: number
@@ -55,6 +60,11 @@ interface CandidateRecord {
   sourceExternalId: string
   sourceName: string
   billType: string
+  parliamentaryStatus: string
+  outcomeCategory: OutcomeCategory
+  introducedDateStr: string | null
+  latestActivityDateStr: string | null
+  royalAssentDateStr: string | null
 }
 
 // ── CLI ────────────────────────────────────────────────────────────────────────
@@ -116,8 +126,40 @@ async function fetchAllBills(retries = 4): Promise<CanadaBill[]> {
 
 // ── Candidate building ─────────────────────────────────────────────────────────
 
+function parseCaDate(s: string | null): Date | null {
+  if (!s) return null
+  const d = new Date(s)
+  return isNaN(d.getTime()) ? null : d
+}
+
+function earliestDate(...dates: (Date | null)[]): Date | null {
+  const valid = dates.filter((d): d is Date => d !== null)
+  if (valid.length === 0) return null
+  return valid.reduce((a, b) => (a.getTime() < b.getTime() ? a : b))
+}
+
+function classifyOutcome(parliamentaryStatus: string, royalAssentDate: Date | null): OutcomeCategory {
+  if (royalAssentDate) return 'enacted'
+  const s = parliamentaryStatus.toLowerCase()
+  if (s.includes('royal assent')) return 'enacted'
+  if (
+    s.includes('defeated') ||
+    s.includes('not proceeded') ||
+    s.includes('withdrawn') ||
+    s.includes('discharged') ||
+    s.includes('dropped') ||
+    s.includes('rejected')
+  ) {
+    return 'failed'
+  }
+  return 'active'
+}
+
 function buildCandidate(bill: CanadaBill, verbose: boolean): CandidateRecord | null {
-  if (!bill.ReceivedRoyalAssentDateTime) return null
+  const royalAssentDate = parseCaDate(bill.ReceivedRoyalAssentDateTime)
+  const isRA = royalAssentDate !== null
+  const isCurrent = bill.IsFromCurrentSession === true
+  if (!isRA && !isCurrent) return null
 
   const parliament = bill.ParliamentNumber
   const session = bill.SessionNumber
@@ -127,19 +169,26 @@ function buildCandidate(bill: CanadaBill, verbose: boolean): CandidateRecord | n
     return null
   }
 
-  const dateStr = bill.ReceivedRoyalAssentDateTime.slice(0, 10)
-  const enactedDate = new Date(dateStr + 'T00:00:00Z')
-  if (isNaN(enactedDate.getTime())) {
-    if (verbose) console.log(`  Skip ${parliament}-${session}:${billNumber}: invalid date ${dateStr}`)
+  const latestActivityDate = parseCaDate(bill.LatestActivityDateTime)
+  const houseFirstReading = parseCaDate(bill.PassedHouseFirstReadingDateTime)
+  const senateFirstReading = parseCaDate(bill.PassedSenateFirstReadingDateTime)
+  const introducedDate = earliestDate(houseFirstReading, senateFirstReading, latestActivityDate, royalAssentDate)
+
+  // claimEmergedAt: Royal Assent date for enacted bills, latest activity for in-progress.
+  const primaryDate = royalAssentDate ?? latestActivityDate ?? introducedDate
+  if (!primaryDate) {
+    if (verbose) console.log(`  Skip ${parliament}-${session}:${billNumber}: no usable date`)
     return null
   }
 
-  // Prefer long title, fall back to short title
   const claimText = (bill.LongTitleEn?.trim() || bill.ShortTitleEn?.trim()) ?? ''
   if (!claimText) {
     if (verbose) console.log(`  Skip ${parliament}-${session}:${billNumber}: no English title`)
     return null
   }
+
+  const parliamentaryStatus = bill.CurrentStatusEn?.trim() || (isRA ? 'Royal Assent' : 'Unknown')
+  const outcomeCategory = classifyOutcome(parliamentaryStatus, royalAssentDate)
 
   const externalId = `canada_bill_${parliament}_${session}_${billNumber}`
   const sourceExternalId = `canada_source_${parliament}_${session}_${billNumber}`
@@ -153,13 +202,18 @@ function buildCandidate(bill: CanadaBill, verbose: boolean): CandidateRecord | n
     session,
     parlSession: bill.ParlSessionCode,
     claimText,
-    enactedDate,
-    enactedDateStr: dateStr,
+    enactedDate: primaryDate,
+    enactedDateStr: primaryDate.toISOString().slice(0, 10),
     sourceUrl,
     externalId,
     sourceExternalId,
     sourceName: `Canada Bill ${parliament}-${session} ${billNumber}`,
     billType: bill.BillTypeEn ?? '',
+    parliamentaryStatus,
+    outcomeCategory,
+    introducedDateStr: introducedDate ? introducedDate.toISOString().slice(0, 10) : null,
+    latestActivityDateStr: latestActivityDate ? latestActivityDate.toISOString().slice(0, 10) : null,
+    royalAssentDateStr: royalAssentDate ? royalAssentDate.toISOString().slice(0, 10) : null,
   }
 }
 
@@ -182,8 +236,38 @@ async function ensureTopic(slug: string, name: string, domain: string): Promise<
 type TxClient = Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>
 
 async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Promise<IngestResult> {
+  const metadata = {
+    dataset: INGESTED_BY,
+    billId: rec.billId,
+    billNumber: rec.billNumber,
+    parliament: rec.parliament,
+    session: rec.session,
+    parlSession: rec.parlSession,
+    billType: rec.billType,
+    parliamentaryStatus: rec.parliamentaryStatus,
+    outcomeCategory: rec.outcomeCategory,
+    introducedDate: rec.introducedDateStr,
+    latestActivityDate: rec.latestActivityDateStr,
+    royalAssentDate: rec.royalAssentDateStr,
+    lastTrackedAt: new Date().toISOString(),
+  }
+
   const existing = await tx.claim.findUnique({ where: { externalId: rec.externalId }, select: { id: true } })
-  if (existing) return 'skipped'
+  if (existing) {
+    try {
+      await tx.claim.update({
+        where: { id: existing.id },
+        data: {
+          metadata,
+          claimEmergedAt: rec.enactedDate,
+        },
+      })
+      return 'refreshed'
+    } catch (err) {
+      console.error(`  Error refreshing ${rec.externalId}: ${err}`)
+      return 'failed'
+    }
+  }
 
   try {
     const source = await tx.source.upsert({
@@ -211,15 +295,7 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
         autoApproved: true,
         humanReviewed: false,
         externalId: rec.externalId,
-        metadata: {
-          dataset: INGESTED_BY,
-          billId: rec.billId,
-          billNumber: rec.billNumber,
-          parliament: rec.parliament,
-          session: rec.session,
-          parlSession: rec.parlSession,
-          billType: rec.billType,
-        },
+        metadata,
       },
     })
 
@@ -274,7 +350,7 @@ async function main() {
   for (const bill of allBills) {
     const rec = buildCandidate(bill, verbose)
     if (!rec) {
-      if (bill.ReceivedRoyalAssentDateTime) skippedMalformed++
+      if (bill.ReceivedRoyalAssentDateTime || bill.IsFromCurrentSession) skippedMalformed++
       continue
     }
     if (seenIds.has(rec.externalId)) continue
@@ -283,8 +359,11 @@ async function main() {
     if (limit > 0 && candidates.length >= limit) break
   }
 
-  if (skippedMalformed > 0) console.log(`  Skipped ${skippedMalformed} Royal Assent bills with malformed data`)
-  console.log(`\nTotal candidates (Royal Assent): ${candidates.length}`)
+  if (skippedMalformed > 0) console.log(`  Skipped ${skippedMalformed} eligible bills with malformed data`)
+  const enactedCount = candidates.filter(c => c.outcomeCategory === 'enacted').length
+  const activeCount = candidates.filter(c => c.outcomeCategory === 'active').length
+  const failedCount = candidates.filter(c => c.outcomeCategory === 'failed').length
+  console.log(`\nTotal candidates: ${candidates.length} (enacted: ${enactedCount}, active: ${activeCount}, failed: ${failedCount})`)
 
   // ── Dry-run ────────────────────────────────────────────────────────────────
   if (mode === 'dry-run') {
@@ -298,7 +377,12 @@ async function main() {
       session: r.session,
       parlSession: r.parlSession,
       billType: r.billType,
+      parliamentaryStatus: r.parliamentaryStatus,
+      outcomeCategory: r.outcomeCategory,
       enactedDate: r.enactedDateStr,
+      introducedDate: r.introducedDateStr,
+      latestActivityDate: r.latestActivityDateStr,
+      royalAssentDate: r.royalAssentDateStr,
       sourceUrl: r.sourceUrl,
       sourceName: r.sourceName,
       claimType: 'INSTITUTIONAL',
@@ -340,7 +424,7 @@ async function main() {
 
   console.log(`\nStep 3: Writing ${rows.length} rows to DB (batches of 50, txn timeout 30s)...`)
   const startTime = Date.now()
-  const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
+  const counts: Counts = { ingested: 0, refreshed: 0, skipped: 0, errors: 0 }
   const BATCH = 50
 
   for (let i = 0; i < rows.length; i += BATCH) {
@@ -350,6 +434,7 @@ async function main() {
         for (const row of batch) {
           const result = await writeRow(tx, row, topicId)
           if (result === 'ingested') counts.ingested++
+          else if (result === 'refreshed') counts.refreshed++
           else if (result === 'skipped') counts.skipped++
           else counts.errors++
           if (verbose) console.log(`  [${result}] ${row.externalId} — ${row.claimText.slice(0, 70)}`)
@@ -369,7 +454,7 @@ async function main() {
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)
   console.log(`\nIngestion complete in ${elapsed}s`)
-  console.log(`  Ingested: ${counts.ingested} | Skipped: ${counts.skipped} | Errors: ${counts.errors}`)
+  console.log(`  Ingested: ${counts.ingested} | Refreshed: ${counts.refreshed} | Skipped: ${counts.skipped} | Errors: ${counts.errors}`)
 
   console.log('\nPost-ingestion DB verification...')
   const dbClaims = await prisma.claim.count({ where: { ingestedBy: INGESTED_BY } })

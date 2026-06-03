@@ -271,6 +271,41 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-03 (night) — /legislation: Canada/NZ status filtering, live tracker for Canada, NZ date fix
+
+**What.** Brought the Canada and New Zealand legislation tabs up to parity with the US tab — added status filtering, live-tracker badge for Canada, and better date handling for NZ.
+
+**Canada ingester (`scripts/ingest-canada-bills.ts`):**
+- Removed the `ReceivedRoyalAssentDateTime != null` guard. Now ingests both (a) Royal Assent bills from any session and (b) every bill in the current session regardless of stage (`IsFromCurrentSession=true`).
+- Added new `CanadaBill` fields: `PassedHouseFirstReadingDateTime`, `PassedSenateFirstReadingDateTime`, `LatestActivityDateTime`.
+- Primary `claimEmergedAt` date is Royal Assent date for enacted bills, else `LatestActivityDateTime`, else earliest first-reading date.
+- Metadata now includes: `parliamentaryStatus` (raw `CurrentStatusEn`), `outcomeCategory` (`enacted | active | failed`), `introducedDate`, `latestActivityDate`, `royalAssentDate`, `lastTrackedAt`.
+- `writeRow` now upserts: existing claims get their metadata + `claimEmergedAt` refreshed (counted as `refreshed`), preserving externalId so status updates don't create duplicates. Legacy RA-only records will be backfilled with `outcomeCategory='enacted'` on the next ingest pass.
+- ExternalId scheme unchanged (`canada_bill_${parliament}_${session}_${billNumber}`).
+
+**API (`app/api/legislation/route.ts`):**
+- `rowToForeignBill` for Canada: reads `outcomeCategory` and `parliamentaryStatus` from metadata; legacy null → enacted/Royal Assent. Exposes `latestActionDate` (RA date → latest activity → claimEmergedAt) and `introducedDate` (introducedDate field → claimEmergedAt).
+- `rowToForeignBill` for NZ: uses `claimEmergedAt` as primary date, falls back to `${year}-01-01` only if null. Status label changed to `"Act In Force"` for non-bill rows.
+- `foreignCountryView` now accepts a `status` query param:
+  - Canada: `royal-assent` (= enacted, `NOT outcomeCategory='active'`, includes legacy) or `in-parliament` (= active).
+  - NZ: `bills` (`ingestedBy='nz_bills_v1'`) or `acts` (`ingestedBy='nz_legislation_v1'`).
+- Canada path returns `lastRefresh` (`MAX(metadata->>'lastTrackedAt')` from `canada_bills_v1`) and `outcomeCounts` (counts by `metadata->>'outcomeCategory'`, treating legacy null as enacted) — mirrors the US tracker shape.
+
+**UI (`app/legislation/LegislationClient.tsx`):**
+- COUNTRY_TABS descriptions updated for CA (current session + historical enacted) and NZ (acts + bills).
+- `AutoUpdateBanner` generalized to accept `sourceLabel` + `sourceUrl` props; rendered for both US (Congress.gov API) and CA (LEGISinfo API).
+- New `CA_STATUSES` chips: `All | In Parliament | Royal Assent`.
+- New `NZ_STATUSES` chips: `All | Bills | Acts In Force`.
+- `urlStatus` no longer forced to `"all"` for non-US; wired to API as `?status=...`.
+
+**Verification.**
+- `npx tsc --noEmit --project tsconfig.json` — clean.
+- `npx tsc --noEmit --project tsconfig.scripts.json` — only pre-existing errors in unrelated Belgium/Malta scripts; canada/legislation files clean.
+
+**Files changed:** `scripts/ingest-canada-bills.ts`, `app/api/legislation/route.ts`, `app/legislation/LegislationClient.tsx`, `CONSULTANT.md`.
+
+---
+
 ### 2026-06-03 (late evening) — /legislation: multi-country tracker — Canada + New Zealand
 
 **What.** Extended `/legislation` from US-only to a three-country tracker covering US Congress, Canadian Parliament, and New Zealand Parliament.

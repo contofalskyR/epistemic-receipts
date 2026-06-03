@@ -55,9 +55,9 @@ const COUNTRY_TABS: {
     value: "ca",
     label: "🇨🇦 Canada",
     eyebrow: "Canadian Parliament",
-    title: "Royal Assent Bills",
+    title: "Bills & Royal Assent",
     description:
-      "Acts of the Parliament of Canada that received Royal Assent, 35th Parliament (1994) to present. Sourced from LEGISinfo.",
+      "Live parliamentary bill tracker — current session and historical enacted laws since 35th Parliament (1994). Sourced from LEGISinfo.",
   },
   {
     value: "nz",
@@ -65,9 +65,21 @@ const COUNTRY_TABS: {
     eyebrow: "New Zealand Parliament",
     title: "Acts and Bills",
     description:
-      "New Zealand public acts in force and bills, sourced from the Parliamentary Counsel Office legislation API.",
+      "Public Acts currently in force and bills before Parliament. Sourced from the Parliamentary Counsel Office legislation API.",
   },
 ];
+
+const CA_STATUSES = [
+  { value: "all", label: "All" },
+  { value: "in-parliament", label: "In Parliament" },
+  { value: "royal-assent", label: "Royal Assent" },
+] as const;
+
+const NZ_STATUSES = [
+  { value: "all", label: "All" },
+  { value: "bills", label: "Bills" },
+  { value: "acts", label: "Acts In Force" },
+] as const;
 
 const COUNTRY_LINK_LABEL: Record<Country, string> = {
   us: "congress.gov",
@@ -204,7 +216,7 @@ export default function LegislationClient() {
 
   const urlCountry = parseCountry(searchParams.get("country"));
   const urlView = urlCountry === "us" ? parseView(searchParams.get("view")) : "status";
-  const urlStatus = urlCountry === "us" ? (searchParams.get("status") ?? "all") : "all";
+  const urlStatus = searchParams.get("status") ?? "all";
   const urlType = urlCountry === "us" ? (searchParams.get("type") ?? "all") : "all";
   const urlQ = searchParams.get("q") ?? "";
   const urlPage = Math.max(1, Number.parseInt(searchParams.get("page") ?? "1", 10) || 1);
@@ -277,6 +289,8 @@ export default function LegislationClient() {
         p.set("status", urlStatus);
       }
       if (urlType !== "all") p.set("type", urlType);
+    } else if (urlStatus !== "all") {
+      p.set("status", urlStatus);
     }
     p.set("page", String(urlPage));
     p.set("limit", String(pageSize));
@@ -341,8 +355,21 @@ export default function LegislationClient() {
         <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">{countryInfo.description}</p>
       </div>
 
-      {/* AutoUpdateBanner — US only (live tracker) */}
-      {urlCountry === "us" && <AutoUpdateBanner lastRefresh={data?.lastRefresh ?? null} />}
+      {/* AutoUpdateBanner — US + Canada (live trackers running every 12h) */}
+      {urlCountry === "us" && (
+        <AutoUpdateBanner
+          lastRefresh={data?.lastRefresh ?? null}
+          sourceLabel="Congress.gov API"
+          sourceUrl="https://api.congress.gov/"
+        />
+      )}
+      {urlCountry === "ca" && (
+        <AutoUpdateBanner
+          lastRefresh={data?.lastRefresh ?? null}
+          sourceLabel="LEGISinfo API"
+          sourceUrl="https://www.parl.ca/LegisInfo/en/overview"
+        />
+      )}
 
       {/* View tabs — US only */}
       {urlCountry === "us" && (
@@ -417,6 +444,29 @@ export default function LegislationClient() {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Status</span>
             {STATUSES.map(s => {
+              const active = urlStatus === s.value;
+              return (
+                <button
+                  key={s.value}
+                  onClick={() => pushUrl({ status: s.value, page: 1 })}
+                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                    active
+                      ? "bg-white text-gray-950 border-white font-medium"
+                      : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
+                  }`}
+                >
+                  {s.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Foreign-country status chips */}
+        {(urlCountry === "ca" || urlCountry === "nz") && (
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs text-gray-500 uppercase tracking-widest mr-1">Status</span>
+            {(urlCountry === "ca" ? CA_STATUSES : NZ_STATUSES).map(s => {
               const active = urlStatus === s.value;
               return (
                 <button
@@ -535,7 +585,15 @@ export default function LegislationClient() {
   );
 }
 
-function AutoUpdateBanner({ lastRefresh }: { lastRefresh: string | null }) {
+function AutoUpdateBanner({
+  lastRefresh,
+  sourceLabel,
+  sourceUrl,
+}: {
+  lastRefresh: string | null;
+  sourceLabel: string;
+  sourceUrl: string;
+}) {
   return (
     <div className="rounded-md border border-gray-800 bg-gray-900/40 px-3 py-2 flex items-center gap-3 text-xs">
       <span className="relative flex h-2 w-2 shrink-0">
@@ -546,12 +604,12 @@ function AutoUpdateBanner({ lastRefresh }: { lastRefresh: string | null }) {
         <span className="text-gray-100 font-medium">Live tracker</span>
         <span className="text-gray-500"> — auto-refreshes every 12 hours from the </span>
         <a
-          href="https://api.congress.gov/"
+          href={sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-300 hover:text-blue-200 underline-offset-2 hover:underline"
         >
-          Congress.gov API
+          {sourceLabel}
         </a>
         <span className="text-gray-500">.</span>
       </span>

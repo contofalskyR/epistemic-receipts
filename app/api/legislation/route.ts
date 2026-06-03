@@ -126,45 +126,75 @@ function rowToBill(r: ClaimRow): BillHit {
   } as unknown as BillHit;
 }
 
+function canadaOutcomeFromMetadata(meta: unknown): Outcome {
+  const cat = readString(meta, "outcomeCategory");
+  if (cat === "active") return "active";
+  if (cat === "failed") return "failed";
+  if (cat === "enacted") return "enacted";
+  // Legacy records (no outcomeCategory) are all Royal Assent.
+  return "enacted";
+}
+
+function canadaStatusLabel(meta: unknown, outcome: Outcome): string {
+  const raw = readString(meta, "parliamentaryStatus");
+  if (raw) return raw;
+  return outcome === "enacted" ? "Royal Assent" : "In Parliament";
+}
+
 function rowToForeignBill(r: ClaimRow, country: "ca" | "nz"): BillHit {
   const sourceUrl = r.edges[0]?.source.url ?? null;
 
   if (country === "ca") {
+    const outcome = canadaOutcomeFromMetadata(r.metadata);
+    const status = canadaStatusLabel(r.metadata, outcome);
+    const introducedRaw = readString(r.metadata, "introducedDate");
+    const latestActivityRaw = readString(r.metadata, "latestActivityDate");
+    const royalAssentRaw = readString(r.metadata, "royalAssentDate");
+    const introducedIso = introducedRaw
+      ? new Date(`${introducedRaw}T00:00:00Z`).toISOString()
+      : r.claimEmergedAt
+        ? r.claimEmergedAt.toISOString()
+        : null;
+    const latestActionIso =
+      (royalAssentRaw && new Date(`${royalAssentRaw}T00:00:00Z`).toISOString()) ||
+      (latestActivityRaw && new Date(`${latestActivityRaw}T00:00:00Z`).toISOString()) ||
+      (r.claimEmergedAt ? r.claimEmergedAt.toISOString() : null);
     return {
       id: r.id,
       title: r.text,
       body: null,
-      status: "Royal Assent",
+      status,
       billType: readString(r.metadata, "billType"),
       billNumber: readString(r.metadata, "billNumber"),
       congress: readNumber(r.metadata, "parliament"),
       sourceUrl,
-      introducedDate: r.claimEmergedAt ? r.claimEmergedAt.toISOString() : null,
+      introducedDate: introducedIso,
       updatedAt: r.createdAt.toISOString(),
-      latestActionDate: r.claimEmergedAt ? r.claimEmergedAt.toISOString() : null,
+      latestActionDate: latestActionIso,
       latestActionText: null,
-      outcome: "enacted",
+      outcome,
     };
   }
 
-  // NZ
+  // NZ — prefer claimEmergedAt as the primary date; fall back to year-01-01.
   const dataset = readString(r.metadata, "dataset") ?? "";
   const isBill = dataset === "nz_bills_v1";
   const year = readString(r.metadata, "year");
-  const introducedDate = year ? `${year}-01-01` : null;
+  const yearFallback = year ? `${year}-01-01T00:00:00.000Z` : null;
+  const primaryIso = r.claimEmergedAt ? r.claimEmergedAt.toISOString() : yearFallback;
 
   return {
     id: r.id,
     title: r.text,
     body: null,
-    status: isBill ? "Bill" : "In Force",
+    status: isBill ? "Bill" : "Act In Force",
     billType: readString(r.metadata, "actType"),
     billNumber: readString(r.metadata, "actNumber"),
     congress: year ? parseInt(year, 10) : null,
     sourceUrl,
-    introducedDate,
+    introducedDate: primaryIso,
     updatedAt: r.createdAt.toISOString(),
-    latestActionDate: introducedDate,
+    latestActionDate: primaryIso,
     latestActionText: null,
     outcome: isBill ? "active" : "enacted",
   };
@@ -210,7 +240,8 @@ export async function GET(req: NextRequest) {
 
   // Foreign-country fast path
   if (country !== "us") {
-    return foreignCountryView({ country, searchClause, page, limit, offset });
+    const statusParam = (url.searchParams.get("status") ?? "").trim().toLowerCase();
+    return foreignCountryView({ country, searchClause, page, limit, offset, statusParam });
   }
 
   // US path — existing logic
@@ -280,25 +311,47 @@ async function foreignCountryView({
   page,
   limit,
   offset,
+  statusParam,
 }: {
   country: "ca" | "nz";
   searchClause: Prisma.ClaimWhereInput | null;
   page: number;
   limit: number;
   offset: number;
+  statusParam: string;
 }) {
-  const ingestedByClause: Prisma.ClaimWhereInput =
-    country === "ca"
-      ? { ingestedBy: "canada_bills_v1" }
-      : { ingestedBy: { in: ["nz_legislation_v1", "nz_bills_v1"] } };
+  const baseClauses: Prisma.ClaimWhereInput[] = [];
+
+  if (country === "ca") {
+    baseClauses.push({ ingestedBy: "canada_bills_v1" });
+    // Canada: status filter on metadata.outcomeCategory.
+    // "in-parliament" = active; "royal-assent" = enacted (treat legacy null as enacted).
+    if (statusParam === "in-parliament") {
+      baseClauses.push({ metadata: { path: ["outcomeCategory"], equals: "active" } });
+    } else if (statusParam === "royal-assent") {
+      baseClauses.push({
+        NOT: { metadata: { path: ["outcomeCategory"], equals: "active" } },
+      });
+    }
+  } else {
+    // NZ: status filter switches the ingestedBy tag.
+    if (statusParam === "bills") {
+      baseClauses.push({ ingestedBy: "nz_bills_v1" });
+    } else if (statusParam === "acts") {
+      baseClauses.push({ ingestedBy: "nz_legislation_v1" });
+    } else {
+      baseClauses.push({ ingestedBy: { in: ["nz_legislation_v1", "nz_bills_v1"] } });
+    }
+  }
+
+  if (searchClause) baseClauses.push(searchClause);
 
   const where: Prisma.ClaimWhereInput = {
     deleted: false,
-    ...ingestedByClause,
-    ...(searchClause ? { AND: [searchClause] } : {}),
+    AND: baseClauses,
   };
 
-  const [total, rows] = await Promise.all([
+  const [total, rows, lastRefresh, outcomeCounts] = await Promise.all([
     prisma.claim.count({ where }),
     prisma.claim.findMany({
       where,
@@ -307,10 +360,48 @@ async function foreignCountryView({
       skip: offset,
       select: ROW_SELECT,
     }),
+    country === "ca" ? getCanadaLastRefresh() : Promise.resolve<string | null>(null),
+    country === "ca" ? getCanadaOutcomeCounts() : Promise.resolve<Record<Outcome, number> | null>(null),
   ]);
 
   const bills = rows.map(r => rowToForeignBill(r, country));
-  return NextResponse.json({ bills, total, page, limit, lastRefresh: null, countries: COUNTRIES });
+  return NextResponse.json({
+    bills,
+    total,
+    page,
+    limit,
+    lastRefresh,
+    ...(outcomeCounts ? { outcomeCounts } : {}),
+    countries: COUNTRIES,
+  });
+}
+
+async function getCanadaLastRefresh(): Promise<string | null> {
+  const rows = await prisma.$queryRaw<{ last_tracked: string | null }[]>`
+    SELECT MAX(metadata->>'lastTrackedAt') AS last_tracked
+    FROM "Claim"
+    WHERE "ingestedBy" = 'canada_bills_v1'
+      AND deleted = false
+  `;
+  return rows[0]?.last_tracked ?? null;
+}
+
+async function getCanadaOutcomeCounts(): Promise<Record<Outcome, number>> {
+  const rows = await prisma.$queryRaw<{ category: string | null; n: bigint }[]>`
+    SELECT metadata->>'outcomeCategory' AS category, COUNT(*)::bigint AS n
+    FROM "Claim"
+    WHERE "ingestedBy" = 'canada_bills_v1'
+      AND deleted = false
+    GROUP BY metadata->>'outcomeCategory'
+  `;
+  const counts: Record<Outcome, number> = { enacted: 0, passed: 0, vetoed: 0, failed: 0, active: 0 };
+  for (const r of rows) {
+    const n = Number(r.n);
+    if (r.category === "active") counts.active += n;
+    else if (r.category === "failed") counts.failed += n;
+    else counts.enacted += n; // 'enacted' OR legacy null = enacted
+  }
+  return counts;
 }
 
 async function fullView({
