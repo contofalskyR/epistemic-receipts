@@ -9,19 +9,18 @@
 //      npx tsx scripts/ingest-nara-catalog.ts --full --record-group 59 --year-start 1940 --year-end 1945 --dry-run
 //      npx tsx scripts/ingest-nara-catalog.ts --check-limits  (probe rate limit headers, 1 API call, no DB writes)
 //
-// API notes discovered during integration (2026-05-28/29):
+// API notes discovered during integration (2026-05-28/29, corrected 2026-06-02):
 //   - v2 params differ from v1: levelOfDescription=item (not resultTypes), limit= (not rows=), page= (not offset=)
 //   - v2 response wraps Elasticsearch body: data.body.hits.hits[] or data.opaResponse.results.result[] (v1 compat)
 //   - API key goes in x-api-key header per swagger docs
 //   - CloudFront at catalog.archives.gov routes /api/v2/swagger* to backend; search endpoints also require the key
-//   - NARA API v2 hard-caps at 10,000 results per query (page 1–100 × 100/page). Attempting searchAfter/cursor
-//     pagination does NOT work — the API ignores the searchAfter param entirely.
-//   - dateRangeStart/dateRangeEnd filters do NOT reliably reduce record counts for large RGs (RG59, RG330, RG263).
-//     The API returns the same total (e.g. 76,870) regardless of year range for these groups, making
-//     date-slice strategies ineffective. The correct approach is plain pagination with a monthly call budget.
-//   - Budget strategy: 10k calls/month per key × 100 records/call = 1M records/month max.
-//     For RG59 (~76k records): ~760 calls to fully ingest. Use --max-pages to cap per run.
-//     Register 2–3 free NARA keys (email Catalog_API@nara.gov) to multiply monthly capacity.
+//   - NARA API v2 has a 10,000 result window for page-based pagination (page 1–100 × 100/page = 10k max).
+//     HOWEVER: searchAfter=<naId> (integer) enables deep pagination beyond 10k — confirmed working 2026-06-02.
+//     Use pages 1-100 first, then switch to searchAfter=<lastNaId> to continue. Chains correctly.
+//   - dateRangeStart/dateRangeEnd are NOT valid params (use startDate/endDate instead), but date filters
+//     still don't reliably reduce record counts for large RGs — most photos have no date field set.
+//   - Budget strategy: 10k calls/month per key × 100 records/call. For RG59 (~76k records): ~770 calls total.
+//     Use --max-pages to cap per run, then --resume next month. Register 2–3 free NARA keys for more capacity.
 
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
@@ -43,6 +42,7 @@ interface GroupCursor {
   fetched: number
   total: number
   complete: boolean
+  searchAfterNaId?: number  // set after page 100; switches from page= to searchAfter= pagination
 }
 
 type CursorState = Record<string, GroupCursor>
@@ -295,11 +295,10 @@ async function fetchRecordGroupDryRun(
   return { records: records.slice(0, DRY_RUN_SAMPLE), total }
 }
 
-// Fetches and writes one record group via simple page-based pagination with cursor resume.
-// NARA API caps at 10,000 results (100 pages × 100/page). For large RGs (RG59 ~76k, RG330 ~307k)
-// this means multiple monthly runs are needed. Use --max-pages to cap calls per run.
-// NOTE: dateRangeStart/dateRangeEnd filters do NOT reduce totals for large RGs — date slicing
-// was tried and abandoned (2026-05-29). See script header for full API notes.
+// Fetches and writes one record group via page-based pagination for pages 1-100, then
+// switches to searchAfter=<naId> deep pagination for records beyond 10k.
+// NARA's 10k window only applies to page= param; searchAfter bypasses it entirely.
+// Use --max-pages to cap API calls per run (each page = 1 call); --resume picks up the cursor.
 async function fetchAndWriteGroup(
   rg: RecordGroupDef,
   apiKey: string,
@@ -318,18 +317,35 @@ async function fetchAndWriteGroup(
   }
 
   let page = saved?.nextPage ?? 1
+  let searchAfterNaId: number | null = saved?.searchAfterNaId ?? null
   let total = saved?.total ?? 0
+  let callCount = 0
   const label = `RG ${rg.number}`
   const baseUrl = `${NARA_BASE}/records/search?levelOfDescription=item&limit=${PAGE_SIZE}&recordGroupNumber=${rg.number}`
 
-  console.log(`  ${label}: ${saved ? `resuming from page ${page} (fetched ${saved.fetched})` : 'starting'}${dryRun ? ' (dry-run — no writes)' : ''}`)
+  const mode = searchAfterNaId != null ? `searchAfter from naId ${searchAfterNaId}` : `page ${page}`
+  console.log(`  ${label}: ${saved ? `resuming (fetched ${saved.fetched}, ${mode})` : 'starting'}${dryRun ? ' (dry-run — no writes)' : ''}`)
 
   for (;;) {
-    const data = await naraFetch(`${baseUrl}&page=${page}`, apiKey)
+    // Build URL: use page= for first 100 pages, then searchAfter= to bypass 10k cap
+    let url: string
+    if (searchAfterNaId != null) {
+      url = `${baseUrl}&searchAfter=${searchAfterNaId}`
+    } else {
+      url = `${baseUrl}&page=${page}`
+    }
+
+    const data = await naraFetch(url, apiKey)
     const { records, total: pageTotal } = extractHitsAndTotal(data)
     if (total === 0) total = pageTotal
+    callCount++
 
+    // Track last naId for searchAfter chaining
+    let lastNaId: number | null = null
     for (const rec of records) {
+      const naIdRaw = rec.naId
+      if (naIdRaw != null) lastNaId = typeof naIdRaw === 'string' ? parseInt(naIdRaw, 10) : naIdRaw
+
       const candidate = buildCandidate(rec, rg)
       if (!candidate) { counts.errors++; continue }
       if (dryRun) { counts.ingested++; continue }
@@ -347,22 +363,40 @@ async function fetchAndWriteGroup(
       }
     }
 
-    const fetched = (saved?.fetched ?? 0) + (page - (saved?.nextPage ?? 1) + 1) * records.length
+    const fetched = (saved?.fetched ?? 0) + counts.ingested + counts.skipped + counts.errors
     const done = records.length < PAGE_SIZE
 
+    // After page 100, switch to searchAfter pagination to bypass the 10k window
+    const nextSearchAfterNaId = (page >= 100 || searchAfterNaId != null) && lastNaId != null
+      ? lastNaId
+      : null
+    const nextPage = searchAfterNaId != null ? page : page + 1
+
     if (!dryRun) {
-      cursorState[cursorKey] = { nextPage: page + 1, fetched, total, complete: done }
+      cursorState[cursorKey] = {
+        nextPage: nextPage,
+        fetched,
+        total,
+        complete: done,
+        ...(nextSearchAfterNaId != null ? { searchAfterNaId: nextSearchAfterNaId } : {}),
+      }
       saveCursor(cursorState)
     }
 
-    console.log(`    ${label} p${page}: +${records.length} records (api total: ${total}), ingested ${counts.ingested}, skipped ${counts.skipped}`)
+    const pLabel = searchAfterNaId != null ? `searchAfter(${searchAfterNaId})` : `p${page}`
+    console.log(`    ${label} ${pLabel}: +${records.length} records (api total: ${total}), ingested ${counts.ingested}, skipped ${counts.skipped}`)
 
     if (done) { console.log(`  ${label}: complete`); break }
-    if (maxPages !== null && page >= maxPages) {
-      console.warn(`  ${label}: reached page limit (${maxPages}); run with --resume to continue`)
+    if (maxPages !== null && callCount >= maxPages) {
+      console.warn(`  ${label}: reached call limit (${maxPages}); run with --resume to continue`)
       break
     }
-    page++
+
+    if (nextSearchAfterNaId != null) {
+      searchAfterNaId = nextSearchAfterNaId
+    } else {
+      page++
+    }
   }
 
   return { counts }
@@ -631,7 +665,7 @@ async function main() {
   console.log(`\n── Pipeline: NARA Catalog (${INGESTED_BY}) ────────────────────────────`)
   console.log(`Mode: ${mode}${isResume ? ' (resume)' : ''} | Record groups: ${recordGroups.map(rg => `RG ${rg.number}`).join(', ')}`)
   console.log(`API key: ${apiKey.slice(0, 4)}${'*'.repeat(Math.max(0, apiKey.length - 4))}`)
-  console.log(`Pagination: page-based with date-range slicing (stays under NARA 10k/window cap)`)
+  console.log(`Pagination: page-based (p1-100), then searchAfter deep pagination (bypasses 10k cap)`)
   if (maxPages === null) console.log('Page cap: none (full run)')
   else console.log(`Page cap: ${maxPages} pages per group`)
 
@@ -727,9 +761,9 @@ async function main() {
   }
 
   // ── Full run (with or without --resume) ───────────────────────────────────
-  // Simple page-based pagination. NARA caps at 10k results per RG per run (100 pages × 100/page).
-  // For large RGs (RG59 ~76k, RG330 ~307k) use --max-pages to cap calls, then --resume next month.
-  // Use --resume to pick up from the saved cursor (.nara-cursor.json).
+  // Pages 1-100 use page= param (10k records). After page 100, automatically switches to
+  // searchAfter=<naId> deep pagination to retrieve all records beyond 10k.
+  // Use --max-pages to cap API calls per run, then --resume next month to continue.
 
   const cursorState: CursorState = isResume ? loadCursor() : {}
 
