@@ -258,7 +258,15 @@ async function ingestCircuit(
   while (nextUrl && result.fetched < limit) {
     await sleep(REQUEST_DELAY_MS)
 
-    const page = (await clFetch(nextUrl, token)) as CLPage
+    let page: CLPage
+    try {
+      page = (await clFetch(nextUrl, token)) as CLPage
+    } catch (fetchErr) {
+      const msg = fetchErr instanceof Error ? fetchErr.message : String(fetchErr)
+      console.error(`  [${circuit.code}] page fetch failed after retries — skipping circuit: ${msg}`)
+      result.errors++
+      break
+    }
     const clusters: CLCluster[] = page.results ?? []
 
     const need = limit - result.fetched
@@ -447,12 +455,18 @@ async function main() {
 
   for (const circuit of targets) {
     console.log(`\n--- ${circuit.shortName} (${circuit.code}) ---`)
-    const r = await ingestCircuit(circuit, token, limit, minCitations, dryRun, parentTopicId)
-    totals.fetched  += r.fetched
-    totals.ingested += r.ingested
-    totals.skipped  += r.skipped
-    totals.errors   += r.errors
-    console.log(`  → ${circuit.code}: ingested=${r.ingested} skipped=${r.skipped} errors=${r.errors}`)
+    try {
+      const r = await ingestCircuit(circuit, token, limit, minCitations, dryRun, parentTopicId)
+      totals.fetched  += r.fetched
+      totals.ingested += r.ingested
+      totals.skipped  += r.skipped
+      totals.errors   += r.errors
+      console.log(`  → ${circuit.code}: ingested=${r.ingested} skipped=${r.skipped} errors=${r.errors}`)
+    } catch (circuitErr) {
+      const msg = circuitErr instanceof Error ? circuitErr.message : String(circuitErr)
+      console.error(`  → ${circuit.code}: FAILED — ${msg}`)
+      totals.errors++
+    }
   }
 
   console.log(`\n=== Totals ===`)
