@@ -271,6 +271,26 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-03 (late evening) — CourtListener Tier 4: BIA + Tax/Federal Claims
+
+**What.** Two new opinion ingesters for the Tier 4 specialised-court roadmap, each with a continuous-loop wrapper:
+
+- `scripts/ingest-courtlistener-bia.ts` (`courtlistener_bia_v1`) — published precedent decisions of the Board of Immigration Appeals. Single court (`docket__court=bia`). Topics: parent `immigration-courts` ("Immigration Courts") → child `court-bia` ("Board of Immigration Appeals"). Edge score **65** — binding within immigration law, narrower subject-matter authority than circuit opinions.
+- `scripts/ingest-courtlistener-tax.ts` (`courtlistener_tax_v1`) — published precedential opinions of the U.S. Tax Court (`tax`, slug `court-tax`) and the U.S. Court of Federal Claims (`uscfc`, slug `court-uscfc`). Two-court catalogue with `--court tax|uscfc` filter, mirroring the circuits ingester's `--court` flag. Topics: parent `specialised-federal-courts` ("Specialised Federal Courts") → per-court children. Edge score **70** — Tax Court precedent binds all circuits on tax issues; Federal Claims is the exclusive court for many federal money claims.
+
+Both ingesters copy the exact `clFetch` / 429-aware retry / transient-status retry / AbortController timeout / `parseDate` / `formatCitation` / `parseLimit` / `parseSlow` / `parseDryRun` helpers from `ingest-courtlistener-circuits.ts`. Both query `/clusters/?docket__court=<code>&precedential_status=Published&citation_count__gte=<min>&order_by=-citation_count`. Per-claim transaction creates Source, Claim (`INSTITUTIONAL` / `HARD_FACT` / `PROVISIONAL`, `humanReviewed:false`, `autoApproved:false`), `FOR` Edge with `evidenceType:'PROCEDURAL'`, EdgeRevision capturing the per-court score, ThresholdEvent, and ClaimTopic upserts to both parent and child topics. `externalId` schemes: `courtlistener_bia_v1-<clusterId>` and `courtlistener_tax_v1-<clusterId>` — idempotent on re-run. After the run, each script prints the DB total for its `ingestedBy` tag for verification against script counters (CONSULTANT rule 6).
+
+- **CLI.** `--limit` (default 500), `--min-citations` (default 5), `--dry-run`, `--slow`. Tax also has `--court tax|uscfc`.
+- **Loops.** `scripts/bia-loop.sh` and `scripts/tax-loop.sh` — `--slow --limit 200 --min-citations 5`, sleep 12h between passes, log to `/tmp/bia-loop.log` and `/tmp/tax-loop.log`. Same `set -euo pipefail` + `tee -a` pattern as `circuits-loop.sh`. Both `chmod +x`.
+
+**Why.** Tier 4 fills the gap between the federal circuits (already ingested via Tier 3) and the long tail of specialised federal courts that are highly citable in their narrow domains. BIA decisions are the controlling immigration precedent for the entire federal system below the courts of appeals; Tax Court opinions are uniquely positioned because the Tax Court is a non-Article-III court whose precedential opinions still bind all circuits on tax matters; Federal Claims is the exclusive forum for many federal monetary claims (takings, contract, vaccine-injury). All three are low-volume relative to the circuits but high-value per record. Lower edge scores (65 / 70 vs. 80 for circuits) reflect their narrower binding scope without diminishing the procedural-evidence status of the published opinion itself.
+
+**Verification.** `npx tsc --noEmit --project tsconfig.scripts.json` — clean on both new files (pre-existing errors in unrelated scripts unchanged; `grep -E "ingest-courtlistener-(bia|tax)"` against the compiler output returns nothing). Scripts **not run** per task instructions — meant to be launched via the loop wrappers once approved.
+
+**Files.** `scripts/ingest-courtlistener-bia.ts` (new), `scripts/ingest-courtlistener-tax.ts` (new), `scripts/bia-loop.sh` (new, +x), `scripts/tax-loop.sh` (new, +x), `CONSULTANT.md` (this entry).
+
+---
+
 ### 2026-06-03 (late evening) — CourtListener Tier 3A: citation graph ETL
 
 **What.** New `scripts/ingest-courtlistener-citations.ts` — a one-shot ETL that materialises `ClaimRelation` rows with `relationType: 'cites'` between CourtListener opinion Claims already in our DB. We do **not** ingest the ~70M raw edges from `/api/rest/v4/opinions-cited/` as Claims; we only persist the edges where both endpoints are already-ingested SCOTUS / circuit / state-supreme Claims.
