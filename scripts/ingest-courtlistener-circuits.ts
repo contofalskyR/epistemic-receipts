@@ -23,19 +23,19 @@ interface CircuitDef {
 }
 
 const CIRCUITS: CircuitDef[] = [
-  { code: 'ca1',  slug: 'us-court-of-appeals-1st-circuit',  name: 'U.S. Court of Appeals for the First Circuit',    shortName: '1st Cir.'  },
-  { code: 'ca2',  slug: 'us-court-of-appeals-2nd-circuit',  name: 'U.S. Court of Appeals for the Second Circuit',   shortName: '2d Cir.'   },
-  { code: 'ca3',  slug: 'us-court-of-appeals-3rd-circuit',  name: 'U.S. Court of Appeals for the Third Circuit',    shortName: '3d Cir.'   },
-  { code: 'ca4',  slug: 'us-court-of-appeals-4th-circuit',  name: 'U.S. Court of Appeals for the Fourth Circuit',   shortName: '4th Cir.'  },
-  { code: 'ca5',  slug: 'us-court-of-appeals-5th-circuit',  name: 'U.S. Court of Appeals for the Fifth Circuit',    shortName: '5th Cir.'  },
-  { code: 'ca6',  slug: 'us-court-of-appeals-6th-circuit',  name: 'U.S. Court of Appeals for the Sixth Circuit',    shortName: '6th Cir.'  },
-  { code: 'ca7',  slug: 'us-court-of-appeals-7th-circuit',  name: 'U.S. Court of Appeals for the Seventh Circuit',  shortName: '7th Cir.'  },
-  { code: 'ca8',  slug: 'us-court-of-appeals-8th-circuit',  name: 'U.S. Court of Appeals for the Eighth Circuit',   shortName: '8th Cir.'  },
-  { code: 'ca9',  slug: 'us-court-of-appeals-9th-circuit',  name: 'U.S. Court of Appeals for the Ninth Circuit',    shortName: '9th Cir.'  },
-  { code: 'ca10', slug: 'us-court-of-appeals-10th-circuit', name: 'U.S. Court of Appeals for the Tenth Circuit',    shortName: '10th Cir.' },
-  { code: 'ca11', slug: 'us-court-of-appeals-11th-circuit', name: 'U.S. Court of Appeals for the Eleventh Circuit', shortName: '11th Cir.' },
-  { code: 'cadc', slug: 'us-court-of-appeals-dc-circuit',   name: 'U.S. Court of Appeals for the D.C. Circuit',     shortName: 'D.C. Cir.' },
-  { code: 'cafc', slug: 'us-court-of-appeals-federal-circuit', name: 'U.S. Court of Appeals for the Federal Circuit', shortName: 'Fed. Cir.' },
+  { code: 'ca1',  slug: 'court-ca1',  name: 'U.S. Court of Appeals for the First Circuit',    shortName: '1st Cir.'  },
+  { code: 'ca2',  slug: 'court-ca2',  name: 'U.S. Court of Appeals for the Second Circuit',   shortName: '2d Cir.'   },
+  { code: 'ca3',  slug: 'court-ca3',  name: 'U.S. Court of Appeals for the Third Circuit',    shortName: '3d Cir.'   },
+  { code: 'ca4',  slug: 'court-ca4',  name: 'U.S. Court of Appeals for the Fourth Circuit',   shortName: '4th Cir.'  },
+  { code: 'ca5',  slug: 'court-ca5',  name: 'U.S. Court of Appeals for the Fifth Circuit',    shortName: '5th Cir.'  },
+  { code: 'ca6',  slug: 'court-ca6',  name: 'U.S. Court of Appeals for the Sixth Circuit',    shortName: '6th Cir.'  },
+  { code: 'ca7',  slug: 'court-ca7',  name: 'U.S. Court of Appeals for the Seventh Circuit',  shortName: '7th Cir.'  },
+  { code: 'ca8',  slug: 'court-ca8',  name: 'U.S. Court of Appeals for the Eighth Circuit',   shortName: '8th Cir.'  },
+  { code: 'ca9',  slug: 'court-ca9',  name: 'U.S. Court of Appeals for the Ninth Circuit',    shortName: '9th Cir.'  },
+  { code: 'ca10', slug: 'court-ca10', name: 'U.S. Court of Appeals for the Tenth Circuit',    shortName: '10th Cir.' },
+  { code: 'ca11', slug: 'court-ca11', name: 'U.S. Court of Appeals for the Eleventh Circuit', shortName: '11th Cir.' },
+  { code: 'cadc', slug: 'court-cadc', name: 'U.S. Court of Appeals for the D.C. Circuit',     shortName: 'D.C. Cir.' },
+  { code: 'cafc', slug: 'court-cafc', name: 'U.S. Court of Appeals for the Federal Circuit',  shortName: 'Fed. Cir.' },
 ]
 
 // ── Types ─────────────────────────────────────────────────────────────────────

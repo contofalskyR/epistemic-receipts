@@ -26,21 +26,21 @@ interface CourtDef {
 // Top 15 states by population / legal volume. Court codes verified against
 // CourtListener's /courts/ endpoint (jurisdiction=S, in_use=True).
 const STATE_SUPREMES: CourtDef[] = [
-  { code: 'cal',   slug: 'california-supreme-court',         name: 'California Supreme Court',                 shortName: 'Cal. Sup. Ct.',   state: 'CA' },
-  { code: 'ny',    slug: 'new-york-court-of-appeals',        name: 'New York Court of Appeals',                shortName: 'N.Y. Ct. App.',   state: 'NY' },
-  { code: 'tex',   slug: 'texas-supreme-court',              name: 'Supreme Court of Texas',                   shortName: 'Tex. Sup. Ct.',   state: 'TX' },
-  { code: 'fla',   slug: 'florida-supreme-court',            name: 'Supreme Court of Florida',                 shortName: 'Fla. Sup. Ct.',   state: 'FL' },
-  { code: 'ill',   slug: 'illinois-supreme-court',           name: 'Supreme Court of Illinois',                shortName: 'Ill. Sup. Ct.',   state: 'IL' },
-  { code: 'pa',    slug: 'pennsylvania-supreme-court',       name: 'Supreme Court of Pennsylvania',            shortName: 'Pa. Sup. Ct.',    state: 'PA' },
-  { code: 'ohio',  slug: 'ohio-supreme-court',               name: 'Supreme Court of Ohio',                    shortName: 'Ohio Sup. Ct.',   state: 'OH' },
-  { code: 'wash',  slug: 'washington-supreme-court',         name: 'Supreme Court of Washington',              shortName: 'Wash. Sup. Ct.', state: 'WA' },
-  { code: 'mass',  slug: 'massachusetts-supreme-judicial-court', name: 'Massachusetts Supreme Judicial Court', shortName: 'Mass. SJC',       state: 'MA' },
-  { code: 'nj',    slug: 'new-jersey-supreme-court',         name: 'Supreme Court of New Jersey',              shortName: 'N.J. Sup. Ct.',   state: 'NJ' },
-  { code: 'ga',    slug: 'georgia-supreme-court',            name: 'Supreme Court of Georgia',                 shortName: 'Ga. Sup. Ct.',    state: 'GA' },
-  { code: 'va',    slug: 'virginia-supreme-court',           name: 'Supreme Court of Virginia',                shortName: 'Va. Sup. Ct.',    state: 'VA' },
-  { code: 'mich',  slug: 'michigan-supreme-court',           name: 'Supreme Court of Michigan',                shortName: 'Mich. Sup. Ct.', state: 'MI' },
-  { code: 'colo',  slug: 'colorado-supreme-court',           name: 'Colorado Supreme Court',                   shortName: 'Colo. Sup. Ct.', state: 'CO' },
-  { code: 'ariz',  slug: 'arizona-supreme-court',            name: 'Arizona Supreme Court',                    shortName: 'Ariz. Sup. Ct.', state: 'AZ' },
+  { code: 'cal',   slug: 'court-cal',   name: 'California Supreme Court',                 shortName: 'Cal. Sup. Ct.',   state: 'CA' },
+  { code: 'ny',    slug: 'court-ny',    name: 'New York Court of Appeals',                shortName: 'N.Y. Ct. App.',   state: 'NY' },
+  { code: 'tex',   slug: 'court-tex',   name: 'Supreme Court of Texas',                   shortName: 'Tex. Sup. Ct.',   state: 'TX' },
+  { code: 'fla',   slug: 'court-fla',   name: 'Supreme Court of Florida',                 shortName: 'Fla. Sup. Ct.',   state: 'FL' },
+  { code: 'ill',   slug: 'court-ill',   name: 'Supreme Court of Illinois',                shortName: 'Ill. Sup. Ct.',   state: 'IL' },
+  { code: 'pa',    slug: 'court-pa',    name: 'Supreme Court of Pennsylvania',            shortName: 'Pa. Sup. Ct.',    state: 'PA' },
+  { code: 'ohio',  slug: 'court-ohio',  name: 'Supreme Court of Ohio',                    shortName: 'Ohio Sup. Ct.',   state: 'OH' },
+  { code: 'wash',  slug: 'court-wash',  name: 'Supreme Court of Washington',              shortName: 'Wash. Sup. Ct.',  state: 'WA' },
+  { code: 'mass',  slug: 'court-mass',  name: 'Massachusetts Supreme Judicial Court',     shortName: 'Mass. SJC',       state: 'MA' },
+  { code: 'nj',    slug: 'court-nj',    name: 'Supreme Court of New Jersey',              shortName: 'N.J. Sup. Ct.',   state: 'NJ' },
+  { code: 'ga',    slug: 'court-ga',    name: 'Supreme Court of Georgia',                 shortName: 'Ga. Sup. Ct.',    state: 'GA' },
+  { code: 'va',    slug: 'court-va',    name: 'Supreme Court of Virginia',                shortName: 'Va. Sup. Ct.',    state: 'VA' },
+  { code: 'mich',  slug: 'court-mich',  name: 'Supreme Court of Michigan',                shortName: 'Mich. Sup. Ct.',  state: 'MI' },
+  { code: 'colo',  slug: 'court-colo',  name: 'Colorado Supreme Court',                   shortName: 'Colo. Sup. Ct.',  state: 'CO' },
+  { code: 'ariz',  slug: 'court-ariz',  name: 'Arizona Supreme Court',                    shortName: 'Ariz. Sup. Ct.',  state: 'AZ' },
 ]
 
 // ── Types ─────────────────────────────────────────────────────────────────────
