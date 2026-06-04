@@ -291,6 +291,23 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-04 — /physics taxonomy page
+
+**What.** New page at `/physics` — a working taxonomy of physics organized into 24 families across five sections, modeled exactly on the existing `/chemistry` taxonomy.
+
+**Files added.**
+- `app/physics/types.ts` — `PhysEntry`, `Section`, `ColorKey`, `Family`, `Xref` (includes `"chemistry"`), `Status` types.
+- `app/physics/data.ts` — Families 1–8: Kinematics, Newton's Laws, Energy & Work, Momentum & Collisions, Rotational Motion, Oscillations & Waves, Fluid Mechanics, Temperature & Heat.
+- `app/physics/data2.ts` — Families 9–16: Laws of Thermodynamics, Kinetic Theory & Statistical Mechanics, Heat Engines & Cycles, Electrostatics, Magnetism & Induction, Maxwell's Equations, Electromagnetic Waves, Geometric Optics.
+- `app/physics/data3.ts` — Families 17–24: Wave Optics, Special Relativity, Quantum Mechanics Foundations, Atomic & Nuclear Physics, Particle Physics, Cosmology & GR, Condensed Matter, Frontier Questions.
+- `app/physics/page.tsx` — Client component identical in architecture to `/chemistry` but without mhchem import, PeriodicTable, or SynthesisMap. Uses plain KaTeX for formula rendering. 8 Section-E frontier entries carry `status: "open"`.
+
+**Nav.** Added `<Link href="/physics">` to `app/layout.tsx` after Chemistry.
+
+**Content.** ~250 entries, KaTeX formulas throughout (`\vec{F} = m\vec{a}`, Schrödinger equation, Maxwell's equations, Einstein field equations, etc.). Section E frontier questions (dark matter, dark energy, quantum gravity, information paradox, baryogenesis, measurement problem, room-temperature superconductivity, theory of everything) are flagged OPEN.
+
+**Deployed.** Production at `epistemic-receipts.vercel.app/physics`, commit `75b256d`.
+
 ### 2026-06-04 — /stats/media-coverage — NYT Article Search × 119th Congress bills
 
 **What.** New page at `/stats/media-coverage` that quantifies which 119th-Congress bills get NYT coverage and which slip through unnoticed.
@@ -2559,5 +2576,34 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 ### 2026-05-26 — CSP fix: add 'unsafe-inline' to script-src
 
 **Why:** Next.js App Router streams RSC payload via inline `<script>` tags (`self.__next_f.push(...)`). The existing CSP `script-src 'self' 'unsafe-eval' ...` blocked these, preventing React from hydrating on any page. Symptoms: login button stuck disabled, all useEffect data fetches silently never firing, pages showing empty shells. Fix: added `'unsafe-inline'` to script-src in `next.config.ts`.
+
+---
+
+### 2026-06-04 — OFAC SDN ingestion pipeline (`ofac_sdn_v1`)
+
+**What.** New pipeline at `scripts/ingest-ofac-sdn.ts` ingests the OFAC Specially Designated Nationals list — 19,034 entries of sanctioned individuals, entities, vessels, and aircraft.
+
+**Source.** `https://sanctionslistservice.ofac.treas.gov/api/publicationpreview/exports/sdn.xml` (~28MB XML, fetched live, cached to `/tmp/ofac-sdn.xml`). Note: `ofac.treasury.gov/downloads/sdn.xml` returns 404 as of 2026-06-04 — the canonical URL is now the sanctions list service. `www.treasury.gov/ofac/downloads/sdn.xml` also works (302 redirect to same).
+
+**Schema.** No migration needed. `ClaimRelation.relationType` is a free string (not enum), so SUPERSEDES/CONTRADICTS/CONFIRMS work without a schema change.
+
+**Mapping.**
+- `claimType: INSTITUTIONAL`, `currentStatus: HARD_FACT`, `verificationStatus: VERIFIED`
+- `text`: `{sdnType}: {fullName} (OFAC SDN) — Specially Designated National under program {programs}. {legalAuthority}.`
+- Legal authority extracted from `idList` where `idType` contains "Secondary sanctions risk:" (structured EO reference).
+- `externalId`: `ofac_sdn_{uid}` (OFAC numeric uid, stable across updates).
+- `metadata.aliases`: all a.k.a. names from `<akaList>` (ISIS has 35 aliases in metadata).
+- `metadata.legal_authority`, `metadata.programs`, `metadata.sdn_type`, `metadata.tags`.
+
+**Polity linking.** 30+ OFAC programs mapped to ISO 3166-1 alpha-3 codes (IRAN→IRN, CUBA→CUB, RUSSIA→RUS, DPRK→PRK, VENEZUELA→VEN, etc.). `PolityClaim` upserted in-transaction. Multi-country/thematic programs (SDGT, FTO, TCO, GLOMAG) are not polity-linked. ~65% of entries are polity-linkable.
+
+**Topic.** `sanctions` topic (domain: government) created/ensured; all entries linked via `ClaimTopic`.
+
+**Flags.** `--dry-run`, `--program <NAME>` (e.g. `--program IRAN`), `--limit N`, `--skip-existing`. Full run (no `--limit`) requires `ALLOW_EDITS=true`.
+
+**Test run.** `--limit 1000`: 1000 ingested, 265 polity links, 0 failures. DB count confirmed via count query.
+
+**Files added.**
+- `scripts/ingest-ofac-sdn.ts` (new)
 
 **Files changed:** `next.config.ts`, `CONSULTANT.md`.
