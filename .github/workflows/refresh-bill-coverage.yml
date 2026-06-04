@@ -1,0 +1,43 @@
+name: Refresh Bill Coverage (NYT)
+
+on:
+  schedule:
+    # 3am ET daily (7am UTC)
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max bills to process (default: 200)'
+        required: false
+        default: '200'
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Populate bill coverage
+        run: |
+          npx ts-node --project tsconfig.scripts.json \
+            scripts/populate-bill-coverage.ts \
+            --skip-existing \
+            --limit ${{ github.event.inputs.limit || 200 }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          NYT_API_KEY: ${{ secrets.NYT_API_KEY }}

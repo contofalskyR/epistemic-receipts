@@ -30,7 +30,8 @@ interface NytResponse {
   status?: string
   response?: {
     docs?: NytArticle[]
-    meta?: { hits?: number }
+    meta?: { hits?: number }       // old field name (kept for compat)
+    metadata?: { hits?: number }   // current field name as of 2026
   }
   fault?: { faultstring?: string }
 }
@@ -163,7 +164,7 @@ async function fetchNyt(query: string, attempt = 1): Promise<{ hits: number; top
   }
 
   const data = (await res.json()) as NytResponse
-  const hits = data.response?.meta?.hits ?? 0
+  const hits = data.response?.metadata?.hits ?? data.response?.meta?.hits ?? 0
   const topDocs = (data.response?.docs ?? []).slice(0, 3)
   return { hits, topDocs }
 }

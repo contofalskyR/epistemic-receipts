@@ -216,10 +216,15 @@ export default function MediaCoveragePage() {
       .slice(0, 20)
   }, [data])
 
+  const enactedDarkMatter = useMemo<BillRow[]>(() => {
+    if (!data) return []
+    return [...data.bills].filter(b => b.articleCount === 0 && b.status === "status-enacted")
+  }, [data])
+
   const darkMatter = useMemo<BillRow[]>(() => {
     if (!data) return []
     return [...data.bills]
-      .filter(b => b.articleCount === 0)
+      .filter(b => b.articleCount === 0 && b.status !== "status-enacted")
       .sort((a, b) => {
         const ra = STATUS_RANK[a.status] ?? 99
         const rb = STATUS_RANK[b.status] ?? 99
@@ -283,6 +288,28 @@ export default function MediaCoveragePage() {
               sub={data.stats.lastRefreshed ? `last refreshed ${data.stats.lastRefreshed.slice(0, 10)}` : undefined}
             />
           </section>
+
+          {enactedDarkMatter.length > 0 && (
+            <section className="space-y-3">
+              <div>
+                <h2 className="text-base font-semibold text-white">Laws You Never Heard Of</h2>
+                <p className="text-xs text-zinc-500 mt-1">
+                  These bills were <span className="text-green-300 font-medium">enacted into law</span> but received{" "}
+                  <span className="text-zinc-200 font-medium">zero NYT coverage</span>. They are now on the books.
+                </p>
+              </div>
+              <div className="space-y-2">
+                {enactedDarkMatter.map(b => (
+                  <BillCard
+                    key={b.id}
+                    bill={b}
+                    expanded={expanded.has(b.id)}
+                    onToggle={() => toggle(b.id)}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
 
           <section className="space-y-3">
             <div>
