@@ -291,6 +291,41 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-04 — /stats/media-coverage — NYT Article Search × 119th Congress bills
+
+**What.** New page at `/stats/media-coverage` that quantifies which 119th-Congress bills get NYT coverage and which slip through unnoticed.
+
+**Schema.**
+- New `BillCoverage` Prisma model (migration `20260604120000_add_bill_coverage`): one row per Claim, fields `articleCount: Int`, `topHeadlines: Json?` (array of `{ headline, url, date }`), `searchQuery: String`, `lastChecked: DateTime`. FK to `Claim.id` is `String` (not `Int` as the build prompt sketched — our `Claim.id` is a `cuid()`). `@@index([articleCount])` plus a unique index on `claimId`. Reverse relation `Claim.billCoverage BillCoverage?` added. Migration created with `IF NOT EXISTS` guards and applied via direct `prisma db execute` + `prisma migrate resolve --applied` (shadow-DB-cannot-run-in-transaction Neon fingerprint, same workaround as the prior trgm index migration).
+
+**Populate script (`scripts/populate-bill-coverage.ts`).** Pulls every Claim tagged with the `congress-119` Topic across both `congress_bills_tracker_v1` and `congress_v1`. Distills a clean ~5–6-word NYT search query from each bill's short title: prefers the quoted short title from `Claim.text`, strips H.R./S./H.J.Res./etc prefixes, strips "To amend / To provide / A bill to / An Act to / Providing for / Expressing the sense" lead verbs, drops trailing "Act of 2024" year suffix, then keeps the first ~6 meaningful (non-stopword) words. Hits `api.nytimes.com/svc/search/v2/articlesearch.json` at the published 10 req/min (6s spacing) with 429/503 exponential backoff (up to 3 retries). Upserts hit count + top-3 `{ headline, url, date }` into `BillCoverage`. Flags: `--limit N`, `--dry-run`, `--skip-existing`.
+
+**API (`app/api/stats/media-coverage/route.ts`).** `GET` returns `{ bills, stats }`. Each bill carries `articleCount`, `topHeadlines`, `searchQuery`, `lastChecked`, `topics`, derived `status` (priority-picked from status topics: enacted > passed-senate > passed-house > vetoed > failed > in-progress > introduced), `statusLabel`, derived `billType` from externalId. Supports `?sort=asc|desc`, `?status=enacted|all`, `?limit`, `?offset`. Aggregate stats (`total`, `analyzed`, `withCoverage`, `zeroCoverage`, `avgArticles`, `lastRefreshed`) are computed over the *full* coverage table, not the page slice. Empty state returns `{ bills: [], stats: {...zeros}, note: "Coverage data not yet computed..." }`. 5-min revalidate.
+
+**Page (`app/stats/media-coverage/page.tsx`).** Client component, fetches `/api/stats/media-coverage?limit=500`. Four-stat header (bills tracked / with coverage / dark matter / avg articles + last-refreshed). Two stacked sections: **Most Covered** (top 20 by articleCount, type + status badges, NYT query echoed for transparency, expandable top-3 headline links direct to nytimes.com) and **Dark Matter** (zero-coverage bills, sorted enacted-first so "passed Congress but not the newspaper of record" tail is the lede). Empty state with the populate command if `BillCoverage` is empty; skeleton loader during fetch. Matches `app/stats/page.tsx` dark/zinc theme.
+
+**Nav.** Added `/stats/media-coverage` link in `app/layout.tsx` global nav. Cross-link card added near bottom of `/stats` (`app/stats/page.tsx`). Homepage changelog entry added.
+
+**Files changed/added.**
+- `prisma/schema.prisma` — `BillCoverage` model + `Claim.billCoverage` relation
+- `prisma/migrations/20260604120000_add_bill_coverage/migration.sql`
+- `scripts/populate-bill-coverage.ts` (new)
+- `app/api/stats/media-coverage/route.ts` (new)
+- `app/stats/media-coverage/page.tsx` (new)
+- `app/layout.tsx` — nav link
+- `app/stats/page.tsx` — cross-link card
+- `app/page.tsx` — homepage changelog entry
+
+**To seed first batch.**
+```
+DATABASE_URL=$(grep '^DATABASE_URL' .env.local | cut -d= -f2-) \
+NYT_API_KEY=K7ulaKJJ0gCckL2RrdfCcqMLfBGcvhr9SuJGoJh4TbNC4k3C \
+npx ts-node --project tsconfig.scripts.json scripts/populate-bill-coverage.ts --limit 50
+```
+First batch picks the 50 most-recently-created congress-119 claims; subsequent runs can use `--skip-existing` to incrementally extend coverage without re-querying NYT for bills already in the table. Full sweep at 6s/req across all ~16k bills would take ~27 hours — do in batches.
+
+---
+
 ### 2026-06-04 — Nav fixes + Congress tracker full-sweep fix + H.R. 4405 backfill
 
 **What.** Three fixes shipped same day:
