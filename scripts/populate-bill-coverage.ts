@@ -147,7 +147,8 @@ export function buildSearchQuery(rawTitle: string): string {
 // ── NYT fetch ──────────────────────────────────────────────────────────────────
 
 async function fetchNyt(query: string, attempt = 1): Promise<{ hits: number; topDocs: NytArticle[] }> {
-  const url = `${NYT_BASE}?q=${encodeURIComponent(query)}&api-key=${NYT_KEY}`
+  // Wrap in double quotes for exact phrase matching — unquoted queries do OR and return 10k+
+  const url = `${NYT_BASE}?q=${encodeURIComponent(`"${query}"`)}&api-key=${NYT_KEY}`
   const res = await fetch(url, { headers: { Accept: 'application/json' } })
 
   if (res.status === 429 || res.status === 503) {
