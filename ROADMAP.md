@@ -1,6 +1,6 @@
 # HARD_FACT Pipeline Roadmap
 
-**Live DB (2026-06-03):** ~1.04M+ claims · 160+ pipelines · 116,267 LegislativeVotes · 2,361 polities · 9 HistoricalEvents · 88 perpetual loops running
+**Live DB (2026-06-03 23:38 EDT):** ~1,153,370 claims · 160+ pipelines · 116,267 LegislativeVotes · 2,361 polities · 9 HistoricalEvents · 88 perpetual loops running
 
 Future pipelines ranked by volume + editorial value. Add to this list as new candidates emerge. Cross off as pipelines ship.
 
@@ -16,6 +16,9 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 | **EU Parliament votes deep-dive** | 🔄 In progress (Opus agent) | Expand EU votes 1,900 → ~50k+ via europarl.europa.eu API (1979–present), MEP/group breakdown (EPP, S&D, Renew…), add EU Parliament tab to `/analysis/votes` |
 | **/legislation — global 52-country** | ✅ Shipped 2026-06-03 | Regional browser (Americas/Europe/Asia-Pacific/Africa), country grid with claim counts, 49 perpetual loops (24h), graceful empty states. Canada/NZ status chips. |
 | **/legislation — bill granularity** | ✅ Shipped 2026-06-03 | Bill ID chips (RA no., law no., act no.), law type badges (LOI/PL/Money Bill), status where available (India: Assented), year-only date display. |
+| **/finance taxonomy** | ✅ Shipped 2026-06-03 | 155 financial methods across 19 families. Valuation, derivatives, risk, portfolio theory, structured finance, etc. |
+| **/governance taxonomy** | ✅ Shipped 2026-06-03 | ~175 governance concepts across 19 families. Constitutional design, electoral systems, federalism, etc. |
+| **/ideologies taxonomy** | ✅ Shipped 2026-06-03 | ~200 political ideologies/isms across 19 families with lineage graph. Opus agent built from textbook taxonomy doc. |
 | **Globe — typed density layers** | 📋 Queued | Category-based overlays instead of all-facts heatmap. Toggle by type: pharma labs, drug discovery, human rights orgs, legislation, science, etc. Geography + type of fact, not just claim count. |
 | "What's new" feed | ⏳ On hold | After bookmarks |
 
@@ -170,7 +173,7 @@ New pipeline category added: `domain: "archives"`. Topics page updated with "Arc
 | P91 | **Slovenia** | PISRS XML sitemaps | 4,822–15,374 | ⚠️ Partial (10 records) — full re-run needed | 10 |
 | P88 | **Costa Rica** | CDX/Wayback (pgrweb.go.cr) | ~8,508 | 🔄 Full run in progress (2026-05-22 ~15:00 EDT) | ~0 |
 | P66 | **Czech Republic** | TBD | TBD | ⚠️ Partial (5 records) — full re-run needed | 5 |
-| P69 | **Romania** | TBD | TBD | ⚠️ Partial (5 records) — full re-run needed | 5 |
+| P69 | **Romania** | TBD | TBD | ✅ Full run complete 2026-06-03 | 13,326 |
 | P104 | **Latvia** | likumi.lv CDX | ~2,000 | ⚠️ Partial (5 records) — full re-run needed | 5 |
 | P105 | **Lithuania** | e-seimas.lrs.lt | ~3,000 | ❌ BLOCKED — JSF ViewState + Cloudflare confirmed again 2026-05-22. Agent killed. | 0 |
 
@@ -179,7 +182,7 @@ These pipelines passed dry-run but full runs were partial or didn't complete. Sc
 - **Hungary** (`hungary_legislation_v1`) — 170 in DB, target TBD. Re-run script.
 - **Slovenia** (`slovenia_legislation_v1`) — 10 in DB, target 4,800+. Re-run script.
 - **Czech Republic** (`czech_legislation_v1`) — 5 in DB, target TBD. Re-run script.
-- **Romania** (`romania_legislation_v1`) — 5 in DB, target TBD. Re-run script.
+- ~~**Romania** (`romania_legislation_v1`)~~ — ✅ Complete 2026-06-03 — 13,326 records.
 - **Latvia** (`latvia_legislation_v1`) — 5 in DB, target ~2,000. Re-run script.
 - **Costa Rica** (`costarica_legislation_v1`) — full run started 2026-05-22 ~15:00, confirm completion.
 - **MeSH** — second pass needed for remaining ~20k after first 9,995.
