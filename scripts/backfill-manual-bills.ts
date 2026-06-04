@@ -165,7 +165,8 @@ async function main() {
     const title = detail.title ?? '(no title)'
     const claimText = `${typeDisplay} ${detail.number} (${ordinal(CURRENT_CONGRESS)} Congress) — "${title}". Sponsored by ${sponsor}. Latest action: ${latestAction} (${latestActionDate}).${policyArea}`
     const sourceUrl = `https://www.congress.gov/bill/${ordinal(CURRENT_CONGRESS)}-congress/${BILL_TYPE_URL_PATH[billType] ?? billType}/${number}`
-    const externalId = `${INGESTED_BY}_${CURRENT_CONGRESS}_${billType}_${number}`
+    // Must match the format used by ingest-congress-bills-tracker.ts main loop
+    const externalId = `congress_bill_tracker_${CURRENT_CONGRESS}_${billType}_${number}`
 
     const metadata = {
       dataset: INGESTED_BY,
