@@ -80,10 +80,16 @@ function renderInlineMath(text: string): string {
   return out;
 }
 
-// Render a raw chemistry expression (already wrapped in \ce{...} or a LaTeX fragment) as a single KaTeX display.
+// Render a raw chemistry expression. Auto-wraps in \ce{...} when the expression is plain
+// chemistry notation (no '=' and no LaTeX command); leaves explicit \ce{...} or math expressions intact.
 function renderChemExpr(expr: string): string {
+  let wrapped = expr;
+  const looksLikeMath = expr.includes("=") || /\\(frac|Delta|Sigma|sum|prod|int|sin|cos|tan|ln|log|sqrt|cdot|times|circ|approx|infty|alpha|beta|gamma|lambda|mu|nu|pi|sigma|theta|varepsilon|hbar|vec|bar|tilde)/.test(expr);
+  if (!expr.includes("\\ce{") && !looksLikeMath) {
+    wrapped = `\\ce{${expr}}`;
+  }
   try {
-    return katex.renderToString(expr, { throwOnError: false, output: "html", strict: "ignore", displayMode: false });
+    return katex.renderToString(wrapped, { throwOnError: false, output: "html", strict: "ignore", displayMode: false });
   } catch {
     return escapeHTML(expr);
   }

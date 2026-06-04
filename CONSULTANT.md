@@ -291,6 +291,48 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-04 — /chemistry taxonomy page (sibling of /mathematics, /sports, /statistics, /governance, /ideologies, /finance)
+
+**What.** Built a new taxonomy page at `/chemistry` mirroring the structure of `/mathematics` and other sibling taxonomy pages.
+
+**Files added.**
+- `app/chemistry/types.ts` — `ChemEntry` (name, description, keyFact, optional formula/reaction/transforms/example, tags, xref, status), `Family` (slug, number, name, blurb, section, color, entries), `PeriodicElement` (symbol, name, atomicNumber, group, period, block, category, standardAtomicWeight, optional disputedPlacement), supporting type aliases (Section A–E, ColorKey, ElementCategory, Block, Transform, Status, Xref).
+- `app/chemistry/elements.ts` — full 118-element dataset (H through Og, Z=1–118) with canonical IUPAC standard atomic weights (or most-stable-isotope mass numbers in brackets for synthetics). Lu/Lr tagged d-block per IUPAC's preferred group-3 composition with the alternative La/Ac placement noted as `disputedPlacement` on the affected rows. Includes `CATEGORY_STYLES` color map.
+- `app/chemistry/data.ts` — Families 1–7 (Atomic Structure, Periodic Table, Chemical Bonding, Intermolecular Forces, Stoichiometry, States/Gases, Thermodynamics) = 85 entries.
+- `app/chemistry/data2.ts` — Families 8–14 (Kinetics, Equilibrium, Acids/Bases, Electrochemistry, Functional Groups, Organic Reactions, Stereochemistry) = 84 entries.
+- `app/chemistry/data3.ts` — Families 15–21 (Polymers, Coordination, Materials/Solid-State, Nuclear, Analytical, Biochemistry, Great Reactions & Open Questions) = 79 entries.
+- `app/chemistry/page.tsx` — client component. Loads KaTeX + `katex/contrib/mhchem/mhchem.js` as a side-effect import (registers `\ce{...}` on the katex global at module load).
+
+**Page features.**
+- **Interactive periodic table.** Standard 18-col × 7-row grid; lanthanides (Z=57–70) and actinides (Z=89–102) rendered as f-block strips beneath the main grid with a clickable `57–70` / `89–102` placeholder in main-grid period 6/7 group 3 pointing at the strips. Lu (Z=71) and Lr (Z=103) sit in the main d-block per IUPAC's preferred composition. Every cell clickable → opens an inline `ElementDetail` panel with category, Z/group/period/block/atomic weight, and the disputed-placement note where applicable. Color legend below the grid covers all 10 categories.
+- **Reaction / transformation network (synthesis map).** Collapsible section; renders Family 12 (functional groups) as 16 nodes in a circular layout and Family 13 (named reactions) as directed edges labeled by reaction. Built entirely from the `transforms: { from, to }[]` field on each reaction entry. Clicking a node scrolls to and expands that entry's card.
+- **Family cards.** Same color-coded card layout as `/mathematics`. Each card surfaces name, description, key fact, optional formula, optional reaction, tags, xref chips. Expanded view adds example and (for reactions) a transforms list with clickable from/to anchors to the corresponding compound-class cards. KaTeX `MathFragment` renders inline `$...$` math; `ChemExpr` renders LaTeX directly and auto-wraps in `\ce{...}` if the expression contains no `=` and no recognized LaTeX command (handles raw formulas like `R-OH` and `R-O-PO3^{2-}` without manual wrapping).
+- **Filter.** Text input scans `name`, `description`, `keyFact`, `formula`, `reaction`, `example`, `tags`, and `transforms` (from/to). `plainText()` strips both `$...$` and `\ce{...}` wrappers so filter matches go against rendered text, not LaTeX source. Expand-all / Collapse-all controls and a clear button. Sticky search bar.
+- **Counts.** "21 families · 248 entries · 118 elements" rendered from data — `ALL_FAMILIES.reduce` over the families plus `ELEMENTS.length`. Never hardcoded.
+- **Footer.** Free-text-search caveat + "claim cross-references pending" roadmap note + the 2026-06-04 last-updated date. Accuracy notes call out: oganesson (Z=118) heaviest confirmed, period 7 complete, no Z≥119 synthesized, LK-99 marked `REFUTED` (with the explanation that the resistivity drop is attributed to a `Cu2S` impurity transition), room-T ambient-P superconductivity flagged as not achieved.
+
+**Accuracy guardrails enforced (per build prompt).**
+- 118 confirmed elements through Og (Z=118).
+- Period 7 complete; elements 119+ marked "not yet synthesized."
+- LK-99 entry status = `refuted`, not `open` — independent replications cited.
+- Room-temperature ambient-pressure superconductivity flagged as unsolved in Family 17 + Family 21.
+- H group-1 vs group-17 dispute and La/Lu / Ac/Lr group-3 composition dispute surfaced via `disputedPlacement` on the affected element rows; no adjudication.
+
+**Cross-references.**
+- Quantum-orbital, MO theory, X-ray crystallography → `xref: ["mathematics"]`.
+- Kinetic-molecular theory, Maxwell–Boltzmann, Michaelis–Menten kinetics, LoD/LoQ → `xref: ["statistics"]`.
+- Entropy → both.
+
+**Nav.** `/chemistry` link in `app/layout.tsx` between `/mathematics` and `/statistics` (already added prior to this session).
+
+**Verified.**
+- `npx tsc --noEmit` clean.
+- Dev server on `:3000`, `curl /chemistry` → HTTP 200, 963KB HTML, **0 `katex-error` occurrences** after two LaTeX fixes (β-decay `\bar{\nu}_e` brace, ATP `\Delta G^{\circ\prime}` double-prime). Verified 248 "Key fact" labels, 36 "Reaction" labels, 40 KaTeX HTML blocks; key tokens present: Mendeleev, Oganesson, LK-99, refuted, periodic table.
+- Footer date `app/layout.tsx` bumped to "last updated June 4, 2026".
+- Homepage changelog block added for 2026-06-04.
+
+**Open follow-ups (not done).** Linking specific receipts (claims) to chemistry entries via a `concept ↔ Claim` curated-edge layer is on the roadmap; the synthesis map currently uses only the in-data transforms — wiring it to real `Edge`/`ClaimRelation` rows is a future curated step (consistent with the editorial-not-algorithmic rule).
+
 ### 2026-06-03 (night) — /legislation: Canada/NZ status filtering, live tracker for Canada, NZ date fix
 
 **What.** Brought the Canada and New Zealand legislation tabs up to parity with the US tab — added status filtering, live-tracker badge for Canada, and better date handling for NZ.

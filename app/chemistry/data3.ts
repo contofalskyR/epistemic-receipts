@@ -265,7 +265,7 @@ export const FAMILIES_15_21: Family[] = [
         name: "Beta decay",
         description: "Neutron → proton + e⁻ + antineutrino.",
         keyFact: "$\\beta^-$ raises $Z$ by 1; $\\beta^+$ (positron emission) lowers $Z$ by 1; electron capture is the bound-electron analog of $\\beta^+$.",
-        reaction: "\\ce{^{14}_6C -> ^{14}_7N + e- + \\bar\\nu_e}",
+        reaction: "\\ce{^{14}_6C -> ^{14}_7N + e- + \\bar{\\nu}_e}",
         tags: ["nuclear", "decay"],
       },
       {
@@ -468,7 +468,7 @@ export const FAMILIES_15_21: Family[] = [
       {
         name: "ATP & energy currency",
         description: "Cellular energy carrier.",
-        keyFact: "Adenosine triphosphate; hydrolysis to ADP + Pi releases $\\Delta G^\\circ' \\approx -30.5$ kJ/mol; drives nearly all coupled biosynthesis.",
+        keyFact: "Adenosine triphosphate; hydrolysis to ADP + Pi releases $\\Delta G^{\\circ\\prime} \\approx -30.5$ kJ/mol; drives nearly all coupled biosynthesis.",
         reaction: "\\ce{ATP + H2O -> ADP + Pi + H+}",
         tags: ["biochemistry", "thermodynamics"],
       },
