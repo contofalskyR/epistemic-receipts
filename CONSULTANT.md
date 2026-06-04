@@ -291,6 +291,22 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-04 — Nav fixes + Congress tracker full-sweep fix + H.R. 4405 backfill
+
+**What.** Three fixes shipped same day:
+
+1. **Nav: Mathematics + Chemistry added.** `app/layout.tsx` was missing the `/mathematics` link entirely; `/chemistry` also added between `/mathematics` and `/statistics`. Footer date bumped to June 4, 2026.
+
+2. **Congress tracker: removed 500-bill cap.** `scripts/congress-bills-loop.sh` was running with `--limit 500`, causing the tracker to only see the 500 most recently updated bills out of 16,424 in the 119th Congress. Changed `LIMIT=0` (unlimited). The tracker script already had smart skipping — if a bill's `latestAction.actionDate` is unchanged it skips the detail fetch, so full sweeps are fast after the first pass. First full sweep running now: seeing ~250 new bills created per 250 processed in the missed range.
+
+3. **H.R. 4405 (Epstein Files Transparency Act, Public Law 119-38) backfilled.** The bill was in the DB under `congress_v1` (externalId `congress_law_119_hr_4405`, topics `congress-119th-enacted`) — invisible to the legislation page because the page queries by topic `congress-119` (tracker's tag scheme). Added `scripts/backfill-manual-bills.ts` for one-off manual ingest of specific bills using the tracker's externalId format (`congress_bill_tracker_${congress}_${type}_${number}`) and topic tags. Re-ingested H.R. 4405 correctly; it now shows as `status-enacted` in the 119th Congress full view.
+
+**Key architecture note.** The legislation page's `fullView` queries `{ topics: { some: { topic: { slug: 'congress-119' } } } }`. Only `congress_bills_tracker_v1` bills carry this tag; older `congress_v1` bills use `congress-119th-enacted`. The backfill script bridges this gap for specific bills until the tracker's full sweep catches everything.
+
+**Files changed.** `app/layout.tsx`, `scripts/congress-bills-loop.sh`, `scripts/backfill-manual-bills.ts` (new).
+
+---
+
 ### 2026-06-04 — /chemistry taxonomy page (sibling of /mathematics, /sports, /statistics, /governance, /ideologies, /finance)
 
 **What.** Built a new taxonomy page at `/chemistry` mirroring the structure of `/mathematics` and other sibling taxonomy pages.
