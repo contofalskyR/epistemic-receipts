@@ -752,6 +752,27 @@ export default async function StatsPage() {
         <VotingAnalysisSection />
       </Suspense>
 
+      {/* Media Coverage cross-link */}
+      <section className="space-y-2">
+        <div>
+          <h2 className="text-base font-semibold text-white">Media Coverage Analysis</h2>
+          <p className="text-xs text-zinc-500 mt-1">
+            Which 119th Congress bills the NYT covers — and which it ignores.
+          </p>
+        </div>
+        <a
+          href="/stats/media-coverage"
+          className="block rounded border border-zinc-800 bg-zinc-950 p-4 hover:border-amber-700/60 hover:bg-zinc-900 transition-colors"
+        >
+          <p className="text-sm text-zinc-100">Most covered vs. dark matter bills →</p>
+          <p className="mt-1 text-xs text-zinc-500">
+            NYT Article Search hit counts per bill, top headlines, status badges, and the
+            zero-coverage tail of bills that passed Congress&apos; attention but not the
+            newspaper of record&apos;s.
+          </p>
+        </a>
+      </section>
+
       {/* Cross-Country Topic Comparison */}
       {topicsByLeg.length > 0 && (
         <section className="space-y-2">

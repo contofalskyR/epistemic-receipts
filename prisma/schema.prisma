@@ -54,6 +54,7 @@ model Claim {
   bookmarks                Bookmark[]
   relationsFrom            ClaimRelation[] @relation("ClaimRelationFrom")
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
+  billCoverage             BillCoverage?
 
   @@index([academicFieldId])
   @@index([ingestedBy])
@@ -583,6 +584,18 @@ model Bookmark {
   @@unique([profileId, claimId])
   @@index([profileId])
   @@index([claimId])
+}
+
+model BillCoverage {
+  id           Int      @id @default(autoincrement())
+  claimId      String   @unique
+  claim        Claim    @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  articleCount Int      @default(0)
+  topHeadlines Json? // array of { headline: string, url: string, date: string }
+  searchQuery  String
+  lastChecked  DateTime @default(now())
+
+  @@index([articleCount])
 }
 
 model ClaimRelation {
