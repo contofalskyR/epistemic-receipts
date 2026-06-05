@@ -34,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/engineering" className="text-gray-400 hover:text-white transition-colors">Engineering</Link>
           <Link href="/linguistics" className="text-gray-400 hover:text-white transition-colors">Linguistics</Link>
           <Link href="/psychology" className="text-gray-400 hover:text-white transition-colors">Psychology</Link>
+          <Link href="/sociology" className="text-gray-400 hover:text-white transition-colors">Sociology</Link>
           <Link href="/medicine" className="text-gray-400 hover:text-white transition-colors">Medicine</Link>
           <Link href="/statistics" className="text-gray-400 hover:text-white transition-colors">Statistics</Link>
           <Link href="/review" className="text-gray-400 hover:text-white transition-colors">Review</Link>
@@ -67,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated June 4, 2026 — computer science taxonomy added
+          last updated June 5, 2026 — sociology taxonomy added
         </footer>
       </body>
     </html>

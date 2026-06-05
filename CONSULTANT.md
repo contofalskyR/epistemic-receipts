@@ -291,6 +291,31 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-05 — /sociology taxonomy page (22 families, 265 entries)
+
+**What.** New page at `/sociology` — a working taxonomy of sociology organized into 22 families across five sections, modeled on the existing `/psychology` and `/philosophy` taxonomies (KaTeX rendering for the quantitative-sociology and method formulas; plain prose elsewhere).
+
+**Files added.**
+- `app/sociology/types.ts` — `SocEntry`, `Section` (`A`–`E`), `Xref` (`"psychology" | "economics" | "philosophy" | "statistics" | "ideologies" | "governance" | "linguistics"`), `Status` (`"open" | "landmark" | "refuted" | "contested"`), `ColorKey`, `Family` types. Core field is `keyFact`; entries carry optional `formula`, `example`, and `theorist`.
+- `app/sociology/data.ts` — Families 1–8 (Section A foundations + Section B social structure): Classical Theorists, Schools & Paradigms, Contemporary Theory, Stratification & Class & Mobility, Race & Ethnicity, Gender & Sexuality, Family & Demography, Organizations & Work & Bureaucracy.
+- `app/sociology/data2.ts` — Families 9–16 (Section C culture + Section D methods first chunk): Culture & Meaning, Identity & the Self, Religion, Deviance & Crime & Social Control, Networks & Social Capital, Urban & Spatial Sociology, Survey & Measurement, Ethnography & Qualitative Methods.
+- `app/sociology/data3.ts` — Families 17–22 (Section D methods second chunk + Section E contested/open): Quantitative & Statistical Sociology, Causal Inference & Computational Sociology, Famous Studies & Replications, Inequality Debates, 21st-Century Frontiers, Open Questions & Contested Concepts.
+- `app/sociology/page.tsx` — Client component with the standard card/family/section architecture, KaTeX inline math in `keyFact` and `example` via the same `MathFragment` helper used in `/psychology` and `/philosophy`; standalone `formula` rendered via `MathExpr`. No additional visualization module (no brain-regions / periodic-table sidebar) — sociology's headline structure is the taxonomy itself.
+
+**Nav.** Added `<Link href="/sociology">` to `app/layout.tsx` between Psychology and Medicine. Updated footer to "last updated June 5, 2026 — sociology taxonomy added".
+
+**Status badges.** `LANDMARK` (green — Durkheim social facts, Weber Verstehen, Granovetter weak ties, Schelling segregation, Coleman Report, Massey-Denton American Apartheid, Bourdieu cultural capital, Chetty falling absolute mobility, Goldin gender pay-gap, Crenshaw intersectionality), `REFUTED` (rose — Hawthorne effect, Stanford Prison Experiment, broken windows policing), `CONTESTED` (amber — Davis-Moore functionalism, Putnam Bowling Alone social-capital decline, Piketty `r > g`, religious-economy supply-side theory, Hofstede cultural dimensions, omnivorousness, color-blind racism, Bauman liquid modernity), `OPEN` (red — social media and adolescent mental health, sociology of AI, platform power, climate sociology, algorithmic bias trade-offs, structure-vs-agency, micro-macro foundations, open science in sociology, demographic decline).
+
+**Content.** 22 families · 265 entries (computed from data via `ALL_FAMILIES.reduce`, not hardcoded). Volatile facts verified to 2026: South Korea TFR 0.72 (2023), US Black–white median wealth ~$285k vs ~$45k (SCF 2022), US top-1% income share ~19% (2022 Piketty-Saez, with Auten-Splinter methodological dispute noted), absolute mobility 90% → 50% from 1940 to 1980 birth cohorts (Chetty), remote work share jumped from ~5% to ~28% (Barrero-Bloom-Davis 2023). Disputed classifications stated neutrally: is sociology a science (Weber vs positivist legacy), structure vs agency, micro-macro reducibility, race-class debate, cultural vs structural accounts of poverty.
+
+**Xref usage.** `psychology` for symbolic interactionism, looking-glass self, role theory, stereotype threat, Milgram, Asch, social-desirability bias, IRT. `economics` for Marxian class, IGE, Becker household model, internal labor markets, Piketty, falling mobility, decomposition. `philosophy` for Mead, Verstehen, Foucault, Pearl DAGs, potential outcomes, Sedgwick queer theory. `statistics` for OLS, logit, multilevel, panel FE, IV, RDD, DiD, synthetic control, MRP, conjoint AMCE, IRT, LDA. `ideologies` for Marxian class, identity politics, affective polarization, globalization backlash. `governance` for power elite, civic engagement, criminal-legal system, welfare states, comparative-historical analysis. `linguistics` for code-switching, conversation analysis, LDA topic models.
+
+**Verification.** `npx tsc --noEmit` clean (run during build). KaTeX render path identical to `/psychology` and `/philosophy`.
+
+**Deploy.** Production at `epistemic-receipts.vercel.app/sociology` via the next Vercel build triggered by push to main.
+
+---
+
 ### 2026-06-05 — 5 taxonomy pages shipped: astronomy, geology, engineering, linguistics, psychology
 
 **What.** Five new taxonomy pages built by Claude Opus agents and committed/pushed to prod.
