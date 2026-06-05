@@ -27,6 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/mathematics" className="text-gray-400 hover:text-white transition-colors">Mathematics</Link>
           <Link href="/chemistry" className="text-gray-400 hover:text-white transition-colors">Chemistry</Link>
           <Link href="/physics" className="text-gray-400 hover:text-white transition-colors">Physics</Link>
+          <Link href="/computer-science" className="text-gray-400 hover:text-white transition-colors">Computer Science</Link>
+          <Link href="/biology" className="text-gray-400 hover:text-white transition-colors">Biology</Link>
+          <Link href="/medicine" className="text-gray-400 hover:text-white transition-colors">Medicine</Link>
           <Link href="/statistics" className="text-gray-400 hover:text-white transition-colors">Statistics</Link>
           <Link href="/review" className="text-gray-400 hover:text-white transition-colors">Review</Link>
           <Link href="/pipelines" className="text-gray-400 hover:text-white transition-colors">Pipelines</Link>
@@ -46,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/financial" className="text-gray-400 hover:text-white transition-colors">Financial</Link>
           <Link href="/finance" className="text-gray-400 hover:text-white transition-colors">Finance</Link>
           <Link href="/governance" className="text-gray-400 hover:text-white transition-colors">Governance</Link>
+          <Link href="/law" className="text-gray-400 hover:text-white transition-colors">Law</Link>
           <Link href="/ideologies" className="text-gray-400 hover:text-white transition-colors">Ideologies</Link>
 
           <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
@@ -54,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated June 4, 2026
+          last updated June 4, 2026 — computer science taxonomy added
         </footer>
       </body>
     </html>
