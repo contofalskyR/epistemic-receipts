@@ -51,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/economics" className="text-gray-400 hover:text-white transition-colors">Economics</Link>
           <Link href="/governance" className="text-gray-400 hover:text-white transition-colors">Governance</Link>
           <Link href="/law" className="text-gray-400 hover:text-white transition-colors">Law</Link>
+          <Link href="/tax-law" className="text-gray-400 hover:text-white transition-colors">Tax Law</Link>
           <Link href="/ideologies" className="text-gray-400 hover:text-white transition-colors">Ideologies</Link>
           <Link href="/philosophy" className="text-gray-400 hover:text-white transition-colors">Philosophy</Link>
 
