@@ -61,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/tax-law" className="text-gray-400 hover:text-white transition-colors">Tax Law</Link>
           <Link href="/ideologies" className="text-gray-400 hover:text-white transition-colors">Ideologies</Link>
           <Link href="/philosophy" className="text-gray-400 hover:text-white transition-colors">Philosophy</Link>
+          <Link href="/history" className="text-gray-400 hover:text-white transition-colors">History</Link>
 
           <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
           <Link href="/glossary" className="text-gray-400 hover:text-white transition-colors">Glossary</Link>
@@ -68,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated June 5, 2026 — sociology taxonomy added
+          last updated June 5, 2026 — history taxonomy added
         </footer>
       </body>
     </html>

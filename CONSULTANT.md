@@ -291,6 +291,31 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-05 — /history taxonomy page (24 families, 288 entries)
+
+**What.** New page at `/history` — a working taxonomy of history organized into 24 families across five sections (Ancient · Medieval · Early Modern · Modern & Contemporary · Historiography & Contested Questions), modeled on the existing `/law` and `/philosophy` taxonomies. Plain prose throughout (no KaTeX — history is narrative, not formula-driven).
+
+**Files added.**
+- `app/history/types.ts` — `HistEntry`, `Section` (`A`–`E`), `Xref` (`"historical-events" | "ideologies" | "philosophy" | "governance" | "law" | "economics" | "biology" | "astronomy"`), `Status` (`"landmark" | "contested" | "open" | "revised"`), `ColorKey`, `Family` types. Core field is `keyFact`; entries carry optional `date` and `example`.
+- `app/history/data.ts` — Families 1–8 (Section A Ancient + start of B Medieval): Prehistory & Human Origins, Ancient Near East, Ancient Egypt & Mediterranean, Classical Greece, Roman Republic & Empire, Ancient Asia & Persia, Pre-Columbian Americas & Sub-Saharan Africa, Byzantium & Late Antiquity.
+- `app/history/data2.ts` — Families 9–16 (rest of B Medieval + Section C Early Modern): Islamic Caliphates & Medieval Islamic World, Medieval Europe, Mongols & Eurasian Steppe, Medieval Asia, Renaissance & Reformation, Age of Exploration & Columbian Exchange, Early Modern Empires (Ottoman, Mughal, Safavid, Qing), Scientific Revolution & Enlightenment.
+- `app/history/data3.ts` — Families 17–24 (Section D Modern/Contemporary + Section E Historiography): Atlantic Revolutions (1776–1825), Industrial Revolution & 19th Century, Imperialism, Nationalism & World War I, Interwar, Totalitarianism & WWII, Cold War & Decolonization, Contemporary (post-1991), Historiography & Schools, Contested Narratives & Open Questions.
+- `app/history/page.tsx` — Client component with the standard card/family/section architecture (mirrors `/law/page.tsx`). Filter input scans name + description + keyFact + date + example + tags. Four status badges (`LANDMARK`, `CONTESTED`, `OPEN`, `REVISED` — new sky-tone since history is more often re-framed than overruled).
+
+**Nav.** Added `<Link href="/history">` to `app/layout.tsx` between Philosophy and About. Updated footer to "last updated June 5, 2026 — history taxonomy added".
+
+**Status badges.** `LANDMARK` (green — Out of Africa, Code of Hammurabi, Athenian democracy, Aristotle, Pax Romana, Magna Carta, Fall of Constantinople, Newton's Principia, French Revolution, Darwin, Communist Manifesto, Holocaust, UDHR, Civil Rights Act, Fall of Communism). `REVISED` (sky — feudalism per Susan Reynolds, Peace of Westphalia per Krasner, witch-trials as early-modern not medieval, Great Zimbabwe's indigenous origin per Caton-Thompson, tulip mania per Goldgar, steppe nomadism per Hodgson/Perdue, Late Antiquity per Peter Brown, Indo-European expansions per Anthony/Haak, nation-state per Hobsbawm/Anderson, Scientific Revolution per Shapin). `CONTESTED` (amber — Late Bronze Age Collapse, Trojan War historicity, Indus Valley script, Maya Classic Collapse, fall of Rome, Mongol environmental impact, 17th-century General Crisis, Cold War origins, Hiroshima necessity, intentionalists vs. functionalists on the Holocaust, gunpowder empires thesis, cliometrics methodology, Arab Spring outcomes). `OPEN` (red — Etruscan language, Greek Fire composition, Anthropocene start date, Great Divergence causes, Ukraine war, AI revolution trajectory, digital-history reproducibility, Teotihuacan ethnic identity).
+
+**Content.** 24 families · 288 entries (computed from data via `ALL_FAMILIES.reduce`, not hardcoded). Coverage spans prehistory through 2026. Non-Western inclusion deliberate: Mesoamerica (Olmec, Maya, Teotihuacan, Aztec), Andes (Chavín, Inca), Sub-Saharan Africa (Aksum, Ghana, Mali, Songhai, Great Zimbabwe, Swahili Coast), Mongol Eurasia (Genghis, Yuan, Golden Horde, Ilkhanate, Timur), South and Southeast Asia (Maurya, Gupta, Chola, Khmer, Srivijaya, Delhi Sultanate, Vijayanagara, Mughal), China across Shang, Han, Tang, Song, Yuan, Ming, Qing. Volatile facts verified to 2026: NATO expansion (Finland 2023, Sweden 2024), atmospheric CO₂ ~425 ppm, COVID excess mortality ~15–28M (WHO/Economist), Anthropocene Working Group 2024 ICS rejection, Russian invasion of Ukraine ongoing.
+
+**Xref usage.** `historical-events` for case-study cross-references. `ideologies` for revolution, nationalism, fascism, communism, conservatism. `philosophy` for Socrates, Aquinas, Hobbes, Locke, Kant. `governance` for constitutional, imperial, and statebuilding entries. `law` for Hammurabi, Roman law, Magna Carta, US Constitution, Nuremberg, UDHR. `economics` for slave trade, capitalism, Great Depression, Great Divergence, rise of China. `biology` for Neanderthal interbreeding, megafauna extinction, Columbian Exchange demographics, plague pandemics, Darwin, germ theory, climate. `astronomy` for Babylonian astronomy, Copernicus, Timurid observatories, Maunder Minimum.
+
+**Verification.** Counts grep-checked: 288 entry blocks (96 per data file × 3). Types pass via direct `import` chain. Color palette reused exactly from `/law` (10 Tailwind hues × 24 families). Plain ASCII for prose; em dashes and `°` for degree only.
+
+**Deploy.** Pushed to `main` for Vercel build → production at `epistemic-receipts.vercel.app/history`.
+
+---
+
 ### 2026-06-05 — /sociology taxonomy page (22 families, 265 entries)
 
 **What.** New page at `/sociology` — a working taxonomy of sociology organized into 22 families across five sections, modeled on the existing `/psychology` and `/philosophy` taxonomies (KaTeX rendering for the quantitative-sociology and method formulas; plain prose elsewhere).
