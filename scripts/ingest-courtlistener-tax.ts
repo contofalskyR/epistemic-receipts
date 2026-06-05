@@ -142,7 +142,7 @@ function toCitationCount(raw: number | string | null | undefined): number | null
 // ── API fetch (matches circuits ingester's retry behaviour) ───────────────────
 
 const TRANSIENT_STATUSES = new Set([502, 503, 504])
-const MAX_429_WAIT_MS  = 120_000
+const MAX_429_WARN_MS  = 300_000 // log a long-wait warning above 5 min
 
 let MAX_RETRIES    = 5
 let REQUEST_DELAY_MS = 800
@@ -181,10 +181,12 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
     if (res.status === 429) {
       const retryAfter = parseInt(res.headers.get('retry-after') ?? '60', 10)
       const wait = isNaN(retryAfter) ? 60000 : retryAfter * 1000
-      if (wait > MAX_429_WAIT_MS) {
-        throw new Error(`CourtListener rate limit too long (${Math.ceil(wait / 1000)}s) — wait and restart`)
+      const waitSec = Math.ceil(wait / 1000)
+      if (wait > MAX_429_WARN_MS) {
+        console.log(`  Rate limited (429) — long penalty ${waitSec}s (${(waitSec / 3600).toFixed(1)}h) — waiting it out...`)
+      } else {
+        console.log(`  Rate limited (429) — waiting ${waitSec}s before retry...`)
       }
-      console.log(`  Rate limited (429) — waiting ${Math.ceil(wait / 1000)}s before retry...`)
       await sleep(wait)
       continue
     }
