@@ -1,0 +1,88 @@
+import type { OrganSystem } from "./types";
+
+export const ORGAN_SYSTEMS: OrganSystem[] = [
+  {
+    key: "cardiovascular",
+    name: "Cardiovascular",
+    blurb: "Heart, arteries, veins, capillaries — bulk transport of blood, oxygen, nutrients, and heat.",
+    organs: ["Heart (4 chambers)", "Aorta", "Coronary arteries", "Carotid arteries", "Veins", "Capillary beds"],
+    diseases: ["Myocardial infarction", "Heart failure", "Atrial fibrillation", "Hypertension", "Atherosclerosis", "Aortic stenosis"],
+  },
+  {
+    key: "respiratory",
+    name: "Respiratory",
+    blurb: "Airways and lungs — gas exchange of O2 and CO2 across the alveolar membrane.",
+    organs: ["Nasopharynx", "Trachea", "Bronchi", "Bronchioles", "Alveoli", "Diaphragm"],
+    diseases: ["COPD", "Asthma", "Pneumonia", "Pulmonary embolism", "ARDS", "Lung cancer"],
+  },
+  {
+    key: "gastrointestinal",
+    name: "Gastrointestinal",
+    blurb: "Mouth to anus tube plus liver, gallbladder, pancreas — digestion, absorption, detoxification.",
+    organs: ["Esophagus", "Stomach", "Small intestine", "Colon", "Liver", "Pancreas", "Gallbladder"],
+    diseases: ["GERD", "Peptic ulcer disease", "IBD (Crohn / UC)", "Cirrhosis", "Pancreatitis", "Colorectal cancer"],
+  },
+  {
+    key: "neurological",
+    name: "Neurological",
+    blurb: "Central and peripheral nervous system — sensation, motor control, cognition, autonomic regulation.",
+    organs: ["Cerebrum", "Cerebellum", "Brainstem", "Spinal cord", "Peripheral nerves", "Autonomic ganglia"],
+    diseases: ["Ischemic stroke", "Alzheimer disease", "Parkinson disease", "Multiple sclerosis", "Epilepsy", "Migraine"],
+  },
+  {
+    key: "musculoskeletal",
+    name: "Musculoskeletal",
+    blurb: "Bones, joints, muscles, tendons, ligaments — structural support and voluntary movement.",
+    organs: ["Skeletal muscle", "Bone (axial + appendicular)", "Synovial joints", "Tendons", "Ligaments", "Cartilage"],
+    diseases: ["Osteoarthritis", "Rheumatoid arthritis", "Osteoporosis", "Fractures", "Gout", "Low back pain"],
+  },
+  {
+    key: "endocrine",
+    name: "Endocrine",
+    blurb: "Hormone-secreting glands — long-range chemical signaling and metabolic regulation.",
+    organs: ["Pituitary", "Thyroid", "Parathyroid", "Adrenal", "Pancreatic islets", "Gonads"],
+    diseases: ["Type 2 diabetes", "Hypothyroidism", "Cushing syndrome", "Addison disease", "Acromegaly", "Hyperparathyroidism"],
+  },
+  {
+    key: "immune",
+    name: "Immune",
+    blurb: "Innate and adaptive defense — pathogen recognition, antibody production, self/non-self discrimination.",
+    organs: ["Bone marrow", "Thymus", "Lymph nodes", "Spleen", "Mucosal lymphoid tissue", "B and T cells"],
+    diseases: ["HIV/AIDS", "Lupus (SLE)", "Anaphylaxis", "Severe combined immunodeficiency", "Allergic rhinitis", "Vasculitis"],
+  },
+  {
+    key: "reproductive",
+    name: "Reproductive",
+    blurb: "Gonads, uterus, and accessory organs — gametogenesis, fertilization, pregnancy, lactation.",
+    organs: ["Ovaries", "Uterus", "Fallopian tubes", "Testes", "Prostate", "Placenta (in pregnancy)"],
+    diseases: ["Preeclampsia", "Endometriosis", "PCOS", "Prostate cancer", "Cervical cancer", "Infertility"],
+  },
+  {
+    key: "renal",
+    name: "Renal / Urinary",
+    blurb: "Kidneys, ureters, bladder — filtration, electrolyte and acid-base balance, blood pressure.",
+    organs: ["Kidneys", "Nephrons", "Ureters", "Bladder", "Urethra", "Renal arteries"],
+    diseases: ["Chronic kidney disease", "Acute kidney injury", "Nephrotic syndrome", "UTI / pyelonephritis", "Kidney stones", "Renal cell carcinoma"],
+  },
+  {
+    key: "dermatological",
+    name: "Dermatological",
+    blurb: "Skin, hair, nails — barrier function, thermoregulation, sensation, vitamin D synthesis.",
+    organs: ["Epidermis", "Dermis", "Subcutis", "Hair follicles", "Sebaceous glands", "Sweat glands"],
+    diseases: ["Melanoma", "Basal cell carcinoma", "Psoriasis", "Atopic dermatitis", "Acne vulgaris", "Cellulitis"],
+  },
+  {
+    key: "psychiatric",
+    name: "Psychiatric",
+    blurb: "Mind and behavior — mood, cognition, perception, and the brain-behavior interface.",
+    organs: ["Prefrontal cortex", "Limbic system", "Amygdala", "Hippocampus", "Reward circuit", "Default mode network"],
+    diseases: ["Major depressive disorder", "Schizophrenia", "Bipolar disorder", "Generalized anxiety", "PTSD", "Substance use disorder"],
+  },
+  {
+    key: "hematological",
+    name: "Hematological",
+    blurb: "Blood and blood-forming tissues — red cells, white cells, platelets, coagulation.",
+    organs: ["Red blood cells", "Platelets", "Bone marrow", "Coagulation cascade", "Hemoglobin", "Plasma"],
+    diseases: ["Iron-deficiency anemia", "Sickle cell disease", "Leukemia", "Lymphoma", "DIC", "Hemophilia"],
+  },
+];
