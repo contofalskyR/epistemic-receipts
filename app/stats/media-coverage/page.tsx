@@ -96,16 +96,32 @@ function TypeBadge({ type }: { type: string | null }) {
   )
 }
 
-function BillCard({ bill, expanded, onToggle, dim }: {
+function congressGovUrl(externalId: string | null): string | null {
+  if (!externalId) return null
+  const m = externalId.match(/_(hr|s|hjres|sjres|hconres|sconres|hres|sres)_(\d+)$/)
+  if (!m) return null
+  const slug: Record<string, string> = {
+    hr: "house-bill", s: "senate-bill",
+    hjres: "house-joint-resolution", sjres: "senate-joint-resolution",
+    hconres: "house-concurrent-resolution", sconres: "senate-concurrent-resolution",
+    hres: "house-resolution", sres: "senate-resolution",
+  }
+  return `https://www.congress.gov/bill/119th-congress/${slug[m[1]!]}/${m[2]}`
+}
+
+function BillCard({ bill, onOpen, dim }: {
   bill: BillRow
-  expanded: boolean
-  onToggle: () => void
+  onOpen: () => void
   dim?: boolean
 }) {
   const title = extractTitle(bill.title)
   const billLabel = extractBillLabel(bill.externalId, bill.billType ?? "")
   return (
-    <div className={`rounded border border-zinc-800 bg-zinc-950 p-3 space-y-2 ${dim ? "opacity-90" : ""}`}>
+    <button
+      type="button"
+      onClick={onOpen}
+      className={`w-full text-left rounded border border-zinc-800 bg-zinc-950 p-3 space-y-2 hover:border-zinc-600 hover:bg-zinc-900/60 transition-colors ${dim ? "opacity-90" : ""}`}
+    >
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
@@ -118,6 +134,9 @@ function BillCard({ bill, expanded, onToggle, dim }: {
           <p className="mt-1 text-sm text-zinc-100">{title}</p>
           <p className="mt-0.5 text-[11px] text-zinc-500 font-mono">
             NYT query: &ldquo;{bill.searchQuery}&rdquo;
+            {bill.topHeadlines.length > 0 && (
+              <span className="ml-2 text-zinc-400">· {bill.topHeadlines.length} {bill.topHeadlines.length === 1 ? "headline" : "headlines"} →</span>
+            )}
           </p>
         </div>
         <div className="shrink-0 text-right">
@@ -127,43 +146,138 @@ function BillCard({ bill, expanded, onToggle, dim }: {
           <div className="text-[10px] uppercase tracking-wide text-zinc-500">NYT articles</div>
         </div>
       </div>
+    </button>
+  )
+}
 
-      {bill.topHeadlines.length > 0 && (
-        <div>
+function BillModal({ bill, onClose }: { bill: BillRow; onClose: () => void }) {
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) { if (e.key === "Escape") onClose() }
+    window.addEventListener("keydown", onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      window.removeEventListener("keydown", onKey)
+      document.body.style.overflow = prev
+    }
+  }, [onClose])
+
+  const title = extractTitle(bill.title)
+  const billLabel = extractBillLabel(bill.externalId, bill.billType ?? "")
+  const cgUrl = congressGovUrl(bill.externalId)
+  const hasCoverage = bill.articleCount > 0
+  const topicChips = bill.topics.filter(t => !t.startsWith("status-")).slice(0, 12)
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4 sm:p-8"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-2xl rounded-lg border border-zinc-800 bg-zinc-950 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-zinc-800 px-5 py-4">
+          <div className="min-w-0 flex-1 space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <TypeBadge type={bill.billType} />
+              <StatusBadge slug={bill.status} label={bill.statusLabel} />
+              {billLabel && (
+                <span className="text-[11px] font-mono text-zinc-500">{billLabel}</span>
+              )}
+            </div>
+            <h3 className="text-base font-semibold text-white leading-snug">{title}</h3>
+          </div>
           <button
             type="button"
-            onClick={onToggle}
-            className="text-xs text-zinc-400 hover:text-blue-300 transition-colors"
+            onClick={onClose}
+            aria-label="Close"
+            className="shrink-0 rounded p-1 text-zinc-500 hover:bg-zinc-900 hover:text-zinc-200 transition-colors"
           >
-            {expanded ? "▾" : "▸"} Top {bill.topHeadlines.length} {bill.topHeadlines.length === 1 ? "headline" : "headlines"}
+            ✕
           </button>
-          {expanded && (
-            <ul className="mt-1 space-y-1 border-l border-zinc-800 pl-3">
-              {bill.topHeadlines.map((h, i) => (
-                <li key={i} className="text-xs">
-                  {h.url ? (
-                    <a
-                      href={h.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-blue-300 hover:text-blue-200 transition-colors"
-                    >
-                      {h.headline}
-                    </a>
-                  ) : (
-                    <span className="text-zinc-300">{h.headline}</span>
-                  )}
-                  {h.date && (
-                    <span className="ml-2 text-[10px] text-zinc-600 font-mono">
-                      {h.date.slice(0, 10)}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
-      )}
+
+        <div className="space-y-5 px-5 py-4">
+          <section>
+            <h4 className="text-[10px] uppercase tracking-widest text-zinc-500 font-mono">Bill summary</h4>
+            <p className="mt-2 text-sm text-zinc-200 whitespace-pre-line leading-relaxed">
+              {bill.title}
+            </p>
+            {topicChips.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {topicChips.map(t => (
+                  <span key={t} className="rounded border border-zinc-800 bg-zinc-900 px-1.5 py-0.5 text-[10px] font-mono text-zinc-400">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-zinc-500 font-mono">
+              {bill.externalId && <span>id: {bill.externalId}</span>}
+              {bill.lastChecked && <span>checked: {bill.lastChecked.slice(0, 10)}</span>}
+            </div>
+            <div className="mt-3 flex flex-wrap gap-3 text-xs">
+              {cgUrl && (
+                <a href={cgUrl} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-200">
+                  congress.gov →
+                </a>
+              )}
+              <a href={`/claims/${bill.claimId}`} className="text-blue-300 hover:text-blue-200">
+                claim page →
+              </a>
+            </div>
+          </section>
+
+          <section>
+            <div className="flex items-baseline justify-between">
+              <h4 className="text-[10px] uppercase tracking-widest text-zinc-500 font-mono">NYT coverage</h4>
+              <span className={`text-xl font-semibold tabular-nums ${hasCoverage ? "text-amber-300" : "text-zinc-600"}`}>
+                {bill.articleCount.toLocaleString()}
+              </span>
+            </div>
+            {hasCoverage ? (
+              <>
+                <p className="mt-1 text-xs text-zinc-500">
+                  {bill.articleCount.toLocaleString()} NYT article{bill.articleCount === 1 ? "" : "s"} matched query
+                  <span className="ml-1 font-mono text-zinc-400">&ldquo;{bill.searchQuery}&rdquo;</span>.
+                </p>
+                {bill.topHeadlines.length > 0 ? (
+                  <ul className="mt-2 space-y-1.5 border-l border-zinc-800 pl-3">
+                    {bill.topHeadlines.map((h, i) => (
+                      <li key={i} className="text-xs">
+                        {h.url ? (
+                          <a href={h.url} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-200">
+                            {h.headline}
+                          </a>
+                        ) : (
+                          <span className="text-zinc-300">{h.headline}</span>
+                        )}
+                        {h.date && (
+                          <span className="ml-2 text-[10px] text-zinc-600 font-mono">
+                            {h.date.slice(0, 10)}
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-xs text-zinc-500 italic">No top headlines stored for this bill.</p>
+                )}
+              </>
+            ) : (
+              <div className="mt-2 rounded border border-zinc-800 bg-zinc-900/40 p-3">
+                <p className="text-sm text-zinc-200">No NYT articles found.</p>
+                <p className="mt-1 text-xs text-zinc-500">
+                  The query <span className="font-mono text-zinc-400">&ldquo;{bill.searchQuery}&rdquo;</span> returned zero hits
+                  against the NYT Article Search API.
+                  {bill.status === "status-enacted" && " This bill became law without coverage from the newspaper of record."}
+                </p>
+              </div>
+            )}
+          </section>
+        </div>
+      </div>
     </div>
   )
 }
@@ -185,7 +299,7 @@ export default function MediaCoveragePage() {
   const [data, setData] = useState<ApiResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [expanded, setExpanded] = useState<Set<number>>(new Set())
+  const [selected, setSelected] = useState<BillRow | null>(null)
 
   useEffect(() => {
     let active = true
@@ -200,13 +314,6 @@ export default function MediaCoveragePage() {
     return () => { active = false }
   }, [])
 
-  function toggle(id: number) {
-    setExpanded(prev => {
-      const next = new Set(prev)
-      if (next.has(id)) next.delete(id); else next.add(id)
-      return next
-    })
-  }
 
   const topCovered = useMemo<BillRow[]>(() => {
     if (!data) return []
@@ -303,8 +410,7 @@ export default function MediaCoveragePage() {
                   <BillCard
                     key={b.id}
                     bill={b}
-                    expanded={expanded.has(b.id)}
-                    onToggle={() => toggle(b.id)}
+                    onOpen={() => setSelected(b)}
                   />
                 ))}
               </div>
@@ -326,8 +432,7 @@ export default function MediaCoveragePage() {
                   <BillCard
                     key={b.id}
                     bill={b}
-                    expanded={expanded.has(b.id)}
-                    onToggle={() => toggle(b.id)}
+                    onOpen={() => setSelected(b)}
                   />
                 ))}
               </div>
@@ -351,8 +456,7 @@ export default function MediaCoveragePage() {
                   <BillCard
                     key={b.id}
                     bill={b}
-                    expanded={expanded.has(b.id)}
-                    onToggle={() => toggle(b.id)}
+                    onOpen={() => setSelected(b)}
                     dim
                   />
                 ))}
@@ -367,6 +471,8 @@ export default function MediaCoveragePage() {
           </footer>
         </>
       )}
+
+      {selected && <BillModal bill={selected} onClose={() => setSelected(null)} />}
     </div>
   )
 }
