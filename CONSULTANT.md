@@ -291,6 +291,96 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-05 — 5 taxonomy pages shipped: astronomy, geology, engineering, linguistics, psychology
+
+**What.** Five new taxonomy pages built by Claude Opus agents and committed/pushed to prod.
+
+| Page | Families | Entries | Special module |
+|---|---|---|---|
+| `/astronomy` | 21 | ~272 | KaTeX, 5 sections (A–E): observational, solar system, stellar/galactic, extragalactic/cosmology, astrobiology |
+| `/geology` | 24 | ~287 | KaTeX, `timescale.ts` (geological time scale + Mohs hardness scale) |
+| `/engineering` | 24 | ~328 | KaTeX, `materials.ts` (materials reference + category styles) |
+| `/linguistics` | 22 | ~282 | KaTeX, `ipa.ts` (full IPA chart) |
+| `/psychology` | 22 | ~301 | KaTeX, `brain.ts` (brain regions + lobes + Big Five traits) |
+
+**Files added.** `app/astronomy/`, `app/geology/`, `app/engineering/`, `app/linguistics/`, `app/psychology/` — each with `types.ts`, `data.ts`, `data2.ts`, `data3.ts`, `page.tsx`, and one domain-specific module file.
+
+**Nav.** Added links to `app/layout.tsx` for all five pages. Astronomy + Geology added between Biology and Medicine; Engineering, Linguistics, Psychology added after Geology.
+
+**Commits.** `290c421` (astronomy + geology), `6a578a0` (engineering + linguistics + psychology), `ffec06f` (nav).
+
+### 2026-06-04 — /computer-science taxonomy page
+
+**What.** New page at `/computer-science` — a working taxonomy of computer science organized into 22 families across five sections, modeled on the existing `/mathematics` taxonomy (KaTeX rendering, prerequisite DAG visualization) with the physics-style `key insight` core field.
+
+**Files added.**
+- `app/computer-science/types.ts` — `CSEntry`, `Section` (`A`–`E`), `Xref` (`"mathematics" | "statistics" | "physics"`), `Status` (`"open" | "solved" | "refuted"`), `ColorKey`, `Family` types. Core field is `keyInsight`; entries carry optional `notation`, `example`, and a required `prereqs` array (defines DAG edges).
+- `app/computer-science/data.ts` — Families 1–8: Computability & Complexity Theory, Formal Languages & Automata, Logic & Proof Systems, Algorithms — Sorting & Searching, Algorithms — Graph & Combinatorial, Data Structures, Computational Geometry, Cryptography.
+- `app/computer-science/data2.ts` — Families 9–15: Computer Architecture & Hardware, Operating Systems, Networking & Distributed Systems, Databases, Programming Language Theory, Compilers & Interpreters, Software Engineering & Design Patterns.
+- `app/computer-science/data3.ts` — Families 16–22: Computer Graphics & Vision, Human-Computer Interaction, Machine Learning Foundations, Deep Learning & Neural Networks, Natural Language Processing, Robotics & AI Planning, Open Problems & Famous Conjectures (gold family).
+- `app/computer-science/page.tsx` — Client component with the standard card/family/section architecture. KaTeX inline math in `keyInsight` and `example` via the same `MathFragment` helper used in `/physics`; standalone `notation` rendered via `MathExpr`. Adds a per-family `PrereqGraph` visualization (same Kahn topological layout used in `/mathematics`) — toggleable from each family header, clicking an in-family node scrolls to and expands its card.
+
+**Nav.** Added `<Link href="/computer-science">` to `app/layout.tsx` between Physics and Medicine. Updated footer to "last updated June 4, 2026 — computer science taxonomy added".
+
+**Status badges.** `SOLVED` (green — Halting problem, Cook-Levin, Hilbert's 10th), `OPEN` (red — P vs NP, one-way functions, matrix-multiplication exponent ω, Collatz, quantum supremacy classical-hardness, AGI scaling, AI alignment, software-engineering-as-engineering, statistics/ML-as-CS), plus an amber `FAMOUS` badge marking landmark concepts (Turing machine, Cook-Levin, Curry-Howard, Diffie-Hellman, CAP theorem, FLP, transformer, AlphaGo, ResNet, GANs, Moore's Law, Von Neumann architecture, Halting problem, NP-completeness).
+
+**Content.** 22 families · 241 entries · ~280 prereq edges (computed from data via `ALL_FAMILIES.reduce`, not hardcoded). Volatile facts verified: matrix-multiplication best-known exponent ω ≤ 2.371552 (Williams-Le Gall-Duan-Wu-Zhou 2024); NIST PQC standards (ML-KEM/Kyber FIPS 203, ML-DSA/Dilithium FIPS 204, both 2024); Chinchilla scaling-law optimal tokens-per-parameter ≈ 20; transformer-based detectors > 65% mAP on COCO (2024). Disputed classifications stated neutrally: is statistics/ML "computer science", is software engineering "engineering". The DAG is genuinely acyclic — prereq edges cross families (e.g. `Cryptography` → `Software Engineering` via `Cryptographic hash function` → `Version control (Git)`; `Logic & Proof Systems` → `Compilers` via SAT/SMT) and a cross-family layout falls out automatically from the per-family Kahn pass.
+
+**Xref usage.** `mathematics` for Turing machines, automata theory, RSA/discrete log, convex hull (Ω(n log n)), MDPs, Bellman equations, gradient descent, rendering equation. `statistics` for supervised/unsupervised learning, bias-variance, regularization, cross-validation, VC dimension. `physics` for the rendering equation, PID control.
+
+**Verification.** `npx tsc --noEmit` clean on the full project. No homepage / nav regression. KaTeX render path identical to `/physics` and `/mathematics`.
+
+**Deploy.** Production at `epistemic-receipts.vercel.app/computer-science` via `vercel --prod`.
+
+---
+
+### 2026-06-04 — /medicine taxonomy page
+
+**What.** New page at `/medicine` — a working taxonomy of clinical medicine organized into 20 families across five sections, modeled on the existing `/physics`, `/chemistry`, and `/law` taxonomies (plain-text rendering — no LaTeX/mhchem; clinical principles are plain).
+
+**Files added.**
+- `app/medicine/types.ts` — `MedEntry`, `Section`, `ColorKey`, `Family`, `Xref` (`"chemistry" | "statistics"`), `Status` (`"landmark" | "open" | "refuted" | "contested"`), `OrganSystemKey`, `OrganSystem` types.
+- `app/medicine/systems.ts` — `ORGAN_SYSTEMS` dataset: 12 systems (cardiovascular, respiratory, gastrointestinal, neurological, musculoskeletal, endocrine, immune, reproductive, renal, dermatological, psychiatric, hematological) each with key organs and common diseases.
+- `app/medicine/data.ts` — Families 1–7: Anatomy & Physiology, Pathology, Microbiology & Infectious Disease, Cardiology, Neurology, Oncology, Endocrinology & Metabolism.
+- `app/medicine/data2.ts` — Families 8–14: Gastroenterology, Pulmonology, Nephrology, Rheumatology & Immunology, Psychiatry & Mental Health, Obstetrics & Gynecology, Pediatrics.
+- `app/medicine/data3.ts` — Families 15–20: Surgery & Trauma, Radiology & Imaging, Pharmacology & Drug Classes, Epidemiology & Biostatistics, Global Health & Public Health, Landmark Discoveries & Medical Controversies (gold family).
+- `app/medicine/page.tsx` — Client component with the standard card/family/section architecture. Adds two mandatory visualizations: a clickable `BodySystemsMap` (12-cell grid of organ systems with detail panel showing organs, common diseases, and entries tagged to that system) and a `LineageGraph` SVG showing organ systems as nodes connected by directed disease/treatment edges. Status badges color-code epistemic posture (LANDMARK green, REFUTED rose, CONTESTED amber, OPEN red). New optional `organSystem` field on each entry surfaces as a colored chip on the card.
+
+**Nav.** Added `<Link href="/medicine">` to `app/layout.tsx` between Physics and Statistics. Updated footer to "last updated June 4, 2026 — medicine taxonomy added".
+
+**Xref mapping.** Task brief asked for `biology / chemistry / statistics` xrefs; mapped to existing sibling pages: `chemistry` → `/chemistry` (real, used for drug structures, biochemistry, gas exchange), `statistics` → `/statistics` (real, used for trial design, epidemiology, diagnostics, GBD). `biology` was requested but no `/biology` sibling exists — per CONSULTANT rule #8 (xrefs only point to real sibling pages) it was dropped from the `Xref` union. Biology topics that would have linked to `/biology` (e.g., DNA double helix, microbiology fundamentals) are kept as full medicine entries instead.
+
+**Content.** 257 entries (slightly above the 240-250 target — kept the full coverage rather than prune Family 20 below editorial threshold). Current therapeutic landscape reflected: GLP-1 RAs / SGLT2 inhibitors reshaping diabetes, HF, CKD, obesity (LANDMARK); KarXT first muscarinic mechanism for schizophrenia (2024); Trikafta for CF; Casgevy / Lyfgenia (2023) gene-therapy cures for sickle cell; resmetirom (2024) first drug for MASH; lecanemab / donanemab anti-amyloid for early AD (CONTESTED on benefit-vs-harm balance); fezolinetant non-hormonal menopause therapy; HPV vaccines preventing ~90% of HPV-related cancers; nirsevimab + maternal RSV vaccine for infant prevention; CDK4/6 inhibitors for HR+/HER2- breast cancer; PARP inhibitors for BRCA-mutated disease. Refuted / fraudulent claims preserved with citations: Wakefield 1998 MMR-autism paper retracted by *The Lancet* in 2010; Theranos.
+
+**Verification.** `npx tsc --noEmit` clean. 20 families, 257 entries (computed from data via `ALL_FAMILIES.reduce`, not hardcoded). Plain-text key facts throughout — no LaTeX/mhchem needed.
+
+**Deploy.** Production at `epistemic-receipts.vercel.app/medicine` via `vercel --prod`.
+
+---
+
+### 2026-06-04 — /law taxonomy page
+
+**What.** New page at `/law` — a working taxonomy of law organized into 22 families across five sections, modeled on the existing `/physics` and `/chemistry` taxonomies (plain-text rendering — no LaTeX/mhchem since legal citations are plain).
+
+**Files added.**
+- `app/law/types.ts` — `LawEntry`, `Section`, `ColorKey`, `Family`, `Xref` (`"governance" | "historical-events" | "ideologies" | "finance" | "statistics"`), `Status` (`"landmark" | "open" | "overruled" | "contested"`) types.
+- `app/law/data.ts` — Families 1–7: Constitutional Law, Administrative Law, Tax Law, Bankruptcy Law, Criminal Law (substantive), Criminal Procedure, Evidence Law.
+- `app/law/data2.ts` — Families 8–14: Tort Law, Contract Law, Property Law, Family Law, Civil Procedure, Corporate & Business Law, Intellectual Property.
+- `app/law/data3.ts` — Families 15–22: International Law, Human Rights Law, Environmental Law, Labor & Employment Law, Immigration Law, Comparative Law, Jurisprudence & Legal Philosophy, Landmark Cases & Open Questions (gold family).
+- `app/law/page.tsx` — Client component identical in architecture to `/physics` but without KaTeX import (plain text only). Status badges color-code doctrinal posture: LANDMARK (green), OVERRULED (rose), CONTESTED (amber), OPEN (red). New optional field `citation` renders below `keyPrinciple` for Bluebook-style case citations.
+
+**Nav.** Added `<Link href="/law">` to `app/layout.tsx` between Governance and Ideologies. Updated footer to "last updated June 4, 2026 — law taxonomy added".
+
+**Xref mapping.** Task brief asked for `governance / history / philosophy` xrefs; mapped to existing sibling pages: `governance` → `/governance` (real), `history` → `/historical-events` (real), `philosophy` → `/ideologies` (closest existing match). Also added `statistics` (for Daubert/Frye expert-evidence) and `finance` (open slot, currently unused). Per CONSULTANT rule #8 xrefs only point to real sibling pages.
+
+**Content.** 247 entries (within the 240-250 target). Recent doctrinal shifts reflected: Chevron overruled by *Loper Bright* (2024), *Bostock*'s extension of Title VII (2020), *Sackett*'s narrowing of CWA (2023), *Dobbs*'s overruling of Roe/Casey (2022). U.S.-leaning but Section D covers international/comparative (UNCLOS, ICCPR/ICESCR, ECHR, Geneva Conventions, civil vs. common law traditions). Section E "Landmark Cases & Open Questions" is the gold family — landmark decisions (Marbury, Brown, Nuremberg), overruled cases preserved for historical value (Lochner, Dred Scott, Korematsu, Chevron), and open questions (AI personhood, digital privacy under 4A, climate-plaintiff standing, fate of administrative state post-Loper Bright).
+
+**Verification.** `npx tsc --noEmit` clean. 22 families, 247 entries (computed from data via `ALL_FAMILIES.reduce`, not hardcoded).
+
+**Deploy.** Production at `epistemic-receipts.vercel.app/law` via `vercel --prod`.
+
+---
+
 ### 2026-06-04 — /physics taxonomy page
 
 **What.** New page at `/physics` — a working taxonomy of physics organized into 24 families across five sections, modeled exactly on the existing `/chemistry` taxonomy.
