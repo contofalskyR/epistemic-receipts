@@ -19,6 +19,27 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 | **/finance taxonomy** | ✅ Shipped 2026-06-03 | 155 financial methods across 19 families. Valuation, derivatives, risk, portfolio theory, structured finance, etc. |
 | **/governance taxonomy** | ✅ Shipped 2026-06-03 | ~175 governance concepts across 19 families. Constitutional design, electoral systems, federalism, etc. |
 | **/ideologies taxonomy** | ✅ Shipped 2026-06-03 | ~200 political ideologies/isms across 19 families with lineage graph. Opus agent built from textbook taxonomy doc. |
+| **/mathematics taxonomy** | ✅ Shipped 2026-06-02 | ~240 entries, KaTeX, prereq DAG, famous theorems & open problems. |
+| **/chemistry taxonomy** | ✅ Shipped 2026-06-04 | ~248 entries, KaTeX+mhchem, interactive periodic table, reaction network. |
+| **/physics taxonomy** | ✅ Shipped 2026-06-04 | 24 families, KaTeX equations, classical → quantum → astrophysics. |
+| **/law taxonomy** | ✅ Shipped 2026-06-04 | ~22 families: Constitutional, Criminal, Tort, Contract, IP, International, Jurisprudence. Precedent lineage graph. |
+| **/medicine taxonomy** | ✅ Shipped 2026-06-04 | ~20 families: Cardiology, Neurology, Oncology, Pharmacology, Public Health. Body systems map (organ grid). |
+| **/computer-science taxonomy** | ✅ Shipped 2026-06-04 | ~21 families: Algorithms, Complexity, OS, Networking, ML/DL, NLP, Cryptography. Prereq DAG, KaTeX. |
+| **/biology taxonomy** | ✅ Shipped 2026-06-04 | ~20 families: Cell Biology, Genetics, Ecology, Evolution, Neuroscience, Molecular Biology. Tree of life graph. xrefs: chemistry, medicine. |
+| **/economics taxonomy** | ✅ Shipped 2026-06-04 | ~20 families: Micro, Macro, Game Theory, Behavioral, Development, Trade, Labor. Distinct from /finance. Model zoo + policy lineage graph. |
+| **/philosophy taxonomy** | ✅ Shipped 2026-06-04 | ~20 families: Epistemology, Ethics, Metaphysics, Logic, Philosophy of Mind, Political Philosophy, Aesthetics. Argument map graph. |
+| **/tax-law taxonomy** | ✅ Shipped 2026-06-04 | Subdomain taxonomy of tax law (income, corporate, international, estate, etc.). Built after main /law. |
+| **/ip-law taxonomy** | ✅ Shipped 2026-06-04 | Subdomain taxonomy of intellectual property law (patent, copyright, trademark, trade secret). Built after main /law. |
+| **/psychology taxonomy** | 📋 Queued | ~20 families: Cognitive, Social, Developmental, Clinical, Neuroscience, Perception, Learning. Directly relevant to site's research claims. |
+| **/neuroscience taxonomy** | 📋 Queued | ~18 families: Brain regions, neural circuits, disorders, imaging methods, computational neuroscience. xrefs: biology, psychology, medicine. |
+| **/history taxonomy** | 📋 Queued | ~20 families: Ancient, Medieval, Early Modern, Modern, Historiography, specific regions. Timeline/era graph. xrefs: governance, ideologies. |
+| **/linguistics taxonomy** | 📋 Queued | ~18 families: Phonology, Morphology, Syntax, Semantics, Pragmatics, Historical Linguistics, NLP. Language family tree. |
+| **/engineering taxonomy** | 📋 Queued | ~20 families: Electrical, Mechanical, Civil, Chemical, Software, Aerospace, Biomedical. Design principle graph. xrefs: physics, CS, chemistry. |
+| **/astronomy taxonomy** | 📋 Queued | ~18 families: Solar System, Stars, Galaxies, Cosmology, Exoplanets, Observational Methods. xrefs: physics. |
+| **/sociology taxonomy** | 📋 Queued | ~18 families: Social Theory, Institutions, Stratification, Race & Ethnicity, Organizations. xrefs: governance, psychology, economics. |
+| **/anthropology taxonomy** | 📋 Queued | ~16 families: Cultural, Physical/Biological, Archaeological, Linguistic. xrefs: history, linguistics, biology. |
+| **/earth-sciences taxonomy** | 📋 Queued | ~18 families: Geology, Oceanography, Climatology, Atmospheric Science, Geophysics. xrefs: chemistry, physics, biology. |
+| **/logic taxonomy** | 📋 Queued | ~16 families: Classical Logic, Modal Logic, Proof Theory, Set Theory, Formal Systems. xrefs: mathematics, CS, philosophy. |
 | **Globe — typed density layers** | 📋 Queued | Category-based overlays instead of all-facts heatmap. Toggle by type: pharma labs, drug discovery, human rights orgs, legislation, science, etc. Geography + type of fact, not just claim count. |
 | "What's new" feed | ⏳ On hold | After bookmarks |
 
