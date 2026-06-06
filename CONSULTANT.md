@@ -291,6 +291,20 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-06 — /physiology taxonomy page
+
+**What.** New taxonomy sibling at `/physiology` (18 families, 162 entries, 5 sections, 10 organ systems). Page was already drafted under `app/physiology/` (untracked) and built on the same KaTeX + collapsible-family pattern as `/neuroscience`, `/medicine`, `/anthropology`, `/earth-sciences`, `/logic`. This pass committed the page, linked it from the `/fields` hub (Natural Sciences cluster, after Neuroscience), wired the Live Research panel to `GET /api/taxonomy/physiology/stats` (returns 0 until OpenAlex ingest seeds a `physiology` topic), and refreshed the homepage changelog + layout footer.
+
+**Why.** Physiology is the substrate for clinical medicine — homeostasis, organ-system function, the math of capillary exchange, the Hodgkin-Huxley action potential, GLP-1/SGLT2-era pharmacology. Closes a notable gap between `/biology` and `/medicine` in the field set.
+
+**Files touched:**
+- `app/physiology/{types,data,data2,data3,page}.tsx` — committed (previously untracked)
+- `app/fields/page.tsx` — added physiology entry under Natural Sciences
+- `app/page.tsx` — June 6, 2026 changelog entry
+- `app/layout.tsx` — footer "last updated June 6, 2026 — physiology taxonomy added"
+
+**Verification:** `tsc --noEmit` clean. No new dependencies; no schema change. No new API route required (existing `app/api/taxonomy/[slug]/stats/route.ts` handles arbitrary slugs and returns 0 when the topic row doesn't exist).
+
 ### 2026-06-06 — OpenAlex journal-sweep ingester (openalex_journals_v1)
 
 **What.** New script `scripts/ingest-openalex-journals.ts` that sweeps top academic journals directly by `primary_location.source.id` filter, sorted by `cited_by_count:desc`. Yields comprehensive high-quality coverage (1M+ scale) rather than concept-sampling.

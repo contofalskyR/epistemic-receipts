@@ -32,6 +32,7 @@ const GROUPS: FieldGroup[] = [
       { slug: "chemistry",       name: "Chemistry",       blurb: "Matter, bonding, reactions, thermodynamics, and the periodic table.",     families: 21 },
       { slug: "biology",         name: "Biology",         blurb: "Life from molecules to ecosystems — cell, genetics, evolution, ecology.", families: 20 },
       { slug: "neuroscience",    name: "Neuroscience",    blurb: "Nervous systems, cognition, and the biological basis of behavior.",       families: 19 },
+      { slug: "physiology",      name: "Physiology",      blurb: "Mechanisms of life — homeostasis, organ-system function, and integrative regulation.", families: 18 },
       { slug: "astronomy",       name: "Astronomy",       blurb: "Stars, galaxies, planets, cosmology, and observational techniques.",      families: 21 },
       { slug: "earth-sciences",  name: "Earth Sciences",  blurb: "Atmosphere, oceans, climate, and the Earth system.",                      families: 18 },
       { slug: "geology",         name: "Geology",         blurb: "Minerals, tectonics, deep time, and the solid Earth.",                    families: 24 },
