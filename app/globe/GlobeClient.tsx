@@ -5,6 +5,7 @@ import Link from "next/link";
 import { countryFlag } from "@/lib/countryCodeMap";
 import type { OriginPoint } from "@/app/api/globe/origins/route";
 import { getGeoJSONForYear, type GeoJSONSelection } from "@/lib/historical-geo";
+import { CATEGORY_SLUGS, CATEGORY_LABELS, type CategorySlug } from "@/lib/globe-categories";
 
 type DensityRow = {
   countryCode: string;
@@ -108,6 +109,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [loadingOrigins, setLoadingOrigins] = useState(false);
   const [currentGeoSelection, setCurrentGeoSelection] = useState<GeoJSONSelection | null>(null);
   const [loadingGeo, setLoadingGeo] = useState(false);
+  const [categoryFilter, setCategoryFilter] = useState<CategorySlug | null>(null);
 
   const isAtPresent = currentYear >= MAX_YEAR;
 
@@ -201,9 +203,14 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     viewModeRef.current = viewMode;
   }, [viewMode]);
 
-  // Debounced density refetch when year changes
+  // Debounced density refetch when year or category changes.
+  // Three cases:
+  //  (1) at present + no category   → use SSR density (zero network)
+  //  (2) at present + category set  → /api/globe/density?category=<slug>
+  //  (3) historical                 → /api/globe/density-temporal?before=<year>
+  //                                   (category is ignored for v1 historical mode)
   useEffect(() => {
-    if (isAtPresent) {
+    if (isAtPresent && !categoryFilter) {
       setDensityState(density);
       setTotalClaimCount(density.reduce((sum, d) => sum + d.claimCount, 0));
       return;
@@ -212,12 +219,21 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     const t = setTimeout(async () => {
       setLoadingDensity(true);
       try {
-        const res = await fetch(`/api/globe/density-temporal?before=${currentYear}`);
+        const url =
+          isAtPresent && categoryFilter
+            ? `/api/globe/density?category=${categoryFilter}`
+            : `/api/globe/density-temporal?before=${currentYear}`;
+        const res = await fetch(url);
         if (!res.ok) return;
-        const data: { countries: DensityRow[]; totalClaimCount: number } = await res.json();
+        const data = await res.json();
         if (cancelled) return;
-        setDensityState(data.countries);
-        setTotalClaimCount(data.totalClaimCount);
+        if (Array.isArray(data)) {
+          setDensityState(data);
+          setTotalClaimCount(data.reduce((sum: number, d: DensityRow) => sum + d.claimCount, 0));
+        } else {
+          setDensityState(data.countries);
+          setTotalClaimCount(data.totalClaimCount);
+        }
       } finally {
         if (!cancelled) setLoadingDensity(false);
       }
@@ -226,7 +242,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       cancelled = true;
       clearTimeout(t);
     };
-  }, [currentYear, isAtPresent, density]);
+  }, [currentYear, isAtPresent, density, categoryFilter]);
 
   // Debounced origins refetch when in origins mode + year changes
   useEffect(() => {
@@ -529,8 +545,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       )}
 
-      {/* View mode pill toggle */}
-      <div className="fixed top-[52px] right-4 z-40">
+      {/* View mode pill toggle + category chips */}
+      <div className="fixed top-[52px] right-4 z-40 flex flex-col items-end gap-2">
         <div className="relative flex items-center bg-gray-900/80 backdrop-blur border border-gray-700 rounded-full p-1">
           <div
             className="absolute top-1 bottom-1 rounded-full bg-amber-500 transition-transform duration-300 ease-in-out"
@@ -561,6 +577,49 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             Origins
           </button>
         </div>
+
+        {viewMode === "heatmap" && (
+          <div className="flex flex-wrap justify-end gap-1.5 bg-gray-900/80 backdrop-blur border border-gray-700 rounded-full p-1 max-w-[20rem]">
+            <button
+              type="button"
+              onClick={() => {
+                setIsPlaying(false);
+                setCurrentYear(MAX_YEAR);
+                setCategoryFilter(null);
+              }}
+              className={`px-2.5 py-0.5 text-[11px] font-medium rounded-full transition-colors ${
+                categoryFilter === null
+                  ? "bg-white text-gray-900"
+                  : "text-gray-400 hover:text-gray-100"
+              }`}
+              title="All claim categories"
+            >
+              All
+            </button>
+            {CATEGORY_SLUGS.map((slug) => {
+              const active = categoryFilter === slug;
+              return (
+                <button
+                  key={slug}
+                  type="button"
+                  onClick={() => {
+                    setIsPlaying(false);
+                    setCurrentYear(MAX_YEAR);
+                    setCategoryFilter(slug);
+                  }}
+                  className={`px-2.5 py-0.5 text-[11px] font-medium rounded-full transition-colors ${
+                    active
+                      ? "bg-white text-gray-900"
+                      : "text-gray-400 hover:text-gray-100"
+                  }`}
+                  title={`Filter heatmap to ${CATEGORY_LABELS[slug]} pipelines`}
+                >
+                  {CATEGORY_LABELS[slug]}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Search panel */}
@@ -636,6 +695,8 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
               <div className="text-[11px] text-gray-500 leading-tight">
                 {loadingDensity || loadingOrigins ? (
                   "Loading…"
+                ) : isAtPresent && categoryFilter ? (
+                  `${totalClaimCount.toLocaleString()} claims in ${CATEGORY_LABELS[categoryFilter]}`
                 ) : isAtPresent ? (
                   `${totalClaimCount.toLocaleString()} claims (all time)`
                 ) : (
