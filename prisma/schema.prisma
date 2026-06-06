@@ -52,6 +52,7 @@ model Claim {
   historicalEvents         ClaimHistoricalEvent[]
   polityLinks              PolityClaim[]
   bookmarks                Bookmark[]
+  alertsSent               AlertSent[]
   relationsFrom            ClaimRelation[] @relation("ClaimRelationFrom")
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
   billCoverage             BillCoverage?
@@ -566,10 +567,16 @@ model PolityClaim {
 }
 
 model Profile {
-  id        String     @id @default(uuid())
-  key       String     @unique
-  createdAt DateTime   @default(now())
-  bookmarks Bookmark[]
+  id                  String      @id @default(uuid())
+  key                 String      @unique
+  email               String?     @unique
+  emailVerifiedAt     DateTime?
+  magicTokenHash      String?
+  magicTokenExpiresAt DateTime?
+  plan                String      @default("free")
+  createdAt           DateTime    @default(now())
+  bookmarks           Bookmark[]
+  savedQueries        SavedQuery[]
 }
 
 model Bookmark {
@@ -583,6 +590,35 @@ model Bookmark {
 
   @@unique([profileId, claimId])
   @@index([profileId])
+  @@index([claimId])
+}
+
+model SavedQuery {
+  id          String    @id @default(uuid())
+  profileId   String
+  name        String
+  filters     Json
+  frequency   String    @default("daily")
+  lastRunAt   DateTime?
+  createdAt   DateTime  @default(now())
+
+  profile     Profile     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  alertsSent  AlertSent[]
+
+  @@index([profileId])
+}
+
+model AlertSent {
+  id            String   @id @default(uuid())
+  savedQueryId  String
+  claimId       String
+  sentAt        DateTime @default(now())
+
+  savedQuery SavedQuery @relation(fields: [savedQueryId], references: [id], onDelete: Cascade)
+  claim      Claim      @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@unique([savedQueryId, claimId])
+  @@index([savedQueryId])
   @@index([claimId])
 }
 

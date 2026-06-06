@@ -274,6 +274,19 @@ export default function SearchClient() {
         <Results data={data} type={urlType} />
       )}
 
+      {/* Alerts CTA */}
+      {data && showResults && (urlQ || urlCountry) && (
+        <div className="rounded-lg border border-gray-800/50 bg-gray-900/50 px-4 py-3 flex items-center justify-between gap-4 text-sm">
+          <span className="text-gray-400">Get email alerts for this search</span>
+          <a
+            href={`/alerts/signup?${urlQ ? `q=${encodeURIComponent(urlQ)}` : ""}${urlCountry ? `&country=${urlCountry}` : ""}`}
+            className="shrink-0 text-xs px-3 py-1.5 rounded border border-gray-700 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
+          >
+            Create alert →
+          </a>
+        </div>
+      )}
+
       {/* Pagination */}
       {data && !loading && !error && totalForType > PAGE_SIZE && (
         <div className="flex items-center gap-3 text-xs text-gray-500 pt-2">
