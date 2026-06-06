@@ -137,6 +137,10 @@ const BUCKETS: Record<string, BucketConfig> = {
     conceptIds: ['C162324750'], // Economics
     extraTopicSlugs: ['economics'],
   },
+  physiology: {
+    conceptIds: ['C1276874', 'C153294291', 'C126255220'], // Physiology, Endocrinology, Cardiology
+    extraTopicSlugs: ['physiology'],
+  },
 }
 
 const SELECT_FIELDS = [
@@ -276,6 +280,9 @@ async function ensureCoreTopics(bucket: string): Promise<string[]> {
     ],
     economics: [
       { slug: 'economics', name: 'Economics', domain: 'academic-literature' },
+    ],
+    physiology: [
+      { slug: 'physiology', name: 'Physiology', domain: 'academic-literature' },
     ],
   }
   const ids = [root]
