@@ -291,6 +291,41 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-06 — OpenAlex journal-sweep ingester (openalex_journals_v1)
+
+**What.** New script `scripts/ingest-openalex-journals.ts` that sweeps top academic journals directly by `primary_location.source.id` filter, sorted by `cited_by_count:desc`. Yields comprehensive high-quality coverage (1M+ scale) rather than concept-sampling.
+
+**Pipeline tag:** `openalex_journals_v1` (distinct from existing `openalex_v1`). Deduplication is cross-script — same `externalId = openalex_${workId}` and `sourceExternalId = openalex_source_${workId}` format means papers already ingested by `openalex_v1` are automatically skipped.
+
+**30 journals across 5 tiers** (source IDs verified via OpenAlex API, highest works_count selected for journals with multiple era-named entries):
+- **Science/Nature** (7): Nature (S137773608), Science (S3880285), PNAS (S125754415), PLOS ONE (S202381698), Nature Communications (S64187185), Scientific Reports (S196734849), eLife (S1336409049)
+- **Life sciences** (8): Cell (S110447773), Nature Medicine (S203256638), The Lancet (S49861241), NEJM (S62468778), JAMA (S172573765), BMJ (S192814187), Nature Genetics (S137905309), Nature Biotechnology (S106963461)
+- **Physical sciences** (6): Physical Review Letters (S24807848), Physical Review D (S4210238307), Journal of Chemical Physics (S77047749), Nature Physics (S156274416), Nature Chemistry (S202193212), Nature Materials (S103895331)
+- **Cognitive/social** (6): Cognition (S88198767), Psychological Review (S35223124), Psychological Science (S58854535), JEP General (S62013203), Nature Human Behaviour (S2764866340), Trends in Cognitive Sciences (S192051125)
+- **Economics/social** (4): American Economic Review (S23254222), QJE (S203860005), Journal of Political Economy (S95323914), Nature Climate Change (S183584863)
+
+**CLI flags:** `--journal <sourceId>` (single journal), `--tier <science|life|physical|cognitive|economics>` (all in tier), `--limit <n>` (soft stop after N ingested), `--min-citations <n>` (default 1), `--dry-run` (no DB writes).
+
+**Topics added:** `genetics` and `biotechnology` (both parented under `biology`). Root topic `academic-literature` is always included.
+
+**Metadata includes `cited_by_count`** — stored on Claim.metadata so explorer queries can surface most-cited papers per venue.
+
+**Verification.** Dry-run on Cognition (S88198767, limit 10) showed correct API fetch, top papers with citation counts, dedup detection of 28 already-ingested works. Real run ingested 172 new claims, 0 errors. `npx tsc --noEmit` clean for this script (existing errors in other scripts unchanged).
+
+**To run bulk sweeps:**
+```
+# Single journal
+npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-openalex-journals.ts --journal S137773608
+
+# Full tier (life sciences, sorted by citations desc, min 1 citation)
+npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-openalex-journals.ts --tier life
+
+# Higher-quality filter (top-cited only)
+npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-openalex-journals.ts --tier science --min-citations 50
+```
+
+---
+
 ### 2026-06-06 — Link OpenAlex claims to taxonomy pages
 
 **What.** Three-part change that wires live OpenAlex paper counts into the eight static taxonomy pages (/neuroscience, /psychology, /chemistry, /medicine, /biology, /physics, /mathematics, /anthropology).
