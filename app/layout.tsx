@@ -38,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/books" className="text-gray-400 hover:text-white transition-colors">Books</Link>
           <Link href="/stats" className="text-gray-400 hover:text-white transition-colors">Stats</Link>
           <Link href="/stats/media-coverage" className="text-gray-400 hover:text-white transition-colors">Media Coverage</Link>
+          <Link href="/feed" className="text-gray-400 hover:text-white transition-colors">Feed</Link>
           <Link href="/bookmarks" className="text-gray-400 hover:text-white transition-colors">Bookmarks</Link>
           <Link href="/financial" className="text-gray-400 hover:text-white transition-colors">Financial</Link>
 
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated June 6, 2026 — statistics claim explorer added
+          last updated June 6, 2026 — /feed What&apos;s new feed added
         </footer>
       </body>
     </html>

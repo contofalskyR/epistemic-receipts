@@ -291,6 +291,35 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-06 — /feed What's new feed — last major feature before site → app
+
+**What.** New `/feed` route consolidating recent site activity into a single page so returning visitors can see what changed without crawling individual pipeline pages or the homepage changelog. Four sections, two server-fetched and two client islands; no schema change.
+
+**Sections.**
+1. **Since your last visit** (`app/feed/SinceLastVisit.tsx`, client) — reads `er_last_visit` from `localStorage`, calls `GET /api/feed/new-since?since=<iso>` for a `COUNT(*)` of non-deleted `Claim` rows created since that timestamp, then rewrites `er_last_visit` to now. First-time visitors and stale (>90d) timestamps get a Welcome state; recent (<1min) reloads show count=0 without round-tripping the count query. Window is clamped server-side to `[1 min, 90 days]` so a forged future timestamp can't pin the query at zero and a years-old timestamp can't run an expensive count.
+2. **Recent claims by pipeline** (server) — Prisma `groupBy({ by: ["ingestedBy"], where: { deleted: false, createdAt: { gte: now - 7d } } })`, top 6 pipelines by volume. For each, a second `findMany` fetches the 3 most recent sample claims (~80-char snippet). Pipeline name deep-links to `/claims?ingestedBy=<tag>`.
+3. **Recent threshold events** (server) — top 10 newest `ThresholdEvent` rows in last 7 days (`deleted: false`), each rendering claim snippet + `triggeredBy` source + date, linking to the claim detail page.
+4. **Activity on your bookmarks** (`app/feed/BookmarkedActivity.tsx`, client) — reads `er_profile_key` from `localStorage` and hits `GET /api/feed/bookmarked-activity?key=<key>`. The route SHA-256-hashes the key (same `hashKey` pattern as `/api/bookmarks`), looks up the profile's bookmarks, then queries `ThresholdEvent` filtered by `claimId IN (...)` and `createdAt >= now - 30d`. Returns up to 20 claims, each with up to 4 events. No-profile / no-bookmarks / no-activity each get their own empty state; the UI never crashes if the API errors.
+
+**Files added.**
+- `app/feed/page.tsx` — server component, `dynamic = "force-dynamic"`, `revalidate = 0`. Composes the four sections.
+- `app/feed/SinceLastVisit.tsx` — client island.
+- `app/feed/BookmarkedActivity.tsx` — client island.
+- `app/api/feed/new-since/route.ts` — `GET ?since=<iso>` returns `{ count, since }`. Window-clamps the timestamp.
+- `app/api/feed/bookmarked-activity/route.ts` — `GET ?key=<opaque>` returns `{ claims: [{ claimId, claimText, currentStatus, events: [{ eventType, createdAt }] }] }`. Cap at 20 claims; opaque key validated `length ∈ [8, 128]`.
+
+**Files edited.**
+- `app/layout.tsx` — added `<Link href="/feed">Feed</Link>` between Stats and Bookmarks in the global nav; footer "last updated" bumped to `June 6, 2026 — /feed What's new feed added`.
+- `app/page.tsx` — new homepage changelog item prepended to the June 6 block, describing the four sections and the new API routes.
+
+**Storage / key reuse decisions.** `er_last_visit` is a new `localStorage` key (separate from the bookmark profile key) so logging-out / clearing bookmarks doesn't lose the "what's new since you were last here" affordance, and the "since your last visit" count works even before a user has bookmarked anything. `er_profile_key` for the bookmarked-activity section is the existing key written by `useBookmarks` / `getOrCreateProfileKey` — no new auth surface.
+
+**Verification.** `npx tsc --noEmit` clean (project-wide, pre-existing unrelated errors unchanged). The feed page is a server component; the two client islands degrade gracefully (every error path lands on a visible empty/welcome state, no thrown exceptions). No schema migration. No new dependencies — `lucide-react` icons already in use, no third-party fetch.
+
+**Roadmap context.** This was flagged as the last major feature before Epistemic Receipts crosses from "website" to "app" per the user's app-roadmap framing; bookmarks shipped previously, the feed adds the second-leg "what changed while I was away" hook. Future extensions logically belong here (e.g. polling-driven badges, per-section RSS, email digests off the bookmarked-activity query) but are intentionally out of scope.
+
+---
+
 ### 2026-06-06 — /statistics claim explorer (Option B) — claim-powered companion to the statistics taxonomy
 
 **What.** New route at `/statistics/explorer` that groups OpenAlex-sourced claims by detected statistical method, with live counts and per-method paginated claim lists. The existing static `/statistics` taxonomy (Option A) and `/statistics/methods` textbook reference are untouched — the explorer layers on top. Header links between all three pages are wired both ways.
