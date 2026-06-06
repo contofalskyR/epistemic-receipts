@@ -4,6 +4,20 @@
 
 Future pipelines ranked by volume + editorial value. Add to this list as new candidates emerge. Cross off as pipelines ship.
 
+## Monetization Wedges (added 2026-06-06)
+
+The dream: sell facts to newsrooms (NYT, WaPo, Reuters) and AI labs via an internal AI engine that answers questions with claim-level citations to primary sources.
+
+Build order — each tier reuses infra from the one below:
+
+| Tier | Feature | Status | Why |
+|------|---------|--------|-----|
+| **Wedge #1** | **Alerts** — saved queries + email digests | 🔄 Building | Forces user accounts + saved-search infra every later tier depends on. First paying user = beat reporter on one jurisdiction. Extends existing anonymous `Profile` with optional `email`. |
+| **Wedge #2** | **Public API** — keys, rate limits, docs | 📋 Queued | B2B path. Pitch: "52-country legislation in one endpoint." $99–299/mo tiers. Compliance teams + RegTech. |
+| **Wedge #0** (dream) | **`/ask` AI engine** — RAG over claim graph, cited synthesis | 📋 Far future | Newsroom contracts ($5–25k/yr), AI lab licensing. Needs embeddings, retrieval, citation-enforced generation. Build last. |
+
+Full strategy in `~/.openclaw/workspace/memory/project_epistemic_receipts_monetization.md`.
+
 ## UX Features
 
 | Feature | Status | Notes |
@@ -30,16 +44,16 @@ Future pipelines ranked by volume + editorial value. Add to this list as new can
 | **/philosophy taxonomy** | ✅ Shipped 2026-06-04 | ~20 families: Epistemology, Ethics, Metaphysics, Logic, Philosophy of Mind, Political Philosophy, Aesthetics. Argument map graph. |
 | **/tax-law taxonomy** | ✅ Shipped 2026-06-04 | Subdomain taxonomy of tax law (income, corporate, international, estate, etc.). Built after main /law. |
 | **/ip-law taxonomy** | ✅ Shipped 2026-06-04 | Subdomain taxonomy of intellectual property law (patent, copyright, trademark, trade secret). Built after main /law. |
-| **/psychology taxonomy** | 📋 Queued | ~20 families: Cognitive, Social, Developmental, Clinical, Neuroscience, Perception, Learning. Directly relevant to site's research claims. |
-| **/neuroscience taxonomy** | 📋 Queued | ~18 families: Brain regions, neural circuits, disorders, imaging methods, computational neuroscience. xrefs: biology, psychology, medicine. |
-| **/history taxonomy** | 📋 Queued | ~20 families: Ancient, Medieval, Early Modern, Modern, Historiography, specific regions. Timeline/era graph. xrefs: governance, ideologies. |
-| **/linguistics taxonomy** | 📋 Queued | ~18 families: Phonology, Morphology, Syntax, Semantics, Pragmatics, Historical Linguistics, NLP. Language family tree. |
-| **/engineering taxonomy** | 📋 Queued | ~20 families: Electrical, Mechanical, Civil, Chemical, Software, Aerospace, Biomedical. Design principle graph. xrefs: physics, CS, chemistry. |
-| **/astronomy taxonomy** | 📋 Queued | ~18 families: Solar System, Stars, Galaxies, Cosmology, Exoplanets, Observational Methods. xrefs: physics. |
-| **/sociology taxonomy** | 📋 Queued | ~18 families: Social Theory, Institutions, Stratification, Race & Ethnicity, Organizations. xrefs: governance, psychology, economics. |
-| **/anthropology taxonomy** | 📋 Queued | ~16 families: Cultural, Physical/Biological, Archaeological, Linguistic. xrefs: history, linguistics, biology. |
-| **/earth-sciences taxonomy** | 📋 Queued | ~18 families: Geology, Oceanography, Climatology, Atmospheric Science, Geophysics. xrefs: chemistry, physics, biology. |
-| **/logic taxonomy** | 📋 Queued | ~16 families: Classical Logic, Modal Logic, Proof Theory, Set Theory, Formal Systems. xrefs: mathematics, CS, philosophy. |
+| **/psychology taxonomy** | ✅ Shipped 2026-06-05 | Cognitive, Social, Developmental, Clinical, Perception, Learning. |
+| **/neuroscience taxonomy** | ✅ Shipped 2026-06-06 | ~18 families: brain regions, neural circuits, neurotransmitters, sensory/motor, disorders, neuroimaging, computational. xrefs: biology, psychology, medicine. |
+| **/history taxonomy** | ✅ Shipped 2026-06-05 | Ancient → Modern eras, historiography, regional histories. Timeline/era graph. |
+| **/linguistics taxonomy** | ✅ Shipped 2026-06-05 | Phonology, Morphology, Syntax, Semantics, Pragmatics, Historical, NLP. Language family tree. |
+| **/engineering taxonomy** | ✅ Shipped 2026-06-05 | Electrical, Mechanical, Civil, Chemical, Software, Aerospace, Biomedical. |
+| **/astronomy taxonomy** | ✅ Shipped 2026-06-05 | Solar System, Stars, Galaxies, Cosmology, Exoplanets, Observational. |
+| **/sociology taxonomy** | ✅ Shipped 2026-06-05 | Social Theory, Institutions, Stratification, Race & Ethnicity, Organizations. |
+| **/anthropology taxonomy** | ✅ Shipped 2026-06-06 | ~16 families: Cultural, Physical, Archaeological, Linguistic, Kinship, Paleoanthropology, Primatology. xrefs: history, linguistics, biology, sociology. |
+| **/earth-sciences taxonomy** | ✅ Shipped 2026-06-06 | ~18 families: Oceanography, Atmospheric, Climatology, Hydrology, Glaciology, Paleoclimatology, Geophysics. xrefs: geology, chemistry, physics, biology. |
+| **/logic taxonomy** | ✅ Shipped 2026-06-06 | ~16 families: Classical, Modal, Temporal, Epistemic, Proof Theory, Model Theory, Set Theory, Type Theory. KaTeX formal notation. xrefs: mathematics, CS, philosophy. |
 | **Globe — typed density layers** | 📋 Queued | Category-based overlays instead of all-facts heatmap. Toggle by type: pharma labs, drug discovery, human rights orgs, legislation, science, etc. Geography + type of fact, not just claim count. |
 | "What's new" feed | ⏳ On hold | After bookmarks |
 
