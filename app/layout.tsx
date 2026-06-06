@@ -18,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav className="border-b border-gray-800 px-6 py-3 flex gap-6 text-sm">
           <Link href="/" className="font-semibold text-white">Epistemic Receipts</Link>
           <Link href="/search" className="text-gray-400 hover:text-white transition-colors">Search</Link>
+          <Link href="/alerts" className="text-gray-400 hover:text-white transition-colors">Alerts</Link>
           <Link href="/claims" className="text-gray-400 hover:text-white transition-colors">Claims</Link>
           <Link href="/edges" className="text-gray-400 hover:text-white transition-colors">Edges</Link>
           <Link href="/meta-edges" className="text-gray-400 hover:text-white transition-colors">Meta-edges</Link>
