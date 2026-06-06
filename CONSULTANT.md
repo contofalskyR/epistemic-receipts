@@ -3086,3 +3086,38 @@ One claim in `doj_fara_v1` has source URL `https://efile.fara.gov/api/v1/RegDocs
 4. **Riksdag URL monitoring** — data.riksdagen.se blocks automated clients consistently. For future health checks, test Riksdag URLs from a browser or use a headless browser check. The 9,989 source URLs are correct data, just unreachable from CLI curl.
 
 5. **Fix openalex_v1 non-http URL** — One source record (`id: cmpm5u34m27q8safwj7fa1h2d`) has `url: "www.lingref.com/cpp/acal/35/paper1298.pdf"` — prepend `https://`. One-line DB update: `UPDATE "Source" SET url = 'https://www.lingref.com/cpp/acal/35/paper1298.pdf' WHERE id = 'cmpm5u34m27q8safwj7fa1h2d'`.
+
+---
+
+### 2026-06-06 — wikidata_chips_v1 — CPU and GPU specs ingester
+
+**What.** New ingester `scripts/ingest-chips-wikidata.ts` fetches CPU and GPU hardware specifications from Wikidata SPARQL and stores them as EMPIRICAL HARD_FACT claims. Initial run ingested 100 chips (all CPUs; GPU run pending a separate invocation). Tagged with `computer-hardware`, `semiconductors`, `technology` (+ `graphics` for GPUs).
+
+**Wikidata QIDs and property mapping (task brief had wrong QIDs — discovered at build time).** The task specified Q5515642 (CPU) and Q183459 (GPU) which are actually "Gabriel Girard" and "Gästrikland" in Wikidata. Correct classes discovered by inspection:
+- `Q122967152` = CPU model (284 items)
+- `Q122760264` = graphics card model (145 items)
+
+Correct properties (also differ from task brief):
+- `P176` = manufacturer (86% coverage)
+- `P577` = publication/release date (not P571 which is inception)
+- `P1141` = number of processor cores
+- `P7443` = number of processor threads (CPU only)
+- `P2229` = thermal design power (W)
+- `P2149` = clock frequency — stored with **mixed units** (some items use Hz, some GHz, some MHz). Handled using `psv:P2149` SPARQL variant to get amount + unit QID, then converting: Q3276763=GHz, Q39369=Hz, Q732707=MHz.
+- `P2049` removed — task said process node but this property stores die SIZE (mm²) not lithography node (nm). No consistent process node property exists in Wikidata's CPU/GPU data.
+
+**Claim text examples:**
+- `Intel Core i9-13900: 24-core 32-thread processor, manufactured by Intel, 65W TDP, 5.6 GHz base clock`
+- `AMD Ryzen Threadripper 7970X: 32-core 64-thread processor, manufactured by AMD, released 2023, 4 GHz base clock`
+- `GeForce RTX 4060 Ti 8GB: GPU, manufactured by Nvidia, released 2023`
+- `AMD Radeon Graphics 512SP (Renoir): GPU, manufactured by AMD, released 2020, 400 MHz base clock`
+- `Intel 80188: processor, manufactured by Intel, released 1981, 10 MHz base clock`
+
+**Files added.**
+- `scripts/ingest-chips-wikidata.ts` — `--type cpu|gpu|all`, `--limit N`, `--dry-run` flags. Rate-limited to 2 SPARQL req/sec; 30s exponential backoff on 429/503. Upserts Sources, creates Claims+Edges+EdgeRevisions in `$transaction({ timeout: 30000 })`. EdgeRevision score=100, reason=`wikidata-chip-spec`. QID deduplication via `seen: Set<string>` to handle multi-value P2149 rows.
+
+**Verification.** Dry-run: CPU 20/20 ✓, GPU 20/20 ✓ — claim texts inspected for accuracy. Real run: 100 claims ingested, 14 skipped (generic QID labels), 0 errors. `tsc --noEmit` on tsconfig.scripts.json: no errors in this file (pre-existing errors in other scripts unchanged). DB verified: `SELECT COUNT(*) FROM "Claim" WHERE "ingestedBy" = 'wikidata_chips_v1'` → 100.
+
+**To run more (GPU + full CPU set):**
+`npx dotenv-cli -e .env.local -- npx tsx --tsconfig tsconfig.scripts.json scripts/ingest-chips-wikidata.ts --type gpu --limit 145` (no --limit for all ~284 CPUs + ~145 GPUs).
+The SPARQL queries cap at LIMIT 2000 — rerun as-is to pick up any newly added Wikidata items (idempotent via externalId dedup).
