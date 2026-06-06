@@ -291,6 +291,58 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-06 — Link audit fixes (WHO GHO sources, OpenAlex prefix, /sports nav)
+
+**What.** Three link-audit follow-ups applied in one pass.
+
+1. **WHO GHO source URLs (1,001 downstream claims).** WHO restructured `/data/gho/data/indicators/indicator-details/GHO/` to key off kebab-case title slugs instead of indicator codes; every `who_gho_v1` source URL was 404ing. Wrote `scripts/backfill-who-gho-urls.ts` that walks the 5 sources, maps each `IndicatorCode` to its verified new slug (HEAD-checked to HTTP 200 for all 5), and updates `Source.url` in place. The ingester `scripts/ingest-who-gho.ts` was also updated: added a `detailSlug` field to `IndicatorDef` and the source create call now uses `${ind.detailSlug}` instead of `${ind.code}`, so future re-runs don't regress. Mapping:
+   - `WHOSIS_000001` → `life-expectancy-at-birth-(years)`
+   - `MDG_0000000001` → `under-five-mortality-rate-(probability-of-dying-by-age-5-per-1000-live-births)`
+   - `SDGPM25` → `concentrations-of-fine-particulate-matter-(pm2-5)`
+   - `SA_0000001462` → `total-(recorded-unrecorded)-alcohol-per-capita-(15-)-consumption`
+   - `NCD_BMI_30A` → `prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)`
+
+   Note: the link audit was described as "Claim.sourceUrl 404s," but the schema has no `sourceUrl` column on `Claim`. The canonical URL lives on `Source.url`, and the 5 WHO GHO sources back all 1,001 claims via Edges. Fix was at the source layer.
+
+2. **OpenAlex bare-domain URL.** Audit query `SELECT id, "sourceUrl" FROM "Claim" ...` doesn't match the schema either; the equivalent over `Source.url` turned up exactly one offender (`cmpm5u34m27q8safwj7fa1h2d`, url `www.lingref.com/cpp/acal/35/paper1298.pdf`). HEAD-confirmed `https://www.lingref.com/...` returns 200 and prepended the scheme.
+
+3. **/sports orphan page.** `app/sports/page.tsx` is 859 lines, 19 families, 6 sections — a full Sports & Sport Science taxonomy with no inbound nav link. Added it to `app/fields/page.tsx` under the **Applied & Professional** group next to Governance (sport-science fits applied/performance better than humanities; the other taxonomy hubs already gather there). Layout nav stays slim because the per-discipline link block was already collapsed into `/fields` in the June 6 hub change.
+
+**Files added.**
+- `scripts/backfill-who-gho-urls.ts` — `--dry-run`, `--limit N`, requires `ALLOW_EDITS=true` for writes, HEAD-verifies every new URL before committing.
+
+**Files edited.**
+- `scripts/ingest-who-gho.ts` — new `detailSlug` field on `IndicatorDef`; `ensureIndicatorSource` and the dry-run sample now build the URL from `detailSlug` not `code`.
+- `app/fields/page.tsx` — added `{ slug: "sports", name: "Sports & Sport Science", ..., families: 19 }` to the Applied & Professional group.
+- `app/page.tsx` — new homepage changelog item at the top of the June 6 block.
+- `app/layout.tsx` — footer "last updated" bumped to `June 6, 2026 — link audit fixes (WHO GHO, OpenAlex, /sports nav)`.
+
+**Verification.** WHO GHO backfill: dry-run printed all 5 rewrites with side-by-side URLs and HEAD HTTP 200 for each; real run reported `Updated 5 sources` and `Claims downstream of these sources: 1001`. OpenAlex: before-count 1, after-count 0. /sports: link rendered under Applied & Professional. `npx tsc --noEmit` clean.
+
+---
+
+### 2026-06-06 — /globe category density layers
+
+**What.** Added a third dimension to the `/globe` heatmap: alongside the existing **Heatmap / Origins** pill toggle, heatmap mode now exposes a row of category chips — **All · Science · Law · Legislation · Medicine · Government · History** — that filter the country-density coloring to just that thematic slice of the pipeline catalog. The Origins arc layer and the historical time slider are untouched; the chip row is only visible in heatmap mode.
+
+**Why this shape.** Heatmap and Origins are *projections* of the same underlying pipeline data; categories are a *partition*. Folding categories into a third `ViewMode` would have required duplicating both polygon-color and arc-render logic. Keeping `ViewMode = "heatmap" | "origins"` and adding a separate `categoryFilter: CategorySlug | null` state lets the existing color logic stay as-is and only swaps the underlying `densityState` array — the polygon update path is unchanged.
+
+**Files added.**
+- `lib/globe-categories.ts` — single source of truth for category slugs / labels / pipeline whitelists. Exports `CATEGORY_SLUGS` (readonly tuple), `CATEGORY_LABELS`, `CATEGORY_PIPELINES`, the `CategorySlug` type, and an `isCategorySlug` guard. Six categories covering the bulk of the 146-pipeline catalog; multi-country pipelines that PIPELINE_COUNTRY intentionally omits (USGS, CrossRef, OpenAlex, WHO/UN/EU) are still listed in their category — they just don't contribute country-level heat because they have no country mapping. The category list is editorial / can be revised without touching the route or the client.
+
+**Files edited.**
+- `app/api/globe/density/route.ts` — now accepts optional `?category=<slug>`. Validates the slug; on unknown slugs it falls back silently to the all-claims behavior (so the route stays backward-compatible with the SSR call in `page.tsx`). When a category is active, the pipeline aggregate is narrowed via `WHERE "ingestedBy" = ANY($1::text[])` and the `PoliticalContext` sweep is skipped entirely — same rationale as `density-temporal` skipping PC when any filter is set: PC is keyed on source country, not on pipeline tag, so mixing it in would dilute the category total with cross-category source-country claims.
+- `app/globe/GlobeClient.tsx` — new `categoryFilter` state; the year-density effect now handles three cases (at-present + no-category → SSR cache; at-present + category → `/api/globe/density?category=`; historical → `/api/globe/density-temporal?before=`); the chip row sits just below the existing toggle in a vertical flex stack, only rendered when `viewMode === "heatmap"`. Clicking a chip resets the time slider to present and pauses any active play — categories are at-present-only for v1 (the temporal route doesn't yet accept `?category=`). The slider's claims-count footer reads `"N claims in <Category>"` when a chip is active.
+- `lib/globe-pipeline-country.ts` — extended with unambiguous US-only pipelines that were previously absent from the map so the Law and Science categories actually render heat: CourtListener federal/state courts (SCOTUS, Circuits, State Supreme, BIA, Tax, Disclosures), OpenFEC, DOJ FARA, NIH Reporter, ClinicalTrials, NASA Exoplanet, openFDA, PubChem, GenBank, OMIM, NIST constants/webbook, cosmetic-FAERS, FDA aesthetic devices, the congress trackers (bills tracker, STOCK Act). The existing "multi-country" omissions (USGS earthquakes, CrossRef retractions, OpenAlex, UN/EU/WHO, etc.) stay omitted on purpose — attributing them to one country would still be misleading.
+- `app/layout.tsx` — footer "last updated" bumped to `June 6, 2026 — /globe category density layers added`.
+- `app/page.tsx` — new homepage changelog item prepended to the June 6 block.
+
+**Verification.** `npx tsc --noEmit` clean. Local dev server smoke-tested: `GET /api/globe/density` (no category) returns 7+ countries led by US 300k+; `?category=law` returns US 1,616; `?category=science` returns US 39,348; `?category=medicine` returns US 103,626; `?category=history` returns 7 countries (US 159k, JP 44.6k, GB 5k, TW 3.9k, RO 3.9k, CZ 104, DE 2 — reflecting NARA + JACAR + UKNA + Taiwan archives + CNSAS + Czech ABS + Stasi); `?category=legislation` returns ~85 countries. Invalid slug falls back to all-claims. SSR HTML for `/globe` includes all six chip labels.
+
+**What's intentionally out of scope.** The Origins arc layer doesn't yet respect the category filter (still shows all-pipeline origins). The temporal density route (`/api/globe/density-temporal`) doesn't yet accept `?category=`, so scrubbing the slider away from present overrides the category filter. Both are straightforward follow-ups if the layered view proves useful.
+
+---
+
 ### 2026-06-06 — /feed What's new feed — last major feature before site → app
 
 **What.** New `/feed` route consolidating recent site activity into a single page so returning visitors can see what changed without crawling individual pipeline pages or the homepage changelog. Four sections, two server-fetched and two client islands; no schema change.
@@ -2829,3 +2881,149 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 **Files changed:** `app/fields/page.tsx` (rewritten), `app/layout.tsx` (nav + footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
 
 **TypeScript:** `npx tsc --noEmit` clean on the touched files (pre-existing `.next/types/validator.ts` errors in unrelated `alerts/`, `queries/`, `auth/magic-link/`, `cron/alerts/` routes are unchanged).
+
+---
+
+### 2026-06-06 — Comprehensive link audit (read-only)
+
+**What.** Read-only audit of external source URLs stored in the DB and clickable elements across the UI. Sampled 5–10 source URLs per pipeline (21 pipelines), HTTP-checked every sampled URL, audited UI code for null-safety and dead-link patterns, and cross-referenced feed/nav links against existing routes.
+
+**No code changes made.** All findings are documentation only. Fix recommendations are below.
+
+---
+
+#### URL Health — Per Pipeline
+
+| Pipeline | Sampled | Verdict | Notes |
+|---|---|---|---|
+| `nih_reporter_v1` | 2 | ✅ 200 | All good |
+| `clinicaltrials_v1` | 3 | ✅ 200 | All good |
+| `courtlistener_scotus_v1` | 2 | ⚠️ 202 | HTTP 202 (CourtListener anti-bot/async); loads correctly in browser |
+| `courtlistener_circuits_v1` | 1 | ⚠️ 202 | Same 202 pattern |
+| `nasa_exoplanet_v1` | 2 | ✅ 200 | All good |
+| `openfda_v1` | 2 | ✅ 200 | All good |
+| `un_sc_resolutions_v1` | 2 | ✅ 200 | All good |
+| `un_ga_v1` | 1 | ✅ 200 | All good |
+| `nobel_v1` | 4 | ✅ 200 | Including 2025 prizes — all found |
+| `pubchem_v1` | 2 | ✅ 200 | All good |
+| `crossref_retractions_v1` | 2 | ⚠️ 418 / 200 | IEEE Xplore returns 418 (anti-bot); Springer returns 200. Not a broken link for users. |
+| `openalex_v1` | 2 | ⚠️ 403 / 200 | MDPI returns 403 (bot blocking); Springer returns 200. Works in browser. |
+| `faers_normalized_drugs_v1` | 1 | ✅ 200 | All good |
+| `usgs_eq_v1` | 2 | ✅ 200 | All good |
+| `echr_v1` | 2 | ✅ 200 | All good |
+| `fr_rules_v1` | 2 | ✅ 200 | All good |
+| `bundestag_v1` | 2 | ✅ 200 | All good |
+| `riksdag_v1` | 4 | ⚠️ intermittent | Some requests return 000 (connection failure), others return 200 in the same run. The URL structure is correct; the server appears to apply rate limiting or have intermittent CDN issues. Not a data bug. |
+| `sec_edgar_v1` | 1 | ⚠️ 403 | SEC blocks bots. Works in browser. |
+| `doj_fara_v1` | 2 | ⚠️ data bug | 1 of 811 claims has URL `…/html/MEXICO` (country name instead of numeric registration ID). Returns 200 but shows a filtered list, not a specific registrant document. |
+| `openfec_v1` | 2 | ✅ 200 | All good |
+| **`who_gho_v1`** | **5 URLs / 1,001 claims** | 🔴 **404** | **Critical: all 5 distinct indicator URLs return 404.** WHO removed/restructured these public pages. Underlying OData API (`ghoapi.azureedge.net/api/<CODE>`) still returns 200. |
+
+---
+
+#### Critical Issue: WHO GHO source URLs all 404
+
+All 1,001 active `who_gho_v1` claims have broken source links. The WHO removed the public indicator detail pages at the pattern `https://www.who.int/data/gho/data/indicators/indicator-details/GHO/<CODE>`. The underlying API endpoint `https://ghoapi.azureedge.net/api/<CODE>` still works. Five distinct codes affected (SDGPM25, MDG_0000000001, NCD_BMI_30A, SA_0000001462, WHOSIS_000001).
+
+**Fix:** Run a targeted update to rewrite WHO GHO source URLs — either to `https://ghoapi.azureedge.net/api/<CODE>` or to the new WHO indicator page format if one can be found. A one-off script can extract the indicator code from each existing URL and rewrite it.
+
+---
+
+#### Moderate Issue: Feed page `ingestedBy` filter silently ignored
+
+The `/feed` page links pipeline names to `/claims?ingestedBy=<pipeline_tag>` (see `app/feed/page.tsx:158`). However:
+- `/api/claims` GET route only accepts `offset` — ignores `ingestedBy` entirely.
+- `app/claims/page.tsx` client does not call `useSearchParams()` and never reads `ingestedBy` from the URL.
+
+Result: clicking these links navigates to the claims page showing *all* claims, not the pipeline's claims. The link is not a 404 — the page loads — but the filter has no effect.
+
+**Fix (Option A):** Add `ingestedBy` filter support to `GET /api/claims` and read it from `useSearchParams()` in the claims page. **Fix (Option B):** Change the feed links to `/search?q=${encodeURIComponent(p.ingestedBy)}` which does filter by pipeline tag in the existing search page.
+
+---
+
+#### Data Bug: DOJ FARA "MEXICO" registration ID
+
+One claim in `doj_fara_v1` has source URL `https://efile.fara.gov/api/v1/RegDocs/html/MEXICO` instead of a numeric registration ID (e.g., `/7321`). The URL returns 200 but shows a country-filtered page, not a specific registrant document. Likely an ingester bug where a country name was stored as the registrant ID. 1 of 811 claims affected.
+
+---
+
+#### UI Code Audit — No Broken Patterns Found
+
+- **Null URL safety on claim detail:** `app/claims/[id]/page.tsx` guards every `source.url` with a truthiness check before rendering `<a>` tags. The timeline `openUrl()` function shows a toast on null. Clean.
+- **Null URL safety on search:** `app/search/SearchClient.tsx` wraps all `source.url` references in `{source.url && ...}`. Clean.
+- **No hardcoded localhost/staging URLs:** Zero hits for `localhost` or `127.0.0.1` in `app/` or `components/`.
+- **API route coverage:** All `fetch('/api/...')` calls correspond to existing `route.ts` files. No phantom API calls.
+- **Globe `countryCode`:** Typed as non-nullable `string` in all sidebar type definitions; rendered only when sidebar is truthy. Safe.
+- **MEP profile URL construction:** `mepProfileUrl()` returns `null` when `memberId` is null — guarded at render site. Safe.
+- **`/finance` page:** Not in the top nav but correctly linked from `/law`, `/ip-law`, `/tax-law`, `/economics`, `/mathematics`, `/governance`, `/sports` taxonomy cross-links. Not orphaned.
+- **All 27 top-nav links:** Verified — every `<Link>` in `app/layout.tsx` has a corresponding `page.tsx` file.
+
+---
+
+#### Top 3 Recommended Fixes
+
+1. **WHO GHO source URLs (404)** — 1,001 claims with dead links. Write a one-off script to rewrite `who_gho_v1` source URLs from the broken `/data/indicators/indicator-details/GHO/<CODE>` pattern to the working API endpoint or corrected page URL. Highest impact per line of code.
+
+2. **Feed `ingestedBy` filter** — Confusing UX: clicking a pipeline link in the feed shows all 842k claims, not the pipeline's claims. Option B (link to `/search?q=<tag>`) is a one-line fix in `app/feed/page.tsx:158`.
+
+3. **DOJ FARA "MEXICO" record** — 1 claim with a semantically wrong URL. Find the correct numeric FARA registration ID for the Mexico entry and update via a targeted DB update or re-run of the relevant ingester slice.
+
+---
+
+### 2026-06-06 — Comprehensive link audit (supplemental run 2)
+
+**What.** Second independent audit pass confirming prior findings, sampling additional URLs, and adding DB-level counts. All read-only. No code changes made.
+
+**Total active sources:** 1,357,731
+
+#### Additional DB findings
+
+| Issue | Count | Notes |
+|---|---|---|
+| Null URL sources | 5,037 (0.37%) | **4,854 are NIH PI/institution entity records by design** (externalId: `nih_pi_*`, `nih_org_name_*`). Actual NIH grant URLs are present on 11,285 of 16,139 NIH sources. Only ~183 non-NIH null URLs (142 deprecated uspto_v1, 40 manual, 1 book-analysis). |
+| Empty URL sources | 0 | Clean. |
+| Non-http URL sources | 1 | `openalex_v1` source: `www.lingref.com/cpp/acal/35/paper1298.pdf` — missing `https://` prefix. This URL is dead for users; needs `https://` prepended. |
+
+#### URL liveness (sampled this run, 5 per pipeline)
+
+| Pipeline | Live | Bot-blocked (403) | Timeout/refused (000) | Server error (500) | Notes |
+|---|---|---|---|---|---|
+| `courtlistener_scotus_v1` | 5/5 | 0 | 0 | 0 | CourtListener returns 202 (async render), works in browser |
+| `nih_reporter_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `clinicaltrials_v1` | 5/5 | 0 | 0 | 0 | ✅ incl. future NCT07* IDs |
+| `nasa_exoplanet_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `un_sc_resolutions_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `un_ga_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `crossref_retractions_v1` | 4/5 | 1 | 0 | 0 | 1 publisher blocks bots; works in browser |
+| `usgs_eq_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `nobel_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `sec_edgar_v1` | 0/5 | 5 | 0 | 0 | SEC EDGAR rate-limits/blocks scripted access; all URLs work in browser |
+| `openfda_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `faers_normalized_drugs_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `echr_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `openalex_v1` | 4/5 | 1 | 0 | 0 | 1 publisher blocks bots; works in browser |
+| `fr_rules_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `bundestag_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `riksdag_v1` | 0/5 | 0 | 5 | 0 | **Confirmed: `data.riksdagen.se` consistently refuses scripted connections (HTTP 000 / TLS handshake succeeds but no HTTP response). 9,989 source URLs affected. Links work in browser.** This is not intermittent — it's consistent IP/UA blocking by the Riksdag CDN for automated clients. |
+| `oireachtas_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `tweedekamer_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `eu_legislation_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `nato_official_texts_v1` | 5/5 | 0 | 0 | 0 | ✅ |
+| `doj_fara_v1` | 3/5 | 0 | 0 | 2 | Some registrant IDs (e.g. 7070, 7725) return HTTP 500 from the API endpoint after redirect — separate issue from the MEXICO data bug. These may correspond to inactive/closed registrant files. |
+
+#### Internal route audit
+
+| Check | Result |
+|---|---|
+| All 28 top-nav `<Link>` hrefs → `page.tsx` | ✅ All pass |
+| All 26 `/fields` hub taxonomy slugs → `page.tsx` | ✅ All pass |
+| `/statistics/methods` and `/statistics/explorer` | ✅ Exist and cross-linked from `/statistics` |
+| `/globe/lab` and `/globe/connections` | ✅ Exist and linked from GlobeClient |
+| `/finance` (taxonomy) vs `/financial` (data page) | ✅ Both valid, distinct purposes — `/finance` accessible via `/fields` |
+| `/sports` | ⚠️ **Orphan page** — no incoming link from nav, `/fields`, or any other page. Not reachable by users without direct URL. |
+
+#### Additional recommendations
+
+4. **Riksdag URL monitoring** — data.riksdagen.se blocks automated clients consistently. For future health checks, test Riksdag URLs from a browser or use a headless browser check. The 9,989 source URLs are correct data, just unreachable from CLI curl.
+
+5. **Fix openalex_v1 non-http URL** — One source record (`id: cmpm5u34m27q8safwj7fa1h2d`) has `url: "www.lingref.com/cpp/acal/35/paper1298.pdf"` — prepend `https://`. One-line DB update: `UPDATE "Source" SET url = 'https://www.lingref.com/cpp/acal/35/paper1298.pdf' WHERE id = 'cmpm5u34m27q8safwj7fa1h2d'`.

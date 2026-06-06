@@ -59,6 +59,7 @@ const GROUPS: FieldGroup[] = [
       { slug: "tax-law",     name: "Tax Law",     blurb: "Income, corporate, estate, international, and procedural tax law.",    families: 20 },
       { slug: "ip-law",      name: "IP Law",      blurb: "Patents, trademarks, copyright, trade secrets, and licensing.",        families: 20 },
       { slug: "governance",  name: "Governance",  blurb: "Institutional design, elections, regulation, and accountability.",     families: 21 },
+      { slug: "sports",      name: "Sports & Sport Science", blurb: "Sports families A–E plus Section F on the physiology, biomechanics, and methodology of athletic performance.", families: 19 },
     ],
   },
   {

@@ -23,6 +23,7 @@ interface IndicatorDef {
   dim1Filter: string | null  // 'BTSX' for both-sexes combined; null = no Dim1 filter
   topicSlug: string
   topicName: string
+  detailSlug: string  // WHO restructured detail URLs to title-derived slugs (2026 onward)
 }
 
 const INDICATORS: IndicatorDef[] = [
@@ -33,6 +34,7 @@ const INDICATORS: IndicatorDef[] = [
     dim1Filter: 'SEX_BTSX',
     topicSlug: 'who-gho-life-expectancy',
     topicName: 'WHO GHO — Life Expectancy',
+    detailSlug: 'life-expectancy-at-birth-(years)',
   },
   {
     code: 'MDG_0000000001',
@@ -41,6 +43,7 @@ const INDICATORS: IndicatorDef[] = [
     dim1Filter: 'SEX_BTSX',
     topicSlug: 'who-gho-under5-mortality',
     topicName: 'WHO GHO — Under-5 Mortality Rate',
+    detailSlug: 'under-five-mortality-rate-(probability-of-dying-by-age-5-per-1000-live-births)',
   },
   {
     code: 'SDGPM25',
@@ -49,6 +52,7 @@ const INDICATORS: IndicatorDef[] = [
     dim1Filter: 'RESIDENCEAREATYPE_TOTL',
     topicSlug: 'who-gho-pm25',
     topicName: 'WHO GHO — PM2.5 Air Pollution',
+    detailSlug: 'concentrations-of-fine-particulate-matter-(pm2-5)',
   },
   {
     code: 'SA_0000001462',
@@ -57,6 +61,7 @@ const INDICATORS: IndicatorDef[] = [
     dim1Filter: 'SEX_BTSX',
     topicSlug: 'who-gho-alcohol',
     topicName: 'WHO GHO — Alcohol Consumption Per Capita',
+    detailSlug: 'total-(recorded-unrecorded)-alcohol-per-capita-(15-)-consumption',
   },
   {
     code: 'NCD_BMI_30A',
@@ -65,6 +70,7 @@ const INDICATORS: IndicatorDef[] = [
     dim1Filter: 'SEX_BTSX',
     topicSlug: 'who-gho-obesity',
     topicName: 'WHO GHO — Adult Obesity Prevalence',
+    detailSlug: 'prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)',
   },
 ]
 
@@ -349,7 +355,7 @@ async function ensureIndicatorSource(ind: IndicatorDef): Promise<string> {
   const source = await prisma.source.create({
     data: {
       name: `WHO GHO: ${ind.name}`,
-      url: `https://www.who.int/data/gho/data/indicators/indicator-details/GHO/${ind.code}`,
+      url: `https://www.who.int/data/gho/data/indicators/indicator-details/GHO/${ind.detailSlug}`,
       methodologyType: 'primary',
       ingestedBy: INGESTED_BY,
       humanReviewed: false,
@@ -417,27 +423,30 @@ async function main() {
   // ── Dry-run ────────────────────────────────────────────────────────────────
   if (mode === 'dry-run') {
     console.log('\nStep 4: Writing dry-run sample (no DB writes)...')
-    const sample = candidates.slice(0, 15).map(r => ({
-      claimText: r.claimText,
-      externalId: r.externalId,
-      indicatorCode: r.indicatorCode,
-      countryIso: r.countryIso,
-      countryName: r.countryName,
-      year: r.year,
-      value: r.value,
-      low: r.low,
-      high: r.high,
-      unit: r.unit,
-      claimType: 'EMPIRICAL',
-      currentStatus: 'HARD_FACT',
-      verificationStatus: 'VERIFIED',
-      ingestedBy: INGESTED_BY,
-      source: {
-        url: `https://www.who.int/data/gho/data/indicators/indicator-details/GHO/${r.indicatorCode}`,
-        methodologyType: 'primary',
-      },
-      metadata: r.metadata,
-    }))
+    const sample = candidates.slice(0, 15).map(r => {
+      const slug = INDICATOR_BY_CODE.get(r.indicatorCode)?.detailSlug ?? r.indicatorCode
+      return {
+        claimText: r.claimText,
+        externalId: r.externalId,
+        indicatorCode: r.indicatorCode,
+        countryIso: r.countryIso,
+        countryName: r.countryName,
+        year: r.year,
+        value: r.value,
+        low: r.low,
+        high: r.high,
+        unit: r.unit,
+        claimType: 'EMPIRICAL',
+        currentStatus: 'HARD_FACT',
+        verificationStatus: 'VERIFIED',
+        ingestedBy: INGESTED_BY,
+        source: {
+          url: `https://www.who.int/data/gho/data/indicators/indicator-details/GHO/${slug}`,
+          methodologyType: 'primary',
+        },
+        metadata: r.metadata,
+      }
+    })
     const output = {
       runDate: new Date().toISOString(),
       indicators: indicators.map(i => i.code),
