@@ -8,6 +8,7 @@ import { FAMILIES_1_6 } from "./data";
 import { FAMILIES_7_12 } from "./data2";
 import { FAMILIES_13_16 } from "./data3";
 import { HOMININS, CLADE_INFO, TIMELINE_MAX_MYA } from "./hominins";
+import { LiveResearchCard } from "@/components/LiveResearchCard";
 
 const ALL_FAMILIES: Family[] = [...FAMILIES_1_6, ...FAMILIES_7_12, ...FAMILIES_13_16];
 
@@ -658,6 +659,8 @@ export default function AnthropologyPage() {
           })}
         </div>
       )}
+
+      <LiveResearchCard slug="anthropology" />
 
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">

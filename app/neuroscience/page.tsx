@@ -6,6 +6,7 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 
 import type { NeuroEntry, ColorKey, Family, Section, CircuitNode, NodeKind } from "./types";
+import { LiveResearchCard } from "@/components/LiveResearchCard";
 import { FAMILIES_1_7 } from "./data";
 import { FAMILIES_8_13 } from "./data2";
 import { FAMILIES_14_19 } from "./data3";
@@ -797,6 +798,8 @@ export default function NeurosciencePage() {
           })}
         </div>
       )}
+
+      <LiveResearchCard slug="neuroscience" />
 
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">

@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated June 6, 2026 — link audit fixes (WHO GHO, OpenAlex, /sports nav)
+          last updated June 6, 2026 — OpenAlex live research panels on taxonomy pages
         </footer>
       </body>
     </html>

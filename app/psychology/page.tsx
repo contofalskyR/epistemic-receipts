@@ -10,6 +10,7 @@ import { FAMILIES_1_7 } from "./data";
 import { FAMILIES_8_14 } from "./data2";
 import { FAMILIES_15_22 } from "./data3";
 import { BRAIN_REGIONS, LOBE_STYLES, BIG_FIVE_TRAITS } from "./brain";
+import { LiveResearchCard } from "@/components/LiveResearchCard";
 
 const ALL_FAMILIES: Family[] = [...FAMILIES_1_7, ...FAMILIES_8_14, ...FAMILIES_15_22];
 
@@ -770,6 +771,8 @@ export default function PsychologyPage() {
           })}
         </div>
       )}
+
+      <LiveResearchCard slug="psychology" />
 
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">

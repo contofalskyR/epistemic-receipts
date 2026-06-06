@@ -93,7 +93,7 @@ const BUCKETS: Record<string, BucketConfig> = {
   cognition: {
     conceptIds: ['C15744967', 'C188147891'], // Psychology, Cognitive science
     search: 'cognitive science OR perception OR categorization OR learning',
-    extraTopicSlugs: ['cognitive-science', 'psychology'],
+    extraTopicSlugs: ['cognitive-science', 'psychology', 'neuroscience'],
   },
   biomedical: {
     conceptIds: ['C71924100', 'C86803240'], // Medicine, Biology
@@ -112,6 +112,30 @@ const BUCKETS: Record<string, BucketConfig> = {
     conceptIds: ['C192562407', 'C185592680', 'C41008148'], // Materials science, Chemistry, Engineering
     extraFilters: ['is_retracted:true', 'has_doi:true'],
     extraTopicSlugs: ['materials-science', 'chemistry', 'engineering'],
+  },
+  neuroscience: {
+    conceptIds: ['C54355233', 'C2522767166'], // Neuroscience, Neurology
+    extraTopicSlugs: ['neuroscience'],
+  },
+  biology: {
+    conceptIds: ['C86803240', 'C184235292'], // Biology, Evolutionary biology
+    extraTopicSlugs: ['biology'],
+  },
+  physics: {
+    conceptIds: ['C121332964', 'C62520636'], // Physics, Quantum mechanics
+    extraTopicSlugs: ['physics'],
+  },
+  mathematics: {
+    conceptIds: ['C33923547'], // Mathematics
+    extraTopicSlugs: ['mathematics'],
+  },
+  anthropology: {
+    conceptIds: ['C142362112'], // Anthropology
+    extraTopicSlugs: ['anthropology'],
+  },
+  economics: {
+    conceptIds: ['C162324750'], // Economics
+    extraTopicSlugs: ['economics'],
   },
 }
 
@@ -215,7 +239,8 @@ async function ensureCoreTopics(bucket: string): Promise<string[]> {
   const bucketTopics: Record<string, Array<{ slug: string; name: string; domain: string }>> = {
     cognition: [
       { slug: 'cognitive-science', name: 'Cognitive Science', domain: 'academic-literature' },
-      { slug: 'psychology',         name: 'Psychology',        domain: 'academic-literature' },
+      { slug: 'psychology',        name: 'Psychology',        domain: 'academic-literature' },
+      { slug: 'neuroscience',      name: 'Neuroscience',      domain: 'academic-literature' },
     ],
     biomedical: [
       { slug: 'biomedical-research', name: 'Biomedical Research', domain: 'academic-literature' },
@@ -233,6 +258,24 @@ async function ensureCoreTopics(bucket: string): Promise<string[]> {
       { slug: 'materials-science', name: 'Materials Science', domain: 'academic-literature' },
       { slug: 'chemistry',         name: 'Chemistry',         domain: 'academic-literature' },
       { slug: 'engineering',       name: 'Engineering',       domain: 'academic-literature' },
+    ],
+    neuroscience: [
+      { slug: 'neuroscience', name: 'Neuroscience', domain: 'academic-literature' },
+    ],
+    biology: [
+      { slug: 'biology', name: 'Biology', domain: 'academic-literature' },
+    ],
+    physics: [
+      { slug: 'physics', name: 'Physics', domain: 'academic-literature' },
+    ],
+    mathematics: [
+      { slug: 'mathematics', name: 'Mathematics', domain: 'academic-literature' },
+    ],
+    anthropology: [
+      { slug: 'anthropology', name: 'Anthropology', domain: 'academic-literature' },
+    ],
+    economics: [
+      { slug: 'economics', name: 'Economics', domain: 'academic-literature' },
     ],
   }
   const ids = [root]

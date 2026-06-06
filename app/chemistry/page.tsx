@@ -13,6 +13,7 @@ import { FAMILIES_8_14 } from "./data2";
 import { FAMILIES_15_21 } from "./data3";
 import { ELEMENTS, CATEGORY_STYLES } from "./elements";
 import type { PeriodicElement } from "./types";
+import { LiveResearchCard } from "@/components/LiveResearchCard";
 
 const ALL_FAMILIES: Family[] = [...FAMILIES_1_7, ...FAMILIES_8_14, ...FAMILIES_15_21];
 
@@ -963,6 +964,8 @@ export default function ChemistryPage() {
           })}
         </div>
       )}
+
+      <LiveResearchCard slug="chemistry" />
 
       <div className="border-t border-gray-800 pt-6 mt-12 space-y-3">
         <p className="text-xs text-gray-500 leading-relaxed">

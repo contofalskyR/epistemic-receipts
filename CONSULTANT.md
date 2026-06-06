@@ -291,6 +291,30 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-06 — Link OpenAlex claims to taxonomy pages
+
+**What.** Three-part change that wires live OpenAlex paper counts into the eight static taxonomy pages (/neuroscience, /psychology, /chemistry, /medicine, /biology, /physics, /mathematics, /anthropology).
+
+1. **New OpenAlex ingest buckets** (`scripts/ingest-openalex.ts`). Added six new buckets to `BUCKETS`: `neuroscience` (C54355233 Neuroscience, C2522767166 Neurology), `biology` (C86803240, C184235292 Evolutionary biology), `physics` (C121332964, C62520636 Quantum mechanics), `mathematics` (C33923547), `anthropology` (C142362112), `economics` (C162324750). Updated `ensureCoreTopics` to create the corresponding `Topic` rows for each. Also added `'neuroscience'` to the existing `cognition` bucket's `extraTopicSlugs` (cognitive science overlaps heavily with neuroscience) and updated the cognition entry in `ensureCoreTopics` to create the `neuroscience` Topic there too.
+
+2. **New API route** (`app/api/taxonomy/[slug]/stats/route.ts`). GET endpoint that looks up a Topic by slug, counts non-deleted non-deprecated ClaimTopic rows for that topic, and returns the 3 most recent sample claims with their text and source URL. Response cached `s-maxage=300, stale-while-revalidate=3600`. Returns `{ count: 0, samples: [] }` when topic not found.
+
+3. **Shared `LiveResearchCard` component** (`components/LiveResearchCard.tsx`) and updates to 8 taxonomy pages. Client component that fetches `/api/taxonomy/[slug]/stats` via `useEffect` and renders a small card with the paper count, a "Browse all →" link to `/topics/[slug]`, and up to 3 sample paper titles as external links. Returns null if count is 0 (graceful no-op before ingest buckets are run). Added to: neuroscience, psychology, chemistry, medicine, biology, physics, mathematics, anthropology.
+
+**Files added.**
+- `app/api/taxonomy/[slug]/stats/route.ts`
+- `components/LiveResearchCard.tsx`
+
+**Files edited.**
+- `scripts/ingest-openalex.ts` — new BUCKETS entries; cognition bucket gets 'neuroscience' topic slug; ensureCoreTopics extended
+- `app/neuroscience/page.tsx`, `app/psychology/page.tsx`, `app/chemistry/page.tsx`, `app/medicine/page.tsx`, `app/biology/page.tsx`, `app/physics/page.tsx`, `app/mathematics/page.tsx`, `app/anthropology/page.tsx` — import + `<LiveResearchCard slug="…" />` added before the footer border-t div
+
+**Verification.** `npx tsc --noEmit` clean. Live Research cards will render 0 claims (returning null) until the new ingest buckets are run against the DB. The cognition bucket's existing records (psychology/cognitive-science) will already show on /psychology and /neuroscience once their Topics exist in the DB (ensureCoreTopics runs on next ingest).
+
+**To populate the new topics.** Run each new bucket: `npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-openalex.ts --bucket neuroscience`, etc. Or run the cognition bucket again to tag existing claims with the new 'neuroscience' topic.
+
+---
+
 ### 2026-06-06 — Link audit fixes (WHO GHO sources, OpenAlex prefix, /sports nav)
 
 **What.** Three link-audit follow-ups applied in one pass.
