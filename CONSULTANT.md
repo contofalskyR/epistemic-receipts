@@ -2747,3 +2747,24 @@ Tone: arXiv preprint combined with system design paper. Targeted at two audience
 - `scripts/ingest-ofac-sdn.ts` (new)
 
 **Files changed:** `next.config.ts`, `CONSULTANT.md`.
+
+---
+
+### 2026-06-06 — `/fields` hub page + nav consolidation
+
+**What.** Repurposed `/fields` as a hub/index of every hand-built taxonomy page on the site (26 disciplines). Existing dynamic route `/fields/[slug]` (Wikipedia-outline academic-disciplines detail view) is left intact for direct-link use; only `app/fields/page.tsx` was replaced.
+
+**Groupings (5 clusters, easy to adjust):**
+- **Formal Sciences** — mathematics, statistics, logic, computer-science
+- **Natural Sciences** — physics, chemistry, biology, neuroscience, astronomy, earth-sciences, geology
+- **Social Sciences** — psychology, sociology, anthropology, linguistics, economics, finance
+- **Applied & Professional** — engineering, medicine, law, tax-law, ip-law, governance
+- **Humanities** — philosophy, history, ideologies
+
+**Card shape.** Title, one-line blurb, family count (hardcoded from current data — physics 24, chemistry 21, biology 20, mathematics 18, astronomy 21, geology 24, engineering 24, linguistics 22, psychology 22, law 22, medicine 20, computer-science 22, philosophy 21, tax-law 20, ip-law 20, neuroscience 19, anthropology 16, earth-sciences 18, logic 18, history 24, sociology 22, ideologies 20, statistics 26, economics 22, governance 21, finance 20). When data files change, family counts here will need to be bumped — there's no auto-derivation. Page is a server component; zero DB hits.
+
+**Nav (`app/layout.tsx`).** Removed the 43-entry per-discipline link block (every taxonomy slug was a top-level nav item) and replaced it with the single `Fields` link that was already present. Kept the rest of the nav unchanged (Search, Claims, Edges, Meta-edges, Timeline, Topics, Review, Pipelines, Datasets, Globe, Votes, Legislation, Analysis trio, Events, Reader, Books, Stats, Media Coverage, Bookmarks, Financial, About, Glossary, Feedback).
+
+**Files changed:** `app/fields/page.tsx` (rewritten), `app/layout.tsx` (nav + footer date), `app/page.tsx` (changelog entry), `CONSULTANT.md`.
+
+**TypeScript:** `npx tsc --noEmit` clean on the touched files (pre-existing `.next/types/validator.ts` errors in unrelated `alerts/`, `queries/`, `auth/magic-link/`, `cron/alerts/` routes are unchanged).

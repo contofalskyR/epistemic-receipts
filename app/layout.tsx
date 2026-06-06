@@ -24,21 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/timeline" className="text-gray-400 hover:text-white transition-colors">Timeline</Link>
           <Link href="/topics" className="text-gray-400 hover:text-white transition-colors">Topics</Link>
           <Link href="/fields" className="text-gray-400 hover:text-white transition-colors">Fields</Link>
-          <Link href="/mathematics" className="text-gray-400 hover:text-white transition-colors">Mathematics</Link>
-          <Link href="/chemistry" className="text-gray-400 hover:text-white transition-colors">Chemistry</Link>
-          <Link href="/physics" className="text-gray-400 hover:text-white transition-colors">Physics</Link>
-          <Link href="/computer-science" className="text-gray-400 hover:text-white transition-colors">Computer Science</Link>
-          <Link href="/biology" className="text-gray-400 hover:text-white transition-colors">Biology</Link>
-          <Link href="/astronomy" className="text-gray-400 hover:text-white transition-colors">Astronomy</Link>
-          <Link href="/geology" className="text-gray-400 hover:text-white transition-colors">Geology</Link>
-          <Link href="/earth-sciences" className="text-gray-400 hover:text-white transition-colors">Earth Sciences</Link>
-          <Link href="/engineering" className="text-gray-400 hover:text-white transition-colors">Engineering</Link>
-          <Link href="/linguistics" className="text-gray-400 hover:text-white transition-colors">Linguistics</Link>
-          <Link href="/psychology" className="text-gray-400 hover:text-white transition-colors">Psychology</Link>
-          <Link href="/neuroscience" className="text-gray-400 hover:text-white transition-colors">Neuroscience</Link>
-          <Link href="/sociology" className="text-gray-400 hover:text-white transition-colors">Sociology</Link>
-          <Link href="/medicine" className="text-gray-400 hover:text-white transition-colors">Medicine</Link>
-          <Link href="/statistics" className="text-gray-400 hover:text-white transition-colors">Statistics</Link>
           <Link href="/review" className="text-gray-400 hover:text-white transition-colors">Review</Link>
           <Link href="/pipelines" className="text-gray-400 hover:text-white transition-colors">Pipelines</Link>
           <Link href="/datasets" className="text-gray-400 hover:text-white transition-colors">Datasets</Link>
@@ -55,17 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/stats/media-coverage" className="text-gray-400 hover:text-white transition-colors">Media Coverage</Link>
           <Link href="/bookmarks" className="text-gray-400 hover:text-white transition-colors">Bookmarks</Link>
           <Link href="/financial" className="text-gray-400 hover:text-white transition-colors">Financial</Link>
-          <Link href="/finance" className="text-gray-400 hover:text-white transition-colors">Finance</Link>
-          <Link href="/economics" className="text-gray-400 hover:text-white transition-colors">Economics</Link>
-          <Link href="/governance" className="text-gray-400 hover:text-white transition-colors">Governance</Link>
-          <Link href="/law" className="text-gray-400 hover:text-white transition-colors">Law</Link>
-          <Link href="/ip-law" className="text-gray-400 hover:text-white transition-colors">IP Law</Link>
-          <Link href="/tax-law" className="text-gray-400 hover:text-white transition-colors">Tax Law</Link>
-          <Link href="/ideologies" className="text-gray-400 hover:text-white transition-colors">Ideologies</Link>
-          <Link href="/philosophy" className="text-gray-400 hover:text-white transition-colors">Philosophy</Link>
-          <Link href="/logic" className="text-gray-400 hover:text-white transition-colors">Logic</Link>
-          <Link href="/history" className="text-gray-400 hover:text-white transition-colors">History</Link>
-          <Link href="/anthropology" className="text-gray-400 hover:text-white transition-colors">Anthropology</Link>
 
           <Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link>
           <Link href="/glossary" className="text-gray-400 hover:text-white transition-colors">Glossary</Link>
@@ -73,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-3xl mx-auto px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          last updated June 6, 2026 — neuroscience taxonomy added
+          last updated June 6, 2026 — /fields hub page consolidates 26 taxonomy pages; nav slimmed
         </footer>
       </body>
     </html>
