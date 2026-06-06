@@ -291,6 +291,38 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-06 — /statistics claim explorer (Option B) — claim-powered companion to the statistics taxonomy
+
+**What.** New route at `/statistics/explorer` that groups OpenAlex-sourced claims by detected statistical method, with live counts and per-method paginated claim lists. The existing static `/statistics` taxonomy (Option A) and `/statistics/methods` textbook reference are untouched — the explorer layers on top. Header links between all three pages are wired both ways.
+
+**Storage decision.** Tags are stored on `Claim.metadata.statMethods: string[]` — no schema change. `Claim.metadata` is the project's existing `Json?` field; this piggybacks the same pattern used by other enrichments (dataset key, openalex_id, etc.). A timestamp at `Claim.metadata.statMethodsTaggedAt` records the last enrichment touch. Rejected: adding a `String[]` column (would require migration; not justified for a v1 explorer), reusing the `Topic` junction (Topics are domain taxonomies, not method tags — wrong abstraction).
+
+**Files added.**
+- `lib/statMethods.ts` — single source of truth for slugs / labels / descriptions / regex patterns. 33 methods covering the broad receipts vocabulary (regression / logistic regression / ANOVA / t-test / chi-square / Bayesian / mixed-effects / SEM / factor analysis / PCA / RCT / meta-analysis / machine learning / deep learning / neural network / survival analysis / confidence interval / p-value / odds-ratio / correlation / cross-validation / bootstrap / propensity score / instrumental variable / diff-in-diff / RDD / time-series / clustering / random forest / SVM / GEE / GWAS / effect-size / power-analysis). Exports `STAT_METHODS`, `STAT_METHOD_BY_SLUG`, `STAT_METHOD_SLUGS`, and `detectStatMethods(haystack)`. No `server-only` import, so safe for both the enrichment script (`scripts/enrich-stat-methods.ts`) and the server-component UI to consume.
+- `scripts/enrich-stat-methods.ts` — sweeps `Claim` rows where `ingestedBy = 'openalex_v1'`, runs `detectStatMethods(title + "\n" + text)`, writes the resulting slug array to `metadata.statMethods`. Cursor-paged by `id` ASC, one-transaction-per-batch (default 500) so the run is restartable. Flags: `--commit` (default dry-run), `--limit N`, `--batch N`, `--force` (re-tag rows that already have `statMethods`). Per-method counts logged on every batch and at the end.
+- `app/statistics/explorer/page.tsx` — server-rendered grid of method tiles. Uses raw SQL via `prisma.$queryRaw(Prisma.sql\`…\`)` to aggregate counts (`jsonb_array_elements_text(metadata->'statMethods')` + `GROUP BY`). Shows methods-with-claims (sorted descending by count) and a second block of methods-with-no-claims-yet so users can see what's tracked. Header line summarizes total OpenAlex claims scanned vs tagged vs total assignments.
+- `app/statistics/explorer/[slug]/page.tsx` — server-rendered paginated claim list for a given method slug. Queries via `metadata->'statMethods' ? ${slug}` (parameterized through `Prisma.sql` so the slug can't break out). `PAGE_SIZE = 25`, `MAX_OFFSET = 5000`. Each claim card shows the OpenAlex title, abstract excerpt, status / verificationStatus / venue chips, and chips for other methods detected on the same claim (each linking to its own explorer page). Pagination links preserve query semantics. `notFound()` on unknown slugs.
+
+**Files edited.**
+- `app/statistics/page.tsx` — added a one-line invite in the page header pointing readers to the explorer; the footer "note" paragraph now links to the explorer instead of describing it as a roadmap item.
+- `app/layout.tsx` — footer "last updated" bumped to `June 6, 2026 — statistics claim explorer added`. No nav change (the `/fields` consolidation already exposes `/statistics`; the explorer is a sub-route).
+- `app/page.tsx` — new homepage changelog item prepended to the June 6 block.
+
+**Detector design.** Regex over title + abstract — fast, conservative, not semantic. Word boundaries (`\b…\b`) for case-insensitive multi-word phrases; case-sensitive acronyms (`\bRCT\b`, `\bSVM\b`, `\bSEM\b`, `\bMCMC\b`, etc.) to suppress substring false positives. Multi-pattern OR per method (e.g. RCT matches `randomi[sz]ed controlled trial`, `RCTs?`, `double-blind`, `placebo-controlled`, `cluster-randomi[sz]ed`). A claim can carry multiple methods (Bayesian + mixed-effects + survival analysis is common in clinical receipts). Known limitation: SEM (structural equation modeling) overlaps with SEM (scanning electron microscopy) — accepting the false-positive rate for now since the explorer is for browsing, not adjudication.
+
+**Seed run.** `npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-stat-methods.ts --commit --limit 5000 --batch 500` — 5,000 claims scanned in ~3 min over Neon's WS adapter; 649 (~13%) tagged with ≥1 method. Top: neural-network (250), deep-learning (168), machine-learning (156), clustering (29), sem (25), random-forest (18), svm (18), meta-analysis (16), time-series (15), bayesian (15), rct (10), pca (9), regression (9). Heavy AI/ML skew is an artifact of cuid sort order — the first 5k by id happen to be the cognition / computer-science buckets of the OpenAlex ingest. Full enrichment over the ~212k OpenAlex catalog (~2h wall time at this rate) is left for a later run; the explorer already works against the seed.
+
+**Verification.** `npx tsc --noEmit` clean (ignoring stale `.next/types/validator.ts` errors which predate this branch). `npx next build` succeeds and lists both new routes as dynamic (`ƒ`). Dev-server smoke tests: `GET /statistics/explorer` → 200, header counts render against live DB; `GET /statistics/explorer/neural-network` → 200, claim list renders with 250 results; `GET /statistics/explorer/neural-network?offset=25` → 200, "showing 26–50" header. Verified DB post-run: `SELECT COUNT(*) FROM "Claim" WHERE "ingestedBy" = 'openalex_v1' AND metadata ? 'statMethods'` → 5000; `… AND jsonb_array_length(metadata->'statMethods') > 0` → 649.
+
+**To run the full sweep later.** `npx dotenv-cli -e .env.local -- npx tsx scripts/enrich-stat-methods.ts --commit` — picks up where the seed left off (skips rows that already carry `statMethods` unless `--force` is passed). After adding new patterns to `lib/statMethods.ts`, re-run with `--force` to re-tag.
+
+**Open follow-ups.**
+- Add a GIN index on `((metadata->'statMethods'))` if per-method queries get slow at full catalog scale (~212k). The seed's `?` queries hit Postgres sequentially today but return in <1s.
+- Extend the detector beyond OpenAlex (e.g. ClinicalTrials.gov pipeline records — methodology fields are structured). Out of scope here.
+- Curated cross-references between method explorer entries and case-study claims belong in a separate hand-curated script per architectural rule #8.
+
+---
+
 ### 2026-06-05 — /history taxonomy page (24 families, 288 entries)
 
 **What.** New page at `/history` — a working taxonomy of history organized into 24 families across five sections (Ancient · Medieval · Early Modern · Modern & Contemporary · Historiography & Contested Questions), modeled on the existing `/law` and `/philosophy` taxonomies. Plain prose throughout (no KaTeX — history is narrative, not formula-driven).

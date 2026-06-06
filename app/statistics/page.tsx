@@ -2484,6 +2484,13 @@ export default function StatisticsPage() {
           </Link>{" "}
           — problem · mechanism · worked example · figure · pitfalls · related claims from the database.
         </p>
+        <p className="mt-2 text-sm text-gray-300 leading-relaxed">
+          Want the live data view? The{" "}
+          <Link href="/statistics/explorer" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">
+            claim explorer
+          </Link>{" "}
+          groups OpenAlex-sourced receipts by detected statistical method (live counts, per-method drill-down).
+        </p>
         <p className="mt-2 text-xs font-mono text-gray-600">
           {FAMILIES.length} families · {totalMethods} methods
           {query && (
@@ -2662,9 +2669,12 @@ export default function StatisticsPage() {
         <p className="text-xs text-gray-500 leading-relaxed">
           <span className="text-gray-400">Note:</span> the &ldquo;search&rdquo; link on each card runs
           a free-text search over claim and source text. A method appearing in a claim does not mean
-          the claim is <em>about</em> that method — only that the term is present. A claim-powered
-          method explorer that links statistical methods to the specific receipts that apply them is
-          on the roadmap.
+          the claim is <em>about</em> that method — only that the term is present. For the inverse view
+          (claims grouped <em>by</em> method, with live counts) see the{" "}
+          <Link href="/statistics/explorer" className="text-blue-300 underline underline-offset-2 hover:text-blue-200">
+            claim explorer
+          </Link>
+          .
         </p>
         <p className="text-xs font-mono text-gray-700">
           taxonomy curated 2026-06-02 · v2 expansion (13 new families, 257 methods total) added 2026-06-02 · cross-references
