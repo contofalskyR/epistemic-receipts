@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, useCallback, Suspense } from "react";
+import { useEffect, useState, useRef, useCallback, Suspense, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import BlackHoleCanvas from "@/app/components/BlackHoleCanvas";
@@ -184,6 +184,67 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
   );
 }
 
+// ─── Missing state ────────────────────────────────────────────────────────────
+
+function MissingState({ query }: { query: string }) {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [, startTransition] = useTransition();
+
+  function suggest() {
+    setStatus("sending");
+    startTransition(() => {
+      fetch("/api/search/miss", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      })
+        .then(r => setStatus(r.ok ? "sent" : "error"))
+        .catch(() => setStatus("error"));
+    });
+  }
+
+  return (
+    <div
+      className="rounded-xl border border-gray-800 bg-gray-900/60 backdrop-blur-sm px-6 py-8 text-center space-y-4"
+      style={{ animation: "result-in 0.35s ease forwards" }}
+    >
+      <div className="text-3xl">🔭</div>
+      <div className="space-y-1">
+        <p className="text-gray-200 font-medium">
+          Nothing found for &ldquo;{query}&rdquo;
+        </p>
+        <p className="text-sm text-gray-500 max-w-sm mx-auto">
+          This topic isn&apos;t in our database yet. Try a broader term, or let us know — we track what&apos;s missing and prioritize additions based on demand.
+        </p>
+      </div>
+
+      {status === "idle" && (
+        <button
+          onClick={suggest}
+          className="inline-flex items-center gap-2 text-sm px-4 py-2 rounded-lg border border-gray-700 bg-gray-800 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
+        >
+          Suggest this topic
+        </button>
+      )}
+      {status === "sending" && (
+        <p className="text-xs text-gray-500 font-mono">Sending…</p>
+      )}
+      {status === "sent" && (
+        <p className="text-sm text-green-400">
+          Got it — we&apos;ll look into adding &ldquo;{query}&rdquo;.
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-xs text-red-400">Couldn&apos;t send. Try again later.</p>
+      )}
+
+      <p className="text-xs text-gray-600 pt-1">
+        Or try one of the topic chips above to explore what we do have.
+      </p>
+    </div>
+  );
+}
+
 // ─── Results legend ───────────────────────────────────────────────────────────
 
 function ResultsLegend() {
@@ -363,9 +424,7 @@ function HomeContent() {
         )}
 
         {showResults && !error && data && !loading && !hasHits && (
-          <div className="rounded-lg border border-gray-800 bg-gray-900/60 backdrop-blur-sm px-4 py-6 text-sm text-gray-500 italic text-center">
-            No matches for &ldquo;{trimmed}&rdquo;. Try a broader term or one of the topic chips above.
-          </div>
+          <MissingState query={trimmed} />
         )}
 
         {!showResults && trimmed.length > 0 && (

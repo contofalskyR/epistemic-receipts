@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -109,6 +109,63 @@ function Highlighted({ text, query }: { text: string; query: string }) {
           : part
       )}
     </>
+  );
+}
+
+function MissingState({ query }: { query: string }) {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [, startTransition] = useTransition();
+
+  function suggest() {
+    setStatus("sending");
+    startTransition(() => {
+      fetch("/api/search/miss", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      })
+        .then(r => setStatus(r.ok ? "sent" : "error"))
+        .catch(() => setStatus("error"));
+    });
+  }
+
+  return (
+    <div className="rounded-xl border border-gray-800 bg-gray-900/50 px-6 py-10 text-center space-y-4"
+      style={{ animation: "result-in 0.35s ease forwards" }}>
+      <div className="text-4xl">🔭</div>
+      <div className="space-y-1.5">
+        <p className="text-gray-200 font-medium text-lg">
+          Nothing found for &ldquo;{query}&rdquo;
+        </p>
+        <p className="text-sm text-gray-500 max-w-md mx-auto leading-relaxed">
+          This topic isn&apos;t in our database yet. We track what people search for and prioritize additions based on demand — your search just counted.
+        </p>
+      </div>
+
+      {status === "idle" && (
+        <button
+          onClick={suggest}
+          className="inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-lg border border-gray-700 bg-gray-800 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
+        >
+          Suggest &ldquo;{query}&rdquo; as a topic
+        </button>
+      )}
+      {status === "sending" && (
+        <p className="text-xs text-gray-500 font-mono">Sending…</p>
+      )}
+      {status === "sent" && (
+        <p className="text-sm text-green-400">
+          Noted — we&apos;ll look into adding &ldquo;{query}&rdquo;.
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-xs text-red-400">Couldn&apos;t send. Try a different query or come back later.</p>
+      )}
+
+      <p className="text-xs text-gray-600 pt-2">
+        Try a broader term, or browse <a href="/fields" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">Fields</a> to explore what&apos;s already here.
+      </p>
+    </div>
   );
 }
 
@@ -369,11 +426,7 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
     (!showClaims || data.claims.length === 0) && (!showSources || data.sources.length === 0);
 
   if (nothing) {
-    return (
-      <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
-        No matches for <span className="text-gray-300">&ldquo;{data.query}&rdquo;</span>.
-      </div>
-    );
+    return <MissingState query={data.query} />;
   }
 
   return (
