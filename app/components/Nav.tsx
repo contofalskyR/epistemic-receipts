@@ -7,6 +7,7 @@ type NavItem = { href: string; label: string };
 const PRIMARY: NavItem[] = [
   { href: "/search", label: "Search" },
   { href: "/globe", label: "Globe" },
+  { href: "/fields", label: "Fields" },
   { href: "/legislation", label: "Legislation" },
   { href: "/stats", label: "Stats" },
   { href: "/feed", label: "Feed" },
@@ -17,7 +18,6 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
     label: "Explore",
     items: [
       { href: "/claims", label: "Claims" },
-      { href: "/fields", label: "Fields" },
       { href: "/topics", label: "Topics" },
       { href: "/timeline", label: "Timeline" },
       { href: "/historical-events", label: "Events" },
