@@ -12,6 +12,7 @@
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
+import { spawnSync } from 'node:child_process'
 import { PrismaClient } from '@prisma/client'
 import Anthropic from '@anthropic-ai/sdk'
 
@@ -201,7 +202,7 @@ type BookClaimRow = { id: string; claimText: string }
 async function processBookClaim(
   bookClaim: BookClaimRow,
   excludeIngestedBy: string,
-  counters: { processed: number; candidatesFound: number; matchesWritten: number; errors: number },
+  counters: { processed: number; candidatesFound: number; matchesWritten: number; matchesWithReason: number; errors: number },
 ): Promise<void> {
   try {
     const candidates = await findCandidates(bookClaim.claimText, excludeIngestedBy)
@@ -252,6 +253,7 @@ async function processBookClaim(
     }
 
     counters.matchesWritten += rowsToWrite.length
+    counters.matchesWithReason += rowsToWrite.filter((r) => !!r.reason && r.reason.length > 0).length
     counters.processed++
   } catch (err) {
     counters.errors++
@@ -312,7 +314,7 @@ async function main() {
     return
   }
 
-  const counters = { processed: 0, candidatesFound: 0, matchesWritten: 0, errors: 0 }
+  const counters = { processed: 0, candidatesFound: 0, matchesWritten: 0, matchesWithReason: 0, errors: 0 }
   const total = bookClaims.length
   writeProgress({ status: 'running', processed: 0, matched: 0, total, errors: 0, startedAt })
 
@@ -338,6 +340,9 @@ async function main() {
     `BookClaims processed: ${counters.processed} | candidates found: ${counters.candidatesFound} | ` +
       `matches ${DRY_RUN ? 'would be written' : 'written'}: ${counters.matchesWritten} | errors: ${counters.errors}`,
   )
+  console.log(
+    `Match complete: ${counters.matchesWritten} matches found, ${counters.matchesWithReason} with reasons`,
+  )
 
   writeProgress({
     status: 'done',
@@ -348,6 +353,29 @@ async function main() {
     startedAt,
     finishedAt: Date.now(),
   })
+
+  if (process.env.TELEGRAM_NOTIFY && !DRY_RUN) {
+    const message =
+      `📚 Match complete for ${book.title}\n` +
+      `${counters.matchesWritten} matches found, ${counters.matchesWithReason} with reasons` +
+      (counters.errors > 0 ? ` (errors: ${counters.errors})` : '')
+    const result = spawnSync(
+      'openclaw',
+      [
+        'message',
+        'send',
+        '--channel', 'telegram',
+        '--target', '7688025079',
+        '--message', message,
+      ],
+      { stdio: 'inherit' },
+    )
+    if (result.status !== 0) {
+      console.error(
+        `openclaw notify failed (status ${result.status}${result.error ? `, ${result.error.message}` : ''})`,
+      )
+    }
+  }
 
   await prisma.$disconnect()
 }

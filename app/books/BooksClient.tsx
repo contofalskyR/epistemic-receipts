@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export type SerializedBook = {
   id: string;
@@ -12,28 +12,6 @@ export type SerializedBook = {
   chunkCount: number;
   claimCount: number;
   matchCount: number;
-};
-
-// ── Match job ──────────────────────────────────────────────────────────────────
-
-type MatchJobState = {
-  status: "idle" | "running" | "done" | "error";
-  processed: number;
-  matched: number;
-  total: number;
-  errors: number;
-  startedAt?: number;
-  finishedAt?: number;
-  errorMessage?: string;
-  dbMatchCount?: number;
-};
-
-const MATCH_IDLE: MatchJobState = {
-  status: "idle",
-  processed: 0,
-  matched: 0,
-  total: 0,
-  errors: 0,
 };
 
 // ── Ingest job ─────────────────────────────────────────────────────────────────
@@ -57,19 +35,6 @@ const INGEST_IDLE: IngestJobState = {
 
 // ── Shared helpers ─────────────────────────────────────────────────────────────
 
-function statusBadge(status: string): string {
-  switch (status) {
-    case "running":
-      return "bg-blue-950 text-blue-300 border border-blue-800";
-    case "done":
-      return "bg-green-950 text-green-300 border border-green-800";
-    case "error":
-      return "bg-red-950 text-red-300 border border-red-800";
-    default:
-      return "bg-neutral-800 text-neutral-400 border border-neutral-700";
-  }
-}
-
 function pct(processed: number, total: number): number {
   if (!total) return 0;
   return Math.min(100, Math.round((processed / total) * 100));
@@ -77,79 +42,48 @@ function pct(processed: number, total: number): number {
 
 // ── BookRow ────────────────────────────────────────────────────────────────────
 
-function BookRow({
-  book,
-  onMatchedCountChange,
-}: {
-  book: SerializedBook;
-  onMatchedCountChange: (id: string, n: number) => void;
-}) {
-  const [matchState, setMatchState] = useState<MatchJobState>(MATCH_IDLE);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+type RequestState =
+  | { kind: "idle" }
+  | { kind: "sending" }
+  | { kind: "sent"; matchCount: number; pendingReasons: number }
+  | { kind: "error"; message: string };
 
-  const stopPolling = useCallback(() => {
-    if (pollRef.current) {
-      clearInterval(pollRef.current);
-      pollRef.current = null;
-    }
-  }, []);
+function BookRow({ book }: { book: SerializedBook }) {
+  const [reqState, setReqState] = useState<RequestState>({ kind: "idle" });
 
-  const fetchStatus = useCallback(async () => {
+  async function requestAnalysis() {
+    setReqState({ kind: "sending" });
     try {
-      const r = await fetch(`/api/books/${book.id}/match/status`, {
-        cache: "no-store",
+      const r = await fetch(`/api/books/${book.id}/request-analysis`, {
+        method: "POST",
       });
-      if (!r.ok) return;
-      const data = (await r.json()) as MatchJobState;
-      setMatchState(data);
-      if (typeof data.dbMatchCount === "number") {
-        onMatchedCountChange(book.id, data.dbMatchCount);
-      }
-      if (data.status === "done" || data.status === "error") {
-        stopPolling();
-      }
-    } catch {
-      // ignore transient fetch errors
-    }
-  }, [book.id, onMatchedCountChange, stopPolling]);
-
-  useEffect(() => {
-    fetchStatus();
-  }, [fetchStatus]);
-
-  useEffect(() => {
-    if (matchState.status === "running" && !pollRef.current) {
-      pollRef.current = setInterval(() => {
-        fetchStatus();
-      }, 2000);
-    }
-    if (matchState.status !== "running" && pollRef.current) {
-      stopPolling();
-    }
-  }, [matchState.status, fetchStatus, stopPolling]);
-
-  useEffect(() => stopPolling, [stopPolling]);
-
-  async function triggerMatch() {
-    setBusy(true);
-    setError(null);
-    try {
-      const r = await fetch(`/api/books/${book.id}/match`, { method: "POST" });
       const data = await r.json().catch(() => ({}));
       if (!r.ok) {
-        setError(data?.error ?? `HTTP ${r.status}`);
-        if (data?.state) setMatchState(data.state as MatchJobState);
-      } else if (data?.state) {
-        setMatchState(data.state as MatchJobState);
+        setReqState({
+          kind: "error",
+          message: data?.error ?? `HTTP ${r.status}`,
+        });
+        return;
       }
+      setReqState({
+        kind: "sent",
+        matchCount: data.matchCount ?? 0,
+        pendingReasons: data.pendingReasons ?? 0,
+      });
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Request failed");
-    } finally {
-      setBusy(false);
+      setReqState({
+        kind: "error",
+        message: e instanceof Error ? e.message : "Request failed",
+      });
     }
   }
+
+  const buttonLabel =
+    reqState.kind === "sending"
+      ? "Pinging RobClaw…"
+      : reqState.kind === "sent"
+        ? "Requested"
+        : "Request Analysis";
 
   return (
     <li className="bg-neutral-900 border border-neutral-800 rounded-lg p-4">
@@ -177,52 +111,29 @@ function BookRow({
         </div>
         <div className="flex flex-col items-end gap-2 flex-shrink-0">
           <button
-            onClick={triggerMatch}
-            disabled={busy || matchState.status === "running"}
+            onClick={requestAnalysis}
+            disabled={
+              reqState.kind === "sending" || reqState.kind === "sent"
+            }
             className="text-xs px-3 py-1.5 rounded border border-blue-800 bg-blue-950 text-blue-200 hover:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {matchState.status === "running"
-              ? "Matching…"
-              : busy
-                ? "Starting…"
-                : "Match against DB"}
+            {buttonLabel}
           </button>
-          <span
-            className={`text-[10px] uppercase tracking-wide px-2 py-0.5 rounded ${statusBadge(matchState.status)}`}
-          >
-            {matchState.status}
-          </span>
         </div>
       </div>
 
-      {(matchState.status === "running" || matchState.status === "done") &&
-        matchState.total > 0 && (
-          <div className="mt-3">
-            <div className="h-1.5 w-full bg-neutral-800 rounded overflow-hidden">
-              <div
-                className="h-full bg-blue-500 transition-all"
-                style={{ width: `${pct(matchState.processed, matchState.total)}%` }}
-              />
-            </div>
-            <p className="text-[11px] text-neutral-500 mt-1 tabular-nums">
-              processed {matchState.processed} / {matchState.total} · matched{" "}
-              {matchState.matched}
-              {matchState.errors > 0 && (
-                <span className="text-red-400">
-                  {" "}
-                  · errors {matchState.errors}
-                </span>
-              )}
-            </p>
-          </div>
-        )}
-
-      {matchState.status === "error" && (
-        <p className="mt-2 text-xs text-red-400">
-          Match job failed: {matchState.errorMessage ?? "(no message)"}
+      {reqState.kind === "sent" && (
+        <p className="mt-3 text-xs text-green-400">
+          Analysis requested — RobClaw will review shortly.{" "}
+          <span className="text-neutral-500">
+            ({reqState.matchCount} matches, {reqState.pendingReasons} need
+            reasons)
+          </span>
         </p>
       )}
-      {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
+      {reqState.kind === "error" && (
+        <p className="mt-3 text-xs text-red-400">{reqState.message}</p>
+      )}
     </li>
   );
 }
@@ -233,8 +144,8 @@ type UploadPhase =
   | { kind: "idle" }
   | { kind: "uploading" }
   | { kind: "ingesting"; bookId: string; ingestState: IngestJobState }
-  | { kind: "matching"; bookId: string; matchState: MatchJobState }
-  | { kind: "done"; bookId: string }
+  | { kind: "requesting"; bookId: string }
+  | { kind: "done"; bookId: string; matchCount: number; pendingReasons: number }
   | { kind: "error"; message: string };
 
 function UploadForm({ onNewBook }: { onNewBook: (book: SerializedBook) => void }) {
@@ -264,8 +175,7 @@ function UploadForm({ onNewBook }: { onNewBook: (book: SerializedBook) => void }
       );
       if (data.status === "done") {
         stopPolling();
-        // auto-trigger match job
-        await triggerMatch(bookId, passphrase);
+        await requestAnalysisAndFinish(bookId);
       } else if (data.status === "error") {
         stopPolling();
         setPhase({ kind: "error", message: data.errorMessage ?? "Ingest failed" });
@@ -275,43 +185,45 @@ function UploadForm({ onNewBook }: { onNewBook: (book: SerializedBook) => void }
     }
   }
 
-  async function pollMatchStatus(bookId: string) {
+  async function requestAnalysisAndFinish(bookId: string) {
+    setPhase({ kind: "requesting", bookId });
+    let matchCount = 0;
+    let pendingReasons = 0;
     try {
-      const r = await fetch(`/api/books/${bookId}/match/status`, {
-        cache: "no-store",
+      const r = await fetch(`/api/books/${bookId}/request-analysis`, {
+        method: "POST",
       });
-      if (!r.ok) return;
-      const data = (await r.json()) as MatchJobState;
-      setPhase((prev) =>
-        prev.kind === "matching" ? { kind: "matching", bookId, matchState: data } : prev,
-      );
-      if (data.status === "done") {
-        stopPolling();
-        setPhase({ kind: "done", bookId });
-        // fetch the new book and add it to the list
-        const bookRes = await fetch(`/api/books`, { cache: "no-store" });
-        if (bookRes.ok) {
-          const { books } = (await bookRes.json()) as { books: SerializedBook[] };
-          const newBook = books.find((b) => b.id === bookId);
-          if (newBook) onNewBook({ ...newBook, ingestedAt: new Date(newBook.ingestedAt).toISOString() });
-        }
-      } else if (data.status === "error") {
-        stopPolling();
-        setPhase({ kind: "error", message: data.errorMessage ?? "Match failed" });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        setPhase({
+          kind: "error",
+          message: data?.error ?? `Analysis request failed (${r.status})`,
+        });
+        return;
       }
-    } catch {
-      // ignore transient errors
+      matchCount = data?.matchCount ?? 0;
+      pendingReasons = data?.pendingReasons ?? 0;
+    } catch (e) {
+      setPhase({
+        kind: "error",
+        message: e instanceof Error ? e.message : "Analysis request failed",
+      });
+      return;
     }
-  }
 
-  async function triggerMatch(bookId: string, pass: string) {
-    setPhase({ kind: "matching", bookId, matchState: { ...INGEST_IDLE, status: "running" } as unknown as MatchJobState });
-    try {
-      await fetch(`/api/books/${bookId}/match`, { method: "POST" });
-    } catch {
-      // best-effort; status poll will catch failures
+    setPhase({ kind: "done", bookId, matchCount, pendingReasons });
+
+    const bookRes = await fetch(`/api/books`, { cache: "no-store" });
+    if (bookRes.ok) {
+      const { books } = (await bookRes.json()) as { books: SerializedBook[] };
+      const newBook = books.find((b) => b.id === bookId);
+      if (newBook) {
+        onNewBook({
+          ...newBook,
+          ingestedAt: new Date(newBook.ingestedAt).toISOString(),
+        });
+      }
     }
-    pollRef.current = setInterval(() => pollMatchStatus(bookId), 2000);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -355,7 +267,10 @@ function UploadForm({ onNewBook }: { onNewBook: (book: SerializedBook) => void }
     pollRef.current = setInterval(() => pollIngestStatus(bookId), 2000);
   }
 
-  const isSubmitting = phase.kind === "uploading" || phase.kind === "ingesting" || phase.kind === "matching";
+  const isSubmitting =
+    phase.kind === "uploading" ||
+    phase.kind === "ingesting" ||
+    phase.kind === "requesting";
 
   return (
     <section className="mt-10 rounded-md border border-neutral-800 bg-neutral-900/40 p-4">
@@ -424,8 +339,8 @@ function UploadForm({ onNewBook }: { onNewBook: (book: SerializedBook) => void }
             ? "Uploading…"
             : phase.kind === "ingesting"
               ? "Extracting claims…"
-              : phase.kind === "matching"
-                ? "Matching against DB…"
+              : phase.kind === "requesting"
+                ? "Pinging RobClaw…"
                 : "Upload & Ingest"}
         </button>
       </form>
@@ -441,19 +356,17 @@ function UploadForm({ onNewBook }: { onNewBook: (book: SerializedBook) => void }
         />
       )}
 
-      {phase.kind === "matching" && (
-        <ProgressBar
-          label="Matching against DB"
-          processed={phase.matchState.processed}
-          total={phase.matchState.total}
-          sub={`${phase.matchState.matched ?? 0} matches found`}
-          color="bg-blue-500"
-        />
+      {phase.kind === "requesting" && (
+        <p className="mt-3 text-xs text-neutral-400">
+          Requesting analysis from RobClaw…
+        </p>
       )}
 
       {phase.kind === "done" && (
         <p className="mt-3 text-xs text-green-400">
-          Book uploaded, claims extracted, and matched against the knowledge graph. It appears in the list above.
+          Book uploaded and claims extracted. Analysis requested — RobClaw
+          will review {phase.matchCount} matches ({phase.pendingReasons} need
+          reasons).
         </p>
       )}
 
@@ -498,26 +411,13 @@ function ProgressBar({
 
 export default function BooksClient({ books: initialBooks }: { books: SerializedBook[] }) {
   const [books, setBooks] = useState<SerializedBook[]>(initialBooks);
-  const [matchCounts, setMatchCounts] = useState<Record<string, number>>(
-    Object.fromEntries(initialBooks.map((b) => [b.id, b.matchCount])),
-  );
-
-  const updateMatchCount = useCallback((id: string, n: number) => {
-    setMatchCounts((prev) => (prev[id] === n ? prev : { ...prev, [id]: n }));
-  }, []);
 
   function handleNewBook(book: SerializedBook) {
     setBooks((prev) => {
       if (prev.some((b) => b.id === book.id)) return prev;
       return [book, ...prev];
     });
-    setMatchCounts((prev) => ({ ...prev, [book.id]: book.matchCount }));
   }
-
-  const enriched = books.map((b) => ({
-    ...b,
-    matchCount: matchCounts[b.id] ?? b.matchCount,
-  }));
 
   return (
     <>
@@ -525,8 +425,8 @@ export default function BooksClient({ books: initialBooks }: { books: Serialized
         <p className="text-neutral-500 text-sm">No books ingested yet.</p>
       ) : (
         <ul className="space-y-3">
-          {enriched.map((b) => (
-            <BookRow key={b.id} book={b} onMatchedCountChange={updateMatchCount} />
+          {books.map((b) => (
+            <BookRow key={b.id} book={b} />
           ))}
         </ul>
       )}

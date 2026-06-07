@@ -291,6 +291,26 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Books "Request Analysis" flow: Telegram-routed match enrichment
+
+**What.** Replaced the broken `/books` "Match against DB" path (which `spawn`-ed `npx ts-node` — does not run on Vercel serverless) with a Telegram ping to the owner's RobClaw assistant. The match itself still runs locally; the cloud surface just signals when there's work to do and accepts the results back.
+
+**Endpoints.**
+- `POST /api/books/[bookId]/request-analysis` — `isReadOnly()` guard, looks up the book, counts `BookClaimMatch` rows for that book and how many have null/empty `reason`, then `fetch`es `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage` to chat `7688025079`. The message contains book title/author, book ID, current match count, pending-reason count, and the exact PATCH curl shape for pushing reasons back. Returns `{status:"requested", matchCount, pendingReasons}`. 500 if `TELEGRAM_BOT_TOKEN` is missing, 502 on Telegram failure.
+- `PATCH /api/books/[bookId]/matches/reasons` — `isReadOnly()` guard, accepts `{reasons:[{matchId,reason}]}`. Security: filters incoming `matchId`s to those whose `BookClaim.chunk.bookId === bookId` (join through BookClaim→BookChunk→Book) before any write, so a hostile client cannot rewrite reasons on arbitrary other books' matches. Updates happen inside `prisma.$transaction(async tx ⇒ …, { timeout: 30000 })`. Returns `{updated: N}`.
+
+**Why callback form for the transaction.** Prisma's array-batch `$transaction` overload doesn't accept `{ timeout }`. Per AGENTS.md rule #5 (transactions ≥1k rows need 30s timeout), used the interactive `async (tx) ⇒` form and threaded the timeout option through.
+
+**UI rewire (`app/books/BooksClient.tsx`).** Per-row "Match against DB" button → "Request Analysis" button posting to the new endpoint. Old `/match/status` polling, the per-row match progress bar, and the `MatchJobState` plumbing are gone. Newly-uploaded books no longer auto-trigger the local match — after ingest finishes, the upload form now calls `/request-analysis` itself, so a fresh upload still results in a Telegram ping. Success copy: "Analysis requested — RobClaw will review shortly (N matches, M need reasons)."
+
+**Match-script side (`scripts/match-book-to-graph.ts`).** At the end of `main()`, if `process.env.TELEGRAM_NOTIFY` is truthy and `--dry-run` is not set, `spawnSync('openclaw', [...args, '--message', `📚 Match complete for ${title}\n${N} matches found, ${M} with reasons`])` fires a Telegram notification via the local `openclaw` CLI. Best-effort — non-zero status / spawn error is logged, not thrown. Used `spawnSync` with an arg array (not `execSync` with a shell string) so book titles can't shell-inject. Also added a `matchesWithReason` counter that increments per row whose Haiku judgment yielded a non-empty `reason` string.
+
+**Why this architecture.** Owner does not want an Anthropic API key in Vercel production (current match script calls Claude Haiku to generate reasons). Routing the work request through a personal AI assistant via Telegram keeps the API-key surface on the owner's machine. The PATCH endpoint is the inverse channel: once the local run finishes (or RobClaw drafts reasons), results flow back into production via the existing site-password gate + `isReadOnly()`.
+
+**Legacy routes still on disk.** `/api/books/[bookId]/match/route.ts` and `/match/status/route.ts` plus `lib/bookMatchJob.ts` are untouched — they no longer have a caller in the UI, but they still work for local-dev convenience (where `ALLOW_EDITS=true` and `npx ts-node` is available). Safe to delete in a follow-up if confirmed unused.
+
+**Files changed:** `app/api/books/[bookId]/request-analysis/route.ts` (new), `app/api/books/[bookId]/matches/reasons/route.ts` (new), `app/books/BooksClient.tsx`, `scripts/match-book-to-graph.ts`, `CONSULTANT.md`.
+
 ### 2026-06-07 — Homepage redesign: search-first discovery experience
 
 **What.** Replaced the data-dashboard homepage (`app/page.tsx`, 796 lines) with a search-first hero (~280 lines, ~65% shorter).
