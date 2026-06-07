@@ -141,6 +141,30 @@ const BUCKETS: Record<string, BucketConfig> = {
     conceptIds: ['C1276874', 'C153294291', 'C126255220'], // Physiology, Endocrinology, Cardiology
     extraTopicSlugs: ['physiology'],
   },
+  chemistry: {
+    conceptIds: ['C185592680', 'C178790620'], // Chemistry, Organic chemistry
+    extraTopicSlugs: ['chemistry'],
+  },
+  'computer-science': {
+    conceptIds: ['C41008148', 'C154945302'], // Computer science, Machine learning
+    extraTopicSlugs: ['computer-science'],
+  },
+  linguistics: {
+    conceptIds: ['C204321447', 'C2779134260'], // Linguistics, Natural language processing
+    extraTopicSlugs: ['linguistics'],
+  },
+  sociology: {
+    conceptIds: ['C144024400', 'C17744445'], // Sociology, Political science (overlaps intentional)
+    extraTopicSlugs: ['sociology'],
+  },
+  law: {
+    conceptIds: ['C295410457'], // Law
+    extraTopicSlugs: ['law'],
+  },
+  'earth-science': {
+    conceptIds: ['C143998085', 'C39432304'], // Geology, Environmental science
+    extraTopicSlugs: ['earth-science'],
+  },
 }
 
 const SELECT_FIELDS = [
@@ -283,6 +307,24 @@ async function ensureCoreTopics(bucket: string): Promise<string[]> {
     ],
     physiology: [
       { slug: 'physiology', name: 'Physiology', domain: 'academic-literature' },
+    ],
+    chemistry: [
+      { slug: 'chemistry', name: 'Chemistry', domain: 'academic-literature' },
+    ],
+    'computer-science': [
+      { slug: 'computer-science', name: 'Computer Science', domain: 'academic-literature' },
+    ],
+    linguistics: [
+      { slug: 'linguistics', name: 'Linguistics', domain: 'academic-literature' },
+    ],
+    sociology: [
+      { slug: 'sociology', name: 'Sociology', domain: 'academic-literature' },
+    ],
+    law: [
+      { slug: 'law', name: 'Law', domain: 'academic-literature' },
+    ],
+    'earth-science': [
+      { slug: 'earth-science', name: 'Earth Science', domain: 'academic-literature' },
     ],
   }
   const ids = [root]
