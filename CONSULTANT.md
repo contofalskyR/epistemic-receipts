@@ -291,6 +291,29 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — V-Dem enrichment linkers (OFAC / UCDP / SIPRI)
+
+**What.** Three new V-Dem cross-pipeline linkers wiring the freshly-ingested `vdem_v1` claims into the sanctions / conflict / military-spending substrates so case studies can pull the surrounding democracy trajectory for free.
+
+1. `scripts/link-vdem-ofac.ts` (`SANCTION_CONTEXT`). From `ofac_sdn_v1` → `vdem_v1`. Sanction year T derived from `metadata.programs` via the inline `PROGRAM_YEAR` map (same one used by `enrich-sanctions-economic-trajectory.ts`). Window: V-Dem year ∈ [T-2, T+5]. Both sides carry alpha-3 codes (OFAC `metadata.alpha3`, V-Dem `metadata.countryCode`), so no name normalization needed. **Result: 48,639 inserted, 11 countries covered** (BLR, CAF, CUB, IRN, IRQ, MMR, NIC, PRK, RUS, SOM, VEN). DB-verified total `SANCTION_CONTEXT` = 48,749.
+
+2. `scripts/link-vdem-ucdp.ts` (`CONFLICT_CONTEXT`). From `ucdp_v1` → `vdem_v1` on (country, year ±1). UCDP stores alpha-2 (`metadata.country`), V-Dem stores alpha-3; an inline `ALPHA3_TO_ALPHA2` table (covers ~190 ISO countries) translates V-Dem before the join. **Result: 10,270 inserted, 112 countries covered.** UCDP claims with no V-Dem match: 4 (interstate conflicts where the picked ISO has no V-Dem row for that year). V-Dem alpha-3 codes that have no alpha-2 counterpart (and so don't link): HKG, ZZB (Zanzibar), SML (Somaliland), YMD (Yemen Democratic), VDR (Vietnam DRV), DDR, PSG/PSB (Palestine Gaza/Bank), XKX. Total `CONFLICT_CONTEXT` in DB after run: 10,270 (new relation type — was 0).
+
+3. `scripts/link-vdem-sipri.ts` (`MILITARY_CONTEXT`). From `sipri_milex_v1` → `vdem_v1` on exact-year ISO match. SIPRI stores country name; reuses the same `SIPRI_NAME_ALIASES` table from `link-ucdp-sipri.ts` plus an inline `ALPHA2_TO_ALPHA3` map (~190 entries). **Result: 8,345 inserted, 161 countries covered.** Only unmapped SIPRI name: "European Union" (4 rows — not a country). DB-verified total `MILITARY_CONTEXT` after run: 32,695 (was 24,350 from prior `link-ucdp-sipri.ts` run).
+
+**Pattern conventions followed.** All three: `--dry-run` flag (default to dry-run when ALLOW_EDITS is unset), `ALLOW_EDITS=true` gate for writes, `prisma.$transaction(fn, { timeout: 30000 })` per batch, batch size 200, `createMany({ skipDuplicates: true })` so reruns are idempotent against the `@@unique([fromClaimId, toClaimId, relationType])` constraint, `followUpContext` carrying alpha codes / windows / pipeline names, end-of-run summary printing both inserted-count and the post-run total in DB.
+
+**Verification (per Rule 6).** Post-live-run count query confirms `ClaimRelation` rows from `vdem_v1` join: `SANCTION_CONTEXT=48,639, CONFLICT_CONTEXT=10,270, MILITARY_CONTEXT=8,345` — matches the ingester counters exactly. `npx tsc --noEmit -p tsconfig.scripts.json` clean for the three new files.
+
+**Files added.**
+- `scripts/link-vdem-ofac.ts`
+- `scripts/link-vdem-ucdp.ts`
+- `scripts/link-vdem-sipri.ts`
+
+**Telegram.** Completion notification sent to chat_id 7688025079.
+
+---
+
 ### 2026-06-07 — V-Dem v16 democracy-indicators pipeline + Polity linker
 
 **What.** New ingester `scripts/ingest-vdem.ts` (`vdem_v1` pipeline tag) consuming the V-Dem (Varieties of Democracy) Country-Year Core v16 dataset. One Claim per (country, year) covering 1900–present, carrying all five high-level democracy indices in `Claim.metadata`: polyarchy (electoral), libdem (liberal), partipdem (participatory), egaldem (egalitarian), delibdem (deliberative). One global Source (`V-Dem Country-Year Core v16`) backs all Edges (FOR / EVIDENTIARY, score 85). Topics: `vdem` parented to root, `democracy-indicators` parented to `vdem`, both under the `government` domain. `humanReviewed: false` / `autoApproved: true` per Architectural Rule 3.
