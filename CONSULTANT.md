@@ -291,6 +291,29 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — V-Dem v16 democracy-indicators pipeline + Polity linker
+
+**What.** New ingester `scripts/ingest-vdem.ts` (`vdem_v1` pipeline tag) consuming the V-Dem (Varieties of Democracy) Country-Year Core v16 dataset. One Claim per (country, year) covering 1900–present, carrying all five high-level democracy indices in `Claim.metadata`: polyarchy (electoral), libdem (liberal), partipdem (participatory), egaldem (egalitarian), delibdem (deliberative). One global Source (`V-Dem Country-Year Core v16`) backs all Edges (FOR / EVIDENTIARY, score 85). Topics: `vdem` parented to root, `democracy-indicators` parented to `vdem`, both under the `government` domain. `humanReviewed: false` / `autoApproved: true` per Architectural Rule 3.
+
+**Direct download URL discovery.** V-Dem's official download page is a registration form, but the underlying CDN serves the same file directly without any auth: `https://v-dem.net/media/datasets/V-Dem-CY-Core-v16_csv.zip` (16 MB zip → 212 MB CSV, 28,092 rows × 1,908 columns). Probed by guessing common slug patterns; verified HEAD=200 and full download. Pinned this URL in the script with the v16 filename — version bumps will require updating the constant. Cache lives in `.cache/vdem/` (gitignored).
+
+**Filtering.** Year window [1900, 2026] keeps the dataset to a manageable ~20k rows (full V-Dem covers 1789–present, ~28k rows including pre-1900 data on early modern states). Rows where all five democracy indices are NULL are dropped. Result: 19,777 candidate claims across 183 countries (top countries get one row per year × 126 years).
+
+**Linker.** Same script appends a Polity-context linker after ingest (suppressible with `--no-link`). Uses the schema-native `PolityClaim` table (the prompt called for "RelationType: POLITICAL_CONTEXT" → `ClaimRelation`, but Polity records aren't Claims; `PolityClaim` is the correct bridge). Match rule: V-Dem `country_text_id` (alpha-3) == `Polity.countryCode` AND claim year ∈ [`Polity.startYear`, `Polity.endYear`] (null bounds = open-ended). matchMethod `auto_country_year_vdem` — distinct from `auto_country_date` used by `link-polity-votes-claims.ts`, so the two linkers don't shadow each other in audit logs. `PolityClaim` already has a `@@unique([polityId, claimId])` constraint, so re-runs are idempotent.
+
+**Results (verified against DB after run).**
+- Claims: 19,777 | Sources: 1 | Edges: 19,777 | EdgeRevisions: 19,777
+- PolityClaim (matchMethod=auto_country_year_vdem): 18,965
+- 812 claims had no overlapping Polity (mostly historical entities whose V-Dem code isn't in the 205-polity countryCode index — e.g., "Republic of Vietnam", "Saxony", "Württemberg")
+- Run time: 77 min ingest + ~30s linker
+
+**Files added.**
+- `scripts/ingest-vdem.ts` — full pipeline + linker. Flags: `--dry-run`, `--full`, `--csv <path>`, `--year-min`, `--year-max`, `--limit`, `--no-link`, `--verbose`.
+
+**Verification.** `npx tsc --noEmit -p tsconfig.scripts.json` clean for the new file. Dry-run sample at `.cache/vdem/vdem-dry-run-sample.json`. Post-run DB count queries match the ingester counter exactly (per Rule 6).
+
+**Telegram.** Sent completion notification to `telegram:7688025079` via `openclaw message send` after run.
+
 ### 2026-06-07 — US-only party×economic analysis + new panel on /analysis/votes
 
 **What.** Added a US-only variant of the party×economic-response analysis and a new "Party Response to Economic Conditions" panel on `/analysis/votes` showing both global and US views.
