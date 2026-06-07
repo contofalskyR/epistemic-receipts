@@ -596,7 +596,7 @@ function HomeContent() {
           <div>
             <p className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">June 7, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Physiology taxonomy added — 18 biological families covering cardiovascular, renal, neurological, immune, endocrine, and reproductive systems.
+              Three new Wikidata SPARQL ingesters: <span className="font-mono">wikidata_nobel_v1</span> (1,023 laureates across all six Nobel categories, with affiliation and field-of-work), <span className="font-mono">wikidata_elements_v1</span> (all 118 IUPAC-recognized chemical elements with discovery year and discoverer), <span className="font-mono">wikidata_space_missions_v1</span> (500 crewed and robotic missions with operator, destination, and launch date). Grouped nav with dropdowns and mobile hamburger. Physiology taxonomy: 18 biological families covering cardiovascular, renal, neurological, immune, endocrine, and reproductive systems.
             </p>
           </div>
 

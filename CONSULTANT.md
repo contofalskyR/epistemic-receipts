@@ -291,6 +291,27 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Wikidata SPARQL ingesters: Nobel laureates, chemical elements, space missions
+
+**What.** Three new Wikidata SPARQL ingesters modeled on `scripts/ingest-chips-wikidata.ts` (same SPARQL fetch / 2 req/sec / exponential backoff on 429/502/503 / `$transaction({ timeout: 30000 })` / QID-Set deduplication).
+
+1. **`scripts/ingest-nobel-laureates.ts`** (`wikidata_nobel_v1`). One Claim per (laureate, prize, year) — so dual laureates like Marie Curie, Linus Pauling, John Bardeen, Frederick Sanger get one Claim per prize. Pulls all six Nobel categories (Physics Q38104, Chemistry Q44585, Medicine Q80061, Literature Q37922, Peace Q35637, Economic Sciences Q47170) via `p:P166/ps:P166` plus `pq:P585` for award year, with `wdt:P108` affiliation, `wdt:P101` field of work, `wdt:P27` country of citizenship. Claim text: `"{Name}: Nobel Prize in {category} ({year}). {Wikidata description}. Context: {field}; affiliated with {affiliation}; {country}."`. Topics: `nobel-prizes` → `academic-literature`. Edge score 80, reason `wikidata-nobel`. Flags: `--limit N`, `--dry-run`, `--category physics|chemistry|medicine|literature|peace|economics|all`. **Result: 1,023 claims / 1,023 sources / 1,023 edges (full run, all categories).** Distinct from existing `nobel_v1` (Nobel Foundation API, 1,026 claims) — Wikidata adds affiliation, field-of-work, and citizenship metadata the Foundation API lacks.
+
+2. **`scripts/ingest-chemical-elements.ts`** (`wikidata_elements_v1`). One Claim per element. SPARQL filters `wdt:P31 wd:Q11344` (chemical element) AND `wdt:P1086 atomicNumber BETWEEN 1 AND 118` — Wikidata models predicted superheavies (Z ≥ 119) as instance-of Q11344 and we exclude them since IUPAC currently recognizes 118. Pulls `wdt:P246` symbol, `wdt:P1086` atomic number, `wdt:P2067` atomic mass, `wdt:P279` category, `wdt:P575` discovery date, `wdt:P61` discoverer. Claim text: `"{name} ({symbol}): atomic number Z, atomic mass M u. {Category}. Discovered YYYY by {discoverer}."`. Topics: `chemistry` → `academic-literature`. Edge score 90, reason `wikidata-element`. Flags: `--dry-run`. **Result: 118 claims / 118 sources / 118 edges.**
+
+3. **`scripts/ingest-space-missions-wikidata.ts`** (`wikidata_space_missions_v1`). Named with `-wikidata` suffix to avoid clobbering the existing GCAT-sourced `scripts/ingest-space-missions.ts` (tag `space_missions_v1`). One Claim per mission QID. SPARQL `VALUES ?class { Q2133344 Q5916 Q26540 Q752783 Q26529 Q14513900 Q1378150 Q3079846 Q628176 }` (space mission, crewed spaceflight, space probe, human spaceflight, space telescope, robotic space mission, Mars mission, lunar probe, space exploration mission) with direct `wdt:P31` rather than transitive subclass (the closure 502'd the Wikidata endpoint). Requires `wdt:P619` orbital launch date so cancelled/proposed items are excluded. Pulls `wdt:P137` operator, `wdt:P840` destination, `wdt:P17` country, plus schema description. Claim text: `"{Mission}: {operator} mission launched YYYY-MM-DD. Destination: {destination}; {country}. {Wikidata description}."`. Topics: `space-exploration` → `academic-literature`. Edge score 75, reason `wikidata-space-mission`. Flags: `--limit N`, `--dry-run`. Full Wikidata query returned 1,281 rows; capped at 500 per the task spec. **Result: 500 claims / 500 sources / 500 edges.**
+
+**Why.** All three buckets feed existing taxonomy pages — Nobel laureates surface on `/chemistry`, `/physics`, `/economics`, etc. via the `academic-literature` parent topic; elements surface on the `/chemistry` Live Research card; space missions complement the GCAT launch log with operator / destination / agency labels that GCAT lacks. Three more deep, structured reference-tier sources in one pass.
+
+**Files added.**
+- `scripts/ingest-nobel-laureates.ts`
+- `scripts/ingest-chemical-elements.ts`
+- `scripts/ingest-space-missions-wikidata.ts`
+
+**Verification.** Dry-runs verified for all three (Nobel `--limit 5 --category physics`; elements full 118; space missions `--limit 10`). Full runs verified against DB: `prisma.claim.count` returned 1,023 / 118 / 500 against their respective `ingestedBy` tags. `npx tsc --noEmit -p tsconfig.scripts.json` clean for the three new files (pre-existing errors in unrelated scripts unchanged). New topic rows created: `nobel-prizes`, `space-exploration` (both parented under `academic-literature`).
+
+**Footer note.** The "last updated" footer-date ritual was retired earlier today (see the nav/first-impressions entry below); this entry follows that convention and updates only the homepage changelog card, not the layout footer.
+
 ### 2026-06-07 — Nav + first-impressions cleanup (public launch prep)
 
 **What.** First-impressions pass before sharing the site publicly. Four shell-level changes; no page content touched.
