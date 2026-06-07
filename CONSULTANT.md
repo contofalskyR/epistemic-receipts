@@ -291,6 +291,51 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — IHME GBD ingester scaffolded (BLOCKED — no unauthenticated path)
+
+**What.** Created `scripts/ingest-gbd.ts` as a documenting stub. Pipeline tag would be `gbd_v1` — cause-specific mortality by country × year × cause from the IHME Global Burden of Disease.
+
+**Why blocked.** Probed every entry point the task brief listed and the obvious adjacent ones, all dead-ends as of 2026-06-07:
+
+- `api.healthdata.org` — DNS NXDOMAIN. The `/sdg/v1/indicator_list` and `/sdg/v1/data?...` endpoints in the task brief no longer exist (or never existed at that hostname). `dig +short api.healthdata.org` returns nothing; the host has no A or AAAA record.
+- `ghdx.healthdata.org/gbd-results` — HTTP 404.
+- `vizhub.healthdata.org/gbd-results/` — HTTP 200 but the SPA is gated behind Microsoft Azure B2C login (`login.healthdata.org/.../B2C_1A_SIGNUP_SIGNIN`). The frontend bundle (`build/621-…js`) routes every data fetch through MSAL — no unauthenticated path.
+- GHDx bulk-download record pages (e.g. `/record/ihme-data/gbd-2021-cause-specific-mortality-1990-2021`) — HTTP 200 but every file link points to `/download-access/login`.
+- OurWorldInData CSV mirrors (`/grapher/total-number-of-deaths-by-cause.csv`, `share-of-deaths-by-cause.csv`) — HTTP 403 with body `"This chart contains non-redistributable data … cannot be downloaded as a CSV."` IHME's licence prohibits OWID from re-sharing.
+
+**Action.** Per CONSULTANT.md rule #1 (API-only sourcing, no training-data recall) and AGENTS.md "Curated lists require verifiable sources," no Claims were ingested. The stub script exits 1 with the blocked reason listed inline.
+
+**Unblock path.** Register at `https://ghdx.healthdata.org/download-access/login` → get GBD Results Tool API key from profile → store as `GBD_API_KEY` in `.env.local` → rebuild the script following the `scripts/ingest-who-gho.ts` pattern (one Source per (cause, country, year) batch, HARD_FACT / EMPIRICAL / VERIFIED). Post-ingest: link to `who_gho_v1` claims via CORROBORATES MetaEdge keyed on (country, year, cause keyword).
+
+**Files added.**
+- `scripts/ingest-gbd.ts` — documenting stub (running it `exit 1`s with the BLOCKED reason).
+
+### 2026-06-07 — IUCN Red List ingester scaffolded (BLOCKED on API token)
+
+**What.** Built `scripts/ingest-iucn.ts` (pipeline tag `iucn_redlist_v1`) targeting threatened-only species (categories EX, EW, CR, EN, VU — ~45k records). LC/NT/DD intentionally excluded per editorial decision (per-record receipt value too low at LC scale).
+
+**Source.** IUCN Red List API v3 — `https://apiv3.iucnredlist.org/api/v3/species/page/{N}`. Pages return taxonomy (kingdom/phylum/class/order/family/genus), scientific + common name, conservation category, and population trend.
+
+**Status: BLOCKED.** No `IUCN_API_KEY` in `.env.local`. The script detects this and exits with a clear message and `process.exit(2)` *before* any network or DB writes (verified by running `npx tsx scripts/ingest-iucn.ts --dry-run --limit 5`). A free token is available via `https://apiv3.iucnredlist.org/api/v3/token` (returned by email). Telegram BLOCKED ping sent to chat 7688025079 (msg 10089). The bare endpoint also appears to be Cloudflare-fronted (HTTP 403 challenge on token-less probe), so the token is the gating issue regardless.
+
+**Schema mapping notes (worth recording).** The task brief asked for `title`/`body`/`publishedDate` on Claim, but the schema has `text` (combined) and `claimEmergedAt`. Followed the established convention: `text = "{scientific_name} ({common_name}): {categoryFull}. IUCN Red List category: {code} ({full}). Class: ... Order: ...".`. Assessment year is *not* present in the `/species/page` endpoint — would require a per-species detail fetch (`/api/v3/species/id/{id}`) and is left null in metadata on first run. Hydration pass can be added once we see actual rate-limit behaviour with a real token.
+
+**Claim/Source shape.** `claimType: 'INSTITUTIONAL'`, `currentStatus: 'HARD_FACT'`, `verificationStatus: 'VERIFIED'`, `methodologyType: 'primary'`, edge `evidenceType: 'EVIDENTIARY'` with `newScore: 95`. `externalId = iucn_{taxonid}`. Metadata carries the full taxonomy + category + population trend under a `dataset: 'iucn_redlist_v1'` namespace. Per-row writes wrapped in `prisma.$transaction(fn, { timeout: 30000 })` per AGENTS.md rule.
+
+**Files changed:** `scripts/ingest-iucn.ts` (new), `CONSULTANT.md`.
+
+### 2026-06-07 — Harvard Caselaw Access Project: ingester NOT built (dead API)
+
+**What.** Investigation only — no script written, no DB writes, no commit. Asked to build `scripts/ingest-harvard-caselaw.ts` against `https://api.case.law/v1/cases/?...&ordering=-citations_count&page_size=100`. That endpoint is **gone**.
+
+**Finding.** Every request to `api.case.law/v1/…` returns `HTTP 301` redirecting to `https://case.law/docs/`. The REST API has been sunset. The replacement is `https://static.case.law/` — an S3-style static bucket organized by **reporter abbreviation** (`us/`, `f3d/`, `cal/`, `ny/`, `ill/`, etc.) with top-level metadata JSONs (`ReportersMetadata.json`, `VolumesMetadata.json`, `JurisdictionsMetadata.json`). There is no server-side citation-count ordering, no jurisdiction filter, no `decision_date_min` query — those are server-API concepts that no longer exist. "Top 2,000 most-cited cases" is not a query the static bucket supports; it would require downloading reporter manifests and computing rank ourselves.
+
+**Why I stopped instead of falling back to model recall.** Per CONSULTANT.md rule #1 (API-only sourcing) and the Pipeline 5 / USPTO cautionary tale: when the spec'd live source doesn't exist, the answer is NOT to fabricate "top 2,000 cases" from training data. That's exactly the failure that retired `uspto_v1`.
+
+**Also worth noting.** (a) No `CASELAW_API_KEY` in `.env.local` regardless. (b) Substantial overlap with existing CourtListener pipelines (`courtlistener_scotus_v1`, `courtlistener_circuits_v1`, `ingest-courtlistener-state-supreme.ts`) — Harvard CAP may be background-tier, not reference-tier, by the test in CLAUDE.md.
+
+**Open paths (awaiting user direction):** (1) rebuild against `static.case.law` by reporter + year, dropping citation-count ranking; (2) skip the bulk ingest entirely and treat Harvard CAP as background-tier (link individual case.law URLs inside case studies); (3) extend the existing CourtListener state-supreme ingester instead, since CourtListener still has a live `citation_count` field.
+
 ### 2026-06-07 — Books "Request Analysis" flow: Telegram-routed match enrichment
 
 **What.** Replaced the broken `/books` "Match against DB" path (which `spawn`-ed `npx ts-node` — does not run on Vercel serverless) with a Telegram ping to the owner's RobClaw assistant. The match itself still runs locally; the cloud surface just signals when there's work to do and accepts the results back.
