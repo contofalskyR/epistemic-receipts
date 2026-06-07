@@ -188,11 +188,13 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
       const retryAfter = parseInt(res.headers.get('retry-after') ?? '60', 10)
       const wait = isNaN(retryAfter) ? 60000 : retryAfter * 1000
       const waitSec = Math.ceil(wait / 1000)
-      if (wait > MAX_429_WARN_MS) {
-        console.log(`  Rate limited (429) — long penalty ${waitSec}s (${(waitSec / 3600).toFixed(1)}h) — waiting it out...`)
-      } else {
-        console.log(`  Rate limited (429) — waiting ${waitSec}s before retry...`)
+      if (wait > 120_000) {
+        console.log(`  Rate limited (429) — penalty ${waitSec}s exceeds 120s cap — exiting cleanly.`)
+        console.log('RATE_LIMITED')
+        await prisma.$disconnect()
+        process.exit(0)
       }
+      console.log(`  Rate limited (429) — waiting ${waitSec}s before retry...`)
       await sleep(wait)
       continue
     }
