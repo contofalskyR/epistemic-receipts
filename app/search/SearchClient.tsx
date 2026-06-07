@@ -12,6 +12,8 @@ type ClaimHit = {
   ingestedBy: string;
   verificationStatus: string | null;
   createdAt: string;
+  sourceName: string | null;
+  topicLabel: string | null;
 };
 
 type SourceHit = {
@@ -67,6 +69,20 @@ const METHODOLOGY_LABELS: Record<string, string> = {
 function truncate(text: string, n = 240): string {
   if (text.length <= n) return text;
   return text.slice(0, n).trimEnd() + "…";
+}
+
+function Highlighted({ text, query }: { text: string; query: string }) {
+  if (!query || query.length < 2) return <>{text}</>;
+  const parts = text.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"));
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase()
+          ? <mark key={i} className="bg-yellow-400/20 text-yellow-200 rounded-sm px-0.5">{part}</mark>
+          : part
+      )}
+    </>
+  );
 }
 
 export default function SearchClient() {
@@ -325,7 +341,7 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
           </h2>
           <div className="space-y-2">
             {data.claims.map(c => (
-              <ClaimResult key={c.id} claim={c} />
+              <ClaimResult key={c.id} claim={c} query={data.query} />
             ))}
           </div>
         </section>
@@ -347,15 +363,20 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
   );
 }
 
-function ClaimResult({ claim }: { claim: ClaimHit }) {
+function ClaimResult({ claim, query }: { claim: ClaimHit; query: string }) {
   return (
     <Link
       href={`/claims/${claim.id}`}
       className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group"
     >
       <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">
-        {truncate(claim.text)}
+        <Highlighted text={truncate(claim.text)} query={query} />
       </p>
+      {claim.sourceName && (
+        <p className="text-xs text-gray-500 mt-1.5 truncate">
+          <span className="text-gray-600">Source:</span> {claim.sourceName}
+        </p>
+      )}
       <div className="flex items-center gap-2 mt-2 flex-wrap">
         <span
           className={`text-xs px-2 py-0.5 rounded-full font-medium ${
@@ -364,6 +385,11 @@ function ClaimResult({ claim }: { claim: ClaimHit }) {
         >
           {claim.currentStatus}
         </span>
+        {claim.topicLabel && (
+          <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
+            {claim.topicLabel}
+          </span>
+        )}
         <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
           {claim.claimType}
         </span>

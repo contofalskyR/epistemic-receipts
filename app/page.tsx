@@ -14,6 +14,8 @@ type ClaimHit = {
   ingestedBy: string;
   verificationStatus: string | null;
   createdAt: string;
+  sourceName: string | null;
+  topicLabel: string | null;
 };
 
 type SourceHit = {
@@ -83,21 +85,46 @@ function truncate(text: string, n = 200): string {
   return text.slice(0, n).trimEnd() + "…";
 }
 
+function Highlighted({ text, query }: { text: string; query: string }) {
+  if (!query || query.length < 2) return <>{text}</>;
+  const parts = text.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"));
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase()
+          ? <mark key={i} className="bg-yellow-400/20 text-yellow-200 rounded-sm px-0.5">{part}</mark>
+          : part
+      )}
+    </>
+  );
+}
+
 // ─── Inline result card ───────────────────────────────────────────────────────
 
-function ClaimResult({ claim }: { claim: ClaimHit }) {
+function ClaimResult({ claim, query }: { claim: ClaimHit; query: string }) {
+  const displayText = truncate(claim.text);
   return (
     <Link
       href={`/claims/${claim.id}`}
       className="block rounded-lg border border-gray-800 bg-gray-900/80 backdrop-blur-sm px-4 py-3 hover:border-gray-600 transition-colors group"
     >
       <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">
-        {truncate(claim.text)}
+        <Highlighted text={displayText} query={query} />
       </p>
+      {claim.sourceName && (
+        <p className="text-xs text-gray-500 mt-1.5 truncate">
+          <span className="text-gray-600">Source:</span> {claim.sourceName}
+        </p>
+      )}
       <div className="flex items-center gap-2 mt-2 flex-wrap">
         <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[claim.currentStatus] ?? STATUS_STYLE.DISPUTED}`}>
           {claim.currentStatus}
         </span>
+        {claim.topicLabel && (
+          <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
+            {claim.topicLabel}
+          </span>
+        )}
         <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
           {claim.claimType}
         </span>
@@ -106,9 +133,6 @@ function ClaimResult({ claim }: { claim: ClaimHit }) {
             {claim.verificationStatus}
           </span>
         )}
-        <span className="text-xs px-1.5 py-0.5 rounded font-mono bg-gray-800/60 text-gray-500">
-          {claim.ingestedBy}
-        </span>
       </div>
     </Link>
   );
@@ -260,7 +284,7 @@ function HomeContent() {
             <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">
               {data.counts.claims.toLocaleString()} {data.counts.claims === 1 ? "result" : "results"}
             </p>
-            {data.claims.map(c => <ClaimResult key={c.id} claim={c} />)}
+            {data.claims.map(c => <ClaimResult key={c.id} claim={c} query={trimmed} />)}
             {data.counts.claims > data.claims.length && (
               <Link
                 href={`/search?q=${encodeURIComponent(trimmed)}`}

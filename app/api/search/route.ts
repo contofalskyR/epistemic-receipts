@@ -16,6 +16,8 @@ type ClaimHit = {
   ingestedBy: string;
   verificationStatus: string | null;
   createdAt: string;
+  sourceName: string | null;
+  topicLabel: string | null;
 };
 
 type SourceHit = {
@@ -113,6 +115,16 @@ export async function GET(req: NextRequest) {
             ingestedBy: true,
             verificationStatus: true,
             createdAt: true,
+            edges: {
+              where: { deleted: false },
+              orderBy: { createdAt: "asc" as const },
+              take: 1,
+              select: { source: { select: { name: true } } },
+            },
+            topics: {
+              take: 1,
+              select: { topic: { select: { name: true } } },
+            },
           },
         })
       : Promise.resolve([] as Array<{
@@ -123,6 +135,8 @@ export async function GET(req: NextRequest) {
           ingestedBy: string;
           verificationStatus: string | null;
           createdAt: Date;
+          edges: { source: { name: string } }[];
+          topics: { topic: { name: string } }[];
         }>),
     wantSources && sourceWhere
       ? prisma.source.findMany({
@@ -162,6 +176,8 @@ export async function GET(req: NextRequest) {
     ingestedBy: c.ingestedBy,
     verificationStatus: c.verificationStatus,
     createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : c.createdAt,
+    sourceName: c.edges[0]?.source?.name ?? null,
+    topicLabel: c.topics[0]?.topic?.name ?? null,
   }));
 
   const sources: SourceHit[] = sourceRows.map(s => ({
