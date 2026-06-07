@@ -3225,3 +3225,34 @@ Correct properties (also differ from task brief):
 **To run more (GPU + full CPU set):**
 `npx dotenv-cli -e .env.local -- npx tsx --tsconfig tsconfig.scripts.json scripts/ingest-chips-wikidata.ts --type gpu --limit 145` (no --limit for all ~284 CPUs + ~145 GPUs).
 The SPARQL queries cap at LIMIT 2000 — rerun as-is to pick up any newly added Wikidata items (idempotent via externalId dedup).
+
+---
+
+### 2026-06-07 — UI/UX cleanup session + Request Analysis flow
+
+**UI changes shipped:**
+- `Fields` promoted from Explore dropdown to top-level nav (alongside Globe) — Fields ≠ taxonomy, unique enough to stand alone
+- `Feed` (What's New) demoted from top-level nav to More dropdown — it's secondary content
+- `topic/[slug]` timeline fix — bars used `height: X%` on flex children with no explicit height → bars were always 0px. Fixed: calculate px height directly from `CHART_H = 128` constant. Added y-axis labels (max, mid, 0).
+- Homepage redesigned: replaced 796-line claims browser with search-first discovery UX — "What would you like to learn about?" hero, real-time debounced search against `/api/search`, topic chips, minimal onboarding copy, BlackHoleCanvas kept.
+
+**Request Analysis flow (Books → Telegram → RobClaw):**
+- "Match against DB" button renamed "Request Analysis" on `/books` page
+- New route: `POST /api/books/[bookId]/request-analysis` — counts total matches + null-reason matches, sends Telegram Bot API message to chat 7688025079, returns status JSON
+- New route: `PATCH /api/books/[bookId]/matches/reasons` — accepts `{reasons:[{matchId, reason}]}`, validates ownership (BookClaim→BookChunk→Book), batch-updates in 30s transaction
+- Old spawn-based match flow removed from BooksClient; progress bar polling removed
+- `TELEGRAM_BOT_TOKEN` added to Vercel production env
+- `ALLOW_EDITS=true` added to Vercel production env
+
+**generate-reasons.ts script:**
+- `scripts/generate-reasons.ts` — fetches null-reason BookClaimMatch rows for a book, calls `claude --print` (Claude Code CLI) in batches of 20, PATCHes reasons back via API
+- Run: `BOOK_ID=xxx npx ts-node --project tsconfig.scripts.json scripts/generate-reasons.ts`
+- Uses Claude Code subscription (no Anthropic API key needed) — do NOT use OpenAI gateway key for project work
+
+**Env vars now in Vercel production:**
+- `ALLOW_EDITS=true`
+- `TELEGRAM_BOT_TOKEN` (from OpenClaw config channels.telegram.botToken)
+
+**Rules confirmed:**
+- Never use `OPENAI_API_KEY` from OpenClaw gateway for epistemic-receipts or any project work — use Claude CLI only
+- generate-reasons.ts uses `execFileSync('claude', ['--print', ...])` pattern
