@@ -291,6 +291,33 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Homepage redesign: search-first discovery experience
+
+**What.** Replaced the data-dashboard homepage (`app/page.tsx`, 796 lines) with a search-first hero (~280 lines, ~65% shorter).
+
+1. **Hero.** Large centered headline ("What would you like to learn about?"), big rounded search input with cycling placeholder examples (`climate policy`, `CRISPR`, `NATO expansion`, `fentanyl regulations`, `cognitive dissonance`, `vaccine trials`, `Cuban Missile Crisis` — 2.4s cycle).
+2. **Real-time search.** 300ms debounce → `GET /api/search?q=Q&limit=8&type=claims`. Results render inline below the input as `Link`s to `/claims/[id]` with status / type / verification / pipeline badges. Uses an `AbortController` so an in-flight request is cancelled when the user keeps typing.
+3. **Topic chips.** 10 hand-picked chips below the input — Climate, Neuroscience, US Congress, Cold War, Vaccines, Supreme Court, Chemistry, Nobel Prize, Earthquakes, Retractions. Clicking a chip sets the search input to its query (which triggers the same debounced inline search), so the chip and the search are the same interaction.
+4. **Onboarding copy** (3 lines, below chips): "Every claim is sourced. Every source is traceable. Start with a question." Philosophy by interaction, not explanation.
+5. **"See all results" link.** When the API returns `counts.claims > claims.length`, an inline link goes to `/search?q=Q` for the full paginated view.
+6. **What's New demoted.** The full changelog feed is gone from the hero. A compact "Recent additions" section (4 most recent dates, no headline mission statement, no philosophy lecture) sits below the search area with a "See the full feed →" link to `/feed`.
+7. **Filter UI removed.** Type / Status / Verification / Sort / Source / Topic multi-selects, the Show-deprecated toggle, the per-section collapsible claim cards, the per-type pagination, and the `/api/claims/homepage` round-trip are all gone from the homepage. The `/claims` and `/search` routes already provide the dashboard view for users who want it.
+8. **URL syncing.** `?q=X` stays in the URL as the user types (via `router.replace`, no scroll, no history spam), so the homepage is shareable as a search URL.
+
+**What stayed.** `BlackHoleCanvas` backdrop, `STATUS_STYLE`/`VS_STYLE` badge styling, `Suspense` wrapper for `useSearchParams`.
+
+**Why.** Cold visitors landing on a wall of filter chips, sort dropdowns, and pagination read the site as a heavy data tool, not a research substrate. A first-impressions audit (continuing from 2026-06-07 nav rework) is that the homepage should *show* what the system does by inviting the visitor to try it. The receipts are the product; the homepage's job is to surface a receipt within five seconds of arrival.
+
+**Footer ritual.** Did **not** restore a "last updated" footer date. The original task prompt asked for one, but the 2026-06-07 nav entry retired this ritual explicitly ("hardcoded footer date was about to lie the moment we shipped this PR"). The homepage "Recent additions" card and this changelog are the deploy-date carriers.
+
+**Constraint respected.** `globals.css` still does not set `body { background }`. `BlackHoleCanvas` import and mount unchanged. No edits to `app/layout.tsx`. No new POST/PATCH routes.
+
+**Files touched.**
+- `app/page.tsx` — full rewrite (796 → ~280 lines)
+- `CONSULTANT.md` — this entry
+
+**Verification.** `npx tsc --noEmit` clean.
+
 ### 2026-06-07 — Wikidata SPARQL ingesters: Nobel laureates, chemical elements, space missions
 
 **What.** Three new Wikidata SPARQL ingesters modeled on `scripts/ingest-chips-wikidata.ts` (same SPARQL fetch / 2 req/sec / exponential backoff on 429/502/503 / `$transaction({ timeout: 30000 })` / QID-Set deduplication).
