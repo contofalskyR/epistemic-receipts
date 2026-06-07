@@ -291,6 +291,39 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Tier 1 ClaimRelation linkers (4 new scripts, 90,327 new relations)
+
+**What.** Built and ran four hand-curated linker scripts wiring together
+already-ingested pipelines. All four operate entirely on in-DB data — no
+external API calls — and are idempotent (load existing relations of the same
+type into a Set, then `createMany({ skipDuplicates: true })`).
+
+| Script | Relation | from → to | New rows |
+|---|---|---|---|
+| `link-chebi-openfda.ts` | COMPOUND_IN | chebi_v1 → openfda_labels_v1 | **59,505** |
+| `link-sipri-unsc.ts` | MILITARY_CONTEXT | sipri_milex_v1 → un_sc_resolutions_v1 | **21,749** |
+| `link-nasa-missions.ts` | DISCOVERED_BY | nasa_exoplanet_v1 → space_missions_v1 | **4,269** |
+| `link-omim-clinicaltrials.ts` | DISEASE_STUDIED | omim_v1 → clinicaltrials_v1 | **4,804** |
+
+**Heuristics (per script).**
+
+- **ChEBI→openFDA:** indexed each `metadata.generic_name` from openfda_labels_v1 by ingredient (split on `,` and ` AND `, lowercased). Looked up each ChEBI compound name (parsed from the `name: definition` text prefix, HTML-stripped, stereo-prefix-stripped). Salt-suffix stripping (`hydrochloride`, `sulfate`, `sodium`, etc.) gives medium-confidence fallback matches. 1,580/51,993 ChEBI names matched ≥1 label.
+- **SIPRI↔UNSC:** for each SIPRI `(country, year)` row, finds UNSC resolutions where the country appears in `metadata.geography.iso_name` OR the leading token of `metadata.subjects[*]`, within `±2` years. Country-alias map handles USA/UK/Russia (incl. USSR/Soviet Union)/Iran/DPRK/Congo DRC/Korea/etc. 3,682/8,435 SIPRI rows linked.
+- **NASA→missions:** parses "discovered by X" from exoplanet text. Maps to mission `payloadName` via a small explicit whitelist (Kepler/K2/TESS/CoRoT/Gaia/CHEOPS/JWST) — verified against actual values in space_missions_v1. Ground-based observatories (La Silla, Keck, OGLE, SuperWASP, HATNet, HATSouth, KMTNet) intentionally unlinked: there is no orbital-launch record for them. 4,269/6,277 exoplanets linked.
+- **OMIM→ClinicalTrials:** parses primary disease name from `NAME; ABBREV (MIM N):` prefix, then generates search variants (drops trailing `TYPE N`/`FORM N`/numeric suffix, drops everything after the first comma). ILIKE substring search against `clinicaltrials_v1.text` (which embeds the condition list). Abbrev-only and stopword names ("syndrome", "disease", "blood group") rejected to avoid noise. 331/1,495 OMIM names linked.
+
+**followUpContext (per relation).** Each row stores: `heuristic`, `confidence` (high/medium), `pipeline_from`, `pipeline_to`, and the specific matched token (ingredient key / country alias / discoverer text / disease name variant). Confidence is `high` for exact matches and the curated NASA/OMIM linkers; `medium` for ChEBI salt-stripped fallbacks and all SIPRI/UNSC (country/year window).
+
+**Verification.** All four counts verified by querying `claimRelation` directly after each run; matches the in-script reported counts exactly.
+
+**Telegram.** Summary sent to chat 7688025079 (msg 10091).
+
+**Files added.**
+- `scripts/link-chebi-openfda.ts`
+- `scripts/link-sipri-unsc.ts`
+- `scripts/link-nasa-missions.ts`
+- `scripts/link-omim-clinicaltrials.ts`
+
 ### 2026-06-07 — IHME GBD ingester scaffolded (BLOCKED — no unauthenticated path)
 
 **What.** Created `scripts/ingest-gbd.ts` as a documenting stub. Pipeline tag would be `gbd_v1` — cause-specific mortality by country × year × cause from the IHME Global Burden of Disease.
