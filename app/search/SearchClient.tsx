@@ -12,6 +12,7 @@ type ClaimHit = {
   ingestedBy: string;
   verificationStatus: string | null;
   createdAt: string;
+  claimEmergedAt: string | null;
   sourceName: string | null;
   topicLabel: string | null;
 };
@@ -53,6 +54,32 @@ const STATUS_STYLE: Record<string, string> = {
   DISPUTED: "bg-yellow-900 text-yellow-300",
 };
 
+const STATUS_LABEL: Record<string, string> = {
+  HARD_FACT: "Hard Fact",
+  NEVER_RESOLVES: "Never Resolves",
+  DISPUTED: "Disputed",
+};
+
+const STATUS_TOOLTIP: Record<string, string> = {
+  HARD_FACT: "Independently verified across multiple primary sources",
+  NEVER_RESOLVES: "Definitionally true — not subject to empirical falsification",
+  DISPUTED: "Conflicting evidence or contested by authoritative sources",
+};
+
+const TYPE_LABEL: Record<string, string> = {
+  EMPIRICAL: "Empirical",
+  INSTITUTIONAL: "Institutional",
+  INTERPRETIVE: "Interpretive",
+  HYBRID: "Hybrid",
+};
+
+const TYPE_TOOLTIP: Record<string, string> = {
+  EMPIRICAL: "A factual claim grounded in observable, measurable evidence",
+  INSTITUTIONAL: "A claim about laws, rules, or official decisions by institutions",
+  INTERPRETIVE: "A claim that involves inference or expert judgment",
+  HYBRID: "Combines empirical data with institutional or interpretive framing",
+};
+
 const VS_STYLE: Record<string, string> = {
   VERIFIED: "bg-blue-950 text-blue-400 border border-blue-800/50",
   PROVISIONAL: "bg-gray-800/60 text-gray-500 border border-gray-700/50",
@@ -82,6 +109,23 @@ function Highlighted({ text, query }: { text: string; query: string }) {
           : part
       )}
     </>
+  );
+}
+
+function SearchLegend() {
+  return (
+    <div className="rounded-lg border border-gray-800/60 bg-gray-900/40 px-4 py-3 text-xs text-gray-500 space-y-1.5"
+      style={{ animation: "result-in 0.3s ease forwards" }}>
+      <p className="text-gray-400 font-medium">Reading results</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
+        <span><span className="text-green-400">Hard Fact</span> — verified across independent sources</span>
+        <span><span className="text-yellow-400">Disputed</span> — conflicting or contested evidence</span>
+        <span><span className="text-indigo-400">Topic badge</span> — the field this claim belongs to</span>
+        <span><span className="text-gray-300">Evidence trail →</span> — timeline, sources, verification</span>
+        <span><span className="text-gray-300">Empirical</span> — observable, measurable fact</span>
+        <span><span className="text-gray-300">Institutional</span> — law, rule, or official decision</span>
+      </div>
+    </div>
   );
 }
 
@@ -339,9 +383,10 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
             Claims ({data.counts.claims.toLocaleString()})
           </h2>
+          <SearchLegend />
           <div className="space-y-2">
-            {data.claims.map(c => (
-              <ClaimResult key={c.id} claim={c} query={data.query} />
+            {data.claims.map((c, i) => (
+              <ClaimResult key={c.id} claim={c} query={data.query} index={i} />
             ))}
           </div>
         </section>
@@ -363,47 +408,64 @@ function Results({ data, type }: { data: SearchResponse; type: "claims" | "sourc
   );
 }
 
-function ClaimResult({ claim, query }: { claim: ClaimHit; query: string }) {
+function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; index: number }) {
+  const year = claim.claimEmergedAt
+    ? new Date(claim.claimEmergedAt).getFullYear()
+    : claim.createdAt
+    ? new Date(claim.createdAt).getFullYear()
+    : null;
+
   return (
     <Link
       href={`/claims/${claim.id}`}
-      className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group"
+      className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group opacity-0"
+      style={{
+        animation: "result-in 0.35s ease forwards",
+        animationDelay: `${index * 50}ms`,
+      }}
     >
       <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">
         <Highlighted text={truncate(claim.text)} query={query} />
       </p>
-      {claim.sourceName && (
-        <p className="text-xs text-gray-500 mt-1.5 truncate">
-          <span className="text-gray-600">Source:</span> {claim.sourceName}
-        </p>
-      )}
-      <div className="flex items-center gap-2 mt-2 flex-wrap">
-        <span
-          className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-            STATUS_STYLE[claim.currentStatus] ?? STATUS_STYLE.DISPUTED
-          }`}
-        >
-          {claim.currentStatus}
-        </span>
-        {claim.topicLabel && (
-          <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
-            {claim.topicLabel}
+
+      {/* Source + year */}
+      <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
+        {claim.sourceName && (
+          <span className="truncate flex-1">
+            <span className="text-gray-600">From:</span> {claim.sourceName}
           </span>
         )}
-        <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
-          {claim.claimType}
-        </span>
-        {claim.verificationStatus && (
+        {year && <span className="shrink-0 font-mono text-gray-600">{year}</span>}
+      </div>
+
+      {/* Badges + trail */}
+      <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <span
-            className={`text-xs px-1.5 py-0.5 rounded font-mono ${
-              VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"
-            }`}
+            className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[claim.currentStatus] ?? STATUS_STYLE.DISPUTED}`}
+            title={STATUS_TOOLTIP[claim.currentStatus] ?? ""}
           >
-            {claim.verificationStatus}
+            {STATUS_LABEL[claim.currentStatus] ?? claim.currentStatus}
           </span>
-        )}
-        <span className="text-xs px-1.5 py-0.5 rounded font-mono bg-gray-800/60 text-gray-500">
-          {claim.ingestedBy}
+          {claim.topicLabel && (
+            <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
+              {claim.topicLabel}
+            </span>
+          )}
+          <span
+            className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400"
+            title={TYPE_TOOLTIP[claim.claimType] ?? ""}
+          >
+            {TYPE_LABEL[claim.claimType] ?? claim.claimType}
+          </span>
+          {claim.verificationStatus && (
+            <span className={`text-xs px-1.5 py-0.5 rounded font-mono ${VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"}`}>
+              {claim.verificationStatus}
+            </span>
+          )}
+        </div>
+        <span className="text-xs text-gray-700 group-hover:text-gray-500 transition-colors shrink-0 ml-2">
+          Evidence trail →
         </span>
       </div>
     </Link>

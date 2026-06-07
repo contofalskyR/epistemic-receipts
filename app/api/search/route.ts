@@ -16,6 +16,7 @@ type ClaimHit = {
   ingestedBy: string;
   verificationStatus: string | null;
   createdAt: string;
+  claimEmergedAt: string | null;
   sourceName: string | null;
   topicLabel: string | null;
 };
@@ -115,6 +116,7 @@ export async function GET(req: NextRequest) {
             ingestedBy: true,
             verificationStatus: true,
             createdAt: true,
+            claimEmergedAt: true,
             edges: {
               where: { deleted: false },
               orderBy: { createdAt: "asc" as const },
@@ -135,6 +137,7 @@ export async function GET(req: NextRequest) {
           ingestedBy: string;
           verificationStatus: string | null;
           createdAt: Date;
+          claimEmergedAt: Date | null;
           edges: { source: { name: string } }[];
           topics: { topic: { name: string } }[];
         }>),
@@ -176,6 +179,7 @@ export async function GET(req: NextRequest) {
     ingestedBy: c.ingestedBy,
     verificationStatus: c.verificationStatus,
     createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : c.createdAt,
+    claimEmergedAt: c.claimEmergedAt instanceof Date ? c.claimEmergedAt.toISOString() : (c.claimEmergedAt ?? null),
     sourceName: c.edges[0]?.source?.name ?? null,
     topicLabel: c.topics[0]?.topic?.name ?? null,
   }));
