@@ -291,6 +291,28 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Nav + first-impressions cleanup (public launch prep)
+
+**What.** First-impressions pass before sharing the site publicly. Four shell-level changes; no page content touched.
+
+1. **Grouped nav with dropdowns.** Replaced the 27-link flat row in `app/layout.tsx` with a new client component `app/components/Nav.tsx`. Primary always-visible links (Search, Globe, Legislation, Stats, Feed) sit next to three dropdowns: **Explore ▾** (Claims, Fields, Topics, Timeline, Events, Bookmarks, Reader, Books), **Data ▾** (Votes, Analysis, Topic Trends, Representation, Media Coverage, Financial), **More ▾** (About, Glossary, Feedback, Pipelines, Datasets, Edges, Meta-edges, Review). Dropdowns open on hover OR click; close on click-outside or Escape (document-level listeners with cleanup). Mobile (<md): everything collapses to a hamburger (☰) that toggles a vertical list grouped by section header. Same dark `bg-gray-900` border-gray-700 styling as the rest of the chrome.
+
+2. **`max-w-3xl` removed from layout.** `<main>` is now `px-6 py-8` only (no width clamp), so data-heavy pages (globe, stats, legislation) get full viewport width. Pages that want narrow text columns already declare their own `max-w-*` (verified: `/about` uses `max-w-xl`, `/login` uses `max-w-xs`). The globe's full-bleed escape hatch (`width: 100vw; marginLeft: calc(-50vw + 50%)`) still works because the math degenerates correctly when the parent already spans the viewport.
+
+3. **Footer hardcode removed.** "last updated June 6, 2026 — physiology taxonomy added" → `Epistemic Receipts — {new Date().getFullYear()}`. The "update the footer date on every deploy" ritual (Architectural Rule 7) is retired in favor of an evergreen line; per-deploy notes live in the homepage changelog card and this file.
+
+4. **Meta description.** `<head>` description in `app/layout.tsx` changed from "A receipt system for how consensus gets made" to "1M+ verified facts from legislation, court decisions, scientific papers, and declassified archives." — concrete and search-engine-legible for the public share.
+
+**Why.** First public share. 27 flat nav links read as impenetrable to a cold visitor; the 3xl content clamp made the globe and stats pages look cramped at desktop widths; the hardcoded footer date was about to lie the moment we shipped this PR.
+
+**Constraint respected.** No changes to `globals.css` (no `body`/`html` background rules added — the `bg-gray-950` already sits on `<html>` as a Tailwind class, not a global CSS rule). `BlackHoleCanvas.tsx` untouched. No page content, claim cards, or status badges touched.
+
+**Files touched:**
+- `app/components/Nav.tsx` — **new** client component (grouped nav with dropdowns + mobile hamburger)
+- `app/layout.tsx` — imports `<Nav />`; removes flat link list; drops `max-w-3xl mx-auto` from `<main>`; minimal footer; new meta description
+
+**Verification.** `npx tsc --noEmit` clean.
+
 ### 2026-06-06 — /physiology taxonomy page
 
 **What.** New taxonomy sibling at `/physiology` (18 families, 162 entries, 5 sections, 10 organ systems). Page was already drafted under `app/physiology/` (untracked) and built on the same KaTeX + collapsible-family pattern as `/neuroscience`, `/medicine`, `/anthropology`, `/earth-sciences`, `/logic`. This pass committed the page, linked it from the `/fields` hub (Natural Sciences cluster, after Neuroscience), wired the Live Research panel to `GET /api/taxonomy/physiology/stats` (returns 0 until OpenAlex ingest seeds a `physiology` topic), and refreshed the homepage changelog + layout footer.
