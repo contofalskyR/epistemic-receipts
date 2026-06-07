@@ -6,9 +6,19 @@ export const PIPELINE_COUNTRY: Record<string, string> = {
   // United States
   openfda_labels_v1: "US", faers_normalized_drugs_v1: "US", fr_rules_v1: "US",
   sec_edgar_v1: "US", congress_bills_v1: "US", congress_votes_v1: "US", congress_v1: "US",
+  congress_bills_tracker_v1: "US", congress_stock_act_v1: "US",
   propublica_congress_v1: "US", frus_v1: "US", cia_foia_v1: "US", jfk_records_v1: "US",
   nara_catalog_v1: "US", miller_center_v1: "US", loc_collections_v1: "US",
   mesh_v1: "US", rxnorm_v1: "US", fred_v1: "US",
+  // US federal/state courts (CourtListener) and US-administered federal datasets
+  courtlistener_scotus_v1: "US", courtlistener_circuits_v1: "US",
+  courtlistener_state_supreme_v1: "US", courtlistener_bia_v1: "US",
+  courtlistener_tax_v1: "US", courtlistener_disclosures_v1: "US",
+  openfec_v1: "US", openfec_ie_v1: "US", doj_fara_v1: "US",
+  nih_reporter_v1: "US", clinicaltrials_v1: "US", nasa_exoplanet_v1: "US",
+  openfda_v1: "US", pubchem_v1: "US", genbank_v1: "US", omim_v1: "US",
+  nist_constants_v1: "US", nist_webbook_v1: "US",
+  fda_aesthetic_devices_v1: "US", cosmetic_faers_v1: "US",
   // Europe
   bundestag_v1: "DE", stasi_v1: "DE",
   tweedekamer_v1: "NL",

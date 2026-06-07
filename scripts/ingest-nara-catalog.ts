@@ -78,6 +78,11 @@ const RECORD_GROUPS: RecordGroupDef[] = [
   { number: '226', name: 'Records of the Office of Strategic Services (OSS)',       topicSlug: 'nara-rg-226-oss',   domain: 'intelligence' },
   { number: '218', name: 'Records of the Joint Chiefs of Staff',                    topicSlug: 'nara-rg-218-jcs',   domain: 'defense'      },
   { number: '84',  name: 'Records of Foreign Service Posts of the Department of State', topicSlug: 'nara-rg-84-fsp', domain: 'diplomacy' },
+  { number: '326', name: 'Records of the Atomic Energy Commission (AEC/Manhattan Project)', topicSlug: 'nara-rg-326-aec', domain: 'science' },
+  { number: '238', name: 'Records of National Archives Collections of World War II War Crimes Records (Nuremberg)', topicSlug: 'nara-rg-238-nuremberg', domain: 'government' },
+  { number: '220', name: 'Records of Temporary Committees, Commissions, and Boards (Presidential Commissions)', topicSlug: 'nara-rg-220-commissions', domain: 'government' },
+  { number: '457', name: 'Records of the National Security Agency / Central Security Service (NSA/SIGINT)', topicSlug: 'nara-rg-457-nsa', domain: 'intelligence' },
+  { number: '107', name: 'Records of the Office of the Secretary of War, WWII', topicSlug: 'nara-rg-107-secrwar', domain: 'defense' },
 ]
 
 const RG_BY_NUMBER = new Map(RECORD_GROUPS.map(rg => [rg.number, rg]))

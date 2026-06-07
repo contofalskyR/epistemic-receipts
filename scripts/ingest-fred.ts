@@ -12,7 +12,10 @@
 //   ALLOW_EDITS=true FRED_API_KEY=<key> npx tsx scripts/ingest-fred.ts [--limit N]
 //   ALLOW_EDITS=true FRED_API_KEY=<key> npx tsx scripts/ingest-fred.ts          (full)
 
-import 'dotenv/config'
+import dotenv from 'dotenv'
+import path from 'path'
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
+dotenv.config()
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()

@@ -1,6 +1,6 @@
 # HARD_FACT Pipeline Roadmap
 
-**Live DB (2026-06-03 23:38 EDT):** ~1,153,370 claims · 160+ pipelines · 116,267 LegislativeVotes · 2,361 polities · 9 HistoricalEvents · 88 perpetual loops running
+**Live DB (2026-06-06):** ~1,040,000+ claims · 160+ pipelines · CourtListener perpetual loops running · 26 taxonomy pages live
 
 Future pipelines ranked by volume + editorial value. Add to this list as new candidates emerge. Cross off as pipelines ship.
 
@@ -12,7 +12,7 @@ Build order — each tier reuses infra from the one below:
 
 | Tier | Feature | Status | Why |
 |------|---------|--------|-----|
-| **Wedge #1** | **Alerts** — saved queries + email digests | 🔄 Building | Forces user accounts + saved-search infra every later tier depends on. First paying user = beat reporter on one jurisdiction. Extends existing anonymous `Profile` with optional `email`. |
+| **Wedge #1** | **Alerts** — saved queries + email digests | ✅ Shipped 2026-06-06 | Forces user accounts + saved-search infra every later tier depends on. First paying user = beat reporter on one jurisdiction. Extends existing anonymous `Profile` with optional `email`. |
 | **Wedge #2** | **Public API** — keys, rate limits, docs | 📋 Queued | B2B path. Pitch: "52-country legislation in one endpoint." $99–299/mo tiers. Compliance teams + RegTech. |
 | **Wedge #0** (dream) | **`/ask` AI engine** — RAG over claim graph, cited synthesis | 📋 Far future | Newsroom contracts ($5–25k/yr), AI lab licensing. Needs embeddings, retrieval, citation-enforced generation. Build last. |
 
@@ -27,7 +27,7 @@ Full strategy in `~/.openclaw/workspace/memory/project_epistemic_receipts_moneti
 | Bookmarks | ✅ Shipped 2026-05-31 | Anonymous UUID key, SHA-256 hashed server-side, no PII |
 | Citation graph / related papers | ✅ Shipped 2026-05-31 | `ClaimRelation` table, OpenAlex enrichment, relations panel on claim detail page ("Later Work", "Related Papers", "References") |
 | Globe fixes + Connections page | ✅ Shipped 2026-05-31 | Clickable claims in timeline mode, slower play speed (~1s/step), `/globe/connections` page with country-to-country arcs |
-| **EU Parliament votes deep-dive** | 🔄 In progress (Opus agent) | Expand EU votes 1,900 → ~50k+ via europarl.europa.eu API (1979–present), MEP/group breakdown (EPP, S&D, Renew…), add EU Parliament tab to `/analysis/votes` |
+| **EU Parliament votes deep-dive** | ✅ Shipped 2026-06-01 | 24,224 EP plenary roll-call votes (`eu_parliament_votes_v2`), full per-political-group breakdown (EPP, S&D, Renew, Greens, ECR, etc.) via HowTheyVote.eu dataset. EU Parliament tab added to `/analysis/votes`. |
 | **/legislation — global 52-country** | ✅ Shipped 2026-06-03 | Regional browser (Americas/Europe/Asia-Pacific/Africa), country grid with claim counts, 49 perpetual loops (24h), graceful empty states. Canada/NZ status chips. |
 | **/legislation — bill granularity** | ✅ Shipped 2026-06-03 | Bill ID chips (RA no., law no., act no.), law type badges (LOI/PL/Money Bill), status where available (India: Assented), year-only date display. |
 | **/finance taxonomy** | ✅ Shipped 2026-06-03 | 155 financial methods across 19 families. Valuation, derivatives, risk, portfolio theory, structured finance, etc. |
@@ -54,8 +54,11 @@ Full strategy in `~/.openclaw/workspace/memory/project_epistemic_receipts_moneti
 | **/anthropology taxonomy** | ✅ Shipped 2026-06-06 | ~16 families: Cultural, Physical, Archaeological, Linguistic, Kinship, Paleoanthropology, Primatology. xrefs: history, linguistics, biology, sociology. |
 | **/earth-sciences taxonomy** | ✅ Shipped 2026-06-06 | ~18 families: Oceanography, Atmospheric, Climatology, Hydrology, Glaciology, Paleoclimatology, Geophysics. xrefs: geology, chemistry, physics, biology. |
 | **/logic taxonomy** | ✅ Shipped 2026-06-06 | ~16 families: Classical, Modal, Temporal, Epistemic, Proof Theory, Model Theory, Set Theory, Type Theory. KaTeX formal notation. xrefs: mathematics, CS, philosophy. |
-| **Globe — typed density layers** | 📋 Queued | Category-based overlays instead of all-facts heatmap. Toggle by type: pharma labs, drug discovery, human rights orgs, legislation, science, etc. Geography + type of fact, not just claim count. |
-| "What's new" feed | ⏳ On hold | After bookmarks |
+| **Globe — typed density layers** | ✅ Shipped 2026-06-06 | All / Science / Law / Legislation / Medicine / Government / History chips on heatmap. `lib/globe-categories.ts` + `/api/globe/density?category=<slug>`. |
+| **`/fields` hub** | ✅ Shipped 2026-06-06 | Single index page consolidating all 26 taxonomies. Nav slimmed. |
+| **`/statistics/explorer`** | ✅ Shipped 2026-06-06 | Claim-powered companion to statistics taxonomy. |
+| **`/feed` (What's new)** | ✅ Shipped 2026-06-06 | Last-visit counter, recent claims by pipeline (7-day window), threshold events, bookmarked claim activity. |
+| **Stat methods enrichment** | ✅ Done 2026-06-06 | 212k claims scanned, 86,145 newly tagged. Top: RCT 7k, meta-analysis 5.8k, neural network 2.7k, ML 2.2k. |
 
 ---
 
