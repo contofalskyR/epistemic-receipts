@@ -291,6 +291,38 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — UCDP/PRIO armed-conflict pipeline + UCDP→SIPRI military-context linker
+
+**What.** New ingester `scripts/ingest-ucdp.ts` (pipeline tag `ucdp_v1`) and linker `scripts/link-ucdp-sipri.ts` (relation type `MILITARY_CONTEXT`). One Claim per (conflict, dyad, year) sourced from UCDP/PRIO v25.1, joined with the Battle-Related Deaths Dyadic dataset for casualty estimates.
+
+**API status discovery.** `ucdpapi.pcr.uu.se/api/ucdpprioconflict/{version}` became token-gated in February 2026 (401 from anonymous GET; contact email mertcan.yilmaz@pcr.uu.se for an access token). The bulk CSV downloads at `ucdp.uu.se/downloads/` remain open under CC BY 4.0. We use those:
+- `https://ucdp.uu.se/downloads/dyadic/ucdp-dyadic-251-csv.zip` (3,432 conflict-dyad-years, has `intensity_level` + side names)
+- `https://ucdp.uu.se/downloads/brd/ucdp-brd-dyadic-251-csv.zip` (1,996 conflict-dyad-years with `bd_best` / `bd_low` / `bd_high`)
+
+The plain `ucdpprioconflict` dataset (2,753 conflict-years, no dyad granularity) doesn't carry side names, so Dyadic is the cleaner primary source.
+
+**Ingester (`ingest-ucdp.ts`).**
+- Fetches both zips via `fetch` → `/tmp`, extracts via `unzip` (no Node zip dep), parses with `csv-parse/sync`.
+- Joins BRD into Dyadic by `(dyad_id, year)`; BRD `-999` → null so missing-data rows don't leak into the body.
+- GWNO → ISO mapping is embedded (~190 entries covering every gwno_loc that appears in v25.1). For interstate or shared-location conflicts `gwno_loc` is a comma-list (e.g. `"645, 651, 652, 660, 663, 666"` for the Yom Kippur War) — `resolveIso()` splits on comma/whitespace and picks the first GWNO with a known ISO. Coverage 3,430 / 3,432 (only GWNO 751 = Kashmir/disputed unmapped).
+- Claim shape: title `"{side_a} – {side_b}: {intensity short} in {location} ({year})"`; body line lists type-of-conflict label, battle-deaths best+range (or "not estimated in BRD dataset"), full intensity label, and territory in dispute when present. `claimType: 'EMPIRICAL'`, `currentStatus: 'HARD_FACT'`, `verificationStatus: 'VERIFIED'`. `claimEmergedAt = {year}-01-01`, `claimEmergedPrecision: 'YEAR'`. metadata carries conflictId, dyadId, sideA/B, location, intensityLevel, typeOfConflict, battleDeathsBest/Low/High, gwno, gwnoLoc, country (ISO), incompatibility, territoryName.
+- Source per conflict-dyad-year linking to `https://ucdp.uu.se/conflict/{conflict_id}`. Edge score 95 (HARD_FACT, primary dataset). Topic `armed-conflict` parented under `security`.
+- Flags: `--dry-run`, `--limit N`. ALLOW_EDITS=true required for writes. `prisma.$transaction(fn, { timeout: 30000 })` per row.
+- **Result: 3,432 / 3,432 ingested, 0 skipped, 0 errors.** DB verified: `Claim.count({ ingestedBy: 'ucdp_v1' }) = 3432`, matching Source + Edge counts.
+
+**Linker (`link-ucdp-sipri.ts`).** Direction: fromClaim = UCDP conflict-year, toClaim = SIPRI milex (the milex row is the surrounding "military context" for that country-year). Match key is `(ISO, year)`.
+- SIPRI's `metadata.country` is the country name string; the shared `lib/countryCodeMap.ts` only covers legislative-pipeline countries, so the linker carries its own `SIPRI_NAME_ALIASES` table extending coverage to all 8,401 / 8,435 SIPRI rows (only `European Union` aggregate rows excluded). Names not in the shared map but added inline: Belarus, Angola, Bahrain, Belize, Benin, Botswana, Burkina Faso, Burundi, Cameroon, CAR, Chad, Djibouti, DR, El Salvador, Eq. Guinea, Fiji, Gabon, Guinea, Guinea-Bissau, Guyana, Haiti, Honduras, Kosovo, Kuwait, Lesotho, Liberia, Libya, Madagascar, Malawi, Mali, Mauritania, Mauritius, Moldova, Mongolia, Montenegro, Mozambique, Namibia, Nepal, Nicaragua, Niger, Oman, PNG, Qatar, Rwanda, Serbia, Seychelles, Sierra Leone, Somalia, South Sudan, Sudan, Syria, Tajikistan, Togo, Turkmenistan, Uzbekistan, Yemen, Zambia, Zimbabwe. Variants like "Türkiye", "Czechia", "Cote d'Ivoire", "Korea, South", "Congo, DR", "Cape Verde", "USSR", "Viet Nam" mapped to their canonical ISO. USSR → RU and German Democratic Republic → DE so pre-1991 / pre-1990 milex rows still match.
+- 2,601 of 3,432 UCDP claim-years matched a SIPRI row (no match: 831 — typical gaps are pre-1949 conflicts, post-conflict states where SIPRI lacks current-year data, and interstate conflicts where the first picked location ISO doesn't match the SIPRI row for any belligerent in that year).
+- Inserts as `ClaimRelation { relationType: 'MILITARY_CONTEXT', year, followUpContext: { iso, year, heuristic, pipeline_from, pipeline_to } }`. P2002 swallowed as "already-existed". **Result: 2,601 / 2,601 inserted, 0 duplicates.**
+
+**Why MILITARY_CONTEXT instead of something else.** The relation isn't causal (the milex row didn't cause the conflict, and vice versa); it's a contextual co-occurrence — "what was this country spending on defense the same year this conflict was active." That framing keeps the SIPRI row useful as background for any case study citing a UCDP conflict-year without overcommitting to a directional claim.
+
+**Files added.**
+- `scripts/ingest-ucdp.ts`
+- `scripts/link-ucdp-sipri.ts`
+
+**Verification.** Dry-run validated parse, GWNO→ISO coverage, and SIPRI alias coverage before either live run. Type-check (`npx tsc --noEmit -p tsconfig.scripts.json`) clean. Post-run DB counts: `claims=3432, sources=3432, edges=3432, MILITARY_CONTEXT relations from ucdp_v1 → sipri_milex_v1 = 2601`.
+
 ### 2026-06-07 — ICSID arbitration pipeline + ICSID→OFAC sanction-context linker
 
 **What.** New Tier-2 ingester `scripts/ingest-icsid.ts` (pipeline tag `icsid_v1`) and companion linker `scripts/link-icsid-ofac.ts` (relation type `SANCTION_CONTEXT`). World Bank investment-arbitration cases connected to currently-in-force OFAC SDN entries by respondent-country match.
