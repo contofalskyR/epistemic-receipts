@@ -291,6 +291,40 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — ICSID arbitration pipeline + ICSID→OFAC sanction-context linker
+
+**What.** New Tier-2 ingester `scripts/ingest-icsid.ts` (pipeline tag `icsid_v1`) and companion linker `scripts/link-icsid-ofac.ts` (relation type `SANCTION_CONTEXT`). World Bank investment-arbitration cases connected to currently-in-force OFAC SDN entries by respondent-country match.
+
+**Data source discovery.** `icsid.worldbank.org/cases/case-database` is Drupal 10. Its custom JS bundle `/modules/custom/icsid_cases/js/dist/allCases.js` reveals the real list endpoint: `https://icsid.worldbank.org/api/all/cases` → `{ data: { GetAllCasesResult: [...] }, method }`. (The bare `/api/cases` endpoint returns `[]`; `/api/cases?keyword=…` is a typeahead.) The list payload (1,144 cases as of 2026-06-07) gives caseno / claimant / respondent / status / `caseproceedings[0].dateregistered`, but `Date_Concluded`, `casetype`, `econsector`, `subject`, `instrumentinvk1/2`, `rulesapplied`, `outcome` are blank in the list — those live on per-case detail pages. Detail HTML at `/cases/case-database/case-detail?CaseNo=ARB/XX/XX` is server-rendered with labelled rows (`<label>Subject of Dispute:</label> … <div class="…rightcol…">…</div>`) plus a procedural-details `<table>`. The ingester scrapes both layers.
+
+**Ingester (`ingest-icsid.ts`).**
+- Caches `/api/all/cases` at `/tmp/icsid-all.json`; sorts newest-first by `dateregistered` so `--limit` captures the most recent N.
+- For each case, fetches the detail HTML at ~5.5 req/sec (180 ms gap) and extracts subject, economic sector, instrument(s), applicable rules, claimant nationality, respondent nationality, outcome (date + text), and the full procedural timeline.
+- Respondent-state ISO 3166-1 alpha-3 via a 250-entry table (`COUNTRY_ALPHA3`) keyed on the post-normalize form. `normalizeCountry()` strips `republic|kingdom|state|states|federal|federation|democratic|socialist|people's|islamic|hashemite|sultanate|union|commonwealth|cooperative|grand duchy|oriental|plurinational|independent|former yugoslav|of|the` plus punctuation. Two cases (`United Kingdom`, `European Union`) are handled by an `ATOMIC_PREMATCH` pre-strip table because the strip list would otherwise consume their only state tokens. Dry-run on 500 cases: **497/500 resolved (99%)**; the 3 unresolved are corporate-respondent cases (`PeruPetro S.A.`, `KivuWatt Limited`) which legitimately should not map to a state.
+- Claim shape per the task spec: `claimType: 'INSTITUTIONAL'`, `currentStatus: 'HARD_FACT'`, `verificationStatus: 'VERIFIED'`, `claimEmergedAt = filing date`, `claimEmergedPrecision: 'DAY'`. `externalId = icsid_<caseno with non-alnum → "_">`. Title is `{Claimant} v. {Respondent} (ICSID Case No. {ARB/XX/XX})` per spec. Body summarizes subject / sector / instrument / rules / claimant nationality / filing / status / outcome. Metadata stores everything as structured JSON including the full procedural timeline so a future UI can render it without re-fetching. `awardAmount` is stored as `undefined` — ICSID does not publish award amounts on case pages, that data is editorial.
+- Source per claim (`name: "ICSID — ARB/XX/XX"`, `url: detail-page URL`, `publishedAt: filing date`, `methodologyType: primary`). One FOR Edge (`evidenceType: EVIDENTIARY`). ClaimTopic under `investment-arbitration` (newly created, parented under `international-law`). PolityClaim auto-link via `findPolityId(alpha3)` with `matchMethod: 'auto_country_respondent'`.
+- 30s tx timeout per Architectural Rule 5. Flags: `--dry-run`, `--limit N` (default 500), `--skip-existing`, `--no-detail` (skips per-case HTML for speed).
+
+**Linker (`link-icsid-ofac.ts`).** Builds `ClaimRelation` rows: `fromClaimId = ICSID case`, `toClaimId = OFAC SDN entry`, `relationType = 'SANCTION_CONTEXT'`, `year = ICSID filing year`. Two design constraints worth recording:
+
+1. **Time window.** Task spec says "within ±5 years," but OFAC SDN entries carry no per-record designation date in the bulk XML — only the bulk file's publication date. The Iran/Russia/Venezuela/Syria/Cuba/DPRK programs have been continuously in force since well before any ICSID case in our DB was filed, so I treat OFAC as "currently in force" and apply ±5y relative to today: only ICSID cases with filing date ≥ (today − 5y) get linked. That captures the contemporaneously-relevant cases against the current sanctions regime.
+
+2. **Volume cap.** A sanctioned country has hundreds-to-thousands of OFAC entries (Iran ~3k, Russia ~2k, Venezuela 407). Linking every ICSID case to every SDN entry would create millions of edges. Each ICSID case is capped at `MAX_LINKS_PER_CASE = 10` OFAC entries, sorted deterministically by OFAC `uid` ascending so re-runs are stable. The cap is exposed via `--per-case N` and documented in each relation's `followUpContext` so consumers can tell why a particular slice was picked.
+
+3. **Respondent side only.** ICSID respondents are always states; we map respondent → alpha3 cleanly. Claimant-side matching would require parsing `claimantNationality` demonyms ("British", "Dutch", "American", …) and the sanctioned-claimant pattern is rare in ICSID. Marked as a follow-up.
+
+**Run results.**
+- Ingest: 500 / 500 ingested cleanly (0 failed, 0 skipped, 0 updated). DB count of `icsid_v1` claims = 500. 500 sources, 500 edges, 500 ClaimTopic rows, 493 PolityClaim links (7 missing reflect the 3 corp respondents plus a few alpha3s not in the Polity table).
+- Linker: 110 / 110 inserted (0 existed, 0 failed). DB count of `SANCTION_CONTEXT` relations = 110. Distribution: **Venezuela 70 · Iraq 20 · Myanmar 10 · Belarus 10**. (Only countries whose ICSID cases overlap with the OFAC pipeline's `PROGRAM_ALPHA3` set; that pipeline currently maps the major OFAC programs only.)
+
+**Files added.**
+- `scripts/ingest-icsid.ts`
+- `scripts/link-icsid-ofac.ts`
+
+**Verification.** `npx tsc --noEmit -p tsconfig.scripts.json` clean for both new files. DB counts verified via `prisma.claim.count` / `claimRelation.count` after the run (per AGENTS.md rule 6).
+
+**Pipeline registry.** New: `icsid_v1` — 500 claims. ClaimRelation type catalog gains `SANCTION_CONTEXT`.
+
 ### 2026-06-07 — Tier 1 ClaimRelation linkers (4 new scripts, 90,327 new relations)
 
 **What.** Built and ran four hand-curated linker scripts wiring together
