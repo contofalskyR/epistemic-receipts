@@ -291,6 +291,33 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — US-only party×economic analysis + new panel on /analysis/votes
+
+**What.** Added a US-only variant of the party×economic-response analysis and a new "Party Response to Economic Conditions" panel on `/analysis/votes` showing both global and US views.
+
+**Files added.**
+- `scripts/enrich-party-economic-response-us.ts` — US-filtered re-run of `enrich-party-economic-response.ts`. Restricts in-scope laws to `congress_v1`, `congress_bills_v1`, `fr_rules_v1` (ISO3=USA). Writes `scripts/output/party-economic-response-us.json`.
+- `app/analysis/votes/PartyEconomicPanel.tsx` — client component with Global/US toggle, three condition rows (Recession / High unemployment / High inflation), each a horizontal split bar comparing left-coded vs right-coded law counts. Includes the requested footnote.
+
+**Files modified.**
+- `app/analysis/votes/page.tsx` — added TOC entry `party-economic`, imports the two JSON outputs as static modules (`@/scripts/output/party-economic-response.json` / `…-us.json`), renders the new panel after the Bayesian section.
+
+**US data source note.** The three crisis indicators (`NY.GDP.MKTP.KD.ZG`, `SL.UEM.TOTL.ZS`, `FP.CPI.TOTL.ZG`) are *not* ingested for USA in `worldbank_v1` — current US coverage is GDP-level, pop, life expectancy, CO2 only (33 obs/indicator, consistent with the 2026-06-07 sanctions-trajectory caveat that those crisis codes only exist for BLR/CAF in the DB). Rather than block on extending `ingest-worldbank.ts`, the US analysis script fetches the three series live from `api.worldbank.org/v2/country/USA/indicator/{code}` (public, no auth) at runtime. Fetched 64/35/65 observations respectively.
+
+**US-tuned thresholds.** The global script uses `<-2 / >10 / >20` (severe-event calibration for global coverage). The US script uses `<0 / >7 / >5` per task spec — these match US post-war norms (NBER-style recession defined as contraction; >7% unemployment is the historic "high" boundary; >5% inflation is the Volcker-era trigger threshold). The panel footnote calls out both calibrations so users don't mistakenly compare raw counts across views.
+
+**US-specific keyword addition.** Added `"democratic"` to the left-keyword list in the US script only — the global script avoids it because it false-matches on "Democratic Republic of …" / "Christian Democratic" / etc., but in US-only scope (where `hogParty` is always "Democratic Party of the United States" or "Republican Party") it cleanly tags US Democratic administrations as left. Coverage went from 0 → 9,205 party-coded US laws.
+
+**Results (top line).**
+- US recession (GDP < 0): Left = 643 laws, Right = 1,952 laws (right held the White House more often during contractions, dominated by Reagan/Bush/Trump-era data).
+- US high unemployment (>7%): Left = 1,756, Right = 1,533.
+- US high inflation (>5%): Left = 580, Right = 979.
+- Global panel (existing data, unchanged): recession 939 L / 1,584 R; high-unemployment 1,096 L / 383 R; high-inflation 0 / 0 (no party-coded matches at >20%).
+
+**Verification.** `npx tsc --noEmit` clean; `npx eslint app/analysis/votes/{PartyEconomicPanel.tsx,page.tsx}` clean; dev server returns 200 on `/analysis/votes` with the new section rendering both buttons and all three condition rows (third row shows "No data in scope" placeholder in Global view, real bars in US view).
+
+---
+
 ### 2026-06-07 — Two new database-side linkers: sanctions-economic and party-economic
 
 **What.** Two new pure-DB linkers (no LLM calls, country/year joins only):
@@ -3475,3 +3502,54 @@ The SPARQL queries cap at LIMIT 2000 — rerun as-is to pick up any newly added 
 **Telegram notification sent** to chat 7688025079 (msg ID 10106).
 
 **Files added.** `scripts/link-worldbank-legislation.ts`.
+
+---
+
+### 2026-06-07 — Party × economic-response analysis (no DB writes)
+
+**Added.** `scripts/enrich-party-economic-response.ts` — analysis-only script (writes JSON, not DB). Asks: did left- vs right-leaning governments legislate differently under the same economic conditions?
+
+**Data path.**
+- Scope set: every legislation Claim that participates in any `ECONOMIC_CONTEXT` ClaimRelation (223,344 distinct laws).
+- Country resolution: legislation `ingestedBy` → ISO3 via the same `PIPELINE_TO_ISO3` map as `link-worldbank-legislation.ts`.
+- Year: `EXTRACT(YEAR FROM claimEmergedAt)`.
+- Party: `PoliticalContext.hogParty` reached via `Edge.claimId = law.id` → `Source.id = pc.sourceId`. DISTINCT ON (law.id) with `ORDER BY law.id, (pc."hogParty" IS NULL) ASC` so the row with a populated hogParty wins when a law has multiple sources.
+- Votes: `LegislativeVote.result` joined through `Edge.sourceId = lv.sourceId`, aggregated per claimId.
+
+**Why not just walk the relations.** The ECONOMIC_CONTEXT graph as it stands targets only `NY.GDP.MKTP.CD` and `NY.GDP.PCAP.CD` (GDP level, current US$ and per capita) — 1,262,112 relations across two codes only. The three crisis indicators (`NY.GDP.MKTP.KD.ZG`, `SL.UEM.TOTL.ZS`, `FP.CPI.TOTL.ZG`) exist as `worldbank_v1` claims (1508 + 1312 + 1253 = ~4,073) but were not linked when the prior linker run wrote ECONOMIC_CONTEXT rows. So the script keeps the relations only as a scope filter (which laws are "in the economic-context graph at all") and looks the crisis indicators up directly by (iso3, year ±1) in memory.
+
+**Party classification (per task spec — kept simple).** Substring keyword match on lowercased `hogParty`, first-match wins:
+- left: labour, labor, social democrat(*), socialist, workers('?), communist, green, left, sandinista, awami
+- right: conservative, republican, christian democrat(*), christian social, national party, people's party, likud, law and justice, brothers of italy, fianna fáil, bharatiya janata, isamaa, forza italia
+- center: liberal, centrist, centre party, center party, reform party, free democrat, renaissance, civic platform
+- everything else → unknown (party name present but unmatched)
+
+**Coverage (live run 2026-06-07).**
+- In-scope laws: 223,344
+- With `hogParty` populated: 74,781 (33.5%)
+- Of those, classified left/right/center: 52,630 — left 21,488 / right 20,914 / center 10,228 / unknown 22,151
+- Top "unknown" buckets: Democratic Party (US, 5,929), Moderate Party (Sweden), Venstre (Denmark/Norway), Indian National Congress, Solidarity, African National Congress — adding these would lift classification coverage from 23.6 % → ~30 % of all in-scope laws, but the task asked for a deliberately simple lookup.
+- Laws with ≥1 crisis-indicator hit in the ±1-year window: 64,089.
+
+**Findings (recession ⇐ GDP growth < -2).**
+- left: 939 laws / 0 votes recorded → no passRate
+- right: 1,584 laws / 36 votes → 97.2 % pass rate
+- center: 1,474 laws / 54 votes → 96.3 % pass rate
+- unknown: 12,815 laws
+- baseline (no recession): left 7,578 / right 4,191 / center 3,705 / unknown 31,803.
+
+**Findings (high-unemployment ⇐ unemployment > 10).**
+- left: 1,096 / right: 383 / center: 2,151 / unknown: 6,443. Vote pass-rate is null for all alignments (no LegislativeVote rows attach to laws from the high-unemployment countries in our coverage).
+
+**Findings (high-inflation ⇐ inflation > 20).**
+- All buckets are `unknown` (2,728 laws). The countries that cross 20% YoY CPI in our worldbank_v1 slice — Argentina, Hungary, Turkey, Sri Lanka — have either no PoliticalContext rows for the matching enactments or party names that fall outside the keyword tables.
+
+**Vote pass-rate caveat.** Roll-call vote data is concentrated in `congress_v1`, `congress_bills_v1`, `riksdag_v1`, and a few others; most other legislative pipelines (Bundestag, Argentina, Italy, Chile, Hungary, etc.) ingest enacted-law records without per-vote tallies. So `passRate` here is an artifact of *which* countries had recorded votes, not a clean left/right comparison. The "laws" counts are the more reliable axis right now.
+
+**Method note in JSON.** `out.method.scope`, `out.method.partyAlignment`, and `out.method.voteData` document the joins and dedup rules. `out.partyAlignmentRules` lists the literal keyword arrays so the JSON is self-explanatory.
+
+**Output.** `scripts/output/party-economic-response.json` (≈45 example cases included). Console summary table prints per-tag × per-alignment counts. `--dry-run` mode skips the analysis and only prints classification coverage + top "unknown" party names for keyword-table tuning.
+
+**Telegram notification sent** to chat 7688025079 (msg ID 10121) via `openclaw message send --channel telegram` — `TELEGRAM_BOT_TOKEN` is not in `.env.local` (lives only in Vercel production env per the 2026-06-07 UI/UX entry), so the script's curl fallback was skipped and the openclaw CLI used instead.
+
+**Files added.** `scripts/enrich-party-economic-response.ts`, `scripts/output/party-economic-response.json`.

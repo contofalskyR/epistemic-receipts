@@ -10,6 +10,12 @@ import {
 } from "@/lib/voteAnalysis";
 import DecadeTrendChart from "./DecadeTrendChart";
 import TopicHeatmap from "./TopicHeatmap";
+import PartyEconomicPanel, { type PartyEconomicData } from "./PartyEconomicPanel";
+import partyEconomicGlobalRaw from "@/scripts/output/party-economic-response.json";
+import partyEconomicUsRaw from "@/scripts/output/party-economic-response-us.json";
+
+const partyEconomicGlobal = partyEconomicGlobalRaw as unknown as PartyEconomicData;
+const partyEconomicUs = partyEconomicUsRaw as unknown as PartyEconomicData;
 
 const TOC = [
   { id: "chi-square", label: "Chi-square partisan test" },
@@ -20,6 +26,7 @@ const TOC = [
   { id: "party-loyalty", label: "Party loyalty" },
   { id: "topic-party", label: "Topic × party matrix" },
   { id: "bayes-bf", label: "Bayesian partisan signal (BF₁₀)" },
+  { id: "party-economic", label: "Party × economic conditions" },
 ];
 
 function fmtNum(n: number | undefined | null, digits = 2): string {
@@ -949,6 +956,11 @@ export default async function AnalysisVotesPage() {
           </table>
         </div>
       </section>
+
+      {/* === Section 8: Party × economic conditions === */}
+      <div id="party-economic" className="scroll-mt-4">
+        <PartyEconomicPanel global={partyEconomicGlobal} us={partyEconomicUs} />
+      </div>
 
       <div className="border-t border-gray-800 pt-4 text-xs text-gray-600">
         Data:{" "}

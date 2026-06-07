@@ -1,0 +1,523 @@
+{
+  "generatedAt": "2026-06-07T21:02:04.851Z",
+  "scope": "US-only — congress_v1, congress_bills_v1, fr_rules_v1 vs World Bank API (USA, fetched live: NY.GDP.MKTP.KD.ZG, SL.UEM.TOTL.ZS, FP.CPI.TOTL.ZG)",
+  "thresholds": {
+    "recession": "NY.GDP.MKTP.KD.ZG (GDP growth) < 0 (contraction)",
+    "high-unemployment": "SL.UEM.TOTL.ZS (unemployment) > 7",
+    "high-inflation": "FP.CPI.TOTL.ZG (inflation, CPI YoY) > 5"
+  },
+  "method": {
+    "scope": "US legislation claims (congress_v1, congress_bills_v1, fr_rules_v1) linked into the ECONOMIC_CONTEXT graph. Year from claimEmergedAt. Crisis values looked up from worldbank_v1 (USA) in a ±1-year window (any in-window hit counts).",
+    "partyAlignment": "Substring keyword match on PoliticalContext.hogParty (lowercased), first-match wins, no match → unknown. 'democratic' keyword added for US Democratic Party.",
+    "voteData": "LegislativeVote.result aggregated per legislation claim through Edge.sourceId → LegislativeVote.sourceId. Pass rate = passed / (passed + failed) over individual roll-call records, not deduplicated by claim."
+  },
+  "partyAlignmentRules": {
+    "left": [
+      "labour",
+      "labor",
+      "social democrat",
+      "social-democrat",
+      "socialist",
+      "socialdemokrat",
+      "workers",
+      "workers'",
+      "communist",
+      "green",
+      "left",
+      "sandinista",
+      "awami",
+      "social democracy",
+      "democratic"
+    ],
+    "right": [
+      "conservative",
+      "republican",
+      "christian democrat",
+      "christian democracy",
+      "christian-democrat",
+      "christian social",
+      "christdemokrat",
+      "national party",
+      "people's party",
+      "likud",
+      "law and justice",
+      "brothers of italy",
+      "fianna fáil",
+      "fianna fail",
+      "bharatiya janata",
+      "isamaa",
+      "forza italia"
+    ],
+    "center": [
+      "liberal",
+      "centrist",
+      "centre party",
+      "center party",
+      "reform party",
+      "free democrat",
+      "renaissance",
+      "civic platform"
+    ]
+  },
+  "coverage": {
+    "totalInScopeLaws": 9205,
+    "lawsWithParty": 9205,
+    "lawsWithAnyCrisisLookup": 9205
+  },
+  "byIndicator": {
+    "recession": {
+      "left": {
+        "laws": 643,
+        "lawsWithVoteData": 17,
+        "passed": 31,
+        "failed": 1,
+        "passRate": 0.9688
+      },
+      "right": {
+        "laws": 1952,
+        "lawsWithVoteData": 23,
+        "passed": 45,
+        "failed": 1,
+        "passRate": 0.9783
+      },
+      "center": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      },
+      "unknown": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      }
+    },
+    "high-unemployment": {
+      "left": {
+        "laws": 1756,
+        "lawsWithVoteData": 46,
+        "passed": 85,
+        "failed": 1,
+        "passRate": 0.9884
+      },
+      "right": {
+        "laws": 1533,
+        "lawsWithVoteData": 23,
+        "passed": 45,
+        "failed": 1,
+        "passRate": 0.9783
+      },
+      "center": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      },
+      "unknown": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      }
+    },
+    "high-inflation": {
+      "left": {
+        "laws": 580,
+        "lawsWithVoteData": 46,
+        "passed": 85,
+        "failed": 3,
+        "passRate": 0.9659
+      },
+      "right": {
+        "laws": 979,
+        "lawsWithVoteData": 1,
+        "passed": 4,
+        "failed": 0,
+        "passRate": 1
+      },
+      "center": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      },
+      "unknown": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      }
+    }
+  },
+  "baseline_noCrisis": {
+    "recession": {
+      "left": {
+        "laws": 3926,
+        "lawsWithVoteData": 95,
+        "passed": 199,
+        "failed": 5,
+        "passRate": 0.9755
+      },
+      "right": {
+        "laws": 2684,
+        "lawsWithVoteData": 48,
+        "passed": 90,
+        "failed": 1,
+        "passRate": 0.989
+      },
+      "center": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      },
+      "unknown": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      }
+    },
+    "high-unemployment": {
+      "left": {
+        "laws": 2813,
+        "lawsWithVoteData": 66,
+        "passed": 145,
+        "failed": 5,
+        "passRate": 0.9667
+      },
+      "right": {
+        "laws": 2865,
+        "lawsWithVoteData": 48,
+        "passed": 90,
+        "failed": 1,
+        "passRate": 0.989
+      },
+      "center": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      },
+      "unknown": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      }
+    },
+    "high-inflation": {
+      "left": {
+        "laws": 3989,
+        "lawsWithVoteData": 66,
+        "passed": 145,
+        "failed": 3,
+        "passRate": 0.9797
+      },
+      "right": {
+        "laws": 3657,
+        "lawsWithVoteData": 70,
+        "passed": 131,
+        "failed": 2,
+        "passRate": 0.985
+      },
+      "center": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      },
+      "unknown": {
+        "laws": 0,
+        "lawsWithVoteData": 0,
+        "passed": 0,
+        "failed": 0,
+        "passRate": null
+      }
+    }
+  },
+  "topExamples": [
+    {
+      "tag": "high-inflation",
+      "alignment": "left",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Asbestos; Reporting and Recordkeeping Requirements Under the Toxic Substances Control Act (TSCA)\" as a final rule on 2023-12-05."
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "left",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Adoption and Submittal of State Plans for Designated Facilities: Implementing Regulations Under Clean Air Act Section 111(d)\" as a final rule on 2023-11-17, effective 2023-12-18. The Environmental Protection Agency (EPA) "
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "left",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Finding That Lead Emissions From Aircraft Engines That Operate on Leaded Fuel Cause or Contribute to Air Pollution That May Reasonably Be Anticipated To Endanger Public Health and Welfare\" as a final rule on 2023-10-20, e"
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "left",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Non-Hazardous Secondary Material Standards; Response to Petition\" as a final rule on 2023-10-18, effective 2023-12-18. The Environmental Protection Agency is finalizing its denial of a rulemaking petition from American Fo"
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "left",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Toxic Substances Control Act Reporting and Recordkeeping Requirements for Perfluoroalkyl and Polyfluoroalkyl Substances\" as a final rule on 2023-10-11, effective 2023-11-13. The Environmental Protection Agency (EPA) is fi"
+    },
+    {
+      "tag": "recession",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Revised 2023 and Later Model Year Light-Duty Vehicle Greenhouse Gas Emissions Standards\" as a final rule on 2021-12-30, effective 2022-02-28. The Environmental Protection Agency (EPA) is revising the greenhouse gas (GHG) "
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Revised 2023 and Later Model Year Light-Duty Vehicle Greenhouse Gas Emissions Standards\" as a final rule on 2021-12-30, effective 2022-02-28. The Environmental Protection Agency (EPA) is revising the greenhouse gas (GHG) "
+    },
+    {
+      "tag": "recession",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Revisions to the Unregulated Contaminant Monitoring Rule (UCMR 5) for Public Water Systems and Announcement of Public Meetings\" as a final rule on 2021-12-27, effective 2022-01-26. The U."
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Revisions to the Unregulated Contaminant Monitoring Rule (UCMR 5) for Public Water Systems and Announcement of Public Meetings\" as a final rule on 2021-12-27, effective 2022-01-26. The U."
+    },
+    {
+      "tag": "recession",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Pesticides; Certification of Pesticide Applicators; Extension to Expiration Date of Certification Plans\" as a final rule on 2021-12-20, effective 2022-02-18. The Environmental Protection Agency (EPA) is extending the expi"
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Pesticides; Certification of Pesticide Applicators; Extension to Expiration Date of Certification Plans\" as a final rule on 2021-12-20, effective 2022-02-18. The Environmental Protection Agency (EPA) is extending the expi"
+    },
+    {
+      "tag": "recession",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Review of the National Primary Drinking Water Regulation: Lead and Copper Rule Revisions (LCRR)\" as a final rule on 2021-12-17, effective 2021-06-16. On June 16, 2021, the U."
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Review of the National Primary Drinking Water Regulation: Lead and Copper Rule Revisions (LCRR)\" as a final rule on 2021-12-17, effective 2021-06-16. On June 16, 2021, the U."
+    },
+    {
+      "tag": "recession",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Phasedown of Hydrofluorocarbons: Establishing the Allowance Allocation and Trading Program Under the American Innovation and Manufacturing Act\" as a final rule on 2021-10-05, effective 2021-11-04. The Environmental Protec"
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "left",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Democratic Party",
+      "law": "The EPA published \"Phasedown of Hydrofluorocarbons: Establishing the Allowance Allocation and Trading Program Under the American Innovation and Manufacturing Act\" as a final rule on 2021-10-05, effective 2021-11-04. The Environmental Protec"
+    },
+    {
+      "tag": "recession",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Standards of Performance for Volatile Organic Liquid Storage Vessels (Including Petroleum Liquid Storage Vessels) for Which Construction, Reconstruction, or Modification Commenced After July 23, 1984\" as a final rule on 2"
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Standards of Performance for Volatile Organic Liquid Storage Vessels (Including Petroleum Liquid Storage Vessels) for Which Construction, Reconstruction, or Modification Commenced After July 23, 1984\" as a final rule on 2"
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "right",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Standards of Performance for Volatile Organic Liquid Storage Vessels (Including Petroleum Liquid Storage Vessels) for Which Construction, Reconstruction, or Modification Commenced After July 23, 1984\" as a final rule on 2"
+    },
+    {
+      "tag": "recession",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"National Primary Drinking Water Regulations: Lead and Copper Rule Revisions\" as a final rule on 2021-01-15, effective 2021-03-16. The Environmental Protection Agency (EPA) is publishing final regulatory revisions to the N"
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"National Primary Drinking Water Regulations: Lead and Copper Rule Revisions\" as a final rule on 2021-01-15, effective 2021-03-16. The Environmental Protection Agency (EPA) is publishing final regulatory revisions to the N"
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "right",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"National Primary Drinking Water Regulations: Lead and Copper Rule Revisions\" as a final rule on 2021-01-15, effective 2021-03-16. The Environmental Protection Agency (EPA) is publishing final regulatory revisions to the N"
+    },
+    {
+      "tag": "recession",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Pollutant-Specific Significant Contribution Finding for Greenhouse Gas Emissions From New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, and Process for Determining Significance of Oth"
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Pollutant-Specific Significant Contribution Finding for Greenhouse Gas Emissions From New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, and Process for Determining Significance of Oth"
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "right",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Pollutant-Specific Significant Contribution Finding for Greenhouse Gas Emissions From New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, and Process for Determining Significance of Oth"
+    },
+    {
+      "tag": "recession",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Control of Air Pollution From Airplanes and Airplane Engines: GHG Emission Standards and Test Procedures\" as a final rule on 2021-01-11, effective 2021-01-11. The Environmental Protection Agency (EPA) is adopting greenhou"
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Control of Air Pollution From Airplanes and Airplane Engines: GHG Emission Standards and Test Procedures\" as a final rule on 2021-01-11, effective 2021-01-11. The Environmental Protection Agency (EPA) is adopting greenhou"
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "right",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Control of Air Pollution From Airplanes and Airplane Engines: GHG Emission Standards and Test Procedures\" as a final rule on 2021-01-11, effective 2021-01-11. The Environmental Protection Agency (EPA) is adopting greenhou"
+    },
+    {
+      "tag": "recession",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "NY.GDP.MKTP.KD.ZG",
+      "indicatorValue": -2.16302914036166,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Review of Dust-Lead Post Abatement Clearance Levels\" as a final rule on 2021-01-07, effective 2021-03-08. Reducing childhood lead exposure is a priority for the Environmental Protection Agency (EPA)."
+    },
+    {
+      "tag": "high-unemployment",
+      "alignment": "right",
+      "year": 2020,
+      "indicatorCode": "SL.UEM.TOTL.ZS",
+      "indicatorValue": 8.055,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Review of Dust-Lead Post Abatement Clearance Levels\" as a final rule on 2021-01-07, effective 2021-03-08. Reducing childhood lead exposure is a priority for the Environmental Protection Agency (EPA)."
+    },
+    {
+      "tag": "high-inflation",
+      "alignment": "right",
+      "year": 2022,
+      "indicatorCode": "FP.CPI.TOTL.ZG",
+      "indicatorValue": 8.00279982052121,
+      "hogParty": "Republican Party",
+      "law": "The EPA published \"Review of Dust-Lead Post Abatement Clearance Levels\" as a final rule on 2021-01-07, effective 2021-03-08. Reducing childhood lead exposure is a priority for the Environmental Protection Agency (EPA)."
+    }
+  ]
+}
