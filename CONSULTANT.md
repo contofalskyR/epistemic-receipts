@@ -291,6 +291,34 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Two new database-side linkers: sanctions-economic and party-economic
+
+**What.** Two new pure-DB linkers (no LLM calls, country/year joins only):
+
+1. `scripts/link-sanctions-economic.ts` (relation type `ECONOMIC_IMPACT`). OFAC SDN claim (`ofac_sdn_v1`) → World Bank economic indicator claim (`worldbank_v1`) for the same country. Distinct from the existing `enrich-sanctions-economic-trajectory.ts` (relation `SANCTION_ECONOMIC_IMPACT`) — that one infers a sanction year T per OFAC entry from program inception and builds a [T-3,T+5] window per indicator; this new linker treats the OFAC list as currently-in-force (no per-record date in the bulk XML) and links a capped slice of representative OFAC entries per country (default 10, deterministic by uid asc) to all economic indicators for that country in WB year ≥ 2014. Indicator filter: `NY.GDP*`, `FP.CPI*`, `GC.DOD*`, `SL.UEM*`. **Live run:** 2,540 new relations created (0 skipped — first run). 10 countries matched (BLR, CAF, CUB, IRN, NIC, MMR, VEN, SOM, RUS, IRQ — PRK is the 11th OFAC country but has no WB economic-indicator coverage in our slice). BLR (510 pairs) and CAF (450 pairs) dominate because they have the widest WB indicator coverage.
+
+2. `scripts/link-party-economic.ts` (relation type `PASSED_DURING`). US congressional vote claim (`congress_votes_v1`) → US World Bank economic indicator claim. Year window: vote year ±1 (WB year ∈ {voteYear-1, voteYear, voteYear+1}). Party-line filter: `yea_pct > 0.8 OR nay_pct > 0.8`. **Schema note:** the spec said "check the schema for how party data is stored." `congress_votes_v1` claim metadata carries only `yea`/`nay`/`present` counts; per-party breakdowns live on `LegislativeVote.byPartyJson`, but `LegislativeVote.sourceId` does not currently link to any source produced by the `congress_votes_v1` pipeline (verified: 0 of 505 `congress_votes_v1` claims have a linked LegislativeVote row). The spec's fallback `yea_pct > 0.8 OR nay_pct > 0.8` was therefore the only available signal. **Live run:** 956 new relations created (0 skipped — first run). 188 of 505 congress vote claims qualified as lopsided; 317 skipped as too close. Pairs span vote years matched against WB US economic indicators (66 US economic-indicator claims in `worldbank_v1`).
+
+**Conventions followed.** Both scripts: `--dry-run` flag, `ALLOW_EDITS=true` gate for live writes, batched `createMany` with `skipDuplicates: true` wrapped in `prisma.$transaction(fn, { timeout: 30000 })` at batch size 500, end-of-run summary, `followUpContext.note` per spec, and the `@@unique([fromClaimId, toClaimId, relationType])` constraint handles re-run idempotency.
+
+**Caveat on the party-line filter.** `yea_pct > 0.8` selects bipartisan / lopsided / procedural votes, not party-line partisan votes (those typically fall in the 0.5–0.6 range). The spec's literal threshold was used as written; if the intent was "partisan", the threshold needs inversion and per-party breakdown data must first be backfilled onto `congress_votes_v1` claims (see `scripts/backfill-congress-party-votes.ts` for prior art on the LegislativeVote side).
+
+---
+
+### 2026-06-07 — OFAC sanctions → World Bank economic-trajectory linker
+
+**What.** New enricher `scripts/enrich-sanctions-economic-trajectory.ts` (relation type `SANCTION_ECONOMIC_IMPACT`). Creates ClaimRelations from each `ofac_sdn_v1` claim to every `worldbank_v1` indicator claim for the same country in the [T-3, T+5] window around the sanction year T.
+
+**Run results.** 93,825 relations inserted (live, 2026-06-07). 6,110 OFAC entries resolved to a (country, T) cohort. 10 countries with WB indicator coverage (all sanctioned countries with `metadata.alpha3` except PRK, whose worldbank_v1 record only carries population/CO2). Top 5 GDP-growth-drop cohorts (pre-3y avg − post-5y avg, computed from `NY.GDP.MKTP.CD` YoY since `NY.GDP.MKTP.KD.ZG` isn't ingested for the affected countries): MMR T=2011 −34.70pp, IRN T=2012 −19.82pp, IRN T=2010 −18.56pp, IRQ T=2001 −18.14pp, RUS T=2014 −17.19pp.
+
+**Sanction year T derivation.** OFAC SDN metadata does not contain a designation date — the ingester records `uid + programs + alpha3` only. T is therefore inferred from the earliest program in the entry's `programs` array via a `PROGRAM_YEAR` map keyed on EO signing / program-inception years (Iran 1995, Russia-EO14024 2021, Ukraine-EO1366x 2014, Venezuela 2015, Burma-EO14014 2021, etc., plus thematic programs like SDGT/GLOMAG). Per-relation provenance recorded in `followUpContext.sanctionYearSource = "program_inception"`.
+
+**Indicator scope.** Focus indicators (`NY.GDP.MKTP.KD.ZG`, `FP.CPI.TOTL.ZG`, `SL.UEM.TOTL.ZS`) are only ingested for BLR/CAF in current worldbank_v1, so the enricher also includes `NY.GDP.MKTP.CD` and `NY.GDP.PCAP.CD` as broader-coverage fallbacks. When growth (`KD.ZG`) is unavailable for the trajectory ranking, YoY % change on GDP level (`MKTP.CD`) is used and tagged `source: "level_yoy"` in the log.
+
+**Note for future work.** GDP-level YoY in current USD is currency-conversion-noisy (e.g. Myanmar's pre-2011 35.98% reflects USD reconvergence, not real growth). For higher signal on remaining cohorts, extend `ingest-worldbank.ts` to fetch `NY.GDP.MKTP.KD.ZG` for the IRN/RUS/VEN/IRQ/MMR/CUB/NIC/SOM list, then re-run this enricher (idempotent — `[fromClaimId, toClaimId, relationType]` unique constraint dedupes).
+
+---
+
 ### 2026-06-07 — UCDP/PRIO armed-conflict pipeline + UCDP→SIPRI military-context linker
 
 **What.** New ingester `scripts/ingest-ucdp.ts` (pipeline tag `ucdp_v1`) and linker `scripts/link-ucdp-sipri.ts` (relation type `MILITARY_CONTEXT`). One Claim per (conflict, dyad, year) sourced from UCDP/PRIO v25.1, joined with the Battle-Related Deaths Dyadic dataset for casualty estimates.
@@ -3428,3 +3456,22 @@ The SPARQL queries cap at LIMIT 2000 — rerun as-is to pick up any newly added 
 **Idempotent.** P2002 unique-constraint hits on `(fromClaimId, toClaimId, relationType)` are caught and counted as skipped. Safe to rerun with larger `--limit` once we ingest more OpenAlex works.
 
 **Files added.** `scripts/link-nih-openalex.ts`.
+
+---
+
+### 2026-06-07 — Retraction linker reruns + WorldBank → legislation ECONOMIC_CONTEXT linker
+
+**Retraction linker reruns (idempotent).**
+- `link-retraction-originals.ts` — reran LIVE. 11,324 unique original→retraction pairs reconfirmed: **5 new REVERSED inserts, 11,319 existing** (upserts updated `followUpContext`). Also fixed a TS compile error: the explicit `Record<string, unknown>` annotation on `followUpContext` is not assignable to Prisma's `InputJsonValue`; removed the annotation so the object literal is inferred.
+- `link-retractions-crossref.ts --skip-api` — reran LIVE. DB-side DOI match found 11,321 pairs (subset of the OpenAlex DOI universe): **2 new REVERSED, 11,319 existing** (rest were already inserted by the prior run + the originals script). Skipped the CrossRef API enrichment step (`--skip-api`) since prior CONSULTANT note confirms ~99.9% empty `relation` fields and the productive work is the DB join. **REVERSED total now 11,326 (was 26 before the original 2026-06-01 run; +11,300 from the new OpenAlex coverage).**
+
+**Added: `scripts/link-worldbank-legislation.ts` — ECONOMIC_CONTEXT linker.**
+- `from = legislation claim` → `to = worldbank_v1 economic indicator claim`, `relationType = "ECONOMIC_CONTEXT"`, year ±1 window around the law's `claimEmergedAt`.
+- Hardcoded `PIPELINE_TO_ISO3` map for 60+ legislation pipelines (national pipelines only — supranational `eu_legislation_v1`, `un_sc_resolutions_v1`, `nato_official_texts_v1` excluded since they don't map to a single country). Matches Wikidata QID coverage in `enrich-political-context-wikidata.ts`.
+- Economic-indicator filter accepts codes prefixed `NY.GDP`, `FP.CPI`, `GC.DOD` or equal to `NY.GDP.DEFL.KD.ZG`. Of the 34,643 worldbank_v1 claims, 13,622 (GDP + GDP per capita only, since current ingester carries no debt/inflation/CPI series) qualify across 214 countries.
+- Bulk insert via `createMany({ skipDuplicates: true })` in 1000-row batches against the `(fromClaimId, toClaimId, relationType)` unique constraint; idempotent.
+- Live run: 354,190 dated legislation claims × 13,622 economic indicator claims → **1,262,112 ECONOMIC_CONTEXT relations inserted** (no prior duplicates). Distribution dominated by Hungary (69k laws), Argentina (26k), Czech Republic (24k), Italy (17k), Chile (16k), Romania (14k).
+
+**Telegram notification sent** to chat 7688025079 (msg ID 10106).
+
+**Files added.** `scripts/link-worldbank-legislation.ts`.
