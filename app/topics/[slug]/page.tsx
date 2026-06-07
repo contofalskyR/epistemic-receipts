@@ -198,6 +198,7 @@ function TimelineSection({ points }: { points: TimelinePoint[] }) {
   }
   const max = Math.max(...filled.map(p => p.count));
   const total = filled.reduce((s, p) => s + p.count, 0);
+  const CHART_H = 128; // px, matches h-32
   return (
     <section className="space-y-3">
       <div>
@@ -207,29 +208,36 @@ function TimelineSection({ points }: { points: TimelinePoint[] }) {
         </p>
       </div>
       <div className="rounded-lg border border-gray-800 bg-gray-900 p-3">
-        <div className="flex items-end gap-0.5 h-32">
-          {filled.map(p => {
-            const h = max > 0 ? (p.count / max) * 100 : 0;
-            return (
-              <div
-                key={p.year}
-                className="flex-1 min-w-[2px] flex flex-col justify-end group relative"
-                title={`${p.year}: ${p.count} ${p.count === 1 ? "claim" : "claims"}`}
-              >
-                <div
-                  className="bg-blue-700 hover:bg-blue-500 transition-colors rounded-sm"
-                  style={{ height: `${h}%`, minHeight: p.count > 0 ? "1px" : "0" }}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex justify-between mt-2 text-[10px] text-gray-600 font-mono">
-          <span>{minYear}</span>
-          {maxYear - minYear > 8 && (
-            <span>{Math.round((minYear + maxYear) / 2)}</span>
-          )}
-          <span>{maxYear}</span>
+        <div className="flex gap-2">
+          {/* Y-axis */}
+          <div className="flex flex-col justify-between text-right" style={{ height: CHART_H, minWidth: 28 }}>
+            <span className="text-[10px] text-gray-600 font-mono">{max}</span>
+            <span className="text-[10px] text-gray-600 font-mono">{Math.round(max / 2)}</span>
+            <span className="text-[10px] text-gray-600 font-mono">0</span>
+          </div>
+          {/* Bars */}
+          <div className="flex-1 flex flex-col gap-1">
+            <div className="flex items-end gap-0.5" style={{ height: CHART_H }}>
+              {filled.map(p => {
+                const h = max > 0 ? Math.round((p.count / max) * CHART_H) : 0;
+                return (
+                  <div
+                    key={p.year}
+                    className="flex-1 min-w-[2px] bg-blue-700 hover:bg-blue-500 transition-colors rounded-sm"
+                    style={{ height: h > 0 ? h : 1, opacity: h > 0 ? 1 : 0.15 }}
+                    title={`${p.year}: ${p.count} ${p.count === 1 ? "claim" : "claims"}`}
+                  />
+                );
+              })}
+            </div>
+            <div className="flex justify-between text-[10px] text-gray-600 font-mono">
+              <span>{minYear}</span>
+              {maxYear - minYear > 8 && (
+                <span>{Math.round((minYear + maxYear) / 2)}</span>
+              )}
+              <span>{maxYear}</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
