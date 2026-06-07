@@ -3256,3 +3256,31 @@ The SPARQL queries cap at LIMIT 2000 — rerun as-is to pick up any newly added 
 **Rules confirmed:**
 - Never use `OPENAI_API_KEY` from OpenClaw gateway for epistemic-receipts or any project work — use Claude CLI only
 - generate-reasons.ts uses `execFileSync('claude', ['--print', ...])` pattern
+
+---
+
+### 2026-06-07 — Bills → Court ClaimRelation linker (zero-match result)
+
+**Added.** `scripts/link-bills-to-court.ts` — links enacted `congress_v1` bills to `courtlistener_*` opinions via ILIKE search on extracted short-title act names. Filters: skips generic prefixes ("To amend …", "An Act to …", post-office naming bills), requires ≥4-word title containing Act/Resolution/Amendments/Reauthorization, dedupes by act name, caps 10 court hits per act. Uses `relationType='cites'` (closest valid type per schema; `REFERENCED_BY` is not in the existing vocabulary) with direction court opinion → enacted law. Idempotent via the `(fromClaimId, toClaimId, relationType)` unique constraint.
+
+**Live run result: 0 inserted.** From 10,360 congress_v1 claims → 4,503 matchable act names → **0 court opinions matched any act name**. Root cause: the CourtListener ingester stores a templated short summary in `Claim.text` — "The U.S. Supreme Court in CASE_NAME (YEAR) issued a ruling on the legal questions presented in the case." (avg 157 chars, max 315) — with no opinion body. Act names like "Voting Rights Act", "Civil Rights Act", "Affordable Care", "Sarbanes", "Patriot Act", "Dodd-Frank" all return 0 hits via ILIKE on `Claim.text` across all six `courtlistener_*` pipelines.
+
+**Implication.** This linker will only become productive once court opinions carry richer text — either full opinion bodies, syllabi/holdings, or at minimum the statutes-cited list — on the Claim or in `Claim.metadata`. The script is left in place so the rerun is one command once that data lands. Per AGENTS.md rule "Verify ingester counters against DB state" — DB confirmed via the script's own `pairsConsidered=0` count and direct ILIKE spot-checks; no rows were written.
+
+**Files added.** `scripts/link-bills-to-court.ts`.
+
+---
+
+### 2026-06-07 — NIH Reporter → OpenAlex FUNDED_BY linker
+
+**Added.** `scripts/link-nih-openalex.ts` — writes `ClaimRelation(relationType='FUNDED_BY')` rows from OpenAlex publication claims (fromClaim) to NIH Reporter grant claims (toClaim).
+
+**Method.** NIH project_num parsed into (type, activity, institute, serial, suffix) via the regex `^(\d)?([A-Z][A-Z0-9]{2})([A-Z]{2})(\d{6})(.*)$`. Claims are grouped by activity+institute+serial (AIS) — the AIS spans every renewal year of one funded program. For each AIS, the script queries `https://api.openalex.org/works?filter=awards.funder_award_id:<AIS>|<AIS-01>|<AIS-02>|...` (OR-joining the bare AIS with every year-suffix present in our DB) and pulls cursor-paginated results capped at 200 works per grant. Each returned work's W-id is looked up in a pre-built map of `openalex_v1` claim externalIds; matches yield FUNDED_BY relations to every NIH claim in that AIS group.
+
+**Field name correction.** The OpenAlex `grants.award_id` field referenced in older docs is now `awards.funder_award_id`. The old name returns HTTP 400. The 250M-work corpus indexes the award_id as the literal string the publisher reported (e.g. `R01GM126567` or `R01GM126567-01`) — no substring/search variant exists for this field, so OR-joining variants is the only way to maximize hits without per-suffix queries.
+
+**Run result.** 500 AIS groups queried (out of 5,391 in DB) → 205 had OpenAlex hits → 1,246 total OA works returned → **1 work matched our `openalex_v1` slice** → 7 FUNDED_BY relations inserted (one paper × 7 NIH year-claims under grant R01AI110964, work W3080845626). Low yield is expected: our 315k OpenAlex slice is ~0.13% of OpenAlex's full ~250M-work catalog, and NIH-funded works concentrate outside our policy/cognition/biomedical bucket selection. The mechanics are correct; broadening NIH coverage requires either more OpenAlex ingestion or a different query path (e.g. pulling cited works directly from each NIH grant's OpenAlex Award entity, if we can resolve our grants to G-ids).
+
+**Idempotent.** P2002 unique-constraint hits on `(fromClaimId, toClaimId, relationType)` are caught and counted as skipped. Safe to rerun with larger `--limit` once we ingest more OpenAlex works.
+
+**Files added.** `scripts/link-nih-openalex.ts`.

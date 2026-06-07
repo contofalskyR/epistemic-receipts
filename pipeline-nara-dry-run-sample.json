@@ -1,42 +1,22 @@
 {
-  "runDate": "2026-05-28T17:47:43.834Z",
+  "runDate": "2026-06-06T19:53:16.608Z",
   "apiNote": "NARA Catalog API v2 — requires x-api-key header (register at Catalog_API@nara.gov)",
   "recordGroups": [
-    "RG 263 — Records of the Central Intelligence Agency (CIA)",
-    "RG 59 — General Records of the Department of State",
-    "RG 330 — Records of the Office of the Secretary of Defense",
-    "RG 128 — Records of Joint Committees of Congress",
-    "RG 148 — Records of the Assassination Records Review Board (JFK)"
+    "RG 220 — Records of Temporary Committees, Commissions, and Boards (Presidential Commissions)"
   ],
-  "totalCandidates": 100,
+  "totalCandidates": 20,
   "rgBreakdown": {
-    "RG 263": {
+    "RG 220": {
       "fetched": 20,
-      "apiTotal": 13507
-    },
-    "RG 59": {
-      "fetched": 20,
-      "apiTotal": 76870
-    },
-    "RG 330": {
-      "fetched": 20,
-      "apiTotal": 307589
-    },
-    "RG 128": {
-      "fetched": 20,
-      "apiTotal": 67
-    },
-    "RG 148": {
-      "fetched": 20,
-      "apiTotal": 2224
+      "apiTotal": 21668
     }
   },
   "sample": [
     {
-      "claimText": "\"501273 - North Vietnam - Panhandle Area\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797511",
-      "naId": "74797511",
-      "recordGroup": "263",
+      "claimText": "\"Memorandum for Major General Glen E. Edgerton\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68143034",
+      "naId": "68143034",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -49,16 +29,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797511",
+        "url": "https://catalog.archives.gov/id/68143034",
         "methodologyType": "primary",
-        "name": "501273 - North Vietnam - Panhandle Area"
+        "name": "Memorandum for Major General Glen E. Edgerton"
       }
     },
     {
-      "claimText": "\"501271 - North Vietnam - Northern Area\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797509",
-      "naId": "74797509",
-      "recordGroup": "263",
+      "claimText": "\"Memorandum from Senator Kenneth McKellar to Members of Congress, with Attachment\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142981",
+      "naId": "68142981",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -71,16 +51,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797509",
+        "url": "https://catalog.archives.gov/id/68142981",
         "methodologyType": "primary",
-        "name": "501271 - North Vietnam - Northern Area"
+        "name": "Memorandum from Senator Kenneth McKellar to Members of Congress, with Attachment"
       }
     },
     {
-      "claimText": "\"29461.1 - North Vietnam Map\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797497",
-      "naId": "74797497",
-      "recordGroup": "263",
+      "claimText": "\"Memorandum from Douglas Orr, Plan for the Disposition of Surplus Material from the White House\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142975",
+      "naId": "68142975",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -93,16 +73,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797497",
+        "url": "https://catalog.archives.gov/id/68142975",
         "methodologyType": "primary",
-        "name": "29461.1 - North Vietnam Map"
+        "name": "Memorandum from Douglas Orr, Plan for the Disposition of Surplus Material from the White House"
       }
     },
     {
-      "claimText": "\"22479 - North Vietnam Vegetation\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797481",
-      "naId": "74797481",
-      "recordGroup": "263",
+      "claimText": "\"Memorandum from Major General Glen E. Edgerton to Mr. Lorenzo Winslow\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142921",
+      "naId": "68142921",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -115,16 +95,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797481",
+        "url": "https://catalog.archives.gov/id/68142921",
         "methodologyType": "primary",
-        "name": "22479 - North Vietnam Vegetation"
+        "name": "Memorandum from Major General Glen E. Edgerton to Mr. Lorenzo Winslow"
       }
     },
     {
-      "claimText": "\"22478 - North Vietnam Rock Types\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797479",
-      "naId": "74797479",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Seventy-Fifth Meeting of the Commission On Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142863",
+      "naId": "68142863",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -137,16 +117,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797479",
+        "url": "https://catalog.archives.gov/id/68142863",
         "methodologyType": "primary",
-        "name": "22478 - North Vietnam Rock Types"
+        "name": "Minutes of the Seventy-Fifth Meeting of the Commission On Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"22477 - North Vietnam Soils\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797477",
-      "naId": "74797477",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Seventy-Third Meeting of the Commission On Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142840",
+      "naId": "68142840",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -159,16 +139,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797477",
+        "url": "https://catalog.archives.gov/id/68142840",
         "methodologyType": "primary",
-        "name": "22477 - North Vietnam Soils"
+        "name": "Minutes of the Seventy-Third Meeting of the Commission On Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"17737 - North Vietnam Airfields\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_74797469",
-      "naId": "74797469",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Seventy-First Meeting of the Commission On Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142821",
+      "naId": "68142821",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -181,126 +161,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/74797469",
+        "url": "https://catalog.archives.gov/id/68142821",
         "methodologyType": "primary",
-        "name": "17737 - North Vietnam Airfields"
+        "name": "Minutes of the Seventy-First Meeting of the Commission On Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"Tom Schuler\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_654028",
-      "naId": "654028",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This animated film shows the development of the government of the thirteen American colonies, the Revolution, the Bill of Rights, and the creation of the U.S. Constitution.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/654028",
-        "methodologyType": "primary",
-        "name": "Tom Schuler"
-      }
-    },
-    {
-      "claimText": "\"The Middle East\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_653946",
-      "naId": "653946",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This film covers the Egyptian and Israeli conflict.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/653946",
-        "methodologyType": "primary",
-        "name": "The Middle East"
-      }
-    },
-    {
-      "claimText": "\"Cardinal Rules for Attack Helicopters\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_649672",
-      "naId": "649672",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This U.S. Army film covers the tactical considerations employed with the use of armed helicopters.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/649672",
-        "methodologyType": "primary",
-        "name": "Cardinal Rules for Attack Helicopters"
-      }
-    },
-    {
-      "claimText": "\"North Vietnam Army Tank Unit\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_646893",
-      "naId": "646893",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This film shows scenes of North Vietnam Army units in training.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/646893",
-        "methodologyType": "primary",
-        "name": "North Vietnam Army Tank Unit"
-      }
-    },
-    {
-      "claimText": "\"Communist China Explodes an A-Bomb\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_641734",
-      "naId": "641734",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This film only shows the explosion of an A-Bomb.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/641734",
-        "methodologyType": "primary",
-        "name": "Communist China Explodes an A-Bomb"
-      }
-    },
-    {
-      "claimText": "\"Satellite Image of San Francisco, California\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_595267",
-      "naId": "595267",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Sixty-Ninth Meeting of the Commission On Renovation of the Executive Mansion [Misdated 1951]\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142790",
+      "naId": "68142790",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -313,16 +183,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/595267",
+        "url": "https://catalog.archives.gov/id/68142790",
         "methodologyType": "primary",
-        "name": "Satellite Image of San Francisco, California"
+        "name": "Minutes of the Sixty-Ninth Meeting of the Commission On Renovation of the Executive Mansion [Misdated 1951]"
       }
     },
     {
-      "claimText": "\"Aerial Photograph of Mount Saint Helens, Washington\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_595260",
-      "naId": "595260",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Sixty-Sixth Meeting of the Commission On Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142768",
+      "naId": "68142768",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -335,16 +205,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/595260",
+        "url": "https://catalog.archives.gov/id/68142768",
         "methodologyType": "primary",
-        "name": "Aerial Photograph of Mount Saint Helens, Washington"
+        "name": "Minutes of the Sixty-Sixth Meeting of the Commission On Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"Aerial Photograph of Mount Saint Helens, Washington\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_595259",
-      "naId": "595259",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Fifty-Ninth Meeting of the Commission on Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142699",
+      "naId": "68142699",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -357,16 +227,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/595259",
+        "url": "https://catalog.archives.gov/id/68142699",
         "methodologyType": "primary",
-        "name": "Aerial Photograph of Mount Saint Helens, Washington"
+        "name": "Minutes of the Fifty-Ninth Meeting of the Commission on Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"Aerial Photograph of the Kennedy Space Center\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_595143",
-      "naId": "595143",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Fifty-Fifth Meeting of the Commission on Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142652",
+      "naId": "68142652",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -379,38 +249,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/595143",
+        "url": "https://catalog.archives.gov/id/68142652",
         "methodologyType": "primary",
-        "name": "Aerial Photograph of the Kennedy Space Center"
+        "name": "Minutes of the Fifty-Fifth Meeting of the Commission on Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"B-26 on an Airstrip in Retalhuleu, Guatemala\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_505633954",
-      "naId": "505633954",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Guatemala Retalhuleu      14 31 N   91 40 W      B-26 on airstrip. Bombs in foreground.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/505633954",
-        "methodologyType": "primary",
-        "name": "B-26 on an Airstrip in Retalhuleu, Guatemala"
-      }
-    },
-    {
-      "claimText": "\"South Africa Vegetation\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_502871781",
-      "naId": "502871781",
-      "recordGroup": "263",
+      "claimText": "\"Minutes of the Thirty-Ninth Meeting of the Commission on Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142407",
+      "naId": "68142407",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -423,60 +271,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/502871781",
+        "url": "https://catalog.archives.gov/id/68142407",
         "methodologyType": "primary",
-        "name": "South Africa Vegetation"
+        "name": "Minutes of the Thirty-Ninth Meeting of the Commission on Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"Tibet-Szechwan Border\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_502871775",
-      "naId": "502871775",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "(Not in English).",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/502871775",
-        "methodologyType": "primary",
-        "name": "Tibet-Szechwan Border"
-      }
-    },
-    {
-      "claimText": "\"Tibet-Szechwan Border\" — archived at NARA, Record Group 263",
-      "externalId": "nara_catalog_502871768",
-      "naId": "502871768",
-      "recordGroup": "263",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "(Not in English).",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/502871768",
-        "methodologyType": "primary",
-        "name": "Tibet-Szechwan Border"
-      }
-    },
-    {
-      "claimText": "\"US Embassy, Panama, First Floor Framing Plan\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_84786288",
-      "naId": "84786288",
-      "recordGroup": "59",
+      "claimText": "\"Minutes of the Thirty-Second Meeting of the Commission on Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142321",
+      "naId": "68142321",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -489,258 +293,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/84786288",
+        "url": "https://catalog.archives.gov/id/68142321",
         "methodologyType": "primary",
-        "name": "US Embassy, Panama, First Floor Framing Plan"
+        "name": "Minutes of the Thirty-Second Meeting of the Commission on Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"Newspaper Clipping \"Untitled\"\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81548057",
-      "naId": "81548057",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a newspaper clipping regarding Dick Gregory's proposed visit to U.S. war prisoners in North Vietnam.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81548057",
-        "methodologyType": "primary",
-        "name": "Newspaper Clipping \"Untitled\""
-      }
-    },
-    {
-      "claimText": "\"Memorandum from James F. Brooks\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81548046",
-      "naId": "81548046",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a memorandum stating that as of November 30, 1966, PT/DA had no record of a validation request in the name of \"Dick Gregory.\"",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81548046",
-        "methodologyType": "primary",
-        "name": "Memorandum from James F. Brooks"
-      }
-    },
-    {
-      "claimText": "\"Copy of Telegraph to the Department of State from Richard C. Gregory\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81548041",
-      "naId": "81548041",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a telegraph from Richard C. Gregory expressing intent to travel to North Vietnam.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81548041",
-        "methodologyType": "primary",
-        "name": "Copy of Telegraph to the Department of State from Richard C. Gregory"
-      }
-    },
-    {
-      "claimText": "\"Reference Slip to Frances G. Knight from William E. Duggan\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81548035",
-      "naId": "81548035",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a note regarding Richard C. Gregory.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81548035",
-        "methodologyType": "primary",
-        "name": "Reference Slip to Frances G. Knight from William E. Duggan"
-      }
-    },
-    {
-      "claimText": "\"Telegram from American Embassy Vientiane to Department of State\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81548015",
-      "naId": "81548015",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a telegram regarding Richard C. Gregory's possible travel to North Vietnam by ICC plane from Vientiane.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81548015",
-        "methodologyType": "primary",
-        "name": "Telegram from American Embassy Vientiane to Department of State"
-      }
-    },
-    {
-      "claimText": "\"Newspaper Clipping Titled \"Gregory to Cancel Trip: Raps State Department\"\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81548009",
-      "naId": "81548009",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a copy of a newspaper clipping regarding Richard C. Gregory's civil action case.  It includes reference slip.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81548009",
-        "methodologyType": "primary",
-        "name": "Newspaper Clipping Titled \"Gregory to Cancel Trip: Raps State Department\""
-      }
-    },
-    {
-      "claimText": "\"United States District Court Richard C. Gregory against the Secretary of State, Civil Action Case No. 3374-66\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81547998",
-      "naId": "81547998",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of disposition and exhibits of Civil Action No. 3374-66.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81547998",
-        "methodologyType": "primary",
-        "name": "United States District Court Richard C. Gregory against the Secretary of State, Civil Action Case No. 3374-66"
-      }
-    },
-    {
-      "claimText": "\"Memorandum to Lois Lee from Francis G. Knight\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81547755",
-      "naId": "81547755",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item includes a memorandum regarding passport case documents.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81547755",
-        "methodologyType": "primary",
-        "name": "Memorandum to Lois Lee from Francis G. Knight"
-      }
-    },
-    {
-      "claimText": "\"Letter to Leonard C. Meeker from J. Walter Yeagley\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81547747",
-      "naId": "81547747",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item consists of a summons with annexed complaint of Civil Action No. 3374-66 and reference slip.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81547747",
-        "methodologyType": "primary",
-        "name": "Letter to Leonard C. Meeker from J. Walter Yeagley"
-      }
-    },
-    {
-      "claimText": "\"Letter to the Secretary of State from  J. Walter Yeagley\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81451407",
-      "naId": "81451407",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Included in this item are copies of correspondence between John H. Davitt and John A. Laird, a newspaper clipping regarding the passport case, a post card titled \"A Training School for Communists,\" an…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81451407",
-        "methodologyType": "primary",
-        "name": "Letter to the Secretary of State from  J. Walter Yeagley"
-      }
-    },
-    {
-      "claimText": "\"Memorandum from Errol Flynn to Secretary of State\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81450982",
-      "naId": "81450982",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is Errol Flynn's request for a passport for work on the film \"Treasure in Yucatan.\"  The film will be shot in Mexico, Central America, and southern France.  The memorandum is signed by Flynn…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81450982",
-        "methodologyType": "primary",
-        "name": "Memorandum from Errol Flynn to Secretary of State"
-      }
-    },
-    {
-      "claimText": "\"Passport Renewal Application\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81450978",
-      "naId": "81450978",
-      "recordGroup": "59",
+      "claimText": "\"Minutes of the Twenty-First Meeting of the Commission on Renovation of the Executive Mansion\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68142149",
+      "naId": "68142149",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -753,16 +315,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/81450978",
+        "url": "https://catalog.archives.gov/id/68142149",
         "methodologyType": "primary",
-        "name": "Passport Renewal Application"
+        "name": "Minutes of the Twenty-First Meeting of the Commission on Renovation of the Executive Mansion"
       }
     },
     {
-      "claimText": "\"Passport Application\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81450976",
-      "naId": "81450976",
-      "recordGroup": "59",
+      "claimText": "\"Agenda, December 14-15, 2007\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68126321",
+      "naId": "68126321",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -775,610 +337,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/81450976",
+        "url": "https://catalog.archives.gov/id/68126321",
         "methodologyType": "primary",
-        "name": "Passport Application"
+        "name": "Agenda, December 14-15, 2007"
       }
     },
     {
-      "claimText": "\"Memorandum from Errol Flynn to Passport Division\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81450973",
-      "naId": "81450973",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is Errol Flynn's request to keep his regular passport so that he can travel to Europe for business purposes after he completes his work with the United States Army in Korea.  The memorandum …",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81450973",
-        "methodologyType": "primary",
-        "name": "Memorandum from Errol Flynn to Passport Division"
-      }
-    },
-    {
-      "claimText": "\"Western Union Telegram from J. Obringer, Assistant Secretary at Warner Brothers, to Justin M. Golenbock\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81449689",
-      "naId": "81449689",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is related to the film \"Master of Ballantrae\" for which Errol Flynn was working on July-October 1952.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81449689",
-        "methodologyType": "primary",
-        "name": "Western Union Telegram from J. Obringer, Assistant Secretary at Warner Brothers, to Justin M. Golenbock"
-      }
-    },
-    {
-      "claimText": "\"Memorandum from Frances G. Knight, Passport Office Director, to Justin M. Golenbock\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81448617",
-      "naId": "81448617",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is related to Errol Flynn's foreign residence and whether it was in violation of the Immigration and Naturalization Act.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81448617",
-        "methodologyType": "primary",
-        "name": "Memorandum from Frances G. Knight, Passport Office Director, to Justin M. Golenbock"
-      }
-    },
-    {
-      "claimText": "\"Memorandum from Justin M. Golenbock, Executor of the Estate of Flynn, to the Department of State\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81448534",
-      "naId": "81448534",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is related to Justin Golenbock's request for access to any files related to Errol Flynn maintained by the agency.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81448534",
-        "methodologyType": "primary",
-        "name": "Memorandum from Justin M. Golenbock, Executor of the Estate of Flynn, to the Department of State"
-      }
-    },
-    {
-      "claimText": "\"Telegram from the London American Embassy to Secretary of State\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81448516",
-      "naId": "81448516",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This is a telegram outlining Lenny Bruce's deportation from the United Kingdom on April 13, 1962.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81448516",
-        "methodologyType": "primary",
-        "name": "Telegram from the London American Embassy to Secretary of State"
-      }
-    },
-    {
-      "claimText": "\"Telegram from the London American Embassy to the Department of State\" — archived at NARA, Record Group 59",
-      "externalId": "nara_catalog_81448508",
-      "naId": "81448508",
-      "recordGroup": "59",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This incoming telegram inquires if the London Embassy should intercede if Lenny Bruce were denied permission to enter the United Kingdom.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/81448508",
-        "methodologyType": "primary",
-        "name": "Telegram from the London American Embassy to the Department of State"
-      }
-    },
-    {
-      "claimText": "\"Integrated Operational Intelligence System\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_733842",
-      "naId": "733842",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This U.S. Navy training film discusses personnel involved in a mission planning session, and describes how each contributed to the briefing. Also examined is how photographic and electronic intelligen…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/733842",
-        "methodologyType": "primary",
-        "name": "Integrated Operational Intelligence System"
-      }
-    },
-    {
-      "claimText": "\"The Honorable Donald H. Rumsfeld (left), U.S. Secretary of Defense, is interviewed by Mr. Vic Rattner, ABC Radio News, in the Pentagon Studio, Washington, D.C., Jul. 19, 1976.   (DoD photo by Ron Hall) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704319",
-      "naId": "6704319",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: Pentagon\n\nState: District Of Columbia (DC)\n\nCountry: United States Of America (USA)\n\nScene Camera Operator: Ron Hall, CIV\n\nRelease Status:…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704319",
-        "methodologyType": "primary",
-        "name": "The Honorable Donald H. Rumsfeld (left), U.S. Secretary of Defense, is interviewed by Mr. Vic Rattner, ABC Radio News, in the Pentagon Studio, Washington, D.C., Jul. 19, 1976.   (DoD photo by Ron Hall) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Arleigh Burke Class Guided Missile Destroyer USS PAUL HAMILTON (DDG 60) transits the Pearl Harbor Channel making her way pier-side to Naval Station Pearl Harbor, Hawaii, on Aug. 20, 2007, after returning from a mission as part of the USS RONALD REAGAN (CVN) Carrier Strike Group (CCSG) in support of Operation Iraqi Freedom.  (U.S. Navy photo by Mass Communications SPECIALIST 1ST Class James E. Foehl) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704313",
-      "naId": "6704313",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: Naval Station, Pearl Harbor\n\nState: Hawaii (HI)\n\nCountry: United States Of America (USA)\n\nScene Camera Operator: MC1 James E. Foehl, USN\n\n…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704313",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Arleigh Burke Class Guided Missile Destroyer USS PAUL HAMILTON (DDG 60) transits the Pearl Harbor Channel making her way pier-side to Naval Station Pearl Harbor, Hawaii, on Aug. 20, 2007, after returning from a mission as part of the USS RONALD REAGAN (CVN) Carrier Strike Group (CCSG) in support of Operation Iraqi Freedom.  (U.S. Navy photo by Mass Communications SPECIALIST 1ST Class James E. Foehl) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Aviation Structural Mechanic 3rd Class Obualdo Medrano tapes off sections not to be painted as he touches up the paint on the tail of an EA-6B Prowler aircraft, assigned to the Tactical Electronic Warfare Squadron (VAQ) 138, inside the hangar bay aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 31, 2007, somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Apprentice Kyle W. Steckler) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704306",
-      "naId": "6704306",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSA Kyle W. Steckler, USN\n\nRelease Status: Released to…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704306",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Aviation Structural Mechanic 3rd Class Obualdo Medrano tapes off sections not to be painted as he touches up the paint on the tail of an EA-6B Prowler aircraft, assigned to the Tactical Electronic Warfare Squadron (VAQ) 138, inside the hangar bay aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 31, 2007, somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Apprentice Kyle W. Steckler) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Hull Technician 3rd Class Jomas Todacheeny uses gloves built into a sandblaster to examine a recently blasted piece of metal aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 31, 2007, somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704299",
-      "naId": "6704299",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MC3 Paul Perkins, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704299",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Hull Technician 3rd Class Jomas Todacheeny uses gloves built into a sandblaster to examine a recently blasted piece of metal aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 31, 2007, somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Information Systems Technician 1ST Class mark Smith monitors internet usage aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Josue Leopoldo Escobosa) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704289",
-      "naId": "6704289",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN Josue L. Escobosa, USN\n\nRelease Status: Released t…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704289",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Information Systems Technician 1ST Class mark Smith monitors internet usage aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Josue Leopoldo Escobosa) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy AIRMAN Ronald Covarrubias (left) and AIRMAN Jason Taylor throw bags of laundry into a pile aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Apprentice Kyle W. Steckler) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704287",
-      "naId": "6704287",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSA Kyle W. Steckler, USN\n\nRelease Status: Released to…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704287",
-        "methodologyType": "primary",
-        "name": "U.S. Navy AIRMAN Ronald Covarrubias (left) and AIRMAN Jason Taylor throw bags of laundry into a pile aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Apprentice Kyle W. Steckler) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Electronics Technician 3rd Class Christopher Ralph uses a soldering iron to make repairs on a circuit board aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704285",
-      "naId": "6704285",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704285",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Electronics Technician 3rd Class Christopher Ralph uses a soldering iron to make repairs on a circuit board aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Personnel SPECIALIST SEAMAN Chris Rasco (hands) receives money from Electronics Technician 3rd Class Adam Stevenson to put on his Navy Cash Card in the disbursing office aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704283",
-      "naId": "6704283",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MC3 Paul Perkins, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704283",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Personnel SPECIALIST SEAMAN Chris Rasco (hands) receives money from Electronics Technician 3rd Class Adam Stevenson to put on his Navy Cash Card in the disbursing office aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Personnel SPECIALIST SEAMAN Chris Rasco (hand) receives change from Aviation Structural Mechanic AIRMAN Brandon Cain to put on his Navy Cash Card in the disbursing office aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704282",
-      "naId": "6704282",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MC3 Paul Perkins, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704282",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Personnel SPECIALIST SEAMAN Chris Rasco (hand) receives change from Aviation Structural Mechanic AIRMAN Brandon Cain to put on his Navy Cash Card in the disbursing office aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 29, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Culinary SPECIALIST SEAMAN Justin Allan cuts cantaloupes in the aft galley aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 28, 2007, in preparation for the evening meal during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704274",
-      "naId": "6704274",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704274",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Culinary SPECIALIST SEAMAN Justin Allan cuts cantaloupes in the aft galley aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 28, 2007, in preparation for the evening meal during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Aviation Support Equipment Technician 3rd Class Justin Justis performs maintenance on a nitrogen booster aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 27, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704272",
-      "naId": "6704272",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MC3 Paul Perkins, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704272",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Aviation Support Equipment Technician 3rd Class Justin Justis performs maintenance on a nitrogen booster aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 27, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Paul J. Perkins) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy SEAMAN Doupere Tambou grind rust off of a capstone aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 26, 2007, during routine deck maintenance during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704269",
-      "naId": "6704269",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704269",
-        "methodologyType": "primary",
-        "name": "U.S. Navy SEAMAN Doupere Tambou grind rust off of a capstone aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 26, 2007, during routine deck maintenance during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Aircrew Survival Equipmentman AIRMAN Lance Rabon sews Velcro onto a flight suit that will hold squadron patches while aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 26, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704268",
-      "naId": "6704268",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704268",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Aircrew Survival Equipmentman AIRMAN Lance Rabon sews Velcro onto a flight suit that will hold squadron patches while aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 26, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Hull Maintenance Technician 3rd Class Peter Solomon welds a television bracket together aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 23, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Adam Henderson) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704251",
-      "naId": "6704251",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN Adam Henderson, USN\n\nRelease Status: Released to P…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704251",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Hull Maintenance Technician 3rd Class Peter Solomon welds a television bracket together aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 23, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Adam Henderson) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Aviation Machinist's Mate AIRMAN Chris Holtz performs maintenance on the engine of an EA-6B Prowler aircraft in the hangar bay aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 23, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704248",
-      "naId": "6704248",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704248",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Aviation Machinist's Mate AIRMAN Chris Holtz performs maintenance on the engine of an EA-6B Prowler aircraft in the hangar bay aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 23, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Hospitalman Torrance Coleman cleans the teeth of Information Systems Technician 2nd Class Danny Pugh aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 23, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704247",
-      "naId": "6704247",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704247",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Hospitalman Torrance Coleman cleans the teeth of Information Systems Technician 2nd Class Danny Pugh aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 23, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"A view from inside an MCU-2P gas mask of U.S. Navy Damage Controlman 2nd Class Josh Maxwell as he performs proper seal checks on Chemical, Biological, Radiological and Warfare gear aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 22, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Ron Reeves) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704239",
-      "naId": "6704239",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MC3 Ron Reeves, USN\n\nRelease Status: Released to Public",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704239",
-        "methodologyType": "primary",
-        "name": "A view from inside an MCU-2P gas mask of U.S. Navy Damage Controlman 2nd Class Josh Maxwell as he performs proper seal checks on Chemical, Biological, Radiological and Warfare gear aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 22, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST 3rd Class Ron Reeves) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy Culinary SPECIALIST 3rd Class Eugene Ward decorates a cake for an upcoming event aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 21, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704236",
-      "naId": "6704236",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSN John Wagner, USN\n\nRelease Status: Released to Publ…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704236",
-        "methodologyType": "primary",
-        "name": "U.S. Navy Culinary SPECIALIST 3rd Class Eugene Ward decorates a cake for an upcoming event aboard the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 21, 2007, during carrier qualifications somewhere in the Pacific Ocean. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN John Wagner) (Released)"
-      }
-    },
-    {
-      "claimText": "\"U.S. Navy AIRMAN Christopher Cox stands force protection watch on the fan tail of the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 20, 2007, after departing San Diego, Calif., during a regularly scheduled deployment out to sea somewhere in the Pacific Ocean in support of the Global War on Terror. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Apprentice Kyle Steckler) (Released)\" — archived at NARA, Record Group 330",
-      "externalId": "nara_catalog_6704234",
-      "naId": "6704234",
-      "recordGroup": "330",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "The original finding aid described this photograph as:\n\nBase: USS John C. Stennis (CVN 74)\n\nCountry: Pacific Ocean (POC)\n\nScene Camera Operator: MCSA Kyle W. Steckler, USN\n\nRelease Status: Released to…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6704234",
-        "methodologyType": "primary",
-        "name": "U.S. Navy AIRMAN Christopher Cox stands force protection watch on the fan tail of the Nimitz Class Nuclear-Powered Aircraft Carrier USS JOHN C. STENNIS (CVN 74) on Jan. 20, 2007, after departing San Diego, Calif., during a regularly scheduled deployment out to sea somewhere in the Pacific Ocean in support of the Global War on Terror. (U.S. Navy photo by Mass Communication SPECIALIST SEAMAN Apprentice Kyle Steckler) (Released)"
-      }
-    },
-    {
-      "claimText": "\"Photograph of the Starboard Side of a Dirigible\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708586",
-      "naId": "6708586",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Section of starboard side showing mess rooms, etc.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708586",
-        "methodologyType": "primary",
-        "name": "Photograph of the Starboard Side of a Dirigible"
-      }
-    },
-    {
-      "claimText": "\"Photograph of the USS Oklahoma capsized following the Japanese attack at Pearl Harbor\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306555",
-      "naId": "306555",
-      "recordGroup": "128",
+      "claimText": "\"Task Group Progress Reports: Instructional Practices, September 7, 2007\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68126285",
+      "naId": "68126285",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -1391,16 +359,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/306555",
+        "url": "https://catalog.archives.gov/id/68126285",
         "methodologyType": "primary",
-        "name": "Photograph of the USS Oklahoma capsized following the Japanese attack at Pearl Harbor"
+        "name": "Task Group Progress Reports: Instructional Practices, September 7, 2007"
       }
     },
     {
-      "claimText": "\"Photograph of a machine-gunned army truck at Hickam Field, Hawaii, after the attack on Pearl Harbor\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306550",
-      "naId": "306550",
-      "recordGroup": "128",
+      "claimText": "\"Transcript, September 7, 2007\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68126279",
+      "naId": "68126279",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -1413,16 +381,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/306550",
+        "url": "https://catalog.archives.gov/id/68126279",
         "methodologyType": "primary",
-        "name": "Photograph of a machine-gunned army truck at Hickam Field, Hawaii, after the attack on Pearl Harbor"
+        "name": "Transcript, September 7, 2007"
       }
     },
     {
-      "claimText": "\"Photograph of the USS Raleigh being held afloat near her anchorage in Pearl Harbor by a barge\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306540",
-      "naId": "306540",
-      "recordGroup": "128",
+      "claimText": "\"Task Group Progress Reports: Instructional Practices, June 6, 2007\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68126265",
+      "naId": "68126265",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -1435,16 +403,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/306540",
+        "url": "https://catalog.archives.gov/id/68126265",
         "methodologyType": "primary",
-        "name": "Photograph of the USS Raleigh being held afloat near her anchorage in Pearl Harbor by a barge"
+        "name": "Task Group Progress Reports: Instructional Practices, June 6, 2007"
       }
     },
     {
-      "claimText": "\"Photograph showing the capsized mine ship Oglala in Pearl Harbor\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306535",
-      "naId": "306535",
-      "recordGroup": "128",
+      "claimText": "\"Transcript, June 6, 2007\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68126261",
+      "naId": "68126261",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -1457,16 +425,16 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/306535",
+        "url": "https://catalog.archives.gov/id/68126261",
         "methodologyType": "primary",
-        "name": "Photograph showing the capsized mine ship Oglala in Pearl Harbor"
+        "name": "Transcript, June 6, 2007"
       }
     },
     {
-      "claimText": "\"Conference Committee Report on the Missouri Compromise\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306524",
-      "naId": "306524",
-      "recordGroup": "128",
+      "claimText": "\"Summary of Transcript, June 6, 2007\" — archived at NARA, Record Group 220",
+      "externalId": "nara_catalog_68126259",
+      "naId": "68126259",
+      "recordGroup": "220",
       "seriesTitle": null,
       "beginDate": null,
       "endDate": null,
@@ -1479,757 +447,9 @@
       "humanReviewed": false,
       "ingestedBy": "nara_catalog_v1",
       "source": {
-        "url": "https://catalog.archives.gov/id/306524",
+        "url": "https://catalog.archives.gov/id/68126259",
         "methodologyType": "primary",
-        "name": "Conference Committee Report on the Missouri Compromise"
-      }
-    },
-    {
-      "claimText": "\"Report of the Joint Committee appointed to prepare measures to honor the memory of General George Washington regarding an equestrian statue of Washington\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306520",
-      "naId": "306520",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/306520",
-        "methodologyType": "primary",
-        "name": "Report of the Joint Committee appointed to prepare measures to honor the memory of General George Washington regarding an equestrian statue of Washington"
-      }
-    },
-    {
-      "claimText": "\"Intercepted Diplomatic Messages Sent by the Japanese Government Between July 1 and December 8, 1941\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_24495620",
-      "naId": "24495620",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/24495620",
-        "methodologyType": "primary",
-        "name": "Intercepted Diplomatic Messages Sent by the Japanese Government Between July 1 and December 8, 1941"
-      }
-    },
-    {
-      "claimText": "\"Photograph of Crew Bunks of a Dirigible\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6821377",
-      "naId": "6821377",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Crew bunks",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6821377",
-        "methodologyType": "primary",
-        "name": "Photograph of Crew Bunks of a Dirigible"
-      }
-    },
-    {
-      "claimText": "\"Two Photograph of the Catwalk on the USS Akron\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708583",
-      "naId": "6708583",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708583",
-        "methodologyType": "primary",
-        "name": "Two Photograph of the Catwalk on the USS Akron"
-      }
-    },
-    {
-      "claimText": "\"Photograph of a Oil Tank on the USS Akron\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708582",
-      "naId": "6708582",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: One of the USS Akron's many oil tanks.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708582",
-        "methodologyType": "primary",
-        "name": "Photograph of a Oil Tank on the USS Akron"
-      }
-    },
-    {
-      "claimText": "\"Photograph of a Side Corridor on a Dirigible\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708575",
-      "naId": "6708575",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Side Corridor. Gasoline Tanks. Gas Cells overhead.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708575",
-        "methodologyType": "primary",
-        "name": "Photograph of a Side Corridor on a Dirigible"
-      }
-    },
-    {
-      "claimText": "\"Photograph of Crews Quarters in a Dirigible\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708571",
-      "naId": "6708571",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Crews Quarters with ladder to side corridor, alone and to right.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708571",
-        "methodologyType": "primary",
-        "name": "Photograph of Crews Quarters in a Dirigible"
-      }
-    },
-    {
-      "claimText": "\"Photograph of a Sailor at the Bow Mooring Post on a Dirigible\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708560",
-      "naId": "6708560",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Man in bow mooring post Signal device telephone.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708560",
-        "methodologyType": "primary",
-        "name": "Photograph of a Sailor at the Bow Mooring Post on a Dirigible"
-      }
-    },
-    {
-      "claimText": "\"Photograph of the wreckage of the USS Shaw at Pearl Harbor\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306546",
-      "naId": "306546",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/306546",
-        "methodologyType": "primary",
-        "name": "Photograph of the wreckage of the USS Shaw at Pearl Harbor"
-      }
-    },
-    {
-      "claimText": "\"Report from the Joint Committee on the Library of Congress regarding the precise terms of the purchase of Thomas Jefferson's library\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306515",
-      "naId": "306515",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/306515",
-        "methodologyType": "primary",
-        "name": "Report from the Joint Committee on the Library of Congress regarding the precise terms of the purchase of Thomas Jefferson's library"
-      }
-    },
-    {
-      "claimText": "\"Official Report of Major General Pope to the Committee on the Conduct of the War\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_112260087",
-      "naId": "112260087",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/112260087",
-        "methodologyType": "primary",
-        "name": "Official Report of Major General Pope to the Committee on the Conduct of the War"
-      }
-    },
-    {
-      "claimText": "\"Photograph Looking Down in Emergency Control Station of a Dirigible\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708566",
-      "naId": "6708566",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Emergency Control station in front of lower fin, looking down.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708566",
-        "methodologyType": "primary",
-        "name": "Photograph Looking Down in Emergency Control Station of a Dirigible"
-      }
-    },
-    {
-      "claimText": "\"Photograph of the Interior Hull of a Dirigible before Gas Cells were Installed\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_6708559",
-      "naId": "6708559",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "Original caption: Interior of hull, prior to installation of gas cells.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/6708559",
-        "methodologyType": "primary",
-        "name": "Photograph of the Interior Hull of a Dirigible before Gas Cells were Installed"
-      }
-    },
-    {
-      "claimText": "\"Photograph of the USS California sinking into the mud of Pearl Harbor\" — archived at NARA, Record Group 128",
-      "externalId": "nara_catalog_306538",
-      "naId": "306538",
-      "recordGroup": "128",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/306538",
-        "methodologyType": "primary",
-        "name": "Photograph of the USS California sinking into the mud of Pearl Harbor"
-      }
-    },
-    {
-      "claimText": "\"Team 8 Interview with Cherie Gott, Operations Analyst at the North American Aerospace Defense Command (NORAD)\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_7970552",
-      "naId": "7970552",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/7970552",
-        "methodologyType": "primary",
-        "name": "Team 8 Interview with Cherie Gott, Operations Analyst at the North American Aerospace Defense Command (NORAD)"
-      }
-    },
-    {
-      "claimText": "\"Commission Hearing to Release its Final Report\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_7774029",
-      "naId": "7774029",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This recording is of the September 18, 2013 Commission hearing to release its final report.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/7774029",
-        "methodologyType": "primary",
-        "name": "Commission Hearing to Release its Final Report"
-      }
-    },
-    {
-      "claimText": "\"Commission Hearing on Populations in Need of Long-Term Services and Supports (LTSS) Service Delivery Issues\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_7741377",
-      "naId": "7741377",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This recording is of the July 17, 2013 Commission hearing entitled, \"Populations in Need of Long-Term Services & Supports (LTSS) Service Delivery Issues.\"  Witnesses included David Braddock, Ph.D., Se…",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/7741377",
-        "methodologyType": "primary",
-        "name": "Commission Hearing on Populations in Need of Long-Term Services and Supports (LTSS) Service Delivery Issues"
-      }
-    },
-    {
-      "claimText": "\"Final Report of the Commission on Long-Term Care Containing Finding and Recommendations of the Commission\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_7741376",
-      "naId": "7741376",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is the final report of the Commission on Long-Term Care, containing findings and recommendations of commission members.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/7741376",
-        "methodologyType": "primary",
-        "name": "Final Report of the Commission on Long-Term Care Containing Finding and Recommendations of the Commission"
-      }
-    },
-    {
-      "claimText": "\"Commission Interview with David Finkleman\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_5956285",
-      "naId": "5956285",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This item is the last 40 minutes of the Commission's interview with David Finkleman, former Director of Analysis for the North American Aerospace Defense Command.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/5956285",
-        "methodologyType": "primary",
-        "name": "Commission Interview with David Finkleman"
-      }
-    },
-    {
-      "claimText": "\"Commission Interview with John Hartling\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_5954625",
-      "naId": "5954625",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/5954625",
-        "methodologyType": "primary",
-        "name": "Commission Interview with John Hartling"
-      }
-    },
-    {
-      "claimText": "\"John Ashcroft Interview Transcript\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_5954618",
-      "naId": "5954618",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": "This record is the transcript of the interview conducted by the National Commission on Terrorist Attacks Upon the United States with Attorney General John Ashcroft.",
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/5954618",
-        "methodologyType": "primary",
-        "name": "John Ashcroft Interview Transcript"
-      }
-    },
-    {
-      "claimText": "\"Salomon, Haym (bust)\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532941",
-      "naId": "532941",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532941",
-        "methodologyType": "primary",
-        "name": "Salomon, Haym (bust)"
-      }
-    },
-    {
-      "claimText": "\"Jay, Mrs. John (3/4 length profile)\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532934",
-      "naId": "532934",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532934",
-        "methodologyType": "primary",
-        "name": "Jay, Mrs. John (3/4 length profile)"
-      }
-    },
-    {
-      "claimText": "\"Chief of the Little Osages; bust-length, profile showing hair style\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532931",
-      "naId": "532931",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532931",
-        "methodologyType": "primary",
-        "name": "Chief of the Little Osages; bust-length, profile showing hair style"
-      }
-    },
-    {
-      "claimText": "\"Knox, Henry (3/4 length)\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532928",
-      "naId": "532928",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532928",
-        "methodologyType": "primary",
-        "name": "Knox, Henry (3/4 length)"
-      }
-    },
-    {
-      "claimText": "\"Randolph, Peyton (bust)\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532925",
-      "naId": "532925",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532925",
-        "methodologyType": "primary",
-        "name": "Randolph, Peyton (bust)"
-      }
-    },
-    {
-      "claimText": "\"The Declaration of Independence. 1776. Copy of painting by John Trumbull, 1817-18.\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532924",
-      "naId": "532924",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532924",
-        "methodologyType": "primary",
-        "name": "The Declaration of Independence. 1776. Copy of painting by John Trumbull, 1817-18."
-      }
-    },
-    {
-      "claimText": "\"Benedict Arnold. Copy of engraving by H. B. Hall after John Trumbull, published 1879.\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532921",
-      "naId": "532921",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532921",
-        "methodologyType": "primary",
-        "name": "Benedict Arnold. Copy of engraving by H. B. Hall after John Trumbull, published 1879."
-      }
-    },
-    {
-      "claimText": "\"Washington Receiving a Salute on the Field of Trenton. 1776. Copy of print by William Holl after John Faed, published circa 1860s\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532914",
-      "naId": "532914",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532914",
-        "methodologyType": "primary",
-        "name": "Washington Receiving a Salute on the Field of Trenton. 1776. Copy of print by William Holl after John Faed, published circa 1860s"
-      }
-    },
-    {
-      "claimText": "\"Capture of Yorktown\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532913",
-      "naId": "532913",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532913",
-        "methodologyType": "primary",
-        "name": "Capture of Yorktown"
-      }
-    },
-    {
-      "claimText": "\"George III, King of England (3/4 length)\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532904",
-      "naId": "532904",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532904",
-        "methodologyType": "primary",
-        "name": "George III, King of England (3/4 length)"
-      }
-    },
-    {
-      "claimText": "\"General Putnam Leaving his Plow for the Defence of his Country. 1775. Copy of lithograph.\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532893",
-      "naId": "532893",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532893",
-        "methodologyType": "primary",
-        "name": "General Putnam Leaving his Plow for the Defence of his Country. 1775. Copy of lithograph."
-      }
-    },
-    {
-      "claimText": "\"The Bostonians in Distress. Copy of mezzotint attributed to Philip Dawe, 1774.\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532890",
-      "naId": "532890",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532890",
-        "methodologyType": "primary",
-        "name": "The Bostonians in Distress. Copy of mezzotint attributed to Philip Dawe, 1774."
-      }
-    },
-    {
-      "claimText": "\"Colonel [William Augustine] Washington at the Battle of Cowpens. January 1781. Copy of print by S. H. Gimber.\" — archived at NARA, Record Group 148",
-      "externalId": "nara_catalog_532886",
-      "naId": "532886",
-      "recordGroup": "148",
-      "seriesTitle": null,
-      "beginDate": null,
-      "endDate": null,
-      "digitized": false,
-      "scopeNote": null,
-      "claimType": "INSTITUTIONAL",
-      "currentStatus": "HARD_FACT",
-      "verificationStatus": "VERIFIED",
-      "autoApproved": true,
-      "humanReviewed": false,
-      "ingestedBy": "nara_catalog_v1",
-      "source": {
-        "url": "https://catalog.archives.gov/id/532886",
-        "methodologyType": "primary",
-        "name": "Colonel [William Augustine] Washington at the Battle of Cowpens. January 1781. Copy of print by S. H. Gimber."
+        "name": "Summary of Transcript, June 6, 2007"
       }
     }
   ]

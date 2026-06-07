@@ -444,7 +444,7 @@ function HomeContent() {
           <div>
             <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 7, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Homepage redesigned as a search-first discovery experience. Three new Wikidata SPARQL ingesters: <span className="font-mono">wikidata_nobel_v1</span> (1,023 laureates), <span className="font-mono">wikidata_elements_v1</span> (118 elements), <span className="font-mono">wikidata_space_missions_v1</span> (500 missions). Physiology taxonomy: 18 biological families across cardiovascular, renal, neurological, immune, endocrine, and reproductive systems.
+              Homepage redesigned as a search-first discovery experience. Three new Wikidata SPARQL ingesters: <span className="font-mono">wikidata_nobel_v1</span> (1,023 laureates), <span className="font-mono">wikidata_elements_v1</span> (118 elements), <span className="font-mono">wikidata_space_missions_v1</span> (500 missions). Physiology taxonomy: 18 biological families across cardiovascular, renal, neurological, immune, endocrine, and reproductive systems. New <span className="font-mono">FUNDED_BY</span> ClaimRelations link OpenAlex publications to the NIH Reporter grants that funded them (via <span className="font-mono">awards.funder_award_id</span>). Bills-to-court linker (<span className="font-mono">link-bills-to-court.ts</span>) added — first run produced 0 links because CourtListener claim text is currently a templated case-name summary; the script will activate once opinion bodies or statutes-cited lists land on those claims.
             </p>
           </div>
 
