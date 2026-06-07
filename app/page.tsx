@@ -397,6 +397,9 @@ function HomeContent() {
         </div>
       </section>
 
+      {/* Below-fold: solid background covers the fixed canvas */}
+      <div className="relative bg-gray-950">
+
       {/* Inline search results */}
       <section className="relative max-w-3xl mx-auto pb-16 min-h-[40vh]">
         {error && (
@@ -479,6 +482,8 @@ function HomeContent() {
           </Link>
         </div>
       </section>
+
+      </div>{/* end below-fold cover */}
     </div>
   );
 }
