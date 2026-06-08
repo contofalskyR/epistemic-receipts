@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
 import { isReadOnly } from "@/lib/isReadOnly";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 
 type Claim = {
   id: string;
   text: string;
-  currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   parentClaimId: string | null;
   createdAt: string;
@@ -185,13 +186,7 @@ export default function ClaimsPage() {
               <div className="flex items-start justify-between gap-4">
                 <p className="text-sm text-white">{c.text}</p>
                 <div className="shrink-0 flex items-center gap-1.5">
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                    c.currentStatus === "HARD_FACT" ? "bg-green-900 text-green-300" :
-                    c.currentStatus === "NEVER_RESOLVES" ? "bg-gray-700 text-gray-400" :
-                    "bg-yellow-900 text-yellow-300"
-                  }`}>
-                    {c.currentStatus}
-                  </span>
+                  <EpistemicAxisBadge axis={c.epistemicAxis} />
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
                     {c.claimType}
                   </span>

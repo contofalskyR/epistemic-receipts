@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
       select: {
         id: true,
         text: true,
-        currentStatus: true,
+        epistemicAxis: true,
         claimType: true,
         parentClaimId: true,
         createdAt: true,

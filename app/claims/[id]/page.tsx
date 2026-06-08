@@ -115,12 +115,6 @@ type ClaimDetail = {
 
 // ── Shared constants ──────────────────────────────────────────────────────────
 
-const STATUS_STYLE: Record<string, string> = {
-  HARD_FACT:      "bg-green-900 text-green-300",
-  NEVER_RESOLVES: "bg-gray-700 text-gray-400",
-  DISPUTED:       "bg-yellow-900 text-yellow-300",
-};
-
 const EPISTEMIC_BADGE: Record<string, { label: string; style: string }> = {
   confirmed:         { label: "Confirmed ✓",      style: "bg-green-900/70 text-green-300 border border-green-700/50" },
   retracted:         { label: "Retracted ✗",      style: "bg-red-900/70 text-red-300 border border-red-700/50" },

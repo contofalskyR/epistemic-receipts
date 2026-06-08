@@ -3,10 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { isReadOnly } from "@/lib/isReadOnly";
 
-const STATUSES = ["DISPUTED", "HARD_FACT", "NEVER_RESOLVES"] as const;
 const CLAIM_TYPES = ["EMPIRICAL", "INSTITUTIONAL", "INTERPRETIVE", "HYBRID"] as const;
 
-type Status = typeof STATUSES[number];
 type ClaimType = typeof CLAIM_TYPES[number];
 type Topic = { id: string; name: string; slug: string; domain: string };
 
@@ -139,7 +137,6 @@ export default function EditClaimPage() {
   const returnTo = searchParams.get("from") === "review" ? "/review" : `/claims/${id}`;
 
   const [text, setText] = useState("");
-  const [currentStatus, setCurrentStatus] = useState<Status>("DISPUTED");
   const [claimType, setClaimType] = useState<ClaimType>("EMPIRICAL");
   const [selectedTopics, setSelectedTopics] = useState<Topic[]>([]);
   const [allTopics, setAllTopics] = useState<Topic[]>([]);
@@ -153,7 +150,6 @@ export default function EditClaimPage() {
       fetch("/api/topics").then(r => r.json()),
     ]).then(([claim, topicsData]) => {
       setText(claim.text ?? "");
-      setCurrentStatus(claim.currentStatus ?? "DISPUTED");
       setClaimType(claim.claimType ?? "EMPIRICAL");
       setSelectedTopics((claim.topics ?? []).map((ct: { topic: Topic }) => ct.topic));
 
@@ -180,7 +176,6 @@ export default function EditClaimPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         text: text.trim(),
-        currentStatus,
         claimType,
         topicIds: selectedTopics.map(t => t.id),
       }),
@@ -220,22 +215,6 @@ export default function EditClaimPage() {
             rows={4}
             className="w-full bg-gray-900 border border-gray-700 text-gray-100 text-sm rounded px-3 py-2 focus:outline-none focus:border-gray-500 resize-y"
           />
-        </div>
-
-        <div>
-          <label className="block text-xs text-gray-400 mb-2">Status</label>
-          <div className="flex gap-2 flex-wrap">
-            {STATUSES.map(s => (
-              <button
-                key={s}
-                type="button"
-                onClick={() => setCurrentStatus(s)}
-                className={`${btnBase} ${currentStatus === s ? "bg-gray-600 text-white" : "bg-gray-800 text-gray-400 hover:bg-gray-700"}`}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div>
