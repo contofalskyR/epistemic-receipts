@@ -465,6 +465,17 @@ function HomeContent() {
           <div>
             <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
+              Two new destination pages.{" "}
+              <Link href="/prereq-graph" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Evidence Chains</Link>{" "}
+              browses the 4.8M+ ClaimRelation citation graph: claims sorted by outgoing link count, filter by Science / Medicine / Law / Legislation, expand to see downstream citations.{" "}
+              <Link href="/foreign-legislation" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Global Legislation</Link>{" "}
+              surfaces non-US legislation across all 50+ tracked countries with region and country sub-filters.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
               Filter chip cleanup on the destination pages.{" "}
               <Link href="/congress-trades" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Congress Trades</Link>{" "}
               replaces the inert high/medium/low &ldquo;Correlation&rdquo; chip with a binary{" "}

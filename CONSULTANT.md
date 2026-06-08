@@ -307,6 +307,22 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Destination Pages Phase 2: /prereq-graph + /foreign-legislation
+
+**What.** Built two new destination pages following the dark-theme inline-style design system (S color palette, DestinationNav, Chip filter components).
+
+**`/prereq-graph` — Evidence Chains.** API: `app/api/prereq-graph/route.ts` — raw SQL GROUP BY against ClaimRelation filtering `relationType IN ('cites', 'SUPERSEDED_BY', 'OUTCOME')`, ordered by outgoing link count. Domain filter maps `ingestedBy` to four buckets: science, medicine, law, legislation. Client: paginated claim cards sorted by link count, expand-on-click fetches downstream claims from `/api/claims/[id]/relations`. fetchedRef pattern prevents duplicate fetches on re-expand.
+
+**`/foreign-legislation` — Global Legislation.** API: `app/api/foreign-legislation/route.ts` — queries all non-US COUNTRY_REGISTRY entries, filters DEPRECATED records, supports region + country + text search params. Client: region chips (Europe / Asia-Pacific / Americas / Africa), country sub-chips within selected region, epistemicAxis badge on each card, source link.
+
+**Nav.** Both pages added to Explore dropdown (`app/components/Nav.tsx`). DestinationNav placeholder `/destinations/*` paths updated to `/prereq-graph` and `/foreign-legislation`.
+
+**Verification.** `npx tsc --noEmit` → 0 errors.
+
+**Files.** `app/api/prereq-graph/route.ts`, `app/prereq-graph/page.tsx`, `app/prereq-graph/PrereqGraphClient.tsx`, `app/api/foreign-legislation/route.ts`, `app/foreign-legislation/page.tsx`, `app/foreign-legislation/ForeignLegislationClient.tsx`, `components/destinations/DestinationNav.tsx`, `app/components/Nav.tsx`, `app/page.tsx`, `CONSULTANT.md`.
+
+---
+
 ### 2026-06-08 — WHO GHO epistemicAxis backfill (32,713 → RECORDED)
 
 **What.** Set `epistemicAxis = 'RECORDED'` on all 32,713 `who_gho_v1` claims that the original axis backfill left NULL. Script: `scripts/backfill-who-axis.ts` (Prisma `updateMany`, supports `--dry-run`, gated on `ALLOW_EDITS=true` for writes).

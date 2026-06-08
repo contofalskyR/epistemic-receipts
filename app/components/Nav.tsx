@@ -24,6 +24,8 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/settling-curve", label: "Settling Curve" },
       { href: "/opinions", label: "Court Opinions" },
       { href: "/retraction-wall", label: "Retraction Wall" },
+      { href: "/prereq-graph", label: "Evidence Chains" },
+      { href: "/foreign-legislation", label: "Global Legislation" },
       { href: "/retractions", label: "Retraction API" },
       { href: "/bookmarks", label: "Bookmarks" },
       { href: "/reader", label: "Reader" },

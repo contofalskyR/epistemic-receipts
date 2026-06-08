@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 const DESTINATIONS = [
   { href: "/congress-trades", label: "Congress Trades" },
   { href: "/retraction-explorer", label: "Retraction Explorer" },
-  { href: "/destinations/prereq-graph", label: "Prereq Graph" },
-  { href: "/destinations/foreign-legislation", label: "Foreign Legislation" },
+  { href: "/prereq-graph", label: "Evidence Chains" },
+  { href: "/foreign-legislation", label: "Global Legislation" },
 ];
 
 export function DestinationNav() {
