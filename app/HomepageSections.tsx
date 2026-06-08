@@ -50,7 +50,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Climate & Environment",
     emoji: "🌡️",
-    href: "/topics/climate",
+    href: "/search?q=climate",
     ingestedByKeys: ["world_bank_v1", "ipcc_v1", "who_gho_v1"],
     sourceTags: ["World Bank", "WHO GHO", "IPCC"],
     topBorder: "border-t-emerald-500",
@@ -68,7 +68,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Neuroscience",
     emoji: "🧠",
-    href: "/topics/neuroscience",
+    href: "/search?q=neuroscience",
     ingestedByKeys: ["openalex_v1"],
     sourceTags: ["OpenAlex", "NIH RePORTER"],
     topBorder: "border-t-purple-500",
@@ -77,7 +77,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Law & Courts",
     emoji: "⚖️",
-    href: "/topics/law",
+    href: "/search?q=law",
     ingestedByKeys: [
       "courtlistener_scotus_v1",
       "courtlistener_circuits_v1",
@@ -90,7 +90,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Global Politics",
     emoji: "🌍",
-    href: "/topics/politics",
+    href: "/search?q=politics",
     ingestedByKeys: ["vdem_v1", "who_gho_v1", "ofac_sdn_v1"],
     sourceTags: ["V-Dem", "WHO GHO", "OFAC SDN"],
     topBorder: "border-t-red-500",
@@ -99,7 +99,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Vaccines & Medicine",
     emoji: "💉",
-    href: "/topics/medicine",
+    href: "/search?q=medicine",
     ingestedByKeys: ["openfda_labels_v1", "drugsatfda_v1", "faers_adverse_v1", "faers_normalized_drugs_v1"],
     sourceTags: ["openFDA", "Drugs@FDA", "FAERS"],
     topBorder: "border-t-sky-500",
@@ -108,7 +108,7 @@ const DOMAINS: Domain[] = [
   {
     name: "History",
     emoji: "📜",
-    href: "/topics/history",
+    href: "/search?q=history",
     ingestedByKeys: ["nara_catalog_v1", "miller_center_v1", "frus_v1"],
     sourceTags: ["NARA", "Miller Center", "FRUS"],
     topBorder: "border-t-orange-500",
@@ -117,7 +117,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Astronomy & Space",
     emoji: "🔭",
-    href: "/topics/space",
+    href: "/search?q=space",
     ingestedByKeys: ["nasa_exoplanet_v1", "space_missions_v1"],
     sourceTags: ["NASA", "GCAT"],
     topBorder: "border-t-teal-500",
@@ -126,7 +126,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Chemistry & Physics",
     emoji: "🧪",
-    href: "/topics/chemistry",
+    href: "/search?q=chemistry",
     ingestedByKeys: ["chebi_v1", "pubchem_v1", "periodic_table_v1"],
     sourceTags: ["ChEBI", "PubChem", "IUPAC"],
     topBorder: "border-t-pink-500",
@@ -135,7 +135,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Economics",
     emoji: "📊",
-    href: "/topics/economics",
+    href: "/search?q=economics",
     ingestedByKeys: ["world_bank_v1", "fred_v1", "openfec_v1", "openfec_ie_v1"],
     sourceTags: ["World Bank", "FRED", "OpenFEC"],
     topBorder: "border-t-yellow-500",
@@ -153,7 +153,7 @@ const DOMAINS: Domain[] = [
   {
     name: "Biology & Physiology",
     emoji: "🧬",
-    href: "/topics/biology",
+    href: "/search?q=biology",
     ingestedByKeys: ["genbank_v1", "ncbi_gene_v1", "iucn_v1"],
     sourceTags: ["GenBank", "NCBI Gene", "IUCN"],
     topBorder: "border-t-violet-500",
