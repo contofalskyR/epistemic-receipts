@@ -166,6 +166,10 @@ const DOMAINS: Domain[] = [
 const CHANGELOG: { date: string; text: string }[] = [
   {
     date: "JUNE 8, 2026",
+    text: "Books/Reader cleanup: /reader now redirects to /books (single canonical view), duplicate nav entry removed, reader detail uses epistemicAxis badges instead of deprecated currentStatus, breadcrumb fixed to '← Books'.",
+  },
+  {
+    date: "JUNE 8, 2026",
     text: "Audit sweep: /foreign-legislation now hides 2999 sentinel year, /search adds OPEN axis chip, /financial Insider/Macro tabs no longer dead-end, /congress-trades shows company name and proper amount ranges, /retraction-explorer field chips return results, /topics/<leaf> falls back to a name-text match so empty leaves surface real claims.",
   },
   {
