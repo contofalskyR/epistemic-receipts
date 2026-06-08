@@ -19,6 +19,19 @@ export type AcademicFieldNode = {
   topics: FieldTopic[];
 };
 
+// Count claims per AcademicField via Claim → ClaimTopic → Topic → AcademicField.
+async function fetchClaimCountsByField(fieldIds: number[]): Promise<Map<number, number>> {
+  if (fieldIds.length === 0) return new Map();
+  const rows = await prisma.$queryRaw<{ field_id: number; cnt: bigint }[]>`
+    SELECT t."academicFieldId" AS field_id, COUNT(ct."claimId") AS cnt
+    FROM "Topic" t
+    JOIN "ClaimTopic" ct ON ct."topicId" = t.id
+    WHERE t."academicFieldId" = ANY(${fieldIds})
+    GROUP BY t."academicFieldId"
+  `;
+  return new Map(rows.map(r => [r.field_id, Number(r.cnt)]));
+}
+
 // GET /api/fields
 // ?parent=<slug>  — drill into a field's direct children (defaults to top-level, level=0)
 export async function GET(req: NextRequest) {
@@ -45,12 +58,14 @@ export async function GET(req: NextRequest) {
       },
     });
 
+    const counts = await fetchClaimCountsByField(children.map(f => f.id));
+
     const nodes: AcademicFieldNode[] = children.map(f => ({
       id: f.id,
       name: f.name,
       slug: f.slug,
       level: f.level,
-      claimCount: 0,
+      claimCount: counts.get(f.id) ?? 0,
       topicCount: f._count.topics,
       children: [],
       topics: f.topics,
@@ -80,12 +95,15 @@ export async function GET(req: NextRequest) {
     },
   });
 
+  const allFieldIds = topLevel.flatMap(f => [f.id, ...f.children.map(c => c.id)]);
+  const counts = await fetchClaimCountsByField(allFieldIds);
+
   const nodes: AcademicFieldNode[] = topLevel.map(f => ({
     id: f.id,
     name: f.name,
     slug: f.slug,
     level: f.level,
-    claimCount: 0,
+    claimCount: counts.get(f.id) ?? 0,
     topicCount: f._count.topics,
     topics: f.topics,
     children: f.children.map(c => ({
@@ -93,7 +111,7 @@ export async function GET(req: NextRequest) {
       name: c.name,
       slug: c.slug,
       level: c.level,
-      claimCount: 0,
+      claimCount: counts.get(c.id) ?? 0,
       topicCount: c._count.topics,
       topics: c.topics,
       children: [],
