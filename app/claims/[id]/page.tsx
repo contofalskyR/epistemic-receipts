@@ -734,8 +734,13 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
 
   useEffect(() => {
     fetch(`/api/claims/${id}`)
-      .then(r => { if (!r.ok) { setNotFound(true); return null; } return r.json(); })
-      .then(d => { if (d) setClaim(d); });
+      .then(r => {
+        if (r.status === 404) { setNotFound(true); return null; }
+        if (!r.ok) { setError(`Server error (${r.status})`); return null; }
+        return r.json();
+      })
+      .then(d => { if (d) setClaim(d); })
+      .catch(e => setError(e instanceof Error ? e.message : String(e)));
   }, [id]);
 
   if (notFound) {
@@ -743,6 +748,15 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
       <div className="space-y-4">
         <Link href="/" className="text-xs text-gray-500 hover:text-white">← back</Link>
         <p className="text-gray-500">Claim not found.</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="space-y-4">
+        <Link href="/" className="text-xs text-gray-500 hover:text-white">← back</Link>
+        <p className="text-red-500 text-sm">{error}</p>
       </div>
     );
   }
