@@ -292,6 +292,29 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — WHO GHO epistemicAxis backfill (32,713 → RECORDED)
+
+**What.** Set `epistemicAxis = 'RECORDED'` on all 32,713 `who_gho_v1` claims that the original axis backfill left NULL. Script: `scripts/backfill-who-axis.ts` (Prisma `updateMany`, supports `--dry-run`, gated on `ALLOW_EDITS=true` for writes).
+
+**Why.** WHO Global Health Observatory data (life expectancy, U5MR, PM2.5, alcohol, obesity per country/year) is measured/observed indicator data — RECORDED is the correct axis ("measured, not evaluated"). The original `backfill-epistemic-axis.ts` predates the WHO ingest's full coverage so these rows were never visited.
+
+**Verification.** Dry-run reported 32,713 NULL pre-count. Write run reported `Updated 32713 claims` and post-update NULL count of `0`. Both numbers came from direct `prisma.claim.count` against the live DB, not script-internal counters.
+
+**Other-pipeline audit.** `scripts/_audit-null-axis.ts` groups remaining NULLs by `ingestedBy`. Post-WHO state:
+- `russia_legislation_v1` — 490
+- `romania_legislation_v1` — 6
+- `hungary_legislation_v1` — 2
+- **Total remaining NULL:** 498
+
+All three are legislation pipelines that should map to RECORDED but the counts are small enough that they likely reflect either (a) rows ingested after the original axis backfill or (b) in-flight rows from active ingesters. Flagged for the user — not backfilled in this pass.
+
+**Files changed.**
+- `scripts/backfill-who-axis.ts` (new)
+- `scripts/_audit-null-axis.ts` (new, read-only audit helper)
+- `CONSULTANT.md` (this entry)
+
+---
+
 ### 2026-06-08 — Filter-chip cleanup: Congress Trades correlation wired, Retraction Explorer field suppressed
 
 **What.** Two surgical UI fixes to remove "filter chips that do nothing."
