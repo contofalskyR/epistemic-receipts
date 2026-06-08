@@ -118,8 +118,8 @@ function formatAmount(min: number, max: number): string {
 }
 
 function parseTab(raw: string | null): Tab {
-  if (raw === "earnings" || raw === "congress" || raw === "macro") return raw;
-  return "insider";
+  if (raw === "insider" || raw === "earnings" || raw === "congress" || raw === "macro") return raw;
+  return "congress";
 }
 
 function parseFilter(raw: string | null): Filter {
