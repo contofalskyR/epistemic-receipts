@@ -291,6 +291,26 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — Bug-fix sweep: claim detail 500, nav z-index, footer date
+
+**What.** Three site bugs reported by the user, all addressed in one push.
+
+1. **`/claims/[id]` returning 500 / null.** Root cause: commit `7731197` dropped `Claim.academicFieldId` from `prisma/schema.prisma` and applied a migration to drop the column from the DB, but the cached Prisma client in `node_modules/@prisma/client` still encoded a `SELECT` over the removed column. Result: every `prisma.claim.findUnique` call failed with `P2022 column "(not available)" does not exist`, which the front-end (`fetch(...).then(r => if (!r.ok) setNotFound(true))`) rendered as "Claim not found." The fix is structural: Vercel's build command (`prisma generate && next build` in `package.json`) regenerates the client on every deploy, so pushing any change to `main` resolves the production breakage. Locally verified via `npx prisma generate` followed by direct `prisma.claim.findUnique({ where: { id: 'cmq3r9obp8bidsavcz77y68qj' } })` returning the expected row.
+
+2. **Cold-war search "presets return null."** Same Prisma fault: the topic chips / result cards on the home page link to `/claims/${id}`, and every one of those clicks landed on the 500 → "not found" path. No separate code change was required once (1) was fixed. Verified by visiting `/?q=cold+war` after the regen — all 8 result links resolve to live claim detail pages and the chips re-trigger inline searches normally.
+
+3. **Nav dropdowns hidden by page text.** The `<nav>` in `app/components/Nav.tsx` used `bg-gray-950/70 backdrop-blur` (which creates its own stacking context per CSS spec) with no `z-index`, so the dropdown panel's `z-50` was scoped *inside* the nav's stacking context but the nav itself stacked at the default level, letting `relative`-positioned page sections render on top of it. Fix: added `z-50` to the `<nav>` element so the entire nav stacking context floats above the rest of the document. No layout/positioning behavior change otherwise (kept `relative`, not `sticky`).
+
+**Files changed.**
+- `app/components/Nav.tsx` — `<nav>` className gains `z-50`
+- `app/layout.tsx` — footer now shows "last updated June 7, 2026" per the deploy-time update rule
+- `app/page.tsx` — new "Recent additions" entry summarizing the bug-fix sweep
+- `CONSULTANT.md` — this entry
+
+**Telegram.** Completion notification sent to chat_id `7688025079` via `openclaw message send` per the run prompt.
+
+---
+
 ### 2026-06-07 — V-Dem enrichment linkers (OFAC / UCDP / SIPRI)
 
 **What.** Three new V-Dem cross-pipeline linkers wiring the freshly-ingested `vdem_v1` claims into the sanctions / conflict / military-spending substrates so case studies can pull the surrounding democracy trajectory for free.
@@ -3599,3 +3619,47 @@ The SPARQL queries cap at LIMIT 2000 — rerun as-is to pick up any newly added 
 **Telegram notification sent** to chat 7688025079 (msg ID 10121) via `openclaw message send --channel telegram` — `TELEGRAM_BOT_TOKEN` is not in `.env.local` (lives only in Vercel production env per the 2026-06-07 UI/UX entry), so the script's curl fallback was skipped and the openclaw CLI used instead.
 
 **Files added.** `scripts/enrich-party-economic-response.ts`, `scripts/output/party-economic-response.json`.
+
+---
+
+### 2026-06-07 — Crisis indicators added to worldbank_v1 + ECONOMIC_CONTEXT relink + crisis-detector enrichment
+
+**Why.** Task asked for a crisis detector over the 1.26M ECONOMIC_CONTEXT relations with thresholds on GDP growth, unemployment, inflation, and central-government debt. The pre-existing `worldbank_v1` ingest covered only level indicators (NY.GDP.MKTP.CD, NY.GDP.PCAP.CD, SP.POP.TOTL, SP.DYN.LE00.IN, EN.GHG.CO2.PC.CE.AR5) — none of the four threshold codes were in DB, so the detector as spec'd would have flagged zero. Extended the pipeline rather than build a script that can't fire.
+
+**Indicators added to `scripts/ingest-worldbank.ts`.**
+- `NY.GDP.MKTP.KD.ZG` — GDP growth, annual %
+- `SL.UEM.TOTL.ZS` — Unemployment, % of total labor force
+- `FP.CPI.TOTL.ZG` — Inflation (consumer prices), annual %
+- `GC.DOD.TOTL.GD.ZS` — Central government debt, % of GDP
+
+Live ingest run (idempotent — existing claims keyed by `externalId`): **19,924 new claims ingested, 34,643 skipped** (pre-existing observations for the five legacy indicators). Total `worldbank_v1` claims now **54,567**.
+
+**Linker rerun.** `scripts/link-worldbank-legislation.ts` — extended `isEconomicIndicator()` to also accept the `SL.UEM` prefix (NY.GDP, FP.CPI, GC.DOD prefixes already passed through). Reran live: 354,190 dated legislation claims × the expanded indicator pool → **2,183,625 new ECONOMIC_CONTEXT relations inserted** on top of the 1,262,112 from the 2026-06-07 run. Total ECONOMIC_CONTEXT relations now **3,445,737**.
+
+**Added: `scripts/enrich-economic-crisis-detector.ts`.** Streams ECONOMIC_CONTEXT relations whose `toClaim` is one of the four threshold indicators, evaluates per-row, and merges a `crisisContext` array into the existing `followUpContext` JSON (the linker's iso3/year/heuristic fields are preserved). Thresholds applied verbatim from the task brief:
+- `recession` ← GDP growth < −2
+- `high-unemployment` ← unemployment > 10
+- `unemployment-spike` ← unemployment − prior-year unemployment > 3 pp (prior-year value loaded once into in-memory iso3→year→value map, O(1) per row)
+- `high-inflation` ← CPI YoY > 20
+- `hyperinflation` ← CPI YoY > 50 (supersedes `high-inflation` — only one is emitted)
+- `high-debt` ← central-gov debt / GDP > 90
+
+Cursor-paginated by `cr.id > lastId` ASC in 500-row batches; `--dry-run` short-circuits before the `prisma.claimRelation.update` call. Live run results (DB-verified via `"followUpContext" ? 'crisisContext'` count):
+
+| tag                  | flagged |
+|----------------------|--------:|
+| high-unemployment    | 105,167 |
+| high-debt            | 103,426 |
+| recession            |  61,253 |
+| high-inflation       |  24,061 |
+| hyperinflation       |   7,902 |
+| unemployment-spike   |   7,481 |
+| **total relations flagged** | **303,823** |
+
+(Total tag-emissions exceed flagged because `unemployment-spike` can co-occur with `high-unemployment` on the same row; the other tags are mutually exclusive per indicator.) Scanned: 2,183,625 — exactly the new-indicator ECONOMIC_CONTEXT slice; the 1.26M legacy relations point to level indicators (GDP, GDP per capita) and were correctly skipped by the SQL filter.
+
+**Schema note worth preserving.** `ClaimRelation` has no `metadata` column — only `followUpContext: Json?`. The task brief said "update the ClaimRelation's metadata"; this maps to the existing `followUpContext` field. Crisis context is namespaced under the `crisisContext` key so the linker's `iso3` / `indicatorCode` / `pipeline_from` / etc. context fields stay intact for any consumer that already reads them.
+
+**Prisma TS quirk re-hit.** Same `InputJsonValue` error noted on `link-retraction-originals.ts` recurred when annotating the merged JSON with an explicit cast: `Conversion of type '{ crisisContext: CrisisTriggered[]; }' to type 'InputJsonValue' may be a mistake`. Fixed by letting Prisma infer the JSON shape — pass the object literal directly inside `data: { followUpContext: { ...existing, crisisContext: triggered.map(t => ({...t})) } }`. Add this to the running list of "don't explicitly type Prisma JSON inputs."
+
+**Files added/changed.** `scripts/enrich-economic-crisis-detector.ts` (new); `scripts/ingest-worldbank.ts` (added 4 indicators + formatter case); `scripts/link-worldbank-legislation.ts` (added `SL.UEM` prefix).

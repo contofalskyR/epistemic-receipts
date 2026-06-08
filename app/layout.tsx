@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main className="px-6 py-8">{children}</main>
         <footer className="border-t border-gray-800/50 px-6 py-3 text-center text-xs text-gray-500">
-          Epistemic Receipts — {new Date().getFullYear()}
+          Epistemic Receipts — {new Date().getFullYear()} · last updated June 7, 2026
         </footer>
       </body>
     </html>

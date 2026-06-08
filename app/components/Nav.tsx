@@ -123,7 +123,7 @@ export default function Nav() {
   return (
     <nav
       ref={navRef}
-      className="border-b border-gray-800 px-6 py-3 text-sm relative bg-gray-950/70 backdrop-blur"
+      className="border-b border-gray-800 px-6 py-3 text-sm relative z-50 bg-gray-950/70 backdrop-blur"
     >
       <div className="hidden md:flex items-center gap-6">
         <Link href="/" className="font-semibold text-white">
