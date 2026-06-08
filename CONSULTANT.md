@@ -291,6 +291,59 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-07 — UN Treaty Collection pipeline (un_treaties_v1)
+
+**What.** Rebuilt `scripts/ingest-un-treaties.ts` (Pipeline 94). The previous version scraped only chapters I–XXVII (27 chapters), used wrong chapter names, generated a different claim text format, used `CITES` edges without `EdgeRevision`, and didn't fetch EIF dates or party counts.
+
+**Changes:**
+1. Extended chapter coverage from 27 → 29 (added Chapters XXVIII Fiscal Matters, XXIX Miscellaneous — verified from live ParticipationStatus page).
+2. Fixed all 29 chapter names to match the actual UN site.
+3. Added ViewDetails fetch step per treaty: scrapes `treaties.un.org/Pages/ViewDetails.aspx` for entry-into-force date and party count using regex HTML parsing.
+4. Updated claim text format to: `"[title] opened for signature [date], entered into force [date] — [N] parties"`.
+5. Fixed edge type `CITES` → `FOR` with `evidenceType: EVIDENTIARY` and `EdgeRevision` (score 90).
+6. Added update-in-place logic: existing old-format records (starting with "The UN multilateral treaty") are re-fetched and updated rather than skipped.
+
+**API discovery.** The task spec referenced `https://treaties.un.org/api/multilateral-treaties?$top=10&$format=json` — this URL returns 404. No OData or JSON API exists. The actual data is in ASP.NET WebForms HTML tables at chapter listing pages and per-treaty ViewDetails pages.
+
+**Results (DB-verified).**
+- Total candidates from 29 chapters: 419 treaties
+- All 419 claims updated to new format with EIF/party metadata
+- EIF dates found: 358/419 | Party counts found: 288/419 (remaining are procedural instruments or treaties still open)
+- Claims: 419 | Sources: 419 | Edges: 419 (all FOR type) | EdgeRevisions: 419
+
+**Rate limiting.** Chapter listing: 600ms between pages (29 pages ≈ 18s). ViewDetails: 500ms between pages (419 pages ≈ 3.5 minutes). No authentication required.
+
+**Files changed.**
+- `scripts/ingest-un-treaties.ts`
+
+---
+
+### 2026-06-07 — OpenFEC campaign finance pipeline (fec_finance_v1, fec_finance_pac_v1)
+
+**What.** New ingester `scripts/ingest-fec-finance.ts` consuming FEC campaign finance data via `api.open.fec.gov/v1`. Two pipeline tags:
+
+1. **`fec_finance_v1`** — federal candidate fundraising totals via `/candidates/totals/`. One claim per candidate per cycle: "[Name] ([Party], [State], [Office]) raised $X and spent $Y in the [Year] election cycle." Covers offices P/S/H. Sort by `-receipts`, top 500 per cycle.
+
+2. **`fec_finance_pac_v1`** — top Super PAC totals via `/totals/pac-party/` (committee types O/V/W). One claim per committee per cycle, sorted by `-disbursements`, top 100 per cycle. Claim text includes independent expenditure amount when nonzero.
+
+**Cycles:** 2012, 2014, 2016, 2018, 2020, 2022, 2024 (all even-year federal election cycles).
+
+**Results (DB-verified).**
+- `fec_finance_v1`: 3,500 claims
+- `fec_finance_pac_v1`: 700 claims
+- Total: 4,200 claims, 4,200 sources, 4,200 edges
+
+**Status:** `currentStatus: HARD_FACT`, `verificationStatus: VERIFIED`, `autoApproved: true`, `humanReviewed: false` — consistent with Rule 3.
+
+**Endpoint notes.** The task spec mentioned `/committee/totals/` (which is per-committee, requires a committee_id path param) — used `/totals/pac-party/` instead, which is the correct listing endpoint supporting `sort=-disbursements` pagination. Super PAC type O returned exactly 100 per cycle; V/W fallback types were not needed for the top-100 limit.
+
+**Flags.** `--dry-run`, `--cycle YYYY` (repeatable), `--limit N` (default 500), `--pac-limit N` (default 100), `--office P|S|H`. Also respects `ALLOW_EDITS=true` env gate.
+
+**Files added.**
+- `scripts/ingest-fec-finance.ts`
+
+---
+
 ### 2026-06-07 — Bug-fix sweep: claim detail 500, nav z-index, footer date
 
 **What.** Three site bugs reported by the user, all addressed in one push.

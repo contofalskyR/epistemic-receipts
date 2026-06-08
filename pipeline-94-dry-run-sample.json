@@ -1,8 +1,8 @@
 {
-  "runDate": "2026-05-21T01:47:10.978Z",
+  "runDate": "2026-06-08T02:53:35.707Z",
   "pipeline": "Pipeline 94",
   "ingestedBy": "un_treaties_v1",
-  "totalCandidates": 416,
+  "totalCandidates": 419,
   "distribution": {
     "byChapter": {
       "Chapter 1": 7,
@@ -31,7 +31,9 @@
       "Chapter 24": 2,
       "Chapter 25": 8,
       "Chapter 26": 13,
-      "Chapter 27": 53
+      "Chapter 27": 53,
+      "Chapter 28": 2,
+      "Chapter 29": 1
     }
   },
   "sample": [
@@ -40,7 +42,7 @@
       "title": "Charter of the United Nations (deposited in the archives of the Government of the United States of America)",
       "location": "San Francisco",
       "treatyDate": "1945-06-26",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_1",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-1&chapter=1&clang=_en"
     },
@@ -49,7 +51,7 @@
       "title": "Declarations of Acceptance of the Obligations contained in the Charter of the United Nations - Admission of States to Me",
       "location": "San Francisco",
       "treatyDate": "1945-10-24",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_2",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-2&chapter=1&clang=_en"
     },
@@ -58,7 +60,7 @@
       "title": "Statute of the International Court of Justice (deposited in the archives of the Government of the United States of Ameri",
       "location": "San Francisco",
       "treatyDate": "1945-10-24",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_3",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-3&chapter=1&clang=_en"
     },
@@ -67,7 +69,7 @@
       "title": "Declarations recognizing as compulsory the jurisdiction of the International Court of Justice under Article 36, paragrap",
       "location": "",
       "treatyDate": "1945-01-01",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_4",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-4&chapter=1&clang=_en"
     },
@@ -76,7 +78,7 @@
       "title": "Amendments to Articles 23,27 and 61 of the Charter of the United Nations, adopted by the General Assembly of the United ",
       "location": "New York",
       "treatyDate": "1963-12-17",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_5_a",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-5-a&chapter=1&clang=_en"
     },
@@ -85,7 +87,7 @@
       "title": "Amendment to Article 109 of the Charter of the United Nations, adopted by the General Assembly of the United Nations in ",
       "location": "New York",
       "treatyDate": "1965-12-20",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_5_b",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-5-b&chapter=1&clang=_en"
     },
@@ -94,7 +96,7 @@
       "title": "Amendment to Article 61 of the Charter of the United Nations, adopted by the General Assembly of the United Nations in r",
       "location": "New York",
       "treatyDate": "1971-12-20",
-      "chapterName": "Charter of the United Nations and Statute of the ICJ",
+      "chapterName": "Charter of the United Nations and Statute of the International Court of Justice",
       "externalId": "un_treaty_i_5_c",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=I-5-c&chapter=1&clang=_en"
     },
@@ -112,7 +114,7 @@
       "title": "Convention on the Privileges and Immunities of the United Nations",
       "location": "New York",
       "treatyDate": "1946-02-13",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_1",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-1&chapter=3&clang=_en"
     },
@@ -121,7 +123,7 @@
       "title": "Convention on the Privileges and Immunities of the Specialized Agencies",
       "location": "New York",
       "treatyDate": "1947-11-21",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_2",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-2&chapter=3&clang=_en"
     },
@@ -130,7 +132,7 @@
       "title": "Annex I - International Labour Organisation (ILO) - to the Convention on the Privileges and Immunities of the Specialize",
       "location": "San Francisco",
       "treatyDate": "1948-07-10",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_2_1",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-2-1&chapter=3&clang=_en"
     },
@@ -139,7 +141,7 @@
       "title": "Annex II - Food and Agriculture Organization of the United Nations (FAO) - to the Convention on the Privileges and Immun",
       "location": "Washington",
       "treatyDate": "1948-11-29",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_2_2",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-2-2&chapter=3&clang=_en"
     },
@@ -148,7 +150,7 @@
       "title": "Revised text of Annex II - Food and Agriculture Organization of the United Nations (FAO) - to the Convention on the Priv",
       "location": "Rome",
       "treatyDate": "1959-11-20",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_2_2a",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-2-2a&chapter=3&clang=_en"
     },
@@ -157,7 +159,7 @@
       "title": "Second revised text of Annex II - Food and Agriculture Organization of the United Nations (FAO) - to the Convention on t",
       "location": "Rome",
       "treatyDate": "1965-12-08",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_2_2b",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-2-2b&chapter=3&clang=_en"
     },
@@ -166,7 +168,7 @@
       "title": "Annex III - International Civil Aviation Organization (ICAO) - to the Convention on the Privileges and Immunities of the",
       "location": "Geneva",
       "treatyDate": "1948-06-21",
-      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations",
+      "chapterName": "Privileges and Immunities, Diplomatic and Consular Relations, etc",
       "externalId": "un_treaty_iii_2_3",
       "sourceUrl": "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=III-2-3&chapter=3&clang=_en"
     }
