@@ -77,6 +77,7 @@ const PIPELINE_META: Record<string, PipelineMeta> = {
   // ── International ──────────────────────────────────────────────────────────────
   un_sc_resolutions_v1: { label: "UN Security Council", description: "All adopted resolutions (1946–2025) with vote records and subject classification", sourceUrl: "https://www.un.org/securitycouncil", category: "International" },
   nato_official_texts_v1: { label: "NATO Official Texts", description: "Communiqués, declarations, and treaties from nato.int/cps", sourceUrl: "https://www.nato.int", category: "International" },
+  vdem_v1: { label: "V-Dem Democracy Indicators", description: "Varieties of Democracy (V-Dem) v16 — five democracy indices (electoral, liberal, participatory, egalitarian, deliberative) for 183 countries, 1900–2026", sourceUrl: "https://v-dem.net", category: "International" },
 
   // ── Science ────────────────────────────────────────────────────────────────────
   crossref_retractions_v1: { label: "Retracted Papers", description: "Scientific paper retractions indexed by CrossRef (~26,500 records)", sourceUrl: "https://retractiondatabase.org", category: "Science" },
@@ -93,6 +94,7 @@ const PIPELINE_META: Record<string, PipelineMeta> = {
 
   // ── Health / Clinical ──────────────────────────────────────────────────────────
   icd11_v1: { label: "WHO ICD-11", description: "International Classification of Diseases, 11th revision (WHO MMS 2024-01)", sourceUrl: "https://icd.who.int", category: "Health" },
+  who_gho_v1: { label: "WHO Global Health Observatory", description: "8 health indicators (life expectancy, healthy life expectancy, infant/U5 mortality, obesity, PM2.5, alcohol, sanitation) for all countries, 2000–2023", sourceUrl: "https://www.who.int/data/gho", category: "Health" },
   clinicaltrials_v1: { label: "ClinicalTrials.gov", description: "Clinical trial registrations from the US NIH", sourceUrl: "https://clinicaltrials.gov", category: "Clinical" },
   faers_normalized_drugs_v1: { label: "FDA FAERS", description: "Drug-level aggregate adverse event counts from the FDA Adverse Event Reporting System", sourceUrl: "https://open.fda.gov", category: "Health" },
   openfda_v1: { label: "OpenFDA", description: "FDA drug approval and adverse event data via the openFDA API", sourceUrl: "https://open.fda.gov", category: "Health" },

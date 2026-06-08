@@ -51,6 +51,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/sources", destination: "/datasets", permanent: true },
+      { source: "/stock-act", destination: "/congress-trades", permanent: true },
     ];
   },
 };

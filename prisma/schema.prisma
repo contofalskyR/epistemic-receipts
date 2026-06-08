@@ -20,7 +20,7 @@ model Claim {
   id                    String            @id @default(cuid())
   text                  String
   createdAt             DateTime          @default(now())
-  currentStatus         String            @default("DISPUTED") // DISPUTED | HARD_FACT | NEVER_RESOLVES
+  currentStatus         String            @default("DISPUTED") // DEPRECATED — use epistemicAxis. Values: DISPUTED | HARD_FACT | NEVER_RESOLVES | VERIFIED
   claimType             String            @default("EMPIRICAL") // EMPIRICAL | INSTITUTIONAL | INTERPRETIVE | HYBRID
   parentClaimId         String?
   claimEmergedAt        DateTime?
@@ -37,6 +37,7 @@ model Claim {
   openAlexId            String?
   metadata              Json?
   epistemicStatus       String? // confirmed | candidate | retracted | contested | active_trial | completed_trial | registered_trial | approved | settled_judgment | contested_dissent | false_positive
+  epistemicAxis         String? // RECORDED | SETTLED | CONTESTED | OPEN | UNRESOLVABLE (5-way axis, replaces currentStatus)
 
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
   children Claim[] @relation("ClaimHierarchy")
@@ -67,6 +68,7 @@ model Claim {
   @@index([deleted, parentClaimId, claimType, verificationStatus])
   @@index([deleted, ingestedBy])
   @@index([epistemicStatus])
+  @@index([epistemicAxis])
 }
 
 model Source {

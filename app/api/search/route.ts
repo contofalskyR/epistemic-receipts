@@ -12,6 +12,7 @@ type ClaimHit = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   ingestedBy: string;
   verificationStatus: string | null;
@@ -42,6 +43,10 @@ export async function GET(req: NextRequest) {
   const countryPipelines = countryRaw ? COUNTRY_TO_PIPELINES[countryRaw] ?? [] : [];
   const countryActive = countryRaw.length > 0 && countryPipelines.length > 0;
   const countryName = countryActive ? PIPELINE_COUNTRY_NAME[countryRaw] ?? null : null;
+
+  const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE"] as const;
+  const axisRaw = (url.searchParams.get("axis") ?? "").trim().toUpperCase();
+  const axisFilter = (VALID_AXES as readonly string[]).includes(axisRaw) ? axisRaw : null;
 
   const limit = Math.max(
     1,
@@ -81,6 +86,7 @@ export async function GET(req: NextRequest) {
     deleted: false,
     ...claimTextWhere,
     ...claimCountryWhere,
+    ...(axisFilter ? { epistemicAxis: axisFilter } : {}),
   };
 
   const sourceTextWhere = qRaw.length >= MIN_QUERY
@@ -113,6 +119,7 @@ export async function GET(req: NextRequest) {
             id: true,
             text: true,
             currentStatus: true,
+            epistemicAxis: true,
             claimType: true,
             ingestedBy: true,
             verificationStatus: true,
@@ -135,6 +142,7 @@ export async function GET(req: NextRequest) {
           id: string;
           text: string;
           currentStatus: string;
+          epistemicAxis: string | null;
           claimType: string;
           ingestedBy: string;
           verificationStatus: string | null;
@@ -178,6 +186,7 @@ export async function GET(req: NextRequest) {
     id: c.id,
     text: c.text,
     currentStatus: c.currentStatus,
+    epistemicAxis: (c as { epistemicAxis?: string | null }).epistemicAxis ?? null,
     claimType: c.claimType,
     ingestedBy: c.ingestedBy,
     verificationStatus: c.verificationStatus,
@@ -204,6 +213,7 @@ export async function GET(req: NextRequest) {
     offset,
     country: countryActive ? countryRaw : null,
     countryName,
+    axis: axisFilter,
     counts: { claims: claimsCount, sources: sourcesCount },
     claims,
     sources,

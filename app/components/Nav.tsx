@@ -22,6 +22,9 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/timeline", label: "Timeline" },
       { href: "/historical-events", label: "Events" },
       { href: "/settling-curve", label: "Settling Curve" },
+      { href: "/opinions", label: "Court Opinions" },
+      { href: "/retraction-wall", label: "Retraction Wall" },
+      { href: "/retractions", label: "Retraction API" },
       { href: "/bookmarks", label: "Bookmarks" },
       { href: "/reader", label: "Reader" },
       { href: "/books", label: "Books" },
@@ -30,12 +33,15 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
   {
     label: "Data",
     items: [
-      { href: "/votes", label: "Votes" },
+      { href: "/votes", label: "Browse Votes" },
+      { href: "/members", label: "Members" },
       { href: "/analysis/votes", label: "Analysis" },
       { href: "/analysis/topics", label: "Topic Trends" },
       { href: "/analysis/representation", label: "Representation" },
       { href: "/stats/media-coverage", label: "Media Coverage" },
       { href: "/financial", label: "Financial" },
+      { href: "/congress-trades", label: "Congress Trades" },
+      { href: "/retraction-explorer", label: "Retraction Explorer" },
     ],
   },
   {
@@ -124,7 +130,7 @@ export default function Nav() {
   return (
     <nav
       ref={navRef}
-      className="border-b border-gray-800 px-6 py-3 text-sm relative z-50 bg-gray-950/70 backdrop-blur"
+      className="border-b border-gray-800 px-6 py-3 text-sm sticky top-0 z-50 bg-gray-950/70 backdrop-blur"
     >
       <div className="hidden md:flex items-center gap-6">
         <Link href="/" className="font-semibold text-white">

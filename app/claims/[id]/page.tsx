@@ -7,6 +7,7 @@ import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge"
 import { useBookmarks } from "@/hooks/useBookmarks";
 import ClaimRelationsPanel from "@/components/ClaimRelationsPanel";
 import WhatHappenedNextPanel from "@/components/WhatHappenedNextPanel";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -87,6 +88,7 @@ type ChildClaim = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   _count: { edges: number };
 };
@@ -97,6 +99,7 @@ type ClaimDetail = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   claimEmergedAt: string | null;
   claimEmergedPrecision: EmergedPrecision | null;
@@ -789,9 +792,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
       <div className="space-y-3 pb-6 border-b border-gray-800">
         <h1 className="text-xl font-semibold text-white leading-snug">{claim.text}</h1>
         <div className="flex items-center gap-2 flex-wrap">
-          <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[claim.currentStatus] ?? STATUS_STYLE.DISPUTED}`}>
-            {claim.currentStatus}
-          </span>
+          <EpistemicAxisBadge axis={claim.epistemicAxis} />
           <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
             {claim.claimType}
           </span>
@@ -955,9 +956,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
                   {child.text}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[child.currentStatus] ?? STATUS_STYLE.DISPUTED}`}>
-                    {child.currentStatus}
-                  </span>
+                  <EpistemicAxisBadge axis={child.epistemicAxis} />
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
                     {child.claimType}
                   </span>

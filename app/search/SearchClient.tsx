@@ -3,11 +3,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { EpistemicAxisBadge, AXIS_CONFIG } from "@/components/EpistemicAxisBadge";
 
 type ClaimHit = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   ingestedBy: string;
   verificationStatus: string | null;
@@ -34,6 +36,7 @@ type SearchResponse = {
   offset: number;
   country: string | null;
   countryName: string | null;
+  axis: string | null;
   counts: { claims: number; sources: number };
   claims: ClaimHit[];
   sources: SourceHit[];
@@ -191,12 +194,12 @@ function SearchLegend() {
       style={{ animation: "result-in 0.3s ease forwards" }}>
       <p className="text-gray-400 font-medium">Reading results</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
-        <span><span className="text-green-400">Hard Fact</span> — verified across independent sources</span>
-        <span><span className="text-yellow-400">Disputed</span> — conflicting or contested evidence</span>
+        <span><span className="text-emerald-400">Settled</span> — established fact, no known dispute</span>
+        <span><span className="text-amber-400">Contested</span> — retracted, disputed, or challenged</span>
+        <span><span className="text-blue-400">Recorded</span> — officially documented</span>
         <span><span className="text-indigo-400">Topic badge</span> — the field this claim belongs to</span>
         <span><span className="text-gray-300">Evidence trail →</span> — timeline, sources, verification</span>
         <span><span className="text-gray-300">Empirical</span> — observable, measurable fact</span>
-        <span><span className="text-gray-300">Institutional</span> — law, rule, or official decision</span>
       </div>
     </div>
   );
@@ -212,6 +215,9 @@ export default function SearchClient() {
     urlTypeRaw === "claims" || urlTypeRaw === "sources" ? urlTypeRaw : "all";
   const urlOffset = Math.max(0, Number.parseInt(searchParams.get("offset") ?? "0", 10) || 0);
   const urlCountry = (searchParams.get("country") ?? "").trim().toUpperCase();
+  const VALID_AXES = ["SETTLED", "CONTESTED", "RECORDED", "OPEN", "UNRESOLVABLE"] as const;
+  const urlAxisRaw = (searchParams.get("axis") ?? "").trim().toUpperCase();
+  const urlAxis = (VALID_AXES as readonly string[]).includes(urlAxisRaw) ? urlAxisRaw : "";
 
   const [input, setInput] = useState(urlQ);
   const [data, setData] = useState<SearchResponse | null>(null);
@@ -224,7 +230,7 @@ export default function SearchClient() {
   }, [urlQ]);
 
   const pushUrl = useCallback(
-    (overrides: Partial<{ q: string; type: string; offset: number; country: string }>) => {
+    (overrides: Partial<{ q: string; type: string; offset: number; country: string; axis: string }>) => {
       const next = new URLSearchParams(searchParams.toString());
       if (overrides.q !== undefined) {
         if (overrides.q) next.set("q", overrides.q);
@@ -242,6 +248,10 @@ export default function SearchClient() {
         if (overrides.country) next.set("country", overrides.country);
         else next.delete("country");
       }
+      if (overrides.axis !== undefined) {
+        if (overrides.axis) next.set("axis", overrides.axis);
+        else next.delete("axis");
+      }
       const qs = next.toString();
       router.replace(qs ? `/search?${qs}` : "/search");
     },
@@ -252,7 +262,7 @@ export default function SearchClient() {
   useEffect(() => {
     const q = urlQ.trim();
     // A country filter alone is enough to fetch even with empty q.
-    if (q.length < MIN_QUERY && !urlCountry) {
+    if (q.length < MIN_QUERY && !urlCountry && !urlAxis) {
       setData(null);
       setError(null);
       setLoading(false);
@@ -267,6 +277,7 @@ export default function SearchClient() {
     p.set("limit", String(PAGE_SIZE));
     p.set("offset", String(urlOffset));
     if (urlCountry) p.set("country", urlCountry);
+    if (urlAxis) p.set("axis", urlAxis);
     fetch(`/api/search?${p.toString()}`, { signal: controller.signal })
       .then(async r => {
         if (!r.ok) throw new Error(`Search failed (${r.status})`);
@@ -282,7 +293,7 @@ export default function SearchClient() {
         setLoading(false);
       });
     return () => controller.abort();
-  }, [urlQ, urlType, urlOffset, urlCountry]);
+  }, [urlQ, urlType, urlOffset, urlCountry, urlAxis]);
 
   function onInputChange(v: string) {
     setInput(v);
@@ -309,8 +320,9 @@ export default function SearchClient() {
   const trimmedQ = input.trim();
   const queryTooShort = trimmedQ.length > 0 && trimmedQ.length < MIN_QUERY;
   const hasCountry = urlCountry.length > 0;
+  const hasAxisFilter = urlAxis.length > 0;
   const countryLabel = data?.countryName ?? (hasCountry ? urlCountry : null);
-  const showResults = trimmedQ.length >= MIN_QUERY || hasCountry;
+  const showResults = trimmedQ.length >= MIN_QUERY || hasCountry || hasAxisFilter;
 
   function clearCountry() {
     pushUrl({ country: "", offset: 0 });
@@ -375,6 +387,27 @@ export default function SearchClient() {
             );
           })}
 
+          <span className="text-gray-700 text-xs">|</span>
+
+          {(["SETTLED", "CONTESTED", "RECORDED"] as const).map(ax => {
+            const cfg = AXIS_CONFIG[ax]!;
+            const active = urlAxis === ax;
+            return (
+              <button
+                key={ax}
+                onClick={() => pushUrl({ axis: active ? "" : ax, offset: 0 })}
+                className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                  active
+                    ? `${cfg.style} border-transparent font-medium`
+                    : "bg-transparent text-gray-400 border-gray-700 hover:border-gray-500"
+                }`}
+                title={cfg.tooltip}
+              >
+                {cfg.label}
+              </button>
+            );
+          })}
+
           {data && showResults && (
             <span className="text-xs text-gray-500 ml-auto">
               {data.counts.claims.toLocaleString()} {data.counts.claims === 1 ? "claim" : "claims"} ·{" "}
@@ -385,13 +418,13 @@ export default function SearchClient() {
       </div>
 
       {/* States */}
-      {trimmedQ.length === 0 && !hasCountry && (
+      {trimmedQ.length === 0 && !hasCountry && !hasAxisFilter && (
         <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
           Type a query to begin. Searches Claim.text and Source.name/url with a case-insensitive substring match.
         </div>
       )}
 
-      {queryTooShort && !hasCountry && (
+      {queryTooShort && !hasCountry && !hasAxisFilter && (
         <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
           Keep typing — at least {MIN_QUERY} characters.
         </div>
@@ -510,12 +543,7 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
       {/* Badges + trail */}
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span
-            className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[claim.currentStatus] ?? STATUS_STYLE.DISPUTED}`}
-            title={STATUS_TOOLTIP[claim.currentStatus] ?? ""}
-          >
-            {STATUS_LABEL[claim.currentStatus] ?? claim.currentStatus}
-          </span>
+          <EpistemicAxisBadge axis={claim.epistemicAxis} />
           {claim.topicLabel && (
             <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
               {claim.topicLabel}
@@ -530,11 +558,6 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
           {claim.epistemicStatus && EPISTEMIC_BADGE[claim.epistemicStatus] && (
             <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${EPISTEMIC_BADGE[claim.epistemicStatus]!.style}`}>
               {EPISTEMIC_BADGE[claim.epistemicStatus]!.label}
-            </span>
-          )}
-          {claim.verificationStatus && (
-            <span className={`text-xs px-1.5 py-0.5 rounded font-mono ${VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"}`}>
-              {claim.verificationStatus}
             </span>
           )}
         </div>

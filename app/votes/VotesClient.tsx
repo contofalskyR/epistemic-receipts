@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import {
   US_PRESIDENTS,
   ERAS,
@@ -387,21 +388,13 @@ function VoteRow({ vote }: { vote: VoteHit }) {
   const chamberStyle = CHAMBER_STYLE[vote.chamber] ?? "bg-gray-800 text-gray-400 border border-gray-700/50";
 
   return (
-    <div className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group">
+    <Link
+      href={`/votes/${vote.id}`}
+      className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group"
+    >
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
-          {vote.sourceUrl ? (
-            <a
-              href={vote.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-200 group-hover:text-white leading-relaxed hover:text-blue-300 transition-colors"
-            >
-              {truncate(vote.sourceName)}
-            </a>
-          ) : (
-            <p className="text-sm text-gray-200 leading-relaxed">{truncate(vote.sourceName)}</p>
-          )}
+          <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">{truncate(vote.sourceName)}</p>
           <div className="flex items-center gap-2 mt-2 flex-wrap">
             <span className="text-xs text-gray-500 font-mono">{formatDate(vote.voteDate)}</span>
             <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${chamberStyle}`}>
@@ -418,6 +411,17 @@ function VoteRow({ vote }: { vote: VoteHit }) {
                 {t}
               </span>
             ))}
+            {vote.sourceUrl && (
+              <a
+                href={vote.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                className="text-[10px] uppercase tracking-widest text-gray-600 hover:text-blue-300 transition-colors"
+              >
+                Voteview ↗
+              </a>
+            )}
           </div>
         </div>
         <div className="shrink-0 text-right">
@@ -441,6 +445,6 @@ function VoteRow({ vote }: { vote: VoteHit }) {
           <div className="bg-red-500/70" style={{ width: `${noPct}%` }} />
         </div>
       )}
-    </div>
+    </Link>
   );
 }
