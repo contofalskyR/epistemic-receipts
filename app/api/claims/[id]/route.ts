@@ -37,44 +37,50 @@ function normalizeChamber(s: string): "house" | "senate" | "other" {
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const claim = await prisma.claim.findUnique({
-    where: { id },
-    include: {
-      parent: { select: { id: true, text: true } },
-      children: {
-        include: {
-          _count: { select: { edges: { where: { deleted: false } } } },
+  let claim;
+  try {
+    claim = await prisma.claim.findUnique({
+      where: { id },
+      include: {
+        parent: { select: { id: true, text: true } },
+        children: {
+          include: {
+            _count: { select: { edges: { where: { deleted: false } } } },
+          },
         },
-      },
-      edges: {
-        where: { deleted: false },
-        include: {
-          source: {
-            include: {
-              politicalContext: {
-                select: { headOfGovernment: true, hogParty: true, country: true },
+        edges: {
+          where: { deleted: false },
+          include: {
+            source: {
+              include: {
+                politicalContext: {
+                  select: { headOfGovernment: true, hogParty: true, country: true },
+                },
+                legislativeVotes: { select: LV_SELECT },
               },
-              legislativeVotes: { select: LV_SELECT },
+            },
+            revisions: { orderBy: { changedAt: "asc" } },
+            metaEdges: {
+              where: { deleted: false },
+              include: { actorSource: true },
+              orderBy: { createdAt: "asc" },
             },
           },
-          revisions: { orderBy: { changedAt: "asc" } },
-          metaEdges: {
-            where: { deleted: false },
-            include: { actorSource: true },
-            orderBy: { createdAt: "asc" },
-          },
+          orderBy: { createdAt: "asc" },
         },
-        orderBy: { createdAt: "asc" },
+        thresholdEvents: {
+          include: { triggeredBySource: true },
+          orderBy: { createdAt: "desc" },
+        },
+        topics: {
+          select: { topic: { select: { id: true, name: true, slug: true, domain: true } } },
+        },
       },
-      thresholdEvents: {
-        include: { triggeredBySource: true },
-        orderBy: { createdAt: "desc" },
-      },
-      topics: {
-        select: { topic: { select: { id: true, name: true, slug: true, domain: true } } },
-      },
-    },
-  });
+    });
+  } catch (err) {
+    console.error(`[/api/claims/${id}] DB error:`, err);
+    return NextResponse.json({ error: "internal server error" }, { status: 500 });
+  }
   if (!claim) return NextResponse.json({ error: "not found" }, { status: 404 });
 
   // Backfill member-vote LVs for vote-claim sources by looking up the matching bill source.
