@@ -31,6 +31,7 @@ const S = {
   purple: "#a78bfa",
 } as const;
 
+const FIELD_OPTIONS = ["all", "Medicine", "Psychology", "Biology", "Physics", "Chemistry"];
 const REASON_OPTIONS = ["all", "Retraction", "Withdrawal", "Correction", "Reinstatement"];
 
 function journalShort(journal: string | null): string {
@@ -303,6 +304,7 @@ export default function RetractionExplorerClient({
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const urlField = searchParams.get("field") ?? "all";
   const urlReason = searchParams.get("reason") ?? "all";
   const urlQ = searchParams.get("q") ?? "";
   const urlPage = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10) || 1);
@@ -329,6 +331,7 @@ export default function RetractionExplorerClient({
   useEffect(() => {
     setLoading(true);
     const params = new URLSearchParams();
+    if (urlField !== "all") params.set("field", urlField);
     if (urlReason !== "all") params.set("reason", urlReason);
     if (urlQ) params.set("q", urlQ);
     if (urlPage > 1) params.set("page", String(urlPage));
@@ -341,7 +344,7 @@ export default function RetractionExplorerClient({
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [urlReason, urlQ, urlPage]);
+  }, [urlField, urlReason, urlQ, urlPage]);
 
   const handleQChange = (v: string) => {
     setQInput(v);
@@ -459,6 +462,19 @@ export default function RetractionExplorerClient({
               outline: "none",
             }}
           />
+        </div>
+
+        <span style={{ fontSize: "0.75rem", color: S.muted }}>Field</span>
+        <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+          {FIELD_OPTIONS.map((v) => (
+            <Chip
+              key={v}
+              label={v === "all" ? "All" : v}
+              value={v}
+              current={urlField}
+              onSelect={(val) => pushUrl({ field: val, page: "1" })}
+            />
+          ))}
         </div>
 
         <span style={{ fontSize: "0.75rem", color: S.muted }}>Type</span>
