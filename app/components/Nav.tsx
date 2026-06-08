@@ -10,6 +10,7 @@ const PRIMARY: NavItem[] = [
   { href: "/fields", label: "Fields" },
   { href: "/legislation", label: "Legislation" },
   { href: "/stats", label: "Stats" },
+  { href: "/datasets", label: "Datasets" },
 ];
 
 const GROUPS: { label: string; items: NavItem[] }[] = [
@@ -44,7 +45,6 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/glossary", label: "Glossary" },
       { href: "/feedback", label: "Feedback" },
       { href: "/pipelines", label: "Pipelines" },
-      { href: "/datasets", label: "Datasets" },
       { href: "/edges", label: "Edges" },
       { href: "/meta-edges", label: "Meta-edges" },
       { href: "/review", label: "Review" },

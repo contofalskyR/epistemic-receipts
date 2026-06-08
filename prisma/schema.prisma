@@ -40,9 +40,6 @@ model Claim {
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
   children Claim[] @relation("ClaimHierarchy")
 
-  academicFieldId Int?
-  academicField   AcademicField? @relation("ClaimAcademicField", fields: [academicFieldId], references: [id])
-
   edges                    Edge[]
   metaEdges                MetaEdge[]
   suggestedThresholdEvents SuggestedThresholdEvent[]
@@ -56,7 +53,6 @@ model Claim {
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
   billCoverage             BillCoverage?
 
-  @@index([academicFieldId])
   @@index([ingestedBy])
   @@index([claimType])
   @@index([currentStatus])
@@ -281,7 +277,6 @@ model AcademicField {
   children  AcademicField[] @relation("AcademicFieldHierarchy")
   level     Int
   createdAt DateTime        @default(now())
-  claims    Claim[]         @relation("ClaimAcademicField")
   topics    Topic[]         @relation("TopicAcademicField")
 
   @@index([parentId])
