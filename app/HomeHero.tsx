@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, useCallback, Suspense, useTransition } from "react";
+import { useEffect, useState, useRef, Suspense, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import BlackHoleCanvas from "@/app/components/BlackHoleCanvas";
@@ -41,12 +41,12 @@ type SearchResponse = {
 
 // ─── Terminal Spinner ─────────────────────────────────────────────────────────
 
-const SPINNER_FRAMES = ["|", "/", "-", "\\", "|", "/", "-", "\\"];
+const SPINNER_FRAMES = ["|", "/", "-", "\\"];
 
 function TerminalSpinner() {
   const [frame, setFrame] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setFrame(f => (f + 1) % SPINNER_FRAMES.length), 80);
+    const id = setInterval(() => setFrame(f => (f + 1) % SPINNER_FRAMES.length), 120);
     return () => clearInterval(id);
   }, []);
   return (
@@ -310,6 +310,8 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
       return;
     }
 
+    setLoading(true);
+
     debounceRef.current = setTimeout(() => {
       abortRef.current?.abort();
       const controller = new AbortController();
@@ -343,10 +345,6 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
     router.replace(target, { scroll: false });
   }, [input, router]);
 
-  const handleChipClick = useCallback((chip: TopicChip) => {
-    setInput(chip.query);
-  }, []);
-
   const trimmed = input.trim();
   const showResults = trimmed.length >= MIN_QUERY;
   const hasHits = data && (data.claims.length > 0);
@@ -377,13 +375,13 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
 
           <div className="mt-5 flex flex-wrap gap-2 justify-center">
             {TOPIC_CHIPS.map(chip => (
-              <button
+              <Link
                 key={chip.label}
-                onClick={() => handleChipClick(chip)}
+                href={`/search?q=${encodeURIComponent(chip.query)}`}
                 className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-gray-700 bg-gray-900/60 backdrop-blur-sm text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
               >
                 {chip.label}
-              </button>
+              </Link>
             ))}
           </div>
 
