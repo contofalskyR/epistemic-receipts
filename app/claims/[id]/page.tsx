@@ -219,7 +219,7 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   }
 
   const BLUE = "#60a5fa", AMB = "#f0a000", MUT = "#888898";
-  const TRACK_H = 130, AY = 65;
+  const TRACK_H = 170, AY = 106;
 
   const dormantChipLeft = lastNode.pct + (todayPct - lastNode.pct) / 2;
   const dormantLabel = dormantYrs >= 1
@@ -228,14 +228,14 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
   const showDormant = dormantYrs > 0.3 && (todayPct - lastNode.pct) > 4;
 
   return (
-    <div style={{ background: "#0e0e1c", border: "1px solid #1e1e38", borderRadius: 12, position: "relative" }}>
+    <div style={{ background: "#0e0e1c", border: "1px solid #1e1e38", borderRadius: 12, position: "relative", padding: "1.4rem 1.75rem 3.25rem", overflow: "hidden" }}>
       {/* gradient tint top-left */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none", borderRadius: 12,
         background: "radial-gradient(circle at 0% 0%, rgba(96,165,250,0.07) 0%, transparent 55%)" }} />
 
-      {/* legend */}
-      <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "10px 20px 4px",
-        position: "relative", flexWrap: "wrap" }}>
+      {/* legend — top-right */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16,
+        position: "absolute", top: "1.25rem", right: "1.5rem", zIndex: 2, flexWrap: "wrap" }}>
         <TlLegendDot color={BLUE} label="Emerged" />
         <TlLegendDot color={AMB} label="Today" />
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -245,7 +245,7 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
       </div>
 
       {/* track */}
-      <div style={{ position: "relative", height: TRACK_H, margin: "4px 20px 12px" }}>
+      <div style={{ position: "relative", height: TRACK_H, marginTop: "1.1rem" }}>
 
         {/* active axis: left edge → first emerged node */}
         <div style={{ position: "absolute", top: AY, height: 2, left: `${PAD_L}%`,
