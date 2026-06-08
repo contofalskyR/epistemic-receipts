@@ -104,6 +104,7 @@
 | — | `ingest-astronomy.ts` | NASA exoplanets + IAU bodies | Shipped | — |
 | — | `ingest-pubchem.ts` | PubChem chemistry substrate | Ready | — |
 | 116 | `ingest-openalex.ts` | OpenAlex open academic catalog — peer-reviewed publications across 3 buckets: cognition (C15744967/C188147891 + cognitive-science search), biomedical (C71924100/C86803240 + clinical-trial search), policy (C17744445/C162324750 + policy search). Cursor pagination (per_page=200). Edge score 80 ("peer-reviewed, not independently verified"). (`openalex_v1`) | Shipped 2026-05-25 | 10,093+ (biomedical + policy still running) |
+| 150 | `ingest-pakistan-code.ts` | Pakistan Code — consolidated Federal Acts (Ministry of Law and Justice, pakistancode.gov.pk) — all letters A–Z scraped via accordion HTML, Wayback Machine fallback (live site down as of 2026-06-08). Roman + Arabic act numbers parsed. (`pakistan_code_v1`) | Shipped 2026-06-08 | 943 |
 
 ---
 
@@ -290,6 +291,16 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 ---
 
 ## Changelog (coding agent entries go here)
+
+### 2026-06-08 — Pakistan Code pipeline (pakistan_code_v1)
+
+**What.** Built and ran `scripts/ingest-pakistan-code.ts` (Pipeline 150). Fetches consolidated federal acts from the Pakistan Code (Ministry of Law and Justice, `pakistancode.gov.pk`). The live site is completely unreachable as of 2026-06-08 (TCP timeout on both ports 80 and 443), so the ingester falls back to Wayback Machine snapshots (7 snapshots tried in sequence with retry on ECONNREFUSED).
+
+**Design.** The site is HTML-only — no API. Each letter A–Z has a page (`LGu0xAD?alp=X&page=1&action=inactive`) with all acts in an accordion-section pattern. Each entry contains: title (with obfuscated href slug), category, act number (Roman numeral or Arabic, e.g. "XX of 1975"), and promulgation date. Acts appear in both the "Federal Laws" tab and an "Ordinance" tab (duplicated); dedup by externalId (derived from href slug) handles this automatically.
+
+**Result.** 943 claims/sources/edges ingested with 0 errors. Coverage: A–Z excluding X (0) and Y (0). K (11) and V (6) recovered via fallback snapshots. Decade coverage 1830s–2020s; 84.7% with a parsed promulgation date (rest fall back to YEAR precision on January 1).
+
+**Claim format.** `Pakistan: [Act Title] ([ActNumber] of [Year])` with `verificationStatus: HARD_FACT`, `jurisdiction: PAK`.
 
 ### 2026-06-07 — UN Treaty Collection pipeline (un_treaties_v1)
 
