@@ -83,7 +83,8 @@ async function fetchJson<T = unknown>(
     if (res.status === 404) return null;
     if ([429, 502, 503, 504].includes(res.status) && attempt < retries) {
       const retryAfter = parseInt(res.headers.get("retry-after") ?? "0", 10);
-      const wait = retryAfter > 0 ? retryAfter * 1000 : delay;
+      // Cap at 120s so a long Retry-After from a daily quota reset doesn't hang the process.
+      const wait = retryAfter > 0 ? Math.min(retryAfter * 1000, 120_000) : delay;
       console.warn(`  HTTP ${res.status} — waiting ${wait}ms`);
       await sleep(wait);
       delay *= 2;
