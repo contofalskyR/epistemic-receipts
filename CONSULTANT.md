@@ -6,6 +6,21 @@
 
 ---
 
+## Migration Runbook (standing protocol — 2026-06-08)
+
+Before any `prisma migrate deploy` touching high-traffic tables:
+
+1. **Pause ingest cron loops** — the 88+ perpetual loops hold DB connections that can block advisory locks. Stop them before migrating or expect timeouts.
+2. **Run migration** — `prisma migrate deploy` (already in build command, runs on every Vercel deploy).
+3. **Verify** — `prisma migrate status` should return "Database schema is up to date!"
+4. **Resume cron loops** after deploy confirms healthy.
+
+**Known issue:** Neon pooler doesn't support session-level `pg_advisory_lock`. If `migrate deploy` times out on advisory lock, apply migration manually via `prisma db execute` + `prisma migrate resolve --applied <migration_name>`, then restore the build command.
+
+**Never** run `CREATE INDEX CONCURRENTLY` inside a transaction or via `migrate dev` shadow DB — use `prisma db execute` directly.
+
+---
+
 ## Project At a Glance
 
 **Stack:** Next.js 16.2.6 · Prisma 6.19.3 · React 19 · PostgreSQL · TypeScript · Tailwind v4  
