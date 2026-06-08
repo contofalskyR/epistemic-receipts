@@ -729,6 +729,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
   const { id } = use(params);
   const [claim, setClaim] = useState<ClaimDetail | null>(null);
   const [notFound, setNotFound] = useState(false);
+  const [fetchError, setFetchError] = useState<string | null>(null);
   const [sortDir] = useState<"desc">("desc");
   const [hasRetraction, setHasRetraction] = useState(false);
 
@@ -736,11 +737,11 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
     fetch(`/api/claims/${id}`)
       .then(r => {
         if (r.status === 404) { setNotFound(true); return null; }
-        if (!r.ok) { setError(`Server error (${r.status})`); return null; }
+        if (!r.ok) { setFetchError(`Server error (${r.status})`); return null; }
         return r.json();
       })
       .then(d => { if (d) setClaim(d); })
-      .catch(e => setError(e instanceof Error ? e.message : String(e)));
+      .catch(e => setFetchError(e instanceof Error ? e.message : String(e)));
   }, [id]);
 
   if (notFound) {
@@ -752,11 +753,11 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
     );
   }
 
-  if (error) {
+  if (fetchError) {
     return (
       <div className="space-y-4">
         <Link href="/" className="text-xs text-gray-500 hover:text-white">← back</Link>
-        <p className="text-red-500 text-sm">{error}</p>
+        <p className="text-red-500 text-sm">{fetchError}</p>
       </div>
     );
   }
