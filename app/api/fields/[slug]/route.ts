@@ -30,6 +30,7 @@ export type FieldDetailResponse = {
     id: string;
     text: string;
     currentStatus: string;
+    epistemicAxis: string | null;
     verificationStatus: string | null;
     claimEmergedAt: string | null;
   }[];
@@ -83,6 +84,7 @@ export async function GET(
           id: true,
           text: true,
           currentStatus: true,
+          epistemicAxis: true,
           verificationStatus: true,
           claimEmergedAt: true,
         },
@@ -133,6 +135,7 @@ export async function GET(
       id: c.id,
       text: c.text,
       currentStatus: c.currentStatus,
+      epistemicAxis: (c as { epistemicAxis?: string | null }).epistemicAxis ?? null,
       verificationStatus: c.verificationStatus,
       claimEmergedAt: c.claimEmergedAt?.toISOString() ?? null,
     })),

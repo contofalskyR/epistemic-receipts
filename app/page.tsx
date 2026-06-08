@@ -465,6 +465,34 @@ function HomeContent() {
           <div>
             <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
+              Filter chip cleanup on the destination pages.{" "}
+              <Link href="/congress-trades" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Congress Trades</Link>{" "}
+              replaces the inert high/medium/low &ldquo;Correlation&rdquo; chip with a binary{" "}
+              <span className="font-mono">Voting record</span> filter (All / Has voting history) wired to the 140k <span className="font-mono">LegislativeVote</span> + 1.45M <span className="font-mono">MemberVote</span> tables &mdash; ~73% of disclosed traders have a recorded roll-call match by bioguide ID or exact name.{" "}
+              <Link href="/retraction-explorer" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Retraction Explorer</Link>{" "}
+              hides its &ldquo;Field&rdquo; chip until <span className="font-mono">ClaimTopic</span> enrichment lands across the 26k retracted papers.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Epistemic axis badges are now live across the site. Every claim card on{" "}
+              <Link href="/search" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/search</Link>,{" "}
+              the homepage, claim detail pages, bookmarks, topics, and field pages now shows whether a claim is{" "}
+              <span className="text-emerald-300">Settled</span>,{" "}
+              <span className="text-amber-300">Contested</span>,{" "}
+              <span className="text-slate-300">Recorded</span>,{" "}
+              <span className="text-blue-300">Open</span>, or{" "}
+              <span className="text-violet-300">Unresolvable</span>{" "}
+              &mdash; the five values of the <span className="font-mono">epistemicAxis</span> field backfilled across 1.47M of 1.50M active claims (98%). Search now supports an{" "}
+              <span className="font-mono">?axis=</span> filter chip (All / Settled / Contested / Recorded / Open).
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
               Bug fixes: House member full names (Nancy Pelosi, not just &ldquo;Pelosi&rdquo;) backfilled across 728 House members via Voteview&apos;s <span className="font-mono">HSall_members.csv</span> &mdash; the House Clerk XML only exposes last names. Homepage no longer reserves a blank{" "}
               <span className="font-mono">min-h-[40vh]</span>{" "}
               zone when no search is active. Retraction Wall&apos;s &ldquo;Papers whose retraction ripples furthest&rdquo; rows now deep-link to <Link href="/retraction-explorer" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/retraction-explorer</Link> filtered by DOI. Vote detail pages now explain why member-level votes are missing for Voteview rollcalls.

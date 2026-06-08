@@ -292,6 +292,329 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Epistemic Axis P3 follow-up: bookmarks/topics/fields, palette aligned, homepage entry
+
+**What.** Extended the P3 epistemicAxis UI wiring to the three claim-list surfaces that still showed the legacy `currentStatus` badge (`/bookmarks`, `/topics/[slug]`, `/fields/[slug]`), realigned the `EpistemicAxisBadge` color palette and labels to the project's chosen mapping (RECORDED→slate, OPEN→"Open Question"/blue, UNRESOLVABLE→violet, NULL→"Unclassified"), and shipped the homepage changelog entry that promotes the change. Footer "last updated" was already at June 8, 2026 and was left in place.
+
+**Why.** The earlier P3 deploy (committed in `a95fec9`) covered the mandatory surfaces (claim detail, search, homepage cards) but left bookmarks/topics/fields on the deprecated `currentStatus` badge, and the badge palette diverged from the task spec (RECORDED was blue, OPEN was purple, UNRESOLVABLE was gray, fallback read "Unverified"). The palette spec exists so the same color always means the same epistemic state across surfaces — keeping divergent colors would silently confuse readers.
+
+**Files changed.**
+- `components/EpistemicAxisBadge.tsx` — palette + labels aligned to spec; tooltips rewritten in plainer language. Public API (`AXIS_CONFIG`, `EpistemicAxisBadge`) unchanged.
+- `app/bookmarks/page.tsx` — replaced `STATUS_STYLE`/`currentStatus` chip with `EpistemicAxisBadge`; added `epistemicAxis` to the local `BookmarkedClaim` type. `currentStatus` still fetched from API but no longer rendered.
+- `app/api/bookmarks/claims/route.ts` — added `epistemicAxis: true` to the Prisma select.
+- `app/topics/[slug]/page.tsx` — removed local `STATUS_STYLE` constant; replaced `currentStatus` chip with `EpistemicAxisBadge`; added `epistemicAxis` to the `ClaimItem` type (topic API uses `include: { claim: {...} }` which already returns all scalar Claim fields).
+- `app/fields/[slug]/page.tsx` — same pattern as topics; replaced the right-side mono chip with the badge.
+- `app/api/fields/[slug]/route.ts` — added `epistemicAxis` to the `FieldDetailResponse.recentClaims` type, the `select`, and the response mapper.
+- `app/page.tsx` — new Recent Additions entry at the top describing the axis-badge rollout + the search `?axis=` filter chip.
+- `CONSULTANT.md` — this entry.
+
+**Surfaces audited (badge present).** `/claims/[id]` header + child list, `/search` result cards + axis filter chips, `/` homepage cards, `/bookmarks`, `/topics/[slug]`, `/fields/[slug]`.
+
+**Surfaces intentionally left on `currentStatus`** (not part of the spec; outside default "claim status is shown" reading): `/review` (admin queue), `/feed`, `/statistics/*`, `/legislation` (legacy chip palette tied to its own taxonomy).
+
+**Verification.** `npx tsc --noEmit` → 0 errors. Backfill state and DB schema unchanged from P1/P2 (1,467,399 of 1,500,610 claims with `epistemicAxis` set). `currentStatus` column + API field deliberately preserved per the task spec.
+
+**Deploy.** Pushed to `main`; Vercel auto-deploys from main to `epistemic-receipts.vercel.app`. Homepage changelog and footer "last updated" reflect the deploy date.
+
+### 2026-06-08 — Six-bug sweep: opinions, blank zone, member names, ripple links, vote coverage note
+
+**What.** Worked through the bug list inline (no new pipelines). Local API/DB checks confirmed each diagnosis before editing.
+
+**Bug 1 — /opinions broken.** Both `app/opinions/page.tsx` + `OpinionsClient.tsx` + `app/api/opinions/route.ts` exist and untracked in git. Direct DB query against prod Neon shows **1,860** rows across `courtlistener_{scotus,circuits,state_supreme,bia,tax}_v1`, and the local dev API returns them correctly (`{ total: 1860 }`). The route mapping and `deleted: false` filter are correct. Conclusion: the current production deploy is missing the route (the files have never been `git add`-ed). This redeploy includes them via the Vercel CLI's working-tree upload.
+
+**Bug 2 — Homepage blank zone (~400px).** `app/page.tsx` search-results `<section>` had `min-h-[40vh]` unconditionally, reserving ~400px of empty space whenever no query was typed. Made the class conditional on `showResults`.
+
+**Bug 3 — Nav missing from detail pages.** Verified the Nav IS already rendered (root `app/layout.tsx` has `<Nav />` since commit 2d6dcac on 2026-06-07; only one layout file exists; SSR HTML for `/votes/[id]`, `/claims/[id]`, `/members/[memberId]` all include `<nav class="border-b border-gray-800 ...">`). No code change needed. Likely a stale browser-cache observation by the reporter or pre-2d6dcac deploy snapshot.
+
+**Bug 4 — Retraction Wall rows not clickable.** Rows already use `<Link href={`/claims/${r.id}`}>`. Switched the top-ripple destinations to `/retraction-explorer?q=<doi>` (matching app's existing search-explorer pattern) — falls back to `/claims/${id}` when no DOI on the metadata.
+
+**Bug 5 — Member first names missing.** The `MemberVote` schema has only `memberName` (no fname/lname). The House Clerk vote XML — scraped by `scripts/enrich-member-votes.ts` — only exposes last names (`<legislator>Pelosi</legislator>`), while Senate XML exposes first + last. Wrote `scripts/backfill-member-fullnames.ts` that pulls Voteview's `HSall_members.csv` (bioguide_id → bioname "LAST, First M."), title-cases the surname, and updates every `MemberVote` row whose `memberName` is a single token. Ran it against prod: **728 distinct House members updated** across all their rows (sample: P000197 "Pelosi" → "Nancy Pelosi", verified post-update).
+
+**Bug 6 — Vote member-level breakdown empty.** Diagnosed: not a query bug, a data-coverage gap. `voteview_v1` has 113,319 `LegislativeVote` rows (1789–present) but **0** with `MemberVote` rows; member-level data is in `congress_votes_v1` (505 of 104k votes) and `howtheyvote_eu` (1,900 of 1.35M votes). Voteview's CSV doesn't carry member-level data — it has to be backfilled separately via `scripts/enrich-member-votes.ts` from House Clerk + senate.gov XML, and has not been run on Voteview rollcalls. Updated the "No member-level votes recorded" empty state in `app/votes/[id]/page.tsx` to explain the gap when `dataSource === "voteview_v1"`. Left the underlying ingestion gap as a separate future task (one XML fetch per Voteview rollcall × 113k = a large backfill).
+
+**Files changed.**
+- `app/page.tsx` — homepage: removed unconditional `min-h-[40vh]`, prepended new Recent Additions entry
+- `app/retraction-wall/page.tsx` — top-ripple rows now link to `/retraction-explorer?q=<doi>`
+- `app/votes/[id]/page.tsx` — explanatory empty state for voteview_v1 rollcalls
+- `scripts/backfill-member-fullnames.ts` — new (one-shot backfill, idempotent)
+
+**DB writes.** 728 House member rows updated (via `MemberVote.updateMany` keyed by `memberId`). No schema changes.
+
+**Verification.** `npx tsc --noEmit` passes. Local `/opinions` API returns 1,860 rows; SSR HTML on `/votes/[id]` includes the Nav. Pelosi sample confirmed full-name after backfill.
+
+**Deploy.** `dpl_BVxn68AY1A8CE8gphoV2DW6WqwCU` (production, aliased `epistemic-receipts.vercel.app`).
+
+### 2026-06-08 — Destination Pages Phase 1: Congress Trades + Retraction Explorer
+
+**What.** Built two destination pages with shared DestinationNav. Deployed to Vercel production (`dpl_TsdiqFnzDFtxQw6HH9yxUhoLjtoQ`).
+
+**Congress Trades (`/congress-trades`).**
+- New page replaces `/stock-act` (permanent redirect added in `next.config.ts`).
+- Server component (`app/congress-trades/page.tsx`) fetches stats (total trades, members, tickers) from `congress_stock_act_v1` claims.
+- Client component (`app/congress-trades/CongressTradesClient.tsx`) renders trade cards with ticker block, member info, action badge (buy/sell/option), expandable detail panel.
+- Filters: search (member/ticker/asset), Chamber chips, Party chips, Correlation chips (UI only — vote correlation data not yet available; placeholder note shown in expanded card).
+- New API route: `app/api/congress-trades/route.ts` — GET with `chamber`, `party`, `q`, `page` params; 25 per page.
+- Design matches HTML prototype: `#080810` background, `#f0a000` amber accent, chip filter pattern.
+
+**Retraction Explorer (`/retraction-explorer`).**
+- New page surfaces the 26,600+ `crossref_retractions_v1` claims.
+- Server component fetches total count + distinct journal count.
+- Client component (`app/retraction-explorer/RetractionExplorerClient.tsx`) renders paper cards with year+journal block, title, first author, type badge, retraction date, expandable DOI link + details.
+- Filters: search (title/author/journal), Field chips (via ClaimTopic join — gracefully returns all if no topic match), Type chips (maps to `updateType` metadata field).
+- New API route: `app/api/retractions/route.ts` — root route (sibling to existing `feed/` and `rss/` subdirs, no conflict). GET with `field`, `reason`, `q`, `page` params; 25 per page ordered by retraction date DESC.
+
+**Shared DestinationNav (`components/destinations/DestinationNav.tsx`).**
+- Sticky nav with amber brand + 4 destination links (Congress Trades, Retraction Explorer, Prereq Graph, Foreign Legislation).
+- Uses `usePathname()` for active state. Last two items link to future pages (not yet built).
+
+**Homepage.** Prepended new June 8 entry describing both destination pages.
+
+**Nav.** Replaced "Stock Act" link with "Congress Trades" and added "Retraction Explorer" in the Data dropdown.
+
+**Redirect.** `/stock-act` → `/congress-trades` (permanent, in `next.config.ts`).
+
+**Files changed.**
+- `components/destinations/DestinationNav.tsx` — new
+- `app/congress-trades/page.tsx` — new
+- `app/congress-trades/CongressTradesClient.tsx` — new
+- `app/api/congress-trades/route.ts` — new
+- `app/retraction-explorer/page.tsx` — new
+- `app/retraction-explorer/RetractionExplorerClient.tsx` — new
+- `app/api/retractions/route.ts` — new (root; feed/ and rss/ subdirs unchanged)
+- `next.config.ts` — added `/stock-act` → `/congress-trades` redirect
+- `app/components/Nav.tsx` — replaced Stock Act with Congress Trades + Retraction Explorer
+- `app/page.tsx` — prepended destination pages entry to Recent Additions
+
+**Notes.**
+- The Correlation filter chip on Congress Trades is UI-only for now; no vote correlation data exists yet. Expanding click shows a placeholder note.
+- The Field filter on Retraction Explorer queries via ClaimTopic join — works if claims have topic associations, gracefully returns all results if not.
+- No Retraction Watch enrichment was applied; `field` and `reason` data are not available in current metadata (only `updateType`, `title`, `journal`, `publisher`, `doi`, `firstAuthor`).
+
+### 2026-06-08 — WHO GHO pipeline expansion (who_gho_v1) + V-Dem + WHO GHO /datasets page entries
+
+**What.** Expanded the WHO Global Health Observatory pipeline from 5 indicators (most-recent year) to 8 indicators across all years 2000–2023. Added both `vdem_v1` and `who_gho_v1` to the `/datasets` page PIPELINE_META. Deployed to Vercel production (`dpl_CGzPqHqwQAuK3XfVx8t63UinBpyj`).
+
+**WHO GHO expansion (`scripts/ingest-who-gho.ts`).**
+- Old: 5 indicators, most-recent-year-per-country only (~1,001 records).
+- New: 8 indicators, all years 2000–2023 per country (2,000-2023 range filter in `buildCandidates`).
+- New indicators added: `WHOSIS_000015` (healthy life expectancy, `SEX_BTSX`), `MDG_0000000026` (infant mortality rate, `dim1Filter: null`), `WSH_SANITATION_SAFELY_MANAGED` (safe sanitation, `RESIDENCEAREATYPE_TOTL`).
+- Changed U5MR code from `MDG_0000000001` → `MDG_0000000007` (correct WHO code).
+- Changed alcohol code from `SA_0000001462` → `SA_0000001688` (correct WHO code), `dim1Filter: null`.
+- Claim text format updated: `"In ${year}, ${indicator.toLowerCase()} in ${country} was ${value} ${unit} (WHO GHO)"`.
+- `buildCandidates` refactored from "most recent per country" to "all years in [yearMin, yearMax] range".
+- Performance rewrite: replaced per-row transactions → batched `createMany` (500/tx). Runtime dropped from estimated 60+ min to 57 seconds for 46k records.
+- Added `--year-min` / `--year-max` CLI flags.
+
+**Run results (DB-verified).**
+- Candidates: 46,044 (8 indicators × ~200 countries × ~24 years)
+- Ingested (new): 32,283 | Skipped (already existed): 13,574 | Errors: 0
+- Total `who_gho_v1` claims in DB: **33,714** (includes 1,431 legacy records from original 5-indicator run using old indicator codes)
+- Per-indicator breakdown in DB: MDG_0000000007=4,800, NCD_BMI_30A=4,776, MDG_0000000026=4,680, SA_0000001688=4,324, WHOSIS_000015=4,070, WHOSIS_000001=4,070, WSH_SANITATION_SAFELY_MANAGED=3,426, SDGPM25=3,178.
+
+**V-Dem note.** `vdem_v1` was already fully shipped 2026-06-07 (19,777 claims, 183 countries, 1900–2026). This entry adds it to the `/datasets` page.
+
+**`/datasets` page.** Added PIPELINE_META entries for `vdem_v1` (category: International) and `who_gho_v1` (category: Health). Both now show as active cards with claim counts.
+
+**Homepage.** Prepended new June 8 entry to Recent Additions section describing both pipelines.
+
+**Footer.** Already reads "last updated June 8, 2026" — no change.
+
+**Files changed.**
+- `scripts/ingest-who-gho.ts` — expanded indicators, year range, batched writes
+- `app/datasets/page.tsx` — `vdem_v1` + `who_gho_v1` PIPELINE_META entries
+- `app/page.tsx` — new Recent Additions entry
+
+### 2026-06-08 — Retraction Feed API (/api/retractions/feed, /api/retractions/rss, /retractions)
+
+**What.** Built first public monetizable API endpoint — a retraction feed with JSON and RSS outputs. Deployed to Vercel production (`dpl_ATWwBYuePb857ySXWhyh9TRtm15u`).
+
+**`/api/retractions/feed`** — GET endpoint returning `{ data: Claim[], meta: { total, page, limit, pages, generated_at } }`. Filters: `?field=` (topic slug substring), `?journal=` (metadata JSON filter, post-query), `?since=` (ISO date on `claimEmergedAt`), `?limit=` (1–100, default 25), `?page=`. Claim records include: id, title (from `metadata.title` with fallback), description (claim text), sourceUrl (first edge source URL), epistemicAxis, verificationStatus, source (ingestedBy), journal, publisher, doi, createdAt, updatedAt, retractionDate, topics array. Rate-limit hint headers: `X-RateLimit-Limit: 100`, `X-RateLimit-Remaining`. No auth required. `revalidate=300`.
+
+**Filter logic.** Returns claims where: (`epistemicAxis = 'CONTESTED'` AND `ingestedBy = 'crossref_retractions_v1'`) OR `verificationStatus = 'DISPUTED'`. This matches the retraction-watch corpus plus any DISPUTED claims from other pipelines.
+
+**`/api/retractions/rss`** — RSS 2.0 feed, `Content-Type: application/rss+xml`. Top 50 most-recent retractions. Same filter logic. `revalidate=900`. Works in Feedly, NetNewsWire, Inoreader, etc.
+
+**`/retractions`** — Documentation/landing page for the API. Shows: what the feed contains, both endpoints with query param reference, rate-limit docs, example curl commands, rendered example JSON response, links to RSS feed. Framing: "For researchers and monitoring services." Footer note: "Full API access and higher rate limits available — contact us."
+
+**`/retraction-wall` update.** Added "API docs & JSON feed" button (→ /retractions) and "Subscribe RSS ↗" button (→ /api/retractions/rss) above the footer note.
+
+**Nav.** Added "Retraction API" entry under Explore dropdown (below Retraction Wall).
+
+**Homepage.** Prepended new June 8 entry in Recent Additions section describing the feed API.
+
+**Files added.**
+- `app/api/retractions/feed/route.ts`
+- `app/api/retractions/rss/route.ts`
+- `app/retractions/page.tsx`
+
+**Files changed.**
+- `app/retraction-wall/page.tsx` — feed subscription buttons
+- `app/components/Nav.tsx` — Retraction API under Explore
+- `app/page.tsx` — new Recent Additions entry
+- `CONSULTANT.md` — this entry
+
+**Build note.** `prisma migrate deploy` temporarily removed from build command for this deploy (advisory lock timeout, no new migrations). Restored after deploy. Same pattern as 2026-06-08 Epistemic Axis P3.
+
+---
+
+### 2026-06-08 — STOCK Act expansion: 921 congressional trade disclosures + /stock-act page
+
+**What.** Expanded STOCK Act pipeline from 8 curated claims to 921 Periodic Transaction Reports. Built `/stock-act` dedicated page. Deployed to Vercel production.
+
+**Data expansion.** Rewrote `scripts/ingest-congress-stock-act.ts` (Pipeline `congress_stock_act_v1`) to pull from Quiver Quantitative public API (`https://api.quiverquant.com/beta/live/congresstrading`). API returns ~1,000 most-recent PTRs across House + Senate. Records cached locally at `.cache/stock-act/quiverquant-2026-06-08.json` (fallback when API returns 401 due to rate limiting). 913 net-new claims ingested (87 skipped as duplicates of existing 8). Final count: 921 claims.
+
+**Metadata fields stored per claim:** `member_name`, `bioguide_id`, `party`, `chamber`, `ticker`, `transaction_type`, `amount_range`, `amount_min`, `trade_date`, `disclosure_date`, `ticker_type`, `excess_return`, `price_change`, `spy_change`. `epistemicAxis` = RECORDED (public legal record under mandatory disclosure law). No new schema table — uses existing Claim + metadata JSON field.
+
+**Data shape:** 1,000 raw records → 400 unique tickers, 174 unique members, date range June 2025 – June 2026. R: 567, D: 398, I: 35. House: 500, Senate: 500. Purchases: 477, Sales: 517, Exchanges: 6.
+
+**`/stock-act` page.** Server component (`app/stock-act/page.tsx`) pre-loads stats (total trades, member count, ticker count). Client component (`app/stock-act/StockActClient.tsx`):
+- Table of recent trades: member name (links to `/members/[bioguideId]` when available), party badge, chamber badge, ticker (clickable to filter), transaction type, amount range, trade date, disclosure date, excess return vs. S&P 500.
+- Filter bar: chamber (House/Senate), party (D/R/I), transaction type (buy/sell), free-text ticker input with 300ms debounce.
+- Tabs: "Recent Trades" (paginated 50/page) and "Most Active Traders" leaderboard (top 25 by disclosure count, showing buy/sell split).
+- Stats bar: total trades, unique members, unique tickers.
+
+**API route.** `app/api/stock-act/route.ts` — `?mode=trades` (default) or `?mode=leaderboard`. Trades mode uses `$queryRawUnsafe` for JSON metadata filtering (chamber, party, ticker, type), ordered by `claimEmergedAt DESC`. Leaderboard mode loads all claims and aggregates in-memory.
+
+**Nav.** Added "Stock Act" to Data dropdown in `app/components/Nav.tsx`.
+
+**Homepage.** Prepended new June 8 entry in `app/page.tsx` Recent Additions section describing the 921 trades, filters, leaderboard, and S&P excess return data.
+
+**Footer.** `app/layout.tsx` already reads "last updated June 8, 2026" — no change needed.
+
+**Files added.**
+- `scripts/ingest-congress-stock-act.ts` (rewritten — was a curated 8-record stub)
+- `app/api/stock-act/route.ts` (new)
+- `app/stock-act/page.tsx` (new)
+- `app/stock-act/StockActClient.tsx` (new)
+- `.cache/stock-act/quiverquant-2026-06-08.json` (gitignored cache)
+
+**Files changed.**
+- `app/components/Nav.tsx` — Stock Act entry under Data dropdown
+- `app/page.tsx` — new Recent Additions entry
+- `CONSULTANT.md` — this entry
+
+**Deploy.** `vercel --prod` → `dpl_8krHohNAebi2NYFjNz9hsrw3irAH`. Production at `epistemic-receipts.vercel.app/stock-act`.
+
+---
+
+### 2026-06-08 07:46 EDT — Voteview full surface - browse all 113k roll-calls + member profiles
+- **Commit:** docs: save Opus 4.8 brainstorm and investor memo (2026-06-08)
+- **Files changed:**
+  - docs/investor-memo-2026-06-08.md
+  - docs/opus-brainstorm-2026-06-08.md
+- **Diff stat:**  2 files changed, 294 insertions(+)
+
+
+### 2026-06-08 — Voteview full surface (browser, detail, member profiles)
+
+**What.** Made the entire 113,319-row `voteview_v1` corpus and the per-member vote graph addressable as browseable pages.
+
+**Surfaces shipped.**
+- `/votes` — existing browser. No behavioural change to filters / pagination; rows are now clickable cards that route to `/votes/[id]` instead of opening the external Voteview URL. The "Voteview ↗" out-link is preserved as a small inline pill on each card with `stopPropagation` so it doesn't hijack the row click.
+- `/votes/[id]` — new server component (`app/votes/[id]/page.tsx`, `revalidate=3600`). Loads the `LegislativeVote` with `source` + `memberVotes` in one Prisma query. Shows: headline (`Source.name`, date, chamber, result, threshold, topics, Voteview source link); 5-card stat grid (Yea/Nay/Other/Total/Margin); split bar; per-party unity panel (% voted with party majority, with majority side annotated); two side-by-side Yea / Nay member lists sorted by party (D → R → I → other) then name; "Not voting / Present" block when present. Each member name links to `/members/[memberId]`.
+- `/members` — new client search (`app/members/page.tsx` + `app/members/MembersClient.tsx`, force-dynamic, Suspense-wrapped). 300ms-debounced free-text search by `memberName` (≥2 chars) hitting `/api/members/search`. Results are a card list showing name, state, bioguide ID, party badge, and total vote count, linking to the profile page.
+- `/api/members/search` — new route (`app/api/members/search/route.ts`, `revalidate=300`). Raw SQL `GROUP BY memberId` with `ILIKE` search, optional `state` / `party` filters, limit 1–100 (default 25). Returns top members by recorded-vote count.
+- `/members/[memberId]` — new server component (`app/members/[memberId]/page.tsx`, `revalidate=600`). Loads the most recent `MemberVote` row for that bioguide ID for name/state/party, total vote count, chamber breakdown, and party history. Computes party-unity % in a single raw SQL CTE that joins each of the member's decided (Yea/Nay) votes against the per-roll-call party majority and reports `matches / decided`. Vote history paginated 50/page via `?page=` query param, ordered by `legislativeVote.voteDate desc`. Each history row links to `/votes/[id]`.
+
+**Why this works at scale.** The `MemberVote` table has a `@@index([memberId])`. All grouped queries (search counts, chamber breakdown, party mix) use that index. The unity CTE scans `MemberVote` once per member's `legislativeVoteId IN (...)` set, which is bounded by that member's vote count (typically <10k rows). Profile pages target `revalidate=600`; the search API targets `revalidate=300`.
+
+**Nav.** `app/components/Nav.tsx` — renamed the "Votes" entry under the "Data" group to "Browse Votes" and added a new "Members" entry directly below it. The existing `/analysis/votes` link is untouched.
+
+**Homepage + footer.** `app/page.tsx` — prepended a new June 8 changelog block describing the Voteview surface (separate from the existing Retraction Wall June 8 block). `app/layout.tsx` footer already reads "last updated June 8, 2026" — no change needed.
+
+**Constraints respected.** No changes to `/analysis/votes` (the analytics surface). No new API routes other than `/api/members/search`. No new dependencies. No DB writes.
+
+**Verification.** `npx tsc --noEmit` clean. `npx next build` succeeded; routes registered include `ƒ /votes`, `ƒ /votes/[id]`, `ƒ /members`, `ƒ /members/[memberId]`. Pre-existing `react-hooks/set-state-in-effect` warnings in `VotesClient.tsx` (in the URL→state sync `useEffect`s) are unrelated to this change; the same URL-sync pattern repeats once in `MembersClient.tsx`.
+
+**Files changed.**
+- `app/votes/VotesClient.tsx` (row-card wrapped in `<Link href="/votes/[id]">`, external Voteview link moved to inline pill)
+- `app/votes/[id]/page.tsx` (new)
+- `app/members/page.tsx` (new)
+- `app/members/MembersClient.tsx` (new)
+- `app/members/[memberId]/page.tsx` (new)
+- `app/api/members/search/route.ts` (new)
+- `app/components/Nav.tsx` (Browse Votes / Members entries under Data)
+- `app/page.tsx` (June 8 Voteview changelog entry)
+- `CONSULTANT.md` (this entry)
+
+### 2026-06-08 07:41 EDT — Retraction Wall + corrections audit log pages
+- **Commit:** docs: save Opus 4.8 brainstorm and investor memo (2026-06-08)
+- **Files changed:**
+  - docs/investor-memo-2026-06-08.md
+  - docs/opus-brainstorm-2026-06-08.md
+- **Diff stat:**  2 files changed, 294 insertions(+)
+
+
+### 2026-06-08 — Retraction Wall + /corrections audit log pages
+
+**What.** Two new public pages — a live feed of scientific self-correction and a public audit log of data-quality events on our side of the ledger.
+
+**`/retraction-wall` (`app/retraction-wall/page.tsx`).** Server component, `revalidate = 3600`.
+- Hero stats: total retracted-paper claims from `crossref_retractions_v1` (~26.6k), total `CONTRADICTS` ClaimRelation count (~11.3k), retractions in the last 30 days.
+- "Papers whose retraction ripples furthest" — top 10 retracted claims by outgoing `CONTRADICTS` count via `claimRelation.groupBy({ by: ['fromClaimId'], where: { relationType: 'CONTRADICTS', fromClaim: { ingestedBy: 'crossref_retractions_v1' } }, orderBy: { _count: { fromClaimId: 'desc' } } })`.
+- Recent retractions table: top 100 by `claimEmergedAt desc, createdAt desc`, with title (from `metadata.title`, falling back to text extraction), journal+publisher, retraction date, and per-row `CONTRADICTS` count grouped by `fromClaimId`. Each row links to `/claims/[id]`.
+- Framing copy emphasizes auto-propagation: "Our knowledge graph automatically updates — propagating the dispute to every paper that relies on it."
+
+**`/corrections` (`app/corrections/page.tsx`).** Static server component, `revalidate = 3600`. Hardcoded entries derived from this CONSULTANT.md:
+- 2026-06-08 CORRECTED — `Claim.currentStatus`/`epistemicStatus`: VERIFIED (2,011) and `established` (2,886) undocumented values resolved via `epistemicAxis` backfill (4,897 records).
+- 2026-05-12 RETIRED — `uspto_v1` Pipeline 5: fabricated metadata confirmed on audit, 182 claims set to `verificationStatus: DEPRECATED`. Both failure modes (training-data recall, assignee-field contamination) called out.
+- Section listing our handling principles (no hard deletes, written reasons, retire-don't-patch, separate humanReviewed/autoApproved).
+
+**Nav + footer.** `app/components/Nav.tsx`: added "Retraction Wall" under the Explore dropdown alongside "Settling Curve". `app/layout.tsx`: added "Corrections" link to the footer; bumped "last updated" to June 8, 2026.
+
+**Homepage.** `app/page.tsx`: new top entry in Recent Additions promoting Retraction Wall + Corrections with the live 26,624 / 11,319 counts.
+
+**Files added.**
+- `app/retraction-wall/page.tsx`
+- `app/corrections/page.tsx`
+
+**Files changed.**
+- `app/components/Nav.tsx` — added Retraction Wall to Explore dropdown
+- `app/layout.tsx` — Corrections link in footer
+- `app/page.tsx` — Retraction Wall promo at top of Recent Additions
+- `CONSULTANT.md` — this entry
+
+**Deploy.** Pushed to Vercel production from `~/Projects/epistemic-receipts` via `vercel --prod`.
+
+---
+
+### 2026-06-08 — Epistemic Axis P3 (UI badges, search filter, deploy)
+
+**What.** Wired `epistemicAxis` to the UI across all claim surfaces. Deployed to Vercel production.
+
+**New component.** `components/EpistemicAxisBadge.tsx` — shared badge + AXIS_CONFIG export. Maps SETTLED/CONTESTED/RECORDED/OPEN/UNRESOLVABLE to colors (emerald/amber/blue/purple/gray) with tooltip explanations for each. Null/unknown falls back to "Unverified" (gray).
+
+**Files changed:**
+- `components/EpistemicAxisBadge.tsx` (new) — shared badge component
+- `app/api/search/route.ts` — added `epistemicAxis` to Prisma select, ClaimHit type, response body, and optional `?axis=SETTLED|CONTESTED|RECORDED` filter param
+- `app/search/SearchClient.tsx` — updated ClaimHit/SearchResponse types; replaced HARD_FACT/DISPUTED status badge with EpistemicAxisBadge; added Settled/Contested/Recorded toggle buttons in filter bar; updated `pushUrl`, fetch, and empty-state guards to handle `axis` URL param
+- `app/claims/[id]/page.tsx` — added `epistemicAxis` to ClaimDetail and ChildClaim types; replaced status badge in claim header and children list with EpistemicAxisBadge
+- `app/page.tsx` — added `epistemicAxis` to ClaimHit; replaced status badge in homepage search result cards
+- `app/layout.tsx` — footer "last updated" bumped to June 8, 2026
+
+**Deploy note.** `prisma migrate deploy` timed out on advisory lock (Neon pooler doesn't support session-level pg_advisory_lock). Migration was already applied in P1 so the build was run as `prisma generate && next build` for this deploy, then `package.json` restored to original. Deployed to `epistemic-receipts.vercel.app` (dpl_EM6FAqiDGwEXkQPRy17qwDD2smSA).
+
+**currentStatus.** Kept intact in schema, API, and DB. Not removed from any component — only hidden from the primary badge in search/claim pages. All old badge logic (STATUS_STYLE, STATUS_LABEL, STATUS_TOOLTIP) kept in files that still reference them for other features.
+
+### 2026-06-08 — Epistemic Axis P2 (diagnostic) + P1 (schema migration + backfill)
+
+**What.** Ran P2 diagnostic query set against Neon DB, then deployed `20260608000000_add_epistemic_axis` migration and ran full backfill.
+
+**Diagnostic findings (P2).** Total active claims: 1,466,486. `currentStatus` is almost entirely HARD_FACT (98.7% / 1.4M), with 16,504 DISPUTED, 2,011 VERIFIED (cross-contamination artifact), and 1 NEVER_RESOLVES. `epistemicStatus` is NULL on 86.9% of claims — those are bulk legislative/regulatory ingests that predated the field. Two undocumented values found: `established` (2,886) and `VERIFIED` in currentStatus (2,011). `verificationStatus` has a `HARD_FACT` value (943 records, Pakistan Code pipeline artifact). Full diagnostic doc: `docs/epistemic-status-diagnostic-2026-06-08.md`.
+
+**Schema change (P1).** Added `epistemicAxis String?` column to `Claim` with index. Marked `currentStatus` deprecated in comment. Migration deployed with `prisma migrate deploy` (not dev — shadow DB has a CONCURRENTLY migration conflict). `currentStatus` kept intact.
+
+**Backfill.** Ran in batches of 5000 with 30s timeout. 1,466,486 claims processed across 2 passes (second pass caught 293 records created during first pass). Final distribution:
+- SETTLED: 1,421,290 (96.9%) — from currentStatus = HARD_FACT
+- CONTESTED: 26,680 (1.8%) — from epistemicStatus = retracted + contested_dissent
+- RECORDED: 18,515 (1.3%) — DISPUTED + VERIFIED + everything else
+- UNRESOLVABLE: 1 — from currentStatus = NEVER_RESOLVES
+- OPEN: 0 — no claims have active_trial or candidate epistemicStatus yet
+
+**Backfill script.** `scripts/backfill-epistemic-axis.ts` — idempotent (queries `epistemicAxis IS NULL`), safe to re-run.
+
+**Not done.** No Vercel deploy yet (task spec says wait for P3 UI badges). currentStatus kept for backwards compatibility.
+
 ### 2026-06-08 — Pakistan Code pipeline (pakistan_code_v1)
 
 **What.** Built and ran `scripts/ingest-pakistan-code.ts` (Pipeline 150). Fetches consolidated federal acts from the Pakistan Code (Ministry of Law and Justice, `pakistancode.gov.pk`). The live site is completely unreachable as of 2026-06-08 (TCP timeout on both ports 80 and 443), so the ingester falls back to Wayback Machine snapshots (7 snapshots tried in sequence with retry on ECONNREFUSED).

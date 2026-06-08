@@ -3,22 +3,18 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { Bookmark, BookmarkCheck, Copy, KeyRound } from "lucide-react";
 import { useBookmarks } from "@/hooks/useBookmarks";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 
 type BookmarkedClaim = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   verificationStatus: string | null;
   ingestedBy: string;
   createdAt: string;
   bookmarkedAt: string;
-};
-
-const STATUS_STYLE: Record<string, string> = {
-  HARD_FACT: "bg-green-900 text-green-300",
-  NEVER_RESOLVES: "bg-gray-700 text-gray-400",
-  DISPUTED: "bg-yellow-900 text-yellow-300",
 };
 
 export default function BookmarksPage() {
@@ -191,13 +187,10 @@ export default function BookmarksPage() {
                   </button>
                 </div>
                 <div className="flex items-center gap-2 flex-wrap text-[10px]">
-                  <span
-                    className={`px-1.5 py-0.5 rounded-full font-medium ${
-                      STATUS_STYLE[c.currentStatus] ?? STATUS_STYLE.DISPUTED
-                    }`}
-                  >
-                    {c.currentStatus}
-                  </span>
+                  <EpistemicAxisBadge
+                    axis={c.epistemicAxis}
+                    className="px-1.5 py-0.5 rounded-full font-medium"
+                  />
                   <span className="px-1.5 py-0.5 rounded-full font-medium bg-gray-800 text-gray-500">
                     {c.claimType}
                   </span>

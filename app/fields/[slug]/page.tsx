@@ -2,12 +2,7 @@
 import { use, useEffect, useState } from "react";
 import Link from "next/link";
 import type { FieldDetailResponse } from "@/app/api/fields/[slug]/route";
-
-const STATUS_STYLE: Record<string, string> = {
-  HARD_FACT:      "bg-green-900 text-green-300",
-  NEVER_RESOLVES: "bg-gray-700 text-gray-400",
-  DISPUTED:       "bg-yellow-900 text-yellow-300",
-};
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 
 const DOMAIN_LABELS: Record<string, string> = {
   archives:     "Archives",
@@ -151,12 +146,8 @@ export default function FieldPage({ params }: { params: Promise<{ slug: string }
               >
                 <div className="flex items-start justify-between gap-3">
                   <p className="text-sm text-gray-400 leading-snug line-clamp-2">{c.text}</p>
-                  <span
-                    className={`shrink-0 text-xs px-1.5 py-0.5 rounded font-mono ${
-                      STATUS_STYLE[c.currentStatus] ?? "bg-gray-800 text-gray-500"
-                    }`}
-                  >
-                    {c.currentStatus.replace("_", " ")}
+                  <span className="shrink-0">
+                    <EpistemicAxisBadge axis={c.epistemicAxis} />
                   </span>
                 </div>
               </Link>

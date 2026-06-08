@@ -2,34 +2,34 @@ export const AXIS_CONFIG: Record<string, { label: string; style: string; tooltip
   SETTLED: {
     label: "Settled",
     style: "bg-emerald-900 text-emerald-300",
-    tooltip: "Established fact with no known active dispute",
+    tooltip: "Consensus established — no known active dispute",
   },
   CONTESTED: {
     label: "Contested",
     style: "bg-amber-900 text-amber-300",
-    tooltip: "Disputed, retracted, or under active challenge",
+    tooltip: "Actively disputed, retracted, or under challenge",
   },
   RECORDED: {
     label: "Recorded",
-    style: "bg-blue-900 text-blue-300",
-    tooltip: "Officially documented; epistemic weight varies by source",
+    style: "bg-slate-800 text-slate-300",
+    tooltip: "Officially documented — it happened, epistemic weight varies",
   },
   OPEN: {
-    label: "Open",
-    style: "bg-purple-900 text-purple-300",
-    tooltip: "Under active investigation; outcome not yet determined",
+    label: "Open Question",
+    style: "bg-blue-900 text-blue-300",
+    tooltip: "Unresolved empirical question — outcome not yet determined",
   },
   UNRESOLVABLE: {
     label: "Unresolvable",
-    style: "bg-gray-700 text-gray-400",
-    tooltip: "Inherently unanswerable by empirical evidence alone",
+    style: "bg-violet-900 text-violet-300",
+    tooltip: "No evidence path exists — inherently unanswerable empirically",
   },
 };
 
 const FALLBACK = {
-  label: "Unverified",
+  label: "Unclassified",
   style: "bg-gray-800 text-gray-500",
-  tooltip: "Epistemic status not yet determined",
+  tooltip: "Epistemic axis not yet classified",
 };
 
 export function EpistemicAxisBadge({

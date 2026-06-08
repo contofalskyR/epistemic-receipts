@@ -25,6 +25,7 @@ export async function GET(req: NextRequest) {
               id: true,
               text: true,
               currentStatus: true,
+              epistemicAxis: true,
               claimType: true,
               verificationStatus: true,
               ingestedBy: true,

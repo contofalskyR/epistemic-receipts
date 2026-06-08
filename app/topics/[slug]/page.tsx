@@ -3,13 +3,8 @@ import { useEffect, useState, Suspense } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { formatAge, formatEmerged, type EmergedPrecision } from "@/lib/claimAge";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 import WorldBankView from "./WorldBankView";
-
-const STATUS_STYLE: Record<string, string> = {
-  HARD_FACT:      "bg-green-900 text-green-300",
-  NEVER_RESOLVES: "bg-gray-700 text-gray-400",
-  DISPUTED:       "bg-yellow-900 text-yellow-300",
-};
 
 const DOMAIN_LABELS: Record<string, string> = {
   astronomy:    "Astronomy",
@@ -103,6 +98,7 @@ type ClaimItem = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   claimEmergedAt: string | null;
   claimEmergedPrecision: EmergedPrecision | null;
@@ -578,9 +574,7 @@ function TopicSlugContent() {
                   {c.text}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[c.currentStatus] ?? STATUS_STYLE.DISPUTED}`}>
-                    {c.currentStatus}
-                  </span>
+                  <EpistemicAxisBadge axis={c.epistemicAxis} />
                   <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800 text-gray-400">
                     {c.claimType}
                   </span>
