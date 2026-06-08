@@ -374,6 +374,8 @@ export default function CongressTradesClient({
     if (urlQ) params.set("q", urlQ);
     if (urlPage > 1) params.set("page", String(urlPage));
 
+    if (urlCorrelation !== "all") params.set("correlation", urlCorrelation);
+
     fetch(`/api/congress-trades?${params.toString()}`)
       .then((r) => r.json())
       .then((d) => {
@@ -382,7 +384,7 @@ export default function CongressTradesClient({
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [urlChamber, urlParty, urlQ, urlPage]);
+  }, [urlChamber, urlParty, urlCorrelation, urlQ, urlPage]);
 
   const handleQChange = (v: string) => {
     setQInput(v);
@@ -548,13 +550,16 @@ export default function CongressTradesClient({
           ))}
         </div>
 
-        <span style={{ fontSize: "0.75rem", color: S.muted }}>Correlation</span>
+        <span style={{ fontSize: "0.75rem", color: S.muted }}>Voting record</span>
         <div style={{ display: "flex", gap: "0.4rem" }}>
-          {["all", "high", "medium", "low"].map((v) => (
+          {[
+            { v: "all", label: "All" },
+            { v: "with-votes", label: "Has voting history" },
+          ].map((opt) => (
             <Chip
-              key={v}
-              label={v === "all" ? "All" : v.charAt(0).toUpperCase() + v.slice(1)}
-              value={v}
+              key={opt.v}
+              label={opt.label}
+              value={opt.v}
               current={urlCorrelation}
               onSelect={(val) => pushUrl({ correlation: val, page: "1" })}
             />

@@ -292,6 +292,28 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Filter-chip cleanup: Congress Trades correlation wired, Retraction Explorer field suppressed
+
+**What.** Two surgical UI fixes to remove "filter chips that do nothing."
+
+**Fix 1 — `/congress-trades` Correlation chip wired to LegislativeVote / MemberVote.** The four-option `Correlation: all / high / medium / low` chip group was inert (the param was read from the URL but never sent to the API). DB inspection: 140,491 `LegislativeVote` rows, 1,453,181 `MemberVote` rows, 2,330 distinct `memberId` values (mixed bioguide + numeric Voteview IDs), 2,429 distinct `memberName` values. Of the 59 distinct trade-member bioguide IDs in `congress_stock_act_v1`, 43 match `MemberVote.memberId` directly and 41 match by exact case-insensitive name. Replaced the chip group with a binary `Voting record: All / Has voting history`. The `with-votes` option adds a SQL predicate that ORs the bioguide-ID and name-match subqueries against `MemberVote`. Files touched:
+- `app/api/congress-trades/route.ts` — added `correlation` query param + WHERE clause restricting to traders with any MemberVote record.
+- `app/congress-trades/CongressTradesClient.tsx` — chip group narrowed to two options; `urlCorrelation` now flows into the `/api/congress-trades` fetch + useEffect deps.
+
+**Fix 2 — `/retraction-explorer` Field chip suppressed.** Most of the 26,595 `crossref_retractions_v1` claims have zero `ClaimTopic` associations, so the chip filtered to ~0 results. Removed the entire `Field` chip block + the `urlField` state read + the `field` API param from the fetch (and dropped the `FIELD_OPTIONS` constant). API route at `app/api/retractions/route.ts` still accepts `field=` for any older deep-links — it just won't be sent by the UI. Will restore once topic enrichment lands across the retraction corpus.
+
+**Homepage changelog + footer.** Added a new "Recent additions" card at the top of the list on `app/page.tsx`; footer "last updated June 8, 2026" in `app/layout.tsx` is already current.
+
+**Verification.** `npx tsc --noEmit` clean.
+
+**Files changed.**
+- `app/api/congress-trades/route.ts`
+- `app/congress-trades/CongressTradesClient.tsx`
+- `app/retraction-explorer/RetractionExplorerClient.tsx`
+- `app/page.tsx` (changelog entry)
+
+---
+
 ### 2026-06-08 — Epistemic Axis P3 follow-up: bookmarks/topics/fields, palette aligned, homepage entry
 
 **What.** Extended the P3 epistemicAxis UI wiring to the three claim-list surfaces that still showed the legacy `currentStatus` badge (`/bookmarks`, `/topics/[slug]`, `/fields/[slug]`), realigned the `EpistemicAxisBadge` color palette and labels to the project's chosen mapping (RECORDED→slate, OPEN→"Open Question"/blue, UNRESOLVABLE→violet, NULL→"Unclassified"), and shipped the homepage changelog entry that promotes the change. Footer "last updated" was already at June 8, 2026 and was left in place.

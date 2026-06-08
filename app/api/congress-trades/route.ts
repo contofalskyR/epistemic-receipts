@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
   const chamber = sp.get("chamber") ?? "all";
   const party = sp.get("party") ?? "all";
+  const correlation = sp.get("correlation") ?? "all";
   const q = (sp.get("q") ?? "").trim();
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
@@ -29,6 +30,18 @@ export async function GET(req: NextRequest) {
     const safe = q.replace(/'/g, "''").replace(/%/g, "\\%");
     conditions.push(
       `(c.metadata->>'member_name' ILIKE '%${safe}%' OR c.metadata->>'ticker' ILIKE '%${safe}%' OR c.metadata->>'asset_name' ILIKE '%${safe}%')`
+    );
+  }
+  if (correlation === "with-votes") {
+    // Restrict to trades whose member has any recorded roll-call vote (bioguide ID or
+    // exact name match against MemberVote). MemberVote.memberId carries mixed bioguide
+    // and numeric (Voteview) IDs; the bioguide IDs are the relevant overlap with STOCK
+    // Act disclosures.
+    conditions.push(
+      `(
+        c.metadata->>'bioguide_id' IN (SELECT DISTINCT "memberId" FROM "MemberVote" WHERE "memberId" IS NOT NULL)
+        OR LOWER(c.metadata->>'member_name') IN (SELECT DISTINCT LOWER("memberName") FROM "MemberVote")
+      )`
     );
   }
 
