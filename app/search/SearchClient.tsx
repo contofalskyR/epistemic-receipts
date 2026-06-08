@@ -389,7 +389,7 @@ export default function SearchClient() {
 
           <span className="text-gray-700 text-xs">|</span>
 
-          {(["SETTLED", "CONTESTED", "RECORDED"] as const).map(ax => {
+          {(["SETTLED", "CONTESTED", "RECORDED", "OPEN"] as const).map(ax => {
             const cfg = AXIS_CONFIG[ax]!;
             const active = urlAxis === ax;
             return (

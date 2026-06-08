@@ -114,6 +114,9 @@ function formatAmount(min: number, max: number): string {
     if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
     return `$${n.toLocaleString()}`;
   };
+  if (!max && min) return `> ${fmt(min)}`;
+  if (!min && max) return `< ${fmt(max)}`;
+  if (!min && !max) return "—";
   return `${fmt(min)}–${fmt(max)}`;
 }
 
@@ -151,7 +154,7 @@ export default function FinancialClient() {
       const next = new URLSearchParams(searchParams.toString());
 
       if (overrides.tab !== undefined) {
-        if (overrides.tab === "insider") next.delete("tab");
+        if (overrides.tab === "congress") next.delete("tab");
         else next.set("tab", overrides.tab);
         next.delete("filter");
         next.delete("page");

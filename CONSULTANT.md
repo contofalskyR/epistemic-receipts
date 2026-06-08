@@ -307,6 +307,32 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Seven-bug audit sweep (display, navigation, data fallbacks)
+
+**What.** Worked through a seven-bug list from the latest site audit. All inline fixes, no schema changes.
+
+**Bug 5 — `/foreign-legislation` year sentinel 2999.** API was returning the year `"2999"` for legislation rows whose `claimEmergedAt` was the 2999-01-01 sentinel (used when the source date is unknown). API now nulls that out and the client always renders the date cell — showing `—` whenever the year is missing or sentinel. Files: `app/api/foreign-legislation/route.ts`, `app/foreign-legislation/ForeignLegislationClient.tsx`.
+
+**Bug 6 — `/search` missing OPEN axis filter chip.** Hardcoded axis chip list at `SearchClient.tsx:392` only rendered SETTLED / CONTESTED / RECORDED even though `VALID_AXES` at line 218 already included OPEN. Added OPEN to the chip-render array. File: `app/search/SearchClient.tsx`.
+
+**Bug 2 — `/financial` Insider Activity tab click did nothing.** `pushUrl` deleted the `tab` query param when overrides.tab === `"insider"` (the historical default). The page's current default is `"congress"` (see commit `089f617`), so clicking Insider stripped the param and the parser re-resolved to Congress, leaving the page on Congress Trades. Changed the param-deletion sentinel to `"congress"` so clicking Insider properly sets `?tab=insider`. File: `app/financial/FinancialClient.tsx`.
+
+**Bug 1 — `/financial?tab=macro` crash.** Two root causes: (a) the macro mapper read snake_case metadata keys (`series_id`, `series_name`, `observation_date`) but the `fred_v1` ingester wrote camelCase (`seriesId`, `seriesTitle`, `date`). Verified directly against prod Neon: 4,349 rows, sample metadata `{seriesId: "UNRATE", date: "1948-07-01", value: "3.6", ...}`. (b) `value` is stored as a string but the response type expected `number`, and the mapper threw `?? 0` on a string. Updated `readNumber` to coerce numeric strings and added both-cased key fallbacks for `seriesId`/`seriesTitle`/`date`. Also added an `app/financial/error.tsx` error boundary so the tab degrades to a recovery card instead of bubbling to the global Next error page. Files: `app/api/financial/route.ts`, `app/financial/error.tsx`.
+
+**Bug 7 — `/congress-trades` company "Unknown", amount `$1K–$0`.** The `congress_stock_act_v1` ingester writes `company_name`, `amount_min`, `amount_max` (not `asset_name` or `amount_range`). The /congress-trades API was reading the wrong fields → empty assetName and missing amount range. The /financial tab=congress branch was reading `company_name` correctly but `formatAmount(min, max)` rendered `$X–$0` when amount_max was zero/null. Fixes: (i) /congress-trades API falls back `asset_name → company_name → ticker` for the asset label and synthesizes amountRange from `amount_min`/`amount_max` when no string range is present, formatted as `> $X` when only the lower bound is set. (ii) /financial's `formatAmount` now returns `> $X` (or `< $X`, or `—`) instead of `$X–$0` whenever a bound is missing. (iii) financial congress mapper falls back to the ticker symbol (not literal `"Unknown"`) when no company name is recorded. Files: `app/api/financial/route.ts`, `app/financial/FinancialClient.tsx`, `app/api/congress-trades/route.ts`.
+
+**Bug 3 — `/retraction-explorer` field filter returned 0 results.** Commit `9a3a5ea` re-enabled the Field chip on the claim that "all 26,624 claims have topic associations." They do — but **only one association each, all of them the same `retracted-papers` topic.** No Medicine / Biology / Psychology / Physics / Chemistry topic rows are tagged on retraction claims. The previous query joined ClaimTopic → Topic and filtered by slug ILIKE the chip label, which returned 0 every time. Switched the filter to a journal-name keyword match against `metadata.journal`. Verified counts against prod: Medicine 4,697 · Psychology 1,099 · Biology 1,929 · Physics 647 · Chemistry 1,147. Approximate (a "Journal of Vir‑" hit may not strictly be virology) but maps the user-facing chip to a meaningful slice. ClaimTopic enrichment of retraction claims by domain remains a future task. File: `app/api/retractions/route.ts`.
+
+**Bug 4 — `/topics/<leaf>` shows 0 claims.** Some Topic rows (`neuroscience`, `law`, `biology`, `physics`, `economics`, …) exist with `_count.claims === 0` and no descendants, while their parent (`academic-literature` etc.) has all the ClaimTopic associations and shows a large count. The slug-page query joined `ClaimTopic` against `[topic.id, ...children, ...grandchildren]`, returning 0 for empty leaves. Added a text-match fallback: when the ClaimTopic query returns 0 and the topic has no children, run a second query against `Claim.text ILIKE '%<topic.name>%'` (respecting the deprecated / political-context / search filters) and use those rows as the result set. Verified counts: Neuroscience 1,104, Law 28,471, Economics 1,472, Biology 1,600, Physics 1,194, History 2,962. Response now includes a `usedTextFallback` flag for future UI awareness. Files: `app/api/topics/[slug]/route.ts`.
+
+**Verification.** `npx tsc --noEmit` → 0 errors. All DB inspection queries ran against prod Neon (read-only). No migrations.
+
+**Homepage + footer.** New June 8 entry at the top of `HomepageSections.tsx` CHANGELOG. Footer "last updated June 8, 2026" already current — no change.
+
+**Future work.** ClaimTopic population for leaf-level academic topics (neuroscience, biology, physics, …) is still missing — the text-fallback is a stopgap. Same for tagging retraction claims with field-level topics.
+
+---
+
 ### 2026-06-08 — Homepage redesign: stats bar, domain grid, featured claims, changelog
 
 **What.** Replaced the homepage's static "Recent additions" feed below the hero with four new server-rendered sections. Hero (search input, topic chips, BlackHoleCanvas, onboarding copy) is unchanged.

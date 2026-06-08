@@ -72,7 +72,12 @@ function readString(meta: unknown, key: string): string | null {
 function readNumber(meta: unknown, key: string): number | null {
   if (!meta || typeof meta !== "object") return null;
   const v = (meta as Record<string, unknown>)[key];
-  return typeof v === "number" ? v : null;
+  if (typeof v === "number") return v;
+  if (typeof v === "string") {
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+  return null;
 }
 
 export async function GET(req: NextRequest) {
@@ -213,21 +218,28 @@ export async function GET(req: NextRequest) {
         prisma.claim.count({ where }),
       ]);
 
-      const items: CongressHit[] = claims.map((c) => ({
-        id: c.id,
-        memberName: readString(c.metadata, "member_name") ?? "Unknown",
-        party: (readString(c.metadata, "party") ?? "I") as CongressHit["party"],
-        chamber: (readString(c.metadata, "chamber") ?? "House") as CongressHit["chamber"],
-        state: readString(c.metadata, "state") ?? "",
-        ticker: readString(c.metadata, "ticker") ?? "",
-        companyName: readString(c.metadata, "company_name") ?? "Unknown",
-        transactionType: (readString(c.metadata, "transaction_type") ?? "purchase") as CongressHit["transactionType"],
-        amountMin: readNumber(c.metadata, "amount_min") ?? 0,
-        amountMax: readNumber(c.metadata, "amount_max") ?? 0,
-        tradeDate: readString(c.metadata, "trade_date") ?? "",
-        disclosureDate: readString(c.metadata, "disclosure_date") ?? "",
-        sourceUrl: c.edges[0]?.source?.url ?? "",
-      }));
+      const items: CongressHit[] = claims.map((c) => {
+        const ticker = readString(c.metadata, "ticker") ?? "";
+        const companyName =
+          readString(c.metadata, "company_name") ??
+          readString(c.metadata, "asset_name") ??
+          (ticker || "Unknown");
+        return {
+          id: c.id,
+          memberName: readString(c.metadata, "member_name") ?? "Unknown",
+          party: (readString(c.metadata, "party") ?? "I") as CongressHit["party"],
+          chamber: (readString(c.metadata, "chamber") ?? "House") as CongressHit["chamber"],
+          state: readString(c.metadata, "state") ?? "",
+          ticker,
+          companyName,
+          transactionType: (readString(c.metadata, "transaction_type") ?? "purchase") as CongressHit["transactionType"],
+          amountMin: readNumber(c.metadata, "amount_min") ?? 0,
+          amountMax: readNumber(c.metadata, "amount_max") ?? 0,
+          tradeDate: readString(c.metadata, "trade_date") ?? "",
+          disclosureDate: readString(c.metadata, "disclosure_date") ?? "",
+          sourceUrl: c.edges[0]?.source?.url ?? "",
+        };
+      });
 
       return NextResponse.json({ tab, items, total, page, limit } satisfies FinancialResponse);
     }
@@ -240,7 +252,7 @@ export async function GET(req: NextRequest) {
 
       if (q) {
         where.OR = [
-          { metadata: { path: ["series_id"], string_contains: q.toUpperCase() } },
+          { metadata: { path: ["seriesId"], string_contains: q.toUpperCase() } },
           { text: { contains: q, mode: "insensitive" } },
         ];
       }
@@ -257,10 +269,14 @@ export async function GET(req: NextRequest) {
 
       const items: MacroHit[] = claims.map((c) => ({
         id: c.id,
-        seriesId: readString(c.metadata, "series_id") ?? "",
-        seriesName: readString(c.metadata, "series_name") ?? "",
+        seriesId: readString(c.metadata, "seriesId") ?? readString(c.metadata, "series_id") ?? "",
+        seriesName: readString(c.metadata, "seriesTitle") ?? readString(c.metadata, "series_name") ?? "",
         value: readNumber(c.metadata, "value") ?? 0,
-        date: readString(c.metadata, "observation_date") ?? c.claimEmergedAt?.toISOString().slice(0, 10) ?? "",
+        date:
+          readString(c.metadata, "date") ??
+          readString(c.metadata, "observation_date") ??
+          c.claimEmergedAt?.toISOString().slice(0, 10) ??
+          "",
         units: readString(c.metadata, "units") ?? "",
       }));
 

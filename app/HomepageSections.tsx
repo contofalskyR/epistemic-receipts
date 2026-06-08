@@ -166,6 +166,10 @@ const DOMAINS: Domain[] = [
 const CHANGELOG: { date: string; text: string }[] = [
   {
     date: "JUNE 8, 2026",
+    text: "Audit sweep: /foreign-legislation now hides 2999 sentinel year, /search adds OPEN axis chip, /financial Insider/Macro tabs no longer dead-end, /congress-trades shows company name and proper amount ranges, /retraction-explorer field chips return results, /topics/<leaf> falls back to a name-text match so empty leaves surface real claims.",
+  },
+  {
+    date: "JUNE 8, 2026",
     text: "Destination Pages Phase 2 shipped: /prereq-graph and /foreign-legislation live. epistemicAxis badges wired across all claim surfaces (SETTLED/CONTESTED/RECORDED/OPEN). 113,319 Voteview roll-calls (1789–2026) now searchable.",
   },
   {

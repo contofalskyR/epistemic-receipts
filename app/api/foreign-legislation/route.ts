@@ -89,9 +89,11 @@ export async function GET(req: NextRequest) {
       title: r.text,
       ingestedBy: r.ingestedBy,
       epistemicAxis: r.epistemicAxis,
-      date: r.claimEmergedAt
-        ? r.claimEmergedAt.toISOString().slice(0, 4)
-        : null,
+      date: (() => {
+        if (!r.claimEmergedAt) return null;
+        const year = r.claimEmergedAt.toISOString().slice(0, 4);
+        return year === "2999" ? null : year;
+      })(),
       country: countryEntry?.label ?? "Unknown",
       countryCode: countryEntry?.code ?? "",
       flag: countryEntry?.flag ?? "",

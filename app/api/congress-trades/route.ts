@@ -64,18 +64,41 @@ export async function GET(req: NextRequest) {
 
   const total = Number(countResult[0]?.count ?? 0);
 
+  const fmtMoney = (n: number) => {
+    if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
+    if (n >= 1_000) return `$${(n / 1_000).toFixed(0)}K`;
+    return `$${n.toLocaleString()}`;
+  };
+
   const trades = rows.map((r) => {
     const m = r.metadata as Record<string, unknown>;
+    const ticker = (m?.ticker as string) ?? "";
+    const assetName =
+      (m?.asset_name as string) ??
+      (m?.company_name as string) ??
+      ticker ??
+      "";
+
+    const rawRange = (m?.amount_range as string) ?? "";
+    const amtMin = typeof m?.amount_min === "number" ? m.amount_min : null;
+    const amtMax = typeof m?.amount_max === "number" ? m.amount_max : null;
+    let amountRange = rawRange;
+    if (!amountRange) {
+      if (amtMin && amtMax) amountRange = `${fmtMoney(amtMin)}–${fmtMoney(amtMax)}`;
+      else if (amtMin) amountRange = `> ${fmtMoney(amtMin)}`;
+      else if (amtMax) amountRange = `< ${fmtMoney(amtMax)}`;
+    }
+
     return {
       id: r.id,
       memberName: (m?.member_name as string) ?? "",
       bioguideId: (m?.bioguide_id as string) ?? null,
       party: (m?.party as string) ?? "",
       chamber: (m?.chamber as string) ?? "",
-      ticker: (m?.ticker as string) ?? "",
-      assetName: (m?.asset_name as string) ?? "",
+      ticker,
+      assetName,
       transactionType: (m?.transaction_type as string) ?? "",
-      amountRange: (m?.amount_range as string) ?? "",
+      amountRange,
       tradeDate: (m?.trade_date as string) ?? "",
       disclosureDate: (m?.disclosure_date as string) ?? "",
       tickerType: (m?.ticker_type as string) ?? null,

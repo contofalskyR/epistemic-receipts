@@ -100,38 +100,70 @@ export async function GET(
         ? { claim: { claimEmergedAt: "asc" as const } }
         : { claim: { claimEmergedAt: "desc" as const } };
 
-  const [total, claimTopics] = await Promise.all([
+  const claimInclude = {
+    _count: { select: { edges: { where: { deleted: false } } } },
+    topics: { select: { topic: { select: { id: true, name: true, slug: true, domain: true } } } },
+    edges: {
+      where: { deleted: false },
+      select: {
+        source: {
+          select: {
+            politicalContext: { select: { hogParty: true, headOfGovernment: true } },
+            legislativeVotes: {
+              select: { chamber: true, yesCount: true, noCount: true, abstainCount: true, totalSeats: true },
+              take: 1,
+            },
+          },
+        },
+      },
+      take: 5,
+    },
+  } as const;
+
+  let [total, claimTopics] = await Promise.all([
     prisma.claimTopic.count({ where: claimWhere }),
     prisma.claimTopic.findMany({
       where: claimWhere,
       orderBy: claimOrderBy,
       skip: (page - 1) * PAGE_SIZE,
       take: PAGE_SIZE,
-      include: {
-        claim: {
-          include: {
-            _count: { select: { edges: { where: { deleted: false } } } },
-            topics: { select: { topic: { select: { id: true, name: true, slug: true, domain: true } } } },
-            edges: {
-              where: { deleted: false },
-              select: {
-                source: {
-                  select: {
-                    politicalContext: { select: { hogParty: true, headOfGovernment: true } },
-                    legislativeVotes: {
-                      select: { chamber: true, yesCount: true, noCount: true, abstainCount: true, totalSeats: true },
-                      take: 1,
-                    },
-                  },
-                },
-              },
-              take: 5,
-            },
-          },
-        },
-      },
+      include: { claim: { include: claimInclude } },
     }),
   ]);
+
+  // Fallback: leaf topics like Neuroscience may have a Topic row but no ClaimTopic
+  // associations (population is a future task — see CONSULTANT.md). Surface real
+  // claims via a topic-name text match so the slug page isn't empty.
+  let usedTextFallback = false;
+  if (total === 0 && topic.children.length === 0) {
+    const fallbackClaimWhere = {
+      ...baseClaimFilter,
+      text: { contains: topic.name, mode: "insensitive" as const },
+      ...pcFilter,
+      ...qFilter,
+    };
+    const fallbackOrderBy =
+      sort === "most_sources"
+        ? { edges: { _count: "desc" as const } }
+        : sort === "emerged_asc"
+          ? { claimEmergedAt: "asc" as const }
+          : { claimEmergedAt: "desc" as const };
+    const [fbTotal, fbClaims] = await Promise.all([
+      prisma.claim.count({ where: fallbackClaimWhere }),
+      prisma.claim.findMany({
+        where: fallbackClaimWhere,
+        orderBy: fallbackOrderBy,
+        skip: (page - 1) * PAGE_SIZE,
+        take: PAGE_SIZE,
+        include: claimInclude,
+      }),
+    ]);
+    if (fbTotal > 0) {
+      total = fbTotal;
+      claimTopics = fbClaims.map((c) => ({ claim: c })) as typeof claimTopics;
+      usedTextFallback = true;
+    }
+  }
 
   // Aggregate party/leader counts in a single query instead of N+1 per party/leader.
   const partyClaimRows = await prisma.claimTopic.findMany({
@@ -307,6 +339,7 @@ export async function GET(
     partyVoteTallies,
     partyRowsParsed,
     sourceTags,
+    usedTextFallback,
   });
   res.headers.set("Cache-Control", "s-maxage=60, stale-while-revalidate=600");
   return res;

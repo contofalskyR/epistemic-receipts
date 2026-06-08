@@ -146,20 +146,16 @@ function LegCard({ claim }: { claim: LegClaim }) {
           <span style={{ fontSize: "0.75rem", color: S.muted }}>
             {claim.country}
           </span>
-          {claim.date && (
-            <>
-              <span style={{ color: S.border }}>·</span>
-              <span
-                style={{
-                  fontSize: "0.72rem",
-                  color: S.muted,
-                  fontFamily: "monospace",
-                }}
-              >
-                {claim.date}
-              </span>
-            </>
-          )}
+          <span style={{ color: S.border }}>·</span>
+          <span
+            style={{
+              fontSize: "0.72rem",
+              color: S.muted,
+              fontFamily: "monospace",
+            }}
+          >
+            {claim.date && claim.date !== "2999" ? claim.date : "—"}
+          </span>
           <AxisBadge axis={claim.epistemicAxis} />
           {claim.sourceUrl && (
             <a

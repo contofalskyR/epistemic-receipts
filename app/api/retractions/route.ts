@@ -31,16 +31,33 @@ export async function GET(req: NextRequest) {
   }
 
   if (field !== "all") {
-    // Filter via ClaimTopic join — look for a topic whose slug contains the field
-    const safe = field.replace(/'/g, "''").toLowerCase();
-    conditions.push(
-      `EXISTS (
-        SELECT 1 FROM "ClaimTopic" ct
-        JOIN "Topic" t ON t.id = ct."topicId"
-        WHERE ct."claimId" = c.id
-          AND (t.slug ILIKE '%${safe}%' OR t.name ILIKE '%${safe}%')
-      )`
-    );
+    // All retraction claims share a single "retracted-papers" topic, so topic-slug
+    // filtering returns nothing useful. Derive the field from journal-name keywords
+    // instead — this is approximate but matches the only field signal we actually have.
+    const journalKeywords: Record<string, string[]> = {
+      Medicine: [
+        "medic", "clinical", "surg", "lancet", "nejm", "jama", "antimicrobial",
+        "infect", "oncolog", "cardio", "pharma", "therapeutic", "diabet", "obstetric",
+        "pediatr", "neurolog", "radio", "anesth", "immun", "vaccin", "vir", "hepat",
+      ],
+      Psychology: ["psycholog", "psychiatr", "behavior", "behaviour", "cognit", "mental"],
+      Biology: [
+        "biolog", "biochem", "molecular", "cell", "genom", "genet", "microbi",
+        "ecolog", "evolution", "physiolog", "neurosci", "protein", "rna ", "dna ",
+      ],
+      Physics: ["physic", "astrophys", "quantum", "applied physics", "physical review"],
+      Chemistry: ["chemi", "polymer", "catalysis", "spectro", "electrochem", "organomet"],
+    };
+    const kws = journalKeywords[field];
+    if (kws && kws.length) {
+      const ors = kws
+        .map((kw) => `c.metadata->>'journal' ILIKE '%${kw.replace(/'/g, "''")}%'`)
+        .join(" OR ");
+      conditions.push(`(${ors})`);
+    } else {
+      // Unknown field — return 0 rows rather than ignoring silently.
+      conditions.push(`FALSE`);
+    }
   }
 
   const where = conditions.join(" AND ");
