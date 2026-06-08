@@ -71,12 +71,18 @@ interface Match {
 
 async function findCourtMatches(actName: string): Promise<Match[]> {
   const pattern = `%${escapeLike(actName)}%`
+  // Search both the templated claim text AND the enriched opinion_body in metadata.
+  // opinion_body is stored as a JSON string under metadata->>'opinion_body'.
   return prisma.$queryRaw<Match[]>`
     SELECT id, "ingestedBy"
     FROM "Claim"
     WHERE "ingestedBy" LIKE 'courtlistener_%'
       AND deleted = false
-      AND text ILIKE ${pattern}
+      AND (
+        text ILIKE ${pattern}
+        OR (metadata IS NOT NULL AND metadata->>'opinion_body' ILIKE ${pattern})
+        OR (metadata IS NOT NULL AND metadata->>'statutes_cited' ILIKE ${pattern})
+      )
     LIMIT ${PER_ACT_LIMIT}
   `
 }

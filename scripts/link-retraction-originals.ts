@@ -181,7 +181,7 @@ async function main() {
   for (const pair of byPair.values()) {
     const ret = retractionByDoi.get(pair.doi);
     if (!ret) continue;
-    const followUpContext: Record<string, unknown> = {
+    const followUpContext = {
       doi: pair.doi,
       via: pair.via,
       retractionCorpus: ret.corpus,

@@ -56,3 +56,6 @@ prisma/migrations.sqlite-backup/
 
 # Enrichment caches (regenerable downloads)
 .cache/
+
+# Claude Code agent tooling (per-machine memory, not source)
+.claude/

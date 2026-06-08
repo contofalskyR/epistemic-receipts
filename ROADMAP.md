@@ -62,6 +62,93 @@ Full strategy in `~/.openclaw/workspace/memory/project_epistemic_receipts_moneti
 
 ---
 
+## Opus Brainstorm Roadmap — 2026-06-08
+
+*From full site walk-through by Opus 4.8. Full doc: `docs/opus-brainstorm-2026-06-08.md`. Items ranked by ROI; all use data already ingested unless noted.*
+
+### Now — Credibility & Surfacing (next 30 days)
+
+| Feature | Priority | Notes |
+|---------|----------|-------|
+| **Epistemic axis migration** — retire HARD_FACT/DISPUTED binary, replace with RECORDED/SETTLED/CONTESTED/OPEN | 🔥 Highest | P1+P2 in flight (2026-06-08). Fixes "HARD_FACT on 0-source claim" credibility bug. |
+| **FDA approval dedup/rollup** — collapse 40 identical helium/gas approvals into one rollup claim | 🔥 High | "helium" returns 482 near-duplicate FDA records; drowns out actual chemistry. |
+| **Search relevance weighting** — per-source-type scoring so high-volume pipelines don't crowd out high-quality ones | 🔥 High | "vaccine" returns ops-research papers, not vaccine science. |
+| **Surface full 113k Voteview roll-calls** — currently only 505 of 113,319 are exposed in UI | 🔥 High | Biggest hidden gem on the site. DW-NOMINATE ideology scores also sit unused. |
+| **Retraction Wall** — homepage feature: papers that flipped to CONTESTED this week + citation-impact count | High | 11,319 CONTRADICTS edges exist. Most demo-able single feature. |
+| **`/corrections` audit log page** — public list of deprecated/retired sources with reason | High | USPTO deprecation story (182 DEPRECATED claims) is a trust asset being left on the floor. |
+
+### Next — Deepen the Spine (1–2 quarters)
+
+| Feature | Priority | Notes |
+|---------|----------|-------|
+| **Legislator profile pages** — lifetime vote record, party-unity %, flip-flop detection, attendance | High | Built almost entirely from voteview data already ingested. |
+| **DW-NOMINATE ideology scores** — member placement on economic + social dimensions over time | High | Already have the source data. Single most powerful thing to build from voteview. |
+| **STOCK Act expansion** — `congress_stock_act_v1` has 8 rows; full dataset is viral | High | "Member traded this stock N days before this committee vote" — consumer-viral + civically important. |
+| **V-Dem dataset** — Varieties of Democracy (1789–present, every country, democracy indices) | High | Currently 1 row. Premier poli-sci dataset. Supercharges Globe + governance case studies. |
+| **CourtListener opinion bodies** — ingest full opinion text + statutes cited | High | bill↔court linker produced 0 links because claim text is templated summaries. Full text activates the chain. |
+| **WHO GHO depth** — more indicators (currently 5), link to case studies | Medium | 1,001 records but thin. Feeds Globe and health case studies. |
+| **Retraction feed API** — `GET /retractions/since/{date}` as first monetizable endpoint | High | Lowest effort, highest trust, most clearly monetizable. Powered by feature already shipped. |
+| **Settling curve gallery** — generalize semaglutide demo into multi-drug/topic gallery | Medium | Novel primitive. Signature visualization. |
+| **Contested-claim case studies (batch)** — vaccines/autism, minimum wage, nuclear safety, mask efficacy | High | These are exactly the searches users run. None return results currently. |
+| **Manufactured-doubt template** — tobacco → leaded gas → asbestos → PFAS → sugar → climate arc | Medium | Repeatable receipt template. Brand-defining. |
+
+### Later — The Franchise (2–4 quarters)
+
+| Feature | Priority | Notes |
+|---------|----------|-------|
+| **Vote→money→law→court lifecycle** — FEC/donor → member → vote → enacted law → court challenge | High | Combines voteview + FEC + CourtListener. Needs STOCK Act + CourtListener bodies first. |
+| **`/verify` API endpoint** — `GET /verify?statement=...` returns nearest claims + provenance grade | High | Read API mostly an exposure layer over existing data model. |
+| **Cross-national polarization comparison** — UK/EU/UN vote pattern analysis over time | Medium | Already have UK + EU Parliament + UN SC vote data. |
+| **Multi-outlet media-attention dashboard** — extend NYT "dark matter bills" to WSJ/Fox/AP/Reuters | Medium | "Which bills the press covers vs. ignores" as media-criticism data product. |
+| **Reader browser extension** — overlays provenance grades on claims as you read the web | Medium | Consumer flywheel. Globe is the top-of-funnel demo; Reader is the retention loop. |
+| **Pharma claim-substantiation pilot** — compliance revenue line (research integrity SaaS) | Low-medium | Needs API + retraction feed + case study library first. |
+
+### Known Stubs to Finish or Hide
+
+| Pipeline | Current State | Action |
+|----------|--------------|--------|
+| `vdem_v1` | 1 record | Finish — highest ROI stub |
+| `space_missions_v1` | 1 record | Finish or hide |
+| `who_gho_v1` | 5 indicators | Expand |
+| `congress_stock_act_v1` | 8 records | Finish — viral feature |
+| `stasi_v1` | 2 records | Already blocked (Bundesarchiv gate) |
+| `book-analysis` | 1 record | Finish or hide |
+| `IAU Constellations` | 1 record | Finish or hide |
+
+---
+
+## Investor Memo Additions — 2026-06-08
+
+*From skeptical-VC pressure test. Full doc: `docs/investor-memo-2026-06-08.md`. Items below are distinct from the brainstorm doc — mostly positioning, API wedge, and compliance.*
+
+### Credibility / Trust Infrastructure
+
+| Feature | Priority | Notes |
+|---------|----------|-------|
+| **Open methodology page** | 🔥 High | Publish the data model, status-assignment rules, pipeline doctrine, and editorial scope as a first-class page. Neutrality is the entire franchise — methodological transparency is how you bank it. Investors and researchers both need this. |
+| **`HARD_FACT` → epistemicAxis migration** | 🔥 Highest | Already in flight (P1+P2). Investor memo flags this as the #1 credibility risk: "A typical bulk claim is stamped HARD_FACT while showing 0 sources, 0 edges, UNREVIEWED." |
+| **Contested-claim coverage for high-demand queries** | 🔥 High | "Do vaccines cause autism?" returns *nothing found.* Highest-demand, highest-value queries are where coverage is thinnest. These are not answer pages — they're structured disagreement maps (who claims what, on what evidence, since when). |
+
+### Revenue Wedges (sequenced)
+
+| Wedge | Priority | Notes |
+|-------|----------|-------|
+| **API design partner — find ONE first** | 🔥 High | Don't build a general API; land one specific AI builder or enterprise team as design partner first. Validate pricing + use case before generalizing. "The provenance layer every answer engine calls" is the framing — not "a better Perplexity." |
+| **`GET /verify?statement=...` endpoint** | High | First API endpoint: pass a statement, get back nearest claims + provenance grade + contradicting edges + status timeline. Grounding/RAG-with-receipts for AI builders. |
+| **`GET /retractions/since/{date}` feed** | High | Already in brainstorm doc. Calling out again because investor memo identifies this as the clearest path to a first paying customer. Research-integrity desks and publishers pull this daily. |
+| **Pharma MLR pilot** | Medium | "Prove this marketing claim is still supported and rests on nothing retracted" is a six-figure-per-seat problem. Spine already exists: OpenAlex + NIH grants + ClinicalTrials + Drugs@FDA + retraction graph. One regulated customer here is a venture-scale business on its own. |
+| **Research-integrity / university pilot** | Medium | Adjacent to pharma MLR. Universities, publishers, funders. Same data spine. Lower-touch than pharma. |
+
+### Strategic Positioning (non-code but time-sensitive)
+
+| Item | Notes |
+|------|-------|
+| **Lead with "provenance layer for the AI era," not "fact website"** | Investor memo is explicit: framed as fact-check site = wrong market, wrong comps (Snopes). Framed as neutral infrastructure labs license = right market (Bloomberg terminal for verifiable facts). |
+| **Prove case-study automation** | "How much of case-study quality can be automated?" is the central investment question. The bull case is OpenClaw makes filling high-quality contested trails cheap. Prove this with one end-to-end automated case study built without manual curation. |
+| **Neutrality governance** | The day it's perceived as biased, the franchise is gone. Even informally: publish the editorial scope decisions, the pipeline retirement decisions (USPTO), the "why we don't cover sports/markets" reasoning. Document it publicly before it matters. |
+
+---
+
 ---
 
 ## Shipped
@@ -563,6 +650,9 @@ Domains beyond legislation — same reference-tier standard applies. Individual 
 | `/analysis/topics` — Topic Trends overhaul | ✅ Shipped 2026-05-30 | **Bug fixes:** (1) JS divergence chart bars now use pixel heights (160px container) — percentage heights on flex children were resolving to 0. (2) Decade heatmap column headers now show full year (`1780s` not `80s`). **New features:** Era color-band backgrounds on divergence chart bars + era legend row; era header row above heatmap decade columns; topic chips + table badges clickable → slide-in vote drawer (`/api/analysis/topic-trends/votes?topic=&era=&limit=&offset=`) with pagination; era rows in summary table clickable to update selectedEra with visual highlight. |
 | CCES Representation Gap (full) | ✅ Shipped 2026-05-30 | `/analysis/representation` end-to-end. Schema: new `ConstituentOpinion` table (migration 20260530170000) with 24,615 (state, year, topic) rows ingested from Harvard Dataverse CES cumulative file (doi:10.7910/DVN/II2DB6, V11, 702k respondents, 2006–2024). Pipeline: `scripts/_cces_extract.py` (pyreadstat → JSON aggregates with liberal/conservative/dem/uninsured/union/evangelical pcts mapped across 26 LegislativeVote topic slugs) → `scripts/ingest-cces.ts` (200-row upsert tx, ALLOW_EDITS guarded, `cces_v1` tag). Analysis layer `lib/representationGap.ts` joins to 104k congress_v1/voteview_v1 MemberVote rows, computing gap = \|delegationYeaPct − constituentSupportPct\| plus party-split demGap/repGap. Topic-level stats with CCES-proxy column, decade trend, and Dem-vs-Rep party breakdown. |
 | Language badge on claim cards | 🔜 Tabled | RO/EN/DE pill badge. Needs language field on ingest or Europeana dc:language backfill. |
+| **Destination Pages Phase 1** — `/congress-trades` + `/retraction-explorer` | ✅ Shipped 2026-06-08 | `/congress-trades`: redesigned STOCK Act page, card layout with ticker/member/badge/amount/date/excess return, expandable detail panel, filter chips (Chamber, Party, Correlation), old `/stock-act` permanently redirects. `/retraction-explorer`: surfaces 26,600+ CrossRef retracted papers, cards with year/journal/title/author/type. |
+| **Destination Pages Phase 2** — `/opinions` + nav + polish | 🔴 In progress | `/opinions` broken (shows 0, spins — API route bug). Also: homepage blank zone, nav missing on [id] routes, retraction wall clicks, member first names, vote breakdown empty state. Bug fix agent running 2026-06-08. |
+| **`epistemicAxis` field + badges** | ✅ Shipped 2026-06-08 | `epistemicAxis` on all claims (1.46M backfilled). Replaces `currentStatus`. Wiring to UI pending. |
 
 ## Notes
 

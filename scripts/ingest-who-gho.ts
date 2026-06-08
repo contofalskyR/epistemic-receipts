@@ -1,9 +1,10 @@
 // Pipeline 112 — WHO Global Health Observatory
 // Dataset: WHO GHO OData API (ghoapi.azureedge.net) — no auth required
-// Scope: 5 high-value indicators per country, most recent year: life expectancy, U5MR, PM2.5, alcohol, obesity
+// Scope: 8 health indicators per country×year, years 2000–2023: life expectancy, healthy life expectancy,
+//        U5MR, infant mortality, PM2.5, obesity, alcohol, safe sanitation
 // Pipeline tag: who_gho_v1
 // Run: npx tsx scripts/ingest-who-gho.ts --dry-run
-//      npx tsx scripts/ingest-who-gho.ts --full [--indicator WHOSIS_000001] [--limit N] [--verbose]
+//      npx tsx scripts/ingest-who-gho.ts --full [--indicator CODE] [--limit N] [--year-min N] [--year-max N] [--verbose]
 //      Full run requires ALLOW_EDITS=true
 
 import 'dotenv/config'
@@ -37,31 +38,31 @@ const INDICATORS: IndicatorDef[] = [
     detailSlug: 'life-expectancy-at-birth-(years)',
   },
   {
-    code: 'MDG_0000000001',
+    code: 'WHOSIS_000015',
+    name: 'Healthy life expectancy at birth',
+    unit: 'years',
+    dim1Filter: 'SEX_BTSX',
+    topicSlug: 'who-gho-healthy-life-expectancy',
+    topicName: 'WHO GHO — Healthy Life Expectancy',
+    detailSlug: 'healthy-life-expectancy-(hale)-at-birth-(years)',
+  },
+  {
+    code: 'MDG_0000000026',
+    name: 'Infant mortality rate',
+    unit: 'per 1,000 live births',
+    dim1Filter: null,
+    topicSlug: 'who-gho-infant-mortality',
+    topicName: 'WHO GHO — Infant Mortality Rate',
+    detailSlug: 'infant-mortality-rate-(probability-of-dying-between-birth-and-age-1-per-1000-live-births)',
+  },
+  {
+    code: 'MDG_0000000007',
     name: 'Under-5 mortality rate',
     unit: 'per 1,000 live births',
     dim1Filter: 'SEX_BTSX',
     topicSlug: 'who-gho-under5-mortality',
     topicName: 'WHO GHO — Under-5 Mortality Rate',
     detailSlug: 'under-five-mortality-rate-(probability-of-dying-by-age-5-per-1000-live-births)',
-  },
-  {
-    code: 'SDGPM25',
-    name: 'Annual mean concentration of fine particulate matter (PM2.5)',
-    unit: 'μg/m³',
-    dim1Filter: 'RESIDENCEAREATYPE_TOTL',
-    topicSlug: 'who-gho-pm25',
-    topicName: 'WHO GHO — PM2.5 Air Pollution',
-    detailSlug: 'concentrations-of-fine-particulate-matter-(pm2-5)',
-  },
-  {
-    code: 'SA_0000001462',
-    name: 'Total alcohol per capita consumption (age 15+)',
-    unit: 'litres of pure alcohol',
-    dim1Filter: 'SEX_BTSX',
-    topicSlug: 'who-gho-alcohol',
-    topicName: 'WHO GHO — Alcohol Consumption Per Capita',
-    detailSlug: 'total-(recorded-unrecorded)-alcohol-per-capita-(15-)-consumption',
   },
   {
     code: 'NCD_BMI_30A',
@@ -71,6 +72,33 @@ const INDICATORS: IndicatorDef[] = [
     topicSlug: 'who-gho-obesity',
     topicName: 'WHO GHO — Adult Obesity Prevalence',
     detailSlug: 'prevalence-of-obesity-among-adults-bmi--30-(age-standardized-estimate)-(-)',
+  },
+  {
+    code: 'SDGPM25',
+    name: 'Annual mean PM2.5 concentration',
+    unit: 'μg/m³',
+    dim1Filter: 'RESIDENCEAREATYPE_TOTL',
+    topicSlug: 'who-gho-pm25',
+    topicName: 'WHO GHO — PM2.5 Air Pollution',
+    detailSlug: 'concentrations-of-fine-particulate-matter-(pm2-5)',
+  },
+  {
+    code: 'SA_0000001688',
+    name: 'Total alcohol per capita consumption (age 15+)',
+    unit: 'litres of pure alcohol',
+    dim1Filter: null,
+    topicSlug: 'who-gho-alcohol',
+    topicName: 'WHO GHO — Alcohol Consumption Per Capita',
+    detailSlug: 'total-(recorded-unrecorded)-alcohol-per-capita-(15-)-consumption',
+  },
+  {
+    code: 'WSH_SANITATION_SAFELY_MANAGED',
+    name: 'Population using safely managed sanitation services',
+    unit: '%',
+    dim1Filter: 'RESIDENCEAREATYPE_TOTL',
+    topicSlug: 'who-gho-sanitation',
+    topicName: 'WHO GHO — Safe Sanitation Access',
+    detailSlug: 'population-using-safely-managed-sanitation-services-(-)',
   },
 ]
 
@@ -107,7 +135,6 @@ interface GhoDimensionResponse {
   value: GhoDimensionValue[]
 }
 
-type IngestResult = 'ingested' | 'skipped' | 'failed'
 type Counts = { ingested: number; skipped: number; errors: number }
 
 interface CandidateRecord {
@@ -135,6 +162,8 @@ function parseArgs() {
 
   const ii = args.indexOf('--indicator')
   const li = args.indexOf('--limit')
+  const ymi = args.indexOf('--year-min')
+  const yxi = args.indexOf('--year-max')
 
   let indicatorsToRun = INDICATORS
   if (ii !== -1) {
@@ -151,6 +180,8 @@ function parseArgs() {
     mode: mode as 'dry-run' | 'full',
     indicators: indicatorsToRun,
     limit: li !== -1 ? parseInt(args[li + 1] ?? '0', 10) || 0 : 0,
+    yearMin: ymi !== -1 ? parseInt(args[ymi + 1] ?? '2000', 10) : 2000,
+    yearMax: yxi !== -1 ? parseInt(args[yxi + 1] ?? '2023', 10) : 2023,
     verbose: args.includes('--verbose'),
   }
 }
@@ -209,37 +240,33 @@ async function fetchIndicatorData(ind: IndicatorDef): Promise<GhoDataValue[]> {
   return data.value ?? []
 }
 
-// ── Build candidates: most recent year per country ────────────────────────────
+// ── Build candidates: all years in [yearMin, yearMax] per country ─────────────
 
 function buildCandidates(
   records: GhoDataValue[],
   ind: IndicatorDef,
   countryNames: Map<string, string>,
+  yearMin: number,
+  yearMax: number,
 ): CandidateRecord[] {
-  // Filter to country-level records, matching the Dim1 filter if specified, then keep most recent year per country
-  const best = new Map<string, { record: GhoDataValue; numVal: number }>()
+  const candidates: CandidateRecord[] = []
   for (const r of records) {
     if (r.SpatialDimType !== 'COUNTRY') continue
     if (!r.SpatialDim || !r.TimeDim || r.TimeDimType !== 'YEAR') continue
+    if (r.TimeDim < yearMin || r.TimeDim > yearMax) continue
     if (ind.dim1Filter !== null && r.Dim1 !== ind.dim1Filter) continue
-    // NumericValue may be null for some indicators — fall back to parsing the Value string
     const numVal = r.NumericValue ?? (r.Value !== null ? parseFloat(r.Value ?? '') : null)
     if (numVal === null || numVal === undefined || isNaN(numVal)) continue
-    const existing = best.get(r.SpatialDim)
-    if (!existing || r.TimeDim > existing.record.TimeDim) best.set(r.SpatialDim, { record: r, numVal })
-  }
 
-  const candidates: CandidateRecord[] = []
-  for (const [iso, { record: r, numVal }] of best) {
-    const countryName = countryNames.get(iso) ?? iso
-    const claimText = `${ind.name} in ${countryName}: ${numVal.toFixed(1)} ${ind.unit} (${r.TimeDim})`
+    const countryName = countryNames.get(r.SpatialDim) ?? r.SpatialDim
+    const claimText = `In ${r.TimeDim}, ${ind.name.toLowerCase()} in ${countryName} was ${numVal.toFixed(1)} ${ind.unit} (WHO GHO)`
     const claimDate = new Date(`${r.TimeDim}-01-01T00:00:00Z`)
 
     candidates.push({
-      externalId: `who_gho_${ind.code}_${iso}_${r.TimeDim}`,
+      externalId: `who_gho_${ind.code}_${r.SpatialDim}_${r.TimeDim}`,
       claimText,
       indicatorCode: ind.code,
-      countryIso: iso,
+      countryIso: r.SpatialDim,
       countryName,
       year: r.TimeDim,
       value: numVal,
@@ -251,7 +278,7 @@ function buildCandidates(
         dataset: INGESTED_BY,
         indicatorCode: ind.code,
         indicatorName: ind.name,
-        country: iso,
+        country: r.SpatialDim,
         countryName,
         year: r.TimeDim,
         value: numVal,
@@ -284,66 +311,97 @@ async function ensureTopic(slug: string, name: string, domain: string, parentSlu
   return created.id
 }
 
-// ── Core: write one record ────────────────────────────────────────────────────
+// ── Batched write for a chunk of candidates (same indicator + source) ──────────
 
-type TxClient = Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>
+const BATCH_SIZE = 500
 
-async function writeRow(
-  tx: TxClient,
-  rec: CandidateRecord,
+async function writeBatch(
+  recs: CandidateRecord[],
   sourceId: string,
   topicIds: string[],
-): Promise<IngestResult> {
-  const existing = await tx.claim.findUnique({ where: { externalId: rec.externalId }, select: { id: true } })
-  if (existing) return 'skipped'
+  counts: Counts,
+  verbose: boolean,
+): Promise<void> {
+  if (recs.length === 0) return
 
-  const claim = await tx.claim.create({
-    data: {
-      text: rec.claimText,
-      claimType: 'EMPIRICAL',
-      currentStatus: 'HARD_FACT',
-      verificationStatus: 'VERIFIED',
-      claimEmergedAt: rec.claimDate,
-      claimEmergedPrecision: 'YEAR',
-      ingestedBy: INGESTED_BY,
-      humanReviewed: false,
-      autoApproved: true,
-      externalId: rec.externalId,
-      metadata: rec.metadata as Prisma.InputJsonValue,
-    },
+  // 1. Find which externalIds already exist
+  const existing = await prisma.claim.findMany({
+    where: { externalId: { in: recs.map(r => r.externalId) } },
+    select: { externalId: true },
   })
+  const existingSet = new Set(existing.map(e => e.externalId))
+  const newRecs = recs.filter(r => !existingSet.has(r.externalId))
+  counts.skipped += recs.length - newRecs.length
 
-  const edge = await tx.edge.create({
-    data: {
+  if (newRecs.length === 0) return
+
+  // 2. createMany claims (skipDuplicates handles any race-condition dupes)
+  await prisma.$transaction(async tx => {
+    await tx.claim.createMany({
+      data: newRecs.map(r => ({
+        text: r.claimText,
+        claimType: 'EMPIRICAL',
+        currentStatus: 'HARD_FACT',
+        verificationStatus: 'VERIFIED',
+        claimEmergedAt: r.claimDate,
+        claimEmergedPrecision: 'YEAR',
+        ingestedBy: INGESTED_BY,
+        humanReviewed: false,
+        autoApproved: true,
+        externalId: r.externalId,
+        metadata: r.metadata as Prisma.InputJsonValue,
+      })),
+      skipDuplicates: true,
+    })
+
+    // 3. Fetch newly created claim IDs
+    const created = await tx.claim.findMany({
+      where: { externalId: { in: newRecs.map(r => r.externalId) } },
+      select: { id: true, externalId: true, claimEmergedAt: true },
+    })
+    const idMap = new Map(created.map(c => [c.externalId, c]))
+
+    // 4. createMany edges
+    const edgeData = created.map(c => ({
       sourceId,
-      claimId: claim.id,
+      claimId: c.id,
       type: 'FOR',
       evidenceType: 'EVIDENTIARY',
       ingestedBy: INGESTED_BY,
       humanReviewed: false,
       autoApproved: true,
-    },
-  })
+    }))
+    await tx.edge.createMany({ data: edgeData, skipDuplicates: true })
 
-  await tx.edgeRevision.create({
-    data: {
-      edgeId: edge.id,
-      priorScore: null,
-      newScore: 90,
-      reason: 'WHO GHO OData API — country-level health indicator, most recent year',
-      changedAt: rec.claimDate,
-    },
-  })
-
-  for (const topicId of topicIds) {
-    await tx.claimTopic.upsert({
-      where: { claimId_topicId: { claimId: claim.id, topicId } },
-      update: {},
-      create: { claimId: claim.id, topicId },
+    // 5. Fetch edge IDs for EdgeRevision
+    const edges = await tx.edge.findMany({
+      where: { claimId: { in: created.map(c => c.id) }, ingestedBy: INGESTED_BY },
+      select: { id: true, claimId: true },
     })
-  }
+    const edgeByClaimId = new Map(edges.map(e => [e.claimId, e.id]))
 
-  return 'ingested'
+    // 6. createMany edgeRevisions
+    await tx.edgeRevision.createMany({
+      data: edges.map(e => {
+        const claim = created.find(c => c.id === e.claimId)
+        return {
+          edgeId: e.id,
+          priorScore: null,
+          newScore: 90,
+          reason: 'WHO GHO OData API — country-level health indicator, 2000–2023',
+          changedAt: claim?.claimEmergedAt ?? new Date(),
+        }
+      }),
+      skipDuplicates: true,
+    })
+
+    // 7. createMany claimTopics
+    const topicRows = created.flatMap(c => topicIds.map(topicId => ({ claimId: c.id, topicId })))
+    await tx.claimTopic.createMany({ data: topicRows, skipDuplicates: true })
+
+    counts.ingested += created.length
+    if (verbose) console.log(`  Batch: +${created.length} ingested, ${recs.length - newRecs.length} skipped`)
+  }, { timeout: 30000 })
 }
 
 // ── Pre-create one Source per indicator ───────────────────────────────────────
@@ -369,10 +427,10 @@ async function ensureIndicatorSource(ind: IndicatorDef): Promise<string> {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-  const { mode, indicators, limit, verbose } = parseArgs()
+  const { mode, indicators, limit, yearMin, yearMax, verbose } = parseArgs()
 
   console.log(`\n── Pipeline 112: WHO Global Health Observatory ────────────────────────`)
-  console.log(`Mode: ${mode} | Indicators: ${indicators.map(i => i.code).join(', ')} | Limit: ${limit || 'all'} | Tag: ${INGESTED_BY}`)
+  console.log(`Mode: ${mode} | Indicators: ${indicators.map(i => i.code).join(', ')} | Years: ${yearMin}–${yearMax} | Limit: ${limit || 'all'} | Tag: ${INGESTED_BY}`)
 
   if (mode === 'full' && process.env.ALLOW_EDITS !== 'true') {
     console.error('--full requires ALLOW_EDITS=true environment variable')
@@ -407,8 +465,8 @@ async function main() {
     console.log(`  Fetching ${ind.code} (${ind.name})...`)
     const raw = await fetchIndicatorData(ind)
     console.log(`    Raw records: ${raw.length}`)
-    const candidates = buildCandidates(raw, ind, countryNames)
-    console.log(`    Candidates (most recent year per country): ${candidates.length}`)
+    const candidates = buildCandidates(raw, ind, countryNames, yearMin, yearMax)
+    console.log(`    Candidates (${yearMin}–${yearMax}): ${candidates.length}`)
     allCandidates.push(...candidates)
     indicatorBreakdown.set(ind.code, candidates.length)
   }
@@ -452,7 +510,7 @@ async function main() {
       indicators: indicators.map(i => i.code),
       totalCandidates: candidates.length,
       indicatorBreakdown: Object.fromEntries(indicatorBreakdown),
-      note: 'Dry-run: no DB writes. Run --full with ALLOW_EDITS=true to ingest.',
+      note: `Dry-run: no DB writes. Year range: ${yearMin}–${yearMax}. Run --full with ALLOW_EDITS=true to ingest.`,
       sample,
     }
     fs.writeFileSync('pipeline-112-dry-run-sample.json', JSON.stringify(output, null, 2))
@@ -463,36 +521,43 @@ async function main() {
   }
 
   // ── Full run ───────────────────────────────────────────────────────────────
-  console.log(`\nStep 4: Full ingestion of ${candidates.length} records...`)
+  console.log(`\nStep 4: Full ingestion of ${candidates.length} records (batched ${BATCH_SIZE}/tx)...`)
   const startTime = Date.now()
   const counts: Counts = { ingested: 0, skipped: 0, errors: 0 }
 
+  // Group by indicator so each batch shares the same sourceId and topicIds
+  const byIndicator = new Map<string, CandidateRecord[]>()
   for (const rec of candidates) {
-    const topicEntry = topicMap.get(rec.indicatorCode)
+    const arr = byIndicator.get(rec.indicatorCode) ?? []
+    arr.push(rec)
+    byIndicator.set(rec.indicatorCode, arr)
+  }
+
+  for (const [code, recs] of byIndicator) {
+    const topicEntry = topicMap.get(code)
     if (!topicEntry) {
-      console.error(`  No topic entry for indicator ${rec.indicatorCode} — skipping`)
-      counts.errors++
+      console.error(`  No topic entry for indicator ${code} — skipping ${recs.length} records`)
+      counts.errors += recs.length
       continue
     }
     const { rootId, indicatorId, sourceId } = topicEntry
     const topicIds = [rootId, indicatorId]
+    console.log(`  Processing ${code} (${recs.length} candidates)...`)
 
-    try {
-      const result = await prisma.$transaction(
-        async (tx) => writeRow(tx, rec, sourceId, topicIds),
-        { timeout: 30000 },
-      )
-      if (result === 'ingested') counts.ingested++
-      else if (result === 'skipped') counts.skipped++
-      else counts.errors++
-      if (verbose || counts.ingested % 200 === 0) {
-        console.log(`  Progress: ${counts.ingested} ingested — ${rec.indicatorCode} ${rec.countryIso} ${rec.year}`)
+    for (let i = 0; i < recs.length; i += BATCH_SIZE) {
+      const chunk = recs.slice(i, i + BATCH_SIZE)
+      try {
+        await writeBatch(chunk, sourceId, topicIds, counts, verbose)
+        if (counts.ingested % 2000 === 0 || verbose) {
+          console.log(`  Progress: ${counts.ingested} ingested, ${counts.skipped} skipped — ${code} batch ${i / BATCH_SIZE + 1}`)
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err)
+        console.error(`  Batch failed (${code} offset ${i}): ${msg}`)
+        counts.errors += chunk.length
       }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error(`  Failed: ${rec.externalId} — ${msg}`)
-      counts.errors++
     }
+    console.log(`  ${code}: done. Total so far: ${counts.ingested} ingested, ${counts.skipped} skipped.`)
   }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1)

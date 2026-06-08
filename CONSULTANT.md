@@ -307,6 +307,24 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Homepage redesign: stats bar, domain grid, featured claims, changelog
+
+**What.** Replaced the homepage's static "Recent additions" feed below the hero with four new server-rendered sections. Hero (search input, topic chips, BlackHoleCanvas, onboarding copy) is unchanged.
+
+**Sections.**
+1. **Stats Bar** — five stats in a horizontal flex row on a dark surface with border dividers: active claims, total sources, congressional votes (`LegislativeVote`), retracted papers (`crossref_retractions_v1`), V-Dem indicators (`vdem_v1`). Numbers in amber bold; uppercase muted labels.
+2. **Domain Explorer Grid** — 12 cards (Climate, US Congress, Neuroscience, Law, Global Politics, Medicine, History, Space, Chemistry, Economics, Retractions, Biology) with colored 3px top borders, emoji icons, claim counts, and 2–3 source tags. Counts come from a single grouped raw-SQL query: `SELECT "ingestedBy", COUNT(*)::int AS count FROM "Claim" WHERE "verificationStatus" IS DISTINCT FROM 'DEPRECATED' GROUP BY "ingestedBy"` — each card sums its relevant `ingestedBy` buckets. Cards link to `/topics/<slug>`, `/congress-trades`, or `/retraction-explorer`.
+3. **Featured Claims** — three cards (SETTLED / CONTESTED / RECORDED) showing the most recently created claim in each axis with truncated text, source name + year, colored status dot. Source/year pulled via `include: { edges: { take: 1, include: { source: true } } }`. Ordered by `createdAt desc` (Claim has no `updatedAt` column).
+4. **Recent Updates** — 2-column changelog (date in monospace, text right), hard-coded editorial entries, divider rows, "See the full feed →" link to `/feed`.
+
+**Architecture.** Converted `app/page.tsx` from a fully client component into a server component that batches 9 DB reads via `Promise.all` (5 counts + 1 raw grouped query + 3 featured-claim `findFirst`s). Extracted the original hero/search UX into `app/HomeHero.tsx` (client) which accepts `children` so the server-rendered sections nest inside the existing `bg-gray-950` solid-bg wrapper that covers the fixed BlackHoleCanvas below the fold. Tailwind only — no new CSS, no inline styles beyond what BlackHoleCanvas already uses.
+
+**Files.** New: `app/HomeHero.tsx`, `app/HomepageSections.tsx`. Modified: `app/page.tsx` (now server), `.gitignore` (ignore `.claude/`), `CONSULTANT.md`.
+
+**Verification.** `npx tsc --noEmit` → 0 errors. Lint warning carries over from the original (`react-hooks/set-state-in-effect` on the search debounce effect) — unchanged from prior code.
+
+---
+
 ### 2026-06-08 — Destination Pages Phase 2: /prereq-graph + /foreign-legislation
 
 **What.** Built two new destination pages following the dark-theme inline-style design system (S color palette, DestinationNav, Chip filter components).

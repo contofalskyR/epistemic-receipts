@@ -29,6 +29,10 @@ const INDICATORS: Indicator[] = [
   { code: 'SP.POP.TOTL', label: 'Population', unit: 'people' },
   { code: 'SP.DYN.LE00.IN', label: 'Life expectancy at birth', unit: 'years' },
   { code: 'EN.GHG.CO2.PC.CE.AR5', label: 'CO2 emissions per capita', unit: 't CO2eq/person' },
+  { code: 'NY.GDP.MKTP.KD.ZG', label: 'GDP growth', unit: 'annual %' },
+  { code: 'SL.UEM.TOTL.ZS', label: 'Unemployment', unit: '% of total labor force' },
+  { code: 'FP.CPI.TOTL.ZG', label: 'Inflation (consumer prices)', unit: 'annual %' },
+  { code: 'GC.DOD.TOTL.GD.ZS', label: 'Central government debt', unit: '% of GDP' },
 ]
 
 const YEAR_FROM = 1990
@@ -120,6 +124,14 @@ function formatNumber(n: number, indicator: string): string {
     return n.toLocaleString('en-US', { maximumFractionDigits: 0 })
   }
   if (indicator === 'SP.DYN.LE00.IN') return n.toFixed(1)
+  if (
+    indicator === 'NY.GDP.MKTP.KD.ZG' ||
+    indicator === 'SL.UEM.TOTL.ZS' ||
+    indicator === 'FP.CPI.TOTL.ZG' ||
+    indicator === 'GC.DOD.TOTL.GD.ZS'
+  ) {
+    return n.toFixed(2) + '%'
+  }
   return n.toLocaleString('en-US', { maximumFractionDigits: 4 })
 }
 
