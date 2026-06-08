@@ -19,10 +19,19 @@ export type FeaturedClaim = {
   sourceYear: number | null;
 } | null;
 
+export type TopicChipData = {
+  id: string;
+  name: string;
+  slug: string;
+  domain: string;
+  claimCount: number;
+};
+
 export type HomepageSectionsProps = {
   stats: HomepageStats;
   ingestedByCounts: Map<string, number>;
   featured: { settled: FeaturedClaim; contested: FeaturedClaim; recorded: FeaturedClaim };
+  topTopics: TopicChipData[];
 };
 
 // ─── Domain config ────────────────────────────────────────────────────────────
@@ -342,6 +351,78 @@ function FeaturedClaims({ featured }: { featured: HomepageSectionsProps["feature
   );
 }
 
+const DOMAIN_DOT: Record<string, string> = {
+  "academic-literature":  "bg-indigo-500",
+  "archives":             "bg-violet-500",
+  "astronomy":            "bg-teal-500",
+  "chemistry":            "bg-pink-500",
+  "clinical-trials":      "bg-sky-500",
+  "culture":              "bg-fuchsia-500",
+  "defense":              "bg-slate-500",
+  "diplomacy":            "bg-blue-500",
+  "economics":            "bg-yellow-500",
+  "environment":          "bg-emerald-500",
+  "genetics":             "bg-lime-500",
+  "geology":              "bg-orange-500",
+  "government":           "bg-blue-500",
+  "history":              "bg-orange-500",
+  "institutional":        "bg-cyan-500",
+  "intelligence":         "bg-red-500",
+  "international":        "bg-blue-500",
+  "labor":                "bg-yellow-500",
+  "law":                  "bg-amber-500",
+  "legislation":          "bg-blue-500",
+  "medicine":             "bg-sky-500",
+  "physics":              "bg-cyan-500",
+  "politics":             "bg-red-500",
+  "psychology":           "bg-purple-500",
+  "public-health":        "bg-green-500",
+  "public_health":        "bg-green-500",
+  "research-funding":     "bg-indigo-500",
+  "science":              "bg-teal-500",
+  "scientific-integrity": "bg-rose-500",
+  "technology":           "bg-blue-500",
+};
+
+function TaxonomyIndex({ topics }: { topics: TopicChipData[] }) {
+  const totalTopics = topics.length;
+  return (
+    <section className="max-w-6xl mx-auto px-6 pb-16">
+      <header className="mb-6 flex items-baseline justify-between gap-4">
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white">Browse by Topic</h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Top {totalTopics} topics by claim count — click any to browse
+          </p>
+        </div>
+        <Link href="/topics" className="text-sm text-amber-400 hover:text-amber-300 transition-colors shrink-0">
+          All topics →
+        </Link>
+      </header>
+      <div className="flex flex-wrap gap-2">
+        {topics.map((topic) => {
+          const dot = DOMAIN_DOT[topic.domain] ?? "bg-gray-500";
+          return (
+            <Link
+              key={topic.id}
+              href={`/topics/${topic.slug}`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800 hover:border-gray-600 hover:bg-gray-800/80 transition-colors group"
+            >
+              <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
+              <span className="text-xs text-gray-300 group-hover:text-white transition-colors">
+                {topic.name}
+              </span>
+              <span className="text-xs text-gray-600 tabular-nums">
+                {topic.claimCount.toLocaleString()}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ChangelogSection() {
   return (
     <section className="max-w-6xl mx-auto px-6 pb-20">
@@ -372,12 +453,13 @@ function ChangelogSection() {
 
 // ─── Top-level export ─────────────────────────────────────────────────────────
 
-export default function HomepageSections({ stats, ingestedByCounts, featured }: HomepageSectionsProps) {
+export default function HomepageSections({ stats, ingestedByCounts, featured, topTopics }: HomepageSectionsProps) {
   return (
     <>
       <StatsBar stats={stats} />
       <DomainGrid ingestedByCounts={ingestedByCounts} />
       <FeaturedClaims featured={featured} />
+      <TaxonomyIndex topics={topTopics} />
       <ChangelogSection />
     </>
   );

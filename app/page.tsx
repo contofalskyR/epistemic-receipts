@@ -4,6 +4,7 @@ import HomeHero from "./HomeHero";
 import HomepageSections, {
   type FeaturedClaim,
   type HomepageStats,
+  type TopicChipData,
 } from "./HomepageSections";
 
 export const revalidate = 300;
@@ -39,6 +40,7 @@ async function loadHomepageData() {
     settled,
     contested,
     recorded,
+    rawTopics,
   ] = await Promise.all([
     prisma.claim.count({ where: { verificationStatus: { not: "DEPRECATED" } } }),
     prisma.source.count(),
@@ -68,6 +70,12 @@ async function loadHomepageData() {
       orderBy: { createdAt: "desc" },
       include: { edges: { take: 1, include: { source: true } } },
     }),
+    prisma.topic.findMany({
+      where: { parentTopicId: null },
+      orderBy: { claims: { _count: "desc" } },
+      include: { _count: { select: { claims: true } } },
+      take: 40,
+    }),
   ]);
 
   const stats: HomepageStats = {
@@ -83,6 +91,14 @@ async function loadHomepageData() {
     ingestedByCounts.set(row.ingestedBy, Number(row.count));
   }
 
+  const topTopics: TopicChipData[] = rawTopics.map((t) => ({
+    id: t.id,
+    name: t.name,
+    slug: t.slug,
+    domain: t.domain,
+    claimCount: t._count.claims,
+  }));
+
   return {
     stats,
     ingestedByCounts,
@@ -91,14 +107,15 @@ async function loadHomepageData() {
       contested: toFeatured(contested),
       recorded:  toFeatured(recorded),
     },
+    topTopics,
   };
 }
 
 export default async function Home() {
-  const { stats, ingestedByCounts, featured } = await loadHomepageData();
+  const { stats, ingestedByCounts, featured, topTopics } = await loadHomepageData();
   return (
     <HomeHero>
-      <HomepageSections stats={stats} ingestedByCounts={ingestedByCounts} featured={featured} />
+      <HomepageSections stats={stats} ingestedByCounts={ingestedByCounts} featured={featured} topTopics={topTopics} />
     </HomeHero>
   );
 }
