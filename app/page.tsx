@@ -3,6 +3,7 @@ import { useEffect, useState, useRef, useCallback, Suspense, useTransition } fro
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import BlackHoleCanvas from "@/app/components/BlackHoleCanvas";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -10,6 +11,7 @@ type ClaimHit = {
   id: string;
   text: string;
   currentStatus: string;
+  epistemicAxis: string | null;
   claimType: string;
   ingestedBy: string;
   verificationStatus: string | null;
@@ -174,12 +176,7 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
       {/* Metadata badges + timeline hint */}
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span
-            className={`text-xs px-2 py-0.5 rounded-full font-medium ${STATUS_STYLE[claim.currentStatus] ?? STATUS_STYLE.DISPUTED}`}
-            title={STATUS_TOOLTIP[claim.currentStatus] ?? ""}
-          >
-            {STATUS_LABEL[claim.currentStatus] ?? claim.currentStatus}
-          </span>
+          <EpistemicAxisBadge axis={claim.epistemicAxis} />
           {claim.topicLabel && (
             <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-indigo-950 text-indigo-300">
               {claim.topicLabel}
@@ -421,8 +418,8 @@ function HomeContent() {
       {/* Below-fold: solid background covers the fixed canvas */}
       <div className="relative bg-gray-950">
 
-      {/* Inline search results */}
-      <section className="relative max-w-3xl mx-auto pb-16 min-h-[40vh]">
+      {/* Inline search results — only reserve vertical space when a search is active */}
+      <section className={`relative max-w-3xl mx-auto ${showResults ? "pb-16 min-h-[40vh]" : ""}`}>
         {error && (
           <p className="text-sm text-red-400 text-center">{error}</p>
         )}
@@ -465,6 +462,86 @@ function HomeContent() {
         </h2>
 
         <div className="space-y-5">
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Bug fixes: House member full names (Nancy Pelosi, not just &ldquo;Pelosi&rdquo;) backfilled across 728 House members via Voteview&apos;s <span className="font-mono">HSall_members.csv</span> &mdash; the House Clerk XML only exposes last names. Homepage no longer reserves a blank{" "}
+              <span className="font-mono">min-h-[40vh]</span>{" "}
+              zone when no search is active. Retraction Wall&apos;s &ldquo;Papers whose retraction ripples furthest&rdquo; rows now deep-link to <Link href="/retraction-explorer" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/retraction-explorer</Link> filtered by DOI. Vote detail pages now explain why member-level votes are missing for Voteview rollcalls.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Destination pages Phase 1 shipped:{" "}
+              <Link href="/congress-trades" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Congress Trades</Link>{" "}
+              and{" "}
+              <Link href="/retraction-explorer" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Retraction Explorer</Link>.
+              {" "}Congress Trades replaces /stock-act (permanent redirect in place) with a redesigned card view and shared DestinationNav.
+              Retraction Explorer surfaces all 26,600+ CrossRef retracted papers with search, type filters, and expandable DOI details.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              V-Dem + WHO GHO pipelines expanded and active. V-Dem democracy indicators: 19,777 country-year claims across 183 countries (1900–2026) covering electoral, liberal, participatory, egalitarian, and deliberative democracy indices.
+              WHO Global Health Observatory expanded to 8 indicators (life expectancy, healthy life expectancy, infant and under-5 mortality, obesity, PM2.5, alcohol consumption, safe sanitation) across all countries for 2000–2023 — ~46,000 new health-metric claims.
+              Both pipelines visible on <Link href="/datasets" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/datasets</Link>.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              <Link href="/opinions" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Court Opinions browser</Link>{" "}
+              — 2,000+ U.S. court opinions from CourtListener (SCOTUS, federal circuits, state supreme courts, BIA, Tax Court) are now browseable at{" "}
+              <Link href="/opinions" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/opinions</Link>.
+              Filter by court type and date range. Each row links to the full claim detail page. Bill↔court opinion links will populate as the opinion-body enrichment pipeline completes.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              <Link href="/retractions" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Retraction Feed API</Link>{" "}
+              — public JSON and RSS endpoints for the 26,600+ retracted papers in our index. Filter by field, journal, or date. Subscribe in any feed reader at{" "}
+              <code className="font-mono text-gray-500">/api/retractions/rss</code>. Full API docs and example response at{" "}
+              <Link href="/retractions" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/retractions</Link>.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              <Link href="/stock-act" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Congressional Stock Trades</Link>{" "}
+              — 921 STOCK Act Periodic Transaction Reports from House and Senate members, sourced from Quiver Quantitative. Filter by chamber, party, or ticker. Includes excess return vs. S&amp;P 500 for each disclosed trade. Most Active Traders leaderboard shows top filers by volume. Member names link to their full vote history on{" "}
+              <Link href="/members" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/members</Link>.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Voteview surface: the full 113,000+ congressional roll-call corpus is now browsable at{" "}
+              <Link href="/votes" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/votes</Link>{" "}
+              with chamber / result / presidency / era filters. Each roll call links to a detail page (<span className="font-mono">/votes/[id]</span>) showing the full description, yea/nay/abstain breakdown, per-party unity scores, and member-level votes sorted by party. New{" "}
+              <Link href="/members" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">/members</Link>{" "}
+              search indexes House and Senate members by bioguide ID; each profile shows the member&apos;s vote history, party-unity %, chamber breakdown, and party history.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 8, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              <Link href="/retraction-wall" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Retraction Wall</Link>{" "}
+              is live: 26,624 retracted papers tracked, 11,319 automatic dispute propagations from CrossRef retractions to their OpenAlex originals. New{" "}
+              <Link href="/corrections" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Corrections</Link>{" "}
+              page (linked in the footer) is our public audit log &mdash; pipelines retired, records flagged DEPRECATED, schema diagnostics that changed how we read existing data. No hard deletes; every deprecation carries a written reason.
+            </p>
+          </div>
+
           <div>
             <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 7, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
