@@ -221,102 +221,132 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
     }
   }
 
+  const isSingleEvent = datedEdges.length === 1 && claim.thresholdEvents.length === 0;
+
+  function renderDot(edge: EdgeDetail, size: number, pct: number, top: string) {
+    const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
+    const hasUrl = !!edge.source.url;
+    const isSuppressed = edge.metaEdges.some(m => m.type === "SUPPRESSED");
+    const isAmplified = edge.metaEdges.some(m => m.type === "AMPLIFIED");
+    const isLabeled = edge.metaEdges.some(m => m.type === "LABELED");
+    const isDemoted = edge.metaEdges.some(m => m.type === "DEMOTED");
+    const shortName = edge.source.name.length > 20 ? edge.source.name.slice(0, 20) + "…" : edge.source.name;
+    return (
+      <button key={edge.id}
+        className="absolute hover:scale-125 transition-transform"
+        style={{
+          width: size, height: size,
+          left: `calc(1rem + (100% - 2rem) * ${pct} / 100)`,
+          top,
+          transform: "translate(-50%, -50%)",
+          zIndex: 10,
+          cursor: hasUrl ? "pointer" : "default",
+          opacity: isDemoted ? 0.5 : 1,
+          ...(isAmplified ? { filter: "drop-shadow(0 0 5px rgba(255,255,255,0.5))" } : {}),
+        }}
+        onMouseEnter={e => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          setHovered({ edge, x: rect.left + rect.width / 2, y: rect.top });
+        }}
+        onMouseLeave={() => setHovered(null)}
+        onClick={() => openUrl(edge.source.url)}
+      >
+        <div className={`w-full h-full rounded-full border-2 ${colors.dot}`} />
+        {isSuppressed && (
+          <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 bg-red-950/70" />
+            <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-px bg-red-400 rotate-45" /></div>
+            <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-px bg-red-400 -rotate-45" /></div>
+          </div>
+        )}
+        {isLabeled && (
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full flex items-center justify-center pointer-events-none text-black font-bold text-[6px]">!</div>
+        )}
+        <span className="absolute bottom-full mb-0.5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 whitespace-nowrap pointer-events-none leading-none">
+          {shortName}
+        </span>
+        <span className="absolute top-full mt-0.5 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 whitespace-nowrap pointer-events-none leading-none">
+          {formatDate(edge.source.publishedAt!)}
+        </span>
+      </button>
+    );
+  }
+
   return (
     <div className="rounded-lg border border-gray-800 bg-gray-900 overflow-hidden">
-      <div className="relative h-24 px-4">
-        <div className="absolute left-4 right-4 top-1/2 h-px bg-gray-800" />
-
-        {yearTicks.map(ts => {
-          const pct = ((ts - paddedMin) / (paddedMax - paddedMin)) * 100;
-          return (
-            <div key={ts} className="absolute top-0 bottom-0 flex flex-col items-center pointer-events-none"
-              style={{ left: `calc(1rem + (100% - 2rem) * ${pct} / 100)` }}>
-              <div className="mt-auto mb-1 h-2 w-px bg-gray-700" />
-              <span className="text-gray-600 text-[9px] absolute bottom-1">{new Date(ts).getFullYear()}</span>
-            </div>
-          );
-        })}
-
-        <div className="absolute top-2 bottom-2 w-px bg-gray-600 pointer-events-none"
-          style={{ left: `calc(1rem + (100% - 2rem) * ${todayPct} / 100)` }}>
-          <span className="absolute -top-0.5 left-1 text-gray-500 text-[9px] whitespace-nowrap">today</span>
+      {isSingleEvent ? (
+        <div className="relative h-20 px-4">
+          {/* Solid line: left edge to dot */}
+          <div className="absolute bg-gray-700 pointer-events-none"
+            style={{ top: "50%", height: 2, left: "1rem", width: `calc((100% - 2rem) * ${xFn(datedEdges[0].source.publishedAt!)} / 100)`, transform: "translateY(-50%)" }} />
+          {/* Dashed line: dot to today */}
+          <div className="absolute border-t-2 border-dashed border-gray-700 pointer-events-none"
+            style={{ top: "calc(50% - 1px)", left: `calc(1rem + (100% - 2rem) * ${xFn(datedEdges[0].source.publishedAt!)} / 100)`, width: `calc((100% - 2rem) * ${Math.max(0, todayPct - xFn(datedEdges[0].source.publishedAt!))} / 100)` }} />
+          {/* Today marker */}
+          <div className="absolute top-3 bottom-3 pointer-events-none"
+            style={{ left: `calc(1rem + (100% - 2rem) * ${todayPct} / 100)`, width: 2, background: "#6b7280" }}>
+            <span className="absolute top-0 left-2 text-gray-400 text-xs whitespace-nowrap font-medium leading-none">today</span>
+          </div>
+          {renderDot(datedEdges[0], 16, xFn(datedEdges[0].source.publishedAt!), "50%")}
         </div>
+      ) : (
+        <div className="relative h-32 px-4">
+          {/* Center baseline */}
+          <div className="absolute left-4 right-4 h-px bg-gray-800" style={{ top: "44%" }} />
 
-        {datedEdges.map(edge => {
-          const score = latestScore(edge);
-          const size = dotSize(score);
-          const pct = xFn(edge.source.publishedAt!);
-          const yOffset = offsets.get(edge.id) ?? 0;
-          const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
-          const hasUrl = !!edge.source.url;
-          const isSuppressed = edge.metaEdges.some(m => m.type === "SUPPRESSED");
-          const isAmplified = edge.metaEdges.some(m => m.type === "AMPLIFIED");
-          const isLabeled = edge.metaEdges.some(m => m.type === "LABELED");
-          const isDemoted = edge.metaEdges.some(m => m.type === "DEMOTED");
-          return (
-            <button key={edge.id}
-              className="absolute hover:scale-125 transition-transform"
-              style={{
-                width: size, height: size,
-                left: `calc(1rem + (100% - 2rem) * ${pct} / 100)`,
-                top: `calc(50% + ${yOffset}px)`,
-                transform: "translate(-50%, -50%)",
-                zIndex: 10,
-                cursor: hasUrl ? "pointer" : "default",
-                opacity: isDemoted ? 0.5 : 1,
-                ...(isAmplified ? { filter: "drop-shadow(0 0 5px rgba(255,255,255,0.5))" } : {}),
-              }}
-              onMouseEnter={e => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                setHovered({ edge, x: rect.left + rect.width / 2, y: rect.top });
-              }}
-              onMouseLeave={() => setHovered(null)}
-              onClick={() => openUrl(edge.source.url)}
-            >
-              <div className={`w-full h-full rounded-full border-2 ${colors.dot}`} />
-              {isSuppressed && (
-                <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
-                  <div className="absolute inset-0 bg-red-950/70" />
-                  <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-px bg-red-400 rotate-45" /></div>
-                  <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-px bg-red-400 -rotate-45" /></div>
-                </div>
-              )}
-              {isLabeled && (
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full flex items-center justify-center pointer-events-none text-black font-bold text-[6px]">!</div>
-              )}
-            </button>
-          );
-        })}
+          {/* Year ticks */}
+          {yearTicks.map(ts => {
+            const pct = ((ts - paddedMin) / (paddedMax - paddedMin)) * 100;
+            return (
+              <div key={ts} className="absolute bottom-0 flex flex-col items-center pointer-events-none"
+                style={{ left: `calc(1rem + (100% - 2rem) * ${pct} / 100)` }}>
+                <div className="h-2 w-px bg-gray-600 mb-0.5" />
+                <span className="text-gray-500 text-xs leading-none">{new Date(ts).getFullYear()}</span>
+              </div>
+            );
+          })}
 
-        {claim.thresholdEvents.map(te => {
-          const pct = xFn(te.createdAt);
-          const hasUrl = !!te.triggeredBySource?.url;
-          return (
-            <button key={te.id}
-              className="absolute top-1 bottom-1 flex flex-col items-center"
-              style={{ left: `calc(1rem + (100% - 2rem) * ${pct} / 100)`, zIndex: 20, cursor: hasUrl ? "pointer" : "default" }}
-              onMouseEnter={e => {
-                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                setHoveredThreshold({ te, x: rect.left + rect.width / 2, y: rect.top });
-              }}
-              onMouseLeave={() => setHoveredThreshold(null)}
-              onClick={() => openUrl(te.triggeredBySource?.url)}
-            >
-              <div className="w-0.5 flex-1 bg-white/80 pointer-events-none" />
-              <div className="absolute w-3 h-3 bg-white rotate-45 border border-white/60 pointer-events-none" style={{ top: "calc(50% - 6px)" }} />
-              <span className="absolute text-[9px] text-white font-medium whitespace-nowrap bg-gray-950/80 px-1 rounded leading-tight pointer-events-none"
-                style={{ top: 4, transform: "translateX(-50%)", left: "50%" }}>
-                {te.triggeredBy}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+          {/* Today marker — 2px wide, brighter */}
+          <div className="absolute top-2 pointer-events-none"
+            style={{ left: `calc(1rem + (100% - 2rem) * ${todayPct} / 100)`, width: 2, bottom: "1.5rem", background: "#6b7280" }}>
+            <span className="absolute top-0 left-2 text-gray-400 text-xs whitespace-nowrap font-medium leading-none">today</span>
+          </div>
 
-      <div className="flex justify-between text-[10px] text-gray-700 px-4 pb-2">
-        <span>{formatDate(new Date(minTime).toISOString())}</span>
-        <span>today</span>
-      </div>
+          {/* Source dots */}
+          {datedEdges.map(edge => {
+            const score = latestScore(edge);
+            const size = dotSize(score);
+            const pct = xFn(edge.source.publishedAt!);
+            const yOffset = offsets.get(edge.id) ?? 0;
+            return renderDot(edge, size, pct, `calc(44% + ${yOffset}px)`);
+          })}
+
+          {/* Threshold events */}
+          {claim.thresholdEvents.map(te => {
+            const pct = xFn(te.createdAt);
+            const hasUrl = !!te.triggeredBySource?.url;
+            return (
+              <button key={te.id}
+                className="absolute top-1 flex flex-col items-center"
+                style={{ bottom: "1.5rem", left: `calc(1rem + (100% - 2rem) * ${pct} / 100)`, zIndex: 20, cursor: hasUrl ? "pointer" : "default" }}
+                onMouseEnter={e => {
+                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                  setHoveredThreshold({ te, x: rect.left + rect.width / 2, y: rect.top });
+                }}
+                onMouseLeave={() => setHoveredThreshold(null)}
+                onClick={() => openUrl(te.triggeredBySource?.url)}
+              >
+                <div className="w-0.5 flex-1 bg-white/80 pointer-events-none" />
+                <div className="absolute w-3 h-3 bg-white rotate-45 border border-white/60 pointer-events-none" style={{ top: "calc(50% - 6px)" }} />
+                <span className="absolute text-[9px] text-white font-medium whitespace-nowrap bg-gray-950/80 px-1 rounded leading-tight pointer-events-none"
+                  style={{ top: 4, transform: "translateX(-50%)", left: "50%" }}>
+                  {te.triggeredBy}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {hovered && (
         <div className="fixed z-50 pointer-events-none bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-xs max-w-xs shadow-xl"
