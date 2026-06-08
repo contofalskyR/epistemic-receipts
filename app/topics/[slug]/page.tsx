@@ -86,6 +86,57 @@ function PartyBreakdownBar({
   );
 }
 
+const SOURCE_DISPLAY_NAMES: Record<string, string> = {
+  openfda_labels_v1: "FDA Drug Labels",
+  openfda_v1: "openFDA",
+  faers_normalized_drugs_v1: "FAERS",
+  drugsatfda_v1: "Drugs@FDA",
+  clinicaltrials_v1: "ClinicalTrials",
+  nih_reporter_v1: "NIH Reporter",
+  pubchem_v1: "PubChem",
+  rxnorm_v1: "RxNorm",
+  chebi_v1: "ChEBI",
+  omim_v1: "OMIM",
+  crossref_retractions_v1: "CrossRef Retractions",
+  nasa_exoplanet_v1: "NASA Exoplanet",
+  usgs_eq_v1: "USGS Earthquakes",
+  un_sc_resolutions_v1: "UN Security Council",
+  un_treaties_v1: "UN Treaties",
+  fr_rules_v1: "Federal Register",
+  nobel_v1: "Nobel Prize",
+  congress_v1: "Congress",
+  sec_edgar_v1: "SEC EDGAR",
+  courtlistener_scotus_v1: "SCOTUS Opinions",
+  courtlistener_circuits_v1: "Circuit Courts",
+  doj_fara_v1: "DOJ FARA",
+  openfec_v1: "FEC Fundraising",
+  openfec_ie_v1: "FEC Expenditures",
+  genbank_v1: "GenBank",
+  riksdag_v1: "Riksdag",
+  tweedekamer_v1: "Tweede Kamer",
+  bundestag_v1: "Bundestag",
+  nationalrat_v1: "Nationalrat",
+  oireachtas_v1: "Oireachtas",
+  canada_bills_v1: "Canadian Parliament",
+  uk_legislation_v1: "UK Legislation",
+  nuclear_tests_v1: "Nuclear Tests",
+  periodic_table_v1: "Periodic Table",
+  who_essential_medicines_v1: "WHO Medicines",
+  volcanic_eruptions_v1: "Volcanic Eruptions",
+  space_missions_v1: "Space Missions",
+  fred_v1: "FRED Economics",
+  icc_cases_v1: "ICC Cases",
+  pakistan_code_v1: "Pakistan Code",
+};
+
+function formatSourceTag(tag: string): string {
+  if (SOURCE_DISPLAY_NAMES[tag]) return SOURCE_DISPLAY_NAMES[tag];
+  return tag
+    .replace(/_v\d+$/, "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, c => c.toUpperCase());
+}
+
 const SORT_OPTIONS = [
   { value: "emerged_desc", label: "Newest emerged" },
   { value: "emerged_asc",  label: "Oldest emerged" },
@@ -158,6 +209,7 @@ type TopicData = {
   voteStats: VoteStats | null;
   partyVoteTallies: PartyTally[];
   partyRowsParsed: number;
+  sourceTags: string[];
 };
 
 function TopicChips({ topics, exclude }: { topics: { topic: TopicTag }[]; exclude?: string }) {
@@ -340,6 +392,8 @@ function TopicSlugContent() {
   const sort = searchParams.get("sort") ?? "emerged_desc";
   const party = searchParams.get("party") ?? "";
   const leader = searchParams.get("leader") ?? "";
+  const q = searchParams.get("q") ?? "";
+  const [qInput, setQInput] = useState(q);
 
   // Special-case the World Bank Indicators topic: the generic list view is
   // unusable for ~35k atomic country-year data points.
@@ -354,10 +408,13 @@ function TopicSlugContent() {
     const qs = new URLSearchParams({ page: String(page), sort });
     if (party) qs.set("party", party);
     if (leader) qs.set("leader", leader);
+    if (q) qs.set("q", q);
     fetch(`/api/topics/${slug}?${qs.toString()}`)
       .then(r => { if (!r.ok) { setNotFound(true); return null; } return r.json(); })
       .then(d => { if (d) setData(d); });
-  }, [slug, page, sort, party, leader]);
+  }, [slug, page, sort, party, leader, q]);
+
+  useEffect(() => { setQInput(q); }, [q]);
 
   function setParam(key: string, value: string) {
     const p = new URLSearchParams(searchParams.toString());
@@ -383,7 +440,7 @@ function TopicSlugContent() {
 
   if (!data) return <p className="text-gray-600 text-sm">Loading…</p>;
 
-  const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed } = data;
+  const { topic, parentChain, siblings, claims, total, pages, availableParties, availableLeaders, timeline, voteStats, partyVoteTallies, partyRowsParsed, sourceTags } = data;
   const domainLabel = DOMAIN_LABELS[topic.domain] ?? topic.domain;
 
   // Render the dedicated World Bank view (indicator faceting, country filter, comparison chart).
@@ -426,6 +483,21 @@ function TopicSlugContent() {
           </Link>
         </div>
       </div>
+
+      {/* Source tags */}
+      {sourceTags && sourceTags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {sourceTags.map(tag => (
+            <Link
+              key={tag}
+              href={`/search?q=${encodeURIComponent(formatSourceTag(tag))}`}
+              className="text-[11px] px-2 py-0.5 rounded-full border border-gray-700 bg-gray-900 text-gray-500 hover:border-gray-500 hover:text-gray-300 transition-colors"
+            >
+              {formatSourceTag(tag)}
+            </Link>
+          ))}
+        </div>
+      )}
 
       {/* Timeline */}
       <TimelineSection points={timeline} />
@@ -542,9 +614,40 @@ function TopicSlugContent() {
             )}
           </div>
         )}
+        {/* Search within topic */}
+        <form
+          onSubmit={e => { e.preventDefault(); setParam("q", qInput.trim()); }}
+          className="flex items-center gap-2"
+        >
+          <input
+            type="text"
+            value={qInput}
+            onChange={e => setQInput(e.target.value)}
+            placeholder="Search within this topic…"
+            className="flex-1 text-sm px-3 py-1.5 rounded border border-gray-700 bg-gray-900 text-gray-200 placeholder-gray-600 focus:outline-none focus:border-gray-500"
+          />
+          {qInput !== q && (
+            <button
+              type="submit"
+              className="text-xs px-3 py-1.5 rounded border border-gray-600 bg-gray-800 text-gray-300 hover:bg-gray-700 transition-colors"
+            >
+              Search
+            </button>
+          )}
+          {q && (
+            <button
+              type="button"
+              onClick={() => { setQInput(""); setParam("q", ""); }}
+              className="text-xs px-2.5 py-1.5 rounded border border-gray-700 bg-gray-900 text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              ✕
+            </button>
+          )}
+        </form>
+
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-            Claims{total > 0 && ` (${total})`}
+            Claims{total > 0 && ` (${total.toLocaleString()}${q ? " matching" : ""})`}
           </h2>
           <select
             value={sort}

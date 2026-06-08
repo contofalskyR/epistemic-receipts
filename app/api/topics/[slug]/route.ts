@@ -31,6 +31,7 @@ export async function GET(
   const sort = req.nextUrl.searchParams.get("sort") ?? "emerged_desc";
   const party = req.nextUrl.searchParams.get("party") ?? "";
   const leader = req.nextUrl.searchParams.get("leader") ?? "";
+  const q = req.nextUrl.searchParams.get("q")?.trim() ?? "";
 
   const topic = await prisma.topic.findUnique({
     where: { slug },
@@ -81,6 +82,7 @@ export async function GET(
       },
     },
   } : {};
+  const qFilter = q ? { text: { contains: q, mode: "insensitive" as const } } : {};
 
   // Include claims from children and grandchildren so container topics
   // (Congress → Era → Session) aggregate all descendant claims.
@@ -88,7 +90,7 @@ export async function GET(
   const topicIds = [topic.id, ...topic.children.map(c => c.id), ...grandchildIds];
   const claimWhere = {
     topicId: { in: topicIds },
-    claim: { ...baseClaimFilter, ...pcFilter },
+    claim: { ...baseClaimFilter, ...pcFilter, ...qFilter },
   };
 
   const claimOrderBy =
@@ -179,7 +181,7 @@ export async function GET(
     topics: { some: { topicId: { in: topicIds } } },
   };
 
-  const [timelineClaims, topicVotes] = await Promise.all([
+  const [timelineClaims, topicVotes, sourceTagRows] = await Promise.all([
     prisma.claim.findMany({
       where: topicClaimFilter,
       select: { claimEmergedAt: true, createdAt: true },
@@ -197,6 +199,11 @@ export async function GET(
       },
       select: { id: true, yesCount: true, noCount: true, byPartyJson: true },
       take: 2000,
+    }),
+    prisma.claim.findMany({
+      where: topicClaimFilter,
+      select: { ingestedBy: true },
+      distinct: ["ingestedBy"],
     }),
   ]);
 
@@ -272,6 +279,11 @@ export async function GET(
     })
     .sort((a, b) => b.totalVotes - a.totalVotes);
 
+  const sourceTags = sourceTagRows
+    .map(r => r.ingestedBy)
+    .filter(s => s && s !== "manual")
+    .sort();
+
   const res = NextResponse.json({
     topic: {
       id: topic.id, name: topic.name, slug: topic.slug,
@@ -294,6 +306,7 @@ export async function GET(
     voteStats,
     partyVoteTallies,
     partyRowsParsed,
+    sourceTags,
   });
   res.headers.set("Cache-Control", "s-maxage=60, stale-while-revalidate=600");
   return res;

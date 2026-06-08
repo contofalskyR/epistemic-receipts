@@ -1,6 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+const OWNER_CHAT_ID = "7688025079";
+
+async function notifyTelegram(body: string, email: string | null, pageContext: string | null) {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  if (!token) return;
+  const from = email ? ` (${email})` : "";
+  const page = pageContext ? `\n📍 ${pageContext}` : "";
+  const text = `💬 New feedback${from}${page}\n\n${body}`;
+  await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: OWNER_CHAT_ID, text }),
+  }).catch(() => {});
+}
+
 export async function GET() {
   const rows = await prisma.feedback.findMany({
     orderBy: { submittedAt: "desc" },
@@ -33,13 +48,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "body is required" }, { status: 400 });
   }
 
+  const trimmedBody = body.trim();
+  const trimmedEmail = email?.trim() || null;
+
   await prisma.feedback.create({
     data: {
-      body: body.trim(),
-      email: email?.trim() || null,
+      body: trimmedBody,
+      email: trimmedEmail,
       pageContext: pageContext || null,
     },
   });
+
+  void notifyTelegram(trimmedBody, trimmedEmail, pageContext || null);
 
   return NextResponse.json({ ok: true });
 }
