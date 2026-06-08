@@ -22,6 +22,7 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/timeline", label: "Timeline" },
       { href: "/historical-events", label: "Events" },
       { href: "/settling-curve", label: "Settling Curve" },
+      { href: "/drug-arc", label: "Drug Arc" },
       { href: "/opinions", label: "Court Opinions" },
       { href: "/retraction-wall", label: "Retraction Wall" },
       { href: "/prereq-graph", label: "Evidence Chains" },
