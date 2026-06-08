@@ -3716,3 +3716,25 @@ Cursor-paginated by `cr.id > lastId` ASC in 500-row batches; `--dry-run` short-c
 **Prisma TS quirk re-hit.** Same `InputJsonValue` error noted on `link-retraction-originals.ts` recurred when annotating the merged JSON with an explicit cast: `Conversion of type '{ crisisContext: CrisisTriggered[]; }' to type 'InputJsonValue' may be a mistake`. Fixed by letting Prisma infer the JSON shape — pass the object literal directly inside `data: { followUpContext: { ...existing, crisisContext: triggered.map(t => ({...t})) } }`. Add this to the running list of "don't explicitly type Prisma JSON inputs."
 
 **Files added/changed.** `scripts/enrich-economic-crisis-detector.ts` (new); `scripts/ingest-worldbank.ts` (added 4 indicators + formatter case); `scripts/link-worldbank-legislation.ts` (added `SL.UEM` prefix).
+
+---
+
+### 2026-06-07 — WIPO Lex IP Legislation (Pipeline 89, `wipo_lex_v1`)
+
+**Built and ran** `scripts/ingest-wipo-lex.ts`. Ingests IP legislation records from WIPO Lex (wipolex) for all 201 WIPO member countries and regional organizations.
+
+**API discovery.** WIPO Lex has no public bulk REST API. The correct source is per-country HTML listing pages at `https://www.wipo.int/wipolex/en/legislation/results?countryOrgs={CODE}`. The search API at `/search/api/v1/lex` returns only top results and requires CSRF tokens — not suitable for bulk ingest. Country codes and names come from the 201-entry `window.membersPageData.members` array embedded in `/wipolex/en/members`.
+
+**HTML parsing.** Each country page returns a 5-column table: typeOfText / year / eventLabel+date / title+href / subject. The date is in a `div.black` element inside column 2; the preceding event label (e.g. "Entry into force", "Adopted", "Enacted", "Signed", "Published") is extracted from the text before that div. Prior version searched for a literal `/Enacted/` regex which matched zero rows; fixed to find `div.black` first and dynamically extract whatever label precedes it.
+
+**Claim text format.** `"[countryName] [title] — [typeOfText] [eventLabel] [YYYY-MM-DD]"` (ISO date when available, year-only fallback). Each claim backed by a LEGISLATION-type Source at the WIPO Lex detail URL.
+
+**Edge type.** Changed from `type: 'FOR'` (incorrect) to `type: 'CITES', evidenceType: 'EVIDENTIARY', humanReviewed: false`.
+
+**Live run results (2026-06-07).** Processed 9,619 candidates across 201 countries. DB post-run: **9,641 claims / 9,641 sources / 9,641 edges** for `wipo_lex_v1`. Run time: 355.7s. Exit 0, errors: 0.
+
+**Notable country counts.** France (331), UK (302), China (239), Greece (239), Russian Federation (158), EU (157), Italy (153), Philippines (142), Brazil/Morocco/Argentina (≥144 each).
+
+**Telegram notification sent** to chat 7688025079 via `openclaw message send --channel telegram`.
+
+**Files added.** `scripts/ingest-wipo-lex.ts`.

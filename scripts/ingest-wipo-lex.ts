@@ -237,6 +237,7 @@ interface CandidateRecord {
   year: number
   enactedDate: Date | null
   enactedYear: number | null
+  eventLabel: string
   typeOfText: string
   subjects: string[]
   externalId: string
@@ -374,22 +375,26 @@ function parseRow(rowHtml: string, countryCode: string, countryName: string): Ca
   const year = parseInt(yearStr)
   if (isNaN(year) || year < 1800 || year > 2100) return null
 
-  // Cell 2: dates — find "Enacted" label and the black div immediately following it
+  // Cell 2: dates — HTML pattern is <div>LABEL :</div><div class="black">DATE</div>
+  // Event types seen: "Entry into force", "Adopted", "Signed", "Published"
+  // Use the first div.black (primary date) and the label div that precedes it.
   const datesHtml = cells[2]
   let enactedDate: Date | null = null
   let enactedYear: number | null = null
+  let eventLabel = 'Enacted'
 
-  // HTML alternates: <div>LABEL</div><div class="black">VALUE</div>
-  // We find the position of "Enacted" label, then grab the next class="black" value
-  const enactedLabelIdx = datesHtml.search(/Enacted/)
-  if (enactedLabelIdx !== -1) {
-    const after = datesHtml.slice(enactedLabelIdx)
-    const blackMatch = after.match(/<div[^>]*class="black"[^>]*>([\s\S]*?)<\/div>/)
+  const firstBlackIdx = datesHtml.search(/<div[^>]*class="black"/)
+  if (firstBlackIdx !== -1) {
+    const blackMatch = datesHtml.slice(firstBlackIdx).match(/<div[^>]*class="black"[^>]*>([\s\S]*?)<\/div>/)
     if (blackMatch) {
       const dateText = stripTags(blackMatch[1])
       enactedDate = parseHumanDate(dateText)
       if (enactedDate) enactedYear = enactedDate.getUTCFullYear()
     }
+    // Find the event label from the preceding div
+    const before = datesHtml.slice(0, firstBlackIdx)
+    const labelMatch = before.match(/(Entry into force|Adopted|Enacted|Signed|Published)\s*:/i)
+    if (labelMatch) eventLabel = labelMatch[1]!.trim()
   }
 
   // Cell 3: title with href
@@ -418,6 +423,7 @@ function parseRow(rowHtml: string, countryCode: string, countryName: string): Ca
     year,
     enactedDate,
     enactedYear,
+    eventLabel,
     typeOfText,
     subjects,
     externalId: `wipo_lex_${detailId}`,
@@ -522,8 +528,10 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
       },
     })
 
-    const displayYear = rec.enactedYear ?? rec.year
-    const claimText = `${rec.countryName} enacted ${rec.title} (${displayYear}).`
+    const displayDate = rec.enactedDate
+      ? rec.enactedDate.toISOString().slice(0, 10)
+      : String(rec.year)
+    const claimText = `${rec.countryName} ${rec.title} — ${rec.typeOfText} ${rec.eventLabel} ${displayDate}`
 
     const claim = await tx.claim.create({
       data: {
@@ -544,6 +552,7 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
           title: rec.title,
           year: rec.year,
           enactedYear: rec.enactedYear,
+          eventLabel: rec.eventLabel,
           typeOfText: rec.typeOfText,
           subjects: rec.subjects,
           pipeline: INGESTED_BY,
@@ -555,9 +564,11 @@ async function writeRow(tx: TxClient, rec: CandidateRecord, topicId: string): Pr
       data: {
         claimId: claim.id,
         sourceId: source.id,
-        type: 'FOR',
+        type: 'CITES',
+        evidenceType: 'EVIDENTIARY',
         ingestedBy: INGESTED_BY,
         autoApproved: true,
+        humanReviewed: false,
       },
     })
 
@@ -608,16 +619,19 @@ async function main() {
     console.log('\nStep 3: Writing dry-run sample (no DB writes)...')
 
     const sample = allCandidates.slice(0, 5).map(r => {
-      const displayYear = r.enactedYear ?? r.year
+      const displayDate = r.enactedDate
+        ? r.enactedDate.toISOString().slice(0, 10)
+        : String(r.year)
       return {
         externalId: r.externalId,
-        claimText: `${r.countryName} enacted ${r.title} (${displayYear}).`,
+        claimText: `${r.countryName} ${r.title} — ${r.typeOfText} ${r.eventLabel} ${displayDate}`,
         detailId: r.detailId,
         countryCode: r.countryCode,
         countryName: r.countryName,
         title: r.title,
         year: r.year,
-        enactedYear: r.enactedYear,
+        enactedDate: r.enactedDate?.toISOString().slice(0, 10) ?? null,
+        eventLabel: r.eventLabel,
         typeOfText: r.typeOfText,
         subjects: r.subjects,
         sourceUrl: r.sourceUrl,
@@ -669,8 +683,8 @@ async function main() {
     if (allCandidates.length > 0) {
       console.log('\nFirst 5 laws:')
       allCandidates.slice(0, 5).forEach((r, i) => {
-        const year = r.enactedYear ?? r.year
-        console.log(`  ${i + 1}. [${r.countryCode}] ${year} — ${r.title.slice(0, 70)}${r.title.length > 70 ? '…' : ''}`)
+        const date = r.enactedDate ? r.enactedDate.toISOString().slice(0, 10) : String(r.year)
+        console.log(`  ${i + 1}. [${r.countryCode}] ${r.title.slice(0, 60)} — ${r.eventLabel} ${date}`)
       })
     }
 
@@ -696,8 +710,8 @@ async function main() {
           else if (result === 'skipped') counts.skipped++
           else counts.errors++
           if (verbose) {
-            const year = row.enactedYear ?? row.year
-            console.log(`  [${result}] ${row.externalId} — [${row.countryCode}] ${year} ${row.title.slice(0, 60)}`)
+            const date = row.enactedDate ? row.enactedDate.toISOString().slice(0, 10) : String(row.year)
+            console.log(`  [${result}] ${row.externalId} — [${row.countryCode}] ${row.title.slice(0, 50)} ${row.eventLabel} ${date}`)
           }
         }
       }, { timeout: 30000 })
