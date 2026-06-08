@@ -39,6 +39,29 @@ type SearchResponse = {
   message?: string;
 };
 
+// ─── Terminal Spinner ─────────────────────────────────────────────────────────
+
+const SPINNER_FRAMES = ["|", "/", "-", "\\", "|", "/", "-", "\\"];
+
+function TerminalSpinner() {
+  const [frame, setFrame] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setFrame(f => (f + 1) % SPINNER_FRAMES.length), 80);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span
+      className="absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 font-mono text-xs text-gray-500 select-none"
+      aria-hidden="true"
+    >
+      <span className="text-green-500/80 text-sm w-3 inline-block text-center">
+        {SPINNER_FRAMES[frame]}
+      </span>
+      searching…
+    </span>
+  );
+}
+
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const MIN_QUERY = 3;
@@ -349,14 +372,7 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
               className="w-full bg-gray-900/80 backdrop-blur-sm border border-gray-700 text-gray-100 text-base sm:text-lg rounded-xl px-5 py-4 placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-gray-900 transition-colors shadow-2xl"
               aria-label="Search Epistemic Receipts"
             />
-            {loading && (
-              <span
-                className="absolute right-5 top-1/2 -translate-y-1/2 text-xs text-gray-500 font-mono"
-                aria-hidden="true"
-              >
-                searching…
-              </span>
-            )}
+            {loading && <TerminalSpinner />}
           </div>
 
           <div className="mt-5 flex flex-wrap gap-2 justify-center">
