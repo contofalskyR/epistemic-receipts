@@ -2,11 +2,12 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { EpistemicAxisBadge } from "@/components/EpistemicAxisBadge";
 
 type SerializedMatchedClaim = {
   id: string;
   text: string;
-  currentStatus: string;
+  epistemicAxis: string | null;
 };
 
 type SerializedMatch = {
@@ -276,6 +277,12 @@ export default function ReaderClient({ book }: { book: SerializedBook }) {
                                 {m.matchType}
                               </span>
                               <span className="flex-1 min-w-0">
+                                <span className="flex items-center gap-1.5 mb-0.5">
+                                  <EpistemicAxisBadge
+                                    axis={m.claim.epistemicAxis}
+                                    className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
+                                  />
+                                </span>
                                 <span className="block text-neutral-400 text-xs group-hover:text-neutral-200 transition-colors leading-snug">
                                   {m.claim.text.length > 120
                                     ? m.claim.text.slice(0, 120) + "…"

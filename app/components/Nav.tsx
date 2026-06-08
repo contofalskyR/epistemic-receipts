@@ -29,7 +29,6 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/foreign-legislation", label: "Global Legislation" },
       { href: "/retractions", label: "Retraction API" },
       { href: "/bookmarks", label: "Bookmarks" },
-      { href: "/reader", label: "Reader" },
       { href: "/books", label: "Books" },
     ],
   },

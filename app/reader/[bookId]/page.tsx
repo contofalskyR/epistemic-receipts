@@ -22,7 +22,7 @@ export default async function ReaderPage({ params }: ReaderProps) {
               matches: {
                 include: {
                   claim: {
-                    select: { id: true, text: true, currentStatus: true },
+                    select: { id: true, text: true, epistemicAxis: true },
                   },
                 },
               },
@@ -60,7 +60,7 @@ export default async function ReaderPage({ params }: ReaderProps) {
           claim: {
             id: m.claim.id,
             text: m.claim.text,
-            currentStatus: m.claim.currentStatus,
+            epistemicAxis: m.claim.epistemicAxis ?? null,
           },
         })),
       })),
@@ -70,8 +70,8 @@ export default async function ReaderPage({ params }: ReaderProps) {
   return (
     <div className="text-neutral-100">
       <header className="mb-6">
-        <Link href="/" className="text-sm text-neutral-500 hover:text-neutral-300">
-          ← Home
+        <Link href="/books" className="text-sm text-neutral-500 hover:text-neutral-300">
+          ← Books
         </Link>
         <h1 className="text-3xl font-semibold mt-3">{book.title}</h1>
         {book.author && <p className="text-neutral-400 mt-1">by {book.author}</p>}
