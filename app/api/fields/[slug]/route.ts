@@ -45,7 +45,7 @@ export async function GET(
     where: { slug },
     include: {
       parent: { select: { id: true, name: true, slug: true, level: true } },
-      _count: { select: { claims: true, topics: true } },
+      _count: { select: { topics: true } },
     },
   });
 
@@ -53,30 +53,56 @@ export async function GET(
     return NextResponse.json({ error: "Field not found" }, { status: 404 });
   }
 
-  const [children, topics, recentClaims] = await Promise.all([
+  const [children, topics] = await Promise.all([
     prisma.academicField.findMany({
       where: { parentId: field.id },
       orderBy: { name: "asc" },
-      include: { _count: { select: { claims: true, topics: true } } },
+      include: { _count: { select: { topics: true } } },
     }),
     prisma.topic.findMany({
       where: { academicFieldId: field.id },
       orderBy: { name: "asc" },
       include: { _count: { select: { claims: true } } },
     }),
-    prisma.claim.findMany({
-      where: { academicFieldId: field.id, deleted: false },
-      orderBy: { createdAt: "desc" },
-      take: 10,
-      select: {
-        id: true,
-        text: true,
-        currentStatus: true,
-        verificationStatus: true,
-        claimEmergedAt: true,
-      },
-    }),
   ]);
+
+  // Sum claim counts across topics for this field
+  const fieldClaimCount = topics.reduce((sum, t) => sum + t._count.claims, 0);
+
+  // Recent claims via topics (since Claim.academicFieldId was removed)
+  const topicIds = topics.map(t => t.id);
+  const recentClaims = topicIds.length > 0
+    ? await prisma.claim.findMany({
+        where: {
+          deleted: false,
+          topics: { some: { topicId: { in: topicIds } } },
+        },
+        orderBy: { createdAt: "desc" },
+        take: 10,
+        select: {
+          id: true,
+          text: true,
+          currentStatus: true,
+          verificationStatus: true,
+          claimEmergedAt: true,
+        },
+      })
+    : [];
+
+  // Claim counts per child field via topics
+  const childIds = children.map(c => c.id);
+  const childClaimCountMap = new Map<number, number>();
+  if (childIds.length > 0) {
+    const childTopics = await prisma.topic.findMany({
+      where: { academicFieldId: { in: childIds } },
+      include: { _count: { select: { claims: true } } },
+    });
+    for (const ct of childTopics) {
+      if (ct.academicFieldId == null) continue;
+      const prev = childClaimCountMap.get(ct.academicFieldId) ?? 0;
+      childClaimCountMap.set(ct.academicFieldId, prev + ct._count.claims);
+    }
+  }
 
   const response: FieldDetailResponse = {
     field: {
@@ -85,7 +111,7 @@ export async function GET(
       slug: field.slug,
       level: field.level,
       parent: field.parent,
-      claimCount: field._count.claims,
+      claimCount: fieldClaimCount,
       topicCount: field._count.topics,
     },
     children: children.map(c => ({
@@ -93,7 +119,7 @@ export async function GET(
       name: c.name,
       slug: c.slug,
       level: c.level,
-      claimCount: c._count.claims,
+      claimCount: childClaimCountMap.get(c.id) ?? 0,
       topicCount: c._count.topics,
     })),
     topics: topics.map(t => ({

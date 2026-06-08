@@ -93,7 +93,7 @@ export default async function SettlingCurvePage() {
     getFirstTrial("semaglutide"),
   ]);
 
-  const events: TimelineEvent[] = [
+  const events = ([
     {
       year: trial?.year ?? 2019,
       date: trial ? `${trial.year}` : "2019",
@@ -148,7 +148,7 @@ export default async function SettlingCurvePage() {
       badge: { text: "FDA Approved", style: "bg-emerald-900/70 text-emerald-300 border border-emerald-700/50" },
       status: "monitoring",
     },
-  ].sort((a, b) => a.year - b.year);
+  ] as TimelineEvent[]).sort((a, b) => a.year - b.year);
 
   return (
     <div className="max-w-2xl space-y-10">

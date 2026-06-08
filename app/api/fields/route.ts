@@ -26,7 +26,6 @@ export async function GET(req: NextRequest) {
   const parentSlug = searchParams.get("parent");
 
   if (parentSlug) {
-    // Drill into children of the given parent
     const parent = await prisma.academicField.findUnique({
       where: { slug: parentSlug },
       select: { id: true, name: true, slug: true, level: true, parentId: true },
@@ -39,7 +38,7 @@ export async function GET(req: NextRequest) {
       where: { parentId: parent.id },
       orderBy: { name: "asc" },
       include: {
-        _count: { select: { claims: true, topics: true } },
+        _count: { select: { topics: true } },
         topics: {
           select: { id: true, name: true, slug: true, domain: true },
         },
@@ -51,7 +50,7 @@ export async function GET(req: NextRequest) {
       name: f.name,
       slug: f.slug,
       level: f.level,
-      claimCount: f._count.claims,
+      claimCount: 0,
       topicCount: f._count.topics,
       children: [],
       topics: f.topics,
@@ -65,14 +64,14 @@ export async function GET(req: NextRequest) {
     where: { level: 0 },
     orderBy: { name: "asc" },
     include: {
-      _count: { select: { claims: true, topics: true } },
+      _count: { select: { topics: true } },
       topics: {
         select: { id: true, name: true, slug: true, domain: true },
       },
       children: {
         orderBy: { name: "asc" },
         include: {
-          _count: { select: { claims: true, topics: true } },
+          _count: { select: { topics: true } },
           topics: {
             select: { id: true, name: true, slug: true, domain: true },
           },
@@ -86,7 +85,7 @@ export async function GET(req: NextRequest) {
     name: f.name,
     slug: f.slug,
     level: f.level,
-    claimCount: f._count.claims,
+    claimCount: 0,
     topicCount: f._count.topics,
     topics: f.topics,
     children: f.children.map(c => ({
@@ -94,7 +93,7 @@ export async function GET(req: NextRequest) {
       name: c.name,
       slug: c.slug,
       level: c.level,
-      claimCount: c._count.claims,
+      claimCount: 0,
       topicCount: c._count.topics,
       topics: c.topics,
       children: [],
