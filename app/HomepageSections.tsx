@@ -389,14 +389,13 @@ const DOMAIN_DOT: Record<string, string> = {
 };
 
 function TaxonomyIndex({ topics }: { topics: TopicChipData[] }) {
-  const totalTopics = topics.length;
   return (
     <section className="max-w-6xl mx-auto px-6 pb-16">
       <header className="mb-6 flex items-baseline justify-between gap-4">
         <div>
           <h2 className="text-2xl sm:text-3xl font-semibold text-white">Browse by Topic</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Top {totalTopics} topics by claim count — click any to browse
+            A random sample — refreshes each visit
           </p>
         </div>
         <Link href="/topics" className="text-sm text-amber-400 hover:text-amber-300 transition-colors shrink-0">

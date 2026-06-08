@@ -91,13 +91,14 @@ async function loadHomepageData() {
     ingestedByCounts.set(row.ingestedBy, Number(row.count));
   }
 
-  const topTopics: TopicChipData[] = rawTopics.map((t) => ({
+  const allTopics: TopicChipData[] = rawTopics.map((t) => ({
     id: t.id,
     name: t.name,
     slug: t.slug,
     domain: t.domain,
     claimCount: t._count.claims,
   }));
+  const topTopics = [...allTopics].sort(() => Math.random() - 0.5).slice(0, 16);
 
   return {
     stats,
