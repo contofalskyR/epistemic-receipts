@@ -130,6 +130,8 @@ const EPISTEMIC_BADGE: Record<string, { label: string; style: string }> = {
   contested:         { label: "Contested",         style: "bg-orange-900/70 text-orange-300 border border-orange-700/50" },
 };
 
+// ── Edge/source helpers ───────────────────────────────────────────────────────
+
 const TYPE_COLOR: Record<string, { dot: string; label: string }> = {
   FOR:       { dot: "bg-green-500 border-green-400",   label: "bg-green-900 text-green-300" },
   AGAINST:   { dot: "bg-red-500 border-red-400",       label: "bg-red-900 text-red-300" },
@@ -138,258 +140,223 @@ const TYPE_COLOR: Record<string, { dot: string; label: string }> = {
   CORRECTED: { dot: "bg-yellow-500 border-yellow-400", label: "bg-yellow-900 text-yellow-300" },
 };
 
-// ── Timeline utilities (inlined from timeline page) ───────────────────────────
-
 function latestScore(edge: EdgeDetail) { return edge.revisions.at(-1)?.newScore ?? 50; }
-function latestReason(edge: EdgeDetail) { return edge.revisions.at(-1)?.reason ?? null; }
-function dotSize(score: number) { return 10 + (score / 100) * 14; }
-
-function xPct(iso: string, paddedMin: number, paddedMax: number) {
-  if (paddedMax === paddedMin) return 50;
-  return ((new Date(iso).getTime() - paddedMin) / (paddedMax - paddedMin)) * 100;
-}
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "short" });
 }
 
-const CLUSTER_THRESHOLD = 5;
-const LEVEL_PX = 16;
+// ── Inline timeline for a single claim — lifeline redesign ───────────────────
 
-function assignOffsets(edges: EdgeDetail[], xFn: (iso: string) => number): Map<string, number> {
-  const sorted = [...edges]
-    .filter(e => e.source.publishedAt)
-    .sort((a, b) => new Date(a.source.publishedAt!).getTime() - new Date(b.source.publishedAt!).getTime());
-  const offsets = new Map<string, number>();
-  for (let i = 0; i < sorted.length; i++) {
-    const edge = sorted[i];
-    const x = xFn(edge.source.publishedAt!);
-    const nearby = sorted.slice(0, i).filter(e =>
-      Math.abs(xFn(e.source.publishedAt!) - x) < CLUSTER_THRESHOLD
-    );
-    if (nearby.length === 0) {
-      offsets.set(edge.id, 0);
-    } else {
-      const level = Math.ceil(nearby.length / 2) * (nearby.length % 2 === 1 ? 1 : -1);
-      offsets.set(edge.id, level * LEVEL_PX);
-    }
-  }
-  return offsets;
+function fmtTlDate(d: Date) {
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
 }
 
-// ── Inline timeline for a single claim ───────────────────────────────────────
+function TlLegendDot({ color, label }: { color: string; label: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+      <div style={{ width: 8, height: 8, borderRadius: "50%", background: color, flexShrink: 0 }} />
+      <span style={{ fontSize: 11, color: "#888898" }}>{label}</span>
+    </div>
+  );
+}
 
 function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
-  const [hovered, setHovered] = useState<{ edge: EdgeDetail; x: number; y: number } | null>(null);
-  const [hoveredThreshold, setHoveredThreshold] = useState<{ te: ThresholdEvent; x: number; y: number } | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
-  function openUrl(url: string | null | undefined) {
-    if (url) window.open(url, "_blank", "noopener,noreferrer");
-    else { setToast("no link available"); setTimeout(() => setToast(null), 2000); }
-  }
-
   const datedEdges = claim.edges.filter(e => e.source.publishedAt);
-  if (datedEdges.length === 0 && claim.thresholdEvents.length === 0) {
-    return <p className="text-xs text-gray-600 italic">No dated sources — dots will appear here once sources have publication dates.</p>;
-  }
 
-  const todayTime = Date.now();
-  const edgeDates = datedEdges.map(e => new Date(e.source.publishedAt!).getTime());
-  const teDates = claim.thresholdEvents.map(te => new Date(te.createdAt).getTime());
-  const allDates = [...edgeDates, ...teDates];
-  const minTime = allDates.length ? Math.min(...allDates) : todayTime - 1;
-  const maxTime = Math.max(...allDates, todayTime);
-  const span = maxTime - minTime || 1;
-  const pad = span * 0.05;
-  const paddedMin = minTime - pad;
-  const paddedMax = maxTime + pad;
-  const xFn = (iso: string) => xPct(iso, paddedMin, paddedMax);
-  const todayPct = ((todayTime - paddedMin) / (paddedMax - paddedMin)) * 100;
-  const offsets = assignOffsets(datedEdges, xFn);
-
-  const yearTicks: number[] = [];
-  const startYear = new Date(paddedMin).getFullYear();
-  const endYear = new Date(paddedMax).getFullYear();
-  let lastPct = -Infinity;
-  for (let y = startYear; y <= endYear; y++) {
-    const ts = new Date(y, 0, 1).getTime();
-    const pct = ((ts - paddedMin) / (paddedMax - paddedMin)) * 100;
-    if (pct >= 0 && pct <= 100 && pct - lastPct >= 4) {
-      yearTicks.push(ts);
-      lastPct = pct;
-    }
-  }
-
-  const isSingleEvent = datedEdges.length === 1 && claim.thresholdEvents.length === 0;
-
-  function renderDot(edge: EdgeDetail, size: number, pct: number, top: string) {
-    const colors = TYPE_COLOR[edge.type] ?? TYPE_COLOR.CITES;
-    const hasUrl = !!edge.source.url;
-    const isSuppressed = edge.metaEdges.some(m => m.type === "SUPPRESSED");
-    const isAmplified = edge.metaEdges.some(m => m.type === "AMPLIFIED");
-    const isLabeled = edge.metaEdges.some(m => m.type === "LABELED");
-    const isDemoted = edge.metaEdges.some(m => m.type === "DEMOTED");
-    const shortName = edge.source.name.length > 20 ? edge.source.name.slice(0, 20) + "…" : edge.source.name;
+  if (datedEdges.length === 0) {
     return (
-      <button key={edge.id}
-        className="absolute hover:scale-125 transition-transform"
-        style={{
-          width: size, height: size,
-          left: `calc(1rem + (100% - 2rem) * ${pct} / 100)`,
-          top,
-          transform: "translate(-50%, -50%)",
-          zIndex: 10,
-          cursor: hasUrl ? "pointer" : "default",
-          opacity: isDemoted ? 0.5 : 1,
-          ...(isAmplified ? { filter: "drop-shadow(0 0 5px rgba(255,255,255,0.5))" } : {}),
-        }}
-        onMouseEnter={e => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          setHovered({ edge, x: rect.left + rect.width / 2, y: rect.top });
-        }}
-        onMouseLeave={() => setHovered(null)}
-        onClick={() => openUrl(edge.source.url)}
-      >
-        <div className={`w-full h-full rounded-full border-2 ${colors.dot}`} />
-        {isSuppressed && (
-          <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 bg-red-950/70" />
-            <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-px bg-red-400 rotate-45" /></div>
-            <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-px bg-red-400 -rotate-45" /></div>
-          </div>
-        )}
-        {isLabeled && (
-          <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full flex items-center justify-center pointer-events-none text-black font-bold text-[6px]">!</div>
-        )}
-        <span className="absolute bottom-full mb-0.5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 whitespace-nowrap pointer-events-none leading-none">
-          {shortName}
-        </span>
-        <span className="absolute top-full mt-0.5 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 whitespace-nowrap pointer-events-none leading-none">
-          {formatDate(edge.source.publishedAt!)}
-        </span>
-      </button>
+      <p className="text-xs text-gray-600 italic">
+        No dated sources — dots will appear here once sources have publication dates.
+      </p>
     );
   }
 
+  const today = new Date();
+  const todayTime = today.getTime();
+  const PAD_L = 3, PAD_R = 3, RANGE = 94;
+  const startTime = Math.min(...datedEdges.map(e => new Date(e.source.publishedAt!).getTime()));
+  const totalSpan = Math.max(todayTime - startTime, 1);
+
+  function at(d: Date) {
+    return PAD_L + ((d.getTime() - startTime) / totalSpan) * RANGE;
+  }
+
+  const todayPct = at(today);
+
+  const nodes = datedEdges
+    .map(e => ({ edge: e, date: new Date(e.source.publishedAt!), pct: at(new Date(e.source.publishedAt!)) }))
+    .sort((a, b) => a.date.getTime() - b.date.getTime());
+
+  const yOff = nodes.map((n, i) => {
+    for (let j = 0; j < i; j++) {
+      if (Math.abs(nodes[j].pct - n.pct) < 6) return i % 2 === 0 ? 15 : -15;
+    }
+    return 0;
+  });
+
+  const firstPct = nodes[0].pct;
+  const lastNode = nodes[nodes.length - 1];
+  const dormantYrs = (todayTime - lastNode.date.getTime()) / (365.25 * 86400000);
+
+  const yearTicks: number[] = [];
+  let lastYearPct = -Infinity;
+  for (let y = new Date(startTime).getFullYear(); y <= today.getFullYear(); y++) {
+    const pct = at(new Date(y, 0, 1));
+    if (pct >= PAD_L && pct <= 100 - PAD_R && pct - lastYearPct >= 5) {
+      yearTicks.push(new Date(y, 0, 1).getTime());
+      lastYearPct = pct;
+    }
+  }
+
+  function voteTag(edge: EdgeDetail) {
+    const v = edge.source.legislativeVotes?.[0];
+    if (!v) return null;
+    const passed = v.passageType === "PASSED";
+    return { text: `${v.yesCount ?? 0}–${v.noCount ?? 0} · ${passed ? "PASSED" : "FAILED"}`, color: passed ? "#22c55e" : "#ef4444" };
+  }
+
+  const BLUE = "#60a5fa", AMB = "#f0a000", MUT = "#888898";
+  const TRACK_H = 130, AY = 65;
+
+  const dormantChipLeft = lastNode.pct + (todayPct - lastNode.pct) / 2;
+  const dormantLabel = dormantYrs >= 1
+    ? `${(Math.round(dormantYrs * 10) / 10).toFixed(1)} yrs · unreviewed since emergence`
+    : `${Math.round(dormantYrs * 12)} mo · unreviewed since emergence`;
+  const showDormant = dormantYrs > 0.3 && (todayPct - lastNode.pct) > 4;
+
   return (
-    <div className="rounded-lg border border-gray-800 bg-gray-900 overflow-hidden">
-      {isSingleEvent ? (
-        <div className="relative h-20 px-4">
-          {/* Solid line: left edge to dot */}
-          <div className="absolute bg-gray-700 pointer-events-none"
-            style={{ top: "50%", height: 2, left: "1rem", width: `calc((100% - 2rem) * ${xFn(datedEdges[0].source.publishedAt!)} / 100)`, transform: "translateY(-50%)" }} />
-          {/* Dashed line: dot to today */}
-          <div className="absolute border-t-2 border-dashed border-gray-700 pointer-events-none"
-            style={{ top: "calc(50% - 1px)", left: `calc(1rem + (100% - 2rem) * ${xFn(datedEdges[0].source.publishedAt!)} / 100)`, width: `calc((100% - 2rem) * ${Math.max(0, todayPct - xFn(datedEdges[0].source.publishedAt!))} / 100)` }} />
-          {/* Today marker */}
-          <div className="absolute top-3 bottom-3 pointer-events-none"
-            style={{ left: `calc(1rem + (100% - 2rem) * ${todayPct} / 100)`, width: 2, background: "#6b7280" }}>
-            <span className="absolute top-0 left-2 text-gray-400 text-xs whitespace-nowrap font-medium leading-none">today</span>
-          </div>
-          {renderDot(datedEdges[0], 16, xFn(datedEdges[0].source.publishedAt!), "50%")}
+    <div style={{ background: "#0e0e1c", border: "1px solid #1e1e38", borderRadius: 12, position: "relative" }}>
+      {/* gradient tint top-left */}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", borderRadius: 12,
+        background: "radial-gradient(circle at 0% 0%, rgba(96,165,250,0.07) 0%, transparent 55%)" }} />
+
+      {/* legend */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "10px 20px 4px",
+        position: "relative", flexWrap: "wrap" }}>
+        <TlLegendDot color={BLUE} label="Emerged" />
+        <TlLegendDot color={AMB} label="Today" />
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 24, height: 0, borderTop: `2px dashed ${MUT}`, opacity: 0.5 }} />
+          <span style={{ fontSize: 11, color: MUT }}>Dormant · no revisions</span>
         </div>
-      ) : (
-        <div className="relative h-32 px-4">
-          {/* Center baseline */}
-          <div className="absolute left-4 right-4 h-px bg-gray-800" style={{ top: "44%" }} />
+      </div>
 
-          {/* Year ticks */}
-          {yearTicks.map(ts => {
-            const pct = ((ts - paddedMin) / (paddedMax - paddedMin)) * 100;
-            return (
-              <div key={ts} className="absolute bottom-0 flex flex-col items-center pointer-events-none"
-                style={{ left: `calc(1rem + (100% - 2rem) * ${pct} / 100)` }}>
-                <div className="h-2 w-px bg-gray-600 mb-0.5" />
-                <span className="text-gray-500 text-xs leading-none">{new Date(ts).getFullYear()}</span>
-              </div>
-            );
-          })}
+      {/* track */}
+      <div style={{ position: "relative", height: TRACK_H, margin: "4px 20px 12px" }}>
 
-          {/* Today marker — 2px wide, brighter */}
-          <div className="absolute top-2 pointer-events-none"
-            style={{ left: `calc(1rem + (100% - 2rem) * ${todayPct} / 100)`, width: 2, bottom: "1.5rem", background: "#6b7280" }}>
-            <span className="absolute top-0 left-2 text-gray-400 text-xs whitespace-nowrap font-medium leading-none">today</span>
-          </div>
+        {/* active axis: left edge → first emerged node */}
+        <div style={{ position: "absolute", top: AY, height: 2, left: `${PAD_L}%`,
+          width: `${Math.max(0, firstPct - PAD_L)}%`, transform: "translateY(-50%)",
+          background: `linear-gradient(to right, rgba(96,165,250,0.25), ${BLUE})`,
+          pointerEvents: "none" }} />
 
-          {/* Source dots */}
-          {datedEdges.map(edge => {
-            const score = latestScore(edge);
-            const size = dotSize(score);
-            const pct = xFn(edge.source.publishedAt!);
-            const yOffset = offsets.get(edge.id) ?? 0;
-            return renderDot(edge, size, pct, `calc(44% + ${yOffset}px)`);
-          })}
+        {/* dormant axis: last emerged → today */}
+        <div style={{ position: "absolute", top: AY - 1, left: `${lastNode.pct}%`,
+          width: `${Math.max(0, todayPct - lastNode.pct)}%`,
+          borderTop: "2px dashed rgba(136,136,152,0.35)", pointerEvents: "none" }} />
 
-          {/* Threshold events */}
-          {claim.thresholdEvents.map(te => {
-            const pct = xFn(te.createdAt);
-            const hasUrl = !!te.triggeredBySource?.url;
-            return (
-              <button key={te.id}
-                className="absolute top-1 flex flex-col items-center"
-                style={{ bottom: "1.5rem", left: `calc(1rem + (100% - 2rem) * ${pct} / 100)`, zIndex: 20, cursor: hasUrl ? "pointer" : "default" }}
-                onMouseEnter={e => {
-                  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-                  setHoveredThreshold({ te, x: rect.left + rect.width / 2, y: rect.top });
-                }}
-                onMouseLeave={() => setHoveredThreshold(null)}
-                onClick={() => openUrl(te.triggeredBySource?.url)}
-              >
-                <div className="w-0.5 flex-1 bg-white/80 pointer-events-none" />
-                <div className="absolute w-3 h-3 bg-white rotate-45 border border-white/60 pointer-events-none" style={{ top: "calc(50% - 6px)" }} />
-                <span className="absolute text-[9px] text-white font-medium whitespace-nowrap bg-gray-950/80 px-1 rounded leading-tight pointer-events-none"
-                  style={{ top: 4, transform: "translateX(-50%)", left: "50%" }}>
-                  {te.triggeredBy}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      )}
-
-      {hovered && (
-        <div className="fixed z-50 pointer-events-none bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-xs max-w-xs shadow-xl"
-          style={{ left: hovered.x, top: hovered.y - 8, transform: "translate(-50%, -100%)" }}>
-          <p className="text-white font-medium">{hovered.edge.source.name}</p>
-          {hovered.edge.source.publishedAt && <p className="text-gray-400 mt-0.5">{formatDate(hovered.edge.source.publishedAt)}</p>}
-          {hovered.edge.source.politicalContext?.headOfGovernment && (
-            <p className="text-gray-500 mt-0.5 text-[10px]">
-              {hovered.edge.source.politicalContext.headOfGovernment}
-              {hovered.edge.source.politicalContext.hogParty ? ` · ${hovered.edge.source.politicalContext.hogParty}` : ""}
-            </p>
-          )}
-          <div className="flex items-center gap-1.5 mt-1">
-            <span className={`px-1.5 py-0.5 rounded-full font-medium ${TYPE_COLOR[hovered.edge.type]?.label}`}>{hovered.edge.type}</span>
-            <span className="text-gray-400">{latestScore(hovered.edge)}/100</span>
-            {!hovered.edge.source.url && <span className="text-gray-600">· no link</span>}
-          </div>
-          {latestReason(hovered.edge) && <p className="text-gray-400 mt-1 leading-snug">{latestReason(hovered.edge)}</p>}
-          {hovered.edge.metaEdges.length > 0 && (
-            <div className="mt-2 pt-2 border-t border-gray-700 space-y-1">
-              {hovered.edge.metaEdges.map(m => (
-                <div key={m.id}>
-                  <span className={`font-medium ${m.type === "SUPPRESSED" ? "text-red-400" : m.type === "AMPLIFIED" ? "text-white" : m.type === "LABELED" ? "text-amber-400" : "text-gray-500"}`}>
-                    {m.type}
-                  </span>
-                  <span className="text-gray-500"> by </span>
-                  <span className="text-gray-300">{m.actorSource.name}</span>
-                  <span className="text-gray-600"> on {new Date(m.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</span>
-                </div>
-              ))}
+        {/* year ticks */}
+        {yearTicks.map(ts => {
+          const pct = at(new Date(ts));
+          return (
+            <div key={ts}>
+              <div style={{ position: "absolute", left: `${pct}%`, top: AY - 4,
+                width: 1, height: 8, background: "#1e1e38",
+                transform: "translateX(-50%)", pointerEvents: "none" }} />
+              <span style={{ position: "absolute", left: `${pct}%`, top: AY + 8,
+                transform: "translateX(-50%)", fontSize: 10, color: "#3a3a55",
+                whiteSpace: "nowrap", pointerEvents: "none" }}>
+                {new Date(ts).getFullYear()}
+              </span>
             </div>
-          )}
-        </div>
-      )}
+          );
+        })}
 
-      {hoveredThreshold && (
-        <div className="fixed z-50 pointer-events-none bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-xs max-w-xs shadow-xl"
-          style={{ left: hoveredThreshold.x, top: hoveredThreshold.y - 8, transform: "translate(-50%, -100%)" }}>
-          <p className="text-white font-medium">{hoveredThreshold.te.triggeredBy}</p>
-          {hoveredThreshold.te.triggeredBySource && <p className="text-gray-400 mt-0.5">{hoveredThreshold.te.triggeredBySource.name}</p>}
-          {hoveredThreshold.te.note && <p className="text-gray-400 mt-1 leading-snug">{hoveredThreshold.te.note}</p>}
+        {/* dormant bracket + chip */}
+        {showDormant && (
+          <>
+            <div style={{ position: "absolute", left: `${lastNode.pct + 0.5}%`,
+              width: `${Math.max(0, todayPct - lastNode.pct - 1)}%`,
+              top: AY - 20, height: 10, pointerEvents: "none",
+              borderTop: "1px solid rgba(240,160,0,0.3)",
+              borderLeft: "1px solid rgba(240,160,0,0.3)",
+              borderRight: "1px solid rgba(240,160,0,0.3)",
+              borderRadius: "3px 3px 0 0" }} />
+            <div style={{ position: "absolute", left: `${dormantChipLeft}%`, top: AY - 38,
+              transform: "translateX(-50%)", whiteSpace: "nowrap", fontSize: 10,
+              color: AMB, background: "rgba(240,160,0,0.1)",
+              border: "1px solid rgba(240,160,0,0.28)", borderRadius: 20,
+              padding: "2px 9px", zIndex: 5, pointerEvents: "none" }}>
+              {dormantLabel}
+            </div>
+          </>
+        )}
+
+        {/* today: full-height vertical line */}
+        <div style={{ position: "absolute", left: `${todayPct}%`, top: 0, bottom: 0, width: 1,
+          background: "rgba(240,160,0,0.18)", transform: "translateX(-50%)",
+          pointerEvents: "none" }} />
+
+        {/* today: halo */}
+        <div style={{ position: "absolute", left: `${todayPct}%`, top: AY, width: 40, height: 40,
+          transform: "translate(-50%, -50%)", borderRadius: "50%", pointerEvents: "none",
+          background: "radial-gradient(circle, rgba(240,160,0,0.22) 0%, transparent 68%)" }} />
+
+        {/* today: core */}
+        <div style={{ position: "absolute", left: `${todayPct}%`, top: AY, width: 9, height: 9,
+          transform: "translate(-50%, -50%)", borderRadius: "50%", background: AMB,
+          zIndex: 10 }} />
+
+        {/* today: caption right-below */}
+        <div style={{ position: "absolute", left: `${todayPct}%`, top: AY + 8,
+          paddingLeft: 10, pointerEvents: "none", zIndex: 5 }}>
+          <div style={{ fontSize: 11, color: AMB, fontWeight: 600,
+            whiteSpace: "nowrap", lineHeight: 1.3 }}>today</div>
+          <div style={{ fontSize: 10, color: MUT,
+            whiteSpace: "nowrap", lineHeight: 1.3 }}>{fmtTlDate(today)}</div>
         </div>
-      )}
+
+        {/* emerged nodes */}
+        {nodes.map(({ edge, date, pct }, idx) => {
+          const nodeAY = AY + yOff[idx];
+          const tag = voteTag(edge);
+          return (
+            <div key={edge.id} style={{ position: "absolute", left: `${pct}%`, top: nodeAY,
+              width: 0, height: 0, zIndex: 3 }}>
+              {/* halo */}
+              <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
+                width: 54, height: 54, borderRadius: "50%", pointerEvents: "none",
+                background: "radial-gradient(circle, rgba(96,165,250,0.2) 0%, transparent 68%)" }} />
+              {/* ring */}
+              <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
+                width: 22, height: 22, borderRadius: "50%",
+                border: `1.5px solid ${BLUE}`, background: "rgba(96,165,250,0.05)" }} />
+              {/* core */}
+              <div style={{ position: "absolute", transform: "translate(-50%,-50%)",
+                width: 10, height: 10, borderRadius: "50%", background: BLUE, zIndex: 1 }} />
+              {/* caption above */}
+              <div style={{ position: "absolute", bottom: "calc(50% + 15px)",
+                transform: "translateX(-50%)", display: "flex", flexDirection: "column",
+                alignItems: "center", paddingBottom: 4, pointerEvents: "none", zIndex: 2 }}>
+                <span style={{ fontSize: 10, color: MUT,
+                  whiteSpace: "nowrap", lineHeight: 1.4 }}>Claim emerged</span>
+                <span style={{ fontSize: 10, color: "#b0b0c8", fontWeight: 500,
+                  whiteSpace: "nowrap", lineHeight: 1.4 }}>{fmtTlDate(date)}</span>
+                {tag && (
+                  <span style={{ fontSize: 9, color: tag.color, whiteSpace: "nowrap",
+                    lineHeight: 1.4, marginTop: 1, background: `${tag.color}1a`,
+                    border: `1px solid ${tag.color}44`, borderRadius: 4,
+                    padding: "1px 4px" }}>{tag.text}</span>
+                )}
+              </div>
+            </div>
+          );
+        })}
+
+      </div>
 
       {toast && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-800 border border-gray-700 text-gray-300 text-xs px-4 py-2 rounded-full shadow-xl pointer-events-none">
