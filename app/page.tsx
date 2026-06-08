@@ -468,6 +468,13 @@ function HomeContent() {
           <div>
             <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 7, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
+              Contested Receipts: epistemic status badges now appear on claim cards (approved, retracted, registered_trial, confirmed, settled_judgment, and more) — backfilled across 191,971 claims from pipeline-native data. 11,319 CONTRADICTS relations created linking CrossRef retractions to their OpenAlex originals. New <Link href="/settling-curve" className="font-mono text-gray-300 hover:text-white underline-offset-2 hover:underline">Settling Curve</Link> demo traces semaglutide&apos;s epistemic arc from Phase 3 trials through FDA approval to ongoing safety surveillance.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 7, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
               ICC Cases pipeline (<span className="font-mono">icc_cases_v1</span>): 35 claims covering indictments, trials, and judgments across 27 ICC cases — DRC, Uganda, Darfur, Kenya, Libya, Central African Republic, Mali, and the Philippines. Fetches from the official ICC case pages via Wayback Machine fallback. Topics: <span className="font-mono">icc-cases</span> under <span className="font-mono">international-law</span>.
             </p>
           </div>

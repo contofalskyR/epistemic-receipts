@@ -21,6 +21,7 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/topics", label: "Topics" },
       { href: "/timeline", label: "Timeline" },
       { href: "/historical-events", label: "Events" },
+      { href: "/settling-curve", label: "Settling Curve" },
       { href: "/bookmarks", label: "Bookmarks" },
       { href: "/reader", label: "Reader" },
       { href: "/books", label: "Books" },

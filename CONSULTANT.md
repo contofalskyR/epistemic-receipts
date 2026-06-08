@@ -3784,3 +3784,42 @@ Cursor-paginated by `cr.id > lastId` ASC in 500-row batches; `--dry-run` short-c
 **Pages updated.**
 - `app/page.tsx` — new "Recent additions" entry
 - `app/layout.tsx` — footer date unchanged (already June 7)
+
+---
+
+### 2026-06-07 — Contested Receipts: epistemic status badges, CONTRADICTS relations, settling curve
+
+**What.** Three-phase feature adding claim-level epistemic status to the database and UI, automated contradiction detection between retraction records and academic papers, and a demo page tracing a drug's epistemic arc.
+
+**Phase 1 — Epistemic Status Badges.**
+
+1. Added `epistemicStatus String?` field to `Claim` model in `prisma/schema.prisma` with `@@index([epistemicStatus])`. Manual migration at `prisma/migrations/20260607200000_add_epistemic_status/migration.sql` (ALTER TABLE + CREATE INDEX, not `prisma migrate dev` — shadow-DB CONCURRENTLY conflict).
+
+2. Wrote `scripts/backfill-epistemic-status.ts`. Simple bulk rules via `updateMany` for 13 pipeline tags, plus ECHR special handling: `echr_judgments_v1` bulk-set to `settled_judgment`; `echr_v1` per-record check of `metadata.conclusion` for "dissent"/"separate opinion"/"partly" keywords. Results: approved 131,928 | retracted 26,679 | registered_trial 10,957 | settled_judgment 10,295 | confirmed 9,225 | established 2,886 | contested_dissent 1. Total: 191,971 claims.
+
+3. Added `epistemicStatus` badges to three UI surfaces: `app/claims/[id]/page.tsx` (claim header), `app/api/search/route.ts` (search API response), `app/search/SearchClient.tsx` (search results), `app/page.tsx` (homepage claim cards). `EPISTEMIC_BADGE` constant maps each status to a label + Tailwind color class.
+
+**Phase 2 — CONTRADICTS Relation Detector.**
+
+`scripts/detect-contradictions.ts` — batch-cursor over all OpenAlex claims to build a DOI→claimId map (318,775 claims, 308,603 unique DOIs), then iterates CrossRef/Retraction Watch claims (26,624), normalizes DOIs using `normalizeDoi()` (strips `https://doi.org/` prefix, lowercases), and creates `CONTRADICTS` ClaimRelation rows via `createMany({ skipDuplicates: true })`. DOI matches: 11,319. Relations created: 11,319. Fully idempotent against `@@unique([fromClaimId, toClaimId, relationType])`.
+
+**Phase 3 — Settling Curve Demo.**
+
+`app/settling-curve/page.tsx` — server component (`revalidate = 3600`). Pulls six timeline events for semaglutide from live DB claims: earliest clinical trial registration, Ozempic FDA approval (2017), Rybelsus approval (2019), Wegovy obesity approval (2021), FAERS drug-aggregate adverse event count (2023), Wegovy oral tablet approval (2025). Each event links to its actual claim. Color-coded vertical timeline (blue=trial, emerald=approval, orange=adverse events, teal=expansion, yellow=monitoring). Interpretation section explains the settling curve concept and contrasts with the Vioxx withdrawal arc. Vioxx not in FAERS (`faers_normalized_drugs_v1`) because it's withdrawn — semaglutide used instead.
+
+Settling curve added to Nav "Explore" dropdown.
+
+**Files changed.**
+- `prisma/schema.prisma` — `epistemicStatus String?` + index
+- `prisma/migrations/20260607200000_add_epistemic_status/migration.sql` — manual migration
+- `scripts/backfill-epistemic-status.ts` — new
+- `scripts/detect-contradictions.ts` — new
+- `app/claims/[id]/page.tsx` — epistemicStatus badge
+- `app/api/search/route.ts` — epistemicStatus in response
+- `app/search/SearchClient.tsx` — epistemicStatus badge in results
+- `app/page.tsx` — epistemicStatus badge on homepage + new changelog entry
+- `app/settling-curve/page.tsx` — new page
+- `app/components/Nav.tsx` — Settling Curve added to Explore dropdown
+- `CONSULTANT.md` — this entry
+
+**Telegram.** Progress notifications sent after each phase. Completion notification sent to chat_id 7688025079.
