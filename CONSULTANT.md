@@ -3738,3 +3738,38 @@ Cursor-paginated by `cr.id > lastId` ASC in 500-row batches; `--dry-run` short-c
 **Telegram notification sent** to chat 7688025079 via `openclaw message send --channel telegram`.
 
 **Files added.** `scripts/ingest-wipo-lex.ts`.
+
+---
+
+### 2026-06-07 — ICC Cases pipeline (icc_cases_v1)
+
+**What.** New ingester `scripts/ingest-icc-cases.ts` (`icc_cases_v1`) covering International Criminal Court indictments, trials, and judgments.
+
+**Data source.** icc-cpi.int is behind Cloudflare and blocks all automated requests. The ingester probed the ICC API (no public JSON endpoint exists), then the main cases page. Solution: fetch individual case pages from icc-cpi.int (tries live first), falling back to the Wayback Machine via the `archive.org/wayback/available` API. The curated list of 27 case URL slugs was verified during probing by confirming Wayback Machine snapshots existed for each (2026-06-07).
+
+**Dataset.** 27 ICC case pages fetched (all 27 succeeded via Wayback). Some pages carry multiple defendants (carousel/slideshow structure), yielding **35 claims total** — one per defendant. Coverage:
+- DRC: Lubanga (convicted), Katanga (convicted), Ntaganda (convicted), Ngudjolo Chui (acquitted), Mbarushimana (closed), Mudacumura (closed-deceased)
+- Uganda: Kony + Odhiambo + Otti (all at large / deceased, one case page), Ongwen (convicted)
+- Darfur: Abd-Al-Rahman (convicted 2025), Abu Garda (closed-charges not confirmed), Al Bashir (at large), Banda + Jerbo (at large / deceased), Harun (at large), Hussein (closed)
+- Kenya: Kenyatta + Muthaura + Ali (closed), Barasa (at large), Bett (closed), Gicheru (closed)
+- Libya: Saif Al-Islam Gaddafi (at large), Al-Werfalli (closed-deceased), Al-Tuhamy Khaled (closed)
+- CAR: Bemba (acquitted), Bemba et al. — 5 defendants (Kilolo, Babala, Mangenda, Bemba, Arido; convicted/closed)
+- Mali: Al Mahdi (convicted), Al Hassan (convicted 2024), Ag Ghaly (at large)
+- Philippines: Rodrigo Duterte (in ICC custody, trial phase)
+
+**Not covered (URL slug not found in Wayback).** Libya: Al-Senussi; Uganda: Lukwiya, Okot; Kenya: Ruto, Sang, Kosgey; CAR II: Yekatom, Ngaissona, Mokom, Said; Côte d'Ivoire: Gbagbo (L/S), Blé Goudé; Philippines: Dela Rosa, El Hishri, Sneidel. These can be added when their URL slugs are confirmed via a non-Cloudflare-blocked fetch.
+
+**Schema.** `claimType: 'INSTITUTIONAL'`, `currentStatus: 'HARD_FACT'`, `verificationStatus: 'PROVISIONAL'`, `methodologyType: 'primary'`, `evidenceType: 'PROCEDURAL'`, edge score 90. Topics: `icc-cases` (domain `law`) parented to `international-law`.
+
+**Flags.** `--dry-run` (default no writes), `ALLOW_EDITS=true` for live, `--limit N`, `--verbose`.
+
+**Results (DB-verified per Rule 6).**
+- Claims: 35 | Sources: 35 | Edges: 35 | EdgeRevisions: 35
+- 1 skipped (Jean-Pierre Bemba Gombo: created from car/bemba, deduplicated by externalId on car/bemba-et-al)
+
+**Files added.**
+- `scripts/ingest-icc-cases.ts`
+
+**Pages updated.**
+- `app/page.tsx` — new "Recent additions" entry
+- `app/layout.tsx` — footer date unchanged (already June 7)

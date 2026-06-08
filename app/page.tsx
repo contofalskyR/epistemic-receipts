@@ -447,6 +447,13 @@ function HomeContent() {
           <div>
             <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 7, 2026</p>
             <p className="text-sm text-gray-400 leading-relaxed">
+              ICC Cases pipeline (<span className="font-mono">icc_cases_v1</span>): 35 claims covering indictments, trials, and judgments across 27 ICC cases — DRC, Uganda, Darfur, Kenya, Libya, Central African Republic, Mali, and the Philippines. Fetches from the official ICC case pages via Wayback Machine fallback. Topics: <span className="font-mono">icc-cases</span> under <span className="font-mono">international-law</span>.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-1">June 7, 2026</p>
+            <p className="text-sm text-gray-400 leading-relaxed">
               Bug fixes: claim detail pages were returning 500 (stale Prisma client referencing the dropped <span className="font-mono">Claim.academicFieldId</span> column) — regenerated. Nav dropdowns were being obscured by page content because the <span className="font-mono">backdrop-blur</span> stacking context had no <span className="font-mono">z-index</span>; the nav now sits at <span className="font-mono">z-50</span>.
             </p>
           </div>
