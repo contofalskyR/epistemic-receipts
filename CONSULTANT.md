@@ -307,6 +307,29 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Books/Reader section cleanup
+
+**What.** Consolidated the duplicated books/reader section; fixed deprecated `currentStatus` usage in the reader detail view.
+
+**Problems fixed:**
+1. `/reader` index was a stripped-down duplicate of `/books` (same book list, no management features). Both appeared in the nav as separate "Reader" and "Books" entries, confusing users.
+2. `app/reader/[bookId]/page.tsx` still queried `currentStatus` on the `Claim` relation, which is marked `@deprecated` in the schema. The rest of the app uses `epistemicAxis`.
+3. `ReaderClient.tsx` typed `currentStatus: string` on matched claims but never rendered it — dead type field.
+4. Reader detail breadcrumb said "← Home" instead of "← Books".
+
+**Files changed:**
+- `app/reader/page.tsx` — replaced with a `redirect("/books")` (removes the duplicate index)
+- `app/reader/[bookId]/page.tsx` — query now selects `epistemicAxis` instead of `currentStatus`; breadcrumb → "← Books"
+- `app/reader/[bookId]/ReaderClient.tsx` — type updated to `epistemicAxis: string | null`; `EpistemicAxisBadge` now shown on each matched receipt
+- `app/components/Nav.tsx` — removed "Reader" nav entry (Books entry remains; it links to `/reader/[bookId]` pages)
+- `app/HomepageSections.tsx` — changelog entry added
+
+**DB/schema changes:** None. `currentStatus` still exists in the schema; this just stops reading it where it's unused.
+
+**Verification.** `npx tsc --noEmit` → 0 errors. Deployed to production.
+
+---
+
 ### 2026-06-08 — Seven-bug audit sweep (display, navigation, data fallbacks)
 
 **What.** Worked through a seven-bug list from the latest site audit. All inline fixes, no schema changes.
