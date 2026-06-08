@@ -15,6 +15,7 @@ type ClaimHit = {
   claimType: string;
   ingestedBy: string;
   verificationStatus: string | null;
+  epistemicStatus: string | null;
   createdAt: string;
   claimEmergedAt: string | null;
   sourceName: string | null;
@@ -115,6 +116,7 @@ export async function GET(req: NextRequest) {
             claimType: true,
             ingestedBy: true,
             verificationStatus: true,
+            epistemicStatus: true,
             createdAt: true,
             claimEmergedAt: true,
             edges: {
@@ -136,6 +138,7 @@ export async function GET(req: NextRequest) {
           claimType: string;
           ingestedBy: string;
           verificationStatus: string | null;
+          epistemicStatus: string | null;
           createdAt: Date;
           claimEmergedAt: Date | null;
           edges: { source: { name: string } }[];
@@ -178,6 +181,7 @@ export async function GET(req: NextRequest) {
     claimType: c.claimType,
     ingestedBy: c.ingestedBy,
     verificationStatus: c.verificationStatus,
+    epistemicStatus: (c as { epistemicStatus?: string | null }).epistemicStatus ?? null,
     createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : c.createdAt,
     claimEmergedAt: c.claimEmergedAt instanceof Date ? c.claimEmergedAt.toISOString() : (c.claimEmergedAt ?? null),
     sourceName: c.edges[0]?.source?.name ?? null,

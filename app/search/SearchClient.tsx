@@ -11,6 +11,7 @@ type ClaimHit = {
   claimType: string;
   ingestedBy: string;
   verificationStatus: string | null;
+  epistemicStatus: string | null;
   createdAt: string;
   claimEmergedAt: string | null;
   sourceName: string | null;
@@ -85,6 +86,21 @@ const VS_STYLE: Record<string, string> = {
   PROVISIONAL: "bg-gray-800/60 text-gray-500 border border-gray-700/50",
   DISPUTED: "bg-red-950 text-red-400 border border-red-800/50",
   DEPRECATED: "bg-gray-900 text-gray-600 border border-gray-800",
+};
+
+const EPISTEMIC_BADGE: Record<string, { label: string; style: string }> = {
+  confirmed:         { label: "Confirmed ✓",      style: "bg-green-900/70 text-green-300 border border-green-700/50" },
+  retracted:         { label: "Retracted ✗",      style: "bg-red-900/70 text-red-300 border border-red-700/50" },
+  candidate:         { label: "Candidate",         style: "bg-yellow-900/70 text-yellow-300 border border-yellow-700/50" },
+  false_positive:    { label: "False Positive",    style: "bg-gray-700/70 text-gray-400 border border-gray-600/50" },
+  contested_dissent: { label: "Split Decision",    style: "bg-orange-900/70 text-orange-300 border border-orange-700/50" },
+  registered_trial:  { label: "Registered Trial",  style: "bg-blue-900/70 text-blue-300 border border-blue-700/50" },
+  active_trial:      { label: "Active Trial",      style: "bg-blue-900/70 text-blue-300 border border-blue-700/50" },
+  completed_trial:   { label: "Completed Trial",   style: "bg-cyan-900/70 text-cyan-300 border border-cyan-700/50" },
+  approved:          { label: "FDA Approved",      style: "bg-emerald-900/70 text-emerald-300 border border-emerald-700/50" },
+  established:       { label: "Established",       style: "bg-teal-900/70 text-teal-300 border border-teal-700/50" },
+  settled_judgment:  { label: "Settled Judgment",  style: "bg-indigo-900/70 text-indigo-300 border border-indigo-700/50" },
+  contested:         { label: "Contested",         style: "bg-orange-900/70 text-orange-300 border border-orange-700/50" },
 };
 
 const METHODOLOGY_LABELS: Record<string, string> = {
@@ -511,6 +527,11 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
           >
             {TYPE_LABEL[claim.claimType] ?? claim.claimType}
           </span>
+          {claim.epistemicStatus && EPISTEMIC_BADGE[claim.epistemicStatus] && (
+            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${EPISTEMIC_BADGE[claim.epistemicStatus]!.style}`}>
+              {EPISTEMIC_BADGE[claim.epistemicStatus]!.label}
+            </span>
+          )}
           {claim.verificationStatus && (
             <span className={`text-xs px-1.5 py-0.5 rounded font-mono ${VS_STYLE[claim.verificationStatus] ?? "bg-gray-800 text-gray-600"}`}>
               {claim.verificationStatus}

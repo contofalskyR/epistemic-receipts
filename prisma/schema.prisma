@@ -36,6 +36,7 @@ model Claim {
   verificationStatus    String? // VERIFIED | PROVISIONAL | DISPUTED | DEPRECATED
   openAlexId            String?
   metadata              Json?
+  epistemicStatus       String? // confirmed | candidate | retracted | contested | active_trial | completed_trial | registered_trial | approved | settled_judgment | contested_dissent | false_positive
 
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
   children Claim[] @relation("ClaimHierarchy")
@@ -65,6 +66,7 @@ model Claim {
   @@index([deleted, parentClaimId, claimType, createdAt])
   @@index([deleted, parentClaimId, claimType, verificationStatus])
   @@index([deleted, ingestedBy])
+  @@index([epistemicStatus])
 }
 
 model Source {
