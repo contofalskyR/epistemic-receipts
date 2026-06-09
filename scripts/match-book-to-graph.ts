@@ -1,20 +1,18 @@
 // Find genuine external cross-references for a book's claims against the main
 // knowledge graph. For each BookClaim, pre-filter candidates from the 842k Claim
-// table via Postgres full-text search, then use Claude Haiku to judge whether
+// table via Postgres full-text search, then use the claude CLI to judge whether
 // each candidate is a genuine SUPPORTS / CONTRADICTS / RELATED match. Writes
 // BookClaimMatch rows for genuine hits only.
 //
-// Run: npx ts-node --project tsconfig.scripts.json scripts/match-book-to-graph.ts --book <id> [--dry-run]
+// Run: npx dotenv-cli -e .env.local -- npx tsx scripts/match-book-to-graph.ts --book <id> [--dry-run]
 //
 // Required env (read from .env.local):
-//   DATABASE_URL         — Neon Postgres (Prisma)
-//   ANTHROPIC_API_KEY    — Anthropic API key for Claude Haiku judgment
+//   DATABASE_URL  — Neon Postgres (Prisma)
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { spawnSync } from 'node:child_process'
+import { exec, spawnSync } from 'node:child_process'
 import { PrismaClient } from '@prisma/client'
-import Anthropic from '@anthropic-ai/sdk'
 
 function loadEnvLocal() {
   const envPath = path.resolve(process.cwd(), '.env.local')
@@ -39,7 +37,6 @@ function loadEnvLocal() {
 loadEnvLocal()
 
 const prisma = new PrismaClient()
-const MODEL = 'claude-haiku-4-5-20251001'
 const CONCURRENCY = 5
 const CANDIDATES_PER_BOOK_CLAIM = 20
 const SIMILARITY_BY_TYPE: Record<string, number> = {
@@ -77,13 +74,6 @@ if (!BOOK_ID) {
   console.error('Usage: npx ts-node --project tsconfig.scripts.json scripts/match-book-to-graph.ts --book <bookId> [--dry-run]')
   process.exit(1)
 }
-
-if (!process.env.ANTHROPIC_API_KEY) {
-  console.error('ANTHROPIC_API_KEY is required (add to .env.local).')
-  process.exit(1)
-}
-
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 const STOPWORDS = new Set([
   'about', 'after', 'again', 'against', 'because', 'before', 'being', 'between',
@@ -142,7 +132,7 @@ async function findCandidates(claimText: string, excludeIngestedBy: string): Pro
 
 type Judgment = { index: number; matchType: 'SUPPORTS' | 'CONTRADICTS' | 'RELATED' | 'UNRELATED'; reason: string }
 
-async function judgeCandidates(bookClaimText: string, candidates: Candidate[]): Promise<Judgment[]> {
+function judgeCandidates(bookClaimText: string, candidates: Candidate[]): Promise<Judgment[]> {
   const numbered = candidates.map((c, i) => `${i}. ${c.text}`).join('\n')
 
   const prompt = [
@@ -166,35 +156,32 @@ async function judgeCandidates(bookClaimText: string, candidates: Candidate[]): 
     'If you mark UNRELATED, the reason field can be empty.',
   ].join('\n')
 
-  const response = await anthropic.messages.create({
-    model: MODEL,
-    max_tokens: 4096,
-    messages: [{ role: 'user', content: prompt }],
+  const escaped = prompt.replace(/'/g, "'\\''")
+
+  return new Promise((resolve) => {
+    exec(`claude --print '${escaped}'`, { timeout: 120000 }, (err, stdout) => {
+      if (err) { resolve([]); return }
+      const raw = stdout.trim()
+      const cleaned = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '')
+      const start = cleaned.indexOf('[')
+      const end = cleaned.lastIndexOf(']')
+      if (start === -1 || end === -1) { resolve([]); return }
+      try {
+        const parsed: unknown = JSON.parse(cleaned.slice(start, end + 1))
+        if (!Array.isArray(parsed)) { resolve([]); return }
+        resolve(parsed.filter(
+          (j): j is Judgment =>
+            typeof j === 'object' &&
+            j !== null &&
+            typeof (j as Judgment).index === 'number' &&
+            typeof (j as Judgment).matchType === 'string' &&
+            ['SUPPORTS', 'CONTRADICTS', 'RELATED', 'UNRELATED'].includes((j as Judgment).matchType),
+        ))
+      } catch {
+        resolve([])
+      }
+    })
   })
-
-  const textBlock = response.content.find((b) => b.type === 'text')
-  if (!textBlock || textBlock.type !== 'text') return []
-  const raw = textBlock.text.trim()
-  const cleaned = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '')
-
-  const start = cleaned.indexOf('[')
-  const end = cleaned.lastIndexOf(']')
-  if (start === -1 || end === -1) return []
-
-  try {
-    const parsed: unknown = JSON.parse(cleaned.slice(start, end + 1))
-    if (!Array.isArray(parsed)) return []
-    return parsed.filter(
-      (j): j is Judgment =>
-        typeof j === 'object' &&
-        j !== null &&
-        typeof (j as Judgment).index === 'number' &&
-        typeof (j as Judgment).matchType === 'string' &&
-        ['SUPPORTS', 'CONTRADICTS', 'RELATED', 'UNRELATED'].includes((j as Judgment).matchType),
-    )
-  } catch {
-    return []
-  }
 }
 
 type BookClaimRow = { id: string; claimText: string }
