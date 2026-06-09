@@ -455,6 +455,7 @@ model BookClaimMatch {
   bookClaim BookClaim @relation(fields: [bookClaimId], references: [id], onDelete: Cascade)
   claim     Claim     @relation(fields: [claimId], references: [id])
 
+  @@unique([bookClaimId, claimId])
   @@index([bookClaimId])
   @@index([claimId])
 }
