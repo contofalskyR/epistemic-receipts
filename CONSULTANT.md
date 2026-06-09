@@ -307,6 +307,31 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Nobel laureate ↔ OpenAlex paper linker (`AUTHORED_BY`)
+
+**What.** New linker script `scripts/link-nobel-openalex.ts` connects active Nobel laureate claims (`nobel_v1`, `wikidata_nobel_v1`, science categories only) to their published papers in our `openalex_v1` corpus via a new `AUTHORED_BY` ClaimRelation. Pure linker — no Claim/Source/Edge writes.
+
+**Strategy.**
+1. Load science-category laureates (Chemistry / Physics / Physiology or Medicine / Economic Sciences) from both Nobel pipelines, skipping `verificationStatus: DEPRECATED`. Literature & Peace skipped — those laureates rarely publish in OpenAlex-indexed venues. Pulled 1,514 active claims → 1,062 unique normalized names.
+2. Per unique name: `GET https://api.openalex.org/authors?filter=display_name.search:<name>&per-page=10`, then token-set match on diacritic-stripped normalized names; pick the candidate with the highest `cited_by_count`.
+3. `GET /works?filter=author.id:<authorId>&sort=cited_by_count:desc&per-page=25` for that author.
+4. For every returned work whose `externalId = 'openalex_<workId>'` exists as a Claim in our DB, write a `ClaimRelation { from: paper, to: laureate, type: "AUTHORED_BY", followUpContext: { openalexAuthorId, openalexAuthorName, openalexAuthorCitedBy, openalexWorkId, workCitedByCount, workTitle, heuristic: "openalex_author_search_top_token_match", confidence: "medium", laureateName, category, year, nobelPipeline } }`.
+
+**ClaimRelation schema notes.** `relationType` is a free `String` (existing values: `cites`, `cited_by`, `related`, `OUTCOME`, `STATUS_UPDATE`, `SUPERSEDED_BY`, `REVERSED`, `EXPANDED`), so adding `AUTHORED_BY` required no migration. Unique constraint `(fromClaimId, toClaimId, relationType)` is respected via try/catch on P2002 with `updateMany` fallback — re-runs are idempotent and refresh `followUpContext` in place.
+
+**Run shape.** `--dry-run` (default unless `ALLOW_EDITS=true`), `--limit=N` for early validation, `OPENALEX_MAILTO` env for the OpenAlex polite-pool (defaults to the project owner's email). Both author + works requests are throttled at ~350ms between calls and retry on 429/503 honoring `Retry-After`.
+
+**Results (LIVE run 2026-06-08).**
+- 1,062 unique laureate names processed
+- 863 OpenAlex author matches (81%) · 199 no-match
+- 515 paper matches against our OpenAlex corpus
+- **765 `AUTHORED_BY` ClaimRelations inserted** (some laureates appear in both `nobel_v1` and `wikidata_nobel_v1`, so one paper can link to multiple laureate claims)
+- Verified via direct count: `SELECT COUNT(*) FROM "ClaimRelation" WHERE "relationType"='AUTHORED_BY'` → 765
+
+**Known false-positive class.** Name collisions across centuries can mis-link (e.g., 1908 immunology laureate "Paul Ehrlich" linked to 20th-century ecologist "Paul R. Ehrlich" — both publish under matching token-set normalized names). `followUpContext.confidence = "medium"` flags every row for human curation; relations are queryable for review without polluting the Source/Edge tables.
+
+**Files added/changed:** `scripts/link-nobel-openalex.ts` (already committed in 5511362 alongside the NIH linker — Nobel entry was missing from that commit message), `app/HomepageSections.tsx` (Recent Updates entry), `CONSULTANT.md`.
+
 ### 2026-06-08 — Books/Reader section cleanup
 
 **What.** Consolidated the duplicated books/reader section; fixed deprecated `currentStatus` usage in the reader detail view.

@@ -166,6 +166,10 @@ const DOMAINS: Domain[] = [
 const CHANGELOG: { date: string; text: string }[] = [
   {
     date: "JUNE 8, 2026",
+    text: "Nobel laureate → OpenAlex paper linker: 765 new AUTHORED_BY ClaimRelations connect science-category Nobel laureates (Chemistry, Physics, Physiology or Medicine, Economic Sciences) to their most-cited papers indexed in the openalex_v1 corpus.",
+  },
+  {
+    date: "JUNE 8, 2026",
     text: "Books/Reader cleanup: /reader now redirects to /books (single canonical view), duplicate nav entry removed, reader detail uses epistemicAxis badges instead of deprecated currentStatus, breadcrumb fixed to '← Books'.",
   },
   {
