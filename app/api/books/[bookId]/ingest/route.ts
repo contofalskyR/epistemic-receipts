@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import * as fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 import {
   ingestProgressFilePath,
   type IngestJobState,
@@ -115,6 +116,13 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ bookId: string }> },
 ) {
+  if (isReadOnly()) {
+    return NextResponse.json(
+      { error: "Editing disabled in production" },
+      { status: 403 },
+    );
+  }
+
   const { bookId } = await params;
 
   let passphrase: string | null = null;

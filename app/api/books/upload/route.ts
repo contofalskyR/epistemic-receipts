@@ -2,8 +2,11 @@
 // Set to a strong secret in Vercel env vars; use "changeme" only for local dev.
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 export const dynamic = "force-dynamic";
+
+const MAX_UPLOAD_BYTES = 20 * 1024 * 1024;
 
 function checkPassphrase(provided: string | null): boolean {
   const expected = process.env.BOOK_UPLOAD_PASSPHRASE;
@@ -20,6 +23,13 @@ function parseChunks(text: string): string[] {
 }
 
 export async function POST(req: Request) {
+  if (isReadOnly()) {
+    return NextResponse.json(
+      { error: "Editing disabled in production" },
+      { status: 403 },
+    );
+  }
+
   const formData = await req.formData().catch(() => null);
   if (!formData) {
     return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
@@ -42,6 +52,13 @@ export async function POST(req: Request) {
   const file = formData.get("file");
   if (!file || !(file instanceof File)) {
     return NextResponse.json({ error: "File is required" }, { status: 400 });
+  }
+
+  if (file.size > MAX_UPLOAD_BYTES) {
+    return NextResponse.json(
+      { error: "File exceeds 20MB upload limit" },
+      { status: 413 },
+    );
   }
 
   const fileName = file.name.toLowerCase();
