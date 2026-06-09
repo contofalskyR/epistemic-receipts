@@ -7,9 +7,6 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 
 ## Queue
 
-### Stage 1 — P0 security (remaining)
-- [ ] Redact Neon pooler hostname from `AUDIT-2026-05-21.md`
-
 ### Stage 2 — P1 data model: relations + constraints
 - [ ] Uppercase all lowercase `ClaimRelation.relationType` values in DB + update query sites
 - [ ] Add `@@unique([bookClaimId, claimId])` to BookClaimMatch in schema + dedupe existing rows + migrate
@@ -45,6 +42,7 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 ## Completed
 
 <!-- Worker appends completed tasks here with date -->
+- [x] Redact Neon pooler hostname from `AUDIT-2026-05-21.md` (completed 2026-06-09 16:05 EDT)
 - [x] Gate `app/api/books/upload/route.ts` and `app/api/books/[bookId]/ingest/route.ts` with `isReadOnly()` check + reject uploads >20MB (completed 2026-06-09 16:04 EDT)
 - [x] **Wikidata cross-reference enrichment** — After Uruguay (`uruguay_legislation_v1`) finishes ingestion, write and run a script to link existing Source records to Wikidata Q-numbers via the Wikidata SPARQL endpoint. Scope: legislative sources first (match by title + jurisdiction), then expand. This is enrichment only — do NOT ingest Wikidata claims as HARD_FACT. See ROADMAP.md Tier 3 for context. (completed 2026-05-21 06:35 EDT)
 - [x] Run dry-run for ICD-11 pipeline via `npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-icd11.ts --dry-run` and report candidate count + sample records (completed 2026-05-19 00:10 EDT)
