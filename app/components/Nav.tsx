@@ -53,6 +53,7 @@ const GROUPS: { label: string; items: NavItem[] }[] = [
       { href: "/about", label: "About" },
       { href: "/glossary", label: "Glossary" },
       { href: "/feedback", label: "Feedback" },
+      { href: "/sources", label: "Sources" },
       { href: "/pipelines", label: "Pipelines" },
       { href: "/edges", label: "Edges" },
       { href: "/meta-edges", label: "Meta-edges" },

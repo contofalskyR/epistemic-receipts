@@ -307,6 +307,32 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-09 01:06 EDT — Build /sources page listing all data source APIs grouped by category
+- **Commit:** feat: email alert subscriptions for topic watches
+- **Files changed:**
+  - app/api/cron/topic-alerts/route.ts
+  - app/api/subscribe/topic/route.ts
+  - app/api/unsubscribe/route.ts
+  - app/topics/[slug]/page.tsx
+  - package-lock.json
+  - package.json
+  - prisma/schema.prisma
+- **Diff stat:**  7 files changed, 259 insertions(+), 1 deletion(-)
+
+
+### 2026-06-08 22:46 EDT — topic-watch weekly digest: WatchedTopic schema, seed 10 topics, cron route /api/cron/topic-alerts, vercel.json cron Mon 00:00 UTC
+- **Commit:** feat: topic-watch weekly Telegram digest
+- **Files changed:**
+  - CONSULTANT.md
+  - app/HomepageSections.tsx
+  - app/api/cron/topic-alerts/route.ts
+  - prisma/migrations/20260608000000_add_watched_topic/migration.sql
+  - prisma/schema.prisma
+  - scripts/seed-watched-topics.ts
+  - vercel.json
+- **Diff stat:**  7 files changed, 241 insertions(+)
+
+
 ### 2026-06-08 — Topic-watch weekly Telegram digest
 
 **What.** Solo-operator alerting feature: a weekly cron job sweeps the last 7 days of Claims for each watched topic/keyword and sends a single Telegram digest to Robert via the OpenClaw relay.
@@ -4333,6 +4359,40 @@ Settling curve added to Nav "Explore" dropdown.
 - `app/page.tsx` — epistemicStatus badge on homepage + new changelog entry
 - `app/settling-curve/page.tsx` — new page
 - `app/components/Nav.tsx` — Settling Curve added to Explore dropdown
+- `CONSULTANT.md` — this entry
+
+---
+
+### 2026-06-09 — /sources reference page + /api/sources-summary
+
+**What.** New `/sources` page added under the **More** dropdown in `Nav.tsx`. Clean reference view answering "where does our data come from?" — distinct from `/datasets`, which remains the operational pipeline browser.
+
+**Categories (7).** US Federal Government, Courts & Legal, Science & Medicine, International Organizations, Pharmaceutical & Health, National Parliaments / Legislation, Archives & Historical. Plus an "Unmapped" tail for ingester tags not yet registered (currently `manual` + the one-off `book-analysis:*` tag).
+
+**API route.** `app/api/sources-summary/route.ts` — server route with `revalidate = 300`. Does one `GROUP BY "ingestedBy"` on `Claim` (excluding `verificationStatus = 'DEPRECATED'`), looks each prefix up in an in-route `SOURCE_REGISTRY: Record<string, { label, sourceUrl, category }>` map (~170 entries covering every active pipeline as of 2026-06-09), and returns `{ totalClaims, totalSources, categories: [{ name, totalCount, sourceCount, sources: [...] }], unmapped }`.
+
+**Live result.** 1,613,273 claims across 174 mapped sources + 2 unmapped (`manual`, `book-analysis:...`):
+- US Federal Government — 18 sources · 357,918 claims
+- Courts & Legal — 14 sources · 15,013 claims
+- Science & Medicine — 26 sources · 488,285 claims
+- International Organizations — 12 sources · 134,485 claims
+- Pharmaceutical & Health — 10 sources · 147,218 claims
+- National Parliaments / Legislation — 86 sources · 401,241 claims
+- Archives & Historical — 8 sources · 69,074 claims
+
+**Page (client).** `app/sources/page.tsx` — fetches `/api/sources-summary` and renders summary cards (totals) plus per-category sections with each source's label, ingester tag, live count, and hostname-stripped link out. Dark-theme Tailwind matching `/datasets`.
+
+**Redirect removed.** `next.config.ts` had a stale `/sources → /datasets` permanent redirect from a prior content-design iteration. Deleted so the new page is reachable. Verified locally: `/sources` returns 200 after the change; API route returns 200 with 22.6 KB JSON.
+
+**Editorial split.** Going forward: `/datasets` = "every pipeline (operator-facing)"; `/sources` = "every external API/archive we pull from (reader-facing)". The two share data via `ingestedBy` but diverge on framing.
+
+**Files added/changed.**
+- `app/api/sources-summary/route.ts` (new)
+- `app/sources/page.tsx` (new)
+- `app/components/Nav.tsx` — `/sources` added to "More" group
+- `next.config.ts` — removed legacy `/sources → /datasets` redirect
+- `app/HomepageSections.tsx` — new changelog entry at top
+- `app/layout.tsx` — footer date bumped to June 9, 2026
 - `CONSULTANT.md` — this entry
 
 **Telegram.** Progress notifications sent after each phase. Completion notification sent to chat_id 7688025079.

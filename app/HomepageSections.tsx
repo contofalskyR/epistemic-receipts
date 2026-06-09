@@ -165,6 +165,10 @@ const DOMAINS: Domain[] = [
 
 const CHANGELOG: { date: string; text: string }[] = [
   {
+    date: "JUNE 9, 2026",
+    text: "/sources reference page shipped under the More menu. 174 external APIs/archives/databases grouped into 7 categories (US Federal, Courts & Legal, Science & Medicine, International Orgs, Pharma & Health, National Parliaments, Archives & Historical) with live per-source claim counts via /api/sources-summary. /datasets remains as the pipeline browser; /sources answers \"where does our data come from?\"",
+  },
+  {
     date: "JUNE 8, 2026",
     text: "Weekly topic-watch Telegram digest live. New WatchedTopic table seeded with 10 keywords (Neuroscience, Climate, COVID/Vaccines, STOCK Act, Retractions, SCOTUS, Drug Approvals, Ukraine, China, AI). /api/cron/topic-alerts runs every Monday 00:00 UTC, posts the last 7 days of matching claims to Telegram via the OpenClaw relay.",
   },
