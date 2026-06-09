@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Epistemic Receipts
 
-## Getting Started
+A Next.js knowledge graph that transforms raw data from 50+ authoritative sources into 1.6M+ verifiable, cross-referenced claims — each one traceable to a primary source.
 
-First, run the development server:
+## What It Is
+
+Epistemic Receipts ingests structured records from government archives, scientific databases, international bodies, and legislative systems, then organizes them as a navigable graph of facts. Every claim carries:
+
+- **A source** — the authoritative record it came from (NARA, OpenAlex, Congress.gov, WHO, FDA, UN, CourtListener, etc.)
+- **An epistemic axis** — `SETTLED`, `CONTESTED`, `RECORDED`, or `OPEN`, classifying the claim's evidentiary status
+- **Cross-references** — edges to related claims across datasets (e.g., a clinical trial linked to its published paper, linked to its FDA approval)
+
+## Key Features
+
+- **Interactive 3D globe** — explore claims by geography
+- **Citation graph** — navigate cross-dataset relationships visually
+- **Epistemic axis classification** — browse claims by confidence level
+- **Full-text search** — across 1.6M+ records
+- **Topic alerts** — subscribe to claim categories (watched topics)
+- **Book reader** — arc-diagram view linking books to supporting/contradicting claims
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 14 (App Router) |
+| Database | Neon Postgres (serverless) |
+| ORM | Prisma |
+| Hosting | Vercel |
+| Data pipelines | TypeScript (130+ `scripts/ingest-*.ts`) |
+
+## Data Sources (sample)
+
+NARA declassified records · OpenAlex academic papers · Congress.gov bills & votes · WHO GHO · FDA openFDA · UN Security Council & GA resolutions · UN Treaties · CourtListener (SCOTUS, circuits, state supreme courts) · DOJ FARA · SEC EDGAR · NIH Reporter · ClinicalTrials.gov · SIPRI military expenditure · UCDP conflict data · V-Dem · CrossRef retractions · Nobel Prize · PubChem · MeSH · 60+ national legislative corpora
+
+## Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Pull environment variables (requires Vercel CLI)
+vercel env pull .env.local
+
+# Run database migrations
+npx prisma migrate dev
+
+# Start dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pipeline Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ingest scripts live in `scripts/`. Each targets a single source and writes to the `Claim` table via Prisma.
 
-## Learn More
+```bash
+# Run any pipeline script
+npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-<source>.ts
 
-To learn more about Next.js, take a look at the following resources:
+# Generate pipeline registry markdown table (for AGENTS.md)
+npx dotenv-cli -e .env.local -- npx tsx scripts/sync-registry.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `AGENTS.md` for the full active pipeline registry and ingestion notes.
