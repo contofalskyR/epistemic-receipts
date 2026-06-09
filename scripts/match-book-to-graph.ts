@@ -11,8 +11,11 @@
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { exec, spawnSync } from 'node:child_process'
+import { spawnSync } from 'node:child_process'
+import Anthropic from '@anthropic-ai/sdk'
 import { PrismaClient } from '@prisma/client'
+
+const anthropic = new Anthropic()
 
 function loadEnvLocal() {
   const envPath = path.resolve(process.cwd(), '.env.local')
@@ -132,7 +135,16 @@ async function findCandidates(claimText: string, excludeIngestedBy: string): Pro
 
 type Judgment = { index: number; matchType: 'SUPPORTS' | 'CONTRADICTS' | 'RELATED' | 'UNRELATED'; reason: string }
 
-function judgeCandidates(bookClaimText: string, candidates: Candidate[]): Promise<Judgment[]> {
+// Sentinel returned when the LLM call fails or returns unparseable JSON,
+// so callers can distinguish "error" from "no matches found".
+export const JUDGMENT_ERROR: unique symbol = Symbol('JUDGMENT_ERROR')
+
+async function judgeCandidates(
+  bookClaimId: string,
+  bookClaimText: string,
+  candidates: Candidate[],
+  counters: { errors: number },
+): Promise<Judgment[] | typeof JUDGMENT_ERROR> {
   const numbered = candidates.map((c, i) => `${i}. ${c.text}`).join('\n')
 
   const prompt = [
@@ -156,32 +168,49 @@ function judgeCandidates(bookClaimText: string, candidates: Candidate[]): Promis
     'If you mark UNRELATED, the reason field can be empty.',
   ].join('\n')
 
-  const escaped = prompt.replace(/'/g, "'\\''")
-
-  return new Promise((resolve) => {
-    exec(`claude --print '${escaped}'`, { timeout: 120000 }, (err, stdout) => {
-      if (err) { resolve([]); return }
-      const raw = stdout.trim()
-      const cleaned = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '')
-      const start = cleaned.indexOf('[')
-      const end = cleaned.lastIndexOf(']')
-      if (start === -1 || end === -1) { resolve([]); return }
-      try {
-        const parsed: unknown = JSON.parse(cleaned.slice(start, end + 1))
-        if (!Array.isArray(parsed)) { resolve([]); return }
-        resolve(parsed.filter(
-          (j): j is Judgment =>
-            typeof j === 'object' &&
-            j !== null &&
-            typeof (j as Judgment).index === 'number' &&
-            typeof (j as Judgment).matchType === 'string' &&
-            ['SUPPORTS', 'CONTRADICTS', 'RELATED', 'UNRELATED'].includes((j as Judgment).matchType),
-        ))
-      } catch {
-        resolve([])
-      }
+  let raw: string
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 4096,
+      messages: [{ role: 'user', content: prompt }],
     })
-  })
+    const block = response.content[0]
+    raw = block.type === 'text' ? block.text.trim() : ''
+  } catch (err) {
+    console.error(`[bc ${bookClaimId.slice(0, 8)}] LLM call failed:`, err instanceof Error ? err.message : err)
+    counters.errors++
+    return JUDGMENT_ERROR
+  }
+
+  const cleaned = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/\s*```$/, '')
+  const start = cleaned.indexOf('[')
+  const end = cleaned.lastIndexOf(']')
+  if (start === -1 || end === -1) {
+    console.error(`[bc ${bookClaimId.slice(0, 8)}] LLM returned unparseable response (no JSON array)`)
+    counters.errors++
+    return JUDGMENT_ERROR
+  }
+  try {
+    const parsed: unknown = JSON.parse(cleaned.slice(start, end + 1))
+    if (!Array.isArray(parsed)) {
+      console.error(`[bc ${bookClaimId.slice(0, 8)}] LLM JSON was not an array`)
+      counters.errors++
+      return JUDGMENT_ERROR
+    }
+    return parsed.filter(
+      (j): j is Judgment =>
+        typeof j === 'object' &&
+        j !== null &&
+        typeof (j as Judgment).index === 'number' &&
+        typeof (j as Judgment).matchType === 'string' &&
+        ['SUPPORTS', 'CONTRADICTS', 'RELATED', 'UNRELATED'].includes((j as Judgment).matchType),
+    )
+  } catch (err) {
+    console.error(`[bc ${bookClaimId.slice(0, 8)}] JSON.parse failed:`, err instanceof Error ? err.message : err)
+    counters.errors++
+    return JUDGMENT_ERROR
+  }
 }
 
 type BookClaimRow = { id: string; claimText: string }
@@ -201,8 +230,12 @@ async function processBookClaim(
       return
     }
 
-    const judgments = await judgeCandidates(bookClaim.claimText, candidates)
-    const genuine = judgments.filter((j) => j.matchType !== 'UNRELATED')
+    const judgeResult = await judgeCandidates(bookClaim.id, bookClaim.claimText, candidates, counters)
+    if (judgeResult === JUDGMENT_ERROR) {
+      counters.processed++
+      return
+    }
+    const genuine = judgeResult.filter((j) => j.matchType !== 'UNRELATED')
 
     console.log(
       `[bc ${bookClaim.id.slice(0, 8)}] ${candidates.length} candidates → ${genuine.length} genuine ` +

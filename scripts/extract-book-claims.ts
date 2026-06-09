@@ -3,8 +3,10 @@
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { exec } from 'node:child_process'
+import Anthropic from '@anthropic-ai/sdk'
 import { PrismaClient } from '@prisma/client'
+
+const anthropic = new Anthropic()
 
 function loadEnvLocal() {
   const envPath = path.resolve(process.cwd(), '.env.local')
@@ -38,27 +40,36 @@ if (!BOOK_ID) {
   process.exit(1)
 }
 
-function extractClaims(chunkText: string): Promise<string[]> {
-  const escaped = chunkText.replace(/'/g, "'\\''").replace(/\n/g, ' ')
+async function extractClaims(chunkText: string): Promise<string[]> {
   const prompt =
     `Extract all discrete, verifiable factual claims from this passage. ` +
     `Return ONLY a JSON array of strings, each one atomic. ` +
     `Example: ["Violence has declined over centuries", "The homicide rate fell by 50%"]. ` +
-    `Passage: ${escaped}`
+    `Passage: ${chunkText.replace(/\n/g, ' ')}`
 
-  return new Promise((resolve) => {
-    exec(`claude --print '${prompt}'`, { timeout: 90000 }, (err, stdout) => {
-      if (err) { resolve([]); return }
-      const start = stdout.indexOf('[')
-      const end = stdout.lastIndexOf(']')
-      if (start === -1 || end <= start) { resolve([]); return }
-      try {
-        const parsed: unknown = JSON.parse(stdout.slice(start, end + 1))
-        if (!Array.isArray(parsed)) { resolve([]); return }
-        resolve(parsed.filter((s): s is string => typeof s === 'string').map(s => s.trim()).filter(s => s.length > 0))
-      } catch { resolve([]) }
+  let raw: string
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 4096,
+      messages: [{ role: 'user', content: prompt }],
     })
-  })
+    const block = response.content[0]
+    raw = block.type === 'text' ? block.text : ''
+  } catch {
+    return []
+  }
+
+  const start = raw.indexOf('[')
+  const end = raw.lastIndexOf(']')
+  if (start === -1 || end <= start) return []
+  try {
+    const parsed: unknown = JSON.parse(raw.slice(start, end + 1))
+    if (!Array.isArray(parsed)) return []
+    return parsed.filter((s): s is string => typeof s === 'string').map(s => s.trim()).filter(s => s.length > 0)
+  } catch {
+    return []
+  }
 }
 
 async function runWithConcurrency<T>(items: T[], concurrency: number, fn: (item: T) => Promise<void>): Promise<void> {
