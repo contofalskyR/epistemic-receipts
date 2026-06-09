@@ -307,6 +307,28 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-08 — Topic-watch weekly Telegram digest
+
+**What.** Solo-operator alerting feature: a weekly cron job sweeps the last 7 days of Claims for each watched topic/keyword and sends a single Telegram digest to Robert via the OpenClaw relay.
+
+**Schema.** New `WatchedTopic` model — `id` / unique `keyword` / `label` / `createdAt` / `lastAlertAt`. Migration `20260608000000_add_watched_topic` (plain `CREATE TABLE`, no shadow DB needed; applied via `prisma db execute` + `migrate resolve --applied` because the existing `add_trgm_search_index` migration breaks `migrate dev`'s shadow DB).
+
+**Seed (`scripts/seed-watched-topics.ts`).** 10 keyword → label pairs: `neuroscience` → Neuroscience, `climate change` → Climate Change, `COVID vaccine` → COVID / Vaccines, `STOCK Act` → Congressional Trading, `retraction` → Retractions, `SCOTUS` → Supreme Court, `drug approval` → Drug Approvals, `Ukraine` → Ukraine, `China` → China Policy, `artificial intelligence` → AI / Machine Learning. Idempotent (upsert on unique keyword). Confirmed 10 rows in DB.
+
+**Route (`app/api/cron/topic-alerts/route.ts`).** GET handler:
+- Auth: `Authorization: Bearer ${CRON_SECRET}` (matches existing `/api/ingest/scotus` pattern); if `CRON_SECRET` is unset the route is open (so first-run smoke tests work before the env var is provisioned).
+- For each `WatchedTopic`: `prisma.claim` count + top 3 `findMany` filtered by `text contains keyword (insensitive)` + `createdAt >= now-7d` + `deleted: false`, ordered by `createdAt desc`. Each line shows truncated claim text (120 chars), first-edge source name, and `epistemicAxis` (or legacy `currentStatus`) tag.
+- Topics with zero matches are skipped from the digest body but `lastAlertAt` is still updated on every topic so the timestamp reflects the actual sweep, not the match.
+- POSTs to `https://gateway.openclaw.ai/v1/message/send` with `{ channel: "telegram", to: "7688025079", text: <digest> }` and `Authorization: Bearer ${OPENCLAW_API_KEY}`. If `OPENCLAW_API_KEY` is missing, logs a warning and returns 200 without crashing.
+
+**Cron.** `vercel.json` now includes `{ "path": "/api/cron/topic-alerts", "schedule": "0 0 * * 1" }` (Monday 00:00 UTC = Sunday 8pm ET) alongside the existing daily SCOTUS ingest.
+
+**Files.** `prisma/schema.prisma`, `prisma/migrations/20260608000000_add_watched_topic/migration.sql`, `scripts/seed-watched-topics.ts`, `app/api/cron/topic-alerts/route.ts`, `vercel.json`, `app/HomepageSections.tsx` (changelog entry).
+
+**Verification.** `npx tsc --noEmit` → 0 errors. Seed script ran cleanly. First digest lands the Monday after deploy.
+
+---
+
 ### 2026-06-08 — Nobel laureate ↔ OpenAlex paper linker (`AUTHORED_BY`)
 
 **What.** New linker script `scripts/link-nobel-openalex.ts` connects active Nobel laureate claims (`nobel_v1`, `wikidata_nobel_v1`, science categories only) to their published papers in our `openalex_v1` corpus via a new `AUTHORED_BY` ClaimRelation. Pure linker — no Claim/Source/Edge writes.

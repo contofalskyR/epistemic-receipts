@@ -3,6 +3,10 @@
     {
       "path": "/api/ingest/scotus",
       "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/cron/topic-alerts",
+      "schedule": "0 0 * * 1"
     }
   ]
 }

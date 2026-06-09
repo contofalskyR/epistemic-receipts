@@ -166,6 +166,10 @@ const DOMAINS: Domain[] = [
 const CHANGELOG: { date: string; text: string }[] = [
   {
     date: "JUNE 8, 2026",
+    text: "Weekly topic-watch Telegram digest live. New WatchedTopic table seeded with 10 keywords (Neuroscience, Climate, COVID/Vaccines, STOCK Act, Retractions, SCOTUS, Drug Approvals, Ukraine, China, AI). /api/cron/topic-alerts runs every Monday 00:00 UTC, posts the last 7 days of matching claims to Telegram via the OpenClaw relay.",
+  },
+  {
+    date: "JUNE 8, 2026",
     text: "Nobel laureate → OpenAlex paper linker: 765 new AUTHORED_BY ClaimRelations connect science-category Nobel laureates (Chemistry, Physics, Physiology or Medicine, Economic Sciences) to their most-cited papers indexed in the openalex_v1 corpus.",
   },
   {

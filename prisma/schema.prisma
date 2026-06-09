@@ -615,3 +615,11 @@ model ClaimRelation {
   @@index([fromClaimId, relationType])
   @@index([toClaimId, relationType])
 }
+
+model WatchedTopic {
+  id          String    @id @default(cuid())
+  keyword     String    @unique
+  label       String
+  createdAt   DateTime  @default(now())
+  lastAlertAt DateTime?
+}
