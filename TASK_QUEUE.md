@@ -22,7 +22,7 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Rewrite `README.md` — replace stock create-next-app with project description (use investor memo §2 as base) (2026-06-09)
 
 ### Stage 5 — P1 CI quality gate
-- [ ] Add GitHub Actions workflow: `tsc --noEmit` + `eslint` + gitleaks on PR
+- [x] Add GitHub Actions workflow: `tsc --noEmit` + `eslint` + gitleaks on PR (2026-06-09)
 
 ### Stage 6 — P2 book pipeline fixes
 - [ ] Replace `claude --print` shell-outs in `match-book-to-graph.ts` with `@anthropic-ai/sdk` + pin `claude-haiku-4-5-20251001`
