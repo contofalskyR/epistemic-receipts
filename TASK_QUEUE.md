@@ -25,8 +25,8 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Add GitHub Actions workflow: `tsc --noEmit` + `eslint` + gitleaks on PR (2026-06-09)
 
 ### Stage 6 — P2 book pipeline fixes
-- [ ] Replace `claude --print` shell-outs in `match-book-to-graph.ts` with `@anthropic-ai/sdk` + pin `claude-haiku-4-5-20251001`
-- [ ] Fix silent judge failures: resolve `{error: true}` not `[]` on exec error/parse failure, increment error counter
+- [x] Replace `claude --print` shell-outs in `match-book-to-graph.ts` with `@anthropic-ai/sdk` + pin `claude-haiku-4-5-20251001` (2026-06-09)
+- [x] Fix silent judge failures: log error with bookClaim ID, increment error counter, return JUDGMENT_ERROR sentinel (2026-06-09)
 
 ### Stage 7 — P2 search + integrity
 - [ ] Add generated tsvector column + GIN index to Claim, query with `websearch_to_tsquery` + `ts_rank`
