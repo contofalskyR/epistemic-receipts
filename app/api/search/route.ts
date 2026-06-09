@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { COUNTRY_TO_PIPELINES, PIPELINE_COUNTRY_NAME } from "@/lib/globe-pipeline-country";
 
-export const revalidate = 60;
-
 const MIN_QUERY = 3;
 const DEFAULT_LIMIT = 25;
 const MAX_LIMIT = 100;
@@ -21,6 +19,7 @@ type ClaimHit = {
   claimEmergedAt: string | null;
   sourceName: string | null;
   topicLabel: string | null;
+  rank: number | null;
 };
 
 type SourceHit = {
@@ -76,41 +75,131 @@ export async function GET(req: NextRequest) {
   const wantClaims = type === "all" || type === "claims";
   const wantSources = type === "all" || type === "sources";
 
-  const claimTextWhere = qRaw.length >= MIN_QUERY
-    ? { text: { contains: qRaw, mode: "insensitive" as const } }
-    : {};
-  const claimCountryWhere = countryActive
-    ? { ingestedBy: { in: countryPipelines } }
-    : {};
-  const claimWhere = {
-    deleted: false,
-    ...claimTextWhere,
-    ...claimCountryWhere,
-    ...(axisFilter ? { epistemicAxis: axisFilter } : {}),
-  };
+  // ── Claims: use tsvector ranking with trgm fallback ──
 
-  const sourceTextWhere = qRaw.length >= MIN_QUERY
-    ? {
-        OR: [
-          { name: { contains: qRaw, mode: "insensitive" as const } },
-          { url: { contains: qRaw, mode: "insensitive" as const } },
-        ],
+  let claims: ClaimHit[] = [];
+  let claimsCount = 0;
+
+  if (wantClaims) {
+    if (qRaw.length >= MIN_QUERY) {
+      // Build WHERE fragments
+      const conditions: string[] = [`c."deleted" = false`];
+      const params: unknown[] = [];
+      let paramIdx = 1;
+
+      // Full-text tsquery condition (primary ranking), OR trgm ILIKE fallback
+      params.push(qRaw);
+      const qParamNum = paramIdx++;
+      conditions.push(
+        `(c."searchVector" @@ websearch_to_tsquery('english', $${qParamNum}) OR c."text" ILIKE '%' || $${qParamNum} || '%')`
+      );
+
+      if (countryActive) {
+        // Build IN list for country pipelines
+        const placeholders = countryPipelines.map(() => `$${paramIdx++}`);
+        params.push(...countryPipelines);
+        conditions.push(`c."ingestedBy" IN (${placeholders.join(", ")})`);
       }
-    : {};
-  // Sources don't get country filtering — only claims do.
-  const sourceWhere = qRaw.length >= MIN_QUERY
-    ? { deleted: false, ...sourceTextWhere }
-    : null;
 
-  const [claimsCount, sourcesCount, claimRows, sourceRows] = await Promise.all([
-    wantClaims
-      ? prisma.claim.count({ where: claimWhere })
-      : Promise.resolve(0),
-    wantSources && sourceWhere
-      ? prisma.source.count({ where: sourceWhere })
-      : Promise.resolve(0),
-    wantClaims
-      ? prisma.claim.findMany({
+      if (axisFilter) {
+        params.push(axisFilter);
+        conditions.push(`c."epistemicAxis" = $${paramIdx++}`);
+      }
+
+      const whereClause = conditions.join(" AND ");
+
+      // Count
+      const countResult = await prisma.$queryRawUnsafe<[{ count: bigint }]>(
+        `SELECT count(*)::bigint AS count FROM "Claim" c WHERE ${whereClause}`,
+        ...params,
+      );
+      claimsCount = Number(countResult[0].count);
+
+      // Ranked results: ts_rank for FTS matches, 0 for trgm-only matches
+      params.push(limit, offset);
+      const limitParam = paramIdx++;
+      const offsetParam = paramIdx++;
+
+      const claimRows = await prisma.$queryRawUnsafe<Array<{
+        id: string;
+        text: string;
+        currentStatus: string;
+        epistemicAxis: string | null;
+        claimType: string;
+        ingestedBy: string;
+        verificationStatus: string | null;
+        epistemicStatus: string | null;
+        createdAt: Date;
+        claimEmergedAt: Date | null;
+        sourceName: string | null;
+        topicLabel: string | null;
+        rank: number;
+      }>>(
+        `SELECT
+           c."id",
+           c."text",
+           c."currentStatus",
+           c."epistemicAxis",
+           c."claimType",
+           c."ingestedBy",
+           c."verificationStatus",
+           c."epistemicStatus",
+           c."createdAt",
+           c."claimEmergedAt",
+           s."name" AS "sourceName",
+           t."name" AS "topicLabel",
+           ts_rank(c."searchVector", websearch_to_tsquery('english', $1)) AS rank
+         FROM "Claim" c
+         LEFT JOIN LATERAL (
+           SELECT s2."name"
+           FROM "Edge" e
+           JOIN "Source" s2 ON s2."id" = e."sourceId"
+           WHERE e."claimId" = c."id" AND e."deleted" = false
+           ORDER BY e."createdAt" ASC
+           LIMIT 1
+         ) s ON true
+         LEFT JOIN LATERAL (
+           SELECT t2."name"
+           FROM "ClaimTopic" ct
+           JOIN "Topic" t2 ON t2."id" = ct."topicId"
+           WHERE ct."claimId" = c."id"
+           LIMIT 1
+         ) t ON true
+         WHERE ${whereClause}
+         ORDER BY rank DESC, c."createdAt" DESC
+         LIMIT $${limitParam} OFFSET $${offsetParam}`,
+        ...params,
+      );
+
+      claims = claimRows.map(c => ({
+        id: c.id,
+        text: c.text,
+        currentStatus: c.currentStatus,
+        epistemicAxis: c.epistemicAxis ?? null,
+        claimType: c.claimType,
+        ingestedBy: c.ingestedBy,
+        verificationStatus: c.verificationStatus,
+        epistemicStatus: c.epistemicStatus ?? null,
+        createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : String(c.createdAt),
+        claimEmergedAt: c.claimEmergedAt instanceof Date ? c.claimEmergedAt.toISOString() : (c.claimEmergedAt ?? null),
+        sourceName: c.sourceName ?? null,
+        topicLabel: c.topicLabel ?? null,
+        rank: c.rank,
+      }));
+    } else {
+      // Country-only filter (no text query) — use Prisma ORM path
+      const claimCountryWhere = countryActive
+        ? { ingestedBy: { in: countryPipelines } }
+        : {};
+      const claimWhere = {
+        deleted: false,
+        ...claimCountryWhere,
+        ...(axisFilter ? { epistemicAxis: axisFilter } : {}),
+      };
+
+      const [count, rows] = await Promise.all([
+        prisma.claim.count({ where: claimWhere }),
+        prisma.claim.findMany({
           where: claimWhere,
           orderBy: { createdAt: "desc" },
           take: limit,
@@ -137,21 +226,45 @@ export async function GET(req: NextRequest) {
               select: { topic: { select: { name: true } } },
             },
           },
-        })
-      : Promise.resolve([] as Array<{
-          id: string;
-          text: string;
-          currentStatus: string;
-          epistemicAxis: string | null;
-          claimType: string;
-          ingestedBy: string;
-          verificationStatus: string | null;
-          epistemicStatus: string | null;
-          createdAt: Date;
-          claimEmergedAt: Date | null;
-          edges: { source: { name: string } }[];
-          topics: { topic: { name: string } }[];
-        }>),
+        }),
+      ]);
+      claimsCount = count;
+      claims = rows.map(c => ({
+        id: c.id,
+        text: c.text,
+        currentStatus: c.currentStatus,
+        epistemicAxis: c.epistemicAxis ?? null,
+        claimType: c.claimType,
+        ingestedBy: c.ingestedBy,
+        verificationStatus: c.verificationStatus,
+        epistemicStatus: c.epistemicStatus ?? null,
+        createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : String(c.createdAt),
+        claimEmergedAt: c.claimEmergedAt instanceof Date ? c.claimEmergedAt.toISOString() : (c.claimEmergedAt ?? null),
+        sourceName: c.edges[0]?.source?.name ?? null,
+        topicLabel: c.topics[0]?.topic?.name ?? null,
+        rank: null,
+      }));
+    }
+  }
+
+  // ── Sources: keep Prisma ORM (small table, ILIKE is fine) ──
+
+  const sourceTextWhere = qRaw.length >= MIN_QUERY
+    ? {
+        OR: [
+          { name: { contains: qRaw, mode: "insensitive" as const } },
+          { url: { contains: qRaw, mode: "insensitive" as const } },
+        ],
+      }
+    : {};
+  const sourceWhere = qRaw.length >= MIN_QUERY
+    ? { deleted: false, ...sourceTextWhere }
+    : null;
+
+  const [sourcesCount, sourceRows] = await Promise.all([
+    wantSources && sourceWhere
+      ? prisma.source.count({ where: sourceWhere })
+      : Promise.resolve(0),
     wantSources && sourceWhere
       ? prisma.source.findMany({
           where: sourceWhere,
@@ -181,21 +294,6 @@ export async function GET(req: NextRequest) {
           edges: { claimId: string }[];
         }>),
   ]);
-
-  const claims: ClaimHit[] = claimRows.map(c => ({
-    id: c.id,
-    text: c.text,
-    currentStatus: c.currentStatus,
-    epistemicAxis: (c as { epistemicAxis?: string | null }).epistemicAxis ?? null,
-    claimType: c.claimType,
-    ingestedBy: c.ingestedBy,
-    verificationStatus: c.verificationStatus,
-    epistemicStatus: (c as { epistemicStatus?: string | null }).epistemicStatus ?? null,
-    createdAt: c.createdAt instanceof Date ? c.createdAt.toISOString() : c.createdAt,
-    claimEmergedAt: c.claimEmergedAt instanceof Date ? c.claimEmergedAt.toISOString() : (c.claimEmergedAt ?? null),
-    sourceName: c.edges[0]?.source?.name ?? null,
-    topicLabel: c.topics[0]?.topic?.name ?? null,
-  }));
 
   const sources: SourceHit[] = sourceRows.map(s => ({
     id: s.id,
