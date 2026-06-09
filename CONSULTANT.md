@@ -307,6 +307,14 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-09 05:44 EDT — Stage 2: USGS earthquake ClaimLocation backfill
+- **Commit:** f2a44f0 — Stage 2: backfill USGS earthquake claims into ClaimLocation table
+- **Why:** City-level globe Stage 2. All 4,696 USGS earthquake claims (`ingestedBy='usgs_eq_v1'`) now have `ClaimLocation` rows with `source='usgs_event'`, `precision='EXACT'`, lat/lon extracted from `metadata.lat`/`metadata.lon`, and `externalRef` set to the USGS event ID from `metadata.eventId`.
+- **Data shape confirmed:** lat/lon live in `Claim.metadata` JSON (not sourceUrl). Every one of the 4,696 claims had valid coordinates — 0 missing coords.
+- **Script:** `scripts/backfill-claim-locations-usgs.ts` — idempotent, batches of 500, skips existing rows on re-run.
+- **DB state after:** `SELECT COUNT(*) FROM "ClaimLocation" WHERE source='usgs_event'` = 4,696
+- **Files changed:** scripts/backfill-claim-locations-usgs.ts (new)
+
 ### 2026-06-09 01:30 EDT — Stage 1: ClaimLocation schema for city-level globe
 - **Commit:** feat: Stage 1 — ClaimLocation schema for city-level globe
 - **Why:** First step of the city-level globe feature. Introduces a normalized location table so claims can carry geocoded points (lat/lon + city/countryCode) with provenance (`source`, `precision`, `externalRef`). Backfill scripts and API routes come in Stage 2+.
