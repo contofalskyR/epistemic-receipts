@@ -352,7 +352,7 @@ async function main() {
         'message',
         'send',
         '--channel', 'telegram',
-        '--target', '7688025079',
+        '--target', process.env.TELEGRAM_CHAT_ID ?? '',
         '--message', message,
       ],
       { stdio: 'inherit' },

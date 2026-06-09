@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
-const TELEGRAM_RECIPIENT = "7688025079";
+const TELEGRAM_RECIPIENT = process.env.TELEGRAM_CHAT_ID;
 const OPENCLAW_URL = "https://gateway.openclaw.ai/v1/message/send";
 const SITE_BASE = "https://epistemic-receipts.vercel.app";
 
