@@ -623,3 +623,17 @@ model WatchedTopic {
   createdAt   DateTime  @default(now())
   lastAlertAt DateTime?
 }
+
+model TopicSubscription {
+  id               String    @id @default(cuid())
+  email            String
+  topicKeyword     String
+  topicLabel       String
+  unsubscribeToken String    @unique @default(cuid())
+  confirmed        Boolean   @default(false)
+  createdAt        DateTime  @default(now())
+  lastAlertAt      DateTime?
+
+  @@unique([email, topicKeyword])
+  @@index([topicKeyword])
+}

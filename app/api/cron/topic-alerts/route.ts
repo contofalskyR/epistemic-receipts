@@ -129,6 +129,81 @@ export async function GET(request: Request) {
     }
   }
 
+  // Email subscribers
+  let emailsSent = 0;
+  let emailErrors = 0;
+
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const { Resend } = await import("resend");
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      const from = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+
+      for (const { keyword, label, total } of perTopicCounts) {
+        if (total === 0) continue;
+
+        const subscribers = await prisma.topicSubscription.findMany({
+          where: { topicKeyword: keyword },
+        });
+        if (subscribers.length === 0) continue;
+
+        const topClaims = await prisma.claim.findMany({
+          where: {
+            deleted: false,
+            createdAt: { gte: since },
+            text: { contains: keyword, mode: "insensitive" as const },
+          },
+          orderBy: { createdAt: "desc" },
+          take: 5,
+          select: { id: true, text: true, epistemicAxis: true, currentStatus: true },
+        });
+
+        const claimLines = topClaims.map(c => {
+          const status = (c.epistemicAxis || c.currentStatus || "").trim();
+          return `• ${truncate(c.text, 140)}${status ? ` — ${status}` : ""}`;
+        });
+
+        for (const sub of subscribers) {
+          const unsubUrl = `${SITE_BASE}/api/unsubscribe?token=${sub.unsubscribeToken}`;
+          const searchUrl = `${SITE_BASE}/search?q=${encodeURIComponent(keyword)}`;
+          const body = [
+            `Weekly update for "${label}" — ${range}`,
+            ``,
+            `${total} new claim${total === 1 ? "" : "s"} this week:`,
+            ``,
+            ...claimLines,
+            ``,
+            `See all: ${searchUrl}`,
+            ``,
+            `—`,
+            `Unsubscribe: ${unsubUrl}`,
+          ].join("\n");
+
+          try {
+            await resend.emails.send({
+              from,
+              to: sub.email,
+              subject: `[Epistemic Receipts] ${total} new ${total === 1 ? "claim" : "claims"} on "${label}"`,
+              text: body,
+            });
+            await prisma.topicSubscription.update({
+              where: { id: sub.id },
+              data: { lastAlertAt: now },
+            });
+            emailsSent++;
+          } catch (err) {
+            console.error(`[topic-alerts] Email to ${sub.email} failed:`, err);
+            emailErrors++;
+          }
+        }
+      }
+    } catch (err) {
+      console.error("[topic-alerts] Resend init failed:", err);
+    }
+  } else {
+    console.log("[topic-alerts] RESEND_API_KEY not set — skipping subscriber emails.");
+  }
+
   return NextResponse.json({
     ok: true,
     range,
@@ -137,5 +212,7 @@ export async function GET(request: Request) {
     sent,
     sendStatus,
     sendError,
+    emailsSent,
+    emailErrors,
   });
 }
