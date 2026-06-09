@@ -38,6 +38,7 @@ model Claim {
   metadata              Json?
   epistemicStatus       String? // confirmed | candidate | retracted | contested | active_trial | completed_trial | registered_trial | approved | settled_judgment | contested_dissent | false_positive
   epistemicAxis         String? // RECORDED | SETTLED | CONTESTED | OPEN | UNRESOLVABLE (5-way axis, replaces currentStatus)
+  updatedAt             DateTime          @updatedAt
 
   parent   Claim?  @relation("ClaimHierarchy", fields: [parentClaimId], references: [id])
   children Claim[] @relation("ClaimHierarchy")
