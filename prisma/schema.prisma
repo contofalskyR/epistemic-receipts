@@ -56,6 +56,7 @@ model Claim {
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
   billCoverage             BillCoverage?
   locations                ClaimLocation[]
+  statusHistory            ClaimStatusHistory[]
 
   @@index([ingestedBy])
   @@index([claimType])
@@ -659,4 +660,33 @@ model ClaimLocation {
   @@index([lat, lon])
   @@index([countryCode])
   @@index([source])
+}
+
+model PipelineRun {
+  id          String    @id @default(cuid())
+  pipelineTag String
+  startedAt   DateTime
+  finishedAt  DateTime?
+  rowsWritten Int       @default(0)
+  cursor      String?
+  status      String // "running" | "done" | "error"
+  error       String?
+  createdAt   DateTime  @default(now())
+
+  @@index([pipelineTag])
+  @@index([status])
+}
+
+model ClaimStatusHistory {
+  id        String   @id @default(cuid())
+  claimId   String
+  fromAxis  String?
+  toAxis    String
+  reason    String?
+  sourceId  String?
+  createdAt DateTime @default(now())
+
+  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@index([claimId])
 }
