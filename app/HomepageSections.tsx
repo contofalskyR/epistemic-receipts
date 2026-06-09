@@ -166,6 +166,10 @@ const DOMAINS: Domain[] = [
 const CHANGELOG: { date: string; text: string }[] = [
   {
     date: "JUNE 9, 2026",
+    text: "City-level globe — Stage 1: ClaimLocation schema. New normalized location table lets claims carry geocoded points (lat/lon + city + countryCode) with provenance (source, precision, externalRef). Migration deployed to prod; backfill scripts and globe UI come in Stage 2+.",
+  },
+  {
+    date: "JUNE 9, 2026",
     text: "/sources reference page shipped under the More menu. 174 external APIs/archives/databases grouped into 7 categories (US Federal, Courts & Legal, Science & Medicine, International Orgs, Pharma & Health, National Parliaments, Archives & Historical) with live per-source claim counts via /api/sources-summary. /datasets remains as the pipeline browser; /sources answers \"where does our data come from?\"",
   },
   {

@@ -307,6 +307,15 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-09 01:30 EDT — Stage 1: ClaimLocation schema for city-level globe
+- **Commit:** feat: Stage 1 — ClaimLocation schema for city-level globe
+- **Why:** First step of the city-level globe feature. Introduces a normalized location table so claims can carry geocoded points (lat/lon + city/countryCode) with provenance (`source`, `precision`, `externalRef`). Backfill scripts and API routes come in Stage 2+.
+- **Migration:** `20260609013001_add_claim_location` — additive only (new table + FK + 4 indexes on `claimId`, `(lat,lon)`, `countryCode`, `source`). Deployed to Neon prod via `prisma migrate deploy`; `migrate status` reports up to date; `SELECT COUNT(*) FROM "ClaimLocation"` = 0.
+- **Cron loops:** Active loops noted (e.g. courtlistener, openalex enrichment), not paused — additive migration is low-risk per Migration Runbook.
+- **Files changed:**
+  - prisma/schema.prisma (add `ClaimLocation` model + `locations ClaimLocation[]` back-relation on `Claim`)
+  - prisma/migrations/20260609013001_add_claim_location/migration.sql
+
 ### 2026-06-09 01:06 EDT — Build /sources page listing all data source APIs grouped by category
 - **Commit:** feat: email alert subscriptions for topic watches
 - **Files changed:**

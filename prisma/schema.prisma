@@ -54,6 +54,7 @@ model Claim {
   relationsFrom            ClaimRelation[] @relation("ClaimRelationFrom")
   relationsTo              ClaimRelation[] @relation("ClaimRelationTo")
   billCoverage             BillCoverage?
+  locations                ClaimLocation[]
 
   @@index([ingestedBy])
   @@index([claimType])
@@ -636,4 +637,24 @@ model TopicSubscription {
 
   @@unique([email, topicKeyword])
   @@index([topicKeyword])
+}
+
+model ClaimLocation {
+  id          String   @id @default(cuid())
+  claimId     String
+  lat         Float
+  lon         Float
+  city        String?
+  countryCode String?
+  source      String // 'usgs_event' | 'openalex_ror' | 'ctgov_site' | 'court_seat' | 'manual'
+  precision   String // 'EXACT' | 'CITY' | 'INSTITUTION' | 'COUNTRY_CAPITAL_FALLBACK'
+  externalRef String?
+  createdAt   DateTime @default(now())
+
+  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+
+  @@index([claimId])
+  @@index([lat, lon])
+  @@index([countryCode])
+  @@index([source])
 }
