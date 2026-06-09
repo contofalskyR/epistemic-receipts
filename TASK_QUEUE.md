@@ -17,9 +17,9 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Add `ClaimStatusHistory` model (claimId, fromAxis, toAxis, reason, sourceId, createdAt) to Prisma schema + migrate (2026-06-09)
 
 ### Stage 4 — P1 docs & repo hygiene
-- [ ] Build `scripts/sync-registry.ts` to auto-generate AGENTS.md pipeline registry table from `GROUP BY "ingestedBy"` query
-- [ ] `git rm --cached` all ~150 log/dry-run files at root, add patterns to `.gitignore`
-- [ ] Rewrite `README.md` — replace stock create-next-app with project description (use investor memo §2 as base)
+- [x] Build `scripts/sync-registry.ts` to auto-generate AGENTS.md pipeline registry table from `GROUP BY "ingestedBy"` query (2026-06-09)
+- [x] `git rm --cached` all ~150 log/dry-run files at root, add patterns to `.gitignore` (2026-06-09)
+- [x] Rewrite `README.md` — replace stock create-next-app with project description (use investor memo §2 as base) (2026-06-09)
 
 ### Stage 5 — P1 CI quality gate
 - [ ] Add GitHub Actions workflow: `tsc --noEmit` + `eslint` + gitleaks on PR
