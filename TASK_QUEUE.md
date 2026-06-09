@@ -29,8 +29,8 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Fix silent judge failures: log error with bookClaim ID, increment error counter, return JUDGMENT_ERROR sentinel (2026-06-09)
 
 ### Stage 7 — P2 search + integrity
-- [ ] Add generated tsvector column + GIN index to Claim, query with `websearch_to_tsquery` + `ts_rank`
-- [ ] Build data integrity invariant checks script (source URL coverage, orphaned edges, status vocabulary, dupes) + schedule as nightly cron
+- [x] Add generated tsvector column + GIN index to Claim, query with `websearch_to_tsquery` + `ts_rank`
+- [x] Build data integrity invariant checks script (source URL coverage, orphaned edges, status vocabulary, dupes) + schedule as nightly cron
 
 ### Blocked — needs Robert
 - [ ] ⏸ Collapse 4 status fields → `epistemicAxis` only (needs Robert's 4-way vs 5-way decision)
