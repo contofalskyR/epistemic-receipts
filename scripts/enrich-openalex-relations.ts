@@ -181,7 +181,7 @@ async function main() {
       if (otherClaimId === claim.id) continue
 
       const inserted = await upsertRelation(
-        claim.id, otherClaimId, 'cites', null, dryRun, stats,
+        claim.id, otherClaimId, 'CITES', null, dryRun, stats,
       )
       if (inserted) stats.citesAdded += 1
     }
@@ -195,7 +195,7 @@ async function main() {
       if (otherClaimId === claim.id) continue
 
       const inserted = await upsertRelation(
-        claim.id, otherClaimId, 'related', null, dryRun, stats,
+        claim.id, otherClaimId, 'RELATED', null, dryRun, stats,
       )
       if (inserted) stats.relatedAdded += 1
     }
@@ -223,7 +223,7 @@ async function main() {
         if (otherClaimId === claim.id) continue
 
         const inserted = await upsertRelation(
-          claim.id, otherClaimId, 'cited_by',
+          claim.id, otherClaimId, 'CITED_BY',
           citing.publication_year ?? null,
           dryRun, stats,
         )
@@ -243,7 +243,7 @@ async function main() {
 async function upsertRelation(
   fromClaimId: string,
   toClaimId: string,
-  relationType: 'cites' | 'related' | 'cited_by',
+  relationType: 'CITES' | 'RELATED' | 'CITED_BY',
   year: number | null,
   dryRun: boolean,
   stats: { relationsSkippedExisting: number },

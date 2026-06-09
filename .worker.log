@@ -424,3 +424,35 @@ NEXT_TASK: NONE
 [2026-06-08 14:47 EDT] Current block: 945,734 tokens $0.69 (window ends 07:00PM)
 [2026-06-08 14:47 EDT] Queue empty
 [2026-06-08 14:47 EDT] Worker finished. Tasks done: 0
+[2026-06-09 00:47 EDT] Worker started
+[2026-06-09 00:47 EDT] Current block: 593,268 tokens $0.75 (window ends 05:00AM)
+[2026-06-09 00:47 EDT] Queue empty
+[2026-06-09 00:47 EDT] Worker finished. Tasks done: 0
+[2026-06-09 05:47 EDT] Worker started
+[2026-06-09 05:47 EDT] Current block: 285,063 tokens $0.24 (window ends 10:00AM)
+[2026-06-09 05:47 EDT] Queue empty
+[2026-06-09 05:47 EDT] Worker finished. Tasks done: 0
+[2026-06-09 10:47 EDT] Worker started
+[2026-06-09 10:47 EDT] Current block: 62,419 tokens $0.14 (window ends 03:00PM)
+[2026-06-09 10:47 EDT] Queue empty
+[2026-06-09 10:47 EDT] Worker finished. Tasks done: 0
+[2026-06-09 15:47 EDT] Worker started
+[2026-06-09 15:47 EDT] Current block: 1,018,101 tokens $2.50 (window ends 08:00PM)
+[2026-06-09 15:47 EDT] Queue empty
+[2026-06-09 15:47 EDT] Worker finished. Tasks done: 0
+[2026-06-09 16:04 EDT] Worker started
+[2026-06-09 16:04 EDT] Current block: 5,250,300 tokens $6.28 (window ends 08:00PM)
+[2026-06-09 16:04 EDT] Starting: Gate `app/api/books/upload/route.ts` and `app/api/books/[bookId]/ingest/route.ts` with `isReadOnly()` check + reject uploads >20MB
+Done.
+
+TASK_DONE: Gated `app/api/books/upload/route.ts` and `app/api/books/[bookId]/ingest/route.ts` with `isReadOnly()` 403 checks (matching existing write-API convention) and added a 20MB (413) file-size limit to the upload route, verified clean with tsc.
+
+NEXT_TASK: Redact Neon pooler hostname from `AUDIT-2026-05-21.md`
+[2026-06-09 16:04 EDT] Completed: Gate `app/api/books/upload/route.ts` and `app/api/books/[bookId]/ingest/route.ts` with `isReadOnly()` check + reject uploads >20MB
+[2026-06-09 16:05 EDT] Starting: Redact Neon pooler hostname from `AUDIT-2026-05-21.md`
+Done.
+
+TASK_DONE: Redacted the Neon pooler hostname (`ep-solitary-credit-am7an17v-pooler.c-5.us-east-1.aws.neon.tech`) on line 164 of `AUDIT-2026-05-21.md`, replacing it with `[REDACTED-NEON-POOLER-HOST]`, updated TASK_QUEUE.md, and committed both files.
+NEXT_TASK: Uppercase all lowercase `ClaimRelation.relationType` values in DB + update query sites
+[2026-06-09 16:05 EDT] Completed: Redact Neon pooler hostname from `AUDIT-2026-05-21.md`
+[2026-06-09 16:06 EDT] Starting: Uppercase all lowercase `ClaimRelation.relationType` values in DB + update query sites

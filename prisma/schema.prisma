@@ -603,7 +603,7 @@ model ClaimRelation {
   id               String   @id @default(cuid())
   fromClaimId      String
   toClaimId        String
-  relationType     String // "cites" | "cited_by" | "related" | "OUTCOME" | "STATUS_UPDATE" | "SUPERSEDED_BY" | "REVERSED" | "EXPANDED"
+  relationType     String // "CITES" | "CITED_BY" | "RELATED" | "OUTCOME" | "STATUS_UPDATE" | "SUPERSEDED_BY" | "REVERSED" | "EXPANDED"
   year             Int?
   followUpContext  Json?    // metadata for follow-up relation types (confidence, heuristic, notes)
   createdAt        DateTime @default(now())

@@ -238,8 +238,9 @@ async function ingestBIA(
     `&page_size=${pageSize}`
 
   let nextUrl: string | null = firstUrl
+  const maxFetch = limit * 50
 
-  while (nextUrl && result.fetched < limit) {
+  while (nextUrl && result.ingested < limit && result.fetched < maxFetch) {
     await sleep(REQUEST_DELAY_MS)
 
     let page: CLPage
@@ -253,13 +254,12 @@ async function ingestBIA(
     }
     const clusters: CLCluster[] = page.results ?? []
 
-    const need = limit - result.fetched
-    const batch = clusters.slice(0, need)
-    result.fetched += batch.length
+    result.fetched += clusters.length
 
-    console.log(`  [${BIA_CODE}] page — ${batch.length} clusters (${result.fetched} total, ${page.count ?? '?'} available)`)
+    console.log(`  [${BIA_CODE}] page — ${clusters.length} clusters (${result.fetched} total fetched, ${result.ingested}/${limit} ingested, ${page.count ?? '?'} available)`)
 
-    for (const cluster of batch) {
+    for (const cluster of clusters) {
+      if (result.ingested >= limit) break
       await sleep(REQUEST_DELAY_MS)
 
       const clusterId    = String(cluster.id)
@@ -396,7 +396,7 @@ async function ingestBIA(
       }
     }
 
-    nextUrl = page.next && result.fetched < limit ? page.next : null
+    nextUrl = page.next && result.ingested < limit ? page.next : null
   }
 
   return result

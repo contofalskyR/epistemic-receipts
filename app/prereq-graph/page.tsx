@@ -14,7 +14,7 @@ async function getStats() {
   const result = await prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
     `SELECT COUNT(DISTINCT "fromClaimId") AS count
      FROM "ClaimRelation"
-     WHERE "relationType" IN ('cites', 'SUPERSEDED_BY', 'OUTCOME')`
+     WHERE "relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')`
   );
   return { claimsWithLinks: Number(result[0]?.count ?? 0) };
 }

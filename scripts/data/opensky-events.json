@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ukraine_war_2022",
+    "label": "Ukraine War — airspace closure",
+    "startDate": "2022-02-24",
+    "endDate": "2022-03-31",
+    "bbox": { "minLat": 44, "maxLat": 52, "minLon": 22, "maxLon": 40 },
+    "description": "Russian invasion of Ukraine triggers closure of Ukrainian and Russian airspace to Western airlines"
+  },
+  {
+    "id": "belarus_diversion_2021",
+    "label": "Ryanair FR4978 forced landing — Belarus",
+    "startDate": "2021-05-23",
+    "endDate": "2021-05-23",
+    "bbox": { "minLat": 51, "maxLat": 54, "minLon": 23, "maxLon": 29 },
+    "description": "Belarus forces Ryanair flight FR4978 to land in Minsk, triggering EU airspace bans over Belarus"
+  },
+  {
+    "id": "middle_east_oct2023",
+    "label": "Gaza conflict — Middle East airspace disruption",
+    "startDate": "2023-10-07",
+    "endDate": "2023-12-31",
+    "bbox": { "minLat": 29, "maxLat": 35, "minLon": 33, "maxLon": 40 },
+    "description": "Gaza conflict triggers airspace closures and rerouting across Middle East"
+  },
+  {
+    "id": "sudan_conflict_2023",
+    "label": "Sudan civil war — airspace closure",
+    "startDate": "2023-04-15",
+    "endDate": "2023-09-30",
+    "bbox": { "minLat": 10, "maxLat": 22, "minLon": 22, "maxLon": 38 },
+    "description": "Sudan civil war forces closure of Khartoum FIR and surrounding airspace"
+  }
+]

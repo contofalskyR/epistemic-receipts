@@ -3,7 +3,6 @@ import * as fs from "node:fs";
 import { spawn } from "node:child_process";
 import * as path from "node:path";
 import { prisma } from "@/lib/prisma";
-import { isReadOnly } from "@/lib/isReadOnly";
 import {
   progressFilePath,
   logFilePath,
@@ -23,14 +22,13 @@ function readState(bookId: string): MatchJobState | null {
 }
 
 export async function POST(
-  _req: Request,
+  req: Request,
   { params }: { params: Promise<{ bookId: string }> },
 ) {
-  if (isReadOnly()) {
-    return NextResponse.json(
-      { error: "Editing disabled in production" },
-      { status: 403 },
-    );
+  const body = await req.json().catch(() => ({}));
+  const passphrase: string = body?.passphrase ?? "";
+  if (!passphrase || passphrase !== process.env.BOOK_UPLOAD_PASSPHRASE) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const { bookId } = await params;

@@ -1,7 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { MatchJobState } from "@/lib/bookMatchJob";
+
+type MatchDetail = {
+  matchId: string;
+  bookClaimText: string;
+  claimId: string;
+  claimText: string;
+  matchType: string;
+  reason: string | null;
+  similarityScore: number;
+};
+
+const MATCH_TYPE_COLORS: Record<string, string> = {
+  SUPPORTS: "bg-green-900/70 text-green-300 border-green-700",
+  CONTRADICTS: "bg-red-900/70 text-red-300 border-red-700",
+  RELATED: "bg-amber-900/70 text-amber-300 border-amber-700",
+  UNVERIFIED: "bg-gray-800/70 text-gray-400 border-gray-700",
+};
 
 export type SerializedBook = {
   id: string;
@@ -42,97 +60,333 @@ function pct(processed: number, total: number): number {
 
 // ── BookRow ────────────────────────────────────────────────────────────────────
 
-type RequestState =
+type MatchState =
   | { kind: "idle" }
-  | { kind: "sending" }
-  | { kind: "sent"; matchCount: number; pendingReasons: number }
+  | { kind: "prompting" }
+  | { kind: "starting" }
+  | { kind: "running"; state: MatchJobState }
+  | { kind: "done"; matched: number }
   | { kind: "error"; message: string };
 
 function BookRow({ book }: { book: SerializedBook }) {
-  const [reqState, setReqState] = useState<RequestState>({ kind: "idle" });
+  const [matchState, setMatchState] = useState<MatchState>({ kind: "idle" });
+  const [localMatchCount, setLocalMatchCount] = useState(book.matchCount);
+  const [passphrase, setPassphrase] = useState("");
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  async function requestAnalysis() {
-    setReqState({ kind: "sending" });
+  const [detailOpen, setDetailOpen] = useState(false);
+  const [detailMatches, setDetailMatches] = useState<MatchDetail[]>([]);
+  const [detailTotal, setDetailTotal] = useState(0);
+  const [detailPage, setDetailPage] = useState(1);
+  const [loadingDetail, setLoadingDetail] = useState(false);
+
+  function stopPolling() {
+    if (pollRef.current) {
+      clearInterval(pollRef.current);
+      pollRef.current = null;
+    }
+  }
+
+  useEffect(() => () => stopPolling(), []);
+
+  async function openDetail() {
+    if (detailOpen) {
+      setDetailOpen(false);
+      return;
+    }
+    setDetailOpen(true);
+    if (detailMatches.length > 0) return;
+    setLoadingDetail(true);
     try {
-      const r = await fetch(`/api/books/${book.id}/request-analysis`, {
-        method: "POST",
+      const r = await fetch(`/api/books/${book.id}/matches?page=1&limit=20`, {
+        cache: "no-store",
       });
-      const data = await r.json().catch(() => ({}));
+      if (!r.ok) return;
+      const data = (await r.json()) as {
+        total: number;
+        page: number;
+        matches: MatchDetail[];
+      };
+      setDetailMatches(data.matches);
+      setDetailTotal(data.total);
+      setDetailPage(1);
+    } catch {
+      // ignore
+    } finally {
+      setLoadingDetail(false);
+    }
+  }
+
+  async function loadMoreDetail() {
+    const nextPage = detailPage + 1;
+    setLoadingDetail(true);
+    try {
+      const r = await fetch(
+        `/api/books/${book.id}/matches?page=${nextPage}&limit=20`,
+        { cache: "no-store" },
+      );
+      if (!r.ok) return;
+      const data = (await r.json()) as {
+        total: number;
+        page: number;
+        matches: MatchDetail[];
+      };
+      setDetailMatches((prev) => [...prev, ...data.matches]);
+      setDetailPage(nextPage);
+    } catch {
+      // ignore
+    } finally {
+      setLoadingDetail(false);
+    }
+  }
+
+  async function pollStatus() {
+    try {
+      const r = await fetch(`/api/books/${book.id}/match/status`, {
+        cache: "no-store",
+      });
+      if (!r.ok) return;
+      const data = (await r.json()) as MatchJobState;
+      if (data.status === "running") {
+        setMatchState({ kind: "running", state: data });
+      } else if (data.status === "done") {
+        stopPolling();
+        setLocalMatchCount(data.matched);
+        setMatchState({ kind: "done", matched: data.matched });
+      } else if (data.status === "error") {
+        stopPolling();
+        setMatchState({
+          kind: "error",
+          message: data.errorMessage ?? "Match failed",
+        });
+      }
+    } catch {
+      // ignore transient poll errors
+    }
+  }
+
+  async function startMatch() {
+    setMatchState({ kind: "starting" });
+    try {
+      const r = await fetch(`/api/books/${book.id}/match`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ passphrase }),
+      });
+      if (r.status === 401) {
+        // Fallback: notify via request-analysis Telegram ping
+        await fetch(`/api/books/${book.id}/request-analysis`, {
+          method: "POST",
+        }).catch(() => undefined);
+        setMatchState({
+          kind: "error",
+          message: "Auth failed — analysis request sent to RobClaw",
+        });
+        return;
+      }
       if (!r.ok) {
-        setReqState({
+        const data = await r.json().catch(() => ({}));
+        setMatchState({
           kind: "error",
           message: data?.error ?? `HTTP ${r.status}`,
         });
         return;
       }
-      setReqState({
-        kind: "sent",
-        matchCount: data.matchCount ?? 0,
-        pendingReasons: data.pendingReasons ?? 0,
+      setMatchState({
+        kind: "running",
+        state: { status: "running", processed: 0, matched: 0, total: 0, errors: 0 },
       });
+      pollRef.current = setInterval(pollStatus, 2000);
     } catch (e) {
-      setReqState({
+      setMatchState({
         kind: "error",
         message: e instanceof Error ? e.message : "Request failed",
       });
     }
   }
 
-  const buttonLabel =
-    reqState.kind === "sending"
-      ? "Pinging RobClaw…"
-      : reqState.kind === "sent"
-        ? "Requested"
-        : "Request Analysis";
+  const hasMore = detailMatches.length < detailTotal;
 
   return (
-    <li className="bg-neutral-900 border border-neutral-800 rounded-lg p-4">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <Link
-            href={`/reader/${book.id}`}
-            className="text-lg font-medium text-neutral-100 hover:text-blue-400"
-          >
-            {book.title}
-          </Link>
-          {book.author && (
-            <p className="text-neutral-400 text-sm mt-1">by {book.author}</p>
-          )}
-          <p className="text-xs text-neutral-500 mt-2">
-            {book.chunkCount} paragraphs · {book.claimCount} extracted claims ·{" "}
-            {book.matchCount} graph matches · ingested{" "}
-            {book.ingestedAt.slice(0, 10)}
-          </p>
-          {book.sourceUrl && (
-            <p className="text-xs text-neutral-600 mt-1 truncate">
-              {book.sourceUrl}
+    <li className="bg-neutral-900 border border-neutral-800 rounded-lg overflow-hidden">
+      <div className="p-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <Link
+              href={`/reader/${book.id}`}
+              className="text-lg font-medium text-neutral-100 hover:text-blue-400"
+            >
+              {book.title}
+            </Link>
+            {book.author && (
+              <p className="text-neutral-400 text-sm mt-1">by {book.author}</p>
+            )}
+            <p className="text-xs text-neutral-500 mt-2">
+              {book.chunkCount} paragraphs · {book.claimCount} extracted claims ·{" "}
+              {localMatchCount} graph matches · ingested{" "}
+              {book.ingestedAt.slice(0, 10)}
             </p>
-          )}
+            {book.sourceUrl && (
+              <p className="text-xs text-neutral-600 mt-1 truncate">
+                {book.sourceUrl}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-col items-end gap-2 flex-shrink-0">
+            {matchState.kind === "idle" && (
+              <button
+                onClick={() => setMatchState({ kind: "prompting" })}
+                className="text-xs px-3 py-1.5 rounded border border-blue-800 bg-blue-950 text-blue-200 hover:bg-blue-900 transition-colors"
+              >
+                {localMatchCount === 0 ? "Connect to Graph" : "Re-match"}
+              </button>
+            )}
+            {matchState.kind === "prompting" && (
+              <button
+                onClick={() => {
+                  setMatchState({ kind: "idle" });
+                  setPassphrase("");
+                }}
+                className="text-xs px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800 text-neutral-400 hover:bg-neutral-700 transition-colors"
+              >
+                Cancel
+              </button>
+            )}
+            {matchState.kind === "starting" && (
+              <button
+                disabled
+                className="text-xs px-3 py-1.5 rounded border border-blue-800 bg-blue-950 text-blue-200 opacity-50 cursor-not-allowed"
+              >
+                Starting…
+              </button>
+            )}
+            {matchState.kind === "done" && (
+              <span className="text-xs text-green-400">
+                ✓ {matchState.matched} matches
+              </span>
+            )}
+            {matchState.kind === "error" && (
+              <button
+                onClick={() => setMatchState({ kind: "idle" })}
+                className="text-xs px-3 py-1.5 rounded border border-red-800 bg-red-950 text-red-200 hover:bg-red-900 transition-colors"
+              >
+                Error — retry?
+              </button>
+            )}
+            {localMatchCount > 0 && (
+              <button
+                onClick={openDetail}
+                className="text-xs px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800 text-neutral-300 hover:bg-neutral-700 transition-colors"
+              >
+                {detailOpen ? "Hide matches" : "View matches"}
+              </button>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col items-end gap-2 flex-shrink-0">
-          <button
-            onClick={requestAnalysis}
-            disabled={
-              reqState.kind === "sending" || reqState.kind === "sent"
-            }
-            className="text-xs px-3 py-1.5 rounded border border-blue-800 bg-blue-950 text-blue-200 hover:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          >
-            {buttonLabel}
-          </button>
-        </div>
+
+        {matchState.kind === "prompting" && (
+          <div className="mt-3 flex items-center gap-2">
+            <input
+              type="password"
+              value={passphrase}
+              onChange={(e) => setPassphrase(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && passphrase && startMatch()}
+              placeholder="passphrase"
+              className="text-xs bg-neutral-900 border border-neutral-700 rounded px-2 py-1.5 text-neutral-100 placeholder-neutral-600 focus:outline-none focus:border-blue-700 w-36"
+            />
+            <button
+              onClick={startMatch}
+              disabled={!passphrase}
+              className="text-xs px-3 py-1.5 rounded border border-blue-800 bg-blue-950 text-blue-200 hover:bg-blue-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              Run
+            </button>
+          </div>
+        )}
+
+        {matchState.kind === "running" && (
+          <ProgressBar
+            label="Matching to graph"
+            processed={matchState.state.processed}
+            total={matchState.state.total}
+            sub={`${matchState.state.matched} matches found`}
+            color="bg-blue-500"
+          />
+        )}
+
+        {matchState.kind === "error" && (
+          <p className="mt-2 text-xs text-red-400">{matchState.message}</p>
+        )}
       </div>
 
-      {reqState.kind === "sent" && (
-        <p className="mt-3 text-xs text-green-400">
-          Analysis requested — RobClaw will review shortly.{" "}
-          <span className="text-neutral-500">
-            ({reqState.matchCount} matches, {reqState.pendingReasons} need
-            reasons)
-          </span>
-        </p>
-      )}
-      {reqState.kind === "error" && (
-        <p className="mt-3 text-xs text-red-400">{reqState.message}</p>
+      {detailOpen && (
+        <div className="border-t border-neutral-800">
+          <div className="px-4 py-3 flex items-center justify-between bg-neutral-950/50">
+            <p className="text-sm font-medium text-neutral-200">
+              {book.title} —{" "}
+              <span className="text-neutral-400 font-normal">
+                {detailTotal} match{detailTotal !== 1 ? "es" : ""}
+              </span>
+            </p>
+            <button
+              onClick={() => setDetailOpen(false)}
+              className="text-neutral-500 hover:text-neutral-300 text-lg leading-none transition-colors"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="px-4 pb-4 space-y-3 pt-3">
+            {loadingDetail && detailMatches.length === 0 && (
+              <div className="flex items-center justify-center py-8">
+                <div className="h-5 w-5 rounded-full border-2 border-neutral-600 border-t-neutral-300 animate-spin" />
+              </div>
+            )}
+
+            {detailMatches.map((m) => (
+              <div
+                key={m.matchId}
+                className="bg-neutral-800 border border-neutral-700 rounded-lg p-3"
+              >
+                <div className="grid grid-cols-2 gap-3">
+                  <p className="text-sm italic text-neutral-300 line-clamp-4">
+                    {m.bookClaimText}
+                  </p>
+                  <Link
+                    href={`/claims/${m.claimId}`}
+                    className="text-sm text-neutral-300 line-clamp-4 hover:text-blue-400 transition-colors"
+                  >
+                    {m.claimText}
+                  </Link>
+                </div>
+                <div className="mt-2 flex items-center gap-2 flex-wrap">
+                  <span
+                    className={`text-xs px-1.5 py-0.5 rounded border font-medium ${
+                      MATCH_TYPE_COLORS[m.matchType] ??
+                      "bg-gray-800/70 text-gray-400 border-gray-700"
+                    }`}
+                  >
+                    {m.matchType}
+                  </span>
+                  {m.reason && (
+                    <span className="text-xs text-neutral-500">{m.reason}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {hasMore && (
+              <button
+                onClick={loadMoreDetail}
+                disabled={loadingDetail}
+                className="w-full text-xs py-2 rounded border border-neutral-700 bg-neutral-800 text-neutral-400 hover:bg-neutral-700 hover:text-neutral-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {loadingDetail ? "Loading…" : `Load more (${detailTotal - detailMatches.length} remaining)`}
+              </button>
+            )}
+          </div>
+        </div>
       )}
     </li>
   );

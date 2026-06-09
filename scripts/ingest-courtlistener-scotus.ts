@@ -259,23 +259,23 @@ async function main() {
   let ingested = 0
   let skipped  = 0
   let errors   = 0
+  // Safety cap: never fetch more than 50x the limit to avoid infinite loops
+  const maxFetch = limit * 50
 
   let nextUrl: string | null = firstUrl
 
-  while (nextUrl && fetched < limit) {
+  while (nextUrl && ingested < limit && fetched < maxFetch) {
     await sleep(REQUEST_DELAY_MS)
 
     const page = (await clFetch(nextUrl, token)) as CLPage
     const clusters: CLCluster[] = page.results ?? []
 
-    // How many from this page do we still need?
-    const need = limit - fetched
-    const batch = clusters.slice(0, need)
-    fetched += batch.length
+    fetched += clusters.length
 
-    console.log(`Fetched page — ${batch.length} clusters (${fetched} total, ${page.count ?? '?'} available)\n`)
+    console.log(`Fetched page — ${clusters.length} clusters (${fetched} total fetched, ${ingested}/${limit} ingested, ${page.count ?? '?'} available)\n`)
 
-    for (const cluster of batch) {
+    for (const cluster of clusters) {
+      if (ingested >= limit) break
       await sleep(REQUEST_DELAY_MS)
 
       const clusterId    = String(cluster.id)

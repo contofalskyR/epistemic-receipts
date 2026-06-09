@@ -13,7 +13,7 @@
  *      for any pipeline matching 'courtlistener_%'. Limit 10 matches per act
  *      to bound false positives on common phrases.
  *   4. Upsert one ClaimRelation per (court opinion → congress bill) pair with
- *      relationType='cites' — the closest valid type for "this court opinion
+ *      relationType='CITES' — the closest valid type for "this court opinion
  *      references/challenges this enacted law" (REFERENCED_BY is not in the
  *      existing vocabulary; see prisma/schema.prisma ClaimRelation.relationType).
  *
@@ -95,7 +95,7 @@ async function upsertRelation(
   if (DRY_RUN) return 'inserted'
   try {
     await prisma.claimRelation.create({
-      data: { fromClaimId, toClaimId, relationType: 'cites', followUpContext },
+      data: { fromClaimId, toClaimId, relationType: 'CITES', followUpContext },
     })
     return 'inserted'
   } catch (e: unknown) {

@@ -100,6 +100,11 @@ At ~842k claims the site went down. Fixed with:
 - The book was citing itself. Removed the `BookClaimMatch` writes from that script.
 - Correct model: `BookClaimMatch` links a book's extracted claims to *pre-existing external claims*, not to claims generated from the same passage.
 
+**Cost issue — large books (June 9, 2026):**
+- *The Darker Angels of Our Nature* (344 chunks → 4,286 claims) took ~7 hours and ~$35 to run `match-book-to-graph.ts` at full scale with Sonnet.
+- **Fix needed:** `match-book-to-graph.ts` must pass `--model claude-haiku-4-5-20251001` in both `claude --print` calls. Brings cost $35 → ~$2, runtime 7h → ~25min.
+- Also consider: keyword pre-filter to only judge claims relevant to the book's thesis before running LLM judge.
+
 **Bay of Pigs books — enrichment outcome (May 2026):**
 - IG Survey (70 chunks) — mostly classification headers and OCR-garbled text. Enrichment returned NULL for all matches; all deleted. Not worth re-running.
 - Congressional Statement (6 chunks, 16 claims) — good quality. Claims written to DB with Source + Edge wiring. Status: PROVISIONAL, `source_quality: ocr_scan`.

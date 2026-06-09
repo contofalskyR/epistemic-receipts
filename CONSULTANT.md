@@ -307,6 +307,19 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-09 — Stage 3: Courts/federal → city backfill for ClaimLocation
+- **Script:** `scripts/backfill-claim-locations-courts.ts` (new)
+- **Why:** City-level globe Stage 3. Populates ClaimLocation rows for all court and federal agency claims using curated court-seat city coordinates. Uses `source='court_seat'`, `precision='CITY'`.
+- **Pipelines covered (34 total):**
+  - CourtListener: `courtlistener_scotus_v1` (DC), `courtlistener_circuits_v1` (circuit-parsed from text → 13 seat cities), `courtlistener_bia_v1` (Falls Church VA), `courtlistener_tax_v1` (DC)
+  - International courts: `icj_judgments_v1`, `icc_judgments_v1`, `icc_cases_v1` (The Hague), `echr_judgments_v1`, `echr_v1` (Strasbourg), `icsid_v1` (DC), `african_court_v1` (Arusha)
+  - UN bodies: `un_sc_resolutions_v1`, `un_ga_resolutions_v1`, `un_ga_v1`, `un_treaties_v1` (New York)
+  - Intl orgs: `nato_official_texts_v1` (Brussels), `wto_disputes_v1`, `wipo_lex_v1` (Geneva)
+  - US federal: `sec_edgar_v1`, `ofac_sdn_v1`, `doj_fara_v1`, `fr_rules_v1`, `congress_bills_tracker_v1`, `congress_v1`, `congress_stock_act_v1`, `congress_votes_v1`, `fec_finance_v1`, `fec_finance_pac_v1`, `openfec_ie_v1`, `openfec_v1`, `nara_catalog_v1` (DC); `nih_reporter_v1` (Bethesda); `fred_v1` (St. Louis)
+- **Rows inserted:** 275,361 (0 skipped — first run, none pre-existing)
+- **Notable:** `nara_catalog_v1` dominates at 176,003 claims. `courtlistener_circuits_v1` (670 claims) used regex parse of claim text `"(Xth Cir."` to pick the correct seat city — 0 unmatched.
+- **Script is idempotent:** skips claims already having a `court_seat` ClaimLocation.
+
 ### 2026-06-09 05:44 EDT — Stage 2: USGS earthquake ClaimLocation backfill
 - **Commit:** f2a44f0 — Stage 2: backfill USGS earthquake claims into ClaimLocation table
 - **Why:** City-level globe Stage 2. All 4,696 USGS earthquake claims (`ingestedBy='usgs_eq_v1'`) now have `ClaimLocation` rows with `source='usgs_event'`, `precision='EXACT'`, lat/lon extracted from `metadata.lat`/`metadata.lon`, and `externalRef` set to the USGS event ID from `metadata.eventId`.

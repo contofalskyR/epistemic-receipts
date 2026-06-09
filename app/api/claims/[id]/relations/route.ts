@@ -89,9 +89,9 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
       verificationStatus: c.verificationStatus,
       isStub: c.ingestedBy === "openalex_stub_v1",
     };
-    if (r.relationType === "cites") grouped.cites.push(item);
-    else if (r.relationType === "cited_by") grouped.cited_by.push(item);
-    else if (r.relationType === "related") grouped.related.push(item);
+    if (r.relationType === "CITES") grouped.cites.push(item);
+    else if (r.relationType === "CITED_BY") grouped.cited_by.push(item);
+    else if (r.relationType === "RELATED") grouped.related.push(item);
   }
 
   // cited_by sort: newest first; cites/related: newest first as well

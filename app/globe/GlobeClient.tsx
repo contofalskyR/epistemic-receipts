@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import { hexbin as d3Hexbin } from "d3-hexbin";
 import { countryFlag } from "@/lib/countryCodeMap";
 import type { OriginPoint } from "@/app/api/globe/origins/route";
 import { getGeoJSONForYear, type GeoJSONSelection } from "@/lib/historical-geo";
@@ -43,6 +44,32 @@ type CountryClaimsPage = {
   claims: ClaimItem[];
 };
 
+type CityCluster = {
+  lat: number;
+  lon: number;
+  city: string | null;
+  countryCode: string | null;
+  claimCount: number;
+};
+
+type CityClaim = {
+  id: string;
+  title: string | null;
+  claimType: string;
+  ingestedBy: string;
+  epistemicAxis: string | null;
+  createdAt: string;
+};
+
+type CitySidebarData = {
+  city: string | null;
+  countryCode: string | null;
+  lat: number;
+  lon: number;
+  total: number;
+  claims: CityClaim[];
+};
+
 type TooltipState = {
   x: number;
   y: number;
@@ -50,7 +77,15 @@ type TooltipState = {
   count: number;
   source: "modern" | "historical" | "paleo" | null;
 } | null;
-type ViewMode = "heatmap" | "origins";
+type ViewMode = "heatmap" | "origins" | "cities";
+
+type HexRing = {
+  lat: number;
+  lng: number;
+  maxRadius: number;
+  propagationSpeed: number;
+  repeatPeriod: number;
+};
 
 const STATUS_COLORS: Record<string, string> = {
   HARD_FACT: "bg-emerald-900/70 text-emerald-300 border-emerald-700",
@@ -107,9 +142,16 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const [loadingDensity, setLoadingDensity] = useState(false);
   const [originsData, setOriginsData] = useState<OriginPoint[] | null>(null);
   const [loadingOrigins, setLoadingOrigins] = useState(false);
+  const [citiesData, setCitiesData] = useState<CityCluster[] | null>(null);
+  const [loadingCities, setLoadingCities] = useState(false);
+  const [citySidebar, setCitySidebar] = useState<CitySidebarData | null>(null);
+  const [loadingCitySidebar, setLoadingCitySidebar] = useState(false);
+  const [cityClaimsPage, setCityClaimsPage] = useState(1);
+  const [loadingMoreCityClaims, setLoadingMoreCityClaims] = useState(false);
   const [currentGeoSelection, setCurrentGeoSelection] = useState<GeoJSONSelection | null>(null);
   const [loadingGeo, setLoadingGeo] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<CategorySlug | null>(null);
+  const [hexOverlay, setHexOverlay] = useState(false);
 
   const isAtPresent = currentYear >= MAX_YEAR;
 
@@ -138,6 +180,27 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       )
       .slice(0, 8);
   }, [searchQuery, sortedDensity]);
+
+  const hexRings = useMemo<HexRing[]>(() => {
+    if (!hexOverlay || !citiesData || citiesData.length === 0) return [];
+    const hb = d3Hexbin<CityCluster>()
+      .x((d) => d.lon)
+      .y((d) => d.lat)
+      .radius(2);
+    const bins = hb(citiesData);
+    const maxSum = Math.max(...bins.map((bin) => bin.reduce((s, d) => s + d.claimCount, 0)), 1);
+    return bins.map((bin) => {
+      const sum = bin.reduce((s, d) => s + d.claimCount, 0);
+      const t = Math.log(sum + 1) / Math.log(maxSum + 1);
+      return {
+        lat: bin.y,
+        lng: bin.x,
+        maxRadius: 1 + t * 4,
+        propagationSpeed: 1.5,
+        repeatPeriod: 2000,
+      };
+    });
+  }, [citiesData, hexOverlay]);
 
   const filteredClaims = useMemo(() => {
     if (!claimsPage) return [];
@@ -199,6 +262,19 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     [openSidebar]
   );
 
+  const openCitySidebar = useCallback(async (lat: number, lon: number) => {
+    const cityKey = `${Math.round(lat * 10) / 10}_${Math.round(lon * 10) / 10}`;
+    setLoadingCitySidebar(true);
+    setCitySidebar(null);
+    setCityClaimsPage(1);
+    try {
+      const res = await fetch(`/api/globe/city/${cityKey}`);
+      if (res.ok) setCitySidebar(await res.json());
+    } finally {
+      setLoadingCitySidebar(false);
+    }
+  }, []);
+
   useEffect(() => {
     viewModeRef.current = viewMode;
   }, [viewMode]);
@@ -243,6 +319,27 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       clearTimeout(t);
     };
   }, [currentYear, isAtPresent, density, categoryFilter]);
+
+  // Fetch city clusters when entering cities mode
+  useEffect(() => {
+    if (viewMode !== "cities") return;
+    if (citiesData !== null) return;
+    let cancelled = false;
+    setLoadingCities(true);
+    (async () => {
+      try {
+        const res = await fetch("/api/globe/cities");
+        if (!res.ok) return;
+        const data: CityCluster[] = await res.json();
+        if (cancelled) return;
+        setCitiesData(data);
+      } finally {
+        if (!cancelled) setLoadingCities(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewMode]);
 
   // Debounced origins refetch when in origins mode + year changes
   useEffect(() => {
@@ -461,6 +558,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           .polygonSideColor(() => "rgba(10,10,20,0.6)")
           .polygonAltitude(0.005)
           .pointsData([])
+          .ringsData([])
           .backgroundColor("#0a0a0a");
       } else {
         // Historical era — sepia/parchment fill; click disabled.
@@ -470,9 +568,10 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           .polygonSideColor(() => "rgba(20,15,10,0.6)")
           .polygonAltitude(0.005)
           .pointsData([])
+          .ringsData([])
           .backgroundColor("#0a0a0a");
       }
-    } else {
+    } else if (viewMode === "origins") {
       // Origins mode
       const pts = originsData ?? [];
       const maxOrigin = Math.max(...pts.map((d) => d.claimCount), 1);
@@ -509,10 +608,52 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         })
         .pointsMerge(true)
         .pointLabel((d: OriginPoint) => `${d.city}: ${d.claimCount.toLocaleString()} claims`)
+        .ringsData([])
         .backgroundColor("#050505");
+    } else {
+      // Cities mode
+      const pts = citiesData ?? [];
+      const maxCity = Math.max(...pts.map((d) => d.claimCount), 1);
+
+      globeRef.current
+        .polygonCapColor(() => "#0d1117")
+        .polygonSideColor(() => "rgba(0,0,0,0)")
+        .polygonStrokeColor(() => "rgba(40,60,80,0.3)")
+        .polygonAltitude(0.001)
+        .pointsData(pts)
+        .pointLat((d: CityCluster) => d.lat)
+        .pointLng((d: CityCluster) => d.lon)
+        .pointAltitude(0.01)
+        .pointRadius((d: CityCluster) => {
+          const t = Math.log(d.claimCount + 1) / Math.log(maxCity + 1);
+          return 0.1 + t * 1.1;
+        })
+        .pointColor((d: CityCluster) => {
+          const t = Math.log(d.claimCount + 1) / Math.log(maxCity + 1);
+          const alpha = 0.4 + t * 0.6;
+          return `rgba(56,189,248,${alpha})`;
+        })
+        .pointsMerge(false)
+        .pointLabel((d: CityCluster) => `${d.city ?? d.countryCode}: ${d.claimCount.toLocaleString()} claims`)
+        .onPointClick((d: CityCluster) => openCitySidebar(d.lat, d.lon))
+        .backgroundColor("#050505");
+
+      // Hex density overlay
+      if (hexOverlay && hexRings.length > 0) {
+        globeRef.current
+          .ringsData(hexRings)
+          .ringLat((d: HexRing) => d.lat)
+          .ringLng((d: HexRing) => d.lng)
+          .ringMaxRadius((d: HexRing) => d.maxRadius)
+          .ringPropagationSpeed((d: HexRing) => d.propagationSpeed)
+          .ringRepeatPeriod((d: HexRing) => d.repeatPeriod)
+          .ringColor((_d: HexRing) => (t: number) => `rgba(245,158,11,${(1 - t) * 0.4})`);
+      } else {
+        globeRef.current.ringsData([]);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode, globeReady, densityMap, maxCount, originsData, currentGeoSelection]);
+  }, [viewMode, globeReady, densityMap, maxCount, originsData, currentGeoSelection, citiesData, openCitySidebar, hexOverlay, hexRings]);
 
   return (
     <div className="relative" style={{ width: "100%", height: "90vh", background: "#0a0a0a" }}>
@@ -551,11 +692,13 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           <div
             className="absolute top-1 bottom-1 rounded-full bg-amber-500 transition-transform duration-300 ease-in-out"
             style={{
-              width: "calc(50% - 4px)",
+              width: "calc(33.333% - 4px)",
               transform:
                 viewMode === "heatmap"
                   ? "translateX(0)"
-                  : "translateX(calc(100% + 8px))",
+                  : viewMode === "origins"
+                  ? "translateX(calc(100% + 8px))"
+                  : "translateX(calc(200% + 16px))",
             }}
           />
           <button
@@ -575,6 +718,15 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             }`}
           >
             Origins
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode("cities")}
+            className={`relative z-10 px-3 py-1 text-xs font-medium rounded-full transition-colors duration-200 ${
+              viewMode === "cities" ? "text-gray-900" : "text-gray-400 hover:text-gray-200"
+            }`}
+          >
+            Cities
           </button>
         </div>
 
@@ -693,7 +845,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
                 {formatYear(currentYear)}
               </div>
               <div className="text-[11px] text-gray-500 leading-tight">
-                {loadingDensity || loadingOrigins ? (
+                {loadingDensity || loadingOrigins || loadingCities ? (
                   "Loading…"
                 ) : isAtPresent && categoryFilter ? (
                   `${totalClaimCount.toLocaleString()} claims in ${CATEGORY_LABELS[categoryFilter]}`
@@ -796,8 +948,25 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         </div>
       )}
 
+      {viewMode === "cities" && (
+        <div className="fixed bottom-[120px] left-6 z-30">
+          <button
+            type="button"
+            onClick={() => setHexOverlay((v) => !v)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs border transition-colors ${
+              hexOverlay
+                ? "bg-amber-900/40 border-amber-600 text-amber-300"
+                : "bg-gray-900/80 border-gray-800 text-gray-400 hover:text-gray-200 hover:border-gray-600"
+            }`}
+          >
+            <span>◈</span>
+            <span>Hex density</span>
+          </button>
+        </div>
+      )}
+
       {/* Sidebar */}
-      {(loadingSidebar || sidebar) && (
+      {(loadingSidebar || sidebar) && viewMode !== "cities" && (
         <div
           className="fixed right-0 w-80 bg-gray-950/95 border-l border-gray-800 flex flex-col shadow-2xl overflow-hidden z-40"
           style={{ top: 45, bottom: 0 }}
@@ -915,6 +1084,108 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
               </a>
             </div>
           )}
+        </div>
+      )}
+
+      {/* City sidebar */}
+      {viewMode === "cities" && (loadingCitySidebar || citySidebar) && (
+        <div
+          className="fixed right-0 w-80 bg-gray-950/95 border-l border-gray-800 flex flex-col shadow-2xl overflow-hidden z-40"
+          style={{ top: 45, bottom: 0 }}
+        >
+          <div className="flex items-center justify-between px-5 py-4 border-b border-gray-800">
+            {citySidebar ? (
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 min-w-0">
+                  {citySidebar.countryCode && (
+                    <span className="text-2xl shrink-0">{countryFlag(citySidebar.countryCode)}</span>
+                  )}
+                  <span className="font-semibold text-white truncate">
+                    {citySidebar.city ?? "Unknown city"}
+                  </span>
+                </div>
+                <div className="mt-0.5 text-xs text-gray-400">
+                  <span className="text-sky-400 font-medium">{citySidebar.total.toLocaleString()}</span>
+                  <span className="ml-1">claims</span>
+                </div>
+              </div>
+            ) : (
+              <span className="text-gray-400 text-sm">Loading…</span>
+            )}
+            <button
+              onClick={() => setCitySidebar(null)}
+              className="text-gray-500 hover:text-white ml-4 text-lg leading-none shrink-0"
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
+            {loadingCitySidebar && (
+              <div className="flex justify-center py-8">
+                <div className="w-6 h-6 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
+              </div>
+            )}
+            {!loadingCitySidebar && citySidebar && citySidebar.claims.map((claim) => (
+              <Link
+                key={claim.id}
+                href={`/claims/${claim.id}`}
+                prefetch={false}
+                className="block rounded-lg border border-gray-800 bg-gray-900 p-3 hover:border-gray-600 transition-colors cursor-pointer"
+              >
+                <p className="text-sm text-gray-200 line-clamp-3">
+                  {claim.title ?? claim.claimType}
+                </p>
+                <div className="flex flex-wrap items-center gap-2 mt-2">
+                  {claim.epistemicAxis && (
+                    <span className="text-xs px-1.5 py-0.5 rounded border bg-sky-900/50 text-sky-300 border-sky-800">
+                      {claim.epistemicAxis}
+                    </span>
+                  )}
+                  <span className="text-xs text-gray-500 truncate">{claim.ingestedBy}</span>
+                </div>
+              </Link>
+            ))}
+            {!loadingCitySidebar && citySidebar && citySidebar.claims.length === 0 && (
+              <p className="text-gray-500 text-sm py-4 text-center">No claims found for this city.</p>
+            )}
+            {!loadingCitySidebar && citySidebar && citySidebar.claims.length < citySidebar.total && (
+              <div className="py-2 flex justify-center">
+                <button
+                  type="button"
+                  disabled={loadingMoreCityClaims}
+                  onClick={async () => {
+                    if (!citySidebar) return;
+                    const nextPage = cityClaimsPage + 1;
+                    const cityKey = `${Math.round(citySidebar.lat * 10) / 10}_${Math.round(citySidebar.lon * 10) / 10}`;
+                    setLoadingMoreCityClaims(true);
+                    try {
+                      const res = await fetch(`/api/globe/city/${cityKey}?page=${nextPage}&limit=20`);
+                      if (!res.ok) return;
+                      const data: CitySidebarData = await res.json();
+                      setCitySidebar((prev) =>
+                        prev ? { ...prev, claims: [...prev.claims, ...data.claims] } : data
+                      );
+                      setCityClaimsPage(nextPage);
+                    } finally {
+                      setLoadingMoreCityClaims(false);
+                    }
+                  }}
+                  className="px-4 py-1.5 text-xs rounded border border-sky-700/60 text-sky-400 hover:bg-sky-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  {loadingMoreCityClaims ? (
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-3 h-3 rounded-full border border-sky-400 border-t-transparent animate-spin inline-block" />
+                      Loading…
+                    </span>
+                  ) : (
+                    `Load more (${(citySidebar.total - citySidebar.claims.length).toLocaleString()} remaining)`
+                  )}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

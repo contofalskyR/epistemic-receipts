@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { isReadOnly } from "@/lib/isReadOnly";
 
 export const dynamic = "force-dynamic";
 
@@ -10,12 +9,6 @@ export async function POST(
   _req: Request,
   { params }: { params: Promise<{ bookId: string }> },
 ) {
-  if (isReadOnly()) {
-    return NextResponse.json(
-      { error: "Editing disabled in production" },
-      { status: 403 },
-    );
-  }
 
   const { bookId } = await params;
 
@@ -27,7 +20,8 @@ export async function POST(
     return NextResponse.json({ error: "Book not found" }, { status: 404 });
   }
 
-  const [matchCount, pendingReasons] = await Promise.all([
+  const [claimCount, matchCount, pendingReasons] = await Promise.all([
+    prisma.bookClaim.count({ where: { chunk: { bookId } } }),
     prisma.bookClaimMatch.count({
       where: { bookClaim: { chunk: { bookId } } },
     }),
@@ -47,16 +41,18 @@ export async function POST(
     );
   }
 
+  const needsMatch = matchCount === 0 && claimCount > 0;
   const text = [
-    `📚 Analysis request`,
-    `Book: ${book.title}${book.author ? ` — ${book.author}` : ""}`,
-    `Book ID: ${book.id}`,
-    `Matches in DB: ${matchCount}`,
-    `Pending reasons: ${pendingReasons}`,
+    `📚 Book ready for analysis`,
+    `"${book.title}"${book.author ? ` — ${book.author}` : ""}`,
+    `ID: ${book.id}`,
     ``,
-    `Push reasons back via:`,
-    `PATCH /api/books/${book.id}/matches/reasons`,
-    `body: {"reasons":[{"matchId":"...","reason":"..."}]}`,
+    `Claims extracted: ${claimCount}`,
+    `Graph matches: ${matchCount}${pendingReasons > 0 ? ` (${pendingReasons} need reasons)` : ""}`,
+    ``,
+    needsMatch
+      ? `Run match locally:\nnpx ts-node --project tsconfig.scripts.json scripts/match-book-to-graph.ts --book ${book.id}`
+      : `Push reasons back via:\nPATCH /api/books/${book.id}/matches/reasons\nbody: {"reasons":[{"matchId":"...","reason":"..."}]}`,
   ].join("\n");
 
   const tgRes = await fetch(

@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
        FROM "Claim" c
        JOIN "ClaimRelation" cr ON cr."fromClaimId" = c.id
        WHERE c.deleted = false
-         AND cr."relationType" IN ('cites', 'SUPERSEDED_BY', 'OUTCOME')
+         AND cr."relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')
          ${domainClause}
        GROUP BY c.id
        ORDER BY links DESC, c."claimEmergedAt" DESC NULLS LAST
@@ -79,7 +79,7 @@ export async function GET(req: NextRequest) {
        FROM "Claim" c
        JOIN "ClaimRelation" cr ON cr."fromClaimId" = c.id
        WHERE c.deleted = false
-         AND cr."relationType" IN ('cites', 'SUPERSEDED_BY', 'OUTCOME')
+         AND cr."relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')
          ${domainClause}`
     ),
   ]);
