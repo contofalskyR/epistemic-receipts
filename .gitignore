@@ -59,3 +59,15 @@ prisma/migrations.sqlite-backup/
 
 # Claude Code agent tooling (per-machine memory, not source)
 .claude/
+
+# Pipeline run artifacts (logs, dry-runs, dead letters — regenerable)
+*.log
+.*-full.log
+.*-dry-run*.log
+.worker*.log
+.nara-cursor.json
+*-dry-run*.json
+*-dry-run*.txt
+*-dead-letter.json
+*-verification.md
+logs/

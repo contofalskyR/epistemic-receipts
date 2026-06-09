@@ -1,9 +1,0 @@
-{
-  "runDate": "2026-05-21T01:52:50.213Z",
-  "pipeline": "Pipeline 105",
-  "ingestedBy": "lithuania_legislation_v1",
-  "status": "BLOCKED",
-  "blocker": "e-seimas.lrs.lt requires JSF ViewState; e-tar.lt blocked by Cloudflare; no JSON API",
-  "totalCandidates": 0,
-  "sample": []
-}

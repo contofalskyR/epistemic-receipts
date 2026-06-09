@@ -1,9 +1,0 @@
-{
-  "runDate": "2026-05-21T01:52:51.065Z",
-  "pipeline": "Pipeline 106",
-  "ingestedBy": "bulgaria_legislation_v1",
-  "status": "BLOCKED",
-  "blocker": "parliament.bg Vue.js SPA (no accessible API); lex.bg blocked by Cloudflare; RSS feed empty",
-  "totalCandidates": 0,
-  "sample": []
-}
