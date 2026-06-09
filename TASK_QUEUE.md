@@ -8,9 +8,9 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 ## Queue
 
 ### Stage 2 — P1 data model: relations + constraints
-- [ ] Uppercase all lowercase `ClaimRelation.relationType` values in DB + update query sites
-- [ ] Add `@@unique([bookClaimId, claimId])` to BookClaimMatch in schema + dedupe existing rows + migrate
-- [ ] Fix duplicate migration timestamp: rename `20260608000000_add_watched_topic` to `20260608010000_add_watched_topic`, then `prisma migrate resolve --applied`
+- [x] Uppercase all lowercase `ClaimRelation.relationType` values in DB + update query sites (completed 2026-06-09)
+- [x] Add `@@unique([bookClaimId, claimId])` to BookClaimMatch in schema + dedupe existing rows + migrate (completed 2026-06-09)
+- [x] Fix duplicate migration timestamp: rename `20260608000000_add_watched_topic` to `20260608010000_add_watched_topic`, then `prisma migrate resolve --applied` (completed 2026-06-09)
 
 ### Stage 3 — P1 data model: freshness infrastructure
 - [ ] Add `PipelineRun` model (pipelineTag, startedAt, finishedAt, rowsWritten, cursor, status, error) to Prisma schema + migrate
