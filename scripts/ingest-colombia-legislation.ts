@@ -16,7 +16,11 @@ const prisma = new PrismaClient()
 const INGESTED_BY = 'colombia_legislation_v1'
 const PIPELINE = 'Pipeline 46'
 const SEARCH_URL = 'https://searchmjd.search.windows.net/indexes/suinjuriscol-index/docs'
-const API_KEY = '404481BD9298D9A33EE7215E16757100'
+const API_KEY = process.env.COLOMBIA_SEARCH_KEY
+if (!API_KEY) {
+  console.error('Missing COLOMBIA_SEARCH_KEY environment variable')
+  process.exit(1)
+}
 const API_VERSION = '2019-05-06'
 
 // ── Types ──────────────────────────────────────────────────────────────────────
