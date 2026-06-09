@@ -10,7 +10,11 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const NYT_API_KEY = 'K7ulaKJJ0gCckL2RrdfCcqMLfBGcvhr9SuJGoJh4TbNC4k3C'
+const NYT_API_KEY = process.env.NYT_API_KEY
+if (!NYT_API_KEY) {
+  console.error('Missing NYT_API_KEY environment variable')
+  process.exit(1)
+}
 const NYT_SEARCH_URL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
 const MIN_INTERVAL = 1200 // NYT rate limits in practice around ~50 req/min
 
