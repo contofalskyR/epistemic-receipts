@@ -522,7 +522,79 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // 10. CFCs deplete stratospheric ozone: crosses expert, institutional, and MARKET communities.
+  // 10. Semaglutide (GLP-1 agonist): compound discovery → Phase 1 → Phase 3 → multi-indication approval.
+  {
+    externalId: 'trajectory:semaglutide-glp1',
+    text: 'Semaglutide (a GLP-1 receptor agonist) reduces blood glucose and body weight in humans.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-26',
+        datePrecision: 'DAY',
+        reason: 'First-in-human Phase 1 trial of semaglutide (NN9535) registered, establishing the compound as an active investigational drug.',
+        source: {
+          externalId: 'src:nct01262118-semaglutide-p1',
+          name: 'NCT01262118 — A Trial Investigating the Safety, Tolerability and Pharmacokinetics of Semaglutide (Novo Nordisk, 2010).',
+          url: 'https://clinicaltrials.gov/ct2/show/NCT01262118',
+          publishedAt: '2010-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-09-24',
+        datePrecision: 'DAY',
+        reason: 'Lau et al. publish the first full discovery paper for semaglutide, describing the C18 fatty-diacid conjugate design that confers once-weekly half-life — compound mechanism now in the public record.',
+        source: {
+          externalId: 'src:lau-2015-jmedchem-semaglutide',
+          name: 'Lau J, et al. Discovery of the Once-Weekly GLP-1 Analogue Semaglutide. J Med Chem. 2015;58(18):7370–80.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26308095/',
+          publishedAt: '2015-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-12-05',
+        datePrecision: 'DAY',
+        reason: 'FDA approves Ozempic (semaglutide 1 mg injectable) under NDA 209637 for type 2 diabetes management.',
+        source: {
+          externalId: 'src:fda-nda209637-ozempic-2017',
+          name: 'FDA Approval NDA 209637 — Ozempic (semaglutide injection) for Type 2 Diabetes (December 5, 2017).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2017/209637Orig1s000ltr.pdf',
+          publishedAt: '2017-12-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-06-04',
+        datePrecision: 'DAY',
+        reason: 'FDA approves Wegovy (semaglutide 2.4 mg) under NDA 215256 for chronic weight management — the obesity indication extends the settled claim to a second population.',
+        source: {
+          externalId: 'src:fda-nda215256-wegovy-2021',
+          name: 'FDA Approval NDA 215256 — Wegovy (semaglutide injection 2.4 mg) for Chronic Weight Management (June 4, 2021).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/215256Orig1s000ltr.pdf',
+          publishedAt: '2021-06-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // 11. CFCs deplete stratospheric ozone: crosses expert, institutional, and MARKET communities.
   {
     externalId: 'trajectory:cfc-ozone-depletion',
     text: 'Chlorofluorocarbons (CFCs) deplete the stratospheric ozone layer.',
