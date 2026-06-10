@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SettlingCurve from "./SettlingCurve";
+import SettlingCurveNav from "./SettlingCurveNav";
 
 export const metadata: Metadata = {
   title: "Settling Curve — Epistemic Receipts",
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function SettlingCurvePage() {
-  return <SettlingCurve />;
+  return (
+    <>
+      <SettlingCurveNav active="individual" />
+      <SettlingCurve />
+    </>
+  );
 }
