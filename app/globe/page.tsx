@@ -68,7 +68,7 @@ export default async function GlobePage() {
       <div className="mb-3">
         <h1 className="text-xl font-semibold text-white">Claim Density Globe</h1>
         <p className="text-sm text-gray-400">
-          Countries colored by number of linked claims. Click a country to see recent claims.
+          Every glowing point is a cluster of claims — brighter means denser. Click a country to browse its claims.
         </p>
       </div>
       {/* Full-bleed container that escapes max-w-3xl */}

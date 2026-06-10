@@ -7,6 +7,17 @@ import { countryFlag } from "@/lib/countryCodeMap";
 import type { OriginPoint } from "@/app/api/globe/origins/route";
 import { getGeoJSONForYear, type GeoJSONSelection } from "@/lib/historical-geo";
 import { CATEGORY_SLUGS, CATEGORY_LABELS, type CategorySlug } from "@/lib/globe-categories";
+import {
+  LIGHTS_PARAMS,
+  buildLightDots,
+  createLightsObject,
+  createOceanGrid,
+  hexDotColor,
+  BACKDROP_PATTERN_URI,
+  BACKDROP_PATTERN_MASK,
+  type AnchorLike,
+  type Disposable,
+} from "./granular-lights";
 
 type DensityRow = {
   countryCode: string;
@@ -117,6 +128,19 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   const currentSourceRef = useRef<"modern" | "historical" | "paleo" | null>("modern");
   const playIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Granular "claim lights" rendering
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const threeRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const lightsRef = useRef<({ group: any } & Disposable) | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const oceanRef = useRef<({ points: any } & Disposable) | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const modernFeaturesRef = useRef<any[] | null>(null);
+  const anchorsRef = useRef<AnchorLike[]>([]);
+  const lightsSigRef = useRef<string>("");
+  const [anchorsVersion, setAnchorsVersion] = useState(0);
+
   const [tooltip, setTooltip] = useState<TooltipState>(null);
   const [sidebar, setSidebar] = useState<CountryDetail | null>(null);
   const [loadingSidebar, setLoadingSidebar] = useState(false);
@@ -208,15 +232,6 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     if (!q) return claimsPage.claims;
     return claimsPage.claims.filter((c) => c.text.toLowerCase().includes(q));
   }, [claimsPage, claimFilter]);
-
-  function countToColor(count: number): string {
-    if (count === 0) return "#1c1c2e";
-    const t = Math.log(count + 1) / Math.log(maxCount + 1);
-    const r = Math.round(30 + t * (245 - 30));
-    const g = Math.round(58 + t * (158 - 58));
-    const b = Math.round(95 + t * (11 - 95));
-    return `rgb(${r},${g},${b})`;
-  }
 
   const openSidebar = useCallback(async (code: string) => {
     setLoadingSidebar(true);
@@ -440,7 +455,9 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
 
     async function init() {
       if (!containerRef.current) return;
-      const GlobeGL = (await import("globe.gl")).default;
+      const [globeModule, threeModule] = await Promise.all([import("globe.gl"), import("three")]);
+      const GlobeGL = globeModule.default;
+      threeRef.current = threeModule;
       const modernSelection = getGeoJSONForYear(MAX_YEAR);
       const res = await fetch(modernSelection.path);
       const geo = await res.json();
@@ -449,26 +466,35 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
 
       geoCache.current.set(modernSelection.path, geo);
       currentSourceRef.current = "modern";
+      modernFeaturesRef.current = geo.features;
 
       const el = containerRef.current;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       globeInstance = new (GlobeGL as any)(el)
         .width(el.clientWidth)
         .height(el.clientHeight)
-        .backgroundColor("#0a0a0a")
-        .atmosphereColor("#1a3a6e")
-        .atmosphereAltitude(0.12)
+        .backgroundColor("rgba(0,0,0,0)")
+        .showAtmosphere(true)
+        .atmosphereColor(LIGHTS_PARAMS.atmosColor)
+        .atmosphereAltitude(LIGHTS_PARAMS.atmosAlt)
+        .hexPolygonsData(geo.features)
+        .hexPolygonResolution(LIGHTS_PARAMS.hexRes)
+        .hexPolygonMargin(LIGHTS_PARAMS.hexMargin)
+        .hexPolygonAltitude(0.002)
+        .hexPolygonColor(() => `rgb(${LIGHTS_PARAMS.hexBase.join(",")})`)
         .polygonsData(geo.features)
-        .polygonSideColor(() => "rgba(10,10,20,0.6)")
-        .polygonAltitude(0.005)
+        .polygonCapColor(() => "rgba(0,0,0,0)")
+        .polygonStrokeColor(() => "rgba(0,0,0,0)")
+        .polygonSideColor(() => "rgba(0,0,0,0)")
+        .polygonAltitude(0.006)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .onPolygonHover((feat: any, _prev: unknown, ev: MouseEvent) => {
           if (!feat) {
             setTooltip(null);
-            if (viewModeRef.current === "origins") {
+            if (viewModeRef.current !== "cities") {
               hoveredFeatRef.current = null;
               if (currentSourceRef.current === "modern") {
-                globeRef.current?.polygonCapColor(() => "#1a2035");
+                globeRef.current?.polygonCapColor(() => "rgba(0,0,0,0)");
               }
             }
             return;
@@ -483,12 +509,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             count: row?.claimCount ?? 0,
             source: currentSourceRef.current,
           });
-          if (viewModeRef.current === "origins" && currentSourceRef.current === "modern") {
+          if (viewModeRef.current !== "cities" && currentSourceRef.current === "modern") {
             hoveredFeatRef.current = feat;
             const hovered = feat;
             globeRef.current?.polygonCapColor(
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              (f: any) => f === hovered ? "#263050" : "#1a2035"
+              (f: any) => (f === hovered ? "rgba(96,116,160,0.16)" : "rgba(0,0,0,0)")
             );
           }
         })
@@ -499,6 +525,16 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           const code = feat?.properties?.ISO_A2 ?? feat?.properties?.iso_a2;
           if (code && code !== "-99") openSidebar(code);
         });
+
+      if (typeof (globeInstance as any).hexPolygonUseDots === "function") {
+        (globeInstance as any).hexPolygonUseDots(true);
+      }
+      const globeMat = globeInstance.globeMaterial() as any;
+      globeMat.color.set(LIGHTS_PARAMS.globeColor);
+      if ("shininess" in globeMat) globeMat.shininess = 0;
+
+      oceanRef.current = createOceanGrid(threeModule, globeInstance.getGlobeRadius());
+      globeInstance.scene().add(oceanRef.current.points);
 
       globeInstance.controls().autoRotate = true;
       globeInstance.controls().autoRotateSpeed = 0.4;
@@ -516,6 +552,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
       cancelled = true;
       if (globeInstance) {
         try {
+          lightsRef.current?.dispose();
+          oceanRef.current?.dispose();
+        } catch {}
+        lightsRef.current = null;
+        oceanRef.current = null;
+        try {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (globeInstance as any)._destructor?.();
         } catch {}
@@ -523,6 +565,70 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Effect 1: Prefetch origin cities as anchors for the lights
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/globe/origins");
+        if (!res.ok) return;
+        const data: OriginPoint[] = await res.json();
+        if (cancelled) return;
+        anchorsRef.current = data.map((o) => ({ lat: o.lat, lon: o.lon, claimCount: o.claimCount }));
+        setAnchorsVersion((v) => v + 1);
+      } catch {
+        // anchors are optional
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Effect 2: Build/rebuild claim-lights point cloud
+  useEffect(() => {
+    const globe = globeRef.current;
+    const THREE = threeRef.current;
+    const feats = modernFeaturesRef.current;
+    if (!globeReady || !globe || !THREE || !feats) return;
+
+    const source = currentGeoSelection?.source ?? "modern";
+    const show = viewMode === "heatmap" && source === "modern";
+    if (lightsRef.current) lightsRef.current.group.visible = show;
+    if (!show) return;
+
+    const sig = `${totalClaimCount}:${densityState.length}:${categoryFilter ?? "all"}:${anchorsVersion}`;
+    if (lightsSigRef.current === sig && lightsRef.current) return;
+    lightsSigRef.current = sig;
+
+    const dots = buildLightDots(feats, densityState, anchorsRef.current);
+    if (lightsRef.current) {
+      globe.scene().remove(lightsRef.current.group);
+      lightsRef.current.dispose();
+      lightsRef.current = null;
+    }
+    const lights = createLightsObject(
+      THREE,
+      (lat: number, lng: number, alt: number) => globe.getCoords(lat, lng, alt),
+      dots
+    );
+    globe.scene().add(lights.group);
+    lightsRef.current = lights;
+  }, [globeReady, viewMode, densityState, totalClaimCount, currentGeoSelection, categoryFilter, anchorsVersion]);
+
+  // Effect 3: Tint land hex dots by density
+  useEffect(() => {
+    if (!globeRef.current || !globeReady) return;
+    const source = currentGeoSelection?.source ?? "modern";
+    if (source !== "modern") return;
+    globeRef.current.hexPolygonColor(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (feat: any) => {
+        const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
+        const row = code ? densityMap.get(code) : undefined;
+        return hexDotColor(row?.claimCount ?? 0, maxCount);
+      }
+    );
+  }, [densityMap, maxCount, globeReady, currentGeoSelection]);
 
   // Resize handler
   useEffect(() => {
@@ -545,21 +651,17 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
 
     const source = currentGeoSelection?.source ?? "modern";
 
+    globeRef.current.hexPolygonsData(source === "modern" ? modernFeaturesRef.current ?? [] : []);
+
     if (viewMode === "heatmap") {
       if (source === "modern") {
         globeRef.current
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .polygonCapColor((feat: any) => {
-            const code = feat.properties?.ISO_A2 ?? feat.properties?.iso_a2;
-            const row = code ? densityMap.get(code) : undefined;
-            return countToColor(row?.claimCount ?? 0);
-          })
-          .polygonStrokeColor(() => "#2a2a4a")
-          .polygonSideColor(() => "rgba(10,10,20,0.6)")
-          .polygonAltitude(0.005)
+          .polygonCapColor(() => "rgba(0,0,0,0)")
+          .polygonStrokeColor(() => "rgba(0,0,0,0)")
+          .polygonSideColor(() => "rgba(0,0,0,0)")
+          .polygonAltitude(0.006)
           .pointsData([])
-          .ringsData([])
-          .backgroundColor("#0a0a0a");
+          .ringsData([]);
       } else {
         // Historical era — sepia/parchment fill; click disabled.
         globeRef.current
@@ -568,27 +670,18 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           .polygonSideColor(() => "rgba(20,15,10,0.6)")
           .polygonAltitude(0.005)
           .pointsData([])
-          .ringsData([])
-          .backgroundColor("#0a0a0a");
+          .ringsData([]);
       }
     } else if (viewMode === "origins") {
       // Origins mode
       const pts = originsData ?? [];
       const maxOrigin = Math.max(...pts.map((d) => d.claimCount), 1);
 
-      if (source === "modern") {
-        globeRef.current
-          .polygonCapColor(() => "#0d1117")
-          .polygonSideColor(() => "rgba(0,0,0,0)")
-          .polygonStrokeColor(() => "rgba(80,100,140,0.5)")
-          .polygonAltitude(0.001);
-      } else {
-        globeRef.current
-          .polygonCapColor(() => "#1a1610")
-          .polygonSideColor(() => "rgba(0,0,0,0)")
-          .polygonStrokeColor(() => "rgba(140,110,80,0.5)")
-          .polygonAltitude(0.001);
-      }
+      globeRef.current
+        .polygonCapColor(() => "rgba(0,0,0,0)")
+        .polygonSideColor(() => "rgba(0,0,0,0)")
+        .polygonStrokeColor(() => "rgba(0,0,0,0)")
+        .polygonAltitude(0.006);
 
       globeRef.current
         .pointsData(pts)
@@ -608,18 +701,17 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         })
         .pointsMerge(true)
         .pointLabel((d: OriginPoint) => `${d.city}: ${d.claimCount.toLocaleString()} claims`)
-        .ringsData([])
-        .backgroundColor("#050505");
+        .ringsData([]);
     } else {
       // Cities mode
       const pts = citiesData ?? [];
       const maxCity = Math.max(...pts.map((d) => d.claimCount), 1);
 
       globeRef.current
-        .polygonCapColor(() => "#0d1117")
+        .polygonCapColor(() => "rgba(0,0,0,0)")
         .polygonSideColor(() => "rgba(0,0,0,0)")
-        .polygonStrokeColor(() => "rgba(40,60,80,0.3)")
-        .polygonAltitude(0.001)
+        .polygonStrokeColor(() => "rgba(0,0,0,0)")
+        .polygonAltitude(0.006)
         .pointsData(pts)
         .pointLat((d: CityCluster) => d.lat)
         .pointLng((d: CityCluster) => d.lon)
@@ -635,8 +727,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
         })
         .pointsMerge(false)
         .pointLabel((d: CityCluster) => `${d.city ?? d.countryCode}: ${d.claimCount.toLocaleString()} claims`)
-        .onPointClick((d: CityCluster) => openCitySidebar(d.lat, d.lon))
-        .backgroundColor("#050505");
+        .onPointClick((d: CityCluster) => openCitySidebar(d.lat, d.lon));
 
       // Hex density overlay
       if (hexOverlay && hexRings.length > 0) {
@@ -656,11 +747,21 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
   }, [viewMode, globeReady, densityMap, maxCount, originsData, currentGeoSelection, citiesData, openCitySidebar, hexOverlay, hexRings]);
 
   return (
-    <div className="relative" style={{ width: "100%", height: "90vh", background: "#0a0a0a" }}>
-      <div ref={containerRef} className="w-full h-full" />
+    <div className="relative" style={{ width: "100%", height: "90vh", background: "#050505" }}>
+      {/* Decorative ×-pattern backdrop */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: BACKDROP_PATTERN_URI,
+          WebkitMaskImage: BACKDROP_PATTERN_MASK,
+          maskImage: BACKDROP_PATTERN_MASK,
+        }}
+      />
+      <div ref={containerRef} className="w-full h-full relative" />
 
       {!globeReady && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]">
+        <div className="absolute inset-0 flex items-center justify-center bg-[#050505]">
           <div className="flex flex-col items-center gap-3">
             <div className="w-10 h-10 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
             <p className="text-gray-400 text-sm">Loading globe…</p>
@@ -708,7 +809,7 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
               viewMode === "heatmap" ? "text-gray-900" : "text-gray-400 hover:text-gray-200"
             }`}
           >
-            Heatmap
+            Lights
           </button>
           <button
             type="button"
@@ -920,10 +1021,10 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
           <span>Low</span>
           <div
             className="w-24 h-3 rounded"
-            style={{ background: "linear-gradient(to right, #1e3a5f, #f59e0b)" }}
+            style={{ background: "linear-gradient(to right, #6b2b0d, #f59e0b, #ffd34d)" }}
           />
           <span>High</span>
-          <span className="ml-2 text-gray-500">claim density</span>
+          <span className="ml-2 text-gray-500">each dot ≈ a cluster of claims</span>
           <span className="mx-2 text-gray-700">|</span>
           <Link
             href="/globe/connections"

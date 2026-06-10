@@ -20,83 +20,41 @@ export async function GET(request: NextRequest) {
   const categoryParam = request.nextUrl.searchParams.get("category");
   const category = isCategorySlug(categoryParam) ? categoryParam : null;
 
+  const MAX_ROWS = 12000;
+
   let rows: RawCityRow[];
 
   if (category) {
     const pipelines = CATEGORY_PIPELINES[category];
     rows = await prisma.$queryRaw<RawCityRow[]>`
       SELECT
-        ROUND(cl.lat::numeric, ${precision}) AS lat,
-        ROUND(cl.lon::numeric, ${precision}) AS lon,
-        (
-          SELECT cl2.city
-          FROM "ClaimLocation" cl2
-          JOIN "Claim" c2 ON cl2."claimId" = c2.id
-          WHERE c2.deleted = false
-            AND c2."ingestedBy" = ANY(${pipelines}::text[])
-            AND ROUND(cl2.lat::numeric, ${precision}) = ROUND(cl.lat::numeric, ${precision})
-            AND ROUND(cl2.lon::numeric, ${precision}) = ROUND(cl.lon::numeric, ${precision})
-            AND cl2.city IS NOT NULL
-          GROUP BY cl2.city
-          ORDER BY COUNT(*) DESC
-          LIMIT 1
-        ) AS city,
-        (
-          SELECT cl2."countryCode"
-          FROM "ClaimLocation" cl2
-          JOIN "Claim" c2 ON cl2."claimId" = c2.id
-          WHERE c2.deleted = false
-            AND c2."ingestedBy" = ANY(${pipelines}::text[])
-            AND ROUND(cl2.lat::numeric, ${precision}) = ROUND(cl.lat::numeric, ${precision})
-            AND ROUND(cl2.lon::numeric, ${precision}) = ROUND(cl.lon::numeric, ${precision})
-            AND cl2."countryCode" IS NOT NULL
-          GROUP BY cl2."countryCode"
-          ORDER BY COUNT(*) DESC
-          LIMIT 1
-        ) AS country_code,
+        ROUND(cl.lat::numeric, ${precision})::float8 AS lat,
+        ROUND(cl.lon::numeric, ${precision})::float8 AS lon,
+        mode() WITHIN GROUP (ORDER BY cl.city) AS city,
+        mode() WITHIN GROUP (ORDER BY cl."countryCode") AS country_code,
         COUNT(*) AS claim_count
       FROM "ClaimLocation" cl
       JOIN "Claim" c ON cl."claimId" = c.id
       WHERE c.deleted = false
-        AND c."ingestedBy" = ANY(${pipelines}::text[])
+      AND c."ingestedBy" = ANY(${pipelines}::text[])
       GROUP BY ROUND(cl.lat::numeric, ${precision}), ROUND(cl.lon::numeric, ${precision})
       ORDER BY claim_count DESC
+      LIMIT ${MAX_ROWS}
     `;
   } else {
     rows = await prisma.$queryRaw<RawCityRow[]>`
       SELECT
-        ROUND(cl.lat::numeric, ${precision}) AS lat,
-        ROUND(cl.lon::numeric, ${precision}) AS lon,
-        (
-          SELECT cl2.city
-          FROM "ClaimLocation" cl2
-          JOIN "Claim" c2 ON cl2."claimId" = c2.id
-          WHERE c2.deleted = false
-            AND ROUND(cl2.lat::numeric, ${precision}) = ROUND(cl.lat::numeric, ${precision})
-            AND ROUND(cl2.lon::numeric, ${precision}) = ROUND(cl.lon::numeric, ${precision})
-            AND cl2.city IS NOT NULL
-          GROUP BY cl2.city
-          ORDER BY COUNT(*) DESC
-          LIMIT 1
-        ) AS city,
-        (
-          SELECT cl2."countryCode"
-          FROM "ClaimLocation" cl2
-          JOIN "Claim" c2 ON cl2."claimId" = c2.id
-          WHERE c2.deleted = false
-            AND ROUND(cl2.lat::numeric, ${precision}) = ROUND(cl.lat::numeric, ${precision})
-            AND ROUND(cl2.lon::numeric, ${precision}) = ROUND(cl.lon::numeric, ${precision})
-            AND cl2."countryCode" IS NOT NULL
-          GROUP BY cl2."countryCode"
-          ORDER BY COUNT(*) DESC
-          LIMIT 1
-        ) AS country_code,
+        ROUND(cl.lat::numeric, ${precision})::float8 AS lat,
+        ROUND(cl.lon::numeric, ${precision})::float8 AS lon,
+        mode() WITHIN GROUP (ORDER BY cl.city) AS city,
+        mode() WITHIN GROUP (ORDER BY cl."countryCode") AS country_code,
         COUNT(*) AS claim_count
       FROM "ClaimLocation" cl
       JOIN "Claim" c ON cl."claimId" = c.id
       WHERE c.deleted = false
       GROUP BY ROUND(cl.lat::numeric, ${precision}), ROUND(cl.lon::numeric, ${precision})
       ORDER BY claim_count DESC
+      LIMIT ${MAX_ROWS}
     `;
   }
 
