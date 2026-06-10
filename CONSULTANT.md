@@ -307,6 +307,17 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-10 00:10 EDT — Populate Settling Curve: retraction reversals (Phase A) + landmark court overrulings + detector (Phase B)
+- **Phase A — retraction → reversal trajectories.** New `scripts/populate-retraction-curves.ts` (`--live`; dry-run default). Prereq: ran `scripts/enrich-retractions.ts` live first (endpoint was 503 — used the real cached `.cache/retraction-watch.csv` from 2026-06-02 by refreshing its mtime), which enriched **5,705** REVERSED `ClaimRelation` rows with `retractionWatchRetractionDate` / `retractionReason`. The populate script writes **two** `ClaimStatusHistory` rows onto each existing retracted-paper claim (the `fromClaim`), never new Claims:
+  - Row 0 `∅ → RECORDED` (EXPERT_LITERATURE) at publication date (`claimEmergedAt`), marker = paper's own primary Source. Upgrades to SETTLED only if `metadata.cited_by_count ≥ 100` — 0 qualified (OpenAlex metadata omits citation counts), so all stayed RECORDED (conservative, by design).
+  - Row 1 `RECORDED → REVERSED` (EXPERT_LITERATURE) at retraction date, marker = the retraction record's Source (`toClaim`'s primary Source), `reason` = the RW primary reason.
+  - Deterministic ids `${claimId}:retraction:0|1`, upsert (idempotent). **5,705 qualifying, 0 skipped → 11,410 rows.** Data-quality note: 343 rows have retraction date ≤ pub date (RW date-precision artifacts).
+  - These attach to paper claims with no `trajectory:` externalId, so `/api/trajectories` excludes them from the hero switcher (verified: hero length unchanged at 11 after Phase A).
+- **Phase B1 — landmark court-overruling trajectories (live in hero switcher).** New `scripts/seed-court-reversals.ts` (modeled on `seed-trajectories.ts`). **8 trajectories**, each SETTLED(JUDICIAL)→REVERSED(JUDICIAL): Plessy→Brown, Adkins→West Coast Hotel, Bowers→Lawrence, Abood→Janus, Chevron→Loper Bright, Roe→Dobbs, Korematsu→Trump v. Hawaii, plus 1 ECHR (Rees→Christine Goodwin). Markers prefer existing opinions: Chevron→`cl-cluster-111221`, Roe→`cl-cluster-108713`, Rees→`echr_001-57564`, Goodwin→`echr_001-60596`; the rest are curated `src:*` Sources with Justia citation URLs. All dates from actual U.S. Reports / HUDOC decisions. **0 null markers.** Hero switcher now **19** (11 + 8); `/settling-curve?t=roe-dobbs` renders the JUDICIAL line.
+- **Phase B2 — read-only overruling detector.** New `scripts/detect-overrulings.ts`. Scans 12,441 judicial opinion claims (`courtlistener_*` + `echr_*`), indexes 18,549 case names, applies `/\b(we |hereby )?overrul/i`, `/is overruled/i`, `/abrogat/i`, resolves overruled case names, emits `/tmp/overruling-candidates.json`. **0 candidates** — honest result: this corpus stores templated case-name claims, not full opinion bodies, so self-overruling language isn't present. **Writes 0 `ClaimStatusHistory` rows by construction.**
+- **DB deltas:** `ClaimStatusHistory` 32 → 11,458 (+11,410 Phase A, +16 B1, +0 B2). 8 new `seed-court-reversals` Claims. 5,705 `ClaimRelation` rows enriched.
+- **Files added:** `scripts/populate-retraction-curves.ts`, `scripts/seed-court-reversals.ts`, `scripts/detect-overrulings.ts`. No UI files, no migrations, `seed-trajectories.ts` untouched.
+
 ### 2026-06-09 21:38 EDT — tasks 7-11: trajectory model, seed data, migration fix, indexes, consistency
 - **Commit:** security: tasks 2-6 — SQL injection, write guards, admin auth, cron hardening
 - **Files changed:**
