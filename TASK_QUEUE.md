@@ -33,7 +33,7 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Build data integrity invariant checks script (source URL coverage, orphaned edges, status vocabulary, dupes) + schedule as nightly cron
 
 ### Blocked — needs Robert
-- [ ] ⏸ Collapse 4 status fields → `epistemicAxis` only (needs Robert's 4-way vs 5-way decision)
+- [ ] ⏸ Collapse 4 status fields → `epistemicAxis` only (needs Robert's 4-way vs 5-way decision) — **analysis done 2026-06-09, awaiting decision.** See [`docs/axis-collapse-decision-2026-06-09.md`](docs/axis-collapse-decision-2026-06-09.md). Backfilled last 1,965 null-axis rows (now 0-null); mapped 210 query-site refs; staged (unapplied) drop migration. Two questions for Robert: (1) 4-way vs 5-way — recommend **5-way**; (2) drop `verificationStatus` too or keep for DEPRECATED/PROVISIONAL — recommend **keep**. Column drop is irreversible and stays unexecuted until answered.
 - [ ] ⏸ Rotate NYT + Azure keys at provider dashboards
 - [ ] ⏸ Set CRON_SECRET, TELEGRAM_CHAT_ID, NYT_API_KEY, COLOMBIA_SEARCH_KEY in Vercel env vars
 
