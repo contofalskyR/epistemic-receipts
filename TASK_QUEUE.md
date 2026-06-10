@@ -33,7 +33,7 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Build data integrity invariant checks script (source URL coverage, orphaned edges, status vocabulary, dupes) + schedule as nightly cron
 
 ### Blocked — needs Robert
-- [ ] ⏸ Rotate NYT + Azure keys at provider dashboards
+- [ ] ⏸ Rotate NYT + Azure keys at provider dashboards — **dashboard rotation is human-only; remains open for Robert.** Code-side prep done by worker 2026-06-09: removed the live NYT key hardcoded as a fallback in `scripts/populate-bill-coverage.ts` (now requires `NYT_API_KEY` from env). Step-by-step rotation runbook: [`docs/key-rotation-runbook.md`](docs/key-rotation-runbook.md). No Azure key is referenced in tracked code — confirm it exists before rotating. Check this box once the NYT key is regenerated at developer.nytimes.com and the old key is confirmed dead.
 - [ ] ⏸ Set CRON_SECRET, TELEGRAM_CHAT_ID, NYT_API_KEY, COLOMBIA_SEARCH_KEY in Vercel env vars
 
 ---

@@ -16,7 +16,11 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const NYT_KEY = process.env.NYT_API_KEY ?? 'K7ulaKJJ0gCckL2RrdfCcqMLfBGcvhr9SuJGoJh4TbNC4k3C'
+const NYT_KEY = process.env.NYT_API_KEY
+if (!NYT_KEY) {
+  console.error('Missing NYT_API_KEY environment variable')
+  process.exit(1)
+}
 const NYT_BASE = 'https://api.nytimes.com/svc/search/v2/articlesearch.json'
 const REQUEST_DELAY_MS = 6_000
 
