@@ -22,9 +22,9 @@ type RawClaimRow = {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { cityKey: string } }
+  { params }: { params: Promise<{ cityKey: string }> }
 ) {
-  const { cityKey } = params;
+  const { cityKey } = await params;
   const parts = cityKey.split("_");
   // cityKey format: "{lat}_{lon}" where lon may be negative, e.g. "40.7_-74.0"
   // Split on first underscore, then reassemble the rest for the lon part
