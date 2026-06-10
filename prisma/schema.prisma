@@ -16,6 +16,30 @@ enum ReviewConfidence {
   LOW
 }
 
+// Which community ratified (or failed to ratify) a claim at a transition.
+// A single claim's trajectory may cross multiple communities over time.
+enum RatifyingCommunity {
+  EXPERT_LITERATURE
+  INSTITUTIONAL
+  JUDICIAL
+  PUBLIC
+  MARKET
+}
+
+// Canonical fact-status values a transition can record, INCLUDING failure modes.
+// Used as the documented vocabulary for ClaimStatusHistory.toAxis (kept as String
+// to stay additive — see model comment). This product measures fact-STATUS, not truth,
+// so REVERSED/ABANDONED are first-class outcomes, not errors.
+enum FactStatus {
+  RECORDED
+  SETTLED
+  CONTESTED
+  OPEN
+  UNRESOLVABLE
+  REVERSED
+  ABANDONED
+}
+
 model Claim {
   id                    String            @id @default(cuid())
   text                  String
@@ -101,6 +125,7 @@ model Source {
   politicalContext         PoliticalContext?
   legislativeVotes         LegislativeVote[]
   wikidataLink             WikidataLink?
+  statusMarkers            ClaimStatusHistory[]      @relation("StatusMarker")
 
   @@index([ingestedBy])
   @@index([createdAt])
@@ -678,16 +703,25 @@ model PipelineRun {
   @@index([status])
 }
 
+// Trajectory model: one row per status transition in a claim's epistemic life.
+// fromAxis/toAxis use the FactStatus vocabulary (kept as String for additivity).
+// toAxis CAN record failure modes — REVERSED, ABANDONED — not just forward progress.
 model ClaimStatusHistory {
-  id        String   @id @default(cuid())
-  claimId   String
-  fromAxis  String?
-  toAxis    String
-  reason    String?
-  sourceId  String?
-  createdAt DateTime @default(now())
+  id            String             @id @default(cuid())
+  claimId       String
+  fromAxis      String? // prior FactStatus value (null = first recorded status)
+  toAxis        String // FactStatus value, incl. failure modes: REVERSED | ABANDONED
+  community     RatifyingCommunity // which community ratified/failed-to-ratify this transition
+  reason        String?
+  occurredAt    DateTime // the historical date the transition happened (not ingest time)
+  datePrecision String? // DAY | MONTH | QUARTER | YEAR
+  sourceId      String? // the marker artifact that records this transition
+  createdAt     DateTime           @default(now())
 
-  claim Claim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  claim        Claim   @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  markerSource Source? @relation("StatusMarker", fields: [sourceId], references: [id])
 
-  @@index([claimId])
+  // Compound index serves claimId-only lookups via leftmost-prefix, so the
+  // standalone @@index([claimId]) is dropped in favor of this one.
+  @@index([claimId, community, occurredAt])
 }

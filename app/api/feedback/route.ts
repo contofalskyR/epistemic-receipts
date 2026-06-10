@@ -69,7 +69,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "body is required" }, { status: 400 });
   }
 
-  const trimmedBody = body.trim();
+  // Cap body length, consistent with /api/search/miss capping its query at 300 chars.
+  const trimmedBody = body.trim().slice(0, 300);
   const trimmedEmail = email?.trim() || null;
 
   await prisma.feedback.create({

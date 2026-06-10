@@ -21,6 +21,9 @@ export async function GET(req: NextRequest) {
     where: { key: hashKey(key) },
     select: {
       bookmarks: {
+        // Exclude bookmarks pointing at soft-deleted claims, consistent with
+        // the sibling /api/bookmarks/claims endpoint which filters them out.
+        where: { claim: { deleted: false } },
         select: { claimId: true, createdAt: true },
         orderBy: { createdAt: "desc" },
       },

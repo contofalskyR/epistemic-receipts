@@ -307,6 +307,37 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-09 21:38 EDT — tasks 7-11: trajectory model, seed data, migration fix, indexes, consistency
+- **Commit:** security: tasks 2-6 — SQL injection, write guards, admin auth, cron hardening
+- **Files changed:**
+  - app/admin/feedback/page.tsx
+  - app/api/claims/[id]/topics/[topicId]/route.ts
+  - app/api/claims/[id]/topics/route.ts
+  - app/api/congress-trades/route.ts
+  - app/api/cron/topic-alerts/route.ts
+  - app/api/feedback/route.ts
+  - app/api/ingest/scotus/route.ts
+  - app/api/login/route.ts
+  - app/api/stock-act/route.ts
+  - app/api/threshold-events/[id]/route.ts
+  - app/api/threshold-events/route.ts
+  - app/login/page.tsx
+  - middleware.ts
+  - scripts/ingest-bundestag.ts
+- **Diff stat:**  14 files changed, 141 insertions(+), 46 deletions(-)
+- _(Auto-marker above reflects pre-commit HEAD — the file list/commit are from the prior tasks 2-6 commit. The substantive entry for this run is immediately below.)_
+
+### 2026-06-09 21:38 EDT — Tasks 7-11: trajectory model, seed data, migration fix, metadata indexes, consistency
+Subagent coding run (started from commit 4ed1370). All five tasks completed and verified in order against the live Neon DB.
+
+- **Task 7 — ClaimStatusHistory → real trajectory model.** Added enums `RatifyingCommunity` (EXPERT_LITERATURE | INSTITUTIONAL | JUDICIAL | PUBLIC | MARKET) and `FactStatus` (adds REVERSED, ABANDONED as first-class outcomes — product measures fact-STATUS, not truth). Added `community RatifyingCommunity` (NOT NULL), `occurredAt DateTime` (historical transition date, distinct from `createdAt`), `datePrecision String?`. Fixed the dangling `sourceId` FK with `markerSource Source? @relation("StatusMarker")` + `statusMarkers` inverse on Source. Replaced `@@index([claimId])` with compound `@@index([claimId, community, occurredAt])` (covers claimId-only via leftmost prefix).
+  - **Migration mechanics:** `prisma migrate dev` could not be used — the shadow-DB replay chokes on the old `20260526123508_add_trgm_search_index` migration (`CREATE INDEX CONCURRENTLY` can't run in a transaction). Also, `migrate diff --from-schema-datasource` surfaced large *pre-existing drift* (AlertSent, SavedQuery, Profile auth columns, the duplicate `claim_search_vector_idx`) that must NOT be dropped. So the migration was hand-written (`20260610010000_extend_claim_status_history`) containing only the intended Task 7 changes and applied via `migrate deploy`. Table had 0 rows, so the new NOT NULL columns added cleanly. Verified: columns present, compound index present, both FKs present, `prisma validate` passes.
+- **Task 8 — seed 10 curated trajectories** (`scripts/seed-trajectories.ts`, a seed not a pipeline). Idempotent upserts (Claim/Source on externalId, ClaimStatusHistory on deterministic id `externalId:idx`), `--dry-run` flag. 26 transitions, all pinned to real Sources via the new FK, real dates/URLs. Covers all 5 communities and both failure modes: smoking→cancer (multi-community), H. pylori→ulcers + stress/acid theory REVERSED (NIH 1994), continental drift (ABANDONED 1926 → REVERSED 1963), dietary fat/heart (CONTESTED→SETTLED→CONTESTED), cold fusion (ABANDONED 1989), Civil Rights Act 1964, Clean Air Act 1970, Voting Rights Act 1965 (SETTLED→REVERSED via Shelby County 2013), CFC→ozone (incl. MARKET). Ran for real: 10 claims, 26 history rows, 4 failure-mode rows; re-run confirmed idempotent.
+- **Task 9 — duplicate searchVector migration bug.** `claim_fts` (idempotent, IF NOT EXISTS) did the real work; `20260610000000_add_tsvector_search` was a non-idempotent duplicate that had been force-resolved (0 steps) with a leftover rolled-back row. Renamed `20260609_claim_fts` → `20260609000000_claim_fts` (full timestamp, unambiguous lexical order; kept as the canonical idempotent migration). Neutralized the duplicate's SQL to a documented `SELECT 1;` no-op so it can't fail on a fresh DB. Reconciled `_prisma_migrations`: deleted the 3 stale rows, re-recorded both folders via `migrate resolve --applied` (recomputes checksums, runs no SQL). Verified: `migrate status` up-to-date, `migrate deploy` is a clean no-op.
+- **Task 10 — index JSON-metadata filters** (`20260610020000_add_metadata_expression_indexes`). `/api/stock-act` and `/api/congress-trades` both filter the `ingestedBy='congress_stock_act_v1', deleted=false` slice by equality on metadata keys. Added 6 **partial** btree expression indexes scoped to that slice: `chamber`, `party`, `ticker`, `transaction_type`, `bioguide_id`, `LOWER(member_name)`. ILIKE '%q%' keys (asset_name, retraction title/journal/firstAuthor, updateType) use leading wildcards → can't use btree, intentionally omitted (would need trigram). Plain `CREATE INDEX IF NOT EXISTS` (not CONCURRENTLY — Prisma wraps migrations in a transaction). Verified all 6 created.
+- **Task 11 — consistency cleanups.** (1) `app/api/bookmarks/route.ts` GET: added `where: { claim: { deleted: false } }` to the nested bookmarks query so `claimIds` excludes soft-deleted claims, matching sibling `bookmarks/claims`. (2) `app/api/feedback/route.ts` POST: capped body at 300 chars (`.trim().slice(0, 300)`) like `search/miss`. Full `tsc --noEmit` passes (0 errors).
+- **Human action needed:** none. All migrations applied to the live DB; no key rotation or external steps. On any *other* DB, `prisma migrate deploy` will now apply `20260610010000`, `20260610020000`, and the reconciled FTS pair cleanly.
+
 ### 2026-06-09 — Stage 3: Courts/federal → city backfill for ClaimLocation
 - **Script:** `scripts/backfill-claim-locations-courts.ts` (new)
 - **Why:** City-level globe Stage 3. Populates ClaimLocation rows for all court and federal agency claims using curated court-seat city coordinates. Uses `source='court_seat'`, `precision='CITY'`.
