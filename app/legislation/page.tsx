@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import LegislationClient from "./LegislationClient";
+import LegislationStats from "./LegislationStats";
 
 export const dynamic = "force-dynamic";
 
@@ -10,8 +11,13 @@ export const metadata = {
 
 export default function LegislationPage() {
   return (
-    <Suspense fallback={<p className="text-sm text-gray-500">Loading bills…</p>}>
-      <LegislationClient />
-    </Suspense>
+    <div className="space-y-0">
+      <Suspense fallback={<p className="text-sm text-gray-500">Loading bills…</p>}>
+        <LegislationClient />
+      </Suspense>
+      <Suspense fallback={null}>
+        <LegislationStats />
+      </Suspense>
+    </div>
   );
 }
