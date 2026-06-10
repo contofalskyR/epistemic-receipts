@@ -1650,7 +1650,7 @@ npx dotenv-cli -e .env.local -- npx tsx scripts/ingest-openalex-journals.ts --ti
 **To seed first batch.**
 ```
 DATABASE_URL=$(grep '^DATABASE_URL' .env.local | cut -d= -f2-) \
-NYT_API_KEY=K7ulaKJJ0gCckL2RrdfCcqMLfBGcvhr9SuJGoJh4TbNC4k3C \
+NYT_API_KEY=<redacted — pull from .env.local; see docs/key-rotation-runbook.md> \
 npx ts-node --project tsconfig.scripts.json scripts/populate-bill-coverage.ts --limit 50
 ```
 First batch picks the 50 most-recently-created congress-119 claims; subsequent runs can use `--skip-existing` to incrementally extend coverage without re-querying NYT for bills already in the table. Full sweep at 6s/req across all ~16k bills would take ~27 hours — do in batches.

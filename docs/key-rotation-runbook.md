@@ -26,12 +26,19 @@ requires `NYT_API_KEY` from the environment and exits if it is missing, matching
 the pattern in `scripts/enrich-media-coverage.ts`.
 
 ### Azure
-Listed alongside NYT in the original blocked task. No Azure key is currently
-referenced in tracked code (`grep -i azure` over `*.ts`/`*.tsx` is clean as of
-2026-06-09). Confirm whether an Azure key exists in any untracked `.env*` file or
-deployment provider before rotating, and record what it is used for here once
-identified. If no Azure key is actually in use, this half of the task can be
-struck rather than rotated.
+**Identified 2026-06-09.** The Azure key in question is `COLOMBIA_SEARCH_KEY`,
+an **Azure Cognitive Search** admin/query key for the SUIN-Juriscol index at
+`searchmjd.search.windows.net`. It is consumed by
+`scripts/ingest-colombia-legislation.ts` (read from `process.env.COLOMBIA_SEARCH_KEY`;
+the script exits if it is missing — no hardcoded fallback). The earlier note that
+"`grep -i azure` is clean" was wrong: it matched only the literal env-var read, not
+the substring `azure` — the resource is the `*.search.windows.net` endpoint.
+
+The key is **not leaked in tracked code** (the script requires it from the
+environment), so unlike NYT it is not known-compromised. Rotate it only if Robert
+wants defence-in-depth or suspects exposure; otherwise this half can be left as-is.
+`COLOMBIA_SEARCH_KEY` is also one of the env vars in the separate "Set … in Vercel
+env vars" blocked task.
 
 ---
 
@@ -79,10 +86,16 @@ struck rather than rotated.
 
 ---
 
-## What the worker already did (code-side, 2026-06-09)
-- Removed the hardcoded live NYT key fallback from
+## What the worker already did (code-side)
+- **2026-06-09 (earlier):** Removed the hardcoded live NYT key fallback from
   `scripts/populate-bill-coverage.ts`; the key is now required from the
-  environment.
-- Authored this runbook.
+  environment. Authored this runbook.
+- **2026-06-09 (later):** Found the live NYT key was **still present** in the
+  working tree at `CONSULTANT.md:1653` (a seed-command example) — the earlier pass
+  scrubbed only the script. Redacted it. Also identified the "Azure" key as
+  `COLOMBIA_SEARCH_KEY` (Azure Cognitive Search) and corrected the Azure section
+  above, which had wrongly reported Azure as unused.
 
 The **dashboard rotation itself remains open** and is Robert's to perform.
+Because the leaked NYT key is in git history (and was in `CONSULTANT.md` until
+today), it must still be treated as compromised and regenerated.
