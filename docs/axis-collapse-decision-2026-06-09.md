@@ -109,3 +109,14 @@ Before dropping `verificationStatus`, these must land somewhere. Options: keep a
 2. **Drop `verificationStatus` too, or keep it for DEPRECATED/PROVISIONAL?** (recommend keep — §4)
 
 Once answered, the read-path swap (step 1) can proceed in a supervised session; the column drop (step 2) follows after soak.
+
+---
+
+## 7. Re-surface log
+
+- **2026-06-09 (autonomous worker):** Picked this task off the queue, re-surfaced both gating
+  questions to Robert. No decision returned (unattended run, no human in the loop). Took **no**
+  irreversible action — columns intact, 210 query sites untouched, drop migration still a draft.
+  Task remains **⏸ BLOCKED**; it stays first in the queue until Robert answers. Per §3 and AGENTS.md,
+  neither the read-path swap nor the column drop is appropriate for an unattended run, so this worker
+  cannot advance it further without the decision.
