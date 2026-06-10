@@ -489,6 +489,14 @@ export default function CurveOverview() {
               Only years with n ≥ 5 shown. High variance in early years (2003–
               2010) reflects sparse data, not a genuine trend.
             </p>
+            <p style={{ ...caveatStyle, marginTop: "0.5rem" }}>
+              A downward slope here does not mean science is self-correcting
+              faster. This chart counts only papers that were retracted, and
+              recent years are dominated by mass retractions of paper-mill
+              output — fraudulent work that is produced and caught in fast
+              batches. That composition pulls recent medians down regardless of
+              whether the wider literature is being scrutinized any sooner.
+            </p>
           </>
         )}
       </div>
