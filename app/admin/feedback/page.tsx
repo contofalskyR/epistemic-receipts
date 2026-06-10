@@ -1,8 +1,21 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import crypto from "crypto";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminFeedbackPage() {
+  const adminToken = process.env.ADMIN_TOKEN;
+  if (adminToken) {
+    const cookieStore = await cookies();
+    const adminCookie = cookieStore.get("admin_auth")?.value;
+    const expected = crypto.createHash("sha256").update(adminToken).digest("hex");
+    if (adminCookie !== expected) {
+      redirect("/login?from=/admin/feedback");
+    }
+  }
+
   const rows = await prisma.feedback.findMany({
     orderBy: { submittedAt: "desc" },
   });

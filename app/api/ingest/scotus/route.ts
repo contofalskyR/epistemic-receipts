@@ -74,8 +74,9 @@ async function clFetch(urlOrPath: string, token: string): Promise<unknown> {
 
 export async function GET(request: Request) {
   // Vercel cron sends Authorization: Bearer <CRON_SECRET>
+  const cronSecret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

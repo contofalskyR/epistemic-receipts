@@ -17,7 +17,10 @@ export default function LoginPage() {
     });
     if (res.ok) {
       const params = new URLSearchParams(window.location.search);
-      window.location.href = params.get("from") || "/";
+      const from = params.get("from") ?? "";
+      // Only honor internal paths (single leading slash, not protocol-relative //)
+      const dest = /^\/(?!\/)/.test(from) ? from : "/";
+      window.location.href = dest;
     } else {
       const data = await res.json();
       setError(data.error ?? "Incorrect password.");

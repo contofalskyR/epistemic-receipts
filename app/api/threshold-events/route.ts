@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 200;
@@ -31,6 +32,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
+
   const {
     claimId, confirmedBy, triggeredBy, triggeredBySourceId, note, evidenceSnapshot, createdAt, suggestedEventId,
     ingestedBy, humanReviewed, reviewConfidence, reviewedAt, reviewedBy,

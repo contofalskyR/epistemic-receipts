@@ -30,23 +30,39 @@ export async function POST(req: NextRequest) {
 
   const { password } = await req.json();
   const inputHash = Buffer.from(sha256Hex(password ?? ""));
-  const expectedHash = Buffer.from(sha256Hex(sitePassword));
+  const siteHash = Buffer.from(sha256Hex(sitePassword));
+  const adminToken = process.env.ADMIN_TOKEN;
+  const adminHash = adminToken ? Buffer.from(sha256Hex(adminToken)) : null;
 
-  const match =
-    inputHash.length === expectedHash.length &&
-    crypto.timingSafeEqual(inputHash, expectedHash);
+  const siteMatch =
+    inputHash.length === siteHash.length &&
+    crypto.timingSafeEqual(inputHash, siteHash);
+  const adminMatch =
+    !!adminHash &&
+    inputHash.length === adminHash.length &&
+    crypto.timingSafeEqual(inputHash, adminHash);
 
-  if (!match) {
+  if (!siteMatch && !adminMatch) {
     return NextResponse.json({ error: "Incorrect password." }, { status: 401 });
   }
 
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set("site_auth", expectedHash.toString(), {
+  const res = NextResponse.json({ ok: true, admin: adminMatch });
+
+  // site_auth grants general site access; keyed to whichever credential matched
+  const authValue = siteMatch ? siteHash.toString() : adminHash!.toString();
+  const cookieOpts = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: "lax" as const,
     maxAge: 30 * 24 * 60 * 60,
     path: "/",
-  });
+  };
+  res.cookies.set("site_auth", authValue, cookieOpts);
+
+  // admin_auth is a separate cookie granted only with ADMIN_TOKEN
+  if (adminMatch) {
+    res.cookies.set("admin_auth", adminHash!.toString(), cookieOpts);
+  }
+
   return res;
 }

@@ -14,29 +14,30 @@ export async function GET(req: NextRequest) {
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
 
+  // Bound parameters for all user-derived values
+  const condParams: unknown[] = [];
   const conditions: string[] = [
     `c."ingestedBy" = 'congress_stock_act_v1'`,
     `c.deleted = false`,
   ];
 
   if (chamber !== "all") {
-    const ch = chamber.charAt(0).toUpperCase() + chamber.slice(1).toLowerCase();
-    conditions.push(`c.metadata->>'chamber' = '${ch}'`);
+    condParams.push(chamber.charAt(0).toUpperCase() + chamber.slice(1).toLowerCase());
+    conditions.push(`c.metadata->>'chamber' = $${condParams.length}`);
   }
   if (party !== "all") {
-    conditions.push(`c.metadata->>'party' = '${party.toUpperCase().replace(/'/g, "''")}'`);
+    condParams.push(party.toUpperCase());
+    conditions.push(`c.metadata->>'party' = $${condParams.length}`);
   }
   if (q) {
-    const safe = q.replace(/'/g, "''").replace(/%/g, "\\%");
+    condParams.push(`%${q}%`);
+    const idx = condParams.length;
     conditions.push(
-      `(c.metadata->>'member_name' ILIKE '%${safe}%' OR c.metadata->>'ticker' ILIKE '%${safe}%' OR c.metadata->>'asset_name' ILIKE '%${safe}%')`
+      `(c.metadata->>'member_name' ILIKE $${idx} OR c.metadata->>'ticker' ILIKE $${idx} OR c.metadata->>'asset_name' ILIKE $${idx})`
     );
   }
   if (correlation === "with-votes") {
-    // Restrict to trades whose member has any recorded roll-call vote (bioguide ID or
-    // exact name match against MemberVote). MemberVote.memberId carries mixed bioguide
-    // and numeric (Voteview) IDs; the bioguide IDs are the relevant overlap with STOCK
-    // Act disclosures.
+    // Subquery uses no user input — static SQL is safe here.
     conditions.push(
       `(
         c.metadata->>'bioguide_id' IN (SELECT DISTINCT "memberId" FROM "MemberVote" WHERE "memberId" IS NOT NULL)
@@ -46,6 +47,8 @@ export async function GET(req: NextRequest) {
   }
 
   const where = conditions.join(" AND ");
+  const dataParams = [...condParams, offset];
+  const offsetIdx = dataParams.length;
 
   const [rows, countResult] = await Promise.all([
     prisma.$queryRawUnsafe<
@@ -55,10 +58,12 @@ export async function GET(req: NextRequest) {
        FROM "Claim" c
        WHERE ${where}
        ORDER BY c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC
-       LIMIT ${PAGE_SIZE} OFFSET ${offset}`
+       LIMIT ${PAGE_SIZE} OFFSET $${offsetIdx}`,
+      ...dataParams
     ),
     prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`
+      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`,
+      ...condParams
     ),
   ]);
 

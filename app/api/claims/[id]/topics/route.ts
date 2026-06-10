@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 // POST { topicIds: string[] } — adds topics to a claim (idempotent via upsert)
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
+
   const { id } = await params;
   const { topicIds } = await req.json() as { topicIds: string[] };
 

@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import crypto from "crypto";
 
 const OWNER_CHAT_ID = "7688025079";
+
+function sha256Hex(value: string): string {
+  return crypto.createHash("sha256").update(value).digest("hex");
+}
 
 async function notifyTelegram(body: string, email: string | null, pageContext: string | null) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -16,7 +21,23 @@ async function notifyTelegram(body: string, email: string | null, pageContext: s
   }).catch(() => {});
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const adminToken = process.env.ADMIN_TOKEN;
+
+  // Accept Authorization: Bearer <ADMIN_TOKEN> (for API clients)
+  // or valid admin_auth cookie (for browser sessions logged in via ADMIN_TOKEN)
+  const authHeader = req.headers.get("authorization");
+  const adminCookie = req.cookies.get("admin_auth")?.value;
+  const expectedAdmin = adminToken ? sha256Hex(adminToken) : null;
+
+  const isAuthorized =
+    (adminToken && authHeader === `Bearer ${adminToken}`) ||
+    (expectedAdmin !== null && adminCookie === expectedAdmin);
+
+  if (!isAuthorized) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const rows = await prisma.feedback.findMany({
     orderBy: { submittedAt: "desc" },
   });

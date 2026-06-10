@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { isReadOnly } from "@/lib/isReadOnly";
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
+
   const { id } = await params;
   const { triggeredBySourceId } = await req.json();
 

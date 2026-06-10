@@ -85,8 +85,11 @@ export async function middleware(req: NextRequest) {
 
   const sitePassword = process.env.SITE_PASSWORD;
 
-  // No password configured — allow everything (local dev without the var)
+  // No password configured — allow in dev, fail closed in production
   if (!sitePassword) {
+    if (process.env.NODE_ENV === "production") {
+      return new NextResponse("Service Unavailable — SITE_PASSWORD not configured", { status: 503 });
+    }
     const res = NextResponse.next();
     if (remaining >= 0) res.headers.set("X-RateLimit-Remaining", String(remaining));
     return res;
@@ -102,18 +105,33 @@ export async function middleware(req: NextRequest) {
   }
 
   const cookie = req.cookies.get("site_auth")?.value;
-  const expected = await sha256Hex(sitePassword);
+  const expectedSite = await sha256Hex(sitePassword);
+  const adminToken = process.env.ADMIN_TOKEN;
+  const expectedAdmin = adminToken ? await sha256Hex(adminToken) : null;
 
-  if (cookie === expected) {
-    const res = NextResponse.next();
-    if (remaining >= 0) res.headers.set("X-RateLimit-Remaining", String(remaining));
-    return res;
+  const hasValidAuth = cookie === expectedSite || (expectedAdmin !== null && cookie === expectedAdmin);
+
+  if (!hasValidAuth) {
+    const loginUrl = req.nextUrl.clone();
+    loginUrl.pathname = "/login";
+    loginUrl.searchParams.set("from", pathname);
+    return NextResponse.redirect(loginUrl);
   }
 
-  const loginUrl = req.nextUrl.clone();
-  loginUrl.pathname = "/login";
-  loginUrl.searchParams.set("from", pathname);
-  return NextResponse.redirect(loginUrl);
+  // /admin/* requires a separate admin_auth cookie set only via ADMIN_TOKEN login
+  if (pathname.startsWith("/admin") && expectedAdmin !== null) {
+    const adminCookie = req.cookies.get("admin_auth")?.value;
+    if (adminCookie !== expectedAdmin) {
+      const loginUrl = req.nextUrl.clone();
+      loginUrl.pathname = "/login";
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
+  const res = NextResponse.next();
+  if (remaining >= 0) res.headers.set("X-RateLimit-Remaining", String(remaining));
+  return res;
 }
 
 export const config = {

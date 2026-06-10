@@ -53,27 +53,30 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ leaderboard })
   }
 
-  // Trades listing
-  // Build metadata filters via raw SQL due to JSON querying needs
+  // Trades listing — bound parameters for all user-derived values
+  const condParams: unknown[] = []
   const conditions: string[] = [`c."ingestedBy" = 'congress_stock_act_v1'`, `c.deleted = false`]
 
   if (chamber !== 'all') {
-    const ch = chamber.charAt(0).toUpperCase() + chamber.slice(1).toLowerCase()
-    conditions.push(`c.metadata->>'chamber' = '${ch}'`)
+    condParams.push(chamber.charAt(0).toUpperCase() + chamber.slice(1).toLowerCase())
+    conditions.push(`c.metadata->>'chamber' = $${condParams.length}`)
   }
   if (party !== 'all') {
-    const p = party.toUpperCase()
-    conditions.push(`c.metadata->>'party' = '${p}'`)
+    condParams.push(party.toUpperCase())
+    conditions.push(`c.metadata->>'party' = $${condParams.length}`)
   }
   if (ticker) {
-    conditions.push(`c.metadata->>'ticker' = '${ticker.replace(/'/g, "''")}'`)
+    condParams.push(ticker)
+    conditions.push(`c.metadata->>'ticker' = $${condParams.length}`)
   }
   if (txType !== 'all') {
-    const t = txType.toLowerCase()
-    conditions.push(`c.metadata->>'transaction_type' = '${t}'`)
+    condParams.push(txType.toLowerCase())
+    conditions.push(`c.metadata->>'transaction_type' = $${condParams.length}`)
   }
 
   const where = conditions.join(' AND ')
+  const dataParams = [...condParams, offset]
+  const offsetIdx = dataParams.length
 
   const [rows, countResult] = await Promise.all([
     prisma.$queryRawUnsafe<Array<{
@@ -86,10 +89,12 @@ export async function GET(req: NextRequest) {
        FROM "Claim" c
        WHERE ${where}
        ORDER BY c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC
-       LIMIT ${PAGE_SIZE} OFFSET ${offset}`
+       LIMIT ${PAGE_SIZE} OFFSET $${offsetIdx}`,
+      ...dataParams
     ),
     prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`
+      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`,
+      ...condParams
     ),
   ])
 

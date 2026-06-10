@@ -23,7 +23,7 @@ const prisma = new PrismaClient()
 const INGESTED_BY = 'bundestag_v1'
 const PIPELINE = 'Pipeline 21'
 const API_BASE = 'https://search.dip.bundestag.de/api/v1'
-const API_KEY = 'OSOegLs.PR2lwJ1dwCeje9vTj7FPOt3hvpYKtwKkhw'
+const API_KEY = process.env.BUNDESTAG_API_KEY ?? ''
 const PAGE_DELAY_MS = 300
 
 // ── Types ──────────────────────────────────────────────────────────────────────
