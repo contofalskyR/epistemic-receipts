@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { buildRepresentationAnalysis } from "@/lib/representationGap";
+import { RepresentationDumbbell } from "./RepresentationDumbbell";
 
 export const revalidate = 600;
 
@@ -95,7 +96,10 @@ export default async function RepresentationPage() {
         </p>
       </div>
 
-      {/* Summary cards */}
+      {/* === Dumbbell lead visualization === */}
+      <RepresentationDumbbell topics={topicSummaries} />
+
+      {/* Summary cards — demoted below the dumbbell */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <div className="rounded border border-gray-800 bg-gray-900 px-4 py-3">
           <div className="text-xs text-gray-500 mb-1">Matched (state, year, topic) rows</div>
