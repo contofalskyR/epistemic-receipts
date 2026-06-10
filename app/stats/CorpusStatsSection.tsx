@@ -2,17 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-type AxisEntry = { axis: string; n: number; pct: number };
-type TypeEntry = { type: string; n: number; pct: number };
+type AxisEntry = {
+  axis: string;
+  n: number;
+  pct: number;
+  classification_method: "ingestion_default" | "review_assessed" | "threshold_event";
+};
 type PipelineEntry = { pipeline: string; n: number; pct: number };
 
 type CorpusPayload = {
   total_claims: number;
   sourced_pct: number;
+  // human_reviewed_n / _pct are 0 — no reliable per-claim human-review flag.
+  // See coverage_note for explanation.
   human_reviewed_n: number;
   human_reviewed_pct: number;
+  auto_classified_pct: number;
+  threshold_event_n: number;
+  status_history_n: number;
   epistemic_axis: AxisEntry[];
-  claim_type: TypeEntry[];
   pipeline_breakdown: PipelineEntry[];
   coverage_note: string;
 };
@@ -75,7 +83,7 @@ export default function CorpusStatsSection() {
           {" · "}
           <span className="text-green-300">{data.sourced_pct.toFixed(1)}%</span> carry a primary source
           {" · "}
-          <span className="text-amber-300">{data.human_reviewed_pct.toFixed(1)}%</span> human-reviewed
+          classified at ingestion by pipeline
         </p>
         <p className="mt-2 text-xs text-zinc-500 max-w-2xl leading-relaxed">
           {data.coverage_note}
@@ -132,21 +140,30 @@ export default function CorpusStatsSection() {
         </div>
       </section>
 
-      {/* Human review callout */}
-      <section className="rounded border border-zinc-700 bg-zinc-900/40 px-4 py-3 space-y-1">
-        <p className="text-sm font-medium text-zinc-100">
-          Human review rate:{" "}
-          <span className="text-amber-300 tabular-nums">{data.human_reviewed_pct.toFixed(1)}%</span>
-          {" "}
-          <span className="text-zinc-500 text-xs font-normal">
-            ({data.human_reviewed_n.toLocaleString()} of {data.total_claims.toLocaleString()} claims)
+      {/* Provenance signals callout */}
+      <section className="rounded border border-zinc-700 bg-zinc-900/40 px-4 py-3 space-y-2">
+        <p className="text-sm font-medium text-zinc-100">Provenance signals</p>
+        <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-zinc-400 tabular-nums">
+          <span>
+            <span className="text-zinc-200">{data.threshold_event_n.toLocaleString()}</span>
+            {" "}threshold events{" "}
+            <span className="text-zinc-600">(human-promoted epistemic transitions)</span>
           </span>
-        </p>
+          <span>
+            <span className="text-zinc-200">{data.status_history_n.toLocaleString()}</span>
+            {" "}trajectory transitions{" "}
+            <span className="text-zinc-600">(ClaimStatusHistory rows)</span>
+          </span>
+          <span>
+            <span className="text-zinc-200">{data.auto_classified_pct.toFixed(1)}%</span>
+            {" "}axis-classified at ingestion
+          </span>
+        </div>
         <p className="text-xs text-zinc-500 leading-relaxed">
-          A low human-review rate is expected for a bulk-ingested corpus. It does not mean claims
-          are untrustworthy — it means most provenance checking is structural (pipeline-enforced
-          source links), not editorial (hand-audited). Claims marked VERIFIED, HARD_FACT, or
-          DISPUTED have been individually reviewed.
+          Epistemic-axis values (SETTLED, RECORDED, etc.) are assigned at ingestion by pipeline
+          constants — they reflect the <em>type</em> of source, not editorial review.
+          The genuine review signal is the ThresholdEvent table: each row represents a human
+          promoting an AI-suggested epistemic transition.
         </p>
       </section>
 
