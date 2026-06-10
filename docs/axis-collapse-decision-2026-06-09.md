@@ -1,6 +1,6 @@
 # Decision Brief — Collapse 4 Status Fields → `epistemicAxis`
 
-**Status:** ⏸ BLOCKED on one decision from Robert (4-way vs 5-way). Everything else is teed up.
+**Status:** ⏸ BLOCKED on two decisions from Robert (4-way vs 5-way; drop `verificationStatus` or keep). Everything the autonomous worker can do safely is done; only the supervised refactor + irreversible drop remain.
 **Prepared:** 2026-06-09 by autonomous worker.
 **Predecessor:** [`epistemic-status-diagnostic-2026-06-08.md`](./epistemic-status-diagnostic-2026-06-08.md) — pre-migration audit.
 
@@ -120,3 +120,13 @@ Once answered, the read-path swap (step 1) can proceed in a supervised session; 
   Task remains **⏸ BLOCKED**; it stays first in the queue until Robert answers. Per §3 and AGENTS.md,
   neither the read-path swap nor the column drop is appropriate for an unattended run, so this worker
   cannot advance it further without the decision.
+
+- **2026-06-09 20:52 EDT (autonomous worker, 2nd pass):** Re-surfaced both gating questions
+  interactively (`AskUserQuestion`); no human present, no answer returned. The worker has now
+  exhausted everything it can do safely without Robert: analysis complete, `epistemicAxis` 0-null,
+  scope mapped, drop migration drafted-but-unapplied. **No irreversible action taken** — all 3
+  (or 4) legacy columns intact, 210/35/8 query sites untouched, draft migration unapplied. To stop
+  this blocked task from starving the autonomous queue every 5 hours, the worker's portion is being
+  marked complete in `TASK_QUEUE.md` (kept with the ⏸ marker and explicit "column drop stays
+  unexecuted" text so the audit trail remains accurate). **The schema migration itself is NOT done
+  and remains gated on Robert's two answers (§6) + a supervised read-path swap (§3 step 1).**

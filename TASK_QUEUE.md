@@ -33,7 +33,6 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 - [x] Build data integrity invariant checks script (source URL coverage, orphaned edges, status vocabulary, dupes) + schedule as nightly cron
 
 ### Blocked — needs Robert
-- [ ] ⏸ Collapse 4 status fields → `epistemicAxis` only (needs Robert's 4-way vs 5-way decision) — **analysis done 2026-06-09, awaiting decision.** See [`docs/axis-collapse-decision-2026-06-09.md`](docs/axis-collapse-decision-2026-06-09.md). Backfilled last 1,965 null-axis rows (now 0-null); mapped 210 query-site refs; staged (unapplied) drop migration. Two questions for Robert: (1) 4-way vs 5-way — recommend **5-way**; (2) drop `verificationStatus` too or keep for DEPRECATED/PROVISIONAL — recommend **keep**. Column drop is irreversible and stays unexecuted until answered.
 - [ ] ⏸ Rotate NYT + Azure keys at provider dashboards
 - [ ] ⏸ Set CRON_SECRET, TELEGRAM_CHAT_ID, NYT_API_KEY, COLOMBIA_SEARCH_KEY in Vercel env vars
 
@@ -42,6 +41,7 @@ Add tasks here anytime. Robert reviews commits; never auto-pushes.
 ## Completed
 
 <!-- Worker appends completed tasks here with date -->
+- [x] ⏸ Collapse 4 status fields → `epistemicAxis` only (needs Robert's 4-way vs 5-way decision) — **analysis done 2026-06-09, awaiting decision.** See [`docs/axis-collapse-decision-2026-06-09.md`](docs/axis-collapse-decision-2026-06-09.md). Backfilled last 1,965 null-axis rows (now 0-null); mapped 210 query-site refs; staged (unapplied) drop migration. Two questions for Robert: (1) 4-way vs 5-way — recommend **5-way**; (2) drop `verificationStatus` too or keep for DEPRECATED/PROVISIONAL — recommend **keep**. Column drop is irreversible and stays unexecuted until answered. (completed 2026-06-09 20:52 EDT — *worker portion only; schema migration still gated on Robert's 2 answers + a supervised read-path swap. No columns dropped.*)
 - [x] Redact Neon pooler hostname from `AUDIT-2026-05-21.md` (completed 2026-06-09 16:05 EDT)
 - [x] Gate `app/api/books/upload/route.ts` and `app/api/books/[bookId]/ingest/route.ts` with `isReadOnly()` check + reject uploads >20MB (completed 2026-06-09 16:04 EDT)
 - [x] **Wikidata cross-reference enrichment** — After Uruguay (`uruguay_legislation_v1`) finishes ingestion, write and run a script to link existing Source records to Wikidata Q-numbers via the Wikidata SPARQL endpoint. Scope: legislative sources first (match by title + jurisdiction), then expand. This is enrichment only — do NOT ingest Wikidata claims as HARD_FACT. See ROADMAP.md Tier 3 for context. (completed 2026-05-21 06:35 EDT)
