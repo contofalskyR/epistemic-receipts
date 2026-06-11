@@ -571,7 +571,7 @@ const TRAJECTORIES: Trajectory[] = [
         source: {
           externalId: 'src:nct01262118-semaglutide-p1',
           name: 'NCT01262118 — A Trial Investigating the Safety, Tolerability and Pharmacokinetics of Semaglutide (Novo Nordisk, 2010).',
-          url: 'https://clinicaltrials.gov/ct2/show/NCT01262118',
+          url: 'https://clinicaltrials.gov/study/NCT01262118',
           publishedAt: '2010-01-26',
           methodologyType: 'primary',
         },
