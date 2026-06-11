@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { DestinationNav } from "@/components/destinations/DestinationNav";
 
 type Paper = {
@@ -273,23 +274,29 @@ function PaperCard({ paper }: { paper: Paper }) {
             recorded in the Crossref metadata registry.
           </div>
 
-          {paper.doi && (
-            <a
-              href={`https://doi.org/${paper.doi}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-block",
-                marginTop: "0.25rem",
-                fontSize: "0.78rem",
-                color: S.accent,
-                textDecoration: "none",
-                fontFamily: "monospace",
-              }}
+          <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", marginTop: "0.25rem" }}>
+            {paper.doi && (
+              <a
+                href={`https://doi.org/${paper.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: "0.78rem",
+                  color: S.accent,
+                  textDecoration: "none",
+                  fontFamily: "monospace",
+                }}
+              >
+                doi:{paper.doi} ↗
+              </a>
+            )}
+            <Link
+              href={`/claims/${paper.id}`}
+              style={{ fontSize: "0.78rem", color: S.blue, textDecoration: "none" }}
             >
-              doi:{paper.doi} ↗
-            </a>
-          )}
+              View receipt for this retraction →
+            </Link>
+          </div>
         </div>
       )}
     </div>
@@ -506,8 +513,9 @@ export default function RetractionExplorerClient({
           color: "#c4b5fd",
         }}
       >
-        ⭐ Click any card to see full retraction details and DOI link. Data sourced from the
-        Crossref metadata registry — updated continuously as publishers file retractions.
+        Click any card for full retraction details, DOI, and its receipt. Data sourced from the
+        Crossref metadata registry via the <span style={{ fontFamily: "monospace" }}>crossref_retractions_v1</span>{" "}
+        pipeline — refreshed when the pipeline reruns, not live.
       </div>
 
       {/* Results meta */}
