@@ -163,7 +163,7 @@ export default async function StatsPage() {
     <div className="space-y-10 text-sm text-zinc-300">
       <header>
         <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Statistics</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Statistics</h1>
+        <h1 className="mt-1 text-2xl font-semibold text-white">The corpus, by the numbers</h1>
         <p className="mt-2 text-zinc-400">
           Corpus composition, epistemic provenance, and legislative consensus tracking.
         </p>
@@ -188,7 +188,7 @@ export default async function StatsPage() {
       </Suspense>
 
       <div className="pt-4 border-t border-zinc-800">
-        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Phase 1</p>
+        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Roll-call detail</p>
         <h2 className="mt-1 text-lg font-semibold text-white">
           Curated Legislatures (UK / US / Canada / EU)
         </h2>
@@ -344,7 +344,7 @@ export default async function StatsPage() {
 
       {/* ── Phase 2 ── */}
       <div className="pt-4 border-t border-zinc-800">
-        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Phase 2</p>
+        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Topics</p>
         <h2 className="mt-1 text-lg font-semibold text-white">Topic Analysis</h2>
         <p className="mt-1 text-xs text-zinc-500">
           Keyword-clustered from bill titles. UK, EU, and Canada sources use numeric identifiers —

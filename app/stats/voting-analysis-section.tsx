@@ -419,7 +419,7 @@ export default async function VotingAnalysisSection() {
   return (
     <section className="space-y-8">
       <div className="pt-4 border-t border-zinc-800">
-        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Phase 3</p>
+        <p className="text-xs text-zinc-500 font-mono uppercase tracking-widest">Member-level</p>
         <h2 className="mt-1 text-lg font-semibold text-white">Voting Pattern Analysis</h2>
         <p className="mt-1 text-xs text-zinc-500">
           Per-member roll-call data from EU Parliament and US Congress. Chi-square independence

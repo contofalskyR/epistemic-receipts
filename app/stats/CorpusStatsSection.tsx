@@ -152,7 +152,7 @@ export default function CorpusStatsSection() {
           <span>
             <span className="text-zinc-200">{data.status_history_n.toLocaleString()}</span>
             {" "}trajectory transitions{" "}
-            <span className="text-zinc-600">(ClaimStatusHistory rows)</span>
+            <span className="text-zinc-600">(dated status-change records)</span>
           </span>
           <span>
             <span className="text-zinc-200">{data.auto_classified_pct.toFixed(1)}%</span>
