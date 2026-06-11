@@ -118,7 +118,7 @@ export default function FieldsHubPage() {
                   </div>
                   <div className="shrink-0 text-right">
                     <p className="text-xs font-mono text-gray-600">
-                      <span className="text-gray-400">{f.families}</span> fams
+                      <span className="text-gray-400">{f.families}</span> families
                     </p>
                   </div>
                 </div>
