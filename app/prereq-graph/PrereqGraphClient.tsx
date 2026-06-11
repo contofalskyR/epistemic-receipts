@@ -404,7 +404,7 @@ function Chip({
 export default function PrereqGraphClient({
   initialStats,
 }: {
-  initialStats: { claimsWithLinks: number };
+  initialStats: { claimsWithLinks: number; totalRelations: number };
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -518,7 +518,10 @@ export default function PrereqGraphClient({
             val: initialStats.claimsWithLinks.toLocaleString(),
             label: "Claims with links",
           },
-          { val: "4.8M+", label: "Total relations" },
+          {
+            val: initialStats.totalRelations.toLocaleString(),
+            label: "Total relations",
+          },
         ].map((s) => (
           <div
             key={s.label}

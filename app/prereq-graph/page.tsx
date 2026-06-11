@@ -11,12 +11,22 @@ export const metadata = {
 };
 
 async function getStats() {
-  const result = await prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-    `SELECT COUNT(DISTINCT "fromClaimId") AS count
-     FROM "ClaimRelation"
-     WHERE "relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')`
-  );
-  return { claimsWithLinks: Number(result[0]?.count ?? 0) };
+  // Both counts are cached by ISR (revalidate 3600) — keep them live rather
+  // than hardcoding totals that drift as pipelines run.
+  const [linked, relations] = await Promise.all([
+    prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
+      `SELECT COUNT(DISTINCT "fromClaimId") AS count
+       FROM "ClaimRelation"
+       WHERE "relationType" IN ('CITES', 'SUPERSEDED_BY', 'OUTCOME')`
+    ),
+    prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
+      `SELECT COUNT(*) AS count FROM "ClaimRelation"`
+    ),
+  ]);
+  return {
+    claimsWithLinks: Number(linked[0]?.count ?? 0),
+    totalRelations: Number(relations[0]?.count ?? 0),
+  };
 }
 
 export default async function PrereqGraphPage() {
