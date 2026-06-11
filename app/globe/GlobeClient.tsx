@@ -111,6 +111,10 @@ function claimBadge(status: string) {
 const MIN_YEAR = 1789;
 const MAX_YEAR = 2026;
 
+// Hard cap on claims accumulated via "Load more" — beyond this, hand off to /search
+// (which is properly paginated) instead of growing the DOM unboundedly.
+const MAX_LOADED_CLAIMS = 200;
+
 function formatYear(year: number): string {
   if (year >= MAX_YEAR) return "Present";
   return `${year}`;
@@ -1033,12 +1037,12 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             Connections →
           </Link>
           <span className="mx-2 text-gray-700">|</span>
-          <a
+          <Link
             href="/globe/lab"
             className="text-purple-400 hover:text-purple-300 transition-colors"
           >
             Try Globe Lab
-          </a>
+          </Link>
         </div>
       )}
       {viewMode === "heatmap" && currentGeoSelection?.source === "historical" && (
@@ -1153,36 +1157,50 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             {!loadingClaims && claimsPage && claimsPage.total > 0 && filteredClaims.length === 0 && claimFilter && (
               <p className="text-gray-500 text-sm py-4 text-center">No loaded claims match your filter.</p>
             )}
-            {/* Load more */}
+            {/* Load more — hard-capped; beyond the cap, hand off to paginated /search */}
             {!loadingClaims && claimsPage && !claimFilter && claimsPage.claims.length < claimsPage.total && (
-              <div className="py-2 flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => sidebar && loadMoreClaims(sidebar.countryCode, claimsOffset + 20)}
-                  disabled={loadingMoreClaims}
-                  className="px-4 py-1.5 text-xs rounded border border-amber-700/60 text-amber-400 hover:bg-amber-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {loadingMoreClaims ? (
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-3 h-3 rounded-full border border-amber-400 border-t-transparent animate-spin inline-block" />
-                      Loading…
-                    </span>
-                  ) : (
-                    `Load more (${(claimsPage.total - claimsPage.claims.length).toLocaleString()} remaining)`
-                  )}
-                </button>
-              </div>
+              claimsPage.claims.length < MAX_LOADED_CLAIMS ? (
+                <div className="py-2 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => sidebar && loadMoreClaims(sidebar.countryCode, claimsOffset + 20)}
+                    disabled={loadingMoreClaims}
+                    className="px-4 py-1.5 text-xs rounded border border-amber-700/60 text-amber-400 hover:bg-amber-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    {loadingMoreClaims ? (
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-3 h-3 rounded-full border border-amber-400 border-t-transparent animate-spin inline-block" />
+                        Loading…
+                      </span>
+                    ) : (
+                      `Load more (${(claimsPage.total - claimsPage.claims.length).toLocaleString()} remaining)`
+                    )}
+                  </button>
+                </div>
+              ) : (
+                <div className="py-3 text-center space-y-1">
+                  <p className="text-xs text-gray-500">
+                    Showing the first {MAX_LOADED_CLAIMS} of {claimsPage.total.toLocaleString()} claims.
+                  </p>
+                  <Link
+                    href={`/search?country=${claimsPage.countryCode}`}
+                    className="inline-block text-xs text-amber-400 hover:text-amber-300 transition-colors"
+                  >
+                    Continue in search — fully paginated →
+                  </Link>
+                </div>
+              )
             )}
           </div>
 
           {sidebar && (
             <div className="px-5 py-3 border-t border-gray-800">
-              <a
+              <Link
                 href={`/search?country=${sidebar.countryCode}`}
                 className="text-sm text-amber-400 hover:text-amber-300 transition-colors"
               >
                 View all claims from {sidebar.countryName} →
-              </a>
+              </Link>
             </div>
           )}
         </div>
@@ -1251,7 +1269,22 @@ export default function GlobeClient({ density }: { density: DensityRow[] }) {
             {!loadingCitySidebar && citySidebar && citySidebar.claims.length === 0 && (
               <p className="text-gray-500 text-sm py-4 text-center">No claims found for this city.</p>
             )}
-            {!loadingCitySidebar && citySidebar && citySidebar.claims.length < citySidebar.total && (
+            {!loadingCitySidebar && citySidebar && citySidebar.claims.length >= MAX_LOADED_CLAIMS && citySidebar.claims.length < citySidebar.total && (
+              <div className="py-3 text-center space-y-1">
+                <p className="text-xs text-gray-500">
+                  Showing the first {MAX_LOADED_CLAIMS} of {citySidebar.total.toLocaleString()} claims.
+                </p>
+                {citySidebar.countryCode && (
+                  <Link
+                    href={`/search?country=${citySidebar.countryCode}`}
+                    className="inline-block text-xs text-sky-400 hover:text-sky-300 transition-colors"
+                  >
+                    Continue in search — fully paginated →
+                  </Link>
+                )}
+              </div>
+            )}
+            {!loadingCitySidebar && citySidebar && citySidebar.claims.length < MAX_LOADED_CLAIMS && citySidebar.claims.length < citySidebar.total && (
               <div className="py-2 flex justify-center">
                 <button
                   type="button"
