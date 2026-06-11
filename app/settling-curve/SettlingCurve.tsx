@@ -328,10 +328,14 @@ function SettlingCurveInner() {
             </span>
           </div>
           <p className="mb-3" style={{ fontSize: 14, color: C.ink }}>{detail.reason}</p>
-          <a href={detail.source.url ?? undefined} target="_blank" rel="noreferrer"
-            className="inline-flex items-center gap-1" style={{ fontSize: 13, color: C.brand }}>
-            {detail.source.name} <span aria-hidden>↗</span>
-          </a>
+          {detail.source.url ? (
+            <a href={detail.source.url} target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-1" style={{ fontSize: 13, color: C.brand }}>
+              {detail.source.name} <span aria-hidden>↗</span>
+            </a>
+          ) : (
+            <span style={{ fontSize: 13, color: C.mut }}>{detail.source.name}</span>
+          )}
           <p className="mt-4" style={{ fontSize: 12, color: C.faint }}>
             Each point is a dated source — the receipt for when a community changed its mind. Tap any marker.
           </p>
@@ -349,7 +353,7 @@ function SettlingCurveInner() {
       <style>{REDUCED_MOTION_CSS}</style>
       <div className="mx-auto px-5 py-8" style={{ maxWidth: 1040 }}>
 
-        <div className="flex items-center justify-between mb-7">
+        <div className="flex items-center justify-between mb-3">
           <div className="font-mono text-xs tracking-widest" style={{ color: C.brand }}>
             EPISTEMIC RECEIPTS
           </div>
@@ -357,6 +361,12 @@ function SettlingCurveInner() {
             SETTLING CURVE
           </div>
         </div>
+
+        <p className="mb-6" style={{ color: C.mut, fontSize: 13.5, maxWidth: 640, lineHeight: 1.5 }}>
+          How long does a claim take to settle? Each trajectory tracks one claim&apos;s dated,
+          sourced status changes across five communities — expert literature, institutions,
+          courts, the public, and markets. Pick a claim:
+        </p>
 
         <div className="flex gap-2 overflow-x-auto pb-3 mb-6" style={{ scrollbarWidth: "thin" }}>
           {list.map((x) => {
