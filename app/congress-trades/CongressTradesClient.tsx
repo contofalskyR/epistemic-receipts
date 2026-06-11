@@ -315,17 +315,63 @@ function TradeCard({ trade }: { trade: Trade }) {
               <div style={{ fontSize: "0.83rem", color: S.text }}>{trade.amountRange || "—"}</div>
             </div>
           </div>
+          {trade.excessReturn !== null ? (
+            <div
+              style={{
+                background: "rgba(34,197,94,0.05)",
+                border: "1px solid rgba(34,197,94,0.18)",
+                borderRadius: "8px",
+                padding: "0.6rem 0.85rem",
+                fontSize: "0.78rem",
+                color: trade.excessReturn >= 0 ? S.green : S.red,
+              }}
+            >
+              Excess return vs S&amp;P 500 since trade date:{" "}
+              <strong>
+                {trade.excessReturn >= 0 ? "+" : ""}
+                {trade.excessReturn.toFixed(1)}%
+              </strong>
+              <span style={{ color: S.muted }}> · computed at ingestion</span>
+            </div>
+          ) : (
+            <div
+              style={{
+                background: "rgba(240,160,0,0.05)",
+                border: "1px solid rgba(240,160,0,0.15)",
+                borderRadius: "8px",
+                padding: "0.6rem 0.85rem",
+                fontSize: "0.78rem",
+                color: "#c8a060",
+              }}
+            >
+              No return data computed for this trade yet. Vote-correlation analysis is in development.
+            </div>
+          )}
           <div
             style={{
-              background: "rgba(240,160,0,0.05)",
-              border: "1px solid rgba(240,160,0,0.15)",
-              borderRadius: "8px",
-              padding: "0.6rem 0.85rem",
+              marginTop: "0.75rem",
+              display: "flex",
+              gap: "1.25rem",
+              flexWrap: "wrap",
               fontSize: "0.78rem",
-              color: "#c8a060",
             }}
           >
-            Vote correlation analysis not yet available for this trade. Cross-referencing with Voteview roll-call data is in progress.
+            <Link
+              href={`/claims/${trade.id}`}
+              onClick={(e) => e.stopPropagation()}
+              style={{ color: S.accent, textDecoration: "none" }}
+            >
+              View receipt for this disclosure →
+            </Link>
+            {trade.bioguideId && (
+              <Link
+                href={`/members/${trade.bioguideId}`}
+                onClick={(e) => e.stopPropagation()}
+                style={{ color: S.blue, textDecoration: "none" }}
+              >
+                Member&apos;s voting record →
+              </Link>
+            )}
           </div>
         </div>
       )}
