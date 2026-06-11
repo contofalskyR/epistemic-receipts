@@ -356,7 +356,7 @@ function HomeHeroContent({ children }: { children?: React.ReactNode }) {
       {/* Hero */}
       <section className="relative pt-12 pb-8 sm:pt-20 sm:pb-12 max-w-3xl mx-auto">
         <h1 className="text-3xl sm:text-5xl font-semibold text-white text-center tracking-tight leading-tight">
-          What would you like to learn about?
+          What fact would you like a receipt for?
         </h1>
 
         <div className="mt-8 sm:mt-10">
