@@ -46,10 +46,13 @@ export default async function RepresentationPage() {
           <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Analysis</p>
           <h1 className="mt-1 text-2xl font-semibold text-white">Representation gap (CCES)</h1>
           <p className="mt-2 text-gray-400 max-w-2xl leading-relaxed">
-            No matched rows yet. Run <span className="font-mono">scripts/ingest-cces.ts --full</span>{" "}
-            (with <span className="font-mono">ALLOW_EDITS=true</span>) to populate{" "}
-            <span className="font-mono">ConstituentOpinion</span> from the Harvard Dataverse CES
-            cumulative file, then revisit this page.
+            No constituent-opinion data is loaded yet, so the gap analysis can&apos;t run.
+            This page compares how state delegations voted in Congress against what CCES
+            survey respondents in those states supported — check back once the CCES
+            ingest has completed.
+          </p>
+          <p className="mt-2 text-xs text-gray-600 font-mono">
+            operator hint: scripts/ingest-cces.ts --full
           </p>
         </div>
       </div>
