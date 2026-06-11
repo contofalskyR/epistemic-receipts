@@ -23,10 +23,10 @@ import { URL } from 'url'
 const prisma = new PrismaClient()
 
 const RESULTS_FILE = path.join(__dirname, 'url-check-results.csv')
-const CONCURRENCY = 40          // global concurrent requests
-const PER_DOMAIN_CONCURRENCY = 5 // max concurrent per domain
-const TIMEOUT_MS = 12000        // 12s per request
-const BATCH_SIZE = 2000         // rows fetched from DB at a time
+const CONCURRENCY = 80          // global concurrent requests
+const PER_DOMAIN_CONCURRENCY = 80 // effectively no per-domain cap; rely on global cap
+const TIMEOUT_MS = 10000        // 10s per request
+const BATCH_SIZE = 5000         // rows fetched from DB at a time
 const WRITE_BUFFER_SIZE = 100   // flush CSV every N results
 const MAX_REDIRECTS = 5
 
