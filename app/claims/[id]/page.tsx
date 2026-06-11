@@ -106,6 +106,8 @@ type ClaimDetail = {
   createdAt: string;
   humanReviewed: boolean;
   epistemicStatus: string | null;
+  ingestedBy: string;
+  verificationStatus: string | null;
   parent: { id: string; text: string } | null;
   children: ChildClaim[];
   edges: EdgeDetail[];
@@ -114,6 +116,20 @@ type ClaimDetail = {
 };
 
 // ── Shared constants ──────────────────────────────────────────────────────────
+
+const CLAIM_TYPE_LABEL: Record<string, string> = {
+  EMPIRICAL: "Empirical",
+  INSTITUTIONAL: "Institutional",
+  INTERPRETIVE: "Interpretive",
+  HYBRID: "Hybrid",
+};
+
+const CLAIM_TYPE_TOOLTIP: Record<string, string> = {
+  EMPIRICAL: "A factual claim grounded in observable, measurable evidence",
+  INSTITUTIONAL: "A claim about laws, rules, or official decisions by institutions",
+  INTERPRETIVE: "A claim that involves inference or expert judgment",
+  HYBRID: "Combines empirical data with institutional or interpretive framing",
+};
 
 const EPISTEMIC_BADGE: Record<string, { label: string; style: string }> = {
   confirmed:         { label: "Confirmed ✓",      style: "bg-green-900/70 text-green-300 border border-green-700/50" },
@@ -162,8 +178,6 @@ function TlLegendDot({ color, label }: { color: string; label: string }) {
 }
 
 function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
-  const [toast, setToast] = useState<string | null>(null);
-
   const datedEdges = claim.edges.filter(e => e.source.publishedAt);
 
   if (datedEdges.length === 0) {
@@ -358,11 +372,6 @@ function ClaimTimeline({ claim }: { claim: ClaimDetail }) {
 
       </div>
 
-      {toast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-800 border border-gray-700 text-gray-300 text-xs px-4 py-2 rounded-full shadow-xl pointer-events-none">
-          {toast}
-        </div>
-      )}
     </div>
   );
 }
@@ -757,7 +766,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
   }
 
   if (!claim) {
-    return <p className="text-gray-600 text-sm">Loading…</p>;
+    return <p className="text-gray-600 text-sm font-mono animate-pulse">Pulling the receipt…</p>;
   }
 
   const sortedEdges = [...claim.edges].sort((a, b) =>
@@ -779,13 +788,26 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
         <Link href="/" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">← all claims</Link>
       )}
 
-      {/* Claim header */}
-      <div className="space-y-3 pb-6 border-b border-gray-800">
+      {/* Claim header — the receipt itself */}
+      <div className="space-y-3 pb-6 border-b border-dashed border-gray-700">
+        <p className="text-xs font-mono uppercase tracking-widest text-gray-500">
+          Receipt <span className="text-gray-600">№</span>{" "}
+          <span className="text-gray-400" title={claim.id}>{claim.id.slice(-8)}</span>
+        </p>
+        {claim.verificationStatus === "DEPRECATED" && (
+          <div className="rounded-lg border border-rose-900/60 bg-rose-950/30 px-4 py-3 text-sm text-rose-300">
+            This record was retired after a pipeline audit. It is excluded from default views
+            and preserved here for the audit trail only.
+          </div>
+        )}
         <h1 className="text-xl font-semibold text-white leading-snug">{claim.text}</h1>
         <div className="flex items-center gap-2 flex-wrap">
           <EpistemicAxisBadge axis={claim.epistemicAxis} />
-          <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
-            {claim.claimType}
+          <span
+            className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400"
+            title={CLAIM_TYPE_TOOLTIP[claim.claimType] ?? ""}
+          >
+            {CLAIM_TYPE_LABEL[claim.claimType] ?? claim.claimType}
           </span>
           {claim.epistemicStatus && EPISTEMIC_BADGE[claim.epistemicStatus] && (
             <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${EPISTEMIC_BADGE[claim.epistemicStatus]!.style}`}>
@@ -818,8 +840,13 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
           ) : (
             <span>added {new Date(claim.createdAt).toLocaleDateString()}</span>
           )}
-          <span>{claim.edges.length} {claim.edges.length === 1 ? "edge" : "edges"}</span>
           <span>{uniqueSources} {uniqueSources === 1 ? "source" : "sources"}</span>
+          <span>{claim.edges.length} evidence {claim.edges.length === 1 ? "link" : "links"}</span>
+          {claim.ingestedBy && (
+            <span className="font-mono text-gray-600" title="Ingestion pipeline that produced this record">
+              via {claim.ingestedBy}
+            </span>
+          )}
           {claim.thresholdEvents.length > 0 && (
             <span className="text-green-500">{claim.thresholdEvents.length} threshold {claim.thresholdEvents.length === 1 ? "event" : "events"}</span>
           )}
@@ -897,13 +924,13 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
       {/* Sources & edges table */}
       <section className="space-y-3">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-500">
-          Sources & edges
+          Evidence & sources
           <span className="ml-2 text-gray-700 font-normal normal-case tracking-normal">
             — click any row to expand revision history
           </span>
         </h2>
         {claim.edges.length === 0 ? (
-          <p className="text-sm text-gray-700 italic">No edges yet.</p>
+          <p className="text-sm text-gray-700 italic">No sources linked to this claim yet.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left">
@@ -949,7 +976,7 @@ export default function ClaimDetailPage({ params }: { params: Promise<{ id: stri
                 <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                   <EpistemicAxisBadge axis={child.epistemicAxis} />
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-gray-800 text-gray-400">
-                    {child.claimType}
+                    {CLAIM_TYPE_LABEL[child.claimType] ?? child.claimType}
                   </span>
                   <span className="text-xs text-gray-600">
                     {child._count.edges} {child._count.edges === 1 ? "source" : "sources"}
