@@ -52,23 +52,26 @@ const TYPES = [
   { value: "sources", label: "Sources" },
 ] as const;
 
-const STATUS_STYLE: Record<string, string> = {
-  HARD_FACT: "bg-green-900 text-green-300",
-  NEVER_RESOLVES: "bg-gray-700 text-gray-400",
-  DISPUTED: "bg-yellow-900 text-yellow-300",
+// Left-edge stripe per epistemic axis — the fastest scanning signal on a result card.
+// Full literal class strings so Tailwind's scanner picks them up.
+const AXIS_STRIPE: Record<string, string> = {
+  SETTLED: "border-l-emerald-400/70 hover:border-l-emerald-400/70",
+  CONTESTED: "border-l-amber-400/70 hover:border-l-amber-400/70",
+  RECORDED: "border-l-slate-400/50 hover:border-l-slate-400/50",
+  OPEN: "border-l-blue-400/70 hover:border-l-blue-400/70",
+  UNRESOLVABLE: "border-l-violet-400/70 hover:border-l-violet-400/70",
 };
+const AXIS_STRIPE_FALLBACK = "border-l-gray-700 hover:border-l-gray-700";
 
-const STATUS_LABEL: Record<string, string> = {
-  HARD_FACT: "Hard Fact",
-  NEVER_RESOLVES: "Never Resolves",
-  DISPUTED: "Disputed",
-};
-
-const STATUS_TOOLTIP: Record<string, string> = {
-  HARD_FACT: "Independently verified across multiple primary sources",
-  NEVER_RESOLVES: "Definitionally true — not subject to empirical falsification",
-  DISPUTED: "Conflicting evidence or contested by authoritative sources",
-};
+// Example queries for the pre-search state — same voice as the homepage chips.
+const EXAMPLE_QUERIES = [
+  "CRISPR",
+  "NATO expansion",
+  "room-temperature superconductor",
+  "Cuban Missile Crisis",
+  "semaglutide",
+  "Voting Rights Act",
+];
 
 const TYPE_LABEL: Record<string, string> = {
   EMPIRICAL: "Empirical",
@@ -82,13 +85,6 @@ const TYPE_TOOLTIP: Record<string, string> = {
   INSTITUTIONAL: "A claim about laws, rules, or official decisions by institutions",
   INTERPRETIVE: "A claim that involves inference or expert judgment",
   HYBRID: "Combines empirical data with institutional or interpretive framing",
-};
-
-const VS_STYLE: Record<string, string> = {
-  VERIFIED: "bg-blue-950 text-blue-400 border border-blue-800/50",
-  PROVISIONAL: "bg-gray-800/60 text-gray-500 border border-gray-700/50",
-  DISPUTED: "bg-red-950 text-red-400 border border-red-800/50",
-  DEPRECATED: "bg-gray-900 text-gray-600 border border-gray-800",
 };
 
 const EPISTEMIC_BADGE: Record<string, { label: string; style: string }> = {
@@ -182,25 +178,32 @@ function MissingState({ query }: { query: string }) {
       )}
 
       <p className="text-xs text-gray-600 pt-2">
-        Try a broader term, or browse <a href="/fields" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">Fields</a> to explore what&apos;s already here.
+        Try a broader term, or browse <Link href="/fields" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">Fields</Link> to explore what&apos;s already here.
       </p>
     </div>
   );
 }
 
 function SearchLegend() {
+  const entries = [
+    { dot: "bg-emerald-400", label: "Settled", tip: "Consensus established — no known active dispute" },
+    { dot: "bg-amber-400", label: "Contested", tip: "Actively disputed, retracted, or under challenge" },
+    { dot: "bg-slate-400", label: "Recorded", tip: "Officially documented — it happened, epistemic weight varies" },
+    { dot: "bg-blue-400", label: "Open", tip: "Unresolved empirical question — outcome not yet determined" },
+  ];
   return (
-    <div className="rounded-lg border border-gray-800/60 bg-gray-900/40 px-4 py-3 text-xs text-gray-500 space-y-1.5"
-      style={{ animation: "result-in 0.3s ease forwards" }}>
-      <p className="text-gray-400 font-medium">Reading results</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
-        <span><span className="text-emerald-400">Settled</span> — established fact, no known dispute</span>
-        <span><span className="text-amber-400">Contested</span> — retracted, disputed, or challenged</span>
-        <span><span className="text-blue-400">Recorded</span> — officially documented</span>
-        <span><span className="text-indigo-400">Topic badge</span> — the field this claim belongs to</span>
-        <span><span className="text-gray-300">Evidence trail →</span> — timeline, sources, verification</span>
-        <span><span className="text-gray-300">Empirical</span> — observable, measurable fact</span>
-      </div>
+    <div
+      className="flex items-center gap-x-4 gap-y-1 flex-wrap text-xs text-gray-500 px-1"
+      style={{ animation: "result-in 0.3s ease forwards" }}
+    >
+      <span className="text-gray-600 font-mono uppercase tracking-wider">Status edge:</span>
+      {entries.map(e => (
+        <span key={e.label} className="inline-flex items-center gap-1.5 cursor-help" title={e.tip}>
+          <span className={`h-1.5 w-1.5 rounded-full ${e.dot}`} aria-hidden="true" />
+          {e.label}
+        </span>
+      ))}
+      <span className="text-gray-600">· each result links to its full evidence trail</span>
     </div>
   );
 }
@@ -307,14 +310,17 @@ export default function SearchClient() {
     pushUrl({ type: t, offset: 0 });
   }
 
-  const totalForType = useMemo(() => {
-    if (!data) return 0;
-    if (urlType === "claims") return data.counts.claims;
-    if (urlType === "sources") return data.counts.sources;
-    return data.counts.claims + data.counts.sources;
+  // Claims and sources paginate independently against the same offset, so the
+  // page count for "all" is the larger of the two — not their sum.
+  const pageCount = useMemo(() => {
+    if (!data) return 1;
+    const claimPages = Math.ceil(data.counts.claims / PAGE_SIZE);
+    const sourcePages = Math.ceil(data.counts.sources / PAGE_SIZE);
+    if (urlType === "claims") return Math.max(1, claimPages);
+    if (urlType === "sources") return Math.max(1, sourcePages);
+    return Math.max(1, claimPages, sourcePages);
   }, [data, urlType]);
 
-  const pageCount = Math.max(1, Math.ceil(totalForType / PAGE_SIZE));
   const currentPage = Math.floor(urlOffset / PAGE_SIZE) + 1;
 
   const trimmedQ = input.trim();
@@ -328,13 +334,20 @@ export default function SearchClient() {
     pushUrl({ country: "", offset: 0 });
   }
 
+  function runExample(q: string) {
+    clearTimeout(debounceRef.current);
+    setInput(q);
+    pushUrl({ q, offset: 0 });
+  }
+
   return (
     <div className="space-y-6">
       <div>
         <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Search</p>
-        <h1 className="mt-1 text-2xl font-semibold text-white">Search claims and sources</h1>
+        <h1 className="mt-1 text-2xl font-semibold text-white">Pull the receipt on any claim</h1>
         <p className="mt-2 text-gray-400 max-w-2xl text-sm leading-relaxed">
-          Full-text search across every claim and source in the database. Minimum {MIN_QUERY} characters.
+          1.6M+ sourced claims — settled, contested, or overturned. Every result traces back to
+          who said it, when, and whether it&apos;s still standing.
         </p>
       </div>
 
@@ -419,13 +432,33 @@ export default function SearchClient() {
 
       {/* States */}
       {trimmedQ.length === 0 && !hasCountry && !hasAxisFilter && (
-        <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
-          Type a query to begin. Searches Claim.text and Source.name/url with a case-insensitive substring match.
+        <div className="rounded-lg border border-gray-800 bg-gray-900/60 px-5 py-6 space-y-3">
+          <p className="text-sm text-gray-400">
+            Start with a question — a law, a paper, a ruling, a number. Try:
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {EXAMPLE_QUERIES.map(q => (
+              <button
+                key={q}
+                onClick={() => runExample(q)}
+                className="text-xs px-3 py-1.5 rounded-full border border-gray-700 bg-gray-900 text-gray-300 hover:border-gray-500 hover:text-white transition-colors"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-gray-600">
+            Or browse by discipline in{" "}
+            <Link href="/fields" className="text-gray-500 hover:text-gray-300 underline-offset-2 hover:underline">
+              Fields
+            </Link>
+            .
+          </p>
         </div>
       )}
 
       {queryTooShort && !hasCountry && !hasAxisFilter && (
-        <div className="rounded-lg border border-gray-800 bg-gray-900 px-4 py-6 text-sm text-gray-500 italic">
+        <div className="rounded-lg border border-gray-800 bg-gray-900/60 px-5 py-6 text-sm text-gray-500 italic">
           Keep typing — at least {MIN_QUERY} characters.
         </div>
       )}
@@ -441,7 +474,7 @@ export default function SearchClient() {
       )}
 
       {/* Pagination */}
-      {data && !loading && !error && totalForType > PAGE_SIZE && (
+      {data && !loading && !error && pageCount > 1 && (
         <div className="flex items-center gap-3 text-xs text-gray-500 pt-2">
           <button
             onClick={() => pushUrl({ offset: Math.max(0, urlOffset - PAGE_SIZE) })}
@@ -517,13 +550,15 @@ function ClaimResult({ claim, query, index }: { claim: ClaimHit; query: string; 
     ? new Date(claim.createdAt).getFullYear()
     : null;
 
+  const stripe = (claim.epistemicAxis && AXIS_STRIPE[claim.epistemicAxis]) || AXIS_STRIPE_FALLBACK;
+
   return (
     <Link
       href={`/claims/${claim.id}`}
-      className="block rounded-lg border border-gray-800 bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group opacity-0"
+      className={`block rounded-lg border border-gray-800 border-l-2 ${stripe} bg-gray-900 px-4 py-3 hover:border-gray-600 transition-colors group opacity-0`}
       style={{
         animation: "result-in 0.35s ease forwards",
-        animationDelay: `${index * 50}ms`,
+        animationDelay: `${Math.min(index, 8) * 40}ms`,
       }}
     >
       <p className="text-sm text-gray-200 group-hover:text-white leading-relaxed">
