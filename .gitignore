@@ -71,3 +71,4 @@ prisma/migrations.sqlite-backup/
 *-dead-letter.json
 *-verification.md
 logs/
+scripts/url-check-results.csv
