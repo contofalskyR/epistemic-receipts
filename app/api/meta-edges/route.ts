@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 const VALID_TYPES = ["SUPPRESSED", "AMPLIFIED", "LABELED", "DEMOTED"];
 
@@ -40,6 +41,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
   const {
     actorSourceId, targetEdgeId, claimId, type, reason, createdAt,
     ingestedBy, humanReviewed, reviewConfidence, reviewedAt, reviewedBy,

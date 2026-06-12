@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 export const dynamic = "force-dynamic";
 
 const OWNER_CHAT_ID = "7688025079";
 
 export async function POST(
-  _req: Request,
+  req: Request,
   { params }: { params: Promise<{ bookId: string }> },
 ) {
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
 
   const { bookId } = await params;
 

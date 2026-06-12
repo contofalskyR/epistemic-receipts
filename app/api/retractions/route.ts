@@ -18,15 +18,23 @@ export async function GET(req: NextRequest) {
     `c.deleted = false`,
   ];
 
+  // User input is passed as bind parameters ($1, ...), never interpolated
+  // into the SQL string. LIKE wildcards are escaped so they match literally.
+  const params: unknown[] = [];
+  const likeParam = (value: string): string => {
+    const escaped = value.replace(/[\\%_]/g, (m) => `\\${m}`);
+    params.push(`%${escaped}%`);
+    return `$${params.length}`;
+  };
+
   if (reason !== "all") {
-    const safe = reason.replace(/'/g, "''");
-    conditions.push(`c.metadata->>'updateType' ILIKE '%${safe}%'`);
+    conditions.push(`c.metadata->>'updateType' ILIKE ${likeParam(reason)}`);
   }
 
   if (q) {
-    const safe = q.replace(/'/g, "''").replace(/%/g, "\\%");
+    const p = likeParam(q);
     conditions.push(
-      `(c.metadata->>'title' ILIKE '%${safe}%' OR c.metadata->>'journal' ILIKE '%${safe}%' OR c.metadata->>'firstAuthor' ILIKE '%${safe}%')`
+      `(c.metadata->>'title' ILIKE ${p} OR c.metadata->>'journal' ILIKE ${p} OR c.metadata->>'firstAuthor' ILIKE ${p})`
     );
   }
 
@@ -75,10 +83,12 @@ export async function GET(req: NextRequest) {
        FROM "Claim" c
        WHERE ${where}
        ORDER BY c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC
-       LIMIT ${PAGE_SIZE} OFFSET ${offset}`
+       LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
+      ...params
     ),
     prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`
+      `SELECT COUNT(*) as count FROM "Claim" c WHERE ${where}`,
+      ...params
     ),
   ]);
 

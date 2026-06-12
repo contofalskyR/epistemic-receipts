@@ -46,7 +46,8 @@ export async function GET(req: NextRequest) {
   const page = Math.max(1, parseInt(sp.get("page") ?? "1", 10) || 1);
   const offset = (page - 1) * PAGE_SIZE;
 
-  const pipelines = DOMAIN_INGESTED[domain] ?? null;
+  // Object.hasOwn guards against prototype-chain lookups (e.g. ?domain=constructor)
+  const pipelines = Object.hasOwn(DOMAIN_INGESTED, domain) ? DOMAIN_INGESTED[domain] : null;
   const domainClause = pipelines
     ? `AND c."ingestedBy" IN (${pipelines.map((p) => `'${p}'`).join(",")})`
     : "";

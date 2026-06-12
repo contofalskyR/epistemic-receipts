@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const securityHeaders = [
+  // Force HTTPS for two years, including subdomains (site is Vercel-hosted, always HTTPS)
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains",
+  },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "X-XSS-Protection", value: "1; mode=block" },

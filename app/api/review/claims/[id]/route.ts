@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 type Params = { params: Promise<{ id: string }> };
 
 export async function PATCH(req: NextRequest, { params }: Params) {
   if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
   const { id } = await params;
   const { action } = await req.json() as { action: "approve" | "reject" };
 

@@ -9,18 +9,33 @@ type RateLimitEntry = { count: number; windowStart: number };
 // Module-level map persists within a single Edge isolate instance
 const rateLimitMap = new Map<string, RateLimitEntry>();
 
-const RATE_LIMIT_RULES: { pattern: RegExp; maxPerMin: number }[] = [
+type RateRule = { pattern: RegExp; maxPerMin: number; methods?: string[] };
+
+const RATE_LIMIT_RULES: RateRule[] = [
+  // Read endpoints — generous limits
   { pattern: /^\/api\/search(\/|$|\?)/, maxPerMin: 30 },
   { pattern: /^\/api\/stats(\/|$|\?)/, maxPerMin: 20 },
   { pattern: /^\/api\/claims(\/|$|\?)/, maxPerMin: 30 },
   { pattern: /^\/api\/globe(\/|$|\?)/, maxPerMin: 20 },
+  // Public write endpoints — tight limits (per IP, per isolate)
+  { pattern: /^\/api\/login$/, maxPerMin: 10, methods: ["POST"] },
+  { pattern: /^\/api\/feedback$/, maxPerMin: 5, methods: ["POST"] },
+  { pattern: /^\/api\/search\/miss$/, maxPerMin: 5, methods: ["POST"] },
+  { pattern: /^\/api\/subscribe(\/|$)/, maxPerMin: 5, methods: ["POST"] },
+  { pattern: /^\/api\/bookmarks(\/|$)/, maxPerMin: 30, methods: ["POST", "DELETE"] },
 ];
 
-function checkRateLimit(ip: string, pathname: string): { limited: boolean; remaining: number } {
-  const rule = RATE_LIMIT_RULES.find(r => r.pattern.test(pathname));
+function checkRateLimit(
+  ip: string,
+  pathname: string,
+  method: string,
+): { limited: boolean; remaining: number } {
+  const rule = RATE_LIMIT_RULES.find(
+    r => r.pattern.test(pathname) && (!r.methods || r.methods.includes(method)),
+  );
   if (!rule) return { limited: false, remaining: -1 };
 
-  const key = `${ip}:${pathname.split("?")[0]}`;
+  const key = `${ip}:${method}:${pathname.split("?")[0]}`;
   const now = Date.now();
   const windowMs = 60_000;
 
@@ -59,10 +74,52 @@ async function sha256Hex(value: string): Promise<string> {
     .join("");
 }
 
+// ─── Write protection policy ─────────────────────────────────────────────────
+// The site is public read-only. Any mutating API request (non-GET/HEAD/OPTIONS)
+// is denied unless it is an explicitly public write endpoint or the request
+// carries admin credentials. Route handlers keep their own checks (isReadOnly,
+// passphrases, CRON_SECRET) as a second layer — this gate is defense in depth.
+
+const PUBLIC_WRITE_PATHS: RegExp[] = [
+  /^\/api\/login$/, // password login
+  /^\/api\/feedback$/, // visitor feedback (rate limited, in-route caps)
+  /^\/api\/search\/miss$/, // zero-result search reports (rate limited)
+  /^\/api\/subscribe(\/|$)/, // topic email subscriptions (rate limited)
+  /^\/api\/bookmarks(\/|$)/, // anonymous client-key bookmarks (rate limited)
+];
+
+// Pages and APIs that always require an admin session, even for reads.
+const ADMIN_PATHS: RegExp[] = [/^\/admin(\/|$)/, /^\/review(\/|$)/, /^\/api\/review(\/|$)/];
+
+function isMutation(method: string): boolean {
+  return method !== "GET" && method !== "HEAD" && method !== "OPTIONS";
+}
+
+async function isAdminRequest(req: NextRequest): Promise<boolean> {
+  const adminToken = process.env.ADMIN_TOKEN;
+  if (!adminToken) return false;
+
+  const expectedHash = await sha256Hex(adminToken);
+
+  // Hash-then-compare: comparing digests neutralizes timing side channels,
+  // since Edge runtime has no timingSafeEqual.
+  const auth = req.headers.get("authorization");
+  if (auth?.startsWith("Bearer ") && (await sha256Hex(auth.slice(7))) === expectedHash) {
+    return true;
+  }
+
+  const adminCookie = req.cookies.get("admin_auth")?.value;
+  return adminCookie === expectedHash;
+}
+
 // ─── Middleware ───────────────────────────────────────────────────────────────
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+  const method = req.method;
+  // Auth gates are enforced in production. `next dev` keeps the local
+  // editing workflow available without configuring ADMIN_TOKEN.
+  const isDev = process.env.NODE_ENV === "development";
 
   // Rate limiting — applied before auth so bots can't even reach the auth check
   maybePrune();
@@ -71,7 +128,7 @@ export async function middleware(req: NextRequest) {
     req.headers.get("x-real-ip") ??
     "unknown";
 
-  const { limited, remaining } = checkRateLimit(ip, pathname);
+  const { limited, remaining } = checkRateLimit(ip, pathname, method);
   if (limited) {
     return new NextResponse("Too Many Requests", {
       status: 429,
@@ -83,49 +140,58 @@ export async function middleware(req: NextRequest) {
     });
   }
 
-  const sitePassword = process.env.SITE_PASSWORD;
-
-  // No password configured — allow in dev, fail closed in production
-  if (!sitePassword) {
-    if (process.env.NODE_ENV === "production") {
-      return new NextResponse("Service Unavailable — SITE_PASSWORD not configured", { status: 503 });
-    }
-    const res = NextResponse.next();
-    if (remaining >= 0) res.headers.set("X-RateLimit-Remaining", String(remaining));
-    return res;
-  }
-
-  // Always allow the login page, login API, and bookmark API through
-  if (
-    pathname === "/login" ||
-    pathname === "/api/login" ||
-    pathname.startsWith("/api/bookmarks")
-  ) {
-    return NextResponse.next();
-  }
-
-  const cookie = req.cookies.get("site_auth")?.value;
-  const expectedSite = await sha256Hex(sitePassword);
-  const adminToken = process.env.ADMIN_TOKEN;
-  const expectedAdmin = adminToken ? await sha256Hex(adminToken) : null;
-
-  const hasValidAuth = cookie === expectedSite || (expectedAdmin !== null && cookie === expectedAdmin);
-
-  if (!hasValidAuth) {
-    const loginUrl = req.nextUrl.clone();
-    loginUrl.pathname = "/login";
-    loginUrl.searchParams.set("from", pathname);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  // /admin/* requires a separate admin_auth cookie set only via ADMIN_TOKEN login
-  if (pathname.startsWith("/admin") && expectedAdmin !== null) {
-    const adminCookie = req.cookies.get("admin_auth")?.value;
-    if (adminCookie !== expectedAdmin) {
+  // ── Admin-only areas (pages and APIs) ──
+  if (!isDev && ADMIN_PATHS.some(p => p.test(pathname))) {
+    if (!(await isAdminRequest(req))) {
+      if (pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = "/login";
       loginUrl.searchParams.set("from", pathname);
       return NextResponse.redirect(loginUrl);
+    }
+  }
+
+  // ── Global write gate: mutations require admin unless explicitly public ──
+  if (
+    !isDev &&
+    pathname.startsWith("/api/") &&
+    isMutation(method) &&
+    !PUBLIC_WRITE_PATHS.some(p => p.test(pathname))
+  ) {
+    if (!(await isAdminRequest(req))) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  }
+
+  // ── Optional private mode: if SITE_PASSWORD is set, gate page reads too. ──
+  // Leave SITE_PASSWORD unset in production to run the site public read-only.
+  const sitePassword = process.env.SITE_PASSWORD;
+  if (sitePassword) {
+    const allowedThrough =
+      pathname === "/login" ||
+      pathname === "/api/login" ||
+      pathname.startsWith("/api/bookmarks");
+
+    if (!allowedThrough) {
+      const cookie = req.cookies.get("site_auth")?.value;
+      const expectedSite = await sha256Hex(sitePassword);
+      const adminToken = process.env.ADMIN_TOKEN;
+      const expectedAdmin = adminToken ? await sha256Hex(adminToken) : null;
+
+      const hasValidAuth =
+        cookie === expectedSite || (expectedAdmin !== null && cookie === expectedAdmin);
+
+      if (!hasValidAuth) {
+        if (pathname.startsWith("/api/")) {
+          return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        }
+        const loginUrl = req.nextUrl.clone();
+        loginUrl.pathname = "/login";
+        loginUrl.searchParams.set("from", pathname);
+        return NextResponse.redirect(loginUrl);
+      }
     }
   }
 

@@ -3,6 +3,7 @@ import * as fs from "node:fs";
 import { spawn } from "node:child_process";
 import * as path from "node:path";
 import { prisma } from "@/lib/prisma";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 import {
   progressFilePath,
   logFilePath,
@@ -25,6 +26,9 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ bookId: string }> },
 ) {
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
+
   const body = await req.json().catch(() => ({}));
   const passphrase: string = body?.passphrase ?? "";
   if (!passphrase || passphrase !== process.env.BOOK_UPLOAD_PASSPHRASE) {

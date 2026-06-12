@@ -1,12 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import crypto from "crypto";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 const OWNER_CHAT_ID = "7688025079";
-
-function sha256Hex(value: string): string {
-  return crypto.createHash("sha256").update(value).digest("hex");
-}
 
 async function notifyTelegram(body: string, email: string | null, pageContext: string | null) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -22,21 +18,10 @@ async function notifyTelegram(body: string, email: string | null, pageContext: s
 }
 
 export async function GET(req: NextRequest) {
-  const adminToken = process.env.ADMIN_TOKEN;
-
-  // Accept Authorization: Bearer <ADMIN_TOKEN> (for API clients)
-  // or valid admin_auth cookie (for browser sessions logged in via ADMIN_TOKEN)
-  const authHeader = req.headers.get("authorization");
-  const adminCookie = req.cookies.get("admin_auth")?.value;
-  const expectedAdmin = adminToken ? sha256Hex(adminToken) : null;
-
-  const isAuthorized =
-    (adminToken && authHeader === `Bearer ${adminToken}`) ||
-    (expectedAdmin !== null && adminCookie === expectedAdmin);
-
-  if (!isAuthorized) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  // Accepts Authorization: Bearer <ADMIN_TOKEN> (API clients) or a valid
+  // admin_auth cookie (browser sessions logged in via ADMIN_TOKEN).
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
 
   const rows = await prisma.feedback.findMany({
     orderBy: { submittedAt: "desc" },
@@ -63,25 +48,38 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
   }
 
-  const { body, email, pageContext } = await req.json();
+  const parsed: unknown = await req.json().catch(() => null);
+  if (!parsed || typeof parsed !== "object") {
+    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+  }
+  const { body, email, pageContext } = parsed as {
+    body?: unknown;
+    email?: unknown;
+    pageContext?: unknown;
+  };
 
-  if (!body?.trim()) {
+  if (typeof body !== "string" || !body.trim()) {
     return NextResponse.json({ error: "body is required" }, { status: 400 });
   }
 
-  // Cap body length, consistent with /api/search/miss capping its query at 300 chars.
+  // Cap all field lengths, consistent with /api/search/miss capping its query at 300 chars.
   const trimmedBody = body.trim().slice(0, 300);
-  const trimmedEmail = email?.trim() || null;
+  const trimmedEmail =
+    typeof email === "string" && email.trim() ? email.trim().slice(0, 254) : null;
+  const trimmedPageContext =
+    typeof pageContext === "string" && pageContext.trim()
+      ? pageContext.trim().slice(0, 300)
+      : null;
 
   await prisma.feedback.create({
     data: {
       body: trimmedBody,
       email: trimmedEmail,
-      pageContext: pageContext || null,
+      pageContext: trimmedPageContext,
     },
   });
 
-  void notifyTelegram(trimmedBody, trimmedEmail, pageContext || null);
+  void notifyTelegram(trimmedBody, trimmedEmail, trimmedPageContext);
 
   return NextResponse.json({ ok: true });
 }

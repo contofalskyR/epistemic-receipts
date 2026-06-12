@@ -269,13 +269,17 @@ export async function GET(req: NextRequest) {
   }> = [];
 
   if (curatedClaims.length > 0) {
-    const claimIds = curatedClaims.map((c) => `'${c.id}'`).join(",");
-    const historyRows = (await prisma.$queryRawUnsafe(`
+    // Bind parameters instead of interpolating IDs into the IN clause
+    const placeholders = curatedClaims.map((_, i) => `$${i + 1}`).join(",");
+    const historyRows = (await prisma.$queryRawUnsafe(
+      `
       SELECT h."claimId", h.community, h."fromAxis", h."toAxis", h."occurredAt"
       FROM "ClaimStatusHistory" h
-      WHERE h."claimId" IN (${claimIds})
+      WHERE h."claimId" IN (${placeholders})
       ORDER BY h."claimId", h."occurredAt"
-    `)) as CuratedHistoryRow[];
+    `,
+      ...curatedClaims.map((c) => c.id)
+    )) as CuratedHistoryRow[];
 
     // Group by claimId
     const byClaimId: Record<string, CuratedHistoryRow[]> = {};

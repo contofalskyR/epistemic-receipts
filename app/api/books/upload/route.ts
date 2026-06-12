@@ -3,6 +3,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,8 @@ export async function POST(req: Request) {
       { status: 403 },
     );
   }
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
 
   const formData = await req.formData().catch(() => null);
   if (!formData) {

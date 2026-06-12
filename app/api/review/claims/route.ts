@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 export async function GET(req: NextRequest) {
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
+
   const { searchParams } = new URL(req.url);
   const page = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10));
   const limit = 10;

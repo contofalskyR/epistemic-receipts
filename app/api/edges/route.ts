@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 200;
@@ -46,6 +47,8 @@ const VALID_EVIDENCE_TYPES = ["EVIDENTIARY", "PROCEDURAL", "ARGUMENTATIVE"];
 
 export async function POST(req: NextRequest) {
   if (isReadOnly()) return NextResponse.json({ error: "Editing disabled in production" }, { status: 403 });
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
   const {
     sourceId, claimId, type, evidenceType, score, reason,
     ingestedBy, humanReviewed, reviewConfidence, reviewedAt, reviewedBy,

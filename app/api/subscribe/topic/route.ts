@@ -14,7 +14,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { email, topicKeyword, topicLabel } = body as Record<string, string>;
+  const raw = body as Record<string, unknown>;
+  const email = typeof raw.email === "string" ? raw.email.trim().slice(0, 254) : "";
+  // Cap lengths and strip control characters — topicLabel flows into the
+  // confirmation email subject line.
+  const clean = (v: unknown, max: number): string =>
+    typeof v === "string"
+      ? v
+          .trim()
+          .replace(/[\u0000-\u001f\u007f]/g, " ")
+          .slice(0, max)
+      : "";
+  const topicKeyword = clean(raw.topicKeyword, 100);
+  const topicLabel = clean(raw.topicLabel, 150);
 
   if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });

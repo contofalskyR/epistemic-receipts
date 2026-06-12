@@ -3,6 +3,7 @@ import * as fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { prisma } from "@/lib/prisma";
 import { isReadOnly } from "@/lib/isReadOnly";
+import { requireAdminOrDev } from "@/lib/adminAuth";
 import {
   ingestProgressFilePath,
   type IngestJobState,
@@ -122,6 +123,8 @@ export async function POST(
       { status: 403 },
     );
   }
+  const denied = requireAdminOrDev(req);
+  if (denied) return denied;
 
   const { bookId } = await params;
 

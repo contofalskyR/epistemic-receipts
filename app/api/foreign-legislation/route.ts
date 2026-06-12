@@ -44,9 +44,13 @@ export async function GET(req: NextRequest) {
     `(c."verificationStatus" IS NULL OR c."verificationStatus" != 'DEPRECATED')`,
   ];
 
+  // User input is passed as bind parameters ($1, ...), never interpolated
+  // into the SQL string. LIKE wildcards are escaped so they match literally.
+  const params: unknown[] = [];
   if (q) {
-    const safe = q.replace(/'/g, "''").replace(/%/g, "\\%");
-    conditions.push(`c.text ILIKE '%${safe}%'`);
+    const escaped = q.replace(/[\\%_]/g, (m) => `\\${m}`);
+    params.push(`%${escaped}%`);
+    conditions.push(`c.text ILIKE $${params.length}`);
   }
 
   const where = conditions.join(" AND ");
@@ -66,10 +70,12 @@ export async function GET(req: NextRequest) {
        FROM "Claim" c
        WHERE ${where}
        ORDER BY c."claimEmergedAt" DESC NULLS LAST, c."createdAt" DESC
-       LIMIT ${PAGE_SIZE} OFFSET ${offset}`
+       LIMIT ${PAGE_SIZE} OFFSET ${offset}`,
+      ...params
     ),
     prisma.$queryRawUnsafe<Array<{ count: bigint }>>(
-      `SELECT COUNT(*) AS count FROM "Claim" c WHERE ${where}`
+      `SELECT COUNT(*) AS count FROM "Claim" c WHERE ${where}`,
+      ...params
     ),
   ]);
 
