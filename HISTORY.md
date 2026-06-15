@@ -4,6 +4,32 @@ A running log of non-obvious decisions, dead ends, and what actually worked. Rea
 
 ---
 
+## 2026-06-15
+
+### Historical Trajectories (`scripts/seed-human-history-trajectories.ts`, commit `d5606ce`)
+50 trajectories seeded spanning all eras and regions. Each Claim has `metadata: { century, region, country, tags }`. Century format: "44 BCE", "1st"–"21st" CE. Strict validity rule: must be dateable to day/month, have contemporaneous sources, tell an epistemic transition story, and be non-interpretive. JFK = valid; Fall of Rome = too diffuse.
+
+### Citation Verifier (`scripts/verify-citation-content.ts`)
+3-phase word-overlap similarity check (Jaccard on keywords, stopwords stripped):
+- Phase 1 PubMed: eutils batch API, threshold 0.15 → **60 mismatches** from 1,946 pairs
+- Phase 2 DOI/CrossRef: 360K sources checked, only 266 had linked claims, **5 mismatches**
+- Phase 3 (all other ~1.14M): scrapes `<title>` tag, threshold 0.10 → ~97% mismatch rate due to generic page titles. Runs with 50 concurrent workers, 8s timeout per URL.
+
+**Phase 3 stalling pattern**: Some URL batches contain slow/hanging connections that freeze the concurrency pool for 30–90+ min despite per-request timeouts. Root cause is redirect chains that recursively call `fetchTitle()` resetting the timeout. Workaround: agentic loop that detects stall (no log progress in 5 min) and restarts from offset.
+
+**Resume mechanism**: Added `--start-offset N` CLI arg to Phase 3. State tracked in `scripts/citation-state.json` with `absoluteOffset` + `lastLogTotal`. Each restart: new absoluteOffset = old absoluteOffset + lastLogTotal.
+
+**Agentic loop**: `citation-phase3-loop` cron (every 5 min, main session) checks log progress vs state file, kills and restarts if stalled or crashed.
+
+### OpenClaw Cron Fix (voice-call SQLite conflict)
+Isolated cron agents were stalling at `runtime-plugins` phase (60s timeout). Root cause: `~/.openclaw/plugins/installs.json` (legacy file) had voice-call @ 2026.5.18 while shared SQLite had 2026.6.5. State migration code detected conflict every startup and left plugin index broken for isolated agent spawns. Fix: archived the legacy file to `installs.json.legacy-archived`. Gateway restart at 11:37 AM EDT confirmed clean startup.
+
+### Bugs Identified
+- **ER worker loop**: `er-worker.sh:33` greps `^- [ ]` without filtering `⏸` blocked items → infinite loop when all queue items are blocked. Fix: `grep -m1 '^- [ ] [^⏸]'`
+- **Nobel DEPRECATED**: 662 `nobel_v1` claims have `verificationStatus=DEPRECATED`. Only `uspto_v1` should have deprecated records. Likely a backfill script applied DEPRECATED too broadly.
+
+---
+
 ## NARA Catalog Ingestion (`scripts/ingest-nara-catalog.ts`)
 
 ### What works (as of 2026-05-29)
