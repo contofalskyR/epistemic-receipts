@@ -29,8 +29,8 @@ echo "BLOCK_SUMMARY:$BLOCK_SUMMARY"
 while true; do
   DATE=$(date '+%Y-%m-%d %H:%M %Z')
 
-  # Pick next pending task
-  TASK=$(grep -m1 "^- \[ \]" "$QUEUE" 2>/dev/null | sed 's/^- \[ \] //' || true)
+  # Pick next pending task — skip ⏸ blocked items (human-only, not actionable by worker)
+  TASK=$(grep -m1 "^- \[ \] [^⏸]" "$QUEUE" 2>/dev/null | sed 's/^- \[ \] //' || true)
 
   if [ -z "$TASK" ]; then
     echo "[$DATE] Queue empty" >> "$LOG"
