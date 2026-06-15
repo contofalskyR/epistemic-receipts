@@ -1,0 +1,3046 @@
+// Seed: comprehensive human history epistemic trajectories sweep.
+//
+// Covers Ancient → Contemporary eras. Each trajectory meets the strict validity
+// threshold: dateable to day/month, primary sources exist, epistemic transition
+// arc (OPEN→RECORDED, CONTESTED→SETTLED, SETTLED→REVERSED, etc.), and
+// non-interpretive claim statement.
+//
+// Does NOT overlap with the 21 trajectories already seeded in
+// seed-trajectories.ts and seed-historical-trajectories.ts.
+//
+// Idempotent: upserts on externalId.
+//
+// Run:     npx tsx scripts/seed-human-history-trajectories.ts
+// Dry-run: npx tsx scripts/seed-human-history-trajectories.ts --dry-run
+
+import 'dotenv/config'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+const DRY_RUN = process.argv.includes('--dry-run')
+
+type FactStatus = 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE' | 'REVERSED' | 'ABANDONED'
+type RatifyingCommunity = 'EXPERT_LITERATURE' | 'INSTITUTIONAL' | 'JUDICIAL' | 'PUBLIC' | 'MARKET'
+type DatePrecision = 'DAY' | 'MONTH' | 'QUARTER' | 'YEAR'
+
+interface SourceDef {
+  externalId: string
+  name: string
+  url: string
+  publishedAt: string
+  methodologyType: 'primary' | 'derivative' | 'opinion'
+}
+
+interface Transition {
+  fromAxis: FactStatus | null
+  toAxis: FactStatus
+  community: RatifyingCommunity
+  occurredAt: string
+  datePrecision: DatePrecision
+  reason: string
+  source: SourceDef
+}
+
+interface Trajectory {
+  externalId: string
+  text: string
+  claimType: 'EMPIRICAL' | 'INSTITUTIONAL' | 'INTERPRETIVE' | 'HYBRID'
+  claimEmergedAt: string
+  claimEmergedPrecision: DatePrecision
+  currentAxis: 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE'
+  transitions: Transition[]
+}
+
+const TRAJECTORIES: Trajectory[] = [
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL (before 500 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1. Julius Caesar assassinated ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:caesar-assassination-44bce',
+    text: 'Julius Caesar was assassinated by a group of Roman senators on the Ides of March (March 15), 44 BCE.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0001-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0001-03-15',
+        datePrecision: 'DAY',
+        reason: 'Caesar is stabbed to death by approximately 23 senators in the Theatre of Pompey. The act occurs in a public session of the Senate, witnessed by hundreds. Mark Antony and the conspirators immediately begin competing public narratives.',
+        source: {
+          externalId: 'src:suetonius-divus-julius',
+          name: 'Suetonius. Divus Julius, 82. (c. 121 CE, drawing on contemporary accounts)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0132%3Alife%3Djul.%3Achapter%3D82',
+          publishedAt: '0121-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0044-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent ancient sources confirm the event: Cicero (contemporary witness, Philippics), Plutarch (Life of Caesar), Appian (Civil Wars), and Cassius Dio. Archaeological evidence of the curia. No ancient source disputes the assassination itself.',
+        source: {
+          externalId: 'src:plutarch-life-caesar',
+          name: 'Plutarch. Life of Caesar, 66. (c. 100 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2008.01.0058%3Achapter%3D66',
+          publishedAt: '0100-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern archaeological excavation of the Largo di Torre Argentina in Rome identifies the exact site where Caesar was killed. Physical evidence corroborates literary accounts, reinforcing settled status across disciplines.',
+        source: {
+          externalId: 'src:largo-argentina-archaeology',
+          name: 'Coarelli F. Il Foro Boario. Rome: Quasar, 1988; updated with 2003 excavation findings.',
+          url: 'https://www.jstor.org/stable/40311098',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 2. Romulus Augustulus deposed — end of Western Roman Empire ─────────────
+  {
+    externalId: 'trajectory:western-rome-falls-476',
+    text: 'Romulus Augustulus, the last Western Roman Emperor, was deposed by Odoacer on September 4, 476 CE.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0476-09-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0476-09-04',
+        datePrecision: 'DAY',
+        reason: 'Odoacer, leader of the Germanic foederati, deposes the teenage emperor Romulus Augustulus at Ravenna. Rather than claiming the purple himself, Odoacer sends the imperial regalia to Constantinople, acknowledging only the Eastern Emperor.',
+        source: {
+          externalId: 'src:anonymus-valesianus-476',
+          name: 'Anonymus Valesianus (Excerpta Valesiana), Part II, c. 8–11. (late 6th century)',
+          url: 'https://www.thelatinlibrary.com/valesianus2.html',
+          publishedAt: '0550-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0476-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Whether 476 marks the "fall" of the Western Roman Empire is contested among historians. Some argue Julius Nepos (d. 480) was the last legitimate emperor; others note that Roman administrative structures persisted. The deposition itself is not disputed — only its significance.',
+        source: {
+          externalId: 'src:heather-fall-roman-empire',
+          name: 'Heather P. The Fall of the Roman Empire: A New History of Rome and the Barbarians. Oxford, 2006.',
+          url: 'https://global.oup.com/academic/product/the-fall-of-the-roman-empire-9780195325416',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern consensus: while the "significance" of 476 is debated, the physical event — Romulus Augustulus was deposed and no subsequent Western emperor was installed — is settled fact. The claim is about the deposition, not the interpretive "fall" framing.',
+        source: {
+          externalId: 'src:ward-perkins-fall-rome',
+          name: 'Ward-Perkins B. The Fall of Rome and the End of Civilization. Oxford, 2005.',
+          url: 'https://global.oup.com/academic/product/the-fall-of-rome-9780192807281',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 3. Destruction of Pompeii ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:pompeii-vesuvius-79ce',
+    text: 'Mount Vesuvius erupted on August 24, 79 CE, burying the Roman cities of Pompeii and Herculaneum under volcanic ash and pumice.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0079-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0079-08-24',
+        datePrecision: 'DAY',
+        reason: 'Pliny the Younger, 17 years old, witnesses the eruption from Misenum across the Bay of Naples. His uncle Pliny the Elder sails toward the eruption to rescue friends and dies. The younger Pliny later writes two letters to Tacitus providing the first detailed eyewitness volcanological account in history.',
+        source: {
+          externalId: 'src:pliny-letters-vesuvius',
+          name: 'Pliny the Younger. Letters 6.16 and 6.20 to Tacitus. (c. 106 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0139%3Abook%3D6%3Aletter%3D16',
+          publishedAt: '0106-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1748-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Systematic excavation of Pompeii begins under Charles III of Spain (King of Naples). The perfectly preserved city — buildings, frescoes, human casts — provides overwhelming physical evidence corroborating Pliny\'s account and establishing the exact nature and date of the event.',
+        source: {
+          externalId: 'src:pompeii-excavation-1748',
+          name: 'Fiorelli G. Pompeianarum Antiquitatum Historia, 1860–1864. (Documenting excavations from 1748)',
+          url: 'https://www.pompeiiinpictures.com/pompeiiinpictures/History/history.htm',
+          publishedAt: '1860-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-10-01',
+        datePrecision: 'MONTH',
+        reason: 'A charcoal inscription discovered in 2018 dates to October 17, suggesting the eruption may have occurred in October, not August. The eruption itself remains settled; the exact date is refined but the event is not contested.',
+        source: {
+          externalId: 'src:pompeii-charcoal-2018',
+          name: 'Osanna M. Discovery of charcoal inscription at Regio V, Pompeii. Parco Archeologico di Pompei, October 2018.',
+          url: 'https://www.bbc.com/news/world-europe-45874858',
+          publishedAt: '2018-10-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL (500–1500)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 4. Magna Carta sealed ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:magna-carta-1215',
+    text: 'King John of England sealed the Magna Carta at Runnymede on June 15, 1215, establishing the principle that the king is subject to law.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1215-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-06-15',
+        datePrecision: 'DAY',
+        reason: 'King John, under pressure from rebel barons, agrees to the Articles of the Barons at Runnymede. The formal charter is issued June 19. Multiple copies are produced and distributed to county sheriffs. Four original 1215 copies survive.',
+        source: {
+          externalId: 'src:magna-carta-original-1215',
+          name: 'Magna Carta, 1215. Original manuscript (British Library Cotton MS Augustus II.106)',
+          url: 'https://www.bl.uk/magna-carta/articles/magna-carta-english-translation',
+          publishedAt: '1215-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-08-24',
+        datePrecision: 'DAY',
+        reason: 'Pope Innocent III annuls the Magna Carta on August 24, 1215, calling it "illegal, unjust, harmful to royal rights and shameful to the English people." King John renounces it. The First Barons\' War erupts.',
+        source: {
+          externalId: 'src:pope-annuls-magna-carta-1215',
+          name: 'Papal Bull of August 24, 1215 (Etsi karissimus). Pope Innocent III.',
+          url: 'https://www.nationalarchives.gov.uk/education/resources/magna-carta/papal-bull/',
+          publishedAt: '1215-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1225-02-11',
+        datePrecision: 'DAY',
+        reason: 'Henry III reissues the Magna Carta in definitive form in 1225, voluntarily and in exchange for a tax grant. This version becomes permanent English law. Edward I confirms it in 1297, entering it into statute rolls where it remains today.',
+        source: {
+          externalId: 'src:magna-carta-reissue-1225',
+          name: 'Magna Carta 1225 reissue. National Archives catalogue reference DL 10/71.',
+          url: 'https://www.nationalarchives.gov.uk/education/resources/magna-carta/',
+          publishedAt: '1225-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 5. Black Death reaches Europe ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:black-death-europe-1347',
+    text: 'The Black Death (bubonic plague caused by Yersinia pestis) arrived in Europe via Genoese trading ships at Messina, Sicily, in October 1347, killing an estimated 30–60% of Europe\'s population by 1353.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1347-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1347-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Genoese trading ships arrive at Messina with dead and dying sailors. Chronicler Michele da Piazza records the arrival. Within months the plague spreads to mainland Italy, France, and beyond. Contemporary chronicles from Boccaccio, Jean de Venette, and others provide detailed accounts.',
+        source: {
+          externalId: 'src:da-piazza-plague-chronicle',
+          name: 'Michele da Piazza. Historia Secula (c. 1347–1361), earliest chronicle of plague arrival in Sicily.',
+          url: 'https://www.jstor.org/stable/3679089',
+          publishedAt: '1361-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-06-20',
+        datePrecision: 'DAY',
+        reason: 'Alexandre Yersin isolates the plague bacillus in Hong Kong (1894), but the causative agent of the medieval Black Death remains debated — some propose anthrax or viral hemorrhagic fever rather than bubonic plague.',
+        source: {
+          externalId: 'src:yersin-plague-bacillus-1894',
+          name: 'Yersin A. La peste bubonique à Hong-Kong. Annales de l\'Institut Pasteur 1894;8:662-667.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30028957',
+          publishedAt: '1894-06-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Ancient DNA extracted from Black Death mass graves in London (East Smithfield) definitively confirms Yersinia pestis as the causative agent. Subsequent aDNA studies across European plague pits replicate the finding, settling the centuries-old debate.',
+        source: {
+          externalId: 'src:bos-black-death-adna-2011',
+          name: 'Bos KI et al. A draft genome of Yersinia pestis from victims of the Black Death. Nature 2011;478:506-510.',
+          url: 'https://www.nature.com/articles/nature10549',
+          publishedAt: '2011-10-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 6. Gutenberg prints the Bible ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:gutenberg-bible-1455',
+    text: 'Johannes Gutenberg produced the first substantial book printed with movable metal type — the Gutenberg Bible (42-line Bible) — in Mainz, circa 1455.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1455-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1455-03-12',
+        datePrecision: 'DAY',
+        reason: 'Enea Silvio Piccolomini (future Pope Pius II) writes a letter on March 12, 1455, reporting that he saw sample pages of a Bible printed in Mainz — "exceedingly clean and correct in their script" — at the Frankfurt Fair. This is the earliest datable reference to the printed Bible.',
+        source: {
+          externalId: 'src:piccolomini-letter-1455',
+          name: 'Piccolomini, Enea Silvio. Letter to Cardinal Juan de Carvajal, March 12, 1455.',
+          url: 'https://www.bl.uk/collection-items/gutenberg-bible',
+          publishedAt: '1455-03-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Priority dispute: was Gutenberg the inventor of movable type, or was it Laurens Janszoon Coster of Haarlem (Dutch claim), or Chinese/Korean precedents? The specific role of Gutenberg vs. his financier Johann Fust also contested in 19th-century scholarship.',
+        source: {
+          externalId: 'src:gutenberg-priority-dispute',
+          name: 'Kapr A. Johann Gutenberg: The Man and His Invention. Scolar Press, 1996. (Survey of the priority controversy)',
+          url: 'https://www.jstor.org/stable/25101764',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Physical analysis of surviving Gutenberg Bibles (49 copies/fragments) using proton-beam microanalysis confirms the type composition matches Mainz materials. Combined with documentary evidence (Helmasperger notarial instrument of 1455), Gutenberg\'s role as printer is settled. Korean precedent acknowledged but recognized as independent invention.',
+        source: {
+          externalId: 'src:schwab-gutenberg-type-analysis',
+          name: 'Schwab R et al. Cyclotron analysis of the ink in the 42-line Bible. Papers of the Bibliographical Society of America 2001.',
+          url: 'https://www.jstor.org/stable/24293759',
+          publishedAt: '2001-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1500–1800)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 7. Copernicus proposes heliocentrism ────────────────────────────────────
+  {
+    externalId: 'trajectory:copernicus-heliocentrism-1543',
+    text: 'Nicolaus Copernicus proposed that the Earth and planets orbit the Sun (heliocentric model), published in De revolutionibus orbium coelestium (1543).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1543-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1543-01-01',
+        datePrecision: 'YEAR',
+        reason: 'De revolutionibus is published shortly before Copernicus\'s death. The model is immediately controversial: it contradicts Ptolemaic geocentrism, Aristotelian physics, and literal Biblical interpretation. Andreas Osiander adds an unauthorized preface calling it merely a mathematical hypothesis.',
+        source: {
+          externalId: 'src:copernicus-de-revolutionibus-1543',
+          name: 'Copernicus N. De revolutionibus orbium coelestium. Nuremberg: Johannes Petreius, 1543.',
+          url: 'https://www.loc.gov/item/2014585364/',
+          publishedAt: '1543-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1616-03-05',
+        datePrecision: 'DAY',
+        reason: 'The Catholic Church\'s Congregation of the Index places De revolutionibus on the Index Librorum Prohibitorum "until corrected." Cardinal Bellarmine warns Galileo not to advocate heliocentrism as physical reality. Institutional opposition deepens the contest.',
+        source: {
+          externalId: 'src:index-copernicus-1616',
+          name: 'Decree of the Congregation of the Index, March 5, 1616.',
+          url: 'https://web.archive.org/web/2023/https://www.inters.org/decree-1616',
+          publishedAt: '1616-03-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'Newton\'s Principia Mathematica provides the gravitational mechanics that explain why planets orbit the sun. Kepler\'s laws (1609–1619) had already shown elliptical orbits fit observational data far better than epicycles. By the early 18th century, heliocentrism is the settled scientific consensus.',
+        source: {
+          externalId: 'src:newton-principia-1687',
+          name: 'Newton I. Philosophiæ Naturalis Principia Mathematica. London: Royal Society, 1687.',
+          url: 'https://www.loc.gov/item/28020872/',
+          publishedAt: '1687-07-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 8. Galileo condemned by Inquisition ─────────────────────────────────────
+  {
+    externalId: 'trajectory:galileo-inquisition-1633',
+    text: 'Galileo Galilei was tried and condemned by the Roman Inquisition in 1633 for advocating heliocentrism, and was forced to recant under threat of torture.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1633-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1633-06-22',
+        datePrecision: 'DAY',
+        reason: 'The Roman Inquisition finds Galileo "vehemently suspect of heresy" for advocating heliocentrism in his Dialogue Concerning the Two Chief World Systems (1632). He is forced to recant and sentenced to house arrest for life. The trial records and Galileo\'s signed abjuration survive in the Vatican Secret Archives.',
+        source: {
+          externalId: 'src:galileo-trial-records-1633',
+          name: 'Sentence and Abjuration of Galileo, June 22, 1633. Vatican Secret Archives, Misc. Arm. X 204.',
+          url: 'https://www.loc.gov/exhibits/vatican/exhibit11.html',
+          publishedAt: '1633-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1744-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Holy Office allows publication of Galileo\'s complete works, including the Dialogue, in 1744 — a tacit admission the condemnation was wrong. By this time, Newtonian physics has settled heliocentrism as fact throughout European science.',
+        source: {
+          externalId: 'src:galileo-works-published-1744',
+          name: 'Galilei G. Opere di Galileo Galilei. Padua, 1744. (First authorized complete edition)',
+          url: 'https://www.jstor.org/stable/2856430',
+          publishedAt: '1744-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-10-31',
+        datePrecision: 'DAY',
+        reason: 'Pope John Paul II formally acknowledges the Church\'s error in condemning Galileo, based on the findings of the Pontifical Commission established in 1981. The 359-year institutional wrong is officially admitted.',
+        source: {
+          externalId: 'src:jpii-galileo-rehabilitation-1992',
+          name: 'Pope John Paul II. Address to the Pontifical Academy of Sciences, October 31, 1992.',
+          url: 'https://www.vatican.va/content/john-paul-ii/it/speeches/1992/october/documents/hf_jp-ii_spe_19921031_accademia-scienze.html',
+          publishedAt: '1992-10-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 9. U.S. Declaration of Independence ─────────────────────────────────────
+  {
+    externalId: 'trajectory:us-declaration-independence-1776',
+    text: 'The Second Continental Congress adopted the Declaration of Independence on July 4, 1776, formally asserting the thirteen American colonies\' separation from Great Britain.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1776-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1776-07-04',
+        datePrecision: 'DAY',
+        reason: 'The Continental Congress votes to adopt the Declaration, primarily drafted by Thomas Jefferson. The Dunlap Broadside is printed overnight and distributed. The original engrossed parchment, signed by 56 delegates, survives at the National Archives.',
+        source: {
+          externalId: 'src:declaration-independence-1776',
+          name: 'Declaration of Independence: A Transcription. National Archives and Records Administration.',
+          url: 'https://www.archives.gov/founding-docs/declaration-transcript',
+          publishedAt: '1776-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1776-08-27',
+        datePrecision: 'DAY',
+        reason: 'Great Britain rejects the Declaration. The British Army defeats Continental forces at the Battle of Long Island (August 27, 1776). The Declaration\'s claimed independence exists on paper but not in operational fact — it is actively contested by military force.',
+        source: {
+          externalId: 'src:battle-long-island-1776',
+          name: 'Schecter B. The Battle for New York. Walker & Co, 2002.',
+          url: 'https://www.nps.gov/articles/the-battle-of-long-island.htm',
+          publishedAt: '2002-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1783-09-03',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of Paris is signed by representatives of King George III and the United States. Article 1: "His Britannic Majesty acknowledges the said United States... to be free sovereign and independent states." The institutional contest is settled by the former adversary\'s explicit recognition.',
+        source: {
+          externalId: 'src:treaty-paris-1783',
+          name: 'Treaty of Paris, September 3, 1783. National Archives, Perfected Treaties series.',
+          url: 'https://www.archives.gov/milestone-documents/treaty-of-paris',
+          publishedAt: '1783-09-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 10. French Revolution — storming of the Bastille ────────────────────────
+  {
+    externalId: 'trajectory:bastille-storming-1789',
+    text: 'A crowd of Parisians stormed the Bastille fortress-prison on July 14, 1789, triggering the French Revolution.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1789-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1789-07-14',
+        datePrecision: 'DAY',
+        reason: 'Approximately 1,000 Parisians storm the Bastille, killing Governor de Launay. The event is witnessed by thousands and recorded in multiple contemporary diaries and dispatches. The Bastille is subsequently demolished.',
+        source: {
+          externalId: 'src:bastille-contemporary-accounts',
+          name: 'Procès-verbal des électeurs de Paris (proceedings of Paris electors), July 14, 1789.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k49462q',
+          publishedAt: '1789-07-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1790-07-14',
+        datePrecision: 'DAY',
+        reason: 'The Fête de la Fédération on July 14, 1790 — the first anniversary celebration — institutionalizes the date as a founding moment. Louis XVI participates, lending royal legitimacy. The event becomes France\'s national day, continuously from 1880.',
+        source: {
+          externalId: 'src:fete-federation-1790',
+          name: 'Procès-verbal de la Fédération du 14 juillet 1790 au Champ de Mars.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k48961j',
+          publishedAt: '1790-07-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1880-07-06',
+        datePrecision: 'DAY',
+        reason: 'French Third Republic passes law establishing July 14 as the annual national holiday. The storming of the Bastille is enshrined as the symbolic founding of the French Republic.',
+        source: {
+          externalId: 'src:bastille-day-law-1880',
+          name: 'Loi du 6 juillet 1880 qui établit un jour de fête nationale (Law of July 6, 1880).',
+          url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000504481',
+          publishedAt: '1880-07-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // 19TH CENTURY
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 11. Darwin publishes On the Origin of Species ───────────────────────────
+  {
+    externalId: 'trajectory:darwin-origin-species-1859',
+    text: 'Charles Darwin published On the Origin of Species on November 24, 1859, proposing that species evolve through natural selection.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1859-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-11-24',
+        datePrecision: 'DAY',
+        reason: 'On the Origin of Species is published by John Murray. All 1,250 copies sell out on the first day. Immediately controversial: Richard Owen attacks it, Samuel Wilberforce debates Huxley at Oxford (June 1860). The mechanism of inheritance is unknown, and the age-of-Earth problem (Kelvin) seems to preclude sufficient time for natural selection.',
+        source: {
+          externalId: 'src:darwin-origin-1859',
+          name: 'Darwin C. On the Origin of Species by Means of Natural Selection. London: John Murray, 1859.',
+          url: 'https://www.loc.gov/item/06017473/',
+          publishedAt: '1859-11-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Modern Synthesis (Huxley, 1942) unifies Darwinian selection with Mendelian genetics, population genetics, and paleontology. The mechanism Darwin lacked — heredity via genes — is supplied, resolving the 80-year debate. Evolution by natural selection becomes the central organizing principle of biology.',
+        source: {
+          externalId: 'src:huxley-modern-synthesis-1942',
+          name: 'Huxley JS. Evolution: The Modern Synthesis. London: Allen & Unwin, 1942.',
+          url: 'https://mitpress.mit.edu/9780262513661/evolution/',
+          publishedAt: '1942-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kitzmiller v. Dover Area School District: U.S. federal court rules that "intelligent design" is not science and that evolution is the established scientific consensus. Despite persistent public skepticism, institutional and expert consensus is unshaken.',
+        source: {
+          externalId: 'src:kitzmiller-dover-2005',
+          name: 'Kitzmiller v. Dover Area School District, 400 F. Supp. 2d 707 (M.D. Pa. 2005).',
+          url: 'https://www.pamd.uscourts.gov/sites/pamd/files/opinions/04v2688a.pdf',
+          publishedAt: '2005-12-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 12. Abraham Lincoln assassinated ────────────────────────────────────────
+  {
+    externalId: 'trajectory:lincoln-assassination-1865',
+    text: 'President Abraham Lincoln was shot by John Wilkes Booth at Ford\'s Theatre on April 14, 1865, and died the following morning.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1865-04-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1865-04-14',
+        datePrecision: 'DAY',
+        reason: 'Booth shoots Lincoln in the head during a performance of Our American Cousin. Over 1,700 people are in the theater. Multiple witnesses provide accounts. Lincoln is carried to the Petersen House across the street and dies at 7:22 AM on April 15.',
+        source: {
+          externalId: 'src:lincoln-assassination-war-dept',
+          name: 'War Department telegrams, April 14–15, 1865. Secretary Stanton\'s dispatches from the Petersen House.',
+          url: 'https://www.loc.gov/collections/abraham-lincoln-papers/about-this-collection/',
+          publishedAt: '1865-04-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1865-06-30',
+        datePrecision: 'DAY',
+        reason: 'Military tribunal convicts eight conspirators. Booth himself was killed during capture on April 26. The trial records, over 4,000 pages, are preserved in the National Archives. Physical evidence (Booth\'s diary, the derringer pistol) corroborates witness testimony.',
+        source: {
+          externalId: 'src:lincoln-conspiracy-trial-1865',
+          name: 'The Trial of the Conspirators. Military Commission proceedings, May–June 1865.',
+          url: 'https://www.archives.gov/publications/prologue/2009/spring/lincoln.html',
+          publishedAt: '1865-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern forensic analysis and comprehensive historiography (Kauffman, American Brutus, 2004; Steers, Blood on the Moon, 2001) further confirm the established account. DNA analysis is not needed — the wealth of contemporaneous evidence leaves no factual dispute.',
+        source: {
+          externalId: 'src:steers-lincoln-2001',
+          name: 'Steers E Jr. Blood on the Moon: The Assassination of Abraham Lincoln. University Press of Kentucky, 2001.',
+          url: 'https://www.jstor.org/stable/j.ctt130hz65',
+          publishedAt: '2001-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 13. Treaty of Versailles signed ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:treaty-versailles-1919',
+    text: 'The Treaty of Versailles was signed on June 28, 1919, formally ending World War I and imposing reparations and territorial losses on Germany.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1919-06-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1919-06-28',
+        datePrecision: 'DAY',
+        reason: 'The treaty is signed in the Hall of Mirrors at the Palace of Versailles. Delegates from 32 nations attend. Germany signs under protest. The original treaty document survives in the French National Archives.',
+        source: {
+          externalId: 'src:versailles-treaty-original-1919',
+          name: 'Treaty of Peace with Germany (Treaty of Versailles), June 28, 1919. League of Nations Treaty Series, vol. CCXXV.',
+          url: 'https://www.loc.gov/law/help/us-treaties/bevans/m-ust000002-0043.pdf',
+          publishedAt: '1919-06-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1919-11-19',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Senate refuses to ratify the treaty (November 19, 1919), primarily over objections to the League of Nations covenant. The treaty\'s scope and legitimacy are contested — Germany rejects the "war guilt" clause, and the U.S. never joins the League.',
+        source: {
+          externalId: 'src:senate-rejects-versailles-1919',
+          name: 'United States Senate Vote on the Treaty of Versailles, November 19, 1919. Congressional Record.',
+          url: 'https://www.senate.gov/artandhistory/history/minute/Senate_Rejects_the_Treaty_of_Versailles.htm',
+          publishedAt: '1919-11-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-01-10',
+        datePrecision: 'DAY',
+        reason: 'The Treaty enters into force on January 10, 1920, with ratification by Germany, the UK, France, Italy, and Japan. Despite U.S. non-ratification, the treaty operates as the governing post-war settlement. The League of Nations begins functioning. The treaty\'s existence and terms are settled institutional fact.',
+        source: {
+          externalId: 'src:versailles-enters-force-1920',
+          name: 'Protocol of Deposit of Ratifications, January 10, 1920. League of Nations archives.',
+          url: 'https://treaties.un.org/Pages/showDetails.aspx?objid=0800000280167612',
+          publishedAt: '1920-01-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WORLD WAR ERA (1914–1945)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 14. Archduke Franz Ferdinand assassinated ───────────────────────────────
+  {
+    externalId: 'trajectory:franz-ferdinand-assassination-1914',
+    text: 'Archduke Franz Ferdinand of Austria-Hungary and his wife Sophie were assassinated by Gavrilo Princip in Sarajevo on June 28, 1914, triggering World War I.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-06-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1914-06-28',
+        datePrecision: 'DAY',
+        reason: 'Gavrilo Princip, a Bosnian Serb nationalist, shoots the Archduke and his wife in their open car on the Appel Quay. Princip is seized by police immediately. Dozens of witnesses; the assassination occurs in broad daylight on a public street.',
+        source: {
+          externalId: 'src:sarajevo-assassination-report-1914',
+          name: 'Official Austro-Hungarian government communiqué on the assassination, June 28, 1914.',
+          url: 'https://wwi.lib.byu.edu/index.php/The_Assassination_of_Archduke_Franz_Ferdinand',
+          publishedAt: '1914-06-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1914-10-28',
+        datePrecision: 'DAY',
+        reason: 'Trial of Princip and 24 co-defendants in Sarajevo concludes October 28, 1914. Princip is convicted and sentenced (too young for death penalty). The conspiracy\'s Black Hand connections are established in testimony. Court records survive in Austrian state archives.',
+        source: {
+          externalId: 'src:princip-trial-1914',
+          name: 'Pharos (pseudonym of trial reporter). The Sarajevo Trial. Published records of the October 1914 trial.',
+          url: 'https://www.jstor.org/stable/1871140',
+          publishedAt: '1914-10-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Centenary scholarship (Clark, The Sleepwalkers, 2012; McMeekin, July 1914, 2013) debates the assassination\'s causal role in starting WWI but does not contest the event itself. The factual account — who, when, where, how — is settled beyond any reasonable dispute.',
+        source: {
+          externalId: 'src:clark-sleepwalkers-2012',
+          name: 'Clark C. The Sleepwalkers: How Europe Went to War in 1914. Harper, 2012.',
+          url: 'https://www.harpercollins.com/products/the-sleepwalkers-christopher-clark',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 15. Pearl Harbor attacked ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:pearl-harbor-attack-1941',
+    text: 'The Imperial Japanese Navy launched a surprise military attack on the United States naval base at Pearl Harbor, Hawaii, on December 7, 1941.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-12-07',
+        datePrecision: 'DAY',
+        reason: 'Japanese carrier-based aircraft attack Pearl Harbor at 7:48 AM Hawaii time. 2,403 Americans are killed, 1,178 wounded, 4 battleships sunk. Thousands of military personnel witness the attack. Commander Logan Ramsey transmits "AIR RAID ON PEARL HARBOR X THIS IS NOT DRILL" at 7:58 AM.',
+        source: {
+          externalId: 'src:pearl-harbor-navy-dispatch-1941',
+          name: 'CINCPAC dispatch: "AIR RAID ON PEARL HARBOR X THIS IS NOT DRILL." December 7, 1941.',
+          url: 'https://www.archives.gov/publications/prologue/2011/winter/pearl-harbor.html',
+          publishedAt: '1941-12-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-12-08',
+        datePrecision: 'DAY',
+        reason: 'President Roosevelt addresses Congress: "a date which will live in infamy." Congress declares war on Japan with one dissenting vote (Jeannette Rankin). The attack is simultaneously confirmed by Japanese government communiqués. Both attacker and defender document the event.',
+        source: {
+          externalId: 'src:fdr-infamy-speech-1941',
+          name: 'Roosevelt FD. Address to Joint Session of Congress, December 8, 1941. National Archives.',
+          url: 'https://www.archives.gov/milestone-documents/joint-address-to-congress-pearl-harbor',
+          publishedAt: '1941-12-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-01-19',
+        datePrecision: 'DAY',
+        reason: 'The International Military Tribunal for the Far East (Tokyo War Crimes Tribunal) formally establishes the attack as part of Japan\'s aggressive war. Japanese military records captured at war\'s end corroborate all major details of planning and execution.',
+        source: {
+          externalId: 'src:tokyo-tribunal-1946',
+          name: 'International Military Tribunal for the Far East. Charter and Judgment, 1946–1948.',
+          url: 'https://www.loc.gov/law/help/us-treaties/bevans/m-ust000004-0020.pdf',
+          publishedAt: '1946-01-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 16. D-Day / Normandy landings ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:d-day-normandy-1944',
+    text: 'Allied forces launched the amphibious invasion of Normandy, France (Operation Overlord) on June 6, 1944, opening the Western Front against Nazi Germany.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1944-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-06-06',
+        datePrecision: 'DAY',
+        reason: 'Over 156,000 Allied troops land on five Normandy beaches (Utah, Omaha, Gold, Juno, Sword). General Eisenhower issues Order of the Day. The invasion is broadcast via BBC and recorded by military correspondents including Robert Capa (whose photographs survive) and Ernie Pyle.',
+        source: {
+          externalId: 'src:eisenhower-order-of-day-1944',
+          name: 'Eisenhower DW. Order of the Day, June 6, 1944. Eisenhower Presidential Library.',
+          url: 'https://www.eisenhowerlibrary.gov/research/online-documents/d-day-order-day',
+          publishedAt: '1944-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-06-06',
+        datePrecision: 'DAY',
+        reason: 'Both Allied and German military records confirm the invasion simultaneously. Wehrmacht after-action reports document the attack. The sheer scale — 5,000 ships, 11,000 aircraft — makes the event undeniable from either side\'s records. Over 4,400 Allied soldiers die on the first day.',
+        source: {
+          externalId: 'src:dday-after-action-reports',
+          name: 'First U.S. Army, Report of Operations, 20 Oct 1943–1 Aug 1944. National Archives RG 407.',
+          url: 'https://www.archives.gov/research/military/ww2/army/european-theater-of-operations',
+          publishedAt: '1944-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2004-06-06',
+        datePrecision: 'DAY',
+        reason: 'The 60th anniversary ceremonies at Normandy — attended by heads of state from former Allied and Axis nations including France, the US, UK, Canada, Germany, and Russia — publicly reaffirm the shared historical record. Living veterans provide testimony.',
+        source: {
+          externalId: 'src:dday-60th-anniversary-2004',
+          name: 'Joint Declaration of the 60th Anniversary of D-Day, Arromanches, June 6, 2004.',
+          url: 'https://www.bbc.co.uk/history/worldwars/wwtwo/dday_anniversary_01.shtml',
+          publishedAt: '2004-06-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 17. Atomic bomb dropped on Hiroshima ────────────────────────────────────
+  {
+    externalId: 'trajectory:hiroshima-atomic-bomb-1945',
+    text: 'The United States dropped an atomic bomb ("Little Boy") on Hiroshima, Japan, on August 6, 1945, killing approximately 80,000 people instantly and causing the first use of nuclear weapons in warfare.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1945-08-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-08-06',
+        datePrecision: 'DAY',
+        reason: 'B-29 Enola Gay, piloted by Colonel Paul Tibbets, drops the uranium-235 bomb "Little Boy" on Hiroshima at 8:15 AM local time. The crew photographs the mushroom cloud. President Truman announces: "Sixteen hours ago an American airplane dropped one bomb on Hiroshima... It is an atomic bomb."',
+        source: {
+          externalId: 'src:truman-hiroshima-statement-1945',
+          name: 'Truman HS. Statement by the President announcing the use of the A-bomb at Hiroshima, August 6, 1945.',
+          url: 'https://www.trumanlibrary.gov/library/public-papers/93/statement-president-announcing-use-bomb-hiroshima',
+          publishedAt: '1945-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The United States Strategic Bombing Survey (1946) documents the destruction in exhaustive detail. John Hersey\'s "Hiroshima" (New Yorker, August 31, 1946) provides survivor testimony. Hibakusha (atomic bomb survivors) testimonies are systematically collected. Japanese government records confirm the event.',
+        source: {
+          externalId: 'src:ussbs-hiroshima-1946',
+          name: 'United States Strategic Bombing Survey: The Effects of Atomic Bombs on Hiroshima and Nagasaki. Washington, 1946.',
+          url: 'https://www.trumanlibrary.gov/library/research-files/united-states-strategic-bombing-survey-effects-atomic-bombs-hiroshima-and',
+          publishedAt: '1946-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-05-27',
+        datePrecision: 'DAY',
+        reason: 'President Obama visits Hiroshima Peace Memorial — the first sitting U.S. president to do so. Embraces hibakusha survivor Shigeaki Mori. The visit does not apologize but acknowledges the historical event, further settling it across national narratives.',
+        source: {
+          externalId: 'src:obama-hiroshima-visit-2016',
+          name: 'Obama B. Remarks at Hiroshima Peace Memorial, May 27, 2016.',
+          url: 'https://obamawhitehouse.archives.gov/the-press-office/2016/05/27/remarks-president-obama-hiroshima-peace-memorial',
+          publishedAt: '2016-05-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 18. V-E Day — German unconditional surrender ────────────────────────────
+  {
+    externalId: 'trajectory:ve-day-german-surrender-1945',
+    text: 'Nazi Germany surrendered unconditionally to the Allied powers, with the instrument of surrender signed on May 7–8, 1945 (V-E Day).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-05-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-05-07',
+        datePrecision: 'DAY',
+        reason: 'General Alfred Jodl signs the unconditional surrender at SHAEF HQ in Reims, France, at 2:41 AM on May 7. The act is witnessed by representatives of the US, UK, France, and USSR. A second signing occurs at Soviet insistence in Berlin on May 8.',
+        source: {
+          externalId: 'src:german-surrender-instrument-1945',
+          name: 'Act of Military Surrender, Reims, May 7, 1945. Eisenhower Presidential Library.',
+          url: 'https://www.eisenhowerlibrary.gov/research/online-documents/german-surrender-documents-wwii',
+          publishedAt: '1945-05-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1945-05-08',
+        datePrecision: 'DAY',
+        reason: 'Churchill, Truman, and de Gaulle simultaneously announce Victory in Europe. Millions celebrate in the streets of London, New York, Paris, and Moscow. The celebration is documented by newsreels, photographs, and radio broadcasts. V-E Day is settled in real-time by mass public experience.',
+        source: {
+          externalId: 'src:churchill-ve-day-broadcast-1945',
+          name: 'Churchill W. Victory in Europe Day broadcast, BBC, May 8, 1945.',
+          url: 'https://www.bbc.co.uk/archive/ve-day-1945/zvjqf4j',
+          publishedAt: '1945-05-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-09-12',
+        datePrecision: 'DAY',
+        reason: 'The Treaty on the Final Settlement with Respect to Germany (Two Plus Four Treaty) formally resolves the last legal consequences of WWII and German surrender, with all parties — including reunified Germany — agreeing on the historical record.',
+        source: {
+          externalId: 'src:two-plus-four-treaty-1990',
+          name: 'Treaty on the Final Settlement with Respect to Germany, September 12, 1990.',
+          url: 'https://www.auswaertiges-amt.de/blob/243462/74c2a6917b5b3aa05d5e0f3d1eec7804/vertragstextoriginal-data.pdf',
+          publishedAt: '1990-09-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 19. Japan surrenders — end of WWII ──────────────────────────────────────
+  {
+    externalId: 'trajectory:japan-surrender-1945',
+    text: 'Emperor Hirohito announced Japan\'s surrender on August 15, 1945, with the formal instrument of surrender signed on September 2, 1945 (V-J Day), ending World War II.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1945-08-15',
+        datePrecision: 'DAY',
+        reason: 'Emperor Hirohito\'s recorded radio address (Gyokuon-hōsō) is broadcast to the Japanese people — the first time most had ever heard the Emperor\'s voice. He announces acceptance of the Potsdam Declaration. The recording survives in NHK archives.',
+        source: {
+          externalId: 'src:hirohito-surrender-broadcast-1945',
+          name: 'Imperial Rescript on Surrender (Gyokuon-hōsō), August 15, 1945. NHK archives.',
+          url: 'https://www.ndl.go.jp/constitution/e/etc/c06.html',
+          publishedAt: '1945-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-09-02',
+        datePrecision: 'DAY',
+        reason: 'Japanese Foreign Minister Shigemitsu and General Umezu sign the Instrument of Surrender aboard USS Missouri in Tokyo Bay. General MacArthur, Admiral Nimitz, and representatives of 9 Allied nations witness. The ceremony is filmed and photographed extensively.',
+        source: {
+          externalId: 'src:japanese-surrender-instrument-1945',
+          name: 'Instrument of Surrender, September 2, 1945. National Archives, General Records of the U.S. Government.',
+          url: 'https://www.archives.gov/milestone-documents/japanese-surrender-document',
+          publishedAt: '1945-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-09-08',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of San Francisco formally ends the state of war and establishes Japan\'s post-war status. Japan acknowledges the surrender and accepts the Tokyo tribunal judgments. The treaty is signed by 49 nations.',
+        source: {
+          externalId: 'src:san-francisco-treaty-1951',
+          name: 'Treaty of Peace with Japan (San Francisco Treaty), September 8, 1951.',
+          url: 'https://treaties.un.org/doc/Publication/UNTS/Volume%20136/volume-136-I-1832-English.pdf',
+          publishedAt: '1951-09-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 20. Nuremberg Tribunal ──────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:nuremberg-tribunal-1945',
+    text: 'The International Military Tribunal at Nuremberg tried and convicted major Nazi leaders for crimes against peace, war crimes, and crimes against humanity, delivering verdicts on October 1, 1946.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-11-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-11-20',
+        datePrecision: 'DAY',
+        reason: 'The trial opens in the Palace of Justice, Nuremberg. Twenty-two major defendants face charges. The proceedings are conducted in four languages, recorded stenographically, and filmed. Over 400 open sessions produce a 42-volume published record.',
+        source: {
+          externalId: 'src:nuremberg-trial-proceedings-1945',
+          name: 'Trial of the Major War Criminals before the International Military Tribunal, Nuremberg, 14 November 1945 – 1 October 1946.',
+          url: 'https://www.loc.gov/rr/frd/Military_Law/NT_major-war-criminals.html',
+          publishedAt: '1947-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-10-01',
+        datePrecision: 'DAY',
+        reason: 'The tribunal delivers its judgment: 12 defendants sentenced to death, 3 acquitted, others imprisoned. The verdict establishes precedents for international criminal law including individual criminal responsibility for heads of state and the crime of aggressive war.',
+        source: {
+          externalId: 'src:nuremberg-judgment-1946',
+          name: 'Judgment of the International Military Tribunal, October 1, 1946. Trial of the Major War Criminals, Vol. I.',
+          url: 'https://www.legal-tools.org/doc/45f18e/pdf/',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-07-17',
+        datePrecision: 'DAY',
+        reason: 'The Rome Statute establishing the International Criminal Court explicitly builds on Nuremberg principles. The tribunal\'s legitimacy, once questioned by some as "victor\'s justice," is institutionally ratified by 120 nations adopting its framework into permanent international law.',
+        source: {
+          externalId: 'src:rome-statute-icc-1998',
+          name: 'Rome Statute of the International Criminal Court, July 17, 1998. UN Treaty Series, vol. 2187.',
+          url: 'https://www.icc-cpi.int/sites/default/files/RS-Eng.pdf',
+          publishedAt: '1998-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POST-WAR (1945–1991)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 21. Watson & Crick announce DNA double helix ────────────────────────────
+  {
+    externalId: 'trajectory:dna-double-helix-1953',
+    text: 'James Watson and Francis Crick determined the double-helix structure of DNA, published in Nature on April 25, 1953.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-04-25',
+        datePrecision: 'DAY',
+        reason: 'Watson and Crick publish their one-page paper in Nature proposing the double-helix model. The paper appears alongside X-ray diffraction data from Rosalind Franklin and Maurice Wilkins (without Franklin\'s knowledge of how her data was shared). The model is immediately debated — is it correct? Does it actually explain replication?',
+        source: {
+          externalId: 'src:watson-crick-nature-1953',
+          name: 'Watson JD, Crick FHC. Molecular structure of nucleic acids: a structure for deoxyribose nucleic acid. Nature 1953;171:737-738.',
+          url: 'https://www.nature.com/articles/171737a0',
+          publishedAt: '1953-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Meselson-Stahl experiment (1958) confirms semi-conservative DNA replication, validating the model\'s central prediction. Combined with the cracking of the genetic code (1961–1966), the double helix is established as one of the most thoroughly confirmed structures in biology.',
+        source: {
+          externalId: 'src:meselson-stahl-1958',
+          name: 'Meselson M, Stahl FW. The replication of DNA in Escherichia coli. PNAS 1958;44(7):671-682.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.44.7.671',
+          publishedAt: '1958-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-12-10',
+        datePrecision: 'DAY',
+        reason: 'Watson, Crick, and Wilkins receive the Nobel Prize in Physiology or Medicine. Rosalind Franklin, who died in 1958, is not included. The Nobel award provides institutional ratification of the discovery, though the ethical questions about Franklin\'s contribution persist.',
+        source: {
+          externalId: 'src:nobel-dna-1962',
+          name: 'Nobel Prize in Physiology or Medicine 1962: Francis Crick, James Watson, Maurice Wilkins.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1962/summary/',
+          publishedAt: '1962-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 22. JFK assassination ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:jfk-assassination-1963',
+    text: 'President John F. Kennedy was assassinated in Dallas, Texas, on November 22, 1963, shot while riding in a presidential motorcade.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-11-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-11-22',
+        datePrecision: 'DAY',
+        reason: 'Kennedy is shot at 12:30 PM CST in Dealey Plaza. Hundreds of witnesses. Abraham Zapruder\'s 8mm film captures the assassination in 486 frames. Walter Cronkite announces the death on CBS at 2:38 PM. Lyndon Johnson is sworn in at 2:38 PM aboard Air Force One.',
+        source: {
+          externalId: 'src:zapruder-film-1963',
+          name: 'Zapruder, Abraham. 8mm film of the Kennedy assassination, November 22, 1963. National Archives (NARA 193.1).',
+          url: 'https://www.archives.gov/research/jfk/finding-aids/zapruder',
+          publishedAt: '1963-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1964-09-24',
+        datePrecision: 'DAY',
+        reason: 'The Warren Commission concludes that Lee Harvey Oswald, acting alone, assassinated Kennedy. The 888-page report with 26 volumes of supporting evidence is delivered to President Johnson. The factual claim — that Kennedy was assassinated in Dallas on November 22 — is settled; the lone-gunman conclusion remains contested in public opinion.',
+        source: {
+          externalId: 'src:warren-commission-report-1964',
+          name: 'Report of the President\'s Commission on the Assassination of President Kennedy (Warren Report), September 24, 1964.',
+          url: 'https://www.archives.gov/research/jfk/warren-commission-report',
+          publishedAt: '1964-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-10-26',
+        datePrecision: 'DAY',
+        reason: 'Pursuant to the JFK Records Act of 1992, the National Archives begins releasing the final tranche of classified assassination documents. Over 5 million pages of investigation records are now public. The fact of the assassination is entirely settled; debates concern only conspiracy theories about the perpetrator(s).',
+        source: {
+          externalId: 'src:jfk-records-release-2017',
+          name: 'National Archives JFK Assassination Records Collection, releases per P.L. 102-526.',
+          url: 'https://www.archives.gov/research/jfk',
+          publishedAt: '2017-10-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 23. Martin Luther King Jr. assassinated ─────────────────────────────────
+  {
+    externalId: 'trajectory:mlk-assassination-1968',
+    text: 'Dr. Martin Luther King Jr. was assassinated by rifle shot at the Lorraine Motel in Memphis, Tennessee, on April 4, 1968.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-04-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1968-04-04',
+        datePrecision: 'DAY',
+        reason: 'King is shot on the balcony of Room 306 of the Lorraine Motel at 6:01 PM. Multiple witnesses including Ralph Abernathy, Jesse Jackson, and Andrew Young are present. He is pronounced dead at St. Joseph\'s Hospital at 7:05 PM. Robert F. Kennedy announces the death at a campaign rally in Indianapolis.',
+        source: {
+          externalId: 'src:mlk-assassination-nyt-1968',
+          name: 'Earl Caldwell. Martin Luther King Is Slain in Memphis. New York Times, April 5, 1968, p. 1.',
+          url: 'https://www.nytimes.com/1968/04/05/archives/martin-luther-king-is-slain-in-memphis-a-white-is-suspected-johnson.html',
+          publishedAt: '1968-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1969-03-10',
+        datePrecision: 'DAY',
+        reason: 'James Earl Ray pleads guilty to the assassination and is sentenced to 99 years. The rifle, ballistics, and Ray\'s movements are established in evidence. Ray later recants, but his guilty plea and physical evidence settle the factual question of King\'s assassination.',
+        source: {
+          externalId: 'src:ray-guilty-plea-1969',
+          name: 'State of Tennessee v. James Earl Ray. Criminal Court of Shelby County, guilty plea, March 10, 1969.',
+          url: 'https://www.archives.gov/research/jfk/select-committee-report/part-2a.html',
+          publishedAt: '1969-03-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Department of Justice completes investigation into conspiracy allegations (prompted by a 1999 civil trial verdict suggesting broader conspiracy). DOJ concludes no credible evidence of conspiracy beyond Ray. The fact of King\'s assassination remains settled; only perpetrator debates persist.',
+        source: {
+          externalId: 'src:doj-mlk-investigation-2000',
+          name: 'U.S. Department of Justice. Investigation of Recent Allegations Regarding the Assassination of Dr. Martin Luther King, Jr. June 2000.',
+          url: 'https://www.justice.gov/crt/investigation-recent-allegations-regarding-assassination-dr-martin-luther-king-jr',
+          publishedAt: '2000-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 24. Wright Brothers first powered flight ────────────────────────────────
+  {
+    externalId: 'trajectory:wright-brothers-flight-1903',
+    text: 'Orville and Wilbur Wright achieved the first sustained, controlled, powered heavier-than-air flight at Kitty Hawk, North Carolina, on December 17, 1903.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1903-12-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1903-12-17',
+        datePrecision: 'DAY',
+        reason: 'Orville Wright makes the first flight (12 seconds, 120 feet) at 10:35 AM. Four flights total that day, the longest 59 seconds covering 852 feet. Five witnesses from the Kill Devil Hills Life-Saving Station. John T. Daniels photographs the first flight — one of history\'s most famous photographs.',
+        source: {
+          externalId: 'src:wright-brothers-photo-1903',
+          name: 'Daniels JT. Photograph of first flight, December 17, 1903. Library of Congress, LC-DIG-ppprs-00626.',
+          url: 'https://www.loc.gov/pictures/item/2001696572/',
+          publishedAt: '1903-12-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Priority claims from other aviation pioneers: Gustave Whitehead (alleged flights 1901, documented only decades later), Alberto Santos-Dumont (public flight in Paris, 1906), Samuel Langley (failed attempts, 1903). The Smithsonian initially credits Langley, creating decades of institutional dispute.',
+        source: {
+          externalId: 'src:wright-smithsonian-controversy',
+          name: 'Crouch T. The Bishop\'s Boys: A Life of Wilbur and Orville Wright. W.W. Norton, 1989.',
+          url: 'https://www.wwnorton.com/books/The-Bishops-Boys/',
+          publishedAt: '1989-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-12-17',
+        datePrecision: 'DAY',
+        reason: 'The Smithsonian Institution formally recognizes the Wright Flyer as the first powered, heavier-than-air machine to achieve sustained, controlled flight. The original aircraft is placed on permanent display at the National Air and Space Museum. The 45-year Smithsonian-Wright dispute is resolved.',
+        source: {
+          externalId: 'src:wright-flyer-smithsonian-1948',
+          name: 'Smithsonian Institution. Installation of the Wright Flyer, December 17, 1948.',
+          url: 'https://airandspace.si.edu/collection-objects/1903-wright-flyer/nasm_A19610048000',
+          publishedAt: '1948-12-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 25. Chernobyl reactor explosion ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:chernobyl-explosion-1986',
+    text: 'Reactor No. 4 at the Chernobyl Nuclear Power Plant in the Ukrainian SSR exploded during a safety test on April 26, 1986, causing the worst nuclear disaster in history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-04-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-04-26',
+        datePrecision: 'DAY',
+        reason: 'Reactor No. 4 explodes at 1:23 AM during a turbine test. The Soviet government initially suppresses information. Swedish nuclear monitoring stations detect elevated radiation on April 28 and demand explanation. The USSR does not publicly acknowledge the disaster until April 28.',
+        source: {
+          externalId: 'src:swedish-radiation-detection-1986',
+          name: 'Swedish Radiation Protection Authority. Abnormal radiation levels detected April 28, 1986.',
+          url: 'https://www.iaea.org/newscenter/focus/chernobyl/faqs',
+          publishedAt: '1986-04-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-05-14',
+        datePrecision: 'DAY',
+        reason: 'General Secretary Gorbachev makes his first public statement on Chernobyl on May 14, acknowledging the disaster. The evacuation of Pripyat (50,000 people, April 27) and the growing exclusion zone make concealment impossible. International media coverage is extensive.',
+        source: {
+          externalId: 'src:gorbachev-chernobyl-address-1986',
+          name: 'Gorbachev M. Television address on the Chernobyl disaster, May 14, 1986.',
+          url: 'https://www.atomicarchive.com/resources/documents/accidents/chernobyl-gorbachev.html',
+          publishedAt: '1986-05-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-08-25',
+        datePrecision: 'DAY',
+        reason: 'The IAEA Post-Accident Review Meeting in Vienna (August 25–29, 1986) receives a detailed Soviet report on the disaster. International nuclear experts analyze the technical causes. The INSAG-7 report (1992) provides the definitive technical account. The event, its scale, and its causes are settled.',
+        source: {
+          externalId: 'src:iaea-insag-chernobyl',
+          name: 'IAEA INSAG-7: The Chernobyl Accident — Updating of INSAG-1. Safety Series No. 75-INSAG-7, 1992.',
+          url: 'https://www.iaea.org/publications/3786/the-chernobyl-accident-updating-of-insag-1',
+          publishedAt: '1992-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 26. Nelson Mandela released from prison ─────────────────────────────────
+  {
+    externalId: 'trajectory:mandela-released-1990',
+    text: 'Nelson Mandela was released from Victor Verster Prison on February 11, 1990, after 27 years of imprisonment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1990-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1990-02-11',
+        datePrecision: 'DAY',
+        reason: 'Mandela walks out of Victor Verster Prison hand-in-hand with his wife Winnie. The release is broadcast live on television worldwide. He addresses a crowd of 50,000 at Cape Town City Hall that evening. The moment is one of the most watched live events in television history.',
+        source: {
+          externalId: 'src:mandela-release-broadcast-1990',
+          name: 'Live broadcast of Nelson Mandela\'s release, February 11, 1990. SABC/BBC/CNN simultaneous transmission.',
+          url: 'https://www.youtube.com/watch?v=iFCqk9eFxyk',
+          publishedAt: '1990-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-02-11',
+        datePrecision: 'DAY',
+        reason: 'The South African government confirms the release. Mandela\'s prison records (Robben Island prisoner #46664, then Pollsmoor, then Victor Verster) are matters of state record. No party — government, opposition, or international community — disputes the fact or date.',
+        source: {
+          externalId: 'src:mandela-prison-records',
+          name: 'Department of Correctional Services, South Africa. Prison records of Nelson Rolihlahla Mandela, prisoner #46664.',
+          url: 'https://www.nelsonmandela.org/content/page/biography',
+          publishedAt: '1990-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-12-10',
+        datePrecision: 'DAY',
+        reason: 'Mandela and de Klerk jointly receive the Nobel Peace Prize. The Nobel Committee\'s citation explicitly references Mandela\'s imprisonment and release as pivotal facts. The event is institutionally ratified at the highest level of international recognition.',
+        source: {
+          externalId: 'src:mandela-nobel-peace-1993',
+          name: 'Nobel Peace Prize 1993: Nelson Mandela and Frederik Willem de Klerk.',
+          url: 'https://www.nobelprize.org/prizes/peace/1993/summary/',
+          publishedAt: '1993-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CONTEMPORARY (1991–PRESENT)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 27. September 11 attacks ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:september-11-attacks-2001',
+    text: 'On September 11, 2001, al-Qaeda operatives hijacked four commercial airplanes, crashing two into the World Trade Center towers in New York City, one into the Pentagon, and one into a field in Shanksville, Pennsylvania, killing 2,977 people.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-09-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2001-09-11',
+        datePrecision: 'DAY',
+        reason: 'The attacks unfold live on television. American Airlines Flight 11 strikes the North Tower at 8:46 AM; United Airlines Flight 175 strikes the South Tower at 9:03 AM on live TV. Thousands of witnesses, hundreds of cameras. The Pentagon is struck at 9:37 AM. United 93 crashes in Pennsylvania at 10:03 AM.',
+        source: {
+          externalId: 'src:911-live-footage-2001',
+          name: 'CNN, NBC, ABC, CBS, Fox live broadcast recordings, September 11, 2001. Internet Archive.',
+          url: 'https://archive.org/details/911',
+          publishedAt: '2001-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-07-22',
+        datePrecision: 'DAY',
+        reason: 'The 9/11 Commission Report is published — a 585-page account based on 2.5 million pages of documents and testimony from 1,200 witnesses. The report details the plot, the hijackers, the intelligence failures, and the timeline. Physical evidence from the crash sites corroborates all major claims.',
+        source: {
+          externalId: 'src:911-commission-report-2004',
+          name: 'National Commission on Terrorist Attacks Upon the United States. The 9/11 Commission Report. W.W. Norton, 2004.',
+          url: 'https://www.9-11commission.gov/report/911Report.pdf',
+          publishedAt: '2004-07-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-09-01',
+        datePrecision: 'MONTH',
+        reason: 'NIST publishes its final report on the collapse of the WTC towers, providing detailed structural analysis explaining the progressive collapse mechanism. The engineering consensus settles the technical questions about how the buildings fell.',
+        source: {
+          externalId: 'src:nist-wtc-report-2005',
+          name: 'NIST. Final Report on the Collapse of the World Trade Center Towers. NIST NCSTAR 1, September 2005.',
+          url: 'https://www.nist.gov/publications/final-report-collapse-world-trade-center-towers',
+          publishedAt: '2005-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 28. Higgs boson discovery ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:higgs-boson-discovery-2012',
+    text: 'The Higgs boson was experimentally discovered at CERN\'s Large Hadron Collider, announced on July 4, 2012, confirming the last unobserved particle predicted by the Standard Model of particle physics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Peter Higgs, François Englert, and Robert Brout independently propose the Higgs mechanism — a field that gives mass to elementary particles. The theory predicts a new particle (the Higgs boson), but no accelerator exists with sufficient energy to produce it. The question is open: does this particle exist?',
+        source: {
+          externalId: 'src:higgs-paper-1964',
+          name: 'Higgs PW. Broken symmetries and the masses of gauge bosons. Physical Review Letters 1964;13(16):508-509.',
+          url: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.13.508',
+          publishedAt: '1964-10-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-12-13',
+        datePrecision: 'DAY',
+        reason: 'ATLAS and CMS experiments at CERN report tantalizing hints of a new particle near 125 GeV, but with insufficient statistical significance (below the 5-sigma discovery threshold). The physics community debates whether the signal is real or a fluctuation.',
+        source: {
+          externalId: 'src:cern-higgs-hints-2011',
+          name: 'CERN seminar: Update on the Higgs boson search, December 13, 2011.',
+          url: 'https://home.cern/news/press-release/cern/cern-experiments-observe-particle-consistent-long-sought-higgs-boson',
+          publishedAt: '2011-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-04',
+        datePrecision: 'DAY',
+        reason: 'ATLAS and CMS independently announce observation of a new particle at ~125 GeV with 5-sigma significance (1-in-3.5 million chance of being a fluctuation). CERN Director General Rolf Heuer: "I think we have it." Peter Higgs, present at the seminar, weeps.',
+        source: {
+          externalId: 'src:cern-higgs-discovery-2012',
+          name: 'ATLAS Collaboration. Observation of a new particle in the search for the Standard Model Higgs boson. Physics Letters B 2012;716(1):1-29.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S037026931200857X',
+          publishedAt: '2012-09-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 29. Roe v. Wade decided, then reversed by Dobbs ─────────────────────────
+  {
+    externalId: 'trajectory:roe-v-wade-1973-dobbs-2022',
+    text: 'The U.S. Supreme Court ruled in Roe v. Wade (1973) that the Constitution protects a woman\'s right to abortion; this ruling was reversed by Dobbs v. Jackson Women\'s Health Organization (2022).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1973-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1973-01-22',
+        datePrecision: 'DAY',
+        reason: 'The Supreme Court issues a 7–2 decision in Roe v. Wade, holding that the Due Process Clause of the 14th Amendment includes a right to privacy that protects a woman\'s decision to have an abortion. Justice Blackmun writes the majority opinion establishing the trimester framework.',
+        source: {
+          externalId: 'src:roe-v-wade-opinion-1973',
+          name: 'Roe v. Wade, 410 U.S. 113 (1973). Majority opinion by Justice Blackmun.',
+          url: 'https://supreme.justia.com/cases/federal/us/410/113/',
+          publishedAt: '1973-01-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1992-06-29',
+        datePrecision: 'DAY',
+        reason: 'Planned Parenthood v. Casey (1992) reaffirms Roe\'s essential holding while replacing the trimester framework with the "undue burden" standard. The ruling explicitly invokes stare decisis: "the essential holding of Roe v. Wade should be retained." The constitutional right to abortion is settled law for nearly 50 years.',
+        source: {
+          externalId: 'src:casey-opinion-1992',
+          name: 'Planned Parenthood of Southeastern Pa. v. Casey, 505 U.S. 833 (1992).',
+          url: 'https://supreme.justia.com/cases/federal/us/505/833/',
+          publishedAt: '1992-06-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2022-06-24',
+        datePrecision: 'DAY',
+        reason: 'The Supreme Court issues Dobbs v. Jackson Women\'s Health Organization (6–3), explicitly overruling Roe v. Wade and Casey. Justice Alito\'s majority opinion: "Roe was egregiously wrong from the start... It is time to heed the Constitution and return the issue of abortion to the people\'s elected representatives." The constitutional right to abortion is judicially reversed after 49 years.',
+        source: {
+          externalId: 'src:dobbs-opinion-2022',
+          name: 'Dobbs v. Jackson Women\'s Health Organization, 597 U.S. ___ (2022). Majority opinion by Justice Alito.',
+          url: 'https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf',
+          publishedAt: '2022-06-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-06-24',
+        datePrecision: 'DAY',
+        reason: 'The reversal is immediately operative: trigger laws in 13 states ban or severely restrict abortion. The fact that Roe is no longer law is settled — the debate shifts to state-level legislation and potential federal action, not to whether the reversal occurred.',
+        source: {
+          externalId: 'src:trigger-laws-post-dobbs-2022',
+          name: 'Guttmacher Institute. Abortion policy in the absence of Roe. Updated continuously from June 24, 2022.',
+          url: 'https://www.guttmacher.org/state-policy/explore/abortion-policy-absence-roe',
+          publishedAt: '2022-06-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 30. Indian independence & partition ──────────────────────────────────────
+  {
+    externalId: 'trajectory:india-independence-partition-1947',
+    text: 'British India was partitioned into the independent dominions of India and Pakistan at midnight on August 14–15, 1947, ending British colonial rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1947-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-07-18',
+        datePrecision: 'DAY',
+        reason: 'The Indian Independence Act 1947 receives Royal Assent on July 18, 1947, setting August 15 as the date of transfer of power. The act creates two successor dominions, specifies the Radcliffe Line partition boundary, and ends British sovereignty.',
+        source: {
+          externalId: 'src:indian-independence-act-1947',
+          name: 'Indian Independence Act 1947 (10 & 11 Geo. 6, c. 30). UK Parliament.',
+          url: 'https://www.legislation.gov.uk/ukpga/Geo6/10-11/30/enacted',
+          publishedAt: '1947-07-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1947-08-15',
+        datePrecision: 'DAY',
+        reason: 'Jawaharlal Nehru delivers the "Tryst with Destiny" speech at midnight: "At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom." The speech is broadcast by All India Radio. Hundreds of millions witness independence. The last British Viceroy, Mountbatten, transfers power.',
+        source: {
+          externalId: 'src:nehru-tryst-destiny-1947',
+          name: 'Nehru J. "Tryst with Destiny" speech, Constituent Assembly, New Delhi, August 14, 1947 (midnight). All India Radio broadcast.',
+          url: 'https://www.constitutionofindia.net/blogs/tryst-with-destiny-jawaharlal-nehru/',
+          publishedAt: '1947-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-08-17',
+        datePrecision: 'DAY',
+        reason: 'The Radcliffe Line is published on August 17, two days after independence, defining the India-Pakistan border. Both nations are admitted to the United Nations on September 30, 1947, confirming their sovereign status in international law.',
+        source: {
+          externalId: 'src:radcliffe-line-1947',
+          name: 'Report of the Bengal Boundary Commission and Punjab Boundary Commission (Radcliffe Award), August 17, 1947.',
+          url: 'https://www.nationalarchives.gov.uk/education/resources/the-road-to-partition/',
+          publishedAt: '1947-08-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 31. Cuban Missile Crisis ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:cuban-missile-crisis-1962',
+    text: 'The Soviet Union placed nuclear-armed ballistic missiles in Cuba in October 1962; the United States imposed a naval blockade, and the crisis was resolved by Soviet withdrawal of the missiles.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-16',
+        datePrecision: 'DAY',
+        reason: 'CIA U-2 reconnaissance photographs reveal Soviet SS-4 medium-range ballistic missile launch sites under construction in Cuba. President Kennedy is briefed. The ExComm (Executive Committee of the National Security Council) begins meeting.',
+        source: {
+          externalId: 'src:u2-cuba-photos-1962',
+          name: 'CIA U-2 reconnaissance photographs of Soviet missile sites in Cuba, October 14, 1962. CIA FOIA archive.',
+          url: 'https://www.cia.gov/readingroom/collection/cuban-missile-crisis',
+          publishedAt: '1962-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-22',
+        datePrecision: 'DAY',
+        reason: 'Kennedy addresses the nation on live television, announcing the discovery and imposing a "quarantine" (naval blockade). Soviet Ambassador Zorin denies the missiles exist at the UN Security Council — Adlai Stevenson famously displays the U-2 photographs: "Don\'t wait for the translation, yes or no?"',
+        source: {
+          externalId: 'src:kennedy-quarantine-address-1962',
+          name: 'Kennedy JF. Address to the nation on the Soviet arms buildup in Cuba, October 22, 1962.',
+          url: 'https://www.jfklibrary.org/learn/about-jfk/historic-speeches/address-during-the-cuban-missile-crisis',
+          publishedAt: '1962-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-28',
+        datePrecision: 'DAY',
+        reason: 'Khrushchev announces on Radio Moscow that the Soviet Union will remove its missiles from Cuba. Kennedy agrees not to invade Cuba and secretly agrees to remove Jupiter missiles from Turkey. The crisis is resolved. Subsequent Soviet compliance is verified by U.S. reconnaissance.',
+        source: {
+          externalId: 'src:khrushchev-letter-1962-10-28',
+          name: 'Khrushchev NS. Letter to President Kennedy, October 28, 1962. Broadcast on Radio Moscow.',
+          url: 'https://microsites.jfklibrary.org/cmc/oct28/',
+          publishedAt: '1962-10-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 32. Human trafficking abolition — British Slave Trade Act ────────────────
+  {
+    externalId: 'trajectory:slave-trade-abolition-1807',
+    text: 'The British Parliament passed the Slave Trade Act 1807 on March 25, 1807, abolishing the transatlantic slave trade throughout the British Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1807-03-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1787-05-22',
+        datePrecision: 'DAY',
+        reason: 'The Society for Effecting the Abolition of the Slave Trade is founded in London on May 22, 1787. William Wilberforce introduces his first parliamentary motion to abolish the trade in 1789. The West India lobby and shipping interests vigorously oppose. The question is actively contested in Parliament for 20 years.',
+        source: {
+          externalId: 'src:abolition-society-founded-1787',
+          name: 'Minutes of the Committee for the Abolition of the Slave Trade, May 22, 1787. British Library Add MS 21254.',
+          url: 'https://www.bl.uk/collection-items/minutes-of-the-committee-for-the-abolition-of-the-slave-trade',
+          publishedAt: '1787-05-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1807-03-25',
+        datePrecision: 'DAY',
+        reason: 'The Slave Trade Act 1807 passes the House of Commons 283–16. It receives Royal Assent on March 25, 1807. The act makes it illegal to engage in the slave trade anywhere in the British Empire, effective January 1, 1808.',
+        source: {
+          externalId: 'src:slave-trade-act-1807',
+          name: 'An Act for the Abolition of the Slave Trade (47 Geo. III, Sess. 1, c. 36). March 25, 1807.',
+          url: 'https://www.legislation.gov.uk/ukpga/Geo3/47/36/contents',
+          publishedAt: '1807-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1833-08-28',
+        datePrecision: 'DAY',
+        reason: 'The Slavery Abolition Act 1833 extends the prohibition to abolish slavery itself (not just the trade) throughout the British Empire, effective August 1, 1834. Emancipation of ~800,000 enslaved people settles the institutional trajectory. The Royal Navy\'s West Africa Squadron enforces the ban internationally.',
+        source: {
+          externalId: 'src:slavery-abolition-act-1833',
+          name: 'An Act for the Abolition of Slavery throughout the British Colonies (3 & 4 Will. IV, c. 73). August 28, 1833.',
+          url: 'https://www.legislation.gov.uk/ukpga/Will4/3-4/73/contents',
+          publishedAt: '1833-08-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 33. Emancipation Proclamation ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:emancipation-proclamation-1863',
+    text: 'President Abraham Lincoln issued the Emancipation Proclamation on January 1, 1863, declaring enslaved people in Confederate states "forever free."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1863-01-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1863-01-01',
+        datePrecision: 'DAY',
+        reason: 'Lincoln issues the final Emancipation Proclamation, declaring all enslaved persons in Confederate states to be free. The document, signed and sealed, is a presidential executive order under war powers. The original document is in the National Archives.',
+        source: {
+          externalId: 'src:emancipation-proclamation-1863',
+          name: 'Lincoln A. Emancipation Proclamation, January 1, 1863. National Archives, General Records of the U.S. Government.',
+          url: 'https://www.archives.gov/exhibits/featured-documents/emancipation-proclamation',
+          publishedAt: '1863-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1863-01-01',
+        datePrecision: 'DAY',
+        reason: 'The Confederacy rejects the Proclamation. Border states (Kentucky, Missouri, Maryland, Delaware) where slavery remains legal are excluded. Critics note it only "frees" enslaved people in areas the Union does not control. Its legal authority and practical effect are contested.',
+        source: {
+          externalId: 'src:confederate-response-emancipation',
+          name: 'Jefferson Davis. Message to the Confederate Congress, January 12, 1863.',
+          url: 'https://avalon.law.yale.edu/19th_century/csa_msg1863j.asp',
+          publishedAt: '1863-01-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1865-12-06',
+        datePrecision: 'DAY',
+        reason: 'The 13th Amendment to the Constitution is ratified on December 6, 1865, abolishing slavery throughout the United States. This constitutional amendment settles what the Proclamation had left contested — universal abolition with permanent legal force.',
+        source: {
+          externalId: 'src:13th-amendment-ratification-1865',
+          name: 'Thirteenth Amendment to the United States Constitution. Ratified December 6, 1865.',
+          url: 'https://www.archives.gov/milestone-documents/13th-amendment',
+          publishedAt: '1865-12-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 34. Penicillin discovery ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:penicillin-discovery-1928',
+    text: 'Alexander Fleming discovered the antibacterial properties of penicillin in September 1928, leading to the development of the first widely effective antibiotic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-09-03',
+        datePrecision: 'DAY',
+        reason: 'Fleming returns from holiday to find a Penicillium mold contaminating a Staphylococcus culture plate — with a clear zone of bacterial inhibition around the mold. He publishes his observation in 1929 but cannot isolate the active substance in sufficient quantity. The therapeutic potential remains an open question.',
+        source: {
+          externalId: 'src:fleming-penicillin-1929',
+          name: 'Fleming A. On the antibacterial action of cultures of a Penicillium. British Journal of Experimental Pathology 1929;10(3):226-236.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2048009/',
+          publishedAt: '1929-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-08-24',
+        datePrecision: 'DAY',
+        reason: 'Howard Florey and Ernst Boris Chain at Oxford purify penicillin and publish the first clinical results in The Lancet, demonstrating therapeutic efficacy in mice. Human trials follow in 1941. The paper transforms penicillin from a laboratory curiosity to a recordable medical breakthrough.',
+        source: {
+          externalId: 'src:florey-chain-penicillin-1940',
+          name: 'Chain E, Florey HW, et al. Penicillin as a chemotherapeutic agent. Lancet 1940;236(6104):226-228.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2783041/',
+          publishedAt: '1940-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-12-10',
+        datePrecision: 'DAY',
+        reason: 'Fleming, Florey, and Chain share the Nobel Prize in Physiology or Medicine for the discovery and development of penicillin. By this time, mass production has saved thousands of Allied soldiers in WWII. Penicillin\'s efficacy is settled beyond any dispute.',
+        source: {
+          externalId: 'src:nobel-penicillin-1945',
+          name: 'Nobel Prize in Physiology or Medicine 1945: Alexander Fleming, Ernst Boris Chain, Howard Walter Florey.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1945/summary/',
+          publishedAt: '1945-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 35. COVID-19 pandemic declared ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:covid-19-pandemic-2020',
+    text: 'A novel coronavirus (SARS-CoV-2) emerged in Wuhan, China in late 2019 and was declared a global pandemic by the WHO on March 11, 2020.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-12-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-31',
+        datePrecision: 'DAY',
+        reason: 'China reports a cluster of pneumonia cases of unknown cause in Wuhan to the WHO. The causative agent is unknown. Li Wenliang and other Chinese doctors had been warning colleagues since late December.',
+        source: {
+          externalId: 'src:who-china-pneumonia-2019',
+          name: 'WHO Disease Outbreak News: Pneumonia of unknown cause — China, December 31, 2019.',
+          url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2020-DON229',
+          publishedAt: '2020-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-10',
+        datePrecision: 'DAY',
+        reason: 'Chinese scientists publish the full genome of the novel coronavirus (later named SARS-CoV-2) on the open-access GISAID platform. Zhang Yongzhen\'s team sequences the virus in 40 hours. The causative agent is identified and shared globally within two weeks of the initial report.',
+        source: {
+          externalId: 'src:sars-cov-2-genome-2020',
+          name: 'Wu F et al. A new coronavirus associated with human respiratory disease in China. Nature 2020;579:265-269.',
+          url: 'https://www.nature.com/articles/s41586-020-2008-3',
+          publishedAt: '2020-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-11',
+        datePrecision: 'DAY',
+        reason: 'WHO Director-General Tedros Adhanom Ghebreyesus declares COVID-19 a pandemic. By this date, 114 countries have reported cases. The global spread of SARS-CoV-2 is settled fact confirmed by independent genomic surveillance, clinical data, and epidemiological tracking worldwide.',
+        source: {
+          externalId: 'src:who-pandemic-declaration-2020',
+          name: 'WHO Director-General opening remarks at the media briefing on COVID-19, March 11, 2020.',
+          url: 'https://www.who.int/director-general/speeches/detail/who-director-general-s-opening-remarks-at-the-media-briefing-on-covid-19---11-march-2020',
+          publishedAt: '2020-03-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 36. Gravitational waves detected ────────────────────────────────────────
+  {
+    externalId: 'trajectory:gravitational-waves-detected-2015',
+    text: 'The LIGO Scientific Collaboration directly detected gravitational waves for the first time on September 14, 2015, confirming a prediction of Einstein\'s general relativity made 100 years earlier.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1916-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Einstein predicts gravitational waves as a consequence of general relativity (1916). For decades, even Einstein himself doubts they are physically real rather than mathematical artifacts. The question is genuinely open — are these waves detectable, or merely coordinate effects?',
+        source: {
+          externalId: 'src:einstein-gravitational-waves-1916',
+          name: 'Einstein A. Näherungsweise Integration der Feldgleichungen der Gravitation. Sitzungsberichte der Preussischen Akademie der Wissenschaften 1916:688-696.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1916SPAW.......688E',
+          publishedAt: '1916-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hulse and Taylor discover the binary pulsar PSR B1913+16 (1974). Its orbital decay matches general relativity\'s prediction for gravitational wave energy loss to within 0.2%. This is strong indirect evidence, but direct detection of gravitational waves themselves remains unachieved. Some physicists argue this suffices; others insist on direct detection.',
+        source: {
+          externalId: 'src:hulse-taylor-pulsar-1975',
+          name: 'Hulse RA, Taylor JH. Discovery of a pulsar in a binary system. Astrophysical Journal 1975;195:L51-L53.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1975ApJ...195L..51H',
+          publishedAt: '1975-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-02-11',
+        datePrecision: 'DAY',
+        reason: 'LIGO announces detection of gravitational waves from a binary black hole merger (GW150914), observed September 14, 2015. The signal matches general relativity predictions precisely. Two independent LIGO detectors in Louisiana and Washington record identical signals with a 7-millisecond delay. Statistical significance: >5.1 sigma.',
+        source: {
+          externalId: 'src:ligo-gw150914-2016',
+          name: 'Abbott BP et al. (LIGO Scientific Collaboration and Virgo Collaboration). Observation of gravitational waves from a binary black hole merger. Physical Review Letters 2016;116(6):061102.',
+          url: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.116.061102',
+          publishedAt: '2016-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 37. Smallpox eradicated ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:smallpox-eradication-1980',
+    text: 'Smallpox was declared eradicated by the World Health Organization on May 8, 1980 — the first (and so far only) human disease to be eradicated through deliberate intervention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-05-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The World Health Assembly adopts a resolution to eradicate smallpox globally. The idea that a human disease could be deliberately eliminated worldwide is considered ambitious but unproven. The question is open: is eradication achievable?',
+        source: {
+          externalId: 'src:wha-smallpox-resolution-1959',
+          name: 'World Health Assembly Resolution WHA11.54: Eradication of Smallpox. WHO, 1959.',
+          url: 'https://www.who.int/publications/m/item/wha11.54',
+          publishedAt: '1959-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-10-26',
+        datePrecision: 'DAY',
+        reason: 'Ali Maow Maalin, a hospital cook in Merka, Somalia, is diagnosed with the last known naturally occurring case of smallpox (variola minor) on October 26, 1977. He recovers. No further natural cases are detected anywhere in the world despite intensive surveillance.',
+        source: {
+          externalId: 'src:last-smallpox-case-1977',
+          name: 'Fenner F et al. Smallpox and Its Eradication. WHO, 1988, pp. 1061-1062.',
+          url: 'https://apps.who.int/iris/handle/10665/39485',
+          publishedAt: '1988-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-05-08',
+        datePrecision: 'DAY',
+        reason: 'The 33rd World Health Assembly officially declares smallpox eradicated — the first disease in history to be eliminated by human effort. The Global Commission for the Certification of Smallpox Eradication, having verified zero cases for over two years, signs the certificate on December 9, 1979.',
+        source: {
+          externalId: 'src:who-smallpox-eradication-1980',
+          name: 'World Health Assembly Resolution WHA33.3: Declaration of Global Eradication of Smallpox. WHO, May 8, 1980.',
+          url: 'https://www.who.int/news/item/13-12-2019-WHO-commemorates-the-40th-anniversary-of-smallpox-eradication',
+          publishedAt: '1980-05-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 38. Plate tectonics accepted ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:plate-tectonics-accepted-1968',
+    text: 'Earth\'s lithosphere is divided into tectonic plates that move, collide, and subduct, explaining continental drift, earthquakes, and volcanism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-01-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-01-06',
+        datePrecision: 'DAY',
+        reason: 'Alfred Wegener presents his continental drift hypothesis at the Geological Association in Frankfurt on January 6, 1912. He proposes that continents were once joined (Pangaea) and have drifted apart. Geologists dismiss the idea because Wegener cannot explain the mechanism — what force moves continents?',
+        source: {
+          externalId: 'src:wegener-continental-drift-1912',
+          name: 'Wegener A. Die Entstehung der Kontinente. Geologische Rundschau 1912;3(4):276-292.',
+          url: 'https://link.springer.com/article/10.1007/BF02202896',
+          publishedAt: '1912-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Harry Hess proposes seafloor spreading (1960–1962): new oceanic crust forms at mid-ocean ridges and spreads outward. This provides the mechanism Wegener lacked. Vine-Matthews (1963) confirm with magnetic striping patterns. But the full plate tectonics model is not yet accepted.',
+        source: {
+          externalId: 'src:hess-seafloor-spreading-1962',
+          name: 'Hess HH. History of ocean basins. In: Petrologic Studies: A Volume to Honor A.F. Buddington. Geological Society of America, 1962.',
+          url: 'https://www.geosociety.org/gsatoday/archive/12/2/article/i1052-5173-12-2-7.htm',
+          publishedAt: '1962-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Three landmark papers in 1967–1968 (Morgan, Le Pichon, McKenzie & Parker) define the mathematical framework of plate tectonics. The Deep Sea Drilling Project (1968) provides direct evidence of seafloor spreading ages matching predictions. Within two years, plate tectonics is adopted as the unifying theory of geology.',
+        source: {
+          externalId: 'src:le-pichon-plates-1968',
+          name: 'Le Pichon X. Sea-floor spreading and continental drift. Journal of Geophysical Research 1968;73(12):3661-3697.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/JB073i012p03661',
+          publishedAt: '1968-06-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 39. First photograph taken ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:first-photograph-1826',
+    text: 'Joseph Nicéphore Niépce created the first permanent photograph from nature (View from the Window at Le Gras) circa 1826–1827.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1826-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1826-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Niépce exposes a pewter plate coated with bitumen of Judea in a camera obscura at his estate in Saint-Loup-de-Varennes. The exposure takes approximately 8 hours. The resulting image — rooftops, a barn, a tree — is faint but permanent. The plate survives and is now at the University of Texas at Austin.',
+        source: {
+          externalId: 'src:niepce-first-photograph',
+          name: 'Niépce JN. View from the Window at Le Gras, c. 1826. Harry Ransom Center, University of Texas at Austin.',
+          url: 'https://www.hrc.utexas.edu/niepce-heliograph/',
+          publishedAt: '1826-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1839-01-07',
+        datePrecision: 'DAY',
+        reason: 'Louis Daguerre announces the daguerreotype process to the French Academy of Sciences on January 7, 1839. William Henry Fox Talbot claims independent invention. Hippolyte Bayard also has a claim. The priority question — who invented photography? — is contested among multiple claimants.',
+        source: {
+          externalId: 'src:daguerre-announcement-1839',
+          name: 'Arago F. Report on the daguerreotype to the French Academy of Sciences, January 7, 1839.',
+          url: 'https://www.metmuseum.org/toah/hd/dagu/hd_dagu.htm',
+          publishedAt: '1839-01-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Helmut and Alison Gernsheim rediscover Niépce\'s original plate (thought lost) and publish their analysis. Modern photographic historians recognize Niépce\'s heliograph as the earliest surviving permanent photograph from nature, while Daguerre perfected the first practical process. The priority question is settled.',
+        source: {
+          externalId: 'src:gernsheim-niepce-rediscovery-1952',
+          name: 'Gernsheim H, Gernsheim A. The History of Photography. Oxford University Press, 1955.',
+          url: 'https://www.jstor.org/stable/1578195',
+          publishedAt: '1955-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 40. Rosetta Stone deciphered ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:rosetta-stone-deciphered-1822',
+    text: 'Jean-François Champollion deciphered Egyptian hieroglyphs using the Rosetta Stone, announcing his breakthrough on September 27, 1822.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1822-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1799-07-15',
+        datePrecision: 'DAY',
+        reason: 'French soldiers discover the Rosetta Stone during Napoleon\'s Egyptian campaign at Fort Julien near Rashid (Rosetta). The stone bears the same decree in three scripts: hieroglyphic, Demotic, and Greek. The Greek is readable; the hieroglyphs have been unreadable for over 1,400 years.',
+        source: {
+          externalId: 'src:rosetta-stone-discovery-1799',
+          name: 'Description of the Rosetta Stone discovery. Courier de l\'Égypte, 1799.',
+          url: 'https://www.britishmuseum.org/collection/object/Y_EA24',
+          publishedAt: '1799-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1814-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Thomas Young makes progress on the Demotic script and identifies some hieroglyphic cartouches (royal names). He proposes hieroglyphs are partly phonetic. Champollion disputes Young\'s approach. The decipherment race between British and French scholars is actively contested.',
+        source: {
+          externalId: 'src:young-hieroglyphs-1814',
+          name: 'Young T. Egypt. Encyclopedia Britannica Supplement, 1819. (Based on work from 1814)',
+          url: 'https://www.jstor.org/stable/3856163',
+          publishedAt: '1819-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1822-09-27',
+        datePrecision: 'DAY',
+        reason: 'Champollion presents his "Lettre à M. Dacier" at the Académie des Inscriptions on September 27, 1822, demonstrating that hieroglyphs are a mixed system of phonetic and ideographic signs. He reads the names of Ptolemy and Cleopatra, then extends the system to read non-Greek pharaohs. The key insight is that hieroglyphs are not purely symbolic but partly alphabetic.',
+        source: {
+          externalId: 'src:champollion-lettre-dacier-1822',
+          name: 'Champollion JF. Lettre à M. Dacier relative à l\'alphabet des hiéroglyphes phonétiques. Paris: Firmin Didot, 1822.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k6432994d',
+          publishedAt: '1822-09-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 41. Semiconductor transistor invented ───────────────────────────────────
+  {
+    externalId: 'trajectory:transistor-invention-1947',
+    text: 'John Bardeen, Walter Brattain, and William Shockley invented the transistor at Bell Laboratories, with the first successful demonstration on December 16, 1947.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-12-16',
+        datePrecision: 'DAY',
+        reason: 'Bardeen and Brattain demonstrate the first point-contact transistor at Bell Labs, Murray Hill, New Jersey. The device amplifies an audio signal. Lab notebooks record the exact date. Shockley develops the superior junction transistor in January 1948.',
+        source: {
+          externalId: 'src:bell-labs-transistor-1947',
+          name: 'Bardeen J, Brattain WH. The transistor, a semi-conductor triode. Physical Review 1948;74(2):230-231.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.74.230',
+          publishedAt: '1948-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-06-30',
+        datePrecision: 'DAY',
+        reason: 'Bell Labs publicly announces the transistor on June 30, 1948. The New York Times covers it on page 46 — underselling what will become the most important invention of the 20th century. Bell licenses the technology widely, and by the mid-1950s, transistor radios and computers demonstrate its transformative potential.',
+        source: {
+          externalId: 'src:bell-labs-transistor-announcement-1948',
+          name: 'Bell Telephone Laboratories press release, June 30, 1948: "The Transistor."',
+          url: 'https://www.nobelprize.org/prizes/physics/1956/summary/',
+          publishedAt: '1948-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1956-12-10',
+        datePrecision: 'DAY',
+        reason: 'Bardeen, Brattain, and Shockley receive the Nobel Prize in Physics for the transistor. The Nobel citation confirms Bell Labs as the site of invention and recognizes all three physicists\' contributions.',
+        source: {
+          externalId: 'src:nobel-transistor-1956',
+          name: 'Nobel Prize in Physics 1956: William Bradford Shockley, John Bardeen, Walter Houser Brattain.',
+          url: 'https://www.nobelprize.org/prizes/physics/1956/summary/',
+          publishedAt: '1956-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 42. Watergate and Nixon resignation ─────────────────────────────────────
+  {
+    externalId: 'trajectory:watergate-nixon-resignation-1974',
+    text: 'President Richard Nixon resigned the presidency on August 9, 1974, following the Watergate scandal and facing certain impeachment for obstruction of justice.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1972-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1972-06-17',
+        datePrecision: 'DAY',
+        reason: 'Five men are arrested breaking into Democratic National Committee headquarters at the Watergate complex in Washington, D.C. The connection to Nixon\'s reelection campaign (CREEP) is initially denied by the White House. Washington Post reporters Woodward and Bernstein pursue the story. Nixon calls it a "third-rate burglary."',
+        source: {
+          externalId: 'src:watergate-break-in-1972',
+          name: 'Washington Post. 5 Held in Plot to Bug Democrats\' Office Here. June 18, 1972, p. A1.',
+          url: 'https://www.washingtonpost.com/wp-srv/national/longterm/watergate/articles/061972-1.htm',
+          publishedAt: '1972-06-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1974-07-24',
+        datePrecision: 'DAY',
+        reason: 'The Supreme Court rules 8–0 in United States v. Nixon that Nixon must surrender the White House tape recordings. The "smoking gun" tape (June 23, 1972 conversation) proves Nixon ordered the CIA to obstruct the FBI investigation just six days after the break-in. Nixon\'s own words on tape settle the factual question of presidential involvement.',
+        source: {
+          externalId: 'src:us-v-nixon-1974',
+          name: 'United States v. Nixon, 418 U.S. 683 (1974).',
+          url: 'https://supreme.justia.com/cases/federal/us/418/683/',
+          publishedAt: '1974-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1974-08-09',
+        datePrecision: 'DAY',
+        reason: 'Nixon addresses the nation on live television on August 8 announcing his resignation, effective noon August 9 — the first presidential resignation in U.S. history. He boards Marine One from the White House South Lawn, giving his famous double-V gesture. Gerald Ford is sworn in: "Our long national nightmare is over."',
+        source: {
+          externalId: 'src:nixon-resignation-speech-1974',
+          name: 'Nixon RH. Address to the nation announcing decision to resign the office of the President, August 8, 1974.',
+          url: 'https://www.nixonlibrary.gov/forkids/speechesforkids/resignation/resignation.pdf',
+          publishedAt: '1974-08-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 43. Vaccination invented (Jenner) ───────────────────────────────────────
+  {
+    externalId: 'trajectory:jenner-vaccination-1796',
+    text: 'Edward Jenner demonstrated that inoculation with cowpox (vaccination) provides immunity to smallpox, performing the first vaccination on May 14, 1796.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1796-05-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1796-05-14',
+        datePrecision: 'DAY',
+        reason: 'Jenner inoculates 8-year-old James Phipps with material from a cowpox sore on the hand of milkmaid Sarah Nelmes. Six weeks later, he variolates Phipps with smallpox — the boy does not develop the disease. The Royal Society rejects Jenner\'s paper. Anti-vaccination sentiment begins immediately.',
+        source: {
+          externalId: 'src:jenner-inquiry-1798',
+          name: 'Jenner E. An Inquiry into the Causes and Effects of the Variolæ Vaccinæ. London: Sampson Low, 1798.',
+          url: 'https://www.nlm.nih.gov/exhibition/smallpox/sp_jenner.html',
+          publishedAt: '1798-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1840-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The British government passes the Vaccination Act 1840, banning variolation (the older, riskier practice) and providing free Jennerian vaccination. By this time, vaccination has been independently replicated across Europe and the Americas. Napoleon vaccinates his army. The practice is settled by institutional adoption and mass empirical success.',
+        source: {
+          externalId: 'src:vaccination-act-1840',
+          name: 'An Act to Extend the Practice of Vaccination (3 & 4 Vict., c. 29). August 1840.',
+          url: 'https://www.legislation.gov.uk/ukpga/Vict/3-4/29/enacted',
+          publishedAt: '1840-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-05-08',
+        datePrecision: 'DAY',
+        reason: 'The WHO declares smallpox eradicated — the ultimate vindication of Jenner\'s method. Vaccination, the technique he pioneered, has eliminated the disease that killed an estimated 300 million people in the 20th century alone.',
+        source: {
+          externalId: 'src:who-smallpox-eradicated-1980',
+          name: 'World Health Assembly. Declaration of Global Eradication of Smallpox, May 8, 1980.',
+          url: 'https://www.who.int/news/item/13-12-2019-WHO-commemorates-the-40th-anniversary-of-smallpox-eradication',
+          publishedAt: '1980-05-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 44. Women's suffrage in the United States ───────────────────────────────
+  {
+    externalId: 'trajectory:us-womens-suffrage-1920',
+    text: 'The 19th Amendment to the U.S. Constitution was ratified on August 18, 1920, guaranteeing women the right to vote.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1848-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1848-07-20',
+        datePrecision: 'DAY',
+        reason: 'The Seneca Falls Convention (July 19–20, 1848) produces the Declaration of Sentiments, asserting that women should have the right to vote. 68 women and 32 men sign it. The suffrage resolution is the most controversial plank — it passes only after Frederick Douglass speaks in support.',
+        source: {
+          externalId: 'src:seneca-falls-declaration-1848',
+          name: 'Stanton EC et al. Declaration of Sentiments, Seneca Falls Convention, July 20, 1848.',
+          url: 'https://www.nps.gov/wori/learn/historyculture/declaration-of-sentiments.htm',
+          publishedAt: '1848-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1919-06-04',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Senate passes the 19th Amendment (56–25) on June 4, 1919, after the House passed it on May 21. The amendment is sent to the states for ratification. 72 years of advocacy — from Seneca Falls through the suffrage parades, hunger strikes, and Alice Paul\'s picketing — culminates in congressional approval.',
+        source: {
+          externalId: 'src:19th-amendment-senate-vote-1919',
+          name: 'U.S. Senate vote on the 19th Amendment, June 4, 1919. Congressional Record.',
+          url: 'https://www.senate.gov/artandhistory/history/common/briefing/woman_suffrage.htm',
+          publishedAt: '1919-06-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-08-18',
+        datePrecision: 'DAY',
+        reason: 'Tennessee becomes the 36th state to ratify, providing the three-fourths majority needed. The decisive vote is cast by 24-year-old Harry T. Burn, who changes his vote after receiving a letter from his mother: "Don\'t forget to be a good boy." Secretary of State Colby certifies the amendment on August 26, 1920.',
+        source: {
+          externalId: 'src:19th-amendment-ratification-1920',
+          name: 'Certification of the 19th Amendment, August 26, 1920. National Archives.',
+          url: 'https://www.archives.gov/milestone-documents/19th-amendment',
+          publishedAt: '1920-08-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 45. First human in space (Gagarin) ──────────────────────────────────────
+  {
+    externalId: 'trajectory:gagarin-first-human-space-1961',
+    text: 'Yuri Gagarin became the first human in space, orbiting the Earth in Vostok 1 on April 12, 1961.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-04-12',
+        datePrecision: 'DAY',
+        reason: 'TASS announces that Major Yuri Gagarin has orbited the Earth aboard Vostok 1. The flight lasts 108 minutes. Gagarin ejects at 7 km altitude and parachutes to land near the Volga River. The announcement is made while Gagarin is still in orbit.',
+        source: {
+          externalId: 'src:tass-gagarin-announcement-1961',
+          name: 'TASS announcement: First human space flight of Yuri Gagarin, April 12, 1961.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1961-012A',
+          publishedAt: '1961-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-04-14',
+        datePrecision: 'DAY',
+        reason: 'The FAI (Fédération Aéronautique Internationale) accepts the Soviet claim and certifies Gagarin\'s flight as the first human spaceflight. The United States, despite Cold War rivalry, does not contest the achievement. NASA acknowledges it. President Kennedy responds by accelerating the Apollo program.',
+        source: {
+          externalId: 'src:fai-gagarin-certification-1961',
+          name: 'Fédération Aéronautique Internationale certification of Vostok 1 flight, 1961.',
+          url: 'https://www.fai.org/page/icare-award',
+          publishedAt: '1961-04-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2011-04-12',
+        datePrecision: 'DAY',
+        reason: 'The United Nations General Assembly declares April 12 as the International Day of Human Space Flight (UN Resolution A/RES/65/271), institutionalizing Gagarin\'s achievement at the highest level of international recognition.',
+        source: {
+          externalId: 'src:un-space-flight-day-2011',
+          name: 'UN General Assembly Resolution A/RES/65/271: International Day of Human Space Flight. April 7, 2011.',
+          url: 'https://www.un.org/en/observances/human-spaceflight-day',
+          publishedAt: '2011-04-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 46. Gutenberg moment: the Internet goes public ──────────────────────────
+  {
+    externalId: 'trajectory:world-wide-web-public-1991',
+    text: 'Tim Berners-Lee made the World Wide Web publicly available on August 6, 1991, when the first web page was published on the open internet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-08-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-08-06',
+        datePrecision: 'DAY',
+        reason: 'Tim Berners-Lee posts a summary of the World Wide Web project to the alt.hypertext newsgroup, publicly inviting users to try the web. The first web page (http://info.cern.ch) describes the project. The web is born as a publicly accessible system.',
+        source: {
+          externalId: 'src:berners-lee-www-announcement-1991',
+          name: 'Berners-Lee T. WorldWideWeb: Summary. Post to alt.hypertext newsgroup, August 6, 1991.',
+          url: 'https://www.w3.org/People/Berners-Lee/1991/08/art-6484.txt',
+          publishedAt: '1991-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-04-30',
+        datePrecision: 'DAY',
+        reason: 'CERN formally places the World Wide Web software in the public domain on April 30, 1993, ensuring it remains free and open. The Mosaic browser (released January 1993) makes the web accessible to non-technical users. By year\'s end, there are over 500 web servers.',
+        source: {
+          externalId: 'src:cern-www-public-domain-1993',
+          name: 'CERN. Statement concerning CERN W3 software release into public domain, April 30, 1993.',
+          url: 'https://home.cern/science/computing/birth-web/short-history-web',
+          publishedAt: '1993-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-04-30',
+        datePrecision: 'DAY',
+        reason: 'CERN restores the first web page at its original URL (http://info.cern.ch/hypertext/WWW/TheProject.html) as a historical monument. The web now has over 630 million websites. Berners-Lee\'s invention is recognized as one of the most consequential in human history.',
+        source: {
+          externalId: 'src:cern-first-webpage-restored-2013',
+          name: 'CERN. Restoring the first website. April 30, 2013.',
+          url: 'https://first-website.web.cern.ch/',
+          publishedAt: '2013-04-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 47. Printing of the Ninety-Five Theses (Luther) ─────────────────────────
+  {
+    externalId: 'trajectory:luther-95-theses-1517',
+    text: 'Martin Luther posted his Ninety-Five Theses against indulgences on October 31, 1517, triggering the Protestant Reformation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1517-10-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1517-10-31',
+        datePrecision: 'DAY',
+        reason: 'Luther writes to Archbishop Albrecht of Mainz, enclosing his Disputatio pro declaratione virtutis indulgentiarum (Ninety-Five Theses). The letter survives. Whether he physically nailed them to the Wittenberg Castle Church door is debated, but the distribution of the theses in print is documented and undisputed.',
+        source: {
+          externalId: 'src:luther-letter-albrecht-1517',
+          name: 'Luther M. Letter to Archbishop Albrecht of Mainz, October 31, 1517. (Preserved in the Landesarchiv Sachsen-Anhalt)',
+          url: 'https://www.luther.de/en/95thesen.html',
+          publishedAt: '1517-10-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1520-06-15',
+        datePrecision: 'DAY',
+        reason: 'Pope Leo X issues the papal bull Exsurge Domine (June 15, 1520), threatening Luther with excommunication unless he recants 41 of 95 theses within 60 days. Luther publicly burns the bull on December 10, 1520. The Reformation is now an open institutional rupture.',
+        source: {
+          externalId: 'src:exsurge-domine-1520',
+          name: 'Pope Leo X. Papal bull Exsurge Domine, June 15, 1520.',
+          url: 'https://www.papalencyclicals.net/leo10/l10exdom.htm',
+          publishedAt: '1520-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1555-09-25',
+        datePrecision: 'DAY',
+        reason: 'The Peace of Augsburg (September 25, 1555) legally recognizes Lutheranism alongside Catholicism in the Holy Roman Empire (cuius regio, eius religio). The Reformation is no longer contested but institutionally settled — Protestantism is a permanent reality. Luther\'s theses are recognized as the catalyst.',
+        source: {
+          externalId: 'src:peace-of-augsburg-1555',
+          name: 'Peace of Augsburg, September 25, 1555. Text in Zeumer, Quellensammlung (1913).',
+          url: 'https://avalon.law.yale.edu/16th_century/augsburg.asp',
+          publishedAt: '1555-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 48. Columbus reaches the Americas ───────────────────────────────────────
+  {
+    externalId: 'trajectory:columbus-americas-1492',
+    text: 'Christopher Columbus, sailing for the Spanish Crown, made landfall in the Bahamas on October 12, 1492, establishing sustained European contact with the Americas.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1492-10-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1492-10-12',
+        datePrecision: 'DAY',
+        reason: 'Columbus\'s ship log (preserved in Bartolomé de las Casas\'s transcription) records landfall at an island the Taíno call Guanahani (probably San Salvador). The crew goes ashore; Columbus plants the Spanish flag and claims the land for Ferdinand and Isabella.',
+        source: {
+          externalId: 'src:columbus-journal-1492',
+          name: 'Columbus C. Diario de a bordo (Ship\'s Journal), 1492. Las Casas transcription. (Biblioteca Nacional de España)',
+          url: 'https://www.loc.gov/collections/christopher-columbus-and-the-age-of-exploration/',
+          publishedAt: '1493-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1493-05-04',
+        datePrecision: 'DAY',
+        reason: 'Pope Alexander VI issues the papal bull Inter caetera (May 4, 1493), dividing the newly discovered lands between Spain and Portugal. The Treaty of Tordesillas (1494) formalizes this. Both Catholic powers and the papacy treat the voyages as established fact. Subsequent voyages by Columbus and others confirm the existence of the new landmass.',
+        source: {
+          externalId: 'src:inter-caetera-1493',
+          name: 'Pope Alexander VI. Papal bull Inter caetera, May 4, 1493.',
+          url: 'https://www.papalencyclicals.net/alex06/alex06inter.htm',
+          publishedAt: '1493-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship debates the exact landing site and the moral framing of Columbus\'s voyages but does not contest the core fact: Columbus reached the Americas in 1492. DNA and archaeological evidence confirms pre-Columbian contact was limited (Norse settlement at L\'Anse aux Meadows c. 1000 CE), but Columbus initiated sustained contact.',
+        source: {
+          externalId: 'src:columbus-landing-debate-modern',
+          name: 'Keegan WF. Columbus Was Last: Explorations into the Prehistory of the Americas. National Geographic, 2014.',
+          url: 'https://www.jstor.org/stable/3888958',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 49. Human trafficking — 13th Amendment & Juneteenth ─────────────────────
+  {
+    externalId: 'trajectory:juneteenth-emancipation-1865',
+    text: 'On June 19, 1865 ("Juneteenth"), Union soldiers arrived in Galveston, Texas, announcing the end of slavery — the last major enslaved population in the United States to learn of their freedom.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1865-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1865-06-19',
+        datePrecision: 'DAY',
+        reason: 'Major General Gordon Granger arrives in Galveston, Texas, and reads General Order No. 3: "The people of Texas are informed that, in accordance with a proclamation from the Executive of the United States, all slaves are free." This is 2.5 years after the Emancipation Proclamation and 2 months after Lee\'s surrender.',
+        source: {
+          externalId: 'src:general-order-3-1865',
+          name: 'General Order No. 3. Headquarters District of Texas, Galveston, June 19, 1865. National Archives.',
+          url: 'https://www.archives.gov/news/articles/juneteenth-original-document',
+          publishedAt: '1865-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1866-06-19',
+        datePrecision: 'DAY',
+        reason: 'The first Juneteenth celebrations are held in Texas in 1866. Freedpeople organize parades, prayer services, and community gatherings to commemorate the anniversary. The tradition spreads across the South and becomes the most widely observed emancipation celebration in the United States.',
+        source: {
+          externalId: 'src:first-juneteenth-celebration-1866',
+          name: 'Taylor Q. From Timbuktu to Katrina: Readings in African-American History. Thomson/Wadsworth, 2008.',
+          url: 'https://www.nps.gov/articles/juneteenth.htm',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-06-17',
+        datePrecision: 'DAY',
+        reason: 'President Biden signs the Juneteenth National Independence Day Act, making June 19 a federal holiday — the first new federal holiday since Martin Luther King Jr. Day in 1983. The legislation passes the Senate unanimously and the House 415–14.',
+        source: {
+          externalId: 'src:juneteenth-federal-holiday-2021',
+          name: 'Juneteenth National Independence Day Act (S. 475). Signed into law June 17, 2021.',
+          url: 'https://www.congress.gov/bill/117th-congress/senate-bill/475',
+          publishedAt: '2021-06-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 50. Electricity harnessed — Edison's Pearl Street Station ────────────────
+  {
+    externalId: 'trajectory:edison-pearl-street-station-1882',
+    text: 'Thomas Edison opened the Pearl Street Station in Manhattan on September 4, 1882, providing the first commercial central power station delivering electricity to customers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1882-09-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1882-09-04',
+        datePrecision: 'DAY',
+        reason: 'Edison throws the switch at 3 PM, illuminating 800 lamps in 25 buildings within a one-square-mile area of lower Manhattan, including the offices of the New York Times and J.P. Morgan. The Times reports: "It was not until about seven o\'clock, when it began to grow dark, that the electric light really made itself known."',
+        source: {
+          externalId: 'src:nyt-pearl-street-1882',
+          name: 'New York Times. Edison\'s Electric Light: The Times Building Brilliantly Illuminated. September 5, 1882.',
+          url: 'https://www.nytimes.com/1882/09/05/archives/edisons-electric-light-the-times-building-brilliantly-illuminated.html',
+          publishedAt: '1882-09-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1886-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The "War of Currents" erupts between Edison (DC) and George Westinghouse/Nikola Tesla (AC). Which system will power the electrical grid becomes fiercely contested — technically, commercially, and through public safety propaganda (Edison electrocutes animals to demonstrate AC danger).',
+        source: {
+          externalId: 'src:war-of-currents',
+          name: 'Jonnes J. Empires of Light: Edison, Tesla, Westinghouse, and the Race to Electrify the World. Random House, 2003.',
+          url: 'https://www.penguinrandomhouse.com/books/168076/empires-of-light-by-jill-jonnes/',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1893-05-01',
+        datePrecision: 'DAY',
+        reason: 'Westinghouse wins the contract to illuminate the 1893 Chicago World\'s Fair with AC power, decisively settling the War of Currents in favor of alternating current. The Edison system\'s role as the first commercial power station is settled historical fact; AC becomes the standard for long-distance transmission.',
+        source: {
+          externalId: 'src:chicago-worlds-fair-electric-1893',
+          name: 'Official Catalogue of the World\'s Columbian Exposition, 1893. Department of Electricity.',
+          url: 'https://www.loc.gov/item/2006687252/',
+          publishedAt: '1893-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+]
+
+// ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
+async function upsertTrajectory(t: Trajectory) {
+  const claim = await prisma.claim.upsert({
+    where: { externalId: t.externalId },
+    create: {
+      externalId: t.externalId,
+      text: t.text,
+      claimType: t.claimType,
+      claimEmergedAt: new Date(t.claimEmergedAt),
+      claimEmergedPrecision: t.claimEmergedPrecision,
+      epistemicAxis: t.currentAxis,
+      currentStatus: 'DISPUTED',
+      ingestedBy: 'seed:human-history-trajectories',
+      autoApproved: true,
+    },
+    update: {
+      text: t.text,
+      epistemicAxis: t.currentAxis,
+      claimType: t.claimType,
+      claimEmergedAt: new Date(t.claimEmergedAt),
+      claimEmergedPrecision: t.claimEmergedPrecision,
+    },
+  })
+
+  for (let i = 0; i < t.transitions.length; i++) {
+    const tr = t.transitions[i]
+
+    const source = await prisma.source.upsert({
+      where: { externalId: tr.source.externalId },
+      create: {
+        externalId: tr.source.externalId,
+        name: tr.source.name,
+        url: tr.source.url,
+        publishedAt: new Date(tr.source.publishedAt),
+        methodologyType: tr.source.methodologyType,
+        ingestedBy: 'seed:human-history-trajectories',
+      },
+      update: {
+        name: tr.source.name,
+        url: tr.source.url,
+        publishedAt: new Date(tr.source.publishedAt),
+      },
+    })
+
+    const histId = `csh:${t.externalId}:${i}`
+    await prisma.claimStatusHistory.upsert({
+      where: { id: histId },
+      create: {
+        id: histId,
+        claimId: claim.id,
+        fromAxis: tr.fromAxis ?? undefined,
+        toAxis: tr.toAxis,
+        community: tr.community,
+        occurredAt: new Date(tr.occurredAt),
+        datePrecision: tr.datePrecision,
+        reason: tr.reason,
+        sourceId: source.id,
+      },
+      update: {
+        fromAxis: tr.fromAxis ?? undefined,
+        toAxis: tr.toAxis,
+        community: tr.community,
+        occurredAt: new Date(tr.occurredAt),
+        datePrecision: tr.datePrecision,
+        reason: tr.reason,
+        sourceId: source.id,
+      },
+    })
+
+    const existingEdge = await prisma.edge.findFirst({ where: { claimId: claim.id, sourceId: source.id } })
+    if (!existingEdge) {
+      await prisma.edge.create({ data: { claimId: claim.id, sourceId: source.id, type: 'FOR' } })
+    }
+  }
+
+  console.log(`  ✓ ${t.externalId} (${t.transitions.length} transitions)`)
+}
+
+async function main() {
+  console.log(`Seeding ${TRAJECTORIES.length} human history trajectories${DRY_RUN ? ' [DRY RUN]' : ''}...`)
+
+  if (!DRY_RUN) {
+    for (const t of TRAJECTORIES) {
+      await upsertTrajectory(t)
+    }
+  } else {
+    for (const t of TRAJECTORIES) {
+      console.log(`  [dry] ${t.externalId} — ${t.transitions.length} transitions`)
+    }
+  }
+
+  console.log(`\nDone. ${TRAJECTORIES.length} trajectories seeded.`)
+  await prisma.$disconnect()
+}
+
+main().catch(e => { console.error(e); process.exit(1) })
