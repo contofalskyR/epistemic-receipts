@@ -13981,6 +13981,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Valentina Tereshkova — first woman in space ─────────────────────────────
+  {
+    externalId: 'trajectory:tereshkova-first-woman-space-1963',
+    text: 'Valentina Tereshkova became the first woman to fly in space aboard Vostok 6, launched on June 16, 1963.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-06-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-06-16',
+        datePrecision: 'DAY',
+        reason: 'Vostok 6 lifts off from Baikonur at 09:29 UTC with Tereshkova (call sign "Chaika") aboard. TASS announces the launch the same day, and Soviet radio broadcasts her communications. She orbits the Earth 48 times over nearly three days before landing on 19 June 1963.',
+        source: {
+          externalId: 'src:tass-vostok6-1963',
+          name: 'TASS communiqué on the flight of Vostok 6 (reprinted in Pravda, 17 June 1963); contemporaneous coverage, e.g. "Woman in Space: Soviet Orbits First," The New York Times, 17 June 1963.',
+          url: 'https://www.nytimes.com/1963/06/17/archives/soviet-orbits-woman-astronaut-she-and-male-colleague-aloft-soviet.html',
+          publishedAt: '1963-06-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-06-19',
+        datePrecision: 'DAY',
+        reason: 'Western tracking stations independently followed the Vostok 6 orbit, and Tereshkova landed near Karaganda on 19 June 1963. The flight is recorded in the FAI aeronautical register and corroborated by post-Soviet release of mission documentation; it remains an undisputed fact of spaceflight history.',
+        source: {
+          externalId: 'src:fai-vostok6-record',
+          name: 'Fédération Aéronautique Internationale (FAI) spaceflight records; NASA, "Valentina Tereshkova: First Woman in Space" history feature.',
+          url: 'https://www.nasa.gov/history/valentina-tereshkova-first-woman-in-space/',
+          publishedAt: '2023-06-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── March on Washington — "I Have a Dream" ──────────────────────────────────
+  {
+    externalId: 'trajectory:march-on-washington-1963',
+    text: 'On August 28, 1963, roughly a quarter of a million people gathered at the March on Washington for Jobs and Freedom, where Martin Luther King Jr. delivered his "I Have a Dream" speech at the Lincoln Memorial.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1963-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-08-28',
+        datePrecision: 'DAY',
+        reason: 'The march proceeds from the Washington Monument to the Lincoln Memorial; King delivers his address before an audience estimated at about 250,000. The event is broadcast live on national television and radio, and film and audio recordings of the speech are made on the day.',
+        source: {
+          externalId: 'src:march-washington-nyt-1963',
+          name: '"200,000 March for Civil Rights in Orderly Washington Rally," The New York Times, 29 August 1963.',
+          url: 'https://www.nytimes.com/1963/08/29/archives/200000-march-for-civil-rights-in-orderly-washington-rally-president.html',
+          publishedAt: '1963-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The contemporaneous film, audio and photographic record is preserved by the National Archives and the Library of Congress; the speech recording was added to the National Recording Registry in 2002–2003. The occurrence, scale, and content of the event are established and undisputed across the historical record.',
+        source: {
+          externalId: 'src:loc-i-have-a-dream-registry',
+          name: 'Library of Congress, National Recording Registry — "I Have a Dream" (Martin Luther King Jr., 1963); National Archives records of the March on Washington.',
+          url: 'https://www.loc.gov/static/programs/national-recording-preservation-board/documents/IHaveaDream.pdf',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kent State shootings ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:kent-state-shootings-1970',
+    text: 'On May 4, 1970, members of the Ohio National Guard fired on students protesting the Vietnam War at Kent State University, killing four and wounding nine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-05-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1970-05-04',
+        datePrecision: 'DAY',
+        reason: 'Guardsmen open fire on the Kent State commons, killing Allison Krause, Jeffrey Miller, Sandra Scheuer, and William Schroeder. The shootings are photographed (John Filo\'s Pulitzer-winning image) and reported nationally the same day.',
+        source: {
+          externalId: 'src:kent-state-nyt-1970',
+          name: '"4 Kent State Students Killed by Troops," The New York Times, 5 May 1970.',
+          url: 'https://www.nytimes.com/1970/05/05/archives/4-kent-state-students-killed-by-troops-8-hurt-as-shooting-follows.html',
+          publishedAt: '1970-05-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-05-04',
+        datePrecision: 'DAY',
+        reason: 'In the immediate aftermath, the Ohio National Guard and some officials asserted that Guardsmen fired in response to sniper fire or a direct threat to their lives. No evidence of a sniper was ever produced, leaving the justification for the firing in dispute.',
+        source: {
+          externalId: 'src:kent-state-guard-statement-1970',
+          name: 'Contemporaneous Ohio National Guard / Adjutant General statements as reported in the national press, 4–5 May 1970.',
+          url: 'https://www.britannica.com/event/Kent-State-shootings',
+          publishedAt: '1970-05-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-09-26',
+        datePrecision: 'DAY',
+        reason: 'The President\'s Commission on Campus Unrest (the Scranton Commission) reported in September 1970 that the shootings were "unnecessary, unwarranted, and inexcusable," finding no evidence to support the sniper claim. The factual occurrence — four students killed by Guard rifle fire — is settled, documented in the federal report and subsequent litigation.',
+        source: {
+          externalId: 'src:scranton-commission-1970',
+          name: 'Report of the President\'s Commission on Campus Unrest (Scranton Commission). Washington, DC: U.S. Government Printing Office, 26 September 1970.',
+          url: 'https://en.wikipedia.org/wiki/President%27s_Commission_on_Campus_Unrest',
+          publishedAt: '1970-09-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cohen–Boyer recombinant DNA ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:cohen-boyer-recombinant-dna-1973',
+    text: 'Stanley Cohen, Herbert Boyer, and colleagues constructed the first biologically functional recombinant DNA — plasmids assembled in vitro and replicated in E. coli — reported in PNAS in November 1973.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Cohen, Chang, Boyer, and Helling publish "Construction of biologically functional bacterial plasmids in vitro," showing that restriction-cut DNA fragments from different sources can be joined and made to replicate as functional plasmids in E. coli — the first practical gene-cloning method.',
+        source: {
+          externalId: 'src:cohen-boyer-pnas-1973',
+          name: 'Cohen SN, Chang ACY, Boyer HW, Helling RB. Construction of biologically functional bacterial plasmids in vitro. PNAS 1973;70(11):3240–3244.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.70.11.3240',
+          publishedAt: '1973-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-12-02',
+        datePrecision: 'DAY',
+        reason: 'The technique was rapidly and widely reproduced, became the foundation of the biotechnology industry, and underpinned the first recombinant pharmaceuticals (e.g., recombinant insulin). The U.S. patent on the Cohen–Boyer method issued 2 December 1980, formalizing its recognized priority and utility.',
+        source: {
+          externalId: 'src:cohen-boyer-patent-1980',
+          name: 'U.S. Patent 4,237,224, "Process for producing biologically functional molecular chimeras" (Cohen & Boyer), issued 2 December 1980.',
+          url: 'https://patents.google.com/patent/US4237224A/en',
+          publishedAt: '1980-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Engelbart "Mother of All Demos" ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:engelbart-mother-of-all-demos-1968',
+    text: 'On December 9, 1968, Douglas Engelbart publicly demonstrated the oN-Line System (NLS) — the computer mouse, hypertext, windows, and real-time video collaboration — at the Fall Joint Computer Conference in San Francisco.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-12-09',
+        datePrecision: 'DAY',
+        reason: 'Engelbart, of SRI\'s Augmentation Research Center, gives a 90-minute live demonstration of interactive computing before about a thousand attendees. The session is filmed in its entirety and accompanied by the conference paper "A Research Center for Augmenting Human Intellect."',
+        source: {
+          externalId: 'src:engelbart-1968-demo-paper',
+          name: 'Engelbart DC, English WK. A Research Center for Augmenting Human Intellect. AFIPS Fall Joint Computer Conference Proceedings, vol. 33, pp. 395–410 (9 December 1968).',
+          url: 'https://dl.acm.org/doi/10.1145/1476589.1476645',
+          publishedAt: '1968-12-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The demonstration\'s technologies — the mouse, hypertext linking, on-screen windows, and networked collaborative editing — became foundational to personal and networked computing. The original film is preserved by the Stanford and Computer History Museum archives, and the event is firmly established in the historical record as the "Mother of All Demos."',
+        source: {
+          externalId: 'src:engelbart-demo-archive',
+          name: 'Stanford University / Doug Engelbart Institute and Computer History Museum archival film and documentation of the 9 December 1968 demonstration.',
+          url: 'https://www.dougengelbart.org/content/view/209/448/',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
