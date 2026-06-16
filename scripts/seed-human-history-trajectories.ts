@@ -11741,6 +11741,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Halley's Comet returns as predicted ─────────────────────────────────────
+  {
+    externalId: 'trajectory:halley-comet-predicted-return-1758',
+    text: 'The comet of 1682 returned at the time Edmond Halley had predicted decades earlier, confirming that comets obey Newtonian gravitation and travel on closed periodic orbits.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1705-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1705-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In his Astronomiae Cometicae Synopsis, Edmond Halley applies Newton\'s law of gravitation to historical comet observations, identifies the comets of 1531, 1607, and 1682 as a single periodic object, and predicts its return around 1758. The prediction is a falsifiable test of Newtonian mechanics applied to comets; Halley, who died in 1742, does not live to see it.',
+        source: {
+          externalId: 'src:halley-synopsis-cometicae-1705',
+          name: 'Halley E. A Synopsis of the Astronomy of Comets (Astronomiae Cometicae Synopsis). Philosophical Transactions of the Royal Society, 1705.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1704.0064',
+          publishedAt: '1705-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1758-11-14',
+        datePrecision: 'DAY',
+        reason: 'Alexis Clairaut, with Joseph-Jérôme Lalande and Nicole-Reine Lepaute, refines Halley\'s prediction by computing the perturbing effects of Jupiter and Saturn, announcing to the Académie des Sciences on 14 November 1758 that perihelion would occur in April 1759 (within about a month). The refined calculation sharpens the test before the comet is recovered.',
+        source: {
+          externalId: 'src:clairaut-comet-prediction-1758',
+          name: 'Clairaut A.-C. Mémoire sur la comète de 1682, presented to the Académie royale des sciences, 14 November 1758.',
+          url: 'https://www.biodiversitylibrary.org/bibliography/3216',
+          publishedAt: '1758-11-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1758-12-25',
+        datePrecision: 'DAY',
+        reason: 'The German amateur astronomer Johann Georg Palitzsch recovers the comet on 25 December 1758, and it reaches perihelion on 13 March 1759 — within the predicted window. The return, after Halley\'s death, confirms that comets are gravitationally bound members of the Solar System and stands as a landmark vindication of Newtonian mechanics. The object is named Halley\'s Comet.',
+        source: {
+          externalId: 'src:messier-comet-1759-observations',
+          name: 'Messier C. Observations of the comet of 1759 (Halley); recovery reported by Palitzsch 25 December 1758. Mémoires de l\'Académie royale des sciences.',
+          url: 'https://articles.adsabs.harvard.edu/full/1910Obs....33..414.',
+          publishedAt: '1759-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Foucault's pendulum demonstrates Earth's rotation ───────────────────────
+  {
+    externalId: 'trajectory:foucault-pendulum-1851',
+    text: 'Léon Foucault demonstrated the rotation of the Earth directly and mechanically in 1851, using a long free-swinging pendulum whose plane of oscillation slowly rotates relative to the ground.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1851-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1851-02-03',
+        datePrecision: 'DAY',
+        reason: 'Léon Foucault first demonstrates his pendulum in the Meridian Room of the Paris Observatory and reports it to the Académie des Sciences on 3 February 1851. A heavy bob on a long wire swings freely; the gradual clockwise rotation of its swing plane provides the first direct, terrestrial, non-astronomical proof that the Earth itself rotates.',
+        source: {
+          externalId: 'src:foucault-comptes-rendus-1851',
+          name: 'Foucault L. Démonstration physique du mouvement de rotation de la terre au moyen du pendule. Comptes rendus de l\'Académie des sciences, vol. 32, 3 February 1851.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k29812',
+          publishedAt: '1851-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1851-03-31',
+        datePrecision: 'DAY',
+        reason: 'Foucault repeats the experiment publicly under the dome of the Panthéon in Paris in late March 1851 with a 67-metre wire and a 28-kg bob, where crowds watch the swing plane visibly precess. The demonstration is rapidly reproduced in observatories and public buildings across Europe and America, settling the rotation of the Earth as something anyone could observe.',
+        source: {
+          externalId: 'src:foucault-pantheon-1851',
+          name: 'Foucault\'s pendulum experiment at the Panthéon, March 1851 — described in Tobin W., The Life and Science of Léon Foucault (Cambridge University Press, 2003).',
+          url: 'https://www.cambridge.org/9780521808552',
+          publishedAt: '1851-03-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Neanderthal recognized as an ancient human ──────────────────────────────
+  {
+    externalId: 'trajectory:neanderthal-discovery-1856',
+    text: 'Bones found in the Neander Valley near Düsseldorf in August 1856 belonged to an extinct archaic form of human, Homo neanderthalensis — not to a diseased or deformed modern person.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1856-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1857-02-04',
+        datePrecision: 'DAY',
+        reason: 'Quarrymen clearing the Kleine Feldhofer Grotte in the Neander Valley uncover a skullcap and limb bones in August 1856. The schoolteacher Johann Carl Fuhlrott recognizes their antiquity and brings them to the anatomist Hermann Schaaffhausen, who presents them to the Niederrheinische Gesellschaft in Bonn on 4 February 1857 as the remains of an ancient, primitive human race.',
+        source: {
+          externalId: 'src:schaaffhausen-neanderthal-1857',
+          name: 'Schaaffhausen H. Zur Kenntniss der ältesten Rassenschädel. Müller\'s Archiv für Anatomie, Physiologie und wissenschaftliche Medicin, 1858 (presented 4 February 1857).',
+          url: 'https://www.biodiversitylibrary.org/bibliography/51361',
+          publishedAt: '1858-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1872-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The interpretation is fiercely disputed. The pathologist Rudolf Virchow argues the bowed bones are those of a modern human deformed by rickets and arthritis, not an ancient species; others attribute them to a diseased "idiot" or a Cossack soldier. Against this, William King in 1864 formally names the specimen Homo neanderthalensis, a distinct extinct species.',
+        source: {
+          externalId: 'src:king-homo-neanderthalensis-1864',
+          name: 'King W. The Reputed Fossil Man of the Neanderthal. Quarterly Journal of Science, vol. 1, 1864 (proposes the name Homo neanderthalensis).',
+          url: 'https://www.biodiversitylibrary.org/item/52050',
+          publishedAt: '1864-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1886-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The discovery of two well-preserved Neanderthal skeletons at Spy in Belgium in 1886, in clear association with extinct Ice Age fauna and Palaeolithic tools, makes the pathology hypothesis untenable: identical anatomy could not recur as disease in multiple individuals. Neanderthals are accepted as a genuine extinct human form — confirmed in the 21st century by sequencing of the Neanderthal genome.',
+        source: {
+          externalId: 'src:spy-neanderthals-1886',
+          name: 'Fraipont J., Lohest M. La race humaine de Néanderthal ou de Canstadt en Belgique (the Spy skeletons). Archives de Biologie, 1887.',
+          url: 'https://www.biodiversitylibrary.org/bibliography/8088',
+          publishedAt: '1887-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Carrington Event links the Sun to terrestrial magnetism ─────────────
+  {
+    externalId: 'trajectory:carrington-event-1859',
+    text: 'A white-light solar flare observed on September 1, 1859 was followed within hours by a global geomagnetic storm — auroras visible near the equator and telegraph systems disrupted — establishing that solar activity directly affects the Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1859-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-09-01',
+        datePrecision: 'DAY',
+        reason: 'On the morning of 1 September 1859 the English astronomers Richard Carrington and, independently, Richard Hodgson witness an intense, brief brightening of white light over a sunspot group — the first recorded observation of a solar flare. About seventeen hours later one of the most intense geomagnetic storms on record begins: auroras are seen as far south as the Caribbean and telegraph operators report sparks, shocks, and lines operating without batteries.',
+        source: {
+          externalId: 'src:carrington-flare-mnras-1859',
+          name: 'Carrington R.C. Description of a Singular Appearance seen in the Sun on September 1, 1859. Monthly Notices of the Royal Astronomical Society, vol. 20, 1859.',
+          url: 'https://articles.adsabs.harvard.edu/full/1859MNRAS..20...13C',
+          publishedAt: '1859-11-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1892-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Whether the Sun could physically cause terrestrial magnetic storms is disputed for decades. Carrington himself cautioned against assuming the flare and the storm were causally linked, and the eminent physicist Lord Kelvin argued on energetic grounds that the Sun could not plausibly drive Earth\'s magnetic disturbances, treating the coincidence as unproven.',
+        source: {
+          externalId: 'src:kelvin-solar-magnetism-1892',
+          name: 'Thomson W. (Lord Kelvin). Presidential Address, Royal Society — on the supposed connexion between sunspots and terrestrial magnetism, 1892.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rspl.1892.0089',
+          publishedAt: '1892-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Twentieth-century space physics confirms the mechanism: solar flares and coronal mass ejections hurl charged particles that strike Earth\'s magnetosphere and drive geomagnetic storms. The 1859 event is reconstructed from ice-core nitrate and historical magnetograms as the most extreme space-weather event on record, and "the Carrington Event" becomes the benchmark scenario for solar-terrestrial impact.',
+        source: {
+          externalId: 'src:tsurutani-carrington-event-2003',
+          name: 'Tsurutani B.T. et al. The extreme magnetic storm of 1–2 September 1859. Journal of Geophysical Research (Space Physics), vol. 108, 2003.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2002JA009504',
+          publishedAt: '2003-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Helium found in the Sun before it was found on Earth ────────────────────
+  {
+    externalId: 'trajectory:helium-discovered-in-sun-1868',
+    text: 'A spectral line observed in the Sun during the eclipse of August 18, 1868 came from a new chemical element, helium, which was not isolated on Earth until 1895.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1868-08-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1868-08-18',
+        datePrecision: 'DAY',
+        reason: 'During the total solar eclipse of 18 August 1868, observed from India, Pierre Janssen records a bright yellow emission line (later designated D3) in the spectrum of the solar prominences. Norman Lockyer observes the same line without an eclipse in October 1868; both observations reach the Académie des Sciences at nearly the same time and a commemorative medal is later struck honouring both men.',
+        source: {
+          externalId: 'src:janssen-eclipse-spectrum-1868',
+          name: 'Janssen P.J.C. Indication de quelques-uns des résultats obtenus à Guntoor, pendant l\'éclipse du mois d\'août dernier. Comptes rendus de l\'Académie des sciences, vol. 67, 1868.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k3018b',
+          publishedAt: '1868-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1871-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lockyer and Edward Frankland conclude the D3 line belongs to an element unknown on Earth and name it helium, after the Greek helios (Sun). The claim is treated with scepticism for over two decades: many chemists doubt that an element could be identified solely from a solar spectral line and never observed terrestrially, and helium appears in no laboratory.',
+        source: {
+          externalId: 'src:lockyer-helium-naming-1871',
+          name: 'Lockyer J.N., Frankland E. Spectroscopic observations of the Sun — proposal of the name "helium" for the D3 line. Proceedings of the Royal Society, c. 1871.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rspl.1869.0067',
+          publishedAt: '1871-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-03-26',
+        datePrecision: 'DAY',
+        reason: 'William Ramsay isolates a gas from the uranium mineral cleveite in March 1895 and finds its spectrum matches the solar D3 line exactly; Lockyer and William Crookes confirm the identification. Helium — first detected 150 million kilometres away in the Sun — is thereby proven to exist on Earth, vindicating spectroscopic identification of elements.',
+        source: {
+          externalId: 'src:ramsay-helium-terrestrial-1895',
+          name: 'Ramsay W. On a gas showing the spectrum of helium, the reputed cause of D3, one of the lines in the coronal spectrum. Proceedings of the Royal Society, vol. 58, 1895.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rspl.1895.0036',
+          publishedAt: '1895-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
