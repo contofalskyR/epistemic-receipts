@@ -13492,6 +13492,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First crewed free flight (Montgolfier balloon) ──────────────────────────
+  {
+    externalId: 'trajectory:montgolfier-first-crewed-flight-1783',
+    text: 'On 21 November 1783 Jean-François Pilâtre de Rozier and the Marquis d\'Arlandes made the first crewed free flight, ascending over Paris in a Montgolfier hot-air balloon from the Château de la Muette.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1783-11-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1783-11-21',
+        datePrecision: 'DAY',
+        reason: 'Lifting off from the garden of the Château de la Muette in the Bois de Boulogne at about 1:54 p.m., Pilâtre de Rozier and d\'Arlandes fly free for roughly 25 minutes, covering some 9 km and reaching about 3,000 feet before landing at the Butte-aux-Cailles. The ascent is made before King Louis XVI and a large public crowd; the U.S. envoy Benjamin Franklin is among the witnesses, and d\'Arlandes writes a first-hand account of the flight.',
+        source: {
+          externalId: 'src:darlandes-flight-account-1783',
+          name: 'Marquis d\'Arlandes. Contemporary letter-account of the 21 November 1783 free flight; recorded by the Académie des sciences and reported by witnesses including Benjamin Franklin.',
+          url: 'https://www.britannica.com/biography/Montgolfier-brothers',
+          publishedAt: '1783-11-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1784-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Académie royale des sciences appoints a commission (including Lavoisier and Franklin) to examine ballooning, and within weeks the feat is repeated — J.A.C. Charles and Nicolas-Louis Robert fly a hydrogen balloon on 1 December 1783. The reproducibility of human lighter-than-air flight settles it as an established fact of the age.',
+        source: {
+          externalId: 'src:montgolfier-first-flight-confirmation',
+          name: 'Smithsonian National Air and Space Museum. "Montgolfier Balloon" — the first human flights of November–December 1783 and the Académie\'s commission.',
+          url: 'https://www.si.edu/object/montgolfier-balloon:nasm_A19750721000',
+          publishedAt: '1784-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Haitian Declaration of Independence ─────────────────────────────────────
+  {
+    externalId: 'trajectory:haiti-independence-1804',
+    text: 'On 1 January 1804 Jean-Jacques Dessalines proclaimed the independence of Haiti at Gonaïves, establishing the first state founded by formerly enslaved people and the first to permanently abolish slavery.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1804-01-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1804-01-01',
+        datePrecision: 'DAY',
+        reason: 'Following the defeat of Napoleon\'s expeditionary force, Dessalines and the generals of the revolutionary army gather at Gonaïves and proclaim independence from France. The Acte de l\'Indépendance, drafted by Louis Boisrond-Tonnerre, renames the colony of Saint-Domingue "Haïti" and renounces French rule. The proclamation is published and circulated contemporaneously.',
+        source: {
+          externalId: 'src:haiti-acte-independance-1804',
+          name: 'Acte de l\'Indépendance d\'Haïti, proclaimed at Gonaïves, 1 January 1804 (drafted by Boisrond-Tonnerre); contemporary printed proclamation.',
+          url: 'https://en.wikipedia.org/wiki/Haitian_Declaration_of_Independence',
+          publishedAt: '1804-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1825-04-17',
+        datePrecision: 'DAY',
+        reason: 'France formally recognizes Haitian independence by the royal ordinance of Charles X, 17 April 1825, conditioned on a 150-million-franc indemnity to former colonists. Though coerced and ruinous, the ordinance settles the international-legal fact of Haiti as a sovereign state, a status thereafter recognized by other powers.',
+        source: {
+          externalId: 'src:charles-x-ordinance-haiti-1825',
+          name: 'Ordinance of King Charles X of France recognizing the independence of Haiti, 17 April 1825 (in exchange for a 150-million-franc indemnity).',
+          url: 'https://en.wikipedia.org/wiki/Independence_debt_of_Haiti',
+          publishedAt: '1825-04-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Public disclosure of the daguerreotype ──────────────────────────────────
+  {
+    externalId: 'trajectory:daguerreotype-disclosed-1839',
+    text: 'On 19 August 1839 François Arago disclosed the full working details of Louis Daguerre\'s photographic process to a joint session of the Académie des sciences and Académie des beaux-arts, after which the French government gave the daguerreotype "free to the world."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1839-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1839-08-19',
+        datePrecision: 'DAY',
+        reason: 'Astronomer and deputy François Arago, having first announced the invention to the Chambre des députés on 3 July 1839, presents the step-by-step daguerreotype process to a packed joint session of the Académie des sciences and Académie des beaux-arts. In exchange for a state pension to Daguerre, the French government publishes complete working instructions, releasing the process to the public without patent (except in England).',
+        source: {
+          externalId: 'src:arago-daguerreotype-report-1839',
+          name: 'Arago F. Rapport sur le daguerréotype, lu à la séance de la Chambre des députés le 3 juillet 1839 et à l\'Académie des sciences, séance du 19 août 1839. (Gallica/BnF)',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k1231630.texteImage',
+          publishedAt: '1839-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1839-10-01',
+        datePrecision: 'MONTH',
+        reason: 'With the published manual, daguerreotypists across Europe and America reproduce the process within weeks, and commercial portrait studios proliferate. The independent reproduction of permanent camera images by countless practitioners settles photography as an established practical art.',
+        source: {
+          externalId: 'src:daguerreotype-met-history',
+          name: 'The Metropolitan Museum of Art. "Daguerre (1787–1851) and the Invention of Photography" — the 19 August 1839 disclosure and rapid worldwide adoption.',
+          url: 'https://www.metmuseum.org/toah/hd/dagu/hd_dagu.htm',
+          publishedAt: '1839-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First transatlantic telegraph messages ──────────────────────────────────
+  {
+    externalId: 'trajectory:transatlantic-cable-1858',
+    text: 'On 16 August 1858 the first transatlantic telegraph messages were exchanged between Queen Victoria and President James Buchanan over the newly laid Atlantic cable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1858-08-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1858-08-16',
+        datePrecision: 'DAY',
+        reason: 'Queen Victoria transmits a 98-word message of congratulation to President Buchanan over the 1858 Atlantic cable; the transmission, slowed by the cable\'s poor signal, takes roughly 16 hours. The exchange is widely reported on both continents and triggers public celebrations in New York, demonstrating that intercontinental electrical communication is possible.',
+        source: {
+          externalId: 'src:victoria-buchanan-cable-1858',
+          name: 'Library of Congress. "First Transatlantic Telegraph Cable Sent" — Queen Victoria–Buchanan message of 16 August 1858 and contemporary press coverage.',
+          url: 'https://guides.loc.gov/this-month-in-business-history/august/first-transatlantic-telegraph-cable',
+          publishedAt: '1858-08-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1858-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Within weeks the cable degrades and falls silent — by early September 1858 it is effectively dead after about a month of fitful service. Faults in manufacture, laying damage, and Wildman Whitehouse\'s use of high-voltage instruments are blamed. A committee of inquiry is convened, and some sceptics question whether the celebrated messages had been genuine, throwing the achievement into doubt.',
+        source: {
+          externalId: 'src:atlantic-cable-1858-failure',
+          name: 'IEEE Spectrum. "The First Transatlantic Telegraph Cable Was a Bold, Beautiful Failure" — September 1858 breakdown and the committee of inquiry.',
+          url: 'https://spectrum.ieee.org/the-first-transatlantic-telegraph-cable-was-a-bold-beautiful-failure',
+          publishedAt: '1858-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1866-07-27',
+        datePrecision: 'DAY',
+        reason: 'A heavier, better-engineered cable laid by the Great Eastern enters permanent service on 27 July 1866 (and the lost 1865 cable is recovered and completed), establishing reliable, continuous transatlantic telegraphy. Durable commercial operation settles the fact that the Atlantic had been bridged electrically.',
+        source: {
+          externalId: 'src:atlantic-cable-1866-success',
+          name: 'Science Museum (UK). "How perseverance laid the first transatlantic telegraph cable" — the permanent 1866 cable laid by the Great Eastern.',
+          url: 'https://www.sciencemuseum.org.uk/objects-and-stories/how-perseverance-laid-first-transatlantic-telegraph-cable',
+          publishedAt: '1866-07-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pasteur's first human rabies vaccination ────────────────────────────────
+  {
+    externalId: 'trajectory:pasteur-rabies-vaccine-1885',
+    text: 'On 6 July 1885 Louis Pasteur began the first successful human rabies vaccination, treating nine-year-old Joseph Meister after he was bitten by a rabid dog.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1885-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1885-07-06',
+        datePrecision: 'DAY',
+        reason: 'Pasteur, with physicians Joseph Grancher and Alfred Vulpian, begins a course of injections of progressively more virulent dried rabbit spinal cord on Joseph Meister, bitten 14 times two days earlier. Over ten days Meister receives 13 injections; he never develops rabies and recovers fully — the first human protected post-exposure against the disease. The case is documented in Pasteur\'s laboratory records.',
+        source: {
+          externalId: 'src:pasteur-meister-rabies-1885',
+          name: 'Institut Pasteur. "The history of the first rabies vaccination in 1885" — Pasteur\'s treatment of Joseph Meister beginning 6 July 1885.',
+          url: 'https://www.pasteur.fr/en/research-journal/news/history-first-rabies-vaccination-1885',
+          publishedAt: '1885-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1886-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Pasteur presents his results to the Académie des sciences in early 1886, by which time hundreds of bite victims have been treated with sharply reduced mortality. The success leads to a public subscription and the founding of the Institut Pasteur (inaugurated 1888), settling post-exposure rabies vaccination as established medical practice.',
+        source: {
+          externalId: 'src:pasteur-rabies-academy-1886',
+          name: 'Institut Pasteur. "The final years 1877–1887" — Pasteur\'s 1886 report on rabies vaccination and the founding of the Institut Pasteur.',
+          url: 'https://www.pasteur.fr/en/institut-pasteur/history/troisieme-epoque-1877-1887',
+          publishedAt: '1886-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
