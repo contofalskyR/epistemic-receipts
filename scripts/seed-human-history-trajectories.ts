@@ -12304,6 +12304,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Salk polio vaccine declared safe, effective, and potent ──────────────────
+  {
+    externalId: 'trajectory:salk-polio-vaccine-1955',
+    text: 'On 12 April 1955 the results of the 1954 national field trial were announced at the University of Michigan, declaring Jonas Salk\'s inactivated poliovirus vaccine "safe, effective, and potent" against paralytic poliomyelitis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1955-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-04-12',
+        datePrecision: 'DAY',
+        reason: 'Thomas Francis Jr., director of the Poliomyelitis Vaccine Evaluation Center, announces at Rackham Auditorium in Ann Arbor the results of the 1954 field trial of roughly 1.8 million children — the largest medical experiment in history to that point. The vaccine is reported up to 80–90% effective against paralytic polio and pronounced "safe, effective, and potent." The federal government licenses it for use the same day.',
+        source: {
+          externalId: 'src:francis-1954-field-trial-report',
+          name: 'Francis T Jr. et al. Evaluation of the 1954 Field Trial of Poliomyelitis Vaccine: Final Report. (announced 12 April 1955; American Journal of Public Health, 1955)',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1622759/',
+          publishedAt: '1955-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1955-04-27',
+        datePrecision: 'DAY',
+        reason: 'Within two weeks, defective batches manufactured by Cutter Laboratories — containing incompletely inactivated live virus — cause some 40,000 cases of abortive polio, 200 cases of paralysis, and 10 deaths. The U.S. Surgeon General suspends the national immunization programme on 8 May 1955, throwing the safety of the vaccine into public doubt and triggering federal investigation.',
+        source: {
+          externalId: 'src:cutter-incident-1955',
+          name: 'Offit PA. The Cutter Incident: How America\'s First Polio Vaccine Led to the Growing Vaccine Crisis. Yale University Press, 2005; contemporaneous record of the April–May 1955 suspension.',
+          url: 'https://en.wikipedia.org/wiki/Cutter_Laboratories',
+          publishedAt: '1955-05-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Federal manufacturing standards are tightened and production resumes under stricter inactivation controls. Mass vaccination drives U.S. paralytic polio cases from roughly 58,000 in 1952 to under 6,000 in 1957 and about 3,000 by 1960, settling the efficacy and (with revised production) safety of inactivated polio vaccine as a public-health fact.',
+        source: {
+          externalId: 'src:cdc-polio-vaccine-history',
+          name: 'U.S. Centers for Disease Control and Prevention. History of Polio Vaccination and U.S. case incidence, 1952–1961.',
+          url: 'https://www.cdc.gov/polio/what-is-polio/polio-us.html',
+          publishedAt: '1961-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kilby builds the first integrated circuit ────────────────────────────────
+  {
+    externalId: 'trajectory:kilby-integrated-circuit-1958',
+    text: 'On 12 September 1958 Jack Kilby demonstrated the first working integrated circuit — a phase-shift oscillator built on a single slab of germanium — to executives at Texas Instruments.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-09-12',
+        datePrecision: 'DAY',
+        reason: 'At Texas Instruments, Jack Kilby connects a transistor, capacitor, and three resistors fabricated on one piece of germanium and shows the assembled circuit produces a continuous sine wave, proving that an entire electronic circuit can be integrated on a single semiconductor block. The demonstration is recorded in his laboratory notebook and witnessed by TI management; TI files a patent on 6 February 1959.',
+        source: {
+          externalId: 'src:kilby-ic-1958-notebook',
+          name: 'Kilby JS. Laboratory notebook and TI demonstration of the integrated circuit, 12 September 1958; recounted in IEEE Spectrum, "July 1958: Kilby Conceives the Integrated Circuit."',
+          url: 'https://spectrum.ieee.org/july-1958-kilby-conceives-the-integrated-circuit',
+          publishedAt: '1958-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1959-07-30',
+        datePrecision: 'DAY',
+        reason: 'Robert Noyce at Fairchild Semiconductor independently devises a monolithic integrated circuit using the planar process and silicon interconnections and files his own patent on 30 July 1959. The competing claims trigger a decade-long priority dispute: the U.S. Patent Office\'s Board of Patent Interferences and the Court of Customs and Patent Appeals reach opposite conclusions on who invented the integrated circuit.',
+        source: {
+          externalId: 'src:noyce-monolithic-ic-1959',
+          name: 'Computer History Museum. "1959: Practical Monolithic Integrated Circuit Concept Patented" (Noyce/Fairchild patent and the Kilby–Noyce priority dispute).',
+          url: 'https://www.computerhistory.org/siliconengine/practical-monolithic-integrated-circuit-concept-patented/',
+          publishedAt: '1959-07-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'TI and Fairchild settle with a cross-licensing agreement in the summer of 1966, and the courts ultimately credit Kilby with the idea of the integrated circuit while awarding Noyce the patent for the practical interconnection process. The two are thereafter recognized as co-inventors, settling the historical record of the invention.',
+        source: {
+          externalId: 'src:kilby-noyce-coinventors',
+          name: 'Britannica. "Jack Kilby" — cross-license settlement (1966) and the courts\' division of credit between Kilby and Noyce.',
+          url: 'https://www.britannica.com/biography/Jack-Kilby',
+          publishedAt: '1970-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-12-10',
+        datePrecision: 'DAY',
+        reason: 'Jack Kilby is awarded the Nobel Prize in Physics "for his part in the invention of the integrated circuit," formally enshrining the 1958 demonstration in the scientific record. Noyce, who died in 1990, was ineligible; the citation explicitly acknowledges the shared invention.',
+        source: {
+          externalId: 'src:kilby-nobel-physics-2000',
+          name: 'The Nobel Prize in Physics 2000 — Jack S. Kilby, "for his part in the invention of the integrated circuit."',
+          url: 'https://www.nobelprize.org/prizes/physics/2000/kilby/facts/',
+          publishedAt: '2000-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Penzias & Wilson detect the cosmic microwave background ───────────────────
+  {
+    externalId: 'trajectory:cmb-penzias-wilson-1965',
+    text: 'In 1965 Arno Penzias and Robert Wilson reported an unexplained, isotropic ~3.5 K microwave excess detected with the Holmdel horn antenna, identified in a companion paper as relic radiation from a hot early universe — the cosmic microwave background.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-07-01',
+        datePrecision: 'MONTH',
+        reason: 'After eliminating every instrumental and terrestrial source — including pigeons and their droppings in the 20-foot horn antenna at Bell Labs, Holmdel — Penzias and Wilson publish "A Measurement of Excess Antenna Temperature at 4080 Mc/s" reporting an isotropic, unpolarized signal of about 3.5 K. A back-to-back paper by Dicke, Peebles, Roll, and Wilkinson interprets it as cooled blackbody radiation left over from a hot, dense early universe.',
+        source: {
+          externalId: 'src:penzias-wilson-1965-apj',
+          name: 'Penzias AA, Wilson RW. A Measurement of Excess Antenna Temperature at 4080 Mc/s. The Astrophysical Journal 1965;142:419–421.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1965ApJ...142..419P/abstract',
+          publishedAt: '1965-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-10-17',
+        datePrecision: 'DAY',
+        reason: 'Through the 1960s and 1970s the microwave background is widely accepted as decisive evidence for the hot Big Bang over the rival steady-state cosmology. Penzias and Wilson are awarded the 1978 Nobel Prize in Physics for the discovery, ratifying it as a settled empirical foundation of modern cosmology.',
+        source: {
+          externalId: 'src:penzias-wilson-nobel-1978',
+          name: 'The Nobel Prize in Physics 1978 — Arno A. Penzias and Robert W. Wilson, "for their discovery of cosmic microwave background radiation."',
+          url: 'https://www.nobelprize.org/prizes/physics/1978/summary/',
+          publishedAt: '1978-10-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'NASA\'s COBE satellite, using the FIRAS instrument, measures the background\'s spectrum as a near-perfect blackbody at 2.725 K with no detectable deviation, confirming its cosmological origin to extraordinary precision and earning Mather and Smoot the 2006 Nobel Prize. The relic-radiation interpretation is thereby placed beyond serious doubt.',
+        source: {
+          externalId: 'src:cobe-firas-blackbody-1990',
+          name: 'Mather JC et al. A Preliminary Measurement of the Cosmic Microwave Background Spectrum by the COBE Satellite. The Astrophysical Journal Letters 1990;354:L37–L40.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1990ApJ...354L..37M/abstract',
+          publishedAt: '1990-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mariner 4 returns the first close-up images of Mars ───────────────────────
+  {
+    externalId: 'trajectory:mariner-4-mars-flyby-1965',
+    text: 'On 14–15 July 1965 NASA\'s Mariner 4 made the first flyby of Mars and returned the first close-up photographs of another planet, revealing a heavily cratered, Moon-like surface with no canals and a thin atmosphere.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-07-15',
+        datePrecision: 'DAY',
+        reason: 'After an eight-month cruise, Mariner 4 passes within about 9,850 km of Mars and records 21 complete television images plus part of a 22nd, transmitted back over the following days. The pictures show a barren, heavily cratered terrain resembling the Moon; an S-band occultation experiment measures a surface atmospheric pressure of only ~4.1–7 mbar. No trace of the linear "canals" mapped by Percival Lowell appears.',
+        source: {
+          externalId: 'src:mariner-4-nssdc',
+          name: 'NASA Space Science Data Coordinated Archive. Mariner 4 (1964-077A) — mission and imaging results, July 1965.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1964-077A',
+          publishedAt: '1965-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mariner 4\'s findings — a cratered surface, a thin carbon-dioxide atmosphere, and no canals — overturn the long-popular Lowellian picture of an inhabited, canal-laced Mars. The Mariner 6 and 7 flybys (1969) and Mariner 9\'s global mapping from orbit (1971–72) corroborate and extend the cratered-planet result, settling the modern understanding of the Martian surface.',
+        source: {
+          externalId: 'src:mariner-9-mars-mapping',
+          name: 'NASA. Mariner 9 mission — first global mapping of Mars from orbit, 1971–1972, confirming and extending the Mariner 4 results.',
+          url: 'https://science.nasa.gov/mission/mariner-program/',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Stonewall uprising ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:stonewall-uprising-1969',
+    text: 'A police raid on the Stonewall Inn in Greenwich Village, New York, in the early hours of 28 June 1969 was met with sustained resistance from patrons and bystanders, sparking several nights of demonstrations that became the catalyst for the modern LGBT rights movement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1969-06-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1969-06-28',
+        datePrecision: 'DAY',
+        reason: 'New York City police raid the Mafia-run Stonewall Inn around 1:20 a.m. on 28 June 1969. Instead of dispersing, the crowd of patrons and neighbourhood onlookers resists arrest, and clashes with police continue over several nights. The events are reported contemporaneously by The New York Times ("4 Policemen Hurt in \'Village\' Raid," 29 June 1969) and in two Village Voice eyewitness accounts of 3 July 1969.',
+        source: {
+          externalId: 'src:village-voice-stonewall-1969',
+          name: 'Truscott L IV; Smith H. Eyewitness accounts of the Stonewall riots, The Village Voice, 3 July 1969.',
+          url: 'https://en.wikipedia.org/wiki/Stonewall_riots',
+          publishedAt: '1969-07-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1970-06-28',
+        datePrecision: 'DAY',
+        reason: 'On the first anniversary, 28 June 1970, the Christopher Street Liberation Day marches in New York, and parallel marches in Los Angeles and Chicago, commemorate the uprising — establishing it in public memory as the founding event of the modern gay liberation movement and inaugurating the annual Pride tradition.',
+        source: {
+          externalId: 'src:christopher-street-liberation-day-1970',
+          name: 'Christopher Street Liberation Day, New York City, 28 June 1970 — the first Pride march commemorating the Stonewall uprising.',
+          url: 'https://en.wikipedia.org/wiki/Christopher_Street_Liberation_Day',
+          publishedAt: '1970-06-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-06-24',
+        datePrecision: 'DAY',
+        reason: 'President Barack Obama designates the Stonewall National Monument — the first unit of the U.S. National Park System dedicated to LGBT history — formally recognizing the 1969 uprising as a landmark of American civil-rights history.',
+        source: {
+          externalId: 'src:stonewall-national-monument-2016',
+          name: 'U.S. National Park Service. Stonewall National Monument, established by Presidential Proclamation 24 June 2016.',
+          url: 'https://www.nps.gov/ston/index.htm',
+          publishedAt: '2016-06-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
