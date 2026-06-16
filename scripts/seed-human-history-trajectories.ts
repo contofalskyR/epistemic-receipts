@@ -19805,6 +19805,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): genomics, paleoanthropology, finance, astronomy — batch 3
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Denisovans identified from DNA alone (Siberia) ──────────────────────────
+  {
+    externalId: 'trajectory:denisovan-hominin-identified-2010',
+    text: 'A previously unknown archaic human population, the Denisovans, was identified entirely from DNA extracted from a finger bone found in Denisova Cave, southern Siberia, and announced on 24 March 2010.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-03-24',
+        datePrecision: 'DAY',
+        reason: 'Krause, Pääbo and colleagues published the complete mitochondrial genome of an unknown hominin from a juvenile finger bone (specimen Denisova 3) excavated in 2008. The mtDNA differed from both modern humans and Neanderthals, implying a distinct lineage — the first time a human population was defined from genetics rather than diagnostic fossil morphology.',
+        source: {
+          externalId: 'src:krause-denisova-mtdna-2010',
+          name: 'Krause J, et al. "The complete mitochondrial DNA genome of an unknown hominin from southern Siberia." Nature 464, 894–897 (24 March 2010).',
+          url: 'https://www.nature.com/articles/nature08976',
+          publishedAt: '2010-03-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-12-22',
+        datePrecision: 'DAY',
+        reason: 'Reich, Pääbo and colleagues sequenced the nuclear genome of the same finger bone, confirming the Denisovans as a sister group to Neanderthals and showing that present-day Melanesians carry several percent Denisovan ancestry. Independent recovery of Denisovan DNA from additional Denisova Cave specimens and a Tibetan jawbone subsequently corroborated the population.',
+        source: {
+          externalId: 'src:reich-denisova-nuclear-genome-2010',
+          name: 'Reich D, et al. "Genetic history of an archaic hominin group from Denisova Cave in Siberia." Nature 468, 1053–1060 (22 December 2010).',
+          url: 'https://www.nature.com/articles/nature09710',
+          publishedAt: '2010-12-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Homo floresiensis discovered, Flores, Indonesia ─────────────────────────
+  {
+    externalId: 'trajectory:homo-floresiensis-discovery-2004',
+    text: 'A new small-bodied human species, Homo floresiensis (nicknamed "the Hobbit"), was reported from Liang Bua cave on Flores, Indonesia, on 28 October 2004.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-10-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-10-28',
+        datePrecision: 'DAY',
+        reason: 'An Indonesian–Australian team led by Peter Brown and Michael Morwood described a roughly one-metre-tall hominin skeleton (LB1) with a chimp-sized brain from Late Pleistocene deposits on Flores, naming it Homo floresiensis. The find was published in two back-to-back Nature papers.',
+        source: {
+          externalId: 'src:brown-floresiensis-nature-2004',
+          name: 'Brown P, et al. "A new small-bodied hominin from the Late Pleistocene of Flores, Indonesia." Nature 431, 1055–1061 (28 October 2004).',
+          url: 'https://www.nature.com/articles/nature02999',
+          publishedAt: '2004-10-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-05-19',
+        datePrecision: 'MONTH',
+        reason: 'Several researchers, led by Teuku Jacob and later others, argued LB1 was not a new species but a modern human with a pathology such as microcephaly or Down syndrome. Competing analyses of the skull and brain endocast were published, leaving the species status genuinely disputed for several years.',
+        source: {
+          externalId: 'src:martin-floresiensis-microcephaly-2006',
+          name: 'Martin RD, et al. "Comment on \'The Brain of LB1, Homo floresiensis\'." Science 312, 999 (19 May 2006); and related pathology critiques.',
+          url: 'https://www.science.org/doi/10.1126/science.1121144',
+          publishedAt: '2006-05-19',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-06-08',
+        datePrecision: 'DAY',
+        reason: 'Accumulating evidence — additional individuals from Liang Bua, statistical analyses of the wrist and foot bones, and the 2016 discovery of even older, similarly small hominin fossils at Mata Menge on Flores dated to ~700,000 years — established Homo floresiensis as a genuine endemic species rather than a pathological modern human.',
+        source: {
+          externalId: 'src:vandenbergh-matamenge-2016',
+          name: 'van den Bergh GD, et al. "Homo floresiensis-like fossils from the early Middle Pleistocene of Flores." Nature 534, 245–248 (8 June 2016).',
+          url: 'https://www.nature.com/articles/nature17999',
+          publishedAt: '2016-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Thailand floats the baht — onset of the Asian financial crisis ──────────
+  {
+    externalId: 'trajectory:thai-baht-float-1997',
+    text: 'On 2 July 1997 the Bank of Thailand abandoned the baht\'s peg to the US dollar and let the currency float, triggering the Asian financial crisis.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1997-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1997-07-02',
+        datePrecision: 'DAY',
+        reason: 'After months of speculative attacks that had drained its foreign reserves defending the peg, the Bank of Thailand announced a "managed float" of the baht on 2 July 1997. The currency immediately fell roughly 15–20% against the dollar, the public record of a deliberate policy reversal documented in the central bank\'s own statement.',
+        source: {
+          externalId: 'src:bot-baht-float-1997',
+          name: 'Bank of Thailand. Announcement of the managed-float exchange-rate system, 2 July 1997.',
+          url: 'https://www.bot.or.th/en/our-roles/special-measures/financial-crisis-1997.html',
+          publishedAt: '1997-07-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-08-20',
+        datePrecision: 'DAY',
+        reason: 'The IMF approved a US$17.2 billion rescue package for Thailand on 20 August 1997, formally documenting the collapse of the peg and its causes. Contagion spread to the Indonesian rupiah, Malaysian ringgit, Philippine peso and South Korean won, confirming the 2 July float as the crisis\'s starting point in the official record.',
+        source: {
+          externalId: 'src:imf-thailand-program-1997',
+          name: 'IMF. "IMF Approves Stand-by Credit for Thailand," Press Release No. 97/37, 20 August 1997.',
+          url: 'https://www.imf.org/en/News/Articles/2015/09/14/01/49/pr9737',
+          publishedAt: '1997-08-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pluto reclassified as a dwarf planet ────────────────────────────────────
+  {
+    externalId: 'trajectory:pluto-reclassified-dwarf-planet-2006',
+    text: 'On 24 August 2006 the International Astronomical Union adopted a formal definition of "planet" that reclassified Pluto as a dwarf planet, reducing the Solar System to eight planets.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1930-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-03-13',
+        datePrecision: 'DAY',
+        reason: 'Following Clyde Tombaugh\'s discovery of Pluto in February 1930, the Lowell Observatory announced it on 13 March 1930 and it was rapidly accepted as the ninth planet — a status that went essentially unchallenged in textbooks and almanacs for seven decades.',
+        source: {
+          externalId: 'src:lowell-pluto-announcement-1930',
+          name: 'Lowell Observatory. Announcement of the discovery of Pluto, 13 March 1930.',
+          url: 'https://lowell.edu/discover/clyde-tombaugh-and-the-discovery-of-pluto/',
+          publishedAt: '1930-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-07-29',
+        datePrecision: 'DAY',
+        reason: 'The discovery of Eris, announced on 29 July 2005 and initially estimated to be more massive than Pluto, forced the question of whether such trans-Neptunian objects were planets too. With several comparable Kuiper Belt objects known, Pluto\'s planetary status became actively disputed within the astronomical community.',
+        source: {
+          externalId: 'src:brown-eris-discovery-2005',
+          name: 'Brown ME, et al. "Discovery of a Planetary-sized Object in the Scattered Kuiper Belt." Astrophysical Journal Letters 635, L97 (announced 29 July 2005).',
+          url: 'https://iopscience.iop.org/article/10.1086/499336',
+          publishedAt: '2005-07-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-08-24',
+        datePrecision: 'DAY',
+        reason: 'At its General Assembly in Prague the IAU adopted Resolution B5, defining a "planet" as a body that has cleared the neighbourhood around its orbit. Pluto, which shares its zone with other Kuiper Belt objects, failed the test and was reclassified as a "dwarf planet," formally reversing its 76-year planetary status.',
+        source: {
+          externalId: 'src:iau-resolution-b5-2006',
+          name: 'International Astronomical Union. Resolution B5 "Definition of a Planet in the Solar System," Prague, 24 August 2006.',
+          url: 'https://www.iau.org/static/resolutions/Resolution_GA26-5-6.pdf',
+          publishedAt: '2006-08-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Water detected on the Moon by Chandrayaan-1 ─────────────────────────────
+  {
+    externalId: 'trajectory:chandrayaan-1-lunar-water-2009',
+    text: 'Instruments aboard India\'s Chandrayaan-1 lunar orbiter detected widespread water and hydroxyl molecules across the Moon\'s surface, reported on 24 September 2009.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-10-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-22',
+        datePrecision: 'DAY',
+        reason: 'ISRO launched Chandrayaan-1, India\'s first lunar mission, on 22 October 2008, carrying NASA\'s Moon Mineralogy Mapper (M3) among its instruments. Whether the Moon\'s surface held water — long assumed bone-dry apart from possible polar ice — was an open question.',
+        source: {
+          externalId: 'src:isro-chandrayaan1-launch-2008',
+          name: 'ISRO. Chandrayaan-1 launch, 22 October 2008.',
+          url: 'https://www.isro.gov.in/Chandrayaan_1.html',
+          publishedAt: '2008-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-09-24',
+        datePrecision: 'DAY',
+        reason: 'M3 spectra revealed a 3-micron absorption feature indicating water and hydroxyl across much of the lunar surface, published in Science alongside corroborating data from NASA\'s Cassini and Deep Impact spacecraft. The independent agreement of three instruments made the presence of surface water/OH a settled finding, overturning the long-held "dry Moon" view.',
+        source: {
+          externalId: 'src:pieters-m3-lunar-water-2009',
+          name: 'Pieters CM, et al. "Character and Spatial Distribution of OH/H2O on the Surface of the Moon Seen by M3 on Chandrayaan-1." Science 326, 568–572 (published online 24 September 2009).',
+          url: 'https://www.science.org/doi/10.1126/science.1178658',
+          publishedAt: '2009-09-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
