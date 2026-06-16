@@ -5155,6 +5155,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Halley's Comet 1066 apparition (Norman Conquest omen) ────────────────────
+  {
+    externalId: 'trajectory:halley-comet-1066-apparition',
+    text: 'A brilliant comet appeared in the skies over England and East Asia in late April 1066, recorded as an omen before the Norman Conquest and depicted in the Bayeux Tapestry — later identified as an apparition of the periodic comet 1P/Halley.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1066-04-24',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1066-04-24',
+        datePrecision: 'MONTH',
+        reason: 'A comet of extraordinary brightness becomes visible across England around the week after Easter 1066. The Anglo-Saxon Chronicle records that "throughout all England a sign such as men had never seen before was seen in the heavens" — a long-tailed star visible for many nights. Song dynasty court astronomers in China independently log its day-by-day path, and within a few years it is woven into the Bayeux Tapestry above a crowd of pointing men with the caption ISTI MIRANT STELLA ("these men marvel at the star").',
+        source: {
+          externalId: 'src:anglo-saxon-chronicle-1066-comet',
+          name: 'The Anglo-Saxon Chronicle, annal for 1066 (comet sighting). (contemporaneous monastic annals)',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1066-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1759-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Edmond Halley argued in 1705 that the comets of 1531, 1607 and 1682 were one returning body; its predicted return at the start of 1759 confirmed the periodicity. Backward orbital integration, aided by the dense Chinese positional records, ties the 1066 apparition to the same comet — fixing the Norman Conquest "star" as a return of 1P/Halley, a conclusion that has remained settled.',
+        source: {
+          externalId: 'src:kiang-halley-past-orbit-1066',
+          name: 'Kiang T. The past orbit of Halley\'s comet. Memoirs of the Royal Astronomical Society 1972;76:27–66 (identifies the 1066 return).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1972MmRAS..76...27K/abstract',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Manzikert — Byzantine collapse in Anatolia ─────────────────────
+  {
+    externalId: 'trajectory:battle-manzikert-1071',
+    text: 'The Seljuk Turks under Alp Arslan decisively defeated the Byzantine army and captured Emperor Romanos IV Diogenes at the Battle of Manzikert on 26 August 1071, opening Anatolia to Turkish settlement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1071-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1071-08-26',
+        datePrecision: 'DAY',
+        reason: 'Near the fortress of Manzikert (Malazgirt) the Byzantine field army is routed and Emperor Romanos IV Diogenes is taken prisoner — the first time a Roman/Byzantine emperor is captured in battle by a Muslim commander. The Byzantine historian Michael Attaleiates, attached to the campaign, records the defeat as a national catastrophe, and Seljuk and Arabic chroniclers record Alp Arslan\'s victory.',
+        source: {
+          externalId: 'src:attaleiates-history-manzikert',
+          name: 'Michael Attaleiates. History, account of the Manzikert campaign. (c. 1080, contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Manzikert',
+          publishedAt: '1080-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent traditions — Byzantine (Attaleiates, Bryennios, Skylitzes), Armenian, Syriac, and Arabic/Persian (Ibn al-Athir, Sibt ibn al-Jawzi) — agree on the date, the emperor\'s capture, and the outcome. Modern scholarship treats Manzikert as a fixed, securely dated turning point in the loss of Byzantine Anatolia, debating only its long-term significance, not the event itself.',
+        source: {
+          externalId: 'src:cahen-manzikert-scholarship',
+          name: 'Cahen C. and later Byzantinists. Standard scholarship on the Battle of Manzikert and its sources.',
+          url: 'https://www.britannica.com/event/Battle-of-Manzikert',
+          publishedAt: '1968-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jingkang Incident — fall of the Northern Song (Kaifeng) ──────────────────
+  {
+    externalId: 'trajectory:jingkang-incident-1127',
+    text: 'Jurchen forces of the Jin dynasty captured the Northern Song capital Bianjing (Kaifeng) in January 1127 and carried off the retired Emperor Huizong and the reigning Emperor Qinzong, ending the Northern Song — the Jingkang Incident.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1127-01-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1127-01-09',
+        datePrecision: 'MONTH',
+        reason: 'After a second siege the Jin army breaches and sacks Bianjing (Kaifeng), the most populous city of the era. On 20 March 1127 the Jin summon the two captured Song emperors to their camp and depose them; Huizong, Qinzong, and thousands of the imperial family, officials, and craftsmen are deported north. Court diarists and survivors record the catastrophe, which is entered into the Song veritable records of the Jingkang reign.',
+        source: {
+          externalId: 'src:songshi-jingkang-incident',
+          name: 'Songshi (History of Song) and Jingkang-era court records of the fall of Bianjing. (derived from contemporaneous Song court records)',
+          url: 'https://en.wikipedia.org/wiki/Jingkang_incident',
+          publishedAt: '1127-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1345-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Yuan-era compilation of the Songshi (completed 1345) and the parallel Jinshi independently document the capture of Kaifeng and the two emperors, corroborated by survivor memoirs. The date, the captives, and the dynastic transition to the Southern Song at Hangzhou are settled history, uncontested in modern sinology.',
+        source: {
+          externalId: 'src:songshi-jinshi-jingkang',
+          name: 'Songshi (1345) and Jinshi, official histories documenting the Jingkang Incident.',
+          url: 'https://www.britannica.com/event/Jingkang-Incident-1126-1127',
+          publishedAt: '1345-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Saladin captures Jerusalem from the Crusaders ────────────────────────────
+  {
+    externalId: 'trajectory:saladin-captures-jerusalem-1187',
+    text: 'Saladin\'s Ayyubid army captured Jerusalem from the Crusader Kingdom on 2 October 1187, ending 88 years of Latin Christian rule following his victory at the Battle of Hattin that July.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1187-10-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1187-10-02',
+        datePrecision: 'DAY',
+        reason: 'After annihilating the Crusader field army at Hattin on 4 July 1187, Saladin besieges Jerusalem; Balian of Ibelin negotiates the city\'s surrender, and it is handed over on 2 October 1187. Saladin\'s own secretary Imad ad-Din al-Isfahani and his biographer Baha al-Din ibn Shaddad record the capitulation as eyewitnesses, as do Latin continuations of William of Tyre — the date falling near the anniversary of the Prophet\'s Night Journey.',
+        source: {
+          externalId: 'src:imad-ad-din-jerusalem-1187',
+          name: 'Imad ad-Din al-Isfahani. Al-Fath al-qussi fi al-fath al-qudsi, account of the conquest of Jerusalem. (contemporary, c. 1190)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1187)',
+          publishedAt: '1190-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arabic (Ibn al-Athir, Baha al-Din, Imad ad-Din) and Latin (Ernoul, continuations of William of Tyre) sources independently confirm the surrender date and terms. The fall of Jerusalem — the immediate trigger of the Third Crusade — is a fixed, securely dated event in both Islamic and Crusader historiography.',
+        source: {
+          externalId: 'src:crusader-historiography-jerusalem-1187',
+          name: 'Standard Crusades scholarship (Runciman; Riley-Smith) on the 1187 surrender of Jerusalem.',
+          url: 'https://www.britannica.com/place/Jerusalem/The-Crusader-period',
+          publishedAt: '1898-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mongol Sack of Baghdad — end of the Abbasid Caliphate ────────────────────
+  {
+    externalId: 'trajectory:mongol-sack-baghdad-1258',
+    text: 'The Mongol army under Hulagu Khan captured and sacked Baghdad on 10 February 1258, executing the last Abbasid caliph al-Musta\'sim and destroying the city\'s libraries, ending five centuries of the Abbasid Caliphate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1258-02-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1258-02-10',
+        datePrecision: 'DAY',
+        reason: 'After a siege begun in late January, Baghdad surrenders to Hulagu\'s Mongols on 10 February 1258; the caliph al-Musta\'sim is captured and executed on 20 February, and the city is given over to days of slaughter and pillage in which its great libraries — heir to the House of Wisdom — are destroyed, books reportedly thrown into the Tigris. The Persian polymath Nasir al-Din al-Tusi, present in Hulagu\'s retinue, and Arabic chroniclers record the fall.',
+        source: {
+          externalId: 'src:rashid-al-din-baghdad-1258',
+          name: 'Rashid al-Din. Jami al-Tawarikh, account of Hulagu\'s capture of Baghdad. (c. 1307, drawing on eyewitness/Ilkhanid records)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Baghdad_(1258)',
+          publishedAt: '1258-02-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1258-02-20',
+        datePrecision: 'DAY',
+        reason: 'The execution of al-Musta\'sim ten days after the surrender extinguishes the Abbasid line in Baghdad, a fact recorded across hostile and friendly sources alike — Rashid al-Din, Ibn al-Tiqtaqa, the contemporary poet and observer accounts, and later Mamluk historians who installed a shadow caliphate in Cairo. The date and dynastic terminus are settled and uncontested in modern scholarship.',
+        source: {
+          externalId: 'src:abbasid-end-scholarship-1258',
+          name: 'Standard scholarship on the 1258 fall of Baghdad and the end of the Abbasid Caliphate.',
+          url: 'https://www.britannica.com/place/Baghdad/History',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
