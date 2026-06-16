@@ -14637,6 +14637,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — supplement
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Halley's Comet — 837 CE apparition (closest recorded approach) ───────────
+  {
+    externalId: 'trajectory:halley-comet-837-apparition',
+    text: 'A spectacular comet blazed across the spring sky of 837 CE, frightening the Frankish Emperor Louis the Pious and logged day-by-day by Tang court astronomers — later identified as the apparition of comet 1P/Halley that passed closer to Earth (about 0.033 AU on 10–11 April 837) than any other on record.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0837-04-10',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0837-04-10',
+        datePrecision: 'MONTH',
+        reason: 'A comet of extraordinary length and brightness becomes visible in April 837, its tail stretching across a large arc of sky during the comet\'s unusually close passage to Earth. In the Carolingian West the anonymous biographer known as "the Astronomer" records in the Vita Hludowici that Emperor Louis the Pious was terrified by the star and summoned a learned man to interpret the omen. Independently, Tang dynasty astronomers in China log the comet\'s daily position and changing tail direction in the imperial records, the most detailed positional account of any ancient apparition.',
+        source: {
+          externalId: 'src:astronomer-vita-hludowici-837-comet',
+          name: 'Anonymous ("the Astronomer"). Vita Hludowici Imperatoris, ch. 58 (comet of 837 and Louis the Pious). (contemporary Carolingian biography, c. 840)',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0840-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Backward orbital integration of comet 1P/Halley, anchored by the exceptionally dense Chinese positional records, ties the 837 apparition to the same periodic comet and fixes its perihelion in late February 837 and its near-Earth passage around 10–11 April 837 at roughly 0.033 AU — the closest documented approach of Halley to Earth. The identification is settled and the 837 records are used to refine the comet\'s long-term motion.',
+        source: {
+          externalId: 'src:kiang-halley-past-orbit-837',
+          name: 'Kiang T. The past orbit of Halley\'s comet. Memoirs of the Royal Astronomical Society 1972;76:27–66 (identifies and dates the 837 return).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1972MmRAS..76...27K/abstract',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Lechfeld — end of the Magyar invasions ─────────────────────────
+  {
+    externalId: 'trajectory:battle-of-lechfeld-955',
+    text: 'On 10 August 955 the East Frankish army of King Otto I crushed a large Magyar (Hungarian) raiding force on the Lechfeld near Augsburg, effectively ending the era of Magyar incursions into Western Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0955-08-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0955-08-10',
+        datePrecision: 'DAY',
+        reason: 'On the feast of Saint Lawrence (10 August), Otto I\'s combined army of Saxons, Bavarians, Swabians, Franconians and a Bohemian contingent defeats the Magyar host besieging Augsburg, whose defence under Bishop Ulrich is recorded by his contemporaries. The Magyar leaders are captured and executed in the aftermath. The Saxon historian Widukind of Corvey, writing within a generation, records the battle and its date as a decisive victory for the Christian Frankish realm.',
+        source: {
+          externalId: 'src:widukind-res-gestae-lechfeld',
+          name: 'Widukind of Corvey. Res gestae Saxonicae, Book III (Battle of the Lechfeld, 955). (contemporary, c. 967–973)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Lechfeld_(955)',
+          publishedAt: '0973-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent sources — Widukind\'s Res gestae Saxonicae, the near-contemporary Life of Saint Ulrich of Augsburg by Gerhard, and Frankish annals — agree on the date, location, and Magyar defeat. The cessation of large-scale Magyar raids after 955 and the subsequent settlement and Christianization of Hungary corroborate the battle\'s consequences. Modern scholarship treats Lechfeld as a securely dated turning point, debating troop numbers, not the event.',
+        source: {
+          externalId: 'src:lechfeld-scholarship',
+          name: 'Standard medieval scholarship on the Battle of the Lechfeld and its sources (Widukind, Gerhard\'s Vita Sancti Uodalrici).',
+          url: 'https://www.britannica.com/event/Battle-of-Lechfeld',
+          publishedAt: '1962-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Coronation of Otto I as Emperor — refounding of the Western Empire ────────
+  {
+    externalId: 'trajectory:otto-i-imperial-coronation-962',
+    text: 'On 2 February 962 Pope John XII crowned Otto I as Emperor in Rome, re-establishing a continuous Western imperial title that would endure as the Holy Roman Empire until 1806.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0962-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0962-02-02',
+        datePrecision: 'DAY',
+        reason: 'In St. Peter\'s Basilica on 2 February 962, Pope John XII anoints and crowns Otto I of East Francia as Emperor and his wife Adelaide as Empress. Days later (13 February) the Diploma Ottonianum regulates relations between emperor and papacy. The event is recorded by Liutprand of Cremona, a member of Otto\'s court present in Italy, and entered in Frankish and papal records.',
+        source: {
+          externalId: 'src:liutprand-historia-ottonis',
+          name: 'Liutprand of Cremona. Historia Ottonis / Antapodosis (coronation of Otto I, 962). (contemporary court chronicler)',
+          url: 'https://en.wikipedia.org/wiki/Otto_the_Great',
+          publishedAt: '0964-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The contemporary accounts of Liutprand and Widukind of Corvey, together with the surviving text of the Diploma Ottonianum and a continuous chain of imperial succession thereafter, fix the date and fact of the coronation. Historians treat 2 February 962 as the conventional refounding of the Western Empire (the Holy Roman Empire), with debate confined to its interpretation rather than its occurrence.',
+        source: {
+          externalId: 'src:hre-foundation-scholarship',
+          name: 'Standard scholarship on the imperial coronation of Otto I and the foundation of the Holy Roman Empire.',
+          url: 'https://www.britannica.com/biography/Otto-I-Holy-Roman-emperor',
+          publishedAt: '1962-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Hastings — the Norman Conquest of England ──────────────────────
+  {
+    externalId: 'trajectory:battle-of-hastings-1066',
+    text: 'On 14 October 1066 Duke William of Normandy defeated and killed King Harold Godwinson of England at the Battle of Hastings, beginning the Norman Conquest of England.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1066-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1066-10-14',
+        datePrecision: 'DAY',
+        reason: 'On a ridge near Hastings, William\'s Norman cavalry and archers break the Anglo-Saxon shield wall after a day-long battle; King Harold is killed on the field. The Anglo-Saxon Chronicle records the date and Harold\'s death, William of Poitiers (Duke William\'s chaplain) writes a near-contemporary account, and within roughly two decades the campaign is depicted in the Bayeux Tapestry, including Harold\'s death.',
+        source: {
+          externalId: 'src:anglo-saxon-chronicle-hastings-1066',
+          name: 'The Anglo-Saxon Chronicle, annal for 1066 (Battle of Hastings and death of Harold). (contemporaneous monastic annals)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hastings',
+          publishedAt: '1066-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1086-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent sources — the Anglo-Saxon Chronicle, William of Poitiers, William of Jumièges, the Bayeux Tapestry, and later Orderic Vitalis — agree on the date, location, and outcome. The Domesday Book of 1086 documents the wholesale transfer of English landholding to Norman lords, materially corroborating the Conquest. The battle and its date are settled, with scholarship debating tactics and casualty figures, not the event.',
+        source: {
+          externalId: 'src:william-poitiers-gesta-guillelmi',
+          name: 'William of Poitiers. Gesta Guillelmi (Deeds of William), account of the Battle of Hastings. (contemporary, c. 1071–1077)',
+          url: 'https://www.britannica.com/event/Battle-of-Hastings',
+          publishedAt: '1077-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Bouvines — consolidation of Capetian France ───────────────────
+  {
+    externalId: 'trajectory:battle-of-bouvines-1214',
+    text: 'On 27 July 1214 King Philip II Augustus of France defeated a coalition led by Emperor Otto IV and King John of England\'s allies at the Battle of Bouvines, securing the Capetian crown\'s expanded territories and reshaping the balance of power in Western Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1214-07-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1214-07-27',
+        datePrecision: 'DAY',
+        reason: 'On a Sunday in the plain of Bouvines in Flanders, Philip II\'s French army routs the larger imperial-Flemish-English coalition; Emperor Otto IV flees and several great nobles, including the Count of Flanders, are captured. Philip\'s chaplain William the Breton, an eyewitness, records the battle and its date in his Latin prose chronicle and his epic poem the Philippide.',
+        source: {
+          externalId: 'src:william-breton-philippide-bouvines',
+          name: 'William the Breton (Guillaume le Breton). Philippidos / Gesta Philippi Augusti (eyewitness account of the Battle of Bouvines, 1214). (contemporary royal chaplain)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Bouvines',
+          publishedAt: '1224-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-01-01',
+        datePrecision: 'YEAR',
+        reason: 'French, imperial, and English sources agree on the date, location, and French victory. The battle\'s consequences are documented in their own right: Otto IV\'s deposition cleared the way for Frederick II, and John\'s defeated position contributed to the baronial crisis that produced Magna Carta in 1215. Georges Duby\'s classic study Le dimanche de Bouvines (1973) established it as a fixed and richly documented turning point in modern historiography.',
+        source: {
+          externalId: 'src:duby-dimanche-bouvines',
+          name: 'Duby G. Le dimanche de Bouvines, 27 juillet 1214. Paris: Gallimard, 1973 (definitive study of the battle).',
+          url: 'https://www.britannica.com/event/Battle-of-Bouvines',
+          publishedAt: '1973-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
