@@ -46,11 +46,23 @@ interface Transition {
 interface TrajectoryListItem {
   id: string;
   claim: string;
+  era?: string;
   communities?: Community[];
   transitionCount?: number;
   hasReversal: boolean;
   hasAbandonment: boolean;
 }
+
+const ERA_ORDER = [
+  "Ancient & Classical",
+  "Medieval & Islamic Golden Age",
+  "Early Modern",
+  "Industrial & Colonial",
+  "WWI / WWII & Interwar",
+  "Cold War & Postwar",
+  "Modern",
+  "Unknown",
+];
 
 interface TrajectoryDetail {
   id: string;
@@ -362,39 +374,82 @@ function SettlingCurveInner() {
           </div>
         </div>
 
-        <p className="mb-6" style={{ color: C.mut, fontSize: 13.5, maxWidth: 640, lineHeight: 1.5 }}>
+        <p className="mb-4" style={{ color: C.mut, fontSize: 13.5, maxWidth: 640, lineHeight: 1.5 }}>
           How long does a claim take to settle? Each trajectory tracks one claim&apos;s dated,
           sourced status changes across five communities — expert literature, institutions,
-          courts, the public, and markets. Pick a claim:
+          courts, the public, and markets.
         </p>
 
-        <div className="flex gap-2 overflow-x-auto pb-3 mb-6" style={{ scrollbarWidth: "thin" }}>
-          {list.map((x) => {
-            const on = x.id === activeId;
-            const tag = x.hasReversal ? "↩ reversed" : x.hasAbandonment ? "✕ abandoned" : null;
+        {/* Audit panel */}
+        <div className="rounded-lg px-4 py-3 mb-6" style={{ background: "#0d0d1a", border: `1px solid ${C.panelEdge}` }}>
+          <div className="font-mono tracking-widest mb-2" style={{ fontSize: 10, color: C.brand }}>
+            AGENTIC LOOP — HOW THESE TRAJECTORIES ARE GENERATED
+          </div>
+          <p style={{ fontSize: 12.5, color: C.mut, lineHeight: 1.6, maxWidth: 720 }}>
+            Historical receipts are written autonomously by a continuously running AI loop. Each iteration selects one of seven historical eras, researches 3–5 claims meeting strict validity criteria — dateable to a specific day or month, backed by contemporaneous primary sources, representing a clear epistemic transition (OPEN → RECORDED → SETTLED → REVERSED, etc.) — then appends them to the seed script, runs the ingest, commits, and pushes to the repository. The loop cycles through eras to prevent clustering. Every trajectory links to its primary source. To audit: read{" "}
+            <a
+              href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/loop-settling-curve.sh"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: C.brand }}
+            >
+              loop-settling-curve.sh
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://github.com/contofalskyR/epistemic-receipts/blob/main/scripts/seed-human-history-trajectories.ts"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: C.brand }}
+            >
+              seed-human-history-trajectories.ts
+            </a>.
+          </p>
+        </div>
+
+        {/* Historical Receipts — grouped by era */}
+        <div className="font-mono tracking-widest mb-3" style={{ fontSize: 10, color: C.faint }}>
+          HISTORICAL RECEIPTS — {list.length} TRAJECTORIES
+        </div>
+        <div className="mb-6 space-y-4">
+          {ERA_ORDER.filter((era) => list.some((x) => (x.era ?? "Unknown") === era)).map((era) => {
+            const items = list.filter((x) => (x.era ?? "Unknown") === era);
             return (
-              <button
-                key={x.id}
-                onClick={() => reset(x.id)}
-                onKeyDown={(e) => e.key === "Enter" && reset(x.id)}
-                tabIndex={0}
-                role="button"
-                className="sc-anim shrink-0 px-3 py-2 rounded text-left transition-colors"
-                style={{
-                  background: on ? "#1a1a2b" : "transparent",
-                  border: `1px solid ${on ? C.brand : C.panelEdge}`,
-                  minWidth: 150,
-                }}
-              >
-                <div className="text-xs leading-snug" style={{ color: on ? C.ink : C.mut }}>
-                  {x.claim}
+              <div key={era}>
+                <div className="font-mono mb-2" style={{ fontSize: 10, color: C.mut, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  {era} <span style={{ color: C.faint }}>· {items.length}</span>
                 </div>
-                {tag && (
-                  <div className="font-mono mt-1" style={{ fontSize: 10, color: x.hasReversal ? STATUS.REVERSED.c : STATUS.ABANDONED.c }}>
-                    {tag}
-                  </div>
-                )}
-              </button>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((x) => {
+                    const on = x.id === activeId;
+                    const tag = x.hasReversal ? "↩ reversed" : x.hasAbandonment ? "✕ abandoned" : null;
+                    return (
+                      <button
+                        key={x.id}
+                        onClick={() => reset(x.id)}
+                        onKeyDown={(e) => e.key === "Enter" && reset(x.id)}
+                        tabIndex={0}
+                        role="button"
+                        className="sc-anim px-3 py-2 rounded text-left transition-colors"
+                        style={{
+                          background: on ? "#1a1a2b" : "transparent",
+                          border: `1px solid ${on ? C.brand : C.panelEdge}`,
+                          maxWidth: 280,
+                        }}
+                      >
+                        <div className="text-xs leading-snug" style={{ color: on ? C.ink : C.mut }}>
+                          {x.claim}
+                        </div>
+                        {tag && (
+                          <div className="font-mono mt-1" style={{ fontSize: 10, color: x.hasReversal ? STATUS.REVERSED.c : STATUS.ABANDONED.c }}>
+                            {tag}
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             );
           })}
         </div>
