@@ -20205,6 +20205,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — ADDENDUM (Byzantine, Frankish, Song, science)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Tours (Poitiers) — Charles Martel halts the Umayyad advance ─────
+  {
+    externalId: 'trajectory:battle-of-tours-732',
+    text: 'A Frankish army under Charles Martel defeated an invading Umayyad force and killed its commander Abd al-Rahman al-Ghafiqi at the Battle of Tours (Poitiers) in October 732, halting the northward Muslim advance into Gaul.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0732-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0732-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Somewhere between Tours and Poitiers in west-central Gaul, the Frankish host under Charles Martel holds against an Umayyad raiding army out of al-Andalus. The Umayyad emir Abd al-Rahman al-Ghafiqi is killed and his force withdraws. The near-contemporary Mozarabic Chronicle of 754 — written within a generation in Iberia — records that "the people of the north remained immovable like a wall" and that the men of Austrasia killed the emir.',
+        source: {
+          externalId: 'src:mozarabic-chronicle-754-tours',
+          name: 'Chronicle of 754 (Mozarabic Chronicle), account of the battle near Tours/Poitiers. (written c. 754, within a generation of the event)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Tours',
+          publishedAt: '0754-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent Latin (Chronicle of 754, Continuations of Fredegar) and later Arabic traditions agree that an Umayyad army was defeated and its commander killed near Tours/Poitiers in 732. Modern historians debate the battle\'s strategic significance and its exact site and day, but treat the engagement, the death of Abd al-Rahman, and the Frankish victory as securely established.',
+        source: {
+          externalId: 'src:battle-of-tours-scholarship',
+          name: 'Standard scholarship on the Battle of Tours (Poitiers), 732. Encyclopaedia Britannica, "Battle of Tours."',
+          url: 'https://www.britannica.com/event/Battle-of-Tours-732',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet 837 apparition — closest recorded approach to Earth ────────
+  {
+    externalId: 'trajectory:halley-comet-837-apparition',
+    text: 'A brilliant long-tailed comet dominated the sky in spring 837 CE, recorded by Chinese, Japanese, Byzantine and European observers — later identified as the apparition of comet 1P/Halley that made the closest known approach of the comet to Earth, on about 10 April 837.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0837-04-10',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0837-04-10',
+        datePrecision: 'MONTH',
+        reason: 'Tang dynasty court astronomers track a spectacular comet night by night as it sweeps across the spring sky, its tail at one point reported stretching across much of the heavens; the apparition is logged in the imperial astronomical records later compiled into the Xin Tangshu (New Book of Tang). Japanese, Byzantine, and Frankish annalists independently record the same alarming "broom star." The comet passes within about 0.03–0.04 AU of Earth — its closest approach in recorded history.',
+        source: {
+          externalId: 'src:xin-tangshu-837-comet',
+          name: 'Xin Tangshu (New Book of Tang), astronomical treatise, comet record for 837 CE. (compiled 1060 from contemporaneous Tang court records)',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0837-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Backward orbital integration of comet 1P/Halley, anchored by the unusually dense Chinese positional records, identifies the 837 apparition as a return of Halley\'s Comet and fixes its near-Earth passage to about 10 April 837 at roughly 0.03–0.04 AU. The dense ancient observations make this one of the best-constrained early returns and the conclusion has remained settled.',
+        source: {
+          externalId: 'src:kiang-halley-past-orbit-837',
+          name: 'Kiang T. The past orbit of Halley\'s comet. Memoirs of the Royal Astronomical Society 1972;76:27–66 (837 return and near-Earth approach).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1972MmRAS..76...27K/abstract',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Leo the Deacon's eclipse — earliest dated description of the solar corona ──
+  {
+    externalId: 'trajectory:leo-deacon-corona-eclipse-968',
+    text: 'During the total solar eclipse of 22 December 968, the Byzantine historian Leo the Deacon observed and described from Constantinople a faint glow ringing the darkened Sun — the earliest account of the solar corona that can be tied to a precisely datable eclipse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0968-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0968-12-22',
+        datePrecision: 'DAY',
+        reason: 'Witnessing the eclipse at Constantinople, Leo the Deacon writes that it occurred "on the 22nd day of the month of December, at the 4th hour of the day," when the disk of the Sun appeared "without brightness, deprived of light," surrounded by "a certain dull and feeble glow, like a narrow headband, shining round the extreme parts of the edge of the disk" — a contemporaneous description of totality and the corona.',
+        source: {
+          externalId: 'src:leo-deacon-history-eclipse-968',
+          name: 'Leo the Deacon (Leo Diaconus). History, account of the solar eclipse of 22 December 968. (late 10th century, eyewitness)',
+          url: 'https://sunearthday.nasa.gov/2006/locations/firstcorona.php',
+          publishedAt: '0990-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern eclipse computation confirms that a total solar eclipse crossed Constantinople on 22 December 968, matching Leo the Deacon\'s date, hour, and description. Historians of astronomy identify his passage as the earliest definite written record of the solar corona tied to a calculable eclipse — a settled point in the history of solar observation.',
+        source: {
+          externalId: 'src:nasa-first-corona-968',
+          name: 'NASA Sun-Earth Day, "Technology Through Time": earliest definite observation of the solar corona, eclipse of 22 December 968.',
+          url: 'https://sunearthday.nasa.gov/2006/locations/firstcorona.php',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Hastings — the Norman Conquest of England ───────────────────────
+  {
+    externalId: 'trajectory:battle-of-hastings-1066',
+    text: 'Duke William of Normandy defeated and killed King Harold Godwinson of England at the Battle of Hastings on 14 October 1066, leading to the Norman conquest of England.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1066-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1066-10-14',
+        datePrecision: 'DAY',
+        reason: 'On a ridge near Hastings the invading Norman army of Duke William defeats the English shield wall after a day-long battle; King Harold Godwinson is killed. The Anglo-Saxon Chronicle records the date and Harold\'s death, and within a generation the events are narrated by William of Poitiers and embroidered into the Bayeux Tapestry, which depicts the campaign, the comet of that spring, and Harold\'s fall.',
+        source: {
+          externalId: 'src:anglo-saxon-chronicle-hastings-1066',
+          name: 'The Anglo-Saxon Chronicle, annal for 1066 (Battle of Hastings and death of Harold). (contemporaneous monastic annals)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hastings',
+          publishedAt: '1066-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent sources — the Anglo-Saxon Chronicle, William of Poitiers, William of Jumièges, Orderic Vitalis, and the Bayeux Tapestry — agree on the date, the protagonists, the death of Harold, and the Norman victory. Modern scholarship treats Hastings as a fixed, securely dated turning point in English history, debating tactical details rather than the event itself.',
+        source: {
+          externalId: 'src:battle-of-hastings-scholarship',
+          name: 'Standard scholarship on the Battle of Hastings and the Norman Conquest, 1066. Encyclopaedia Britannica, "Battle of Hastings."',
+          url: 'https://www.britannica.com/event/Battle-of-Hastings',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── King Henry's Eclipse — total solar eclipse of 2 August 1133 ───────────────
+  {
+    externalId: 'trajectory:king-henry-eclipse-1133',
+    text: 'A total solar eclipse darkened England on 2 August 1133, recorded by contemporary chroniclers as a portent around the departure and death of King Henry I — "King Henry\'s Eclipse."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1133-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1133-08-02',
+        datePrecision: 'DAY',
+        reason: 'A total eclipse sweeps across England; the chronicler John of Worcester records that "a darkness appeared in the sky… in some places it was only a little dark but in others candles were needed," with the Sun looking "like a new moon." King Henry I had sailed for Normandy the day before, and the eclipse — together with reported earthquakes — is remembered as an omen of his death two years later. The Anglo-Saxon Chronicle, Henry of Huntingdon, and William of Malmesbury also note the darkening.',
+        source: {
+          externalId: 'src:john-worcester-chronicle-eclipse-1133',
+          name: 'John of Worcester, Chronicle, account of the solar eclipse of 2 August 1133. (contemporaneous 12th-century chronicle)',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_1133',
+          publishedAt: '1133-08-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern eclipse computation confirms a total solar eclipse over Britain and Europe on 2 August 1133, matching the chroniclers\' accounts. The dated observation is one of the medieval eclipse records used to constrain the long-term deceleration of Earth\'s rotation (ΔT), making both the event and its date a settled reference point.',
+        source: {
+          externalId: 'src:eclipse-1133-computation',
+          name: 'Computed circumstances of the total solar eclipse of 2 August 1133 ("King Henry\'s Eclipse"); used in ΔT / Earth-rotation studies.',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_1133',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
