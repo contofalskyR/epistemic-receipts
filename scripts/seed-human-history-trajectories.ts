@@ -6272,6 +6272,162 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Photios condemned then reinstated — Fourth Council of Constantinople ─────
+  {
+    externalId: 'trajectory:photian-councils-869-880',
+    text: 'Patriarch Photios I of Constantinople was condemned and deposed by the Council of Constantinople of 869–870, a verdict reversed nine years later when the Council of 879–880 reinstated him and annulled the earlier council.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0869-10-05',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0870-02-28',
+        datePrecision: 'DAY',
+        reason: 'A council convened in Constantinople with papal legates, opening in October 869, condemns and deposes Photios — installed as patriarch in 858 after the removal of Ignatios — and restores Ignatios. At its final session on 28 February 870 it anathematises Photios; the Latin church later counts it as the Fourth Council of Constantinople. Its acts are recorded by the council notaries and by the legate Anastasius Bibliothecarius.',
+        source: {
+          externalId: 'src:fourth-constantinople-acts-870',
+          name: 'Acts of the Council of Constantinople of 869–870 (Latin version by Anastasius Bibliothecarius, papal librarian and eyewitness).',
+          url: 'https://en.wikipedia.org/wiki/Fourth_Council_of_Constantinople_(Roman_Catholic)',
+          publishedAt: '0870-02-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0880-03-13',
+        datePrecision: 'MONTH',
+        reason: 'After the death of Ignatios in 877 Photios is restored to the patriarchate, and a council held in Hagia Sophia over the winter of 879–880, attended by legates of Pope John VIII, rehabilitates Photios and formally annuls the council of 869–870. The Eastern Orthodox church recognises this synod, reversing the earlier condemnation.',
+        source: {
+          externalId: 'src:photian-council-879-880',
+          name: 'Acts of the Council of Constantinople of 879–880 reinstating Photios and annulling the 869–870 council.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Constantinople_(879%E2%80%93880)',
+          publishedAt: '0880-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The two councils\' conflicting verdicts on Photios become a permanent fault line between the churches — the Roman Catholic church reckons the 869–870 council ecumenical while the Orthodox recognise the 879–880 synod. The sequence of his deposition, restoration, and the rival conciliar acts is a settled, well-documented episode of Byzantine ecclesiastical history.',
+        source: {
+          externalId: 'src:photian-schism-scholarship',
+          name: 'Standard scholarship on the Photian controversy and the councils of 869–870 and 879–880.',
+          url: 'https://www.britannica.com/biography/Photius-patriarch-of-Constantinople',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jalali calendar reform — astronomical determination of the solar year ────
+  {
+    externalId: 'trajectory:jalali-calendar-reform-1079',
+    text: 'A solar calendar reform commissioned by the Seljuk sultan Malik-Shah I and computed by a panel of astronomers including Omar Khayyam took effect on 15 March 1079, fixing the length of the tropical year with an accuracy of better than a second per year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1079-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1079-03-15',
+        datePrecision: 'DAY',
+        reason: 'Sultan Malik-Shah I establishes an observatory and a commission of astronomers, among them Omar Khayyam, to reform the Persian calendar. The new Jalali (Maliki) era is fixed to begin at the vernal-equinox Nowruz, 15 March 1079 (Julian), tying the year directly to the astronomically observed equinox rather than a fixed rule.',
+        source: {
+          externalId: 'src:jalali-calendar-zij-malikshahi',
+          name: 'The Zij-i Malik-Shahi and contemporary Persian accounts of the calendar reform under Malik-Shah I (1079).',
+          url: 'https://en.wikipedia.org/wiki/Jalali_calendar',
+          publishedAt: '1079-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern astronomy confirms the extraordinary accuracy of the Jalali year length, and the calendar — refined as the Solar Hijri calendar — is adopted as the official calendar of Iran in 1925 and Afghanistan, making it one of the most precise calendrical systems in use and confirming the soundness of the 1079 determination.',
+        source: {
+          externalId: 'src:solar-hijri-calendar-accuracy',
+          name: 'Standard history-of-astronomy scholarship on the Jalali / Solar Hijri calendar and its tropical-year accuracy.',
+          url: 'https://www.britannica.com/science/Jalali-calendar',
+          publishedAt: '1925-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Canonization of Thomas Aquinas — partial reversal of the 1277 condemnation ─
+  {
+    externalId: 'trajectory:aquinas-canonization-1323',
+    text: 'Pope John XXII canonized Thomas Aquinas as a saint on 18 July 1323 at Avignon; two years later the Bishop of Paris annulled the articles of the 1277 condemnation that touched Aquinas\'s teaching, settling his orthodoxy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1323-07-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1277-03-07',
+        datePrecision: 'DAY',
+        reason: 'The 1277 Paris condemnation by Bishop Étienne Tempier targets 219 propositions, several of which align with positions held by Aquinas (who had died in 1274), casting a doctrinal shadow over the orthodoxy of his Aristotelian theology and leaving his standing disputed within the church.',
+        source: {
+          externalId: 'src:tempier-condemnation-aquinas-1277',
+          name: 'Étienne Tempier, condemnation of 1277, propositions overlapping Thomist theses.',
+          url: 'https://en.wikipedia.org/wiki/Condemnations_of_1210%E2%80%931277',
+          publishedAt: '1277-03-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1323-07-18',
+        datePrecision: 'DAY',
+        reason: 'After a formal canonization inquiry into Aquinas\'s life and miracles, Pope John XXII proclaims him a saint at the papal court in Avignon on 18 July 1323. Sainthood is the church\'s strongest institutional ratification, declaring his teaching and life to be in accord with the faith.',
+        source: {
+          externalId: 'src:john-xxii-aquinas-canonization-1323',
+          name: 'Papal bull of canonization of Thomas Aquinas by John XXII, Avignon, 18 July 1323.',
+          url: 'https://en.wikipedia.org/wiki/Thomas_Aquinas',
+          publishedAt: '1323-07-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1325-02-14',
+        datePrecision: 'DAY',
+        reason: 'On 14 February 1325 Stephen Bourret, Bishop of Paris, formally annuls the articles of the 1277 condemnation "insofar as they touch or seem to touch the teaching of blessed Thomas," explicitly removing the censure from Aquinas\'s positions and confirming the reversal of his contested status.',
+        source: {
+          externalId: 'src:bourret-annulment-1325',
+          name: 'Stephen Bourret, Bishop of Paris, annulment of the 1277 articles touching Aquinas, 14 February 1325.',
+          url: 'https://en.wikipedia.org/wiki/Condemnations_of_1210%E2%80%931277',
+          publishedAt: '1325-02-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, exploration
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -18683,6 +18839,235 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://press.un.org/en/1999/19990903.sgsm7119.html',
           publishedAt: '1999-09-04',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fall of Tenochtitlan — end of the Aztec Empire ──────────────────────────
+  {
+    externalId: 'trajectory:fall-tenochtitlan-1521',
+    text: 'Hernán Cortés and his Spanish-Indigenous allied forces captured the Aztec capital Tenochtitlan and seized the emperor Cuauhtémoc on August 13, 1521.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1521-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1521-08-13',
+        datePrecision: 'DAY',
+        reason: 'After a roughly three-month siege, Cuauhtémoc was captured while attempting to flee by canoe and the surviving Mexica defenders surrendered. The fall of the city was immediately reported by Cortés to Emperor Charles V in his dispatches.',
+        source: {
+          externalId: 'src:cortes-third-letter-1522',
+          name: 'Hernán Cortés. Carta de relación (Third Letter to Charles V), Seville, 1522.',
+          url: 'https://archive.org/details/lettersofcortess01cort',
+          methodologyType: 'primary',
+          publishedAt: '1522-03-30',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1576-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and fact of the conquest are corroborated by independent contemporaneous accounts from both sides: the eyewitness memoir of the conquistador Bernal Díaz del Castillo and the Indigenous Nahua testimony compiled in Book 12 of the Florentine Codex by Bernardino de Sahagún. The convergence of Spanish and Mexica sources settles the event among historians.',
+        source: {
+          externalId: 'src:florentine-codex-book12',
+          name: 'Bernardino de Sahagún. Historia general de las cosas de Nueva España (Florentine Codex), Book 12, c. 1576.',
+          url: 'https://www.wdl.org/en/item/10096/',
+          methodologyType: 'primary',
+          publishedAt: '1576-01-01',
+        },
+      },
+    ],
+  },
+
+  // ── First Battle of Panipat — founding of the Mughal Empire ─────────────────
+  {
+    externalId: 'trajectory:first-battle-panipat-1526',
+    text: 'Babur defeated and killed Ibrahim Lodi, Sultan of Delhi, at the First Battle of Panipat on April 21, 1526, founding the Mughal Empire in India.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1526-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1526-04-21',
+        datePrecision: 'DAY',
+        reason: 'Babur, deploying field artillery and the tulughma flanking tactic, routed the far larger army of the Delhi Sultanate; Ibrahim Lodi died on the field. Babur recorded the engagement and its date in his own memoirs as it occurred.',
+        source: {
+          externalId: 'src:baburnama-panipat',
+          name: 'Babur. Baburnama (Memoirs of Babur), entry for the battle of Panipat, c. 1526–1530.',
+          url: 'https://archive.org/details/baburnamainengli01babu',
+          methodologyType: 'primary',
+          publishedAt: '1530-01-01',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle, its date, and its outcome are confirmed by later Mughal court histories including Abul Fazl\'s Akbarnama, and are universally accepted by historians as the founding event of Mughal rule in the subcontinent, which lasted until 1857.',
+        source: {
+          externalId: 'src:akbarnama-panipat',
+          name: 'Abul Fazl. Akbarnama, Vol. 1 (account of Babur\'s conquest), c. 1590s.',
+          url: 'https://archive.org/details/akbarnamaofabulf01abul',
+          methodologyType: 'derivative',
+          publishedAt: '1596-01-01',
+        },
+      },
+    ],
+  },
+
+  // ── Defenestration of Prague — trigger of the Thirty Years' War ─────────────
+  {
+    externalId: 'trajectory:defenestration-prague-1618',
+    text: 'On May 23, 1618, Bohemian Protestant nobles threw two Catholic imperial regents and their secretary out of a window of Prague Castle, an act that triggered the Bohemian Revolt and the Thirty Years\' War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1618-05-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1618-05-23',
+        datePrecision: 'DAY',
+        reason: 'During a confrontation over violations of the Letter of Majesty\'s religious guarantees, Protestant estates hurled the regents Jaroslav Bořita of Martinice and Vilém Slavata, along with secretary Philip Fabricius, from a high window of the Bohemian Chancellery. All three survived the fall. The incident was reported across Europe in pamphlets within weeks.',
+        source: {
+          externalId: 'src:slavata-defenestration-account',
+          name: 'Vilém Slavata of Chlum. Paměti (Memoirs), first-person account of the 1618 defenestration.',
+          url: 'https://www.britannica.com/event/Defenestration-of-Prague',
+          methodologyType: 'primary',
+          publishedAt: '1618-05-23',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1648-10-24',
+        datePrecision: 'DAY',
+        reason: 'The defenestration\'s role as the spark of the Thirty Years\' War is established by the unbroken documentary chain from the 1618 Bohemian Revolt through the war\'s conclusion at the Peace of Westphalia in 1648. The date and participants are corroborated by surviving first-person memoirs from both defenestrated regents.',
+        source: {
+          externalId: 'src:westphalia-thirty-years-war-context',
+          name: 'Peace of Westphalia treaties (Osnabrück/Münster), 24 October 1648, concluding the war begun in 1618.',
+          url: 'https://www.britannica.com/event/Thirty-Years-War',
+          methodologyType: 'derivative',
+          publishedAt: '1648-10-24',
+        },
+      },
+    ],
+  },
+
+  // ── Rømer's demonstration of the finite speed of light ──────────────────────
+  {
+    externalId: 'trajectory:romer-speed-of-light-1676',
+    text: 'Ole Rømer demonstrated that light travels at a finite speed, inferred from systematic variations in the timing of eclipses of Jupiter\'s moon Io, published December 7, 1676.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1676-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1676-12-07',
+        datePrecision: 'DAY',
+        reason: 'Working at the Paris Observatory, Rømer noticed that eclipses of Io arrived earlier when Earth was nearest Jupiter and later when farthest, and attributed the delay to the time light needs to cross Earth\'s orbit. His account appeared in the Journal des sçavans. His superior Giovanni Cassini and others doubted the finite-speed interpretation, preferring alternative explanations.',
+        source: {
+          externalId: 'src:romer-journal-des-scavans-1676',
+          name: 'Ole Rømer. "Démonstration touchant le mouvement de la lumière," Journal des sçavans, 7 December 1676.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k56523g',
+          methodologyType: 'primary',
+          publishedAt: '1676-12-07',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1729-01-01',
+        datePrecision: 'YEAR',
+        reason: 'James Bradley\'s discovery of the aberration of starlight (1729) provided independent confirmation that light travels at a finite speed and yielded a consistent value, vindicating Rømer\'s interpretation. The finite speed of light became settled physics.',
+        source: {
+          externalId: 'src:bradley-aberration-1729',
+          name: 'James Bradley. "A Letter ... concerning an apparent Motion observed in some of the fixed Stars," Philosophical Transactions, 1729.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1727.0064',
+          methodologyType: 'primary',
+          publishedAt: '1729-01-01',
+        },
+      },
+    ],
+  },
+
+  // ── Edict of Nantes granted, then revoked ───────────────────────────────────
+  {
+    externalId: 'trajectory:edict-of-nantes-1598',
+    text: 'The Edict of Nantes, signed by Henry IV of France on April 13, 1598, granted substantial religious toleration and civil rights to French Protestants (Huguenots).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1598-04-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1598-04-13',
+        datePrecision: 'DAY',
+        reason: 'To end the French Wars of Religion, Henry IV issued the Edict of Nantes, granting Huguenots freedom of conscience, the right to worship in specified locations, civil equality, and fortified safe-haven towns. The edict was a registered royal act of state.',
+        source: {
+          externalId: 'src:edict-of-nantes-1598-text',
+          name: 'Edict of Nantes, promulgated by Henry IV, 13 April 1598 (registered text).',
+          url: 'https://www.museeprotestant.org/en/notice/the-edict-of-nantes-1598/',
+          methodologyType: 'primary',
+          publishedAt: '1598-04-13',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1598-04-13',
+        datePrecision: 'YEAR',
+        reason: 'Once registered by the parlements (Paris registering it in 1599), the edict became the operative legal framework governing French confessional coexistence for nearly nine decades, recognized by both crown and the Huguenot community.',
+        source: {
+          externalId: 'src:edict-of-nantes-registration',
+          name: 'Edict of Nantes — registration by the Parlement of Paris and provincial parlements, 1599–1609.',
+          url: 'https://www.britannica.com/event/Edict-of-Nantes',
+          methodologyType: 'derivative',
+          publishedAt: '1599-02-25',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1685-10-18',
+        datePrecision: 'DAY',
+        reason: 'Louis XIV issued the Edict of Fontainebleau on 18 October 1685, revoking the Edict of Nantes, outlawing Protestant worship, and ordering the destruction of Huguenot churches. The legal protections were annulled, triggering the emigration of an estimated 200,000 Huguenots.',
+        source: {
+          externalId: 'src:edict-of-fontainebleau-1685',
+          name: 'Edict of Fontainebleau (Revocation of the Edict of Nantes), Louis XIV, 18 October 1685.',
+          url: 'https://www.museeprotestant.org/en/notice/the-revocation-of-the-edict-of-nantes-1685/',
+          methodologyType: 'primary',
+          publishedAt: '1685-10-18',
         },
       },
     ],
