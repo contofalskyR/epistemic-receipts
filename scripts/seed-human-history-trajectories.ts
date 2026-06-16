@@ -15560,6 +15560,246 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Balboa sights the Pacific Ocean ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:balboa-sights-pacific-1513',
+    text: 'On 25 September 1513 Vasco Núñez de Balboa, crossing the Isthmus of Panama, became the first documented European to sight the Pacific Ocean from the Americas, wading into its waters on 29 September 1513 to claim the "South Sea" for Castile.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1513-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1513-09-25',
+        datePrecision: 'DAY',
+        reason: 'Balboa climbs a peak in the Darién and sights the open ocean to the south, then descends to the shore four days later and formally takes possession of the "Mar del Sur." His own letter to King Ferdinand of 20 January 1513 and the royal expedition records document the crossing within months.',
+        source: {
+          externalId: 'src:balboa-letter-ferdinand-1513',
+          name: 'Letter of Vasco Núñez de Balboa to King Ferdinand, 1513 (contemporary), preserved in the Archivo General de Indias, Seville.',
+          url: 'https://en.wikipedia.org/wiki/Vasco_N%C3%BA%C3%B1ez_de_Balboa',
+          publishedAt: '1513-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1530-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The chronicler Gonzalo Fernández de Oviedo, royal historian of the Indies who knew the Darién settlement first-hand, and Pedro Mártir de Anglería in his Decades corroborate the crossing and the date; the discovery of the Pacific from the New World is settled history of European exploration.',
+        source: {
+          externalId: 'src:oviedo-historia-indias-pacific',
+          name: 'Gonzalo Fernández de Oviedo. Historia general y natural de las Indias, 1535.',
+          url: 'https://en.wikipedia.org/wiki/Gonzalo_Fern%C3%A1ndez_de_Oviedo_y_Vald%C3%A9s',
+          publishedAt: '1535-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Chaldiran ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-chaldiran-1514',
+    text: 'On 23 August 1514 the Ottoman army of Sultan Selim I, deploying massed gunpowder artillery and janissary firearms, defeated Shah Ismail I\'s Safavid cavalry at Chaldiran in north-western Persia, halting Safavid expansion and fixing the long Ottoman–Persian frontier.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1514-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1514-08-23',
+        datePrecision: 'DAY',
+        reason: 'Selim I\'s tüfenk-armed janissaries and chained field guns break the unarmoured Qizilbash cavalry charge on the plain of Chaldiran; the Ottomans briefly occupy the Safavid capital Tabriz. Ottoman campaign registers and victory dispatches (fethnâme) record the battle and its date.',
+        source: {
+          externalId: 'src:ottoman-fethname-chaldiran',
+          name: 'Ottoman fethnâme (victory dispatch) of Selim I\'s campaign, 1514 (contemporary); with the chronicle of Idris Bitlisi.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Chaldiran',
+          publishedAt: '1514-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ottoman court historians (Hoca Sadeddin) and Safavid sources (the Tarikh-i Alam-ara-yi Abbasi) independently record the Ottoman victory and Selim\'s entry into Tabriz; modern scholarship treats Chaldiran as the decisive demonstration of gunpowder superiority over steppe cavalry and the origin of the Ottoman–Safavid border.',
+        source: {
+          externalId: 'src:chaldiran-modern-scholarship',
+          name: 'Encyclopædia Iranica, "Čālderān, Battle of"; Roger Savory, Iran Under the Safavids, 1980.',
+          url: 'https://www.iranicaonline.org/articles/calderan-battle',
+          publishedAt: '1980-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Trent opens ──────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:council-of-trent-opens-1545',
+    text: 'On 13 December 1545 the Council of Trent opened its first session, beginning the Catholic Church\'s doctrinal and disciplinary response to the Protestant Reformation that would define Counter-Reformation Catholicism for four centuries.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1545-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1545-12-13',
+        datePrecision: 'DAY',
+        reason: 'Summoned by Pope Paul III\'s bull Laetare Jerusalem, the council convenes its opening session in the cathedral of Trent. The acts, decrees, and attendance of each session are recorded contemporaneously in the official conciliar records as the council sits intermittently until 1563.',
+        source: {
+          externalId: 'src:canons-decrees-council-trent',
+          name: 'Canons and Decrees of the Council of Trent, official conciliar acts, 1545–1563 (contemporary record).',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1564-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1564-11-13',
+        datePrecision: 'DAY',
+        reason: 'Pope Pius IV confirms the council\'s decrees in the bull Benedictus Deus (26 January 1564) and promulgates the Tridentine profession of faith on 13 November 1564; the council\'s definitions on scripture, justification, and the sacraments become binding Catholic doctrine, settling the institutional response to the Reformation.',
+        source: {
+          externalId: 'src:benedictus-deus-1564',
+          name: 'Pope Pius IV, bull Benedictus Deus confirming the Council of Trent, 1564.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1564-01-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Lützen — death of Gustavus Adolphus ───────────────────────────
+  {
+    externalId: 'trajectory:battle-of-lutzen-1632',
+    text: 'On 16 November 1632 (New Style) the Swedish king Gustavus Adolphus was killed leading a cavalry charge at the Battle of Lützen against Wallenstein\'s Imperial army; the Swedes held the field in one of the bloodiest battles of the Thirty Years\' War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1632-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1632-11-16',
+        datePrecision: 'DAY',
+        reason: 'Amid fog and powder smoke the Swedish king is shot and killed in the cavalry mêlée; his army under Bernard of Saxe-Weimar nonetheless takes the Imperial positions. The death of the "Lion of the North" is reported across Europe within weeks in dispatches, broadsheets, and the diaries of officers present.',
+        source: {
+          externalId: 'src:lutzen-contemporary-accounts-1632',
+          name: 'Contemporary Swedish and Imperial battle reports and the diary of Colonel Robert Monro, 1632 (eyewitness accounts).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_L%C3%BCtzen_(1632)',
+          publishedAt: '1632-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Swedish and Imperial archival records, casualty returns, and the recovered bloodied buff coat and clothing of Gustavus Adolphus (preserved in Vienna and Stockholm) corroborate the king\'s death and the course of the battle; Lützen is settled military history.',
+        source: {
+          externalId: 'src:lutzen-archival-scholarship',
+          name: 'Peter H. Wilson, The Thirty Years War: Europe\'s Tragedy, 2009.',
+          url: 'https://en.wikipedia.org/wiki/Gustavus_Adolphus',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-05-31',
+        datePrecision: 'DAY',
+        reason: 'A mass grave of 47 soldiers excavated en bloc near Lützen in 2011 is analysed osteologically and published in PLOS ONE (2017): the trauma pattern of close-range gunshot and blade wounds physically confirms the ferocity of the 1632 battle described in the contemporary accounts.',
+        source: {
+          externalId: 'src:lutzen-mass-grave-plosone-2017',
+          name: 'Nicklisch N. et al. "The face of war: Trauma analysis of a mass grave from the Battle of Lützen (1632)." PLOS ONE, 31 May 2017.',
+          url: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0178252',
+          publishedAt: '2017-05-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Newton's new theory of light and colours ────────────────────────────────
+  {
+    externalId: 'trajectory:newton-theory-light-colours-1672',
+    text: 'In February 1672 Isaac Newton published "A New Theory about Light and Colours" in the Philosophical Transactions, demonstrating with the prism that white light is a heterogeneous mixture of rays of differing refrangibility rather than a modification of pure light.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1672-02-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1672-02-19',
+        datePrecision: 'DAY',
+        reason: 'Newton\'s letter to Henry Oldenburg, read to the Royal Society on 8 February 1672, is printed in Philosophical Transactions No. 80, dated 19 February 1671/2. He reports the "experimentum crucis" showing that a prism separates white light into rays each with a fixed, characteristic refrangibility and colour.',
+        source: {
+          externalId: 'src:newton-light-colours-phil-trans-1672',
+          name: 'Newton I. "A Letter… containing his New Theory about Light and Colors." Philosophical Transactions of the Royal Society, No. 80, 1672.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1671.0072',
+          publishedAt: '1672-02-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1672-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Robert Hooke, Christiaan Huygens, and the Jesuits at Liège dispute the theory, defending wave/modification accounts of colour and questioning the crucial experiment; the prolonged controversy so frustrates Newton that he withdraws from publishing on optics for decades.',
+        source: {
+          externalId: 'src:hooke-critique-newton-optics-1672',
+          name: 'Robert Hooke\'s critique and the Newton–Huygens optical correspondence in the Philosophical Transactions, 1672–1676.',
+          url: 'https://www.newtonproject.ox.ac.uk/texts/newtons-works/optical',
+          publishedAt: '1672-06-01',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1704-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Newton\'s Opticks (1704) systematises the prism experiments, and the compositional theory of white light is confirmed by all subsequent spectroscopy; the heterogeneity of white light and the link between refrangibility and colour are settled physics.',
+        source: {
+          externalId: 'src:newton-opticks-1704',
+          name: 'Newton I. Opticks: or, a Treatise of the Reflexions, Refractions, Inflexions and Colours of Light. London, 1704.',
+          url: 'https://en.wikipedia.org/wiki/Opticks',
+          publishedAt: '1704-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
