@@ -10549,6 +10549,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── My Lai massacre — atrocity concealed, then exposed and confirmed ─────────
+  {
+    externalId: 'trajectory:my-lai-massacre-1968',
+    text: 'On 16 March 1968, U.S. Army soldiers of Charlie Company, 1st Battalion, 20th Infantry massacred several hundred unarmed South Vietnamese civilians — mostly women, children, and the elderly — in the hamlet of Mỹ Lai (Sơn Mỹ village), an atrocity initially concealed by the chain of command.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1968-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1968-03-16',
+        datePrecision: 'DAY',
+        reason: 'Over several hours, soldiers under Lieutenant William Calley kill unarmed villagers and herd many into a ditch to be shot; helicopter pilot Hugh Thompson intervenes to evacuate survivors. The killings are witnessed by Vietnamese survivors and U.S. personnel, but the action is officially reported up the chain as a combat engagement against the enemy, and the scale of civilian death is suppressed.',
+        source: {
+          externalId: 'src:my-lai-eyewitness-1968',
+          name: 'Eyewitness accounts of the Sơn Mỹ (Mỹ Lai) killings by survivors and U.S. personnel, 16 March 1968; later compiled in the Peers Inquiry record.',
+          url: 'https://en.wikipedia.org/wiki/My_Lai_massacre',
+          publishedAt: '1968-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1969-11-12',
+        datePrecision: 'DAY',
+        reason: 'Prompted by veteran Ron Ridenhour\'s letters to officials, investigative reporter Seymour Hersh breaks the story through the Dispatch News Service, reporting that Lieutenant Calley had been charged with murdering civilians at Mỹ Lai. The Army initially downplays the event and the number of dead is publicly disputed, while graphic photographs by Army photographer Ronald Haeberle are published in late November 1969.',
+        source: {
+          externalId: 'src:hersh-my-lai-1969',
+          name: 'Hersh SM. "Lieutenant Accused of Murdering 109 Civilians." Dispatch News Service, November 12, 1969.',
+          url: 'https://en.wikipedia.org/wiki/My_Lai_massacre',
+          publishedAt: '1969-11-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-03-14',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Army\'s official Peers Inquiry, led by Lieutenant General William Peers, concludes that a massacre of noncombatants occurred at Mỹ Lai and that the event was deliberately suppressed at multiple levels of command. Lieutenant Calley is convicted of murder by court-martial on 29 March 1971. The occurrence, scale, and cover-up of the massacre become settled fact in the official military record.',
+        source: {
+          externalId: 'src:peers-report-1970',
+          name: 'Report of the Department of the Army Review of the Preliminary Investigations into the My Lai Incident (Peers Report), 14 March 1970.',
+          url: 'https://history.army.mil/Browse-by-Topic/Vietnam-War/My-Lai/',
+          publishedAt: '1970-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Antarctic ozone hole — discovered by BAS, confirmed by satellite ─────────
+  {
+    externalId: 'trajectory:antarctic-ozone-hole-1985',
+    text: 'A large, recurring springtime depletion of stratospheric ozone over Antarctica — the "ozone hole" — was identified, and attributed to chlorine from man-made chlorofluorocarbons (CFCs).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-05-16',
+        datePrecision: 'DAY',
+        reason: 'Joe Farman, Brian Gardiner, and Jonathan Shanklin of the British Antarctic Survey publish in Nature their Halley Bay ground-station measurements showing that springtime total-column ozone over Antarctica had fallen by roughly 40% since the 1970s, and propose that chlorine and bromine from halocarbons drive the loss via ClOx/NOx chemistry.',
+        source: {
+          externalId: 'src:farman-ozone-1985',
+          name: 'Farman JC, Gardiner BG, Shanklin JD. "Large losses of total ozone in Antarctica reveal seasonal ClOx/NOx interaction." Nature 315, 207–210, 16 May 1985.',
+          url: 'https://www.nature.com/articles/315207a0',
+          publishedAt: '1985-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-08-28',
+        datePrecision: 'DAY',
+        reason: 'NASA scientists reprocess Nimbus-7 TOMS satellite data — which had earlier flagged the very low ozone values as suspected instrument errors — and confirm the springtime Antarctic ozone decrease independently and on a continental scale, corroborating the ground-based BAS measurements. The existence of the ozone hole is established beyond dispute.',
+        source: {
+          externalId: 'src:stolarski-toms-ozone-1986',
+          name: 'Stolarski RS et al. "Nimbus 7 satellite measurements of the springtime Antarctic ozone decrease." Nature 322, 808–811, 28 August 1986.',
+          url: 'https://www.nature.com/articles/322808a0',
+          publishedAt: '1986-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-09-16',
+        datePrecision: 'DAY',
+        reason: 'Acting on the now-established link between CFCs and ozone destruction, governments adopt the Montreal Protocol on Substances that Deplete the Ozone Layer, committing to phase out ozone-depleting chemicals. The 1987 Airborne Antarctic Ozone Experiment that same season provides the in-situ chemistry (elevated ClO) clinching the CFC cause.',
+        source: {
+          externalId: 'src:montreal-protocol-1987',
+          name: 'Montreal Protocol on Substances that Deplete the Ozone Layer, adopted 16 September 1987 (UN Environment Programme / Ozone Secretariat).',
+          url: 'https://www.unep.org/ozonaction/who-we-are/about-montreal-protocol',
+          publishedAt: '1987-09-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Van Allen radiation belts — first major discovery of the space age ───────
+  {
+    externalId: 'trajectory:van-allen-belts-1958',
+    text: 'Earth is encircled by belts of energetic charged particles trapped in its magnetic field — the Van Allen radiation belts — discovered by instruments aboard the first U.S. satellite, Explorer 1.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-31',
+        datePrecision: 'DAY',
+        reason: 'Explorer 1, launched 31 January 1958 carrying a Geiger–Müller counter designed by James Van Allen\'s University of Iowa group, returns count rates that drop to zero at certain altitudes — interpreted as the detector being saturated by intense radiation rather than detecting none, the first signature of a trapped-particle region around Earth.',
+        source: {
+          externalId: 'src:explorer1-data-1958',
+          name: 'Van Allen JA, Ludwig GH, Ray EC, McIlwain CE. "Observation of High Intensity Radiation by Satellites 1958 Alpha and Gamma." Jet Propulsion 28, 588–592, 1958.',
+          url: 'https://www.nasa.gov/history/explorer-1-overview/',
+          publishedAt: '1958-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-05-01',
+        datePrecision: 'DAY',
+        reason: 'On 1 May 1958, Van Allen announces the discovery of the radiation belts at a joint meeting of the National Academy of Sciences and the American Physical Society in Washington. The result is confirmed by Explorer 3 (March 1958) and by Pioneer 3 (December 1958), which reveals a second, outer belt, establishing the trapped-radiation structure as a permanent feature of near-Earth space.',
+        source: {
+          externalId: 'src:van-allen-announcement-1958',
+          name: 'Van Allen JA. "Radiation Belts Around the Earth." Scientific American 200(3), 39–47, March 1959 (reporting the 1 May 1958 announcement and subsequent confirmations).',
+          url: 'https://www.nasa.gov/history/the-van-allen-belts/',
+          publishedAt: '1958-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Reverse transcriptase — RNA→DNA flow overturns dogma directionality ──────
+  {
+    externalId: 'trajectory:reverse-transcriptase-1970',
+    text: 'Genetic information can flow from RNA back to DNA, catalyzed by the enzyme reverse transcriptase (RNA-dependent DNA polymerase) — contradicting the strict one-way directionality assumed for the central dogma of molecular biology.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Howard Temin proposes the "DNA provirus hypothesis," arguing that RNA tumor viruses such as Rous sarcoma virus replicate by first copying their RNA genome into a DNA intermediate that integrates into the host chromosome — implying a flow of information from RNA to DNA.',
+        source: {
+          externalId: 'src:temin-provirus-1964',
+          name: 'Temin HM. "Nature of the provirus of Rous sarcoma." National Cancer Institute Monograph 17, 557–570, 1964.',
+          url: 'https://en.wikipedia.org/wiki/Reverse_transcriptase',
+          publishedAt: '1964-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The provirus hypothesis is widely doubted through the 1960s because it appears to violate the central dogma\'s expected DNA→RNA→protein directionality, and no enzyme capable of synthesizing DNA from an RNA template has been demonstrated. The claim of RNA-to-DNA information flow remains a minority position under sustained criticism.',
+        source: {
+          externalId: 'src:central-dogma-controversy-1960s',
+          name: 'Crick FHC. "Central dogma of molecular biology." Nature 227, 561–563, 1970 (restating the dogma amid the provirus debate).',
+          url: 'https://www.nature.com/articles/227561a0',
+          publishedAt: '1970-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-06-27',
+        datePrecision: 'DAY',
+        reason: 'In the same 27 June 1970 issue of Nature, Howard Temin with Satoshi Mizutani, and independently David Baltimore, report an RNA-dependent DNA polymerase in RNA tumor virions — reverse transcriptase — directly demonstrating RNA-to-DNA synthesis. The discovery confirms the provirus hypothesis and is recognized with the 1975 Nobel Prize in Physiology or Medicine (Temin, Baltimore, Dulbecco).',
+        source: {
+          externalId: 'src:temin-mizutani-rt-1970',
+          name: 'Temin HM, Mizutani S. "RNA-dependent DNA polymerase in virions of Rous sarcoma virus." Nature 226, 1211–1213, 27 June 1970 (with Baltimore D., same issue, 1209–1211).',
+          url: 'https://www.nature.com/articles/2261211a0',
+          publishedAt: '1970-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Voting Rights Act — Selma to federal enforcement of the franchise ────────
+  {
+    externalId: 'trajectory:voting-rights-act-1965',
+    text: 'Racial discrimination in voting was prohibited and made federally enforceable in the United States through the Voting Rights Act, signed into law on 6 August 1965.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1965-08-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1965-03-07',
+        datePrecision: 'DAY',
+        reason: 'On "Bloody Sunday," 7 March 1965, Alabama state troopers attack civil-rights marchers crossing the Edmund Pettus Bridge in Selma. Televised nationally, the violence galvanizes public support for federal voting-rights legislation; on 15 March President Lyndon Johnson addresses Congress to demand a voting rights bill.',
+        source: {
+          externalId: 'src:selma-bloody-sunday-1965',
+          name: 'Contemporary press and television coverage of the Selma "Bloody Sunday" march, 7 March 1965; National Archives, Selma marches records.',
+          url: 'https://www.archives.gov/milestone-documents/voting-rights-act',
+          publishedAt: '1965-03-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-08-06',
+        datePrecision: 'DAY',
+        reason: 'President Johnson signs the Voting Rights Act of 1965, banning literacy tests and other discriminatory devices and authorizing federal oversight (preclearance and federal examiners) of voter registration in jurisdictions with histories of discrimination. The prohibition becomes binding federal law.',
+        source: {
+          externalId: 'src:voting-rights-act-text-1965',
+          name: 'Voting Rights Act of 1965, Pub. L. 89–110, 79 Stat. 437, enacted 6 August 1965. National Archives, Milestone Documents.',
+          url: 'https://www.archives.gov/milestone-documents/voting-rights-act',
+          publishedAt: '1965-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1966-03-07',
+        datePrecision: 'DAY',
+        reason: 'In South Carolina v. Katzenbach, the U.S. Supreme Court upholds the core enforcement provisions of the Voting Rights Act as a valid exercise of Congress\'s power under the Fifteenth Amendment, confirming the statute\'s constitutionality and durability.',
+        source: {
+          externalId: 'src:south-carolina-v-katzenbach-1966',
+          name: 'South Carolina v. Katzenbach, 383 U.S. 301 (1966).',
+          url: 'https://supreme.justia.com/cases/federal/us/383/301/',
+          publishedAt: '1966-03-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
