@@ -11067,6 +11067,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL ADDENDUM — astronomy, medicine, philosophy (pre-500 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Death of Alexander the Great — Babylonian astronomical diary, 323 BCE ────
+  {
+    externalId: 'trajectory:alexander-death-babylon-323bce',
+    text: 'Alexander the Great died at Babylon on 11 June 323 BCE — the only strictly contemporaneous record being a Babylonian astronomical diary that logs, on the 29th of the month Aiaru, "the king died."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0323-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0323-06-11',
+        datePrecision: 'DAY',
+        reason: 'Scribes of the Esagila temple at Babylon, keeping a day-by-day record of celestial and civic events, enter under the 29th of Aiaru (Year 14 of Alexander): "The 29th, the king died. Clouds." Being a daytime-only entry, it fixes the death to 11 June 323 BCE — a contemporaneous, dated, non-narrative notice independent of the later Greek tradition.',
+        source: {
+          externalId: 'src:babylonian-diary-alexander-death-323bce',
+          name: 'Babylonian Astronomical Diary No. -322 (Sachs–Hunger, Astronomical Diaries and Related Texts from Babylonia, Vol. I, 1988); contemporary record of Alexander\'s death.',
+          url: 'https://www.livius.org/sources/content/oriental-varia/a-contemporary-account-of-the-death-of-alexander/',
+          publishedAt: '0323-06-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Greco-Roman tradition (Arrian, Plutarch, Diodorus) independently reports Alexander\'s death at Babylon in the same season. Sachs and Hunger\'s edition of the diaries and subsequent chronological work reconcile the Babylonian calendar entry with the Macedonian sources, settling the death on the evening-to-day of 10–11 June 323 BCE.',
+        source: {
+          externalId: 'src:sachs-hunger-diaries-vol1-1988',
+          name: 'Sachs AJ, Hunger H. Astronomical Diaries and Related Texts from Babylonia, Vol. I: Diaries from 652 B.C. to 262 B.C. Vienna: Austrian Academy of Sciences, 1988.',
+          url: 'https://www.livius.org/articles/concept/astronomical-diaries/',
+          publishedAt: '1988-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Eclipse of Ennius — earliest dated Roman solar eclipse, 400 BCE ──────────
+  {
+    externalId: 'trajectory:ennius-roman-eclipse-400bce',
+    text: 'A solar eclipse recorded "on the Nones of June" in the early Roman annals — quoted by Ennius and reported by Cicero ("the moon and night obscured the shining sun") — is identified with the eclipse of 21 June 400 BCE, the earliest securely datable Roman astronomical record.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0400-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0400-06-21',
+        datePrecision: 'DAY',
+        reason: 'The pontifical Annales Maximi note a solar eclipse on the Nones of June; the poet Ennius preserves the entry in his Annales with the line "Nonis Iunis soli luna obstitit et nox." Cicero, in De Re Publica 1.25, cites it as a fixed calendrical anchor and counts back from it to an earlier eclipse in the reign of Romulus.',
+        source: {
+          externalId: 'src:cicero-de-re-publica-ennius-eclipse',
+          name: 'Cicero. De Re Publica 1.25, quoting Ennius\'s Annales on the eclipse of the Nones of June. (c. 54–51 BCE)',
+          url: 'https://www.attalus.org/cicero/republic1a.html',
+          publishedAt: '0054-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Scholars disagree on which historical eclipse the annalistic notice records — candidates include 21 June 400 BCE and 288 BCE — and on whether the entry reflects a genuine pontifical observation or a back-calculation. The Loeb edition of De Re Publica flags 21 June 400 BCE as consistent with Cicero\'s chronology.',
+        source: {
+          externalId: 'src:loeb-de-re-publica-1928',
+          name: 'Cicero, De Re Publica (Loeb Classical Library, ed. Keyes, 1928), editorial note on the date of the Ennian eclipse.',
+          url: 'https://www.loebclassics.com/view/marcus_tullius_cicero-de_re_publica/1928/pb_LCL213.47.xml',
+          publishedAt: '1928-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms that a solar eclipse was visible over central Italy on 21 June 400 BCE (Julian), the identification most consistent with the "Nones of June" notice and the surrounding chronology, fixing it as the earliest datable eclipse in the Roman record.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-catalog-ennius',
+          name: 'Espenak F, Meeus J. Five Millennium Catalog of Solar Eclipses: −1999 to +3000. NASA/TP–2009–214174.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Earliest recorded meteor shower — Spring and Autumn Annals, 687 BCE ──────
+  {
+    externalId: 'trajectory:zuozhuan-meteor-shower-687bce',
+    text: 'The Chinese state of Lu recorded a meteor storm on the xinmao night of the fourth month, 687 BCE — "the fixed stars were not visible; at midnight, stars fell like rain" — the earliest written record of a meteor shower, later identified with the Lyrids.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0687-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0687-03-23',
+        datePrecision: 'DAY',
+        reason: 'The court annals of Lu (Spring and Autumn Annals, with the Zuo Zhuan commentary), under the seventh year of Duke Zhuang, log that on the xinmao day of the summer fourth month, at night, the fixed stars became invisible and "at midnight, stars fell like rain" — a dated, sexagenary-cycle notice of an intense meteor display.',
+        source: {
+          externalId: 'src:zuozhuan-meteor-687bce',
+          name: 'Chunqiu / Zuo Zhuan, Duke Zhuang year 7, record of the meteor shower of the xinmao night. (compiled c. 4th century BCE from Lu court records)',
+          url: 'https://en.wikipedia.org/wiki/Meteor_shower',
+          publishedAt: '0400-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern analysis of historical East Asian meteor records dates the entry to the night of 23 March 687 BCE (proleptic Julian) and identifies it as the earliest recorded outburst of the Lyrid meteor shower — the oldest meteor shower with a continuous record — associated with comet C/1861 G1 (Thatcher).',
+        source: {
+          externalId: 'src:lyrids-historical-perspective-2023',
+          name: 'The Lyrids meteor shower: A historical perspective. Planetary and Space Science, 2023.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S0032063323001721',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Timocharis's occultations → Hipparchus discovers precession ──────────────
+  {
+    externalId: 'trajectory:timocharis-occultations-precession-294bce',
+    text: 'Timocharis of Alexandria observed a lunar occultation of the star β Scorpii on 21 December 294 BCE — one of a dated series of occultations later used by Hipparchus to discover the precession of the equinoxes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0294-12-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0294-12-21',
+        datePrecision: 'DAY',
+        reason: 'Timocharis, observing at Alexandria, records the Moon occulting the star β Scorpii (Acrab), and over 295–283 BCE logs further occultations of Spica and the Pleiades together with Spica\'s longitude relative to the autumnal equinox. The dated observations are preserved by Ptolemy in the Almagest.',
+        source: {
+          externalId: 'src:ptolemy-almagest-timocharis',
+          name: 'Ptolemy, Almagest VII.3, reporting Timocharis\'s occultation observations at Alexandria. (c. 150 CE, citing observations of 295–283 BCE)',
+          url: 'https://en.wikipedia.org/wiki/Timocharis',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0129-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Comparing Timocharis\'s recorded position of Spica (8° west of the autumnal equinox) with his own measurement (≈6° west) some 150 years later, Hipparchus infers that stellar longitudes drift over time and announces the precession of the equinoxes (c. 129 BCE), estimating at least 1°/century — the discovery enabled entirely by Timocharis\'s dated data.',
+        source: {
+          externalId: 'src:hipparchus-precession-timocharis',
+          name: 'Encyclopedia.com, "Timocharis" — Hipparchus\'s use of Timocharis\'s observations to discover precession of the equinoxes.',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/timocharis',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Trial and execution of Socrates — Athens, 399 BCE ────────────────────────
+  {
+    externalId: 'trajectory:socrates-trial-execution-399bce',
+    text: 'Socrates was tried and condemned to death by an Athenian jury in the month of Thargelion (May–June) 399 BCE on charges of impiety and corrupting the youth, and executed by hemlock about thirty days later.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0399-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0399-05-01',
+        datePrecision: 'MONTH',
+        reason: 'In Thargelion 399 BCE an Athenian dikastery of several hundred citizens tries Socrates on a public indictment for impiety and corrupting the young, and votes to condemn him. Because the sacred ship had departed for Delos, no execution could proceed until its return, delaying his death roughly a month.',
+        source: {
+          externalId: 'src:plato-apology-399bce',
+          name: 'Plato, Apology and Phaedo — near-contemporary accounts of the trial, condemnation, and death of Socrates. (early 4th century BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0170',
+          publishedAt: '0385-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Two independent contemporaries — Plato (Apology, Crito, Phaedo) and Xenophon (Apology, Memorabilia) — record the trial, verdict, and hemlock execution, and the archon-year of Laches fixes it to 399 BCE. The Stanford Encyclopedia of Philosophy treats the trial and execution in 399 BCE as settled fact, with only motives and procedure debated.',
+        source: {
+          externalId: 'src:sep-socrates',
+          name: 'Stanford Encyclopedia of Philosophy, "Socrates" (Nails D.) — dating and sources for the trial and execution.',
+          url: 'https://plato.stanford.edu/entries/socrates/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
