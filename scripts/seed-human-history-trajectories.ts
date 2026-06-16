@@ -8594,6 +8594,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Priestley isolates oxygen — fall of phlogiston ───────────────────────────
+  {
+    externalId: 'trajectory:priestley-oxygen-1774',
+    text: 'On 1 August 1774 Joseph Priestley used a burning lens to heat mercuric oxide and isolated a gas in which a candle burned with a "remarkably vigorous flame" — the gas later named oxygen, whose interpretation overturned the phlogiston theory of combustion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1774-08-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1774-08-01',
+        datePrecision: 'DAY',
+        reason: 'Priestley focuses sunlight with a large burning lens onto "mercurius calcinatus per se" (mercuric oxide) and collects a new "air" in which a candle burns far more brightly than in common air and a mouse survives longer. He records the experiment with the date 1 August 1774 and publishes it in the second volume of his Experiments and Observations on Different Kinds of Air, calling the gas "dephlogisticated air."',
+        source: {
+          externalId: 'src:priestley-experiments-air-1775',
+          name: 'Priestley J. Experiments and Observations on Different Kinds of Air, Vol. II. London: J. Johnson, 1775 (experiment dated 1 August 1774).',
+          url: 'https://archive.org/details/experimentsobser02prie',
+          publishedAt: '1775-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1789-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Antoine Lavoisier, told of Priestley\'s gas in 1774, reinterprets it not as "dephlogisticated air" but as a distinct element he names oxygène, showing that combustion and calcination are combinations with this gas rather than the release of phlogiston. His Traité élémentaire de chimie (1789) systematizes the oxygen theory, and the phlogiston doctrine is abandoned by the chemical community.',
+        source: {
+          externalId: 'src:lavoisier-traite-1789',
+          name: 'Lavoisier A-L. Traité élémentaire de chimie. Paris: Cuchet, 1789.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k1063385',
+          publishedAt: '1789-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Wöhler synthesizes urea — the fall of vitalism ───────────────────────────
+  {
+    externalId: 'trajectory:wohler-urea-synthesis-1828',
+    text: 'In February 1828 Friedrich Wöhler synthesized urea — a compound excreted by living animals — from the inorganic salt ammonium cyanate, demonstrating that an organic substance could be made without a living organism or "vital force."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1828-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1828-02-22',
+        datePrecision: 'DAY',
+        reason: 'Attempting to prepare ammonium cyanate, Wöhler obtains crystals identical to urea isolated from urine. In a letter to Jöns Jacob Berzelius dated 22 February 1828 he writes that he can "make urea without the need of a kidney, whether of man or dog." He publishes the result the same year in Annalen der Physik und Chemie as "Ueber künstliche Bildung des Harnstoffs."',
+        source: {
+          externalId: 'src:wohler-harnstoff-1828',
+          name: 'Wöhler F. Ueber künstliche Bildung des Harnstoffs. Annalen der Physik und Chemie 1828;88:253–256.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.18280880206',
+          publishedAt: '1828-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1845-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hermann Kolbe\'s synthesis of acetic acid from elemental constituents (1845) and the broader rise of synthetic organic chemistry confirm that organic compounds obey ordinary chemical laws and require no special vital force. The doctrine of vitalism, dominant since Berzelius, is abandoned as a chemical principle.',
+        source: {
+          externalId: 'src:kolbe-acetic-acid-1845',
+          name: 'Kolbe H. Beiträge zur Kenntniss der gepaarten Verbindungen. Annalen der Chemie und Pharmacie 1845;54:145–188.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/jlac.18450540202',
+          publishedAt: '1845-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Michelson–Morley — no luminiferous aether wind ───────────────────────────
+  {
+    externalId: 'trajectory:michelson-morley-1887',
+    text: 'The Michelson–Morley interferometer experiment, performed at Western Reserve University in July 1887, found no detectable motion of the Earth relative to the luminiferous aether — a null result that contradicted the prevailing aether theory of light.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1887-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1887-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Albert Michelson and Edward Morley use a sensitive interferometer floated on mercury to compare the speed of light along perpendicular paths as the Earth moves through space. They detect no fringe shift attributable to an "aether wind," far below the predicted effect, and publish the null result in the American Journal of Science in November 1887.',
+        source: {
+          externalId: 'src:michelson-morley-1887',
+          name: 'Michelson AA, Morley EW. On the Relative Motion of the Earth and the Luminiferous Ether. American Journal of Science 1887;34:333–345.',
+          url: 'https://en.wikisource.org/wiki/On_the_Relative_Motion_of_the_Earth_and_the_Luminiferous_Ether',
+          publishedAt: '1887-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-06-30',
+        datePrecision: 'DAY',
+        reason: 'Einstein\'s special theory of relativity, received by Annalen der Physik on 30 June 1905, dispenses with the luminiferous aether entirely by postulating that the speed of light is the same in all inertial frames. The Michelson–Morley null result is thereby explained as expected rather than anomalous, and the stationary aether is abandoned.',
+        source: {
+          externalId: 'src:einstein-elektrodynamik-1905',
+          name: 'Einstein A. Zur Elektrodynamik bewegter Körper. Annalen der Physik 1905;17:891–921.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.19053221004',
+          publishedAt: '1905-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── J.J. Thomson discovers the electron ──────────────────────────────────────
+  {
+    externalId: 'trajectory:thomson-electron-1897',
+    text: 'On 30 April 1897 J. J. Thomson announced at the Royal Institution that cathode rays are streams of negatively charged "corpuscles" far lighter than the hydrogen atom — the discovery of the electron, the first subatomic particle.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1897-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1897-04-30',
+        datePrecision: 'DAY',
+        reason: 'In his Royal Institution Friday Evening Discourse of 30 April 1897, Thomson reports measuring the charge-to-mass ratio of cathode rays and finds the carriers to be roughly a thousand times lighter than hydrogen ions and independent of the gas or electrode used. He concludes the atom is divisible and contains universal "corpuscles," publishing the detailed work as "Cathode Rays" in the Philosophical Magazine in October 1897.',
+        source: {
+          externalId: 'src:thomson-cathode-rays-1897',
+          name: 'Thomson JJ. Cathode Rays. Philosophical Magazine 1897;44(269):293–316.',
+          url: 'https://www.tandfonline.com/doi/abs/10.1080/14786449708621070',
+          publishedAt: '1897-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906-12-10',
+        datePrecision: 'DAY',
+        reason: 'The electron is corroborated as a fundamental particle — Thomson is awarded the Nobel Prize in Physics on 10 December 1906 for his investigations of electrical conduction in gases, and Robert Millikan\'s oil-drop experiments (1909–1913) fix its charge, cementing the electron in the foundations of atomic physics.',
+        source: {
+          externalId: 'src:thomson-nobel-1906',
+          name: 'The Nobel Prize in Physics 1906 — J. J. Thomson. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1906/thomson/facts/',
+          publishedAt: '1906-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lei Áurea — abolition of slavery in Brazil ───────────────────────────────
+  {
+    externalId: 'trajectory:brazil-lei-aurea-1888',
+    text: 'On 13 May 1888 the Imperial Regent Princess Isabel signed the Lei Áurea (Law No. 3,353), abolishing slavery in Brazil without compensation — the last country in the Western Hemisphere to end legal slavery.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1888-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1888-05-13',
+        datePrecision: 'DAY',
+        reason: 'After decades of abolitionist pressure and earlier partial measures (the 1871 Law of Free Birth and the 1885 Sexagenarian Law), the General Assembly passes and Princess Isabel sanctions the Lei Áurea. Its two articles declare slavery "extinct from the date of this law" and revoke all contrary provisions, immediately freeing roughly 700,000 enslaved people.',
+        source: {
+          externalId: 'src:lei-aurea-1888',
+          name: 'Lei n.º 3.353, de 13 de maio de 1888 (Lei Áurea). Coleção de Leis do Império do Brasil / Planalto.',
+          url: 'https://www.planalto.gov.br/ccivil_03/leis/lim/lim3353.htm',
+          publishedAt: '1888-05-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1889-11-15',
+        datePrecision: 'DAY',
+        reason: 'Emancipation proves irreversible: no compensation to former owners is enacted and slavery is never restored. The economic and political fallout among the planter class contributes to the fall of the monarchy and the proclamation of the Brazilian Republic on 15 November 1889, after which abolition is entrenched as settled law.',
+        source: {
+          externalId: 'src:brazil-republic-1889',
+          name: 'Proclamation of the Republic of Brazil, 15 November 1889. Encyclopædia Britannica — History of Brazil.',
+          url: 'https://www.britannica.com/place/Brazil/The-fall-of-the-empire',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
