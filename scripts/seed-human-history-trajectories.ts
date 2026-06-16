@@ -21793,6 +21793,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE SUPPLEMENT (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── The mysterious dust veil of 536 CE (Byzantine; Icelandic eruption) ──────
+  {
+    externalId: 'trajectory:dust-veil-536',
+    text: 'Beginning in the spring of 536 CE a persistent atmospheric "dust veil" dimmed the sun across the Mediterranean and Europe for some 18 months; the Byzantine historian Procopius recorded that the sun gave light "like the moon," and ice-core analysis later identified the cause as a major volcanic eruption in Iceland in early 536.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0536-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0536-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Procopius of Caesarea, writing within a generation, reports that "during this year a most dread portent took place. For the sun gave forth its light without brightness... and it seemed exceedingly like the sun in eclipse, for the beams it shed were not clear." Independent contemporaries — John of Ephesus, John Lydus, Cassiodorus in Italy, and Chinese annals noting failed harvests and dimmed skies — record the same dimming and the cold, famine, and crop failure that followed, fixing the onset to 536.',
+        source: {
+          externalId: 'src:procopius-wars-dust-veil-536',
+          name: 'Procopius of Caesarea. History of the Wars, Book IV.14, account of the dimmed sun. (c. 550 CE, contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Volcanic_winter_of_536',
+          publishedAt: '0550-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-01',
+        datePrecision: 'MONTH',
+        reason: 'For centuries the cause of the 536 darkening was unknown, and late-20th-century proposals ranged from a comet impact to an unidentified tropical eruption. An ultra-high-resolution analysis of the Colle Gnifetti Alpine ice core by Loveluck, McCormick, Mayewski and colleagues, published in Antiquity in 2018, dated a sulfate spike to early 536 and recovered microscopic volcanic glass shards whose geochemistry matches Icelandic volcanic rock, identifying a high-latitude Icelandic eruption as the source of the veil. The 536 event is now established as the opening of one of the coldest decades of the last two millennia.',
+        source: {
+          externalId: 'src:loveluck-mccormick-icecore-536-2018',
+          name: 'Loveluck CP, McCormick M, Spaulding NE, et al. Alpine ice-core evidence for the transformation of the European monetary system, AD 640–670. Antiquity 2018;92(366):1571–1585 (with the Colle Gnifetti record dating the 536 Icelandic eruption).',
+          url: 'https://doi.org/10.15184/aqy.2018.110',
+          publishedAt: '2018-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Viking raid on Lindisfarne — 8 June 793 (start of the Viking Age) ───────
+  {
+    externalId: 'trajectory:lindisfarne-raid-793',
+    text: 'On 8 June 793 CE seaborne raiders sacked the monastery of Lindisfarne off the Northumbrian coast, killing and plundering — the first recorded Viking raid in the British Isles and the conventional start of the Viking Age.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0793-06-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0793-06-08',
+        datePrecision: 'DAY',
+        reason: 'The Northumbrian scholar Alcuin, then at Charlemagne\'s court, writes in the immediate aftermath to Bishop Higbald of Lindisfarne and to King Æthelred: "the church of St Cuthbert is spattered with the blood of the priests of God, stripped of all its furnishings, exposed to the plundering of pagans." His letters give a contemporary, first-information account of the attack on the holy island.',
+        source: {
+          externalId: 'src:alcuin-letter-higbald-793',
+          name: 'Alcuin of York. Letter to Higbald, Bishop of Lindisfarne (and to King Æthelred of Northumbria), 793. (contemporary correspondence)',
+          url: 'https://en.wikipedia.org/wiki/Lindisfarne#Viking_raid',
+          publishedAt: '0793-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Anglo-Saxon Chronicle\'s entry for 793 — describing portents of "fiery dragons" in the sky, famine, and "the woeful inroads of heathen men" that destroyed God\'s church at Lindisfarne — corroborates Alcuin. The Chronicle as copied gives a January date, but historians (e.g., Whitelock, English Historical Documents) recognise this as a scribal corruption and place the raid on 8 June 793; the event stands as the securely dated opening of the Viking Age, debated only as to the raiders\' precise Scandinavian origin.',
+        source: {
+          externalId: 'src:whitelock-ehd-lindisfarne',
+          name: 'Whitelock D (ed.). English Historical Documents c. 500–1042. London: Eyre & Spottiswoode, 1955 (translation and dating of the Anglo-Saxon Chronicle and Alcuin\'s letters on the Lindisfarne raid).',
+          url: 'https://en.wikipedia.org/wiki/Lindisfarne#Viking_raid',
+          publishedAt: '1955-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Badr — 13 March 624 CE (17 Ramadan 2 AH) ──────────────────────
+  {
+    externalId: 'trajectory:battle-of-badr-624',
+    text: 'The Muslims of Medina under Muhammad decisively defeated a larger Quraysh force from Mecca at Badr on 13 March 624 CE (17 Ramadan 2 AH); the battle is named and referred to in the Quran, which calls the day "the Criterion."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0624-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0624-03-13',
+        datePrecision: 'DAY',
+        reason: 'A small Medinan force engages and routs the Meccan Quraysh near the wells of Badr. The encounter is referred to directly in the Quran — "God had already given you victory at Badr when you were few" (Al Imran 3:123) and throughout Surah al-Anfal (8) — making it one of the very few historical events named in the text, which Muslims regard as a contemporary record of the event.',
+        source: {
+          externalId: 'src:quran-al-anfal-badr',
+          name: 'Quran, Surah al-Anfal (8) and Al Imran (3:123), references to the day of Badr. (7th-century text)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Badr',
+          publishedAt: '0650-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The early Islamic biographical tradition — Ibn Ishaq\'s Sira (preserved by Ibn Hisham), al-Waqidi\'s Kitab al-Maghazi, and al-Tabari\'s History — gives detailed, mutually corroborating accounts of Badr and dates it to 17 Ramadan of the second year after the Hijra, converted by modern scholarship (e.g., W. Montgomery Watt, Muhammad at Medina, 1956) to 13 March 624 CE. The occurrence, outcome, and date are settled; only troop numbers and tactical details are debated.',
+        source: {
+          externalId: 'src:watt-muhammad-at-medina-badr',
+          name: 'Watt WM. Muhammad at Medina. Oxford: Clarendon Press, 1956 (analysis of the Sira and maghazi sources and dating of Badr).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Badr',
+          publishedAt: '1956-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Golden Bull of 1356 — constitution of the Holy Roman Empire ─────────────
+  {
+    externalId: 'trajectory:golden-bull-1356',
+    text: 'Emperor Charles IV promulgated the Golden Bull in two parts — the first 23 chapters at the Diet of Nuremberg on 10 January 1356 and the final chapters at the Diet of Metz on 25 December 1356 — fixing the body of seven prince-electors and the procedure for electing the King of the Romans, the basic constitutional law of the Holy Roman Empire until 1806.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1356-01-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1356-01-10',
+        datePrecision: 'DAY',
+        reason: 'At the Diet of Nuremberg the imperial chancery issues the first 23 chapters of the decree later known (from its golden seal, bulla aurea) as the Golden Bull, naming the seven electors — the archbishops of Mainz, Trier, and Cologne, the King of Bohemia, the Count Palatine of the Rhine, the Duke of Saxony, and the Margrave of Brandenburg — and regulating the election by majority vote. The concluding chapters are added at the Diet of Metz on 25 December 1356.',
+        source: {
+          externalId: 'src:golden-bull-text-1356',
+          name: 'Golden Bull of Emperor Charles IV, 1356. Original engrossed exemplars (e.g., Vienna, Haus-, Hof- und Staatsarchiv; Frankfurt). (contemporaneous legal instrument)',
+          url: 'https://en.wikipedia.org/wiki/Golden_Bull_of_1356',
+          publishedAt: '1356-01-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1356-12-25',
+        datePrecision: 'DAY',
+        reason: 'With the Metz chapters added on 25 December 1356, the Golden Bull becomes the binding fundamental law of the Empire: it ends papal claims to confirm or reject imperial elections, fixes the electoral college and the rights of the electors, and governs the imperial succession for 450 years until the Empire\'s dissolution in 1806. Multiple sealed exemplars survive and the text is among the best-attested medieval constitutional documents.',
+        source: {
+          externalId: 'src:bryce-holy-roman-empire-golden-bull',
+          name: 'Bryce J. The Holy Roman Empire (revised ed.). London: Macmillan, 1904, ch. on the imperial constitution and the Golden Bull of 1356.',
+          url: 'https://www.britannica.com/event/Golden-Bull-of-Emperor-Charles-IV',
+          publishedAt: '1904-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
