@@ -22423,6 +22423,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── RMS Titanic sinks ────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:titanic-sinking-1912',
+    text: 'The RMS Titanic struck an iceberg in the North Atlantic late on 14 April 1912 and sank in the early hours of 15 April, killing about 1,500 of the roughly 2,200 people aboard.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-04-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1912-04-15',
+        datePrecision: 'DAY',
+        reason: 'Fragmentary wireless reports reach North America after the collision. Early newspaper dispatches contradict one another — several, including a White Star Line statement relayed to the press, erroneously report that all passengers were saved and the Titanic was being towed to Halifax. The true scale of loss is not yet known.',
+        source: {
+          externalId: 'src:titanic-early-press-1912',
+          name: 'Contemporaneous wire dispatches and front pages, 15 April 1912 (e.g. The New York Times, "Titanic Sinking… No Lives Lost" early editions vs. later corrected editions).',
+          url: 'https://en.wikipedia.org/wiki/Sinking_of_the_Titanic',
+          publishedAt: '1912-04-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1912-04-18',
+        datePrecision: 'DAY',
+        reason: 'The Cunard liner Carpathia, which had pulled roughly 705 survivors from lifeboats, reaches New York on the evening of 18 April 1912. Survivor accounts and the published roster confirm that the ship sank with massive loss of life, ending the conflicting reports.',
+        source: {
+          externalId: 'src:carpathia-survivors-1912',
+          name: 'Survivor landings and accounts on arrival of RMS Carpathia, New York, 18 April 1912 (contemporaneous press and passenger testimony).',
+          url: 'https://en.wikipedia.org/wiki/RMS_Carpathia',
+          publishedAt: '1912-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1912-07-30',
+        datePrecision: 'DAY',
+        reason: 'Two official inquiries — the United States Senate inquiry (report 28 May 1912) and the British Wreck Commissioner\'s inquiry under Lord Mersey (report 30 July 1912) — establish the sequence of events, the iceberg collision, the shortage of lifeboats, and the casualty figures, fixing the facts of the disaster in the formal record.',
+        source: {
+          externalId: 'src:mersey-titanic-report-1912',
+          name: 'Report on the Loss of the S.S. Titanic (British Wreck Commissioner\'s Inquiry, Lord Mersey), 30 July 1912.',
+          url: 'https://www.titanicinquiry.org/BOTInq/BOTReport/botRepArrange.php',
+          publishedAt: '1912-07-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Robert Ballard and a Woods Hole / IFREMER expedition locate the wreck of the Titanic on the seabed at about 3,800 metres on 1 September 1985, in two main pieces. The discovery physically corroborates that the ship broke apart and sank as described, reinforcing the settled account.',
+        source: {
+          externalId: 'src:ballard-titanic-wreck-1985',
+          name: 'Ballard R.D. et al. Discovery of the wreck of RMS Titanic, Woods Hole Oceanographic Institution / IFREMER expedition, 1 September 1985.',
+          url: 'https://en.wikipedia.org/wiki/Wreck_of_the_Titanic',
+          publishedAt: '1985-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Armistice of 11 November 1918 ends WWI fighting ─────────────────────────
+  {
+    externalId: 'trajectory:armistice-compiegne-1918',
+    text: 'Fighting on the Western Front of the First World War ceased at 11:00 a.m. on 11 November 1918, when the Armistice signed earlier that morning in a railway carriage at Compiègne came into effect.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1918-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1918-11-11',
+        datePrecision: 'DAY',
+        reason: 'German plenipotentiaries led by Matthias Erzberger and Allied commander Marshal Ferdinand Foch sign the Armistice at about 5:10 a.m. in Foch\'s railway carriage in the Forest of Compiègne. Its terms specify a cessation of hostilities six hours later; at 11:00 a.m. the guns fall silent along the Western Front.',
+        source: {
+          externalId: 'src:armistice-compiegne-text-1918',
+          name: 'Armistice Agreement between the Allies and Germany, signed at Compiègne, 11 November 1918 (official text).',
+          url: 'https://avalon.law.yale.edu/20th_century/armtroop.asp',
+          publishedAt: '1918-11-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1918-11-12',
+        datePrecision: 'DAY',
+        reason: 'The cessation of fighting is announced and celebrated worldwide on 11 November 1918, reported on front pages across Allied and neutral nations the following day. The fact of the armistice and its effective hour is corroborated by the war diaries of every army on the front and by Allied and German government records.',
+        source: {
+          externalId: 'src:armistice-press-1918',
+          name: 'Worldwide press coverage of the Armistice, 11–12 November 1918 (e.g. The Times of London, The New York Times "Armistice Signed, End of the War!").',
+          url: 'https://en.wikipedia.org/wiki/Armistice_of_11_November_1918',
+          publishedAt: '1918-11-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Scopes "Monkey Trial" verdict ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:scopes-trial-1925',
+    text: 'On 21 July 1925 John T. Scopes was convicted in Dayton, Tennessee, of teaching human evolution in a public school in violation of the state\'s Butler Act, and was fined $100.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1925-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1925-07-21',
+        datePrecision: 'DAY',
+        reason: 'After an eight-day trial pitting William Jennings Bryan against Clarence Darrow, the jury deliberates for nine minutes and returns a guilty verdict. Judge John T. Raulston imposes a $100 fine, entering Scopes\'s conviction under the Butler Act into the judicial record.',
+        source: {
+          externalId: 'src:scopes-trial-transcript-1925',
+          name: 'The World\'s Most Famous Court Trial: Tennessee Evolution Case (official stenographic transcript, State of Tennessee v. John Thomas Scopes), 1925.',
+          url: 'https://www.famous-trials.com/scopesmonkey',
+          publishedAt: '1925-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1927-01-17',
+        datePrecision: 'DAY',
+        reason: 'The Supreme Court of Tennessee sets aside Scopes\'s conviction on a technicality — the $100 fine had been fixed by the judge rather than the jury, exceeding his authority — while upholding the constitutionality of the Butler Act itself. The conviction is vacated and the state declines to retry the case.',
+        source: {
+          externalId: 'src:scopes-v-state-1927',
+          name: 'Scopes v. State, 154 Tenn. 105, 289 S.W. 363 (Tennessee Supreme Court, 17 January 1927).',
+          url: 'https://en.wikipedia.org/wiki/Scopes_trial',
+          publishedAt: '1927-01-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1968-11-12',
+        datePrecision: 'DAY',
+        reason: 'The legal question underlying the case remains live for decades. In Epperson v. Arkansas (12 November 1968) the U.S. Supreme Court strikes down a comparable anti-evolution statute as a violation of the Establishment Clause, retrospectively undercutting the law under which Scopes had been convicted.',
+        source: {
+          externalId: 'src:epperson-v-arkansas-1968',
+          name: 'Epperson v. Arkansas, 393 U.S. 97 (U.S. Supreme Court, 12 November 1968).',
+          url: 'https://supreme.justia.com/cases/federal/us/393/97/',
+          publishedAt: '1968-11-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lindbergh's solo transatlantic flight ───────────────────────────────────
+  {
+    externalId: 'trajectory:lindbergh-transatlantic-flight-1927',
+    text: 'Charles Lindbergh made the first solo non-stop transatlantic flight, departing Roosevelt Field, New York, on 20 May 1927 and landing at Le Bourget aerodrome near Paris on 21 May 1927 after about 33.5 hours in the Spirit of St. Louis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1927-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1927-05-21',
+        datePrecision: 'DAY',
+        reason: 'Lindbergh lands the Spirit of St. Louis at Le Bourget at about 10:22 p.m. local time on 21 May 1927, met by a crowd of roughly 150,000. The arrival is witnessed by thousands and reported globally within hours, recording the completion of the New York–Paris crossing.',
+        source: {
+          externalId: 'src:lindbergh-le-bourget-1927',
+          name: 'Contemporaneous press coverage of Lindbergh\'s arrival at Le Bourget, 21 May 1927 (e.g. The New York Times, "Lindbergh Does It!").',
+          url: 'https://en.wikipedia.org/wiki/Charles_Lindbergh',
+          publishedAt: '1927-05-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1927-06-16',
+        datePrecision: 'DAY',
+        reason: 'The achievement is formally certified and rewarded: Lindbergh is presented the $25,000 Orteig Prize on 16 June 1927 for the first non-stop New York–Paris flight, and the flight is logged in National Aeronautic Association records, settling it as an established aviation milestone.',
+        source: {
+          externalId: 'src:orteig-prize-lindbergh-1927',
+          name: 'Award of the Orteig Prize to Charles A. Lindbergh, 16 June 1927 (Raymond Orteig / National Aeronautic Association records).',
+          url: 'https://en.wikipedia.org/wiki/Orteig_Prize',
+          publishedAt: '1927-06-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Black Tuesday — the Wall Street Crash of 1929 ───────────────────────────
+  {
+    externalId: 'trajectory:black-tuesday-crash-1929',
+    text: 'On "Black Tuesday," 29 October 1929, the New York Stock Exchange suffered its most severe single-day collapse to that date, with about 16.4 million shares traded and the Dow Jones Industrial Average falling roughly 12 percent, the climax of the Wall Street Crash of 1929.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1929-10-29',
+        datePrecision: 'DAY',
+        reason: 'Selling overwhelms the floor of the New York Stock Exchange as a record ~16.4 million shares change hands, the ticker runs hours behind, and the Dow Jones Industrial Average plunges. The collapse is recorded in real time by exchange tape and reported on front pages the next morning.',
+        source: {
+          externalId: 'src:black-tuesday-press-1929',
+          name: 'Contemporaneous coverage of the 29 October 1929 crash (e.g. The New York Times, Wall Street records of trading volume and quotations).',
+          url: 'https://en.wikipedia.org/wiki/Wall_Street_Crash_of_1929',
+          publishedAt: '1929-10-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-06-06',
+        datePrecision: 'DAY',
+        reason: 'Congressional investigation of the crash and the ensuing market practices (the Pecora hearings, 1932–1934) documents the trading collapse and leads to the Securities Exchange Act of 6 June 1934 and the creation of the Securities and Exchange Commission, fixing the events of October 1929 in the official economic and legislative record.',
+        source: {
+          externalId: 'src:pecora-securities-act-1934',
+          name: 'Securities Exchange Act of 1934 (Pub. L. 73–291), enacted 6 June 1934, following the Pecora Commission hearings.',
+          url: 'https://en.wikipedia.org/wiki/Pecora_Commission',
+          publishedAt: '1934-06-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
