@@ -12993,6 +12993,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — further curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Plague of Justinian reaches Constantinople, 542 ─────────────────────────
+  {
+    externalId: 'trajectory:justinianic-plague-constantinople-542',
+    text: 'The first plague pandemic reached Constantinople in the spring of 542 CE, where the Byzantine official Procopius recorded catastrophic daily mortality during the reign of Justinian I; ancient-DNA analysis later identified the pathogen as Yersinia pestis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '0542-04-01',
+    claimEmergedPrecision: 'QUARTER',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0542-04-01',
+        datePrecision: 'QUARTER',
+        reason: 'Procopius, an official present in the capital, devotes a long excursus in the History of the Wars (II.22–23) to the pestilence that struck Constantinople in 542, describing buboes, delirium, and a death toll he places in the tens of thousands per day at its height. John of Ephesus, who travelled through the affected provinces, gives an independent contemporary account, fixing the outbreak to the early 540s.',
+        source: {
+          externalId: 'src:procopius-wars-plague-542',
+          name: 'Procopius of Caesarea. History of the Wars, Book II.22–23, account of the plague at Constantinople. (c. 550 CE)',
+          url: 'https://en.wikipedia.org/wiki/Plague_of_Justinian',
+          publishedAt: '0550-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-04-01',
+        datePrecision: 'MONTH',
+        reason: 'For fourteen centuries the identity of the pathogen could be inferred only from textual symptom descriptions. In 2014 Wagner et al. recovered and analysed Yersinia pestis DNA from sixth-century plague victims at Aschheim, Bavaria, directly identifying the causative agent of the Justinianic pandemic and tying it to the same species responsible for the later Black Death.',
+        source: {
+          externalId: 'src:wagner-yersinia-justinian-2014',
+          name: 'Wagner DM et al. Yersinia pestis and the plague of Justinian 541–543 AD: a genomic analysis. The Lancet Infectious Diseases 2014;14(4):319–326.',
+          url: 'https://doi.org/10.1016/S1473-3099(13)70323-2',
+          publishedAt: '2014-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Feldman et al. reconstructed a high-coverage Yersinia pestis genome from a sixth-century Justinianic victim, confirming a distinct extinct lineage and placing the pandemic securely within the molecular phylogeny of plague. The pathogen identity and the 542 outbreak at Constantinople are settled, even as the demographic scale of the pandemic remains actively debated.',
+        source: {
+          externalId: 'src:feldman-justinian-genome-2016',
+          name: 'Feldman M et al. A high-coverage Yersinia pestis genome from a sixth-century Justinianic plague victim. Molecular Biology and Evolution 2016;33(11):2911–2923.',
+          url: 'https://doi.org/10.1093/molbev/msw170',
+          publishedAt: '2016-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Yarmouk — Arab conquest of Byzantine Syria ────────────────────
+  {
+    externalId: 'trajectory:battle-of-yarmouk-636',
+    text: 'In August 636 CE the Rashidun Arab army, with Khalid ibn al-Walid commanding, decisively defeated the main Byzantine field army at the Yarmouk River, breaking Byzantine resistance in the Levant and opening Syria to the Muslim conquest.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0636-08-20',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0636-08-20',
+        datePrecision: 'MONTH',
+        reason: 'Over several days of fighting near the Yarmouk gorge the Byzantine army under Vahan is routed; the defeat ends imperial control of Syria, and tradition records Heraclius bidding farewell to the province as he withdrew. The Armenian bishop Sebeos, writing within a generation, records the Arab victory and the collapse of Byzantine power in the East.',
+        source: {
+          externalId: 'src:sebeos-history-yarmouk',
+          name: 'Sebeos. The Armenian History attributed to Sebeos, account of the Arab defeat of the Byzantines in Syria. (mid-7th century, contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Yarmuk',
+          publishedAt: '0660-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arabic (al-Baladhuri\'s Futuh al-Buldan, al-Tabari), Byzantine (Theophanes), Syriac, and Armenian (Sebeos) traditions independently report a decisive Arab victory at the Yarmouk in 636 and the consequent loss of Syria. Modern scholarship treats Yarmouk as the securely placed turning point of the Levantine conquest, debating only the precise day within August and the troop numbers, not the event.',
+        source: {
+          externalId: 'src:kaegi-byzantium-islamic-conquests',
+          name: 'Kaegi WE. Byzantium and the Early Islamic Conquests. Cambridge University Press, 1992. (Scholarly synthesis of the sources for Yarmouk and the conquest of Syria)',
+          url: 'https://www.cambridge.org/core/books/byzantium-and-the-early-islamic-conquests/',
+          publishedAt: '1992-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── "King Henry's eclipse" — total solar eclipse of 2 August 1133 ───────────
+  {
+    externalId: 'trajectory:henry-eclipse-1133',
+    text: 'A total solar eclipse darkened the British Isles and central Europe on 2 August 1133; English chroniclers recorded the "King Henry\'s eclipse" as an evil omen at Henry I\'s final departure for Normandy, and modern eclipse computation confirms a totality on that date.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1133-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1133-08-02',
+        datePrecision: 'DAY',
+        reason: 'William of Malmesbury, in the Historia Novella, describes a daytime darkening so complete that stars appeared, coinciding with King Henry I\'s crossing to Normandy — from which he never returned alive — and treated by observers as a portent. The Anglo-Saxon Chronicle and continental annals independently note the darkening of the sun in 1133.',
+        source: {
+          externalId: 'src:malmesbury-historia-novella-eclipse',
+          name: 'William of Malmesbury. Historia Novella, account of the solar eclipse at Henry I\'s departure for Normandy. (c. 1142)',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_1133',
+          publishedAt: '1142-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern eclipse canons (Oppolzer\'s Canon der Finsternisse; NASA\'s Five Millennium Canon of Solar Eclipses) compute a total solar eclipse on 2 August 1133 whose path of totality crossed Scotland and northern England, matching the chronicle descriptions and fixing the date. Such medieval eclipse records are now used to constrain the long-term slowing of the Earth\'s rotation (ΔT).',
+        source: {
+          externalId: 'src:nasa-five-millennium-eclipse-1133',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141. (Confirming the total solar eclipse of 2 August 1133)',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fourth Lateran Council defines transubstantiation, 1215 ─────────────────
+  {
+    externalId: 'trajectory:fourth-lateran-transubstantiation-1215',
+    text: 'The Fourth Lateran Council, opened by Pope Innocent III on 11 November 1215, promulgated as its first canon ("Firmiter credimus") the doctrine that the eucharistic bread and wine are "transubstantiated" into the body and blood of Christ — the first use of the term in a conciliar definition.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1215-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-11-30',
+        datePrecision: 'DAY',
+        reason: 'The largest assembly of Western prelates to that date convened in three sessions (11, 20, and 30 November 1215) and issued 71 canons. The opening canon, Firmiter credimus, declares that in the sacrament of the altar the bread and wine are "transubstantiated" (transsubstantiatis) into Christ\'s body and blood — the earliest authoritative conciliar use of the word. The constitutions survive in the conciliar manuscript tradition.',
+        source: {
+          externalId: 'src:lateran-iv-canons-1215',
+          name: 'Constitutiones Concilii quarti Lateranensis, Canon 1 (Firmiter credimus). (Promulgated 30 November 1215)',
+          url: 'https://en.wikipedia.org/wiki/Fourth_Council_of_the_Lateran',
+          publishedAt: '1215-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1551-10-11',
+        datePrecision: 'DAY',
+        reason: 'After Reformation theologians rejected transubstantiation, the Council of Trent in its thirteenth session (11 October 1551) dogmatically reaffirmed the doctrine and expressly treated the Lateran definition as authoritative precedent, fixing both the term and the conciliar act of 1215 as binding within the Roman Church.',
+        source: {
+          externalId: 'src:trent-session-13-eucharist',
+          name: 'Council of Trent, Session 13, Decree on the Most Holy Eucharist. (11 October 1551)',
+          url: 'https://www.papalencyclicals.net/councils/trent/thirteenth-session.htm',
+          publishedAt: '1551-10-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Critical editions of the conciliar decrees (Tanner, Decrees of the Ecumenical Councils, 1990) establish the text, sessions, and date of Lateran IV beyond dispute. That the council of November 1215 defined transubstantiation in its first canon is uncontested in church history.',
+        source: {
+          externalId: 'src:tanner-decrees-ecumenical-councils',
+          name: 'Tanner NP (ed.). Decrees of the Ecumenical Councils, vol. 1. Georgetown University Press, 1990. (Critical edition of the Lateran IV constitutions)',
+          url: 'https://www.britannica.com/event/Fourth-Lateran-Council',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ain Jalut — Mamluks halt the Mongol advance ───────────────────
+  {
+    externalId: 'trajectory:battle-ain-jalut-1260',
+    text: 'On 3 September 1260 the Mamluk army of Egypt under Sultan Qutuz, with Baybars commanding the vanguard, defeated the Mongol Ilkhanid force under Kitbuqa at Ayn Jālūt in Galilee — the first strategically decisive defeat of the Mongols, halting their westward expansion into the Levant.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1260-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1260-09-03',
+        datePrecision: 'DAY',
+        reason: 'The Mamluks lured and crushed the Mongol detachment in the Jezreel Valley; the commander Kitbuqa was captured and killed. Baybars\'s secretary Ibn ʿAbd al-Ẓāhir, a contemporary, records the campaign and the victory, and the date 25 Ramadan 658 AH is preserved in the Mamluk chronicle tradition.',
+        source: {
+          externalId: 'src:ibn-abd-al-zahir-ain-jalut',
+          name: 'Ibn ʿAbd al-Ẓāhir. Al-Rawḍ al-Zāhir fī sīrat al-Malik al-Ẓāhir (biography of Baybars), account of the campaign of Ayn Jālūt. (late 13th century, contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '1284-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arabic (al-Maqrīzī, al-Yūnīnī), Persian (Rashīd al-Dīn\'s Jāmiʿ al-tawārīkh), and Syriac (Bar Hebraeus, a contemporary) sources independently confirm the date, location, and Mongol defeat. Modern scholarship treats Ayn Jālūt as the securely dated check on Mongol expansion in the Levant, the opening battle of the long Mamluk–Ilkhanid war.',
+        source: {
+          externalId: 'src:amitai-mongols-mamluks',
+          name: 'Amitai-Preiss R. Mongols and Mamluks: The Mamluk-Ilkhanid War, 1260–1281. Cambridge University Press, 1995.',
+          url: 'https://www.cambridge.org/core/books/mongols-and-mamluks/',
+          publishedAt: '1995-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
