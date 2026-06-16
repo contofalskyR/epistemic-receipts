@@ -5369,6 +5369,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, exploration
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Magellan–Elcano first circumnavigation ──────────────────────────────────
+  {
+    externalId: 'trajectory:magellan-circumnavigation-1522',
+    text: 'The ship Victoria, under Juan Sebastián Elcano, completed the first circumnavigation of the globe when it returned to Sanlúcar de Barrameda, Spain, on 6 September 1522, empirically demonstrating that the Earth could be circled by sea.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1522-09-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1522-09-06',
+        datePrecision: 'DAY',
+        reason: 'Of the five ships and ~270 men that left Spain in September 1519 under Ferdinand Magellan (killed in the Philippines in 1521), only the Victoria with 18 survivors returns, reaching Sanlúcar de Barrameda on 6 September 1522 and Seville on 8 September. Antonio Pigafetta, who kept a day-by-day journal, records that on arrival the crew discovered their log was a day behind the calendar on shore — the first empirical demonstration of the date-line consequence of circling the globe westward.',
+        source: {
+          externalId: 'src:pigafetta-circumnavigation',
+          name: 'Antonio Pigafetta. Relazione del primo viaggio intorno al mondo (eyewitness journal of the Magellan expedition). (c. 1525)',
+          url: 'https://en.wikipedia.org/wiki/Magellan_expedition',
+          publishedAt: '1525-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1524-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The voyage is independently corroborated by Maximilianus Transylvanus, who interviewed survivors and published De Moluccis Insulis (1523), and by Spanish crown records and the Casa de Contratación. The completed circumnavigation — and Pigafetta\'s missing day — settle as established fact, providing direct empirical confirmation that the Earth is a navigable sphere.',
+        source: {
+          externalId: 'src:transylvanus-de-moluccis',
+          name: 'Maximilianus Transylvanus. De Moluccis Insulis (account based on interviews with the Victoria\'s survivors). Cologne/Rome, 1523.',
+          url: 'https://en.wikipedia.org/wiki/Maximilianus_Transylvanus',
+          publishedAt: '1523-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Galileo discovers the moons of Jupiter ──────────────────────────────────
+  {
+    externalId: 'trajectory:galileo-jupiter-moons-1610',
+    text: 'Galileo Galilei discovered four moons orbiting Jupiter in January 1610, the first bodies observed to orbit a planet other than Earth, contradicting the assumption that all celestial bodies revolve around the Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1610-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1610-01-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 January 1610 Galileo, observing Jupiter with his improved telescope from Padua, notes three "little stars" near the planet; over successive nights he tracks their changing positions and by 13 January distinguishes a fourth, concluding they orbit Jupiter. He publishes the observations in Sidereus Nuncius (Venice, 13 March 1610), naming them the "Medicean stars."',
+        source: {
+          externalId: 'src:galileo-sidereus-nuncius',
+          name: 'Galileo Galilei. Sidereus Nuncius (The Starry Messenger). Venice: Tommaso Baglioni, 13 March 1610.',
+          url: 'https://en.wikipedia.org/wiki/Sidereus_Nuncius',
+          publishedAt: '1610-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1610-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The claim is initially met with skepticism: some astronomers attribute the objects to defects in Galileo\'s lenses, and a few refuse to look through the telescope at all. The independent claim of Simon Marius (who said he observed the moons in late 1609) further complicates priority. The reality of the satellites is briefly in doubt outside Galileo\'s circle.',
+        source: {
+          externalId: 'src:marius-mundus-iovialis',
+          name: 'Simon Marius. Mundus Iovialis (account of Jupiter\'s moons and the priority dispute with Galileo). Nuremberg, 1614.',
+          url: 'https://en.wikipedia.org/wiki/Galilean_moons',
+          publishedAt: '1614-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1611-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1611 the Jesuit mathematicians of the Collegio Romano, including Christopher Clavius, independently confirm the existence of Jupiter\'s four moons and verify Galileo\'s observations. The satellites — Io, Europa, Ganymede, Callisto — pass permanently into accepted astronomy and are central evidence against a strictly geocentric cosmos.',
+        source: {
+          externalId: 'src:collegio-romano-confirmation-1611',
+          name: 'Letter of the Jesuit mathematicians of the Collegio Romano confirming Galileo\'s observations, 1611 (Clavius et al.).',
+          url: 'https://en.wikipedia.org/wiki/Galilean_moons',
+          publishedAt: '1611-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kepler's Supernova (SN 1604) ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:kepler-supernova-1604',
+    text: 'A new star appeared in the constellation Ophiuchus on 9 October 1604 and was studied in detail by Johannes Kepler; it is the most recent supernova observed with the naked eye within the Milky Way.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1604-10-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1604-10-09',
+        datePrecision: 'DAY',
+        reason: 'A brilliant new star is first sighted by observers in northern Italy on 9 October 1604; cloud cover delays Johannes Kepler in Prague until 17 October. Kepler tracks the star for a year as it fades, and Korean and Chinese court astronomers independently log the "guest star." At peak it outshines every star and rivals Jupiter.',
+        source: {
+          externalId: 'src:kepler-de-stella-nova',
+          name: 'Johannes Kepler. De Stella Nova in Pede Serpentarii (On the New Star in the Foot of the Serpent-Handler). Prague, 1606.',
+          url: 'https://en.wikipedia.org/wiki/Kepler%27s_Supernova',
+          publishedAt: '1606-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1606-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kepler\'s De Stella Nova (1606) establishes through parallax measurements that the new star lies in the fixed-star sphere, far beyond the Moon — like Tycho\'s nova of 1572, decisive evidence against the Aristotelian doctrine of an immutable heaven. The apparition\'s date, location, and light curve are settled from the contemporary European and East Asian records.',
+        source: {
+          externalId: 'src:sn1604-light-curve-records',
+          name: 'Baade W. No. 675. The absolute photographic magnitude of supernovae (reconstruction of SN 1604 from historical records). Astrophysical Journal 1943;97:119.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1943ApJ....97..119B',
+          publishedAt: '1943-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Walter Baade identifies the expanding supernova remnant in Ophiuchus (now Kepler\'s SNR, G4.5+6.8) with the 1604 star, and twentieth-century radio and X-ray observations confirm it. The 1604 "new star" is reclassified as a Type Ia supernova — recasting the original claim within modern astrophysics while leaving the historical apparition settled.',
+        source: {
+          externalId: 'src:kepler-snr-remnant',
+          name: 'Reynolds SP et al. A deep Chandra observation of Kepler\'s supernova remnant: a Type Ia event with circumstellar interaction. Astrophysical Journal Letters 2007;668:L135.',
+          url: 'https://ui.adsabs.harvard.edu/abs/2007ApJ...668L.135R',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Defenestration of Prague ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:defenestration-prague-1618',
+    text: 'On 23 May 1618 Protestant Bohemian nobles threw two Catholic imperial regents and their secretary from a window of Prague Castle, an act that triggered the Bohemian Revolt and the Thirty Years\' War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1618-05-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1618-05-23',
+        datePrecision: 'DAY',
+        reason: 'During a confrontation over Protestant rights under the Letter of Majesty, an assembly of Bohemian Protestant nobles led by Count Thurn seizes the imperial regents Vilém Slavata and Jaroslav Bořita of Martinice, along with the secretary Philip Fabricius, and hurls all three from a window of the Bohemian Chancellery in Prague Castle. All three survive the ~21-metre fall. The act is recorded immediately in pamphlets and official correspondence on both sides.',
+        source: {
+          externalId: 'src:defenestration-prague-contemporary',
+          name: 'Contemporary pamphlet and chancellery accounts of the Prague defenestration of 23 May 1618, including Slavata\'s and Martinic\'s own depositions.',
+          url: 'https://en.wikipedia.org/wiki/Defenestrations_of_Prague',
+          publishedAt: '1618-05-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1650-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The event, its date, and its participants are corroborated across Catholic and Protestant chronicles and by the surviving regents\' own written accounts. Modern historiography uniformly treats the 23 May 1618 defenestration as the spark of the Bohemian Revolt and the opening of the Thirty Years\' War; the underlying fact is uncontested even where its causal weight is debated.',
+        source: {
+          externalId: 'src:wedgwood-thirty-years-war',
+          name: 'Wedgwood CV. The Thirty Years War. London: Jonathan Cape, 1938.',
+          url: 'https://en.wikipedia.org/wiki/Thirty_Years%27_War',
+          publishedAt: '1938-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Peace of Westphalia ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:peace-of-westphalia-1648',
+    text: 'The Peace of Westphalia — the treaties of Osnabrück and Münster signed on 24 October 1648 — ended the Thirty Years\' War and is conventionally regarded as a foundation of the modern system of sovereign states.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1648-10-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1648-10-24',
+        datePrecision: 'DAY',
+        reason: 'After years of negotiation in the Westphalian cities of Münster and Osnabrück, the Holy Roman Emperor, France, Sweden, and the imperial estates sign the Instrumentum Pacis Osnabrugense and Instrumentum Pacis Monasteriense on 24 October 1648, ending the Thirty Years\' War and the Eighty Years\' War. The treaty texts recognise the sovereignty of the empire\'s constituent states and the independence of the Dutch Republic and the Swiss Confederation.',
+        source: {
+          externalId: 'src:westphalia-treaty-texts-1648',
+          name: 'Instrumenta Pacis Westphalicae — the treaty texts of Osnabrück and Münster, 24 October 1648.',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Westphalia',
+          publishedAt: '1648-10-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The signing, date, and territorial-confessional terms of the Peace of Westphalia are settled fact, preserved in the surviving treaty instruments. The interpretive label of "Westphalian sovereignty" as the origin of the modern state system is debated by historians and international-relations scholars, but the treaties themselves and their conclusion of the war are not in dispute.',
+        source: {
+          externalId: 'src:westphalia-sovereignty-scholarship',
+          name: 'Croxton D. The Peace of Westphalia of 1648 and the Origins of Sovereignty. The International History Review 1999;21(3):569–591.',
+          url: 'https://www.jstor.org/stable/40109077',
+          publishedAt: '1999-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
