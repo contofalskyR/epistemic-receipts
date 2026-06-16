@@ -3931,6 +3931,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Discovery of Neptune — prediction confirmed by observation ───────────────
+  {
+    externalId: 'trajectory:neptune-discovery-1846',
+    text: 'The planet Neptune was discovered on the night of 23–24 September 1846 by Johann Gottfried Galle at the Berlin Observatory, within 1° of the position predicted by Urbain Le Verrier from unexplained perturbations in the orbit of Uranus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1846-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-08-31',
+        datePrecision: 'DAY',
+        reason: 'The orbit of Uranus had persistently deviated from Newtonian predictions. On 31 August 1846, Urbain Le Verrier presents to the Académie des sciences his computation of the position of an unseen perturbing planet that would account for the residuals — but the predicted body has not been observed, leaving its existence an open question.',
+        source: {
+          externalId: 'src:le-verrier-neptune-prediction-1846',
+          name: 'Le Verrier UJ. Recherches sur les mouvements d\'Uranus. Comptes Rendus de l\'Académie des Sciences, 31 August 1846.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k2980c',
+          publishedAt: '1846-08-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-09-23',
+        datePrecision: 'DAY',
+        reason: 'Acting on a letter from Le Verrier received that same day, Johann Galle and the student Heinrich d\'Arrest search the predicted region at the Berlin Observatory on the night of 23–24 September 1846 and identify an 8th-magnitude object absent from their star charts, within about 1° of the computed position. Its motion over the following night confirms it as a planet.',
+        source: {
+          externalId: 'src:galle-neptune-discovery-1846b',
+          name: 'Galle JG. Account of the discovery of the planet of Le Verrier at Berlin. Monthly Notices of the Royal Astronomical Society 1846;7:153.',
+          url: 'https://articles.adsabs.harvard.edu/full/1846MNRAS...7..153G',
+          publishedAt: '1846-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-08-25',
+        datePrecision: 'DAY',
+        reason: 'The eighth planet is rapidly accepted (the priority dispute between Le Verrier and John Couch Adams concerns credit, not the discovery itself). Its existence — predicted from Newtonian perturbation theory and confirmed by direct observation — becomes a textbook triumph of celestial mechanics, and is examined at close range when Voyager 2 flies past Neptune on 25 August 1989.',
+        source: {
+          externalId: 'src:voyager2-neptune-1989',
+          name: 'NASA/JPL. Voyager 2 Neptune flyby, 25 August 1989.',
+          url: 'https://science.nasa.gov/mission/voyager/',
+          publishedAt: '1989-08-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mendel's laws of inheritance — recorded, neglected, rediscovered ─────────
+  {
+    externalId: 'trajectory:mendel-inheritance-1865',
+    text: 'Gregor Mendel presented his laws of inheritance — derived from hybridization experiments on tens of thousands of pea plants — to the Natural History Society of Brünn on 8 February and 8 March 1865.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1865-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1865-02-08',
+        datePrecision: 'DAY',
+        reason: 'Over two meetings (8 February and 8 March 1865), the Augustinian friar Gregor Mendel reports to the Naturforschender Verein in Brünn that inherited traits segregate as discrete factors in fixed numerical ratios. His paper "Versuche über Pflanzen-Hybriden" is printed in the society\'s proceedings in 1866.',
+        source: {
+          externalId: 'src:mendel-versuche-1866',
+          name: 'Mendel G. Versuche über Pflanzen-Hybriden. Verhandlungen des naturforschenden Vereines in Brünn 1866;4:3–47.',
+          url: 'https://www.biodiversitylibrary.org/bibliography/61272',
+          publishedAt: '1866-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1866-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mendel\'s paper is almost entirely ignored — cited only a handful of times in the following three decades. His results do not fit the prevailing blending model of heredity, and his statistical approach is unfamiliar to naturalists of the day. Mendel dies in 1884 with his work unrecognized.',
+        source: {
+          externalId: 'src:mendel-neglect-olby',
+          name: 'Olby RC. Origins of Mendelism, 2nd ed. University of Chicago Press, 1985. (On the neglect of Mendel\'s 1866 paper)',
+          url: 'https://press.uchicago.edu/ucp/books/book/chicago/O/bo3623822.html',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'ABANDONED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In the spring of 1900 three botanists — Hugo de Vries, Carl Correns, and Erich von Tschermak — independently arrive at the same segregation ratios and, on searching the literature, find Mendel\'s 1865 paper and credit his priority. Mendelian inheritance is rapidly accepted and becomes the foundation of modern genetics, later fused with Darwinian selection in the Modern Synthesis.',
+        source: {
+          externalId: 'src:de-vries-mendel-rediscovery-1900',
+          name: 'de Vries H. Das Spaltungsgesetz der Bastarde. Berichte der Deutschen Botanischen Gesellschaft 1900;18:83–90.',
+          url: 'https://www.biodiversitylibrary.org/bibliography/47009',
+          publishedAt: '1900-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pasteur disproves spontaneous generation ─────────────────────────────────
+  {
+    externalId: 'trajectory:pasteur-spontaneous-generation-1864',
+    text: 'Louis Pasteur\'s swan-neck flask experiments, presented in his lecture at the Sorbonne on 7 April 1864, demonstrated that microbial life does not arise by spontaneous generation from sterile broth exposed to air.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1864-04-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1864-04-07',
+        datePrecision: 'DAY',
+        reason: 'At a public "soirée scientifique" at the Sorbonne, Pasteur presents his swan-neck flask experiments: nutrient broth boiled in a flask whose long curved neck admits air but traps dust remains sterile indefinitely, while tilting the broth to contact the dust-laden bend triggers microbial growth. The Académie des sciences had already recognized the work with the Alhumbert Prize in 1862.',
+        source: {
+          externalId: 'src:pasteur-sorbonne-1864',
+          name: 'Pasteur L. Des générations spontanées. Conférence faite à la Sorbonne, 7 April 1864 (Revue des cours scientifiques).',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k57032359',
+          publishedAt: '1864-04-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1877-01-01',
+        datePrecision: 'YEAR',
+        reason: 'John Tyndall\'s optical and sterilization experiments (1876–1877) independently confirm that dust-free air does not generate microbial life and explain anomalous results from heat-resistant spores. The centuries-old doctrine of spontaneous generation is overturned, and the result becomes a cornerstone of the germ theory of disease.',
+        source: {
+          externalId: 'src:tyndall-spontaneous-generation-1877',
+          name: 'Tyndall J. On the optical deportment of the atmosphere in relation to the phenomena of putrefaction and infection. Philosophical Transactions of the Royal Society 1877;167:149–206.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1877.0005',
+          publishedAt: '1877-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Koch identifies the tuberculosis bacillus — germ theory ──────────────────
+  {
+    externalId: 'trajectory:koch-tuberculosis-bacillus-1882',
+    text: 'Robert Koch announced his discovery of the tubercle bacillus (Mycobacterium tuberculosis) as the cause of tuberculosis in a lecture to the Berlin Physiological Society on 24 March 1882.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1882-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1882-03-24',
+        datePrecision: 'DAY',
+        reason: 'In his lecture "Die Ätiologie der Tuberkulose" before the Berlin Physiological Society, Koch demonstrates the rod-shaped bacillus in tuberculous tissue using a special staining method, grows it in pure culture, and reproduces the disease in animals — satisfying the criteria (later formalized as Koch\'s postulates) for establishing it as the causative agent. The paper is published on 10 April 1882.',
+        source: {
+          externalId: 'src:koch-aetiologie-tuberkulose-1882',
+          name: 'Koch R. Die Aetiologie der Tuberculose. Berliner Klinische Wochenschrift 1882;19:221–230.',
+          url: 'https://www.rki.de/EN/Topics/Robert-Koch/the-tuberculosis-lecture/the-tuberculosis-lecture_node.html',
+          publishedAt: '1882-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-12-10',
+        datePrecision: 'DAY',
+        reason: 'Koch\'s identification of the tubercle bacillus is corroborated worldwide and becomes a defining proof of the germ theory of disease. He is awarded the Nobel Prize in Physiology or Medicine on 10 December 1905 "for his investigations and discoveries in relation to tuberculosis."',
+        source: {
+          externalId: 'src:koch-nobel-1905',
+          name: 'The Nobel Prize in Physiology or Medicine 1905 — Robert Koch. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1905/koch/facts/',
+          publishedAt: '1905-12-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-06-11',
+        datePrecision: 'DAY',
+        reason: 'The complete genome of Mycobacterium tuberculosis (strain H37Rv) is sequenced and published in Nature, giving the pathogen Koch identified a molecular definition and confirming at the genetic level the organism behind the disease.',
+        source: {
+          externalId: 'src:cole-mtb-genome-1998',
+          name: 'Cole ST et al. Deciphering the biology of Mycobacterium tuberculosis from the complete genome sequence. Nature 1998;393:537–544.',
+          url: 'https://www.nature.com/articles/31159',
+          publishedAt: '1998-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Slavery Abolition Act 1833 — emancipation across the British Empire ───────
+  {
+    externalId: 'trajectory:slavery-abolition-act-1833',
+    text: 'The Slavery Abolition Act 1833 received Royal Assent on 28 August 1833, abolishing slavery throughout most of the British Empire effective 1 August 1834.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1833-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1833-08-28',
+        datePrecision: 'DAY',
+        reason: 'Building on the 1807 abolition of the slave trade, Parliament passes the Slavery Abolition Act, which receives Royal Assent on 28 August 1833. The Act outlaws slavery across most of the British Empire, provides £20 million in compensation to slave owners, and imposes a transitional "apprenticeship" on the formerly enslaved (initially excluding territories of the East India Company, Ceylon, and St Helena).',
+        source: {
+          externalId: 'src:slavery-abolition-act-1833',
+          name: 'Slavery Abolition Act 1833 (3 & 4 Will. 4 c. 73). UK Public General Acts.',
+          url: 'https://www.legislation.gov.uk/ukpga/Will4/3-4/73/enacted',
+          publishedAt: '1833-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1834-08-01',
+        datePrecision: 'DAY',
+        reason: 'The Act comes into force on 1 August 1834, legally freeing roughly 800,000 enslaved people in the Caribbean, Mauritius, and the Cape — the largest single act of emancipation in the empire to that date, though most freed people are bound to unpaid "apprenticeship" labour.',
+        source: {
+          externalId: 'src:national-archives-abolition-1834',
+          name: 'The National Archives (UK). The abolition of slavery: the Slavery Abolition Act of 1833.',
+          url: 'https://www.nationalarchives.gov.uk/education/resources/slavery-britain/',
+          publishedAt: '1834-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1838-08-01',
+        datePrecision: 'DAY',
+        reason: 'The apprenticeship system is terminated ahead of schedule on 1 August 1838, granting full and unconditional freedom. The abolition of slavery across the British Empire is thereby completed and remains a settled institutional fact.',
+        source: {
+          externalId: 'src:apprenticeship-end-1838',
+          name: 'UK Parliament. The end of apprenticeship, 1838 — slavery abolition.',
+          url: 'https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/slavetrade/overview/the-abolition-of-the-slave-trade/',
+          publishedAt: '1838-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
