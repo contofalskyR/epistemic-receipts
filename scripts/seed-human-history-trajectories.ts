@@ -17244,6 +17244,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Jan Hus condemned and burned at the Council of Constance ─────────────────
+  {
+    externalId: 'trajectory:jan-hus-constance-1415',
+    text: 'The Council of Constance condemned the Bohemian reformer Jan Hus as a heretic and had him burned at the stake on 6 July 1415, despite a safe-conduct granted by King Sigismund.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1415-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1415-07-06',
+        datePrecision: 'DAY',
+        reason: 'After refusing to recant his teachings on the authority of Scripture and the corruption of the clergy, Hus is condemned by the Council of Constance, formally degraded from the priesthood, and handed to secular authorities, who burn him at the stake outside the city walls on 6 July 1415. His pupil Petr z Mladoňovic (Peter of Mladoňovice), an eyewitness, records the trial and execution in his Relatio de Magistro Johanne Hus.',
+        source: {
+          externalId: 'src:mladonovic-relatio-hus-1415',
+          name: 'Petr z Mladoňovic. Relatio de Magistro Johanne Hus (eyewitness account of the trial and burning of Jan Hus), 1415.',
+          url: 'https://en.wikipedia.org/wiki/Jan_Hus',
+          publishedAt: '1415-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1419-07-30',
+        datePrecision: 'DAY',
+        reason: 'The execution ignites the Hussite movement in Bohemia. The First Defenestration of Prague on 30 July 1419 begins the Hussite Wars, and the date of Hus\'s death becomes a fixed and venerated landmark in Czech historical memory. The condemnation and its date are corroborated by the conciliar acts of Constance and by Hussite and Catholic chronicles alike.',
+        source: {
+          externalId: 'src:council-constance-acts-hus',
+          name: 'Acts of the Council of Constance recording the condemnation of Jan Hus, sessio XV, 1415.',
+          url: 'https://www.britannica.com/biography/Jan-Hus',
+          publishedAt: '1415-07-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Joan of Arc — condemned for heresy, conviction later annulled ────────────
+  {
+    externalId: 'trajectory:joan-of-arc-1431-1456',
+    text: 'Joan of Arc was convicted of heresy by an ecclesiastical tribunal at Rouen and burned at the stake on 30 May 1431; a papal nullification trial annulled the verdict on 7 July 1456, and she was canonized in 1920.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1431-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1431-05-30',
+        datePrecision: 'DAY',
+        reason: 'Captured by the Burgundians and sold to the English, Joan is tried by a tribunal under Bishop Pierre Cauchon on charges of heresy, witchcraft, and wearing men\'s clothing. Convicted as a relapsed heretic, she is burned at the stake in the Old Market Square of Rouen on 30 May 1431. The Latin trial record (procès de condamnation), with its day-by-day interrogations, survives as one of the best-documented trials of the Middle Ages.',
+        source: {
+          externalId: 'src:joan-condemnation-trial-1431',
+          name: 'Procès de condamnation de Jeanne d\'Arc (Latin trial record of the condemnation), 1431.',
+          url: 'https://en.wikipedia.org/wiki/Trial_of_Joan_of_Arc',
+          publishedAt: '1431-05-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1456-07-07',
+        datePrecision: 'DAY',
+        reason: 'At the request of Joan\'s mother and with the authorization of Pope Callixtus III, a retrial (procès en nullité) re-examines more than 100 witnesses. On 7 July 1456 the tribunal declares the 1431 proceedings tainted by fraud and error, annuls the conviction, and pronounces Joan innocent — a formal judicial reversal of the original verdict.',
+        source: {
+          externalId: 'src:joan-nullification-trial-1456',
+          name: 'Procès en nullité de la condamnation de Jeanne d\'Arc (nullification trial record), verdict of 7 July 1456.',
+          url: 'https://en.wikipedia.org/wiki/Retrial_of_Joan_of_Arc',
+          publishedAt: '1456-07-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-05-16',
+        datePrecision: 'DAY',
+        reason: 'After beatification in 1909, Pope Benedict XV canonizes Joan of Arc as a saint on 16 May 1920, completing the institutional reversal of her 1431 condemnation. She is later named a patron saint of France, and the rehabilitation is treated as settled by both Church and secular historians.',
+        source: {
+          externalId: 'src:joan-canonization-1920',
+          name: 'Canonization of Joan of Arc by Pope Benedict XV, 16 May 1920 (Acta Apostolicae Sedis).',
+          url: 'https://www.vatican.va/news_services/liturgy/saints/ns_lit_doc_20000528_giovanna-d-arco_en.html',
+          publishedAt: '1920-05-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Granada — surrender of the last Muslim state in Iberia ───────────
+  {
+    externalId: 'trajectory:fall-of-granada-1492',
+    text: 'The Emirate of Granada, the last Muslim state in the Iberian Peninsula, surrendered to the Catholic Monarchs Ferdinand and Isabella on 2 January 1492, completing the Reconquista.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1492-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1492-01-02',
+        datePrecision: 'DAY',
+        reason: 'After a long siege, Sultan Muhammad XII (Boabdil) signs the Capitulations of Granada on 25 November 1491 and formally hands over the keys to the Alhambra on 2 January 1492. The terms of surrender survive as a contemporary legal document, and the entry of the Catholic Monarchs into the city is recorded by court chroniclers such as Andrés Bernáldez.',
+        source: {
+          externalId: 'src:capitulations-of-granada-1491',
+          name: 'Capitulations of Granada (terms of surrender between the Catholic Monarchs and Muhammad XII), 25 November 1491.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Granada_(1491)',
+          publishedAt: '1491-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1493-04-01',
+        datePrecision: 'MONTH',
+        reason: 'News of the fall of Granada spreads across Christian Europe and is celebrated in Rome; Columbus, present at the surrender, cites it in the preface to the journal of his first voyage. The date and fact of Granada\'s surrender are corroborated by Castilian, Arabic, and papal sources and treated as settled in all subsequent scholarship.',
+        source: {
+          externalId: 'src:bernaldez-reyes-catolicos-granada',
+          name: 'Andrés Bernáldez. Historia de los Reyes Católicos (chronicle of the conquest of Granada), late 15th century.',
+          url: 'https://www.britannica.com/place/Granada-Spain/History',
+          publishedAt: '1500-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cabral's landfall in Brazil — Caminha's letter to the King ───────────────
+  {
+    externalId: 'trajectory:cabral-brazil-landfall-1500',
+    text: 'Pedro Álvares Cabral\'s Portuguese fleet sighted the coast of Brazil on 22 April 1500, the first documented European landfall in Brazil, recorded in Pêro Vaz de Caminha\'s letter to King Manuel I dated 1 May 1500.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1500-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1500-05-01',
+        datePrecision: 'DAY',
+        reason: 'En route to India, Cabral\'s fleet sights a mountain it names Monte Pascoal on 22 April 1500 and lands on the coast of present-day Bahia. The fleet\'s scribe, Pêro Vaz de Caminha, writes a detailed letter to King Manuel I dated 1 May 1500 describing the land and its inhabitants — the document later called the "birth certificate of Brazil." It is dispatched to Lisbon and preserved in the royal archive.',
+        source: {
+          externalId: 'src:caminha-letter-1500',
+          name: 'Pêro Vaz de Caminha. Carta a El-Rei D. Manuel (letter announcing the discovery of Brazil), 1 May 1500. Arquivo Nacional da Torre do Tombo, Lisbon.',
+          url: 'https://en.wikipedia.org/wiki/Pero_Vaz_de_Caminha',
+          publishedAt: '1500-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1817-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Caminha\'s letter, rediscovered and first published in the early 19th century, is corroborated by other accounts of Cabral\'s voyage and by the Cantino planisphere of 1502, which depicts the Brazilian coast. The date and circumstances of the landfall are treated as settled, and 22 April is commemorated in Brazil as Discovery Day.',
+        source: {
+          externalId: 'src:cantino-planisphere-1502',
+          name: 'Cantino planisphere, 1502 (earliest surviving map depicting the Brazilian coast).',
+          url: 'https://en.wikipedia.org/wiki/Cantino_planisphere',
+          publishedAt: '1502-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ridaniya — Ottoman conquest of Mamluk Egypt ────────────────────
+  {
+    externalId: 'trajectory:battle-of-ridaniya-1517',
+    text: 'The Ottoman army under Sultan Selim I defeated the Mamluks at the Battle of Ridaniya on 22 January 1517 and entered Cairo, ending the Mamluk Sultanate and bringing Egypt and the Levant under Ottoman rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1517-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1517-01-22',
+        datePrecision: 'DAY',
+        reason: 'Following his victory at Marj Dabiq in 1516, Selim I advances on Egypt. At Ridaniya, outside Cairo, on 22 January 1517 the Ottoman field artillery and firearms overwhelm the Mamluk cavalry. The last Mamluk sultan, Tuman Bay II, is captured and hanged at Cairo\'s Bab Zuweila gate on 13 April 1517. The Egyptian chronicler Ibn Iyas, an eyewitness in Cairo, records the conquest in detail.',
+        source: {
+          externalId: 'src:ibn-iyas-badai-1517',
+          name: 'Muhammad ibn Iyas. Badaʼiʻ al-zuhur fi waqaʼiʻ al-duhur (eyewitness chronicle of the Ottoman conquest of Egypt), early 16th century.',
+          url: 'https://en.wikipedia.org/wiki/Ottoman%E2%80%93Mamluk_War_(1516%E2%80%931517)',
+          publishedAt: '1517-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1520-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The conquest transfers Egypt, Syria, and the holy cities of the Hejaz to Ottoman control and is later held to have brought the prestige of the caliphate to the Ottoman sultans. Ottoman administrative records, Mamluk-era chronicles, and Venetian diplomatic reports independently confirm the date and outcome, which are settled in the historiography of the early modern Near East.',
+        source: {
+          externalId: 'src:ottoman-conquest-egypt-scholarship',
+          name: 'Scholarship on the Ottoman–Mamluk War and the conquest of Egypt (1516–1517).',
+          url: 'https://www.britannica.com/biography/Selim-I',
+          publishedAt: '1520-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
