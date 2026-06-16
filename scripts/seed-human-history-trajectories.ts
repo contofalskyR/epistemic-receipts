@@ -7563,6 +7563,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990): molecular biology, space race, civil rights
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Watson & Crick — structure of DNA ───────────────────────────────────────
+  {
+    externalId: 'trajectory:watson-crick-dna-double-helix-1953',
+    text: 'On April 25, 1953, James Watson and Francis Crick published in Nature a double-helical model for the molecular structure of deoxyribonucleic acid (DNA), with two antiparallel sugar-phosphate backbones and complementary base pairs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-04-25',
+        datePrecision: 'DAY',
+        reason: 'Watson and Crick publish a one-page letter in Nature proposing that DNA is a double helix of two complementary chains held together by hydrogen-bonded base pairs (adenine–thymine, guanine–cytosine). The model, built at the Cavendish Laboratory in Cambridge, drew on X-ray diffraction data from Rosalind Franklin and Maurice Wilkins at King\'s College London, whose own papers appeared in the same issue. The letter famously noted the structure "immediately suggests a possible copying mechanism for the genetic material."',
+        source: {
+          externalId: 'src:watson-crick-nature-1953',
+          name: 'Watson JD, Crick FHC. "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid." Nature 171(4356):737–738, 25 April 1953.',
+          url: 'https://www.nature.com/articles/171737a0',
+          publishedAt: '1953-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The model was confirmed by converging lines of evidence: improved X-ray fiber diffraction (Wilkins and colleagues), and decisively the Meselson–Stahl experiment (1958), which demonstrated the semiconservative replication that the complementary double-helix structure predicted. The double helix became the foundational model of molecular biology; Watson, Crick, and Wilkins received the 1962 Nobel Prize in Physiology or Medicine.',
+        source: {
+          externalId: 'src:meselson-stahl-confirms-helix-1958',
+          name: 'Meselson M, Stahl FW. "The Replication of DNA in Escherichia coli." PNAS 44(7):671–682, July 1958.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.44.7.671',
+          publishedAt: '1958-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Meselson–Stahl — semiconservative DNA replication ───────────────────────
+  {
+    externalId: 'trajectory:meselson-stahl-replication-1958',
+    text: 'In 1958, Matthew Meselson and Franklin Stahl demonstrated that DNA replicates semiconservatively — each daughter molecule retaining one parental strand — resolving competing conservative, semiconservative, and dispersive models of replication.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-04-25',
+        datePrecision: 'DAY',
+        reason: 'The Watson–Crick double helix implied a copying mechanism, but how DNA replicated was open: three models competed — conservative (the parental duplex stays intact, a wholly new duplex is made), semiconservative (each strand templates a new partner), and dispersive (parental and new DNA interspersed). The question was a central unresolved problem of early molecular biology.',
+        source: {
+          externalId: 'src:delbruck-stent-replication-models-1957',
+          name: 'Delbrück M, Stent GS. "On the Mechanism of DNA Replication." In: The Chemical Basis of Heredity (McElroy & Glass, eds.), Johns Hopkins Press, 1957.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC528642/',
+          publishedAt: '1957-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Meselson and Stahl grew E. coli for many generations in heavy-nitrogen (¹⁵N) medium, then switched to ordinary ¹⁴N medium and used cesium-chloride density-gradient centrifugation to separate DNA by mass over successive generations. After one generation all DNA was of intermediate (hybrid) density; after two, equal amounts of hybrid and light DNA appeared. This pattern matched only the semiconservative model and excluded the conservative and dispersive alternatives. Often called "the most beautiful experiment in biology," the result is settled.',
+        source: {
+          externalId: 'src:meselson-stahl-pnas-1958',
+          name: 'Meselson M, Stahl FW. "The Replication of DNA in Escherichia coli." PNAS 44(7):671–682, July 1958.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.44.7.671',
+          publishedAt: '1958-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Yuri Gagarin — first human in space ─────────────────────────────────────
+  {
+    externalId: 'trajectory:gagarin-first-human-spaceflight-1961',
+    text: 'On April 12, 1961, Soviet cosmonaut Yuri Gagarin became the first human to travel into space and orbit the Earth, completing a single orbit aboard Vostok 1 in a flight lasting about 108 minutes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-04-12',
+        datePrecision: 'DAY',
+        reason: 'Vostok 1 launched from the Baikonur Cosmodrome at 09:07 Moscow time; Gagarin completed one orbit and landed near Engels in Saratov Oblast about 108 minutes later. The Soviet news agency TASS announced the flight the same day, naming Gagarin and reporting the orbital parameters. The event became an immediate global headline and a milestone in the space race.',
+        source: {
+          externalId: 'src:tass-gagarin-announcement-1961',
+          name: 'TASS communiqué on the flight of Vostok 1 piloted by Yuri Gagarin, 12 April 1961 (reproduced in contemporary world press, e.g. Pravda, 13 April 1961).',
+          url: 'https://www.rgant.ru/',
+          publishedAt: '1961-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-04-12',
+        datePrecision: 'DAY',
+        reason: 'The flight was tracked by Soviet ground stations and observed internationally; the Fédération Aéronautique Internationale (FAI), the world body that certifies aeronautical and astronautical records, recognized Gagarin\'s flight as the first human spaceflight. Telemetry, photographs, and post-flight debriefs documented the mission, and no credible source disputes that Gagarin reached space and orbited the Earth on that date.',
+        source: {
+          externalId: 'src:fai-gagarin-record-1961',
+          name: 'Fédération Aéronautique Internationale. Records of the first crewed spaceflight, Yuri A. Gagarin / Vostok 1, 12 April 1961.',
+          url: 'https://www.fai.org/page/icare-yuri-gagarin',
+          publishedAt: '1961-04-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cuban Missile Crisis — U-2 photos reveal Soviet missiles ────────────────
+  {
+    externalId: 'trajectory:cuban-missile-crisis-u2-photos-1962',
+    text: 'On October 14, 1962, a U.S. Air Force U-2 reconnaissance flight over Cuba photographed Soviet medium-range ballistic missile sites under construction, establishing that the USSR was secretly deploying nuclear missiles in Cuba.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-15',
+        datePrecision: 'DAY',
+        reason: 'A U-2 piloted by Major Richard Heyser overflew western Cuba on October 14, 1962. Photo interpreters at the CIA\'s National Photographic Interpretation Center (NPIC) analyzed the film overnight on October 15 and identified SS-4 (R-12) medium-range ballistic missile launch sites under construction near San Cristóbal. The finding converted long-standing suspicion of a Soviet buildup into hard photographic evidence.',
+        source: {
+          externalId: 'src:npic-u2-cuba-imagery-1962',
+          name: 'National Photographic Interpretation Center / CIA. U-2 reconnaissance photographs of Soviet missile sites in Cuba, 14–15 October 1962 (declassified).',
+          url: 'https://www.cia.gov/readingroom/collection/cuban-missile-crisis',
+          publishedAt: '1962-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1962-10-22',
+        datePrecision: 'DAY',
+        reason: 'President John F. Kennedy was briefed on the photographs on October 16, convening the EXCOMM. On October 22 he addressed the nation, announcing the discovery and a naval "quarantine" of Cuba; the photographic evidence was later displayed publicly, including U.S. Ambassador Adlai Stevenson\'s presentation to the UN Security Council on October 25. The Soviet deployment, initially denied, became an undisputed historical fact corroborated by later Soviet acknowledgment and declassified records.',
+        source: {
+          externalId: 'src:jfk-cuba-address-1962',
+          name: 'John F. Kennedy. "Radio and Television Report to the American People on the Soviet Arms Buildup in Cuba," 22 October 1962.',
+          url: 'https://www.jfklibrary.org/asset-viewer/archives/jfkpof-041-018',
+          publishedAt: '1962-10-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Loving v. Virginia — anti-miscegenation laws struck down ────────────────
+  {
+    externalId: 'trajectory:loving-v-virginia-1967',
+    text: 'On June 12, 1967, the U.S. Supreme Court ruled unanimously in Loving v. Virginia that laws prohibiting interracial marriage are unconstitutional, invalidating anti-miscegenation statutes in Virginia and fifteen other states.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1967-06-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1883-01-29',
+        datePrecision: 'DAY',
+        reason: 'In Pace v. Alabama (1883) the Supreme Court upheld a state law criminalizing interracial cohabitation, treating equal punishment of both partners as satisfying the Fourteenth Amendment. For decades the constitutionality of state anti-miscegenation statutes was settled law; by the 1950s such laws remained on the books in roughly two dozen states.',
+        source: {
+          externalId: 'src:pace-v-alabama-1883',
+          name: 'Pace v. Alabama, 106 U.S. 583 (1883).',
+          url: 'https://supreme.justia.com/cases/federal/us/106/583/',
+          publishedAt: '1883-01-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1967-06-12',
+        datePrecision: 'DAY',
+        reason: 'Richard and Mildred Loving, an interracial couple convicted under Virginia\'s Racial Integrity Act of 1924, challenged their conviction. In a unanimous opinion by Chief Justice Earl Warren, the Court held that anti-miscegenation laws violate both the Equal Protection and Due Process Clauses of the Fourteenth Amendment, calling the freedom to marry "one of the vital personal rights essential to the orderly pursuit of happiness." The ruling overturned the premise of Pace v. Alabama and voided such laws nationwide; it remains settled precedent and was cited in Obergefell v. Hodges (2015).',
+        source: {
+          externalId: 'src:loving-v-virginia-1967',
+          name: 'Loving v. Virginia, 388 U.S. 1 (1967).',
+          url: 'https://supreme.justia.com/cases/federal/us/388/1/',
+          publishedAt: '1967-06-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
