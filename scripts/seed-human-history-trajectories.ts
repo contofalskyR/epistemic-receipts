@@ -16363,6 +16363,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Mariner 4 — first close-up images reveal a cratered, Moon-like Mars ──────
+  {
+    externalId: 'trajectory:mariner-4-mars-flyby-1965',
+    text: 'On July 15, 1965, NASA\'s Mariner 4 returned the first close-up images of Mars, revealing a heavily cratered, Moon-like surface with a thin atmosphere (~4–7 mbar) and no sign of canals, vegetation, or liquid water.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-07-15',
+        datePrecision: 'DAY',
+        reason: 'Mariner 4 flies within ~9,800 km of Mars and transmits 21 complete images plus telemetry. The pictures show a cratered, Moon-like terrain; a radio-occultation experiment measures a surface pressure of only about 4–7 millibars. The data are recorded and released by the Jet Propulsion Laboratory within days, and the first results are published in Science within weeks.',
+        source: {
+          externalId: 'src:leighton-mariner4-science-1965',
+          name: 'Leighton RB, Murray BC, Sharp RP, et al. "Mariner IV Photography of Mars: Initial Results." Science 149(3684):627–630, 6 August 1965.',
+          url: 'https://www.science.org/doi/10.1126/science.149.3684.627',
+          publishedAt: '1965-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-07-20',
+        datePrecision: 'DAY',
+        reason: 'Mariner 4\'s portrait of a cold, cratered, low-pressure Mars is corroborated and extended by Mariner 6 and 7 (1969), the global mapping of Mariner 9 (1971–72), and the Viking 1 and 2 landings (1976). The finding settles the modern understanding of Mars and definitively closes the Lowellian "canals" and lush-vegetation hypotheses that had persisted in popular imagination since the late nineteenth century.',
+        source: {
+          externalId: 'src:viking-mars-results-1976',
+          name: 'Soffen GA. "Scientific Results of the Viking Missions." Science 194(4271):1274–1276, 17 December 1976.',
+          url: 'https://www.science.org/doi/10.1126/science.194.4271.1274',
+          publishedAt: '1976-12-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Keeling Curve — continuous CO₂ monitoring begins at Mauna Loa ────────────
+  {
+    externalId: 'trajectory:keeling-curve-mauna-loa-1958',
+    text: 'Continuous atmospheric CO₂ measurements begun by Charles David Keeling at the Mauna Loa Observatory in March 1958 established that the concentration of carbon dioxide in Earth\'s atmosphere is rising year over year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Keeling installs a precision infrared gas analyzer at the Mauna Loa Observatory and begins systematic, continuous measurement of atmospheric CO₂, recording a baseline of about 315 ppm. The high-altitude, mid-ocean site samples well-mixed background air. The first multi-year record, revealing a regular seasonal cycle, is published in Tellus in 1960.',
+        source: {
+          externalId: 'src:keeling-tellus-1960',
+          name: 'Keeling CD. "The Concentration and Isotopic Abundances of Carbon Dioxide in the Atmosphere." Tellus 12(2):200–203, 1960.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1111/j.2153-3490.1960.tb01300.x',
+          publishedAt: '1960-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By the late twentieth century the Mauna Loa record — the "Keeling Curve" — shows an unbroken secular rise in atmospheric CO₂ superimposed on the annual cycle, corroborated by a global network of monitoring stations and by ice-core records extending the baseline back centuries. The IPCC First Assessment Report (1990) treats the rising CO₂ concentration as established fact; it is among the most thoroughly verified measurements in earth science.',
+        source: {
+          externalId: 'src:ipcc-far-1990',
+          name: 'IPCC. Climate Change: The IPCC Scientific Assessment (First Assessment Report). Cambridge University Press, 1990.',
+          url: 'https://www.ipcc.ch/report/climate-change-the-ipcc-1990-and-1992-assessments/',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Apollo 8 — first humans to orbit the Moon; the "Earthrise" photograph ────
+  {
+    externalId: 'trajectory:apollo-8-lunar-orbit-1968',
+    text: 'On December 24, 1968, the crew of Apollo 8 — Frank Borman, James Lovell, and William Anders — became the first humans to leave Earth orbit and circle the Moon, where Anders photographed the Earth rising over the lunar horizon ("Earthrise").',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-12-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1968-12-24',
+        datePrecision: 'DAY',
+        reason: 'Apollo 8 enters lunar orbit and completes ten orbits of the Moon over roughly twenty hours. During the fourth orbit Anders captures the color "Earthrise" photograph (NASA frame AS8-14-2383). On Christmas Eve the crew makes a live television broadcast watched by an estimated one billion people, reading from the Book of Genesis. The events are recorded in mission telemetry, transcripts, and NASA photography.',
+        source: {
+          externalId: 'src:nasa-apollo8-mission-report-1969',
+          name: 'NASA. Apollo 8 Mission Report (MSC-PA-R-69-1). Manned Spacecraft Center, February 1969.',
+          url: 'https://www.nasa.gov/history/afj/ap08fj/index.html',
+          publishedAt: '1969-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-12-24',
+        datePrecision: 'YEAR',
+        reason: 'The Apollo 8 flight is fully documented by tracking data from the Manned Space Flight Network, onboard films and photographs, voice transcripts, and the preserved command module (Museum of Science and Industry, Chicago). Its status as the first crewed circumlunar flight is uncontested in the historical and engineering record.',
+        source: {
+          externalId: 'src:chaikin-man-on-the-moon-1994',
+          name: 'Chaikin A. A Man on the Moon: The Voyages of the Apollo Astronauts. Viking, 1994 (Ch. 2, "Apollo 8").',
+          url: 'https://www.nasa.gov/history/apollo-8/',
+          publishedAt: '1994-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kilby — first working integrated circuit demonstrated at Texas Instruments
+  {
+    externalId: 'trajectory:kilby-integrated-circuit-1958',
+    text: 'On September 12, 1958, Jack Kilby at Texas Instruments demonstrated the first working integrated circuit — a phase-shift oscillator with all components fabricated on a single piece of semiconductor material.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-09-12',
+        datePrecision: 'DAY',
+        reason: 'Kilby demonstrates a working oscillator built on a single sliver of germanium to Texas Instruments management, proving that resistors, capacitors, and a transistor could be integrated on one chip. The demonstration is recorded in his laboratory notebook, and TI files the foundational patent ("Miniaturized Electronic Circuits," U.S. Patent 3,138,743) on February 6, 1959.',
+        source: {
+          externalId: 'src:kilby-patent-1959',
+          name: 'Kilby JS. "Miniaturized Electronic Circuits." U.S. Patent 3,138,743, filed 6 February 1959, granted 23 June 1964.',
+          url: 'https://patents.google.com/patent/US3138743A/en',
+          publishedAt: '1959-02-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-12-10',
+        datePrecision: 'DAY',
+        reason: 'Kilby\'s priority for the first working integrated circuit — alongside Robert Noyce\'s independent planar IC at Fairchild a few months later — is durably established in the engineering record, preserved patents, and TI archives. The Royal Swedish Academy of Sciences awards Kilby a share of the 2000 Nobel Prize in Physics "for his part in the invention of the integrated circuit," settling his place in the historical record.',
+        source: {
+          externalId: 'src:nobel-physics-kilby-2000',
+          name: 'The Nobel Prize in Physics 2000 — Jack S. Kilby, "for his part in the invention of the integrated circuit." Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/2000/kilby/facts/',
+          publishedAt: '2000-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Venera 7 — first data transmitted from the surface of another planet ─────
+  {
+    externalId: 'trajectory:venera-7-venus-surface-1970',
+    text: 'On December 15, 1970, the Soviet probe Venera 7 transmitted data from the surface of Venus — the first signal ever returned from the surface of another planet — measuring a surface temperature of roughly 475 °C and a crushing pressure near 90 atmospheres.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-12-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-12-15',
+        datePrecision: 'DAY',
+        reason: 'Venera 7\'s descent capsule reaches the Venusian surface and continues transmitting a weak signal for about 20 minutes after landing. Soviet engineers recover the temperature telemetry from the faint signal, yielding a surface temperature of about 475 °C; combined with the descent data this confirms a surface pressure near 90 bar. The event is reported by the Soviet space program as the first transmission from another planet\'s surface.',
+        source: {
+          externalId: 'src:nssdc-venera7-1970',
+          name: 'NASA NSSDC. "Venera 7" mission profile and results — first probe to transmit data from the surface of Venus.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1970-060A',
+          publishedAt: '1970-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-12-03',
+        datePrecision: 'YEAR',
+        reason: 'The extreme-heat, high-pressure picture of Venus is corroborated and refined by later landers — Venera 8 (1972), the imaging Venera 9 and 10 (1975), and Venera 13 and 14 (1982) — and by the U.S. Pioneer Venus mission (1978). The data settle Venus as a runaway-greenhouse world and reverse mid-century speculation about a temperate or ocean-covered surface beneath its clouds.',
+        source: {
+          externalId: 'src:venera-13-14-science-1982',
+          name: 'Barsukov VL, et al. "The geochemistry of Venus surface rocks: Preliminary results from Venera 13 and Venera 14." Science 218(4577):1170, 1982.',
+          url: 'https://www.science.org/doi/10.1126/science.218.4577.1170',
+          publishedAt: '1982-12-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
