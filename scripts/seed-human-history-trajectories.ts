@@ -10823,6 +10823,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): Internet, genomics, climate, 9/11 aftermath, COVID, AI
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dolly the sheep — first mammal cloned from an adult cell ─────────────────
+  {
+    externalId: 'trajectory:dolly-sheep-cloned-1996',
+    text: 'Dolly the sheep, born at the Roslin Institute on 5 July 1996, was the first mammal successfully cloned from an adult somatic cell.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-07-05',
+        datePrecision: 'DAY',
+        reason: 'A lamb code-named 6LL3 is born at the Roslin Institute near Edinburgh, produced by somatic-cell nuclear transfer using a nucleus from the mammary gland of a six-year-old Finn Dorset ewe. The birth is initially known only to the small research team; developmental biologists had long held that an adult differentiated cell could not be reprogrammed to make a whole organism.',
+        source: {
+          externalId: 'src:roslin-life-of-dolly',
+          name: 'The Roslin Institute, University of Edinburgh. "The Life of Dolly" — born 5 July 1996, code-named 6LL3.',
+          url: 'https://vet.ed.ac.uk/roslin/about/history/dolly/facts/life-of-dolly',
+          publishedAt: '1996-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1997-02-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 February 1997 the existence of Dolly is made public (broken by The Observer ahead of formal publication), triggering a worldwide media sensation and immediate debate over the prospect of human cloning. The claim that a mammal had been cloned from an adult cell is now on the public record.',
+        source: {
+          externalId: 'src:dolly-announcement-1997',
+          name: 'Scientific American. "Dolly at 20: The Inside Story on the World\'s Most Famous Sheep" — public announcement 22 February 1997.',
+          url: 'https://www.scientificamerican.com/article/dolly-at-20-the-inside-story-on-the-world-s-most-famous-sheep/',
+          publishedAt: '1997-02-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-02-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 February 1997 Wilmut, Schnieke, McWhir, Kind and Campbell publish "Viable offspring derived from fetal and adult mammalian cells" in Nature, documenting the nuclear-transfer method and the genetic identity of Dolly to the donor ewe. Independent reproduction of mammalian somatic-cell cloning in other species follows, settling that adult cells can be reprogrammed to totipotency.',
+        source: {
+          externalId: 'src:wilmut-nature-dolly-1997',
+          name: 'Wilmut I, Schnieke AE, McWhir J, Kind AJ, Campbell KHS. "Viable offspring derived from fetal and adult mammalian cells." Nature 385:810–813, 27 February 1997.',
+          url: 'https://www.nature.com/articles/385810a0',
+          publishedAt: '1997-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Deep Blue defeats Garry Kasparov ────────────────────────────────────────
+  {
+    externalId: 'trajectory:deep-blue-defeats-kasparov-1997',
+    text: "IBM's Deep Blue defeated reigning world chess champion Garry Kasparov in a six-game match in New York, concluding on 11 May 1997 — the first time a computer beat a world champion in a full match under standard tournament conditions.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-05-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1997-05-11',
+        datePrecision: 'DAY',
+        reason: 'In the sixth and deciding game at the Equitable Center in New York, Kasparov resigns after 19 moves, giving Deep Blue a 3½–2½ match victory. The match is played under standard tournament time controls and broadcast live; the result that a machine had beaten the world champion is witnessed in real time.',
+        source: {
+          externalId: 'src:ibm-deep-blue-1997',
+          name: 'IBM. "Deep Blue" — corporate history of the 11 May 1997 rematch victory over Garry Kasparov.',
+          url: 'https://www.ibm.com/history/deep-blue',
+          publishedAt: '1997-05-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Kasparov disputed the loss and alleged human intervention, but no rematch occurred and the recorded game scores stand. The match result is documented in the published game record and in the peer-reviewed account of the Deep Blue system by its designers (Campbell, Hoane and Hsu, Artificial Intelligence, 2002), and is treated as an uncontested landmark in computer chess.',
+        source: {
+          externalId: 'src:campbell-deep-blue-aij-2002',
+          name: 'Campbell M, Hoane AJ, Hsu F-h. "Deep Blue." Artificial Intelligence 134(1–2):57–83, January 2002.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/S0004370201001291',
+          publishedAt: '2002-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Capture of Saddam Hussein ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:saddam-hussein-captured-2003',
+    text: 'Saddam Hussein, the deposed president of Iraq, was captured by U.S. forces near Tikrit on 13 December 2003.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2003-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-12-13',
+        datePrecision: 'DAY',
+        reason: 'On the night of 13 December 2003, soldiers of the U.S. 4th Infantry Division find Saddam Hussein hiding in a camouflaged "spider hole" at a farmhouse near ad-Dawr, outside Tikrit, in Operation Red Dawn. He is taken into custody alive without resistance.',
+        source: {
+          externalId: 'src:saddam-capture-red-dawn-2003',
+          name: 'U.S. Army. Account of Operation Red Dawn and the capture of Saddam Hussein, 13 December 2003.',
+          url: 'https://www.army.mil/article/96660/operation_red_dawn_2003',
+          publishedAt: '2003-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-12-14',
+        datePrecision: 'DAY',
+        reason: 'On 14 December 2003 Coalition Provisional Authority administrator L. Paul Bremer announces the capture ("Ladies and gentlemen, we got him"), and the identity is confirmed by DNA testing and by detainees who recognized him. The fact of his capture is conclusively established and is followed by his trial before the Iraqi High Tribunal.',
+        source: {
+          externalId: 'src:bremer-we-got-him-2003',
+          name: 'Coalition Provisional Authority press briefing, Baghdad, 14 December 2003 (L. Paul Bremer: "Ladies and gentlemen, we got him"); DNA confirmation of identity.',
+          url: 'https://georgewbush-whitehouse.archives.gov/news/releases/2003/12/20031214-3.html',
+          publishedAt: '2003-12-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Killing of Osama bin Laden ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:osama-bin-laden-killed-2011',
+    text: 'Osama bin Laden, founder of al-Qaeda and architect of the 11 September 2001 attacks, was killed by U.S. Navy SEALs at his compound in Abbottabad, Pakistan, on 2 May 2011.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-05-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-05-02',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 2 May 2011 (Pakistan time), a U.S. Navy SEAL team conducts a helicopter raid, Operation Neptune Spear, on a walled compound in Abbottabad and kills Osama bin Laden. Late on 1 May (ET) President Barack Obama announces the operation on live television. Bin Laden had been the world\'s most-wanted fugitive, hidden for years; his whereabouts and survival had been an open question.',
+        source: {
+          externalId: 'src:obama-bin-laden-address-2011',
+          name: 'The White House. "Remarks by the President on Osama Bin Laden," 2 May 2011 (delivered 11:35 p.m. ET, 1 May).',
+          url: 'https://obamawhitehouse.archives.gov/the-press-office/2011/05/02/remarks-president-osama-bin-laden',
+          publishedAt: '2011-05-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-05-02',
+        datePrecision: 'DAY',
+        reason: 'U.S. officials confirm bin Laden\'s identity through DNA comparison against samples from family members, in addition to facial recognition and on-site identification; his body is buried at sea the same day. The identification is accepted by the U.S. government and broadly corroborated, settling that bin Laden was killed in the raid.',
+        source: {
+          externalId: 'src:911memorial-neptune-spear',
+          name: 'National September 11 Memorial & Museum. "Operation Neptune Spear" — the raid, killing, and DNA confirmation of Osama bin Laden, 2 May 2011.',
+          url: 'https://www.911memorial.org/learn/resources/digital-exhibitions/digital-exhibition-revealed-hunt-bin-laden/operation-neptune-spear',
+          publishedAt: '2011-05-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Li Wenliang — COVID-19 whistleblower reprimanded then exonerated ─────────
+  {
+    externalId: 'trajectory:li-wenliang-covid-whistleblower-2020',
+    text: 'Wuhan ophthalmologist Li Wenliang, who warned colleagues on 30 December 2019 of a SARS-like illness and was reprimanded by police for "spreading rumors," was posthumously exonerated by Chinese authorities after his death from COVID-19.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-12-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 December 2019 Li Wenliang messages a group of medical-school classmates warning that several patients with a SARS-like atypical pneumonia are isolated at Wuhan Central Hospital. Screenshots of his warning circulate widely online, putting an early account of the outbreak on the public record.',
+        source: {
+          externalId: 'src:li-wenliang-mayo-2022',
+          name: 'Mayo Clinic Proceedings. "Dr Li Wenliang: Wuhan \'Whistleblower\' and Early COVID-19 Victim" — 30 December 2019 warning and timeline.',
+          url: 'https://www.mayoclinicproceedings.org/article/S0025-6196(22)00327-5/fulltext',
+          publishedAt: '2022-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-01-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 January 2020 Wuhan police summon Li Wenliang and have him sign a letter admonishing him for "spreading rumors" and disturbing public order — one of eight people officially reprimanded. The authorities\' position publicly contested the truth of his warning at a time when official messaging downplayed human-to-human transmission.',
+        source: {
+          externalId: 'src:li-wenliang-reprimand-rfa-2020',
+          name: 'Radio Free Asia. "China Exonerates Late Whistleblowing Doctor Li Wenliang" — account of the 3 January 2020 police reprimand letter.',
+          url: 'https://www.rfa.org/english/news/china/wuhan-doctor-03202020122023.html',
+          publishedAt: '2020-03-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-19',
+        datePrecision: 'DAY',
+        reason: 'Li Wenliang dies of COVID-19 on 7 February 2020, prompting nationwide grief and a National Supervisory Commission investigation. On 19 March 2020 the commission\'s findings are released; Wuhan police revoke the admonishment letter, issue a correction, and apologize, formally vindicating his warning as legitimate.',
+        source: {
+          externalId: 'src:li-wenliang-exonerated-2020',
+          name: 'The Irish Times / Reuters. "China exonerates coronavirus whistleblower doctor who died" — National Supervisory Commission findings, 19 March 2020.',
+          url: 'https://www.irishtimes.com/news/world/asia-pacific/china-exonerates-coronavirus-whistleblower-doctor-who-died-1.4207837',
+          publishedAt: '2020-03-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
