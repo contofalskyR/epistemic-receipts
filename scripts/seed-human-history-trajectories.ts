@@ -12852,6 +12852,147 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Ptolemy's autumnal equinox observation — Alexandria, 132 CE ──────────────
+  {
+    externalId: 'trajectory:ptolemy-autumnal-equinox-132ce',
+    text: 'Claudius Ptolemy recorded observing the autumnal equinox at Alexandria on 25 September 132 CE — an observation he used in the Almagest to derive the length of the tropical year as 365¼ − 1/300 days.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0132-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0132-09-25',
+        datePrecision: 'DAY',
+        reason: 'In the Almagest (Book III), Ptolemy states that he observed the autumnal equinox at Alexandria in year 463 of the era of Nabonassar (Athyr 9 in the Egyptian calendar = 25 September 132 CE). He compares it with equinoxes observed by Hipparchus nearly three centuries earlier to confirm a tropical year of 365¼ − 1/300 days, the value he uses throughout his solar theory.',
+        source: {
+          externalId: 'src:ptolemy-almagest-equinox-132',
+          name: 'Ptolemy, Almagest III.1, reporting his own autumnal-equinox observation of 25 September 132 CE. (c. 150 CE)',
+          url: 'https://en.wikipedia.org/wiki/Almagest',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert R. Newton, in "The Crime of Claudius Ptolemy" (1977), shows that Ptolemy\'s reported equinox falls roughly a day (about 28–30 hours) later than the true astronomical equinox — a discrepancy consistent not with a genuine observation but with a value computed backward from Hipparchus\'s data using an erroneous year length. Newton concludes that Ptolemy presented fabricated observations as his own.',
+        source: {
+          externalId: 'src:rrnewton-crime-ptolemy-1977',
+          name: 'Newton RR. The Crime of Claudius Ptolemy. Johns Hopkins University Press, 1977.',
+          url: 'https://en.wikipedia.org/wiki/The_Crime_of_Claudius_Ptolemy',
+          publishedAt: '1977-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Owen Gingerich ("Was Ptolemy a Fraud?", 1980) and other historians of astronomy push back, arguing that the systematic errors reflect Ptolemy\'s reliance on Hipparchus\'s slightly-too-short year length and the limits of ancient instruments rather than deliberate fraud. Whether Ptolemy\'s equinox observations were genuinely made or adjusted to fit theory remains an open dispute.',
+        source: {
+          externalId: 'src:gingerich-was-ptolemy-fraud-1980',
+          name: 'Gingerich O. "Was Ptolemy a Fraud?" Quarterly Journal of the Royal Astronomical Society 1980;21:253–266.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1980QJRAS..21..253G',
+          publishedAt: '1980-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hipparchus measures the Moon's distance from the eclipse of 129 BCE ──────
+  {
+    externalId: 'trajectory:hipparchus-eclipse-moon-distance-129bce',
+    text: 'A total solar eclipse on 20 November 129 BCE was total over the Hellespont but covered about four-fifths of the Sun at Alexandria — a difference Hipparchus used to estimate the Moon\'s distance at roughly 60–70 Earth radii by parallax.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0129-11-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0129-11-20',
+        datePrecision: 'DAY',
+        reason: 'Hipparchus, knowing the eclipse was total at the Hellespont but only about 4/5 obscured at Alexandria (some 9° of latitude to the south), treats the difference in apparent obscuration as a measure of the Moon\'s parallax and so of its distance. His reasoning, set out in his lost treatise On Sizes and Distances, is preserved by Ptolemy and by Pappus of Alexandria.',
+        source: {
+          externalId: 'src:hipparchus-sizes-distances-eclipse',
+          name: 'Hipparchus, On Sizes and Distances (lost), reported by Pappus of Alexandria and Ptolemy; the eclipse of 20 November 129 BCE.',
+          url: 'https://en.wikipedia.org/wiki/On_Sizes_and_Distances_(Hipparchus)',
+          publishedAt: '0320-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'G.J. Toomer reconstructs Hipparchus\'s method, identifies the eclipse as that of 20 November 129 BCE, and shows his resulting lunar-distance estimate (on the order of 60–70 Earth radii) is close to the true mean value of about 60 Earth radii — confirming both the eclipse identification and the soundness of the parallax method.',
+        source: {
+          externalId: 'src:toomer-hipparchus-distances-1974',
+          name: 'Toomer GJ. Hipparchus on the distances of the sun and moon. Archive for History of Exact Sciences 1974;14:126–142.',
+          url: 'https://en.wikipedia.org/wiki/On_Sizes_and_Distances_(Hipparchus)',
+          publishedAt: '1974-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Han five-planet conjunction in Dongjing — 205 BCE ────────────────────────
+  {
+    externalId: 'trajectory:han-five-planet-conjunction-205bce',
+    text: 'The five visible planets clustered within about 33° of longitude in the lodge Dongjing (the Eastern Well) on 16 May 205 BCE; Han court astrologers proclaimed the massing a Mandate-of-Heaven omen legitimizing Liu Bang\'s founding of the Han dynasty.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '0205-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0094-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Sima Qian\'s "Treatise on the Celestial Offices" in the Shiji (c. 94 BCE) and the later Hanshu "Treatise on Astronomy" record that the five planets gathered in the lodge Dongjing as the Han arose, reading the massing as Heaven\'s sanction of the new dynasty. The early histories place the event in the founding years of Gaozu (Liu Bang) — and in doing so misdate it (to about 207 BCE) to align the omen with his accession.',
+        source: {
+          externalId: 'src:shiji-tianguan-five-planets',
+          name: 'Sima Qian, Shiji, "Treatise on the Celestial Offices" (Tianguan shu); five-planet gathering in Dongjing at the rise of the Han. (c. 94 BCE)',
+          url: 'http://www.chinaknowledge.de/Literature/Science/tianwenzhi.html',
+          publishedAt: '0094-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern backward computation of planetary positions (David W. Pankenier) confirms that all five naked-eye planets really did mass within about 33° of longitude in Dongjing on 16 May 205 BCE — a genuine astronomical event — while showing the early histories had shifted its date to make it coincide with the dynasty\'s founding. The astronomical reality of the conjunction stands independent of the omen interpretation.',
+        source: {
+          externalId: 'src:pankenier-five-planets-205bce',
+          name: 'Pankenier DW. "The Treatise on the Celestial Offices" / astrology for an empire — computation of the 16 May 205 BCE five-planet massing. Culture and Cosmos / INSAP.',
+          url: 'http://www.cultureandcosmos.org/pdfs/16/Pankenier_INSAPVII_Astrology_for_an_Empire1.pdf',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
