@@ -21965,6 +21965,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDENDUM (1400–1750): Scientific Revolution, Reformation, Mughal India
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Galileo observes the phases of Venus ────────────────────────────────────
+  {
+    externalId: 'trajectory:galileo-phases-of-venus-1610',
+    text: 'In autumn 1610 Galileo Galilei observed that Venus shows a full set of phases like the Moon, telescopic evidence that Venus orbits the Sun and incompatible with a purely Ptolemaic geocentric model.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1610-12-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1610-12-11',
+        datePrecision: 'DAY',
+        reason: 'Having watched Venus swell into a crescent through the autumn, Galileo secures his priority on 11 December 1610 by sending Giuliano de\' Medici a Latin anagram — "Haec immatura a me iam frustra leguntur o.y." — concealing the claim that Venus, like the Moon, runs through a full cycle of phases. He reveals the solution, "Cynthiae figuras aemulatur mater amorum" (the mother of love imitates the shapes of Cynthia), to Kepler around 1 January 1611.',
+        source: {
+          externalId: 'src:galileo-venus-anagram-1610',
+          name: 'Galileo Galilei. Letters to Giuliano de\' Medici (11 December 1610) and to Kepler (1 January 1611) on the phases of Venus. In Le Opere di Galileo Galilei (Edizione Nazionale), vol. X.',
+          url: 'https://en.wikipedia.org/wiki/Phases_of_Venus',
+          publishedAt: '1610-12-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1611-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The phases are independently confirmed in 1611 by the Jesuit astronomers of the Collegio Romano and observed by Benedetto Castelli; Galileo publishes them in Il Saggiatore (1623). A full phase sequence is impossible under strict Ptolemaic geocentrism but predicted by the Sun-centred arrangement of Copernicus and the geo-heliocentric model of Tycho, eliminating the pure geocentric model from serious astronomy.',
+        source: {
+          externalId: 'src:galileo-saggiatore-venus',
+          name: 'Galileo Galilei. Il Saggiatore (The Assayer). Rome: Accademia dei Lincei, 1623.',
+          url: 'https://en.wikipedia.org/wiki/Phases_of_Venus',
+          publishedAt: '1623-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Giordano Bruno burned at the stake ──────────────────────────────────────
+  {
+    externalId: 'trajectory:giordano-bruno-executed-1600',
+    text: 'The philosopher Giordano Bruno was burned at the stake for heresy in the Campo de\' Fiori in Rome on 17 February 1600 after the Roman Inquisition condemned his theological and cosmological doctrines.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1600-02-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1600-02-08',
+        datePrecision: 'DAY',
+        reason: 'On 8 February 1600 the Roman Inquisition, before the cardinal inquisitors including Robert Bellarmine, reads its sentence finding Bruno an impenitent heretic and hands him to the secular authorities. Bruno is reported to have answered that the judges pronounced sentence against him with greater fear than he received it.',
+        source: {
+          externalId: 'src:bruno-inquisition-sentence-1600',
+          name: 'Sentence of the Roman Inquisition against Giordano Bruno, 8 February 1600 (Vatican Archives summary documents of the Bruno trial).',
+          url: 'https://en.wikipedia.org/wiki/Giordano_Bruno',
+          publishedAt: '1600-02-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1600-02-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 February 1600 Bruno is led to the Campo de\' Fiori, his tongue restrained, and burned alive. The execution is described in a contemporary eyewitness letter by Kaspar Schoppe (Gaspar Schopp) of Breslau, written the same week, fixing the date, place, and manner of death from a hostile but firsthand source.',
+        source: {
+          externalId: 'src:schoppe-letter-bruno-1600',
+          name: 'Kaspar Schoppe. Letter to Konrad Rittershausen describing the execution of Giordano Bruno, Rome, 17 February 1600.',
+          url: 'https://en.wikipedia.org/wiki/Giordano_Bruno',
+          publishedAt: '1600-02-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── English Act of Supremacy — Henry VIII breaks with Rome ──────────────────
+  {
+    externalId: 'trajectory:act-of-supremacy-1534',
+    text: 'The English Parliament passed the Act of Supremacy in November 1534, declaring King Henry VIII "the only supreme head in earth of the Church of England" and severing the English Church from the authority of the Pope.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1534-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1534-11-01',
+        datePrecision: 'MONTH',
+        reason: 'In November 1534 the Reformation Parliament enacts the Act of Supremacy (26 Hen. 8 c. 1), recognising the king as Supreme Head of the Church of England and granting him authority to visit and reform the Church and to suppress heresy. It follows the 1533 Act in Restraint of Appeals, which had already barred appeals to Rome, and gives statutory form to the royal break with the papacy.',
+        source: {
+          externalId: 'src:act-of-supremacy-text-1534',
+          name: 'Act of Supremacy 1534 (26 Hen. 8 c. 1). In Statutes of the Realm, vol. III. (contemporaneous statute)',
+          url: 'https://en.wikipedia.org/wiki/Acts_of_Supremacy',
+          publishedAt: '1534-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1559-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Repealed under the Catholic Mary I in 1554, the royal supremacy is permanently re-established by Elizabeth I\'s Act of Supremacy of 1559, which makes the monarch Supreme Governor of the Church of England. The English Church\'s separation from Rome becomes the settled constitutional and religious order of the realm, surviving to the present.',
+        source: {
+          externalId: 'src:elizabethan-act-supremacy-1559',
+          name: 'Act of Supremacy 1558 (1 Eliz. 1 c. 1), enacted 1559. In Statutes of the Realm, vol. IV.',
+          url: 'https://en.wikipedia.org/wiki/Act_of_Supremacy_1558',
+          publishedAt: '1559-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Haldighati — Mughals vs Mewar ─────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-haldighati-1576',
+    text: 'On 18 June 1576 the Mughal army under Raja Man Singh of Amber fought the forces of Maharana Pratap of Mewar at the mountain pass of Haldighati, a major battle in Akbar\'s campaign to subdue Rajput resistance in Rajasthan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1576-06-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1576-06-18',
+        datePrecision: 'DAY',
+        reason: 'At the narrow pass of Haldighati the Mughal force commanded by Man Singh engages Maharana Pratap\'s Rajput and Afghan cavalry. The Mughals hold the field and Pratap is forced to withdraw into the hills, but he escapes capture and continues guerrilla resistance for years. The court historian Abu\'l-Fazl and the independent chronicler Abd al-Qadir Badauni — the latter present in the campaign — both record the engagement.',
+        source: {
+          externalId: 'src:abul-fazl-akbarnama-haldighati',
+          name: 'Abu\'l-Fazl ibn Mubarak. Akbarnama, vol. III (account of the Mewar campaign and the battle at Haldighati), c. 1590s.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Haldighati',
+          publishedAt: '1596-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1605-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Two independent contemporary Persian chronicles — Abu\'l-Fazl\'s official Akbarnama and Badauni\'s critical Muntakhab al-Tawarikh — agree on the date, location, and outcome of the battle, fixing it as a tactical Mughal victory that nonetheless failed to break Mewari independence. The event is settled in the historiography of Akbar\'s reign.',
+        source: {
+          externalId: 'src:badauni-muntakhab-haldighati',
+          name: 'Abd al-Qadir Badauni. Muntakhab al-Tawarikh, vol. II (eyewitness account of the Haldighati campaign), c. 1595–1596.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Haldighati',
+          publishedAt: '1596-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Glorious Revolution — William of Orange lands at Brixham ─────────────────
+  {
+    externalId: 'trajectory:glorious-revolution-william-lands-1688',
+    text: 'William of Orange landed with a Dutch invasion fleet at Brixham in Devon on 5 November 1688, beginning the Glorious Revolution that deposed King James II and led to the joint monarchy of William III and Mary II.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1688-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1688-11-05',
+        datePrecision: 'DAY',
+        reason: 'Invited by seven English notables, William of Orange sails from the Dutch Republic and, after being turned back once by storms, lands his army at Brixham in Torbay on 5 November 1688 (Old Style). James II\'s support collapses without a decisive battle; the king flees to France in December. The landing is recorded in newsletters, William\'s own Declaration, and the diaries of John Evelyn.',
+        source: {
+          externalId: 'src:william-declaration-1688',
+          name: 'William, Prince of Orange. The Declaration of His Highness William Henry, Prince of Orange, of the Reasons Inducing Him to Appear in Arms in the Kingdom of England. The Hague, October 1688.',
+          url: 'https://en.wikipedia.org/wiki/Glorious_Revolution',
+          publishedAt: '1688-10-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1689-02-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 February 1689 the Convention Parliament declares the throne vacant by James\'s flight and offers the crown jointly to William and Mary alongside the Declaration of Right, enacted as the Bill of Rights 1689. The revolution settlement — parliamentary supremacy, limits on the royal prerogative, and the line of succession — becomes the foundation of the British constitution.',
+        source: {
+          externalId: 'src:bill-of-rights-1689',
+          name: 'Bill of Rights 1689 (1 Will. & Mar. Sess. 2 c. 2). In Statutes of the Realm, vol. VI. (contemporaneous statute)',
+          url: 'https://en.wikipedia.org/wiki/Bill_of_Rights_1689',
+          publishedAt: '1689-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
