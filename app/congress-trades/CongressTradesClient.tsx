@@ -9,6 +9,7 @@ type Trade = {
   id: string;
   memberName: string;
   bioguideId: string | null;
+  hasMemberPage: boolean;
   party: string;
   chamber: string;
   ticker: string;
@@ -135,7 +136,7 @@ function TradeCard({ trade }: { trade: Trade }) {
         {/* Member info */}
         <div style={{ display: "flex", flexDirection: "column", gap: "0.2rem" }}>
           <div style={{ fontWeight: 600, fontSize: "0.95rem", color: S.text }}>
-            {trade.bioguideId ? (
+            {trade.hasMemberPage ? (
               <Link
                 href={`/members/${trade.bioguideId}`}
                 onClick={(e) => e.stopPropagation()}
@@ -363,7 +364,7 @@ function TradeCard({ trade }: { trade: Trade }) {
             >
               View receipt for this disclosure →
             </Link>
-            {trade.bioguideId && (
+            {trade.hasMemberPage && (
               <Link
                 href={`/members/${trade.bioguideId}`}
                 onClick={(e) => e.stopPropagation()}

@@ -75,6 +75,21 @@ export async function GET(req: NextRequest) {
     return `$${n.toLocaleString()}`;
   };
 
+  // Collect bioguideIds from this page to check which have member vote records
+  const bioguideIds = rows
+    .map((r) => (r.metadata as Record<string, unknown>)?.bioguide_id as string)
+    .filter(Boolean);
+
+  const memberExistsSet = new Set<string>();
+  if (bioguideIds.length > 0) {
+    const existing = await prisma.$queryRawUnsafe<Array<{ memberId: string }>>(
+      `SELECT DISTINCT "memberId" FROM "MemberVote"
+       WHERE "memberId" = ANY($1::text[]) AND "memberId" IS NOT NULL`,
+      bioguideIds
+    );
+    existing.forEach((r) => memberExistsSet.add(r.memberId));
+  }
+
   const trades = rows.map((r) => {
     const m = r.metadata as Record<string, unknown>;
     const ticker = (m?.ticker as string) ?? "";
@@ -94,10 +109,13 @@ export async function GET(req: NextRequest) {
       else if (amtMax) amountRange = `< ${fmtMoney(amtMax)}`;
     }
 
+    const bioguideId = (m?.bioguide_id as string) ?? null;
+
     return {
       id: r.id,
       memberName: (m?.member_name as string) ?? "",
-      bioguideId: (m?.bioguide_id as string) ?? null,
+      bioguideId,
+      hasMemberPage: bioguideId ? memberExistsSet.has(bioguideId) : false,
       party: (m?.party as string) ?? "",
       chamber: (m?.chamber as string) ?? "",
       ticker,
