@@ -9832,6 +9832,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, New World, Ottoman, Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Capture of Atahualpa at Cajamarca ───────────────────────────────────────
+  {
+    externalId: 'trajectory:cajamarca-atahualpa-1532',
+    text: 'Francisco Pizarro ambushed and captured the Inca emperor Atahualpa at Cajamarca on 16 November 1532, decapitating the Inca leadership and beginning the Spanish conquest of the Inca Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1532-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1532-11-16',
+        datePrecision: 'DAY',
+        reason: 'In the plaza of Cajamarca, a force of fewer than 170 Spaniards springs a surprise attack on Atahualpa, who had arrived to parley with a lightly armed retinue. The Spanish slaughter thousands of unarmed attendants, seize the emperor, and hold him for a vast gold-and-silver ransom. Francisco de Xerez, Pizarro\'s own secretary and an eyewitness, records the event and its date.',
+        source: {
+          externalId: 'src:xerez-verdadera-relacion-1534',
+          name: 'Xerez F de. Verdadera relación de la conquista del Perú, 1534. (eyewitness account by Pizarro\'s secretary)',
+          url: 'https://www.britannica.com/event/Battle-of-Cajamarca-1532',
+          publishedAt: '1534-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1571-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent accounts corroborate the ambush: the eyewitness chronicle of Pedro Pizarro, the narrative of Miguel de Estete, and later Spanish histories. Atahualpa\'s execution on 26 July 1533 and the Spanish march on Cuzco confirm the collapse of central Inca authority. The capture and its date are undisputed in the historical record.',
+        source: {
+          externalId: 'src:pedro-pizarro-relacion-1571',
+          name: 'Pizarro P. Relación del descubrimiento y conquista de los reinos del Perú, 1571. (eyewitness participant account)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Cajamarca',
+          publishedAt: '1571-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Second Battle of Panipat — Akbar consolidates the Mughal Empire ─────────
+  {
+    externalId: 'trajectory:second-battle-panipat-1556',
+    text: 'On 5 November 1556 the Mughal army under the regent Bairam Khan, in the name of the boy-emperor Akbar, defeated the Hindu king Hemu (Hemchandra Vikramaditya) at the Second Battle of Panipat, ending Afghan resurgence and securing the restored Mughal Empire in northern India.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1556-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1556-11-05',
+        datePrecision: 'DAY',
+        reason: 'Weeks after Humayun\'s death and Akbar\'s accession, Hemu — who had seized Delhi and crowned himself Vikramaditya — meets the Mughal army on the historic field of Panipat. Hemu\'s larger force, with its war elephants, initially prevails until an arrow strikes him in the eye; leaderless, his army collapses. Hemu is captured and executed. The battle is recorded by contemporary court chroniclers.',
+        source: {
+          externalId: 'src:akbarnama-second-panipat-1556',
+          name: 'Abu\'l-Fazl ibn Mubarak. Akbarnama, c. 1590, account of the Second Battle of Panipat. (official Mughal court history)',
+          url: 'https://panipat.gov.in/second-battle/',
+          publishedAt: '1590-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1596-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The victory is independently recorded by the rival chronicler Abd al-Qadir Bada\'uni in his Muntakhab al-Tawarikh and confirmed by the long Mughal rule that followed. Akbar\'s reign (to 1605) and the dynasty\'s dominance over northern India for the next two centuries leave the outcome and date of the battle undisputed.',
+        source: {
+          externalId: 'src:badauni-muntakhab-panipat-1596',
+          name: 'Bada\'uni A-Q. Muntakhab al-Tawarikh, c. 1596. (independent contemporary chronicle of Akbar\'s reign)',
+          url: 'https://en.wikipedia.org/wiki/Second_Battle_of_Panipat',
+          publishedAt: '1596-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Huygens discovers Titan ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:huygens-titan-1655',
+    text: 'Christiaan Huygens discovered Titan, the largest moon of Saturn, on 25 March 1655, the first satellite of Saturn ever observed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1655-03-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1655-03-25',
+        datePrecision: 'DAY',
+        reason: 'Using a refracting telescope of his own design, Huygens notices a faint point of light near Saturn on 25 March 1655. Tracking it over successive nights, he confirms it orbits the planet — a new moon, which he names "Luna Saturni." He keeps the discovery secret at first, encoding it in an anagram.',
+        source: {
+          externalId: 'src:huygens-titan-anagram-1655',
+          name: 'Huygens C. Letter and anagram announcing a satellite of Saturn, 1655 (observation of 25 March 1655).',
+          url: 'https://www.astronomy.com/science/march-25-1655-christiaan-huygens-discovers-titan/',
+          publishedAt: '1655-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1659-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In Systema Saturnium (1659) Huygens publishes the satellite and its orbital period (~16 days) in full, alongside his ring hypothesis. The observation is reproduced by other astronomers and the moon (later named Titan by John Herschel in 1847) becomes a fixed object of the Saturnian system, its existence and discovery date undisputed.',
+        source: {
+          externalId: 'src:huygens-systema-saturnium-1659',
+          name: 'Huygens C. Systema Saturnium, 1659. (full publication of the satellite and ring system)',
+          url: 'https://en.wikipedia.org/wiki/Titan_(moon)',
+          publishedAt: '1659-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Leeuwenhoek observes "animalcules" — the microbial world ─────────────────
+  {
+    externalId: 'trajectory:leeuwenhoek-animalcules-1676',
+    text: 'In a letter dated 9 October 1676 to the Royal Society, Antonie van Leeuwenhoek reported observing single-celled "animalcules" (protozoa and bacteria) in water through a microscope — the first documented observation of microorganisms.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1676-10-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1676-10-09',
+        datePrecision: 'DAY',
+        reason: 'Leeuwenhoek writes to Henry Oldenburg of the Royal Society describing tiny living creatures he observed in rain, well, sea, and pepper-infused water with his single-lens microscopes — estimating sizes and numbers far below anything previously seen. The letter is the first detailed report of what are now known as protists and bacteria.',
+        source: {
+          externalId: 'src:leeuwenhoek-letter-1676',
+          name: 'Leeuwenhoek A van. Letter to Henry Oldenburg, dated 9 October 1676 (Letter 18), concerning little animals observed in water.',
+          url: 'https://makingscience.royalsociety.org/items/el_l1_22/letter-from-antoni-van-leeuwenhoek-to-henry-oldenburg-dated-at-delft',
+          publishedAt: '1676-10-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1677-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The claim of living creatures too small to see with the naked eye is met with skepticism at the Royal Society. The fellows withhold full endorsement pending independent verification, requesting that Leeuwenhoek\'s observations be reproduced before they could be accepted as fact.',
+        source: {
+          externalId: 'src:phil-trans-little-animals-1677',
+          name: 'Philosophical Transactions of the Royal Society, 1677: "Observations... concerning little animals" (English\'d from Leeuwenhoek\'s Dutch letter of 9 Oct. 1676).',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1677.0003',
+          publishedAt: '1677-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1677-11-01',
+        datePrecision: 'MONTH',
+        reason: 'In November 1677 Robert Hooke, using improved microscopes, successfully reproduces Leeuwenhoek\'s observations before the Royal Society, confirming the existence of the animalcules. Leeuwenhoek is subsequently elected a Fellow (1680). The microbial world is established as real, founding the discipline that becomes microbiology.',
+        source: {
+          externalId: 'src:hooke-confirms-animalcules-1677',
+          name: 'Hooke R. Confirmation of Leeuwenhoek\'s animalcules before the Royal Society, November 1677, as recorded in the Society\'s journal and reflected in Lane N (2015), Phil. Trans. R. Soc. B.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstb.2014.0344',
+          publishedAt: '2015-04-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Vienna — the Ottoman tide turns ───────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-vienna-1683',
+    text: 'On 12 September 1683 a Holy League relief army under King John III Sobieski of Poland broke the Ottoman siege of Vienna, ending the second and last Ottoman attempt to take the Habsburg capital and marking the start of the Ottoman Empire\'s long retreat in Central Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1683-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1683-09-12',
+        datePrecision: 'DAY',
+        reason: 'After a two-month siege by Grand Vizier Kara Mustafa Pasha, the relief army of Habsburg, Polish, and German forces descends from the Kahlenberg heights. A massed cavalry charge led by Sobieski\'s winged hussars routs the Ottoman army outside the walls of Vienna. Sobieski records the victory the next day in his celebrated letter to his wife Marysieńka.',
+        source: {
+          externalId: 'src:sobieski-letter-vienna-1683',
+          name: 'John III Sobieski. Letter to Queen Marie Casimire describing the relief of Vienna, 13 September 1683.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Vienna',
+          publishedAt: '1683-09-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1699-01-26',
+        datePrecision: 'DAY',
+        reason: 'The defeat triggers the War of the Holy League and a sustained Habsburg counter-offensive. The Treaty of Karlowitz (26 January 1699) cedes Hungary and Transylvania to the Habsburgs, formalizing the Ottoman retreat that began at Vienna. The battle\'s outcome and date are recorded by both Christian and Ottoman chroniclers and remain undisputed.',
+        source: {
+          externalId: 'src:treaty-karlowitz-1699',
+          name: 'Treaty of Karlowitz, 26 January 1699, ending the War of the Holy League and confirming Ottoman territorial losses. Encyclopædia Britannica (scholarly synthesis).',
+          url: 'https://www.britannica.com/event/Treaty-of-Karlowitz',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
