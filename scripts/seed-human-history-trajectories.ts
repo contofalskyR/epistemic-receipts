@@ -12015,6 +12015,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hess discovers cosmic radiation arriving from space ─────────────────────
+  {
+    externalId: 'trajectory:hess-cosmic-rays-1912',
+    text: 'Victor Hess demonstrated through a balloon ascent on 7 August 1912 that ionizing radiation increases with altitude, proving that a penetrating radiation reaches the Earth from outer space — later named cosmic rays.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-08-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 August 1912 Victor Hess ascends to about 5,300 metres in a hydrogen balloon carrying electroscopes and finds that the rate of ionization, after a slight initial drop, rises markedly with altitude — roughly doubling above 4,000 m. He concludes that a highly penetrating radiation enters the atmosphere from above, not from the Earth\'s crust as had been assumed, and that the Sun is not its sole source since the effect persists at night and during a partial eclipse.',
+        source: {
+          externalId: 'src:hess-balloon-1912',
+          name: 'Hess V.F. Über Beobachtungen der durchdringenden Strahlung bei sieben Freiballonfahrten. Physikalische Zeitschrift, vol. 13, 1912, pp. 1084–1091.',
+          url: 'https://zenodo.org/record/1424282',
+          publishedAt: '1912-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The extraterrestrial origin of the radiation is disputed through the 1920s. Robert Millikan, who in 1925–1926 coins the term "cosmic rays," at first doubts an origin beyond the atmosphere and proposes the rays are high-energy gamma photons produced by element-building within space; others question whether the altitude effect is truly cosmic. The nature and source of the radiation remain unsettled.',
+        source: {
+          externalId: 'src:millikan-cameron-cosmic-rays-1926',
+          name: 'Millikan R.A., Cameron G.H. High Frequency Rays of Cosmic Origin. Physical Review, vol. 28, 1926, pp. 851–868.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.28.851',
+          publishedAt: '1926-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-12-10',
+        datePrecision: 'DAY',
+        reason: 'Coincidence-counter experiments by Bothe and Kolhörster (1929) and Skobeltsyn show the radiation consists of charged particles, and the latitude effect demonstrates deflection by the Earth\'s magnetic field — confirming a particulate, extraterrestrial origin. On 10 December 1936 Hess is awarded the Nobel Prize in Physics "for his discovery of cosmic radiation," sharing it with Carl Anderson, settling the existence and cosmic source of the rays.',
+        source: {
+          externalId: 'src:nobel-hess-1936',
+          name: 'The Nobel Prize in Physics 1936 — Victor Franz Hess, "for his discovery of cosmic radiation." Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1936/hess/facts/',
+          publishedAt: '1936-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rutherford infers the atomic nucleus from alpha scattering ──────────────
+  {
+    externalId: 'trajectory:rutherford-nuclear-atom-1911',
+    text: 'Ernest Rutherford concluded in May 1911 that the atom\'s positive charge and almost all its mass are concentrated in a minute central nucleus, explaining the large-angle scattering of alpha particles and overturning the diffuse "plum-pudding" model.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1911-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1911-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Working from Geiger and Marsden\'s 1909 observation that a small fraction of alpha particles fired at a thin gold foil are deflected through more than 90 degrees — impossible under J.J. Thomson\'s uniform-charge model — Rutherford derives a scattering law requiring the atom\'s charge to sit in a tiny central body. He publishes "The Scattering of α and β Particles by Matter and the Structure of the Atom" in the Philosophical Magazine in May 1911, having first announced the result to the Manchester Literary and Philosophical Society on 7 March 1911.',
+        source: {
+          externalId: 'src:rutherford-nuclear-atom-1911',
+          name: 'Rutherford E. The Scattering of α and β Particles by Matter and the Structure of the Atom. Philosophical Magazine, Series 6, vol. 21, May 1911, pp. 669–688.',
+          url: 'https://www.tandfonline.com/doi/abs/10.1080/14786440508637080',
+          publishedAt: '1911-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In 1913 Geiger and Marsden carry out systematic measurements of scattered alpha particles as a function of angle, foil thickness, and nuclear charge, and find quantitative agreement with Rutherford\'s inverse-square scattering formula. The nuclear atom is confirmed and becomes the foundation on which Bohr builds his 1913 quantized model.',
+        source: {
+          externalId: 'src:geiger-marsden-1913',
+          name: 'Geiger H., Marsden E. The Laws of Deflexion of α Particles through Large Angles. Philosophical Magazine, Series 6, vol. 25, 1913, pp. 604–623.',
+          url: 'https://www.tandfonline.com/doi/abs/10.1080/14786440408634197',
+          publishedAt: '1913-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Henry Moseley\'s 1913 X-ray spectra establish that the nuclear charge equals the atomic number, and Chadwick\'s 1920 scattering measurements directly determine the nuclear charge of copper, silver, and platinum, matching their atomic numbers. The nucleus is firmly established as a real, charge-bearing object, and the term "proton" is adopted for the hydrogen nucleus.',
+        source: {
+          externalId: 'src:chadwick-nuclear-charge-1920',
+          name: 'Chadwick J. The Charge on the Atomic Nucleus and the Law of Force. Philosophical Magazine, Series 6, vol. 40, 1920, pp. 734–746.',
+          url: 'https://www.tandfonline.com/doi/abs/10.1080/14786441208636254',
+          publishedAt: '1920-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The secret protocol of the Molotov–Ribbentrop Pact ──────────────────────
+  {
+    externalId: 'trajectory:molotov-ribbentrop-secret-protocol-1939',
+    text: 'The Nazi–Soviet Non-Aggression Pact signed on 23 August 1939 contained a secret additional protocol dividing Eastern Europe into German and Soviet spheres of influence — a document the USSR denied for half a century before officially acknowledging it in 1989.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1939-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-08-23',
+        datePrecision: 'DAY',
+        reason: 'In the early hours following 23 August 1939, Joachim von Ribbentrop and Vyacheslav Molotov sign in Moscow a secret additional protocol assigning Finland, Estonia, Latvia, and eastern Poland to the Soviet sphere and western Poland and Lithuania to the German sphere. Its existence is leaked within days when the German diplomat Hans von Herwarth describes the protocol to the American chargé Charles Bohlen; the subsequent partition of Poland and the Soviet annexation of the Baltic states follow its lines exactly.',
+        source: {
+          externalId: 'src:nazi-soviet-secret-protocol-1939',
+          name: 'Secret Additional Protocol to the Treaty of Non-Aggression between Germany and the USSR, signed Moscow, 23 August 1939. German Foreign Office record.',
+          url: 'https://avalon.law.yale.edu/20th_century/addsepro.asp',
+          publishedAt: '1939-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-01-21',
+        datePrecision: 'DAY',
+        reason: 'On 21 January 1948 the U.S. Department of State publishes "Nazi–Soviet Relations 1939–1941," printing the text of the secret protocols from microfilmed German Foreign Office archives captured at the end of the war. The Soviet Union officially denies the protocols ever existed, denouncing the documents as forgeries — a position Moscow maintains for over four decades.',
+        source: {
+          externalId: 'src:nazi-soviet-relations-1948',
+          name: 'Sontag R.J., Beddie J.S. (eds.). Nazi–Soviet Relations 1939–1941: Documents from the Archives of the German Foreign Office. U.S. Department of State, 1948.',
+          url: 'https://avalon.law.yale.edu/subject_menus/nazsov.asp',
+          publishedAt: '1948-01-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-12-24',
+        datePrecision: 'DAY',
+        reason: 'After a commission chaired by Alexander Yakovlev reports its findings, the Congress of People\'s Deputies of the USSR on 24 December 1989 adopts a resolution acknowledging the existence of the secret protocols, condemning them as legally void from the moment of signing. The original Soviet copies are subsequently located in the Presidential Archive and published in 1992, ending the denial.',
+        source: {
+          externalId: 'src:congress-peoples-deputies-1989',
+          name: 'Resolution of the Congress of People\'s Deputies of the USSR "On the Political and Legal Evaluation of the Soviet–German Non-Aggression Treaty of 1939," 24 December 1989.',
+          url: 'https://www.cvce.eu/en/obj/resolution_of_the_congress_of_people_s_deputies_of_the_ussr_24_december_1989-en-c4d4cb80-7ec6-4cb9-ab8d-7f2cb29cd0f0.html',
+          publishedAt: '1989-12-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The fate of the Romanov family ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:romanov-execution-1918',
+    text: 'Tsar Nicholas II, his wife, and their five children were shot dead in the cellar of the Ipatiev House in Yekaterinburg on the night of 16–17 July 1918; the fate of the family was obscured for decades before DNA analysis identified all of the remains.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1918-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1918-07-17',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 17 July 1918 the Bolshevik guard commander Yakov Yurovsky leads the shooting of Nicholas II, Alexandra, their four daughters, Tsarevich Alexei, and four retainers in the basement of the Ipatiev House. The Ural Soviet announces the execution of the former Tsar, but states falsely that his wife and children have been moved to a safe place; Yurovsky records the killing and the hurried disposal of the bodies in a later written note.',
+        source: {
+          externalId: 'src:yurovsky-note-1920',
+          name: 'The Yurovsky Note — Yakov Yurovsky\'s account of the execution and burial of the Romanov family, c. 1920–1922 (Russian State Archive).',
+          url: 'https://www.loc.gov/item/2021667776/',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1920-02-17',
+        datePrecision: 'DAY',
+        reason: 'Soviet secrecy about the burial site and the official silence on the children\'s fate fuel persistent claims that one or more of the family survived. From February 1920 a woman later known as Anna Anderson claims to be Grand Duchess Anastasia, pursuing recognition through German courts for decades; rival pretenders and rumours that Alexei or his sisters escaped keep the family\'s fate contested through most of the twentieth century.',
+        source: {
+          externalId: 'src:anna-anderson-anastasia-claim',
+          name: 'Kurth P. Anastasia: The Riddle of Anna Anderson. Little, Brown, 1983. (Documenting the survival claim originating February 1920)',
+          url: 'https://www.britannica.com/biography/Anna-Anderson',
+          publishedAt: '1983-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A mass grave found near Yekaterinburg in 1979 is exhumed in 1991, and DNA analysis published in 1994 identifies the Tsar, Tsarina, and three daughters by matching mitochondrial DNA to living relatives including Prince Philip. The two missing children are recovered from a second grave in 2007 and confirmed by DNA in 2009, accounting for all eleven victims and definitively refuting the survival claims; Anna Anderson\'s tissue is shown to share no DNA with the Romanovs.',
+        source: {
+          externalId: 'src:coble-romanov-dna-2009',
+          name: 'Coble M.D. et al. Mystery Solved: The Identification of the Two Missing Romanov Children Using DNA Analysis. PLoS ONE, vol. 4(3), 2009, e4838.',
+          url: 'https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0004838',
+          publishedAt: '2009-03-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Warsaw Ghetto Uprising and the Stroop Report ────────────────────────
+  {
+    externalId: 'trajectory:warsaw-ghetto-uprising-1943',
+    text: 'The Warsaw Ghetto Uprising began on 19 April 1943 when Jewish fighters resisted the SS deportation of the ghetto\'s remaining inhabitants; its suppression was documented by the perpetrator himself in the Stroop Report, which became evidence at Nuremberg.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1943-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1943-04-19',
+        datePrecision: 'DAY',
+        reason: 'On the morning of 19 April 1943, as German forces enter the Warsaw Ghetto to deport its surviving roughly 50,000 inhabitants, fighters of the Jewish Combat Organization (ŻOB) under Mordechai Anielewicz open fire, forcing the SS to withdraw and return with artillery. SS-Brigadeführer Jürgen Stroop, placed in command, files daily teletype reports to his superiors chronicling the house-by-house destruction of the ghetto.',
+        source: {
+          externalId: 'src:stroop-report-daily-1943',
+          name: 'Stroop J. Daily teletype reports to SS-Obergruppenführer Krüger on the suppression of the Warsaw Ghetto, 20 April – 16 May 1943 (the Stroop Report).',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/the-stroop-report',
+          publishedAt: '1943-04-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1943-05-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 May 1943 Stroop blows up the Great Synagogue on Tłomackie Street to mark the end of the operation and compiles a bound, leather-covered illustrated report titled "Es gibt keinen jüdischen Wohnbezirk in Warschau mehr!" ("The Jewish Quarter of Warsaw Is No More!"), tallying over 56,000 Jews killed or deported. The boastful perpetrator record fixes the scale and course of the suppression in a contemporaneous document.',
+        source: {
+          externalId: 'src:stroop-report-final-1943',
+          name: 'Stroop J. "Es gibt keinen jüdischen Wohnbezirk in Warschau mehr!" — final report on the destruction of the Warsaw Ghetto, 16 May 1943.',
+          url: 'https://www.holocaustresearchproject.org/ghettos/warsaw/stroopreport.html',
+          publishedAt: '1943-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A copy of the Stroop Report is introduced as prosecution evidence (document 1061-PS) at the International Military Tribunal at Nuremberg, where it documents the ghetto\'s destruction; it is corroborated by survivor accounts such as that of ŻOB deputy commander Marek Edelman. Stroop is later tried in Poland, convicted on the basis of his own report, and executed in 1952, settling the historical record of the uprising and its suppression.',
+        source: {
+          externalId: 'src:stroop-report-nuremberg-1061ps',
+          name: 'The Stroop Report, document 1061-PS, in Trial of the Major War Criminals before the International Military Tribunal, Nuremberg, vol. XXVI, 1947.',
+          url: 'https://en.wikipedia.org/wiki/Stroop_Report',
+          publishedAt: '1946-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
