@@ -23151,6 +23151,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL ADDITIONS — Greek/Roman/Persian/Han astronomy & history
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Thucydides' solar eclipse of the eighth war summer, 21 March 424 BCE ─────
+  {
+    externalId: 'trajectory:thucydides-solar-eclipse-424bce',
+    text: 'A solar eclipse occurred at the time of new moon in the eighth summer of the Peloponnesian War — 21 March 424 BCE — and was recorded by the contemporary historian Thucydides, who noted the darkening of the Sun without the crescent or visible stars he had described for the larger eclipse of 431 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0424-03-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0424-03-21',
+        datePrecision: 'DAY',
+        reason: 'Thucydides records, in his year-by-year narrative of the war\'s eighth summer, that "at the beginning of the next summer there was an eclipse of the sun at the time of new moon, and in the early part of the same month an earthquake." Unlike his fuller account of the 431 BCE eclipse, he notes no crescent Sun or visible stars, implying a smaller magnitude — a brief, dated record set down by a historian who lived through the war.',
+        source: {
+          externalId: 'src:thucydides-history-eclipse-424bce',
+          name: 'Thucydides, History of the Peloponnesian War, 4.52, the eclipse of the eighth war summer. (c. 411 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0200%3Abook%3D4%3Achapter%3D52',
+          publishedAt: '0411-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation identifies the event as the partial solar eclipse of 21 March 424 BCE (Julian), visible at Athens with a modest magnitude that matches Thucydides\'s brief notice and the absence of any crescent-Sun or star sighting. The eclipse is catalogued in NASA\'s Five Millennium Canon of Solar Eclipses (−423 Mar 21), corroborating the chronology of the war\'s eighth year.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-424bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141; eclipse of −423 Mar 21.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zhang Heng's seismoscope detects the Longxi earthquake, 13 Dec 134 CE ────
+  {
+    externalId: 'trajectory:zhang-heng-seismoscope-longxi-134',
+    text: 'On 13 December 134 CE, Zhang Heng\'s bronze seismoscope in the Han capital Luoyang registered a tremor from the west when no shaking was felt locally, and days later a rider arrived reporting an earthquake some 500 km away in Longxi — the first documented instrument detection of a distant earthquake.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0134-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0134-12-13',
+        datePrecision: 'DAY',
+        reason: 'The Book of Later Han, drawing on Eastern Han court records, relates that one of the eight dragon-headed mechanisms of Zhang Heng\'s "instrument for measuring the winds and movements of the earth" (houfeng didong yi) dropped its bronze ball toward the west, though no one in Luoyang had felt any tremor. Court officials doubted the device, since the capital had sensed nothing. Several days later a messenger arrived from Longxi (in modern Gansu, about 500 km west) reporting that the ground had shaken there — vindicating the instrument, which had registered a quake imperceptible at the capital.',
+        source: {
+          externalId: 'src:houhanshu-zhang-heng-seismoscope',
+          name: 'Fan Ye, Hou Hanshu (Book of Later Han), Biography of Zhang Heng, the trial of the seismoscope. (compiled c. 445 CE from Eastern Han archives)',
+          url: 'https://en.wikipedia.org/wiki/Zhang_Heng',
+          publishedAt: '0445-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern textual scholarship and seismological reconstruction re-examined the long-standing attribution of the event to the Jincheng–Longxi earthquake of 138 CE and concluded, from careful reading of the Han records, that the quake the seismoscope detected occurred on 13 December 134 CE in the Longxi region — fixing both the date and the standing of the episode as the earliest known instrumental detection of an earthquake.',
+        source: {
+          externalId: 'src:zhang-seismometer-longxi-2006',
+          name: 'Zhang H, et al. "ZHANG Heng\'s Seismometer and Longxi earthquake in AD 134." Earthquake Science 19(6):704–719, 2006.',
+          url: 'https://link.springer.com/article/10.1007/s11589-006-0704-1',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hipparchus measures the tropical year from the equinox of 24 March 146 BCE ─
+  {
+    externalId: 'trajectory:hipparchus-tropical-year-146bce',
+    text: 'From the spring equinox he timed at dawn on 24 March 146 BCE, together with comparison against earlier observations, Hipparchus of Rhodes measured the length of the tropical year as about 365 + 1/4 − 1/300 days — roughly 365 days, 5 hours, 55 minutes — within about six minutes of the modern value.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0146-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0146-03-24',
+        datePrecision: 'DAY',
+        reason: 'Hipparchus observed and timed the spring equinox at dawn on 24 March 146 BCE, one of a series of equinox and solstice timings he made between roughly 162 and 128 BCE. By comparing these with observations attributed to earlier Greek astronomers, he found the tropical year to fall slightly short of 365¼ days and put its length at 365 + 1/4 − 1/300 days. Ptolemy preserves the dated observation and the derivation in the Almagest.',
+        source: {
+          externalId: 'src:ptolemy-almagest-hipparchus-equinox-146bce',
+          name: 'Ptolemy, Almagest III.1, citing Hipparchus\'s equinox observation of 24 March 146 BCE and his length of the year. (c. 150 CE)',
+          url: 'https://en.wikipedia.org/wiki/Hipparchus',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hipparchus\'s value, transmitted through Ptolemy\'s Almagest, was used for centuries and informed later calendar reform. Modern analysis confirms his tropical-year figure of about 365.24667 days differs from the true value by only some six minutes — an extraordinary accuracy for the second century BCE, and a fixed milestone in the history of positional astronomy.',
+        source: {
+          externalId: 'src:hipparchus-equinox-analysis-2008',
+          name: 'Thurston H. "Greek Mathematical Astronomy Reconsidered" / analyses of Hipparchus\'s equinox observations and tropical year. (review, 2008)',
+          url: 'https://arxiv.org/abs/0810.4948',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Salamis — Greek naval victory over Persia, late Sept 480 BCE ───
+  {
+    externalId: 'trajectory:battle-of-salamis-480bce',
+    text: 'In late September 480 BCE, the allied Greek fleet defeated the larger Persian navy of Xerxes I in the straits of Salamis near Athens — a decisive engagement of the Greco-Persian Wars recorded by the participant-playwright Aeschylus.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0480-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0480-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The Greek triremes, drawing the Persian fleet into the narrow strait between Salamis and the Attic coast, broke the invasion\'s naval arm in a single day\'s fighting witnessed by tens of thousands on shore and ship. Aeschylus, who fought in the campaign, dramatized the battle in The Persians (staged at Athens in 472 BCE) through a messenger\'s eyewitness-style report — the earliest surviving account, composed while veterans still lived.',
+        source: {
+          externalId: 'src:aeschylus-persians-salamis',
+          name: 'Aeschylus, The Persians (Persae), the messenger\'s account of Salamis. (staged 472 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0011',
+          publishedAt: '0472-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0430-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Herodotus, writing within a generation while eyewitnesses survived, gives a detailed narrative of the battle (Histories 8.40–96), naming commanders, ship contingents, and the strait\'s topography. The convergence of a participant\'s drama with a near-contemporary historian\'s account, together with the strategic outcome — Xerxes\'s withdrawal from Greece — established Salamis as a firmly settled event of late September 480 BCE.',
+        source: {
+          externalId: 'src:herodotus-salamis-480bce',
+          name: 'Herodotus, Histories, 8.83–96, the battle of Salamis. (c. 430 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D8',
+          publishedAt: '0430-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Milvian Bridge — Constantine defeats Maxentius, 28 Oct 312 ─
+  {
+    externalId: 'trajectory:milvian-bridge-312',
+    text: 'On 28 October 312 CE, Constantine defeated and killed his rival Maxentius at the Milvian Bridge over the Tiber north of Rome, becoming sole ruler of the Western Roman Empire and opening the way to imperial favour for Christianity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0312-10-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0312-10-28',
+        datePrecision: 'DAY',
+        reason: 'Constantine\'s forces routed those of Maxentius, who drowned in the Tiber when the bridge of boats collapsed during the retreat; his body was recovered and his head carried into Rome. The Christian writer Lactantius, at Constantine\'s court within two years of the event, recorded the battle and the story that Constantine had marked his soldiers\' shields with a heavenly sign the night before.',
+        source: {
+          externalId: 'src:lactantius-mortibus-milvian',
+          name: 'Lactantius, De Mortibus Persecutorum 44, the defeat of Maxentius. (c. 315 CE)',
+          url: 'https://www.thelatinlibrary.com/lactantius/demort.shtml',
+          publishedAt: '0315-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0315-07-25',
+        datePrecision: 'DAY',
+        reason: 'The victory was commemorated almost immediately in public monument and oratory: the Arch of Constantine, dedicated in Rome on 25 July 315 CE, depicts the campaign against Maxentius, and the Latin Panegyrics and Eusebius of Caesarea independently record the battle. The convergence of contemporary text, official monument, and panegyric settles both the event and its date of 28 October 312 CE.',
+        source: {
+          externalId: 'src:eusebius-he-milvian',
+          name: 'Eusebius, Ecclesiastical History 9.9, the defeat of Maxentius at the Milvian Bridge. (c. 325 CE)',
+          url: 'https://www.newadvent.org/fathers/250109.htm',
+          publishedAt: '0325-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
