@@ -14935,6 +14935,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Treaty of Verdun divides the Carolingian Empire ─────────────────────────
+  {
+    externalId: 'trajectory:treaty-of-verdun-843',
+    text: 'On 10 August 843 the Treaty of Verdun partitioned the Carolingian Empire among the three surviving sons of Louis the Pious — Lothair I, Louis the German, and Charles the Bald — ending the Carolingian civil war.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0843-08-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0843-08-10',
+        datePrecision: 'MONTH',
+        reason: 'After three years of fratricidal war following the death of Louis the Pious in 840 and the Battle of Fontenoy (841), the brothers meet at Verdun and agree a threefold division: Lothair retains the imperial title and the Middle Frankish corridor from the North Sea to Italy, Louis takes the East Frankish lands beyond the Rhine, and Charles takes the West Frankish lands. Nithard, a grandson of Charlemagne and a participant in the conflict, records the negotiations in his contemporary Histories.',
+        source: {
+          externalId: 'src:nithard-histories-verdun',
+          name: 'Nithard. Historiarum Libri IV (Four Books of Histories), books III–IV on the partition negotiations. (written c. 841–843 by a contemporary participant)',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Verdun',
+          publishedAt: '0843-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Annales Bertiniani and Annales Fuldenses independently corroborate the partition, and the resulting West and East Frankish realms became the long-run nuclei of France and Germany. Modern scholarship treats Verdun as a fixed and richly documented institutional turning point; the MGH critical editions of the Carolingian annals established the chronology beyond dispute.',
+        source: {
+          externalId: 'src:mgh-annales-bertiniani',
+          name: 'Annales Bertiniani, ed. Georg Waitz, Monumenta Germaniae Historica, Scriptores rerum Germanicarum, Hannover 1883; with Annales Fuldenses (MGH SRG, 1891).',
+          url: 'https://www.britannica.com/event/Treaty-of-Verdun',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Las Navas de Tolosa ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-las-navas-de-tolosa-1212',
+    text: 'On 16 July 1212 a Christian coalition led by Alfonso VIII of Castile, with Sancho VII of Navarre and Peter II of Aragon, decisively defeated the Almohad Caliphate under Muhammad al-Nasir at the Battle of Las Navas de Tolosa, a turning point in the Reconquista.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1212-07-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1212-07-23',
+        datePrecision: 'DAY',
+        reason: 'Within days of the battle, King Alfonso VIII dictates a letter to Pope Innocent III — who had proclaimed the campaign a crusade — describing the rout of the Almohad army in the Sierra Morena pass and the flight of the caliph al-Nasir. The letter, dated late July 1212, is the earliest contemporary report of the victory and its date.',
+        source: {
+          externalId: 'src:alfonso-viii-letter-innocent-iii-1212',
+          name: 'Letter of King Alfonso VIII of Castile to Pope Innocent III reporting the victory at Las Navas de Tolosa, late July 1212. (contemporary royal dispatch)',
+          url: 'https://deremilitari.org/2014/11/three-sources-on-the-battle-of-las-novas-de-tolosa-in-1212/',
+          publishedAt: '1212-07-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1243-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The eyewitness archbishop Rodrigo Jiménez de Rada, who was present at the battle, narrates it in his De rebus Hispaniae (c. 1243); Arabic sources including Ibn Abi Zar and al-Maqqari record the Almohad defeat from the other side. The convergence of Christian and Muslim accounts on the date and outcome makes the battle a settled fixed point; modern historiography treats it as the decisive collapse of Almohad power in Iberia.',
+        source: {
+          externalId: 'src:jimenez-de-rada-de-rebus-hispaniae',
+          name: 'Rodrigo Jiménez de Rada. Historia de rebus Hispaniae, book VIII, eyewitness account of Las Navas de Tolosa. (c. 1243)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Las_Navas_de_Tolosa',
+          publishedAt: '1243-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle on the Ice (Lake Peipus) ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-on-the-ice-lake-peipus-1242',
+    text: 'On 5 April 1242 the forces of the Republic of Novgorod under Prince Alexander Nevsky defeated the Livonian branch of the Teutonic Knights on the frozen surface of Lake Peipus, halting the Catholic crusader advance into Orthodox Rus.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1242-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1242-04-05',
+        datePrecision: 'DAY',
+        reason: 'The battle is recorded in the near-contemporary Novgorod First Chronicle from the Russian side and the Livonian Rhymed Chronicle from the German side. Both place the engagement on the ice of Lake Peipus in spring 1242 and agree that the Novgorodian force broke the crusader line; the chronicles report the capture and killing of Livonian knights.',
+        source: {
+          externalId: 'src:novgorod-first-chronicle-peipus',
+          name: 'Novgorod First Chronicle, entry for 6750 (1242), account of the Battle on the Ice; corroborated by the Livonian Rhymed Chronicle (Livländische Reimchronik). (13th century)',
+          url: 'https://www.prlib.ru/en/history/619144',
+          publishedAt: '1300-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Both the Russian and German chronicle traditions independently confirm the Novgorodian victory and its date, fixing it as a settled event. Modern historiography distinguishes the documented battle from its later mythologization: the Livonian Rhymed Chronicle records only about twenty knights killed and six captured, far smaller than the mass drowning depicted in Sergei Eisenstein\'s 1938 film, prompting scholars to rescale the engagement while affirming its outcome.',
+        source: {
+          externalId: 'src:karaev-peipus-expedition-1958',
+          name: 'Karaev G.N. (ed.). Soviet complex expedition to locate the site of the Battle on the Ice, results published 1958–1966; with critical analysis of the Livonian Rhymed Chronicle casualty figures.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Ice',
+          publishedAt: '1958-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kamikaze typhoon destroys the Mongol invasion fleet ─────────────────────
+  {
+    externalId: 'trajectory:mongol-invasion-japan-kamikaze-1281',
+    text: 'In mid-August 1281 a typhoon destroyed most of Kublai Khan\'s Yuan invasion fleet off Kyushu, ending the second Mongol invasion of Japan — an event remembered in Japan as the kamikaze ("divine wind").',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1281-08-15',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1281-08-15',
+        datePrecision: 'MONTH',
+        reason: 'After the Yuan armada is stalled at Hakata Bay by Japanese coastal defenses, a typhoon strikes in the eighth lunar month of 1281 and wrecks the anchored fleet. Japanese sources including the Hachiman Gudokun and the picture scrolls (Moko Shurai Ekotoba) commissioned by the samurai Takezaki Suenaga in 1293 record the storm and the destruction of the invaders, framing it as divine protection.',
+        source: {
+          externalId: 'src:moko-shurai-ekotoba',
+          name: 'Moko Shurai Ekotoba (Illustrated Account of the Mongol Invasion), picture scrolls commissioned by Takezaki Suenaga, 1293; with the Hachiman Gudokun chronicle. (contemporary eyewitness commission)',
+          url: 'https://en.wikipedia.org/wiki/Mongol_invasions_of_Japan',
+          publishedAt: '1293-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians long debated how much of the Yuan fleet\'s loss was due to the storm itself versus the poor construction of hastily built Chinese ships and the effectiveness of Japanese defenses, with some treating the scale of the "divine wind" as patriotic legend rather than verified fact.',
+        source: {
+          externalId: 'src:naval-history-kamikaze-myth-2003',
+          name: 'Delgado J.P. et al. "Shooting Down the Kamikaze Myth." Naval History Magazine, U.S. Naval Institute, June 2003, vol. 17 no. 3.',
+          url: 'https://www.usni.org/magazines/naval-history-magazine/2003/june/shooting-down-kamikaze-myth',
+          publishedAt: '2003-06-01',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Underwater archaeology in Imari Bay off Takashima Island confirms the physical reality of the sunken fleet: in October 2011 a team led by Yoshifumi Ikeda of the University of the Ryukyus uncovered a near-complete 12-metre Yuan ship hull buried in the seabed, the first intact wreck from the invasion, alongside ceramics, weapons, and ballast. Multiple subsequent wrecks recovered at Takashima corroborate a large fleet destroyed at the site.',
+        source: {
+          externalId: 'src:takashima-yuan-shipwreck-2011',
+          name: 'University of the Ryukyus (Yoshifumi Ikeda) announcement of an intact Yuan invasion shipwreck off Takashima, Imari Bay, October 2011.',
+          url: 'https://phys.org/news/2011-10-mongolian-kamikaze-japan-coast.html',
+          publishedAt: '2011-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Crécy ─────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-crecy-1346',
+    text: 'On 26 August 1346 the English army of Edward III decisively defeated a numerically superior French army under Philip VI at the Battle of Crécy, an early Hundred Years\' War engagement that demonstrated the dominance of the English longbow over mounted chivalry.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1346-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1346-08-26',
+        datePrecision: 'DAY',
+        reason: 'In the evening of 26 August near Crécy-en-Ponthieu, repeated French cavalry charges break against English longbow volleys and dismounted men-at-arms; King John of Bohemia and many French nobles are killed. The eyewitness-informed chronicle of Jean le Bel, written within a few years and later expanded by Jean Froissart, records the battle and its date.',
+        source: {
+          externalId: 'src:jean-le-bel-chronique-crecy',
+          name: 'Jean le Bel. Chronique (c. 1357), account of the Battle of Crécy; basis for Jean Froissart\'s Chroniques. (near-contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Cr%C3%A9cy',
+          publishedAt: '1357-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-01',
+        datePrecision: 'YEAR',
+        reason: 'English administrative records, contemporary newsletters dispatched from the campaign, and French chronicles converge on the date and the English victory. Modern military historians have reassessed the battlefield topography and the tactical role of the longbow, but the date, outcome, and significance as a watershed in late-medieval warfare are settled.',
+        source: {
+          externalId: 'src:ayton-preston-battle-crecy-2005',
+          name: 'Ayton A., Preston P. The Battle of Crécy, 1346. Woodbridge: Boydell Press, 2005 (definitive scholarly study).',
+          url: 'https://www.britannica.com/event/Battle-of-Crecy',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
