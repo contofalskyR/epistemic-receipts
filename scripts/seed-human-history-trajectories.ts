@@ -5963,6 +5963,147 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Mohi — Mongol devastation of Hungary ───────────────────────────
+  {
+    externalId: 'trajectory:battle-of-mohi-1241',
+    text: 'On 11 April 1241 the Mongol army under Batu and Subutai annihilated the Hungarian royal army of King Béla IV at the Battle of Mohi on the Sajó River, opening the Kingdom of Hungary to a year of devastating Mongol occupation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1241-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1241-04-11',
+        datePrecision: 'DAY',
+        reason: 'Two days after the Mongols crushed a Polish-German force at Legnica, Batu and Subutai trap the Hungarian army in a fortified camp near the Sajó bridge at Mohi and destroy it; King Béla IV barely escapes to the Adriatic coast. Master Roger of Apulia, who lived through the invasion and was taken captive, records it in his Carmen Miserabile, and Archdeacon Thomas of Spalato describes the catastrophe in his Historia Salonitana.',
+        source: {
+          externalId: 'src:master-roger-carmen-miserabile-mohi',
+          name: 'Master Roger of Apulia. Carmen Miserabile (Lament on the Destruction of Hungary by the Tatars). (eyewitness, c. 1244)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mohi',
+          publishedAt: '1244-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Latin eyewitness accounts (Master Roger, Thomas of Spalato), Hungarian royal charters issued after the withdrawal, and the Mongol/Persian tradition (Rashid al-Din) independently confirm the destruction of Béla IV\'s army in April 1241 and the ensuing occupation until the Mongols withdrew in 1242. The date and outcome are settled in modern scholarship.',
+        source: {
+          externalId: 'src:mongol-invasion-hungary-scholarship',
+          name: 'Standard scholarship on the Mongol invasion of Hungary and the Battle of Mohi.',
+          url: 'https://www.britannica.com/event/Battle-of-Mohi',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Acre — end of the Crusader states on the mainland ────────────────
+  {
+    externalId: 'trajectory:fall-of-acre-1291',
+    text: 'On 18 May 1291 the Mamluk army of Sultan al-Ashraf Khalil stormed Acre, the last major stronghold of the Crusader Kingdom of Jerusalem, ending nearly two centuries of Latin Christian rule on the Syrian mainland.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1291-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1291-05-18',
+        datePrecision: 'DAY',
+        reason: 'After a six-week siege the Mamluks breach Acre\'s walls on 18 May 1291; the city falls amid slaughter, and the last defenders in the Templar fortress hold out until late May. The anonymous "Templar of Tyre," secretary to the Templars and present in the city, records the fall in the Gestes des Chiprois, and the Muslim scholar-prince Abu\'l-Fida, who took part in the siege, describes it in his chronicle.',
+        source: {
+          externalId: 'src:templar-of-tyre-acre-1291',
+          name: 'The "Templar of Tyre." Gestes des Chiprois, account of the fall of Acre. (eyewitness, c. 1300)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Acre_(1291)',
+          publishedAt: '1300-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Latin/Frankish (the Templar of Tyre, "De excidio urbis Acconis") and Arabic (Abu\'l-Fida, al-Maqrizi) sources independently report the storming of Acre in May 1291 and the subsequent abandonment of the remaining coastal towns. The date and the end of the mainland Crusader states are settled, uncontested points in Crusades historiography.',
+        source: {
+          externalId: 'src:fall-of-acre-scholarship',
+          name: 'Standard Crusades scholarship on the 1291 fall of Acre and the end of Outremer.',
+          url: 'https://www.britannica.com/event/Siege-of-Acre-1291',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Kosovo — contested outcome, later settled as Ottoman victory ───
+  {
+    externalId: 'trajectory:battle-of-kosovo-1389',
+    text: 'On 15 June 1389 the armies of Sultan Murad I and a Serbian-led Christian coalition under Prince Lazar fought at Kosovo Polje; both rulers were killed, and the Ottoman strategic victory paved the way for Serbia\'s subjugation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1389-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1389-06-15',
+        datePrecision: 'DAY',
+        reason: 'On St. Vitus\'s Day (Vidovdan) the two armies meet on the field of Kosovo; both Sultan Murad I and Prince Lazar are killed — Murad reportedly slain by the Serbian noble Miloš Obilić, Lazar captured and executed. The deaths of both leaders are recorded across Ottoman, Serbian, and Western sources within the following years.',
+        source: {
+          externalId: 'src:kosovo-1389-contemporary-accounts',
+          name: 'Contemporary letters and chronicles reporting the deaths of Murad I and Lazar at Kosovo (incl. the 1389 Florentine letter and early Ottoman/Serbian accounts).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Kosovo',
+          publishedAt: '1389-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1389-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Because both commanders died and the Ottomans withdrew toward Anatolia for the succession of Bayezid I, the outcome is read in opposite ways: news reaching the West (e.g. the letter read to the Florentine senate) celebrates a Christian victory, while Ottoman tradition claims the field. For a time it is genuinely unclear who had won.',
+        source: {
+          externalId: 'src:kosovo-1389-disputed-outcome',
+          name: 'Florentine senate letter of 1389 and divergent early reports treating Kosovo as a Christian victory.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Kosovo',
+          publishedAt: '1389-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship, weighing Ottoman, Serbian, Byzantine, and Western sources, settles the battle as a Pyrrhic Ottoman strategic victory: Serbia is reduced to an Ottoman vassal under Lazar\'s successors, and the deaths of both Murad and Lazar on 15 June 1389 are fixed facts, however heavily the battle is later mythologised.',
+        source: {
+          externalId: 'src:kosovo-1389-scholarship',
+          name: 'Standard Ottoman and Balkan scholarship on the 1389 Battle of Kosovo and its aftermath.',
+          url: 'https://www.britannica.com/event/Battle-of-Kosovo',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, exploration
   // ═══════════════════════════════════════════════════════════════════════════════
