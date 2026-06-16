@@ -441,6 +441,162 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── First Council of Nicaea — Christ "consubstantial" with the Father, 325 CE ─
+  {
+    externalId: 'trajectory:council-of-nicaea-325',
+    text: 'The First Council of Nicaea, convened 20 May 325 CE, adopted the Nicene Creed defining Christ as "consubstantial" (homoousios) with God the Father, and condemned the Arian doctrine that the Son was a created being subordinate to the Father.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0325-05-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0325-05-20',
+        datePrecision: 'DAY',
+        reason: 'Emperor Constantine summons roughly 300 bishops to Nicaea to resolve the Arian controversy — whether the Son is co-eternal and of the same substance as the Father, or a created being. The deacon Athanasius and the historian Eusebius of Caesarea attend in person; Eusebius leaves a contemporaneous account of the proceedings and of Constantine\'s role in pressing the homoousios formula.',
+        source: {
+          externalId: 'src:eusebius-vita-constantini-nicaea',
+          name: 'Eusebius of Caesarea. Life of Constantine (Vita Constantini), III.6–14. (c. 339 CE, by an attendee of the council)',
+          url: 'https://www.newadvent.org/fathers/25023.htm',
+          publishedAt: '0339-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0325-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The assembled bishops adopt the Creed with the homoousios definition by an overwhelming majority; only Arius and two bishops who refuse to subscribe are anathematized and exiled. The council also fixes a common rule for dating Easter. The decision is promulgated as the doctrine of the universal church.',
+        source: {
+          externalId: 'src:athanasius-de-decretis',
+          name: 'Athanasius of Alexandria. De Decretis (Defence of the Nicene Definition), recording the council\'s creed and proceedings. (c. 350 CE, by an attendee)',
+          url: 'https://www.newadvent.org/fathers/2809.htm',
+          publishedAt: '0350-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0359-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Under the pro-Arian emperor Constantius II, homoian and Arian factions dominate the eastern and western churches; the twin councils of Rimini and Seleucia (359) adopt creeds that omit homoousios. Jerome later writes that "the whole world groaned and was astonished to find itself Arian." The Nicene definition is in practical eclipse for a generation.',
+        source: {
+          externalId: 'src:jerome-altercatio-luciferiani',
+          name: 'Jerome. Dialogue against the Luciferians, 19 ("ingemuit totus orbis et Arianum se esse miratus est"). (c. 379 CE)',
+          url: 'https://www.newadvent.org/fathers/2904.htm',
+          publishedAt: '0379-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0381-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The First Council of Constantinople, convened by Theodosius I in May 381, reaffirms and expands the Nicene Creed, condemning Arianism and the Pneumatomachi. The resulting Nicene–Constantinopolitan Creed becomes the enduring doctrinal standard of catholic Christianity; the homoousios definition is settled across the Greek and Latin churches and remains so today.',
+        source: {
+          externalId: 'src:canons-constantinople-381',
+          name: 'Canons and Creed of the First Council of Constantinople (381). (contemporaneous conciliar record)',
+          url: 'https://www.britannica.com/event/First-Council-of-Constantinople-381',
+          publishedAt: '0381-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Edict of Thessalonica — Nicene Christianity made the state religion, 380 ──
+  {
+    externalId: 'trajectory:edict-of-thessalonica-380',
+    text: 'On 27 February 380 CE the emperors Theodosius I, Gratian, and Valentinian II issued the edict Cunctos populos at Thessalonica, making Nicene Trinitarian Christianity the official religion of the Roman state and declaring rival creeds such as Arianism to be heresy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0380-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0380-02-27',
+        datePrecision: 'DAY',
+        reason: 'The edict Cunctos populos decrees that all peoples of the empire shall hold the faith of the bishops Damasus of Rome and Peter of Alexandria — the single deity of the Father, Son, and Holy Spirit in equal majesty. It styles dissenters "demented and insane," brands their assemblies as heretical rather than churches, and threatens punishment. The text is preserved verbatim in the Theodosian Code.',
+        source: {
+          externalId: 'src:codex-theodosianus-16-1-2',
+          name: 'Codex Theodosianus 16.1.2 (Cunctos populos), edict of Theodosius I, Gratian, and Valentinian II, issued at Thessalonica 27 February 380.',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Thessalonica',
+          publishedAt: '0380-02-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0392-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Theodosius enforces the edict: the First Council of Constantinople (381) ratifies Nicene orthodoxy, Arian and homoian clergy are expelled from the churches, and a sequence of laws culminating in 391–392 prohibits pagan sacrifice and non-Nicene worship. Nicene Christianity is established in law and practice as the empire\'s official faith — the foundation of the medieval Christian state.',
+        source: {
+          externalId: 'src:codex-theodosianus-16-10-12',
+          name: 'Codex Theodosianus 16.10.10–12, anti-pagan and pro-Nicene laws of Theodosius I (391–392).',
+          url: 'https://en.wikipedia.org/wiki/Theodosius_I',
+          publishedAt: '0392-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Total solar eclipse and comet of 19 July 418 CE (Philostorgius) ───────────
+  {
+    externalId: 'trajectory:eclipse-comet-418ce',
+    text: 'A total solar eclipse on 19 July 418 CE darkened the sky so completely that stars became visible, and a cone-shaped light — taken by some for a comet — appeared near the eclipsed Sun; recorded contemporaneously by the church historian Philostorgius, it is the earliest known account of a comet seen during a total eclipse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0418-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0418-07-19',
+        datePrecision: 'DAY',
+        reason: 'Philostorgius records that "the sun was so completely eclipsed that stars appeared," and that a cone-shaped light shone near the darkened Sun. He argues it was not a true comet — it formed no tail and resembled "a great lamp-flame" — and traces its slow westward motion over several days, beginning near the equinoctial sunrise and passing the last star of the Bear\'s tail.',
+        source: {
+          externalId: 'src:philostorgius-eccl-hist-12-8',
+          name: 'Philostorgius. Ecclesiastical History (Epitome by Photius), Book XII.8, on the eclipse and cone-shaped light of 418. (c. 425–433 CE)',
+          url: 'https://www.tertullian.org/fathers/philostorgius.htm',
+          publishedAt: '0433-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a total solar eclipse crossing southern Europe on 19 July 418 CE (Julian), catalogued in NASA\'s Five Millennium Canon of Solar Eclipses; its path and date match Philostorgius\'s account. The accompanying "cone-shaped light" is generally read as a comet (with the corona or zodiacal light as alternatives), making this the earliest securely dated total eclipse with a contemporaneous comet sighting.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-418',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
