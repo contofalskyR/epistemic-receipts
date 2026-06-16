@@ -14210,6 +14210,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — batch 3: genomics, AI, 9/11 aftermath, Internet
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First SARS-CoV-2 genome published (Zhang Yongzhen) ──────────────────────
+  {
+    externalId: 'trajectory:sars-cov-2-genome-published-2020',
+    text: 'The first complete genome sequence of SARS-CoV-2 — the virus causing COVID-19 — was determined by a team led by Zhang Yongzhen of Fudan University and released publicly on 11 January 2020, becoming the reference genome (GenBank MN908947, isolate Wuhan-Hu-1) used worldwide for diagnostics and vaccine design.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-11',
+        datePrecision: 'DAY',
+        reason: 'Working from a bronchoalveolar lavage sample from a Wuhan patient, Zhang Yongzhen\'s team assembles the complete ~29.9 kb viral genome by 5 January 2020. On 11 January 2020 the sequence is posted publicly on virological.org (by Edward Holmes on the consortium\'s behalf) and deposited in GenBank as MN908947, putting the full genome of the new coronavirus on the open scientific record.',
+        source: {
+          externalId: 'src:virological-2019-ncov-genome-2020',
+          name: 'Virological.org. "Novel 2019 coronavirus genome" — first public release of the SARS-CoV-2 genome by Zhang Yongzhen et al., 11 January 2020.',
+          url: 'https://virological.org/t/novel-2019-coronavirus-genome/319',
+          publishedAt: '2020-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-02-03',
+        datePrecision: 'DAY',
+        reason: 'The sequence is formally published by Wu et al. in Nature on 3 February 2020 and is independently confirmed by laboratories worldwide. It underpins the Corman–Drosten RT-PCR diagnostic protocol (Eurosurveillance, 23 January 2020) and the design of the first mRNA vaccine candidates, establishing MN908947/Wuhan-Hu-1 as the settled global reference genome.',
+        source: {
+          externalId: 'src:wu-2020-nature-sars-cov-2-genome',
+          name: 'Wu F, Zhao S, Yu B, … Zhang YZ. "A new coronavirus associated with human respiratory disease in China." Nature 579:265–269 (3 February 2020).',
+          url: 'https://www.nature.com/articles/s41586-020-2008-3',
+          publishedAt: '2020-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Lee Sedol ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:alphago-defeats-lee-sedol-2016',
+    text: 'AlphaGo, a Go-playing program built by DeepMind, defeated 9-dan professional Lee Sedol 4–1 in a five-game match in Seoul (9–15 March 2016) — the first time a computer program beat a top-ranked human player at Go on a full 19×19 board.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-01-28',
+        datePrecision: 'DAY',
+        reason: 'On 28 January 2016 DeepMind publishes "Mastering the game of Go with deep neural networks and tree search" in Nature, reporting that AlphaGo had defeated European champion Fan Hui 5–0 in October 2015 — the first time a program beat a professional Go player without handicap on a full board.',
+        source: {
+          externalId: 'src:silver-2016-nature-alphago',
+          name: 'Silver D, Huang A, Maddison CJ, et al. "Mastering the game of Go with deep neural networks and tree search." Nature 529:484–489 (28 January 2016).',
+          url: 'https://www.nature.com/articles/nature16961',
+          publishedAt: '2016-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2016-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Go experts and Lee Sedol himself doubt the result generalizes to the world elite: Fan Hui, a 2-dan European professional, ranks far below the top Korean and Chinese players. In pre-match interviews Lee predicts he will win the upcoming series easily (5–0 or 4–1), and many commentators expect human victory.',
+        source: {
+          externalId: 'src:lee-sedol-prematch-2016',
+          name: 'The Korea Herald / Associated Press. Pre-match coverage of the AlphaGo–Lee Sedol challenge, reporting Lee Sedol\'s prediction of a comfortable win (February 2016).',
+          url: 'https://www.koreaherald.com/view.php?ud=20160222000969',
+          publishedAt: '2016-02-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'AlphaGo wins games 1–3 (including the celebrated "Move 37" in game 2), Lee Sedol takes game 4 with his "Move 78" wedge, and AlphaGo wins game 5, ending the match 4–1 on 15 March 2016 before a global audience. The outcome settles that a program can beat a top human at Go, years ahead of prior expert forecasts.',
+        source: {
+          externalId: 'src:deepmind-alphago-lee-sedol-2016',
+          name: 'DeepMind. "AlphaGo: The story so far" / official record of the AlphaGo vs. Lee Sedol match, Seoul, 9–15 March 2016 (final score 4–1).',
+          url: 'https://deepmind.google/research/breakthroughs/alphago/',
+          publishedAt: '2016-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── He Jiankui's CRISPR-edited babies ───────────────────────────────────────
+  {
+    externalId: 'trajectory:he-jiankui-crispr-babies-2018',
+    text: 'Chinese scientist He Jiankui announced in November 2018 that he had used CRISPR to edit the CCR5 gene in twin girls born that year — the first gene-edited human babies — a claim later confirmed and ruled an illegal medical practice by a Chinese court.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-11-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2018-11-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 November 2018 He Jiankui releases a series of YouTube videos and gives interviews announcing that twin girls ("Lulu and Nana"), born in October 2018, carry CRISPR-edited CCR5 genes intended to confer HIV resistance. Two days later, on 28 November 2018, he presents the work at the Second International Summit on Human Genome Editing at the University of Hong Kong.',
+        source: {
+          externalId: 'src:he-jiankui-announcement-2018',
+          name: 'Associated Press / MIT Technology Review. Coverage of He Jiankui\'s announcement of the first CRISPR gene-edited babies, 25–26 November 2018.',
+          url: 'https://www.technologyreview.com/2018/11/25/138962/exclusive-chinese-scientists-are-creating-crispr-babies/',
+          publishedAt: '2018-11-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-27',
+        datePrecision: 'DAY',
+        reason: 'No peer-reviewed data accompanies the claim. Scientists worldwide condemn the experiment as unethical and scientifically unverified, with some questioning whether the edits or even the pregnancies were real. Southern University of Science and Technology disowns the work and China\'s National Health Commission orders an investigation.',
+        source: {
+          externalId: 'src:he-jiankui-condemnation-2018',
+          name: 'Nature News. "CRISPR-baby scientist fails to satisfy critics" — global condemnation and demands for verification following the November 2018 announcement.',
+          url: 'https://www.nature.com/articles/d41586-018-07573-w',
+          publishedAt: '2018-11-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 December 2019 the Shenzhen Nanshan District People\'s Court convicts He Jiankui and two collaborators of illegally practising medicine, sentencing him to three years in prison and a 3-million-yuan fine. The official verdict, reported by Xinhua, confirms that gene-edited children — the twins and a third infant — were in fact born, establishing the events as fact.',
+        source: {
+          externalId: 'src:he-jiankui-sentencing-xinhua-2019',
+          name: 'Xinhua News Agency. "Gene-editing researcher sentenced to 3 years in prison" — Shenzhen Nanshan District People\'s Court verdict, 30 December 2019.',
+          url: 'http://www.xinhuanet.com/english/2019-12/30/c_138667350.htm',
+          publishedAt: '2019-12-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Iraq WMD claim reversed ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:iraq-wmd-claim-reversed-2004',
+    text: 'The claim that Iraq possessed active stockpiles of weapons of mass destruction — presented by US Secretary of State Colin Powell to the UN Security Council on 5 February 2003 as a basis for the invasion of Iraq — was reversed when the US-led Iraq Survey Group found no such stockpiles.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-02-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-02-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 February 2003 Colin Powell addresses the UN Security Council, presenting satellite imagery, communications intercepts, and human-source intelligence to assert that Iraq is concealing chemical and biological weapons and reconstituting a nuclear-weapons programme. The presentation puts the WMD allegation on the formal diplomatic record.',
+        source: {
+          externalId: 'src:powell-un-speech-2003',
+          name: 'US Department of State. "Remarks to the United Nations Security Council" by Secretary Colin L. Powell, 5 February 2003 (official transcript).',
+          url: 'https://2001-2009.state.gov/secretary/former/powell/remarks/2003/17300.htm',
+          publishedAt: '2003-02-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-20',
+        datePrecision: 'DAY',
+        reason: 'The WMD allegation becomes the official US and coalition justification for war. The invasion of Iraq begins on 20 March 2003, with the US government treating Iraqi possession of weapons of mass destruction as established fact in public statements and policy.',
+        source: {
+          externalId: 'src:bush-iraq-address-2003',
+          name: 'The White House. "President Bush Addresses the Nation" on the start of military operations against Iraq, 19 March 2003.',
+          url: 'https://georgewbush-whitehouse.archives.gov/news/releases/2003/03/20030319-17.html',
+          publishedAt: '2003-03-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-06',
+        datePrecision: 'DAY',
+        reason: 'On 6 October 2004 the Iraq Survey Group\'s Comprehensive Report (the Duelfer Report) concludes that Iraq had no stockpiles of WMD and had ended its programmes in 1991. The finding follows interim head David Kay\'s October 2003 testimony that "we were almost all wrong," and Powell later calls his UN speech a "blot" on his record, reversing the claim.',
+        source: {
+          externalId: 'src:duelfer-report-2004',
+          name: 'Iraq Survey Group. Comprehensive Report of the Special Advisor to the DCI on Iraq\'s WMD (Duelfer Report), released 6 October 2004.',
+          url: 'https://www.cia.gov/static/Comprehensive-Report-Key-Findings.pdf',
+          publishedAt: '2004-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── World Wide Web released into the public domain ──────────────────────────
+  {
+    externalId: 'trajectory:www-public-domain-1993',
+    text: 'On 30 April 1993 CERN released the World Wide Web software — its protocols, the basic browser, and the server code — into the public domain, allowing anyone to use, build on, and extend the Web royalty-free.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1993-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-04-30',
+        datePrecision: 'DAY',
+        reason: 'CERN signs and dates a declaration (30 April 1993) placing the World Wide Web software developed by Tim Berners-Lee and colleagues into the public domain, with no fees payable for its use. The signed document is preserved in the CERN archive and putting the Web in the open record.',
+        source: {
+          externalId: 'src:cern-www-public-domain-1993',
+          name: 'CERN. "Statement concerning CERN W3 software release into public domain," dated 30 April 1993 (CERN Document Server).',
+          url: 'https://cds.cern.ch/record/1164399',
+          publishedAt: '1993-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-10-01',
+        datePrecision: 'DAY',
+        reason: 'The royalty-free release drives rapid, universal adoption of the Web. On 1 October 1994 Tim Berners-Lee founds the World Wide Web Consortium (W3C) at MIT to steward open, vendor-neutral, royalty-free web standards, cementing the Web\'s public foundation as settled fact.',
+        source: {
+          externalId: 'src:w3c-founding-1994',
+          name: 'World Wide Web Consortium (W3C). History and founding of the W3C at MIT, 1 October 1994.',
+          url: 'https://www.w3.org/Consortium/facts',
+          publishedAt: '1994-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
