@@ -4723,6 +4723,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): genomics, AI, climate, global health
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Human Genome Project — first working draft ──────────────────────────────
+  {
+    externalId: 'trajectory:human-genome-draft-2000',
+    text: 'On June 26, 2000, the publicly funded International Human Genome Sequencing Consortium and Celera Genomics jointly announced completion of a first working draft of the human genome sequence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-06-26',
+        datePrecision: 'DAY',
+        reason: 'In a White House ceremony, U.S. President Bill Clinton — joined by UK Prime Minister Tony Blair via satellite, Francis Collins of the public consortium, and Craig Venter of Celera — announced that a working draft covering roughly 90% of the human genome had been assembled. The consortium drew on labs in the US, UK, Japan, France, Germany, and China.',
+        source: {
+          externalId: 'src:whitehouse-genome-2000',
+          name: 'The White House. "Remarks on the Completion of the First Survey of the Entire Human Genome Project." June 26, 2000.',
+          url: 'https://www.genome.gov/10001356/june-2000-white-house-event',
+          publishedAt: '2000-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-02-15',
+        datePrecision: 'DAY',
+        reason: 'The peer-reviewed draft sequences were published: the public consortium in Nature (February 15, 2001) and Celera in Science (February 16, 2001). The analyses, independently produced, broadly agreed on gene count and structure, establishing the draft as a settled scientific result.',
+        source: {
+          externalId: 'src:ihgsc-nature-2001',
+          name: 'International Human Genome Sequencing Consortium. "Initial sequencing and analysis of the human genome." Nature 409:860–921, 2001.',
+          url: 'https://www.nature.com/articles/35057062',
+          publishedAt: '2001-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-14',
+        datePrecision: 'DAY',
+        reason: 'The consortium announced the essentially complete, high-accuracy reference sequence (covering ~99% of the euchromatic genome at 99.99% accuracy), coinciding with the 50th anniversary of the description of the DNA double helix. The finished sequence superseded and confirmed the 2000 draft.',
+        source: {
+          externalId: 'src:nhgri-genome-finished-2003',
+          name: 'National Human Genome Research Institute. "International Consortium Completes Human Genome Project." April 14, 2003.',
+          url: 'https://www.genome.gov/11006929/2003-release-international-consortium-completes-hgp',
+          publishedAt: '2003-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Lee Sedol — Seoul ───────────────────────────────────────
+  {
+    externalId: 'trajectory:alphago-lee-sedol-2016',
+    text: "DeepMind's AlphaGo defeated Go world champion Lee Sedol by four games to one in a five-game match held in Seoul, South Korea, concluding on March 15, 2016.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'Over five games (March 9–15, 2016) at the Four Seasons Hotel in Seoul, AlphaGo beat Lee Sedol 4–1, the matches broadcast live to a global audience. Go, with its enormous search space, had been considered a grand challenge for AI decades away from solution; the result was witnessed and recorded in real time.',
+        source: {
+          externalId: 'src:deepmind-alphago-lee-2016',
+          name: 'DeepMind. "AlphaGo: The story so far" — Lee Sedol match record, March 2016.',
+          url: 'https://deepmind.google/research/breakthroughs/alphago/',
+          publishedAt: '2016-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-10-19',
+        datePrecision: 'DAY',
+        reason: 'The methods behind AlphaGo were detailed in peer-reviewed Nature papers (the January 2016 paper on the Fan Hui match, and the October 2017 AlphaGo Zero paper showing superhuman play from self-play alone). The achievement is uncontested in the AI research community and is treated as a settled landmark in machine learning.',
+        source: {
+          externalId: 'src:alphago-zero-nature-2017',
+          name: 'Silver D. et al. "Mastering the game of Go without human knowledge." Nature 550:354–359, 2017.',
+          url: 'https://www.nature.com/articles/nature24270',
+          publishedAt: '2017-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SARS — WHO global alert ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:sars-who-alert-2003',
+    text: 'A severe atypical pneumonia that emerged from Guangdong, China, was identified as a new disease (SARS) caused by a novel coronavirus, after the WHO issued a global alert on March 12, 2003.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-11-16',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-11-16',
+        datePrecision: 'MONTH',
+        reason: 'The first known case of an unusual, highly transmissible atypical pneumonia is later traced to Foshan, Guangdong Province, in mid-November 2002. Through early 2003 clusters spread in southern China and to Hong Kong; the cause and nature of the illness were unknown.',
+        source: {
+          externalId: 'src:who-sars-consensus-origin',
+          name: 'WHO. "Consensus document on the epidemiology of severe acute respiratory syndrome (SARS)." 2003 — origin in Guangdong.',
+          url: 'https://www.who.int/publications/i/item/consensus-document-on-the-epidemiology-of-severe-acute-respiratory-syndrome-(sars)',
+          publishedAt: '2003-10-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-12',
+        datePrecision: 'DAY',
+        reason: 'The World Health Organization issued a global alert on March 12, 2003 about cases of severe atypical pneumonia, followed by an emergency travel advisory on March 15, 2003 that named the illness Severe Acute Respiratory Syndrome (SARS). The disease was now a formally recognized, named global health threat.',
+        source: {
+          externalId: 'src:who-sars-alert-2003',
+          name: 'WHO. "WHO issues a global alert about cases of atypical pneumonia." March 12, 2003.',
+          url: 'https://www.who.int/news/item/12-03-2003-who-issues-a-global-alert-about-cases-of-atypical-pneumonia',
+          publishedAt: '2003-03-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-16',
+        datePrecision: 'DAY',
+        reason: 'On April 16, 2003, the WHO announced that a novel coronavirus, never before seen in humans, had been conclusively identified as the cause of SARS — the result of a coordinated effort by an international network of laboratories. The etiology was settled.',
+        source: {
+          externalId: 'src:who-sars-coronavirus-2003',
+          name: 'WHO. "Coronavirus never before seen in humans is the cause of SARS." April 16, 2003.',
+          url: 'https://www.who.int/news/item/16-04-2003-coronavirus-never-before-seen-in-humans-is-the-cause-of-sars',
+          publishedAt: '2003-04-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Paris Agreement adopted ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:paris-agreement-2015',
+    text: 'The Paris Agreement, a legally binding international treaty on climate change, was adopted by 196 parties at the COP21 conference in Paris on December 12, 2015.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-12-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-12-12',
+        datePrecision: 'DAY',
+        reason: 'On the evening of December 12, 2015, COP21 president Laurent Fabius gaveled the adoption of the Paris Agreement, with parties committing to limit global warming to well below 2°C above pre-industrial levels. The adoption was a public act witnessed by delegations from nearly every nation.',
+        source: {
+          externalId: 'src:unfccc-paris-adoption-2015',
+          name: 'UNFCCC. "Adoption of the Paris Agreement." Decision 1/CP.21, FCCC/CP/2015/10/Add.1, December 12, 2015.',
+          url: 'https://unfccc.int/process-and-meetings/the-paris-agreement',
+          publishedAt: '2015-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-11-04',
+        datePrecision: 'DAY',
+        reason: 'The Paris Agreement entered into force on November 4, 2016, 30 days after the threshold of ratification by at least 55 parties accounting for at least 55% of global greenhouse gas emissions was crossed. Its adoption and legal status are an established matter of international law on the UN treaty record.',
+        source: {
+          externalId: 'src:un-paris-entry-into-force-2016',
+          name: 'United Nations Treaty Collection. "Paris Agreement" — entry into force November 4, 2016.',
+          url: 'https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-d&chapter=27&clang=_en',
+          publishedAt: '2016-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CRISPR-Cas9 programmable genome editing ─────────────────────────────────
+  {
+    externalId: 'trajectory:crispr-cas9-2012',
+    text: 'On June 28, 2012, Jennifer Doudna, Emmanuelle Charpentier, and colleagues published in Science that the CRISPR-Cas9 system could be programmed with a guide RNA to cut DNA at any chosen sequence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-06-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-06-28',
+        datePrecision: 'DAY',
+        reason: 'Jinek, Chylinski, Charpentier, Doudna et al. published online in Science a demonstration that the bacterial Cas9 endonuclease, directed by a single engineered guide RNA, cleaves double-stranded DNA at programmable target sites — establishing CRISPR-Cas9 as a general-purpose genome-editing tool.',
+        source: {
+          externalId: 'src:jinek-crispr-science-2012',
+          name: 'Jinek M, Chylinski K, Fonfara I, Hauer M, Doudna JA, Charpentier E. "A Programmable Dual-RNA–Guided DNA Endonuclease in Adaptive Bacterial Immunity." Science 337(6096):816–821, 2012.',
+          url: 'https://www.science.org/doi/10.1126/science.1225829',
+          publishedAt: '2012-06-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-07',
+        datePrecision: 'DAY',
+        reason: 'Within months, independent groups (Feng Zhang and George Church, January 2013) showed CRISPR-Cas9 editing in human cells, and the technique was adopted worldwide. The 2020 Nobel Prize in Chemistry was awarded to Charpentier and Doudna "for the development of a method for genome editing," marking the result as settled.',
+        source: {
+          externalId: 'src:nobel-chemistry-crispr-2020',
+          name: 'The Nobel Prize in Chemistry 2020 — Emmanuelle Charpentier and Jennifer A. Doudna. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/2020/summary/',
+          publishedAt: '2020-10-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
