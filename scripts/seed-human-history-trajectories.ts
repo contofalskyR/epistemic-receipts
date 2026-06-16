@@ -6666,6 +6666,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dedication of Hagia Sophia — Justinian's great church ────────────────────
+  {
+    externalId: 'trajectory:hagia-sophia-dedication-537',
+    text: 'Emperor Justinian I dedicated the rebuilt cathedral of Hagia Sophia in Constantinople on 27 December 537, completing the largest enclosed space in the world and the masterpiece of Byzantine architecture.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0537-12-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0537-12-27',
+        datePrecision: 'DAY',
+        reason: 'Five years and ten months after the original church burned in the Nika riots of 532, Justinian and Patriarch Menas consecrate the new Hagia Sophia with a grand ceremony. Tradition records the emperor exclaiming on entering, "Solomon, I have surpassed thee!" The dedication is a public, dated imperial act witnessed by the capital.',
+        source: {
+          externalId: 'src:procopius-buildings-hagia-sophia',
+          name: 'Procopius of Caesarea. De Aedificiis (Buildings) I.1, on the construction and dedication of Hagia Sophia. (c. 550s, contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Hagia_Sophia',
+          publishedAt: '0555-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The contemporary account of Procopius, the sixth-century ekphrasis of Paul the Silentiary written for the rededication in 562, the Chronicon Paschale, and the surviving building itself agree on Justinianic authorship and the 537 dedication. Modern architectural and archaeological scholarship treats the date and attribution as settled, debating only construction details, not the event.',
+        source: {
+          externalId: 'src:lethaby-swainson-hagia-sophia',
+          name: 'Lethaby W.R., Swainson H. The Church of Sancta Sophia, Constantinople. London: Macmillan, 1894; basis of modern scholarship.',
+          url: 'https://www.britannica.com/topic/Hagia-Sophia',
+          publishedAt: '1894-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Talas — Abbasid victory over the Tang ──────────────────────────
+  {
+    externalId: 'trajectory:battle-of-talas-751',
+    text: 'Abbasid Caliphate forces under Ziyad ibn Salih decisively defeated the Tang dynasty army of Gao Xianzhi at the Battle of Talas in July 751, halting Tang expansion into Central Asia — the only direct military clash between the Chinese and Arab empires.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0751-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0751-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Near the Talas River (in present-day Kyrgyzstan/Kazakhstan) the Tang army is routed after the defection of Karluk auxiliaries. Tang prisoners are marched west into Abbasid lands; one of them, the official Du Huan, spends about a decade in the caliphate and later writes the Jingxingji (Record of Travels), a contemporaneous eyewitness account of the Islamic world. The defeat ends Tang military reach across the Pamirs.',
+        source: {
+          externalId: 'src:duhuan-jingxingji-talas',
+          name: 'Du Huan. Jingxingji (Record of Travels), preserved in Du You\'s Tongdian (c. 801). Eyewitness account by a Tang prisoner taken at Talas.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Talas',
+          publishedAt: '0801-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Chinese sources (the Tongdian, the Old and New Books of Tang) and Arabic sources (al-Tabari, Ibn al-Athir) independently record the battle, the Tang defeat, and the year 751. Modern scholarship treats the engagement and its date as securely established; only the popular claim that Talas directly transmitted papermaking to the Islamic world remains debated, since paper was already known in Samarkand before the battle.',
+        source: {
+          externalId: 'src:barthold-talas-scholarship',
+          name: 'Barthold W. Turkestan Down to the Mongol Invasion (Eng. ed. 1928) and subsequent scholarship on the Battle of Talas.',
+          url: 'https://www.worldhistory.org/Battle_of_Talas/',
+          publishedAt: '1928-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Second Council of Nicaea — restoration of icon veneration ────────────────
+  {
+    externalId: 'trajectory:second-council-nicaea-787',
+    text: 'The Second Council of Nicaea, convened on 24 September 787, condemned Byzantine iconoclasm and formally restored the veneration of icons, defining that icons deserve reverence (proskynesis) but not the worship (latreia) reserved for God.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0787-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0787-09-24',
+        datePrecision: 'DAY',
+        reason: 'Summoned by Empress Irene and her son Constantine VI and endorsed by Pope Adrian I, the council opens in the church of Hagia Sophia in Nicaea, reversing the iconoclast Council of Hieria (754). Across seven sessions (24 September–13 October 787) the assembled bishops define the legitimacy of icon veneration; the decision is enacted at a final session in Constantinople on 23 October. The conciliar acts are recorded verbatim.',
+        source: {
+          externalId: 'src:acts-second-nicaea-787',
+          name: 'Acts of the Second Council of Nicaea (787), Horos and session minutes. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Nicaea',
+          publishedAt: '0787-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0843-03-11',
+        datePrecision: 'DAY',
+        reason: 'After a second iconoclast period (815–843), the Synod of 843 under Empress Theodora permanently restored icon veneration — celebrated as the "Triumph of Orthodoxy" on the first Sunday of Lent, 11 March 843. Nicaea II is recognized by both the Eastern Orthodox and Roman Catholic churches as the Seventh Ecumenical Council, settling its doctrinal status.',
+        source: {
+          externalId: 'src:triumph-orthodoxy-843',
+          name: 'Synodikon of Orthodoxy and the Triumph of Orthodoxy, 11 March 843, confirming the decrees of Nicaea II.',
+          url: 'https://www.britannica.com/event/Second-Council-of-Nicaea-787',
+          publishedAt: '0843-03-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of the Song dynasty — Chenqiao mutiny ───────────────────────────
+  {
+    externalId: 'trajectory:song-dynasty-founded-960',
+    text: 'General Zhao Kuangyin was proclaimed emperor by his mutinying troops at Chenqiao on 2 February 960, overthrowing the Later Zhou and founding the Song dynasty, which reunified most of China and ended the Five Dynasties period.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0960-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0960-02-02',
+        datePrecision: 'DAY',
+        reason: 'Marching north to meet a reported Northern Han and Liao invasion, Zhao Kuangyin\'s army halts at Chenqiao post-station and his officers drape the imperial yellow robe over him, acclaiming him emperor. He returns to Kaifeng, accepts the abdication of the child Emperor Gongdi of Later Zhou, and formally takes the throne on 4 February 960 as Emperor Taizu of Song. Court records register the dynastic change.',
+        source: {
+          externalId: 'src:changbian-song-founding',
+          name: 'Li Tao. Xu Zizhi Tongjian Changbian, opening annals of the Jianlong era (founding of the Song). (Song-era compilation from court records)',
+          url: 'https://en.wikipedia.org/wiki/Chenqiao_mutiny',
+          publishedAt: '1183-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1345-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Yuan-era Songshi (History of Song, completed 1345), drawing on Song veritable records and the Changbian, documents the Chenqiao mutiny, the abdication of Later Zhou, and Taizu\'s accession. The founding date, the principal actors, and the dynastic transition are uncontested in modern sinology.',
+        source: {
+          externalId: 'src:songshi-taizu-annals',
+          name: 'Songshi (History of Song, 1345), Basic Annals of Emperor Taizu, on the founding of the dynasty.',
+          url: 'https://www.britannica.com/topic/Song-dynasty',
+          publishedAt: '1345-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First Crusade captures Jerusalem ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:first-crusade-jerusalem-1099',
+    text: 'The armies of the First Crusade captured Jerusalem from its Fatimid garrison on 15 July 1099 after a five-week siege, massacring much of the city\'s Muslim and Jewish population and establishing the Kingdom of Jerusalem.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1099-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1099-07-15',
+        datePrecision: 'DAY',
+        reason: 'After breaching the walls with siege towers, the crusaders take Jerusalem and carry out a notorious slaughter of its inhabitants. Several participants record the event almost immediately: the anonymous Gesta Francorum, Raymond of Aguilers (chaplain on the campaign), and Fulcher of Chartres. Latin, Arabic, and Hebrew accounts all register the conquest within years.',
+        source: {
+          externalId: 'src:gesta-francorum-jerusalem-1099',
+          name: 'Gesta Francorum et aliorum Hierosolimitanorum, eyewitness account of the capture of Jerusalem. (c. 1100–1101)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Jerusalem_(1099)',
+          publishedAt: '1101-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent Latin eyewitness chronicles, the letter of the crusade leaders to Pope Paschal II, and Arabic historians (Ibn al-Athir, Ibn al-Qalanisi) agree on the date and the fall of the city. Modern crusade scholarship treats 15 July 1099 as a fixed, securely sourced event; debate concerns the scale of the massacre and its memory, not the conquest itself.',
+        source: {
+          externalId: 'src:runciman-first-crusade-jerusalem',
+          name: 'Runciman S. A History of the Crusades, Vol. 1 (1951) and subsequent scholarship on the siege of Jerusalem.',
+          url: 'https://www.britannica.com/event/Siege-of-Jerusalem-1099',
+          publishedAt: '1951-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
