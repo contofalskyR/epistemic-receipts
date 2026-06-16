@@ -13721,6 +13721,266 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950): physics revolution, totalitarianism,
+  // the Holocaust, the atomic bomb, decolonization beginnings
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Zimmermann Telegram intercepted and disclosed ───────────────────────────
+  {
+    externalId: 'trajectory:zimmermann-telegram-1917',
+    text: 'On 16 January 1917 German Foreign Secretary Arthur Zimmermann sent a coded telegram instructing Germany\'s minister in Mexico to propose a military alliance against the United States — offering Mexico the recovery of Texas, New Mexico, and Arizona — in the event the U.S. entered the war.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1917-01-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1917-01-17',
+        datePrecision: 'DAY',
+        reason: 'British naval intelligence (Room 40) intercepts the ciphered telegram as it is relayed over transatlantic cable routes and cryptanalysts Nigel de Grey and William Montgomery produce a partial decryption the following day, recording its contents within the British Admiralty before any public disclosure.',
+        source: {
+          externalId: 'src:zimmermann-telegram-room40',
+          name: 'The Zimmermann Telegram (decoded text and German original). U.S. National Archives, Records of the Department of State, RG 59.',
+          url: 'https://www.archives.gov/education/lessons/zimmermann',
+          publishedAt: '1917-01-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1917-03-01',
+        datePrecision: 'DAY',
+        reason: 'The U.S. government releases the decoded telegram to the press on 1 March 1917 and it runs in newspapers nationwide. Many German-Americans, pacifists, and skeptics — and the German and Mexican governments\' initial silence — fuel public claims that the telegram is a British forgery designed to drag the United States into the war.',
+        source: {
+          externalId: 'src:zimmermann-press-1917',
+          name: 'Associated Press / New York Times, "Germany Seeks Alliance Against U.S.," 1 March 1917 (publication of the Zimmermann note).',
+          url: 'https://www.nytimes.com/1917/03/01/archives/germany-seeks-an-alliance-against-us-asks-japan-and-mexico-to-join.html',
+          publishedAt: '1917-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1917-03-29',
+        datePrecision: 'DAY',
+        reason: 'Zimmermann himself ends the forgery dispute: he confirms the telegram\'s authenticity to American journalists on 3 March and publicly acknowledges it in a Reichstag speech on 29 March 1917. The admission removes any doubt and the episode helps move U.S. opinion toward the declaration of war on 6 April 1917.',
+        source: {
+          externalId: 'src:zimmermann-reichstag-admission-1917',
+          name: 'Tuchman B. The Zimmermann Telegram. New York: Viking, 1958 (documenting Zimmermann\'s own admission of authenticity).',
+          url: 'https://www.loc.gov/item/58010787/',
+          publishedAt: '1958-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First Moscow Show Trial — Trial of the Sixteen ──────────────────────────
+  {
+    externalId: 'trajectory:moscow-trial-sixteen-1936',
+    text: 'At the first Moscow Show Trial (19–24 August 1936), sixteen Old Bolsheviks led by Grigory Zinoviev and Lev Kamenev were convicted of organizing a Trotskyite-Zinovievite terrorist conspiracy to assassinate Stalin and other Soviet leaders, and were sentenced to death.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1936-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1936-08-24',
+        datePrecision: 'DAY',
+        reason: 'The Military Collegium of the Supreme Court of the USSR, after a public trial in which all sixteen defendants "confessed," convicts them and sentences them to death. The verdict is recorded in the official trial transcript published by the People\'s Commissariat of Justice; the defendants are shot on 25 August 1936.',
+        source: {
+          externalId: 'src:moscow-trial-1936-transcript',
+          name: 'People\'s Commissariat of Justice of the USSR. Report of Court Proceedings: The Case of the Trotskyite-Zinovievite Terrorist Centre. Moscow, 1936 (official verbatim transcript).',
+          url: 'https://www.marxists.org/history/ussr/government/law/1936/moscow-trials/',
+          publishedAt: '1936-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-08-24',
+        datePrecision: 'DAY',
+        reason: 'The Soviet state treats the confessions and convictions as settled fact: the official press (Pravda, Izvestia) and the published transcript present the conspiracy as proven, and the verdicts become the legal and propaganda basis for the wider Great Purge of 1936–1938.',
+        source: {
+          externalId: 'src:pravda-trial-1936',
+          name: 'Conquest R. The Great Terror: A Reassessment. Oxford University Press, 1990 (documenting Soviet contemporaneous treatment of the trial as proven fact).',
+          url: 'https://global.oup.com/academic/product/the-great-terror-9780195071320',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1988-06-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 June 1988, during glasnost, the Plenum of the Supreme Court of the USSR formally rehabilitates Zinoviev, Kamenev, and the other defendants, ruling that the charges were fabricated and the confessions extracted under duress. The original verdict is annulled, reversing the trial\'s findings.',
+        source: {
+          externalId: 'src:ussr-rehabilitation-1988',
+          name: 'Supreme Court of the USSR rehabilitation rulings of 1988 (as documented in Rehabilitation: Political Processes of the 1930s–1950s, Moscow archival publications).',
+          url: 'https://www.britannica.com/event/Moscow-Trials',
+          publishedAt: '1988-06-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Einstein–Szilárd letter to Roosevelt ────────────────────────────────────
+  {
+    externalId: 'trajectory:einstein-szilard-letter-1939',
+    text: 'On 2 August 1939, Albert Einstein signed a letter — drafted largely by Leó Szilárd — to U.S. President Franklin D. Roosevelt warning that recent work on nuclear chain reactions in uranium could permit the construction of extremely powerful bombs, and that Nazi Germany might be pursuing them.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1939-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-08-02',
+        datePrecision: 'DAY',
+        reason: 'Einstein signs the typed two-page letter at his Long Island summer cottage, recording the scientific warning that a uranium chain reaction could yield bombs of unprecedented power and recommending that the U.S. government secure uranium supplies and fund research.',
+        source: {
+          externalId: 'src:einstein-szilard-letter-text',
+          name: 'Einstein to Roosevelt, 2 August 1939 (original signed letter). Franklin D. Roosevelt Presidential Library and Museum.',
+          url: 'https://www.fdrlibrary.org/documents/356632/390886/039.pdf',
+          publishedAt: '1939-08-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-10-21',
+        datePrecision: 'DAY',
+        reason: 'Economist Alexander Sachs personally delivers and reads the letter to Roosevelt on 11 October 1939; Roosevelt acts on it, and the Advisory Committee on Uranium (the Briggs Committee) convenes for the first time on 21 October 1939 — the institutional response that begins the U.S. government path toward the Manhattan Project.',
+        source: {
+          externalId: 'src:briggs-uranium-committee-1939',
+          name: 'Atomic Heritage Foundation. "The Einstein-Szilárd Letter — 1939" (documenting delivery to Roosevelt and creation of the Advisory Committee on Uranium).',
+          url: 'https://ahf.nuclearmuseum.org/ahf/key-documents/einstein-szilard-letter/',
+          publishedAt: '1939-10-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pauli's neutrino hypothesis ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:pauli-neutrino-hypothesis-1930',
+    text: 'On 4 December 1930, Wolfgang Pauli proposed the existence of a light, electrically neutral, weakly interacting particle (later named the neutrino) emitted in beta decay, to rescue the conservation of energy and angular momentum in nuclear processes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-12-04',
+        datePrecision: 'DAY',
+        reason: 'Pauli sets out the hypothesis in his open letter "Dear Radioactive Ladies and Gentlemen," addressed to the participants of a physics conference in Tübingen, proposing a new neutral particle to explain the continuous energy spectrum of beta decay without abandoning energy conservation.',
+        source: {
+          externalId: 'src:pauli-letter-1930',
+          name: 'Pauli W. Open letter to the group of radioactive people at the Gauverein meeting in Tübingen, 4 December 1930 (reproduced in Pauli\'s Scientific Correspondence, vol. II).',
+          url: 'https://cds.cern.ch/record/83282',
+          publishedAt: '1930-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-12-01',
+        datePrecision: 'MONTH',
+        reason: 'The particle remains hypothetical and undetectable for decades; Pauli himself doubted it could ever be observed. Enrico Fermi incorporates it into his quantitative theory of beta decay (named "neutrino") in 1933–1934, but with no direct experimental detection the particle\'s reality stays open.',
+        source: {
+          externalId: 'src:fermi-beta-decay-1934',
+          name: 'Fermi E. Versuch einer Theorie der β-Strahlen. Zeitschrift für Physik 1934;88:161–177.',
+          url: 'https://link.springer.com/article/10.1007/BF01351864',
+          publishedAt: '1934-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-07-20',
+        datePrecision: 'DAY',
+        reason: 'Clyde Cowan and Frederick Reines directly detect the (anti)neutrino in 1956 using the intense flux from the Savannah River nuclear reactor, confirming Pauli\'s particle 26 years after he proposed it. They telegraph Pauli with the news and publish in Science on 20 July 1956.',
+        source: {
+          externalId: 'src:cowan-reines-1956',
+          name: 'Cowan CL, Reines F, et al. Detection of the Free Neutrino: a Confirmation. Science 1956;124(3212):103–104.',
+          url: 'https://www.science.org/doi/10.1126/science.124.3212.103',
+          publishedAt: '1956-07-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Stern–Gerlach experiment ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:stern-gerlach-experiment-1922',
+    text: 'In February 1922 Otto Stern and Walther Gerlach passed a beam of silver atoms through an inhomogeneous magnetic field in Frankfurt and observed the beam split into two discrete components, demonstrating the spatial quantization of atomic magnetic moments.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1922-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-02-08',
+        datePrecision: 'DAY',
+        reason: 'On the night of 7–8 February 1922 the silver deposit on the collector plate reveals the beam has split in two rather than spreading continuously. Stern and Gerlach record the result and publish it within weeks in Zeitschrift für Physik as direct experimental proof of directional (space) quantization in a magnetic field.',
+        source: {
+          externalId: 'src:stern-gerlach-1922',
+          name: 'Gerlach W, Stern O. Der experimentelle Nachweis der Richtungsquantelung im Magnetfeld. Zeitschrift für Physik 1922;9:349–352.',
+          url: 'https://link.springer.com/article/10.1007/BF01326983',
+          publishedAt: '1922-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After the discovery of electron spin (Uhlenbeck and Goudsmit, 1925) and the development of quantum mechanics, the two-way splitting is correctly understood as a measurement of the electron\'s spin-1/2 magnetic moment. The experiment becomes a foundational demonstration of quantization and is reproduced and refined repeatedly, settling its interpretation.',
+        source: {
+          externalId: 'src:stern-gerlach-spin-interpretation',
+          name: 'Friedrich B, Herschbach D. Stern and Gerlach: How a Bad Cigar Helped Reorient Atomic Physics. Physics Today 2003;56(12):53–59.',
+          url: 'https://physicstoday.scitation.org/doi/10.1063/1.1650229',
+          publishedAt: '2003-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
