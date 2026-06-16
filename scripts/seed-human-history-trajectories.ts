@@ -10061,6 +10061,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Volta announces the voltaic pile ────────────────────────────────────────
+  {
+    externalId: 'trajectory:volta-voltaic-pile-1800',
+    text: 'Alessandro Volta announced the voltaic pile — the first device producing a steady electric current from the mere contact of dissimilar metals — in a letter to the Royal Society dated 20 March 1800.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1800-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1800-03-20',
+        datePrecision: 'DAY',
+        reason: 'Volta, professor at Pavia, describes a stack of alternating zinc and silver (or copper) discs separated by brine-soaked cloth that yields a continuous current. His letter "On the Electricity Excited by the Mere Contact of Conducting Substances of Different Kinds," dated 20 March 1800 and addressed to Royal Society president Sir Joseph Banks, reports the apparatus and refutes Galvani\'s "animal electricity" by showing the effect requires only the metals and electrolyte.',
+        source: {
+          externalId: 'src:volta-letter-banks-1800',
+          name: 'Volta A. On the Electricity Excited by the Mere Contact of Conducting Substances of Different Kinds. Letter to Sir Joseph Banks, 20 March 1800. Philosophical Transactions of the Royal Society 1800;90:403–431.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1800.0018',
+          publishedAt: '1800-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1800-05-02',
+        datePrecision: 'DAY',
+        reason: 'Within weeks of the letter being read, William Nicholson and Anthony Carlisle build a pile in London and on 2 May 1800 use its current to electrolyse water into hydrogen and oxygen — the first chemical decomposition by electricity. The pile is rapidly reproduced across Europe, enabling Davy\'s isolation of new elements; the device is the undisputed foundation of electrochemistry and current electricity.',
+        source: {
+          externalId: 'src:nicholson-carlisle-electrolysis-1800',
+          name: 'Nicholson W, Carlisle A. Account of the New Electrical or Galvanic Apparatus of Sig. Alex. Volta, and Experiments Performed with the Same. Journal of Natural Philosophy, Chemistry and the Arts 1800;4:179–187.',
+          url: 'https://en.wikipedia.org/wiki/Voltaic_pile',
+          publishedAt: '1800-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ørsted discovers electromagnetism ───────────────────────────────────────
+  {
+    externalId: 'trajectory:orsted-electromagnetism-1820',
+    text: 'Hans Christian Ørsted discovered that an electric current deflects a nearby magnetic compass needle, demonstrating a link between electricity and magnetism, which he published in a Latin pamphlet on 21 July 1820.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1820-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1820-07-21',
+        datePrecision: 'DAY',
+        reason: 'During experiments at the University of Copenhagen, Ørsted observes that a compass needle placed near a current-carrying wire swings perpendicular to the wire. He circulates his findings in a four-page Latin tract, "Experimenta circa effectum conflictus electrici in acum magneticam," dated 21 July 1820 — the first demonstration that electric currents generate magnetic effects, founding the discipline of electromagnetism.',
+        source: {
+          externalId: 'src:orsted-experimenta-1820',
+          name: 'Ørsted HC. Experimenta circa effectum conflictus electrici in acum magneticam (Copenhagen, 21 July 1820).',
+          url: 'https://en.wikipedia.org/wiki/Hans_Christian_%C3%98rsted',
+          publishedAt: '1820-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1820-09-18',
+        datePrecision: 'DAY',
+        reason: 'Ørsted\'s result spreads across Europe within months. André-Marie Ampère, after François Arago reports the discovery to the French Académie des sciences on 4 September 1820, presents his own quantitative theory of currents beginning 18 September 1820; Biot and Savart formulate their force law the same year. The effect is universally reproduced and becomes the basis of the electric motor, galvanometer, and Maxwell\'s later unification.',
+        source: {
+          externalId: 'src:ampere-electrodynamics-1820',
+          name: 'Ampère A-M. Mémoires sur l\'action mutuelle de deux courants électriques. Annales de chimie et de physique 1820;15:59–76.',
+          url: 'https://en.wikipedia.org/wiki/Andr%C3%A9-Marie_Amp%C3%A8re',
+          publishedAt: '1820-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Piazzi discovers Ceres; orbit lost and recovered ────────────────────────
+  {
+    externalId: 'trajectory:piazzi-ceres-1801',
+    text: 'Giuseppe Piazzi discovered Ceres, the first asteroid, at Palermo on 1 January 1801; after the object was lost behind the Sun, Carl Friedrich Gauss\'s newly devised orbit computation enabled its recovery on 31 December 1801.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1801-01-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1801-01-01',
+        datePrecision: 'DAY',
+        reason: 'Observing from the Palermo Observatory on the night of 1 January 1801, Piazzi notes a faint moving point of light in Taurus. Over the following weeks he tracks its motion, suspecting a new planet between Mars and Jupiter. He records the positions in his observation logs before illness and the object\'s approach to the Sun halt his measurements after 11 February 1801.',
+        source: {
+          externalId: 'src:piazzi-ceres-letters-1801',
+          name: 'Piazzi G. Risultati delle osservazioni della nuova stella scoperta il dì 1. gennajo 1801. Palermo, 1801.',
+          url: 'https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)',
+          publishedAt: '1801-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1801-06-01',
+        datePrecision: 'MONTH',
+        reason: 'With only a short arc of observations and the object hidden in the Sun\'s glare, astronomers could not predict where Ceres would reappear. Whether Piazzi had found a planet, a comet, or had made an observational error remained unresolved through 1801; existing orbit-fitting methods failed on so little data.',
+        source: {
+          externalId: 'src:zach-monatliche-correspondenz-1801',
+          name: 'von Zach FX, ed. Monatliche Correspondenz zur Beförderung der Erd- und Himmels-Kunde, reports on the search for Piazzi\'s object, 1801.',
+          url: 'https://en.wikipedia.org/wiki/Giuseppe_Piazzi',
+          publishedAt: '1801-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1801-12-31',
+        datePrecision: 'DAY',
+        reason: 'The 24-year-old Gauss develops a new method to determine an orbit from three observations and predicts where Ceres will reappear. Guided by his ephemeris, Franz Xaver von Zach recovers the object on 31 December 1801 and Heinrich Olbers confirms it on 1–2 January 1802, almost exactly where Gauss had computed. Ceres is established as a real Solar System body, and Gauss\'s method becomes foundational to celestial mechanics.',
+        source: {
+          externalId: 'src:gauss-theoria-motus-1809',
+          name: 'Gauss CF. Theoria Motus Corporum Coelestium in Sectionibus Conicis Solem Ambientium. Hamburg: Perthes & Besser, 1809.',
+          url: 'https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss',
+          publishedAt: '1809-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Morton demonstrates surgical anaesthesia (Ether Day) ────────────────────
+  {
+    externalId: 'trajectory:morton-ether-anesthesia-1846',
+    text: 'William T. G. Morton publicly demonstrated that inhaled ether could render a surgical patient insensible to pain at Massachusetts General Hospital on 16 October 1846, establishing inhalation anaesthesia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1846-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-10-16',
+        datePrecision: 'DAY',
+        reason: 'In the surgical amphitheatre of Massachusetts General Hospital (later named the "Ether Dome"), dentist William Morton administers diethyl ether to patient Edward Gilbert Abbott while surgeon John Collins Warren removes a tumour from the patient\'s jaw. Abbott reports no pain. The operation, witnessed by the assembled surgical staff, is the first widely publicised successful demonstration of surgical anaesthesia.',
+        source: {
+          externalId: 'src:bigelow-ether-1846',
+          name: 'Bigelow HJ. Insensibility during Surgical Operations Produced by Inhalation. Boston Medical and Surgical Journal 1846;35(16):309–317.',
+          url: 'https://en.wikipedia.org/wiki/Ether_Dome',
+          publishedAt: '1846-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-01-01',
+        datePrecision: 'YEAR',
+        reason: 'News of the demonstration crosses the Atlantic within weeks; ether and then chloroform anaesthesia are adopted in London, Edinburgh, and Paris hospitals through 1847. Surgical anaesthesia is rapidly and universally accepted as effective and transforms operative medicine, ending the era of unanaesthetised surgery. The efficacy of inhalation anaesthesia has never since been seriously disputed.',
+        source: {
+          externalId: 'src:liston-ether-london-1846',
+          name: 'Report of the first use of ether anaesthesia in Britain by Robert Liston at University College Hospital, 21 December 1846. The Lancet 1847;49(1218):5–8.',
+          url: 'https://en.wikipedia.org/wiki/History_of_general_anesthesia',
+          publishedAt: '1847-01-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Thirteenth Amendment abolishes slavery in the United States ─────────────
+  {
+    externalId: 'trajectory:us-thirteenth-amendment-1865',
+    text: 'The Thirteenth Amendment to the United States Constitution, abolishing slavery and involuntary servitude, was ratified on 6 December 1865 and certified in force on 18 December 1865.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1865-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1865-01-31',
+        datePrecision: 'DAY',
+        reason: 'After passing the Senate on 8 April 1864, the proposed amendment clears the U.S. House of Representatives on 31 January 1865 by a vote of 119 to 56, meeting the required two-thirds majority. The Congressional resolution submits to the states an amendment declaring that "Neither slavery nor involuntary servitude … shall exist within the United States."',
+        source: {
+          externalId: 'src:congressional-globe-13th-amendment-1865',
+          name: 'Congressional Globe, 38th Congress, 2nd Session, House vote on the Thirteenth Amendment, 31 January 1865, p. 531.',
+          url: 'https://www.archives.gov/milestone-documents/13th-amendment',
+          publishedAt: '1865-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1865-12-18',
+        datePrecision: 'DAY',
+        reason: 'Georgia\'s ratification on 6 December 1865 brings the amendment to the three-fourths of states required under Article V. Secretary of State William H. Seward certifies the Thirteenth Amendment as part of the Constitution by proclamation on 18 December 1865, legally and permanently abolishing slavery throughout the United States. Its validity and date are undisputed.',
+        source: {
+          externalId: 'src:seward-13th-amendment-proclamation-1865',
+          name: 'Seward WH. Proclamation certifying ratification of the Thirteenth Amendment to the Constitution, 18 December 1865.',
+          url: 'https://en.wikipedia.org/wiki/Thirteenth_Amendment_to_the_United_States_Constitution',
+          publishedAt: '1865-12-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
