@@ -8006,6 +8006,151 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL ASTRONOMY — additional curves (pre-500 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eclipse of Thales halts the Battle of the Halys, 585 BCE (Greece/Lydia) ──
+  {
+    externalId: 'trajectory:thales-eclipse-585bce',
+    text: 'A total solar eclipse darkened the sky over Anatolia on 28 May 585 BCE during a battle between the Lydians and the Medes at the Halys River — reported by Herodotus to have been foretold by Thales of Miletus, the earliest solar eclipse said to have been known in advance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0585-05-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0585-05-28',
+        datePrecision: 'DAY',
+        reason: 'In the midst of a long war between the Lydians under Alyattes and the Medes under Cyaxares, day suddenly turned to night during a pitched battle beside the Halys River. Both sides read the darkening as a divine sign, broke off combat, and concluded a truce sealed by a dynastic marriage. The episode entered Ionian Greek tradition as an eclipse that Thales of Miletus had predicted to the Ionians, preserved in Herodotus a few generations later.',
+        source: {
+          externalId: 'src:herodotus-histories-thales-eclipse',
+          name: 'Herodotus, Histories I.74, reporting the eclipse that ended the Lydian–Median war and Thales\'s foretelling of it. (c. 430 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D1%3Achapter%3D74',
+          publishedAt: '0430-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation finds that the only total solar eclipse matching the place, era, and battlefield-darkness conditions in Herodotus\'s account is that of 28 May 585 BCE (Julian), whose path of totality crossed central Anatolia. The eclipse is catalogued in NASA\'s Five Millennium Canon of Solar Eclipses, fixing the date; whether Thales genuinely predicted it remains debated, but the eclipse itself and its date are settled.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-thales',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141; eclipse of −584 May 28.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet recorded on Babylonian tablets, 164 BCE (Babylonia) ───────
+  {
+    externalId: 'trajectory:halley-comet-164bce-babylon',
+    text: 'Babylonian astronomers recorded a comet — later identified as Halley\'s Comet — moving past the Pleiades and Taurus and into the "path of Ea" during its apparition in the autumn of 164 BCE, logged in the cuneiform astronomical diaries.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0164-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0164-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Scribes of the Esagila temple in Babylon note in their running astronomical diary that "the comet which previously had appeared in the east in the path of Anu, in the area of the Pleiades and Taurus" had moved west and "passed along in the path of Ea." The entry, on the broken tablet now catalogued as BM 41462, is a contemporaneous positional record of the comet\'s track across the sky in the months around perihelion in late 164 BCE.',
+        source: {
+          externalId: 'src:babylonian-diary-halley-164bce',
+          name: 'Late Babylonian astronomical diary, British Museum tablet BM 41462 (LBAT 380), recording the comet of 164 BCE.',
+          url: 'https://www.britishmuseum.org/collection/object/W_1880-0617-0058',
+          publishedAt: '0164-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Stephenson, Yau, and Hunger show that the cuneiform descriptions of the comet\'s path and timing on the Babylonian tablets match the computed track of Halley\'s Comet at its 164 BCE apparition (and again in 87 BCE). The identification extends Halley\'s confirmed observational record back another return and constrains the comet\'s long-term orbital motion — a settled result in cometary astronomy.',
+        source: {
+          externalId: 'src:stephenson-yau-hunger-halley-1985',
+          name: 'Stephenson FR, Yau KKC, Hunger H. "Records of Halley\'s comet on Babylonian tablets." Nature 314:587–592, 1985.',
+          url: 'https://www.nature.com/articles/314587a0',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ptolemy's autumnal-equinox observation, 25 September 132 CE (Roman Egypt) ─
+  {
+    externalId: 'trajectory:ptolemy-autumn-equinox-132ce',
+    text: 'Claudius Ptolemy recorded observing the autumnal equinox at Alexandria about two hours after noon on 25 September 132 CE — an observation he combined with those of Hipparchus to derive the length of the tropical year and the precession of the equinoxes in the Almagest.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0132-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0132-09-25',
+        datePrecision: 'DAY',
+        reason: 'In the Almagest, Ptolemy reports timing the autumnal equinox at Alexandria "very accurately" about two equinoctial hours after noon on the 9th day of the month Athyr in the 17th year of Hadrian — 25 September 132 CE. He sets this beside Hipparchus\'s third-century-BCE equinox and solstice timings to fix the tropical year at one quarter-day short of 365¼ by 1/300 day and to put the precession of the equinoxes at roughly 1° per century.',
+        source: {
+          externalId: 'src:ptolemy-almagest-equinox-132ce',
+          name: 'Ptolemy, Almagest III.1 and VII.2, recording the autumnal-equinox observation of 25 September 132 CE and the derivation of the year length and precession. (c. 150 CE)',
+          url: 'https://en.wikipedia.org/wiki/Almagest',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1543-01-01',
+        datePrecision: 'YEAR',
+        reason: 'For more than a millennium Ptolemy\'s equinox record stood as a trusted empirical anchor: medieval Islamic and Renaissance astronomers, including Copernicus, used it together with their own equinox timings to measure the slow drift of the equinoxes and refine the length of the year. The reality of precession and the approximate date of the equinox were taken as settled astronomical fact.',
+        source: {
+          externalId: 'src:copernicus-de-revolutionibus-precession',
+          name: 'Copernicus N. De revolutionibus orbium coelestium, Book III, using Ptolemy\'s and later equinox observations to analyse precession. Nuremberg, 1543.',
+          url: 'https://www.e-rara.ch/zut/content/titleinfo/162514',
+          publishedAt: '1543-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert R. Newton argues that Ptolemy\'s reported equinox and solstice times — including the 132 CE autumnal equinox — are systematically about a day too late, in a pattern consistent with values back-computed from Hipparchus and his own erroneous year length rather than with genuine fresh observation. Defenders such as Owen Gingerich attribute the errors to crude instruments and method. Whether the recorded observation was actually made remains contested, even as the underlying astronomical equinox of 25 September 132 CE is confirmed by retrocalculation.',
+        source: {
+          externalId: 'src:newton-crime-of-claudius-ptolemy-1977',
+          name: 'Newton RR. The Crime of Claudius Ptolemy. Baltimore: Johns Hopkins University Press, 1977.',
+          url: 'https://www.jstor.org/stable/2709122',
+          publishedAt: '1977-01-01',
+          methodologyType: 'opinion',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
