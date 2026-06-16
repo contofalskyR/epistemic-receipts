@@ -8808,6 +8808,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — physics revolution, totalitarianism
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Bohr quantizes the atom ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bohr-atomic-model-1913',
+    text: 'Niels Bohr proposed that electrons occupy discrete, quantized energy orbits and emit or absorb radiation only when jumping between them — accounting for the hydrogen spectrum — in "On the Constitution of Atoms and Molecules," published in the Philosophical Magazine in July 1913.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Bohr fuses Rutherford\'s nuclear atom with Planck\'s quantum to postulate that electrons circle the nucleus only in certain stationary states of fixed energy, radiating a photon of energy hν only when transitioning between them. The model predicts the wavelengths of the hydrogen spectral lines — the Balmer and Paschen series — from first principles, recovering the empirical Rydberg constant. The classical expectation that an orbiting electron would continuously radiate and spiral into the nucleus is abandoned.',
+        source: {
+          externalId: 'src:bohr-constitution-atoms-1913',
+          name: 'Bohr N. On the Constitution of Atoms and Molecules, Part I. Philosophical Magazine 1913;26(151):1–25.',
+          url: 'https://en.wikipedia.org/wiki/Bohr_model',
+          publishedAt: '1913-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-04-24',
+        datePrecision: 'DAY',
+        reason: 'James Franck and Gustav Hertz, bombarding mercury vapour with electrons, observe that energy is absorbed only in discrete amounts — direct experimental confirmation of quantized atomic energy levels, reported to the German Physical Society on 24 April 1914. Together with Moseley\'s X-ray spectra (1913–14), the discrete-energy-level picture becomes settled; Bohr receives the 1922 Nobel Prize in Physics. The model is later subsumed (not refuted) by the full quantum mechanics of 1925–26.',
+        source: {
+          externalId: 'src:franck-hertz-1914',
+          name: 'Franck J, Hertz G. Über Zusammenstöße zwischen Elektronen und den Molekülen des Quecksilberdampfes und die Ionisierungsspannung desselben. Verhandlungen der Deutschen Physikalischen Gesellschaft 1914;16:457–467.',
+          url: 'https://en.wikipedia.org/wiki/Franck%E2%80%93Hertz_experiment',
+          publishedAt: '1914-04-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Schrödinger's wave equation ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:schrodinger-wave-equation-1926',
+    text: 'Erwin Schrödinger formulated wave mechanics — the wave equation governing the quantum state of a particle — in "Quantisierung als Eigenwertproblem," received by Annalen der Physik on 27 January 1926.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-27',
+        datePrecision: 'DAY',
+        reason: 'Building on de Broglie\'s matter waves, Schrödinger treats the quantization conditions of atomic physics as an eigenvalue problem of a wave equation. Solving it for the hydrogen atom yields the energy levels as eigenvalues, reproducing the Balmer spectrum without Bohr\'s ad-hoc orbital postulates. The first of four communications is received by Annalen der Physik on 27 January 1926.',
+        source: {
+          externalId: 'src:schrodinger-eigenwertproblem-1926',
+          name: 'Schrödinger E. Quantisierung als Eigenwertproblem (Erste Mitteilung). Annalen der Physik 1926;384(4):361–376.',
+          url: 'https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation',
+          publishedAt: '1926-01-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-06-25',
+        datePrecision: 'DAY',
+        reason: 'Schrödinger himself proves that his wave mechanics is mathematically equivalent to Heisenberg\'s matrix mechanics (1925), unifying the two formulations of quantum theory. Max Born\'s paper of June 1926 supplies the probabilistic interpretation of the wavefunction. The Schrödinger equation becomes the central, settled tool of non-relativistic quantum mechanics; Schrödinger shares the 1933 Nobel Prize in Physics with Dirac.',
+        source: {
+          externalId: 'src:born-statistical-interpretation-1926',
+          name: 'Born M. Zur Quantenmechanik der Stoßvorgänge. Zeitschrift für Physik 1926;37(12):863–867.',
+          url: 'https://en.wikipedia.org/wiki/Born_rule',
+          publishedAt: '1926-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Wegener's continental drift ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:wegener-continental-drift-1912',
+    text: 'Alfred Wegener proposed continental drift — that the continents had once formed a single landmass (Pangaea) and had since moved apart — in a lecture to the Geologische Vereinigung in Frankfurt on 6 January 1912.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-01-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-01-06',
+        datePrecision: 'DAY',
+        reason: 'Wegener presents "Die Heraushebung der Großformen der Erdrinde" to the Geologische Vereinigung in Frankfurt, marshalling the jigsaw fit of the Atlantic coastlines, matching fossil and rock formations across oceans, and palaeoclimatic evidence to argue the continents had drifted from a former supercontinent. He expands the thesis into the 1915 book Die Entstehung der Kontinente und Ozeane.',
+        source: {
+          externalId: 'src:wegener-drift-1912',
+          name: 'Wegener A. Die Entstehung der Kontinente. Geologische Rundschau 1912;3(4):276–292.',
+          url: 'https://en.wikipedia.org/wiki/Continental_drift',
+          publishedAt: '1912-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-11-15',
+        datePrecision: 'MONTH',
+        reason: 'A symposium of the American Association of Petroleum Geologists in New York is overwhelmingly hostile: Wegener can propose no mechanism capable of moving continents through solid ocean floor, and his estimated drift rates are dismissed as physically impossible. The geological establishment, led by figures such as Harold Jeffreys, rejects drift; for the next three decades it is treated as a discredited idea taught, if at all, as a cautionary tale.',
+        source: {
+          externalId: 'src:aapg-drift-symposium-1926',
+          name: 'van der Gracht WAJM van W (ed.). Theory of Continental Drift: A Symposium. American Association of Petroleum Geologists, 1928 (proceedings of the 1926 New York meeting).',
+          url: 'https://en.wikipedia.org/wiki/Continental_drift',
+          publishedAt: '1928-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'ABANDONED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-09-07',
+        datePrecision: 'DAY',
+        reason: 'Fred Vine and Drummond Matthews show that magnetic stripes paralleling the mid-ocean ridges record seafloor spreading, supplying the mechanism Wegener lacked. Drift is vindicated and absorbed into plate tectonics; Wegener\'s once-abandoned hypothesis is recognised as essentially correct, the rejection of the 1920s overturned.',
+        source: {
+          externalId: 'src:vine-matthews-1963',
+          name: 'Vine FJ, Matthews DH. Magnetic Anomalies over Oceanic Ridges. Nature 1963;199:947–949.',
+          url: 'https://www.nature.com/articles/199947a0',
+          publishedAt: '1963-09-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Nuremberg Laws ──────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:nuremberg-laws-1935',
+    text: 'On 15 September 1935 the Reichstag, convened at the Nazi Party rally in Nuremberg, enacted the Reich Citizenship Law and the Law for the Protection of German Blood and German Honour — the Nuremberg Laws — stripping German Jews of citizenship and criminalising marriage and sexual relations between Jews and non-Jewish Germans.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1935-09-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-09-15',
+        datePrecision: 'DAY',
+        reason: 'In a special session at the Nuremberg rally, the Reichstag unanimously passes two laws: the Reichsbürgergesetz, which reduces Jews from citizens to mere "subjects," and the Gesetz zum Schutze des deutschen Blutes und der deutschen Ehre, which forbids marriages and extramarital intercourse between Jews and "citizens of German or related blood." The laws give a legal framework to Nazi racial antisemitism.',
+        source: {
+          externalId: 'src:nuremberg-laws-rgbl-1935',
+          name: 'Reichsbürgergesetz und Gesetz zum Schutze des deutschen Blutes und der deutschen Ehre vom 15. September 1935. Reichsgesetzblatt I, 1935, S. 1146.',
+          url: 'https://en.wikipedia.org/wiki/Nuremberg_Laws',
+          publishedAt: '1935-09-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-11-14',
+        datePrecision: 'DAY',
+        reason: 'The First Supplementary Decree to the Reich Citizenship Law (14 November 1935) defines who counts as a "Jew" by ancestry, and successive decrees extend the laws to Roma and Black Germans and bar Jews from public office and the professions. The Nuremberg framework becomes the entrenched legal basis for escalating persecution and, ultimately, the machinery of the Holocaust.',
+        source: {
+          externalId: 'src:nuremberg-first-supplementary-decree-1935',
+          name: 'Erste Verordnung zum Reichsbürgergesetz vom 14. November 1935. Reichsgesetzblatt I, 1935, S. 1333.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/the-nuremberg-race-laws',
+          publishedAt: '1935-11-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1945-09-20',
+        datePrecision: 'DAY',
+        reason: 'Allied Control Council Law No. 1, "Repealing of Nazi Laws" (20 September 1945), expressly abrogates the Nuremberg Laws and the other foundational statutes of the Nazi regime, declaring them void. The racial-legal order imposed in 1935 is dismantled with the fall of the Third Reich.',
+        source: {
+          externalId: 'src:control-council-law-1-1945',
+          name: 'Control Council Law No. 1: Repealing of Nazi Laws, 20 September 1945. Official Gazette of the Control Council for Germany, No. 1.',
+          url: 'https://en.wikipedia.org/wiki/Allied_Control_Council',
+          publishedAt: '1945-09-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Reichstag fire and the question of culpability ──────────────────────
+  {
+    externalId: 'trajectory:reichstag-fire-1933',
+    text: 'The Reichstag building in Berlin was destroyed by arson on the night of 27 February 1933; the Nazi government attributed the fire to a Communist conspiracy and used it to justify the Reichstag Fire Decree the next day, though responsibility beyond the lone arrestee, Marinus van der Lubbe, remains historically contested.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1933-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1933-02-27',
+        datePrecision: 'DAY',
+        reason: 'Fire breaks out in the plenary chamber of the Reichstag and gutts the building. Marinus van der Lubbe, a Dutch council-communist, is arrested at the scene and confesses to setting it. The Nazi leadership immediately proclaims it the opening signal of a Communist uprising; the next day President Hindenburg signs the Reichstag Fire Decree suspending civil liberties, enabling mass arrests of Communists.',
+        source: {
+          externalId: 'src:reichstag-fire-decree-1933',
+          name: 'Verordnung des Reichspräsidenten zum Schutz von Volk und Staat vom 28. Februar 1933. Reichsgesetzblatt I, 1933, S. 83.',
+          url: 'https://en.wikipedia.org/wiki/Reichstag_fire',
+          publishedAt: '1933-02-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1933-12-23',
+        datePrecision: 'DAY',
+        reason: 'At the Leipzig trial, van der Lubbe is convicted and sentenced to death, but the court acquits the four accused Communists — including Georgi Dimitrov, who turns the trial against the prosecution — for lack of evidence of a conspiracy, undercutting the regime\'s official narrative. Whether van der Lubbe acted alone, or whether the Nazis themselves set or abetted the fire, becomes a durable historiographical dispute.',
+        source: {
+          externalId: 'src:leipzig-reichstag-trial-1933',
+          name: 'Reichsgericht Leipzig, judgment in the Reichstag fire trial, 23 December 1933 (Prozess gegen van der Lubbe u.a.).',
+          url: 'https://en.wikipedia.org/wiki/Reichstag_fire',
+          publishedAt: '1933-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2008-01-12',
+        datePrecision: 'MONTH',
+        reason: 'German federal prosecutors posthumously annul van der Lubbe\'s 1933 conviction under the 1998 law voiding Nazi-era judgments, on the ground that the death sentence served Nazi injustice. Scholarship remains divided: some historians (and recent forensic studies) hold the lone-arsonist account most consistent with the evidence, while others maintain Nazi complicity — the culpability question is unresolved nearly a century on.',
+        source: {
+          externalId: 'src:van-der-lubbe-rehabilitation-2008',
+          name: 'Bundesanwaltschaft annuls the 1933 conviction of Marinus van der Lubbe under the Gesetz zur Aufhebung nationalsozialistischer Unrechtsurteile, January 2008.',
+          url: 'https://en.wikipedia.org/wiki/Marinus_van_der_Lubbe',
+          publishedAt: '2008-01-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
