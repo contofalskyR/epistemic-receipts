@@ -3657,6 +3657,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 51. Fall of Constantinople to the Ottomans ──────────────────────────────
+  {
+    externalId: 'trajectory:fall-constantinople-1453',
+    text: 'Constantinople fell to the Ottoman army of Sultan Mehmed II on May 29, 1453, ending the Byzantine Empire after more than a thousand years.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1453-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1453-05-29',
+        datePrecision: 'DAY',
+        reason: 'After a 53-day siege, Ottoman forces breach the Theodosian Walls at dawn. The last emperor, Constantine XI Palaiologos, dies in the fighting. Nicolò Barbaro, a Venetian surgeon present in the city, keeps a day-by-day diary of the siege and the final assault, recording the event as it happened.',
+        source: {
+          externalId: 'src:barbaro-diary-constantinople-1453',
+          name: 'Barbaro N. Giornale dell\'assedio di Costantinopoli (Diary of the Siege of Constantinople), 1453. (eyewitness account)',
+          url: 'https://www.gutenberg.org/ebooks/author/barbaro',
+          publishedAt: '1453-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1467-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent contemporaries from opposing sides corroborate the fall: the Greek historian Doukas, the Ottoman court historian Kritovoulos of Imbros (writing a history dedicated to Mehmed II), George Sphrantzes (a Byzantine official), and Laonikos Chalkokondyles. No source disputes the conquest itself.',
+        source: {
+          externalId: 'src:kritovoulos-mehmed-1467',
+          name: 'Kritovoulos of Imbros. History of Mehmed the Conqueror, c. 1467. (Topkapı Palace manuscript)',
+          url: 'https://www.worldcat.org/title/history-of-mehmed-the-conqueror/oclc/542506',
+          publishedAt: '1467-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship (Steven Runciman\'s definitive 1965 study and subsequent work) reconciles the Greek, Ottoman, Venetian, and Genoese accounts. The conversion of Hagia Sophia into a mosque and surviving Ottoman fiscal records of the city physically corroborate the conquest. The date and event remain settled.',
+        source: {
+          externalId: 'src:runciman-fall-constantinople-1965',
+          name: 'Runciman S. The Fall of Constantinople 1453. Cambridge University Press, 1965.',
+          url: 'https://www.cambridge.org/core/books/fall-of-constantinople-1453/',
+          publishedAt: '1965-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 52. First Battle of Panipat — founding of the Mughal Empire ─────────────
+  {
+    externalId: 'trajectory:first-battle-panipat-1526',
+    text: 'Babur defeated Sultan Ibrahim Lodi at the First Battle of Panipat on April 21, 1526, ending the Delhi Sultanate and founding the Mughal Empire in India.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1526-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1526-04-21',
+        datePrecision: 'DAY',
+        reason: 'Babur, deploying field artillery and the Ottoman-style tulughma flanking tactic, routs Ibrahim Lodi\'s far larger army. Lodi is killed on the field. Babur records the battle and its date in his own memoirs, the Baburnama, written in Chagatai Turkic as a near-contemporaneous first-person account.',
+        source: {
+          externalId: 'src:baburnama-panipat-1526',
+          name: 'Babur. Baburnama (memoirs), entry for the battle of Panipat, 1526.',
+          url: 'https://www.metmuseum.org/art/collection/search/searchabbreviations/baburnama',
+          publishedAt: '1530-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Mughal dynasty Babur founded ruled India for over three centuries. Akbar\'s court historian Abu\'l-Fazl, in the Akbarnama (c. 1590), and Persian translations of the Baburnama codify the founding battle as the origin of Mughal rule. The succession of emperors from Babur is documented and undisputed.',
+        source: {
+          externalId: 'src:akbarnama-mughal-founding-1590',
+          name: 'Abu\'l-Fazl ibn Mubarak. Akbarnama, c. 1590. (official history of the Mughal dynasty)',
+          url: 'https://www.britishmuseum.org/collection/term/BIOG126017',
+          publishedAt: '1590-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 53. Tycho Brahe's nova of 1572 — the heavens are not immutable ──────────
+  {
+    externalId: 'trajectory:tycho-nova-1572',
+    text: 'Tycho Brahe observed a new star (the supernova SN 1572) in Cassiopeia beginning November 11, 1572, and showed it lay beyond the Moon — disproving the Aristotelian doctrine that the heavens were unchanging.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1572-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1572-11-11',
+        datePrecision: 'DAY',
+        reason: 'On the evening of November 11, 1572, Tycho Brahe notices a brilliant new star in Cassiopeia outshining Venus. Over months he measures its position with his instruments and detects no diurnal parallax, proving it lies far beyond the sphere of the Moon among the fixed stars.',
+        source: {
+          externalId: 'src:tycho-de-nova-stella-1573',
+          name: 'Brahe T. De nova et nullius aevi memoria prius visa stella, 1573.',
+          url: 'https://www.loc.gov/item/10005896/',
+          publishedAt: '1573-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1573-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A new, changing object in the supralunary realm directly contradicts the Aristotelian–Ptolemaic doctrine of the incorruptible, immutable heavens that had been settled scholarly consensus for nearly two millennia. Independent observers across Europe — including Thomas Digges in England and Wolfgang Schuler in Wittenberg — confirm the parallax-free new star.',
+        source: {
+          externalId: 'src:digges-alae-1573',
+          name: 'Digges T. Alae seu scalae mathematicae, 1573. (independent parallax observations of the 1572 nova)',
+          url: 'https://www.lindahall.org/about/news/scientific-and-natural-history/thomas-digges/',
+          publishedAt: '1573-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Twentieth-century astrophysics identifies the 1572 event as a Type Ia supernova; its expanding remnant (3C 10 / Tycho\'s SNR) was detected by radio astronomy in 1952 and later imaged in X-rays. Tycho\'s positional measurements match the remnant, settling both the historical observation and its modern interpretation.',
+        source: {
+          externalId: 'src:tycho-snr-remnant-1952',
+          name: 'Hanbury Brown R, Hazard C. Radio-frequency radiation from Tycho Brahe\'s supernova remnant. Nature, 1952.',
+          url: 'https://www.nature.com/articles/170364a0',
+          publishedAt: '1952-08-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 54. Gregorian calendar reform ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:gregorian-calendar-1582',
+    text: 'By the papal bull Inter gravissimas (February 24, 1582), the Julian calendar was reformed so that Thursday, October 4, 1582 was followed directly by Friday, October 15, 1582, dropping ten days to correct accumulated drift.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1582-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1582-02-24',
+        datePrecision: 'DAY',
+        reason: 'Pope Gregory XIII promulgates the bull Inter gravissimas, adopting the reform devised by Aloysius Lilius and refined by Christopher Clavius. The Julian year was about 11 minutes too long, drifting roughly ten days from the seasons since the Council of Nicaea (325). The bull deletes ten days and revises the leap-year rule for century years.',
+        source: {
+          externalId: 'src:inter-gravissimas-1582',
+          name: 'Pope Gregory XIII. Papal bull Inter gravissimas, February 24, 1582.',
+          url: 'https://www.fourmilab.ch/documents/calendar/',
+          publishedAt: '1582-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1582-10-15',
+        datePrecision: 'DAY',
+        reason: 'Catholic countries — Spain, Portugal, Poland, and the Papal States — implement the jump on October 15, 1582. Protestant and Eastern Orthodox states reject the reform as a papal imposition and keep the Julian calendar, so for nearly two centuries Europe runs on two divergent dates simultaneously.',
+        source: {
+          externalId: 'src:clavius-romani-calendarii-1603',
+          name: 'Clavius C. Romani calendarii a Gregorio XIII restituti explicatio, 1603. (official explanation of the reform)',
+          url: 'https://www.e-rara.ch/zut/content/titleinfo/2375382',
+          publishedAt: '1603-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1752-09-14',
+        datePrecision: 'DAY',
+        reason: 'Britain and its colonies adopt the Gregorian calendar in September 1752 (Wednesday September 2 followed by Thursday September 14). With the major Protestant holdouts converting, the Gregorian system becomes the de facto international civil calendar; the remaining Orthodox states follow in the 20th century.',
+        source: {
+          externalId: 'src:british-calendar-act-1750',
+          name: 'Calendar (New Style) Act 1750 (24 Geo. 2 c. 23), United Kingdom.',
+          url: 'https://www.legislation.gov.uk/apgb/Geo2/24/23/contents',
+          publishedAt: '1751-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 55. Newton's Principia and universal gravitation ────────────────────────
+  {
+    externalId: 'trajectory:newton-principia-1687',
+    text: 'Isaac Newton\'s Philosophiæ Naturalis Principia Mathematica, licensed for printing by the Royal Society on July 5, 1687, established the law of universal gravitation and the three laws of motion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1687-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'The Principia is published under the imprimatur of Samuel Pepys, President of the Royal Society, dated July 5, 1687, with publication financed by Edmond Halley. Newton derives Kepler\'s laws from an inverse-square law of gravitation and unifies terrestrial and celestial mechanics.',
+        source: {
+          externalId: 'src:newton-principia-1687',
+          name: 'Newton I. Philosophiæ Naturalis Principia Mathematica, 1687. (first edition, Royal Society imprimatur)',
+          url: 'https://www.loc.gov/item/2021667076/',
+          publishedAt: '1687-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-09-23',
+        datePrecision: 'DAY',
+        reason: 'Newtonian gravitation accumulates overwhelming confirmation: Halley\'s 1705 prediction of his comet\'s 1758 return, and the discovery of Neptune on September 23, 1846 at a position computed by Le Verrier and Adams purely from Newtonian perturbation theory. The theory is accepted as settled physics.',
+        source: {
+          externalId: 'src:galle-neptune-discovery-1846',
+          name: 'Galle JG. Account of the discovery of the planet of Le Verrier at Berlin. Monthly Notices of the Royal Astronomical Society, 1846.',
+          url: 'https://articles.adsabs.harvard.edu/full/1846MNRAS...7..153G',
+          publishedAt: '1846-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-11-25',
+        datePrecision: 'DAY',
+        reason: 'Einstein\'s general relativity (1915) supersedes Newtonian gravity for strong fields and explains the anomalous perihelion precession of Mercury that Newtonian mechanics could not. Newton\'s laws remain settled as the limiting low-velocity, weak-field approximation — refined rather than refuted, and still used for nearly all engineering and spaceflight.',
+        source: {
+          externalId: 'src:einstein-field-equations-1915',
+          name: 'Einstein A. Die Feldgleichungen der Gravitation. Sitzungsberichte der Preussischen Akademie der Wissenschaften, November 25, 1915.',
+          url: 'https://echo.mpiwg-berlin.mpg.de/MPIWG:YP5DH13S',
+          publishedAt: '1915-11-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
