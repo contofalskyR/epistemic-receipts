@@ -12993,6 +12993,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Solar eclipse of the first Peloponnesian War summer, 431 BCE (Greece) ────
+  {
+    externalId: 'trajectory:peloponnesian-war-eclipse-431bce',
+    text: 'A solar eclipse reduced the Sun to a crescent shortly after midday in the first summer of the Peloponnesian War — 3 August 431 BCE — recorded by the contemporary historian Thucydides, who noted that some stars became visible before the Sun returned to its full form.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0431-08-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0431-08-03',
+        datePrecision: 'DAY',
+        reason: 'Thucydides, an Athenian who lived through the war, notes in his year-by-year narrative that in the first summer "the sun was eclipsed after midday, and having assumed a crescent form, and some of the stars having appeared, it again became full." Later tradition (Plutarch, Life of Pericles 35) attached an anecdote in which Pericles calmed a frightened helmsman with a naturalistic account of the darkening, but the contemporaneous record is Thucydides\'s.',
+        source: {
+          externalId: 'src:thucydides-history-eclipse-431bce',
+          name: 'Thucydides, History of the Peloponnesian War, 2.28, the eclipse of the first war summer. (c. 411 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0200%3Abook%3D2%3Achapter%3D28',
+          publishedAt: '0411-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation identifies the event as the annular solar eclipse of 3 August 431 BCE (Julian), which reached a magnitude of about 0.88 at Athens shortly after noon — matching Thucydides\'s crescent-Sun description and his placement in the war\'s first summer. The eclipse is catalogued in NASA\'s Five Millennium Canon of Solar Eclipses (−430 Aug 03), anchoring the chronology of the war\'s opening year.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-431bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141; eclipse of −430 Aug 03.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First confirmed apparition of Halley's Comet, 240 BCE (China) ────────────
+  {
+    externalId: 'trajectory:halley-comet-240bce-shiji',
+    text: 'A "broom star" appeared in the eastern sky around 30 March 240 BCE and was tracked moving north and then west — recorded in the Records of the Grand Historian (Shiji) and later identified as the earliest confirmed apparition of Halley\'s Comet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0240-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0240-03-30',
+        datePrecision: 'DAY',
+        reason: 'Court astronomers of the Qin state logged a "broom star" (彗星) that first appeared in the east, then was seen in the north, and finally in the west, in the seventh year of the First Emperor of Qin. Sima Qian preserves the observation in the Shiji, compiled in the early Han from earlier state archives — a day-by-day directional record of a comet\'s passage across the sky.',
+        source: {
+          externalId: 'src:shiji-broom-star-240bce',
+          name: 'Sima Qian, Shiji, Basic Annals of the First Emperor of Qin; the broom star of the seventh year (240 BCE). (c. 94 BCE)',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0094-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tao Kiang\'s reconstruction of Halley\'s past orbit back to 240 BCE shows that the comet returned to perihelion in 240 BCE and that the Chinese description of the broom star\'s timing and motion matches the computed apparition — establishing the Shiji entry as the earliest firmly identified observation of Halley\'s Comet and a fixed point for its long-term orbital history.',
+        source: {
+          externalId: 'src:kiang-halley-past-orbit-1972',
+          name: 'Kiang T. "The past orbit of Halley\'s comet." Memoirs of the Royal Astronomical Society 76:27–66, 1972.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1972MmRAS..76...27K/abstract',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Total solar eclipse during Agathocles' African crossing, 310 BCE ─────────
+  {
+    externalId: 'trajectory:agathocles-eclipse-310bce',
+    text: 'A total solar eclipse turned day to night on 15 August 310 BCE, the day after Agathocles of Syracuse slipped through the Carthaginian blockade and sailed his fleet toward North Africa — an event recorded by Diodorus Siculus, who reports the troops were dismayed by the omen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0310-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0310-08-15',
+        datePrecision: 'DAY',
+        reason: 'Diodorus Siculus records that on the day after Agathocles broke out to sea the Sun was so completely eclipsed that "the day took on the appearance of night" and stars were seen everywhere, throwing the soldiers into dismay over the apparent ill omen. The narrative ties the darkening to a precise point in the African expedition against Carthage.',
+        source: {
+          externalId: 'src:diodorus-agathocles-eclipse-310bce',
+          name: 'Diodorus Siculus, Bibliotheca Historica 20.5.5, the eclipse during Agathocles\'s crossing to Africa. (1st century BCE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/20A*.html',
+          publishedAt: '0030-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Retrocalculation identifies the only matching event as the total solar eclipse of 15 August 310 BCE (Julian), whose path of totality crossed the central Mediterranean — catalogued in NASA\'s Five Millennium Canon (−309 Aug 15). The eclipse fixes the date of Agathocles\'s departure and has been used to debate the precise route his fleet took to Africa.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-310bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141; eclipse of −309 Aug 15.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Guest star of 393 CE — a probable supernova in Scorpius (China) ──────────
+  {
+    externalId: 'trajectory:guest-star-sn393',
+    text: 'Chinese court astronomers recorded a "guest star" within the asterism Wei in the tail of Scorpius during the second lunar month of 393 CE (27 February–28 March), visible for about eight months — one of the earliest records of a probable supernova (SN 393).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0393-02-27',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0393-02-27',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical treatise of the Book of Jin (晉書) records that a guest star appeared within the asterism Wei — the bowl-shaped tail of modern Scorpius — in the second lunar month of the 18th year of the Tai-Yuan reign period of Emperor Xiaowu, and remained visible until the ninth lunar month before fading. The entry derives from the Eastern Jin court\'s astronomical bureau records.',
+        source: {
+          externalId: 'src:book-of-jin-guest-star-393',
+          name: 'Book of Jin (晉書), Treatise on Astronomy (天文志), record of the guest star in Wei, Tai-Yuan 18 (393 CE). (compiled 648 CE from earlier bureau records)',
+          url: 'https://en.wikipedia.org/wiki/SN_393',
+          publishedAt: '0648-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern catalogues of historical supernovae (Green & Stephenson) treat the 393 guest star as a probable supernova: its roughly eight-month visibility and estimated peak magnitude near −1 are inconsistent with a comet or ordinary nova. The observation and its date are settled, though the specific surviving supernova remnant in that region of Scorpius remains debated among candidate sources.',
+        source: {
+          externalId: 'src:green-stephenson-historical-supernovae-2003',
+          name: 'Green DA, Stephenson FR. "The Historical Supernovae." In Supernovae and Gamma-Ray Bursters (Lecture Notes in Physics 598), 2003; SN 393.',
+          url: 'https://arxiv.org/abs/astro-ph/0301603',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — further curves
   // ═══════════════════════════════════════════════════════════════════════════════
