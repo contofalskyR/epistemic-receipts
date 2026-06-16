@@ -20419,6 +20419,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDENDUM (1400–1750): Scientific Revolution, Reformation,
+  // New World, Ottoman, Mughal/South India
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gunpowder Plot discovered — Guy Fawkes arrested beneath Parliament ───────
+  {
+    externalId: 'trajectory:gunpowder-plot-discovered-1605',
+    text: 'A conspiracy of English Catholics led by Robert Catesby concealed barrels of gunpowder beneath the House of Lords intending to blow up Parliament and King James I at its State Opening; the plot was exposed when Guy Fawkes was caught guarding the explosives in the early hours of 5 November 1605.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1605-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1605-11-05',
+        datePrecision: 'DAY',
+        reason: 'An anonymous letter delivered to Lord Monteagle around 26 October 1605 warning him to avoid the opening of Parliament prompts a search of the buildings beneath the House of Lords. In the early hours of 5 November, Guy Fawkes is discovered in the undercroft guarding some 36 barrels of gunpowder, with slow matches and touchwood on his person. Arrested under the alias "John Johnson," he is taken to the King and interrogated, turning a concealed conspiracy into a publicly recorded fact.',
+        source: {
+          externalId: 'src:monteagle-letter-1605',
+          name: 'The Monteagle Letter and the discovery of Guy Fawkes, 5 November 1605 (UK National Archives, original letter held in State Papers).',
+          url: 'https://www.nationalarchives.gov.uk/education/resources/gunpowder-plot/',
+          publishedAt: '1605-11-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1606-01-27',
+        datePrecision: 'DAY',
+        reason: 'Under interrogation (and torture authorised by the King) Fawkes names his fellow conspirators. The surviving plotters are tried in Westminster Hall on 27 January 1606, convicted of high treason, and executed on 30–31 January 1606. The proceedings are published the same year in "A True and Perfect Relation of the Proceedings at the Several Arraignments of the Late Most Barbarous Traitors," fixing the membership, intent, and dating of the plot beyond dispute.',
+        source: {
+          externalId: 'src:true-perfect-relation-1606',
+          name: 'A True and Perfect Relation of the Proceedings at the Several Arraignments of the Late Most Barbarous Traitors, London, 1606 (official account of the Gunpowder Plot trials).',
+          url: 'https://en.wikipedia.org/wiki/Gunpowder_Plot',
+          publishedAt: '1606-01-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Torricelli's barometer — air has weight, a vacuum can exist ──────────────
+  {
+    externalId: 'trajectory:torricelli-barometer-1643',
+    text: 'Evangelista Torricelli demonstrated in 1643 that a column of mercury in a sealed, inverted glass tube is held up by the weight of the atmosphere — leaving an empty space (the "Torricellian vacuum") above it — overturning the Aristotelian doctrine that nature abhors a vacuum.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1643-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1644-06-11',
+        datePrecision: 'DAY',
+        reason: 'In Florence, Torricelli (building on a suggestion of Galileo\'s) fills a glass tube about a metre long with mercury, seals it, and inverts it into a basin of mercury; the column falls to roughly 76 cm, leaving an apparently empty space at the top. In letters to Michelangelo Ricci dated 11 and 28 June 1644 he reports the result and proposes that "we live submerged at the bottom of an ocean of the element air," whose weight balances the mercury column.',
+        source: {
+          externalId: 'src:torricelli-ricci-letters-1644',
+          name: 'Torricelli E. Letters to Michelangelo Ricci, 11 and 28 June 1644 (describing the mercury barometer and the atmospheric explanation).',
+          url: 'https://en.wikipedia.org/wiki/Evangelista_Torricelli',
+          publishedAt: '1644-06-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1648-09-19',
+        datePrecision: 'DAY',
+        reason: 'Following Blaise Pascal\'s design, Florin Périer carries a Torricelli tube up the Puy de Dôme on 19 September 1648 and records the mercury column falling about three inches at the summit. The altitude dependence confirms that atmospheric weight — not "horror vacui" — supports the column, settling Torricelli\'s interpretation. The unit of pressure, the torr, later commemorates the experiment.',
+        source: {
+          externalId: 'src:pascal-puy-de-dome-confirms-torricelli',
+          name: 'Pascal B. Récit de la grande expérience de l\'équilibre des liqueurs, 1648 (Périer\'s Puy de Dôme experiment confirming atmospheric pressure).',
+          url: 'https://en.wikipedia.org/wiki/Blaise_Pascal',
+          publishedAt: '1648-09-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Henry IV of France assassinated by Ravaillac ────────────────────────────
+  {
+    externalId: 'trajectory:henry-iv-assassination-1610',
+    text: 'King Henry IV of France was assassinated by the Catholic zealot François Ravaillac, who stabbed him in his halted carriage on the rue de la Ferronnerie in Paris on 14 May 1610.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1610-05-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1610-05-14',
+        datePrecision: 'DAY',
+        reason: 'As the royal carriage is stopped by congestion on the narrow rue de la Ferronnerie, Ravaillac leaps onto the wheel and stabs the King twice with a dagger; Henry dies within minutes. The killing occurs in a crowded Paris street before numerous witnesses and the King\'s own attendants, and is reported across Europe within days. Ravaillac is seized at the scene.',
+        source: {
+          externalId: 'src:lestoile-journal-henry-iv-1610',
+          name: 'Pierre de L\'Estoile, Journal pour le règne de Henri IV (contemporary diarist\'s account of the assassination of 14 May 1610).',
+          url: 'https://en.wikipedia.org/wiki/Henry_IV_of_France',
+          publishedAt: '1610-05-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1610-05-27',
+        datePrecision: 'DAY',
+        reason: 'Ravaillac is interrogated and tried by the Parlement of Paris; he confesses to the killing and insists he acted alone, motivated by Henry\'s perceived threats to Catholicism. He is condemned for regicide and executed by being drawn and quartered in the Place de Grève on 27 May 1610. The trial record fixes the perpetrator, date, and circumstances of the assassination.',
+        source: {
+          externalId: 'src:ravaillac-trial-1610',
+          name: 'Arrêt de la cour de Parlement contre François Ravaillac, May 1610 (judgment and execution for the regicide of Henry IV).',
+          url: 'https://en.wikipedia.org/wiki/Fran%C3%A7ois_Ravaillac',
+          publishedAt: '1610-05-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First Siege of Vienna — limit of Ottoman advance into central Europe ─────
+  {
+    externalId: 'trajectory:first-siege-vienna-1529',
+    text: 'The Ottoman army under Sultan Suleiman the Magnificent besieged Vienna from late September to mid-October 1529 — the empire\'s first assault on the city — but failed to take it and withdrew on 15 October 1529, marking the high-water mark of Ottoman expansion into central Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1529-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1529-10-15',
+        datePrecision: 'DAY',
+        reason: 'After advancing up the Danube, Suleiman invests Vienna around 27 September 1529. The garrison under Niklas Graf Salm withstands mining and assaults while autumn rains, disease, and overstretched supply lines cripple the besiegers. Following a failed final assault on 14 October, the Ottomans break the siege and begin withdrawing on 15 October 1529. The events are recorded in Habsburg dispatches and Ottoman campaign diaries of the season.',
+        source: {
+          externalId: 'src:siege-vienna-1529-accounts',
+          name: 'Contemporary Habsburg and Ottoman accounts of the 1529 Siege of Vienna (campaign correspondence and the Ottoman campaign diaries).',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Vienna',
+          publishedAt: '1529-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ottoman chroniclers (such as Kemalpaşazade) and Austrian sources independently corroborate the failed siege and the October withdrawal. Modern scholarship treats the 1529 siege as the furthest sustained reach of Ottoman power into central Europe before the second, equally unsuccessful siege of 1683; the date and outcome are undisputed.',
+        source: {
+          externalId: 'src:siege-vienna-1529-scholarship',
+          name: 'Siege of Vienna (1529) — modern military-historical scholarship corroborating the Ottoman failure and withdrawal of 15 October 1529.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Vienna',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Talikota — fall of the Vijayanagara Empire ────────────────────
+  {
+    externalId: 'trajectory:battle-of-talikota-1565',
+    text: 'A confederacy of the Deccan sultanates decisively defeated the Vijayanagara Empire at the Battle of Talikota on 26 January 1565; the empire\'s chief minister Aliya Rama Raya was captured and beheaded, and the capital Vijayanagara (Hampi) was sacked, ending the empire\'s dominance in South India.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1565-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1565-01-26',
+        datePrecision: 'DAY',
+        reason: 'The allied armies of Bijapur, Ahmadnagar, Golconda, and Bidar meet the Vijayanagara forces near Talikota (Rakkasa-Tangadi). The aged Rama Raya is captured and beheaded during the rout, and his leaderless army collapses. The victorious sultanates occupy and systematically plunder the great capital of Vijayanagara over the following months, an event recorded by court chroniclers of the Deccan.',
+        source: {
+          externalId: 'src:ferishta-talikota-1565',
+          name: 'Muhammad Qasim Ferishta, Tarikh-i Ferishta (early 17th-c. history of the Deccan, recording the battle and the killing of Rama Raya).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Talikota',
+          publishedAt: '1610-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1567-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Venetian merchant Caesar Frederick, who travelled through the region in 1567, describes the ruined and abandoned city of Vijayanagara, independently confirming the sack. The desolation of Hampi — corroborated by extensive archaeological evidence of burning and demolition — settles the battle\'s date and its decisive consequences for the empire.',
+        source: {
+          externalId: 'src:caesar-frederick-vijayanagara-1567',
+          name: 'Caesar Frederick (Cesare Federici), account of his 1567 visit to the ruins of Vijayanagara (published in his Viaggio, 1587).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Talikota',
+          publishedAt: '1587-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
