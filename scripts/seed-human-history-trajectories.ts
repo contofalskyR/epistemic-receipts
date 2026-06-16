@@ -22682,6 +22682,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — supplementary sweep
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Rosa Parks arrest → Montgomery Bus Boycott ──────────────────────────────
+  {
+    externalId: 'trajectory:rosa-parks-montgomery-boycott-1955',
+    text: 'Rosa Parks was arrested in Montgomery, Alabama on December 1, 1955 for refusing to give up her bus seat to a white passenger, precipitating the Montgomery Bus Boycott.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1955-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1955-12-01',
+        datePrecision: 'DAY',
+        reason: 'Parks is arrested by Montgomery police for violating the city bus segregation ordinance after refusing to vacate her seat. A police report and arrest record are filed the same evening, and the local press reports the arrest within days as community leaders organize a one-day boycott.',
+        source: {
+          externalId: 'src:rosa-parks-police-report-1955',
+          name: 'City of Montgomery police report and arrest record for Rosa Parks, 1 December 1955 (held by the Library of Congress, Rosa Parks Papers); contemporaneous reporting in the Montgomery Advertiser, December 1955.',
+          url: 'https://www.loc.gov/item/2021668380/',
+          publishedAt: '1955-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1956-11-13',
+        datePrecision: 'DAY',
+        reason: 'The 381-day boycott is documented contemporaneously in court filings, news coverage, and Montgomery Improvement Association records. On 13 November 1956 the U.S. Supreme Court affirmed the district court ruling in Browder v. Gayle that Montgomery\'s bus segregation was unconstitutional, and the documented occurrence of the arrest and boycott is undisputed in the historical and legal record.',
+        source: {
+          externalId: 'src:browder-v-gayle-1956',
+          name: 'Browder v. Gayle, 142 F. Supp. 707 (M.D. Ala. 1956), aff\'d 352 U.S. 903 (13 November 1956).',
+          url: 'https://en.wikipedia.org/wiki/Browder_v._Gayle',
+          publishedAt: '1956-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Selma "Bloody Sunday" ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:selma-bloody-sunday-1965',
+    text: 'On March 7, 1965 ("Bloody Sunday"), Alabama state troopers and a county posse attacked civil-rights marchers crossing the Edmund Pettus Bridge in Selma, Alabama.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1965-03-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1965-03-07',
+        datePrecision: 'DAY',
+        reason: 'Roughly 600 marchers heading from Selma toward Montgomery are beaten with clubs and tear gas as they cross the Edmund Pettus Bridge. The assault is filmed by network news crews and photographed; ABC interrupts programming that evening to broadcast the footage to a national audience.',
+        source: {
+          externalId: 'src:selma-bloody-sunday-nyt-1965',
+          name: '"Alabama Police Use Gas and Clubs to Rout Negroes," The New York Times, 8 March 1965; contemporaneous ABC News film footage.',
+          url: 'https://www.nytimes.com/1965/03/08/archives/alabama-police-use-gas-and-clubs-to-rout-negroes.html',
+          publishedAt: '1965-03-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1965-03-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 March 1965 Federal Judge Frank M. Johnson Jr. issued a ruling (Williams v. Wallace) protecting the marchers\' right to proceed to Montgomery, with findings of fact documenting the 7 March attack. The contemporaneous film, photographic, and judicial record establish the events of Bloody Sunday as a settled fact.',
+        source: {
+          externalId: 'src:williams-v-wallace-1965',
+          name: 'Williams v. Wallace, 240 F. Supp. 100 (M.D. Ala. 1965), opinion of Judge Frank M. Johnson Jr., 17 March 1965.',
+          url: 'https://en.wikipedia.org/wiki/Selma_to_Montgomery_marches',
+          publishedAt: '1965-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Moore's Law original prediction ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:moores-law-1965',
+    text: 'Gordon Moore predicted in April 1965 that the number of components on an integrated circuit would roughly double each year (later revised to about every two years) — "Moore\'s Law."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-04-19',
+        datePrecision: 'DAY',
+        reason: 'Gordon Moore, then at Fairchild Semiconductor, publishes "Cramming more components onto integrated circuits" in Electronics magazine, extrapolating from a handful of data points that integrated-circuit complexity would double approximately annually for at least a decade.',
+        source: {
+          externalId: 'src:moore-electronics-1965',
+          name: 'Moore GE. "Cramming more components onto integrated circuits." Electronics 1965;38(8):114–117 (19 April 1965).',
+          url: 'https://newsroom.intel.com/wp-content/uploads/sites/11/2018/05/moores-law-electronics.pdf',
+          publishedAt: '1965-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Moore revisited the projection at the 1975 IEEE International Electron Devices Meeting, revising the doubling period to roughly two years; the trend held empirically for decades and became the semiconductor industry\'s planning benchmark (formalized in the International Technology Roadmap for Semiconductors), establishing the observed exponential as a documented historical regularity.',
+        source: {
+          externalId: 'src:moore-iedm-1975',
+          name: 'Moore GE. "Progress in digital integrated electronics." IEEE International Electron Devices Meeting Technical Digest, 1975, pp. 11–13.',
+          url: 'https://en.wikipedia.org/wiki/Moore%27s_law',
+          publishedAt: '1975-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mariner 9 — first spacecraft to orbit another planet ────────────────────
+  {
+    externalId: 'trajectory:mariner-9-mars-orbit-1971',
+    text: 'NASA\'s Mariner 9 entered orbit around Mars on November 14, 1971, becoming the first spacecraft to orbit another planet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-11-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-11-14',
+        datePrecision: 'DAY',
+        reason: 'Mariner 9 fires its engine and is captured into Mars orbit on 14 November 1971. NASA and JPL confirm orbital insertion via radio tracking the same day; the spacecraft arrives during a planet-wide dust storm and begins returning images once it clears.',
+        source: {
+          externalId: 'src:mariner9-nasa-1971',
+          name: 'NASA/JPL Mariner 9 mission reports and press releases, November 1971; contemporaneous coverage, "Mariner 9 in Orbit Around Mars," The New York Times, 15 November 1971.',
+          url: 'https://www.nytimes.com/1971/11/14/archives/mariner-9-goes-into-orbit-of-mars-after-167day-flight-mariner-9.html',
+          publishedAt: '1971-11-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mariner 9 mapped about 85% of the Martian surface and returned over 7,000 images, revealing Olympus Mons, the Valles Marineris canyon system, and ancient channels. The mission data were published in the peer-reviewed literature, and the orbit-insertion milestone is documented in NASA records and independent FAI/spaceflight registries as a settled fact.',
+        source: {
+          externalId: 'src:mariner9-science-results-1972',
+          name: 'Masursky H, et al. "Mariner 9 Television Reconnaissance of Mars and Its Satellites: Preliminary Results." Science 1972;175(4019):294–305.',
+          url: 'https://www.science.org/doi/10.1126/science.175.4019.294',
+          publishedAt: '1972-01-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First Earth Day ─────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:first-earth-day-1970',
+    text: 'The first Earth Day was observed across the United States on April 22, 1970, with an estimated 20 million participants.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1970-04-22',
+        datePrecision: 'DAY',
+        reason: 'Coordinated teach-ins, rallies, and demonstrations are held in cities, schools, and college campuses nationwide, organized by Senator Gaylord Nelson and a national coordinating staff led by Denis Hayes. The events are reported the same day and the following morning across the national press.',
+        source: {
+          externalId: 'src:earth-day-nyt-1970',
+          name: '"Millions Join Earth Day Observances Across the Nation," The New York Times, 23 April 1970.',
+          url: 'https://www.nytimes.com/1970/04/23/archives/millions-join-earth-day-observances-across-the-nation-millions-mark.html',
+          publishedAt: '1970-04-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-12-02',
+        datePrecision: 'DAY',
+        reason: 'The scale and date of the first Earth Day are documented in contemporaneous press, organizer records, and Congressional materials; the mobilization is widely credited with accelerating creation of the U.S. Environmental Protection Agency (established 2 December 1970) and the major environmental statutes of the early 1970s, and is an undisputed event in the public record.',
+        source: {
+          externalId: 'src:epa-founding-1970',
+          name: 'U.S. Environmental Protection Agency, "EPA History" (agency established 2 December 1970); Earth Day organizer and Congressional records.',
+          url: 'https://www.epa.gov/history/epa-history',
+          publishedAt: '1970-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
