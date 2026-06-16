@@ -5155,6 +5155,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Halley's Comet, 240 BCE apparition (Qin China) — earliest secure record ──
+  {
+    externalId: 'trajectory:halley-comet-240bce-apparition',
+    text: 'Chinese court astronomers recorded a "broom star" in the spring of 240 BCE, tracking it from the east to the north and then the west — later identified as the earliest securely datable apparition of the periodic comet 1P/Halley.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0240-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0240-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The Records of the Grand Historian, under the seventh year of the First Emperor of Qin, note that a broom star (彗星) first appeared in the east, then was seen in the north, and in the fifth month was seen again in the west, remaining visible for some sixteen days. The directional sequence over weeks is the signature of a single bright comet sweeping past the Sun, derived from contemporaneous Qin court observation.',
+        source: {
+          externalId: 'src:shiji-comet-240bce',
+          name: 'Sima Qian, Records of the Grand Historian (史記), Basic Annals of the First Emperor of Qin — record of the broom star of the 7th year. (compiled c. 94 BCE from court records)',
+          url: 'https://ctext.org/shiji/qin-shi-huang-ben-ji',
+          publishedAt: '0240-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yeomans and Kiang integrated Halley\'s orbit backward over two millennia using the dense Chinese positional records, fixing a perihelion passage on 25 May 240 BCE that matches the Qin observation. Earlier candidate apparitions cannot be tied to a firm contemporary record, leaving 240 BCE the oldest secured return of 1P/Halley.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. "The long-term motion of comet Halley." Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lunar eclipse before the Battle of Pydna, 168 BCE (Rome) ─────────────────
+  {
+    externalId: 'trajectory:pydna-lunar-eclipse-168bce',
+    text: 'A total lunar eclipse occurred on the night of 21 June 168 BCE, the eve of the Battle of Pydna — and the Roman tribune Gaius Sulpicius Gallus explained it to the army in advance as a predictable phenomenon rather than an omen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0168-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0168-06-21',
+        datePrecision: 'DAY',
+        reason: 'The night before the Roman victory over Perseus of Macedon, the moon was totally eclipsed. The near-contemporary historian Polybius and, following him, Livy and Pliny report that the military tribune Sulpicius Gallus had told the soldiers beforehand that the eclipse would occur and why, forestalling the panic an unexplained omen would have caused — an early recorded instance of astronomical prediction overriding superstition.',
+        source: {
+          externalId: 'src:livy-pydna-eclipse-168bce',
+          name: 'Livy, Ab Urbe Condita 44.37 (drawing on Polybius 29.16); cf. Pliny, Natural History 2.53 — account of the eclipse and Sulpicius Gallus\'s prediction at Pydna.',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0166:book=44:chapter=37',
+          publishedAt: '0025-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a total lunar eclipse visible over Macedonia on the evening of 21 June 168 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses. The eclipse fixes the date of the Battle of Pydna to 22 June 168 BCE, one of the firmest chronological anchors in Roman Republican history.',
+        source: {
+          externalId: 'src:nasa-lunar-eclipse-catalog-pydna',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Lunar Eclipses: −1999 to +3000. NASA/TP–2009–214172.',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LEcatalog.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Total solar eclipse of 136 BCE — Babylonian Astronomical Diary ───────────
+  {
+    externalId: 'trajectory:babylon-solar-eclipse-136bce',
+    text: 'Babylonian scribes recorded a total solar eclipse on 15 April 136 BCE, noting that day turned to night with planets and stars becoming visible — one of the best-attested total solar eclipses of antiquity, used today to measure changes in Earth\'s rotation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0136-04-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0136-04-15',
+        datePrecision: 'DAY',
+        reason: 'A cuneiform astronomical diary from Babylon logs that on the 29th of the month the Sun was eclipsed totally — "the day was turned to night" — and that Venus, Mercury and the Normal Stars became visible while the eclipse was in progress. The note that planets and stars appeared establishes the eclipse as total at Babylon, recorded by temple scribes as it happened.',
+        source: {
+          externalId: 'src:babylonian-diary-solar-eclipse-136bce',
+          name: 'Babylonian Astronomical Diary (Sachs–Hunger, Astronomical Diaries and Related Texts from Babylonia, Vol. III, 1996); contemporary record of the total solar eclipse of 136 BCE.',
+          url: 'https://en.wikipedia.org/wiki/List_of_solar_eclipses_in_antiquity',
+          publishedAt: '0136-04-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Retrocalculation identifies the event as the total solar eclipse of 15 April 136 BCE (Julian), whose path of totality crossed Babylon. Because the diary fixes both the place and the totality of the observation, Stephenson uses it as a key data point in measuring the long-term slowing of Earth\'s rotation (ΔT) over the past 2,000 years.',
+        source: {
+          externalId: 'src:stephenson-historical-eclipses-136bce',
+          name: 'Stephenson FR. Historical Eclipses and Earth\'s Rotation. Cambridge University Press, 1997.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1997heer.book.....S/abstract',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
   // ═══════════════════════════════════════════════════════════════════════════════
