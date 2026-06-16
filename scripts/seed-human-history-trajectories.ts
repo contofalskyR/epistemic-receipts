@@ -21122,6 +21122,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── U-2 incident: cover story reversed (1960) ──────────────────────────────
+  {
+    externalId: 'trajectory:u2-incident-cover-story-1960',
+    text: 'The U.S. government\'s initial public account — issued via a NASA news release on 5 May 1960 — that a "weather research" aircraft had strayed off course over Turkey was reversed on 7 May 1960, when Soviet Premier Nikita Khrushchev revealed that the downed aircraft was a U-2 reconnaissance plane and that its pilot, Francis Gary Powers, had been captured alive.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1960-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-05-05',
+        datePrecision: 'DAY',
+        reason: 'After a U-2 piloted by Francis Gary Powers failed to return from a high-altitude overflight of the Soviet Union on 1 May 1960, the U.S. issued a prepared cover story: NASA announced on 5 May 1960 that one of its high-altitude "weather research" aircraft was missing after the pilot reported oxygen difficulties over the Lake Van area of Turkey. The State Department endorsed the account, treating the loss of a civilian research plane as the established explanation.',
+        source: {
+          externalId: 'src:nasa-u2-cover-story-1960',
+          name: 'NASA news release on a missing high-altitude weather research aircraft, 5 May 1960 (the U.S. cover story for the U-2 flight). National Security Archive, "The U-2 Spy Plane Incident."',
+          url: 'https://nsarchive.gwu.edu/briefing-book/intelligence/2020-05-01/u-2-spy-plane-incident',
+          publishedAt: '1960-05-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-05-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 May 1960, addressing the Supreme Soviet, Khrushchev sprang a trap he had laid two days earlier: he announced that the pilot was alive in Soviet custody and that the wreckage — including surveillance cameras and exposed film — had been recovered, exposing the weather-plane story as a fabrication. On 11 May 1960 President Eisenhower publicly acknowledged that the U-2 was conducting reconnaissance, an unprecedented admission of a peacetime espionage program. The cover story was conclusively falsified.',
+        source: {
+          externalId: 'src:khrushchev-u2-revelation-1960',
+          name: 'Address by N. S. Khrushchev to the Supreme Soviet revealing the captured U-2 pilot and aircraft, 7 May 1960; U.S. Department of State, Office of the Historian — "The U-2 Incident, 1960."',
+          url: 'https://history.state.gov/milestones/1953-1960/u2-incident',
+          publishedAt: '1960-05-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Berlin Wall construction begins (1961) ─────────────────────────────────
+  {
+    externalId: 'trajectory:berlin-wall-construction-1961',
+    text: 'In the early hours of 13 August 1961, the German Democratic Republic (East Germany) sealed the border between East and West Berlin and began constructing the Berlin Wall.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1961-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-08-13',
+        datePrecision: 'DAY',
+        reason: 'Beginning shortly after midnight on 13 August 1961, East German police and troops closed the sector boundary in Berlin, tearing up streets, stringing barbed wire, and halting cross-border traffic; permanent concrete walls followed in the days after. The action was authorized by a decree of the GDR Council of Ministers and a declaration of the Warsaw Pact states, both issued on 12–13 August 1961 and published immediately.',
+        source: {
+          externalId: 'src:gdr-warsaw-pact-berlin-border-1961',
+          name: 'Declaration of the Warsaw Pact states and decree of the GDR Council of Ministers closing the East–West Berlin border, 12–13 August 1961. German History in Documents and Images (GHDI).',
+          url: 'https://ghdi.ghi-dc.org/sub_document.cfm?document_id=81',
+          publishedAt: '1961-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-08-13',
+        datePrecision: 'DAY',
+        reason: 'The closure was immediately verified by the Western Allied commandants in Berlin and by international press photographing the barrier as it rose; the United States, Britain, and France lodged formal protests within days. The physical division of the city became an uncontested fact of Cold War geography that stood for 28 years until the Wall was opened on 9 November 1989.',
+        source: {
+          externalId: 'src:state-dept-berlin-wall-1961',
+          name: 'U.S. Department of State, Office of the Historian — "The Berlin Wall, 1961."',
+          url: 'https://history.state.gov/milestones/1961-1968/berlin-wall',
+          publishedAt: '1961-08-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Quasar 3C 273: large redshift identified (1963) ────────────────────────
+  {
+    externalId: 'trajectory:quasar-3c273-redshift-1963',
+    text: 'The radio source 3C 273 is an extremely luminous, cosmologically distant object — a "quasar" — whose optical spectrum shows a large redshift (z ≈ 0.158), as identified by Maarten Schmidt in Nature on 16 March 1963.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-03-16',
+        datePrecision: 'DAY',
+        reason: 'After a precise position for the puzzling star-like radio source 3C 273 was obtained via lunar occultations at the Parkes telescope, Maarten Schmidt of Caltech recognized that its strange optical emission lines were ordinary hydrogen Balmer lines shifted to the red by about 16 percent. His one-page Nature paper of 16 March 1963 reported a redshift of z = 0.158, implying a distance of order a billion light-years and an extraordinary intrinsic luminosity for so compact an object.',
+        source: {
+          externalId: 'src:schmidt-3c273-nature-1963',
+          name: 'Schmidt M. "3C 273: A Star-like Object with Large Red-Shift." Nature 1963;197:1040.',
+          url: 'https://www.nature.com/articles/1971040a0',
+          publishedAt: '1963-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-03-16',
+        datePrecision: 'DAY',
+        reason: 'Companion papers in the same issue of Nature — by Oke on infrared confirmation, and by Greenstein and Matthews identifying an even larger redshift for 3C 48 — corroborated the interpretation, and within a few years cosmological redshifts for "quasi-stellar radio sources" were broadly accepted. Quasars became established as the highly luminous active nuclei of distant galaxies, and 3C 273 remains a standard reference object at z = 0.158.',
+        source: {
+          externalId: 'src:greenstein-matthews-3c48-1963',
+          name: 'Greenstein JL, Matthews TA. "Red-Shift of the Unusual Radio Source 3C 48." Nature 1963;197:1041; Oke JB. "Absolute Energy Distribution in the Optical Spectrum of 3C 273." Nature 1963;197:1040.',
+          url: 'https://www.nature.com/articles/1971041a0',
+          publishedAt: '1963-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Luna 9: first soft Moon landing settles the lunar-dust question (1966) ──
+  {
+    externalId: 'trajectory:luna-9-soft-moon-landing-1966',
+    text: 'The Moon\'s surface is firm enough to support a landed spacecraft rather than being covered by a deep dust layer that would engulf it — a question settled when the Soviet probe Luna 9 made the first soft landing on the Moon and transmitted images from its surface on 3 February 1966.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1955-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In the mid-1950s the astronomer Thomas Gold argued that the lunar maria were covered by a layer of fine dust, possibly metres deep, into which a landing craft might sink and disappear. Through the early 1960s the depth and bearing strength of the lunar surface remained genuinely uncertain and disputed among scientists planning robotic and crewed landings.',
+        source: {
+          externalId: 'src:gold-lunar-surface-dust-1955',
+          name: 'Gold T. "The lunar surface." Monthly Notices of the Royal Astronomical Society 1955;115:585–604.',
+          url: 'https://articles.adsabs.harvard.edu/pdf/1955MNRAS.115..585G',
+          publishedAt: '1955-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-02-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 February 1966 the Soviet probe Luna 9 became the first spacecraft to achieve a soft landing on the Moon (in Oceanus Procellarum) and transmit panoramic images from the surface. The pictures showed the probe resting on a firm, finely textured surface — not sinking into deep dust — directly resolving the bearing-strength question. The U.S. Surveyor 1 confirmed the result with its own soft landing on 2 June 1966, and the deep-dust hypothesis was abandoned.',
+        source: {
+          externalId: 'src:nssdc-luna-9-1966',
+          name: 'NASA NSSDC — Luna 9 spacecraft summary and first lunar-surface images, 3 February 1966.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-006A',
+          publishedAt: '1966-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First DNA genome fully sequenced: bacteriophage φX174 (1977) ────────────
+  {
+    externalId: 'trajectory:phix174-first-genome-sequenced-1977',
+    text: 'The complete nucleotide sequence of the DNA genome of bacteriophage φX174 — the first DNA-based organism to be fully sequenced — was determined by Frederick Sanger and colleagues and published in Nature on 24 February 1977.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-02-24',
+        datePrecision: 'DAY',
+        reason: 'Using the newly developed dideoxy chain-termination ("Sanger") sequencing method, Frederick Sanger and his collaborators at the MRC Laboratory of Molecular Biology in Cambridge reported the full nucleotide sequence of the ~5,375-base single-stranded DNA genome of bacteriophage φX174. The work, published in Nature on 24 February 1977, was the first complete genome of any DNA-based organism and revealed the unexpected phenomenon of overlapping genes.',
+        source: {
+          externalId: 'src:sanger-phix174-nature-1977',
+          name: 'Sanger F, et al. "Nucleotide sequence of bacteriophage φX174 DNA." Nature 1977;265:687–695.',
+          url: 'https://www.nature.com/articles/265687a0',
+          publishedAt: '1977-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-10-14',
+        datePrecision: 'DAY',
+        reason: 'The φX174 sequence and the chain-termination method were rapidly validated and refined by other laboratories, and dideoxy sequencing became the dominant technique in molecular biology for decades. On 14 October 1980 Sanger was awarded a share of the Nobel Prize in Chemistry "for contributions concerning the determination of base sequences in nucleic acids," cementing both the result and the method as settled science.',
+        source: {
+          externalId: 'src:nobel-chemistry-1980-sequencing',
+          name: 'The Nobel Prize in Chemistry 1980 — Paul Berg, Walter Gilbert and Frederick Sanger (DNA/nucleic-acid sequencing). Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1980/summary/',
+          publishedAt: '1980-10-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
