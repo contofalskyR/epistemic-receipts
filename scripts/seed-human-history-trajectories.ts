@@ -19073,6 +19073,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA SWEEP (1750–1900): physics & astronomy advances
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Halley's Comet returns as predicted (1759) ──────────────────────────────
+  {
+    externalId: 'trajectory:halley-comet-predicted-return-1759',
+    text: 'Halley\'s Comet returned to perihelion in early 1759 exactly as predicted, confirming Edmond Halley\'s 1705 forecast that the comets of 1531, 1607, and 1682 were a single periodic body obeying Newtonian gravitation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1705-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1705-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In "A Synopsis of the Astronomy of Comets," Edmond Halley applies Newton\'s law of gravitation to cometary orbits, argues that the bright comets of 1531, 1607, and 1682 share nearly identical orbital elements, and predicts that the same comet will return around 1758. The claim is a public, testable prediction recorded in print.',
+        source: {
+          externalId: 'src:halley-synopsis-comets-1705',
+          name: 'Halley E. A Synopsis of the Astronomy of Comets. London: John Senex, 1705.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1705-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1759-03-13',
+        datePrecision: 'DAY',
+        reason: 'The comet was first re-sighted by amateur astronomer Johann Georg Palitzsch on 25 December 1758 and reached perihelion on 13 March 1759, within the window computed by Alexis Clairaut (who had refined Halley\'s estimate by accounting for Jupiter and Saturn). The successful prediction of a return decades in advance was hailed as a decisive confirmation of Newtonian celestial mechanics; the comet has since been named for Halley.',
+        source: {
+          externalId: 'src:clairaut-comet-prediction-1759',
+          name: 'Clairaut A. Mémoire sur la comète de 1682. Journal des Sçavans, 1759 (perihelion prediction and Palitzsch/Messier recovery observations).',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1759-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Volta invents the electric battery (1800) ───────────────────────────────
+  {
+    externalId: 'trajectory:volta-voltaic-pile-1800',
+    text: 'Alessandro Volta announced the invention of the electric battery — the "voltaic pile," the first source of steady continuous electric current — in a letter to the Royal Society dated 20 March 1800.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1800-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1800-03-20',
+        datePrecision: 'DAY',
+        reason: 'Writing from Como to Sir Joseph Banks, President of the Royal Society, Volta describes a "pile" of alternating zinc and silver discs separated by brine-soaked cloth that produces a continuous flow of electricity. The letter, dated 20 March 1800, is the first record of an apparatus delivering steady current rather than the momentary discharges of static machines and Leyden jars.',
+        source: {
+          externalId: 'src:volta-letter-banks-1800',
+          name: 'Volta A. On the Electricity excited by the mere Contact of conducting Substances of different kinds. Letter to Sir Joseph Banks, 20 March 1800.',
+          url: 'https://en.wikipedia.org/wiki/Voltaic_pile',
+          publishedAt: '1800-03-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1800-06-26',
+        datePrecision: 'DAY',
+        reason: 'Volta\'s letter was read to the Royal Society on 26 June 1800 and published in the Philosophical Transactions. Within weeks William Nicholson and Anthony Carlisle used a voltaic pile to electrolyse water into hydrogen and oxygen, independently corroborating the device and launching electrochemistry. The pile became the foundational electrical instrument of the nineteenth century; the volt is named for Volta.',
+        source: {
+          externalId: 'src:volta-philosophical-transactions-1800',
+          name: 'Volta A. On the Electricity excited by the mere Contact of conducting Substances of different kinds. Philosophical Transactions of the Royal Society 1800;90:403–431.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1800.0018',
+          publishedAt: '1800-06-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ørsted links electricity and magnetism (1820) ───────────────────────────
+  {
+    externalId: 'trajectory:oersted-electromagnetism-1820',
+    text: 'Hans Christian Ørsted discovered that an electric current deflects a nearby magnetic compass needle, demonstrating that electricity and magnetism are linked, and announced it in a pamphlet on 21 July 1820.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1820-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1820-04-21',
+        datePrecision: 'DAY',
+        reason: 'During a lecture demonstration in Copenhagen on 21 April 1820, Ørsted observed that a magnetised compass needle swung from north when an electric current was switched on in a nearby wire. The effect contradicted the prevailing view that electricity and magnetism were entirely separate forces. Ørsted repeated and documented the experiment before announcing it.',
+        source: {
+          externalId: 'src:oersted-experimenta-1820',
+          name: 'Ørsted H.C. Experimenta circa effectum conflictus electrici in acum magneticam. Copenhagen, 21 July 1820.',
+          url: 'https://en.wikipedia.org/wiki/Hans_Christian_%C3%98rsted',
+          publishedAt: '1820-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1820-09-11',
+        datePrecision: 'DAY',
+        reason: 'Ørsted\'s four-page Latin pamphlet circulated rapidly across Europe. After François Arago demonstrated it to the Académie des Sciences in September 1820, André-Marie Ampère within weeks formulated the mathematical law relating current and magnetic force, and Biot and Savart published their force law the same year. Electromagnetism was established as a unified field of physics; the oersted unit is named for him.',
+        source: {
+          externalId: 'src:ampere-electrodynamics-1820',
+          name: 'Ampère A-M. Mémoire présenté à l\'Académie royale des Sciences, séances of September–October 1820 (on the action of electric currents).',
+          url: 'https://en.wikipedia.org/wiki/Andr%C3%A9-Marie_Amp%C3%A8re',
+          publishedAt: '1820-09-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Foucault pendulum demonstrates Earth's rotation (1851) ──────────────────
+  {
+    externalId: 'trajectory:foucault-pendulum-1851',
+    text: 'Léon Foucault gave the first public demonstration of a pendulum whose plane of swing slowly rotates, providing direct laboratory evidence of the Earth\'s rotation, at the Paris Observatory on 3 February 1851.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1851-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1851-02-03',
+        datePrecision: 'DAY',
+        reason: 'In the Meridian Room of the Paris Observatory, Foucault suspended a pendulum and showed that the plane of its oscillation gradually rotated relative to the floor — a motion explicable only by the rotation of the Earth beneath it. He invited colleagues with a note reading "You are invited to see the Earth turn," providing the first direct, non-astronomical proof of terrestrial rotation.',
+        source: {
+          externalId: 'src:foucault-comptes-rendus-1851',
+          name: 'Foucault L. Démonstration physique du mouvement de rotation de la Terre au moyen du pendule. Comptes Rendus de l\'Académie des Sciences 1851;32:135–138.',
+          url: 'https://en.wikipedia.org/wiki/Foucault_pendulum',
+          publishedAt: '1851-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1851-03-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 March 1851 Foucault staged a grand public demonstration under the dome of the Panthéon in Paris, suspending a 28 kg brass-coated bob on a 67-metre wire before dignitaries including Napoleon III. The experiment was rapidly reproduced in observatories and public halls worldwide, becoming the canonical visible proof of the Earth\'s rotation.',
+        source: {
+          externalId: 'src:foucault-pantheon-1851',
+          name: 'Foucault pendulum demonstration at the Panthéon, Paris, 26 March 1851 (contemporary press accounts).',
+          url: 'https://en.wikipedia.org/wiki/Foucault_pendulum',
+          publishedAt: '1851-03-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Carrington Event: first recorded solar flare (1859) ─────────────────
+  {
+    externalId: 'trajectory:carrington-solar-flare-1859',
+    text: 'Richard Carrington and Richard Hodgson independently observed a brilliant white-light solar flare on 1 September 1859 — the first solar flare ever recorded — which was followed within about 18 hours by the most intense geomagnetic storm in recorded history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1859-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-09-01',
+        datePrecision: 'DAY',
+        reason: 'While projecting the Sun\'s image at his Redhill observatory on the morning of 1 September 1859, Carrington saw two patches of intensely bright white light erupt from a large sunspot group; Richard Hodgson independently witnessed the same flash. Hours later telegraph systems sparked and failed and aurorae were seen as far south as the Caribbean, recording the terrestrial effects of the event.',
+        source: {
+          externalId: 'src:carrington-mnras-1859',
+          name: 'Carrington R.C. Description of a Singular Appearance seen in the Sun on September 1, 1859. Monthly Notices of the Royal Astronomical Society 1859;20:13–15.',
+          url: 'https://en.wikipedia.org/wiki/Carrington_Event',
+          publishedAt: '1859-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Carrington and Hodgson published their observations in the Monthly Notices of the Royal Astronomical Society in November 1859, and Carrington noted the close timing between the solar flare and the great magnetic disturbance recorded at Kew. The event established the causal link between solar activity and geomagnetic storms — the foundation of solar–terrestrial physics and modern space-weather science — and remains the benchmark extreme event.',
+        source: {
+          externalId: 'src:hodgson-mnras-1859',
+          name: 'Hodgson R. On a Curious Appearance seen in the Sun. Monthly Notices of the Royal Astronomical Society 1859;20:15–16.',
+          url: 'https://en.wikipedia.org/wiki/Carrington_Event',
+          publishedAt: '1859-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
