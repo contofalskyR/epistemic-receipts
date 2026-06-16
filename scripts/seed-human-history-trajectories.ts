@@ -20634,6 +20634,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA — additions (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Waterloo — Napoleon's final defeat ────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-waterloo-1815',
+    text: 'Napoleon Bonaparte was decisively defeated at the Battle of Waterloo on 18 June 1815 by the Anglo-allied army under the Duke of Wellington and the Prussian army under Blücher, ending the Napoleonic Wars.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1815-06-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1815-06-18',
+        datePrecision: 'DAY',
+        reason: 'On 18 June 1815, near Waterloo in present-day Belgium, Napoleon\'s Armée du Nord is broken by the combined Anglo-allied and Prussian forces. Wellington composes his official account — the Waterloo Despatch — at Waterloo and Brussels the following day, 19 June 1815, naming the battle and reporting the rout of the French army.',
+        source: {
+          externalId: 'src:wellington-waterloo-despatch-1815',
+          name: 'Wellington A. The Waterloo Despatch, dated Waterloo, 19 June 1815, addressed to Earl Bathurst.',
+          url: 'https://en.wikipedia.org/wiki/Waterloo_Despatch',
+          publishedAt: '1815-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1815-06-22',
+        datePrecision: 'DAY',
+        reason: 'The Waterloo Despatch is published as a London Gazette Extraordinary on 22 June 1815, making the victory officially and publicly known across Britain. Napoleon abdicates for the second time on 22 June 1815 and is subsequently exiled to Saint Helena; the date and outcome are corroborated by French, Prussian, and British participant accounts and never seriously disputed.',
+        source: {
+          externalId: 'src:london-gazette-waterloo-1815',
+          name: 'The London Gazette Extraordinary, 22 June 1815 (publication of Wellington\'s Waterloo Despatch).',
+          url: 'https://www.thegazette.co.uk/London/issue/17028/page/1213',
+          publishedAt: '1815-06-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bessel measures the first stellar parallax (61 Cygni) ───────────────────
+  {
+    externalId: 'trajectory:bessel-stellar-parallax-1838',
+    text: 'Friedrich Bessel announced in 1838 the first reliable measurement of a star\'s annual parallax — about 0.31 arcseconds for 61 Cygni — providing the first direct measurement of the distance to a star beyond the Sun.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1838-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1838-10-23',
+        datePrecision: 'DAY',
+        reason: 'Using the Königsberg heliometer, Friedrich Bessel measures the tiny annual shift in the apparent position of 61 Cygni against background stars and derives a parallax of about 0.314 arcseconds, implying a distance of roughly 10 light-years. He communicates the result in a letter dated 23 October 1838 to John Herschel, published in the Astronomische Nachrichten and the Monthly Notices of the Royal Astronomical Society.',
+        source: {
+          externalId: 'src:bessel-parallax-61cygni-1838',
+          name: 'Bessel F.W. Bestimmung der Entfernung des 61sten Sterns des Schwans. Astronomische Nachrichten, vol. 16, no. 365–366, 1838.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1838AN.....16...65B',
+          publishedAt: '1838-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1841-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Royal Astronomical Society awards Bessel its Gold Medal in 1841 for the parallax determination. The near-simultaneous independent measurements by Friedrich Struve (Vega) and Thomas Henderson (Alpha Centauri) corroborate that stellar parallaxes are measurable, settling the long-open question of stellar distances and providing the first empirical confirmation of the Earth\'s motion through the heliocentric annual shift.',
+        source: {
+          externalId: 'src:ras-gold-medal-bessel-1841',
+          name: 'Address of the President (J.F.W. Herschel) on awarding the Gold Medal of the Royal Astronomical Society to Bessel. Memoirs of the RAS, 1841.',
+          url: 'https://en.wikipedia.org/wiki/61_Cygni',
+          publishedAt: '1841-02-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Alexander Graham Bell — first telephone transmission of speech ──────────
+  {
+    externalId: 'trajectory:bell-telephone-first-call-1876',
+    text: 'Alexander Graham Bell transmitted the first intelligible speech over an electrical wire on 10 March 1876, saying "Mr. Watson, come here, I want to see you," three days after receiving the foundational telephone patent.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1876-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1876-03-07',
+        datePrecision: 'DAY',
+        reason: 'The United States Patent Office grants Alexander Graham Bell patent No. 174,465, "Improvement in Telegraphy," on 7 March 1876, covering the method of transmitting vocal sounds electrically by undulating current.',
+        source: {
+          externalId: 'src:bell-telephone-patent-174465-1876',
+          name: 'Bell A.G. U.S. Patent No. 174,465, "Improvement in Telegraphy," granted 7 March 1876.',
+          url: 'https://patents.google.com/patent/US174465A/en',
+          publishedAt: '1876-03-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1876-03-10',
+        datePrecision: 'DAY',
+        reason: 'Bell\'s laboratory notebook entry for 10 March 1876 records the first successful transmission of intelligible speech: he spoke "Mr. Watson — come here — I want to see you" into the liquid transmitter and Thomas Watson, in an adjoining room, heard and understood the words. The dated notebook is a contemporaneous primary record, later confirmed by Watson\'s own accounts.',
+        source: {
+          externalId: 'src:bell-lab-notebook-1876',
+          name: 'Bell A.G. Laboratory notebook, entry of 10 March 1876 (Alexander Graham Bell Family Papers, Library of Congress).',
+          url: 'https://www.loc.gov/item/magbell.25300201/',
+          publishedAt: '1876-03-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hertz confirms electromagnetic waves predicted by Maxwell ───────────────
+  {
+    externalId: 'trajectory:hertz-electromagnetic-waves-1888',
+    text: 'Heinrich Hertz demonstrated experimentally in 1887–1888 the existence of electromagnetic waves propagating through space, confirming the prediction of Maxwell\'s theory that light and electromagnetic radiation are the same phenomenon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1888-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-02-02',
+        datePrecision: 'DAY',
+        reason: 'At the Karlsruhe Polytechnic, Heinrich Hertz generates electromagnetic waves with a spark-gap oscillator and detects them with a resonant loop across the room, measuring their wavelength, reflection, refraction, and finite propagation speed. His paper "Über elektrodynamische Wellen im Luftraume und deren Reflexion," communicated to the Berlin Academy in early 1888, reports waves behaving exactly as Maxwell\'s equations predict.',
+        source: {
+          externalId: 'src:hertz-elektrodynamische-wellen-1888',
+          name: 'Hertz H. Über elektrodynamische Wellen im Luftraume und deren Reflexion. Annalen der Physik und Chemie, vol. 34, 1888.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.18882710603',
+          publishedAt: '1888-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1893-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hertz\'s experiments are rapidly reproduced across Europe and collected in his 1893 volume Untersuchungen über die Ausbreitung der elektrischen Kraft. The physics community accepts that electromagnetic waves travel at the speed of light, vindicating Maxwell\'s electromagnetic theory of light; the work directly enables Marconi and others to develop wireless telegraphy within the decade.',
+        source: {
+          externalId: 'src:hertz-untersuchungen-1893',
+          name: 'Hertz H. Untersuchungen über die Ausbreitung der elektrischen Kraft. Leipzig: J.A. Barth, 1892 (English: Electric Waves, 1893).',
+          url: 'https://archive.org/details/electricwavesbei00hertrich',
+          publishedAt: '1893-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ronald Ross proves mosquito transmission of malaria ─────────────────────
+  {
+    externalId: 'trajectory:ross-malaria-mosquito-1897',
+    text: 'Ronald Ross demonstrated on 20 August 1897 that the malaria parasite develops within the Anopheles mosquito, establishing that malaria is transmitted to humans by mosquito bites.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1897-08-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1897-08-20',
+        datePrecision: 'DAY',
+        reason: 'On 20 August 1897, in Secunderabad, India, Ronald Ross dissects a mosquito (later identified as an Anopheles) that had fed days earlier on a malaria patient and finds pigmented malaria parasite cysts developing in the wall of its stomach. He records the observation in his notebook — a day he later called "Mosquito Day" — and reports it in the British Medical Journal in December 1897.',
+        source: {
+          externalId: 'src:ross-bmj-mosquito-malaria-1897',
+          name: 'Ross R. On Some Peculiar Pigmented Cells Found in Two Mosquitos Fed on Malarial Blood. British Medical Journal, vol. 2, 18 December 1897.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2408186/',
+          publishedAt: '1897-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1898 Ross works out the complete mosquito-borne life cycle of the parasite in birds (Proteosoma), and the Italian malariologists Giovanni Battista Grassi, Amico Bignami, and Giuseppe Bastianelli demonstrate the full Anopheles-to-human transmission cycle for human malaria. The mosquito theory of malaria becomes settled; Ross is awarded the Nobel Prize in Physiology or Medicine in 1902.',
+        source: {
+          externalId: 'src:ross-nobel-malaria-1902',
+          name: 'The Nobel Prize in Physiology or Medicine 1902 — Ronald Ross, "for his work on malaria." Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1902/ross/facts/',
+          publishedAt: '1902-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
