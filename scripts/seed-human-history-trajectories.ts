@@ -19576,6 +19576,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Luna 3 photographs the far side of the Moon ─────────────────────────────
+  {
+    externalId: 'trajectory:luna-3-far-side-moon-1959',
+    text: 'On October 7, 1959, the Soviet probe Luna 3 photographed the far side of the Moon — a hemisphere never before seen by humans — returning the first images of roughly 70% of the previously unobserved surface.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-10-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-10-07',
+        datePrecision: 'DAY',
+        reason: 'Launched on 4 October 1959, Luna 3 rounded the Moon and, on 7 October, its automatic camera system exposed a series of frames of the far side as the Sun illuminated it. The onboard film was developed in flight and scanned, and the images were transmitted to Earth over the following days. TASS announced the achievement and the first processed photograph was published, revealing a surface with far fewer maria than the near side.',
+        source: {
+          externalId: 'src:tass-luna3-far-side-1959',
+          name: 'TASS / Soviet Academy of Sciences announcement of the first photographs of the far side of the Moon by the Automatic Interplanetary Station (Luna 3), October 1959.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1959-008A',
+          publishedAt: '1959-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-11-06',
+        datePrecision: 'DAY',
+        reason: 'The Soviet Academy of Sciences published the Atlas of the Far Side of the Moon (1960) cataloguing and naming the newly imaged features. The far-side geography was independently corroborated and extended by Zond 3 (1965), the U.S. Lunar Orbiter program (1966–67), and Apollo photography, and the Luna 3 features (e.g. Mare Moscoviense, the crater Tsiolkovskiy) remain in the IAU-approved lunar nomenclature.',
+        source: {
+          externalId: 'src:atlas-far-side-moon-1960',
+          name: 'Barabashov NP, Mikhailov AA, Lipsky YN (eds.). Atlas of the Far Side of the Moon. USSR Academy of Sciences, Moscow, 1960.',
+          url: 'https://en.wikipedia.org/wiki/Luna_3',
+          publishedAt: '1960-11-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Asilomar Conference sets recombinant DNA safety guidelines ──────────────
+  {
+    externalId: 'trajectory:asilomar-recombinant-dna-1975',
+    text: 'At the Asilomar Conference on Recombinant DNA (February 24–27, 1975) in Pacific Grove, California, about 140 scientists agreed on voluntary biosafety guidelines for genetic-engineering experiments, establishing that recombinant DNA research should proceed under graded physical and biological containment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1975-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-02-27',
+        datePrecision: 'DAY',
+        reason: 'Following a self-imposed 1974 moratorium, leading molecular biologists, lawyers, and journalists met at the Asilomar Conference Center and, on the final day, adopted a set of recommendations matching the level of containment to the assessed risk of each experiment and recommending against the riskiest classes. The proceedings were summarized in a statement drafted by the organizing committee (Berg, Baltimore, Brenner, Roblin, Singer).',
+        source: {
+          externalId: 'src:asilomar-summary-statement-1975',
+          name: 'Berg P, Baltimore D, Brenner S, Roblin RO, Singer MF. Summary Statement of the Asilomar Conference on Recombinant DNA Molecules. Proc Natl Acad Sci USA 1975;72(6):1981–1984.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.72.6.1981',
+          publishedAt: '1975-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-06-23',
+        datePrecision: 'DAY',
+        reason: 'The U.S. National Institutes of Health issued its Guidelines for Research Involving Recombinant DNA Molecules on 23 June 1976, codifying the Asilomar containment framework as the binding standard for federally funded research. The episode became the canonical precedent for scientific self-governance of an emerging technology.',
+        source: {
+          externalId: 'src:nih-recombinant-dna-guidelines-1976',
+          name: 'National Institutes of Health. Guidelines for Research Involving Recombinant DNA Molecules. Federal Register 41(131):27902, 7 July 1976 (issued 23 June 1976).',
+          url: 'https://osp.od.nih.gov/policies/biosafety-and-biosecurity-policy/',
+          publishedAt: '1976-06-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Saigon ends the Vietnam War ─────────────────────────────────────
+  {
+    externalId: 'trajectory:fall-of-saigon-1975',
+    text: 'On April 30, 1975, North Vietnamese forces captured Saigon and the South Vietnamese government surrendered unconditionally, ending the Vietnam War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1975-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1975-04-30',
+        datePrecision: 'DAY',
+        reason: 'In the late morning, a People\'s Army of Vietnam tank (No. 843, followed by No. 390) crashed through the gates of the Independence Palace in Saigon. President Dương Văn Minh, in office two days, announced the South\'s unconditional surrender over Saigon Radio. The events were witnessed by foreign correspondents still in the city and followed the U.S. helicopter evacuation (Operation Frequent Wind) of the preceding day.',
+        source: {
+          externalId: 'src:fall-saigon-surrender-1975',
+          name: 'Contemporary press dispatches (UPI, AP) and photographs of PAVN tanks entering the Independence Palace and the surrender broadcast of Dương Văn Minh, 30 April 1975.',
+          url: 'https://en.wikipedia.org/wiki/Fall_of_Saigon',
+          publishedAt: '1975-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-07-02',
+        datePrecision: 'DAY',
+        reason: 'The capture of Saigon (renamed Ho Chi Minh City) and the collapse of the Republic of Vietnam are documented by extensive contemporaneous photography and film, the records of both belligerents, and the formal reunification of Vietnam on 2 July 1976. That the war ended on 30 April 1975 is uncontested in the historical record.',
+        source: {
+          externalId: 'src:vietnam-reunification-1976',
+          name: 'Socialist Republic of Vietnam founded on reunification, 2 July 1976; Karnow S. Vietnam: A History. New York: Viking, 1983 (Ch. on the fall of Saigon).',
+          url: 'https://en.wikipedia.org/wiki/Reunification_Day',
+          publishedAt: '1976-07-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Three Mile Island partial meltdown ──────────────────────────────────────
+  {
+    externalId: 'trajectory:three-mile-island-meltdown-1979',
+    text: 'On March 28, 1979, the Unit 2 reactor at the Three Mile Island nuclear plant near Harrisburg, Pennsylvania, suffered a partial core meltdown — the most serious accident in U.S. commercial nuclear power history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-03-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-03-28',
+        datePrecision: 'DAY',
+        reason: 'At about 4:00 a.m. a stuck-open pressure-relief valve drained coolant from the TMI-2 reactor while operators, misreading the instruments, throttled back emergency cooling. A site emergency was declared and reported to the Nuclear Regulatory Commission the same morning. That a serious loss-of-coolant accident had occurred was recorded immediately, even as its severity was unknown.',
+        source: {
+          externalId: 'src:nrc-tmi-event-1979',
+          name: 'U.S. Nuclear Regulatory Commission. Backgrounder on the Three Mile Island Accident (event log of 28 March 1979).',
+          url: 'https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/3mile-isle.html',
+          publishedAt: '1979-03-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1979-03-30',
+        datePrecision: 'DAY',
+        reason: 'In the days after the accident the extent of core damage and the size of radioactive releases were genuinely uncertain and publicly disputed: utility and some official statements minimized the danger while a hydrogen bubble in the vessel and conflicting radiation readings raised fears of a larger meltdown, prompting Governor Thornburgh\'s advisory evacuation of pregnant women and young children on 30 March.',
+        source: {
+          externalId: 'src:kemeny-commission-1979',
+          name: 'Report of the President\'s Commission on the Accident at Three Mile Island (Kemeny Commission), October 1979.',
+          url: 'https://www.threemileisland.org/downloads/188.pdf',
+          publishedAt: '1979-10-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-07-21',
+        datePrecision: 'DAY',
+        reason: 'A video camera lowered into the reactor vessel in 1982, and the subsequent defueling, revealed that a large cavity had formed and that roughly 45% of the core (about 20 tonnes of fuel) had melted and partly relocated to the lower head — confirming that a substantial partial meltdown had occurred. The extent of core damage and the limited offsite radiation release are now settled in the engineering record.',
+        source: {
+          externalId: 'src:tmi2-core-examination-1982',
+          name: 'Broughton JM et al. "A Scenario Description of the Three Mile Island Unit 2 Accident." Nuclear Technology 1989;87(1):34–53 (reactor vessel inspection findings from 1982 onward).',
+          url: 'https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/3mile-isle.html',
+          publishedAt: '1982-07-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of the Berlin Wall ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:fall-berlin-wall-1989',
+    text: 'On the night of November 9, 1989, East Germany opened the Berlin Wall, allowing free passage between East and West Berlin for the first time since 1961.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1989-11-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1989-11-09',
+        datePrecision: 'DAY',
+        reason: 'At an evening press conference the East German official Günter Schabowski announced new travel rules and, asked when they took effect, said "immediately, without delay." Crowds gathered at the crossing points; shortly before midnight the border guards at Bornholmer Straße opened the gates, and East and West Berliners crossed and climbed onto the Wall. The events were broadcast live worldwide.',
+        source: {
+          externalId: 'src:schabowski-press-conference-1989',
+          name: 'Press conference of Günter Schabowski (SED Politburo) announcing the new GDR travel regulation, East Berlin, 9 November 1989; contemporaneous television footage.',
+          url: 'https://www.chronik-der-mauer.de/en/material/180387/press-conference-with-guenter-schabowski-9-november-1989',
+          publishedAt: '1989-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-10-03',
+        datePrecision: 'DAY',
+        reason: 'The opening of the Wall, the ensuing dismantling of the inner-German border, and the formal reunification of Germany on 3 October 1990 under the Treaty on the Final Settlement with Respect to Germany (the Two-Plus-Four Treaty) place the events of 9 November 1989 beyond dispute. Preserved sections of the Wall and the official GDR border records corroborate the date.',
+        source: {
+          externalId: 'src:german-reunification-1990',
+          name: 'Treaty on the Final Settlement with Respect to Germany (Two-Plus-Four Treaty), signed 12 September 1990; German reunification, 3 October 1990.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_on_the_Final_Settlement_with_Respect_to_Germany',
+          publishedAt: '1990-10-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
