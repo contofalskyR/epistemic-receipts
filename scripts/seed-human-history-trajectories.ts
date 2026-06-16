@@ -6315,6 +6315,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Kyoto Protocol adopted — first binding emissions treaty (Kyoto, Japan) ───
+  {
+    externalId: 'trajectory:kyoto-protocol-1997',
+    text: 'The Kyoto Protocol, the first international treaty setting legally binding greenhouse-gas emission targets for industrialized nations, was adopted at the COP3 conference in Kyoto, Japan, on December 11, 1997.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1997-12-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-12-11',
+        datePrecision: 'DAY',
+        reason: 'After all-night negotiations, delegates to the Third Conference of the Parties (COP3) of the UN Framework Convention on Climate Change adopted the Kyoto Protocol, committing developed (Annex I) countries to cut combined emissions of six greenhouse gases by an average of about 5.2% below 1990 levels over 2008–2012. The adoption was a public act recorded in the conference proceedings.',
+        source: {
+          externalId: 'src:unfccc-kyoto-adoption-1997',
+          name: 'UNFCCC. "Kyoto Protocol to the United Nations Framework Convention on Climate Change," adopted at COP3, Kyoto, 11 December 1997.',
+          url: 'https://unfccc.int/kyoto_protocol',
+          publishedAt: '1997-12-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-02-16',
+        datePrecision: 'DAY',
+        reason: 'The Kyoto Protocol entered into force on 16 February 2005, 90 days after Russia\'s ratification pushed the agreement past the threshold of 55 parties accounting for at least 55% of Annex I 1990 CO2 emissions. Its adoption and binding legal status are an established matter of international law on the UN treaty record, independent of any single state\'s later participation.',
+        source: {
+          externalId: 'src:un-kyoto-entry-into-force-2005',
+          name: 'United Nations Treaty Collection. "Kyoto Protocol to the United Nations Framework Convention on Climate Change" — entry into force 16 February 2005.',
+          url: 'https://treaties.un.org/pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-a&chapter=27',
+          publishedAt: '2005-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── He Jiankui announces first gene-edited babies (Shenzhen / Hong Kong) ─────
+  {
+    externalId: 'trajectory:he-jiankui-gene-edited-babies-2018',
+    text: 'On November 25–28, 2018, Chinese researcher He Jiankui announced the birth of twin girls whose embryos he had edited with CRISPR-Cas9 to disable the CCR5 gene — the first reported human births from heritable genome editing.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-28',
+        datePrecision: 'DAY',
+        reason: 'He Jiankui, of the Southern University of Science and Technology in Shenzhen, released YouTube videos on 25 November 2018 and then presented at the Second International Summit on Human Genome Editing in Hong Kong on 28 November 2018, claiming twin girls (pseudonyms Lulu and Nana) had been born from embryos edited to confer HIV resistance. The summit organizing committee called the work, if confirmed, "deeply disturbing" and "irresponsible," but the claim was now publicly on the scientific record.',
+        source: {
+          externalId: 'src:he-jiankui-summit-statement-2018',
+          name: 'Organizing Committee of the Second International Summit on Human Genome Editing. "Statement on the report of gene-edited babies." 29 November 2018.',
+          url: 'https://www.nationalacademies.org/news/2018/11/statement-by-the-organizing-committee-of-the-second-international-summit-on-human-genome-editing',
+          publishedAt: '2018-11-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'A Guangdong provincial investigation confirmed the births in January 2019, and on 30 December 2019 the Shenzhen Nanshan District People\'s Court convicted He Jiankui of "illegal medical practice," sentencing him to three years in prison and a fine. The official investigation and conviction established that the gene-edited births had in fact occurred, settling the factual claim even as the ethics remained condemned.',
+        source: {
+          externalId: 'src:he-jiankui-conviction-2019',
+          name: 'Xinhua. "Gene-editing baby scientist sentenced to 3 years in prison," reporting the verdict of the Shenzhen Nanshan District People\'s Court, 30 December 2019.',
+          url: 'https://english.news.cn/2019-12/30/c_138666892.htm',
+          publishedAt: '2019-12-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaFold2 solves protein structure prediction (CASP14) ──────────────────
+  {
+    externalId: 'trajectory:alphafold-casp14-2020',
+    text: "DeepMind's AlphaFold2 achieved a median accuracy of about 92.4 GDT across protein targets at the CASP14 assessment, results announced on November 30, 2020 — widely regarded as effectively solving the 50-year-old protein structure prediction problem.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-11-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-11-30',
+        datePrecision: 'DAY',
+        reason: 'In the blind 14th Critical Assessment of protein Structure Prediction (CASP14), AlphaFold2 produced models with a median Global Distance Test score around 92.4 — comparable to experimental accuracy for most targets. CASP organizers and DeepMind announced the result on 30 November 2020, describing the decades-old grand challenge as essentially solved. The performance was measured against experimentally determined structures the predictors had not seen.',
+        source: {
+          externalId: 'src:deepmind-alphafold-casp14-2020',
+          name: 'DeepMind. "AlphaFold: a solution to a 50-year-old grand challenge in biology." 30 November 2020.',
+          url: 'https://deepmind.google/discover/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology/',
+          publishedAt: '2020-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-07-15',
+        datePrecision: 'DAY',
+        reason: 'The method and code were published in a peer-reviewed Nature paper on 15 July 2021, and the AlphaFold Protein Structure Database released predicted structures for the human proteome and, by 2022, over 200 million proteins. The result is uncontested in structural biology and is treated as a settled landmark; the underlying CASP14 benchmark data are openly available for verification.',
+        source: {
+          externalId: 'src:jumper-alphafold-nature-2021',
+          name: 'Jumper J. et al. "Highly accurate protein structure prediction with AlphaFold." Nature 596:583–589, 2021.',
+          url: 'https://www.nature.com/articles/s41586-021-03819-2',
+          publishedAt: '2021-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ChatGPT released to the public ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:chatgpt-release-2022',
+    text: 'OpenAI released ChatGPT, a conversational large-language-model interface, as a free public research preview on November 30, 2022.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-11-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2022-11-30',
+        datePrecision: 'DAY',
+        reason: 'OpenAI announced and opened ChatGPT (built on the GPT-3.5 family) to the public on 30 November 2022, allowing anyone to interact with the model through a web interface at no cost. The release was a public, dated event documented in OpenAI\'s own announcement and immediately used by millions.',
+        source: {
+          externalId: 'src:openai-introducing-chatgpt-2022',
+          name: 'OpenAI. "Introducing ChatGPT." 30 November 2022.',
+          url: 'https://openai.com/index/chatgpt/',
+          publishedAt: '2022-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '2023-02-01',
+        datePrecision: 'DAY',
+        reason: 'By January 2023 ChatGPT was estimated to have reached about 100 million monthly active users roughly two months after launch — at the time the fastest-growing consumer application on record. Its release date and rapid adoption are an established, widely documented fact reported across independent analyses.',
+        source: {
+          externalId: 'src:reuters-chatgpt-100m-2023',
+          name: 'Reuters. "ChatGPT sets record for fastest-growing user base — analyst note," citing UBS estimates of ~100 million monthly active users. 1 February 2023.',
+          url: 'https://www.reuters.com/technology/chatgpt-sets-record-fastest-growing-user-base-analyst-note-2023-02-01/',
+          publishedAt: '2023-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── COVID-19 declared a global health emergency, then ended ─────────────────
+  {
+    externalId: 'trajectory:covid-19-pheic-2020-2023',
+    text: 'The WHO declared the COVID-19 outbreak a Public Health Emergency of International Concern (PHEIC) — its highest level of alarm — on January 30, 2020, and declared that emergency over on May 5, 2023.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-01-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-01-30',
+        datePrecision: 'DAY',
+        reason: 'On the recommendation of the IHR (2005) Emergency Committee, WHO Director-General Tedros Adhanom Ghebreyesus declared the outbreak of the novel coronavirus (2019-nCoV) a Public Health Emergency of International Concern — the highest alarm available under international health law. The determination was a formal, dated institutional act recorded in WHO\'s statement.',
+        source: {
+          externalId: 'src:who-covid-pheic-2020',
+          name: 'WHO. "Statement on the second meeting of the International Health Regulations (2005) Emergency Committee regarding the outbreak of novel coronavirus (2019-nCoV)." 30 January 2020.',
+          url: 'https://www.who.int/news/item/30-01-2020-statement-on-the-second-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-outbreak-of-novel-coronavirus-(2019-ncov)',
+          publishedAt: '2020-01-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-05-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 May 2023, following the fifteenth meeting of the IHR Emergency Committee, the Director-General accepted the recommendation to terminate the PHEIC and declared that COVID-19 was now an established and ongoing health issue rather than a public health emergency of international concern. The emergency status was formally lifted after more than three years.',
+        source: {
+          externalId: 'src:who-covid-pheic-end-2023',
+          name: 'WHO. "Statement on the fifteenth meeting of the IHR (2005) Emergency Committee regarding the COVID-19 pandemic." 5 May 2023.',
+          url: 'https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic',
+          publishedAt: '2023-05-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-05-05',
+        datePrecision: 'DAY',
+        reason: 'The end of the emergency phase was immediately operative: WHO and member states transitioned COVID-19 to long-term disease management. That the PHEIC was declared on 30 January 2020 and terminated on 5 May 2023 is settled on the WHO record and is not in dispute.',
+        source: {
+          externalId: 'src:who-covid-transition-2023',
+          name: 'WHO. "WHO COVID-19 dashboard" and the strategic preparedness and response transition to long-term management, from 5 May 2023.',
+          url: 'https://www.who.int/europe/emergencies/situations/covid-19',
+          publishedAt: '2023-05-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
