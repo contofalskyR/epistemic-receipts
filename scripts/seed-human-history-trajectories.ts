@@ -11524,6 +11524,223 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — Scientific Revolution, Reformation, New World
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Harvey and the circulation of the blood ─────────────────────────────────
+  {
+    externalId: 'trajectory:harvey-circulation-blood-1616',
+    text: 'William Harvey first publicly expounded that the heart pumps blood through the body in a continuous circuit in his Lumleian lectures begun April 16, 1616, overturning the Galenic doctrine that the liver continuously manufactured blood that the tissues then consumed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1616-04-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1616-04-16',
+        datePrecision: 'DAY',
+        reason: 'In his Lumleian lectures at the College of Physicians (beginning 16 April 1616; surviving in the manuscript Praelectiones anatomiae universalis), Harvey first states the case that the blood moves in a circle driven by the heart. He sets out the full quantitative and ligature argument in Exercitatio Anatomica de Motu Cordis et Sanguinis in Animalibus (Frankfurt, 1628), showing the heart pumps far more blood per hour than the body could possibly generate from food.',
+        source: {
+          externalId: 'src:harvey-de-motu-cordis-1628',
+          name: 'Harvey W. Exercitatio Anatomica de Motu Cordis et Sanguinis in Animalibus. Frankfurt: Wilhelm Fitzer, 1628.',
+          url: 'https://en.wikipedia.org/wiki/Exercitatio_Anatomica_de_Motu_Cordis_et_Sanguinis_in_Animalibus',
+          publishedAt: '1628-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1649-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Galenist physicians, above all Jean Riolan the Younger of Paris, reject circulation as overturning anatomical doctrine settled for fourteen centuries. Harvey could demonstrate that blood left the arteries and returned by the veins but could not show how it crossed between them, and critics seized on this missing link. Harvey defends and extends his theory in Exercitationes duae anatomicae de circulatione sanguinis (1649), addressed to Riolan.',
+        source: {
+          externalId: 'src:harvey-circulatione-riolan-1649',
+          name: 'Harvey W. Exercitationes duae anatomicae de circulatione sanguinis ad Joannem Riolanum filium. Cambridge/Rotterdam, 1649. (Harvey\'s reply to Riolan\'s objections)',
+          url: 'https://journals.physiology.org/doi/full/10.1152/japplphysiol.00216.2013',
+          publishedAt: '1649-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1661-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marcello Malpighi, using the microscope on frog lung, observes the capillary network directly linking arteries to veins (De pulmonibus observationes anatomicae, 1661), supplying the connection Harvey could only infer and completing the closed circuit. With the last gap closed, the circulation of the blood becomes settled physiology.',
+        source: {
+          externalId: 'src:malpighi-de-pulmonibus-1661',
+          name: 'Malpighi M. De pulmonibus observationes anatomicae, 1661 (discovery of the pulmonary capillaries); reviewed in West JB, Am J Physiol Lung Cell Mol Physiol, 2013.',
+          url: 'https://journals.physiology.org/doi/full/10.1152/ajplung.00016.2013',
+          publishedAt: '1661-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Horrocks observes the transit of Venus — first prediction fulfilled ──────
+  {
+    externalId: 'trajectory:transit-venus-horrocks-1639',
+    text: 'Jeremiah Horrocks, having corrected Kepler\'s tables that predicted only a near-miss, observed the transit of Venus across the Sun on November 24, 1639 (Old Style; December 4, New Style) from Much Hoole, Lancashire — the first transit of Venus ever predicted and observed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1639-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1639-11-24',
+        datePrecision: 'DAY',
+        reason: 'Kepler\'s Rudolphine Tables had Venus passing just above the Sun in 1639. Re-working the figures, Horrocks predicts a true transit and prepares to observe it. On the afternoon of 24 November 1639 (Old Style) he projects the Sun\'s image through a telescope and sees Venus\'s black disc cross it; his friend William Crabtree, alerted by letter, independently observes it from Manchester. Only the two of them saw it.',
+        source: {
+          externalId: 'src:horrocks-venus-in-sole-visa-1662',
+          name: 'Horrocks J. Venus in Sole Visa (written 1640; published posthumously by Johannes Hevelius, Danzig, 1662).',
+          url: 'https://www.lindahall.org/about/news/scientist-of-the-day/william-crabtree-jeremiah-horrocks/',
+          publishedAt: '1662-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1716-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Horrocks\'s observation used the transit to refine Venus\'s apparent diameter and the scale of the solar system, demonstrating that Keplerian tables could be corrected to predict such rare alignments. Edmond Halley generalized the method in 1716, proposing that timing transits of Venus from widely separated points would measure the astronomical unit — establishing transit observation as settled astronomical practice for the 1761 and 1769 transits.',
+        source: {
+          externalId: 'src:halley-transit-venus-method-1716',
+          name: 'Halley E. Methodus singularis qua Solis parallaxis... ope Veneris infra Solem conspiciendae. Philosophical Transactions, 1716.',
+          url: 'https://en.wikipedia.org/wiki/1639_transit_of_Venus',
+          publishedAt: '1716-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Great Fire of London — arson plot blamed, then ruled accidental ──────────
+  {
+    externalId: 'trajectory:great-fire-london-1666',
+    text: 'The Great Fire of London, which burned from September 2 to 6, 1666, was widely blamed on a deliberate Catholic and foreign plot — a claim under which Robert Hubert was hanged on October 27, 1666 — before being established as an accidental fire that began at a bakery in Pudding Lane.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1666-09-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1666-10-27',
+        datePrecision: 'DAY',
+        reason: 'The fire destroys roughly 13,000 houses and most of the medieval City. Amid wartime anti-Catholic and anti-French panic, the blaze is attributed to deliberate arson. Robert Hubert, a French watchmaker from Rouen, confesses to having started it as part of a plot and is convicted on his confession alone and hanged at Tyburn on 27 October 1666.',
+        source: {
+          externalId: 'src:pepys-diary-fire-1666',
+          name: 'Pepys S. The Diary of Samuel Pepys, entries of September–October 1666 (eyewitness account of the fire and the Hubert case).',
+          url: 'https://www.pepysdiary.com/encyclopedia/10872/',
+          publishedAt: '1666-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1667-01-22',
+        datePrecision: 'DAY',
+        reason: 'Even the judges doubted Hubert: he was a feeble, confused man who had arrived in England two days after the fire began and described a bakery with a window it did not have. A parliamentary committee that investigated the causes reported in January 1667 that it found no firm evidence of a conspiracy, concluding the fire appeared to be the result of accident and a dry, windy season.',
+        source: {
+          externalId: 'src:robert-hubert-wikipedia',
+          name: 'Robert Hubert — Wikipedia (summary of the trial, the judges\' doubts, and the 1667 parliamentary committee\'s inability to find evidence of a plot).',
+          url: 'https://en.wikipedia.org/wiki/Robert_Hubert',
+          publishedAt: '1667-01-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'PUBLIC',
+        occurredAt: '1830-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The plot theory persisted in public memory: an inscription added to the Monument to the Great Fire in 1681 blamed "the treachery and malice of the Popish faction." In 1830, following Catholic emancipation, that inscription was finally chiselled out, marking the official and public abandonment of the deliberate-plot account in favour of the accidental origin at Pudding Lane.',
+        source: {
+          externalId: 'src:monument-great-fire',
+          name: 'Monument to the Great Fire of London — Wikipedia (1681 anti-Catholic inscription added; erased 1830).',
+          url: 'https://en.wikipedia.org/wiki/Monument_to_the_Great_Fire_of_London',
+          publishedAt: '1830-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Salem witch trials — convictions repudiated and reversed ─────────────────
+  {
+    externalId: 'trajectory:salem-witch-trials-1692',
+    text: 'A special Massachusetts Court of Oyer and Terminer convicted and executed twenty people as witches at Salem in 1692 — beginning with the hanging of Bridget Bishop on June 10, 1692 — verdicts the colony\'s own government later repudiated and formally reversed.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1692-06-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1692-06-10',
+        datePrecision: 'DAY',
+        reason: 'Governor William Phips establishes the Court of Oyer and Terminer on 27 May 1692 to try the accused. It convicts Bridget Bishop, who is hanged on Gallows Hill on 10 June 1692 — the first of nineteen hanged (with Giles Corey pressed to death) by 22 September 1692 — largely on "spectral evidence," testimony that the accused\'s apparition had tormented witnesses.',
+        source: {
+          externalId: 'src:swp-bridget-bishop-1692',
+          name: 'Salem Witchcraft Papers No. 013: Bridget Bishop Executed, June 10, 1692 (University of Virginia, transcribed court records).',
+          url: 'https://salem.lib.virginia.edu/n13.html',
+          publishedAt: '1692-06-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1692-10-29',
+        datePrecision: 'DAY',
+        reason: 'Leading ministers, including Increase Mather in Cases of Conscience Concerning Evil Spirits, attack the use of spectral evidence as unsafe and admissible against the innocent. Governor Phips forbids further reliance on spectral evidence and dissolves the Court of Oyer and Terminer on 29 October 1692; the replacement Superior Court of Judicature acquits almost all remaining defendants.',
+        source: {
+          externalId: 'src:salem-chronology-1692',
+          name: 'Salem Witch Trials Chronology (Salem Witch Museum) — Phips forbids spectral evidence and dissolves the Court of Oyer and Terminer, October 1692.',
+          url: 'https://salemwitchmuseum.com/salem-witch-trials-chronology/',
+          publishedAt: '1692-10-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1711-10-17',
+        datePrecision: 'DAY',
+        reason: 'After a 1697 day of public fasting for the trials (at which judge Samuel Sewall stood in church to confess his guilt), the Massachusetts General Court reverses the attainders of the condemned on 17 October 1711 and awards £578 12s in restitution to survivors and the families of the executed — an official repudiation of the convictions.',
+        source: {
+          externalId: 'src:swp-reversal-attainder-1711',
+          name: 'Salem Witchcraft Papers No. 173: Reversal of Attainder and Restitution (1710–1750), University of Virginia (transcribed legislative acts).',
+          url: 'https://salem.lib.virginia.edu/n173.html',
+          publishedAt: '1711-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
