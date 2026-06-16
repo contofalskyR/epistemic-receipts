@@ -7120,6 +7120,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Morse telegraph — "What hath God wrought" ────────────────────────────────
+  {
+    externalId: 'trajectory:morse-telegraph-1844',
+    text: 'Samuel Morse transmitted the message "What hath God wrought" by electromagnetic telegraph from the Capitol in Washington to Baltimore on 24 May 1844, opening the first commercial telegraph line in the United States.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1844-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1844-05-24',
+        datePrecision: 'DAY',
+        reason: 'From the Supreme Court chamber in the U.S. Capitol, Morse sends the biblical phrase "What hath God wrought" (Numbers 23:23) over a 40-mile experimental line, funded by a $30,000 Congressional appropriation, to his assistant Alfred Vail at the B&O Railroad depot in Baltimore, who transmits it back. The demonstration is reported immediately in the press and the paper tape is preserved.',
+        source: {
+          externalId: 'src:morse-telegraph-message-1844',
+          name: 'Morse telegraph message, "What hath God wrought," 24 May 1844. Library of Congress, Samuel F. B. Morse Papers.',
+          url: 'https://www.loc.gov/item/mmorse000107/',
+          publishedAt: '1844-05-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1861-10-24',
+        datePrecision: 'DAY',
+        reason: 'Electromagnetic telegraphy is established beyond dispute as telegraph networks spread across the United States and Europe within a decade. On 24 October 1861 the first transcontinental telegraph line is completed at Salt Lake City, linking the Atlantic and Pacific coasts and rendering the Pony Express obsolete.',
+        source: {
+          externalId: 'src:transcontinental-telegraph-1861',
+          name: 'Transcontinental telegraph completion, 24 October 1861. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/topic/Western-Union',
+          publishedAt: '1861-10-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Maxwell's electromagnetic theory of light ────────────────────────────────
+  {
+    externalId: 'trajectory:maxwell-electromagnetic-theory-1864',
+    text: 'James Clerk Maxwell\'s "A Dynamical Theory of the Electromagnetic Field," read to the Royal Society on 8 December 1864, derived that electromagnetic disturbances propagate through space at the speed of light, implying that light itself is an electromagnetic wave.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1864-12-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1864-12-08',
+        datePrecision: 'DAY',
+        reason: 'In a paper read before the Royal Society of London, Maxwell sets out a set of equations for the electromagnetic field and shows that they admit wave solutions travelling at a velocity, computed from purely electrical and magnetic measurements, that matches the measured speed of light. He concludes "light consists in the transverse undulations of the same medium which is the cause of electric and magnetic phenomena."',
+        source: {
+          externalId: 'src:maxwell-dynamical-theory-1865',
+          name: 'Maxwell JC. A Dynamical Theory of the Electromagnetic Field. Philosophical Transactions of the Royal Society of London 1865;155:459–512 (read 8 December 1864).',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1865.0008',
+          publishedAt: '1865-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Heinrich Hertz experimentally generates and detects electromagnetic waves in his Karlsruhe laboratory (1886–1888), measuring their reflection, refraction, and finite propagation speed and confirming they behave exactly as Maxwell predicted. The demonstration settles the electromagnetic theory of light and lays the foundation for radio.',
+        source: {
+          externalId: 'src:hertz-electromagnetic-waves-1888',
+          name: 'Hertz H. Über elektrodynamische Wellen im Luftraume und deren Reflexion. Annalen der Physik 1888;270:609–623.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.18882700802',
+          publishedAt: '1888-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lister's antiseptic surgery ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:lister-antiseptic-surgery-1867',
+    text: 'Joseph Lister introduced antiseptic surgery using carbolic acid, publishing his results in The Lancet in 1867, which sharply reduced wound infection and mortality by applying the germ theory of disease to surgical practice.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1867-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-03-16',
+        datePrecision: 'DAY',
+        reason: 'Drawing on Pasteur\'s work on microbial putrefaction, Lister reports in The Lancet a series of compound-fracture cases at the Glasgow Royal Infirmary treated with carbolic acid (phenol) dressings, achieving healing without the suppuration and sepsis that ordinarily killed such patients. His address "On the Antiseptic Principle in the Practice of Surgery" follows in the British Medical Journal that September.',
+        source: {
+          externalId: 'src:lister-antiseptic-lancet-1867',
+          name: 'Lister J. On a New Method of Treating Compound Fracture, Abscess, etc., with Observations on the Conditions of Suppuration. The Lancet 1867;89:326–329 (16 March 1867).',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(02)51192-2/fulltext',
+          publishedAt: '1867-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After initial scepticism, antiseptic and then aseptic technique is adopted across European and American surgery as the germ theory is confirmed by Pasteur and Koch. By the end of the 1870s Lister\'s principle is internationally established, and dramatic falls in post-operative mortality vindicate the method that becomes the foundation of modern surgery.',
+        source: {
+          externalId: 'src:lister-antisepsis-acceptance',
+          name: 'Joseph Lister and the antisepsis revolution. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/biography/Joseph-Lister-Baron-Lister-of-Lyme-Regis',
+          publishedAt: '1879-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pasteur's Pouilly-le-Fort anthrax vaccine trial ──────────────────────────
+  {
+    externalId: 'trajectory:pasteur-pouilly-le-fort-1881',
+    text: 'Louis Pasteur\'s public anthrax-vaccine trial at Pouilly-le-Fort concluded on 2 June 1881: every vaccinated sheep survived a lethal challenge with anthrax bacteria while the unvaccinated controls died, demonstrating that an attenuated culture confers immunity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1881-06-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1881-06-02',
+        datePrecision: 'DAY',
+        reason: 'In a trial staged before veterinarians, farmers, and journalists at a farm near Melun, Pasteur (with Chamberland and Roux) vaccinated 25 sheep beginning 5 May 1881 and on 31 May injected all 50 animals with virulent anthrax. At the public reckoning on 2 June the 24 surviving vaccinated sheep stood healthy while the unvaccinated animals lay dead or dying. The result is telegraphed across Europe and reported in the press within days.',
+        source: {
+          externalId: 'src:pasteur-pouilly-le-fort-1881',
+          name: 'Pasteur L, Chamberland C, Roux É. Compte rendu sommaire des expériences faites à Pouilly-le-Fort. Comptes rendus de l\'Académie des sciences 1881;92:1378–1383.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k3043f/f1378',
+          publishedAt: '1881-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1882-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Pouilly-le-Fort result is rapidly reproduced as veterinarians across France and abroad adopt the anthrax vaccine, vaccinating hundreds of thousands of sheep and cattle with sharply reduced losses. The principle of immunization by attenuated pathogens — which Pasteur named "vaccine" in honour of Jenner — becomes a cornerstone of immunology.',
+        source: {
+          externalId: 'src:pasteur-anthrax-vaccine-adoption',
+          name: 'Pasteur and the development of the anthrax vaccine. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/biography/Louis-Pasteur',
+          publishedAt: '1882-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Röntgen discovers X-rays ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:roentgen-x-rays-1895',
+    text: 'Wilhelm Conrad Röntgen discovered X-rays on 8 November 1895 and announced them in "Über eine neue Art von Strahlen," submitted to the Würzburg Physical-Medical Society on 28 December 1895, revealing a penetrating radiation that could image the bones of the living hand.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1895-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-12-28',
+        datePrecision: 'DAY',
+        reason: 'Working with a Crookes tube on 8 November 1895, Röntgen noticed a barium-platinocyanide screen fluorescing despite the tube being shielded, and over the following weeks characterized an unknown penetrating radiation he called "X-rays," producing a famous radiograph of his wife\'s hand. His preliminary communication is submitted to the Würzburg Physical-Medical Society on 28 December 1895 and printed at once.',
+        source: {
+          externalId: 'src:roentgen-neue-art-strahlen-1895',
+          name: 'Röntgen WC. Über eine neue Art von Strahlen. Sitzungsberichte der Physikalisch-Medizinischen Gesellschaft zu Würzburg, 28 December 1895.',
+          url: 'https://www.deutsches-museum.de/en/exhibitions/discoveries/roentgen-x-rays',
+          publishedAt: '1895-12-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-12-10',
+        datePrecision: 'DAY',
+        reason: 'X-rays are reproduced and applied to medical imaging worldwide within months of the announcement. On 10 December 1901 Röntgen receives the first Nobel Prize in Physics "in recognition of the extraordinary services he has rendered by the discovery of the remarkable rays subsequently named after him," confirming the discovery as a settled fact of physics.',
+        source: {
+          externalId: 'src:roentgen-nobel-1901',
+          name: 'The Nobel Prize in Physics 1901 — Wilhelm Conrad Röntgen. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1901/rontgen/facts/',
+          publishedAt: '1901-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
