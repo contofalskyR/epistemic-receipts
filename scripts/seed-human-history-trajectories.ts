@@ -4464,6 +4464,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Apollo 11 — first crewed Moon landing ───────────────────────────────────
+  {
+    externalId: 'trajectory:apollo-11-moon-landing-1969',
+    text: 'Apollo 11 astronauts Neil Armstrong and Buzz Aldrin landed the Lunar Module Eagle on the Moon and walked on its surface on July 20–21, 1969.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1969-07-20',
+        datePrecision: 'DAY',
+        reason: 'The Lunar Module Eagle touches down in the Sea of Tranquility at 20:17 UTC ("The Eagle has landed"). Armstrong steps onto the surface at 02:56 UTC on July 21 ("one small step"). The descent and moonwalk are broadcast live by slow-scan television to an estimated 600 million viewers worldwide and tracked in real time by NASA and independent stations including Australia\'s Honeysuckle Creek and Parkes.',
+        source: {
+          externalId: 'src:apollo-11-air-to-ground-transcript',
+          name: 'NASA. Apollo 11 Technical Air-to-Ground Voice Transcription (GOSS NET 1). Manned Spacecraft Center, July 1969.',
+          url: 'https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/a11transcript_tec.html',
+          publishedAt: '1969-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The mission returns 21.5 kg of lunar samples, splashing down on July 24, 1969. The samples are distributed to laboratories worldwide and their distinctive composition (anhydrous, reduced, with unique isotopic and exposure-age signatures) is independently confirmed by hundreds of investigators. The retroreflector left by the crew is used by observatories on multiple continents for lunar laser ranging, providing ongoing physical corroboration of the landing site.',
+        source: {
+          externalId: 'src:apollo-11-prelim-science-report',
+          name: 'NASA. Apollo 11 Preliminary Science Report (SP-214). U.S. Government Printing Office, 1969.',
+          url: 'https://www.lpi.usra.edu/lunar/documents/NASA%20SP-214.pdf',
+          publishedAt: '1969-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-07-01',
+        datePrecision: 'MONTH',
+        reason: 'NASA\'s Lunar Reconnaissance Orbiter photographs the Apollo 11 landing site, resolving the descent stage of the Eagle and the astronauts\' surface tracks and deployed instruments. The imagery, independently echoed by Japan\'s SELENE and India\'s Chandrayaan missions for other Apollo sites, definitively rebuts the persistent "Moon-landing hoax" conspiracy and reaffirms the landing as settled fact.',
+        source: {
+          externalId: 'src:lro-apollo-sites-2009',
+          name: 'NASA / Arizona State University. LRO Camera images of the Apollo landing sites. Released July 2009.',
+          url: 'https://www.nasa.gov/image-article/apollo-11-landing-site/',
+          publishedAt: '2009-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Brown v. Board of Education — reversal of "separate but equal" ───────────
+  {
+    externalId: 'trajectory:brown-v-board-1954',
+    text: 'In Brown v. Board of Education (May 17, 1954) the U.S. Supreme Court ruled that racial segregation of public schools is unconstitutional, overturning the "separate but equal" doctrine of Plessy v. Ferguson (1896).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1954-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1896-05-18',
+        datePrecision: 'DAY',
+        reason: 'In Plessy v. Ferguson the Supreme Court holds 7–1 that state-mandated racial segregation in public facilities is constitutional under a "separate but equal" doctrine. For 58 years this is settled constitutional law, undergirding de jure segregation across the American South.',
+        source: {
+          externalId: 'src:plessy-v-ferguson-1896',
+          name: 'Plessy v. Ferguson, 163 U.S. 537 (1896). Majority opinion by Justice Brown.',
+          url: 'https://supreme.justia.com/cases/federal/us/163/537/',
+          publishedAt: '1896-05-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1954-05-17',
+        datePrecision: 'DAY',
+        reason: 'A unanimous Supreme Court holds in Brown v. Board of Education that "separate educational facilities are inherently unequal" and that segregated public schools violate the Equal Protection Clause of the 14th Amendment. Chief Justice Warren\'s opinion explicitly repudiates the reasoning of Plessy as applied to public education, reversing the constitutional status of segregation.',
+        source: {
+          externalId: 'src:brown-v-board-opinion-1954',
+          name: 'Brown v. Board of Education of Topeka, 347 U.S. 483 (1954). Opinion by Chief Justice Warren.',
+          url: 'https://supreme.justia.com/cases/federal/us/347/483/',
+          publishedAt: '1954-05-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1955-05-31',
+        datePrecision: 'DAY',
+        reason: 'In Brown II the Court orders desegregation "with all deliberate speed," and subsequent enforcement — federal troops at Little Rock (1957), Cooper v. Aaron (1958), and the Civil Rights Act of 1964 — makes the unconstitutionality of de jure school segregation operative and settled. No serious legal authority defends "separate but equal" thereafter.',
+        source: {
+          externalId: 'src:brown-ii-1955',
+          name: 'Brown v. Board of Education of Topeka, 349 U.S. 294 (1955) ("Brown II").',
+          url: 'https://supreme.justia.com/cases/federal/us/349/294/',
+          publishedAt: '1955-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ARPANET — first host-to-host message ────────────────────────────────────
+  {
+    externalId: 'trajectory:arpanet-first-message-1969',
+    text: 'The first host-to-host message on the ARPANET was transmitted from UCLA to the Stanford Research Institute on October 29, 1969 — the network crashed after the characters "L" and "O".',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1969-10-29',
+        datePrecision: 'DAY',
+        reason: 'Charley Kline, a UCLA programmer in Leonard Kleinrock\'s lab, attempts to log in to SRI\'s host over the new packet-switched ARPANET. The system transmits "L" and "O" before crashing on the "G" of "LOGIN". Kline records the event in the lab\'s IMP (Interface Message Processor) log book with the entry timestamped "22:30 — talked to SRI host to host".',
+        source: {
+          externalId: 'src:ucla-imp-log-1969',
+          name: 'UCLA IMP Log book, entry 29 Oct 1969, 22:30 (Kleinrock Center for Internet Studies, original held at UCLA).',
+          url: 'https://www.lk.cs.ucla.edu/internet_first_words.html',
+          publishedAt: '1969-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-12-01',
+        datePrecision: 'MONTH',
+        reason: 'The technical history of the ARPANET\'s deployment — the four-node network (UCLA, SRI, UC Santa Barbara, Utah) operational by December 1969 — is documented by BBN, the contractor that built the IMPs, and corroborated by the surviving log book, RFCs, and participant accounts. The first-message event is uncontested in the engineering record.',
+        source: {
+          externalId: 'src:heart-arpanet-completion-report-1981',
+          name: 'Heart F. et al. A History of the ARPANET: The First Decade (BBN Report No. 4799). Bolt Beranek and Newman, 1981.',
+          url: 'https://walden-family.com/bbn/arpanet-completion-report.pdf',
+          publishedAt: '1981-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gulf of Tonkin — reported attack later determined not to have occurred ───
+  {
+    externalId: 'trajectory:gulf-of-tonkin-incident-1964',
+    text: 'A second North Vietnamese attack on U.S. destroyers in the Gulf of Tonkin on August 4, 1964 — reported at the time and used to justify the Gulf of Tonkin Resolution — almost certainly never occurred.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-08-04',
+        datePrecision: 'DAY',
+        reason: 'The destroyers USS Maddox and USS Turner Joy report being attacked by North Vietnamese torpedo boats in international waters. President Johnson announces the attack on national television and orders retaliatory airstrikes. The reported incident is treated as established fact and Congress passes the Gulf of Tonkin Resolution on August 7, authorizing escalation in Vietnam.',
+        source: {
+          externalId: 'src:johnson-tonkin-address-1964',
+          name: 'President Lyndon B. Johnson. Radio and Television Report to the American People Following Renewed Aggression in the Gulf of Tonkin, August 4, 1964.',
+          url: 'https://www.presidency.ucsb.edu/documents/radio-and-television-report-the-american-people-following-renewed-aggression-the-gulf',
+          publishedAt: '1964-08-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1971-06-13',
+        datePrecision: 'DAY',
+        reason: 'The Pentagon Papers, published by The New York Times beginning June 13, 1971, reveal that internal government assessments doubted the August 4 attack and that the administration had prepared the resolution in advance. Contemporaneous cables from Captain John Herrick aboard the Maddox — "Review of action makes many reported contacts and torpedoes fired appear doubtful" — become public, opening the second incident to serious dispute.',
+        source: {
+          externalId: 'src:pentagon-papers-tonkin-1971',
+          name: 'The Pentagon Papers (Gravel Edition), Vol. 3, Ch. 2: "The Gulf of Tonkin." Beacon Press, 1971.',
+          url: 'https://www.mtholyoke.edu/acad/intrel/pentagon3/pent4.html',
+          publishedAt: '1971-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-11-30',
+        datePrecision: 'DAY',
+        reason: 'A declassified National Security Agency historical study by Robert Hanyok concludes that no attack occurred on August 4, 1964, and that signals-intelligence reports were mistranslated and selectively presented to support the conclusion that an attack had taken place. The official intelligence record now holds that the second Gulf of Tonkin incident did not happen, reversing the original determination.',
+        source: {
+          externalId: 'src:nsa-hanyok-tonkin-2005',
+          name: 'Hanyok RJ. "Skunks, Bogies, Silent Hounds, and the Flying Fish: The Gulf of Tonkin Mystery, 2–4 August 1964." Cryptologic Quarterly (NSA), declassified 2005.',
+          url: 'https://www.nsa.gov/portals/75/documents/news-features/declassified-documents/gulf-of-tonkin/articles/rel1_skunks_bogies.pdf',
+          publishedAt: '2005-11-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nirenberg–Matthaei — first codon of the genetic code cracked ────────────
+  {
+    externalId: 'trajectory:nirenberg-genetic-code-1961',
+    text: 'On May 27, 1961, Marshall Nirenberg and Heinrich Matthaei showed that the RNA codon UUU specifies the amino acid phenylalanine — the first word of the genetic code to be deciphered.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-05-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-05-27',
+        datePrecision: 'DAY',
+        reason: 'In a cell-free system at the NIH, Heinrich Matthaei runs experiment 27Q with synthetic poly-uridylic acid (poly-U) and finds it directs the synthesis of polyphenylalanine. The result, recorded in the lab notebook in the early hours of May 27, 1961, demonstrates that a defined nucleotide sequence codes for a specific amino acid.',
+        source: {
+          externalId: 'src:nirenberg-matthaei-pnas-1961',
+          name: 'Nirenberg MW, Matthaei JH. "The dependence of cell-free protein synthesis in E. coli upon naturally occurring or synthetic polyribonucleotides." PNAS 47(10):1588–1602, 1961.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.47.10.1588',
+          publishedAt: '1961-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Nirenberg announces the poly-U result at the International Congress of Biochemistry in Moscow in August 1961, electrifying the field. Over the next five years his lab and Har Gobind Khorana\'s independently assign all 64 codons; the complete codon table is presented at Cold Spring Harbor in 1966. The genetic code is settled, and Nirenberg, Khorana, and Holley share the 1968 Nobel Prize in Physiology or Medicine.',
+        source: {
+          externalId: 'src:nirenberg-code-cshl-1966',
+          name: 'Nirenberg M. et al. "The RNA Code and Protein Synthesis." Cold Spring Harbor Symposia on Quantitative Biology, Vol. 31, 1966.',
+          url: 'https://symposium.cshlp.org/content/31/11.short',
+          publishedAt: '1966-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
