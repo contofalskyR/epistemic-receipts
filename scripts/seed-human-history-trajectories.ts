@@ -15160,6 +15160,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Renaissance, Reformation, New World, Ottoman, Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Bosworth Field — death of Richard III, end of the Plantagenets ──
+  {
+    externalId: 'trajectory:battle-of-bosworth-field-1485',
+    text: 'On 22 August 1485 King Richard III was killed at the Battle of Bosworth Field by the forces of Henry Tudor, ending the Plantagenet dynasty and the Wars of the Roses and founding the Tudor dynasty as Henry VII.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1485-08-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1485-08-22',
+        datePrecision: 'DAY',
+        reason: 'Richard III is cut down in a cavalry charge against Henry Tudor near Market Bosworth, Leicestershire; he is the last English king to die in battle. The near-contemporary Crowland Chronicle Continuations and the official acts of the new Tudor regime record the date and outcome within months.',
+        source: {
+          externalId: 'src:crowland-chronicle-bosworth',
+          name: 'The Crowland Chronicle Continuations, 1459–1486 (near-contemporary account of Bosworth, written c. 1486).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Bosworth_Field',
+          publishedAt: '1486-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-10-01',
+        datePrecision: 'MONTH',
+        reason: 'A multi-year battlefield survey led by the Battlefields Trust and Glenn Foard relocates the true field of Bosworth roughly two miles southwest of the traditional site, recovering the largest scatter of early-modern lead round-shot from any medieval European battlefield, physically confirming the engagement and refining its location.',
+        source: {
+          externalId: 'src:bosworth-battlefield-survey-2009',
+          name: 'Foard G., Curry A. Bosworth 1485: A Battlefield Rediscovered. Oxbow Books, 2013 (reporting the 2005–2009 survey).',
+          url: 'https://www.bosworthbattlefield.org.uk/the-battle/where-was-the-battle/',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-12-02',
+        datePrecision: 'DAY',
+        reason: 'A skeleton excavated in 2012 beneath a Leicester car park on the site of Greyfriars friary is identified as Richard III; mitochondrial-DNA, genealogical, radiocarbon and osteological analysis published in Nature Communications confirms the identity "beyond reasonable doubt." The battle wounds on the skull match the chronicle accounts of his death.',
+        source: {
+          externalId: 'src:king-nature-comms-richard-iii-2014',
+          name: 'King TE et al. Identification of the remains of King Richard III. Nature Communications 2014;5:5631.',
+          url: 'https://www.nature.com/articles/ncomms6631',
+          publishedAt: '2014-12-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Khanwa — Babur consolidates Mughal rule over the Rajputs ────────
+  {
+    externalId: 'trajectory:battle-of-khanwa-1527',
+    text: 'On 16 March 1527 Babur defeated the Rajput confederacy under Rana Sanga of Mewar at the Battle of Khanwa, near Agra, securing Mughal control over north India after the conquest at Panipat the previous year.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1527-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1527-03-16',
+        datePrecision: 'DAY',
+        reason: 'Babur, deploying matchlock gunners and field artillery behind a barricade of carts as at Panipat, breaks the Rajput cavalry charge at Khanwa. Babur records the battle, his tactics, and his vow to renounce wine before it in his own memoir, the Bāburnāma — a contemporary first-person primary source.',
+        source: {
+          externalId: 'src:baburnama-khanwa',
+          name: 'Bābur. Bāburnāma (memoirs), account of the Battle of Khanwa, 1527. (contemporary, trans. Wheeler Thackston 1996)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Khanwa',
+          publishedAt: '1530-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Abu\'l-Fazl\'s Akbarnāma and subsequent Mughal chronicles independently corroborate the date and outcome. Modern historians treat Khanwa, even more than Panipat, as the battle that secured the Mughal Empire in India; the date and result are settled.',
+        source: {
+          externalId: 'src:abulfazl-akbarnama-khanwa',
+          name: 'Abu\'l-Fazl. Akbarnāma (c. 1590), corroborating the Mughal victory at Khanwa.',
+          url: 'https://www.britannica.com/event/Battle-of-Khanua',
+          publishedAt: '1590-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sack of Rome — mutinous Imperial army storms Rome, end of the High Renaissance ──
+  {
+    externalId: 'trajectory:sack-of-rome-1527',
+    text: 'On 6 May 1527 the mutinous, unpaid army of Holy Roman Emperor Charles V stormed and sacked Rome, trapping Pope Clement VII in the Castel Sant\'Angelo and marking the symbolic end of the High Renaissance.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1527-05-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1527-05-06',
+        datePrecision: 'DAY',
+        reason: 'Imperial Landsknechts and Spanish troops breach the walls at dawn; the commander Charles de Bourbon is killed in the assault and the leaderless army pillages the city for weeks. The goldsmith Benvenuto Cellini, present in the Castel Sant\'Angelo, describes the defence and sack in his autobiography.',
+        source: {
+          externalId: 'src:cellini-autobiography-sack-rome',
+          name: 'Benvenuto Cellini. Vita (autobiography), eyewitness account of the defence of Castel Sant\'Angelo during the Sack of Rome, 1527.',
+          url: 'https://en.wikipedia.org/wiki/Sack_of_Rome_(1527)',
+          publishedAt: '1563-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1537-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Luigi Guicciardini\'s contemporary history Il sacco di Roma, papal and Imperial diplomatic correspondence, and the Treaty of Barcelona (1529) that followed all converge on the date and events. The sack\'s date, perpetrators, and consequences for Clement VII and Italian politics are settled.',
+        source: {
+          externalId: 'src:guicciardini-sacco-di-roma',
+          name: 'Luigi Guicciardini. Il sacco di Roma (The Sack of Rome), c. 1537. (contemporary narrative history)',
+          url: 'https://www.britannica.com/event/Sack-of-Rome-1527',
+          publishedAt: '1537-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Suleiman the Magnificent at Szigetvár — concealed for 48 days ─────
+  {
+    externalId: 'trajectory:suleiman-death-szigetvar-1566',
+    text: 'Sultan Suleiman the Magnificent died in his tent on the night of 6/7 September 1566 during the siege of Szigetvár in Hungary; his death was concealed from the army for some seven weeks to preserve morale until his successor Selim II was secured.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1566-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1566-09-07',
+        datePrecision: 'DAY',
+        reason: 'Suleiman dies of natural causes in his tent days before the fortress of Szigetvár falls. The Grand Vizier Sokollu Mehmed Pasha hides the death — even from the army — having the sultan\'s body propped up and dispatches forged in his name, until Selim II can reach the capital. The concealment and the date are recorded in Ottoman court chronicles.',
+        source: {
+          externalId: 'src:selaniki-suleiman-death',
+          name: 'Ottoman court chronicles (Selânikî Mustafa Efendi; later Peçevi) recording the death of Suleiman at Szigetvár and its concealment, 1566.',
+          url: 'https://en.wikipedia.org/wiki/Suleiman_the_Magnificent',
+          publishedAt: '1600-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1600-01-01',
+        datePrecision: 'YEAR',
+        reason: 'His body was returned to Constantinople and interred at the Süleymaniye Mosque, while his heart and internal organs were buried where he died; a memorial türbe, mosque, and dervish lodge (the town of Turbék) grew up on the spot. The death, date, and concealment are settled across Ottoman and European sources.',
+        source: {
+          externalId: 'src:suleiman-turbek-history',
+          name: 'Historical record of the Turbék türbe complex built c. 1575 over the burial site of Suleiman\'s organs near Szigetvár.',
+          url: 'https://www.medieval.eu/tomb-of-suleiman-the-magnificent-in-szigetvar/',
+          publishedAt: '1600-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-12-09',
+        datePrecision: 'DAY',
+        reason: 'Archaeologists led by Norbert Pap of the University of Pécs announce the identification at Szigetvár-Turbék (vineyard hill) of the long-lost Ottoman memorial complex marking the place of Suleiman\'s death — confirmed by geophysical survey and excavation matching a 1664 map — physically corroborating the historical record.',
+        source: {
+          externalId: 'src:pap-suleiman-tomb-turbek-2015',
+          name: 'Pap N et al. Finding the tomb of Suleiman the Magnificent in Szigetvár, Hungary. Archaeology Magazine / Univ. of Pécs, December 2015.',
+          url: 'https://archaeology.org/news/2015/12/09/151209-hungary-suleiman-tomb/',
+          publishedAt: '2015-12-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Defeat of the Spanish Armada — Battle of Gravelines ───────────────────────
+  {
+    externalId: 'trajectory:spanish-armada-gravelines-1588',
+    text: 'On 8 August 1588 (New Style) an English fleet defeated the Spanish Armada at the Battle of Gravelines off the Flemish coast, breaking Philip II\'s invasion attempt against Elizabethan England; the scattered Armada was then wrecked by storms on the voyage home around Scotland and Ireland.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1588-08-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1588-08-08',
+        datePrecision: 'DAY',
+        reason: 'After fireships scatter the anchored Armada off Calais, the English fleet under Lord Howard and Francis Drake engages the Spanish at close range off Gravelines. The events are documented in the war diary of the Spanish commander, the Duke of Medina Sidonia, and in English state papers and dispatches written within days.',
+        source: {
+          externalId: 'src:medina-sidonia-diary-armada',
+          name: 'Diary of Alonso Pérez de Guzmán, Duke of Medina Sidonia, commander of the Spanish Armada, 1588 (contemporary); with English Calendar of State Papers.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Gravelines',
+          publishedAt: '1588-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Spanish and English archival records, casualty and ship-loss accounts, and the commemorative "Armada Portrait" of Elizabeth I converge on the date, the English victory at Gravelines, and the catastrophic storm losses on the return voyage; the campaign\'s outcome is settled history.',
+        source: {
+          externalId: 'src:laughton-defeat-armada',
+          name: 'Laughton JK (ed.). State Papers Relating to the Defeat of the Spanish Armada, Anno 1588. Navy Records Society, 1894.',
+          url: 'https://www.britannica.com/topic/Spanish-Armada',
+          publishedAt: '1894-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-06-27',
+        datePrecision: 'DAY',
+        reason: 'Belgian diver Robert Sténuit locates the wreck of the Armada galleass Girona, lost in October 1588 at Lacada Point off County Antrim, recovering nearly 12,000 artefacts (gold and silver coins, jewellery, ordnance) now displayed at the Ulster Museum — physical confirmation of the Armada\'s fate on the return route.',
+        source: {
+          externalId: 'src:stenuit-girona-wreck-1967',
+          name: 'Sténuit R. Treasures of the Armada, 1972, on the 1967 discovery of the galleass Girona off Antrim.',
+          url: 'https://en.wikipedia.org/wiki/Girona_(ship)',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
