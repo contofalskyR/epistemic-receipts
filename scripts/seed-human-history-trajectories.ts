@@ -7777,6 +7777,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): Internet, genomics, climate, 9/11, COVID, AI
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SARS-CoV-2 genome first made public (Zhang Yongzhen, 11 Jan 2020) ───────
+  {
+    externalId: 'trajectory:sars-cov-2-genome-published-2020',
+    text: 'The first complete genome sequence of SARS-CoV-2 (isolate Wuhan-Hu-1) was released publicly on virological.org on January 11, 2020, sequenced by a team led by Zhang Yongzhen of Fudan University with collaborators including Edward Holmes — enabling diagnostic tests and vaccine design within days.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-11',
+        datePrecision: 'DAY',
+        reason: 'After Chinese authorities reported a cluster of pneumonia of unknown cause in Wuhan in late December 2019, Zhang Yongzhen\'s laboratory sequenced the causative novel coronavirus from a patient sample. On 11 January 2020 the ~29,900-nucleotide genome (isolate Wuhan-Hu-1) was posted openly on virological.org and deposited in GenBank as accession MN908947, making the full sequence freely available worldwide. The release was a dated, public scientific act; within 48 hours it was used to design the first PCR diagnostic protocols and candidate vaccine sequences.',
+        source: {
+          externalId: 'src:virological-novel-coronavirus-genome-2020',
+          name: 'Holmes EC, Zhang Y-Z, et al. "Novel 2019 coronavirus genome." Virological.org, 11 January 2020 (GenBank MN908947).',
+          url: 'https://virological.org/t/novel-2019-coronavirus-genome/319',
+          publishedAt: '2020-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-02-03',
+        datePrecision: 'DAY',
+        reason: 'The sequencing and identification of the new betacoronavirus were published in a peer-reviewed Nature paper (Wu et al., 3 February 2020), and the genome was independently confirmed by laboratories worldwide and matched to the spreading respiratory disease. The Wuhan-Hu-1 sequence became the universal reference for SARS-CoV-2 genomics, underpinning the mRNA vaccines and global variant surveillance; its accuracy is uncontested and openly verifiable in public databases.',
+        source: {
+          externalId: 'src:wu-new-coronavirus-nature-2020',
+          name: 'Wu F. et al. "A new coronavirus associated with human respiratory disease in China." Nature 579:265–269, 2020.',
+          url: 'https://www.nature.com/articles/s41586-020-2008-3',
+          publishedAt: '2020-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Iraq WMD case reversed by the Duelfer Report ────────────────────────────
+  {
+    externalId: 'trajectory:iraq-wmd-reversed-2003-2004',
+    text: 'The official U.S. claim — argued by Secretary of State Colin Powell to the UN Security Council on February 5, 2003 — that Iraq possessed active weapons-of-mass-destruction stockpiles and programs was reversed by the Iraq Survey Group\'s Comprehensive (Duelfer) Report, released October 6, 2004, which found no such stockpiles.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-02-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-02-05',
+        datePrecision: 'DAY',
+        reason: 'In a televised presentation to the UN Security Council on 5 February 2003, U.S. Secretary of State Colin Powell laid out intelligence — including satellite imagery, intercepts, and the claim of mobile biological-weapons labs — asserting that Iraq retained chemical and biological weapons and was reconstituting its nuclear program. The U.S. and UK governments treated Iraqi WMD possession as established fact and used it as a principal justification for the invasion that began on 20 March 2003.',
+        source: {
+          externalId: 'src:powell-un-iraq-wmd-2003',
+          name: 'Powell C. Remarks to the United Nations Security Council, 5 February 2003. U.S. Department of State archive.',
+          url: 'https://2001-2009.state.gov/secretary/former/powell/remarks/2003/17300.htm',
+          publishedAt: '2003-02-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-06',
+        datePrecision: 'DAY',
+        reason: 'The Iraq Survey Group, a U.S.-led team of roughly 1,400 inspectors, searched Iraq after the invasion. Its Comprehensive Report by Special Advisor Charles Duelfer, finalized 30 September and publicly released 6 October 2004, concluded that Iraq had no stockpiles of chemical, biological, or nuclear weapons and that its programs had largely been destroyed or decayed after the 1991 Gulf War. The finding directly contradicted the prewar intelligence case; the central claim of Iraqi WMD possession is now regarded as false, and the underlying intelligence was the subject of formal U.S. and UK inquiries.',
+        source: {
+          externalId: 'src:duelfer-report-isg-2004',
+          name: 'Duelfer C. Comprehensive Report of the Special Advisor to the DCI on Iraq\'s WMD (Iraq Survey Group), 30 September 2004.',
+          url: 'https://www.govinfo.gov/app/details/GPO-DUELFERREPORT',
+          publishedAt: '2004-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IPCC: human-caused warming declared "unequivocal" (AR4, 2007) ───────────
+  {
+    externalId: 'trajectory:ipcc-warming-unequivocal-2007',
+    text: 'The scientific finding that global warming is real and primarily caused by human greenhouse-gas emissions was declared "unequivocal" and "very likely" (>90%) anthropogenic by the IPCC Fourth Assessment Report, released in Paris on February 2, 2007.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The IPCC First Assessment Report (1990) confirmed that greenhouse gases were increasing and that this would warm the planet, but stated that the observed warming was broadly consistent with natural variability and that unambiguous detection of a human-caused signal was not yet possible. Attribution of warming to human activity remained scientifically contested through the 1990s.',
+        source: {
+          externalId: 'src:ipcc-far-1990',
+          name: 'IPCC. First Assessment Report, Working Group I (Climate Change: The IPCC Scientific Assessment), 1990.',
+          url: 'https://www.ipcc.ch/report/ar1/wg1/',
+          publishedAt: '1990-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-02-02',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Fourth Assessment Report Working Group I Summary for Policymakers, approved by governments and scientists in Paris and released on 2 February 2007, opened with the statement that "warming of the climate system is unequivocal" and concluded that most of the observed increase in global average temperatures since the mid-20th century was "very likely" (greater than 90% probability) due to the observed increase in anthropogenic greenhouse-gas concentrations. This marked the consolidation of expert consensus on human-caused warming.',
+        source: {
+          externalId: 'src:ipcc-ar4-wg1-spm-2007',
+          name: 'IPCC. Fourth Assessment Report, WG1 Summary for Policymakers, 2 February 2007.',
+          url: 'https://www.ipcc.ch/report/ar4/wg1/',
+          publishedAt: '2007-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-09-27',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Fifth Assessment Report WG1 Summary for Policymakers (27 September 2013) strengthened the conclusion, stating it is "extremely likely" (95–100% probability) that human influence has been the dominant cause of the observed warming since the mid-20th century. The finding has been repeatedly reaffirmed (AR6, 2021, called human influence "unequivocal") and is treated as settled across the climate-science community.',
+        source: {
+          externalId: 'src:ipcc-ar5-wg1-spm-2013',
+          name: 'IPCC. Fifth Assessment Report, WG1 Summary for Policymakers, 27 September 2013.',
+          url: 'https://www.ipcc.ch/report/ar5/wg1/',
+          publishedAt: '2013-09-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Deep learning breakthrough: AlexNet wins ImageNet (2012) ─────────────────
+  {
+    externalId: 'trajectory:alexnet-imagenet-deep-learning-2012',
+    text: 'Deep convolutional neural networks were shown to dramatically outperform prior computer-vision methods when AlexNet (Krizhevsky, Sutskever & Hinton) won the ImageNet ILSVRC-2012 competition with a top-5 error of 15.3%, versus about 26.2% for the next-best entry.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-09-30',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-12-03',
+        datePrecision: 'DAY',
+        reason: 'In the 2012 ImageNet Large Scale Visual Recognition Challenge, a deep convolutional neural network trained on GPUs by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton of the University of Toronto achieved a top-5 classification error of 15.3% on roughly 1.2 million images across 1,000 categories — far ahead of the ~26.2% of the runner-up using traditional feature-engineering methods. The result was published as "ImageNet Classification with Deep Convolutional Neural Networks" at the NeurIPS (NIPS) 2012 conference in December 2012, documenting the margin and method.',
+        source: {
+          externalId: 'src:krizhevsky-alexnet-nips-2012',
+          name: 'Krizhevsky A, Sutskever I, Hinton GE. "ImageNet Classification with Deep Convolutional Neural Networks." NIPS 2012.',
+          url: 'https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html',
+          publishedAt: '2012-12-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-12-10',
+        datePrecision: 'DAY',
+        reason: 'Within three years deep convolutional networks dominated every major computer-vision benchmark, and in December 2015 the ResNet architecture (He et al., Microsoft Research) won ILSVRC-2015 with a 3.57% top-5 error — surpassing estimated human-level performance on the task. The superiority of deep learning for large-scale image recognition is uncontested and the ImageNet results are openly reproducible, making AlexNet\'s 2012 win the recognized inflection point of the modern deep-learning era.',
+        source: {
+          externalId: 'src:he-resnet-2015',
+          name: 'He K, Zhang X, Ren S, Sun J. "Deep Residual Learning for Image Recognition." arXiv:1512.03385, 10 December 2015.',
+          url: 'https://arxiv.org/abs/1512.03385',
+          publishedAt: '2015-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First crop genome: draft rice (Oryza sativa) sequence (2002) ─────────────
+  {
+    externalId: 'trajectory:rice-genome-draft-2002',
+    text: 'The first draft genome sequence of a crop plant — rice (Oryza sativa ssp. indica) — was published by the Beijing Genomics Institute (Yu et al., Science) on April 5, 2002, alongside a japonica draft from Syngenta in the same issue.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-04-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 April 2002 Science published two draft rice genomes: an indica subspecies draft led by Jun Yu and colleagues at the Beijing Genomics Institute, and a japonica draft from Syngenta\'s Torrey Mesa Research Institute. Rice — the staple food of more than half the world\'s population and the first crop, cereal, and monocot to be sequenced — provided a reference genome of roughly 420–470 Mb. The drafts were whole-genome-shotgun assemblies covering most of the gene-containing regions.',
+        source: {
+          externalId: 'src:yu-rice-genome-indica-2002',
+          name: 'Yu J. et al. "A Draft Sequence of the Rice Genome (Oryza sativa L. ssp. indica)." Science 296:79–92, 5 April 2002.',
+          url: 'https://www.science.org/doi/10.1126/science.1068037',
+          publishedAt: '2002-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-08-11',
+        datePrecision: 'DAY',
+        reason: 'The International Rice Genome Sequencing Project published a finished, map-based, high-quality reference sequence of the japonica rice genome in Nature on 11 August 2005, covering about 95% of the genome with high accuracy. This consolidated rice as the model crop genome; the sequence is openly available and has anchored two decades of plant genomics and crop improvement, making the draft and finished assemblies an uncontested foundation of the field.',
+        source: {
+          externalId: 'src:irgsp-rice-genome-nature-2005',
+          name: 'International Rice Genome Sequencing Project. "The map-based sequence of the rice genome." Nature 436:793–800, 11 August 2005.',
+          url: 'https://www.nature.com/articles/nature03895',
+          publishedAt: '2005-08-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
