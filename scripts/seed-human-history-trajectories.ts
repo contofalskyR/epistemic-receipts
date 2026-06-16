@@ -8151,6 +8151,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Tours / Poitiers — Umayyad advance halted ─────────────────────
+  {
+    externalId: 'trajectory:battle-of-tours-732',
+    text: 'A Frankish army under Charles Martel defeated an invading Umayyad force near Tours/Poitiers in October 732 CE, and the Umayyad commander Abd al-Rahman al-Ghafiqi was killed in the battle.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0732-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0732-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Mozarabic Chronicle of 754 (Continuatio Hispana), written within a generation of the event by a Christian author in al-Andalus, records that the Umayyad governor Abd al-Rahman, advancing toward Tours, met the Frankish leader Charles in a prolonged clash in which Abd al-Rahman was slain and his army broken. It is the earliest and closest surviving account of the engagement.',
+        source: {
+          externalId: 'src:mozarabic-chronicle-754-tours',
+          name: 'Chronicle of 754 (Continuatio Hispana / Mozarabic Chronicle), §§79–80, account of the death of Abd al-Rahman al-Ghafiqi and the Frankish victory. (c. 754 CE)',
+          url: 'https://en.wikipedia.org/wiki/Chronicle_of_754',
+          publishedAt: '0754-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1776-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle entered the canonical narrative of European history through later Frankish sources (the continuations of Fredegar) and Edward Gibbon, who in The Decline and Fall of the Roman Empire cast Tours as the decisive check that saved Christian Europe from Islamic conquest. The occurrence of the battle and the death of Abd al-Rahman were treated as settled fact.',
+        source: {
+          externalId: 'src:gibbon-decline-fall-tours',
+          name: 'Gibbon E. The History of the Decline and Fall of the Roman Empire, vol. V, ch. 52, on the battle between Charles Martel and the Saracens. London, 1776–1789.',
+          url: 'https://www.gutenberg.org/ebooks/25717',
+          publishedAt: '1776-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historians sharply revise the significance and precise date of the battle — many argue the Umayyad force was a raiding expedition rather than a campaign of conquest, and some place the encounter in 733 rather than 732 — but the core fact remains settled: a Frankish army under Charles Martel defeated the Umayyad force and Abd al-Rahman al-Ghafiqi died. Only the grand "saved Europe" interpretation is contested, not the event.',
+        source: {
+          externalId: 'src:britannica-battle-tours',
+          name: 'Battle of Tours. Encyclopædia Britannica (scholarly synthesis of the event, dating, and historiographical debate).',
+          url: 'https://www.britannica.com/event/Battle-of-Tours-732',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Oaths of Strasbourg — earliest Romance vernacular text ──────────────────
+  {
+    externalId: 'trajectory:oaths-of-strasbourg-842',
+    text: 'On 14 February 842, Louis the German and Charles the Bald swore mutual oaths of alliance at Strasbourg, each in the other army\'s vernacular, and the text was recorded verbatim by the eyewitness Nithard — preserving the earliest surviving connected text in a Romance vernacular (Old French).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '0842-02-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0842-02-14',
+        datePrecision: 'DAY',
+        reason: 'Nithard, a grandson of Charlemagne and a participant in the events, records in his Historiae (Book III) the oaths sworn by the two brothers against Lothair I. He reproduces the actual words: Louis the German swears in the Romance tongue so Charles\'s troops can understand, and Charles in the Germanic tongue, with each army responding in its own language. The verbatim Romance text is the document\'s defining feature.',
+        source: {
+          externalId: 'src:nithard-historiae-strasbourg',
+          name: 'Nithard. Historiae (De dissensionibus filiorum Ludovici Pii), Book III.5, recording the Oaths of Strasbourg of 14 February 842 verbatim. (c. 843 CE)',
+          url: 'https://www.hs-augsburg.de/~harsch/Chronologia/Lspost09/Nithardus/nit_in00.html',
+          publishedAt: '0843-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1837-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Philologists establish the Strasbourg Oaths as the oldest surviving connected text in a Gallo-Romance vernacular and one of the earliest in Old High German, making the document a foundational dated landmark in the history of the French language. The single surviving manuscript of Nithard (BnF lat. 9768, copied c. 1000) is the textual witness, and the 14 February 842 date is treated as settled.',
+        source: {
+          externalId: 'src:britannica-strasbourg-oaths',
+          name: 'Oaths of Strasbourg (Serments de Strasbourg). Encyclopædia Britannica / scholarly philological consensus on the earliest Romance text.',
+          url: 'https://www.britannica.com/topic/Strasbourg-Oaths',
+          publishedAt: '1837-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Walk to Canossa — Henry IV's penance before Gregory VII ─────────────────
+  {
+    externalId: 'trajectory:walk-to-canossa-1077',
+    text: 'King Henry IV of Germany stood as a penitent outside the castle of Canossa for three days and was absolved of his excommunication by Pope Gregory VII on 28 January 1077, a defining episode of the Investiture Controversy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1077-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1077-01-28',
+        datePrecision: 'DAY',
+        reason: 'Pope Gregory VII himself, in a letter to the German princes preserved in his Register, describes how Henry IV came to Canossa, stood barefoot before the gate in penitential garb for three days, and was finally received and absolved. The episode is independently recorded by the contemporary chroniclers Lambert of Hersfeld and Berthold of Reichenau.',
+        source: {
+          externalId: 'src:gregory-vii-register-canossa',
+          name: 'Gregory VII. Register IV.12, letter to the German princes describing Henry IV\'s penance and absolution at Canossa, January 1077. (1077)',
+          url: 'https://en.wikipedia.org/wiki/Road_to_Canossa',
+          publishedAt: '1077-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The convergence of Gregory VII\'s own account with the independent chronicles of Lambert of Hersfeld and Berthold establishes the penance at Canossa as a securely dated event. Historians of the Investiture Controversy treat the three-day penance and the 28 January 1077 absolution as settled, even as they debate its political meaning ("Gang nach Canossa" as a symbol of secular submission to papal authority).',
+        source: {
+          externalId: 'src:britannica-canossa',
+          name: 'Humiliation at Canossa. Encyclopædia Britannica (scholarly synthesis of the sources and dating of the 1077 penance).',
+          url: 'https://www.britannica.com/event/Humiliation-at-Canossa',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Byzantine recovery of Constantinople — restoration of the empire ────────
+  {
+    externalId: 'trajectory:byzantine-recovery-constantinople-1261',
+    text: 'On 25 July 1261, troops of the Empire of Nicaea under the general Alexios Strategopoulos recaptured Constantinople from the Latin Empire, ending the Latin occupation begun in 1204 and restoring Byzantine rule under Michael VIII Palaiologos.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1261-07-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1261-07-25',
+        datePrecision: 'DAY',
+        reason: 'George Akropolites, grand logothete and contemporary official of Michael VIII, records in his History how Strategopoulos, sent on a reconnaissance with a small force, entered the lightly defended city by night and seized it as the Latin emperor Baldwin II fled. Michael VIII entered the city and was acclaimed shortly afterward, with a formal coronation in Hagia Sophia on 15 August 1261.',
+        source: {
+          externalId: 'src:akropolites-history-1261',
+          name: 'George Akropolites. History, §§85–88, eyewitness-contemporary account of the recovery of Constantinople in 1261. (c. 1267)',
+          url: 'https://en.wikipedia.org/wiki/Reconquest_of_Constantinople',
+          publishedAt: '1267-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The accounts of Akropolites and the later George Pachymeres agree on the bloodless night capture of 25 July 1261 and Michael VIII\'s restoration of the Byzantine Empire after 57 years of Latin rule. The date and the event are settled in Byzantine scholarship as the founding moment of the restored Palaiologan empire.',
+        source: {
+          externalId: 'src:britannica-michael-viii',
+          name: 'Michael VIII Palaeologus. Encyclopædia Britannica (scholarly synthesis of the 1261 recovery of Constantinople).',
+          url: 'https://www.britannica.com/biography/Michael-VIII-Palaeologus',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Yamen — final fall of the Song dynasty ────────────────────────
+  {
+    externalId: 'trajectory:battle-of-yamen-1279',
+    text: 'At the naval Battle of Yamen on 19 March 1279, the Mongol Yuan fleet destroyed the last Song resistance; the chancellor Lu Xiufu leapt into the sea carrying the child Emperor Zhao Bing, ending the Song dynasty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1279-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1279-03-19',
+        datePrecision: 'DAY',
+        reason: 'The final destruction of the Song fleet off Yamen in the Pearl River Delta, and the drowning of the eight-year-old last emperor by the loyalist chancellor Lu Xiufu, were recorded in the official court histories compiled from Song and Yuan archival records — the History of Song (Song Shi) and History of Yuan (Yuan Shi). The defeat extinguished the Southern Song and completed the Mongol conquest of China.',
+        source: {
+          externalId: 'src:song-shi-yamen',
+          name: 'History of Song (宋史), biography of Lu Xiufu and the basic annals, recording the defeat at Yamen and the death of Emperor Bing in 1279. (compiled 1343–1345 from Song court records)',
+          url: 'https://ctext.org/wiki.pl?if=gb&res=257876',
+          publishedAt: '1345-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The convergence of the Song Shi and Yuan Shi accounts, together with the writings of Song loyalists such as the captured statesman Wen Tianxiang, establishes the Battle of Yamen and the end of the Song dynasty in 1279 as settled fact in Chinese historiography. The date corresponds to the 6th day of the 2nd lunar month of the 2nd year of the Xiangxing era.',
+        source: {
+          externalId: 'src:britannica-song-dynasty-end',
+          name: 'Song dynasty / Battle of Yamen. Encyclopædia Britannica (scholarly synthesis of the Mongol conquest and the fall of the Southern Song in 1279).',
+          url: 'https://www.britannica.com/topic/Song-dynasty',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
