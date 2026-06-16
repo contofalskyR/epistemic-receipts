@@ -9603,6 +9603,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE): Arab scholars, Byzantine, Song China
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Al-Bīrūnī & Abū al-Wafāʾ longitude by simultaneous eclipse, 997 ─────────
+  {
+    externalId: 'trajectory:al-biruni-longitude-eclipse-997',
+    text: 'On 24 May 997, al-Bīrūnī at Kath in Khwarezm and Abū al-Wafāʾ al-Būzjānī in Baghdad observed the same lunar eclipse by prior arrangement; from the difference in the local time of the eclipse they computed the difference in longitude between the two cities.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0997-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0997-05-24',
+        datePrecision: 'DAY',
+        reason: 'Al-Bīrūnī recorded the coordinated observation in his Taḥdīd nihāyāt al-amākin (Determination of the Coordinates of Cities): he timed the lunar eclipse at Kath while Abū al-Wafāʾ, by agreement, timed the same eclipse at Baghdad. The interval between the two local times of a single celestial event gave the longitude difference — one of the very few antique applications of the only theoretically sound method then known.',
+        source: {
+          externalId: 'src:biruni-tahdid-eclipse-997',
+          name: 'Abū al-Rayḥān al-Bīrūnī. Taḥdīd nihāyāt al-amākin li-taṣḥīḥ masāfāt al-masākin, account of the lunar eclipse of 997 observed simultaneously at Kath and Baghdad. (c. 1025)',
+          url: 'https://mathshistory.st-andrews.ac.uk/Biographies/Al-Biruni/',
+          publishedAt: '1025-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The eclipse is independently fixed by modern lunar-eclipse canons to 24 May 997, and al-Bīrūnī\'s simultaneous-observation method is the recognized antique precursor of longitude determination. Historians of Islamic astronomy treat the 997 Kath–Baghdad observation and its date as settled, and Arabic eclipse timings of this kind are now used to constrain the Earth\'s rotation (ΔT).',
+        source: {
+          externalId: 'src:muslimheritage-arabic-eclipses',
+          name: 'Said SS, Stephenson FR. Arabic Eclipse Records and the Earth\'s Rotation (Muslim Heritage synthesis of medieval Arabic eclipse observations, including al-Bīrūnī\'s 997 longitude determination).',
+          url: 'https://muslimheritage.com/article/arabic-eclipse-records-bring-light-scientific-analysis-earths-rotation',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Chanyuan — Song–Liao peace ────────────────────────────────────
+  {
+    externalId: 'trajectory:treaty-of-chanyuan-1005',
+    text: 'In January 1005 the Northern Song and the Khitan Liao concluded the Treaty of Chanyuan (Shanyuan), under which the Song paid an annual tribute of silver and silk and the two empires recognized one another as diplomatic equals, inaugurating roughly a century of peace.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1005-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1005-01-01',
+        datePrecision: 'MONTH',
+        reason: 'After the Liao army was halted before Chanzhou (Chanyuan) and Emperor Zhenzong personally took the field, envoys negotiated terms over several days in mid-January 1005: an annual Song payment of 100,000 taels of silver and 200,000 bolts of silk, the Yellow River frontier fixed, and the rulers addressing each other as kin. The terms were entered into the Song court\'s Veritable Records and preserved in Li Tao\'s Extended Continuation of the Comprehensive Mirror.',
+        source: {
+          externalId: 'src:litao-changbian-chanyuan',
+          name: 'Li Tao. Xu Zizhi Tongjian Changbian (Extended Continuation to the Comprehensive Mirror for Aid in Government), record of the Chanyuan covenant of 1004/1005, drawn from the Veritable Records of Emperor Zhenzong. (12th century)',
+          url: 'https://en.wikipedia.org/wiki/Chanyuan_Treaty',
+          publishedAt: '1183-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The convergence of the Song Shi and Liao Shi official histories with Li Tao\'s reconstruction establishes the Chanyuan covenant and its terms as settled fact. The "Chanyuan system" of negotiated coexistence held until the Song–Jin Alliance Conducted at Sea in the 1120s, and the treaty is a standard reference point in the historiography of Song foreign relations.',
+        source: {
+          externalId: 'src:cambridge-chanyuan-paradigm',
+          name: 'The Fragility of Peace: Song China\'s Northwestern Frontier and Erosion of the Chanyuan Paradigm. Journal of Chinese History (Cambridge University Press), scholarly synthesis of the 1005 treaty and its century-long settlement.',
+          url: 'https://www.cambridge.org/core/journals/journal-of-chinese-history/article/fragility-of-peace-song-chinas-northwestern-frontier-and-erosion-of-the-chanyuan-paradigm-in-the-mideleventh-century/AF2F19A32A23ED0F304C3DE814851A3F',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Clermont — Urban II proclaims the First Crusade ──────────────
+  {
+    externalId: 'trajectory:council-of-clermont-1095',
+    text: 'At the Council of Clermont on 27 November 1095, Pope Urban II preached an open-air sermon calling Western Christians to take up arms, aid the Eastern Christians, and recover Jerusalem — the public proclamation that launched the First Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1095-11-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1095-11-27',
+        datePrecision: 'DAY',
+        reason: 'On the final day of the council Urban II addressed a great crowd outside Clermont, urging armed pilgrimage to Jerusalem and offering remission of sins; the assembly answered "Deus vult." Fulcher of Chartres, who was present, recorded the sermon in his Historia Hierosolymitana within a few years, and the crowd\'s response and the taking of the cross are described by multiple attendees.',
+        source: {
+          externalId: 'src:fulcher-clermont-1095',
+          name: 'Fulcher of Chartres. Historia Hierosolymitana (Gesta Francorum Iherusalem peregrinantium), Book I, account of Urban II\'s sermon at Clermont, by an eyewitness. (c. 1101–1106)',
+          url: 'https://sourcebooks.fordham.edu/source/urban2-5vers.asp',
+          publishedAt: '1106-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Five independent near-contemporary accounts — Fulcher of Chartres, Robert the Monk, Baldric of Dol, Guibert of Nogent, and the anonymous Gesta Francorum tradition — converge on the council and Urban\'s appeal, and the council\'s canons fix the date. Historians treat the 27 November 1095 proclamation as settled, while continuing to debate exactly what Urban said.',
+        source: {
+          externalId: 'src:britannica-clermont',
+          name: 'Council of Clermont. Encyclopædia Britannica (scholarly synthesis of the 1095 council and the sources for Urban II\'s crusade appeal).',
+          url: 'https://www.britannica.com/event/Council-of-Clermont',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Concordat of Worms — settling the Investiture Controversy ───────────────
+  {
+    externalId: 'trajectory:concordat-of-worms-1122',
+    text: 'On 23 September 1122 at Worms, Pope Callixtus II and Emperor Henry V exchanged charters settling the Investiture Controversy: the emperor renounced investiture of bishops with ring and crosier, while the Church conceded the emperor a regulated role in episcopal elections and the granting of temporalities.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1122-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1122-09-23',
+        datePrecision: 'DAY',
+        reason: 'Two reciprocal charters were issued and exchanged at Worms: the papal Privilegium of Callixtus II and the imperial concession (the "Heinricianum") of Henry V. Their texts — by which Henry surrendered investiture with ring and staff and Callixtus allowed elections in the emperor\'s presence and investiture of regalia by the scepter — survive and were promulgated as the binding settlement.',
+        source: {
+          externalId: 'src:concordat-worms-charters',
+          name: 'Concordat of Worms (Pactum Calixtinum): the Privilegium of Callixtus II and the imperial Heinricianum of Henry V, 23 September 1122. (preserved charter texts)',
+          url: 'https://en.wikipedia.org/wiki/Concordat_of_Worms',
+          publishedAt: '1122-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1123-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The First Lateran Council solemnly confirmed the Concordat of Worms in March 1123, ratifying the compromise before the assembled Western Church. The surviving charters and the conciliar confirmation make both the date and the terms of the settlement of the Investiture Controversy settled historical fact.',
+        source: {
+          externalId: 'src:britannica-concordat-worms',
+          name: 'Concordat of Worms. Encyclopædia Britannica (scholarly synthesis of the 1122 settlement and its confirmation at the First Lateran Council).',
+          url: 'https://www.britannica.com/event/Concordat-of-Worms',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Western Schism — rival papal elections of 1378 ──────────────────────────
+  {
+    externalId: 'trajectory:western-schism-1378',
+    text: 'The Western Schism opened in 1378: the cardinals elected Urban VI in Rome on 8 April, then a dissenting majority elected Robert of Geneva as Clement VII on 20 September, producing rival Roman and Avignon papal lines until the Council of Constance restored a single papacy in 1417.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1378-04-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1378-04-08',
+        datePrecision: 'DAY',
+        reason: 'Under pressure from a Roman crowd demanding an Italian pope, the cardinals elected Bartolomeo Prignano, archbishop of Bari, as Urban VI on 8 April 1378. The election was recorded and Urban was duly enthroned; the cardinals initially recognized him.',
+        source: {
+          externalId: 'src:urban-vi-election-1378',
+          name: 'Election of Urban VI, 8 April 1378, as recorded in the conclave acts and the contemporary accounts collected in the documentation of the Western Schism.',
+          url: 'https://en.wikipedia.org/wiki/Western_Schism',
+          publishedAt: '1378-04-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1378-09-20',
+        datePrecision: 'DAY',
+        reason: 'A majority of the cardinals, alienated by Urban VI and asserting that his election had been coerced, withdrew and on 20 September 1378 elected Robert of Geneva as Clement VII, who established a court at Avignon. Latin Christendom split into Roman and Avignon obediences, each with its own pope, college of cardinals, and royal adherents; the legitimacy of the two lines was bitterly contested for nearly four decades.',
+        source: {
+          externalId: 'src:clement-vii-election-1378',
+          name: 'Election of the antipope Clement VII (Robert of Geneva), 20 September 1378, and the division of obediences, as documented in the records of the Western Schism.',
+          url: 'https://www.britannica.com/event/Western-Schism',
+          publishedAt: '1378-09-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1417-11-11',
+        datePrecision: 'DAY',
+        reason: 'The Council of Constance secured the resignation of the Roman claimant Gregory XII and deposed the remaining contenders, then elected Martin V on 11 November 1417 as the single pope recognized throughout the Latin Church. The schism was ended, and the Roman line of 1378 came to be reckoned canonical in the official list of popes.',
+        source: {
+          externalId: 'src:constance-martin-v-1417',
+          name: 'Council of Constance, election of Martin V on 11 November 1417 ending the Western Schism. Encyclopædia Britannica (scholarly synthesis).',
+          url: 'https://www.britannica.com/event/Council-of-Constance',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
