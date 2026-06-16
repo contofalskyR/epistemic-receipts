@@ -17030,6 +17030,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — supplemental sweep
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Ibn Yunus observes and times a lunar eclipse at Cairo ────────────────────
+  {
+    externalId: 'trajectory:ibn-yunus-lunar-eclipse-981',
+    text: 'The astronomer Ibn Yunus observed and timed a partial lunar eclipse at al-Qarafa in Cairo on 22 April 981 CE (10 Shawwal 370 AH), recording the moment of greatest eclipse in his al-Zij al-Hakimi al-Kabir.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0981-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0981-04-22',
+        datePrecision: 'DAY',
+        reason: 'Ibn Yunus observes a partial lunar eclipse from al-Qarafa (the great cemetery district) in Cairo, noting that about a quarter of the lunar diameter was obscured and timing the event against stellar positions. He enters the observation, with its date and circumstances, into the al-Zij al-Hakimi al-Kabir, the astronomical tables he is compiling under the Fatimid caliphs al-Aziz and al-Hakim.',
+        source: {
+          externalId: 'src:ibn-yunus-zij-hakimi-eclipse',
+          name: 'Ibn Yunus. al-Zij al-Hakimi al-Kabir, eclipse observation of 10 Shawwal 370 AH. (c. 1005, contemporary record)',
+          url: 'https://en.wikipedia.org/wiki/Ibn_Yunus',
+          publishedAt: '1005-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1853-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ibn Yunus\'s dated eclipse observations are recovered and validated by modern astronomy: in the 19th century Simon Newcomb used a number of the eclipses he reported to help determine the secular acceleration of the Moon, and later researchers (Stephenson and colleagues) use medieval Arabic eclipse timings, including Ibn Yunus\'s, to measure long-term changes in the Earth\'s rotation. The observation\'s date and accuracy are treated as a settled datum of historical astronomy.',
+        source: {
+          externalId: 'src:stephenson-arabic-eclipse-records',
+          name: 'F. R. Stephenson et al. Analyses of medieval Arabic eclipse records and the Earth\'s rotation, building on Newcomb\'s use of Ibn Yunus.',
+          url: 'https://mathshistory.st-andrews.ac.uk/Biographies/Yunus/',
+          publishedAt: '1853-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Caishi — Song repels Jin with gunpowder weapons ────────────────
+  {
+    externalId: 'trajectory:battle-of-caishi-1161',
+    text: 'A Southern Song river fleet defeated the invading Jin army of Emperor Wanyan Liang at the Battle of Caishi on the Yangzi River on 26–27 November 1161, employing gunpowder bombs (huopao) against the Jin crossing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1161-11-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1161-11-26',
+        datePrecision: 'DAY',
+        reason: 'As the Jurchen-led Jin army under Wanyan Liang attempts to cross the Yangzi to invade the Southern Song, a much smaller Song naval force commanded under the civil official Yu Yunwen repels the crossing at Caishi near Maanshan. Song accounts record the use of trebuchet-launched gunpowder incendiary bombs (pili huoqiu / huopao) against the Jin boats — one of the earliest reliably dated battlefield uses of gunpowder weapons. The Song court records and the defeat soon precipitates Wanyan Liang\'s assassination by his own officers.',
+        source: {
+          externalId: 'src:songshi-caishi-1161',
+          name: 'Songshi (History of Song) and Song court records of the Battle of Caishi. (derived from contemporaneous Southern Song records)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Caishi',
+          publishedAt: '1161-11-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1345-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Yuan-era official histories Songshi and Jinshi (completed 1345) independently document the failed Jin crossing at Caishi, the Song victory, and the collapse of Wanyan Liang\'s southern campaign. Modern historians of military technology cite Caishi as a securely dated early instance of gunpowder weapons in pitched battle; the date and outcome are uncontested.',
+        source: {
+          externalId: 'src:songshi-jinshi-caishi',
+          name: 'Songshi (1345) and Jinshi, official histories documenting the Battle of Caishi.',
+          url: 'https://www.britannica.com/topic/Song-dynasty',
+          publishedAt: '1345-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Kalka River — Rus' first encounter with the Mongols ────────
+  {
+    externalId: 'trajectory:battle-kalka-river-1223',
+    text: 'A Mongol army under Jebe and Subutai destroyed a coalition of Rus’ princes and Cumans at the Battle of the Kalka River on 31 May 1223 — the first armed encounter between the Rus’ principalities and the Mongol Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1223-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1223-05-31',
+        datePrecision: 'DAY',
+        reason: 'A Mongol reconnaissance army feigns retreat and routs the disunited Rus’ and Cuman host on the Kalka River in the Pontic steppe; Mstislav of Kiev holds out three days before surrendering under a promise of safe conduct, after which the captured princes are killed. The Novgorod First Chronicle and other Rus’ chronicles record the catastrophe and the previously unknown people who inflicted it, marking the first recorded contact between the Rus’ and the Mongols.',
+        source: {
+          externalId: 'src:novgorod-chronicle-kalka',
+          name: 'Novgorod First Chronicle, account of the Battle of the Kalka River. (13th-century, near-contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Kalka_River',
+          publishedAt: '1223-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Rus’ chronicle tradition is corroborated by Persian and Arabic historians of the Mongols (notably Ibn al-Athir and later Rashid al-Din), who independently record Jebe and Subutai’s reconnaissance sweep around the Caspian. Modern scholarship treats the date, the Mongol commanders, and the destruction of the Rus’ coalition as settled, debating only casualty figures and the route of the campaign.',
+        source: {
+          externalId: 'src:kalka-river-scholarship',
+          name: 'Modern scholarship on the Mongol invasion of Kievan Rus’ and the Battle of the Kalka River.',
+          url: 'https://www.britannica.com/event/Battle-of-the-Kalka-River',
+          publishedAt: '1970-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet — the 1301 apparition recorded across Eurasia ─────────────
+  {
+    externalId: 'trajectory:halley-comet-1301-apparition',
+    text: 'The comet later identified as Halley’s Comet appeared in 1301, visible from roughly September 1301 to January 1302 and recorded independently in China, Korea, Japan, and Europe, where it is generally taken as the model for the comet in Giotto’s Adoration of the Magi.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1301-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1301-09-01',
+        datePrecision: 'MONTH',
+        reason: 'A bright comet appears in the autumn of 1301 and is logged by court astronomers in Yuan China and Goryeo Korea and by chroniclers in Japan and Europe. The Florentine chronicler Giovanni Villani records it leaving "great trails of fumes behind" and visible from September 1301 into January 1302; the apparition is widely credited as the spectacular comet Giotto di Bondone painted as the Star of Bethlehem in the Arena (Scrovegni) Chapel.',
+        source: {
+          externalId: 'src:villani-comet-1301',
+          name: 'Giovanni Villani. Nuova Cronica, account of the comet of 1301; corroborated by East Asian astronomical records. (14th-century, contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1301-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1759-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Edmond Halley established the comet’s ~76-year periodicity and its 1759 return confirmed the prediction, astronomers retrojected the orbit and matched the 1301 apparition to Halley’s Comet. The independent East Asian and European records of 1301 are reconciled into a single dated apparition in modern cometary catalogues, settling both the sighting and its identity.',
+        source: {
+          externalId: 'src:halley-comet-1301-identification',
+          name: 'Modern cometary scholarship identifying the 1301 apparition with 1P/Halley (Stephenson, Yeomans, and others).',
+          url: 'https://www.britannica.com/topic/Halleys-Comet',
+          publishedAt: '1759-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Kulikovo — Muscovy defeats the Golden Horde ────────────────────
+  {
+    externalId: 'trajectory:battle-of-kulikovo-1380',
+    text: 'A Muscovite-led coalition under Grand Prince Dmitry Donskoy defeated the army of the Golden Horde commander Mamai at the Battle of Kulikovo on the upper Don on 8 September 1380.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1380-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1380-09-08',
+        datePrecision: 'DAY',
+        reason: 'Having crossed the Don the previous day, Dmitry’s coalition meets and defeats Mamai’s Golden Horde army on Kulikovo Pole (Snipes’ Field) near the mouth of the Nepryadva on 8 September 1380. The victory earns Dmitry the epithet "Donskoy"; though it does not end Mongol suzerainty, it is recorded in the Rus’ chronicles as the first major field victory of the Rus’ over the Horde.',
+        source: {
+          externalId: 'src:rus-chronicles-kulikovo',
+          name: 'Rus’ chronicle accounts of the Battle of Kulikovo (Tale of the Rout of Mamai / chronicle tales). (late 14th–15th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Kulikovo',
+          publishedAt: '1380-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and outcome of Kulikovo are corroborated across the independent Rus’ chronicle traditions and treated as settled by modern historians, who downgrade the chronicles’ inflated troop figures while accepting the battle, its date, and Dmitry’s victory. It is commemorated as a foundational event in Russian historical memory.',
+        source: {
+          externalId: 'src:kulikovo-scholarship',
+          name: 'Modern scholarship on the Battle of Kulikovo and the decline of the Golden Horde.',
+          url: 'https://www.britannica.com/event/Battle-of-Kulikovo-1380',
+          publishedAt: '1980-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
