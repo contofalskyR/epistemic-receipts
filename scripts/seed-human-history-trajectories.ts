@@ -5613,6 +5613,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Herschel discovers Uranus ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:herschel-discovers-uranus-1781',
+    text: 'William Herschel discovered the planet Uranus from Bath, England, on 13 March 1781 — the first planet identified with a telescope and the first added to the known Solar System since antiquity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1781-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1781-03-13',
+        datePrecision: 'DAY',
+        reason: 'Observing from the garden of his house in New King Street, Bath, with a homemade reflecting telescope, Herschel notes a non-stellar object in the constellation Taurus that shows a visible disc and moves against the fixed stars. His observation journal records the find on 13 March 1781; he initially reports it to the Royal Society as a comet in a paper titled "Account of a Comet."',
+        source: {
+          externalId: 'src:herschel-account-of-a-comet-1781',
+          name: 'Herschel W. Account of a Comet. Philosophical Transactions of the Royal Society 1781;71:492–501.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1781.0056',
+          publishedAt: '1781-04-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1783-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Orbital computations by Anders Johan Lexell and Pierre-Simon Laplace show the body follows a nearly circular orbit far beyond Saturn, establishing it as a previously unknown planet rather than a comet. Herschel is awarded the Copley Medal in 1781; the object is confirmed as the seventh planet and later named Uranus. Its planetary status has never since been disputed.',
+        source: {
+          externalId: 'src:lexell-uranus-orbit',
+          name: 'Lexell AJ. Recherches sur la nouvelle planète, découverte par M. Herschel. Acta Academiae Scientiarum Imperialis Petropolitanae, 1783.',
+          url: 'https://en.wikipedia.org/wiki/Uranus',
+          publishedAt: '1783-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Faraday discovers electromagnetic induction ─────────────────────────────
+  {
+    externalId: 'trajectory:faraday-electromagnetic-induction-1831',
+    text: 'Michael Faraday discovered electromagnetic induction — that a changing magnetic field induces an electric current — recording the effect in his laboratory diary on 29 August 1831.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1831-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1831-08-29',
+        datePrecision: 'DAY',
+        reason: 'At the Royal Institution in London, Faraday wraps two insulated coils around opposite sides of an iron ring and observes that switching the current in one coil produces a momentary deflection in a galvanometer connected to the other. His laboratory diary entry of 29 August 1831 records the first demonstration that a changing magnetic flux induces a current — the principle of the transformer and the electric generator.',
+        source: {
+          externalId: 'src:faraday-diary-1831',
+          name: 'Faraday M. Faraday\'s Diary, entry of 29 August 1831 (Royal Institution laboratory notebooks).',
+          url: 'https://en.wikipedia.org/wiki/Electromagnetic_induction',
+          publishedAt: '1831-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1832-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Faraday reads his findings to the Royal Society on 24 November 1831 and publishes them in 1832 as the first series of "Experimental Researches in Electricity." The law of induction is independently corroborated, formalised by Maxwell\'s equations in the 1860s, and underlies all electrical power generation; it is among the most thoroughly settled results in physics.',
+        source: {
+          externalId: 'src:faraday-experimental-researches-1832',
+          name: 'Faraday M. Experimental Researches in Electricity (First Series). Philosophical Transactions of the Royal Society 1832;122:125–162.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1832.0006',
+          publishedAt: '1832-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── John Snow and the Broad Street pump ─────────────────────────────────────
+  {
+    externalId: 'trajectory:john-snow-broad-street-cholera-1854',
+    text: 'John Snow traced the 1854 Soho cholera outbreak to contaminated water from the Broad Street pump and had its handle removed on 8 September 1854, providing decisive evidence that cholera is waterborne rather than spread by "miasma."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1854-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1854-09-08',
+        datePrecision: 'DAY',
+        reason: 'During a severe cholera outbreak in the Soho district of London, physician John Snow plots cholera deaths on a map and finds them clustered around a single public water pump on Broad Street. He persuades the parish Board of Guardians to remove the pump handle on 8 September 1854, after which the outbreak subsides. Snow documents the investigation as direct evidence for waterborne transmission.',
+        source: {
+          externalId: 'src:snow-mode-of-communication-cholera-1855',
+          name: 'Snow J. On the Mode of Communication of Cholera, 2nd ed. London: John Churchill, 1855.',
+          url: 'https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak',
+          publishedAt: '1855-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1855-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Snow\'s waterborne thesis is rejected by the dominant medical and sanitary establishment, which holds that cholera spreads through foul air ("miasma"). The General Board of Health\'s 1855 report on the outbreak dismisses his water-contamination explanation. The claim remains contested through Snow\'s death in 1858.',
+        source: {
+          externalId: 'src:general-board-health-cholera-1855',
+          name: 'General Board of Health. Report of the Committee for Scientific Inquiries in Relation to the Cholera Epidemic of 1854. London: HMSO, 1855.',
+          url: 'https://en.wikipedia.org/wiki/Miasma_theory',
+          publishedAt: '1855-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1884-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert Koch isolates the bacterium Vibrio cholerae in 1883–1884 and identifies contaminated water as its route of transmission, providing the microbiological mechanism for Snow\'s epidemiological finding. Waterborne transmission of cholera, and Snow\'s pioneering role, are now settled fact and foundational to epidemiology.',
+        source: {
+          externalId: 'src:koch-vibrio-cholerae-1884',
+          name: 'Koch R. Über die Cholerabakterien. Deutsche Medizinische Wochenschrift 1884;10:725–728.',
+          url: 'https://en.wikipedia.org/wiki/Vibrio_cholerae',
+          publishedAt: '1884-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Semmelweis and handwashing against puerperal fever ──────────────────────
+  {
+    externalId: 'trajectory:semmelweis-handwashing-1847',
+    text: 'Ignaz Semmelweis showed that chlorinated-lime handwashing sharply reduced deadly puerperal (childbed) fever, instituting the practice at the Vienna General Hospital in May 1847 — a finding rejected for decades before germ theory vindicated it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Working in the First Obstetrical Clinic of the Vienna General Hospital, Semmelweis notices that maternal mortality is far higher in the ward staffed by physicians (who also perform autopsies) than in the midwives\' ward. In May 1847 he orders staff to wash their hands in a chlorinated-lime solution before examinations; monthly maternal mortality falls from roughly 18% to about 2%. He records the result in clinic statistics.',
+        source: {
+          externalId: 'src:semmelweis-clinic-statistics-1847',
+          name: 'Vienna General Hospital First Obstetrical Clinic mortality records, 1847–1848, as compiled by I. Semmelweis.',
+          url: 'https://en.wikipedia.org/wiki/Ignaz_Semmelweis',
+          publishedAt: '1847-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Semmelweis publishes his findings in 1861 as "Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers," but lacking a germ-theory framework to explain why handwashing works, his thesis is widely rejected and ridiculed by the European medical establishment. The claim remains contested through his death in 1865.',
+        source: {
+          externalId: 'src:semmelweis-aetiologie-1861',
+          name: 'Semmelweis IP. Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers. Pest, Vienna & Leipzig: C.A. Hartleben, 1861.',
+          url: 'https://en.wikipedia.org/wiki/Die_%C3%84tiologie,_der_Begriff_und_die_Prophylaxis_des_Kindbettfiebers',
+          publishedAt: '1861-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1880-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The germ theory of disease, established through Louis Pasteur\'s work and Joseph Lister\'s antiseptic surgery (from 1867), provides the mechanism that Semmelweis lacked. Hand antisepsis becomes standard medical practice and Semmelweis is posthumously recognised as a pioneer of infection control; the efficacy of handwashing is now settled fact.',
+        source: {
+          externalId: 'src:lister-antiseptic-principle-1867',
+          name: 'Lister J. On the Antiseptic Principle in the Practice of Surgery. British Medical Journal 1867;2(351):246–248.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2310614/',
+          publishedAt: '1867-09-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mendeleev presents the periodic law ─────────────────────────────────────
+  {
+    externalId: 'trajectory:mendeleev-periodic-law-1869',
+    text: 'Dmitri Mendeleev presented the periodic law — ordering the chemical elements by atomic weight into recurring groups and leaving gaps for undiscovered elements — to the Russian Chemical Society on 6 March 1869.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1869-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1869-03-06',
+        datePrecision: 'DAY',
+        reason: 'Mendeleev\'s paper "The Dependence between the Properties of the Atomic Weights of the Elements" is read to the Russian Chemical Society on 6 March 1869 (read by Nikolai Menshutkin in Mendeleev\'s absence). It arranges the known elements by atomic weight, groups them by recurring chemical properties, and leaves deliberate gaps for elements not yet discovered, predicting their properties.',
+        source: {
+          externalId: 'src:mendeleev-periodic-law-1869',
+          name: 'Mendeleev DI. Sootnoshenie svoistv s atomnym vesom elementov (The Relation of the Properties to the Atomic Weights of the Elements). Zhurnal Russkogo Khimicheskogo Obshchestva 1869;1:60–77.',
+          url: 'https://en.wikipedia.org/wiki/History_of_the_periodic_table',
+          publishedAt: '1869-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1886-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mendeleev\'s predicted gap-elements are discovered with properties closely matching his forecasts: gallium ("eka-aluminium") in 1875, scandium ("eka-boron") in 1879, and germanium ("eka-silicon") in 1886. These confirmed predictions establish the periodic law as a genuine law of nature; the periodic table becomes a cornerstone of chemistry.',
+        source: {
+          externalId: 'src:winkler-germanium-1886',
+          name: 'Winkler C. Germanium, Ge, ein neues, nichtmetallisches Element. Berichte der deutschen chemischen Gesellschaft 1886;19(1):210–211.',
+          url: 'https://en.wikipedia.org/wiki/Germanium',
+          publishedAt: '1886-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
