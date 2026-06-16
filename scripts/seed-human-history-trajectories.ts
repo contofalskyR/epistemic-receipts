@@ -15800,6 +15800,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Cavendish weighs the Earth ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:cavendish-density-earth-1798',
+    text: 'On 21 June 1798 Henry Cavendish read "Experiments to determine the Density of the Earth" to the Royal Society, using a torsion balance to measure the gravitational attraction between lead spheres and obtaining a mean density of the Earth of about 5.45 times that of water.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1798-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1798-06-21',
+        datePrecision: 'DAY',
+        reason: 'Cavendish reports a series of torsion-balance experiments (refining John Michell\'s apparatus) measuring the feeble gravitational pull of large lead spheres on small ones. He derives a mean density of the Earth of 5.448 times that of water, a result that — combined with the known radius — fixes the Earth\'s mass and, implicitly, the gravitational constant.',
+        source: {
+          externalId: 'src:cavendish-density-earth-phil-trans-1798',
+          name: 'Cavendish H. "Experiments to determine the Density of the Earth." Philosophical Transactions of the Royal Society of London, vol. 88, 1798.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1798.0022',
+          publishedAt: '1798-06-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A century of refined torsion-balance and other determinations of G and the Earth\'s mass (Reich, Baily, Boys, Eötvös) confirm Cavendish\'s figure; the modern mean density, 5.513 g/cm³, lies within about 1% of his value. The result is foundational settled physics and geophysics.',
+        source: {
+          externalId: 'src:boys-newtonian-constant-gravitation-1895',
+          name: 'Boys CV. "On the Newtonian Constant of Gravitation." Philosophical Transactions of the Royal Society A, vol. 186, 1895.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rsta.1895.0001',
+          publishedAt: '1895-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Doppler proposes the frequency shift ────────────────────────────────────
+  {
+    externalId: 'trajectory:doppler-effect-1842',
+    text: 'On 25 May 1842 Christian Doppler read "Über das farbige Licht der Doppelsterne" to the Royal Bohemian Society of Sciences in Prague, proposing that the observed frequency of waves changes with the relative motion of source and observer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1842-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1842-05-25',
+        datePrecision: 'DAY',
+        reason: 'Doppler presents the principle that motion of a wave source toward or away from an observer raises or lowers the observed frequency. He applies it (incorrectly, as it turned out) to explain the colours of binary stars, but the underlying frequency-shift relation is stated for the first time.',
+        source: {
+          externalId: 'src:doppler-farbige-licht-1842',
+          name: 'Doppler C. "Über das farbige Licht der Doppelsterne und einiger anderer Gestirne des Himmels." Abhandlungen der königl. böhmischen Gesellschaft der Wissenschaften, 1842.',
+          url: 'https://en.wikipedia.org/wiki/Doppler_effect',
+          publishedAt: '1842-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1845-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Christophorus Buys Ballot tests the acoustic prediction near Utrecht by having trumpeters play a sustained note aboard a moving railway carriage while trained musicians on the platform judge the pitch; the measured pitch change confirms the frequency shift (even as Buys Ballot rejects Doppler\'s erroneous stellar-colour application). Fizeau independently formulates the optical case in 1848.',
+        source: {
+          externalId: 'src:buys-ballot-akustische-versuche-1845',
+          name: 'Buys Ballot CHD. "Akustische Versuche auf der niederländischen Eisenbahn." Annalen der Physik und Chemie, vol. 66, 1845.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.18451421102',
+          publishedAt: '1845-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The optical Doppler shift becomes the foundation of astronomical spectroscopy: Hubble\'s 1929 redshift–distance relation, radial-velocity measurement, and the entire framework of cosmological recession velocities all rest on the principle Doppler stated in 1842.',
+        source: {
+          externalId: 'src:hubble-redshift-distance-1929-doppler',
+          name: 'Hubble E. "A Relation between Distance and Radial Velocity among Extra-Galactic Nebulae." PNAS, vol. 15, 1929.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.15.3.168',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Darwin–Wallace joint reading at the Linnean Society ─────────────────────
+  {
+    externalId: 'trajectory:darwin-wallace-linnean-1858',
+    text: 'On 1 July 1858 the joint papers of Charles Darwin and Alfred Russel Wallace setting out evolution by natural selection were read to the Linnean Society of London — the first formal scientific announcement of the theory, more than a year before On the Origin of Species.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1858-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1858-07-01',
+        datePrecision: 'DAY',
+        reason: 'Charles Lyell and Joseph Hooker arrange for Wallace\'s Ternate essay and extracts of Darwin\'s unpublished writings to be read together at the Linnean Society, resolving the priority question precipitated by Wallace\'s letter. The reading attracts almost no immediate reaction — President Thomas Bell later wrote that 1858 had produced no striking discoveries.',
+        source: {
+          externalId: 'src:darwin-wallace-linnean-1858',
+          name: 'Darwin C, Wallace AR. "On the Tendency of Species to form Varieties; and on the Perpetuation of Varieties and Species by Natural Means of Selection." Journal of the Proceedings of the Linnean Society (Zoology), vol. 3, 1858.',
+          url: 'https://www.biodiversitylibrary.org/item/20071',
+          publishedAt: '1858-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-11-24',
+        datePrecision: 'DAY',
+        reason: 'Darwin\'s full exposition in On the Origin of Species (24 November 1859) brings the theory to wide attention and sharp controversy, including the Huxley–Wilberforce exchange at Oxford in June 1860. The mechanism of inheritance remains unknown, keeping natural selection contested among naturalists.',
+        source: {
+          externalId: 'src:darwin-origin-1859-linnean-followup',
+          name: 'Darwin C. On the Origin of Species by Means of Natural Selection. London: John Murray, 1859.',
+          url: 'https://www.loc.gov/item/06017473/',
+          publishedAt: '1859-11-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Modern Synthesis unifies natural selection with Mendelian and population genetics, supplying the hereditary mechanism Darwin and Wallace lacked. Evolution by natural selection becomes the central organizing principle of biology, vindicating the 1858 announcement.',
+        source: {
+          externalId: 'src:huxley-modern-synthesis-1942-linnean',
+          name: 'Huxley JS. Evolution: The Modern Synthesis. London: Allen & Unwin, 1942.',
+          url: 'https://mitpress.mit.edu/9780262513661/evolution/',
+          publishedAt: '1942-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Russian Emancipation of the Serfs ───────────────────────────────────────
+  {
+    externalId: 'trajectory:russian-emancipation-serfs-1861',
+    text: 'On 3 March 1861 (19 February in the Julian calendar) Tsar Alexander II signed the Emancipation Manifesto and accompanying statutes abolishing serfdom in the Russian Empire and granting personal freedom to roughly 23 million privately held serfs.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1861-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1861-03-03',
+        datePrecision: 'DAY',
+        reason: 'Alexander II signs the Manifesto on the Abolition of Serfdom and the "Statutes Concerning Peasants Leaving Serf Dependence." The manifesto is publicly proclaimed in churches across the empire during Lent in March 1861, ending the landlords\' legal personal authority over the serfs.',
+        source: {
+          externalId: 'src:emancipation-manifesto-1861',
+          name: 'Manifesto of 19 February 1861 and the Statutes on Peasants Leaving Serf Dependence (Polnoe Sobranie Zakonov, no. 36657).',
+          url: 'https://en.wikipedia.org/wiki/Emancipation_reform_of_1861',
+          publishedAt: '1861-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1866-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Implementation through the redemption-payment system and the extension of emancipation to state peasants (1866) makes the abolition of serfdom an irreversible legal fact of the Russian Empire; the date and substance of the 1861 reform are uncontested in the documentary record and historiography.',
+        source: {
+          externalId: 'src:moon-abolition-serfdom-russia-2001',
+          name: 'Moon D. The Abolition of Serfdom in Russia, 1762–1907. Harlow: Longman, 2001.',
+          url: 'https://www.routledge.com/The-Abolition-of-Serfdom-in-Russia-1762-1907/Moon/p/book/9780582294868',
+          publishedAt: '2001-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Becquerel discovers radioactivity ───────────────────────────────────────
+  {
+    externalId: 'trajectory:becquerel-radioactivity-1896',
+    text: 'In late February and early March 1896 Henri Becquerel discovered that uranium salts spontaneously emit a penetrating radiation able to fog a wrapped photographic plate without any external energy source, announcing the result to the Académie des sciences on 2 March 1896.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-03-02',
+        datePrecision: 'DAY',
+        reason: 'After cloudy weather forced him to leave wrapped photographic plates and uranium salts in a drawer, Becquerel developed the plates on 1 March 1896 and found them strongly exposed — proving the radiation was emitted spontaneously, independent of sunlight or phosphorescence. He reports the finding to the Académie des sciences on 2 March 1896.',
+        source: {
+          externalId: 'src:becquerel-radiations-invisibles-1896',
+          name: 'Becquerel H. "Sur les radiations invisibles émises par les corps phosphorescents." Comptes rendus de l\'Académie des sciences, vol. 122, 1896.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k30780/f501.item',
+          publishedAt: '1896-03-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marie and Pierre Curie isolate polonium and radium (1898) and coin "radioactivity"; Rutherford distinguishes alpha and beta radiation (1899) and, with Soddy, explains it as atomic disintegration (1902–03). The 1903 Nobel Prize in Physics to Becquerel and the Curies marks radioactivity as an established nuclear phenomenon.',
+        source: {
+          externalId: 'src:rutherford-soddy-radioactive-change-1903',
+          name: 'Rutherford E, Soddy F. "Radioactive Change." Philosophical Magazine, ser. 6, vol. 5, 1903.',
+          url: 'https://www.tandfonline.com/doi/abs/10.1080/14786440309462960',
+          publishedAt: '1903-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
