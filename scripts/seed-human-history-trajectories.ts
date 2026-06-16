@@ -21606,6 +21606,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL (before 500 CE) — Roman/Han comet & Ptolemaic eclipse curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Halley's Comet apparition of 66 CE — "sword over Jerusalem" ──────────────
+  {
+    externalId: 'trajectory:halley-comet-66ce-apparition',
+    text: 'A comet observed in early 66 CE — described by Josephus as a sword-shaped star hanging over Jerusalem and recorded by Chinese court astronomers — was later identified as an apparition of the periodic comet 1P/Halley (perihelion 26 January 66 CE).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0066-01-26',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0066-01-26',
+        datePrecision: 'MONTH',
+        reason: 'Writing within a decade of the event, Josephus reports among the portents preceding the Jewish revolt "a star resembling a sword, which stood over the city, and a comet that continued a whole year." Han-dynasty bureau astronomers independently record a broom star in the same season. The comet is registered as a real celestial sighting — universally read at the time as a divine omen rather than a recurring natural body.',
+        source: {
+          externalId: 'src:josephus-jewish-war-comet-66',
+          name: 'Josephus. The Jewish War, 6.5.3 (§289), describing the sword-shaped star and year-long comet over Jerusalem. (c. 75 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0148%3Abook%3D6%3Awhiston+chapter%3D5',
+          publishedAt: '0075-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yeomans and Kiang\'s definitive backward integration of Halley\'s orbit, anchored to the dense Chinese positional records, fixes a perihelion passage on 26 January 66 CE and ties the 66 CE apparition to 1P/Halley. The portent of Josephus is thereby reinterpreted as a predictable return of a periodic comet, converting an omen into a settled point on a 76-year orbital clock.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet apparition of 218 CE — Cassius Dio's "fearful star" ───────
+  {
+    externalId: 'trajectory:halley-comet-218ce-apparition',
+    text: 'A comet seen in 218 CE — recorded by the Roman senator Cassius Dio as a "very fearful star" portending the fall of the emperor Macrinus, and noted in late-Han Chinese records — was later identified as an apparition of 1P/Halley (perihelion 17 May 218 CE).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0218-05-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0218-05-17',
+        datePrecision: 'MONTH',
+        reason: 'Cassius Dio, a contemporary eyewitness and consular historian, records that "a certain very fearful star" with a long tail appeared and was taken to foretell the overthrow of the emperor Macrinus, who indeed fell in 218. Chinese astronomical records of the last years of the Eastern Han note a broom star in the same year. The comet is logged as a genuine apparition, read by all observers as a political omen.',
+        source: {
+          externalId: 'src:cassius-dio-comet-218',
+          name: 'Cassius Dio. Roman History, Book 79 (Epitome), on the comet of 218 CE and the fall of Macrinus. (c. 220s CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/79*.html',
+          publishedAt: '0229-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Yeomans–Kiang reconstruction of Halley\'s long-term motion places a perihelion passage on 17 May 218 CE and assigns the 218 apparition to 1P/Halley, with the Chinese records constraining the orbit. The "fearful star" of Cassius Dio is resolved into one node of the comet\'s periodic return, settling both its identity and its date.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet apparition of 374 CE — Eastern Jin broom star ─────────────
+  {
+    externalId: 'trajectory:halley-comet-374ce-apparition',
+    text: 'A "broom star" recorded by Chinese court astronomers in early 374 CE was later identified as an apparition of 1P/Halley, whose perihelion fell on 17 February 374 CE in a return that brought the comet to within about 0.09 AU of Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0374-02-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0374-02-17',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical records of the Eastern Jin court, preserved in the Book of Jin, register a broom star (彗星) in the spring of 374 CE — the second year of the Ningkang reign of Emperor Xiaowu. Because the comet passed unusually close to Earth this return, its motion across the sky was rapid and conspicuous, and the bureau noted its appearance and path as a celestial portent.',
+        source: {
+          externalId: 'src:book-of-jin-comet-374',
+          name: 'Book of Jin (晉書), Treatise on Astronomy (天文志), record of the broom star of Ningkang 2 (374 CE). (compiled 648 CE from Eastern Jin bureau records)',
+          url: 'https://ctext.org/book-of-jin',
+          publishedAt: '0648-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yeomans and Kiang\'s integration of Halley\'s orbit fixes the perihelion of this return on 17 February 374 CE and confirms the close approach to within about 0.09 AU of Earth, matching the rapid motion noted in the Chinese record. The 374 broom star is thereby identified as a return of 1P/Halley, its date and identity settled by orbital mechanics.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ptolemy's trio of Alexandria lunar eclipses anchoring the lunar theory ──
+  {
+    externalId: 'trajectory:ptolemy-lunar-eclipse-trio-134ce',
+    text: 'Claudius Ptolemy reported three lunar eclipses he "very carefully observed" at Alexandria — on 6 May 133, 20 October 134 and 5/6 March 136 CE — and used them in the Almagest to derive the size of the Moon\'s epicycle and the parameters of his lunar theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0134-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0134-10-20',
+        datePrecision: 'DAY',
+        reason: 'In Almagest IV.6 Ptolemy reports timing three lunar eclipses observed at Alexandria — 6 May 133, 20 October 134 and 5/6 March 136 CE — giving the mid-eclipse times and magnitudes, and pairs them against three ancient Babylonian eclipses to compute the Moon\'s mean motions and the radius of its epicycle. The observations are entered as the empirical foundation of his lunar model.',
+        source: {
+          externalId: 'src:ptolemy-almagest-lunar-eclipses',
+          name: 'Ptolemy, Almagest IV.6, recording the three Alexandria lunar eclipses of 133–136 CE and the derivation of the lunar epicycle. (c. 150 CE)',
+          url: 'https://en.wikipedia.org/wiki/Almagest',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1543-01-01',
+        datePrecision: 'YEAR',
+        reason: 'For some fourteen centuries Ptolemy\'s eclipse records served as trusted empirical anchors for lunar theory: Islamic astronomers and, in 1543, Copernicus reused his observed eclipses alongside their own to calibrate the Moon\'s motion. The eclipses themselves and their dates were treated as settled astronomical fact, confirmed by retrocalculation.',
+        source: {
+          externalId: 'src:copernicus-de-revolutionibus-lunar',
+          name: 'Copernicus N. De revolutionibus orbium coelestium, Book IV, using Ptolemy\'s observed lunar eclipses to analyse the Moon\'s motion. Nuremberg, 1543.',
+          url: 'https://www.e-rara.ch/zut/content/titleinfo/162514',
+          publishedAt: '1543-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert R. Newton argued that several of Ptolemy\'s reported observations, including some of the lunar timings, fit values back-computed from his own tables too neatly to be genuine fresh measurements, charging that Ptolemy fabricated or adjusted data. Defenders such as Owen Gingerich attribute the discrepancies to crude instruments and rounding. The astronomical eclipses of 133–136 CE are confirmed by retrocalculation, but whether Ptolemy actually observed them as reported is contested.',
+        source: {
+          externalId: 'src:newton-crime-of-claudius-ptolemy-1977',
+          name: 'Newton RR. The Crime of Claudius Ptolemy. Baltimore: Johns Hopkins University Press, 1977.',
+          url: 'https://www.jstor.org/stable/2709122',
+          publishedAt: '1977-01-01',
+          methodologyType: 'opinion',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
