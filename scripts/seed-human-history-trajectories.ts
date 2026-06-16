@@ -4967,6 +4967,194 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL — astronomy of the ancient world (added batch)
+  // Greek / Persian-Babylonian / Chinese court astronomy, pre-500 BCE–CE
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Earliest dated sunspot — Han court record, 28 BCE (China) ────────────────
+  {
+    externalId: 'trajectory:hanshu-sunspot-28bce',
+    text: 'Astronomers of the Western Han court recorded a black spot "as large as a coin" at the center of the rising Sun on 10 May 28 BCE — the earliest precisely dated observation of a sunspot.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0028-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0028-05-10',
+        datePrecision: 'DAY',
+        reason: 'During the reign of Emperor Cheng of Han, the court chronicle notes that the Sun rose yellow and that "a black vapor as large as a coin" stood at its center. The entry, preserved in the Treatise on the Five Phases of the Book of Han, is an unaided-eye observation of a large sunspot group seen through atmospheric haze at sunrise.',
+        source: {
+          externalId: 'src:hanshu-wuxingzhi-sunspot-28bce',
+          name: 'Book of Han (漢書), Treatise on the Five Phases (五行志), record under the reign of Emperor Cheng. (compiled by Ban Gu c. 111 CE from Han court records)',
+          url: 'https://ctext.org/han-shu',
+          publishedAt: '0028-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Systematic catalogues of pre-telescopic East Asian sunspot reports identify the Han entry as the earliest explicitly dated naked-eye sunspot observation, retrocalculated to 10 May 28 BCE. Earlier mentions (e.g., attributed to Gan De, 4th c. BCE) survive only without a firm calendar date, leaving the Han record the oldest dated instance.',
+        source: {
+          externalId: 'src:wittmann-xu-sunspot-catalogue-1987',
+          name: 'Wittmann AD, Xu ZT. "A catalogue of sunspot observations from 165 BC to AD 1684." Astronomy & Astrophysics Supplement Series 70:83–94, 1987.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1987A%26AS...70...83W/abstract',
+          publishedAt: '1987-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lunar eclipse before Gaugamela, 331 BCE (Babylon / Persia / Greece) ──────
+  {
+    externalId: 'trajectory:gaugamela-lunar-eclipse-331bce',
+    text: 'A total lunar eclipse occurred on the night of 20 September 331 BCE, eleven days before the Battle of Gaugamela — recorded contemporaneously on a Babylonian astronomical diary and read as an omen of the fall of the Persian king Darius III.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0331-09-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0331-09-20',
+        datePrecision: 'DAY',
+        reason: 'Scribes of the Esagila temple in Babylon log on a clay tablet that on the 13th of the month Ulûlu the moon was totally eclipsed "as Jupiter set," with Saturn nearby; a westerly wind blew during totality and an easterly wind as the moon reappeared. The diary couples the omen with a forecast of the king\'s downfall — a day-by-day contemporary record of the sky.',
+        source: {
+          externalId: 'src:babylonian-diary-gaugamela-331bce',
+          name: 'Babylonian Astronomical Diary No. -330 (Sachs–Hunger, Astronomical Diaries and Related Texts from Babylonia, Vol. I, 1988); contemporary account of the Gaugamela eclipse.',
+          url: 'https://www.livius.org/sources/content/oriental-varia/a-contemporary-account-of-the-battle-of-gaugamela/',
+          publishedAt: '0331-09-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Greek historians (Arrian, Plutarch, Curtius) independently report a lunar eclipse shortly before the battle. Astronomical retrocalculation confirms a total lunar eclipse visible over Mesopotamia on the evening of 20 September 331 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses and fixing the date of Gaugamela to 1 October 331 BCE.',
+        source: {
+          externalId: 'src:nasa-lunar-eclipse-catalog-gaugamela',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Lunar Eclipses: −1999 to +3000. NASA/TP–2009–214172.',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LEcatalog.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Meton & Euctemon observe the summer solstice, 432 BCE (Greece) ───────────
+  {
+    externalId: 'trajectory:meton-summer-solstice-432bce',
+    text: 'The Athenian astronomers Meton and Euctemon observed the summer solstice on 27 June 432 BCE — the earliest precisely dated astronomical observation in Greek astronomy and the epoch of Meton\'s 19-year luni-solar cycle.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0432-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0432-06-27',
+        datePrecision: 'DAY',
+        reason: 'Meton and Euctemon time the morning of the summer solstice at Athens and adopt it as the epoch of a reformed luni-solar calendar reconciling 19 solar years with 235 lunar months (the Metonic cycle). Euctemon\'s near-contemporary parapegma (star calendar) preserves the observational tradition; Diodorus dates the cycle\'s introduction to the archonship of Apseudes (433/432 BCE).',
+        source: {
+          externalId: 'src:ptolemy-almagest-meton-solstice',
+          name: 'Ptolemy, Almagest III.1, reporting the summer-solstice observation of Meton and Euctemon at Athens. (c. 150 CE, citing the 432 BCE observation)',
+          url: 'https://en.wikipedia.org/wiki/Meton_of_Athens',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern reconstruction places the recorded solstice about a day and a half before the true astronomical solstice — consistent with the crude gnomon method available — while confirming the date as 27 June 432 BCE (Julian). It remains the fixed chronological anchor for late-fifth-century Athenian astronomy and the basis of the Metonic cycle still used in calendar computation.',
+        source: {
+          externalId: 'src:bowen-goldstein-meton-1988',
+          name: 'Bowen AC, Goldstein BR. "Meton of Athens and Astronomy in the Late Fifth Century B.C." In A Scientific Humanist: Studies in Memory of Abraham Sachs (Philadelphia, 1988), 39–81.',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/meton',
+          publishedAt: '1988-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Earliest dated total solar eclipse — Spring and Autumn Annals, 709 BCE ───
+  {
+    externalId: 'trajectory:chunqiu-solar-eclipse-709bce',
+    text: 'A total solar eclipse was recorded in the Chinese state of Lu on 17 July 709 BCE — entered in the Spring and Autumn Annals as "on the renchen day, the first of the month, the Sun was totally eclipsed" — the earliest explicit written record of a total solar eclipse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0709-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0709-07-17',
+        datePrecision: 'DAY',
+        reason: 'The court chronicle of the state of Lu records, in the third year of Duke Huan, a total solar eclipse on the new-moon renchen day of the seventh month. The entry names the day in the sexagenary cycle and states the eclipse was total — the earliest such explicit notice, derived from contemporaneous Lu court observation though preserved in a later-compiled chronicle.',
+        source: {
+          externalId: 'src:chunqiu-duke-huan-eclipse-709bce',
+          name: 'Spring and Autumn Annals (春秋), Duke Huan year 3 — chronicle of the state of Lu (derived from contemporaneous court records).',
+          url: 'https://ctext.org/chun-qiu',
+          publishedAt: '0709-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation identifies the event as the total solar eclipse of 17 July 709 BCE (Julian), whose path of totality crossed the Lu capital at Qufu — confirming the chronicle\'s claim of totality and anchoring the chronology of the Annals.',
+        source: {
+          externalId: 'src:stephenson-historical-eclipses-1997',
+          name: 'Stephenson FR. Historical Eclipses and Earth\'s Rotation. Cambridge University Press, 1997.',
+          url: 'https://en.wikipedia.org/wiki/List_of_solar_eclipses_in_antiquity',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2025-12-01',
+        datePrecision: 'MONTH',
+        reason: 'A 2025 study uses the record\'s observation site and its apparent description of the solar corona to refine estimates of Earth\'s rotation (ΔT) some 2,700 years ago, treating the 709 BCE entry as the oldest reliably located total-eclipse observation. The result reinforces the record\'s settled status as the earliest explicit total-solar-eclipse account.',
+        source: {
+          externalId: 'src:nagoya-709bce-eclipse-2025',
+          name: 'Historical geography helps researchers solve 2,700-year-old eclipse mystery (Nagoya University), reported December 2025.',
+          url: 'https://phys.org/news/2025-12-historical-geography-year-eclipse-mystery.html',
+          publishedAt: '2025-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────

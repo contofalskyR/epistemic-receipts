@@ -1,6 +1,8 @@
 {
-  "absoluteOffset": 888000,
-  "lastLogTotal": 142000,
+  "absoluteOffset": 1148784,
+  "lastLogTotal": 260784,
   "lastCheckEpoch": 0,
-  "restartCount": 2
+  "restartCount": 2,
+  "status": "DONE",
+  "finalMismatches": 7039
 }
