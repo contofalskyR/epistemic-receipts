@@ -12593,6 +12593,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): non-Western space, climate, post-9/11 — batch 2
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Chandrayaan-3 first soft landing near the lunar south pole ──────────────
+  {
+    externalId: 'trajectory:chandrayaan-3-south-pole-landing-2023',
+    text: 'India\'s Chandrayaan-3 Vikram lander made a soft landing near the Moon\'s south pole on 23 August 2023, making India the fourth nation to soft-land on the Moon and the first to land in the south-polar region.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2023-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-07-14',
+        datePrecision: 'DAY',
+        reason: 'ISRO launched Chandrayaan-3 aboard an LVM3 from Sriharikota on 14 July 2023. Whether the mission could achieve a controlled soft landing was a genuinely open question: India\'s previous attempt, Chandrayaan-2, had crashed in September 2019, and Russia\'s Luna-25 crashed during the same 2023 window.',
+        source: {
+          externalId: 'src:isro-chandrayaan3-launch-2023',
+          name: 'ISRO. "Chandrayaan-3" mission page — launch 14 July 2023.',
+          url: 'https://www.isro.gov.in/Chandrayaan3_Details.html',
+          publishedAt: '2023-07-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-08-23',
+        datePrecision: 'DAY',
+        reason: 'On 23 August 2023 at about 18:04 IST the Vikram lander executed a powered descent and soft-landed near 69°S latitude, broadcast live by ISRO and watched by tens of millions. India became the fourth country to soft-land on the Moon and the first to land in the south-polar region; the Pragyan rover rolled out hours later.',
+        source: {
+          externalId: 'src:isro-chandrayaan3-landing-2023',
+          name: 'ISRO. Announcement of successful Chandrayaan-3 soft landing, 23 August 2023.',
+          url: 'https://www.isro.gov.in/Chandrayaan3_New.html',
+          publishedAt: '2023-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-08-25',
+        datePrecision: 'DAY',
+        reason: 'The landing and its location were independently confirmed: NASA\'s Lunar Reconnaissance Orbiter imaged the Vikram lander on the surface, and the Pragyan rover returned in-situ data (including the first local measurements of sulphur and a temperature profile) over the subsequent lunar day, corroborating the touchdown on the public record.',
+        source: {
+          externalId: 'src:nasa-lro-vikram-2023',
+          name: 'NASA. Lunar Reconnaissance Orbiter image of the Chandrayaan-3 Vikram lander on the lunar surface, 2023.',
+          url: 'https://www.nasa.gov/image-article/nasas-lro-observes-chandrayaan-3-landing-site/',
+          publishedAt: '2023-08-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── China's Zhurong rover lands on Mars ────────────────────────────────────
+  {
+    externalId: 'trajectory:zhurong-mars-landing-2021',
+    text: 'China\'s Tianwen-1 mission landed the Zhurong rover in Utopia Planitia on Mars on 15 May 2021, making China the second nation to successfully operate a rover on the Martian surface.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-07-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-07-23',
+        datePrecision: 'DAY',
+        reason: 'The China National Space Administration launched Tianwen-1 — an orbiter, lander and rover together — aboard a Long March 5 on 23 July 2020. No nation had ever succeeded with an orbiter-plus-rover on its first independent Mars attempt; whether the entry, descent and landing would survive the "seven minutes of terror" was open.',
+        source: {
+          externalId: 'src:cnsa-tianwen1-launch-2020',
+          name: 'CNSA. Tianwen-1 mission launch, 23 July 2020.',
+          url: 'https://www.cnsa.gov.cn/english/n6465652/n6465653/index.html',
+          publishedAt: '2020-07-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-15',
+        datePrecision: 'DAY',
+        reason: 'On 15 May 2021 (Beijing time) the Tianwen-1 lander carrying the Zhurong rover touched down in southern Utopia Planitia. Chinese state media and CNSA announced the successful landing; the rover drove off its platform onto the surface on 22 May 2021, making China the second country to operate a rover on Mars.',
+        source: {
+          externalId: 'src:cnsa-zhurong-landing-2021',
+          name: 'CNSA / Xinhua. Announcement of Zhurong rover successful Mars landing in Utopia Planitia, 15 May 2021.',
+          url: 'https://www.cnsa.gov.cn/english/n6465652/n6465653/c6811117/content.html',
+          publishedAt: '2021-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-06-11',
+        datePrecision: 'DAY',
+        reason: 'The landing is settled on the international record: NASA\'s Mars Reconnaissance Orbiter imaged the Zhurong lander and rover on the surface, CNSA released colour surface images and panoramas on 11 June 2021, and the rover\'s traverse was tracked for over a year before it entered hibernation.',
+        source: {
+          externalId: 'src:cnsa-zhurong-images-2021',
+          name: 'CNSA. Release of Zhurong rover surface images from Mars, 11 June 2021.',
+          url: 'https://www.cnsa.gov.cn/english/n6465652/n6465653/c6812051/content.html',
+          publishedAt: '2021-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Event Horizon Telescope first image of a black hole (M87*) ─────────────
+  {
+    externalId: 'trajectory:eht-first-black-hole-image-2019',
+    text: 'The Event Horizon Telescope collaboration released the first direct image of a black hole — the supermassive black hole at the centre of galaxy M87 — on 10 April 2019.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-04-10',
+        datePrecision: 'DAY',
+        reason: 'On 10 April 2019 the EHT collaboration unveiled, in six coordinated press conferences (Washington, Brussels, Santiago, Shanghai, Taipei and Tokyo) and six papers in The Astrophysical Journal Letters, the first image of a black hole: a bright asymmetric ring around the shadow of M87*, reconstructed from a global VLBI array observing at 1.3 mm in April 2017.',
+        source: {
+          externalId: 'src:eht-m87-press-release-2019',
+          name: 'Event Horizon Telescope Collaboration. "Astronomers Capture First Image of a Black Hole," press release, 10 April 2019.',
+          url: 'https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole',
+          publishedAt: '2019-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-12',
+        datePrecision: 'DAY',
+        reason: 'The result was corroborated by independent reconstruction pipelines and reproducibility studies, and the technique was validated on a second target when the EHT imaged Sagittarius A* at the centre of the Milky Way on 12 May 2022. The measured ring size matched general-relativity predictions for the known mass, settling the image as a genuine black-hole shadow.',
+        source: {
+          externalId: 'src:eht-sgra-2022',
+          name: 'Event Horizon Telescope Collaboration. First Sagittarius A* results, The Astrophysical Journal Letters, 12 May 2022.',
+          url: 'https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy',
+          publishedAt: '2022-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 2002 Bali bombings ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bali-bombings-2002',
+    text: 'On 12 October 2002 coordinated bombings in the Kuta tourist district of Bali, Indonesia, killed 202 people; the attacks were carried out by the Islamist militant network Jemaah Islamiyah.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2002-10-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2002-10-12',
+        datePrecision: 'DAY',
+        reason: 'On the night of 12 October 2002 three bombs — a backpack device and a large car bomb at Paddy\'s Pub and the Sari Club in Kuta, plus a smaller device near the US consulate in Denpasar — killed 202 people from 21 countries and wounded over 200. The attack was reported worldwide within hours as the deadliest act of terrorism in Indonesian history.',
+        source: {
+          externalId: 'src:bali-bombing-news-2002',
+          name: 'Contemporaneous reporting on the Bali nightclub bombings, 12–13 October 2002 (BBC News).',
+          url: 'http://news.bbc.co.uk/2/hi/asia-pacific/2325125.stm',
+          publishedAt: '2002-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2003-08-07',
+        datePrecision: 'DAY',
+        reason: 'Indonesian police traced the attack to the al-Qaeda-linked network Jemaah Islamiyah. Amrozi bin Nurhasyim was convicted and sentenced to death on 7 August 2003, followed by convictions of Imam Samudra and Mukhlas (Ali Ghufron); the perpetrators\' identity and responsibility were established through confessions, forensic evidence and trial verdicts.',
+        source: {
+          externalId: 'src:bali-amrozi-verdict-2003',
+          name: 'Denpasar District Court verdict convicting Amrozi bin Nurhasyim for the Bali bombings, 7 August 2003 (BBC News report).',
+          url: 'http://news.bbc.co.uk/2/hi/asia-pacific/3130209.stm',
+          publishedAt: '2003-08-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2008-11-09',
+        datePrecision: 'DAY',
+        reason: 'After exhausting appeals, the three principal convicted bombers — Amrozi, Imam Samudra and Mukhlas — were executed by firing squad on Nusakambangan island early on 9 November 2008, giving the attribution a durable and final judicial footing.',
+        source: {
+          externalId: 'src:bali-bombers-executed-2008',
+          name: 'Reporting on the execution of the three Bali bombers, 9 November 2008 (CNN).',
+          url: 'https://www.cnn.com/2008/WORLD/asiapcf/11/09/bali.bombings/',
+          publishedAt: '2008-11-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Atmospheric CO2 at Mauna Loa first passes 400 ppm ──────────────────────
+  {
+    externalId: 'trajectory:mauna-loa-co2-400ppm-2013',
+    text: 'The daily mean atmospheric carbon-dioxide concentration measured at Mauna Loa Observatory, Hawaii, first exceeded 400 parts per million on 9 May 2013.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-05-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-05-09',
+        datePrecision: 'DAY',
+        reason: 'The NOAA Global Monitoring Division reported that the daily average CO2 reading at Mauna Loa for 9 May 2013 was 400.03 ppm — the first daily value above 400 ppm since continuous measurements began with Charles David Keeling in 1958. NOAA posted the result, and the Scripps Institution of Oceanography (running an independent instrument) confirmed the milestone.',
+        source: {
+          externalId: 'src:noaa-co2-400ppm-2013',
+          name: 'NOAA Earth System Research Laboratory / Scripps. Mauna Loa daily CO2 first exceeds 400 ppm, 9 May 2013.',
+          url: 'https://keelingcurve.ucsd.edu/2013/05/20/now-what/',
+          publishedAt: '2013-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-09-28',
+        datePrecision: 'DAY',
+        reason: 'The crossing is settled and one-directional: monthly and annual means subsequently passed 400 ppm (the September 2016 minimum stayed above 400 ppm, indicating CO2 would not fall below that line again in the modern record), and the two independent NOAA and Scripps measurement programs agree on the trajectory of the Keeling Curve.',
+        source: {
+          externalId: 'src:scripps-co2-permanent-400-2016',
+          name: 'Scripps Institution of Oceanography. "Is the world permanently above 400 ppm?" — September 2016 minimum analysis.',
+          url: 'https://scripps.ucsd.edu/news/carbon-dioxide-levels-wont-drop-below-symbolic-400-ppm-threshold-our-lifetimes',
+          publishedAt: '2016-09-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
