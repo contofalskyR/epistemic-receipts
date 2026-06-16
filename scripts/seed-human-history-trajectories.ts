@@ -18017,6 +18017,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Miller–Urey: amino acids from a simulated primitive atmosphere ───────────
+  {
+    externalId: 'trajectory:miller-urey-experiment-1953',
+    text: 'On 15 May 1953 Stanley Miller reported that passing electric sparks through a sealed flask of methane, ammonia, hydrogen, and water vapour — a simulated early-Earth atmosphere — produced amino acids, showing that organic building blocks of life can form from inorganic precursors without living organisms.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-05-15',
+        datePrecision: 'DAY',
+        reason: 'Working in Harold Urey\'s laboratory at the University of Chicago, graduate student Stanley Miller circulates a mixture of methane, ammonia, hydrogen, and water past a continuous electric discharge for a week and detects glycine and other amino acids in the resulting brown solution by paper chromatography. The single-author report in Science places on record the first laboratory synthesis of biological monomers under putative primitive-Earth conditions.',
+        source: {
+          externalId: 'src:miller-science-1953',
+          name: 'Miller S.L. A Production of Amino Acids Under Possible Primitive Earth Conditions. Science 1953;117(3046):528–529.',
+          url: 'https://doi.org/10.1126/science.117.3046.528',
+          publishedAt: '1953-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-17',
+        datePrecision: 'DAY',
+        reason: 'The experimental result is repeatedly reproduced and extended. In 2008 a team led by Jeffrey Bada reanalyses Miller\'s own sealed vials, archived since 1953, with modern high-performance liquid chromatography and mass spectrometry and identifies 22 amino acids — far more than Miller could detect — confirming and amplifying the original finding. That spark-discharge chemistry yields amino acids is settled fact; debate continues only over how closely the apparatus mimicked the actual early atmosphere.',
+        source: {
+          externalId: 'src:bada-miller-reanalysis-2008',
+          name: 'Johnson A.P., Cleaves H.J., Dworkin J.P., Glavin D.P., Lazcano A., Bada J.L. The Miller Volcanic Spark Discharge Experiment. Science 2008;322(5900):404.',
+          url: 'https://doi.org/10.1126/science.1161527',
+          publishedAt: '2008-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First working laser — Maiman's ruby laser ────────────────────────────────
+  {
+    externalId: 'trajectory:maiman-first-laser-1960',
+    text: 'On 16 May 1960 Theodore Maiman operated the first working laser, generating a coherent pulse of red light from a synthetic ruby rod at the Hughes Research Laboratories in Malibu, California.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1960-07-07',
+        datePrecision: 'DAY',
+        reason: 'Maiman achieves laser action on 16 May 1960 by flashing a helical xenon lamp around a silver-coated ruby cylinder, producing stimulated emission at 694.3 nm. After Physical Review Letters declines the manuscript, Hughes announces the result at a New York press conference on 7 July 1960, placing the first operating laser on the public record.',
+        source: {
+          externalId: 'src:hughes-laser-press-1960',
+          name: 'Hughes Aircraft Company press conference announcing the first operating laser, New York, 7 July 1960 (reported in The New York Times, 8 July 1960, "Light Amplification Claimed by Scientist").',
+          url: 'https://www.nytimes.com/1960/07/08/archives/a-physicist-discloses-light-amplification.html',
+          publishedAt: '1960-07-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-08-06',
+        datePrecision: 'DAY',
+        reason: 'Maiman\'s concise report appears in Nature, and within months the ruby laser is independently reproduced at Bell Telephone Laboratories and elsewhere, with the coherent, monochromatic output confirmed by multiple groups. The existence and operation of the laser become settled physics, launching quantum electronics as a field.',
+        source: {
+          externalId: 'src:maiman-nature-1960',
+          name: 'Maiman T.H. Stimulated Optical Radiation in Ruby. Nature 1960;187(4736):493–494.',
+          url: 'https://doi.org/10.1038/187493a0',
+          publishedAt: '1960-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of pulsars — Bell Burnell's "LGM-1" ────────────────────────────
+  {
+    externalId: 'trajectory:bell-pulsars-discovered-1967',
+    text: 'On 28 November 1967 Jocelyn Bell, using a radio telescope at Cambridge, recorded a source emitting radio pulses with extraordinary regularity (about every 1.337 seconds) — the first detection of a pulsar, soon understood to be a rapidly rotating neutron star.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-11-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-11-28',
+        datePrecision: 'DAY',
+        reason: 'Reviewing chart-recorder traces from the Interplanetary Scintillation Array, graduate student Jocelyn Bell finds a "bit of scruff" that resolves into a train of pulses of period 1.337 s from a fixed point on the sky (the source CP 1919). The signal\'s precision is so unlike any known astrophysical source that the team half-jokingly labels it "LGM-1" (Little Green Men) while ruling out terrestrial interference and an artificial origin.',
+        source: {
+          externalId: 'src:bell-burnell-petit-four-1977',
+          name: 'Bell Burnell S.J. Little Green Men, White Dwarfs or Pulsars? (after-dinner account of the 28 November 1967 discovery). Annals of the New York Academy of Sciences 1977;302:685–689.',
+          url: 'https://doi.org/10.1111/j.1749-6632.1977.tb37085.x',
+          publishedAt: '1977-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-02-24',
+        datePrecision: 'DAY',
+        reason: 'Hewish, Bell and colleagues announce the discovery of the rapidly pulsating radio source in Nature on 24 February 1968. Within months further pulsars are found, and Thomas Gold\'s rotating neutron-star model is confirmed by the discovery of the Crab and Vela pulsars — the latter sitting in a supernova remnant and slowing exactly as predicted — settling pulsars as a new class of object. The work earns the 1974 Nobel Prize in Physics.',
+        source: {
+          externalId: 'src:hewish-bell-nature-1968',
+          name: 'Hewish A., Bell S.J., Pilkington J.D.H., Scott P.F., Collins R.A. Observation of a Rapidly Pulsating Radio Source. Nature 1968;217(5130):709–713.',
+          url: 'https://doi.org/10.1038/217709a0',
+          publishedAt: '1968-02-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First human-to-human heart transplant — Christiaan Barnard ───────────────
+  {
+    externalId: 'trajectory:barnard-first-heart-transplant-1967',
+    text: 'On 3 December 1967 Christiaan Barnard performed the first human-to-human heart transplant at Groote Schuur Hospital, Cape Town, replacing the failing heart of Louis Washkansky with that of accident victim Denise Darvall.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-12-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1967-12-03',
+        datePrecision: 'DAY',
+        reason: 'In a nine-hour operation Barnard\'s team excises the heart of brain-dead donor Denise Darvall and sutures it into 53-year-old Louis Washkansky, who regains consciousness with a beating transplanted heart. The hospital and worldwide press report the operation within hours, placing the first human cardiac transplant on the public record.',
+        source: {
+          externalId: 'src:barnard-samj-1967',
+          name: 'Barnard C.N. The Operation. A Human Cardiac Transplant: an Interim Report of a Successful Operation Performed at Groote Schuur Hospital, Cape Town. South African Medical Journal 1967;41(48):1271–1274.',
+          url: 'https://hdl.handle.net/10520/AJA20785135_64829',
+          publishedAt: '1967-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Washkansky lived 18 days before dying of pneumonia, and early transplants were limited by rejection; but the procedure was rapidly replicated worldwide. With the introduction of the immunosuppressant ciclosporin in the early 1980s, long-term survival became routine and heart transplantation was established as accepted therapy for end-stage heart failure — settling Barnard\'s 1967 operation as the founding case of a standard surgical practice.',
+        source: {
+          externalId: 'src:cyclosporine-heart-transplant-1984',
+          name: 'Oyer P.E., Stinson E.B., Jamieson S.W., et al. Cyclosporine in Cardiac Transplantation: A 2.5 Year Follow-up. Transplantation Proceedings 1983;15(Suppl 1):2546–2552 (documenting the post-ciclosporin survival that established the procedure).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6342195/',
+          publishedAt: '1984-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── "Lucy" — Australopithecus afarensis discovered at Hadar ──────────────────
+  {
+    externalId: 'trajectory:lucy-afarensis-discovered-1974',
+    text: 'On 24 November 1974, at Hadar in the Afar region of Ethiopia, Donald Johanson and Tom Gray discovered "Lucy" (AL 288-1), a roughly 40%-complete skeleton of a 3.2-million-year-old bipedal hominin later named Australopithecus afarensis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-11-24',
+        datePrecision: 'DAY',
+        reason: 'Surveying a gully at Hadar, Johanson spots a fossil forearm fragment that leads to hundreds of bone pieces from a single small adult hominin individual. The knee and pelvis show the animal walked upright, while the skull and body were ape-sized — an unusually complete skeleton from a hitherto unknown stage of human evolution, recorded in the expedition\'s 1974 field notes and reported in Nature in 1976.',
+        source: {
+          externalId: 'src:johanson-taieb-nature-1976',
+          name: 'Johanson D.C., Taieb M. Plio-Pleistocene Hominid Discoveries in Hadar, Ethiopia. Nature 1976;260(5549):293–297.',
+          url: 'https://doi.org/10.1038/260293a0',
+          publishedAt: '1976-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Johanson, Tim White and Yves Coppens formally describe the Hadar and Laetoli fossils as a new species, Australopithecus afarensis, establishing that bipedal locomotion evolved well before large brains. The interpretation is corroborated by the contemporaneous Laetoli footprint trail (1976–78) and by decades of further afarensis finds; A. afarensis is now a securely settled hominin species and Lucy a touchstone specimen of human evolution.',
+        source: {
+          externalId: 'src:johanson-white-afarensis-1978',
+          name: 'Johanson D.C., White T.D., Coppens Y. A New Species of the Genus Australopithecus (Primates: Hominidae) from the Pliocene of Eastern Africa. Kirtlandia 1978;28:1–14.',
+          url: 'https://www.jstor.org/stable/4060054',
+          publishedAt: '1978-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
