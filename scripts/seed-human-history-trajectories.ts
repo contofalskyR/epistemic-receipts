@@ -7334,6 +7334,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eddington eclipse confirms general relativity ───────────────────────────
+  {
+    externalId: 'trajectory:eddington-eclipse-relativity-1919',
+    text: 'The British eclipse expeditions of 29 May 1919, led by Arthur Eddington, measured the deflection of starlight passing the Sun and confirmed the value (~1.75 arcseconds) predicted by Einstein\'s general theory of relativity rather than the Newtonian value.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-11-25',
+        datePrecision: 'DAY',
+        reason: 'Einstein presents the final field equations of general relativity to the Prussian Academy of Sciences on 25 November 1915. The theory predicts that the Sun\'s gravity should bend light from background stars by about 1.75 arcseconds — twice the value a Newtonian "corpuscle" calculation gives. The prediction is a sharp, falsifiable test, but with no eclipse data it remains contested against Newtonian gravity.',
+        source: {
+          externalId: 'src:einstein-feldgleichungen-1915',
+          name: 'Einstein A. Die Feldgleichungen der Gravitation. Sitzungsberichte der Preußischen Akademie der Wissenschaften, 25 November 1915, 844–847.',
+          url: 'https://en.wikipedia.org/wiki/Einstein_field_equations',
+          publishedAt: '1915-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-11-06',
+        datePrecision: 'DAY',
+        reason: 'Photographic plates taken during the total solar eclipse of 29 May 1919 — from Príncipe (Eddington) and Sobral, Brazil (Crommelin) — are measured against night-time reference plates. At a joint meeting of the Royal Society and the Royal Astronomical Society on 6 November 1919, the results are announced as agreeing with Einstein\'s prediction, not Newton\'s. The finding makes Einstein internationally famous overnight.',
+        source: {
+          externalId: 'src:dyson-eddington-eclipse-1920',
+          name: 'Dyson FW, Eddington AS, Davidson C. A Determination of the Deflection of Light by the Sun\'s Gravitational Field, from Observations Made at the Total Eclipse of May 29, 1919. Phil. Trans. R. Soc. A 1920;220:291–333.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rsta.1920.0009',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Though some contemporaries questioned the 1919 plates\' precision, repeated eclipse expeditions and especially radio-interferometry measurements of quasars (from the 1970s onward) confirmed the relativistic deflection to better than 1%. Light-bending became a textbook-settled prediction of general relativity, later extended into gravitational lensing as a routine tool of astronomy.',
+        source: {
+          externalId: 'src:fomalont-radio-deflection-1976',
+          name: 'Fomalont EB, Sramek RA. Measurements of the Solar Gravitational Deflection of Radio Waves in Agreement with General Relativity. Phys. Rev. Lett. 1976;36:1475.',
+          url: 'https://en.wikipedia.org/wiki/Tests_of_general_relativity',
+          publishedAt: '1976-06-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Heisenberg uncertainty principle ────────────────────────────────────────
+  {
+    externalId: 'trajectory:heisenberg-uncertainty-1927',
+    text: 'Werner Heisenberg formulated the uncertainty principle — that the position and momentum of a particle cannot both be determined to arbitrary precision, with their uncertainties bounded by Planck\'s constant — in a paper received by Zeitschrift für Physik on 23 March 1927.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1927-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-03-23',
+        datePrecision: 'DAY',
+        reason: 'In "Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik," received 23 March 1927, Heisenberg argues that the act of measuring a particle\'s position disturbs its momentum, and vice versa, so that the product of the uncertainties cannot be smaller than a quantity of order Planck\'s constant. The principle is presented as an intrinsic feature of quantum mechanics, not a limitation of instruments.',
+        source: {
+          externalId: 'src:heisenberg-unbestimmtheit-1927',
+          name: 'Heisenberg W. Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik. Zeitschrift für Physik 1927;43(3–4):172–198.',
+          url: 'https://en.wikipedia.org/wiki/Uncertainty_principle',
+          publishedAt: '1927-03-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Earle Kennard (1927) and Hermann Weyl (1928) put the principle on a rigorous mathematical footing as an inequality between the standard deviations of conjugate observables, independent of any specific measurement disturbance. Combined with Bohr\'s complementarity, the uncertainty relations became a settled foundation of the Copenhagen interpretation and of quantum mechanics generally, confirmed by countless experiments.',
+        source: {
+          externalId: 'src:kennard-uncertainty-1927',
+          name: 'Kennard EH. Zur Quantenmechanik einfacher Bewegungstypen. Zeitschrift für Physik 1927;44(4–5):326–352.',
+          url: 'https://en.wikipedia.org/wiki/Uncertainty_principle',
+          publishedAt: '1927-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hubble discovers the expanding universe ─────────────────────────────────
+  {
+    externalId: 'trajectory:hubble-expanding-universe-1929',
+    text: 'Edwin Hubble demonstrated that the recession velocity of distant galaxies is proportional to their distance — evidence that the universe is expanding — in a paper published in the Proceedings of the National Academy of Sciences on 15 March 1929.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-03-15',
+        datePrecision: 'DAY',
+        reason: 'Using Cepheid-calibrated distances to 46 galaxies and Vesto Slipher\'s redshift measurements, Hubble plots radial velocity against distance and finds a roughly linear relation (v = H₀d). Published in PNAS on 15 March 1929, "A Relation between Distance and Radial Velocity among Extra-Galactic Nebulae" provides the first observational evidence that more distant galaxies recede faster — the signature of a uniformly expanding cosmos.',
+        source: {
+          externalId: 'src:hubble-velocity-distance-1929',
+          name: 'Hubble E. A Relation between Distance and Radial Velocity among Extra-Galactic Nebulae. PNAS 1929;15(3):168–173.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.15.3.168',
+          publishedAt: '1929-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hubble and Milton Humason extend the velocity–distance relation to far larger redshifts (1931), confirming the linear law to greater distances. The result aligns with Georges Lemaître\'s 1927 expanding-universe solution and Friedmann\'s cosmology, displacing the static-universe model. The expansion of the universe — and the implied Big Bang origin — becomes a settled foundation of modern cosmology.',
+        source: {
+          externalId: 'src:hubble-humason-velocity-1931',
+          name: 'Hubble E, Humason ML. The Velocity-Distance Relation among Extra-Galactic Nebulae. Astrophysical Journal 1931;74:43–80.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1931ApJ....74...43H',
+          publishedAt: '1931-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hiroshima atomic bombing ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:hiroshima-atomic-bomb-1945',
+    text: 'The United States dropped a uranium gun-type atomic bomb ("Little Boy") on Hiroshima, Japan, at 8:15 a.m. local time on 6 August 1945 — the first use of a nuclear weapon in warfare.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1945-08-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-08-06',
+        datePrecision: 'DAY',
+        reason: 'The B-29 Enola Gay releases "Little Boy" over Hiroshima; it detonates at about 580 m altitude at 8:15 a.m., destroying the city center and killing tens of thousands instantly. Hours later President Truman announces the use of an atomic bomb in a public statement, the first official confirmation that the weapon exists and has been deployed.',
+        source: {
+          externalId: 'src:truman-statement-hiroshima-1945',
+          name: 'Truman HS. Statement by the President Announcing the Use of the A-Bomb at Hiroshima, 6 August 1945. (Harry S. Truman Library)',
+          url: 'https://www.trumanlibrary.gov/library/public-papers/93/statement-president-announcing-use-bomb-hiroshima',
+          publishedAt: '1945-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-06-30',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Strategic Bombing Survey and the Manhattan Engineer District investigation document the blast yield (~15 kilotons), the radius of destruction, and the casualty figures with on-the-ground surveys and physical measurements. Combined with Japanese municipal records and survivor testimony, the event becomes one of the most thoroughly documented single attacks in history, settled beyond dispute.',
+        source: {
+          externalId: 'src:usssbs-hiroshima-nagasaki-1946',
+          name: 'United States Strategic Bombing Survey. The Effects of the Atomic Bombings of Hiroshima and Nagasaki. 30 June 1946.',
+          url: 'https://www.trumanlibrary.gov/library/research-files/united-states-strategic-bombing-survey-effects-atomic-bombs-hiroshima-and',
+          publishedAt: '1946-06-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kristallnacht ───────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:kristallnacht-1938',
+    text: 'On the night of 9–10 November 1938, a coordinated wave of antisemitic violence across Nazi Germany and Austria ("Kristallnacht") destroyed hundreds of synagogues and thousands of Jewish businesses and killed dozens of Jews, marking an escalation from legal persecution to organized state violence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1938-11-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1938-11-10',
+        datePrecision: 'DAY',
+        reason: 'Following the assassination of German diplomat Ernst vom Rath in Paris, SA paramilitaries and civilians carry out pogroms across the Reich on the night of 9–10 November 1938, burning synagogues and smashing Jewish-owned shopfronts. SD chief Reinhard Heydrich\'s teletyped report of 11 November tallies 815 shops, 171 dwellings, and 191 synagogues destroyed and some 20,000 Jews arrested — figures the regime itself recorded.',
+        source: {
+          externalId: 'src:heydrich-report-kristallnacht-1938',
+          name: 'Heydrich R. Geheime Staatspolizei teletype report on the November pogrom to Göring, 11 November 1938. (Nuremberg Trial document PS-3058)',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/kristallnacht',
+          publishedAt: '1938-11-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-10-01',
+        datePrecision: 'DAY',
+        reason: 'The pogrom is documented in contemporaneous foreign press, diplomatic dispatches, and the regime\'s own administrative and insurance records, and is entered into evidence at the International Military Tribunal at Nuremberg (1945–46). Postwar historiography establishes Kristallnacht as a turning point toward the systematic persecution that became the Holocaust; the facts are settled across judicial and scholarly records.',
+        source: {
+          externalId: 'src:imt-nuremberg-judgment-1946',
+          name: 'International Military Tribunal, Nuremberg. Judgment, 1 October 1946 (Trial of the Major War Criminals, vol. 1).',
+          url: 'https://www.ushmm.org/learn/timeline-of-events/1939-1941/kristallnacht',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
