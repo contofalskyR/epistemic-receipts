@@ -18231,6 +18231,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — non-Western perspectives
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 2004 Indian Ocean earthquake and tsunami ────────────────────────────────
+  {
+    externalId: 'trajectory:indian-ocean-tsunami-2004',
+    text: 'A megathrust earthquake of moment magnitude ~9.1 ruptured the Sunda Trench off northern Sumatra on 26 December 2004, generating an Indian Ocean tsunami that killed roughly 227,000 people across fourteen countries.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-12-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-12-26',
+        datePrecision: 'DAY',
+        reason: 'At 00:58 UTC global seismic networks recorded a massive earthquake off Sumatra; within hours the USGS issued a preliminary magnitude near 8.5 and reports of devastating coastal flooding arrived from Aceh, Sri Lanka, Thailand, and India. The occurrence of the earthquake and tsunami was recorded contemporaneously, though its size and toll were not yet known.',
+        source: {
+          externalId: 'src:usgs-sumatra-andaman-2004',
+          name: 'USGS. "M 9.1 — 2004 Sumatra-Andaman Earthquake" event page.',
+          url: 'https://earthquake.usgs.gov/earthquakes/eventpage/official20041226005853450_30',
+          publishedAt: '2004-12-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Initial body-wave estimates of about Mw 8.5–9.0 were challenged as seismologists analyzed the rupture using Earth\'s long-period free oscillations and geodetic data. The true magnitude, rupture length (~1,300 km), and energy release were actively debated in early 2005, with some normal-mode analyses suggesting values as high as Mw 9.3.',
+        source: {
+          externalId: 'src:stein-okal-sumatra-2005',
+          name: 'Stein S., Okal E.A. "Speed and size of the Sumatra earthquake." Nature 434, 581–582 (2005).',
+          url: 'https://www.nature.com/articles/434581a',
+          publishedAt: '2005-03-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-05-20',
+        datePrecision: 'MONTH',
+        reason: 'Convergent seismological, geodetic, and tide-gauge analyses settled the event at moment magnitude ~9.1 (within a 9.0–9.3 range), making it the third-largest earthquake ever instrumentally recorded. The death toll of roughly 227,000 across fourteen Indian Ocean nations — with Indonesia\'s Aceh province hardest hit — is established on the public scientific and humanitarian record.',
+        source: {
+          externalId: 'src:lay-great-sumatra-science-2005',
+          name: 'Lay T. et al. "The Great Sumatra-Andaman Earthquake of 26 December 2004." Science 308, 1127–1133 (2005).',
+          url: 'https://www.science.org/doi/10.1126/science.1112250',
+          publishedAt: '2005-05-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pokhran-II: India's 1998 nuclear tests ──────────────────────────────────
+  {
+    externalId: 'trajectory:pokhran-ii-nuclear-tests-1998',
+    text: 'India conducted a series of underground nuclear tests at Pokhran on 11 and 13 May 1998 (Operation Shakti / Pokhran-II), including a device New Delhi described as thermonuclear; the tests occurred, but the claimed thermonuclear yield remains disputed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-05-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-05-11',
+        datePrecision: 'DAY',
+        reason: 'On 11 May 1998 Prime Minister Atal Bihari Vajpayee announced that India had conducted three underground nuclear tests at Pokhran — a fission device, a thermonuclear device, and a sub-kiloton device — followed by two further sub-kiloton tests on 13 May. The Bhabha Atomic Research Centre stated the thermonuclear test yielded about 43 kilotons.',
+        source: {
+          externalId: 'src:vajpayee-pokhran-statement-1998',
+          name: 'Government of India / PMO. Prime Minister Vajpayee statement on the Pokhran nuclear tests, 11 May 1998.',
+          url: 'https://www.armscontrol.org/act/1998-05/press-releases/indian-prime-minister-vajpayees-statement-nuclear-tests',
+          publishedAt: '1998-05-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-05-12',
+        datePrecision: 'DAY',
+        reason: 'The detonations were independently confirmed by global seismic monitoring stations, which recorded the 11 May event as a seismic signal of body-wave magnitude near 5.0. That India conducted underground nuclear tests on these dates is settled and uncontested.',
+        source: {
+          externalId: 'src:barker-monitoring-nuclear-tests-science-1998',
+          name: 'Barker B. et al. "Monitoring Nuclear Tests." Science 281, 1967–1968 (1998).',
+          url: 'https://www.science.org/doi/10.1126/science.281.5385.1967',
+          publishedAt: '1998-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-27',
+        datePrecision: 'DAY',
+        reason: 'Western seismologists estimated the combined 11 May yield well below India\'s claim, and in August 2009 K. Santhanam — the DRDO coordinator of the 1998 tests — publicly asserted that the thermonuclear device had been a "fizzle" that failed to achieve its design yield. Other Indian officials, including R. Chidambaram, rejected this. Whether the thermonuclear test fully succeeded remains contested.',
+        source: {
+          externalId: 'src:santhanam-thermonuclear-fizzle-2009',
+          name: 'Santhanam K., remarks reported by The Hindu, "Pokhran-II thermonuclear test a fizzle," 27 August 2009.',
+          url: 'https://www.thehindu.com/news/national/Pokhran-II-not-fully-successful-Scientist/article16880869.ece',
+          publishedAt: '2009-08-27',
+          methodologyType: 'opinion',
+        },
+      },
+    ],
+  },
+
+  // ── Rwandan genocide judicially established (ICTR, Akayesu) ──────────────────
+  {
+    externalId: 'trajectory:rwanda-genocide-akayesu-1998',
+    text: 'The mass killing of Tutsi in Rwanda between April and July 1994 constituted genocide under the 1948 Genocide Convention — judicially established by the International Criminal Tribunal for Rwanda in its 2 September 1998 Akayesu judgment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1994-04-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1994-04-07',
+        datePrecision: 'DAY',
+        reason: 'Beginning 7 April 1994, the day after President Habyarimana\'s plane was shot down, organized mass killings of Tutsi swept Rwanda. UN peacekeepers (UNAMIR), aid workers, and journalists recorded the slaughter contemporaneously as it unfolded over roughly 100 days, killing an estimated 500,000–800,000 people.',
+        source: {
+          externalId: 'src:unamir-dallaire-cables-1994',
+          name: 'UNAMIR / R. Dallaire. Contemporaneous field cables and reports to UN DPKO, April–July 1994.',
+          url: 'https://www.un.org/en/preventgenocide/rwanda/historical-background.shtml',
+          publishedAt: '1994-04-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Through the spring of 1994 the United States and other governments deliberately avoided the legal term "genocide" — invoking only "acts of genocide" — to escape the obligations of the 1948 Convention, while debate continued over whether the killings met its definition. The applicability of the genocide label was, for a time, contested in official discourse.',
+        source: {
+          externalId: 'src:state-dept-acts-of-genocide-1994',
+          name: 'U.S. Department of State daily press briefing transcripts using "acts of genocide," June 1994.',
+          url: 'https://nsarchive2.gwu.edu/NSAEBB/NSAEBB53/',
+          publishedAt: '1994-06-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1998-09-02',
+        datePrecision: 'DAY',
+        reason: 'On 2 September 1998 the International Criminal Tribunal for Rwanda convicted Jean-Paul Akayesu of genocide — the first conviction for genocide by an international court and the first judicial interpretation of the 1948 Convention. The judgment formally established that genocide against the Tutsi had occurred, settling the question in international law.',
+        source: {
+          externalId: 'src:ictr-akayesu-judgment-1998',
+          name: 'ICTR. Prosecutor v. Jean-Paul Akayesu (ICTR-96-4-T), Trial Chamber Judgment, 2 September 1998.',
+          url: 'https://unictr.irmct.org/sites/unictr.org/files/case-documents/ictr-96-4/trial-judgements/en/980902.pdf',
+          publishedAt: '1998-09-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Shenzhou 5: China's first human spaceflight ─────────────────────────────
+  {
+    externalId: 'trajectory:shenzhou-5-first-chinese-spaceflight-2003',
+    text: 'China launched its first crewed spaceflight, Shenzhou 5, on 15 October 2003, carrying astronaut Yang Liwei into orbit and making China the third nation to independently send a human to space.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-10-15',
+        datePrecision: 'DAY',
+        reason: 'China had developed its crewed Shenzhou programme largely in secrecy, and whether its first piloted launch would succeed was an open question until the Long March 2F lifted off from Jiuquan with Yang Liwei aboard on the morning of 15 October 2003.',
+        source: {
+          externalId: 'src:xinhua-shenzhou5-launch-2003',
+          name: 'Xinhua / CNSA. Announcement of Shenzhou 5 crewed launch, 15 October 2003.',
+          url: 'http://www.cnsa.gov.cn/english/n6465645/n6465648/c6768094/content.html',
+          publishedAt: '2003-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-10-16',
+        datePrecision: 'DAY',
+        reason: 'Yang Liwei orbited the Earth and the Shenzhou 5 descent module landed safely in Inner Mongolia after about 21 hours, on 16 October 2003. China officially confirmed the successful flight and recovery, recording its entry as the third country to launch a human into orbit using its own technology.',
+        source: {
+          externalId: 'src:cnsa-shenzhou5-return-2003',
+          name: 'CNSA / Xinhua. Confirmation of Shenzhou 5 safe return and recovery, 16 October 2003.',
+          url: 'https://www.nasa.gov/news-release/nasa-administrator-statement-on-chinese-human-space-flight/',
+          publishedAt: '2003-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-10-16',
+        datePrecision: 'DAY',
+        reason: 'International tracking, NASA acknowledgement, and independent observers corroborated the orbit and recovery. The flight\'s occurrence and date are settled on the public record, and China subsequently built on it with further Shenzhou missions and its own space station.',
+        source: {
+          externalId: 'src:nasa-statement-chinese-spaceflight-2003',
+          name: 'NASA. Administrator statement congratulating China on its first human spaceflight, 15 October 2003.',
+          url: 'https://www.nasa.gov/news-release/nasa-administrator-statement-on-chinese-human-space-flight/',
+          publishedAt: '2003-10-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── East Timor independence referendum ──────────────────────────────────────
+  {
+    externalId: 'trajectory:east-timor-referendum-1999',
+    text: 'In a UN-supervised popular consultation on 30 August 1999, the people of East Timor voted 78.5% to reject autonomy within Indonesia, choosing independence — the result announced on 4 September 1999.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1999-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-05-05',
+        datePrecision: 'MONTH',
+        reason: 'Since its 1975–76 invasion and annexation of East Timor, Indonesia had maintained that the territory\'s people supported integration — a claim the United Nations never recognized and that the independence movement disputed. The 5 May 1999 New York Agreement arranged a UN-run ballot to resolve the contested question of popular will.',
+        source: {
+          externalId: 'src:un-new-york-agreement-east-timor-1999',
+          name: 'United Nations. Agreement on the question of East Timor (New York Agreement), 5 May 1999.',
+          url: 'https://peacemaker.un.org/timorleste-agreement-question99',
+          publishedAt: '1999-05-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-08-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 August 1999 East Timorese voted in a UN Mission in East Timor (UNAMET)-administered ballot with turnout above 98%. Ballots were collected and counted under UN supervision despite a climate of militia intimidation.',
+        source: {
+          externalId: 'src:unamet-east-timor-ballot-1999',
+          name: 'UNAMET / United Nations. Report on the 30 August 1999 popular consultation in East Timor.',
+          url: 'https://peacekeeping.un.org/sites/default/files/past/etimor/UntaetB.htm',
+          publishedAt: '1999-08-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-09-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 September 1999 the UN Secretary-General announced the result: 344,580 voters (78.5%) rejected the proposed special autonomy within Indonesia, against 94,388 (21.5%) in favour, decisively choosing independence. The outcome was accepted internationally, and East Timor became a sovereign state on 20 May 2002.',
+        source: {
+          externalId: 'src:un-east-timor-result-1999',
+          name: 'United Nations. Announcement of the result of the East Timor popular consultation, 4 September 1999.',
+          url: 'https://press.un.org/en/1999/19990903.sgsm7119.html',
+          publishedAt: '1999-09-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
