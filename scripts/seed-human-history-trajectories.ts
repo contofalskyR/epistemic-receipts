@@ -5857,6 +5857,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY 20TH CENTURY — PHYSICS REVOLUTION, TOTALITARIANISM, ATOMIC AGE (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Planck introduces the quantum hypothesis ────────────────────────────────
+  {
+    externalId: 'trajectory:planck-quantum-hypothesis-1900',
+    text: 'Max Planck introduced the quantum hypothesis — that energy is radiated in discrete units (quanta) of size E = hν — in a lecture to the German Physical Society in Berlin on 14 December 1900.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1900-12-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-12-14',
+        datePrecision: 'DAY',
+        reason: 'To derive the correct spectrum of black-body radiation, Planck presents to the Deutsche Physikalische Gesellschaft a formula requiring that the energy of oscillators be quantized in finite packets proportional to frequency, introducing the constant h. He regards the assumption as a formal mathematical device ("an act of desperation") rather than a physical truth, but it reproduces the observed radiation curve exactly.',
+        source: {
+          externalId: 'src:planck-quantum-1900',
+          name: 'Planck M. Zur Theorie des Gesetzes der Energieverteilung im Normalspectrum. Verhandlungen der Deutschen Physikalischen Gesellschaft 1900;2:237–245.',
+          url: 'https://en.wikipedia.org/wiki/Planck%27s_law',
+          publishedAt: '1900-12-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The quantum proves to be physically real, not a formal trick. Einstein applies energy quanta to explain the photoelectric effect (1905); Niels Bohr uses quantization to derive the hydrogen spectrum in his atomic model (1913). The quantum hypothesis becomes the foundation of quantum mechanics; Planck receives the 1918 Nobel Prize in Physics for the discovery of energy quanta.',
+        source: {
+          externalId: 'src:bohr-atom-1913',
+          name: 'Bohr N. On the Constitution of Atoms and Molecules. Philosophical Magazine 1913;26(151):1–25.',
+          url: 'https://en.wikipedia.org/wiki/Bohr_model',
+          publishedAt: '1913-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Einstein publishes special relativity ───────────────────────────────────
+  {
+    externalId: 'trajectory:einstein-special-relativity-1905',
+    text: 'Albert Einstein published the special theory of relativity — abolishing absolute time and the luminiferous aether and making the speed of light invariant for all inertial observers — in "Zur Elektrodynamik bewegter Körper," received by Annalen der Physik on 30 June 1905.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1905-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-09-26',
+        datePrecision: 'DAY',
+        reason: 'Einstein\'s paper, received 30 June and published 26 September 1905, derives length contraction, time dilation, and the relativity of simultaneity from two postulates: the laws of physics are identical in all inertial frames, and the speed of light in vacuum is constant. It dispenses with the aether entirely. A companion paper that November introduces the mass–energy equivalence E = mc².',
+        source: {
+          externalId: 'src:einstein-electrodynamics-1905',
+          name: 'Einstein A. Zur Elektrodynamik bewegter Körper. Annalen der Physik 1905;17(10):891–921.',
+          url: 'https://en.wikipedia.org/wiki/Annus_mirabilis_papers',
+          publishedAt: '1905-09-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hermann Minkowski recasts the theory as a unified four-dimensional spacetime geometry (1908), and experiments on the velocity-dependence of electron mass (Bucherer 1908) confirm the relativistic predictions. Special relativity becomes a settled cornerstone of physics, repeatedly verified by particle accelerators and time-dilation measurements throughout the twentieth century.',
+        source: {
+          externalId: 'src:minkowski-spacetime-1908',
+          name: 'Minkowski H. Raum und Zeit. Address to the 80th Assembly of German Natural Scientists and Physicians, Cologne, 21 September 1908.',
+          url: 'https://en.wikipedia.org/wiki/Spacetime',
+          publishedAt: '1908-09-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chadwick discovers the neutron ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:chadwick-neutron-1932',
+    text: 'James Chadwick discovered the neutron — an electrically neutral nuclear particle of roughly proton mass — reporting it in a letter to Nature on 27 February 1932.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-18',
+        datePrecision: 'DAY',
+        reason: 'Irène Joliot-Curie and Frédéric Joliot report a penetrating radiation, produced by bombarding beryllium with alpha particles, that ejects high-energy protons from paraffin. They interpret it as high-energy gamma radiation — but that interpretation violates energy and momentum conservation, leaving the nature of the radiation an open puzzle.',
+        source: {
+          externalId: 'src:joliot-curie-beryllium-1932',
+          name: 'Joliot F, Curie I. Émission de protons de grande vitesse par les substances hydrogénées sous l\'influence des rayons γ très pénétrants. Comptes Rendus 1932;194:273–275.',
+          url: 'https://en.wikipedia.org/wiki/Discovery_of_the_neutron',
+          publishedAt: '1932-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-02-27',
+        datePrecision: 'DAY',
+        reason: 'At the Cavendish Laboratory, Chadwick measures the recoil of nitrogen and other nuclei struck by the beryllium radiation and shows by conservation of energy and momentum that it must be a neutral particle of mass close to the proton — not a gamma ray. He announces "Possible Existence of a Neutron" in Nature, confirming the particle Rutherford had hypothesized in 1920.',
+        source: {
+          externalId: 'src:chadwick-neutron-nature-1932',
+          name: 'Chadwick J. Possible Existence of a Neutron. Nature 1932;129:312.',
+          url: 'https://www.nature.com/articles/129312a0',
+          publishedAt: '1932-02-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Chadwick\'s fuller paper in the Proceedings of the Royal Society establishes the neutron\'s mass precisely, and the particle is rapidly incorporated into the proton–neutron model of the nucleus (Heisenberg, Ivanenko). The neutron becomes the key to nuclear fission discovered in 1938. Chadwick is awarded the 1935 Nobel Prize in Physics for the discovery.',
+        source: {
+          externalId: 'src:chadwick-neutron-prs-1932',
+          name: 'Chadwick J. The Existence of a Neutron. Proceedings of the Royal Society A 1932;136(830):692–708.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rspa.1932.0112',
+          publishedAt: '1932-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Trinity — first detonation of a nuclear weapon ──────────────────────────
+  {
+    externalId: 'trajectory:trinity-nuclear-test-1945',
+    text: 'The Trinity test on 16 July 1945 was the first detonation of a nuclear weapon — a plutonium implosion device fired at 5:29 a.m. at the Alamogordo Bombing Range in New Mexico, yielding the energy of roughly 21 kilotons of TNT.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1945-07-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-07-16',
+        datePrecision: 'DAY',
+        reason: 'At 5:29:45 a.m. Mountain War Time the Manhattan Project detonates "the Gadget," a plutonium implosion device, atop a 100-foot steel tower at the Trinity site near Alamogordo. The explosion vaporizes the tower, fuses the desert sand into the glassy mineral later called trinitite, and is recorded by instruments and eyewitnesses including Oppenheimer, Fermi, and Groves. Results are immediately classified; a cover story attributes the flash to an ammunition-dump explosion.',
+        source: {
+          externalId: 'src:groves-trinity-memo-1945',
+          name: 'Groves LR. Memorandum to the Secretary of War: The Test (Trinity), 18 July 1945. (Manhattan Project records, U.S. National Archives)',
+          url: 'https://www.atomicarchive.com/resources/documents/trinity/groves-memo.html',
+          publishedAt: '1945-07-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-08-12',
+        datePrecision: 'DAY',
+        reason: 'After the bombings of Hiroshima and Nagasaki, the U.S. government publicly documents the Trinity test in the Smyth Report (released 12 August 1945), describing the device, the site, and the successful detonation. The yield was later established at about 21 kilotons. The site is designated a National Historic Landmark; the test is settled history and the start of the nuclear age.',
+        source: {
+          externalId: 'src:smyth-report-trinity-1945',
+          name: 'Smyth HD. Atomic Energy for Military Purposes (the Smyth Report). Princeton University Press, 1945, ch. XII (the Trinity test).',
+          url: 'https://en.wikipedia.org/wiki/Trinity_(nuclear_test)',
+          publishedAt: '1945-08-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Liberation of Auschwitz ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:auschwitz-liberation-1945',
+    text: 'Soviet troops of the Red Army liberated the Auschwitz-Birkenau concentration and extermination camp complex on 27 January 1945, finding roughly 7,000 surviving prisoners and physical evidence of mass murder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-01-27',
+        datePrecision: 'DAY',
+        reason: 'Soldiers of the 60th Army of the 1st Ukrainian Front enter Auschwitz, Birkenau, and Monowitz, finding about 7,000 emaciated survivors left behind when the SS evacuated most prisoners on death marches days earlier. They discover the dismantled gas chambers and crematoria, mass graves, and warehouses holding hundreds of thousands of victims\' garments, shoes, and human hair — recording the physical scale of the killing.',
+        source: {
+          externalId: 'src:soviet-auschwitz-report-1945',
+          name: 'Extraordinary State Commission report on Auschwitz, May 1945 (Soviet investigation of the Oświęcim camps). USSR document presented at the Nuremberg Trials.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/auschwitz',
+          publishedAt: '1945-05-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1947-12-22',
+        datePrecision: 'DAY',
+        reason: 'The operation and crimes of Auschwitz are established in judicial records: the Soviet commission\'s findings are entered as evidence at the Nuremberg International Military Tribunal (1945–46), and the Supreme National Tribunal of Poland convicts commandant Rudolf Höss (hanged 1947) and camp staff after detailed testimony. The site becomes a state memorial and UNESCO World Heritage Site; the liberation date is observed as International Holocaust Remembrance Day.',
+        source: {
+          externalId: 'src:auschwitz-trial-poland-1947',
+          name: 'Auschwitz Trial before the Supreme National Tribunal, Kraków, 24 November–22 December 1947 (verdict against Liebehenschel, Aumeier, and 38 others).',
+          url: 'https://en.wikipedia.org/wiki/Auschwitz_trial_(Poland)',
+          publishedAt: '1947-12-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
