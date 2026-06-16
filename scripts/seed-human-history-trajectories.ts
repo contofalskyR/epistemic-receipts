@@ -10290,6 +10290,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950): physics revolution, medicine, atrocity, empire
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Anderson discovers the positron — first antimatter ──────────────────────
+  {
+    externalId: 'trajectory:anderson-positron-1932',
+    text: 'Carl Anderson discovered the positron — the positively charged antiparticle of the electron — in a cloud-chamber photograph of cosmic rays taken on 2 August 1932, the first experimental detection of antimatter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-08-02',
+        datePrecision: 'DAY',
+        reason: 'In a cloud chamber bisected by a lead plate and immersed in a magnetic field, Anderson photographs a cosmic-ray track that curves like an electron but in the opposite direction, and whose energy loss crossing the lead shows it is far lighter than a proton. He concludes it is a positively charged particle of about electron mass. He reports the "easily deflectable positives" in Science in September 1932.',
+        source: {
+          externalId: 'src:anderson-positron-science-1932',
+          name: 'Anderson CD. The Apparent Existence of Easily Deflectable Positives. Science 1932;76(1967):238–239.',
+          url: 'https://www.science.org/doi/10.1126/science.76.1967.238',
+          publishedAt: '1932-09-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-03-15',
+        datePrecision: 'DAY',
+        reason: 'Anderson\'s full paper "The Positive Electron" appears in Physical Review, and Patrick Blackett and Giuseppe Occhialini independently confirm positron tracks and pair production at the Cavendish. The particle is identified with the anti-electron predicted by Paul Dirac\'s relativistic electron theory (1928–1931), establishing antimatter as physically real.',
+        source: {
+          externalId: 'src:anderson-positive-electron-pr-1933',
+          name: 'Anderson CD. The Positive Electron. Physical Review 1933;43(6):491–494.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.43.491',
+          publishedAt: '1933-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-12-10',
+        datePrecision: 'DAY',
+        reason: 'Anderson is awarded the 1936 Nobel Prize in Physics for the discovery of the positron. Antimatter becomes a cornerstone of particle physics, later extended to the antiproton (1955) and the routine use of positrons in PET imaging. The discovery is settled beyond dispute.',
+        source: {
+          externalId: 'src:anderson-nobel-1936',
+          name: 'The Nobel Prize in Physics 1936 — Carl David Anderson. (Nobel Foundation)',
+          url: 'https://www.nobelprize.org/prizes/physics/1936/anderson/facts/',
+          publishedAt: '1936-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Insulin first treats a human diabetic ───────────────────────────────────
+  {
+    externalId: 'trajectory:insulin-first-treatment-1922',
+    text: 'Insulin was first used to successfully treat a human diabetic — fourteen-year-old Leonard Thompson at Toronto General Hospital — in January 1922, transforming type 1 diabetes from a uniformly fatal disease into a manageable condition.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1922-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-23',
+        datePrecision: 'DAY',
+        reason: 'A pancreatic extract prepared by Frederick Banting and Charles Best is first injected into Leonard Thompson on 11 January 1922 with little effect and a sterile abscess. A purified extract prepared by James Collip is injected on 23 January 1922 and sharply lowers the boy\'s blood glucose, clears his glycosuria and ketosis, and restores his strength — the first unambiguous clinical demonstration that the extract controls diabetes.',
+        source: {
+          externalId: 'src:banting-insulin-cmaj-1922',
+          name: 'Banting FG, Best CH, Collip JB, Campbell WR, Fletcher AA. Pancreatic Extracts in the Treatment of Diabetes Mellitus. Canadian Medical Association Journal 1922;12(3):141–146.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1524425/',
+          publishedAt: '1922-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1923-10-25',
+        datePrecision: 'DAY',
+        reason: 'Within a year insulin is reproduced, scaled up under licence from the University of Toronto (sold for one dollar), and adopted worldwide; diabetic patients previously facing certain death survive. The 1923 Nobel Prize in Physiology or Medicine is awarded to Banting and J.J.R. Macleod for the discovery of insulin. The therapeutic fact is settled and remains foundational to diabetes care.',
+        source: {
+          externalId: 'src:insulin-nobel-1923',
+          name: 'The Nobel Prize in Physiology or Medicine 1923 — Frederick G. Banting and John Macleod. (Nobel Foundation)',
+          url: 'https://www.nobelprize.org/prizes/medicine/1923/summary/',
+          publishedAt: '1923-10-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Katyn massacre — Soviet responsibility denied then admitted ─────────────
+  {
+    externalId: 'trajectory:katyn-massacre-1940',
+    text: 'Approximately 22,000 Polish military officers and members of the intelligentsia held as prisoners were executed by the Soviet NKVD in April–May 1940 (the Katyn massacre); Soviet responsibility, long denied and blamed on Nazi Germany, was officially admitted by the USSR on 13 April 1990.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1943-04-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1943-04-13',
+        datePrecision: 'DAY',
+        reason: 'German occupation forces announce on 13 April 1943 the discovery of mass graves in the Katyn Forest near Smolensk containing thousands of Polish officers, attributing the killings to the Soviet NKVD. The USSR immediately denies responsibility and blames Nazi Germany; the Soviet "Burdenko Commission" (1944) reaffirms German guilt. With the Allied powers unwilling to provoke Stalin, the question becomes a contested, politically frozen dispute for decades.',
+        source: {
+          externalId: 'src:katyn-german-report-1943',
+          name: 'Amtliches Material zum Massenmord von Katyn (German official report), Berlin, 1943; International Medical Commission findings, April 1943.',
+          url: 'https://en.wikipedia.org/wiki/Katyn_massacre',
+          publishedAt: '1943-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-04-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 April 1990 the Soviet government under Mikhail Gorbachev officially acknowledges through TASS that the NKVD carried out the Katyn executions, reversing 47 years of denial and naming NKVD chief Lavrentiy Beria and his deputies as responsible. In 1992 Russia releases the Politburo order of 5 March 1940, signed by Stalin, authorising the shootings — documentary confirmation that settles the question.',
+        source: {
+          externalId: 'src:katyn-soviet-admission-1990',
+          name: 'TASS statement acknowledging NKVD responsibility for the Katyn massacre, 13 April 1990; Politburo decision of 5 March 1940 (released 1992).',
+          url: 'https://www.archives.gov/research/foreign-policy/katyn-massacre',
+          publishedAt: '1990-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 1918 influenza pandemic — viral cause established in 2005 ────────────────
+  {
+    externalId: 'trajectory:1918-influenza-pandemic-virus',
+    text: 'The 1918–1919 influenza pandemic ("Spanish flu"), which killed an estimated 50 million people, was caused by an H1N1 influenza A virus of avian origin — a conclusion definitively established only when the virus was sequenced and reconstructed from preserved tissue in 2005.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1918-03-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1918-03-04',
+        datePrecision: 'DAY',
+        reason: 'The first documented cases of the pandemic are recorded at Camp Funston, Kansas, on 4 March 1918; influenza spreads worldwide in three waves through 1919 with catastrophic mortality. The causal agent is unknown — many physicians attribute the disease to "Pfeiffer\'s bacillus" (Bacillus influenzae), a bacterium isolated in 1892 and wrongly believed to be the cause.',
+        source: {
+          externalId: 'src:1918-flu-public-health-reports-1918',
+          name: 'Public Health Reports, U.S. Public Health Service, vol. 33 (1918): weekly influenza morbidity and mortality reports.',
+          url: 'https://www.cdc.gov/flu/pandemic-resources/1918-pandemic-h1n1.html',
+          publishedAt: '1918-10-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-07-08',
+        datePrecision: 'DAY',
+        reason: 'Wilson Smith, Christopher Andrewes, and Patrick Laidlaw isolate a filterable virus from influenza patients and transmit it to ferrets, demonstrating that human influenza is caused by a virus rather than Pfeiffer\'s bacillus. This overturns the bacterial hypothesis, but the specific pathogen responsible for the 1918 pandemic — by then gone — remains unidentified and its exceptional virulence unexplained.',
+        source: {
+          externalId: 'src:smith-andrewes-laidlaw-lancet-1933',
+          name: 'Smith W, Andrewes CH, Laidlaw PP. A Virus Obtained from Influenza Patients. The Lancet 1933;225(5732):66–68.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(00)78541-2/fulltext',
+          publishedAt: '1933-07-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-07',
+        datePrecision: 'DAY',
+        reason: 'Jeffery Taubenberger\'s team completes the genome sequence of the 1918 virus recovered from preserved autopsy specimens and an Alaskan permafrost burial, and Terrence Tumpey\'s team reconstructs the live virus under containment, confirming it was an H1N1 influenza A virus with avian-origin features and characterising its unusual lethality. The cause of the 1918 pandemic is settled.',
+        source: {
+          externalId: 'src:tumpey-1918-reconstruction-science-2005',
+          name: 'Tumpey TM et al. Characterization of the Reconstructed 1918 Spanish Influenza Pandemic Virus. Science 2005;310(5745):77–80.',
+          url: 'https://www.science.org/doi/10.1126/science.1119392',
+          publishedAt: '2005-10-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Jallianwala Bagh (Amritsar) massacre — colonial violence documented ─────
+  {
+    externalId: 'trajectory:amritsar-massacre-1919',
+    text: 'On 13 April 1919, British Indian Army troops under Brigadier-General Reginald Dyer opened fire without warning on an unarmed crowd penned in the Jallianwala Bagh in Amritsar, killing several hundred people — the Jallianwala Bagh massacre, a catalyst of the Indian independence movement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1919-04-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1919-04-13',
+        datePrecision: 'DAY',
+        reason: 'Dyer marches troops into the enclosed Jallianwala Bagh garden, where thousands have gathered for Baisakhi and a protest meeting, and orders about ten minutes of rifle fire — roughly 1,650 rounds — into the trapped crowd without warning. Martial law imposed in Punjab suppresses immediate public reporting, but survivor testimony and Indian press accounts of mass casualties circulate quickly.',
+        source: {
+          externalId: 'src:amritsar-eyewitness-1919',
+          name: 'Eyewitness and Indian press accounts of the Jallianwala Bagh firing, April 1919; testimony later collected by official inquiries.',
+          url: 'https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre',
+          publishedAt: '1919-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1919-12-01',
+        datePrecision: 'MONTH',
+        reason: 'The scale of the killing is disputed. British authorities give a figure of 379 killed, while the Indian National Congress\'s own inquiry estimates well over 1,000 dead. Dyer defends the shooting as deliberate, intended to produce a "moral effect," while colonial officials and segments of the British public divide sharply over whether the action was justified.',
+        source: {
+          externalId: 'src:inc-punjab-inquiry-1920',
+          name: 'Report of the Commissioners appointed by the Punjab Sub-Committee of the Indian National Congress, 1920.',
+          url: 'https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre',
+          publishedAt: '1920-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The official Disorders Inquiry Committee (the Hunter Commission) reports in 1920, confirming that Dyer fired on an unarmed crowd without warning and continued until his ammunition was nearly exhausted, recording 379 dead and about 1,200 wounded by the government count. The Commission censures Dyer, who is relieved of command. The occurrence and essential facts of the massacre are settled history.',
+        source: {
+          externalId: 'src:hunter-commission-1920',
+          name: 'Report of the Committee Appointed to Investigate the Disturbances in the Punjab, etc. (Hunter Committee), Cmd. 681, 1920.',
+          url: 'https://en.wikipedia.org/wiki/Hunter_Commission',
+          publishedAt: '1920-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
