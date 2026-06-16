@@ -8152,6 +8152,238 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL (before 500 CE) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Earliest dated lunar eclipse — Babylon, 19/20 March 721 BCE ──────────────
+  {
+    externalId: 'trajectory:babylon-lunar-eclipse-721bce',
+    text: 'Babylonian scribes recorded a lunar eclipse on the night of 19–20 March 721 BCE — preserved by Ptolemy in the Almagest and regarded as the earliest precisely datable astronomical observation usable in scientific calculation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0721-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0721-03-19',
+        datePrecision: 'DAY',
+        reason: 'Astronomer-scribes at Babylon log a lunar eclipse in the first regnal year of Mardokempad (the Chaldean king Marduk-apla-iddina II): the Moon begins to be eclipsed about an hour before midnight and is obscured at its southern limb. It is the first of three Babylonian eclipses from this reign that Ptolemy would later transmit — the start of an unbroken record of dated eclipse observation.',
+        source: {
+          externalId: 'src:babylon-eclipse-721bce-diary',
+          name: 'Babylonian eclipse observation, year 1 of Mardokempad — preserved among the Chaldean eclipse records used by Greek astronomy.',
+          url: 'https://en.wikipedia.org/wiki/Babylonian_astronomy',
+          publishedAt: '0721-03-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy reproduces the eclipse in Almagest IV.6 as the oldest observation "handed down to us from reliable records," dating it to the night of the 29th–30th of the Egyptian month Thoth in the first year of Mardokempad and using it, with the two following eclipses, to anchor his lunar theory. Its survival in the Almagest makes a contemporaneous Babylonian record into the deep-time baseline of Greek astronomy.',
+        source: {
+          externalId: 'src:ptolemy-almagest-mardokempad-eclipses',
+          name: 'Ptolemy, Almagest IV.6, citing the three lunar eclipses of the reign of Mardokempad, the first on 19/20 March 721 BCE. (c. 150 CE)',
+          url: 'https://en.wikipedia.org/wiki/Almagest',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a lunar eclipse visible over Mesopotamia on the night of 19–20 March 721 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses. The record is routinely treated as the earliest precisely datable astronomical observation and is used, with later Babylonian eclipses, to measure the long-term slowing of Earth\'s rotation (ΔT).',
+        source: {
+          externalId: 'src:nasa-lunar-canon-721bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Lunar Eclipses: −1999 to +3000. NASA/TP–2009–214172.',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LEcatalog.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Behistun Inscription — Darius records the slaying of Gaumata, 522 BCE ────
+  {
+    externalId: 'trajectory:behistun-gaumata-522bce',
+    text: 'In the Behistun Inscription, Darius I declares that he killed the usurper Gaumata the Magian — who had impersonated Cambyses\' dead brother Bardiya — at the fortress of Sikayauvatiš in Media on the 10th day of the month Bagayadiš (29 September 522 BCE).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0522-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0520-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within two years of seizing the throne, Darius has a trilingual inscription (Old Persian, Elamite, Babylonian) carved high on the cliff at Behistun, narrating how he and six allies overthrew Gaumata, who had taken power claiming to be Bardiya. The text names the day — the 10th of Bagayadiš — and the place, Sikayauvatiš, and orders the account copied and sent throughout the empire; an Aramaic copy later surfaces at Elephantine in Egypt. It is the official, contemporaneous record of the Persian succession crisis.',
+        source: {
+          externalId: 'src:behistun-inscription-db',
+          name: 'Behistun Inscription (DB) of Darius I, §§11–13, recording the killing of Gaumata at Sikayauvatiš on the 10th of Bagayadiš. (c. 520 BCE)',
+          url: 'https://www.livius.org/sources/content/behistun-faravahar/behistun-the-inscription/',
+          publishedAt: '0520-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0450-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Herodotus (Histories III.61–79) independently transmits the story of the false Smerdis (Bardiya) and the conspiracy of seven Persian nobles who slew him, broadly corroborating Darius\'s narrative and establishing the impostor account as the standard history of how Darius came to the throne.',
+        source: {
+          externalId: 'src:herodotus-false-smerdis',
+          name: 'Herodotus, Histories III.61–79, on the magus who impersonated Smerdis and the accession of Darius. (c. 430 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D3%3Achapter%3D61',
+          publishedAt: '0430-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historians question whether the man Darius killed was truly an impostor. Because the "Gaumata is a fraud" story comes almost entirely from Darius himself — the usurper-claim is exactly what a successful usurper would assert — scholars such as A. T. Olmstead and others argue Darius may have murdered the genuine Bardiya and invented the Magian impersonation to legitimise his seizure of power. The carved date and the killing are not disputed; whether Darius\'s justification is true remains contested.',
+        source: {
+          externalId: 'src:olmstead-history-persian-empire',
+          name: 'Olmstead AT. History of the Persian Empire. University of Chicago Press, 1948 — analysis of Darius\'s accession and the Bardiya/Gaumata question.',
+          url: 'https://en.wikipedia.org/wiki/Bardiya',
+          publishedAt: '1948-01-01',
+          methodologyType: 'opinion',
+        },
+      },
+    ],
+  },
+
+  // ── Plague of Athens — Thucydides' clinical account, 430 BCE ─────────────────
+  {
+    externalId: 'trajectory:plague-of-athens-430bce',
+    text: 'An epidemic broke out in Athens in the early summer of 430 BCE during the Peloponnesian War and was described in clinical detail by Thucydides, who caught and survived it; the identity of the disease has never been determined.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0430-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'UNRESOLVABLE',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0430-06-01',
+        datePrecision: 'MONTH',
+        reason: 'As the Peloponnesians invade Attica at the start of summer and Athens\' rural population crowds inside the walls, a devastating pestilence erupts. Thucydides, himself infected and recovered, deliberately records the course of the disease — fever, inflamed eyes, bloody throat, retching, pustular skin, unquenchable thirst — stating he writes it down so that it may be recognised if it ever returns. It is the first systematic clinical and epidemiological description of an epidemic in the Western record.',
+        source: {
+          externalId: 'src:thucydides-plague-of-athens',
+          name: 'Thucydides, History of the Peloponnesian War, II.47–54, eyewitness description of the plague of Athens. (c. 410 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0200%3Abook%3D2%3Achapter%3D47',
+          publishedAt: '0410-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'For two millennia the cause of the plague has been argued from Thucydides\' symptom list, with candidates including bubonic plague, smallpox, typhus, measles, typhoid fever, ergotism, and viral haemorrhagic fever. Each proposal fits some symptoms and contradicts others, and no consensus emerges — the diagnosis is a long-standing open problem in the history of medicine.',
+        source: {
+          externalId: 'src:morgan-plague-athens-diagnosis',
+          name: 'Survey of competing retrospective diagnoses of the plague of Athens (smallpox, typhus, measles, haemorrhagic fever, etc.).',
+          url: 'https://en.wikipedia.org/wiki/Plague_of_Athens',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'UNRESOLVABLE',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'DNA recovered from dental pulp in a mass grave at the Kerameikos cemetery in Athens was reported in 2006 as consistent with typhoid fever (Salmonella enterica serovar Typhi), but the result was promptly disputed on methodological grounds and could not be replicated. With Thucydides\' description as the only detailed source and ancient pathogen DNA inconclusive, the identity of the disease is generally regarded as unrecoverable.',
+        source: {
+          externalId: 'src:papagrigorakis-kerameikos-typhoid-2006',
+          name: 'Papagrigorakis MJ et al. "DNA examination of ancient dental pulp incriminates typhoid fever as a probable cause of the Plague of Athens." Int J Infect Dis. 2006;10(3):206–214.',
+          url: 'https://doi.org/10.1016/j.ijid.2005.09.001',
+          publishedAt: '2006-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Caesar's Comet (sidus Iulium) — July 44 BCE (Rome) ───────────────────────
+  {
+    externalId: 'trajectory:caesars-comet-44bce',
+    text: 'A brilliant comet (the "sidus Iulium" or Caesar\'s Comet) appeared over Rome for about seven days during the funeral games Octavian held for the deified Julius Caesar in July 44 BCE, and was publicly proclaimed to be Caesar\'s soul received among the gods.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0044-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0044-07-01',
+        datePrecision: 'MONTH',
+        reason: 'During the ludi Victoriae Caesaris staged by the young Octavian a few months after Caesar\'s assassination, a comet bright enough to be seen in daylight appears in the northern sky and remains visible for about seven days. Octavian — by his own later account — promotes it publicly as the soul of the deified Caesar, while privately treating it as an omen favourable to himself; the comet-star is struck on coins and placed above Caesar\'s statue.',
+        source: {
+          externalId: 'src:augustus-memoirs-via-pliny-comet',
+          name: 'Augustus, Memoirs, quoted in Pliny the Elder, Natural History II.93–94, describing the comet of the games of Venus Genetrix. (NH published 77 CE, quoting Augustus directly)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0137%3Abook%3D2%3Achapter%3D23',
+          publishedAt: '0077-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '0121-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The apparition is independently recorded by Suetonius, who reports that the common people believed the star signified Caesar\'s reception among the gods and that for this reason a star was added to the head of his statue. The comet becomes a fixed element of Augustan ideology — the sidus Iulium — corroborated across Roman literary and numismatic evidence.',
+        source: {
+          externalId: 'src:suetonius-divus-julius-88-comet',
+          name: 'Suetonius, Divus Julius 88, on the comet that appeared during the games and was taken as Caesar\'s soul. (c. 121 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0132%3Alife%3Djul.%3Achapter%3D88',
+          publishedAt: '0121-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern astronomy treats the apparition as a genuine bright comet (designated C/−43 K1), correlating the Roman accounts with a roughly contemporaneous Chinese record of a comet, while the precise orbit and identity remain uncertain. The reality of the comet of 44 BCE — one of the few "great comets" attested in antiquity — is accepted, even as its physical identification is not fully settled.',
+        source: {
+          externalId: 'src:ramsey-licht-comet-of-44bc',
+          name: 'Ramsey JT, Licht AL. The Comet of 44 B.C. and Caesar\'s Funeral Games. Atlanta: Scholars Press, 1997.',
+          url: 'https://en.wikipedia.org/wiki/Caesar%27s_Comet',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — additional curves
   // ═══════════════════════════════════════════════════════════════════════════════
 
