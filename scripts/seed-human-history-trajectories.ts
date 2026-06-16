@@ -11833,6 +11833,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Cicero proscribed and killed ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:cicero-death-43bce',
+    text: 'The orator and philosopher Marcus Tullius Cicero was proscribed by the Second Triumvirate and killed by soldiers near Formiae on 7 December 43 BCE, his head and hands afterward displayed on the Rostra in the Roman Forum.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0043-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0043-12-07',
+        datePrecision: 'DAY',
+        reason: 'After the formation of the Second Triumvirate of Antony, Octavian, and Lepidus in November 43 BCE, Cicero is placed on the proscription lists at Antony\'s insistence. Overtaken as he flees toward the coast near Formiae, he is killed by the tribune Herennius and the centurion Popilius; his severed head and right hand are nailed to the Rostra from which he had delivered the Philippics against Antony.',
+        source: {
+          externalId: 'src:plutarch-life-cicero-48',
+          name: 'Plutarch. Life of Cicero, 47–49. (c. 100 CE, drawing on contemporary accounts including Asinius Pollio and Tiro)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2008.01.0007%3Achapter%3D48',
+          publishedAt: '0100-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0014-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Livy, a near-contemporary, narrates Cicero\'s death; his account survives quoted directly in Seneca the Elder\'s Suasoriae 6, alongside other Augustan-era declaimers\' versions. Appian (Civil Wars 4.19–20) gives an independent narrative. The convergence of Livy, Plutarch, and Appian on the proscription, the flight, and the display of head and hands on the Rostra fixes the event and its date as settled.',
+        source: {
+          externalId: 'src:seneca-elder-suasoriae-6',
+          name: 'Seneca the Elder. Suasoriae 6 — preserving Livy\'s lost account of Cicero\'s death. (c. 37 CE)',
+          url: 'https://en.wikipedia.org/wiki/Cicero#Death',
+          publishedAt: '0037-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of the emperor Caligula ───────────────────────────────────
+  {
+    externalId: 'trajectory:caligula-assassination-41ce',
+    text: 'The Roman emperor Gaius (Caligula) was assassinated by officers of the Praetorian Guard led by the tribune Cassius Chaerea in a passageway of the Palatine on 24 January 41 CE.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0041-01-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0041-01-24',
+        datePrecision: 'DAY',
+        reason: 'During the Palatine Games, Caligula is intercepted in a covered walkway as he leaves the theatre and cut down by a group of Praetorian officers headed by Cassius Chaerea, whom he had publicly humiliated. His wife Caesonia and infant daughter are killed soon after; the Guard then finds Claudius and proclaims him emperor, ending the conspirators\' hope of restoring the Republic.',
+        source: {
+          externalId: 'src:josephus-antiquities-19',
+          name: 'Josephus. Antiquities of the Jews, 19.1–2 — the fullest narrative of the assassination, drawing on eyewitness senatorial sources. (c. 94 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0146%3Abook%3D19',
+          publishedAt: '0094-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0121-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Seneca, a contemporary, alludes to Caligula\'s violent death in De Constantia Sapientis 18, written within a few years of the event; Suetonius (Caligula 56–58) and Cassius Dio (59.29) independently record the conspiracy, the role of Chaerea, and the date during the Palatine Games. The agreement of a contemporary witness with later sources settles the event and its dating to 24 January 41 CE.',
+        source: {
+          externalId: 'src:suetonius-caligula-58',
+          name: 'Suetonius. Lives of the Caesars, Caligula 56–58. (c. 121 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0132%3Alife%3Dcal.%3Achapter%3D58',
+          publishedAt: '0121-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Great Fire of Rome ──────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:great-fire-rome-64ce',
+    text: 'A great fire broke out in Rome on the night of 18–19 July 64 CE, starting in the shops near the Circus Maximus and burning for some nine days, destroying or damaging ten of the city\'s fourteen districts.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0064-07-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0064-07-18',
+        datePrecision: 'DAY',
+        reason: 'Fire breaks out among the shops at the end of the Circus Maximus and, fanned by wind, sweeps through the densely built quarters of Rome over roughly nine days. Tacitus records that of the fourteen districts only four remained intact, three were levelled to the ground, and seven were left in ruins. The emperor Nero opens public buildings and the Campus Martius to the homeless.',
+        source: {
+          externalId: 'src:tacitus-annals-15-38',
+          name: 'Tacitus. Annals, 15.38–44 — narrative of the fire, its extent, and the relief measures. (c. 116 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0078%3Abook%3D15%3Achapter%3D38',
+          publishedAt: '0116-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0229-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Three independent traditions — Tacitus (Annals 15), Suetonius (Nero 38), and Cassius Dio (62.16–18) — record the fire, its outbreak near the Circus Maximus, and its devastation of the city; the date of 19 July is preserved in later calendrical notices. The occurrence and scale of the fire are settled, even though the cause — accident versus deliberate arson, and Nero\'s personal responsibility — remained disputed among the ancient sources themselves and is unresolved to this day.',
+        source: {
+          externalId: 'src:cassius-dio-62-16',
+          name: 'Cassius Dio. Roman History, 62.16–18. (c. 229 CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/62*.html',
+          publishedAt: '0229-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Forced suicide of the Stoic philosopher Seneca ──────────────────────────
+  {
+    externalId: 'trajectory:seneca-death-65ce',
+    text: 'The Stoic philosopher Lucius Annaeus Seneca was ordered to take his own life by the emperor Nero in April 65 CE after the discovery of the Pisonian conspiracy, and died by opening his veins at his villa near Rome.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0065-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0065-04-01',
+        datePrecision: 'MONTH',
+        reason: 'In the aftermath of the failed conspiracy of Gaius Calpurnius Piso, Nero sends a tribune to Seneca — his former tutor and adviser — with the order to die. Tacitus describes Seneca calmly opening the veins of his arms and legs, and, when the blood flows too slowly from his aged body, taking poison and finally being carried into a heated bath where he suffocates in the steam.',
+        source: {
+          externalId: 'src:tacitus-annals-15-60',
+          name: 'Tacitus. Annals, 15.60–64 — account of Seneca\'s forced suicide. (c. 116 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0078%3Abook%3D15%3Achapter%3D60',
+          publishedAt: '0116-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0229-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tacitus\' detailed narrative is corroborated by Cassius Dio (62.25), who likewise places Seneca\'s death among the executions following the Pisonian conspiracy in 65 CE; the dramatic suicide is also referenced by later writers. The event, its cause in the conspiracy\'s exposure, and its dating to spring 65 CE are treated as settled in the scholarship on Nero\'s reign.',
+        source: {
+          externalId: 'src:cassius-dio-62-25',
+          name: 'Cassius Dio. Roman History, 62.25. (c. 229 CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/62*.html',
+          publishedAt: '0229-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // EARLY MODERN (1400–1750) — Scientific Revolution, Reformation, New World
   // ═══════════════════════════════════════════════════════════════════════════════
