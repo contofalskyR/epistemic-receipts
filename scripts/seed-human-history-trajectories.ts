@@ -8380,6 +8380,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, New World
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Edict of Worms — Luther declared a heretic and outlaw ───────────────────
+  {
+    externalId: 'trajectory:edict-of-worms-1521',
+    text: 'On 25 May 1521 Emperor Charles V issued the Edict of Worms, declaring Martin Luther a notorious heretic and outlaw of the Empire, banning his writings and forbidding anyone to shelter or aid him.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1521-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1521-05-25',
+        datePrecision: 'DAY',
+        reason: 'After Luther refused to recant before the Diet of Worms on 18 April 1521 ("unless I am convinced by Scripture and plain reason… here I stand"), Charles V proclaimed the Edict of Worms on 25 May 1521, drafted by the papal nuncio Girolamo Aleandro. It placed Luther under imperial ban, declared his books to be burned, and made it a crime to print, sell, read, or possess them.',
+        source: {
+          externalId: 'src:edict-of-worms-1521',
+          name: 'Edict of Worms (Wormser Edikt), promulgated by Emperor Charles V, 25 May 1521. Translated text, Creeds of Christendom / CRI Voice Institute.',
+          url: 'https://www.crivoice.org/creededictworms.html',
+          publishedAt: '1521-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1555-09-25',
+        datePrecision: 'DAY',
+        reason: 'The edict proved unenforceable: Luther, hidden at the Wartburg by Elector Frederick the Wise, continued to publish, and Lutheranism spread across the German princes. The Peace of Augsburg (25 September 1555) formally suspended the ban by granting each prince the right to choose Lutheran or Catholic confession (cuius regio, eius religio), settling the legal coexistence the edict had sought to prevent.',
+        source: {
+          externalId: 'src:loc-luther-outlaw',
+          name: 'Luther the Outlaw. Library of Congress Research Guide, Martin Luther as Priest, Heretic and Outlaw.',
+          url: 'https://guides.loc.gov/martin-luther-priest-heretic-outlaw/luther-the-outlaw',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Vesalius — De Humani Corporis Fabrica overturns Galenic anatomy ─────────
+  {
+    externalId: 'trajectory:vesalius-fabrica-1543',
+    text: 'Andreas Vesalius published De Humani Corporis Fabrica in Basel in June 1543, correcting roughly two hundred errors in Galen\'s anatomy through direct human dissection and founding modern observational anatomy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1543-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1543-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Drawing on his own dissections of human cadavers at Padua, Vesalius produced a seven-book folio printed by Joannes Oporinus with woodcuts from the workshop of Titian. He documented that many of Galen\'s anatomical claims — derived from apes and other animals — did not match the human body, such as the absence of pores in the interventricular septum of the heart and the form of the human jaw and sternum.',
+        source: {
+          externalId: 'src:vesalius-fabrica-1543',
+          name: 'Vesalius A. De Humani Corporis Fabrica Libri Septem. Basel: Oporinus, June 1543. Library of Congress.',
+          url: 'https://www.loc.gov/item/2021667096/',
+          publishedAt: '1543-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1543-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Fabrica directly challenged the authority of Galen, which had been the unquestioned foundation of Western medicine for some fourteen centuries. Despite resistance from Galenists such as Vesalius\'s former teacher Jacobus Sylvius, the work reoriented anatomy around firsthand observation of the human body rather than ancient texts.',
+        source: {
+          externalId: 'src:nlm-vesalius-bio',
+          name: 'Andreas Vesalius and De humani corporis fabrica. U.S. National Library of Medicine, Historical Anatomies on the Web.',
+          url: 'https://www.nlm.nih.gov/exhibition/historicalanatomies/vesalius_bio.html',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tycho's Great Comet of 1577 — comets pierce the crystalline spheres ─────
+  {
+    externalId: 'trajectory:tycho-comet-1577',
+    text: 'Tycho Brahe observed the Great Comet of 1577 beginning 13 November 1577 and, finding it had no measurable parallax, showed it lay far beyond the Moon — proving comets were celestial bodies whose paths cut through the supposed solid crystalline planetary spheres.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1577-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1577-11-13',
+        datePrecision: 'DAY',
+        reason: 'Tycho first noticed the comet on the evening of 13 November 1577 and measured its position over the following weeks. Comparing his observations from Hven with those of Thaddaeus Hagecius at Prague, he found the comet exhibited no detectable diurnal parallax, concluding it lay at least six times farther than the Moon — in the supralunary realm Aristotle held to be changeless.',
+        source: {
+          externalId: 'src:tycho-de-mundi-1588',
+          name: 'Brahe T. De mundi aetherei recentioribus phaenomenis liber secundus, 1588 (treats the comet of 1577). Library of Congress.',
+          url: 'https://www.loc.gov/resource/rbc0001.2013gen94796/',
+          publishedAt: '1588-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1588-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tycho\'s reconstruction showed the comet\'s path cutting across the orbits of several planets, which was incompatible with the Aristotelian doctrine of real, hard, transparent crystalline spheres carrying the planets. Together with his nova of 1572, this evidence dismantled the physical reality of the celestial spheres and supported a fluid heaven.',
+        source: {
+          externalId: 'src:great-comet-1577-analysis',
+          name: 'Great Comet of 1577 — Tycho Brahe\'s parallax measurements and the crystalline spheres. Wikipedia (scholarly synthesis).',
+          url: 'https://en.wikipedia.org/wiki/Great_Comet_of_1577',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pascal's Puy de Dôme experiment — the weight of the air ─────────────────
+  {
+    externalId: 'trajectory:pascal-puy-de-dome-1648',
+    text: 'On 19 September 1648, following Blaise Pascal\'s design, Florin Périer carried a Torricelli mercury tube up the Puy de Dôme and recorded the mercury column falling about three inches at the summit, demonstrating that atmospheric pressure (the weight of the air), not "horror vacui," supports the column.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1648-09-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1648-09-19',
+        datePrecision: 'DAY',
+        reason: 'At Pascal\'s instruction, his brother-in-law Florin Périer and witnesses from Clermont-Ferrand measured the mercury column at the foot of the Puy de Dôme and again at the 1,465-metre summit. The column dropped from about 26 inches 3½ lines to 23 inches 2 lines, while a control tube at the base stayed constant — exactly as predicted if the column is held up by the weight of the atmosphere above it.',
+        source: {
+          externalId: 'src:pascal-recit-1648',
+          name: 'Pascal B. Récit de la grande expérience de l\'équilibre des liqueurs, Paris, 1648 (reporting Périer\'s experiment of 19 September 1648).',
+          url: 'https://www.britannica.com/biography/Blaise-Pascal',
+          publishedAt: '1648-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1654-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Puy de Dôme result, combined with Torricelli\'s 1643 barometer and Otto von Guericke\'s vacuum experiments, established that air has weight and that a vacuum can exist above the mercury — overturning the Aristotelian principle that "nature abhors a vacuum." The unit of pressure, the pascal, later commemorated the demonstration.',
+        source: {
+          externalId: 'src:lindahall-perier',
+          name: 'Florin Périer and the Puy de Dôme experiment. Linda Hall Library, Scientist of the Day.',
+          url: 'https://www.lindahall.org/about/news/scientist-of-the-day/florin-perier/',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of the Royal Society — institutionalizing experiment ───────────
+  {
+    externalId: 'trajectory:royal-society-1660',
+    text: 'On 28 November 1660, twelve men met after Christopher Wren\'s astronomy lecture at Gresham College, London, and resolved to found "a Colledge for the promoting of Physico-Mathematicall Experimentall Learning" — the body that became the Royal Society.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1660-11-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1660-11-28',
+        datePrecision: 'DAY',
+        reason: 'The founding meeting, recorded in the Society\'s earliest journal book, gathered figures including Robert Boyle, John Wilkins, Sir Robert Moray, and William Brouncker. They committed to a programme of empirical, experiment-based natural philosophy, holding weekly meetings and witnessing demonstrations rather than relying on textual authority.',
+        source: {
+          externalId: 'src:royal-society-history',
+          name: 'History of the Royal Society. The Royal Society (records of the founding meeting of 28 November 1660).',
+          url: 'https://royalsociety.org/about-us/who-we-are/history/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1663-04-22',
+        datePrecision: 'DAY',
+        reason: 'King Charles II granted a first royal charter in 1662 and a second on 22 April 1663, formally incorporating "The Royal Society of London for Improving Natural Knowledge." With its motto Nullius in verba ("take nobody\'s word for it") and the 1665 launch of Philosophical Transactions, the institution entrenched peer-witnessed experiment as the standard for natural knowledge.',
+        source: {
+          externalId: 'src:britannica-royal-society',
+          name: 'Royal Society. Encyclopædia Britannica (royal charters of 1662 and 1663).',
+          url: 'https://www.britannica.com/topic/Royal-Society',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
