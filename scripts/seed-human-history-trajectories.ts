@@ -13161,6 +13161,90 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Cyrus the Great takes Babylon, 12 October 539 BCE ───────────────────────
+  {
+    externalId: 'trajectory:cyrus-takes-babylon-539bce',
+    text: 'The army of Cyrus the Great entered Babylon without a battle on the 16th of Tashritu — 12 October 539 BCE — ending the Neo-Babylonian Empire and folding Mesopotamia into the Achaemenid Persian Empire, an event recorded in the contemporaneous Babylonian Nabonidus Chronicle and proclaimed on the Cyrus Cylinder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0539-10-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0539-10-12',
+        datePrecision: 'DAY',
+        reason: 'The Nabonidus Chronicle, a Babylonian cuneiform tablet recording events reign by reign, states that on the 16th of Tashritu Ugbaru (Gobryas), governor of Gutium, and the army of Cyrus entered Babylon without fighting; King Nabonidus was captured, and some weeks later (3 Marcheshvan) Cyrus himself entered the city to public acclamation. The Cyrus Cylinder gives Cyrus’s own proclamation of a peaceful, divinely sanctioned takeover.',
+        source: {
+          externalId: 'src:nabonidus-chronicle-fall-babylon-539bce',
+          name: 'Nabonidus Chronicle (ABC 7), col. III: entry of Ugbaru and the army of Cyrus into Babylon, 16 Tashritu. (Babylonian cuneiform, late 6th century BCE)',
+          url: 'https://www.livius.org/sources/content/mesopotamian-chronicles/abc-7-nabonidus-chronicle/',
+          publishedAt: '0538-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Julian date 12 October 539 BCE is fixed by converting the Babylonian lunar date (16 Tashritu of the accession year of Cyrus) through the reconstructed Babylonian calendar, and is corroborated by dated economic tablets whose year-formulae switch from Nabonidus to Cyrus in the autumn of 539 BCE, by the Cyrus Cylinder, and by the later accounts of Herodotus and Berossus. The chronology is treated as settled in standard Assyriological reference works.',
+        source: {
+          externalId: 'src:parker-dubberstein-babylonian-chronology',
+          name: 'Parker RA, Dubberstein WH. Babylonian Chronology 626 B.C.–A.D. 75. Brown University Press, 1956.',
+          url: 'https://oi.uchicago.edu/research/publications/saoc/saoc-24-babylonian-chronology-626-bc-ad-75',
+          publishedAt: '1956-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aristotle observes the Moon occult Mars, 4 May 357 BCE ──────────────────
+  {
+    externalId: 'trajectory:aristotle-occults-mars-357bce',
+    text: 'Aristotle recorded watching the Moon, then half-full, pass in front of the planet Mars — which vanished behind the dark limb and reappeared on the bright side — an occultation dated by modern computation to the evening of 4 May 357 BCE and cited in On the Heavens as evidence that Mars lies farther from Earth than the Moon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0357-05-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0357-05-04',
+        datePrecision: 'DAY',
+        reason: 'In On the Heavens (De Caelo) 292a, Aristotle writes that "we have seen the moon, half-full, pass beneath the planet Mars, and Mars vanish on the dark side and reappear on the bright and shining side." He uses the occultation as direct observational evidence for the ordering of the heavenly bodies — that the Moon is nearer to Earth than Mars — one of the earliest reasoned inferences from a recorded planetary occultation.',
+        source: {
+          externalId: 'src:aristotle-de-caelo-occultation-mars',
+          name: 'Aristotle, On the Heavens (De Caelo) II.12, 292a3–6, the lunar occultation of Mars. (c. 350 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0054%3Abook%3D2%3Asection%3D292a',
+          publishedAt: '0350-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kepler first attempted to date the observation (proposing 4 April 357 BCE); subsequent computation by Schoch and a detailed reconstruction by F. R. Stephenson showed that the only lunar occultation of Mars visible from Athens fitting Aristotle’s description occurred on the evening of 4 May 357 BCE. The result anchors one of the oldest precisely dated planetary occultation observations on record.',
+        source: {
+          externalId: 'src:stephenson-aristotle-mars-occultation-2000',
+          name: 'Stephenson FR. "A Lunar Occultation of Mars Observed by Aristotle." Journal for the History of Astronomy 31(4):342–344, 2000.',
+          url: 'https://journals.sagepub.com/doi/10.1177/002182860003100405',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — further curves
   // ═══════════════════════════════════════════════════════════════════════════════
