@@ -19287,6 +19287,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR ADDENDUM (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── German invasion of Poland — outbreak of WWII ────────────────────────────
+  {
+    externalId: 'trajectory:invasion-of-poland-1939',
+    text: 'Nazi Germany invaded Poland on September 1, 1939, beginning the Second World War in Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1939-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-09-01',
+        datePrecision: 'DAY',
+        reason: 'At 4:45 AM the German battleship Schleswig-Holstein opens fire on the Polish garrison at Westerplatte near Danzig while Wehrmacht ground forces cross the frontier and the Luftwaffe bombs Wieluń. Hitler addresses the Reichstag the same morning. The invasion is reported instantly by Polish, German, and international radio and press.',
+        source: {
+          externalId: 'src:hitler-reichstag-1939-09-01',
+          name: 'Hitler A. Address to the Reichstag, September 1, 1939 (official text, Völkischer Beobachter).',
+          url: 'https://en.wikipedia.org/wiki/Invasion_of_Poland',
+          publishedAt: '1939-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-09-03',
+        datePrecision: 'DAY',
+        reason: 'Britain and France declare war on Germany on September 3 after Germany ignores their ultimatum to withdraw. Both Allied and German governments document the attack in their own state records; the event is corroborated from every side simultaneously, removing any dispute over its occurrence.',
+        source: {
+          externalId: 'src:chamberlain-declaration-war-1939',
+          name: 'Chamberlain N. Broadcast declaration of war, September 3, 1939. BBC / Hansard.',
+          url: 'https://www.bbc.co.uk/archive/chamberlain-announces-britain-is-at-war-with-germany/zjlf2sg',
+          publishedAt: '1939-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-10-01',
+        datePrecision: 'DAY',
+        reason: 'The Nuremberg International Military Tribunal judgment establishes the invasion of Poland as a war of aggression, drawing on captured German military and diplomatic documents (including the Hossbach and "Fall Weiss" planning records). The attack is fixed in the judicial record of the 20th century.',
+        source: {
+          externalId: 'src:nuremberg-judgment-aggression-1946',
+          name: 'International Military Tribunal, Nuremberg. Judgment, October 1, 1946.',
+          url: 'https://avalon.law.yale.edu/imt/judgen.asp',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Operation Barbarossa — German invasion of the USSR ──────────────────────
+  {
+    externalId: 'trajectory:operation-barbarossa-1941',
+    text: 'Nazi Germany launched Operation Barbarossa, the invasion of the Soviet Union, on June 22, 1941 — the largest land invasion in history.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1941-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-06-22',
+        datePrecision: 'DAY',
+        reason: 'In the early hours roughly three million Axis troops cross the Soviet frontier along a front of about 2,900 km, supported by thousands of tanks and aircraft. Foreign Minister Molotov announces the attack over Soviet radio at noon, and Hitler issues a proclamation to the German people. The invasion is reported worldwide the same day.',
+        source: {
+          externalId: 'src:molotov-radio-address-1941',
+          name: 'Molotov V. Radio address to the Soviet people, June 22, 1941 (official transcript).',
+          url: 'https://en.wikipedia.org/wiki/Operation_Barbarossa',
+          publishedAt: '1941-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-06-22',
+        datePrecision: 'DAY',
+        reason: 'German Führer Directive No. 21 ("Fall Barbarossa," issued December 18, 1940) and Wehrmacht operational records document the planning and execution, while Soviet Stavka records document the defense. The event is confirmed independently from both belligerents\' archives, leaving no doubt as to its occurrence or date.',
+        source: {
+          externalId: 'src:fuhrer-directive-21-barbarossa',
+          name: 'Führer Directive No. 21, "Case Barbarossa," December 18, 1940. (Nuremberg document 446-PS).',
+          url: 'https://avalon.law.yale.edu/wwii/barb.asp',
+          publishedAt: '1940-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-10-01',
+        datePrecision: 'DAY',
+        reason: 'The Nuremberg judgment treats the attack on the USSR as a count of aggressive war, citing captured German planning documents. Postwar scholarship and the opening of Soviet archives after 1991 corroborate the scale and timing, cementing the event as settled across nations.',
+        source: {
+          externalId: 'src:nuremberg-judgment-barbarossa-1946',
+          name: 'International Military Tribunal, Nuremberg. Judgment, October 1, 1946 (Crimes against Peace).',
+          url: 'https://avalon.law.yale.edu/imt/judgen.asp',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cockcroft–Walton split the atom — first artificial nuclear disintegration ─
+  {
+    externalId: 'trajectory:cockcroft-walton-split-atom-1932',
+    text: 'On April 14, 1932, John Cockcroft and Ernest Walton at the Cavendish Laboratory achieved the first artificial disintegration of an atomic nucleus, splitting lithium with accelerated protons.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-04-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-04-30',
+        datePrecision: 'MONTH',
+        reason: 'Using a high-voltage proton accelerator, Cockcroft and Walton bombard lithium-7, which captures a proton and splits into two alpha particles, observed as scintillations on a zinc-sulphide screen. They publish the result in Nature, "Disintegration of Lithium by Swift Protons," reporting the first nucleus split by artificially accelerated particles.',
+        source: {
+          externalId: 'src:cockcroft-walton-nature-1932',
+          name: 'Cockcroft JD, Walton ETS. Experiments with High Velocity Positive Ions. Nature 1932;129:649.',
+          url: 'https://www.nature.com/articles/129649a0',
+          publishedAt: '1932-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The full results appear in the Proceedings of the Royal Society and the energy balance is found to agree with Einstein\'s mass–energy relation, confirming the disintegration quantitatively. The result is rapidly reproduced in other laboratories and accepted as the first deliberate splitting of the nucleus.',
+        source: {
+          externalId: 'src:cockcroft-walton-prsa-1932',
+          name: 'Cockcroft JD, Walton ETS. Experiments with High Velocity Positive Ions. II. Proc. R. Soc. Lond. A 1932;137:229–242.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rspa.1932.0133',
+          publishedAt: '1932-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-11-15',
+        datePrecision: 'DAY',
+        reason: 'Cockcroft and Walton are awarded the 1951 Nobel Prize in Physics "for their pioneer work on the transmutation of atomic nuclei by artificially accelerated atomic particles," institutionally ratifying the experiment\'s priority and significance.',
+        source: {
+          externalId: 'src:nobel-physics-1951-cockcroft-walton',
+          name: 'The Nobel Prize in Physics 1951. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1951/summary/',
+          publishedAt: '1951-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Babi Yar massacre ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:babi-yar-massacre-1941',
+    text: 'Over September 29–30, 1941, German SS and police units shot 33,771 Jews at the Babi Yar ravine near Kyiv, one of the largest single massacres of the Holocaust.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-10-02',
+        datePrecision: 'DAY',
+        reason: 'Sonderkommando 4a of Einsatzgruppe C, with German police and local auxiliaries, marches Kyiv\'s Jews to the Babi Yar ravine and shoots them over two days. The perpetrators themselves record the toll: Einsatzgruppen Operational Situation Report USSR No. 101 states that 33,771 Jews were executed on 29–30 September 1941.',
+        source: {
+          externalId: 'src:einsatzgruppen-report-101-1941',
+          name: 'Einsatzgruppen Operational Situation Report USSR No. 101, October 2, 1941 (Nuremberg document).',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/babi-yar',
+          publishedAt: '1941-10-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Postwar Soviet authorities acknowledge a massacre at Babi Yar but systematically suppress its specifically Jewish character, folding the victims into generic "peaceful Soviet citizens" and for decades blocking a memorial that names Jews. The factual record of who was killed becomes politically contested within the USSR.',
+        source: {
+          externalId: 'src:yevtushenko-babi-yar-1961',
+          name: 'Yevtushenko Y. "Babi Yar." Literaturnaya Gazeta, September 19, 1961 (protesting the absence of a memorial).',
+          url: 'https://en.wikipedia.org/wiki/Babi_Yar',
+          publishedAt: '1961-09-19',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-01-01',
+        datePrecision: 'YEAR',
+        reason: 'With Ukrainian independence and full access to German Einsatzgruppen records, survivor testimony, and the site itself, the massacre and its Jewish victims are definitively documented and memorialized. Holocaust historiography and the USHMM treat the 33,771 figure and the event as settled.',
+        source: {
+          externalId: 'src:ushmm-babi-yar',
+          name: 'United States Holocaust Memorial Museum. "Kiev and Babi Yar." Holocaust Encyclopedia.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/kiev-and-babi-yar',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Vietnamese Declaration of Independence — decolonization begins ───────────
+  {
+    externalId: 'trajectory:vietnam-declaration-independence-1945',
+    text: 'On September 2, 1945, Ho Chi Minh proclaimed the Declaration of Independence of the Democratic Republic of Vietnam in Hanoi, declaring the end of French and Japanese rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-09-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1945-09-02',
+        datePrecision: 'DAY',
+        reason: 'Before a crowd at Ba Đình Square in Hanoi, Ho Chi Minh reads the Declaration of Independence, opening by quoting the American Declaration of Independence, and announces the founding of the Democratic Republic of Vietnam following the Việt Minh\'s August Revolution and Japan\'s surrender. The speech is delivered publicly and recorded contemporaneously.',
+        source: {
+          externalId: 'src:ho-chi-minh-declaration-1945',
+          name: 'Ho Chi Minh. Declaration of Independence of the Democratic Republic of Vietnam, September 2, 1945.',
+          url: 'https://en.wikipedia.org/wiki/Proclamation_of_Independence_of_the_Democratic_Republic_of_Vietnam',
+          publishedAt: '1945-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-09-02',
+        datePrecision: 'DAY',
+        reason: 'The text of the declaration survives in full, was published contemporaneously, and is corroborated by foreign observers in Hanoi (including OSS personnel present in the city). That the proclamation was made on this date is not disputed, even though sovereignty itself was immediately contested by returning French forces.',
+        source: {
+          externalId: 'src:vietnam-1945-declaration-text',
+          name: 'Pentagon Papers, Gravel ed., vol. 1, doc. 1: Vietnamese Declaration of Independence, September 2, 1945.',
+          url: 'https://en.wikipedia.org/wiki/Proclamation_of_Independence_of_the_Democratic_Republic_of_Vietnam',
+          publishedAt: '1945-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-07-02',
+        datePrecision: 'DAY',
+        reason: 'September 2 is established as Vietnam\'s National Day, and the 1945 declaration is treated as the founding act of the modern Vietnamese state, institutionally fixing the event in the national record after reunification.',
+        source: {
+          externalId: 'src:vietnam-national-day',
+          name: 'Socialist Republic of Vietnam. National Day (September 2) — founding of the Democratic Republic of Vietnam, 1945.',
+          url: 'https://en.wikipedia.org/wiki/National_Day_(Vietnam)',
+          publishedAt: '1976-07-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
