@@ -22179,6 +22179,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900) — added sweep
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First sighting of the Antarctic continent (Bellingshausen, 1820) ─────────
+  {
+    externalId: 'trajectory:antarctica-first-sighting-1820',
+    text: 'A Russian expedition led by Fabian Gottlieb von Bellingshausen sighted the Antarctic mainland\'s ice shelf on 28 January 1820, the first confirmed sighting of the long-hypothesised southern continent.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1820-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1773-01-17',
+        datePrecision: 'DAY',
+        reason: 'A great southern landmass (Terra Australis) had been postulated since antiquity. On 17 January 1773 James Cook became the first to cross the Antarctic Circle but, blocked by pack ice, never sighted land and concluded that any continent must lie beyond reach behind impassable ice — leaving the existence of a southern continent an open question.',
+        source: {
+          externalId: 'src:cook-voyage-towards-south-pole-1777',
+          name: 'Cook J. A Voyage Towards the South Pole, and Round the World. London, 1777.',
+          url: 'https://www.gutenberg.org/ebooks/15777',
+          publishedAt: '1777-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1820-01-28',
+        datePrecision: 'DAY',
+        reason: 'On 28 January 1820 (16 January Old Style) the sloops Vostok and Mirny under Bellingshausen and Lazarev approached to within sight of the continental ice shelf near present-day Princess Martha Coast, recording an unbroken field of ice rising to the horizon. Edward Bransfield (RN) independently sighted the Antarctic Peninsula three days later, on 30 January 1820.',
+        source: {
+          externalId: 'src:bellingshausen-voyage-log-1820',
+          name: 'Bellingshausen FG. The Voyage of Captain Bellingshausen to the Antarctic Seas, 1819–1821 (ship\'s log; Hakluyt Society translation, 1945).',
+          url: 'https://en.wikipedia.org/wiki/Fabian_Gottlieb_von_Bellingshausen',
+          publishedAt: '1831-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1840-01-19',
+        datePrecision: 'DAY',
+        reason: 'Subsequent expeditions confirmed an extensive continental landmass: on 19 January 1840 Charles Wilkes (US Exploring Expedition) and Jules Dumont d\'Urville traced long stretches of coastline, establishing that the ice was backed by continental land. The existence of Antarctica as a continent became settled geographical fact.',
+        source: {
+          externalId: 'src:wilkes-us-exploring-expedition-1845',
+          name: 'Wilkes C. Narrative of the United States Exploring Expedition, 1838–1842. Philadelphia, 1845.',
+          url: 'https://www.biodiversitylibrary.org/bibliography/45836',
+          publishedAt: '1845-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Nanking ends the First Opium War (1842) ────────────────────────
+  {
+    externalId: 'trajectory:treaty-of-nanking-1842',
+    text: 'The Treaty of Nanking, signed aboard HMS Cornwallis on 29 August 1842, ended the First Opium War between Britain and Qing China, ceding Hong Kong Island to Britain and opening five treaty ports to foreign trade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1842-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1842-08-29',
+        datePrecision: 'DAY',
+        reason: 'Following Britain\'s military victory, Qing and British plenipotentiaries signed the treaty aboard HMS Cornwallis in the Yangtze at Nanjing. Its terms — a £21 million indemnity, cession of Hong Kong Island in perpetuity, and the opening of Canton, Amoy, Foochow, Ningpo and Shanghai — were recorded in the signed bilingual document, the first of the "unequal treaties."',
+        source: {
+          externalId: 'src:treaty-of-nanking-text-1842',
+          name: 'Treaty of Peace, Friendship, and Commerce between Her Majesty the Queen of Great Britain and the Emperor of China, signed Nanking, 29 August 1842 (official text).',
+          url: 'https://en.wikisource.org/wiki/Treaty_of_Nanking',
+          publishedAt: '1842-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1843-06-26',
+        datePrecision: 'DAY',
+        reason: 'The treaty was ratified by Queen Victoria and the Daoguang Emperor, with ratifications exchanged at Hong Kong on 26 June 1843. Hong Kong was formally proclaimed a British colony that day, and the treaty-port system it established governed Sino-Western relations for a century, making its terms settled diplomatic fact.',
+        source: {
+          externalId: 'src:hong-kong-proclamation-1843',
+          name: 'Proclamation of Hong Kong as a British Colony, 26 June 1843 (Hong Kong Government Gazette / Colonial Office records).',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nanking',
+          publishedAt: '1843-06-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Joule establishes the mechanical equivalent of heat (1849) ───────────────
+  {
+    externalId: 'trajectory:joule-mechanical-equivalent-heat-1849',
+    text: 'James Prescott Joule measured the mechanical equivalent of heat — establishing that heat and mechanical work are interconvertible forms of energy — in his paper "On the Mechanical Equivalent of Heat," read to the Royal Society on 21 June 1849.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1849-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-06-24',
+        datePrecision: 'DAY',
+        reason: 'The prevailing caloric theory held heat to be a conserved, indestructible fluid. At the British Association meeting in Oxford on 24 June 1847 Joule presented his paddle-wheel results showing a fixed conversion ratio between work and heat, directly contradicting caloric theory. The claim met scepticism and was largely contested by established physicists, though it drew the attention of the young William Thomson (Lord Kelvin).',
+        source: {
+          externalId: 'src:joule-baas-oxford-1847',
+          name: 'Joule JP. "On the Mechanical Equivalent of Heat" (abstract). Report of the British Association for the Advancement of Science, Oxford meeting, 1847.',
+          url: 'https://en.wikipedia.org/wiki/Mechanical_equivalent_of_heat',
+          publishedAt: '1847-06-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1849-06-21',
+        datePrecision: 'DAY',
+        reason: 'Joule\'s refined paddle-wheel experiments, communicated by Michael Faraday and read to the Royal Society on 21 June 1849, reported a value of about 772 foot-pounds of work per British thermal unit of heat. The careful quantitative result, published in the Philosophical Transactions in 1850, put the interconvertibility of heat and work on a firm experimental footing.',
+        source: {
+          externalId: 'src:joule-mechanical-equivalent-1850',
+          name: 'Joule JP. "On the Mechanical Equivalent of Heat." Philosophical Transactions of the Royal Society of London 1850;140:61–82.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1850.0004',
+          publishedAt: '1850-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1850-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Joule\'s result became a cornerstone of the first law of thermodynamics, formalised by Rudolf Clausius (1850) and William Thomson (1851). Caloric theory was abandoned in favour of energy conservation, and the SI unit of energy, the joule, was later named in his honour — settling the interconvertibility of heat and work as foundational physics.',
+        source: {
+          externalId: 'src:clausius-mechanical-theory-heat-1850',
+          name: 'Clausius R. "Über die bewegende Kraft der Wärme." Annalen der Physik 1850;155:368–397.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.18501550306',
+          publishedAt: '1850-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Indian Rebellion of 1857 begins at Meerut ────────────────────────────────
+  {
+    externalId: 'trajectory:indian-rebellion-1857-meerut',
+    text: 'The Indian Rebellion of 1857 began on 10 May 1857 when sepoys of the Bengal Army mutinied at Meerut, freeing imprisoned comrades and marching on Delhi to proclaim the Mughal emperor Bahadur Shah II.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1857-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1857-05-10',
+        datePrecision: 'DAY',
+        reason: 'On the evening of 10 May 1857 Indian soldiers of the East India Company\'s Bengal Army rose in revolt at Meerut — sparked by the new Enfield rifle cartridges rumoured to be greased with cow and pig fat — releasing 85 sepoys court-martialled days earlier, killing British officers and civilians, and setting out for Delhi. The events were reported in contemporaneous Company despatches and the Anglo-Indian press.',
+        source: {
+          externalId: 'src:meerut-court-of-inquiry-1857',
+          name: 'Report on the Mutiny at Meerut, 10 May 1857 — East India Company official despatches and the Court of Inquiry records.',
+          url: 'https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857',
+          publishedAt: '1857-05-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1858-08-02',
+        datePrecision: 'DAY',
+        reason: 'The rebellion was suppressed over the following year. On 2 August 1858 the British Parliament passed the Government of India Act, abolishing East India Company rule and transferring governance of India directly to the Crown — an institutional response that fixed the rebellion\'s historical reality and consequences as settled record.',
+        source: {
+          externalId: 'src:government-of-india-act-1858',
+          name: 'Government of India Act 1858 (21 & 22 Vict. c. 106). UK Parliament statute.',
+          url: 'https://en.wikipedia.org/wiki/Government_of_India_Act_1858',
+          publishedAt: '1858-08-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Suez Canal opens (1869) ──────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:suez-canal-opens-1869',
+    text: 'The Suez Canal, linking the Mediterranean and Red Seas across the Isthmus of Suez, was opened to navigation on 17 November 1869.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1869-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1869-11-17',
+        datePrecision: 'DAY',
+        reason: 'After a decade of excavation directed by Ferdinand de Lesseps\'s Compagnie universelle du canal maritime de Suez, the 164 km waterway was inaugurated on 17 November 1869 with a flotilla of vessels led by the French imperial yacht L\'Aigle, in a ceremony attended by Empress Eugénie and other European royalty. The opening was reported worldwide by contemporaneous press.',
+        source: {
+          externalId: 'src:suez-canal-inauguration-1869',
+          name: 'Reports of the inauguration of the Suez Canal, 17 November 1869 (contemporaneous press, e.g. The Illustrated London News and Le Monde illustré).',
+          url: 'https://en.wikipedia.org/wiki/Suez_Canal',
+          publishedAt: '1869-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1875-11-25',
+        datePrecision: 'DAY',
+        reason: 'The canal rapidly became the principal maritime route between Europe and Asia, cutting the London–Bombay voyage by thousands of miles. Its strategic and commercial value was confirmed when, on 25 November 1875, Britain purchased the Khedive of Egypt\'s 44% shareholding, cementing the canal as an established, indispensable global trade artery.',
+        source: {
+          externalId: 'src:britain-suez-shares-1875',
+          name: 'Disraeli government purchase of the Khedive\'s Suez Canal shares, November 1875 (UK Treasury and Parliamentary records).',
+          url: 'https://en.wikipedia.org/wiki/Suez_Canal',
+          publishedAt: '1875-11-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
