@@ -20848,6 +20848,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY 20TH CENTURY — PHYSICS REVOLUTION, TOTALITARIANISM, WAR (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Shapley–Curtis "Great Debate" — the scale of the universe ────────────────
+  {
+    externalId: 'trajectory:shapley-curtis-great-debate-1920',
+    text: 'The spiral nebulae (such as the Andromeda nebula) are independent galaxies of stars lying far outside the Milky Way, which is itself only one galaxy among many.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1920-04-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-04-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 April 1920, Harlow Shapley and Heber Curtis hold the "Great Debate" before the National Academy of Sciences in Washington. Curtis argues the spiral nebulae are distant "island universes"; Shapley argues they lie within a single, much larger Milky Way. With existing distance measurements ambiguous, the size of the universe and the nature of the nebulae are openly contested by the leading astronomers of the day.',
+        source: {
+          externalId: 'src:shapley-curtis-debate-1921',
+          name: 'Shapley H. & Curtis H.D. "The Scale of the Universe." Bulletin of the National Research Council, vol. 2, part 3, no. 11 (May 1921), pp. 171–217.',
+          url: 'https://articles.adsabs.harvard.edu/full/1921BuNRC...2..171S',
+          publishedAt: '1921-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'DAY',
+        reason: 'Edwin Hubble identifies Cepheid variable stars in the Andromeda nebula (M31) and, using the period–luminosity relation, derives a distance far beyond any plausible boundary of the Milky Way. His results, announced at the 1 January 1925 meeting of the American Astronomical Society, decisively establish that the spiral nebulae are external galaxies, resolving the debate in Curtis\'s favor.',
+        source: {
+          externalId: 'src:hubble-cepheids-andromeda-1925',
+          name: 'Hubble E.P. "Cepheids in Spiral Nebulae." Publications of the Astronomical Society of the Pacific, vol. 37, no. 215 (1925), pp. 261–264.',
+          url: 'https://articles.adsabs.harvard.edu/full/1925PASP...37..261H',
+          publishedAt: '1925-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-03-15',
+        datePrecision: 'DAY',
+        reason: 'Hubble\'s 1929 discovery of the linear velocity–distance relation among galaxies builds directly on the resolved extragalactic distance scale, embedding the "island universe" conclusion permanently in observational cosmology. No subsequent finding has reopened the question.',
+        source: {
+          externalId: 'src:hubble-velocity-distance-1929',
+          name: 'Hubble E.P. "A Relation between Distance and Radial Velocity among Extra-Galactic Nebulae." PNAS, vol. 15, no. 3 (15 March 1929), pp. 168–173.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.15.3.168',
+          publishedAt: '1929-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mussolini's March on Rome — Fascists seize power in Italy ────────────────
+  {
+    externalId: 'trajectory:march-on-rome-1922',
+    text: 'Following the Fascist "March on Rome," King Victor Emmanuel III appointed Benito Mussolini Prime Minister of Italy on 31 October 1922.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1922-10-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1922-10-31',
+        datePrecision: 'DAY',
+        reason: 'After columns of Blackshirts converge on Rome (28–30 October 1922), King Victor Emmanuel III refuses to sign a decree of martial law and instead invites Mussolini to form a government. Mussolini arrives from Milan and is sworn in as Prime Minister on 31 October; the events are reported across the world\'s front pages within days.',
+        source: {
+          externalId: 'src:nyt-mussolini-premier-1922',
+          name: '"Fascisti Now Rule Italy; Mussolini Forms Cabinet." The New York Times, 31 October 1922, p. 1.',
+          url: 'https://www.nytimes.com/1922/10/31/archives/fascisti-now-rule-italy-mussolini-forms-cabinet-king-summons-leader.html',
+          publishedAt: '1922-10-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1922-11-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 November 1922 the Italian Parliament grants Mussolini\'s government full emergency powers to reform the administration and the tax system, legally ratifying the transfer of authority. The new government is recognized domestically and by foreign chancelleries, fixing the change of regime beyond dispute.',
+        source: {
+          externalId: 'src:italy-full-powers-act-1922',
+          name: 'Legge 3 dicembre 1922, n. 1601, "Delegazione di pieni poteri al Governo del Re" (full-powers act approved by Parliament 25 November 1922). Gazzetta Ufficiale del Regno d\'Italia.',
+          url: 'https://www.gazzettaufficiale.it/eli/id/1922/12/15/022U1601/sg',
+          publishedAt: '1922-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship, drawing on Italian state archives and Fascist Party records, treats 28–31 October 1922 as the canonical starting point of the Fascist regime — though historians stress the "march" was largely theatrical and that the decisive act was the King\'s political capitulation.',
+        source: {
+          externalId: 'src:bosworth-mussolini-2002',
+          name: 'Bosworth R.J.B. Mussolini. London: Arnold, 2002 (account of the March on Rome and the seizure of power).',
+          url: 'https://www.worldcat.org/title/mussolini/oclc/49225553',
+          publishedAt: '2002-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Anschluss — German annexation of Austria ─────────────────────────────
+  {
+    externalId: 'trajectory:anschluss-austria-1938',
+    text: 'On 12–13 March 1938 German troops entered Austria and the country was formally annexed into the German Reich.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1938-03-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1938-03-12',
+        datePrecision: 'DAY',
+        reason: 'On 12 March 1938 the German Wehrmacht crosses into Austria unopposed; Hitler enters Linz to cheering crowds. The next day the new Austrian government proclaims the law reuniting Austria with the German Reich. The occupation is broadcast and filmed live and reported worldwide.',
+        source: {
+          externalId: 'src:anschluss-law-1938',
+          name: 'Gesetz über die Wiedervereinigung Österreichs mit dem Deutschen Reich (Anschluss Law), 13 March 1938. Reichsgesetzblatt 1938 I, S. 237.',
+          url: 'https://www.documentarchiv.de/ns/anschl-oe.html',
+          publishedAt: '1938-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1938-04-10',
+        datePrecision: 'DAY',
+        reason: 'A plebiscite held on 10 April 1938 under Nazi control reports roughly 99% approval of the annexation. While the vote was neither free nor secret, the diplomatic and administrative absorption of Austria into the Reich is now an accomplished fact recognized by other states.',
+        source: {
+          externalId: 'src:nyt-austria-plebiscite-1938',
+          name: '"Reich Vote 99% for Hitler; Austria Out of Existence." The New York Times, 11 April 1938, p. 1.',
+          url: 'https://www.nytimes.com/1938/04/11/archives/reich-vote-99-for-hitler-austria-out-of-existence-1004600-of.html',
+          publishedAt: '1938-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-10-01',
+        datePrecision: 'DAY',
+        reason: 'The Nuremberg International Military Tribunal, using captured German records, documents the planning and execution of the Anschluss as an act of aggression, fixing the chronology and coercive character of the annexation in the legal record.',
+        source: {
+          externalId: 'src:imt-judgment-austria-1946',
+          name: 'Judgment of the International Military Tribunal, Nuremberg, 1 October 1946 (section on the seizure of Austria).',
+          url: 'https://avalon.law.yale.edu/imt/judaustr.asp',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Atomic bombing of Nagasaki ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:nagasaki-atomic-bomb-1945',
+    text: 'On 9 August 1945 the United States dropped a plutonium implosion atomic bomb ("Fat Man") on Nagasaki, Japan, the second nuclear weapon used in war.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1945-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1945-08-09',
+        datePrecision: 'DAY',
+        reason: 'At 11:02 a.m. local time on 9 August 1945 a B-29 (Bockscar) drops the "Fat Man" bomb over Nagasaki, destroying much of the city. The United States announces the attack the same day, three days after Hiroshima.',
+        source: {
+          externalId: 'src:truman-nagasaki-statement-1945',
+          name: 'Statement and press materials on the second atomic bomb, August 1945; "Second Big Aerial Blow." The New York Times, 9 August 1945, p. 1.',
+          url: 'https://www.nytimes.com/1945/08/09/archives/atom-bomb-loosed-on-nagasaki-tokyo-reports-second-city-raided.html',
+          publishedAt: '1945-08-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1946-06-30',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Strategic Bombing Survey publishes its detailed technical report on the effects of the atomic bombings of Hiroshima and Nagasaki (30 June 1946), documenting the weapon type, yield, and damage with physical surveys and casualty estimates, settling the factual record.',
+        source: {
+          externalId: 'src:ussbs-atomic-bombs-1946',
+          name: 'United States Strategic Bombing Survey. The Effects of the Atomic Bombings of Hiroshima and Nagasaki. Washington: USGPO, 30 June 1946.',
+          url: 'https://www.trumanlibrary.gov/library/research-files/united-states-strategic-bombing-survey-effects-atomic-bombs-hiroshima-and',
+          publishedAt: '1946-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Decades of declassified Manhattan Project records, Japanese municipal surveys, and radiological studies (e.g., the Radiation Effects Research Foundation) corroborate the date, weapon design, and consequences of the Nagasaki bombing, leaving no scholarly dispute over the basic facts.',
+        source: {
+          externalId: 'src:rerf-nagasaki-studies',
+          name: 'Radiation Effects Research Foundation — longitudinal studies of atomic-bomb survivors at Hiroshima and Nagasaki.',
+          url: 'https://www.rerf.or.jp/en/',
+          publishedAt: '1977-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Philippine independence from the United States ───────────────────────────
+  {
+    externalId: 'trajectory:philippines-independence-1946',
+    text: 'On 4 July 1946 the United States formally recognized the independence of the Republic of the Philippines.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1946-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1946-07-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 July 1946 the American flag is lowered and the flag of the Republic of the Philippines raised in Manila. President Truman issues a proclamation recognizing Philippine independence, ending nearly half a century of U.S. colonial rule and four decades of the Commonwealth and territorial period.',
+        source: {
+          externalId: 'src:truman-philippines-proclamation-1946',
+          name: 'Proclamation 2695 of July 4, 1946 — Independence of the Philippines (Harry S. Truman). U.S. Federal Register / Statutes at Large.',
+          url: 'https://www.presidency.ucsb.edu/documents/proclamation-2695-independence-the-philippines',
+          publishedAt: '1946-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1946-07-04',
+        datePrecision: 'DAY',
+        reason: 'The independence was mandated by the Tydings–McDuffie Act of 1934, which set a ten-year transition culminating in 1946. The Treaty of General Relations signed in Manila on 4 July 1946 confirms the transfer of sovereignty, and the new Republic is rapidly recognized by other states and admitted to the United Nations.',
+        source: {
+          externalId: 'src:treaty-general-relations-philippines-1946',
+          name: 'Treaty of General Relations between the United States of America and the Republic of the Philippines, signed at Manila, 4 July 1946. UN Treaty Series.',
+          url: 'https://treaties.un.org/doc/Publication/UNTS/Volume%207/v7.pdf',
+          publishedAt: '1946-07-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
