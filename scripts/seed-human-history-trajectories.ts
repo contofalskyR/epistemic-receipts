@@ -4205,6 +4205,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PHYSICS REVOLUTION / TOTALITARIANISM / HOLOCAUST / ATOMIC AGE (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eddington eclipse confirms general relativity ───────────────────────────
+  {
+    externalId: 'trajectory:eddington-eclipse-relativity-1919',
+    text: 'Einstein\'s general theory of relativity predicted that the Sun\'s gravity would deflect starlight by 1.75 arcseconds; the prediction was confirmed by observations during the total solar eclipse of May 29, 1919.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-11-25',
+        datePrecision: 'DAY',
+        reason: 'Einstein presents the final field equations of general relativity to the Prussian Academy of Sciences, deriving a light-deflection of 1.75 arcseconds at the Sun\'s limb — exactly twice the value predicted by Newtonian gravity. The prediction is testable only during a total solar eclipse and remains experimentally unverified.',
+        source: {
+          externalId: 'src:einstein-field-equations-1915',
+          name: 'Einstein A. Die Feldgleichungen der Gravitation. Sitzungsberichte der Preussischen Akademie der Wissenschaften, November 25, 1915, pp. 844–847.',
+          url: 'https://echo.mpiwg-berlin.mpg.de/MPIWG:YP5DM7YA',
+          publishedAt: '1915-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-05-29',
+        datePrecision: 'DAY',
+        reason: 'Two British expeditions photograph the star field around the eclipsed Sun: Arthur Eddington at Príncipe (Gulf of Guinea) and Andrew Crommelin at Sobral (Brazil). The measured shifts in apparent stellar positions record the deflection of light grazing the Sun, the raw data still to be reduced and interpreted.',
+        source: {
+          externalId: 'src:eclipse-1919-expedition',
+          name: 'Royal Greenwich Observatory / Royal Astronomical Society records of the 1919 eclipse expeditions to Sobral and Príncipe.',
+          url: 'https://www.rmg.co.uk/stories/topics/einstein-eddington-1919-eclipse',
+          publishedAt: '1919-05-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-11-06',
+        datePrecision: 'DAY',
+        reason: 'At a joint meeting of the Royal Society and the Royal Astronomical Society, Astronomer Royal Frank Dyson announces that the measured deflections (1.98″ at Sobral, 1.61″ at Príncipe) agree with Einstein\'s 1.75″ prediction and rule out the Newtonian value. The full analysis is published in 1920. The result makes Einstein internationally famous overnight and is treated as confirmation of general relativity.',
+        source: {
+          externalId: 'src:dyson-eddington-davidson-1920',
+          name: 'Dyson FW, Eddington AS, Davidson C. A Determination of the Deflection of Light by the Sun\'s Gravitational Field. Philosophical Transactions of the Royal Society A 1920;220:291–333.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rsta.1920.0009',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hubble's law and the expanding universe ─────────────────────────────────
+  {
+    externalId: 'trajectory:hubble-expanding-universe-1929',
+    text: 'Edwin Hubble demonstrated that galaxies recede from us at velocities proportional to their distance, the first observational evidence that the universe is expanding; published March 15, 1929.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hubble\'s Cepheid distance measurements, read in absentia at the American Astronomical Society meeting on January 1, 1925, establish that spiral nebulae such as Andromeda lie far beyond the Milky Way — they are separate galaxies. Vesto Slipher had already measured large redshifts for many spirals, but whether these velocities related systematically to distance was an open question.',
+        source: {
+          externalId: 'src:hubble-cepheids-1925',
+          name: 'Hubble EP. Cepheids in Spiral Nebulae. Publications of the American Astronomical Society 1925;5:261–264. (Read at AAS, January 1, 1925)',
+          url: 'https://articles.adsabs.harvard.edu/pdf/1925PA.....33..252H',
+          publishedAt: '1925-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-03-15',
+        datePrecision: 'DAY',
+        reason: 'Hubble publishes "A Relation Between Distance and Radial Velocity Among Extra-Galactic Nebulae" in PNAS, showing an approximately linear relationship between a galaxy\'s distance and its recession velocity. The constant of proportionality (Hubble\'s constant) is recorded; the systematic recession is the predicted signature of an expanding universe described by Lemaître (1927) and the Friedmann solutions.',
+        source: {
+          externalId: 'src:hubble-velocity-distance-1929',
+          name: 'Hubble E. A Relation Between Distance and Radial Velocity Among Extra-Galactic Nebulae. Proceedings of the National Academy of Sciences 1929;15(3):168–173.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.15.3.168',
+          publishedAt: '1929-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hubble and Milton Humason extend the velocity–distance relation to galaxies far more distant and faster-receding, confirming linearity over a large range. Combined with Lemaître\'s relativistic cosmology, the expansion of the universe becomes the accepted interpretation. Modern measurements (e.g., the HST Key Project, 2001) refine Hubble\'s constant but leave the expansion settled.',
+        source: {
+          externalId: 'src:hubble-humason-1931',
+          name: 'Hubble E, Humason ML. The Velocity-Distance Relation among Extra-Galactic Nebulae. Astrophysical Journal 1931;74:43–80.',
+          url: 'https://articles.adsabs.harvard.edu/pdf/1931ApJ....74...43H',
+          publishedAt: '1931-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of nuclear fission ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:nuclear-fission-discovery-1938',
+    text: 'Otto Hahn and Fritz Strassmann discovered in December 1938 that bombarding uranium with neutrons splits the nucleus, producing barium; the process was interpreted and named "fission" by Lise Meitner and Otto Frisch in February 1939.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1938-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-06',
+        datePrecision: 'DAY',
+        reason: 'Hahn and Strassmann, bombarding uranium with neutrons, chemically identify barium among the products — an element roughly half the mass of uranium. The chemistry is unambiguous, but the physics seems impossible: no known process could split a heavy nucleus in two. Hahn writes to Meitner that the result is at odds with all prior nuclear physics. The mechanism is an open question.',
+        source: {
+          externalId: 'src:hahn-strassmann-1939',
+          name: 'Hahn O, Strassmann F. Über den Nachweis und das Verhalten der bei der Bestrahlung des Urans mittels Neutronen entstehenden Erdalkalimetalle. Naturwissenschaften 1939;27(1):11–15.',
+          url: 'https://link.springer.com/article/10.1007/BF01488241',
+          publishedAt: '1939-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-02-11',
+        datePrecision: 'DAY',
+        reason: 'Lise Meitner and her nephew Otto Frisch publish a physical interpretation in Nature: the uranium nucleus, behaving like a liquid drop, splits into two lighter nuclei, releasing roughly 200 MeV. Frisch coins the term "fission." Frisch independently confirms the energetic fragments experimentally in January 1939. The phenomenon is now a recorded, explained physical process.',
+        source: {
+          externalId: 'src:meitner-frisch-fission-1939',
+          name: 'Meitner L, Frisch OR. Disintegration of Uranium by Neutrons: a New Type of Nuclear Reaction. Nature 1939;143:239–240.',
+          url: 'https://www.nature.com/articles/143239a0',
+          publishedAt: '1939-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-03-16',
+        datePrecision: 'DAY',
+        reason: 'Within weeks, laboratories worldwide replicate fission and detect that each event releases additional neutrons — raising the possibility of a chain reaction. Frédéric Joliot-Curie\'s group in Paris reports secondary neutron emission, and Bohr and Wheeler publish the liquid-drop theory of fission in September 1939. The discovery is settled and becomes the basis of the wartime atomic programs.',
+        source: {
+          externalId: 'src:vonhalban-joliot-kowarski-1939',
+          name: 'von Halban H, Joliot F, Kowarski L. Liberation of Neutrons in the Nuclear Explosion of Uranium. Nature 1939;143:470–471.',
+          url: 'https://www.nature.com/articles/143470a0',
+          publishedAt: '1939-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Wannsee Conference — coordination of the "Final Solution" ────────────────
+  {
+    externalId: 'trajectory:wannsee-conference-1942',
+    text: 'On January 20, 1942, senior Nazi officials met at a villa on the Wannsee in Berlin to coordinate the implementation of the "Final Solution to the Jewish Question" — the systematic murder of European Jews.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-01-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-20',
+        datePrecision: 'DAY',
+        reason: 'Reinhard Heydrich convenes fifteen senior SS, party, and government officials at Am Großen Wannsee 56–58 to coordinate the deportation and extermination of an estimated eleven million European Jews across ministries. Adolf Eichmann prepares minutes (the "Wannsee Protocol"); thirty numbered copies are produced and classified as secret state matters, most later destroyed.',
+        source: {
+          externalId: 'src:wannsee-protocol-1942',
+          name: 'Wannsee Protocol (Besprechungsprotokoll der Wannsee-Konferenz), January 20, 1942. Surviving copy 16 of 30, German Foreign Office files.',
+          url: 'https://www.ghwk.de/en/conference/the-list-of-participants',
+          publishedAt: '1942-01-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1947-03-01',
+        datePrecision: 'MONTH',
+        reason: 'In March 1947, U.S. prosecutor Robert Kempner discovers a surviving copy of the Wannsee Protocol while reviewing seized German Foreign Office records. The document is entered as evidence in the Nuremberg "Ministries Trial," establishing in a judicial record that the conference took place and what it coordinated. The villa is today the House of the Wannsee Conference memorial. The event is settled history.',
+        source: {
+          externalId: 'src:ghwk-wannsee-history',
+          name: 'House of the Wannsee Conference Memorial and Educational Site. History of the Wannsee Conference and rediscovery of the protocol.',
+          url: 'https://www.ghwk.de/en/conference',
+          publishedAt: '1947-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Chicago Pile-1 — first self-sustaining nuclear chain reaction ────────────
+  {
+    externalId: 'trajectory:chicago-pile-chain-reaction-1942',
+    text: 'On December 2, 1942, a team led by Enrico Fermi achieved the first controlled, self-sustaining nuclear chain reaction in Chicago Pile-1, beneath the stands of Stagg Field at the University of Chicago.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-12-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-12-02',
+        datePrecision: 'DAY',
+        reason: 'At 3:25 p.m., Fermi orders the control rod withdrawn and the neutron counters of Chicago Pile-1 climb without limit, confirming a self-sustaining (critical) chain reaction sustained for about 28 minutes. Arthur Compton telephones James Conant with the coded message "The Italian navigator has landed in the New World." The achievement is logged contemporaneously by the Metallurgical Laboratory but kept secret as part of the Manhattan Project.',
+        source: {
+          externalId: 'src:cp1-fermi-1942',
+          name: 'Fermi E. Experimental Production of a Divergent Chain Reaction. American Journal of Physics 1952;20(9):536–558. (Fermi\'s account of the December 2, 1942 experiment)',
+          url: 'https://pubs.aip.org/aapt/ajp/article/20/9/536/1033543',
+          publishedAt: '1952-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-08-12',
+        datePrecision: 'DAY',
+        reason: 'The U.S. government publicly documents the December 2, 1942 chain reaction in the Smyth Report, released three days after the bombing of Nagasaki. The declassified account, corroborated by the surviving CP-1 records and participants\' eyewitness affidavits, makes the first self-sustaining nuclear chain reaction settled public fact. The site is later designated a National Historic Landmark.',
+        source: {
+          externalId: 'src:smyth-report-1945',
+          name: 'Smyth HD. Atomic Energy for Military Purposes (the Smyth Report). U.S. Government Printing Office, August 12, 1945, Chapter VI.',
+          url: 'https://www.osti.gov/opennet/manhattan-project-history/publications/SmythReport.pdf',
+          publishedAt: '1945-08-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
