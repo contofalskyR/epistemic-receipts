@@ -6086,6 +6086,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990): space race, civil rights, Vietnam, environment, computing
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sputnik 1 — first artificial Earth satellite ───────────────────────────
+  {
+    externalId: 'trajectory:sputnik-1-first-satellite-1957',
+    text: 'On October 4, 1957, the Soviet Union launched Sputnik 1, the first artificial satellite to orbit the Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-10-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-10-04',
+        datePrecision: 'DAY',
+        reason: 'An R-7 rocket lifts off from the Tyuratam range (later Baikonur Cosmodrome) and places the 83.6 kg polished metal sphere Sputnik 1 into Earth orbit. The Soviet news agency TASS announces the launch the same evening, and the satellite\'s 20 and 40 MHz radio beeps are broadcast publicly so they can be received worldwide.',
+        source: {
+          externalId: 'src:tass-sputnik-announcement-1957',
+          name: 'TASS announcement of the launch of the world\'s first artificial Earth satellite, 4 October 1957 (Pravda, 5 October 1957).',
+          url: 'https://www.nasa.gov/history/sputnik/',
+          publishedAt: '1957-10-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-10-05',
+        datePrecision: 'DAY',
+        reason: 'The claim is immediately and independently verified outside the USSR: amateur and professional radio operators across the globe record Sputnik\'s transmissions, and observatories — including the U.S. Naval Research Laboratory and the Jodrell Bank radio telescope — track its orbit. Optical sightings of the rocket body and confirmation of the orbital period of about 96 minutes place the launch beyond dispute.',
+        source: {
+          externalId: 'src:nrl-sputnik-tracking-1957',
+          name: 'U.S. Naval Research Laboratory / Smithsonian Astrophysical Observatory tracking reports of Satellite 1957 Alpha 2 (Sputnik 1), October 1957.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1957-001B',
+          publishedAt: '1957-10-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Civil Rights Act of 1964 signed into law ───────────────────────────────
+  {
+    externalId: 'trajectory:civil-rights-act-1964',
+    text: 'The Civil Rights Act of 1964, outlawing discrimination based on race, color, religion, sex, or national origin, was signed into law by President Lyndon B. Johnson on July 2, 1964.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1964-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-07-02',
+        datePrecision: 'DAY',
+        reason: 'Hours after the House agrees to the Senate-amended bill, President Johnson signs H.R. 7152 into law as Public Law 88-352 in a televised East Room ceremony, using dozens of pens later given to civil rights leaders including Martin Luther King Jr. The enacted text is entered into the United States Statutes at Large.',
+        source: {
+          externalId: 'src:civil-rights-act-pl88-352-1964',
+          name: 'Civil Rights Act of 1964, Public Law 88-352, 78 Stat. 241 (enacted July 2, 1964). U.S. National Archives.',
+          url: 'https://www.archives.gov/milestone-documents/civil-rights-act',
+          publishedAt: '1964-07-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1964-12-14',
+        datePrecision: 'DAY',
+        reason: 'On December 14, 1964, the U.S. Supreme Court unanimously upholds the public-accommodations provisions (Title II) in Heart of Atlanta Motel v. United States and Katzenbach v. McClung, ruling that Congress acted within its Commerce Clause power. The Act survives its first constitutional challenge and becomes settled, enforceable federal law.',
+        source: {
+          externalId: 'src:heart-of-atlanta-motel-1964',
+          name: 'Heart of Atlanta Motel, Inc. v. United States, 379 U.S. 241 (1964).',
+          url: 'https://supreme.justia.com/cases/federal/us/379/241/',
+          publishedAt: '1964-12-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Silent Spring — pesticide ecological harm enters the record ────────────
+  {
+    externalId: 'trajectory:silent-spring-1962',
+    text: 'Rachel Carson\'s Silent Spring, published September 27, 1962, documented that synthetic pesticides — particularly DDT — cause widespread, persistent ecological harm by bioaccumulating through food chains.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1962-09-27',
+        datePrecision: 'DAY',
+        reason: 'Houghton Mifflin publishes Silent Spring, in which Carson synthesizes the published toxicological and ecological literature to argue that broadcast spraying of organochlorine pesticides kills non-target wildlife, concentrates up the food chain, and threatens human health. The book becomes a bestseller and places the claim before a mass public.',
+        source: {
+          externalId: 'src:carson-silent-spring-1962',
+          name: 'Carson R. Silent Spring. Boston: Houghton Mifflin, 1962.',
+          url: 'https://www.loc.gov/item/2002760530/',
+          publishedAt: '1962-09-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The chemical industry mounts a coordinated rebuttal: Velsicol Chemical threatens litigation, and trade groups and several scientists publicly attack Carson\'s competence and conclusions, framing the book as alarmist. The claim that pesticides cause systemic ecological damage is openly disputed in the press and before Congress.',
+        source: {
+          externalId: 'src:silent-spring-industry-response-1962',
+          name: 'Lear L. Rachel Carson: Witness for Nature (documenting the 1962–63 chemical-industry response to Silent Spring). Henry Holt, 1997.',
+          url: 'https://www.rachelcarson.org/SilentSpring.aspx',
+          publishedAt: '1962-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-06-14',
+        datePrecision: 'DAY',
+        reason: 'A 1963 President\'s Science Advisory Committee report largely vindicates Carson\'s findings, and on June 14, 1972 the U.S. Environmental Protection Agency issues an order cancelling nearly all uses of DDT, citing its persistence and bioaccumulation in the environment. The ecological-harm claim is adopted as the basis of federal regulatory action.',
+        source: {
+          externalId: 'src:epa-ddt-cancellation-1972',
+          name: 'U.S. EPA. "DDT Ban Takes Effect" — Consolidated DDT Hearing, Opinion and Order of the Administrator, June 14, 1972.',
+          url: 'https://www.epa.gov/archive/epa/aboutepa/ddt-ban-takes-effect.html',
+          publishedAt: '1972-06-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pentagon Papers — concealment of Vietnam decision-making revealed ───────
+  {
+    externalId: 'trajectory:pentagon-papers-1971',
+    text: 'The Pentagon Papers, a classified Defense Department history first published by The New York Times on June 13, 1971, showed that successive U.S. administrations systematically misled the public and Congress about decision-making and prospects in the Vietnam War.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-06-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1971-06-13',
+        datePrecision: 'DAY',
+        reason: 'The New York Times begins publishing excerpts from "History of U.S. Decision-Making Process on Vietnam Policy," the 7,000-page study commissioned by Secretary of Defense Robert McNamara and leaked by analyst Daniel Ellsberg. The documents show that internal government assessments contradicted optimistic public statements and that escalation decisions were concealed from Congress and the public.',
+        source: {
+          externalId: 'src:nyt-pentagon-papers-1971',
+          name: 'Sheehan N. "Vietnam Archive: Pentagon Study Traces 3 Decades of Growing U.S. Involvement." The New York Times, June 13, 1971.',
+          url: 'https://www.nytimes.com/1971/06/13/archives/vietnam-archive-pentagon-study-traces-3-decades-of-growing-u-s.html',
+          publishedAt: '1971-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1971-06-30',
+        datePrecision: 'DAY',
+        reason: 'After the government obtained an injunction halting publication, the U.S. Supreme Court rules 6–3 in New York Times Co. v. United States that the prior restraint is unconstitutional, allowing the newspapers to resume publishing. The full study enters the public and Congressional record (the Gravel Edition is published the same year), and its account of official deception is corroborated by the primary documents themselves.',
+        source: {
+          externalId: 'src:nyt-v-us-1971',
+          name: 'New York Times Co. v. United States, 403 U.S. 713 (1971).',
+          url: 'https://supreme.justia.com/cases/federal/us/403/713/',
+          publishedAt: '1971-06-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Intel 4004 — first commercial single-chip microprocessor ───────────────
+  {
+    externalId: 'trajectory:intel-4004-microprocessor-1971',
+    text: 'Intel introduced the 4004 on November 15, 1971 — the first commercially available single-chip microprocessor, placing a complete central processing unit on one piece of silicon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-11-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1971-11-15',
+        datePrecision: 'DAY',
+        reason: 'Intel announces the 4004 to the public with a full-page advertisement in Electronic News — "Announcing a new era of integrated electronics" — and offers the chip and its MCS-4 family for commercial sale. The 4-bit, 2,300-transistor device, designed by Federico Faggin, Ted Hoff, Stanley Mazor, and Masatoshi Shima, integrates an entire CPU on a single chip.',
+        source: {
+          externalId: 'src:intel-4004-electronic-news-1971',
+          name: 'Intel Corporation advertisement, "Announcing a new era of integrated electronics," Electronic News, November 15, 1971.',
+          url: 'https://www.intel.com/content/www/us/en/history/museum-story-of-intel-4004.html',
+          publishedAt: '1971-11-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-11-15',
+        datePrecision: 'YEAR',
+        reason: 'The 4004 is durably recognized as the first commercial microprocessor in the historical and engineering record: the surviving design documents, datasheets, and chips are preserved and exhibited (the Computer History Museum, the Smithsonian), and the device anchors histories of the microprocessor as the start of the single-chip-CPU era. Its priority and significance are no longer in dispute.',
+        source: {
+          externalId: 'src:chm-intel-4004-history',
+          name: 'Computer History Museum. "The Intel 4004 Microprocessor" — exhibit and oral histories with Federico Faggin and Marcian (Ted) Hoff.',
+          url: 'https://www.computerhistory.org/revolution/digital-logic/12/279',
+          publishedAt: '1996-11-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
