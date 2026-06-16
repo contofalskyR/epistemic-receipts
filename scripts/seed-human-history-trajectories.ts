@@ -1118,6 +1118,246 @@ const TRAJECTORIES: Trajectory[] = [
   // EARLY MODERN (1500–1800)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Vasco da Gama reaches India by sea ──────────────────────────────────────
+  {
+    externalId: 'trajectory:vasco-da-gama-calicut-1498',
+    text: 'Vasco da Gama\'s Portuguese fleet reached Calicut (Kozhikode) on the Malabar coast of India on 20 May 1498, completing the first sea route from Europe to India around Africa.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1498-05-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1498-05-20',
+        datePrecision: 'DAY',
+        reason: 'After rounding the Cape of Good Hope and crossing the Indian Ocean with a Gujarati pilot, da Gama\'s ships anchor off Calicut. The arrival is recorded contemporaneously in the anonymous shipboard journal (the Roteiro), traditionally attributed to the sailor Álvaro Velho, which gives the date and describes the first audience with the Zamorin of Calicut.',
+        source: {
+          externalId: 'src:roteiro-vasco-da-gama-1498',
+          name: 'Roteiro da primeira viagem de Vasco da Gama (anonymous shipboard journal, attrib. Álvaro Velho), 1497–1499.',
+          url: 'https://archive.org/details/journaloffirstvo00gamarich',
+          publishedAt: '1499-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1499-08-29',
+        datePrecision: 'DAY',
+        reason: 'The fleet returns to Lisbon in summer 1499. King Manuel I announces the achievement to the Spanish monarchs in a letter of July 1499 and assumes the title "Lord of the conquest, navigation and commerce of Ethiopia, Arabia, Persia and India." The opening of the Carreira da Índia and annual Portuguese voyages from 1500 corroborate the route as an established fact.',
+        source: {
+          externalId: 'src:manuel-i-letter-1499',
+          name: 'Letter of King Manuel I of Portugal to Ferdinand and Isabella announcing the discovery of the sea route to India, July 1499.',
+          url: 'https://en.wikipedia.org/wiki/Vasco_da_Gama',
+          publishedAt: '1499-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Tenochtitlan ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:fall-tenochtitlan-1521',
+    text: 'The Aztec capital Tenochtitlan fell to the forces of Hernán Cortés and his Indigenous allies on 13 August 1521, when the last tlatoani Cuauhtémoc was captured, ending the Aztec Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1521-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1521-08-13',
+        datePrecision: 'DAY',
+        reason: 'After a months-long siege, the surviving defenders surrender and Cuauhtémoc is taken while attempting to flee across Lake Texcoco. Cortés records the date and the capture in his Third Letter of Relation to Emperor Charles V, written in May 1522. The fall coincides with the feast of St. Hippolytus, later commemorated by the Spanish.',
+        source: {
+          externalId: 'src:cortes-third-letter-1522',
+          name: 'Hernán Cortés. Carta tercera de relación to Emperor Charles V, 15 May 1522.',
+          url: 'https://www.gutenberg.org/ebooks/46990',
+          publishedAt: '1522-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1576-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent accounts from both sides confirm the conquest: Bernal Díaz del Castillo\'s eyewitness Historia verdadera, and Indigenous Nahua testimony compiled by Bernardino de Sahagún in Book XII of the Florentine Codex (c. 1576), which records the siege and surrender from the Mexica perspective. No source disputes the fall of the city in 1521.',
+        source: {
+          externalId: 'src:florentine-codex-book12',
+          name: 'Bernardino de Sahagún. Historia general de las cosas de Nueva España (Florentine Codex), Book XII: The Conquest of Mexico, c. 1576.',
+          url: 'https://www.wdl.org/en/item/10096/',
+          publishedAt: '1576-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Lepanto ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-lepanto-1571',
+    text: 'The Holy League fleet decisively defeated the Ottoman navy at the Battle of Lepanto in the Gulf of Patras on 7 October 1571, the last major naval battle fought primarily with oared galleys.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1571-10-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1571-10-07',
+        datePrecision: 'DAY',
+        reason: 'The combined fleet of Venice, Spain, the Papacy and allied states under Don John of Austria destroys or captures the bulk of the Ottoman fleet under Müezzinzade Ali Pasha. News reaches Venice on 19 October and Rome shortly after; Pope Pius V orders celebrations and the date is recorded in dispatches across Europe. Miguel de Cervantes, wounded in the battle, attests to it in later writings.',
+        source: {
+          externalId: 'src:lepanto-dispatches-1571',
+          name: 'Contemporary relazioni and dispatches of the Battle of Lepanto, October 1571 (Venetian and Papal accounts).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Lepanto',
+          publishedAt: '1571-10-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1573-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle is recorded in Christian, Venetian and Ottoman sources alike, which agree on the date, location and Ottoman naval defeat (Ottoman chroniclers such as Selânikî record the loss of the fleet). The event is commemorated in art, medals and the feast of Our Lady of the Rosary. Scholarship debates the strategic consequences, not the occurrence of the battle.',
+        source: {
+          externalId: 'src:selaniki-tarih-lepanto',
+          name: 'Selânikî Mustafa Efendi. Tarih-i Selânikî (Ottoman chronicle recording the naval defeat at Lepanto), late 16th century.',
+          url: 'https://www.britannica.com/event/Battle-of-Lepanto-1571',
+          publishedAt: '1573-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Edict of Nantes granted, then revoked ───────────────────────────────────
+  {
+    externalId: 'trajectory:edict-of-nantes-1598',
+    text: 'King Henry IV of France promulgated the Edict of Nantes in April 1598, granting substantial religious liberties to Protestant Huguenots; it was revoked by Louis XIV\'s Edict of Fontainebleau in October 1685.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1598-04-13',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1598-04-13',
+        datePrecision: 'MONTH',
+        reason: 'Henry IV signs the Edict of Nantes at Nantes in April 1598, ending the French Wars of Religion by granting Huguenots freedom of conscience, limited public worship, civil rights, and a number of fortified safe-haven towns. The edict text with its general articles and secret articles survives in the royal archives.',
+        source: {
+          externalId: 'src:edict-of-nantes-text-1598',
+          name: 'Edict of Nantes, promulgated by Henry IV of France, April 1598 (official text, general and secret articles).',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Nantes',
+          publishedAt: '1598-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1599-02-25',
+        datePrecision: 'DAY',
+        reason: 'After resistance, the Parlement de Paris registers the edict on 25 February 1599, giving it legal force; other provincial parlements follow over the next decade. Registration makes the edict enforceable law and establishes the Huguenots\' legal toleration as a settled institutional fact of the French crown.',
+        source: {
+          externalId: 'src:parlement-paris-registration-1599',
+          name: 'Registration of the Edict of Nantes by the Parlement de Paris, 25 February 1599.',
+          url: 'https://www.britannica.com/event/Edict-of-Nantes',
+          publishedAt: '1599-02-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1685-10-18',
+        datePrecision: 'DAY',
+        reason: 'Louis XIV signs the Edict of Fontainebleau on 18 October 1685 (registered 22 October), revoking the Edict of Nantes, ordering the destruction of Huguenot churches and the closure of Protestant schools. The revocation triggers the mass emigration of hundreds of thousands of Huguenots from France.',
+        source: {
+          externalId: 'src:edict-of-fontainebleau-1685',
+          name: 'Edict of Fontainebleau (revocation of the Edict of Nantes), signed by Louis XIV, 18 October 1685.',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Fontainebleau',
+          publishedAt: '1685-10-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historiography treats both the 1598 promulgation and the 1685 revocation as documented institutional facts preserved in surviving edict texts and parlementary registers. Debate concerns their causes and consequences (the demographic and economic effects of the Huguenot exodus), not whether the edict was granted and later revoked.',
+        source: {
+          externalId: 'src:nantes-historiography-2000',
+          name: 'Encyclopædia Britannica, "Edict of Nantes" — scholarly synthesis of promulgation and revocation.',
+          url: 'https://www.britannica.com/event/Edict-of-Nantes',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rømer establishes that light travels at a finite speed ──────────────────
+  {
+    externalId: 'trajectory:romer-finite-speed-light-1676',
+    text: 'Ole Rømer demonstrated in 1676 that light travels at a finite speed, inferring it from systematic timing variations in the eclipses of Jupiter\'s moon Io.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1676-08-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1676-08-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 August 1676 Rømer announces to the Académie royale des sciences in Paris that the eclipse of Io predicted for November will occur about ten minutes later than naive calculation gives, attributing the delay to the finite time light needs to cross the Earth\'s orbit. The account is published in the Journal des sçavans of 7 December 1676. The claim is contested, notably by Cassini, who doubts a uniform speed of light.',
+        source: {
+          externalId: 'src:romer-journal-des-scavans-1676',
+          name: '"Démonstration touchant le mouvement de la lumière trouvé par M. Rōmer." Journal des sçavans, 7 December 1676.',
+          url: 'https://en.wikipedia.org/wiki/R%C3%B8mer%27s_determination_of_the_speed_of_light',
+          publishedAt: '1676-12-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1729-01-01',
+        datePrecision: 'YEAR',
+        reason: 'James Bradley\'s discovery of the aberration of starlight, published in 1729, independently confirms a finite speed of light and yields a consistent value, ending serious doubt. Subsequent terrestrial measurements (Fizeau 1849, Foucault 1862) and modern metrology corroborate the finite, measurable speed of light, now a defined constant.',
+        source: {
+          externalId: 'src:bradley-aberration-1729',
+          name: 'Bradley J. "A Letter… giving an Account of a new discovered Motion of the Fix\'d Stars." Philosophical Transactions, 1729.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1727.0064',
+          publishedAt: '1729-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 7. Copernicus proposes heliocentrism ────────────────────────────────────
   {
     externalId: 'trajectory:copernicus-heliocentrism-1543',
