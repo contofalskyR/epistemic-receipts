@@ -16573,6 +16573,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–PRESENT) — geopolitics, genomics, astronomy
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dissolution of the Soviet Union ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:soviet-union-dissolution-1991',
+    text: 'The Union of Soviet Socialist Republics ceased to exist as a state, formally dissolved on December 26, 1991.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1991-12-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-12-08',
+        datePrecision: 'DAY',
+        reason: 'The leaders of Russia (Yeltsin), Ukraine (Kravchuk), and Belarus (Shushkevich) sign the Belavezha Accords at Viskuli, declaring that "the USSR as a subject of international law and a geopolitical reality ceases to exist" and establishing the Commonwealth of Independent States. The text is signed by the heads of three of the four republics that founded the USSR in 1922.',
+        source: {
+          externalId: 'src:belavezha-accords-1991',
+          name: 'Agreement Establishing the Commonwealth of Independent States (Belavezha Accords). Signed at Viskuli, December 8, 1991.',
+          url: 'https://en.wikisource.org/wiki/Belavezha_Accords',
+          publishedAt: '1991-12-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-12-26',
+        datePrecision: 'DAY',
+        reason: 'One day after Mikhail Gorbachev resigns as Soviet president (December 25) and the Soviet flag is lowered over the Kremlin on live television, the Council of Republics of the Supreme Soviet of the USSR adopts Declaration No. 142-Н, formally acknowledging the end of the Soviet Union and the existence of its successor states. This is the last act of the Soviet legislature.',
+        source: {
+          externalId: 'src:supreme-soviet-declaration-142n-1991',
+          name: 'Declaration No. 142-Н of the Council of Republics of the Supreme Soviet of the USSR, December 26, 1991.',
+          url: 'https://en.wikipedia.org/wiki/Declaration_No._142-%D0%9D_of_the_Soviet_of_the_Republics_of_the_Supreme_Soviet_of_the_Soviet_Union',
+          publishedAt: '1991-12-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-12-31',
+        datePrecision: 'DAY',
+        reason: 'The Russian Federation assumes the USSR\'s permanent seat on the UN Security Council, and the fifteen former Soviet republics are recognized internationally as independent states over the following weeks. No state disputes that the USSR no longer exists; the dissolution is settled in international law.',
+        source: {
+          externalId: 'src:un-russia-succession-1991',
+          name: 'United Nations. Letter from the President of the Russian Federation to the UN Secretary-General on continuation of the USSR\'s membership, December 24, 1991.',
+          url: 'https://www.un.org/en/about-us/member-states',
+          publishedAt: '1991-12-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hong Kong handover to China ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:hong-kong-handover-1997',
+    text: 'Sovereignty over Hong Kong was transferred from the United Kingdom to the People\'s Republic of China at midnight on July 1, 1997, ending 156 years of British colonial rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1984-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-12-19',
+        datePrecision: 'DAY',
+        reason: 'The Sino-British Joint Declaration is signed in Beijing by Premier Zhao Ziyang and Prime Minister Margaret Thatcher, committing the United Kingdom to return Hong Kong to China on July 1, 1997, and China to maintain the territory\'s social and economic systems under a "one country, two systems" framework for 50 years. The treaty is registered with the United Nations.',
+        source: {
+          externalId: 'src:sino-british-joint-declaration-1984',
+          name: 'Joint Declaration of the Government of the United Kingdom and the Government of the People\'s Republic of China on the Question of Hong Kong. Signed December 19, 1984. UN Treaty Series No. 23391.',
+          url: 'https://treaties.un.org/doc/Publication/UNTS/Volume%201399/v1399.pdf',
+          publishedAt: '1984-12-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1997-07-01',
+        datePrecision: 'DAY',
+        reason: 'At a handover ceremony broadcast live worldwide from the Hong Kong Convention and Exhibition Centre, the British flag is lowered and the flags of the PRC and the Hong Kong Special Administrative Region are raised at the stroke of midnight. Prince Charles and Governor Chris Patten depart; President Jiang Zemin and Premier Li Peng preside for China. The transfer of sovereignty is witnessed by a global audience.',
+        source: {
+          externalId: 'src:hong-kong-handover-ceremony-1997',
+          name: 'Handover ceremony of Hong Kong, July 1, 1997. Live broadcast records, BBC/CCTV/RTHK.',
+          url: 'https://www.bbc.co.uk/news/special/politics97/news/06/0701/hongkong.shtml',
+          publishedAt: '1997-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-07-01',
+        datePrecision: 'DAY',
+        reason: 'The Basic Law of the Hong Kong Special Administrative Region — promulgated in 1990 and enacted to take effect on July 1, 1997 — comes into force as the constitutional document of the new SAR. The change of sovereignty is institutionally recorded in both Chinese and British law; no party disputes that the transfer occurred.',
+        source: {
+          externalId: 'src:hong-kong-basic-law-1997',
+          name: 'The Basic Law of the Hong Kong Special Administrative Region of the People\'s Republic of China. Effective July 1, 1997.',
+          url: 'https://www.basiclaw.gov.hk/en/basiclaw/index.html',
+          publishedAt: '1997-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── South African Truth and Reconciliation Commission report ────────────────
+  {
+    externalId: 'trajectory:south-africa-trc-report-1998',
+    text: 'South Africa\'s Truth and Reconciliation Commission, chaired by Archbishop Desmond Tutu, presented its final report documenting gross human rights violations committed during the apartheid era, on October 29, 1998.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1995-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-07-19',
+        datePrecision: 'DAY',
+        reason: 'The Promotion of National Unity and Reconciliation Act, No. 34 of 1995, is signed into law, establishing the Truth and Reconciliation Commission with powers to investigate human rights abuses committed between 1960 and 1994, grant amnesty, and recommend reparations. Public hearings begin in April 1996.',
+        source: {
+          externalId: 'src:trc-act-1995',
+          name: 'Promotion of National Unity and Reconciliation Act, No. 34 of 1995. Republic of South Africa.',
+          url: 'https://www.gov.za/documents/promotion-national-unity-and-reconciliation-act',
+          publishedAt: '1995-07-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-10-29',
+        datePrecision: 'DAY',
+        reason: 'The Commission hands its five-volume final report to President Nelson Mandela. Drawing on testimony from over 21,000 victims and more than 7,000 amnesty applications, the report documents killings, torture, and abductions by the apartheid state and finds that liberation movements also committed gross violations. The findings are entered into the public record of the democratic state.',
+        source: {
+          externalId: 'src:trc-final-report-1998',
+          name: 'Truth and Reconciliation Commission of South Africa Report, Volumes 1–5. Presented to President Nelson Mandela, October 29, 1998.',
+          url: 'https://www.justice.gov.za/trc/report/',
+          publishedAt: '1998-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-21',
+        datePrecision: 'DAY',
+        reason: 'The Commission delivers its final two volumes (6 and 7) to President Thabo Mbeki, completing the report after the amnesty process concludes. The documented findings of apartheid-era violations stand as the official, institutionally ratified historical record; the report is widely cited as the model for subsequent truth commissions worldwide.',
+        source: {
+          externalId: 'src:trc-codicil-volumes-2003',
+          name: 'Truth and Reconciliation Commission of South Africa Report, Volumes 6–7. Presented to President Thabo Mbeki, March 21, 2003.',
+          url: 'https://www.justice.gov.za/trc/report/',
+          publishedAt: '2003-03-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Neanderthal–human interbreeding (draft Neanderthal genome) ──────────────
+  {
+    externalId: 'trajectory:neanderthal-human-interbreeding-2010',
+    text: 'Modern humans of non-African ancestry carry roughly 1–4% Neanderthal DNA, demonstrating that Homo sapiens and Neanderthals interbred — established by the draft Neanderthal genome published on May 7, 2010, reversing the prior genetic consensus that Neanderthals left no contribution to the modern human gene pool.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-07-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-07-11',
+        datePrecision: 'DAY',
+        reason: 'Krings, Pääbo and colleagues recover the first Neanderthal mitochondrial DNA sequence from the 1856 Neander Valley type specimen. The mtDNA falls outside the range of modern human variation, and the authors conclude Neanderthals were a separate lineage that "did not contribute mtDNA to modern humans" — interpreted for over a decade as evidence against interbreeding.',
+        source: {
+          externalId: 'src:krings-neanderthal-mtdna-1997',
+          name: 'Krings M, et al. "Neandertal DNA Sequences and the Origin of Modern Humans." Cell 90(1):19–30, July 11, 1997.',
+          url: 'https://www.cell.com/fulltext/S0092-8674(00)80310-4',
+          publishedAt: '1997-07-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-05-07',
+        datePrecision: 'DAY',
+        reason: 'Green, Pääbo and colleagues publish a draft sequence of the Neanderthal nuclear genome in Science, assembled from bones at Vindija Cave, Croatia. Comparison with present-day human genomes shows that 1–4% of the genomes of non-Africans derives from Neanderthals — direct genetic evidence of interbreeding after modern humans left Africa. The nuclear-genome result overturns the interbreeding-free picture suggested by the earlier mtDNA work.',
+        source: {
+          externalId: 'src:green-neanderthal-genome-2010',
+          name: 'Green RE, et al. "A Draft Sequence of the Neandertal Genome." Science 328(5979):710–722, May 7, 2010.',
+          url: 'https://www.science.org/doi/10.1126/science.1188021',
+          publishedAt: '2010-05-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-29',
+        datePrecision: 'DAY',
+        reason: 'High-coverage Neanderthal and Denisovan genomes and dedicated analyses of archaic introgression confirm and map Neanderthal-derived segments across non-African genomes, refining the estimate and identifying functional consequences. Svante Pääbo is awarded the 2022 Nobel Prize in Physiology or Medicine for founding paleogenomics and establishing archaic admixture.',
+        source: {
+          externalId: 'src:sankararaman-neanderthal-introgression-2014',
+          name: 'Sankararaman S, et al. "The genomic landscape of Neanderthal ancestry in present-day humans." Nature 507:354–357, January 29, 2014.',
+          url: 'https://www.nature.com/articles/nature12961',
+          publishedAt: '2014-01-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First exoplanet around a sun-like star (51 Pegasi b) ────────────────────
+  {
+    externalId: 'trajectory:first-exoplanet-51-pegasi-1995',
+    text: 'The first planet orbiting a Sun-like star, 51 Pegasi b, was discovered by Michel Mayor and Didier Queloz and announced on October 6, 1995.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-10-06',
+        datePrecision: 'DAY',
+        reason: 'At a conference in Florence, Michel Mayor and Didier Queloz of the Geneva Observatory announce the detection of a planet orbiting the star 51 Pegasi, inferred from periodic Doppler shifts in the star\'s spectrum measured with the ELODIE spectrograph. The planet — a "hot Jupiter" with a 4.2-day orbit — defies expectations that giant planets orbit far from their stars. The result is published in Nature on November 23, 1995.',
+        source: {
+          externalId: 'src:mayor-queloz-51peg-1995',
+          name: 'Mayor M, Queloz D. "A Jupiter-mass companion to a solar-type star." Nature 378:355–359, November 23, 1995.',
+          url: 'https://www.nature.com/articles/378355a0',
+          publishedAt: '1995-11-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Geoffrey Marcy and R. Paul Butler independently confirm the radial-velocity signal of 51 Pegasi b within days of the announcement using the Lick Observatory, and over the following months report additional exoplanets (around 70 Virginis and 47 Ursae Majoris). Independent replication settles that 51 Pegasi b is a real planet and opens the field of exoplanet detection.',
+        source: {
+          externalId: 'src:marcy-butler-51peg-confirmation-1995',
+          name: 'Marcy GW, Butler RP. "The Planet around 51 Pegasi." Astrophysical Journal 464:L147, 1996 (confirmation observations from Lick Observatory).',
+          url: 'https://articles.adsabs.harvard.edu/pdf/1996ApJ...464L.147M',
+          publishedAt: '1996-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-10-08',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences awards Michel Mayor and Didier Queloz half of the 2019 Nobel Prize in Physics "for the discovery of an exoplanet orbiting a solar-type star." By then over 4,000 exoplanets have been confirmed, institutionally ratifying the 1995 discovery as the founding result of the field.',
+        source: {
+          externalId: 'src:nobel-physics-2019-exoplanet',
+          name: 'The Nobel Prize in Physics 2019: Michel Mayor and Didier Queloz.',
+          url: 'https://www.nobelprize.org/prizes/physics/2019/summary/',
+          publishedAt: '2019-10-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
