@@ -17469,6 +17469,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — science, electricity, imperialism
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Young's wave theory of light ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:young-wave-theory-light-1803',
+    text: 'Thomas Young demonstrated that light is a wave by showing optical interference, presented in his Bakerian Lecture to the Royal Society on 24 November 1803, contradicting Newton\'s prevailing corpuscular theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1803-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1803-11-24',
+        datePrecision: 'DAY',
+        reason: 'In his Bakerian Lecture "Experiments and Calculations Relative to Physical Optics," read before the Royal Society on 24 November 1803, Young describes how light passing two narrow apertures produces alternating bright and dark fringes — interference — and argues this can only be explained if light propagates as a wave, with bright bands where waves reinforce and dark bands where they cancel.',
+        source: {
+          externalId: 'src:young-bakerian-physical-optics-1804',
+          name: 'Young T. Experiments and Calculations Relative to Physical Optics (Bakerian Lecture, read 24 November 1803). Philosophical Transactions of the Royal Society of London 1804;94:1–16.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1804.0001',
+          publishedAt: '1804-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1804-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Young\'s wave account is publicly attacked, most sharply in anonymous reviews by Henry Brougham in the Edinburgh Review, which defend Newton\'s corpuscular theory of light and dismiss Young\'s interference idea as unsupported speculation. The corpuscular view retains the allegiance of most British natural philosophers for the next decade.',
+        source: {
+          externalId: 'src:brougham-edinburgh-review-young-1803',
+          name: 'Brougham H. [Review of Young\'s Bakerian Lecture.] Edinburgh Review, vol. 1, 1803 (defending the Newtonian corpuscular theory of light).',
+          url: 'https://archive.org/details/edinburghreview01edin',
+          publishedAt: '1803-01-01',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1819-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Augustin-Jean Fresnel\'s prize memoir on diffraction, submitted to the French Académie des Sciences in 1818, places the wave theory on a rigorous mathematical footing. When Siméon Poisson objects that the theory absurdly predicts a bright spot at the centre of a circular object\'s shadow, François Arago performs the experiment and observes exactly that spot, decisively confirming the wave theory of light.',
+        source: {
+          externalId: 'src:fresnel-memoire-diffraction-1819',
+          name: 'Fresnel A. Mémoire sur la diffraction de la lumière. Mémoires de l\'Académie des sciences, 1819 (awarded the 1819 prize; basis of the Arago/Poisson spot confirmation).',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k3137g',
+          publishedAt: '1819-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kirchhoff & Bunsen found spectral analysis ───────────────────────────────
+  {
+    externalId: 'trajectory:kirchhoff-bunsen-spectral-analysis-1859',
+    text: 'Gustav Kirchhoff and Robert Bunsen established that each chemical element emits and absorbs light at characteristic wavelengths, so that the spectrum of a substance reveals its composition — announced by Kirchhoff to the Berlin Academy on 27 October 1859.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1859-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-10-27',
+        datePrecision: 'DAY',
+        reason: 'In a communication to the Prussian Academy of Sciences in Berlin on 27 October 1859, Kirchhoff reports that the dark Fraunhofer lines in the solar spectrum coincide with the bright emission lines of known elements, and formulates the law that a body\'s power to emit light at a given wavelength equals its power to absorb it — implying each element carries a unique spectral signature.',
+        source: {
+          externalId: 'src:kirchhoff-fraunhofer-linien-1859',
+          name: 'Kirchhoff G. Über die Fraunhofer\'schen Linien. Monatsbericht der Königlich Preußischen Akademie der Wissenschaften zu Berlin, 27 October 1859.',
+          url: 'https://www.biodiversitylibrary.org/bibliography/40300',
+          publishedAt: '1859-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1860-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kirchhoff and Bunsen\'s 1860 memoir "Chemische Analyse durch Spectralbeobachtungen" systematises spectral analysis, and the method immediately proves its predictive power: they discover the new element caesium in 1860 and rubidium in 1861 purely from previously unseen spectral lines. Spectroscopy is rapidly adopted as a tool of chemistry and the founding instrument of astrophysics.',
+        source: {
+          externalId: 'src:kirchhoff-bunsen-chemische-analyse-1860',
+          name: 'Kirchhoff G., Bunsen R. Chemische Analyse durch Spectralbeobachtungen. Annalen der Physik und Chemie 1860;186(6):161–189.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/andp.18601860602',
+          publishedAt: '1860-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Avogadro's hypothesis settled at the Karlsruhe Congress ──────────────────
+  {
+    externalId: 'trajectory:avogadro-hypothesis-karlsruhe-1860',
+    text: 'Avogadro\'s hypothesis — that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules — was accepted as the basis for consistent atomic and molecular weights at the Karlsruhe Congress of September 1860, nearly fifty years after Amedeo Avogadro first proposed it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1811-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1811-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Amedeo Avogadro publishes an essay proposing that equal volumes of all gases, under the same conditions, contain equal numbers of "molecules," and distinguishing molecules from the atoms that compose them. The idea would resolve the conflicting combining volumes observed by Gay-Lussac, but Avogadro presents it without experimental fanfare.',
+        source: {
+          externalId: 'src:avogadro-essai-1811',
+          name: 'Avogadro A. Essai d\'une manière de déterminer les masses relatives des molécules élémentaires des corps, et les proportions selon lesquelles elles entrent dans ces combinaisons. Journal de Physique, de Chimie et d\'Histoire naturelle 1811;73:58–76.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k15075h',
+          publishedAt: '1811-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1813-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The hypothesis is largely ignored or rejected for roughly half a century. Dalton denies that identical atoms could combine into a molecule, Berzelius\'s electrochemical dualism cannot accommodate diatomic elements, and the persistent failure to distinguish atoms, molecules, and equivalents leaves chemists using contradictory tables of atomic weights for the same substances.',
+        source: {
+          externalId: 'src:berzelius-essai-systeme-1819',
+          name: 'Berzelius J.J. Essai sur la théorie des proportions chimiques et sur l\'influence chimique de l\'électricité, Paris: Méquignon-Marvis, 1819 (electrochemical dualism incompatible with Avogadro\'s diatomic molecules).',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k90750z',
+          publishedAt: '1819-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1860-09-03',
+        datePrecision: 'DAY',
+        reason: 'At the First International Chemical Congress in Karlsruhe (3–5 September 1860), Stanislao Cannizzaro forcefully argues that consistent atomic and molecular weights follow once Avogadro\'s hypothesis is applied, and distributes his 1858 pamphlet "Sunto di un corso di filosofia chimica." Chemists including Lothar Meyer leave convinced; Avogadro\'s principle becomes the accepted foundation for determining molecular weights.',
+        source: {
+          externalId: 'src:cannizzaro-sunto-karlsruhe-1858',
+          name: 'Cannizzaro S. Sunto di un corso di filosofia chimica. Il Nuovo Cimento 1858;7:321–366 (distributed at the Karlsruhe Congress, September 1860).',
+          url: 'https://www.biodiversitylibrary.org/bibliography/8366',
+          publishedAt: '1858-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Berlin Conference partitions Africa ──────────────────────────────────
+  {
+    externalId: 'trajectory:berlin-conference-general-act-1885',
+    text: 'Representatives of fourteen powers signed the General Act of the Berlin Conference on 26 February 1885, setting the diplomatic rules — including "effective occupation" — under which European states partitioned almost the entire African continent.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1885-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1885-02-26',
+        datePrecision: 'DAY',
+        reason: 'The conference convened in Berlin by Bismarck on 15 November 1884 closes with the signing of its General Act on 26 February 1885. The Act regulates free navigation of the Congo and Niger, condemns the slave trade in principle, and lays down that a power claiming territory on the African coast must demonstrate "effective occupation" and notify the other signatories — a framework that channels the Scramble for Africa.',
+        source: {
+          externalId: 'src:berlin-general-act-1885',
+          name: 'General Act of the Conference of Berlin Concerning the Congo, signed 26 February 1885 (text reproduced in The American Journal of International Law 1909;3(S1):7–25).',
+          url: 'https://www.loc.gov/item/2021667837/',
+          publishedAt: '1885-02-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Acting on the Act\'s rules, the European powers proceed to claim and demarcate nearly all of Africa within about fifteen years: by 1900 only Ethiopia and Liberia remain substantially independent. The partition mapped at and after Berlin defines the continent\'s colonial — and, after mid-20th-century decolonisation, many of its national — boundaries.',
+        source: {
+          externalId: 'src:scramble-for-africa-partition-1900',
+          name: 'Pakenham T. The Scramble for Africa, 1876–1912. London: Weidenfeld & Nicolson, 1991 (documenting the post-Berlin partition of the continent).',
+          url: 'https://archive.org/details/scrambleforafric0000pake',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Meiji Restoration ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:meiji-restoration-1868',
+    text: 'The Decree for the Restoration of Imperial Rule (Ōsei Fukko no Daigōrei), proclaimed on 3 January 1868, abolished the Tokugawa shogunate and restored direct rule to the Emperor of Japan, inaugurating the Meiji era.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1868-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1868-01-03',
+        datePrecision: 'DAY',
+        reason: 'A coalition of Satsuma and Chōshō domains seizes the imperial palace in Kyoto and issues the Ōsei Fukko decree in the name of the young Emperor Meiji on 3 January 1868 (Keiō 3, 12th month, 9th day), declaring the shogunate and its offices abolished and proclaiming the restoration of direct imperial government.',
+        source: {
+          externalId: 'src:osei-fukko-decree-1868',
+          name: 'Ōsei Fukko no Daigōrei (Decree for the Restoration of Imperial Rule), 3 January 1868 — translated in McLaren W.W. (ed.), Japanese Government Documents (Transactions of the Asiatic Society of Japan, vol. 42, 1914).',
+          url: 'https://archive.org/details/japanesegovernme00mcla',
+          publishedAt: '1868-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1869-06-27',
+        datePrecision: 'DAY',
+        reason: 'The Tokugawa loyalists who reject the restoration are defeated in the Boshin War, which ends with the fall of the Republic of Ezo at the Battle of Hakodate in June 1869. With armed opposition extinguished and the capital moved to Tokyo, the imperial government is consolidated and the restoration becomes an accomplished, irreversible fact.',
+        source: {
+          externalId: 'src:boshin-war-hakodate-1869',
+          name: 'Jansen M.B. The Making of Modern Japan. Cambridge, MA: Harvard University Press, 2000 (on the Boshin War and the consolidation of Meiji rule, 1868–1869).',
+          url: 'https://archive.org/details/makingofmodernja0000jans',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
