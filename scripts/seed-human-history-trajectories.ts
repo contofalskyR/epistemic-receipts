@@ -5338,6 +5338,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Archilochus's eclipse — 6 April 648 BCE (Greece) ────────────────────────
+  {
+    externalId: 'trajectory:archilochus-solar-eclipse-648bce',
+    text: 'The Greek lyric poet Archilochus of Paros described a total solar eclipse — "Zeus, the father of the Olympians, made night from midday, hiding the light of the shining Sun" — an eclipse dated by modern computation to 6 April 648 BCE, among the earliest solar eclipses recorded by an eyewitness in the Greek world.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0648-04-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0648-04-06',
+        datePrecision: 'DAY',
+        reason: 'Archilochus, a seventh-century poet writing in the generation he lived through, records in verse that day turned to night when the Sun was hidden, declaring that nothing should be thought impossible thereafter. The fragment (preserved by later authors who quote it, including Aristotle and Stobaeus) is the first-person reaction of a contemporary to a daytime darkening of the Sun over the northern Aegean.',
+        source: {
+          externalId: 'src:archilochus-fragment-122-eclipse',
+          name: 'Archilochus, fragment 122 (West) — the poem describing day turned to night, quoted by Aristotle (Rhetoric III.17) and Stobaeus. (7th century BCE)',
+          url: 'https://en.wikipedia.org/wiki/Archilochus',
+          publishedAt: '0648-04-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation finds that the total solar eclipse of 6 April 648 BCE (Julian) had a path of totality crossing the northern Aegean near Paros and Thasos, the islands central to Archilochus\'s life — the only candidate matching the poet\'s era and locale. The eclipse is catalogued in NASA\'s Five Millennium Canon of Solar Eclipses, fixing the date and corroborating the poem as an eyewitness astronomical record.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-archilochus',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141; eclipse of −647 April 6.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bur-Sagale eclipse — Assyrian Eponym Canon, 15 June 763 BCE ──────────────
+  {
+    externalId: 'trajectory:bur-sagale-assyrian-eclipse-763bce',
+    text: 'The Assyrian Eponym Canon records that in the year of the official Bur-Sagale there was a revolt in the city of Ashur and, in the month Simanu, "an eclipse of the Sun took place" — an event fixed by modern computation to the total solar eclipse of 15 June 763 BCE, the anchor point of ancient Near Eastern absolute chronology.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0763-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0763-06-15',
+        datePrecision: 'DAY',
+        reason: 'Assyrian scribes maintained year-by-year lists naming each year after a high official (the limmu or eponym) and noting a salient event. The entry for the eponym Bur-Sagale, governor of Guzana, records a revolt in Ashur and, uniquely among the lists, a solar eclipse in the month Simanu. The notice is a contemporaneous administrative record, kept as part of the empire\'s dating system rather than as a portent narrative.',
+        source: {
+          externalId: 'src:assyrian-eponym-canon-bur-sagale',
+          name: 'Assyrian Eponym Canon (Eponym List), entry for the limmu Bur-Sagale recording the Simanu solar eclipse; ed. Millard AR, The Eponyms of the Assyrian Empire 910–612 BC (SAAS 2), 1994.',
+          url: 'https://en.wikipedia.org/wiki/Assyrian_eclipse',
+          publishedAt: '0763-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1867 Henry Rawlinson identified the eclipse named in the eponym list with the total solar eclipse of 15 June 763 BCE, whose path of totality crossed Assyria. Because the eponym list runs continuously and is cross-tied to dated regnal events, fixing this single eclipse to an absolute Julian date anchors the entire Assyrian king-list and, through synchronisms, the absolute chronology of the ancient Near East for the early first millennium BCE.',
+        source: {
+          externalId: 'src:rawlinson-assyrian-eclipse-1867',
+          name: 'Rawlinson HC. "The Assyrian Canon Verified by the Record of a Solar Eclipse, B.C. 763." The Athenaeum, No. 2064, 18 May 1867, pp. 660–661.',
+          url: 'https://en.wikipedia.org/wiki/Assyrian_eclipse',
+          publishedAt: '1867-05-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet, 87 BCE apparition (Han China & Babylon) ──────────────────
+  {
+    externalId: 'trajectory:halley-comet-87bce-apparition',
+    text: 'A comet later identified as the periodic comet 1P/Halley appeared in the summer of 87 BCE, recorded both by Han Chinese court astronomers and on a Babylonian astronomical diary — the apparition between the comet\'s documented returns of 164 BCE and 12 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0087-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0087-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical treatise of the Book of Han (Han Shu) logs a "broom star" appearing in the summer of the third year of the Zhenghe reign of Emperor Wu, and a cuneiform astronomical diary from Babylon independently notes a comet in the same months. Both are running, contemporaneous positional records kept by professional sky-watchers rather than retrospective notices.',
+        source: {
+          externalId: 'src:hanshu-babylon-comet-87bce',
+          name: 'Book of Han (漢書), Treatise on Astronomy (天文志), record of the comet of Zhenghe 3 (87 BCE); with the parallel Babylonian astronomical diary for the same year (Sachs–Hunger, Astronomical Diaries, Vol. III).',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0087-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tao Kiang back-computed the orbit of Halley\'s Comet through its ancient returns, showing that the 87 BCE perihelion (early August) matches the timing and sky-positions of the Chinese and Babylonian comet records. Stephenson, Yau, and Hunger later confirmed the Babylonian tablet entries for 164 BCE and 87 BCE as Halley apparitions, extending the comet\'s securely identified observational record across these returns.',
+        source: {
+          externalId: 'src:kiang-halley-past-orbit-1972',
+          name: 'Kiang T. "The past orbit of Halley\'s comet." Memoirs of the Royal Astronomical Society 76:27–66, 1972.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1972MmRAS..76...27K/abstract',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Triple conjunction of Jupiter and Saturn — Babylonian almanac, 7 BCE ─────
+  {
+    externalId: 'trajectory:jupiter-saturn-triple-conjunction-7bce',
+    text: 'Jupiter and Saturn came together three times in the constellation Pisces during 7 BCE — a rare triple conjunction whose planetary positions were anticipated in a Babylonian almanac written before the year began, the closest approaches falling around late May, late September, and early December.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0007-05-27',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0007-05-27',
+        datePrecision: 'MONTH',
+        reason: 'Babylonian scribes computed yearly "almanacs" forecasting where the planets would stand among the zodiacal signs. A surviving cuneiform almanac for the Babylonian year corresponding to 7/6 BCE predicts Jupiter and Saturn both in Pisces through the year — the configuration that produced their threefold meeting. It is a contemporaneous, pre-computed record of the phenomenon, not a later observation.',
+        source: {
+          externalId: 'src:babylonian-almanac-7bce',
+          name: 'Babylonian almanac for the year 7/6 BCE (British Museum cuneiform tablets), forecasting Jupiter and Saturn in Pisces.',
+          url: 'https://en.wikipedia.org/wiki/Babylonian_star_catalogues',
+          publishedAt: '0007-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Abraham Sachs and Christopher Walker published and analysed the Babylonian almanac tablets for 7/6 BCE, showing that the scribes had forecast the positions of Jupiter and Saturn in Pisces. Modern planetary retrocalculation confirms an actual triple conjunction of the two planets in Pisces in 7 BCE — three close passes within the year — establishing both the astronomical event and the contemporaneity of the cuneiform forecast.',
+        source: {
+          externalId: 'src:sachs-walker-almanac-1984',
+          name: 'Sachs AJ, Walker CBF. "Kepler\'s view of the Star of Bethlehem and the Babylonian almanac for 7/6 B.C." Iraq 46:43–55, 1984.',
+          url: 'https://www.jstor.org/stable/4200207',
+          publishedAt: '1984-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Earliest dated total solar eclipse — Spring and Autumn Annals, 709 BCE ───
   {
     externalId: 'trajectory:chunqiu-solar-eclipse-709bce',
