@@ -47038,6 +47038,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): genomics, AI, computing, climate, 9/11 aftermath
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ENCODE: "80% of the human genome is functional" — then contested (2012) ──
+  {
+    externalId: 'trajectory:encode-80-percent-functional-2012',
+    text: 'The ENCODE Consortium\'s September 2012 conclusion that biochemical functions could be assigned to about 80% of the human genome — widely reported as overturning the idea of "junk DNA" — was rapidly contested by evolutionary biologists who argued the consortium had conflated reproducible biochemical activity with selected biological function.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-09-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-09-05',
+        datePrecision: 'DAY',
+        reason: 'In a coordinated release on 5 September 2012, the Encyclopedia of DNA Elements (ENCODE) Project Consortium published more than 30 papers, headed by the integrative paper "An Integrated Encyclopedia of DNA Elements in the Human Genome" in Nature (issue dated 6 September 2012). Drawing on 1,640 datasets across 147 cell types, the consortium reported that "80.4% of the human genome participates in at least one biochemical RNA and/or chromatin associated event in at least one cell type," recording the claim that biochemical function could be assigned to roughly 80% of the genome.',
+        source: {
+          externalId: 'src:encode-2012-nature',
+          name: 'The ENCODE Project Consortium. "An Integrated Encyclopedia of DNA Elements in the Human Genome," Nature 489:57–74, 6 September 2012.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3439153/',
+          publishedAt: '2012-09-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-02-20',
+        datePrecision: 'DAY',
+        reason: 'On 20 February 2013, Graur et al. published "On the Immortality of Television Sets: \'Function\' in the Human Genome According to the Evolution-Free Gospel of ENCODE" in Genome Biology and Evolution, arguing that ENCODE had conflated biochemical activity (such as transcription-factor binding) with selected biological function, and that evolutionary-conservation evidence implied a functional fraction closer to ~10%. Subsequent exchanges (Doolittle 2013; Kellis et al. 2014) and clarifications by ENCODE leaders that the 80% figure referred to biochemical activity rather than fitness-relevant function left the original interpretation scientifically contested.',
+        source: {
+          externalId: 'src:graur-2013-encode-critique',
+          name: 'Graur D. et al. "On the Immortality of Television Sets: \'Function\' in the Human Genome According to the Evolution-Free Gospel of ENCODE," Genome Biology and Evolution 5(3):578–590, 20 February 2013.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3622293/',
+          publishedAt: '2013-02-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Ke Jie, world No. 1, in Wuzhen, China (2017) ─────────────
+  {
+    externalId: 'trajectory:alphago-defeats-ke-jie-2017',
+    text: 'In May 2017 DeepMind\'s AlphaGo defeated Ke Jie — the world\'s top-ranked Go player — 3–0 at the Future of Go Summit in Wuzhen, China, settling the question of whether the strongest artificial Go program had surpassed the best living human player.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-05-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-05-23',
+        datePrecision: 'DAY',
+        reason: 'DeepMind announced on 10 April 2017 that AlphaGo would play Ke Jie — ranked No. 1 in the world since late 2014 — in a three-game match at the Future of Go Summit in Wuzhen, China. Ke Jie had previously expressed confidence that he could beat the program, so the match was framed as the definitive test against the top-ranked human. AlphaGo won the first game on 23 May 2017.',
+        source: {
+          externalId: 'src:deepmind-alphago-kejie-2017',
+          name: 'DeepMind. "Exploring the mysteries of Go with AlphaGo and China\'s top players," DeepMind blog, 10 April 2017.',
+          url: 'https://deepmind.google/discover/blog/exploring-the-mysteries-of-go-with-alphago-and-chinas-top-players/',
+          publishedAt: '2017-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2017-05-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 May 2017 AlphaGo won the third game to complete a 3–0 sweep of Ke Jie, after which DeepMind announced AlphaGo would retire from competitive play. Following the 2016 4–1 victory over Lee Sedol, the sweep of the reigning world No. 1 settled within the Go community that the strongest program had surpassed the best human players; Ke Jie acknowledged that human players could no longer compete on equal terms.',
+        source: {
+          externalId: 'src:wikipedia-alphago-kejie',
+          name: 'Wikipedia, "AlphaGo versus Ke Jie" (Future of Go Summit, Wuzhen, 23–27 May 2017).',
+          url: 'https://en.wikipedia.org/wiki/AlphaGo_versus_Ke_Jie',
+          publishedAt: '2017-05-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Kabul: Taliban return to power, collapse of the Republic (2021) ──
+  {
+    externalId: 'trajectory:fall-of-kabul-2021',
+    text: 'On 15 August 2021 the Taliban captured Kabul without significant resistance and President Ashraf Ghani fled the country, marking the collapse of the Islamic Republic of Afghanistan established after the US-led 2001 invasion and the Taliban\'s return to power.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2021-08-15',
+        datePrecision: 'DAY',
+        reason: 'On 15 August 2021, as Taliban fighters entered Kabul, President Ashraf Ghani fled Afghanistan and announced his departure on Facebook at about 11 p.m. local time, saying he left to avoid bloodshed; the presidential palace was evacuated and the Taliban declared control of the capital. The collapse of the Afghan government — nearly twenty years after the US-led invasion that toppled the Taliban\'s first regime following the 11 September 2001 attacks — was recorded contemporaneously by international media worldwide.',
+        source: {
+          externalId: 'src:wikipedia-fall-kabul-2021',
+          name: 'Wikipedia, "Fall of Kabul (2021)" — Taliban capture of Kabul, 15 August 2021.',
+          url: 'https://en.wikipedia.org/wiki/Fall_of_Kabul_(2021)',
+          publishedAt: '2021-08-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-08-30',
+        datePrecision: 'DAY',
+        reason: 'The last US military aircraft departed Kabul airport at 11:59 p.m. Kabul time on 30 August 2021, completing the US withdrawal and ending the twenty-year war. With no organized resistance remaining and the Taliban consolidating control (a caretaker government was announced on 7 September 2021), the collapse of the Islamic Republic and the Taliban\'s return to power became the settled, de facto state of affairs in Afghanistan.',
+        source: {
+          externalId: 'src:wikipedia-us-withdrawal-afghanistan-2021',
+          name: 'Wikipedia, "Withdrawal of United States troops from Afghanistan (2020–2021)" — final departure 30 August 2021.',
+          url: 'https://en.wikipedia.org/wiki/Withdrawal_of_United_States_troops_from_Afghanistan_(2020%E2%80%932021)',
+          publishedAt: '2021-08-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Google claims "quantum supremacy" with Sycamore — contested by IBM (2019) ─
+  {
+    externalId: 'trajectory:google-quantum-supremacy-2019',
+    text: 'On 23 October 2019 Google announced in Nature that its 53-qubit Sycamore processor had performed in about 200 seconds a random-circuit-sampling computation it estimated would take the fastest classical supercomputer roughly 10,000 years — claimed as the first demonstration of "quantum supremacy" — a claim immediately contested by IBM.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-10-23',
+        datePrecision: 'DAY',
+        reason: 'On 23 October 2019 Google AI Quantum published "Quantum Supremacy Using a Programmable Superconducting Processor" in Nature, reporting that its 53-qubit Sycamore processor sampled the output of a pseudo-random quantum circuit in about 200 seconds — a task the team estimated would take the fastest classical supercomputer (Summit) approximately 10,000 years. Google presented this as the first experimental demonstration of quantum computational supremacy.',
+        source: {
+          externalId: 'src:google-quantum-supremacy-2019',
+          name: 'Google AI Quantum (Martinis J., Boixo S.). "Quantum Supremacy Using a Programmable Superconducting Processor," Google Research blog accompanying Nature 574:505–510, 23 October 2019.',
+          url: 'https://research.google/blog/quantum-supremacy-using-a-programmable-superconducting-processor/',
+          publishedAt: '2019-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-10-23',
+        datePrecision: 'DAY',
+        reason: 'Two days before publication, on 21 October 2019, IBM researchers posted "Leveraging Secondary Storage to Simulate Deep 54-qubit Sycamore Circuits" (arXiv:1910.09534), arguing that with optimized use of secondary storage a classical supercomputer could simulate the same circuits with high fidelity in about 2.5 days rather than 10,000 years — so the "supremacy" threshold had not been crossed. The estimate of classical difficulty, and thus the supremacy claim itself, remained contested as subsequent classical-algorithm advances further narrowed the gap.',
+        source: {
+          externalId: 'src:ibm-sycamore-rebuttal-2019',
+          name: 'Pednault E., Gunnels J.A., Nannicini G., Horesh L., Wisnieff R. (IBM). "Leveraging Secondary Storage to Simulate Deep 54-qubit Sycamore Circuits," arXiv:1910.09534, 21 October 2019.',
+          url: 'https://arxiv.org/abs/1910.09534',
+          publishedAt: '2019-10-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Snowden disclosures reveal NSA bulk surveillance of Americans (2013) ─────
+  {
+    externalId: 'trajectory:snowden-nsa-surveillance-2013',
+    text: 'On 5 June 2013 The Guardian published a secret US Foreign Intelligence Surveillance Court order — leaked by NSA contractor Edward Snowden — compelling Verizon to hand over the telephone metadata of millions of Americans daily, the first disclosure confirming that the US government was conducting bulk surveillance of its own citizens\' communications.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-06-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2013-06-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 June 2013 The Guardian published a top-secret FISA Court order, leaked by NSA contractor Edward Snowden, requiring Verizon to provide the NSA on an "ongoing, daily basis" with the call-detail records (telephone metadata) of all its customers. It was the first document to confirm that the US government was collecting the communications records of millions of Americans in bulk, regardless of suspicion; the government acknowledged the program\'s authenticity within a day, moving the long-secret practice onto the public record.',
+        source: {
+          externalId: 'src:wikipedia-2013-surveillance-disclosures',
+          name: 'Wikipedia, "2013 mass surveillance disclosures" — first report: Greenwald G., "NSA collecting phone records of millions of Verizon customers daily," The Guardian, 5 June 2013.',
+          url: 'https://en.wikipedia.org/wiki/2013_mass_surveillance_disclosures',
+          publishedAt: '2013-06-05',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2015-05-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 May 2015 the US Court of Appeals for the Second Circuit ruled in ACLU v. Clapper that the NSA\'s bulk telephone-metadata program "exceeds the scope of what Congress has authorized" under Section 215 of the Patriot Act — an authoritative judicial confirmation that the program existed as disclosed. Congress then passed the USA FREEDOM Act on 2 June 2015, ending the government\'s bulk collection of domestic call records. The factual existence of the program became settled even as its legal basis was curtailed.',
+        source: {
+          externalId: 'src:aclu-v-clapper-2015',
+          name: 'Wikipedia, "ACLU v. Clapper" — Second Circuit ruling, 7 May 2015; USA FREEDOM Act, 2 June 2015.',
+          url: 'https://en.wikipedia.org/wiki/ACLU_v._Clapper',
+          publishedAt: '2015-05-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
