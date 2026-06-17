@@ -29698,6 +29698,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — added batch
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1833 Leonid meteor storm — meteors recognized as cosmic ─────────────────
+  {
+    externalId: 'trajectory:leonid-meteor-storm-1833',
+    text: 'The Leonid meteor storm of 12–13 November 1833 — during which observers across eastern North America saw tens of thousands of meteors an hour radiating from a single point in the constellation Leo — led to the recognition that meteors originate in space rather than as atmospheric phenomena.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1833-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1833-11-13',
+        datePrecision: 'DAY',
+        reason: 'On the night of 12–13 November 1833 an extraordinary meteor storm — later estimated at over a hundred thousand meteors per hour — is witnessed across North America east of the Rocky Mountains and widely reported in newspapers and personal accounts. The display is so intense that many take it for a portent; the event enters the public record as a singular, dated occurrence.',
+        source: {
+          externalId: 'src:leonids-1833-storm',
+          name: 'The 1833 Leonid meteor storm — contemporary accounts of the night of 12–13 November 1833; Leonids (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Leonids',
+          publishedAt: '1833-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1834-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Denison Olmsted of Yale gathers observations and publishes his analysis in the American Journal of Science and Arts (1834). He notes that the meteors radiated from a fixed point in Leo, that the radiant moved with the stars rather than the Earth, and that the storm was not seen in Europe — arguing that the particles came from a cloud in space outside the atmosphere. This overturns the prevailing view of meteors as terrestrial atmospheric phenomena.',
+        source: {
+          externalId: 'src:olmsted-leonids-1834',
+          name: 'Olmsted D. Observations on the Meteors of November 13th, 1833. American Journal of Science and Arts 1834;25:363–411.',
+          url: 'https://en.wikipedia.org/wiki/Denison_Olmsted',
+          publishedAt: '1834-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1866-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The recurrence of Leonid displays roughly every 33 years and the 1866 storm allow Giovanni Schiaparelli and others to link the Leonid stream to comet 55P/Tempel–Tuttle, establishing that meteor showers are debris shed by comets along their orbits. The cosmic origin of meteors is settled and becomes foundational to meteor astronomy.',
+        source: {
+          externalId: 'src:leonids-tempel-tuttle-1866',
+          name: 'Association of the Leonids with comet 55P/Tempel–Tuttle; Leonids (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Leonids',
+          publishedAt: '1866-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Speke identifies Lake Victoria as the source of the Nile ────────────────
+  {
+    externalId: 'trajectory:speke-source-of-nile-1858',
+    text: 'On 30 July 1858 John Hanning Speke reached the great lake he named Victoria and claimed it as the long-sought source of the Nile — a claim disputed for years before being confirmed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1858-07-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1858-07-30',
+        datePrecision: 'DAY',
+        reason: 'Detaching from Richard Burton during their East African expedition, Speke reaches the southern shore of a vast lake on 30 July 1858, names it Lake Victoria, and on returning declares it the source of the Nile. He sets out the claim in his account to the Royal Geographical Society and in his Journal of the Discovery of the Source of the Nile (1863).',
+        source: {
+          externalId: 'src:speke-journal-discovery-nile-1863',
+          name: 'Speke J.H. Journal of the Discovery of the Source of the Nile. Edinburgh: Blackwood, 1863.',
+          url: 'https://archive.org/details/journalofdiscove00spek',
+          publishedAt: '1863-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Richard Burton and other geographers dispute the claim, noting that Speke had not actually followed the river from the lake\'s outflow down to the known Nile and so could not prove the connection. The question of the Nile\'s source remains openly contested through the 1860s, fuelling a bitter public quarrel that persists until Speke\'s death in 1864.',
+        source: {
+          externalId: 'src:speke-burton-nile-dispute',
+          name: 'The Nile source dispute between Speke and Burton; John Hanning Speke (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/John_Hanning_Speke',
+          publishedAt: '1864-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1877-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Henry Morton Stanley\'s expedition of 1874–1877 circumnavigates Lake Victoria, confirms it is a single great lake with an outflow at Ripon Falls, and establishes that Lake Tanganyika has no connection to the Nile — vindicating Speke. Lake Victoria as the principal reservoir feeding the White Nile becomes settled geography.',
+        source: {
+          externalId: 'src:stanley-lake-victoria-1877',
+          name: 'H.M. Stanley\'s 1874–1877 circumnavigation of Lake Victoria confirming the Nile source; John Hanning Speke (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/John_Hanning_Speke',
+          publishedAt: '1877-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Laveran discovers the malaria parasite ──────────────────────────────────
+  {
+    externalId: 'trajectory:laveran-malaria-parasite-1880',
+    text: 'On 20 October 1880, at a military hospital in Constantine, Algeria, Alphonse Laveran observed living parasites in the blood of malaria patients — the first demonstration that a protozoan, rather than a bacterium or "miasma," causes the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1880-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1880-10-20',
+        datePrecision: 'DAY',
+        reason: 'Examining fresh blood from a feverish soldier under the microscope, Laveran sees pigmented crescent and spherical bodies and, crucially, motile flagellated forms — clear evidence of living organisms in the blood. He reports the finding in a note to the Académie de médecine in Paris later that year, the first identification of a protozoan as a cause of human disease.',
+        source: {
+          externalId: 'src:laveran-malaria-1880',
+          name: 'Laveran\'s 20 October 1880 observation of the malaria parasite at Constantine; Charles Louis Alphonse Laveran (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Charles_Louis_Alphonse_Laveran',
+          publishedAt: '1880-12-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1881-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Laveran\'s claim is met with widespread skepticism. In the era when bacteria were being identified as agents of disease, many investigators expected a bacterial cause for malaria, failed to reproduce his observation with their staining methods, and dismissed the pigmented bodies as degenerate blood cells or artefacts.',
+        source: {
+          externalId: 'src:laveran-malaria-skepticism',
+          name: 'Initial skepticism toward Laveran\'s protozoan theory of malaria; Charles Louis Alphonse Laveran (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Charles_Louis_Alphonse_Laveran',
+          publishedAt: '1885-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1907-12-10',
+        datePrecision: 'DAY',
+        reason: 'Confirmation by the Italian malariologists (Marchiafava, Celli, Golgi) in the late 1880s and improved staining establish the Plasmodium parasite beyond dispute; Ronald Ross later shows the mosquito transmits it. Laveran is awarded the Nobel Prize in Physiology or Medicine on 10 December 1907 "in recognition of his work on the role played by protozoa in causing diseases."',
+        source: {
+          externalId: 'src:laveran-nobel-1907',
+          name: 'The Nobel Prize in Physiology or Medicine 1907 — Alphonse Laveran. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1907/laveran/facts/',
+          publishedAt: '1907-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Behring & Kitasato — serum therapy (diphtheria antitoxin) ────────────────
+  {
+    externalId: 'trajectory:behring-diphtheria-antitoxin-1890',
+    text: 'On 4 December 1890 Emil von Behring and Kitasato Shibasaburō published evidence that blood serum from an animal immunized against diphtheria (or tetanus) toxin could neutralize a lethal dose of that toxin in another animal — establishing serum therapy and the principle of the antitoxin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1890-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-12-04',
+        datePrecision: 'DAY',
+        reason: 'In the Deutsche Medizinische Wochenschrift of 4 December 1890, Behring and Kitasato report that serum from animals rendered immune to diphtheria and tetanus toxins protects other animals against otherwise fatal doses, transferring immunity through a substance in the blood they call an "antitoxin." The result demonstrates passive immunization for the first time.',
+        source: {
+          externalId: 'src:behring-kitasato-1890',
+          name: 'Behring E, Kitasato S. Über das Zustandekommen der Diphtherie-Immunität und der Tetanus-Immunität bei Thieren. Deutsche Medizinische Wochenschrift 1890;16:1113–1114.',
+          url: 'https://en.wikipedia.org/wiki/Emil_von_Behring',
+          publishedAt: '1890-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1894-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After the antitoxin\'s production and dosing are optimized (with Paul Ehrlich), diphtheria serum therapy is used successfully in children from 1894 and rapidly cuts mortality, becoming a standard clinical treatment manufactured at scale across Europe and North America.',
+        source: {
+          externalId: 'src:diphtheria-antitoxin-clinical-1894',
+          name: 'Clinical adoption of diphtheria antitoxin from 1894; Emil von Behring (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Emil_von_Behring',
+          publishedAt: '1894-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1901-12-10',
+        datePrecision: 'DAY',
+        reason: 'Behring receives the first Nobel Prize in Physiology or Medicine on 10 December 1901 "for his work on serum therapy, especially its application against diphtheria, by which he has opened a new road in the domain of medical science," formally ratifying the discovery.',
+        source: {
+          externalId: 'src:behring-nobel-1901',
+          name: 'The Nobel Prize in Physiology or Medicine 1901 — Emil von Behring. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1901/summary/',
+          publishedAt: '1901-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dubois discovers Java Man (Pithecanthropus erectus) ─────────────────────
+  {
+    externalId: 'trajectory:dubois-java-man-1891',
+    text: 'In August 1891, at Trinil on the Solo River in Java, Eugène Dubois excavated a skullcap (followed by a femur in 1892) that he named Pithecanthropus erectus ("Java Man") and interpreted as a transitional form between apes and humans — a claim long contested before its acceptance as Homo erectus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1891-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1891-08-01',
+        datePrecision: 'MONTH',
+        reason: 'In August 1891 Dubois\'s crew recovers a molar and a low, thick skullcap (Trinil 2) from the riverbank at Trinil; a year later, in August 1892, a human-like thighbone is found nearby. Dubois publishes the find in 1894, naming it Pithecanthropus erectus and arguing it is the "missing link" between apes and humans — the first fossil deliberately sought and found as evidence of human evolution.',
+        source: {
+          externalId: 'src:dubois-pithecanthropus-1894',
+          name: 'Dubois E. Pithecanthropus erectus, eine menschenähnliche Übergangsform aus Java. Batavia, 1894; Java Man (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Java_Man',
+          publishedAt: '1894-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The interpretation is fiercely disputed: within a decade nearly eighty publications appear, variously dismissing the remains as those of an ape (a gibbon), of a fully modern human, or of an extinct side branch unrelated to human ancestry. Doubt that the skullcap and femur even belonged to one individual compounds the controversy.',
+        source: {
+          externalId: 'src:java-man-controversy',
+          name: 'The decades-long controversy over Dubois\'s Pithecanthropus erectus; Java Man (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Java_Man',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Later finds — von Koenigswald\'s additional Java fossils and the Zhoukoudian "Peking Man" — show the same morphology, and Ernst Mayr\'s 1950 taxonomic revision reclassifies Pithecanthropus into the genus Homo. Java Man is settled as a specimen of Homo erectus, a genuine extinct human ancestor, vindicating Dubois\'s core claim of a transitional form.',
+        source: {
+          externalId: 'src:java-man-homo-erectus',
+          name: 'Reclassification of Pithecanthropus erectus as Homo erectus; Java Man (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Java_Man',
+          publishedAt: '1950-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
