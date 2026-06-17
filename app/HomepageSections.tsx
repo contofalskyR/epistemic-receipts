@@ -165,6 +165,10 @@ const DOMAINS: Domain[] = [
 
 const CHANGELOG: { date: string; text: string }[] = [
   {
+    date: "JUNE 17, 2026",
+    text: "/settling-curve redesigned as a split-panel browser. New left sidebar with search, status filters (Settled/Reversed/Contested), and era chips drives a grouped scrollable trajectory list; right panel keeps the gold AGENTIC LOOP audit banner pinned above the chart, surfaces a Key Interval card, and hosts the receipt detail. Mobile uses a slide-up drawer.",
+  },
+  {
     date: "JUNE 9, 2026",
     text: "City-level globe — Stage 1: ClaimLocation schema. New normalized location table lets claims carry geocoded points (lat/lon + city + countryCode) with provenance (source, precision, externalRef). Migration deployed to prod; backfill scripts and globe UI come in Stage 2+.",
   },

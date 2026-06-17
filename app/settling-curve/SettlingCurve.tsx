@@ -614,8 +614,15 @@ function SettlingCurveInner() {
 
   return (
     <div
-      style={{ background: C.bg, color: C.ink }}
-      className="w-full"
+      style={{
+        background: C.bg,
+        color: C.ink,
+        marginLeft: "-1.5rem",
+        marginRight: "-1.5rem",
+        marginTop: "-2rem",
+        marginBottom: "-2rem",
+      }}
+      className="w-auto"
     >
       <style>{REDUCED_MOTION_CSS}</style>
 
@@ -625,11 +632,12 @@ function SettlingCurveInner() {
       >
         {/* Sidebar (desktop sticky, mobile drawer) */}
         <aside
-          className="hidden md:flex md:flex-col md:sticky md:top-0 shrink-0"
+          className="hidden md:flex md:flex-col md:sticky shrink-0 z-30"
           style={{
             width: "min(35%, 380px)",
             minWidth: 280,
-            height: "calc(100vh - 60px)",
+            top: 48,
+            height: "calc(100vh - 48px)",
             borderRight: `1px solid ${C.panelEdge}`,
             background: C.panel,
           }}
