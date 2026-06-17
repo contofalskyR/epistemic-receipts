@@ -49153,6 +49153,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDENDUM (1400–1750): exploration, Reformation, Mughal India
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Magellan killed at the Battle of Mactan ─────────────────────────────────
+  {
+    externalId: 'trajectory:magellan-death-mactan-1521',
+    text: 'Ferdinand Magellan was killed in battle against the forces of the Mactan chieftain Lapulapu in the Philippines on 27 April 1521, during the first circumnavigation expedition.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1521-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1521-04-27',
+        datePrecision: 'DAY',
+        reason: 'In the early morning of 27 April 1521 Magellan led a small landing party against the village of Mactan in an attempt to subdue the chieftain Lapulapu. Wading ashore against a much larger force, he was overwhelmed in the shallows and killed. The expedition\'s chronicler Antonio Pigafetta, an eyewitness present on the ships, recorded the assault and Magellan\'s death in detail.',
+        source: {
+          externalId: 'src:pigafetta-primo-viaggio-mactan',
+          name: 'Antonio Pigafetta, Primo viaggio intorno al mondo (c. 1524) — eyewitness account of the Battle of Mactan, 27 April 1521.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mactan',
+          publishedAt: '1524-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pigafetta\'s firsthand narrative is the principal source for Magellan\'s death, corroborated by the surviving logbook of the expedition and by the eventual return of the Victoria to Spain in 1522. The date of 27 April 1521 and the manner of his death at Mactan are settled in modern historiography of the first circumnavigation.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-mactan',
+          name: 'Wikipedia — "Battle of Mactan": Magellan killed 27 April 1521; Pigafetta sole primary source.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mactan',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Huldrych Zwingli killed at the Second Battle of Kappel ──────────────────
+  {
+    externalId: 'trajectory:zwingli-killed-kappel-1531',
+    text: 'The Swiss Reformer Huldrych Zwingli was killed in battle at the Second Battle of Kappel on 11 October 1531, fighting as a combatant chaplain for Protestant Zurich against the Catholic Five States.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1531-10-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1531-10-11',
+        datePrecision: 'DAY',
+        reason: 'On 11 October 1531 a Zurich force of roughly 3,500 was caught poorly deployed near Kappel by a Catholic Five States army nearly twice its size. The battle lasted under an hour; Zwingli, accompanying the army as a pastor, was among some 500 Zurich dead. His death was reported immediately across the Confederation and commented on by Luther and Erasmus.',
+        source: {
+          externalId: 'src:zwingli-kappel-1531',
+          name: 'Huldrych Zwingli killed at the Second Battle of Kappel, 11 October 1531. Wikipedia, "Huldrych Zwingli".',
+          url: 'https://en.wikipedia.org/wiki/Huldrych_Zwingli',
+          publishedAt: '2015-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1532-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Zwingli\'s death was documented by his successor Heinrich Bullinger in his Reformationsgeschichte and is attested across contemporary Swiss chronicles. Bullinger took leadership of the Zurich church in December 1531, and the date and circumstances of Zwingli\'s death at Kappel are settled in Reformation historiography.',
+        source: {
+          externalId: 'src:bullinger-reformationsgeschichte-zwingli',
+          name: 'Heinrich Bullinger, Reformationsgeschichte (mid-16th c.) and Wikipedia, "Huldrych Zwingli" — death at Kappel confirmed.',
+          url: 'https://en.wikipedia.org/wiki/Huldrych_Zwingli',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── William Tyndale executed at Vilvoorde ───────────────────────────────────
+  {
+    externalId: 'trajectory:tyndale-executed-1536',
+    text: 'William Tyndale, translator of the first printed English New Testament, was strangled and burned at the stake for heresy at Vilvoorde near Brussels in early October 1536.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1536-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1536-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Condemned for heresy after his arrest in Antwerp and imprisonment in Vilvoorde Castle, Tyndale was strangled while tied to the stake and his body then burned in the castle precincts in early October 1536. John Foxe records his final words as "Lord, open the King of England\'s eyes," and the traditional date of commemoration is 6 October.',
+        source: {
+          externalId: 'src:foxe-acts-monuments-tyndale',
+          name: 'John Foxe, Actes and Monuments (1563) — execution of William Tyndale at Vilvoorde, October 1536.',
+          url: 'https://en.wikipedia.org/wiki/William_Tyndale',
+          publishedAt: '1563-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship (notably David Daniell\'s biography) places the execution in the first days of October 1536, noting that prison records suggest a date some weeks before the traditional 6 October commemoration. The fact and approximate date of Tyndale\'s execution at Vilvoorde are settled; only the exact day remains uncertain.',
+        source: {
+          externalId: 'src:wikipedia-william-tyndale',
+          name: 'Wikipedia — "William Tyndale": executed at Vilvoorde, early October 1536; commemorated 6 October.',
+          url: 'https://en.wikipedia.org/wiki/William_Tyndale',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Henry Hudson enters Hudson Bay ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:hudson-enters-hudson-bay-1610',
+    text: 'On 2 August 1610 the English navigator Henry Hudson, commanding the Discovery, passed through Hudson Strait and entered the great inland sea later named Hudson Bay, believing he had found a northwest passage to the Pacific.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1610-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1610-08-02',
+        datePrecision: 'DAY',
+        reason: 'Following the southern coast of the strait, Hudson\'s ship Discovery entered the open waters of Hudson Bay on 2 August 1610, sailing south in the expectation of reaching the Pacific. The voyage was recorded by crew member Abacuk Pricket, whose journal survived to become the principal narrative of the expedition and the subsequent 1611 mutiny that set Hudson adrift.',
+        source: {
+          externalId: 'src:pricket-journal-hudson-bay',
+          name: 'Abacuk Pricket, journal of the 1610–1611 Discovery voyage — entry into Hudson Bay, 2 August 1610. Wikipedia, "Henry Hudson".',
+          url: 'https://en.wikipedia.org/wiki/Henry_Hudson',
+          publishedAt: '2015-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pricket\'s narrative, together with later survivors\' depositions before the English authorities, establishes the chronology of Hudson\'s 1610 voyage. The bay and strait bear Hudson\'s name, and his entry into the bay in August 1610 — and the discovery that it was not a through-passage to the Pacific — is settled in the history of Arctic exploration.',
+        source: {
+          externalId: 'src:wikipedia-henry-hudson',
+          name: 'Wikipedia — "Henry Hudson": Discovery entered Hudson Bay 2 August 1610; Pricket journal a primary source.',
+          url: 'https://en.wikipedia.org/wiki/Henry_Hudson',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of the Mughal emperor Jahangir ────────────────────────────────────
+  {
+    externalId: 'trajectory:death-of-jahangir-1627',
+    text: 'The fourth Mughal emperor, Jahangir, died near Bhimber on 28 October 1627 while travelling from Kashmir to Lahore, ending a reign of twenty-two years and precipitating the succession of his son Shah Jahan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1627-10-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1627-10-28',
+        datePrecision: 'DAY',
+        reason: 'Jahangir, in declining health, died near Bhimber in the Kashmir foothills on 28 October 1627 during his return journey to Lahore. His death was recorded in the Mughal court chronicles, including Mu\'tamad Khan\'s Iqbalnama-i-Jahangiri, which continued the imperial memoir (the Jahangirnama) after the emperor could no longer maintain it himself.',
+        source: {
+          externalId: 'src:iqbalnama-jahangir-death',
+          name: 'Mu\'tamad Khan, Iqbalnama-i-Jahangiri (17th c. court chronicle) — death of Jahangir, 28 October 1627. Wikipedia, "Jahangir".',
+          url: 'https://en.wikipedia.org/wiki/Jahangir',
+          publishedAt: '1640-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date of Jahangir\'s death is attested by contemporary Mughal chronicles and corroborated by European observers at and after his court. His body was carried to Lahore for burial at Shahdara Bagh, and within months Shah Jahan secured the throne — fixing the succession sequence settled in Mughal historiography.',
+        source: {
+          externalId: 'src:wikipedia-jahangir',
+          name: 'Wikipedia — "Jahangir": died near Bhimber 28 October 1627; buried at Shahdara, Lahore.',
+          url: 'https://en.wikipedia.org/wiki/Jahangir',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
