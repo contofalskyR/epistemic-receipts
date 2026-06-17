@@ -5978,6 +5978,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Surveyor 1 — first U.S. lunar soft landing, lunar surface bears weight ──
+  {
+    externalId: 'trajectory:surveyor-1-lunar-soft-landing-1966',
+    text: 'Surveyor 1, launched May 30, 1966, achieved the first United States soft landing on the Moon on June 2, 1966, returning over 11,000 photographs and engineering data showing the lunar surface had sufficient bearing strength to support a landed spacecraft.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-06-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1966-06-02',
+        datePrecision: 'DAY',
+        reason: 'Before the Surveyor and Luna landers, the load-bearing strength of the lunar surface was genuinely uncertain — Cornell astronomer Thomas Gold had argued the maria might be covered in deep, fine dust that could swallow a spacecraft. Surveyor 1 touches down intact in Oceanus Procellarum and within hours transmits the first of 11,237 television images directly to JPL, showing its footpads resting on a firm, granular surface. The landing is reported worldwide the same day.',
+        source: {
+          externalId: 'src:nasa-surveyor-1-mission',
+          name: 'NASA. "Surveyor 1" mission profile. Science Mission Directorate.',
+          url: 'https://science.nasa.gov/mission/surveyor-1/',
+          publishedAt: '1966-06-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-07-20',
+        datePrecision: 'DAY',
+        reason: 'Analysis of Surveyor footpad penetration and strain-gauge data establishes a lunar surface bearing capacity adequate for crewed landers, refuting the deep-dust hypothesis. The Surveyor series (1966–1968) and ultimately the Apollo 11 crewed landing in July 1969 confirm directly that astronauts and vehicles rest firmly on the regolith. Gold\'s deep-dust scenario is abandoned by the planetary-science community.',
+        source: {
+          externalId: 'src:surveyor-1-wikipedia-bearing',
+          name: 'Surveyor 1 — soft landing and lunar surface bearing-strength data (engineering and imaging results, 1966).',
+          url: 'https://en.wikipedia.org/wiki/Surveyor_1',
+          publishedAt: '1969-07-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kerner Commission report — official finding on causes of urban unrest ────
+  {
+    externalId: 'trajectory:kerner-commission-report-1968',
+    text: 'The National Advisory Commission on Civil Disorders (Kerner Commission) issued its report on February 29, 1968, concluding that the United States was "moving toward two societies, one black, one white—separate and unequal," and attributing the 1967 urban uprisings primarily to white racism and systemic discrimination.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1968-02-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-02-29',
+        datePrecision: 'DAY',
+        reason: 'President Lyndon Johnson establishes the Commission by Executive Order 11365 on July 28, 1967, after a summer of urban uprisings in Detroit, Newark, and dozens of other cities. After seven months of investigation, the 11-member panel chaired by Illinois Governor Otto Kerner issues its 426-page report on February 29, 1968. Its central findings — white racism, discrimination in housing, employment, education, and policing as root causes — are placed on the official record over the expectation of a law-and-order narrative.',
+        source: {
+          externalId: 'src:kerner-commission-report-1968',
+          name: 'Report of the National Advisory Commission on Civil Disorders (Kerner Report). U.S. Government Printing Office, February 29, 1968.',
+          url: 'https://en.wikipedia.org/wiki/Kerner_Commission',
+          publishedAt: '1968-02-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1968-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The report becomes an instant bestseller, selling more than two million copies — outpacing even the Warren Commission report. Although President Johnson distances himself from its recommendations, the document\'s factual account of the disorders and their causes enters the historical record as the authoritative federal investigation of the 1967 uprisings, repeatedly cited and reassessed (e.g., the 1998 "Millennium Breach" update) in the decades since.',
+        source: {
+          externalId: 'src:kerner-report-eisenhower-foundation',
+          name: 'National Advisory Commission on Civil Disorders — report findings and reception (Eisenhower Foundation 30-year update, "The Millennium Breach," 1998).',
+          url: 'https://en.wikipedia.org/wiki/Kerner_Commission',
+          publishedAt: '1998-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tuskegee Syphilis Study — concealed experiment exposed to the public ────
+  {
+    externalId: 'trajectory:tuskegee-study-exposed-1972',
+    text: 'From 1932 to 1972 the U.S. Public Health Service conducted the "Tuskegee Study of Untreated Syphilis in the Negro Male," knowingly withholding effective treatment from about 400 Black men with syphilis; the study was concealed from its subjects and the public until exposed by the press in July 1972.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1972-07-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1972-07-25',
+        datePrecision: 'DAY',
+        reason: 'For four decades the study ran openly in the medical literature but its true nature — deliberate non-treatment of infected men, who were never told they had syphilis and were denied penicillin even after it became standard care in the late 1940s — was not public knowledge. On July 25, 1972, an Associated Press story by Jean Heller, prompted by whistleblower Peter Buxtun, runs in the Washington Star and the next day on the front page of the New York Times, exposing the study to the nation.',
+        source: {
+          externalId: 'src:heller-ap-tuskegee-1972',
+          name: 'Jean Heller (Associated Press), "Syphilis Victims in U.S. Study Went Untreated for 40 Years," Washington Star (July 25, 1972) and New York Times p.1 (July 26, 1972).',
+          url: 'https://en.wikipedia.org/wiki/Tuskegee_Syphilis_Study',
+          publishedAt: '1972-07-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-04-28',
+        datePrecision: 'DAY',
+        reason: 'The Assistant Secretary for Health convenes an Ad Hoc Advisory Panel, which finds the study ethically unjustified and recommends its immediate end; the study is terminated on November 16, 1972, and the panel issues its Final Report in April 1973. The episode drives the National Research Act of 1974, the Belmont Report (1979), and the modern federal framework of informed consent and IRB review.',
+        source: {
+          externalId: 'src:tuskegee-advisory-panel-1973',
+          name: 'Final Report of the Tuskegee Syphilis Study Ad Hoc Advisory Panel. U.S. Department of Health, Education, and Welfare, April 28, 1973.',
+          url: 'https://www.cdc.gov/tuskegee/about/index.html',
+          publishedAt: '1973-04-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-05-16',
+        datePrecision: 'DAY',
+        reason: 'On May 16, 1997, President Bill Clinton issues a formal apology on behalf of the United States to the surviving participants and their families, acknowledging the study as a national wrong. The apology cements the historical and ethical verdict on the study and its place in the founding of contemporary research-ethics law.',
+        source: {
+          externalId: 'src:clinton-tuskegee-apology-1997',
+          name: 'Remarks by President Clinton in Apology for Study Done in Tuskegee. The White House, May 16, 1997.',
+          url: 'https://en.wikipedia.org/wiki/Tuskegee_Syphilis_Study',
+          publishedAt: '1997-05-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Diffie–Hellman — public-key cryptography introduced ─────────────────────
+  {
+    externalId: 'trajectory:diffie-hellman-public-key-crypto-1976',
+    text: 'In "New Directions in Cryptography," published in IEEE Transactions on Information Theory in November 1976, Whitfield Diffie and Martin Hellman introduced public-key cryptography and a method for two parties to establish a shared secret over an insecure channel without prior contact.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Until 1976 it was widely assumed that secure communication required two parties to first share a secret key through some trusted channel. Diffie and Hellman publish the concept of asymmetric (public/private) key pairs and the Diffie–Hellman key-exchange protocol, showing that two strangers can agree on a secret over a fully public channel. The paper appears in the IEEE Transactions on Information Theory, vol. IT-22, November 1976.',
+        source: {
+          externalId: 'src:diffie-hellman-new-directions-1976',
+          name: 'Diffie W., Hellman M. "New Directions in Cryptography." IEEE Transactions on Information Theory, IT-22(6):644–654, November 1976.',
+          url: 'https://ee.stanford.edu/~hellman/publications/24.pdf',
+          publishedAt: '1976-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The framework is realized in practice within two years: the RSA cryptosystem (Rivest, Shamir, Adleman, 1978) gives a working public-key encryption and signature scheme, and public-key cryptography becomes the foundation of secure internet communication (TLS, SSH, PGP). Diffie and Hellman receive the 2015 ACM Turing Award for the work, which is now uncontested as the origin of modern public-key cryptography.',
+        source: {
+          externalId: 'src:rsa-cryptosystem-1978',
+          name: 'Rivest R., Shamir A., Adleman L. "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." Communications of the ACM 21(2):120–126, February 1978.',
+          url: 'https://en.wikipedia.org/wiki/New_Directions_in_Cryptography',
+          publishedAt: '1978-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Exxon Valdez — oil spill and the regulatory record it created ───────────
+  {
+    externalId: 'trajectory:exxon-valdez-oil-spill-1989',
+    text: 'On March 24, 1989, the tanker Exxon Valdez ran aground on Bligh Reef in Prince William Sound, Alaska, spilling roughly 11 million gallons (about 37,000 tonnes) of crude oil and causing one of the largest environmental disasters in U.S. history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1989-03-24',
+        datePrecision: 'DAY',
+        reason: 'At 12:04 a.m. on March 24, 1989, the outbound Exxon Valdez strikes Bligh Reef after leaving the shipping lanes, rupturing its single hull. Crude oil pours into Prince William Sound over the following days, eventually coating some 1,300 miles of coastline. The grounding, the spill volume, and the unfolding wildlife kill are documented in real time by the Coast Guard, NOAA, and national news media.',
+        source: {
+          externalId: 'src:exxon-valdez-history-1989',
+          name: 'History.com. "Exxon Valdez runs aground" (This Day in History, March 24, 1989).',
+          url: 'https://www.history.com/this-day-in-history/march-24/exxon-valdez-runs-aground',
+          publishedAt: '1989-03-24',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-18',
+        datePrecision: 'DAY',
+        reason: 'The disaster is established in the legal and scientific record: federal and state investigations fix the spill at roughly 11 million gallons, and Congress responds with the Oil Pollution Act of 1990 (signed August 18, 1990), which mandates double-hulled tankers, expands liability, and bars vessels that caused large spills after March 22, 1989 from Prince William Sound. Long-term NOAA monitoring documents persistent ecological damage, settling the event\'s scale and consequences.',
+        source: {
+          externalId: 'src:exxon-valdez-oil-pollution-act-1990',
+          name: 'Exxon Valdez oil spill — spill volume, ecological impact, and the U.S. Oil Pollution Act of 1990.',
+          url: 'https://en.wikipedia.org/wiki/Exxon_Valdez_oil_spill',
+          publishedAt: '1990-08-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MODERN ERA (1990–present): genomics, AI, climate, global health
   // ═══════════════════════════════════════════════════════════════════════════════
