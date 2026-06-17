@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-# Medicine Loop: Opus→Sonnet split architecture
+# Medicine Loop: Opus→Sonnet→Opus pipeline (v2)
 #
-# Opus handles the hard reasoning: what medical claim to add, source verification,
-# dedup check against the seed file. Outputs a structured JSON spec.
-# Sonnet handles the mechanical build: writes the TypeScript entry, runs the
-# seeder, commits. No reasoning required.
+# Architecture (per MAST/Anthropic best practices):
+#   Phase 1 — Opus research: candidate selection + URL verification → JSON spec
+#   Phase 2 — Sonnet build:  TypeScript entry + seeder run + commit
+#   Phase 3 — Opus review:   quality gate on what Sonnet committed
+#   Phase 3b — Sonnet fix:   one retry if Opus flags issues (max 1 attempt)
+#   + Saturation tracking:   novelty rate per run → pivot signal when <10%
 #
 # Era cycling (4): Drug Discovery / Clinical Trials / Post-Market / Regulatory Reversal
 # Domain cycling (10): Oncology / Cardiovascular / Infectious Disease / Neuro-Psych /
-#   Endocrinology / Pain & Opioids / Women's Health / Pediatrics / Rare Disease / Vaccines
+#   Endocrinology / Pain & Opioids / Women's Health / Pediatrics / Rare Disease / Surgical
 #
 # 4 × 10 = 40 unique combinations before any full repeat.
 #
@@ -19,9 +21,11 @@
 PROJECT_DIR="$HOME/Projects/epistemic-receipts"
 LOG="/tmp/settling-curve-medicine.log"
 DECISIONS_LOG="$PROJECT_DIR/logs/medicine-decisions.jsonl"
+SATURATION_LOG="$PROJECT_DIR/logs/medicine-saturation.jsonl"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NOTIFY="$SCRIPT_DIR/notify-telegram.sh"
 RUN=0
+CONSECUTIVE_LOW_YIELD=0  # saturation counter: runs with novelty rate < 10%
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG"; }
 
@@ -61,8 +65,6 @@ p.claimStatusHistory.groupBy({by:['claimId'],_count:true}).then(r=>console.log(r
 " 2>/dev/null || echo "unknown")
 
   # ─── PHASE 1: OPUS RESEARCH ───────────────────────────────────────────────
-  # Opus reads seed file, identifies candidates, verifies URLs, outputs JSON spec.
-  # Sonnet does NOT need to do any reasoning — only mechanical execution.
 
   OPUS_PROMPT="You are a medical research expert and epistemic historian expanding the Epistemic Receipts medicine settling curve dataset.
 
@@ -79,7 +81,7 @@ Think of 3-5 specific medical/pharmaceutical epistemic events in this focus area
   - A dateable medical claim (drug approval, study publication, guideline change, regulatory reversal, court ruling) pinned to a specific day or month
   - Has verifiable primary sources: PubMed PMID, FDA approval letter, NEJM/Lancet/BMJ paper, WHO bulletin, congressional record, court decision
   - Represents a clear epistemic transition: OPEN→RECORDED (first evidence), RECORDED→SETTLED (institutional adoption), SETTLED→CONTESTED (safety signal), SETTLED→REVERSED (withdrawal/contradicted), etc.
-  - NOT already in the seed files: read BOTH seed files and check every candidate against existing entries by event description AND date, not just externalId — ask yourself 'is this the same event already in either file, even under a different name?'
+  - NOT already in the seed files: read BOTH seed files and check every candidate against existing entries by event description AND date, not just externalId. Ask: 'is this the same event already in either file, even under a different name?'
 
 STEP 2 — SOURCE VERIFICATION:
 For each candidate, fetch at least one primary source URL:
@@ -128,11 +130,10 @@ REASONING_SUMMARY:[one sentence: what you looked for, what failed and why, what 
   OPUS_OUTPUT=$(claude --model claude-opus-4-8 --print --permission-mode bypassPermissions --max-turns 20 "$OPUS_PROMPT" 2>&1) || true
   echo "$OPUS_OUTPUT" >> "$LOG"
 
-  # Extract JSON spec from Opus output (between first [ and last ])
+  # Extract JSON spec
   JSON_SPEC=$(echo "$OPUS_OUTPUT" | python3 -c "
 import sys, re, json
 text = sys.stdin.read()
-# Find the JSON array
 match = re.search(r'(\[.*\])', text, re.DOTALL)
 if match:
     try:
@@ -149,16 +150,15 @@ else:
 
   log "Opus returned ${CANDIDATE_COUNT} verified candidates"
 
-  if [ "$CANDIDATE_COUNT" = "0" ] || [ "$CANDIDATE_COUNT" = "" ]; then
-    log "No verified candidates from Opus — skipping Sonnet phase"
-    ADDED=0
-    TITLES="none"
-    CONSIDERED="(see Opus log)"
-  else
-    # ─── PHASE 2: SONNET BUILD ───────────────────────────────────────────────
-    # Sonnet gets the JSON spec and only does mechanical execution.
+  ADDED=0
+  TITLES="none"
+  CONSIDERED="(opus returned 0)"
+  REVIEW_RESULT="skipped"
 
-    SONNET_PROMPT="You are a code execution agent. You have been given a verified JSON spec of medical epistemic trajectories to add to the Epistemic Receipts database. Do NOT do any research — the research is already done. Just execute.
+  if [ "$CANDIDATE_COUNT" != "0" ] && [ "$CANDIDATE_COUNT" != "" ]; then
+    # ─── PHASE 2: SONNET BUILD ─────────────────────────────────────────────
+
+    SONNET_PROMPT="You are a code execution agent. You have been given a verified JSON spec of medical epistemic trajectories. Do NOT do any research — just execute.
 
 PROJECT: /Users/robclaw/Projects/epistemic-receipts
 SEED FILE TO ADD TO: scripts/seed-medicine-trajectories.ts
@@ -167,8 +167,8 @@ VERIFIED JSON SPEC:
 ${JSON_SPEC}
 
 Your job:
-1. Read scripts/seed-medicine-trajectories.ts to understand the exact TypeScript format (the TRAJECTORIES array and upsertTrajectory function).
-2. Add each trajectory from the JSON spec to the TRAJECTORIES array in scripts/seed-medicine-trajectories.ts, following EXACTLY the same TypeScript structure as existing entries. Preserve all existing entries — only append new ones.
+1. Read scripts/seed-medicine-trajectories.ts to understand the exact TypeScript format.
+2. Append each trajectory from the JSON spec to the TRAJECTORIES array, following EXACTLY the same structure. Preserve all existing entries.
 3. Run: cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-medicine-trajectories.ts
 4. Commit and push: git add -A && git commit -m '💊 medicine: add [N] verified trajectories — [era/domain]' && git push origin main
 5. Output exactly:
@@ -191,30 +191,26 @@ except:
     print('unknown')
 " 2>/dev/null || echo "unknown")
 
-    # ─── PHASE 3: OPUS REVIEW ───────────────────────────────────────────────
-    # Opus reads what Sonnet actually committed and checks it against the spec.
-    # Catches: wrong transition sequences, date format errors, missing fields,
-    # transition logic that doesn't make medical sense, spec drift.
+    # ─── PHASE 3: OPUS REVIEW ──────────────────────────────────────────────
 
     if [ "${ADDED:-0}" != "0" ] && [ "${ADDED:-0}" != "" ]; then
-      REVIEW_PROMPT="You are a medical epistemic quality reviewer. Sonnet just committed new trajectories to the Epistemic Receipts database. Verify that what was committed matches the spec and is medically/epistemically correct.
+      REVIEW_PROMPT="You are a medical epistemic quality reviewer. Verify what Sonnet committed matches the spec and is medically correct.
 
 PROJECT: /Users/robclaw/Projects/epistemic-receipts
-ORIGINAL SPEC (what Opus approved): ${JSON_SPEC}
+ORIGINAL SPEC: ${JSON_SPEC}
 
-Your job:
-1. Read scripts/seed-medicine-trajectories.ts and find the newly added entries (they are at the bottom, matching the externalIds in the spec).
-2. For each added entry, verify:
+1. Read scripts/seed-medicine-trajectories.ts — find the newly added entries at the bottom.
+2. For each added entry verify:
    - externalId, text, claimType, claimEmergedAt match the spec
-   - Each transition's fromAxis → toAxis sequence is medically/epistemically valid (e.g., SETTLED→REVERSED requires the original claim to have been settled first; a drug can't go from OPEN to SETTLED without passing through RECORDED)
-   - occurredAt dates are consistent with historical timeline (cause precedes effect)
-   - source URLs look real (not obviously hallucinated DOIs or placeholder URLs)
-   - reason fields are substantive (not just 'the event occurred')
-3. Check git log to confirm the commit went through: git log --oneline -3
+   - Each fromAxis → toAxis transition is medically valid (SETTLED→REVERSED requires prior SETTLED; no OPEN→SETTLED without RECORDED first)
+   - occurredAt dates are chronologically consistent (cause before effect)
+   - source URLs are real (not placeholder or obviously hallucinated)
+   - reason fields are substantive
+3. Run: git log --oneline -3 to confirm commit went through.
 
 Output exactly one of:
 REVIEW_OK
-REVIEW_ISSUES:[brief description of what's wrong and which externalId is affected]"
+REVIEW_ISSUES:[specific description of what is wrong and which externalId is affected]"
 
       log "Phase 3: Opus review..."
       REVIEW_OUTPUT=$(claude --model claude-opus-4-8 --print --permission-mode bypassPermissions --max-turns 10 "$REVIEW_PROMPT" 2>&1) || true
@@ -224,32 +220,100 @@ REVIEW_ISSUES:[brief description of what's wrong and which externalId is affecte
 
       if echo "$REVIEW_STATUS" | grep -q "REVIEW_ISSUES:"; then
         REVIEW_DETAIL=$(echo "$REVIEW_STATUS" | sed 's/^REVIEW_ISSUES://')
-        log "⚠️  Opus review flagged issues: ${REVIEW_DETAIL}"
-        bash "$NOTIFY" "⚠️ Medicine quality issue (run #${RUN})
-${REVIEW_DETAIL}
-Check logs/medicine-decisions.jsonl"
+        REVIEW_RESULT="issues:${REVIEW_DETAIL}"
+        log "⚠️  Opus review flagged: ${REVIEW_DETAIL}"
+
+        # ─── PHASE 3b: SONNET FIX (max 1 retry) ─────────────────────────
+        FIX_PROMPT="You are a code correction agent. An Opus quality reviewer found issues with trajectories you just committed. Fix them now.
+
+PROJECT: /Users/robclaw/Projects/epistemic-receipts
+ORIGINAL SPEC: ${JSON_SPEC}
+ISSUES FOUND: ${REVIEW_DETAIL}
+
+1. Read scripts/seed-medicine-trajectories.ts and find the affected entries (listed in ISSUES FOUND).
+2. Fix each issue in place — correct the field values to match the spec and the reviewer's feedback.
+3. Re-run: cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-medicine-trajectories.ts
+4. Commit: git add -A && git commit -m '💊 medicine: fix quality issues flagged by Opus reviewer' && git push origin main
+5. Output: FIX_DONE:[brief description of what you fixed]"
+
+        log "Phase 3b: Sonnet fix attempt..."
+        FIX_OUTPUT=$(claude --model claude-sonnet-4-6 --print --permission-mode bypassPermissions --max-turns 10 "$FIX_PROMPT" 2>&1) || true
+        echo "$FIX_OUTPUT" >> "$LOG"
+
+        FIX_STATUS=$(echo "$FIX_OUTPUT" | grep "^FIX_DONE:" | tail -1)
+        if [ -n "$FIX_STATUS" ]; then
+          log "✓ Sonnet fix applied: ${FIX_STATUS}"
+          REVIEW_RESULT="fixed:${FIX_STATUS}"
+        else
+          log "⚠️  Sonnet fix did not confirm — manual check needed"
+          bash "$NOTIFY" "⚠️ Medicine quality issue — auto-fix uncertain (run #${RUN})
+Issues: ${REVIEW_DETAIL}
+Check logs/medicine-$(date +%Y-%m-%d).log"
+          REVIEW_RESULT="fix_uncertain"
+        fi
       else
+        REVIEW_RESULT="ok"
         log "✓ Opus review passed"
       fi
     fi
   fi
 
-  log "Run #${RUN} done. Added: ${ADDED:-0}"
+  # ─── SATURATION TRACKING ──────────────────────────────────────────────────
+  # Novelty rate = ADDED / CANDIDATE_COUNT. If <10% over 5+ consecutive runs,
+  # the loop is saturating in this era/domain combination.
 
-  # Write structured decision log
+  NOVELTY_RATE=0
+  if [ "${CANDIDATE_COUNT:-0}" != "0" ] && [ "${CANDIDATE_COUNT:-0}" != "" ]; then
+    NOVELTY_RATE=$(python3 -c "
+added=${ADDED:-0}; cands=${CANDIDATE_COUNT:-1}
+rate = added / cands if cands > 0 else 0
+print(f'{rate:.2f}')
+" 2>/dev/null || echo "0")
+  fi
+
+  # Track consecutive low-yield runs
+  IS_LOW=$(python3 -c "print('1' if float('${NOVELTY_RATE}') < 0.10 else '0')" 2>/dev/null || echo "0")
+  if [ "$IS_LOW" = "1" ]; then
+    CONSECUTIVE_LOW_YIELD=$((CONSECUTIVE_LOW_YIELD + 1))
+  else
+    CONSECUTIVE_LOW_YIELD=0
+  fi
+
+  # Ping if saturating (5+ consecutive low-yield runs)
+  if [ "$CONSECUTIVE_LOW_YIELD" -ge 5 ]; then
+    log "⚠️  Saturation signal: ${CONSECUTIVE_LOW_YIELD} consecutive low-yield runs (novelty rate: ${NOVELTY_RATE})"
+    bash "$NOTIFY" "📉 Medicine loop saturation signal (run #${RUN})
+${CONSECUTIVE_LOW_YIELD} consecutive runs with <10% novelty rate
+Era: ${ERA%(*}
+Consider: new era/domain combo, pivot to a different seed list, or pause"
+    CONSECUTIVE_LOW_YIELD=0  # reset after pinging to avoid spam
+  fi
+
+  log "Run #${RUN} done. Added: ${ADDED:-0} | Candidates: ${CANDIDATE_COUNT:-0} | Novelty: ${NOVELTY_RATE} | Consecutive low: ${CONSECUTIVE_LOW_YIELD}"
+
+  # Write decision log
   mkdir -p "$PROJECT_DIR/logs"
   OPUS_RAW_ESC=$(echo "$OPUS_OUTPUT" | python3 -c "import sys,json; print(json.dumps(sys.stdin.read()))" 2>/dev/null || echo '""')
-  printf '{"run":%d,"ts":"%s","loop":"medicine","era":"%s","domain":"%s","added":%s,"titles":"%s","considered":"%s","opus_reasoning":"%s","opus_raw":%s}\n' \
+  printf '{"run":%d,"ts":"%s","loop":"medicine","era":"%s","domain":"%s","added":%s,"candidates":%s,"novelty_rate":"%s","titles":"%s","considered":"%s","opus_reasoning":"%s","review":"%s","opus_raw":%s}\n' \
     "$RUN" \
     "$RUN_TS" \
     "${ERA//\"/\\\"}" \
     "${DOMAIN//\"/\\\"}" \
     "${ADDED:-0}" \
+    "${CANDIDATE_COUNT:-0}" \
+    "$NOVELTY_RATE" \
     "${TITLES//\"/\\\"}" \
     "${CONSIDERED//\"/\\\"}" \
     "${OPUS_REASONING//\"/\\\"}" \
+    "${REVIEW_RESULT//\"/\\\"}" \
     "$OPUS_RAW_ESC" \
     >> "$DECISIONS_LOG"
+
+  # Write saturation log (every run, for analysis)
+  printf '{"run":%d,"ts":"%s","era":"%s","domain":"%s","added":%s,"candidates":%s,"novelty_rate":"%s","consecutive_low":%d}\n' \
+    "$RUN" "$RUN_TS" "${ERA%(*}" "${DOMAIN%(*}" \
+    "${ADDED:-0}" "${CANDIDATE_COUNT:-0}" "$NOVELTY_RATE" "$CONSECUTIVE_LOW_YIELD" \
+    >> "$SATURATION_LOG"
 
   if [ "${ADDED:-0}" != "0" ] && [ "${ADDED:-0}" != "" ]; then
     bash "$NOTIFY" "💊 Medicine curve +${ADDED} trajectories (run #${RUN})
