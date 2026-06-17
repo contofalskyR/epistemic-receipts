@@ -26488,6 +26488,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Alexei Leonov — first spacewalk ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:leonov-first-spacewalk-1965',
+    text: 'Soviet cosmonaut Alexei Leonov performed the first spacewalk (extravehicular activity) on March 18, 1965, leaving the Voskhod 2 capsule for about 12 minutes connected by a tether.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1965-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-03-18',
+        datePrecision: 'DAY',
+        reason: 'On 18 March 1965, Leonov exits the Voskhod 2 capsule through an inflatable airlock and floats in space for about 12 minutes, tethered to the craft. TASS announces the feat the same day and Soviet television broadcasts mounted-camera footage of the EVA, establishing the public record of the first human to walk in space.',
+        source: {
+          externalId: 'src:nssdca-voskhod-2',
+          name: 'NASA NSSDCA Master Catalog — Voskhod 2 (1965-022A), first EVA by Alexei Leonov, 18 March 1965.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1965-022A',
+          publishedAt: '1965-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-03-18',
+        datePrecision: 'DAY',
+        reason: 'The spacewalk is corroborated by the recovered Voskhod 2 mission data, the broadcast film, and Western tracking of the flight, and is recorded across spaceflight chronologies. The date and primacy of Leonov\'s EVA are not disputed.',
+        source: {
+          externalId: 'src:starchild-leonov-spacewalk',
+          name: 'NASA/GSFC StarChild — "Alexei Leonov\'s Spacewalk" (first EVA, Voskhod 2, 18 March 1965).',
+          url: 'https://starchild.gsfc.nasa.gov/docs/StarChild/space_level2/leonov_spacewalk.html',
+          publishedAt: '1965-03-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1965-03-19',
+        datePrecision: 'DAY',
+        reason: 'Details concealed at the time — Leonov\'s spacesuit ballooned in vacuum so that he could not re-enter the airlock and had to bleed off pressure, and the craft made a manual, off-target reentry into a Siberian forest — were later confirmed in his own accounts and in declassified mission histories, refining but not overturning the settled fact of the first spacewalk.',
+        source: {
+          externalId: 'src:leonov-spacewalk-record',
+          name: 'Alexei Leonov, first spacewalk, Voskhod 2, 18 March 1965 (duration ~12 min, 16 ft tether). Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Alexei_Leonov',
+          publishedAt: '1965-03-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Greensboro sit-ins ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:greensboro-sit-ins-1960',
+    text: 'On February 1, 1960, four Black college students sat down at the "whites only" F. W. Woolworth lunch counter in Greensboro, North Carolina, and refused to leave when denied service — launching the sit-in movement of the civil rights era.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1960-02-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1960-02-01',
+        datePrecision: 'DAY',
+        reason: 'Ezell Blair Jr., Franklin McCain, Joseph McNeil, and David Richmond — freshmen at North Carolina A&T — sit at the Woolworth lunch counter at 132 South Elm Street, are refused service, and remain seated until closing. Local press reports the protest, which expands over the following days as more students join.',
+        source: {
+          externalId: 'src:nps-greensboro-woolworth',
+          name: 'National Park Service — "North Carolina: F. W. Woolworth Building," Greensboro sit-in of 1 February 1960.',
+          url: 'https://www.nps.gov/places/north-carolina-fw-woolworth-building.htm',
+          publishedAt: '1960-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-07-25',
+        datePrecision: 'DAY',
+        reason: 'The sit-in grows into a months-long protest that spreads to dozens of cities; on 25 July 1960 the Greensboro Woolworth desegregates its lunch counter. The event, its date, and its catalytic role in the sit-in movement are documented in contemporaneous press, oral histories, and the preserved counter (now in the Smithsonian), and are not in dispute.',
+        source: {
+          externalId: 'src:si-greensboro-lunch-counter',
+          name: 'Smithsonian National Museum of American History — Greensboro Lunch Counter, 1960 (object record nmah_1425301).',
+          url: 'https://www.si.edu/object/greensboro-lunch-counter:nmah_1425301',
+          publishedAt: '1960-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tet Offensive ────────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:tet-offensive-1968',
+    text: 'On January 30–31, 1968, North Vietnamese and Viet Cong forces launched the Tet Offensive — coordinated surprise attacks on more than 100 cities and towns across South Vietnam, including an assault on the U.S. Embassy in Saigon.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1968-01-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1968-01-31',
+        datePrecision: 'DAY',
+        reason: 'Beginning in the early hours of 30–31 January 1968 (the Tet lunar new year truce), communist forces strike simultaneously across South Vietnam, including a sapper attack on the U.S. Embassy compound in Saigon. The fighting is reported worldwide in real time by wire services and television, including footage from inside Saigon.',
+        source: {
+          externalId: 'src:state-historian-tet',
+          name: 'U.S. Department of State, Office of the Historian — "Launching the Ground War: The Tet Offensive, 1968."',
+          url: 'https://history.state.gov/milestones/1961-1968/tet',
+          publishedAt: '1968-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Although the offensive was a military defeat for the attackers, vivid media coverage contradicted official claims that victory was near, weakening U.S. public and political support for the war. The scale, timing, and targets of the offensive are corroborated by U.S. and Vietnamese military records and the historical literature, and are settled fact.',
+        source: {
+          externalId: 'src:tet-offensive-record',
+          name: 'Tet Offensive, 30–31 January 1968 — coordinated attacks on ~100+ towns and cities and the U.S. Embassy, Saigon. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Tet_Offensive',
+          publishedAt: '1968-01-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── IBM Personal Computer introduced ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:ibm-pc-introduced-1981',
+    text: 'IBM introduced the IBM Personal Computer (model 5150) on August 12, 1981, establishing the open hardware architecture that became the dominant standard for personal computers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1981-08-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1981-08-12',
+        datePrecision: 'DAY',
+        reason: 'IBM announces the Personal Computer (model 5150) at a press event in New York on 12 August 1981, priced from about $1,565, built largely from off-the-shelf components and running Microsoft\'s PC DOS. The announcement and product documentation enter the public record the same day.',
+        source: {
+          externalId: 'src:ibm-pc-5150-record',
+          name: 'IBM Personal Computer (model 5150), released 12 August 1981. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/IBM_Personal_Computer',
+          publishedAt: '1981-08-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1982-01-01',
+        datePrecision: 'YEAR',
+        reason: 'IBM\'s publication of design details enabled compatible "clones" and a vast third-party hardware and software ecosystem; the PC-compatible architecture became the industry standard. The introduction date and its market significance are documented in contemporaneous press and computing histories and are not in dispute.',
+        source: {
+          externalId: 'src:computerhistory-ibm-pc',
+          name: 'Computer History Museum — "Revolution: The IBM PC" (IBM introduced its PC in 1981, legitimizing the market).',
+          url: 'https://www.computerhistory.org/revolution/personal-computers/17/301',
+          publishedAt: '1981-08-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Endangered Species Act signed ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:endangered-species-act-1973',
+    text: 'The Endangered Species Act, providing federal protection for threatened and endangered species and their habitats, was signed into law by President Richard Nixon on December 28, 1973.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1973-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-12-28',
+        datePrecision: 'DAY',
+        reason: 'After passing Congress with broad bipartisan majorities, the Endangered Species Act (Pub. L. 93-205, 16 U.S.C. 1531–1544) is signed into law on 28 December 1973, directing federal agencies to list threatened and endangered species and protect their critical habitats.',
+        source: {
+          externalId: 'src:fws-endangered-species-act',
+          name: 'U.S. Fish & Wildlife Service — Endangered Species Act (enacted 28 December 1973; 16 U.S.C. 1531–1544).',
+          url: 'https://www.fws.gov/law/endangered-species-act',
+          publishedAt: '1973-12-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1978-06-15',
+        datePrecision: 'DAY',
+        reason: 'In TVA v. Hill (15 June 1978) the U.S. Supreme Court held that the Act\'s protections are mandatory and halted the Tellico Dam to protect the snail darter, confirming the statute\'s force. The enactment date and the law\'s authority are settled in the legal and public record.',
+        source: {
+          externalId: 'src:tva-v-hill-1978',
+          name: 'Tennessee Valley Authority v. Hill, 437 U.S. 153 (1978), upholding the Endangered Species Act. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Tennessee_Valley_Authority_v._Hill',
+          publishedAt: '1978-06-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
