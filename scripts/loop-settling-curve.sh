@@ -76,4 +76,12 @@ Total was ${CURRENT_COUNT} claimIds"
 
   # Minimal error-recovery buffer; each claude call takes 5-20 min so this is noise
   sleep 5
+
+  # Rate limit: 35 runs per 5-hour window, then pause until the window resets
+  if [ $((RUN % 35)) -eq 0 ]; then
+    log "=== Rate limit reached (${RUN} runs). Sleeping 5 hours before next window. ==="
+    bash "$NOTIFY" "⏸️ Settling curve paused after run #${RUN} — rate limit (35/5h). Resuming in 5 hours."
+    sleep 18000
+    log "=== Resuming after 5-hour window ==="
+  fi
 done
