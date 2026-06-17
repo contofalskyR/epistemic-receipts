@@ -6257,6 +6257,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Second Council of Constantinople — condemnation of the Three Chapters (553) ─
+  {
+    externalId: 'trajectory:second-council-constantinople-553',
+    text: 'The Second Council of Constantinople, the Fifth Ecumenical Council, convened by Emperor Justinian I and held from 5 May to 2 June 553, condemned the "Three Chapters" — the person and writings of Theodore of Mopsuestia and certain texts of Theodoret of Cyrrhus and Ibas of Edessa — in an effort to reconcile non-Chalcedonian Christians to the imperial church.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0553-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0553-06-02',
+        datePrecision: 'DAY',
+        reason: 'Summoned by Justinian I and presided over by Eutychius, Patriarch of Constantinople, the council meets across eight sessions from 5 May to 2 June 553 and anathematizes the Three Chapters. Pope Vigilius, present in the city, refuses to attend and is struck from the diptychs at the seventh session; he reverses himself in December 553 and confirms the council\'s condemnation. The conciliar acts and Justinian\'s edict are recorded verbatim.',
+        source: {
+          externalId: 'src:acts-second-constantinople-553',
+          name: 'Acts of the Second Council of Constantinople (553), sessions and anathemas against the Three Chapters. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Constantinople',
+          publishedAt: '0553-06-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Latin and Greek conciliar records, Justinian\'s legislation, and the eventual assent of Pope Vigilius converge on the same facts. Modern scholarship treats the council of 5 May–2 June 553 as the securely dated Fifth Ecumenical Council, debating its theology and its effect on the Three Chapters schism in the West, not the event or its date.',
+        source: {
+          externalId: 'src:second-constantinople-scholarship',
+          name: 'Second Council of Constantinople (553). Encyclopædia Britannica / standard conciliar scholarship.',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Constantinople',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Third Council of Constantinople — Monothelitism condemned, Pope Honorius anathematized (680–681) ─
+  {
+    externalId: 'trajectory:third-council-constantinople-681',
+    text: 'The Third Council of Constantinople, the Sixth Ecumenical Council, convened by Emperor Constantine IV from 7 November 680 to 16 September 681, condemned Monothelitism and Monoenergism — defining that Christ possesses two wills and two energies — and posthumously anathematized Pope Honorius I for having supported the heresy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0680-11-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0681-09-16',
+        datePrecision: 'DAY',
+        reason: 'Across eighteen sessions from 7 November 680 to 16 September 681, with Constantine IV presiding over the opening and closing sittings, the bishops define two natural wills and two natural energies in Christ, condemning the doctrine of a single will. Among those anathematized as supporters of the heresy is Pope Honorius I, dead since 638 — a sitting pope condemned by an ecumenical council. The acts are recorded verbatim.',
+        source: {
+          externalId: 'src:acts-third-constantinople-681',
+          name: 'Acts of the Third Council of Constantinople (680–681), Definition of Faith and anathemas, including the condemnation of Pope Honorius I. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Third_Council_of_Constantinople',
+          publishedAt: '0681-09-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The council\'s acts, the confirming letters of Pope Leo II (who ratified the condemnation of his predecessor Honorius), and the reception of the canons across the Chalcedonian churches agree on the dates and decisions. Modern scholarship treats the Sixth Ecumenical Council of 680–681 and its condemnation of Honorius as securely established facts, contested only in their later theological interpretation.',
+        source: {
+          externalId: 'src:third-constantinople-scholarship',
+          name: 'Third Council of Constantinople (680–681). Encyclopædia Britannica / standard conciliar scholarship.',
+          url: 'https://en.wikipedia.org/wiki/Third_Council_of_Constantinople',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Siege of Constantinople (717–718) — the Umayyad assault broken ────────────
+  {
+    externalId: 'trajectory:siege-constantinople-718',
+    text: 'The year-long Umayyad Arab siege of Constantinople under Maslama ibn Abd al-Malik, begun in summer 717, was broken on 15 August 718 when Emperor Leo III — aided by Greek fire, a brutal winter, Bulgar attacks, and the destruction of the Arab fleet — forced the besiegers to withdraw, halting the Caliphate\'s drive to take the Byzantine capital.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0718-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0718-08-15',
+        datePrecision: 'DAY',
+        reason: 'After roughly thirteen months investing the city by land and sea, the Umayyad army and fleet are decimated by Greek fire, famine, an exceptionally harsh winter, and Bulgar attacks on their camps. The siege is lifted on 15 August 718. The Byzantine chronicler Theophanes the Confessor, drawing on near-contemporary records, gives a detailed account of the destruction of the Arab fleet and the besiegers\' withdrawal.',
+        source: {
+          externalId: 'src:theophanes-siege-718',
+          name: 'Theophanes the Confessor. Chronographia, account of the Arab siege of Constantinople and its failure in 718. (early 9th century, drawing on contemporary sources)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Constantinople_(717%E2%80%93718)',
+          publishedAt: '0815-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Byzantine (Theophanes, Nikephoros), Arabic, and Syriac sources independently report the failure of the great siege of 717–718 and the destruction of the Umayyad fleet. Modern scholarship treats the lifting of the siege on 15 August 718 as a securely dated turning point that stabilized the Byzantine–Arab frontier along the Taurus for over two centuries.',
+        source: {
+          externalId: 'src:siege-718-scholarship',
+          name: 'Siege of Constantinople (717–718). Standard Byzantine scholarship (Treadgold; Lilie).',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Constantinople_(717%E2%80%93718)',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Unam Sanctam — papal supremacy declared, then undone in practice (1302) ───
+  {
+    externalId: 'trajectory:unam-sanctam-1302',
+    text: 'In the bull Unam Sanctam, issued 18 November 1302, Pope Boniface VIII declared that it is "altogether necessary for salvation that every human creature be subject to the Roman Pontiff" — the most extreme assertion of papal authority over temporal rulers, a claim that collapsed within months as the French crown moved against him.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1302-11-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1302-11-18',
+        datePrecision: 'DAY',
+        reason: 'In the midst of his conflict with King Philip IV of France over royal taxation of the clergy, Boniface VIII promulgates Unam Sanctam, using the "two swords" image to subordinate temporal power to the spiritual and to make submission to the pope a condition of salvation. The bull is entered into the papal register, fixing the date and text.',
+        source: {
+          externalId: 'src:unam-sanctam-bull-1302',
+          name: 'Pope Boniface VIII. Unam Sanctam (papal bull asserting papal supremacy), 18 November 1302. (contemporaneous papal register)',
+          url: 'https://en.wikipedia.org/wiki/Unam_sanctam',
+          publishedAt: '1302-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1303-09-07',
+        datePrecision: 'DAY',
+        reason: 'The bull\'s claim of temporal supremacy is rejected in practice almost immediately. Agents of Philip IV seize Boniface at Anagni on 7 September 1303; he dies weeks later. Within a few years the papacy relocates to Avignon under effective French control, and Boniface\'s successors retreat from his assertions. Unam Sanctam is never enforced as the constitutional order it proclaimed.',
+        source: {
+          externalId: 'src:anagni-outrage-1303',
+          name: 'The "Outrage of Anagni" — seizure of Boniface VIII by agents of Philip IV, 7 September 1303 (contemporary chronicles).',
+          url: 'https://en.wikipedia.org/wiki/Unam_sanctam',
+          publishedAt: '1303-09-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians treat Unam Sanctam as the high-water mark of medieval papal claims to temporal supremacy and as a document that failed politically — its text securely dated to 18 November 1302, its practical repudiation in the Anagni affair and the ensuing Avignon papacy equally well established. The fact of its issuance and the fact of its failure are both uncontested.',
+        source: {
+          externalId: 'src:unam-sanctam-scholarship',
+          name: 'Unam Sanctam (1302) and the Boniface VIII–Philip IV conflict. Standard medieval scholarship.',
+          url: 'https://en.wikipedia.org/wiki/Unam_sanctam',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Paris medical faculty plague report — astrological etiology recorded, then abandoned (1348) ─
+  {
+    externalId: 'trajectory:paris-plague-report-1348',
+    text: 'In a report commissioned by King Philip VI and issued in October 1348, the medical faculty of the University of Paris attributed the Black Death to a corruption of the air caused by a triple conjunction of Saturn, Jupiter and Mars in Aquarius that, they held, had occurred at one hour after noon on 20 March 1345.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1348-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1348-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Asked by Philip VI to explain the catastrophe, the assembled masters of the Paris medical faculty produce a consilium tracing the pestilence to a poisoning of the air, in turn caused by a major planetary conjunction of Saturn, Jupiter and Mars in the hot, wet sign of Aquarius dated to 20 March 1345. The conjunction-and-corrupted-air explanation becomes the authoritative learned account of the plague across Latin Christendom.',
+        source: {
+          externalId: 'src:paris-consilium-1348',
+          name: 'Report of the Paris Medical Faculty, October 1348 (Compendium de epidemia), commissioned by Philip VI. Trans. Carlin, University of Wisconsin–Milwaukee.',
+          url: 'https://en.wikipedia.org/wiki/The_Paris_Concilium',
+          publishedAt: '1348-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-06-20',
+        datePrecision: 'DAY',
+        reason: 'The astrological-miasmatic etiology is superseded by germ theory. Alexandre Yersin isolates the plague bacillus (Yersinia pestis) at Hong Kong in June 1894, and later work identifies the rat flea as vector. The conjunction-and-corrupted-air explanation of the Paris faculty is wholly abandoned as the cause of plague, surviving only as a document in the history of medicine.',
+        source: {
+          externalId: 'src:yersin-plague-bacillus-1894',
+          name: 'Yersin A. La peste bubonique à Hong-Kong. Annales de l\'Institut Pasteur 1894;8:662–667.',
+          url: 'https://en.wikipedia.org/wiki/Yersinia_pestis',
+          publishedAt: '1894-06-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Disputation of Paris — the Talmud put on trial and condemned ─────────────
   {
     externalId: 'trajectory:disputation-paris-talmud-1240',
