@@ -42270,6 +42270,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eunice Foote — first observation of the greenhouse effect of CO2 ─────────
+  {
+    externalId: 'trajectory:eunice-foote-greenhouse-1856',
+    text: 'Eunice Newton Foote demonstrated that air containing carbonic acid gas (carbon dioxide) heats more under sunlight than ordinary air, and inferred that a higher proportion of such gas would give the atmosphere a higher temperature — the first known observation of the greenhouse effect.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1856-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1856-08-23',
+        datePrecision: 'DAY',
+        reason: 'Foote\'s paper "Circumstances Affecting the Heat of the Sun\'s Rays" is read before the American Association for the Advancement of Science in Albany on 23 August 1856 (presented by Joseph Henry of the Smithsonian, as women did not address the meeting). She reports the highest heating in a cylinder of carbonic acid gas and writes that an atmosphere of that gas would give our earth a high temperature. Published in the American Journal of Science and Arts, Vol. 22, November 1856.',
+        source: {
+          externalId: 'src:foote-heat-suns-rays-1856',
+          name: 'Foote E. "Circumstances Affecting the Heat of the Sun\'s Rays." American Journal of Science and Arts, 2nd ser., 22(66): 382–383 (Nov. 1856). Read before the AAAS, 23 Aug. 1856.',
+          url: 'https://archive.org/details/sim_american-journal-of-science_1856-11_22_66',
+          publishedAt: '1856-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Foote\'s long-overlooked paper is rediscovered (Raymond Sorenson, 2011) and recognized as predating John Tyndall\'s 1859 absorption experiments. The underlying physics — that CO2 and water vapour warm the atmosphere by absorbing radiant heat — is now settled science, confirming the substance of her 1856 observation.',
+        source: {
+          externalId: 'src:foote-rediscovery-wikipedia',
+          name: 'Eunice Newton Foote — rediscovery and priority for the greenhouse effect (encyclopedic synthesis of Sorenson 2011 and subsequent literature).',
+          url: 'https://en.wikipedia.org/wiki/Eunice_Newton_Foote',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ada Lovelace — first published algorithm for a computing machine ─────────
+  {
+    externalId: 'trajectory:lovelace-first-algorithm-1843',
+    text: 'Ada Lovelace published, in her 1843 notes to the translation of Menabrea\'s account of Babbage\'s Analytical Engine, a step-by-step method (Note G) for the engine to compute the Bernoulli numbers — recognized as the first algorithm intended to be carried out by a machine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1843-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1843-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Lovelace\'s translation of L. F. Menabrea\'s "Sketch of the Analytical Engine," with her seven appended Notes A–G signed "A.A.L.," is published in Taylor\'s Scientific Memoirs, Vol. III (1843). Note G sets out a detailed sequence of operations for computing the Bernoulli numbers on the Analytical Engine.',
+        source: {
+          externalId: 'src:lovelace-menabrea-notes-1843',
+          name: 'Menabrea L.F., trans. & notes by A.A.L. (Ada Lovelace). "Sketch of the Analytical Engine," Taylor\'s Scientific Memoirs, Vol. III (1843), Note G.',
+          url: 'https://www.fourmilab.ch/babbage/sketch.html',
+          publishedAt: '1843-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Note G is widely recognized in the history of computing as the first published algorithm specifically tailored for implementation on a machine; the U.S. Department of Defense names the Ada programming language in her honour (1980), reflecting settled scholarly recognition of her priority.',
+        source: {
+          externalId: 'src:lovelace-note-g-wikipedia',
+          name: 'Note G (Ada Lovelace\'s Bernoulli-number algorithm) — encyclopedic synthesis of its recognition as the first computer algorithm.',
+          url: 'https://en.wikipedia.org/wiki/Note_G',
+          publishedAt: '1980-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Muybridge — "The Horse in Motion" settles the unsupported-transit question
+  {
+    externalId: 'trajectory:muybridge-horse-in-motion-1878',
+    text: 'Eadweard Muybridge\'s instantaneous photographs of a horse at Palo Alto in June 1878 settled the long-disputed question of whether a galloping horse ever has all four hooves off the ground simultaneously: it does, when the hooves are gathered beneath the body.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1878-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1878-06-15',
+        datePrecision: 'DAY',
+        reason: 'Commissioned by Leland Stanford, Muybridge arrays multiple cameras with trip-wire shutters along a track at Palo Alto and on 15 June 1878 photographs the horse "Abe Edgington" (and days later "Sallie Gardner"). The frames show all four feet simultaneously clear of the ground, contradicting the conventional artistic "rocking-horse" depiction of the gallop.',
+        source: {
+          externalId: 'src:muybridge-horse-in-motion-1878',
+          name: 'Muybridge E. "The Horse in Motion" — automatic electro-photographic series, Palo Alto, June 1878 (Leland Stanford).',
+          url: 'https://en.wikipedia.org/wiki/The_Horse_in_Motion',
+          publishedAt: '1878-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1878-10-19',
+        datePrecision: 'DAY',
+        reason: 'Scientific American reproduces Muybridge\'s photographs as engravings on its cover and invites readers to animate them in a zoetrope, disseminating the result to a wide audience and cementing public and expert acceptance that the unsupported transit is real.',
+        source: {
+          externalId: 'src:scientific-american-horse-1878',
+          name: 'Scientific American, Vol. 39, No. 16 (19 Oct. 1878) — "The Horse in Motion," engravings after Muybridge\'s photographs.',
+          url: 'https://en.wikipedia.org/wiki/The_Horse_in_Motion',
+          publishedAt: '1878-10-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Arrhenius — first quantitative calculation of CO2 climate sensitivity ────
+  {
+    externalId: 'trajectory:arrhenius-carbonic-acid-climate-1896',
+    text: 'Svante Arrhenius published in 1896 the first quantitative calculation of how changes in atmospheric carbonic acid (carbon dioxide) would change the temperature of the Earth\'s surface, estimating that a doubling of CO2 would raise mean temperature by several degrees Celsius.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Arrhenius\'s paper "On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground" appears in the London, Edinburgh and Dublin Philosophical Magazine, 5th ser., Vol. 41 (April 1896), pp. 237–276 — the first numerical model linking atmospheric CO2 concentration to global surface temperature.',
+        source: {
+          externalId: 'src:arrhenius-carbonic-acid-1896',
+          name: 'Arrhenius S. "On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground." Philosophical Magazine, 5th ser., 41(251): 237–276 (Apr. 1896).',
+          url: 'https://archive.org/details/londonedinburgh5411896lon',
+          publishedAt: '1896-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The basic mechanism Arrhenius identified — that rising atmospheric CO2 warms the surface — is confirmed and quantified across the 20th century and ratified by the IPCC First Assessment Report (1990) and successors, which place modern climate-sensitivity estimates in the same several-degrees-per-doubling range he first calculated.',
+        source: {
+          externalId: 'src:arrhenius-ipcc-confirmation',
+          name: 'Arrhenius\'s greenhouse hypothesis confirmed — IPCC First Assessment Report (1990) and subsequent climate-sensitivity literature (encyclopedic synthesis).',
+          url: 'https://en.wikipedia.org/wiki/Svante_Arrhenius',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
