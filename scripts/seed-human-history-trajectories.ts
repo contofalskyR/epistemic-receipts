@@ -34059,6 +34059,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA — supplementary (germ theory, imperialism, abolition)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── John Snow traces cholera to the Broad Street pump ───────────────────────
+  {
+    externalId: 'trajectory:snow-broad-street-cholera-1854',
+    text: 'John Snow traced the 1854 Soho cholera outbreak to the Broad Street water pump, evidence that cholera spreads through contaminated water rather than miasmatic air; the pump handle was removed on September 8, 1854.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1854-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1854-09-08',
+        datePrecision: 'DAY',
+        reason: 'After a major cholera outbreak begins in Soho on 31 August 1854, Snow plots deaths on a map and identifies a cluster around the public water pump on Broad Street. He persuades the St James parish Board of Guardians, and the pump handle is removed on 8 September 1854. The investigation becomes the founding case study of epidemiology.',
+        source: {
+          externalId: 'src:snow-broad-street-1854',
+          name: 'John Snow and the 1854 Broad Street cholera outbreak — pump handle removed 8 September 1854.',
+          url: 'https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak',
+          publishedAt: '1854-09-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1855-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Snow publishes the expanded second edition of On the Mode of Communication of Cholera in 1855, but the dominant miasma theory prevails. The General Board of Health\'s Committee for Scientific Inquiry rejects his waterborne explanation, and he does not identify the contaminating agent. His thesis remains contested for decades.',
+        source: {
+          externalId: 'src:cholera-waterborne-contested-1855',
+          name: 'Reception of Snow\'s waterborne theory amid the prevailing miasma model.',
+          url: 'https://en.wikipedia.org/wiki/Cholera_outbreaks_and_pandemics',
+          publishedAt: '1855-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1884-01-07',
+        datePrecision: 'DAY',
+        reason: 'Robert Koch isolates the bacterium Vibrio cholerae in pure culture on 7 January 1884, identifying the waterborne agent Snow could only infer. The bacterial etiology confirms Snow\'s transmission mechanism and settles the waterborne theory of cholera. (Filippo Pacini had observed the organism in 1854, but his finding went unrecognized.)',
+        source: {
+          externalId: 'src:koch-vibrio-cholerae-settles-snow',
+          name: 'Robert Koch\'s 1884 isolation of Vibrio cholerae confirming the waterborne cause of cholera.',
+          url: 'https://en.wikipedia.org/wiki/Robert_Koch',
+          publishedAt: '1884-01-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Robert Koch isolates the cholera bacterium Vibrio cholerae ──────────────
+  {
+    externalId: 'trajectory:koch-cholera-vibrio-1884',
+    text: 'Robert Koch isolated the bacterium Vibrio cholerae in pure culture on January 7, 1884, identifying it as the causative agent of cholera.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1884-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1884-01-07',
+        datePrecision: 'DAY',
+        reason: 'Leading a German cholera commission investigating epidemics in Egypt and India, Koch isolates the comma-shaped bacterium in pure culture on 7 January 1884 in Calcutta. He reports the discovery to the German Secretary of State for the Interior on 2 February 1884 and publishes it in the Deutsche Medizinische Wochenschrift.',
+        source: {
+          externalId: 'src:koch-cholera-isolation-1884',
+          name: 'Robert Koch isolates Vibrio cholerae in pure culture, Calcutta, 7 January 1884.',
+          url: 'https://en.wikipedia.org/wiki/Robert_Koch',
+          publishedAt: '1884-01-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1884-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Koch presents his findings at the Berlin Cholera Conference in 1884, where they are widely accepted by the medical community. Combined with John Snow\'s earlier epidemiology, the identification establishes the waterborne bacterial etiology of cholera as settled science underpinning modern sanitation.',
+        source: {
+          externalId: 'src:cholera-etiology-settled-1884',
+          name: 'Acceptance of Koch\'s identification of Vibrio cholerae as the cause of cholera.',
+          url: 'https://en.wikipedia.org/wiki/Cholera_outbreaks_and_pandemics',
+          publishedAt: '1884-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Nanking ends the First Opium War ──────────────────────────────
+  {
+    externalId: 'trajectory:treaty-of-nanking-1842',
+    text: 'The Treaty of Nanking, signed August 29, 1842, ended the First Opium War, ceding Hong Kong Island to Britain and opening five Chinese ports to foreign trade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1842-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1842-08-29',
+        datePrecision: 'DAY',
+        reason: 'British and Qing representatives sign the treaty aboard HMS Cornwallis at Nanjing on 29 August 1842. China cedes Hong Kong Island "in perpetuity," opens Canton, Xiamen, Fuzhou, Ningbo, and Shanghai to foreign trade, and agrees to a 21-million-silver-dollar indemnity, ending the First Opium War.',
+        source: {
+          externalId: 'src:treaty-of-nanking-signed-1842',
+          name: 'Treaty of Nanking, signed aboard HMS Cornwallis, 29 August 1842.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nanking',
+          publishedAt: '1842-08-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1843-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ratifications are exchanged in 1843 and the supplementary Treaty of the Bogue follows, establishing the treaty-port system and consular rights. Hong Kong becomes a British Crown Colony. The cession holds for over a century, ending only with the 1997 handover — the first of the "unequal treaties" and an uncontested historical fact.',
+        source: {
+          externalId: 'src:treaty-of-nanking-aftermath',
+          name: 'Ratification and aftermath of the Treaty of Nanking; founding of British Hong Kong.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nanking',
+          publishedAt: '1843-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Indian Rebellion of 1857 begins at Meerut ───────────────────────────────
+  {
+    externalId: 'trajectory:indian-rebellion-1857',
+    text: 'The Indian Rebellion of 1857 broke out on May 10, 1857, when sepoys of the Bengal Army mutinied at Meerut, igniting a widespread uprising against British East India Company rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1857-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1857-05-10',
+        datePrecision: 'DAY',
+        reason: 'On 10 May 1857, sepoys of the 3rd Bengal Light Cavalry mutiny at the Meerut cantonment, releasing imprisoned comrades and killing British officers. They march on Delhi the next day and proclaim the Mughal emperor Bahadur Shah Zafar as their figurehead, spreading the revolt across north and central India.',
+        source: {
+          externalId: 'src:indian-rebellion-meerut-1857',
+          name: 'Outbreak of the Indian Rebellion of 1857 at Meerut, 10 May 1857.',
+          url: 'https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857',
+          publishedAt: '1857-05-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1858-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The rebellion is suppressed by 1858. The Government of India Act 1858 abolishes the East India Company and transfers governance of India directly to the British Crown, and Queen Victoria\'s Proclamation of 1 November 1858 inaugurates the British Raj. The event, its trigger, and its institutional consequences are uncontested.',
+        source: {
+          externalId: 'src:government-of-india-act-1858',
+          name: 'Suppression of the 1857 rebellion and transfer of rule to the Crown (Government of India Act 1858).',
+          url: 'https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857',
+          publishedAt: '1858-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Juneteenth — General Order No. 3 read in Galveston ──────────────────────
+  {
+    externalId: 'trajectory:juneteenth-general-order-1865',
+    text: 'Major General Gordon Granger issued General Order No. 3 in Galveston, Texas on June 19, 1865, announcing that all enslaved people in Texas were free — the event commemorated as Juneteenth.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1865-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1865-06-19',
+        datePrecision: 'DAY',
+        reason: 'On 19 June 1865, Major General Gordon Granger issues General Order No. 3 in Galveston, informing the people of Texas that "in accordance with a proclamation from the Executive of the United States, all slaves are free." The order enforces the Emancipation Proclamation in the last Confederate state with widespread institutional slavery.',
+        source: {
+          externalId: 'src:juneteenth-general-order-no-3',
+          name: 'General Order No. 3, issued by Gen. Gordon Granger, Galveston, Texas, 19 June 1865 (National Archives).',
+          url: 'https://www.archives.gov/news/articles/juneteenth-original-document',
+          publishedAt: '1865-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1865-12-06',
+        datePrecision: 'DAY',
+        reason: 'The Thirteenth Amendment to the United States Constitution is ratified on 6 December 1865, abolishing slavery permanently and universally throughout the nation. Constitutional ratification settles in law what Juneteenth proclaimed in Texas, giving abolition permanent legal force.',
+        source: {
+          externalId: 'src:13th-amendment-ratification-1865',
+          name: 'Thirteenth Amendment to the United States Constitution. Ratified December 6, 1865.',
+          url: 'https://www.archives.gov/milestone-documents/13th-amendment',
+          publishedAt: '1865-12-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
