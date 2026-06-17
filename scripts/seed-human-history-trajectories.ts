@@ -24950,6 +24950,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Watson & Crick publish the structure of DNA ─────────────────────────────
+  {
+    externalId: 'trajectory:dna-double-helix-1953',
+    text: 'In a paper published in Nature on 25 April 1953, James Watson and Francis Crick described deoxyribonucleic acid (DNA) as a double helix of two antiparallel sugar-phosphate chains held together by specific base pairs (adenine–thymine, guanine–cytosine).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-04-25',
+        datePrecision: 'DAY',
+        reason: 'Watson and Crick\'s one-page note "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid" appeared in Nature, proposing the antiparallel double-helix model and noting that the specific base pairing "immediately suggests a possible copying mechanism for the genetic material." It was published alongside companion X-ray diffraction papers by Wilkins and by Franklin and Gosling.',
+        source: {
+          externalId: 'src:watson-crick-nature-1953',
+          name: 'Watson JD, Crick FHC. Molecular structure of nucleic acids; a structure for deoxyribose nucleic acid. Nature 1953 Apr 25;171(4356):737–738.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13054692/',
+          publishedAt: '1953-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-07-15',
+        datePrecision: 'DAY',
+        reason: 'The Meselson–Stahl experiment, published in 1958, demonstrated that DNA replicates semi-conservatively as the double-helix model predicted, converting the proposed structure into the accepted foundation of molecular genetics. Watson, Crick, and Wilkins received the 1962 Nobel Prize in Physiology or Medicine for the discovery, which is now settled and underpins the entire field.',
+        source: {
+          externalId: 'src:meselson-stahl-1958',
+          name: 'Meselson M, Stahl FW. The replication of DNA in Escherichia coli. Proc Natl Acad Sci USA 1958;44(7):671–682.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16590258/',
+          publishedAt: '1958-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Brown v. Board of Education overturns "separate but equal" ──────────────
+  {
+    externalId: 'trajectory:brown-v-board-1954',
+    text: 'On 17 May 1954, the U.S. Supreme Court ruled unanimously in Brown v. Board of Education of Topeka that racial segregation of public schools is unconstitutional, holding that "separate educational facilities are inherently unequal" and rejecting the "separate but equal" doctrine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1954-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1954-05-17',
+        datePrecision: 'DAY',
+        reason: 'Chief Justice Earl Warren delivered the unanimous opinion of the Court (347 U.S. 483) holding that segregation in public education violates the Equal Protection Clause of the Fourteenth Amendment. The ruling marked the end of the "separate but equal" precedent established in Plessy v. Ferguson (1896) as applied to public schools.',
+        source: {
+          externalId: 'src:brown-v-board-archives',
+          name: 'National Archives. Brown v. Board of Education (1954) — Milestone Documents.',
+          url: 'https://www.archives.gov/milestone-documents/brown-v-board-of-education',
+          publishedAt: '1954-05-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1955-05-31',
+        datePrecision: 'DAY',
+        reason: 'In Brown II (349 U.S. 294, decided 31 May 1955) the Court ordered desegregation to proceed "with all deliberate speed," and subsequent decisions and federal enforcement extended the principle. That public-school segregation is unconstitutional, and that Plessy\'s "separate but equal" doctrine no longer governs, is settled constitutional law.',
+        source: {
+          externalId: 'src:brown-ii-1955',
+          name: 'Brown v. Board of Education of Topeka (Brown II), 349 U.S. 294 (1955).',
+          url: 'https://www.archives.gov/milestone-documents/brown-v-board-of-education',
+          publishedAt: '1955-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sputnik 1 — first artificial Earth satellite ────────────────────────────
+  {
+    externalId: 'trajectory:sputnik-1-1957',
+    text: 'On 4 October 1957, the Soviet Union launched Sputnik 1, the first artificial satellite to orbit the Earth, opening the Space Age.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-10-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1957-10-04',
+        datePrecision: 'DAY',
+        reason: 'Sputnik 1, a 184-pound sphere carrying a radio transmitter, was launched from the site now known as the Baikonur Cosmodrome in Soviet Kazakhstan and entered an elliptical orbit, circling the Earth roughly every 90 minutes. Its "beep-beep" signal was monitored by radio operators around the world, providing immediate, independent confirmation of the launch.',
+        source: {
+          externalId: 'src:nasa-sputnik-1957',
+          name: 'NASA History. 65 Years Ago: Sputnik Ushers in the Space Age.',
+          url: 'https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/',
+          publishedAt: '1957-10-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-07-29',
+        datePrecision: 'DAY',
+        reason: 'The launch precipitated the "Sputnik crisis" in the United States, the founding of NASA (signed into law 29 July 1958), and the U.S.–Soviet space race. The orbital parameters, the satellite\'s reentry on 4 January 1958, and the launch date itself are documented in catalogs of both spacefaring nations and are uncontested.',
+        source: {
+          externalId: 'src:nasa-act-1958',
+          name: 'National Aeronautics and Space Act of 1958; NASA NSSDCA Sputnik 1 (1957-001B) catalog entry.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1957-001B',
+          publishedAt: '1958-07-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First message transmitted over the ARPANET ──────────────────────────────
+  {
+    externalId: 'trajectory:arpanet-first-message-1969',
+    text: 'On 29 October 1969, the first message was transmitted over the ARPANET, from a computer at UCLA to one at the Stanford Research Institute (SRI) — the first host-to-host communication on the network that became the Internet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-10-29',
+        datePrecision: 'DAY',
+        reason: 'At 22:30 on 29 October 1969, under Leonard Kleinrock\'s supervision, UCLA student Charley Kline attempted to log in to the SRI host by typing "LOGIN"; the system crashed after transmitting the letters "L" and "O," making "lo" the first message on the network. The attempt and crash were recorded contemporaneously in UCLA\'s IMP (Interface Message Processor) log.',
+        source: {
+          externalId: 'src:ucla-arpanet-first-words-1969',
+          name: 'Kleinrock L. "The first message transmission" — UCLA IMP Log entry of 29 October 1969 (scanned log and account).',
+          url: 'https://www.lk.cs.ucla.edu/internet_first_words.html',
+          publishedAt: '1969-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-12-05',
+        datePrecision: 'DAY',
+        reason: 'By 5 December 1969 the initial four-node ARPANET (UCLA, SRI, UC Santa Barbara, University of Utah) was operational, documented in the Request for Comments series and subsequent network histories. That the first host-to-host message was sent from UCLA to SRI on 29 October 1969 is settled in the historical record of the Internet\'s origins.',
+        source: {
+          externalId: 'src:arpanet-four-node-1969',
+          name: 'Internet Society. Brief History of the Internet (Leiner et al.); ARPANET four-node network completed December 1969.',
+          url: 'https://www.internetsociety.org/internet/history-internet/brief-history-internet/',
+          publishedAt: '1969-12-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gulf of Tonkin: the 4 August 1964 "second attack" reversed ──────────────
+  {
+    externalId: 'trajectory:gulf-of-tonkin-second-attack-1964',
+    text: 'The reported North Vietnamese torpedo-boat attack on U.S. destroyers in the Gulf of Tonkin on 4 August 1964 — used to justify the Gulf of Tonkin Resolution and U.S. escalation in Vietnam — did not actually occur.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-08-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 August 1964 the U.S. destroyers Maddox and Turner Joy reported a second North Vietnamese attack in the Gulf of Tonkin (following a real engagement on 2 August). President Johnson announced retaliatory airstrikes, and on 7 August Congress passed the Gulf of Tonkin Resolution authorizing expanded military action. The attack was recorded as fact in official statements and the press.',
+        source: {
+          externalId: 'src:tonkin-resolution-1964',
+          name: 'Gulf of Tonkin Resolution (Public Law 88-408), 7 August 1964; contemporaneous Johnson administration statements on the 4 August incident.',
+          url: 'https://www.archives.gov/milestone-documents/tonkin-gulf-resolution',
+          publishedAt: '1964-08-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1971-06-13',
+        datePrecision: 'DAY',
+        reason: 'Publication of the Pentagon Papers beginning 13 June 1971, together with congressional and journalistic scrutiny, cast serious doubt on whether the 4 August attack had occurred and revealed that the administration had prepared for escalation in advance. The reality of the second attack became openly contested.',
+        source: {
+          externalId: 'src:pentagon-papers-1971',
+          name: 'The Pentagon Papers (United States–Vietnam Relations, 1945–1967), released to the press June 1971; National Archives.',
+          url: 'https://www.archives.gov/research/pentagon-papers',
+          publishedAt: '1971-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-11-30',
+        datePrecision: 'DAY',
+        reason: 'Declassified National Security Agency signals-intelligence studies (notably Robert Hanyok\'s analysis, released in 2005) concluded that no North Vietnamese attack took place on 4 August 1964 and that the intercepts cited at the time actually described the 2 August clash — that analysts had made the SIGINT "fit the claim." It is now settled that the 4 August attack did not happen.',
+        source: {
+          externalId: 'src:nsa-tonkin-hanyok-2005',
+          name: 'National Security Archive. Tonkin Gulf Intelligence "Skewed" (NSAEBB132): declassified NSA signals-intelligence analysis, released 30 November 2005.',
+          url: 'https://nsarchive2.gwu.edu/NSAEBB/NSAEBB132/',
+          publishedAt: '2005-11-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────

@@ -307,6 +307,16 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-17 03:52 EDT — Split-panel UI rebuild for /settling-curve — sidebar with search/filter/era groups, right panel chart-first, mobile drawer
+- **Commit:** settling-curve: split-panel UI with sidebar search + status/era filters
+- **Files changed:**
+  - CONSULTANT.md
+  - app/HomepageSections.tsx
+  - app/layout.tsx
+  - app/settling-curve/SettlingCurve.tsx
+- **Diff stat:**  4 files changed, 25 insertions(+), 5 deletions(-)
+
+
 ### 2026-06-17 — /settling-curve split-panel UI
 - **Layout rewrite** (`app/settling-curve/SettlingCurve.tsx`): the page is now a two-column browser. Left rail (~35%, max 380px, sticky top:48 below the global nav) hosts the trajectory list with a search box, Settled/Reversed/Contested status chips, and an Era chip row (Ancient/Medieval/Early Modern/Industrial/WWI–WWII/Cold War/Modern). List items are grouped by era with section count, render a colored axis dot (red for reversal, green SETTLED, amber CONTESTED, grey ABANDONED), the truncated claim, a `↻ N` transition badge, and the year span. Selected item highlights with a gold left border. Right panel pins the gold `AGENTIC LOOP` audit banner above a chart header (title + transition count/year-span/era + gold-bordered Key Interval card top-right), then the existing SVG chart (preserved verbatim — lanes, decade ticks, key-interval brace, selected-marker ring) and the receipt card.
 - **Mobile (<768px)**: sidebar hidden, a fixed bottom button `Browse Trajectories (N)` opens an 80vh slide-up drawer with a close button. Drawer reflects the live filter count.
