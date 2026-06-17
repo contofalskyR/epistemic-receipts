@@ -24507,6 +24507,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, New World, Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First Battle of Panipat — foundation of the Mughal Empire ───────────────
+  {
+    externalId: 'trajectory:first-battle-panipat-1526',
+    text: 'At the First Battle of Panipat on 21 April 1526, Babur defeated and killed Ibrahim Lodi, Sultan of Delhi, founding the Mughal Empire in India.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1526-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1526-04-21',
+        datePrecision: 'DAY',
+        reason: 'Babur, deploying field artillery and matchlock muskets behind a fortified line of carts (the tulughma and araba tactics), routed the far larger army of Ibrahim Lodi, who was killed on the field. Babur recorded the battle in his own memoirs within days, dating it precisely and describing the deployment of cannon as decisive in one of the earliest large-scale uses of gunpowder arms in the Indian subcontinent.',
+        source: {
+          externalId: 'src:baburnama-panipat',
+          name: 'Babur. Baburnama (Vaqi\'at-i Baburi), account of the Battle of Panipat. (contemporary memoir, c. 1526–1530, Chagatai Turkic)',
+          url: 'https://en.wikipedia.org/wiki/First_Battle_of_Panipat',
+          publishedAt: '1530-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Babur\'s first-person account, corroborated by later Mughal court histories (Abu\'l-Fazl\'s Akbarnama) and Persian chronicles, fixes the date, location near Panipat, and outcome. Modern scholarship treats the date (21 April 1526) and the founding of Mughal rule in northern India as settled, with the battle marking the start of the dynasty that ruled most of the subcontinent until the 18th century.',
+        source: {
+          externalId: 'src:panipat-1526-scholarly-synthesis',
+          name: 'First Battle of Panipat — scholarly synthesis of the Baburnama and Mughal chronicle accounts, dating to 21 April 1526.',
+          url: 'https://en.wikipedia.org/wiki/First_Battle_of_Panipat',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Trent opens — the Counter-Reformation ────────────────────────
+  {
+    externalId: 'trajectory:council-of-trent-opens-1545',
+    text: 'The Council of Trent, the Catholic Church\'s definitive response to the Protestant Reformation, opened its first session on 13 December 1545.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1545-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1545-12-13',
+        datePrecision: 'DAY',
+        reason: 'Convoked by Pope Paul III, the ecumenical council opened at Trent (Trento) to condemn Protestant doctrines, clarify Catholic teaching on scripture, justification, and the sacraments, and enact disciplinary reforms against abuses such as the sale of indulgences. The opening session and its decrees were recorded contemporaneously in the council\'s official acts.',
+        source: {
+          externalId: 'src:council-trent-acts',
+          name: 'Canons and Decrees of the Council of Trent, official conciliar acts, first session 13 December 1545.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1545-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The council\'s acts, sessions, and the date of its opening (13 December 1545) are documented in the surviving conciliar records and confirmed across centuries of historiography. The Council of Trent is treated as the foundational institutional embodiment of the Counter-Reformation, its decrees shaping Catholic doctrine until the Second Vatican Council.',
+        source: {
+          externalId: 'src:council-trent-scholarly-synthesis',
+          name: 'Council of Trent — scholarly synthesis of the conciliar acts and the dating of the first session to 13 December 1545.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Defeat of the Spanish Armada — Battle of Gravelines ─────────────────────
+  {
+    externalId: 'trajectory:spanish-armada-gravelines-1588',
+    text: 'At the Battle of Gravelines on 8 August 1588 (New Style), the English fleet defeated the Spanish Armada, frustrating Philip II of Spain\'s planned invasion of England.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1588-08-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1588-08-08',
+        datePrecision: 'DAY',
+        reason: 'After English fireships scattered the Armada\'s defensive crescent off Calais on the night of 7–8 August, the English fleet under Lord Howard and Sir Francis Drake engaged the Spanish under the Duke of Medina Sidonia off Gravelines, sinking or disabling several ships and forcing the Armada downwind, ending its ability to link with the Duke of Parma\'s army. Contemporary dispatches and accounts recorded the engagement immediately.',
+        source: {
+          externalId: 'src:gravelines-1588-record',
+          name: 'Battle of Gravelines (1588) — contemporary English and Spanish accounts of the engagement off Gravelines, 8 August 1588 (NS).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Gravelines_(1588)',
+          publishedAt: '1588-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'English and Spanish contemporary sources converge on the date, location, and English victory at Gravelines, with the bulk of the Armada\'s losses occurring afterward during its storm-battered return around Scotland and Ireland. Modern scholarship treats the defeat of the Armada in 1588 as settled in date and outcome, even while debating its longer-term strategic significance.',
+        source: {
+          externalId: 'src:armada-1588-scholarly-synthesis',
+          name: 'Defeat of the Spanish Armada — scholarly synthesis of English and Spanish accounts, Battle of Gravelines dated 8 August 1588 (NS).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Gravelines_(1588)',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Newton's New Theory about Light and Colours ─────────────────────────────
+  {
+    externalId: 'trajectory:newton-light-colours-1672',
+    text: 'Isaac Newton\'s "New Theory about Light and Colours," sent from Cambridge on 6 February 1671/72 and published in the Philosophical Transactions, established that white light is a heterogeneous mixture of differently refrangible rays and that colour is an intrinsic property of light.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1672-02-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1672-02-06',
+        datePrecision: 'DAY',
+        reason: 'In a letter sent from Cambridge to Henry Oldenburg, Secretary of the Royal Society, dated 6 February 1671/72 (Old Style), Newton reported his prism experiments and argued that sunlight is a mixture of rays of differing refrangibility, each corresponding to a colour, overturning the Cartesian view that colours arise from the modification of light by a medium. The letter was published in the Philosophical Transactions in 1672.',
+        source: {
+          externalId: 'src:newton-1672-commentary',
+          name: 'Fara P. Newton shows the light: a commentary on Newton (1672) "A letter … containing his new theory about light and colours." Phil. Trans. R. Soc. A 373:20140213 (2015).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4360081/',
+          publishedAt: '2015-03-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1672-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Within a week Robert Hooke attacked Newton\'s conclusions, defending a pulse theory in which colour is produced by distortion of light rather than being intrinsic. Continental natural philosophers, including Huygens and the French Jesuits, struggled to replicate Newton\'s "crucial experiment" and produced rival explanations, leaving the theory contested for years.',
+        source: {
+          externalId: 'src:newton-1672-contest',
+          name: 'Fara P. Newton shows the light — on the reception and disputes (Hooke, Huygens, French critics) following Newton\'s 1672 letter. Phil. Trans. R. Soc. A 373:20140213 (2015).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4360081/',
+          publishedAt: '2015-03-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1704-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Newton\'s fuller exposition in Opticks (1704), together with the eventual confirmation of his prism results once experimenters used suitable prisms and geometry, established the heterogeneity of white light and the link between refrangibility and colour as foundational results of modern optics. The theory is settled in physics.',
+        source: {
+          externalId: 'src:newton-opticks-1704',
+          name: 'Newton I. Opticks: or, A Treatise of the Reflexions, Refractions, Inflexions and Colours of Light. London, 1704.',
+          url: 'https://en.wikipedia.org/wiki/Opticks',
+          publishedAt: '1704-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Revocation of the Edict of Nantes (Edict of Fontainebleau) ──────────────
+  {
+    externalId: 'trajectory:revocation-edict-nantes-1685',
+    text: 'On 18 October 1685, Louis XIV of France issued the Edict of Fontainebleau, revoking the 1598 Edict of Nantes and stripping the Huguenots (French Protestants) of their religious and civil rights.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1685-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1685-10-18',
+        datePrecision: 'DAY',
+        reason: 'Louis XIV signed the Edict of Fontainebleau (registered and published 22 October 1685), declaring the Edict of Nantes revoked, ordering the demolition of Huguenot churches, the closure of Protestant schools, and the conversion or exile of Protestants. The edict\'s text was promulgated as official royal law and recorded contemporaneously.',
+        source: {
+          externalId: 'src:edict-fontainebleau-text',
+          name: 'Edict of Fontainebleau (Revocation of the Edict of Nantes), royal edict of Louis XIV, 18 October 1685.',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Fontainebleau',
+          publishedAt: '1685-10-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The edict\'s date, authorship, and content are documented in the surviving royal acts and confirmed across the historiography. The revocation, which prompted the flight of an estimated 200,000–900,000 Huguenots from France over the following decades, is treated as a settled fact and a definitive reversal of the religious toleration granted in 1598.',
+        source: {
+          externalId: 'src:revocation-nantes-scholarly-synthesis',
+          name: 'Revocation of the Edict of Nantes — scholarly synthesis of the royal edict and its consequences, dated 18 October 1685.',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Fontainebleau',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
