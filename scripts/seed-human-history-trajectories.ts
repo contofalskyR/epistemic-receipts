@@ -38926,6 +38926,178 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // PHYSICS REVOLUTION / HOLOCAUST / ATOMIC AGE — postwar tail (1947–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Powell group discovers the pi-meson (pion) ──────────────────────────────
+  {
+    externalId: 'trajectory:pion-discovery-1947',
+    text: 'In 1947 Cecil Powell\'s group at Bristol, using photographic emulsions exposed to cosmic rays at high altitude, observed the charged pi-meson (pion) coming to rest and decaying into a lighter mu-meson — confirming the strongly-interacting nuclear-force particle predicted by Hideki Yukawa in 1935.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-10-01',
+        datePrecision: 'MONTH',
+        reason: 'César Lattes, Giuseppe Occhialini and Cecil Powell publish "Observations on the Tracks of Slow Mesons in Photographic Emulsions" in Nature (October 1947). Emulsions exposed at high altitude show a heavier meson (the pi-meson) coming to rest and decaying into a lighter meson (the mu-meson). This resolves the puzzle that the penetrating "mesotron" found in 1937 interacted too weakly to be Yukawa\'s nuclear-force quantum: there are two distinct mesons, and the pion is the strongly-interacting one.',
+        source: {
+          externalId: 'src:lattes-occhialini-powell-pion-1947',
+          name: 'Lattes CMG, Occhialini GPS, Powell CF. Observations on the Tracks of Slow Mesons in Photographic Emulsions. Nature 1947;160:453–456.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1947Natur.160..453L/abstract',
+          publishedAt: '1947-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-12-10',
+        datePrecision: 'DAY',
+        reason: 'The pion is produced artificially at the Berkeley synchrocyclotron in 1948, confirming the cosmic-ray observation under controlled conditions. Cecil Powell receives the 1950 Nobel Prize in Physics "for his development of the photographic method of studying nuclear processes and his discoveries regarding mesons made with this method." The pion becomes a cornerstone of particle physics, vindicating Yukawa (Nobel 1949).',
+        source: {
+          externalId: 'src:nobel-physics-1950-powell',
+          name: 'The Nobel Prize in Physics 1950: Cecil Frank Powell, for the photographic method of studying nuclear processes and discoveries regarding mesons.',
+          url: 'https://www.nobelprize.org/prizes/physics/1950/powell/facts/',
+          publishedAt: '1950-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Soviet Union detonates its first atomic bomb (RDS-1) ────────────────────
+  {
+    externalId: 'trajectory:soviet-first-atomic-test-1949',
+    text: 'The Soviet Union detonated its first atomic bomb, RDS-1 ("First Lightning," code-named Joe-1 by the United States), at the Semipalatinsk test site in Kazakhstan on 29 August 1949, ending the American nuclear monopoly.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1949-08-29',
+        datePrecision: 'DAY',
+        reason: 'RDS-1, a plutonium implosion device closely modeled on the US "Fat Man" design, is detonated at 7:00 a.m. local time at the Semipalatinsk test site with a yield of roughly 22 kilotons. The test is conducted in total secrecy and the Soviet government makes no public announcement; the event is initially known only to the Soviet program.',
+        source: {
+          externalId: 'src:rds-1-first-lightning',
+          name: '"RDS-1." Wikipedia — first Soviet atomic bomb test ("First Lightning"), detonated 29 August 1949 at 7:00 a.m. at the Semipalatinsk test site.',
+          url: 'https://en.wikipedia.org/wiki/RDS-1',
+          publishedAt: '1949-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1949-09-23',
+        datePrecision: 'DAY',
+        reason: 'US WB-29 weather-reconnaissance aircraft collect airborne radioactive debris over the North Pacific on 3 September 1949; analysis confirms that an atomic explosion occurred in the USSR. President Truman publicly announces on 23 September 1949 that "we have evidence that within recent weeks an atomic explosion occurred in the U.S.S.R.," ending the American nuclear monopoly and accelerating the US decision to develop the hydrogen bomb.',
+        source: {
+          externalId: 'src:truman-soviet-atomic-announcement-1949',
+          name: '"RDS-1." Wikipedia — US detection via air-sampling (3 September 1949) and President Truman\'s public announcement of the Soviet atomic explosion on 23 September 1949.',
+          url: 'https://en.wikipedia.org/wiki/RDS-1',
+          publishedAt: '1949-09-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Nuremberg Code established by the Doctors' Trial verdict ─────────────────
+  {
+    externalId: 'trajectory:nuremberg-code-1947',
+    text: 'On 20 August 1947 the American military tribunal in the Doctors\' Trial (United States v. Karl Brandt et al.) delivered its verdict, which set out the ten-point Nuremberg Code establishing voluntary informed consent as a requirement for permissible medical experiments on human beings.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1947-08-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1947-08-20',
+        datePrecision: 'DAY',
+        reason: 'The tribunal — Case #1 of the Subsequent Nuremberg Proceedings, opened 9 December 1946 against 23 Nazi physicians charged with lethal human experimentation in the concentration camps — pronounces its verdict on 20 August 1947. The judgment incorporates a ten-point statement of "Permissible Medical Experiments," the Nuremberg Code, whose first principle is that "the voluntary consent of the human subject is absolutely essential." Sixteen defendants are convicted; seven are sentenced to death and executed on 2 June 1948.',
+        source: {
+          externalId: 'src:ushmm-doctors-trial',
+          name: 'United States Holocaust Memorial Museum. "The Doctors Trial: The Medical Case of the Subsequent Nuremberg Proceedings" — verdict pronounced 20 August 1947.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/the-doctors-trial-the-medical-case-of-the-subsequent-nuremberg-proceedings',
+          publishedAt: '1947-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Nuremberg Code becomes the foundation of modern human-subjects research ethics. Its core principle of voluntary informed consent is codified internationally in the World Medical Association\'s Declaration of Helsinki (adopted June 1964) and subsequently embedded in national research regulations worldwide, settling informed consent as a binding ethical and legal standard.',
+        source: {
+          externalId: 'src:wma-declaration-helsinki',
+          name: 'World Medical Association. Declaration of Helsinki — Ethical Principles for Medical Research Involving Human Subjects (first adopted June 1964).',
+          url: 'https://www.wma.net/policies-post/wma-declaration-of-helsinki/',
+          publishedAt: '1964-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Libby and Arnold validate radiocarbon (carbon-14) dating ────────────────
+  {
+    externalId: 'trajectory:radiocarbon-dating-1949',
+    text: 'In December 1949 Willard Libby and James Arnold demonstrated radiocarbon (carbon-14) dating by measuring samples of independently known age, establishing a method to date organic archaeological and geological material from its residual carbon-14.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-12-23',
+        datePrecision: 'DAY',
+        reason: 'Arnold and Libby publish "Age Determinations by Radiocarbon Content: Checks with Samples of Known Age" in Science (23 December 1949) — the "Curve of Knowns." Measured carbon-14 ages of objects of independently known age (including dated Egyptian tomb wood) agree with their historical ages, validating Libby\'s hypothesis that cosmic-ray-produced carbon-14, decaying at a fixed half-life after an organism\'s death, can serve as a clock.',
+        source: {
+          externalId: 'src:arnold-libby-radiocarbon-1949',
+          name: 'Arnold JR, Libby WF. Age Determinations by Radiocarbon Content: Checks with Samples of Known Age. Science 1949;110(2869):678–680.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1949Sci...110..678A/abstract',
+          publishedAt: '1949-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-12-10',
+        datePrecision: 'DAY',
+        reason: 'Radiocarbon dating is rapidly adopted across archaeology, geology and geophysics and becomes the standard technique for dating organic material within the last ~50,000 years. Willard Libby receives the 1960 Nobel Prize in Chemistry "for his method to use carbon-14 for age determination in archaeology, geology, geophysics, and other branches of science."',
+        source: {
+          externalId: 'src:nobel-chemistry-1960-libby',
+          name: 'The Nobel Prize in Chemistry 1960: Willard Frank Libby, for his method to use carbon-14 for age determination.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1960/libby/facts/',
+          publishedAt: '1960-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // COLD WAR & POSTWAR (1950–1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
