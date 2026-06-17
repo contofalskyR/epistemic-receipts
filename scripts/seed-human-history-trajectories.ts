@@ -1156,6 +1156,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Nika riots, Constantinople (Byzantine) ───────────────────────────────────
+  {
+    externalId: 'trajectory:nika-riots-constantinople-532',
+    text: 'A week-long popular insurrection — the Nika revolt — erupted in Constantinople on 13 January 532 and was crushed by an imperial massacre in the Hippodrome that left roughly 30,000 dead, nearly toppling the reign of Emperor Justinian I.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0532-01-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0532-01-13',
+        datePrecision: 'DAY',
+        reason: 'Beginning at the chariot races in the Hippodrome on 13 January 532, rival Blue and Green circus factions unite behind the watchword "Nika" ("Conquer!"), burn much of the city, and proclaim a rival emperor. After about a week the generals Belisarius and Mundus trap the crowd in the Hippodrome and slaughter them. The event is recorded within the same generation by the eyewitness Procopius and the contemporary chronicler John Malalas.',
+        source: {
+          externalId: 'src:procopius-wars-nika',
+          name: 'Procopius. History of the Wars, I.24 (the Nika sedition). (c. 550 CE, by an eyewitness in Constantinople)',
+          url: 'https://en.wikipedia.org/wiki/Procopius',
+          publishedAt: '0550-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0563-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent contemporary sources corroborate the revolt and massacre: Procopius (Wars), John Malalas (Chronographia), the Chronicon Paschale, and the later account drawing on John of Antioch agree on the factional riot, the proclamation of Hypatius, and the bloodshed in the Hippodrome. No source disputes that the rising occurred or that it was suppressed by force.',
+        source: {
+          externalId: 'src:nika-riots-overview',
+          name: 'Nika riots. Encyclopædia / scholarly synthesis of the 532 revolt.',
+          url: 'https://en.wikipedia.org/wiki/Nika_riots',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── An Lushan Rebellion begins (Tang China) ──────────────────────────────────
+  {
+    externalId: 'trajectory:an-lushan-rebellion-755',
+    text: 'The Tang general An Lushan launched his rebellion against Emperor Xuanzong on 16 December 755, igniting an eight-year civil war that devastated the Tang dynasty and is associated with one of the largest population declines in recorded history.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0755-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0755-12-16',
+        datePrecision: 'DAY',
+        reason: 'An Lushan, jiedushi (military governor) of three northeastern commanderies, mobilizes his army at Fanyang and marches south against the Tang court on the pretext of removing the chancellor Yang Guozhong. The revolt is dated and chronicled by the Tang imperial bureau, whose records underlie the Old Book of Tang, the New Book of Tang, and Sima Guang\'s Zizhi Tongjian.',
+        source: {
+          externalId: 'src:an-lushan-rebellion-record',
+          name: 'Zizhi Tongjian and Old/New Book of Tang, records of the rebellion of An Lushan (Tianbao 14). (compiled from Tang court records)',
+          url: 'https://en.wikipedia.org/wiki/An_Lushan_rebellion',
+          publishedAt: '0945-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1084-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The rebellion is among the most thoroughly documented events of the Tang: official dynastic histories, Sima Guang\'s comprehensive chronicle (completed 1084), and contemporaneous poetry (notably Du Fu) independently attest the rising, the flight of Xuanzong, and the death of Yang Guifei. Modern historiography treats both the event and its December 755 onset as settled.',
+        source: {
+          externalId: 'src:tang-historiography-an-lushan',
+          name: 'An Lushan rebellion. Scholarly synthesis of the Tang dynastic histories.',
+          url: 'https://en.wikipedia.org/wiki/An_Lushan',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Solar eclipse of 1 May 1185 (Rus chronicles; first prominence description) ─
+  {
+    externalId: 'trajectory:eclipse-1185-igor-prominences',
+    text: 'A total solar eclipse on 1 May 1185, witnessed during Prince Igor Svyatoslavich\'s campaign against the Cumans, was recorded by Rus chroniclers — the Laurentian Chronicle giving what is regarded as the first written description of solar prominences.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1185-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1185-05-01',
+        datePrecision: 'DAY',
+        reason: 'Rus chroniclers record a daytime darkening as Igor of Novgorod-Seversk marches against the Cumans; the eclipse is woven into The Tale of Igor\'s Campaign as an evil omen. The Laurentian Chronicle describes the darkened Sun as "like a crescent of the Moon, from whose horns a glow like that of red-hot charcoals was emanating" — taken as the earliest written notice of solar prominences.',
+        source: {
+          externalId: 'src:eclipse-1185-laurentian-chronicle',
+          name: 'Laurentian Chronicle and The Tale of Igor\'s Campaign, accounts of the solar eclipse of 1 May 1185. (contemporaneous Rus chronicle record)',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_May_1,_1185',
+          publishedAt: '1185-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern retrocalculation confirms a total solar eclipse on 1 May 1185 whose path of totality crossed the southern Rus steppe, matching the chronicle date and circumstances. The event appears in NASA\'s Five Millennium Canon of Solar Eclipses, fixing the date and geometry independently of the medieval narrative.',
+        source: {
+          externalId: 'src:nasa-canon-eclipse-1185',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Charlemagne (Carolingian Empire) ────────────────────────────────
+  {
+    externalId: 'trajectory:charlemagne-death-814',
+    text: 'Charlemagne, the first Holy Roman Emperor of the West, died of pleurisy at Aachen on 28 January 814 and was buried the same day in the palace chapel.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0814-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0814-01-28',
+        datePrecision: 'DAY',
+        reason: 'After a week-long fever and pleurisy, Charlemagne dies at Aachen and is interred the same day in the church of St. Mary. His courtier and biographer Einhard records the precise date — "He died January twenty-eighth … in the seventy-second year of his age and the forty-seventh of his reign" — and the tomb inscription naming 28 January, the 7th indiction, year 814.',
+        source: {
+          externalId: 'src:einhard-vita-karoli-death',
+          name: 'Einhard. Vita Karoli Magni (Life of Charlemagne), c. 30–31, on the death and burial of Charlemagne (28 January 814). (c. 830 CE)',
+          url: 'https://sourcebooks.fordham.edu/basis/einhard.asp',
+          publishedAt: '0830-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0830-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date is independently fixed by the Royal Frankish Annals and the Annales regni Francorum alongside Einhard\'s near-contemporary biography; all agree on the death at Aachen on 28 January 814. Modern Carolingian historiography treats the death date as settled.',
+        source: {
+          externalId: 'src:britannica-charlemagne-death',
+          name: 'Charlemagne. Encyclopædia Britannica — death and succession.',
+          url: 'https://www.britannica.com/biography/Charlemagne',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Fourth Crusade sacks Constantinople (Byzantium) ──────────────────────────
   {
     externalId: 'trajectory:fourth-crusade-constantinople-1204',
