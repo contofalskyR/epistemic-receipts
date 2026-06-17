@@ -26259,6 +26259,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — supplemental
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Joliot-Curie artificial radioactivity ───────────────────────────────────
+  {
+    externalId: 'trajectory:joliot-curie-artificial-radioactivity-1934',
+    text: 'Irène Joliot-Curie and Frédéric Joliot demonstrated that stable elements can be made artificially radioactive by alpha-particle bombardment, announced in January 1934.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1934-01-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-01-15',
+        datePrecision: 'DAY',
+        reason: 'Bombarding aluminium and boron foils with alpha particles from polonium, the Joliot-Curies find the targets continue to emit radiation after the source is removed — the alpha capture transmutes aluminium into a previously unknown radioactive isotope of phosphorus. They report the result as "Un nouveau type de radioactivité" in the Comptes Rendus de l\'Académie des Sciences (vol. 198, no. 3) dated 15 January 1934.',
+        source: {
+          externalId: 'src:joliot-curie-induced-radioactivity',
+          name: 'I. Curie & F. Joliot, "Un nouveau type de radioactivité," Comptes Rendus 198 (1934). Summarised in "Induced radioactivity," Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Induced_radioactivity',
+          publishedAt: '1934-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-12-10',
+        datePrecision: 'DAY',
+        reason: 'The result is rapidly reproduced and extended — Enrico Fermi shows within months that neutron bombardment induces radioactivity across the periodic table. The Royal Swedish Academy of Sciences awards Frédéric Joliot and Irène Joliot-Curie the 1935 Nobel Prize in Chemistry "for their synthesis of new radioactive elements," settling the discovery as the foundation of artificial isotope production.',
+        source: {
+          externalId: 'src:joliot-curie-nobel-1935',
+          name: 'The Nobel Prize in Chemistry 1935 — Frédéric Joliot and Irène Joliot-Curie, for the synthesis of new radioactive elements. (American Institute of Physics, history program.)',
+          url: 'https://www.aip.org/history-programs/niels-bohr-library/ex-libris-universum/artificial-radioactivity-mainstream',
+          publishedAt: '1935-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gandhi's Salt March (Dandi March) ────────────────────────────────────────
+  {
+    externalId: 'trajectory:salt-march-dandi-1930',
+    text: 'Mohandas Gandhi led the Salt March (Dandi March), a 24-day nonviolent protest against the British salt monopoly, breaking the salt law at Dandi on April 6, 1930.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1930-03-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1930-03-12',
+        datePrecision: 'DAY',
+        reason: 'Gandhi sets out from the Sabarmati Ashram near Ahmedabad with 78 companions on 12 March 1930, walking some 385 km toward the coastal village of Dandi to defy the British salt tax. Indian and international newspapers cover the march day by day as it gathers thousands of participants along the route.',
+        source: {
+          externalId: 'src:salt-march-departure',
+          name: 'Salt March (Dandi March) — departure from Sabarmati Ashram, 12 March 1930. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Salt_March',
+          publishedAt: '1930-03-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1930-04-06',
+        datePrecision: 'DAY',
+        reason: 'On the morning of 6 April 1930 Gandhi reaches the sea at Dandi and ceremonially makes salt from seawater, breaking the salt law. The act triggers mass civil disobedience across India and Gandhi\'s own arrest on 4–5 May. The march becomes a fixed, extensively documented landmark of the Indian independence movement.',
+        source: {
+          externalId: 'src:salt-march-dandi-saltbreaking',
+          name: 'Salt March — Gandhi breaks the salt law at Dandi, 8:30 am, 6 April 1930. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Salt_March',
+          publishedAt: '1930-04-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sergei Kirov assassinated ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:kirov-assassination-1934',
+    text: 'Sergei Kirov, head of the Leningrad Communist Party, was assassinated by Leonid Nikolaev at the Smolny Institute on December 1, 1934 — the pretext Stalin used to launch the Great Purge.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1934-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1934-12-01',
+        datePrecision: 'DAY',
+        reason: 'Leonid Nikolaev shoots Kirov in the back of the neck in a corridor of the Smolny Institute in Leningrad on 1 December 1934. The killing is reported within hours by the Soviet press, and Stalin personally travels to Leningrad to oversee the investigation.',
+        source: {
+          externalId: 'src:kirov-assassination-smolny',
+          name: 'Sergei Kirov — assassination at the Smolny Institute by Leonid Nikolaev, 1 December 1934. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Sergei_Kirov',
+          publishedAt: '1934-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-12-01',
+        datePrecision: 'DAY',
+        reason: 'The fact of the assassination — date, place, and assassin — is corroborated by official records, the immediate show trial of Nikolaev (executed within four weeks), and decades of historical scholarship. Stalin uses the killing as the pretext for the Law of 1 December and the wave of repression that becomes the Great Purge.',
+        source: {
+          externalId: 'src:kirov-great-purge-pretext',
+          name: 'Sergei Kirov — assassination used by Stalin to justify the Moscow trials and the Great Purge. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Sergei_Kirov',
+          publishedAt: '1938-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-02-25',
+        datePrecision: 'DAY',
+        reason: 'Whether Stalin himself orchestrated the murder becomes a persistent historical question — raised by Khrushchev in his 1956 Secret Speech and investigated again by a Soviet commission in 1990, which found no documentary proof of Stalin\'s involvement. The underlying fact of the assassination remains settled; only the question of complicity stays contested.',
+        source: {
+          externalId: 'src:kirov-khrushchev-secret-speech',
+          name: 'Sergei Kirov — Khrushchev\'s 1956 Secret Speech and the 1990 Soviet investigation into the circumstances of the killing. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Sergei_Kirov',
+          publishedAt: '1956-02-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── D-Day: the Normandy landings ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:d-day-normandy-landings-1944',
+    text: 'Allied forces launched the largest seaborne invasion in history, landing on the beaches of Normandy, France, on June 6, 1944 (D-Day).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1944-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-06-06',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 6 June 1944, roughly 156,000 Allied troops cross the English Channel and land on five Normandy beaches under Operation Overlord. General Eisenhower issues his Order of the Day — "Soldiers, Sailors, and Airmen of the Allied Expeditionary Force! You are about to embark upon the Great Crusade" — and SHAEF announces the landings the same morning.',
+        source: {
+          externalId: 'src:eisenhower-order-of-the-day-1944',
+          name: 'General Dwight D. Eisenhower\'s Order of the Day, 6 June 1944. U.S. National Archives (Milestone Documents).',
+          url: 'https://www.archives.gov/milestone-documents/general-eisenhowers-order-of-the-day',
+          publishedAt: '1944-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-06-06',
+        datePrecision: 'DAY',
+        reason: 'The landings are documented in real time by SHAEF communiqués, war correspondents, photographs, and film, and corroborated by German records. The date, scale, and outcome of the Normandy invasion are among the most thoroughly evidenced events of the war and are not in dispute.',
+        source: {
+          externalId: 'src:normandy-landings-record',
+          name: 'Normandy landings (Operation Overlord), 6 June 1944 — ~156,000 Allied troops across five beaches. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Normandy_landings',
+          publishedAt: '1944-06-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── United Nations Charter signed ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:un-charter-signed-1945',
+    text: 'The Charter of the United Nations was signed by 50 nations at the San Francisco Conference on June 26, 1945, establishing the United Nations.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-06-26',
+        datePrecision: 'DAY',
+        reason: 'The United Nations Conference on International Organization, meeting in San Francisco, adopts the Charter unanimously on 25 June 1945 at the Opera House; delegates of 50 nations sign it the following day, 26 June 1945, at the Herbst Theatre. Poland, unrepresented at the conference, signs later to become the 51st founding member.',
+        source: {
+          externalId: 'src:un-charter-san-francisco-signing',
+          name: 'San Francisco Conference — UN Charter adopted 25 June and signed 26 June 1945. United Nations, History of the UN.',
+          url: 'https://www.un.org/en/about-us/history-of-the-un/san-francisco-conference',
+          publishedAt: '1945-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-10-24',
+        datePrecision: 'DAY',
+        reason: 'In accordance with Article 110(3), the Charter enters into force on 24 October 1945 once ratified by the five permanent Security Council members and a majority of the other signatories — formally bringing the United Nations into existence. The date is observed annually as United Nations Day.',
+        source: {
+          externalId: 'src:un-charter-entry-into-force',
+          name: 'UN Charter entry into force, 24 October 1945 (Article 110(3)); observed as United Nations Day. United Nations, History of the UN.',
+          url: 'https://www.un.org/en/about-us/history-of-the-un/san-francisco-conference',
+          publishedAt: '1945-10-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
