@@ -42656,6 +42656,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Laika — first living creature to orbit Earth (Sputnik 2) ───────────────
+  {
+    externalId: 'trajectory:laika-first-animal-orbit-1957',
+    text: 'On 3 November 1957, the dog Laika aboard the Soviet Sputnik 2 became the first living creature to orbit the Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1957-11-03',
+        datePrecision: 'DAY',
+        reason: 'Sputnik 2 launches from the Baikonur Cosmodrome carrying the dog Laika, the first animal to reach orbit. TASS announces the flight worldwide. Soviet authorities initially provide conflicting accounts of Laika\'s fate, variously claiming she survived several days in orbit before being painlessly euthanised as planned.',
+        source: {
+          externalId: 'src:laika-sputnik2-launch',
+          name: 'Laika aboard Sputnik 2, launched 3 November 1957 (encyclopedic synthesis of contemporary TASS reports and later disclosures).',
+          url: 'https://en.wikipedia.org/wiki/Laika',
+          publishedAt: '1957-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-11-03',
+        datePrecision: 'YEAR',
+        reason: 'Western tracking stations independently confirm Sputnik 2\'s orbit and radio telemetry. The fact that a living mammal reached orbit is established beyond dispute and becomes a settled milestone in spaceflight history, demonstrating that an organism could survive launch and weightlessness.',
+        source: {
+          externalId: 'src:laika-orbit-confirmed',
+          name: 'Sputnik 2 — orbital flight of Laika confirmed by independent tracking (encyclopedic synthesis).',
+          url: 'https://en.wikipedia.org/wiki/Sputnik_2',
+          publishedAt: '1958-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-10-01',
+        datePrecision: 'MONTH',
+        reason: 'At the World Space Congress in Houston in October 2002, Russian scientist Dimitri Malashenkov reveals that Laika actually died within hours of launch — by the fourth orbit — from overheating, after the spacecraft\'s thermal control failed and the core stage did not separate. This corrects the decades-old Soviet narrative of a multi-day survival, while leaving the orbital-first claim itself intact.',
+        source: {
+          externalId: 'src:malashenkov-laika-death-2002',
+          name: 'Malashenkov DC. Abstract: "Some Unknown Pages of the Living Organisms\' First Orbital Flight," World Space Congress, Houston, October 2002.',
+          url: 'https://en.wikipedia.org/wiki/Laika',
+          publishedAt: '2002-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Soyuz 1 — first in-flight spaceflight fatality (Komarov) ───────────────
+  {
+    externalId: 'trajectory:soyuz-1-komarov-death-1967',
+    text: 'On 24 April 1967, cosmonaut Vladimir Komarov died when his Soyuz 1 capsule crashed after its parachutes failed, making him the first human to die during a spaceflight.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-04-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1967-04-24',
+        datePrecision: 'DAY',
+        reason: 'After launching on 23 April 1967, Soyuz 1 suffers cascading failures in orbit. During re-entry on 24 April the main parachute fails to deploy and the manually deployed reserve chute tangles; the descent module strikes the ground near Orenburg at high speed, killing Komarov. TASS announces his death the same day.',
+        source: {
+          externalId: 'src:soyuz1-komarov-crash',
+          name: 'Soyuz 1 crash, 24 April 1967 (encyclopedic synthesis of contemporary TASS announcement and mission records).',
+          url: 'https://en.wikipedia.org/wiki/Soyuz_1',
+          publishedAt: '1967-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-04-26',
+        datePrecision: 'DAY',
+        reason: 'Komarov is given a state funeral and his ashes interred in the Kremlin Wall Necropolis on 26 April 1967. Soviet and later post-Soviet declassified records corroborate the parachute failure as the proximate cause. The event is universally recognised as the first in-flight fatality in the history of human spaceflight.',
+        source: {
+          externalId: 'src:komarov-first-spaceflight-fatality',
+          name: 'Vladimir Komarov — first in-flight spaceflight fatality (encyclopedic synthesis of mission and funeral records).',
+          url: 'https://en.wikipedia.org/wiki/Vladimir_Komarov',
+          publishedAt: '1967-04-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zinjanthropus (OH 5) discovered at Olduvai Gorge ───────────────────────
+  {
+    externalId: 'trajectory:zinjanthropus-oh5-olduvai-1959',
+    text: 'On 17 July 1959, Mary Leakey discovered the "Zinjanthropus" (OH 5) hominin skull at Olduvai Gorge, Tanzania, a find later dated to about 1.75 million years old.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-07-17',
+        datePrecision: 'DAY',
+        reason: 'While surveying Bed I at Olduvai Gorge on the morning of 17 July 1959, Mary Leakey spots fragments of a robust hominin cranium eroding from the ground. Louis Leakey announces the find, naming it Zinjanthropus boisei ("Nutcracker Man") for its massive molars and jaw, and publishes it in Nature the following month.',
+        source: {
+          externalId: 'src:leakey-zinjanthropus-nature-1959',
+          name: 'Leakey LSB. "A New Fossil Skull from Olduvai." Nature 184:491–493, 15 August 1959.',
+          url: 'https://www.nature.com/articles/184491a0',
+          publishedAt: '1959-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Potassium-argon dating of the Olduvai Bed I tuffs by Leakey, Evernden and Curtis (Nature, 1961) yields an age of about 1.75 million years, far older than then-expected and establishing the deep antiquity of African hominins. The skull is later reclassified as Paranthropus (Australopithecus) boisei; its discovery and date are settled paleoanthropology.',
+        source: {
+          externalId: 'src:leakey-evernden-curtis-olduvai-dating-1961',
+          name: 'Leakey LSB, Evernden JF, Curtis GH. "Age of Bed I, Olduvai Gorge, Tanganyika." Nature 191:478–479, 1961.',
+          url: 'https://www.nature.com/articles/191478a0',
+          publishedAt: '1961-07-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── UN Conference on the Human Environment (Stockholm) ─────────────────────
+  {
+    externalId: 'trajectory:stockholm-human-environment-1972',
+    text: 'On 5 June 1972, the United Nations Conference on the Human Environment opened in Stockholm, the first global summit to make the environment a major international concern and the origin of the UN Environment Programme.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1972-06-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-06-05',
+        datePrecision: 'DAY',
+        reason: 'The UN Conference on the Human Environment convenes in Stockholm from 5 to 16 June 1972 with delegates from 113 countries. On 16 June it adopts the Stockholm Declaration of 26 principles, an Action Plan of 109 recommendations, and a resolution — the first time the international community formally treats the human environment as a subject of global governance.',
+        source: {
+          externalId: 'src:stockholm-conference-1972',
+          name: 'UN Conference on the Human Environment, Stockholm, 5–16 June 1972 (encyclopedic synthesis of the conference record and Stockholm Declaration).',
+          url: 'https://en.wikipedia.org/wiki/United_Nations_Conference_on_the_Human_Environment',
+          publishedAt: '1972-06-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-15',
+        datePrecision: 'DAY',
+        reason: 'Acting on the conference\'s recommendations, the UN General Assembly creates the United Nations Environment Programme by Resolution 2997 (XXVII) on 15 December 1972 and designates 5 June — the conference\'s opening day — as World Environment Day. Stockholm 1972 is settled as the founding event of modern international environmental governance.',
+        source: {
+          externalId: 'src:unep-resolution-2997-1972',
+          name: 'UN General Assembly Resolution 2997 (XXVII), establishing the UN Environment Programme, 15 December 1972.',
+          url: 'https://www.unep.org/about-un-environment',
+          publishedAt: '1972-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fair Housing Act (Civil Rights Act of 1968) signed ─────────────────────
+  {
+    externalId: 'trajectory:fair-housing-act-1968',
+    text: 'On 11 April 1968, President Lyndon B. Johnson signed the Civil Rights Act of 1968, whose Title VIII (the Fair Housing Act) prohibited discrimination in the sale, rental, and financing of housing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1968-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-04-11',
+        datePrecision: 'DAY',
+        reason: 'One week after the assassination of Martin Luther King Jr. and amid civil unrest in many cities, the House passes the housing bill on 10 April and President Johnson signs the Civil Rights Act of 1968 into law on 11 April 1968. Title VIII bars discrimination in housing on the basis of race, color, religion, and national origin.',
+        source: {
+          externalId: 'src:fair-housing-act-signed-1968',
+          name: 'Civil Rights Act of 1968 (Fair Housing Act), signed 11 April 1968 (encyclopedic synthesis of the public law and contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1968',
+          publishedAt: '1968-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1988-09-13',
+        datePrecision: 'DAY',
+        reason: 'The Fair Housing Act becomes settled, enforceable federal law, strengthened by the Fair Housing Amendments Act of 1988 (signed 13 September 1988), which added disability and familial status as protected classes and gave HUD and the courts stronger enforcement powers. The 1968 Act\'s enactment date and content are part of the established federal statutory record.',
+        source: {
+          externalId: 'src:fair-housing-amendments-1988',
+          name: 'Fair Housing Amendments Act of 1988, Pub. L. 100-430, signed 13 September 1988.',
+          url: 'https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1968',
+          publishedAt: '1988-09-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
