@@ -45,18 +45,23 @@ Your job:
    - Non-interpretive (concrete facts, not historical analyses)
    - NOT already in the DB (read scripts/seed-human-history-trajectories.ts to see what's there)
 
-2. For each valid candidate, read the existing trajectory seeder script at scripts/seed-human-history-trajectories.ts to understand the format
+2. VERIFY each candidate before adding it. For each source URL you plan to use:
+   - Fetch the URL using the WebFetch tool or curl
+   - Confirm the page exists (not 404/error) and actually contains information matching the claimed event and date
+   - If the URL is paywalled, a DOI, or otherwise inaccessible, find an alternative open-access source (PubMed, PMC, archive.org, official government/institutional pages) that IS accessible and verify that one instead
+   - DISCARD any trajectory where you cannot verify at least one source URL
+   Only proceed to step 3 with trajectories that passed source verification.
 
-3. Add your new trajectories to that script following EXACTLY the same structure as existing ones, then run:
+3. For each verified trajectory, read scripts/seed-human-history-trajectories.ts to understand the format, then add it following EXACTLY the same structure as existing ones. Run:
    cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-human-history-trajectories.ts
 
-4. Commit and push: git add -A && git commit -m 'trajectories: add [N] new curves — [era/region]' && git push origin main
+4. Commit and push: git add -A && git commit -m 'trajectories: add [N] verified curves — [era/region]' && git push origin main
 
 5. Output exactly this at the end:
 ADDED:[N]
 TITLES:[title1] | [title2] | ...
 
-If you can't find any valid candidates for this focus area that aren't already in the DB, output:
+If you can't find any valid candidates that pass source verification, output:
 ADDED:0
 TITLES:none"
 
