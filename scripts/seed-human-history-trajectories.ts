@@ -38398,6 +38398,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lisbon earthquake — birth of empirical seismology ───────────────────────
+  {
+    externalId: 'trajectory:lisbon-earthquake-1755',
+    text: 'A great earthquake struck Lisbon on the morning of 1 November 1755 (the Feast of All Saints), and the systematic inquiry that followed marked the transition of earthquake study from theological speculation to empirical investigation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1755-11-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1755-11-01',
+        datePrecision: 'DAY',
+        reason: 'At approximately 09:40 local time on All Saints\' Day, a massive earthquake (later estimated at magnitude ~8.5–9) destroyed much of Lisbon; fires and a tsunami followed within the hour. The disaster was witnessed by tens of thousands and reported across Europe within weeks.',
+        source: {
+          externalId: 'src:lisbon-earthquake-1755',
+          name: '"1755 Lisbon earthquake." Wikipedia (drawing on contemporaneous accounts and parish records).',
+          url: 'https://en.wikipedia.org/wiki/1755_Lisbon_earthquake',
+          publishedAt: '1755-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1756-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Marquis of Pombal, who survived the disaster, ordered a structured questionnaire sent to every parish in the country asking about timing, the direction of shaking, casualties, and the behavior of the sea — the first large-scale objective survey of an earthquake. For this Pombal is regarded as a forerunner of modern seismology, and Kant published three natural (non-supernatural) explanatory texts in 1756.',
+        source: {
+          externalId: 'src:pombal-earthquake-survey-1756',
+          name: 'Marquis of Pombal parish questionnaire (1755–56); Kant, three texts on the Lisbon earthquake (1756). Summarized in "1755 Lisbon earthquake," Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/1755_Lisbon_earthquake',
+          publishedAt: '1756-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Transit of Venus 1769 — measuring the astronomical unit ─────────────────
+  {
+    externalId: 'trajectory:transit-of-venus-tahiti-1769',
+    text: 'On 3 June 1769, James Cook\'s expedition observed the transit of Venus across the Sun from Tahiti, contributing to the first reasonably accurate determination of the Earth–Sun distance (the astronomical unit).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1769-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1769-06-03',
+        datePrecision: 'DAY',
+        reason: 'From Point Venus on Tahiti, Captain James Cook, astronomer Charles Green, and naturalist Daniel Solander independently timed Venus crossing the solar disk. The observation was part of a Royal Society campaign — anticipated by Halley\'s 1716 proposal — to measure solar parallax from widely separated points on Earth.',
+        source: {
+          externalId: 'src:cook-transit-venus-1769',
+          name: 'James Cook & Charles Green, observations of the 1769 transit of Venus from Tahiti; reported in Philosophical Transactions of the Royal Society.',
+          url: 'https://en.wikipedia.org/wiki/1769_transit_of_Venus_observed_from_Tahiti',
+          publishedAt: '1769-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1771-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Combining the global 1769 observations, Thomas Hornsby calculated a mean Earth–Sun distance of about 93.7 million miles — within roughly 0.8% of the modern radar value. The "black drop effect" limited timing precision but the campaign settled the scale of the solar system to a degree previously impossible.',
+        source: {
+          externalId: 'src:hornsby-solar-parallax-1771',
+          name: 'Thomas Hornsby, "The quantity of the Sun\'s parallax..." Philosophical Transactions of the Royal Society (1771).',
+          url: 'https://en.wikipedia.org/wiki/1769_transit_of_Venus_observed_from_Tahiti',
+          publishedAt: '1771-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── William Smith's geological map — first map of a nation's strata ──────────
+  {
+    externalId: 'trajectory:william-smith-geological-map-1815',
+    text: 'William Smith\'s "A Delineation of the Strata of England and Wales with part of Scotland," dated 1 August 1815, was the first geological map of an entire country, establishing that strata occur in a regular, predictable sequence identifiable by their fossils.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1815-08-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1815-08-01',
+        datePrecision: 'DAY',
+        reason: 'Smith\'s hand-coloured map, dated 1 August 1815 and issued from mid-September 1815, depicted the strata of the whole of England and Wales so that their order of superposition was readable at a glance — the product of over fifteen years of fieldwork and his discovery of faunal succession.',
+        source: {
+          externalId: 'src:smith-strata-map-1815',
+          name: 'William Smith, "A Delineation of the Strata of England and Wales with part of Scotland" (1815). Geological Society of London.',
+          url: 'https://www.geolsoc.org.uk/about-us/history/visiting-the-william-smith-map/a-delineation-of-the-strata-of-england-and-wales-with-part-of-scotland/',
+          publishedAt: '1815-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1831-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The map is now considered the first geological map of a complete country ever made. The Geological Society of London, which had initially overlooked Smith, awarded him the first Wollaston Medal in 1831, recognizing the principle of faunal succession as foundational to stratigraphy.',
+        source: {
+          externalId: 'src:smith-wollaston-medal-1831',
+          name: 'Geological Society of London — first Wollaston Medal awarded to William Smith (1831); map history page.',
+          url: 'https://www.geolsoc.org.uk/about-us/history/visiting-the-william-smith-map/a-delineation-of-the-strata-of-england-and-wales-with-part-of-scotland/',
+          publishedAt: '1831-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Huggins shows nebulae can be gaseous — spectroscopy of the heavens ──────
+  {
+    externalId: 'trajectory:huggins-gaseous-nebula-1864',
+    text: 'On 29 August 1864, William Huggins took the spectrum of the planetary nebula NGC 6543 and found a bright emission line, proving that some nebulae are luminous gas rather than unresolved clusters of stars.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1864-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1864-08-29',
+        datePrecision: 'DAY',
+        reason: 'Whether nebulae were distant star systems or true clouds of gas had been an open question. Pointing his spectroscope at NGC 6543, Huggins observed not a continuous stellar spectrum but a single bright emission line — the signature of a glowing gas. He was the first to take the spectrum of a planetary nebula.',
+        source: {
+          externalId: 'src:huggins-nebulae-spectra-1864',
+          name: 'William Huggins & W. A. Miller, "On the Spectra of some of the Nebulae," Philosophical Transactions of the Royal Society 154 (1864): 437–444.',
+          url: 'https://en.wikipedia.org/wiki/William_Huggins',
+          publishedAt: '1864-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1865-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1864 paper established spectroscopy as the means to determine the physical and chemical nature of celestial bodies, settling that at least some nebulae are gaseous. The result founded astrophysics as a discipline distinct from positional astronomy.',
+        source: {
+          externalId: 'src:huggins-astrophysics-legacy',
+          name: '"William Huggins." Wikipedia, summarizing the impact of the 1864 nebular spectra paper.',
+          url: 'https://en.wikipedia.org/wiki/William_Huggins',
+          publishedAt: '1865-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
