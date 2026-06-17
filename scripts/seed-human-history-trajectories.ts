@@ -49008,6 +49008,151 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Leo the Deacon describes the solar corona — eclipse of 22 December 968 ────
+  {
+    externalId: 'trajectory:eclipse-corona-leo-deacon-968',
+    text: 'A total solar eclipse crossed Constantinople on 22 December 968, during which the Byzantine historian Leo the Deacon recorded an early eyewitness description of the solar corona — "a dim and feeble glow like a narrow band shining in a circle around the edge of the disk."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0968-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0968-12-22',
+        datePrecision: 'DAY',
+        reason: 'At the fourth hour of the day on 22 December 968, the Sun was totally eclipsed over Constantinople. Leo the Deacon, then a young man, recorded that "darkness covered the earth and all the brightest stars shone forth," and that the disk of the Sun appeared "dull and unlit" surrounded by a dim, feeble band of light. The passage is one of the earliest unambiguous eyewitness descriptions of the solar corona seen at totality.',
+        source: {
+          externalId: 'src:leo-deacon-history-eclipse-968',
+          name: 'Leo the Deacon, History (Historia), Book IV, on the solar eclipse of 22 December 968. (late 10th century; Talbot & Sullivan trans., Dumbarton Oaks 2005)',
+          url: 'https://sunearthday.nasa.gov/2006/locations/firstcorona.php',
+          publishedAt: '0990-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a total solar eclipse on 22 December 968 (Julian) whose path of totality crossed the eastern Mediterranean and Constantinople, catalogued in NASA\'s Five Millennium Canon of Solar Eclipses. The match of place, day, and totality with Leo\'s account fixes the observation and supports its reading as an early description of the corona — now widely cited in the history of solar physics.',
+        source: {
+          externalId: 'src:nasa-eclipse-canon-968',
+          name: 'NASA Five Millennium Canon of Solar Eclipses — Total Solar Eclipse of 968 December 22 (Eclipse 09681222).',
+          url: 'https://eclipse.gsfc.nasa.gov/SEsearch/SEsearchmap.php?Ecl=09681222',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Mihna — al-Ma'mun makes the "created Quran" a state test (April 833) ──
+  {
+    externalId: 'trajectory:mihna-created-quran-833',
+    text: 'In Rabi\' al-Awwal 218 AH (April 833 CE), the Abbasid caliph al-Ma\'mun instituted the Mihna, an inquisition compelling judges and scholars to affirm the doctrine that the Quran was created; the policy was abolished and reversed by the caliph al-Mutawakkil around 848–851.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0833-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0833-04-01',
+        datePrecision: 'MONTH',
+        reason: 'In Rabi\' al-Awwal 218 AH (March–April 833), about four months before his death, al-Ma\'mun wrote to Ishaq ibn Ibrahim, his chief of security in Baghdad, ordering that hadith scholars and judges be examined on their belief in the createdness of the Quran. Those who refused to affirm the doctrine faced dismissal, arrest, or torture. The Mutazilite position was thereby imposed as compulsory state doctrine, enforced through al-Ma\'mun\'s successors al-Mutasim and al-Wathiq.',
+        source: {
+          externalId: 'src:tabari-mihna-letter-833',
+          name: 'al-Tabari, History (Ta\'rikh al-rusul wa-l-muluk), year 218 AH, recording al-Ma\'mun\'s Mihna letters to Ishaq ibn Ibrahim. (early 10th century; cited in Nawas, "Al-Ma\'mun: Mihna and Caliphate," 1992)',
+          url: 'https://repository.ubn.ru.nl/bitstream/handle/2066/113099/mmubn000001_157699595.pdf',
+          publishedAt: '0915-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0848-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The caliph al-Mutawakkil, who acceded in 847, repudiated the Mutazilite doctrine and dismantled the Mihna (conventionally dated 848–851), forbidding disputation over the nature of the Quran and releasing those imprisoned for refusing the createdness test. The reversal entrenched the rival traditionalist view — that the Quran is the uncreated word of God — which became Sunni orthodoxy, leaving the Mihna a settled historical episode of imposed-then-abandoned state doctrine.',
+        source: {
+          externalId: 'src:wiki-mihna-reversal',
+          name: 'Wikipedia — "Mihna": al-Mutawakkil abolishes the inquisition between 848 and 851, reversing the created-Quran policy.',
+          url: 'https://en.wikipedia.org/wiki/Mihna',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Cadaver Synod — Formosus convicted then rehabilitated (897) ──────────
+  {
+    externalId: 'trajectory:cadaver-synod-formosus-897',
+    text: 'At the Cadaver Synod in Rome in January 897, Pope Stephen VI had the exhumed corpse of his predecessor Pope Formosus tried, convicted, and his official acts annulled; in December 897 Pope Theodore II reversed the verdict and rehabilitated Formosus, and Pope John IX confirmed the rehabilitation and banned future trials of the dead.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0897-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0897-01-01',
+        datePrecision: 'MONTH',
+        reason: 'In January 897, Pope Stephen VI ordered the body of Pope Formosus (died 896) exhumed, dressed in papal vestments, and placed on trial before a synod in Rome. A deacon was appointed to answer for the corpse, which was found guilty of perjury and of having uncrowned himself; his ordinations were declared void and the three blessing-fingers of his right hand were cut off before the body was cast into the Tiber. The proceedings entered the formal record of the Roman See.',
+        source: {
+          externalId: 'src:liutprand-cadaver-synod',
+          name: 'Liutprand of Cremona, Antapodosis I.30, account of the Cadaver Synod; corroborated by Auxilius of Naples. (10th century)',
+          url: 'https://en.wikipedia.org/wiki/Cadaver_Synod',
+          publishedAt: '0960-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0897-12-01',
+        datePrecision: 'MONTH',
+        reason: 'After Stephen VI was deposed and strangled in prison in mid-897, Pope Theodore II convened a synod in December 897 that annulled the Cadaver Synod, rehabilitated Formosus, restored the validity of his ordinations, and had his body reburied in St Peter\'s. The earlier verdict was formally overturned.',
+        source: {
+          externalId: 'src:theodore-ii-annuls-cadaver-synod',
+          name: 'Wikipedia — "Cadaver Synod": Pope Theodore II annuls the synod and rehabilitates Formosus, December 897.',
+          url: 'https://en.wikipedia.org/wiki/Cadaver_Synod',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pope John IX held synods in Rome and Ravenna (898) that confirmed the rehabilitation of Formosus, declared the validity of his ordinations, ordered the records of the Cadaver Synod burned, and prohibited any future trial of a deceased person. The reversal of Formosus\'s condemnation became the settled position of the papacy.',
+        source: {
+          externalId: 'src:john-ix-bans-corpse-trials-898',
+          name: 'Wikipedia — "Cadaver Synod": Pope John IX confirms the rehabilitation of Formosus and prohibits trials of the dead (898).',
+          url: 'https://en.wikipedia.org/wiki/Cadaver_Synod',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
