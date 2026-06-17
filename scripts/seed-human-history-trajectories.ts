@@ -37570,6 +37570,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── John Glenn — first American to orbit Earth ──────────────────────────────
+  {
+    externalId: 'trajectory:glenn-first-american-orbit-1962',
+    text: 'John Glenn became the first American to orbit the Earth, completing three orbits aboard Friendship 7 (Mercury-Atlas 6) on February 20, 1962.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-02-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1962-02-20',
+        datePrecision: 'DAY',
+        reason: 'Friendship 7 launches from Cape Canaveral at 9:47 AM EST and completes three orbits in 4 hours 55 minutes before splashing down in the North Atlantic. The flight is carried live on television and radio; Glenn\'s voice communications with Mission Control are recorded in real time, and the recovery by the destroyer USS Noa is witnessed by the crew.',
+        source: {
+          externalId: 'src:nasa-mercury-atlas-6-1962',
+          name: 'Mercury-Atlas 6 (Friendship 7), February 20, 1962 — NASA mission record.',
+          url: 'https://en.wikipedia.org/wiki/Mercury-Atlas_6',
+          publishedAt: '1962-02-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-02-21',
+        datePrecision: 'DAY',
+        reason: 'NASA telemetry, tracking-station data across the global Mercury network, and the post-flight technical debrief confirm three completed orbits and the 65,763-nautical-mile flight path. The mission is documented in NASA\'s official Results of the First United States Manned Orbital Space Flight report. No party disputes the flight occurred.',
+        source: {
+          externalId: 'src:nasa-mercury-results-1962',
+          name: 'Results of the First United States Manned Orbital Space Flight, February 20, 1962. NASA, 1962.',
+          url: 'https://en.wikipedia.org/wiki/Mercury-Atlas_6',
+          publishedAt: '1962-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Medgar Evers assassinated — justice delayed three decades ───────────────
+  {
+    externalId: 'trajectory:medgar-evers-assassination-1963',
+    text: 'Civil rights leader Medgar Evers was assassinated by gunshot outside his home in Jackson, Mississippi, on June 12, 1963.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-06-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-06-12',
+        datePrecision: 'DAY',
+        reason: 'Evers, the NAACP\'s first Mississippi field secretary, is shot in the back in his driveway shortly after midnight and dies at the hospital. The killing — hours after President Kennedy\'s national civil rights address — is reported immediately in the national press and becomes a galvanizing event for the movement.',
+        source: {
+          externalId: 'src:history-medgar-evers-assassination',
+          name: 'Medgar Evers assassinated, June 12, 1963 — HISTORY.',
+          url: 'https://www.history.com/this-day-in-history/medgar-evers-assassinated',
+          publishedAt: '1963-06-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1964-04-23',
+        datePrecision: 'DAY',
+        reason: 'White supremacist Byron De La Beckwith is tried twice in 1964 for the murder; both trials end in hung juries by all-white panels, leaving him unconvicted despite the fingerprint and rifle evidence. The fact of the killing is recorded, but legal accountability remains unresolved.',
+        source: {
+          externalId: 'src:history-medgar-evers-trials',
+          name: 'Byron De La Beckwith\'s 1964 mistrials in the Evers murder — HISTORY.',
+          url: 'https://www.history.com/this-day-in-history/medgar-evers-assassinated',
+          publishedAt: '1964-04-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1994-02-05',
+        datePrecision: 'DAY',
+        reason: 'After the case is reopened, a racially mixed jury in Jackson finds Byron De La Beckwith guilty of murder in February 1994, more than thirty years after the killing. He is sentenced to life imprisonment and dies in prison in 2001, settling the legal record.',
+        source: {
+          externalId: 'src:history-beckwith-1994-conviction',
+          name: 'Byron De La Beckwith convicted of Medgar Evers\'s murder, February 1994 — HISTORY.',
+          url: 'https://www.history.com/this-day-in-history/medgar-evers-assassinated',
+          publishedAt: '1994-02-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jacob & Monod — the operon model of gene regulation ─────────────────────
+  {
+    externalId: 'trajectory:jacob-monod-operon-1961',
+    text: 'François Jacob and Jacques Monod proposed the operon model of gene regulation in their paper "Genetic regulatory mechanisms in the synthesis of proteins," published in the Journal of Molecular Biology in June 1961.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Jacob and Monod publish their synthesis in the Journal of Molecular Biology (vol. 3, pp. 318–356), proposing that structural genes are coordinately controlled by an operator and a repressor — the operon — and predicting messenger RNA. The model is built on the lac system and PaJaMo experiments at the Institut Pasteur.',
+        source: {
+          externalId: 'src:jacob-monod-jmb-1961',
+          name: 'Jacob F, Monod J. "Genetic regulatory mechanisms in the synthesis of proteins." J Mol Biol. 1961 Jun;3:318–356. PMID 13718526.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13718526/',
+          publishedAt: '1961-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-10-14',
+        datePrecision: 'DAY',
+        reason: 'Jacob, Monod, and André Lwoff are awarded the 1965 Nobel Prize in Physiology or Medicine "for their discoveries concerning genetic control of enzyme and virus synthesis." Independent confirmation of the operon and the lac repressor (isolated by Gilbert and Müller-Hill in 1966) establishes the model as settled foundational molecular biology.',
+        source: {
+          externalId: 'src:nobel-1965-medicine-operon',
+          name: 'The Nobel Prize in Physiology or Medicine 1965 — Jacob, Lwoff, Monod.',
+          url: 'https://en.wikipedia.org/wiki/Operon',
+          publishedAt: '1965-10-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Codd's relational model of data ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:codd-relational-model-1970',
+    text: 'Edgar F. Codd of IBM introduced the relational model of data in his paper "A Relational Model of Data for Large Shared Data Banks," published in Communications of the ACM in June 1970.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Codd publishes "A Relational Model of Data for Large Shared Data Banks" in Communications of the ACM (vol. 13, no. 6, pp. 377–387), proposing that data be organized as relations (tables) accessed declaratively, independent of physical storage. The paper formalizes data independence and the relational algebra.',
+        source: {
+          externalId: 'src:codd-cacm-relational-1970',
+          name: 'Codd EF. "A Relational Model of Data for Large Shared Data Banks." Communications of the ACM, vol. 13, no. 6 (June 1970), pp. 377–387.',
+          url: 'https://en.wikipedia.org/wiki/Relational_model',
+          publishedAt: '1970-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The relational model becomes the dominant database paradigm: IBM\'s System R and UC Berkeley\'s Ingres implement it during the 1970s, SQL emerges from System R, and Codd receives the 1981 ACM Turing Award for the work. The model is the settled foundation of commercial database systems.',
+        source: {
+          externalId: 'src:codd-turing-award-1981',
+          name: 'Edgar F. Codd — ACM A.M. Turing Award 1981, for the relational model.',
+          url: 'https://en.wikipedia.org/wiki/Relational_model',
+          publishedAt: '1981-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Love Canal — toxic waste emergency ──────────────────────────────────────
+  {
+    externalId: 'trajectory:love-canal-emergency-1978',
+    text: 'On August 7, 1978, President Jimmy Carter declared a federal health emergency at Love Canal in Niagara Falls, New York, after buried chemical waste was found contaminating the residential neighborhood.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1978-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-08-02',
+        datePrecision: 'DAY',
+        reason: 'New York State Health Commissioner Robert Whalen declares a state health emergency at Love Canal, finding that the buried Hooker Chemical waste poses a "great and imminent peril" and recommending that pregnant women and young children leave. Contemporaneous soil and air testing documents the contamination.',
+        source: {
+          externalId: 'src:love-canal-state-emergency-1978',
+          name: 'New York State Health Commissioner declares Love Canal emergency, August 2, 1978.',
+          url: 'https://en.wikipedia.org/wiki/Love_Canal',
+          publishedAt: '1978-08-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-08-07',
+        datePrecision: 'DAY',
+        reason: 'President Carter declares a federal health emergency — the first use of federal emergency funds for a non-natural disaster — ordering federal assistance and the relocation of residents. The episode directly drives the 1980 Superfund (CERCLA) law, cementing Love Canal as a documented landmark of environmental contamination.',
+        source: {
+          externalId: 'src:love-canal-federal-emergency-1978',
+          name: 'President Carter declares federal emergency at Love Canal, August 7, 1978.',
+          url: 'https://en.wikipedia.org/wiki/Love_Canal',
+          publishedAt: '1978-08-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
