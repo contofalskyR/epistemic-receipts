@@ -31722,6 +31722,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eisenhower federalizes troops to enforce Little Rock integration ─────────
+  {
+    externalId: 'trajectory:little-rock-nine-1957',
+    text: 'On 24 September 1957, President Dwight Eisenhower issued Executive Order 10730, federalizing the Arkansas National Guard and sending the U.S. Army\'s 101st Airborne Division to Little Rock, Arkansas, to enforce the court-ordered desegregation of Central High School and protect the nine Black students known as the Little Rock Nine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1957-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-09-24',
+        datePrecision: 'DAY',
+        reason: 'After Arkansas Governor Orval Faubus used the state National Guard to block nine Black students from entering Central High School, Eisenhower signed Executive Order 10730 on 24 September 1957, placing the Arkansas National Guard under federal command and ordering regular Army troops to Little Rock. On 25 September the 101st Airborne escorted the students into the school. The order and deployment are on the public federal record.',
+        source: {
+          externalId: 'src:nara-eo-10730',
+          name: 'U.S. National Archives. Executive Order 10730: Desegregation of Central High School (24 September 1957).',
+          url: 'https://www.archives.gov/milestone-documents/executive-order-10730',
+          publishedAt: '1957-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-09-29',
+        datePrecision: 'DAY',
+        reason: 'The federal intervention is treated as a landmark enforcement of Brown v. Board of Education and is exhaustively documented in contemporaneous newspaper coverage, military records, and the students\' own accounts. The constitutional principle was reaffirmed by the Supreme Court in Cooper v. Aaron (358 U.S. 1, decided 29 September 1958), in which all nine justices held that Arkansas officials were bound by the desegregation rulings. The event\'s facts have never been in dispute.',
+        source: {
+          externalId: 'src:cooper-v-aaron-1958',
+          name: 'Cooper v. Aaron, 358 U.S. 1 (decided 29 September 1958).',
+          url: 'https://supreme.justia.com/cases/federal/us/358/1/',
+          publishedAt: '1958-09-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Thích Quảng Đức self-immolation photographed in Saigon ──────────────────
+  {
+    externalId: 'trajectory:quang-duc-self-immolation-1963',
+    text: 'On 11 June 1963, the Buddhist monk Thích Quảng Đức burned himself to death at a Saigon intersection in protest of the Diệm government\'s persecution of Buddhists; Associated Press photographer Malcolm Browne captured the event in a photograph that became one of the most reproduced images of the Vietnam era.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-06-11',
+        datePrecision: 'DAY',
+        reason: 'Thích Quảng Đức seated himself at the intersection of Phan Đình Phùng and Lê Văn Duyệt streets, was doused in gasoline by fellow monks, and set himself alight while remaining motionless. AP bureau chief Malcolm Browne, tipped off in advance, photographed the entire sequence; the images were transmitted worldwide within hours, putting the act on the global public record and provoking President Kennedy to remark that no news picture in history had generated so much emotion.',
+        source: {
+          externalId: 'src:quang-duc-wikipedia',
+          name: 'Thích Quảng Đức self-immolation, Saigon, 11 June 1963; photographed by Malcolm Browne (Associated Press).',
+          url: 'https://en.wikipedia.org/wiki/Th%C3%ADch_Qu%E1%BA%A3ng_%C4%90%E1%BB%A9c',
+          publishedAt: '1963-06-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Browne\'s photograph won the 1963 World Press Photo of the Year, and his Saigon reporting earned the 1964 Pulitzer Prize for International Reporting (shared with David Halberstam). The authenticity of the event and the photograph has never been challenged; both are firmly established in the historical record of the Buddhist crisis that preceded the November 1963 coup against Diệm.',
+        source: {
+          externalId: 'src:browne-world-press-photo-1963',
+          name: 'World Press Photo of the Year 1963 — Malcolm Browne, "The Burning Monk." (Awarded 1964.)',
+          url: 'https://en.wikipedia.org/wiki/World_Press_Photo_of_the_Year',
+          publishedAt: '1964-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Apollo 13 oxygen-tank explosion and safe return ─────────────────────────
+  {
+    externalId: 'trajectory:apollo-13-explosion-1970',
+    text: 'On 13 April 1970 (14 April UTC), an oxygen tank in the Apollo 13 service module ruptured roughly 56 hours into the flight, crippling the spacecraft; the three-man crew used the lunar module as a lifeboat and returned safely to Earth, splashing down in the Pacific on 17 April 1970.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-04-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-04-13',
+        datePrecision: 'DAY',
+        reason: 'About 56 hours after the 11 April launch, a fault in the wiring of oxygen tank No. 2 caused it to explode, venting the service module\'s oxygen and disabling two of three fuel cells. Command module pilot Jack Swigert radioed "Okay, Houston, we\'ve had a problem here," followed by mission commander Jim Lovell. NASA Mission Control logged the event in real time and the crew abandoned the Moon landing, looping around the Moon and using the lunar module Aquarius for power and life support.',
+        source: {
+          externalId: 'src:nasa-apollo-13',
+          name: 'NASA. "Apollo 13" mission overview (launch 11 April 1970, accident 13/14 April, splashdown 17 April 1970).',
+          url: 'https://www.nasa.gov/mission/apollo-13/',
+          publishedAt: '1970-04-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-06-15',
+        datePrecision: 'DAY',
+        reason: 'The crew splashed down safely on 17 April 1970. The Apollo 13 Review Board, chaired by Edgar Cortright, investigated the accident and issued its report on 15 June 1970, tracing the explosion to damaged thermostatic switches in the oxygen tank heater. The cause and sequence of events are settled engineering history and reshaped spacecraft safety design.',
+        source: {
+          externalId: 'src:apollo-13-review-board-1970',
+          name: 'Report of the Apollo 13 Review Board (Cortright Commission), 15 June 1970 (NASA History Office).',
+          url: 'https://history.nasa.gov/ap13rb/ap13index.htm',
+          publishedAt: '1970-06-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── U.S. Environmental Protection Agency begins operations ──────────────────
+  {
+    externalId: 'trajectory:epa-established-1970',
+    text: 'On 2 December 1970, the United States Environmental Protection Agency officially began operations, consolidating federal pollution-control responsibilities under a single independent agency created by Reorganization Plan No. 3 of 1970, with William Ruckelshaus as its first administrator.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-12-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-12-02',
+        datePrecision: 'DAY',
+        reason: 'President Nixon proposed creating the EPA in Reorganization Plan No. 3 of 1970 (transmitted to Congress 9 July 1970). After congressional review, the agency opened on 2 December 1970 — the date the Senate confirmed William Ruckelshaus, who took the oath of office on 4 December. The EPA absorbed environmental functions from several departments and is recorded as a federal institution from that date.',
+        source: {
+          externalId: 'src:epa-origins',
+          name: 'U.S. EPA. "The Origins of EPA" — agency opened 2 December 1970; William Ruckelshaus first administrator.',
+          url: 'https://www.epa.gov/history/origins-epa',
+          publishedAt: '1970-12-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-12-31',
+        datePrecision: 'DAY',
+        reason: 'The EPA immediately became the operative federal environmental regulator: within weeks Congress passed and Nixon signed the Clean Air Act Amendments of 1970 (31 December 1970), which the new agency was charged with implementing. The EPA\'s existence, founding date, and statutory authority are settled institutional fact and have continued uninterrupted for over five decades.',
+        source: {
+          externalId: 'src:clean-air-act-1970',
+          name: 'U.S. EPA. "Evolution of the Clean Air Act" — 1970 Clean Air Act Amendments signed 31 December 1970, administered by the new EPA.',
+          url: 'https://www.epa.gov/clean-air-act-overview/evolution-clean-air-act',
+          publishedAt: '1970-12-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ethernet invented at Xerox PARC ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:ethernet-invented-1973',
+    text: 'On 22 May 1973, Robert Metcalfe circulated a memo at Xerox PARC describing a local-area networking scheme he named "Ethernet"; with David Boggs he built the first experimental Ethernet network, which ran that year at 2.94 Mbps and became the dominant standard for wired local networking.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-05-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-05-22',
+        datePrecision: 'DAY',
+        reason: 'Robert Metcalfe wrote a memo at Xerox PARC on 22 May 1973 proposing a broadcast networking system for the lab\'s Alto computers, coining the name "Ethernet" (after the luminiferous "ether"). With David Boggs he implemented the first working network, which ran at 2.94 Mbps. The memo and the working prototype put the invention on the documented record.',
+        source: {
+          externalId: 'src:ethernet-wikipedia',
+          name: 'Ethernet — Metcalfe memo and first network at Xerox PARC, 22 May 1973 (Metcalfe & Boggs).',
+          url: 'https://en.wikipedia.org/wiki/Ethernet',
+          publishedAt: '1973-05-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Metcalfe and Boggs published "Ethernet: Distributed Packet Switching for Local Computer Networks" in Communications of the ACM (July 1976), formally establishing the technology in the peer-reviewed literature. Ethernet was later standardized as IEEE 802.3 (1983) and became the near-universal foundation of wired LANs, settling both its design and its origin date.',
+        source: {
+          externalId: 'src:metcalfe-boggs-cacm-1976',
+          name: 'Metcalfe RM, Boggs DR. "Ethernet: Distributed Packet Switching for Local Computer Networks." Communications of the ACM 19(7):395–404, July 1976.',
+          url: 'https://dl.acm.org/doi/10.1145/360248.360253',
+          publishedAt: '1976-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
