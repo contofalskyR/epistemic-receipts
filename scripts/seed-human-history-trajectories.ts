@@ -27148,6 +27148,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Agincourt ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-agincourt-1415',
+    text: 'King Henry V of England defeated a numerically superior French army at the Battle of Agincourt on 25 October 1415 (Saint Crispin\'s Day) in northern France.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1415-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1415-10-25',
+        datePrecision: 'DAY',
+        reason: 'On the muddy field near Azincourt, Henry V\'s outnumbered army — anchored by Welsh and English longbowmen — routs the French men-at-arms. The event is recorded almost immediately in the Gesta Henrici Quinti, believed written c. 1416–1417 by a chaplain in the king\'s household who was present with the baggage train, giving the date and a first-hand English account of the battle.',
+        source: {
+          externalId: 'src:gesta-henrici-quinti',
+          name: 'Gesta Henrici Quinti (Deeds of Henry V), anonymous chaplain in the royal household, c. 1416–1417.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Agincourt',
+          publishedAt: '1416-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1422-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent contemporary chronicles from both sides — Jean Le Fèvre and Jean de Wavrin (both eyewitnesses), Enguerrand de Monstrelet, the Religieux de Saint-Denis, and Thomas Walsingham — corroborate the English victory on 25 October 1415. The date and outcome are not disputed; what remains genuinely contested among modern historians (notably the debate between Anne Curry\'s administrative-record estimates and the chronicle-based figures of Juliet Barker and Clifford Rogers) is the size of the opposing armies, not the fact or date of the battle.',
+        source: {
+          externalId: 'src:agincourt-chronicles-curry',
+          name: 'Anne Curry, The Battle of Agincourt: Sources and Interpretations (Boydell, 2000), collecting Le Fèvre, Wavrin, Monstrelet and other contemporary accounts.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Agincourt',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── John Cabot reaches North America ────────────────────────────────────────
+  {
+    externalId: 'trajectory:john-cabot-north-america-1497',
+    text: 'John Cabot (Giovanni Caboto), sailing for Henry VII of England aboard the Matthew, reached the coast of North America on 24 June 1497, the first documented European landfall on the mainland since the Norse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1497-06-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1497-08-23',
+        datePrecision: 'DAY',
+        reason: 'Cabot\'s own log is lost and his crew left no account, but news of the voyage is recorded contemporaneously by foreign diplomats in England. The Venetian merchant Lorenzo Pasqualigo, writing to his brothers from London on 23 August 1497, reports that Cabot has returned having discovered "mainland 700 leagues away"; Raimondo de Soncino, the Milanese envoy, confirms the discovery in a dispatch of 18 December 1497.',
+        source: {
+          externalId: 'src:pasqualigo-letter-1497',
+          name: 'Letter of Lorenzo Pasqualigo to his brothers in Venice, 23 August 1497, and dispatch of Raimondo de Soncino, 18 December 1497.',
+          url: 'https://en.wikipedia.org/wiki/John_Cabot',
+          publishedAt: '1497-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The discovery in the 1950s of the "John Day letter" — an account written by an English merchant to a Spanish "Lord Grand Admiral" (likely Columbus) in the winter of 1497–98 — gives the most detailed surviving description of the 1497 voyage and explicitly fixes the landfall on 24 June 1497. The independent letter corroborates the diplomatic reports and settles the date and fact of the landfall. The precise landing site (Newfoundland, Cape Breton, or Labrador) remains debated, but the event itself is not.',
+        source: {
+          externalId: 'src:john-day-letter-1497',
+          name: 'The John Day letter (English merchant to the Lord Grand Admiral, winter 1497–98), rediscovered in the Spanish archives by L.A. Vigneras, 1956.',
+          url: 'https://en.wikipedia.org/wiki/John_Cabot',
+          publishedAt: '1956-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mayflower Compact ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:mayflower-compact-1620',
+    text: 'The Mayflower Compact, an agreement among the Plymouth colonists to form a self-governing "civil Body Politick," was signed aboard the Mayflower off Cape Cod on 11 November 1620 (Old Style).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1620-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1620-11-11',
+        datePrecision: 'DAY',
+        reason: 'With the Mayflower anchored off Cape Cod — outside the bounds of their Virginia patent — the adult male passengers sign a brief covenant binding themselves into a body politic that will frame "just and equal Laws." The text and circumstances are recorded contemporaneously in Mourt\'s Relation, the colonists\' own published account of the settlement\'s first months, printed in London in 1622.',
+        source: {
+          externalId: 'src:mourts-relation-1622',
+          name: 'Mourt\'s Relation: A Journal of the Pilgrims at Plymouth (London, 1622), containing the text of the Compact.',
+          url: 'https://en.wikipedia.org/wiki/Mayflower_Compact',
+          publishedAt: '1622-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1646-01-01',
+        datePrecision: 'YEAR',
+        reason: 'William Bradford, the colony\'s governor and a signatory, independently records the signing and transcribes the Compact in his manuscript history Of Plimoth Plantation (written c. 1630–1650). His account agrees with Mourt\'s Relation; though the original signed document is lost, three concordant 17th-century texts settle the date and content of the agreement.',
+        source: {
+          externalId: 'src:bradford-plymouth-plantation',
+          name: 'William Bradford, Of Plimoth Plantation (manuscript, c. 1630–1650), preserved at the State Library of Massachusetts.',
+          url: 'https://en.wikipedia.org/wiki/Mayflower_Compact',
+          publishedAt: '1646-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Abel Tasman sights New Zealand ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:tasman-new-zealand-1642',
+    text: 'On 13 December 1642 the Dutch navigator Abel Tasman sighted the west coast of New Zealand\'s South Island, the first recorded European encounter with New Zealand.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1642-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1642-12-13',
+        datePrecision: 'DAY',
+        reason: 'Commanding the VOC ships Heemskerck and Zeehaen on a voyage from Batavia via Mauritius, Tasman records sighting "a large land, uplifted high" off the north-west of the South Island. He names it Staten Landt (later Nova Zeelandia). The sighting and date are entered in his ship\'s journal, signed by Tasman, now held in the Dutch National Archives at The Hague.',
+        source: {
+          externalId: 'src:tasman-journal-1642',
+          name: 'Journal of Abel Tasman, 1642 voyage of the Heemskerck and Zeehaen, Dutch National Archives, The Hague.',
+          url: 'https://en.wikipedia.org/wiki/Abel_Tasman',
+          publishedAt: '1643-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tasman\'s journal was published in full with facsimiles and English translation by J.E. Heeres for the Linschoten Society in 1898; the geography it describes matches the South Island\'s west coast and Golden Bay (where the deadly encounter with Māori occurred days later). The date and fact of the first European sighting of New Zealand are settled and uncontested in the scholarship.',
+        source: {
+          externalId: 'src:heeres-tasman-1898',
+          name: 'J.E. Heeres (ed.), Abel Janszoon Tasman\'s Journal of His Discovery of Van Diemen\'s Land and New Zealand in 1642 (Amsterdam, 1898).',
+          url: 'https://en.wikipedia.org/wiki/Abel_Tasman',
+          publishedAt: '1898-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── James Bradley discovers the aberration of light ─────────────────────────
+  {
+    externalId: 'trajectory:bradley-aberration-light-1729',
+    text: 'James Bradley announced his discovery of the aberration of starlight in a letter read to the Royal Society on 9 and 16 January 1729, providing the first direct observational proof of the Earth\'s annual motion around the Sun.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1729-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1729-01-09',
+        datePrecision: 'DAY',
+        reason: 'Seeking stellar parallax, Bradley instead found that the fixed stars trace small annual ellipses with a constant amplitude of about 20.5 arcseconds — an effect explained by the finite speed of light combined with the Earth\'s orbital velocity. He communicated the discovery as a letter to Edmond Halley, "An Account of a new discovered Motion of the Fix\'d Stars," read before the Royal Society on 9 and 16 January 1729 and published in the Philosophical Transactions.',
+        source: {
+          externalId: 'src:bradley-aberration-letter-1729',
+          name: 'James Bradley, "A Letter to Dr Edmond Halley giving an Account of a new discovered Motion of the Fix\'d Stars," read to the Royal Society 9 & 16 January 1729 (Philosophical Transactions, vol. 35).',
+          url: 'https://en.wikisource.org/wiki/Bradley,_James_(DNB00)',
+          publishedAt: '1729-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1729-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Aberration was immediately accepted as the long-sought empirical confirmation that the Earth moves around the Sun — vindicating the Copernican system more directly than parallax (still unmeasured until 1838) — and as a measurement of the ratio of the speed of light to the Earth\'s orbital speed. The Dictionary of National Biography records that the explanation "was never disputed, and has scarcely been corrected." The constant of aberration remains a fundamental quantity of positional astronomy.',
+        source: {
+          externalId: 'src:dnb-bradley-aberration',
+          name: 'Dictionary of National Biography (1885–1900), "Bradley, James," on the discovery and reception of the aberration of light.',
+          url: 'https://en.wikisource.org/wiki/Bradley,_James_(DNB00)',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
