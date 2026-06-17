@@ -47680,6 +47680,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Reformation, New World contact, Ottoman, exploration
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Luther excommunicated by Decet Romanum Pontificem ───────────────────────
+  {
+    externalId: 'trajectory:decet-romanum-pontificem-1521',
+    text: 'On 3 January 1521, Pope Leo X issued the papal bull Decet Romanum Pontificem, formally excommunicating Martin Luther after he refused to recant the forty-one theses censured in Exsurge Domine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1521-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1521-01-03',
+        datePrecision: 'DAY',
+        reason: 'Following Luther\'s public burning of Exsurge Domine at Wittenberg on 10 December 1520 and his refusal to recant within the 60-day deadline, the Roman Curia issued Decet Romanum Pontificem, which named Luther and associates such as Andreas Karlstadt and excommunicated them from the Church. The bull was promulgated as an official act of the papacy.',
+        source: {
+          externalId: 'src:decet-romanum-pontificem-bull',
+          name: 'Pope Leo X, Decet Romanum Pontificem (papal bull excommunicating Martin Luther), 3 January 1521.',
+          url: 'https://en.wikipedia.org/wiki/Decet_Romanum_Pontificem',
+          publishedAt: '1521-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The issuance of Decet Romanum Pontificem on 3 January 1521 and its effect of formally excommunicating Luther are attested by the surviving bull text and contemporary Reformation-era documentation. Modern scholarship treats the date and the act as settled facts of the early Reformation, marking Luther\'s definitive break with Rome ahead of the Diet of Worms.',
+        source: {
+          externalId: 'src:wikipedia-decet-romanum-pontificem',
+          name: 'Wikipedia, "Decet Romanum Pontificem" — 3 January 1521 bull excommunicating Martin Luther.',
+          url: 'https://en.wikipedia.org/wiki/Decet_Romanum_Pontificem',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Thomas More executed at Tower Hill ──────────────────────────────────────
+  {
+    externalId: 'trajectory:thomas-more-executed-1535',
+    text: 'On 6 July 1535, Sir Thomas More was beheaded at Tower Hill in London for refusing to acknowledge Henry VIII as Supreme Head of the Church of England.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1535-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1535-07-06',
+        datePrecision: 'DAY',
+        reason: 'Convicted of treason for declining the Oath of Supremacy, More was executed by beheading on Tower Hill. The event was witnessed publicly and recorded by his son-in-law William Roper, who documented More\'s scaffold words that he died "the king\'s good servant, and God\'s first."',
+        source: {
+          externalId: 'src:roper-life-of-more',
+          name: 'William Roper, The Life of Sir Thomas More (c. 1556), eyewitness account by More\'s son-in-law.',
+          url: 'https://en.wikipedia.org/wiki/Thomas_More',
+          publishedAt: '1556-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'YEAR',
+        reason: 'More\'s execution on 6 July 1535 is attested by Roper\'s contemporary biography and corroborated by Tudor state records of his trial and attainder. The date and circumstances are settled in modern historiography; More was later canonized by the Catholic Church in 1935.',
+        source: {
+          externalId: 'src:wikipedia-thomas-more',
+          name: 'Wikipedia, "Thomas More" — executed 6 July 1535 at Tower Hill.',
+          url: 'https://en.wikipedia.org/wiki/Thomas_More',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Orellana completes the first European descent of the Amazon ─────────────
+  {
+    externalId: 'trajectory:orellana-amazon-descent-1542',
+    text: 'On 26 August 1542, Francisco de Orellana\'s expedition reached the Atlantic Ocean, completing the first European navigation of the length of the Amazon River.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1542-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1542-08-26',
+        datePrecision: 'DAY',
+        reason: 'After separating from Gonzalo Pizarro\'s expedition, Orellana\'s party descended the river system from the Andes and reached the Atlantic on 26 August 1542. The voyage was documented in detail by the Dominican friar Gaspar de Carvajal, who travelled with the expedition and kept a day-by-day chronicle, the Relación del nuevo descubrimiento del famoso río Grande.',
+        source: {
+          externalId: 'src:carvajal-relacion-amazon',
+          name: 'Gaspar de Carvajal, Relación del nuevo descubrimiento del famoso río Grande (eyewitness chronicle of the 1541–1542 Orellana voyage).',
+          url: 'https://en.wikipedia.org/wiki/Francisco_de_Orellana',
+          publishedAt: '1542-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Carvajal\'s manuscript was published in full by the Chilean historian José Toribio Medina in 1894 (Descubrimiento del río de las Amazonas), placing the eyewitness chronicle in the scholarly record. The first European descent of the Amazon, reaching the Atlantic on 26 August 1542, is settled in the history of exploration.',
+        source: {
+          externalId: 'src:wikipedia-orellana',
+          name: 'Wikipedia, "Francisco de Orellana" — reached the Atlantic 26 August 1542 after first navigation of the Amazon.',
+          url: 'https://en.wikipedia.org/wiki/Francisco_de_Orellana',
+          publishedAt: '1894-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Passarowitz ends the Ottoman–Habsburg/Venetian war ────────────
+  {
+    externalId: 'trajectory:treaty-passarowitz-1718',
+    text: 'On 21 July 1718, the Treaty of Passarowitz was signed between the Ottoman Empire, the Habsburg monarchy, and the Republic of Venice, ceding the Banat of Temeswar, Belgrade, and parts of Serbia and Wallachia to the Habsburgs.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1718-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1718-07-21',
+        datePrecision: 'DAY',
+        reason: 'Concluding the Austro-Turkish War of 1716–1718 and the Ottoman–Venetian War, the treaty was signed at Požarevac (Passarowitz) in Serbia. The Habsburgs gained the Banat of Temeswar, Belgrade, northern Serbia, Oltenia (western Wallachia), and parts of northern Bosnia; Venice ceded the Morea while keeping the Ionian Islands. The signed treaty is an official diplomatic instrument.',
+        source: {
+          externalId: 'src:treaty-passarowitz-instrument',
+          name: 'Treaty of Passarowitz, signed 21 July 1718 between the Ottoman Empire, the Habsburg monarchy, and the Republic of Venice.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Passarowitz',
+          publishedAt: '1718-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The signing on 21 July 1718 and its territorial terms are attested by the surviving treaty text and contemporary diplomatic records. Modern scholarship treats the treaty and its date as settled, marking the high-water mark of Habsburg expansion into the Balkans before the reversals of the 1737–1739 war.',
+        source: {
+          externalId: 'src:wikipedia-treaty-passarowitz',
+          name: 'Wikipedia, "Treaty of Passarowitz" — signed 21 July 1718.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Passarowitz',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
