@@ -27587,6 +27587,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — physics revolution & totalitarianism
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Millikan oil-drop experiment — the elementary electric charge ────────────
+  {
+    externalId: 'trajectory:millikan-oil-drop-1913',
+    text: 'In 1913 Robert Millikan reported the first precise measurement of the elementary electric charge (e ≈ 1.59×10⁻¹⁹ C) using the oil-drop experiment, establishing that electric charge is quantized in discrete units.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Millikan publishes "On the Elementary Electrical Charge and the Avogadro Constant" in Physical Review, reporting that the charge on individual oil droplets balanced in an electric field is always an integer multiple of a single fundamental unit e ≈ 1.59×10⁻¹⁹ C. The result demonstrates that electric charge is not continuous but quantized.',
+        source: {
+          externalId: 'src:millikan-elementary-charge-1913',
+          name: 'Millikan RA. On the Elementary Electrical Charge and the Avogadro Constant. Physical Review 1913;2(2):109–143.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.2.109',
+          publishedAt: '1913-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The oil-drop value is repeatedly reproduced and refined; the quantization of charge becomes a foundational result of atomic physics. Millikan\'s measurement (about 0.6% from the modern value of 1.602×10⁻¹⁹ C, the discrepancy traced largely to his value for the viscosity of air) is accepted across the discipline.',
+        source: {
+          externalId: 'src:oil-drop-experiment-wikipedia',
+          name: 'Oil drop experiment (Wikipedia) — measurement of the elementary charge and comparison with the modern value.',
+          url: 'https://en.wikipedia.org/wiki/Oil_drop_experiment',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1923-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1923 Nobel Prize in Physics is awarded to Robert Andrews Millikan "for his work on the elementary charge of electricity and on the photoelectric effect," formally recognizing the measurement of e as established physics.',
+        source: {
+          externalId: 'src:nobel-physics-1923-millikan',
+          name: 'Nobel Prize in Physics 1923: Robert Andrews Millikan.',
+          url: 'https://www.nobelprize.org/prizes/physics/1923/summary/',
+          publishedAt: '1923-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bethe — energy production in stars (stellar nucleosynthesis) ─────────────
+  {
+    externalId: 'trajectory:bethe-stellar-energy-1939',
+    text: 'In March 1939 Hans Bethe published "Energy Production in Stars," showing that stars shine by nuclear fusion of hydrogen into helium via the proton–proton chain and the carbon–nitrogen–oxygen (CNO) cycle.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Bethe publishes "Energy Production in Stars" in Physical Review, deriving the nuclear reaction networks — the proton–proton chain and the CNO (Bethe–Weizsäcker) cycle — by which main-sequence stars fuse hydrogen into helium and release the energy that powers their luminosity. The work resolves the long-standing question of the Sun\'s energy source.',
+        source: {
+          externalId: 'src:bethe-energy-production-stars-1939',
+          name: 'Bethe HA. Energy Production in Stars. Physical Review 1939;55(5):434–456.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.55.434',
+          publishedAt: '1939-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Stellar nucleosynthesis is integrated into the comprehensive Burbidge–Burbidge–Fowler–Hoyle (B²FH) synthesis of element formation in stars, and Bethe\'s fusion mechanisms become the accepted basis of stellar astrophysics, later confirmed by solar-neutrino detection.',
+        source: {
+          externalId: 'src:hans-bethe-wikipedia-stellar',
+          name: 'Hans Bethe (Wikipedia) — "Energy Production in Stars" (Physical Review, March 1939) and the theory of stellar nucleosynthesis.',
+          url: 'https://en.wikipedia.org/wiki/Hans_Bethe',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1967 Nobel Prize in Physics is awarded to Hans Albrecht Bethe "for his contributions to the theory of nuclear reactions, especially his discoveries concerning the energy production in stars," formally ratifying the result.',
+        source: {
+          externalId: 'src:nobel-physics-1967-bethe',
+          name: 'Nobel Prize in Physics 1967: Hans Albrecht Bethe.',
+          url: 'https://www.nobelprize.org/prizes/physics/1967/summary/',
+          publishedAt: '1967-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Oppenheimer–Snyder — continued gravitational contraction (black holes) ───
+  {
+    externalId: 'trajectory:oppenheimer-snyder-collapse-1939',
+    text: 'On 1 September 1939 J. Robert Oppenheimer and Hartland Snyder published "On Continued Gravitational Contraction," showing that a sufficiently massive star, having exhausted its fuel, collapses indefinitely under gravity and seals itself off from the outside universe — the first relativistic model of what is now called a black hole.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-09-01',
+        datePrecision: 'DAY',
+        reason: 'Oppenheimer and Snyder publish "On Continued Gravitational Contraction" in Physical Review, solving Einstein\'s field equations for an idealized collapsing dust sphere. They show that to a distant observer the star asymptotically freezes at its Schwarzschild radius, while a co-moving observer crosses it in finite time — the first concrete general-relativistic description of unending gravitational collapse.',
+        source: {
+          externalId: 'src:oppenheimer-snyder-contraction-1939',
+          name: 'Oppenheimer JR, Snyder H. On Continued Gravitational Contraction. Physical Review 1939;56(5):455–459.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.56.455',
+          publishedAt: '1939-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-09-01',
+        datePrecision: 'YEAR',
+        reason: 'The result is largely set aside for decades. Eddington and others (and even Einstein, in a 1939 paper) doubted that real stars could collapse to such a singular state, and the idealizations (pressureless dust, exact symmetry) left the physical reality of the endpoint disputed throughout the 1940s–1950s.',
+        source: {
+          externalId: 'src:black-hole-history-wikipedia',
+          name: 'Black hole (Wikipedia) — the Oppenheimer–Snyder model (1939) and mid-century skepticism about gravitational collapse.',
+          url: 'https://en.wikipedia.org/wiki/Black_hole',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-01-15',
+        datePrecision: 'MONTH',
+        reason: 'Roger Penrose\'s singularity theorem shows that gravitational collapse to a singularity is generic, not an artifact of perfect symmetry. Combined with the discovery of quasars, pulsars, and X-ray binaries, the reality of complete gravitational collapse becomes settled physics, with Penrose awarded the 2020 Nobel Prize for the proof.',
+        source: {
+          externalId: 'src:penrose-gravitational-collapse-1965',
+          name: 'Penrose R. Gravitational Collapse and Space-Time Singularities. Physical Review Letters 1965;14(3):57–59.',
+          url: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.14.57',
+          publishedAt: '1965-01-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lateran Treaty — creation of Vatican City ────────────────────────────────
+  {
+    externalId: 'trajectory:lateran-treaty-1929',
+    text: 'On 11 February 1929 the Lateran Treaty was signed between the Holy See and the Kingdom of Italy, creating the independent state of Vatican City and resolving the "Roman Question" that had stood since the 1870 capture of Rome.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1929-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1929-02-11',
+        datePrecision: 'DAY',
+        reason: 'Cardinal Pietro Gasparri, for Pope Pius XI, and Benito Mussolini, for King Victor Emmanuel III, sign the Lateran Pacts at the Lateran Palace in Rome. The political treaty creates the State of Vatican City with full sovereignty for the Holy See, ending nearly six decades during which the popes considered themselves "prisoners in the Vatican."',
+        source: {
+          externalId: 'src:lateran-treaty-wikipedia',
+          name: 'Lateran Treaty (Wikipedia) — signing on 11 February 1929 by Gasparri and Mussolini, creating Vatican City.',
+          url: 'https://en.wikipedia.org/wiki/Lateran_Treaty',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1929-06-07',
+        datePrecision: 'DAY',
+        reason: 'The Lateran Pacts are ratified and instruments of ratification exchanged on 7 June 1929, bringing the treaty into force. Vatican City is established as a sovereign state recognized in international law — a status that remains in effect, later incorporated by reference into the Italian Constitution.',
+        source: {
+          externalId: 'src:lateran-ratification-1929',
+          name: 'Lateran Treaty (Wikipedia) — ratification and entry into force on 7 June 1929.',
+          url: 'https://en.wikipedia.org/wiki/Lateran_Treaty',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Spanish Civil War — outbreak of the military rising ──────────────────────
+  {
+    externalId: 'trajectory:spanish-civil-war-outbreak-1936',
+    text: 'On 17–18 July 1936 a military coup against the Spanish Republic\'s Popular Front government partially failed, splitting the country and igniting the Spanish Civil War, which lasted until 1 April 1939.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1936-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1936-07-17',
+        datePrecision: 'DAY',
+        reason: 'A coup d\'état by a group of generals of the Spanish Republican Armed Forces begins in the Army of Africa in Spanish Morocco on 17 July 1936 and spreads to the mainland on 18 July. The rising succeeds in part of the country but is defeated elsewhere by loyal forces and armed workers\' militias, dividing Spain into Nationalist and Republican zones.',
+        source: {
+          externalId: 'src:spanish-civil-war-wikipedia',
+          name: 'Spanish Civil War (Wikipedia) — outbreak of the military coup on 17–18 July 1936 against the Popular Front government.',
+          url: 'https://en.wikipedia.org/wiki/Spanish_Civil_War',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-04-01',
+        datePrecision: 'DAY',
+        reason: 'After nearly three years of war — including the bombing of Guernica, foreign intervention by Germany, Italy, and the Soviet Union, and the fall of Madrid — Francisco Franco declares the war over on 1 April 1939, establishing a dictatorship that lasted until his death in 1975. The chronology of the conflict is documented contemporaneously and universally accepted.',
+        source: {
+          externalId: 'src:spanish-civil-war-end-1939',
+          name: 'Spanish Civil War (Wikipedia) — Nationalist victory and Franco\'s declaration that the war was over, 1 April 1939.',
+          url: 'https://en.wikipedia.org/wiki/Spanish_Civil_War',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
