@@ -36867,6 +36867,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, Renaissance,
+  // New World contact, Ottoman Empire, Mughal India
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Savonarola executed in Florence ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:savonarola-executed-1498',
+    text: 'On 23 May 1498 the Dominican friar Girolamo Savonarola was hanged and then burned in the Piazza della Signoria in Florence, together with two fellow friars, ending his theocratic ascendancy over the city.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1498-05-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1498-05-23',
+        datePrecision: 'DAY',
+        reason: 'After his condemnation by a Florentine and papal commission, Savonarola and the friars Domenico da Pescia and Silvestro Maruffi are hanged on separate gallows and their bodies burned in the public square; the ashes are thrown into the Arno to prevent relic-gathering. The execution is witnessed by a large crowd and recorded in the eyewitness diary of the Florentine apothecary Luca Landucci.',
+        source: {
+          externalId: 'src:landucci-florentine-diary-1498',
+          name: 'Luca Landucci, A Florentine Diary from 1450 to 1516 (contemporary eyewitness account of 23 May 1498).',
+          url: 'https://en.wikipedia.org/wiki/Girolamo_Savonarola',
+          publishedAt: '1498-05-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1498-12-31',
+        datePrecision: 'YEAR',
+        reason: 'The event is corroborated within the same year by Filippo Dolciati\'s 1498 panel painting "Execution of Girolamo Savonarola" (Museo di San Marco, Florence), official Florentine Signoria records, and multiple contemporary chronicles; the date and manner of death are settled fact.',
+        source: {
+          externalId: 'src:dolciati-savonarola-painting-1498',
+          name: 'Filippo Dolciati, Execution of Girolamo Savonarola (1498), Museo di San Marco, Florence; with Florentine Signoria records.',
+          url: 'https://en.wikipedia.org/wiki/Girolamo_Savonarola',
+          publishedAt: '1498-12-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ottoman conquest of Rhodes ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:siege-of-rhodes-1522',
+    text: 'On 22 December 1522 the Knights Hospitaller capitulated to Suleiman the Magnificent after a six-month siege, surrendering the island of Rhodes; the surviving knights marched out on 1 January 1523, ending more than two centuries of Hospitaller rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1522-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1522-12-22',
+        datePrecision: 'DAY',
+        reason: 'After the siege begun on 26 June 1522, representatives of the Latin and Greek inhabitants accept Suleiman\'s terms on 22 December; Grand Master Philippe Villiers de L\'Isle-Adam negotiates a surrender granting the knights twelve days to evacuate with their weapons and relics. The remaining knights and soldiers march out on 1 January 1523 and sail to Crete. The campaign is documented by participant accounts including that of Jacobus Fontanus.',
+        source: {
+          externalId: 'src:fontanus-rhodes-siege-1522',
+          name: 'Jacobus Fontanus, De bello Rhodio (eyewitness account of the 1522 siege of Rhodes), and contemporary Ottoman campaign records.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Rhodes_(1522)',
+          publishedAt: '1523-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ottoman and Hospitaller archival sources, the surrender terms, and the subsequent relocation of the Order (eventually to Malta in 1530) corroborate the conquest; the fall of Rhodes on 22 December 1522 is settled military and diplomatic history.',
+        source: {
+          externalId: 'src:rhodes-1522-scholarship',
+          name: 'Standard histories of the Knights Hospitaller and the Ottoman conquest of Rhodes.',
+          url: 'https://en.wikipedia.org/wiki/Knights_Hospitaller',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Breitenfeld — first major Protestant victory ──────────────────
+  {
+    externalId: 'trajectory:battle-of-breitenfeld-1631',
+    text: 'On 17 September 1631 the Swedish-Saxon army under Gustavus Adolphus decisively defeated the Imperial and Catholic League forces under Count Tilly at Breitenfeld near Leipzig — the Catholic side\'s first major defeat of the Thirty Years\' War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1631-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1631-09-17',
+        datePrecision: 'DAY',
+        reason: 'Gustavus Adolphus\'s combined-arms tactics and regimental artillery rout Tilly\'s tercios; the victory shatters the myth of Imperial invincibility and is reported across Europe within weeks in dispatches and broadsheets, prompting Brandenburg, Hesse, and Saxony to align openly against the Emperor. Eyewitness officer accounts, including the memoirs of Colonel Robert Monro, record the battle.',
+        source: {
+          externalId: 'src:breitenfeld-monro-1631',
+          name: 'Robert Monro, Monro His Expedition with the Worthy Scots Regiment (eyewitness account), with contemporary Swedish and Imperial battle reports.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Breitenfeld_(1631)',
+          publishedAt: '1631-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Swedish and Imperial archival records, casualty returns, and modern syntheses such as Peter H. Wilson\'s The Thirty Years War: Europe\'s Tragedy (2009) confirm the date, outcome, and strategic consequences; Breitenfeld is settled military history.',
+        source: {
+          externalId: 'src:breitenfeld-wilson-2009',
+          name: 'Peter H. Wilson, The Thirty Years War: Europe\'s Tragedy, 2009.',
+          url: 'https://en.wikipedia.org/wiki/Gustavus_Adolphus',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Descartes publishes the Discourse on the Method ─────────────────────────
+  {
+    externalId: 'trajectory:descartes-discourse-method-1637',
+    text: 'On 8 June 1637 René Descartes published the Discours de la méthode anonymously in Leiden through the printer Jan Maire, written in French and articulating a method of systematic doubt that is widely regarded as a founding text of modern philosophy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1637-06-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1637-06-08',
+        datePrecision: 'DAY',
+        reason: 'Descartes\' Discours de la méthode pour bien conduire sa raison, et chercher la vérité dans les sciences is published in Leiden by Jan Maire as the preface to three scientific essays (Dioptrique, Météores, Géométrie). Written in vernacular French rather than scholarly Latin to reach a broad audience, it lays out four precepts of method and the program of radical doubt.',
+        source: {
+          externalId: 'src:descartes-discourse-1637',
+          name: 'René Descartes, Discours de la méthode (Leiden: Jan Maire, 8 June 1637).',
+          url: 'https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode',
+          publishedAt: '1637-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Surviving 1637 first editions, Descartes\' correspondence, and the continuous scholarly tradition (including the Adam-Tannery critical edition of his works) establish the authorship, content, and 1637 publication beyond dispute; the Discourse is a settled landmark of the Scientific Revolution and early modern philosophy.',
+        source: {
+          externalId: 'src:descartes-discourse-scholarship',
+          name: 'Stanford Encyclopedia of Philosophy, "Descartes\' Life and Works" (Adam-Tannery critical edition tradition).',
+          url: 'https://plato.stanford.edu/entries/descartes-works/',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aurangzeb crowned Mughal emperor ────────────────────────────────────────
+  {
+    externalId: 'trajectory:aurangzeb-coronation-1658',
+    text: 'On 31 July 1658 Aurangzeb had himself crowned Mughal emperor at the Sheesh Mahal in Delhi after defeating his brothers and deposing his father Shah Jahan in the war of succession, beginning a reign that would last until 1707.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1658-07-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1658-07-31',
+        datePrecision: 'DAY',
+        reason: 'Having defeated Dara Shikoh at Samugarh and confined Shah Jahan in the Agra fort, Aurangzeb arranges his coronation at the Sheesh Mahal in Delhi on 31 July 1658, taking the regnal title Alamgir. A second, more formal coronation follows in 1659. The accession is recorded in Mughal court chronicles and by contemporary European observers at the court.',
+        source: {
+          externalId: 'src:aurangzeb-coronation-1658',
+          name: 'Mughal court chronicles (Alamgirnama) and contemporary accounts of Aurangzeb\'s accession.',
+          url: 'https://en.wikipedia.org/wiki/Aurangzeb',
+          publishedAt: '1658-07-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mughal administrative records, coinage and inscriptions bearing the title Alamgir, and the historiography of the Mughal succession war corroborate the date and circumstances of Aurangzeb\'s accession; it is settled history.',
+        source: {
+          externalId: 'src:aurangzeb-accession-scholarship',
+          name: 'Standard histories of the Mughal Empire and the 1657-1658 war of succession.',
+          url: 'https://en.wikipedia.org/wiki/Aurangzeb',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
