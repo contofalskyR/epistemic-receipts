@@ -1438,6 +1438,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Death of Saladin (Ayyubid Egypt/Syria) ───────────────────────────────────
+  {
+    externalId: 'trajectory:death-of-saladin-1193',
+    text: 'Saladin (Salah al-Din), sultan of Egypt and Syria, died of a fever at Damascus on 4 March 1193.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1193-03-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1193-03-04',
+        datePrecision: 'DAY',
+        reason: 'Baha al-Din ibn Shaddad, Saladin\'s qadi al-askar (judge of the army) and close companion from 1188 onward, was at Damascus during the sultan\'s final illness. His biography al-Nawadir al-Sultaniyya records the twelve-day fever and the death on the night of 27 Safar 589 AH (4 March 1193), an eyewitness account.',
+        source: {
+          externalId: 'src:baha-al-din-history-saladin',
+          name: 'Baha al-Din ibn Shaddad. al-Nawadir al-Sultaniyya wa\'l-Mahasin al-Yusufiyya (The Rare and Excellent History of Saladin), account of Saladin\'s death. (c. 1228, by his qadi and companion)',
+          url: 'https://archive.org/details/rareexcellenthis00dsri',
+          publishedAt: '1228-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and circumstances are independently corroborated by the contemporary historians Imad al-Din al-Isfahani (Saladin\'s secretary), Ibn al-Athir, and the later Abu Shama. Modern scholarship treats the death at Damascus on 4 March 1193, and the famously meagre estate Saladin left, as settled fact.',
+        source: {
+          externalId: 'src:saladin-death-encyclopedic',
+          name: 'Saladin — death at Damascus, 1193. Encyclopaedic synthesis of the contemporary Arabic sources (Lyons & Jackson, Saladin: The Politics of the Holy War, 1982).',
+          url: 'https://en.wikipedia.org/wiki/Saladin',
+          publishedAt: '1982-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── King Louis IX captured at Fariskur (Seventh Crusade) ─────────────────────
+  {
+    externalId: 'trajectory:louis-ix-captured-fariskur-1250',
+    text: 'King Louis IX of France was captured by Egyptian Ayyubid forces on 6 April 1250 during the catastrophic retreat from Mansurah in the Seventh Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1250-04-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1250-04-06',
+        datePrecision: 'DAY',
+        reason: 'Jean de Joinville, seneschal of Champagne, accompanied the crusade and was himself taken prisoner alongside the king. His memoir, the Life of Saint Louis, gives a first-hand account of the disintegration of the army during the retreat toward Damietta and the surrender and capture of Louis IX, who was stricken with dysentery.',
+        source: {
+          externalId: 'src:joinville-life-saint-louis',
+          name: 'Jean de Joinville. Vie de Saint Louis (Life of Saint Louis / Memoirs of the Crusade), account of the Egyptian campaign and the king\'s capture. (c. 1309, by a participant taken prisoner with the king)',
+          url: 'https://archive.org/details/MemoirsOfTheCrusades',
+          publishedAt: '1309-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The capture at Fariskur on 6 April 1250 is independently confirmed by Arabic sources (Ibn Wasil, al-Maqrizi) and other Latin accounts; the ransom terms — the surrender of Damietta and 400,000 livres — are documented. The date and the unprecedented capture of a reigning French king are settled across Latin and Arabic historiography.',
+        source: {
+          externalId: 'src:battle-of-fariskur-1250',
+          name: 'Battle of Fariskur (1250) and the capture of Louis IX — synthesis of Latin and Arabic sources on the Seventh Crusade.',
+          url: 'https://en.wikipedia.org/wiki/Seventh_Crusade',
+          publishedAt: '1950-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Disputation of Barcelona — two contemporaneous accounts disagree ─────────
+  {
+    externalId: 'trajectory:disputation-barcelona-1263',
+    text: 'A public disputation on whether Jesus was the Messiah was held before King James I of Aragon at Barcelona on 20–24 July 1263, between the Dominican friar Pablo Christiani and the Jewish scholar Nahmanides (Ramban).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1263-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1263-07-20',
+        datePrecision: 'DAY',
+        reason: 'Over four sessions (20–24 July 1263) in the royal palace, ordered by King James I and attended by his court and senior clergy, Pablo Christiani argued from rabbinic literature that the Messiah had already come, and Nahmanides responded. The disputation is recorded in two contemporaneous accounts written from the opposing sides.',
+        source: {
+          externalId: 'src:disputation-barcelona-event',
+          name: 'Disputation of Barcelona, 20–24 July 1263 — held before King James I of Aragon. (Contemporaneous Hebrew and Latin records)',
+          url: 'https://en.wikipedia.org/wiki/Disputation_of_Barcelona',
+          publishedAt: '1263-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1263-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The two surviving contemporaneous records contradict each other on the outcome. Nahmanides\' Hebrew Sefer ha-Vikuach presents him as having bested Pablo Christiani, while the official Latin protocol issued under royal authority records that the friar prevailed and the Jew fell silent. The fact and dates of the disputation are undisputed; who "won" is irreconcilable between the two primary sources and remains debated by historians.',
+        source: {
+          externalId: 'src:nahmanides-vikuach',
+          name: 'Nahmanides. Sefer ha-Vikuach (The Disputation), Hebrew first-person account; contrasted with the Latin protocol. Analyzed in Robert Chazan, Barcelona and Beyond (1992).',
+          url: 'https://www.encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/barcelona-disputation',
+          publishedAt: '1263-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sicilian Vespers — uprising settled, its instigation contested ───────────
+  {
+    externalId: 'trajectory:sicilian-vespers-1282',
+    text: 'On 30 March 1282 (Easter Monday), an uprising against Angevin French rule erupted at Palermo and spread across Sicily, killing thousands of French — the Sicilian Vespers.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1282-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1282-03-30',
+        datePrecision: 'DAY',
+        reason: 'At the hour of Vespers on Easter Monday, a brawl outside the Church of the Holy Spirit near Palermo escalated into a general massacre of the French. Bartholomaeus of Neocastro, a Messina jurist prominent in the ensuing events, records the rising in his Historia Sicula. Within weeks the revolt had toppled Angevin rule on the island and triggered the War of the Sicilian Vespers.',
+        source: {
+          externalId: 'src:sicilian-vespers-event',
+          name: 'Sicilian Vespers, 30 March 1282 — Bartholomaeus of Neocastro, Historia Sicula, and the Sicilian Lu rebellamentu di Sichilia (c. 1287). (Contemporaneous narrative sources)',
+          url: 'https://en.wikipedia.org/wiki/Sicilian_Vespers',
+          publishedAt: '1287-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date, the location, and the scale of the massacre are corroborated across Sicilian, Tuscan Guelph, and Aragonese sources and are settled fact. Steven Runciman\'s study established the standard account of the event itself.',
+        source: {
+          externalId: 'src:runciman-sicilian-vespers',
+          name: 'Runciman S. The Sicilian Vespers: A History of the Mediterranean World in the Later Thirteenth Century. Cambridge University Press, 1958.',
+          url: 'https://en.wikipedia.org/wiki/Sicilian_Vespers',
+          publishedAt: '1958-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Whether the rising was a spontaneous popular explosion or a conspiracy orchestrated in advance by John of Procida, Peter III of Aragon, and the Byzantine emperor Michael VIII remains contested. The Procida conspiracy, long accepted from later Tuscan legend, is judged by Runciman and most modern historians to be an exaggeration or fabrication. The massacre is settled; its instigation is not.',
+        source: {
+          externalId: 'src:sicilian-vespers-conspiracy-debate',
+          name: 'The "John of Procida conspiracy" versus the spontaneous-uprising interpretation — historiographical debate over the causation of the Vespers.',
+          url: 'https://en.wikipedia.org/wiki/Sicilian_Vespers',
+          publishedAt: '1969-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // EARLY MODERN (1500–1800)
   // ═══════════════════════════════════════════════════════════════════════════════
