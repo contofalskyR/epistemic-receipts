@@ -43114,6 +43114,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — supplemental batch
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Council of Hieria condemns icons (754) — later reversed ──────────────────
+  {
+    externalId: 'trajectory:council-of-hieria-754',
+    text: 'The iconoclast Council of Hieria, convened near Constantinople in February 754, condemned the veneration of religious icons as idolatrous and heretical; its rulings were overturned by the Second Council of Nicaea in 787.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0754-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0754-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Summoned by Emperor Constantine V, some 338 bishops assemble at the imperial palace of Hieria across the Bosphorus from Constantinople. Sitting from February into the summer of 754, the council issues a Horos (definition) declaring that the making and veneration of icons of Christ and the saints is blasphemous and forbidden, anathematizing leading iconophiles. The conciliar definition is recorded and proclaimed as binding doctrine.',
+        source: {
+          externalId: 'src:council-hieria-acts-754',
+          name: 'Definition (Horos) of the Council of Hieria, 754, preserved in the refutation read at the Second Council of Nicaea (787).',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Hieria',
+          publishedAt: '0754-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0754-08-01',
+        datePrecision: 'YEAR',
+        reason: 'Constantine V enforces the Hieria definition as the official doctrine of the Byzantine state and church, presenting it as an ecumenical council. Icons are destroyed, monasteries suppressed, and iconophile clergy persecuted. Iconoclasm remains established imperial orthodoxy for a generation.',
+        source: {
+          externalId: 'src:theophanes-iconoclasm-754',
+          name: 'Theophanes the Confessor. Chronographia, on the council of 754 and the iconoclast policy of Constantine V. (early 9th-century compilation from earlier sources)',
+          url: 'https://en.wikipedia.org/wiki/Byzantine_Iconoclasm',
+          publishedAt: '0814-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0787-09-24',
+        datePrecision: 'DAY',
+        reason: 'The Second Council of Nicaea, convened 24 September 787 under Empress Irene and endorsed by Pope Adrian I, explicitly condemns the Council of Hieria, denies it the status of a true ecumenical council, and restores the veneration of icons. Hieria\'s iconoclast definition is formally overturned.',
+        source: {
+          externalId: 'src:second-nicaea-condemns-hieria-787',
+          name: 'Acts of the Second Council of Nicaea (787), session refuting and condemning the Horos of Hieria.',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Nicaea',
+          publishedAt: '0787-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0843-03-11',
+        datePrecision: 'DAY',
+        reason: 'After a second iconoclast period, the Synod of 843 ("Triumph of Orthodoxy," 11 March 843) permanently restores icon veneration. Both Eastern Orthodox and Roman Catholic traditions regard Hieria as a rejected (pseudo-)council; its repudiation is the settled judgment of church history.',
+        source: {
+          externalId: 'src:triumph-orthodoxy-hieria-843',
+          name: 'Synodikon of Orthodoxy and the Triumph of Orthodoxy, 11 March 843, confirming the rejection of iconoclasm.',
+          url: 'https://www.britannica.com/event/Council-of-Hieria',
+          publishedAt: '0843-03-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Lalakaon (863) — Byzantine victory over Melitene ───────────────
+  {
+    externalId: 'trajectory:battle-of-lalakaon-863',
+    text: 'At the Battle of Lalakaon on 3 September 863, a Byzantine army under Petronas decisively defeated the invading Arab forces of Umar al-Aqta, emir of Melitene, who was killed — marking a turning point toward Byzantine ascendancy in the east.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0863-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0863-09-03',
+        datePrecision: 'DAY',
+        reason: 'The army of the Melitene emir Umar al-Aqta, having raided deep into Anatolia, is encircled near the river Lalakaon in Paphlagonia by Byzantine forces under Petronas, uncle of Emperor Michael III. The Arab army is destroyed and Umar killed. The contemporary Abbasid historian al-Tabari records the catastrophe and the grief and rioting it provoked in Baghdad.',
+        source: {
+          externalId: 'src:tabari-lalakaon-863',
+          name: 'al-Tabari. Tarikh al-Rusul wa al-Muluk (History of the Prophets and Kings), on the defeat and death of Umar al-Aqta in 863.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Lalakaon',
+          publishedAt: '0915-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Byzantine sources — Genesius and the Theophanes Continuatus — independently record the campaign, Petronas\'s encirclement, and the death of Umar al-Aqta, corroborating the Arabic account. Modern Byzantinists treat the battle, its date, and its strategic significance as established.',
+        source: {
+          externalId: 'src:theophanes-continuatus-lalakaon',
+          name: 'Theophanes Continuatus and Genesius, on the campaign of Petronas against Umar of Melitene. (10th-century Byzantine histories)',
+          url: 'https://www.britannica.com/place/Melitene',
+          publishedAt: '0950-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Arsuf (1191) — Third Crusade ───────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-arsuf-1191',
+    text: 'At the Battle of Arsuf on 7 September 1191, the crusader army of Richard I of England defeated Saladin\'s Ayyubid forces, restoring crusader morale during the Third Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1191-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1191-09-07',
+        datePrecision: 'DAY',
+        reason: 'Marching south from Acre toward Jaffa under constant harassment, Richard I\'s tightly disciplined column is attacked near Arsuf by Saladin\'s army. A counter-charge by the Hospitallers and the crusader cavalry routs the Ayyubid forces. Baha al-Din ibn Shaddad, a member of Saladin\'s own retinue and an eyewitness, records the battle from the Muslim side.',
+        source: {
+          externalId: 'src:baha-al-din-arsuf-1191',
+          name: 'Baha al-Din ibn Shaddad. al-Nawadir al-Sultaniyya (The Rare and Excellent History of Saladin), eyewitness account of the battle near Arsuf. (early 13th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Arsuf',
+          publishedAt: '1228-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1220-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The crusader-side Itinerarium Regis Ricardi independently narrates the march and the battle, and its account aligns with Baha al-Din\'s on date, location, and outcome. The convergence of hostile contemporaneous sources makes the engagement and the crusader victory uncontested in modern crusade historiography.',
+        source: {
+          externalId: 'src:itinerarium-ricardi-arsuf',
+          name: 'Itinerarium Peregrinorum et Gesta Regis Ricardi, on the battle of Arsuf. (contemporaneous crusader chronicle, c. 1220)',
+          url: 'https://www.britannica.com/event/Battle-of-Arsuf',
+          publishedAt: '1220-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Poitiers (1356) — capture of John II of France ─────────────────
+  {
+    externalId: 'trajectory:battle-of-poitiers-1356',
+    text: 'At the Battle of Poitiers on 19 September 1356, an Anglo-Gascon army under Edward the Black Prince defeated a larger French force and captured King John II of France, a pivotal English victory in the Hundred Years\' War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1356-09-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1356-09-19',
+        datePrecision: 'DAY',
+        reason: 'Edward the Black Prince\'s raiding army, outnumbered near Poitiers, repulses successive French assaults from a strong defensive position; a flanking manoeuvre and counter-attack shatter the French. King John II and his youngest son Philip are surrounded and surrender. The capture of an anointed king is immediately reported across Europe.',
+        source: {
+          externalId: 'src:froissart-poitiers-1356',
+          name: 'Jean Froissart. Chroniques, on the battle of Poitiers and the capture of King John II. (later 14th century, drawing on eyewitness testimony)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Poitiers',
+          publishedAt: '1400-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1360-05-08',
+        datePrecision: 'DAY',
+        reason: 'The capture is corroborated by the Chandos Herald\'s verse Life of the Black Prince and by the diplomatic record: John II is held captive in England and the Treaty of Brétigny (ratified 1360) sets his ransom at three million crowns. The battle, its date, and the king\'s capture are uncontested in the historical record.',
+        source: {
+          externalId: 'src:treaty-bretigny-1360',
+          name: 'Treaty of Brétigny (1360), ransoming King John II of France after his capture at Poitiers.',
+          url: 'https://www.britannica.com/event/Battle-of-Poitiers-1356',
+          publishedAt: '1360-05-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Earthquake Synod condemns Wycliffe (1382) ────────────────────────────────
+  {
+    externalId: 'trajectory:earthquake-synod-wycliffe-1382',
+    text: 'A synod convened at Blackfriars, London, on 21 May 1382 (the "Earthquake Synod") condemned twenty-four propositions drawn from the teachings of John Wycliffe — ten as heretical and fourteen as erroneous.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1382-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1382-05-21',
+        datePrecision: 'DAY',
+        reason: 'A council called by William Courtenay, Archbishop of Canterbury, meets at the Blackfriars priory in London and condemns twenty-four propositions attributed to Wycliffe, declaring ten heretical and fourteen erroneous. An earthquake strikes London during the deliberations; Courtenay interprets it as a sign of the earth purging itself of heresy, giving the assembly its nickname. The condemnation is entered into the conciliar record.',
+        source: {
+          externalId: 'src:blackfriars-synod-1382',
+          name: 'Acts of the Blackfriars ("Earthquake") Synod, 21 May 1382, condemning twenty-four Wycliffite propositions, recorded by Thomas Walsingham and in the Fasciculi Zizaniorum.',
+          url: 'https://en.wikipedia.org/wiki/Earthquake_Synod',
+          publishedAt: '1382-05-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1415-05-04',
+        datePrecision: 'DAY',
+        reason: 'The Council of Constance condemns Wycliffe as a heretic on 4 May 1415, orders his writings burned, and decrees his remains exhumed and cast out (carried out in 1428). The institutional church\'s condemnation of Wycliffe\'s teachings, first issued at Blackfriars, is thereby ratified and settled.',
+        source: {
+          externalId: 'src:council-constance-wycliffe-1415',
+          name: 'Council of Constance, session of 4 May 1415, condemning the articles of John Wycliffe and ordering his exhumation.',
+          url: 'https://en.wikipedia.org/wiki/John_Wycliffe',
+          publishedAt: '1415-05-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
