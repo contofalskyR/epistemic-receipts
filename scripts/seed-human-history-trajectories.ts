@@ -28958,6 +28958,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — space, civil rights, environment, biology, computing
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Freedom Rides — interstate bus desegregation challenge ───────────────────
+  {
+    externalId: 'trajectory:freedom-rides-1961',
+    text: 'Beginning 4 May 1961, interracial Freedom Riders challenged segregation on interstate buses in the American South; on 14 May 1961 a white mob firebombed one of their Greyhound buses outside Anniston, Alabama.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1961-05-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1961-05-14',
+        datePrecision: 'DAY',
+        reason: 'Thirteen Freedom Riders organized by the Congress of Racial Equality (CORE) departed Washington, D.C. on 4 May 1961 to test the Supreme Court\'s Boynton v. Virginia ruling against segregated interstate travel. On 14 May 1961 (Mother\'s Day) a mob attacked the riders at Anniston, Alabama, slashing the tyres of a Greyhound bus and firebombing it on the highway outside town. A widely reproduced photograph of the burning bus made the attack a contemporaneous national record.',
+        source: {
+          externalId: 'src:freedom-riders-wikipedia',
+          name: 'Freedom Riders (Wikipedia) — 4 May 1961 departure, 14 May 1961 Anniston bus firebombing, and the campaign\'s outcome.',
+          url: 'https://en.wikipedia.org/wiki/Freedom_Riders',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-11-01',
+        datePrecision: 'DAY',
+        reason: 'Prompted by the rides and at the urging of Attorney General Robert F. Kennedy, the Interstate Commerce Commission issued regulations banning segregation in interstate bus and rail terminals; the order took effect 1 November 1961, ending legally enforced segregation in interstate transit and confirming the campaign\'s concrete institutional result.',
+        source: {
+          externalId: 'src:icc-desegregation-order-1961',
+          name: 'Interstate Commerce Commission desegregation order (effective 1 November 1961) — Freedom Riders (Wikipedia), Aftermath.',
+          url: 'https://en.wikipedia.org/wiki/Freedom_Riders#Aftermath',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Telstar / Cuyahoga River fire — symbol of the environmental movement ─────
+  {
+    externalId: 'trajectory:cuyahoga-river-fire-1969',
+    text: 'On 22 June 1969 an oil-soaked slick of debris on the Cuyahoga River in Cleveland, Ohio caught fire, an event that became a national symbol galvanizing the modern U.S. environmental movement.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1969-06-22',
+        datePrecision: 'DAY',
+        reason: 'A spark, probably from a passing rail car, ignited an oil slick and floating debris on the Cuyahoga River near downtown Cleveland on the morning of 22 June 1969. The fire was extinguished quickly and caused roughly $50,000 in damage, but Time magazine\'s 1 August 1969 coverage — describing a river that "oozes rather than flows" — turned the local incident into a nationally recorded emblem of industrial water pollution.',
+        source: {
+          externalId: 'src:cuyahoga-fire-wikipedia',
+          name: 'Cuyahoga River (Wikipedia) — the 22 June 1969 fire, Time magazine coverage, and the river\'s role in spurring federal environmental reform.',
+          url: 'https://en.wikipedia.org/wiki/Cuyahoga_River',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-10-18',
+        datePrecision: 'DAY',
+        reason: 'The 1969 fire, alongside the Santa Barbara oil spill, became a touchstone for the wave of environmental legislation that followed: the creation of the U.S. Environmental Protection Agency (December 1970) and the enactment of the Clean Water Act on 18 October 1972. The river\'s catalytic role is now an established part of U.S. environmental history.',
+        source: {
+          externalId: 'src:cuyahoga-epa-legacy',
+          name: 'Cuyahoga River (Wikipedia) — legacy: EPA creation (1970) and Clean Water Act (1972).',
+          url: 'https://en.wikipedia.org/wiki/Cuyahoga_River#Cleanup_and_recovery',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Köhler & Milstein — monoclonal antibodies (hybridoma technique) ──────────
+  {
+    externalId: 'trajectory:monoclonal-antibodies-1975',
+    text: 'On 7 August 1975 Georges Köhler and César Milstein reported in Nature the hybridoma technique for producing monoclonal antibodies of predefined specificity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-08-07',
+        datePrecision: 'DAY',
+        reason: 'Working at the MRC Laboratory of Molecular Biology in Cambridge, Köhler and Milstein fused antibody-producing B cells with immortal myeloma cells to create "hybridomas" that secrete a single, defined antibody indefinitely. Their paper "Continuous cultures of fused cells secreting antibody of predefined specificity" appeared in Nature (vol. 256, pp. 495–497) on 7 August 1975, the contemporaneous primary record of the method.',
+        source: {
+          externalId: 'src:kohler-milstein-nature-1975',
+          name: 'Köhler G, Milstein C. Continuous cultures of fused cells secreting antibody of predefined specificity. Nature 1975;256(5517):495–497.',
+          url: 'https://www.nature.com/articles/256495a0',
+          publishedAt: '1975-08-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-10-15',
+        datePrecision: 'DAY',
+        reason: 'The hybridoma technique was rapidly reproduced and became foundational to immunology, diagnostics, and therapeutics. Köhler and Milstein shared the 1984 Nobel Prize in Physiology or Medicine (announced 15 October 1984, with Niels Kaj Jerne) "for theories concerning the specificity in development and control of the immune system and the discovery of the principle for production of monoclonal antibodies," settling the result.',
+        source: {
+          externalId: 'src:monoclonal-antibody-wikipedia',
+          name: 'Monoclonal antibody (Wikipedia) — Köhler and Milstein\'s 1975 hybridoma work and the 1984 Nobel Prize in Physiology or Medicine.',
+          url: 'https://en.wikipedia.org/wiki/Monoclonal_antibody',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Viking 1 — first successful operation on the Martian surface ─────────────
+  {
+    externalId: 'trajectory:viking-1-mars-landing-1976',
+    text: 'On 20 July 1976 NASA\'s Viking 1 lander touched down on Chryse Planitia, becoming the first spacecraft to operate successfully on the surface of Mars and return images from it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-07-20',
+        datePrecision: 'DAY',
+        reason: 'The Viking 1 lander separated from its orbiter and touched down at 22.48°N, 47.94°W on Chryse Planitia at 11:53:06 UT on 20 July 1976 — seven years to the day after Apollo 11. Within minutes it transmitted the first photograph taken from the Martian surface and soon a 300-degree colour panorama, the contemporaneous record of a successful landing.',
+        source: {
+          externalId: 'src:viking-1-nasa',
+          name: 'NASA — Viking 1 mission page: 20 July 1976 landing on Chryse Planitia and first surface images.',
+          url: 'https://science.nasa.gov/mission/viking-1/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-11-13',
+        datePrecision: 'DAY',
+        reason: 'Viking 1 operated on the surface far beyond its design life, returning images and meteorological and soil data until its final transmission on 11 November 1982 (with the mission formally ended 21 May 1983). The landing and its data are catalogued in NASA\'s NSSDC and corroborated by every subsequent Mars surface mission, leaving the achievement settled.',
+        source: {
+          externalId: 'src:viking-program-wikipedia',
+          name: 'Viking 1 (Wikipedia) — landing date, surface operations to 1982, and mission data record.',
+          url: 'https://en.wikipedia.org/wiki/Viking_1',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ARPANET TCP/IP "flag day" — technical birth of the Internet ──────────────
+  {
+    externalId: 'trajectory:tcp-ip-flag-day-1983',
+    text: 'On 1 January 1983 the ARPANET completed a coordinated switchover from the Network Control Protocol (NCP) to the TCP/IP protocol suite — the "flag day" marking the technical birth of the modern Internet.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1983-01-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-01-01',
+        datePrecision: 'DAY',
+        reason: 'Jon Postel\'s RFC 801 (November 1981) set a coordinated plan to migrate every ARPANET host from NCP to TCP/IP, with full switchover scheduled for 1 January 1983. On that date the cutover was executed: hosts that had not adopted TCP/IP were disconnected, and the network ran on the protocol suite that still underlies the Internet. The transition plan and its date are the contemporaneous record.',
+        source: {
+          externalId: 'src:rfc-801-transition-plan',
+          name: 'Postel J. RFC 801: NCP/TCP Transition Plan. November 1981 (scheduling the 1 January 1983 switchover).',
+          url: 'https://www.rfc-editor.org/info/rfc801',
+          publishedAt: '1981-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The flag-day cutover succeeded and TCP/IP became the permanent, universal foundation of internetworking; the ARPANET and the networks built on it grew into the global Internet. 1 January 1983 is now uniformly cited in computing histories as the moment NCP was retired in favour of TCP/IP.',
+        source: {
+          externalId: 'src:flag-day-computing-wikipedia',
+          name: 'Flag day (computing) (Wikipedia) — the 1 January 1983 ARPANET transition from NCP to TCP/IP.',
+          url: 'https://en.wikipedia.org/wiki/Flag_day_(computing)',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
