@@ -48794,6 +48794,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL — additional verified curves (astronomy & Roman politics)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Meton & Euctemon observe the summer solstice at Athens (432 BCE) ─────────
+  {
+    externalId: 'trajectory:meton-solstice-432bce',
+    text: 'Meton of Athens, with Euctemon, observed the summer solstice at Athens on 27 June 432 BCE — the dated observation underpinning the 19-year Metonic cycle and an early measurement of the length of the tropical year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0432-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0432-06-27',
+        datePrecision: 'DAY',
+        reason: 'Meton and his collaborator Euctemon made a dated observation of the summer solstice at Athens, conventionally placed on 27 June 432 BCE. In the same year Meton introduced the 19-year cycle (235 synodic months ≈ 19 tropical years) into the Attic luni-solar calendar, a reform intended to keep the months in step with the seasons. The solstice datum is the empirical anchor of that work.',
+        source: {
+          externalId: 'src:meton-euctemon-solstice-432',
+          name: 'Complete Dictionary of Scientific Biography — "Euctemon": cited with Meton by Ptolemy for the summer-solstice observation of 27 June 432 BCE.',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/euctemon',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy preserves the observation in the Almagest (III.1), comparing the 432 BCE solstice with his own to derive the length of the tropical year. Although both Hipparchus and Ptolemy noted the recorded instant fell roughly a day from the true solstice, the observation is the oldest dated solstice in the Greek astronomical record and its date — 21 Phamenoth in the Egyptian calendar, equivalent to 27 June 432 BCE — is fixed by modern computation.',
+        source: {
+          externalId: 'src:meton-solstice-almagest-settled',
+          name: 'Complete Dictionary of Scientific Biography — Ptolemy (Almagest III.1) uses Meton and Euctemon\'s 27 June 432 BCE solstice for the length of the year.',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/euctemon',
+          publishedAt: '0150-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Babylonian lunar eclipse of 19/20 March 721 BCE (oldest in the Almagest) ─
+  {
+    externalId: 'trajectory:babylon-lunar-eclipse-721bce',
+    text: 'A total lunar eclipse was observed and recorded at Babylon on 19/20 March 721 BCE — the oldest dated astronomical observation preserved in Ptolemy\'s Almagest.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0721-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0721-03-19',
+        datePrecision: 'DAY',
+        reason: 'In the 1st year of the Babylonian king Mardokempad (Marduk-apla-iddina II), the 27th year of the era of Nabonassar, Babylonian observers recorded that a lunar eclipse began well over an hour after moonrise and became total. The timed observation was written into the running Babylonian record of celestial events maintained by temple scribes.',
+        source: {
+          externalId: 'src:babylon-eclipse-721-record',
+          name: 'R.H. van Gent (Utrecht) — Babylonian observations of lunar eclipses in Ptolemy\'s Almagest: 1st year of Mardokempad, 19/20 March 721 BCE (Almagest IV.6).',
+          url: 'https://webspace.science.uu.nl/~gent0113/babylon/babybibl_sunmoon.htm',
+          publishedAt: '0721-03-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy cites this eclipse in Almagest IV.6 as the earliest of ten Babylonian lunar eclipses he uses to build the lunar theory, transmitting the Babylonian record into the Greek mathematical tradition. Modern astronomical retrocalculation (from Newcomb onward) confirms a total lunar eclipse visible at Babylon on the night of 19/20 March 721 BCE, settling both the event and its date.',
+        source: {
+          externalId: 'src:babylon-eclipse-721-settled',
+          name: 'R.H. van Gent (Utrecht) — earliest of ten Babylonian lunar eclipses in the Almagest, confirmed by modern retrocalculation (19/20 March 721 BCE).',
+          url: 'https://webspace.science.uu.nl/~gent0113/babylon/babybibl_sunmoon.htm',
+          publishedAt: '1878-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bur-Sagale (Assyrian) total solar eclipse of 15 June 763 BCE ─────────────
+  {
+    externalId: 'trajectory:bur-sagale-eclipse-763bce',
+    text: 'A total solar eclipse recorded in the Assyrian eponym canon — "in the month Simanu an eclipse of the sun took place" — occurred on 15 June 763 BCE and anchors the absolute chronology of the ancient Near East.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0763-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0763-06-15',
+        datePrecision: 'DAY',
+        reason: 'The Assyrian eponym (limmu) lists, kept as a year-by-year administrative record, note under the eponymy of Bur-Sagale of Guzana: "Revolt in the city of Assur. In the month Simanu an eclipse of the sun took place." A solar eclipse striking enough to be entered in the canon was contemporaneously recorded, though to the scribes it was a portent rather than a fixed calendar date.',
+        source: {
+          externalId: 'src:bur-sagale-eponym-canon',
+          name: 'Wikipedia — "Assyrian eclipse": eponym canon entry for Bur-Sagale of Guzana noting a solar eclipse in the month Simanu.',
+          url: 'https://en.wikipedia.org/wiki/Assyrian_eclipse',
+          publishedAt: '0763-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1867 Henry Rawlinson identified the eclipse of the eponym canon with the astronomically computed total solar eclipse over Assyria on 15 June 763 BCE. The identification, widely accepted since and corroborated by other observations of the period, converts the relative eponym sequence into absolute dates and is a crucial anchor for ancient Near Eastern chronology.',
+        source: {
+          externalId: 'src:bur-sagale-rawlinson-1867',
+          name: 'Wikipedia — "Assyrian eclipse": Rawlinson (1867) fixes the eponym eclipse to 15 June 763 BCE, anchoring Assyrian absolute chronology.',
+          url: 'https://en.wikipedia.org/wiki/Assyrian_eclipse',
+          publishedAt: '1867-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet apparition of 164 BCE recorded on Babylonian tablets ──────
+  {
+    externalId: 'trajectory:halley-comet-164bce-babylonian',
+    text: 'The 164 BCE apparition of Halley\'s Comet was recorded on Babylonian cuneiform tablets — the only surviving observation of that return — and identified as Halley only after the tablets were rediscovered in the British Museum in 1984.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0164-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0164-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Babylonian astronomers entered the comet of October–November 164 BCE into their observational records on two clay tablets, noting its position against the stars. At the time it was simply a transient celestial phenomenon logged among the routine sky observations of the late Seleucid period.',
+        source: {
+          externalId: 'src:halley-164-babylonian-tablets',
+          name: 'Wikipedia — "Halley\'s Comet": only surviving record of the 164 BCE apparition is two fragmentary Babylonian tablets (observation interval October–November).',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0164-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The two fragmentary tablets were rediscovered in the British Museum collection in August 1984. F.R. Stephenson, C.B.F. Walker and colleagues (1985) showed that the recorded comet matched the computed track of Halley\'s Comet at its 164 BCE return, supplying the missing apparition in Halley\'s reconstructed series of returns and settling the identification.',
+        source: {
+          externalId: 'src:halley-164-stephenson-walker-1985',
+          name: 'Wikipedia — "Halley\'s Comet": tablets rediscovered August 1984; identified as the 164 BCE return of Halley by Stephenson and Walker (1985).',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Actium — 2 September 31 BCE ────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-actium-31bce',
+    text: 'Octavian\'s fleet under Agrippa defeated the combined fleets of Mark Antony and Cleopatra at the Battle of Actium on 2 September 31 BCE, the decisive engagement that led to Octavian\'s sole rule of Rome.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0031-09-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0031-09-02',
+        datePrecision: 'DAY',
+        reason: 'On 2 September 31 BCE the naval forces of Octavian, commanded by Marcus Agrippa, met those of Mark Antony and Cleopatra in the Ionian Sea off Actium. Antony and Cleopatra broke out and fled to Egypt while most of their fleet was destroyed or surrendered. The outcome was immediately proclaimed by Octavian as a decisive victory and became the founding event of his ascendancy.',
+        source: {
+          externalId: 'src:actium-battle-recorded',
+          name: 'Wikipedia — "Battle of Actium": fought 2 September 31 BC in the Ionian Sea, Octavian/Agrippa vs Antony and Cleopatra.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Actium',
+          publishedAt: '0031-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle, its date, and its result are recorded by multiple ancient authors — Velleius Paterculus, Plutarch (Life of Antony), and Cassius Dio — and the dating to 2 September 31 BCE is consistent across the tradition. The victory ended the Roman civil wars and is universally treated as the threshold between the Republic and the Augustan principate.',
+        source: {
+          externalId: 'src:actium-battle-settled',
+          name: 'Wikipedia — "Battle of Actium": date and result corroborated by Plutarch, Cassius Dio, and Velleius Paterculus.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Actium',
+          publishedAt: '0100-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
