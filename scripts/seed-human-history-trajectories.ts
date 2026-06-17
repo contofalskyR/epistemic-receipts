@@ -807,6 +807,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Lunar eclipse before the Battle of Gaugamela ────────────────────────────
+  {
+    externalId: 'trajectory:gaugamela-lunar-eclipse-331bce',
+    text: 'A near-total lunar eclipse occurred on the night of 20 September 331 BCE, eleven days before the Battle of Gaugamela, after Alexander\'s army had crossed the Tigris — recorded both by Greek historians and contemporaneously in a Babylonian astronomical diary.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0331-09-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0331-09-20',
+        datePrecision: 'DAY',
+        reason: 'After Alexander crossed the Tigris and rested his army, the moon was eclipsed. Arrian records that "an eclipse of the moon nearly total occurred," whereupon Alexander offered sacrifice to the Moon, the Sun and the Earth, "whose deed this was, according to common report." The omen was read by the Macedonians as favourable and by Darius\'s camp as foreboding; the decisive battle followed eleven days later.',
+        source: {
+          externalId: 'src:arrian-anabasis-3-7-eclipse',
+          name: 'Arrian. Anabasis of Alexander, Book III.7 (Chinnock translation). (c. 145 CE, drawing on Ptolemy and Aristobulus, contemporaries of Alexander)',
+          url: 'https://en.wikisource.org/wiki/The_Anabasis_of_Alexander/Book_III/Chapter_VII',
+          publishedAt: '0145-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation fixes the near-total lunar eclipse to the night of 20–21 September 331 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses. The same eclipse is independently recorded in a contemporaneous Babylonian astronomical diary, making the date a fixed chronological anchor that places the Battle of Gaugamela on 1 October 331 BCE.',
+        source: {
+          externalId: 'src:wikipedia-gaugamela-eclipse',
+          name: 'Battle of Gaugamela — near-total lunar eclipse of 20–21 September 331 BCE (Babylonian diary and NASA lunar eclipse canon).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Gaugamela',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Alexander the Great recorded in a Babylonian diary ──────────────
+  {
+    externalId: 'trajectory:alexander-death-babylon-323bce',
+    text: 'Alexander the Great died in the palace of Nebuchadnezzar II at Babylon between the evening of 10 June and the evening of 11 June 323 BCE — a date fixed by a contemporaneous Babylonian astronomical diary that records "the king died" on that day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0323-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0323-06-11',
+        datePrecision: 'DAY',
+        reason: 'A Babylonian astronomical diary — a cuneiform record kept day by day by temple scribes — notes for the 29th of the month Aiaru that "the king died; clouds [were in the sky]." The Greek tradition independently preserves a day-by-day account: Plutarch and Arrian both cite the royal journals (the ephemerides) describing Alexander\'s mounting fever over successive days until he could no longer speak and died.',
+        source: {
+          externalId: 'src:plutarch-alexander-death-journals',
+          name: 'Plutarch. Life of Alexander, 75–76 (Clough/Dryden translation), citing the royal day-journals (ephemerides). (c. 100 CE)',
+          url: 'https://en.wikisource.org/wiki/Plutarch%27s_Lives_(Clough)/Life_of_Alexander',
+          publishedAt: '0100-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The cuneiform diary entry was correlated with the Babylonian and Julian calendars by Sachs and Hunger\'s critical edition of the Astronomical Diaries, fixing Alexander\'s death to 10–11 June 323 BCE. The convergence of the contemporaneous Babylonian record with the Greek journal tradition makes this one of the most securely dated events of antiquity.',
+        source: {
+          externalId: 'src:wikipedia-death-of-alexander',
+          name: 'Death of Alexander the Great — dated to 10–11 June 323 BCE by the contemporaneous Babylonian astronomical diary (Sachs & Hunger, Astronomical Diaries from Babylonia).',
+          url: 'https://en.wikipedia.org/wiki/Death_of_Alexander_the_Great',
+          publishedAt: '1988-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Caesar's Comet (Sidus Iulium) ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:caesars-comet-44bce',
+    text: 'A bright comet (the "Sidus Iulium" or Caesar\'s Comet) appeared over Rome for seven days during the funeral games for Julius Caesar in July 44 BCE and was popularly taken to be his soul ascending to heaven — recorded by Roman writers and corroborated by Chinese observations earlier the same year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0044-07-23',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0044-07-23',
+        datePrecision: 'MONTH',
+        reason: 'During the first games consecrated to Caesar\'s memory by his heir Octavian (the Ludi Victoriae Caesaris, July 44 BCE), a comet blazed for seven successive days, rising about the eleventh hour. Suetonius records it "was supposed to be the soul of Caesar, now received into heaven." Augustus himself wrote of the comet, and it became the emblem of Caesar\'s deification (the Sidus Iulium).',
+        source: {
+          externalId: 'src:suetonius-divus-julius-88-comet',
+          name: 'Suetonius. Divus Julius, 88. (c. 121 CE — comet during the first games consecrated to Caesar)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0132:life=jul.:chapter=88',
+          publishedAt: '0121-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent Chinese astronomical records note a comet earlier in 44 BCE, corroborating the appearance of a bright comet that year. Modern scholarship has revised the dating of the Ludi Victoriae Caesaris from September to July 44 BCE, aligning the Roman accounts with the astronomical record. The comet is treated as a genuine, securely dated apparition rather than a literary invention.',
+        source: {
+          externalId: 'src:wikipedia-caesars-comet',
+          name: 'Caesar\'s Comet — bright comet of July 44 BCE, with Chinese corroboration and revised dating of the Ludi Victoriae Caesaris.',
+          url: 'https://en.wikipedia.org/wiki/Caesar%27s_Comet',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First reliably recorded apparition of Halley's Comet ─────────────────────
+  {
+    externalId: 'trajectory:halley-comet-240bce-first-record',
+    text: 'A comet observed in 240 BCE and recorded by Chinese astronomers in the Records of the Grand Historian (Shiji) is the earliest reliably identified apparition of Halley\'s Comet — modern retrocalculation places its perihelion on 30 March 240 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0240-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0240-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The Shiji (Records of the Grand Historian), compiled by the Han court astronomer-historian Sima Qian, records a "broom star" (comet) that appeared in the east and then moved north in 240 BCE. The observation, made during the reign of the future first Qin emperor, is preserved in the systematic celestial annals of the Chinese court — the earliest entry that can be matched to a known periodic comet.',
+        source: {
+          externalId: 'src:shiji-halley-240bce',
+          name: 'Records of the Grand Historian (Shiji), comet of 240 BCE — earliest certain appearance of Halley\'s Comet in the historical record.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0090-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Backward integration of Halley\'s Comet\'s orbit identifies the 240 BCE apparition (1P/−239 K1) with a perihelion on 30 March 240 BCE and an observation window of May–June, matching the Chinese record of a comet rising in the east and moving north. This makes 240 BCE the first firmly attested return in the comet\'s ~76-year series, later traced forward through the 164 BCE and 87 BCE Babylonian tablets.',
+        source: {
+          externalId: 'src:wikipedia-halley-240bce',
+          name: 'Halley\'s Comet — 240 BCE apparition (1P/−239 K1), perihelion 30 March 240 BCE, first certain historical record.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1986-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
