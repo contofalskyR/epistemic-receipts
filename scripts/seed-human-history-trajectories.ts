@@ -48321,6 +48321,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — supplementary
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Soyuz 11 — the only humans to die in space ──────────────────────────────
+  {
+    externalId: 'trajectory:soyuz-11-crew-death-1971',
+    text: 'The three-man crew of Soyuz 11 — Georgi Dobrovolsky, Vladislav Volkov, and Viktor Patsayev — died on 30 June 1971 when a pressure-equalization valve jarred open during reentry and depressurized their cabin in less than a minute; they remain the only humans known to have died in space.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-06-30',
+        datePrecision: 'DAY',
+        reason: 'After 23 days aboard the Salyut 1 space station, the Soyuz 11 crew undocked on 29 June 1971 and began reentry. When the explosive bolts separated the descent module on 30 June, a breathing-ventilation valve was jarred open at roughly 168 km altitude, venting the cabin to vacuum. The recovery team that opened the hatch after a normal automatic landing found all three cosmonauts dead in their couches; they had not been wearing pressure suits.',
+        source: {
+          externalId: 'src:nasa-soyuz-11-1971',
+          name: 'NASA History Office. "50 Years Ago: Remembering the Crew of Soyuz 11."',
+          url: 'https://www.nasa.gov/history/50-years-ago-remembering-the-crew-of-soyuz-11/',
+          publishedAt: '2021-06-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The Soviet state commission investigating the accident determined that the cause was the premature opening of a pressure-equalization valve, leading to fatal decompression — not crew error. Telemetry from biomedical sensors showed cardiac arrest within about 40 seconds of pressure loss. As a direct result, the Soyuz was redesigned to carry fewer crew so that pressure suits could be worn during launch and reentry, a practice still followed; the depressurization explanation has remained the settled account.',
+        source: {
+          externalId: 'src:soyuz-11-investigation-1971',
+          name: 'Soyuz 11 — accident investigation and cause (pressure-equalization valve depressurization). Wikipedia, "Soyuz 11".',
+          url: 'https://en.wikipedia.org/wiki/Soyuz_11',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Clean Air Act of 1970 signed into law ───────────────────────────────────
+  {
+    externalId: 'trajectory:clean-air-act-1970',
+    text: 'President Richard Nixon signed the Clean Air Amendments of 1970 (the modern Clean Air Act) into law on 31 December 1970, establishing federal authority to set and enforce National Ambient Air Quality Standards through the newly created Environmental Protection Agency.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-12-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-12-31',
+        datePrecision: 'DAY',
+        reason: 'After passing the Senate unanimously and the House 374–1, the Clean Air Amendments of 1970 were signed by President Nixon on 31 December 1970. The law shifted the focus of air-quality regulation from the states to the federal government, directing the months-old EPA to set National Ambient Air Quality Standards and requiring states to submit implementation plans to meet them.',
+        source: {
+          externalId: 'src:nixon-clean-air-signing-1970',
+          name: 'Richard Nixon, "Remarks on Signing the Clean Air Amendments of 1970," 31 December 1970. The American Presidency Project, UC Santa Barbara.',
+          url: 'https://www.presidency.ucsb.edu/documents/remarks-signing-the-clean-air-amendments-1970',
+          publishedAt: '1970-12-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-04-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 April 1971 the EPA promulgated the first National Ambient Air Quality Standards for six criteria pollutants, converting the statute into binding, enforceable federal limits. The 1970 Act\'s federal framework — NAAQS, state implementation plans, and EPA enforcement — has been amended (notably in 1977 and 1990) but never repealed, becoming the durable foundation of U.S. air-pollution law.',
+        source: {
+          externalId: 'src:epa-naaqs-1971',
+          name: 'U.S. EPA. "Evolution of the Clean Air Act" / 40th Anniversary of the Clean Air Act.',
+          url: 'https://www.epa.gov/clean-air-act-overview/evolution-clean-air-act',
+          publishedAt: '1971-04-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DNA fingerprinting discovered by Alec Jeffreys ──────────────────────────
+  {
+    externalId: 'trajectory:dna-fingerprinting-1984',
+    text: 'On the morning of 10 September 1984 at the University of Leicester, Alec Jeffreys produced the first DNA fingerprint, discovering that hypervariable minisatellite regions of human DNA yield individual-specific banding patterns that can identify a person and establish biological relationships.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1984-09-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-09-10',
+        datePrecision: 'DAY',
+        reason: 'Developing an X-ray film of a DNA probe hybridized to family DNA samples at about 9:05 a.m. on 10 September 1984, Jeffreys saw a complex, individual-specific pattern of bands that differed between people but was inherited in a Mendelian fashion. He recognized it as a method of biological identification and described it as the world\'s first genetic fingerprint.',
+        source: {
+          externalId: 'src:leicester-dna-fingerprinting-history',
+          name: 'University of Leicester. "DNA fingerprinting" — history of Sir Alec Jeffreys\' 10 September 1984 discovery.',
+          url: 'https://le.ac.uk/dna-fingerprinting/history',
+          publishedAt: '2014-09-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-03-07',
+        datePrecision: 'DAY',
+        reason: 'Jeffreys, Wilson, and Thein published the minisatellite findings in Nature on 7 March 1985 ("Hypervariable \'minisatellite\' regions in human DNA"), followed by the individual-specific "fingerprint" paper later that year. The technique was independently reproduced and rapidly adopted for paternity and immigration casework, with its first use in a March 1985 immigration dispute.',
+        source: {
+          externalId: 'src:jeffreys-nature-minisatellite-1985',
+          name: 'Jeffreys A.J., Wilson V., Thein S.L. "Hypervariable \'minisatellite\' regions in human DNA." Nature 314, 67–73, 7 March 1985.',
+          url: 'https://www.nature.com/articles/314067a0',
+          publishedAt: '1985-03-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1988-01-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 January 1988 Colin Pitchfork was sentenced at Leicester Crown Court after DNA profiling matched him to the murders of two girls in Leicestershire and earlier exonerated an innocent suspect. He became the first person convicted of murder on DNA evidence, ratifying the reliability of DNA identification in a court of law.',
+        source: {
+          externalId: 'src:pitchfork-conviction-1988',
+          name: 'Colin Pitchfork — first murder conviction secured by DNA profiling, sentenced 22 January 1988. Wikipedia, "Colin Pitchfork".',
+          url: 'https://en.wikipedia.org/wiki/Colin_Pitchfork',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Apple II introduced at the West Coast Computer Faire ─────────────────────
+  {
+    externalId: 'trajectory:apple-ii-introduced-1977',
+    text: 'Apple Computer unveiled the Apple II personal computer at the first West Coast Computer Faire in San Francisco on 16 April 1977; the machine began shipping on 5 June 1977 and became one of the first highly successful mass-produced microcomputers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1977-04-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1977-04-16',
+        datePrecision: 'DAY',
+        reason: 'Steve Jobs and Steve Wozniak demonstrated the Apple II at the inaugural West Coast Computer Faire, held at the San Francisco Civic Auditorium on 16–17 April 1977. Designed by Wozniak with a molded plastic case, built-in keyboard, color graphics, and sound, it was presented as a complete consumer product rather than a hobbyist kit.',
+        source: {
+          externalId: 'src:apple-ii-wcc-faire-1977',
+          name: 'Apple II — introduced at the first West Coast Computer Faire, 16 April 1977. Wikipedia, "Apple II (original)".',
+          url: 'https://en.wikipedia.org/wiki/Apple_II_(original)',
+          publishedAt: '2015-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1977-06-05',
+        datePrecision: 'DAY',
+        reason: 'The Apple II began shipping to customers on 5 June 1977. Production roughly doubled every few months through the rest of the year, and the platform — extended by the spreadsheet VisiCalc in 1979 — sold for well over a decade, establishing the Apple II as a commercially decisive early personal computer.',
+        source: {
+          externalId: 'src:apple-ii-shipping-1977',
+          name: 'Apple II — first shipped 5 June 1977. Wikipedia, "Apple II (original)".',
+          url: 'https://en.wikipedia.org/wiki/Apple_II_(original)',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Watts riots and the McCone Commission report ────────────────────────────
+  {
+    externalId: 'trajectory:watts-riots-1965',
+    text: 'The Watts riots erupted in Los Angeles on 11 August 1965 after the arrest of motorist Marquette Frye and lasted six days, leaving 34 dead; the Governor\'s Commission (the McCone Commission) documented the causes in a report published on 2 December 1965.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-08-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1965-08-11',
+        datePrecision: 'DAY',
+        reason: 'On the evening of 11 August 1965 a California Highway Patrol stop of 21-year-old Marquette Frye for suspected drunk driving in the Watts neighborhood escalated into a confrontation with a gathering crowd, sparking six days of unrest. The disturbance, covered live by Los Angeles press and television, resulted in 34 deaths, over 1,000 injuries, and roughly $40 million in property damage before the National Guard restored order.',
+        source: {
+          externalId: 'src:watts-riots-1965',
+          name: 'Watts riots, Los Angeles, 11–16 August 1965. Wikipedia, "Watts riots".',
+          url: 'https://en.wikipedia.org/wiki/Watts_riots',
+          publishedAt: '2015-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-12-02',
+        datePrecision: 'DAY',
+        reason: 'Governor Pat Brown appointed a commission chaired by John A. McCone, which on 2 December 1965 released a 101-page report, "Violence in the City — An End or a Beginning?", attributing the unrest to high unemployment, poor schools, and inferior living conditions endured by Black residents. The report became the authoritative contemporaneous account of the riots\' scale and causes.',
+        source: {
+          externalId: 'src:mccone-commission-report-1965',
+          name: 'McCone Commission. "Violence in the City — An End or a Beginning?" Governor\'s Commission on the Los Angeles Riots, 2 December 1965.',
+          url: 'https://en.wikipedia.org/wiki/McCone_Commission',
+          publishedAt: '1965-12-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
