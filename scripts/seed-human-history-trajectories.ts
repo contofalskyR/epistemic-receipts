@@ -34517,6 +34517,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Hershey–Chase experiment: DNA is the genetic material ─────────────────────
+  {
+    externalId: 'trajectory:hershey-chase-experiment-1952',
+    text: 'The Hershey–Chase "blender" experiments demonstrated that DNA, not protein, is the genetic material that bacteriophages inject to direct the production of new virus, published in the Journal of General Physiology in September 1952.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-09-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-09-20',
+        datePrecision: 'DAY',
+        reason: 'Alfred Hershey and Martha Chase, using radioactive sulfur (protein) and phosphorus (DNA) labels and a kitchen blender to shear phage coats from infected bacteria, showed that the phosphorus-labeled DNA entered the cells while the sulfur-labeled protein remained outside. The paper "Independent functions of viral protein and nucleic acid in growth of bacteriophage" was received 9 April 1952 and published 20 September 1952.',
+        source: {
+          externalId: 'src:hershey-chase-jgp-1952',
+          name: 'Hershey AD, Chase M. "Independent functions of viral protein and nucleic acid in growth of bacteriophage." Journal of General Physiology 36(1):39–56, 20 September 1952 (PMC2147348).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2147348/',
+          publishedAt: '1952-09-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-04-25',
+        datePrecision: 'DAY',
+        reason: 'The Hershey–Chase result, reinforcing the earlier Avery–MacLeod–McCarty transformation work, was rapidly absorbed into a consensus that DNA carries heredity; the 1953 Watson–Crick double-helix structure (25 April 1953) provided the molecular mechanism, and Hershey shared the 1969 Nobel Prize in Physiology or Medicine for the phage work, settling the conclusion.',
+        source: {
+          externalId: 'src:nobel-1969-hershey',
+          name: 'The Nobel Prize in Physiology or Medicine 1969 — Delbrück, Hershey, and Luria, "for their discoveries concerning the replication mechanism and the genetic structure of viruses."',
+          url: 'https://www.nobelprize.org/prizes/medicine/1969/summary/',
+          publishedAt: '1969-10-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Telstar 1: first active communications satellite / transatlantic TV ───────
+  {
+    externalId: 'trajectory:telstar-1-first-comsat-1962',
+    text: 'Telstar 1, launched on July 10, 1962, was the first active communications satellite and relayed the first live transatlantic television transmissions between North America and Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962-07-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-07-10',
+        datePrecision: 'DAY',
+        reason: 'NASA launched the AT&T-built Telstar 1 from Cape Canaveral on 10 July 1962, the first privately sponsored spaceflight and the first satellite able to relay television signals. Within hours it relayed its first signal, and days later it carried the first live transatlantic television images between Andover, Maine and Pleumeur-Bodou, France.',
+        source: {
+          externalId: 'src:earthsky-telstar-1962',
+          name: 'EarthSky — "Today in science: 1st Telstar launch" (Telstar 1 launched 10 July 1962, relayed first transatlantic television).',
+          url: 'https://earthsky.org/human-world/this-date-in-science-the-launch-of-telstar-1/',
+          publishedAt: '1962-07-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-07-23',
+        datePrecision: 'DAY',
+        reason: 'On 23 July 1962 Telstar 1 carried the first public live multinational satellite television broadcast, watched by audiences on both sides of the Atlantic. The launch date, capabilities, and historic role of Telstar are documented in cataloged spacecraft records and are uncontested.',
+        source: {
+          externalId: 'src:airandspace-telstar',
+          name: 'Smithsonian National Air and Space Museum — "Communications Satellite (Telstar)" collection record (launched 10 July 1962; first active communications satellite).',
+          url: 'https://airandspace.si.edu/collection-objects/communications-satellite-telstar/nasm_A20070113000',
+          publishedAt: '1962-07-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Santa Barbara oil spill galvanizes the environmental movement ─────────────
+  {
+    externalId: 'trajectory:santa-barbara-oil-spill-1969',
+    text: 'A blowout on Union Oil\'s Platform A in the Santa Barbara Channel on January 28, 1969 caused the largest oil spill in U.S. waters at the time and became a catalyst for the modern American environmental movement.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1969-01-28',
+        datePrecision: 'DAY',
+        reason: 'On 28 January 1969, while drill bits were being changed on Union Oil Company well number 21 under Platform A in the Dos Cuadras field about 5.5 miles off Santa Barbara, California, a blowout sent oil, gas, and drilling mud onto the platform. An estimated 80,000–100,000 barrels of crude fouled the coastline over the following weeks, with the disaster reported nationally.',
+        source: {
+          externalId: 'src:noaa-santa-barbara-blowout',
+          name: 'NOAA Office of Response and Restoration, IncidentNews — "Santa Barbara Well Blowout; Santa Barbara, California" (28 January 1969).',
+          url: 'https://incidentnews.noaa.gov/incident/6206',
+          publishedAt: '1969-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-04-22',
+        datePrecision: 'DAY',
+        reason: 'The spill is widely credited with spurring environmental policy and activism: it helped inspire the first Earth Day (22 April 1970), the National Environmental Policy Act, and the founding of the EPA. The date, cause, and scale of the spill are documented in government incident records and historical accounts and are uncontested.',
+        source: {
+          externalId: 'src:npr-santa-barbara-50th',
+          name: 'NPR — "50th Anniversary Of Santa Barbara Oil Spill: An Environmental Turning Point" (28 January 2019).',
+          url: 'https://www.npr.org/2019/01/28/688219307/how-californias-worst-oil-spill-turned-beaches-black-and-the-nation-green',
+          publishedAt: '2019-01-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pioneer 10: first spacecraft flyby of Jupiter ────────────────────────────
+  {
+    externalId: 'trajectory:pioneer-10-jupiter-flyby-1973',
+    text: 'Pioneer 10, launched March 2, 1972, became the first spacecraft to fly past Jupiter, making its closest approach on December 4, 1973 and returning the first close-up images of the planet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-12-04',
+        datePrecision: 'DAY',
+        reason: 'After becoming the first spacecraft to traverse the asteroid belt, Pioneer 10 made its closest approach to Jupiter at 02:26 UT on 4 December 1973, passing about 81,000 miles (130,354 km) above the cloud tops and returning the first close-up images of Jupiter and data on its radiation environment.',
+        source: {
+          externalId: 'src:nasa-pioneer-10',
+          name: 'NASA Science — "Pioneer 10" mission profile (launched 2 March 1972; Jupiter closest approach 4 December 1973).',
+          url: 'https://science.nasa.gov/mission/pioneer-10/',
+          publishedAt: '1973-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Jupiter encounter data were published and analyzed in the scientific literature, fixing Pioneer 10 as the first probe to reach the outer planets. The mission, its dates, and its results are documented in NASA mission records and remain uncontested.',
+        source: {
+          externalId: 'src:nssdca-pioneer-10',
+          name: 'NASA NSSDCA — Pioneer 10 spacecraft record (1972-012A), Jupiter flyby December 1973.',
+          url: 'https://science.nasa.gov/mission/pioneer-10/',
+          publishedAt: '1974-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Apollo–Soyuz: first international crewed docking ──────────────────────────
+  {
+    externalId: 'trajectory:apollo-soyuz-docking-1975',
+    text: 'On July 17, 1975, an American Apollo spacecraft and a Soviet Soyuz spacecraft docked in orbit during the Apollo–Soyuz Test Project, the first international crewed spaceflight, with commanders Thomas Stafford and Alexei Leonov shaking hands through the hatch.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1975-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1975-07-17',
+        datePrecision: 'DAY',
+        reason: 'Apollo launched 15 July 1975 with a crew of three and Soyuz with a crew of two; the two spacecraft docked using an androgynous docking system on 17 July 1975. Commanders Thomas Stafford and Alexei Leonov met at the hatch interface and shook hands in a moment televised live worldwide, symbolizing détente in the space race.',
+        source: {
+          externalId: 'src:nasa-astp-handshake',
+          name: 'NASA History — "45 Years Ago: Historic Handshake in Space" (Apollo–Soyuz docking and handshake, 17 July 1975).',
+          url: 'https://www.nasa.gov/history/45-years-ago-historic-handshake-in-space/',
+          publishedAt: '1975-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1975-07-24',
+        datePrecision: 'DAY',
+        reason: 'The joint mission concluded with the Apollo crew splashing down on 24 July 1975, completing the first international crewed spaceflight. The dates, crews, and docking are documented in NASA and Soviet mission records and are uncontested.',
+        source: {
+          externalId: 'src:nasa-apollo-soyuz-project',
+          name: 'NASA — "Apollo-Soyuz Test Project" mission overview (docking 17 July 1975; first international crewed mission).',
+          url: 'https://www.nasa.gov/apollo-soyuz-test-project/',
+          publishedAt: '1975-07-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
