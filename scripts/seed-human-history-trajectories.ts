@@ -24736,6 +24736,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII / INTERWAR ADDENDUM (1900–1950) — physics, totalitarianism
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Einstein presents the general relativity field equations ────────────────
+  {
+    externalId: 'trajectory:einstein-general-relativity-field-equations-1915',
+    text: 'On 25 November 1915, Albert Einstein presented the final, generally covariant field equations of general relativity to the Prussian Academy of Sciences in Berlin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-11-25',
+        datePrecision: 'DAY',
+        reason: 'After realizing his October 1915 formulation was inconsistent with energy-momentum conservation, Einstein presented the corrected field equations — adding the trace term in the Ricci scalar — to the Prussian Academy of Sciences. The lecture was recorded in the Academy\'s Sitzungsberichte, fixing the equations in the contemporaneous scientific record.',
+        source: {
+          externalId: 'src:einstein-feldgleichungen-1915',
+          name: 'Einstein A. "Die Feldgleichungen der Gravitation." Sitzungsberichte der Preußischen Akademie der Wissenschaften, 25 November 1915, pp. 844–847.',
+          url: 'https://en.wikipedia.org/wiki/History_of_general_relativity',
+          publishedAt: '1915-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-11-06',
+        datePrecision: 'DAY',
+        reason: 'Eddington\'s solar-eclipse measurements of starlight deflection, announced to the Royal Society on 6 November 1919, matched the prediction of the field equations rather than Newtonian gravity, providing the first empirical confirmation. Subsequent tests (perihelion of Mercury, gravitational redshift, and later gravitational-wave detection) corroborated the theory, establishing it as settled physics.',
+        source: {
+          externalId: 'src:einstein-gr-confirmation-synthesis',
+          name: 'History of general relativity — scholarly synthesis of the 25 November 1915 field equations and their experimental confirmation.',
+          url: 'https://en.wikipedia.org/wiki/History_of_general_relativity',
+          publishedAt: '1919-11-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dirac equation predicts antimatter ──────────────────────────────────────
+  {
+    externalId: 'trajectory:dirac-equation-antimatter-1928',
+    text: 'In a paper published on 2 January 1928, Paul Dirac formulated a relativistic wave equation for the electron whose negative-energy solutions implied the existence of antimatter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-02',
+        datePrecision: 'DAY',
+        reason: 'Dirac published "The Quantum Theory of the Electron" (received by the Royal Society and dated 2 January 1928), giving a relativistic, spin-incorporating wave equation for the electron. The equation\'s negative-energy solutions implied a previously unsuspected form of matter — antimatter — recorded as a theoretical prediction in the physics literature.',
+        source: {
+          externalId: 'src:dirac-quantum-theory-electron-1928',
+          name: 'Dirac P.A.M. "The Quantum Theory of the Electron." Proceedings of the Royal Society A 117 (778): 610–624, 1928.',
+          url: 'https://en.wikipedia.org/wiki/Dirac_equation',
+          publishedAt: '1928-01-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-08-02',
+        datePrecision: 'DAY',
+        reason: 'Carl Anderson\'s cloud-chamber observation of the positron (2 August 1932) confirmed the existence of Dirac\'s predicted anti-electron, converting the prediction into established fact. The discovery of further antiparticles cemented antimatter as settled physics.',
+        source: {
+          externalId: 'src:dirac-antimatter-confirmation-synthesis',
+          name: 'Dirac equation — scholarly synthesis of the 1928 antimatter prediction and its experimental confirmation by the positron.',
+          url: 'https://en.wikipedia.org/wiki/Dirac_equation',
+          publishedAt: '1932-08-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Meitner and Frisch explain and name nuclear fission ─────────────────────
+  {
+    externalId: 'trajectory:meitner-frisch-fission-interpretation-1939',
+    text: 'In a Nature paper published on 11 February 1939, Lise Meitner and Otto Frisch provided the theoretical explanation for the splitting of the uranium nucleus and coined the term "fission".',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-02-11',
+        datePrecision: 'DAY',
+        reason: 'Building on Hahn and Strassmann\'s December 1938 radiochemical result, Meitner and Frisch interpreted the uranium nucleus splitting into two lighter nuclei via a liquid-drop model, calculated the energy release, and introduced the term "fission". Their note, mailed to Nature on 16 January 1939, appeared in print on 11 February 1939, recording the interpretation in the literature.',
+        source: {
+          externalId: 'src:meitner-frisch-nature-1939',
+          name: 'Meitner L., Frisch O.R. "Disintegration of Uranium by Neutrons: a New Type of Nuclear Reaction." Nature 143: 239–240, 11 February 1939.',
+          url: 'https://en.wikipedia.org/wiki/Lise_Meitner',
+          publishedAt: '1939-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Frisch experimentally confirmed the energetic fission fragments within days, and laboratories worldwide reproduced the result through 1939. The liquid-drop interpretation of fission and the term itself became standard, foundational to nuclear physics and the wartime reactor and weapons programs.',
+        source: {
+          externalId: 'src:fission-interpretation-synthesis',
+          name: 'Lise Meitner — scholarly synthesis of the February 1939 fission interpretation and its rapid experimental corroboration.',
+          url: 'https://en.wikipedia.org/wiki/Lise_Meitner',
+          publishedAt: '1939-12-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Beer Hall Putsch ────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:beer-hall-putsch-1923',
+    text: 'On 8–9 November 1923, Adolf Hitler and the Nazi Party attempted a coup against the Weimar and Bavarian governments in Munich (the Beer Hall Putsch), which was suppressed by police.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1923-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1923-11-08',
+        datePrecision: 'DAY',
+        reason: 'On the evening of 8 November, Hitler and roughly 600 SA men seized the Bürgerbräukeller beer hall where Bavarian officials were gathered. The next morning a Nazi march through Munich was halted by armed police, who exchanged fire with the marchers. The events were reported contemporaneously in the German and international press.',
+        source: {
+          externalId: 'src:beer-hall-putsch-record',
+          name: 'Beer Hall Putsch (Hitlerputsch / Bürgerbräu-Putsch), Munich, 8–9 November 1923 — contemporaneous press and police records.',
+          url: 'https://en.wikipedia.org/wiki/Beer_Hall_Putsch',
+          publishedAt: '1923-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1924-04-01',
+        datePrecision: 'DAY',
+        reason: 'Hitler\'s public treason trial (26 February – 1 April 1924) produced an official judicial record of the putsch, convicting him and others and sentencing him to five years\' fortress confinement. The trial transcript, verdict, and the events themselves are documented across primary sources and are not in dispute.',
+        source: {
+          externalId: 'src:beer-hall-putsch-trial-synthesis',
+          name: 'Beer Hall Putsch — scholarly synthesis of the November 1923 coup attempt and the 1924 treason trial.',
+          url: 'https://en.wikipedia.org/wiki/Beer_Hall_Putsch',
+          publishedAt: '1924-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Enabling Act of 1933 ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:enabling-act-1933',
+    text: 'On 23 March 1933, the German Reichstag passed the Enabling Act (Ermächtigungsgesetz) by a vote of 444 to 94, granting Hitler\'s cabinet the power to enact laws without the Reichstag or the President.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1933-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1933-03-23',
+        datePrecision: 'DAY',
+        reason: 'The Reichstag, meeting at the Kroll Opera House amid SA intimidation and the absence of arrested Communist deputies, passed the "Law to Remedy the Distress of People and Reich" 444 to 94 (only the Social Democrats opposed); the Reichsrat approved it the same evening. It permitted government laws to deviate from the constitution, recorded in the official statute.',
+        source: {
+          externalId: 'src:enabling-act-1933-text',
+          name: 'Gesetz zur Behebung der Not von Volk und Reich (Enabling Act), Reichsgesetzblatt I, p. 141, 23 March 1933.',
+          url: 'https://en.wikipedia.org/wiki/Enabling_Act_of_1933',
+          publishedAt: '1933-03-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-12-31',
+        datePrecision: 'YEAR',
+        reason: 'The Act\'s date, vote tally, and legal effect are preserved in the Reichsgesetzblatt and confirmed across the historiography. It is treated as the legal cornerstone of the Nazi dictatorship, removing constitutional checks on executive power; the fact of its passage is settled and undisputed.',
+        source: {
+          externalId: 'src:enabling-act-1933-synthesis',
+          name: 'Enabling Act of 1933 — scholarly synthesis of the 23 March 1933 vote and its constitutional consequences.',
+          url: 'https://en.wikipedia.org/wiki/Enabling_Act_of_1933',
+          publishedAt: '1933-12-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────

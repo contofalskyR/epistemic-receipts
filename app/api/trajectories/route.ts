@@ -30,16 +30,26 @@ export async function GET() {
     },
   });
 
-  const list = claims.map((c) => ({
-    id: c.externalId!.replace(/^trajectory:/, ""),
-    claimId: c.id,
-    claim: c.text,
-    era: classifyEra(c.claimEmergedAt),
-    communities: [...new Set(c.statusHistory.map((s) => s.community))],
-    transitionCount: c.statusHistory.length,
-    hasReversal: c.statusHistory.some((s) => s.toAxis === "REVERSED"),
-    hasAbandonment: c.statusHistory.some((s) => s.toAxis === "ABANDONED"),
-  }));
+  const list = claims.map((c) => {
+    const sorted = [...c.statusHistory].sort(
+      (a, b) => a.occurredAt.getTime() - b.occurredAt.getTime()
+    );
+    const last = sorted[sorted.length - 1];
+    const first = sorted[0];
+    return {
+      id: c.externalId!.replace(/^trajectory:/, ""),
+      claimId: c.id,
+      claim: c.text,
+      era: classifyEra(c.claimEmergedAt),
+      communities: [...new Set(c.statusHistory.map((s) => s.community))],
+      transitionCount: c.statusHistory.length,
+      hasReversal: c.statusHistory.some((s) => s.toAxis === "REVERSED"),
+      hasAbandonment: c.statusHistory.some((s) => s.toAxis === "ABANDONED"),
+      currentAxis: last?.toAxis ?? null,
+      firstYear: first ? first.occurredAt.getUTCFullYear() : null,
+      lastYear: last ? last.occurredAt.getUTCFullYear() : null,
+    };
+  });
 
   return NextResponse.json(list);
 }
