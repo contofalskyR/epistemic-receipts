@@ -45830,6 +45830,136 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL — additional verified curves (Greek / Roman astronomy & rite)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lunar eclipse on the eve of the Battle of Pydna ─────────────────────────
+  {
+    externalId: 'trajectory:pydna-lunar-eclipse-168bce',
+    text: 'A total lunar eclipse on the night of 21 June 168 BCE — the eve of the Battle of Pydna — was read by the Macedonian army as an omen of their king\'s fall, while the Roman tribune Gaius Sulpicius Gallus explained it to the legions as a predictable natural event.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0168-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0168-06-21',
+        datePrecision: 'DAY',
+        reason: 'The night before the Roman and Macedonian armies engaged at Pydna, the moon was eclipsed. The Macedonians, taking the darkening as a portent of the eclipse of their king Perseus, were dismayed; on the Roman side the military tribune Gaius Sulpicius Gallus is reported to have forewarned and explained the eclipse to the troops as a regular celestial occurrence, steadying their morale. The episode is preserved by Livy (44.37) drawing on the contemporary historian Polybius.',
+        source: {
+          externalId: 'src:sulpicius-gallus-pydna-eclipse',
+          name: 'Gaius Sulpicius Gallus — predicted/explained the lunar eclipse on the night before the Battle of Pydna (168 BCE); citing Livy 44.37, Polybius 29, Cicero, Pliny NH 2.9.',
+          url: 'https://en.wikipedia.org/wiki/Gaius_Sulpicius_Gallus',
+          publishedAt: '0168-06-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation identifies the total lunar eclipse of the night of 21 June 168 BCE (Julian) as the only eclipse matching the eve of the battle, fixing the Battle of Pydna to 22 June 168 BCE. The eclipse is catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses and anchors the chronology of the Third Macedonian War.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-pydna',
+          name: 'Battle of Pydna — lunar eclipse on the night before the battle (22 June 168 BCE), dated by astronomical retrocalculation.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Pydna',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hipparchus derives the Earth–Moon distance from a solar eclipse ──────────
+  {
+    externalId: 'trajectory:hipparchus-lunar-distance-190bce',
+    text: 'Hipparchus of Nicaea used the total solar eclipse of 14 March 190 BCE — total at the Hellespont but only about four-fifths at Alexandria — to derive the Earth–Moon distance, bounding it at roughly 71 Earth radii.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0190-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0190-03-14',
+        datePrecision: 'DAY',
+        reason: 'A solar eclipse total along the Hellespont and over Nicaea (Hipparchus\' birthplace) was observed at Alexandria as covering only about four-fifths of the sun. The difference in obscuration between the two locations corresponds to a measurable parallactic displacement of the Moon against the Sun — the empirical datum on which the distance estimate rests, transmitted via Pappus of Alexandria\'s commentary on Ptolemy.',
+        source: {
+          externalId: 'src:hipparchus-sizes-distances',
+          name: 'On Sizes and Distances (Hipparchus) — eclipse total at the Hellespont, 4/5 at Alexandria; reported by Pappus.',
+          url: 'https://en.wikipedia.org/wiki/On_Sizes_and_Distances_(Hipparchus)',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'G. J. Toomer\'s 1974 reconstruction of Hipparchus\' lost two-book treatise On Sizes and Distances identified the specific eclipse used as that of 14 March 190 BCE and confirmed that the parallax method yields a lunar distance of about 71 Earth radii — close to the true mean of roughly 60 Earth radii, and one of the earliest quantitative distance measurements in astronomy.',
+        source: {
+          externalId: 'src:toomer-hipparchus-1974',
+          name: 'Toomer GJ. "Hipparchus on the distances of the sun and moon." Archive for History of Exact Sciences 14 (1974); eclipse of 14 March 190 BCE identified.',
+          url: 'https://en.wikipedia.org/wiki/On_Sizes_and_Distances_(Hipparchus)',
+          publishedAt: '1974-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Augustus celebrates the Secular Games (Ludi Saeculares) of 17 BCE ────────
+  {
+    externalId: 'trajectory:secular-games-augustus-17bce',
+    text: 'Augustus celebrated the Ludi Saeculares (Secular Games) over four days, 31 May–3 June 17 BCE — an event recorded on a contemporaneous inscribed marble register (the Acta) and commemorated by Horace\'s Carmen Saeculare.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0017-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0017-05-31',
+        datePrecision: 'DAY',
+        reason: 'Over the nights and days of 31 May to 3 June 17 BCE, Augustus and Agrippa as members of the quindecimviri performed nocturnal sacrifices to the underworld deities and daytime sacrifices to the Olympian gods, justified by a Sibylline oracle prescribing the festival every saeculum. By senatorial decree the proceedings were inscribed, rite by dated rite, on a marble register set up at the Tarentum in the Campus Martius; the inscription survives in part.',
+        source: {
+          externalId: 'src:acta-ludi-saecularium-17bce',
+          name: 'Acta of the Secular Games of 17 BCE (CIL VI 32323) — inscribed marble register of the rites of 31 May–3 June, set up at the Tarentum.',
+          url: 'https://en.wikipedia.org/wiki/Secular_Games',
+          publishedAt: '0017-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1891-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After the sacrifices of 3 June a chorus of twenty-seven boys and twenty-seven girls sang the Carmen Saeculare, composed for the occasion by Horace and preserved in his published corpus. The recovery of the partially surviving Acta inscription in late-19th-century excavations of the Campus Martius corroborates Horace and the literary tradition, fixing the festival and its dates beyond dispute.',
+        source: {
+          externalId: 'src:secular-games-acta-carmen',
+          name: 'Secular Games — Acta inscription and Horace\'s Carmen Saeculare sung after the sacrifices of 3 June 17 BCE.',
+          url: 'https://en.wikipedia.org/wiki/Secular_Games',
+          publishedAt: '1891-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
