@@ -46824,6 +46824,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Luna 2 — first human-made object to reach another celestial body ─────────
+  {
+    externalId: 'trajectory:luna-2-first-lunar-impact-1959',
+    text: 'On September 13/14, 1959, the Soviet probe Luna 2 impacted the Moon, becoming the first human-made object to reach the surface of another celestial body.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-09-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-09-13',
+        datePrecision: 'DAY',
+        reason: 'Launched 12 September 1959, Luna 2 ceased transmitting on impact east of Mare Imbrium near the craters Aristillus, Archimedes, and Autolycus at 21:02:24 GMT on 13 September (00:02 Moscow time, 14 September). The abrupt loss of signal at the predicted time was the contemporaneous evidence of impact, tracked independently by the Jodrell Bank radio observatory in Britain.',
+        source: {
+          externalId: 'src:nssdc-luna-2',
+          name: 'NASA NSSDCA Master Catalog: Luna 2 (1959-014A).',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1959-014A',
+          publishedAt: '1959-09-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-09-14',
+        datePrecision: 'DAY',
+        reason: 'Independent confirmation came from Jodrell Bank Observatory, which tracked Luna 2 and verified the simultaneous cessation of its signal, ruling out Cold War skepticism that the Soviet claim was propaganda. The achievement is uncontested in the historical and aerospace record.',
+        source: {
+          externalId: 'src:luna-2-wikipedia',
+          name: 'Luna 2 — spaceflight record (launch 12 Sep 1959, lunar impact 13/14 Sep 1959).',
+          url: 'https://en.wikipedia.org/wiki/Luna_2',
+          publishedAt: '1959-09-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Twenty-fourth Amendment — abolition of the poll tax ──────────────────────
+  {
+    externalId: 'trajectory:twenty-fourth-amendment-1964',
+    text: 'The Twenty-fourth Amendment to the U.S. Constitution, prohibiting poll taxes in federal elections, was ratified on January 23, 1964.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1964-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-01-23',
+        datePrecision: 'DAY',
+        reason: 'South Dakota became the 38th state to ratify on 23 January 1964, completing the three-fourths requirement. The amendment bars conditioning the right to vote in federal elections on payment of any poll tax, a longstanding instrument of disenfranchisement in Southern states.',
+        source: {
+          externalId: 'src:archives-24th-amendment',
+          name: 'U.S. National Archives — Constitution Amendments 11–27 (24th Amendment, ratified Jan 23, 1964).',
+          url: 'https://www.archives.gov/founding-docs/amendments-11-27',
+          publishedAt: '1964-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1966-03-24',
+        datePrecision: 'DAY',
+        reason: 'In Harper v. Virginia Board of Elections (24 March 1966) the Supreme Court extended the principle, striking down poll taxes in state elections under the Equal Protection Clause. The amendment and its judicial reinforcement are settled constitutional law.',
+        source: {
+          externalId: 'src:harper-v-virginia-1966',
+          name: 'Harper v. Virginia Bd. of Elections, 383 U.S. 663 (1966).',
+          url: 'https://www.archives.gov/founding-docs/amendments-11-27',
+          publishedAt: '1966-03-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First reported cases of what became AIDS — MMWR June 5, 1981 ─────────────
+  {
+    externalId: 'trajectory:aids-first-mmwr-report-1981',
+    text: 'On June 5, 1981, the CDC Morbidity and Mortality Weekly Report described Pneumocystis pneumonia in five previously healthy young men in Los Angeles — the first published account of what would be recognized as AIDS.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-06-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-06-05',
+        datePrecision: 'DAY',
+        reason: 'The MMWR of 5 June 1981 reported five cases of biopsy-confirmed Pneumocystis carinii pneumonia (October 1980–May 1981) in previously healthy homosexual men in Los Angeles, two of whom had died. The unusual clustering of an opportunistic infection in immunocompetent young adults signalled a previously unrecorded immune-deficiency syndrome.',
+        source: {
+          externalId: 'src:mmwr-pcp-june-5-1981',
+          name: 'CDC MMWR, "Pneumocystis Pneumonia — Los Angeles," 5 June 1981, 30(21):250–252.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/june_5.htm',
+          publishedAt: '1981-06-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-05-20',
+        datePrecision: 'DAY',
+        reason: 'The cause was established when Barré-Sinoussi, Montagnier and colleagues at the Institut Pasteur reported isolation of a retrovirus (later named HIV) from a patient with lymphadenopathy in Science on 20 May 1983, confirming the syndrome had an infectious viral etiology. The retrospective significance of the 1981 MMWR report as the first account of AIDS is settled in the medical literature.',
+        source: {
+          externalId: 'src:barre-sinoussi-1983-hiv',
+          name: 'Barré-Sinoussi F. et al., "Isolation of a T-Lymphotropic Retrovirus from a Patient at Risk for AIDS," Science 220(4599):868–871, 20 May 1983.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6189183/',
+          publishedAt: '1983-05-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alvarez impact hypothesis for the K–Pg extinction ───────────────────────
+  {
+    externalId: 'trajectory:alvarez-impact-hypothesis-1980',
+    text: 'On June 6, 1980, Luis and Walter Alvarez and colleagues published in Science the hypothesis that an asteroid impact, evidenced by a global iridium anomaly at the Cretaceous–Tertiary boundary, caused the mass extinction that killed the non-avian dinosaurs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-06-06',
+        datePrecision: 'DAY',
+        reason: 'Alvarez et al. reported in Science (vol. 208, no. 4448) that sedimentary clay layers at the K–T boundary worldwide contain iridium concentrations hundreds of times above background, interpreted as fallout from a ~10 km asteroid impact. The proposal was vigorously contested for a decade by proponents of gradualist and volcanic (Deccan Traps) explanations.',
+        source: {
+          externalId: 'src:alvarez-1980-science',
+          name: 'Alvarez L.W., Alvarez W., Asaro F., Michel H.V., "Extraterrestrial Cause for the Cretaceous-Tertiary Extinction," Science 208(4448):1095–1108, 6 June 1980.',
+          url: 'https://en.wikipedia.org/wiki/Alvarez_hypothesis',
+          publishedAt: '1980-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-03-05',
+        datePrecision: 'DAY',
+        reason: 'Identification of the buried Chicxulub crater on the Yucatán Peninsula (1991) supplied the missing impact site dated to the boundary. In March 2010 a panel of 41 scientists reviewing two decades of evidence endorsed the Chicxulub impact as the cause of the extinction in Science, ruling out competing theories and settling the hypothesis.',
+        source: {
+          externalId: 'src:schulte-2010-chicxulub',
+          name: 'Schulte P. et al., "The Chicxulub Asteroid Impact and Mass Extinction at the Cretaceous-Paleogene Boundary," Science 327(5970):1214–1218, 5 March 2010.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20203042/',
+          publishedAt: '2010-03-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── SN 1987A — birth of neutrino astronomy ──────────────────────────────────
+  {
+    externalId: 'trajectory:sn-1987a-neutrinos-1987',
+    text: 'Supernova SN 1987A, observed in the Large Magellanic Cloud on February 23–24, 1987, produced a neutrino burst detected on Earth — the first neutrinos ever observed from a supernova and a direct confirmation of core-collapse theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-02-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-02-23',
+        datePrecision: 'DAY',
+        reason: 'A burst of ~24 antineutrinos was recorded within ~13 seconds on 23 February 1987 by the Kamiokande-II, IMB, and Baksan detectors, hours before the optical supernova was discovered independently by Ian Shelton, Oscar Duhalde, and Albert Jones on 24 February. The neutrinos arrived ahead of the light, as predicted for core collapse.',
+        source: {
+          externalId: 'src:sn1987a-record',
+          name: 'SN 1987A — discovery and neutrino detection (Kamiokande-II, IMB, Baksan), 23–24 February 1987.',
+          url: 'https://en.wikipedia.org/wiki/SN_1987A',
+          publishedAt: '1987-02-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-04-06',
+        datePrecision: 'DAY',
+        reason: 'The Kamiokande-II collaboration published its observation of the neutrino burst in Physical Review Letters (6 April 1987), and the IMB collaboration likewise. The detections matched the energy (~3×10^53 erg) and timescale predicted for gravitational core collapse, confirming the mechanism and inaugurating neutrino astronomy. The result is settled and was recognized by the 2002 Nobel Prize in Physics.',
+        source: {
+          externalId: 'src:hirata-1987-kamiokande',
+          name: 'Hirata K. et al. (Kamiokande-II), "Observation of a Neutrino Burst from the Supernova SN1987A," Phys. Rev. Lett. 58(14):1490–1493, 6 April 1987.',
+          url: 'https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.58.1490',
+          publishedAt: '1987-04-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
