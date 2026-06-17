@@ -28714,6 +28714,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INTERWAR & WWII PHYSICS / POLITICS (1900–1950) — added batch
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Raman effect — inelastic scattering of light ────────────────────────────
+  {
+    externalId: 'trajectory:raman-effect-1928',
+    text: 'In February–March 1928 C. V. Raman reported that light scattered by a transparent medium contains a component shifted in frequency (the Raman effect), demonstrating the inelastic scattering of photons by molecules and providing direct optical evidence for molecular energy levels.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-02-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-03-31',
+        datePrecision: 'MONTH',
+        reason: 'Following the 28 February 1928 observation, Raman and K. S. Krishnan publish "A New Type of Secondary Radiation" in Nature, reporting that monochromatic light scattered by liquids and vapours contains lines shifted from the incident frequency. The shifts correspond to molecular vibrational and rotational energies, revealing a new mode of light–matter interaction (inelastic scattering).',
+        source: {
+          externalId: 'src:raman-krishnan-nature-1928',
+          name: 'Raman CV, Krishnan KS. A New Type of Secondary Radiation. Nature 1928;121:501–502.',
+          url: 'https://www.nature.com/articles/121501c0',
+          publishedAt: '1928-03-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The effect is rapidly reproduced — independently observed by Grigory Landsberg and Leonid Mandelstam in Moscow within days — and Raman expands the result in "A new radiation" (Indian Journal of Physics, vol. 2, 1928). Raman spectroscopy quickly becomes a standard tool for probing molecular structure, confirming the phenomenon across laboratories.',
+        source: {
+          externalId: 'src:raman-scattering-wikipedia',
+          name: 'Raman scattering (Wikipedia) — discovery on 28 February 1928, independent confirmation by Landsberg and Mandelstam, and development of Raman spectroscopy.',
+          url: 'https://en.wikipedia.org/wiki/Raman_scattering',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1930 Nobel Prize in Physics is awarded to Sir Chandrasekhara Venkata Raman "for his work on the scattering of light and for the discovery of the effect named after him," formally ratifying the discovery as established physics.',
+        source: {
+          externalId: 'src:nobel-physics-1930-raman',
+          name: 'Nobel Prize in Physics 1930: Sir Chandrasekhara Venkata Raman.',
+          url: 'https://www.nobelprize.org/prizes/physics/1930/summary/',
+          publishedAt: '1930-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zwicky — first inference of dark matter (Coma cluster) ───────────────────
+  {
+    externalId: 'trajectory:zwicky-dark-matter-1933',
+    text: 'In 1933 Fritz Zwicky inferred from the velocity dispersion of galaxies in the Coma cluster that the cluster contained far more mass ("dunkle Materie", dark matter) than could be accounted for by its luminous matter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Zwicky publishes "Die Rotverschiebung von extragalaktischen Nebeln" in Helvetica Physica Acta, applying the virial theorem to the high velocity dispersion of galaxies in the Coma cluster and concluding that the cluster must contain vastly more (unseen) mass than its visible stars provide. He names the missing component "dunkle Materie" (dark matter).',
+        source: {
+          externalId: 'src:zwicky-rotverschiebung-1933',
+          name: 'Zwicky F. Die Rotverschiebung von extragalaktischen Nebeln. Helvetica Physica Acta 1933;6:110–127.',
+          url: 'https://en.wikipedia.org/wiki/Fritz_Zwicky',
+          publishedAt: '1933-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Zwicky\'s missing-mass inference was largely set aside for decades, but Vera Rubin and Kent Ford\'s flat galaxy rotation curves (published in the late 1970s–1980) independently established that galaxies and clusters are dominated by unseen mass. Dark matter became a central, accepted component of the standard cosmological model, vindicating Zwicky\'s 1933 inference.',
+        source: {
+          externalId: 'src:dark-matter-wikipedia',
+          name: 'Dark matter (Wikipedia) — Zwicky\'s 1933 Coma-cluster inference and its later confirmation by galaxy rotation curves.',
+          url: 'https://en.wikipedia.org/wiki/Dark_matter',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yukawa — prediction of the meson (nuclear force carrier) ─────────────────
+  {
+    externalId: 'trajectory:yukawa-meson-prediction-1935',
+    text: 'In 1935 Hideki Yukawa predicted the existence of a new massive particle (the meson) that mediates the strong nuclear force between protons and neutrons, deriving the short-range "Yukawa potential" from its finite mass.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Yukawa publishes "On the Interaction of Elementary Particles. I" in the Proceedings of the Physico-Mathematical Society of Japan, proposing that the short-range nuclear force is carried by an exchange particle of intermediate mass (~200 electron masses). The finite mass produces an exponentially screened (Yukawa) potential, explaining why the nuclear force does not extend like electromagnetism.',
+        source: {
+          externalId: 'src:yukawa-interaction-1935',
+          name: 'Yukawa H. On the Interaction of Elementary Particles. I. Proc. Phys.-Math. Soc. Japan 1935;17:48–57.',
+          url: 'https://en.wikipedia.org/wiki/Yukawa_potential',
+          publishedAt: '1935-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After the 1937 muon was initially mistaken for Yukawa\'s particle, Cecil Powell\'s group identified the charged pion (π meson) in cosmic-ray emulsions in 1947 — a strongly interacting particle of roughly the predicted mass — confirming Yukawa\'s exchange-particle theory of the nuclear force.',
+        source: {
+          externalId: 'src:pion-discovery-wikipedia',
+          name: 'Pion (Wikipedia) — 1947 discovery of the charged pion by Lattes, Occhialini and Powell, confirming Yukawa\'s 1935 meson prediction.',
+          url: 'https://en.wikipedia.org/wiki/Pion',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1949-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1949 Nobel Prize in Physics is awarded to Hideki Yukawa "for his prediction of the existence of mesons on the basis of theoretical work on nuclear forces," formally ratifying the prediction.',
+        source: {
+          externalId: 'src:nobel-physics-1949-yukawa',
+          name: 'Nobel Prize in Physics 1949: Hideki Yukawa.',
+          url: 'https://www.nobelprize.org/prizes/physics/1949/summary/',
+          publishedAt: '1949-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Einstein–Podolsky–Rosen paradox — completeness of quantum mechanics ──────
+  {
+    externalId: 'trajectory:epr-paradox-1935',
+    text: 'On 15 May 1935 Einstein, Podolsky and Rosen published "Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?", arguing from entangled two-particle states that quantum mechanics is either incomplete or implies non-local "spooky" correlations.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-05-15',
+        datePrecision: 'DAY',
+        reason: 'Einstein, Podolsky and Rosen publish their paper in Physical Review (vol. 47, pp. 777–780), using a thought experiment on a pair of correlated particles to argue that if locality holds then the quantum-mechanical wavefunction cannot be a complete description of physical reality. Bohr publishes a rebuttal the same year defending the completeness of quantum theory.',
+        source: {
+          externalId: 'src:epr-physical-review-1935',
+          name: 'Einstein A, Podolsky B, Rosen N. Can Quantum-Mechanical Description of Physical Reality Be Considered Complete? Physical Review 1935;47(10):777–780.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777',
+          publishedAt: '1935-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-11-01',
+        datePrecision: 'MONTH',
+        reason: 'John Bell transforms the EPR debate from philosophy into experiment, deriving Bell\'s inequalities ("On the Einstein Podolsky Rosen Paradox," Physics, 1964) that any local hidden-variable theory must satisfy. Subsequent experiments (Aspect 1982 onward; loophole-free tests in 2015) violate these inequalities, settling that nature exhibits the non-local entanglement correlations EPR identified — vindicating the physics of the scenario while refuting EPR\'s hoped-for local completion.',
+        source: {
+          externalId: 'src:bell-theorem-wikipedia',
+          name: 'Bell\'s theorem (Wikipedia) — Bell\'s 1964 inequalities and the experimental resolution of the EPR question.',
+          url: 'https://en.wikipedia.org/wiki/Bell%27s_theorem',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kellogg–Briand Pact — renunciation of war ───────────────────────────────
+  {
+    externalId: 'trajectory:kellogg-briand-pact-1928',
+    text: 'On 27 August 1928 fifteen nations signed the Kellogg–Briand Pact (General Treaty for the Renunciation of War) in Paris, formally condemning recourse to war and renouncing it as an instrument of national policy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1928-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1928-08-27',
+        datePrecision: 'DAY',
+        reason: 'Representatives of the United States, France, Germany, the United Kingdom, Italy, Japan and other powers sign the General Treaty for the Renunciation of War in Paris, declaring that they "condemn recourse to war for the solution of international controversies, and renounce it as an instrument of national policy." The signed treaty text is the contemporaneous primary record.',
+        source: {
+          externalId: 'src:kellogg-briand-avalon-1928',
+          name: 'Kellogg–Briand Pact (1928) — full treaty text, Avalon Project, Yale Law School.',
+          url: 'https://avalon.law.yale.edu/20th_century/kbpact.asp',
+          publishedAt: '1928-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1929-07-24',
+        datePrecision: 'DAY',
+        reason: 'The pact enters into force on 24 July 1929 once the instruments of ratification are deposited at Washington. Though it failed to prevent World War II, its renunciation-of-war principle was later cited at the Nuremberg trials as a basis for the charge of crimes against peace, and it remains in force as binding international law.',
+        source: {
+          externalId: 'src:kellogg-briand-wikipedia',
+          name: 'Kellogg–Briand Pact (Wikipedia) — signing on 27 August 1928, entry into force 24 July 1929, and its invocation at Nuremberg.',
+          url: 'https://en.wikipedia.org/wiki/Kellogg%E2%80%93Briand_Pact',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
