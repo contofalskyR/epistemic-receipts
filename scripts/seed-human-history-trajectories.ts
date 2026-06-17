@@ -26045,6 +26045,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Cuvier establishes that species can go extinct ──────────────────────────
+  {
+    externalId: 'trajectory:cuvier-extinction-1796',
+    text: 'Georges Cuvier proved that extinction is a real natural phenomenon, reading a memoir to the French National Institute in April 1796 showing that fossil "mammoth" and "mastodon" elephants were distinct species no longer living on Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1796-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1796-04-01',
+        datePrecision: 'MONTH',
+        reason: 'At the opening sessions of the newly founded Institut national des sciences et des arts in Paris, Cuvier reads his first palaeontological paper comparing the anatomy of living African and Indian elephants with fossil bones from Siberia and the "animal de l\'Ohio" (mastodon) from Big Bone Lick. Using comparative anatomy he argues the fossil forms are distinct species that no longer exist — making extinction a demonstrable empirical fact rather than speculation.',
+        source: {
+          externalId: 'src:cuvier-elephants-embryo-project',
+          name: 'Georges Cuvier (1769–1832). Embryo Project Encyclopedia, Arizona State University.',
+          url: 'https://embryo.asu.edu/pages/georges-cuvier-1769-1832',
+          publishedAt: '1796-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1812-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cuvier expands the evidence across many vanished taxa (the Maastricht mosasaur, the Paris-basin fossil mammals, the Megatherium and the pterodactyl), publishing the four-volume Recherches sur les ossemens fossiles in 1812. Extinction becomes a foundational, accepted principle of geology and palaeontology and is later absorbed into Darwinian theory.',
+        source: {
+          externalId: 'src:cuvier-wikipedia-extinction',
+          name: 'Georges Cuvier — establishment of extinction as scientific fact (Recherches sur les ossemens fossiles, 1812). Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Georges_Cuvier',
+          publishedAt: '1812-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Koch proves a specific microbe causes a specific disease (anthrax) ───────
+  {
+    externalId: 'trajectory:koch-anthrax-bacillus-1876',
+    text: 'Robert Koch demonstrated in 1876 that the bacterium Bacillus anthracis, including its resistant spores, is the sole cause of anthrax — the first proof that a specific microorganism causes a specific disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1876-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1876-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Working as a district physician in Wollstein, Koch cultures Bacillus anthracis through generations outside a host, documents its full life cycle including spore formation, and reproduces the disease in animals. In April 1876 he demonstrates his methods and preparations over three days to the botanist Ferdinand Cohn and the pathologist Julius Cohnheim at Breslau, who recognise the result as decisive.',
+        source: {
+          externalId: 'src:koch-anthrax-embryo-project',
+          name: 'Robert Koch (1843–1910). Embryo Project Encyclopedia, Arizona State University.',
+          url: 'https://embryo.asu.edu/pages/robert-koch-1843-1910',
+          publishedAt: '1876-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1876-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cohn publishes Koch\'s findings — "Die Ätiologie der Milzbrandkrankheit, begründet auf die Entwicklungsgeschichte des Bacillus Anthracis" — in his journal Beiträge zur Biologie der Pflanzen in 1876. The work provides the experimental foundation of the germ theory of disease and, with Koch\'s later postulates, becomes the accepted standard for establishing microbial causation.',
+        source: {
+          externalId: 'src:koch-anthrax-wikipedia',
+          name: 'Robert Koch — 1876 anthrax aetiology, published in Beiträge zur Biologie der Pflanzen. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Robert_Koch',
+          publishedAt: '1876-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Asaph Hall discovers the two moons of Mars ──────────────────────────────
+  {
+    externalId: 'trajectory:hall-moons-of-mars-1877',
+    text: 'Asaph Hall discovered the two moons of Mars at the United States Naval Observatory in August 1877, sighting Deimos on 12 August and Phobos on 18 August 1877.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1877-08-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1877-08-18',
+        datePrecision: 'DAY',
+        reason: 'Using the 26-inch Great Refractor at the U.S. Naval Observatory during the favourable opposition of Mars, Hall first glimpses the outer moon (later named Deimos) on the night of 12 August 1877 and confirms the inner moon (Phobos) on 18 August. The discoveries are entered in the observatory records and telegraphed to other observatories within days.',
+        source: {
+          externalId: 'src:hall-mars-moons-wikipedia',
+          name: 'Asaph Hall — discovery of Deimos (12 August 1877) and Phobos (18 August 1877) at the U.S. Naval Observatory. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Asaph_Hall',
+          publishedAt: '1877-08-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1878-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The two satellites are independently confirmed at observatories worldwide and formally named Phobos and Deimos (suggested by Henry Madan). Their orbits are computed and published, settling the existence and orbital parameters of the Martian moons in the astronomical literature.',
+        source: {
+          externalId: 'src:hall-mars-moons-naming',
+          name: 'Naming and orbital confirmation of Phobos and Deimos following Hall\'s 1877 discovery. Wikipedia (Asaph Hall / Moons of Mars).',
+          url: 'https://en.wikipedia.org/wiki/Moons_of_Mars',
+          publishedAt: '1878-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of argon, the first noble gas ─────────────────────────────────
+  {
+    externalId: 'trajectory:argon-discovery-1894',
+    text: 'Lord Rayleigh and William Ramsay discovered argon, a previously unknown inert constituent of the atmosphere, announcing the result at the Oxford meeting of the British Association on 13 August 1894.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1894-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-08-13',
+        datePrecision: 'DAY',
+        reason: 'Pursuing Rayleigh\'s finding that nitrogen extracted from air was denser than nitrogen made chemically, he and Ramsay isolate a chemically inert residual gas. At the British Association meeting in Oxford on 13 August 1894 Rayleigh gives a verbal report from both investigators, announcing that the atmosphere contains a hitherto unknown gas, soon named argon ("the lazy one").',
+        source: {
+          externalId: 'src:argon-popular-science-1895',
+          name: '"Argon." Popular Science Monthly, Vol. 47 (August 1895) — contemporaneous account noting the discovery "had been announced at the Oxford meeting of the British Association last August."',
+          url: 'https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_47/August_1895/Argon',
+          publishedAt: '1895-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-01-31',
+        datePrecision: 'DAY',
+        reason: 'After five more months of work, Rayleigh and Ramsay publish the full study "Argon, a New Constituent of the Atmosphere" (read 31 January 1895; Philosophical Transactions of the Royal Society, 186A). Argon becomes the prototype of an entire new group of the periodic table — the noble gases — and the discovery is ratified by the 1904 Nobel Prizes to Rayleigh (Physics) and Ramsay (Chemistry).',
+        source: {
+          externalId: 'src:argon-rayleigh-ramsay-philtrans-1895',
+          name: 'Rayleigh & Ramsay, "Argon, a New Constituent of the Atmosphere," Philosophical Transactions of the Royal Society 186A, 187 (1895).',
+          url: 'https://web.lemoyne.edu/giunta/acspaper.html',
+          publishedAt: '1895-01-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The 1815 eruption of Mount Tambora ──────────────────────────────────────
+  {
+    externalId: 'trajectory:tambora-eruption-1815',
+    text: 'Mount Tambora on Sumbawa, in the Dutch East Indies, erupted catastrophically with its climactic explosion on 10 April 1815 — the largest volcanic eruption in recorded history (VEI 7), triggering the global "Year Without a Summer" in 1816.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1815-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1815-04-10',
+        datePrecision: 'DAY',
+        reason: 'The climactic eruption on the evening of 10 April 1815 is heard hundreds of kilometres away and buries surrounding districts in ash, killing tens of thousands directly. Sir Stamford Raffles, Lieutenant-Governor of Java, collects and records contemporaneous eyewitness reports, including that the initial explosions were mistaken for cannon fire and prompted troops to march to a supposed attack.',
+        source: {
+          externalId: 'src:tambora-raffles-accounts',
+          name: 'Contemporaneous accounts of the 1815 Tambora eruption collected by Sir Stamford Raffles (incl. Lt. Owen Phillips\'s survey of Sumbawa). Summarised in "1815 eruption of Mount Tambora," Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora',
+          publishedAt: '1815-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1816-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The eruption injects an enormous sulphate aerosol load into the stratosphere, lowering global temperatures and causing the "Year Without a Summer" of 1816 — failed harvests, snow in June across New England and Europe, and widespread famine. Later geological and ice-core work assigns the eruption a Volcanic Explosivity Index of 7, the largest in the historical record, settling its magnitude and climatic effects.',
+        source: {
+          externalId: 'src:tambora-year-without-summer',
+          name: '1815 eruption of Mount Tambora — VEI 7 magnitude and the 1816 "Year Without a Summer." Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora',
+          publishedAt: '1816-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
