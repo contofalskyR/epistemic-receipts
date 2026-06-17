@@ -48550,6 +48550,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — Internet, genomics, climate, terror, AI; non-Western
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Malaysia Airlines Flight 370 disappears (2014) ──────────────────────────
+  {
+    externalId: 'trajectory:mh370-disappearance-2014',
+    text: 'Malaysia Airlines Flight 370, a Boeing 777 carrying 239 people from Kuala Lumpur to Beijing, disappeared on 8 March 2014; the aircraft has never been located and the cause of its disappearance remains undetermined.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'UNRESOLVABLE',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-03-08',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 8 March 2014 (around 01:21 MYT) MH370 lost contact with air traffic control over the South China Sea less than an hour after departing Kuala Lumpur for Beijing with 227 passengers and 12 crew aboard. Military primary radar recorded the aircraft turning west off its planned route before contact was lost, and the disappearance was immediately reported to authorities in Malaysia, Vietnam, and China.',
+        source: {
+          externalId: 'src:wikipedia-mh370',
+          name: 'Wikipedia — "Malaysia Airlines Flight 370": disappeared 8 March 2014, 239 aboard, Kuala Lumpur to Beijing.',
+          url: 'https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370',
+          publishedAt: '2014-03-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-01-17',
+        datePrecision: 'DAY',
+        reason: 'After analysis of automated Inmarsat satellite "handshakes" placed the likely endpoint in the southern Indian Ocean, a multinational underwater search covered roughly 120,000 square kilometres of seabed. On 17 January 2017 the Joint Agency Coordination Centre suspended the official search, having recovered only confirmed marine debris (including a flaperon washed ashore on Réunion) and never the main wreckage, leaving the aircraft\'s fate openly unresolved.',
+        source: {
+          externalId: 'src:wikipedia-mh370-search-suspended',
+          name: 'Wikipedia — "Malaysia Airlines Flight 370": official search suspended 17 January 2017 with no aircraft found beyond marine debris.',
+          url: 'https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370',
+          publishedAt: '2017-01-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'UNRESOLVABLE',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-06-09',
+        datePrecision: 'DAY',
+        reason: 'A renewed private seabed search by Ocean Infinity ended without success on 9 June 2018, and Malaysia\'s safety investigation concluded it could not determine the cause of the disappearance. With the wreckage and flight recorders never recovered, neither the location nor the cause has been established, and the question remains epistemically unresolved.',
+        source: {
+          externalId: 'src:wikipedia-mh370-cause-undetermined',
+          name: 'Wikipedia — "Malaysia Airlines Flight 370": Ocean Infinity search ended 9 June 2018; cause of disappearance not determined.',
+          url: 'https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_370',
+          publishedAt: '2018-06-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Novel avian influenza A(H7N9) identified in humans (China, 2013) ─────────
+  {
+    externalId: 'trajectory:h7n9-novel-influenza-china-2013',
+    text: 'A novel avian-origin influenza A(H7N9) virus capable of infecting humans was identified in China in early 2013, with the first three laboratory-confirmed human cases reported on 31 March 2013.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-03-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-04-01',
+        datePrecision: 'DAY',
+        reason: 'On 1 April 2013 WHO reported that China had notified it of three laboratory-confirmed human infections with avian influenza A(H7N9) — two residents of Shanghai and one of Anhui, with symptom onset between 19 February and 15 March 2013 and laboratory confirmation on 29 March. The subtype had never previously been observed to infect humans, and two of the three patients had already died.',
+        source: {
+          externalId: 'src:who-don-h7n9-2013-04-01',
+          name: 'WHO Disease Outbreak News, 1 April 2013 — "Human infection with influenza A(H7N9) virus in China": three confirmed cases, lab-confirmed 29 March 2013.',
+          url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2013_04_01-en',
+          publishedAt: '2013-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-04-11',
+        datePrecision: 'DAY',
+        reason: 'Gao and colleagues at the Chinese Center for Disease Control characterized the virus genetically, showing it was a reassortant whose six internal genes derived from avian influenza A(H9N2) viruses, and reported the clinical course of the first three (all fatal) cases. Published online by the New England Journal of Medicine on 11 April 2013 (print 16 May 2013), the analysis established H7N9 as a genuine novel zoonotic pathogen in the expert literature.',
+        source: {
+          externalId: 'src:nejm-gao-h7n9-2013',
+          name: 'Gao R, et al. "Human infection with a novel avian-origin influenza A (H7N9) virus." N Engl J Med 2013;368:1888-1897 (epub 11 April 2013). PMID 23577628.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23577628/',
+          publishedAt: '2013-04-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Iran nuclear deal (JCPOA) concluded (2015) ──────────────────────────────
+  {
+    externalId: 'trajectory:jcpoa-iran-nuclear-deal-2015',
+    text: "Iran and the P5+1 (United States, United Kingdom, France, Russia, China, and Germany) concluded the Joint Comprehensive Plan of Action (JCPOA), limiting Iran's nuclear programme in exchange for sanctions relief, in Vienna on 14 July 2015.",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-07-14',
+        datePrecision: 'DAY',
+        reason: 'After years of negotiation, Iran and the P5+1 announced agreement on the JCPOA in Vienna on 14 July 2015. The accord capped Iranian uranium enrichment levels and stockpiles, redesigned the Arak reactor, and imposed IAEA verification and monitoring in exchange for the lifting of nuclear-related sanctions.',
+        source: {
+          externalId: 'src:wikipedia-jcpoa-concluded',
+          name: 'Wikipedia — "Joint Comprehensive Plan of Action": agreement reached in Vienna 14 July 2015.',
+          url: 'https://en.wikipedia.org/wiki/Joint_Comprehensive_Plan_of_Action',
+          publishedAt: '2015-07-14',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-01-16',
+        datePrecision: 'DAY',
+        reason: 'The UN Security Council unanimously endorsed the deal in Resolution 2231 on 20 July 2015, and on 16 January 2016 ("Implementation Day") the IAEA verified that Iran had completed the required nuclear-programme reductions, triggering the agreed sanctions relief. International legal endorsement plus verified compliance settled the JCPOA as an operative agreement.',
+        source: {
+          externalId: 'src:wikipedia-jcpoa-implementation-day',
+          name: 'Wikipedia — "Joint Comprehensive Plan of Action": UNSC Resolution 2231 adopted 20 July 2015; Implementation Day 16 January 2016.',
+          url: 'https://en.wikipedia.org/wiki/Joint_Comprehensive_Plan_of_Action',
+          publishedAt: '2016-01-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-08',
+        datePrecision: 'DAY',
+        reason: "On 8 May 2018 US President Donald Trump announced the United States' withdrawal from the JCPOA and the reimposition of sanctions, despite IAEA confirmation that Iran remained compliant. The withdrawal split the signatories, prompted Iran to begin exceeding agreed limits, and threw the deal's operative status into open international dispute.",
+        source: {
+          externalId: 'src:wikipedia-us-jcpoa-withdrawal',
+          name: 'Wikipedia — "United States withdrawal from the Joint Comprehensive Plan of Action": announced 8 May 2018.',
+          url: 'https://en.wikipedia.org/wiki/United_States_withdrawal_from_the_Joint_Comprehensive_Plan_of_Action',
+          publishedAt: '2018-05-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Nepal (Gorkha) earthquake (2015) ────────────────────────────────────────
+  {
+    externalId: 'trajectory:nepal-gorkha-earthquake-2015',
+    text: 'The April 2015 Nepal earthquake, which struck near Gorkha District on 25 April 2015, had a moment magnitude of 7.8 and killed nearly 9,000 people across Nepal, India, China, and Bangladesh.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-04-25',
+        datePrecision: 'DAY',
+        reason: 'At 11:56 NST (06:11 UTC) on 25 April 2015 a major thrust earthquake ruptured beneath Gorkha District, about 85 km northwest of Kathmandu, at shallow depth. The USGS initially reported a magnitude of Mww 7.5 and within minutes upgraded it to Mww 7.8; the event and its aftershocks were recorded in real time by global seismic networks.',
+        source: {
+          externalId: 'src:wikipedia-nepal-2015-recorded',
+          name: 'Wikipedia — "April 2015 Nepal earthquake": 25 April 2015, 11:56 NST; USGS magnitude upgraded from 7.5 to Mww 7.8.',
+          url: 'https://en.wikipedia.org/wiki/April_2015_Nepal_earthquake',
+          publishedAt: '2015-04-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-04-25',
+        datePrecision: 'DAY',
+        reason: 'The USGS settled the moment magnitude at 7.8 (the Global CMT solution gave Mw 7.9), consistent with geodetic and seismic inversions of the roughly 120-by-80-km rupture on the Main Himalayan Thrust. The death toll was documented at 8,962 with 21,952 injured across Nepal, India, China, and Bangladesh, establishing the size and impact of the event in the scientific record.',
+        source: {
+          externalId: 'src:wikipedia-nepal-2015-settled',
+          name: 'Wikipedia — "April 2015 Nepal earthquake": Mww 7.8 (GCMT Mw 7.9); 8,962 killed, 21,952 injured.',
+          url: 'https://en.wikipedia.org/wiki/April_2015_Nepal_earthquake',
+          publishedAt: '2015-04-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Beirut port ammonium-nitrate explosion (2020) ───────────────────────────
+  {
+    externalId: 'trajectory:beirut-port-explosion-2020',
+    text: 'On 4 August 2020 approximately 2,750 tonnes of ammonium nitrate stored unsafely at the Port of Beirut detonated, killing at least 218 people and injuring over 7,000.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2020-08-04',
+        datePrecision: 'DAY',
+        reason: 'At about 18:08 local time on 4 August 2020 a fire in Warehouse 12 at the Port of Beirut culminated in a catastrophic explosion that levelled the port and devastated surrounding districts of the city. The blast — equivalent to roughly 0.5–1.1 kilotons of TNT — was filmed by hundreds of bystanders and registered on regional seismographs, killing at least 218 people, injuring over 7,000, and displacing some 300,000.',
+        source: {
+          externalId: 'src:wikipedia-beirut-explosion-recorded',
+          name: 'Wikipedia — "2020 Beirut explosion": 4 August 2020, 18:08 EEST; at least 218 killed, over 7,000 injured.',
+          url: 'https://en.wikipedia.org/wiki/2020_Beirut_explosion',
+          publishedAt: '2020-08-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-05',
+        datePrecision: 'DAY',
+        reason: 'Within a day Lebanese officials and forensic analysis established that the material that detonated was a stockpile of about 2,750 tonnes of ammonium nitrate that had been confiscated from the cargo ship MV Rhosus in 2014 and stored at the port without adequate safeguards for roughly six years. The physical cause of the blast — the detonation of that stockpile after a warehouse fire — became settled fact.',
+        source: {
+          externalId: 'src:wikipedia-beirut-explosion-cause',
+          name: 'Wikipedia — "2020 Beirut explosion": cause was detonation of ~2,750 t of ammonium nitrate confiscated from MV Rhosus in 2014.',
+          url: 'https://en.wikipedia.org/wiki/2020_Beirut_explosion',
+          publishedAt: '2020-08-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
