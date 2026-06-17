@@ -34288,6 +34288,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── RMS Lusitania torpedoed by U-20 ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:lusitania-sinking-1915',
+    text: 'The British ocean liner RMS Lusitania was torpedoed and sunk by the German submarine U-20 off the southern coast of Ireland on May 7, 1915, killing nearly 1,200 of those aboard.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-05-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1915-05-07',
+        datePrecision: 'DAY',
+        reason: 'At 2:10 p.m. the U-20 fires a single torpedo into the Lusitania off the Old Head of Kinsale; the liner sinks in roughly 18 minutes with the loss of nearly 1,200 lives, including 128 Americans. News of the sinking and the civilian death toll reaches London and New York within hours and dominates the world press the next day, triggering a diplomatic crisis between the United States and Germany.',
+        source: {
+          externalId: 'src:rmslusitania-sinking',
+          name: 'The Lusitania Resource. "RMS Lusitania" — sinking by U-20, 7 May 1915.',
+          url: 'https://www.rmslusitania.info/lusitania/',
+          publishedAt: '1915-05-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1915-05-08',
+        datePrecision: 'DAY',
+        reason: 'Both belligerents corroborate the event from opposite sides: the U-20 war diary of Kapitänleutnant Walther Schwieger records the torpedo strike, while survivor testimony and the passenger manifest establish the casualty count. The factual core — a German submarine sank the unarmed liner without warning — is uncontested even amid the propaganda dispute over cargo and culpability.',
+        source: {
+          externalId: 'src:wikipedia-rms-lusitania',
+          name: 'Wikipedia. "RMS Lusitania" — sinking, casualties, and aftermath.',
+          url: 'https://en.wikipedia.org/wiki/RMS_Lusitania',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-10-06',
+        datePrecision: 'DAY',
+        reason: 'The wreck of the Lusitania is located 11 miles south of the Kinsale lighthouse, lying at roughly 300 feet of water. Subsequent expeditions repeatedly survey and document the hull, providing physical confirmation of the sinking and its location.',
+        source: {
+          externalId: 'src:rmslusitania-wreck',
+          name: 'The Lusitania Resource. "RMS Lusitania" — wreck located off Kinsale, 6 October 1935.',
+          url: 'https://www.rmslusitania.info/lusitania/',
+          publishedAt: '1935-10-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pauli formulates the exclusion principle ────────────────────────────────
+  {
+    externalId: 'trajectory:pauli-exclusion-principle-1925',
+    text: 'On January 16, 1925, Wolfgang Pauli submitted the paper formulating the exclusion principle: no two electrons in an atom can share the same set of four quantum numbers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-01-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-16',
+        datePrecision: 'DAY',
+        reason: 'Pauli submits "Über den Zusammenhang des Abschlusses der Elektronengruppen im Atom mit der Komplexstruktur der Spektren" to Zeitschrift für Physik (vol. 31, pp. 765–783). The paper postulates that an atom cannot contain two equivalent electrons sharing all four quantum numbers, explaining the closure of electron shells and the structure of the periodic table.',
+        source: {
+          externalId: 'src:wikipedia-pauli-exclusion',
+          name: 'Wikipedia. "Pauli exclusion principle" — 1925 paper in Zeitschrift für Physik.',
+          url: 'https://en.wikipedia.org/wiki/Pauli_exclusion_principle',
+          publishedAt: '1925-01-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-11-15',
+        datePrecision: 'MONTH',
+        reason: 'The principle becomes foundational to quantum mechanics, underpinning Fermi–Dirac statistics, the structure of the periodic table, and the stability of matter, and is later generalized to all half-integer-spin particles via the spin–statistics theorem. Pauli is awarded the 1945 Nobel Prize in Physics "for the discovery of the Exclusion Principle."',
+        source: {
+          externalId: 'src:wikipedia-wolfgang-pauli-nobel',
+          name: 'Wikipedia. "Wolfgang Pauli" — 1945 Nobel Prize in Physics for the exclusion principle.',
+          url: 'https://en.wikipedia.org/wiki/Wolfgang_Pauli',
+          publishedAt: '1945-11-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Long March begins ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:long-march-begins-1934',
+    text: 'On October 16, 1934, the Chinese Communist Red Army began the Long March, retreating from the Jiangxi Soviet; of roughly 100,000 who set out, about 8,000 reached Shaanxi a year later.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1934-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-10-16',
+        datePrecision: 'DAY',
+        reason: 'Encircled by Nationalist (Kuomintang) forces, the First Red Army breaks out of the Jiangxi Soviet and begins a fighting retreat westward and northward. The march covers roughly 10,000 km over a year, crossing rivers and mountain passes up to 4,000 m before reaching Yan\'an in Shaanxi on October 19, 1935.',
+        source: {
+          externalId: 'src:wikipedia-long-march-start',
+          name: 'Wikipedia. "Long March" — Red Army retreat begins 16 October 1934.',
+          url: 'https://en.wikipedia.org/wiki/Long_March',
+          publishedAt: '1934-10-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-01-15',
+        datePrecision: 'MONTH',
+        reason: 'At the Zunyi Conference in January 1935 Mao Zedong emerges as the dominant leader of the Communist Party, a turning point traced directly to the march. Approximately 8,000 of the original marchers survive to reach Yan\'an, and the Long March becomes a founding narrative of the People\'s Republic, documented in contemporaneous accounts including Edgar Snow\'s reporting.',
+        source: {
+          externalId: 'src:wikipedia-long-march-zunyi',
+          name: 'Wikipedia. "Long March" — Zunyi Conference and Mao\'s ascendancy.',
+          url: 'https://en.wikipedia.org/wiki/Long_March',
+          publishedAt: '1935-01-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Frisch–Peierls memorandum: atomic bomb shown feasible ───────────────────
+  {
+    externalId: 'trajectory:frisch-peierls-memorandum-1940',
+    text: 'In March 1940 Otto Frisch and Rudolf Peierls wrote a memorandum showing that a "super-bomb" could be built from a few kilograms of uranium-235, the first demonstration that an atomic weapon was practically feasible.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Working at the University of Birmingham, Frisch and Peierls calculate that the critical mass of separated uranium-235 is on the order of a kilogram — small enough to build a deliverable bomb — overturning the prevailing assumption that tons of material would be required. They estimate a 5 kg device would release energy equivalent to several thousand tons of dynamite.',
+        source: {
+          externalId: 'src:atomicarchive-frisch-peierls',
+          name: 'AtomicArchive. "The Frisch-Peierls Memorandum" — full text, March 1940.',
+          url: 'https://www.atomicarchive.com/resources/documents/beginnings/frisch-peierls.html',
+          publishedAt: '1940-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-07-15',
+        datePrecision: 'MONTH',
+        reason: 'The memorandum is referred to the British MAUD Committee, whose 1941 reports conclude a bomb is feasible and help launch the Tube Alloys project and accelerate the American Manhattan Project. The successful Trinity test of July 16, 1945 vindicates the core feasibility claim with a uranium/plutonium device.',
+        source: {
+          externalId: 'src:wikipedia-frisch-peierls-maud',
+          name: 'Wikipedia. "Frisch–Peierls memorandum" — MAUD Committee, Tube Alloys, Manhattan Project.',
+          url: 'https://en.wikipedia.org/wiki/Frisch%E2%80%93Peierls_memorandum',
+          publishedAt: '1941-07-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Atlantic Charter ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:atlantic-charter-1941',
+    text: 'On August 14, 1941, Franklin Roosevelt and Winston Churchill issued the Atlantic Charter, an eight-point declaration of Allied war aims affirming self-determination and the right of peoples to choose their own government.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1941-08-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-08-14',
+        datePrecision: 'DAY',
+        reason: 'Meeting aboard warships in Placentia Bay, Newfoundland, Roosevelt and Churchill issue a joint declaration of principles for the postwar world, including no territorial aggrandizement, the right of all peoples to choose their form of government, freer trade, and disarmament of aggressor nations. The text is released publicly the same day.',
+        source: {
+          externalId: 'src:avalon-atlantic-charter',
+          name: 'Avalon Project, Yale Law School. "The Atlantic Charter" — August 14, 1941.',
+          url: 'https://avalon.law.yale.edu/wwii/atlantic.asp',
+          publishedAt: '1941-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-01',
+        datePrecision: 'DAY',
+        reason: 'The charter\'s principles are adopted by Allied governments-in-exile in September 1941 and incorporated into the Declaration by United Nations signed on January 1, 1942 by 26 nations, establishing the Atlantic Charter as a founding statement of the wartime alliance and a touchstone later invoked by anti-colonial independence movements.',
+        source: {
+          externalId: 'src:wikipedia-atlantic-charter',
+          name: 'Wikipedia. "Atlantic Charter" — Declaration by United Nations, 1 January 1942.',
+          url: 'https://en.wikipedia.org/wiki/Atlantic_Charter',
+          publishedAt: '1942-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
