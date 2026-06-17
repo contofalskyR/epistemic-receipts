@@ -27846,6 +27846,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — space, civil rights, environment, computing
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gagarin: first human in space (Vostok 1) ────────────────────────────────
+  {
+    externalId: 'trajectory:gagarin-first-human-space-1961',
+    text: 'On 12 April 1961, Soviet cosmonaut Yuri Gagarin aboard Vostok 1 became the first human to travel into space and orbit the Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1961-04-12',
+        datePrecision: 'DAY',
+        reason: 'At 06:07 UTC on 12 April 1961, Vostok 1 launched from the Baikonur Cosmodrome carrying Yuri Gagarin, who completed a single orbit of the Earth in about 108 minutes before re-entering and ejecting to land near Saratov. TASS announced the flight the same day, and Western tracking stations independently detected the launch, providing immediate public confirmation.',
+        source: {
+          externalId: 'src:esa-vostok-1-flight',
+          name: 'ESA. The flight of Vostok 1 — Gagarin launched 12 April 1961 as the first human in space.',
+          url: 'https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1',
+          publishedAt: '1961-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-04-12',
+        datePrecision: 'DAY',
+        reason: 'The flight is catalogued by NASA\'s NSSDCA (COSPAR ID 1961-012A) and certified by international authorities as the first crewed orbital spaceflight. The launch date, orbital parameters, and Gagarin\'s primacy are documented in both Soviet and Western records and are uncontested.',
+        source: {
+          externalId: 'src:nssdca-vostok-1',
+          name: 'NASA NSSDCA. Vostok 1 (1961-012A) catalog entry — first spacecraft to carry a human into space, 12 April 1961.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1961-012A',
+          publishedAt: '1961-04-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Apollo 11: first crewed Moon landing ────────────────────────────────────
+  {
+    externalId: 'trajectory:apollo-11-moon-landing-1969',
+    text: 'On 20 July 1969, Apollo 11 astronauts Neil Armstrong and Buzz Aldrin became the first humans to land on the Moon, with Armstrong stepping onto the lunar surface.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1969-07-20',
+        datePrecision: 'DAY',
+        reason: 'The Lunar Module Eagle landed in the Sea of Tranquility at 20:17 UTC on 20 July 1969, and Armstrong stepped onto the surface several hours later (early 21 July UTC). The descent and moonwalk were broadcast live to an estimated 600 million television viewers worldwide and tracked by stations on multiple continents, providing contemporaneous global confirmation.',
+        source: {
+          externalId: 'src:nasa-apollo-11-mission',
+          name: 'NASA. Apollo 11 — first crewed lunar landing, launched 16 July, landed 20 July 1969, splashdown 24 July 1969.',
+          url: 'https://www.nasa.gov/mission/apollo-11/',
+          publishedAt: '1969-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-07-24',
+        datePrecision: 'DAY',
+        reason: 'The crew returned ~21.5 kg of lunar samples and deployed instruments (including a retroreflector still used for laser ranging) whose data have been independently analyzed worldwide for decades. The landing date and the fact of a crewed Moon landing are settled across the scientific community and the historical record.',
+        source: {
+          externalId: 'src:nssdca-apollo-11',
+          name: 'NASA NSSDCA. Apollo 11 Command and Service Module (1969-059A) — lunar landing 20 July 1969.',
+          url: 'https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059A',
+          publishedAt: '1969-07-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Voting Rights Act of 1965 signed ────────────────────────────────────────
+  {
+    externalId: 'trajectory:voting-rights-act-1965',
+    text: 'On 6 August 1965, President Lyndon B. Johnson signed the Voting Rights Act into law, outlawing discriminatory voting practices such as literacy tests used to disenfranchise African American voters.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1965-08-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-08-06',
+        datePrecision: 'DAY',
+        reason: 'Congress passed the Voting Rights Act on 5 August 1965 and President Johnson signed it the next day, 6 August 1965, in a ceremony in the President\'s Room at the Capitol. The Act suspended literacy tests and authorized federal oversight of voter registration in jurisdictions with histories of discrimination.',
+        source: {
+          externalId: 'src:archives-voting-rights-act',
+          name: 'U.S. National Archives. Voting Rights Act (1965) — signed into law 6 August 1965 by President Lyndon Johnson.',
+          url: 'https://www.archives.gov/milestone-documents/voting-rights-act',
+          publishedAt: '1965-08-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1966-03-07',
+        datePrecision: 'DAY',
+        reason: 'The Supreme Court upheld the Act\'s core provisions in South Carolina v. Katzenbach (decided 7 March 1966), confirming the constitutionality of its enforcement mechanisms. The date of enactment and the law\'s text are part of the official statutory record and are uncontested.',
+        source: {
+          externalId: 'src:south-carolina-v-katzenbach-1966',
+          name: 'South Carolina v. Katzenbach, 383 U.S. 301 (1966) — upholding the Voting Rights Act of 1965.',
+          url: 'https://supreme.justia.com/cases/federal/us/383/301/',
+          publishedAt: '1966-03-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Silent Spring published — modern environmental movement ──────────────────
+  {
+    externalId: 'trajectory:silent-spring-published-1962',
+    text: 'On 27 September 1962, Houghton Mifflin published Rachel Carson\'s Silent Spring, documenting the environmental harm of indiscriminate pesticide (notably DDT) use and helping launch the modern environmental movement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1962-09-27',
+        datePrecision: 'DAY',
+        reason: 'Houghton Mifflin released Silent Spring on 27 September 1962, following serialization in The New Yorker earlier that year. The book argued that synthetic pesticides, especially DDT, were accumulating in ecosystems and harming wildlife and human health, provoking immediate public debate and chemical-industry opposition.',
+        source: {
+          externalId: 'src:environment-society-silent-spring',
+          name: 'Environment & Society Portal (Rachel Carson Center). Silent Spring — released by Houghton Mifflin on 27 September 1962.',
+          url: 'https://www.environmentandsociety.org/mml/silent-spring',
+          publishedAt: '1962-09-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-06-14',
+        datePrecision: 'DAY',
+        reason: 'The book\'s influence is documented through subsequent policy: a 1963 President\'s Science Advisory Committee report largely vindicated Carson\'s findings, the EPA was established in 1970, and the EPA cancelled most agricultural uses of DDT on 14 June 1972. That Silent Spring was published in 1962 and catalyzed modern environmentalism is settled in the historical record.',
+        source: {
+          externalId: 'src:epa-ddt-ban-1972',
+          name: 'U.S. EPA. DDT — A Brief History and Status; 1972 cancellation of DDT registrations citing Silent Spring\'s legacy.',
+          url: 'https://www.epa.gov/ingredients-used-pesticide-products/ddt-brief-history-and-status',
+          publishedAt: '1972-06-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Intel 4004: first commercial microprocessor ─────────────────────────────
+  {
+    externalId: 'trajectory:intel-4004-microprocessor-1971',
+    text: 'On 15 November 1971, Intel announced the 4004 — the first commercially available single-chip microprocessor — in an advertisement in Electronic News.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-11-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1971-11-15',
+        datePrecision: 'DAY',
+        reason: 'Intel introduced the 4004 to the public through an advertisement in the trade journal Electronic News on 15 November 1971, billing it as "a micro-programmable computer on a chip." Designed by Federico Faggin, Ted Hoff, Stan Mazor, and Masatoshi Shima for the Busicom calculator project, the 2,300-transistor 4-bit CPU was the first complete processor offered for commercial sale.',
+        source: {
+          externalId: 'src:chm-intel-4004-ad-1971',
+          name: 'Computer History Museum, This Day in History — first advertisement for the Intel 4004 microprocessor appears in Electronic News, 15 November 1971.',
+          url: 'https://www.computerhistory.org/tdih/november/15/',
+          publishedAt: '1971-11-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-11-15',
+        datePrecision: 'DAY',
+        reason: 'The 4004 is universally recognized in computing history as the first commercial single-chip microprocessor, the foundation of Intel\'s subsequent x86 line and the microprocessor industry. The announcement date and the chip\'s priority are documented by Intel and independent computing historians and are uncontested.',
+        source: {
+          externalId: 'src:edn-intel-4004-1971',
+          name: 'EDN. Intel 4004 is announced, November 15, 1971 — first commercially available microprocessor.',
+          url: 'https://www.edn.com/intel-4004-is-announced-november-15-1971/',
+          publishedAt: '1971-11-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
