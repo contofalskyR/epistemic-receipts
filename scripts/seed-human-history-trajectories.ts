@@ -24026,6 +24026,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── October Revolution — Bolsheviks seize power in Petrograd ─────────────────
+  {
+    externalId: 'trajectory:october-revolution-1917',
+    text: 'On 7 November 1917 (25 October Old Style) the Bolsheviks, led by Lenin and the Petrograd Military Revolutionary Committee, seized power in Petrograd, storming the Winter Palace and overthrowing the Russian Provisional Government.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1917-11-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1917-11-07',
+        datePrecision: 'DAY',
+        reason: 'Red Guards and revolutionary soldiers under the Petrograd Military Revolutionary Committee seize the bridges, telegraph, and railway stations during the day and storm the Winter Palace overnight, arresting the Provisional Government ministers. The Military Revolutionary Committee issues its proclamation "To the Citizens of Russia!" announcing that state power has passed to the Soviet.',
+        source: {
+          externalId: 'src:mrc-to-citizens-of-russia-1917',
+          name: 'Petrograd Military Revolutionary Committee. "To the Citizens of Russia!" proclamation, 25 October (7 November) 1917.',
+          url: 'https://www.marxists.org/history/ussr/government/1917/10/25.htm',
+          publishedAt: '1917-11-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1917-11-08',
+        datePrecision: 'DAY',
+        reason: 'The Second All-Russian Congress of Soviets, meeting in Petrograd, ratifies the transfer of power and adopts the Decree on Peace and the Decree on Land, establishing the Council of People\'s Commissars under Lenin. The change of government is documented contemporaneously in the Congress record, Izvestia, and reporting by eyewitness John Reed.',
+        source: {
+          externalId: 'src:second-congress-soviets-decrees-1917',
+          name: 'Second All-Russian Congress of Soviets. Decree on Peace and Decree on Land, 26 October (8 November) 1917.',
+          url: 'https://www.marxists.org/history/ussr/government/1917/11/08.htm',
+          publishedAt: '1917-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-01-01',
+        datePrecision: 'YEAR',
+        reason: 'John Reed\'s eyewitness account Ten Days That Shook the World (1919) and the subsequent opening of Soviet state archives corroborate the seizure of power, its date, and its actors. No serious historical account disputes that the Bolsheviks took power in Petrograd on this date.',
+        source: {
+          externalId: 'src:reed-ten-days-1919',
+          name: 'Reed J. Ten Days That Shook the World. New York: Boni & Liveright, 1919.',
+          url: 'https://www.marxists.org/archive/reed/1919/10days/10days/index.htm',
+          publishedAt: '1919-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Balfour Declaration ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:balfour-declaration-1917',
+    text: 'On 2 November 1917 the British government, in a letter from Foreign Secretary Arthur Balfour to Lord Rothschild, declared its support for "the establishment in Palestine of a national home for the Jewish people."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1917-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1917-11-02',
+        datePrecision: 'DAY',
+        reason: 'Foreign Secretary Arthur James Balfour signs and sends a letter to Walter Rothschild, 2nd Baron Rothschild, conveying the British War Cabinet\'s declaration of sympathy with Zionist aspirations. The single-paragraph statement is the formal position of His Majesty\'s Government.',
+        source: {
+          externalId: 'src:balfour-letter-rothschild-1917',
+          name: 'Balfour A.J. Letter to Lord Rothschild, 2 November 1917 (the Balfour Declaration).',
+          url: 'https://www.bl.uk/collection-items/balfour-declaration',
+          publishedAt: '1917-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1917-11-09',
+        datePrecision: 'DAY',
+        reason: 'The text of the declaration is published in The Times of London on 9 November 1917, placing the British government\'s commitment in the public record. Its authenticity and wording are not in dispute.',
+        source: {
+          externalId: 'src:times-balfour-declaration-1917',
+          name: 'The Times (London). "Palestine for the Jews — Official Sympathy," 9 November 1917.',
+          url: 'https://en.wikipedia.org/wiki/Balfour_Declaration',
+          publishedAt: '1917-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1922-07-24',
+        datePrecision: 'DAY',
+        reason: 'The Council of the League of Nations approves the British Mandate for Palestine on 24 July 1922, whose preamble incorporates the text of the Balfour Declaration. The declaration thereby passes into binding international instrument, fixing its content and provenance in the institutional record.',
+        source: {
+          externalId: 'src:league-palestine-mandate-1922',
+          name: 'League of Nations. Mandate for Palestine, 24 July 1922 (preamble).',
+          url: 'https://avalon.law.yale.edu/20th_century/palmanda.asp',
+          publishedAt: '1922-07-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Davisson–Germer experiment confirms de Broglie matter waves ─────────────
+  {
+    externalId: 'trajectory:davisson-germer-electron-diffraction-1927',
+    text: 'In 1927 Clinton Davisson and Lester Germer demonstrated the diffraction of electrons by a nickel crystal, confirming Louis de Broglie\'s 1924 hypothesis that matter exhibits wave-like behaviour.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1924-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1924-11-29',
+        datePrecision: 'DAY',
+        reason: 'Louis de Broglie defends his doctoral thesis at the Sorbonne (29 November 1924), proposing that every particle of matter has an associated wavelength λ = h/p. The idea is bold and initially regarded as speculative; whether electrons could actually display interference or diffraction is an open experimental question.',
+        source: {
+          externalId: 'src:de-broglie-thesis-1924',
+          name: 'de Broglie L. Recherches sur la théorie des quanta. Doctoral thesis, University of Paris, 1924.',
+          url: 'https://tel.archives-ouvertes.fr/tel-00006807',
+          publishedAt: '1924-11-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Davisson and Germer, scattering low-energy electrons off a single nickel crystal at Bell Telephone Laboratories, observe intensity peaks at angles predicted by the Bragg condition using the de Broglie wavelength. They publish "Diffraction of Electrons by a Crystal of Nickel" in Physical Review, reporting quantitative agreement.',
+        source: {
+          externalId: 'src:davisson-germer-physrev-1927',
+          name: 'Davisson C, Germer LH. Diffraction of Electrons by a Crystal of Nickel. Phys. Rev. 1927;30:705–740.',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.30.705',
+          publishedAt: '1927-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-11-11',
+        datePrecision: 'DAY',
+        reason: 'George Paget Thomson independently demonstrates electron diffraction through thin metal foils (1927), and the wave nature of the electron becomes a foundation of quantum mechanics. Davisson and Thomson share the 1937 Nobel Prize in Physics "for their experimental discovery of the diffraction of electrons by crystals," ratifying the result.',
+        source: {
+          externalId: 'src:nobel-physics-1937-davisson-thomson',
+          name: 'The Nobel Prize in Physics 1937. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1937/summary/',
+          publishedAt: '1937-11-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Night of the Long Knives ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:night-of-long-knives-1934',
+    text: 'Between 30 June and 2 July 1934, the Nazi regime carried out the "Night of the Long Knives," a purge in which the SA leadership under Ernst Röhm and other perceived rivals of Hitler were summarily killed.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1934-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-07-01',
+        datePrecision: 'DAY',
+        reason: 'SS units arrest and shoot SA chief Ernst Röhm and dozens of others; the government announces the action over the radio and in the press, framing it as the suppression of a "Röhm putsch." Ernst Röhm is shot in Stadelheim Prison on 1 July. The killings are publicly acknowledged by the regime within days.',
+        source: {
+          externalId: 'src:hitler-reichstag-1934-07-13',
+          name: 'Hitler A. Speech to the Reichstag justifying the purge, 13 July 1934 (official text).',
+          url: 'https://en.wikipedia.org/wiki/Night_of_the_Long_Knives',
+          publishedAt: '1934-07-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-07-03',
+        datePrecision: 'DAY',
+        reason: 'The cabinet enacts the "Law Regarding Measures of State Self-Defence" of 3 July 1934, declaring the killings legal as emergency defence of the state — a retroactive statute that itself documents the extrajudicial executions. The law and Hitler\'s 13 July Reichstag speech fix the event in the official record.',
+        source: {
+          externalId: 'src:law-state-self-defence-1934',
+          name: 'Gesetz über Maßnahmen der Staatsnotwehr (Law Regarding Measures of State Self-Defence). Reichsgesetzblatt 1934 I, S. 529, 3 July 1934.',
+          url: 'https://de.wikisource.org/wiki/Gesetz_%C3%BCber_Ma%C3%9Fnahmen_der_Staatsnotwehr',
+          publishedAt: '1934-07-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-10-01',
+        datePrecision: 'DAY',
+        reason: 'Captured German documents introduced at the Nuremberg Tribunal and postwar scholarship confirm the scope of the purge — including the killings of Kurt von Schleicher and Gregor Strasser — establishing the event and its dating beyond dispute.',
+        source: {
+          externalId: 'src:nuremberg-imt-rohm-purge-1946',
+          name: 'International Military Tribunal, Nuremberg. Documentary record on the 1934 purge, Judgment 1 October 1946.',
+          url: 'https://avalon.law.yale.edu/imt/judnazi.asp',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Stalingrad — German 6th Army surrenders ───────────────────────
+  {
+    externalId: 'trajectory:stalingrad-surrender-1943',
+    text: 'On 2 February 1943 the remnants of the German 6th Army surrendered at Stalingrad, ending the battle in a decisive Soviet victory and marking a turning point of the Second World War in Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1943-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1943-02-02',
+        datePrecision: 'DAY',
+        reason: 'After encirclement by Operation Uranus, Field Marshal Friedrich Paulus surrenders with the southern pocket on 31 January and the northern pocket capitulates on 2 February. The Soviet command reports the complete elimination of the encircled forces; some 91,000 German troops are taken prisoner.',
+        source: {
+          externalId: 'src:sovinformburo-stalingrad-1943',
+          name: 'Sovinformburo. Communiqué on the liquidation of German forces encircled at Stalingrad, 2 February 1943.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Stalingrad',
+          publishedAt: '1943-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1943-02-03',
+        datePrecision: 'DAY',
+        reason: 'The German High Command (Wehrmachtbericht) acknowledges the loss of the 6th Army on 3 February 1943, and Germany declares several days of national mourning. The defeat is confirmed independently from both Soviet and German state records.',
+        source: {
+          externalId: 'src:wehrmachtbericht-stalingrad-1943',
+          name: 'Oberkommando der Wehrmacht. Wehrmachtbericht, 3 February 1943 (announcement of the fall of Stalingrad).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Stalingrad',
+          publishedAt: '1943-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The opening of Soviet archives after 1991 and decades of scholarship corroborate the casualty figures, the chronology of the encirclement, and the surrender, cementing Stalingrad as a settled fact and recognized strategic turning point of the war.',
+        source: {
+          externalId: 'src:beevor-stalingrad-1998',
+          name: 'Beevor A. Stalingrad: The Fateful Siege, 1942–1943. London: Viking, 1998.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Stalingrad',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
