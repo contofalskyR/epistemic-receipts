@@ -31493,6 +31493,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INTERWAR SCIENCE & WWII-ERA DISCOVERIES (1900–1950) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Leavitt period–luminosity relation ──────────────────────────────────────
+  {
+    externalId: 'trajectory:leavitt-period-luminosity-1912',
+    text: 'In March 1912, Henrietta Swan Leavitt published the period–luminosity relation for Cepheid variable stars in the Small Magellanic Cloud (Harvard College Observatory Circular 173), establishing that a Cepheid\'s pulsation period predicts its intrinsic luminosity — the first reliable "standard candle" for measuring cosmic distances.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Harvard College Observatory Circular 173, "Periods of 25 Variable Stars in the Small Magellanic Cloud," is issued under Edward Pickering\'s byline but credits Leavitt\'s work in its first sentence. Because the SMC stars lie at roughly the same distance, their apparent magnitudes track intrinsic brightness; Leavitt finds a simple relation between period and luminosity, building on her 1908 preliminary announcement.',
+        source: {
+          externalId: 'src:leavitt-circular-173-1912',
+          name: 'Leavitt H.S. (under E.C. Pickering byline). "Periods of 25 Variable Stars in the Small Magellanic Cloud." Harvard College Observatory Circular 173, March 1912.',
+          url: 'https://www.lindahall.org/about/news/scientist-of-the-day/henrietta-swan-leavitt/',
+          publishedAt: '1912-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Leavitt\'s relation becomes the foundation of the cosmic distance ladder: Hertzsprung and Shapley calibrate it, Hubble uses it in 1924 to prove Andromeda lies far beyond the Milky Way, and by 1929 it underpins his measurement of the expansion of the universe. The relation is firmly established and is now formally termed "Leavitt\'s Law."',
+        source: {
+          externalId: 'src:period-luminosity-relation',
+          name: 'Period–luminosity relation ("Leavitt\'s Law") and its role in the cosmic distance ladder (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Period-luminosity_relation',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dart describes the Taung Child (Australopithecus africanus) ──────────────
+  {
+    externalId: 'trajectory:dart-taung-child-1925',
+    text: 'On 7 February 1925, Raymond Dart published in Nature his description of the Taung Child fossil skull as Australopithecus africanus, a new genus he interpreted as an extinct intermediate between apes and humans — a claim rejected by the scientific establishment for over two decades before its acceptance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-02-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-02-07',
+        datePrecision: 'DAY',
+        reason: 'Dart\'s paper "Australopithecus africanus: The Man-Ape of South Africa" appears in the 7 February 1925 issue of Nature, describing a juvenile skull recovered from a lime quarry at Taung the previous year. The forward position of the foramen magnum leads Dart to argue the creature walked upright and represents a human ancestor from Africa.',
+        source: {
+          externalId: 'src:dart-nature-1925',
+          name: 'Dart R.A. "Australopithecus africanus: The Man-Ape of South Africa." Nature 115, 195–199 (7 February 1925); Smithsonian Human Origins Program, Taung Child.',
+          url: 'https://humanorigins.si.edu/evidence/human-fossils/fossils/taung-child',
+          publishedAt: '1925-02-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The interpretation is roundly rejected. Leading British anatomists (Arthur Keith, Grafton Elliot Smith, Arthur Smith Woodward) dismiss the fossil as a juvenile ape unrelated to human ancestry, partly because it conflicted with the then-accepted Piltdown Man and the prevailing belief that humanity arose in Asia or Europe rather than Africa.',
+        source: {
+          externalId: 'src:taung-child-controversy',
+          name: 'The decades-long rejection of Dart\'s Australopithecus africanus by the scientific establishment (Wikipedia, Taung Child).',
+          url: 'https://en.wikipedia.org/wiki/Taung_Child',
+          publishedAt: '1931-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert Broom\'s adult Australopithecus finds at Sterkfontein (1936–1947) corroborate Dart\'s genus, and in 1947 Wilfrid Le Gros Clark endorses the australopithecines as hominins. The 1953 exposure of Piltdown Man as a forgery removes the main rival, and Africa is accepted as the cradle of humanity, vindicating Dart\'s core claim.',
+        source: {
+          externalId: 'src:australopithecus-vindication',
+          name: 'Broom\'s Sterkfontein finds, Le Gros Clark\'s 1947 endorsement, and the post-Piltdown acceptance of Australopithecus africanus (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Australopithecus_africanus',
+          publishedAt: '1947-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Goddard launches the first liquid-fueled rocket ─────────────────────────
+  {
+    externalId: 'trajectory:goddard-liquid-fuel-rocket-1926',
+    text: 'On 16 March 1926, Robert H. Goddard launched the world\'s first liquid-fueled rocket from a farm in Auburn, Massachusetts; fueled by gasoline and liquid oxygen, it rose 41 feet during a 2.5-second flight.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-03-16',
+        datePrecision: 'DAY',
+        reason: 'Goddard fires his rocket — later nicknamed "Nell" — on his Aunt Effie\'s farm in Auburn. The flight lasts 2.5 seconds, reaching 41 feet of altitude and landing 184 feet away in a cabbage field. Goddard records the event in his notebooks and photographs, with his wife Esther and assistants as witnesses.',
+        source: {
+          externalId: 'src:nasa-goddard-1926-launch',
+          name: 'NASA History. "95 Years Ago: Goddard\'s First Liquid-Fueled Rocket." (drawing on Goddard\'s contemporaneous notebooks and photographs)',
+          url: 'https://www.nasa.gov/history/95-years-ago-goddards-first-liquid-fueled-rocket/',
+          publishedAt: '1926-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The flight is universally recognized as the birth of practical liquid-propellant rocketry — the propulsion principle of all later spaceflight. The original 1926 rocket is preserved by the Smithsonian, NASA\'s Goddard Space Flight Center (established 1959) is named in his honor, and the event is documented in his patents and papers. The date and achievement are not disputed.',
+        source: {
+          externalId: 'src:goddard-first-liquid-fuel-rocket-smithsonian',
+          name: 'Smithsonian National Air and Space Museum. "The World\'s First Liquid-Fuel Rocket" (Goddard, 16 March 1926).',
+          url: 'https://pioneersofflight.si.edu/node/470',
+          publishedAt: '1959-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jansky detects radio waves from the Milky Way ───────────────────────────
+  {
+    externalId: 'trajectory:jansky-cosmic-radio-1933',
+    text: 'In 1933, Karl Jansky reported that persistent radio static he had been tracking at Bell Telephone Laboratories originated from the center of the Milky Way (in Sagittarius) — the first detection of extraterrestrial radio waves, founding the field of radio astronomy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Investigating sources of shortwave "hiss" disrupting transatlantic radiotelephony, Jansky\'s rotating 20.5 MHz antenna (the "Merry-go-round") traces a steady signal to the direction of Sagittarius, toward the galactic center. The finding is announced in the New York Times on 5 May 1933 and published in October 1933 as "Electrical Disturbances Apparently of Extraterrestrial Origin."',
+        source: {
+          externalId: 'src:jansky-cosmic-radio-1933',
+          name: 'Jansky K.G. "Electrical Disturbances Apparently of Extraterrestrial Origin." Proc. IRE 21 (Oct 1933); NRAO, "Karl Jansky and his Merry-go-Round."',
+          url: 'https://public.nrao.edu/gallery/karl-jansky-and-his-merrygoround/',
+          publishedAt: '1933-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomers initially ignore the result, which fell between radio engineering and astronomy. Grote Reber, working alone with a backyard dish, confirms and maps the galactic radio emission (1938–1944), and after World War II radio astronomy becomes a mature discipline. Jansky is recognized as its founder; the unit of radio flux density, the jansky, is named for him.',
+        source: {
+          externalId: 'src:radio-astronomy-founded',
+          name: 'Grote Reber\'s confirmation and the post-war emergence of radio astronomy from Jansky\'s discovery (Wikipedia, Karl Guthe Jansky).',
+          url: 'https://en.wikipedia.org/wiki/Karl_Guthe_Jansky',
+          publishedAt: '1940-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of the Lascaux cave paintings ─────────────────────────────────
+  {
+    externalId: 'trajectory:lascaux-cave-discovery-1940',
+    text: 'On 12 September 1940, four teenagers near Montignac in the Dordogne, France, discovered the Lascaux cave and its Upper Paleolithic paintings — roughly 600 painted and drawn animals and symbols dating to about 17,000 years ago.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-09-12',
+        datePrecision: 'DAY',
+        reason: 'Marcel Ravidat and three companions, following their dog down a narrow opening near Montignac, enter the cavern and find its painted walls. The prehistorian Abbé Henri Breuil examines and authenticates the paintings within weeks, establishing them as genuine Upper Paleolithic art.',
+        source: {
+          externalId: 'src:lascaux-discovery-1940',
+          name: 'Discovery of the Lascaux cave paintings, 12 September 1940, near Montignac; authenticated by Abbé Henri Breuil. History.com, "This Day in History."',
+          url: 'https://www.history.com/this-day-in-history/september-12/lascaux-cave-paintings-discovered',
+          publishedAt: '1940-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Radiocarbon dating places the art in the Magdalenian period of the Upper Paleolithic, and in 1979 Lascaux is inscribed (with other decorated caves of the Vézère valley) on the UNESCO World Heritage List. The discovery date, location, and Paleolithic age are firmly established.',
+        source: {
+          externalId: 'src:lascaux-unesco-1979',
+          name: 'UNESCO World Heritage Centre. "Prehistoric Sites and Decorated Caves of the Vézère Valley" (inscribed 1979).',
+          url: 'https://whc.unesco.org/en/list/85/',
+          publishedAt: '1979-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
