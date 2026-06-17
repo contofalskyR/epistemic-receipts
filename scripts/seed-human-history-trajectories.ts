@@ -2035,63 +2035,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 16. D-Day / Normandy landings ───────────────────────────────────────────
-  {
-    externalId: 'trajectory:d-day-normandy-1944',
-    text: 'Allied forces launched the amphibious invasion of Normandy, France (Operation Overlord) on June 6, 1944, opening the Western Front against Nazi Germany.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1944-06-06',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1944-06-06',
-        datePrecision: 'DAY',
-        reason: 'Over 156,000 Allied troops land on five Normandy beaches (Utah, Omaha, Gold, Juno, Sword). General Eisenhower issues Order of the Day. The invasion is broadcast via BBC and recorded by military correspondents including Robert Capa (whose photographs survive) and Ernie Pyle.',
-        source: {
-          externalId: 'src:eisenhower-order-of-day-1944',
-          name: 'Eisenhower DW. Order of the Day, June 6, 1944. Eisenhower Presidential Library.',
-          url: 'https://www.eisenhowerlibrary.gov/research/online-documents/d-day-order-day',
-          publishedAt: '1944-06-06',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1944-06-06',
-        datePrecision: 'DAY',
-        reason: 'Both Allied and German military records confirm the invasion simultaneously. Wehrmacht after-action reports document the attack. The sheer scale — 5,000 ships, 11,000 aircraft — makes the event undeniable from either side\'s records. Over 4,400 Allied soldiers die on the first day.',
-        source: {
-          externalId: 'src:dday-after-action-reports',
-          name: 'First U.S. Army, Report of Operations, 20 Oct 1943–1 Aug 1944. National Archives RG 407.',
-          url: 'https://www.archives.gov/research/military/ww2/army/european-theater-of-operations',
-          publishedAt: '1944-08-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'SETTLED',
-        community: 'PUBLIC',
-        occurredAt: '2004-06-06',
-        datePrecision: 'DAY',
-        reason: 'The 60th anniversary ceremonies at Normandy — attended by heads of state from former Allied and Axis nations including France, the US, UK, Canada, Germany, and Russia — publicly reaffirm the shared historical record. Living veterans provide testimony.',
-        source: {
-          externalId: 'src:dday-60th-anniversary-2004',
-          name: 'Joint Declaration of the 60th Anniversary of D-Day, Arromanches, June 6, 2004.',
-          url: 'https://www.bbc.co.uk/history/worldwars/wwtwo/dday_anniversary_01.shtml',
-          publishedAt: '2004-06-06',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── 17. Atomic bomb dropped on Hiroshima ────────────────────────────────────
   {
     externalId: 'trajectory:hiroshima-atomic-bomb-1945',
@@ -4114,48 +4057,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 52. First Battle of Panipat — founding of the Mughal Empire ─────────────
-  {
-    externalId: 'trajectory:first-battle-panipat-1526',
-    text: 'Babur defeated Sultan Ibrahim Lodi at the First Battle of Panipat on April 21, 1526, ending the Delhi Sultanate and founding the Mughal Empire in India.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1526-04-21',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'PUBLIC',
-        occurredAt: '1526-04-21',
-        datePrecision: 'DAY',
-        reason: 'Babur, deploying field artillery and the Ottoman-style tulughma flanking tactic, routs Ibrahim Lodi\'s far larger army. Lodi is killed on the field. Babur records the battle and its date in his own memoirs, the Baburnama, written in Chagatai Turkic as a near-contemporaneous first-person account.',
-        source: {
-          externalId: 'src:baburnama-panipat-1526',
-          name: 'Babur. Baburnama (memoirs), entry for the battle of Panipat, 1526.',
-          url: 'https://www.metmuseum.org/art/collection/search/searchabbreviations/baburnama',
-          publishedAt: '1530-01-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1590-01-01',
-        datePrecision: 'YEAR',
-        reason: 'The Mughal dynasty Babur founded ruled India for over three centuries. Akbar\'s court historian Abu\'l-Fazl, in the Akbarnama (c. 1590), and Persian translations of the Baburnama codify the founding battle as the origin of Mughal rule. The succession of emperors from Babur is documented and undisputed.',
-        source: {
-          externalId: 'src:akbarnama-mughal-founding-1590',
-          name: 'Abu\'l-Fazl ibn Mubarak. Akbarnama, c. 1590. (official history of the Mughal dynasty)',
-          url: 'https://www.britishmuseum.org/collection/term/BIOG126017',
-          publishedAt: '1590-01-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── 53. Tycho Brahe's nova of 1572 — the heavens are not immutable ──────────
   {
     externalId: 'trajectory:tycho-nova-1572',
@@ -6167,63 +6068,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'The Letter of Toledo. Folk-Lore, Vol. 13 (1902); with modern surveys of the 1186 conjunction panic.',
           url: 'https://en.wikisource.org/wiki/Folk-Lore/Volume_13/The_Letter_of_Toledo',
           publishedAt: '1902-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
-  // ── Domesday Book — the Great Survey of England ──────────────────────────────
-  {
-    externalId: 'trajectory:domesday-book-1086',
-    text: 'William the Conqueror commissioned a comprehensive survey of landholding in England at his Christmas court at Gloucester in 1085; the resulting Domesday Book, a county-by-county record of who held what land and its value, was completed and its results presented at Salisbury on 1 August 1086.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1085-12-25',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1085-12-25',
-        datePrecision: 'DAY',
-        reason: 'At his Christmas court at Gloucester in 1085, William held "deep speech with his councillors" about how the land of England was occupied and by whom, and sent commissioners into every shire to record the holdings, men, livestock, and value of every manor. The Anglo-Saxon Chronicle records the commissioning and the thoroughness of the inquiry — "so very narrowly did he have it investigated that there was no single hide nor yard of land… left out."',
-        source: {
-          externalId: 'src:anglo-saxon-chronicle-domesday-1085',
-          name: 'The Anglo-Saxon Chronicle (manuscript E, Peterborough), entry for 1085 on the Domesday survey. (contemporary annal)',
-          url: 'https://www.nationalarchives.gov.uk/domesday/discover-domesday/',
-          publishedAt: '1085-12-25',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1086-08-01',
-        datePrecision: 'DAY',
-        reason: 'The survey was completed in roughly seven months, and its findings were brought before the king at Salisbury on 1 August 1086, where the landholders of England swore the Oath of Salisbury acknowledging him as their lord. Great Domesday and Little Domesday — the surviving manuscripts of the record — fixed landholding as a definitive royal account that became the final word in tenure disputes, hence the name "Domesday."',
-        source: {
-          externalId: 'src:great-domesday-manuscript-1086',
-          name: 'Great Domesday Book, The National Archives, Kew (E 31/2); with the Anglo-Saxon Chronicle account of the Salisbury court of 1 August 1086.',
-          url: 'https://www.nationalarchives.gov.uk/domesday/',
-          publishedAt: '1086-08-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1986-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Domesday Book survives intact and remains the foundational documentary source for the social and economic history of eleventh-century England. Scholarship marking its 900th anniversary and the modern critical editions treat its date, occasion, and content as settled fact.',
-        source: {
-          externalId: 'src:domesday-scholarship-1986',
-          name: 'Standard scholarship on Domesday Book (Domesday 900th-anniversary studies and critical editions).',
-          url: 'https://www.nationalarchives.gov.uk/domesday/discover-domesday/',
-          publishedAt: '1986-01-01',
           methodologyType: 'derivative',
         },
       },
@@ -10395,63 +10239,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── China's Chang'e 4 makes the first landing on the lunar far side ─────────
-  {
-    externalId: 'trajectory:change4-far-side-moon-2019',
-    text: 'China\'s Chang\'e 4 spacecraft achieved the first soft landing on the far side of the Moon on 3 January 2019, deploying the Yutu-2 rover in the Von Kármán crater.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2018-12-08',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'OPEN',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2018-12-08',
-        datePrecision: 'DAY',
-        reason: 'The China National Space Administration launched Chang\'e 4 on 8 December 2018, targeting the lunar far side — a region never before reached by a soft lander and unreachable by direct radio contact, requiring the Queqiao relay satellite positioned earlier in 2018. Whether the landing would succeed was an open question.',
-        source: {
-          externalId: 'src:cnsa-change4-launch-2018',
-          name: 'CNSA / Xinhua. "China launches Chang\'e-4 probe for first soft landing on far side of moon." 8 December 2018.',
-          url: 'http://www.xinhuanet.com/english/2018-12/08/c_137658956.htm',
-          publishedAt: '2018-12-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'OPEN',
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2019-01-03',
-        datePrecision: 'DAY',
-        reason: 'On 3 January 2019 Chang\'e 4 soft-landed in the Von Kármán crater within the South Pole–Aitken basin and, via the Queqiao relay, transmitted the first close-up image of the far-side surface. The Yutu-2 rover rolled onto the surface hours later. CNSA confirmed the landing contemporaneously.',
-        source: {
-          externalId: 'src:cnsa-change4-landing-2019',
-          name: 'CNSA / Xinhua. "China\'s Chang\'e-4 probe makes historic landing on moon\'s far side." 3 January 2019.',
-          url: 'http://www.xinhuanet.com/english/2019-01/03/c_137717548.htm',
-          publishedAt: '2019-01-03',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2019-02-01',
-        datePrecision: 'DAY',
-        reason: 'NASA\'s Lunar Reconnaissance Orbiter independently imaged the Chang\'e 4 lander and Yutu-2 rover on the far-side surface, and peer-reviewed results from the mission appeared in the scientific literature. The first far-side soft landing and its date are settled and internationally corroborated.',
-        source: {
-          externalId: 'src:nasa-lro-images-change4-2019',
-          name: 'NASA. "LRO Spots Chang\'e 4 Lander on Far Side of the Moon." 8 February 2019.',
-          url: 'https://www.nasa.gov/feature/goddard/2019/lro-spots-change-4-lander-on-far-side-of-the-moon',
-          publishedAt: '2019-02-08',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE): Arab scholars, Byzantine, Song China
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -13944,48 +13731,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Green DA, Stephenson FR. "The Historical Supernovae." In Supernovae and Gamma-Ray Bursters (Lecture Notes in Physics 598), 2003; SN 393.',
           url: 'https://arxiv.org/abs/astro-ph/0301603',
           publishedAt: '2003-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
-  // ── Cyrus the Great takes Babylon, 12 October 539 BCE ───────────────────────
-  {
-    externalId: 'trajectory:cyrus-takes-babylon-539bce',
-    text: 'The army of Cyrus the Great entered Babylon without a battle on the 16th of Tashritu — 12 October 539 BCE — ending the Neo-Babylonian Empire and folding Mesopotamia into the Achaemenid Persian Empire, an event recorded in the contemporaneous Babylonian Nabonidus Chronicle and proclaimed on the Cyrus Cylinder.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '0539-10-12',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '0539-10-12',
-        datePrecision: 'DAY',
-        reason: 'The Nabonidus Chronicle, a Babylonian cuneiform tablet recording events reign by reign, states that on the 16th of Tashritu Ugbaru (Gobryas), governor of Gutium, and the army of Cyrus entered Babylon without fighting; King Nabonidus was captured, and some weeks later (3 Marcheshvan) Cyrus himself entered the city to public acclamation. The Cyrus Cylinder gives Cyrus’s own proclamation of a peaceful, divinely sanctioned takeover.',
-        source: {
-          externalId: 'src:nabonidus-chronicle-fall-babylon-539bce',
-          name: 'Nabonidus Chronicle (ABC 7), col. III: entry of Ugbaru and the army of Cyrus into Babylon, 16 Tashritu. (Babylonian cuneiform, late 6th century BCE)',
-          url: 'https://www.livius.org/sources/content/mesopotamian-chronicles/abc-7-nabonidus-chronicle/',
-          publishedAt: '0538-01-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1956-01-01',
-        datePrecision: 'YEAR',
-        reason: 'The Julian date 12 October 539 BCE is fixed by converting the Babylonian lunar date (16 Tashritu of the accession year of Cyrus) through the reconstructed Babylonian calendar, and is corroborated by dated economic tablets whose year-formulae switch from Nabonidus to Cyrus in the autumn of 539 BCE, by the Cyrus Cylinder, and by the later accounts of Herodotus and Berossus. The chronology is treated as settled in standard Assyriological reference works.',
-        source: {
-          externalId: 'src:parker-dubberstein-babylonian-chronology',
-          name: 'Parker RA, Dubberstein WH. Babylonian Chronology 626 B.C.–A.D. 75. Brown University Press, 1956.',
-          url: 'https://oi.uchicago.edu/research/publications/saoc/saoc-24-babylonian-chronology-626-bc-ad-75',
-          publishedAt: '1956-01-01',
           methodologyType: 'derivative',
         },
       },
@@ -18151,48 +17896,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── The Meiji Restoration ────────────────────────────────────────────────────
-  {
-    externalId: 'trajectory:meiji-restoration-1868',
-    text: 'The Decree for the Restoration of Imperial Rule (Ōsei Fukko no Daigōrei), proclaimed on 3 January 1868, abolished the Tokugawa shogunate and restored direct rule to the Emperor of Japan, inaugurating the Meiji era.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1868-01-03',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1868-01-03',
-        datePrecision: 'DAY',
-        reason: 'A coalition of Satsuma and Chōshō domains seizes the imperial palace in Kyoto and issues the Ōsei Fukko decree in the name of the young Emperor Meiji on 3 January 1868 (Keiō 3, 12th month, 9th day), declaring the shogunate and its offices abolished and proclaiming the restoration of direct imperial government.',
-        source: {
-          externalId: 'src:osei-fukko-decree-1868',
-          name: 'Ōsei Fukko no Daigōrei (Decree for the Restoration of Imperial Rule), 3 January 1868 — translated in McLaren W.W. (ed.), Japanese Government Documents (Transactions of the Asiatic Society of Japan, vol. 42, 1914).',
-          url: 'https://archive.org/details/japanesegovernme00mcla',
-          publishedAt: '1868-01-03',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1869-06-27',
-        datePrecision: 'DAY',
-        reason: 'The Tokugawa loyalists who reject the restoration are defeated in the Boshin War, which ends with the fall of the Republic of Ezo at the Battle of Hakodate in June 1869. With armed opposition extinguished and the capital moved to Tokyo, the imperial government is consolidated and the restoration becomes an accomplished, irreversible fact.',
-        source: {
-          externalId: 'src:boshin-war-hakodate-1869',
-          name: 'Jansen M.B. The Making of Modern Japan. Cambridge, MA: Harvard University Press, 2000 (on the Boshin War and the consolidation of Meiji rule, 1868–1869).',
-          url: 'https://archive.org/details/makingofmodernja0000jans',
-          publishedAt: '2000-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ═══════════════════════════════════════════════════════════════════════════════
   // WWI, INTERWAR & WWII (1900–1950)
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -18886,63 +18589,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Shenzhou 5: China's first human spaceflight ─────────────────────────────
-  {
-    externalId: 'trajectory:shenzhou-5-first-chinese-spaceflight-2003',
-    text: 'China launched its first crewed spaceflight, Shenzhou 5, on 15 October 2003, carrying astronaut Yang Liwei into orbit and making China the third nation to independently send a human to space.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2003-10-15',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'OPEN',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2003-10-15',
-        datePrecision: 'DAY',
-        reason: 'China had developed its crewed Shenzhou programme largely in secrecy, and whether its first piloted launch would succeed was an open question until the Long March 2F lifted off from Jiuquan with Yang Liwei aboard on the morning of 15 October 2003.',
-        source: {
-          externalId: 'src:xinhua-shenzhou5-launch-2003',
-          name: 'Xinhua / CNSA. Announcement of Shenzhou 5 crewed launch, 15 October 2003.',
-          url: 'http://www.cnsa.gov.cn/english/n6465645/n6465648/c6768094/content.html',
-          publishedAt: '2003-10-15',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'OPEN',
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2003-10-16',
-        datePrecision: 'DAY',
-        reason: 'Yang Liwei orbited the Earth and the Shenzhou 5 descent module landed safely in Inner Mongolia after about 21 hours, on 16 October 2003. China officially confirmed the successful flight and recovery, recording its entry as the third country to launch a human into orbit using its own technology.',
-        source: {
-          externalId: 'src:cnsa-shenzhou5-return-2003',
-          name: 'CNSA / Xinhua. Confirmation of Shenzhou 5 safe return and recovery, 16 October 2003.',
-          url: 'https://www.nasa.gov/news-release/nasa-administrator-statement-on-chinese-human-space-flight/',
-          publishedAt: '2003-10-16',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2003-10-16',
-        datePrecision: 'DAY',
-        reason: 'International tracking, NASA acknowledgement, and independent observers corroborated the orbit and recovery. The flight\'s occurrence and date are settled on the public record, and China subsequently built on it with further Shenzhou missions and its own space station.',
-        source: {
-          externalId: 'src:nasa-statement-chinese-spaceflight-2003',
-          name: 'NASA. Administrator statement congratulating China on its first human spaceflight, 15 October 2003.',
-          url: 'https://www.nasa.gov/news-release/nasa-administrator-statement-on-chinese-human-space-flight/',
-          publishedAt: '2003-10-15',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── East Timor independence referendum ──────────────────────────────────────
   {
     externalId: 'trajectory:east-timor-referendum-1999',
@@ -19041,48 +18687,6 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.wdl.org/en/item/10096/',
           methodologyType: 'primary',
           publishedAt: '1576-01-01',
-        },
-      },
-    ],
-  },
-
-  // ── First Battle of Panipat — founding of the Mughal Empire ─────────────────
-  {
-    externalId: 'trajectory:first-battle-panipat-1526',
-    text: 'Babur defeated and killed Ibrahim Lodi, Sultan of Delhi, at the First Battle of Panipat on April 21, 1526, founding the Mughal Empire in India.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1526-04-21',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'PUBLIC',
-        occurredAt: '1526-04-21',
-        datePrecision: 'DAY',
-        reason: 'Babur, deploying field artillery and the tulughma flanking tactic, routed the far larger army of the Delhi Sultanate; Ibrahim Lodi died on the field. Babur recorded the engagement and its date in his own memoirs as it occurred.',
-        source: {
-          externalId: 'src:baburnama-panipat',
-          name: 'Babur. Baburnama (Memoirs of Babur), entry for the battle of Panipat, c. 1526–1530.',
-          url: 'https://archive.org/details/baburnamainengli01babu',
-          methodologyType: 'primary',
-          publishedAt: '1530-01-01',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1590-01-01',
-        datePrecision: 'YEAR',
-        reason: 'The battle, its date, and its outcome are confirmed by later Mughal court histories including Abul Fazl\'s Akbarnama, and are universally accepted by historians as the founding event of Mughal rule in the subcontinent, which lasted until 1857.',
-        source: {
-          externalId: 'src:akbarnama-panipat',
-          name: 'Abul Fazl. Akbarnama, Vol. 1 (account of Babur\'s conquest), c. 1590s.',
-          url: 'https://archive.org/details/akbarnamaofabulf01abul',
-          methodologyType: 'derivative',
-          publishedAt: '1596-01-01',
         },
       },
     ],
@@ -21162,48 +20766,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Address by N. S. Khrushchev to the Supreme Soviet revealing the captured U-2 pilot and aircraft, 7 May 1960; U.S. Department of State, Office of the Historian — "The U-2 Incident, 1960."',
           url: 'https://history.state.gov/milestones/1953-1960/u2-incident',
           publishedAt: '1960-05-07',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Berlin Wall construction begins (1961) ─────────────────────────────────
-  {
-    externalId: 'trajectory:berlin-wall-construction-1961',
-    text: 'In the early hours of 13 August 1961, the German Democratic Republic (East Germany) sealed the border between East and West Berlin and began constructing the Berlin Wall.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1961-08-13',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1961-08-13',
-        datePrecision: 'DAY',
-        reason: 'Beginning shortly after midnight on 13 August 1961, East German police and troops closed the sector boundary in Berlin, tearing up streets, stringing barbed wire, and halting cross-border traffic; permanent concrete walls followed in the days after. The action was authorized by a decree of the GDR Council of Ministers and a declaration of the Warsaw Pact states, both issued on 12–13 August 1961 and published immediately.',
-        source: {
-          externalId: 'src:gdr-warsaw-pact-berlin-border-1961',
-          name: 'Declaration of the Warsaw Pact states and decree of the GDR Council of Ministers closing the East–West Berlin border, 12–13 August 1961. German History in Documents and Images (GHDI).',
-          url: 'https://ghdi.ghi-dc.org/sub_document.cfm?document_id=81',
-          publishedAt: '1961-08-13',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1961-08-13',
-        datePrecision: 'DAY',
-        reason: 'The closure was immediately verified by the Western Allied commandants in Berlin and by international press photographing the barrier as it rose; the United States, Britain, and France lodged formal protests within days. The physical division of the city became an uncontested fact of Cold War geography that stood for 28 years until the Wall was opened on 9 November 1989.',
-        source: {
-          externalId: 'src:state-dept-berlin-wall-1961',
-          name: 'U.S. Department of State, Office of the Historian — "The Berlin Wall, 1961."',
-          url: 'https://history.state.gov/milestones/1961-1968/berlin-wall',
-          publishedAt: '1961-08-13',
           methodologyType: 'primary',
         },
       },
