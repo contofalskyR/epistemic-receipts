@@ -35534,6 +35534,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Darwin–Wallace natural selection read at the Linnean Society — 1858 ──────
+  {
+    externalId: 'trajectory:darwin-wallace-linnean-1858',
+    text: 'On 1 July 1858 the joint Darwin–Wallace paper "On the Tendency of Species to form Varieties; and on the Perpetuation of Varieties and Species by Natural Means of Selection" was read at the Linnean Society of London, the first public presentation of evolution by natural selection.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1858-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1858-07-01',
+        datePrecision: 'DAY',
+        reason: 'After Wallace independently arrived at the principle of natural selection and mailed an essay to Darwin from the Malay Archipelago, Charles Lyell and Joseph Hooker arranged for extracts of Darwin\'s 1844 essay and 1857 letter to be read jointly with Wallace\'s essay at the Linnean Society. Neither author was present. The combined paper was published in the Society\'s Journal of the Proceedings on 20 August 1858, establishing priority and placing natural selection on the public record more than a year before On the Origin of Species.',
+        source: {
+          externalId: 'src:darwin-wallace-linnean-1858',
+          name: 'Darwin C, Wallace AR. On the Tendency of Species to form Varieties. Read 1 July 1858; published J. Proc. Linn. Soc. (Zoology) 3:45–62, 20 Aug 1858.',
+          url: 'https://www.linnean.org/the-society/history-of-science/alfred-russel-wallace',
+          publishedAt: '1858-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Modern Synthesis unified Darwinian and Wallacean selection with Mendelian genetics and population genetics, supplying the mechanism of heredity the 1858 paper lacked. Evolution by natural selection became the central organizing principle of biology, and the Linnean Society now awards the Darwin–Wallace Medal in commemoration.',
+        source: {
+          externalId: 'src:huxley-modern-synthesis-1942-dw',
+          name: 'Huxley JS. Evolution: The Modern Synthesis. London: Allen & Unwin, 1942.',
+          url: 'https://mitpress.mit.edu/9780262513661/evolution/',
+          publishedAt: '1942-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First transatlantic telegraph message — 1858 ────────────────────────────
+  {
+    externalId: 'trajectory:transatlantic-telegraph-1858',
+    text: 'On 16 August 1858 Queen Victoria\'s congratulatory message to President James Buchanan crossed the first transatlantic submarine telegraph cable, the first time a message had been sent electrically between Europe and North America.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1858-08-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1858-08-16',
+        datePrecision: 'DAY',
+        reason: 'The Atlantic Telegraph Company\'s cable, laid between Valentia Island, Ireland, and Trinity Bay, Newfoundland, carried a 98-word message from Queen Victoria to President Buchanan that took about sixteen hours to transmit. The exchange was celebrated on both sides of the ocean and reduced transatlantic communication time from roughly ten days by ship to hours.',
+        source: {
+          externalId: 'src:transatlantic-telegraph-1858-history',
+          name: 'First transatlantic telegraph cable — Queen Victoria\'s message to President Buchanan, 16 August 1858.',
+          url: 'https://www.history.com/articles/first-transatlantic-telegraph-cable',
+          publishedAt: '1858-08-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1866-07-27',
+        datePrecision: 'DAY',
+        reason: 'The 1858 cable failed within weeks after insulation broke down under excessive voltage, but the feat was definitively re-established when the SS Great Eastern completed a durable, permanently working transatlantic cable on 27 July 1866. Intercontinental telegraphy was thereafter a settled, continuously operating reality.',
+        source: {
+          externalId: 'src:transatlantic-cable-1866-loc',
+          name: 'Library of Congress — First transatlantic telegraph cable (This Month in Business History).',
+          url: 'https://guides.loc.gov/this-month-in-business-history/august/first-transatlantic-telegraph-cable',
+          publishedAt: '1866-07-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── General Act of the Berlin Conference — 1885 ─────────────────────────────
+  {
+    externalId: 'trajectory:berlin-conference-general-act-1885',
+    text: 'On 26 February 1885 the fourteen states attending the Berlin West Africa Conference signed the General Act, codifying rules of "effective occupation" and free trade in the Congo basin that governed the European partition of Africa.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1885-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1885-02-26',
+        datePrecision: 'DAY',
+        reason: 'After negotiations hosted by Chancellor Otto von Bismarck in Berlin from 15 November 1884, representatives of fourteen states — with no African representation — signed the General Act. It established freedom of commerce in the Congo basin, freedom of navigation on the Congo and Niger, and the principle that claims to African coastal territory required "effective occupation" to be recognized by other powers.',
+        source: {
+          externalId: 'src:berlin-general-act-1885-diplo',
+          name: 'General Act of the Berlin West Africa Conference, 26 February 1885 — German Federal Foreign Office Political Archive.',
+          url: 'https://archiv.diplo.de/arc-en/the-political-archive/general-act-2684414',
+          publishedAt: '1885-02-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Act\'s framework structured the Scramble for Africa: European control of the continent rose from roughly 10% in 1884 to about 90% by 1914. Its historical role as the formalizing instrument of the partition is documented in contemporary records and treated as settled in the scholarship, even as decolonization (the "Year of Africa," 1960) dismantled the order it helped create.',
+        source: {
+          externalId: 'src:scramble-for-africa-britannica',
+          name: 'Scramble for Africa — Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Scramble-for-Africa',
+          publishedAt: '1960-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pasteur's first rabies vaccination of Joseph Meister — 1885 ─────────────
+  {
+    externalId: 'trajectory:pasteur-rabies-meister-1885',
+    text: 'On 6 July 1885 Louis Pasteur administered his attenuated rabies vaccine to nine-year-old Joseph Meister, who had been bitten by a rabid dog — the first human use of the rabies vaccine, and Meister survived.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1885-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1885-07-06',
+        datePrecision: 'DAY',
+        reason: 'Joseph Meister, bitten fourteen times two days earlier, was treated by Pasteur with a graded series of injections prepared from the dried spinal cords of rabbits infected with attenuated rabies virus, administered over ten days. Rabies did not develop and the boy returned home in late August 1885 — a decisive demonstration of post-exposure immunization against a uniformly fatal disease.',
+        source: {
+          externalId: 'src:pasteur-rabies-meister-1885-dpma',
+          name: 'Pasteur, Jenner and vaccines — German Patent and Trade Mark Office (DPMA): "on 6 July 1885, Louis Pasteur began immunising a person infected with rabies in Paris."',
+          url: 'https://www.dpma.de/english/our_office/publications/milestones/greatinventors/pasteur/index.html',
+          publishedAt: '1885-07-06',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following the successful treatment of Meister and hundreds of subsequent patients, Pasteur reported his results to the Académie des Sciences in 1886 and the Institut Pasteur was founded in 1888 to produce the vaccine and treat rabies. Post-exposure rabies vaccination became, and remains, the standard of care worldwide.',
+        source: {
+          externalId: 'src:institut-pasteur-rabies-1885',
+          name: 'The history of the first rabies vaccination in 1885 — Institut Pasteur.',
+          url: 'https://www.pasteur.fr/en/research-journal/news/history-first-rabies-vaccination-1885',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Becquerel discovers radioactivity — 1896 ────────────────────────────────
+  {
+    externalId: 'trajectory:becquerel-radioactivity-1896',
+    text: 'In late February 1896 Henri Becquerel discovered that uranium salts spontaneously emit penetrating radiation that fogs photographic plates without any external excitation, reporting the phenomenon to the French Academy of Sciences on 2 March 1896.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-03-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-03-02',
+        datePrecision: 'DAY',
+        reason: 'Investigating whether phosphorescent uranium salts emitted X-rays after sunlight exposure, Becquerel found that on overcast days his photographic plates were still fogged by the uranium even though the salts had not been exposed to light. He concluded the radiation was spontaneous and intrinsic to uranium, and announced it to the Académie des Sciences on 2 March 1896 in the Comptes Rendus.',
+        source: {
+          externalId: 'src:becquerel-radioactivity-1896-lindahall',
+          name: 'Henri Becquerel — Linda Hall Library (Scientist of the Day): February 1896 discovery, announced 2 March 1896 in the Comptes Rendus.',
+          url: 'https://www.lindahall.org/about/news/scientist-of-the-day/henri-becquerel/',
+          publishedAt: '1896-03-02',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marie and Pierre Curie extended Becquerel\'s finding, isolating polonium and radium and coining the term "radioactivity." The phenomenon was recognized as a fundamental property of certain nuclei, and Becquerel shared the 1903 Nobel Prize in Physics with the Curies, settling spontaneous radioactive emission as established physics.',
+        source: {
+          externalId: 'src:becquerel-nobel-1903',
+          name: 'The Nobel Prize in Physics 1903 — Henri Becquerel and Pierre & Marie Curie, for the discovery of spontaneous radioactivity.',
+          url: 'https://www.nobelprize.org/prizes/physics/1903/summary/',
+          publishedAt: '1903-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
