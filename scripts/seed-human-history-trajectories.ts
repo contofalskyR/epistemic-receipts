@@ -41356,6 +41356,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — supplementary curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Murder of Emmett Till ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:emmett-till-murder-1955',
+    text: 'Emmett Till, a 14-year-old Black boy from Chicago, was abducted and murdered in Money, Mississippi on 28 August 1955 by J.W. Milam and Roy Bryant.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1955-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1955-08-31',
+        datePrecision: 'DAY',
+        reason: 'Till is abducted from his great-uncle Mose Wright\'s home in the early hours of 28 August 1955; his mutilated body is pulled from the Tallahatchie River on 31 August. His mother, Mamie Till-Mobley, holds an open-casket funeral in Chicago, and Jet magazine publishes photographs of the body, drawing national attention. Milam and Bryant are arrested and indicted for the murder.',
+        source: {
+          externalId: 'src:emmett-till-murder-1955',
+          name: 'Murder of Emmett Till — abduction (28 August 1955) and recovery of the body (31 August 1955); Jet magazine open-casket photographs, September 1955.',
+          url: 'https://en.wikipedia.org/wiki/Murder_of_Emmett_Till',
+          publishedAt: '1955-08-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1955-09-23',
+        datePrecision: 'DAY',
+        reason: 'On 23 September 1955, after a five-day trial in Sumner, Mississippi at which Mose Wright identified the abductors in open court, an all-white, all-male jury acquitted Milam and Bryant of murder after deliberating roughly 67 minutes. The verdict left the killing legally unresolved despite eyewitness testimony, placing the established factual account in formal judicial conflict with the legal record.',
+        source: {
+          externalId: 'src:emmett-till-acquittal-1955',
+          name: 'Trial of J.W. Milam and Roy Bryant, Tallahatchie County Circuit Court, Sumner, Mississippi — acquittal verdict, 23 September 1955.',
+          url: 'https://en.wikipedia.org/wiki/Murder_of_Emmett_Till',
+          publishedAt: '1955-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1956-01-01',
+        datePrecision: 'MONTH',
+        reason: 'In January 1956, protected from retrial by double jeopardy, Milam and Bryant confessed to the killing in a paid interview with journalist William Bradford Huie published in Look magazine ("The Shocking Story of Approved Killing in Mississippi"), describing how they abducted and shot Till. Their own confession established their guilt as a settled historical fact even though they were never legally punished.',
+        source: {
+          externalId: 'src:huie-look-confession-1956',
+          name: 'William Bradford Huie, "The Shocking Story of Approved Killing in Mississippi," Look magazine, January 1956 — Milam and Bryant\'s confession to the murder.',
+          url: 'https://en.wikipedia.org/wiki/William_Bradford_Huie',
+          publishedAt: '1956-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Paul Berg constructs the first recombinant DNA molecule ─────────────────
+  {
+    externalId: 'trajectory:berg-first-recombinant-dna-1972',
+    text: 'In October 1972, Paul Berg, David Jackson and Robert Symons reported in PNAS the construction of the first recombinant DNA molecule, covalently joining DNA from the SV40 virus with lambda phage DNA and the galactose operon of E. coli.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Jackson, Symons and Berg publish a biochemical method for inserting new genetic information into the DNA of Simian Virus 40, producing circular SV40 DNA molecules containing lambda phage genes and the E. coli galactose operon. The paper appears in the Proceedings of the National Academy of Sciences, vol. 69, pp. 2904–2909, demonstrating that DNA from different organisms can be covalently joined in vitro.',
+        source: {
+          externalId: 'src:jackson-symons-berg-pnas-1972',
+          name: 'Jackson DA, Symons RH, Berg P. "Biochemical method for inserting new genetic information into DNA of Simian Virus 40." Proc Natl Acad Sci USA. 1972 Oct;69(10):2904–2909.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4342968/',
+          publishedAt: '1972-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The recombinant-DNA technique was rapidly reproduced and extended, becoming the foundation of genetic engineering and molecular cloning. In October 1980 Paul Berg was awarded a share of the Nobel Prize in Chemistry "for his fundamental studies of the biochemistry of nucleic acids, with particular regard to recombinant-DNA," recognizing the result as a settled and foundational advance.',
+        source: {
+          externalId: 'src:berg-nobel-chemistry-1980',
+          name: 'The Nobel Prize in Chemistry 1980 — Paul Berg, "for his fundamental studies of the biochemistry of nucleic acids, with particular regard to recombinant-DNA."',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1980/berg/facts/',
+          publishedAt: '1980-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── EPA cancels DDT registrations ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:epa-ddt-ban-1972',
+    text: 'On 14 June 1972 the U.S. Environmental Protection Agency, under Administrator William Ruckelshaus, issued an order cancelling nearly all remaining federal registrations of DDT products, banning general agricultural use of DDT in the United States effective 31 December 1972.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1972-06-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-06-14',
+        datePrecision: 'DAY',
+        reason: 'Following extensive hearings, EPA Administrator William D. Ruckelshaus signs an order on 14 June 1972 cancelling nearly all remaining federal registrations of DDT products for crop uses, citing the pesticide\'s persistence and accumulation in the environment. The order is published as a formal agency decision.',
+        source: {
+          externalId: 'src:epa-ddt-order-1972',
+          name: 'U.S. EPA — "DDT Ban Takes Effect," press release documenting the 14 June 1972 cancellation order issued by Administrator William D. Ruckelshaus.',
+          url: 'https://www.epa.gov/archive/epa/aboutepa/ddt-ban-takes-effect.html',
+          publishedAt: '1972-06-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-31',
+        datePrecision: 'DAY',
+        reason: 'The cancellation took effect on 31 December 1972, after which general use of DDT was no longer legal in the United States. The ban was challenged but upheld, and remains the established and durable regulatory record; the EPA documents the effective date in a contemporaneous press release.',
+        source: {
+          externalId: 'src:epa-ddt-effective-1972',
+          name: 'U.S. EPA — "DDT Ban Takes Effect," press release (31 December 1972): "The general use of the pesticide DDT will no longer be legal in the United States after today."',
+          url: 'https://www.epa.gov/archive/epa/aboutepa/ddt-ban-takes-effect.html',
+          publishedAt: '1972-12-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Apple introduces the Macintosh ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:apple-macintosh-introduced-1984',
+    text: 'On 24 January 1984, Apple Computer publicly introduced the original Macintosh, the first mass-market personal computer built around a graphical user interface and a mouse.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1984-01-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1984-01-24',
+        datePrecision: 'DAY',
+        reason: 'Steve Jobs unveils the Macintosh 128K at Apple\'s annual shareholders meeting on 24 January 1984, demonstrating its graphical interface and mouse, and the computer goes on sale the same day. The launch is preceded by the "1984" television advertisement, directed by Ridley Scott, which aired during Super Bowl XVIII on 22 January 1984.',
+        source: {
+          externalId: 'src:macintosh-introduction-1984',
+          name: 'Apple Macintosh 128K — public introduction at the Apple shareholders meeting, 24 January 1984; "1984" Super Bowl advertisement, 22 January 1984.',
+          url: 'https://en.wikipedia.org/wiki/Macintosh_128K',
+          publishedAt: '1984-01-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1984-01-24',
+        datePrecision: 'DAY',
+        reason: 'The introduction of the Macintosh on 24 January 1984 is an undisputed, thoroughly documented event recorded in contemporaneous press coverage, Apple corporate records, surviving advertising, and the shipped product itself. Its role in bringing the graphical user interface to a mass market is an established fact of computing history.',
+        source: {
+          externalId: 'src:macintosh-launch-record-1984',
+          name: 'Apple Macintosh 128K — contemporaneous launch coverage and Apple corporate records, January 1984.',
+          url: 'https://en.wikipedia.org/wiki/Macintosh_128K',
+          publishedAt: '1984-01-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Voyager 2 flies by Neptune ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:voyager-2-neptune-flyby-1989',
+    text: 'On 25 August 1989, NASA\'s Voyager 2 made its closest approach to Neptune, returning the first close-up observations of the planet, its rings, and its moon Triton — the only spacecraft ever to visit Neptune.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-08-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-08-25',
+        datePrecision: 'DAY',
+        reason: 'Voyager 2 passes about 4,950 km above Neptune\'s north pole on 25 August 1989 and, hours later, flies within roughly 40,000 km of Triton. The encounter returns data revealing the "Great Dark Spot," supersonic winds, faint rings, six previously unknown moons, and evidence of nitrogen geysers on Triton\'s surface. NASA reports the findings in real time from the Jet Propulsion Laboratory.',
+        source: {
+          externalId: 'src:voyager-2-neptune-encounter-1989',
+          name: 'Voyager 2 — closest approach to Neptune, 25 August 1989; discovery of the Great Dark Spot, new moons and rings, and Triton flyby.',
+          url: 'https://en.wikipedia.org/wiki/Voyager_2',
+          publishedAt: '1989-08-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-12-15',
+        datePrecision: 'DAY',
+        reason: 'The Voyager 2 Neptune results were published in a dedicated 15 December 1989 special issue of the journal Science, in which the imaging, fields-and-particles, and radio-science teams reported the encounter findings. Peer-reviewed publication of the encounter data settled the observations as part of the scientific record.',
+        source: {
+          externalId: 'src:voyager-2-neptune-science-1989',
+          name: 'Voyager 2 at Neptune — peer-reviewed encounter results, Science special issue, 15 December 1989 (vol. 246).',
+          url: 'https://en.wikipedia.org/wiki/Voyager_2',
+          publishedAt: '1989-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
