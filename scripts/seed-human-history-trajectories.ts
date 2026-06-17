@@ -43846,6 +43846,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PHYSICS REVOLUTION & SCIENCE 1900–1953 (additions)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Rutherford's nuclear atom ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:rutherford-nuclear-atom-1911',
+    text: 'Ernest Rutherford concluded from alpha-particle scattering experiments that an atom\'s positive charge and nearly all its mass are concentrated in a tiny central nucleus, published in May 1911.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1911-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1911-05-01',
+        datePrecision: 'MONTH',
+        reason: 'In a paper in the Philosophical Magazine (Series 6, vol. 21, May 1911), "The Scattering of α and β Particles by Matter and the Structure of the Atom," Rutherford explained the 1909 Geiger–Marsden observation that roughly 1 in 8,000 alpha particles deflected by more than 90° — impossible under J. J. Thomson\'s diffuse "plum pudding" atom — by positing a minute, massive, charged central nucleus.',
+        source: {
+          externalId: 'src:rutherford-1911-phil-mag',
+          name: 'Rutherford E. "The Scattering of α and β Particles by Matter and the Structure of the Atom." Philosophical Magazine, Series 6, 21:669–688 (May 1911).',
+          url: 'https://en.wikipedia.org/wiki/Geiger%E2%80%93Marsden_experiment',
+          publishedAt: '1911-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Henry Moseley\'s 1913 measurements of characteristic X-ray spectra established the nuclear charge (atomic number) as a fundamental, integer property of each element, and Geiger and Marsden\'s refined 1913 scattering data confirmed Rutherford\'s 1/sin⁴(θ/2) angular law. The nuclear model became the accepted foundation of atomic structure.',
+        source: {
+          externalId: 'src:moseley-1913-atomic-number',
+          name: 'Moseley H. G. J. "The High-Frequency Spectra of the Elements." Philosophical Magazine (1913) — establishing atomic number from nuclear charge.',
+          url: 'https://en.wikipedia.org/wiki/Rutherford_model',
+          publishedAt: '1913-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bohr model of the atom ──────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bohr-model-atom-1913',
+    text: 'Niels Bohr proposed in July 1913 that electrons occupy quantized orbits and emit or absorb radiation only when jumping between them, successfully predicting the hydrogen spectral lines.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In "On the Constitution of Atoms and Molecules," the first part published in the Philosophical Magazine in July 1913, Bohr combined Rutherford\'s nucleus with Planck\'s quantum to postulate stationary electron orbits and quantum jumps, deriving the Rydberg formula for hydrogen\'s spectral lines from first principles.',
+        source: {
+          externalId: 'src:bohr-1913-constitution-atoms',
+          name: 'Bohr N. "On the Constitution of Atoms and Molecules, Part I." Philosophical Magazine, Series 6, 26:1–25 (July 1913).',
+          url: 'https://en.wikipedia.org/wiki/Bohr_model',
+          publishedAt: '1913-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Franck–Hertz experiment (1914) directly demonstrated the quantized energy levels Bohr had postulated, and Moseley\'s X-ray work corroborated the quantum-orbit picture. The model won broad acceptance and earned Bohr the 1922 Nobel Prize in Physics.',
+        source: {
+          externalId: 'src:franck-hertz-1914',
+          name: 'Franck J., Hertz G. (1914) — electron-collision experiment confirming discrete atomic energy levels predicted by the Bohr model.',
+          url: 'https://en.wikipedia.org/wiki/Franck%E2%80%93Hertz_experiment',
+          publishedAt: '1914-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Bohr model\'s ad hoc orbits were superseded as a literal picture by Heisenberg\'s matrix mechanics (1925) and Schrödinger\'s wave mechanics (1926), which reproduced its quantitative successes within a complete quantum theory. Bohr\'s quantized energy levels and quantum jumps survive intact as limiting features of the modern theory.',
+        source: {
+          externalId: 'src:schrodinger-1926-wave-mechanics',
+          name: 'Schrödinger E. (1926) — wave mechanics superseding the Bohr orbits while preserving its quantized energy levels.',
+          url: 'https://en.wikipedia.org/wiki/Bohr_model',
+          publishedAt: '1926-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Victor Hess discovers cosmic rays ───────────────────────────────────────
+  {
+    externalId: 'trajectory:hess-cosmic-rays-1912',
+    text: 'On 7 August 1912 Victor Hess, ascending by balloon to about 5,300 metres, found that ionizing radiation increases with altitude, proving that a penetrating radiation enters the atmosphere from space — cosmic rays.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-08-07',
+        datePrecision: 'DAY',
+        reason: 'On the last of seven balloon flights made in 1911–1912, Hess carried three Wulf electrometers to roughly 5,300 m and observed that the rate of ionization, after dipping near 1 km, rose to about three times the sea-level value. A separate ascent during a near-total solar eclipse showed no drop, ruling out the Sun as the source. Hess concluded a highly penetrating radiation enters the atmosphere from above.',
+        source: {
+          externalId: 'src:hess-1912-penetrating-radiation',
+          name: 'Hess V. F. "Über Beobachtungen der durchdringenden Strahlung bei sieben Freiballonfahrten." Physikalische Zeitschrift 13:1084–1091 (1912).',
+          url: 'https://home.cern/news/news/physics/cosmic-rays-discovered-100-years-ago',
+          publishedAt: '1912-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-12-10',
+        datePrecision: 'DAY',
+        reason: 'Robert Millikan\'s 1920s measurements (which coined the term "cosmic rays") and Werner Kolhörster\'s confirmation established the extraterrestrial origin of the radiation. Hess was awarded the 1936 Nobel Prize in Physics for the discovery, shared with Carl Anderson.',
+        source: {
+          externalId: 'src:nobel-physics-1936-hess',
+          name: 'The Nobel Prize in Physics 1936 — awarded to Victor Franz Hess for his discovery of cosmic radiation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1936/summary/',
+          publishedAt: '1936-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wegener proposes continental drift ──────────────────────────────────────
+  {
+    externalId: 'trajectory:wegener-continental-drift-1912',
+    text: 'On 6 January 1912 Alfred Wegener proposed that the continents were once joined in a single landmass and have since drifted apart — the hypothesis of continental drift.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-01-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-01-06',
+        datePrecision: 'DAY',
+        reason: 'In a lecture to the Geologische Vereinigung in Frankfurt on 6 January 1912, Wegener argued from the matching coastlines, fossils, and rock formations across the Atlantic that the continents had once formed a single mass (later called Pangaea) and had drifted to their present positions. He expanded the argument in his 1915 book Die Entstehung der Kontinente und Ozeane.',
+        source: {
+          externalId: 'src:wegener-1912-kontinente-lecture',
+          name: 'Wegener A. "Die Entstehung der Kontinente." Lecture to the Geologische Vereinigung, Frankfurt, 6 January 1912 (published Petermanns Geographische Mitteilungen, 1912).',
+          url: 'https://en.wikipedia.org/wiki/Continental_drift',
+          publishedAt: '1912-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Lacking a plausible mechanism (Wegener\'s estimated drift rate was far too high) and coming from a meteorologist rather than a geologist, the hypothesis was widely rejected. At a 1926 American Association of Petroleum Geologists symposium in New York, leading geologists attacked the theory; it remained a minority view dismissed as "moonshine" through the 1940s.',
+        source: {
+          externalId: 'src:aapg-1926-drift-symposium',
+          name: 'Theory of Continental Drift symposium, American Association of Petroleum Geologists, New York, 1926 — overwhelmingly hostile reception to Wegener\'s hypothesis.',
+          url: 'https://en.wikipedia.org/wiki/Alfred_Wegener',
+          publishedAt: '1926-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Seafloor mapping, paleomagnetic "magnetic striping," and the Vine–Matthews–Morley hypothesis supplied the mechanism (seafloor spreading) Wegener had lacked. By 1967 plate tectonics had become axiomatic in geophysics, vindicating continental drift roughly four decades after Wegener\'s death.',
+        source: {
+          externalId: 'src:plate-tectonics-1967-acceptance',
+          name: 'Vine–Matthews–Morley hypothesis and the establishment of plate tectonics (c. 1963–1967) — providing the seafloor-spreading mechanism that confirmed continental drift.',
+          url: 'https://en.wikipedia.org/wiki/Plate_tectonics',
+          publishedAt: '1967-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Piltdown Man announced, later exposed as a forgery ──────────────────────
+  {
+    externalId: 'trajectory:piltdown-man-1912',
+    text: 'On 18 December 1912 the Piltdown skull was announced as a "missing link" between apes and humans; in November 1953 it was exposed as a deliberate forgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-12-18',
+        datePrecision: 'DAY',
+        reason: 'At a meeting of the Geological Society of London on 18 December 1912, Charles Dawson and Arthur Smith Woodward of the Natural History Museum announced bone fragments from a gravel pit at Piltdown, Sussex, reconstructed as a primitive hominid (Eoanthropus dawsoni) combining a human-like cranium with an ape-like jaw — presented as an evolutionary "missing link."',
+        source: {
+          externalId: 'src:dawson-woodward-1912-piltdown',
+          name: 'Dawson C., Woodward A. S. "On the Discovery of a Palaeolithic Human Skull and Mandible..." Quarterly Journal of the Geological Society 69 (announced 18 December 1912).',
+          url: 'https://en.wikipedia.org/wiki/Piltdown_Man',
+          publishedAt: '1912-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'For several decades the find was widely accepted by much of the British scientific establishment as a genuine early human, cited in textbooks and shaping ideas of human evolution — even as it fit awkwardly with later African fossil discoveries such as the 1925 Taung Child.',
+        source: {
+          externalId: 'src:piltdown-acceptance-1920s',
+          name: 'Piltdown Man\'s acceptance as a genuine hominid by the British scientific community through the 1920s–1940s.',
+          url: 'https://en.wikipedia.org/wiki/Piltdown_Man',
+          publishedAt: '1920-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-11-21',
+        datePrecision: 'DAY',
+        reason: 'In November 1953 Joseph Weiner, Wilfrid Le Gros Clark and Kenneth Oakley, applying fluorine-absorption dating and close examination, showed the specimen was a composite forgery: a medieval human cranium combined with a deliberately stained and file-worn orangutan jaw and chimpanzee teeth. The fraud was reported publicly on 21 November 1953.',
+        source: {
+          externalId: 'src:weiner-oakley-leGrosClark-1953',
+          name: 'Weiner J. S., Oakley K. P., Le Gros Clark W. E. "The Solution of the Piltdown Problem." Bulletin of the British Museum (Natural History), Geology (1953) — exposing the forgery.',
+          url: 'https://en.wikipedia.org/wiki/Piltdown_Man',
+          publishedAt: '1953-11-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
