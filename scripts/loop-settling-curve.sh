@@ -43,7 +43,7 @@ Your job:
    - Has contemporaneous primary sources or contemporaneous accounts
    - Represents a clear epistemic transition (OPEN→RECORDED, RECORDED→SETTLED, SETTLED→REVERSED, etc.)
    - Non-interpretive (concrete facts, not historical analyses)
-   - NOT already in the DB (read scripts/seed-human-history-trajectories.ts to see what's there)
+   - NOT already in the DB: read scripts/seed-human-history-trajectories.ts and check EVERY candidate against the existing list by event description AND year, not just externalId. Ask yourself: "Is there any entry in the seed file that describes the same event on the same date, even if the externalId is phrased differently?" If yes, SKIP that candidate — it is a duplicate regardless of what the externalId says.
 
 2. VERIFY each candidate before adding it. For each source URL you plan to use:
    - Fetch the URL using the WebFetch tool or curl
