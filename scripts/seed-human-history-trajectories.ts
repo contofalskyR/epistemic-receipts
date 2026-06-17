@@ -38570,6 +38570,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PHYSICS REVOLUTION, MEDICINE & ATOMIC AGE (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Landsteiner — discovery of the ABO blood group system ───────────────────
+  {
+    externalId: 'trajectory:landsteiner-abo-blood-groups-1901',
+    text: 'In 1901 Karl Landsteiner discovered that human blood falls into distinct groups (later named A, B, and O), whose sera agglutinate the red cells of incompatible groups — establishing the immunological basis of safe blood transfusion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1901-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on his 1900 observation that the serum of one person can agglutinate the red cells of another, Landsteiner systematically tests blood from colleagues and identifies three groups (A, B, and a group he first called C, later O). He reports that transfusion between same-group individuals does not destroy red cells, whereas cross-group mixing causes agglutination — the founding observation of human blood typing.',
+        source: {
+          externalId: 'src:landsteiner-abo-discovery',
+          name: '"Karl Landsteiner." Wikipedia — discovery of the ABO blood groups (A, B, O) in 1901, building on the 1900 agglutination work.',
+          url: 'https://en.wikipedia.org/wiki/Karl_Landsteiner',
+          publishedAt: '1901-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1930 Nobel Prize in Physiology or Medicine is awarded to Karl Landsteiner "for his discovery of human blood groups," formally ratifying the ABO system. By then group-matched transfusion had become standard clinical practice, saving lives in surgery and (in World War I) on the battlefield.',
+        source: {
+          externalId: 'src:nobel-medicine-1930-landsteiner',
+          name: 'The Nobel Prize in Physiology or Medicine 1930: Karl Landsteiner.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1930/summary/',
+          publishedAt: '1930-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kamerlingh Onnes — discovery of superconductivity ───────────────────────
+  {
+    externalId: 'trajectory:onnes-superconductivity-1911',
+    text: 'On 8 April 1911 Heike Kamerlingh Onnes observed that the electrical resistance of solid mercury abruptly vanished at about 4.2 K — the discovery of superconductivity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1911-04-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1911-04-08',
+        datePrecision: 'DAY',
+        reason: 'In his Leiden cryogenic laboratory, using liquid helium (which he had first liquefied in 1908) as a refrigerant, Kamerlingh Onnes measures the resistance of a mercury wire as it is cooled and finds that at about 4.2 K the resistance drops abruptly to an immeasurably small value. His notebook for the day records "Kwik nagenoeg nul" — mercury practically zero.',
+        source: {
+          externalId: 'src:onnes-superconductivity-discovery',
+          name: '"Superconductivity." Wikipedia — discovery in solid mercury on 8 April 1911 by Heike Kamerlingh Onnes; resistance vanishes at 4.2 K.',
+          url: 'https://en.wikipedia.org/wiki/Superconductivity',
+          publishedAt: '1911-04-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1913-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1913 Nobel Prize in Physics is awarded to Heike Kamerlingh Onnes "for his investigations on the properties of matter at low temperatures which led, inter alia, to the production of liquid helium," ratifying the low-temperature programme that revealed superconductivity. The phenomenon is reproduced in other metals (tin, lead) and becomes a permanent feature of condensed-matter physics.',
+        source: {
+          externalId: 'src:nobel-physics-1913-onnes',
+          name: 'The Nobel Prize in Physics 1913: Heike Kamerlingh Onnes.',
+          url: 'https://www.nobelprize.org/prizes/physics/1913/summary/',
+          publishedAt: '1913-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Laue — X-ray diffraction by crystals ────────────────────────────────────
+  {
+    externalId: 'trajectory:laue-xray-diffraction-crystals-1912',
+    text: 'In 1912 Max von Laue, with Walter Friedrich and Paul Knipping, demonstrated that crystals diffract X-rays — simultaneously proving that X-rays are electromagnetic waves and that crystals have a regular atomic lattice.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Acting on Laue\'s idea (arising from a conversation with Paul Ewald) that a crystal could serve as a three-dimensional diffraction grating for very short-wavelength X-rays, Friedrich and Knipping pass an X-ray beam through a copper-sulfate crystal and record a pattern of well-defined spots on a photographic plate. The results are presented to the Bavarian Academy of Sciences in June 1912 as "Interferenz-Erscheinungen bei Röntgenstrahlen."',
+        source: {
+          externalId: 'src:laue-xray-diffraction-1912',
+          name: '"X-ray crystallography." Wikipedia — Laue, Friedrich and Knipping demonstrate X-ray diffraction by crystals in 1912; results presented to the Bavarian Academy.',
+          url: 'https://en.wikipedia.org/wiki/X-ray_crystallography',
+          publishedAt: '1912-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1912–1913 William Lawrence Bragg derives Bragg\'s law (nλ = 2d sin θ), and with his father William Henry Bragg uses X-ray diffraction to solve the atomic structures of NaCl, diamond and other crystals — turning Laue\'s observation into a quantitative tool. Laue received the 1914 Nobel Prize in Physics and the Braggs the 1915 Prize, settling X-ray crystallography as established science.',
+        source: {
+          externalId: 'src:nobel-physics-1914-laue',
+          name: 'The Nobel Prize in Physics 1914: Max von Laue, "for his discovery of the diffraction of X-rays by crystals."',
+          url: 'https://www.nobelprize.org/prizes/physics/1914/summary/',
+          publishedAt: '1914-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Seaborg et al. — first chemical identification of plutonium ─────────────
+  {
+    externalId: 'trajectory:plutonium-discovery-1941',
+    text: 'On the night of 23–24 February 1941 Glenn Seaborg, Arthur Wahl and Joseph Kennedy chemically identified plutonium (element 94) at Berkeley, the new element first produced by deuteron bombardment of uranium on 14 December 1940.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-02-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-02-23',
+        datePrecision: 'DAY',
+        reason: 'Using the 60-inch cyclotron at the Berkeley Radiation Laboratory, the team bombards uranium-238 with deuterons (first bombardment 14 December 1940), producing neptunium-238 which decays to plutonium-238. On the night of 23–24 February 1941 Wahl chemically separates the new element and demonstrates its distinct oxidation behaviour, confirming element 94. The discovery is kept secret and not published until after the war.',
+        source: {
+          externalId: 'src:plutonium-discovery-berkeley',
+          name: '"Plutonium." Wikipedia — first produced and identified December 1940–February 1941 by Seaborg, McMillan, Segrè, Kennedy and Wahl; first bombardment 14 December 1940, oxidation identification night of 23–24 February 1941.',
+          url: 'https://en.wikipedia.org/wiki/Plutonium',
+          publishedAt: '1941-02-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-12-10',
+        datePrecision: 'DAY',
+        reason: 'Plutonium-239 proved fissile and became the core of the Trinity test device (16 July 1945) and the Nagasaki bomb (9 August 1945), confirming the element\'s properties at industrial scale. Glenn Seaborg and Edwin McMillan received the 1951 Nobel Prize in Chemistry "for their discoveries in the chemistry of the transuranium elements," ratifying the discovery.',
+        source: {
+          externalId: 'src:nobel-chemistry-1951-seaborg-mcmillan',
+          name: 'The Nobel Prize in Chemistry 1951: Edwin McMillan and Glenn Seaborg, for discoveries in the chemistry of the transuranium elements.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1951/summary/',
+          publishedAt: '1951-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
