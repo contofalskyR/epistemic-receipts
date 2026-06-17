@@ -24529,6 +24529,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA ADDITIONS (1990–present) — genomics, climate, AI, global health
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── COVID-19: cluster of pneumonia of unknown cause reported in Wuhan, 31 Dec 2019 ─
+  {
+    externalId: 'trajectory:covid19-wuhan-cluster-2019',
+    text: 'On 31 December 2019, the WHO Country Office in China was informed of a cluster of pneumonia cases of unknown cause in Wuhan, Hubei Province; within days the cause was identified as a novel coronavirus, later named SARS-CoV-2, the agent of the COVID-19 pandemic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-12-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-31',
+        datePrecision: 'DAY',
+        reason: 'The Wuhan Municipal Health Commission issued a public statement on a cluster of cases of "viral pneumonia" of unknown cause, which the WHO Country Office in China picked up the same day, 31 December 2019. At this stage the causative agent was unknown and the cluster was epidemiologically linked to the Huanan Seafood Wholesale Market. WHO published the notification in its Disease Outbreak News on 5 January 2020.',
+        source: {
+          externalId: 'src:who-don-pneumonia-china-2020',
+          name: 'WHO. "Pneumonia of unknown cause – China." Disease Outbreak News, 5 January 2020.',
+          url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2020-DON229',
+          publishedAt: '2020-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-11',
+        datePrecision: 'DAY',
+        reason: 'Chinese authorities and WHO confirmed that the cluster was caused by a previously unknown betacoronavirus (initially 2019-nCoV). On 11 January 2020 a team led by Zhang Yongzhen at Fudan University released the first complete viral genome sequence publicly via virological.org (GenBank MN908947), enabling diagnostic PCR assays worldwide within days. The novel-coronavirus etiology was rapidly and independently reproduced by multiple laboratories.',
+        source: {
+          externalId: 'src:wu-new-coronavirus-nature-2020',
+          name: 'Wu F, et al. "A new coronavirus associated with human respiratory disease in China." Nature 579:265–269, 3 February 2020.',
+          url: 'https://www.nature.com/articles/s41586-020-2008-3',
+          publishedAt: '2020-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-11',
+        datePrecision: 'DAY',
+        reason: 'After declaring a Public Health Emergency of International Concern on 30 January 2020, WHO Director-General Tedros Adhanom Ghebreyesus characterized COVID-19 as a pandemic on 11 March 2020, by which point the disease had spread to more than 100 countries. The Wuhan origin of the initial cluster and the SARS-CoV-2 etiology are established facts; only the proximate route of spillover remains debated.',
+        source: {
+          externalId: 'src:who-dg-covid-pandemic-2020',
+          name: 'WHO Director-General\'s opening remarks at the media briefing on COVID-19, 11 March 2020.',
+          url: 'https://www.who.int/director-general/speeches/detail/who-director-general-s-opening-remarks-at-the-media-briefing-on-covid-19---11-march-2020',
+          publishedAt: '2020-03-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Lee Sedol in Seoul, 9–15 March 2016 ─────────────────────
+  {
+    externalId: 'trajectory:alphago-defeats-lee-sedol-2016',
+    text: 'In a five-game match in Seoul on 9–15 March 2016, DeepMind\'s AlphaGo program defeated South Korean Go grandmaster Lee Sedol 4–1, the first time a computer beat a top human professional at the full game of Go without a handicap.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'AlphaGo won the first three games (9, 10, 12 March), Lee Sedol won game four on 13 March, and AlphaGo took the final game on 15 March, ending the match 4–1. The games were played under standard tournament rules with no handicap at the Four Seasons Hotel in Seoul, livestreamed to a worldwide audience of tens of millions, and adjudicated with official referees. The result overturned the widely held expert expectation that human-level Go was at least a decade away from machines.',
+        source: {
+          externalId: 'src:deepmind-alphago-lee-sedol-2016',
+          name: 'Google DeepMind. "AlphaGo vs. Lee Sedol" — five-game match record, Seoul, 9–15 March 2016.',
+          url: 'https://deepmind.google/research/breakthroughs/alphago/',
+          publishedAt: '2016-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-10-18',
+        datePrecision: 'DAY',
+        reason: 'AlphaGo\'s methods and superhuman strength were documented in peer-reviewed Nature papers (the original deep-learning + tree-search system in January 2016, and the self-play AlphaGo Zero on 18 October 2017, which surpassed all earlier versions). Subsequent programs (Master, AlphaZero, KataGo) reproduced and exceeded the result, settling beyond dispute that computers play Go above the top human level.',
+        source: {
+          externalId: 'src:silver-alphago-zero-nature-2017',
+          name: 'Silver D, et al. "Mastering the game of Go without human knowledge." Nature 550:354–359, 18 October 2017.',
+          url: 'https://www.nature.com/articles/nature24270',
+          publishedAt: '2017-10-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Draft rice genome published by Beijing Genomics Institute, 5 April 2002 ──
+  {
+    externalId: 'trajectory:rice-genome-draft-bgi-2002',
+    text: 'On 5 April 2002, the draft genome sequence of rice (Oryza sativa L. ssp. indica) produced by the Beijing Genomics Institute was published in Science — the first crop genome sequenced and, at the time, the largest plant genome assembled.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-04-05',
+        datePrecision: 'DAY',
+        reason: 'Yu Jun and colleagues at the Beijing Genomics Institute reported a whole-genome shotgun draft of the indica rice subspecies (covering an estimated ~92% of the ~466 Mb genome) in Science; the same issue carried a draft of the japonica subspecies from Syngenta. As the staple food of more than half the world\'s population and a model for cereal genomes, rice was the first crop plant to be sequenced.',
+        source: {
+          externalId: 'src:yu-rice-genome-indica-science-2002',
+          name: 'Yu J, et al. "A Draft Sequence of the Rice Genome (Oryza sativa L. ssp. indica)." Science 296(5565):79–92, 5 April 2002.',
+          url: 'https://www.science.org/doi/10.1126/science.1068037',
+          publishedAt: '2002-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-08-11',
+        datePrecision: 'DAY',
+        reason: 'The International Rice Genome Sequencing Project published a finished, map-based reference sequence of the japonica cultivar Nipponbare in Nature on 11 August 2005, confirming and greatly refining the 2002 drafts. The rice reference genome became a foundational tool for cereal genetics and crop improvement, settling the result across the field.',
+        source: {
+          externalId: 'src:irgsp-rice-genome-nature-2005',
+          name: 'International Rice Genome Sequencing Project. "The map-based sequence of the rice genome." Nature 436:793–800, 11 August 2005.',
+          url: 'https://www.nature.com/articles/nature03895',
+          publishedAt: '2005-08-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kyoto Protocol adopted at COP3, 11 December 1997 ────────────────────────
+  {
+    externalId: 'trajectory:kyoto-protocol-adopted-1997',
+    text: 'On 11 December 1997, the Kyoto Protocol to the UN Framework Convention on Climate Change was adopted at COP3 in Kyoto, Japan, setting the first legally binding greenhouse-gas emission reduction targets for industrialized countries.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1997-12-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-12-11',
+        datePrecision: 'DAY',
+        reason: 'After all-night negotiations at the third Conference of the Parties in Kyoto, delegates adopted the Protocol by consensus on 11 December 1997. It committed listed industrialized ("Annex I") countries to reduce aggregate greenhouse-gas emissions by about 5% below 1990 levels over the 2008–2012 commitment period, and established mechanisms including emissions trading and the Clean Development Mechanism.',
+        source: {
+          externalId: 'src:unfccc-kyoto-protocol-text-1997',
+          name: 'UNFCCC. Kyoto Protocol to the United Nations Framework Convention on Climate Change, adopted 11 December 1997.',
+          url: 'https://unfccc.int/resource/docs/convkp/kpeng.pdf',
+          publishedAt: '1997-12-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-02-16',
+        datePrecision: 'DAY',
+        reason: 'The Protocol entered into force on 16 February 2005, ninety days after Russia\'s ratification pushed the treaty past its double threshold (ratification by at least 55 Parties accounting for at least 55% of Annex I 1990 CO2 emissions). It thereby became binding international law for its Parties, fixing the date and legal status of the agreement even though the United States never ratified it.',
+        source: {
+          externalId: 'src:unfccc-kyoto-entry-into-force-2005',
+          name: 'UNFCCC. "What is the Kyoto Protocol?" — entry into force, 16 February 2005.',
+          url: 'https://unfccc.int/process-and-meetings/the-kyoto-protocol/what-is-the-kyoto-protocol',
+          publishedAt: '2005-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SARS: WHO issues global alert on atypical pneumonia, 12 March 2003 ──────
+  {
+    externalId: 'trajectory:sars-who-global-alert-2003',
+    text: 'On 12 March 2003, the World Health Organization issued a global alert about an outbreak of severe atypical pneumonia — later named SARS — spreading from southern China and Hong Kong; the disease was soon shown to be caused by a novel coronavirus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-03-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-12',
+        datePrecision: 'DAY',
+        reason: 'Following the death of physician Carlo Urbani, who first recognized the new disease in Hanoi, and clusters of severe pneumonia among hospital staff in Hong Kong and Hanoi, WHO issued a rare global alert on 12 March 2003 — the first such alert of the 21st century — warning of a severe respiratory syndrome of unknown cause. An emergency travel advisory followed on 15 March, coining the name Severe Acute Respiratory Syndrome (SARS).',
+        source: {
+          externalId: 'src:who-sars-global-alert-2003',
+          name: 'WHO. "WHO issues a global alert about cases of atypical pneumonia." 12 March 2003.',
+          url: 'https://www.who.int/news/item/12-03-2003-who-issues-a-global-alert-about-cases-of-atypical-pneumonia',
+          publishedAt: '2003-03-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-16',
+        datePrecision: 'DAY',
+        reason: 'A WHO-coordinated network of laboratories identified the causative agent as a previously unknown coronavirus (SARS-CoV); WHO announced the confirmation on 16 April 2003 and the finding was published in peer-reviewed journals. The novel-coronavirus etiology, traced to live-animal markets in Guangdong, was rapidly and independently reproduced, settling the cause of the outbreak.',
+        source: {
+          externalId: 'src:drosten-sars-coronavirus-nejm-2003',
+          name: 'Drosten C, et al. "Identification of a Novel Coronavirus in Patients with Severe Acute Respiratory Syndrome." NEJM 348:1967–1976, 15 May 2003.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa030747',
+          publishedAt: '2003-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-07-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 July 2003 WHO announced that the last human chain of transmission had been broken and the global outbreak was contained, after some 8,000 cases and roughly 770 deaths across about 30 countries. The episode and its coronavirus cause are an established part of the epidemiological record and shaped the global response to COVID-19 seventeen years later.',
+        source: {
+          externalId: 'src:who-sars-contained-2003',
+          name: 'WHO. "SARS outbreak contained worldwide." 5 July 2003.',
+          url: 'https://www.who.int/news/item/05-07-2003-sars-outbreak-contained-worldwide',
+          publishedAt: '2003-07-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
