@@ -35748,6 +35748,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950): physics revolution, totalitarianism,
+  // the Holocaust, the atomic bomb, decolonization beginnings
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eddington eclipse confirms general relativity ───────────────────────────
+  {
+    externalId: 'trajectory:eddington-eclipse-general-relativity-1919',
+    text: 'Observations of the total solar eclipse of 29 May 1919 by Arthur Eddington\'s expeditions measured the deflection of starlight by the Sun\'s gravity, confirming the value predicted by Einstein\'s general theory of relativity rather than the Newtonian value.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-05-29',
+        datePrecision: 'DAY',
+        reason: 'During the total eclipse, expeditions organized by the Royal Astronomical Society photographed stars near the obscured Sun — Eddington\'s team on the island of Príncipe and a second team at Sobral, Brazil. The apparent displacement of the star positions was to be compared against Einstein\'s predicted deflection of about 1.75 arcseconds, twice the Newtonian figure of roughly 0.87 arcseconds.',
+        source: {
+          externalId: 'src:eddington-experiment-1919',
+          name: 'Wikipedia. "Eddington experiment" — eclipse observations of 29 May 1919.',
+          url: 'https://en.wikipedia.org/wiki/Eddington_experiment',
+          publishedAt: '1919-05-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-11-06',
+        datePrecision: 'DAY',
+        reason: 'At a joint meeting of the Royal Society and the Royal Astronomical Society in London, Astronomer Royal Frank Dyson presented the measured deflection as consistent with Einstein\'s prediction and inconsistent with the Newtonian value. The announcement was reported worldwide and made Einstein an international figure; the full analysis was published in 1920 as Dyson, Eddington & Davidson, "A Determination of the Deflection of Light by the Sun\'s Gravitational Field," Phil. Trans. R. Soc. A, vol. 220.',
+        source: {
+          externalId: 'src:dyson-eddington-davidson-1920',
+          name: 'Dyson, F. W.; Eddington, A. S.; Davidson, C. (1920). "A Determination of the Deflection of Light by the Sun\'s Gravitational Field, from Observations Made at the Total Eclipse of May 29, 1919." Philosophical Transactions of the Royal Society A 220: 291–333.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rsta.1920.0009',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── German Enabling Act establishes Nazi dictatorship ───────────────────────
+  {
+    externalId: 'trajectory:german-enabling-act-1933',
+    text: 'On 23 March 1933 the German Reichstag passed the Enabling Act (Gesetz zur Behebung der Not von Volk und Reich), granting Adolf Hitler\'s cabinet the power to enact laws without the consent of parliament or the Reich President, the legal cornerstone of the Nazi dictatorship.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1933-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1933-03-23',
+        datePrecision: 'DAY',
+        reason: 'Meeting in the Kroll Opera House after the Reichstag fire, the Reichstag passed the Enabling Act by the required two-thirds majority. The Nazis had prevented the 81 Communist deputies and 26 Social Democrats from taking their seats and stationed SA and SS men in the chamber to intimidate the remainder; only the Social Democrats voted against it. The law was proclaimed and took effect the next day, 24 March 1933.',
+        source: {
+          externalId: 'src:ushmm-enabling-act',
+          name: 'United States Holocaust Memorial Museum, Holocaust Encyclopedia. "The Enabling Act" — passed 23 March 1933.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/the-enabling-act',
+          publishedAt: '1933-03-24',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-11-20',
+        datePrecision: 'DAY',
+        reason: 'The Enabling Act\'s role in dismantling the Weimar constitutional order is uncontested in the historical record and in the documentary evidence assembled at the Nuremberg trials, which opened on 20 November 1945. Historians treat it as the legal instrument that converted Hitler\'s chancellorship into a dictatorship; the act was repeatedly renewed and remained in force until the regime\'s collapse in 1945.',
+        source: {
+          externalId: 'src:wikipedia-enabling-act-1933',
+          name: 'Wikipedia. "Enabling Act of 1933" — passage, effect, and renewal.',
+          url: 'https://en.wikipedia.org/wiki/Enabling_Act_of_1933',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Wannsee Conference ──────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:wannsee-conference-1942',
+    text: 'On 20 January 1942 senior Nazi and SS officials met at a villa in the Berlin suburb of Wannsee, chaired by Reinhard Heydrich, to coordinate the implementation of the "Final Solution to the Jewish Question" — the systematic murder of European Jewry.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-01-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-20',
+        datePrecision: 'DAY',
+        reason: 'Reinhard Heydrich, chief of the Reich Security Main Office and a top deputy to Heinrich Himmler, convened about fifteen high-ranking officials of the SS, the Nazi Party, and the German state to coordinate the deportation and murder of the Jews of Europe. Adolf Eichmann recorded the proceedings; thirty numbered copies of the minutes (the Wannsee Protocol) were distributed.',
+        source: {
+          externalId: 'src:ushmm-wannsee-conference',
+          name: 'United States Holocaust Memorial Museum, Holocaust Encyclopedia. "The Wannsee Conference and the \'Final Solution\'" — meeting of 20 January 1942.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/wannsee-conference-and-the-final-solution',
+          publishedAt: '1942-01-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-03-01',
+        datePrecision: 'MONTH',
+        reason: 'A surviving copy of the Wannsee Protocol (copy number 16 of 30) was discovered in German Foreign Office files by U.S. prosecutor Robert Kempner in March 1947 while preparing the Nuremberg trials. The document — a contemporaneous primary record of the conference — has been authenticated and is held at the German Federal Archives, settling the date, attendees, and purpose of the meeting beyond dispute.',
+        source: {
+          externalId: 'src:ghwk-wannsee-protocol',
+          name: 'House of the Wannsee Conference Memorial (Haus der Wannsee-Konferenz). The Wannsee Protocol — minutes of the conference of 20 January 1942.',
+          url: 'https://www.ghwk.de/en/conference/the-wannsee-protocol',
+          publishedAt: '1947-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Trinity test — first nuclear detonation ─────────────────────────────
+  {
+    externalId: 'trajectory:trinity-nuclear-test-1945',
+    text: 'At 5:29 a.m. Mountain War Time on 16 July 1945, the United States detonated the first nuclear weapon, the Trinity test, in the Jornada del Muerto desert of New Mexico, releasing energy equivalent to roughly 25 kilotons of TNT.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1945-07-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-07-16',
+        datePrecision: 'DAY',
+        reason: 'As the culmination of the Manhattan Project, a plutonium implosion device ("the Gadget") was detonated atop a 100-foot steel tower at the Alamogordo Bombing Range. The explosion produced a fireball and mushroom cloud visible for hundreds of miles and was instrumented by project scientists; the event was kept secret, with the public told an ammunition dump had exploded.',
+        source: {
+          externalId: 'src:wikipedia-trinity-test',
+          name: 'Wikipedia. "Trinity (nuclear test)" — first nuclear detonation, 16 July 1945.',
+          url: 'https://en.wikipedia.org/wiki/Trinity_(nuclear_test)',
+          publishedAt: '1945-07-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-08-06',
+        datePrecision: 'DAY',
+        reason: 'The existence and success of the test were made public after the atomic bombing of Hiroshima on 6 August 1945, when President Truman\'s statement and the War Department\'s Smyth Report disclosed the Manhattan Project. The Trinity device\'s design, date, and yield are documented in declassified records and the site (now the Trinity Site, a National Historic Landmark) preserves physical evidence including residual trinitite.',
+        source: {
+          externalId: 'src:atomicarchive-trinity',
+          name: 'AtomicArchive / National Science Digital Library. "The Trinity Test" — Manhattan Project, 16 July 1945.',
+          url: 'https://www.atomicarchive.com/history/trinity/index.html',
+          publishedAt: '1945-08-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Indian Independence Act and Partition ───────────────────────────────────
+  {
+    externalId: 'trajectory:indian-independence-act-1947',
+    text: 'The Indian Independence Act 1947, which received Royal Assent on 18 July 1947, partitioned British India into the two independent dominions of India and Pakistan as from 15 August 1947, ending British sovereignty over the subcontinent.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1947-07-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-07-18',
+        datePrecision: 'DAY',
+        reason: 'The United Kingdom Parliament enacted the Indian Independence Act 1947, which received Royal Assent on 18 July 1947. Section 1(1) provided that "as from the fifteenth day of August, nineteen hundred and forty-seven, two independent Dominions shall be set up in India, to be known respectively as India and Pakistan."',
+        source: {
+          externalId: 'src:legislation-indian-independence-act-1947',
+          name: 'Indian Independence Act 1947 (10 & 11 Geo. 6 c. 30). UK Public General Acts — legislation.gov.uk.',
+          url: 'https://www.legislation.gov.uk/ukpga/1947/30/enacted',
+          publishedAt: '1947-07-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1947-08-15',
+        datePrecision: 'DAY',
+        reason: 'On the "appointed day," 15 August 1947, the two dominions came into existence and British rule ended; India had marked the transfer of power at midnight on 14–15 August and Pakistan on 14 August. The independence of both states and the partition of the subcontinent are uncontested historical facts, recorded contemporaneously in the world press and in the constitutional records of both successor states.',
+        source: {
+          externalId: 'src:wikipedia-indian-independence-act',
+          name: 'Wikipedia. "Indian Independence Act 1947" — partition into India and Pakistan, effective 15 August 1947.',
+          url: 'https://en.wikipedia.org/wiki/Indian_Independence_Act_1947',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
