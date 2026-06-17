@@ -42885,6 +42885,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): genomics, climate, COVID-19, 9/11 aftermath
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SARS-CoV-2 genome first sequenced and publicly released ────────────────
+  {
+    externalId: 'trajectory:sars-cov-2-genome-released-2020',
+    text: 'On 11 January 2020 the first complete genome of SARS-CoV-2 — sequenced by Zhang Yongzhen\'s team at Fudan University in Shanghai from a Wuhan patient sample — was publicly released on virological.org and deposited in GenBank (accession MN908947), identifying the novel coronavirus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-11',
+        datePrecision: 'DAY',
+        reason: 'Zhang Yongzhen\'s laboratory at the Shanghai Public Health Clinical Center / Fudan University assembled the full genome of the novel coronavirus from a Wuhan Central Hospital patient sample by 5 January 2020. On 11 January, with Zhang\'s permission, Edward C. Holmes posted the ~30 kb sequence on virological.org for the global community to "download, share, use and analyze," and the sequence was deposited in GenBank as accession MN908947. The release immediately enabled diagnostic PCR assay and vaccine design worldwide.',
+        source: {
+          externalId: 'src:virological-novel-coronavirus-genome-2020',
+          name: 'Holmes E.C. (on behalf of Zhang Y.-Z. consortium). "Novel 2019 coronavirus genome." virological.org, 11 January 2020 (GenBank MN908947).',
+          url: 'https://virological.org/t/novel-2019-coronavirus-genome/319',
+          publishedAt: '2020-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-02-03',
+        datePrecision: 'DAY',
+        reason: 'Wu, Zhang and colleagues published the formal peer-reviewed characterization of the new virus in Nature, confirming it as a novel betacoronavirus most closely related to bat SARS-like coronaviruses. The MN908947 reference genome was adopted as the canonical SARS-CoV-2 sequence underpinning all subsequent global surveillance, diagnostics and vaccine development.',
+        source: {
+          externalId: 'src:wu-zhang-new-coronavirus-nature-2020',
+          name: 'Wu F., Zhao S., … Zhang Y.-Z. "A new coronavirus associated with human respiratory disease in China." Nature 579, 265–269 (2020).',
+          url: 'https://www.nature.com/articles/s41586-020-2008-3',
+          publishedAt: '2020-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── BGI publishes a draft genome of indica rice ────────────────────────────
+  {
+    externalId: 'trajectory:bgi-rice-genome-draft-2002',
+    text: 'On 5 April 2002 the Beijing Genomics Institute published a draft genome sequence of the indica subspecies of rice (Oryza sativa L. ssp. indica) in Science — the first crop genome sequenced by a Chinese-led team and one of the first complete plant genomes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-04-05',
+        datePrecision: 'DAY',
+        reason: 'Yu Jun and colleagues at the Beijing Genomics Institute reported a whole-genome shotgun draft of the indica rice cultivar 93-11, covering roughly 92% of an estimated 466 Mb genome and predicting tens of thousands of genes. Published as a Science cover story alongside a Syngenta/japonica draft, it established China as a major force in large-scale genomics and provided the staple-crop reference for over half the world\'s population.',
+        source: {
+          externalId: 'src:yu-rice-genome-science-2002',
+          name: 'Yu J. et al. "A Draft Sequence of the Rice Genome (Oryza sativa L. ssp. indica)." Science 296(5565), 79–92 (5 April 2002).',
+          url: 'https://www.science.org/doi/10.1126/science.1068037',
+          publishedAt: '2002-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-08-11',
+        datePrecision: 'DAY',
+        reason: 'The International Rice Genome Sequencing Project published a finished, map-based reference sequence of the japonica subspecies in Nature, corroborating and refining the 2002 draft assemblies. The rice genome became a settled, continuously curated community reference, anchoring cereal comparative genomics and marker-assisted breeding.',
+        source: {
+          externalId: 'src:irgsp-rice-genome-nature-2005',
+          name: 'International Rice Genome Sequencing Project. "The map-based sequence of the rice genome." Nature 436, 793–800 (2005).',
+          url: 'https://www.nature.com/articles/nature03895',
+          publishedAt: '2005-08-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO characterizes COVID-19 as a pandemic ───────────────────────────────
+  {
+    externalId: 'trajectory:who-covid19-pandemic-declaration-2020',
+    text: 'On 11 March 2020 WHO Director-General Tedros Adhanom Ghebreyesus stated that COVID-19 "can be characterized as a pandemic" — the first time the WHO described a coronavirus outbreak as a pandemic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-11',
+        datePrecision: 'DAY',
+        reason: 'At the WHO media briefing in Geneva, Tedros said: "We have therefore made the assessment that COVID-19 can be characterized as a pandemic." He noted that in the preceding two weeks the number of cases outside China had increased 13-fold and the number of affected countries had tripled. The characterization signalled a shift in global risk framing while WHO stressed it did not change the recommended response.',
+        source: {
+          externalId: 'src:who-tedros-pandemic-remarks-2020',
+          name: 'WHO Director-General\'s opening remarks at the media briefing on COVID-19 — 11 March 2020 (full transcript).',
+          url: 'https://www.who.int/docs/default-source/coronaviruse/transcripts/who-audio-emergencies-coronavirus-press-conference-full-and-final-11mar2020.pdf',
+          publishedAt: '2020-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2020-03-11',
+        datePrecision: 'DAY',
+        reason: 'The pandemic characterization was reported globally within hours and immediately incorporated into national emergency responses, travel restrictions, market reactions and public-health messaging. The 11 March 2020 date became the universally cited marker for the onset of the COVID-19 pandemic era.',
+        source: {
+          externalId: 'src:who-covid19-pandemic-wikipedia-2020',
+          name: '"WHO declares COVID-19 a pandemic." NPR / contemporaneous reporting, 11 March 2020.',
+          url: 'https://www.npr.org/sections/goatsandsoda/2023/03/10/1162169741/on-3-11-20-who-declared-a-pandemic-these-quotes-and-photos-recall-that-historic-',
+          publishedAt: '2020-03-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Paris Agreement adopted at COP21 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:paris-agreement-adopted-2015',
+    text: 'On 12 December 2015 the 196 parties to the UN Framework Convention on Climate Change adopted the Paris Agreement at COP21, committing to limit global warming to well below 2°C above pre-industrial levels and to pursue efforts to limit it to 1.5°C.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-12-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-12-12',
+        datePrecision: 'DAY',
+        reason: 'At the close of COP21 in Le Bourget, France, the final wording of the Paris Agreement was adopted by consensus of 196 parties. The accord established the long-term temperature goal, a framework of nationally determined contributions (NDCs), and a five-year review/ratchet mechanism — a universal climate agreement covering developed and developing countries alike.',
+        source: {
+          externalId: 'src:paris-agreement-adoption-unfccc-2015',
+          name: 'UNFCCC. "Adoption of the Paris Agreement" (Decision 1/CP.21), 12 December 2015.',
+          url: 'https://unfccc.int/process-and-meetings/the-paris-agreement',
+          publishedAt: '2015-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-11-04',
+        datePrecision: 'DAY',
+        reason: 'After parties accounting for at least 55% of global greenhouse-gas emissions and at least 55 countries deposited their instruments of ratification — crossing the threshold on 5 October 2016 — the Paris Agreement entered into force on 4 November 2016, becoming binding international law within the UNFCCC framework.',
+        source: {
+          externalId: 'src:paris-agreement-entry-into-force-2016',
+          name: 'UNFCCC. "Paris Agreement enters into force" — 4 November 2016 (threshold crossed 5 October 2016).',
+          url: 'https://unfccc.int/process-and-meetings/the-paris-agreement/status-of-ratification',
+          publishedAt: '2016-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Duelfer Report finds no Iraqi WMD stockpiles ───────────────────────────
+  {
+    externalId: 'trajectory:duelfer-report-iraq-wmd-2004',
+    text: 'On 6 October 2004 the Iraq Survey Group\'s Comprehensive Report (the "Duelfer Report") concluded that Iraq possessed no stockpiles of weapons of mass destruction at the time of the 2003 invasion, having destroyed them after the 1991 Gulf War — reversing the central pre-war claim used to justify the war.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The U.S. National Intelligence Estimate "Iraq\'s Continuing Programs for Weapons of Mass Destruction" (October 2002) judged with "high confidence" that Iraq had chemical and biological weapons and was reconstituting its nuclear program. This assessment — reiterated by Secretary of State Colin Powell to the UN Security Council on 5 February 2003 — became the central recorded rationale for the March 2003 invasion.',
+        source: {
+          externalId: 'src:nie-iraq-wmd-2002',
+          name: 'U.S. National Intelligence Council. National Intelligence Estimate, "Iraq\'s Continuing Programs for Weapons of Mass Destruction," October 2002 (declassified key judgments).',
+          url: 'https://nsarchive2.gwu.edu/NSAEBB/NSAEBB129/nie.pdf',
+          publishedAt: '2002-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-06',
+        datePrecision: 'DAY',
+        reason: 'Charles Duelfer, special advisor to the Director of Central Intelligence and head of the Iraq Survey Group, released the Comprehensive Report and testified to the Senate Armed Services Committee on 6 October 2004 that Iraq had unilaterally destroyed its chemical weapons stockpile in 1991, abandoned its biological weapons program by 1995, and ended its nuclear program in 1991. The ISG found no WMD stockpiles, directly reversing the pre-war intelligence judgments.',
+        source: {
+          externalId: 'src:duelfer-report-isg-2004',
+          name: 'Comprehensive Report of the Special Advisor to the DCI on Iraq\'s WMD ("Duelfer Report"), Iraq Survey Group, released 6 October 2004.',
+          url: 'https://www.govinfo.gov/app/details/GPO-DUELFERREPORT',
+          publishedAt: '2004-10-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-31',
+        datePrecision: 'DAY',
+        reason: 'The Commission on the Intelligence Capabilities of the United States Regarding Weapons of Mass Destruction (the Robb–Silberman Commission) reported on 31 March 2005 that the pre-war intelligence community had been "dead wrong" in almost all of its pre-war judgments about Iraqi WMD, ratifying the no-stockpiles finding as the settled historical conclusion.',
+        source: {
+          externalId: 'src:robb-silberman-wmd-commission-2005',
+          name: 'Commission on the Intelligence Capabilities of the United States Regarding WMD (Robb–Silberman). Report to the President, 31 March 2005.',
+          url: 'https://irp.fas.org/offdocs/wmd_report.pdf',
+          publishedAt: '2005-03-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
