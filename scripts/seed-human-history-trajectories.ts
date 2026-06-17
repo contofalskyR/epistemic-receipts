@@ -41925,6 +41925,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Great Comet of 1106 (X/1106 C1) — Kreutz sungrazer progenitor ────────────
+  {
+    externalId: 'trajectory:great-comet-1106',
+    text: 'A great comet (later designated X/1106 C1) appeared in early February 1106 and was observed worldwide through mid-March; it is now identified as a Kreutz sungrazer, a fragment of the same disrupted parent body that produced the Great Comet of 1843.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1106-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1106-02-02',
+        datePrecision: 'DAY',
+        reason: 'A brilliant comet appeared on 2 February 1106 and was recorded across the world from early February through mid-March. The court of Emperor Huizong of Song China documented it on 10 February; European chroniclers (the Peterborough Chronicle and Welsh annals) noted it on 16 February; and Korean, Japanese (the diary of Fujiwara no Munetada), and Egyptian observers independently recorded the same object. Many contemporaries read it as a portent.',
+        source: {
+          externalId: 'src:great-comet-1106-observations',
+          name: 'Great Comet of 1106 (X/1106 C1) — contemporaneous Chinese, European, Korean, Japanese, and Egyptian observations, February–March 1106.',
+          url: 'https://en.wikipedia.org/wiki/X/1106_C1',
+          publishedAt: '1106-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern cometary astronomy identifies the comet of 1106 as a member of the Kreutz sungrazer group (Subfragment I) — one of the fragments produced when a giant progenitor comet disintegrated near the Sun. It is recognised as the largest surviving mass of that 1106 break-up and the body that subsequently returned as the Great Comet of 1843, linking the medieval apparition into the modern Kreutz-group genealogy.',
+        source: {
+          externalId: 'src:great-comet-1106-kreutz',
+          name: 'X/1106 C1 — modern identification as a Kreutz-group sungrazer (Subfragment I), progenitor of the Great Comet of 1843.',
+          url: 'https://en.wikipedia.org/wiki/X/1106_C1',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet 1145 apparition — Eadwine Psalter drawing ─────────────────
+  {
+    externalId: 'trajectory:halley-comet-1145-apparition',
+    text: "Halley's Comet returned in 1145, reaching perihelion on 21 April; its appearance was recorded in England and depicted in the Eadwine Psalter at Canterbury, one of the earliest detailed pictorial records of a comet.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1145-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1145-04-21',
+        datePrecision: 'DAY',
+        reason: "The comet reached perihelion on 21 April 1145 and was observed across Europe and Asia. A monk at Christ Church, Canterbury, drew the comet in the margin of the Eadwine Psalter with the note that such 'hairy stars' appeared rarely, 'and then as a portent' — one of the earliest known detailed drawings of a comet. Chinese and other Eurasian records note the same apparition.",
+        source: {
+          externalId: 'src:halley-comet-1145-eadwine',
+          name: "Halley's Comet 1145 apparition — contemporaneous depiction in the Eadwine Psalter, Canterbury, and Eurasian records.",
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1145-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: "After Edmond Halley showed in 1705 that the comets of 1531, 1607, and 1682 were one returning body, later astronomers extended the orbit backward and matched the 1145 apparition to Halley's Comet. T. Kiang's 1972 reconstruction of the comet's past orbit fixes the 1145 perihelion to 21 April, settling the 1145 sighting as a confirmed historical return of 1P/Halley.",
+        source: {
+          externalId: 'src:halley-comet-1145-identification',
+          name: "Kiang T. The past orbit of Halley's comet. Memoirs of the Royal Astronomical Society 1972;76:27–66 (perihelion of the 1145 return).",
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zhili (Chihli) earthquake of 27 September 1290 — Yuan China ──────────────
+  {
+    externalId: 'trajectory:zhili-earthquake-1290',
+    text: 'A major earthquake (estimated surface-wave magnitude ~6.8) struck near Ningcheng in Zhili, Yuan China, on 27 September 1290, destroying hundreds of structures and killing thousands.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1290-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1290-09-27',
+        datePrecision: 'DAY',
+        reason: 'The earthquake struck on 27 September 1290 with an epicentre near Ningcheng (then in Zhili, now Inner Mongolia). Yuan administrative records report the destruction of 480 storehouses and countless houses at Ningcheng, with damage spreading to Changping, Hejian, Renqiu, Baoding, and other prefectures, and severe damage to the Fengguo Temple at Yixian. Reported death tolls range from 7,270 to as high as 100,000.',
+        source: {
+          externalId: 'src:zhili-earthquake-1290-records',
+          name: '1290 Zhili (Chihli) earthquake — contemporaneous Yuan-dynasty administrative records of damage near Ningcheng, 27 September 1290.',
+          url: 'https://en.wikipedia.org/wiki/1290_Zhili_earthquake',
+          publishedAt: '1290-09-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern seismological catalogues of historical Chinese earthquakes reconstruct the 27 September 1290 event from the surviving Yuan records, assigning it a surface-wave magnitude of about 6.8 and a maximum felt intensity of IX (Violent) on the Mercalli scale, with an epicentre near Ningcheng.',
+        source: {
+          externalId: 'src:zhili-earthquake-1290-seismology',
+          name: '1290 Zhili earthquake — modern seismological reconstruction (Ms ~6.8, intensity IX, epicentre near Ningcheng).',
+          url: 'https://en.wikipedia.org/wiki/1290_Zhili_earthquake',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Basel earthquake of 18 October 1356 — largest in Central Europe ──────────
+  {
+    externalId: 'trajectory:basel-earthquake-1356',
+    text: 'A major earthquake struck Basel on 18 October 1356, destroying the city and surrounding castles; it is the most significant seismic event in the recorded history of Central Europe, with modern magnitude estimates in the range 6.0–7.1.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1356-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1356-10-18',
+        datePrecision: 'DAY',
+        reason: 'Foreshocks were felt in the early evening of 18 October 1356, followed by the main shock around 22:00, which levelled much of Basel and triggered fires. Contemporaneous accounts and damage reports from 30 to 40 castles within the surrounding region record the destruction, placing the event firmly on the documentary record; some 300 people are estimated to have died in the city.',
+        source: {
+          externalId: 'src:basel-earthquake-1356-accounts',
+          name: '1356 Basel earthquake — contemporaneous accounts and regional castle-damage reports, 18 October 1356.',
+          url: 'https://en.wikipedia.org/wiki/1356_Basel_earthquake',
+          publishedAt: '1356-10-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern seismological and paleoseismic studies — including the Swiss Seismological Service reassessment of 2004 — estimate the moment magnitude at roughly 6.9 (with a plausible range of 6.0–7.1) and identify the event as the most significant earthquake in the recorded history of Central Europe, an intraplate shock notable for occurring far from a plate boundary.',
+        source: {
+          externalId: 'src:basel-earthquake-1356-seismology',
+          name: '1356 Basel earthquake — modern seismological/paleoseismic reconstruction (Mw ~6.9, range 6.0–7.1; most significant Central European event on record).',
+          url: 'https://en.wikipedia.org/wiki/1356_Basel_earthquake',
+          publishedAt: '2004-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
