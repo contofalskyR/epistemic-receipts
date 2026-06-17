@@ -38184,6 +38184,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, New World, Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Papal confirmation of the Society of Jesus ──────────────────────────────
+  {
+    externalId: 'trajectory:jesuits-confirmed-1540',
+    text: 'On 27 September 1540 Pope Paul III confirmed the Society of Jesus as a Catholic religious order through the bull Regimini militantis Ecclesiae, formally establishing the Jesuit order founded by Ignatius of Loyola.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1540-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1540-09-27',
+        datePrecision: 'DAY',
+        reason: 'Paul III issues the bull Regimini militantis Ecclesiae ("To the Government of the Church Militant"), approving the new order proposed by Ignatius of Loyola and his companions, initially capping its membership at sixty. The bull is the founding charter of the Society of Jesus and a defining institutional act of the Catholic Counter-Reformation.',
+        source: {
+          externalId: 'src:regimini-militantis-1540',
+          name: 'Pope Paul III, bull Regimini militantis Ecclesiae, 27 September 1540 (founding document of the Society of Jesus).',
+          url: 'https://en.wikipedia.org/wiki/Society_of_Jesus',
+          publishedAt: '1540-09-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The bull survives in the papal registers and is corroborated by the Constitutions of the Society of Jesus and the membership cap’s later removal (bull Iniunctum nobis, 1544); the date and act of the order’s confirmation are settled ecclesiastical history.',
+        source: {
+          externalId: 'src:jesuits-foundation-scholarship',
+          name: 'Standard histories of the Society of Jesus and the Counter-Reformation.',
+          url: 'https://en.wikipedia.org/wiki/Ignatius_of_Loyola',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Kannauj — Sher Shah Suri defeats Humayun ──────────────────────
+  {
+    externalId: 'trajectory:battle-of-kannauj-1540',
+    text: 'On 17 May 1540 Sher Shah Suri decisively defeated the Mughal emperor Humayun at the Battle of Kannauj (Bilgram), driving Humayun into a fifteen-year exile and interrupting Mughal rule in northern India with the Sur Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1540-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1540-05-17',
+        datePrecision: 'DAY',
+        reason: 'Sher Shah’s well-organised Afghan army, with reserves and flanking detachments, routs Humayun’s poorly coordinated and artillery-deficient Mughal force near Kannauj on the Ganges. Humayun flees toward Agra and then into exile in Sindh and Persia. The battle is recorded in contemporary Persian chronicles of the Sur and Mughal courts.',
+        source: {
+          externalId: 'src:kannauj-1540-chronicles',
+          name: 'Contemporary Indo-Persian chronicles of Sher Shah Suri and Humayun (e.g., Tarikh-i Sher Shahi) on the Battle of Kannauj, 17 May 1540.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Kannauj',
+          publishedAt: '1540-05-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mughal sources (including the later Humayun-nama of Gulbadan Begum and the Akbarnama) and Sur-era histories agree on the defeat and its consequence — Humayun’s long exile and Sher Shah’s consolidation of the Sur Empire; the outcome and date of Kannauj are settled history.',
+        source: {
+          externalId: 'src:kannauj-1540-scholarship',
+          name: 'Standard histories of the Mughal Empire and the Sur interregnum.',
+          url: 'https://en.wikipedia.org/wiki/Sher_Shah_Suri',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Synod of Dort — condemnation of Arminianism ─────────────────────────────
+  {
+    externalId: 'trajectory:synod-of-dort-1618',
+    text: 'The Synod of Dort, an international Reformed assembly that opened on 13 November 1618 and closed on 9 May 1619, condemned the Arminian Remonstrance and adopted the Canons of Dort, fixing the "five points" of Calvinist doctrine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1618-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1618-11-13',
+        datePrecision: 'DAY',
+        reason: 'Convened by the States General of the Dutch Republic at Dordrecht with delegates from Reformed churches across Europe, the synod holds its first session on 13 November 1618 to adjudicate the dispute between the followers of Jacobus Arminius (the Remonstrants) and the strict Calvinists. The proceedings are recorded in the official synodal Acta.',
+        source: {
+          externalId: 'src:synod-dort-acta-1619',
+          name: 'Acta Synodi Nationalis Dordrechti (official acts of the Synod of Dort, 1618–1619).',
+          url: 'https://en.wikipedia.org/wiki/Synod_of_Dort',
+          publishedAt: '1619-05-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1619-05-09',
+        datePrecision: 'DAY',
+        reason: 'At its 154th and final session on 9 May 1619 the synod promulgates the Canons of Dort, rejecting the five articles of the Remonstrance and articulating total depravity, unconditional election, limited atonement, irresistible grace, and perseverance of the saints; the canons became a confessional standard of Reformed churches, settling the doctrinal outcome.',
+        source: {
+          externalId: 'src:canons-of-dort-1619',
+          name: 'Canons of Dort (1619), confessional standard of the Reformed churches.',
+          url: 'https://en.wikipedia.org/wiki/Canons_of_Dort',
+          publishedAt: '1619-05-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ponce de León sights and names La Florida ───────────────────────────────
+  {
+    externalId: 'trajectory:ponce-de-leon-florida-1513',
+    text: 'On 2 April 1513 Juan Ponce de León sighted the east coast of the North American mainland and named it "La Florida," the earliest documented European contact with what is now the continental United States.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1513-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1513-04-02',
+        datePrecision: 'DAY',
+        reason: 'After crossing open water from the Bahamas, Ponce de León’s fleet sights land on 2 April 1513, which he takes to be an island and names "La Florida" — both for its verdant landscape and because the sighting falls in the Easter season of Pascua Florida. The expedition comes ashore the following day to take possession. The voyage is documented in Spanish navigational and Crown records summarised by the chronicler Antonio de Herrera.',
+        source: {
+          externalId: 'src:ponce-de-leon-florida-1513',
+          name: 'Antonio de Herrera y Tordesillas, Historia general de los hechos de los castellanos (drawing on Ponce de León’s 1513 voyage records).',
+          url: 'https://en.wikipedia.org/wiki/Juan_Ponce_de_Le%C3%B3n',
+          publishedAt: '1513-04-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1513 voyage, the naming of La Florida, and the early-April date are established from the surviving Spanish records and Herrera’s chronicle; although the exact landing site remains debated, the event and its date are settled history of European contact with the North American mainland.',
+        source: {
+          externalId: 'src:ponce-de-leon-scholarship',
+          name: 'Standard histories of Spanish exploration of Florida and the Ponce de León expedition of 1513.',
+          url: 'https://en.wikipedia.org/wiki/Spanish_Florida',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley observes the transit of Mercury from Saint Helena ────────────────
+  {
+    externalId: 'trajectory:halley-transit-mercury-1677',
+    text: 'On 7 November 1677 Edmond Halley observed a transit of Mercury across the Sun from the island of Saint Helena, an observation that led him to recognize that transits of Venus could be used to determine the solar parallax — the scale of the Solar System.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1677-11-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1677-11-07',
+        datePrecision: 'DAY',
+        reason: 'While cataloguing the southern stars from Saint Helena, Halley observes the full transit of Mercury on 7 November 1677 (28 October Old Style). Timing the planet’s passage across the solar disk, he reasons that an analogous observation of a transit of Venus from widely separated latitudes could trigonometrically yield the Earth–Sun distance. He reported the observation to the Royal Society.',
+        source: {
+          externalId: 'src:halley-mercury-transit-1677',
+          name: 'Edmond Halley, account of the transit of Mercury observed at Saint Helena, 7 November 1677 (Royal Society).',
+          url: 'https://en.wikipedia.org/wiki/Edmond_Halley',
+          publishedAt: '1677-11-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1716-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Halley developed the idea into a formal proposal (published in the Philosophical Transactions in 1716) urging future astronomers to observe the transits of Venus of 1761 and 1769 to measure the solar parallax; those campaigns were duly mounted, vindicating the method that the 1677 Mercury transit had inspired.',
+        source: {
+          externalId: 'src:halley-transit-method-1716',
+          name: 'Edmond Halley, "A new Method of determining the Parallax of the Sun..." Philosophical Transactions (1716).',
+          url: 'https://en.wikipedia.org/wiki/Transit_of_Venus',
+          publishedAt: '1716-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
