@@ -45960,6 +45960,238 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — additional verified curves (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Triumph of Orthodoxy — restoration of icon veneration (Byzantium, 843) ───
+  {
+    externalId: 'trajectory:triumph-of-orthodoxy-843',
+    text: 'The veneration of holy icons, affirmed as Orthodox doctrine by the Second Council of Nicaea on 13 October 787, was reversed by a renewed iconoclasm under Emperor Leo V in 815 and then definitively restored by a synod at Constantinople on 11 March 843 under Empress Theodora and Patriarch Methodios — the event commemorated ever since as the Triumph of Orthodoxy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '787-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '787-10-13',
+        datePrecision: 'DAY',
+        reason: 'At its seventh and final session on 13 October 787 the Second Council of Nicaea — recognised as the Seventh Ecumenical Council — issues a Horos (definition of faith) declaring that "venerable and holy images are to be dedicated in the holy churches of God," and that "the honour accorded to the image passes over to its prototype." Icon veneration is established as orthodox doctrine, ending the first iconoclasm begun under Leo III and codified by the iconoclast Council of Hieria (754).',
+        source: {
+          externalId: 'src:second-council-nicaea-787',
+          name: 'Second Council of Nicaea (787), Horos (definition) on the veneration of images, seventh session, 13 October 787.',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Nicaea',
+          publishedAt: '787-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '815-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 815 Emperor Leo V the Armenian convenes a synod in the Hagia Sophia that repudiates the decrees of Nicaea II and reinstates the iconoclast canons of Hieria, inaugurating the second period of Byzantine iconoclasm. Icons are again removed and their veneration officially condemned, reversing the settled doctrine of 787.',
+        source: {
+          externalId: 'src:leo-v-iconoclast-synod-815',
+          name: 'Synod of Hagia Sophia (815) under Emperor Leo V reviving iconoclasm — Byzantine Iconoclasm.',
+          url: 'https://en.wikipedia.org/wiki/Byzantine_Iconoclasm',
+          publishedAt: '815-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '843-03-11',
+        datePrecision: 'DAY',
+        reason: 'On 11 March 843 — the first Sunday of Great Lent — a synod convened under the regent Empress Theodora and the newly installed Patriarch Methodios I definitively restores the veneration of icons and anathematises iconoclasm. The restoration is proclaimed in the Synodikon of Orthodoxy, read annually thereafter, and the day is kept as the Feast of the Triumph of Orthodoxy. Iconoclasm never returns to the Byzantine Church.',
+        source: {
+          externalId: 'src:triumph-of-orthodoxy-843',
+          name: 'Synod of Constantinople (843) restoring icon veneration; Synodikon of Orthodoxy — Triumph of Orthodoxy, 11 March 843.',
+          url: 'https://en.wikipedia.org/wiki/Triumph_of_Orthodoxy',
+          publishedAt: '843-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The dates and acts of the iconoclast controversy — the Horos of 787, the revival under Leo V in 815, and the restoration of 843 — are settled history, attested by conciliar acts, the Synodikon, and contemporary Byzantine chronicles, and not in dispute among modern scholars.',
+        source: {
+          externalId: 'src:brubaker-haldon-byzantium-iconoclast',
+          name: 'Brubaker L, Haldon J. Byzantium in the Iconoclast Era, c. 680–850: A History. Cambridge University Press, 2011.',
+          url: 'https://www.cambridge.org/core/books/byzantium-in-the-iconoclast-era-c-680850/9780521430937',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Concordat of Worms — Investiture Controversy settled (1122) ──────────────
+  {
+    externalId: 'trajectory:concordat-of-worms-1122',
+    text: 'On 23 September 1122 Pope Callixtus II and Emperor Henry V concluded the Concordat of Worms — two reciprocal charters (the Calixtinum and the Henricianum) ending the half-century Investiture Controversy: the emperor renounced investiture of bishops with ring and crosier, retaining only investiture with the temporal regalia by the sceptre.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1122-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1122-09-23',
+        datePrecision: 'DAY',
+        reason: 'After decades of conflict over lay investiture, legates of Pope Callixtus II and Emperor Henry V agree at Worms to two complementary charters. In the Henricianum the emperor declares "I do remit to God, and to the holy apostles of God, Peter and Paul, and to the holy catholic church, all investiture through ring and staff"; in the Calixtinum the pope concedes that elections of German bishops and abbots may take place in the emperor\'s presence and that the emperor may invest the elect with the regalia by the sceptre. Both documents survive.',
+        source: {
+          externalId: 'src:concordat-worms-charters-1122',
+          name: 'Concordat of Worms (1122) — Privilege of Pope Callixtus II (Calixtinum) and Edict of Emperor Henry V (Henricianum). Fordham Internet Medieval Sourcebook.',
+          url: 'https://sourcebooks.fordham.edu/source/worms1.asp',
+          publishedAt: '1122-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1123-03-01',
+        datePrecision: 'MONTH',
+        reason: 'In March 1123 the First Council of the Lateran — the first ecumenical council held in the West — confirms the Concordat of Worms, giving the settlement the sanction of a general council. The compromise on investiture holds and becomes the durable basis for church–state relations in the Empire, ending the Investiture Controversy.',
+        source: {
+          externalId: 'src:first-lateran-council-1123',
+          name: 'First Council of the Lateran (March 1123) confirming the Concordat of Worms.',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_the_Lateran',
+          publishedAt: '1123-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Las Navas de Tolosa — turning point of the Reconquista (1212) ──
+  {
+    externalId: 'trajectory:las-navas-de-tolosa-1212',
+    text: 'On 16 July 1212 a Christian coalition led by King Alfonso VIII of Castile, with Sancho VII of Navarre and Peter II of Aragon, decisively defeated the Almohad army of Caliph Muhammad al-Nasir at Las Navas de Tolosa in the Sierra Morena — the battle conventionally taken as the turning point of the Reconquista.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1212-07-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1212-07-16',
+        datePrecision: 'DAY',
+        reason: 'The combined armies of Castile, Aragon and Navarre, summoned by the crusade preaching of Pope Innocent III, break the Almohad host in the pass of the Sierra Morena. Within weeks Alfonso VIII reports the victory in a letter to Pope Innocent III, and Archbishop Rodrigo Jiménez de Rada of Toledo — who was present at the battle — records it in his De rebus Hispaniae, providing contemporaneous eyewitness testimony.',
+        source: {
+          externalId: 'src:alfonso-viii-letter-innocent-iii-1212',
+          name: 'Letter of King Alfonso VIII of Castile to Pope Innocent III on the victory at Las Navas de Tolosa (1212); Rodrigo Jiménez de Rada, De rebus Hispaniae.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Las_Navas_de_Tolosa',
+          publishedAt: '1212-07-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-16',
+        datePrecision: 'DAY',
+        reason: 'The Almohad defeat shattered Muslim power in the Iberian peninsula; the great Andalusi cities fell in the decades that followed — Córdoba (1236), Valencia (1238) and Seville (1248) — leaving only the Emirate of Granada. The date, course and decisive consequences of the battle are settled history, reaffirmed in the scholarship marking its 2012 octocentenary.',
+        source: {
+          externalId: 'src:las-navas-octocentenary-2012',
+          name: 'García-Fitz F. Las Navas de Tolosa (Ariel, 2008); octocentenary scholarship, 2012.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Las_Navas_de_Tolosa',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Knights Templar — heresy charges recorded, suppressed, then reversed ─────
+  {
+    externalId: 'trajectory:knights-templar-1307',
+    text: 'On Friday 13 October 1307 King Philip IV of France ordered the mass arrest of the Knights Templar on charges of heresy; the order was suppressed by Pope Clement V in 1312 and its last grand master Jacques de Molay burned in 1314 — but a rediscovered 1308 papal record (the Chinon Parchment) shows Clement had absolved the leadership of heresy, reversing the verdict.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1307-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1307-10-13',
+        datePrecision: 'DAY',
+        reason: 'Acting on sealed orders sent across France in advance, King Philip IV has Jacques de Molay and the Templars in the kingdom arrested simultaneously at dawn on Friday 13 October 1307. Charges of heresy, blasphemy, idolatry and sodomy are laid, and confessions are extracted under torture by the royal officers and the Inquisition. The accusations enter the formal judicial record.',
+        source: {
+          externalId: 'src:templar-arrest-1307',
+          name: 'Mass arrest of the Knights Templar in France ordered by Philip IV, 13 October 1307.',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '1307-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1312-03-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 March 1312, at the Council of Vienne, Pope Clement V issues the bull Vox in excelso suppressing the Order of the Temple — not by a formal conviction for heresy but on grounds that its reputation was beyond repair. Its property is transferred to the Hospitallers (Ad providam, May 1312), and on 18 March 1314 Jacques de Molay and Geoffroi de Charney are burned at the stake in Paris. The dissolution stands as settled institutional fact for centuries.',
+        source: {
+          externalId: 'src:vox-in-excelso-1312',
+          name: 'Pope Clement V, bull Vox in excelso suppressing the Templars, Council of Vienne, 22 March 1312.',
+          url: 'https://en.wikipedia.org/wiki/Trial_of_the_Knights_Templar',
+          publishedAt: '1312-03-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-10-25',
+        datePrecision: 'DAY',
+        reason: 'In September 2001 the Vatican palaeographer Barbara Frale finds, misfiled in the Vatican Secret Archives, the Chinon Parchment of 17–20 August 1308: a record showing that Pope Clement V, hearing the Templar leaders at Chinon, had absolved Jacques de Molay and the other officers of the charge of heresy before bowing to royal pressure. The Vatican publishes the document in 2007 as Processus contra Templarios, reversing the long-standing verdict and confirming the order was suppressed for political, not doctrinal, reasons.',
+        source: {
+          externalId: 'src:chinon-parchment-2007',
+          name: 'Chinon Parchment (17–20 August 1308); Frale B., discovered 2001, published by the Vatican Secret Archives as Processus contra Templarios, 2007.',
+          url: 'https://en.wikipedia.org/wiki/Chinon_Parchment',
+          publishedAt: '2007-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'It is now settled history that the Templars were arrested on 13 October 1307, that the order was suppressed in 1312, and that the heresy charges were not substantiated — Clement V having canonically absolved the leadership in 1308. Modern scholarship treats the affair as a politically driven dissolution rather than a proven heresy.',
+        source: {
+          externalId: 'src:barber-trial-templars-2012',
+          name: 'Barber M. The Trial of the Templars, 2nd ed. Cambridge University Press, 2012.',
+          url: 'https://www.cambridge.org/core/books/trial-of-the-templars/9781107642638',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
