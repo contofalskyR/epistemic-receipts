@@ -30246,6 +30246,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990): space race, planetary science, medicine, Vietnam, molecular biology
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Mariner 4 — first close-up images of Mars ───────────────────────────────
+  {
+    externalId: 'trajectory:mariner-4-first-mars-images-1965',
+    text: 'On July 14–15, 1965, NASA\'s Mariner 4 spacecraft returned the first close-up photographs of another planet, revealing the surface of Mars to be heavily cratered, barren, and Moon-like — ending long-standing speculation about Martian canals and intelligent life.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-07-15',
+        datePrecision: 'DAY',
+        reason: 'Launched on 28 November 1964, Mariner 4 made its closest approach to Mars on 14 July 1965 at a range of about 9,800 km, recording 21 complete television images and part of a 22nd on its onboard tape recorder. Beginning the day after closest encounter (15 July 1965), the images were slowly transmitted back to Earth over several days. They covered roughly 1% of the Martian surface and showed numerous lunar-type impact craters, the first detailed view of another planet ever obtained.',
+        source: {
+          externalId: 'src:nasa-mariner-4-mission',
+          name: 'NASA Science. "Mariner 4" mission profile (launch 28 Nov 1964; Mars flyby 14 July 1965; first images 15 July 1965).',
+          url: 'https://science.nasa.gov/mission/mariner-4/',
+          publishedAt: '1965-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-08-06',
+        datePrecision: 'DAY',
+        reason: 'The Mariner 4 imaging team published its findings in Science (Leighton et al., 6 August 1965), reporting a cratered, ancient surface and a surface atmospheric pressure of only 4–7 millibars — far thinner than expected. The data definitively quashed the 19th–20th-century picture of a temperate, possibly inhabited Mars with artificial canals (Lowell) and showed instead a cold, dry, Moon-like world. The cratered-surface result has never been overturned; later orbiters and landers confirmed and extended it.',
+        source: {
+          externalId: 'src:leighton-mariner-4-science-1965',
+          name: 'Leighton RB, Murray BC, Sharp RP, et al. "Mariner IV Photography of Mars: Initial Results." Science 149(3684):627–630, 6 August 1965.',
+          url: 'https://www.science.org/doi/10.1126/science.149.3684.627',
+          publishedAt: '1965-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of pulsars ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:pulsar-discovery-1968',
+    text: 'On February 24, 1968, Antony Hewish, Jocelyn Bell, and colleagues at Cambridge announced in Nature the observation of a rapidly and extremely regularly pulsating radio source (later named CP 1919), the first known pulsar — subsequently identified as a rotating neutron star.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-11-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-11-28',
+        datePrecision: 'DAY',
+        reason: 'While surveying for interplanetary scintillation at the Mullard Radio Astronomy Observatory, PhD student Jocelyn Bell detected an unexplained "bit of scruff" on the chart recordings; on 28 November 1967 the signal was resolved into a train of pulses with a strikingly regular period of about 1.337 seconds. The source\'s origin was initially open — the team half-seriously labelled the first candidates "LGM" (Little Green Men) while ruling out terrestrial interference and instrumental artefacts.',
+        source: {
+          externalId: 'src:nrao-pulsar-discovery-account',
+          name: 'OSTI.GOV bibliographic record: Hewish A, Bell SJ, et al. "Observation of a Rapidly Pulsating Radio Source," Nature 217:709–713 (24 Feb 1968).',
+          url: 'https://www.osti.gov/biblio/4555886',
+          publishedAt: '1968-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-02-24',
+        datePrecision: 'DAY',
+        reason: 'Hewish, Bell, Pilkington, Scott, and Collins published "Observation of a Rapidly Pulsating Radio Source" in Nature 217:709–713 on 24 February 1968, reporting the precise periodicity and arguing the emission came from a compact object — possibly an oscillating white dwarf or neutron star — within our galaxy. The announcement converted the anomalous signal into a documented astronomical discovery.',
+        source: {
+          externalId: 'src:hewish-bell-nature-1968',
+          name: 'Hewish A, Bell SJ, Pilkington JDH, Scott PF, Collins RA. "Observation of a Rapidly Pulsating Radio Source." Nature 217(5130):709–713, 24 February 1968.',
+          url: 'https://www.osti.gov/biblio/4555886',
+          publishedAt: '1968-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Within months, Thomas Gold (1968) proposed that pulsars are rapidly rotating, magnetized neutron stars, and the discovery of the Crab Nebula pulsar with its ~33-millisecond period — too fast for a pulsating white dwarf — confirmed the rotating-neutron-star model and tied pulsars to supernova remnants. Pulsars became a settled class of object; Hewish shared the 1974 Nobel Prize in Physics for the discovery.',
+        source: {
+          externalId: 'src:gold-rotating-neutron-star-1968',
+          name: 'Gold T. "Rotating Neutron Stars as the Origin of the Pulsating Radio Sources." Nature 218:731–732, 1968 (NASA ADS record).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1968Natur.218..731G/abstract',
+          publishedAt: '1968-05-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of reverse transcriptase ──────────────────────────────────────
+  {
+    externalId: 'trajectory:reverse-transcriptase-1970',
+    text: 'On June 27, 1970, Howard Temin & Satoshi Mizutani and, independently, David Baltimore published back-to-back papers in Nature reporting an RNA-directed DNA polymerase (reverse transcriptase) in retroviruses — demonstrating that genetic information can flow from RNA to DNA, contrary to the central dogma of molecular biology.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1960s Howard Temin advanced the "DNA provirus hypothesis" — that RNA tumour viruses (retroviruses) replicate via a DNA intermediate integrated into the host genome. The idea was widely doubted because it implied RNA→DNA information flow, which appeared to violate the central dogma articulated by Crick (DNA→RNA→protein). The hypothesis remained contested for lack of a demonstrated enzyme.',
+        source: {
+          externalId: 'src:ncbi-retroviruses-rt-discovery',
+          name: 'Coffin JM, Hughes SH, Varmus HE (eds). Retroviruses, "Reverse Transcriptase and the Generation of Retroviral DNA" (NCBI Bookshelf).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK19383/',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-06-27',
+        datePrecision: 'DAY',
+        reason: 'Temin and Mizutani (working on Rous sarcoma virus) and Baltimore (working on Rauscher murine leukaemia virus and Rous sarcoma virus) independently found an enzyme in purified virions that synthesizes DNA using an RNA template. Their two papers appeared back-to-back in Nature on 27 June 1970, accompanied by a "News and Views" piece headlined "Central Dogma Reversed." The discovery provided the missing mechanism for the DNA provirus hypothesis.',
+        source: {
+          externalId: 'src:temin-mizutani-nature-1970',
+          name: 'Temin HM, Mizutani S. "RNA-dependent DNA Polymerase in Virions of Rous Sarcoma Virus"; Baltimore D. "RNA-dependent DNA Polymerase in Virions of RNA Tumour Viruses." Nature 226:1211–1213 & 1209–1211, 27 June 1970 (NCBI Bookshelf account).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK19383/',
+          publishedAt: '1970-06-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-10-16',
+        datePrecision: 'DAY',
+        reason: 'Reverse transcriptase was rapidly reproduced in laboratories worldwide and became a foundational tool of molecular biology (cDNA cloning, later PCR-based diagnostics and antiretroviral targets). Temin and Baltimore shared the 1975 Nobel Prize in Physiology or Medicine (with Renato Dulbecco) "for their discoveries concerning the interaction between tumour viruses and the genetic material of the cell," cementing the enzyme and RNA→DNA information flow as settled science.',
+        source: {
+          externalId: 'src:nobel-1975-medicine-rt',
+          name: 'The Nobel Prize in Physiology or Medicine 1975 — Baltimore, Dulbecco, Temin (announced 16 Oct 1975).',
+          url: 'https://www.nobelprize.org/prizes/medicine/1975/summary/',
+          publishedAt: '1975-10-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── New York Times publishes the Pentagon Papers ────────────────────────────
+  {
+    externalId: 'trajectory:pentagon-papers-published-1971',
+    text: 'On June 13, 1971, the New York Times began publishing excerpts from the Pentagon Papers — the classified Defense Department study "Report of the Office of the Secretary of Defense Vietnam Task Force" — revealing that successive U.S. administrations had systematically misled the public about the conduct and prospects of the Vietnam War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1971-06-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1971-06-13',
+        datePrecision: 'DAY',
+        reason: 'Drawing on a copy secretly leaked by RAND analyst Daniel Ellsberg, the New York Times published the first installment of a planned series on 13 June 1971, quoting and summarizing the top-secret 47-volume study commissioned by Defense Secretary Robert McNamara. The reporting put on the public record that decision-making on Vietnam under Truman, Eisenhower, Kennedy, and Johnson diverged sharply from official statements.',
+        source: {
+          externalId: 'src:nara-pentagon-papers',
+          name: 'U.S. National Archives. "Pentagon Papers" (official title: Report of the Office of the Secretary of Defense Vietnam Task Force; leaked to the press June 1971).',
+          url: 'https://www.archives.gov/research/pentagon-papers',
+          publishedAt: '1971-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1971-06-30',
+        datePrecision: 'DAY',
+        reason: 'After three installments the Nixon administration obtained a temporary restraining order halting publication. On 30 June 1971 the U.S. Supreme Court, in New York Times Co. v. United States (403 U.S. 713), ruled 6–3 that the government had not met the heavy burden required for prior restraint, freeing the Times and Washington Post to resume publishing. The papers\' authenticity was never disputed; the government was later forced to declassify and release the full study, settling their content as part of the historical record.',
+        source: {
+          externalId: 'src:nyt-v-united-states-1971',
+          name: 'New York Times Co. v. United States, 403 U.S. 713 (decided 30 June 1971).',
+          url: 'https://supreme.justia.com/cases/federal/us/403/713/',
+          publishedAt: '1971-06-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Global eradication of smallpox ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:smallpox-eradication-1980',
+    text: 'On May 8, 1980, the 33rd World Health Assembly officially declared that smallpox had been eradicated worldwide — the first and only human disease ever deliberately eliminated — following the last endemic case (Ali Maow Maalin, Somalia) in October 1977.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1977-10-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1977-10-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 October 1977 Ali Maow Maalin, a hospital cook in Merka, Somalia, developed a rash from variola minor — the last known case of endemic (naturally transmitted) smallpox anywhere in the world. (The last case of variola major had occurred in Rahima Banu of Bangladesh in 1975.) WHO surveillance teams launched an intensive search to confirm no further transmission was occurring.',
+        source: {
+          externalId: 'src:cdc-smallpox-history',
+          name: 'U.S. CDC. "History of Smallpox" — last endemic case 1977; 33rd World Health Assembly declared eradication 8 May 1980.',
+          url: 'https://www.cdc.gov/smallpox/about/history.html',
+          publishedAt: '1977-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-05-08',
+        datePrecision: 'DAY',
+        reason: 'After two years with no new cases and verification by the Global Commission for the Certification of Smallpox Eradication (which certified eradication in December 1979), the 33rd World Health Assembly adopted resolution WHA33.3 on 8 May 1980 formally declaring "the world and its peoples have won freedom from smallpox." The declaration has stood ever since; routine vaccination was discontinued, and only secured laboratory stocks remain.',
+        source: {
+          externalId: 'src:wha33-3-smallpox-1980',
+          name: 'World Health Assembly resolution WHA33.3, "Declaration of global eradication of smallpox," 8 May 1980 (WHO/CDC records).',
+          url: 'https://www.cdc.gov/smallpox/about/history.html',
+          publishedAt: '1980-05-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
