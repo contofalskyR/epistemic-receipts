@@ -39414,6 +39414,246 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Halley's Comet predicted return — confirmation of Newtonian gravitation ──
+  {
+    externalId: 'trajectory:halley-comet-predicted-return-1758',
+    text: 'The comet whose return Edmond Halley had predicted for 1758 was first sighted on 25 December 1758 by Johann Georg Palitzsch and reached perihelion on 13 March 1759, the first confirmed prediction of a comet\'s return and a landmark vindication of Newtonian gravitation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1705-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1705-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In his "Synopsis of the Astronomy of Comets," Edmond Halley applied Newton\'s laws to the comets observed in 1531, 1607, and 1682, argued they were a single body on a ~76-year orbit, and predicted its return around 1758. The claim was testable but could not be confirmed until the predicted date arrived, decades after Halley\'s own death in 1742.',
+        source: {
+          externalId: 'src:halley-comet-synopsis-1705',
+          name: 'Edmond Halley, "A Synopsis of the Astronomy of Comets" (1705); prediction of the 1758 return.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1705-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1758-12-25',
+        datePrecision: 'DAY',
+        reason: 'Johann Georg Palitzsch, a Saxon farmer and amateur astronomer, first sighted the returning comet on 25 December 1758, within the window Halley had forecast (refined by Clairaut, Lalande, and Lepaute to early 1759 accounting for Jupiter and Saturn). The comet passed perihelion on 13 March 1759.',
+        source: {
+          externalId: 'src:palitzsch-halley-1758',
+          name: 'Recovery of Halley\'s Comet by Johann Georg Palitzsch, 25 December 1758; perihelion 13 March 1759.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1759-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1759-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The successful prediction and recovery established that comets are members of the Solar System obeying Newtonian gravitation rather than unpredictable portents. The body was thereafter named Halley\'s Comet, and its ~76-year periodicity has been confirmed at every subsequent return, making the result among the most securely settled in observational astronomy.',
+        source: {
+          externalId: 'src:halley-comet-settled',
+          name: '"Halley\'s Comet." Scholarly synthesis of the 1758–59 return and subsequent confirmed apparitions.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Morse's first telegraph message — "What hath God wrought" ────────────────
+  {
+    externalId: 'trajectory:morse-first-telegraph-message-1844',
+    text: 'On 24 May 1844, Samuel Morse transmitted the message "What hath God wrought" over the experimental Baltimore–Washington telegraph line, demonstrating practical long-distance electric communication.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1844-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1844-05-24',
+        datePrecision: 'DAY',
+        reason: 'From the chamber of the U.S. Supreme Court in the Capitol, Morse sent the words "What hath God wrought" (chosen by Annie Ellsworth from Numbers 23:23) in Morse code to his assistant Alfred Vail in Baltimore, who returned the message. The demonstration, funded by a $30,000 congressional appropriation, opened the first U.S. telegraph line and was witnessed by members of Congress.',
+        source: {
+          externalId: 'src:morse-what-hath-god-wrought-1844',
+          name: '"What hath God wrought" — first message on the Baltimore–Washington telegraph line, 24 May 1844.',
+          url: 'https://en.wikipedia.org/wiki/What_hath_God_wrought',
+          publishedAt: '1844-05-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1850-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years telegraph lines spread rapidly across the United States and Europe, collapsing the time required to transmit information over long distances from days to minutes. The 1844 demonstration is settled in the historical record as the practical birth of electrical telecommunication, documented in congressional records, the contemporary press, and Morse\'s own papers.',
+        source: {
+          externalId: 'src:morse-telegraph-settled',
+          name: '"What hath God wrought" / Morse telegraph. Historical synthesis of the 1844 demonstration and its aftermath.',
+          url: 'https://en.wikipedia.org/wiki/What_hath_God_wrought',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Foucault's pendulum — direct demonstration of Earth's rotation ───────────
+  {
+    externalId: 'trajectory:foucault-pendulum-earth-rotation-1851',
+    text: 'In 1851 Léon Foucault demonstrated the rotation of the Earth directly with a long pendulum whose swing plane visibly precessed — first to scientists at the Paris Observatory on 3 February 1851, then publicly under the dome of the Panthéon in March 1851.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1851-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1851-02-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 February 1851 Foucault suspended a pendulum in the Meridian Room of the Paris Observatory and showed the assembled scientists that its plane of oscillation slowly rotated relative to the floor — a consequence of the Earth turning beneath it. It was the first non-astronomical, terrestrial proof of the Earth\'s rotation.',
+        source: {
+          externalId: 'src:foucault-observatory-1851',
+          name: 'Léon Foucault, first demonstration of the rotation of the Earth by pendulum, Paris Observatory, 3 February 1851.',
+          url: 'https://en.wikipedia.org/wiki/Foucault_pendulum',
+          publishedAt: '1851-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1851-03-01',
+        datePrecision: 'MONTH',
+        reason: 'At the request of Louis-Napoléon Bonaparte, Foucault repeated the experiment in March 1851 with a 28 kg bob on a 67 m wire under the dome of the Panthéon in Paris, where large public crowds watched the swing plane rotate. The demonstration was rapidly reproduced in observatories and public buildings worldwide, settling the visible terrestrial proof of Earth\'s rotation.',
+        source: {
+          externalId: 'src:foucault-pantheon-1851',
+          name: 'Léon Foucault, public pendulum demonstration at the Panthéon, Paris, March 1851.',
+          url: 'https://en.wikipedia.org/wiki/Foucault_pendulum',
+          publishedAt: '1851-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lister's antiseptic surgery — germ theory applied to the operating room ──
+  {
+    externalId: 'trajectory:lister-antiseptic-surgery-1867',
+    text: 'On 16 March 1867 Joseph Lister published the first paper of his series in The Lancet describing antiseptic treatment of wounds with carbolic acid, applying Pasteur\'s germ theory to surgery and dramatically reducing post-operative infection.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1867-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-03-16',
+        datePrecision: 'DAY',
+        reason: 'In "On a New Method of Treating Compound Fracture, Abscess, etc., with Observations on the Conditions of Suppuration," published in The Lancet on 16 March 1867 (the first of a series running to July 1867), Lister reported that dressing wounds with carbolic acid to kill airborne germs — reasoning from Louis Pasteur\'s germ theory — sharply lowered mortality, presenting a series of compound-fracture patients of whom only two of eleven died.',
+        source: {
+          externalId: 'src:lister-lancet-1867',
+          name: 'Joseph Lister, "On a New Method of Treating Compound Fracture...," The Lancet, 16 March 1867.',
+          url: 'https://en.wikipedia.org/wiki/Joseph_Lister',
+          publishedAt: '1867-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1870-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lister\'s method met resistance through the late 1860s and 1870s: many surgeons doubted germ theory, found the carbolic regimen cumbersome, or reported mixed statistical results, and a public controversy over the effectiveness of antisepsis ran from 1867 into the 1880s.',
+        source: {
+          externalId: 'src:lister-antisepsis-controversy',
+          name: 'The British controversy over the effects of Lister\'s antiseptic system, 1867–1890. James Lind Library.',
+          url: 'https://www.jameslindlibrary.org/articles/statistics-and-the-british-controversy-about-the-effects-of-joseph-listers-system-of-antisepsis-for-surgery-1867-1890/',
+          publishedAt: '1870-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-01-01',
+        datePrecision: 'YEAR',
+        reason: 'As germ theory was confirmed by Pasteur and Koch and antiseptic (and later aseptic) technique demonstrably cut surgical mortality, Lister\'s principle became the accepted foundation of modern surgery. By the 1890s antisepsis was standard practice across Europe and North America, and Lister\'s 1867 contribution is settled in the history of medicine.',
+        source: {
+          externalId: 'src:lister-antisepsis-settled',
+          name: '"Joseph Lister." Scholarly synthesis of the adoption of antiseptic surgery.',
+          url: 'https://en.wikipedia.org/wiki/Joseph_Lister',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mendeleev's periodic table — a predictive law of the elements ────────────
+  {
+    externalId: 'trajectory:mendeleev-periodic-table-1869',
+    text: 'On 6 March 1869 Dmitri Mendeleev presented his periodic system of the elements to the Russian Chemical Society, leaving gaps for undiscovered elements and predicting the properties of three of them — eka-aluminium, eka-boron, and eka-silicon — later identified as gallium, scandium, and germanium.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1869-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1869-03-06',
+        datePrecision: 'DAY',
+        reason: 'In a paper titled "The Dependence between the Properties of the Atomic Weights of the Elements," presented to the Russian Chemical Society on 6 March 1869, Mendeleev arranged the known elements by atomic weight and recurring properties, deliberately leaving empty cells and predicting the atomic weights and chemical behaviour of the missing elements he called eka-aluminium, eka-boron, and eka-silicon.',
+        source: {
+          externalId: 'src:mendeleev-periodic-1869',
+          name: 'Dmitri Mendeleev, "The Dependence between the Properties of the Atomic Weights of the Elements," Russian Chemical Society, 6 March 1869.',
+          url: 'https://en.wikipedia.org/wiki/Dmitri_Mendeleev',
+          publishedAt: '1869-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1886-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The discovery of gallium (1875), scandium (1879), and germanium (1886), each closely matching Mendeleev\'s predicted properties, transformed the periodic table from a classification scheme into a confirmed predictive law. The periodic system became — and remains — a settled foundation of chemistry.',
+        source: {
+          externalId: 'src:mendeleev-predictions-confirmed',
+          name: '"Periodic table" / Mendeleev\'s predicted elements: gallium (1875), scandium (1879), germanium (1886).',
+          url: 'https://en.wikipedia.org/wiki/Periodic_table',
+          publishedAt: '1886-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
