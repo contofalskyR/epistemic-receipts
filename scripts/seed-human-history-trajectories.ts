@@ -37296,6 +37296,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950): physics revolution, totalitarianism, decolonization
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Discovery of the muon (mesotron) ────────────────────────────────────────
+  {
+    externalId: 'trajectory:muon-discovery-1937',
+    text: 'Carl Anderson and Seth Neddermeyer reported a new charged particle in cosmic rays with a mass intermediate between the electron and the proton (the muon, originally "mesotron"), published in Physical Review on 15 May 1937.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-05-15',
+        datePrecision: 'DAY',
+        reason: 'Anderson and Neddermeyer publish "Note on the Nature of Cosmic-Ray Particles" (Physical Review 51, 884) reporting cloud-chamber tracks of particles that penetrate matter far more readily than electrons yet curve more sharply than protons in a magnetic field — evidence of a previously unknown particle of intermediate mass, which Anderson names the "mesotron."',
+        source: {
+          externalId: 'src:anderson-neddermeyer-mesotron-1937',
+          name: 'Neddermeyer S.H. & Anderson C.D. "Note on the Nature of Cosmic-Ray Particles." Physical Review 51, 884 (15 May 1937).',
+          url: 'https://en.wikipedia.org/wiki/Muon',
+          publishedAt: '1937-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The new particle\'s intermediate mass closely matched the carrier of the nuclear force predicted by Hideki Yukawa in 1935, and most physicists identified the mesotron as Yukawa\'s meson — Niels Bohr and others called it the "yukon." The identification became the dominant but unverified interpretation of the particle\'s nature.',
+        source: {
+          externalId: 'src:mesotron-yukawa-meson-identification',
+          name: 'Identification of the cosmic-ray mesotron with Yukawa\'s predicted nuclear-force meson (late 1930s).',
+          url: 'https://en.wikipedia.org/wiki/Muon',
+          publishedAt: '1938-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Rome experiment of Conversi, Pancini, and Piccioni showed that the cosmic-ray particle decays rather than being captured by atomic nuclei, contradicting the strong nuclear interaction expected of Yukawa\'s meson. The identification of the mesotron with Yukawa\'s particle was overturned.',
+        source: {
+          externalId: 'src:conversi-pancini-piccioni-1946',
+          name: 'Conversi M., Pancini E. & Piccioni O. — measurement of mesotron nuclear capture/decay, Rome (1946).',
+          url: 'https://en.wikipedia.org/wiki/Muon',
+          publishedAt: '1946-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1947 Powell, Lattes, and Occhialini discovered the pi meson (pion) in cosmic rays — Yukawa\'s actual predicted particle — which decays into the lighter particle Anderson had found. The 1937 particle was reclassified as a distinct entity, the muon (a lepton, not a meson), settling its identity within particle physics.',
+        source: {
+          externalId: 'src:pion-discovery-1947',
+          name: 'Lattes, Occhialini & Powell — discovery of the pi meson (pion), Nature (1947); reclassification of the muon as a lepton.',
+          url: 'https://en.wikipedia.org/wiki/Pion',
+          publishedAt: '1947-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bohr–Wheeler theory of nuclear fission ──────────────────────────────────
+  {
+    externalId: 'trajectory:bohr-wheeler-fission-theory-1939',
+    text: 'Niels Bohr and John Wheeler published "The Mechanism of Nuclear Fission" in Physical Review on 1 September 1939, providing the liquid-drop theoretical account of fission and deducing that uranium-235 is the isotope responsible for slow-neutron fission.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-09-01',
+        datePrecision: 'DAY',
+        reason: 'Bohr and Wheeler publish their paper (Physical Review 56, 426) — on the same day Germany invaded Poland — applying the liquid-drop model of the nucleus to quantify the fission energy barrier and concluding that the rare isotope uranium-235, not the dominant uranium-238, is the one fissioned by slow neutrons.',
+        source: {
+          externalId: 'src:bohr-wheeler-fission-1939',
+          name: 'Bohr N. & Wheeler J.A. "The Mechanism of Nuclear Fission." Physical Review 56, 426–450 (1 September 1939).',
+          url: 'https://en.wikipedia.org/wiki/Nuclear_fission',
+          publishedAt: '1939-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-12-02',
+        datePrecision: 'DAY',
+        reason: 'The Bohr–Wheeler prediction was confirmed experimentally: U-235\'s role in slow-neutron fission underpinned the first self-sustaining chain reaction at Chicago Pile-1 on 2 December 1942 and the isotope-separation effort that produced the uranium bomb. The liquid-drop fission theory became foundational nuclear physics.',
+        source: {
+          externalId: 'src:chicago-pile-confirms-fission-theory-1942',
+          name: 'First controlled nuclear chain reaction, Chicago Pile-1 (2 December 1942), confirming slow-neutron fission of uranium.',
+          url: 'https://en.wikipedia.org/wiki/Chicago_Pile-1',
+          publishedAt: '1942-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tunguska event ──────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:tunguska-event-1908',
+    text: 'A massive explosion flattened roughly 2,000 square kilometres of forest near the Podkamennaya Tunguska River in Siberia on the morning of 30 June 1908 — the largest impact event in recorded history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1908-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-06-30',
+        datePrecision: 'DAY',
+        reason: 'The blast was registered instrumentally far from Siberia: seismographs across Eurasia recorded the shock, and barographs in Britain and across Europe detected the atmospheric pressure wave. Local eyewitnesses reported a fireball and a deafening explosion, and Siberian newspapers carried contemporaneous accounts in 1908.',
+        source: {
+          externalId: 'src:tunguska-1908-instrumental-records',
+          name: 'Seismic and barographic records of the Tunguska explosion (30 June 1908) and contemporaneous Siberian press reports.',
+          url: 'https://en.wikipedia.org/wiki/Tunguska_event',
+          publishedAt: '1908-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Leonid Kulik\'s 1927 expedition reached the site and found a vast zone of radially flattened trees but no impact crater and no recovered meteorite fragments. The absence of a crater opened decades of debate over the cause, with hypotheses ranging from a stony meteoroid to a comet to more exotic explanations.',
+        source: {
+          externalId: 'src:kulik-tunguska-expedition-1927',
+          name: 'Leonid Kulik — first scientific expedition to the Tunguska site (1927); flattened forest without a crater.',
+          url: 'https://en.wikipedia.org/wiki/Tunguska_event',
+          publishedAt: '1927-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The mainstream scientific explanation converged on an airburst: the explosive disintegration of an asteroid roughly 6–10 km above the surface, which deposits energy in the atmosphere and so leaves no crater. The airburst model accounts for the flattening pattern and the absence of a crater, and is reinforced by analogous modern events such as the 2013 Chelyabinsk airburst.',
+        source: {
+          externalId: 'src:tunguska-airburst-consensus',
+          name: 'Scientific consensus on the Tunguska event as a meteoroid airburst; reinforced by the 2013 Chelyabinsk airburst.',
+          url: 'https://en.wikipedia.org/wiki/Tunguska_event',
+          publishedAt: '2013-02-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Easter Rising and Proclamation of the Irish Republic ────────────────────
+  {
+    externalId: 'trajectory:easter-rising-1916',
+    text: 'Irish republicans launched the Easter Rising in Dublin on 24 April 1916, with Patrick Pearse reading the Proclamation of the Irish Republic outside the General Post Office, declaring an independent Irish Republic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1916-04-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1916-04-24',
+        datePrecision: 'DAY',
+        reason: 'On Easter Monday, members of the Irish Volunteers and the Irish Citizen Army seized the GPO and other Dublin buildings. Pearse read aloud the printed Proclamation of the Irish Republic, copies of which were posted on walls and handed to passers-by; the rising was immediately reported in the press and recorded by the British military.',
+        source: {
+          externalId: 'src:proclamation-irish-republic-1916',
+          name: 'Proclamation of the Irish Republic, read by Patrick Pearse outside the GPO, Dublin (24 April 1916).',
+          url: 'https://en.wikipedia.org/wiki/Easter_Rising',
+          publishedAt: '1916-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1916-05-12',
+        datePrecision: 'DAY',
+        reason: 'British authorities suppressed the rising within a week and, between 3 and 12 May 1916, court-martialled and executed fifteen leaders, including the signatories of the Proclamation. The surviving printed Proclamation, the court-martial records, and extensive press coverage settle the occurrence of the rising and its declaration as a matter of documented record.',
+        source: {
+          externalId: 'src:easter-rising-courts-martial-1916',
+          name: 'Courts-martial and executions of Easter Rising leaders (3–12 May 1916); surviving printed Proclamation and military records.',
+          url: 'https://en.wikipedia.org/wiki/Executions_of_Easter_Rising_leaders',
+          publishedAt: '1916-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Adolf Hitler ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:hitler-death-1945',
+    text: 'Adolf Hitler died by suicide in the Führerbunker in Berlin on 30 April 1945.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1945-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1945-05-01',
+        datePrecision: 'DAY',
+        reason: 'Hitler shot himself in the Führerbunker on the afternoon of 30 April 1945, witnessed by bunker staff who then burned the body. On 1 May 1945 German radio (Hamburg) broadcast the announcement of his death, and the event entered the public record internationally.',
+        source: {
+          externalId: 'src:hitler-death-radio-announcement-1945',
+          name: 'German radio announcement of Hitler\'s death (1 May 1945) and bunker eyewitness accounts.',
+          url: 'https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler',
+          publishedAt: '1945-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Soviet authorities, having recovered the remains, restricted and distorted the information: Stalin publicly floated that Hitler had escaped, with suggestions he was hiding in Spain or Argentina, and released contradictory accounts (including cyanide poisoning). The deliberate Soviet disinformation seeded public uncertainty about whether and how Hitler had died.',
+        source: {
+          externalId: 'src:soviet-hitler-death-disinformation-1945',
+          name: 'Soviet suppression and conflicting accounts of Hitler\'s death (from 1945); Stalin\'s "escaped to the West" narrative.',
+          url: 'https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler',
+          publishedAt: '1945-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Forensic dental identification — by Hitler\'s dental assistants in 1945 and confirmed in a 2018 study by Philippe Charlier that matched the recovered teeth and jaw against Hitler\'s 1944 dental X-rays — together with the West German death certificate issued in 1956, settled the fact and date of his death.',
+        source: {
+          externalId: 'src:charlier-hitler-teeth-2018',
+          name: 'Charlier P. et al. forensic analysis of Hitler\'s teeth confirming his death (European Journal of Internal Medicine, 2018).',
+          url: 'https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler',
+          publishedAt: '2018-05-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
