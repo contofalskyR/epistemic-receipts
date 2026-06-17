@@ -36623,6 +36623,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Leo the Deacon — earliest description of the solar corona (968 eclipse) ───
+  {
+    externalId: 'trajectory:eclipse-968-leo-deacon-corona',
+    text: 'A total solar eclipse on 22 December 968 CE, observed from Constantinople by the Byzantine historian Leo the Deacon, produced the earliest unambiguous description of the solar corona — a "dim and feeble glow like a narrow headband" encircling the blacked-out disk of the Sun.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0968-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0968-12-22',
+        datePrecision: 'DAY',
+        reason: 'Leo the Deacon, an eyewitness at Constantinople, records that at the fourth hour of the day darkness covered the earth and the brighter stars appeared, and that the Sun\'s disk was dull and unlit with "a dim and feeble glow like a narrow band shining in a circle around the edge of the disk." The description captures the solar corona, visible to the naked eye only during totality.',
+        source: {
+          externalId: 'src:leo-deacon-eclipse-968',
+          name: 'Leo the Deacon. The History (Historia), account of the total solar eclipse of 22 December 968 observed at Constantinople. (late 10th century, eyewitness)',
+          url: 'https://www2.hao.ucar.edu/Education/solar-physics-historical-timeline-0-1599',
+          publishedAt: '0990-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern eclipse computation in NASA\'s Five Millennium Canon of Solar Eclipses confirms that a total solar eclipse occurred on 22 December 968, with the path of totality crossing the eastern Mediterranean and Anatolia. Historians of astronomy identify Leo\'s "narrow band" as the earliest datable description of the corona — settling both the event and its scientific significance.',
+        source: {
+          externalId: 'src:nasa-eclipse-968-12-22',
+          name: 'NASA Five Millennium Canon of Solar Eclipses — Total Solar Eclipse of 968 December 22.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEsearch/SEsearchmap.php?Ecl=09681222',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Second Council of Nicaea — restoration of icon veneration, 787 ───────────
+  {
+    externalId: 'trajectory:second-council-nicaea-787',
+    text: 'The Second Council of Nicaea, in its seventh session on 13 October 787 CE, condemned iconoclasm and decreed that holy images are to be venerated with honour (proskynesis) — distinct from the worship (latreia) owed to God alone — reversing the imperial ban on icons.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0787-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0787-10-13',
+        datePrecision: 'DAY',
+        reason: 'Some 308 bishops under the presidency of Patriarch Tarasius of Constantinople, with legates of Pope Hadrian I, promulgate the Horos (definition) in the seventh session at the Church of Hagia Sophia in Nicaea, decreeing that icons of Christ, the Theotokos, the angels, and the saints are to receive veneration of honour. The proceedings are preserved in the contemporaneous conciliar Acts.',
+        source: {
+          externalId: 'src:acts-nicaea-ii-787',
+          name: 'Acts of the Second Council of Nicaea (787) — seventh session, 13 October 787, definition restoring icon veneration. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Nicaea',
+          publishedAt: '0787-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0787-10-23',
+        datePrecision: 'DAY',
+        reason: 'In the eighth and final session, held on 23 October 787 at the Magnaura palace in Constantinople, Empress Irene and her son Constantine VI ratify the definition, giving it imperial force. Icon veneration is restored as the orthodox doctrine of the Byzantine church, ending the first iconoclast period.',
+        source: {
+          externalId: 'src:nicaea-ii-imperial-ratification',
+          name: 'Second Council of Nicaea — imperial ratification by Irene and Constantine VI, 23 October 787. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Second-Council-of-Nicaea-787',
+          publishedAt: '0787-10-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0815-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Emperor Leo V the Armenian launches a second period of iconoclasm. The Council of Constantinople of 815, held in Hagia Sophia, repudiates the Second Council of Nicaea, reaffirms the iconoclast Council of Hieria (754), and again bans the veneration of images — overturning the 787 settlement for a generation.',
+        source: {
+          externalId: 'src:council-constantinople-815',
+          name: 'Council of Constantinople (815) — reinstatement of iconoclasm under Leo V, repudiating Nicaea II.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Constantinople_(815)',
+          publishedAt: '0815-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0843-03-11',
+        datePrecision: 'DAY',
+        reason: 'On the first Sunday of Great Lent, 11 March 843, the empress-regent Theodora and Patriarch Methodios restore icon veneration, marked by a procession of holy images from the Blachernai church to Hagia Sophia. The "Triumph of Orthodoxy" permanently settles the question; the doctrine of Nicaea II has held in the Orthodox church ever since and is commemorated annually as the Sunday of Orthodoxy.',
+        source: {
+          externalId: 'src:triumph-of-orthodoxy-843',
+          name: 'Feast of Orthodoxy — restoration of icons by Theodora and Methodios, 11 March 843 (Triumph of Orthodoxy).',
+          url: 'https://en.wikipedia.org/wiki/Feast_of_Orthodoxy',
+          publishedAt: '0843-03-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ibn Yunus — timed lunar eclipse observation at Cairo, 981 ────────────────
+  {
+    externalId: 'trajectory:ibn-yunus-eclipse-981',
+    text: 'On 22 April 981 CE the astronomer Ibn Yunus and colleagues gathered at the mosque of Ibn Nasr al-Maghribi in al-Qarafa (Cairo) to observe and time a lunar eclipse — one of a series of precisely timed eclipse observations he compiled in the al-Zij al-Hakimi.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0981-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0981-04-22',
+        datePrecision: 'DAY',
+        reason: 'Ibn Yunus records in the al-Zij al-Hakimi: "We gathered to observe this eclipse at al-Qarafa, in the Mosque of Ibn Nasr al-Maghribi," noting reference-star altitudes to fix the timing. It is one of about thirty lunar eclipses he documents with careful measurements of contact and maximum phase using the large instruments of Fatimid Cairo.',
+        source: {
+          externalId: 'src:ibn-yunus-hakimi-zij-981',
+          name: 'Ibn Yunus. al-Zij al-Hakimi al-Kabir, record of the lunar eclipse observed at al-Qarafa, Cairo, 22 April 981 (10 Shawwal 370 AH). (c. 1005)',
+          url: 'https://muslimheritage.com/precious-records-of-eclipses-in-muslim-astronomy-and-history/',
+          publishedAt: '1005-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'NASA\'s Five Millennium Canon of Lunar Eclipses confirms a lunar eclipse on 22 April 981, matching Ibn Yunus\'s record. His timed Cairo eclipse observations, among the most precise of the era, were later used by modern astronomers to determine the secular acceleration of the Moon and the long-term slowing of Earth\'s rotation.',
+        source: {
+          externalId: 'src:nasa-lunar-canon-981',
+          name: 'NASA Five Millennium Catalog of Lunar Eclipses — lunar eclipse of 0981 Apr 22 (catalog no. 07172).',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LE0901-1000.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First Crusade — capture of Jerusalem, 15 July 1099 ──────────────────────
+  {
+    externalId: 'trajectory:first-crusade-jerusalem-1099',
+    text: 'On 15 July 1099 the armies of the First Crusade stormed and captured Jerusalem after a five-week siege, slaughtering much of the city\'s Muslim and Jewish population and founding the Kingdom of Jerusalem.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1099-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1099-07-15',
+        datePrecision: 'DAY',
+        reason: 'After a siege begun on 7 June 1099, the crusaders breach the northern wall and take the city on 15 July. The anonymous Gesta Francorum, written by a participant, records the storming and the ensuing massacre at the Temple of Solomon, where "the slaughter was so great that our men waded in blood up to their ankles."',
+        source: {
+          externalId: 'src:gesta-francorum-jerusalem-1099',
+          name: 'Gesta Francorum (Iherusalem peregrinantium), eyewitness account of the capture of Jerusalem, 15 July 1099. (c. 1100–1101)',
+          url: 'https://en.wikipedia.org/wiki/Gesta_Francorum_Iherusalem_peregrinantium',
+          publishedAt: '1101-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1110-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent contemporaries corroborate the date and event: Raymond of Aguilers, chaplain to Raymond IV of Toulouse and an eyewitness, the Provençal and Lotharingian chroniclers, and Arabic historians such as Ibn al-Athir. The capture of Jerusalem on 15 July 1099 is settled across Latin and Muslim sources.',
+        source: {
+          externalId: 'src:raymond-aguilers-jerusalem-1099',
+          name: 'Raymond of Aguilers. Historia Francorum qui ceperunt Iherusalem, eyewitness account of the 1099 siege. (c. 1099–1101)',
+          url: 'https://en.wikipedia.org/wiki/Raymond_of_Aguilers',
+          publishedAt: '1101-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Caishi — early battlefield use of gunpowder bombs, 1161 ────────
+  {
+    externalId: 'trajectory:battle-caishi-gunpowder-1161',
+    text: 'At the Battle of Caishi on 26–27 November 1161, Southern Song forces repelled a Jin attempt to cross the Yangzi using gunpowder bombs (pili huoqiu, "thunderclap fire-balls") launched by trebuchet — among the earliest documented battlefield uses of explosive gunpowder weapons.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1161-11-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1161-11-26',
+        datePrecision: 'DAY',
+        reason: 'Song accounts record that the paddle-wheel warships of the outnumbered Song fleet, commanded by Yu Yunwen, bombarded the Jin ships with gunpowder bombs that produced a loud report and a cloud of blinding lime-smoke, decisively defeating the crossing. The Song literatus Yang Wanli describes the "thunderclap" bombs in a contemporary rhapsody on the battle.',
+        source: {
+          externalId: 'src:battle-caishi-1161-song-record',
+          name: 'Battle of Caishi (26–27 November 1161) — Song accounts of gunpowder bombs (pili huoqiu); Yang Wanli\'s contemporary rhapsody.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Caishi',
+          publishedAt: '1170-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of technology, following Joseph Needham\'s Science and Civilisation in China, identify Caishi as one of the earliest battlefield deployments of gunpowder bombs whose nitrate content was high enough to explode rather than merely burn — a documented step in the transition from incendiary to explosive weapons.',
+        source: {
+          externalId: 'src:caishi-gunpowder-history',
+          name: 'History of the thunder crash bomb and early Chinese gunpowder weapons (Needham, Science and Civilisation in China, vol. 5).',
+          url: 'https://en.wikipedia.org/wiki/Thunder_crash_bomb',
+          publishedAt: '1986-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
