@@ -32348,6 +32348,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Total solar eclipse of 3 June 1239 (corona recorded by Ristoro d'Arezzo) ──
+  {
+    externalId: 'trajectory:solar-eclipse-1239-ristoro',
+    text: 'A total solar eclipse on 3 June 1239, during which observers across the western Mediterranean saw the sun blacked out at midday with stars and a surrounding glow visible, was recorded in unusual detail by Ristoro d\'Arezzo and confirmed by modern eclipse computation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1239-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1239-06-03',
+        datePrecision: 'DAY',
+        reason: 'The eclipse was observed and chronicled across southern Europe. Ristoro d\'Arezzo, who witnessed it as a young man, left what is regarded as one of the most detailed and precise accounts of a total solar eclipse before the eighteenth century — describing the sun reduced to darkness with stars appearing — later set down in his treatise La composizione del mondo colle sue cascioni. The same totality was recorded in monastic chronicles from Iberia to Italy.',
+        source: {
+          externalId: 'src:ristoro-darezzo-eclipse-1239',
+          name: 'Ristoro d\'Arezzo. La composizione del mondo colle sue cascioni (account of the total solar eclipse of 3 June 1239; treatise completed 1282).',
+          url: 'https://en.wikipedia.org/wiki/Ristoro_d%27Arezzo',
+          publishedAt: '1282-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a total solar eclipse on 3 June 1239 whose path of totality crossed the western Mediterranean, matching the medieval descriptions of midday darkness, visible stars, and the surrounding corona. The eclipse is catalogued in NASA\'s Five Millennium Canon of Solar Eclipses, fixing the date and totality path independently of the chronicles.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-1239',
+          name: 'NASA/GSFC. Total Solar Eclipse of 1239 June 03 (Five Millennium Canon of Solar Eclipses).',
+          url: 'https://eclipse.gsfc.nasa.gov/SEsearch/SEsearchmap.php?Ecl=12390603',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Great Comet of 1264 (C/1264 N1) ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:great-comet-1264',
+    text: 'A great comet (later designated C/1264 N1) appeared in July 1264 and remained visible until the end of September, displaying a tail nearly 100° long; it was recorded contemporaneously by European and Chinese observers and its orbit reconstructed by later astronomers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1264-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1264-07-17',
+        datePrecision: 'DAY',
+        reason: 'European chronicles first report the comet on 17 July 1264; it reached perihelion on 20 July and perigee on 29 July, becoming most brilliant at the end of August and start of September when its tail stretched nearly 100° across the sky. Chinese astronomical records independently note the same comet, and the descriptions agree. Contemporaries linked its appearance to the illness and death of Pope Urban IV on 3 October 1264.',
+        source: {
+          externalId: 'src:great-comet-1264-wikipedia',
+          name: 'Great Comet of 1264 (C/1264 N1) — contemporaneous European and Chinese observations, July–September 1264.',
+          url: 'https://en.wikipedia.org/wiki/Great_Comet_of_1264',
+          publishedAt: '1264-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1264 comet is one of the brightest on record. Early modern astronomers, struck by the similarity of its reported path to the great comet of 1556, treated the two as a single returning body — a hypothesis later abandoned once cometary orbits could be computed. The 1264 apparition is now catalogued under its modern designation C/1264 N1 with orbital elements derived from the surviving positional records.',
+        source: {
+          externalId: 'src:great-comet-1264-designation',
+          name: 'Great Comet of 1264 — modern designation C/1264 N1 and orbital reconstruction.',
+          url: 'https://en.wikipedia.org/wiki/Great_Comet_of_1264',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Eastern Mediterranean earthquake of 8 August 1303 (Pharos damaged) ───────
+  {
+    externalId: 'trajectory:crete-earthquake-1303',
+    text: 'A major earthquake (estimated magnitude ~8) struck the eastern Mediterranean near Crete at dawn on 8 August 1303, generating a tsunami that hit Alexandria and badly damaging the Lighthouse of Alexandria (the Pharos).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1303-08-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1303-08-08',
+        datePrecision: 'DAY',
+        reason: 'The earthquake struck around dawn on 8 August 1303, with an epicentre in the sea between Crete and Rhodes, and triggered a tsunami that reached Alexandria. Representatives of the Venetian administration on Crete (then Candia, modern Heraklion) wrote reports on the day of the earthquake and again twenty days later, placing the event and its date on the contemporaneous documentary record. The Pharos of Alexandria, already weakened, was badly damaged.',
+        source: {
+          externalId: 'src:crete-earthquake-1303-candia-reports',
+          name: '1303 Crete earthquake — contemporaneous Venetian administrative reports from Candia (Heraklion), written on and twenty days after 8 August 1303.',
+          url: 'https://en.wikipedia.org/wiki/1303_Crete_earthquake',
+          publishedAt: '1303-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern seismological catalogues of historical Mediterranean earthquakes reconstruct the 8 August 1303 event from the surviving Venetian, Egyptian, and Byzantine accounts, estimating a magnitude near 8 and a destructive tsunami with run-up of several metres at Alexandria. The earthquake is identified as a key factor in the final ruin of the Lighthouse of Alexandria.',
+        source: {
+          externalId: 'src:crete-earthquake-1303-seismology',
+          name: '1303 Crete earthquake — modern seismological reconstruction (magnitude ~8, tsunami, damage to the Pharos).',
+          url: 'https://en.wikipedia.org/wiki/1303_Crete_earthquake',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Bannockburn (23–24 June 1314) ─────────────────────────────────
+  {
+    externalId: 'trajectory:battle-bannockburn-1314',
+    text: 'Robert the Bruce\'s Scottish army decisively defeated the larger English army of Edward II at the Battle of Bannockburn on 23–24 June 1314, a turning point in the First War of Scottish Independence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1314-06-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1314-06-24',
+        datePrecision: 'DAY',
+        reason: 'Over two days near the Bannock Burn south of Stirling, Robert the Bruce\'s schiltrons broke Edward II\'s much larger force, and the English king fled the field. The battle is recorded in near-contemporary chronicles including the Vita Edwardi Secundi (which describes Bruce killing Henry de Bohun with an axe), the Lanercost Chronicle, and Thomas Gray\'s Scalacronica, placing the victory and its date on the record within a generation.',
+        source: {
+          externalId: 'src:bannockburn-1314-chronicles',
+          name: 'Battle of Bannockburn, 23–24 June 1314 — contemporaneous accounts in the Vita Edwardi Secundi, Lanercost Chronicle, and Scalacronica.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Bannockburn',
+          publishedAt: '1314-06-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1328-03-17',
+        datePrecision: 'DAY',
+        reason: 'The military verdict of Bannockburn was eventually fixed in law: by the Treaty of Edinburgh–Northampton, signed at Holyrood on 17 March 1328, the English crown renounced its claims and recognised Scotland as fully independent and Robert the Bruce and his heirs as its rightful rulers, with the border restored to that of Alexander III\'s reign.',
+        source: {
+          externalId: 'src:treaty-edinburgh-northampton-1328',
+          name: 'Treaty of Edinburgh–Northampton (signed 17 March 1328) — English recognition of Scottish independence.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Edinburgh%E2%80%93Northampton',
+          publishedAt: '1328-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
