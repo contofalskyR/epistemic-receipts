@@ -42442,6 +42442,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aston's mass spectrograph proves stable isotopes ───────────────────────
+  {
+    externalId: 'trajectory:aston-isotopes-mass-spectrograph-1919',
+    text: 'Francis W. Aston, using the mass spectrograph he built at the Cavendish Laboratory, demonstrated in 1919 that ordinary (non-radioactive) elements such as neon exist as mixtures of isotopes with whole-number masses, and formulated the whole-number rule.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-12-01',
+        datePrecision: 'MONTH',
+        reason: 'After completing his first mass spectrograph at the Cavendish Laboratory, Aston resolves neon into two components of mass 20 and 22, confirming the 1912 hint from J.J. Thomson\'s positive-ray work that a stable element can be a mixture of isotopes. He reports the instrument and the resolution of neon isotopes in The Philosophical Magazine, establishing that isotopy is not confined to radioactive elements.',
+        source: {
+          externalId: 'src:aston-neon-isotopes-1919',
+          name: 'Aston FW. "A positive ray spectrograph." The Philosophical Magazine, Series 6, Vol. 38, No. 228, December 1919.',
+          url: 'https://en.wikipedia.org/wiki/Francis_William_Aston',
+          publishedAt: '1919-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-12-10',
+        datePrecision: 'DAY',
+        reason: 'Aston measures the isotopic composition of more than fifty elements and enunciates the whole-number rule (atomic masses are near-integers when oxygen is taken as 16, the deviations later understood as nuclear binding energy). The Royal Swedish Academy awards him the 1922 Nobel Prize in Chemistry "for his discovery, by means of his mass spectrograph, of isotopes in a large number of non-radioactive elements, and for his enunciation of the whole-number rule," settling stable isotopes as established physical chemistry.',
+        source: {
+          externalId: 'src:aston-nobel-chemistry-1922',
+          name: 'Nobel Prize in Chemistry 1922 awarded to Francis William Aston — discovery of isotopes and the whole-number rule.',
+          url: 'https://en.wikipedia.org/wiki/Francis_William_Aston',
+          publishedAt: '1922-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Italy invades Ethiopia; League of Nations sanctions fail ───────────────
+  {
+    externalId: 'trajectory:italian-invasion-ethiopia-1935',
+    text: 'On 3 October 1935 Fascist Italy invaded Ethiopia (Abyssinia) without a declaration of war, prompting the League of Nations to declare Italy the aggressor and impose economic sanctions on 18 November 1935 — sanctions that failed to halt the conquest.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1935-10-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1935-10-03',
+        datePrecision: 'DAY',
+        reason: 'At 5:00 am on 3 October 1935 General Emilio De Bono\'s forces cross the Mareb River from Eritrea into Ethiopia without a formal declaration of war. The invasion is reported immediately by the international press and by Emperor Haile Selassie\'s government, which appeals to the League of Nations under the Covenant.',
+        source: {
+          externalId: 'src:second-italo-ethiopian-war-1935',
+          name: 'Second Italo-Ethiopian War — Italian invasion of 3 October 1935 (encyclopedic synthesis of contemporary reports).',
+          url: 'https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War',
+          publishedAt: '1935-10-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-11-18',
+        datePrecision: 'DAY',
+        reason: 'The League of Nations finds Italy in violation of the Covenant and, on 18 November 1935, imposes economic sanctions approved by fifty member states with only Italy voting against. The sanctions exclude oil, coal, and steel and Britain leaves the Suez Canal open, so they fail to stop the war; Addis Ababa falls in May 1936. The episode is documented in the League\'s own records as a demonstrable failure of collective security.',
+        source: {
+          externalId: 'src:league-sanctions-italy-1935',
+          name: 'League of Nations economic sanctions against Italy, 18 November 1935 (Second Italo-Ethiopian War record).',
+          url: 'https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War',
+          publishedAt: '1935-11-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Krebs identifies the citric acid cycle ─────────────────────────────────
+  {
+    externalId: 'trajectory:krebs-citric-acid-cycle-1937',
+    text: 'In 1937 Hans Krebs and William Johnson, working at the University of Sheffield, identified the citric acid cycle (the Krebs cycle) as the central pathway of aerobic cellular respiration.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-06-10',
+        datePrecision: 'DAY',
+        reason: 'After experiments on pigeon breast muscle showing that small catalytic amounts of citrate, succinate, and related acids accelerate respiration, Krebs and Johnson deduce a closed cyclic sequence of reactions. Krebs submits a letter to Nature on 10 June 1937; the journal declines it for lack of space, and the work is published in the Dutch journal Enzymologia and (in related form) in The Biochemical Journal, vol. 31, in 1937.',
+        source: {
+          externalId: 'src:krebs-citric-acid-cycle-1937',
+          name: 'Krebs HA, Johnson WA. "The role of citric acid in intermediate metabolism in animal tissues." Enzymologia 4:148–156 (1937); cf. Biochemical Journal 31(4):645 (1937).',
+          url: 'https://en.wikipedia.org/wiki/Citric_acid_cycle',
+          publishedAt: '1937-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-12-10',
+        datePrecision: 'DAY',
+        reason: 'The cycle is independently confirmed and integrated into the broader account of intermediary metabolism over the following decade and a half. Krebs is awarded the 1953 Nobel Prize in Physiology or Medicine "for his discovery of the citric acid cycle," shared with Fritz Lipmann (coenzyme A), establishing the pathway as foundational biochemistry taught universally.',
+        source: {
+          externalId: 'src:krebs-nobel-medicine-1953',
+          name: 'Nobel Prize in Physiology or Medicine 1953 awarded to Hans Adolf Krebs for the discovery of the citric acid cycle.',
+          url: 'https://en.wikipedia.org/wiki/Hans_Adolf_Krebs',
+          publishedAt: '1953-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Liberation of Bergen-Belsen ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bergen-belsen-liberation-1945',
+    text: 'British forces liberated the Bergen-Belsen concentration camp on 15 April 1945, finding tens of thousands of unburied dead and dying prisoners; the conditions were documented on film and in a BBC radio report by Richard Dimbleby broadcast the same day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-04-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-04-15',
+        datePrecision: 'DAY',
+        reason: 'Units of the British 11th Armoured Division enter Bergen-Belsen, finding roughly 60,000 starving prisoners and thousands of unburied corpses amid a typhus epidemic. BBC correspondent Richard Dimbleby records an eyewitness report on the day of liberation, and the British Army Film and Photographic Unit documents the camp from 15 April, producing imagery shown internationally.',
+        source: {
+          externalId: 'src:dimbleby-belsen-broadcast-1945',
+          name: 'Richard Dimbleby, BBC eyewitness report from Bergen-Belsen, 15 April 1945; British Army Film and Photographic Unit footage (Imperial War Museum).',
+          url: 'https://en.wikipedia.org/wiki/Bergen-Belsen_concentration_camp',
+          publishedAt: '1945-04-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1945-11-17',
+        datePrecision: 'DAY',
+        reason: 'The crimes at Belsen are established judicially at the Belsen Trial before a British military court at Lüneburg (17 September–17 November 1945), where commandant Josef Kramer and others are convicted on the basis of the photographic record, autopsies, and survivor testimony. The filmed evidence and trial findings place the camp\'s conditions beyond dispute.',
+        source: {
+          externalId: 'src:belsen-trial-1945',
+          name: 'The Belsen Trial, Lüneburg, 17 September – 17 November 1945 (British military court; conviction of Josef Kramer and others).',
+          url: 'https://en.wikipedia.org/wiki/Belsen_trial',
+          publishedAt: '1945-11-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sétif and Guelma massacre — Algerian independence catalyst ─────────────
+  {
+    externalId: 'trajectory:setif-guelma-massacre-1945',
+    text: 'On 8 May 1945 — VE Day — French colonial forces fired on Algerian demonstrators at Sétif, triggering weeks of killings across Sétif and Guelma in which thousands of Algerian Muslims died, an event widely identified as a catalyst of the Algerian independence movement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-05-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1945-05-08',
+        datePrecision: 'DAY',
+        reason: 'During a victory-in-Europe march at Sétif on 8 May 1945, French gendarmes attempt to seize Algerian nationalist banners and fire on the crowd. Violence spreads through the Sétif and Guelma regions: attacks on European settlers kill about 100, and French military, aerial bombardment, and settler reprisals kill far larger numbers of Algerian Muslims over the following weeks. The events are reported contemporaneously in the French and Algerian press.',
+        source: {
+          externalId: 'src:setif-guelma-massacre-1945',
+          name: 'Sétif and Guelma massacre, beginning 8 May 1945 (encyclopedic synthesis of contemporary reports and later inquiries).',
+          url: 'https://en.wikipedia.org/wiki/S%C3%A9tif_and_Guelma_massacre',
+          publishedAt: '1945-05-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-02-27',
+        datePrecision: 'DAY',
+        reason: 'Historians establish the massacre as a turning point that radicalised Algerian nationalism and prefigured the 1954 war of independence; General Raymond Duval\'s warning that repression had bought "ten years of peace" is widely cited. The events pass into official acknowledgement when French ambassador Hubert Colin de Verdière publicly called the killings an "inexcusable tragedy" at Sétif on 27 February 2005.',
+        source: {
+          externalId: 'src:france-setif-acknowledgement-2005',
+          name: 'French ambassador Hubert Colin de Verdière describes the Sétif massacre as an "inexcusable tragedy," Sétif, 27 February 2005.',
+          url: 'https://en.wikipedia.org/wiki/S%C3%A9tif_and_Guelma_massacre',
+          publishedAt: '2005-02-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
