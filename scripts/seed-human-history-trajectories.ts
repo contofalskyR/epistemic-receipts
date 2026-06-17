@@ -46192,6 +46192,423 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN — additional verified curves (1400–1750)
+  // Scientific Revolution · Reformation · New World · Ottoman Empire
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Leibniz publishes the differential calculus (1684) ───────────────────────
+  {
+    externalId: 'trajectory:leibniz-nova-methodus-1684',
+    text: 'In October 1684 Gottfried Wilhelm Leibniz published "Nova Methodus pro Maximis et Minimis" in the Acta Eruditorum — the first published account of the differential calculus, introducing the dx/dy notation still in use; a bitter priority dispute with Isaac Newton followed, but modern scholarship holds that the two invented the calculus independently.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1684-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1684-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Leibniz publishes a six-page paper, "Nova Methodus pro Maximis et Minimis, itemque Tangentibus...", in the October 1684 issue of the Leipzig journal Acta Eruditorum. It sets out the rules of differentiation, the differential operator d, and the now-standard notation dx and dy, applying the new method to problems of tangents, maxima and minima. It is the first appearance in print of the differential calculus.',
+        source: {
+          externalId: 'src:leibniz-nova-methodus-1684',
+          name: 'Leibniz GW. Nova Methodus pro Maximis et Minimis. Acta Eruditorum, October 1684.',
+          url: 'https://en.wikipedia.org/wiki/Nova_Methodus_pro_Maximis_et_Minimis',
+          publishedAt: '1684-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1713-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Newton supporters (beginning with Fatio de Duillier in 1699) accused Leibniz of plagiarising a method Newton had developed in his 1665–1666 manuscripts, the Royal Society — then presided over by Newton himself — convened a committee whose report, the Commercium Epistolicum (1712, printed 1713), ruled in Newton\'s favour and effectively branded Leibniz a plagiarist. The question of who first invented the calculus, and whether independently, became openly contested across Europe.',
+        source: {
+          externalId: 'src:commercium-epistolicum-1713',
+          name: 'Royal Society, Commercium Epistolicum (1712/1713); Leibniz–Newton calculus controversy.',
+          url: 'https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy',
+          publishedAt: '1713-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historians of mathematics, with access to the dated manuscripts of both men, conclude that Newton developed his "method of fluxions" first (c. 1665–1666) but published late, while Leibniz developed his differential calculus independently from about 1674 and published first in 1684. The two are credited as independent co-inventors, and it is Leibniz\'s notation that prevailed in mathematical practice.',
+        source: {
+          externalId: 'src:leibniz-newton-independent-invention',
+          name: 'Leibniz–Newton calculus controversy — modern consensus on independent invention.',
+          url: 'https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Magdeburg hemispheres — atmospheric pressure demonstrated (1654) ─────────
+  {
+    externalId: 'trajectory:magdeburg-hemispheres-1654',
+    text: 'On 8 May 1654, before Emperor Ferdinand III and the Imperial Diet at Regensburg, Otto von Guericke joined two copper hemispheres, evacuated the air with his vacuum pump, and showed that teams of horses could not pull them apart — a public demonstration of the force of atmospheric pressure and the reality of an artificial vacuum.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1654-05-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1654-05-08',
+        datePrecision: 'DAY',
+        reason: 'At the Reichstag in Regensburg, Guericke fits two roughly half-metre copper hemispheres together with a greased seal and pumps out the air with the piston pump he had invented. With the interior evacuated, the external air pressure holds the hemispheres so firmly that two teams of horses cannot separate them; opening the valve lets them fall apart by hand. The spectacle demonstrates both that a sustained vacuum can be produced and that the surrounding air exerts a great mechanical force.',
+        source: {
+          externalId: 'src:magdeburg-hemispheres-demonstration-1654',
+          name: 'Magdeburg hemispheres — Otto von Guericke\'s vacuum demonstration at Regensburg, 8 May 1654.',
+          url: 'https://en.wikipedia.org/wiki/Magdeburg_hemispheres',
+          publishedAt: '1654-05-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1657-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Jesuit Gaspar Schott publishes the first printed account of the experiment in his Mechanica Hydraulico-Pneumatica (1657), disseminating Guericke\'s vacuum work to the wider learned world; Guericke gives his own full description in Experimenta Nova (ut vocantur) Magdeburgica (1672). Together with Torricelli\'s barometer and Boyle\'s air-pump experiments, the result establishes atmospheric pressure and the possibility of a vacuum as settled physics, against the old doctrine of horror vacui.',
+        source: {
+          externalId: 'src:schott-mechanica-hydraulico-pneumatica-1657',
+          name: 'Schott G. Mechanica Hydraulico-Pneumatica (1657); Guericke O. Experimenta Nova Magdeburgica (1672).',
+          url: 'https://en.wikipedia.org/wiki/Otto_von_Guericke',
+          publishedAt: '1657-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tulip mania — the price collapse of February 1637 ───────────────────────
+  {
+    externalId: 'trajectory:tulip-mania-collapse-1637',
+    text: 'In the first week of February 1637 the speculative market in tulip bulbs in the Dutch Republic collapsed, when an auction at Haarlem failed to find buyers; the episode was recorded in contemporaneous pamphlets, mythologised in the 19th century as a mass mania, and substantially corrected by 21st-century archival research.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1637-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1637-02-01',
+        datePrecision: 'MONTH',
+        reason: 'After a winter of soaring forward-contract prices for rare tulip bulbs, a Haarlem auction around 3 February 1637 fails to attract bidders even after the asking price is repeatedly lowered; confidence collapses and the futures market for bulbs unravels within days. The events are recorded almost immediately in printed pamphlets, notably the satirical "Samenspraeck tusschen Waermondt ende Gaergoedt" (Dialogues between Waermondt and Gaergoedt, 1637).',
+        source: {
+          externalId: 'src:tulip-mania-collapse-1637',
+          name: 'Tulip mania — February 1637 collapse; contemporaneous Waermondt–Gaergoedt dialogues (1637).',
+          url: 'https://en.wikipedia.org/wiki/Tulip_mania',
+          publishedAt: '1637-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1841-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Charles Mackay\'s "Extraordinary Popular Delusions and the Madness of Crowds" (1841) popularised tulip mania as the archetypal speculative bubble — a nationwide frenzy in which fortunes were made and lost and the economy was thrown into crisis. This dramatic account became the settled popular and textbook understanding of the episode for well over a century.',
+        source: {
+          externalId: 'src:mackay-popular-delusions-1841',
+          name: 'Mackay C. Extraordinary Popular Delusions and the Madness of Crowds (1841), ch. on the tulipomania.',
+          url: 'https://en.wikipedia.org/wiki/Extraordinary_Popular_Delusions_and_the_Madness_of_Crowds',
+          publishedAt: '1841-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Anne Goldgar\'s archival study "Tulipmania: Money, Honor, and Knowledge in the Dutch Golden Age" (2007) confirms that the price collapse of February 1637 was real but shows the popular narrative was greatly exaggerated: trading was confined to a fairly small circle of merchants and skilled craftsmen, few participants were ruined, and most inflated contracts were simply never settled. The dated collapse stands; the myth of a nation-wrecking mania does not.',
+        source: {
+          externalId: 'src:goldgar-tulipmania-2007',
+          name: 'Goldgar A. Tulipmania: Money, Honor, and Knowledge in the Dutch Golden Age. University of Chicago Press, 2007.',
+          url: 'https://en.wikipedia.org/wiki/Tulip_mania',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First book printed in the Ottoman Empire — Müteferrika press (1729) ──────
+  {
+    externalId: 'trajectory:muteferrika-first-printed-book-1729',
+    text: 'On 31 January 1729 Ibrahim Müteferrika issued the Vankulu Lügati (a two-volume Arabic–Turkish dictionary) from his press in Istanbul — the first book printed in the Ottoman Empire by Muslims using Arabic-script movable type, produced under an imperial ferman granted by Sultan Ahmed III in 1727.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1729-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1727-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In 1727, on the strength of a memorandum (the Wesîletü\'t-tıbâa) arguing the utility of printing, Ibrahim Müteferrika and Said Efendi obtain a ferman from Sultan Ahmed III, backed by a fetva from the Şeyhülislam, authorising a press for non-religious books in Müteferrika\'s house in the Fatih district of Istanbul. It is the first state-sanctioned Arabic-type press in the Ottoman world.',
+        source: {
+          externalId: 'src:muteferrika-ferman-1727',
+          name: 'Ibrahim Müteferrika — imperial ferman of Ahmed III authorising the first Ottoman Turkish printing press, 1727.',
+          url: 'https://en.wikipedia.org/wiki/Ibrahim_Muteferrika',
+          publishedAt: '1727-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1729-01-31',
+        datePrecision: 'DAY',
+        reason: 'The press completes its first book, the Vankulu Lügati (Vankulu\'s Turkish rendering of al-Jawharī\'s Arabic lexicon al-Ṣiḥāḥ), in two volumes dated 31 January 1729, in an edition of 1,000 copies. Surviving copies in the world\'s libraries fix it as the first printed book of the Ottoman Empire produced with Arabic-script movable type, and the press goes on to issue seventeen works in twenty-three volumes by 1743.',
+        source: {
+          externalId: 'src:vankulu-lugati-1729',
+          name: 'Vankulu Lügati (Kitāb-ı Lügat-ı Vankulu), printed by Ibrahim Müteferrika, 31 January 1729 — first book printed in the Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Ibrahim_Muteferrika',
+          publishedAt: '1729-01-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dalton's atomic theory & first table of atomic weights ───────────────────
+  {
+    externalId: 'trajectory:dalton-atomic-weights-1803',
+    text: 'John Dalton proposed that each chemical element consists of identical indivisible atoms of a characteristic weight, recording his first table of relative atomic weights in his notebook on 6 September 1803.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1803-09-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1803-09-06',
+        datePrecision: 'DAY',
+        reason: 'In a laboratory notebook entry dated 6 September 1803, Dalton sets out the relative weights of the atoms of a small number of elements (hydrogen, oxygen, nitrogen, carbon and others), assigning hydrogen the value 1. He reads the associated paper, "On the Absorption of Gases by Water and Other Liquids," to the Manchester Literary and Philosophical Society on 21 October 1803, appending the first published table of atomic weights.',
+        source: {
+          externalId: 'src:dalton-notebook-atomic-weights-1803',
+          name: 'John Dalton — laboratory notebook of 6 September 1803 lists the first relative atomic weights; table read to the Manchester Lit. & Phil. Society, 21 October 1803.',
+          url: 'https://en.wikipedia.org/wiki/John_Dalton',
+          publishedAt: '1803-09-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1808-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Dalton lays out the full atomic theory — elements composed of indivisible atoms, compounds formed in fixed whole-number ratios — in A New System of Chemical Philosophy (1808). The theory explains the laws of definite and multiple proportions and becomes the organising principle of nineteenth-century chemistry, refined but never overturned by later work on atomic weights and structure.',
+        source: {
+          externalId: 'src:dalton-new-system-1808',
+          name: 'Dalton J. A New System of Chemical Philosophy, Part I. Manchester: R. Bickerstaff, 1808.',
+          url: 'https://archive.org/details/newsystemofchemi01dalt',
+          publishedAt: '1808-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Helmholtz states the conservation of energy ──────────────────────────────
+  {
+    externalId: 'trajectory:helmholtz-conservation-energy-1847',
+    text: 'Hermann von Helmholtz gave the first comprehensive mathematical statement of the conservation of energy ("Über die Erhaltung der Kraft"), read to the Physical Society of Berlin on 23 July 1847.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-07-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-07-23',
+        datePrecision: 'DAY',
+        reason: 'In a lecture delivered to the Physikalische Gesellschaft zu Berlin on 23 July 1847, the 26-year-old Helmholtz argues from the impossibility of perpetual motion that the sum of a system\'s active (kinetic) and tension (potential) forces is conserved, expressing kinetic energy as one-half mass times velocity squared and applying the principle across mechanics, heat, electricity and physiology. The title page of the printed memoir records the date: "vorgetragen in der Sitzung der physikalischen Gesellschaft zu Berlin am 23sten Juli 1847."',
+        source: {
+          externalId: 'src:helmholtz-erhaltung-kraft-1847',
+          name: 'Helmholtz H. Über die Erhaltung der Kraft, eine physikalische Abhandlung, vorgetragen in der Sitzung der physikalischen Gesellschaft zu Berlin am 23sten Juli 1847. Berlin: G. Reimer, 1847.',
+          url: 'https://archive.org/details/b21506528',
+          publishedAt: '1847-07-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1850-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Helmholtz\'s memoir converges with the independent work of Julius Robert von Mayer (1842) and James Prescott Joule (1843–1850) on the mechanical equivalent of heat, and conservation of energy is established as the first law of thermodynamics. Within the decade it is adopted by Clausius, Kelvin and the wider physics community as a universal principle, never subsequently overturned.',
+        source: {
+          externalId: 'src:joule-mechanical-equivalent-1850',
+          name: 'Joule J.P. On the Mechanical Equivalent of Heat. Philosophical Transactions of the Royal Society of London 1850;140:61–82.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1850.0004',
+          publishedAt: '1850-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Prestwich & Evans establish the deep antiquity of man ────────────────────
+  {
+    externalId: 'trajectory:prestwich-antiquity-of-man-1859',
+    text: 'Joseph Prestwich and John Evans confirmed that flaked flint tools lay in undisturbed gravel beds alongside the bones of extinct animals in the Somme valley, establishing the deep geological antiquity of humankind — reported to the Royal Society on 26 May 1859.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1859-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-04-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 April 1859 the geologist Joseph Prestwich and the antiquary John Evans visit the Saint-Acheul gravel pits near Amiens, where they photograph and personally extract a flint hand-axe in situ from an undisturbed bed, beneath layers containing the bones of extinct mammals — corroborating the long-dismissed claims of Jacques Boucher de Perthes that worked tools and extinct fauna co-occurred.',
+        source: {
+          externalId: 'src:geolsoc-prestwich-somme',
+          name: 'Geological Society of London — "Joseph Prestwich and the Valley of the Somme" (Brixham Cave and the Antiquity of Man exhibition); documents the 27 April 1859 Saint-Acheul visit.',
+          url: 'https://www.geolsoc.org.uk/the-library/online-exhibitions/brixham-cave-and-the-antiquity-of-man/joseph-prestwich-and-the-valley-of-the-somme/',
+          publishedAt: '1859-04-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-05-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 May 1859 Prestwich reads "On the Occurrence of Flint Implements, Associated with the Remains of Animals of Extinct Species in Beds of a Late Geological Period" to the Royal Society. The endorsement of the find by Prestwich, Evans, and shortly afterward Charles Lyell, breaks the prior consensus tying human existence to a short biblical chronology and establishes that humans had lived in the deep geological past.',
+        source: {
+          externalId: 'src:prestwich-flint-implements-1859',
+          name: 'Prestwich J. On the Occurrence of Flint Implements, Associated with the Remains of Animals of Extinct Species in Beds of a Late Geological Period. Proceedings of the Royal Society of London 1859;10:50–59 (read 26 May 1859).',
+          url: 'https://en.wikipedia.org/wiki/Joseph_Prestwich',
+          publishedAt: '1859-05-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tyndall shows that gases absorb radiant heat (greenhouse effect) ──────────
+  {
+    externalId: 'trajectory:tyndall-radiant-heat-gases-1859',
+    text: 'John Tyndall demonstrated that water vapour and carbon dioxide strongly absorb and emit infrared (radiant) heat while the main constituents of air do not, providing the physical basis of the atmospheric greenhouse effect — first experiments on 9 May 1859.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1859-05-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1859-05-09',
+        datePrecision: 'DAY',
+        reason: 'Tyndall begins intensive experiments on the transmission of radiant heat through gases on 9 May 1859, and by 18 May records in his journal that "the subject is completely in my hands." On 10 June 1859 he delivers a Royal Institution discourse, "On the Transmission of Heat of different qualities through Gases of different kinds," showing that coal gas, ether vapour, water vapour and carbon dioxide absorb infrared strongly while oxygen and nitrogen are nearly transparent to it.',
+        source: {
+          externalId: 'src:tyndall-radiant-heat-gases-1859',
+          name: 'John Tyndall — experiments begun 9 May 1859 on the absorption of radiant heat by gases; Royal Institution discourse 10 June 1859 and Bakerian Lecture (Phil. Trans. 1861).',
+          url: 'https://en.wikipedia.org/wiki/John_Tyndall',
+          publishedAt: '1859-05-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-02-07',
+        datePrecision: 'DAY',
+        reason: 'In his Bakerian Lecture "On the Absorption and Radiation of Heat by Gases and Vapours," read to the Royal Society on 7 February 1861 and published in the Philosophical Transactions, Tyndall reports quantitative measurements confirming the differential absorption, and notes that changes in atmospheric water vapour and carbon dioxide "would produce great effects on the terrestrial rays and produce corresponding changes of climate." The result is the accepted physical foundation of the greenhouse effect.',
+        source: {
+          externalId: 'src:tyndall-bakerian-1861',
+          name: 'Tyndall J. On the Absorption and Radiation of Heat by Gases and Vapours. Philosophical Transactions of the Royal Society of London 1861;151:1–36 (Bakerian Lecture, read 7 February 1861).',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1861.0001',
+          publishedAt: '1861-02-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kekulé proposes the ring structure of benzene ────────────────────────────
+  {
+    externalId: 'trajectory:kekule-benzene-ring-1865',
+    text: 'August Kekulé proposed that the benzene molecule is a closed six-membered ring of carbon atoms, resolving the long-standing puzzle of the structure of aromatic compounds — published in 1865.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1865-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1865-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In a paper in the Bulletin de la Société Chimique de Paris, "Sur la constitution des substances aromatiques," Kekulé proposes that the six carbon atoms of benzene (C6H6) form a closed ring with alternating single and double bonds, each carbon bearing one hydrogen. The cyclic structure accounts for benzene\'s formula and for the number of isomers of its substitution products, which open-chain formulae could not explain.',
+        source: {
+          externalId: 'src:kekule-substances-aromatiques-1865',
+          name: 'Kekulé A. Sur la constitution des substances aromatiques. Bulletin de la Société Chimique de Paris 1865;3(2):98–110.',
+          url: 'https://en.wikipedia.org/wiki/August_Kekul%C3%A9',
+          publishedAt: '1865-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1866-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kekulé expands the theory in a longer 1866 German memoir, and the ring structure is rapidly adopted as the foundation of aromatic chemistry, guiding the explosive growth of the synthetic dye and pharmaceutical industries. The German Chemical Society held a jubilee ("Benzolfest") in 1890 marking the twenty-fifth anniversary of the benzene paper; the cyclic model, later refined by resonance and molecular-orbital theory, remains correct.',
+        source: {
+          externalId: 'src:kekule-benzol-untersuchungen-1866',
+          name: 'Kekulé A. Untersuchungen über aromatische Verbindungen. Annalen der Chemie und Pharmacie 1866;137(2):129–196.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/jlac.18661370202',
+          publishedAt: '1866-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
