@@ -34727,6 +34727,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — additional verified curves, non-Western priority
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── AlphaGo defeats Lee Sedol, Seoul, March 2016 ────────────────────────────
+  {
+    externalId: 'trajectory:alphago-defeats-lee-sedol-2016',
+    text: 'In March 2016 in Seoul, the AI program AlphaGo defeated South Korean Go grandmaster Lee Sedol 4–1 in a five-game match, the first time a computer beat a top human professional at Go on a full board without handicap.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'The DeepMind Challenge Match was played in Seoul from 9 to 15 March 2016. AlphaGo won games one, two, three and five; Lee Sedol won game four. The final score was 4–1 to the machine, all decisive games ending by resignation. The match was broadcast live and watched by hundreds of millions, especially across East Asia.',
+        source: {
+          externalId: 'src:chinadaily-alphago-leesedol-2016',
+          name: 'China Daily — "AlphaGo defeats Lee Sedol 4-1 in historic Go match," 15 March 2016.',
+          url: 'https://www.chinadaily.com.cn/world/2016-03/15/content_23883909.htm',
+          publishedAt: '2016-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'The result is uncontested and was widely recognized as a milestone in artificial intelligence — superhuman play at Go, a game whose enormous search space had long resisted brute-force methods, achieved roughly a decade earlier than many researchers predicted. The match record (game-by-game outcomes and moves) is publicly documented and reproducible.',
+        source: {
+          externalId: 'src:chinadaily-alphago-leesedol-2016',
+          name: 'China Daily — "AlphaGo defeats Lee Sedol 4-1 in historic Go match," 15 March 2016.',
+          url: 'https://www.chinadaily.com.cn/world/2016-03/15/content_23883909.htm',
+          publishedAt: '2016-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chang'e 4 first soft landing on the far side of the Moon, 3 Jan 2019 ────
+  {
+    externalId: 'trajectory:change-4-far-side-landing-2019',
+    text: "On January 3, 2019, China's Chang'e-4 spacecraft made the first-ever soft landing on the far side of the Moon, touching down in Von Kármán crater within the South Pole–Aitken basin.",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-01-03',
+        datePrecision: 'DAY',
+        reason: "The China National Space Administration announced that Chang'e-4 landed at 10:26 Beijing time (02:26 UTC) at approximately 177.6°E, 45.5°S, inside Von Kármán crater. The lander relayed data via the Queqiao relay satellite stationed at the Earth–Moon L2 point (the far side has no direct line of sight to Earth) and deployed the Yutu-2 rover.",
+        source: {
+          externalId: 'src:planetary-change4-landing-2019',
+          name: 'The Planetary Society — "China successfully lands Chang\'e-4 on far side of Moon," 3 January 2019.',
+          url: 'https://www.planetary.org/articles/change4-success',
+          publishedAt: '2019-01-03',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-01-11',
+        datePrecision: 'DAY',
+        reason: 'The landing was independently corroborated by relayed imagery, tracking of the Queqiao relay link, and subsequent peer-reviewed science from the lander and Yutu-2 rover. No party disputes that the first soft landing on the lunar far side was achieved; the priority claim is settled.',
+        source: {
+          externalId: 'src:planetary-change4-landing-2019',
+          name: 'The Planetary Society — "China successfully lands Chang\'e-4 on far side of Moon," 3 January 2019.',
+          url: 'https://www.planetary.org/articles/change4-success',
+          publishedAt: '2019-01-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First image of a black hole — EHT image of M87*, 10 April 2019 ──────────
+  {
+    externalId: 'trajectory:eht-m87-first-black-hole-image-2019',
+    text: 'On April 10, 2019, the Event Horizon Telescope Collaboration released the first direct image of a black hole — the supermassive black hole at the center of galaxy Messier 87 (M87*).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-04-10',
+        datePrecision: 'DAY',
+        reason: 'In coordinated press conferences across the globe, the EHT Collaboration unveiled an image showing a bright ring with a central dark "shadow" at the heart of M87, located about 55 million light-years away with a mass roughly 6.5 billion times that of the Sun. The image was reconstructed from April 2017 observations at 1.3 mm wavelength by a global network of radio observatories.',
+        source: {
+          externalId: 'src:nsf-eht-m87-image-2019',
+          name: 'U.S. National Science Foundation — "Astronomers capture first image of a black hole" (Event Horizon Telescope, M87), 10 April 2019.',
+          url: 'https://www.nsf.gov/news/news_summ.jsp?cntn_id=298276',
+          publishedAt: '2019-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-12',
+        datePrecision: 'DAY',
+        reason: 'The ring size and shape matched the photon orbit predicted by general relativity for a black hole of the independently inferred mass. The same very-long-baseline interferometry technique was subsequently used to image Sagittarius A* at the center of the Milky Way (released 12 May 2022), corroborating the method and reinforcing the M87* result as settled.',
+        source: {
+          externalId: 'src:eso-sgr-a-star-image-2022',
+          name: 'ESO Press Release eso2208 — "Astronomers reveal first image of the black hole at the heart of our galaxy," 12 May 2022.',
+          url: 'https://www.eso.org/public/news/eso2208-eht-mw/',
+          publishedAt: '2022-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 2004 Sumatra–Andaman earthquake and Indian Ocean tsunami, 26 Dec 2004 ───
+  {
+    externalId: 'trajectory:sumatra-andaman-earthquake-tsunami-2004',
+    text: 'On December 26, 2004, a magnitude 9.1 megathrust earthquake off northern Sumatra (the Sumatra–Andaman earthquake) generated the Indian Ocean tsunami, which killed roughly 228,000 people across a dozen countries.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-12-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-12-26',
+        datePrecision: 'DAY',
+        reason: 'At 00:58 UTC a rupture began along the subduction zone where the India Plate underthrusts the Burma microplate, extending about 1,200 km from northwest Sumatra to the Andaman Islands. Vertical seafloor displacement launched a basin-wide tsunami that struck Indonesia, Thailand, Sri Lanka, India, the Maldives and East Africa within hours. Global seismic networks recorded the event immediately.',
+        source: {
+          externalId: 'src:usgs-sumatra-andaman-2004',
+          name: 'U.S. Geological Survey — "Tsunami Generation from the 2004 M9.1 Sumatra-Andaman Earthquake."',
+          url: 'https://www.usgs.gov/centers/pcmsc/science/tsunami-generation-2004-m91-sumatra-andaman-earthquake',
+          publishedAt: '2004-12-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Initial magnitude estimates of roughly 8.5–9.0 were revised upward as longer-period seismic and geodetic data (including the first clear satellite radar-altimeter detection of an open-ocean tsunami) were analyzed. The USGS settled magnitude is M9.1, making it one of the three largest earthquakes ever instrumentally recorded; the fault geometry and rupture length are no longer in dispute.',
+        source: {
+          externalId: 'src:usgs-sumatra-andaman-2004',
+          name: 'U.S. Geological Survey — "Tsunami Generation from the 2004 M9.1 Sumatra-Andaman Earthquake."',
+          url: 'https://www.usgs.gov/centers/pcmsc/science/tsunami-generation-2004-m91-sumatra-andaman-earthquake',
+          publishedAt: '2004-12-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── India's Pokhran-II nuclear tests, 11–13 May 1998 ────────────────────────
+  {
+    externalId: 'trajectory:india-pokhran-ii-nuclear-tests-1998',
+    text: 'On May 11, 1998, India conducted three underground nuclear tests at Pokhran (Operation Shakti / Pokhran-II), followed by two more on May 13, 1998, after which India declared itself a nuclear weapons state.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1998-05-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-05-11',
+        datePrecision: 'DAY',
+        reason: 'At 3:45 p.m. local time on 11 May 1998 three devices were detonated simultaneously at the Pokhran range in Rajasthan; Prime Minister Atal Bihari Vajpayee announced the tests publicly the same afternoon, ending India\'s self-imposed restraint since the 1974 "peaceful" test. Two sub-kiloton devices followed on 13 May 1998.',
+        source: {
+          externalId: 'src:nuclearweaponarchive-shakti-1998',
+          name: 'The Nuclear Weapon Archive — "India\'s Nuclear Weapons Program: Operation Shakti: 1998."',
+          url: 'https://nuclearweaponarchive.org/India/IndiaShakti.html',
+          publishedAt: '1998-05-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-05-13',
+        datePrecision: 'DAY',
+        reason: 'After the 13 May tests Vajpayee declared "India is now a nuclear weapons state." Although the precise yields were debated internationally, the occurrence of the tests was confirmed by global seismic monitoring stations, and India\'s status as a declared nuclear power became an uncontested fact of the international system.',
+        source: {
+          externalId: 'src:nuclearweaponarchive-shakti-1998',
+          name: 'The Nuclear Weapon Archive — "India\'s Nuclear Weapons Program: Operation Shakti: 1998."',
+          url: 'https://nuclearweaponarchive.org/India/IndiaShakti.html',
+          publishedAt: '1998-05-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
