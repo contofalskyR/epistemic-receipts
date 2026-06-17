@@ -30673,6 +30673,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Decree of Canopus — Ptolemaic leap-year reform, 238 BCE ──────────────────
+  {
+    externalId: 'trajectory:decree-of-canopus-238bce',
+    text: 'The Decree of Canopus, issued by a synod of Egyptian priests under Ptolemy III Euergetes on 7 March 238 BCE, ordered the insertion of one leap day every fourth year to keep the 365-day Egyptian civil calendar aligned with the seasons and the heliacal rising of Sothis (Sirius).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0238-03-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0238-03-07',
+        datePrecision: 'DAY',
+        reason: 'A general synod of Egyptian priests assembled at Canopus in year 9 of Ptolemy III (7 Appellaios = 17 Tybi = 7 March 238 BCE) decreed that, because the 365-day civil year falls one day short and the heliacal rising of Sothis "advances one day every four years," a sixth epagomenal day should be added every fourth year so that the seasons and festivals no longer drift. The decree was inscribed in hieroglyphic, Demotic, and Greek on stone stelae set up in every major temple — a contemporaneous, self-dating primary record of the reform.',
+        source: {
+          externalId: 'src:decree-of-canopus-stele',
+          name: 'Decree of Canopus — trilingual priestly decree of Ptolemy III, 7 March 238 BCE (granodiorite stele, Egyptian Museum, Cairo).',
+          url: 'https://en.wikipedia.org/wiki/Decree_of_Canopus',
+          publishedAt: '0238-03-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0237-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Despite the decree, the leap-day reform was never put into lasting practice: the Egyptian priesthood and administration continued to use the uncorrected 365-day "wandering" year, and the Sothic calendar kept drifting against the seasons for the next two centuries. The reform lapsed almost immediately after promulgation.',
+        source: {
+          externalId: 'src:britannica-egyptian-calendar-canopus',
+          name: 'Egyptian calendar — failure of the Canopus leap-year reform. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/science/Egyptian-calendar',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'ABANDONED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0025-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The same quarter-day correction the Canopus synod had proposed was finally imposed on Egypt by Augustus around 26–25 BCE, fixing the reformed "Alexandrian" calendar with a leap day every four years to track the Julian year. The principle decreed at Canopus thus became settled civil reckoning, and the stele itself — recovered in 1866 — became a key trilingual aid to deciphering Egyptian scripts.',
+        source: {
+          externalId: 'src:alexandrian-calendar-augustus',
+          name: 'Alexandrian (Coptic) calendar — Augustan reform of 26–25 BCE adopting the Canopus quarter-day correction. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/science/Coptic-calendar',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Cannae — Hannibal annihilates the Roman army, 216 BCE ──────────
+  {
+    externalId: 'trajectory:battle-of-cannae-216bce',
+    text: 'On 2 August 216 BCE, Hannibal\'s Carthaginian army encircled and destroyed a much larger Roman force under the consuls Lucius Aemilius Paullus and Gaius Terentius Varro at Cannae in Apulia, inflicting one of the worst defeats in Roman history.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0216-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0216-08-02',
+        datePrecision: 'DAY',
+        reason: 'Hannibal drew the massed Roman infantry into a deliberately yielding crescent and enveloped them with cavalry and African veterans, surrounding and slaughtering tens of thousands. The disaster — including the death of the consul Paullus and many senators — was a public catastrophe at Rome, triggering emergency measures, the dictatorship, and even human sacrifice in the Forum Boarium.',
+        source: {
+          externalId: 'src:polybius-histories-cannae',
+          name: 'Polybius. The Histories, 3.107–118 — account of the Battle of Cannae (written c. 150 BCE from eyewitness-derived sources).',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0234%3Abook%3D3%3Achapter%3D107',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0025-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Polybius, the closest source, and Livy (Ab Urbe Condita 22.44–49), writing in the Augustan age, give convergent narratives of the encirclement, the consular command, and the scale of the losses; the Roman antiquarian tradition (Quintus Claudius Quadrigarius, cited by Macrobius) fixed the day as ante diem iv nonas Sextilis — 2 August. The event, its tactical character, and its date are settled in the historiography of the Second Punic War.',
+        source: {
+          externalId: 'src:livy-cannae-22',
+          name: 'Livy. Ab Urbe Condita, 22.44–49 — narrative of Cannae (written c. 25 BCE).',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0144%3Abook%3D22%3Achapter%3D44',
+          publishedAt: '0025-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Actium — Octavian defeats Antony and Cleopatra, 31 BCE ─────────
+  {
+    externalId: 'trajectory:battle-of-actium-31bce',
+    text: 'On 2 September 31 BCE, the fleet of Octavian under Marcus Agrippa defeated the combined fleets of Mark Antony and Cleopatra off Actium in western Greece, sealing Octavian\'s sole mastery of the Roman world and ending the era of the Republic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0031-09-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0031-09-02',
+        datePrecision: 'DAY',
+        reason: 'In a naval engagement at the mouth of the Ambracian Gulf, Antony\'s heavier ships were outmanoeuvred by Agrippa\'s lighter fleet; Cleopatra\'s squadron broke through and fled to Egypt, Antony followed, and his abandoned forces surrendered within days. The victory was commemorated immediately by Octavian, who founded Nicopolis ("victory city") on the site and instituted the Actian Games.',
+        source: {
+          externalId: 'src:res-gestae-actium',
+          name: 'Augustus. Res Gestae Divi Augusti, 25 — Augustus\'s own record of the victory at Actium (inscribed c. 14 CE).',
+          url: 'https://en.wikisource.org/wiki/Res_Gestae_Divi_Augusti',
+          publishedAt: '0014-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0100-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Augustus\'s contemporaneous public monuments and the Res Gestae are corroborated by Plutarch (Life of Antony 65–68) and Cassius Dio (Roman History 50), whose detailed accounts agree on the location, the commanders, Cleopatra\'s flight, and the decisive outcome; the date 2 September 31 BCE is fixed by Roman calendrical and commemorative records. The battle and its dating are settled fact.',
+        source: {
+          externalId: 'src:plutarch-antony-actium',
+          name: 'Plutarch. Life of Antony, 65–68 — account of the Battle of Actium. (c. 100 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2008.01.0007%3Achapter%3D65',
+          publishedAt: '0100-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dedication of Constantinople — new Roman capital consecrated, 330 CE ─────
+  {
+    externalId: 'trajectory:dedication-of-constantinople-330ce',
+    text: 'Constantine the Great formally dedicated his refounded city of Constantinople (on the site of Byzantium) as a new Roman capital on 11 May 330 CE.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0330-05-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0330-05-11',
+        datePrecision: 'DAY',
+        reason: 'After roughly six years of building, Constantine consecrated the city with Christian and traditional Roman rites, dedicating it as "New Rome." The inauguration was marked by games, the erection of monuments including the porphyry Column of Constantine, and the institution of an annual commemoration of the dedication day, fixing 11 May 330 in the city\'s official calendar.',
+        source: {
+          externalId: 'src:chronicon-paschale-constantinople',
+          name: 'Chronicon Paschale — entry recording the dedication of Constantinople on 11 May 330 (preserving earlier consularia).',
+          url: 'https://en.wikipedia.org/wiki/Chronicon_Paschale',
+          publishedAt: '0630-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The dedication date is independently attested in the late-Roman consular chronicles (Consularia Constantinopolitana), the Chronicon Paschale, and Byzantine tradition, which kept 11 May as the city\'s birthday for centuries. Modern scholarship on the foundation of Constantinople treats the 11 May 330 dedication as established fact.',
+        source: {
+          externalId: 'src:britannica-constantinople-foundation',
+          name: 'Constantinople — foundation and dedication by Constantine, 330 CE. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/place/Constantinople',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
