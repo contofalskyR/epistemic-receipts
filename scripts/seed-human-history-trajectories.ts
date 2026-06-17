@@ -28500,6 +28500,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900) — SUPPLEMENTAL
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Carnot — Reflections on the Motive Power of Fire ────────────────────────
+  {
+    externalId: 'trajectory:carnot-motive-power-of-fire-1824',
+    text: 'Sadi Carnot published "Réflexions sur la puissance motrice du feu" in 1824, establishing the theoretical maximum efficiency of heat engines (Carnot\'s theorem) and founding the science of thermodynamics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1824-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1824-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Carnot, a French military engineer, publishes a 118-page treatise (Paris: Bachelier, 1824) analysing the conversion of heat into mechanical work. He shows that the maximum efficiency of any heat engine depends only on the temperatures of its hot and cold reservoirs, not on the working substance, and introduces the idealised reversible cycle now called the Carnot cycle. The work receives almost no attention at the time, and Carnot dies of cholera in 1832 at age 36.',
+        source: {
+          externalId: 'src:carnot-reflexions-1824',
+          name: 'Carnot S. "Réflexions sur la puissance motrice du feu et sur les machines propres à développer cette puissance." Paris: Bachelier, 1824.',
+          url: 'https://en.wikipedia.org/wiki/Reflections_on_the_Motive_Power_of_Fire',
+          publishedAt: '1824-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1850-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Émile Clapeyron (1834) recast Carnot\'s reasoning graphically and analytically, and William Thomson (Lord Kelvin) and Rudolf Clausius built on it around 1849–1851 to formulate the second law of thermodynamics and the concept of entropy, while correcting Carnot\'s reliance on the obsolete caloric theory. Carnot\'s theorem and cycle became foundational results of physics and engineering, taught as settled science.',
+        source: {
+          externalId: 'src:clausius-second-law-1850',
+          name: 'Clausius R. "Über die bewegende Kraft der Wärme." Annalen der Physik 1850; recognition of Carnot\'s work summarised in Wikipedia entry.',
+          url: 'https://en.wikipedia.org/wiki/Reflections_on_the_Motive_Power_of_Fire',
+          publishedAt: '1850-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Schleiden & Schwann — cell theory ───────────────────────────────────────
+  {
+    externalId: 'trajectory:schleiden-schwann-cell-theory-1839',
+    text: 'Matthias Schleiden (1838) and Theodor Schwann (1839) formulated the cell theory, holding that all plants and animals are composed of cells as the basic unit of structure and life.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1839-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1839-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Botanist Matthias Schleiden ("Beiträge zur Phytogenesis," 1838) proposed that all plant tissue is composed of cells, and physiologist Theodor Schwann extended the generalisation to animals in "Mikroskopische Untersuchungen über die Uebereinstimmung in der Struktur und dem Wachsthum der Thiere und Pflanzen" (Berlin, 1839), stating that animals and plants alike are built from cells or cell products. This established the cell as the common structural unit of life.',
+        source: {
+          externalId: 'src:schwann-mikroskopische-untersuchungen-1839',
+          name: 'Schwann T. "Mikroskopische Untersuchungen über die Uebereinstimmung in der Struktur und dem Wachsthum der Thiere und Pflanzen." Berlin, 1839.',
+          url: 'https://en.wikipedia.org/wiki/Cell_theory',
+          publishedAt: '1839-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1858-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Rudolf Virchow\'s "Cellularpathologie" (1858) completed the theory with the dictum "omnis cellula e cellula" — every cell arises from a pre-existing cell — replacing Schleiden and Schwann\'s mistaken idea of spontaneous cell formation. With this correction the cell theory became a settled cornerstone of biology and medicine.',
+        source: {
+          externalId: 'src:virchow-cellularpathologie-1858',
+          name: 'Virchow R. "Die Cellularpathologie." Berlin, 1858 — "omnis cellula e cellula"; summarised in Wikipedia entry on cell theory.',
+          url: 'https://en.wikipedia.org/wiki/Cell_theory',
+          publishedAt: '1858-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fizeau — first terrestrial measurement of the speed of light ────────────
+  {
+    externalId: 'trajectory:fizeau-speed-of-light-1849',
+    text: 'In 1849 Hippolyte Fizeau made the first terrestrial measurement of the speed of light, using a rotating toothed wheel and a light beam between Suresnes and Montmartre, obtaining about 313,000 km/s.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1849-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1849-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Fizeau passed a light beam through the gaps of a rapidly rotating toothed wheel to a mirror 8,633 m away on Montmartre and back; at the right rotation speed the returning light was blocked by the next tooth, letting him compute the transit time. He obtained a value of about 313,274 km/s — within roughly 5% of the modern value — the first measurement of light\'s speed made entirely with terrestrial apparatus rather than astronomical observation.',
+        source: {
+          externalId: 'src:fizeau-speed-of-light-1849',
+          name: 'Fizeau H. "Sur une expérience relative à la vitesse de propagation de la lumière." Comptes rendus de l\'Académie des sciences, 1849; summarised in Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Fizeau%27s_measurement_of_the_speed_of_light_in_air',
+          publishedAt: '1849-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1862-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Léon Foucault refined the terrestrial method with a rotating mirror in 1862, yielding a more accurate value, and successive measurements (Cornu, Michelson) converged on the modern figure. Fizeau\'s result stands as the confirmed first laboratory determination of the speed of light, an uncontested milestone in the experimental record.',
+        source: {
+          externalId: 'src:foucault-speed-of-light-1862',
+          name: 'Foucault L. rotating-mirror determination of the speed of light, 1862; convergence of measurements summarised in Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Fizeau%27s_measurement_of_the_speed_of_light_in_air',
+          publishedAt: '1862-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Meiji Restoration — Restoration of Imperial Rule proclaimed ──────────────
+  {
+    externalId: 'trajectory:meiji-restoration-1868',
+    text: 'On 3 January 1868 the proclamation of the Restoration of Imperial Rule (Ōsei Fukkō) restored political authority to the Japanese emperor, ending more than 250 years of Tokugawa shogunate rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1868-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1868-01-03',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 3 January 1868, troops of the Satsuma, Chōshū and allied domains seized the gates of the Kyoto Imperial Palace, and a decree issued in the name of the young Emperor Mutsuhito (Meiji) proclaimed the restoration of direct imperial rule, abolished the shogunate and regency offices, and accepted the resignation of the last shōgun, Tokugawa Yoshinobu. The act is recorded in contemporaneous court and government documents.',
+        source: {
+          externalId: 'src:osei-fukko-decree-1868',
+          name: 'Decree of the Restoration of Imperial Rule (Ōsei Fukkō no Daigōrei), 3 January 1868; summarised in Wikipedia entry on the Meiji Restoration.',
+          url: 'https://en.wikipedia.org/wiki/Meiji_Restoration',
+          publishedAt: '1868-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1869-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The pro-shogunate resistance was defeated in the Boshin War (1868–1869), the capital was moved to Tokyo, and the new imperial government consolidated power and launched the modernising reforms of the Meiji era. The restoration of imperial rule on 3 January 1868 stands as the uncontested founding event of modern Japan in the historical record.',
+        source: {
+          externalId: 'src:meiji-restoration-consolidation-1869',
+          name: 'Meiji Restoration — Boshin War and consolidation of the new imperial government, 1868–1869 (Wikipedia synthesis).',
+          url: 'https://en.wikipedia.org/wiki/Meiji_Restoration',
+          publishedAt: '1869-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Schiaparelli's Martian "canali" — observation later reversed ────────────
+  {
+    externalId: 'trajectory:schiaparelli-mars-canali-1877',
+    text: 'During the 1877 opposition of Mars, Giovanni Schiaparelli reported a network of linear features he called "canali" (channels); the apparent network was later shown to be an optical illusion and does not exist.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1877-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1877-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Observing Mars at its close 1877 opposition from the Brera Observatory in Milan, Schiaparelli mapped numerous fine straight lines crossing the planet\'s surface and named them "canali" — Italian for "channels" or "grooves." His maps and the term entered the astronomical literature; mistranslated into English as "canals," the features fuelled decades of speculation, notably by Percival Lowell, about artificial waterways and intelligent life on Mars.',
+        source: {
+          externalId: 'src:schiaparelli-mars-1877',
+          name: 'Schiaparelli G. observations of Martian "canali" at the 1877 opposition; summarised in Wikipedia entry on Giovanni Schiaparelli.',
+          url: 'https://en.wikipedia.org/wiki/Giovanni_Schiaparelli',
+          publishedAt: '1877-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-07-15',
+        datePrecision: 'DAY',
+        reason: 'Larger telescopes and improved observers increasingly failed to confirm the linear network, and it came to be regarded as an optical illusion produced by the eye linking disconnected surface features. NASA\'s Mariner 4 flyby on 14–15 July 1965 returned the first close-up photographs of Mars, showing a cratered surface with no canals whatsoever and definitively reversing the claim.',
+        source: {
+          externalId: 'src:mariner4-mars-1965',
+          name: 'Mariner 4 flyby of Mars, 14–15 July 1965 — first close-up images showing no canals; summarised in Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Mariner_4',
+          publishedAt: '1965-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
