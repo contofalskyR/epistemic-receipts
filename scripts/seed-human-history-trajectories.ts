@@ -35963,6 +35963,295 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── The "November Revolution" — J/ψ meson and the charm quark ────────────────
+  {
+    externalId: 'trajectory:jpsi-november-revolution-1974',
+    text: 'On 11 November 1974, two independent teams — Samuel Ting\'s group at Brookhaven National Laboratory and Burton Richter\'s group at SLAC — simultaneously announced the discovery of a new heavy, anomalously long-lived particle (named "J" and "ψ" respectively), the J/ψ meson, providing the first experimental evidence for the charm quark.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-11-11',
+        datePrecision: 'DAY',
+        reason: 'Ting\'s Brookhaven team (measuring e+e- pairs from proton collisions) and Richter\'s SLAC team (at the SPEAR collider) realized they had detected the same sharp resonance near 3.1 GeV and announced simultaneously on 11 November 1974. Back-to-back papers appeared in Physical Review Letters days later. The resonance\'s extraordinarily narrow width was an immediate puzzle demanding explanation.',
+        source: {
+          externalId: 'src:wikipedia-november-revolution',
+          name: 'Wikipedia. "November Revolution (physics)" — simultaneous discovery of the J/ψ meson, 11 November 1974.',
+          url: 'https://en.wikipedia.org/wiki/November_Revolution_(physics)',
+          publishedAt: '1974-11-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The J/ψ was understood as a bound state of a charm quark and antiquark (charmonium). The 1976 discovery of open-charm D mesons at SLAC confirmed the existence of the charm quark itself, vindicating the GIM mechanism and cementing the four-quark picture of the emerging Standard Model.',
+        source: {
+          externalId: 'src:wikipedia-november-revolution-charm',
+          name: 'Wikipedia. "November Revolution (physics)" — confirmation of the charm quark via open-charm (D meson) discovery.',
+          url: 'https://en.wikipedia.org/wiki/November_Revolution_(physics)',
+          publishedAt: '1976-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-12-10',
+        datePrecision: 'DAY',
+        reason: 'Burton Richter and Samuel Ting shared the 1976 Nobel Prize in Physics "for their pioneering work in the discovery of a heavy elementary particle of a new kind," providing institutional ratification of the discovery barely two years after it was announced.',
+        source: {
+          externalId: 'src:nobel-physics-1976',
+          name: 'Nobel Prize in Physics 1976: Burton Richter, Samuel C.C. Ting.',
+          url: 'https://www.nobelprize.org/prizes/physics/1976/summary/',
+          publishedAt: '1976-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Montreal Protocol on ozone-depleting substances ─────────────────────────
+  {
+    externalId: 'trajectory:montreal-protocol-1987',
+    text: 'The Montreal Protocol on Substances that Deplete the Ozone Layer, an international treaty obligating signatory nations to phase out production of ozone-depleting chlorofluorocarbons (CFCs) and halons, was agreed and opened for signature in Montreal on 16 September 1987.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1987-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-09-16',
+        datePrecision: 'DAY',
+        reason: 'Acting on the scientific consensus that CFCs were destroying stratospheric ozone — reinforced by the 1985 discovery of the Antarctic ozone hole — negotiators agreed the Montreal Protocol on 16 September 1987 and opened it for signature. It set binding timetables to cut and ultimately eliminate production of the principal ozone-depleting substances.',
+        source: {
+          externalId: 'src:wikipedia-montreal-protocol',
+          name: 'Wikipedia. "Montreal Protocol" — agreed 16 September 1987.',
+          url: 'https://en.wikipedia.org/wiki/Montreal_Protocol',
+          publishedAt: '1987-09-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-01-01',
+        datePrecision: 'DAY',
+        reason: 'The Protocol entered into force on 1 January 1989 once the required threshold of ratifying states was met, making the phase-out obligations legally binding. Subsequent amendments (London 1990, Copenhagen 1992, and later) accelerated and broadened the controls.',
+        source: {
+          externalId: 'src:wikipedia-montreal-protocol-eif',
+          name: 'Wikipedia. "Montreal Protocol" — entered into force 1 January 1989.',
+          url: 'https://en.wikipedia.org/wiki/Montreal_Protocol',
+          publishedAt: '1989-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Montreal Protocol achieved universal ratification — every UN member state plus the EU and several others became parties — the first treaty in United Nations history to do so. Stratospheric chlorine levels began declining and the ozone layer was projected to recover, widely cited as the most successful international environmental agreement.',
+        source: {
+          externalId: 'src:wikipedia-montreal-protocol-universal',
+          name: 'Wikipedia. "Montreal Protocol" — universal ratification and ozone recovery.',
+          url: 'https://en.wikipedia.org/wiki/Montreal_Protocol',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Freedom Summer murders (Chaney, Goodman, Schwerner) ──────────────────────
+  {
+    externalId: 'trajectory:freedom-summer-murders-1964',
+    text: 'Civil rights workers James Chaney, Andrew Goodman, and Michael Schwerner were abducted and murdered by Ku Klux Klansmen near Philadelphia, Mississippi, on 21 June 1964 during the Freedom Summer voter-registration campaign.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1964-06-21',
+        datePrecision: 'DAY',
+        reason: 'The three workers disappeared on 21 June 1964 after being arrested in Neshoba County and released into a Klan ambush. When their burned station wagon was found two days later, their deaths were widely presumed; the FBI opened the "Mississippi Burning" (MIBURN) investigation under intense national press attention.',
+        source: {
+          externalId: 'src:wikipedia-cgs-murders',
+          name: 'Wikipedia. "Murders of Chaney, Goodman, and Schwerner" — abduction and disappearance, 21 June 1964.',
+          url: 'https://en.wikipedia.org/wiki/Murders_of_Chaney,_Goodman,_and_Schwerner',
+          publishedAt: '1964-06-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-08-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 August 1964 the FBI recovered the three bodies from an earthen dam outside Philadelphia, Mississippi, confirming that the men had been murdered. The recovery and autopsies established the deaths as fact and intensified national pressure that helped advance civil rights legislation.',
+        source: {
+          externalId: 'src:wikipedia-cgs-murders-bodies',
+          name: 'Wikipedia. "Murders of Chaney, Goodman, and Schwerner" — bodies recovered 4 August 1964.',
+          url: 'https://en.wikipedia.org/wiki/Murders_of_Chaney,_Goodman,_and_Schwerner',
+          publishedAt: '1964-08-04',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1967-10-20',
+        datePrecision: 'DAY',
+        reason: 'In October 1967 a federal jury convicted seven defendants of conspiracy to deprive the victims of their civil rights — the first convictions in Mississippi for the killing of civil rights workers. The state of Mississippi brought no murder charges at the time.',
+        source: {
+          externalId: 'src:wikipedia-cgs-murders-1967-trial',
+          name: 'Wikipedia. "Murders of Chaney, Goodman, and Schwerner" — 1967 federal civil-rights conspiracy convictions.',
+          url: 'https://en.wikipedia.org/wiki/Murders_of_Chaney,_Goodman,_and_Schwerner',
+          publishedAt: '1967-10-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2005-06-21',
+        datePrecision: 'DAY',
+        reason: 'Exactly 41 years to the day after the murders, on 21 June 2005, a Mississippi state jury convicted Klan organizer Edgar Ray Killen of three counts of manslaughter — the first state prosecution and conviction in the case.',
+        source: {
+          externalId: 'src:wikipedia-cgs-murders-killen',
+          name: 'Wikipedia. "Murders of Chaney, Goodman, and Schwerner" — Edgar Ray Killen convicted 21 June 2005.',
+          url: 'https://en.wikipedia.org/wiki/Murders_of_Chaney,_Goodman,_and_Schwerner',
+          publishedAt: '2005-06-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Altair 8800 launches the personal-computer era ──────────────────────────
+  {
+    externalId: 'trajectory:altair-8800-popular-electronics-1975',
+    text: 'The MITS Altair 8800, the microcomputer widely credited with launching the personal-computer industry, was introduced to the public on the cover of the January 1975 issue of Popular Electronics, which reached newsstands in late December 1974.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1975-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The January 1975 cover of Popular Electronics featured Ed Roberts and MITS\'s Altair 8800, an Intel 8080-based computer kit sold for under $400. The article put an affordable programmable computer in the hands of hobbyists for the first time, and MITS was immediately flooded with orders.',
+        source: {
+          externalId: 'src:wikipedia-altair-8800',
+          name: 'Wikipedia. "Altair 8800" — introduced on the January 1975 cover of Popular Electronics.',
+          url: 'https://en.wikipedia.org/wiki/Altair_8800',
+          publishedAt: '1975-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1975-04-04',
+        datePrecision: 'DAY',
+        reason: 'Demand vastly exceeded MITS\'s projections — thousands of orders arrived within months. Bill Gates and Paul Allen wrote Altair BASIC, founding Microsoft on 4 April 1975 to supply it. The Altair catalyzed the microcomputer industry: hobbyist clubs, peripheral makers, and rival machines followed within two years.',
+        source: {
+          externalId: 'src:wikipedia-altair-8800-market',
+          name: 'Wikipedia. "Altair 8800" — commercial demand, Altair BASIC, and the founding of Microsoft.',
+          url: 'https://en.wikipedia.org/wiki/Altair_8800',
+          publishedAt: '1975-04-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Humulin — first genetically engineered medicine ─────────────────────────
+  {
+    externalId: 'trajectory:humulin-recombinant-insulin-1982',
+    text: 'Humulin — biosynthetic human insulin produced in E. coli by recombinant DNA technology — became the first genetically engineered medicine approved for human use when the U.S. FDA granted marketing approval on 30 October 1982.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-09-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-09-06',
+        datePrecision: 'DAY',
+        reason: 'On 6 September 1978, Genentech and the City of Hope National Medical Center announced the first successful laboratory production of human insulin using recombinant DNA technology — synthesizing the insulin genes, expressing the A and B chains in E. coli, and combining them. It was hailed as a landmark in molecular biology and diabetes treatment.',
+        source: {
+          externalId: 'src:endocrine-reviews-humulin-path',
+          name: 'Endocrine Reviews (Oxford). "Making, Cloning, and the Expression of Human Insulin Genes in Bacteria: The Path to Humulin."',
+          url: 'https://academic.oup.com/edrv/article/42/3/374/6042201',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1982-10-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 October 1982 the U.S. FDA approved Humulin (manufactured by Eli Lilly under licence from Genentech) — the first-ever approved genetically engineered therapeutic for humans. The agency cleared it in roughly five months, far faster than the era\'s average, signalling regulatory acceptance of recombinant-DNA pharmaceuticals.',
+        source: {
+          externalId: 'src:wikipedia-genentech-humulin',
+          name: 'Wikipedia. "Genentech" — Humulin approved by the FDA in 1982, the first approved genetically engineered human therapeutic.',
+          url: 'https://en.wikipedia.org/wiki/Genentech',
+          publishedAt: '1982-10-30',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1983-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Eli Lilly brought Humulin to market commercially in 1983, beginning the replacement of animal-derived insulin and inaugurating the biotechnology pharmaceutical industry. Recombinant human insulin went on to become the global standard of care.',
+        source: {
+          externalId: 'src:wikipedia-genentech-humulin-market',
+          name: 'Wikipedia. "Genentech" — commercial launch of Humulin by Eli Lilly and the start of the biotech drug industry.',
+          url: 'https://en.wikipedia.org/wiki/Genentech',
+          publishedAt: '1983-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
