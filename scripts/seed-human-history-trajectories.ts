@@ -114,6 +114,48 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Octavian granted the name "Augustus" — founding of the Principate ───────
+  {
+    externalId: 'trajectory:octavian-named-augustus-27bce',
+    text: 'On January 16, 27 BCE, the Roman Senate granted Octavian the honorific name "Augustus," formalizing the settlement that established the Principate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0027-01-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0027-01-16',
+        datePrecision: 'DAY',
+        reason: 'In his seventh consulship Octavian formally transfers the state to the Senate and people of Rome; in return the Senate decrees him the cognomen "Augustus," laurels for his doorposts, a civic crown above his door, and a golden shield set in the Curia Julia. Augustus records the act in his own funerary inscription: "I was given the title of Augustus by decree of the Senate" (Res Gestae 34).',
+        source: {
+          externalId: 'src:res-gestae-34-augustus',
+          name: 'Augustus. Res Gestae Divi Augusti, 34. (completed 14 CE — "augustus appellatus sum senatus consulto")',
+          url: 'https://www.livius.org/sources/content/augustus-res-gestae/',
+          publishedAt: '0014-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The precise day, 16 January 27 BCE, is fixed by the Roman calendars (the Praenestine Fasti) and by Ovid (Fasti 1.587–616), and the settlement is narrated by Suetonius (Augustus 7) and Cassius Dio (53). Historians treat 16 January 27 BCE as the conventional starting point of the Principate and of Augustus\'s reign as first Roman emperor.',
+        source: {
+          externalId: 'src:wikipedia-augustus-title',
+          name: 'Augustus — Senate confers the name "Augustus" on 16 January 27 BCE (First Settlement).',
+          url: 'https://en.wikipedia.org/wiki/Augustus',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 2. Romulus Augustulus deposed — end of Western Roman Empire ─────────────
   {
     externalId: 'trajectory:western-rome-falls-476',
@@ -32735,6 +32777,220 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Kepler publishes Astronomia Nova (1609) ─────────────────────────────────
+  {
+    externalId: 'trajectory:kepler-astronomia-nova-1609',
+    text: 'Johannes Kepler\'s Astronomia Nova, published in 1609, established that the planets move in elliptical orbits with the Sun at one focus (Kepler\'s first law) and that a planet sweeps out equal areas in equal times (the area law, his second law), overturning the ancient doctrine of uniform circular motion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1609-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1609-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After nearly a decade of analysing Tycho Brahe\'s precise observations of Mars, Kepler published Astronomia Nova in 1609. In it he demonstrated that Mars\' orbit is an ellipse with the Sun at one focus, and introduced the area law governing a planet\'s changing speed — replacing the circular orbits and equants of Ptolemaic and Copernican astronomy. The printed treatise records the derivation in detail.',
+        source: {
+          externalId: 'src:kepler-astronomia-nova-1609',
+          name: 'Johannes Kepler, Astronomia Nova (1609) — first law (elliptical orbits) and the area law.',
+          url: 'https://en.wikipedia.org/wiki/Astronomia_nova',
+          publishedAt: '1609-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'In the Philosophiæ Naturalis Principia Mathematica (5 July 1687), Isaac Newton showed that a body moving under an inverse-square central force obeys Kepler\'s laws, deriving the elliptical orbit and area law from his theory of universal gravitation. Kepler\'s empirical laws thereby became settled consequences of mechanics, undisputed in subsequent astronomy.',
+        source: {
+          externalId: 'src:kepler-laws-newton-derivation',
+          name: 'Kepler\'s laws of planetary motion — derived by Newton from gravitation in the Principia (1687).',
+          url: 'https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion',
+          publishedAt: '1687-07-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Champlain founds Quebec (1608) ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:champlain-founds-quebec-1608',
+    text: 'Samuel de Champlain founded the French settlement of Quebec on the St. Lawrence River on 3 July 1608, establishing the permanent nucleus of New France.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1608-07-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1608-07-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 July 1608 Samuel de Champlain landed at the narrowing of the St. Lawrence ("Kébec") and began building the Habitation de Québec — a fortified storehouse and dwelling — as a fur-trading base. Champlain recorded the founding in his own Voyages, the contemporary primary account of the expedition.',
+        source: {
+          externalId: 'src:champlain-quebec-1608-founding',
+          name: 'Quebec City founded by Samuel de Champlain on 3 July 1608 (per Champlain\'s Voyages).',
+          url: 'https://en.wikipedia.org/wiki/Quebec_City',
+          publishedAt: '1608-07-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1608-07-03',
+        datePrecision: 'YEAR',
+        reason: 'Quebec survived its disastrous first winter and grew into the capital of New France and the oldest continuously inhabited European-founded city north of Mexico; its founding date and founder are an undisputed matter of historical record, commemorated in the city\'s 1908 tercentenary and 2008 quadricentennial.',
+        source: {
+          externalId: 'src:samuel-de-champlain-quebec',
+          name: 'Samuel de Champlain — founder of Quebec (1608) and "Father of New France".',
+          url: 'https://en.wikipedia.org/wiki/Samuel_de_Champlain',
+          publishedAt: '1608-07-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Suleiman the Magnificent captures Belgrade (1521) ───────────────────────
+  {
+    externalId: 'trajectory:suleiman-captures-belgrade-1521',
+    text: 'In August 1521, early in his reign, Sultan Suleiman the Magnificent captured Belgrade from the Kingdom of Hungary, removing the chief fortress blocking Ottoman expansion up the Danube into central Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1521-08-29',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1521-08-29',
+        datePrecision: 'MONTH',
+        reason: 'After encircling the city in late June and bombarding it through the summer, Suleiman\'s army took Belgrade in the final days of August 1521, the citadel surrendering on 29 August. The fall of the long-resisting Hungarian fortress was reported across contemporary European and Ottoman chronicles as a major Ottoman triumph.',
+        source: {
+          externalId: 'src:siege-of-belgrade-1521',
+          name: 'Siege of Belgrade (1521) — captured by Suleiman the Magnificent in August 1521.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Belgrade_(1521)',
+          publishedAt: '1521-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1521-08-29',
+        datePrecision: 'YEAR',
+        reason: 'The capture of Belgrade is a fixed point in Ottoman and Hungarian historiography, marking the opening of Suleiman\'s European campaigns that culminated at Mohács (1526) and the first siege of Vienna (1529). The event, its date, and its strategic consequences are undisputed.',
+        source: {
+          externalId: 'src:suleiman-belgrade-reign',
+          name: 'Suleiman the Magnificent — capture of Belgrade in 1521 at the start of his reign.',
+          url: 'https://en.wikipedia.org/wiki/Suleiman_the_Magnificent',
+          publishedAt: '1521-08-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Trent concludes (1563) ───────────────────────────────────────
+  {
+    externalId: 'trajectory:council-of-trent-closes-1563',
+    text: 'The Council of Trent held its final session and adjourned on 4 December 1563, concluding the doctrinal and disciplinary programme of the Catholic Counter-Reformation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1563-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1563-12-04',
+        datePrecision: 'DAY',
+        reason: 'Convened under Pope Pius IV for its third and final period from January 1562 at Trento, the council held its closing session (Session 25) and adjourned on 4 December 1563, having defined Catholic doctrine on justification, the sacraments, scripture and tradition, and enacted sweeping disciplinary reforms in response to the Protestant Reformation. The decrees were recorded in the official acts of the council.',
+        source: {
+          externalId: 'src:council-of-trent-final-session-1563',
+          name: 'Council of Trent — final session and adjournment on 4 December 1563.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1563-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1564-01-26',
+        datePrecision: 'DAY',
+        reason: 'Pope Pius IV confirmed the council\'s decrees by the bull Benedictus Deus (issued 26 January 1564, dated 30 June 1564), giving them binding force throughout the Catholic Church. The Tridentine settlement governed Catholic doctrine and practice until the Second Vatican Council four centuries later; the date and outcome of the council\'s close are undisputed.',
+        source: {
+          externalId: 'src:benedictus-deus-1564-trent',
+          name: 'Confirmation of the Council of Trent\'s decrees by Pope Pius IV (Benedictus Deus, 1564).',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1564-01-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of the Mughal Emperor Akbar (1605) ────────────────────────────────
+  {
+    externalId: 'trajectory:death-of-akbar-1605',
+    text: 'Akbar, the third Mughal emperor, died on 27 October 1605 at Fatehpur Sikri (Agra), ending a 49-year reign and passing the throne to his son Salim, who took the regnal name Jahangir.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1605-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1605-10-27',
+        datePrecision: 'DAY',
+        reason: 'After an illness, the emperor Akbar died on 27 October 1605 near Agra and was buried at Sikandra. His death and the accession of his son Salim as Jahangir were recorded by contemporary court chroniclers, including the official histories continuing the Akbarnama and Jahangir\'s own memoirs, the Tuzuk-i-Jahangiri.',
+        source: {
+          externalId: 'src:akbar-death-1605',
+          name: 'Akbar — Mughal emperor, died 27 October 1605.',
+          url: 'https://en.wikipedia.org/wiki/Akbar',
+          publishedAt: '1605-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1605-11-03',
+        datePrecision: 'DAY',
+        reason: 'Salim formally ascended the Mughal throne as Jahangir at Agra a few days after his father\'s death, in early November 1605. The date of Akbar\'s death, his place of burial, and the succession are fixed points in Mughal historiography and are undisputed.',
+        source: {
+          externalId: 'src:jahangir-accession-1605',
+          name: 'Jahangir — succeeded Akbar as Mughal emperor in November 1605.',
+          url: 'https://en.wikipedia.org/wiki/Jahangir',
+          publishedAt: '1605-11-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // INDUSTRIAL & COLONIAL ERA (1750–1900) — additional verified curves
   // ═══════════════════════════════════════════════════════════════════════════════
 
@@ -33611,6 +33867,193 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.eso.org/public/news/eso2208-eht-mw/',
           publishedAt: '2022-05-12',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — additional verified curves (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Total solar eclipse over the Frankish empire, 5 May 840 ─────────────────
+  {
+    externalId: 'trajectory:eclipse-840-louis-pious',
+    text: 'A total solar eclipse crossed the Frankish empire on 5 May 840, recorded by contemporaneous Carolingian annalists; the emperor Louis the Pious, whom legend says was terrified by the omen, died seven weeks later on 20 June 840.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0840-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0840-05-05',
+        datePrecision: 'DAY',
+        reason: 'Carolingian court annalists record a profound darkening of the Sun over the Frankish realm in the spring of 840. The Annales Bertiniani, a near-contemporaneous chronicle begun in the court of Louis the Pious and continued from the early 840s, is one of the first-hand sources covering this period and the emperor\'s final months; Louis dies on 20 June 840.',
+        source: {
+          externalId: 'src:annales-bertiniani-840',
+          name: 'Annales Bertiniani (Annals of St Bertin), contemporaneous Carolingian chronicle covering 830–882, including the reign and death of Louis the Pious in 840.',
+          url: 'https://en.wikipedia.org/wiki/Annales_Bertiniani',
+          publishedAt: '0840-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0840-06-20',
+        datePrecision: 'DAY',
+        reason: 'The eclipse enters the historical tradition through the story of Louis the Pious: a deeply penitential ruler who, according to legend, became terrified of divine punishment after witnessing the darkening of the Sun and died of fright shortly afterward, plunging his fractured empire toward the civil war settled by the Treaty of Verdun in 843. The causal "death of fright" is legend; the eclipse, and his death weeks later, are recorded fact.',
+        source: {
+          externalId: 'src:history-eclipses-840-louis',
+          name: 'History.com — "A History of Eclipses," account of the 5 May 840 solar eclipse and Louis the Pious.',
+          url: 'https://www.history.com/articles/history-of-eclipses',
+          publishedAt: '2017-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern retrocalculation confirms the chronicled event: NASA\'s Five Millennium Canon of Solar Eclipses lists a total solar eclipse (catalog no. 06765) on 840 May 05 with magnitude 1.076 and a path of totality crossing the latitudes of the Frankish empire. The eclipse is thus securely dated by independent computation, corroborating the contemporaneous accounts.',
+        source: {
+          externalId: 'src:nasa-eclipse-840',
+          name: 'NASA Five Millennium Catalog of Solar Eclipses, entry for 0840 May 05 (Total, mag 1.076).',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SE0801-0900.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Hastings — Norman Conquest of England, 14 October 1066 ─────────
+  {
+    externalId: 'trajectory:battle-hastings-1066',
+    text: 'The Battle of Hastings was fought on Saturday 14 October 1066, when the Norman army of William, Duke of Normandy, defeated and killed the Anglo-Saxon king Harold Godwinson, beginning the Norman Conquest of England.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1066-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1066-10-14',
+        datePrecision: 'DAY',
+        reason: 'Fighting begins at about 9 a.m. on Saturday 14 October 1066 near Hastings and lasts until dusk; Harold Godwinson is killed and his army routed. The Anglo-Saxon Chronicle, kept contemporaneously, records the battle "at the hoary apple tree," and the events are commemorated in the near-contemporary Bayeux Tapestry, which shows Harold\'s death with the caption "Here King Harold has been killed."',
+        source: {
+          externalId: 'src:anglo-saxon-chronicle-hastings',
+          name: 'Anglo-Saxon Chronicle and Bayeux Tapestry, contemporaneous and near-contemporaneous records of the Battle of Hastings, 14 October 1066.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hastings',
+          publishedAt: '1066-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple independent near-contemporaneous sources — the Anglo-Saxon Chronicle, the Bayeux Tapestry (c. 1070s), William of Poitiers\'s Gesta Guillelmi (c. 1071), and William of Jumièges — converge on the same event. Modern scholarship holds that "the only undisputed facts are that fighting began at 9 am Saturday 14 October 1066 and that the battle lasted until dusk," debating tactics, not the date or outcome.',
+        source: {
+          externalId: 'src:hastings-scholarship',
+          name: 'Battle of Hastings — standard scholarship on date and primary sources.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hastings',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Clermont — Urban II launches the First Crusade, 27 Nov 1095 ───
+  {
+    externalId: 'trajectory:council-clermont-1095',
+    text: 'On 27 November 1095, the final day of the Council of Clermont, Pope Urban II delivered the sermon calling on Western Christians to take up arms and march to Jerusalem, launching the First Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1095-11-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1095-11-27',
+        datePrecision: 'DAY',
+        reason: 'On the closing day of the council (held 17–27 November 1095), Urban II preaches in a public field outside Clermont, urging the faithful to liberate Jerusalem and the Eastern churches. Fulcher of Chartres, present at the speech, records it in his Gesta Francorum Iherusalem peregrinantium (c. 1100–1105) — the account generally considered most reliable.',
+        source: {
+          externalId: 'src:fulcher-chartres-clermont',
+          name: 'Fulcher of Chartres. Gesta Francorum Iherusalem peregrinantium, account of Urban II\'s speech at Clermont, 27 November 1095. (c. 1100–1105, eyewitness)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Clermont',
+          publishedAt: '1101-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Six independent medieval accounts of Urban\'s speech survive, including the eyewitness Fulcher of Chartres and Robert the Monk\'s Historia Iherosolymitana (1107), which preserves the crowd\'s cry of "Deus vult." Modern crusade historiography treats the date (27 November 1095) and the call to crusade as settled facts, debating the speech\'s exact wording, not whether or when it occurred.',
+        source: {
+          externalId: 'src:clermont-scholarship',
+          name: 'Council of Clermont — standard crusade scholarship on date and sources.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Clermont',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Byzantine recapture of Constantinople from the Latin Empire, 25 July 1261 ─
+  {
+    externalId: 'trajectory:byzantine-recapture-constantinople-1261',
+    text: 'On 25 July 1261, a Nicaean force under the general Alexios Strategopoulos entered Constantinople and recaptured it from the Latin Empire, restoring Byzantine rule under Michael VIII Palaiologos and ending the Latin Empire that the Fourth Crusade had established in 1204.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1261-07-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1261-07-25',
+        datePrecision: 'DAY',
+        reason: 'On the night of 24/25 July 1261, Strategopoulos and roughly 800 men approach the walls, hide near a monastery at the Gate of the Spring, and enter the city, which is lightly defended while the Latin fleet is away. The Latin emperor Baldwin II flees; Michael VIII Palaiologos is informed and formally enters Constantinople weeks later. The events are recorded by the contemporary Byzantine historian and statesman George Akropolites.',
+        source: {
+          externalId: 'src:akropolites-constantinople-1261',
+          name: 'George Akropolites, Chronike Syngraphe (History), contemporary account of the Nicaean recapture of Constantinople, 25 July 1261.',
+          url: 'https://en.wikipedia.org/wiki/Reconquest_of_Constantinople',
+          publishedAt: '1261-07-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The accounts of George Akropolites (Michael VIII\'s chancellor) and the later historian George Pachymeres converge, and modern Byzantine scholarship dates the recapture securely to 25 July 1261, treating it as the restoration of the Byzantine Empire under the Palaiologos dynasty. The event and its date are uncontested.',
+        source: {
+          externalId: 'src:reconquest-constantinople-scholarship',
+          name: 'Reconquest of Constantinople (1261) — standard Byzantine scholarship.',
+          url: 'https://en.wikipedia.org/wiki/Reconquest_of_Constantinople',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
