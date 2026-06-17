@@ -29466,6 +29466,238 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — SUPPLEMENTAL
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Council of Constance elects Martin V — end of the Western Schism ─────────
+  {
+    externalId: 'trajectory:martin-v-elected-1417',
+    text: 'On 11 November 1417 the Council of Constance elected Oddone Colonna as Pope Martin V, ending the Western Schism of 1378–1417 by replacing the rival lines of Roman, Avignon, and Pisan claimants with a single, generally recognised pope.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1417-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1417-11-11',
+        datePrecision: 'DAY',
+        reason: 'After the conciliar deposition of John XXIII and Benedict XIII and the resignation of Gregory XII, a special conclave of cardinals and national representatives meeting at Constance elected Oddone Colonna, who took the name Martin V in honour of Martin of Tours, on whose feast day (11 November) he was chosen. The election is recorded in the official acts of the council.',
+        source: {
+          externalId: 'src:martin-v-election-1417',
+          name: 'Acts of the Council of Constance recording the election of Pope Martin V, 11 November 1417 (summarised in Wikipedia, "Pope Martin V").',
+          url: 'https://en.wikipedia.org/wiki/Pope_Martin_V',
+          publishedAt: '1417-11-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1418-04-22',
+        datePrecision: 'DAY',
+        reason: 'Martin V is enthroned and the Council of Constance closes (22 April 1418) having reunified the Latin Church under a single recognised pontiff. The competing obediences collapse: the Pisan and Roman lines are extinguished, and the rump Avignon claim of Benedict XIII and his successor dwindles to insignificance, confirming the schism resolved as an operative institutional fact.',
+        source: {
+          externalId: 'src:council-constance-close-1418',
+          name: 'Council of Constance — conclusion and the end of the Western Schism (Encyclopædia Britannica, "Western Schism").',
+          url: 'https://en.wikipedia.org/wiki/Western_Schism',
+          publishedAt: '1418-04-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern church historiography treats the date and outcome of Martin V\'s election as documented fact, and the Roman line of popes (including Gregory XII) is the one retained in the official Annuario Pontificio numbering. Debate concerns the doctrine of conciliarism (the decree Haec Sancta) rather than whether the schism ended at Constance in 1417.',
+        source: {
+          externalId: 'src:western-schism-historiography',
+          name: 'Scholarly synthesis of the Council of Constance and the end of the Western Schism.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Constance',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Waldseemüller map names "America" ───────────────────────────────────────
+  {
+    externalId: 'trajectory:waldseemuller-names-america-1507',
+    text: 'In April 1507 Martin Waldseemüller and Matthias Ringmann published the wall map Universalis Cosmographia at Saint-Dié, the first document to apply the name "America" — honouring Amerigo Vespucci — to the newly encountered lands of the Western Hemisphere.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1507-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1507-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The map, accompanied by the booklet Cosmographiae Introductio, places the name "America" across the southern landmass and explains the choice in the text: the new continent should be named after its discoverer Amerigo Vespucci, just as Europe and Asia bore women\'s names. The map is the earliest surviving document to use the name for the New World.',
+        source: {
+          externalId: 'src:waldseemuller-cosmographia-1507',
+          name: 'Waldseemüller M, Ringmann M. Universalis Cosmographia and Cosmographiae Introductio, Saint-Dié, April 1507 (Wikipedia, "Waldseemüller map").',
+          url: 'https://en.wikipedia.org/wiki/Waldseem%C3%BCller_map',
+          publishedAt: '1507-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1538-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Although Waldseemüller himself dropped the name on his later 1513 and 1516 maps, the label "America" had already been propagated by Vespucci-based geographies and was adopted decisively by Gerardus Mercator, whose 1538 world map applied it to both northern and southern continents. The name became the universal European usage for the hemisphere.',
+        source: {
+          externalId: 'src:mercator-america-1538',
+          name: 'Gerardus Mercator\'s 1538 world map extending the name "America" to both continents (naming of the Americas, scholarly synthesis).',
+          url: 'https://en.wikipedia.org/wiki/Naming_of_the_Americas',
+          publishedAt: '1538-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The sole surviving complete copy of the 1507 wall map, rediscovered in 1901, was purchased by the U.S. Library of Congress in 2003 ("America\'s birth certificate") and inscribed on the UNESCO Memory of the World Register in 2005. Its primacy in naming America is treated as documented fact.',
+        source: {
+          externalId: 'src:waldseemuller-loc-2003',
+          name: 'Library of Congress acquisition (2003) and UNESCO Memory of the World inscription (2005) of the 1507 Waldseemüller map (summarised in Wikipedia, "Waldseemüller map").',
+          url: 'https://en.wikipedia.org/wiki/Waldseem%C3%BCller_map',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Preveza — Ottoman naval supremacy in the Mediterranean ─────────
+  {
+    externalId: 'trajectory:battle-of-preveza-1538',
+    text: 'On 28 September 1538 the Ottoman fleet under Hayreddin Barbarossa defeated the larger Holy League fleet commanded by Andrea Doria off Preveza in the Ionian Sea, establishing Ottoman naval dominance in the Mediterranean for over three decades.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1538-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1538-09-28',
+        datePrecision: 'DAY',
+        reason: 'Barbarossa, kapudan pasha of the Ottoman navy, engages the combined Venetian, Papal, Spanish, and Genoese fleet assembled by Pope Paul III\'s Holy League. Despite the Christian alliance\'s numerical and tonnage advantage, Andrea Doria withdraws and the Holy League is routed with the loss of ships and men. Ottoman and Venetian accounts both record the battle and its date.',
+        source: {
+          externalId: 'src:preveza-1538-accounts',
+          name: 'Contemporary Ottoman and Venetian accounts of the Battle of Preveza, 28 September 1538 (Wikipedia, "Battle of Preveza").',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Preveza',
+          publishedAt: '1538-09-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1540-10-20',
+        datePrecision: 'DAY',
+        reason: 'The strategic consequence is confirmed institutionally: Venice, unable to contest Ottoman control of the eastern Mediterranean after Preveza, concludes a separate peace with the Porte on 20 October 1540, ceding territories and paying an indemnity. Ottoman naval supremacy persists until the Battle of Lepanto in 1571.',
+        source: {
+          externalId: 'src:ottoman-venetian-peace-1540',
+          name: 'Ottoman–Venetian peace treaty of 1540 following the Battle of Preveza (Ottoman–Venetian War 1537–1540).',
+          url: 'https://en.wikipedia.org/wiki/Ottoman%E2%80%93Venetian_War_(1537%E2%80%931540)',
+          publishedAt: '1540-10-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Naval and Ottoman historians treat the date, location, and Ottoman victory at Preveza as settled, citing it as the high-water mark of Barbarossa\'s career and a defining moment in the sixteenth-century struggle for the Mediterranean. Debate concerns Andrea Doria\'s motives for withdrawing, not the outcome.',
+        source: {
+          externalId: 'src:preveza-historiography',
+          name: 'Scholarly synthesis of the Battle of Preveza and sixteenth-century Mediterranean naval warfare.',
+          url: 'https://en.wikipedia.org/wiki/Hayreddin_Barbarossa',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Samugarh — Aurangzeb wins the Mughal war of succession ─────────
+  {
+    externalId: 'trajectory:battle-of-samugarh-1658',
+    text: 'On 29 May 1658 Aurangzeb decisively defeated his elder brother Dara Shikoh at Samugarh, near Agra, in the Mughal war of succession, opening his path to the throne and to the imprisonment of their father, the emperor Shah Jahan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1658-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1658-05-29',
+        datePrecision: 'DAY',
+        reason: 'In the succession struggle triggered by Shah Jahan\'s illness in 1657, the armies of Aurangzeb (allied with his brother Murad Bakhsh) and the heir-apparent Dara Shikoh meet on the plain of Samugarh east of Agra. Aurangzeb\'s veteran Deccan troops and superior artillery shatter Dara\'s larger but hastily assembled host; Dara flees the field. The battle is recorded in contemporaneous Mughal chronicles.',
+        source: {
+          externalId: 'src:samugarh-1658-chronicles',
+          name: 'Contemporaneous Mughal chronicles of the Battle of Samugarh, 29 May 1658 (Wikipedia, "Battle of Samugarh").',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Samugarh',
+          publishedAt: '1658-05-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1659-08-30',
+        datePrecision: 'DAY',
+        reason: 'The outcome is sealed institutionally: Aurangzeb occupies Agra and imprisons Shah Jahan in June 1658, crowns himself emperor at Delhi (formal coronation 1659), captures Dara Shikoh and has him executed on 30 August 1659. The succession is settled in Aurangzeb\'s favour, beginning his 49-year reign as Alamgir I.',
+        source: {
+          externalId: 'src:dara-shikoh-execution-1659',
+          name: 'Execution of Dara Shikoh, 30 August 1659, and Aurangzeb\'s accession (Wikipedia, "Dara Shikoh").',
+          url: 'https://en.wikipedia.org/wiki/Dara_Shikoh',
+          publishedAt: '1659-08-30',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of Mughal India treat Samugarh as the decisive engagement of the 1657–1659 war of succession and the date, place, and result as documented fact. Scholarship debates the counterfactual of a Dara Shikoh victory and its religious-cultural implications, not whether Aurangzeb won at Samugarh.',
+        source: {
+          externalId: 'src:mughal-succession-1658-historiography',
+          name: 'Scholarly synthesis of the Mughal war of succession (1657–1661) and the Battle of Samugarh.',
+          url: 'https://en.wikipedia.org/wiki/War_of_succession_(Mughal_Empire)',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
