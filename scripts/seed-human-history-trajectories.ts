@@ -327,6 +327,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Eclipse of Thales — Battle of the Halys ─────────────────────────────────
+  {
+    externalId: 'trajectory:thales-eclipse-585bce',
+    text: 'A total solar eclipse — foretold by Thales of Miletus — interrupted the battle between the Medes and the Lydians and was later dated by astronomical retrocalculation to May 28, 585 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0585-05-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0585-05-28',
+        datePrecision: 'DAY',
+        reason: 'In the sixth year of war between the Medes under Cyaxares and the Lydians under Alyattes, "day was on a sudden changed into night" during a pitched battle. The combatants, taking the darkness as an omen, broke off and made peace. Herodotus, writing roughly a century and a half later, records that Thales of Miletus had foretold the eclipse, "fixing for it the very year in which it actually took place."',
+        source: {
+          externalId: 'src:herodotus-1-74-eclipse',
+          name: 'Herodotus. Histories, 1.74. (c. 430 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0126%3Abook%3D1%3Achapter%3D74',
+          publishedAt: '0430-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The only total solar eclipse matching the era and the geography of the Medo-Lydian war (Asia Minor, near the river Halys) is the eclipse of 28 May 585 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Solar Eclipses. The retrocalculated date now serves as one of the earliest fixed chronological anchors in ancient history.',
+        source: {
+          externalId: 'src:wikipedia-eclipse-of-thales',
+          name: 'Eclipse of Thales — astronomical dating to 28 May 585 BCE (NASA solar eclipse canon).',
+          url: 'https://en.wikipedia.org/wiki/Eclipse_of_Thales',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Solar eclipse of the first summer of the Peloponnesian War ──────────────
+  {
+    externalId: 'trajectory:thucydides-eclipse-431bce',
+    text: 'A solar eclipse during which the sun took the form of a crescent and some stars became visible — recorded by Thucydides as occurring in the first summer of the Peloponnesian War — has been dated to August 3, 431 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0431-08-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0431-08-03',
+        datePrecision: 'DAY',
+        reason: 'Thucydides, a contemporary of the war, records that "the same summer, at the beginning of a new lunar month (the only time at which it appears possible), the sun was eclipsed after noon. After it had assumed the form of a crescent and some of the stars had come out, it returned to its natural shape." His pairing of the eclipse with the new moon is a precise empirical observation of the cause.',
+        source: {
+          externalId: 'src:thucydides-2-28-eclipse',
+          name: 'Thucydides. History of the Peloponnesian War, 2.28. (c. 411 BCE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0200%3Abook%3D2%3Achapter%3D28',
+          publishedAt: '0431-08-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation identifies the annular solar eclipse of 3 August 431 BCE (Julian), visible from Athens in the afternoon, as the only candidate matching Thucydides\' account and the start of the war. The eclipse is catalogued in NASA\'s Five Millennium Canon of Solar Eclipses and fixes the chronology of the war\'s opening year.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-431bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000. NASA/TP–2006–214141.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SEcatalog.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Earliest dated sunspot record (Han China) ───────────────────────────────
+  {
+    externalId: 'trajectory:han-sunspot-28bce',
+    text: 'Han dynasty court astronomers recorded a sunspot — "a black vapour as large as a coin" at the centre of the sun — on May 10, 28 BCE, the earliest precisely dated sunspot observation, preserved in the Book of Han.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0028-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0028-05-10',
+        datePrecision: 'DAY',
+        reason: 'During the reign of Emperor Cheng of Han, the imperial astronomical bureau records that the sun was yellow at sunrise and that a black vapour as large as a coin lay at its centre. The observation is entered into the official record and later preserved in the Treatise of the Book of Han, becoming the earliest sunspot sighting tied to an exact day.',
+        source: {
+          externalId: 'src:book-of-han-sunspot',
+          name: 'Ban Gu et al. Book of Han (Hanshu). (compiled c. 111 CE, recording the reign of Emperor Cheng)',
+          url: 'https://en.wikipedia.org/wiki/Book_of_Han',
+          publishedAt: '0111-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern solar physics recognises the 28 BCE entry as the earliest known dated record of sunspots; Chinese court astronomers continued systematic naked-eye sunspot observations for the next two millennia, providing one of the longest historical datasets of solar activity.',
+        source: {
+          externalId: 'src:wikipedia-chinese-astronomy-sunspot',
+          name: 'Timeline of Chinese astronomy — earliest dated sunspot record, 10 May 28 BCE (Book of Han).',
+          url: 'https://en.wikipedia.org/wiki/Timeline_of_Chinese_astronomy',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ptolemy's dated autumnal-equinox observation ────────────────────────────
+  {
+    externalId: 'trajectory:ptolemy-equinox-132ce',
+    text: 'Claudius Ptolemy recorded his own observation of the autumnal equinox at Alexandria on September 25, 132 CE — a dated measurement he used in the Almagest to derive the length of the tropical year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0132-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0132-09-25',
+        datePrecision: 'DAY',
+        reason: 'Ptolemy observes the autumnal equinox about two hours after noon (year 463 of the era of Nabonassar; Hadrian 17, Athyr 7). In Almagest Book III he sets this dated observation against Hipparchus\'s equinoxes nearly three centuries earlier to confirm and measure the length of the tropical year — a worked example of deriving a physical constant from dated empirical observation.',
+        source: {
+          externalId: 'src:ptolemy-almagest-iii-equinox',
+          name: 'Ptolemy. Almagest, Book III (On the Length of the Year). (c. 150 CE)',
+          url: 'https://jonvoisey.net/blog/2019/05/almagest-book-iii-on-the-length-of-the-year/',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Almagest became the authoritative astronomical text of the Greco-Roman, Islamic, and Latin worlds for roughly fourteen centuries; Ptolemy\'s dated equinox observations and the tropical-year value derived from them were transmitted and recomputed by later astronomers. The calendrical date 25 September 132 CE is confirmable by modern retrocalculation.',
+        source: {
+          externalId: 'src:wikipedia-almagest',
+          name: 'Almagest — Ptolemy\'s astronomical treatise and its transmission.',
+          url: 'https://en.wikipedia.org/wiki/Almagest',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Julian calendar takes effect (Rome) ─────────────────────────────────────
   {
     externalId: 'trajectory:julian-calendar-45bce',
