@@ -5311,6 +5311,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Ptolemy observes the autumnal equinox, 25 Sept 132 CE (Roman Egypt) ──────
+  {
+    externalId: 'trajectory:ptolemy-autumn-equinox-132ce',
+    text: 'Claudius Ptolemy recorded observing the autumnal equinox at Alexandria about 2 equinoctial hours after noon on 25 September 132 CE — an observation he used to derive the length of the tropical year in the Almagest.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0132-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0132-09-25',
+        datePrecision: 'DAY',
+        reason: 'In Almagest III.1 Ptolemy reports that "the autumn equinox of year 463 of Nabonassar" — 25 September 132 CE (Julian) — was observed by him "with the greatest care" to fall about 2 equinoctial hours after noon. He pairs it with equinox and solstice observations of Hipparchus to argue that the tropical year is constant and slightly under 365¼ days.',
+        source: {
+          externalId: 'src:almagest-iii-autumn-equinox-132',
+          name: 'Ptolemy, Almagest, Book III.1 (c. 150 CE), record of the autumn equinox of Nabonassar 463; translation and commentary.',
+          url: 'https://jonvoisey.net/blog/2019/11/almagest-book-iii-on-the-epoch-of-the-suns-mean-motion/',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The observation entered the canonical astronomical record through the Almagest and underpinned Ptolemy\'s value for the tropical year, which was transmitted through Islamic and medieval European astronomy and treated as an authentic, carefully made measurement for roughly seventeen centuries.',
+        source: {
+          externalId: 'src:toomer-ptolemys-almagest',
+          name: 'Toomer GJ (trans.). Ptolemy\'s Almagest. Princeton University Press, 1998 [1984].',
+          url: 'https://en.wikipedia.org/wiki/Almagest',
+          publishedAt: '1984-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert R. Newton (The Crime of Claudius Ptolemy, 1977) showed Ptolemy\'s recorded equinox is roughly a day late — the autumn equinox of 132 CE actually fell near 9:55 a.m. on 24 September — and argued the times were back-computed from Hipparchus rather than genuinely observed, calling Ptolemy "the most successful fraud in the history of science." Gingerich and Goldstein dispute the fraud charge, citing refraction and instrument error, leaving the observation\'s authenticity contested.',
+        source: {
+          externalId: 'src:newton-crime-of-ptolemy-equinox',
+          name: 'Newton RR. The Crime of Claudius Ptolemy. Johns Hopkins University Press, 1977; controversy summarized with the 25 Sept 132 equinox example.',
+          url: 'https://en.wikipedia.org/wiki/Ptolemy',
+          publishedAt: '1977-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Theon of Alexandria observes the solar eclipse of 16 June 364 CE ──────────
+  {
+    externalId: 'trajectory:theon-solar-eclipse-364ce',
+    text: 'Theon of Alexandria observed and timed the solar eclipse of 16 June 364 CE at Alexandria, recording it in his commentary on Ptolemy — one of the latest precisely dated observations of classical Greek astronomy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0364-06-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0364-06-16',
+        datePrecision: 'DAY',
+        reason: 'Theon, the last attested member of the Alexandrian astronomical tradition, observed the partial solar eclipse of 16 June 364 CE from Alexandria and used it — together with a lunar eclipse later the same year — as a worked numerical example in his commentary on Ptolemy\'s Handy Tables and Almagest, giving the local times of first contact, maximum, and last contact.',
+        source: {
+          externalId: 'src:theon-commentary-eclipse-364',
+          name: 'Theon of Alexandria, Commentary on Ptolemy\'s Handy Tables / Almagest (c. 364 CE), worked example of the solar eclipse of 16 June 364; ed. A. Jones, JHA 43 (2012).',
+          url: 'https://core.ac.uk/reader/323227110',
+          publishedAt: '0364-06-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a solar eclipse crossing the eastern Mediterranean on 16 June 364 CE, catalogued in NASA\'s Five Millennium Canon of Solar Eclipses. Theon\'s timed observation is now used as a fixed data point in studies of the long-term slowing of Earth\'s rotation (ΔT).',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-364',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses, eclipse of 364 June 16. NASA Goddard Space Flight Center.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEsearch/SEsearchmap.php?Ecl=03640616',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Guest star of 393 CE (SN 393), recorded by the Eastern Jin court ──────────
+  {
+    externalId: 'trajectory:guest-star-393ce-sn393',
+    text: 'Court astronomers of the Eastern Jin dynasty recorded a "guest star" in the asterism Wei (the tail of Scorpius) during the second lunar month (27 February–28 March) of 393 CE — a transient now identified as the supernova SN 393.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0393-02-27',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0393-02-27',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical record states that in the second month of the 18th year of the Taiyuan reign period a guest star appeared within the asterism Wei and remained visible until the ninth lunar month — about eight months. Preserved in the Treatise on Astronomy of the Book of Song, the entry derives from contemporaneous Eastern Jin court observation logs.',
+        source: {
+          externalId: 'src:songshu-guest-star-393',
+          name: 'Book of Song (宋書), Treatise on Astronomy (天文志), record of the guest star of Taiyuan 18. (compiled by Shen Yue c. 488 CE from contemporary court records)',
+          url: 'https://ctext.org/song-shu',
+          publishedAt: '0393-02-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern catalogues of historical "guest stars" identify the 393 CE object as a probable supernova: its estimated brightness (about magnitude −1) and roughly eight-month visibility match a supernova rather than a nova or comet, and its position in the tail of Scorpius has been linked to candidate supernova remnants (e.g., RX J1713.7−3946).',
+        source: {
+          externalId: 'src:clark-stephenson-historical-supernovae-393',
+          name: 'Clark DH, Stephenson FR. The Historical Supernovae. Pergamon Press, 1977; SN 393 entry.',
+          url: 'https://en.wikipedia.org/wiki/SN_393',
+          publishedAt: '1977-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Murder of Hypatia of Alexandria, March 415 CE (Roman Egypt) ──────────────
+  {
+    externalId: 'trajectory:hypatia-murdered-415ce',
+    text: 'Hypatia of Alexandria — mathematician, astronomer, and Neoplatonist philosopher — was killed by a Christian mob in Alexandria in March 415 CE, during Lent.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0415-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0415-03-01',
+        datePrecision: 'MONTH',
+        reason: 'A mob led by a reader named Peter dragged Hypatia from her carriage into a former temple serving as a church, killed her, and burned her remains. The near-contemporary church historian Socrates Scholasticus dates the killing precisely: "in the month of March during Lent, in the fourth year of Cyril\'s episcopate, under the tenth consulate of Honorius, and the sixth of Theodosius" — i.e. 415 CE.',
+        source: {
+          externalId: 'src:socrates-scholasticus-hypatia-415',
+          name: 'Socrates Scholasticus, Ecclesiastical History VII.15 (completed c. 439 CE), account of the death of Hypatia.',
+          url: 'https://earlychurchtexts.com/public/socrates_the_murder_of_hypatia.htm',
+          publishedAt: '0439-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0440-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent ancient sources of differing allegiances agree on the killing and its rough date: the Christian historians Socrates Scholasticus and (later) John of Nikiû, and the pagan Neoplatonist Damascius. The convergence of hostile and sympathetic accounts settles the fact of the murder in 415 CE within historical scholarship.',
+        source: {
+          externalId: 'src:damascius-life-isidore-hypatia',
+          name: 'Damascius, Life of Isidore (early 6th c. CE), via the Suda; corroborating pagan account of Hypatia\'s death.',
+          url: 'https://en.wikipedia.org/wiki/Hypatia',
+          publishedAt: '0530-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Lunar eclipse before Gaugamela, 331 BCE (Babylon / Persia / Greece) ──────
   {
     externalId: 'trajectory:gaugamela-lunar-eclipse-331bce',
