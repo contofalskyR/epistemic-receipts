@@ -41112,6 +41112,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII / INTERWAR (1900–1950) — supplementary curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── The Kapp Putsch ─────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:kapp-putsch-1920',
+    text: 'On 13 March 1920 Freikorps units under Wolfgang Kapp and General Walther von Lüttwitz seized Berlin in an attempted coup against the Weimar Republic; the putsch collapsed within days as a general strike paralysed the country, and Lüttwitz resigned on 18 March 1920.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1920-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1920-03-13',
+        datePrecision: 'DAY',
+        reason: 'The Marinebrigade Ehrhardt marches into Berlin; the legitimate government under Friedrich Ebert and Gustav Bauer flees to Dresden and then Stuttgart, and Wolfgang Kapp proclaims himself Reich Chancellor. The coup is reported immediately in the German and international press as an open seizure of the capital by anti-republican military units.',
+        source: {
+          externalId: 'src:kapp-putsch-1920',
+          name: 'Kapp Putsch, 13–18 March 1920 — contemporaneous accounts of the Freikorps occupation of Berlin and the proclamation of Wolfgang Kapp as Chancellor.',
+          url: 'https://en.wikipedia.org/wiki/Kapp_Putsch',
+          publishedAt: '1920-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1920-03-18',
+        datePrecision: 'DAY',
+        reason: 'A general strike called by the legitimate government and the unions — joined by up to 12 million workers — shuts down utilities, transport and the bureaucracy, rendering the putsch ungovernable. Lüttwitz resigns on 18 March and Kapp flees to Sweden; the Republic is restored. The failure of the coup and the dates of its collapse are documented across government records, the contemporary press, and later judicial proceedings, and stand uncontested.',
+        source: {
+          externalId: 'src:kapp-putsch-collapse-1920',
+          name: 'Collapse of the Kapp Putsch and the general strike, 17–18 March 1920 — Weimar government records and contemporary reporting.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/the-weimar-republic',
+          publishedAt: '1920-03-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Locarno Treaties ────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:locarno-treaties-1925',
+    text: 'The Locarno Treaties — by which Germany, France and Belgium mutually guaranteed their post-Versailles borders and the demilitarised status of the Rhineland — were initialled at Locarno on 16 October 1925 and formally signed in London on 1 December 1925.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1925-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1925-10-16',
+        datePrecision: 'DAY',
+        reason: 'At a conference in Locarno, Switzerland, the foreign ministers — Stresemann (Germany), Briand (France), Chamberlain (Britain) and others — initial a set of treaties whose centrepiece, the Rhineland Pact, guarantees the Franco-German and Belgo-German frontiers and the demilitarisation of the Rhineland, with Britain and Italy as guarantors. The agreements are reported worldwide as the basis of a European reconciliation ("the spirit of Locarno").',
+        source: {
+          externalId: 'src:locarno-initialled-1925',
+          name: 'Locarno Treaties initialled at Locarno, 16 October 1925 — the Rhineland Pact and accompanying arbitration treaties.',
+          url: 'https://en.wikipedia.org/wiki/Locarno_Treaties',
+          publishedAt: '1925-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1925-12-01',
+        datePrecision: 'DAY',
+        reason: 'The treaties are formally signed in London on 1 December 1925 and subsequently ratified; Germany is admitted to the League of Nations in September 1926. The Locarno settlement becomes the recognised framework of western European security, and Briand, Stresemann and Chamberlain are awarded Nobel Peace Prizes for it.',
+        source: {
+          externalId: 'src:locarno-signed-london-1925',
+          name: 'Locarno Treaties signed in London, 1 December 1925.',
+          url: 'https://en.wikipedia.org/wiki/Locarno_Treaties',
+          publishedAt: '1925-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-03-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 March 1936 German troops reoccupy the demilitarised Rhineland in open violation of both Versailles and Locarno. Hitler renounces the Locarno commitments; the other signatories respond only with verbal protest. The guarantee at the heart of the 1925 settlement is broken and the "spirit of Locarno" is dead.',
+        source: {
+          externalId: 'src:rhineland-remilitarisation-1936',
+          name: 'German remilitarisation of the Rhineland, 7 March 1936 — violation of the Locarno guarantees.',
+          url: 'https://en.wikipedia.org/wiki/Remilitarization_of_the_Rhineland',
+          publishedAt: '1936-03-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Chandrasekhar limit and Eddington's dismissal ───────────────────────
+  {
+    externalId: 'trajectory:chandrasekhar-limit-1931',
+    text: 'Subrahmanyan Chandrasekhar showed that a white dwarf supported by electron degeneracy pressure has a maximum mass (about 1.4 solar masses) above which it cannot remain stable — the Chandrasekhar limit — published in "The Maximum Mass of Ideal White Dwarfs" (Astrophysical Journal, 1931).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Chandrasekhar combines special relativity with the degenerate-electron-gas model of a white dwarf and derives a finite maximum mass beyond which degeneracy pressure can no longer balance gravity. The two-page paper "The Maximum Mass of Ideal White Dwarfs" appears in the Astrophysical Journal (vol. 74, pp. 81–82); the existence of an upper mass limit enters the literature.',
+        source: {
+          externalId: 'src:chandrasekhar-maxmass-1931',
+          name: 'Chandrasekhar S. The Maximum Mass of Ideal White Dwarfs. Astrophysical Journal 1931;74:81–82.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1931ApJ....74...81C/abstract',
+          publishedAt: '1931-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-01-11',
+        datePrecision: 'DAY',
+        reason: 'At the Royal Astronomical Society meeting of 11 January 1935, Arthur Eddington — then the dominant authority in stellar astrophysics — publicly ridicules the result, declaring "I think there should be a law of Nature to prevent a star from behaving in this absurd way." His prestige stalls acceptance of the limit through the 1930s, even though Bohr, Pauli and Rosenfeld privately judge Chandrasekhar correct.',
+        source: {
+          externalId: 'src:eddington-chandrasekhar-1935',
+          name: 'Eddington\'s remarks at the Royal Astronomical Society, 11 January 1935 — Observatory 58 (1935):37–39; recounted in the Chandrasekhar limit literature.',
+          url: 'https://en.wikipedia.org/wiki/Chandrasekhar_limit',
+          publishedAt: '1935-01-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-10-19',
+        datePrecision: 'DAY',
+        reason: 'The limit is fully vindicated as the foundation of compact-object astrophysics: it sets the mass threshold for white-dwarf collapse, Type Ia supernovae, neutron stars and black holes. On 19 October 1983 the Royal Swedish Academy of Sciences awards Chandrasekhar the Nobel Prize in Physics for his theoretical studies of the structure and evolution of stars, retrospectively settling what Eddington had once dismissed.',
+        source: {
+          externalId: 'src:chandrasekhar-nobel-1983',
+          name: 'The Nobel Prize in Physics 1983 — Subrahmanyan Chandrasekhar.',
+          url: 'https://www.nobelprize.org/prizes/physics/1983/chandrasekhar/facts/',
+          publishedAt: '1983-10-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Hindenburg disaster ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:hindenburg-disaster-1937',
+    text: 'On 6 May 1937 the German passenger airship LZ 129 Hindenburg caught fire and was destroyed while attempting to dock at Naval Air Station Lakehurst, New Jersey, killing 36 people and effectively ending the era of passenger airship travel.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-05-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1937-05-06',
+        datePrecision: 'DAY',
+        reason: 'As the Hindenburg approaches its mooring mast at Lakehurst at about 7:25 p.m., it bursts into flame and is consumed within roughly half a minute. The disaster is captured on newsreel film and in still photographs, and radio reporter Herbert Morrison\'s on-site description ("Oh, the humanity!"), recorded for broadcast the next day, becomes one of the most famous audio records of the century. The event is front-page news worldwide the following morning.',
+        source: {
+          externalId: 'src:hindenburg-disaster-1937',
+          name: 'Hindenburg disaster, Lakehurst NJ, 6 May 1937 — contemporaneous newsreel footage, photographs and Herbert Morrison\'s recorded broadcast.',
+          url: 'https://en.wikipedia.org/wiki/Hindenburg_disaster',
+          publishedAt: '1937-05-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1937-07-21',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Commerce Department\'s board of inquiry, together with a parallel German investigation, completes its examination of the wreckage and witness testimony. The official findings — fire of the hydrogen lift gas ignited near the stern during landing, with the precise ignition source left open — are recorded; the death toll of 36 and the loss of the airship are settled facts, and commercial passenger-airship service is abandoned.',
+        source: {
+          externalId: 'src:hindenburg-inquiry-1937',
+          name: 'U.S. Department of Commerce Board of Inquiry into the Hindenburg disaster, report of 21 July 1937.',
+          url: 'https://en.wikipedia.org/wiki/Hindenburg_disaster',
+          publishedAt: '1937-07-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Lamb shift and the birth of modern QED ──────────────────────────────
+  {
+    externalId: 'trajectory:lamb-shift-1947',
+    text: 'In 1947 Willis Lamb and Robert Retherford measured a small energy difference (the Lamb shift) between the 2S₁/₂ and 2P₁/₂ levels of the hydrogen atom — about 1000 MHz — which Dirac\'s theory predicted should be exactly degenerate, triggering the development of renormalised quantum electrodynamics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-06-02',
+        datePrecision: 'DAY',
+        reason: 'Using a microwave-resonance technique, Lamb and Retherford find that the 2S₁/₂ level of hydrogen lies about 1000 MHz above the 2P₁/₂ level — a shift forbidden by the unmodified Dirac equation. Lamb reports the result at the Shelter Island Conference (2–4 June 1947), and the measurement is published as "Fine Structure of the Hydrogen Atom by a Microwave Method" (Physical Review 72:241–243).',
+        source: {
+          externalId: 'src:lamb-retherford-1947',
+          name: 'Lamb WE, Retherford RC. Fine Structure of the Hydrogen Atom by a Microwave Method. Physical Review 1947;72(3):241–243.',
+          url: 'https://en.wikipedia.org/wiki/Lamb_shift',
+          publishedAt: '1947-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-11-03',
+        datePrecision: 'DAY',
+        reason: 'Within weeks Hans Bethe produces the first non-relativistic calculation of the shift using mass renormalisation, and the result drives the full renormalised QED of Schwinger, Feynman, Tomonaga and Dyson — whose agreement with the measured shift to high precision settles QED as the most accurately tested theory in physics. On 3 November 1955 Lamb shares the Nobel Prize in Physics for the discovery.',
+        source: {
+          externalId: 'src:lamb-nobel-1955',
+          name: 'The Nobel Prize in Physics 1955 — Willis Eugene Lamb, "for his discoveries concerning the fine structure of the hydrogen spectrum."',
+          url: 'https://www.nobelprize.org/prizes/physics/1955/lamb/facts/',
+          publishedAt: '1955-11-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
