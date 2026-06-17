@@ -47852,6 +47852,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900) — supplementary
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Becquerel discovers spontaneous radioactivity ───────────────────────────
+  {
+    externalId: 'trajectory:becquerel-radioactivity-1896',
+    text: 'Henri Becquerel discovered spontaneous radioactivity on 1 March 1896, when uranium salts stored in darkness exposed a photographic plate without any sunlight, proving the penetrating radiation came from the uranium itself; he reported the finding to the French Academy of Sciences on 2 March 1896.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-03-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-03-02',
+        datePrecision: 'DAY',
+        reason: 'Testing whether phosphorescent uranium salts emitted penetrating rays only after sunlight excitation, Becquerel was interrupted by overcast weather in late February 1896 and left wrapped photographic plates with uranium salts in a dark drawer. Developing them on 1 March 1896 he found the plates strongly exposed despite no sunlight, showing the radiation was spontaneous and intrinsic to uranium. He communicated the result to the Académie des sciences on 2 March 1896.',
+        source: {
+          externalId: 'src:becquerel-cr-1896',
+          name: 'Becquerel H. Sur les radiations invisibles émises par les corps phosphorescents. Comptes rendus de l\'Académie des sciences, vol. 122, 2 March 1896, 501–503.',
+          url: 'https://en.wikipedia.org/wiki/Henri_Becquerel',
+          publishedAt: '1896-03-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-12-10',
+        datePrecision: 'DAY',
+        reason: 'Becquerel\'s observation was rapidly extended by Marie and Pierre Curie, who isolated polonium and radium and named the phenomenon "radioactivity." On 10 December 1903 Becquerel shared the Nobel Prize in Physics with the Curies "in recognition of the extraordinary services he has rendered by his discovery of spontaneous radioactivity," confirming the discovery as a settled fact of physics.',
+        source: {
+          externalId: 'src:becquerel-nobel-1903',
+          name: 'The Nobel Prize in Physics 1903 — Henri Becquerel, Pierre Curie, Marie Curie. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/physics/1903/becquerel/facts/',
+          publishedAt: '1903-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Foucault pendulum proves the Earth's rotation ───────────────────────────
+  {
+    externalId: 'trajectory:foucault-pendulum-1851',
+    text: 'On 3 February 1851 Léon Foucault demonstrated that a long free-swinging pendulum slowly rotates its plane of oscillation, providing the first direct laboratory proof of the Earth\'s rotation; he repeated it publicly under the dome of the Panthéon in Paris weeks later.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1851-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1851-02-03',
+        datePrecision: 'DAY',
+        reason: 'Foucault hung a pendulum in the Meridian Hall of the Paris Observatory and observed its swing plane rotate clockwise over hours, an effect that could only arise from the rotation of the Earth beneath it. He presented "Démonstration physique du mouvement de rotation de la terre au moyen du pendule" to the Académie des sciences on 3 February 1851, giving the first non-astronomical, directly observable proof of terrestrial rotation.',
+        source: {
+          externalId: 'src:foucault-cr-pendule-1851',
+          name: 'Foucault L. Démonstration physique du mouvement de rotation de la terre au moyen du pendule. Comptes rendus de l\'Académie des sciences, vol. 32, 3 February 1851, 135–138.',
+          url: 'https://en.wikipedia.org/wiki/Foucault_pendulum',
+          publishedAt: '1851-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1851-03-31',
+        datePrecision: 'DAY',
+        reason: 'Foucault suspended a 28-kg bob on a 67-metre wire from the dome of the Panthéon in Paris, where the slow rotation of the swing plane was visible to the public. The demonstration was reproduced in observatories and public halls across Europe and America within months, and the rotation of the pendulum\'s plane became an accepted, repeatable proof of the Earth\'s rotation.',
+        source: {
+          externalId: 'src:foucault-pantheon-1851',
+          name: 'Foucault pendulum — public demonstration at the Panthéon, Paris, March 1851. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Foucault_pendulum',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Helium discovered in the solar spectrum ─────────────────────────────────
+  {
+    externalId: 'trajectory:helium-solar-spectrum-1868',
+    text: 'During the total solar eclipse of 18 August 1868, Pierre Janssen observed a bright yellow spectral line (later designated D3) in the Sun\'s chromosphere; Norman Lockyer observed it independently on 20 October 1868 and attributed it to a new element he named helium, 27 years before it was isolated on Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1868-08-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1868-08-18',
+        datePrecision: 'DAY',
+        reason: 'Observing the total solar eclipse of 18 August 1868 from Guntur, India, Janssen used a spectroscope on the solar prominences and recorded a bright yellow emission line at about 587.49 nm that did not match the sodium D1/D2 lines. The observation was confirmed weeks later by Lockyer, who could see the line without an eclipse.',
+        source: {
+          externalId: 'src:janssen-lockyer-helium-1868',
+          name: 'Janssen P.J.C. (eclipse spectroscopy, 18 August 1868) and Lockyer J.N. (20 October 1868), reported to the Académie des sciences and the Royal Society. Wikipedia, "Helium".',
+          url: 'https://en.wikipedia.org/wiki/Helium',
+          publishedAt: '1868-08-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1868-10-20',
+        datePrecision: 'DAY',
+        reason: 'Lockyer and Edward Frankland proposed that the unidentified D3 line was due to a new element, helium, existing in the Sun but unknown on Earth. The claim of a purely celestial element with no terrestrial counterpart was treated skeptically by many chemists for decades, as no sample could be produced or weighed.',
+        source: {
+          externalId: 'src:lockyer-helium-proposal-1868',
+          name: 'Lockyer J.N., Frankland E. Proposal of a new solar element "helium" from the D3 line, 1868. Wikipedia, "Helium".',
+          url: 'https://en.wikipedia.org/wiki/Helium',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-03-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 March 1895 William Ramsay isolated terrestrial helium by treating the uranium mineral cleveite with acid and found its spectrum matched the solar D3 line exactly. The independent confirmations by Ramsay, and by Cleve and Langlet in Sweden, proved helium was a real element, settling the 1868 spectroscopic prediction.',
+        source: {
+          externalId: 'src:ramsay-helium-isolation-1895',
+          name: 'Ramsay W. Terrestrial isolation of helium from cleveite, 26 March 1895. Wikipedia, "Helium".',
+          url: 'https://en.wikipedia.org/wiki/Helium',
+          publishedAt: '1895-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Russian Emancipation Manifesto abolishes serfdom ────────────────────────
+  {
+    externalId: 'trajectory:russia-emancipation-serfs-1861',
+    text: 'Tsar Alexander II signed the Emancipation Manifesto on 3 March 1861 (19 February Old Style), legally abolishing serfdom in the Russian Empire and granting personal freedom to over 23 million privately held serfs.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1861-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1861-03-03',
+        datePrecision: 'DAY',
+        reason: 'Alexander II signed the Emancipation Manifesto and the accompanying Regulations Concerning Peasants Leaving Serf Dependence on 3 March 1861 (O.S. 19 February). The decree proclaimed the emancipation of privately held and household serfs, granting them the legal rights of free rural inhabitants — to marry without consent, own property, and conduct business.',
+        source: {
+          externalId: 'src:emancipation-manifesto-1861',
+          name: 'Emancipation Manifesto of Alexander II, 3 March 1861 (O.S. 19 February). Wikipedia, "Emancipation reform of 1861".',
+          url: 'https://en.wikipedia.org/wiki/Emancipation_reform_of_1861',
+          publishedAt: '1861-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1861-03-05',
+        datePrecision: 'DAY',
+        reason: 'The Manifesto was read publicly in churches across the Empire beginning on 5 March 1861 (Forgiveness Sunday). Despite peasant unrest over redemption payments and land allotments, serfdom was never reinstated, and the legal abolition of serf status became a permanent, irreversible feature of the Russian legal order.',
+        source: {
+          externalId: 'src:emancipation-proclamation-public-1861',
+          name: 'Public proclamation of the Emancipation Manifesto in Russian churches, March 1861. Wikipedia, "Emancipation reform of 1861".',
+          url: 'https://en.wikipedia.org/wiki/Emancipation_reform_of_1861',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Nanking ends the First Opium War ──────────────────────────────
+  {
+    externalId: 'trajectory:treaty-nanking-1842',
+    text: 'The Treaty of Nanking, signed on 29 August 1842 aboard HMS Cornwallis, ended the First Opium War between Britain and Qing China, ceded Hong Kong Island to Britain in perpetuity, opened five treaty ports, and imposed a 21-million-silver-dollar indemnity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1842-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1842-08-29',
+        datePrecision: 'DAY',
+        reason: 'Qing plenipotentiaries and British representatives signed the Treaty of Nanking aboard HMS Cornwallis on 29 August 1842, ending the First Opium War. The treaty ceded Hong Kong Island in perpetuity, opened Canton, Xiamen, Fuzhou, Ningbo, and Shanghai to British trade and residence, abolished the Canton System, and required an indemnity of 21 million silver dollars.',
+        source: {
+          externalId: 'src:treaty-nanking-1842',
+          name: 'Treaty of Nanking (Nanjing), signed 29 August 1842 aboard HMS Cornwallis. Wikipedia, "Treaty of Nanking".',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nanking',
+          publishedAt: '1842-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1843-06-26',
+        datePrecision: 'DAY',
+        reason: 'The Daoguang Emperor ratified the treaty on 27 October 1842 and Queen Victoria on 28 December 1842; the instruments of ratification were formally exchanged at Hong Kong on 26 June 1843, bringing the treaty into legal force. As the first of the "unequal treaties," it established a binding international-legal settlement that reshaped the China trade.',
+        source: {
+          externalId: 'src:treaty-nanking-ratification-1843',
+          name: 'Ratification exchange of the Treaty of Nanking at Hong Kong, 26 June 1843. Wikipedia, "Treaty of Nanking".',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nanking',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
