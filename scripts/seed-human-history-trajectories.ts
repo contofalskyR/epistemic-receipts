@@ -47252,6 +47252,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL — supplemental (Greek / Persian / late Roman)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Cunaxa — Cyrus the Younger killed, 3 September 401 BCE ─────────
+  {
+    externalId: 'trajectory:battle-of-cunaxa-401bce',
+    text: 'On 3 September 401 BCE the Greek mercenary "Ten Thousand" of Cyrus the Younger broke the centre of his brother Artaxerxes II at Cunaxa near Babylon, but Cyrus himself was killed in the charge — stranding the Greeks deep inside the Persian Empire, an engagement recorded by the participant Xenophon in the Anabasis.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0401-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0401-09-03',
+        datePrecision: 'DAY',
+        reason: 'Cyrus\'s phalanx routed the wing facing it, but Cyrus, sighting his brother, charged the royal bodyguard and was struck down; with his death the rebellion collapsed and the Greek contingent was left to begin its long march back to the sea. Xenophon, a mid-level officer present in the battle line, narrated the engagement in his Anabasis — the earliest surviving eyewitness account.',
+        source: {
+          externalId: 'src:xenophon-anabasis-cunaxa',
+          name: 'Xenophon, Anabasis 1.8, the battle of Cunaxa and the death of Cyrus. (c. 370 BCE, by a participant)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0202%3Abook%3D1%3Achapter%3D8',
+          publishedAt: '0370-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Plutarch\'s Life of Artaxerxes, drawing on the eyewitness Ctesias (a physician in the Persian camp) as well as Xenophon, independently records Cyrus\'s death in the battle. The convergence of two independent participant traditions and the survival of Xenophon\'s detailed march-narrative fix the engagement to early September 401 BCE, conventionally 3 September, as settled in the modern scholarly record.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-cunaxa',
+          name: 'Wikipedia, "Battle of Cunaxa" — 3 September 401 BC; Xenophon and Ctesias as sources.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Cunaxa',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Julian the Apostate — Samarra, 26 June 363 CE ──────────────────
+  {
+    externalId: 'trajectory:julian-death-samarra-363',
+    text: 'The Roman emperor Julian (the Apostate) was struck by a spear during a Sasanian cavalry raid near Maranga/Samarra in Mesopotamia and died of the wound on 26 June 363 CE — ending his Persian campaign and the last reign of a non-Christian Roman emperor.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0363-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0363-06-26',
+        datePrecision: 'DAY',
+        reason: 'As the retreating Roman column was harassed by Persian cavalry, a spear grazed Julian\'s arm, pierced his ribs and lodged in his liver; carried to his tent, he died that night. Ammianus Marcellinus, a serving officer on the campaign, recorded the wound and death and fixed the date by noting that the succession was settled "at dawn of the following day, the twenty-seventh of June."',
+        source: {
+          externalId: 'src:ammianus-25-julian-death',
+          name: 'Ammianus Marcellinus, Res Gestae 25.3, the wounding and death of Julian. (c. 391 CE, by a participant in the campaign)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/25*.html',
+          publishedAt: '0391-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Julian\'s death on 26 June 363 is independently attested by the contemporary orator Libanius, who delivered funeral and memorial speeches for him, and by the brevarist Eutropius, also present on the expedition. The agreement of an eyewitness historian, a contemporary rhetor, and a participant-summarist settles both the event and its date in the modern record.',
+        source: {
+          externalId: 'src:wikipedia-julian-emperor-death',
+          name: 'Wikipedia, "Julian (emperor)" — death 26 June 363 at the Battle of Samarra.',
+          url: 'https://en.wikipedia.org/wiki/Julian_(emperor)',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Adrianople — Valens killed, 9 August 378 CE ───────────────────
+  {
+    externalId: 'trajectory:battle-of-adrianople-378',
+    text: 'On 9 August 378 CE the eastern Roman field army under the emperor Valens was destroyed by the Goths near Adrianople in Thrace, and Valens himself was killed and his body never recovered — one of the gravest defeats in Roman history, recorded by the contemporary soldier-historian Ammianus Marcellinus.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0378-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0378-08-09',
+        datePrecision: 'DAY',
+        reason: 'Valens, advancing without waiting for the western army of Gratian, was overwhelmed when Gothic cavalry fell on his exhausted infantry; in Ammianus\'s account the emperor "fell mortally wounded by an arrow, and presently breathed his last breath, and he was never afterwards found anywhere." Ammianus, writing as a contemporary and former soldier, gives the fullest surviving narrative and calls it the heaviest slaughter since Cannae.',
+        source: {
+          externalId: 'src:ammianus-31-adrianople',
+          name: 'Ammianus Marcellinus, Res Gestae 31.12–13, the battle of Adrianople and death of Valens. (c. 391 CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/31*.html',
+          publishedAt: '0391-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date of 9 August 378 is corroborated by the contemporary Consularia Constantinopolitana and by later church historians (Socrates, Sozomen), and the catastrophic loss of an emperor and his army is treated by modern scholarship as a documented turning point in late-Roman military history — settling both the event and its day.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-adrianople',
+          name: 'Wikipedia, "Battle of Adrianople" — 9 August 378; Ammianus Marcellinus as contemporary source.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Adrianople',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Frigidus — Theodosius defeats Eugenius, 5–6 Sept 394 CE ────
+  {
+    externalId: 'trajectory:battle-of-frigidus-394',
+    text: 'On 5–6 September 394 CE the army of Theodosius I defeated the usurper Eugenius and the Frankish general Arbogast at the river Frigidus in the eastern Alps — a victory contemporaries attributed to a sudden violent wind (the bora) and read as the triumph of Christianity over the last organized pagan resistance.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0394-09-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0394-09-05',
+        datePrecision: 'DAY',
+        reason: 'After a costly first day, Theodosius\'s forces broke Eugenius\'s line on the second; Eugenius was captured and beheaded and Arbogast killed himself days later. Contemporary Christian writers — Rufinus of Aquileia, Ambrose of Milan, and the church historian Sozomen — recorded the battle and emphasised a powerful wind that blew dust and missiles back into the usurper\'s ranks, presenting the outcome as divine vindication of Theodosius.',
+        source: {
+          externalId: 'src:sozomen-he-7-frigidus',
+          name: 'Sozomen, Ecclesiastical History 7.24, the war of Theodosius against Eugenius and the wind at the Frigidus. (c. 445 CE)',
+          url: 'https://www.newadvent.org/fathers/26027.htm',
+          publishedAt: '0445-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The factual core — a two-day battle on 5–6 September 394, Theodosius\'s victory, and the deaths of Eugenius and Arbogast — is settled across the contemporary sources and modern scholarship, even as historians treat the providential "miraculous wind" as a religiously framed embellishment of an ordinary Alpine bora rather than a literal sign.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-frigidus',
+          name: 'Wikipedia, "Battle of the Frigidus" — fought 5 and 6 September 394; contemporary sources Rufinus, Claudian, Ambrose, Sozomen.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Frigidus',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sack of Rome by Alaric — 24 August 410 CE ───────────────────────────────
+  {
+    externalId: 'trajectory:sack-of-rome-alaric-410',
+    text: 'On 24 August 410 CE the Visigoths under Alaric I entered Rome through the Salarian Gate and sacked the city for three days — the first capture of Rome by a foreign enemy in nearly 800 years, an event recorded with shock by contemporaries across the Roman world.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0410-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0410-08-24',
+        datePrecision: 'DAY',
+        reason: 'Alaric\'s Goths, after repeated sieges, were admitted through the Salarian Gate and plundered Rome for three days, sparing the great churches but stripping much of the city. Jerome, writing in Bethlehem within two years, recorded the news in his Letter 127: "The City which had taken the whole world was itself taken" — a contemporary witness to the event\'s impact across the empire.',
+        source: {
+          externalId: 'src:jerome-letter-127-sack-of-rome',
+          name: 'Jerome, Letter 127 (To Principia), §12, on the capture of Rome. (c. 412 CE)',
+          url: 'https://www.newadvent.org/fathers/3001127.htm',
+          publishedAt: '0412-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The sack on 24 August 410 is independently attested by the contemporary historian Orosius, by the church historian Sozomen, and by Augustine, whose City of God was written expressly to answer those who blamed Christianity for the disaster. The convergence of pagan and Christian contemporaries on both the event and its date settles it in the modern record.',
+        source: {
+          externalId: 'src:wikipedia-sack-of-rome-410',
+          name: 'Wikipedia, "Sack of Rome (410)" — Visigoths enter through the Salarian Gate on 24 August 410.',
+          url: 'https://en.wikipedia.org/wiki/Sack_of_Rome_(410)',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
