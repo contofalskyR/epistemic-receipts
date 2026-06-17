@@ -25179,6 +25179,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA — non-Western perspectives (1990–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── MERS coronavirus first identified in Saudi Arabia ───────────────────────
+  {
+    externalId: 'trajectory:mers-cov-identified-saudi-2012',
+    text: 'A novel coronavirus (later named MERS-CoV) was identified as the cause of a fatal respiratory illness after a virologist in Jeddah, Saudi Arabia, isolated it from a patient and posted the finding on 20 September 2012; the World Health Organization issued its first global alert on 23 September 2012.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-09-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-09-23',
+        datePrecision: 'DAY',
+        reason: 'After Egyptian virologist Ali Mohamed Zaki isolated a previously unknown coronavirus from a 60-year-old Saudi man who had died in Jeddah and reported it on the ProMED-mail outbreak list on 20 September 2012, the WHO issued a Disease Outbreak News alert on 23 September 2012 describing two laboratory-confirmed cases (the fatal Saudi case and a 49-year-old Qatari man treated in the UK) whose virus isolates were 99.5% identical, placing the new pathogen on the official international record.',
+        source: {
+          externalId: 'src:who-novel-coronavirus-2012-09-23',
+          name: 'WHO Disease Outbreak News. "Novel coronavirus infection in the United Kingdom," 23 September 2012.',
+          url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2012_09_23-en',
+          publishedAt: '2012-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-11-08',
+        datePrecision: 'DAY',
+        reason: 'The full identification and characterisation of the new betacoronavirus from the index patient was published in the New England Journal of Medicine on 8 November 2012, confirming by isolation, electron microscopy and full genome sequencing that a distinct novel coronavirus caused the disease. The virus was formally named Middle East respiratory syndrome coronavirus (MERS-CoV) in May 2013, settling its identity in the scientific literature.',
+        source: {
+          externalId: 'src:zaki-nejb-novel-coronavirus-2012',
+          name: 'Zaki AM, et al. "Isolation of a Novel Coronavirus from a Man with Pneumonia in Saudi Arabia." New England Journal of Medicine, 8 November 2012.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1211721',
+          publishedAt: '2012-11-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chang'e-4 first soft landing on the far side of the Moon ────────────────
+  {
+    externalId: 'trajectory:change4-far-side-landing-2019',
+    text: 'China\'s Chang\'e-4 spacecraft made the first soft landing on the far side of the Moon, touching down in Von Kármán crater within the South Pole–Aitken basin at 02:26 UTC on 3 January 2019.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-12-08',
+        datePrecision: 'DAY',
+        reason: 'The China National Space Administration launched Chang\'e-4 aboard a Long March 3B on 8 December 2018. Because the Moon\'s far side never faces Earth, no spacecraft had ever soft-landed there, and whether a landing relayed through the dedicated Queqiao satellite could succeed remained open.',
+        source: {
+          externalId: 'src:cnsa-change4-overview-2019',
+          name: 'EarthSky. "China\'s Chang\'e-4 lands on moon\'s far side," reporting CNSA mission details, January 2019.',
+          url: 'https://earthsky.org/space/china-change-4-spacecraft-landing-moon-far-side/',
+          publishedAt: '2018-12-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-01-03',
+        datePrecision: 'DAY',
+        reason: 'Chang\'e-4 touched down in Von Kármán crater at 02:26 UTC (10:26 a.m. Beijing time) on 3 January 2019 and returned the first close-up images of the lunar far-side surface via the Queqiao relay satellite, the same day. CNSA declared the landing — the first ever on the far side — a success, reported worldwide.',
+        source: {
+          externalId: 'src:cnsa-change4-landing-2019',
+          name: 'CNSA. "China\'s Chang\'e-4 probe makes historic landing on moon\'s far side," 3 January 2019.',
+          url: 'https://www.cnsa.gov.cn/english/n6465652/n6465653/c6805049/content.html',
+          publishedAt: '2019-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-05-16',
+        datePrecision: 'DAY',
+        reason: 'Peer-reviewed analysis of the Yutu-2 rover\'s spectrometer data, published in Nature on 16 May 2019, reported mantle-derived minerals at the landing site and confirmed the mission was operating on the far side as described — independent scientific corroboration that settled the achievement on the international record.',
+        source: {
+          externalId: 'src:li-change4-mantle-nature-2019',
+          name: 'Li C, et al. "Chang\'E-4 initial spectroscopic identification of lunar far-side mantle-derived materials." Nature, 16 May 2019.',
+          url: 'https://www.nature.com/articles/s41586-019-1189-0',
+          publishedAt: '2019-05-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Omicron SARS-CoV-2 variant first reported by South Africa ───────────────
+  {
+    externalId: 'trajectory:omicron-variant-reported-2021',
+    text: 'The SARS-CoV-2 variant B.1.1.529 was first reported to the World Health Organization by South Africa on 24 November 2021 and designated a variant of concern, named Omicron, on 26 November 2021.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-11-24',
+        datePrecision: 'DAY',
+        reason: 'South African genomic-surveillance scientists detected a heavily mutated SARS-CoV-2 lineage in samples — the earliest confirmed specimen collected on 9 November 2021 — and reported the variant B.1.1.529 to the WHO on 24 November 2021, placing the new lineage on the international epidemiological record.',
+        source: {
+          externalId: 'src:who-omicron-classification-2021',
+          name: 'WHO. "Classification of Omicron (B.1.1.529): SARS-CoV-2 Variant of Concern," 26 November 2021.',
+          url: 'https://www.who.int/news/item/26-11-2021-classification-of-omicron-(b.1.1.529)-sars-cov-2-variant-of-concern',
+          publishedAt: '2021-11-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-11-26',
+        datePrecision: 'DAY',
+        reason: 'On the advice of its Technical Advisory Group on Virus Evolution, the WHO designated B.1.1.529 a variant of concern and named it Omicron on 26 November 2021, citing mutations affecting transmissibility — formally establishing the variant\'s status. Omicron subsequently became the globally dominant lineage, confirming the designation.',
+        source: {
+          externalId: 'src:who-omicron-update-2021-11-28',
+          name: 'WHO. "Update on Omicron," 28 November 2021.',
+          url: 'https://www.who.int/news/item/28-11-2021-update-on-omicron',
+          publishedAt: '2021-11-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Homo luzonensis — new human species found in the Philippines ────────────
+  {
+    externalId: 'trajectory:homo-luzonensis-philippines-2019',
+    text: 'A previously unknown human species, Homo luzonensis, was identified from fossils excavated in Callao Cave on the island of Luzon in the Philippines, announced in Nature on 10 April 2019.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-08-01',
+        datePrecision: 'MONTH',
+        reason: 'A single hominin foot bone (third metatarsal) recovered from Callao Cave during 2007 excavations, led by University of the Philippines archaeologist Armand Mijares, was reported in 2010 and dated to at least ~67,000 years — establishing an unexpectedly old human presence on Luzon but leaving the species identity open.',
+        source: {
+          externalId: 'src:mijares-callao-metatarsal-2010',
+          name: 'Mijares AS, et al. "New evidence for a 67,000-year-old human presence at Callao Cave, Luzon, Philippines." Journal of Human Evolution, 2010.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20691446/',
+          publishedAt: '2010-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-04-10',
+        datePrecision: 'DAY',
+        reason: 'Further excavations (2011, 2015) yielded additional teeth, hand and foot bones, and a thigh-bone fragment from at least three individuals. A team led by Florent Détroit and Armand Mijares concluded the remains represented a distinct species with a mosaic of primitive and modern traits, naming it Homo luzonensis in Nature, published online 10 April 2019.',
+        source: {
+          externalId: 'src:detroit-luzonensis-nature-2019',
+          name: 'Détroit F, et al. "A new species of Homo from the Late Pleistocene of the Philippines." Nature 568, 181–186, 10 April 2019.',
+          url: 'https://www.asianscientist.com/2019/04/in-the-lab/homo-luzonensis-ancient-human-species-northern-philippines/',
+          publishedAt: '2019-04-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO African Region certified free of wild poliovirus ────────────────────
+  {
+    externalId: 'trajectory:africa-wild-polio-free-2020',
+    text: 'The WHO African Region was certified free of indigenous wild poliovirus on 25 August 2020, after four years without a detected case across its 47 member states.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-08-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-08-11',
+        datePrecision: 'DAY',
+        reason: 'The last cases of wild poliovirus on the African continent were detected in Borno State, Nigeria, in August 2016. Whether transmission had truly been interrupted region-wide — rather than merely going undetected amid insecurity and surveillance gaps — remained open pending years of confirmatory monitoring.',
+        source: {
+          externalId: 'src:who-nigeria-wpv-2016',
+          name: 'WHO / Global Polio Eradication Initiative. Wild poliovirus cases detected in Borno State, Nigeria, August 2016.',
+          url: 'https://polioeradication.org/news-post/who-removes-nigeria-from-polio-endemic-list/',
+          publishedAt: '2016-08-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-25',
+        datePrecision: 'DAY',
+        reason: 'After four years with no detected wild poliovirus and exhaustive surveillance review, the independent Africa Regional Certification Commission certified the WHO African Region as free of indigenous wild poliovirus on 25 August 2020 — meaning five of WHO\'s six regions, over 90% of the world\'s population, had eliminated wild polio. Type 2 had been declared eradicated globally in 2015 and type 3 in 2019, leaving only type 1 endemic in Afghanistan and Pakistan.',
+        source: {
+          externalId: 'src:who-africa-polio-free-2020',
+          name: 'WHO. "Global polio eradication initiative applauds WHO African region for wild polio-free certification," 25 August 2020.',
+          url: 'https://www.who.int/news/item/25-08-2020-global-polio-eradication-initiative-applauds-who-african-region-for-wild-polio-free-certification',
+          publishedAt: '2020-08-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
