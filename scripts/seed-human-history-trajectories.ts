@@ -24315,6 +24315,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Mariner 2 — first successful planetary flyby reveals a hot Venus ─────────
+  {
+    externalId: 'trajectory:mariner2-venus-flyby-1962',
+    text: 'On 14 December 1962 NASA\'s Mariner 2 became the first spacecraft to successfully fly by another planet, returning microwave and infrared radiometer data showing Venus has an extremely hot surface (~425 °C) and no detectable magnetic field — refuting earlier speculation of a temperate, possibly watery world beneath its clouds.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-12-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-12-14',
+        datePrecision: 'DAY',
+        reason: 'After a 109-day cruise, Mariner 2 passed within about 34,800 km of Venus and ran a 42-minute radiometer scan. The microwave radiometer detected limb-darkening consistent with a very hot solid surface rather than a hot ionosphere, and the spacecraft detected no planetary magnetic field or radiation belts. JPL announced the encounter and preliminary findings the same day.',
+        source: {
+          externalId: 'src:jpl-mariner2-encounter-1962',
+          name: 'NASA/Jet Propulsion Laboratory. Mariner 2 Venus encounter, 14 December 1962 — mission report and press release.',
+          url: 'https://en.wikipedia.org/wiki/Mariner_2',
+          publishedAt: '1962-12-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-03-08',
+        datePrecision: 'DAY',
+        reason: 'Preliminary results were published in Science on 8 March 1963, establishing a high Venusian surface temperature and the absence of an appreciable magnetic field. The hot-surface finding was corroborated by subsequent missions — Venera probes from the late 1960s and the Venera 7 surface landing (1970, ~475 °C) — settling Venus as a hostile, greenhouse-heated world.',
+        source: {
+          externalId: 'src:mariner2-science-1963',
+          name: 'Barath FT, Barrett AH, Copeland J, Jones DE, Lilley AE. "Mariner II: Preliminary Reports on Measurements of Venus — Microwave Radiometers." Science 139(3558):908–909, 8 March 1963.',
+          url: 'https://www.science.org/doi/10.1126/science.139.3558.908',
+          publishedAt: '1963-03-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Crick, Brenner et al. — the genetic code is read in non-overlapping triplets ─
+  {
+    externalId: 'trajectory:crick-triplet-code-1961',
+    text: 'On 30 December 1961 Francis Crick, Leslie Barnett, Sydney Brenner, and Richard Watts-Tobin reported in Nature that the genetic code is read in non-overlapping triplets from a fixed starting point — demonstrated genetically by acridine-induced frameshift mutations in the rII region of bacteriophage T4.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-12-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-12-30',
+        datePrecision: 'DAY',
+        reason: 'By combining single base-pair insertions and deletions (induced by proflavine) in the T4 rII gene, the team showed that one or two changes abolished function while three of the same sign restored it — evidence that the message is read in groups of three bases without overlap or punctuation. The result appeared in Nature on 30 December 1961.',
+        source: {
+          externalId: 'src:crick-triplet-nature-1961',
+          name: 'Crick FHC, Barnett L, Brenner S, Watts-Tobin RJ. "General Nature of the Genetic Code for Proteins." Nature 192:1227–1232, 30 December 1961.',
+          url: 'https://www.nature.com/articles/1921227a0',
+          publishedAt: '1961-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The triplet reading frame deduced genetically by Crick and colleagues was confirmed biochemically as Nirenberg\'s and Khorana\'s laboratories assigned all 64 codons, with the complete codon table presented at the 1966 Cold Spring Harbor symposium. The non-overlapping triplet code became a settled foundation of molecular biology.',
+        source: {
+          externalId: 'src:nirenberg-code-cshl-1966-triplet',
+          name: 'Nirenberg M. et al. "The RNA Code and Protein Synthesis." Cold Spring Harbor Symposia on Quantitative Biology, Vol. 31, 1966.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1968/nirenberg/facts/',
+          publishedAt: '1966-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Thalidomide — a "safe" sedative recognized as a potent teratogen ─────────
+  {
+    externalId: 'trajectory:thalidomide-teratogen-1961',
+    text: 'In November–December 1961 the sedative thalidomide, marketed since 1957 as a safe drug suitable for pregnant women, was identified as the cause of a severe epidemic of birth defects (notably phocomelia) — reversing its reputation as harmless and leading to its worldwide withdrawal.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-11-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-11-18',
+        datePrecision: 'DAY',
+        reason: 'German paediatrician Widukind Lenz publicly linked thalidomide to the surge in phocomelia at a paediatric meeting in Düsseldorf on 18–19 November 1961 and notified the manufacturer Grünenthal, which withdrew the drug from the German market on 26 November 1961. The causal claim contradicted the drug\'s established safety profile and was initially disputed by the manufacturer.',
+        source: {
+          externalId: 'src:lenz-thalidomide-1961',
+          name: 'Lenz W. Statement on the danger of thalidomide (Contergan) in pregnancy, Düsseldorf paediatric meeting, 18–19 November 1961; Grünenthal market withdrawal 26 November 1961.',
+          url: 'https://en.wikipedia.org/wiki/Thalidomide',
+          publishedAt: '1961-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-12-16',
+        datePrecision: 'DAY',
+        reason: 'The Australian obstetrician William McBride published a letter in The Lancet on 16 December 1961 independently reporting the association between thalidomide taken in early pregnancy and limb-reduction defects. Convergent clinical, epidemiological, and later experimental evidence settled thalidomide as a human teratogen; in the United States the drug had never been approved owing to FDA reviewer Frances Kelsey\'s safety concerns.',
+        source: {
+          externalId: 'src:mcbride-lancet-1961',
+          name: 'McBride WG. "Thalidomide and congenital abnormalities." The Lancet 278(7216):1358, 16 December 1961.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(61)90927-8/fulltext',
+          publishedAt: '1961-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Apollo 1 — launch-rehearsal fire kills three astronauts ─────────────────
+  {
+    externalId: 'trajectory:apollo1-fire-1967',
+    text: 'On 27 January 1967 a flash fire swept the Apollo 1 (AS-204) command module during a launch-rehearsal test at Cape Kennedy, killing astronauts Gus Grissom, Ed White, and Roger Chaffee; the subsequent review board traced the disaster to an electrical ignition source in a pure-oxygen cabin filled with flammable materials.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-01-27',
+        datePrecision: 'DAY',
+        reason: 'During a "plugs-out" countdown test on Launch Complex 34, a fire broke out in the sealed command module pressurized with pure oxygen. The three-man crew died within seconds; the event was logged in real time by the test crew and announced by NASA the same evening. The precise ignition point was not yet known.',
+        source: {
+          externalId: 'src:nasa-apollo1-event-1967',
+          name: 'NASA. Apollo 1 (AS-204) accident, Launch Complex 34, Cape Kennedy, 27 January 1967 — contemporaneous mission and test records.',
+          url: 'https://history.nasa.gov/Apollo204/',
+          publishedAt: '1967-01-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-04-05',
+        datePrecision: 'DAY',
+        reason: 'The Apollo 204 Review Board delivered its final report on 5 April 1967, concluding that the most probable cause was an electrical arc in wiring near the environmental control unit, with the fire propagated by the pure-oxygen atmosphere and abundant combustibles, and exacerbated by an inward-opening hatch that could not be opened quickly. The findings drove a major redesign of the command module and were never seriously disputed.',
+        source: {
+          externalId: 'src:apollo204-review-board-1967',
+          name: 'Report of the Apollo 204 Review Board to the Administrator, National Aeronautics and Space Administration, 5 April 1967.',
+          url: 'https://history.nasa.gov/Apollo204/content.html',
+          publishedAt: '1967-04-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Louise Brown — first human birth from in vitro fertilization ────────────
+  {
+    externalId: 'trajectory:louise-brown-ivf-1978',
+    text: 'On 25 July 1978 Louise Brown was born at Oldham General Hospital, England — the first human conceived by in vitro fertilization — demonstrating that an egg fertilized outside the body and transferred to the uterus could result in a healthy live birth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-07-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1978-07-25',
+        datePrecision: 'DAY',
+        reason: 'Louise Joy Brown was delivered by caesarean section just before midnight, the product of an oocyte fertilized in vitro and cultured by physiologist Robert Edwards and gynaecologist Patrick Steptoe before transfer to her mother Lesley Brown. The birth was reported worldwide within hours.',
+        source: {
+          externalId: 'src:louise-brown-birth-1978',
+          name: 'Birth of Louise Brown, Oldham General Hospital, 25 July 1978 — contemporaneous press reporting and hospital records.',
+          url: 'https://en.wikipedia.org/wiki/Louise_Brown',
+          publishedAt: '1978-07-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-08-12',
+        datePrecision: 'DAY',
+        reason: 'Steptoe and Edwards reported the case in The Lancet on 12 August 1978 ("Birth after the reimplantation of a human embryo"). IVF was subsequently replicated by clinics worldwide and became standard assisted-reproduction therapy; Robert Edwards received the 2010 Nobel Prize in Physiology or Medicine for developing the technique, settling the 1978 birth as the founding case of clinical IVF.',
+        source: {
+          externalId: 'src:steptoe-edwards-lancet-1978',
+          name: 'Steptoe PC, Edwards RG. "Birth after the reimplantation of a human embryo." The Lancet 312(8085):366, 12 August 1978.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(78)92957-4/fulltext',
+          publishedAt: '1978-08-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
