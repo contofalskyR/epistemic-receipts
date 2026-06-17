@@ -32734,6 +32734,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Treaty of Waitangi signed (1840) ────────────────────────────────────────
+  {
+    externalId: 'trajectory:treaty-of-waitangi-1840',
+    text: 'The Treaty of Waitangi, the founding document of New Zealand, was first signed at Waitangi in the Bay of Islands on 6 February 1840 by Captain William Hobson for the British Crown and by around forty-five Māori chiefs.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1840-02-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1840-02-06',
+        datePrecision: 'DAY',
+        reason: 'On 6 February 1840, after debate the previous day on the lawn at Waitangi, Captain William Hobson and a first group of northern Māori chiefs — Hōne Heke signing first — put their names and moko to the treaty, by which Māori ceded kāwanatanga (governance) to the Crown in exchange for guarantees over their lands and the rights of British subjects. The signed sheets were recorded as the formal instrument of the agreement.',
+        source: {
+          externalId: 'src:treaty-of-waitangi-1840-signing',
+          name: 'Treaty of Waitangi — first signed 6 February 1840 at Waitangi by William Hobson and Māori chiefs (treaty sheets held at the National Library of New Zealand).',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Waitangi',
+          publishedAt: '1840-02-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1840-05-21',
+        datePrecision: 'DAY',
+        reason: 'After copies of the treaty had been carried around the country and gathered roughly 500 more Māori signatures, Hobson issued proclamations on 21 May 1840 asserting British sovereignty over the whole of New Zealand. The treaty thereafter functioned as the foundational constitutional document of the colony, its date and signing an undisputed matter of record.',
+        source: {
+          externalId: 'src:hobson-sovereignty-proclamations-1840',
+          name: 'Hobson\'s proclamations of British sovereignty over New Zealand, 21 May 1840.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Waitangi',
+          publishedAt: '1840-05-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Shimonoseki ends the First Sino-Japanese War (1895) ────────────
+  {
+    externalId: 'trajectory:treaty-of-shimonoseki-1895',
+    text: 'The Treaty of Shimonoseki, signed on 17 April 1895, ended the First Sino-Japanese War, with Qing China recognising Korean independence and ceding Taiwan, the Penghu (Pescadores) Islands, and the Liaodong Peninsula to the Empire of Japan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1895-04-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1895-04-17',
+        datePrecision: 'DAY',
+        reason: 'At Shimonoseki on 17 April 1895, the Qing plenipotentiary Li Hongzhang and the Japanese prime minister Itō Hirobumi signed the treaty ending the war. Its eleven articles recognised the independence of Korea, ceded Formosa (Taiwan), the Pescadores and the Liaodong Peninsula to Japan, and imposed an indemnity of 200 million Kuping taels — terms preserved in the signed bilingual text.',
+        source: {
+          externalId: 'src:treaty-of-shimonoseki-text-1895',
+          name: 'Treaty of Shimonoseki, signed 17 April 1895 (official text, all eleven articles).',
+          url: 'https://en.wikisource.org/wiki/Treaty_of_Shimonoseki',
+          publishedAt: '1895-04-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1895-05-08',
+        datePrecision: 'DAY',
+        reason: 'Within a week of signing, the Triple Intervention of Russia, Germany and France pressured Japan into returning the Liaodong Peninsula in exchange for an additional indemnity. Ratifications were nonetheless exchanged at Chefoo (Yantai) on 8 May 1895, bringing the treaty into force; the cession of Taiwan to Japan held for fifty years, settling the treaty as established diplomatic fact.',
+        source: {
+          externalId: 'src:treaty-of-shimonoseki-ratification-1895',
+          name: 'Treaty of Shimonoseki — ratifications exchanged at Chefoo 8 May 1895; Triple Intervention and return of Liaodong.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Shimonoseki',
+          publishedAt: '1895-05-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Stanley finds Livingstone at Ujiji (1871) ───────────────────────────────
+  {
+    externalId: 'trajectory:livingstone-stanley-meeting-1871',
+    text: 'Henry Morton Stanley, a correspondent for the New York Herald, located the missing explorer David Livingstone at Ujiji on Lake Tanganyika on 10 November 1871.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1871-11-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1871-11-10',
+        datePrecision: 'DAY',
+        reason: 'Sent by James Gordon Bennett Jr. of the New York Herald to find Livingstone, who had not been heard from for years, Stanley reached the lakeside town of Ujiji on 10 November 1871 and met the ailing missionary-explorer. He recorded the encounter in his dispatches and later in the book How I Found Livingstone (1872), the source of the famous greeting attributed to him.',
+        source: {
+          externalId: 'src:stanley-finds-livingstone-1871',
+          name: 'Henry Morton Stanley finds David Livingstone at Ujiji, 10 November 1871 (New York Herald correspondent; How I Found Livingstone, 1872).',
+          url: 'https://en.wikipedia.org/wiki/Henry_Morton_Stanley',
+          publishedAt: '1872-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1872-08-01',
+        datePrecision: 'MONTH',
+        reason: 'When news of the meeting reached Britain in mid-1872, parts of the press and members of the Royal Geographical Society publicly doubted Stanley\'s account, questioning whether an American journalist had truly reached Livingstone and even suggesting the letters he carried were forged.',
+        source: {
+          externalId: 'src:stanley-rgs-controversy-1872',
+          name: 'Controversy over Stanley\'s account on his return to Britain, 1872 (Royal Geographical Society scepticism).',
+          url: 'https://en.wikipedia.org/wiki/Henry_Morton_Stanley',
+          publishedAt: '1872-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1874-04-18',
+        datePrecision: 'DAY',
+        reason: 'Livingstone\'s own letters and journals carried out by Stanley, the explorer\'s death in Africa in 1873, and the return of his body for burial in Westminster Abbey on 18 April 1874 confirmed the meeting beyond doubt. The encounter became an established episode in the history of African exploration.',
+        source: {
+          externalId: 'src:livingstone-westminster-burial-1874',
+          name: 'David Livingstone buried in Westminster Abbey, 18 April 1874, confirming Stanley\'s account.',
+          url: 'https://en.wikipedia.org/wiki/David_Livingstone',
+          publishedAt: '1874-04-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Oxford evolution debate (1860) ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:oxford-evolution-debate-1860',
+    text: 'A public debate over Darwin\'s theory of evolution took place at a meeting of the British Association for the Advancement of Science at the Oxford University Museum on 30 June 1860, in which Thomas Henry Huxley defended natural selection against Bishop Samuel Wilberforce.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1860-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1860-06-30',
+        datePrecision: 'DAY',
+        reason: 'Seven months after the publication of On the Origin of Species, a discussion of evolution at the British Association meeting in the newly built Oxford University Museum on 30 June 1860 turned into a celebrated confrontation between Bishop Samuel Wilberforce, who attacked the theory, and its defenders Thomas Henry Huxley and Joseph Dalton Hooker. Contemporaneous reports appeared in The Athenaeum and Jackson\'s Oxford Journal, and in letters Hooker and Alfred Newton wrote to Darwin.',
+        source: {
+          externalId: 'src:oxford-evolution-debate-1860',
+          name: '1860 Oxford evolution debate at the British Association meeting, Oxford University Museum, 30 June 1860 (reported in The Athenaeum and contemporary letters).',
+          url: 'https://en.wikipedia.org/wiki/1860_Oxford_evolution_debate',
+          publishedAt: '1860-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1887-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Although no verbatim transcript survives and the exact words exchanged remain debated, the occurrence of the debate on that date is firmly documented. Francis Darwin\'s Life and Letters of Charles Darwin (1887) reproduced the participants\' own accounts, fixing the event in the historical record as a landmark moment in the public reception of evolution.',
+        source: {
+          externalId: 'src:darwin-life-and-letters-1887',
+          name: 'Darwin F (ed.). The Life and Letters of Charles Darwin (1887), reproducing contemporary accounts of the 30 June 1860 Oxford debate.',
+          url: 'https://en.wikipedia.org/wiki/1860_Oxford_evolution_debate',
+          publishedAt: '1887-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Simpson introduces chloroform anaesthesia (1847) ────────────────────────
+  {
+    externalId: 'trajectory:simpson-chloroform-1847',
+    text: 'James Young Simpson discovered the anaesthetic properties of chloroform in humans on 4 November 1847 in Edinburgh, introducing it as a general anaesthetic for surgery and childbirth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-11-04',
+        datePrecision: 'DAY',
+        reason: 'On the evening of 4 November 1847, searching for an anaesthetic better than ether, Simpson and two colleagues inhaled chloroform at his house in Edinburgh and were rendered unconscious. Simpson reported the discovery to the Medico-Chirurgical Society of Edinburgh days later and published an account of the new agent in November 1847, rapidly putting it into obstetric and surgical use.',
+        source: {
+          externalId: 'src:simpson-chloroform-1847',
+          name: 'James Young Simpson — discovery of the anaesthetic properties of chloroform, 4 November 1847, Edinburgh.',
+          url: 'https://en.wikipedia.org/wiki/James_Young_Simpson',
+          publishedAt: '1847-11-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1853-04-07',
+        datePrecision: 'DAY',
+        reason: 'Adoption was initially slowed by religious and medical objections to anaesthesia in childbirth. When the physician John Snow administered chloroform to Queen Victoria for the birth of Prince Leopold on 7 April 1853 — "chloroform à la reine" — royal endorsement effectively settled the practice, and chloroform became a standard surgical and obstetric anaesthetic for decades.',
+        source: {
+          externalId: 'src:chloroform-queen-victoria-1853',
+          name: 'John Snow administers chloroform to Queen Victoria for the birth of Prince Leopold, 7 April 1853 ("chloroform à la reine").',
+          url: 'https://en.wikipedia.org/wiki/Chloroform',
+          publishedAt: '1853-04-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
