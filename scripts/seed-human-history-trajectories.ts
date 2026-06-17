@@ -39826,6 +39826,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR ADDITIONS (1950–1990) — space, earth science, molecular biology
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Explorer 1 discovers the Van Allen radiation belts ──────────────────────
+  {
+    externalId: 'trajectory:explorer1-van-allen-belts-1958',
+    text: 'Explorer 1, the first U.S. satellite, was launched on January 31, 1958; its onboard cosmic-ray detector recorded anomalous radiation counts that led James Van Allen to identify belts of charged particles trapped by Earth\'s magnetic field — the Van Allen radiation belts.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-31',
+        datePrecision: 'DAY',
+        reason: 'Explorer 1 is launched from Cape Canaveral at 10:48 p.m. EST on January 31, 1958. The Geiger–Müller cosmic-ray detector built by James Van Allen\'s group registers count rates that fall to zero at certain altitudes — later interpreted as instrument saturation by intense trapped radiation rather than an absence of particles.',
+        source: {
+          externalId: 'src:explorer1-nasa-launch',
+          name: 'NASA, "Explorer 1" mission overview (launch January 31, 1958; Van Allen cosmic-ray instrument).',
+          url: 'https://science.nasa.gov/mission/explorer-1/',
+          publishedAt: '1958-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Van Allen, Ludwig, Ray, and McIlwain publish "Observation of High Intensity Radiation by Satellites 1958 Alpha and Gamma" (Explorer 1 and Explorer 3) in 1958, establishing the existence of the trapped-radiation belts. Confirming data from Explorer 3 and 4 and Pioneer 3 map the belts, and the result becomes a settled foundation of magnetospheric physics.',
+        source: {
+          externalId: 'src:van-allen-belt-discovery-1958',
+          name: 'Van Allen J.A., Ludwig G.H., Ray E.C., McIlwain C.E., "Observation of High Intensity Radiation by Satellites 1958 Alpha and Gamma," Jet Propulsion 28 (1958).',
+          url: 'https://en.wikipedia.org/wiki/Van_Allen_radiation_belt',
+          publishedAt: '1958-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vine–Matthews: magnetic anomalies confirm seafloor spreading ────────────
+  {
+    externalId: 'trajectory:vine-matthews-seafloor-spreading-1963',
+    text: 'On September 7, 1963, Fred Vine and Drummond Matthews published "Magnetic Anomalies over Oceanic Ridges" in Nature, showing that the symmetric magnetic-anomaly stripes flanking mid-ocean ridges record geomagnetic reversals — key evidence for seafloor spreading and plate tectonics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-09-07',
+        datePrecision: 'DAY',
+        reason: 'Vine and Matthews report in Nature that the alternating bands of normal and reversed magnetization parallel to and symmetric about mid-ocean ridges can be explained if new oceanic crust forms at the ridge crest and records the reversing geomagnetic field as it spreads outward — linking Hess\'s seafloor-spreading idea to a testable magnetic signature.',
+        source: {
+          externalId: 'src:vine-matthews-nature-1963',
+          name: 'Vine F.J. & Matthews D.H., "Magnetic Anomalies over Oceanic Ridges," Nature 199, 947–949 (7 September 1963).',
+          url: 'https://en.wikipedia.org/wiki/Vine%E2%80%93Matthews%E2%80%93Morley_hypothesis',
+          publishedAt: '1963-09-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Symmetric magnetic profiles such as the Eltanin-19 transect across the Pacific–Antarctic Ridge, presented in 1966, decisively confirmed the hypothesis. Combined with transform-fault and earthquake-belt evidence, seafloor spreading was accepted by the geoscience community and absorbed into the plate-tectonics synthesis of 1967–68.',
+        source: {
+          externalId: 'src:seafloor-spreading-confirmed-1966',
+          name: 'Seafloor spreading confirmation (Eltanin-19 magnetic profile, 1966); "Vine–Matthews–Morley hypothesis."',
+          url: 'https://en.wikipedia.org/wiki/Seafloor_spreading',
+          publishedAt: '1966-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cohen & Boyer construct the first recombinant DNA ───────────────────────
+  {
+    externalId: 'trajectory:cohen-boyer-recombinant-dna-1973',
+    text: 'In November 1973 Stanley Cohen, Annie Chang, Herbert Boyer, and Robert Helling published "Construction of Biologically Functional Bacterial Plasmids In Vitro" in PNAS, demonstrating the first recombinant DNA — genes spliced between plasmids and replicated in E. coli.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Cohen, Chang, Boyer, and Helling report in the Proceedings of the National Academy of Sciences that restriction-enzyme-cut fragments from separate plasmids can be joined in vitro and introduced into E. coli, where the new plasmid replicates and expresses genetic properties from both parents — the first construction of biologically functional recombinant DNA.',
+        source: {
+          externalId: 'src:cohen-boyer-pnas-1973',
+          name: 'Cohen S.N., Chang A.C.Y., Boyer H.W., Helling R.B., "Construction of Biologically Functional Bacterial Plasmids In Vitro," PNAS 70(11):3240–3244 (November 1973).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC427208/',
+          publishedAt: '1973-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Recombinant DNA rapidly became the foundational technique of molecular biology and the biotechnology industry: Genentech (founded 1976) used it to express somatostatin in 1977 and human insulin in 1978. Gene cloning is now a settled, routine laboratory method worldwide.',
+        source: {
+          externalId: 'src:recombinant-dna-established',
+          name: '"Recombinant DNA" / history of molecular cloning and early biotechnology applications (1976–1978).',
+          url: 'https://en.wikipedia.org/wiki/Recombinant_DNA',
+          publishedAt: '1977-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gulf of Tonkin: reported attack later determined not to have occurred ────
+  {
+    externalId: 'trajectory:gulf-of-tonkin-second-attack-1964',
+    text: 'The U.S. government reported that on August 4, 1964, North Vietnamese torpedo boats attacked U.S. Navy destroyers in the Gulf of Tonkin; the report was used to pass the Gulf of Tonkin Resolution on August 7, 1964, but a declassified 2005 NSA study concluded the August 4 attack did not occur.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1964-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-08-04',
+        datePrecision: 'DAY',
+        reason: 'On the night of August 4, 1964, the destroyers USS Maddox and USS Turner Joy report a second engagement with North Vietnamese patrol boats in the Gulf of Tonkin. The Johnson administration treats the attack as fact and orders retaliatory airstrikes (Operation Pierce Arrow).',
+        source: {
+          externalId: 'src:tonkin-incident-1964',
+          name: '"Gulf of Tonkin incident" — reported August 4, 1964 engagement of USS Maddox and USS Turner Joy.',
+          url: 'https://en.wikipedia.org/wiki/Gulf_of_Tonkin_incident',
+          publishedAt: '1964-08-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-08-07',
+        datePrecision: 'DAY',
+        reason: 'Congress passes the Gulf of Tonkin Resolution on August 7, 1964 — 416–0 in the House and 88–2 in the Senate — authorizing the President to use armed force in Southeast Asia. The reported August 4 attack is officially established as the casus belli for escalating U.S. involvement in Vietnam.',
+        source: {
+          externalId: 'src:tonkin-resolution-1964',
+          name: 'Gulf of Tonkin Resolution (Public Law 88-408), enacted August 7, 1964.',
+          url: 'https://en.wikipedia.org/wiki/Gulf_of_Tonkin_Resolution',
+          publishedAt: '1964-08-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-01',
+        datePrecision: 'MONTH',
+        reason: 'A National Security Agency historical study by Robert J. Hanyok, declassified in October 2005, concludes that no North Vietnamese attack took place on August 4, 1964, and that signals-intelligence evidence had been deliberately skewed to support the attack narrative. The factual basis of the second incident is reversed.',
+        source: {
+          externalId: 'src:nsa-hanyok-tonkin-2005',
+          name: 'Hanyok R.J., "Skunks, Bogies, Silent Hounds, and the Flying Fish: The Gulf of Tonkin Mystery, 2–4 August 1964," NSA Cryptologic Quarterly (declassified October 2005).',
+          url: 'https://en.wikipedia.org/wiki/Gulf_of_Tonkin_incident',
+          publishedAt: '2005-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Following the NSA declassification, the historical consensus settles firmly that the August 4, 1964 attack did not occur as reported. Remaining debate concerns the degree of deliberate manipulation, not whether the attack happened.',
+        source: {
+          externalId: 'src:tonkin-consensus-postdeclassification',
+          name: '"Gulf of Tonkin incident" — post-2005 historical consensus on the nonoccurrence of the August 4 attack.',
+          url: 'https://en.wikipedia.org/wiki/Gulf_of_Tonkin_incident',
+          publishedAt: '2005-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Luna 9: first soft landing and images from the lunar surface ────────────
+  {
+    externalId: 'trajectory:luna9-first-soft-landing-1966',
+    text: 'On February 3, 1966, the Soviet probe Luna 9 became the first spacecraft to achieve a soft landing on the Moon and transmit photographs from the lunar surface, demonstrating that the surface could bear the weight of a lander.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1966-02-03',
+        datePrecision: 'DAY',
+        reason: 'Launched January 31, 1966, Luna 9 soft-lands in Oceanus Procellarum on February 3, 1966, and about seven hours later begins transmitting nine images, including five panoramas, of the lunar surface — the first photographs taken from the surface of another celestial body.',
+        source: {
+          externalId: 'src:luna9-landing-1966',
+          name: '"Luna 9" — first soft landing on the Moon and first images from the lunar surface, February 3, 1966.',
+          url: 'https://en.wikipedia.org/wiki/Luna_9',
+          publishedAt: '1966-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-02-03',
+        datePrecision: 'DAY',
+        reason: 'The panoramas — received and published by Jodrell Bank Observatory in the UK as well as in the USSR — showed a firm, rubble-strewn surface, resolving the long-standing question of whether deep dust would swallow a lander (as Thomas Gold had theorized) and confirming that robotic and crewed landings were feasible.',
+        source: {
+          externalId: 'src:luna9-jodrell-bank-1966',
+          name: 'Luna 9 surface panoramas received and published via Jodrell Bank Observatory, February 1966.',
+          url: 'https://en.wikipedia.org/wiki/Luna_9',
+          publishedAt: '1966-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
