@@ -38016,6 +38016,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Lunar eclipse before the Battle of Gaugamela ────────────────────────────
+  {
+    externalId: 'trajectory:gaugamela-lunar-eclipse-331bce',
+    text: 'A near-total lunar eclipse occurred over Mesopotamia on the night of September 20, 331 BCE — eleven days before the Battle of Gaugamela — and was recorded contemporaneously in a Babylonian astronomical diary as an omen of the defeat of the Persian king.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0331-09-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0331-09-20',
+        datePrecision: 'DAY',
+        reason: 'The scribes of the Esagila temple in Babylon record the eclipse in their running day-by-day astronomical diary: "Day 13 [20 September]: ... there was a lunar eclipse." The same tablet pairs the celestial omen with the political events that followed — the advance of Alexander and the panic and flight of Darius III — treating the eclipse as a portent of the fall of the Persian king.',
+        source: {
+          externalId: 'src:babylonian-diary-gaugamela',
+          name: 'Babylonian Astronomical Diary No. -330 (concerning the Battle of Gaugamela), Esagila temple scribes, Babylon. (translation and discussion at Livius.org)',
+          url: 'https://www.livius.org/articles/concept/astronomical-diaries/',
+          publishedAt: '0331-09-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms that a near-total lunar eclipse was visible from Mesopotamia on the night of 20 September 331 BCE (Julian), matching the Babylonian diary. Catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses, the eclipse fixes the chronology of the campaign and dates the Battle of Gaugamela to 1 October 331 BCE.',
+        source: {
+          externalId: 'src:nasa-lunar-eclipse-catalog-331bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Lunar Eclipses: −1999 to +3000. NASA/TP–2009–214172.',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LEcatalog.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Alexander the Great in Babylon ─────────────────────────────────
+  {
+    externalId: 'trajectory:alexander-death-babylon-323bce',
+    text: 'Alexander the Great died in Babylon on June 11, 323 BCE — an event entered the same day in a Babylonian astronomical diary with the terse line "The king died."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0323-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0323-06-11',
+        datePrecision: 'DAY',
+        reason: 'On the 29th of the month Ayyaru in the fourteenth year of Alexander\'s reign, the Esagila temple scribes record amid cloudy-sky reports: "The 29th: The king died. Clouds." This single-line entry in the running astronomical diary is the only strictly contemporary record of the event, written in Babylon while the Greek accounts were composed generations later.',
+        source: {
+          externalId: 'src:babylonian-diary-alexander-death',
+          name: 'A Contemporary Account of the Death of Alexander — Babylonian Astronomical Diary, British Museum (translation at Livius.org).',
+          url: 'https://www.livius.org/sources/content/oriental-varia/a-contemporary-account-of-the-death-of-alexander/',
+          publishedAt: '0323-06-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship reconciles the Babylonian diary date with the Greek narrative sources (Arrian and Plutarch, drawing on the Royal Ephemerides), establishing 10/11 June 323 BCE as the date of death. The cuneiform entry serves as the fixed chronological anchor against which the literary accounts are calibrated.',
+        source: {
+          externalId: 'src:death-of-alexander-the-great-dating',
+          name: 'Death of Alexander the Great — dating to 10/11 June 323 BCE from the Babylonian Astronomical Diary.',
+          url: 'https://en.wikipedia.org/wiki/Death_of_Alexander_the_Great',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Solar eclipse witnessed by Agathocles en route to Africa ────────────────
+  {
+    externalId: 'trajectory:agathocles-solar-eclipse-310bce',
+    text: 'A total solar eclipse — during which "utter darkness set in and the stars were seen everywhere" — was witnessed by the fleet of Agathocles of Syracuse the day after it sailed for Africa, recorded by Diodorus Siculus and dated by astronomical retrocalculation to August 15, 310 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0310-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0310-08-15',
+        datePrecision: 'DAY',
+        reason: 'Diodorus Siculus records that the day after Agathocles slipped past the Carthaginian blockade and sailed from Syracuse, "there occurred such an eclipse of the sun that utter darkness set in and the stars were seen everywhere." His soldiers took the prodigy as an ill omen for the expedition. The pairing of the eclipse with the voyage gives a precise, datable empirical observation.',
+        source: {
+          externalId: 'src:diodorus-20-5-eclipse',
+          name: 'Diodorus Siculus. Library of History, 20.5.5. (1st century BCE; trans. at LacusCurtius / University of Chicago)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/20A*.html',
+          publishedAt: '0310-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1907-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomers identify the only total solar eclipse matching the time and region as that of 15 August 310 BCE (Julian). Because Diodorus ties the eclipse to a known sea voyage, the event has been used to reconstruct the path of totality and Agathocles\' position, fixing both the date and the route across the Mediterranean.',
+        source: {
+          externalId: 'src:agathocles-eclipse-310bce-position',
+          name: 'Hind JR et al. "The Position of Agathocles during the Eclipse of B.C. 310 August 15." Nature 75 (1907).',
+          url: 'https://www.nature.com/articles/075010a0',
+          publishedAt: '1907-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First certain recorded apparition of Halley's Comet (Han-era China) ─────
+  {
+    externalId: 'trajectory:halley-comet-first-record-240bce',
+    text: 'A comet observed and recorded by Chinese astronomers in 240 BCE — entered in the Records of the Grand Historian (Shiji) as appearing in the east and moving north — is the earliest certain recorded apparition of the body later identified as Halley\'s Comet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0240-05-24',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0240-05-24',
+        datePrecision: 'MONTH',
+        reason: 'The Shiji (Records of the Grand Historian) records a "broom star" that first appeared in the east and was then seen in the north, observed before and after perihelion over the spring and fifth lunar month of 240 BCE. It is registered as a celestial omen, with no notion that the comet is a returning periodic body.',
+        source: {
+          externalId: 'src:shiji-comet-240bce',
+          name: 'Sima Qian. Records of the Grand Historian (Shiji), comet of 240 BCE — earliest certain Halley apparition (per Halley\'s Comet observational record).',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0240-05-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Edmond Halley established the comet\'s ~76-year periodicity (1705) and its predicted 1758–59 return confirmed it, 20th-century orbital back-computation (notably Kiang 1971) matched the comet\'s historical positions to the Far Eastern records, settling the 240 BCE Chinese observation as the earliest securely identified apparition of Halley\'s Comet.',
+        source: {
+          externalId: 'src:far-eastern-halley-observations',
+          name: 'Stephenson FR, Yau KKC. "Far Eastern observations of Halley\'s comet: 240 BC to AD 1368." Journal of the British Interplanetary Society 38 (1985).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1985JBIS...38..195S',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
