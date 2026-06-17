@@ -38971,6 +38971,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — Internet, genomics, climate, COVID-19, AI
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── India launches the Unified Payments Interface (UPI) ─────────────────────
+  {
+    externalId: 'trajectory:india-upi-launch-2016',
+    text: 'On 11 April 2016 India\'s National Payments Corporation (NPCI) launched the Unified Payments Interface (UPI), the open real-time inter-bank mobile payment system that became the country\'s dominant retail payment rail.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-04-11',
+        datePrecision: 'DAY',
+        reason: 'The National Payments Corporation of India launched the UPI pilot in Mumbai, inaugurated by Reserve Bank of India Governor Raghuram Rajan, with 21 member banks participating. Built on the Immediate Payment Service (IMPS), UPI enabled instant 24×7 inter-bank transfers addressed to a virtual payment address rather than account numbers, via an open API that any bank or app could integrate.',
+        source: {
+          externalId: 'src:upi-launch-npci-2016',
+          name: '"Unified Payments Interface." Wikipedia — pilot launched 11 April 2016 by NPCI, inaugurated by RBI Governor Raghuram Rajan in Mumbai with 21 member banks.',
+          url: 'https://en.wikipedia.org/wiki/Unified_Payments_Interface',
+          publishedAt: '2016-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '2023-08-01',
+        datePrecision: 'MONTH',
+        reason: 'UPI became the dominant retail payment instrument in India, crossing 10 billion transactions in a single month for the first time in August 2023 (NPCI statistics), processing the large majority of the country\'s digital retail payments and being exported to several other countries — settling its status as core national financial infrastructure rather than an experimental pilot.',
+        source: {
+          externalId: 'src:upi-10-billion-monthly-2023',
+          name: '"Unified Payments Interface." Wikipedia — UPI crosses 10 billion monthly transactions in August 2023 and becomes India\'s dominant retail payment system.',
+          url: 'https://en.wikipedia.org/wiki/Unified_Payments_Interface',
+          publishedAt: '2023-08-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── South Africa detects the SARS-CoV-2 Beta variant (501Y.V2) ──────────────
+  {
+    externalId: 'trajectory:sars-cov-2-beta-variant-south-africa-2020',
+    text: 'On 18 December 2020 South Africa announced the detection of the SARS-CoV-2 501Y.V2 (Beta / B.1.351) lineage, the first variant of concern identified through African genomic surveillance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2020-12-18',
+        datePrecision: 'DAY',
+        reason: 'South Africa\'s Minister of Health, Zweli Mkhize, publicly announced that a new SARS-CoV-2 lineage — designated 501Y.V2 — had been identified by the Network for Genomic Surveillance in South Africa (NGS-SA), led by Tulio de Oliveira at KRISP, University of KwaZulu-Natal. The variant, defined by spike mutations K417N, E484K and N501Y, was driving the country\'s second wave of infections.',
+        source: {
+          externalId: 'src:beta-variant-sa-announcement-2020',
+          name: '"SARS-CoV-2 Beta variant." Wikipedia — South Africa\'s health department reports the 501Y.V2 lineage on 18 December 2020; identified by the KRISP/NGS-SA team.',
+          url: 'https://en.wikipedia.org/wiki/SARS-CoV-2_Beta_variant',
+          publishedAt: '2020-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-03-09',
+        datePrecision: 'DAY',
+        reason: 'Tegally, de Oliveira and colleagues published the genomic characterisation of the lineage in Nature, documenting its emergence in Nelson Mandela Bay and rapid spread. The WHO classified 501Y.V2 as a Variant of Concern and, on 31 May 2021, assigned it the label "Beta" under its Greek-letter naming scheme, ratifying the variant across the global scientific and public-health community.',
+        source: {
+          externalId: 'src:tegally-beta-variant-nature-2021',
+          name: 'Tegally H. et al. "Detection of a SARS-CoV-2 variant of concern in South Africa." Nature 592, 438–443 (2021).',
+          url: 'https://www.nature.com/articles/s41586-021-03402-9',
+          publishedAt: '2021-03-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── India pledges net-zero by 2070 at COP26 ─────────────────────────────────
+  {
+    externalId: 'trajectory:india-net-zero-2070-cop26-2021',
+    text: 'On 1 November 2021, at the COP26 summit in Glasgow, Indian Prime Minister Narendra Modi announced that India would reach net-zero greenhouse-gas emissions by 2070, as part of the five "Panchamrit" climate commitments.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-11-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-11-01',
+        datePrecision: 'DAY',
+        reason: 'In his National Statement at the COP26 World Leaders\' Summit, Modi announced the "Panchamrit" (five nectars): net-zero emissions by 2070, 500 GW of non-fossil energy capacity by 2030, meeting 50% of energy needs from renewables by 2030, reducing projected emissions by one billion tonnes by 2030, and cutting the economy\'s carbon intensity by 45% by 2030. It was the first time India — the world\'s third-largest emitter — committed to a net-zero target date.',
+        source: {
+          externalId: 'src:india-cop26-panchamrit-2021',
+          name: 'ThePrint. "India will reach net-zero emissions by 2070, PM Modi says at COP26 as he promises \'panchamrit\'." (1–2 November 2021)',
+          url: 'https://theprint.in/environment/india-will-reach-net-zero-emissions-by-2070-pm-modi-says-at-cop26-as-he-promises-panchamrit/760353/',
+          publishedAt: '2021-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-08-26',
+        datePrecision: 'DAY',
+        reason: 'India converted the political pledge into a formal international commitment by submitting its updated Nationally Determined Contribution to the UNFCCC on 26 August 2022 — incorporating the 2030 non-fossil and carbon-intensity targets — and later filed its Long-Term Low-Emission Development Strategy embedding the 2070 net-zero goal, lodging the commitment in the binding Paris Agreement reporting framework.',
+        source: {
+          externalId: 'src:india-updated-ndc-unfccc-2022',
+          name: 'UNFCCC NDC Registry — India\'s updated Nationally Determined Contribution (submitted 26 August 2022).',
+          url: 'https://unfccc.int/NDCREG',
+          publishedAt: '2022-08-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Draft human pangenome reference released ────────────────────────────────
+  {
+    externalId: 'trajectory:draft-human-pangenome-reference-2023',
+    text: 'On 10 May 2023 the Human Pangenome Reference Consortium published a draft human pangenome reference — 47 phased, diploid genome assemblies from genetically diverse individuals — replacing the single linear GRCh38 reference with a graph capturing global genetic diversity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2023-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-05-10',
+        datePrecision: 'DAY',
+        reason: 'The Human Pangenome Reference Consortium released a first draft reference encompassing 47 individuals (94 de novo haplotype assemblies) deliberately sampled to over-represent ancestries under-represented in the existing GRCh38 reference. It added about 119 million base pairs of euchromatic sequence and 1,115 gene duplications, and reduced small-variant discovery errors by 34% relative to GRCh38-based workflows.',
+        source: {
+          externalId: 'src:pangenome-genome-gov-2023',
+          name: 'National Human Genome Research Institute. "A new human \'pangenome\' reference." (10 May 2023) — 47 diverse individuals, expandable to 350 by 2024.',
+          url: 'https://www.genome.gov/about-genomics/new-human-pangenome-reference',
+          publishedAt: '2023-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-05-10',
+        datePrecision: 'DAY',
+        reason: 'The draft was published in Nature alongside companion papers, peer-reviewed and released as a freely available community resource, immediately adopted by genomics pipelines as the basis for a graph-based reference. The consortium committed to expanding the panel to 350 assemblies, establishing the pangenome as the successor to the linear human reference.',
+        source: {
+          externalId: 'src:liao-pangenome-nature-2023',
+          name: 'Liao W.-W. et al. "A draft human pangenome reference." Nature 617, 312–324 (2023).',
+          url: 'https://www.nature.com/articles/s41586-023-05896-x',
+          publishedAt: '2023-05-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mpox declared a public health emergency (Africa CDC + WHO) ──────────────
+  {
+    externalId: 'trajectory:mpox-phecs-pheic-2024',
+    text: 'On 13 August 2024 the Africa CDC declared the mpox outbreaks a Public Health Emergency of Continental Security — its first such declaration — and on 14 August 2024 the WHO declared mpox a Public Health Emergency of International Concern over the clade Ib outbreak centred in the Democratic Republic of the Congo.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2024-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-08-13',
+        datePrecision: 'DAY',
+        reason: 'The Africa Centres for Disease Control and Prevention declared the mpox outbreaks a Public Health Emergency of Continental Security (PHECS) — the first such declaration since the agency\'s creation in 2017, exercising new African Union legal authority. The DRC accounted for about 96% of the 2024 cases, driven by the newly identified clade Ib spreading through new transmission routes.',
+        source: {
+          externalId: 'src:africacdc-mpox-phecs-2024',
+          name: 'Africa CDC. "Africa CDC Declares Mpox A Public Health Emergency of Continental Security, Mobilizing Resources Across the Continent." (13 August 2024)',
+          url: 'https://africacdc.org/news-item/africa-cdc-declares-mpox-a-public-health-emergency-of-continental-security-mobilizing-resources-across-the-continent/',
+          publishedAt: '2024-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-08-14',
+        datePrecision: 'DAY',
+        reason: 'The following day the WHO Director-General, on the advice of the IHR Emergency Committee, declared mpox a Public Health Emergency of International Concern — the second such declaration for mpox — citing the emergence and rapid spread of clade 1b in eastern DRC and over 100 confirmed cases in four neighbouring countries (Burundi, Kenya, Rwanda, Uganda) that had not previously reported mpox.',
+        source: {
+          externalId: 'src:who-mpox-pheic-2024',
+          name: 'WHO. "WHO Director-General declares mpox outbreak a public health emergency of international concern." (14 August 2024)',
+          url: 'https://www.who.int/news/item/14-08-2024-who-director-general-declares-mpox-outbreak-a-public-health-emergency-of-international-concern',
+          publishedAt: '2024-08-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
