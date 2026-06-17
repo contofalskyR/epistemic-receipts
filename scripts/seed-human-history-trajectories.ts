@@ -33177,6 +33177,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 16th Street Baptist Church bombing ───────────────────────────────────────
+  {
+    externalId: 'trajectory:sixteenth-street-church-bombing-1963',
+    text: 'A bomb planted by Ku Klux Klan members exploded at the 16th Street Baptist Church in Birmingham, Alabama, on the morning of September 15, 1963, killing four Black girls.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1963-09-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-09-15',
+        datePrecision: 'DAY',
+        reason: 'Just before 11 a.m. on Sunday, dynamite planted beneath the church steps detonated, killing Addie Mae Collins, Carole Robertson, Cynthia Wesley (all 14) and Denise McNair (11), and injuring others. The bombing was reported immediately and nationally, becoming a galvanizing event of the civil rights movement.',
+        source: {
+          externalId: 'src:nps-16th-street-bombing',
+          name: 'U.S. National Park Service — "16th Street Baptist Church Bombing" (Birmingham, Alabama, 15 September 1963).',
+          url: 'https://www.nps.gov/articles/16thstreetbaptist.htm',
+          publishedAt: '1963-09-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1977-11-18',
+        datePrecision: 'DAY',
+        reason: 'After the FBI closed its initial investigation without prosecutions, Alabama reopened the case and Klansman Robert Chambliss was convicted of murder on 18 November 1977. Later prosecutions convicted Thomas Blanton (2001) and Bobby Frank Cherry (2002), judicially establishing the perpetrators and the facts of the bombing.',
+        source: {
+          externalId: 'src:fbi-baptist-church-bombing-case',
+          name: 'U.S. FBI — Famous Cases: Baptist Street Church Bombing (BAPBOMB); convictions of Chambliss (1977), Blanton and Cherry (2001–2002).',
+          url: 'https://www.fbi.gov/history/famous-cases/baptist-street-church-bombing',
+          publishedAt: '1977-11-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Paris Peace Accords end U.S. combat role in Vietnam ──────────────────────
+  {
+    externalId: 'trajectory:paris-peace-accords-1973',
+    text: 'The Agreement on Ending the War and Restoring Peace in Vietnam (the Paris Peace Accords) was signed on January 27, 1973, providing for a ceasefire and the withdrawal of U.S. forces from Vietnam.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1973-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-01-27',
+        datePrecision: 'DAY',
+        reason: 'After the United States and the Democratic Republic of Vietnam initialed the agreement on January 23, the peace agreement was formally signed in Paris on January 27, 1973 by the United States, North Vietnam, South Vietnam, and the Viet Cong\'s Provisional Revolutionary Government, establishing a ceasefire and U.S. troop withdrawal.',
+        source: {
+          externalId: 'src:state-dept-ending-vietnam',
+          name: 'U.S. Department of State, Office of the Historian — "Ending the Vietnam War, 1969–1973" (Paris Peace Accords signed 27 January 1973).',
+          url: 'https://history.state.gov/milestones/1969-1976/ending-vietnam',
+          publishedAt: '1973-01-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-03-29',
+        datePrecision: 'DAY',
+        reason: 'The last U.S. combat troops withdrew from Vietnam by 29 March 1973 in accordance with the Accords, and the dated, signed treaty text entered the documentary historical record. The fact, date, and signatories of the agreement are uncontested.',
+        source: {
+          externalId: 'src:state-dept-paris-accords-milestone',
+          name: 'U.S. Department of State, Office of the Historian — Milestones 1969–1976: U.S. withdrawal completed under the Paris Peace Accords (March 1973).',
+          url: 'https://history.state.gov/milestones/1969-1976/ending-vietnam',
+          publishedAt: '1973-03-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bhopal gas disaster ──────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bhopal-gas-disaster-1984',
+    text: 'On the night of December 2–3, 1984, a leak of methyl isocyanate (MIC) gas from the Union Carbide pesticide plant in Bhopal, India, killed thousands of people in the surrounding area — the worst industrial disaster in history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1984-12-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1984-12-03',
+        datePrecision: 'DAY',
+        reason: 'Around 1:00 a.m. on 3 December 1984 a safety valve gave way and a plume of methyl isocyanate gas escaped from the Union Carbide India plant, spreading over densely populated neighborhoods of Bhopal. Thousands died within days; the catastrophe was reported worldwide immediately.',
+        source: {
+          externalId: 'src:bhopal-pmc-review',
+          name: 'Broughton E. "The Bhopal disaster and its aftermath: a review." Environmental Health 4:6, 2005 (PMC1142333) — methyl isocyanate leak, night of 2–3 December 1984.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1142333/',
+          publishedAt: '1984-12-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-05-10',
+        datePrecision: 'DAY',
+        reason: 'Peer-reviewed epidemiological and toxicological reviews established the chemistry of the MIC release, the immediate death toll (estimated 3,800+ immediate, with thousands more from related exposure), and long-term health consequences, fixing the event as a settled empirical and historical record.',
+        source: {
+          externalId: 'src:bhopal-aftermath-review-2005',
+          name: 'Broughton E. "The Bhopal disaster and its aftermath: a review." Environmental Health 4:6, published 10 May 2005.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1142333/',
+          publishedAt: '2005-05-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Polymerase chain reaction (PCR) first applied ────────────────────────────
+  {
+    externalId: 'trajectory:pcr-amplification-1985',
+    text: 'The polymerase chain reaction (PCR), a method for the exponential in-vitro amplification of specific DNA sequences conceived by Kary Mullis at Cetus Corporation, was first published as a practical technique in December 1985.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-12-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-12-20',
+        datePrecision: 'DAY',
+        reason: 'Saiki, Mullis, and colleagues at Cetus Corporation publish the first application of primer-mediated enzymatic amplification in Science, reporting a 220,000-fold exponential increase of beta-globin target sequences and its use in diagnosing sickle-cell anemia — the foundational demonstration of PCR.',
+        source: {
+          externalId: 'src:saiki-pcr-science-1985',
+          name: 'Saiki RK, Scharf S, Faloona F, Mullis KB, Horn GT, Erlich HA, Arnheim N. "Enzymatic amplification of beta-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia." Science 230(4732):1350–4, 20 December 1985.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2999980/',
+          publishedAt: '1985-12-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-10-13',
+        datePrecision: 'DAY',
+        reason: 'PCR was rapidly adopted across molecular biology and medicine after the 1988 introduction of thermostable Taq polymerase. Kary Mullis was awarded the 1993 Nobel Prize in Chemistry for his invention of the method, recognizing PCR as an established, transformative technique.',
+        source: {
+          externalId: 'src:nobel-chemistry-1993-mullis',
+          name: 'Nobel Prize in Chemistry 1993 awarded to Kary B. Mullis "for his invention of the polymerase chain reaction (PCR) method" (announced 13 October 1993).',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1993/summary/',
+          publishedAt: '1993-10-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tim Berners-Lee proposes the World Wide Web ──────────────────────────────
+  {
+    externalId: 'trajectory:www-proposal-1989',
+    text: 'In March 1989, Tim Berners-Lee at CERN circulated "Information Management: A Proposal," the document describing the hypertext system that became the World Wide Web.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1989-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Tim Berners-Lee submitted "Information Management: A Proposal" to his managers at CERN in March 1989, outlining a distributed hypertext system linking documents across the laboratory\'s computers. His supervisor Mike Sendall annotated it "Vague but exciting," and a revised version followed in May 1990.',
+        source: {
+          externalId: 'src:berners-lee-proposal-1989',
+          name: 'Tim Berners-Lee. "Information Management: A Proposal." CERN, March 1989 (revised May 1990). W3C archive.',
+          url: 'https://www.w3.org/History/1989/proposal.html',
+          publishedAt: '1989-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-04-30',
+        datePrecision: 'DAY',
+        reason: 'Berners-Lee implemented the first web server and browser in 1990, and on 30 April 1993 CERN placed the World Wide Web software in the public domain, royalty-free. The 1989 proposal is preserved by CERN and the W3C as the dated founding document of the Web.',
+        source: {
+          externalId: 'src:cern-www-public-domain-1993',
+          name: 'CERN — "The birth of the Web": World Wide Web software released into the public domain, 30 April 1993.',
+          url: 'https://home.cern/science/computing/birth-web',
+          publishedAt: '1993-04-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
