@@ -44320,6 +44320,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — internet, genomics, climate, COVID, AI; non-Western emphasis
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── China's first crewed spaceflight — Shenzhou 5 ──────────────────────────
+  {
+    externalId: 'trajectory:shenzhou-5-first-chinese-spaceflight-2003',
+    text: 'On 15 October 2003 China launched Shenzhou 5 carrying Yang Liwei into orbit, making China the third nation — after the Soviet Union and the United States — to independently send a human into space.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2003-10-15',
+        datePrecision: 'DAY',
+        reason: 'Shenzhou 5 lifted off from the Jiuquan Satellite Launch Center at 09:00 Beijing time on 15 October 2003, carrying 38-year-old PLA lieutenant colonel Yang Liwei. The launch and orbital insertion were reported in real time by Chinese state media, and the mission completed roughly 21 hours and 14 orbits before landing in Inner Mongolia.',
+        source: {
+          externalId: 'src:shenzhou-5-launch-2003',
+          name: 'Shenzhou 5 — China\'s first crewed spaceflight, Yang Liwei, launched 15 October 2003.',
+          url: 'https://en.wikipedia.org/wiki/Shenzhou_5',
+          publishedAt: '2003-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-10-16',
+        datePrecision: 'DAY',
+        reason: 'Yang Liwei\'s safe return on 16 October 2003 was confirmed by recovery teams and independently tracked by international observers; the achievement was acknowledged worldwide, including by NASA and Roscosmos. China\'s status as the third nation to independently achieve human spaceflight is an undisputed matter of record.',
+        source: {
+          externalId: 'src:shenzhou-5-landing-2003',
+          name: 'Shenzhou 5 — safe landing in Inner Mongolia, 16 October 2003; China confirmed as third independent crewed-spaceflight nation.',
+          url: 'https://en.wikipedia.org/wiki/Shenzhou_5',
+          publishedAt: '2003-10-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Lee Sedol ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:alphago-defeats-lee-sedol-2016',
+    text: 'In a five-game Go match played in Seoul on 9–15 March 2016, DeepMind\'s AlphaGo program defeated world champion Lee Sedol 4–1, overturning the long-standing expert expectation that a computer mastering professional Go was at least a decade away.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2016-03-09',
+        datePrecision: 'DAY',
+        reason: 'The first game of the AlphaGo–Lee Sedol match was played at the Four Seasons Hotel in Seoul on 9 March 2016, broadcast live worldwide. AlphaGo won the opening game, an outcome recorded contemporaneously by commentators and the Korea Baduk Association before the series concluded.',
+        source: {
+          externalId: 'src:alphago-lee-sedol-game1-2016',
+          name: 'AlphaGo versus Lee Sedol — five-game match in Seoul, first game 9 March 2016.',
+          url: 'https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol',
+          publishedAt: '2016-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'The match concluded on 15 March 2016 with AlphaGo winning 4–1, Lee Sedol taking only the fourth game. The result — documented in DeepMind\'s peer-reviewed Nature paper and recognized across the AI and Go communities — settled that deep reinforcement learning had reached superhuman play in Go, years earlier than experts had predicted.',
+        source: {
+          externalId: 'src:alphago-nature-2016',
+          name: 'Silver et al. "Mastering the game of Go with deep neural networks and tree search," Nature 529, 28 January 2016; match concluded 15 March 2016.',
+          url: 'https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol',
+          publishedAt: '2016-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Higgs boson discovery announced at CERN ────────────────────────────────
+  {
+    externalId: 'trajectory:higgs-boson-discovery-2012',
+    text: 'On 4 July 2012 the ATLAS and CMS experiments at CERN announced the observation of a new particle near 125 GeV, at more than five standard deviations, consistent with the Higgs boson predicted in 1964.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-10-01',
+        datePrecision: 'MONTH',
+        reason: 'In 1964 three independent groups — Englert and Brout (August), Higgs (October), and Guralnik, Hagen, and Kibble (November) — proposed the mechanism that endows gauge bosons with mass, implying the existence of a massive scalar boson. For decades the particle remained a theoretical prediction unconfirmed by experiment.',
+        source: {
+          externalId: 'src:higgs-prediction-1964',
+          name: 'Higgs mechanism proposed 1964 (Englert–Brout, Higgs, Guralnik–Hagen–Kibble); the predicted scalar boson remained unobserved for decades.',
+          url: 'https://en.wikipedia.org/wiki/Higgs_boson',
+          publishedAt: '1964-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-04',
+        datePrecision: 'DAY',
+        reason: 'At a CERN seminar on 4 July 2012 the ATLAS and CMS collaborations each independently reported a new boson with mass near 125–126 GeV at a significance exceeding five standard deviations — the threshold for discovery in particle physics. The simultaneous, independent confirmation by two detectors recorded the particle\'s existence.',
+        source: {
+          externalId: 'src:cern-higgs-announcement-2012',
+          name: 'CERN — ATLAS and CMS observe a particle consistent with the Higgs boson at >5σ, announced 4 July 2012.',
+          url: 'https://en.wikipedia.org/wiki/Higgs_boson',
+          publishedAt: '2012-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-03-14',
+        datePrecision: 'DAY',
+        reason: 'By March 2013 further analysis of the particle\'s spin and parity confirmed it was consistent with the Standard Model Higgs boson, and CERN formally identified it as a Higgs boson on 14 March 2013. The Nobel Prize in Physics 2013 was awarded to François Englert and Peter Higgs, settling the discovery within the physics community.',
+        source: {
+          externalId: 'src:higgs-confirmed-nobel-2013',
+          name: 'Higgs boson confirmed March 2013; 2013 Nobel Prize in Physics to Englert and Higgs.',
+          url: 'https://en.wikipedia.org/wiki/Higgs_boson',
+          publishedAt: '2013-03-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Li Wenliang's Wuhan outbreak warning — suppressed, then vindicated ──────
+  {
+    externalId: 'trajectory:li-wenliang-wuhan-warning-2019',
+    text: 'On 30 December 2019 Wuhan ophthalmologist Li Wenliang warned colleagues of a SARS-like outbreak linked to the Huanan Seafood Market; he was reprimanded by police for "spreading rumors," and after his COVID-19 death was officially exonerated by Chinese authorities.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-12-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 December 2019 Li Wenliang messaged a WeChat group of fellow doctors that several confirmed cases of a SARS-like illness had been reported from the Huanan Seafood Market, urging colleagues to protect themselves. Screenshots of the message circulated immediately, creating a contemporaneous record of the early warning.',
+        source: {
+          externalId: 'src:li-wenliang-warning-2019',
+          name: 'Li Wenliang — 30 December 2019 WeChat warning of SARS-like cases at the Huanan Seafood Market, Wuhan.',
+          url: 'https://en.wikipedia.org/wiki/Li_Wenliang',
+          publishedAt: '2019-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2020-01-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 January 2020 the Wuhan Public Security Bureau summoned Li Wenliang and issued a formal written admonishment accusing him of "publishing untrue statements" and "severely disrupting social order." The state\'s reprimand officially branded his warning a rumor, placing the truth of his claim under institutional dispute.',
+        source: {
+          externalId: 'src:li-wenliang-reprimand-2020',
+          name: 'Li Wenliang — police admonishment letter, Wuhan Public Security Bureau, 3 January 2020.',
+          url: 'https://en.wikipedia.org/wiki/Li_Wenliang',
+          publishedAt: '2020-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-19',
+        datePrecision: 'DAY',
+        reason: 'After Li Wenliang died of COVID-19 on 7 February 2020, a national supervisory inquiry concluded the police admonishment was "inappropriate." On 19 March 2020 Wuhan police formally revoked the reprimand and apologized to his family, officially vindicating that his 30 December warning had been accurate.',
+        source: {
+          externalId: 'src:li-wenliang-exoneration-2020',
+          name: 'Li Wenliang — Wuhan police revoke admonishment and apologize; national inquiry findings, 19 March 2020.',
+          url: 'https://en.wikipedia.org/wiki/Li_Wenliang',
+          publishedAt: '2020-03-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Chandrayaan-3 soft-lands near the lunar south pole ─────────────────────
+  {
+    externalId: 'trajectory:chandrayaan-3-south-pole-landing-2023',
+    text: 'On 23 August 2023 India\'s Chandrayaan-3 lander Vikram soft-landed near the lunar south pole, making India the fourth nation to soft-land on the Moon and the first to land in the south-polar region.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2023-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2023-08-23',
+        datePrecision: 'DAY',
+        reason: 'At 18:04 IST on 23 August 2023 the Vikram lander touched down at roughly 69°S near the lunar south pole, a feat broadcast live by ISRO and watched by millions. The landing followed the 2019 failure of Chandrayaan-2\'s lander, making the success the resolution of an open attempt.',
+        source: {
+          externalId: 'src:chandrayaan-3-landing-2023',
+          name: 'Chandrayaan-3 — Vikram lander soft-lands near the lunar south pole, 23 August 2023 (ISRO).',
+          url: 'https://en.wikipedia.org/wiki/Chandrayaan-3',
+          publishedAt: '2023-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-08-24',
+        datePrecision: 'DAY',
+        reason: 'On 24 August 2023 the Pragyan rover rolled out from Vikram and began surface operations, transmitting images and in-situ measurements (including ChaSTE temperature profiles and APXS elemental detections) over the following days. Independent tracking and the returned data confirmed the landing, settling India\'s status as the first nation to soft-land near the lunar south pole.',
+        source: {
+          externalId: 'src:chandrayaan-3-pragyan-rover-2023',
+          name: 'Chandrayaan-3 — Pragyan rover deployed and operating on the lunar surface from 24 August 2023, returning in-situ data.',
+          url: 'https://en.wikipedia.org/wiki/Chandrayaan-3',
+          publishedAt: '2023-08-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
