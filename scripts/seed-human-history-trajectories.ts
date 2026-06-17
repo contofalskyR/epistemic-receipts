@@ -43572,6 +43572,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — supplemental batch
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Agassiz announces the Ice Age (glacial) theory (1837) ────────────────────
+  {
+    externalId: 'trajectory:agassiz-ice-age-theory-1837',
+    text: 'On 24 July 1837, in his presidential address at Neuchâtel (the "Discours de Neuchâtel"), Louis Agassiz proposed that a former great Ice Age had covered much of Europe with glaciers, the first systematic scientific argument for continental glaciation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1837-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1837-07-24',
+        datePrecision: 'DAY',
+        reason: 'At the annual meeting of the Swiss Society of Natural Sciences in Neuchâtel, which he chaired, Agassiz delivers the "Discours de Neuchâtel," arguing from erratic boulders, polished and striated bedrock, and moraines that great ice sheets had once extended far beyond the Alps. The address is published and circulated, placing the claim of a former Ice Age on the scientific record.',
+        source: {
+          externalId: 'src:agassiz-discours-neuchatel-1837',
+          name: 'Louis Agassiz. "Discours de Neuchâtel," presidential address to the Swiss Society of Natural Sciences, 24 July 1837.',
+          url: 'https://en.wikipedia.org/wiki/Louis_Agassiz',
+          publishedAt: '1837-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1840-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Agassiz expands the argument in Études sur les glaciers (1840), but the theory is sharply resisted by leading geologists — including catastrophists and supporters of the rival "diluvial" (biblical flood / drift-iceberg) explanation for erratic boulders. For roughly two decades the glacial theory is one contested hypothesis among several for the origin of erratics and drift deposits.',
+        source: {
+          externalId: 'src:agassiz-etudes-glaciers-1840',
+          name: 'Louis Agassiz. Études sur les glaciers, Neuchâtel, 1840 (full statement of the glacial theory).',
+          url: 'https://en.wikipedia.org/wiki/Louis_Agassiz',
+          publishedAt: '1840-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1875-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the third quarter of the 19th century, field mapping of moraines, striations, and till across northern Europe and North America (by Ramsay, Geikie, and others) converges on continental glaciation as the explanation for the drift, displacing the diluvial theory. The reality of a former Ice Age becomes settled geology, the foundation of Quaternary glacial science.',
+        source: {
+          externalId: 'src:wikipedia-ice-age-glacial-theory',
+          name: 'Ice age / glacial theory — acceptance of Agassiz\'s continental glaciation over the diluvial theory in later 19th-century geology.',
+          url: 'https://en.wikipedia.org/wiki/Ice_age',
+          publishedAt: '1875-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bessemer announces steelmaking without fuel (1856) ───────────────────────
+  {
+    externalId: 'trajectory:bessemer-steel-process-1856',
+    text: 'On 24 August 1856, Henry Bessemer described to the British Association meeting at Cheltenham a process for making malleable iron and steel by blowing air through molten pig iron without external fuel — the basis of mass-produced cheap steel.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1856-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1856-08-24',
+        datePrecision: 'DAY',
+        reason: 'Bessemer reads his paper "The Manufacture of Malleable Iron and Steel without Fuel" to the British Association for the Advancement of Science at Cheltenham, describing how blowing air through molten pig iron burns off carbon and impurities and refines the metal using only the heat of its own oxidation. The claim is recorded and widely reported in the engineering press.',
+        source: {
+          externalId: 'src:bessemer-cheltenham-paper-1856',
+          name: 'Henry Bessemer. "The Manufacture of Malleable Iron and Steel without Fuel," paper to the British Association, Cheltenham, 24 August 1856.',
+          url: 'https://en.wikipedia.org/wiki/Henry_Bessemer',
+          publishedAt: '1856-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1856-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Ironmasters who buy licences cannot reproduce Bessemer\'s results: with the high-phosphorus British ores then in use the process yields brittle, unworkable metal, and excess dissolved oxygen ruins the steel. The much-publicised announcement is widely denounced as a failure, and Bessemer\'s claim falls into disrepute.',
+        source: {
+          externalId: 'src:bessemer-process-early-failures',
+          name: 'Bessemer process — early licensees\' failures with phosphoric ores and excess oxygen after the 1856 announcement.',
+          url: 'https://en.wikipedia.org/wiki/Bessemer_process',
+          publishedAt: '1856-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1858-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Using low-phosphorus iron and Robert Mushet\'s addition of spiegeleisen (a manganese–iron alloy) to remove excess oxygen, the process is made to work reliably. Bessemer opens his own steelworks in Sheffield, and the method is adopted worldwide, becoming the dominant route to cheap bulk steel for rails, ships, and structures through the late 19th century.',
+        source: {
+          externalId: 'src:bessemer-mushet-spiegeleisen-vindication',
+          name: 'Bessemer process — Robert Mushet\'s spiegeleisen fix and worldwide industrial adoption of bulk steelmaking.',
+          url: 'https://en.wikipedia.org/wiki/Bessemer_process',
+          publishedAt: '1858-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gallium confirms Mendeleev's predicted "eka-aluminium" (1875) ────────────
+  {
+    externalId: 'trajectory:gallium-confirms-mendeleev-1875',
+    text: 'The discovery of gallium by Lecoq de Boisbaudran in 1875 confirmed Mendeleev\'s 1871 prediction of an undiscovered element "eka-aluminium," whose atomic weight and density he had forecast — the first major predictive vindication of the periodic law.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1871-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1871-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1871 Dmitri Mendeleev publishes a refined periodic system in which he leaves gaps for undiscovered elements and explicitly predicts the properties of one he calls "eka-aluminium" — forecasting an atomic weight near 68 and a density around 5.9 g/cm³. The prediction is placed on the scientific record as a falsifiable test of the periodic law.',
+        source: {
+          externalId: 'src:mendeleev-eka-aluminium-prediction-1871',
+          name: 'Dmitri Mendeleev. 1871 prediction of "eka-aluminium" (atomic weight ~68, density ~5.9 g/cm³) in the periodic system.',
+          url: 'https://en.wikipedia.org/wiki/Mendeleev%27s_predicted_elements',
+          publishedAt: '1871-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1875-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Paul-Émile Lecoq de Boisbaudran detects a new element spectroscopically (two violet lines) in a zinc-blende sample, isolates the metal, and in December 1875 announces gallium to the French Academy of Sciences. Its measured atomic weight and density closely match Mendeleev\'s forecast for eka-aluminium, confirming the prediction and establishing the periodic law\'s predictive power as settled science.',
+        source: {
+          externalId: 'src:lecoq-gallium-discovery-1875',
+          name: 'Royal Society of Chemistry — gallium discovered and announced to the French Academy of Sciences by Lecoq de Boisbaudran in December 1875, confirming Mendeleev\'s eka-aluminium.',
+          url: 'https://periodic-table.rsc.org/element/31/gallium',
+          publishedAt: '1875-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── International Meridian Conference adopts Greenwich (1884) ─────────────────
+  {
+    externalId: 'trajectory:international-meridian-greenwich-1884',
+    text: 'On 13 October 1884 the International Meridian Conference in Washington, D.C. resolved to adopt the meridian through the Greenwich Observatory as the world\'s prime meridian (0° longitude), establishing the global standard for longitude and universal time.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1884-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1884-10-13',
+        datePrecision: 'DAY',
+        reason: 'Delegates from 25 nations, convened at the invitation of U.S. President Chester A. Arthur, vote on 13 October 1884 to adopt the meridian passing through the centre of the transit instrument at the Royal Observatory, Greenwich, as the initial meridian for longitude. Resolution 2 passes 22 in favour, 1 against (San Domingo), with France and Brazil abstaining; the proceedings are recorded in the conference protocols.',
+        source: {
+          externalId: 'src:international-meridian-conference-1884',
+          name: 'International Meridian Conference, Washington D.C., protocols — Resolution 2 adopting the Greenwich meridian, 13 October 1884.',
+          url: 'https://en.wikipedia.org/wiki/International_Meridian_Conference',
+          publishedAt: '1884-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1911-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the following decades nations progressively adopt Greenwich-based time zones and longitude; France, which had abstained in favour of the Paris meridian, aligns its legal time to Greenwich (expressed as "Paris mean time, retarded by 9 minutes 21 seconds") in 1911. The Greenwich prime meridian becomes the settled international standard for navigation, cartography, and timekeeping.',
+        source: {
+          externalId: 'src:greenwich-prime-meridian-adoption',
+          name: 'Prime meridian (Greenwich) — international adoption of Greenwich-based longitude and time, including France\'s 1911 alignment.',
+          url: 'https://en.wikipedia.org/wiki/Prime_meridian_(Greenwich)',
+          publishedAt: '1911-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── USS Maine explosion — cause attributed, then reattributed (1898) ─────────
+  {
+    externalId: 'trajectory:uss-maine-explosion-cause-1898',
+    text: 'The cause of the explosion that destroyed USS Maine in Havana Harbor on 15 February 1898 — officially attributed to a submarine mine by a U.S. naval court of inquiry in 1898 — was reattributed to a spontaneous internal coal-bunker fire by Admiral Rickover\'s 1976 investigation and remains contested.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1898-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1898-02-15',
+        datePrecision: 'DAY',
+        reason: 'At 21:40 on 15 February 1898 a massive explosion destroys the forward part of USS Maine at anchor in Havana Harbor, killing 266 of the crew. The disaster is recorded immediately and widely reported; its cause is unknown and fiercely debated in the American press ("Remember the Maine"), helping precipitate the Spanish–American War.',
+        source: {
+          externalId: 'src:uss-maine-explosion-1898',
+          name: 'USS Maine (1889) — explosion in Havana Harbor, 15 February 1898, killing 266 crew.',
+          url: 'https://en.wikipedia.org/wiki/USS_Maine_(1889)',
+          publishedAt: '1898-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1898-03-21',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Navy court of inquiry (the Sampson Board) reports on 21 March 1898 that the Maine was destroyed by the explosion of a submarine mine, which detonated two or more of her forward magazines. This becomes the official institutional finding and the basis for war with Spain.',
+        source: {
+          externalId: 'src:sampson-board-uss-maine-1898',
+          name: 'U.S. Navy Court of Inquiry (Sampson Board) report on the loss of USS Maine, 21 March 1898 — finding a submarine mine.',
+          url: 'https://en.wikipedia.org/wiki/USS_Maine_(1889)',
+          publishedAt: '1898-03-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A technical re-examination led by Admiral Hyman G. Rickover, published in 1976, finds no plausible evidence of an external explosion and concludes that the most likely cause was spontaneous combustion in a coal bunker adjacent to the forward magazines — an internal accident, directly reversing the 1898 mine finding.',
+        source: {
+          externalId: 'src:rickover-maine-investigation-1976',
+          name: 'Hyman G. Rickover. How the Battleship Maine Was Destroyed (1976) — concluding an internal coal-bunker fire, not a mine.',
+          url: 'https://en.wikipedia.org/wiki/USS_Maine_(1889)',
+          publishedAt: '1976-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A 1998 National Geographic-commissioned computer modelling study (and subsequent analyses) finds that both a coal-bunker fire and an external mine remain physically consistent with the wreck evidence, leaving the cause unresolved. The question stays contested among historians and engineers to the present.',
+        source: {
+          externalId: 'src:national-geographic-maine-1998',
+          name: 'National Geographic-commissioned investigation of the USS Maine (1998) — finding both mine and coal-fire scenarios plausible, cause inconclusive.',
+          url: 'https://en.wikipedia.org/wiki/USS_Maine_(1889)',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
