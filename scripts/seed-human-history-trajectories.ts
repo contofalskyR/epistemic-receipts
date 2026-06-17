@@ -26717,6 +26717,437 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): genomics, physics, planetary science, non-Western space
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── He Jiankui announces first gene-edited babies, 25–26 November 2018 ───────
+  {
+    externalId: 'trajectory:he-jiankui-crispr-babies-2018',
+    text: 'In November 2018, Chinese biophysicist He Jiankui announced the birth of twin girls whose genomes he had edited with CRISPR-Cas9 at the embryo stage (targeting CCR5) — the first reported gene-edited human babies.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2018-11-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 November 2018, MIT Technology Review revealed (from Chinese clinical-trial documents) that He Jiankui\'s team at the Southern University of Science and Technology in Shenzhen was creating CRISPR-edited babies; the Associated Press reported the same day that, according to He, one couple had given birth to twin girls that month. He confirmed the births in a series of YouTube videos and at the Second International Summit on Human Genome Editing in Hong Kong on 28 November 2018.',
+        source: {
+          externalId: 'src:mit-techreview-crispr-babies-2018',
+          name: 'Regalado A. "Exclusive: Chinese scientists are creating CRISPR babies." MIT Technology Review, 25 November 2018.',
+          url: 'https://www.technologyreview.com/2018/11/25/138962/exclusive-chinese-scientists-are-creating-crispr-babies/',
+          publishedAt: '2018-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-26',
+        datePrecision: 'DAY',
+        reason: 'He\'s claim was immediately disputed: he had published no peer-reviewed data, the Associated Press could not independently confirm the births, and more than 100 Chinese scientists and the summit organizers condemned the experiment as scientifically unjustified and ethically indefensible. His university and the trial hospital denied prior knowledge, leaving the existence and edited status of the babies unverified by the scientific community.',
+        source: {
+          externalId: 'src:pmc-crispr-babies-controversy',
+          name: 'Greely HT, et al. — "The CRISPR babies controversy: Responsibility and regulation in the spotlight." (open-access review, PMC7332977)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7332977/',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'A Guangdong provincial investigation (January 2019) and a Shenzhen court verdict (30 December 2019) confirmed the experiment: He Jiankui was found guilty of illegal medical practice, sentenced to three years in prison and fined 3 million yuan, with two collaborators also convicted. The conviction — premised on the actual birth of the gene-edited children — established as fact that He had produced the world\'s first CRISPR-edited human babies.',
+        source: {
+          externalId: 'src:pmc-crispr-babies-controversy-verdict',
+          name: 'Greely HT, et al. — "The CRISPR babies controversy" (PMC7332977), reporting He\'s 3-year prison sentence following the December 2019 Shenzhen verdict.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7332977/',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ATLAS and CMS announce Higgs boson at CERN, 4 July 2012 ─────────────────
+  {
+    externalId: 'trajectory:higgs-boson-discovery-2012',
+    text: 'On 4 July 2012, the ATLAS and CMS experiments at CERN announced the observation of a new particle near 125 GeV consistent with the long-predicted Higgs boson, the quantum of the field that gives elementary particles their mass.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-04',
+        datePrecision: 'DAY',
+        reason: 'At a seminar at CERN on 4 July 2012, the ATLAS and CMS collaborations independently reported the observation of a new boson at a mass of about 125 GeV with a local significance of about 5 sigma each, consistent with the Standard Model Higgs boson predicted in 1964. The discovery was the culmination of decades of searching and the primary physics goal of the Large Hadron Collider.',
+        source: {
+          externalId: 'src:cern-higgs-boson-2012',
+          name: 'CERN. "The Higgs boson" — ATLAS and CMS announce a new particle, 4 July 2012.',
+          url: 'https://www.home.cern/science/physics/higgs-boson',
+          publishedAt: '2012-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-03-14',
+        datePrecision: 'DAY',
+        reason: 'By March 2013, analysis of additional data established that the new particle\'s spin-parity (0+) and decay couplings matched those of a Higgs boson, and CERN confirmed it was "a Higgs boson." The 2013 Nobel Prize in Physics was awarded to François Englert and Peter Higgs for the 1964 theoretical prediction "confirmed through the discovery of the predicted fundamental particle, by the ATLAS and CMS experiments."',
+        source: {
+          externalId: 'src:cern-higgs-boson-confirmed',
+          name: 'CERN. "The Higgs boson" — measurements of spin and couplings confirm a Higgs boson (March 2013).',
+          url: 'https://www.home.cern/science/physics/higgs-boson',
+          publishedAt: '2013-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IAU reclassifies Pluto as a dwarf planet, 24 August 2006 ────────────────
+  {
+    externalId: 'trajectory:pluto-reclassified-dwarf-planet-2006',
+    text: 'On 24 August 2006, the International Astronomical Union, meeting in Prague, adopted a formal definition of "planet" and reclassified Pluto as a dwarf planet, reducing the recognized planets of the solar system from nine to eight.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-08-24',
+        datePrecision: 'DAY',
+        reason: 'Wrapping up the XXVI General Assembly in Prague on 24 August 2006, IAU members voted on Resolution B5, defining a planet as a body that orbits the Sun, is in hydrostatic equilibrium, and has cleared the neighbourhood around its orbit. Pluto fails the third criterion and was reassigned to the new category of "dwarf planet," overturning its 76-year classification as the ninth planet since its 1930 discovery.',
+        source: {
+          externalId: 'src:jpl-pluto-reclassified-2006',
+          name: 'NASA/JPL. "Honey, I Shrunk the Solar System" — IAU defines planets and reclassifies Pluto, 24 August 2006.',
+          url: 'https://www.jpl.nasa.gov/news/honey-i-shrunk-the-solar-system/',
+          publishedAt: '2006-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-07-14',
+        datePrecision: 'DAY',
+        reason: 'The dwarf-planet classification has remained the accepted standard. NASA and the IAU continue to list eight planets and Pluto as a dwarf planet; the New Horizons flyby of 14 July 2015 was described throughout by NASA as the exploration of the dwarf planet Pluto. Despite persistent popular dissent, no subsequent IAU resolution has reversed the 2006 decision.',
+        source: {
+          externalId: 'src:nasa-pluto-dwarf-planet',
+          name: 'NASA Science. "Pluto" — "the International Astronomical Union reclassified Pluto as a dwarf planet in 2006."',
+          url: 'https://science.nasa.gov/dwarf-planets/pluto/',
+          publishedAt: '2015-07-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── India's Mars Orbiter Mission enters Mars orbit, 24 September 2014 ────────
+  {
+    externalId: 'trajectory:india-mars-orbiter-mission-2014',
+    text: 'On 24 September 2014, India\'s Mars Orbiter Mission (Mangalyaan) was successfully inserted into orbit around Mars, making the Indian Space Research Organisation the fourth space agency to reach Mars and the first to do so on its maiden attempt.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-09-24',
+        datePrecision: 'DAY',
+        reason: 'Launched aboard PSLV-C25 on 5 November 2013, the Mars Orbiter Mission completed its Mars Orbit Insertion burn on 24 September 2014 (around 02:00 UTC), with NASA\'s Deep Space Network providing navigation support. ISRO thereby became the fourth space agency — after the Soviet program, NASA, and ESA — to reach Mars, and the first space agency in history to succeed on its first attempt.',
+        source: {
+          externalId: 'src:nasa-mdscc-mom-2014',
+          name: 'NASA Madrid Deep Space Communications Complex — Mars Orbiter Mission: "a spacecraft orbiting Mars since 24 September 2014."',
+          url: 'https://www.mdscc.nasa.gov/index.php/en/current-missions/marsorbitermission_eng/',
+          publishedAt: '2014-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-09-24',
+        datePrecision: 'DAY',
+        reason: 'Designed for a six-month mission, MOM operated in Mars orbit for about eight years, completing seven years on 24 September 2021 and returning imagery and atmospheric data via its Mars Colour Camera and other instruments before contact was lost. The orbit insertion and India\'s status as the first nation to reach Mars on its first attempt are established in the institutional and scientific record.',
+        source: {
+          externalId: 'src:isro-mom-spacecraft',
+          name: 'ISRO. Mars Orbiter Mission Spacecraft — "MOM completed 7 years in its orbit on Sept 24, 2021."',
+          url: 'https://www.isro.gov.in/MarsOrbiterMissionSpacecraft.html',
+          publishedAt: '2021-09-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chandrayaan-1 / M3 detects water on the Moon, September 2009 ────────────
+  {
+    externalId: 'trajectory:chandrayaan-1-lunar-water-2009',
+    text: 'In September 2009, data from the Moon Mineralogy Mapper (M3) aboard India\'s Chandrayaan-1 spacecraft revealed spectral signatures of water and hydroxyl molecules across the Moon\'s surface, overturning the long-held view that the Moon was essentially anhydrous (dry).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-09-24',
+        datePrecision: 'DAY',
+        reason: 'In September 2009, scientists published results from NASA\'s Moon Mineralogy Mapper (M3) instrument aboard ISRO\'s Chandrayaan-1, reporting absorption features near 3 micrometres across the lunar surface diagnostic of hydroxyl- and water-bearing molecules. Since the Apollo era, the consensus had been that the Moon\'s surface was bone-dry; the M3 detection (corroborated by reanalysed Cassini and Deep Impact data) directly contradicted that view.',
+        source: {
+          externalId: 'src:nasa-chandrayaan-1-water-2009',
+          name: 'NASA Science. "Chandrayaan-1" — M3 detected absorption features linked to hydroxyl/water-bearing molecules, September 2009.',
+          url: 'https://science.nasa.gov/mission/chandrayaan-1/',
+          publishedAt: '2009-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-11-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 November 2009 NASA confirmed that its LCROSS impactor experiment had detected significant water in the plume kicked up from a permanently shadowed lunar crater, independently corroborating the M3 result. The presence of water and hydroxyl on the Moon — now mapped by multiple missions — is established science, and lunar water is a planning driver for crewed exploration (e.g., Artemis).',
+        source: {
+          externalId: 'src:nasa-lcross-water-2009',
+          name: 'NASA Science. "Water on the Moon" — LCROSS confirms water in a lunar crater plume, announced 13 November 2009.',
+          url: 'https://science.nasa.gov/mission/chandrayaan-1/',
+          publishedAt: '2009-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — Byzantine / Arab / European science & religion
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hagia Sophia consecrated (Byzantine) ────────────────────────────────────
+  {
+    externalId: 'trajectory:hagia-sophia-consecrated-537',
+    text: 'The emperor Justinian I inaugurated the rebuilt Hagia Sophia in Constantinople on 27 December 537, five years and ten months after construction began; its great dome partially collapsed in an earthquake in 558 and was rebuilt higher and re-dedicated on 24 December 562.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0537-12-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0537-12-27',
+        datePrecision: 'DAY',
+        reason: 'Justinian and Patriarch Menas inaugurate the new basilica of Hagia Sophia, the largest interior space in the world for nearly a millennium. The court historian Procopius, writing contemporaneously in De Aedificiis (On Buildings), describes the church and its vast dome in detail — "a work both wonderful and terrifying" — providing a primary eyewitness record of the completed structure.',
+        source: {
+          externalId: 'src:procopius-buildings-hagia-sophia',
+          name: 'Procopius. De Aedificiis (Buildings), Book 1, ch. 1 — description of the church of Hagia Sophia. (c. 554–560 CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/1A*.html',
+          publishedAt: '0560-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'PUBLIC',
+        occurredAt: '0558-05-07',
+        datePrecision: 'DAY',
+        reason: 'A series of earthquakes weakens the structure and on 7 May 558 the eastern semi-dome collapses, destroying the ambo, altar, and ciborium. The original flat, broad dome — too heavy and shallowly pitched — had deformed its supporting piers. The first dome as built and recorded in 537 no longer stands.',
+        source: {
+          externalId: 'src:hagia-sophia-dome-collapse-558',
+          name: 'Hagia Sophia — collapse of the original dome (558) and reconstruction (562). Wikipedia, citing the histories of Agathias and Malalas.',
+          url: 'https://en.wikipedia.org/wiki/Hagia_Sophia',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0562-12-24',
+        datePrecision: 'DAY',
+        reason: 'Isidore the Younger rebuilds the dome about 6.25 m higher than before as a ribbed dome on pendentives, raising the interior to 55.6 m and distributing thrust more safely. The restored Hagia Sophia is re-dedicated on 24 December 562 and the new dome — repaired after later quakes but essentially of this form — survives to the present day, fixing the building\'s definitive structure.',
+        source: {
+          externalId: 'src:hagia-sophia-rededication-562',
+          name: 'Hagia Sophia — re-dedication of the rebuilt dome, 24 December 562. Wikipedia, citing Paul the Silentiary\'s ekphrasis.',
+          url: 'https://en.wikipedia.org/wiki/Hagia_Sophia',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Earliest datable description of the solar corona (Byzantine) ─────────────
+  {
+    externalId: 'trajectory:leo-deacon-corona-eclipse-968',
+    text: 'During the total solar eclipse of 22 December 968, the Byzantine historian Leo the Deacon, observing from Constantinople, described "a dim and feeble glow like a narrow band shining in a circle around the edge of the disk" — the earliest description of the solar corona that can be tied to a specific datable eclipse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0968-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0968-12-22',
+        datePrecision: 'DAY',
+        reason: 'At about the fourth hour of the day darkness covers Constantinople and the brightest stars appear. Leo the Deacon records that one could see the disk of the Sun "dull and unlit," surrounded by "a dim and feeble glow like a narrow band shining in a circle around the edge of the disk." The account, embedded in his History, is a contemporaneous eyewitness record of the phenomenon now known as the solar corona.',
+        source: {
+          externalId: 'src:leo-deacon-history-eclipse-968',
+          name: 'Leo the Deacon (Leo Diaconus). History, account of the solar eclipse of 22 December 968. (late 10th century)',
+          url: 'https://www2.hao.ucar.edu/education/solar-physics-timeline/0-1599',
+          publishedAt: '0990-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of astronomy identify Leo\'s passage as the first explicit mention of what can be unambiguously interpreted as the solar corona, and confirm by retrocalculation that the total eclipse he describes occurred over Constantinople on 22 December 968. The observation is established as the earliest securely datable corona account.',
+        source: {
+          externalId: 'src:hao-corona-968-timeline',
+          name: 'High Altitude Observatory (NCAR/UCAR). Solar Physics Historical Timeline (0–1599): "AD 968 — the first mention of the solar corona."',
+          url: 'https://www2.hao.ucar.edu/education/solar-physics-timeline/0-1599',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet, 1066 apparition (Europe / China) ────────────────────────
+  {
+    externalId: 'trajectory:halley-comet-1066-apparition',
+    text: 'A brilliant comet appeared over Europe and Asia in the spring of 1066, reaching perihelion on 23 March 1066; it was recorded in the Anglo-Saxon Chronicle, embroidered on the Bayeux Tapestry, and logged by Chinese and Korean court astronomers — later identified by Edmond Halley as a periodic return of the comet now named after him.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1066-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1066-03-23',
+        datePrecision: 'DAY',
+        reason: 'A comet "such as men never saw before," reported as roughly four times the size of Venus and shining about a quarter as bright as the Moon, blazes in the sky for weeks. The Anglo-Saxon Chronicle notes the sign over England in the year of the Norman Conquest; it is later stitched into the Bayeux Tapestry under the words "Isti mirant stella" (these men marvel at the star), and Song-dynasty Chinese and Korean astronomers independently record its track.',
+        source: {
+          externalId: 'src:halley-1066-apparition-record',
+          name: 'Halley\'s Comet — 1066 apparition (Anglo-Saxon Chronicle; Bayeux Tapestry; Chinese and Korean court records), perihelion 23 March 1066.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1066-03-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1705-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In A Synopsis of the Astronomy of Comets (1705), Edmond Halley computes the orbits of comets seen in 1531, 1607, and 1682, finds them nearly identical, and concludes they are returns of a single periodic comet on a ~76-year cycle. He predicts its next return around 1758 — linking the medieval apparitions (including 1066) to a single recurring body.',
+        source: {
+          externalId: 'src:halley-synopsis-comets-1705',
+          name: 'Edmond Halley. A Synopsis of the Astronomy of Comets (1705) — identification of the periodic comet later named Halley\'s.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1705-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1758-12-25',
+        datePrecision: 'DAY',
+        reason: 'The comet is recovered on 25 December 1758 by the amateur astronomer Johann Georg Palitzsch, reaching perihelion in March 1759 as Halley had predicted, confirming his periodicity hypothesis after his death. The chain of historical apparitions — 1066 among them — is settled as a single object, designated 1P/Halley.',
+        source: {
+          externalId: 'src:halley-comet-recovery-1758',
+          name: 'Recovery of Halley\'s Comet, 25 December 1758 (Palitzsch), confirming Halley\'s 1705 periodicity prediction.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1758-12-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── "King Henry's eclipse" — total solar eclipse of 1133 (Europe) ────────────
+  {
+    externalId: 'trajectory:henry-eclipse-1133',
+    text: 'A total solar eclipse swept across Britain and central Europe on 2 August 1133, recorded contemporaneously by William of Malmesbury and other chroniclers as a terrifying darkness; modern retrocalculation confirms a total eclipse of 4 minutes 38 seconds on that date.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1133-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1133-08-02',
+        datePrecision: 'DAY',
+        reason: 'As King Henry I sails for Normandy, the Sun is totally eclipsed. William of Malmesbury writes that "the hideous darkness agitated the hearts of men," and the Peterborough Chronicle, the Annales Halesbrunnenses, and the continuators of Cosmas of Prague record the same darkening of day and appearance of stars — a cluster of independent contemporaneous notices, widely read as an ill omen on the eve of the English civil war known as the Anarchy.',
+        source: {
+          externalId: 'src:william-malmesbury-eclipse-1133',
+          name: 'William of Malmesbury, Historia Novella, and the Peterborough Chronicle — accounts of the solar eclipse of 2 August 1133.',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_1133',
+          publishedAt: '1133-08-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical canon and modern eclipse computation place a total solar eclipse over Britain and central Europe on 2 August 1133, with maximum eclipse near 12:08 UT and totality lasting 4 minutes 38 seconds. The retrocalculated path matches the medieval reports, settling the date and totality of "King Henry\'s eclipse."',
+        source: {
+          externalId: 'src:eclipse-canon-1133',
+          name: 'Solar eclipse of 2 August 1133 — modern eclipse computation (path, magnitude, 4m38s totality, max eclipse 12:08 UT).',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_August_2,_1133',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
