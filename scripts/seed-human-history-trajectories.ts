@@ -40838,6 +40838,280 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900) — science, medicine, evolution
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Phineas Gage's iron rod and cerebral localization ───────────────────────
+  {
+    externalId: 'trajectory:phineas-gage-1848',
+    text: 'On 13 September 1848, railroad foreman Phineas Gage survived an iron tamping rod being blasted completely through the front of his skull and brain; documented contemporaneously by his physician John Martyn Harlow, the case became foundational evidence that specific mental faculties are localized in specific regions of the brain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1848-09-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1848-09-13',
+        datePrecision: 'DAY',
+        reason: 'A premature blasting charge drives a 3-foot, 13-pound tamping iron point-first through Gage\'s left cheek, behind the left eye, and out the top of his skull near the midline. He survives. His attending physician John Martyn Harlow publishes the first case report — "Passage of an Iron Rod through the Head" — in the Boston Medical and Surgical Journal later that year, documenting the injury and Gage\'s improbable recovery.',
+        source: {
+          externalId: 'src:harlow-gage-1848',
+          name: 'Harlow JM. "Passage of an Iron Rod through the Head." Boston Medical and Surgical Journal 39 (1848): 389–393. (contemporaneous case report)',
+          url: 'https://en.wikipedia.org/wiki/Phineas_Gage',
+          publishedAt: '1848-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1868-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1868 Harlow publishes a fuller account of Gage\'s post-injury personality change before the Massachusetts Medical Society. Together with Paul Broca\'s 1861 patient "Tan" (loss of speech from a left frontal lesion), the Gage case anchors the doctrine of cerebral localization — that distinct brain regions govern distinct functions — against the prevailing anti-localizationist view.',
+        source: {
+          externalId: 'src:cerebral-localization-gage',
+          name: 'Cerebral localization — the Phineas Gage case and the 19th-century doctrine of functional specialization (with Broca, 1861).',
+          url: 'https://en.wikipedia.org/wiki/Cerebral_localization',
+          publishedAt: '1868-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern critical scholarship (notably Malcolm Macmillan\'s reconstruction of the primary record) establishes the documented facts of the injury and recovery while showing that popular accounts greatly exaggerated the extent and permanence of Gage\'s behavioural change. The core historical and neurological significance — survival of massive frontal-lobe injury, used as evidence for localization — remains settled.',
+        source: {
+          externalId: 'src:gage-macmillan-reassessment',
+          name: 'Phineas Gage — critical reassessment of the contemporaneous record and the limits of the "personality change" narrative.',
+          url: 'https://en.wikipedia.org/wiki/Phineas_Gage',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Crawford Long performs first surgery under ether anaesthesia ─────────────
+  {
+    externalId: 'trajectory:crawford-long-ether-1842',
+    text: 'On 30 March 1842, Georgia physician Crawford Long removed a tumour from the neck of James Venable while the patient was anaesthetised with sulfuric ether — the first known surgical operation performed under ether anaesthesia, though Long did not publish until 1849, four years after W.T.G. Morton\'s 1846 public demonstration had already claimed priority.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1842-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1842-03-30',
+        datePrecision: 'DAY',
+        reason: 'Long, having observed that participants in "ether frolics" felt no pain from bruises, has James Venable inhale sulfuric ether from a towel and painlessly excises a tumour from his neck. The operation is witnessed locally but Long, wanting to repeat the result before publishing, leaves it unrecorded in the medical literature for years.',
+        source: {
+          externalId: 'src:crawford-long-venable-1842',
+          name: 'Crawford W. Long — first use of ether anaesthesia in surgery (excision of James Venable\'s neck tumour), 30 March 1842; account later published 1849.',
+          url: 'https://en.wikipedia.org/wiki/Crawford_Long',
+          publishedAt: '1849-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-10-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 October 1846 W.T.G. Morton publicly demonstrates ether anaesthesia at Massachusetts General Hospital, and the news spreads rapidly through the medical press. Because Long had not published, credit for surgical anaesthesia is fiercely disputed among Morton, Charles Jackson, Horace Wells and, belatedly, Long — the protracted "Ether Controversy" over priority.',
+        source: {
+          externalId: 'src:long-ether-priority-dispute',
+          name: 'The "Ether Controversy" — priority dispute over surgical anaesthesia following Morton\'s public demonstration of 16 October 1846.',
+          url: 'https://en.wikipedia.org/wiki/Crawford_Long',
+          publishedAt: '1846-10-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1849-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1849 Long publishes his account in The Southern Medical and Surgical Journal, supported by patient affidavits dating his first use to 1842. The settled historical judgement is a dual attribution: Long performed the first surgical operation under ether anaesthesia (1842), while Morton is credited with the first successful public demonstration (1846) that brought anaesthesia into general use.',
+        source: {
+          externalId: 'src:long-1849-publication',
+          name: 'Long CW. "An account of the first use of Sulphuric Ether by Inhalation as an Anaesthetic in Surgical Operations." Southern Medical and Surgical Journal (1849).',
+          url: 'https://en.wikipedia.org/wiki/Crawford_Long',
+          publishedAt: '1849-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mary Anning's complete Plesiosaurus skeleton ────────────────────────────
+  {
+    externalId: 'trajectory:anning-plesiosaurus-1823',
+    text: 'On 10 December 1823 Mary Anning unearthed the first complete skeleton of a Plesiosaurus at Lyme Regis; described to the Geological Society of London by William Conybeare on 20 February 1824, it confirmed the existence of an entire extinct order of long-necked marine reptiles and reinforced the emerging recognition that distinct faunas had inhabited Earth in the deep past.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1823-12-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1823-12-10',
+        datePrecision: 'DAY',
+        reason: 'Anning excavates a near-complete articulated skeleton with an extraordinarily long neck from the Blue Lias at Lyme Regis. The anatomy is so unusual that Georges Cuvier initially suspects a forgery, before being convinced of its authenticity. Anning circulates careful drawings to leading geologists.',
+        source: {
+          externalId: 'src:anning-plesiosaurus-discovery-1823',
+          name: 'Mary Anning — discovery of the first complete Plesiosaurus skeleton at Lyme Regis, 10 December 1823.',
+          url: 'https://en.wikipedia.org/wiki/Mary_Anning',
+          publishedAt: '1823-12-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1824-02-20',
+        datePrecision: 'DAY',
+        reason: 'The specimen is purchased by the Duke of Buckingham and transported to the Geological Society of London for its meeting of 20 February 1824, where William Conybeare presents "On the Discovery of an almost perfect Skeleton of the Plesiosaurus" (published in the Transactions of the Geological Society). The description fixes Plesiosaurus as a genuine, fully extinct genus of marine reptile.',
+        source: {
+          externalId: 'src:conybeare-plesiosaurus-1824',
+          name: 'Conybeare WD. "On the Discovery of an almost perfect Skeleton of the Plesiosaurus." Transactions of the Geological Society of London, S2-1 (1824); presented 20 February 1824.',
+          url: 'https://www.geolsoc.org.uk/the-library/online-exhibitions/mary-anning-and-the-geological-society/reconstruction-of-life/plesiosaurus-dolichodeirus/',
+          publishedAt: '1824-02-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Plesiosaurus dolichodeirus remains the archetypal genus that gives its name to the entire order Plesiosauria. Anning\'s 1823 specimen is preserved in the Natural History Museum, London, and her marine-reptile finds are now recognized as central to the early-19th-century establishment of extinction and deep time as scientific facts.',
+        source: {
+          externalId: 'src:plesiosauria-archetype',
+          name: 'Plesiosaurus — archetypal genus of the order Plesiosauria; Anning\'s 1823 type specimen and its role in establishing extinction and deep time.',
+          url: 'https://en.wikipedia.org/wiki/Plesiosaurus',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Archaeopteryx — the transitional fossil ─────────────────────────────────
+  {
+    externalId: 'trajectory:archaeopteryx-1861',
+    text: 'The first Archaeopteryx fossils were recovered from the Solnhofen limestone of Bavaria in 1861 — an isolated feather formally described by Hermann von Meyer (Palaeontographica, April 1862) and a near-complete skeleton, the London Specimen — providing a transitional form combining reptilian teeth and a bony tail with avian feathers and wings, just two years after Darwin\'s On the Origin of Species predicted such intermediates.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1862-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1862-04-01',
+        datePrecision: 'MONTH',
+        reason: 'An isolated fossil feather unearthed in the Solnhofen lithographic limestone in 1861 is named Archaeopteryx lithographica by Hermann von Meyer, with his formal description published in Palaeontographica in April 1862. In the same year a near-complete skeleton (the London Specimen, found near Langenaltheim in 1861) is shipped to the British Museum at the end of September 1862.',
+        source: {
+          externalId: 'src:von-meyer-archaeopteryx-feather',
+          name: 'von Meyer H — naming and description of Archaeopteryx lithographica (isolated feather), Palaeontographica, April 1862; London Specimen acquired by the British Museum, 1862.',
+          url: 'https://en.wikipedia.org/wiki/Specimens_of_Archaeopteryx',
+          publishedAt: '1862-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1862-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Richard Owen presents a description of the London Specimen to the Royal Society in November 1862 (published 1863). The skeleton plainly combines avian features (flight feathers, wings, wishbone) with reptilian ones (teeth, a long bony tail) — recognised by Darwin and others as the kind of intermediate form predicted by evolutionary theory, and one of its most celebrated early confirmations.',
+        source: {
+          externalId: 'src:owen-archaeopteryx-london-specimen',
+          name: 'Owen R — description of the London Specimen of Archaeopteryx, Royal Society, November 1862 (Philosophical Transactions, 1863).',
+          url: 'https://en.wikipedia.org/wiki/Archaeopteryx',
+          publishedAt: '1863-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Subsequent specimens (eleven skeletal finds plus the feather) and a century and a half of analysis confirm Archaeopteryx as a Late Jurassic transitional form near the dinosaur–bird boundary. It remains a textbook example of a transitional fossil and a cornerstone of the dinosaurian origin of birds.',
+        source: {
+          externalId: 'src:archaeopteryx-transitional-confirmed',
+          name: 'Archaeopteryx — confirmation as a Late Jurassic transitional fossil and its role in the dinosaurian origin of birds.',
+          url: 'https://en.wikipedia.org/wiki/Archaeopteryx',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Great Moon Hoax ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:great-moon-hoax-1835',
+    text: 'Beginning 25 August 1835, the New York Sun published a six-part series falsely claiming that the astronomer Sir John Herschel had observed bat-winged humanoids and other life on the Moon through a giant telescope; widely believed at first, the Sun admitted within weeks that the articles were fabricated.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1835-08-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1835-08-25',
+        datePrecision: 'DAY',
+        reason: 'The New York Sun runs the first of six articles, attributed to a fictitious supplement to the Edinburgh Journal of Science, describing detailed lunar life — forests, bison, unicorns and winged "man-bats" — supposedly seen by Sir John Herschel from the Cape of Good Hope. The series is widely read and broadly believed, boosting the paper\'s circulation.',
+        source: {
+          externalId: 'src:great-moon-hoax-publication-1835',
+          name: 'The Great Moon Hoax — New York Sun series beginning 25 August 1835, falsely attributed to Sir John Herschel (written by Richard Adams Locke).',
+          url: 'https://en.wikipedia.org/wiki/Great_Moon_Hoax',
+          publishedAt: '1835-08-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'PUBLIC',
+        occurredAt: '1835-09-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 September 1835 the Sun admitted the articles were fabricated. Herschel had made no such observations and had not authored or authorised the reports; the actual author, reporter Richard Adams Locke, later publicly acknowledged the hoax. No life on the Moon was observed, and the entire claim collapsed as a fabrication.',
+        source: {
+          externalId: 'src:great-moon-hoax-exposed-1835',
+          name: 'The Great Moon Hoax — the New York Sun\'s admission of fabrication (16 September 1835) and Richard Adams Locke\'s authorship.',
+          url: 'https://en.wikipedia.org/wiki/Great_Moon_Hoax',
+          publishedAt: '1835-09-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
