@@ -32520,6 +32520,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, exploration
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Pavia — Francis I of France captured ──────────────────────────
+  {
+    externalId: 'trajectory:battle-of-pavia-1525',
+    text: 'At the Battle of Pavia on 24 February 1525, the army of Emperor Charles V decisively defeated the French and captured King Francis I of France, the decisive engagement of the Italian War of 1521–1526.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1525-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1525-02-24',
+        datePrecision: 'DAY',
+        reason: 'In the early morning outside Pavia, Imperial arquebusiers and pikemen destroyed the French army besieging the city; Francis I, fighting on after his horse was killed, was taken prisoner. The capture of a reigning king was reported across Europe within weeks and recorded in the contemporary history of Francesco Guicciardini and in Charles V\'s own account.',
+        source: {
+          externalId: 'src:pavia-1525-wikipedia',
+          name: 'Battle of Pavia, 24 February 1525 — contemporary accounts including Guicciardini\'s History of Italy and Charles V\'s autobiography.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Pavia',
+          publishedAt: '1525-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1526-01-14',
+        datePrecision: 'DAY',
+        reason: 'The captured king was held in Madrid until he signed the Treaty of Madrid on 14 January 1526, renouncing French claims in Italy. The date, outcome and capture of Francis I are undisputed in the historiography of the Italian Wars; debate concerns only the battle\'s tactical interpretation, not whether it occurred.',
+        source: {
+          externalId: 'src:pavia-1525-britannica',
+          name: 'Battle of Pavia — Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Battle-of-Pavia',
+          publishedAt: '1526-01-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Marburg Colloquy — Luther and Zwingli fail to agree on the Eucharist ────
+  {
+    externalId: 'trajectory:marburg-colloquy-1529',
+    text: 'At the Marburg Colloquy (1–4 October 1529), Martin Luther and Ulrich Zwingli reached agreement on fourteen of fifteen articles of faith but could not reconcile their views on the nature of Christ\'s presence in the Eucharist, dividing the Protestant Reformation into Lutheran and Reformed wings.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1529-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1529-10-04',
+        datePrecision: 'DAY',
+        reason: 'Convened by Landgrave Philip of Hesse at Marburg Castle to unify the Protestant cause, Luther, Zwingli, Melanchthon, Bucer and others debated for four days. They subscribed to the Marburg Articles, agreeing on fourteen points; the fifteenth recorded that they could not agree whether the body and blood of Christ are bodily present in the bread and wine. The articles were signed and circulated.',
+        source: {
+          externalId: 'src:marburg-articles-1529',
+          name: 'Marburg Colloquy and the Marburg Articles, 1–4 October 1529.',
+          url: 'https://en.wikipedia.org/wiki/Marburg_Colloquy',
+          publishedAt: '1529-10-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The signed Marburg Articles survive and the colloquy\'s date, participants and the unresolved fifteenth article are an established part of Reformation historiography. The doctrinal split it failed to heal hardened into the lasting Lutheran–Reformed division, fixed by later confessions.',
+        source: {
+          externalId: 'src:marburg-colloquy-britannica',
+          name: 'Marburg, Colloquy of — Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Colloquy-of-Marburg',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Union of Lublin — creation of the Polish–Lithuanian Commonwealth ────────
+  {
+    externalId: 'trajectory:union-of-lublin-1569',
+    text: 'The Union of Lublin, signed on 1 July 1569, merged the Kingdom of Poland and the Grand Duchy of Lithuania into a single federated state, the Polish–Lithuanian Commonwealth, with a shared elective monarch and a common parliament.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1569-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1569-07-01',
+        datePrecision: 'DAY',
+        reason: 'After months of negotiation at the Sejm in Lublin, the deputies of Poland and Lithuania adopted the Act of Union on 1 July 1569, converting the dynastic personal union into a real union under King Sigismund II Augustus. The act was signed and confirmed by the king at Lublin Castle days later; the original document survives.',
+        source: {
+          externalId: 'src:union-lublin-act-1569',
+          name: 'Act of the Union of Lublin, 1 July 1569 (original act inscribed in the UNESCO Memory of the World Register, 2017).',
+          url: 'https://en.wikipedia.org/wiki/Union_of_Lublin',
+          publishedAt: '1569-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The surviving original act of union was inscribed in UNESCO\'s Memory of the World International Register in 2017, formally confirming its authenticity and significance. The date and effect of the union — the founding of the Commonwealth that lasted until the partitions of the late 18th century — are undisputed.',
+        source: {
+          externalId: 'src:union-lublin-unesco',
+          name: 'Union of Lublin — UNESCO Memory of the World Register entry.',
+          url: 'https://www.unesco.org/en/memory-world/union-lublin-document',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of White Mountain — collapse of the Bohemian Revolt ──────────────
+  {
+    externalId: 'trajectory:battle-white-mountain-1620',
+    text: 'At the Battle of White Mountain near Prague on 8 November 1620, the Catholic Imperial and Catholic League armies crushed the Bohemian Protestant forces in about an hour, ending the Bohemian Revolt and driving Frederick V, the "Winter King," into exile.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1620-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1620-11-08',
+        datePrecision: 'DAY',
+        reason: 'Outside Prague, the combined Imperial and Catholic League army under Tilly and Bucquoy broke the Bohemian estates\' army in roughly an hour, inflicting about 4,000 casualties for some 700 of their own. Frederick V fled the country, and the battle was reported across Europe and depicted in the contemporary Theatrum Europaeum.',
+        source: {
+          externalId: 'src:white-mountain-1620-wikipedia',
+          name: 'Battle of White Mountain, 8 November 1620 — contemporary depiction in the Theatrum Europaeum.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_White_Mountain',
+          publishedAt: '1620-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1621-06-21',
+        datePrecision: 'DAY',
+        reason: 'The verdict was sealed by the public execution of 27 Bohemian rebellion leaders in Prague\'s Old Town Square on 21 June 1621 and the subsequent recatholicization of the Czech lands under Ferdinand II. The date and decisive outcome of the battle are undisputed in the historiography of the Thirty Years\' War.',
+        source: {
+          externalId: 'src:white-mountain-1620-britannica',
+          name: 'Battle of White Mountain — Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Battle-of-White-Mountain',
+          publishedAt: '1621-06-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── French Académie des sciences founded ────────────────────────────────────
+  {
+    externalId: 'trajectory:academie-des-sciences-1666',
+    text: 'The French Académie des sciences, founded at the urging of Jean-Baptiste Colbert under Louis XIV, held its first meeting on 22 December 1666 in the King\'s library in Paris, establishing one of the earliest state-sponsored scientific institutions.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1666-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1666-12-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 December 1666 a small group of mathematicians and natural philosophers chosen by Colbert met for the first time in the King\'s library near the present Bibliothèque nationale, inaugurating the Académie as an organ of the French state to promote and protect scientific research. The founding meeting and its date are recorded in the Academy\'s own institutional history.',
+        source: {
+          externalId: 'src:academie-sciences-1666-founding',
+          name: 'French Academy of Sciences — first meeting 22 December 1666 in the King\'s library.',
+          url: 'https://en.wikipedia.org/wiki/French_Academy_of_Sciences',
+          publishedAt: '1666-12-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1699-01-20',
+        datePrecision: 'DAY',
+        reason: 'The Academy was given formal legal standing by royal regulation on 20 January 1699, which reorganised it under royal protection with a defined membership and statutes. Its founding date and continuous institutional existence (it survives within the Institut de France) are undisputed.',
+        source: {
+          externalId: 'src:academie-sciences-britannica',
+          name: 'French Academy of Sciences (Académie des Sciences) — Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/topic/French-Academy-of-Sciences',
+          publishedAt: '1699-01-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
