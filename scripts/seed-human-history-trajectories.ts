@@ -31936,6 +31936,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA — NON-WESTERN PERSPECTIVES (1990–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Giant panda genome — first mammalian genome from short reads alone ───────
+  {
+    externalId: 'trajectory:giant-panda-genome-bgi-2009',
+    text: 'On 13 December 2009, a BGI-Shenzhen–led Chinese consortium reported the first draft genome of the giant panda (Ailuropoda melanoleuca) — the first mammalian genome assembled de novo using next-generation short-read sequencing alone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-12-13',
+        datePrecision: 'DAY',
+        reason: 'Li et al. reported in Nature (published online 13 December 2009) that, using Illumina Genome Analyser short reads alone (average read length ~52 bp, 176 Gb of usable sequence), they assembled a 2.4-Gb draft genome of a female panda named Jingjing — covering ~94% of the genome with an N50 scaffold of 1.3 Mb. It demonstrated that a large mammalian genome could be assembled without traditional Sanger sequencing.',
+        source: {
+          externalId: 'src:li-panda-genome-nature-2009',
+          name: 'Li R, et al. "The sequence and de novo assembly of the giant panda genome." Nature 463:311–317. (published online 13 December 2009)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3951497/',
+          publishedAt: '2009-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-21',
+        datePrecision: 'DAY',
+        reason: 'The paper appeared in the print issue of Nature (21 January 2010); the assembly (ailMel1) was deposited and adopted as the reference giant panda genome, and the short-read de novo assembly strategy it pioneered (SOAPdenovo) became a standard method. The result, its date, and its priority are undisputed.',
+        source: {
+          externalId: 'src:li-panda-genome-nature-print-2010',
+          name: 'Li R, et al. "The sequence and de novo assembly of the giant panda genome." Nature 463:311–317. (print issue 21 January 2010)',
+          url: 'https://www.nature.com/articles/nature08696',
+          publishedAt: '2010-01-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Wenchuan (Sichuan) earthquake ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:wenchuan-sichuan-earthquake-2008',
+    text: 'A magnitude 7.9 earthquake struck Eastern Sichuan, China — the Wenchuan earthquake — on 12 May 2008, killing roughly 87,500 people.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-05-12',
+        datePrecision: 'DAY',
+        reason: 'At 06:28 UTC (14:28 local) on 12 May 2008 the mainshock was recorded instrumentally by the US Geological Survey and the China Earthquake Networks Center, located ~58 km west of Tianpeng in Sichuan along the Longmenshan fault, with a measured moment magnitude of 7.9 (Mwc).',
+        source: {
+          externalId: 'src:usgs-wenchuan-2008',
+          name: 'USGS Earthquake Hazards Program. "M 7.9 — 58 km W of Tianpeng, China" (event usp000g650), 12 May 2008.',
+          url: 'https://earthquake.usgs.gov/earthquakes/eventpage/usp000g650/executive',
+          publishedAt: '2008-05-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Independent seismological agencies (USGS, the China Earthquake Networks Center, and the Global CMT project) converged on the same date, location, and moment magnitude (~7.9–8.0) for the rupture, and Chinese authorities finalized the casualty figures (about 69,000 confirmed dead and 18,000 missing). The occurrence, date, and magnitude of the earthquake are undisputed.',
+        source: {
+          externalId: 'src:usgs-wenchuan-geojson-2008',
+          name: 'USGS FDSN Event Service, event usp000g650 (M 7.9, Eastern Sichuan, 12 May 2008).',
+          url: 'https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=usp000g650&format=geojson',
+          publishedAt: '2008-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── India / WHO South-East Asia Region certified polio-free ─────────────────
+  {
+    externalId: 'trajectory:india-searo-polio-free-2014',
+    text: 'On 27 March 2014 the WHO South-East Asia Region — including India, until recently the country reporting the most polio cases worldwide — was certified free of wild poliovirus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-03-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-01-13',
+        datePrecision: 'DAY',
+        reason: 'India recorded its last case of wild poliovirus on 13 January 2011 (an 18-month-old girl, Rukhsar Khatun, in West Bengal). With no further cases, WHO removed India from the list of polio-endemic countries on 25 February 2012, starting the three-year clock toward certification — though whether transmission had truly stopped remained to be confirmed.',
+        source: {
+          externalId: 'src:who-sea-polio-certification-activity',
+          name: 'WHO South-East Asia. "Polio-free certification: WHO South-East Asia."',
+          url: 'https://www.who.int/southeastasia/activities/maintaining-polio-free-status/polio-free-certification-who-south-east-asia',
+          publishedAt: '2014-03-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-03-27',
+        datePrecision: 'DAY',
+        reason: 'After three years with no wild poliovirus and review of surveillance evidence from all 11 member states, an independent panel (the South-East Asia Regional Certification Commission for Polio Eradication) certified the entire region polio-free on 27 March 2014 — the fourth of six WHO regions to be certified, raising the share of the world living in certified polio-free regions to 80%.',
+        source: {
+          externalId: 'src:who-sea-polio-free-2014',
+          name: 'WHO South-East Asia. "WHO South-East Asia Region certified polio-free," 27 March 2014.',
+          url: 'https://www.who.int/southeastasia/news/detail/27-03-2014-who-south-east-asia-region-certified-polio-free',
+          publishedAt: '2014-03-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SARS-CoV-2 Delta variant designated a Variant of Concern ────────────────
+  {
+    externalId: 'trajectory:delta-variant-voc-2021',
+    text: 'The SARS-CoV-2 lineage B.1.617.2, first detected in India in late 2020, was designated a global Variant of Concern by the WHO on 11 May 2021 and given the name "Delta" on 31 May 2021.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-05-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-05',
+        datePrecision: 'DAY',
+        reason: 'The lineage that would become Delta was first detected in a sample from India dated 5 October 2020. Whether this new lineage carried enhanced transmissibility or immune escape — or was epidemiologically unremarkable — was initially an open question.',
+        source: {
+          externalId: 'src:wikipedia-delta-variant',
+          name: 'Wikipedia. "SARS-CoV-2 Delta variant" (lineage history and WHO designation timeline).',
+          url: 'https://en.wikipedia.org/wiki/SARS-CoV-2_Delta_variant',
+          publishedAt: '2021-05-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-11',
+        datePrecision: 'DAY',
+        reason: 'On 11 May 2021 the WHO reclassified B.1.617.2 from a Variant of Interest to a global Variant of Concern, citing evidence of higher transmissibility and reduced neutralisation amid India\'s catastrophic second wave.',
+        source: {
+          externalId: 'src:wikipedia-delta-variant-voc',
+          name: 'Wikipedia. "SARS-CoV-2 Delta variant" (WHO Variant of Concern designation, 11 May 2021).',
+          url: 'https://en.wikipedia.org/wiki/SARS-CoV-2_Delta_variant',
+          publishedAt: '2021-05-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-31',
+        datePrecision: 'DAY',
+        reason: 'On 31 May 2021 WHO assigned the Greek-letter label "Delta" to B.1.617.2 under its new variant-naming system. Over the following months Delta displaced earlier lineages to become the globally dominant variant, confirming the heightened transmissibility that motivated its designation.',
+        source: {
+          externalId: 'src:who-greek-letter-variant-labels-2021',
+          name: 'WHO. "WHO announces simple, easy-to-say labels for SARS-CoV-2 Variants of Interest and Concern," 31 May 2021.',
+          url: 'https://www.who.int/news/item/31-05-2021-who-announces-simple-easy-to-say-labels-for-sars-cov-2-variants-of-interest-and-concern',
+          publishedAt: '2021-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tunisia: fall of Ben Ali (start of the Arab Spring) ─────────────────────
+  {
+    externalId: 'trajectory:ben-ali-flees-tunisia-2011',
+    text: 'Tunisian President Zine El Abidine Ben Ali fled the country on 14 January 2011 after weeks of mass protests, ending his more than 23-year rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-01-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'PUBLIC',
+        occurredAt: '2010-12-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 December 2010 Mohamed Bouazizi, a street vendor in Sidi Bouzid, set himself on fire after police confiscated his goods. His self-immolation triggered nationwide protests; over the following weeks, whether Ben Ali could hold onto power became an open question contested in the streets.',
+        source: {
+          externalId: 'src:wikipedia-tunisian-revolution',
+          name: 'Wikipedia. "Tunisian revolution" (17 December 2010 – 14 January 2011).',
+          url: 'https://en.wikipedia.org/wiki/Tunisian_revolution',
+          publishedAt: '2011-01-14',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-01-14',
+        datePrecision: 'DAY',
+        reason: 'On 14 January 2011 Ben Ali dissolved his government, declared a state of emergency, and fled the country (travelling via Malta to Saudi Arabia); the prime minister announced he had assumed power. The departure was broadcast and reported worldwide the same day.',
+        source: {
+          externalId: 'src:aljazeera-ben-ali-flees-2011',
+          name: 'Al Jazeera. "Tunisia\'s Ben Ali flees amid unrest," 15 January 2011.',
+          url: 'https://www.aljazeera.com/news/2011/1/15/tunisias-ben-ali-flees-amid-unrest',
+          publishedAt: '2011-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2011-07-29',
+        datePrecision: 'DAY',
+        reason: 'Ben Ali\'s ouster became permanent and legally fixed: an interim government formed, free constituent-assembly elections were held in October 2011, and Tunisian courts tried and sentenced him in absentia (a court handed down a further sentence on 29 July 2011), confirming that his removal was irreversible.',
+        source: {
+          externalId: 'src:aljazeera-ben-ali-sentenced-2011',
+          name: 'Al Jazeera. "Tunisian court sentences Ben Ali in absentia," 29 July 2011.',
+          url: 'https://www.aljazeera.com/news/2011/7/29/tunisian-court-sentences-ben-ali-in-absentia',
+          publishedAt: '2011-07-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
