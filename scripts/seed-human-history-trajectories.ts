@@ -40452,6 +40452,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE ADDITIONS (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Walk to Canossa — Henry IV's penance before Gregory VII ─────────────────
+  {
+    externalId: 'trajectory:walk-to-canossa-1077',
+    text: 'King Henry IV stood in penance before the gate of the castle at Canossa for three days, 25–28 January 1077, seeking absolution of his excommunication from Pope Gregory VII during the Investiture Controversy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1077-01-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1077-01-25',
+        datePrecision: 'DAY',
+        reason: 'Excommunicated and facing a rebellious German nobility, Henry IV crosses the winter Alps and presents himself as a penitent at the gate of Countess Matilda\'s fortress at Canossa, where Gregory VII is lodged. He waits three days — 25 to 28 January — before being admitted and absolved. Pope Gregory VII immediately describes the scene in a letter to the German princes, an effectively contemporaneous account by a principal of the event.',
+        source: {
+          externalId: 'src:gregory-vii-letter-canossa',
+          name: 'Pope Gregory VII. Letter to the German princes describing Henry IV\'s penance at Canossa (Registrum IV.12, 1077).',
+          url: 'https://en.wikipedia.org/wiki/Road_to_Canossa',
+          publishedAt: '1077-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1080-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The contemporary chronicler Lampert of Hersfeld records Henry\'s journey across the Alps and his behaviour at the gate in his Annales, independently of Gregory\'s own correspondence. The convergence of papal letters and chronicle accounts fixes the dating and the fact of the penance; modern scholarship treats the episode as the central event of the Investiture Controversy, debating only its meaning, not its occurrence.',
+        source: {
+          externalId: 'src:lampert-hersfeld-annales',
+          name: 'Lampert of Hersfeld. Annales (c. 1077–1079), entry for 1077.',
+          url: 'https://en.wikipedia.org/wiki/Lampert_of_Hersfeld',
+          publishedAt: '1079-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Jingkang Incident — fall of Kaifeng, end of the Northern Song ───────────
+  {
+    externalId: 'trajectory:jingkang-incident-kaifeng-1127',
+    text: 'On 9 January 1127 the Jin dynasty captured Bianjing (Kaifeng), the capital of the Northern Song, capturing Emperors Qinzong and Huizong and ending the Northern Song dynasty in the Jingkang Incident.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1127-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1127-01-09',
+        datePrecision: 'DAY',
+        reason: 'After a renewed siege, Jin forces breach Bianjing. The Jin troops plunder the imperial library and palace and, over the following weeks, abduct the retired Emperor Huizong, the reigning Emperor Qinzong, and the imperial household northward into captivity. The contemporaneous record The Accounts of Jingkang (Jingkang baishi) documents the siege and the deportations in detail.',
+        source: {
+          externalId: 'src:accounts-of-jingkang',
+          name: 'The Accounts of Jingkang (靖康稗史箋證), contemporaneous record of the siege and Jin occupation of Kaifeng, 1127.',
+          url: 'https://en.wikipedia.org/wiki/Jingkang_incident',
+          publishedAt: '1130-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1345-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The event is recorded in the official History of Song (Song shi) compiled under the Yuan dynasty and is corroborated by Jin-dynasty records. The surviving Song court, under Emperor Gaozong, regroups south of the Yangtze as the Southern Song, making the fall of Kaifeng a fixed dynastic dividing line in Chinese historiography.',
+        source: {
+          externalId: 'src:song-shi-jingkang',
+          name: 'Toqto\'a et al. History of Song (Song shi), official dynastic history compiled 1343–1345, annals of Emperor Qinzong.',
+          url: 'https://en.wikipedia.org/wiki/History_of_Song',
+          publishedAt: '1345-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fourth Lateran Council — transubstantiation defined as dogma ────────────
+  {
+    externalId: 'trajectory:fourth-lateran-council-1215',
+    text: 'The Fourth Lateran Council, opened by Pope Innocent III on 11 November 1215, defined transubstantiation as Catholic dogma in its first canon, fixing the official doctrine of the Eucharist.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1215-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-11-11',
+        datePrecision: 'DAY',
+        reason: 'Innocent III convenes the largest church council of the Middle Ages, opening 11 November 1215 in the Lateran Basilica with some 400 bishops and 800 abbots. Its first canon, De fide catholica, employs the term "transubstantiated" to define how the bread and wine become the body and blood of Christ — the first conciliar use of the term as binding teaching. The 71 canons are entered into the papal registers and circulated to law schools.',
+        source: {
+          externalId: 'src:lateran-iv-canon-1',
+          name: 'Fourth Lateran Council, Canon 1 (De fide catholica), promulgated November 1215; preserved in the papal registers and conciliar collections.',
+          url: 'https://en.wikipedia.org/wiki/Fourth_Council_of_the_Lateran',
+          publishedAt: '1215-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1551-10-11',
+        datePrecision: 'DAY',
+        reason: 'The doctrine defined in 1215 is reaffirmed and elaborated by the Council of Trent (Session XIII, 11 October 1551), which canonically endorses "transubstantiation" as the fitting term for the Eucharistic change. The contemporaneous eyewitness account of Lateran IV (an anonymous German cleric\'s record) and Matthew Paris\'s illustrated chronicle independently attest the 1215 council, leaving its date and decrees settled.',
+        source: {
+          externalId: 'src:trent-session-13-transubstantiation',
+          name: 'Council of Trent, Session XIII, Decree on the Eucharist (11 October 1551), canon affirming transubstantiation.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Trent',
+          publishedAt: '1551-10-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Golden Bull of 1356 — imperial election procedure fixed ─────────────────
+  {
+    externalId: 'trajectory:golden-bull-1356',
+    text: 'The Golden Bull of 1356, promulgated by Emperor Charles IV (chapters 1–23 on 10 January 1356 at Nuremberg, chapters 24–31 on 25 December 1356 at Metz), fixed the procedure for electing the King of the Romans by seven named prince-electors deciding by majority.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1356-01-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1356-01-10',
+        datePrecision: 'DAY',
+        reason: 'At the Imperial Diet of Nuremberg, Charles IV issues the first 23 chapters of the Golden Bull on 10 January 1356; the remaining chapters follow at Metz on 25 December 1356. The decree names the seven prince-electors — Mainz, Cologne, Trier, Bohemia, the Palatinate, Saxony-Wittenberg, and Brandenburg — and rules that a majority of four votes suffices to elect the King of the Romans, ending the prior risk of disputed double elections.',
+        source: {
+          externalId: 'src:golden-bull-1356-text',
+          name: 'Golden Bull of 1356, original promulgated text (chapters 1–23, Nuremberg, 10 January 1356; chapters 24–31, Metz, 25 December 1356); manuscripts preserved in German and Austrian state archives.',
+          url: 'https://en.wikipedia.org/wiki/Golden_Bull_of_1356',
+          publishedAt: '1356-12-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1806-08-06',
+        datePrecision: 'DAY',
+        reason: 'The Golden Bull governs imperial elections as fundamental constitutional law of the Holy Roman Empire for 450 years, until the Empire\'s dissolution on 6 August 1806. Multiple original manuscript copies survive, and in 2013 UNESCO inscribed the Golden Bull on its Memory of the World register, confirming its text, dates, and authority as settled.',
+        source: {
+          externalId: 'src:golden-bull-unesco-mow',
+          name: 'UNESCO Memory of the World Register. "The Golden Bull — All seven originals and the King Wenceslaus\' luxury manuscript copy" (inscribed 2013).',
+          url: 'https://en.wikipedia.org/wiki/Golden_Bull_of_1356',
+          publishedAt: '2013-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
