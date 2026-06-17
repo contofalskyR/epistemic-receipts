@@ -29987,6 +29987,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — physics revolution, totalitarianism, war
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── de Broglie matter waves ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:de-broglie-matter-waves-1924',
+    text: 'Louis de Broglie proposed in his 1924 doctoral thesis that all matter has wave-like properties, with a wavelength inversely proportional to its momentum.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1924-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1924-11-01',
+        datePrecision: 'MONTH',
+        reason: 'De Broglie defends his doctoral thesis "Recherches sur la théorie des quanta" at the Sorbonne (Faculty of Sciences, University of Paris) in November 1924, extending wave–particle duality from light to all matter and predicting that a moving electron has an associated wavelength λ = h/p. The thesis committee, initially skeptical, forwards a copy to Einstein, who endorses the idea.',
+        source: {
+          externalId: 'src:de-broglie-biographical',
+          name: 'Louis de Broglie — Biographical; doctoral thesis "Recherches sur la théorie des quanta" (1924).',
+          url: 'https://en.wikipedia.org/wiki/Louis_de_Broglie',
+          publishedAt: '1924-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Davisson and Germer (1927) and, independently, G. P. Thomson observe electron diffraction, directly confirming the wave nature of matter that de Broglie predicted. The hypothesis is incorporated into Schrödinger\'s wave mechanics and becomes foundational to quantum theory.',
+        source: {
+          externalId: 'src:de-broglie-wave-confirmation',
+          name: 'Experimental confirmation of matter waves (electron diffraction, 1927); de Broglie hypothesis (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Matter_wave',
+          publishedAt: '1927-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1929-12-10',
+        datePrecision: 'DAY',
+        reason: 'De Broglie is awarded the 1929 Nobel Prize in Physics "for his discovery of the wave nature of electrons," institutionally ratifying the hypothesis less than five years after the thesis defense.',
+        source: {
+          externalId: 'src:de-broglie-nobel-1929',
+          name: 'The Nobel Prize in Physics 1929 — Louis de Broglie.',
+          url: 'https://en.wikipedia.org/wiki/Louis_de_Broglie',
+          publishedAt: '1929-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Domagk / Prontosil — first sulfonamide antibacterial ────────────────────
+  {
+    externalId: 'trajectory:domagk-prontosil-sulfonamide-1935',
+    text: 'Gerhard Domagk demonstrated that the dye Prontosil cures streptococcal infections in mice, establishing the first systemically effective antibacterial drug (a sulfonamide).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-02-15',
+        datePrecision: 'DAY',
+        reason: 'Domagk publishes "Ein Beitrag zur Chemotherapie der bakteriellen Infektionen" in Deutsche Medizinische Wochenschrift (15 February 1935), reporting that Prontosil protects mice against lethal streptococcal infection. It is the first chemical shown to cure systemic bacterial disease in a living animal.',
+        source: {
+          externalId: 'src:domagk-1935-dmw',
+          name: 'Domagk G. "Ein Beitrag zur Chemotherapie der bakteriellen Infektionen." Deutsche Medizinische Wochenschrift 61(7):250 (15 Feb 1935).',
+          url: 'https://en.wikipedia.org/wiki/Sulfanilamide',
+          publishedAt: '1935-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Researchers at the Pasteur Institute (the Tréfouël team) show that Prontosil is metabolized in vivo to sulfanilamide, the actual active agent — a cheap, unpatented compound. The finding is rapidly reproduced and sulfonamides enter clinical use worldwide, validating the discovery as a true therapeutic class.',
+        source: {
+          externalId: 'src:prontosil-sulfanilamide-active',
+          name: 'Identification of sulfanilamide as the active metabolite of Prontosil (Pasteur Institute, 1935); Sulfanilamide (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Sulfanilamide',
+          publishedAt: '1935-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'Domagk is awarded the 1939 Nobel Prize in Physiology or Medicine for the discovery of the antibacterial effects of Prontosil, institutionally ratifying the result (he was forced by the Nazi regime to decline at the time and received the medal in 1947).',
+        source: {
+          externalId: 'src:domagk-nobel-1939',
+          name: 'The Nobel Prize in Physiology or Medicine 1939 — Gerhard Domagk.',
+          url: 'https://en.wikipedia.org/wiki/Gerhard_Domagk',
+          publishedAt: '1939-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mukden Incident & Lytton Report ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:mukden-incident-lytton-1931',
+    text: 'The Mukden Incident of 18 September 1931 — an explosion on the South Manchuria Railway used by Japan\'s Kwantung Army as a pretext to invade Manchuria — was a staged provocation, not Chinese sabotage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-09-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1931-09-18',
+        datePrecision: 'DAY',
+        reason: 'At around 22:20 on 18 September 1931, a small charge explodes near a Japanese-controlled railway track near Mukden (Shenyang). Japan blames Chinese soldiers and the Kwantung Army immediately launches a full invasion of Manchuria. Competing accounts circulate: Japan asserts self-defense; China asserts unprovoked aggression.',
+        source: {
+          externalId: 'src:mukden-incident-overview',
+          name: 'Mukden Incident, 18 September 1931 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Mukden_Incident',
+          publishedAt: '1931-09-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1932-10-02',
+        datePrecision: 'DAY',
+        reason: 'The League of Nations Commission of Inquiry chaired by Lord Lytton publishes its report (2 October 1932), rejecting Japan\'s claim that the invasion and occupation were acts of self-defense and refusing to recognize the puppet state of Manchukuo. The international body settles the question of aggressor against the Japanese account.',
+        source: {
+          externalId: 'src:lytton-report-1932',
+          name: 'Report of the Lytton Commission, League of Nations (2 October 1932); Mukden Incident (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Lytton_Report',
+          publishedAt: '1932-10-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1933-02-24',
+        datePrecision: 'DAY',
+        reason: 'The League of Nations Assembly adopts the Lytton Report by a vote of 42–1 on 24 February 1933, formally condemning Japan. Japan announces its withdrawal from the League in protest, hardening the settled finding that the incident was a Japanese pretext for invasion.',
+        source: {
+          externalId: 'src:league-adopts-lytton',
+          name: 'League of Nations Assembly adopts Lytton Report (24 Feb 1933); Japan withdraws; Mukden Incident (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Mukden_Incident',
+          publishedAt: '1933-02-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lend-Lease Act ──────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:lend-lease-act-1941',
+    text: 'The United States enacted the Lend-Lease Act on 11 March 1941, authorizing the President to supply war materiel to Allied nations, effectively ending American neutrality in WWII.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1941-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-03-11',
+        datePrecision: 'DAY',
+        reason: 'President Franklin D. Roosevelt signs the Lend-Lease Act (Pub. L. 77–11) into law on 11 March 1941 after passage by both houses of Congress, empowering the U.S. to "sell, transfer title to, exchange, lease, lend" defense articles to any nation whose defense the President deems vital to U.S. security.',
+        source: {
+          externalId: 'src:lend-lease-act-1941',
+          name: 'Lend-Lease Act, Pub. L. 77–11, enacted 11 March 1941 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Lend-Lease',
+          publishedAt: '1941-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-09-02',
+        datePrecision: 'DAY',
+        reason: 'Over the course of the war the United States transfers some $50 billion in aid (roughly $690 billion in 2020 dollars) to the United Kingdom, USSR, China, and other Allies under the program, which operates continuously until shortly after the Japanese surrender. The Act\'s enactment and operation are an uncontested matter of public statutory and financial record.',
+        source: {
+          externalId: 'src:lend-lease-totals',
+          name: 'Lend-Lease aid totals and operation through the end of WWII (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Lend-Lease',
+          publishedAt: '1945-09-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bretton Woods Conference ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bretton-woods-conference-1944',
+    text: 'The Bretton Woods Conference (1–22 July 1944) established the International Monetary Fund and the International Bank for Reconstruction and Development, creating the postwar monetary order.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1944-07-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-07-22',
+        datePrecision: 'DAY',
+        reason: '730 delegates from all 44 Allied nations, meeting at the Mount Washington Hotel in Bretton Woods, New Hampshire, sign the Final Act of the United Nations Monetary and Financial Conference on 22 July 1944, agreeing the Articles of Agreement for the IMF and the IBRD (World Bank) and a system of gold-pegged exchange rates.',
+        source: {
+          externalId: 'src:bretton-woods-final-act',
+          name: 'Bretton Woods Conference, Final Act, 22 July 1944 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Bretton_Woods_Conference',
+          publishedAt: '1944-07-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-12-27',
+        datePrecision: 'DAY',
+        reason: 'The Articles of Agreement enter into force on 27 December 1945 when ratified by countries representing at least 80% of capital subscriptions; the IMF and IBRD are formally organized at the inaugural Savannah meeting in March 1946, making the Bretton Woods institutions an operating, ratified reality.',
+        source: {
+          externalId: 'src:bretton-woods-ratified',
+          name: 'Bretton Woods Articles of Agreement enter into force (27 Dec 1945); inaugural meeting Savannah 1946 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Bretton_Woods_system',
+          publishedAt: '1945-12-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
