@@ -41585,6 +41585,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): Internet, genomics, climate, COVID-19
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ILOVEYOU / Love Letter email worm (Manila, Philippines) ─────────────────
+  {
+    externalId: 'trajectory:iloveyou-love-letter-worm-2000',
+    text: 'On 4 May 2000 the "ILOVEYOU" (Love Letter) email worm — written in Manila, Philippines by Onel de Guzman — began spreading worldwide, infecting millions of computers within days and becoming one of the most damaging malware outbreaks recorded to that date.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-05-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-05-04',
+        datePrecision: 'DAY',
+        reason: 'The worm, originating in Manila, spreads westward through corporate email as the working day advances — first across Asia, then Europe, then North America. The CERT Coordination Center at Carnegie Mellon issues Advisory CA-2000-04 on 4 May 2000, identifying the malicious VBScript program that propagates via email attachments ("LOVE-LETTER-FOR-YOU.txt.vbs"), Windows file shares, and IRC. By the evening of 8 May CERT/CC reports more than 650 sites and over 500,000 systems affected.',
+        source: {
+          externalId: 'src:cert-ca-2000-04-love-letter',
+          name: 'CERT Advisory CA-2000-04 "Love Letter Worm," CERT Coordination Center, Carnegie Mellon Software Engineering Institute, released 4 May 2000.',
+          url: 'https://www.sei.cmu.edu/library/2000-cert-advisories/',
+          publishedAt: '2000-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2000-05-11',
+        datePrecision: 'DAY',
+        reason: 'Philippine investigators trace the worm to a Manila apartment within a week. Onel de Guzman, a dropout of AMA Computer College, appears at a press conference on 11 May 2000; criminal charges are later dropped because the Philippines had no law against writing malware at the time. De Guzman publicly confirmed authorship in subsequent interviews, settling the attribution that contemporaneous reporting had already established.',
+        source: {
+          externalId: 'src:iloveyou-attribution-de-guzman',
+          name: 'ILOVEYOU worm — origin, outbreak timeline, and attribution to Onel de Guzman of Manila.',
+          url: 'https://en.wikipedia.org/wiki/ILOVEYOU',
+          publishedAt: '2000-05-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wuhan cordon sanitaire — first COVID-19 city lockdown (China) ───────────
+  {
+    externalId: 'trajectory:wuhan-lockdown-2020',
+    text: 'On 23 January 2020 Chinese authorities imposed an unprecedented cordon sanitaire on Wuhan, suspending all outbound transport for a city of roughly 11 million people in an attempt to contain the novel coronavirus (COVID-19) outbreak.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-01-23',
+        datePrecision: 'DAY',
+        reason: 'At about 2 a.m. on 23 January 2020 the Wuhan epidemic command headquarters issues a public notice ordering that, from 10 a.m., all buses, railways, flights, and ferry services be suspended and residents not leave the city without authorization. The WHO described the measure as "unprecedented in public health history" while noting it was not a WHO recommendation.',
+        source: {
+          externalId: 'src:wuhan-lockdown-notice-2020',
+          name: 'COVID-19 lockdown in Wuhan — official transport-suspension notice, 23 January 2020; quarantine of roughly 11 million residents.',
+          url: 'https://en.wikipedia.org/wiki/COVID-19_lockdown_in_Wuhan',
+          publishedAt: '2020-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-04-08',
+        datePrecision: 'DAY',
+        reason: 'The lockdown is lifted on 8 April 2020 after 76 days, with outbound travel restored for residents holding a "green" health code. The fact, scope, and duration of the Wuhan quarantine are documented in Chinese government notices, WHO situation reports, and the global epidemiological literature, settling it as part of the public record.',
+        source: {
+          externalId: 'src:wuhan-lockdown-lifted-2020',
+          name: 'COVID-19 lockdown in Wuhan — lifting of outbound-travel controls effective 8 April 2020 after 76 days.',
+          url: 'https://en.wikipedia.org/wiki/COVID-19_lockdown_in_Wuhan',
+          publishedAt: '2020-04-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bitcoin genesis block mined ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bitcoin-genesis-block-2009',
+    text: 'On 3 January 2009 the pseudonymous Satoshi Nakamoto mined the Bitcoin "genesis block" (block 0), whose coinbase embedded the headline "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks," launching the first decentralized cryptocurrency blockchain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2009-01-03',
+        datePrecision: 'DAY',
+        reason: 'Block 0 of the Bitcoin blockchain is mined with a timestamp of 03 January 2009, 18:15:05 UTC. Its coinbase transaction encodes the text "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks," referencing that day\'s newspaper headline and providing a verifiable earliest-creation timestamp. The implementation followed the Bitcoin whitepaper Nakamoto had circulated on 31 October 2008.',
+        source: {
+          externalId: 'src:bitcoin-genesis-block-explorer',
+          name: 'Bitcoin block 0 (genesis block) — timestamp 3 January 2009 and coinbase message, public blockchain explorer.',
+          url: 'https://www.blockchain.com/explorer/blocks/btc/0',
+          publishedAt: '2009-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '2009-01-09',
+        datePrecision: 'DAY',
+        reason: 'Nakamoto releases the Bitcoin v0.1 software and block 1 is mined on 9 January 2009, beginning the continuous chain built on top of the genesis block. Because every full node independently validates and stores the genesis block, its hash and contents are cryptographically fixed and reproducible by anyone — the block is an immutable, permanently verifiable record.',
+        source: {
+          externalId: 'src:bitcoin-genesis-block-immutable',
+          name: 'Bitcoin block 0 — cryptographically immutable root of the blockchain, independently verifiable by every full node.',
+          url: 'https://www.blockchain.com/explorer/blocks/btc/0',
+          publishedAt: '2009-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IPCC First Assessment Report — Working Group I scientific assessment ────
+  {
+    externalId: 'trajectory:ipcc-first-assessment-report-1990',
+    text: 'In August 1990 the IPCC approved its First Assessment Report, whose Working Group I scientific assessment concluded it was "certain" that human activities were substantially increasing atmospheric concentrations of greenhouse gases, enhancing the greenhouse effect and warming the Earth\'s surface.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The IPCC Working Group I assessment, approved in August 1990, states scientists are "certain" that emissions from human activities are substantially increasing atmospheric greenhouse-gas concentrations, attributes over half the enhanced greenhouse effect to CO2, and projects a global-mean warming of about 0.3°C per decade under "business-as-usual." It cautions that unequivocal detection of the enhanced effect "is not likely for a decade or more."',
+        source: {
+          externalId: 'src:ipcc-far-wg1-1990',
+          name: 'IPCC. Climate Change: The IPCC 1990 Scientific Assessment. Working Group I Policymaker Summary, approved August 1990.',
+          url: 'https://www.ipcc.ch/report/climate-change-the-ipcc-1990-and-1992-assessments/',
+          publishedAt: '1990-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-08-09',
+        datePrecision: 'DAY',
+        reason: 'The FAR\'s core finding — that human emissions are raising greenhouse-gas levels and will warm the surface — was confirmed and progressively strengthened across the Second through Sixth Assessment Reports. By the AR6 Working Group I report of 9 August 2021 the once-hedged detection caveat was resolved into the flat statement that it is "unequivocal that human influence has warmed the atmosphere, ocean and land," settling the 1990 conclusion.',
+        source: {
+          externalId: 'src:ipcc-far-confirmed-ar6-2021',
+          name: 'IPCC AR6 Working Group I press release, 9 August 2021 — confirmation that human-caused warming is unequivocal.',
+          url: 'https://www.ipcc.ch/2021/08/09/ar6-wg1-20210809-pr/',
+          publishedAt: '2021-08-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── International HapMap Project Phase I — human haplotype map ───────────────
+  {
+    externalId: 'trajectory:hapmap-phase-one-2005',
+    text: 'On 27 October 2005 the International HapMap Consortium published Phase I of the human haplotype map in Nature, characterizing patterns of common genetic variation across populations sampled in Nigeria, Japan, China, and the United States.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-27',
+        datePrecision: 'DAY',
+        reason: 'The International HapMap Consortium publishes "A haplotype map of the human genome" in Nature (vol. 437, pp. 1299–1320), reporting over one million single-nucleotide polymorphisms genotyped across four populations: Yoruba from Ibadan, Nigeria; Han Chinese from Beijing; Japanese from Tokyo; and Utah residents of European ancestry. The map characterizes linkage-disequilibrium structure across the genome.',
+        source: {
+          externalId: 'src:hapmap-phase1-nature-2005',
+          name: 'The International HapMap Consortium. "A haplotype map of the human genome." Nature 437, 1299–1320, 27 October 2005.',
+          url: 'https://en.wikipedia.org/wiki/International_HapMap_Project',
+          publishedAt: '2005-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-10-18',
+        datePrecision: 'DAY',
+        reason: 'The consortium publishes a second-generation map of over 3.1 million SNPs in Nature on 18 October 2007, confirming and extending the Phase I results. The HapMap resource became the standard reference for tagging common variation and enabled the first wave of genome-wide association studies, establishing the map as a settled part of the genomic record.',
+        source: {
+          externalId: 'src:hapmap-phase2-confirmation-2007',
+          name: 'The International HapMap Consortium. "A second generation human haplotype map of over 3.1 million SNPs." Nature, 18 October 2007; foundation for genome-wide association studies.',
+          url: 'https://en.wikipedia.org/wiki/International_HapMap_Project',
+          publishedAt: '2007-10-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
