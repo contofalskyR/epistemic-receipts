@@ -37799,6 +37799,223 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA ADDITIONS (1990–present) — emerging disease & climate science
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First human case of avian influenza A(H5N1), Hong Kong 1997 ─────────────
+  {
+    externalId: 'trajectory:h5n1-first-human-case-hong-kong-1997',
+    text: 'The first confirmed human infection with avian influenza A(H5N1) was a 3-year-old boy in Hong Kong who died on 21 May 1997; the virus was identified as the H5N1 subtype in August 1997.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-05-21',
+        datePrecision: 'DAY',
+        reason: 'A previously healthy 3-year-old boy in Hong Kong developed an influenza-like illness and died on 21 May 1997 with complications consistent with Reye syndrome. A specimen was identified locally as influenza type A in May, but the isolate could not be subtyped with the standard reagents then available, leaving the cause of death an open question.',
+        source: {
+          externalId: 'src:eid-hong-kong-1997-h5n1',
+          name: 'Snacken R, et al. "The Next Influenza Pandemic: Lessons from Hong Kong, 1997." Emerging Infectious Diseases 5(2), CDC, April 1999.',
+          url: 'https://wwwnc.cdc.gov/eid/article/5/2/99-0202_article',
+          publishedAt: '1999-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-08-01',
+        datePrecision: 'MONTH',
+        reason: 'By August 1997, further investigation with serologic and molecular techniques in the Netherlands and the United States had confirmed that the isolate was A/Hong Kong/156/97 (H5N1) — the first time an avian influenza virus had been shown to infect and kill a human directly, placing the finding on the international scientific record.',
+        source: {
+          externalId: 'src:eid-hong-kong-1997-h5n1-identification',
+          name: 'Snacken R, et al. "The Next Influenza Pandemic: Lessons from Hong Kong, 1997." Emerging Infectious Diseases 5(2), CDC, April 1999.',
+          url: 'https://wwwnc.cdc.gov/eid/article/5/2/99-0202_article',
+          publishedAt: '1999-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-01-16',
+        datePrecision: 'DAY',
+        reason: 'Subbarao and colleagues published the full characterisation of A/Hong Kong/156/97 in Science on 16 January 1998, demonstrating that all eight RNA segments were of avian origin and that the haemagglutinin carried the multiple basic amino acids characteristic of highly pathogenic avian influenza. The avian-to-human transmission was thereby settled in the literature.',
+        source: {
+          externalId: 'src:subbarao-science-1998-h5n1',
+          name: 'Subbarao K, et al. "Characterization of an Avian Influenza A (H5N1) Virus Isolated from a Child with a Fatal Respiratory Illness." Science 279(5349):393–396, 16 January 1998.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9430591/',
+          publishedAt: '1998-01-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nipah virus identified, Malaysia 1998–1999 ──────────────────────────────
+  {
+    externalId: 'trajectory:nipah-virus-identified-malaysia-1999',
+    text: 'A previously unknown paramyxovirus (later named Nipah virus) was identified as the cause of a fatal encephalitis outbreak among pig farmers in Malaysia; the CDC reported the new Hendra-like virus on 9 April 1999.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-09-29',
+        datePrecision: 'DAY',
+        reason: 'From 29 September 1998 an outbreak of febrile encephalitis spread among pig farmers in peninsular Malaysia. It was initially attributed to Japanese encephalitis, but the pattern of disease — affecting adult men in close contact with pigs, many of whom had been vaccinated against JE — did not fit, leaving the causative agent an open question.',
+        source: {
+          externalId: 'src:mmwr-hendra-like-malaysia-pubmed',
+          name: 'CDC. "Outbreak of Hendra-Like Virus — Malaysia and Singapore, 1998-1999." MMWR 48(13):265–269 (PubMed 10227800).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10227800/',
+          publishedAt: '1999-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-04-09',
+        datePrecision: 'DAY',
+        reason: 'The CDC MMWR of 9 April 1999 reported that a previously unrecognised paramyxovirus, related to but distinct from the Australian Hendra virus, was associated with the outbreak. It documented 229 cases of encephalitis (111 fatal) in Malaysia during 29 September 1998–4 April 1999, and 11 cases among abattoir workers in Singapore, placing the new pathogen on the official record.',
+        source: {
+          externalId: 'src:mmwr-hendra-like-malaysia-1999',
+          name: 'CDC. "Outbreak of Hendra-Like Virus — Malaysia and Singapore, 1998-1999." MMWR 48(13):265–269, 9 April 1999.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00056866.htm',
+          publishedAt: '1999-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-05-26',
+        datePrecision: 'DAY',
+        reason: 'Chua and colleagues published the full isolation and characterisation of the new virus in Science on 26 May 2000, formally naming it Nipah virus after the Malaysian village of Sungai Nipah and confirming it as a distinct, deadly emergent paramyxovirus with fruit bats as the natural reservoir.',
+        source: {
+          externalId: 'src:chua-science-2000-nipah',
+          name: 'Chua KB, et al. "Nipah Virus: A Recently Emergent Deadly Paramyxovirus." Science 288(5470):1432–1435, 26 May 2000.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10827955/',
+          publishedAt: '2000-05-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO declares Zika / microcephaly a PHEIC, 2016 ──────────────────────────
+  {
+    externalId: 'trajectory:zika-pheic-microcephaly-2016',
+    text: 'On 1 February 2016 the World Health Organization declared the cluster of microcephaly and neurological disorders associated with Zika virus to be a Public Health Emergency of International Concern.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-11-11',
+        datePrecision: 'DAY',
+        reason: 'After Zika virus was first confirmed circulating in Brazil in May 2015, north-eastern states reported a sharp rise in babies born with microcephaly. On 11 November 2015 Brazil declared a national public health emergency, but whether Zika infection caused the birth defects remained an open, contested question.',
+        source: {
+          externalId: 'src:zika-brazil-microcephaly-2015',
+          name: '2015–2016 Zika virus epidemic — Brazil declares national public health emergency over microcephaly surge, 11 November 2015.',
+          url: 'https://en.wikipedia.org/wiki/2015%E2%80%932016_Zika_virus_epidemic',
+          publishedAt: '2015-11-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-02-01',
+        datePrecision: 'DAY',
+        reason: 'Following an Emergency Committee convened under the International Health Regulations, WHO Director-General Margaret Chan declared on 1 February 2016 that the recent cluster of microcephaly and other neurological disorders reported in Brazil constituted a Public Health Emergency of International Concern — the formal international record of the threat, even though causality was still under investigation.',
+        source: {
+          externalId: 'src:who-zika-pheic-2016',
+          name: 'WHO. "WHO Director-General summarizes the outcome of the Emergency Committee regarding clusters of microcephaly and Guillain-Barré syndrome," 1 February 2016.',
+          url: 'https://www.who.int/news/item/01-02-2016-who-director-general-summarizes-the-outcome-of-the-emergency-committee-regarding-clusters-of-microcephaly-and-guillain-barr%C3%A9-syndrome',
+          publishedAt: '2016-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-04-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 April 2016 a CDC review by Rasmussen and colleagues, published in the New England Journal of Medicine, concluded that the accumulated evidence satisfied the criteria for causality: Zika virus infection during pregnancy is a cause of microcephaly and other severe brain anomalies. The causal link was thereby settled in the scientific literature.',
+        source: {
+          externalId: 'src:rasmussen-nejm-2016-zika-causality',
+          name: 'Rasmussen SA, et al. "Zika Virus and Birth Defects — Reviewing the Evidence for Causality." New England Journal of Medicine, 13 April 2016.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMsr1604338',
+          publishedAt: '2016-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IPCC AR6 WG1: human influence "unequivocal", 2021 ───────────────────────
+  {
+    externalId: 'trajectory:ipcc-ar6-wg1-unequivocal-2021',
+    text: 'On 9 August 2021 the IPCC released the Working Group I contribution to its Sixth Assessment Report, stating it is "unequivocal that human influence has warmed the atmosphere, ocean and land."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-09-27',
+        datePrecision: 'DAY',
+        reason: 'The Working Group I report of the Fifth Assessment Report (AR5), approved in Stockholm on 27 September 2013, stated that it was "extremely likely" (>95% probability) that human influence had been the dominant cause of observed warming since the mid-20th century — a strong but still probabilistically hedged attribution.',
+        source: {
+          externalId: 'src:ipcc-ar5-wg1-2013',
+          name: 'IPCC. Climate Change 2013: The Physical Science Basis. Working Group I contribution to AR5, 27 September 2013.',
+          url: 'https://www.ipcc.ch/report/ar5/wg1/',
+          publishedAt: '2013-09-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-08-09',
+        datePrecision: 'DAY',
+        reason: 'The Working Group I contribution to the Sixth Assessment Report (AR6), released on 9 August 2021, dropped the probabilistic qualifier and stated flatly that it is "unequivocal that human influence has warmed the atmosphere, ocean and land," attributing approximately 1.1°C of warming since 1850–1900 to human activity. The strengthening from "extremely likely" to "unequivocal" marks the attribution claim as settled.',
+        source: {
+          externalId: 'src:ipcc-ar6-wg1-2021',
+          name: 'IPCC. "Climate change widespread, rapid, and intensifying," AR6 Working Group I press release, 9 August 2021.',
+          url: 'https://www.ipcc.ch/2021/08/09/ar6-wg1-20210809-pr/',
+          publishedAt: '2021-08-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
