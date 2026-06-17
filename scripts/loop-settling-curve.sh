@@ -77,6 +77,9 @@ TITLES:none"
     bash "$NOTIFY" "🌊 Settling curve +${ADDED} new trajectories (run #${RUN})
 📚 ${TITLES}
 Total was ${CURRENT_COUNT} claimIds"
+    # Archive log after every successful addition
+    mkdir -p "$PROJECT_DIR/logs"
+    cp "$LOG" "$PROJECT_DIR/logs/settling-curve-$(date +%Y-%m-%d).log"
   fi
 
   # Minimal error-recovery buffer; each claude call takes 5-20 min so this is noise

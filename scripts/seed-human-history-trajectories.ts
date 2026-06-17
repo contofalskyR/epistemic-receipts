@@ -44105,6 +44105,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — space race, civil rights, Vietnam,
+  // molecular biology, computing
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Watson & Crick publish the DNA double helix ─────────────────────────────
+  {
+    externalId: 'trajectory:watson-crick-dna-double-helix-1953',
+    text: 'On 25 April 1953 Watson and Crick published their model of the DNA double helix in Nature, establishing the molecular structure of the genetic material.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-04-25',
+        datePrecision: 'DAY',
+        reason: 'James Watson and Francis Crick published "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid" in Nature vol. 171, pp. 737–738, proposing a right-handed double helix with antiparallel sugar-phosphate backbones and complementary base pairing (A–T, G–C). The same issue carried supporting X-ray diffraction papers from Wilkins and from Franklin & Gosling at King\'s College London.',
+        source: {
+          externalId: 'src:watson-crick-nature-1953',
+          name: 'Watson J. D., Crick F. H. C. "Molecular Structure of Nucleic Acids: A Structure for Deoxyribose Nucleic Acid." Nature 171, 737–738 (25 April 1953).',
+          url: 'https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid',
+          publishedAt: '1953-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The proposed structure\'s prediction of semiconservative replication was confirmed by the Meselson–Stahl experiment (1958), and the helix model became the universally accepted foundation of molecular biology. Watson, Crick and Wilkins shared the 1962 Nobel Prize in Physiology or Medicine for the discovery.',
+        source: {
+          externalId: 'src:meselson-stahl-1958',
+          name: 'Meselson M., Stahl F. W. "The Replication of DNA in Escherichia coli." PNAS 44(7):671–682 (1958), confirming semiconservative replication predicted by the double helix.',
+          url: 'https://en.wikipedia.org/wiki/Meselson%E2%80%93Stahl_experiment',
+          publishedAt: '1958-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Yuri Gagarin becomes the first human in space ───────────────────────────
+  {
+    externalId: 'trajectory:gagarin-first-human-spaceflight-1961',
+    text: 'On 12 April 1961, aboard Vostok 1, Yuri Gagarin became the first human to travel into outer space and orbit the Earth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1961-04-12',
+        datePrecision: 'DAY',
+        reason: 'Vostok 1 launched from Baikonur Cosmodrome at 06:07 UTC carrying Soviet Air Force pilot Yuri Gagarin, who completed a single orbit of the Earth at altitudes of 181–327 km over 108 minutes before ejecting and parachuting to a landing near Engels in the Saratov region. Soviet state media (TASS) announced the flight the same day.',
+        source: {
+          externalId: 'src:vostok-1-flight-1961',
+          name: 'Vostok 1 — first crewed spaceflight, Yuri Gagarin, 12 April 1961.',
+          url: 'https://en.wikipedia.org/wiki/Vostok_1',
+          publishedAt: '1961-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Fédération Aéronautique Internationale (FAI) recognized the flight as the first crewed spaceflight, and the achievement was corroborated independently by Western tracking and the global press. 12 April is internationally commemorated as the Day of Human Space Flight (declared by the UN General Assembly in 2011).',
+        source: {
+          externalId: 'src:fai-yuri-gagarin-records',
+          name: 'Fédération Aéronautique Internationale recognition of Gagarin\'s 12 April 1961 spaceflight records; UN International Day of Human Space Flight.',
+          url: 'https://en.wikipedia.org/wiki/Yuri_Gagarin',
+          publishedAt: '1961-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── March on Washington — "I Have a Dream" ──────────────────────────────────
+  {
+    externalId: 'trajectory:march-on-washington-1963',
+    text: 'On 28 August 1963 some 250,000 people gathered at the March on Washington for Jobs and Freedom, where Martin Luther King Jr. delivered the "I Have a Dream" speech.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1963-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-08-28',
+        datePrecision: 'DAY',
+        reason: 'Organized by A. Philip Randolph and Bayard Rustin, the march drew an estimated 200,000–300,000 demonstrators to the National Mall in Washington, D.C. From the steps of the Lincoln Memorial, Martin Luther King Jr. delivered his "I Have a Dream" address as the final speaker. The event was broadcast live on national television.',
+        source: {
+          externalId: 'src:march-on-washington-1963',
+          name: 'March on Washington for Jobs and Freedom, 28 August 1963.',
+          url: 'https://en.wikipedia.org/wiki/March_on_Washington_for_Jobs_and_Freedom',
+          publishedAt: '1963-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The march is broadly credited with building momentum for the Civil Rights Act of 1964, and contemporaneous film, photographs and audio are preserved in the National Archives. King\'s "I Have a Dream" recording was added to the U.S. National Recording Registry in 2002, cementing the event\'s documented place in the historical record.',
+        source: {
+          externalId: 'src:national-recording-registry-dream',
+          name: 'Library of Congress National Recording Registry — "I Have a Dream" speech (added 2002).',
+          url: 'https://en.wikipedia.org/wiki/I_Have_a_Dream',
+          publishedAt: '2002-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gulf of Tonkin — the 4 August 1964 "second attack" ──────────────────────
+  {
+    externalId: 'trajectory:gulf-of-tonkin-second-attack-1964',
+    text: 'The reported 4 August 1964 second North Vietnamese attack on U.S. destroyers in the Gulf of Tonkin — used to justify the Gulf of Tonkin Resolution — was later determined never to have occurred.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-08-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 August 1964 the destroyers USS Maddox and USS Turner Joy reported a second attack by North Vietnamese torpedo boats in the Gulf of Tonkin (following a genuine engagement on 2 August). President Johnson announced the attack to the nation, and on 7 August Congress passed the Gulf of Tonkin Resolution authorizing escalation of the Vietnam War.',
+        source: {
+          externalId: 'src:gulf-of-tonkin-incident-1964',
+          name: 'Gulf of Tonkin incident, 2–4 August 1964; Gulf of Tonkin Resolution (7 August 1964).',
+          url: 'https://en.wikipedia.org/wiki/Gulf_of_Tonkin_incident',
+          publishedAt: '1964-08-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-11-30',
+        datePrecision: 'MONTH',
+        reason: 'In November 2005 the NSA declassified an internal historical study by Robert J. Hanyok concluding that no North Vietnamese vessels were present on 4 August and that signals-intelligence reports had been skewed to support the case for an attack. The finding aligned with earlier admissions — Robert McNamara (2003) and Vietnamese General Võ Nguyên Giáp (1995) — that the 4 August attack did not happen.',
+        source: {
+          externalId: 'src:nsa-hanyok-tonkin-2005',
+          name: 'Hanyok R. J. "Skunks, Bogies, Silent Hounds, and the Flying Fish: The Gulf of Tonkin Mystery, 2–4 August 1964." Cryptologic Quarterly; NSA declassified release, November 2005.',
+          url: 'https://en.wikipedia.org/wiki/Gulf_of_Tonkin_incident',
+          publishedAt: '2005-11-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First message sent over ARPANET ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:arpanet-first-message-1969',
+    text: 'On 29 October 1969 the first host-to-host message was transmitted over ARPANET, from UCLA to the Stanford Research Institute — the practical birth of packet-switched computer networking.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-10-29',
+        datePrecision: 'DAY',
+        reason: 'From Boelter Hall room 3420 at UCLA, student programmer Charley Kline attempted to log in to the Stanford Research Institute SDS 940 over the new ARPANET. The SRI host crashed after two characters, so the first message successfully transmitted host-to-host was "lo." The attempt and its time (29 October 1969, ~22:30 PST) were recorded in UCLA\'s IMP log.',
+        source: {
+          externalId: 'src:arpanet-first-message-1969',
+          name: 'ARPANET — first host-to-host message, UCLA to SRI, 29 October 1969 (logged by Charley Kline).',
+          url: 'https://en.wikipedia.org/wiki/ARPANET',
+          publishedAt: '1969-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-12-05',
+        datePrecision: 'DAY',
+        reason: 'By 5 December 1969 the initial four-node ARPANET (UCLA, SRI, UC Santa Barbara, University of Utah) was fully operational, and the network\'s growth is documented in RFCs and IMP logs. ARPANET is now universally recognized as the direct technical ancestor of the Internet.',
+        source: {
+          externalId: 'src:arpanet-four-node-1969',
+          name: 'ARPANET initial four-node network operational by December 1969; documented in contemporaneous RFCs and IMP logs.',
+          url: 'https://en.wikipedia.org/wiki/ARPANET',
+          publishedAt: '1969-12-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
