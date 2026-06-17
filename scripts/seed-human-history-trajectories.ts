@@ -31039,6 +31039,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): church union, Ottoman conquests, exploration, microscopy
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Council of Florence — decree of union "Laetentur Caeli" ─────────────────
+  {
+    externalId: 'trajectory:council-florence-union-1439',
+    text: 'The decree "Laetentur Caeli," proclaiming the reunion of the Latin (Roman Catholic) and Greek (Byzantine Orthodox) churches, was promulgated at the Council of Florence on 6 July 1439.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1439-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1439-07-06',
+        datePrecision: 'DAY',
+        reason: 'The bull of union, signed by Pope Eugene IV and the Byzantine Emperor John VIII Palaiologos, is read aloud in Latin and Greek in the cathedral of Florence, declaring the schism healed and the two churches reunited on terms accepting the Filioque and papal primacy. The decree text survives in the conciliar acts.',
+        source: {
+          externalId: 'src:laetentur-caeli-1439',
+          name: 'Bull of Union of the Greeks "Laetentur Caeli," Council of Florence, 6 July 1439 (conciliar acts).',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Florence',
+          publishedAt: '1439-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1484-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The union is broadly rejected on the Greek side by monks, clergy and laity; it is never effectively implemented. After the fall of Constantinople in 1453 the Ottomans install an anti-unionist patriarch (Gennadios Scholarios), and a Synod of Constantinople in 1484 formally repudiates the Florentine union. It remains unimplemented by the Orthodox churches.',
+        source: {
+          externalId: 'src:florence-union-rejected',
+          name: 'Council of Florence — rejection of the union by the Eastern church and the 1484 Synod of Constantinople. Encyclopædia Britannica / conciliar history.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Florence',
+          publishedAt: '1484-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historiography treats both the 6 July 1439 promulgation and the subsequent non-reception of the union as documented facts, preserved in the conciliar acts and in Greek and Latin sources. Debate concerns the theology and politics of the union, not whether it was proclaimed and later repudiated.',
+        source: {
+          externalId: 'src:florence-historiography',
+          name: 'Council of Florence — scholarly synthesis of the union decree and its aftermath. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Council-of-Florence',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Marj Dabiq — Ottoman conquest of Mamluk Syria ─────────────────
+  {
+    externalId: 'trajectory:battle-of-marj-dabiq-1516',
+    text: 'The Ottoman army under Sultan Selim I decisively defeated the Mamluk Sultanate at the Battle of Marj Dabiq, north of Aleppo, on 24 August 1516; the Mamluk Sultan Qansuh al-Ghuri died during the rout, opening Syria and Egypt to Ottoman conquest.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1516-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1516-08-24',
+        datePrecision: 'DAY',
+        reason: 'Ottoman field artillery and arquebusiers break the Mamluk heavy cavalry on the plain of Marj Dabiq. The aged Sultan Qansuh al-Ghuri collapses and dies during the rout, his army shattered partly through the defection of the Aleppo governor Kha\'ir Bey. The battle is recorded by the contemporary Egyptian chronicler Ibn Iyas in Bada\'i al-zuhur.',
+        source: {
+          externalId: 'src:ibn-iyas-marj-dabiq',
+          name: 'Ibn Iyas. Bada\'i al-zuhur fi waqa\'i al-duhur (contemporary Egyptian chronicle recording the Mamluk defeat at Marj Dabiq), early 16th century.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Marj_Dabiq',
+          publishedAt: '1516-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1517-01-22',
+        datePrecision: 'DAY',
+        reason: 'Ottoman and Arabic chronicles agree on the date, location and outcome. The victory hands Selim I control of Syria and is followed by the conquest of Egypt at the Battle of Ridaniya on 22 January 1517, ending the Mamluk Sultanate. The occurrence of the battle is undisputed in the historiography.',
+        source: {
+          externalId: 'src:marj-dabiq-britannica',
+          name: 'Battle of Marj Dabiq and the Ottoman–Mamluk War of 1516–1517. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Battle-of-Marj-Dabiq',
+          publishedAt: '1517-01-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jacques Cartier plants a cross at Gaspé, claiming Canada for France ──────
+  {
+    externalId: 'trajectory:cartier-gaspe-cross-1534',
+    text: 'On 24 July 1534, Jacques Cartier erected a cross at Gaspé Bay bearing the arms of France, formally claiming the territory (the future New France) for King Francis I.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1534-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1534-07-24',
+        datePrecision: 'DAY',
+        reason: 'During his first voyage, Cartier raises a large wooden cross inscribed "Vive le Roy de France" at Gaspé before a party of St. Lawrence Iroquoians, whose chief Donnacona objects to the act of possession. The cross-planting and the date are recorded in the surviving relation of Cartier\'s first voyage.',
+        source: {
+          externalId: 'src:cartier-first-voyage-relation',
+          name: 'Relation of the first voyage of Jacques Cartier, 1534 (Brief récit; planting of the cross at Gaspé).',
+          url: 'https://en.wikipedia.org/wiki/Jacques_Cartier',
+          publishedAt: '1534-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The voyage relation is an established primary source, and the cross-planting at Gaspé is treated by historians as the symbolic foundation of French territorial claims in North America. The event and its date are not disputed; debate concerns its legal and symbolic significance.',
+        source: {
+          externalId: 'src:cartier-canadian-encyclopedia',
+          name: 'Jacques Cartier — first voyage and the cross at Gaspé. The Canadian Encyclopedia.',
+          url: 'https://www.thecanadianencyclopedia.ca/en/article/jacques-cartier',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Great Siege of Malta — Ottoman assault repulsed ─────────────────────────
+  {
+    externalId: 'trajectory:great-siege-malta-1565',
+    text: 'The Ottoman siege of Malta, begun on 18 May 1565, was broken in early September 1565 when the Ottoman army abandoned the island after the arrival of a Spanish-Sicilian relief force, leaving the Knights Hospitaller in control.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1565-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1565-05-18',
+        datePrecision: 'DAY',
+        reason: 'An Ottoman expeditionary force under Mustafa Pasha and the admiral Piyale Pasha lands on Malta and lays siege to the strongholds of the Knights Hospitaller, capturing Fort St. Elmo after a costly assault. The siege is recorded in the eyewitness diary of Francesco Balbi di Correggio, a soldier in the garrison.',
+        source: {
+          externalId: 'src:balbi-siege-malta-1565',
+          name: 'Francesco Balbi di Correggio. La verdadera relación de todo lo que el año de 1565 ha sucedido en la isla de Malta (eyewitness account of the siege), 1568.',
+          url: 'https://en.wikipedia.org/wiki/Great_Siege_of_Malta',
+          publishedAt: '1568-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1565-09-13',
+        datePrecision: 'DAY',
+        reason: 'A relief force (the Gran Soccorso) from Sicily lands on 7 September; the depleted Ottoman army embarks its artillery and withdraws from the island by 13 September. News of the lifting of the siege is celebrated across Catholic Europe, and the Ottoman repulse is recorded in both Christian and Ottoman accounts.',
+        source: {
+          externalId: 'src:malta-siege-britannica',
+          name: 'Siege of Malta (1565) — Ottoman withdrawal and the Christian relief. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Siege-of-Malta-1565',
+          publishedAt: '1565-09-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Robert Hooke's Micrographia — the first microscopical atlas ─────────────
+  {
+    externalId: 'trajectory:hooke-micrographia-1665',
+    text: 'Robert Hooke published Micrographia in January 1665, the first major book of microscopical observations and the first to use the term "cell" for the basic compartments of living tissue.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1665-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1665-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Published under the aegis of the Royal Society, Micrographia presents Hooke\'s detailed engravings of fleas, lice, cork and other specimens seen through the microscope. Examining a thin slice of cork, Hooke names its box-like compartments "cells" because they remind him of the cells of a monastery — the first use of the term in biology. Samuel Pepys records reading the book on 21 January 1665.',
+        source: {
+          externalId: 'src:hooke-micrographia-1665',
+          name: 'Robert Hooke. Micrographia: or some Physiological Descriptions of Minute Bodies made by Magnifying Glasses. London: Royal Society, January 1665.',
+          url: 'https://en.wikipedia.org/wiki/Micrographia',
+          publishedAt: '1665-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1839-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hooke\'s observations and his coinage of the term "cell" are established facts of the scientific record. The terminology is carried forward into the cell theory of Schleiden and Schwann (1838–1839) and underpins modern biology. The date and content of Micrographia are not disputed.',
+        source: {
+          externalId: 'src:micrographia-britannica',
+          name: 'Micrographia and the origin of the biological term "cell." Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/biography/Robert-Hooke',
+          publishedAt: '1839-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
