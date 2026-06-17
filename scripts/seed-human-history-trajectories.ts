@@ -28060,6 +28060,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — ADDENDUM (multi-messenger astronomy, lunar far side,
+  // nuclear monitoring, complete genome, planetary-scale eruption)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── GW170817: gravitational waves + light from a neutron-star merger ─────────
+  {
+    externalId: 'trajectory:gw170817-neutron-star-merger-2017',
+    text: 'On 17 August 2017 the LIGO and Virgo detectors observed GW170817, gravitational waves from the merger of two neutron stars, together with an electromagnetic counterpart — the first cosmic event seen in both gravitational waves and light, and direct evidence that such mergers forge heavy elements like gold.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-08-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-08-17',
+        datePrecision: 'DAY',
+        reason: 'At 12:41 UTC the two LIGO detectors and Virgo registered a ~100-second gravitational-wave chirp consistent with two inspiralling neutron stars, and the Fermi Gamma-ray Burst Monitor independently detected a short gamma-ray burst (GRB 170817A) about 1.7 seconds later. The near-coincidence triggered a worldwide follow-up campaign, but the localisation and astrophysical interpretation were not yet confirmed.',
+        source: {
+          externalId: 'src:ligo-gw170817-detection-2017',
+          name: 'LIGO Scientific Collaboration. "GW170817: Gravitational Waves from Neutron Star Merger" — observed 17 August 2017.',
+          url: 'http://www.ligo.org/detections/gw170817/',
+          publishedAt: '2017-08-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-10-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 October 2017 the collaborations announced the joint detection: roughly 70 ground- and space-based observatories had pinpointed the source in galaxy NGC 4993 and tracked an optical/infrared "kilonova" whose spectra showed the radioactive decay of freshly synthesised heavy elements. The multi-messenger agreement settled neutron-star mergers as a site of r-process nucleosynthesis and as standard sirens for measuring cosmic expansion.',
+        source: {
+          externalId: 'src:abbott-multimessenger-gw170817-2017',
+          name: 'Abbott BP et al. "Multi-messenger Observations of a Binary Neutron Star Merger." Astrophysical Journal Letters 848, L12 (16 October 2017).',
+          url: 'https://iopscience.iop.org/article/10.3847/2041-8213/aa91c9',
+          publishedAt: '2017-10-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chang'e-6: first samples returned from the Moon's far side (China) ───────
+  {
+    externalId: 'trajectory:change6-lunar-farside-sample-return-2024',
+    text: 'China\'s Chang\'e-6 mission returned the first-ever samples from the far side of the Moon, with its capsule landing in Inner Mongolia on 25 June 2024 carrying 1,935.3 grams of material collected from the South Pole–Aitken basin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2024-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-05-03',
+        datePrecision: 'DAY',
+        reason: 'The China National Space Administration launched Chang\'e-6 aboard a Long March 5 from Wenchang on 3 May 2024. No mission had ever retrieved physical samples from the lunar far side, which is never visible from Earth and requires a relay satellite for communication; whether the landing, sampling, far-side ascent and Earth return would all succeed was an open question.',
+        source: {
+          externalId: 'src:change6-eos-farside-2024',
+          name: 'Eos (AGU). "First Samples from the Moon\'s Farside Return on Chang\'e-6" — launch 3 May 2024.',
+          url: 'https://eos.org/articles/first-samples-from-the-moons-farside-return-on-change-6',
+          publishedAt: '2024-06-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-06-25',
+        datePrecision: 'DAY',
+        reason: 'The return capsule landed in Siziwang Banner, Inner Mongolia, at 2:07 p.m. Beijing time on 25 June 2024, carrying 1,935.3 g of far-side material scooped and drilled from the South Pole–Aitken basin. CNSA confirmed recovery and subsequent peer-reviewed analyses of the basalt samples corroborated their far-side origin, settling the mission\'s success on the public and scientific record.',
+        source: {
+          externalId: 'src:change6-govcn-return-2024',
+          name: 'The State Council of the PRC. "China\'s Chang\'e-6 brings back first samples from moon\'s far side to Earth," 25 June 2024.',
+          url: 'https://english.www.gov.cn/news/202406/25/content_WS667a644dc6d0868f4e8e8864.html',
+          publishedAt: '2024-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── North Korea's sixth nuclear test detected seismically ───────────────────
+  {
+    externalId: 'trajectory:dprk-sixth-nuclear-test-2017',
+    text: 'On 3 September 2017 a magnitude-6.3 seismic event was recorded at the Punggye-ri test site in North Korea, identified by monitoring agencies as North Korea\'s sixth and largest underground nuclear test — declared by Pyongyang to be a hydrogen bomb.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-09-03',
+        datePrecision: 'DAY',
+        reason: 'At about 03:30 UTC seismometers worldwide registered a large event near Punggye-ri. The U.S. Geological Survey located a magnitude-6.3 "explosion" at the site where North Korea had detonated nuclear devices before, and the CTBTO\'s International Monitoring System independently detected the signal. North Korea\'s state media announced a successful test of a thermonuclear (hydrogen) bomb designed for an intercontinental missile.',
+        source: {
+          externalId: 'src:usgs-dprk-explosion-poster-2017',
+          name: 'U.S. Geological Survey. "M6.3 North Korea Explosion of 03 September 2017" event poster.',
+          url: 'https://earthquake.usgs.gov/product/poster/20170903/us/1504650999857/poster.pdf',
+          publishedAt: '2017-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-09-03',
+        datePrecision: 'DAY',
+        reason: 'Independent seismological analyses (IRIS/NSF SAGE special-event archive, 38 North, NORSAR) converged on the event being an underground nuclear explosion roughly an order of magnitude more powerful than North Korea\'s earlier tests, with yield estimates of order 100–250 kilotons. A subsequent magnitude-4.6 collapse event minutes later corroborated a cavity-forming explosion. That a sixth DPRK nuclear test occurred on 3 September 2017 is settled; only the exact yield and the "hydrogen bomb" claim remain debated.',
+        source: {
+          externalId: 'src:iris-dprk-special-event-2017',
+          name: 'IRIS / NSF SAGE. "Special Event: 2017 North Korean nuclear test" (3 September 2017).',
+          url: 'https://ds.iris.edu/ds/nodes/dmc/specialevents/2017/09/03/2017-north-korean-nuclear-test/',
+          publishedAt: '2017-09-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First complete (gapless) human genome sequence — T2T-CHM13 ───────────────
+  {
+    externalId: 'trajectory:t2t-complete-human-genome-2022',
+    text: 'On 31 March 2022 the Telomere-to-Telomere (T2T) Consortium published the first truly complete, gapless sequence of a human genome (T2T-CHM13), adding nearly 200 million base pairs and filling the roughly 8% left unresolved by the 2003 "finished" Human Genome Project reference.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-03-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-03-31',
+        datePrecision: 'DAY',
+        reason: 'The consortium published "The complete sequence of a human genome" in Science, presenting T2T-CHM13: a 3.055-billion-base-pair assembly with no gaps, resolving centromeres, the acrocentric short arms, and segmental duplications that the original reference (GRCh38) had left as placeholders. Using a homozygous CHM13 cell line and long-read sequencing, it superseded the previously accepted notion that the genome was "finished" in 2003.',
+        source: {
+          externalId: 'src:nurk-t2t-complete-genome-2022',
+          name: 'Nurk S et al. "The complete sequence of a human genome." Science 376(6588):44–53 (31 March 2022).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9186530/',
+          publishedAt: '2022-03-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-03-31',
+        datePrecision: 'DAY',
+        reason: 'The T2T-CHM13 assembly, released openly alongside companion papers in the same Science issue, was rapidly adopted as a reference by the genomics community and incorporated into the Human Pangenome Reference Consortium\'s work. That a complete gapless human genome sequence was achieved and published on 31 March 2022 is settled in the scientific record.',
+        source: {
+          externalId: 'src:nhgri-t2t-complete-genome-2022',
+          name: 'National Human Genome Research Institute (NIH). "Researchers generate the first complete, gapless sequence of a human genome," 31 March 2022.',
+          url: 'https://www.genome.gov/news/news-release/researchers-generate-the-first-complete-gapless-sequence-of-a-human-genome',
+          publishedAt: '2022-03-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hunga Tonga–Hunga Ha'apai eruption — largest recorded atmospheric blast ──
+  {
+    externalId: 'trajectory:hunga-tonga-eruption-2022',
+    text: 'On 15 January 2022 the Hunga Tonga–Hunga Ha\'apai submarine volcano in Tonga erupted explosively, sending a plume into the stratosphere and generating an atmospheric pressure wave that was recorded by barometers worldwide as it circled the globe multiple times — among the most powerful eruptions of the modern instrumental era.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-01-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2022-01-15',
+        datePrecision: 'DAY',
+        reason: 'A series of explosions culminating around 04:00–05:00 UTC on 15 January 2022 launched ash and gas as high as ~40–50 km, blanketed nearby Tongan islands, triggered tsunami waves across the Pacific, and cut Tonga\'s undersea communications cable. Geostationary weather satellites captured the expanding shock ring and umbrella cloud in near-real time.',
+        source: {
+          externalId: 'src:nasa-hunga-tonga-eruption-2022',
+          name: 'NASA Earth Observatory. "Dramatic Changes at Hunga Tonga-Hunga Ha\'apai" — eruption of 15 January 2022.',
+          url: 'https://science.nasa.gov/earth/earth-observatory/dramatic-changes-at-hunga-tonga-hunga-haapai-149367/',
+          publishedAt: '2022-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-12',
+        datePrecision: 'DAY',
+        reason: 'Peer-reviewed analyses confirmed the eruption produced a Lamb pressure wave that propagated around the Earth several times and was detected on barographs globally, an unprecedented dataset for a single eruption. Studies in Science documented the atmospheric waves and the injection of water vapour into the stratosphere, settling the event\'s date and exceptional scale in the scientific literature.',
+        source: {
+          externalId: 'src:matoza-hunga-tonga-waves-2022',
+          name: 'Matoza RS et al. "Atmospheric waves and global seismoacoustic observations of the January 2022 Hunga eruption, Tonga." Science 377(6601):95–100 (12 May 2022).',
+          url: 'https://www.science.org/doi/10.1126/science.abo7063',
+          publishedAt: '2022-05-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
