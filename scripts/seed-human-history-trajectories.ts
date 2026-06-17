@@ -22721,6 +22721,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Halley's Comet apparition of 141 CE — Eastern Han broom star ────────────
+  {
+    externalId: 'trajectory:halley-comet-141ce-apparition',
+    text: 'A "broom star" recorded by the Eastern Han court astronomers in the spring of 141 CE was later identified as an apparition of 1P/Halley, whose perihelion fell on 22 March 141 CE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0141-03-22',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0141-03-22',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical bureau of the Eastern Han, during the reign of Emperor Shun, logged a broom star (彗星) moving through the sky in the early months of 141 CE; the record preserved in the Book of Later Han notes the comet across successive nights in March and April. The sighting is entered as a real celestial apparition, read at the time as a portent rather than a recurring body.',
+        source: {
+          externalId: 'src:book-of-later-han-comet-141',
+          name: 'Book of Later Han (後漢書), Treatise on Astronomy (天文志), record of the broom star of 141 CE under Emperor Shun. (compiled 5th century CE from Eastern Han bureau records)',
+          url: 'https://ctext.org/hou-han-shu',
+          publishedAt: '0445-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yeomans and Kiang\'s backward integration of Halley\'s long-term motion, anchored to the dense Chinese positional records, fixes a perihelion passage on 22 March 141 CE and assigns the 141 broom star to 1P/Halley. The Han portent is thereby resolved into one node of the comet\'s 76-year periodic return, its date and identity settled by orbital mechanics.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet apparition of 295 CE — Western Jin broom star ─────────────
+  {
+    externalId: 'trajectory:halley-comet-295ce-apparition',
+    text: 'A "broom star" recorded by Chinese court astronomers in the spring of 295 CE was later identified as an apparition of 1P/Halley, whose perihelion fell on 20 April 295 CE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0295-04-20',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0295-04-20',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical records of the Western Jin court, kept during the Yuankang reign of Emperor Hui and preserved in the Book of Jin, register a broom star (彗星) in 295 CE. The bureau noted the comet\'s appearance and its passage among the lodges as a celestial portent.',
+        source: {
+          externalId: 'src:book-of-jin-comet-295',
+          name: 'Book of Jin (晉書), Treatise on Astronomy (天文志), record of the broom star of Yuankang 5 (295 CE) under Emperor Hui. (compiled 648 CE from Western Jin bureau records)',
+          url: 'https://ctext.org/book-of-jin',
+          publishedAt: '0648-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Yeomans–Kiang reconstruction of Halley\'s orbit places a perihelion passage on 20 April 295 CE and assigns the 295 broom star to 1P/Halley, with the Chinese records constraining the orbital solution. The Western Jin portent is resolved into a predictable return of the periodic comet.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet apparition of 451 CE — comet over the year of Attila ──────
+  {
+    externalId: 'trajectory:halley-comet-451ce-apparition',
+    text: 'A comet seen in 451 CE — recorded by Chinese court astronomers and, in the West, noted by contemporary Latin chroniclers in the year Attila the Hun was checked at the Catalaunian Plains — was later identified as an apparition of 1P/Halley (perihelion 24 June 451 CE).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0451-06-24',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0451-06-24',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical records of the Liu Song court, preserved in the Book of Song, register a broom star (彗星) in 451 CE during the Yuanjia reign. In the West, contemporary Latin chroniclers report a burning star visible for many days in the same year — the year Attila\'s advance into Gaul was halted at the Battle of the Catalaunian Plains. Both traditions log the comet as a real apparition, universally read as an omen of the war.',
+        source: {
+          externalId: 'src:book-of-song-comet-451',
+          name: 'Book of Song (宋書), Treatise on Astronomy (天文志), record of the broom star of Yuanjia 28 (451 CE). (compiled 488 CE from Liu Song bureau records)',
+          url: 'https://ctext.org/book-of-song',
+          publishedAt: '0488-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yeomans and Kiang\'s integration of Halley\'s long-term motion fixes a perihelion passage on 24 June 451 CE and assigns the 451 comet to 1P/Halley, the Chinese positional records constraining the orbit. The "burning star" of the Attila year is thereby identified as a periodic return of the comet.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Phlegon of Tralles' great eclipse and the Nicaea earthquake ─────────────
+  {
+    externalId: 'trajectory:phlegon-eclipse-earthquake-29ce',
+    text: 'Phlegon of Tralles recorded that in the fourth year of the 202nd Olympiad an exceptional solar eclipse turned day to night at the sixth hour and stars appeared, and that a great earthquake overthrew much of Nicaea in Bithynia; modern astronomy associates the eclipse with the event of 24 November 29 CE, but its totality over Bithynia and its alleged coincidence with the earthquake remain contested.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '0029-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0140-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Greek chronicler Phlegon of Tralles, writing in the early second century CE and drawing on Olympiad chronologies, records that "in the fourth year of the 202nd Olympiad there was a great eclipse of the Sun, greater than had ever been known before, for at the sixth hour the day was changed into night, and the stars were seen in the heavens; and an earthquake occurred in Bithynia and overthrew a great part of the city of Nicaea." The paired eclipse and earthquake are entered as a single portentous event, later quoted by Julius Africanus and Eusebius.',
+        source: {
+          externalId: 'src:phlegon-tralles-eclipse-record',
+          name: 'Phlegon of Tralles, Olympiades, on the great eclipse and the Bithynian earthquake of the 202nd Olympiad (preserved via Eusebius, Chronicon). (c. 140 CE)',
+          url: 'https://en.wikipedia.org/wiki/Phlegon_of_Tralles',
+          publishedAt: '0140-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Retrocalculation identifies the solar eclipse of 24 November 29 CE as the leading astronomical candidate for Phlegon\'s account, but its path of totality did not cross Bithynia, so the "stars at the sixth hour" cannot be reconciled with a total eclipse there. Modern analysis treats the joining of eclipse and earthquake as a coincidence rather than a causal or simultaneous event, part of a long-criticised tradition of erroneously correlating earthquakes with eclipses. Which physical eclipse Phlegon meant, and whether the earthquake was contemporaneous, remain disputed.',
+        source: {
+          externalId: 'src:khalisi-eclipse-earthquake-2021',
+          name: 'Khalisi E. On the Erroneous Correlation between Earthquakes and Eclipses. 2021. arXiv:2101.08572.',
+          url: 'https://arxiv.org/abs/2101.08572',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Ptolemy's trio of Alexandria lunar eclipses anchoring the lunar theory ──
   {
     externalId: 'trajectory:ptolemy-lunar-eclipse-trio-134ce',
