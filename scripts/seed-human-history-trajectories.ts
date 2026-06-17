@@ -38742,6 +38742,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fall of Dien Bien Phu — end of French Indochina ─────────────────────────
+  {
+    externalId: 'trajectory:dien-bien-phu-falls-1954',
+    text: 'On 7 May 1954 the French garrison at Dien Bien Phu surrendered to the Viet Minh after a 56-day siege, the decisive defeat that ended French colonial rule in Indochina.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1954-05-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1954-05-07',
+        datePrecision: 'DAY',
+        reason: 'After a four-month investment of the fortified valley, Viet Minh forces under General Vo Nguyen Giap overran the last French strongpoints. The French command radioed its final messages before the position fell in the late afternoon of 7 May 1954, with some 11,000 surviving defenders taken prisoner. The defeat was reported immediately by wire services and dominated front pages worldwide.',
+        source: {
+          externalId: 'src:state-dept-dien-bien-phu',
+          name: 'U.S. Department of State, Office of the Historian. "The Fall of Dien Bien Phu, 1954." Milestones in the History of U.S. Foreign Relations.',
+          url: 'https://history.state.gov/milestones/1953-1960/dien-bien-phu',
+          publishedAt: '1954-05-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1954-07-21',
+        datePrecision: 'DAY',
+        reason: 'The Geneva Conference, convened the day after the garrison fell, concluded with the Geneva Accords of 20–21 July 1954, formalizing France\'s withdrawal and the temporary partition of Vietnam at the 17th parallel. The military outcome at Dien Bien Phu was thereby ratified in a binding international settlement, and no party has since disputed that the garrison fell on 7 May 1954.',
+        source: {
+          externalId: 'src:geneva-accords-1954',
+          name: 'U.S. Department of State, Office of the Historian. "Dien Bien Phu & the Fall of French Indochina, 1954" — recounts the garrison\'s fall and the ensuing Geneva Accords that ended French rule.',
+          url: 'https://history.state.gov/milestones/1953-1960/dien-bien-phu',
+          publishedAt: '1954-07-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Malcolm X ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:malcolm-x-assassination-1965',
+    text: 'Malcolm X was assassinated on 21 February 1965 while addressing the Organization of Afro-American Unity at the Audubon Ballroom in New York City.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1965-02-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1965-02-21',
+        datePrecision: 'DAY',
+        reason: 'As Malcolm X began to speak before some 400 people at the Audubon Ballroom in Washington Heights, gunmen rushed the stage and shot him repeatedly. He was pronounced dead shortly afterward. The killing occurred before a large audience and was reported the same day by the wire services and the New York press.',
+        source: {
+          externalId: 'src:history-malcolm-x-assassinated',
+          name: 'HISTORY. "Malcolm X assassinated" (This Day in History, February 21, 1965).',
+          url: 'https://www.history.com/this-day-in-history/malcolm-x-assassinated',
+          publishedAt: '1965-02-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1966-03-11',
+        datePrecision: 'DAY',
+        reason: 'A New York County jury convicted three men of the murder on 11 March 1966, establishing the killing as a matter of judicial record. (Two of the convictions were later vacated in November 2021 after a re-investigation found exculpatory evidence had been withheld — revising the question of who was responsible, but never the fact, date, or place of the assassination itself.)',
+        source: {
+          externalId: 'src:malcolm-x-exoneration-2021',
+          name: '"Assassination of Malcolm X." Wikipedia — documents the 1966 convictions and the November 2021 exoneration of Muhammad Aziz and Khalil Islam after withheld FBI evidence came to light.',
+          url: 'https://en.wikipedia.org/wiki/Assassination_of_Malcolm_X',
+          publishedAt: '2021-11-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Molina & Rowland — CFCs predicted to destroy stratospheric ozone ────────
+  {
+    externalId: 'trajectory:molina-rowland-ozone-cfc-1974',
+    text: 'In June 1974 Mario Molina and F. Sherwood Rowland published in Nature the prediction that chlorofluorocarbons drifting into the stratosphere would catalytically destroy ozone via chlorine atoms.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Molina and Rowland publish "Stratospheric sink for chlorofluoromethanes: chlorine atom-catalysed destruction of ozone" (Nature 249:810–812), arguing that inert CFCs accumulate in the stratosphere, photodissociate under UV, and release chlorine atoms that destroy ozone in a catalytic chain. The claim is a theoretical prediction, not yet an observation.',
+        source: {
+          externalId: 'src:molina-rowland-nature-1974',
+          name: 'Molina MJ, Rowland FS. "Stratospheric sink for chlorofluoromethanes: chlorine atom-catalysed destruction of ozone." Nature 1974;249:810–812.',
+          url: 'https://doi.org/10.1038/249810a0',
+          publishedAt: '1974-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1975-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The chemical industry and aerosol manufacturers publicly disputed the hypothesis through the mid-1970s, arguing the predicted depletion was speculative and economically reckless to act upon. The claim was genuinely contested in the policy arena even as laboratory and atmospheric work to test it accelerated.',
+        source: {
+          externalId: 'src:acs-cfc-ozone-landmark',
+          name: 'American Chemical Society. "Chlorofluorocarbons and Ozone Depletion" (National Historic Chemical Landmark), summarizing the 1974 prediction and the controversy that followed.',
+          url: 'https://www.acs.org/education/whatischemistry/landmarks/cfcs-ozone.html',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-10-11',
+        datePrecision: 'DAY',
+        reason: 'The 1985 discovery of the Antarctic ozone hole and subsequent measurements confirmed chlorine-driven ozone loss, vindicating the mechanism. On 11 October 1995 Molina and Rowland shared the Nobel Prize in Chemistry with Paul Crutzen "for their work in atmospheric chemistry, particularly concerning the formation and decomposition of ozone," ratifying the prediction as settled science.',
+        source: {
+          externalId: 'src:nobel-chemistry-1995-ozone',
+          name: 'The Nobel Prize in Chemistry 1995: Paul J. Crutzen, Mario J. Molina and F. Sherwood Rowland, for their work in atmospheric chemistry, particularly concerning the formation and decomposition of ozone.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1995/summary/',
+          publishedAt: '1995-10-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mariner 10 — first spacecraft to reach Mercury ──────────────────────────
+  {
+    externalId: 'trajectory:mariner-10-mercury-flyby-1974',
+    text: 'On 29 March 1974 Mariner 10 became the first spacecraft to fly by Mercury, returning the first close-up images of the planet\'s heavily cratered surface.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-03-29',
+        datePrecision: 'DAY',
+        reason: 'After using a gravity assist from Venus — the first interplanetary use of that technique — Mariner 10 passed within about 700 km of Mercury\'s surface, transmitting images that revealed a Moon-like, cratered world and detected a surprising intrinsic magnetic field. The flyby was tracked in real time by NASA\'s Deep Space Network and reported immediately.',
+        source: {
+          externalId: 'src:nasa-mariner-10',
+          name: 'NASA. "Mariner 10" mission page — first spacecraft to Mercury; first Mercury flyby 29 March 1974.',
+          url: 'https://science.nasa.gov/mission/mariner-10/',
+          publishedAt: '1974-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-03-18',
+        datePrecision: 'DAY',
+        reason: 'Mariner 10\'s two further flybys (September 1974, March 1975) mapped nearly half of Mercury, and its results stood unchallenged for over three decades. NASA\'s MESSENGER probe entered Mercury orbit on 18 March 2011 and corroborated and extended Mariner 10\'s findings, confirming the cratered terrain and the planetary magnetic field that Mariner 10 first recorded.',
+        source: {
+          externalId: 'src:nasa-messenger-orbit',
+          name: 'NASA. "MESSENGER" mission — first spacecraft to orbit Mercury, orbit insertion 18 March 2011.',
+          url: 'https://science.nasa.gov/mission/messenger/',
+          publishedAt: '2011-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── UNIVAC predicts the 1952 U.S. presidential election ─────────────────────
+  {
+    externalId: 'trajectory:univac-predicts-1952-election',
+    text: 'On election night, 4 November 1952, a UNIVAC I computer on CBS correctly predicted Dwight Eisenhower\'s landslide victory from early returns, against polls that had forecast a close race.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1952-11-04',
+        datePrecision: 'DAY',
+        reason: 'CBS News used a UNIVAC I to forecast the Eisenhower–Stevenson race live on air. From a small fraction of early returns the machine projected a decisive Eisenhower win, but the network — distrusting a result that contradicted the polls — withheld and softened the on-air announcement until the trend became undeniable later that night.',
+        source: {
+          externalId: 'src:computer-history-univac-1952',
+          name: 'Computer History Museum. "This Day in History: November 4" — CBS borrows a UNIVAC to predict the 1952 presidential election.',
+          url: 'https://www.computerhistory.org/tdih/november/4/',
+          publishedAt: '1952-11-04',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1952-11-05',
+        datePrecision: 'DAY',
+        reason: 'The certified returns confirmed an Eisenhower landslide (442 electoral votes to 89), vindicating the UNIVAC projection and embarrassing CBS for having hedged it. The episode is recorded as the first nationally televised use of a computer to call a U.S. election, and its accuracy is not in dispute.',
+        source: {
+          externalId: 'src:univac-i-1952-election',
+          name: '"UNIVAC I." Wikipedia — records the CBS use of UNIVAC to forecast the 1952 presidential election and the network\'s reluctance to broadcast the early Eisenhower-landslide projection.',
+          url: 'https://en.wikipedia.org/wiki/UNIVAC_I',
+          publishedAt: '1952-11-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
