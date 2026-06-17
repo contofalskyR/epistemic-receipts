@@ -32963,6 +32963,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY 20TH CENTURY — PHYSICS REVOLUTION, WAR, DECOLONIZATION (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Urey discovers deuterium (heavy hydrogen) ────────────────────────────────
+  {
+    externalId: 'trajectory:urey-deuterium-discovery-1931',
+    text: 'Harold C. Urey, with Ferdinand Brickwedde and George Murphy, discovered deuterium — a hydrogen isotope of mass 2 (heavy hydrogen) — by spectroscopy of distilled liquid hydrogen, reported to Physical Review in 1932.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'DAY',
+        reason: 'Following spectroscopic work in late 1931 on the residue of fractionally distilled liquid hydrogen near its triple point, Urey, Brickwedde, and Murphy publish a letter "A Hydrogen Isotope of Mass 2" in Physical Review (Vol. 39, dated 1 January 1932), reporting faint Balmer lines at the wavelengths predicted for hydrogen of mass two.',
+        source: {
+          externalId: 'src:urey-hydrogen-isotope-mass-2-1932',
+          name: 'Urey HC, Brickwedde FG, Murphy GM. "A Hydrogen Isotope of Mass 2." Physical Review 39, 164 (1 January 1932).',
+          url: 'https://www.nist.gov/history/nbsnist-culture-excellence/harold-c-urey-ferdinand-g-brickwedde-and-discovery-deuterium',
+          publishedAt: '1932-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-11-15',
+        datePrecision: 'DAY',
+        reason: 'The discovery was rapidly confirmed and the new isotope concentrated and characterized. Urey received the 1934 Nobel Prize in Chemistry "for his discovery of heavy hydrogen" — only three years after the finding — settling deuterium as an established element of nuclear physics and chemistry.',
+        source: {
+          externalId: 'src:nist-discovery-deuterium',
+          name: 'NIST — Harold C. Urey, Ferdinand G. Brickwedde, and the Discovery of Deuterium (Nobel Prize in Chemistry 1934).',
+          url: 'https://www.nist.gov/history/nbsnist-culture-excellence/harold-c-urey-ferdinand-g-brickwedde-and-discovery-deuterium',
+          publishedAt: '1934-11-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yalta (Crimea) Conference ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:yalta-conference-1945',
+    text: 'Roosevelt, Churchill, and Stalin met at the Yalta (Crimea) Conference from 4 to 11 February 1945 to plan the final defeat and postwar occupation of Nazi Germany and the postwar order of Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-02-11',
+        datePrecision: 'DAY',
+        reason: 'The three Allied leaders and their delegations meet at Livadia Palace near Yalta and, on 11 February 1945, issue the "Protocol of Proceedings" and a joint communiqué covering occupation zones in Germany, the United Nations, Poland\'s borders and government, and Soviet entry into the war against Japan.',
+        source: {
+          externalId: 'src:frus-yalta-1945',
+          name: 'Foreign Relations of the United States — The Conferences at Malta and Yalta, 1945. The Yalta Conference: February 4–11, 1945. U.S. Dept. of State Office of the Historian.',
+          url: 'https://history.state.gov/historicaldocuments/frus1945Malta/comp1',
+          publishedAt: '1945-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The U.S. State Department published the full conference record in the Foreign Relations of the United States series; the dates, participants, and agreements are documented across American, British, and Soviet records. Historians dispute the wisdom and consequences of the agreements, not whether the conference occurred or what was signed.',
+        source: {
+          externalId: 'src:frus-malta-yalta-volume',
+          name: 'U.S. Dept. of State. Foreign Relations of the United States: The Conferences at Malta and Yalta, 1945 (published 1955).',
+          url: 'https://history.state.gov/historicaldocuments/frus1945Malta',
+          publishedAt: '1955-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Mahatma Gandhi ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:gandhi-assassination-1948',
+    text: 'Mahatma Gandhi was assassinated on 30 January 1948 at Birla House, New Delhi, when Nathuram Godse fired three shots at point-blank range as Gandhi walked to a prayer meeting.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1948-01-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1948-01-30',
+        datePrecision: 'DAY',
+        reason: 'At about 5:17 p.m., before a crowd gathered for the evening prayer meeting at Birla House, Nathuram Godse steps out and fires three bullets into Gandhi at close range; Gandhi dies within minutes. The killing is witnessed by hundreds and reported worldwide that night, with international tributes from leaders including Clement Attlee.',
+        source: {
+          externalId: 'src:gandhi-assassination-account',
+          name: 'Assassination of Mahatma Gandhi, 30 January 1948, Birla House, New Delhi — contemporaneous accounts and overview.',
+          url: 'https://en.wikipedia.org/wiki/Assassination_of_Mahatma_Gandhi',
+          publishedAt: '1948-01-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1949-11-15',
+        datePrecision: 'DAY',
+        reason: 'A criminal trial before the Special Court at Red Fort establishes the facts and conspiracy; Godse and Narayan Apte are convicted and hanged on 15 November 1949. The trial record, physical evidence, and Godse\'s own admission settle the identity of the assassin and the circumstances of the killing beyond dispute.',
+        source: {
+          externalId: 'src:gandhi-murder-trial-1949',
+          name: 'Trial of Nathuram Godse and conspirators; execution 15 November 1949 (Red Fort trial record).',
+          url: 'https://en.wikipedia.org/wiki/Assassination_of_Mahatma_Gandhi',
+          publishedAt: '1949-11-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Establishment of the State of Israel ─────────────────────────────────────
+  {
+    externalId: 'trajectory:israel-declaration-1948',
+    text: 'The State of Israel was proclaimed on 14 May 1948 when David Ben-Gurion read the Declaration of Independence in Tel Aviv; the United States recognized the provisional government de facto that same day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1948-05-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-05-14',
+        datePrecision: 'DAY',
+        reason: 'As the British Mandate for Palestine expires, the Provisional Government proclaims the establishment of the State of Israel; David Ben-Gurion reads the Declaration of Independence in Tel Aviv. The same day, U.S. President Truman recognizes the provisional government as the de facto authority of the new state.',
+        source: {
+          externalId: 'src:us-recognition-israel-1948',
+          name: 'U.S. National Archives — Press release announcing U.S. recognition of Israel, 14 May 1948.',
+          url: 'https://www.archives.gov/milestone-documents/press-release-announcing-us-recognition-of-israel',
+          publishedAt: '1948-05-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1949-05-11',
+        datePrecision: 'DAY',
+        reason: 'Israel is admitted to the United Nations as a member state by General Assembly Resolution 273 (III) on 11 May 1949, formally consolidating international recognition of the state established the previous May. The date and fact of the founding are documented in primary state records and are not in dispute.',
+        source: {
+          externalId: 'src:israel-un-admission-1949',
+          name: 'UN General Assembly Resolution 273 (III), admission of Israel to membership in the United Nations, 11 May 1949.',
+          url: 'https://www.un.org/unispal/document/auto-insert-209688/',
+          publishedAt: '1949-05-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Universal Declaration of Human Rights adopted ────────────────────────────
+  {
+    externalId: 'trajectory:udhr-adopted-1948',
+    text: 'The United Nations General Assembly adopted the Universal Declaration of Human Rights in Paris on 10 December 1948 as Resolution 217 A (III), setting out fundamental human rights to be universally protected.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1948-12-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-12-10',
+        datePrecision: 'DAY',
+        reason: 'Meeting at the Palais de Chaillot in Paris, the UN General Assembly proclaims the Universal Declaration of Human Rights as Resolution 217 A (III) by 48 votes in favour, none against, and 8 abstentions. The text enumerates 30 articles of civil, political, economic, social, and cultural rights.',
+        source: {
+          externalId: 'src:udhr-un-1948',
+          name: 'United Nations — Universal Declaration of Human Rights, proclaimed by UN General Assembly Resolution 217 A, Paris, 10 December 1948.',
+          url: 'https://www.un.org/en/about-us/universal-declaration-of-human-rights',
+          publishedAt: '1948-12-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Declaration became the foundation of the International Bill of Human Rights; its principles were given binding treaty force by the two 1966 Covenants (ICCPR and ICESCR), which entered into force in 1976. The date, vote, and text of the 1948 adoption are fixed documentary record.',
+        source: {
+          externalId: 'src:international-bill-human-rights',
+          name: 'UN Office of the High Commissioner for Human Rights — International Bill of Human Rights (UDHR 1948; ICCPR and ICESCR in force 1976).',
+          url: 'https://www.ohchr.org/en/what-are-human-rights/international-bill-human-rights',
+          publishedAt: '1976-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
