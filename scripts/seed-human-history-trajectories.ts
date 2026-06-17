@@ -35109,6 +35109,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — verified curves (500–1400 CE)
+  // Byzantine, Islamic, Mongol-era, medieval European record-keeping
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Stamford Bridge — 25 September 1066 ────────────────────────────
+  {
+    externalId: 'trajectory:battle-stamford-bridge-1066',
+    text: 'On 25 September 1066, King Harold Godwinson of England destroyed an invading Norwegian army at Stamford Bridge in Yorkshire, killing King Harald Hardrada of Norway and Harold\'s own brother Tostig — ending the last serious Scandinavian bid for the English throne weeks before the Norman Conquest.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1066-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1066-09-25',
+        datePrecision: 'DAY',
+        reason: 'The Anglo-Saxon Chronicle, kept contemporaneously in English monasteries, records that Harold marched north and fell upon the Norwegian host beyond the bridge, where the two armies fought hard through the day; Harald Hardrada and Tostig were both slain, and the survivors were allowed to sail home in only a fraction of their ships. The battle is registered as fact within the year it occurred.',
+        source: {
+          externalId: 'src:anglo-saxon-chronicle-stamford-1066',
+          name: 'The Anglo-Saxon Chronicle, annal for 1066 (manuscripts C, D, E), contemporaneous English monastic chronicle.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Stamford_Bridge',
+          publishedAt: '1066-12-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cross-checked against the Norse saga tradition (notably Snorri Sturluson\'s Heimskringla) and the broader 1066 record, the date, location and outcome of Stamford Bridge are uncontested in modern medieval scholarship, which treats it as the decisive end of the Viking Age in England, immediately preceding Harold\'s forced march south to Hastings.',
+        source: {
+          externalId: 'src:stamford-bridge-scholarship',
+          name: 'Modern scholarship on the Battle of Stamford Bridge and the events of 1066.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Stamford_Bridge',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Domesday survey commissioned and completed — 1085–1086 ──────────────────
+  {
+    externalId: 'trajectory:domesday-survey-1086',
+    text: 'At his Christmas court of 1085 William the Conqueror ordered a comprehensive survey of the landholdings, resources and values of England; the resulting Domesday Book, completed in 1086, was the most exhaustive administrative record produced in medieval Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1085-12-25',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1085-12-25',
+        datePrecision: 'MONTH',
+        reason: 'The Anglo-Saxon Chronicle records that at his Christmas council William held deep speech with his counsellors and sent his men over all England into each shire to ascertain how many hides it held, what land and livestock the king and his lords possessed, and what each was worth — a survey so searching that, in the chronicler\'s words, not one hide nor yard of land was left out. The act of systematic recording is itself the event.',
+        source: {
+          externalId: 'src:anglo-saxon-chronicle-domesday-1085',
+          name: 'The Anglo-Saxon Chronicle, annal for 1085, describing the ordering of the Domesday survey.',
+          url: 'https://en.wikipedia.org/wiki/Domesday_Book',
+          publishedAt: '1086-12-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1086-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The survey returns were compiled into the two-volume manuscript whose colophon dates the completion of the inquest to 1086. Surviving in the English archives continuously since, Domesday Book became the authoritative legal record of English landholding — cited in property disputes for centuries — and is preserved today at The National Archives as the foundational survey of Norman England.',
+        source: {
+          externalId: 'src:national-archives-domesday',
+          name: 'The National Archives (UK) — Domesday Book, the great survey of England completed 1086.',
+          url: 'https://www.nationalarchives.gov.uk/domesday/',
+          publishedAt: '1086-12-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Kleidion — 29 July 1014 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-kleidion-1014',
+    text: 'On 29 July 1014 the Byzantine emperor Basil II crushed the army of Tsar Samuel of Bulgaria at Kleidion; the Greek sources report that Basil blinded thousands of captured Bulgarian soldiers, earning him the epithet "Boulgaroktonos" (the Bulgar-Slayer).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1014-07-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1014-07-29',
+        datePrecision: 'DAY',
+        reason: 'The Byzantine chronicler John Skylitzes, drawing on earlier sources, records that Basil II trapped and routed Samuel\'s forces at the pass of Kleidion and, in the most notorious episode, blinded some 15,000 prisoners in groups of a hundred, leaving one man in each with a single eye to lead the rest home; Samuel, it is said, collapsed and died on seeing them. The campaign and its aftermath are entered into the historical record.',
+        source: {
+          externalId: 'src:skylitzes-kleidion-1014',
+          name: 'John Skylitzes, Synopsis of Histories, account of the Kleidion campaign and the blinding of the Bulgarian captives (11th–12th century).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Kleidion',
+          publishedAt: '1100-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The defeat broke Bulgarian resistance, and within four years Basil II had annexed the First Bulgarian Empire into Byzantium (1018), a settlement that held for over a century and a half. The battle, its date, and the epithet Boulgaroktonos are fixed points in the Byzantine historical tradition, though modern historians debate the literal scale of the blinding.',
+        source: {
+          externalId: 'src:kleidion-scholarship',
+          name: 'Modern scholarship on the Battle of Kleidion and Basil II\'s annexation of Bulgaria (1018).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Kleidion',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Damghan earthquake — 22 December 856 ────────────────────────────────────
+  {
+    externalId: 'trajectory:damghan-earthquake-856',
+    text: 'On 22 December 856 a catastrophic earthquake struck the region of Damghan in northern Iran, destroying the ancient city of Hecatompylos (Šahr-e Qumis) and reported in the historical record as one of the deadliest earthquakes in human history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0856-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0856-12-22',
+        datePrecision: 'DAY',
+        reason: 'Medieval Islamic chronicles register a violent night-time earthquake in the year 242 AH along the southern flank of the Alborz mountains, levelling much of Damghan and the surrounding towns of Bastam and Shahrud and destroying the former Parthian capital of Hecatompylos, which was thereafter abandoned. The disaster is recorded as it passed into the chronicle tradition of the Abbasid world.',
+        source: {
+          externalId: 'src:damghan-earthquake-856-record',
+          name: 'Historical record of the 856 Damghan earthquake (242 AH), Khorasan, northern Iran.',
+          url: 'https://en.wikipedia.org/wiki/856_Damghan_earthquake',
+          publishedAt: '0900-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The modern catalogue of Persian historical seismicity by Ambraseys and Melville, reconstructing the event from the surviving sources, assigns it a surface-wave magnitude near 7.9 and places it among the deadliest earthquakes in recorded history; the United States Geological Survey lists the 856 Damghan event as the sixth-deadliest earthquake on record, with the traditional death toll (~200,000) noted as debated.',
+        source: {
+          externalId: 'src:usgs-damghan-856',
+          name: 'USGS / Ambraseys & Melville, A History of Persian Earthquakes — 856 Damghan earthquake among the deadliest in recorded history.',
+          url: 'https://en.wikipedia.org/wiki/856_Damghan_earthquake',
+          publishedAt: '1982-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Legnica — 9 April 1241 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-legnica-1241',
+    text: 'On 9 April 1241 a Mongol army destroyed a combined Polish, German and Templar force at Legnica (Liegnitz) in Silesia, killing Duke Henry II the Pious — the westernmost decisive Mongol victory of the invasion of Europe, fought two days before the parallel destruction of the Hungarians at Mohi.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1241-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1241-04-09',
+        datePrecision: 'DAY',
+        reason: 'The Mongol detachment under Baidar and Orda annihilated the allied army of Henry II of Silesia, who was killed along with leading Polish nobles. The Templar commander in France, Ponce d\'Aubon, reported the order\'s losses in a near-contemporaneous letter to the king of France, and the Franciscan envoy Giovanni da Pian del Carpine recorded the campaign in his account of the Mongols (c. 1248), entering the defeat into the European record within years of the event.',
+        source: {
+          externalId: 'src:carpine-tartar-relation-legnica',
+          name: 'Giovanni da Pian del Carpine / "Tartar Relation" (c. 1248) and the letter of Ponce d\'Aubon to the king of France on the Mongol victory at Legnica.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Legnica',
+          publishedAt: '1248-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date, location and outcome of Legnica are uncontested in modern scholarship on the Mongol invasion of Europe. Coordinated with the victory at Mohi on 11 April 1241, it marked the high-water mark of the Mongol advance west; the subsequent withdrawal after the death of Great Khan Ögedei spared central Europe from sustained conquest.',
+        source: {
+          externalId: 'src:legnica-scholarship',
+          name: 'Modern scholarship on the Battle of Legnica and the 1241 Mongol invasion of Europe.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Legnica',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
