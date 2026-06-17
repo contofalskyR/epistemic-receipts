@@ -28275,6 +28275,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Jamestown founded ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:jamestown-founded-1607',
+    text: 'On 14 May 1607 the Virginia Company settlers landed on Jamestown Island and began building James Fort, establishing the first permanent English settlement in North America.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1607-05-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1607-05-14',
+        datePrecision: 'DAY',
+        reason: 'After a four-month Atlantic crossing, the roughly 104 men and boys carried by the Virginia Company\'s three ships (Susan Constant, Godspeed, Discovery) chose a defensible peninsula some 60 miles up the river they named the James and went ashore to plant the colony. The choice of site, the date, and the first weeks are recorded contemporaneously by the colonists themselves — George Percy\'s "Observations" and the council president Edward Maria Wingfield\'s "Discourse" — and by Captain John Smith\'s subsequent accounts.',
+        source: {
+          externalId: 'src:percy-observations-1607',
+          name: 'George Percy, "Observations gathered out of a Discourse of the Plantation of the Southern Colony in Virginia by the English, 1606" (eyewitness account of the 1607 landing).',
+          url: 'https://historicjamestowne.org/history/history-of-jamestown/',
+          publishedAt: '1608-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By the 19th century the location of the original 1607 James Fort was widely believed lost: accounts from 1837 onward held that the triangular fort had been washed away by the James River, and a concrete seawall built in 1902 was raised on the assumption that the site was submerged. An earlier excavation by the National Park Service found no clear evidence of the fort, hardening the consensus that the founding site had eroded into the river.',
+        source: {
+          externalId: 'src:jamestown-lost-fort-narrative',
+          name: 'Historic Jamestowne / Jamestown Rediscovery, "History of Jamestown Rediscovery" — documenting the long-standing belief that James Fort had been lost to river erosion.',
+          url: 'https://historicjamestowne.org/archaeology/history-of-jamestown-rediscovery/',
+          publishedAt: '1902-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Jamestown Rediscovery archaeological project, launched by Dr. William Kelso with excavations beginning 4 April 1994, located the buried postholes of the 1607 fort\'s palisade on dry land near the surviving church tower. Within three field seasons (by 1996) the team had traced the fort\'s walls and bastions, proving the founding site had survived rather than washed away and physically anchoring the documented 1607 settlement to a confirmed location.',
+        source: {
+          externalId: 'src:kelso-jamestown-fort-found',
+          name: 'William M. Kelso et al., Jamestown Rediscovery archaeological reports (APVA/Preservation Virginia), documenting the 1994–1996 discovery of the 1607 James Fort.',
+          url: 'https://historicjamestowne.org/archaeology/history-of-jamestown-rediscovery/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dutch Act of Abjuration ─────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:act-of-abjuration-1581',
+    text: 'On 26 July 1581 the States General of the United Provinces adopted the Act of Abjuration (Plakkaat van Verlatinghe), formally renouncing allegiance to Philip II of Spain and declaring the Netherlands independent.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1581-07-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1581-07-26',
+        datePrecision: 'DAY',
+        reason: 'Having resolved on 14 June 1581 to declare the throne vacant, the rebel States General meeting at The Hague enacted the Plakkaat van Verlatinghe, releasing the magistrates of the provinces from their oaths of allegiance to Philip II on the grounds that a prince who oppresses his subjects forfeits his sovereignty. The Act was printed and published immediately, and the original engrossed placard survives in the Dutch national records.',
+        source: {
+          externalId: 'src:plakkaat-van-verlatinghe-1581',
+          name: 'Plakkaat van Verlatinghe (Act of Abjuration), States General of the United Provinces, The Hague, 26 July 1581 (printed contemporaneous placard).',
+          url: 'https://en.wikipedia.org/wiki/Act_of_Abjuration',
+          publishedAt: '1581-07-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1648-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The independence the Act asserted was contested through the Eighty Years\' War but became settled in international law with the Peace of Münster (1648), part of the Peace of Westphalia, in which Spain formally recognised the United Provinces as a sovereign state. Historians treat the Abjuration as the founding document of the Dutch Republic, and its surviving text and date are uncontested; it is frequently cited as a model echoed in the 1776 U.S. Declaration of Independence.',
+        source: {
+          externalId: 'src:act-abjuration-archive-text',
+          name: 'The Act of Abjuration: the Dutch Declaration of Independence (1581) — annotated text and translation (Internet Archive).',
+          url: 'https://archive.org/details/actofabjurationd0000unse',
+          publishedAt: '1581-07-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dutch East India Company chartered ──────────────────────────────────────
+  {
+    externalId: 'trajectory:voc-charter-1602',
+    text: 'On 20 March 1602 the States General of the United Provinces granted a 21-year charter creating the Vereenigde Oostindische Compagnie (Dutch East India Company, VOC), the first joint-stock company to issue freely transferable shares to the public.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1602-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1602-03-20',
+        datePrecision: 'DAY',
+        reason: 'To end ruinous competition among rival Dutch trading ventures, the States General merged the existing "voorcompagnieën" into a single chartered company and granted it a 21-year monopoly on trade east of the Cape of Good Hope, along with quasi-sovereign powers to wage war, make treaties, and establish colonies. The founding charter (octrooi) of 20 March 1602 was issued as an official state document and its text survives.',
+        source: {
+          externalId: 'src:voc-charter-1602',
+          name: 'Charter (octrooi) of the Vereenigde Oostindische Compagnie granted by the States General, 20 March 1602 — translated text.',
+          url: 'https://en.wikipedia.org/wiki/Dutch_East_India_Company',
+          publishedAt: '1602-03-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Economic and business historians treat the VOC charter as a landmark: its capital was raised from the general public in freely tradable shares, traded on the Amsterdam exchange, making it the prototype of the modern publicly held corporation. The date and terms of the 1602 charter are documented from the surviving octrooi and the company\'s archives (a UNESCO Memory of the World collection), and are uncontested in the scholarship.',
+        source: {
+          externalId: 'src:voc-charter-translation-gerritsen',
+          name: 'A Translation of the Charter of the Dutch East India Company (1602), ed. P. Reynders / R. Gerritsen — full English translation of the founding octrooi.',
+          url: 'https://rupertgerritsen.tripod.com/pdf/published/VOC_Charter_1602.pdf',
+          publishedAt: '1602-03-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Execution of Mary, Queen of Scots ───────────────────────────────────────
+  {
+    externalId: 'trajectory:execution-mary-queen-scots-1587',
+    text: 'Mary, Queen of Scots, was beheaded at Fotheringhay Castle on 8 February 1587, the first judicial execution of an anointed European sovereign.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1587-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1587-02-08',
+        datePrecision: 'DAY',
+        reason: 'After Mary was convicted of complicity in the Babington Plot against Elizabeth I, Elizabeth signed the death warrant on 1 February 1587; her councillors, led by Lord Burghley, dispatched it without her further knowledge. Mary was beheaded in the great hall of Fotheringhay Castle on the morning of 8 February 1587. The execution was witnessed by official observers, and the scene was recorded in a contemporaneous eyewitness report by Robert Wingfield of Brentham.',
+        source: {
+          externalId: 'src:execution-mary-scots-record',
+          name: 'Execution of Mary, Queen of Scots — contemporaneous eyewitness account (Robert Wingfield\'s narrative) and the signed death warrant of 1 February 1587.',
+          url: 'https://en.wikipedia.org/wiki/Execution_of_Mary,_Queen_of_Scots',
+          publishedAt: '1587-02-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1587-02-08',
+        datePrecision: 'DAY',
+        reason: 'Multiple independent contemporaneous records — the surviving death warrant, the official correspondence between Elizabeth\'s councillors, eyewitness narratives, and Scottish chronicles — fix the date, place, and manner of the execution beyond dispute. The event remains uncontested in the historical literature; debate concerns Elizabeth\'s culpability and intentions, not the fact or date of the execution.',
+        source: {
+          externalId: 'src:nls-mary-scots-beheaded-1587',
+          name: 'National Library of Scotland, "Scotland\'s Pages: 1587 — Mary Queen of Scots beheaded."',
+          url: 'https://digital.nls.uk/scotlandspages/timeline/15872.html',
+          publishedAt: '1587-02-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Aurangzeb ──────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:death-of-aurangzeb-1707',
+    text: 'The Mughal emperor Aurangzeb (Alamgir I) died at his camp near Ahmednagar on 3 March 1707, after which the Mughal Empire entered a sustained decline and fragmentation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1707-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1707-03-03',
+        datePrecision: 'DAY',
+        reason: 'Aurangzeb died at his military camp at Bhingar near Ahmednagar on 3 March 1707, in the 49th year of his reign, having spent his final decades campaigning in the Deccan. His death is recorded in contemporaneous Mughal court chronicles and newsletters, and was followed immediately by a war of succession among his sons (Bahadur Shah I, Muhammad Azam Shah, and Muhammad Kam Bakhsh). At his own instruction he was buried in a simple open grave at Khuldabad.',
+        source: {
+          externalId: 'src:aurangzeb-death-1707',
+          name: 'Contemporaneous Mughal court chronicles and newsletters recording the death of Aurangzeb at Ahmednagar, 3 March 1707 (summarised in Encyclopædia Britannica, "Aurangzeb").',
+          url: 'https://www.britannica.com/biography/Aurangzeb',
+          publishedAt: '1707-03-03',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1709-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of South Asia treat Aurangzeb\'s death as the conventional pivot from Mughal ascendancy to decline: the empire reached its greatest territorial extent under him, and the succession war of 1707–1709 and subsequent weakening of central authority opened the way for regional successor states and, eventually, European (notably British East India Company) expansion. The date and place of death are documented from court records and are uncontested.',
+        source: {
+          externalId: 'src:mughal-succession-war-1707',
+          name: 'Mughal war of succession (1707–1709) — scholarly synthesis of the succession struggle following Aurangzeb\'s death.',
+          url: 'https://en.wikipedia.org/wiki/Mughal_war_of_succession_(1707%E2%80%931709)',
+          publishedAt: '1709-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
