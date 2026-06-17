@@ -29172,6 +29172,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Fall of Babylon to Cyrus the Great (Persia) ─────────────────────────────
+  {
+    externalId: 'trajectory:fall-of-babylon-cyrus-539bce',
+    text: 'The army of Cyrus the Great, led by the Gutian governor Ugbaru (Gobryas), captured Babylon without a battle on the 16th of the month Tashritu (12 October 539 BCE), and Cyrus himself entered the city on the 3rd of Arahsamnu (29 October 539 BCE) — events logged contemporaneously in the Babylonian Nabonidus Chronicle.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0539-10-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0539-10-12',
+        datePrecision: 'DAY',
+        reason: 'The Nabonidus Chronicle, a Babylonian record kept by temple scribes, enters under the relevant regnal year: "On the sixteenth day, Ugbaru, governor of Gutium, and the army of Cyrus entered Babylon without battle," and "On the third day of the month Arahsamna, Cyrus entered Babylon." These are dated, non-narrative civic notices fixing the capture to the Babylonian calendar, independent of later Greek and Hebrew accounts.',
+        source: {
+          externalId: 'src:nabonidus-chronicle-fall-babylon',
+          name: 'Nabonidus Chronicle (ABC 7 / BM 35382), Babylonian cuneiform chronicle recording the fall of Babylon to Cyrus.',
+          url: 'https://www.livius.org/sources/content/mesopotamian-chronicles-content/abc-7-nabonidus-chronicle/',
+          publishedAt: '0539-10-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1880-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Cyrus Cylinder — a contemporaneous Babylonian foundation inscription buried in the city wall of Babylon, excavated there in 1879 and acquired by the British Museum in 1880 — independently records Cyrus\'s peaceful entry into Babylon and his restoration of its cults, corroborating the chronicle. Modern reconstruction of the Neo-Babylonian calendar (Parker & Dubberstein) converts the chronicle\'s dates to 12 and 29 October 539 BCE, and the fall of Babylon in autumn 539 BCE is treated as a securely fixed datum of ancient chronology.',
+        source: {
+          externalId: 'src:cyrus-cylinder-british-museum',
+          name: 'Cyrus Cylinder (British Museum BM 90920), contemporaneous Babylonian inscription recording Cyrus\'s capture of Babylon, 539–538 BCE.',
+          url: 'https://www.britishmuseum.org/collection/object/W_1880-0617-1941',
+          publishedAt: '1880-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Augustus's Secular Games and Horace's Carmen Saeculare (Rome) ────────────
+  {
+    externalId: 'trajectory:secular-games-carmen-saeculare-17bce',
+    text: 'Augustus celebrated the Ludi Saeculares (Secular Games) at Rome over 31 May–3 June 17 BCE, the festival culminating in the performance of Horace\'s commissioned Carmen Saeculare by a choir of 27 boys and 27 girls — recorded both in the official inscribed Acta of the games and in Horace\'s surviving hymn.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0017-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0017-06-03',
+        datePrecision: 'DAY',
+        reason: 'Augustus revived the centennial Secular Games, presided over by the quindecimviri sacris faciundis, with nocturnal and daytime sacrifices running from the night of 31 May 17 BCE. On the final day the Carmen Saeculare — written at the emperor\'s request by Q. Horatius Flaccus — was sung by a chorus of 27 freeborn boys and 27 girls. Horace\'s hymn survives intact as a contemporaneous record of the rite.',
+        source: {
+          externalId: 'src:horace-carmen-saeculare-text',
+          name: 'Q. Horatius Flaccus, Carmen Saeculare (Secular Hymn), composed for the Ludi Saeculares of 17 BCE.',
+          url: 'https://www.thelatinlibrary.com/horace/carmsaec.shtml',
+          publishedAt: '0017-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The marble Acta of the games (the commentarium ludorum saecularium, CIL VI 32323), excavated on the bank of the Tiber in 1890, give the official day-by-day protocol of the ceremonies and explicitly name Horace as author of the hymn ("carmen composuit Q. Hor[at]ius Flaccus"). The inscription independently confirms the literary account and fixes the festival to late May–early June 17 BCE, settling the event across documentary and literary evidence.',
+        source: {
+          externalId: 'src:acta-secular-games-17bce',
+          name: 'Acta of the Secular Games of 17 BCE (CIL VI 32323) — inscribed commentarium recording the ceremonies and naming Horace as composer of the Carmen Saeculare.',
+          url: 'https://en.wikipedia.org/wiki/Carmen_Saeculare',
+          publishedAt: '1890-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Guest star of 386 CE — candidate supernova (Han/Jin China) ───────────────
+  {
+    externalId: 'trajectory:sn386-guest-star',
+    text: 'Chinese court astronomers recorded a "guest star" in the asterism Nandou (in modern Sagittarius) in 386 CE that remained visible for about three months before fading in the sixth lunar month — preserved in the Book of Jin and identified by modern astronomers as a candidate supernova (SN 386), though its nature and remnant remain disputed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0386-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0386-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical treatise of the Book of Jin logs, in the 11th year of the Taiyuan reign of Emperor Xiaowu, a guest star in Nandou that "lasted until the sixth month, when it disappeared" — a transient bright enough for the imperial bureau to track over roughly three months, the signature of a stellar explosion rather than a planet or ordinary comet.',
+        source: {
+          externalId: 'src:book-of-jin-guest-star-386',
+          name: 'Book of Jin (晉書), Treatise on Astronomy (天文志), record of the guest star of Taiyuan 11 (386 CE).',
+          url: 'https://en.wikipedia.org/wiki/SN_386',
+          publishedAt: '0386-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Clark & Stephenson (1976) tentatively matched the 386 guest star to the supernova remnant G11.2-0.3, but Borkowski, Reynolds & Roberts (2016) rejected the association, arguing the very high dust absorption toward that remnant would have hidden any explosion from naked-eye view in 386 CE. Whether the recorded object was a supernova at all — or a slowly declining classical nova (Hoffmann & Vogt, 2020) — and which remnant, if any, it produced remain unresolved.',
+        source: {
+          externalId: 'src:borkowski-g112-not-sn386-2016',
+          name: 'Borkowski KJ, Reynolds SP, Roberts MSE. G11.2-0.3 is not associated with SN 386 (ApJ Letters 819:L7, 2016), as reviewed with the supernova/nova debate on the SN 386 record.',
+          url: 'https://en.wikipedia.org/wiki/SN_386',
+          publishedAt: '2016-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
