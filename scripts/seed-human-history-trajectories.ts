@@ -23782,6 +23782,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Franklin's kite experiment — lightning is electricity ───────────────────
+  {
+    externalId: 'trajectory:franklin-kite-lightning-1752',
+    text: 'Benjamin Franklin demonstrated in June 1752 that lightning is an electrical discharge by drawing electric charge from a thundercloud using a kite.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1752-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1752-10-19',
+        datePrecision: 'DAY',
+        reason: 'Franklin publishes a short account of the kite experiment in the Pennsylvania Gazette, describing how a key suspended from a wet kite string drew sparks and charged a Leyden jar during a thunderstorm — establishing that the "electric fire" of the laboratory and the fire of lightning are identical.',
+        source: {
+          externalId: 'src:franklin-kite-pennsylvania-gazette-1752',
+          name: 'Franklin B. "The Kite Experiment." The Pennsylvania Gazette, 19 October 1752.',
+          url: 'https://founders.archives.gov/documents/Franklin/01-04-02-0135',
+          publishedAt: '1752-10-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1767-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent replication confirms the result. Thomas-François Dalibard had already drawn sparks from a tall iron rod at Marly-la-Ville in May 1752 (following Franklin\'s published proposal), and Joseph Priestley gives a full corroborating account in his History and Present State of Electricity (1767). The identity of lightning and electricity becomes settled physics, with the lightning rod as its practical proof.',
+        source: {
+          externalId: 'src:priestley-history-electricity-1767',
+          name: 'Priestley J. The History and Present State of Electricity, with Original Experiments. London, 1767.',
+          url: 'https://www.gutenberg.org/ebooks/58508',
+          publishedAt: '1767-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Vulcan — the intra-Mercurial planet that never was ──────────────────────
+  {
+    externalId: 'trajectory:vulcan-intramercurial-planet-1860',
+    text: 'A planet ("Vulcan") orbits the Sun inside Mercury\'s orbit and causes the anomalous precession of Mercury\'s perihelion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1860-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1860-01-02',
+        datePrecision: 'DAY',
+        reason: 'Urbain Le Verrier — fresh from predicting Neptune from orbital anomalies — announces to the French Academy of Sciences that the unexplained 38 arcsec/century excess in Mercury\'s perihelion advance is caused by an undiscovered intra-Mercurial planet. He cites amateur astronomer Edmond Lescarbault\'s claimed transit observation of 26 March 1859 as evidence, and names the body Vulcan.',
+        source: {
+          externalId: 'src:leverrier-vulcan-comptes-rendus-1860',
+          name: 'Le Verrier UJJ. Comptes rendus de l\'Académie des sciences, vol. 50, séance of 2 January 1860 (announcement of intra-Mercurial planet).',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k3008h',
+          publishedAt: '1860-01-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1878-07-29',
+        datePrecision: 'DAY',
+        reason: 'Decades of dedicated searches — including coordinated observations during the total solar eclipse of 29 July 1878, when James Craig Watson and Lewis Swift each reported candidate objects — fail to yield any reproducible detection. The conflicting and unconfirmable sightings leave Vulcan\'s existence in serious doubt despite the still-unexplained perihelion anomaly.',
+        source: {
+          externalId: 'src:watson-vulcan-eclipse-1878',
+          name: 'Watson JC. "Observations of the Eclipse of July 29, 1878, and search for intra-Mercurial planets." American Journal of Science, 1878.',
+          url: 'https://articles.adsabs.harvard.edu/pdf/1878AmJS...16..230W',
+          publishedAt: '1878-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-11-18',
+        datePrecision: 'DAY',
+        reason: 'Albert Einstein shows that general relativity accounts for the full 43 arcsec/century anomaly in Mercury\'s perihelion with no additional matter required. The motivation for Vulcan vanishes; the planet is abandoned as a hypothesis. The episode becomes a textbook case of a Neptune-style prediction that failed because the underlying physics, not a missing body, was the cause.',
+        source: {
+          externalId: 'src:einstein-perihelion-mercury-1915',
+          name: 'Einstein A. "Erklärung der Perihelbewegung des Merkur aus der allgemeinen Relativitätstheorie." Sitzungsberichte der Preußischen Akademie der Wissenschaften, 18 November 1915.',
+          url: 'https://einsteinpapers.press.princeton.edu/vol6-doc/233',
+          publishedAt: '1915-11-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Krakatoa eruption — the first globally instrumented disaster ────────────
+  {
+    externalId: 'trajectory:krakatoa-eruption-1883',
+    text: 'The volcano Krakatoa, in the Sunda Strait, erupted catastrophically on 26–27 August 1883, destroying most of the island and killing more than 36,000 people.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1883-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1883-08-27',
+        datePrecision: 'DAY',
+        reason: 'The climactic explosion on the morning of 27 August is heard nearly 5,000 km away in Australia and on Rodrigues Island, and news of the eruption and the tsunamis it generated is transmitted worldwide within hours over the new submarine telegraph network — the first natural catastrophe reported around the globe almost in real time.',
+        source: {
+          externalId: 'src:krakatoa-times-dispatches-1883',
+          name: 'Contemporary telegraphic dispatches and eyewitness accounts of the Krakatoa eruption, August–September 1883 (compiled in the Royal Society report).',
+          url: 'https://www.britannica.com/place/Krakatoa',
+          publishedAt: '1883-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Royal Society\'s Krakatoa Committee publishes its comprehensive report, correlating worldwide barograph traces of the atmospheric pressure wave (which circled the Earth several times), tide-gauge records of the tsunami, and the global "blood-red" sunsets caused by stratospheric aerosols — converting eyewitness reports into a quantitatively documented, settled scientific event.',
+        source: {
+          externalId: 'src:royal-society-krakatoa-report-1888',
+          name: 'Symons GJ, ed. The Eruption of Krakatoa, and Subsequent Phenomena. Report of the Krakatoa Committee of the Royal Society. London, 1888.',
+          url: 'https://archive.org/details/eruptionofkrakat00symo',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Curies announce the discovery of radium ─────────────────────────────
+  {
+    externalId: 'trajectory:curie-radium-discovery-1898',
+    text: 'Marie and Pierre Curie announced the existence of a new highly radioactive element, radium, in pitchblende residues on 26 December 1898.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1898-12-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-12-26',
+        datePrecision: 'DAY',
+        reason: 'Marie and Pierre Curie, with Gustave Bémont, present a note to the French Academy of Sciences reporting a new element — radium — far more radioactive than uranium, identified by its characteristic spectral line in barium-rich fractions of uranium ore. (Polonium had been announced by the Curies the previous July.)',
+        source: {
+          externalId: 'src:curie-radium-comptes-rendus-1898',
+          name: 'Curie P, Curie M, Bémont G. "Sur une nouvelle substance fortement radio-active, contenue dans la pechblende." Comptes rendus de l\'Académie des sciences, 26 December 1898.',
+          url: 'https://gallica.bnf.fr/ark:/12148/bpt6k3062c/f1215',
+          publishedAt: '1898-12-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After years of processing tonnes of pitchblende residue, Marie Curie isolates roughly a decigram of pure radium chloride and determines radium\'s atomic weight (~225), confirming it as a genuine new element. The discovery is ratified by the 1903 Nobel Prize in Physics and Marie Curie\'s 1911 Nobel Prize in Chemistry.',
+        source: {
+          externalId: 'src:curie-radium-atomic-weight-1902',
+          name: 'Curie M. "Sur le poids atomique du radium." Comptes rendus de l\'Académie des sciences, 1902.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1911/marie-curie/facts/',
+          publishedAt: '1902-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dred Scott v. Sandford — a holding later constitutionally reversed ───────
+  {
+    externalId: 'trajectory:dred-scott-decision-1857',
+    text: 'The U.S. Supreme Court held in Dred Scott v. Sandford, decided 6 March 1857, that people of African descent could not be U.S. citizens and that Congress lacked power to prohibit slavery in the federal territories.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1857-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1857-03-06',
+        datePrecision: 'DAY',
+        reason: 'Chief Justice Roger Taney delivers the opinion of the Court, ruling 7–2 against Dred Scott. The decision strikes down the Missouri Compromise restriction on slavery and declares that no Black person, free or enslaved, could be a citizen — making it binding federal law.',
+        source: {
+          externalId: 'src:dred-scott-opinion-1857',
+          name: 'Dred Scott v. Sandford, 60 U.S. (19 How.) 393 (1857). Opinion of Chief Justice Taney.',
+          url: 'https://supreme.justia.com/cases/federal/us/60/393/',
+          publishedAt: '1857-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1857-03-06',
+        datePrecision: 'DAY',
+        reason: 'As a holding of the Supreme Court, the decision was the controlling law of the United States. It intensified sectional conflict over slavery and is widely regarded as a precipitating cause of the American Civil War.',
+        source: {
+          externalId: 'src:dred-scott-reports-1857',
+          name: 'Howard BC, reporter. Reports of Cases Argued and Adjudged in the Supreme Court of the United States, vol. 19 (Dred Scott v. Sandford), 1857.',
+          url: 'https://www.loc.gov/item/usrep060393/',
+          publishedAt: '1857-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1868-07-09',
+        datePrecision: 'DAY',
+        reason: 'The Thirteenth Amendment (ratified 1865) abolished slavery, and the Fourteenth Amendment, ratified 9 July 1868, established birthright citizenship — directly nullifying the Dred Scott holding that Black Americans could not be citizens. The decision is now universally regarded as overruled by constitutional amendment and among the worst in the Court\'s history.',
+        source: {
+          externalId: 'src:fourteenth-amendment-1868',
+          name: 'Fourteenth Amendment to the United States Constitution, ratified 9 July 1868 (Section 1, Citizenship Clause).',
+          url: 'https://www.archives.gov/milestone-documents/14th-amendment',
+          publishedAt: '1868-07-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
