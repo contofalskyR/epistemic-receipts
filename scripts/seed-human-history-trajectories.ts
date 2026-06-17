@@ -27358,6 +27358,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Faraday's electromagnetic rotation — first electric motor ───────────────
+  {
+    externalId: 'trajectory:faraday-electromagnetic-rotation-1821',
+    text: 'Michael Faraday demonstrated continuous electromagnetic rotation on 3–4 September 1821, the first conversion of electric current and magnetism into sustained mechanical motion and the foundational principle of the electric motor.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1821-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1821-09-03',
+        datePrecision: 'DAY',
+        reason: 'In his basement laboratory at the Royal Institution in London, Faraday suspends a current-carrying wire in a dish of mercury with a bar magnet and observes the wire revolve continuously around the magnet. His notebook entry of 3 September 1821 ("Very satisfactory, but make more sensible apparatus") records the breakthrough, refined the following day — the first time electrical energy was converted into continuous motion.',
+        source: {
+          externalId: 'src:rigb-birth-electric-motion',
+          name: 'Royal Institution. "The birth of electric motion" (on Faraday\'s electromagnetic rotation, 3–4 September 1821).',
+          url: 'https://www.rigb.org/explore-science/explore/blog/birth-electric-motion',
+          publishedAt: '1821-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1821-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Faraday publishes "On Some New Electro-Magnetical Motions, and on the Theory of Magnetism" in the Quarterly Journal of Science in October 1821 and distributes pocket-sized working models so colleagues across Europe can replicate the effect. The phenomenon is independently confirmed and becomes the established basis of all electric motors.',
+        source: {
+          externalId: 'src:faraday-michael-electromagnetism',
+          name: 'Faraday M. "On Some New Electro-Magnetical Motions." Quarterly Journal of Science 1821; reproduced in Wikipedia entry on Michael Faraday.',
+          url: 'https://en.wikipedia.org/wiki/Michael_Faraday',
+          publishedAt: '1821-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Robert Brown and Brownian motion ────────────────────────────────────────
+  {
+    externalId: 'trajectory:brownian-motion-1827',
+    text: 'Robert Brown observed the ceaseless random motion of microscopic particles suspended in water (pollen grains) during June–August 1827; the motion was later explained as the result of bombardment by water molecules, confirming the atomic-molecular theory of matter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1827-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1828-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Botanist Robert Brown, examining pollen grains of Clarkia pulchella under a microscope, finds the suspended particles in perpetual irregular motion that is not biological in origin, since the same jiggling appears with inorganic dust. He publishes "A brief account of microscopical observations made in the months of June, July and August 1827, on the particles contained in the pollen of plants" in the Philosophical Magazine in 1828.',
+        source: {
+          externalId: 'src:brown-microscopical-observations-1828',
+          name: 'Brown R. "A brief account of microscopical observations… on the particles contained in the pollen of plants." Philosophical Magazine 1828;4(21):161–173.',
+          url: 'https://en.wikipedia.org/wiki/Brownian_motion',
+          publishedAt: '1828-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Albert Einstein\'s 1905 paper derives a quantitative theory of the motion as the cumulative effect of collisions with individual molecules, and Jean Baptiste Perrin\'s precise experiments (1908–1909) verify Einstein\'s predictions and yield Avogadro\'s number. The cause of Brownian motion is settled, providing decisive empirical evidence for the molecular constitution of matter; Perrin receives the 1926 Nobel Prize in Physics for the work.',
+        source: {
+          externalId: 'src:perrin-mouvement-brownien-1909',
+          name: 'Perrin J. "Mouvement brownien et réalité moléculaire." Annales de Chimie et de Physique 1909; summarised in Wikipedia entry on Brownian motion.',
+          url: 'https://en.wikipedia.org/wiki/Brownian_motion',
+          publishedAt: '1909-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── United States v. The Amistad ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:amistad-supreme-court-1841',
+    text: 'The U.S. Supreme Court ruled on 9 March 1841 in United States v. The Amistad that the Africans who had seized the schooner Amistad had been illegally kidnapped and were free persons, ordering their release.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1841-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1841-03-09',
+        datePrecision: 'DAY',
+        reason: 'Justice Joseph Story delivers the opinion of the Court, holding that the captives had been "unlawfully kidnapped, and forcibly and wrongfully carried on board" in violation of treaties banning the Atlantic slave trade, that the Spanish ownership documents were fraudulent, and that the Africans "ought to be deemed free" and dismissed from custody.',
+        source: {
+          externalId: 'src:amistad-opinion-1841',
+          name: 'United States v. The Amistad, 40 U.S. (15 Pet.) 518 (1841). Opinion of Justice Story (case record summarised, Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/United_States_v._The_Amistad',
+          publishedAt: '1841-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1842-01-01',
+        datePrecision: 'YEAR',
+        reason: 'As a final holding of the Supreme Court, the ruling was binding and not appealed. The surviving Mende captives were freed and, with funds raised by abolitionists, returned to Sierra Leone in early 1842. The decision stands as a landmark in the legal record of the antislavery struggle.',
+        source: {
+          externalId: 'src:amistad-case-history',
+          name: 'United States v. The Amistad — case history and aftermath (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/United_States_v._The_Amistad',
+          publishedAt: '1842-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of gold at Sutter's Mill ──────────────────────────────────────
+  {
+    externalId: 'trajectory:sutters-mill-gold-1848',
+    text: 'James W. Marshall discovered gold in the tailrace of Sutter\'s Mill on the American River on 24 January 1848; the find was officially confirmed by President James K. Polk on 5 December 1848, igniting the California Gold Rush.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1848-01-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1848-01-24',
+        datePrecision: 'DAY',
+        reason: 'On 24 January 1848 James W. Marshall, building a sawmill for John Sutter near Coloma, finds flakes of shiny metal in the millrace and tests confirm it is gold. The discovery is initially kept quiet but spreads through California over the spring, drawing the first wave of prospectors.',
+        source: {
+          externalId: 'src:california-gold-rush-discovery',
+          name: 'California Gold Rush — discovery at Sutter\'s Mill, 24 January 1848 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/California_Gold_Rush',
+          publishedAt: '1848-01-24',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1848-12-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 December 1848 President James K. Polk confirms the abundance of California gold in his annual message to Congress, citing official reports and a tea-caddy of bullion sent east. The federal confirmation removes public doubt and triggers the mass migration of "forty-niners" in 1849.',
+        source: {
+          externalId: 'src:polk-message-congress-1848',
+          name: 'Polk JK. Fourth Annual Message to Congress, 5 December 1848 (confirming California gold discoveries).',
+          url: 'https://millercenter.org/the-presidency/presidential-speeches/december-5-1848-fourth-annual-message-congress',
+          publishedAt: '1848-12-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Dreyfus affair — conviction, J'Accuse, exoneration ──────────────────
+  {
+    externalId: 'trajectory:dreyfus-affair-1894-1906',
+    text: 'French army captain Alfred Dreyfus, convicted of treason by court-martial on 22 December 1894, was wrongly imprisoned; after Émile Zola\'s open letter "J\'Accuse…!" (13 January 1898) reopened the case, his conviction was annulled and he was exonerated on 12 July 1906.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1894-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1894-12-22',
+        datePrecision: 'DAY',
+        reason: 'A closed military court-martial convicts Alfred Dreyfus, a Jewish artillery officer, of passing secrets to Germany on the basis of a handwriting comparison and a secret dossier withheld from the defence. He is publicly degraded on 5 January 1895 and deported to Devil\'s Island, with the verdict treated as a settled matter of state.',
+        source: {
+          externalId: 'src:dreyfus-conviction-1894',
+          name: 'Alfred Dreyfus — court-martial conviction of 22 December 1894 and degradation (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Alfred_Dreyfus',
+          publishedAt: '1894-12-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1898-01-13',
+        datePrecision: 'DAY',
+        reason: 'Novelist Émile Zola publishes the open letter "J\'Accuse…!" on the front page of the newspaper L\'Aurore, addressed to President Félix Faure, charging the army with a judicial frame-up, suppression of evidence, and antisemitism, and naming Major Esterhazy as the real spy. The letter forces the case into open public and legal dispute.',
+        source: {
+          externalId: 'src:zola-jaccuse-1898',
+          name: 'Zola É. "J\'Accuse…!" L\'Aurore, 13 January 1898.',
+          url: 'https://en.wikipedia.org/wiki/J%27Accuse...!',
+          publishedAt: '1898-01-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1906-07-12',
+        datePrecision: 'DAY',
+        reason: 'On 12 July 1906 Dreyfus is officially exonerated, his conviction annulled; he is reinstated in the army and made a Chevalier of the Legion of Honour. The original guilty verdict is definitively overturned and the affair is recognised as a wrongful conviction.',
+        source: {
+          externalId: 'src:dreyfus-exoneration-1906',
+          name: 'Alfred Dreyfus — official exoneration of 12 July 1906 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Alfred_Dreyfus',
+          publishedAt: '1906-07-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
