@@ -42097,6 +42097,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDENDUM (1400–1750) — Scientific Revolution, Reformation,
+  // New World, Mughal India
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Death of Babur, founder of the Mughal Empire ────────────────────────────
+  {
+    externalId: 'trajectory:death-of-babur-1530',
+    text: 'Babur, founder of the Mughal Empire, died at Agra on 26 December 1530 (Old Style; 5 January 1531 New Style), passing the dynasty to his son Humayun.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1530-12-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1530-12-26',
+        datePrecision: 'DAY',
+        reason: 'Babur dies at Agra after a brief illness; rule passes to his eldest son Humayun. The death is recorded in the contemporary Timurid-Mughal court record. Babur\'s own memoir, the Baburnama, written in Chagatai Turki, is the principal contemporaneous source for his reign and the founding of the empire he leaves behind.',
+        source: {
+          externalId: 'src:baburnama-beveridge',
+          name: 'Babur. Baburnama (Memoirs of Babur), trans. Annette S. Beveridge (1912–1922). Contemporaneous autobiography of the Mughal founder.',
+          url: 'https://archive.org/details/baburnamainengli01babuuoft',
+          publishedAt: '1922-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Babur\'s death and the succession of Humayun are independently corroborated by his daughter Gulbadan Begum\'s Humayun-nama and by later Persian court chronicles. Modern historiography fixes the date as 26 December 1530 (Julian), equivalently 5 January 1531 in the Gregorian calendar, and treats his founding of the empire and dynastic succession as settled fact.',
+        source: {
+          externalId: 'src:babur-death-historiography',
+          name: 'Babur — biography and death (26 December 1530 O.S. / 5 January 1531 N.S.), Agra. Corroborated by Gulbadan Begum\'s Humayun-nama and Persian chronicles.',
+          url: 'https://en.wikipedia.org/wiki/Babur',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Union of Utrecht — constitutional foundation of the Dutch Republic ──────
+  {
+    externalId: 'trajectory:union-of-utrecht-1579',
+    text: 'On 23 January 1579, several northern Netherlandish provinces signed the Union of Utrecht, the defensive alliance against Philip II that became the constitutional foundation of the Dutch Republic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1579-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1579-01-23',
+        datePrecision: 'DAY',
+        reason: 'Provinces and cities of the northern Low Countries conclude a binding agreement against King Philip II of Spain, jointly regulating defence, taxation, and religion. The treaty grants complete personal freedom of religion, making it one of the earliest unlimited edicts of religious toleration. The signed instrument is preserved in the Dutch national archives.',
+        source: {
+          externalId: 'src:union-of-utrecht-1579-text',
+          name: 'Union of Utrecht, 23 January 1579 — text and signatories (defence, taxation, religion; freedom of conscience).',
+          url: 'https://en.wikipedia.org/wiki/Union_of_Utrecht',
+          publishedAt: '1579-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1648-05-15',
+        datePrecision: 'DAY',
+        reason: 'The Peace of Münster (ratified 15 May 1648, part of the Peace of Westphalia) ends the Eighty Years\' War and secures Spanish recognition of the independent United Provinces. The Union of Utrecht\'s role as the de facto constitution of the Dutch Republic is thereby permanently established and is treated as settled in subsequent constitutional history.',
+        source: {
+          externalId: 'src:peace-of-munster-1648-utrecht',
+          name: 'Peace of Münster (15 May 1648) — Spanish recognition of the United Provinces, confirming the Union of Utrecht\'s constitutional role.',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_M%C3%BCnster',
+          publishedAt: '1648-05-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Huygens resolves the rings of Saturn (Systema Saturnium) ────────────────
+  {
+    externalId: 'trajectory:huygens-saturn-rings-1659',
+    text: 'Christiaan Huygens established that Saturn is encircled by a thin, flat ring nowhere touching the planet, resolving the puzzle of its changing "appendages" first seen by Galileo in 1610; he published the solution in Systema Saturnium in 1659.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1659-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1659-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Huygens publishes Systema Saturnium, proposing that a thin, flat ring inclined to the ecliptic and nowhere touching the body of Saturn explains the planet\'s mystifying changing appearance — the "ears" or appendages Galileo had observed in 1610 but could not interpret. He had first encoded the hypothesis as an anagram in his 1656 Titan pamphlet before revealing it in full.',
+        source: {
+          externalId: 'src:huygens-systema-saturnium-1659',
+          name: 'Christiaan Huygens. Systema Saturnium (1659). Proposes a thin, flat ring not touching Saturn, inclined to the ecliptic.',
+          url: 'https://en.wikipedia.org/wiki/Christiaan_Huygens',
+          publishedAt: '1659-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1675-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Giovanni Domenico Cassini observes a dark gap dividing Saturn\'s ring into two concentric components (the Cassini Division), confirming and elaborating the ring structure Huygens proposed. The ring interpretation supplants all earlier attempts (multiple moons, handles) and becomes the accepted account.',
+        source: {
+          externalId: 'src:cassini-division-1675',
+          name: 'G. D. Cassini, 1675 — discovery of the division separating Saturn\'s rings, confirming Huygens\' ring hypothesis.',
+          url: 'https://en.wikipedia.org/wiki/Rings_of_Saturn',
+          publishedAt: '1675-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First issue of Philosophical Transactions — birth of the scientific journal
+  {
+    externalId: 'trajectory:philosophical-transactions-1665',
+    text: 'The Royal Society\'s Philosophical Transactions — the first English-language scientific periodical and originator of dated registration and peer scrutiny of findings — published its inaugural issue on 6 March 1665.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1665-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1665-03-06',
+        datePrecision: 'DAY',
+        reason: 'Henry Oldenburg, the Royal Society\'s first secretary, publishes the inaugural issue at his own expense. The journal introduces functions still central to scientific publishing: registration (date-stamping the priority of discoveries), certification through scrutiny by Society members, dissemination, and archiving.',
+        source: {
+          externalId: 'src:phil-trans-first-issue-1665',
+          name: 'Philosophical Transactions, No. 1 (6 March 1665), ed. Henry Oldenburg. Royal Society of London.',
+          url: 'https://en.wikipedia.org/wiki/Philosophical_Transactions_of_the_Royal_Society',
+          publishedAt: '1665-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Philosophical Transactions has been published continuously since 1665, making it the world\'s longest-running scientific journal. Its 350th-anniversary retrospectives confirm its founding date and document its role in establishing the norms of priority registration and peer review that define modern scientific publishing.',
+        source: {
+          externalId: 'src:phil-trans-350-years',
+          name: 'Celebrating 350 years of Philosophical Transactions (Royal Society / PMC, 2015) — continuous publication since 6 March 1665.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4360094/',
+          publishedAt: '2015-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
