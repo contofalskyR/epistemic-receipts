@@ -24773,6 +24773,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — additional curves (Byzantine, Islamic, European)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Council of Clermont — Urban II calls the First Crusade ──────────────────
+  {
+    externalId: 'trajectory:council-of-clermont-1095',
+    text: 'On 27 November 1095, at the Council of Clermont, Pope Urban II delivered the speech that launched the First Crusade, calling on Western Christians to take up arms and march to the aid of the Eastern Church and Jerusalem.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1095-11-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1095-11-27',
+        datePrecision: 'DAY',
+        reason: 'On the final day of the synod convened at Clermont (17–27 November 1095), Urban II preached his call to arms to the assembled clergy and laity. Fulcher of Chartres, an eyewitness present at the council, recorded the speech in his Historia Hierosolymitana, and Urban himself confirmed the appeal in a letter of December 1095. The Gesta Francorum, Robert the Monk, Baldric of Dol, and Guibert of Nogent supply four further near-contemporary versions.',
+        source: {
+          externalId: 'src:fulcher-chartres-clermont',
+          name: 'Fulcher of Chartres. Historia Hierosolymitana, I.3, eyewitness account of Urban II\'s speech at the Council of Clermont, 27 November 1095. (c. 1101–1105)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Clermont',
+          publishedAt: '1105-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Although the five chronicle versions differ in wording — and historians debate how much each reflects Urban\'s actual words versus the success of the crusade they wrote after — the date of 27 November 1095 and the fact that Urban\'s sermon at Clermont initiated the First Crusade are settled in crusade scholarship, corroborated by Urban\'s own surviving letter.',
+        source: {
+          externalId: 'src:clermont-scholarly-synthesis',
+          name: 'Council of Clermont — scholarly synthesis of the five chronicle accounts and Urban II\'s December 1095 letter, with dating of the 27 November 1095 sermon.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Clermont',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Concordat of Worms — resolution of the Investiture Controversy ──────────
+  {
+    externalId: 'trajectory:concordat-of-worms-1122',
+    text: 'On 23 September 1122, Pope Callixtus II and Emperor Henry V concluded the Concordat of Worms, ending the Investiture Controversy: the emperor renounced investiture of bishops and abbots with ring and crosier, while retaining a temporal role in their appointment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1122-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1122-09-23',
+        datePrecision: 'DAY',
+        reason: 'The settlement took the form of two reciprocal charters exchanged at Worms: the imperial charter (Heinricianum), in which Henry V surrendered investiture with ring and staff and granted canonical election; and the papal privilege (Calixtinum), in which Callixtus II permitted elections in the emperor\'s presence and investiture with the temporal regalia by the scepter. Both documents survive as original instruments.',
+        source: {
+          externalId: 'src:concordat-worms-charters',
+          name: 'Concordat of Worms — the Heinricianum and Calixtinum charters exchanged between Henry V and Callixtus II, 23 September 1122. (1122)',
+          url: 'https://en.wikipedia.org/wiki/Concordat_of_Worms',
+          publishedAt: '1122-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The two surviving charters fix both the date and the terms beyond dispute. Medieval historians treat the Concordat of Worms as the formal close of the half-century Investiture Controversy that had run from Gregory VII\'s prohibition of lay investiture through the penance at Canossa (1077), even as they debate how decisively it favored papacy or empire.',
+        source: {
+          externalId: 'src:worms-scholarly-synthesis',
+          name: 'Concordat of Worms — scholarly synthesis of the surviving charters and the resolution of the Investiture Controversy.',
+          url: 'https://en.wikipedia.org/wiki/Concordat_of_Worms',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fourth Lateran Council — transubstantiation defined as doctrine ─────────
+  {
+    externalId: 'trajectory:fourth-lateran-council-1215',
+    text: 'The Fourth Council of the Lateran, which opened on 11 November 1215 under Pope Innocent III, defined transubstantiation in its first canon as the official doctrine of the Catholic Church for the Eucharist.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1215-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-11-11',
+        datePrecision: 'DAY',
+        reason: 'Convoked by Innocent III in April 1213, the council opened at the Lateran Palace in Rome on 11 November 1215 with some 400 bishops and 800 abbots and priors present. Its first canon, Firmiter credimus, used the term transubstantiatis to define how the bread and wine of the Eucharist become the body and blood of Christ — the first formal conciliar definition of the doctrine, promulgated in the council\'s 71 canons.',
+        source: {
+          externalId: 'src:lateran4-canon1',
+          name: 'Fourth Council of the Lateran, Canon 1 (Firmiter credimus), defining transubstantiation, promulgated November 1215. (1215)',
+          url: 'https://en.wikipedia.org/wiki/Fourth_Council_of_the_Lateran',
+          publishedAt: '1215-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1551-10-11',
+        datePrecision: 'DAY',
+        reason: 'The Lateran IV definition was reaffirmed and elaborated by the Council of Trent in its decree on the Eucharist (13th session, 11 October 1551), which made transubstantiation a defined dogma binding on the Catholic Church. The dating of the Lateran IV canon and its role as the doctrine\'s first formal statement remain settled in church history.',
+        source: {
+          externalId: 'src:lateran4-scholarly-synthesis',
+          name: 'Fourth Council of the Lateran — scholarly synthesis of Canon 1 and the later confirmation of transubstantiation at the Council of Trent.',
+          url: 'https://en.wikipedia.org/wiki/Fourth_Council_of_the_Lateran',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ain Jalut — first major check on the Mongol advance ───────────
+  {
+    externalId: 'trajectory:battle-of-ain-jalut-1260',
+    text: 'At the Battle of Ain Jalut on 3 September 1260 (26 Ramadan 658 AH), the Mamluk Sultanate of Egypt under Sultan Qutuz and his general Baybars defeated the Mongol Ilkhanate force under Kitbuqa, halting the Mongol westward advance into the Levant.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1260-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1260-09-03',
+        datePrecision: 'DAY',
+        reason: 'The Mamluk victory in the Jezreel Valley, where Kitbuqa was captured and killed, was recorded by the Syrian chronicler Abu Shama (a contemporary, d. 1267) and by the slightly later Mamluk historians al-Yunini and al-Maqrizi, as well as in the Persian universal history of Rashid al-Din. The Arabic sources date the battle to 26 Ramadan 658 AH.',
+        source: {
+          externalId: 'src:maqrizi-ain-jalut',
+          name: 'al-Maqrizi. Kitab al-Suluk li-Marifat Duwal al-Muluk, account of the Battle of Ain Jalut, 26 Ramadan 658 AH (3 September 1260). (early 15th century, drawing on contemporary chronicles)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '1440-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arabic and Persian sources converge on the date (3 September 1260), the location near the spring of Ain Jalut, and the Mamluk victory over Kitbuqa\'s detachment. Modern scholarship treats the battle as settled in date and outcome and as the first significant battlefield defeat that halted the Mongol expansion in the Near East, even while debating its longer strategic significance.',
+        source: {
+          externalId: 'src:ain-jalut-scholarly-synthesis',
+          name: 'Battle of Ain Jalut — scholarly synthesis of the Arabic and Persian chronicle accounts and the dating to 3 September 1260.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
