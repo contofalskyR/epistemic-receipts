@@ -23552,6 +23552,236 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — supplement
+  // Byzantine, Arab/Islamic, Song-to-Ming China, medieval European science & religion
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Triumph of Orthodoxy — restoration of icon veneration (843) ──────────────
+  {
+    externalId: 'trajectory:triumph-of-orthodoxy-843',
+    text: 'On the first Sunday of Lent, 11 March 843, the regent empress Theodora and Patriarch Methodios restored the veneration of icons in Constantinople, permanently ending Byzantine Iconoclasm — the event commemorated ever since as the Triumph of Orthodoxy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0843-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0843-03-11',
+        datePrecision: 'DAY',
+        reason: 'After more than a century of intermittent imperial bans on religious images, a synod convened under the regent Theodora deposes the iconoclast patriarch John VII Grammatikos, installs Methodios, and reaffirms the decrees of the Second Council of Nicaea (787) permitting the veneration of icons. The reversal is proclaimed in a public liturgical procession in Hagia Sophia on the first Sunday of Lent, reversing the standing iconoclast position of the Byzantine state church.',
+        source: {
+          externalId: 'src:synodikon-orthodoxy-843',
+          name: 'The Synodikon of Orthodoxy, instituted 843 (annual liturgical text commemorating the restoration of icons).',
+          url: 'https://en.wikipedia.org/wiki/Triumph_of_Orthodoxy',
+          publishedAt: '0843-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Contemporary and near-contemporary Byzantine sources — the Synodikon read every year on the feast, the chroniclers Theophanes Continuatus and Symeon the Logothete, and the hagiography of the period — agree on the date and outcome. Modern Byzantine scholarship treats 11 March 843 as the fixed, securely dated end of Iconoclasm; debate concerns its political causes, not the event itself.',
+        source: {
+          externalId: 'src:brubaker-haldon-iconoclasm',
+          name: 'Brubaker L, Haldon J. Byzantium in the Iconoclast Era. Cambridge University Press (standard scholarship dating the 843 restoration).',
+          url: 'https://www.britannica.com/event/Iconoclastic-Controversy',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Karbala — death of Husayn ibn Ali (680) ────────────────────────
+  {
+    externalId: 'trajectory:battle-of-karbala-680',
+    text: 'Husayn ibn Ali, grandson of the Prophet Muhammad, was killed with his companions by an Umayyad army at Karbala in Iraq on 10 Muharram 61 AH (10 October 680 CE) — the day commemorated as Ashura.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0680-10-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0680-10-10',
+        datePrecision: 'DAY',
+        reason: 'An army sent by the Umayyad governor of Kufa surrounds and kills Husayn and most of his male relatives and followers near Karbala after a standoff over the caliphate of Yazid I. The killing on the tenth day of Muharram is recorded by survivors and by the partisans of the Prophet\'s family, and within a generation Ashura becomes a fixed annual day of mourning, anchoring the event to a specific date.',
+        source: {
+          externalId: 'src:abu-mikhnaf-maqtal-husayn',
+          name: 'Abu Mikhnaf, Maqtal al-Husayn (8th c.), preserved in al-Tabari, Tarikh al-Rusul wa al-Muluk (History of the Prophets and Kings).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Karbala',
+          publishedAt: '0915-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Sunni and Shia historical traditions, which diverge sharply on the interpretation and blame, nonetheless agree on the bare facts: the date 10 Muharram 61 AH, the location at Karbala, and the death of Husayn. Modern academic historians (Wellhausen, Hodgson, Madelung) treat the event as a securely dated, non-contested fixed point in early Islamic history, regardless of its theological readings.',
+        source: {
+          externalId: 'src:madelung-succession-muhammad',
+          name: 'Madelung W. The Succession to Muhammad. Cambridge University Press, 1997 (critical scholarship on the Karbala sources).',
+          url: 'https://www.britannica.com/event/Battle-of-Karbala',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Thomas Becket — Canterbury Cathedral (1170) ─────────────
+  {
+    externalId: 'trajectory:thomas-becket-murder-1170',
+    text: 'Thomas Becket, Archbishop of Canterbury, was murdered by four knights of King Henry II inside Canterbury Cathedral on 29 December 1170 during the dispute over royal authority over the English Church.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1170-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1170-12-29',
+        datePrecision: 'DAY',
+        reason: 'Four knights — Reginald Fitzurse, Hugh de Morville, William de Tracy and Richard le Breton — cut down the archbishop at the hour of vespers near a side altar of the cathedral. The clerk Edward Grim, standing beside Becket and wounded in the arm trying to shield him, writes a detailed eyewitness account; several other clerics of the household record the murder within days.',
+        source: {
+          externalId: 'src:edward-grim-becket-1170',
+          name: 'Edward Grim, Vita S. Thomae (Life of St Thomas), eyewitness account of the murder, c. 1171–1172.',
+          url: 'https://en.wikipedia.org/wiki/Thomas_Becket',
+          publishedAt: '1172-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1173-02-21',
+        datePrecision: 'DAY',
+        reason: 'Pope Alexander III canonises Becket as a saint and martyr on 21 February 1173, little more than two years after the murder — an exceptionally rapid canonisation that fixes the event in the institutional record of the Church and triggers one of medieval Europe\'s largest pilgrimage cults at Canterbury.',
+        source: {
+          externalId: 'src:alexander-iii-becket-canonization-1173',
+          name: 'Papal canonisation of Thomas Becket by Alexander III, 21 February 1173 (bull Redolet Anglia).',
+          url: 'https://www.britannica.com/biography/Saint-Thomas-Becket',
+          publishedAt: '1173-02-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Arrest of the Knights Templar (1307) ─────────────────────────────────────
+  {
+    externalId: 'trajectory:knights-templar-arrest-1307',
+    text: 'On Friday 13 October 1307, King Philip IV of France ordered the simultaneous arrest of the Knights Templar across France on charges of heresy — charges that were used to suppress the order in 1312 but were judged unproven when secret absolution records resurfaced centuries later.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1307-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1307-10-13',
+        datePrecision: 'DAY',
+        reason: 'Acting on sealed royal warrants distributed in advance, the agents of Philip IV arrest the Grand Master Jacques de Molay and hundreds of Templars throughout France in a single coordinated dawn operation, charging them with heresy, blasphemy and obscene rites. The royal orders and the subsequent interrogation records survive in the French and papal archives, documenting the arrest and its date precisely.',
+        source: {
+          externalId: 'src:philip-iv-templar-arrest-order-1307',
+          name: 'Arrest warrant of Philip IV of France against the Knights Templar, issued September 1307, executed 13 October 1307 (royal archives).',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '1307-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1312-03-22',
+        datePrecision: 'DAY',
+        reason: 'Pope Clement V suppresses the Order of the Temple by the bull Vox in excelso at the Council of Vienne on 22 March 1312, transferring its property to the Hospitallers. The dissolution and the trials, recorded in the papal registers, fix the suppression of the order as a documented institutional fact.',
+        source: {
+          externalId: 'src:vox-in-excelso-1312',
+          name: 'Pope Clement V, bull Vox in excelso, Council of Vienne, 22 March 1312 (suppression of the Templar order).',
+          url: 'https://www.britannica.com/topic/Templar',
+          publishedAt: '1312-03-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-10-25',
+        datePrecision: 'DAY',
+        reason: 'The Vatican Secret Archives publish the Chinon Parchment (Processus contra Templarios), rediscovered by Barbara Frale in 2001, showing that in 1308 Clement V had secretly absolved the Templar leaders of heresy before political pressure forced the order\'s suppression. The arrest and dissolution remain settled facts, but the heresy charges that justified them are documented as having been internally judged unproven.',
+        source: {
+          externalId: 'src:chinon-parchment-processus-templarios-2007',
+          name: 'Vatican Secret Archives, Processus contra Templarios (Chinon Parchment, 1308), published 2007 ed. Barbara Frale.',
+          url: 'https://en.wikipedia.org/wiki/Chinon_Parchment',
+          publishedAt: '2007-10-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of the Ming dynasty — enthronement of the Hongwu Emperor (1368) ─
+  {
+    externalId: 'trajectory:ming-dynasty-founded-1368',
+    text: 'Zhu Yuanzhang proclaimed himself emperor at Yingtian (Nanjing) on 23 January 1368, founding the Ming dynasty under the Hongwu reign-era and beginning the overthrow of Mongol Yuan rule in China.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1368-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1368-01-23',
+        datePrecision: 'DAY',
+        reason: 'The former rebel commander Zhu Yuanzhang performs the imperial accession rites at his capital Yingtian, declaring the dynastic name Ming and the reign-title Hongwu. His Mongol Yuan rivals are driven from the northern capital Dadu (Beijing) later the same year. The accession and its date are entered into the court record as the founding act of the dynasty.',
+        source: {
+          externalId: 'src:ming-shilu-hongwu-accession-1368',
+          name: 'Ming Shilu (Veritable Records of the Ming), Taizu reign, accession of the Hongwu Emperor, first day of the first month, 1368.',
+          url: 'https://en.wikipedia.org/wiki/Hongwu_Emperor',
+          publishedAt: '1368-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The official dynastic history Ming Shi, compiled under the succeeding Qing, and modern sinological scholarship (including the Cambridge History of China) confirm the accession date and the founding of the Ming, converting the Chinese lunar date to 23 January 1368 in the Julian calendar. The founding is a fixed, securely dated point in Chinese history.',
+        source: {
+          externalId: 'src:cambridge-history-ming-founding',
+          name: 'Mote FW, Twitchett D, eds. The Cambridge History of China, Vol. 7: The Ming Dynasty. Cambridge University Press, 1988.',
+          url: 'https://www.britannica.com/topic/Ming-dynasty-Chinese-history',
+          publishedAt: '1988-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
