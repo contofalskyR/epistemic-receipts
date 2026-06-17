@@ -47466,6 +47466,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Manzikert — Byzantine emperor captured by the Seljuks ──────────
+  {
+    externalId: 'trajectory:battle-manzikert-1071',
+    text: 'On 26 August 1071, the Seljuk Sultan Alp Arslan defeated the Byzantine army at Manzikert and captured Emperor Romanos IV Diogenes — the only time a Byzantine emperor was taken prisoner by a Muslim commander.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1071-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1071-08-26',
+        datePrecision: 'DAY',
+        reason: 'Near Manzikert (Malazgirt) in eastern Anatolia, the Seljuk forces of Alp Arslan routed Romanos IV\'s army after the reserve under Andronikos Doukas withdrew; the emperor was wounded, captured, and brought before the sultan. The defeat and capture were recorded by the contemporary Byzantine official Michael Attaleiates, who served in the imperial administration and wrote his History within a decade of the events.',
+        source: {
+          externalId: 'src:attaleiates-history-manzikert',
+          name: 'Michael Attaleiates, History (Historia), on the defeat at Manzikert and the capture of Romanos IV. (c. 1080)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Manzikert',
+          publishedAt: '1080-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle on 26 August 1071, the Byzantine defeat, and the unprecedented capture of a reigning emperor are attested across Byzantine (Attaleiates, Bryennios, Anna Komnene), Armenian, Syriac, and Arabic-Persian (Ibn al-Athir, Sibt ibn al-Jawzi) traditions. Modern scholarship treats Manzikert as a settled fact and a conventional marker of the decline of Byzantine control over Anatolia.',
+        source: {
+          externalId: 'src:wikipedia-battle-manzikert',
+          name: 'Wikipedia, "Battle of Manzikert" — 26 August 1071, Seljuk victory and capture of Romanos IV.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Manzikert',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jingkang Incident — fall of the Northern Song to the Jin ─────────────────
+  {
+    externalId: 'trajectory:jingkang-incident-1127',
+    text: 'On 9 January 1127 the Jurchen Jin captured the Northern Song capital Bianjing (Kaifeng) and took emperors Qinzong and Huizong prisoner, ending the Northern Song dynasty (the Jingkang Incident).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1127-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1127-01-09',
+        datePrecision: 'DAY',
+        reason: 'After a second Jin siege, Bianjing fell on 9 January 1127; the reigning Emperor Qinzong and his abdicated father Emperor Huizong, together with much of the imperial clan and court, were captured and later deported north. The catastrophe — named for the Jingkang era — was documented in contemporaneous Song accounts collected in the Accounts of Jingkang (靖康稗史).',
+        source: {
+          externalId: 'src:accounts-of-jingkang',
+          name: 'Accounts of Jingkang (靖康稗史箋證), contemporaneous Song records of the fall of Bianjing and capture of the Song emperors.',
+          url: 'https://en.wikipedia.org/wiki/Jingkang_incident',
+          publishedAt: '1130-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The fall of Kaifeng and the abduction of the two emperors are recorded in the official histories (the History of Song and History of Jin among the Twenty-Four Histories) and in contemporary memoirs. The surviving Song prince Zhao Gou re-established the dynasty in the south as the Southern Song, fixing the Jingkang Incident as the settled dividing line between Northern and Southern Song.',
+        source: {
+          externalId: 'src:wikipedia-jingkang-incident',
+          name: 'Wikipedia, "Jingkang incident" — 9 January 1127, Jin capture of Bianjing and the Song emperors.',
+          url: 'https://en.wikipedia.org/wiki/Jingkang_incident',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Clermont — Urban II proclaims the First Crusade ───────────────
+  {
+    externalId: 'trajectory:council-clermont-1095',
+    text: 'On 27 November 1095, at the Council of Clermont, Pope Urban II delivered a sermon calling for an armed expedition to aid the Eastern Christians and recover Jerusalem — the proclamation that launched the First Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1095-11-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1095-11-27',
+        datePrecision: 'DAY',
+        reason: 'On the final day of the council, in an open-air assembly outside Clermont, Urban II called on the Frankish nobility and clergy to take up arms. Fulcher of Chartres, who was present, recorded the speech in his Historia Hierosolymitana; his version is generally regarded as the most reliable. Urban\'s own letter of December 1095 to the faithful of Flanders independently confirms the council and its appeal.',
+        source: {
+          externalId: 'src:fulcher-chartres-clermont',
+          name: 'Fulcher of Chartres, Historia Hierosolymitana, I.1–3, account of Urban II\'s speech at Clermont. (c. 1100–1106)',
+          url: 'https://sourcebooks.fordham.edu/source/urban2-5vers.asp',
+          publishedAt: '1101-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Multiple eyewitness or near-contemporary chroniclers independently record the Clermont appeal — Fulcher of Chartres, Robert the Monk, Baldric of Dol, and Guibert of Nogent — alongside the conciliar canons and Urban\'s surviving letters. Although the exact wording is debated, that Urban proclaimed the crusade at Clermont on 27 November 1095 is a settled fact of medieval history.',
+        source: {
+          externalId: 'src:wikipedia-council-clermont',
+          name: 'Wikipedia, "Council of Clermont" — Urban II\'s 27 November 1095 call to arms launching the First Crusade.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Clermont',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Hattin — Saladin destroys the Crusader army ────────────────────
+  {
+    externalId: 'trajectory:battle-hattin-1187',
+    text: 'On 4 July 1187, Saladin destroyed the army of the Kingdom of Jerusalem at the Horns of Hattin, capturing King Guy of Lusignan and the relic of the True Cross — the defeat that opened the way to Saladin\'s recapture of Jerusalem.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1187-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1187-07-04',
+        datePrecision: 'DAY',
+        reason: 'Lured into the waterless plateau above Tiberias, the Crusader army was surrounded and annihilated; King Guy and many nobles were taken prisoner and the True Cross was seized. Saladin\'s own secretary, Imad ad-Din al-Isfahani, who accompanied the campaign, recorded the battle and its aftermath, as did Ibn al-Athir, who preserved an eyewitness account from Saladin\'s son al-Afdal.',
+        source: {
+          externalId: 'src:imad-ad-din-hattin',
+          name: 'Imad ad-Din al-Isfahani, al-Fath al-qussi fi-l-fath al-qudsi (Saladin\'s secretary), eyewitness account of the battle of Hattin. (c. 1190)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hattin',
+          publishedAt: '1190-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle on 4 July 1187, the capture of King Guy, and the loss of the True Cross are attested by both Arabic contemporaries (Imad ad-Din, Ibn al-Athir, Baha ad-Din) and Latin Crusader sources (the Libellus de expugnatione and the continuations of William of Tyre). The defeat at Hattin and its date are settled in modern scholarship as the turning point that lost the kingdom Jerusalem within months.',
+        source: {
+          externalId: 'src:wikipedia-battle-hattin',
+          name: 'Wikipedia, "Battle of Hattin" — 4 July 1187, Saladin\'s victory and capture of Guy of Lusignan.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hattin',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ain Jalut — the Mamluks halt the Mongol advance ────────────────
+  {
+    externalId: 'trajectory:battle-ain-jalut-1260',
+    text: 'On 3 September 1260, the Egyptian Mamluks under Qutuz and Baybars defeated the Mongol Ilkhanate army under Kitbuqa at Ain Jalut in Galilee — the first major defeat halting the Mongol advance westward.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1260-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1260-09-03',
+        datePrecision: 'DAY',
+        reason: 'At the spring of Ain Jalut (26 Ramadan 658 AH), the Mamluk army feigned retreat and then enveloped the Mongol force; Kitbuqa was killed and the Mongols were driven back toward Beisan. The battle was recorded by the Mamluk-era contemporary chronicler al-Yunini in his Dhayl Mir\'at al-zaman and by other Arabic historians of the period.',
+        source: {
+          externalId: 'src:al-yunini-ain-jalut',
+          name: 'al-Yunini, Dhayl Mir\'at al-zaman, account of the battle of Ain Jalut. (late 13th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '1290-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Mamluk victory at Ain Jalut on 3 September 1260, the death of Kitbuqa, and the checking of the Mongol advance into Syria are attested across Arabic (al-Yunini, al-Maqrizi), Persian (Rashid al-Din), and other traditions. Modern scholarship treats the battle and its date as settled and as a decisive turning point in the limits of Mongol expansion.',
+        source: {
+          externalId: 'src:wikipedia-battle-ain-jalut',
+          name: 'Wikipedia, "Battle of Ain Jalut" — 3 September 1260, Mamluk victory over the Mongol Ilkhanate.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
