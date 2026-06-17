@@ -46609,6 +46609,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — physics revolution, total war, Holocaust,
+  // decolonization. Additions 2026-06-17.
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sykes–Picot Agreement: secret partition revealed by the Bolsheviks ───────
+  {
+    externalId: 'trajectory:sykes-picot-agreement-1916',
+    text: 'Britain and France secretly agreed in May 1916 to partition the Arab provinces of the Ottoman Empire into respective spheres of influence and control — the Sykes–Picot Agreement — concealed until the Bolsheviks published the texts in November 1917.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1916-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1916-05-16',
+        datePrecision: 'DAY',
+        reason: 'The final terms are sent by French Ambassador Paul Cambon to British Foreign Secretary Edward Grey on 9 May 1916 and ratified in Grey\'s reply of 16 May 1916. The agreement, negotiated by Mark Sykes and François Georges-Picot, divides the post-Ottoman Levant and Mesopotamia into a French "blue" zone, a British "red" zone, and an international/Arab-state area. It is kept secret from the public and from Britain\'s Arab and Russian wartime partners, recorded only in diplomatic correspondence.',
+        source: {
+          externalId: 'src:avalon-sykes-picot-1916',
+          name: 'The Sykes-Picot Agreement: 1916. The Avalon Project, Yale Law School (full text of the agreement).',
+          url: 'https://avalon.law.yale.edu/20th_century/sykes.asp',
+          publishedAt: '1916-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1917-11-23',
+        datePrecision: 'DAY',
+        reason: 'After seizing power, the Bolsheviks publish the full texts of the secret Tsarist-era treaties, including Sykes–Picot, in Izvestia and Pravda on 23 November 1917; The Manchester Guardian prints the texts on 26 November 1917. The disclosure makes the partition a matter of undeniable public record, embarrassing Britain (whose Hussein–McMahon correspondence had promised Arab independence), dismaying Arab leaders, and shaping the post-war Middle Eastern settlement. The documentary existence and terms of the agreement have never since been in dispute.',
+        source: {
+          externalId: 'src:sykes-picot-bolshevik-disclosure-1917',
+          name: 'Sykes–Picot Agreement — Bolshevik publication of the texts in Izvestia and Pravda (23 Nov 1917) and The Manchester Guardian (26 Nov 1917). Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Sykes%E2%80%93Picot_Agreement',
+          publishedAt: '1917-11-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Moseley establishes the atomic number ────────────────────────────────────
+  {
+    externalId: 'trajectory:moseley-atomic-number-1913',
+    text: 'Henry Moseley showed that the characteristic X-ray frequencies of the elements vary systematically with an integer — the atomic number (nuclear charge) — establishing that atomic number, not atomic weight, determines an element\'s place in the periodic table. First reported in December 1913.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-12-01',
+        datePrecision: 'MONTH',
+        reason: 'In "The High-Frequency Spectra of the Elements" (Philosophical Magazine, Series 6, Vol. 26, pp. 1024–1034, December 1913), Moseley reports that the square root of the frequency of an element\'s characteristic K-line X-rays is a linear function of an integer that increases by one from element to element. He identifies this integer with the charge on the atomic nucleus — the atomic number Z — confirming the Rutherford–Bohr nuclear atom.',
+        source: {
+          externalId: 'src:moseley-high-frequency-spectra-1913',
+          name: 'Moseley H.G.J. The High-Frequency Spectra of the Elements. Philosophical Magazine, Series 6, Vol. 26 (Dec 1913), pp. 1024–1034.',
+          url: 'https://en.wikipedia.org/wiki/Henry_Moseley',
+          publishedAt: '1913-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-04-01',
+        datePrecision: 'MONTH',
+        reason: 'In Part II (Philosophical Magazine, Series 6, Vol. 27, pp. 703–713, April 1914), Moseley extends the law across the elements, resolves anomalies that atomic-weight ordering could not (e.g. cobalt before nickel, argon before potassium), and predicts the number and positions of then-undiscovered elements (later filled by Z = 43, 61, 72, 75). The atomic number is rapidly accepted as the fundamental ordering principle of the periodic table; Moseley\'s law remains a settled foundation of atomic physics. Moseley was killed at Gallipoli on 10 August 1915.',
+        source: {
+          externalId: 'src:moseley-high-frequency-spectra-part2-1914',
+          name: 'Moseley H.G.J. The High-Frequency Spectra of the Elements. Part II. Philosophical Magazine, Series 6, Vol. 27 (April 1914), pp. 703–713.',
+          url: 'https://en.wikipedia.org/wiki/Moseley%27s_law',
+          publishedAt: '1914-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vrba–Wetzler Report documents the Auschwitz extermination ────────────────
+  {
+    externalId: 'trajectory:vrba-wetzler-report-1944',
+    text: 'Escaped prisoners Rudolf Vrba and Alfréd Wetzler compiled a detailed eyewitness report (the Vrba–Wetzler Report / Auschwitz Protocols) in April 1944 documenting the gas chambers and the mass murder of approximately 1.5–1.75 million people at Auschwitz-Birkenau, bringing systematic evidence of the extermination to the West.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-04-27',
+        datePrecision: 'DAY',
+        reason: 'After escaping Auschwitz between 7 and 11 April 1944, Rudolf Vrba and Alfréd Wetzler dictate a ~40-page account in Žilina, Slovakia, completed in German translation by 27 April 1944. The report describes the layout of Birkenau, the deception of arriving deportees, the gas chambers and the introduction of Zyklon B, the crematoria, and estimates that roughly 1.5–1.75 million Jews were killed between April 1942 and April 1944 — the first detailed, firsthand documentation of the killing process to reach the free world.',
+        source: {
+          externalId: 'src:vrba-wetzler-report-1944',
+          name: 'Vrba–Wetzler report (Auschwitz Protocols), compiled April 1944 — eyewitness account by escaped prisoners Rudolf Vrba and Alfréd Wetzler. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Vrba%E2%80%93Wetzler_report',
+          publishedAt: '1944-04-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1944-11-25',
+        datePrecision: 'DAY',
+        reason: 'The report reaches Western governments by mid-June 1944 (Allen Dulles forwards it to the U.S. State Department on 16 June 1944) and is published in full by the U.S. War Refugee Board on 25 November 1944. It contributes to international pressure on Hungary and corroborates the reality of Auschwitz as an extermination center — a conclusion confirmed by post-war evidence, the Nuremberg trials, and the physical remains of the camp, and never since overturned.',
+        source: {
+          externalId: 'src:war-refugee-board-auschwitz-1944',
+          name: 'U.S. War Refugee Board, "German Extermination Camps — Auschwitz and Birkenau" (released 25 Nov 1944), incorporating the Vrba–Wetzler report. USHMM Holocaust Encyclopedia.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/auschwitz',
+          publishedAt: '1944-11-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Midway: turning point of the Pacific War ───────────────────────
+  {
+    externalId: 'trajectory:battle-of-midway-1942',
+    text: 'In the Battle of Midway (4–7 June 1942), United States naval forces sank four Japanese fleet aircraft carriers, inflicting a decisive defeat on the Imperial Japanese Navy that marked the turning point of the Pacific War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-06-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1942-06-04',
+        datePrecision: 'DAY',
+        reason: 'Forewarned by signals intelligence that had broken the Japanese naval code, U.S. carrier aircraft from Enterprise, Hornet and Yorktown attack Admiral Nagumo\'s strike force northeast of Midway Atoll on 4 June 1942. Dive bombers fatally cripple the carriers Akagi, Kaga and Sōryū within minutes, and Hiryū later the same day; all four are lost by 7 June. The United States loses the carrier Yorktown and the destroyer Hammann. The action is reported contemporaneously by both navies\' operational records.',
+        source: {
+          externalId: 'src:midway-battle-1942',
+          name: 'Battle of Midway, 4–7 June 1942 — decisive U.S. naval victory; four Japanese fleet carriers (Akagi, Kaga, Sōryū, Hiryū) sunk. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Midway',
+          publishedAt: '1942-06-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-06-07',
+        datePrecision: 'DAY',
+        reason: 'The loss of four irreplaceable fleet carriers and their experienced aircrews permanently shifts the carrier balance in the Pacific and ends Japan\'s strategic offensive initiative. Naval historians (Morison\'s official U.S. Navy history; Keegan calling it "the most stunning and decisive blow in the history of naval warfare") and Japanese records concur on the outcome, which is regarded as the turning point of the Pacific War and is not in dispute.',
+        source: {
+          externalId: 'src:midway-turning-point-history',
+          name: 'Naval History and Heritage Command — Battle of Midway overview (turning point of the Pacific War).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Midway',
+          publishedAt: '1942-06-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Quit India Movement launched ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:quit-india-movement-1942',
+    text: 'On 8 August 1942 the All India Congress Committee passed the Quit India Resolution in Bombay, launching a mass civil-disobedience movement demanding an immediate end to British rule in India; Gandhi gave his "Do or Die" speech and the British arrested the Congress leadership within hours.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-08-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1942-08-08',
+        datePrecision: 'DAY',
+        reason: 'At its Bombay session on 8 August 1942 the All India Congress Committee adopts the Quit India Resolution drafted under Mohandas Gandhi, demanding the immediate withdrawal of British power. Gandhi delivers his "Do or Die" (Karenge ya Marenge) speech at the Gowalia Tank Maidan, calling for non-violent mass struggle. The resolution and speech are recorded in the contemporaneous Indian and British press.',
+        source: {
+          externalId: 'src:quit-india-resolution-1942',
+          name: 'Quit India Movement — AICC Quit India Resolution and Gandhi\'s "Do or Die" speech, Bombay, 8 August 1942. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Quit_India_Movement',
+          publishedAt: '1942-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-08-09',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 9 August 1942 the British colonial government launches Operation Zero Hour, arresting almost the entire Congress leadership — including Gandhi, Nehru and Patel — without trial; over 100,000 people are eventually detained and the Congress is declared unlawful. The launch of the movement, the resolution, and the mass arrests are documented in official Government of India records and remain settled historical facts.',
+        source: {
+          externalId: 'src:quit-india-arrests-1942',
+          name: 'Quit India Movement — arrest of the Congress leadership (9 Aug 1942) and ensuing mass detentions. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Quit_India_Movement',
+          publishedAt: '1942-08-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
