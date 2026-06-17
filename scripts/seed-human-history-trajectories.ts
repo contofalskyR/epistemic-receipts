@@ -40624,6 +40624,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — Ottoman, New World, Reformation, Scientific Revolution, Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Ankara — Timur captures Sultan Bayezid I ──────────────────────
+  {
+    externalId: 'trajectory:battle-of-ankara-1402',
+    text: 'At the Battle of Ankara on 28 July 1402, the armies of Timur (Tamerlane) defeated the Ottoman forces of Sultan Bayezid I, who was captured alive — the only time in Ottoman history a reigning sultan was taken prisoner in battle.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1402-07-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1402-07-28',
+        datePrecision: 'DAY',
+        reason: 'On the Çubuk plain near Ankara, Timur\'s larger army routs the Ottoman host. Bayezid I flees to the hills with a few hundred horsemen but is surrounded and captured; he dies in Timurid captivity some eight months later. The capture triggers the Ottoman Interregnum (1402–1413), a war of succession among Bayezid\'s sons. The event is reported immediately across the Mediterranean and Persianate worlds.',
+        source: {
+          externalId: 'src:battle-of-ankara-wikipedia',
+          name: 'Battle of Ankara, 28 July 1402 — Timur defeats and captures Ottoman Sultan Bayezid I (Çubuk plain). Contemporary and near-contemporary accounts include Sharaf al-Din Ali Yazdi\'s Zafarnama.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ankara',
+          publishedAt: '1402-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1436-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle is independently attested by the Timurid court chronicle (the Zafarnama of Sharaf al-Din Ali Yazdi, completed 1424–1436), by the hostile biography of Ahmad ibn Arabshah, and by Ottoman and Byzantine sources. The capture of Bayezid and the resulting Ottoman Interregnum are uniformly reported across these independent traditions, leaving the date and outcome settled in scholarship.',
+        source: {
+          externalId: 'src:yazdi-zafarnama-ankara',
+          name: 'Sharaf al-Din Ali Yazdi. Zafarnama (Book of Victory), c. 1424–1436 — Timurid court history of the Ankara campaign and Bayezid\'s capture.',
+          url: 'https://en.wikipedia.org/wiki/Zafarnama_(Yazdi_biography)',
+          publishedAt: '1436-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cortés meets Moctezuma II at Tenochtitlan ───────────────────────────────
+  {
+    externalId: 'trajectory:cortes-meets-moctezuma-1519',
+    text: 'On 8 November 1519, Hernán Cortés and his expedition entered the Aztec capital Tenochtitlan and met the emperor Moctezuma II on the causeway — the first recorded face-to-face encounter between the Spanish conquistadors and the Mexica ruler.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1519-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1519-11-08',
+        datePrecision: 'DAY',
+        reason: 'Cortés, his Spanish soldiers, and thousands of Indigenous allies cross the Lake Texcoco causeway into Tenochtitlan, where Moctezuma II receives them and lodges them in the palace of Axayácatl. Cortés narrates the meeting in his Second Letter to Charles V (1520); the eyewitness foot-soldier Bernal Díaz del Castillo describes it in detail in his True History of the Conquest of New Spain.',
+        source: {
+          externalId: 'src:cortes-moctezuma-meeting-wikipedia',
+          name: 'Spanish conquest of the Aztec Empire — "8 November 1519: Meeting of Cortés and Moctezuma." Primary accounts: Cortés, Second Letter to Charles V (1520); Bernal Díaz del Castillo, Historia verdadera de la conquista de la Nueva España.',
+          url: 'https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire',
+          publishedAt: '1520-10-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1632-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and fact of the meeting are corroborated by multiple independent traditions: Cortés\'s official dispatches (printed in Seville from 1522), Bernal Díaz\'s eyewitness chronicle (first printed 1632), and Indigenous Nahua sources such as the Florentine Codex compiled under Bernardino de Sahagún. The convergence of Spanish and Mexica accounts on the 8 November 1519 entry leaves the event settled.',
+        source: {
+          externalId: 'src:bernal-diaz-true-history',
+          name: 'Bernal Díaz del Castillo. Historia verdadera de la conquista de la Nueva España (first published 1632) — eyewitness account of the entry into Tenochtitlan and meeting with Moctezuma.',
+          url: 'https://en.wikipedia.org/wiki/Bernal_D%C3%ADaz_del_Castillo',
+          publishedAt: '1632-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Protestation at Speyer — the birth of "Protestantism" ───────────────────
+  {
+    externalId: 'trajectory:protestation-at-speyer-1529',
+    text: 'On 19 April 1529, at the Second Diet of Speyer, six princes and fourteen Imperial Free Cities of the Holy Roman Empire formally protested the majority decree revoking religious toleration of the Reformation — the act from which the adherents of the reform movement took the name "Protestants."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1529-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1529-04-19',
+        datePrecision: 'DAY',
+        reason: 'After the Catholic majority at Speyer voted to rescind the 1526 edict that had permitted each prince to govern religion in his own territory, the evangelical estates — led by Elector John of Saxony, Landgrave Philip of Hesse, and others — read a formal Letter of Protestation on 19 April 1529, refusing to be bound by the decree. A follow-up appeal (Instrumentum Appellationis) was filed on 25 April. From this protest the reformers became known as "Protestants."',
+        source: {
+          externalId: 'src:protestation-speyer-wikipedia',
+          name: 'Protestation at Speyer, 19 April 1529 — formal protest by six princes and fourteen Imperial Free Cities against the Diet\'s revocation of the 1526 toleration edict; origin of the term "Protestant."',
+          url: 'https://en.wikipedia.org/wiki/Protestation_at_Speyer',
+          publishedAt: '1529-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1555-09-25',
+        datePrecision: 'DAY',
+        reason: 'The protest of 1529 is documented in the imperial diet records and contemporary correspondence and is recognized as the origin of the Protestant name. The religious division it dramatized was given legal form by the Peace of Augsburg (25 September 1555), which established cuius regio, eius religio. Historians treat the 19 April 1529 Protestation as the settled, conventional birthdate of organized Protestantism.',
+        source: {
+          externalId: 'src:peace-augsburg-confirms-speyer',
+          name: 'Peace of Augsburg, 25 September 1555 — legally recognized the Lutheran estates that had protested at Speyer, settling the principle of territorial confession (cuius regio, eius religio).',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Augsburg',
+          publishedAt: '1555-09-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Humayun — fall from the Sher Mandal library stair ──────────────
+  {
+    externalId: 'trajectory:death-of-humayun-1556',
+    text: 'The Mughal emperor Humayun died on 27 January 1556 in Delhi, three days after falling down the stone staircase of his Sher Mandal library when he heard the muezzin\'s call to prayer; his death precipitated the accession of his thirteen-year-old son Akbar.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1556-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1556-01-27',
+        datePrecision: 'DAY',
+        reason: 'On 24 January 1556, descending the stairs of the Sher Mandal in Delhi with an armful of books, Humayun caught his foot in his robe when the call to prayer sounded, fell, and fractured his skull; he died on 27 January 1556. His death was initially concealed for several days to secure the throne for the young Akbar, who was proclaimed emperor on 14 February 1556.',
+        source: {
+          externalId: 'src:humayun-death-wikipedia',
+          name: 'Humayun — death on 27 January 1556 following a fall from the Sher Mandal library staircase on 24 January 1556. Recorded in Gulbadan Begum\'s Humayun-nama and Abul Fazl\'s Akbarnama.',
+          url: 'https://en.wikipedia.org/wiki/Humayun',
+          publishedAt: '1556-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The circumstances and date of Humayun\'s death are recorded in the contemporary Mughal court histories — the Humayun-nama written by his sister Gulbadan Begum at Akbar\'s request, and the Akbarnama of Abul Fazl (begun 1590) — which agree on the fall from the library stair and the swift transfer of power to Akbar, leaving the account settled in Mughal historiography.',
+        source: {
+          externalId: 'src:akbarnama-humayun-death',
+          name: 'Abul Fazl ibn Mubarak. Akbarnama (begun c. 1590) — official Mughal court chronicle recording Humayun\'s death and Akbar\'s accession.',
+          url: 'https://en.wikipedia.org/wiki/Akbarnama',
+          publishedAt: '1590-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of the Royal Observatory, Greenwich ────────────────────────────
+  {
+    externalId: 'trajectory:greenwich-observatory-founded-1675',
+    text: 'King Charles II founded the Royal Observatory at Greenwich by royal warrant on 22 June 1675 and appointed John Flamsteed the first Astronomer Royal, charged with "rectifying the tables of the motions of the heavens" to fix longitude at sea; the foundation stone was laid on 10 August 1675.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1675-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1675-06-22',
+        datePrecision: 'DAY',
+        reason: 'Charles II issues the royal warrant of 22 June 1675 establishing the Royal Observatory at Greenwich and naming John Flamsteed "astronomical observator," tasked with applying himself "with the most exact care and diligence to the rectifying the tables of the motions of the heavens, and the places of the fixed stars, so as to find out the so-much-desired longitude of places for the perfecting the art of navigation." Construction began with the laying of the foundation stone on 10 August 1675.',
+        source: {
+          externalId: 'src:greenwich-observatory-founding-wikipedia',
+          name: 'Royal Observatory, Greenwich — founded by royal warrant of Charles II on 22 June 1675; John Flamsteed appointed first Astronomer Royal; foundation stone laid 10 August 1675.',
+          url: 'https://en.wikipedia.org/wiki/Royal_Observatory,_Greenwich',
+          publishedAt: '1675-08-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1884-10-13',
+        datePrecision: 'DAY',
+        reason: 'The observatory operated continuously as Britain\'s national observatory; Flamsteed\'s posthumously published Historia Coelestis Britannica (1725) catalogued nearly 3,000 stars. The institution\'s standing was confirmed when the International Meridian Conference, on 13 October 1884, designated the Greenwich meridian as the world\'s Prime Meridian (0° longitude), cementing the observatory\'s founding date and purpose as settled historical fact.',
+        source: {
+          externalId: 'src:greenwich-prime-meridian-1884',
+          name: 'International Meridian Conference, Washington D.C., October 1884 — adopted the meridian of the Royal Observatory, Greenwich, as the Prime Meridian (0° longitude).',
+          url: 'https://en.wikipedia.org/wiki/International_Meridian_Conference',
+          publishedAt: '1884-10-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
