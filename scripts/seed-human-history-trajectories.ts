@@ -43358,6 +43358,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Reformation, Scientific Revolution, Ottoman, Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Michael Servetus burned at the stake in Geneva ──────────────────────────
+  {
+    externalId: 'trajectory:servetus-executed-1553',
+    text: 'The physician and theologian Michael Servetus was burned at the stake for heresy at Champel, on the edge of Geneva, on 27 October 1553, after the Geneva Council condemned him for anti-Trinitarianism and rejection of infant baptism.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1553-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1553-10-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 October 1553 the Little Council of Geneva, having tried Servetus for the doctrines published in his Christianismi Restitutio (1553) — which denied the Trinity and opposed paedobaptism — pronounces sentence that he be taken to Champel and burned alive with his book. John Calvin, whose denunciation had triggered the prosecution, had urged conviction but unsuccessfully sought beheading rather than burning.',
+        source: {
+          externalId: 'src:geneva-council-servetus-sentence-1553',
+          name: 'Sentence of the Council of Geneva against Michael Servetus, 26 October 1553 (Registres du Conseil de Genève; reproduced in the contemporaneous trial record).',
+          url: 'https://en.wikipedia.org/wiki/Michael_Servetus',
+          publishedAt: '1553-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1553-10-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 October 1553 Servetus is led to the plateau of Champel and burned at the stake together with copies of his book; contemporaries including Calvin himself (in his 1554 Defensio orthodoxae fidei) and the reformer Sebastian Castellio (who attacked the execution in De haereticis, an sint persequendi, 1554) record the event, fixing its date, place, and manner from firsthand and immediately contemporary accounts.',
+        source: {
+          externalId: 'src:castellio-de-haereticis-1554',
+          name: 'Sebastian Castellio. De haereticis, an sint persequendi (Whether heretics should be persecuted), 1554, protesting the burning of Servetus at Geneva.',
+          url: 'https://en.wikipedia.org/wiki/Michael_Servetus',
+          publishedAt: '1554-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── English East India Company chartered ────────────────────────────────────
+  {
+    externalId: 'trajectory:english-east-india-company-charter-1600',
+    text: 'On 31 December 1600 Queen Elizabeth I granted a royal charter incorporating "the Governor and Company of Merchants of London trading into the East Indies," the English East India Company, with a fifteen-year monopoly on English trade east of the Cape of Good Hope.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1600-12-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1600-12-31',
+        datePrecision: 'DAY',
+        reason: 'On 31 December 1600 the Crown responds favourably to a petition by George, Earl of Cumberland, and 218 associates and seals letters patent incorporating the company under a governor and 24 directors, granting it a monopoly of English trade with the East Indies for fifteen years. The charter is registered among the patent rolls of the regnal year.',
+        source: {
+          externalId: 'src:eic-royal-charter-1600',
+          name: 'Royal Charter of Queen Elizabeth I incorporating the Governor and Company of Merchants of London trading into the East Indies, 31 December 1600 (letters patent, Patent Rolls).',
+          url: 'https://en.wikipedia.org/wiki/East_India_Company',
+          publishedAt: '1600-12-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1609-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The company sends its first voyage under James Lancaster in 1601, establishes a factory at Surat (1612), and has its charter renewed and made perpetual by James I in 1609. The continuous operation of the company and the survival of its charter and court minute books in the India Office Records establish the incorporation as a settled matter of record.',
+        source: {
+          externalId: 'src:eic-charter-renewal-1609',
+          name: 'James I, renewal of the East India Company charter, 1609 (India Office Records, British Library).',
+          url: 'https://en.wikipedia.org/wiki/East_India_Company',
+          publishedAt: '1609-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Zuhab (Qasr-e Shirin) fixes the Ottoman–Safavid border ─────────
+  {
+    externalId: 'trajectory:treaty-of-zuhab-1639',
+    text: 'On 17 May 1639 the Ottoman and Safavid empires signed the Treaty of Zuhab (Qasr-e Shirin), ending the Ottoman–Safavid War of 1623–1639 and fixing a border — confirming Ottoman control of Mesopotamia including Baghdad — that broadly defines the Turkey–Iran and Iraq–Iran frontier to this day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1639-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1639-05-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 May 1639 negotiators for Sultan Murad IV and Shah Safi conclude the treaty at Qasr-e Shirin (Zuhab), ending more than a decade of war that had culminated in the Ottoman recapture of Baghdad in 1638. The Safavids cede Mesopotamia and recognise Ottoman possession of Baghdad and the Iraqi lowlands, while retaining eastern Armenia, Georgia, Dagestan, and Shirvan.',
+        source: {
+          externalId: 'src:treaty-of-zuhab-text-1639',
+          name: 'Treaty of Zuhab (Qasr-e Shirin) between the Ottoman Empire and Safavid Iran, 17 May 1639 (Ottoman–Safavid diplomatic record).',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Zuhab',
+          publishedAt: '1639-05-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-05-31',
+        datePrecision: 'DAY',
+        reason: 'The Zuhab line is repeatedly reaffirmed as the foundational reference for the Ottoman–Persian boundary, notably in the Second Treaty of Erzurum of 31 May 1847, and is treated by historians as the durable settlement of the frontier; the broad division it set has survived as the modern Iran–Turkey and Iran–Iraq border, confirming the treaty as a settled landmark.',
+        source: {
+          externalId: 'src:erzurum-treaty-1847',
+          name: 'Second Treaty of Erzurum, 31 May 1847, reaffirming the Ottoman–Persian boundary derived from the 1639 Treaty of Zuhab.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Zuhab',
+          publishedAt: '1847-05-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Christiaan Huygens patents the pendulum clock ───────────────────────────
+  {
+    externalId: 'trajectory:huygens-pendulum-clock-1657',
+    text: 'Christiaan Huygens designed the first working pendulum clock at the end of 1656 and on 16 June 1657 the States General of the Netherlands granted a patent for it, producing a timekeeper accurate to within seconds per day — roughly sixtyfold more accurate than earlier mechanical clocks.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1656-12-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1656-12-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 December 1656 Huygens completes the design of a clock whose escapement is regulated by a swinging pendulum, applying Galileo\'s observation of the pendulum\'s near-isochronous period to mechanical horology. He contracts the Hague clockmaker Salomon Coster to build the instruments and later describes the invention in his Horologium (1658) and Horologium Oscillatorium (1673).',
+        source: {
+          externalId: 'src:huygens-pendulum-clock-aps-1656',
+          name: 'American Physical Society, "June 16, 1657: Christiaan Huygens Patents the First Pendulum Clock," APS News (June 2017).',
+          url: 'https://www.aps.org/apsnews/2017/06/huygens-patents-first-pendulum-clock',
+          publishedAt: '1657-06-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1657-06-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 June 1657 the States General of the Netherlands grants a twenty-one-year patent (privilege) for the pendulum clock to Salomon Coster, working to Huygens\'s design; two days earlier, on 14 June 1657, deputies inspected the instrument. The pendulum clock becomes the most accurate timekeeper available and remains so for nearly 300 years, until the quartz clock of the 1930s, confirming the invention as a settled advance.',
+        source: {
+          externalId: 'src:huygens-states-general-patent-1657',
+          name: 'Patent (privilege) granted by the States General of the Netherlands to Salomon Coster for Huygens\'s pendulum clock, 16 June 1657.',
+          url: 'https://en.wikipedia.org/wiki/Christiaan_Huygens',
+          publishedAt: '1657-06-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Coronation of Shivaji — founding of the Maratha kingdom ──────────────────
+  {
+    externalId: 'trajectory:shivaji-coronation-1674',
+    text: 'On 6 June 1674 Shivaji Bhonsale was crowned Chhatrapati at Raigad Fort, formally establishing an independent sovereign Maratha kingdom; the English East India Company envoy Henry Oxinden was present and recorded the event in his diary.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1674-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1674-06-06',
+        datePrecision: 'DAY',
+        reason: 'On 6 June 1674 (the 13th day of the bright fortnight of Jyeshtha, Shaka 1596), in a ceremony directed by the pandit Gaga Bhatt, Shivaji is enthroned at Raigad and assumes the title Chhatrapati ("Lord of the Umbrella"), proclaiming an independent Hindu sovereign kingdom (Hindavi Swaraj) free of Mughal and Bijapur Sultanate overlordship. He inaugurates a new regnal era (Rajyabhisheka Shaka).',
+        source: {
+          externalId: 'src:oxinden-diary-shivaji-coronation-1674',
+          name: 'Henry Oxinden (English East India Company envoy from Bombay). Diary of the embassy to Raigad, recording the coronation of Shivaji, 6 June 1674 (Factory Records, India Office).',
+          url: 'https://en.wikipedia.org/wiki/Shivaji',
+          publishedAt: '1674-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1697-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The coronation is corroborated by the contemporary Marathi chronicle of Krishnaji Anant Sabhasad (the Sabhasad Bakhar, c. 1697), by the dated Jedhe Shakavali chronology, and by Oxinden\'s English account, which independently fix the date and the assumption of sovereign kingship; modern historians treat 6 June 1674 as the foundation date of the Maratha state.',
+        source: {
+          externalId: 'src:sabhasad-bakhar-shivaji',
+          name: 'Krishnaji Anant Sabhasad. Sabhasad Bakhar (chronicle of Shivaji), c. 1697, recording the coronation at Raigad.',
+          url: 'https://en.wikipedia.org/wiki/Shivaji',
+          publishedAt: '1697-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
