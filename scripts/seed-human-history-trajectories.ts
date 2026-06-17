@@ -33391,6 +33391,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Tōhoku earthquake magnitude (Japan, 2011) ───────────────────────────────
+  {
+    externalId: 'trajectory:tohoku-earthquake-magnitude-2011',
+    text: 'The 2011 Tōhoku earthquake off the Pacific coast of Japan on March 11, 2011 had a moment magnitude of 9.1, the largest earthquake recorded in Japanese history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-03-11',
+        datePrecision: 'DAY',
+        reason: 'At 14:46 JST (05:46 UTC) a megathrust earthquake ruptures off the Oshika Peninsula. The USGS issues an initial magnitude estimate of 7.9 within minutes, quickly upgraded the same day to 8.8 and then 8.9 as more seismic data arrives. The event and a major tsunami are recorded in real time by Japan Meteorological Agency and global seismic networks.',
+        source: {
+          externalId: 'src:usgs-tohoku-eventpage-2011',
+          name: 'USGS — "20 Largest Earthquakes in the World": M9.1 Tohoku Earthquake, near the east coast of Honshu, Japan, 2011-03-11.',
+          url: 'https://www.usgs.gov/programs/earthquake-hazards/science/20-largest-earthquakes-world',
+          publishedAt: '2011-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-03-11',
+        datePrecision: 'DAY',
+        reason: 'Within hours the USGS revises the magnitude upward again to 9.0 as long-period seismic waves and geodetic (GPS) data are processed, reflecting the very large rupture area. The precise magnitude is briefly unsettled as different agencies and methods yield values between 8.9 and 9.1.',
+        source: {
+          externalId: 'src:tohoku-magnitude-revision-2011',
+          name: 'Wikipedia — "2011 Tōhoku earthquake and tsunami": USGS magnitude progression 7.9 → 8.8 → 8.9 → 9.0.',
+          url: 'https://en.wikipedia.org/wiki/2011_T%C5%8Dhoku_earthquake_and_tsunami',
+          publishedAt: '2011-03-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-07-11',
+        datePrecision: 'DAY',
+        reason: 'After reanalysis the USGS finalizes the moment magnitude at 9.1 on July 11, 2016. The value is corroborated by geodetic inversions, tsunami modeling, and the GCMT catalog, and the earthquake is established as the fourth-largest recorded worldwide since 1900.',
+        source: {
+          externalId: 'src:usgs-tohoku-final-91-2016',
+          name: 'USGS — "20 Largest Earthquakes in the World": Tohoku Earthquake ranked 4th largest, M9.1.',
+          url: 'https://www.usgs.gov/programs/earthquake-hazards/science/20-largest-earthquakes-world',
+          publishedAt: '2016-07-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aadhaar — first biometric ID number issued (India, 2010) ────────────────
+  {
+    externalId: 'trajectory:aadhaar-first-number-2010',
+    text: "India's Unique Identification Authority (UIDAI) issued the first Aadhaar number to Ranjana Sonawane of Tembhli village, Nandurbar district, Maharashtra, on September 29, 2010.",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2010-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-09-29',
+        datePrecision: 'DAY',
+        reason: 'At a launch ceremony in the tribal village of Tembhli attended by Prime Minister Manmohan Singh and Sonia Gandhi, UIDAI issues the first Aadhaar number (782474317884) to Ranjana Sonawane, a daily-wage agricultural labourer. The event inaugurates what becomes the world’s largest biometric identification programme.',
+        source: {
+          externalId: 'src:uidai-aadhaar-launch-tembhli-2010',
+          name: 'Wikipedia — "Tembhli": UIDAI launched the Aadhaar program on 29 September 2010; first person given an Aadhaar number.',
+          url: 'https://en.wikipedia.org/wiki/Tembhli',
+          publishedAt: '2010-09-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2018-09-26',
+        datePrecision: 'DAY',
+        reason: 'The Supreme Court of India, in Justice K.S. Puttaswamy (Retd.) v. Union of India, upholds the constitutional validity of the Aadhaar Act by a 4-1 majority on September 26, 2018, while restricting mandatory use for private services. By then over 1.2 billion residents are enrolled, settling Aadhaar as an established institutional fact of Indian governance.',
+        source: {
+          externalId: 'src:aadhaar-puttaswamy-2018',
+          name: 'Wikipedia — "Aadhaar": Supreme Court of India upheld the Aadhaar Act, 26 September 2018; UIDAI established 28 January 2009.',
+          url: 'https://en.wikipedia.org/wiki/Aadhaar',
+          publishedAt: '2018-09-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── BeiDou-3 global navigation system commissioned (China, 2020) ────────────
+  {
+    externalId: 'trajectory:beidou-3-commissioned-2020',
+    text: "China's BeiDou-3 (BDS-3) satellite navigation system was completed and commissioned for global service on July 31, 2020.",
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-07-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-06-23',
+        datePrecision: 'DAY',
+        reason: 'On June 23, 2020 China launches the final (55th) satellite of the BeiDou family aboard a Long March 3B rocket from Xichang, completing the BDS-3 constellation of geostationary, inclined geosynchronous, and medium-Earth-orbit satellites needed for global coverage.',
+        source: {
+          externalId: 'src:beidou-final-satellite-2020',
+          name: 'Wikipedia — "BeiDou": final BeiDou satellite (55th) launched 23 June 2020; BDS-3 fully operational July 2020.',
+          url: 'https://en.wikipedia.org/wiki/BeiDou',
+          publishedAt: '2020-06-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-07-31',
+        datePrecision: 'DAY',
+        reason: 'At a ceremony in the Great Hall of the People in Beijing, President Xi Jinping officially announces the commissioning of BDS-3, marking the start of global navigation services and making China the third country to independently operate a global satellite navigation system. The announcement is recorded by the State Council and state media.',
+        source: {
+          externalId: 'src:beidou-3-xi-commissioning-2020',
+          name: 'The State Council of the PRC (english.www.gov.cn) — "Xi officially announces commissioning of BDS-3 navigation system," July 31, 2020.',
+          url: 'http://english.www.gov.cn/news/topnews/202008/01/content_WS5f24b0a4c6d029c1c26370d1.html',
+          publishedAt: '2020-07-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mission Shakti — India anti-satellite test (2019) ───────────────────────
+  {
+    externalId: 'trajectory:mission-shakti-asat-2019',
+    text: 'On March 27, 2019, India destroyed one of its own satellites in low Earth orbit with a ground-launched missile (Mission Shakti), becoming the fourth nation to demonstrate an anti-satellite (ASAT) capability.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-03-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2019-03-27',
+        datePrecision: 'DAY',
+        reason: 'Prime Minister Narendra Modi announces in a televised address that India has used a Prithvi Defence Vehicle Mark-II interceptor to destroy the Microsat-R satellite at about 283 km altitude over Abdul Kalam Island, completing the kinetic kill within roughly 168 seconds of launch.',
+        source: {
+          externalId: 'src:mission-shakti-announcement-2019',
+          name: 'Wikipedia — "Mission Shakti": India ASAT test, 27 March 2019; Microsat-R destroyed at ~283 km by PDV Mk-II.',
+          url: 'https://en.wikipedia.org/wiki/Mission_Shakti',
+          publishedAt: '2019-03-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The intercept is independently corroborated by external space-tracking: US Strategic Command catalogues the resulting orbital debris and NASA characterizes the debris field, confirming an actual on-orbit destruction rather than a claimed one. India joins the United States, Russia, and China as demonstrated ASAT powers.',
+        source: {
+          externalId: 'src:mission-shakti-debris-tracking-2019',
+          name: 'Wikipedia — "Mission Shakti": debris tracked by US Strategic Command; NASA characterization of debris field.',
+          url: 'https://en.wikipedia.org/wiki/Mission_Shakti',
+          publishedAt: '2019-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First image of Sagittarius A* (Milky Way black hole, 2022) ──────────────
+  {
+    externalId: 'trajectory:sgr-a-star-image-2022',
+    text: 'The Event Horizon Telescope Collaboration released the first direct image of Sagittarius A*, the supermassive black hole at the center of the Milky Way, on May 12, 2022.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-12',
+        datePrecision: 'DAY',
+        reason: 'The EHT Collaboration, using a global network of radio observatories acting as an Earth-sized virtual telescope, unveils an image showing a dark central shadow ringed by emission at the Galactic Center, located about 27,000 light-years away. The results are published simultaneously in six papers in The Astrophysical Journal Letters.',
+        source: {
+          externalId: 'src:eso-sgr-a-star-image-2022',
+          name: 'ESO Press Release eso2208 — "Astronomers reveal first image of the black hole at the heart of our galaxy," 12 May 2022.',
+          url: 'https://www.eso.org/public/news/eso2208-eht-mw/',
+          publishedAt: '2022-05-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-12',
+        datePrecision: 'DAY',
+        reason: 'The imaged ring diameter is consistent with the ~4 million solar mass compact object previously inferred from decades of stellar-orbit measurements (the work recognized by the 2020 Nobel Prize in Physics) and with the size predicted by general relativity, providing direct visual confirmation that Sgr A* is a supermassive black hole.',
+        source: {
+          externalId: 'src:eht-sgr-a-gr-consistency-2022',
+          name: 'ESO Press Release eso2208 — image consistent with general relativity predictions and prior ~4 million solar mass estimate.',
+          url: 'https://www.eso.org/public/news/eso2208-eht-mw/',
+          publishedAt: '2022-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
