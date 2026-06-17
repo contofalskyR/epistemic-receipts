@@ -35324,6 +35324,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Mühlberg — 24 April 1547 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-muhlberg-1547',
+    text: 'On 24 April 1547 the imperial army of Holy Roman Emperor Charles V decisively defeated the Lutheran Schmalkaldic League at Mühlberg on the Elbe, capturing the Saxon Elector John Frederick I and effectively ending the Schmalkaldic War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1547-04-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1547-04-24',
+        datePrecision: 'DAY',
+        reason: 'Charles V\'s Spanish, Italian and German troops crossed the Elbe and routed the Saxon army; Elector John Frederick I was wounded and taken prisoner, and his surrender symbolically dissolved the Schmalkaldic League. The victory was immediately publicised across Catholic Europe and famously commemorated in Titian\'s equestrian portrait of the emperor.',
+        source: {
+          externalId: 'src:battle-muhlberg-wikipedia',
+          name: 'Battle of Mühlberg (24 April 1547), Schmalkaldic War — contemporary imperial accounts.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_M%C3%BChlberg',
+          publishedAt: '1547-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date, location, combatants and outcome of Mühlberg are uncontested in modern historiography of the Reformation. The capture of John Frederick led to the Capitulation of Wittenberg, the transfer of the Saxon electorate to the Albertine line under Maurice, and the imposition of the Augsburg Interim — the high-water mark of Charles V\'s authority over Protestant Germany before the Princes\' Revolt of 1552.',
+        source: {
+          externalId: 'src:battle-muhlberg-scholarship',
+          name: 'Modern scholarship on the Battle of Mühlberg and the Schmalkaldic War.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_M%C3%BChlberg',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Regnans in Excelsis — excommunication of Elizabeth I — 25 February 1570 ──
+  {
+    externalId: 'trajectory:regnans-in-excelsis-1570',
+    text: 'On 25 February 1570 Pope Pius V issued the papal bull Regnans in Excelsis, excommunicating Elizabeth I of England as a heretic and releasing her subjects from their allegiance to her.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1570-02-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1570-02-25',
+        datePrecision: 'DAY',
+        reason: 'Pius V promulgated the bull declaring Elizabeth "the pretended Queen of England and the servant of crime," depriving her of her claimed right to rule and forbidding her subjects to obey her laws. The text was entered into the papal record and smuggled into England, where a copy famously nailed to the Bishop of London\'s door led to the execution of John Felton in 1570.',
+        source: {
+          externalId: 'src:regnans-in-excelsis-wikipedia',
+          name: 'Regnans in Excelsis, papal bull of Pope Pius V (25 February 1570) — text and contemporary record.',
+          url: 'https://en.wikipedia.org/wiki/Regnans_in_Excelsis',
+          publishedAt: '1570-02-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The issuance and date of Regnans in Excelsis are uncontested. The bull hardened the English state\'s treatment of Catholics as potential traitors, prompted the penal statutes of the 1570s–1580s, and provided the doctrinal pretext for later plots against Elizabeth; its historical significance and dating are settled in Reformation scholarship.',
+        source: {
+          externalId: 'src:regnans-in-excelsis-scholarship',
+          name: 'Modern scholarship on Regnans in Excelsis and the Elizabethan religious settlement.',
+          url: 'https://en.wikipedia.org/wiki/Regnans_in_Excelsis',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Drake completes circumnavigation — 26 September 1580 ─────────────────────
+  {
+    externalId: 'trajectory:drake-circumnavigation-1580',
+    text: 'On 26 September 1580 Francis Drake sailed the Golden Hind into Plymouth, completing the second circumnavigation of the globe — the first whose commander survived the entire voyage.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1580-09-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1580-09-26',
+        datePrecision: 'DAY',
+        reason: 'Drake returned to Plymouth with the Golden Hind and 59 surviving crew, carrying spices and Spanish treasure, after a voyage begun in 1577. He was hailed as the first Englishman to circumnavigate the Earth; his was the second expedition to complete the circuit with a ship intact after Elcano\'s in 1520–1522, and unlike Magellan he survived the whole voyage. Queen Elizabeth I knighted him aboard the ship in April 1581.',
+        source: {
+          externalId: 'src:drake-circumnavigation-wikipedia',
+          name: 'Francis Drake — circumnavigation of 1577–1580, return to Plymouth 26 September 1580.',
+          url: 'https://en.wikipedia.org/wiki/Francis_Drake',
+          publishedAt: '1580-09-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Drake\'s circumnavigation, its dates and its standing as the second completed voyage around the globe are uncontested in maritime history. The voyage demonstrated English open-ocean capability, returned an enormous profit to its investors including the Crown, and sharpened the Anglo-Spanish rivalry that culminated in the Armada of 1588.',
+        source: {
+          externalId: 'src:drake-circumnavigation-scholarship',
+          name: 'Modern scholarship on Francis Drake\'s 1577–1580 circumnavigation.',
+          url: 'https://en.wikipedia.org/wiki/Francis_Drake',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kepler's third law — Harmonices Mundi — discovered 1618, published 1619 ──
+  {
+    externalId: 'trajectory:kepler-harmonices-mundi-1619',
+    text: 'On 15 May 1618 Johannes Kepler verified his third (harmonic) law of planetary motion — that the square of a planet\'s orbital period is proportional to the cube of its mean distance from the Sun — which he published in Harmonices Mundi in 1619.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1618-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1619-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kepler recounts that the relation first occurred to him on 8 March 1618, was rejected as erroneous in his calculations, and returned on 15 May 1618 when he confirmed that the ratio of the periods of any two planets is the 3/2 power of the ratio of their mean distances. He published the law in Harmonices Mundi (Linz, 1619), entering it into the astronomical literature.',
+        source: {
+          externalId: 'src:kepler-third-law-wikipedia',
+          name: 'Kepler\'s laws of planetary motion — third law, Harmonices Mundi (1619).',
+          url: 'https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion',
+          publishedAt: '1619-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'Isaac Newton derived Kepler\'s third law as a mathematical consequence of universal gravitation and the inverse-square force law in the Principia Mathematica (1687), demonstrating that the empirical regularity followed necessarily from dynamics. This transformed an observed pattern into a settled physical law, confirmed for every body subsequently found to orbit the Sun.',
+        source: {
+          externalId: 'src:kepler-third-law-newton-principia',
+          name: 'Isaac Newton. Philosophiæ Naturalis Principia Mathematica (1687), Book III — derivation of Kepler\'s harmonic law from gravitation.',
+          url: 'https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion',
+          publishedAt: '1687-07-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cassini–Richer Mars parallax — scale of the Solar System — 1672 ──────────
+  {
+    externalId: 'trajectory:cassini-richer-mars-parallax-1672',
+    text: 'During the favourable opposition of Mars in 1672, Giovanni Domenico Cassini in Paris and Jean Richer in Cayenne made simultaneous observations whose parallax yielded the first reasonable estimate of the Earth–Sun distance and thus the absolute scale of the Solar System.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1672-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1672-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Cassini stayed in Paris while Richer observed from Cayenne, French Guiana; comparing their simultaneous positions of Mars at opposition gave its parallax and hence its distance from Earth. Because the relative ratios of the Sun–planet distances were already fixed by Kepler\'s laws, a single absolute distance fixed all of them, giving the first credible value for the astronomical unit — Cassini\'s estimate of solar parallax (~9.5") implied a Sun roughly 140 million km away, within about 7% of the modern value.',
+        source: {
+          externalId: 'src:cassini-richer-mars-parallax-wikipedia',
+          name: 'Giovanni Domenico Cassini and Jean Richer — Mars parallax measurement of 1672 and the scale of the Solar System.',
+          url: 'https://en.wikipedia.org/wiki/Giovanni_Domenico_Cassini',
+          publishedAt: '1672-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The 1672 result established the order of magnitude of the astronomical unit, later refined by the transits of Venus (1761, 1769, 1874, 1882), radar ranging in the 20th century, and ultimately fixed by definition. In August 2012 the International Astronomical Union adopted an exact definition of the astronomical unit (149,597,870,700 m), settling the quantity that the Cassini–Richer measurement first opened to observation.',
+        source: {
+          externalId: 'src:astronomical-unit-iau-2012',
+          name: 'International Astronomical Union — Resolution B2 (2012) defining the astronomical unit as exactly 149,597,870,700 m.',
+          url: 'https://en.wikipedia.org/wiki/Astronomical_unit',
+          publishedAt: '2012-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
