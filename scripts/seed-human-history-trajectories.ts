@@ -23365,6 +23365,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — supplemental (500–1400 CE)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Antioch earthquake of 526 CE ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:antioch-earthquake-526',
+    text: 'A catastrophic earthquake struck Antioch in late May 526 CE — the Maronite Chronicle dates it to 29 May — killing on the order of 250,000 people, many of them pilgrims gathered for Ascension Day, and triggering a fire that consumed much of the surviving city.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0526-05-29',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0526-05-29',
+        datePrecision: 'MONTH',
+        reason: 'John Malalas, a native of Antioch writing within a generation of the disaster, records that the great city was struck by the wrath of God in the seventh year of the reign of Justin, during mid-morning, and that fire completed the ruin the shaking began. He reports an enormous death toll swelled by visitors present for the feast, including the Patriarch Euphrasius among the dead. The catastrophe is registered contemporaneously as fact.',
+        source: {
+          externalId: 'src:malalas-chronicle-antioch-526',
+          name: 'John Malalas. Chronographia, Book 17, account of the fall of Antioch (526 CE). (6th century)',
+          url: 'https://en.wikipedia.org/wiki/526_Antioch_earthquake',
+          publishedAt: '0565-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The event is independently attested by Procopius of Gaza (who composed a monody on the destroyed city), Evagrius Scholasticus, and the later Maronite Chronicle that fixes the date to 29 May. Modern seismological compilations of eastern Mediterranean historical earthquakes reconcile these sources, placing the shock in late May 526 and ranking it among the deadliest earthquakes in recorded history.',
+        source: {
+          externalId: 'src:ambraseys-antioch-526',
+          name: 'Ambraseys NN. Material for the investigation of the seismicity of the eastern Mediterranean region. (catalogue of historical earthquakes)',
+          url: 'https://en.wikipedia.org/wiki/526_Antioch_earthquake',
+          publishedAt: '1994-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Hattin — 4 July 1187 ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-hattin-1187',
+    text: 'On 4 July 1187, Saladin destroyed the field army of the Crusader Kingdom of Jerusalem at the Horns of Hattin west of the Sea of Galilee, capturing King Guy of Lusignan and seizing the relic of the True Cross.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1187-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1187-07-04',
+        datePrecision: 'DAY',
+        reason: 'A Crusader army that had marched through waterless terrain is encircled and annihilated near the twin hills called the Horns of Hattin. Imad al-Din al-Isfahani, Saladin\'s secretary and an eyewitness on the field, records the rout, the capture of the king, and the taking of the True Cross from the royal tent. The defeat opens the road to Jerusalem, which surrenders that October.',
+        source: {
+          externalId: 'src:imad-al-din-al-fath-al-qussi',
+          name: 'Imad al-Din al-Isfahani. Al-Fath al-Qussi fi-l-Fath al-Qudsi, eyewitness account of Hattin. (c. 1190s)',
+          url: 'https://deremilitari.org/2014/01/the-battle-of-hattin-1187-four-accounts/',
+          publishedAt: '1192-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1231-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Four substantially independent contemporaneous accounts survive: two Muslim authors present at the battle (Imad al-Din and Ibn al-Athir), the Old French Continuation of William of Tyre, and the Latin Libellus de expugnatione Terrae Sanctae. Their convergence on the date, the place, the capture of Guy of Lusignan, and the loss of the True Cross establishes the battle as settled historical fact and the trigger of the Third Crusade.',
+        source: {
+          externalId: 'src:ibn-al-athir-kamil-hattin',
+          name: 'Ibn al-Athir. Al-Kamil fi al-Tarikh (The Complete History), account of the Battle of Hattin. (c. 1231)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hattin',
+          publishedAt: '1231-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aleppo earthquake of 11 October 1138 ────────────────────────────────────
+  {
+    externalId: 'trajectory:aleppo-earthquake-1138',
+    text: 'On Wednesday 11 October 1138, a devastating earthquake struck the region of Aleppo in northern Syria, recorded contemporaneously by the Damascene chronicler Ibn al-Qalanisi and counted among the deadliest earthquakes in recorded history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1138-10-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1138-10-11',
+        datePrecision: 'DAY',
+        reason: 'Ibn al-Qalanisi, writing in Damascus as the events unfolded, records that a violent earthquake struck on Wednesday 11 October 1138, preceded by a lesser shock the day before, throwing down walls and citadels across the Aleppo district. The Frankish-held fortress of Atharib and other strongholds are reported destroyed and their garrisons crushed. The disaster is registered as contemporaneous fact.',
+        source: {
+          externalId: 'src:ibn-al-qalanisi-aleppo-1138',
+          name: 'Ibn al-Qalanisi. Dhayl Ta\'rikh Dimashq (Continuation of the Chronicle of Damascus), entry for AH 533 / 1138 CE. (12th century)',
+          url: 'https://en.wikipedia.org/wiki/1138_Aleppo_earthquake',
+          publishedAt: '1160-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Because Ibn al-Qalanisi wrote as the earthquakes occurred, and because other accounts support a 10–11 October date, his date of 11 October is taken as authoritative over later confused reports (such as those of Kemal al-Din). Modern seismological catalogues of the Dead Sea Transform fault system place the 1138 Aleppo event among the deadliest earthquakes in human history.',
+        source: {
+          externalId: 'src:sbeinati-darawcheh-aleppo-1138',
+          name: 'Sbeinati MR, Darawcheh R, Mouty M. The historical earthquakes of Syria. Annals of Geophysics 2005;48(3).',
+          url: 'https://en.wikipedia.org/wiki/1138_Aleppo_earthquake',
+          publishedAt: '2004-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jikji — oldest extant book printed with movable metal type (1377) ────────
+  {
+    externalId: 'trajectory:jikji-metal-type-1377',
+    text: 'In July 1377, the Heungdeoksa temple in Cheongju, Korea, printed the second volume of the Jikji using movable metal type — the oldest surviving book produced by this method, predating the Gutenberg Bible by some 78 years.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1377-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1377-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The Buddhist anthology compiled by the priest Baegun is printed at Heungdeoksa temple in Cheongju with cast metal type. The colophon of the surviving second volume records the temple, the place, and the date of printing in the seventh lunar month of 1377, documenting both the method and the moment of its own manufacture.',
+        source: {
+          externalId: 'src:jikji-colophon-1377',
+          name: 'Jikji (Baegun hwasang chorok buljo jikji simche yojeol), vol. 2, printing colophon (1377). Bibliothèque nationale de France, Coréen 109.',
+          url: 'https://www.bnf.fr/en/jikji-treasure-world-printing',
+          publishedAt: '1377-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Acquired by the French consul Victor Collin de Plancy and later bequeathed to the Bibliothèque nationale de France, the surviving volume is exhibited there during the 1972 "International Book Year" and identified, on the evidence of its dated colophon, as the earliest extant book printed with movable metal type — antedating Gutenberg.',
+        source: {
+          externalId: 'src:bnf-jikji-1972',
+          name: 'Bibliothèque nationale de France. "Jikji, a treasure of the world of printing."',
+          url: 'https://www.bnf.fr/en/jikji-treasure-world-printing',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-09-04',
+        datePrecision: 'DAY',
+        reason: 'UNESCO inscribes the Jikji on the Memory of the World Register on 4 September 2001, formally recognising it as the oldest known document printed with movable metal type and entrenching the settled scholarly consensus in an international institutional record.',
+        source: {
+          externalId: 'src:unesco-jikji-mow-2001',
+          name: 'UNESCO Memory of the World Register. Baegun hwasang chorok buljo jikji simche yojeol, vol. II (inscribed 2001).',
+          url: 'https://www.unesco.org/en/memory-world/baegun-hwasang-chorok-buljo-jikji-simche-yojeol-vol-ii-second-volume-anthology-great-buddhist',
+          publishedAt: '2001-09-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
