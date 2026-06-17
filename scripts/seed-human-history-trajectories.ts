@@ -11914,6 +11914,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Herschel discovers infrared radiation ───────────────────────────────────
+  {
+    externalId: 'trajectory:herschel-infrared-1800',
+    text: 'William Herschel discovered infrared radiation in 1800, showing that the Sun emits invisible "calorific rays" beyond the red end of the visible spectrum that raise a thermometer\'s temperature.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1800-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1800-04-01',
+        datePrecision: 'MONTH',
+        reason: 'While measuring the heating power of the different colours of a prism-dispersed solar spectrum, Herschel finds the temperature continues to rise beyond the red, where no light is visible. He concludes the Sun emits invisible "calorific rays" subject to the same laws of refraction as light. He reports the result to the Royal Society in a series of papers read in spring 1800, the first published in April 1800 in the Philosophical Transactions.',
+        source: {
+          externalId: 'src:herschel-invisible-rays-1800',
+          name: 'Herschel W. Experiments on the Refrangibility of the Invisible Rays of the Sun. Philosophical Transactions of the Royal Society of London 1800;90:284–292.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rstl.1800.0015',
+          publishedAt: '1800-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1835-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Herschel\'s invisible heating rays are reproduced and extended across the nineteenth century — Macedonio Melloni\'s thermopile work in the 1830s establishes that "radiant heat" reflects, refracts, and polarises exactly as light does, and later spectroscopy confirms infrared as the long-wavelength continuation of the electromagnetic spectrum. The existence of infrared radiation is universally accepted.',
+        source: {
+          externalId: 'src:infrared-history',
+          name: 'Infrared radiation — discovery and confirmation. Encyclopaedia / history of physics summary.',
+          url: 'https://en.wikipedia.org/wiki/Infrared',
+          publishedAt: '1835-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── French Republic abolishes colonial slavery ──────────────────────────────
+  {
+    externalId: 'trajectory:france-abolition-slavery-1848',
+    text: 'The Second French Republic abolished slavery throughout its colonies by the Decree of 27 April 1848, drafted under Victor Schœlcher.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1848-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1848-04-27',
+        datePrecision: 'DAY',
+        reason: 'Following the February 1848 revolution, the Provisional Government of the Second Republic adopts the Decree of the Abolition of Slavery on 27 April 1848. Prepared by the commission chaired by abolitionist Victor Schœlcher, it declares that "slavery shall be entirely abolished in all the French colonies and possessions" two months after the decree\'s promulgation in each territory, and forbids any French citizen from owning, buying, or selling enslaved people.',
+        source: {
+          externalId: 'src:decret-abolition-esclavage-1848',
+          name: 'Décret relatif à l\'abolition de l\'esclavage dans les colonies et possessions françaises, 27 avril 1848.',
+          url: 'https://en.wikipedia.org/wiki/Abolition_of_slavery_in_France',
+          publishedAt: '1848-04-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1848-05-23',
+        datePrecision: 'DAY',
+        reason: 'The decree takes legal effect colony by colony as it is proclaimed. In Martinique it comes into force on 23 May 1848 — the first French overseas territory where emancipation actually took effect, ahead of the official metropolitan timetable — and definitively across the other colonies through 1848. Unlike the first, reversed abolition of 1794 (re-established by Napoleon in 1802), the 1848 abolition was permanent and is undisputed.',
+        source: {
+          externalId: 'src:martinique-abolition-1848',
+          name: 'Abolition of slavery in the French colonies, entry into force (Martinique, 23 May 1848).',
+          url: 'https://en.wikipedia.org/wiki/Abolition_of_slavery_in_France',
+          publishedAt: '1848-05-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Maxwell and Sutton make the first colour photograph ─────────────────────
+  {
+    externalId: 'trajectory:maxwell-first-colour-photograph-1861',
+    text: 'James Clerk Maxwell demonstrated the first colour photograph in 1861, using the three-colour (red, green, blue) additive method; the image of a tartan ribbon was taken by Thomas Sutton for Maxwell\'s Royal Institution lecture in May 1861.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1861-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-05-01',
+        datePrecision: 'MONTH',
+        reason: 'During a Royal Institution lecture on colour theory in May 1861, Maxwell presents the first demonstration of colour photography by three-colour analysis and synthesis. Photographer Thomas Sutton photographs a tartan ribbon three times through red, green, and blue filters; the three monochrome positives are then projected through matching filters and superimposed to reconstitute a colour image — confirming Maxwell\'s prediction that any colour can be reproduced from three primaries.',
+        source: {
+          externalId: 'src:maxwell-three-primary-colours-1861',
+          name: 'Maxwell JC. Royal Institution lecture on the theory of the three primary colours, London, May 1861 (first colour photograph, "Tartan Ribbon").',
+          url: 'https://en.wikipedia.org/wiki/James_Clerk_Maxwell',
+          publishedAt: '1861-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The three-colour principle underlies all subsequent colour photography, film, and electronic displays. In 1961 Kodak researchers re-examined the original plates and found that, owing to the dyes also reflecting ultraviolet, the demonstration partly worked by chance — yet this refined the historical mechanism without overturning the result. Maxwell\'s 1861 ribbon is universally recognised as the first colour photograph.',
+        source: {
+          externalId: 'src:maxwell-colour-photo-analysis-1961',
+          name: 'Evans RM. Maxwell\'s color photograph (re-analysis of the 1861 plates). Scientific American 1961;205(5):118–128.',
+          url: 'https://en.wikipedia.org/wiki/History_of_color_photography',
+          publishedAt: '1961-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yersin identifies the plague bacillus ───────────────────────────────────
+  {
+    externalId: 'trajectory:yersin-plague-bacillus-1894',
+    text: 'Alexandre Yersin isolated and identified the bacterium that causes bubonic plague (later named Yersinia pestis) at Hong Kong on 23 June 1894.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1894-06-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-06-23',
+        datePrecision: 'DAY',
+        reason: 'Sent by the Institut Pasteur to investigate the plague epidemic in Hong Kong, Yersin arrives on 15 June 1894 and, examining bubo material from victims, isolates a Gram-negative bacillus on 23 June 1894. He correctly identifies it as the causative agent of plague and notes its presence in dead rats, pointing toward the rodent reservoir. He publishes the finding the same year in the Annales de l\'Institut Pasteur.',
+        source: {
+          externalId: 'src:yersin-peste-bubonique-1894',
+          name: 'Yersin A. La peste bubonique à Hong-Kong. Annales de l\'Institut Pasteur 1894;8:662–667.',
+          url: 'https://en.wikipedia.org/wiki/Alexandre_Yersin',
+          publishedAt: '1894-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kitasato Shibasaburō reported a plague organism days earlier, but his description was confused and partly contaminated, so priority for the precise identification rests with Yersin. Paul-Louis Simond established the rat-flea transmission route in 1898, completing the epidemiology. The bacterium, later reclassified into the genus Yersinia (named for Yersin), is the undisputed cause of plague.',
+        source: {
+          externalId: 'src:simond-plague-flea-1898',
+          name: 'Simond PL. La propagation de la peste. Annales de l\'Institut Pasteur 1898;12:625–687.',
+          url: 'https://en.wikipedia.org/wiki/Yersinia_pestis',
+          publishedAt: '1898-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Reed Commission proves mosquito transmits yellow fever ──────────────────
+  {
+    externalId: 'trajectory:reed-yellow-fever-mosquito-1900',
+    text: 'The U.S. Army Yellow Fever Commission led by Walter Reed proved in 1900 that yellow fever is transmitted by the bite of the Aedes (Stegomyia) mosquito, confirming Carlos Finlay\'s 1881 hypothesis and disproving transmission by contaminated objects (fomites).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1881-08-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1881-08-14',
+        datePrecision: 'DAY',
+        reason: 'On 14 August 1881 the Cuban physician Carlos Finlay presents to the Havana Academy of Sciences his hypothesis that a mosquito (later identified as Aedes aegypti) transmits yellow fever between people. The idea is largely dismissed for nearly two decades, as the prevailing view held the disease spread through fomites — clothing, bedding, and objects soiled by patients.',
+        source: {
+          externalId: 'src:finlay-mosquito-yellow-fever-1881',
+          name: 'Finlay C. El mosquito hipotéticamente considerado como agente de transmisión de la fiebre amarilla. Academy of Sciences of Havana, 14 August 1881.',
+          url: 'https://en.wikipedia.org/wiki/Carlos_Finlay',
+          publishedAt: '1881-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-10-23',
+        datePrecision: 'DAY',
+        reason: 'Appointed in May 1900 to study yellow fever in Cuba, the Army board (Reed, James Carroll, Aristides Agramonte, and Jesse Lazear) conducts controlled human-volunteer experiments; Lazear dies of the disease after a mosquito bite. Reed reads "The Etiology of Yellow Fever — A Preliminary Note" at the American Public Health Association on 23 October 1900, reporting that the mosquito is the vector.',
+        source: {
+          externalId: 'src:reed-etiology-yellow-fever-1900',
+          name: 'Reed W, Carroll J, Agramonte A, Lazear JW. The Etiology of Yellow Fever — A Preliminary Note. Read at the APHA, 23 October 1900; Philadelphia Medical Journal 1900.',
+          url: 'https://en.wikipedia.org/wiki/Walter_Reed',
+          publishedAt: '1900-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-02-04',
+        datePrecision: 'DAY',
+        reason: 'Rigorous controlled experiments at Camp Lazear (Nov 1900–early 1901) — isolating volunteers exposed only to mosquitoes versus only to contaminated bedding — confirm mosquito transmission and definitively rule out fomites. Reed presents the conclusive results in "The Etiology of Yellow Fever — An Additional Note" on 4 February 1901, settling the vector and enabling William Gorgas\'s mosquito-control campaigns in Havana and Panama.',
+        source: {
+          externalId: 'src:reed-yellow-fever-additional-note-1901',
+          name: 'Reed W, Carroll J, Agramonte A. The Etiology of Yellow Fever — An Additional Note. JAMA 1901;36(7):431–440 (read 4 February 1901).',
+          url: 'https://en.wikipedia.org/wiki/Yellow_fever',
+          publishedAt: '1901-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // WWI / WWII & INTERWAR (1900–1950): physics revolution, medicine, atrocity, empire
   // ═══════════════════════════════════════════════════════════════════════════════
