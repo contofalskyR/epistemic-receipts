@@ -7630,6 +7630,189 @@ const TRAJECTORIES: Trajectory[] = [
   // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, exploration
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Hernando de Soto reaches the Mississippi River ──────────────────────────
+  {
+    externalId: 'trajectory:de-soto-mississippi-1541',
+    text: 'On 8 May 1541 Hernando de Soto\'s expedition reached the Mississippi River, the first documented European encounter with the river.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1541-05-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1541-05-08',
+        datePrecision: 'DAY',
+        reason: 'Marching west from Florida, de Soto\'s army reaches the banks of a vast river — the Mississippi — on 8 May 1541, near present-day Memphis. The crossing is described by expedition members, including the anonymous Portuguese "Gentleman of Elvas," who kept a contemporaneous chronicle of the entrada. The river is recorded as a concrete geographic discovery, though its full course remains unknown.',
+        source: {
+          externalId: 'src:gentleman-of-elvas-relacam',
+          name: 'Gentleman of Elvas. Relaçam verdadeira (true relation of the de Soto expedition; eyewitness chronicle, first published Évora, 1557).',
+          url: 'https://en.wikipedia.org/wiki/De_Soto_Expedition',
+          publishedAt: '1557-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1557-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Four independent narratives of the expedition survive — the Gentleman of Elvas (1557), Rodrigo Rangel (de Soto\'s secretary), Luys Hernández de Biedma (royal factor), and Garcilaso de la Vega\'s La Florida del Inca (1605) — and corroborate the river encounter. Modern historians and the U.S. De Soto Expedition Commission (1939) treat de Soto\'s crossing as the first verified European sighting of the Mississippi, even where the precise route is debated.',
+        source: {
+          externalId: 'src:de-soto-mississippi-history',
+          name: 'Hernando de Soto — expedition history and chroniclers (Elvas, Rangel, Biedma, Garcilaso).',
+          url: 'https://en.wikipedia.org/wiki/Hernando_de_Soto',
+          publishedAt: '1605-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Johannes Fabricius publishes the first treatise on sunspots ─────────────
+  {
+    externalId: 'trajectory:fabricius-sunspots-1611',
+    text: 'Johannes Fabricius made some of the first telescopic observations of sunspots, beginning 27 February 1611, and published the first scientific treatise on them, De Maculis in Sole Observatis (Wittenberg, 1611).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1611-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1611-02-27',
+        datePrecision: 'DAY',
+        reason: 'Observing the Sun through a telescope (and by camera-obscura projection to spare their eyes) from Osteel in Frisia, Johannes Fabricius and his father David notice dark spots on the solar disc beginning 27 February 1611. Johannes tracks their motion across the disc and publishes a 22-page pamphlet, De Maculis in Sole Observatis, later in 1611 — the first printed work on sunspots — correctly inferring that the spots are carried by the rotation of the Sun itself.',
+        source: {
+          externalId: 'src:fabricius-de-maculis',
+          name: 'Johannes Fabricius. De Maculis in Sole Observatis, et apparente earum cum Sole conversione, Narratio. Wittenberg, 1611.',
+          url: 'https://en.wikipedia.org/wiki/Johannes_Fabricius',
+          publishedAt: '1611-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1613-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Telescopic sunspots are independently observed by Thomas Harriot (December 1610), Christoph Scheiner, and Galileo Galilei, whose Istoria e Dimostrazioni intorno alle Macchie Solari (Rome, 1613) argues from their foreshortening near the limb that the spots lie on or just above the Sun\'s surface and that the Sun rotates. Sunspots and solar rotation pass into established astronomy, undermining the Aristotelian doctrine of an unchanging, perfect Sun.',
+        source: {
+          externalId: 'src:sunspot-telescopic-discovery',
+          name: 'Telescopic discovery of sunspots (Harriot, Fabricius, Scheiner, Galileo), 1610–1613.',
+          url: 'https://en.wikipedia.org/wiki/Sunspot',
+          publishedAt: '1613-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Peace of Zsitvatorok: Ottoman–Habsburg diplomatic parity ────────────────
+  {
+    externalId: 'trajectory:peace-of-zsitvatorok-1606',
+    text: 'On 11 November 1606 the Peace of Zsitvatorok ended the Long Turkish War, and for the first time the Ottoman sultan formally recognized the Habsburg Holy Roman Emperor as a diplomatic equal (addressing him as padishah rather than merely king).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1606-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1606-11-11',
+        datePrecision: 'DAY',
+        reason: 'After thirteen years of inconclusive war along the Hungarian frontier, Ottoman and Habsburg negotiators conclude the Peace of Zsitvatorok on 11 November 1606. The treaty fixes territorial lines with only meagre changes but abolishes the annual Habsburg "gift" (tribute) to the Porte and accords Emperor Rudolf II the title padishah, the rank previously reserved for the sultan — a recorded break with the long-standing Ottoman protocol of treating the Habsburg ruler as a subordinate king.',
+        source: {
+          externalId: 'src:peace-of-zsitvatorok-treaty',
+          name: 'Peace of Zsitvatorok between the Ottoman Empire and Habsburg Monarchy, 11 November 1606.',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Zsitvatorok',
+          publishedAt: '1606-11-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1606-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The treaty is preserved in both Ottoman and Habsburg chancery records and is treated by historians of diplomacy as the moment Ottoman–Habsburg relations shifted from a hierarchical to a notionally equal footing — a precedent in Ottoman foreign relations not matched again until the eighteenth century. The dating and terms of the Long Turkish War\'s conclusion at Zsitvatorok are settled in the historiography.',
+        source: {
+          externalId: 'src:long-turkish-war-conclusion',
+          name: 'The Long Turkish War (1593–1606), concluded by the Peace of Zsitvatorok.',
+          url: 'https://en.wikipedia.org/wiki/Long_Turkish_War',
+          publishedAt: '1606-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First documented human blood transfusion (Jean-Baptiste Denys) ──────────
+  {
+    externalId: 'trajectory:first-human-blood-transfusion-1667',
+    text: 'On 15 June 1667 the French physician Jean-Baptiste Denys performed the first fully documented transfusion of blood into a human being, transfusing lamb\'s blood into a feverish boy in Paris.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1667-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1667-06-15',
+        datePrecision: 'DAY',
+        reason: 'Denys, physician to Louis XIV, with the surgeon Paul Emmerez, transfuses about twelve ounces of lamb\'s blood into a 15-year-old boy who had been weakened by repeated bleedings; the boy survives. Denys reports the procedure in a letter published in the Royal Society\'s Philosophical Transactions in 1667, establishing it as the first documented human blood transfusion.',
+        source: {
+          externalId: 'src:denys-transfusion-letter',
+          name: 'Jean-Baptiste Denys. Letter concerning a new way of curing sundry diseases by transfusion of blood (Philosophical Transactions, 1667).',
+          url: 'https://en.wikipedia.org/wiki/Jean-Baptiste_Denys',
+          publishedAt: '1667-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'JUDICIAL',
+        occurredAt: '1668-04-17',
+        datePrecision: 'DAY',
+        reason: 'After a later patient, Antoine Mauroy, dies following repeated transfusions, Denys is prosecuted; the case is filed on 17 April 1668. The court rules that no transfusion may be performed on a human body without the approval of the Paris Faculty of Medicine — approval that is never granted. The procedure is effectively banned in France, the Royal Society and others abandon the experiments, and human transfusion lapses for roughly 150 years until James Blundell\'s work in the 1810s–1820s.',
+        source: {
+          externalId: 'src:denys-transfusion-ban',
+          name: 'Trial of Jean-Baptiste Denys and the Paris prohibition of human blood transfusion, 1668.',
+          url: 'https://en.wikipedia.org/wiki/Jean-Baptiste_Denys',
+          publishedAt: '1668-04-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'ABANDONED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1818-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Human blood transfusion is revived by the British obstetrician James Blundell, who performs human-to-human transfusions for postpartum haemorrhage from 1818. With Karl Landsteiner\'s discovery of the ABO blood groups (1901), transfusion becomes safe, routine medicine — and Denys\'s 15 June 1667 procedure is recognized by medical historians as the first documented human blood transfusion, a settled point in the history of medicine.',
+        source: {
+          externalId: 'src:blundell-transfusion-revival',
+          name: 'James Blundell — revival of human blood transfusion (from 1818); later made safe by Landsteiner\'s ABO blood groups (1901).',
+          url: 'https://en.wikipedia.org/wiki/James_Blundell_(physician)',
+          publishedAt: '1818-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Magellan–Elcano first circumnavigation ──────────────────────────────────
   {
     externalId: 'trajectory:magellan-circumnavigation-1522',
@@ -39180,6 +39363,52 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.who.int/news/item/14-08-2024-who-director-general-declares-mpox-outbreak-a-public-health-emergency-of-international-concern',
           publishedAt: '2024-08-14',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE — supplemental (Iberia / Reconquista)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Capture of Toledo by Alfonso VI (Reconquista turning point) ──────────────
+  {
+    externalId: 'trajectory:capture-of-toledo-1085',
+    text: 'On 25 May 1085, Alfonso VI of León-Castile entered Toledo, taking the former Visigothic capital from its Muslim ruler — a major turning point in the Reconquista that opened the city\'s Arabic libraries to Latin Europe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1085-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1085-05-25',
+        datePrecision: 'DAY',
+        reason: 'After a prolonged investment, the Taifa of Toledo under al-Qadir surrenders on terms that guarantee the lives, property, and religious practice of the Muslim population; Alfonso VI formally enters the city on 25 May 1085. The conquest is recorded in Christian and Arabic chronicles of the period and in royal charters of the Leónese court.',
+        source: {
+          externalId: 'src:toledo-1085-record',
+          name: 'Siege of Toledo (1085). Christian and Arabic chronicle accounts and Leónese royal charters of the surrender and entry.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Toledo_(1085)',
+          publishedAt: '1085-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The fall of Toledo is among the best-attested events of the eleventh-century Reconquista, corroborated by Iberian Christian chronicles, Andalusi Arabic sources, and the documentary record of Alfonso VI\'s reign. The 1085 conquest and the subsequent role of Toledo as a centre for the Latin translation of Arabic learning are settled in modern historiography.',
+        source: {
+          externalId: 'src:toledo-1085-overview',
+          name: 'Siege of Toledo (1085). Scholarly synthesis of the conquest and its aftermath.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Toledo_(1085)',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
