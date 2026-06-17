@@ -36252,6 +36252,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — non-Western perspectives
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First diploid genome of an Asian individual (YH genome, BGI) ────────────
+  {
+    externalId: 'trajectory:yh-asian-genome-bgi-2008',
+    text: 'On 6 November 2008, the Beijing Genomics Institute published "The diploid genome sequence of an Asian individual" (the YH genome) in Nature — the first complete genome of a Han Chinese / Asian person.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-11-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-11-06',
+        datePrecision: 'DAY',
+        reason: 'Wang J et al. publish the YH genome in Nature (456:60–65), the diploid genome of a Han Chinese individual sequenced by BGI Shenzhen using massively parallel sequencing. It is the first sequenced genome of an Asian individual and one of the earliest individual human genomes worldwide, extending reference genomics beyond European populations.',
+        source: {
+          externalId: 'src:nature-yh-asian-genome-2008',
+          name: 'Wang J, Wang W, Li R, et al. "The diploid genome sequence of an Asian individual." Nature 456, 60–65 (6 Nov 2008). PMC2716080.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2716080/',
+          publishedAt: '2008-11-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The YH genome becomes a standard reference for Han Chinese genetic variation, cited across population-genomics and medical-genetics studies, and BGI grows into one of the world\'s largest sequencing centres. The achievement is uncontested and the data are deposited in public archives.',
+        source: {
+          externalId: 'src:nature-yh-asian-genome-settled',
+          name: 'Wang J, Wang W, Li R, et al. "The diploid genome sequence of an Asian individual." Nature 456, 60–65 (2008) — sustained citation as the reference Han Chinese genome.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2716080/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 2008 Mumbai attacks (26/11) ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:mumbai-attacks-26-11-2008',
+    text: 'Between 26 and 29 November 2008, ten armed militants from the Pakistan-based group Lashkar-e-Taiba carried out coordinated attacks across Mumbai, killing about 166 people (excluding the attackers).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2008-11-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2008-11-26',
+        datePrecision: 'DAY',
+        reason: 'On the evening of 26 November 2008, gunmen attack multiple sites across Mumbai — Chhatrapati Shivaji Terminus, the Taj Mahal Palace and Oberoi-Trident hotels, the Leopold Café, and the Nariman House Jewish centre. The siege unfolds live on global television over three days, witnessed by hundreds and recorded by police and CCTV.',
+        source: {
+          externalId: 'src:wikipedia-mumbai-attacks-2008',
+          name: 'Wikipedia. "2008 Mumbai attacks" — coordinated attacks 26–29 November 2008.',
+          url: 'https://en.wikipedia.org/wiki/2008_Mumbai_attacks',
+          publishedAt: '2008-11-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2010-05-06',
+        datePrecision: 'DAY',
+        reason: 'The lone surviving attacker, Ajmal Kasab, is captured alive, confesses, and is convicted by a Mumbai special court on 3 May 2010 and sentenced on 6 May 2010. His trial, forensic evidence, intercepted communications, and Pakistan\'s later confirmation that Lashkar-e-Taiba plotted and financed the attacks settle responsibility judicially.',
+        source: {
+          externalId: 'src:wikipedia-mumbai-attacks-kasab',
+          name: 'Wikipedia. "2008 Mumbai attacks" — conviction and sentencing of Ajmal Kasab; LeT responsibility confirmed.',
+          url: 'https://en.wikipedia.org/wiki/2008_Mumbai_attacks',
+          publishedAt: '2010-05-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Xi Jinping pledges China carbon neutrality before 2060 ─────────────────
+  {
+    externalId: 'trajectory:china-carbon-neutrality-2060-pledge-2020',
+    text: 'On 22 September 2020, in a speech to the UN General Assembly, Chinese President Xi Jinping pledged that China would peak CO2 emissions before 2030 and achieve carbon neutrality before 2060.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-09-22',
+        datePrecision: 'DAY',
+        reason: 'In his pre-recorded address to the 75th UN General Assembly general debate, Xi Jinping commits the world\'s largest emitter to peak carbon dioxide emissions before 2030 and reach carbon neutrality before 2060 — the first time China sets a long-term net-zero target. The pledge is reported worldwide the same day and becomes a fixed reference point in international climate negotiations.',
+        source: {
+          externalId: 'src:wikipedia-climate-change-china-2060',
+          name: 'Wikipedia. "Climate change in China" — Xi Jinping\'s 22 Sept 2020 UNGA pledge: carbon neutral before 2060, peak emissions before 2030 (citing BBC News, 22 Sept 2020).',
+          url: 'https://en.wikipedia.org/wiki/Climate_change_in_China',
+          publishedAt: '2020-09-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO lists Sinopharm COVID-19 vaccine for emergency use ──────────────────
+  {
+    externalId: 'trajectory:sinopharm-who-emergency-use-2021',
+    text: 'On 7 May 2021, the World Health Organization listed the Sinopharm (Beijing) COVID-19 vaccine for emergency use — the first vaccine developed outside the West to receive WHO Emergency Use Listing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-05-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-07',
+        datePrecision: 'DAY',
+        reason: 'WHO grants Emergency Use Listing to the Sinopharm COVID-19 vaccine produced by the Beijing Bio-Institute of Biological Products (China National Biotec Group, CNBG), clearing it for global rollout and inclusion in the COVAX facility. It is the first Chinese vaccine — and the first non-Western COVID-19 vaccine — to receive WHO EUL.',
+        source: {
+          externalId: 'src:who-sinopharm-eul-2021',
+          name: 'World Health Organization. "WHO lists additional COVID-19 vaccine for emergency use and issues interim policy recommendations." 7 May 2021.',
+          url: 'https://www.who.int/news/item/07-05-2021-who-lists-additional-covid-19-vaccine-for-emergency-use-and-issues-interim-policy-recommendations',
+          publishedAt: '2021-05-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-05-07',
+        datePrecision: 'DAY',
+        reason: 'The EUL decision is published by WHO and immediately operative — national regulators and the COVAX programme rely on it to procure and deploy the vaccine across dozens of countries. The listing is an institutional fact of record that is not subsequently reversed.',
+        source: {
+          externalId: 'src:who-sinopharm-eul-settled',
+          name: 'World Health Organization. "WHO lists additional COVID-19 vaccine for emergency use…" 7 May 2021 — operative EUL relied upon by COVAX and national regulators.',
+          url: 'https://www.who.int/news/item/07-05-2021-who-lists-additional-covid-19-vaccine-for-emergency-use-and-issues-interim-policy-recommendations',
+          publishedAt: '2021-05-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DeepSeek-R1 reasoning model released ───────────────────────────────────
+  {
+    externalId: 'trajectory:deepseek-r1-released-2025',
+    text: 'In January 2025 the Chinese AI lab DeepSeek released DeepSeek-R1, an open-weight large language model whose reasoning ability — trained largely via reinforcement learning — matched leading Western models at a fraction of the reported cost.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2025-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2025-01-22',
+        datePrecision: 'DAY',
+        reason: 'DeepSeek-AI posts "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" to arXiv (2501.12948) and releases the model weights openly. The paper reports reasoning performance competitive with frontier models, achieved primarily through large-scale reinforcement learning rather than supervised fine-tuning.',
+        source: {
+          externalId: 'src:arxiv-deepseek-r1-2025',
+          name: 'DeepSeek-AI. "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning." arXiv:2501.12948 (22 Jan 2025).',
+          url: 'https://arxiv.org/abs/2501.12948',
+          publishedAt: '2025-01-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2025-09-17',
+        datePrecision: 'DAY',
+        reason: 'The DeepSeek-R1 work is peer-reviewed and published in Nature (vol. 645, pp. 633–638, 2025), confirming the reinforcement-learning training approach and benchmark results. Independent replication of the open weights across the research community settles the model\'s reported capabilities.',
+        source: {
+          externalId: 'src:nature-deepseek-r1-2025',
+          name: 'DeepSeek-AI. "DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning." Nature 645, 633–638 (2025). doi:10.1038/s41586-025-09422-z.',
+          url: 'https://www.nature.com/articles/s41586-025-09422-z',
+          publishedAt: '2025-09-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
