@@ -37082,6 +37082,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Trafalgar ─────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:battle-trafalgar-1805',
+    text: 'A British fleet under Vice-Admiral Horatio Nelson decisively defeated the combined French and Spanish fleets off Cape Trafalgar on 21 October 1805, securing British naval supremacy for the rest of the Napoleonic Wars; Nelson was mortally wounded in the action.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1805-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1805-10-21',
+        datePrecision: 'DAY',
+        reason: 'Off Cape Trafalgar on 21 October 1805 Nelson\'s 27 ships of the line break the line of Villeneuve\'s 33-ship Franco-Spanish fleet; 18 allied ships are captured or destroyed and the British lose none, though Nelson is killed by a sharpshooter aboard HMS Victory. Vice-Admiral Cuthbert Collingwood, assuming command, composes the official dispatch aboard the frigate Euryalus dated 22 October 1805, reporting the victory and Nelson\'s death.',
+        source: {
+          externalId: 'src:collingwood-trafalgar-dispatch-1805',
+          name: 'Collingwood C. Official dispatch on the Battle of Trafalgar, dated aboard Euryalus, 22 October 1805.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Trafalgar',
+          publishedAt: '1805-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1805-11-06',
+        datePrecision: 'DAY',
+        reason: 'Collingwood\'s dispatch is published in a London Gazette Extraordinary on 6 November 1805, making the victory and the death of Nelson officially and publicly known across Britain. The outcome is corroborated by the ships\' logs of both fleets and by French and Spanish participant accounts, and has never been seriously disputed.',
+        source: {
+          externalId: 'src:trafalgar-london-gazette-1805',
+          name: 'London Gazette Extraordinary, 6 November 1805 (publication of Collingwood\'s Trafalgar dispatch).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Trafalgar',
+          publishedAt: '1805-11-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Humphry Davy isolates potassium by electrolysis ─────────────────────────
+  {
+    externalId: 'trajectory:davy-potassium-1807',
+    text: 'Humphry Davy first isolated metallic potassium on 6 October 1807 by passing the current of a large voltaic battery through molten caustic potash — the first isolation of an alkali metal and a demonstration that electricity can decompose substances previously regarded as elements.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1807-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1807-10-06',
+        datePrecision: 'DAY',
+        reason: 'At the Royal Institution in London on 6 October 1807 Davy electrolyses slightly moistened molten potash and sees small globules of a bright, soft metallic substance form at the negative electrode and burst into flame — metallic potassium, never before isolated. He repeats the procedure days later with soda to obtain sodium. His cousin Edmund Davy records that Davy "danced about the room in ecstatic delight" at the result.',
+        source: {
+          externalId: 'src:rsc-potassium-davy-1807',
+          name: 'Royal Society of Chemistry, Periodic Table — Potassium (Humphry Davy isolated potassium on 6 October 1807).',
+          url: 'https://periodic-table.rsc.org/element/19/potassium',
+          publishedAt: '1807-10-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1808-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Davy reports the new metals in his Bakerian Lecture "On some new Phenomena of Chemical Changes produced by Electricity," delivered to the Royal Society in November 1807 and published in the Philosophical Transactions in 1808. Chemists across Europe rapidly reproduce the electrolytic isolation, and potassium and sodium are accepted as genuine elements, founding the electrochemical decomposition of compounds.',
+        source: {
+          externalId: 'src:davy-bakerian-electrochemistry-1808',
+          name: 'Davy H. The Bakerian Lecture: On some new Phenomena of Chemical Changes produced by Electricity. Philosophical Transactions of the Royal Society, 1808.',
+          url: 'https://en.wikipedia.org/wiki/Humphry_Davy',
+          publishedAt: '1808-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bombardment of Fort Sumter opens the American Civil War ─────────────────
+  {
+    externalId: 'trajectory:fort-sumter-1861',
+    text: 'Confederate batteries bombarded the Union-held Fort Sumter in Charleston Harbor beginning at 4:30 a.m. on 12 April 1861, forcing its surrender the following day and marking the opening engagement of the American Civil War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1861-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1861-04-12',
+        datePrecision: 'DAY',
+        reason: 'At 4:30 a.m. on 12 April 1861 Confederate forces under P. G. T. Beauregard open fire on Fort Sumter; after some 34 hours of bombardment the Union garrison under Major Robert Anderson formally surrenders at 2:30 p.m. on 13 April 1861. The exchange is witnessed by crowds along the Charleston waterfront and reported by telegraph nationwide within hours.',
+        source: {
+          externalId: 'src:fort-sumter-bombardment-1861',
+          name: 'Battle of Fort Sumter — Confederate bombardment 12 April 1861, surrender 13 April 1861 (contemporaneous dispatches and garrison reports).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Fort_Sumter',
+          publishedAt: '1861-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1861-04-15',
+        datePrecision: 'DAY',
+        reason: 'On 15 April 1861, two days after Sumter\'s surrender, President Abraham Lincoln issues a proclamation calling out 75,000 state militia to suppress the rebellion — an official act treating the attack as the opening of armed conflict. The date and outcome are recorded identically in Union and Confederate accounts and are universally taken as the start of the American Civil War.',
+        source: {
+          externalId: 'src:lincoln-militia-proclamation-1861',
+          name: 'Abraham Lincoln, Proclamation Calling Militia and Convening Congress, 15 April 1861.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Fort_Sumter',
+          publishedAt: '1861-04-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Edison's first long-lasting incandescent lamp ───────────────────────────
+  {
+    externalId: 'trajectory:edison-incandescent-lamp-1879',
+    text: 'Thomas Edison\'s Menlo Park laboratory successfully tested a high-resistance carbon-filament incandescent lamp on 22 October 1879, which glowed for about 13.5 hours — the first practical demonstration of a durable incandescent electric light.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1879-10-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-10-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 October 1879 Edison and his team at Menlo Park, New Jersey, seal a carbonized cotton-thread filament inside an evacuated glass bulb and pass current through it; the lamp burns steadily for about 13.5 hours — far longer than any previous incandescent filament — and the test is recorded in the laboratory notebooks. Edison files a US patent application on 4 November 1879 for an electric lamp using a coiled carbon filament.',
+        source: {
+          externalId: 'src:edison-incandescent-test-1879',
+          name: 'Incandescent light bulb — Edison\'s first successful test, 22 October 1879, filament lasted 13.5 hours; patent filed 4 November 1879.',
+          url: 'https://en.wikipedia.org/wiki/Incandescent_light_bulb',
+          publishedAt: '1879-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1880-01-27',
+        datePrecision: 'DAY',
+        reason: 'Edison demonstrates the lamps publicly at Menlo Park around New Year 1880 and is granted US Patent No. 223,898, "Electric Lamp," on 27 January 1880. The high-resistance carbon-filament design becomes the basis of commercial incandescent lighting, validated within two years by the opening of the Pearl Street central station in 1882.',
+        source: {
+          externalId: 'src:edison-lamp-patent-223898-1880',
+          name: 'Edison T.A. U.S. Patent No. 223,898, "Electric Lamp," granted 27 January 1880.',
+          url: 'https://en.wikipedia.org/wiki/Incandescent_light_bulb',
+          publishedAt: '1880-01-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Curies discover polonium ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:curie-polonium-1898',
+    text: 'Marie and Pierre Curie announced the discovery of a new strongly radioactive element, polonium, isolated from pitchblende, in July 1898 — naming it after Marie Curie\'s native Poland; it was the first element to be identified through its radioactivity alone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1898-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In July 1898 Marie and Pierre Curie present a joint paper to the Académie des sciences reporting that pitchblende residues contain a substance chemically similar to bismuth but far more radioactive than uranium, which they conclude is a new element and name "polonium" after Marie Curie\'s partitioned homeland. The element is detected and tracked by its radioactivity rather than by any prior chemical signature.',
+        source: {
+          externalId: 'src:curie-polonium-announcement-1898',
+          name: 'Curie M. & Curie P. Joint paper announcing polonium, Académie des sciences, July 1898.',
+          url: 'https://en.wikipedia.org/wiki/Polonium',
+          publishedAt: '1898-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Five months later, on 26 December 1898, the Curies announce a second new radioactive element, radium, from the same pitchblende. Marie Curie\'s subsequent isolation and atomic-weight determinations confirm the new radioactive elements, and the 1903 Nobel Prize in Physics is awarded jointly to Henri Becquerel and the Curies for their work on radioactivity, settling the discovery within the physics and chemistry communities.',
+        source: {
+          externalId: 'src:curie-nobel-radioactivity-1903',
+          name: 'Marie Curie — discovery of polonium (July 1898) and radium (December 1898); 1903 Nobel Prize in Physics for radioactivity.',
+          url: 'https://en.wikipedia.org/wiki/Marie_Curie',
+          publishedAt: '1903-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
