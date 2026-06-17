@@ -13664,6 +13664,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Agrippa's occultation of the Pleiades → checks precession (92 CE) ─────────
+  {
+    externalId: 'trajectory:agrippa-pleiades-occultation-92ce',
+    text: 'The astronomer Agrippa observed the Moon occulting the southern part of the Pleiades on the seventh day of the Bithynian month Metrous in 92 CE (29 November 92 CE) — an observation Ptolemy later used to check the precession of the equinoxes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0092-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0092-11-29',
+        datePrecision: 'DAY',
+        reason: 'In the twelfth year of the reign of Domitian, on the seventh day of the Bithynian month Metrous, Agrippa observes the southernmost part of the Moon occulting part of the Pleiades. The dated observation is preserved by Ptolemy in the Almagest (VII.3), recorded specifically to test how the positions of the fixed stars had shifted since earlier observers.',
+        source: {
+          externalId: 'src:ptolemy-almagest-agrippa-92',
+          name: 'Ptolemy, Almagest VII.3, reporting Agrippa\'s occultation of the Pleiades (12th year of Domitian, 7th of Bithynian Metrous = 29 November 92 CE).',
+          url: 'https://en.wikipedia.org/wiki/Agrippa_(astronomer)',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy compares Agrippa\'s 92 CE occultation with Timocharis\'s occultation of the same star group nearly four centuries earlier and finds the longitudes have shifted by an amount consistent with Hipparchus\'s precession of roughly 1° per century. Precession of the equinoxes is now a settled fact of modern astronomy, measured at about 1° every 71.6 years.',
+        source: {
+          externalId: 'src:precession-agrippa-confirm',
+          name: 'Agrippa (astronomer) — observation made to check the precession of the equinoxes discovered by Hipparchus, preserved in Almagest VII.3.',
+          url: 'https://en.wikipedia.org/wiki/Agrippa_(astronomer)',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Menelaus's lunar occultations at Rome → confirm precession (98 CE) ────────
+  {
+    externalId: 'trajectory:menelaus-occultations-precession-98ce',
+    text: 'Menelaus of Alexandria, observing at Rome in January 98 CE, recorded the Moon occulting the stars Spica and β Scorpii on nights a few days apart — observations Ptolemy used to confirm the precession of the equinoxes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0098-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0098-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Menelaus, having moved from Alexandria to Rome, observes two lunar occultations a few nights apart in January 98 CE: the Moon passing over the star Spica and over β Scorpii (Acrab). Ptolemy preserves the dated observations in the Almagest (VII.3) as fresh data on the longitudes of the fixed stars.',
+        source: {
+          externalId: 'src:ptolemy-almagest-menelaus-98',
+          name: 'Ptolemy, Almagest VII.3, reporting Menelaus\'s occultations of Spica and β Scorpii observed at Rome in January 98 CE.',
+          url: 'https://en.wikipedia.org/wiki/Menelaus_of_Alexandria',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy sets Menelaus\'s 98 CE star positions against those recorded by Timocharis and Hipparchus and confirms the precession of the equinoxes that Hipparchus had discovered in the 2nd century BCE. Precession is today an established fact of celestial mechanics, driven by the gravitational torque of the Sun and Moon on Earth\'s equatorial bulge.',
+        source: {
+          externalId: 'src:precession-menelaus-confirm',
+          name: 'Menelaus of Alexandria — Ptolemy used his Rome occultations of 98 CE to confirm precession of the equinoxes (Almagest VII.3).',
+          url: 'https://en.wikipedia.org/wiki/Menelaus_of_Alexandria',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aristarchus's summer solstice of 280 BCE → length of the tropical year ────
+  {
+    externalId: 'trajectory:aristarchus-summer-solstice-280bce',
+    text: 'Aristarchus of Samos observed the summer solstice in 280 BCE — a dated observation Ptolemy cites in the Almagest and that Hipparchus used, against a later solstice, to refine the length of the tropical year.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0280-06-26',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0280-06-26',
+        datePrecision: 'MONTH',
+        reason: 'In the 50th year of the first Callippic period, around the summer solstice of late June 280 BCE, Aristarchus of Samos times the moment of the solstice. Ptolemy reports the observation in the Almagest (III.1) as one of the dated solstice epochs available to him from the earlier Greek record.',
+        source: {
+          externalId: 'src:ptolemy-almagest-aristarchus-solstice',
+          name: 'Ptolemy, Almagest III.1, citing Aristarchus\'s observation of the summer solstice of 280 BCE (50th year of the first Callippic period).',
+          url: 'https://en.wikipedia.org/wiki/Aristarchus_of_Samos',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0140-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Comparing his own solstice of 135 BCE with Aristarchus\'s of 280 BCE — 145 years apart — Hipparchus derives the length of the tropical year as about 365 + 1/4 − 1/300 days, within roughly six minutes of the modern value of 365.2422 days. The length of the tropical year is settled by modern astronomy.',
+        source: {
+          externalId: 'src:tropical-year-aristarchus-hipparchus',
+          name: 'Aristarchus of Samos — Ptolemy records that Aristarchus observed the summer solstice of 280 BC, used in deriving the length of the year.',
+          url: 'https://en.wikipedia.org/wiki/Aristarchus_of_Samos',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Trial and execution of Socrates — Athens, 399 BCE ────────────────────────
   {
     externalId: 'trajectory:socrates-trial-execution-399bce',
