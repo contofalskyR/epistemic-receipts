@@ -40070,6 +40070,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — non-Western science & technology (added 2026-06-17)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── WHO issues global alert on SARS, 12 March 2003 ──────────────────────────
+  {
+    externalId: 'trajectory:who-sars-global-alert-2003',
+    text: 'On 12 March 2003, the World Health Organization issued a global alert about an unrecognized severe form of atypical pneumonia (later named SARS) spreading from Guangdong, China, and Hong Kong to Viet Nam — the first worldwide warning of the 21st century\'s first new epidemic disease.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2003-03-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-12',
+        datePrecision: 'DAY',
+        reason: 'WHO issues a global alert about cases of severe atypical pneumonia following reports it had been tracking since mid-February of outbreaks in Viet Nam, Hong Kong SAR, and Guangdong province in China. The alert flags that the illness spreads readily to hospital staff and warns travellers and health authorities worldwide — placing the new disease firmly on the international record.',
+        source: {
+          externalId: 'src:who-sars-alert-2003-03-12',
+          name: 'World Health Organization. "WHO issues a global alert about cases of atypical pneumonia." Disease Outbreak News, 12 March 2003.',
+          url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2003_03_12-en',
+          publishedAt: '2003-03-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 April 2003, WHO announces that a novel coronavirus (SARS-CoV), identified by a collaborating network of laboratories, is the confirmed causative agent of SARS, fulfilling Koch\'s postulates. The aetiology and the reality of the epidemic are settled across the scientific community within weeks of the alert.',
+        source: {
+          externalId: 'src:who-sars-coronavirus-confirmed-2003',
+          name: 'World Health Organization. "Coronavirus never before seen in humans is the cause of SARS." 16 April 2003.',
+          url: 'https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome',
+          publishedAt: '2003-04-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── India's Mars Orbiter Mission reaches Mars orbit, 24 Sept 2014 ────────────
+  {
+    externalId: 'trajectory:india-mars-orbiter-mission-2014',
+    text: 'On 24 September 2014, India\'s Mars Orbiter Mission (Mangalyaan) was inserted into orbit around Mars, making India the first Asian nation to reach Martian orbit and the first nation anywhere to do so on its first attempt.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-09-24',
+        datePrecision: 'DAY',
+        reason: 'At 02:10 UTC on 24 September 2014, after a 298-day cruise from Earth, ISRO\'s Mars Orbiter Mission fires its main engine to achieve Mars orbit insertion. ISRO confirms the spacecraft is captured into orbit in real time; India becomes the fourth space agency to reach Mars, after the Soviet program, NASA, and ESA, and the first to succeed on a maiden attempt.',
+        source: {
+          externalId: 'src:isro-mom-orbit-insertion-2014',
+          name: 'Wikipedia. "Mars Orbiter Mission" — Mars orbit insertion 24 September 2014, 02:10 UTC; first Asian nation and first maiden-attempt success (citing ISRO).',
+          url: 'https://en.wikipedia.org/wiki/Mars_Orbiter_Mission',
+          publishedAt: '2014-09-24',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-09-24',
+        datePrecision: 'DAY',
+        reason: 'The orbit insertion is independently tracked by NASA\'s Deep Space Network and confirmed by global space agencies the same day; the spacecraft proceeds to return data and imagery from Mars orbit for years. The achievement is an uncontested matter of record in the spaceflight literature.',
+        source: {
+          externalId: 'src:nasa-mom-confirmed-2014',
+          name: 'NASA. "India\'s First Mars Mission, Mars Orbiter Mission (MOM), enters Mars orbit." 23–24 September 2014.',
+          url: 'https://www.nasa.gov/centers-and-facilities/jpl/indias-first-mars-mission-enters-orbit/',
+          publishedAt: '2014-09-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Lee Sedol, Seoul, March 2016 ────────────────────────────
+  {
+    externalId: 'trajectory:alphago-defeats-lee-sedol-2016',
+    text: 'Between 9 and 15 March 2016 in Seoul, Google DeepMind\'s AlphaGo program defeated Go world champion Lee Sedol 4–1, the first time a computer beat a top human professional at Go without a handicap.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'Over five games at the Four Seasons Hotel in Seoul (9, 10, 12, 13, 15 March 2016), AlphaGo wins games 1, 2, 3 and 5 while Lee Sedol wins game 4 — a final score of 4–1, all decided by resignation. The matches are livestreamed to millions and overseen by professional referees, placing the result immediately and publicly on the record.',
+        source: {
+          externalId: 'src:alphago-lee-sedol-match-2016',
+          name: 'Wikipedia. "AlphaGo versus Lee Sedol" — five-game match, Seoul, 9–15 March 2016; AlphaGo wins 4–1.',
+          url: 'https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol',
+          publishedAt: '2016-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-01-28',
+        datePrecision: 'DAY',
+        reason: 'The AlphaGo system and its earlier 5–0 victory over European champion Fan Hui are documented in a peer-reviewed Nature paper (Silver et al., 28 January 2016). The subsequent Lee Sedol result is recorded by Go federations and independently verified game records, settling that machines had surpassed top human play at Go.',
+        source: {
+          externalId: 'src:nature-alphago-2016',
+          name: 'Silver D et al. "Mastering the game of Go with deep neural networks and tree search." Nature 529, 484–489 (28 Jan 2016). doi:10.1038/nature16961.',
+          url: 'https://www.nature.com/articles/nature16961',
+          publishedAt: '2016-01-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── He Jiankui announces first gene-edited babies, Nov 2018 ──────────────────
+  {
+    externalId: 'trajectory:he-jiankui-crispr-babies-2018',
+    text: 'In November 2018, Chinese scientist He Jiankui announced the birth of twin girls whose embryos he had edited with CRISPR-Cas9 to disable the CCR5 gene — the first reported gene-edited human babies — a claim the scientific community immediately and overwhelmingly condemned.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2018-11-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 November 2018, MIT Technology Review and the Associated Press break the story; He Jiankui posts five YouTube videos the same day announcing that twin girls (pseudonyms Lulu and Nana), born in October 2018, carry CRISPR edits to the CCR5 gene intended to confer HIV resistance. He repeats the claim publicly at the Second International Summit on Human Genome Editing in Hong Kong on 28 November.',
+        source: {
+          externalId: 'src:he-jiankui-announcement-2018',
+          name: 'Wikipedia. "He Jiankui affair" — November 2018 announcement of CRISPR-edited twins; MIT Technology Review/AP reporting 25 Nov 2018.',
+          url: 'https://en.wikipedia.org/wiki/He_Jiankui_affair',
+          publishedAt: '2018-11-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'On 30 December 2019, a Shenzhen court convicts He Jiankui of "illegal medical practice," sentencing him to three years in prison and a fine; Chinese authorities confirm the twins\' birth and a third edited pregnancy. The conviction and government investigation settle, as a matter of judicial and institutional record, that the gene-editing experiment took place and violated the law.',
+        source: {
+          externalId: 'src:he-jiankui-conviction-2019',
+          name: 'Wikipedia. "He Jiankui affair" — Shenzhen court conviction and three-year sentence, 30 December 2019 (citing Xinhua/Reuters).',
+          url: 'https://en.wikipedia.org/wiki/He_Jiankui_affair',
+          publishedAt: '2019-12-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Chang'e 4 first soft landing on the lunar far side, 3 Jan 2019 ───────────
+  {
+    externalId: 'trajectory:change4-far-side-landing-2019',
+    text: 'On 3 January 2019, China\'s Chang\'e 4 spacecraft made the first soft landing on the far side of the Moon, touching down in the Von Kármán crater — a region never before reached by any lander.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-01-03',
+        datePrecision: 'DAY',
+        reason: 'At 02:26 UTC on 3 January 2019, the Chang\'e 4 lander touches down in the Von Kármán crater within the South Pole–Aitken basin, relaying data via the Queqiao satellite positioned at the Earth–Moon L2 point (direct Earth communication being impossible from the far side). The China National Space Administration confirms the landing and releases the first surface images the same day.',
+        source: {
+          externalId: 'src:change4-landing-2019',
+          name: 'Wikipedia. "Chang\'e 4" — first far-side soft landing, Von Kármán crater, 02:26 UTC 3 January 2019 (citing CNSA/Xinhua).',
+          url: 'https://en.wikipedia.org/wiki/Chang%27e_4',
+          publishedAt: '2019-01-03',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-05-15',
+        datePrecision: 'DAY',
+        reason: 'Scientific results from the landing site — including Yutu-2 rover spectrometry suggesting mantle-derived material in the South Pole–Aitken basin — are peer-reviewed and published in Nature (Li et al., 15 May 2019), confirming both the landing and its scientific return as settled facts in the planetary-science literature.',
+        source: {
+          externalId: 'src:change4-yutu2-nature-2019',
+          name: 'Li C et al. "Chang\'E-4 initial spectroscopic identification of lunar far-side mantle-derived materials." Nature 569, 378–382 (15 May 2019). doi:10.1038/s41586-019-1189-0.',
+          url: 'https://www.nature.com/articles/s41586-019-1189-0',
+          publishedAt: '2019-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
