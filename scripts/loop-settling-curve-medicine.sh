@@ -190,6 +190,48 @@ try:
 except:
     print('unknown')
 " 2>/dev/null || echo "unknown")
+
+    # ─── PHASE 3: OPUS REVIEW ───────────────────────────────────────────────
+    # Opus reads what Sonnet actually committed and checks it against the spec.
+    # Catches: wrong transition sequences, date format errors, missing fields,
+    # transition logic that doesn't make medical sense, spec drift.
+
+    if [ "${ADDED:-0}" != "0" ] && [ "${ADDED:-0}" != "" ]; then
+      REVIEW_PROMPT="You are a medical epistemic quality reviewer. Sonnet just committed new trajectories to the Epistemic Receipts database. Verify that what was committed matches the spec and is medically/epistemically correct.
+
+PROJECT: /Users/robclaw/Projects/epistemic-receipts
+ORIGINAL SPEC (what Opus approved): ${JSON_SPEC}
+
+Your job:
+1. Read scripts/seed-medicine-trajectories.ts and find the newly added entries (they are at the bottom, matching the externalIds in the spec).
+2. For each added entry, verify:
+   - externalId, text, claimType, claimEmergedAt match the spec
+   - Each transition's fromAxis → toAxis sequence is medically/epistemically valid (e.g., SETTLED→REVERSED requires the original claim to have been settled first; a drug can't go from OPEN to SETTLED without passing through RECORDED)
+   - occurredAt dates are consistent with historical timeline (cause precedes effect)
+   - source URLs look real (not obviously hallucinated DOIs or placeholder URLs)
+   - reason fields are substantive (not just 'the event occurred')
+3. Check git log to confirm the commit went through: git log --oneline -3
+
+Output exactly one of:
+REVIEW_OK
+REVIEW_ISSUES:[brief description of what's wrong and which externalId is affected]"
+
+      log "Phase 3: Opus review..."
+      REVIEW_OUTPUT=$(claude --model claude-opus-4-8 --print --permission-mode bypassPermissions --max-turns 10 "$REVIEW_PROMPT" 2>&1) || true
+      echo "$REVIEW_OUTPUT" >> "$LOG"
+
+      REVIEW_STATUS=$(echo "$REVIEW_OUTPUT" | grep -E "^REVIEW_OK|^REVIEW_ISSUES:" | tail -1)
+
+      if echo "$REVIEW_STATUS" | grep -q "REVIEW_ISSUES:"; then
+        REVIEW_DETAIL=$(echo "$REVIEW_STATUS" | sed 's/^REVIEW_ISSUES://')
+        log "⚠️  Opus review flagged issues: ${REVIEW_DETAIL}"
+        bash "$NOTIFY" "⚠️ Medicine quality issue (run #${RUN})
+${REVIEW_DETAIL}
+Check logs/medicine-decisions.jsonl"
+      else
+        log "✓ Opus review passed"
+      fi
+    fi
   fi
 
   log "Run #${RUN} done. Added: ${ADDED:-0}"
