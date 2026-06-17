@@ -1628,6 +1628,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDITIONS (Reformation, Scientific Revolution, Ottoman)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Augsburg Confession presented to Charles V ──────────────────────────────
+  {
+    externalId: 'trajectory:augsburg-confession-1530',
+    text: 'The Augsburg Confession, the foundational doctrinal statement of Lutheranism drafted chiefly by Philipp Melanchthon, was presented to Emperor Charles V at the Diet of Augsburg on June 25, 1530.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1530-06-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1530-06-25',
+        datePrecision: 'DAY',
+        reason: 'The Confessio Augustana, drafted by Melanchthon with input from Luther, Justus Jonas, and Johannes Bugenhagen, is read aloud in German before Charles V in the episcopal palace chapel at Augsburg and signed by seven Lutheran princes and two free cities. The emperor keeps the Latin copy; the German copy goes to the imperial chancellor. Both presentation copies and the printed text survive.',
+        source: {
+          externalId: 'src:augsburg-confession-1530',
+          name: 'Confessio Augustana, presented to Emperor Charles V at the Diet of Augsburg, 25 June 1530 (official text, Latin and German).',
+          url: 'https://en.wikipedia.org/wiki/Augsburg_Confession',
+          publishedAt: '1530-06-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1580-06-25',
+        datePrecision: 'DAY',
+        reason: 'The Augsburg Confession is incorporated as the principal confession in the Book of Concord (Konkordienbuch), published 25 June 1580 on the fiftieth anniversary of its presentation, fixing its text as the binding doctrinal standard of Lutheran churches. Its authorship and 1530 presentation are documented institutional facts, not matters of historical dispute.',
+        source: {
+          externalId: 'src:book-of-concord-1580',
+          name: 'Book of Concord (Konkordienbuch), Dresden, 25 June 1580 — incorporating the Augsburg Confession as the primary Lutheran confession.',
+          url: 'https://en.wikipedia.org/wiki/Book_of_Concord',
+          publishedAt: '1580-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Peace of Augsburg ───────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:peace-of-augsburg-1555',
+    text: 'The Peace of Augsburg, signed September 25, 1555, granted the princes of the Holy Roman Empire the right to choose Lutheranism or Catholicism for their territories under the principle cuius regio, eius religio.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1555-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1555-09-25',
+        datePrecision: 'DAY',
+        reason: 'Negotiated at the imperial Diet of Augsburg by Ferdinand I on behalf of Charles V, the treaty legally recognizes Lutheranism within the Empire, lets each territorial prince determine his subjects\' confession (cuius regio, eius religio), and grants dissenters the ius emigrandi — the right to emigrate. The text is entered into the imperial recess (Reichsabschied).',
+        source: {
+          externalId: 'src:peace-of-augsburg-text-1555',
+          name: 'Peace of Augsburg (Augsburger Reichs- und Religionsfrieden), imperial recess of 25 September 1555.',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Augsburg',
+          publishedAt: '1555-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1618-05-23',
+        datePrecision: 'DAY',
+        reason: 'The settlement omits Calvinism and leaves the status of ecclesiastical territories ambiguous (the "ecclesiastical reservation"). Mounting confessional disputes over these gaps culminate in the Defenestration of Prague and the outbreak of the Thirty Years\' War, breaking down the Augsburg order across the Empire.',
+        source: {
+          externalId: 'src:thirty-years-war-outbreak-1618',
+          name: 'Encyclopædia Britannica, "Peace of Augsburg" and "Thirty Years\' War" — breakdown of the 1555 settlement.',
+          url: 'https://www.britannica.com/event/Peace-of-Augsburg',
+          publishedAt: '1618-05-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1648-10-24',
+        datePrecision: 'DAY',
+        reason: 'The Peace of Westphalia, signed 24 October 1648, reaffirms and extends the Augsburg principles — confirming territorial confessional choice, adding Calvinism (Reformed) as a recognized confession, and fixing 1624 as the normative year for religious holdings. The 1555 settlement is thereby absorbed into the durable constitutional order of the Empire.',
+        source: {
+          externalId: 'src:peace-of-westphalia-confirms-augsburg-1648',
+          name: 'Peace of Westphalia (Treaties of Osnabrück and Münster), 24 October 1648 — reaffirming and extending the Peace of Augsburg.',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Westphalia',
+          publishedAt: '1648-10-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gassendi observes the first transit of Mercury ──────────────────────────
+  {
+    externalId: 'trajectory:gassendi-transit-mercury-1631',
+    text: 'Pierre Gassendi observed the transit of Mercury across the Sun on November 7, 1631 — the first observation of a planetary transit — confirming the prediction Johannes Kepler had published in his ephemerides.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1631-11-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1631-11-07',
+        datePrecision: 'DAY',
+        reason: 'Observing by projecting the Sun\'s image in his Paris room, Gassendi sees a small dark spot cross the solar disk on 7 November 1631, exactly as Kepler had forecast in the ephemerides he published in 1630. Gassendi is surprised by how small Mercury appears. He publishes his account, Mercurius in Sole visus, in 1632, providing the first observational confirmation of a predicted planetary transit.',
+        source: {
+          externalId: 'src:gassendi-mercurius-in-sole-1632',
+          name: 'Gassendi P. Mercurius in Sole visus (account of the 7 November 1631 transit of Mercury). Paris, 1632.',
+          url: 'https://en.wikipedia.org/wiki/Transit_of_Mercury',
+          publishedAt: '1632-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1677-11-07',
+        datePrecision: 'DAY',
+        reason: 'Repeated successful predictions and observations of Mercury transits — including Edmond Halley\'s observation of the 7 November 1677 transit from Saint Helena, which he proposed using to measure the solar parallax — establish predicted planetary transits as a settled, routinely verified feature of Keplerian astronomy.',
+        source: {
+          externalId: 'src:halley-mercury-transit-1677',
+          name: 'Halley E. Observation of the transit of Mercury, 7 November 1677, from Saint Helena; Philosophical Transactions of the Royal Society.',
+          url: 'https://en.wikipedia.org/wiki/Transit_of_Mercury',
+          publishedAt: '1677-11-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Great Comet of 1680 — first telescopic comet, Newtonian orbit ───────────
+  {
+    externalId: 'trajectory:great-comet-1680-kirch',
+    text: 'Gottfried Kirch discovered the Great Comet of 1680 (C/1680 V1) on November 14, 1680 — the first comet ever discovered with a telescope — whose orbit Isaac Newton later showed to be a conic section governed by gravitation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1680-11-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1680-11-14',
+        datePrecision: 'DAY',
+        reason: 'Observing at Coburg on 14 November 1680 (New Style), Gottfried Kirch detects the comet with a telescope — the first comet ever found by telescopic means rather than naked eye. The brilliant comet is widely observed across Europe over the following weeks and its positions are recorded by many astronomers, including John Flamsteed at Greenwich.',
+        source: {
+          externalId: 'src:great-comet-1680-discovery',
+          name: 'Great Comet of 1680 (C/1680 V1) — telescopic discovery by Gottfried Kirch, 14 November 1680.',
+          url: 'https://en.wikipedia.org/wiki/Great_Comet_of_1680',
+          publishedAt: '1680-11-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'In the Principia (1687), Newton fits the observed positions of the comet of 1680 to a parabolic orbit about the Sun, demonstrating that comets obey the same inverse-square gravitation as the planets and follow conic-section paths. This settles the long-contested nature of comets as celestial bodies on Keplerian orbits rather than atmospheric portents.',
+        source: {
+          externalId: 'src:newton-principia-comet-1680',
+          name: 'Newton I. Philosophiæ Naturalis Principia Mathematica, Book III (orbit of the comet of 1680 fit to a parabola). London, 5 July 1687.',
+          url: 'https://en.wikipedia.org/wiki/Great_Comet_of_1680',
+          publishedAt: '1687-07-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Karlowitz — Ottoman territorial reversal ──────────────────────
+  {
+    externalId: 'trajectory:treaty-of-karlowitz-1699',
+    text: 'The Treaty of Karlowitz, signed January 26, 1699, ended the war of the Holy League against the Ottoman Empire, ceding most of Hungary and Transylvania to the Habsburgs — the Ottomans\' first major territorial losses in Europe and the start of their long retreat.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1699-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1699-01-26',
+        datePrecision: 'DAY',
+        reason: 'Concluded at Sremski Karlovci on 26 January 1699 between the Ottoman Empire and members of the Holy League (the Habsburg monarchy, Poland-Lithuania, and Venice) on the uti possidetis principle, the treaty cedes most of Ottoman Hungary, Transylvania, Slavonia, and the Morea. The signed instruments and contemporary diplomatic records survive.',
+        source: {
+          externalId: 'src:treaty-of-karlowitz-text-1699',
+          name: 'Treaty of Karlowitz, signed at Sremski Karlovci, 26 January 1699 (Ottoman–Holy League peace settlement).',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Karlowitz',
+          publishedAt: '1699-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historiography treats Karlowitz as the documented watershed reversing nearly three centuries of Ottoman expansion (1299–1683) and inaugurating the Empire\'s defensive era in Europe. The territorial transfers and the date are settled facts; scholarly debate concerns causes and long-term consequences, not whether the cession occurred.',
+        source: {
+          externalId: 'src:karlowitz-historiography-2000',
+          name: 'Encyclopædia Britannica, "Treaty of Carlowitz" — scholarly synthesis of the Ottoman territorial reversal.',
+          url: 'https://www.britannica.com/event/Treaty-of-Carlowitz',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 9. U.S. Declaration of Independence ─────────────────────────────────────
   {
     externalId: 'trajectory:us-declaration-independence-1776',
