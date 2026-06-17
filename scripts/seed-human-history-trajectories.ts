@@ -6891,6 +6891,174 @@ const TRAJECTORIES: Trajectory[] = [
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Solar eclipse of 968 — Leo the Deacon's first description of the corona ───
+  {
+    externalId: 'trajectory:leo-deacon-corona-968',
+    text: 'During the total solar eclipse of 22 December 968, observed from Constantinople, the Byzantine historian Leo the Deacon recorded a "dim and feeble glow like a narrow band shining in a circle around the edge of the disk" — the earliest unambiguous written description of the solar corona.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0968-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0968-12-22',
+        datePrecision: 'DAY',
+        reason: 'Leo the Deacon, an eyewitness in the imperial capital, records that at the fourth hour of the day "darkness covered the earth and all the brightest stars shone forth, and it was possible to see the disk of the Sun, dull and unlit, and a dim and feeble glow like a narrow band shining in a circle around the edge of the disk." The passage describes the totality of a solar eclipse together with the ring of light now known as the corona.',
+        source: {
+          externalId: 'src:leo-deacon-history-968',
+          name: 'Leo the Deacon. History (Historia), account of the total solar eclipse of 22 December 968 at Constantinople. (late 10th century, eyewitness)',
+          url: 'https://en.wikipedia.org/wiki/Leo_the_Deacon',
+          publishedAt: '0968-12-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of solar physics establish that Leo the Deacon\'s description is the first explicit mention of what can be unambiguously interpreted as the solar corona, definitively linked to a datable eclipse — the totality of 22 December 968. Astronomical retrocalculation confirms a total solar eclipse crossing Constantinople on that date, settling both the observation and its identification as the earliest corona record.',
+        source: {
+          externalId: 'src:hao-solar-timeline-corona-968',
+          name: 'High Altitude Observatory (UCAR). Solar Physics Historical Timeline (0–1599): "AD 968 — the first mention of the solar corona."',
+          url: 'https://www2.hao.ucar.edu/education/solar-physics-timeline/0-1599',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Walk to Canossa — Henry IV's penance before Gregory VII (1077) ───────────
+  {
+    externalId: 'trajectory:walk-to-canossa-1077',
+    text: 'During the Investiture Controversy, the excommunicated Holy Roman Emperor Henry IV waited as a penitent outside the gates of Canossa Castle for three days (25–28 January 1077) before Pope Gregory VII granted him absolution.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1077-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1077-01-28',
+        datePrecision: 'DAY',
+        reason: 'Having been excommunicated and deposed by Gregory VII, Henry IV crosses the winter Alps and reaches the fortress of Canossa on 25 January 1077. For three days he waits before the gate as a barefoot penitent in a hair-shirt; on 28 January the pope receives him, lifts the excommunication, and restores him to communion. The act is a public reversal of royal authority before papal power.',
+        source: {
+          externalId: 'src:gregory-vii-letter-canossa-1077',
+          name: 'Gregory VII. Letter to the German princes describing Henry IV\'s absolution at Canossa, January 1077 (Register, Book IV); corroborated by Lambert of Hersfeld, Annales. (contemporaneous)',
+          url: 'https://en.wikipedia.org/wiki/Road_to_Canossa',
+          publishedAt: '1077-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The episode is corroborated by independent contemporaneous accounts — Gregory VII\'s own letter to the German princes and the chronicle of Lambert of Hersfeld — and the date of 25–28 January 1077 is settled in medieval scholarship. "Going to Canossa" enters European political vocabulary as a synonym for humiliating submission.',
+        source: {
+          externalId: 'src:lambert-hersfeld-canossa',
+          name: 'Lambert of Hersfeld. Annales, account of Henry IV\'s journey across the Alps and penance at Canossa. (c. 1077–1080, near-contemporaneous)',
+          url: 'https://www.britannica.com/event/Penance-of-Canossa',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ibn Yunus — eclipse observations at Cairo (978–1004) ─────────────────────
+  {
+    externalId: 'trajectory:ibn-yunus-cairo-eclipses-978',
+    text: 'The Egyptian astronomer Ibn Yunus recorded precisely timed observations of solar and lunar eclipses at Cairo, beginning with the eclipse of 978 CE, in his al-Zij al-Hakimi al-Kabir — observations later used to determine the secular acceleration of the Moon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0978-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Working at the Fatimid observatory in Cairo, Ibn Yunus observes the eclipse of the Sun and Moon in 978 CE and, over the following decades, records some 30 lunar eclipses and 40 planetary conjunctions with carefully noted times. His handbook al-Zij al-Hakimi al-Kabir (the Hakemite Tables, c. 1000) preserves these as dated, timed observations of unusual accuracy for the era.',
+        source: {
+          externalId: 'src:ibn-yunus-hakimi-zij',
+          name: 'Ibn Yunus. al-Zij al-Hakimi al-Kabir (the Hakemite astronomical tables), recording eclipse observations at Cairo from 978 CE. (c. 1000 CE)',
+          url: 'https://en.wikipedia.org/wiki/Ibn_Yunus',
+          publishedAt: '0978-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1878-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ibn Yunus\'s timed eclipse records, transmitted to Europe, are used by Richard Dunthorne and later Simon Newcomb in their calculations of the secular acceleration of the Moon\'s mean motion. The medieval Cairo observations thus become primary data points fixing a long-term dynamical effect, settling their value as a scientific record.',
+        source: {
+          externalId: 'src:newcomb-lunar-acceleration-ibn-yunus',
+          name: 'Simon Newcomb and Richard Dunthorne — use of Ibn Yunus\'s Cairo eclipse observations in determining the secular acceleration of the Moon.',
+          url: 'https://en.wikipedia.org/wiki/Ibn_Yunus',
+          publishedAt: '1878-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fourth Lateran Council — transubstantiation defined (1215) ───────────────
+  {
+    externalId: 'trajectory:fourth-lateran-council-1215',
+    text: 'The Fourth Lateran Council, convened by Pope Innocent III and opened on 11 November 1215, formally defined the doctrine of transubstantiation in its first canon (Firmiter) — the conversion of the bread and wine of the Eucharist into the body and blood of Christ.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1215-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-11-11',
+        datePrecision: 'DAY',
+        reason: 'The greatest ecclesiastical assembly of the medieval West opens at the Lateran Palace in Rome on St. Martin\'s Day, 11 November 1215, with hundreds of bishops and abbots present. Its first canon, Firmiter credimus ("On the Catholic Faith"), states that the body and blood of Christ are "truly contained in the sacrament of the altar under the forms of bread and wine, the bread being transubstantiated into the body, and the wine into the blood" — the first official conciliar use of the term.',
+        source: {
+          externalId: 'src:lateran-iv-canon-1-1215',
+          name: 'Fourth Lateran Council, Canon 1 (Firmiter credimus), promulgated November 1215. (contemporaneous conciliar record)',
+          url: 'https://en.wikipedia.org/wiki/Fourth_Council_of_the_Lateran',
+          publishedAt: '1215-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1215-11-30',
+        datePrecision: 'DAY',
+        reason: 'After plenary sessions on 11, 20, and 30 November, the council\'s seventy-one canons are formally adopted on the closing day, 30 November 1215. Transubstantiation becomes a defined and binding article of Catholic doctrine, reaffirmed by the Councils of Trent and remaining settled teaching of the Roman Catholic Church.',
+        source: {
+          externalId: 'src:lateran-iv-canons-adopted-1215',
+          name: 'Fourth Council of the Lateran — adoption of the seventy-one canons, 30 November 1215, and the conciliar definition of transubstantiation.',
+          url: 'https://www.britannica.com/event/Fourth-Lateran-Council',
+          publishedAt: '1215-11-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Halley's Comet 1066 apparition (Norman Conquest omen) ────────────────────
   {
     externalId: 'trajectory:halley-comet-1066-apparition',
@@ -44559,6 +44727,193 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://en.wikipedia.org/wiki/Chandrayaan-3',
           publishedAt: '2023-08-24',
           methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDENDUM (1400–1750): Reconquista, Scientific Revolution, Mughal India
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Alhambra Decree — expulsion of Jews from Spain ──────────────────────────
+  {
+    externalId: 'trajectory:alhambra-decree-1492',
+    text: 'Ferdinand II and Isabella I issued the Alhambra Decree on 31 March 1492, ordering all unconverted Jews to leave the Crowns of Castile and Aragon by 31 July 1492; the decree was formally revoked on 16 December 1968.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1492-03-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1492-03-31',
+        datePrecision: 'DAY',
+        reason: 'The Catholic Monarchs sign the Edict of Expulsion at the Alhambra in Granada on 31 March 1492, months after the fall of Granada. The decree orders every Jew who refuses baptism to depart the combined realms by the end of July 1492. The signed edict text survives in the Spanish royal archives and was promulgated publicly across Castile and Aragon.',
+        source: {
+          externalId: 'src:alhambra-decree-text-1492',
+          name: 'Edict of Expulsion (Alhambra Decree), issued by Ferdinand II and Isabella I, 31 March 1492 (decree text).',
+          url: 'https://en.wikipedia.org/wiki/Alhambra_Decree',
+          publishedAt: '1492-03-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1492-07-31',
+        datePrecision: 'DAY',
+        reason: 'The four-month deadline expires on 31 July 1492; tens of thousands of Jews who had not converted leave Spain for Portugal, North Africa, the Ottoman Empire and Italy, while others accept baptism as conversos. Contemporary chronicles (Andrés Bernáldez) and the documented exodus establish the enforcement of the expulsion as an accomplished institutional fact.',
+        source: {
+          externalId: 'src:alhambra-decree-enforcement-1492',
+          name: 'Andrés Bernáldez, Historia de los Reyes Católicos — contemporary account of the 1492 Jewish expulsion and its July deadline.',
+          url: 'https://www.britannica.com/event/Alhambra-Decree',
+          publishedAt: '1492-07-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-12-16',
+        datePrecision: 'DAY',
+        reason: 'In the wake of the Second Vatican Council, the Spanish government formally and symbolically revoked the Alhambra Decree on 16 December 1968, ending its nominal legal force after 476 years. Spain subsequently passed a 2015 law offering Spanish nationality to descendants of the expelled Sephardic Jews, further reversing the original institutional act.',
+        source: {
+          externalId: 'src:alhambra-decree-revocation-1968',
+          name: 'Formal revocation of the Alhambra Decree by the Spanish government, 16 December 1968.',
+          url: 'https://en.wikipedia.org/wiki/Alhambra_Decree',
+          publishedAt: '1968-12-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── David Fabricius discovers the variable star Mira ────────────────────────
+  {
+    externalId: 'trajectory:mira-variable-star-1596',
+    text: 'David Fabricius observed the star later named Mira (omicron Ceti) on 3 August 1596 and recorded that it changed brightness and vanished, the first systematically noted long-period variable star.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1596-08-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1596-08-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 August 1596, while using a third-magnitude star in Cetus as a reference point for observing Mercury, David Fabricius noticed it brightening; by 21 August it had risen a further magnitude, and by October it had faded from naked-eye view. Believing he had witnessed a nova, he recorded the anomaly, which is preserved in his correspondence with Johannes Kepler.',
+        source: {
+          externalId: 'src:fabricius-mira-observation-1596',
+          name: 'David Fabricius — observation of the variability of omicron Ceti (Mira), 3 August 1596 (recorded in correspondence with Kepler).',
+          url: 'https://en.wikipedia.org/wiki/Mira',
+          publishedAt: '1596-08-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1638-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1638 Johannes Holwarda determined that the star reappears on a regular cycle of roughly eleven months, establishing it as a periodic variable rather than a one-time nova. Ismaël Bullialdus refined the period to about 333 days, and Johannes Hevelius named the star "Mira" ("the wonderful") in 1662, settling its status as the prototype long-period variable.',
+        source: {
+          externalId: 'src:holwarda-mira-period-1638',
+          name: 'Johannes Holwarda — determination of Mira\'s ~11-month period, 1638; star named "Mira" by Hevelius, 1662.',
+          url: 'https://en.wikipedia.org/wiki/Mira',
+          publishedAt: '1638-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aurangzeb reimposes the jizya tax on non-Muslims ────────────────────────
+  {
+    externalId: 'trajectory:aurangzeb-reimposes-jizya-1679',
+    text: 'On 2 April 1679 the Mughal emperor Aurangzeb reimposed the jizya tax on non-Muslim subjects, reversing its abolition under Akbar roughly a century earlier.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1679-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1564-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Emperor Akbar abolished the jizya, the discriminatory poll tax on non-Muslims, around 1564 as part of his policy of conciliation toward his Hindu subjects. The tax remained suspended for roughly a hundred years under Akbar, Jahangir and Shah Jahan, establishing its abolition as a settled feature of Mughal fiscal practice.',
+        source: {
+          externalId: 'src:akbar-abolishes-jizya-1564',
+          name: 'Abolition of jizya by Emperor Akbar, c. 1564 (Mughal fiscal reform).',
+          url: 'https://en.wikipedia.org/wiki/Jizya',
+          publishedAt: '1564-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1679-04-02',
+        datePrecision: 'DAY',
+        reason: 'On 2 April 1679 (1st Rabi I, AH 1090) Aurangzeb issued an order reimposing the jizya on non-Muslims after a century of abatement, an act recorded by the court chronicle Maasir-i-Alamgiri. The measure provoked protest from Hindu rulers, Mughal court officials, and members of Aurangzeb\'s own family, and is documented as a deliberate reversal of Akbar\'s policy.',
+        source: {
+          externalId: 'src:aurangzeb-jizya-maasir-1679',
+          name: 'Maasir-i-Alamgiri — court chronicle recording Aurangzeb\'s reimposition of jizya, 2 April 1679.',
+          url: 'https://en.wikipedia.org/wiki/Aurangzeb',
+          publishedAt: '1679-04-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Halley predicts the path of the total solar eclipse of 1715 ─────────────
+  {
+    externalId: 'trajectory:halley-eclipse-prediction-1715',
+    text: 'Edmond Halley predicted and mapped the path and timing of the total solar eclipse of 3 May 1715 (22 April Old Style) across England, publishing the broadside before the event; the eclipse was confirmed by direct observation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1715-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1715-03-01',
+        datePrecision: 'MONTH',
+        reason: 'In March 1715 Edmond Halley publishes a broadside map (printed by John Senex) showing the predicted path of totality of the forthcoming solar eclipse across Great Britain, with its timing computed from Newtonian theory and lunar/solar tables. The map asks observers to report what they see so the path can be corrected, making a public, falsifiable prediction of a future astronomical event.',
+        source: {
+          externalId: 'src:halley-eclipse-map-1715',
+          name: 'Edmond Halley — predictive broadside map of the total solar eclipse of April/May 1715, published by John Senex, March 1715.',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_May_3,_1715',
+          publishedAt: '1715-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1715-05-03',
+        datePrecision: 'DAY',
+        reason: 'The total eclipse occurs on 3 May 1715 (Gregorian; 22 April Old Style in then-Julian Britain), with totality sweeping across England as Halley had forecast — accurate to within about four minutes in time, though the original path lay roughly 20 miles off due to imperfect lunar tables. Halley observed it from London (3 minutes 33 seconds of totality) and afterward issued a corrected map, settling the predictive method.',
+        source: {
+          externalId: 'src:halley-eclipse-observed-1715',
+          name: 'Total solar eclipse of 3 May 1715 over Great Britain — observed and confirmed by Halley and others; corrected path map issued afterward.',
+          url: 'https://en.wikipedia.org/wiki/Solar_eclipse_of_May_3,_1715',
+          publishedAt: '1715-05-03',
+          methodologyType: 'primary',
         },
       },
     ],
