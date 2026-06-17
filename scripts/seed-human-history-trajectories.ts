@@ -30490,6 +30490,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Stuxnet identified as a cyber-physical weapon targeting Iran (2010) ──────
+  {
+    externalId: 'trajectory:stuxnet-natanz-cyberweapon-2010',
+    text: 'The Stuxnet computer worm, discovered in June 2010, was a cyber-physical weapon designed to sabotage industrial control systems — specifically the Siemens-controlled uranium-enrichment centrifuges at Iran\'s Natanz facility.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-06-17',
+        datePrecision: 'DAY',
+        reason: 'The Belarusian antivirus firm VirusBlokAda reported a novel Windows worm (initially "Rootkit.Tmphider") exploiting a previously unknown LNK-file vulnerability and carrying a digitally signed driver. The malware became widely known after security journalist Brian Krebs published an account on 15 July 2010. At this stage the worm was recorded as an unusually sophisticated piece of malware, but its purpose and target were not yet understood.',
+        source: {
+          externalId: 'src:krebs-stuxnet-2010',
+          name: 'Krebs B. "Experts Warn of New Windows Shortcut Flaw," KrebsOnSecurity, 15 July 2010.',
+          url: 'https://krebsonsecurity.com/2010/07/experts-warn-of-new-windows-shortcut-flaw/',
+          publishedAt: '2010-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Symantec\'s "W32.Stuxnet Dossier" (first released September 2010, expanded to v1.3/v1.4 in November 2010–February 2011) reverse-engineered the worm and established that it specifically fingerprinted Siemens S7-300 PLCs driving variable-frequency converter drives running at 807–1210 Hz — the operating range of gas centrifuges — and altered their rotational frequencies to damage them while reporting normal operation. With roughly 60% of infections in Iran, the analysis established that Stuxnet was a targeted attack on industrial control systems, the first publicly documented malware engineered to cause physical destruction.',
+        source: {
+          externalId: 'src:symantec-stuxnet-dossier-2010',
+          name: 'Falliere N, Murchu LO, Chien E. "W32.Stuxnet Dossier," Symantec Security Response, version 1.4, February 2011 (first issued November 2010).',
+          url: 'https://docs.broadcom.com/doc/security-response-w32-stuxnet-dossier-11-en',
+          publishedAt: '2010-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-11-29',
+        datePrecision: 'DAY',
+        reason: 'On 29 November 2010 Iranian President Mahmoud Ahmadinejad publicly acknowledged that a computer worm had affected centrifuges at the country\'s enrichment facilities, the first official confirmation from the target state that the attack had inflicted real damage. The identification of Stuxnet as a centrifuge-sabotage weapon aimed at Natanz has been corroborated by subsequent technical and journalistic investigations and is treated as settled.',
+        source: {
+          externalId: 'src:stuxnet-wikipedia-2010',
+          name: 'Stuxnet — discovery, analysis, and Iranian confirmation (encyclopedic summary with primary-source citations).',
+          url: 'https://en.wikipedia.org/wiki/Stuxnet',
+          publishedAt: '2010-11-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── OPERA "faster-than-light" neutrino anomaly announced then reversed (2011–2012) ──
+  {
+    externalId: 'trajectory:opera-ftl-neutrino-anomaly-2011-2012',
+    text: 'The OPERA collaboration\'s September 2011 measurement that muon neutrinos travelled from CERN to the Gran Sasso laboratory about 60 nanoseconds faster than light was reversed in 2012 after the anomaly was traced to instrumentation faults, principally a loose fibre-optic timing cable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-09-23',
+        datePrecision: 'DAY',
+        reason: 'On 22 September 2011 the OPERA collaboration posted arXiv:1109.4897 and on 23 September presented at CERN a measurement of neutrino velocity over the 730 km CNGS baseline, reporting that neutrinos arrived approximately 60.7 nanoseconds earlier than light would, a 6σ result. The collaboration explicitly declined to interpret it as faster-than-light travel and asked the community to scrutinise the measurement, which was recorded as an unexplained anomaly.',
+        source: {
+          externalId: 'src:opera-neutrino-velocity-2011',
+          name: 'OPERA Collaboration. "Measurement of the neutrino velocity with the OPERA detector in the CNGS beam," arXiv:1109.4897, 22 September 2011.',
+          url: 'https://arxiv.org/abs/1109.4897',
+          publishedAt: '2011-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-12',
+        datePrecision: 'DAY',
+        reason: 'In February 2012 OPERA identified two timing faults: a fibre-optic cable from a GPS receiver to the master clock was not fully connected, adding delay that spuriously advanced the apparent neutrino arrival, plus a clock-oscillator error. Independent measurements by ICARUS (March 2012) and others on the same beam found neutrino speeds consistent with light; on 8 June 2012 CERN reported the convergence. OPERA\'s corrected measurement, published 12 July 2012, found the neutrino velocity consistent with the speed of light, reversing the original result.',
+        source: {
+          externalId: 'src:opera-neutrino-corrected-2012',
+          name: 'OPERA Collaboration. "Measurement of the neutrino velocity with the OPERA detector in the CNGS beam" (corrected), JHEP 10 (2012) 093; arXiv:1109.4897 (final version).',
+          url: 'https://arxiv.org/abs/1109.4897',
+          publishedAt: '2012-07-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Phosphine reported in Venus's atmosphere, then contested (2020) ──────────
+  {
+    externalId: 'trajectory:phosphine-venus-detection-contested-2020',
+    text: 'The September 2020 report of phosphine (PH₃) in the cloud decks of Venus — proposed as a possible biosignature because no known abiotic process could explain its abundance — was contested within weeks by independent re-analyses finding no statistically significant detection.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-14',
+        datePrecision: 'DAY',
+        reason: 'Greaves et al. published "Phosphine gas in the cloud decks of Venus" in Nature Astronomy on 14 September 2020, reporting an absorption line at 1.123 mm in JCMT and ALMA spectra interpreted as ~20 parts-per-billion of phosphine at the cloud-deck altitude. The authors stated the abundance was unexplained by known atmospheric or geological chemistry, prompting speculation about a possible biological origin and recording the detection as a notable claim.',
+        source: {
+          externalId: 'src:greaves-phosphine-venus-2020',
+          name: 'Greaves JS, et al. "Phosphine gas in the cloud decks of Venus," Nature Astronomy, 14 September 2020; arXiv:2009.06593.',
+          url: 'https://arxiv.org/abs/2009.06593',
+          publishedAt: '2020-09-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-19',
+        datePrecision: 'DAY',
+        reason: 'Snellen et al. submitted a re-analysis of the 267-GHz ALMA data on 19 October 2020 (arXiv:2010.09761) arguing that the polynomial fitting of the spectral baseline produced spurious features and that the data provided "no statistical evidence for phosphine." Further re-analyses through 2021 (including by the original team after an ALMA calibration error was found) reported either no detection or a much lower, disputed abundance. The detection remains scientifically contested.',
+        source: {
+          externalId: 'src:snellen-phosphine-reanalysis-2020',
+          name: 'Snellen IAG, et al. "Re-analysis of the 267-GHz ALMA observations of Venus: No statistically significant detection of phosphine," arXiv:2010.09761, 19 October 2020.',
+          url: 'https://arxiv.org/abs/2010.09761',
+          publishedAt: '2020-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO declares the 2009 H1N1 swine-origin influenza a pandemic (2009) ──────
+  {
+    externalId: 'trajectory:h1n1-swine-flu-pandemic-2009',
+    text: 'A novel swine-origin influenza A(H1N1) virus that emerged in North America in spring 2009 — first confirmed in Southern California in April and traced to an outbreak in La Gloria, Veracruz, Mexico — was declared the first influenza pandemic of the 21st century by the World Health Organization on 11 June 2009.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-04-21',
+        datePrecision: 'DAY',
+        reason: 'A CDC Morbidity and Mortality Weekly Report dispatch dated 21 April 2009 reported that two children in adjacent Southern California counties (illness onsets 28 and 30 March 2009) were infected with a novel swine-origin influenza A(H1N1) virus, neither having had contact with pigs — raising the prospect of human-to-human transmission. Mexican health authorities had meanwhile detected an unusual respiratory-illness outbreak centred on La Gloria, Veracruz. The emergence of a novel reassortant virus was recorded.',
+        source: {
+          externalId: 'src:cdc-mmwr-h1n1-first-cases-2009',
+          name: 'CDC. "Swine Influenza A (H1N1) Infection in Two Children — Southern California, March–April 2009," MMWR Dispatch, 21 April 2009.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm58d0421a1.htm',
+          publishedAt: '2009-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-06-11',
+        datePrecision: 'DAY',
+        reason: 'On 11 June 2009, after the virus had spread to 74 countries with more than 28,000 laboratory-confirmed cases, WHO Director-General Margaret Chan raised the pandemic alert from phase 5 to phase 6, stating "the world is now at the start of the 2009 influenza pandemic." This was the first time WHO declared a pandemic under its 2005 framework and established the swine-origin H1N1 outbreak as a global pandemic — a determination that stood until WHO declared the post-pandemic period on 10 August 2010.',
+        source: {
+          externalId: 'src:cdc-2009-h1n1-timeline',
+          name: 'CDC. "2009 H1N1 Pandemic Timeline" (archived), Pandemic Influenza resources.',
+          url: 'https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/2009-pandemic-timeline.html',
+          publishedAt: '2009-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
