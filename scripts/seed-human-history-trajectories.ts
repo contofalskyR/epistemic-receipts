@@ -45571,6 +45571,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): Internet, genomics, climate, 9/11 aftermath, AI
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Tu Youyou / artemisinin — Nobel 2015 ────────────────────────────────────
+  {
+    externalId: 'trajectory:tu-youyou-artemisinin-nobel-2015',
+    text: 'Artemisinin, isolated by Tu Youyou\'s team from sweet wormwood (Artemisia annua) during China\'s secret Project 523, is an effective antimalarial therapy — recognized internationally with the 2015 Nobel Prize in Physiology or Medicine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Working within Project 523, a secret Chinese antimalarial drug program launched in 1967, Tu Youyou\'s team identifies Artemisia annua from a 1,600-year-old herbal text and develops a low-temperature extraction that isolates the active compound (qinghaosu / artemisinin) in 1972. Early results circulate internally and are first published anonymously later in the decade, with Chinese authorship initially obscured.',
+        source: {
+          externalId: 'src:tu-youyou-project523',
+          name: 'Tu Youyou — Project 523 and the isolation of artemisinin (qinghaosu), 1972.',
+          url: 'https://en.wikipedia.org/wiki/Tu_Youyou',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Tu Youyou receives the Lasker-DeBakey Clinical Medical Research Award in September 2011 — the first Chinese recipient — formally crediting her individual role in the discovery of artemisinin after decades in which the anonymous, collective Project 523 attribution had obscured it. International expert recognition of the discovery and its discoverer is established.',
+        source: {
+          externalId: 'src:lasker-2011-tu-youyou',
+          name: 'Lasker-DeBakey Clinical Medical Research Award 2011 — Tu Youyou for artemisinin.',
+          url: 'https://en.wikipedia.org/wiki/Tu_Youyou',
+          publishedAt: '2011-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-10-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 October 2015 the Nobel Assembly awards Tu Youyou half of the Nobel Prize in Physiology or Medicine "for her discoveries concerning a novel therapy against Malaria," sharing the prize with William C. Campbell and Satoshi Ōmura. She becomes the first Chinese Nobel laureate in the category, cementing the settled status of artemisinin\'s significance.',
+        source: {
+          externalId: 'src:nobel-2015-tu-youyou',
+          name: 'The Nobel Prize in Physiology or Medicine 2015 — Tu Youyou, William C. Campbell, Satoshi Ōmura.',
+          url: 'https://www.nobelprize.org/prizes/medicine/2015/summary/',
+          publishedAt: '2015-10-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Madrid train bombings (11-M) — attribution reversal ─────────────────────
+  {
+    externalId: 'trajectory:madrid-train-bombings-2004',
+    text: 'The 11 March 2004 Madrid commuter-train bombings, which killed 193 people, were carried out by a local Islamist extremist cell — not by the Basque group ETA, to which Spanish authorities initially attributed the attacks.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2004-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2004-03-11',
+        datePrecision: 'DAY',
+        reason: 'Ten bombs detonate on four commuter trains in Madrid during morning rush hour, killing 193 and wounding around 2,000. Within hours the government of Prime Minister José María Aznar publicly attributes the attacks to the Basque separatist group ETA, three days before a general election.',
+        source: {
+          externalId: 'src:madrid-bombings-2004-attack',
+          name: '2004 Madrid train bombings — attack and initial ETA attribution, 11 March 2004.',
+          url: 'https://en.wikipedia.org/wiki/2004_Madrid_train_bombings',
+          publishedAt: '2004-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-03-13',
+        datePrecision: 'DAY',
+        reason: 'Physical evidence rapidly undercuts the ETA theory: a stolen van containing detonators and an audiotape of Quranic recitations, and an unexploded backpack bomb whose mobile-phone SIM card leads police to an Islamist cell. By 13 March, on the eve of the election, the ETA attribution is publicly disputed amid accusations the government withheld evidence.',
+        source: {
+          externalId: 'src:madrid-bombings-2004-evidence',
+          name: '2004 Madrid train bombings — physical evidence shifting attribution from ETA to an Islamist cell.',
+          url: 'https://en.wikipedia.org/wiki/2004_Madrid_train_bombings',
+          publishedAt: '2004-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2007-10-31',
+        datePrecision: 'DAY',
+        reason: 'On 31 October 2007 Spain\'s Audiencia Nacional convicts 21 defendants, finding the bombings were the work of a local cell of Islamist extremists inspired via the internet. The court finds no ETA involvement and no direct al-Qaeda command link, judicially settling the attribution.',
+        source: {
+          externalId: 'src:madrid-bombings-2007-verdict',
+          name: 'Audiencia Nacional verdict, 31 October 2007 — Madrid train bombings.',
+          url: 'https://en.wikipedia.org/wiki/2004_Madrid_train_bombings',
+          publishedAt: '2007-10-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Larsen B ice shelf collapse — 2002 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:larsen-b-ice-shelf-collapse-2002',
+    text: 'Between late January and early March 2002, the Larsen B ice shelf on the Antarctic Peninsula disintegrated, losing roughly 3,250 km² of ice that had been stable for thousands of years — recorded in real time by satellite imagery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Satellite imagery captures the rapid disintegration of the Larsen B ice shelf, beginning 31 January 2002 and largely complete within about three weeks: roughly 3,250 km² of ice some 220 m thick shatters into thousands of icebergs. The National Snow and Ice Data Center and NASA document the collapse as it happens.',
+        source: {
+          externalId: 'src:larsen-b-2002-satellite',
+          name: 'Larsen B ice shelf disintegration, January–March 2002 — satellite record.',
+          url: 'https://en.wikipedia.org/wiki/Larsen_Ice_Shelf',
+          publishedAt: '2002-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-08-04',
+        datePrecision: 'DAY',
+        reason: 'Sediment-core work (Domack et al., Nature, 4 August 2005) shows the Larsen B shelf had persisted throughout the Holocene — at least ~11,500 years — establishing that the 2002 collapse was unprecedented in that interval and consistent with regional warming. The event becomes a settled benchmark in climate science.',
+        source: {
+          externalId: 'src:larsen-b-holocene-stability-2005',
+          name: 'Domack et al., "Stability of the Larsen B ice shelf on the Antarctic Peninsula during the Holocene epoch," Nature (2005).',
+          url: 'https://en.wikipedia.org/wiki/Larsen_Ice_Shelf',
+          publishedAt: '2005-08-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wikipedia launched — 15 January 2001 ────────────────────────────────────
+  {
+    externalId: 'trajectory:wikipedia-launched-2001',
+    text: 'Wikipedia, the wiki-based free encyclopedia, was launched at wikipedia.com on 15 January 2001 by Jimmy Wales and Larry Sanger as an open-collaboration adjunct to the peer-reviewed Nupedia project.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2001-01-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2001-01-15',
+        datePrecision: 'DAY',
+        reason: 'A new wiki launches at wikipedia.com on Monday 15 January 2001. Conceived as a fast feeder for the slow, expert-reviewed Nupedia, the open editing model quickly overtakes its predecessor, producing far more articles in weeks than Nupedia had in a year.',
+        source: {
+          externalId: 'src:wikipedia-launch-2001',
+          name: 'History of Wikipedia — launch at wikipedia.com, 15 January 2001.',
+          url: 'https://en.wikipedia.org/wiki/History_of_Wikipedia',
+          publishedAt: '2001-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-12-15',
+        datePrecision: 'DAY',
+        reason: 'A Nature investigation published 15 December 2005 compares 42 science articles in Wikipedia and Encyclopædia Britannica and finds comparable accuracy, lending the open-collaboration model scholarly credibility as a knowledge source despite early skepticism.',
+        source: {
+          externalId: 'src:nature-wikipedia-britannica-2005',
+          name: 'Giles, J. "Internet encyclopaedias go head to head," Nature 438, 900–901 (2005).',
+          url: 'https://en.wikipedia.org/wiki/History_of_Wikipedia',
+          publishedAt: '2005-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WannaCry ransomware attack — 2017, DPRK attribution ─────────────────────
+  {
+    externalId: 'trajectory:wannacry-ransomware-2017',
+    text: 'The WannaCry ransomware attack of 12 May 2017 infected more than 230,000 computers in over 150 countries using the EternalBlue exploit — and was subsequently attributed by the US and UK governments to North Korea\'s Lazarus Group.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2017-05-12',
+        datePrecision: 'DAY',
+        reason: 'Beginning Friday 12 May 2017, the WannaCry worm spreads worldwide within a day, encrypting files on more than 230,000 computers across over 150 countries and crippling parts of the UK\'s National Health Service. It propagates via EternalBlue, an exploit developed by the US NSA and leaked weeks earlier.',
+        source: {
+          externalId: 'src:wannacry-2017-attack',
+          name: 'WannaCry ransomware attack — outbreak, 12 May 2017.',
+          url: 'https://en.wikipedia.org/wiki/WannaCry_ransomware_attack',
+          publishedAt: '2017-05-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-12-18',
+        datePrecision: 'DAY',
+        reason: 'On 18 December 2017 the United States government formally announces that it considers North Korea the main culprit behind WannaCry; the United Kingdom concurs the following day. State attribution of the attack to North Korea is established.',
+        source: {
+          externalId: 'src:wannacry-2017-attribution',
+          name: 'US/UK formal attribution of WannaCry to North Korea, December 2017.',
+          url: 'https://en.wikipedia.org/wiki/WannaCry_ransomware_attack',
+          publishedAt: '2017-12-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2018-09-06',
+        datePrecision: 'DAY',
+        reason: 'On 6 September 2018 the US Department of Justice unseals criminal charges against North Korean programmer Park Jin Hyok, alleging his Lazarus Group team was responsible for WannaCry alongside the 2014 Sony Pictures hack — converting government attribution into a formal judicial accusation.',
+        source: {
+          externalId: 'src:wannacry-2018-doj-charges',
+          name: 'US DOJ charges against Park Jin Hyok (Lazarus Group), 6 September 2018.',
+          url: 'https://en.wikipedia.org/wiki/WannaCry_ransomware_attack',
+          publishedAt: '2018-09-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
