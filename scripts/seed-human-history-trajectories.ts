@@ -36451,6 +36451,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL — astronomy & doctrine (added 2026-06-17)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First confirmed apparition of Halley's Comet, 240 BCE (China) ────────────
+  {
+    externalId: 'trajectory:halley-comet-240bce-first-record',
+    text: 'A comet that appeared in the eastern sky and moved north in 240 BCE — recorded by Chinese court astronomers in the Records of the Grand Historian (Shiji) — is the earliest apparition of Halley\'s Comet identified in the historical record.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0240-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0240-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Court astronomers of the late Warring States period log a "broom star" (comet) that appeared in the east and then moved to the northern sky around May–June 240 BCE. The observation is preserved in Sima Qian\'s Records of the Grand Historian (Shiji), compiled c. 94 BCE from earlier court archives — a dated sky record independent of any later identification.',
+        source: {
+          externalId: 'src:shiji-comet-240bce',
+          name: 'Sima Qian. Records of the Grand Historian (Shiji), recording a comet in the east in 240 BCE (compiled c. 94 BCE from court records).',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '0240-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Orbital back-integration of Halley\'s Comet by T. Kiang reconstructs the comet\'s past returns and matches the 240 BCE Chinese record to a Halley perihelion passage, establishing it as the earliest secure apparition of the comet. The identification is corroborated by the full catalogue of Chinese, Babylonian and European sightings at each ~76-year return.',
+        source: {
+          externalId: 'src:kiang-1972-halley-orbit',
+          name: 'Kiang T. "The past orbit of Halley\'s Comet." Memoirs of the Royal Astronomical Society 76, 27–66 (1972).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1972MmRAS..76...27K/abstract',
+          publishedAt: '1972-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lunar eclipse before the Battle of Pydna, 21 June 168 BCE (Rome) ─────────
+  {
+    externalId: 'trajectory:pydna-lunar-eclipse-168bce',
+    text: 'On the night of 21 June 168 BCE, the eve of the Battle of Pydna, a total lunar eclipse occurred; the Roman tribune Gaius Sulpicius Gallus announced it to the army in advance as a predictable natural event, while the Macedonians read it as an omen of their king\'s fall.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0168-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0168-06-21',
+        datePrecision: 'DAY',
+        reason: 'According to Livy, Gaius Sulpicius Gallus, a military tribune of the second legion, assembled the soldiers and forewarned them that "on the following night the moon would be eclipsed, from the second hour to the fourth," explaining that the eclipse occurred in the course of nature at fixed times and so could be foreknown. The eclipse then happened as foretold, witnessed by both armies; Polybius, a contemporary, also reports it.',
+        source: {
+          externalId: 'src:livy-44-37-pydna-eclipse',
+          name: 'Livy. The History of Rome, Book 44, ch. 37 (Sulpicius Gallus foretells the lunar eclipse before Pydna).',
+          url: 'http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0149:book=44:chapter=37',
+          publishedAt: '0009-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation confirms a total lunar eclipse visible over the Mediterranean on the night of 21 June 168 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Lunar Eclipses. The eclipse fixes the date of the Battle of Pydna to 22 June 168 BCE — one of the firmest astronomical anchors in Roman Republican chronology.',
+        source: {
+          externalId: 'src:nasa-lunar-eclipse-catalog-pydna',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Lunar Eclipses: −1999 to +3000. NASA/TP–2009–214172.',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LEcatalog.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First Council of Constantinople, 381 CE ─────────────────────────────────
+  {
+    externalId: 'trajectory:first-council-constantinople-381',
+    text: 'The First Council of Constantinople, convened by Emperor Theodosius I and meeting from May to July 381 CE, revised and promulgated the Nicene Creed (the Niceno-Constantinopolitan Creed) and dogmatically condemned Arianism, Macedonianism, and Apollinarianism.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0381-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0381-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Roughly 150 Eastern bishops, summoned by Theodosius I to settle the doctrinal disputes lingering since Nicaea (325), conclude the council in July 381. They expand the Nicene Creed with articles on the divinity of the Holy Spirit and adopt canons whose first is "an important dogmatic condemnation of all shades of Arianism, and also of Macedonianism and Apollinarianism."',
+        source: {
+          externalId: 'src:canons-constantinople-381',
+          name: 'Canons and creed of the First Council of Constantinople (381) — convened by Theodosius I, met May–July 381.',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Constantinople',
+          publishedAt: '0381-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0451-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Council of Chalcedon (451) reads, ratifies, and elevates the creed of 381 as the authoritative confession of the universal Church, and recognises Constantinople (381) as the Second Ecumenical Council. The Niceno-Constantinopolitan Creed remains the standard creed of the Eastern Orthodox, Roman Catholic, and most Protestant churches to the present day.',
+        source: {
+          externalId: 'src:constantinople-381-ecumenical-settled',
+          name: 'First Council of Constantinople recognised as the Second Ecumenical Council; its creed ratified at Chalcedon (451).',
+          url: 'https://en.wikipedia.org/wiki/First_Council_of_Constantinople',
+          publishedAt: '0451-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Ephesus, 22 June 431 CE ──────────────────────────────────────
+  {
+    externalId: 'trajectory:council-ephesus-431',
+    text: 'The Council of Ephesus, convened by Emperor Theodosius II and opened on 22 June 431 CE, condemned the teaching of Nestorius and affirmed that Mary is rightly called Theotokos ("God-bearer"), defining Christ as one person with both a divine and a human nature.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0431-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0431-06-22',
+        datePrecision: 'DAY',
+        reason: 'The council formally opens on Monday, 22 June 431, presided over by Cyril of Alexandria. It denounces the teaching of Nestorius, Patriarch of Constantinople, as erroneous, decrees that Jesus is one person (hypostasis) possessing both a human and a divine nature, and rules that the Virgin Mary is to be called Theotokos rather than Nestorius\'s preferred Christotokos.',
+        source: {
+          externalId: 'src:acts-council-ephesus-431',
+          name: 'Acts of the Council of Ephesus (431) — opened 22 June 431, condemnation of Nestorius and affirmation of Theotokos.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Ephesus',
+          publishedAt: '0431-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0451-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Council of Chalcedon (451) reaffirms the rulings of Ephesus and recognises it as the Third Ecumenical Council. The Theotokos title and the condemnation of Nestorianism become settled doctrine across the Chalcedonian churches, while the dispute also crystallises the lasting separation of the Church of the East.',
+        source: {
+          externalId: 'src:ephesus-431-ecumenical-settled',
+          name: 'Council of Ephesus recognised as the Third Ecumenical Council; rulings reaffirmed at Chalcedon (451).',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Ephesus',
+          publishedAt: '0451-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
