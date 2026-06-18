@@ -16578,6 +16578,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Anturane Reinfarction Trial — FDA reanalysis 1980 ────────────────────────
+  {
+    externalId: 'trajectory:anturane-sulfinpyrazone-fda-reanalysis-1978',
+    text: 'The Anturane Reinfarction Trial reported in the New England Journal of Medicine on 9 February 1978 that the uricosuric drug sulfinpyrazone (Anturane) roughly halved cardiac death — especially sudden death — in the months after acute myocardial infarction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-02-09',
+        datePrecision: 'DAY',
+        reason: 'The Anturane Reinfarction Trial Research Group reported that sulfinpyrazone 200 mg four times daily reduced cardiac mortality after recent myocardial infarction, with the benefit concentrated in sudden death during the first six months. The randomized, double-blind, placebo-controlled design lent the claim apparent rigor and it was widely publicized as a new secondary-prevention therapy, putting the sudden-death-reduction claim on the scientific record.',
+        source: {
+          externalId: 'src:anturane-reinfarction-trial-nejm-1978',
+          name: 'Anturane Reinfarction Trial Research Group. Sulfinpyrazone in the prevention of cardiac death after myocardial infarction. The Anturane Reinfarction Trial. N Engl J Med. 1978;298(6):289-295.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/340942/',
+          publishedAt: '1978-02-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-12-18',
+        datePrecision: 'DAY',
+        reason: 'FDA reviewers Robert Temple and Gordon Pledger published the agency\'s critique in the NEJM, showing the apparent benefit was an artifact: deaths the investigators had classified as \'unrelated\' or \'non-analyzable\' were excluded, and the \'sudden death\' endpoint was a post-hoc subgroup. When deaths were reclassified by blinded criteria the mortality difference lost significance, and the FDA declined to approve sulfinpyrazone for post-MI use. The case became a landmark warning about endpoint-classification bias and post-hoc subgroup analysis in clinical trials.',
+        source: {
+          externalId: 'src:temple-pledger-fda-critique-anturane-nejm-1980',
+          name: 'Temple R, Pledger GW. The FDA\'s critique of the Anturane Reinfarction Trial. N Engl J Med. 1980;303(25):1488-1492.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7432418/',
+          publishedAt: '1980-12-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aspirin in unstable angina — VA Cooperative Study 1983 ───────────────────
+  {
+    externalId: 'trajectory:aspirin-unstable-angina-va-cooperative-1983',
+    text: 'The Veterans Administration Cooperative Study reported in the New England Journal of Medicine on 18 August 1983 that aspirin (324 mg daily) reduced the risk of acute myocardial infarction and death by about half in men with unstable angina.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-08-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-08-18',
+        datePrecision: 'DAY',
+        reason: 'Lewis and colleagues in the VA Cooperative Study randomized 1,266 men with unstable angina to buffered aspirin or placebo and found aspirin cut the combined incidence of acute MI and death by 51%. This recorded the specific claim that antiplatelet therapy benefits unstable angina — a syndrome distinct from acute MI and primary prevention — placing aspirin\'s role in the acute coronary syndromes on the experimental record.',
+        source: {
+          externalId: 'src:lewis-va-aspirin-unstable-angina-nejm-1983',
+          name: 'Lewis HD Jr, Davis JW, Archibald DG, et al. Protective effects of aspirin against acute myocardial infarction and death in men with unstable angina. Results of a Veterans Administration Cooperative Study. N Engl J Med. 1983;309(7):396-403.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6135989/',
+          publishedAt: '1983-08-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-11-28',
+        datePrecision: 'DAY',
+        reason: 'Cairns and colleagues in the Canadian Multicenter Trial independently confirmed that aspirin reduced cardiac death and nonfatal MI in unstable angina (while sulfinpyrazone did not), with a risk reduction of about 50%. The convergent results of two large randomized trials settled aspirin as standard therapy for unstable angina, a status later cemented by antiplatelet meta-analyses and incorporated into acute-coronary-syndrome guidelines.',
+        source: {
+          externalId: 'src:cairns-canadian-aspirin-unstable-angina-nejm-1985',
+          name: 'Cairns JA, Gent M, Singer J, et al. Aspirin, sulfinpyrazone, or both in unstable angina. Results of a Canadian multicenter trial. N Engl J Med. 1985;313(22):1369-1375.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3903504/',
+          publishedAt: '1985-11-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Beta-blockade in dilated cardiomyopathy — Waagstein 1975 → MERIT-HF 1999 ─
+  {
+    externalId: 'trajectory:beta-blockade-congestive-cardiomyopathy-waagstein-1975',
+    text: 'Waagstein and colleagues reported in the British Heart Journal in October 1975 that chronic beta-adrenergic blockade clinically improved patients with congestive (dilated) cardiomyopathy, directly contradicting the established doctrine that beta-blockers were contraindicated in heart failure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Waagstein, Hjalmarson, Varnauskas, and Wallentin reported that seven patients with advanced congestive cardiomyopathy improved clinically — better exercise capacity and reduced heart size — after months of beta-blockade. Because beta-blockers are negative inotropes, prevailing dogma held they were contraindicated in heart failure; this uncontrolled case series recorded the heterodox and contested claim that long-term beta-blockade could instead help failing hearts.',
+        source: {
+          externalId: 'src:waagstein-beta-blockade-cardiomyopathy-bhj-1975',
+          name: 'Waagstein F, Hjalmarson A, Varnauskas E, Wallentin I. Effect of chronic beta-adrenergic receptor blockade in congestive cardiomyopathy. Br Heart J. 1975;37(10):1022-1036.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1191416/',
+          publishedAt: '1975-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-06-12',
+        datePrecision: 'DAY',
+        reason: 'After two decades of contested observations, the MERIT-HF randomized trial of metoprolol CR/XL in 3,991 patients with symptomatic heart failure was stopped early for a 34% reduction in all-cause mortality; together with CIBIS-II (bisoprolol) the same year it reversed the contraindication. Beta-blockade became a guideline-mandated cornerstone of therapy for heart failure with reduced ejection fraction, settling the claim Waagstein had first recorded in 1975.',
+        source: {
+          externalId: 'src:merit-hf-metoprolol-heart-failure-lancet-1999',
+          name: 'MERIT-HF Study Group. Effect of metoprolol CR/XL in chronic heart failure: Metoprolol CR/XL Randomised Intervention Trial in Congestive Heart Failure (MERIT-HF). Lancet. 1999;353(9169):2001-2007.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10376614/',
+          publishedAt: '1999-06-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Antiplatelet Trialists' Collaboration meta-analysis 1988 ─────────────────
+  {
+    externalId: 'trajectory:antiplatelet-trialists-collaboration-meta-analysis-1988',
+    text: 'The Antiplatelet Trialists\' Collaboration reported in the BMJ on 30 January 1988 that prolonged antiplatelet therapy (mainly aspirin) reduced serious vascular events by about a quarter across patients with prior myocardial infarction, stroke, transient ischemic attack, or unstable angina.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-01-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-30',
+        datePrecision: 'DAY',
+        reason: 'Pooling 25 randomized trials, the Antiplatelet Trialists\' Collaboration — one of the first large-scale collaborative overviews in cardiology — found prolonged antiplatelet treatment reduced nonfatal MI, nonfatal stroke, and vascular death by roughly 25% across diverse secondary-prevention populations. By aggregating modest individual-trial signals into a statistically decisive estimate, it recorded antiplatelet therapy as broadly beneficial and demonstrated the power of meta-analysis to settle questions single trials could not.',
+        source: {
+          externalId: 'src:antiplatelet-trialists-secondary-prevention-bmj-1988',
+          name: 'Antiplatelet Trialists\' Collaboration. Secondary prevention of vascular disease by prolonged antiplatelet treatment. BMJ (Clin Res Ed). 1988;296(6618):320-331.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3125883/',
+          publishedAt: '1988-01-30',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-01-12',
+        datePrecision: 'DAY',
+        reason: 'The expanded Antithrombotic Trialists\' Collaboration synthesized 287 trials in roughly 135,000 high-risk patients, confirming and broadening the ~25% reduction in serious vascular events and defining low-dose aspirin (75–150 mg) as optimal. This much larger overview cemented antiplatelet therapy as the guideline cornerstone of secondary cardiovascular prevention, settling the 1988 claim into routine global practice.',
+        source: {
+          externalId: 'src:antithrombotic-trialists-collaboration-bmj-2002',
+          name: 'Antithrombotic Trialists\' Collaboration. Collaborative meta-analysis of randomised trials of antiplatelet therapy for prevention of death, myocardial infarction, and stroke in high risk patients. BMJ. 2002;324(7329):71-86.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11786451/',
+          publishedAt: '2002-01-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
