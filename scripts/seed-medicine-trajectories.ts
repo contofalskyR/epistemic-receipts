@@ -7364,6 +7364,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY & NEUROLOGY (2005–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Citalopram high-dose QT safety reversal — FDA 2011 ───────────────────────
+  {
+    externalId: 'trajectory:citalopram-high-dose-qt-safety-reversal-2011',
+    text: 'The U.S. FDA, in a Drug Safety Communication dated 24 August 2011, reversed the prior labeling that had permitted citalopram (Celexa) at doses up to 60 mg/day, warning that doses above 40 mg/day cause dose-dependent QT-interval prolongation without additional antidepressant benefit and should no longer be used.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-07-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved citalopram (Celexa, NDA 020822, Forest Laboratories) for major depression with labeling that permitted titration up to 60 mg/day. For over a decade higher doses were accepted clinical practice for inadequate responders, institutionally settling the premise that citalopram could be safely dosed above 40 mg/day.',
+        source: {
+          externalId: 'src:fda-celexa-approval-nda020822-1998',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Celexa (citalopram hydrobromide), NDA 020822 approval. July 17, 1998.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020822',
+          publishedAt: '1998-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-08-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Drug Safety Communication stating that citalopram should no longer be used at doses above 40 mg/day because it causes dose-dependent QT-interval prolongation (with post-marketing reports of Torsade de Pointes) and showed no added antidepressant benefit at higher doses, with still lower limits for patients over 60. The agency revised the drug label, formally reversing the previously accepted high-dose use.',
+        source: {
+          externalId: 'src:fda-dsc-citalopram-qt-2011',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: Abnormal heart rhythms associated with high doses of Celexa (citalopram hydrobromide). August 24, 2011.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-abnormal-heart-rhythms-associated-high-doses-celexa-citalopram',
+          publishedAt: '2011-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Zivin and colleagues, analyzing a large Veterans Health Administration cohort, found no elevated risk of ventricular arrhythmia, cardiac mortality, or all-cause mortality at citalopram doses above 40 mg/day, and reported higher mortality at doses at or below 20 mg, directly questioning the empirical basis of the FDA dose cap. The study placed the agency\'s reversal into active expert dispute even as the labeling restriction remained in force.',
+        source: {
+          externalId: 'src:zivin-citalopram-fda-warning-ajp-2013',
+          name: 'Zivin K, Pfeiffer PN, Bohnert ASB, et al. Evaluation of the FDA warning against prescribing citalopram at doses exceeding 40 mg. Am J Psychiatry. 2013;170(6):642-650.',
+          url: 'https://psychiatryonline.org/doi/10.1176/appi.ajp.2013.12030408',
+          publishedAt: '2013-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── STAR*D cumulative remission rate — reanalysis 2023 ───────────────────────
+  {
+    externalId: 'trajectory:stard-cumulative-remission-rate-reanalysis-2006',
+    text: 'Rush and colleagues reported in the American Journal of Psychiatry in November 2006 that the STAR*D trial achieved a 67% cumulative remission rate after up to four sequential antidepressant treatment steps in real-world outpatients with major depression.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Rush et al. published the summary STAR*D report in the American Journal of Psychiatry, reporting a theoretical cumulative remission rate of 67% across up to four treatment steps. As the largest and most expensive NIMH-funded antidepressant effectiveness trial, the figure became one of the most-cited results in psychiatry and was widely incorporated into treatment guidelines and clinical teaching as evidence that persistence through sequential antidepressants yields high remission.',
+        source: {
+          externalId: 'src:rush-stard-ajp-2006',
+          name: 'Rush AJ, Trivedi MH, Wisniewski SR, et al. Acute and longer-term outcomes in depressed outpatients requiring one or several treatment steps: a STAR*D report. Am J Psychiatry. 2006;163(11):1905-1917.',
+          url: 'https://psychiatryonline.org/doi/10.1176/ajp.2006.163.11.1905',
+          publishedAt: '2006-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-07-25',
+        datePrecision: 'DAY',
+        reason: 'Pigott and colleagues reanalyzed the STAR*D patient-level data with fidelity to the original research protocol and found a cumulative remission rate of 35.0% on the protocol-specified HRSD measure (41.3% when supplemented with QIDS-SR), roughly half the reported 67%, attributing the inflation to post-hoc protocol deviations. The original STAR*D investigators published a defense in the American Journal of Psychiatry, leaving the canonical remission figure in open and ongoing dispute.',
+        source: {
+          externalId: 'src:pigott-stard-reanalysis-bmjopen-2023',
+          name: 'Pigott HE, Kim T, Xu C, Kirsch I, Amsterdam J. What are the treatment remission, response and extent of improvement rates after up to four trials of antidepressant therapies in real-world depressed patients? A reanalysis of the STAR*D study\'s patient-level data with fidelity to the original research protocol. BMJ Open. 2023;13(7):e063095.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10373710/',
+          publishedAt: '2023-07-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Subcallosal cingulate DBS for depression — BROADEN futility 2017 ─────────
+  {
+    externalId: 'trajectory:subcallosal-cingulate-dbs-depression-broaden-futility-2017',
+    text: 'Mayberg and colleagues reported in Neuron in March 2005 that chronic deep brain stimulation of the subcallosal/subgenual cingulate region (Brodmann area 25) produces sustained remission in treatment-resistant depression, establishing area 25 DBS as a candidate therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-03',
+        datePrecision: 'DAY',
+        reason: 'Mayberg, Lozano, Voon and colleagues reported that chronic stimulation of white-matter tracts adjacent to the subgenual cingulate (Cg25) produced striking, sustained antidepressant remission in four of six patients with treatment-resistant depression, accompanied by normalization of cingulate metabolism. The open-label proof-of-concept recorded into the literature the claim that focal DBS of area 25 could relieve otherwise intractable depression, launching a decade of device development and pivotal-trial planning.',
+        source: {
+          externalId: 'src:mayberg-scc-dbs-neuron-2005',
+          name: 'Mayberg HS, Lozano AM, Voon V, et al. Deep brain stimulation for treatment-resistant depression. Neuron. 2005;45(5):651-660.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15748841/',
+          publishedAt: '2005-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Holtzheimer and colleagues reported the multisite, randomized, sham-controlled BROADEN trial of subcallosal cingulate DBS, which was halted after a prespecified futility analysis showed no significant difference between active and sham stimulation at six months. The failure of the pivotal blinded trial—against persistent positive open-label and long-term follow-up data—threw the efficacy of area 25 DBS for depression into serious contest and stalled its regulatory path.',
+        source: {
+          externalId: 'src:holtzheimer-broaden-lancetpsych-2017',
+          name: 'Holtzheimer PE, Husain MM, Lisanby SH, et al. Subcallosal cingulate deep brain stimulation for treatment-resistant depression: a multisite, randomised, sham-controlled trial. Lancet Psychiatry. 2017;4(11):839-849.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28988904/',
+          publishedAt: '2017-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Brexpiprazole — first FDA-approved drug for Alzheimer's agitation 2023 ───
+  {
+    externalId: 'trajectory:brexpiprazole-alzheimers-agitation-approval-2023',
+    text: 'Brexpiprazole (Rexulti, Otsuka/Lundbeck), an atypical antipsychotic, is a safe and effective treatment for agitation associated with dementia due to Alzheimer\'s disease, as shown in phase 3 trials reported in 2020 and ratified by FDA approval on 10 May 2023 as the first drug approved for that indication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Grossberg and colleagues published two 12-week, randomized, double-blind, placebo-controlled phase 3 trials in the American Journal of Geriatric Psychiatry, reporting that brexpiprazole 2 mg/day was superior to placebo on the Cohen-Mansfield Agitation Inventory in Alzheimer\'s-dementia agitation with acceptable tolerability. The trials recorded into the literature the claim that a dopamine-serotonin partial agonist could specifically treat dementia-related agitation—a symptom previously addressed only off-label and under the antipsychotic class mortality warning.',
+        source: {
+          externalId: 'src:grossberg-brexpiprazole-ajgp-2020',
+          name: 'Grossberg GT, Kohegyi E, Mergel V, et al. Efficacy and Safety of Brexpiprazole for the Treatment of Agitation in Alzheimer\'s Dementia: Two 12-Week, Randomized, Double-Blind, Placebo-Controlled Trials. Am J Geriatr Psychiatry. 2020;28(4):383-400.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S1064748119305214',
+          publishedAt: '2020-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-05-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved brexpiprazole (Rexulti, sNDA) as the first and only drug indicated for agitation associated with dementia due to Alzheimer\'s disease, institutionally ratifying its efficacy for that indication while retaining the atypical-antipsychotic boxed warning for increased mortality in elderly patients with dementia-related psychosis. The approval settled, at the regulatory level, that a defined pharmacologic treatment for dementia agitation exists, despite the standing class safety concern.',
+        source: {
+          externalId: 'src:fda-rexulti-alzheimers-agitation-approval-2023',
+          name: 'U.S. Food and Drug Administration. FDA Approves First Drug to Treat Agitation Symptoms Associated with Dementia due to Alzheimer\'s Disease. May 11, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-treat-agitation-symptoms-associated-dementia-due-alzheimers-disease',
+          publishedAt: '2023-05-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
