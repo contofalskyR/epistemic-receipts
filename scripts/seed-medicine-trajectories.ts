@@ -2592,6 +2592,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED THERAPY & MONOCLONAL ANTIBODY ERA (1997–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 26. Imatinib (Gleevec) for CML — 2001 ───────────────────────────────────
+  {
+    externalId: 'trajectory:imatinib-gleevec-cml-targeted-therapy-2001',
+    text: 'Imatinib mesylate (STI571/Gleevec), a small-molecule inhibitor of the BCR-ABL tyrosine kinase, induces durable hematologic and cytogenetic remissions in chronic myeloid leukemia, as reported by Druker and colleagues in 2001 and approved by the FDA on 10 May 2001.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-04-05',
+        datePrecision: 'DAY',
+        reason: 'Druker et al. published the phase I dose-escalation results of STI571 in the New England Journal of Medicine, reporting complete hematologic responses in 53 of 54 chronic-phase CML patients treated at doses of 300 mg/day or more after interferon failure. This established the first proof that rationally designed inhibition of a single oncogenic kinase could produce remissions, founding the targeted-therapy paradigm in oncology.',
+        source: {
+          externalId: 'src:druker-imatinib-cml-nejm-2001',
+          name: 'Druker BJ, Talpaz M, Resta DJ, et al. Efficacy and safety of a specific inhibitor of the BCR-ABL tyrosine kinase in chronic myeloid leukemia. N Engl J Med. 2001;344(14):1031-1037.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11287972/',
+          publishedAt: '2001-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-05-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to Gleevec (imatinib mesylate) for chronic-, accelerated-, and blast-phase CML on 10 May 2001, roughly ten weeks after submission — its fastest cancer-drug review at the time. Institutional adoption of the first BCR-ABL inhibitor as standard CML therapy converted a one-year-old clinical observation into the accepted standard of care; the drug was converted to full approval in December 2003 on the strength of the IRIS trial.',
+        source: {
+          externalId: 'src:fda-gleevec-approval-2001',
+          name: 'U.S. Food and Drug Administration. Gleevec (imatinib mesylate) Approval, NDA 21-335. 10 May 2001.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2001/21-335_Gleevec_Approv.pdf',
+          publishedAt: '2001-05-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 27. Trastuzumab (Herceptin) for HER2+ breast cancer — 1998 ──────────────
+  {
+    externalId: 'trajectory:trastuzumab-herceptin-her2-breast-cancer-1998',
+    text: 'Trastuzumab (Herceptin), a humanized monoclonal antibody against the HER2 receptor, improves response and survival when added to chemotherapy in HER2-overexpressing metastatic breast cancer, leading to FDA approval on 25 September 1998 as the first HER2-targeted therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-09-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved trastuzumab (Herceptin) for HER2-overexpressing metastatic breast cancer on 25 September 1998, simultaneously approving the HercepTest companion diagnostic to select patients. This was the first marketed HER2-targeted therapy and an early model of biomarker-guided drug approval, recording the claim that blocking HER2 yields clinical benefit in the subset of tumors that overexpress it.',
+        source: {
+          externalId: 'src:fda-herceptin-approval-1998',
+          name: 'U.S. Food and Drug Administration. Trastuzumab (Herceptin) approval letter, BLA 103792. 25 September 1998.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/1998/trasgen092598l.pdf',
+          publishedAt: '1998-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-03-15',
+        datePrecision: 'DAY',
+        reason: 'Slamon et al. published the pivotal randomized trial in the New England Journal of Medicine, showing that adding trastuzumab to chemotherapy in HER2-positive metastatic breast cancer increased the response rate, prolonged time to progression, and improved overall survival (25.1 vs 20.3 months). The survival benefit moved trastuzumab from a regulatory-approved option to an expert-consensus standard of care, later cemented by adjuvant trials in 2005.',
+        source: {
+          externalId: 'src:slamon-trastuzumab-nejm-2001',
+          name: 'Slamon DJ, Leyland-Jones B, Shak S, et al. Use of chemotherapy plus a monoclonal antibody against HER2 for metastatic breast cancer that overexpresses HER2. N Engl J Med. 2001;344(11):783-792.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11248153/',
+          publishedAt: '2001-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 28. Rituximab (Rituxan) — first anti-cancer monoclonal antibody 1997 ──────
+  {
+    externalId: 'trajectory:rituximab-rituxan-first-anticancer-monoclonal-1997',
+    text: 'Rituximab (Rituxan), a chimeric anti-CD20 monoclonal antibody, produces responses in roughly half of patients with relapsed indolent B-cell lymphoma, leading to FDA approval on 26 November 1997 as the first monoclonal antibody approved to treat any cancer.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-11-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-11-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved rituximab (Rituxan, Genentech/IDEC) for relapsed or refractory CD20-positive low-grade or follicular B-cell non-Hodgkin lymphoma on 26 November 1997 — the first monoclonal antibody approved for any malignancy. This recorded the claim that targeting a B-cell surface antigen could safely deplete malignant lymphocytes, opening the era of antibody-based cancer therapy.',
+        source: {
+          externalId: 'src:mclaughlin-rituximab-pivotal-jco-1998',
+          name: 'McLaughlin P, Grillo-López AJ, Link BK, et al. Rituximab chimeric anti-CD20 monoclonal antibody therapy for relapsed indolent lymphoma: half of patients respond to a four-dose treatment program. J Clin Oncol. 1998;16(8):2825-2833.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9704735/',
+          publishedAt: '1998-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-01-24',
+        datePrecision: 'DAY',
+        reason: 'Coiffier et al. (GELA LNH-98.5) published in the New England Journal of Medicine that adding rituximab to CHOP chemotherapy significantly improved complete response and overall survival in elderly diffuse large-B-cell lymphoma. Extending rituximab\'s benefit from indolent to aggressive lymphoma with a survival advantage entrenched it as a backbone of B-cell lymphoma therapy worldwide.',
+        source: {
+          externalId: 'src:coiffier-rchop-dlbcl-nejm-2002',
+          name: 'Coiffier B, Lepage E, Brière J, et al. CHOP chemotherapy plus rituximab compared with CHOP alone in elderly patients with diffuse large-B-cell lymphoma. N Engl J Med. 2002;346(4):235-242.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11807147/',
+          publishedAt: '2002-01-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 29. Gefitinib (Iressa) — accelerated approval reversed 2005 ──────────────
+  {
+    externalId: 'trajectory:gefitinib-iressa-accelerated-approval-reversal-2003',
+    text: 'Gefitinib (Iressa) received FDA accelerated approval on 5 May 2003 for refractory non-small-cell lung cancer based on tumor response rate, but the confirmatory ISEL trial showed no overall survival benefit and the FDA restricted its use in June 2005.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to gefitinib (Iressa) as monotherapy for locally advanced or metastatic NSCLC after failure of platinum- and docetaxel-based chemotherapy, based on a ~10% objective response rate in an unselected population. The approval explicitly relied on tumor shrinkage as a surrogate endpoint, with no controlled evidence of symptom or survival benefit at the time — recording a provisional claim contingent on confirmatory trials.',
+        source: {
+          externalId: 'src:cohen-gefitinib-fda-summary-oncologist-2003',
+          name: 'Cohen MH, Williams GA, Sridhara R, et al. FDA drug approval summary: gefitinib (ZD1839) (Iressa) tablets. Oncologist. 2003;8(4):303-306.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12897327/',
+          publishedAt: '2003-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-29',
+        datePrecision: 'DAY',
+        reason: 'Thatcher et al. published the ISEL trial in The Lancet, the confirmatory study required by the accelerated approval, showing that gefitinib failed to significantly improve overall survival versus placebo in pretreated NSCLC (5.6 vs 5.1 months; p=0.087). The surrogate response endpoint had not translated into clinical benefit in the unselected population, directly contesting the basis of the 2003 approval.',
+        source: {
+          externalId: 'src:thatcher-isel-gefitinib-lancet-2005',
+          name: 'Thatcher N, Chang A, Parikh P, et al. Gefitinib plus best supportive care in previously treated patients with refractory advanced non-small-cell lung cancer (ISEL): a randomised, placebo-controlled, multicentre study. Lancet. 2005;366(9496):1527-1537.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16257339/',
+          publishedAt: '2005-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-06-17',
+        datePrecision: 'DAY',
+        reason: 'Following ISEL, the FDA revised the Iressa label on 17 June 2005 to restrict use to patients already benefiting from the drug and barred new patients outside approved trials, effectively withdrawing the broad refractory-NSCLC indication granted in 2003. It became a defining case of an accelerated approval reversed when the confirmatory trial failed; gefitinib was only re-approved in 2015 for the narrow EGFR-mutation-positive subgroup.',
+        source: {
+          externalId: 'src:kazandjian-gefitinib-fda-approval-ccr-2016',
+          name: 'Kazandjian D, Blumenthal GM, Yuan W, et al. FDA Approval of Gefitinib for the Treatment of Patients with Metastatic EGFR Mutation–Positive Non–Small Cell Lung Cancer. Clin Cancer Res. 2016;22(6):1307-1312.',
+          url: 'https://aacrjournals.org/clincancerres/article/22/6/1307/121642/',
+          publishedAt: '2016-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 30. Bevacizumab (Avastin) breast cancer indication revoked 2011 ───────────
+  {
+    externalId: 'trajectory:bevacizumab-avastin-breast-cancer-indication-revoked-2011',
+    text: 'Bevacizumab (Avastin) received FDA accelerated approval for metastatic HER2-negative breast cancer in February 2008 based on progression-free survival in the E2100 trial, but the FDA revoked that indication on 18 November 2011 after follow-up trials failed to confirm benefit.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to bevacizumab with paclitaxel for first-line metastatic HER2-negative breast cancer on 22 February 2008, based on the E2100 trial\'s near-doubling of progression-free survival (11.8 vs 5.9 months) despite no overall survival benefit. The approval came over the 5–4 negative vote of the Oncologic Drugs Advisory Committee, recording a contested claim that PFS gain alone justified the indication.',
+        source: {
+          externalId: 'src:miller-e2100-bevacizumab-nejm-2007',
+          name: 'Miller K, Wang M, Gralow J, et al. Paclitaxel plus bevacizumab versus paclitaxel alone for metastatic breast cancer. N Engl J Med. 2007;357(26):2666-2676.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18160686/',
+          publishedAt: '2007-12-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-20',
+        datePrecision: 'DAY',
+        reason: 'The confirmatory AVADO and RIBBON-1 trials showed much smaller PFS gains (under one month median) than E2100 and again no overall-survival benefit, while exposing patients to hypertension, hemorrhage, and perforation risks. On these data the FDA\'s Oncologic Drugs Advisory Committee voted 12–1 in July 2010 to recommend withdrawing the breast cancer indication, contesting the durability of the original claim.',
+        source: {
+          externalId: 'src:fda-odac-avastin-breast-review-2010',
+          name: 'Sridhara R, et al. / FDA. Regulatory withdrawal of medicines marketed with uncertain benefits: the bevacizumab (Avastin) breast cancer case study. (2015 review documenting AVADO/RIBBON-1 and the July 2010 ODAC vote).',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4610052/',
+          publishedAt: '2015-10-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-11-18',
+        datePrecision: 'DAY',
+        reason: 'FDA Commissioner Margaret Hamburg announced on 18 November 2011 the revocation of bevacizumab\'s breast cancer indication, concluding the drug had not been shown safe and effective for that use; the formal final decision was published in the Federal Register on 27 February 2012. It is the landmark case of the FDA rescinding an accelerated approval over manufacturer objection after confirmatory trials failed, while the drug remained approved for colon, lung, kidney, and brain cancers.',
+        source: {
+          externalId: 'src:fda-avastin-breast-withdrawal-fr-2012',
+          name: 'U.S. Food and Drug Administration. Final Decision on Withdrawal of Breast Cancer Indication for AVASTIN (Bevacizumab) Following Public Hearing. Federal Register, 27 February 2012 (Docket FDA-2010-N-0621).',
+          url: 'https://www.federalregister.gov/documents/2012/02/27/2012-4424/final-decision-on-withdrawal-of-breast-cancer-indication-for-avastin-bevacizumab-following-public',
+          publishedAt: '2012-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
@@ -2629,6 +2873,178 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8061126/',
           publishedAt: '2019-12-16',
           methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC DOSING & NEONATAL PHARMACOLOGY ERA (1951–1982)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── RLF / Retinopathy of Prematurity — oxygen causes infant blindness 1956 ──
+  {
+    externalId: 'trajectory:rlf-oxygen-premature-infants-cooperative-study-1956',
+    text: 'The 1954–1956 Cooperative Study of Retrolental Fibroplasia, reported by V. E. Kinsey in 1956, established through a controlled multi-hospital clinical trial that liberal supplemental oxygen given to premature infants causes retrolental fibroplasia (now retinopathy of prematurity), the leading cause of infant blindness of the era.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1951-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Australian ophthalmologist Kate Campbell and others published clinical observations linking the postwar epidemic of premature-infant blindness to the routine high-concentration oxygen then used in incubators. The hypothesis was recorded but contested, since oxygen was widely believed to be protective and the association rested on uncontrolled case series.',
+        source: {
+          externalId: 'src:campbell-rlf-oxygen-1951',
+          name: 'Campbell K. Intensive oxygen therapy as a possible cause of retrolental fibroplasia: a clinical approach. Med J Aust. 1951;2(2):48-50.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14874698/',
+          publishedAt: '1951-07-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Kinsey\'s report of the 18-hospital Cooperative Study, a controlled trial of 786 infants weighing ≤1500 g, found cicatricial retrolental fibroplasia in 25% of routine-oxygen infants versus 6% of curtailed-oxygen infants, confirming the causal role of oxygen exposure. This was among the first multicenter randomized clinical trials in neonatology and settled the etiology, prompting nationwide oxygen restriction.',
+        source: {
+          externalId: 'src:kinsey-rlf-cooperative-study-1956',
+          name: 'Kinsey VE. Retrolental fibroplasia; cooperative study of retrolental fibroplasia and the use of oxygen. AMA Arch Ophthalmol. 1956;56(4):481-543.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13361620/',
+          publishedAt: '1956-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gray baby syndrome — chloramphenicol toxicity in neonates 1959 ───────────
+  {
+    externalId: 'trajectory:gray-baby-syndrome-chloramphenicol-neonates-1959',
+    text: 'In 1959 J. M. Sutherland and, separately, L. E. Burns and colleagues reported that standard adult-scaled doses of chloramphenicol cause fatal cardiovascular collapse (\'gray baby syndrome\') in newborns because their immature livers cannot conjugate and excrete the drug, establishing that neonates require pharmacologically distinct dosing.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Sutherland reported three newborns who died of unexplained cardiovascular collapse during chloramphenicol treatment, documenting the ashen-gray coloration, abdominal distention, and cyanosis of the syndrome. The report identified a toxicity unique to infants and recorded the first clear case series, opening the question of immature neonatal drug metabolism.',
+        source: {
+          externalId: 'src:sutherland-chloramphenicol-collapse-1959',
+          name: 'Sutherland JM. Fatal cardiovascular collapse of infants receiving large amounts of chloramphenicol. Am J Dis Child. 1959;97(6):761-767.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13649107/',
+          publishedAt: '1959-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-12-24',
+        datePrecision: 'DAY',
+        reason: 'Burns, Hodgman, and Cass reported a controlled trial in premature infants in which prophylactic chloramphenicol roughly doubled mortality (45% vs ~25%), confirming the toxicity with comparative data in the same year. Together with subsequent pharmacokinetic work showing deficient glucuronidation in neonates, this settled gray baby syndrome as a textbook proof that children are not small adults for drug dosing.',
+        source: {
+          externalId: 'src:burns-chloramphenicol-premature-collapse-1959',
+          name: 'Burns LE, Hodgman JE, Cass AB. Fatal circulatory collapse in premature infants receiving chloramphenicol. N Engl J Med. 1959;261(26):1318-1321.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13806261/',
+          publishedAt: '1959-12-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Guthrie PKU newborn screening — 1963 ────────────────────────────────────
+  {
+    externalId: 'trajectory:guthrie-pku-newborn-screening-1963',
+    text: 'Robert Guthrie and Ada Susi published in Pediatrics in September 1963 a simple bacterial-inhibition blood-spot assay capable of mass-screening newborns for phenylketonuria, and Massachusetts that year became the first U.S. state to mandate universal newborn PKU screening.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1963-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Guthrie and Susi described a Bacillus subtilis inhibition assay measuring phenylalanine in dried heel-prick blood spots on filter paper, enabling cheap, high-throughput screening of hospital nurseries. The method recorded a practical population-screening capability for an inherited disorder whose neurological damage is preventable if caught at birth.',
+        source: {
+          externalId: 'src:guthrie-susi-pku-pediatrics-1963',
+          name: 'Guthrie R, Susi A. A simple phenylalanine method for detecting phenylketonuria in large populations of newborn infants. Pediatrics. 1963;32:338-343.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14063511/',
+          publishedAt: '1963-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1963 Massachusetts became the first state to legally mandate universal newborn PKU screening using the Guthrie test, followed rapidly by Delaware, Vermont, Oregon, and dozens of other states. Within two years roughly 400,000 infants had been tested across 29 states, institutionalizing the first mass genetic-disease screening program and settling blood-spot screening as standard newborn care.',
+        source: {
+          externalId: 'src:nichd-pku-newborn-screening-history',
+          name: 'NICHD (NIH). Phenylketonuria (PKU) and Newborn Screening — history of Guthrie test adoption and state mandates.',
+          url: 'https://www.nichd.nih.gov/about/accomplishments/contributions/pku',
+          publishedAt: '1963-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Reye syndrome — aspirin in children reversed by Surgeon General 1982 ─────
+  {
+    externalId: 'trajectory:reye-syndrome-aspirin-children-surgeon-general-1982',
+    text: 'Following CDC studies in 1980, the U.S. Surgeon General issued an advisory on 11 June 1982 that aspirin (salicylates) given to children with influenza or chickenpox is associated with Reye syndrome, reversing aspirin\'s status as the standard pediatric antipyretic.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1980-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Epidemiologic case-control studies in Ohio, Michigan, and Arizona reported in 1980 found that children who developed Reye syndrome after a respiratory or varicella infection had far higher antecedent aspirin exposure than controls. CDC began publicly cautioning physicians and parents, contesting the long-settled assumption that aspirin was a safe routine antipyretic for children.',
+        source: {
+          externalId: 'src:starko-reye-salicylate-pediatrics-1980',
+          name: 'Starko KM, Ray CG, Dominguez LB, et al. Reye\'s syndrome and salicylate use. Pediatrics. 1980;66(6):859-864.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7454476/',
+          publishedAt: '1980-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1982-06-11',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Surgeon General, via an MMWR advisory, formally warned against giving salicylate-containing medications to children with influenza or chickenpox. This institutional act settled the aspirin–Reye association as actionable public-health fact; FDA label warnings followed in 1986–1988 and U.S. Reye syndrome incidence fell more than 90%, with the steep decline serving as confirmatory evidence.',
+        source: {
+          externalId: 'src:mmwr-surgeon-general-salicylates-reye-1982',
+          name: 'CDC. Surgeon General\'s advisory on the use of salicylates and Reye syndrome. MMWR Morb Mortal Wkly Rep. 1982;31(22):289-290.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00001108.htm',
+          publishedAt: '1982-06-11',
+          methodologyType: 'primary',
         },
       },
     ],
