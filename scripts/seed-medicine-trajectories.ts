@@ -13210,6 +13210,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // POST-MARKET SURVEILLANCE & VACCINE SAFETY ERA (1996–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── vCJD / BSE human transmission 1996 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:vcjd-bse-human-transmission-1996',
+    text: 'On 20 March 1996 the UK government, on the advice of the Spongiform Encephalopathy Advisory Committee (SEAC), announced that a newly identified variant of Creutzfeldt-Jakob disease (vCJD) in humans was most plausibly caused by dietary exposure to bovine spongiform encephalopathy (BSE, \'mad cow disease\').',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-04-06',
+        datePrecision: 'DAY',
+        reason: 'Seventeen days after the SEAC/government announcement, Will and colleagues published in The Lancet the first peer-reviewed description of ten cases of a clinically and neuropathologically distinct new variant of CJD clustering in unusually young UK patients. They argued a causal link to BSE was the most plausible explanation while explicitly cautioning it \'cannot be confirmed on the basis of this evidence alone,\' placing the BSE-to-human hypothesis on the formal scientific record as a serious but unproven claim.',
+        source: {
+          externalId: 'src:will-lancet-new-variant-cjd-1996',
+          name: 'Will RG, Ironside JW, Zeidler M, et al. A new variant of Creutzfeldt-Jakob disease in the UK. Lancet. 1996 Apr 6;347(9006):921-925.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8598754/',
+          publishedAt: '1996-04-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-10-02',
+        datePrecision: 'DAY',
+        reason: 'Bruce and colleagues transmitted both BSE and vCJD to panels of inbred mice and showed that vCJD produced the same characteristic incubation-period and lesion-profile \'signature\' as BSE, distinct from sporadic CJD. This strain-typing experiment provided strong biological evidence that the same agent strain underlies BSE and vCJD, converting the 1996 hypothesis into an established causal link and confirming cross-species prion transmission to humans via the food supply.',
+        source: {
+          externalId: 'src:bruce-nature-vcjd-bse-agent-1997',
+          name: 'Bruce ME, Will RG, Ironside JW, et al. Transmissions to mice indicate that \'new variant\' CJD is caused by the BSE agent. Nature. 1997 Oct 2;389(6650):498-501.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9333239/',
+          publishedAt: '1997-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── RotaTeq REST trial intussusception safety 2006 ─────────────────────────
+  {
+    externalId: 'trajectory:rotateq-rest-trial-intussusception-safety-2006',
+    text: 'On 5 January 2006 the New England Journal of Medicine published the Rotavirus Efficacy and Safety Trial (REST), showing that the pentavalent rotavirus vaccine RotaTeq, evaluated in roughly 68,000 infants, did not increase the risk of intussusception — re-establishing that rotavirus vaccination could be conducted safely after the 1999 withdrawal of RotaShield.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-05',
+        datePrecision: 'DAY',
+        reason: 'Vesikari and colleagues reported REST, a trial powered specifically to detect the intussusception signal that had ended RotaShield: intussusception occurred in 12 vaccine versus 15 placebo recipients within one year (relative risk 1.6, 95% CI 0.4-6.4), with no significant excess, alongside a 94.5% reduction in rotavirus-related hospitalizations. This put on record the empirical case that a rotavirus vaccine could be both efficacious and free of the catastrophic safety signal that had previously halted the field.',
+        source: {
+          externalId: 'src:vesikari-nejm-rest-rotateq-2006',
+          name: 'Vesikari T, Matson DO, Dennehy P, et al. Safety and efficacy of a pentavalent human-bovine (WC3) reassortant rotavirus vaccine. N Engl J Med. 2006 Jan 5;354(1):23-33.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16394299/',
+          publishedAt: '2006-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-02-03',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed RotaTeq on 3 February 2006 and the ACIP subsequently recommended routine infant immunization, formally returning rotavirus vaccination to the US schedule seven years after RotaShield\'s withdrawal. Post-licensure surveillance of RotaTeq and Rotarix later detected a small intussusception risk (roughly one to six excess cases per 100,000 vaccinees), but this risk was judged far outweighed by the prevention of severe gastroenteritis, leaving the recommendation intact.',
+        source: {
+          externalId: 'src:fda-rotateq-approval-2006',
+          name: 'U.S. Food and Drug Administration. RotaTeq (Rotavirus Vaccine, Live, Oral, Pentavalent) — approval and product information. FDA. 2006.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/rotateq',
+          publishedAt: '2006-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hispaniola circulating vaccine-derived poliovirus 2000 ─────────────────
+  {
+    externalId: 'trajectory:hispaniola-circulating-vaccine-derived-poliovirus-2000',
+    text: 'During 2000–2001 an outbreak of paralytic poliomyelitis in the Dominican Republic and Haiti was shown to be caused by a circulating vaccine-derived poliovirus (cVDPV) — the first documented proof that attenuated oral polio vaccine (OPV) strains can mutate, regain neurovirulence and transmissibility, and cause polio outbreaks in under-immunized populations.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-04-12',
+        datePrecision: 'DAY',
+        reason: 'Kew and 22 co-authors at CDC and partner institutions used genomic sequencing to show that the 21 confirmed paralytic cases (13 in the Dominican Republic, 8 including 2 fatal in Haiti) were caused by a derivative of the type 1 OPV strain that had reverted and circulated through a population with low vaccine coverage. This was the first rigorous molecular demonstration that the live vaccine itself could seed paralytic polio outbreaks, formally recording cVDPV as a real phenomenon.',
+        source: {
+          externalId: 'src:kew-science-hispaniola-cvdpv-2002',
+          name: 'Kew O, Morris-Glasgow V, Landaverde M, et al. Outbreak of poliomyelitis in Hispaniola associated with circulating type 1 vaccine-derived poliovirus. Science. 2002 Apr 12;296(5566):356-359.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11896235/',
+          publishedAt: '2002-04-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-04-01',
+        datePrecision: 'MONTH',
+        reason: 'cVDPV became a central organizing concept of the WHO Global Polio Eradication Initiative endgame: because type-2 cVDPVs accounted for over 97% of cVDPV paralysis, all 155 OPV-using countries synchronously withdrew the type-2 component in the globally coordinated trivalent-to-bivalent OPV \'switch\' of April 2016. This institutional action — removing a component of the vaccine specifically because of its own reversion risk — settled the once-novel claim that OPV strains can cause outbreaks as established programmatic fact.',
+        source: {
+          externalId: 'src:who-gpei-cvdpv-factsheet-2017',
+          name: 'World Health Organization / Global Polio Eradication Initiative. Circulating vaccine-derived poliovirus (cVDPV) fact sheet. WHO. March 2017.',
+          url: 'https://www.who.int/docs/default-source/documents/gpei-cvdpv-factsheet-march-2017.pdf',
+          publishedAt: '2017-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oseltamivir / Tamiflu complication-efficacy contested 2009 ─────────────
+  {
+    externalId: 'trajectory:oseltamivir-tamiflu-complication-efficacy-contested-2009',
+    text: 'A 2003 meta-analysis claimed that oseltamivir (Tamiflu) reduces influenza-related lower respiratory tract complications and hospitalizations — a claim that underpinned multibillion-dollar government pandemic stockpiling but was contested on 8 December 2009 when a Cochrane/BMJ review found the supporting trial data largely unpublished and inadequate to support it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-07-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-07-28',
+        datePrecision: 'DAY',
+        reason: 'Kaiser and colleagues pooled ten oseltamivir treatment trials and reported that the drug cut lower respiratory tract complications requiring antibiotics by 55% (4.6% vs 10.3%) and hospitalizations by 59%. This pooled analysis became the central published evidence that oseltamivir prevents serious influenza outcomes, recording the complication-reduction claim that would justify pandemic procurement.',
+        source: {
+          externalId: 'src:kaiser-archintmed-oseltamivir-complications-2003',
+          name: 'Kaiser L, Wat C, Mills T, Mahoney P, Ward P, Hayden F. Impact of oseltamivir treatment on influenza-related lower respiratory tract complications and hospitalizations. Arch Intern Med. 2003 Jul 28;163(14):1667-1672.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12885681/',
+          publishedAt: '2003-07-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The US HHS Pandemic Influenza Plan of November 2005 set a national goal of stockpiling 81 million antiviral treatment courses, with oseltamivir as the primary agent, and the WHO and numerous governments built comparable stockpiles on the rationale that neuraminidase inhibitors reduce complications. The complication-reduction claim thereby moved from journal finding to settled policy embedded in national pandemic-preparedness strategy.',
+        source: {
+          externalId: 'src:hhs-pandemic-influenza-plan-2005',
+          name: 'U.S. Department of Health and Human Services. HHS Pandemic Influenza Plan. November 2005.',
+          url: 'https://www.cdc.gov/pandemic-flu/media/hhspandemicinfluenzaplan.pdf',
+          publishedAt: '2005-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-12-08',
+        datePrecision: 'DAY',
+        reason: 'Jefferson, Doshi and colleagues, updating the Cochrane review in the BMJ, found oseltamivir gave only modest symptom relief and concluded the evidence did not support reduced lower respiratory complications, because most of the underlying manufacturer trials behind the Kaiser analysis were unpublished and unavailable for independent scrutiny. This launched a multi-year campaign for full clinical-study-report access and reframed a previously settled efficacy claim — and the stockpiling it justified — as contested; the 2014 Cochrane update reaffirmed the contestation.',
+        source: {
+          externalId: 'src:jefferson-bmj-neuraminidase-inhibitors-2009',
+          name: 'Jefferson T, Jones M, Doshi P, Del Mar C. Neuraminidase inhibitors for preventing and treating influenza in healthy adults: systematic review and meta-analysis. BMJ. 2009 Dec 8;339:b5106.',
+          url: 'https://www.bmj.com/content/339/bmj.b5106',
+          publishedAt: '2009-12-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Telithromycin / Ketek hepatotoxicity reversal 2007 ─────────────────────
+  {
+    externalId: 'trajectory:telithromycin-ketek-hepatotoxicity-reversal-2007',
+    text: 'The FDA approved telithromycin (Ketek) on 1 April 2004 as a safe and effective antibiotic for acute bacterial sinusitis, acute exacerbations of chronic bronchitis, and community-acquired pneumonia; after reports of severe liver injury and the discovery that a pivotal safety study was fraudulent, the FDA in February 2007 added a boxed warning and withdrew the sinusitis and bronchitis indications.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-04-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved telithromycin, the first ketolide antibiotic, for three common respiratory indications, institutionally certifying it as safe and effective. The approval relied in part on Study 3014, a large safety study later found to be permeated by fraud, so the favorable benefit-risk judgment rested on a compromised evidence base from the outset.',
+        source: {
+          externalId: 'src:ross-nejm-fda-ketek-2007',
+          name: 'Ross DB. The FDA and the case of Ketek. N Engl J Med. 2007 Apr 19;356(16):1601-1604.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMp078032',
+          publishedAt: '2007-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-03-21',
+        datePrecision: 'DAY',
+        reason: 'Clay and colleagues reported three patients who developed acute hepatitis shortly after starting telithromycin — one recovered, one required a liver transplant, and one died — and concluded the drug can cause severe hepatotoxicity. This case series, published in Annals of Internal Medicine, surfaced a post-market safety signal that directly challenged the drug\'s approved safety profile.',
+        source: {
+          externalId: 'src:clay-annintmed-telithromycin-hepatotoxicity-2006',
+          name: 'Clay KD, Hanson JS, Pope SD, Rissmiller RW, Purdum PP 3rd, Banks PM. Brief communication: severe hepatotoxicity of telithromycin: three case reports and literature review. Ann Intern Med. 2006 Mar 21;144(6):415-420.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16481451/',
+          publishedAt: '2006-03-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-02-12',
+        datePrecision: 'DAY',
+        reason: 'In February 2007 the FDA added a boxed warning for hepatotoxicity and a Medication Guide and removed two of telithromycin\'s three indications — acute bacterial sinusitis and acute exacerbations of chronic bronchitis — leaving only community-acquired pneumonia. Combined with the fraud finding in the supporting safety study, this regulatory action reversed the original safe-and-effective-for-common-respiratory-infections claim; the drug was subsequently effectively withdrawn from the US market.',
+        source: {
+          externalId: 'src:ross-nejm-fda-ketek-action-2007',
+          name: 'Ross DB. The FDA and the case of Ketek. N Engl J Med. 2007 Apr 19;356(16):1601-1604.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMp078032',
+          publishedAt: '2007-04-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
