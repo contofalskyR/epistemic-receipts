@@ -62240,6 +62240,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900): Eastern Europe & Russia
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Russian annexation of the Crimean Khanate ───────────────────────────────
+  {
+    externalId: 'trajectory:russian-annexation-crimea-1783',
+    text: 'Empress Catherine II of Russia issued a manifesto on 19 April 1783 (8 April Old Style) annexing the Crimean Khanate to the Russian Empire, ending the khanate\'s independence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1783-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1783-04-19',
+        datePrecision: 'DAY',
+        reason: 'Catherine II issues a formal manifesto proclaiming the incorporation of the Crimean Peninsula, the Taman region, and the Kuban into the Russian Empire. The Crimean Khanate, which the Treaty of Küçük Kaynarca (1774) had declared independent of the Ottoman Empire, had been destabilised by Russian-backed factions; the manifesto unilaterally extinguishes its sovereignty. The proclamation is an instrument of state, recorded and promulgated.',
+        source: {
+          externalId: 'src:catherine-crimea-manifesto-1783',
+          name: 'Manifesto of Catherine II annexing Crimea, 19 April [O.S. 8 April] 1783, Russian Empire.',
+          url: 'https://en.wikipedia.org/wiki/Annexation_of_Crimea_by_the_Russian_Empire',
+          publishedAt: '1783-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1792-01-09',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of Jassy, signed on 9 January 1792 (29 December 1791 Old Style), ends the Russo-Turkish War of 1787–1792 and confirms the earlier cession of Crimea, with the Ottoman Empire formally accepting the loss of its former vassal to Russia. International recognition settles the annexation as a fixed territorial fact, durable until the 1853–1856 Crimean War contests Russian dominance in the region.',
+        source: {
+          externalId: 'src:treaty-jassy-1792',
+          name: 'Treaty of Jassy (9 January 1792 [O.S. 29 December 1791]), Russian Empire and Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Jassy',
+          publishedAt: '1792-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Third Partition of Poland — extinction of the Commonwealth ───────────────
+  {
+    externalId: 'trajectory:third-partition-poland-1795',
+    text: 'On 24 October 1795 Austria, Prussia, and Russia agreed to partition the remaining territory of the Polish–Lithuanian Commonwealth among themselves, extinguishing the Polish state, which would not be restored as an independent nation until 1918.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1795-10-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1795-10-24',
+        datePrecision: 'DAY',
+        reason: 'Following the failure of the Kościuszko Uprising, Austrian, Prussian, and Russian representatives meet on 24 October 1795 to divide the last territories of the Polish–Lithuanian Commonwealth. King Stanisław August Poniatowski abdicates on 25 November 1795, leaving no Polish sovereign or state apparatus. The partition is enacted by the three powers as a matter of record.',
+        source: {
+          externalId: 'src:third-partition-poland-1795',
+          name: 'Third Partition of Poland (24 October 1795), Russia, Prussia, and the Habsburg Monarchy.',
+          url: 'https://en.wikipedia.org/wiki/Third_Partition_of_Poland',
+          publishedAt: '1795-10-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1797-01-26',
+        datePrecision: 'DAY',
+        reason: 'The three partitioning powers sign a treaty on 26 January 1797 formally fixing the division of territory and abolishing the name of the Kingdom of Poland. Poland disappears from the map of Europe for 123 years, a settled fact of international order until the restoration of Polish independence in 1918.',
+        source: {
+          externalId: 'src:partition-treaty-1797',
+          name: 'Partition treaty of 26 January 1797 dividing the former Polish–Lithuanian Commonwealth.',
+          url: 'https://en.wikipedia.org/wiki/Third_Partition_of_Poland',
+          publishedAt: '1797-01-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Decembrist revolt — failed coup against Nicholas I ──────────────────────
+  {
+    externalId: 'trajectory:decembrist-revolt-1825',
+    text: 'On 26 December 1825 (14 December Old Style) roughly 3,000 Russian army officers and soldiers refused to swear allegiance to the new Tsar Nicholas I and assembled in Senate Square in St. Petersburg, in a revolt that was suppressed by loyal forces the same day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1825-12-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1825-12-26',
+        datePrecision: 'DAY',
+        reason: 'Exploiting the succession confusion after the death of Alexander I, rebel officers lead some 3,000 troops into Senate Square and refuse the oath to Nicholas I. After hours of standoff against roughly 9,000 loyal soldiers, the revolt is broken by grapeshot artillery fire on the evening of 26 December 1825. The public confrontation in the imperial capital is witnessed and immediately recorded.',
+        source: {
+          externalId: 'src:decembrist-revolt-1825',
+          name: 'Decembrist revolt, Senate Square, St. Petersburg, 26 December [O.S. 14 December] 1825.',
+          url: 'https://en.wikipedia.org/wiki/Decembrist_revolt',
+          publishedAt: '1825-12-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1826-07-25',
+        datePrecision: 'DAY',
+        reason: 'A special supreme criminal court tries the participants; five leaders — Pavel Pestel, Kondraty Ryleyev, Pyotr Kakhovsky, Sergei Muravyov-Apostol, and Mikhail Bestuzhev-Ryumin — are executed by hanging on 25 July 1826 (13 July Old Style), and over a hundred others are exiled to Siberia. The judicial record fixes the revolt, its participants, and its suppression as a settled event.',
+        source: {
+          externalId: 'src:decembrist-executions-1826',
+          name: 'Execution of the five Decembrist leaders, 25 July [O.S. 13 July] 1826, St. Petersburg.',
+          url: 'https://en.wikipedia.org/wiki/Decembrist_revolt',
+          publishedAt: '1826-07-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of San Stefano — Greater Bulgaria created then overturned ─────────
+  {
+    externalId: 'trajectory:treaty-san-stefano-1878',
+    text: 'The Treaty of San Stefano, signed on 3 March 1878, ended the Russo-Turkish War of 1877–1878 and created a large autonomous "Greater Bulgaria" under Russian influence; this territorial settlement was substantially overturned by the Treaty of Berlin on 13 July 1878.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1878-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1878-03-03',
+        datePrecision: 'DAY',
+        reason: 'Russia and the defeated Ottoman Empire sign the preliminary peace at San Stefano (near Constantinople) on 3 March 1878 (19 February Old Style), creating a large self-governing Bulgarian principality stretching across much of the Balkans and confirming the independence of Serbia, Montenegro, and Romania. The signed instrument records a sweeping redrawing of the Ottoman Balkans in Russia\'s favour.',
+        source: {
+          externalId: 'src:treaty-san-stefano-1878',
+          name: 'Treaty of San Stefano (3 March [O.S. 19 February] 1878), Russian Empire and Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_San_Stefano',
+          publishedAt: '1878-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1878-07-13',
+        datePrecision: 'DAY',
+        reason: 'Alarmed by the expansion of Russian influence, the Great Powers convene the Congress of Berlin and sign the Treaty of Berlin on 13 July 1878, which dismantles the San Stefano settlement: "Greater Bulgaria" is split into a much smaller autonomous Principality of Bulgaria, an autonomous Eastern Rumelia, and territory returned to Ottoman rule. The San Stefano map is reversed before it can take effect.',
+        source: {
+          externalId: 'src:treaty-berlin-1878',
+          name: 'Treaty of Berlin (13 July 1878), Congress of Berlin.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Berlin_(1878)',
+          publishedAt: '1878-07-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1878-07-13',
+        datePrecision: 'DAY',
+        reason: 'The Berlin settlement, not San Stefano, becomes the operative map of the Balkans for the following decades and the reference point for subsequent diplomacy. Diplomatic historians treat San Stefano as the high-water mark of Russian Balkan ambition and the Treaty of Berlin as its lasting revision; both treaties and their relationship are preserved in standard collections, settling the historical record.',
+        source: {
+          externalId: 'src:san-stefano-berlin-historiography',
+          name: 'Treaty of San Stefano superseded by the Treaty of Berlin — diplomatic-history account.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_San_Stefano',
+          publishedAt: '1878-07-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Tsar Alexander II ──────────────────────────────────────
+  {
+    externalId: 'trajectory:alexander-ii-assassination-1881',
+    text: 'Tsar Alexander II of Russia was killed on 13 March 1881 (1 March Old Style) in St. Petersburg by a bomb thrown by Ignacy Hryniewiecki of the revolutionary organization Narodnaya Volya.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1881-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1881-03-13',
+        datePrecision: 'DAY',
+        reason: 'As the Tsar returns along the Catherine Canal embankment, a first bomb thrown by Nikolai Rysakov damages his carriage; a second, thrown by Ignacy Hryniewiecki, mortally wounds Alexander II, who dies within hours. The attack, carried out by Narodnaya Volya after several prior attempts, occurs in public in the imperial capital and is recorded immediately.',
+        source: {
+          externalId: 'src:alexander-ii-assassination-1881',
+          name: 'Assassination of Alexander II, St. Petersburg, 13 March [O.S. 1 March] 1881.',
+          url: 'https://en.wikipedia.org/wiki/Assassination_of_Alexander_II_of_Russia',
+          publishedAt: '1881-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1881-04-15',
+        datePrecision: 'DAY',
+        reason: 'The conspirators are tried in "the Trial of the First of March"; five members — Andrei Zhelyabov, Sofia Perovskaya, Nikolai Kibalchich, Timofei Mikhailov, and Nikolai Rysakov — are hanged on 15 April 1881 (3 April Old Style). The judicial proceedings and confessions fix the identity of the assassins and the role of Narodnaya Volya, settling the record of the regicide.',
+        source: {
+          externalId: 'src:first-of-march-executions-1881',
+          name: 'Execution of the "First of March" conspirators, 15 April [O.S. 3 April] 1881, St. Petersburg.',
+          url: 'https://en.wikipedia.org/wiki/Assassination_of_Alexander_II_of_Russia',
+          publishedAt: '1881-04-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
