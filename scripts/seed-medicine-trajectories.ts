@@ -2420,6 +2420,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SHAM-CONTROLLED SURGERY ERA (1958–1985)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Internal mammary artery ligation for angina — 1958 → reversed 1959 ──────
+  {
+    externalId: 'trajectory:internal-mammary-artery-ligation-angina-1958',
+    text: 'Bilateral internal mammary artery ligation, reported by Kitchell, Glover, and Kyle in the American Journal of Cardiology in 1958, relieves angina pectoris by increasing collateral blood flow to the ischemic myocardium.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Kitchell, Glover, and Kyle published a preliminary clinical report claiming that simple bilateral ligation of the internal mammary arteries relieved angina in a majority of patients, building on Battezzati\'s earlier Italian series. The operation was simple, low-risk, and rapidly adopted on the strength of uncontrolled before-and-after symptom reports, recording in the literature the claim that ligation diverted blood into the coronary circulation.',
+        source: {
+          externalId: 'src:kitchell-glover-kyle-ima-ligation-1958',
+          name: 'Kitchell JR, Glover RP, Kyle RH. Bilateral internal mammary artery ligation for angina pectoris; preliminary clinical considerations. Am J Cardiol. 1958;1(1):46-50.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13497954/',
+          publishedAt: '1958-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-05-28',
+        datePrecision: 'DAY',
+        reason: 'Cobb and colleagues conducted one of the first double-blind sham-controlled surgical trials, in which some angina patients received internal mammary artery ligation and others only a skin incision, with neither patients nor assessors knowing which. Both groups reported nearly identical symptomatic improvement, showing the benefit was a placebo response; Dimond, Kittle, and Crockett confirmed the result the following year, and the operation was abandoned.',
+        source: {
+          externalId: 'src:cobb-ima-ligation-double-blind-nejm-1959',
+          name: 'Cobb LA, Thomas GI, Dillard DH, Merendino KA, Bruce RA. An evaluation of internal-mammary-artery ligation by a double-blind technic. N Engl J Med. 1959;260(22):1115-1118.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13657350/',
+          publishedAt: '1959-05-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gastric freezing for duodenal ulcer — 1962 → reversed 1969 ──────────────
+  {
+    externalId: 'trajectory:gastric-freezing-duodenal-ulcer-1962',
+    text: 'Gastric freezing (gastric hypothermia), introduced by Owen Wangensteen and colleagues in JAMA in 1962, achieves a \'physiological gastrectomy\' that heals duodenal ulcers by durably suppressing gastric acid secretion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-05-12',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-05-12',
+        datePrecision: 'MONTH',
+        reason: 'Wangensteen and colleagues reported experimental and clinical results claiming that circulating a coolant through a balloon in the stomach froze the gastric mucosa, suppressed acid secretion, and healed duodenal ulcers without surgery. The non-operative \'physiological gastrectomy\' was rapidly and widely adopted, with thousands of freezing machines deployed across the United States on the basis of these uncontrolled reports.',
+        source: {
+          externalId: 'src:wangensteen-gastric-freezing-jama-1962',
+          name: 'Wangensteen OH, Peter ET, Nicoloff DM, Walder AI, Sosin H, Bernstein EF. Achieving \'physiological gastrectomy\' by gastric freezing. A preliminary report of an experimental and clinical study. JAMA. 1962;180:439-444.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14004878/',
+          publishedAt: '1962-05-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-07-03',
+        datePrecision: 'DAY',
+        reason: 'Ruffin and colleagues ran a multicenter cooperative double-blind trial comparing true gastric freezing against a sham procedure in which the balloon was perfused with fluid at body temperature. The two arms showed no meaningful difference in ulcer outcomes, demonstrating the treatment was ineffective; the procedure was abandoned, and the episode became a textbook case for why surgical and procedural therapies require controlled evaluation.',
+        source: {
+          externalId: 'src:ruffin-gastric-freezing-controlled-nejm-1969',
+          name: 'Ruffin JM, Grizzle JE, Hightower NC, McHardy G, Shull H, Kirsner JB. A co-operative double-blind evaluation of gastric \'freezing\' in the treatment of duodenal ulcer. N Engl J Med. 1969;281(1):16-19.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4891641/',
+          publishedAt: '1969-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EC-IC bypass for stroke prevention — 1978 → reversed 1985 ───────────────
+  {
+    externalId: 'trajectory:ec-ic-bypass-stroke-prevention-1985',
+    text: 'Extracranial-intracranial (superficial temporal artery to middle cerebral artery) arterial bypass surgery reduces the risk of ischemic stroke in patients with symptomatic carotid or middle-cerebral-artery occlusive disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following Donaghy and Yaşargil\'s first human STA-MCA microvascular anastomosis in 1967, EC-IC bypass was performed with rapidly growing frequency through the 1970s, with surgical series reporting graft patency and symptom relief. Reviews such as Samson and Boone\'s summary of \'past performance and current concepts\' recorded the prevailing belief that revascularizing hypoperfused brain prevented stroke, although the evidence was uncontrolled.',
+        source: {
+          externalId: 'src:samson-boone-ec-ic-bypass-neurosurgery-1978',
+          name: 'Samson DS, Boone S. Extracranial-intracranial (EC-IC) arterial bypass: past performance and current concepts. Neurosurgery. 1978;3(1):79-86.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/683500/',
+          publishedAt: '1978-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-11-07',
+        datePrecision: 'DAY',
+        reason: 'The international EC/IC Bypass Study randomized 1,377 patients with symptomatic atherosclerotic carotid or middle-cerebral disease to bypass surgery plus best medical care or medical care alone. Surgery failed to reduce stroke or death and the surgical group fared somewhat worse early on, directly contradicting the procedure\'s rationale; the trial reversed a widely practiced operation and became a landmark in evidence-based surgery.',
+        source: {
+          externalId: 'src:ec-ic-bypass-study-group-nejm-1985',
+          name: 'EC/IC Bypass Study Group. Failure of extracranial-intracranial arterial bypass to reduce the risk of ischemic stroke. Results of an international randomized trial. N Engl J Med. 1985;313(19):1191-1200.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2865674/',
+          publishedAt: '1985-11-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Breast-conserving surgery equivalent to mastectomy — 1985 → settled 1990 ─
+  {
+    externalId: 'trajectory:breast-conserving-surgery-equivalent-mastectomy-1985',
+    text: 'Breast-conserving surgery (segmental mastectomy/lumpectomy) plus radiation achieves disease-free and overall survival equivalent to total or radical mastectomy for early breast cancer, as established by Fisher and the NSABP B-06 trial reported in the New England Journal of Medicine in March 1985.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-03-14',
+        datePrecision: 'DAY',
+        reason: 'Fisher and the National Surgical Adjuvant Breast and Bowel Project reported the five-year results of the randomized B-06 trial, finding no significant difference in disease-free or overall survival among total mastectomy, lumpectomy alone, and lumpectomy plus radiation for tumors up to 4 cm. The result recorded in the literature the claim that conserving the breast was as safe as removing it, directly challenging the Halsted radical-mastectomy paradigm that had dominated surgery for roughly eighty years.',
+        source: {
+          externalId: 'src:fisher-nsabp-b06-mastectomy-lumpectomy-nejm-1985',
+          name: 'Fisher B, Bauer M, Margolese R, et al. Five-year results of a randomized clinical trial comparing total mastectomy and segmental mastectomy with or without radiation in the treatment of breast cancer. N Engl J Med. 1985;312(11):665-673.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3883167/',
+          publishedAt: '1985-03-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The NIH Consensus Development Conference on the Treatment of Early-Stage Breast Cancer, held in June 1990, concluded that breast-conserving treatment was an appropriate primary therapy preferable to mastectomy for most women with stage I and II disease because it preserved the breast without compromising survival. This consensus, published in JAMA in 1991, institutionally settled the equivalence claim and reoriented standard surgical practice away from routine mastectomy.',
+        source: {
+          externalId: 'src:nih-consensus-early-breast-cancer-jama-1991',
+          name: 'NIH Consensus Conference. Treatment of early-stage breast cancer. JAMA. 1991;265(3):391-395.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1984541/',
+          publishedAt: '1991-01-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
