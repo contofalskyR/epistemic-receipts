@@ -933,6 +933,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PUBLIC HEALTH FORTIFICATION ERA (1917–1954)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 18. Water fluoridation — Grand Rapids — 1945 ────────────────────────────
+  {
+    externalId: 'trajectory:water-fluoridation-grand-rapids-1945',
+    text: 'Grand Rapids, Michigan became the first city in the world to fluoridate its public drinking water on January 25, 1945, launching the controlled test of the claim that adjusting water fluoride to about 1 ppm safely reduces dental caries — a claim endorsed nationally by 1950 and then contested in U.S. federal court in 2024 over fluoride neurotoxicity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1945-01-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-01-25',
+        datePrecision: 'DAY',
+        reason: 'On January 25, 1945, Grand Rapids began adding sodium fluoride to its municipal water, becoming the first city to fluoridate as part of a 15-year controlled study run with the U.S. Public Health Service, the Michigan Department of Health, and the University of Michigan. The trial was motivated by H. Trendley Dean\'s epidemiology linking naturally fluoridated water to lower caries (the \'mottled enamel\' work), and tested whether artificial fluoridation could reproduce that protection while comparing Grand Rapids against unfluoridated Muskegon.',
+        source: {
+          externalId: 'src:cdc-fluoridation-timeline-grand-rapids-1945',
+          name: 'Centers for Disease Control and Prevention. Timeline for Community Water Fluoridation. (Grand Rapids, MI became the first U.S. city to fluoridate its water on January 25, 1945.)',
+          url: 'https://www.cdc.gov/fluoridation/timeline-for-community-water-fluoridation/index.html',
+          publishedAt: '1945-01-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1950-06-01',
+        datePrecision: 'MONTH',
+        reason: 'After interim Grand Rapids results showed large reductions in childhood tooth decay, the U.S. Public Health Service, the American Dental Association, and the Association of State and Territorial Dental Directors issued statements in June 1950 endorsing community water fluoridation, and the Surgeon General strongly encouraged communities to fluoridate. This converted an experimental intervention into settled national public-health policy, driving adoption that reached roughly 50 million Americans by 1960.',
+        source: {
+          externalId: 'src:cdc-fluoridation-endorsement-1950',
+          name: 'Centers for Disease Control and Prevention. Timeline for Community Water Fluoridation. (USPHS, ADA, and ASTDD endorsed community water fluoridation in 1950; Surgeon General strongly encouraged adoption.)',
+          url: 'https://www.cdc.gov/fluoridation/timeline-for-community-water-fluoridation/index.html',
+          publishedAt: '1950-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-09-24',
+        datePrecision: 'DAY',
+        reason: 'On September 24, 2024, U.S. District Judge Edward Chen ruled in Food & Water Watch, Inc. v. EPA (N.D. Cal.) that fluoridation at the recommended 0.7 mg/L \'poses an unreasonable risk of reduced IQ in children\' and ordered the EPA to act under the Toxic Substances Control Act, relying on National Toxicology Program findings associating fluoride exposure with lowered childhood IQ. While the court stated it did not conclude with certainty that fluoridated water is injurious, the ruling reopened formal scientific and legal contestation of a public-health intervention settled for nearly 80 years.',
+        source: {
+          externalId: 'src:food-water-watch-v-epa-fluoride-2024',
+          name: 'Food & Water Watch, Inc. v. U.S. EPA, No. 17-cv-02162-EMC (N.D. Cal., Sept. 24, 2024) — court order requiring EPA to regulate the unreasonable risk posed by water fluoridation under TSCA.',
+          url: 'https://www.foodandwaterwatch.org/2024/09/25/historic-court-decision-in-fluoridation-toxicity-case-orders-epa-to-act/',
+          publishedAt: '2024-09-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 19. Iodized salt — goiter prevention — 1924 ──────────────────────────────
+  {
+    externalId: 'trajectory:iodized-salt-goiter-prevention-1924',
+    text: 'David Marine and O. P. Kimball reported in 1917 from their Akron, Ohio schoolgirl trial that iodine supplementation prevents endemic goiter, a finding that settled into U.S. public-health practice when Michigan introduced iodized salt in 1924 and Morton Salt rolled it out nationally that year, effectively eliminating goiter from the American \'goiter belt.\'',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1917-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1917-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marine and Kimball published \'The prevention of simple goiter in man\' (1917), surveying thyroid enlargement among Akron schoolgirls and proposing a plan of iodine prophylaxis. Their controlled trial (1917–1920) gave sodium iodide to 2,190 girls while 2,305 untreated girls served as controls; goiter developed or worsened in only 0.2% of the iodine group versus about 14% of controls, providing the first rigorous human evidence that iodine prevents endemic goiter.',
+        source: {
+          externalId: 'src:marine-kimball-akron-goiter-1917',
+          name: 'Marine D, Kimball OP. The prevention of simple goiter in man. A survey of the incidence and types of thyroid enlargements in the schoolgirls of Akron (Ohio), from the 5th to the 12th grades, inclusive — the plan of prevention proposed. 1917. (Reprinted J Lab Clin Med. 1990;115(1):128-136.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2405081/',
+          publishedAt: '1917-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1924-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Acting on Marine and Kimball\'s evidence and David Cowie\'s advocacy, Michigan introduced iodized table salt in May 1924, and Morton Salt began distributing iodized salt nationally later that year — the first population-scale iodine fortification in the United States. Endemic goiter rates in the Great Lakes \'goiter belt\' fell dramatically, marking institutional settlement of iodine prophylaxis as a permanent public-health measure (its centennial was marked in 2024).',
+        source: {
+          externalId: 'src:iodized-salt-centennial-michigan-1924',
+          name: 'Healio Endocrinology. Iodized salt: Celebrating the centennial of a major US public health triumph. (Michigan introduced iodized salt in 1924; Morton Salt rolled it out nationally that year.)',
+          url: 'https://www.healio.com/news/endocrinology/20240213/iodized-salt-celebrating-the-centennial-of-a-major-us-public-health-triumph',
+          publishedAt: '1924-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 20. Vipeholm — sugar causes dental caries — 1954 ────────────────────────
+  {
+    externalId: 'trajectory:vipeholm-sugar-dental-caries-1954',
+    text: 'The Vipeholm dental caries study, published by Gustafsson and colleagues in 1954, established from a five-year controlled feeding experiment that dietary sugar — especially when consumed frequently and between meals in sticky form — causes dental caries, a sugar-disease link later confirmed by the systematic review that informed WHO sugar guidelines.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1954-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Gustafsson et al. published \'The Vipeholm dental caries study: the effect of different levels of carbohydrate intake on caries activity in 436 individuals observed for five years\' in Acta Odontologica Scandinavica (1954). The trial, conducted on institutionalized patients at Vipeholm Hospital in Sweden, found that decayed/missing/filled teeth rose most in groups given extra sugar between meals — particularly a specially made sticky toffee — establishing that frequency and physical form of sugar exposure, not just quantity, drive caries. The study\'s coercive design on non-consenting intellectually disabled patients later became a landmark research-ethics case.',
+        source: {
+          externalId: 'src:gustafsson-vipeholm-caries-1954',
+          name: 'Gustafsson BE, Quensel CE, Lanke LS, Lundqvist C, Grahnen H, Bonow BE, Krasse B. The Vipeholm dental caries study: the effect of different levels of carbohydrate intake on caries activity in 436 individuals observed for five years. Acta Odontol Scand. 1954;11(3-4):232-264.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13196991/',
+          publishedAt: '1954-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-12-09',
+        datePrecision: 'DAY',
+        reason: 'Moynihan and Kelly published \'Effect on caries of restricting sugars intake: systematic review to inform WHO guidelines\' in the Journal of Dental Research (epub December 9, 2013), pooling decades of evidence and confirming a consistent dose-response relationship between sugar intake and dental caries, with lower caries at intakes below 10% and below 5% of energy. The review provided the formal evidentiary basis cited in WHO\'s sugar guidance, settling the sugar-caries causal link — first demonstrated experimentally at Vipeholm — as established science underpinning global policy.',
+        source: {
+          externalId: 'src:moynihan-kelly-sugar-caries-who-2014',
+          name: 'Moynihan PJ, Kelly SAM. Effect on caries of restricting sugars intake: systematic review to inform WHO guidelines. J Dent Res. 2014;93(1):8-18.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24323509/',
+          publishedAt: '2013-12-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 21. First Recommended Dietary Allowances — 1943 ─────────────────────────
+  {
+    externalId: 'trajectory:first-recommended-dietary-allowances-1943',
+    text: 'The U.S. National Research Council\'s Food and Nutrition Board published the first Recommended Dietary Allowances in 1943, establishing national quantitative reference standards for energy and eight nutrients — a framework institutionalized over subsequent decades and expanded into the modern Dietary Reference Intakes from 1997.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1941-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The National Research Council\'s Food and Nutrition Board, formed in 1941 amid World War II national-defense nutrition concerns, published the first edition of the Recommended Dietary Allowances in 1943 with the stated objective of \'providing standards to serve as a goal for good nutrition.\' The RDAs set quantitative intake targets for energy and eight nutrients and became the foundational reference for U.S. food-assistance, military ration, and dietary-planning programs.',
+        source: {
+          externalId: 'src:nrc-first-rda-1943',
+          name: 'National Research Council, Food and Nutrition Board. Recommended Dietary Allowances (1st edition, 1943). (History summarized in Recommended Dietary Allowances, 10th ed., National Academies Press / NCBI Bookshelf NBK234926.)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234926/',
+          publishedAt: '1943-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Beginning in 1997, the National Academy of Sciences (Institute of Medicine), in partnership with Health Canada, replaced and expanded the periodically revised RDAs with the Dietary Reference Intakes (DRIs) framework, issued in volumes through 2005. The DRIs retained the RDA as one of several reference values and became the authoritative basis for U.S. and Canadian nutrient guidance, food labeling, and dietary planning — consolidating the 1943 standard into the modern, durable institutional framework still in use.',
+        source: {
+          externalId: 'src:dietary-reference-intakes-1997',
+          name: 'Institute of Medicine (National Academies). Dietary Reference Intakes — framework launched 1997, issued in volumes through 2005, expanding and replacing the Recommended Dietary Allowances.',
+          url: 'https://en.wikipedia.org/wiki/Dietary_Reference_Intake',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 17. WHO free sugars guideline — 2015 ────────────────────────────────────
   {
     externalId: 'trajectory:who-free-sugars-guideline-2015',
