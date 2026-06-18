@@ -44777,6 +44777,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Coronation of Haile Selassie I as Emperor of Ethiopia ───────────────────
+  {
+    externalId: 'trajectory:haile-selassie-coronation-1930',
+    text: 'Ras Tafari Makonnen was crowned Emperor Haile Selassie I of Ethiopia at the Cathedral of St George in Addis Ababa on 2 November 1930, before envoys of the world\'s major powers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1930-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1930-11-02',
+        datePrecision: 'DAY',
+        reason: 'Following the death of Empress Zauditu in April 1930, Tafari Makonnen is crowned Negusa Nagast (King of Kings) at the Cathedral of St George, taking the throne name Haile Selassie I ("Might of the Trinity"). The ceremony is staged as a deliberate display of Ethiopian sovereignty and is attended by special representatives of Britain (the Duke of Gloucester), France, Italy, Japan, Egypt, and the United States, and covered by the international press.',
+        source: {
+          externalId: 'src:selassie-coronation-1930',
+          name: 'Coronation of Haile Selassie and Menen, 2 November 1930, Cathedral of St George, Addis Ababa (encyclopedic synthesis of contemporary reports).',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie',
+          publishedAt: '1930-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-11-02',
+        datePrecision: 'DAY',
+        reason: 'The presence of accredited envoys from the great powers — including the personal representative of U.S. President Herbert Hoover — and their formal congratulations constitute international recognition of Haile Selassie as the legitimate sovereign of Ethiopia, then one of only two substantially independent African states. The coronation is documented in newsreels, photographs, and diplomatic dispatches that fix the date and fact beyond dispute.',
+        source: {
+          externalId: 'src:selassie-crowned-ebsco',
+          name: 'Haile Selassie Is Crowned Emperor of Ethiopia (EBSCO Research Starters, History).',
+          url: 'https://www.ebsco.com/research-starters/history/haile-selassie-crowned-emperor-ethiopia',
+          publishedAt: '1930-11-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Walwal incident — casus belli for the invasion of Ethiopia ──────────
+  {
+    externalId: 'trajectory:walwal-incident-1934',
+    text: 'On 5 December 1934 a firefight broke out between Italian-led Somali colonial troops and Ethiopian forces at the Walwal (Ual-Ual) oasis in the Ogaden, leaving roughly 107 Ethiopians and about 30 Italians and Somalis dead — the clash Fascist Italy used as the pretext for invading Ethiopia.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1934-12-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1934-12-06',
+        datePrecision: 'DAY',
+        reason: 'An Anglo-Ethiopian boundary commission encounters an Italian fortified post at the Walwal water-hole, roughly 100 km inside the Ethiopian Ogaden. After days of tension the garrison opens fire on 5 December 1934. The U.S. Chargé in Ethiopia reports the confrontation to Washington the next day, describing the Italian tank-and-aircraft demonstration and the Emperor\'s decision to protest to the League of Nations.',
+        source: {
+          externalId: 'src:walwal-frus-1934',
+          name: 'The Chargé in Ethiopia (Engert) to the Secretary of State, 6 December 1934. Foreign Relations of the United States, 1934, Vol. II, Doc. 651.',
+          url: 'https://history.state.gov/historicaldocuments/frus1934v02/d651',
+          publishedAt: '1934-12-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-01-03',
+        datePrecision: 'DAY',
+        reason: 'Italy and Ethiopia give irreconcilable accounts of who fired first — the Italians claiming an Ethiopian attack, the Ethiopians a tank-and-aircraft assault — and each demands reparations from the other. Ethiopia formally appeals to the League of Nations on 3 January 1935, making the responsibility for the clash a contested diplomatic question submitted to an arbitration commission.',
+        source: {
+          externalId: 'src:walwal-ualual-incident',
+          name: 'Ual-Ual Incident (encyclopedic synthesis of contemporary diplomatic record).',
+          url: 'https://en.wikipedia.org/wiki/Ual-Ual_Incident',
+          publishedAt: '1935-01-03',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-10-03',
+        datePrecision: 'DAY',
+        reason: 'The September 1935 arbitration found neither government internationally responsible, but Italy had already seized on Walwal as a casus belli; the invasion of Ethiopia on 3 October 1935 confirms that the incident functioned as the manufactured pretext for war. Historians treat the Walwal clash and its date as settled fact, with debate confined to motives rather than occurrence.',
+        source: {
+          externalId: 'src:walwal-casus-belli',
+          name: 'Ual-Ual Incident as casus belli for the Second Italo-Ethiopian War (historical synthesis).',
+          url: 'https://en.wikipedia.org/wiki/Ual-Ual_Incident',
+          publishedAt: '1935-10-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Haile Selassie's appeal to the League of Nations ────────────────────────
+  {
+    externalId: 'trajectory:selassie-league-appeal-1936',
+    text: 'On 30 June 1936 Emperor Haile Selassie addressed the Assembly of the League of Nations in Geneva, condemning Italy\'s use of poison gas and warning that the failure of collective security against Ethiopia threatened every member state — "It is us today. It will be you tomorrow."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1936-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1936-06-30',
+        datePrecision: 'DAY',
+        reason: 'Exiled after the fall of Addis Ababa in May 1936, Haile Selassie becomes the only head of state ever to address the League Assembly in person. Speaking in Amharic, he documents the aerial spraying of mustard gas over Ethiopian troops and civilians and demands the League refuse to recognize the Italian conquest. The address is reported worldwide and recorded in the League\'s official proceedings.',
+        source: {
+          externalId: 'src:selassie-league-speech-1936',
+          name: 'Haile Selassie\'s speech to the League of Nations, Geneva, 30 June 1936 (text and contemporary account).',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie%27s_speech_to_the_League_of_Nations_(1936)',
+          publishedAt: '1936-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-07-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 July 1936 the League Assembly rejects Haile Selassie\'s plea for non-recognition and votes to lift the sanctions on Italy, confirming the collapse of collective security. The speech and its rejection are preserved in the Library of Congress and the League of Nations archives, fixing both the address and its date as a documented turning point in interwar diplomacy.',
+        source: {
+          externalId: 'src:selassie-speech-loc',
+          name: 'Speech by His Majesty Haile Selassie I, Emperor of Ethiopia, at the Assembly of the League of Nations, June–July 1936. Library of Congress.',
+          url: 'https://www.loc.gov/item/2021667904/',
+          publishedAt: '1936-06-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Haile Selassie returns to a liberated Addis Ababa ───────────────────────
+  {
+    externalId: 'trajectory:selassie-return-addis-ababa-1941',
+    text: 'On 5 May 1941 Emperor Haile Selassie re-entered Addis Ababa at the head of Ethiopian Patriot forces, exactly five years after the Italian occupation began, restoring Ethiopian sovereignty during the East African Campaign of the Second World War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1941-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1941-05-05',
+        datePrecision: 'DAY',
+        reason: 'After British Commonwealth, Free French, and Belgian forces and the Ethiopian Arbegnoch (Patriots) defeated the Italian armies in the East African Campaign, Haile Selassie crossed from Sudan and entered Addis Ababa on 5 May 1941 — chosen to fall exactly five years after Italian troops took the capital on 5 May 1936. He addressed the population, urging them not to take reprisals. The return was filmed and reported internationally.',
+        source: {
+          externalId: 'src:selassie-return-1941',
+          name: 'Emperor Haile Selassie I Returns Triumphant to Ethiopia, 5 May 1941 (Origins, Ohio State University / Miami University).',
+          url: 'https://origins.osu.edu/milestones/may-2016-emperor-haile-selassie-i-returns-triumphant-ethiopia',
+          publishedAt: '1941-05-05',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-05-05',
+        datePrecision: 'DAY',
+        reason: 'The restoration of Haile Selassie marks Ethiopia as the first occupied state to be liberated in the Second World War and re-establishes the Solomonic monarchy after five years of Italian rule. The date and fact are confirmed by British military records of the East African Campaign, newsreel footage, and the Emperor\'s own proclamation, and are undisputed.',
+        source: {
+          externalId: 'src:selassie-return-haile-selassie',
+          name: 'Return of Haile Selassie to Addis Ababa, 5 May 1941 (encyclopedic synthesis of contemporary records).',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie',
+          publishedAt: '1941-05-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Krebs identifies the citric acid cycle ─────────────────────────────────
   {
     externalId: 'trajectory:krebs-citric-acid-cycle-1937',
