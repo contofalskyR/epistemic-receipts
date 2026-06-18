@@ -11120,6 +11120,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // LIPID-LOWERING & ANTITHROMBOTIC ERA (2015–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── IMPROVE-IT: ezetimibe non-statin LDL benefit 2015 ───────────────────────
+  {
+    externalId: 'trajectory:improve-it-ezetimibe-nonstatin-ldl-benefit-2015',
+    text: 'On 18 June 2015 the IMPROVE-IT trial reported that adding the non-statin agent ezetimibe to simvastatin further lowered LDL cholesterol and reduced cardiovascular events after acute coronary syndromes, the first proof that a non-statin LDL-lowering drug confers incremental cardiovascular benefit on top of a statin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-06-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-06-18',
+        datePrecision: 'DAY',
+        reason: 'The IMPROVE-IT trial (18,144 patients stabilized after acute coronary syndrome) found that ezetimibe added to simvastatin lowered LDL to a median 53 mg/dL versus 70 mg/dL and reduced the primary composite cardiovascular endpoint from 34.7% to 32.7% (hazard ratio 0.936). This recorded the first randomized demonstration that a non-statin LDL-lowering drug adds cardiovascular benefit to statin therapy, reinforcing the \'lower-is-better\' LDL hypothesis through a mechanism independent of statins.',
+        source: {
+          externalId: 'src:improve-it-ezetimibe-nejm-2015',
+          name: 'Cannon CP, Blazing MA, Giugliano RP, et al. Ezetimibe added to statin therapy after acute coronary syndromes (IMPROVE-IT). N Engl J Med. 2015;372(25):2387-2397.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26039521/',
+          publishedAt: '2015-06-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-11-10',
+        datePrecision: 'DAY',
+        reason: 'The 2018 AHA/ACC/multisociety blood-cholesterol guideline (Grundy, Stone, et al.), released at the AHA Scientific Sessions, drew on IMPROVE-IT to recommend ezetimibe as the first-line non-statin add-on for high-risk patients not reaching LDL goals on maximal statin therapy. The institutional endorsement settled non-statin LDL lowering as evidence-based standard practice and validated treating to lower LDL targets.',
+        source: {
+          externalId: 'src:aha-acc-2018-cholesterol-guideline',
+          name: 'Grundy SM, Stone NJ, Bailey AL, et al. 2018 AHA/ACC/AACVPR/AAPA/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Blood Cholesterol. Circulation. 2019;139(25):e1082-e1143.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30586774/',
+          publishedAt: '2018-11-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CLEAR Outcomes: bempedoic acid statin-intolerant 2023 ───────────────────
+  {
+    externalId: 'trajectory:clear-outcomes-bempedoic-acid-statin-intolerant-2023',
+    text: 'On 4 March 2023 the CLEAR Outcomes trial reported that bempedoic acid reduced major adverse cardiovascular events in statin-intolerant patients, the first proof that an oral non-statin LDL-lowering drug prevents cardiovascular events in people unable to take statins.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-03-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-03-04',
+        datePrecision: 'DAY',
+        reason: 'The CLEAR Outcomes trial (13,970 statin-intolerant patients, median 40.6-month follow-up) found that bempedoic acid lowered LDL cholesterol and reduced the primary four-component MACE composite by 13% (hazard ratio 0.87) versus placebo. This recorded for the first time that an oral non-statin agent prevents hard cardiovascular events in the large, previously evidence-orphaned population of patients who cannot tolerate statins.',
+        source: {
+          externalId: 'src:clear-outcomes-bempedoic-acid-nejm-2023',
+          name: 'Nissen SE, Lincoff AM, Brennan D, et al. Bempedoic acid and cardiovascular outcomes in statin-intolerant patients (CLEAR Outcomes). N Engl J Med. 2023;388(15):1353-1364.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36876740/',
+          publishedAt: '2023-03-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-03-22',
+        datePrecision: 'DAY',
+        reason: 'On the basis of CLEAR Outcomes, the FDA approved broad new labels for Nexletol (bempedoic acid) and Nexlizet (bempedoic acid/ezetimibe) for cardiovascular risk reduction in both primary and secondary prevention, with or without statins — making them the only non-statin LDL-lowering drugs indicated for primary prevention. The regulatory act settled bempedoic acid as an established cardiovascular-prevention therapy for statin-intolerant patients.',
+        source: {
+          externalId: 'src:esperion-fda-nexletol-cv-indication-2024',
+          name: 'Esperion Therapeutics. U.S. FDA Approves Broad New Labels for NEXLETOL and NEXLIZET to Prevent Heart Attacks and Cardiovascular Procedures in Both Primary and Secondary Prevention Patients, Regardless of Statin Use. Press release, 22 March 2024.',
+          url: 'https://www.globenewswire.com/news-release/2024/03/22/2851118/0/en/U-S-FDA-Approves-Broad-New-Labels-for-NEXLETOL-and-NEXLIZET-to-Prevent-Heart-Attacks-and-Cardiovascular-Procedures-in-Both-Primary-and-Secondary-Prevention-Patients-Regardless-of-S.html',
+          publishedAt: '2024-03-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── REDUCE-IT: icosapent ethyl contested omega-3 benefit 2018 ───────────────
+  {
+    externalId: 'trajectory:reduce-it-icosapent-ethyl-cv-benefit-contested-2018',
+    text: 'On 10 November 2018 the REDUCE-IT trial reported that high-dose icosapent ethyl (purified EPA) reduced major cardiovascular events by 25% in statin-treated patients with elevated triglycerides, a claim the FDA adopted as a cardiovascular indication in December 2019 but which was contested after the 2020 STRENGTH trial found no benefit from a different omega-3 formulation and raised concerns about REDUCE-IT\'s mineral-oil placebo.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-11-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-10',
+        datePrecision: 'DAY',
+        reason: 'The REDUCE-IT trial (8,179 statin-treated patients with elevated triglycerides) found that icosapent ethyl 4 g/day reduced the primary cardiovascular composite from 22.0% to 17.2% (hazard ratio 0.75). After decades of largely null omega-3 trials, this recorded a striking positive cardiovascular result for a purified high-dose EPA formulation, reviving the hypothesis that triglyceride-rich pathways are a modifiable cardiovascular target.',
+        source: {
+          externalId: 'src:reduce-it-icosapent-ethyl-nejm-2019',
+          name: 'Bhatt DL, Steg PG, Miller M, et al. Cardiovascular risk reduction with icosapent ethyl for hypertriglyceridemia (REDUCE-IT). N Engl J Med. 2019;380(1):11-22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30415628/',
+          publishedAt: '2018-11-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-13',
+        datePrecision: 'DAY',
+        reason: 'On the basis of REDUCE-IT, the FDA approved an expanded label for Vascepa (icosapent ethyl) to reduce cardiovascular risk in adults with triglycerides ≥150 mg/dL plus established cardiovascular disease or diabetes and additional risk factors — the first drug approved for cardiovascular risk reduction beyond cholesterol lowering. This institutionally adopted the REDUCE-IT claim into clinical practice.',
+        source: {
+          externalId: 'src:amarin-fda-vascepa-cv-approval-2019',
+          name: 'Amarin Corporation. Amarin Receives FDA Approval of VASCEPA (icosapent ethyl) to Reduce Cardiovascular Risk. Press release, 13 December 2019.',
+          url: 'https://www.globenewswire.com/news-release/2019/12/13/1960603/0/en/Amarin-Receives-FDA-Approval-of-VASCEPA-icosapent-ethyl-to-Reduce-Cardiovascular-Risk.html',
+          publishedAt: '2019-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-11-15',
+        datePrecision: 'DAY',
+        reason: 'The STRENGTH trial (13,078 high-risk statin-treated patients) found that a high-dose omega-3 carboxylic acid (EPA+DHA) produced no reduction in cardiovascular events versus a corn-oil comparator (hazard ratio 0.99), directly conflicting with REDUCE-IT. Because STRENGTH used corn oil while REDUCE-IT used mineral oil — which raised LDL and inflammatory markers in the placebo arm — investigators argued REDUCE-IT\'s benefit may have been partly an artifact of a harmful placebo, contesting whether icosapent ethyl\'s effect is genuine.',
+        source: {
+          externalId: 'src:strength-omega3-corn-oil-jama-2020',
+          name: 'Nicholls SJ, Lincoff AM, Garcia M, et al. Effect of high-dose omega-3 fatty acids vs corn oil on major adverse cardiovascular events in patients at high cardiovascular risk (STRENGTH). JAMA. 2020;324(22):2268-2280.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33190147/',
+          publishedAt: '2020-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── REDUCE-AMI: beta-blockers no benefit preserved EF 2024 ──────────────────
+  {
+    externalId: 'trajectory:reduce-ami-beta-blockers-preserved-ef-no-benefit-2024',
+    text: 'On 7 April 2024 the REDUCE-AMI trial reported that long-term beta-blocker therapy provided no reduction in death or recurrent myocardial infarction in heart-attack survivors with preserved left ventricular ejection fraction, contesting the decades-old doctrine — established in the pre-reperfusion era — that all post-MI patients should receive beta-blockers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2024-04-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-04-07',
+        datePrecision: 'DAY',
+        reason: 'The REDUCE-AMI trial (5,020 patients with acute MI and preserved ejection fraction ≥50% in the modern reperfusion era) found no difference in the composite of death or new myocardial infarction between beta-blocker and no-beta-blocker groups (hazard ratio 0.96) over a median 3.5 years. This recorded a direct empirical challenge to the routine post-MI beta-blockade standard derived from 1980s trials like BHAT, which predated reperfusion and enrolled patients with larger infarcts and reduced ejection fraction.',
+        source: {
+          externalId: 'src:reduce-ami-betablockers-nejm-2024',
+          name: 'Yndigegn T, Lindahl B, Mars K, et al. Beta-blockers after myocardial infarction and preserved ejection fraction (REDUCE-AMI). N Engl J Med. 2024;390(15):1372-1381.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38587241/',
+          publishedAt: '2024-04-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── COMPASS: low-dose rivaroxaban + aspirin stable CAD/PAD 2017 ─────────────
+  {
+    externalId: 'trajectory:compass-low-dose-rivaroxaban-aspirin-stable-cad-pad-2017',
+    text: 'On 27 August 2017 the COMPASS trial reported that adding low-dose rivaroxaban (2.5 mg twice daily) to aspirin reduced cardiovascular death, stroke, and myocardial infarction in patients with stable coronary or peripheral artery disease, establishing dual antithrombotic therapy as a new option for secondary prevention.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-08-27',
+        datePrecision: 'DAY',
+        reason: 'The COMPASS trial (27,395 patients with stable atherosclerotic disease) was stopped early when rivaroxaban 2.5 mg twice daily plus aspirin reduced the primary composite of cardiovascular death, stroke, or MI by 24% (hazard ratio 0.76) versus aspirin alone, at the cost of more major bleeding. This recorded the claim that a \'vascular dose\' of a direct oral anticoagulant added to aspirin improves outcomes in stable CAD/PAD — a distinct indication from the atrial-fibrillation use that defined the DOAC class.',
+        source: {
+          externalId: 'src:compass-rivaroxaban-aspirin-nejm-2017',
+          name: 'Eikelboom JW, Connolly SJ, Bosch J, et al. Rivaroxaban with or without aspirin in stable cardiovascular disease (COMPASS). N Engl J Med. 2017;377(14):1319-1330.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28844192/',
+          publishedAt: '2017-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-10-11',
+        datePrecision: 'DAY',
+        reason: 'On the basis of COMPASS, the FDA approved rivaroxaban 2.5 mg twice daily with low-dose aspirin to reduce the risk of major cardiovascular events in patients with chronic coronary or peripheral artery disease — the first and only oral anticoagulant indicated for this secondary-prevention use. The regulatory act settled low-dose rivaroxaban-plus-aspirin as an established therapeutic option for stable atherosclerotic disease.',
+        source: {
+          externalId: 'src:fda-xarelto-cad-pad-approval-2018',
+          name: 'Janssen/Johnson & Johnson. U.S. FDA Approves XARELTO (rivaroxaban) to Reduce the Risk of Major Cardiovascular Events in Patients with Chronic Coronary Artery Disease (CAD) or Peripheral Artery Disease (PAD). Press release, 11 October 2018.',
+          url: 'https://www.prnewswire.com/news-releases/us-fda-approves-xarelto-rivaroxaban-to-reduce-the-risk-of-major-cardiovascular-events-in-patients-with-chronic-coronary-artery-disease-cad-or-peripheral-artery-disease-pad-300729832.html',
+          publishedAt: '2018-10-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
