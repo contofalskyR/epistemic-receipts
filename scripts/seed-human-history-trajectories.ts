@@ -64782,6 +64782,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Constitution of 3 May 1791 — Poland-Lithuania ───────────────────────────
+  {
+    externalId: 'trajectory:constitution-3-may-1791',
+    text: 'On 3 May 1791 the Great Sejm of the Polish–Lithuanian Commonwealth adopted Europe\'s first codified national constitution; it was annulled by the Russian-imposed Grodno Sejm on 23 November 1793.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1791-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1791-05-03',
+        datePrecision: 'DAY',
+        reason: 'On 3 May 1791 the Great Sejm (the Four-Year Sejm, sitting 1788–1792) convenes in Warsaw with about 182 members; the Governance Act is read and overwhelmingly adopted before crowds outside the Royal Castle, with King Stanisław August Poniatowski swearing to uphold it. The act establishes separation of powers, hereditary constitutional monarchy, and political rights for townspeople — the first codified national constitution in Europe and the second in the world. The adoption is recorded as a public legislative act.',
+        source: {
+          externalId: 'src:constitution-3-may-1791-adoption',
+          name: 'Constitution of 3 May 1791, adopted by the Great Sejm, Warsaw.',
+          url: 'https://en.wikipedia.org/wiki/Constitution_of_3_May_1791',
+          publishedAt: '1791-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1793-11-23',
+        datePrecision: 'DAY',
+        reason: 'After the Targowica Confederation\'s appeal to Catherine II and the Polish–Russian War of 1792, the Russian-controlled Grodno Sejm concludes its deliberations under military duress on 23 November 1793, annulling the Constitution of 3 May and acceding to the Second Partition. The constitution, in force barely eighteen months, is legally revoked.',
+        source: {
+          externalId: 'src:constitution-3-may-1791-annulment',
+          name: 'Annulment of the Constitution of 3 May 1791 by the Grodno Sejm, 23 November 1793.',
+          url: 'https://en.wikipedia.org/wiki/Constitution_of_3_May_1791',
+          publishedAt: '1793-11-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-04-02',
+        datePrecision: 'DAY',
+        reason: 'Although abolished in 1793, the fact of the 3 May 1791 adoption is uncontested and the document is treated as a landmark of constitutional history; its legacy is explicitly invoked in the preamble of the Constitution of the Republic of Poland adopted 2 April 1997, and 3 May is a national holiday in Poland and Lithuania. Historians settle both the adoption and its short-lived enforcement as established record.',
+        source: {
+          externalId: 'src:constitution-3-may-legacy',
+          name: 'Constitution of 3 May 1791 — legacy and commemoration (Constitution Day).',
+          url: 'https://en.wikipedia.org/wiki/Constitution_of_3_May_1791',
+          publishedAt: '1997-04-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Borodino — Napoleon's invasion of Russia ──────────────────────
+  {
+    externalId: 'trajectory:battle-of-borodino-1812',
+    text: 'On 7 September 1812 (26 August Old Style) Napoleon\'s Grande Armée fought Mikhail Kutuzov\'s Russian army at Borodino west of Moscow — the bloodiest single day of the Napoleonic Wars — after which the Russians withdrew and Napoleon entered an abandoned, soon-burned Moscow.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1812-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1812-09-07',
+        datePrecision: 'DAY',
+        reason: 'Napoleon\'s Grande Armée assaults the fortified Russian positions — the Raevsky redoubt and the Bagration flèches — near the village of Borodino, roughly 110 km west of Moscow. After a day of frontal attacks producing some 68,000–73,000 combined casualties, the French take the key works and the Russians retreat the following day. The engagement is recorded immediately in army bulletins and dispatches on both sides.',
+        source: {
+          externalId: 'src:battle-of-borodino-1812',
+          name: 'Battle of Borodino, 7 September [O.S. 26 August] 1812.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Borodino',
+          publishedAt: '1812-09-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date, combatants, and devastating casualty toll of Borodino are corroborated by French and Russian primary records and uniformly treated by historians as established fact. While the tactical "victor" is debated (a French tactical gain against a strategically intact Russian army), the event itself — and its place in the catastrophic ruin of the Grande Armée during the Russian campaign — is settled.',
+        source: {
+          externalId: 'src:borodino-historiography',
+          name: 'Battle of Borodino — bicentenary historiography and casualty assessment.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Borodino',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Navarino — Greek War of Independence ──────────────────────────
+  {
+    externalId: 'trajectory:battle-of-navarino-1827',
+    text: 'On 20 October 1827 a combined British, French, and Russian fleet destroyed the Ottoman–Egyptian fleet at Navarino Bay in the Greek War of Independence — the last major naval battle fought entirely under sail.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1827-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1827-10-20',
+        datePrecision: 'DAY',
+        reason: 'An allied squadron under Admiral Edward Codrington enters Navarino Bay to enforce the Treaty of London\'s armistice; fighting breaks out and the Ottoman–Egyptian fleet of Ibrahim Pasha is almost entirely destroyed — roughly 55 ships lost and some 4,000 killed or wounded, against no allied vessels sunk. The action is recorded at once in the admirals\' official dispatches.',
+        source: {
+          externalId: 'src:battle-of-navarino-1827',
+          name: 'Battle of Navarino, 20 October [O.S. 8 October] 1827.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Navarino',
+          publishedAt: '1827-10-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1832-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By crippling Ottoman naval power, Navarino made an independent Greek state achievable; combined with the Russo-Turkish War of 1828–29 and a French expeditionary force, it led to the recognition of Greek independence formalized in 1832. Historians treat the battle, its date, and its decisiveness as settled, and note it as the last major fleet action fought wholly with sailing ships.',
+        source: {
+          externalId: 'src:navarino-greek-independence',
+          name: 'Battle of Navarino — consequences for Greek independence.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Navarino',
+          publishedAt: '1832-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Adrianople — end of the Russo-Turkish War of 1828–29 ──────────
+  {
+    externalId: 'trajectory:treaty-of-adrianople-1829',
+    text: 'The Treaty of Adrianople (Edirne), signed on 14 September 1829, ended the Russo-Turkish War of 1828–1829, granting Russia the Danube delta and eastern Black Sea coast, confirming autonomy for the Danubian Principalities and Serbia, and committing the Ottomans to Greek autonomy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1829-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1829-09-14',
+        datePrecision: 'DAY',
+        reason: 'Count Alexey Orlov for Russia and Abdülkadir Bey for the Ottoman Empire sign the peace at Adrianople on 14 September 1829, after Russian forces had crossed the Balkans toward Constantinople. The signed instrument cedes the mouths of the Danube and Black Sea coast to Russia, opens the Dardanelles to commercial shipping, reconfirms autonomy for Moldavia, Wallachia, and Serbia, and obliges the Porte to accept the terms of the 1827 Treaty of London on Greece.',
+        source: {
+          externalId: 'src:treaty-of-adrianople-1829',
+          name: 'Treaty of Adrianople (14 September 1829), Russian Empire and Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Adrianople_(1829)',
+          publishedAt: '1829-09-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1830-02-03',
+        datePrecision: 'DAY',
+        reason: 'The treaty\'s provisions take effect: the autonomy of the Danubian Principalities is consolidated, and the Greek question moves swiftly toward full statehood with the London Protocol of 3 February 1830 recognizing an independent Greece. Diplomatic historians treat Adrianople as a settled milestone in the Ottoman Empire\'s decline and the emergence of the Balkan nation-states; the text is preserved in standard treaty collections.',
+        source: {
+          externalId: 'src:adrianople-historiography',
+          name: 'Treaty of Adrianople — consequences for the Eastern Question and Balkan autonomy.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Adrianople_(1829)',
+          publishedAt: '1830-02-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Assassination of Tsar Alexander II ──────────────────────────────────────
   {
     externalId: 'trajectory:alexander-ii-assassination-1881',
