@@ -17288,6 +17288,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Controlled Substances Act drug scheduling — Nixon 1970 ─────────────────
+  {
+    externalId: 'trajectory:controlled-substances-act-drug-scheduling-1970',
+    text: 'The U.S. Comprehensive Drug Abuse Prevention and Control Act of 1970 (Public Law 91-513), signed by President Nixon on October 27, 1970, created the Controlled Substances Act and its five-schedule system, classifying heroin in Schedule I as having high abuse potential and no accepted medical use while placing morphine, opium, and oxycodone in Schedule II as abuse-prone drugs with accepted medical uses.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-10-27',
+        datePrecision: 'DAY',
+        reason: 'President Nixon signed the Comprehensive Drug Abuse Prevention and Control Act of 1970 (Pub. L. 91-513, 84 Stat. 1236), whose Title II — the Controlled Substances Act — replaced the prior patchwork of federal narcotics laws with a single statutory scheme ranking drugs across five schedules by abuse potential and accepted medical use. Heroin was placed in Schedule I (no accepted medical use), morphine and oxycodone in Schedule II. The Act institutionally fixed the federal classification of opioids\' abuse liability and medical status into binding law.',
+        source: {
+          externalId: 'src:csa-public-law-91-513-1970',
+          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970, Pub. L. No. 91-513, 84 Stat. 1236 (approved Oct. 27, 1970).',
+          url: 'https://www.govinfo.gov/content/pkg/STATUTE-84/pdf/STATUTE-84-Pg1236.pdf',
+          publishedAt: '1970-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-01-01',
+        datePrecision: 'YEAR',
+        reason: 'More than five decades after enactment, the schedule placements remain codified at 21 U.S.C. § 812, with heroin still in Schedule I and morphine, opium, and oxycodone in Schedule II despite repeated rescheduling petitions. The durability of the original classification confirms the 1970 scheduling judgment as settled federal law rather than a transitional measure.',
+        source: {
+          externalId: 'src:21-usc-812-schedules',
+          name: '21 U.S.C. § 812 — Schedules of controlled substances (codified Controlled Substances Act schedules).',
+          url: 'https://www.law.cornell.edu/uscode/text/21/812',
+          publishedAt: '2024-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO drug dependence terminology — 1964 ─────────────────────────────────
+  {
+    externalId: 'trajectory:who-drug-dependence-terminology-1964',
+    text: 'The WHO Expert Committee on Addiction-Producing Drugs, in its thirteenth report (Technical Report Series 273, 1964), recommended abandoning the terms \'drug addiction\' and \'drug habituation\' in favor of the single unifying concept \'drug dependence,\' a state arising from repeated drug administration that carried no fixed moral connotation of severity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1964-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After its thirteenth session (Geneva, 25–30 November 1963), the WHO Expert Committee on Addiction-Producing Drugs published Technical Report Series 273 in 1964, concluding that the long-attempted distinction between \'addiction\' and \'habituation\' had failed in practice and recommending their replacement by the general term \'drug dependence.\' This recorded a deliberate reclassification of how the international health community conceptualized and named compulsive drug use, including opioid use.',
+        source: {
+          externalId: 'src:who-trs-273-13th-report-1964',
+          name: 'WHO Expert Committee on Addiction-Producing Drugs. Thirteenth Report. World Health Organ Tech Rep Ser. 1964;273:1-20.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14127846/',
+          publishedAt: '1964-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1969-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The renamed WHO Expert Committee on Drug Dependence, meeting 1–7 October 1968, formalized the new framework in its sixteenth report (Technical Report Series 407, 1969), defining specific dependence types including \'drug dependence of morphine type.\' The operationalized, type-specific definitions cemented \'drug dependence\' as the established international nomenclature, displacing \'addiction\' in official usage and feeding directly into the WHO\'s drug-control classifications.',
+        source: {
+          externalId: 'src:who-trs-407-16th-report-1969',
+          name: 'WHO Expert Committee on Drug Dependence. Sixteenth Report. World Health Organ Tech Rep Ser. 1969;407 (defines drug dependence of morphine type).',
+          url: 'https://ecddrepository.org/sites/default/files/2023-04/who_trs_407_text_version.pdf',
+          publishedAt: '1969-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Robins Vietnam veterans heroin remission — 1975 ────────────────────────
+  {
+    externalId: 'trajectory:robins-vietnam-veterans-heroin-remission-1975',
+    text: 'Lee Robins, John Helzer, and Darlene Davis reported in the Archives of General Psychiatry in August 1975, from an interview study of 898 U.S. Army Vietnam returnees, that the great majority of soldiers who had been addicted to narcotics in Vietnam did not relapse after returning home — overturning the prevailing doctrine that opioid addiction is an almost inescapable, lifelong relapsing condition.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Robins and colleagues published their follow-up of Army enlistees who left Vietnam in September 1971, finding that although about half had used narcotics and roughly 20% reported addiction symptoms in-country, only a small fraction remained addicted after return to the United States. The finding entered the literature as direct evidence that opioid addiction could remit spontaneously when environmental conditions changed, challenging the assumption that physiological dependence dictated chronic relapse.',
+        source: {
+          externalId: 'src:robins-vietnam-narcotic-use-agp-1975',
+          name: 'Robins LN, Helzer JE, Davis DH. Narcotic use in southeast Asia and afterward. An interview study of 898 Vietnam returnees. Arch Gen Psychiatry. 1975 Aug;32(8):955-61.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1156114/',
+          publishedAt: '1975-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A 2017 Addiction \'classics\' review by Hall and colleagues re-examined the Robins studies and confirmed that their core finding — high rates of remission and low rates of relapse among Vietnam veterans addicted to heroin — had withstood scrutiny and reshaped addiction theory toward contextual and environmental models of recovery. The retrospective endorsement settled the result as a durable, repeatedly validated contribution rather than a wartime anomaly.',
+        source: {
+          externalId: 'src:hall-robins-vietnam-review-addiction-2017',
+          name: 'Hall W, Weier M. Lee Robins\' studies of heroin use among US Vietnam veterans. Addiction. 2017;112(1):176-180.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1111/add.13584',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
