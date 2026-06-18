@@ -486,6 +486,222 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // STELLAR ASTROPHYSICS (1912–1934)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 11. Leavitt Cepheid period–luminosity relation — 1912 ───────────────────
+  {
+    externalId: 'trajectory:leavitt-cepheid-period-luminosity-1912',
+    text: 'Henrietta Swan Leavitt established in 1912 that the pulsation periods of Cepheid variable stars in the Small Magellanic Cloud are tightly correlated with their apparent brightness — the period–luminosity relation — providing the first standard candle for measuring cosmic distances.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1912-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1912-03-03',
+        datePrecision: 'DAY',
+        reason: 'In Harvard College Observatory Circular 173 (issued 3 March 1912 over director Edward Pickering\'s name but explicitly stating the work was "prepared by Miss Leavitt"), Leavitt reported periods for 25 variable stars in the Small Magellanic Cloud and noted a clear linear relation between the logarithm of the period and apparent magnitude. Because the stars lie at essentially the same distance, the relation reflects true (intrinsic) luminosity, supplying a method to infer distance from an easily measured period.',
+        source: {
+          externalId: 'src:leavitt-pickering-smc-variables-1912',
+          name: 'Leavitt HS, Pickering EC. Periods of 25 Variable Stars in the Small Magellanic Cloud. Harvard College Observatory Circular. 1912;173:1–3.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1912HarCi.173....1L/abstract',
+          publishedAt: '1912-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ejnar Hertzsprung calibrated the zero-point of Leavitt\'s period–luminosity relation in 1913 (Astronomische Nachrichten 196:201) using the proper motions of nearby galactic Cepheids, converting the relation from a relative correlation into an absolute distance scale. This calibration turned Leavitt\'s law into the working tool that Harlow Shapley used to size the Milky Way (1918) and Edwin Hubble used to establish the extragalactic distance scale, settling the period–luminosity relation as the foundation of the cosmic distance ladder.',
+        source: {
+          externalId: 'src:hertzsprung-cepheid-calibration-1913',
+          name: 'Hertzsprung E. Über die räumliche Verteilung der Veränderlichen vom δ Cephei-Typus. Astronomische Nachrichten. 1913;196:201–208.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1913AN....196..201H/abstract',
+          publishedAt: '1913-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 12. Hertzsprung–Russell diagram — 1914 ──────────────────────────────────
+  {
+    externalId: 'trajectory:hertzsprung-russell-diagram-1914',
+    text: 'Henry Norris Russell established in 1913–1914 that stars segregate into luminous "giant" and fainter "dwarf" sequences when absolute magnitude is plotted against spectral class, producing the diagram (later called the Hertzsprung–Russell diagram) that became the central organizing framework of stellar astrophysics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-12-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Russell first presented his diagram of absolute magnitude versus spectral type at the American Astronomical Society meeting in December 1913 and published it in 1914 as "Relations Between the Spectra and Other Characteristics of the Stars" (Popular Astronomy 22, and in Nature 93). Building on Ejnar Hertzsprung\'s independent 1911 photometric work, Russell showed that most stars fall on a continuous "dwarf" main sequence while a separate population of "giant" stars occupies the high-luminosity region, revealing systematic structure in the stellar population.',
+        source: {
+          externalId: 'src:russell-spectra-characteristics-1914',
+          name: 'Russell HN. Relations Between the Spectra and Other Characteristics of the Stars. Popular Astronomy. 1914;22:275–294 (Part I), 331–351 (Part II).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1914PA.....22..275R/abstract',
+          publishedAt: '1914-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arthur Eddington\'s "The Internal Constitution of the Stars" (1926) supplied the physical theory of stellar structure — including the mass–luminosity relation — that explained why stars occupy the main sequence and how luminosity, mass, and temperature are linked, grounding the empirical diagram in physics. The Hertzsprung–Russell diagram became, and remains, the universally adopted framework for stellar classification and the study of stellar evolution, settling its status as foundational.',
+        source: {
+          externalId: 'src:eddington-internal-constitution-stars-1926',
+          name: 'Eddington AS. The Internal Constitution of the Stars. Cambridge: Cambridge University Press. 1926.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1926ics..book.....E/abstract',
+          publishedAt: '1926-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 13. Sirius B identified as white dwarf — 1915 ───────────────────────────
+  {
+    externalId: 'trajectory:sirius-b-white-dwarf-1915',
+    text: 'Walter S. Adams established in 1915 that the faint companion of Sirius (Sirius B) is an extraordinarily dense compact star — roughly Earth-sized yet about one solar mass, implying a density tens of thousands of times that of water — the first identification of what would be recognized as a white dwarf.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Friedrich Bessel had predicted an unseen companion to Sirius from its proper-motion wobble in 1844, and Alvan Graham Clark first sighted Sirius B telescopically on 31 January 1862. Adams, observing its spectrum at Mount Wilson, reported in "The Spectrum of the Companion of Sirius" (PASP 1915) that the companion was hot and white (early A-type) yet very faint, forcing the conclusion that it was about the size of the Earth with the mass of the Sun. The implied density was regarded as physically absurd at the time, so the result entered the literature as an anomaly.',
+        source: {
+          externalId: 'src:adams-sirius-companion-1915',
+          name: 'Adams WS. The Spectrum of the Companion of Sirius. Publications of the Astronomical Society of the Pacific. 1915;27(161):236–237.',
+          url: 'https://doi.org/10.1086/122440',
+          publishedAt: '1915-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Ralph H. Fowler\'s paper "On Dense Matter" (MNRAS, December 1926) applied the new Fermi–Dirac quantum statistics to show that white dwarfs are supported against gravity by electron degeneracy pressure, providing a physical mechanism that made the previously "impossible" density not only plausible but required. This converted Sirius B from an embarrassing anomaly into the prototype of a recognized class of degenerate stars, settling white dwarfs as a real and understood stellar end-state.',
+        source: {
+          externalId: 'src:fowler-dense-matter-1926',
+          name: 'Fowler RH. On Dense Matter. Monthly Notices of the Royal Astronomical Society. 1926;87(2):114–122.',
+          url: 'https://doi.org/10.1093/mnras/87.2.114',
+          publishedAt: '1926-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 14. Payne — stars are mostly hydrogen — 1925 ────────────────────────────
+  {
+    externalId: 'trajectory:payne-stellar-hydrogen-1925',
+    text: 'Cecilia Payne demonstrated in her 1925 Harvard doctoral thesis that stars are composed overwhelmingly of hydrogen and helium, by applying Saha\'s ionization theory to stellar spectra and showing that the differing strengths of absorption lines reflect temperature and ionization rather than differing elemental abundances.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Payne\'s thesis "Stellar Atmospheres," published as Harvard Observatory Monograph No. 1, used Meghnad Saha\'s ionization equation to relate spectral classes to temperature and derived that hydrogen and helium are millions of times more abundant than the metals — overturning the prevailing belief that stars had roughly the Earth\'s composition. Under pressure from Henry Norris Russell, who told her the hydrogen result was "clearly impossible," she added a disclaimer calling the enormous hydrogen and helium abundances "almost certainly not real," so the finding entered the literature in a deliberately hedged form.',
+        source: {
+          externalId: 'src:payne-stellar-atmospheres-1925',
+          name: 'Payne CH. Stellar Atmospheres; A Contribution to the Observational Study of High Temperature in the Reversing Layers of Stars. Harvard Observatory Monograph No. 1. Cambridge, MA. 1925.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1925PhDT.........6P/abstract',
+          publishedAt: '1925-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Henry Norris Russell, working independently from Mount Wilson spectra, published "On the Composition of the Sun\'s Atmosphere" in The Astrophysical Journal (vol. 70, July 1929), deriving abundances for 56 elements and concluding that hydrogen dominates (~92% by number). He explicitly credited Payne\'s prior determination as the most important previous work, and his confirmation removed the doubt he had earlier imposed, settling the hydrogen-dominated composition of stars as established astrophysics.',
+        source: {
+          externalId: 'src:russell-sun-composition-1929',
+          name: 'Russell HN. On the Composition of the Sun\'s Atmosphere. The Astrophysical Journal. 1929;70:11–82.',
+          url: 'https://doi.org/10.1086/143197',
+          publishedAt: '1929-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 15. Baade & Zwicky predict neutron stars from supernovae — 1934 ─────────
+  {
+    externalId: 'trajectory:baade-zwicky-neutron-star-supernova-1934',
+    text: 'Walter Baade and Fritz Zwicky proposed in 1934 that "super-novae" are a distinct, far more energetic class of stellar explosion than ordinary novae, marking the transition of an ordinary star into a neutron star and serving as a source of cosmic rays — the first prediction of the existence of neutron stars.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1934-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Having first presented the idea at the American Physical Society meeting at Stanford in December 1933 (abstract in Physical Review 45:138, 1934), Baade and Zwicky published "On Super-Novae" in the Proceedings of the National Academy of Sciences (vol. 20, no. 5, 1934), coining the term "super-nova," arguing these events release energies far beyond ordinary novae, and proposing that "a super-nova represents the transition of an ordinary star into a neutron star" — bodies of extremely small radius and very high density. The neutron-star proposal was highly speculative and remained largely an unconfirmed theoretical conjecture for over three decades.',
+        source: {
+          externalId: 'src:baade-zwicky-supernovae-1934',
+          name: 'Baade W, Zwicky F. On Super-Novae. Proceedings of the National Academy of Sciences. 1934;20(5):254–259.',
+          url: 'https://doi.org/10.1073/pnas.20.5.254',
+          publishedAt: '1934-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-02-24',
+        datePrecision: 'DAY',
+        reason: 'The discovery of pulsars, announced by Hewish, Bell and colleagues in Nature on 24 February 1968 and rapidly interpreted by Thomas Gold and Franco Pacini as rapidly rotating magnetized neutron stars — clinched by the Crab pulsar sitting inside a supernova remnant — provided the first empirical confirmation that neutron stars exist and are produced in supernovae, vindicating Baade and Zwicky\'s 1934 prediction 34 years after it was made.',
+        source: {
+          externalId: 'src:hewish-bell-pulsar-nature-1968',
+          name: 'Hewish A, Bell SJ, Pilkington JDH, Scott PF, Collins RA. Observation of a Rapidly Pulsating Radio Source. Nature. 1968;217(5130):709–713.',
+          url: 'https://doi.org/10.1038/217709a0',
+          publishedAt: '1968-02-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
@@ -499,7 +715,6 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
       ingestedBy: 'seed:astronomy-trajectories',
       deleted: false,
@@ -509,7 +724,6 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
     },
   })
