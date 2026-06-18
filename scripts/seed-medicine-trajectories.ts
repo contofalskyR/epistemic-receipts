@@ -7172,9 +7172,9 @@ const TRAJECTORIES: Trajectory[] = [
   // ── ACTG 076 — zidovudine perinatal HIV transmission 1994 ───────────────────
   {
     externalId: 'trajectory:actg-076-zidovudine-perinatal-hiv-transmission-1994',
-    text: 'On 3 November 1994, the Pediatric AIDS Clinical Trials Group reported (Protocol 076) that a zidovudine regimen given to HIV-infected pregnant women and their newborns reduced mother-to-child HIV-1 transmission by 67.5% (8.3% vs 25.5%).',
+    text: 'In February 1994, the ACTG 076 data safety monitoring board halted Protocol 076 early after interim analysis showed zidovudine given to HIV-infected pregnant women and their newborns reduced mother-to-child HIV-1 transmission by 67.5% (8.3% vs 25.5%), the first demonstration that an antiretroviral intervention could interrupt vertical HIV transmission.',
     claimType: 'EMPIRICAL',
-    claimEmergedAt: '1994-11-03',
+    claimEmergedAt: '1994-04-29',
     claimEmergedPrecision: 'DAY',
     currentAxis: 'SETTLED',
     transitions: [
@@ -7182,14 +7182,14 @@ const TRAJECTORIES: Trajectory[] = [
         fromAxis: null,
         toAxis: 'RECORDED',
         community: 'EXPERT_LITERATURE',
-        occurredAt: '1994-11-03',
+        occurredAt: '1994-04-29',
         datePrecision: 'DAY',
-        reason: 'Connor and colleagues published the ACTG 076 randomized placebo-controlled trial in NEJM, the first demonstration that an antiretroviral intervention could interrupt vertical HIV transmission. The trial was stopped early by its data safety monitoring board because the benefit was so large, establishing the empirical claim that perinatal HIV transmission was preventable.',
+        reason: 'The CDC published an MMWR interim report documenting that the ACTG 076 DSMB had halted the trial in February 1994 because interim results showed a 67.5% reduction in perinatal HIV transmission. This was the first formal public record of the finding, establishing the empirical claim before the full NEJM paper (Connor et al., November 1994) confirmed the final results.',
         source: {
-          externalId: 'src:connor-actg076-nejm-1994',
-          name: 'Connor EM, Sperling RS, Gelber R, et al. Reduction of maternal-infant transmission of human immunodeficiency virus type 1 with zidovudine treatment. Pediatric AIDS Clinical Trials Group Protocol 076 Study Group. N Engl J Med. 1994;331(18):1173-1180.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/7935654/',
-          publishedAt: '1994-11-03',
+          externalId: 'src:actg076-interim-mmwr-1994',
+          name: 'CDC. Zidovudine for the Prevention of HIV Transmission from Mother to Infant. MMWR Morb Mortal Wkly Rep. 1994;43(16):285-287.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00025249.htm',
+          publishedAt: '1994-04-29',
           methodologyType: 'primary',
         },
       },
