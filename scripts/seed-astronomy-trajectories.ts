@@ -702,6 +702,180 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COSMOLOGY (1927–1998)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 16. Lemaître expanding universe & Hubble constant — 1927 ────────────────
+  {
+    externalId: 'trajectory:lemaitre-expanding-universe-1927',
+    text: 'Georges Lemaître derived from general relativity in 1927 that the universe is expanding and that distant galaxies recede at velocities proportional to their distance, and he made the first empirical estimate of the proportionality constant (now the Hubble constant) from extragalactic nebula data.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1927-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lemaître published \'Un univers homogène de masse constante et de rayon croissant rendant compte de la vitesse radiale des nébuleuses extra-galactiques\' in the Annales de la Société Scientifique de Bruxelles (1927), deriving an expanding-universe solution of Einstein\'s equations and the linear velocity–distance relation, with a first estimate of the expansion rate. The journal had limited circulation, so the result was largely unnoticed at the time, entering the record without uptake.',
+        source: {
+          externalId: 'src:lemaitre-univers-homogene-1927',
+          name: 'Lemaître G. Un univers homogène de masse constante et de rayon croissant rendant compte de la vitesse radiale des nébuleuses extra-galactiques. Annales de la Société Scientifique de Bruxelles. 1927;A47:49–59.',
+          url: 'https://link.springer.com/article/10.1007/s10714-013-1548-3',
+          publishedAt: '1927-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-10-26',
+        datePrecision: 'DAY',
+        reason: 'An IAU electronic vote of all individual members, concluding 26 October 2018 (announced 29 October 2018), adopted Resolution B4 recommending that the expansion law be renamed the \'Hubble–Lemaître law\' (78% in favour). The resolution formally recognized Lemaître\'s 1927 priority in deriving the velocity–distance relation, institutionally settling his contribution to the foundation of expanding-universe cosmology.',
+        source: {
+          externalId: 'src:iau-hubble-lemaitre-resolution-2018',
+          name: 'International Astronomical Union. IAU members vote to recommend renaming the Hubble law as the Hubble–Lemaître law (Resolution B4). Press release iau1812. 2018-10-29.',
+          url: 'https://iauarchive.eso.org/news/pressreleases/detail/iau1812/',
+          publishedAt: '2018-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 17. Rubin, Ford & Thonnard — galaxy rotation curves & dark matter — 1980 ─
+  {
+    externalId: 'trajectory:rubin-galaxy-rotation-dark-matter-1980',
+    text: 'Vera Rubin, Kent Ford, and Norbert Thonnard reported in 1980 that the rotation curves of 21 Sc spiral galaxies stay flat or rising out to their largest measured radii, implying large amounts of unseen mass extending well beyond the visible disks.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Rubin, Ford, and Thonnard published \'Rotational Properties of 21 Sc Galaxies\' in The Astrophysical Journal (vol. 238, pp. 471–487, June 1980), showing rotation curves that remain flat to the outermost measured points instead of falling as Keplerian dynamics predict for the visible mass. They concluded that Sc spirals of all luminosities harbor significant mass beyond the optical image — the strongest systematic observational case for dark matter in galaxies up to that point.',
+        source: {
+          externalId: 'src:rubin-ford-thonnard-rotation-1980',
+          name: 'Rubin VC, Ford WK Jr, Thonnard N. Rotational properties of 21 Sc galaxies with a large range of luminosities and radii, from NGC 4605 (R=4 kpc) to UGC 2885 (R=122 kpc). The Astrophysical Journal. 1980;238:471–487.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1980ApJ...238..471R/abstract',
+          publishedAt: '1980-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-09-01',
+        datePrecision: 'MONTH',
+        reason: 'By the early 1990s flat rotation curves had been confirmed across hundreds of spirals (extended by neutral-hydrogen 21 cm radio data well beyond the optical disk), and independent COBE detection of CMB anisotropy (Smoot et al., ApJ 396:L1, 1992) tied structure formation to a dark-matter-dominated universe. Galactic dark matter became a settled component of the standard cosmological picture, with Rubin\'s rotation-curve work cited as its defining galaxy-scale evidence.',
+        source: {
+          externalId: 'src:smoot-cobe-dmr-1992',
+          name: 'Smoot GF, Bennett CL, Kogut A, et al. Structure in the COBE Differential Microwave Radiometer first-year maps. The Astrophysical Journal. 1992;396:L1–L5.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1992ApJ...396L...1S/abstract',
+          publishedAt: '1992-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 18. COBE — CMB blackbody & anisotropy — 1992 ────────────────────────────
+  {
+    externalId: 'trajectory:cobe-cmb-blackbody-anisotropy-1992',
+    text: 'NASA\'s COBE satellite measured the cosmic microwave background to be an almost perfect blackbody (Mather et al., 1990) and detected its predicted intrinsic temperature anisotropies at the ~30 microkelvin level (Smoot et al., announced 23 April 1992), confirming the Hot Big Bang and the seeds of cosmic structure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-04-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-04-23',
+        datePrecision: 'DAY',
+        reason: 'The COBE DMR team, led by George Smoot, announced on 23 April 1992 (at the American Physical Society meeting) the first detection of intrinsic CMB temperature anisotropies — scale-invariant fluctuations of ~30 microkelvin matching the Harrison–Zel\'dovich spectrum of inflationary models. Together with the COBE FIRAS blackbody spectrum (Mather et al., ApJ 354:L37, 1990), it provided the primordial density seeds for structure formation, published as Smoot et al., ApJ 396:L1 (1992).',
+        source: {
+          externalId: 'src:smoot-cobe-dmr-anisotropy-1992',
+          name: 'Smoot GF, Bennett CL, Kogut A, et al. Structure in the COBE Differential Microwave Radiometer first-year maps. The Astrophysical Journal. 1992;396:L1–L5.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1992ApJ...396L...1S/abstract',
+          publishedAt: '1992-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-03',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences announced on 3 October 2006 that the Nobel Prize in Physics was awarded to John C. Mather and George F. Smoot \'for their discovery of the blackbody form and anisotropy of the cosmic microwave background radiation.\' The citation institutionally settled COBE\'s results as definitive confirmation of the Hot Big Bang and the origin of large-scale structure.',
+        source: {
+          externalId: 'src:nobel-cobe-2006',
+          name: 'Royal Swedish Academy of Sciences. The Nobel Prize in Physics 2006 — Press release (Mather, Smoot). 2006-10-03.',
+          url: 'https://www.nobelprize.org/prizes/physics/2006/press-release/',
+          publishedAt: '2006-10-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 19. Riess et al. — accelerating expansion & dark energy — 1998 ──────────
+  {
+    externalId: 'trajectory:accelerating-expansion-dark-energy-1998',
+    text: 'Adam Riess and the High-z Supernova Search Team reported in 1998 that distant Type Ia supernovae are ~10–15% fainter (farther) than expected, providing direct evidence that the expansion of the universe is accelerating and implying a positive cosmological constant (dark energy).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-03-13',
+        datePrecision: 'DAY',
+        reason: 'Riess et al. submitted \'Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant\' to The Astronomical Journal on 13 March 1998 (vol. 116, p. 1009). Using 16 high-redshift Type Ia supernovae, the High-z team found them systematically fainter than a decelerating universe predicts, favoring an eternally expanding universe with a positive cosmological constant. Corroborated months later by the Supernova Cosmology Project (Perlmutter et al., ApJ 517:565, 1999).',
+        source: {
+          externalId: 'src:riess-accelerating-universe-1998',
+          name: 'Riess AG, Filippenko AV, Challis P, et al. Observational evidence from supernovae for an accelerating universe and a cosmological constant. The Astronomical Journal. 1998;116(3):1009–1038.',
+          url: 'https://iopscience.iop.org/article/10.1086/300499',
+          publishedAt: '1998-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-10-04',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences announced on 4 October 2011 that the Nobel Prize in Physics was awarded to Saul Perlmutter, Brian P. Schmidt, and Adam G. Riess \'for the discovery of the accelerating expansion of the Universe through observations of distant supernovae.\' The award institutionally settled cosmic acceleration and dark energy as established components of the standard cosmological model.',
+        source: {
+          externalId: 'src:nobel-accelerating-universe-2011',
+          name: 'Royal Swedish Academy of Sciences. The Nobel Prize in Physics 2011 — Press release (Perlmutter, Schmidt, Riess). 2011-10-04.',
+          url: 'https://www.nobelprize.org/prizes/physics/2011/press-release/',
+          publishedAt: '2011-10-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
