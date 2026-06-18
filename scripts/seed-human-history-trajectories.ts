@@ -1765,6 +1765,174 @@ const TRAJECTORIES: Trajectory[] = [
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Caracol's "star war" defeat of Tikal (Maya, Mesoamerica, 562 CE) ─────────
+  {
+    externalId: 'trajectory:caracol-star-war-tikal-562',
+    text: 'On 9.6.8.4.2 in the Long Count (29 April 562 CE) the Maya city of Caracol — allied with the Kaan (Snake) kingdom — defeated Tikal and its king Wak Chan K\'awiil in the first recorded Maya "star war," an event carved onto Caracol\'s Altar 21 and followed by a roughly 120-year hiatus in Tikal\'s monument record.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0562-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0562-04-29',
+        datePrecision: 'DAY',
+        reason: 'Caracol\'s scribes record the war against Tikal on the day 9.6.8.4.2 using the "star war" verb — the war glyph paired with the Venus/star sign marking a Venus-timed attack — on Altar 21, a carved ballcourt marker. The text fixes the defeat of Tikal\'s king Wak Chan K\'awiil to a single day in the Long Count, a contemporaneous primary record of the first such "star war" known.',
+        source: {
+          externalId: 'src:caracol-altar-21-star-war-562',
+          name: 'Caracol Altar 21, recording the "star war" defeat of Tikal on 9.6.8.4.2 (29 April 562 CE), Caracol, Belize.',
+          url: 'https://en.wikipedia.org/wiki/Caracol',
+          publishedAt: '0562-04-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Altar 21 was excavated from Caracol\'s ballcourt and its hieroglyphic text read by Arlen and Diane Chase and collaborating epigraphers in the 1980s; the reading of the "star war" verb and the date 9.6.8.4.2 established the 562 defeat of Tikal as a real, dated historical episode — now settled in Maya epigraphy and credited with Tikal\'s subsequent monument hiatus.',
+        source: {
+          externalId: 'src:chase-caracol-altar-21-reading',
+          name: 'Arlen F. Chase & Diane Z. Chase — excavation and epigraphic reading of Caracol Altar 21 and the 562 "star war" over Tikal.',
+          url: 'https://en.wikipedia.org/wiki/Caracol',
+          publishedAt: '1987-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Accession of Jasaw Chan K'awiil I at Tikal (Maya, Mesoamerica, 682 CE) ───
+  {
+    externalId: 'trajectory:jasaw-chan-kawiil-accession-tikal-682',
+    text: 'Jasaw Chan K\'awiil I acceded to the throne of Tikal on 9.12.9.17.16 in the Long Count (3 May 682 CE), beginning the reign that ended Tikal\'s long subordination to Calakmul — an accession recorded contemporaneously in the hieroglyphic inscriptions of his own court.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0682-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0682-05-03',
+        datePrecision: 'DAY',
+        reason: 'Tikal\'s scribes enter the accession of Jasaw Chan K\'awiil I into the dynastic record on the day 9.12.9.17.16, 5 Kib 14 Sotz\'. The date is preserved in the inscriptions of his reign — including the carved wooden lintels of Temple I, the funerary pyramid raised over his own tomb in the Great Plaza — fixing the accession to a single day in the Long Count.',
+        source: {
+          externalId: 'src:tikal-jasaw-chan-kawiil-accession-682',
+          name: 'Tikal inscriptions of Jasaw Chan K\'awiil I (Temple I lintels), recording accession 9.12.9.17.16 (3 May 682 CE).',
+          url: 'https://en.wikipedia.org/wiki/Jasaw_Chan_K%CA%BCawiil_I',
+          publishedAt: '0682-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'With the Goodman–Martínez–Thompson correlation fixing the Long Count to the Julian/Gregorian calendar and the decipherment of Maya dynastic history, the accession date was read as a historical fact. Simon Martin and Nikolai Grube\'s synthesis of the Tikal dynasty placed Jasaw Chan K\'awiil I\'s 682 accession and his subsequent 695 victory over Calakmul in a settled chronology of the Classic Maya lowlands.',
+        source: {
+          externalId: 'src:martin-grube-chronicle-maya-kings',
+          name: 'Martin S. & Grube N. "Chronicle of the Maya Kings and Queens" (Thames & Hudson, 2000) — Tikal dynastic sequence including Jasaw Chan K\'awiil I.',
+          url: 'https://en.wikipedia.org/wiki/Jasaw_Chan_K%CA%BCawiil_I',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of K'inich Janaab' Pakal at Palenque (Maya, Mesoamerica, 683 CE) ───
+  {
+    externalId: 'trajectory:pakal-death-palenque-683',
+    text: 'K\'inich Janaab\' Pakal died at Palenque on 9.12.11.5.18 in the Long Count (29 August 683 CE), aged about eighty after a reign of sixty-eight years — his death date carved into the texts of his funerary Temple of the Inscriptions and his sarcophagus lid.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0683-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0683-08-29',
+        datePrecision: 'DAY',
+        reason: 'Palenque\'s scribes record Pakal\'s death on the day 9.12.11.5.18, 6 Etz\'nab 11 Yax, in the inscriptions of the Temple of the Inscriptions — the pyramid built over his tomb — and on the carved limestone lid of his sarcophagus. The date is fixed to a single day in the Long Count, a contemporaneous dynastic record of the ruler\'s passing.',
+        source: {
+          externalId: 'src:palenque-pakal-death-inscriptions-683',
+          name: 'Palenque inscriptions of the Temple of the Inscriptions and Pakal\'s sarcophagus lid, recording his death 9.12.11.5.18 (29 August 683 CE).',
+          url: 'https://en.wikipedia.org/wiki/K%27inich_Janaab_Pakal',
+          publishedAt: '0683-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tatiana Proskouriakoff\'s 1960 demonstration that Maya inscriptions record real dynastic events — births, accessions, and deaths of named rulers — together with the GMT correlation, turned Pakal\'s carved death date into a readable historical fact. Alberto Ruz Lhuillier\'s 1952 discovery of his sarcophagus beneath the Temple of the Inscriptions confirmed the funerary monument; the 683 death date is settled in Maya epigraphy.',
+        source: {
+          externalId: 'src:proskouriakoff-pakal-death-reading',
+          name: 'Proskouriakoff T. "Historical Implications of a Pattern of Dates at Piedras Negras, Guatemala." American Antiquity 25(4):454–475 (1960) — basis for reading Palenque dynastic dates.',
+          url: 'https://www.jstor.org/stable/276633',
+          publishedAt: '1960-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Quirigua captures and beheads Copán's "18 Rabbit" (Maya, 738 CE) ─────────
+  {
+    externalId: 'trajectory:quirigua-captures-copan-18rabbit-738',
+    text: 'On 9.15.6.14.6 in the Long Count (3 May 738 CE) K\'ak\' Tiliw Chan Yopaat of the formerly vassal city of Quirigua captured and beheaded Waxaklajuun Ub\'aah K\'awiil ("18 Rabbit"), the ruler of Copán — an "ax event" carved onto Quirigua\'s monuments that overturned the regional order between the two cities.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0738-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0738-05-03',
+        datePrecision: 'DAY',
+        reason: 'Quirigua\'s scribes record the defeat of Copán as an "ax event" on the day 9.15.6.14.6, naming the captured and decapitated Copán king Waxaklajuun Ub\'aah K\'awiil. The event is carved into the monuments K\'ak\' Tiliw Chan Yopaat raised after asserting Quirigua\'s independence, fixing the capture to a single day in the Long Count — a contemporaneous primary record of a dynastic reversal.',
+        source: {
+          externalId: 'src:quirigua-ax-event-copan-738',
+          name: 'Quirigua monuments of K\'ak\' Tiliw Chan Yopaat, recording the "ax event" against Copán\'s Waxaklajuun Ub\'aah K\'awiil on 9.15.6.14.6 (3 May 738 CE).',
+          url: 'https://en.wikipedia.org/wiki/K%CA%BCak%CA%BC_Tiliw_Chan_Yopaat',
+          publishedAt: '0738-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern decipherment of the Quirigua and Copán inscriptions — synthesized in Matthew Looper\'s study of Quirigua\'s dynasty — read the "ax event" verb and the date 9.15.6.14.6, establishing the 738 capture and beheading of 18 Rabbit as a dated historical episode that ended Copán\'s dominance over Quirigua. The event is settled in Maya epigraphy.',
+        source: {
+          externalId: 'src:looper-quirigua-18rabbit-738',
+          name: 'Looper M.G. "Lightning Warrior: Maya Art and Kingship at Quirigua" (University of Texas Press, 2003) — the 738 defeat and decapitation of Copán\'s 18 Rabbit.',
+          url: 'https://en.wikipedia.org/wiki/Uaxaclajuun_Ub%CA%BCaah_K%CA%BCawiil',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── K'inich Janaab' Pakal accedes at Palenque (Maya, Mesoamerica) ────────────
   {
     externalId: 'trajectory:pakal-accession-palenque-615',
