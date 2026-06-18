@@ -16746,6 +16746,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Hepatitis C virus identification — Choo / Houghton 1989 ─────────────────
+  {
+    externalId: 'trajectory:hepatitis-c-virus-identification-1989',
+    text: 'Choo, Houghton, and colleagues at Chiron reported in Science on 21 April 1989 the isolation of a cDNA clone derived from the genome of a blood-borne non-A, non-B hepatitis agent — the molecular identification of what was named hepatitis C virus (HCV), the principal cause of post-transfusion hepatitis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-04-21',
+        datePrecision: 'DAY',
+        reason: 'Choo et al. published in Science the isolation of a cDNA clone (5-1-1) from the plasma of an experimentally infected chimpanzee, derived from an RNA genome of roughly 10,000 nucleotides resembling flaviviruses. After more than a decade in which the agent of most post-transfusion hepatitis was an unidentified \'non-A, non-B\' entity, this recorded in the literature the molecular existence of a specific virus — hepatitis C virus.',
+        source: {
+          externalId: 'src:choo-science-hcv-1989',
+          name: 'Choo QL, Kuo G, Weiner AJ, Overby LR, Bradley DW, Houghton M. Isolation of a cDNA clone derived from a blood-borne non-A, non-B viral hepatitis genome. Science. 1989 Apr 21;244(4902):359-362.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2523562/',
+          publishedAt: '1989-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-11-29',
+        datePrecision: 'DAY',
+        reason: 'Following development of the companion anti-HCV antibody assay (Kuo et al., same 1989 Science issue), the FDA recommended on 29 November 1990 that all donated whole blood and components be screened for antibody to hepatitis C virus, and US blood banks adopted routine first-generation anti-HCV screening. Institutional incorporation of HCV into the national blood-safety system settled the virus\'s existence and its role as the cause of post-transfusion hepatitis; the test sharply reduced transfusion-transmitted HCV and the discovery was later recognized by the 2020 Nobel Prize in Physiology or Medicine.',
+        source: {
+          externalId: 'src:fda-hcv-blood-screening-1990',
+          name: 'U.S. Food and Drug Administration. Recommendation to screen whole blood and blood components for antibody to hepatitis C virus (anti-HCV). November 29, 1990 (documented in FDA Guidance: \'Lookback\' for Hepatitis C Virus).',
+          url: 'https://www.fda.gov/media/124265/download',
+          publishedAt: '1990-11-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── West Nile virus Western Hemisphere emergence — CDC/MMWR 1999 ─────────────
+  {
+    externalId: 'trajectory:west-nile-virus-western-hemisphere-emergence-1999',
+    text: 'The CDC reported on 1 October 1999 that an outbreak of viral encephalitis in the New York City area — initially attributed to St. Louis encephalitis virus — was in fact caused by a West Nile-like virus, the first recognized appearance of West Nile virus in the Western Hemisphere.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-10-01',
+        datePrecision: 'DAY',
+        reason: 'CDC\'s MMWR reported that the late-summer 1999 New York encephalitis outbreak, first serologically attributed to St. Louis encephalitis virus, was reclassified as a West Nile-like virus after the agent was identified in human, avian (notably die-offs of crows and zoo birds), and mosquito specimens. This recorded the unexpected presence of a flavivirus never before detected in the Western Hemisphere as the cause of a domestic human disease outbreak.',
+        source: {
+          externalId: 'src:cdc-mmwr-west-nile-ny-1999',
+          name: 'CDC. Outbreak of West Nile-Like Viral Encephalitis — New York, 1999. MMWR Morb Mortal Wkly Rep. 1999 Oct 1;48(38):845-849.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4838a1.htm',
+          publishedAt: '1999-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-12-17',
+        datePrecision: 'DAY',
+        reason: 'Lanciotti et al. published genomic sequencing in Science confirming the agent as West Nile virus and showing its close relationship to a strain circulating in Israel in 1998, establishing that WNV had been introduced into North America and was circulating in natural bird-mosquito transmission cycles. Independent molecular confirmation settled West Nile virus as a newly established Western Hemisphere pathogen; it subsequently spread across the continental United States, becoming endemic.',
+        source: {
+          externalId: 'src:lanciotti-science-west-nile-1999',
+          name: 'Lanciotti RS, Roehrig JT, Deubel V, et al. Origin of the West Nile virus responsible for an outbreak of encephalitis in the northeastern United States. Science. 1999 Dec 17;286(5448):2333-2337.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10600742/',
+          publishedAt: '1999-12-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Male circumcision HIV prevention — Auvert / ANRS 1265 2005 ──────────────
+  {
+    externalId: 'trajectory:male-circumcision-hiv-prevention-2005',
+    text: 'Auvert and colleagues reported in PLoS Medicine on 25 October 2005 (ANRS 1265 trial, Orange Farm, South Africa) that medical male circumcision reduced the risk of heterosexually acquired HIV infection in men by roughly 60%, the first randomized controlled evidence that circumcision is HIV-protective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-25',
+        datePrecision: 'DAY',
+        reason: 'The ANRS 1265 randomized controlled trial in Orange Farm, South Africa, randomized 3,274 uncircumcised men aged 18–24 and was stopped early at interim analysis because circumcision conferred roughly 60% protection (20 vs 49 HIV infections). This converted decades of suggestive observational and ecological data into the first experimental evidence that male circumcision reduces female-to-male HIV transmission.',
+        source: {
+          externalId: 'src:auvert-plosmed-circumcision-2005',
+          name: 'Auvert B, Taljaard D, Lagarde E, Sobngwi-Tambekou J, Sitta R, Puren A. Randomized, controlled intervention trial of male circumcision for reduction of HIV infection risk: the ANRS 1265 Trial. PLoS Med. 2005 Nov;2(11):e298.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16231970/',
+          publishedAt: '2005-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-02-24',
+        datePrecision: 'DAY',
+        reason: 'Two independent randomized trials published together in The Lancet — Bailey et al. in Kisumu, Kenya (53% reduction) and Gray et al. in Rakai, Uganda (~51–60% reduction) — were both halted early by their data monitoring boards and replicated the Orange Farm result. The convergence of three RCTs led WHO and UNAIDS to recommend on 28 March 2007 that voluntary medical male circumcision be recognized as an effective HIV prevention intervention, settling the claim in both the literature and global health policy.',
+        source: {
+          externalId: 'src:bailey-lancet-circumcision-kisumu-2007',
+          name: 'Bailey RC, Moses S, Parker CB, et al. Male circumcision for HIV prevention in young men in Kisumu, Kenya: a randomised controlled trial. Lancet. 2007 Feb 24;369(9562):643-656.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17321310/',
+          publishedAt: '2007-02-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── iPrEx oral PrEP HIV prevention — Grant / NEJM 2010 ──────────────────────
+  {
+    externalId: 'trajectory:iprex-oral-prep-hiv-prevention-2010',
+    text: 'Grant and the iPrEx Study Team reported in the New England Journal of Medicine on 23 November 2010 that daily oral emtricitabine–tenofovir (FTC-TDF) pre-exposure prophylaxis reduced HIV acquisition by 44% among men who have sex with men, the first randomized proof that an antiretroviral pill could prevent HIV infection in HIV-negative people.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-11-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-11-23',
+        datePrecision: 'DAY',
+        reason: 'The iPrEx randomized, placebo-controlled trial enrolled 2,499 HIV-seronegative men who have sex with men and transgender women and found a 44% reduction in HIV incidence in the FTC-TDF arm overall, rising above 90% among participants with detectable drug levels. This recorded the first definitive evidence that oral antiretroviral pre-exposure prophylaxis could prevent sexually acquired HIV, opening a new biomedical prevention paradigm.',
+        source: {
+          externalId: 'src:grant-nejm-iprex-2010',
+          name: 'Grant RM, Lama JR, Anderson PL, et al. Preexposure chemoprophylaxis for HIV prevention in men who have sex with men. N Engl J Med. 2010 Dec 30;363(27):2587-2599.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21091279/',
+          publishedAt: '2010-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 July 2012, supported by the iPrEx and Partners PrEP trial results, the FDA approved Truvada (emtricitabine–tenofovir) for HIV pre-exposure prophylaxis — the first drug ever approved to prevent HIV in uninfected people. Regulatory adoption converted the trial finding into an institutionally sanctioned standard of HIV prevention.',
+        source: {
+          externalId: 'src:fda-truvada-prep-approval-2012',
+          name: 'U.S. Food and Drug Administration. FDA approves first drug for reducing the risk of sexually acquired HIV infection. July 16, 2012.',
+          url: 'https://www.prepwatch.org/resources/fda-approves-first-drug-for-reducing-the-risk-of-sexually-acquired-hiv-infection/',
+          publishedAt: '2012-07-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
