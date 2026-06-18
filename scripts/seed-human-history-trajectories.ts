@@ -57925,6 +57925,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Magdala: death of Tewodros II of Ethiopia (1868) ───────────────
+  {
+    externalId: 'trajectory:battle-of-magdala-tewodros-1868',
+    text: 'On 13 April 1868, a British expeditionary force under Robert Napier stormed the mountain fortress of Magdala in Abyssinia (Ethiopia); rather than be taken prisoner, Emperor Tewodros II shot himself, ending his reign and the campaign.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1868-04-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1868-04-13',
+        datePrecision: 'DAY',
+        reason: 'After the assault on the amba of Magdala, Tewodros II — having released his European hostages but refused unconditional surrender — took his own life with a pistol that had been a gift from Queen Victoria, so as not to be captured. British troops then sacked the fortress and carried off its religious and cultural treasures. The expedition was accompanied by war correspondents (among them Henry Morton Stanley) and photographers of the Royal Engineers, so the event was reported almost immediately.',
+        source: {
+          externalId: 'src:battle-of-magdala-1868',
+          name: 'Battle of Magdala, 9–13 April 1868 — British Abyssinian Expedition (Napier) vs Emperor Tewodros II.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Magdala',
+          publishedAt: '1868-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1868-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The fall of Magdala and the manner of Tewodros\'s death are corroborated by the official British expedition records, by the dispatches of accompanying correspondents, and by Ethiopian tradition. The date and outcome are undisputed in the historiography of the Anglo-Abyssinian War and of Tewodros\'s reign.',
+        source: {
+          externalId: 'src:tewodros-ii-death-record',
+          name: 'Tewodros II — death at Magdala, 13 April 1868 (British Abyssinian Expedition).',
+          url: 'https://en.wikipedia.org/wiki/Tewodros_II',
+          publishedAt: '1868-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Third Anglo-Ashanti War: British burn Kumasi (1874) ──────────────────────
+  {
+    externalId: 'trajectory:burning-of-kumasi-1874',
+    text: 'On 4 February 1874, a British force under Garnet Wolseley occupied the Asante capital Kumasi and demolished the royal palace with explosives, the decisive act of the Third Anglo-Ashanti War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1874-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1874-02-04',
+        datePrecision: 'DAY',
+        reason: 'After defeating the Asante at Amoaful and Ordashu, Wolseley\'s column entered Kumasi, which the Asante had abandoned. The British briefly occupied the city, blew up the royal palace, and left it in ruins before withdrawing ahead of the unhealthy season. The campaign was closely covered by the British press (including correspondent Henry Morton Stanley) and reported as it unfolded.',
+        source: {
+          externalId: 'src:third-anglo-ashanti-war-kumasi',
+          name: 'Third Anglo-Ashanti War — British occupation and destruction of Kumasi, 4 February 1874 (Wolseley expedition).',
+          url: 'https://en.wikipedia.org/wiki/Third_Anglo-Ashanti_War',
+          publishedAt: '1874-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1874-02-13',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of Fomena (signed 13 February 1874) imposed a 50,000-ounce gold indemnity on the Asantehene Kofi Karikari, required the renunciation of claims over the coastal districts and protected states, and obliged the kingdom to keep the road from Kumasi to the Pra open. The war\'s course and the destruction of Kumasi are settled facts in the historiography of the Anglo-Ashanti wars.',
+        source: {
+          externalId: 'src:treaty-of-fomena-1874',
+          name: 'Treaty of Fomena (1874) — ending the Third Anglo-Ashanti War.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Fomena',
+          publishedAt: '1874-02-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Isandlwana: Zulu defeat the British (1879) ─────────────────────
+  {
+    externalId: 'trajectory:battle-of-isandlwana-1879',
+    text: 'On 22 January 1879, a Zulu army overwhelmed a British camp at Isandlwana, killing over 1,300 British and colonial troops — the worst defeat a British army had suffered against an indigenous force armed largely with spears.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1879-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1879-01-22',
+        datePrecision: 'DAY',
+        reason: 'A Zulu army of some 20,000 under Ntshingwayo kaMahole attacked Lord Chelmsford\'s divided invasion force at the camp below Isandlwana hill, destroying the central column. Commanders Pulleine and Durnford and the great majority of the 1,300-plus defenders were killed. Survivors\' accounts and the discovery of the field reached the British command within days.',
+        source: {
+          externalId: 'src:battle-of-isandlwana-1879',
+          name: 'Battle of Isandlwana, 22 January 1879 — Zulu Kingdom vs British Empire (Anglo-Zulu War).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Isandlwana',
+          publishedAt: '1879-01-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1879-02-11',
+        datePrecision: 'DAY',
+        reason: 'News of the disaster reached London on 11 February 1879, shocking the public and prompting the dispatch of substantial reinforcements and a court of inquiry into the defeat. The scale and date of the British defeat are documented in official war records and undisputed in the historiography of the Anglo-Zulu War.',
+        source: {
+          externalId: 'src:isandlwana-news-london-1879',
+          name: 'Anglo-Zulu War — reaction to Isandlwana and British reinforcement, February 1879.',
+          url: 'https://en.wikipedia.org/wiki/Anglo-Zulu_War',
+          publishedAt: '1879-02-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ulundi: end of Zulu independence (1879) ────────────────────────
+  {
+    externalId: 'trajectory:battle-of-ulundi-1879',
+    text: 'On 4 July 1879, British forces under Lord Chelmsford broke the Zulu army at Ulundi and burned the royal capital, the final battle of the Anglo-Zulu War and the end of the Zulu Kingdom\'s independence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1879-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1879-07-04',
+        datePrecision: 'DAY',
+        reason: 'Drawn up in a hollow infantry square with artillery and Gatling guns, the British column shattered the charging Zulu regiments in roughly half an hour, then advanced and burned the royal kraal at Ulundi. Zulu military power was broken; King Cetshwayo fled and was captured weeks later.',
+        source: {
+          externalId: 'src:battle-of-ulundi-1879',
+          name: 'Battle of Ulundi, 4 July 1879 — British Empire (Chelmsford) vs Zulu Kingdom (final battle of the Anglo-Zulu War).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ulundi',
+          publishedAt: '1879-07-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1879-08-28',
+        datePrecision: 'DAY',
+        reason: 'King Cetshwayo kaMpande was captured on 28 August 1879 and exiled, and the British partitioned Zululand among appointed chiefs, ending the kingdom\'s independence. The battle\'s date and outcome are settled in the historiography of the Anglo-Zulu War.',
+        source: {
+          externalId: 'src:cetshwayo-capture-1879',
+          name: 'Anglo-Zulu War aftermath — capture of Cetshwayo and partition of Zululand, 1879.',
+          url: 'https://en.wikipedia.org/wiki/Cetshwayo',
+          publishedAt: '1879-08-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // WWI / WWII & INTERWAR ADDENDA (1900–1950)
   // ═══════════════════════════════════════════════════════════════════════════════
