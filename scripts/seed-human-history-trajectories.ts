@@ -52064,6 +52064,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR ADDENDA (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First successful human kidney transplant — Murray, Herrick twins ───────
+  {
+    externalId: 'trajectory:murray-first-kidney-transplant-1954',
+    text: 'On December 23, 1954, Joseph Murray performed the world’s first successful human organ transplant — a kidney from Ronald Herrick into his identical twin Richard at the Peter Bent Brigham Hospital in Boston — proving that transplanted organs could function long-term when immune rejection was sidestepped.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1954-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-12-23',
+        datePrecision: 'DAY',
+        reason: 'Joseph Murray and his surgical team transplant a healthy kidney from Ronald Herrick into his identical twin brother Richard, who was dying of chronic nephritis. Because the donor and recipient were genetically identical, the graft was not rejected. The recipient survived for eight years, the first unambiguous demonstration that a transplanted human organ could take over the function of a failed one.',
+        source: {
+          externalId: 'src:murray-herrick-twins-1954',
+          name: 'Joseph Murray — first successful human kidney transplant between the identical Herrick twins, Peter Bent Brigham Hospital, 23 December 1954.',
+          url: 'https://en.wikipedia.org/wiki/Joseph_Murray',
+          publishedAt: '1954-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-12-10',
+        datePrecision: 'DAY',
+        reason: 'The proof of principle from the twin transplant, combined with the later development of immunosuppression that extended transplantation to non-identical donors, established organ transplantation as an established clinical field. Murray is awarded the 1990 Nobel Prize in Physiology or Medicine for his discoveries concerning organ and cell transplantation in the treatment of human disease.',
+        source: {
+          externalId: 'src:murray-nobel-1990',
+          name: 'The Nobel Prize in Physiology or Medicine 1990 — Joseph E. Murray and E. Donnall Thomas, for organ and cell transplantation.',
+          url: 'https://en.wikipedia.org/wiki/Joseph_Murray',
+          publishedAt: '1990-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lunokhod 1 — first roving robot on another world ───────────────────────
+  {
+    externalId: 'trajectory:lunokhod-1-first-rover-1970',
+    text: 'On November 17, 1970, the Soviet Lunokhod 1 rover landed on the Moon aboard Luna 17 and drove onto the surface, becoming the first remote-controlled roving vehicle to operate on another celestial body.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-11-17',
+        datePrecision: 'DAY',
+        reason: 'Luna 17 soft-lands in Mare Imbrium at 03:47 UTC and the eight-wheeled Lunokhod 1 rolls down ramps onto the lunar surface at 06:28 UTC, driven by a five-person team on Earth. It is the first wheeled vehicle to move under remote control across the surface of any world beyond Earth, an achievement reported immediately by TASS and tracked by Western observers.',
+        source: {
+          externalId: 'src:lunokhod-1-landing-1970',
+          name: 'Lunokhod 1 — first robotic rover on the Moon, landed via Luna 17 on 17 November 1970.',
+          url: 'https://en.wikipedia.org/wiki/Lunokhod_1',
+          publishedAt: '1970-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-04-22',
+        datePrecision: 'DAY',
+        reason: 'Lunokhod 1 traversed over 10 km across 322 Earth days before contact was lost in 1971. Its exact resting position was uncertain for decades until, in April 2010, a team using the Lunar Reconnaissance Orbiter and the Apache Point lunar laser ranging station relocated the rover and obtained a laser return from its retroreflector, definitively confirming the mission record.',
+        source: {
+          externalId: 'src:lunokhod-1-laser-ranging-2010',
+          name: 'Apache Point Observatory Lunar Laser-ranging Operation relocates Lunokhod 1 retroreflector, April 2010.',
+          url: 'https://en.wikipedia.org/wiki/Lunokhod_1',
+          publishedAt: '2010-04-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Miranda v. Arizona — warnings before custodial interrogation ───────────
+  {
+    externalId: 'trajectory:miranda-v-arizona-1966',
+    text: 'On June 13, 1966, the U.S. Supreme Court in Miranda v. Arizona, 384 U.S. 436, held that the Fifth Amendment requires police to warn suspects of their rights to silence and counsel before custodial interrogation, or any resulting statements are inadmissible.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1966-06-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1966-06-13',
+        datePrecision: 'DAY',
+        reason: 'In a 5–4 decision authored by Chief Justice Earl Warren, the Court rules that a person in custody must, prior to interrogation, be clearly informed of the right to remain silent, that statements may be used against them, and of the right to counsel including appointed counsel if indigent. Ernesto Miranda’s conviction is overturned, and the "Miranda warning" becomes mandatory procedure.',
+        source: {
+          externalId: 'src:miranda-v-arizona-1966',
+          name: 'Miranda v. Arizona, 384 U.S. 436 (1966), decided 13 June 1966.',
+          url: 'https://en.wikipedia.org/wiki/Miranda_v._Arizona',
+          publishedAt: '1966-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2000-06-26',
+        datePrecision: 'DAY',
+        reason: 'Despite a 1968 congressional attempt (18 U.S.C. § 3501) to override Miranda by statute, the Supreme Court in Dickerson v. United States, 530 U.S. 428, holds 7–2 that Miranda is a constitutional rule that Congress may not legislatively supersede, firmly settling the warning requirement as binding law.',
+        source: {
+          externalId: 'src:dickerson-v-us-2000',
+          name: 'Dickerson v. United States, 530 U.S. 428 (2000), reaffirming Miranda as a constitutional rule.',
+          url: 'https://en.wikipedia.org/wiki/Dickerson_v._United_States',
+          publishedAt: '2000-06-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Margulis endosymbiotic theory — origin of mitochondria & chloroplasts ──
+  {
+    externalId: 'trajectory:margulis-endosymbiosis-1967',
+    text: 'In 1967 Lynn Margulis (then Lynn Sagan) published "On the origin of mitosing cells," reviving the theory that mitochondria and chloroplasts originated as free-living bacteria engulfed by a host cell — a claim initially rejected and later established as the consensus account of eukaryotic origins.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Margulis publishes the endosymbiotic hypothesis in the Journal of Theoretical Biology, arguing that mitochondria, chloroplasts, and basal bodies descend from once-independent prokaryotes. The paper had been rejected by some fifteen journals before acceptance, and the idea was widely dismissed by cell biologists as speculative.',
+        source: {
+          externalId: 'src:margulis-mitosing-cells-1967',
+          name: 'Sagan L (Margulis). On the origin of mitosing cells. Journal of Theoretical Biology, 1967.',
+          url: 'https://en.wikipedia.org/wiki/Symbiogenesis',
+          publishedAt: '1967-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The discovery that mitochondria and chloroplasts carry their own circular DNA and bacterial-type ribosomes, followed by ribosomal RNA sequencing in the late 1970s linking these organelles to specific bacterial lineages, provided the molecular evidence that converted the contested hypothesis into the accepted account of organelle origins.',
+        source: {
+          externalId: 'src:organelle-dna-rrna-evidence',
+          name: 'Molecular evidence (organellar DNA, ribosomal RNA sequencing) confirming the endosymbiotic origin of mitochondria and chloroplasts.',
+          url: 'https://en.wikipedia.org/wiki/Symbiogenesis',
+          publishedAt: '1978-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Voyager 1 — first detailed reconnaissance of Saturn ────────────────────
+  {
+    externalId: 'trajectory:voyager-1-saturn-flyby-1980',
+    text: 'On November 12, 1980, NASA’s Voyager 1 made its closest approach to Saturn, returning the first high-resolution images of the planet, its rings, and moons, and discovering previously unknown ring structure and the thick atmosphere of Titan.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-11-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-11-12',
+        datePrecision: 'DAY',
+        reason: 'Voyager 1 passes within about 126,000 km of Saturn at 23:46 UT, transmitting the first close-up data on the planet. It reveals intricate, braided structure and "spokes" in the rings, finds several new moons, and measures Titan’s dense nitrogen atmosphere — observations relayed to Deep Space Network stations and released by JPL as they arrived.',
+        source: {
+          externalId: 'src:voyager-1-saturn-1980',
+          name: 'NASA — Voyager 1 closest approach to Saturn at 23:46 UT on 12 November 1980, range ~126,000 km.',
+          url: 'https://science.nasa.gov/mission/voyager/voyager-1/',
+          publishedAt: '1980-11-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-04-10',
+        datePrecision: 'DAY',
+        reason: 'The Voyager 1 Saturn results are published in a dedicated issue of Science in April 1981, peer-reviewing the imaging, ring, and Titan-atmosphere findings. The encounter data become the standard reference for the Saturn system until the Cassini orbiter arrives in 2004, which corroborates and extends them.',
+        source: {
+          externalId: 'src:voyager-1-saturn-science-1981',
+          name: 'Science, special Voyager 1 Saturn encounter issue, April 1981.',
+          url: 'https://science.nasa.gov/mission/voyager/voyager-1/',
+          publishedAt: '1981-04-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
