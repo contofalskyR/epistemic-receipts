@@ -51079,6 +51079,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — addendum: COVID-19 vaccines, climate, 9/11 aftermath
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Russia registers Sputnik V — first registered COVID-19 vaccine ─────────
+  {
+    externalId: 'trajectory:sputnik-v-registered-2020',
+    text: 'On 11 August 2020 Russia registered Gam-COVID-Vac ("Sputnik V"), developed by the Gamaleya Research Institute, as the world\'s first registered vaccine against SARS-CoV-2 — granted before Phase 3 trials had begun.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-08-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-11',
+        datePrecision: 'DAY',
+        reason: 'At a government briefing attended by President Vladimir Putin, Health Minister Mikhail Murashko announced that the Russian Ministry of Health had granted regulatory registration to Gam-COVID-Vac, an Ad26/Ad5 heterologous prime-boost vaccine from the Gamaleya National Center. Russia became the first country to register a COVID-19 vaccine. At the time only Phase 1/2 data (two trials of 38 participants each) existed; Phase 3 efficacy trials had not yet started, drawing immediate international criticism that registration preceded evidence of efficacy.',
+        source: {
+          externalId: 'src:sputnik-v-official-registration-2020',
+          name: 'Sputnik V official site (Gamaleya / RDIF): "Sputnik V — the first registered vaccine against COVID-19", registered 11 August 2020.',
+          url: 'https://sputnikvaccine.com/about-vaccine/',
+          publishedAt: '2020-08-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-02-02',
+        datePrecision: 'DAY',
+        reason: 'Logunov and colleagues published the interim analysis of the randomised, double-blind, placebo-controlled Phase 3 trial in The Lancet, reporting 91.6% efficacy (95% CI 85.6–95.2) from 21 days after the first dose, based on 16 cases among 14,964 vaccine recipients versus 62 among 4,902 placebo recipients. The peer-reviewed result supplied the efficacy evidence that registration had lacked.',
+        source: {
+          externalId: 'src:logunov-sputnik-v-phase3-lancet-2021',
+          name: 'Logunov D.Y. et al. "Safety and efficacy of an rAd26 and rAd5 vector-based heterologous prime-boost COVID-19 vaccine: an interim analysis of a randomised controlled phase 3 trial in Russia." Lancet 397(10275), 671–681 (2021). PMCID: PMC7852454.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7852454/',
+          publishedAt: '2021-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-05-12',
+        datePrecision: 'DAY',
+        reason: 'A group of researchers led by Enrico Bucci published a letter in The Lancet documenting data discrepancies and substandard reporting in the Phase 3 interim analysis — including improbably homogeneous efficacy estimates across age strata and numerical inconsistencies — and requested access to the underlying trial data. The Gamaleya authors replied but did not release the raw data, leaving the published efficacy figure contested within the scientific literature.',
+        source: {
+          externalId: 'src:bucci-sputnik-v-data-discrepancies-lancet-2021',
+          name: 'Bucci E.M. et al. "Data discrepancies and substandard reporting of interim data of Sputnik V phase 3 trial." Lancet 397(10288), 1881–1883 (12 May 2021).',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00899-0/fulltext',
+          publishedAt: '2021-05-12',
+          methodologyType: 'opinion',
+        },
+      },
+    ],
+  },
+
+  // ── India grants emergency-use approval to Covaxin (BBV152) ─────────────────
+  {
+    externalId: 'trajectory:covaxin-emergency-approval-2021',
+    text: 'On 3 January 2021 India\'s drug regulator (DCGI) granted Bharat Biotech\'s indigenous inactivated vaccine Covaxin (BBV152) approval for restricted emergency use "in clinical trial mode" — before Phase 3 efficacy data existed.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-01-03',
+        datePrecision: 'DAY',
+        reason: 'The Drugs Controller General of India announced that, on the recommendation of the Subject Expert Committee, Covaxin — developed by Bharat Biotech with the ICMR-National Institute of Virology — was granted permission for "restricted use in emergency situation in public interest as an abundant precaution, in clinical trial mode." Two days earlier the committee had noted the vaccine\'s efficacy was "yet to be demonstrated." Approval rested on Phase 1/2 safety and immunogenicity data while the Phase 3 efficacy trial was still ongoing, prompting public criticism of approval without efficacy evidence.',
+        source: {
+          externalId: 'src:dcgi-covaxin-restricted-use-pmc-2021',
+          name: 'Sapkal G. et al. / commentary: "Regulatory approval of COVID-19 vaccine for restricted use in clinical trial mode" (India, 3 January 2021). PMC8063074.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8063074/',
+          publishedAt: '2021-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-11-11',
+        datePrecision: 'DAY',
+        reason: 'Ella and colleagues published the interim Phase 3 efficacy results in The Lancet: among ~16,973 initially seronegative participants, Covaxin showed 77.8% efficacy (95% CI 65.2–86.4) against symptomatic COVID-19 from 14 days after the second dose, with 93.4% efficacy against severe disease. The peer-reviewed trial supplied the efficacy evidence absent at the January approval; WHO had granted Emergency Use Listing on 3 November 2021.',
+        source: {
+          externalId: 'src:ella-covaxin-phase3-lancet-2021',
+          name: 'Ella R. et al. "Efficacy, safety, and lot-to-lot immunogenicity of an inactivated SARS-CoV-2 vaccine (BBV152): interim results of a randomised, double-blind, controlled, phase 3 trial." Lancet 398(10317), 2173–2184 (2021). PMID: 34774196.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34774196/',
+          publishedAt: '2021-11-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The 9/11 Commission Report ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:911-commission-report-2004',
+    text: 'On 22 July 2004 the National Commission on Terrorist Attacks Upon the United States released its Final Report (the "9/11 Commission Report"), the authoritative official account of the September 11, 2001 attacks and the failures preceding them.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2004-07-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-07-22',
+        datePrecision: 'DAY',
+        reason: 'The bipartisan ten-member Commission, chaired by Thomas Kean with vice-chair Lee Hamilton, released its 567-page Final Report after a 20-month investigation that reviewed over 2.5 million pages of documents, interviewed more than 1,200 people across 10 countries, and held public hearings. The report established the timeline of the four hijacked flights, identified the 19 al-Qaeda hijackers, and documented intelligence and institutional failures, issuing recommendations including the creation of a Director of National Intelligence.',
+        source: {
+          externalId: 'src:911-commission-final-report-govinfo-2004',
+          name: 'National Commission on Terrorist Attacks Upon the United States. "The 9/11 Commission Report: Final Report." 22 July 2004. GPO / govinfo GPO-911REPORT.',
+          url: 'https://www.govinfo.gov/app/details/GPO-911REPORT',
+          publishedAt: '2004-07-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-12-17',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted the Intelligence Reform and Terrorism Prevention Act of 2004, signed into law on 17 December 2004, implementing core 9/11 Commission recommendations — creating the Office of the Director of National Intelligence and the National Counterterrorism Center. The legislative adoption ratified the Commission\'s factual account and analysis as the operative official understanding of the attacks.',
+        source: {
+          externalId: 'src:irtpa-2004-911-implementation',
+          name: 'Intelligence Reform and Terrorism Prevention Act of 2004, Pub. L. 108–458 (signed 17 December 2004), implementing 9/11 Commission recommendations.',
+          url: 'https://9-11commission.gov/',
+          publishedAt: '2004-12-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── "Climategate" — CRU email controversy and the inquiries that cleared it ─
+  {
+    externalId: 'trajectory:climategate-cru-emails-2009',
+    text: 'In November 2009 thousands of emails stolen from the University of East Anglia\'s Climatic Research Unit were released, alleging that climate scientists had manipulated data; multiple independent inquiries in 2010 found no evidence of scientific misconduct or fabrication of the temperature record.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2009-11-20',
+        datePrecision: 'DAY',
+        reason: 'Around 17–20 November 2009, more than 1,000 emails and documents copied from a CRU server were posted online weeks before the Copenhagen climate summit. Climate-change sceptics quoted phrases such as "hide the decline" and "trick" to allege that researchers had manipulated and suppressed data, generating a global controversy ("Climategate") that publicly cast doubt on the integrity of the instrumental temperature record.',
+        source: {
+          externalId: 'src:cru-email-controversy-2009',
+          name: '"Climatic Research Unit email controversy" — contemporaneous reporting of the November 2009 CRU email release.',
+          url: 'https://en.wikipedia.org/wiki/Climatic_Research_Unit_email_controversy',
+          publishedAt: '2009-11-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-07-07',
+        datePrecision: 'DAY',
+        reason: 'The Independent Climate Change Email Review, chaired by Sir Muir Russell, published its report concluding that the "rigour and honesty" of the CRU scientists were not in doubt, that they had not subverted peer review, and that the underlying data needed to reproduce their findings were freely available. It joined earlier 2010 inquiries (the House of Commons Science and Technology Committee in March and the Oxburgh science assessment panel in April) in finding no scientific misconduct, reaffirming the validity of the temperature record while criticising CRU\'s handling of data-release requests.',
+        source: {
+          externalId: 'src:muir-russell-independent-review-2010',
+          name: 'The Independent Climate Change Email Review (Sir Muir Russell, chair). Final report, 7 July 2010. University of East Anglia.',
+          url: 'https://www.uea.ac.uk/library/the-independent-climate-change-email-review',
+          publishedAt: '2010-07-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
