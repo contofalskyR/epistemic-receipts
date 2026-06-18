@@ -327,6 +327,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Comet of 5 BCE recorded in the Han Shu (China) ──────────────────────────
+  {
+    externalId: 'trajectory:han-comet-5bce',
+    text: 'Western Han court astronomers recorded a "broom star" (sui-hsing) at the lunar lodge Qianniu in the second month of the second year of the Jianping reign period (9 March–6 April, 5 BCE), noting that it remained visible for more than seventy days — preserved in the astronomical treatise of the Book of Han.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0005-03-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0005-03-09',
+        datePrecision: 'MONTH',
+        reason: 'The imperial astronomical bureau of the Western Han logs a sui-hsing (彗星, "broom star" — a tailed comet) appearing at Qianniu (牽牛, the lunar lodge in the Capricornus region) in the second month of Jianping 2, recording that it stayed visible "for over 70 days." The entry is preserved in the treatises of the Han Shu (Book of Han), compiled by Ban Gu from the contemporaneous court records.',
+        source: {
+          externalId: 'src:hanshu-comet-5bce',
+          name: 'Book of Han (漢書), astronomical / Five Phases treatise, record of the broom star of Jianping 2. (court record c. 5 BCE; compiled c. 111 CE)',
+          url: 'https://ctext.org/han-shu',
+          publishedAt: '0005-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Colin Humphreys, reviewing the Chinese cometary records in the Quarterly Journal of the Royal Astronomical Society, reads the Jianping-2 entry as a genuine apparition of a slow-moving comet — the only comet of the era recorded as visible for so long — and analyses it as a leading candidate for the "Star of Bethlehem." The reading establishes the Han record as describing a real astronomical transient fixed to a specific lunar month.',
+        source: {
+          externalId: 'src:humphreys-comet-5bce-1991',
+          name: 'Humphreys CJ. The Star of Bethlehem — a comet in 5 BC. Quarterly Journal of the Royal Astronomical Society 1991;32:389–407.',
+          url: 'https://www.asa3.org/ASA/topics/Astronomy-Cosmology/S&CB%2010-93Humphreys.html',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Total solar eclipse of 18 January 120 CE recorded in the Hou Hanshu ──────
+  {
+    externalId: 'trajectory:han-solar-eclipse-120ce',
+    text: 'Eastern Han court astronomers recorded a near-total solar eclipse on the wuwu day, first of the twelfth month of the sixth year of the Yuanchu reign period (18 January 120 CE) — noting "it was almost complete; on Earth it was like evening" — an event confirmed by modern retrocalculation as a total eclipse whose path of totality crossed southwestern China.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0120-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0120-01-18',
+        datePrecision: 'DAY',
+        reason: 'The astronomical office logs that on the wuwu day, the first of the twelfth month of Yuanchu 6, "the Sun was eclipsed; it was almost complete; on Earth it was like evening." The record, preserved in the treatises of the Book of Later Han, names a precise sexagenary day and was later read as an omen associated with the death of the Empress Dowager Deng.',
+        source: {
+          externalId: 'src:houhanshu-eclipse-120ce',
+          name: 'Book of Later Han (後漢書), Treatise on Astronomy (天文志), eclipse record of Yuanchu 6, month 12, day wuwu. (court record 120 CE; compiled 5th c. CE)',
+          url: 'https://ctext.org/hou-han-shu',
+          publishedAt: '0120-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'DAY',
+        reason: 'Astronomical retrocalculation identifies the record as the total solar eclipse of 18 January 120 CE (Julian), catalogued in NASA\'s Five Millennium Catalog of Solar Eclipses (eclipse no. 05071, magnitude ~1.04), with the path of totality crossing southwestern China near 28°N 97°E — matching the Han report that the darkness was "almost complete."',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-120ce',
+          name: 'Espenak F, Meeus J. Five Millennium Catalog of Solar Eclipses: total eclipse of 0120 Jan 18 (catalog no. 05071). NASA.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SE0101-0200.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Confucius recorded in the Spring and Autumn Annals (China) ──────
+  {
+    externalId: 'trajectory:confucius-death-479bce',
+    text: 'The death of Confucius (Kong Qiu) was entered in the Spring and Autumn Annals of his home state of Lu under the jichou day of the fourth month of the sixteenth year of Duke Ai — a day-resolution court record conventionally dated to 11 March 479 BCE.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0479-03-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0479-03-11',
+        datePrecision: 'DAY',
+        reason: 'The Chunqiu (Spring and Autumn Annals), the day-by-day chronicle of the dukes of Lu, records under Duke Ai\'s sixteenth year: "夏，四月，己丑，孔丘卒" — "In summer, the fourth month, on the jichou day, Kong Qiu died." Because the Annals name a specific sexagenary day, the death is fixed to day resolution in a contemporaneous state record rather than to a mere year.',
+        source: {
+          externalId: 'src:chunqiu-confucius-death',
+          name: 'Spring and Autumn Annals / Zuo Zhuan (春秋左傳), Duke Ai, year 16: "夏四月己丑，孔丘卒". (Lu court chronicle, 5th c. BCE)',
+          url: 'https://ctext.org/chun-qiu-zuo-zhuan/ai-gong-shi-liu-nian',
+          publishedAt: '0479-03-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0091-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Sima Qian\'s Records of the Grand Historian devotes the "Hereditary House of Confucius" (孔子世家) to his life and corroborates the death, stating "孔子年七十三，以魯哀公十六年四月己丑卒" — Confucius died aged seventy-three on the jichou day of the fourth month of Duke Ai\'s sixteenth year. The convergence of the contemporaneous Annals with the later Shiji biography fixes the date; the fourth-month jichou day of the Lu calendar is conventionally rendered 11 March 479 BCE (Julian).',
+        source: {
+          externalId: 'src:shiji-confucius-death',
+          name: 'Sima Qian. Records of the Grand Historian (史記), Hereditary House of Confucius (孔子世家). (c. 91 BCE)',
+          url: 'https://ctext.org/shiji/kong-zi-shi-jia',
+          publishedAt: '0091-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Lunar eclipse of the Sicilian Expedition (Greece) ───────────────────────
   {
     externalId: 'trajectory:sicilian-expedition-eclipse-413bce',
