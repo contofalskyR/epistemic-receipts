@@ -7165,6 +7165,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA — INFECTIOUS DISEASE & VACCINE SAFETY (1994–2006)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ACTG 076 — zidovudine perinatal HIV transmission 1994 ───────────────────
+  {
+    externalId: 'trajectory:actg-076-zidovudine-perinatal-hiv-transmission-1994',
+    text: 'On 3 November 1994, the Pediatric AIDS Clinical Trials Group reported (Protocol 076) that a zidovudine regimen given to HIV-infected pregnant women and their newborns reduced mother-to-child HIV-1 transmission by 67.5% (8.3% vs 25.5%).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-11-03',
+        datePrecision: 'DAY',
+        reason: 'Connor and colleagues published the ACTG 076 randomized placebo-controlled trial in NEJM, the first demonstration that an antiretroviral intervention could interrupt vertical HIV transmission. The trial was stopped early by its data safety monitoring board because the benefit was so large, establishing the empirical claim that perinatal HIV transmission was preventable.',
+        source: {
+          externalId: 'src:connor-actg076-nejm-1994',
+          name: 'Connor EM, Sperling RS, Gelber R, et al. Reduction of maternal-infant transmission of human immunodeficiency virus type 1 with zidovudine treatment. Pediatric AIDS Clinical Trials Group Protocol 076 Study Group. N Engl J Med. 1994;331(18):1173-1180.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7935654/',
+          publishedAt: '1994-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-08-05',
+        datePrecision: 'DAY',
+        reason: 'Following the trial\'s early termination, the U.S. Public Health Service issued recommendations (MMWR, August 1994) for routine zidovudine use in pregnancy to reduce perinatal transmission, making the ACTG 076 regimen standard of care. Institutional adoption rapidly drove down U.S. perinatal HIV infection rates over the following years.',
+        source: {
+          externalId: 'src:phs-zidovudine-perinatal-mmwr-1994',
+          name: 'CDC. Recommendations of the U.S. Public Health Service Task Force on the Use of Zidovudine to Reduce Perinatal Transmission of Human Immunodeficiency Virus. MMWR Recomm Rep. 1994;43(RR-11):1-20.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00032271.htm',
+          publishedAt: '1994-08-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NIH consensus H. pylori peptic ulcer 1994 ────────────────────────────────
+  {
+    externalId: 'trajectory:nih-consensus-h-pylori-peptic-ulcer-1994',
+    text: 'On 9 February 1994, an NIH Consensus Development Panel concluded that Helicobacter pylori infection causes most peptic ulcer disease and that ulcer patients with H. pylori should receive antimicrobial therapy, reclassifying peptic ulcer as an infectious disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1994-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-02-09',
+        datePrecision: 'DAY',
+        reason: 'After a decade of contested evidence following Marshall and Warren\'s 1983 isolation of H. pylori, the NIH convened a consensus conference (Feb 7-9, 1994) that formally endorsed the bacterial causation of peptic ulcer and recommended antibiotic eradication as treatment. This shifted ulcer disease from an acid/stress paradigm to an infectious one and was published in JAMA in July 1994.',
+        source: {
+          externalId: 'src:nih-consensus-h-pylori-jama-1994',
+          name: 'NIH Consensus Development Panel. Helicobacter pylori in peptic ulcer disease. JAMA. 1994;272(1):65-69.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8007082/',
+          publishedAt: '1994-07-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── XDR-TB global emergence 2006 ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:xdr-tb-global-emergence-2006',
+    text: 'On 24 March 2006, the CDC and WHO reported the worldwide emergence of extensively drug-resistant tuberculosis (XDR-TB), finding that 2% of surveyed TB isolates (2000–2004) were resistant to second-line drugs, defining a nearly untreatable form of TB.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-03-24',
+        datePrecision: 'DAY',
+        reason: 'A joint CDC/WHO MMWR report analyzed surveillance data and defined XDR-TB, documenting that among 17,690 isolates 20% were MDR and 2% were XDR, with markedly worse mortality. This established the empirical claim that drug-resistance had progressed beyond multidrug-resistant TB to strains resistant to the best second-line regimens.',
+        source: {
+          externalId: 'src:cdc-who-xdr-tb-mmwr-2006',
+          name: 'CDC. Emergence of Mycobacterium tuberculosis with Extensive Resistance to Second-Line Drugs — Worldwide, 2000–2004. MMWR Morb Mortal Wkly Rep. 2006;55(11):301-305.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5511a2.htm',
+          publishedAt: '2006-03-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-11-04',
+        datePrecision: 'DAY',
+        reason: 'Gandhi and colleagues reported in The Lancet the explosive Tugela Ferry (KwaZulu-Natal) outbreak in which 52 of 53 XDR-TB patients died, most HIV-coinfected, with a median survival of 16 days. The outbreak validated XDR-TB as a lethal real-world clinical entity and galvanized global TB-control and infection-control policy.',
+        source: {
+          externalId: 'src:gandhi-xdr-tb-tugela-ferry-lancet-2006',
+          name: 'Gandhi NR, Moll A, Sturm AW, et al. Extensively drug-resistant tuberculosis as a cause of death in patients co-infected with tuberculosis and HIV in a rural area of South Africa. Lancet. 2006;368(9547):1575-1580.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17084757/',
+          publishedAt: '2006-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Thimerosal precautionary removal 1999 ────────────────────────────────────
+  {
+    externalId: 'trajectory:thimerosal-vaccine-precautionary-removal-1999',
+    text: 'On 9 July 1999, the American Academy of Pediatrics and the U.S. Public Health Service issued a joint statement recommending removal of the mercury-based preservative thimerosal from childhood vaccines as a precaution, despite no evidence of harm.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1999-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-07-09',
+        datePrecision: 'DAY',
+        reason: 'After a cumulative-exposure review found infants could exceed federal methylmercury guidelines from thimerosal-containing vaccines, the AAP and PHS jointly recommended its removal as a precautionary measure while affirming no evidence of harm. The statement embodied the precautionary-principle claim that exposure should be minimized even absent demonstrated toxicity.',
+        source: {
+          externalId: 'src:thimerosal-joint-statement-mmwr-1999',
+          name: 'CDC. Notice to Readers: Thimerosal in Vaccines: A Joint Statement of the American Academy of Pediatrics and the Public Health Service. MMWR Morb Mortal Wkly Rep. 1999;48(26):563-565.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4826a3.htm',
+          publishedAt: '1999-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-05-17',
+        datePrecision: 'DAY',
+        reason: 'The Institute of Medicine\'s Immunization Safety Review committee concluded that the body of epidemiological evidence favored rejection of a causal relationship between thimerosal-containing vaccines and autism, settling the safety question. Thimerosal had by then been removed from routine U.S. childhood vaccines, confirming the precautionary action without validating a harm claim.',
+        source: {
+          externalId: 'src:iom-immunization-safety-vaccines-autism-2004',
+          name: 'Institute of Medicine. Immunization Safety Review: Vaccines and Autism. Washington, DC: National Academies Press; 2004.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK25344/',
+          publishedAt: '2004-05-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Community-acquired MRSA pediatric deaths 1999 ────────────────────────────
+  {
+    externalId: 'trajectory:community-acquired-mrsa-pediatric-deaths-1999',
+    text: 'On 20 August 1999, the CDC reported four fatal community-acquired MRSA infections in previously healthy children in Minnesota and North Dakota (1997–1999), documenting that methicillin-resistant Staphylococcus aureus had emerged outside healthcare settings in people without established risk factors.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-08-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-08-20',
+        datePrecision: 'DAY',
+        reason: 'A CDC MMWR report described four children who died of MRSA despite having none of the recognized healthcare-associated risk factors, with isolates distinct from hospital strains. This established the empirical claim that MRSA had become a community pathogen, overturning the assumption that methicillin resistance was confined to healthcare settings.',
+        source: {
+          externalId: 'src:cdc-ca-mrsa-pediatric-deaths-mmwr-1999',
+          name: 'CDC. Four Pediatric Deaths From Community-Acquired Methicillin-Resistant Staphylococcus aureus — Minnesota and North Dakota, 1997-1999. MMWR Morb Mortal Wkly Rep. 1999;48(32):707-710.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4832a2.htm',
+          publishedAt: '1999-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-04-07',
+        datePrecision: 'DAY',
+        reason: 'Fridkin and colleagues published population-based surveillance in NEJM confirming community-associated MRSA (largely the USA300 clone) as a widespread cause of disease in people without healthcare exposure across multiple U.S. metropolitan areas. This settled CA-MRSA as an established, epidemiologically characterized entity rather than a cluster of anomalous cases.',
+        source: {
+          externalId: 'src:fridkin-ca-mrsa-nejm-2005',
+          name: 'Fridkin SK, Hageman JC, Morrison M, et al. Methicillin-resistant Staphylococcus aureus disease in three communities. N Engl J Med. 2005;352(14):1436-1444.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15814879/',
+          publishedAt: '2005-04-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
