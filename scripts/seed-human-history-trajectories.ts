@@ -1467,6 +1467,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Takalik Abaj Stela 5 — early Long Count on the Pacific slope (Guatemala) ──
+  {
+    externalId: 'trajectory:takalik-abaj-stela-5-126',
+    text: 'Stela 5 at Takalik Abaj, on the Pacific piedmont of Guatemala, bears the Long Count date 8.4.5.17.11 (3 June 126 CE), among the earliest Long Count dates carved on any monument in the Maya region.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0126-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0126-06-03',
+        datePrecision: 'DAY',
+        reason: 'Carvers at Takalik Abaj, a major site of the Pacific slope spanning the Olmec-to-Maya transition, inscribe two Long Count dates on Stela 5 flanking two standing figures; the later of the two, 8.4.5.17.11, fixes a single day in the bar-and-dot count — a contemporaneous primary record from the highlands rim of the Maya world.',
+        source: {
+          externalId: 'src:takalik-abaj-stela-5-monument',
+          name: 'Takalik Abaj Stela 5, bearing Long Count date 8.4.5.17.11 (126 CE), Pacific piedmont, Guatemala.',
+          url: 'https://en.wikipedia.org/wiki/Tak%27alik_Ab%27aj',
+          publishedAt: '0126-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Read through the Goodman–Martínez–Thompson correlation, the two dates on Stela 5 resolve to 83 CE (or 103 CE) and 3 June 126 CE; the early placement anchors the site\'s sculptural sequence to the late 1st–early 2nd century CE and establishes Stela 5 in Mesoamerican epigraphy as one of the oldest securely dated Long Count monuments, alongside Tres Zapotes Stela C and the Tuxtla Statuette.',
+        source: {
+          externalId: 'src:takalik-abaj-stela-5-longcount',
+          name: 'Mesoamerican Long Count calendar — Takalik Abaj Stela 5, 8.4.5.17.11 (3 June 126 CE).',
+          url: 'https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tuxtla Statuette — epi-Olmec Long Count date (Veracruz) ──────────────────
+  {
+    externalId: 'trajectory:tuxtla-statuette-162',
+    text: 'The Tuxtla Statuette, a small nephrite figurine from the Los Tuxtlas region of Veracruz, carries the epi-Olmec (Isthmian) Long Count date 8.6.2.4.17 (13 March 162 CE), one of the earliest Long Count dates known and an early specimen of the Isthmian script.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0162-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0162-03-13',
+        datePrecision: 'DAY',
+        reason: 'Epi-Olmec carvers incise a Long Count date — 8.6.2.4.17 — and a column of Isthmian glyphs onto a duck-billed nephrite figurine, fixing a single day in the bar-and-dot count. The numerals are legible even where the surrounding script is only partially readable, making the object a contemporaneous primary calendrical record of the Gulf Coast.',
+        source: {
+          externalId: 'src:tuxtla-statuette-monument',
+          name: 'Tuxtla Statuette, epi-Olmec/Isthmian nephrite figurine bearing Long Count date 8.6.2.4.17 (162 CE), Veracruz.',
+          url: 'https://en.wikipedia.org/wiki/Tuxtla_Statuette',
+          publishedAt: '0162-03-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The statuette was unearthed in 1902 by a farmer, Pedro Mimendi, plowing his field near Santiago Tuxtla, Veracruz, close to Tres Zapotes. Read through the standard correlation, its Long Count 8.6.2.4.17 places the inscription at 162 CE — for decades the second-oldest known Long Count date, now established as one of a small cluster of pre-Maya Isthmian-script dates.',
+        source: {
+          externalId: 'src:tuxtla-statuette-recovery-1902',
+          name: 'Tuxtla Statuette — recovery (1902) and reading of its Long Count date 8.6.2.4.17 (162 CE).',
+          url: 'https://en.wikipedia.org/wiki/Tuxtla_Statuette',
+          publishedAt: '1902-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Leiden Plate — accession of a Maya lord (lower Motagua, 320 CE) ───────────
+  {
+    externalId: 'trajectory:leiden-plate-320',
+    text: 'The Leiden Plate, a jadeite belt celt from the lower Motagua valley, records the accession of a Maya lord on the Long Count date 8.14.3.1.12 (15 September 320 CE) — one of the earliest securely dated Maya monuments after Tikal Stela 29.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0320-09-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0320-09-15',
+        datePrecision: 'DAY',
+        reason: 'Maya scribes incise the Long Count date 8.14.3.1.12 (1 Eb 0 Yaxk\'in) on one face of a polished jadeite celt, beside a richly costumed lord standing over a bound captive — recording, to the day, what reads as the accession of a ruler. The portable object is a contemporaneous primary record of an early lowland Maya dynastic event.',
+        source: {
+          externalId: 'src:leiden-plate-monument',
+          name: 'Leiden Plate (jadeite belt celt), Long Count 8.14.3.1.12 (15 September 320 CE), lower Motagua valley.',
+          url: 'https://en.wikipedia.org/wiki/Leiden_plate',
+          publishedAt: '0320-09-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1864-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The celt was found by chance in 1864 by the Dutch engineer S.A. van Braam while digging a canal near Puerto Barrios, and entered the National Museum of Ethnology at Leiden. Read through the Goodman–Martínez–Thompson correlation, its date 8.14.3.1.12 resolves to 320 CE, establishing it in Maya epigraphy as one of the oldest dated lowland monuments — second only to Tikal Stela 29 among securely placed Maya Long Count records.',
+        source: {
+          externalId: 'src:leiden-plate-recovery-1864',
+          name: 'Leiden Plate — discovery (1864, S.A. van Braam, near Puerto Barrios) and reading of its Long Count date.',
+          url: 'https://en.wikipedia.org/wiki/Leiden_plate',
+          publishedAt: '1864-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Teotihuacan entrada at Tikal — arrival of Siyaj K'ak' (Maya, 378 CE) ──────
+  {
+    externalId: 'trajectory:tikal-entrada-siyaj-kak-378',
+    text: 'Siyaj K\'ak\' arrived at Tikal on 15 May 378 CE — the same day the reigning king Chak Tok Ich\'aak I died — inaugurating a Teotihuacan-linked political reordering, with Yax Nuun Ahiin I acceding on 12 September 379 CE (Long Count 8.17.2.16.17), events recorded contemporaneously in the Tikal hieroglyphic record.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0378-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0378-05-15',
+        datePrecision: 'DAY',
+        reason: 'Tikal\'s scribes enter the arrival ("och chan", the entering) of Siyaj K\'ak\' into the dynastic record on the day Chak Tok Ich\'aak I died, and a year later the accession of Yax Nuun Ahiin I (8.17.2.16.17, 5 Kaban 10 Yaxk\'in). The dates are preserved on Tikal Stela 31, erected c. 445 CE by Sihyaj Chan K\'awiil II, which depicts Yax Nuun Ahiin I in Teotihuacan war attire.',
+        source: {
+          externalId: 'src:tikal-stela-31-entrada-inscriptions',
+          name: 'Tikal Stela 31 inscriptions recording the arrival of Siyaj K\'ak\' (15 May 378 CE) and accession of Yax Nuun Ahiin I (8.17.2.16.17, 12 September 379 CE).',
+          url: 'https://en.wikipedia.org/wiki/Yax_Nuun_Ahiin_I',
+          publishedAt: '0378-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'David Stuart\'s 2000 study "The Arrival of Strangers" deciphered the entrada glyphs across Tikal, Uaxactun and other sites, showing that the inscriptions record a real, dated historical episode of Teotihuacan intervention in the Maya lowlands rather than myth. The 378 entrada and the dynasty it installed are now settled in Maya epigraphy.',
+        source: {
+          externalId: 'src:stuart-arrival-of-strangers-2000',
+          name: 'Stuart D. "The Arrival of Strangers: Teotihuacan and Tollan in Classic Maya History." In Mesoamerica\'s Classic Heritage (2000).',
+          url: 'https://en.wikipedia.org/wiki/Siyaj_K%27ak%27',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
