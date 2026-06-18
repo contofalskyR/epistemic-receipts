@@ -65815,6 +65815,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CENTRAL & INNER ASIA — MODERN EPISTEMIC EVENTS (1990–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Discovery of the Siberian Ice Maiden on the Ukok Plateau (1993) ──────────
+  {
+    externalId: 'trajectory:siberian-ice-maiden-ukok-1993',
+    text: 'In the summer of 1993 the archaeologist Natalia Polosmak excavated the frozen, tattooed mummy of a young woman of the Scytho-Siberian Pazyryk culture from a kurgan on the Ukok Plateau in the Altai, dating to the 5th century BCE — one of the best-preserved steppe-nomad burials ever recovered.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-07-01',
+        datePrecision: 'MONTH',
+        reason: 'During the 1993 field season on the Ukok Plateau near the Russia–Mongolia–China–Kazakhstan frontier, Polosmak and her team from the Russian Institute of Archaeology and Ethnography (Novosibirsk) opened a kurgan of the Pazyryk culture and reached a permafrost-sealed log chamber. Melting the ice revealed an intact wooden coffin containing the tattooed body of a woman buried with six horses, fixing the discovery in the contemporaneous excavation record.',
+        source: {
+          externalId: 'src:siberian-ice-maiden-wikipedia',
+          name: 'Siberian Ice Maiden (Princess of Ukok), excavated by Natalia Polosmak, Ukok Plateau, summer 1993 — Pazyryk culture, 5th century BCE.',
+          url: 'https://en.wikipedia.org/wiki/Siberian_Ice_Maiden',
+          publishedAt: '1993-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Polosmak\'s excavation report and subsequent studies in the international literature — including a 1994 account in the Russian Academy of Sciences journal and a 1994 National Geographic feature — describe the burial chamber, the dendrochronological dating to about the 5th century BCE, the preserved tattoos and grave goods, establishing the find as a securely dated benchmark for Pazyryk/Scythian steppe archaeology.',
+        source: {
+          externalId: 'src:polosmak-natalia-wikipedia',
+          name: 'Natalia Polosmak — excavation and publication of the Ukok "Ice Maiden" Pazyryk burial.',
+          url: 'https://en.wikipedia.org/wiki/Natalia_Polosmak',
+          publishedAt: '1994-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mongolian Revolution of 1990 — end of one-party communist rule ───────────
+  {
+    externalId: 'trajectory:mongolian-revolution-1990',
+    text: 'Mongolia ended seven decades of one-party communist rule in 1990: a hunger strike begun in Sükhbaatar Square on 7 March 1990 forced the resignation of the ruling party Politburo, and on 29 June 1990 the country held its first free, multi-party parliamentary elections.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1990-03-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1990-03-07',
+        datePrecision: 'DAY',
+        reason: 'On 7 March 1990 ten activists of the Mongolian Democratic Union began a hunger strike on Sükhbaatar Square in Ulaanbaatar, drawing thousands of supporters and demanding the resignation of the government. Within days the entire Politburo of the Mongolian People\'s Revolutionary Party, headed by Jambyn Batmönkh, stepped down, ending the party\'s monopoly on power — events reported contemporaneously and recorded by participants such as Tsakhiagiin Elbegdorj.',
+        source: {
+          externalId: 'src:mongolian-revolution-1990-wikipedia',
+          name: 'Mongolian Revolution of 1990 — Sükhbaatar Square hunger strike (7 March 1990) and the resignation of the MPRP Politburo.',
+          url: 'https://en.wikipedia.org/wiki/Mongolian_Revolution_of_1990',
+          publishedAt: '1990-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-06-29',
+        datePrecision: 'DAY',
+        reason: 'On 29 June 1990 Mongolia held its first free, multi-party elections for a bicameral parliament, completing the peaceful transition from a single-party communist state to an electoral democracy. The vote and the constitutional changes that followed in 1992 fixed the end of one-party rule in the institutional record, treated as settled in standard accounts of Mongolia\'s democratic transition.',
+        source: {
+          externalId: 'src:mongolia-democracy-britannica',
+          name: 'Mongolia — Reform and the birth of democracy; first multi-party elections held 29 June 1990. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/place/Mongolia/Reform-and-the-birth-of-democracy',
+          publishedAt: '1990-06-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Independence of Kazakhstan — last Soviet republic to secede (1991) ───────
+  {
+    externalId: 'trajectory:kazakhstan-independence-1991',
+    text: 'On 16 December 1991 the Supreme Soviet of Kazakhstan adopted the Constitutional Law "On the State Independence of the Republic of Kazakhstan," signed by President Nursultan Nazarbayev, making Kazakhstan the last of the fifteen Soviet republics to declare independence days before the USSR dissolved.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1991-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-12-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 December 1991 the Supreme Soviet of the Kazakh SSR adopted the Constitutional Law on State Independence by 270 votes to 12; President Nursultan Nazarbayev signed it into force the same evening, declaring Kazakhstan a sovereign and independent state. As the largest Central Asian republic and the last of the fifteen union republics to act, its declaration was reported worldwide and entered the legal record contemporaneously.',
+        source: {
+          externalId: 'src:kazakhstan-independence-law-wikipedia',
+          name: 'On the State Independence of the Republic of Kazakhstan — Constitutional Law adopted 16 December 1991.',
+          url: 'https://en.wikipedia.org/wiki/On_the_State_Independence_of_the_Republic_of_Kazakhstan',
+          publishedAt: '1991-12-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-12-21',
+        datePrecision: 'DAY',
+        reason: 'Five days later, on 21 December 1991, the Alma-Ata Protocol was signed in Kazakhstan\'s then-capital, formally dissolving the Soviet Union and establishing the Commonwealth of Independent States, which Kazakhstan joined. International recognition followed immediately — Turkey on 16 December, the United States on 25 December 1991 — settling Kazakhstan\'s status as a fully independent state in the international institutional record.',
+        source: {
+          externalId: 'src:alma-ata-protocol-wikipedia',
+          name: 'Alma-Ata Protocol, signed 21 December 1991, dissolving the USSR and founding the CIS.',
+          url: 'https://en.wikipedia.org/wiki/Alma-Ata_Protocol',
+          publishedAt: '1991-12-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Andijan massacre — a contested death toll the state has sealed off (2005) ─
+  {
+    externalId: 'trajectory:andijan-massacre-2005',
+    text: 'On 13 May 2005 Uzbek security forces fired on a mass protest in Andijan, Uzbekistan; the number killed remains contested — the government counted 173–187 dead while human-rights groups and witnesses put the toll in the hundreds — because the state refused an independent investigation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2005-05-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 May 2005 thousands gathered on Bobur Square in Andijan to protest poverty and repression after an armed overnight jailbreak; troops of the National Security Service sealed the square and opened fire on the crowd. Human Rights Watch interviewed survivors within days and documented the shootings in its report "Bullets Were Falling Like Rain," establishing the massacre as a recorded event.',
+        source: {
+          externalId: 'src:hrw-andijan-2005',
+          name: 'Human Rights Watch. "Bullets Were Falling Like Rain": The Andijan Massacre, May 13, 2005 (June 2005).',
+          url: 'https://www.hrw.org/report/2005/06/06/bullets-were-falling-rain/andijan-massacre-may-13-2005',
+          publishedAt: '2005-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-05-16',
+        datePrecision: 'DAY',
+        reason: 'The death toll became and remains disputed. The Uzbek government put the dead at 173–187, mostly attributing them to the armed protesters; foreign news organisations reported 400–600 within days; the opposition documented 745, and a later SNB defector alleged 1,500. The government sealed the city, removed bodies, and refused an independent international inquiry, so no agreed figure exists — a contested empirical claim rather than a settled one.',
+        source: {
+          externalId: 'src:andijan-massacre-wikipedia',
+          name: 'Andijan massacre — disputed death toll (government 173–187 vs. several hundred per international observers and opposition).',
+          url: 'https://en.wikipedia.org/wiki/Andijan_massacre',
+          publishedAt: '2005-05-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
