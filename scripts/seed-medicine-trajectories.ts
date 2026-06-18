@@ -5724,6 +5724,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // POST-MARKET SURVEILLANCE & REVERSAL ERA (1996–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fen-phen valvulopathy reversal — 1997 ───────────────────────────────────
+  {
+    externalId: 'trajectory:fenfluramine-phentermine-valvulopathy-1997',
+    text: "The combination appetite-suppressant regimen fenfluramine-phentermine ('fen-phen'), together with dexfenfluramine (Redux, FDA-approved 29 April 1996), was promoted as a safe and effective pharmacological treatment for obesity until Connolly and colleagues reported in the New England Journal of Medicine on 28 August 1997 that it caused valvular heart disease, prompting FDA-requested withdrawal of fenfluramine and dexfenfluramine on 15 September 1997.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-04-29',
+        datePrecision: 'DAY',
+        reason: "The FDA approved dexfenfluramine (Redux), the first new prescription weight-loss drug in 23 years, validating serotonergic appetite suppressants for obesity. Combined with the already-popular off-label fenfluramine-phentermine ('fen-phen') regimen, this drove millions of prescriptions and institutionally established the drugs as a safe, effective obesity treatment.",
+        source: {
+          externalId: 'src:fda-redux-dexfenfluramine-approval-1996',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Redux (dexfenfluramine hydrochloride), NDA 020419, approved 29 April 1996.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020419',
+          publishedAt: '1996-04-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: 'Connolly et al. reported 24 women who developed unusual valvular heart disease (histopathology identical to carcinoid/ergotamine valve damage) after taking fenfluramine-phentermine. The case series identified a previously unrecognized serious cardiac toxicity of the appetite-suppressant regimen, directly contesting its safety profile in the expert literature.',
+        source: {
+          externalId: 'src:connolly-fenphen-valvular-nejm-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: "After echocardiographic surveys confirmed valvular abnormalities in roughly a third of fen-phen users, the FDA requested that manufacturers voluntarily withdraw fenfluramine (Pondimin) and dexfenfluramine (Redux) from the U.S. market on 15 September 1997. The withdrawal reversed the drugs' safety claim and became a landmark post-market surveillance case, later driving multibillion-dollar product-liability settlements.",
+        source: {
+          externalId: 'src:fda-fenfluramine-dexfenfluramine-withdrawal-1997',
+          name: 'U.S. Food and Drug Administration. FDA Announces Withdrawal of Fenfluramine and Dexfenfluramine (Fen-Phen). 15 September 1997.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fda-announces-withdrawal-fenfluramine-and-dexfenfluramine-fen-phen',
+          publishedAt: '1997-09-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Troglitazone (Rezulin) liver-failure withdrawal — 2000 ──────────────────
+  {
+    externalId: 'trajectory:troglitazone-rezulin-withdrawal-2000',
+    text: 'Troglitazone (Rezulin, Warner-Lambert/Parke-Davis), the first thiazolidinedione insulin-sensitizer, was approved by the FDA on 29 January 1997 as a safe and effective oral treatment for type 2 diabetes, a claim reversed when the FDA requested its withdrawal from the U.S. market in March 2000 after reports of fatal liver failure.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-01-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-01-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved troglitazone (Rezulin), the first drug in the thiazolidinedione class, which lowered blood glucose by improving insulin sensitivity — a novel mechanism for type 2 diabetes. Approval established it as a safe, effective oral antidiabetic, and it generated more than $2.1 billion in sales.',
+        source: {
+          externalId: 'src:fda-rezulin-troglitazone-approval-1997',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Rezulin (troglitazone), NDA 020720, approved 29 January 1997.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020720',
+          publishedAt: '1997-01-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-03-21',
+        datePrecision: 'DAY',
+        reason: 'After post-marketing reports of idiosyncratic hepatotoxicity (ultimately dozens of liver-failure deaths), and once the safer congeners rosiglitazone and pioglitazone were available, the FDA requested withdrawal of Rezulin from the U.S. market. The reversal retired the first thiazolidinedione on liver-safety grounds and became a defining post-market surveillance failure of the 1990s.',
+        source: {
+          externalId: 'src:bmj-rezulin-troglitazone-withdrawal-2001',
+          name: 'Charatan F. Company played down drug\'s risks, report says (troglitazone/Rezulin withdrawn from market March 2000 over liver failure). BMJ. 2001;322(7288):694.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1119902/',
+          publishedAt: '2001-03-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rosiglitazone (Avandia) MI signal — 2007 ────────────────────────────────
+  {
+    externalId: 'trajectory:rosiglitazone-avandia-myocardial-infarction-2007',
+    text: 'Rosiglitazone (Avandia, GlaxoSmithKline), a thiazolidinedione approved by the FDA on 25 May 1999 and widely used for type 2 diabetes, was placed under serious cardiovascular-safety doubt when Nissen and Wolski reported a meta-analysis in the New England Journal of Medicine (online 21 May 2007) finding the drug significantly increased the risk of myocardial infarction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-05-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved rosiglitazone (Avandia), positioning it as a safer thiazolidinedione successor to the withdrawn troglitazone. It became one of the best-selling diabetes drugs worldwide, institutionally settled as a safe, effective glucose-lowering agent.',
+        source: {
+          externalId: 'src:fda-avandia-rosiglitazone-approval-1999',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Avandia (rosiglitazone maleate), NDA 021071, approved 25 May 1999.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021071',
+          publishedAt: '1999-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-21',
+        datePrecision: 'DAY',
+        reason: 'Nissen and Wolski pooled 42 trials and found rosiglitazone associated with a significant 43% increase in myocardial infarction (odds ratio 1.43) and a borderline increase in cardiovascular death (OR 1.64). The early-online NEJM release triggered a regulatory and scientific firestorm, congressional hearings, a 2007 boxed warning, and 2010 prescribing restrictions, decisively contesting the drug\'s cardiovascular safety.',
+        source: {
+          externalId: 'src:nissen-rosiglitazone-mi-nejm-2007',
+          name: 'Nissen SE, Wolski K. Effect of rosiglitazone on the risk of myocardial infarction and death from cardiovascular causes. N Engl J Med. 2007;356(24):2457-2471.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17517853/',
+          publishedAt: '2007-05-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cerivastatin (Baycol) rhabdomyolysis withdrawal — 2001 ──────────────────
+  {
+    externalId: 'trajectory:cerivastatin-baycol-withdrawal-2001',
+    text: "Cerivastatin (Baycol/Lipobay, Bayer), an HMG-CoA reductase inhibitor approved by the FDA in 1997 and marketed as a safe and effective cholesterol-lowering statin, was voluntarily withdrawn from the market on 8 August 2001 after post-marketing surveillance linked it to fatal rhabdomyolysis at rates roughly 5–10 times higher than other statins.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-06-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved cerivastatin (Baycol), establishing it as a safe and effective statin for lowering LDL cholesterol. It was marketed globally (as Lipobay outside the U.S.) and competed in the rapidly expanding statin market.',
+        source: {
+          externalId: 'src:fda-baycol-cerivastatin-approval-1997',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Baycol (cerivastatin sodium), NDA 020740, approved 26 June 1997.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020740',
+          publishedAt: '1997-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2001-08-08',
+        datePrecision: 'DAY',
+        reason: "Bayer voluntarily withdrew cerivastatin worldwide after post-marketing reports of fatal rhabdomyolysis (52 deaths, with markedly elevated risk at the 0.8 mg dose and in combination with gemfibrozil). Communicated in an 8 August 2001 letter to health professionals and supported by the FDA, the withdrawal reversed the drug's safety claim and reinforced muscle toxicity as a recognized statin class risk requiring careful dosing and drug-interaction vigilance.",
+        source: {
+          externalId: 'src:bmj-cerivastatin-baycol-withdrawal-2001',
+          name: 'Charatan F. Bayer decides to withdraw cholesterol lowering drug (cerivastatin/Baycol withdrawn 8 August 2001 over rhabdomyolysis deaths). BMJ. 2001;323(7309):359.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1120974/',
+          publishedAt: '2001-08-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ACCORD trial — intensive glucose lowering mortality — 2008 ───────────────
+  {
+    externalId: 'trajectory:accord-intensive-glucose-lowering-mortality-2008',
+    text: "The prevailing 'lower-is-better' premise — that driving HbA1c toward the normal range (<6.0%) in type 2 diabetes would reduce cardiovascular events and death, supported by the UKPDS 35 observational analysis (BMJ, 12 August 2000) showing each 1% HbA1c reduction associated with ~14% fewer myocardial infarctions — was reversed for intensive glycemic targets when the ACCORD trial reported in the NEJM on 12 June 2008 that intensive glucose lowering increased mortality and was stopped early.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-08-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-08-12',
+        datePrecision: 'DAY',
+        reason: 'The UKPDS 35 prospective observational analysis reported that lower HbA1c correlated continuously with reduced complications — each 1% reduction associated with a 14% lower risk of myocardial infarction, with the lowest risk in those with HbA1c in the normal range (<6.0%). This recorded in the literature the rationale that pushing glycemia toward normal would reduce cardiovascular events, the hypothesis large intensive-control RCTs were designed to confirm.',
+        source: {
+          externalId: 'src:ukpds35-glycaemia-complications-bmj-2000',
+          name: 'Stratton IM, Adler AI, Neil HA, et al. (UKPDS Group). Association of glycaemia with macrovascular and microvascular complications of type 2 diabetes (UKPDS 35). BMJ. 2000;321(7258):405-412.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10938048/',
+          publishedAt: '2000-08-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-06-12',
+        datePrecision: 'DAY',
+        reason: 'The ACCORD trial randomized 10,251 high-risk type 2 diabetics to intensive (HbA1c <6.0%) versus standard glucose control and found higher all-cause mortality in the intensive arm, forcing early discontinuation of intensive therapy after 3.5 years without a cardiovascular benefit. The result reversed the assumption that near-normal glycemic targets reduce cardiovascular death; together with ADVANCE and VADT it drove guidelines to abandon universal intensive targets in favor of individualized goals (~7%).',
+        source: {
+          externalId: 'src:accord-intensive-glucose-mortality-nejm-2008',
+          name: 'The Action to Control Cardiovascular Risk in Diabetes Study Group. Effects of intensive glucose lowering in type 2 diabetes. N Engl J Med. 2008;358(24):2545-2559.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18539917/',
+          publishedAt: '2008-06-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
