@@ -4677,6 +4677,220 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL & PROCEDURAL INNOVATION ERA (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gibbon heart-lung machine — open-heart surgery 1953 ─────────────────────
+  {
+    externalId: 'trajectory:gibbon-heart-lung-machine-open-heart-surgery-1953',
+    text: 'On 6 May 1953 John H. Gibbon Jr. performed the first successful open-heart operation using a mechanical heart-lung machine (cardiopulmonary bypass), closing an atrial septal defect in 18-year-old Cecelia Bavolek at Jefferson Medical College Hospital in Philadelphia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-05-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Gibbon reported the successful Bavolek operation and his extracorporeal pump-oxygenator in \'Application of a mechanical heart and lung apparatus to cardiac surgery\' in Minnesota Medicine in 1954, recording in the literature the claim that the heart and lungs could be safely bypassed by a machine while the heart was opened and repaired under direct vision. This established the technical feasibility of intracardiac surgery, previously impossible because the beating, blood-filled heart could not be operated on directly.',
+        source: {
+          externalId: 'src:gibbon-mechanical-heart-lung-minn-med-1954',
+          name: 'Gibbon JH Jr. Application of a mechanical heart and lung apparatus to cardiac surgery. Minn Med. 1954;37(3):171-185.',
+          url: 'https://www.semanticscholar.org/paper/Application-of-a-mechanical-heart-and-lung-to-Gibbon/ab5a9850b72dc5749cf023ef9dae03879128bfad',
+          publishedAt: '1954-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1955-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Within two years John Kirklin\'s team at the Mayo Clinic reproduced the technique, reporting eight intracardiac operations performed with a Gibbon-type pump-oxygenator system in 1955; together with Lillehei\'s cross-circulation work, this demonstrated reproducibility and launched routine open-heart surgery. Cardiopulmonary bypass became the indispensable foundation of cardiac surgery, settling the claim that mechanical perfusion could safely sustain a patient during intracardiac repair.',
+        source: {
+          externalId: 'src:kirklin-mayo-pump-oxygenator-1955',
+          name: 'Kirklin JW, DuShane JW, Patrick RT, Donald DE, Hetzel PS, Harshbarger HG, Wood EH. Intracardiac surgery with the aid of a mechanical pump-oxygenator system (Gibbon type): report of eight cases. Proc Staff Meet Mayo Clin. 1955;30(10):201-206.',
+          url: 'https://www.mayoclinicproceedings.org/article/S0025-6196(26)01694-0/fulltext',
+          publishedAt: '1955-05-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Closed-chest cardiac massage — CPR 1960 ─────────────────────────────────
+  {
+    externalId: 'trajectory:closed-chest-cardiac-massage-cpr-1960',
+    text: 'Kouwenhoven, Jude, and Knickerbocker reported in JAMA on 9 July 1960 that rhythmic external compression of the sternum (\'closed-chest cardiac massage\') could sustain circulation and resuscitate patients in cardiac arrest without opening the chest.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-07-09',
+        datePrecision: 'DAY',
+        reason: 'In \'Closed-chest cardiac massage\' the Johns Hopkins group reported that anyone, anywhere could maintain circulation during cardiac arrest using only their hands pressing on the sternum, citing a survival series and stating \'all that is needed are two hands.\' This recorded the claim that the chest no longer had to be surgically opened (open-cardiac massage) to resuscitate an arrested heart, overturning the prevailing standard for cardiac arrest.',
+        source: {
+          externalId: 'src:kouwenhoven-closed-chest-massage-jama-1960',
+          name: 'Kouwenhoven WB, Jude JR, Knickerbocker GG. Closed-chest cardiac massage. JAMA. 1960;173(10):1064-1067.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14411374/',
+          publishedAt: '1960-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1966-10-24',
+        datePrecision: 'DAY',
+        reason: 'Following a May 1966 conference, the Ad Hoc Committee on Cardiopulmonary Resuscitation of the National Academy of Sciences–National Research Council published the first national CPR standards in JAMA, integrating closed-chest compression with Safar\'s mouth-to-mouth ventilation into the standardized A-B-C protocol. Institutional codification by the NAS-NRC (and subsequent American Heart Association adoption) settled chest-compression CPR as the universal standard of care for cardiac arrest.',
+        source: {
+          externalId: 'src:nas-nrc-cpr-standards-jama-1966',
+          name: 'Ad Hoc Committee on Cardiopulmonary Resuscitation, Division of Medical Sciences, National Academy of Sciences–National Research Council. Cardiopulmonary Resuscitation. JAMA. 1966;198(4):372-379.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/661914',
+          publishedAt: '1966-10-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Apgar score — newborn evaluation 1953 ───────────────────────────────────
+  {
+    externalId: 'trajectory:apgar-score-newborn-evaluation-1953',
+    text: 'Virginia Apgar proposed in Current Researches in Anesthesia and Analgesia in 1953 a simple, rapid 0-to-10 scoring system (heart rate, respiratory effort, reflex irritability, muscle tone, color) for objectively evaluating the condition of the newborn infant in the first minute of life.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1953-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In \'A proposal for a new method of evaluation of the newborn infant,\' anesthesiologist Virginia Apgar argued that the condition of the neonate at birth was being judged haphazardly and proposed five quickly observable signs scored 0–2 each. This recorded the claim that newborn vitality could be standardized into a single reproducible number, creating the first objective metric for triaging infants needing resuscitation.',
+        source: {
+          externalId: 'src:apgar-newborn-evaluation-1953',
+          name: 'Apgar V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953;32(4):260-267.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13083014/',
+          publishedAt: '1953-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-12-13',
+        datePrecision: 'DAY',
+        reason: 'Apgar and colleagues published a \'second report\' in JAMA validating the score against neonatal outcomes in a series of over 15,000 infants and showing it predicted mortality. The score was rapidly adopted into delivery-room routine worldwide and remains, decades later, the universal standard for assessing the newborn, settling the claim that a brief structured exam objectively measures neonatal condition.',
+        source: {
+          externalId: 'src:apgar-newborn-second-report-jama-1958',
+          name: 'Apgar V, Holaday DA, James LS, Weisbrot IM, Berrien C. Evaluation of the newborn infant; second report. J Am Med Assoc. 1958;168(15):1985-1988.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13598635/',
+          publishedAt: '1958-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Charnley low-friction hip arthroplasty — 1961 ───────────────────────────
+  {
+    externalId: 'trajectory:charnley-low-friction-hip-arthroplasty-1961',
+    text: 'John Charnley reported in The Lancet on 27 May 1961 a new low-friction total hip arthroplasty — a small metal femoral head articulating in a high-density polymer acetabular socket fixed with acrylic bone cement — that durably relieved pain and restored function in arthritic hips.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-05-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-05-27',
+        datePrecision: 'DAY',
+        reason: 'In \'Arthroplasty of the hip: a new operation,\' Charnley set out his low-friction principle — replacing both the femoral head and the acetabular cup with artificial bearing surfaces anchored by self-curing acrylic cement — and reported relief of pain and restored mobility. This recorded the claim that an arthritic hip joint could be wholly and durably replaced by prosthetic components, a goal that earlier metal-on-metal and mould arthroplasties had failed to achieve reliably.',
+        source: {
+          externalId: 'src:charnley-hip-arthroplasty-lancet-1961',
+          name: 'Charnley J. Arthroplasty of the hip: a new operation. Lancet. 1961;1(7187):1129-1132.',
+          url: 'https://doi.org/10.1016/S0140-6736(61)92063-3',
+          publishedAt: '1961-05-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Long-term survivorship studies confirmed the durability Charnley claimed: a Mayo Clinic series of 2,000 consecutive primary Charnley total hip replacements showed roughly 80% implant survivorship at 25 years. Low-friction arthroplasty became the worldwide gold-standard design for hip replacement and one of the most successful operations in surgery, settling the claim that prosthetic hip replacement provides lasting relief.',
+        source: {
+          externalId: 'src:berry-charnley-25yr-survivorship-jbjs-2002',
+          name: 'Berry DJ, Harmsen WS, Cabanela ME, Morrey BF. Twenty-five-year survivorship of two thousand consecutive primary Charnley total hip replacements. J Bone Joint Surg Am. 2002;84(2):171-177.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11861721/',
+          publishedAt: '2002-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── CASS — CABG no survival benefit in stable disease 1983 ──────────────────
+  {
+    externalId: 'trajectory:cass-cabg-no-survival-benefit-stable-disease-1983',
+    text: 'The Coronary Artery Surgery Study (CASS) randomized trial reported in Circulation in November 1983 that, in patients with mild stable angina and preserved left-ventricular function, coronary artery bypass grafting did not improve survival compared with initial medical therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The NHLBI-funded CASS randomized 780 patients with stable ischemic heart disease to bypass surgery or medical therapy and found near-identical survival at five years (annual mortality ~1.1% surgical vs ~1.6% medical, not significant). This recorded a controlled-trial result contesting the prevailing assumption — built on the rapid post-Favaloro spread of CABG — that bypass grafting prolonged life across coronary disease broadly, by showing no survival advantage in lower-risk stable patients.',
+        source: {
+          externalId: 'src:cass-randomized-survival-circulation-1983',
+          name: 'CASS Principal Investigators and Associates. Coronary artery surgery study (CASS): a randomized trial of coronary artery bypass surgery. Survival data. Circulation. 1983;68(5):939-950.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6137292/',
+          publishedAt: '1983-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-25',
+        datePrecision: 'DAY',
+        reason: 'Long-term follow-up confirmed and refined the finding: 10- and 20-year CASS data showed CABG\'s survival benefit was confined to higher-risk subgroups (e.g., depressed ejection fraction, three-vessel or left-main disease) while low-risk stable patients did equally well with medicine. This evidence settled the principle — codified in revascularization guidelines — that the survival benefit of CABG is risk-stratified rather than universal.',
+        source: {
+          externalId: 'src:cass-twenty-year-survival-circulation-2003',
+          name: 'Myers WO, Blackstone EH, Davis K, Foster ED, Kaiser GC. Twenty-Year Survival After Coronary Artery Surgery (CASS). Circulation. 2003;107(11):e9013 (long-term follow-up of the CASS randomized cohort).',
+          url: 'https://www.ahajournals.org/doi/full/10.1161/01.cir.0000053642.34528.d9',
+          publishedAt: '2003-03-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // PRECISION MEDICINE ERA (2010s)
   // ═══════════════════════════════════════════════════════════════════════════════
 
