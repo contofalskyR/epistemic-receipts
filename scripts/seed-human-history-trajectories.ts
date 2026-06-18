@@ -1284,6 +1284,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Chiapa de Corzo Stela 2 — earliest known Long Count date (Chiapas) ───────
+  {
+    externalId: 'trajectory:chiapa-de-corzo-stela-2-36bce',
+    text: 'An inscribed panel at Chiapa de Corzo, Chiapas (conventionally numbered Stela 2), bears the Long Count date 7.16.3.2.13 (December 36 BCE) — the oldest Mesoamerican Long Count date yet discovered on any monument.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0036-12-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0036-12-06',
+        datePrecision: 'DAY',
+        reason: 'Carvers in the Chiapas highlands inscribe a Long Count date on the stone panel later catalogued as Chiapa de Corzo Stela 2. All that survives of the text is the day-name and the digits 7.16.3.2.13, fixing a single day in the bar-and-dot count that runs from the 3114 BCE era base — a contemporaneous primary record predating every dated monument in Mesoamerica.',
+        source: {
+          externalId: 'src:chiapa-de-corzo-stela-2-monument',
+          name: 'Chiapa de Corzo Stela 2 (inscribed panel), Long Count 7.16.3.2.13 (December 36 BCE), Chiapas.',
+          url: 'https://en.wikipedia.org/wiki/Chiapa_de_Corzo_(Mesoamerican_site)',
+          publishedAt: '0036-12-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Read through the Goodman–Martínez–Thompson correlation, the surviving digits 7.16.3.2.13 place the inscription in December 36 BCE. Mesoamerican epigraphy recognises it as the oldest securely placed Long Count date known — a few years older than Tres Zapotes Stela C. An alternative reading shifts it one bak\'tun later (8.7.3.2.13, 182 CE), but the 36 BCE date is the conventional reading.',
+        source: {
+          externalId: 'src:chiapa-de-corzo-earliest-long-count',
+          name: 'Mesoamerican Long Count calendar — earliest known Long Count dates, Chiapa de Corzo Stela 2 (December 36 BCE).',
+          url: 'https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tres Zapotes Stela C — early Long Count date confirmed (epi-Olmec) ───────
+  {
+    externalId: 'trajectory:tres-zapotes-stela-c-32bce',
+    text: 'Stela C at Tres Zapotes, Veracruz, bears the Long Count date 7.16.6.16.18 (3 September 32 BCE), among the earliest dates ever inscribed in the Mesoamerican Long Count — carved by the epi-Olmec people of the Gulf Coast.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0032-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0032-09-03',
+        datePrecision: 'DAY',
+        reason: 'Epi-Olmec carvers of the Gulf Coast inscribe a Long Count date — 7.16.6.16.18, 6 Etznab — on the basalt Stela C at Tres Zapotes, fixing a day in the bar-and-dot count. The monument is a contemporaneous primary record predating every dated Maya monument.',
+        source: {
+          externalId: 'src:tres-zapotes-stela-c-monument',
+          name: 'Tres Zapotes Stela C, bearing Long Count date 7.16.6.16.18 (32 BCE), epi-Olmec, Veracruz.',
+          url: 'https://en.wikipedia.org/wiki/Tres_Zapotes',
+          publishedAt: '0032-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Matthew Stirling excavated the lower half of Stela C in 1939 and — with his wife Marion Stirling — read the leading, broken coefficient as a "7," a bak\'tun-7 date implying the monument predated all known Maya Long Count stelae. The reading was contested, since the missing first digit could not be confirmed and an early-7 placement seemed implausibly old.',
+        source: {
+          externalId: 'src:stirling-tres-zapotes-1943',
+          name: 'Stirling MW. Stone Monuments of Southern Mexico (Bureau of American Ethnology Bulletin 138, 1943), reporting the 1939 reading of Stela C.',
+          url: 'https://en.wikipedia.org/wiki/Tres_Zapotes',
+          publishedAt: '1943-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1969 the missing upper half of Stela C was found, preserving the leading coefficient and confirming the bak\'tun reading of "7" — vindicating the Stirlings\' 1939 interpretation and settling the date as 7.16.6.16.18 (32 BCE). Stela C is now established as one of the oldest Long Count dates known, second only to Chiapa de Corzo Stela 2.',
+        source: {
+          externalId: 'src:tres-zapotes-stela-c-top-half-1969',
+          name: 'Recovery of the upper fragment of Tres Zapotes Stela C (1969), confirming the bak\'tun-7 coefficient.',
+          url: 'https://en.wikipedia.org/wiki/Tres_Zapotes',
+          publishedAt: '1969-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── La Mojarra Stela 1 — epi-Olmec Long Count dates (Veracruz) ───────────────
+  {
+    externalId: 'trajectory:la-mojarra-stela-1-143',
+    text: 'La Mojarra Stela 1, an epi-Olmec (Isthmian) monument from Veracruz, records two Long Count dates — 8.5.3.3.5 (May 143 CE) and 8.5.16.9.7 (July 156 CE) — alongside one of the longest surviving texts in the Isthmian script.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0143-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0143-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Epi-Olmec scribes inscribe two Long Count dates and roughly 535 glyphs of Isthmian script on the stela, recording dates in May 143 CE and July 156 CE around the figure of a richly dressed ruler. The bar-and-dot Long Count fixes the dates numerically; the surrounding narrative text is written in a script that would remain unread for centuries.',
+        source: {
+          externalId: 'src:la-mojarra-stela-1-monument',
+          name: 'La Mojarra Stela 1, epi-Olmec/Isthmian monument recording Long Count dates 8.5.3.3.5 (143 CE) and 8.5.16.9.7 (156 CE).',
+          url: 'https://en.wikipedia.org/wiki/La_Mojarra_Stela_1',
+          publishedAt: '0143-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The stela was pulled from the Acula River near La Mojarra, Veracruz, in 1986. Its Long Count dates — numerically legible even where the surrounding script is not — are read through the standard correlation as 143 CE and 156 CE. A 1993 decipherment of the narrative text by John Justeson and Terrence Kaufman remains contested by Michael Coe and Stephen Houston, but the calendrical dates themselves are not in dispute.',
+        source: {
+          externalId: 'src:la-mojarra-recovery-1986',
+          name: 'La Mojarra Stela 1 — recovery from the Acula River (1986) and reading of its Long Count dates.',
+          url: 'https://en.wikipedia.org/wiki/La_Mojarra_Stela_1',
+          publishedAt: '1986-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tikal Stela 29 — earliest Long Count date in the Maya lowlands ───────────
+  {
+    externalId: 'trajectory:tikal-stela-29-292',
+    text: 'Stela 29 at Tikal bears the Long Count date 8.12.14.8.15 (6 July 292 CE in the GMT correlation), the earliest securely dated Maya Long Count monument of the central lowlands and the first to carry the Tikal emblem glyph.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0292-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0292-07-06',
+        datePrecision: 'DAY',
+        reason: 'Maya carvers at Tikal inscribe the Long Count date 8.12.14.8.15 on a stela depicting a richly adorned ruler holding the head of an underworld jaguar deity, dating the monument to the day and including the earliest known instance of the Tikal emblem glyph.',
+        source: {
+          externalId: 'src:tikal-stela-29-monument',
+          name: 'Tikal Stela 29, Long Count 8.12.14.8.15 (292 CE), earliest dated monument of the Maya lowlands.',
+          url: 'https://en.wikipedia.org/wiki/Tikal',
+          publishedAt: '0292-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The upper portion of Stela 29 — deliberately smashed in antiquity and dumped in a refuse deposit near Temple III — was uncovered by University of Pennsylvania archaeologists in 1959. Read through the Goodman–Martínez–Thompson correlation, its date 8.12.14.8.15 places the monument at 292 CE, establishing it in Maya epigraphy as the earliest securely dated Long Count monument of the central lowlands and the first unequivocally Maya artifact.',
+        source: {
+          externalId: 'src:tikal-stela-29-earliest-maya',
+          name: 'Mesoamerican Long Count calendar — Tikal Stela 29, 8.12.14.8.15 (292 CE), first unequivocally Maya artifact.',
+          url: 'https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar',
+          publishedAt: '1959-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
