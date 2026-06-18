@@ -65009,6 +65009,152 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL (500–1400 CE) — South Asia
+  // added 2026-06-18
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Mahmud of Ghazni sacks the Somnath temple ───────────────────────────────
+  {
+    externalId: 'trajectory:sack-of-somnath-1026',
+    text: 'In January 1026, Mahmud of Ghazni stormed and sacked the great Shiva temple of Somnath on the coast of Gujarat, destroying its celebrated lingam and carrying off an immense plunder — a raid that became one of the most consequential and most contested episodes in the history of medieval South Asia.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1026-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1026-01-07',
+        datePrecision: 'DAY',
+        reason: 'After a long march across the Thar desert, the Ghaznavid army launched its assault on the fortified Somnath temple on Friday, 7 January 1026 (the date is also given as 8 January), overrunning the defenders, sacking the shrine and breaking up its great lingam, and seizing an enormous treasure. The raid is recorded by near-contemporary Persian writers — al-Biruni, who travelled in northwest India with Mahmud\'s armies between 1017 and 1030, the historian al-Utbi in the Tarikh-i Yamini, Gardizi, and later Ibn al-Athir.',
+        source: {
+          externalId: 'src:sack-of-somnath-1026-wikipedia',
+          name: 'Sack of Somnath (January 1026) — Mahmud of Ghazni storms and plunders the Somnath temple. Recorded by near-contemporary Persian chroniclers including al-Biruni, al-Utbi, and Gardizi.',
+          url: 'https://en.wikipedia.org/wiki/Sack_of_Somnath',
+          publishedAt: '1026-01-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The fact of Mahmud\'s 1026 raid on Somnath and its plunder is settled in modern scholarship (Muhammad Nazim\'s The Life and Times of Sultan Mahmud of Ghazna, 1931, and subsequent work), drawing on the convergent Persian sources; two later writers dating the event to 1027 are treated as mistaken. What remains debated is its significance and memory — the legend of the temple gates and the construction of Somnath as a symbol of conquest are products of much later, especially nineteenth-century colonial and nationalist, retellings rather than the contemporaneous record.',
+        source: {
+          externalId: 'src:sack-of-somnath-1026-scholarship',
+          name: 'Modern scholarship on Mahmud of Ghazni\'s sack of Somnath and its later mythologisation (Nazim 1931; Thapar, Somanatha: The Many Voices of a History, 2004).',
+          url: 'https://en.wikipedia.org/wiki/Sack_of_Somnath',
+          publishedAt: '1931-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Qutb ud-Din Aibak crowned at Lahore — founding of the Delhi Sultanate ────
+  {
+    externalId: 'trajectory:qutb-ud-din-aibak-coronation-1206',
+    text: 'On 25 June 1206, following the assassination of Muhammad of Ghor, his former slave-general Qutb ud-Din Aibak was enthroned as an independent ruler at Lahore, the act conventionally taken as the founding of the Delhi Sultanate and its first (Mamluk or "Slave") dynasty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1206-06-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1206-06-25',
+        datePrecision: 'DAY',
+        reason: 'After Muhammad of Ghor was killed in March 1206 leaving no son, Aibak — the commander who had captured Delhi and Ajmer for the Ghurids — ascended the throne at the Qasr-e-Humayun in Lahore on 25 June 1206, ruling the Ghurid conquests in northern India as an effectively independent sovereign (his formal manumission and recognition as Sultan came a little later, in 1208–1209). The reign is chronicled by the near-contemporary historian Minhaj-i-Siraj Juzjani in the Tabaqat-i-Nasiri.',
+        source: {
+          externalId: 'src:qutb-ud-din-aibak-coronation-1206-wikipedia',
+          name: 'Qutb ud-Din Aibak — coronation at Lahore, 25 June 1206, founding the Delhi Sultanate. Recorded in Minhaj-i-Siraj\'s Tabaqat-i-Nasiri.',
+          url: 'https://en.wikipedia.org/wiki/Qutb_ud-Din_Aibak',
+          publishedAt: '1206-06-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern scholarship treats Aibak\'s 1206 accession as the conventional starting point of the Delhi Sultanate, the Muslim-ruled state that would dominate northern India until 1526. The date and his role as founder of the Mamluk dynasty are settled; historians debate the precise constitutional status of his early rule (semi-independent governor versus sovereign sultan) rather than the event itself.',
+        source: {
+          externalId: 'src:qutb-ud-din-aibak-coronation-1206-scholarship',
+          name: 'Modern scholarship on Qutb ud-Din Aibak and the founding of the Delhi Sultanate (1206).',
+          url: 'https://en.wikipedia.org/wiki/Delhi_Sultanate',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Alauddin Khalji seizes the throne of Delhi ───────────────────────────────
+  {
+    externalId: 'trajectory:alauddin-khalji-accession-1296',
+    text: 'In July 1296 Ali Gurshasp had his uncle and father-in-law Sultan Jalaluddin Khalji murdered at Kara on the Ganges and proclaimed himself ruler as Alauddin Khalji; he was formally enthroned as Sultan at Delhi on 21 October 1296, beginning a reign of sweeping conquest and price-control reforms.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1296-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1296-07-19',
+        datePrecision: 'DAY',
+        reason: 'Having lured Sultan Jalaluddin Khalji to Kara with promises of submission, Alauddin had him killed as he stepped ashore from the Ganges and immediately declared himself king with the title Alauddunya wad Din Muhammad Shah-us Sultan. The contemporary court poet Amir Khusrau, who was present in royal service, dates the accession to 19 July 1296; the slightly later historian Ziauddin Barani gives 20 July, and Khusrau is regarded as the more reliable witness.',
+        source: {
+          externalId: 'src:alauddin-khalji-accession-1296-wikipedia',
+          name: 'Alauddin Khalji — assassination of Jalaluddin Khalji and accession at Kara, 19–20 July 1296. Dated by the contemporary poet Amir Khusrau.',
+          url: 'https://en.wikipedia.org/wiki/Alauddin_Khalji',
+          publishedAt: '1296-07-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1296-10-21',
+        datePrecision: 'DAY',
+        reason: 'After distributing gold to win over the nobles and the populace and securing the defection of the late sultan\'s supporters, Alauddin marched on the capital and was formally proclaimed Sultan in Delhi on 21 October 1296, consolidating in fact the throne he had seized at Kara three months earlier. The sequence is narrated by Amir Khusrau and Barani.',
+        source: {
+          externalId: 'src:alauddin-khalji-delhi-enthronement-1296',
+          name: 'Alauddin Khalji formally proclaimed Sultan at Delhi, 21 October 1296.',
+          url: 'https://en.wikipedia.org/wiki/Alauddin_Khalji',
+          publishedAt: '1296-10-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The chronology of Alauddin\'s usurpation — the murder of Jalaluddin at Kara in July 1296 and the Delhi enthronement that October — is settled in modern scholarship (Kishori Saran Lal, History of the Khaljis, rev. ed. 1967), which reconciles the accounts of Amir Khusrau and Barani. Debate concerns the reliability of the chroniclers on Alauddin\'s motives and reforms, not the dating of the accession.',
+        source: {
+          externalId: 'src:alauddin-khalji-accession-1296-scholarship',
+          name: 'Modern scholarship on Alauddin Khalji\'s seizure of the Delhi throne in 1296 (Lal, History of the Khaljis).',
+          url: 'https://en.wikipedia.org/wiki/Alauddin_Khalji',
+          publishedAt: '1967-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────

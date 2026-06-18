@@ -8860,6 +8860,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINES — EPISTEMIC REVERSALS & SAFETY CRISES
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Salk inactivated polio vaccine — Francis report & Cutter incident 1955 ──
+  {
+    externalId: 'trajectory:salk-inactivated-polio-vaccine-1955',
+    text: 'Thomas Francis Jr. reported on 12 April 1955 that Jonas Salk\'s formalin-inactivated poliovirus vaccine was safe, effective, and potent in preventing paralytic poliomyelitis, and the vaccine was licensed for use in U.S. children the same day.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1955-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1955-04-12',
+        datePrecision: 'DAY',
+        reason: 'At the University of Michigan, Thomas Francis Jr., director of the Poliomyelitis Vaccine Evaluation Center, announced the results of the 1954 field trial of roughly 1.8 million children, declaring the Salk inactivated vaccine \'safe, effective, and potent\' (60–90% efficacy against paralytic polio). The federal government licensed six manufacturers the same day, placing on the official record the claim that an inactivated poliovirus vaccine could prevent paralytic disease.',
+        source: {
+          externalId: 'src:francis-1954-polio-vaccine-trials-1955',
+          name: 'Francis T Jr, Korns RF, Voight RB, et al. An evaluation of the 1954 poliomyelitis vaccine trials. Am J Public Health. 1955;45(5 Pt 2):1-63.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14361811/',
+          publishedAt: '1955-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1955-05-07',
+        datePrecision: 'DAY',
+        reason: 'Defective lots produced by Cutter Laboratories contained incompletely inactivated live poliovirus, causing roughly 40,000 cases of abortive polio, 51 cases of permanent paralysis, and 5 deaths among vaccinees and their contacts. The U.S. Surgeon General suspended the national immunization program in early May 1955, throwing the safety of the inactivated vaccine into immediate public and institutional doubt.',
+        source: {
+          externalId: 'src:offit-cutter-incident-50-years-2005',
+          name: 'Offit PA. The Cutter incident, 50 years later. N Engl J Med. 2005;352(14):1411-1412.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15814877/',
+          publishedAt: '2005-04-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Nathanson and Langmuir\'s epidemiologic investigation established that the 1955 cases stemmed from the specific Cutter manufacturing failure—cell debris shielding virus from formaldehyde—rather than any flaw in the inactivated-vaccine concept. With tightened production and testing standards the program resumed, and paralytic polio incidence in the U.S. fell from tens of thousands of cases annually to a few hundred, re-settling the vaccine\'s efficacy and safety.',
+        source: {
+          externalId: 'src:nathanson-langmuir-cutter-incident-1963',
+          name: 'Nathanson N, Langmuir AD. The Cutter incident. Poliomyelitis following formaldehyde-inactivated poliovirus vaccination in the United States during the spring of 1955. Am J Hyg. 1963;78(1):16-28.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14043545/',
+          publishedAt: '1963-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Low-level lead exposure / childhood cognition — Needleman 1979 ──────────
+  {
+    externalId: 'trajectory:needleman-low-level-lead-childhood-cognition-1979',
+    text: 'Herbert Needleman and colleagues reported on 29 March 1979 that children with elevated dentine (tooth) lead levels but no clinical lead poisoning showed measurable deficits in IQ, attention, and classroom performance, establishing that low-level, subclinical lead exposure impairs children\'s cognitive development.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-03-29',
+        datePrecision: 'DAY',
+        reason: 'Needleman et al. published in the New England Journal of Medicine a study of first- and second-grade children classified by dentine lead, finding that higher-lead children scored significantly lower on full-scale IQ, verbal performance, and attention and were rated worse by teachers on classroom behavior. The paper put on record the claim that lead causes neurobehavioral harm at exposures below the threshold for diagnosed lead poisoning.',
+        source: {
+          externalId: 'src:needleman-dentine-lead-deficits-nejm-1979',
+          name: 'Needleman HL, Gunnoe C, Leviton A, et al. Deficits in psychologic and classroom performance of children with elevated dentine lead levels. N Engl J Med. 1979;300(13):689-695.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/763299/',
+          publishedAt: '1979-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-11',
+        datePrecision: 'DAY',
+        reason: 'Needleman\'s 11-year follow-up of the original cohort showed that childhood lead exposure predicted lower class standing, reading disability, and higher school dropout into young adulthood, confirming durable harm. Combined with the EPA\'s phasedown of leaded gasoline and the CDC\'s progressive lowering of the blood-lead level of concern, the no-safe-threshold view became scientific consensus; data-integrity allegations raised against Needleman in 1990–1991 were investigated and ultimately dismissed, leaving the finding intact.',
+        source: {
+          externalId: 'src:needleman-11-year-lead-followup-nejm-1990',
+          name: 'Needleman HL, Schell A, Bellinger D, Leviton A, Allred EN. The long-term effects of exposure to low doses of lead in childhood. An 11-year follow-up report. N Engl J Med. 1990;322(2):83-88.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199001113220203',
+          publishedAt: '1990-01-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Killed inactivated measles vaccine — withdrawal 1967 ────────────────────
+  {
+    externalId: 'trajectory:killed-inactivated-measles-vaccine-withdrawal-1967',
+    text: 'A formalin-inactivated (\'killed\') measles virus vaccine was licensed in the United States in 1963 as a safe and effective means of immunizing children against measles, then withdrawn in 1967–1968 after recipients were found to develop severe atypical measles on later exposure to wild virus.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1963-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-03',
+        datePrecision: 'MONTH',
+        reason: 'In March 1963 U.S. regulators licensed both a live attenuated (Edmonston-B) measles vaccine and a formalin-inactivated \'killed\' measles vaccine, the latter offered as a less reactogenic option and given to hundreds of thousands of children. This recorded the claim that an inactivated measles vaccine could safely protect children against measles.',
+        source: {
+          externalId: 'src:cdc-pinkbook-measles-chapter13',
+          name: 'CDC. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book), Chapter 13: Measles.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-13-measles.html',
+          publishedAt: '2021-08-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-12-18',
+        datePrecision: 'DAY',
+        reason: 'Fulginiti and colleagues reported in JAMA that children immunized years earlier with killed measles vaccine developed atypical measles—high fever, an unusual peripheral rash, and pneumonia—when later exposed to wild virus, showing the vaccine sensitized rather than durably protected. The killed vaccine was withdrawn from the U.S. market, reversing the original safety-and-efficacy claim.',
+        source: {
+          externalId: 'src:fulginiti-atypical-measles-killed-vaccine-jama-1967',
+          name: 'Fulginiti VA, Eller JJ, Downie AW, Kempe CH. Altered reactivity to measles virus. Atypical measles in children previously immunized with inactivated measles virus vaccines. JAMA. 1967;202(12):1075-1080.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/336928',
+          publishedAt: '1967-12-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hib polysaccharide vaccine — ineffective in infants 1985 ────────────────
+  {
+    externalId: 'trajectory:hib-polysaccharide-vaccine-ineffective-infants-1985',
+    text: 'The unconjugated PRP capsular polysaccharide Haemophilus influenzae type b (Hib) vaccine, licensed in the United States in April 1985, was claimed to protect young children against invasive Hib disease but was found to give little or no protection to the highest-risk children and was superseded by conjugate vaccines within three years.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1985-04',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-04',
+        datePrecision: 'MONTH',
+        reason: 'The FDA licensed the first Hib vaccine, an unconjugated PRP capsular polysaccharide, and it was recommended for children 18–59 months of age. This recorded the claim that a polysaccharide vaccine could protect young children against invasive Haemophilus influenzae type b disease—then a leading cause of childhood bacterial meningitis.',
+        source: {
+          externalId: 'src:cdc-pinkbook-hib-chapter8',
+          name: 'CDC. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book), Chapter 8: Haemophilus influenzae type b.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-8-haemophilus-influenzae.html',
+          publishedAt: '2021-08-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-09-09',
+        datePrecision: 'DAY',
+        reason: 'Osterholm et al. reported in JAMA that the PRP polysaccharide vaccine provided no measurable protection in Minnesota children—including those in the licensed 18–59-month range—and may even have been associated with increased early risk. The finding directly contradicted the licensed efficacy claim and, with poor immunogenicity under 18 months already known, put the vaccine\'s usefulness in serious dispute.',
+        source: {
+          externalId: 'src:osterholm-hib-polysaccharide-no-efficacy-jama-1988',
+          name: 'Osterholm MT, Rambeck JH, White KE, et al. Lack of efficacy of Haemophilus b polysaccharide vaccine in Minnesota. JAMA. 1988;260(10):1423-1428.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3261349/',
+          publishedAt: '1988-09-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-11-15',
+        datePrecision: 'DAY',
+        reason: 'Eskola et al. showed in a large randomized Finnish field trial that a Hib conjugate vaccine—linking the PRP polysaccharide to a protein carrier—protected infants and young children, the group the plain polysaccharide vaccine could not. Conjugate vaccines (the first, PRP-D, licensed December 1987) replaced the polysaccharide vaccine, which was discontinued; the original polysaccharide claim was abandoned in favor of the conjugate technology.',
+        source: {
+          externalId: 'src:eskola-hib-conjugate-field-trial-nejm-1990',
+          name: 'Eskola J, Käyhty H, Takala AK, et al. A randomized, prospective field trial of a conjugate vaccine in the protection of infants and young children against invasive Haemophilus influenzae type b disease. N Engl J Med. 1990;323(20):1381-1387.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199011153232004',
+          publishedAt: '1990-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Whole-cell pertussis vaccine / brain damage claim — Kulenkampff 1974 ────
+  {
+    externalId: 'trajectory:whole-cell-pertussis-vaccine-brain-damage-1974',
+    text: 'Kulenkampff, Schwartzman and Wilson reported in January 1974 that whole-cell pertussis (DTP) vaccine could cause serious acute neurological reactions and permanent brain damage in young children—a claim that triggered a collapse in UK vaccination coverage and was later not upheld.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01',
+        datePrecision: 'MONTH',
+        reason: 'Kulenkampff et al. described in Archives of Disease in Childhood 36 children with neurological complications—including convulsions and apparent permanent brain damage—temporally clustered after pertussis (triple) vaccination, suggesting a causal rather than coincidental relation. Amplified by the press and the Association of Parents of Vaccine Damaged Children, the claim drove UK pertussis vaccine uptake from about 80% to 30% between 1974 and 1978 and precipitated whooping-cough epidemics.',
+        source: {
+          externalId: 'src:kulenkampff-pertussis-neurological-complications-1974',
+          name: 'Kulenkampff M, Schwartzman JS, Wilson J. Neurological complications of pertussis inoculation. Arch Dis Child. 1974;49(1):46-49.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4818092/',
+          publishedAt: '1974-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-05-16',
+        datePrecision: 'DAY',
+        reason: 'The National Childhood Encephalopathy Study (NCES), reported by Miller et al. in the British Medical Journal, found that serious acute neurological illness within seven days of DTP was rare and the attributable-risk estimate was statistically marginal with very wide confidence intervals; crucially, it found no case of resulting permanent brain damage. The original strong causal claim was sharply qualified and placed in dispute.',
+        source: {
+          externalId: 'src:miller-nces-pertussis-neurological-bmj-1981',
+          name: 'Miller DL, Ross EM, Alderslade R, Bellman MH, Rawson NSB. Pertussis immunisation and serious acute neurological illness in children. Br Med J (Clin Res Ed). 1981;282(6276):1595-1599.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6786580/',
+          publishedAt: '1981-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1988-03-30',
+        datePrecision: 'DAY',
+        reason: 'In Loveday v Renton, after a 61-day trial weighing the NCES and expert epidemiologic evidence, Lord Justice Stuart-Smith of the English High Court held that it had not been proved on the balance of probabilities that whole-cell pertussis vaccine can cause permanent brain damage in young children. The ruling effectively ended the major UK vaccine-damage litigation and reflected the emerging consensus that the permanent-brain-damage claim was unsubstantiated.',
+        source: {
+          externalId: 'src:iom-pertussis-rubella-chronology-1991',
+          name: 'Institute of Medicine. Pertussis and Rubella Vaccines: A Brief Chronology. In: Adverse Effects of Pertussis and Rubella Vaccines. Washington (DC): National Academies Press; 1991.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234365/',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
