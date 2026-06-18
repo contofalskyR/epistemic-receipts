@@ -9763,6 +9763,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHIATRY & NEUROLOGY ERA (2017–2019)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Cipriani 21-antidepressants network meta-analysis — Lancet 2018 ─────────
+  {
+    externalId: 'trajectory:cipriani-21-antidepressants-network-meta-analysis-2018',
+    text: 'On 21 February 2018, Andrea Cipriani and colleagues published in The Lancet a network meta-analysis of 522 randomized trials (116,477 patients) concluding that all 21 antidepressants studied were more efficacious than placebo for the acute treatment of major depressive disorder in adults.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-02-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-02-21',
+        datePrecision: 'DAY',
+        reason: 'Cipriani and colleagues published online in The Lancet the largest-ever network meta-analysis of antidepressants, pooling 522 double-blind trials. Its headline finding — that all 21 drugs beat placebo, with effect sizes ranging modestly — directly answered the long-running \'antidepressants are no better than placebo\' debate sparked by Kirsch\'s 2008 meta-analysis. The paper entered the literature as the new reference evidence base.',
+        source: {
+          externalId: 'src:cipriani-lancet-antidepressants-2018',
+          name: 'Cipriani A, Furukawa TA, Salanti G, et al. Comparative efficacy and acceptability of 21 antidepressant drugs for the acute treatment of adults with major depressive disorder: a systematic review and network meta-analysis. Lancet. 2018;391(10128):1357-1366.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29477251/',
+          publishedAt: '2018-02-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-04-07',
+        datePrecision: 'DAY',
+        reason: 'On print publication in the 7 April 2018 issue, the analysis was rapidly adopted as the authoritative comparative-efficacy reference and cited across major depression guidelines and editorials. Despite methodological critiques, the core conclusion that antidepressants outperform placebo became the settled mainstream position, displacing the earlier placebo-equivalence controversy.',
+        source: {
+          externalId: 'src:cipriani-lancet-antidepressants-print-2018',
+          name: 'Cipriani A, et al. Comparative efficacy and acceptability of 21 antidepressant drugs for major depressive disorder. Lancet. 2018;391(10128):1357-1366 (print issue, 7 April 2018).',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(17)32802-7/fulltext',
+          publishedAt: '2018-04-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Valbenazine (Ingrezza) — first tardive dyskinesia drug, FDA 2017 ─────────
+  {
+    externalId: 'trajectory:valbenazine-ingrezza-first-tardive-dyskinesia-drug-2017',
+    text: 'On 11 April 2017, the U.S. FDA approved Neurocrine Biosciences\' valbenazine (Ingrezza), the first drug ever approved to treat tardive dyskinesia, the involuntary movement disorder caused by long-term antipsychotic use.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-03-21',
+        datePrecision: 'MONTH',
+        reason: 'The pivotal KINECT 3 phase 3 trial, published in the American Journal of Psychiatry, randomized 225 patients with moderate-to-severe tardive dyskinesia and showed that once-daily valbenazine 80 mg significantly reduced abnormal involuntary movements versus placebo over six weeks. This provided the first rigorous randomized evidence that a VMAT2 inhibitor could treat a condition long considered largely irreversible.',
+        source: {
+          externalId: 'src:hauser-kinect3-valbenazine-2017',
+          name: 'Hauser RA, Factor SA, Marder SR, et al. KINECT 3: A Phase 3 Randomized, Double-Blind, Placebo-Controlled Trial of Valbenazine for Tardive Dyskinesia. Am J Psychiatry. 2017;174(5):476-484.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28320223/',
+          publishedAt: '2017-03-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-04-11',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved valbenazine (Ingrezza) as the first treatment for tardive dyskinesia, having granted it breakthrough therapy, fast track, and priority review designations. The approval institutionally established that tardive dyskinesia — previously managed only by reducing or switching the offending antipsychotic — had a dedicated, evidence-backed pharmacological treatment.',
+        source: {
+          externalId: 'src:neurocrine-ingrezza-fda-approval-2017',
+          name: 'Neurocrine Biosciences. FDA Approval of INGREZZA (valbenazine) Capsules as the First and Only Approved Treatment for Adults with Tardive Dyskinesia. 11 April 2017.',
+          url: 'https://www.prnewswire.com/news-releases/neurocrine-announces-fda-approval-of-ingrezza-valbenazine-capsules-as-the-first-and-only-approved-treatment-for-adults-with-tardive-dyskinesia-td-with-multimedia-300438365.html',
+          publishedAt: '2017-04-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ocrelizumab (Ocrevus) — first primary progressive MS drug, FDA 2017 ─────
+  {
+    externalId: 'trajectory:ocrelizumab-ocrevus-first-primary-progressive-ms-drug-2017',
+    text: 'On 28 March 2017, the U.S. FDA approved ocrelizumab (Ocrevus), the first therapy ever shown to slow disability progression in primary progressive multiple sclerosis, a form of MS for which no disease-modifying treatment had previously existed.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-03-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-12-21',
+        datePrecision: 'DAY',
+        reason: 'The ORATORIO phase 3 trial, published in the New England Journal of Medicine, randomized 732 primary progressive MS patients and found that the anti-CD20 antibody ocrelizumab significantly reduced the proportion with confirmed disability progression versus placebo. This was the first positive pivotal trial in a disease subtype that had defeated every prior disease-modifying candidate.',
+        source: {
+          externalId: 'src:montalban-oratorio-ocrelizumab-2017',
+          name: 'Montalban X, Hauser SL, Kappos L, et al. Ocrelizumab versus Placebo in Primary Progressive Multiple Sclerosis. N Engl J Med. 2017;376(3):209-220.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28002688/',
+          publishedAt: '2016-12-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved ocrelizumab for both relapsing and primary progressive MS, making it the first product ever approved for the primary progressive form. The approval institutionally settled that primary progressive MS — long regarded as untreatable — had a disease-modifying therapy, validating B-cell depletion as a mechanism across the MS spectrum.',
+        source: {
+          externalId: 'src:genentech-ocrevus-fda-approval-2017',
+          name: 'Genentech. FDA Approves Genentech\'s OCREVUS (ocrelizumab) for Relapsing and Primary Progressive Multiple Sclerosis. 28 March 2017.',
+          url: 'https://www.gene.com/media/press-releases/14657/2017-03-28/fda-approves-genentechs-ocrevus-ocrelizu',
+          publishedAt: '2017-03-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EMA valproate pregnancy contraindication — 2018 ─────────────────────────
+  {
+    externalId: 'trajectory:ema-valproate-pregnancy-contraindication-2018',
+    text: 'On 21 March 2018, EU regulators (the CMDh, endorsing the PRAC recommendation) contraindicated valproate during pregnancy and barred its use in women of childbearing potential unless the conditions of a strict pregnancy prevention programme are met, owing to risks of congenital malformations and neurodevelopmental disorders in exposed children.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-03-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-11-21',
+        datePrecision: 'MONTH',
+        reason: 'Following its first EU-wide review, the EMA strengthened warnings in 2014 and restricted valproate in girls and women of childbearing potential, requiring use only when other treatments were ineffective or not tolerated. This formally recorded the teratogenic and neurodevelopmental risk but stopped short of a contraindication, leaving prescribing largely to clinician discretion.',
+        source: {
+          externalId: 'src:ema-valproate-referral-2014',
+          name: 'European Medicines Agency. Valproate and related substances — referral (2014 risk-minimisation measures and 2018 update).',
+          url: 'https://www.ema.europa.eu/en/medicines/human/referrals/valproate-related-substances-0',
+          publishedAt: '2014-11-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-03-21',
+        datePrecision: 'DAY',
+        reason: 'A second PRAC review found that, despite the 2014 measures, many women remained inadequately informed and in-utero exposure persisted. The CMDh endorsed the PRAC recommendation to contraindicate valproate in pregnancy and mandate a pregnancy prevention programme, reversing the prior permissive labeling and settling valproate\'s status as a teratogen requiring active exposure controls.',
+        source: {
+          externalId: 'src:ema-valproate-new-measures-2018',
+          name: 'European Medicines Agency. New measures to avoid valproate exposure in pregnancy endorsed (CMDh/PRAC). 21 March 2018.',
+          url: 'https://www.ema.europa.eu/en/news/new-measures-avoid-valproate-exposure-pregnancy-endorsed',
+          publishedAt: '2018-03-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── RCPsych antidepressant withdrawal recognition — 2019 ────────────────────
+  {
+    externalId: 'trajectory:rcpsych-antidepressant-withdrawal-recognition-2019',
+    text: 'On 30 May 2019, the UK Royal College of Psychiatrists issued position statement PS04/19 acknowledging that antidepressant withdrawal symptoms can be severe and long-lasting in some patients, contradicting prior NICE guidance that such symptoms are usually mild and resolve within about a week.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-04',
+        datePrecision: 'MONTH',
+        reason: 'Davies and Read published a systematic review of 24 studies finding that antidepressant withdrawal affected on average 56% of patients, that nearly half of cases were rated severe, and that most duration studies contradicted the guideline assertion of a one-to-two-week course. The review directly challenged the evidence base of existing UK and US guidelines.',
+        source: {
+          externalId: 'src:davies-read-antidepressant-withdrawal-2019',
+          name: 'Davies J, Read J. A systematic review into the incidence, severity and duration of antidepressant withdrawal effects: Are guidelines evidence-based? Addict Behav. 2019;97:111-121.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30292574/',
+          publishedAt: '2018-09-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-05-30',
+        datePrecision: 'DAY',
+        reason: 'The Royal College of Psychiatrists issued position statement PS04/19, accepting that it had under-recognised severe, prolonged withdrawal and calling for NICE to update its guidance and for slower, treatment-duration-proportionate tapering. This reversed the College\'s earlier stance and shifted the institutional consensus, subsequently reflected in NICE\'s 2022 depression guideline.',
+        source: {
+          externalId: 'src:rcpsych-ps04-19-antidepressant-withdrawal-2019',
+          name: 'Royal College of Psychiatrists. Position statement PS04/19: Antidepressants and depression. 30 May 2019.',
+          url: 'https://www.rcpsych.ac.uk/improving-care/campaigning-for-better-mental-health-policy/position-statements/position-statements-2019',
+          publishedAt: '2019-05-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
