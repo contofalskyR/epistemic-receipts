@@ -14997,6 +14997,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY & VACCINE SAFETY ERA (pre-1950, additional)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Kendrick & Eldering pertussis vaccine efficacy — 1939 ────────────────────
+  {
+    externalId: 'trajectory:kendrick-eldering-pertussis-vaccine-efficacy-1939',
+    text: 'Pearl Kendrick and Grace Eldering reported in 1939 that a whole-cell pertussis vaccine conferred substantial protection against whooping cough in the first large controlled field trial, with vaccinated children experiencing 2.3 versus 15.1 annual attacks per 100 in controls.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kendrick and Eldering published \'A study in active immunization against pertussis\' (American Journal of Hygiene, 1939), reporting a controlled field trial of 5,815 children run 1934–1937 in Grand Rapids, Michigan. It was the first large-scale controlled clinical trial of a pertussis vaccine, with a difference between groups significant to roughly one in several million by chance, establishing whole-cell pertussis vaccine efficacy in the literature.',
+        source: {
+          externalId: 'src:kendrick-eldering-pertussis-ajh-1939',
+          name: 'Kendrick P, Eldering G. A study in active immunization against pertussis. American Journal of Hygiene. 1939;29(Sec B):133-153.',
+          url: 'https://www.jameslindlibrary.org/articles/the-kendrick-eldering-frost-pertussis-vaccine-field-trial/',
+          publishedAt: '1939-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'On the strength of the Kendrick-Eldering evidence, whole-cell pertussis vaccine was adopted for routine childhood immunization and combined with diphtheria and tetanus toxoids into DTP, licensed and recommended for general use in the United States by 1948. Pertussis immunization became a standard institutional public-health practice, settling the vaccine\'s efficacy claim.',
+        source: {
+          externalId: 'src:cdc-eid-kendrick-eldering-pertussis-2010',
+          name: 'Shapiro-Shapin CG. Pearl Kendrick, Grace Eldering, and the Pertussis Vaccine. Emerging Infectious Diseases. 2010;16(8):1273-1278.',
+          url: 'https://wwwnc.cdc.gov/eid/article/16/8/10-0288_article',
+          publishedAt: '2010-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Schatz, Bugie & Waksman streptomycin discovery — 1944 ────────────────────
+  {
+    externalId: 'trajectory:schatz-bugie-waksman-streptomycin-discovery-1944',
+    text: 'Albert Schatz, Elizabeth Bugie, and Selman Waksman reported in January 1944 that streptomycin, isolated from the soil actinomycete Streptomyces griseus, exhibited antibiotic activity against Gram-positive and Gram-negative bacteria, the first antibiotic obtained by systematic screening of soil microorganisms.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Schatz, Bugie, and Waksman published \'Streptomycin, a substance exhibiting antibiotic activity against Gram-positive and Gram-negative bacteria\' in the Proceedings of the Society for Experimental Biology and Medicine (1944;55:66-69). Unlike Fleming\'s chance observation, streptomycin emerged from deliberate, methodical screening of soil actinomycetes, recording the first antibiotic active against the tubercle bacillus.',
+        source: {
+          externalId: 'src:schatz-bugie-waksman-streptomycin-psebm-1944',
+          name: 'Schatz A, Bugie E, Waksman SA. Streptomycin, a Substance Exhibiting Antibiotic Activity Against Gram-Positive and Gram-Negative Bacteria. Proc Soc Exp Biol Med. 1944;55(1):66-69.',
+          url: 'https://journals.sagepub.com/doi/10.3181/00379727-55-14461',
+          publishedAt: '1944-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1952-12-10',
+        datePrecision: 'DAY',
+        reason: 'Selman Waksman received the 1952 Nobel Prize in Physiology or Medicine \'for his discovery of streptomycin, the first antibiotic effective against tuberculosis.\' The institutional recognition by the Nobel Committee settled streptomycin\'s discovery as a foundational advance, following its proven clinical activity against TB (Hinshaw and Feldman, 1945) and the MRC controlled trial.',
+        source: {
+          externalId: 'src:nobel-streptomycin-waksman-1952',
+          name: 'Nobel Prize in Physiology or Medicine 1952 — Selman A. Waksman. The Nobel Foundation. 1952.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1952/waksman/facts/',
+          publishedAt: '1952-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dubos gramicidin/tyrothricin — first systematic antibiotic 1939 ────────────
+  {
+    externalId: 'trajectory:dubos-gramicidin-tyrothricin-first-systematic-antibiotic-1939',
+    text: 'René Dubos reported in 1939 that a bactericidal substance (tyrothricin, containing gramicidin) extracted from the soil bacterium Bacillus brevis killed Gram-positive bacteria, the first antibiotic obtained by deliberate, systematic search of soil microbes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Dubos published his isolation of a bactericidal agent from Bacillus brevis in the Journal of Experimental Medicine (1939;70:1-10), having enriched soil for two years to select an organism that lysed Gram-positive pathogens. This was the first antibacterial agent to emerge from an intentional, systematic search rather than serendipity, and it helped revive interest in penicillin.',
+        source: {
+          externalId: 'src:dubos-gramicidin-jem-1939',
+          name: 'Dubos RJ. Studies on a bactericidal agent extracted from a soil bacillus. J Exp Med. 1939;70(1):1-10. (commentary: Van Epps HL. René Dubos: unearthing antibiotics. J Exp Med. 2006;203(2):259.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2118194/',
+          publishedAt: '1939-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tyrothricin/gramicidin became the first antibiotic to be produced commercially and used clinically, with Hotchkiss and Dubos characterizing its polypeptide components in 1940–1941. Although too toxic for systemic use, gramicidin entered durable topical and veterinary use, settling the discovery\'s status as the launch of the systematic-screening antibiotic era.',
+        source: {
+          externalId: 'src:dubos-antibiotics-jem-commentary-2006',
+          name: 'Van Epps HL. René Dubos: unearthing antibiotics. Journal of Experimental Medicine. 2006;203(2):259.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2118194/',
+          publishedAt: '2006-01-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yellow fever vaccine hepatitis B disaster — 1942 ─────────────────────────
+  {
+    externalId: 'trajectory:yellow-fever-vaccine-hepatitis-b-disaster-1942',
+    text: 'In spring 1942 the human-serum stabilizer used in the 17D yellow fever vaccine was found to have caused a massive epidemic of serum hepatitis (later identified as hepatitis B) in US military personnel, with an estimated 40,000–50,000 cases of jaundice.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The first cases of jaundice among yellow-fever-vaccinated US Army personnel were reported in California in March 1942. Epidemiologic investigation rapidly linked the outbreak to specific lots of 17D vaccine stabilized with pooled normal human serum, recording the recognition that a routine vaccine had caused a large hepatitis epidemic.',
+        source: {
+          externalId: 'src:yellow-fever-vaccine-misadventure-1942',
+          name: 'Norman GA. The 1942 Massive Contamination of Yellow Fever Vaccine: A Public Health Consequence of Scientific Arrogance. (account of the 1942 yellow fever vaccine hepatitis epidemic).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8589052/',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-04-16',
+        datePrecision: 'DAY',
+        reason: 'On April 16, 1942 the US Surgeon General recommended halting yellow fever vaccination until serum-free vaccine became available, withdrawing the implicated serum-containing lots. This institutional action confirmed the causal link between the human-serum component and the hepatitis epidemic, and reformulated vaccine eliminated the problem. Follow-up decades later (Seeff et al., 1987) identified the contaminant as hepatitis B virus.',
+        source: {
+          externalId: 'src:seeff-yellow-fever-hepatitis-followup-1987',
+          name: 'Seeff LB, et al. Yellow Fever Vaccine-Associated Hepatitis Epidemic During World War II: Follow-up More Than 40 Years Later. (NEJM 1987; reproduced in Epidemiology in Military and Veteran Populations, NCBI Bookshelf).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234464/',
+          publishedAt: '1987-04-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ramon diphtheria toxoid/anatoxine — 1923 ──────────────────────────────────
+  {
+    externalId: 'trajectory:ramon-diphtheria-toxoid-anatoxine-1923',
+    text: 'Gaston Ramon reported in 1923 that diphtheria toxin treated with formalin and heat lost its toxicity while retaining its immunizing power, yielding an \'anatoxin\' (toxoid) that enabled active immunization against diphtheria.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ramon, a veterinarian at the Pasteur Institute, published in Comptes Rendus de l\'Académie des Sciences (1923) that formalin-and-heat-treated diphtheria toxin became a non-toxic but still antigenic \'anatoxine,\' immunizing guinea pigs and horses. This recorded the principle of toxoid-based active immunization, shifting prevention from passive antitoxin to durable active vaccination.',
+        source: {
+          externalId: 'src:ramon-anatoxine-pasteur-centenary-1923',
+          name: 'Institut Pasteur. Diphtheria: a hundred years ago, the first toxoid vaccine. (Centenary account of Gaston Ramon\'s 1923 discovery of the diphtheria anatoxin/toxoid.)',
+          url: 'https://www.pasteur.fr/en/research-journal/news/diphtheria-hundred-years-ago-first-toxoid-vaccine',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the late 1920s and 1930s diphtheria anatoxin replaced toxin-antitoxin mixtures and became the basis of large-scale mass immunization campaigns, dramatically reducing diphtheria mortality where adopted and later forming the \'D\' of the DTP vaccine. Its institutional adoption worldwide settled the toxoid principle as a cornerstone of preventive vaccinology.',
+        source: {
+          externalId: 'src:ramon-anatoxins-centenary-2024',
+          name: 'Ershov VA. Gaston Ramon (to centenary of the discovery of anatoxins). (Review of the discovery and adoption of diphtheria and tetanus toxoids.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10819242/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
