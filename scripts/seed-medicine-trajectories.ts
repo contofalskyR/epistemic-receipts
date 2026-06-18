@@ -8519,6 +8519,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ONCOLOGY & PRECISION MEDICINE ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Paclitaxel (Taxol) FDA approval — first taxane — 1992 ──────────────────
+  {
+    externalId: 'trajectory:paclitaxel-taxol-ovarian-cancer-approval-1992',
+    text: 'The FDA approved paclitaxel (Taxol) on 29 December 1992 for the treatment of metastatic ovarian carcinoma refractory to prior chemotherapy, establishing the first taxane (microtubule-stabilizing) anticancer drug.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-12-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Bristol-Myers Squibb\'s NDA 20-262 for paclitaxel (Taxol) in patients with metastatic ovarian cancer after failure of first-line or subsequent chemotherapy. The approval institutionalized a wholly new mechanistic class — the taxanes, which stabilize microtubules rather than damaging DNA — and opened the way to subsequent approvals in breast (1994) and non-small-cell lung cancer (1999). It marked the regulatory settling of paclitaxel\'s clinical efficacy.',
+        source: {
+          externalId: 'src:fda-taxol-paclitaxel-nda-20262-1992',
+          name: 'U.S. Food and Drug Administration. Drug Approval Package: Taxol (paclitaxel) NDA 20-262. Approved 29 December 1992.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/98/020262s026s027s028.cfm',
+          publishedAt: '1992-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EGFR mutations predict gefitinib response — Lynch 2004 / IPASS 2009 ────
+  {
+    externalId: 'trajectory:egfr-mutations-predict-gefitinib-response-2004',
+    text: 'Lynch and colleagues reported in the New England Journal of Medicine on 20 May 2004 that somatic activating mutations in the tyrosine-kinase domain of the EGFR gene underlie and predict the dramatic responsiveness of non-small-cell lung cancer to the inhibitor gefitinib.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-29',
+        datePrecision: 'DAY',
+        reason: 'Lynch et al. (and concurrently Paez et al. in Science) found EGFR kinase-domain mutations in 8 of 9 gefitinib responders versus 0 of 7 non-responders, explaining why only a minority of lung-cancer patients responded dramatically to the drug. This recorded, for the first time, a molecular predictive biomarker of response to a targeted small-molecule inhibitor — a foundational result for precision oncology. Published online 29 April 2004, print 20 May 2004.',
+        source: {
+          externalId: 'src:lynch-egfr-gefitinib-nejm-2004',
+          name: 'Lynch TJ, Bell DW, Sordella R, et al. Activating mutations in the epidermal growth factor receptor underlying responsiveness of non-small-cell lung cancer to gefitinib. N Engl J Med. 2004;350(21):2129-2139.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15118073/',
+          publishedAt: '2004-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-09-03',
+        datePrecision: 'DAY',
+        reason: 'The randomized phase III IPASS trial (Mok et al., NEJM) confirmed prospectively that EGFR mutation status is a strong predictor of benefit: mutation-positive patients had superior progression-free survival with gefitinib while mutation-negative patients did better with chemotherapy. This settled mutation-guided treatment selection as the standard of care in advanced NSCLC.',
+        source: {
+          externalId: 'src:mok-ipass-gefitinib-nejm-2009',
+          name: 'Mok TS, Wu YL, Thongprasert S, et al. Gefitinib or carboplatin-paclitaxel in pulmonary adenocarcinoma. N Engl J Med. 2009;361(10):947-957.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19692680/',
+          publishedAt: '2009-09-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── R-CHOP for DLBCL — Coiffier / GELA 2002 ────────────────────────────────
+  {
+    externalId: 'trajectory:rituximab-rchop-dlbcl-immunochemotherapy-2002',
+    text: 'Coiffier and the GELA investigators reported in the New England Journal of Medicine on 24 January 2002 that adding rituximab to CHOP chemotherapy (R-CHOP) significantly improves complete-response, event-free and overall survival in elderly patients with diffuse large B-cell lymphoma without added toxicity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-01-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-01-24',
+        datePrecision: 'DAY',
+        reason: 'The GELA LNH-98.5 randomized trial showed R-CHOP raised the complete-response rate (76% vs 63%, P=0.005) and significantly improved event-free and overall survival versus CHOP alone in patients aged 60-80. The result was immediately practice-changing and established immunochemotherapy (chemotherapy plus a monoclonal antibody) as the global standard of care for aggressive B-cell lymphoma, extending rituximab\'s role from monotherapy to curative-intent combination treatment.',
+        source: {
+          externalId: 'src:coiffier-rchop-dlbcl-nejm-2002',
+          name: 'Coiffier B, Lepage E, Briere J, et al. CHOP chemotherapy plus rituximab compared with CHOP alone in elderly patients with diffuse large-B-cell lymphoma. N Engl J Med. 2002;346(4):235-242.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11807147/',
+          publishedAt: '2002-01-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── KRAS mutation predicts anti-EGFR non-response in CRC — Karapetis 2008 ──
+  {
+    externalId: 'trajectory:kras-mutation-predicts-anti-egfr-nonresponse-crc-2008',
+    text: 'Karapetis and colleagues reported in the New England Journal of Medicine on 23 October 2008 that K-ras tumor mutations predict lack of benefit from cetuximab in metastatic colorectal cancer, refining the prior claim that the anti-EGFR antibody benefited colorectal-cancer patients broadly.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'Analyzing the NCIC CTG CO.17 trial, Karapetis et al. found cetuximab improved survival only in patients with wild-type K-ras tumors (median OS 9.5 vs 4.8 months), while patients with K-ras codon 12/13 mutations derived no benefit. This recorded the first negative predictive biomarker for a targeted antibody, establishing that a downstream pathway mutation could abrogate an upstream-receptor-directed therapy.',
+        source: {
+          externalId: 'src:karapetis-kras-cetuximab-nejm-2008',
+          name: 'Karapetis CS, Khambata-Ford S, Jonker DJ, et al. K-ras mutations and benefit from cetuximab in advanced colorectal cancer. N Engl J Med. 2008;359(17):1757-1765.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18946061/',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-04-20',
+        datePrecision: 'DAY',
+        reason: 'The American Society of Clinical Oncology issued a provisional clinical opinion recommending that all metastatic colorectal-cancer candidates for anti-EGFR antibody therapy be tested for KRAS mutations, and that those with codon 12/13 mutations not receive cetuximab or panitumumab. Together with the FDA\'s July 2009 label changes for both antibodies, this institutionalized mandatory predictive biomarker testing before therapy.',
+        source: {
+          externalId: 'src:allegra-asco-kras-pco-jco-2009',
+          name: 'Allegra CJ, Jessup JM, Somerfield MR, et al. American Society of Clinical Oncology provisional clinical opinion: testing for KRAS gene mutations in patients with metastatic colorectal carcinoma to predict response to anti-EGFR monoclonal antibody therapy. J Clin Oncol. 2009;27(12):2091-2096.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19188670/',
+          publishedAt: '2009-04-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sipuleucel-T (Provenge) — first therapeutic cancer vaccine — 2010 ───────
+  {
+    externalId: 'trajectory:sipuleucel-t-provenge-first-cancer-vaccine-2010',
+    text: 'The FDA approved sipuleucel-T (Provenge) on 29 April 2010 for asymptomatic or minimally symptomatic metastatic castration-resistant prostate cancer, making it the first therapeutic (active cellular immunotherapy) cancer vaccine approved for any cancer.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-04-29',
+        datePrecision: 'DAY',
+        reason: 'On the strength of the phase III IMPACT trial (Kantoff et al., NEJM 2010), which showed a 4.1-month median overall-survival improvement (25.8 vs 21.7 months) and a 22% relative reduction in death risk versus placebo, the FDA approved sipuleucel-T, an autologous antigen-presenting-cell product targeting prostatic acid phosphatase. The approval institutionally validated therapeutic cancer vaccination as a viable treatment modality after decades of failed cancer-vaccine attempts.',
+        source: {
+          externalId: 'src:fda-provenge-sipuleucel-t-approval-2010',
+          name: 'U.S. Food and Drug Administration. PROVENGE (sipuleucel-T) — approval for metastatic castration-resistant prostate cancer. 29 April 2010.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/provenge-sipuleucel-t',
+          publishedAt: '2010-04-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
