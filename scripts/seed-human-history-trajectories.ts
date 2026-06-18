@@ -59223,6 +59223,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Baptism of Nzinga a Nkuwu as João I — first Christian king of Kongo (1491) ─
+  {
+    externalId: 'trajectory:joao-i-kongo-baptism-1491',
+    text: 'On 3 May 1491, at Mbanza Kongo, the manikongo Nzinga a Nkuwu was baptized as João I together with members of his family by Portuguese missionaries, becoming the first Christian king of Kongo and inaugurating the kingdom\'s official adoption of Catholicism — though he abandoned the new faith around 1495 before his son Afonso I permanently re-established it.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1491-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1491-05-03',
+        datePrecision: 'DAY',
+        reason: 'Following the first Portuguese contact (the 1483 voyage of Diogo Cão) and an exchange of embassies, missionaries who arrived in 1491 baptized the manikongo Nzinga a Nkuwu at his capital on 3 May 1491. The king took the name João after João II of Portugal; his consort was baptized Leonor and his son the future Afonso I. The event was recorded by the Portuguese royal chronicler Rui de Pina from the reports brought back to Lisbon.',
+        source: {
+          externalId: 'src:joao-i-kongo-baptism-pina',
+          name: 'Rui de Pina, Crónica de El-Rei D. João II — contemporary Portuguese account of the baptism of Nzinga a Nkuwu (João I) of Kongo on 3 May 1491.',
+          url: 'https://en.wikipedia.org/wiki/Jo%C3%A3o_I_of_Kongo',
+          publishedAt: '1491-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historiography of the Kingdom of Kongo treats the 1491 baptism as the documented beginning of Kongolese Christianity, even noting João I\'s temporary reversion to traditional religion around 1495. The date and circumstances, traceable to Rui de Pina and corroborated by later Portuguese and Capuchin sources, are settled in the scholarship of the Atlantic world.',
+        source: {
+          externalId: 'src:joao-i-kongo-wikipedia',
+          name: 'João I of Kongo — baptism on 3 May 1491 and the establishment of Christianity in Kongo.',
+          url: 'https://en.wikipedia.org/wiki/Catholic_Church_in_Kongo',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Portuguese capture of Kilwa — Francisco de Almeida on the Swahili coast (1505) ─
+  {
+    externalId: 'trajectory:portuguese-capture-kilwa-1505',
+    text: 'On 24 July 1505, a Portuguese fleet under Viceroy Francisco de Almeida stormed and captured the Swahili city-state of Kilwa (in present-day Tanzania), deposing its sultan and erecting a fortress garrisoned with eighty men — the first permanent Portuguese stronghold on the Swahili coast and a key step in Portugal\'s domination of East African Indian Ocean trade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1505-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1505-07-24',
+        datePrecision: 'DAY',
+        reason: 'Almeida\'s fleet entered Kilwa harbour at noon on Tuesday 22 July 1505 and, at dawn on Thursday 24 July — the vigil of the feast of St James the Apostle — the Portuguese landed and seized the town against little resistance. The best house was fortified into a fort with guns, and Pero Ferreira was left in command with eighty men. The eyewitness Hans Mayr, sailing with the armada, recorded the dates and the events.',
+        source: {
+          externalId: 'src:kilwa-1505-hans-mayr',
+          name: 'Hans Mayr, "The Voyage and Acts of Dom Francisco" (1505) — eyewitness account of Almeida\'s capture of Kilwa on 24 July 1505 (Fordham Internet History Sourcebooks).',
+          url: 'https://sourcebooks.fordham.edu/mod/1505mayr.asp',
+          publishedAt: '1505-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Portuguese chronicles of the Estado da Índia and the eyewitness account of Hans Mayr fix the date and course of the capture of Kilwa. Modern historiography treats the 1505 seizure and the fort left under Pero Ferreira as a settled landmark in the establishment of Portuguese power along the Swahili coast.',
+        source: {
+          externalId: 'src:kilwa-1505-armada-wikipedia',
+          name: '7th Portuguese India Armada (Almeida, 1505) — capture of Kilwa and construction of the Portuguese fort.',
+          url: 'https://en.wikipedia.org/wiki/7th_Portuguese_India_Armada_(Almeida,_1505)',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pedro Páez reaches the source of the Blue Nile (1618) ────────────────────
+  {
+    externalId: 'trajectory:paez-blue-nile-source-1618',
+    text: 'On 21 April 1618, the Spanish Jesuit missionary Pedro Páez, travelling in the Ethiopian highlands with the army of Emperor Susenyos, reached and described the springs of the Blue Nile (the Gish Abay source feeding Lake Tana) — becoming the first European to document the source of the Blue Nile, a geographic question debated since classical antiquity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1618-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1618-04-21',
+        datePrecision: 'DAY',
+        reason: 'Accompanying Emperor Susenyos on campaign in the Gojjam highlands, Páez was led to the two springs near Gish Abay from which the Abay (Blue Nile) rises before flowing into and out of Lake Tana. He recorded his eyewitness description — including a critique of the classical accounts of Ptolemy — in his manuscript História da Etiópia (completed c. 1622), the first European documentation of the river\'s source.',
+        source: {
+          externalId: 'src:paez-historia-etiopia',
+          name: 'Pedro Páez, História da Etiópia (completed c. 1622) — eyewitness account of reaching the source of the Blue Nile on 21 April 1618.',
+          url: 'https://en.wikipedia.org/wiki/Pedro_P%C3%A1ez',
+          publishedAt: '1622-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Páez\'s priority was long overshadowed by James Bruce, who claimed the discovery in 1770, but the publication and translation of Páez\'s História da Etiópia (Portuguese critical edition 1945; English translation 2011) established him in the scholarship as the first European to reach and describe the source of the Blue Nile in 1618. The dating and his priority are now settled among historians of geography and of the Jesuit Ethiopian mission.',
+        source: {
+          externalId: 'src:paez-blue-nile-wikipedia',
+          name: 'Pedro Páez — first European to see and describe the source of the Blue Nile, reached on 21 April 1618.',
+          url: 'https://en.wikipedia.org/wiki/Pedro_P%C3%A1ez',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Execution of Beatriz Kimpa Vita — the Antonian movement condemned in Kongo (1706) ─
+  {
+    externalId: 'trajectory:kimpa-vita-execution-1706',
+    text: 'On 2 July 1706, Dona Beatriz Kimpa Vita — the Kongolese prophetess who founded the Antonian movement, claiming to be possessed by Saint Anthony and preaching a Kongolese reimagining of Christianity — was burned at the stake as a heretic at the royal camp of Evululu, condemned under Kongo law by King Pedro IV with the counsel of the Capuchin friars Bernardo da Gallo and Lorenzo da Lucca.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1706-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1706-07-02',
+        datePrecision: 'DAY',
+        reason: 'Amid the civil wars that had fragmented Kongo since the defeat at Mbwila (1665), Kimpa Vita\'s Antonian movement urged the reunification of the kingdom and the restoration of the abandoned capital São Salvador. Captured by forces loyal to King Pedro IV, she was tried as a witch and heretic and burned at Evululu on 2 July 1706. The Capuchin missionary Bernardo da Gallo, who counselled the trial, recorded the event in his contemporary relation.',
+        source: {
+          externalId: 'src:kimpa-vita-da-gallo-relation',
+          name: 'Bernardo da Gallo, contemporary Capuchin relation of the Antonian movement and the burning of Beatriz Kimpa Vita at Evululu on 2 July 1706.',
+          url: 'https://en.wikipedia.org/wiki/Beatriz_Kimpa_Vita',
+          publishedAt: '1710-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-01-01',
+        datePrecision: 'YEAR',
+        reason: 'John K. Thornton\'s study The Kongolese Saint Anthony (1998), drawing on the Capuchin records of Bernardo da Gallo and Lorenzo da Lucca, reconstructs the Antonian movement and fixes the date and circumstances of Kimpa Vita\'s execution. Her burning on 2 July 1706 and her role as one of the earliest documented African Christian prophet-leaders are settled in the historiography of the Kingdom of Kongo.',
+        source: {
+          externalId: 'src:kimpa-vita-thornton-wikipedia',
+          name: 'Beatriz Kimpa Vita — the Antonian movement and her execution on 2 July 1706 (per Thornton, The Kongolese Saint Anthony).',
+          url: 'https://en.wikipedia.org/wiki/Beatriz_Kimpa_Vita',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Accademia dei Lincei founded (1603) ─────────────────────────────────────
   {
     externalId: 'trajectory:accademia-dei-lincei-founded-1603',
