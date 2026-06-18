@@ -1675,6 +1675,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY ERA (1891–1924)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 36. Murray thyroid extract for myxoedema — 1891 ─────────────────────────
+  {
+    externalId: 'trajectory:murray-thyroid-extract-myxoedema-1891',
+    text: 'George R. Murray reported in the British Medical Journal on 10 October 1891 that subcutaneous injections of an extract of sheep thyroid gland produced sustained amelioration of myxoedema, the first successful endocrine (hormone) replacement therapy in medicine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1891-10-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1891-10-10',
+        datePrecision: 'DAY',
+        reason: 'Murray published \'Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep\' in the BMJ, reporting a 46-year-old woman with characteristic myxoedema who, after injections begun 13 April 1891, was dramatically improved within three months. This recorded in the expert literature the claim that supplying thyroid-gland material could reverse a deficiency disease — the conceptual birth of hormone replacement therapy, before any thyroid hormone had been chemically identified.',
+        source: {
+          externalId: 'src:murray-myxoedema-bmj-1891',
+          name: 'Murray GR. Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep. Br Med J. 1891;2(1606):796–797.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2273741/',
+          publishedAt: '1891-10-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Thyroid therapy was rapidly and universally adopted: oral dried-thyroid extract replaced injections, entered the pharmacopoeias as standard treatment for myxoedema/hypothyroidism, and Murray\'s original patient survived 28 years on continuous treatment — confirming durable, reproducible benefit. By the 1920s thyroid replacement was the settled standard of care for hypothyroidism, a status it retains today (now as levothyroxine).',
+        source: {
+          externalId: 'src:slater-thyroid-replacement-history-jrsm-2011',
+          name: 'Slater S. The discovery of thyroid replacement therapy. J R Soc Med. 2011;104(1):15–18 (Part 1) and related parts.',
+          url: 'https://journals.sagepub.com/doi/10.1258/jrsm.2010.10k052',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 37. Kendall thyroxine isolation — 1914/1915 ──────────────────────────────
+  {
+    externalId: 'trajectory:kendall-thyroxine-isolation-1914',
+    text: 'Edward C. Kendall isolated the active iodine-containing principle of the thyroid gland in pure crystalline form at the Mayo Clinic on 25 December 1914 (publishing in JAMA, 19 June 1915), identifying the substance he named thyroxin as the chemical agent of thyroid function.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-12-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-06-19',
+        datePrecision: 'DAY',
+        reason: 'Kendall published \'The Isolation in Crystalline Form of the Compound Containing Iodin, Which Occurs in the Thyroid: Its Chemical Nature and Physiologic Activity\' in JAMA, reporting a crystalline compound (~60–65% iodine) extracted from hog thyroid that produced the physiologic effects of thyroid administration in dogs and humans. This recorded the claim that a single iodine-bearing molecule was the active hormone of the thyroid, moving thyroid function from organ extract to defined chemistry.',
+        source: {
+          externalId: 'src:kendall-thyroxin-isolation-jama-1915',
+          name: 'Kendall EC. The Isolation in Crystalline Form of the Compound Containing Iodin, Which Occurs in the Thyroid: Its Chemical Nature and Physiologic Activity. JAMA. 1915;64(25):2042–2043. (Landmark reprint: PMID 6352971.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
+          publishedAt: '1915-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Charles Harington and George Barger established the correct chemical constitution of thyroxine and achieved its total synthesis, publishing \'Chemistry of Thyroxine: Constitution and Synthesis of Thyroxine\' in the Biochemical Journal. Synthesis from defined precursors proved the molecule\'s structure (Kendall\'s proposed formula was wrong) and made it reproducibly available, settling thyroxine\'s chemical identity as the thyroid hormone.',
+        source: {
+          externalId: 'src:harington-barger-thyroxine-synthesis-biochemj-1927',
+          name: 'Harington CR, Barger G. Chemistry of Thyroxine: Constitution and Synthesis of Thyroxine. Biochem J. 1927;21(1):169–183.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1251886/',
+          publishedAt: '1927-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 38. Marine & Kimball iodine prevents goiter — 1920 ───────────────────────
+  {
+    externalId: 'trajectory:marine-kimball-iodine-prevents-goiter-1920',
+    text: 'David Marine and Oliver Kimball reported in Archives of Internal Medicine in 1920 that periodic sodium iodide supplementation prevented endemic (simple) goiter in Akron, Ohio schoolgirls, with goiter developing in only about 0.2% of treated girls versus a far higher rate in untreated controls — the controlled demonstration that iodine deficiency causes goiter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1920-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marine and Kimball published \'The Prevention of Simple Goiter in Man\' (fourth paper) reporting their large controlled trial in ~2,000+ Akron schoolgirls given sodium iodide twice yearly versus untreated controls; goiter incidence in the treated group was a small fraction (≈0.2%) of that in controls. This recorded in the expert literature the first convincing controlled-trial evidence that iodine prevents endemic goiter, establishing the deficiency etiology.',
+        source: {
+          externalId: 'src:marine-kimball-prevention-goiter-aim-1920',
+          name: 'Marine D, Kimball OP. The Prevention of Simple Goiter in Man (Fourth Paper). Arch Intern Med. 1920;25(6):661–672.',
+          url: 'https://www.jameslindlibrary.org/marine-d-kimball-op-1920/',
+          publishedAt: '1920-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1924-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Acting on Marine\'s recommendation that iodized salt was the best population-level preventive, Michigan\'s goiter program and Morton Salt began nationwide distribution of iodized table salt in May 1924, making iodine prophylaxis routine public-health policy in the United States. Widespread iodization sharply reduced endemic goiter and cretinism, institutionally settling the iodine-deficiency model of goiter.',
+        source: {
+          externalId: 'src:iodized-salt-centennial-healio-2024',
+          name: 'Healio/Endocrine Today. Iodized salt: Celebrating the centennial of a major US public health triumph. 13 Feb 2024.',
+          url: 'https://www.healio.com/news/endocrinology/20240213/iodized-salt-celebrating-the-centennial-of-a-major-us-public-health-triumph',
+          publishedAt: '2024-02-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 39. Elixir sulfanilamide disaster — FDCA premarket safety 1937–1938 ───────
+  {
+    externalId: 'trajectory:elixir-sulfanilamide-fdca-premarket-safety-1937',
+    text: 'The Elixir Sulfanilamide disaster of autumn 1937 — in which a diethylene-glycol solvent in an untested liquid sulfanilamide preparation killed at least 105 people — established that drugs could be marketed without any safety testing, a gap closed when the U.S. Federal Food, Drug, and Cosmetic Act of 25 June 1938 first required proof of safety before a new drug could be sold.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1937-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'During September–October 1937 the S. E. Massengill Company\'s Elixir Sulfanilamide killed more than 100 people across 15 states; E. M. K. Geiling and P. R. Cannon\'s investigation, published in JAMA in 1938, established through animal studies that the diethylene-glycol solvent — not the sulfanilamide — was the lethal agent. This recorded in the expert literature that an untested, lawfully sold drug had caused mass death, exposing the absence of any premarket safety requirement.',
+        source: {
+          externalId: 'src:geiling-cannon-elixir-sulfanilamide-jama-1938',
+          name: 'Geiling EMK, Cannon PR. Pathologic Effects of Elixir of Sulfanilamide (Diethylene Glycol) Poisoning. JAMA. 1938;111(10):919–926.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/282251',
+          publishedAt: '1938-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1938-06-25',
+        datePrecision: 'DAY',
+        reason: 'Spurred directly by the disaster, President Franklin D. Roosevelt signed the Federal Food, Drug, and Cosmetic Act into law on 25 June 1938, replacing the 1906 Pure Food and Drug Act and for the first time requiring manufacturers to prove a new drug\'s safety to the FDA before marketing. This institutionalized mandatory premarket safety review — a settled principle of U.S. drug regulation that remains in force and was the foundation later extended to efficacy by the 1962 Kefauver-Harris Amendment.',
+        source: {
+          externalId: 'src:fda-1938-food-drug-cosmetic-act',
+          name: 'U.S. Food and Drug Administration. Part II: 1938, Food, Drug, Cosmetic Act.',
+          url: 'https://www.fda.gov/about-fda/changes-science-law-and-regulatory-authorities/part-ii-1938-food-drug-cosmetic-act',
+          publishedAt: '1938-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
