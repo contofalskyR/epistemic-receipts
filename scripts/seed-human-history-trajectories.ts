@@ -10119,6 +10119,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Death of the Prophet Muhammad — close of Quranic revelation ─────────────
+  {
+    externalId: 'trajectory:death-of-muhammad-632',
+    text: 'The Islamic prophet Muhammad died at Medina on 8 June 632 CE (12 Rabi al-Awwal 11 AH); in Islamic understanding his death closed the period of Quranic revelation, and the immediate question of succession gave rise to the caliphate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0632-06-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0632-06-08',
+        datePrecision: 'DAY',
+        reason: 'After a brief illness Muhammad dies in the apartment of his wife Aisha at Medina, a few months after the Farewell Pilgrimage. The early Islamic tradition fixes the day as 12 Rabi al-Awwal of the year 11 AH, corresponding to 8 June 632 CE. His death ends the sequence of revelations Muslims hold to constitute the Quran and forces an immediate decision on leadership, resolved that same day with the acclamation of Abu Bakr as the first caliph at the Saqifa of the Banu Sa\'ida.',
+        source: {
+          externalId: 'src:ibn-ishaq-death-muhammad-632',
+          name: 'Ibn Ishaq (recension of Ibn Hisham). Sirat Rasul Allah, account of the death of Muhammad in 11 AH. (8th c., drawing on early Medinan tradition)',
+          url: 'https://en.wikipedia.org/wiki/Muhammad',
+          publishedAt: '0632-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The traditional date of 8 June 632 (12 Rabi al-Awwal 11 AH) is accepted across the Islamic biographical and historical tradition — Ibn Ishaq, al-Waqidi, Ibn Sa\'d, and al-Tabari — and in modern scholarship, which treats the death of Muhammad at Medina in 632 and the consequent close of the prophetic revelation as fixed and uncontested, whatever the debates over the events of the succession.',
+        source: {
+          externalId: 'src:death-muhammad-scholarship',
+          name: 'Standard scholarship on the death of Muhammad in 632 CE and the beginning of the Rashidun caliphate.',
+          url: 'https://www.britannica.com/biography/Muhammad',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Execution of al-Hallaj — Sufi mystic condemned then rehabilitated ────────
+  {
+    externalId: 'trajectory:execution-al-hallaj-922',
+    text: 'The Persian mystic al-Husayn ibn Mansur al-Hallaj was executed in Baghdad on 26 March 922 (24 Dhu al-Qa\'da 309 AH) after a long trial, condemned for his ecstatic utterances and alleged heresy; later Sufi tradition rehabilitated him as a martyr of divine love.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0922-03-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0922-03-26',
+        datePrecision: 'DAY',
+        reason: 'After years of imprisonment and a drawn-out trial under the Abbasid caliph al-Muqtadir and the vizier Hamid ibn al-Abbas, al-Hallaj is flogged, mutilated, and beheaded on the banks of the Tigris in Baghdad on 24 Dhu al-Qa\'da 309 AH; his body is burned and the ashes scattered. The judicial condemnation rests on charges of heresy and Qarmatian sedition, though even contemporaries dispute whether the case was doctrinal or political. The execution is recorded by witnesses and near-contemporaries.',
+        source: {
+          externalId: 'src:hallaj-execution-baghdad-922',
+          name: 'Near-contemporary accounts of al-Hallaj\'s trial and execution (Ibn Zanji the court scribe; collected in al-Khatib al-Baghdadi, Tarikh Baghdad).',
+          url: 'https://en.wikipedia.org/wiki/Al-Hallaj',
+          publishedAt: '0922-03-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within generations al-Hallaj was venerated in Sufi tradition as a martyr (shahid) of mystical love, his utterance "ana al-Haqq" ("I am the Truth") read as annihilation in God rather than blasphemy, and celebrated by figures from Attar to Rumi. Modern scholarship — above all Louis Massignon\'s monumental study (1922) — reconstructs the trial as much a political as a religious act, and the death-as-heretic verdict is no longer accepted as a settled judgement on his orthodoxy.',
+        source: {
+          externalId: 'src:massignon-hallaj-passion',
+          name: 'Louis Massignon. La Passion d\'al-Hallaj, martyr mystique de l\'Islam. (1922; rev. ed. 1975)',
+          url: 'https://en.wikipedia.org/wiki/Al-Hallaj',
+          publishedAt: '1922-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Foundation of al-Azhar — Fatimid mosque to center of learning ───────────
+  {
+    externalId: 'trajectory:al-azhar-founded-970',
+    text: 'Construction of the al-Azhar Mosque in the new Fatimid capital of Cairo began on 4 April 970, the mosque held its first Friday prayers on 22 June 972, and from 988 it was endowed as a teaching institution — the nucleus of what became a leading center of Islamic learning.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0970-04-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0970-04-04',
+        datePrecision: 'DAY',
+        reason: 'Following his conquest of Egypt for the Ismaili Shia Fatimid caliph al-Mu\'izz, the general Jawhar al-Siqilli lays out the new royal city of al-Qahira (Cairo) and begins building its congregational mosque on 24 Jumada al-Awwal 359 AH (4 April 970). The mosque, later named al-Azhar, holds its first Friday prayer on 7 Ramadan 361 AH (22 June 972). Fatimid-era historians record the foundation.',
+        source: {
+          externalId: 'src:al-azhar-foundation-970',
+          name: 'Fatimid-era accounts of the foundation of Cairo and al-Azhar (al-Maqrizi, Khitat, drawing on earlier Fatimid sources).',
+          url: 'https://en.wikipedia.org/wiki/Al-Azhar_Mosque',
+          publishedAt: '0970-04-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'From 988 the Fatimid vizier Yaqub ibn Killis endows salaried scholars to give regular instruction at al-Azhar, and some 45 jurists are appointed to teach Islamic law — the step that turns the mosque into a permanent teaching institution. Al-Azhar has functioned as a center of Islamic learning ever since, a fact uncontested in modern scholarship; its standing as one of the oldest continuously operating institutions of higher learning is standard.',
+        source: {
+          externalId: 'src:al-azhar-learning-scholarship',
+          name: 'Standard scholarship on al-Azhar as a center of Islamic learning from the late 10th century.',
+          url: 'https://www.britannica.com/topic/al-Azhar-University',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── al-Hakim destroys the Church of the Holy Sepulchre ──────────────────────
+  {
+    externalId: 'trajectory:al-hakim-holy-sepulchre-1009',
+    text: 'On 18 October 1009 the Fatimid caliph al-Hakim bi-Amr Allah ordered the demolition of the Church of the Holy Sepulchre in Jerusalem, razing the rotunda and the rock-cut tomb of Christ; the act reverberated through Latin Christendom and was later invoked among the grievances behind the Crusades.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1009-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1009-10-18',
+        datePrecision: 'DAY',
+        reason: 'As part of a wider campaign against Christian and Jewish sanctuaries, al-Hakim orders his agents to demolish the Holy Sepulchre, Christianity\'s holiest church, on 18 October 1009; the buildings are pulled down to bedrock and an attempt is made to hack away the tomb itself. The destruction is recorded by the contemporary Christian chronicler Yahya of Antioch, who lived under Fatimid rule, and noted in Latin annals.',
+        source: {
+          externalId: 'src:yahya-antioch-sepulchre-1009',
+          name: 'Yahya ibn Sa\'id al-Antaki (Yahya of Antioch). Continuation of the chronicle of Eutychius, account of al-Hakim\'s destruction of the Holy Sepulchre. (early 11th c., contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Church_of_the_Holy_Sepulchre',
+          publishedAt: '1009-10-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The destruction of 18 October 1009 is securely dated and uncontested in modern scholarship; partial rebuilding under a 1027–28 agreement with Byzantium followed, and Christian memory of the demolition fed the grievances that, a generation later, helped justify the First Crusade. Historians treat the event and its date as fixed.',
+        source: {
+          externalId: 'src:holy-sepulchre-destruction-scholarship',
+          name: 'Standard scholarship on al-Hakim\'s 1009 destruction of the Church of the Holy Sepulchre.',
+          url: 'https://www.britannica.com/place/Church-of-the-Holy-Sepulchre',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── John of Worcester draws sunspots — earliest dated sunspot drawing ────────
   {
     externalId: 'trajectory:john-worcester-sunspot-1128',
