@@ -11720,6 +11720,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES & METABOLIC DISEASE ERA (1993–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── DCCT intensive glycemic control type 1 diabetes — 1993 ──────────────────
+  {
+    externalId: 'trajectory:dcct-intensive-glycemic-control-type1-1993',
+    text: 'The Diabetes Control and Complications Trial (DCCT) Research Group reported in the New England Journal of Medicine on 30 September 1993 that intensive insulin therapy aimed at near-normal blood glucose substantially reduces the development and progression of retinopathy, nephropathy, and neuropathy in type 1 diabetes, proving that microvascular complications are driven by hyperglycemia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-09-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-09-30',
+        datePrecision: 'DAY',
+        reason: 'The DCCT, a randomized controlled trial in 1,441 type 1 diabetes patients followed a mean 6.5 years, found intensive therapy reduced the risk of clinically meaningful retinopathy by 76% in primary prevention and slowed established retinopathy progression by 54%, with parallel reductions in nephropathy and neuropathy. The landmark trial definitively settled the long-debated \'glucose hypothesis,\' establishing in the expert literature that tight glycemic control prevents microvascular complications — at the cost of a two-to-threefold increase in severe hypoglycemia.',
+        source: {
+          externalId: 'src:dcct-intensive-therapy-nejm-1993',
+          name: 'The Diabetes Control and Complications Trial Research Group. The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus. N Engl J Med. 1993;329(14):977-986.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8366922/',
+          publishedAt: '1993-09-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Metformin (Glucophage) U.S. FDA approval — 1994 ─────────────────────────
+  {
+    externalId: 'trajectory:metformin-glucophage-us-approval-1994',
+    text: 'Metformin (Glucophage), a biguanide oral antihyperglycemic used in Europe since the late 1950s but long kept out of the United States over biguanide lactic-acidosis fears, was approved by the FDA for type 2 diabetes on 29 December 1994, establishing it on the U.S. regulatory record as a safe and effective therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1994-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-12-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved metformin hydrochloride (Glucophage, NDA 020357, Bristol-Myers Squibb) for type 2 diabetes, with U.S. marketing beginning March 1995. Approval ended decades of American absence of the biguanide class — driven by the lactic-acidosis deaths that had led to phenformin\'s U.S. withdrawal in 1977 — and recorded institutionally that metformin\'s safety profile was distinct and acceptable; it subsequently became the first-line oral agent for type 2 diabetes worldwide.',
+        source: {
+          externalId: 'src:fda-glucophage-metformin-nda-020357-1994',
+          name: 'U.S. FDA Center for Drug Evaluation and Research. Drug Approval Package, NDA 020357, GLUCOPHAGE (metformin hydrochloride) Tablets. 29 December 1994.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/pre96/020357Orig1s000rev.pdf',
+          publishedAt: '1994-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Exenatide (Byetta) first GLP-1 receptor agonist — 2005 ──────────────────
+  {
+    externalId: 'trajectory:exenatide-byetta-first-glp1-agonist-2005',
+    text: 'Exenatide (Byetta), a synthetic analogue of a Gila monster venom peptide and the first glucagon-like peptide-1 (GLP-1) receptor agonist, was established as an effective new class of type 2 diabetes therapy by pivotal trials beginning in 2004 and approved by the FDA on 28 April 2005.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Buse and colleagues published the first of the pivotal AMIGO trials in Diabetes Care, a 30-week triple-blind placebo-controlled study at 101 U.S. sites showing that exenatide lowered HbA1c by up to 0.86% in sulfonylurea-treated type 2 diabetes patients with modest weight loss. This recorded in the expert literature the efficacy of the first incretin-mimetic GLP-1 receptor agonist, a mechanistically novel drug class.',
+        source: {
+          externalId: 'src:buse-exenatide-sulfonylurea-diabetes-care-2004',
+          name: 'Buse JB, Henry RR, Han J, et al. Effects of exenatide (exendin-4) on glycemic control over 30 weeks in sulfonylurea-treated patients with type 2 diabetes. Diabetes Care. 2004;27(11):2628-2635.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15504997/',
+          publishedAt: '2004-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved exenatide (Byetta, NDA 021773, Amylin/Eli Lilly) as adjunctive therapy for type 2 diabetes inadequately controlled on metformin, a sulfonylurea, or both — the first approval of a GLP-1 receptor agonist. The decision established the incretin-mimetic class on the regulatory record and opened the therapeutic lineage that later produced liraglutide and semaglutide.',
+        source: {
+          externalId: 'src:fda-byetta-exenatide-label-2005',
+          name: 'U.S. FDA. BYETTA (exenatide) injection — Original FDA-approved label, NDA 021773. 2005.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/021773lbl.pdf',
+          publishedAt: '2005-04-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sibutramine (Meridia) cardiovascular withdrawal — 2010 ──────────────────
+  {
+    externalId: 'trajectory:sibutramine-meridia-cardiovascular-withdrawal-2010',
+    text: 'The claim that sibutramine (Meridia), the serotonin-norepinephrine reuptake inhibitor appetite suppressant approved by the FDA on 22 November 1997 for weight loss, was a safe long-term obesity treatment was reversed when the SCOUT trial showed it increased cardiovascular events and Abbott withdrew it from the U.S. market on 8 October 2010.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-11-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-11-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved sibutramine (Meridia, NDA 020632) for the management of obesity, including weight loss and maintenance, in patients with a BMI ≥30 or ≥27 with cardiovascular risk factors. Approval established the drug on the regulatory record as a safe, effective anti-obesity agent despite a divided advisory committee and a reviewing medical officer\'s concern about its blood-pressure and heart-rate effects.',
+        source: {
+          externalId: 'src:fda-meridia-sibutramine-approval-1997',
+          name: 'U.S. FDA Center for Drug Evaluation and Research. Approval Letter, NDA 020632, MERIDIA (sibutramine hydrochloride monohydrate) Capsules. 22 November 1997.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/97/020632a_apltr_thr_%20mor.pdf',
+          publishedAt: '1997-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-09-02',
+        datePrecision: 'DAY',
+        reason: 'The Sibutramine Cardiovascular Outcomes (SCOUT) trial, a randomized study of 10,744 overweight/obese subjects aged 55+ with pre-existing cardiovascular disease or type 2 diabetes, reported in the NEJM that sibutramine significantly increased the risk of nonfatal myocardial infarction and nonfatal stroke. The first large cardiovascular-outcomes trial of the drug directly contested its long-term safety in the population most likely to use it.',
+        source: {
+          externalId: 'src:scout-sibutramine-cardiovascular-nejm-2010',
+          name: 'James WPT, Caterson ID, Coutinho W, et al. Effect of sibutramine on cardiovascular outcomes in overweight and obese subjects. N Engl J Med. 2010;363(10):905-917.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20818901/',
+          publishedAt: '2010-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-08',
+        datePrecision: 'DAY',
+        reason: 'At the FDA\'s request, Abbott Laboratories voluntarily withdrew Meridia from the U.S. market on 8 October 2010 in light of the SCOUT cardiovascular findings, a decision formalized by the FDA\'s withdrawal of approval of NDA 020632 published in the Federal Register on 21 December 2010. The action repudiated the drug\'s safety premise and removed the last centrally-acting prescription obesity drug of its era from the market.',
+        source: {
+          externalId: 'src:fda-meridia-nda-withdrawal-fr-2010',
+          name: 'U.S. FDA. Abbott Laboratories, Inc.; Withdrawal of Approval of a New Drug Application for MERIDIA. Federal Register, Vol. 75, No. 244. 21 December 2010.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-2010-12-21/pdf/2010-31986.pdf',
+          publishedAt: '2010-12-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
