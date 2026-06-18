@@ -62469,6 +62469,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — Pacific, Oceania & Indigenous North America
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1918 influenza catastrophe in Western Samoa (SS Talune) ──────────────────
+  {
+    externalId: 'trajectory:western-samoa-influenza-talune-1918',
+    text: 'On 7 November 1918 the New Zealand steamer SS Talune carried pandemic influenza into Apia, Western Samoa; in the following weeks about 8,500 Samoans — roughly 22% of the population — died, one of the highest proportional death tolls of the 1918 pandemic anywhere in the world.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1918-11-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1918-11-07',
+        datePrecision: 'DAY',
+        reason: 'The SS Talune, arriving from Auckland where influenza was already epidemic, docks at Apia on 7 November 1918. The acting port health officer is unaware of the ship\'s earlier quarantine at Suva and grants pratique after a cursory examination; infected passengers disembark and the disease spreads explosively. By 31 December at least 7,542 Samoans are dead, with deaths continuing into 1919. The arrival and the unfolding mortality are recorded contemporaneously by the New Zealand military administration.',
+        source: {
+          externalId: 'src:ss-talune-apia-1918',
+          name: 'SS Talune — arrival at Apia, Western Samoa, 7 November 1918, and the ensuing influenza epidemic. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/SS_Talune',
+          publishedAt: '1918-11-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1919-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A New Zealand royal commission of enquiry in 1919 investigated the catastrophe and calculated a final death toll of about 8,500 — roughly 22% of the whole population of Western Samoa — and found the administration\'s failure to quarantine the Talune responsible. The proportional mortality and its cause are settled in the historical record; in June 2002 New Zealand Prime Minister Helen Clark formally apologised at Apia for the failure to quarantine the ship.',
+        source: {
+          externalId: 'src:ss-talune-commission-apology',
+          name: 'SS Talune — commission of enquiry death toll (~8,500, ~22% of population) and the 2002 New Zealand apology. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/SS_Talune',
+          publishedAt: '2002-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Indian Citizenship Act (Snyder Act) ──────────────────────────────────────
+  {
+    externalId: 'trajectory:indian-citizenship-act-1924',
+    text: 'On 2 June 1924 U.S. President Calvin Coolidge signed the Indian Citizenship Act (Snyder Act), declaring all non-citizen Native Americans born within the territorial limits of the United States to be citizens of the United States.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1924-06-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1924-06-02',
+        datePrecision: 'DAY',
+        reason: 'President Coolidge signs the Act of 2 June 1924, which provides "that all non citizen Indians born within the territorial limits of the United States be, and they are hereby, declared to be citizens of the United States." The enactment, prompted partly to recognise the thousands of Native Americans who had served in WWI, is recorded in the United States Statutes at Large and the contemporaneous press.',
+        source: {
+          externalId: 'src:indian-citizenship-act-1924-signing',
+          name: 'Indian Citizenship Act (Snyder Act), signed 2 June 1924 by President Calvin Coolidge. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Indian_Citizenship_Act',
+          publishedAt: '1924-06-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1924-06-02',
+        datePrecision: 'DAY',
+        reason: 'The statute\'s grant of citizenship to all Native Americans born in the United States is an undisputed matter of federal law; its date and text are settled. (Voting rights, controlled separately by the states, continued to be withheld in some jurisdictions for decades, but the citizenship grant itself was never reversed.)',
+        source: {
+          externalId: 'src:indian-citizenship-act-1924-law',
+          name: 'Indian Citizenship Act — text and effect granting U.S. citizenship to Native Americans. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Indian_Citizenship_Act',
+          publishedAt: '1924-06-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mau movement "Black Saturday" shootings in Apia ──────────────────────────
+  {
+    externalId: 'trajectory:samoa-black-saturday-1929',
+    text: 'On 28 December 1929 ("Black Saturday") New Zealand military police fired on a peaceful Mau independence procession in Apia, Western Samoa, fatally shooting the paramount chief and Mau leader Tupua Tamasese Lealofi III and killing about eleven Samoans in all.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1929-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1929-12-28',
+        datePrecision: 'DAY',
+        reason: 'During a Mau procession through Apia on 28 December 1929, New Zealand police attempt an arrest, a scuffle breaks out, and police open fire on the crowd. Tupua Tamasese Lealofi III, with his back to the police and calling for peace, is shot in the back and dies the following day. Up to eleven Samoans are killed and about fifty wounded, and one policeman is clubbed to death. The shootings are reported contemporaneously and recorded in the New Zealand administration\'s files.',
+        source: {
+          externalId: 'src:samoa-black-saturday-1929-event',
+          name: 'Mau movement — "Black Saturday" shootings, Apia, 28 December 1929; death of Tupua Tamasese Lealofi III. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Mau_movement',
+          publishedAt: '1929-12-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The fact and date of the killings, and Tamasese\'s death, are settled in the historical record and central to Samoan national memory. In June 2002 New Zealand Prime Minister Helen Clark formally apologised at Apia for the Black Saturday shootings (alongside the failure to quarantine the SS Talune and the banishment of Mau leaders), an institutional acknowledgement of the established facts.',
+        source: {
+          externalId: 'src:samoa-black-saturday-1929-legacy',
+          name: 'Tupua Tamasese Lealofi III — killed during the Mau procession on 28 December 1929; New Zealand apology in 2002. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Tupua_Tamasese_Lealofi_III',
+          publishedAt: '2002-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bombing of Darwin — first attack on Australia ────────────────────────────
+  {
+    externalId: 'trajectory:bombing-of-darwin-1942',
+    text: 'On 19 February 1942 Japanese aircraft launched two air raids on Darwin, Australia — the first and largest attack ever mounted by a foreign power on the Australian mainland — killing at least 236 people.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-02-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1942-02-19',
+        datePrecision: 'DAY',
+        reason: 'At about 9:58 am on 19 February 1942, 188 carrier-based aircraft of the same Japanese fleet that had struck Pearl Harbor attack ships in Darwin Harbour and the town\'s airfields; a second raid of 54 land-based bombers follows around midday. At least 236 people are killed and many vessels sunk. The raids are witnessed by the population and garrison and recorded in Australian military and civil reports the same day.',
+        source: {
+          externalId: 'src:bombing-of-darwin-1942-event',
+          name: 'Bombing of Darwin, 19 February 1942 — two Japanese air raids; at least 236 killed. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Bombing_of_Darwin',
+          publishedAt: '1942-02-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-02-19',
+        datePrecision: 'DAY',
+        reason: 'The date, scale and casualty figures of the raids are settled in Australian historiography, which recognises the attack as the largest single assault ever mounted by a foreign power on Australia and the opening of a campaign of Japanese air raids on the north. The event is commemorated annually as Bombing of Darwin Day.',
+        source: {
+          externalId: 'src:bombing-of-darwin-1942-history',
+          name: 'Bombing of Darwin — recognised as the largest foreign attack on Australia; commemorated annually. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Bombing_of_Darwin',
+          publishedAt: '1942-02-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Coral Sea — first carrier-vs-carrier battle ────────────────
+  {
+    externalId: 'trajectory:battle-of-coral-sea-1942',
+    text: 'In the Battle of the Coral Sea (4–8 May 1942), fought off northeastern Australia and New Guinea, United States and Australian forces halted the Japanese seaborne advance on Port Moresby in the first naval battle in which the opposing fleets never sighted one another, fighting entirely with carrier aircraft.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-05-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1942-05-04',
+        datePrecision: 'DAY',
+        reason: 'Between 4 and 8 May 1942 a Japanese invasion force bound for Port Moresby is intercepted in the Coral Sea by U.S. and Australian naval and air forces. The carriers attack over the horizon: the U.S. loses the carrier Lexington and the Japanese the light carrier Shōhō, while Shōkaku is damaged. The seaborne thrust at Port Moresby is turned back. Both navies\' operational records document the action contemporaneously.',
+        source: {
+          externalId: 'src:coral-sea-1942-event',
+          name: 'Battle of the Coral Sea, 4–8 May 1942 — first carrier-versus-carrier battle; Japanese advance on Port Moresby checked. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Coral_Sea',
+          publishedAt: '1942-05-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-05-08',
+        datePrecision: 'DAY',
+        reason: 'Naval historians concur that Coral Sea was the first naval action in which opposing fleets neither sighted nor fired on one another and the first carrier-versus-carrier battle, and that — although a tactical draw — it was a strategic Allied success that stopped the advance on Port Moresby and left two Japanese carriers unavailable for Midway a month later. The dates and outcome are settled and uncontested.',
+        source: {
+          externalId: 'src:coral-sea-1942-history',
+          name: 'Battle of the Coral Sea — first battle between aircraft carriers; strategic Allied success. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Coral_Sea',
+          publishedAt: '1942-05-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
