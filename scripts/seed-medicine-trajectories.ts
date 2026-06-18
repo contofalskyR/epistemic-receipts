@@ -12381,6 +12381,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE & ORPHAN DRUG ERA (1993–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Tetrabenazine / Xenazine — first Huntington's chorea drug 2008 ──────────
+  {
+    externalId: 'trajectory:tetrabenazine-xenazine-first-huntington-chorea-drug-2008',
+    text: 'On 15 August 2008 the U.S. FDA approved tetrabenazine (Xenazine, NDA 021894), a VMAT2 inhibitor, for chorea associated with Huntington\'s disease — the first drug ever approved in the United States for any symptom of Huntington\'s disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-02-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-02-14',
+        datePrecision: 'DAY',
+        reason: 'The Huntington Study Group published a 12-week multicenter, randomized, double-blind, placebo-controlled trial in 84 ambulatory patients (TETRA-HD) showing tetrabenazine reduced chorea severity by 5.0 units versus 1.5 units on placebo on the Unified Huntington\'s Disease Rating Scale. This was the first controlled evidence that any drug could meaningfully suppress chorea in Huntington\'s disease, recording a candidate symptomatic therapy for a previously untreatable movement disorder.',
+        source: {
+          externalId: 'src:huntington-study-group-tetrabenazine-neurology-2006',
+          name: 'Huntington Study Group. Tetrabenazine as antichorea therapy in Huntington disease: a randomized controlled trial. Neurology. 2006;66(3):366-372. PMID 16476934.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16476934/',
+          publishedAt: '2006-02-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-08-15',
+        datePrecision: 'DAY',
+        reason: 'After a unanimous favorable vote by the FDA\'s Peripheral and Central Nervous System Drugs Advisory Committee on 6 December 2007, the FDA approved tetrabenazine (Xenazine, Prestwick Pharmaceuticals, NDA 021894) for chorea in Huntington\'s disease. It was the first agent of any kind approved in the U.S. for a Huntington\'s disease symptom, establishing VMAT2 inhibition as the regulatory standard of care for HD chorea (with a boxed warning for depression and suicidality).',
+        source: {
+          externalId: 'src:fda-xenazine-tetrabenazine-approval-2008',
+          name: 'FDA. Xenazine (tetrabenazine) approval, NDA 021894 — first drug for chorea in Huntington\'s disease. August 15, 2008.',
+          url: 'https://www.drugs.com/history/xenazine.html',
+          publishedAt: '2008-08-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bosentan / Tracleer — first oral PAH therapy 2001 ──────────────────────
+  {
+    externalId: 'trajectory:bosentan-tracleer-first-oral-pah-therapy-2001',
+    text: 'On 20 November 2001 the U.S. FDA approved bosentan (Tracleer, NDA 21-290), a dual endothelin-receptor antagonist, for pulmonary arterial hypertension — the first oral therapy approved for PAH, a rare disease previously treatable only with continuously infused intravenous epoprostenol.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-10-06',
+        datePrecision: 'DAY',
+        reason: 'Channick and colleagues published the first randomized, double-blind, placebo-controlled trial of oral bosentan in pulmonary hypertension in the Lancet, showing the 6-minute walk distance improved by 70 m at 12 weeks versus worsening on placebo, with reduced pulmonary vascular resistance. This recorded the first controlled evidence that an oral drug could improve exercise capacity and hemodynamics in PAH.',
+        source: {
+          externalId: 'src:channick-bosentan-pah-lancet-2001',
+          name: 'Channick RN, Simonneau G, Sitbon O, et al. Effects of the dual endothelin-receptor antagonist bosentan in patients with pulmonary hypertension: a randomised placebo-controlled study. Lancet. 2001;358(9288):1119-1123. PMID 11597664.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11597664/',
+          publishedAt: '2001-10-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-11-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Tracleer (bosentan, Actelion, NDA 21-290) for PAH patients with WHO functional class III–IV symptoms, to improve exercise ability and slow clinical worsening — the first orally active treatment for PAH. The approval rested on the Channick study and the larger BREATHE-1 trial (Rubin et al., N Engl J Med. 2002;346:896-903, PMID 11907289), and transformed PAH management from infusion-only prostacyclin to oral therapy.',
+        source: {
+          externalId: 'src:fda-tracleer-bosentan-approval-2001',
+          name: 'Actelion / FDA. Tracleer (bosentan) approved by the US FDA — first oral treatment of pulmonary arterial hypertension, NDA 21-290. November 20, 2001.',
+          url: 'https://www.eurekalert.org/news-releases/690660',
+          publishedAt: '2001-11-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dornase alfa / Pulmozyme — first CF-specific drug 1993 ─────────────────
+  {
+    externalId: 'trajectory:dornase-alfa-pulmozyme-first-cf-specific-drug-1993',
+    text: 'On 30 December 1993 the U.S. FDA approved dornase alfa (Pulmozyme, BLA 103532), a recombinant human DNase I, for cystic fibrosis — the first drug developed specifically to treat CF, acting by cleaving the extracellular DNA that makes CF airway secretions viscous.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1990-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Shak and colleagues at Genentech reported in PNAS that recombinant human DNase I depolymerizes the high-molecular-weight DNA released by degenerating neutrophils in cystic fibrosis sputum, sharply reducing its viscoelasticity in vitro. This recorded the molecular rationale and first laboratory evidence for a CF-specific mucolytic, launching the rhDNase development program.',
+        source: {
+          externalId: 'src:shak-rhdnase-cf-sputum-pnas-1990',
+          name: 'Shak S, Capon DJ, Hellmiss R, Marsters SA, Baker CL. Recombinant human DNase I reduces the viscosity of cystic fibrosis sputum. Proc Natl Acad Sci U S A. 1990;87(23):9188-9192. PMID 2251263.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2251263/',
+          publishedAt: '1990-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-12-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Pulmozyme (dornase alfa, Genentech, BLA 103532) for cystic fibrosis, the first drug developed specifically for CF. The pivotal Phase III evidence was published shortly after as Fuchs et al. (N Engl J Med. 1994;331(10):637-642, PMID 7503821), where twice-daily inhaled rhDNase reduced the risk of respiratory exacerbations by 37% versus placebo, cementing rhDNase as standard maintenance therapy.',
+        source: {
+          externalId: 'src:fda-pulmozyme-dornase-alfa-label-1993',
+          name: 'FDA. Pulmozyme (dornase alfa) inhalation solution, BLA 103532 (original approval 30 December 1993), Genentech. FDA label.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/103532s5175lbl.pdf',
+          publishedAt: '1993-12-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cinryze C1-inhibitor — first HAE prophylaxis therapy 2008 ───────────────
+  {
+    externalId: 'trajectory:cinryze-c1-inhibitor-first-hae-prophylaxis-2008',
+    text: 'On 10 October 2008 the U.S. FDA approved Cinryze (C1 esterase inhibitor [human]), a plasma-derived complement-regulator concentrate, for routine prophylaxis against attacks in patients with hereditary angioedema — the first C1-inhibitor product and first therapy approved in the United States for routine HAE prophylaxis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-06-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-06-20',
+        datePrecision: 'DAY',
+        reason: 'Waytes, Rosen and Frank reported two double-blind, placebo-controlled studies in the New England Journal of Medicine showing that a vapor-heated C1 inhibitor concentrate both prevented attacks during prophylaxis and shortened acute attacks in hereditary angioedema. This recorded the first controlled evidence that replacing the deficient C1-inhibitor protein corrects the underlying defect of HAE.',
+        source: {
+          externalId: 'src:waytes-c1-inhibitor-hae-nejm-1996',
+          name: 'Waytes AT, Rosen FS, Frank MM. Treatment of hereditary angioedema with a vapor-heated C1 inhibitor concentrate. N Engl J Med. 1996;334(25):1630-1634. PMID 8628358.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8628358/',
+          publishedAt: '1996-06-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Cinryze (C1 esterase inhibitor [human], Lev/ViroPharma) for routine prophylaxis against angioedema attacks in adolescents and adults with HAE — the first C1-inhibitor product licensed in the U.S. and the first agent approved specifically for routine HAE prophylaxis. The pivotal randomized data were published as Zuraw et al. (N Engl J Med. 2010;363(6):513-522, PMID 20818886), confirming reduced attack frequency on prophylaxis.',
+        source: {
+          externalId: 'src:fda-cinryze-c1-inhibitor-approval-2008',
+          name: 'FDA. Cinryze (C1 esterase inhibitor [human]) approval — first C1-inhibitor for routine prophylaxis of hereditary angioedema. October 10, 2008.',
+          url: 'https://www.drugs.com/history/cinryze.html',
+          publishedAt: '2008-10-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────

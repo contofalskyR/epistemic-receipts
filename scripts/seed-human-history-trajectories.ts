@@ -65477,6 +65477,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Greek Colonels seize power in a military coup (1967) ────────────────────
+  {
+    externalId: 'trajectory:greek-colonels-coup-1967',
+    text: 'A group of right-wing Greek army officers led by Colonels Georgios Papadopoulos and Nikolaos Makarezos and Brigadier Stylianos Pattakos seized power in a military coup d\'état in Athens on 21 April 1967, beginning seven years of military dictatorship.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1967-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1967-04-21',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 21 April 1967, weeks before scheduled national elections, army units acting on the NATO contingency plan "Prometheus" occupied Athens, seized tanks and key installations, and arrested politicians under the cover of martial law. Papadopoulos, Makarezos, and Pattakos announced the takeover by radio; the coup and the suspension of constitutional government were reported worldwide within hours.',
+        source: {
+          externalId: 'src:greek-colonels-coup-1967-event',
+          name: 'Greek military junta of 1967–1974 — coup d\'état of 21 April 1967 (Wikipedia, "Greek junta" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Greek_junta',
+          publishedAt: '1967-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1974-07-24',
+        datePrecision: 'DAY',
+        reason: 'The junta collapsed on 24 July 1974 amid the crisis triggered by the Turkish invasion of Cyprus, when power was handed to Konstantinos Karamanlis in the Metapolitefsi restoration of democracy. The dictatorship\'s leaders were later tried and convicted in the 1975 Greek Junta Trials; the date and authorship of the 21 April 1967 coup are settled and uncontested historical fact.',
+        source: {
+          externalId: 'src:greek-colonels-coup-1974-metapolitefsi',
+          name: 'Fall of the junta and Metapolitefsi, 24 July 1974 (Wikipedia, "Greek junta").',
+          url: 'https://en.wikipedia.org/wiki/Greek_junta',
+          publishedAt: '1974-07-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Franco ends the Spanish dictatorship (1975) ────────────────────
+  {
+    externalId: 'trajectory:death-of-franco-1975',
+    text: 'Spanish dictator Francisco Franco died on 20 November 1975, ending his rule of nearly four decades; Juan Carlos I was sworn in as King of Spain two days later, opening the Spanish transition to democracy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1975-11-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1975-11-20',
+        datePrecision: 'DAY',
+        reason: 'After weeks of failing health, Francisco Franco died in the early hours of 20 November 1975 in Madrid. The death was announced on Spanish state radio and television by Prime Minister Carlos Arias Navarro ("Españoles, Franco ha muerto") and reported worldwide the same day; the date is recorded in official state records and the contemporaneous press.',
+        source: {
+          externalId: 'src:death-of-franco-1975-event',
+          name: 'Death of Francisco Franco, 20 November 1975 (Wikipedia, "Francisco Franco" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Francisco_Franco',
+          publishedAt: '1975-11-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-12-06',
+        datePrecision: 'DAY',
+        reason: 'Juan Carlos I was sworn in as king and head of state on 22 November 1975, and the transition he led culminated in the democratic Spanish Constitution ratified by referendum on 6 December 1978. The date of Franco\'s death and the subsequent restoration of the monarchy and democracy are settled and uncontested facts of the historical and legal record.',
+        source: {
+          externalId: 'src:spanish-transition-1978-constitution',
+          name: 'Spanish transition to democracy — Juan Carlos sworn in 22 November 1975, constitution ratified 6 December 1978 (Wikipedia, "Spanish transition to democracy").',
+          url: 'https://en.wikipedia.org/wiki/Spanish_transition_to_democracy',
+          publishedAt: '1978-12-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Évian Accords end the Algerian War (1962) ───────────────────────────────
+  {
+    externalId: 'trajectory:evian-accords-algeria-1962',
+    text: 'The Évian Accords between the French Government and the Provisional Government of the Algerian Republic were signed on 18 March 1962, declaring a ceasefire that took effect 19 March 1962 and leading to Algerian independence from France.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-03-18',
+        datePrecision: 'DAY',
+        reason: 'After secret negotiations at Évian-les-Bains, French and FLN representatives signed a set of agreements on 18 March 1962 providing for a ceasefire in the Algerian War effective the following day, self-determination, and the terms of a future Algerian state. The signing was announced by the French government and broadcast on 18–19 March 1962, ending nearly eight years of war.',
+        source: {
+          externalId: 'src:evian-accords-1962-signing',
+          name: 'Évian Accords signed 18 March 1962; ceasefire 19 March 1962 (Wikipedia, "Évian Accords" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/%C3%89vian_Accords',
+          publishedAt: '1962-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-07-03',
+        datePrecision: 'DAY',
+        reason: 'The Accords were ratified by French referendum on 8 April 1962 and by an Algerian self-determination referendum on 1 July 1962; Charles de Gaulle pronounced Algeria independent on 3 July 1962. The signing date and the terms of the Accords are settled in the diplomatic and legal record as the instrument that ended French rule in Algeria.',
+        source: {
+          externalId: 'src:evian-accords-1962-independence',
+          name: 'Algerian self-determination referendum (1 July 1962) and independence (3 July 1962) (Wikipedia, "Évian Accords").',
+          url: 'https://en.wikipedia.org/wiki/%C3%89vian_Accords',
+          publishedAt: '1962-07-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bologna massacre: attribution settled by the courts (1980/1995) ─────────
+  {
+    externalId: 'trajectory:bologna-massacre-1980',
+    text: 'A bomb exploded in the second-class waiting room of Bologna Centrale railway station on 2 August 1980 at 10:25, killing 85 people and wounding over 200; Italian courts ultimately attributed the attack to neo-fascist terrorists.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1980-08-02',
+        datePrecision: 'DAY',
+        reason: 'At 10:25 on 2 August 1980 a time bomb detonated in the crowded waiting room of Bologna\'s main railway station, collapsing part of the building and a train, killing 85 people and wounding more than 200. The explosion and casualty toll were documented immediately by rescue services, photographers, and the national press; the station clock stopped at 10:25 became a permanent memorial.',
+        source: {
+          externalId: 'src:bologna-massacre-1980-event',
+          name: 'Bologna massacre, 2 August 1980 — bomb at Bologna Centrale kills 85 (Wikipedia, "Bologna massacre" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Bologna_massacre',
+          publishedAt: '1980-08-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '1980-08-02',
+        datePrecision: 'DAY',
+        reason: 'While the fact and toll of the bombing were never in doubt, responsibility was disputed for years, with early investigations marked by false leads and an attempted cover-up by members of the SISMI intelligence service and the P2 masonic lodge. Competing theories attributed the attack to neo-fascist groups, foreign actors, or others, leaving the question of authorship open and contested.',
+        source: {
+          externalId: 'src:bologna-massacre-investigation-coverup',
+          name: 'Bologna massacre investigation, false leads and cover-up by SISMI/P2 figures (Wikipedia, "Bologna massacre").',
+          url: 'https://en.wikipedia.org/wiki/Bologna_massacre',
+          publishedAt: '1981-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1995-11-23',
+        datePrecision: 'DAY',
+        reason: 'On 23 November 1995 the Italian Supreme Court of Cassation upheld the life sentences of NAR neo-fascist militants Valerio Fioravanti and Francesca Mambro for the bombing, together with convictions of Licio Gelli, Pietro Musumeci, and others for obstructing the investigation. The judicial attribution of the massacre to neo-fascist terrorism became the settled finding of the Italian courts.',
+        source: {
+          externalId: 'src:bologna-massacre-1995-cassation',
+          name: 'Italian Supreme Court of Cassation upholds convictions, 23 November 1995 (Wikipedia, "Bologna massacre").',
+          url: 'https://en.wikipedia.org/wiki/Bologna_massacre',
+          publishedAt: '1995-11-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MODERN ERA (1990–present) — EAST ASIA (China, Japan, Korea)
   // ═══════════════════════════════════════════════════════════════════════════════
