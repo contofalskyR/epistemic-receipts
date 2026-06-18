@@ -689,7 +689,6 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
       ingestedBy: 'seed:climate-trajectories',
       deleted: false,
@@ -699,7 +698,6 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
     },
   })
