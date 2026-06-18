@@ -43043,6 +43043,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of the Indus — Genghis Khan crushes Jalal al-Din Mingburnu ────────
+  {
+    externalId: 'trajectory:battle-of-the-indus-1221',
+    text: 'On 24 November 1221, the Mongol army of Genghis Khan defeated the last Khwarazmian ruler Jalal al-Din Mingburnu on the banks of the Indus River, completing the Mongol conquest of the Khwarazmian Empire of Central Asia.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1221-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1221-11-24',
+        datePrecision: 'DAY',
+        reason: 'Pinned against the Indus by the pursuing Mongols, Jalal al-Din Mingburnu — son of the fugitive Khwarazmshah — fights and loses, then famously plunges his horse into the river and swims to the far bank to escape, while his army is destroyed and his family captured. The defeat ends organized Khwarazmian resistance to Genghis Khan. Jalal al-Din\'s own secretary and biographer al-Nasawi, an eyewitness to the campaign, records the rout, as does the slightly later Persian historian Juvayni.',
+        source: {
+          externalId: 'src:battle-of-the-indus-1221-wikipedia',
+          name: 'Battle of the Indus, 24 November 1221 — Genghis Khan defeats Jalal al-Din Mingburnu. Recorded by al-Nasawi (Jalal al-Din\'s biographer) and Juvayni\'s Tarikh-i Jahangushay.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Indus',
+          publishedAt: '1221-11-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1260-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle is independently attested by al-Nasawi\'s biography of Jalal al-Din, by Juvayni\'s History of the World Conqueror (c. 1260), and by the later universal history of Rashid al-Din, which together fix the date, the location on the Indus, and the destruction of Khwarazmian power. Modern scholarship treats the engagement and its November 1221 date as settled, debating only the disputed claim that Jalal al-Din briefly broke the Mongol line.',
+        source: {
+          externalId: 'src:battle-of-the-indus-1221-scholarship',
+          name: 'Modern scholarship on the Mongol conquest of the Khwarazmian Empire and the Battle of the Indus.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Indus',
+          publishedAt: '1260-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Köse Dağ — Mongols subjugate the Sultanate of Rum ──────────────
+  {
+    externalId: 'trajectory:battle-of-kose-dag-1243',
+    text: 'On 26 June 1243, a Mongol army under Baiju Noyan defeated the Seljuk Sultanate of Rum under Sultan Kaykhusraw II at Köse Dağ in eastern Anatolia, reducing the once-powerful sultanate to a Mongol vassal state.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1243-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1243-06-26',
+        datePrecision: 'DAY',
+        reason: 'In a mountain pass north-east of Sivas, the Seljuk sultan Kaykhusraw II commits his much larger but ill-disciplined army against the Mongol general Baiju, who feigns retreat before turning to rout the Seljuks with massed archery. The defeat shatters the prestige of the Sultanate of Rum, which submits to Mongol overlordship. The Seljuk court historian Ibn Bibi, a contemporary, records the campaign and the catastrophe.',
+        source: {
+          externalId: 'src:battle-of-kose-dag-1243-wikipedia',
+          name: 'Battle of Köse Dağ, 26 June 1243 — Mongol general Baiju defeats Seljuk Sultan Kaykhusraw II. Recorded by the contemporary Seljuk court historian Ibn Bibi and the Armenian chronicler Grigor of Akanc.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_K%C3%B6se_Da%C4%9F',
+          publishedAt: '1243-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1300-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Seljuk (Ibn Bibi), Armenian (Grigor of Akanc, Kirakos of Gandzak), and Persian Mongol-tradition sources independently record the Mongol victory and the subjection of Rum, fixing the 1243 date and outcome. Modern scholarship treats Köse Dağ as the settled turning point that ended Seljuk independence in Anatolia and opened the region to a long period of Mongol domination and political fragmentation.',
+        source: {
+          externalId: 'src:battle-of-kose-dag-1243-scholarship',
+          name: 'Modern scholarship on the Battle of Köse Dağ and the Mongol subjugation of the Sultanate of Rum.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_K%C3%B6se_Da%C4%9F',
+          publishedAt: '1300-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Timur's sack of Delhi — destruction of the Tughluq capital ───────────────
+  {
+    externalId: 'trajectory:timur-sack-of-delhi-1398',
+    text: 'On 17 December 1398, Timur (Tamerlane) defeated the army of Sultan Nasir-ud-Din Mahmud Shah Tughluq before Delhi and over the following days sacked the city, devastating the capital of the Delhi Sultanate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1398-12-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1398-12-17',
+        datePrecision: 'DAY',
+        reason: 'Having crossed the Indus that autumn, Timur routs the Tughluq army outside Delhi on 17 December 1398, deploying his own infantry behind a screen against the sultanate\'s war elephants. His soldiers then plunder Delhi for several days, massacring much of the population and carrying off artisans to Samarkand; the city does not recover for generations. The campaign is narrated in the Timurid court chronicle tradition and in the memoirs attributed to Timur (the Malfuzat-i Timuri).',
+        source: {
+          externalId: 'src:timur-sack-of-delhi-1398-wikipedia',
+          name: 'Sack of Delhi (1398), 17–20 December 1398 — Timur defeats Sultan Nasir-ud-Din Mahmud Shah Tughluq and sacks Delhi. Recorded in the Malfuzat-i Timuri and Yazdi\'s Zafarnama.',
+          url: 'https://en.wikipedia.org/wiki/Sack_of_Delhi_(1398)',
+          publishedAt: '1398-12-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1436-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The memoirs attributed to Timur, Sharaf al-Din Ali Yazdi\'s Zafarnama (completed c. 1424–1436), and Indo-Persian historians of the Delhi Sultanate independently record Timur\'s victory before Delhi and the ensuing sack, fixing the December 1398 date and the devastation of the city. Modern scholarship treats the event and its dating as settled, while debating the scale of the reported casualties.',
+        source: {
+          externalId: 'src:timur-sack-of-delhi-1398-scholarship',
+          name: 'Modern scholarship on Timur\'s invasion of India and the sack of Delhi in December 1398.',
+          url: 'https://en.wikipedia.org/wiki/Sack_of_Delhi_(1398)',
+          publishedAt: '1436-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Timur at Otrar — the campaign against Ming China cut short ───────
+  {
+    externalId: 'trajectory:death-of-timur-1405',
+    text: 'Timur (Tamerlane) died at Otrar on the Syr Darya in mid-February 1405, while marching east to invade Ming China — ending the career of the last great steppe conqueror before his campaign could begin.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1405-02-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1405-02-17',
+        datePrecision: 'MONTH',
+        reason: 'Having set out in the winter of 1404–05 to conquer Ming China, Timur falls ill while encamped at Otrar (in the Farab region) on the far side of the Syr Darya and dies there on 17–18 February 1405, before reaching the Chinese frontier. His death triggers a war of succession among his descendants. The Castilian envoy Ruy González de Clavijo, who had attended Timur\'s court at Samarkand in 1404, and the Timurid court historians record the event.',
+        source: {
+          externalId: 'src:death-of-timur-1405-wikipedia',
+          name: 'Death of Timur, 17–18 February 1405 at Otrar — while beginning his campaign against Ming China. Court chronicles and the embassy narrative of Ruy González de Clavijo are near-contemporary witnesses.',
+          url: 'https://en.wikipedia.org/wiki/Timur',
+          publishedAt: '1405-02-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1436-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Sharaf al-Din Ali Yazdi\'s Zafarnama, the hostile biography of Ibn Arabshah, and Clavijo\'s independent Castilian embassy account converge on Timur\'s death in February 1405 at Otrar at the outset of the China campaign. Modern scholarship treats the date, place, and circumstances as settled, and the 1941 Soviet exhumation of his tomb at the Gur-e Amir in Samarkand confirmed his identity and physical condition.',
+        source: {
+          externalId: 'src:death-of-timur-1405-scholarship',
+          name: 'Modern scholarship on the death of Timur and the succession crisis of 1405.',
+          url: 'https://en.wikipedia.org/wiki/Timur',
+          publishedAt: '1436-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Ulugh Beg — the astronomer-king of Samarkand ────────────
+  {
+    externalId: 'trajectory:assassination-of-ulugh-beg-1449',
+    text: 'On 27 October 1449, the Timurid ruler and astronomer Ulugh Beg — builder of the great Samarkand observatory and author of the Zij-i-Sultani star catalogue — was assassinated on the order of his own son Abd al-Latif, ending the most ambitious program of observational astronomy between Ptolemy and Tycho Brahe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1449-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1449-10-27',
+        datePrecision: 'DAY',
+        reason: 'Deposed by his son Abd al-Latif in a revolt, Ulugh Beg is granted leave to make the pilgrimage to Mecca but is intercepted and beheaded on 27 October 1449 at his son\'s order. His Samarkand observatory — equipped from 1428 with a giant Fakhri sextant some 36 metres in radius and used to compile the 1437 Zij-i-Sultani catalogue of 994 stars — is soon abandoned and destroyed. The killing is recorded by the contemporary Timurid historian Abd al-Razzaq Samarqandi.',
+        source: {
+          externalId: 'src:ulugh-beg-assassination-1449-wikipedia',
+          name: 'Ulugh Beg, assassinated 27 October 1449 by order of his son Abd al-Latif — Timurid ruler, builder of the Samarkand observatory and author of the Zij-i-Sultani (1437).',
+          url: 'https://en.wikipedia.org/wiki/Ulugh_Beg',
+          publishedAt: '1449-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Timurid court chronicles record Ulugh Beg\'s death and the date, and his star catalogue survived to be studied across the Islamic world and later in Europe, where it was printed at Oxford in 1665. The 1941 Soviet archaeological exhumation of his remains at the Gur-e Amir in Samarkand confirmed that he had been beheaded, materially corroborating the chronicled manner of his death and settling the historical record.',
+        source: {
+          externalId: 'src:ulugh-beg-assassination-1449-scholarship',
+          name: 'Modern scholarship on Ulugh Beg, the Samarkand observatory, and the 1941 exhumation confirming his beheading.',
+          url: 'https://en.wikipedia.org/wiki/Ulugh_Beg',
+          publishedAt: '1941-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Cortés meets Moctezuma II at Tenochtitlan ───────────────────────────────
   {
     externalId: 'trajectory:cortes-meets-moctezuma-1519',
