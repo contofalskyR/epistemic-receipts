@@ -4763,6 +4763,48 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Day of Mourning — Aboriginal Australian protest, Sydney ──────────────────
+  {
+    externalId: 'trajectory:aboriginal-day-of-mourning-1938',
+    text: 'On 26 January 1938 Aboriginal Australians held the "Day of Mourning" in Sydney, a protest on the 150th anniversary of British colonization demanding citizen status and equal treatment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1938-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1938-01-26',
+        datePrecision: 'DAY',
+        reason: 'Organized by the Aborigines Progressive Association (led by Jack Patten and William Ferguson) with support from William Cooper\'s Australian Aborigines\' League, about a hundred Aboriginal people gathered at Australian Hall in Sydney on the sesquicentenary of the First Fleet\'s arrival. They unanimously passed a resolution protesting "the callous treatment of our people by the white men during the past 150 years" and appealing for full citizen status and equality.',
+        source: {
+          externalId: 'src:day-of-mourning-1938',
+          name: 'Day of Mourning (Australia) — Aboriginal protest of 26 January 1938 organized by the Aborigines Progressive Association. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Day_of_Mourning_(Australia)',
+          publishedAt: '1938-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1938-01-31',
+        datePrecision: 'MONTH',
+        reason: 'A deputation met Prime Minister Joseph Lyons days later, and the protest is documented in the contemporaneous Aboriginal newspaper The Australian Abo Call (launched April 1938) and the manifesto "Aborigines Claim Citizen Rights!" The Day of Mourning is recorded as the first major national Aboriginal civil-rights gathering and is now commemorated annually; its date and significance are settled in the historical record.',
+        source: {
+          externalId: 'src:day-of-mourning-legacy',
+          name: 'Day of Mourning (Australia) — aftermath, the Abo Call newspaper, and legacy as a foundational Aboriginal rights protest. Wikipedia summary with citations.',
+          url: 'https://en.wikipedia.org/wiki/Day_of_Mourning_(Australia)',
+          publishedAt: '1938-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 17. Atomic bomb dropped on Hiroshima ────────────────────────────────────
   {
     externalId: 'trajectory:hiroshima-atomic-bomb-1945',
