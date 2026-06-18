@@ -49367,6 +49367,395 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — germ theory, genetics, physics
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Semmelweis institutes chlorine handwashing against childbed fever ───────
+  {
+    externalId: 'trajectory:semmelweis-handwashing-1847',
+    text: 'In 1847, Ignaz Semmelweis instituted chlorinated-lime handwashing in the First Obstetrical Clinic of the Vienna General Hospital, cutting deaths from puerperal (childbed) fever from roughly 18% to about 2% — and inferring that "cadaverous particles" carried on physicians\' hands transmitted the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1847-05-01',
+        datePrecision: 'MONTH',
+        reason: 'After his colleague Jakob Kolletschka died in March 1847 from a scalpel wound sustained during an autopsy — with a pathology matching puerperal fever — Semmelweis inferred that "cadaverous particles" were being carried from the dissecting room to the delivery ward on physicians\' hands. He posted notices in the First Clinic requiring all staff to wash their hands in a chloride-of-lime solution between examinations, and the clinic\'s puerperal-fever mortality fell sharply.',
+        source: {
+          externalId: 'src:embryo-semmelweis-1847',
+          name: 'The Embryo Project Encyclopedia (Arizona State University), "Ignaz Philipp Semmelweis (1818–1865)": chlorine handwashing instituted 1847, mortality fell to ~2%.',
+          url: 'https://embryo.asu.edu/pages/ignaz-philipp-semmelweis-1818-1865',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Semmelweis set out his evidence at length in his 1861 treatise Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers (The Etiology, Concept and Prophylaxis of Childbed Fever). The Austrian and wider European medical establishment rejected his conclusions: they conflicted with the prevailing humoral and miasma theories, he offered no microbial mechanism, and his proposal was dismissed by leading authorities.',
+        source: {
+          externalId: 'src:embryo-semmelweis-rejected',
+          name: 'The Embryo Project Encyclopedia (ASU), "Ignaz Philipp Semmelweis": his conclusions were dismissed by contemporaries as they contrasted with established medical theories.',
+          url: 'https://embryo.asu.edu/pages/ignaz-philipp-semmelweis-1818-1865',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The germ theory of disease established by Pasteur, Lister, and Koch in the 1860s–1880s supplied the mechanism Semmelweis had lacked: micro-organisms transmitted on unwashed hands cause infection. His empirical result — that antiseptic handwashing prevents puerperal fever — is vindicated and becomes foundational to aseptic practice, settling the question after his death.',
+        source: {
+          externalId: 'src:embryo-semmelweis-vindicated',
+          name: 'The Embryo Project Encyclopedia (ASU), "Ignaz Philipp Semmelweis": his work was later vindicated by the germ theory of disease.',
+          url: 'https://embryo.asu.edu/pages/ignaz-philipp-semmelweis-1818-1865',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mendel reads his pea-hybridization experiments to the Brünn society ──────
+  {
+    externalId: 'trajectory:mendel-plant-hybridization-1865',
+    text: 'Gregor Mendel read his paper "Versuche über Pflanzen-Hybriden" (Experiments in Plant Hybridization) to the Natural History Society of Brünn on 8 February and 8 March 1865, establishing the statistical laws of inheritance — work that was overlooked until its independent rediscovery in 1900.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1865-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1865-02-08',
+        datePrecision: 'DAY',
+        reason: 'Mendel presented his eight-year study of some 28,000 pea plants at two meetings of the Natural History Society of Brno (Brünn), on 8 February and 8 March 1865, deriving the laws of segregation and independent assortment from discrete ratios. The work was published in 1866 in the society\'s proceedings, Verhandlungen des naturforschenden Vereines in Brünn.',
+        source: {
+          externalId: 'src:wikipedia-mendel-1865-reading',
+          name: 'Wikipedia, "Gregor Mendel": paper read to the Natural History Society of Brno on 8 February and 8 March 1865; published 1866.',
+          url: 'https://en.wikipedia.org/wiki/Gregor_Mendel',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1866-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Despite publication, Mendel\'s paper had almost no impact during his lifetime: it was read as being about hybridization rather than heredity, and was cited only about three times over the following thirty-five years. The mechanism of inheritance remained an open question in biology while his quantitative laws went unrecognized.',
+        source: {
+          externalId: 'src:embryo-mendel-overlooked',
+          name: 'The Embryo Project Encyclopedia (ASU), "Experiments in Plant Hybridization (1866), by Johann Gregor Mendel": few noticed Mendel\'s experiments for most of the nineteenth century.',
+          url: 'https://embryo.asu.edu/pages/experiments-plant-hybridization-1866-johann-gregor-mendel',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1900 three botanists — Hugo de Vries, Carl Correns, and Erich von Tschermak-Seysenegg — independently arrived at the same laws and rediscovered Mendel\'s 1866 paper, giving him priority. Championed by William Bateson, Mendelian inheritance rapidly became the foundation of the new science of genetics, settling the laws Mendel had recorded thirty-five years earlier.',
+        source: {
+          externalId: 'src:embryo-mendel-rediscovery-1900',
+          name: 'The Embryo Project Encyclopedia (ASU): in 1900 de Vries, Correns, and Tschermak independently reached and rediscovered Mendel\'s conclusions.',
+          url: 'https://embryo.asu.edu/pages/experiments-plant-hybridization-1866-johann-gregor-mendel',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Röntgen discovers X-rays ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:rontgen-x-rays-1895',
+    text: 'Wilhelm Conrad Röntgen discovered X-rays on 8 November 1895 while experimenting with a Crookes tube, and announced them in his paper "Über eine neue Art von Strahlen" (On a New Kind of Rays), published 28 December 1895.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1895-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-11-08',
+        datePrecision: 'DAY',
+        reason: 'On the late afternoon of 8 November 1895, working with a Crookes tube wrapped in black card, Röntgen noticed a fluorescent screen glowing across the room and deduced an unknown, penetrating radiation he called "X". Within weeks he produced the first radiograph — the bones of his wife Anna Bertha\'s hand, taken 22 December 1895.',
+        source: {
+          externalId: 'src:wikipedia-rontgen-discovery',
+          name: 'Wikipedia, "Wilhelm Röntgen": X-rays discovered 8 November 1895; first radiograph of his wife\'s hand 22 December 1895.',
+          url: 'https://en.wikipedia.org/wiki/Wilhelm_R%C3%B6ntgen',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-12-28',
+        datePrecision: 'DAY',
+        reason: 'Röntgen submitted his paper "Über eine neue Art von Strahlen" to the Würzburg Physico-Medical Society, published 28 December 1895. The result was reproduced in laboratories worldwide within weeks and adopted almost immediately in medicine. The discovery earned Röntgen the first Nobel Prize in Physics in 1901, settling the existence and nature of the new rays.',
+        source: {
+          externalId: 'src:wikipedia-rontgen-paper',
+          name: 'Wikipedia, "Wilhelm Röntgen": paper published 28 December 1895; first recipient of the Nobel Prize in Physics, 1901.',
+          url: 'https://en.wikipedia.org/wiki/Wilhelm_R%C3%B6ntgen',
+          publishedAt: '2015-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII / INTERWAR ADDENDA (1900–1950) — totalitarianism, Holocaust, Cold War origins
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Nazi "Euthanasia" Program (Aktion T4) concealed, exposed by von Galen ───
+  {
+    externalId: 'trajectory:aktion-t4-euthanasia-1941',
+    text: 'Nazi Germany ran a clandestine "euthanasia" program (later code-named Aktion T4) that gassed roughly 70,000 institutionalized disabled people between January 1940 and August 1941, concealing it with falsified death certificates until public protest — notably a sermon by Bishop Clemens August Count von Galen on 3 August 1941 — forced Hitler to halt the centralized gassings in late August 1941.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Beginning in January 1940, T4 physicians and administrators systematically gas institutionalized mental and physical patients at six killing facilities, then falsify official records in every case to indicate natural-cause deaths. Families receive fabricated death certificates and urns of ashes; the killing is deliberately hidden from the public and the victims.',
+        source: {
+          externalId: 'src:ushmm-euthanasia-program',
+          name: 'United States Holocaust Memorial Museum. "Euthanasia Program and Aktion T4." Holocaust Encyclopedia.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/euthanasia-program',
+          publishedAt: '1940-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1941-08-03',
+        datePrecision: 'DAY',
+        reason: 'The bishop of Münster, Clemens August Count von Galen, denounces the secret killings of the disabled in a sermon on 3 August 1941. The sermon is copied and circulated widely, breaking the program\'s concealment and provoking public unrest. Hitler orders a halt to the centralized gassings in late August 1941, though killing by other means continues covertly.',
+        source: {
+          externalId: 'src:von-galen-sermon-1941',
+          name: 'Sermon of Bishop Clemens August Graf von Galen, Münster, 3 August 1941, protesting the T4 killings (cited in USHMM Holocaust Encyclopedia).',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/euthanasia-program',
+          publishedAt: '1941-08-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1947-08-20',
+        datePrecision: 'DAY',
+        reason: 'The Nuremberg "Doctors\' Trial" (United States v. Karl Brandt et al.), with verdicts delivered 20 August 1947, documents the euthanasia killings from captured T4 records and testimony and convicts perpetrators. The program\'s scale, methods, and its concealment are established in the judicial record and confirmed by subsequent Holocaust historiography.',
+        source: {
+          externalId: 'src:nuremberg-doctors-trial-1947',
+          name: 'United States v. Karl Brandt et al. (the "Doctors\' Trial"), Nuremberg Military Tribunal, verdict 20 August 1947.',
+          url: 'https://en.wikipedia.org/wiki/Doctors%27_trial',
+          publishedAt: '1947-08-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Spanish Civil War begins — military uprising against the Republic ───────
+  {
+    externalId: 'trajectory:spanish-civil-war-outbreak-1936',
+    text: 'The Spanish Civil War began on 17–18 July 1936 when right-wing generals, including Emilio Mola and Francisco Franco, launched a military uprising aimed at overthrowing Spain\'s democratically elected Second Republic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1936-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1936-07-17',
+        datePrecision: 'DAY',
+        reason: 'The revolt begins in Spanish Morocco on 17 July 1936 and spreads to the mainland the next day, with garrisons declaring against the Republican government. The uprising and the government\'s response are reported immediately in the Spanish and international press, splitting the country into Nationalist and Republican zones.',
+        source: {
+          externalId: 'src:ushmm-spanish-civil-war',
+          name: 'United States Holocaust Memorial Museum. "The Spanish Civil War." Holocaust Encyclopedia.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/spanish-civil-war',
+          publishedAt: '1936-07-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-04-01',
+        datePrecision: 'DAY',
+        reason: 'The war ends with the Nationalist victory declared on 1 April 1939. The date of the July 1936 uprising, its leaders, and its aim of overthrowing the Republic are documented by contemporaneous press, military records, and an extensive historiography, and are not in dispute.',
+        source: {
+          externalId: 'src:wikipedia-spanish-civil-war',
+          name: 'Wikipedia, "Spanish Civil War": uprising 17–18 July 1936, Nationalist victory 1 April 1939.',
+          url: 'https://en.wikipedia.org/wiki/Spanish_Civil_War',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treblinka prisoner uprising — revolt and destruction of evidence ────────
+  {
+    externalId: 'trajectory:treblinka-uprising-1943',
+    text: 'On 2 August 1943, prisoners at the Treblinka killing center seized weapons and revolted; more than 300 escaped, after which the Germans dismantled the camp and disguised the site to destroy evidence of the mass murder committed there.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1943-08-02',
+        datePrecision: 'DAY',
+        reason: 'On 2 August 1943 prisoners quietly seize weapons from the camp armory and storm the main gate. Many are killed by machine-gun fire, but more than 300 escape. The revolt is witnessed by the surviving escapees, whose testimony becomes the contemporaneous record of the event.',
+        source: {
+          externalId: 'src:ushmm-treblinka',
+          name: 'United States Holocaust Memorial Museum. "Treblinka." Holocaust Encyclopedia.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/treblinka',
+          publishedAt: '1943-08-02',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1965-09-03',
+        datePrecision: 'DAY',
+        reason: 'After the revolt the Germans force surviving prisoners to dismantle the camp, then shoot them, plant lupines, and install an ethnic-German farmer to camouflage the site — a deliberate attempt to erase evidence. The uprising and the killings are nonetheless established through survivor testimony at the Düsseldorf Treblinka trials (verdict 3 September 1965) and confirmed by postwar Holocaust scholarship.',
+        source: {
+          externalId: 'src:wikipedia-treblinka-trials',
+          name: 'Wikipedia, "Treblinka trials": Düsseldorf first Treblinka trial verdict 3 September 1965.',
+          url: 'https://en.wikipedia.org/wiki/Treblinka_trials',
+          publishedAt: '1965-09-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sobibor prisoner uprising — revolt and liquidation of the camp ──────────
+  {
+    externalId: 'trajectory:sobibor-uprising-1943',
+    text: 'On 14 October 1943, prisoners at the Sobibor killing center, led by Leon Feldhendler and Soviet-Jewish POW Aleksandr "Sasha" Pechersky, killed about a dozen German and guard personnel and broke out; around 300 escaped, after which the Germans liquidated and concealed the camp.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1943-10-14',
+        datePrecision: 'DAY',
+        reason: 'On 14 October 1943 prisoners led by Feldhendler and Pechersky kill 11 German personnel — including deputy commandant Johann Niemann — and several Trawniki-trained guards, and roughly 300 break out of the killing center. About 50 survive the war; their testimony records the revolt.',
+        source: {
+          externalId: 'src:ushmm-sobibor',
+          name: 'United States Holocaust Memorial Museum. "Sobibor." Holocaust Encyclopedia.',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/sobibor',
+          publishedAt: '1943-10-14',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After the uprising the Germans dismantle Sobibor — the last Operation Reinhard camp to be liquidated — and plant a pine forest to hide it. The revolt, its leaders, and the escape are established through survivor accounts and postwar Holocaust historiography, and the date is not disputed.',
+        source: {
+          externalId: 'src:wikipedia-sobibor',
+          name: 'Wikipedia, "Sobibor extermination camp": prisoner revolt 14 October 1943, camp liquidated thereafter.',
+          url: 'https://en.wikipedia.org/wiki/Sobibor_extermination_camp',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kennan's "Long Telegram" — origin of the containment doctrine ───────────
+  {
+    externalId: 'trajectory:kennan-long-telegram-1946',
+    text: 'On 22 February 1946 George F. Kennan, U.S. chargé d\'affaires in Moscow, sent an ~8,000-word telegram (No. 511) to the State Department analyzing the sources of Soviet conduct; it became the intellectual basis of the U.S. policy of containment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1946-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1946-02-22',
+        datePrecision: 'DAY',
+        reason: 'Kennan transmits the telegram from the Moscow embassy to Secretary of State James Byrnes on 22 February 1946 (cable No. 511, 9 p.m.), received in Washington the same day. Its full text survives in State Department records and argues that Soviet expansionism must be met with firm, patient containment.',
+        source: {
+          externalId: 'src:kennan-long-telegram-text-1946',
+          name: 'George F. Kennan, telegram No. 511 to the Secretary of State, Moscow, 22 February 1946 (the "Long Telegram"), full text.',
+          url: 'https://en.wikisource.org/wiki/The_Long_Telegram',
+          publishedAt: '1946-02-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Kennan\'s argument is publicly elaborated in the anonymous "X Article" ("The Sources of Soviet Conduct") in Foreign Affairs in July 1947 and becomes the basis of the Truman administration\'s containment policy. The telegram\'s authorship, date, and role in shaping U.S. Cold War strategy are documented by the State Department and standard diplomatic history.',
+        source: {
+          externalId: 'src:state-dept-kennan-containment',
+          name: 'U.S. Department of State, Office of the Historian. "Kennan and Containment, 1947."',
+          url: 'https://history.state.gov/milestones/1945-1952/kennan',
+          publishedAt: '1947-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
