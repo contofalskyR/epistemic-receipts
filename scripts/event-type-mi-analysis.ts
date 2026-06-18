@@ -57,7 +57,7 @@ function mutualInformation(joint: Map<string, Map<string, number>>): {
 const CATEGORIES: { label: string; patterns: RegExp[] }[] = [
   {
     label: 'astronomy/space',
-    patterns: [/eclipse|solar.flare|comet|lunar|apollo|sputnik|moon.land|orbit|satellite|parallax|telescope|nebula|pulsar|exoplanet|black.hole|hubble|occult|pleiades|mars.orbit|chang[ae]\d|chandrayaan|voyager|beidou|webb|van.allen|explorer.1|first.exo|cmb|cosmic/i],
+    patterns: [/eclipse|solar.flare|comet|lunar|apollo|sputnik|moon.land|orbit|satellite|parallax|telescope|nebula|pulsar|exoplanet|black.hole|hubble|occult|pleiades|mars.orbit|chang[ae]\d|chandrayaan|voyager|beidou|webb|van.allen|explorer.1|first.exo|cmb|cosmic|hertzsprung|spectral.class|cepheid|supernova|white.dwarf|red.giant|main.sequence|h.r.diagram|dark.matter|dark.energy|accelerat.+expan|hubble.constant|big.bang|steady.state|cosmic.microwave|ligo|gravitational.lens|frame.drag|kerr|schwarzschild|event.horizon|eht|sagittarius.a|m87|neutrino.oscillat|standard.model|bell.test|decoherence|cassini|curiosity|perseverance|spirit.rover|opportunity.rover|new.horizons|juno|galileo.probe|kepler.mission|tess|gaia.mission|interferometr|adaptive.optics|radio.telescope|arecibo|alma|vla|neptune.discovery|uranus.discovery|pluto.reclassif|iau.vote|transit.of.venus|halley|copernicus|aristarchus|ptolemy|brahe|tycho/i],
   },
   {
     label: 'battle/war/military',
@@ -88,8 +88,12 @@ const CATEGORIES: { label: string; patterns: RegExp[] }[] = [
     patterns: [/computer|internet|arpanet|apple.|ibm|cpu|algorithm|bitcoin|chatgpt|deepseek|alphago|deep.blue|eniac|ethernet|diffie.hellman|encryption|cryptography|telegraph|telephone|radio|television|printing.press|incandescent|pearl.street|altair|macintosh|transistor|silicon|semiconductor|daguerreotype|photograph|radar|daventry|codd.relational|network|software|microchip|steam.engine|bessemer|locomotive|balloon|dynamite|vulcaniz|artificial.intelligence|gpt|llm|neural/i],
   },
   {
+    label: 'nutrition/dietary',
+    patterns: [/dietary|cholesterol.limit|saturated.fat|trans.fat|margarine|ancel.keys|seven.countries|mcgovern|food.pyramid|myplate|low.fat|atkins|mediterranean.diet|dash.diet|sugar.industry|yudkin|lustig|fructose|hfcs|high.fructose|vitamin.[a-e]|vitamin.d|scurvy|beriberi|pellagra|rickets|niacin|thiamine|folate|rda\b|recommended.daily|food.guide|school.lunch|fluorid|iodiz|fortif|nutrient.deficiency|essential.amino|protein.combining|plant.based.protein|bmi.adopt|set.point|calorie|obesity.epidem|bariatric|glp.1.appetite|ultra.processed|nova.classif|microbiome.diet|personalized.nutrition|french.paradox|j.curve.alcohol|no.safe.level.alcohol|msg.safety|aspartame|artificial.sweeten|bpa|glyphosate|roundup|pesticide.residue|organic.food/i],
+  },
+  {
     label: 'environment/climate',
-    patterns: [/climate|ozone|greenhouse|pollution|conservation|endangered.species|epa|ddt|clean.air|earth.day|cuyahoga|exxon.valdez|arrhenius|foote.greenhouse|chernobyl|bhopal|carbon.neutrality|climategate|paris.agreement|kyoto|ipcc/i],
+    patterns: [/climate|ozone|greenhouse|pollution|conservation|endangered.species|epa|ddt|clean.air|earth.day|cuyahoga|exxon.valdez|arrhenius|foote.greenhouse|chernobyl|bhopal|carbon.neutrality|climategate|paris.agreement|kyoto|ipcc|keeling.curve|co2.milestone|400.?ppm|methane.measure|tyndall|callendar|montreal.protocol|cfc|chlorofluoro|ozone.hole|farman|acid.rain|sea.level|arctic.ice|ocean.acidif|coral.bleach|coral.die|permafrost|extreme.weather|heat.wave.attribu|hurricane.intensif|drought.attribu|wildfire.attribu|species.migration|biodiversity.loss|carbon.capture|solar.cost|wind.cost|coal.phase|net.zero|cop\d|unfccc|nationally.determined|climate.denial|exxon.knew|fossil.fuel.disinform|urgenda|juliana|carbon.tax|cap.and.trade|greta|extinction.rebellion|ipcc.ar[1-6]|wmo.record|hansen.testimony|al.gore|inconvenient/i],
   },
   {
     label: 'law/civil rights/social',

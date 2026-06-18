@@ -111,6 +111,36 @@ function normalizeMedEra(era: string): string {
   return 'unknown'
 }
 
+// Climate era normalizer (5 eras from loop-settling-curve-climate.sh)
+function normalizeClimateEra(era: string): string {
+  if (/pre.industrial|pre.1850|fourier|tyndall|arrhenius|early.greenhouse/i.test(era)) return 'pre-industrial'
+  if (/measurement|1850.+1960|keeling|callendar|weather.balloon/i.test(era)) return 'measurement'
+  if (/environmental.movement|1960.+1990|earth.day|epa|ozone|acid.rain|chernobyl|montreal/i.test(era)) return 'environmental-movement'
+  if (/ipcc|international.policy|1990.+2010|kyoto|climategate|cap.and.trade|al.gore/i.test(era)) return 'ipcc-policy'
+  if (/climate.action|2010|paris.agreement|net.zero|greta|ar6|extreme.weather/i.test(era)) return 'climate-action'
+  return 'unknown'
+}
+
+// Astronomy era normalizer (5 eras from loop-settling-curve-astronomy.sh)
+function normalizeAstroEra(era: string): string {
+  if (/ancient|pre.1500|babylonian|ptolemy|aristarchus|islamic.golden/i.test(era)) return 'ancient-observations'
+  if (/scientific.revolution|1500.+1800|copernicus|galileo|kepler|newton|halley|transit.of.venus/i.test(era)) return 'scientific-revolution'
+  if (/classical.physics|astrophysics|1800.+1905|spectroscopy|neptune|electromagnetic|radioactiv|x.ray/i.test(era)) return 'classical-physics'
+  if (/modern.physics|1905.+1970|relativity|quantum|fission|cosmic.microwave|pulsar|quasar/i.test(era)) return 'modern-physics'
+  if (/space.age|precision.cosm|1970|voyager|hubble|ligo|higgs|jwst|exoplanet|black.hole.imag/i.test(era)) return 'space-age'
+  return 'unknown'
+}
+
+// Nutrition era normalizer (5 eras from loop-settling-curve-nutrition.sh)
+function normalizeNutritionEra(era: string): string {
+  if (/vitamin.discover|pre.1940|scurvy|beriberi|pellagra|rickets|essential.amino/i.test(era)) return 'vitamin-discovery'
+  if (/post.war|1940.+1970|rda|food.pyramid.origin|fluorid|iodiz|school.lunch|ancel.keys|seven.countries/i.test(era)) return 'post-war-policy'
+  if (/dietary.guidelines|1970.+2000|mcgovern|low.fat|food.pyramid.1992|atkins/i.test(era)) return 'dietary-guidelines'
+  if (/reversal|reappraisal|2000.+2015|cholesterol.limit|saturated.fat.revisit|mediterranean.diet|sugar.industry/i.test(era)) return 'reversal-reappraisal'
+  if (/precision.nutrition|2015|microbiome|ultra.processed|glp.1|personalized/i.test(era)) return 'precision-nutrition'
+  return 'unknown'
+}
+
 // ─── Parse log ────────────────────────────────────────────────────────────────
 const raw = readFileSync('/tmp/settling-curve-loop.log', 'utf8')
 const lines = raw.split('\n')
@@ -432,6 +462,91 @@ try {
   medicineStats = { status: 'no-data-yet', note: 'medicine-decisions.jsonl not found or empty — run medicine loop first' }
 }
 
+// ─── Generic JSONL loop analyzer (reused for climate, astronomy, nutrition) ──
+function analyzeLoopJsonl(
+  jsonlPath: string,
+  eras: string[],
+  normalizeEra: (era: string) => string,
+  label: string
+): Record<string, unknown> {
+  try {
+    const raw = readFileSync(jsonlPath, 'utf8')
+    const runs = raw.split('\n').filter(Boolean).map((l) => {
+      try { return JSON.parse(l) } catch { return null }
+    }).filter(Boolean)
+
+    console.log(`Parsed ${runs.length} ${label} runs`)
+
+    const perEra: Record<string, {
+      runs: number; total_added: number; total_candidates: number
+      avg_novelty_rate: number; domain_dist: Record<string, number>
+      review_issues: number
+    }> = {}
+
+    for (const era of eras) {
+      const eraRuns = runs.filter((r: Record<string, unknown>) => normalizeEra(r.era as string) === era)
+      const domainDist: Record<string, number> = {}
+      let reviewIssues = 0
+      for (const r of eraRuns as Array<Record<string, unknown>>) {
+        const dom = (r.domain as string || '').replace(/\s*\(.*/, '').trim()
+        if (dom) domainDist[dom] = (domainDist[dom] || 0) + 1
+        if ((r.review as string || '').startsWith('issues:') || (r.review as string || '').startsWith('fix')) reviewIssues++
+      }
+      const totalAdded = (eraRuns as Array<Record<string, unknown>>).reduce((a, r) => a + (Number(r.added) || 0), 0)
+      const totalCandidates = (eraRuns as Array<Record<string, unknown>>).reduce((a, r) => a + (Number(r.candidates) || 0), 0)
+      const noveltyRates = (eraRuns as Array<Record<string, unknown>>)
+        .map((r) => parseFloat(r.novelty_rate as string || '0')).filter((v) => !isNaN(v))
+      perEra[era] = {
+        runs: eraRuns.length,
+        total_added: totalAdded,
+        total_candidates: totalCandidates,
+        avg_novelty_rate: noveltyRates.length > 0 ? +(noveltyRates.reduce((a, b) => a + b, 0) / noveltyRates.length).toFixed(3) : 0,
+        domain_dist: domainDist,
+        review_issues: reviewIssues,
+      }
+    }
+
+    const joint = new Map<string, Map<string, number>>()
+    for (const r of runs as Array<Record<string, unknown>>) {
+      const era = normalizeEra(r.era as string)
+      const n = Number(r.added) || 0
+      const bucket = n === 0 ? 'zero' : n <= 2 ? 'low(1-2)' : n <= 4 ? 'mid(3-4)' : 'high(5+)'
+      if (!joint.has(era)) joint.set(era, new Map())
+      joint.get(era)!.set(bucket, (joint.get(era)!.get(bucket) || 0) + 1)
+    }
+    const mi = mutualInformation(joint)
+
+    const total = runs.reduce((a: number, r: Record<string, unknown>) => a + (Number(r.added) || 0), 0)
+
+    return {
+      total_runs: runs.length,
+      total_added: total,
+      'I(era;productivity)': { mi: mi.mi, normalized: mi.normalized, n: mi.n },
+      per_era: perEra,
+    }
+  } catch {
+    return { status: 'no-data-yet', note: `${label}-decisions.jsonl not found or empty — run ${label} loop first` }
+  }
+}
+
+const climateStats = analyzeLoopJsonl(
+  '/Users/robclaw/Projects/epistemic-receipts/logs/climate-decisions.jsonl',
+  ['pre-industrial', 'measurement', 'environmental-movement', 'ipcc-policy', 'climate-action'],
+  normalizeClimateEra, 'climate'
+)
+
+const astronomyStats = analyzeLoopJsonl(
+  '/Users/robclaw/Projects/epistemic-receipts/logs/astronomy-decisions.jsonl',
+  ['ancient-observations', 'scientific-revolution', 'classical-physics', 'modern-physics', 'space-age'],
+  normalizeAstroEra, 'astronomy'
+)
+
+const nutritionStats = analyzeLoopJsonl(
+  '/Users/robclaw/Projects/epistemic-receipts/logs/nutrition-decisions.jsonl',
+  ['vitamin-discovery', 'post-war-policy', 'dietary-guidelines', 'reversal-reappraisal', 'precision-nutrition'],
+  normalizeNutritionEra, 'nutrition'
+)
+
 const report = {
   generated: '2026-06-18',
   total_runs: totalRuns,
@@ -465,6 +580,9 @@ const report = {
   era_topic_mi_matrix: mi_era_topic.matrix,
   top_findings: findings,
   medicine_analysis: medicineStats,
+  climate_analysis: climateStats,
+  astronomy_analysis: astronomyStats,
+  nutrition_analysis: nutritionStats,
 }
 
 writeFileSync('/Users/robclaw/Projects/epistemic-receipts/logs/log-analysis-report.json', JSON.stringify(report, null, 2))
