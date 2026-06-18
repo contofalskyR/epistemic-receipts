@@ -7846,6 +7846,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HORMONE THERAPY & CONTRACEPTION (1995–2013)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HERS: HRT does not prevent cardiac events — Hulley 1998 ────────────────
+  {
+    externalId: 'trajectory:hers-hrt-secondary-cardiac-prevention-1998',
+    text: 'Susan Hulley and the HERS investigators reported in JAMA on 19 August 1998 that estrogen plus progestin (conjugated equine estrogen + medroxyprogesterone) did not reduce coronary events and caused early excess risk in postmenopausal women with established coronary heart disease, contradicting the prevailing belief that hormone therapy protects the female heart.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-19',
+        datePrecision: 'DAY',
+        reason: 'HERS, the first large randomized secondary-prevention trial of HRT, enrolled 2,763 postmenopausal women with documented coronary disease and found no overall reduction in CHD events despite favorable lipid changes, plus a significant excess of events in the first year and increased venous thromboembolism. This was the first RCT-level evidence directly contradicting the strong observational consensus (e.g., Nurses\' Health Study) that estrogen is cardioprotective.',
+        source: {
+          externalId: 'src:hulley-hers-jama-1998',
+          name: 'Hulley S, Grady D, Bush T, Furberg C, Herrington D, Riggs B, Vittinghoff E. Randomized trial of estrogen plus progestin for secondary prevention of coronary heart disease in postmenopausal women (HERS). JAMA. 1998;280(7):605-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9718051/',
+          publishedAt: '1998-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-03',
+        datePrecision: 'DAY',
+        reason: 'The HERS II open-label extension followed the cohort for 6.8 years and confirmed that hormone therapy produced no cardiovascular benefit and should not be used to reduce cardiovascular risk in women with established disease. Combined with the WHI primary-prevention result published two weeks later, this settled the reversal: HRT was removed from cardioprotective indications in clinical guidance.',
+        source: {
+          externalId: 'src:grady-hers2-jama-2002',
+          name: 'Grady D, Herrington D, Bittner V, et al. Cardiovascular disease outcomes during 6.8 years of hormone therapy: Heart and Estrogen/progestin Replacement Study follow-up (HERS II). JAMA. 2002;288(1):49-57.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12090862/',
+          publishedAt: '2002-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHI estrogen-alone trial stopped early — Anderson 2004 ─────────────────
+  {
+    externalId: 'trajectory:whi-estrogen-alone-stroke-no-benefit-2004',
+    text: 'Garnet Anderson and the Women\'s Health Initiative investigators reported in JAMA on 14 April 2004 that conjugated equine estrogen alone, given to postmenopausal women with prior hysterectomy, did not reduce coronary heart disease and significantly increased stroke risk, leading the NIH to halt the estrogen-only arm early and extending the 2002 HRT reversal to unopposed estrogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-04-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-14',
+        datePrecision: 'DAY',
+        reason: 'The WHI estrogen-alone trial randomized 10,739 hysterectomized women aged 50–79 to conjugated equine estrogen or placebo; the NIH stopped it early (mean 6.8 years) after estrogen increased stroke, produced no coronary benefit, and showed an unfavorable global index. Unlike the combined-therapy arm, it did not raise breast cancer risk, refining rather than simply repeating the 2002 finding and recording that unopposed estrogen also fails as chronic-disease prevention.',
+        source: {
+          externalId: 'src:anderson-whi-estrogen-alone-jama-2004',
+          name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701-1712.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
+          publishedAt: '2004-04-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-10-02',
+        datePrecision: 'DAY',
+        reason: 'The WHI 13-year cumulative follow-up of both hormone-therapy trials reaffirmed that the health risks of estrogen alone and estrogen-plus-progestin outweighed benefits for chronic-disease prevention, with effects attenuating after stopping. This pooled long-term analysis settled the conclusion that menopausal hormone therapy should not be used for primary prevention in either regimen.',
+        source: {
+          externalId: 'src:manson-whi-13yr-jama-2013',
+          name: 'Manson JE, Chlebowski RT, Stefanick ML, et al. Menopausal hormone therapy and health outcomes during the intervention and extended poststopping phases of the Women\'s Health Initiative randomized trials. JAMA. 2013;310(13):1353-1368.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24084921/',
+          publishedAt: '2013-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Third-generation OC VTE scare — UK CSM 1995 ────────────────────────────
+  {
+    externalId: 'trajectory:third-generation-oral-contraceptive-vte-scare-1995',
+    text: 'The UK Committee on Safety of Medicines announced on 18 October 1995 that third-generation combined oral contraceptives containing desogestrel or gestodene carried roughly twice the risk of venous thromboembolism of older levonorgestrel pills, overturning the assumption that the newer progestins were at least as safe and triggering the European \'pill scare\'.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10-18',
+        datePrecision: 'DAY',
+        reason: 'Acting on three then-unpublished epidemiologic studies, the UK CSM issued an urgent \'Dear Doctor\' communication warning that desogestrel- and gestodene-containing pills doubled VTE risk relative to levonorgestrel products, advising they not be used as first choice. The abrupt institutional warning ahead of publication caused third-generation use to collapse from ~53% to ~14% of prescriptions and is associated with a rise in unintended pregnancies and abortions.',
+        source: {
+          externalId: 'src:csm-third-gen-oc-vte-medsafe-1996',
+          name: 'Medicines Safety Authority (Medsafe). The Risk of Venous Thromboembolism with Third Generation Oral Contraceptives (documenting the UK CSM October 1995 warning). Feb 1996.',
+          url: 'https://www.medsafe.govt.nz/profs/PUarticles/contraceptivesFeb96.htm',
+          publishedAt: '1996-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After the four studies underlying the warning were published and widely criticized for methodological bias, formal review concluded that confounding (preferential prescribing, diagnostic and healthy-user bias) was insufficient to explain the signal and that desogestrel/gestodene do carry a modestly elevated VTE risk versus levonorgestrel. The ~2-fold relative risk became the settled expert position, later reaffirmed by EMA reviews.',
+        source: {
+          externalId: 'src:walker-newer-oc-vte-contraception-1998',
+          name: 'Walker AM. Newer oral contraceptives and the risk of venous thromboembolism. Contraception. 1998;57(3):169-181.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9617533/',
+          publishedAt: '1998-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Drospirenone/Yaz VTE safety signal — FDA 2012 ──────────────────────────
+  {
+    externalId: 'trajectory:drospirenone-yaz-vte-safety-signal-2012',
+    text: 'Post-marketing epidemiologic studies from 2009 and the FDA\'s safety review concluded on 10 April 2012 that drospirenone-containing oral contraceptives (Yaz, Yasmin, Beyaz, Safyral) may carry a higher venous thromboembolism risk than levonorgestrel-containing pills, prompting an FDA-mandated label change while keeping the drugs on the market.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-13',
+        datePrecision: 'DAY',
+        reason: 'Lidegaard\'s Danish national cohort (10.4 million woman-years) reported that drospirenone-containing combined oral contraceptives carried about a 1.6-fold higher VTE rate than levonorgestrel pills, with companion BMJ studies that year giving estimates up to 2–3 fold. This was the first large-scale epidemiologic signal that the heavily marketed drospirenone pills (Yasmin approved 2001, Yaz 2006) were not as safe as their levonorgestrel predecessors.',
+        source: {
+          externalId: 'src:lidegaard-hormonal-contraception-vte-bmj-2009',
+          name: 'Lidegaard Ø, Løkkegaard E, Svendsen AL, Agger C. Hormonal contraception and risk of venous thromboembolism: national follow-up study. BMJ. 2009;339:b2890.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19679613/',
+          publishedAt: '2009-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-04-10',
+        datePrecision: 'DAY',
+        reason: 'After reviewing the epidemiologic studies and an FDA-funded cohort, the FDA issued a Drug Safety Communication concluding that drospirenone-containing pills may be associated with higher blood-clot risk (estimated ~10 vs ~6 per 10,000 woman-years) and required manufacturers to add this to product labels. The agency stopped short of withdrawal, and the magnitude of the risk remained actively disputed among industry-funded and independent studies, leaving the claim contested.',
+        source: {
+          externalId: 'src:fda-drospirenone-dsc-2012',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: Updated information about the risk of blood clots in women taking birth control pills containing drospirenone. 10 April 2012.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/information-about-drospirenone',
+          publishedAt: '2012-04-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
