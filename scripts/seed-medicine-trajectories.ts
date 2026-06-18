@@ -8347,6 +8347,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL FIRSTS & CRITICAL CARE (1944–1954)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Blalock-Taussig 'blue baby' operation — 1944 ────────────────────────────
+  {
+    externalId: 'trajectory:blalock-taussig-blue-baby-operation-1944',
+    text: 'On 29 November 1944 Alfred Blalock, guided by Helen Taussig\'s pathophysiologic reasoning and Vivien Thomas\'s surgical groundwork, performed the first systemic-to-pulmonary shunt (\'blue baby\' operation) at Johns Hopkins, anastomosing the subclavian to the pulmonary artery to relieve cyanosis in a child with tetralogy of Fallot.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-05-19',
+        datePrecision: 'DAY',
+        reason: 'Blalock and Taussig reported three cases of severe pulmonary stenosis/atresia treated by the subclavian-to-pulmonary shunt in JAMA on 19 May 1945, documenting that the two deeply cyanotic patients had their cyanosis greatly diminished or abolished after surgery. This recorded the claim that a congenital cyanotic heart malformation could be palliated surgically — previously considered inoperable — and is widely regarded as the operation that launched the field of cardiac surgery.',
+        source: {
+          externalId: 'src:blalock-taussig-jama-1945',
+          name: 'Blalock A, Taussig HB. The surgical treatment of malformations of the heart in which there is pulmonary stenosis or pulmonary atresia. JAMA. 1945 May 19;128(3):189-202.',
+          url: 'https://www.jameslindlibrary.org/wp-data/uploads/2017/04/Blalock-Taussig-1945x.pdf',
+          publishedAt: '1945-05-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The operation was adopted internationally with remarkable speed: surgeons travelled to Johns Hopkins to learn it, and by 1951 over a thousand Blalock-Taussig shunts had been performed there alone, with the procedure established worldwide as standard palliation for cyanotic congenital heart disease. Its rapid, reproducible success settled the claim and opened the era of systematic surgical correction of the heart.',
+        source: {
+          externalId: 'src:blalock-taussig-james-lind-library',
+          name: 'Blalock A, Taussig HB (1945). The James Lind Library — commentary on the surgical treatment of malformations of the heart with pulmonary stenosis or atresia.',
+          url: 'https://www.jameslindlibrary.org/blalock-taussig-hb-1945/',
+          publishedAt: '2017-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lassen-Ibsen positive-pressure ventilation / ICU — 1952 ─────────────────
+  {
+    externalId: 'trajectory:lassen-ibsen-positive-pressure-ventilation-1952',
+    text: 'On 27 August 1952, during the Copenhagen poliomyelitis epidemic, anaesthetist Bjørn Ibsen demonstrated that manual positive-pressure ventilation through a tracheostomy could rescue a patient dying of bulbar polio respiratory failure, displacing the negative-pressure iron lung and founding modern intensive care and mechanical ventilation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-01',
+        datePrecision: 'MONTH',
+        reason: 'H.C.A. Lassen reported the epidemic in The Lancet in January 1953, documenting that switching from iron lungs to manual positive-pressure ventilation via tracheostomy — sustained around the clock by relays of medical and dental students squeezing rubber bags — cut mortality from bulbar/respiratory polio from roughly 80-90% to about 25%. This recorded in the literature the claim that active airway management and positive-pressure ventilation, not the iron lung, was the effective treatment for acute respiratory failure.',
+        source: {
+          externalId: 'src:lassen-copenhagen-polio-lancet-1953',
+          name: 'Lassen HCA. A preliminary report on the 1952 epidemic of poliomyelitis in Copenhagen with special reference to the treatment of acute respiratory insufficiency. Lancet. 1953 Jan 3;261(6749):37-41.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13011944/',
+          publishedAt: '1953-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1953-12',
+        datePrecision: 'MONTH',
+        reason: 'The Copenhagen experience drove the rapid replacement of negative-pressure ventilators with positive-pressure ventilation and the gathering of critically ill patients into dedicated, continuously staffed units; Ibsen organized what is generally regarded as the world\'s first intensive care unit at the Copenhagen Municipal Hospital in December 1953. Positive-pressure ventilation and intensive care became the global standard for respiratory failure, settling the claim that founded critical-care medicine.',
+        source: {
+          externalId: 'src:copenhagen-polio-icu-renaissance-review',
+          name: 'Reisner-Sénélar L et al. / West JB. The physiological challenges of the 1952 Copenhagen poliomyelitis epidemic and a renaissance in clinical respiratory physiology. J Appl Physiol. 2005;99(2):424-432.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1351016/',
+          publishedAt: '2005-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Merrill-Murray first kidney transplant between twins — 1954 ──────────────
+  {
+    externalId: 'trajectory:merrill-murray-first-kidney-transplant-twins-1954',
+    text: 'On 23 December 1954 Joseph E. Murray and J. Hartwell Harrison performed the first enduringly successful human organ transplant at the Peter Bent Brigham Hospital in Boston, grafting a kidney from Ronald Herrick into his identical twin Richard, who survived with restored renal function.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1954-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-28',
+        datePrecision: 'DAY',
+        reason: 'Merrill, Murray, Harrison and Guild published the case in JAMA on 28 January 1956, reporting that a kidney transplanted between genetically identical twins functioned without rejection and restored the dying recipient to health. This recorded in the expert literature the first proof that a vascularized solid human organ could be transplanted and sustain life, demonstrating that the immunologic barrier — not surgical technique — was the obstacle to transplantation.',
+        source: {
+          externalId: 'src:merrill-kidney-twins-jama-1956',
+          name: 'Merrill JP, Murray JE, Harrison JH, Guild WR. Successful homotransplantation of the human kidney between identical twins. J Am Med Assoc. 1956 Jan 28;160(4):277-282.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6371266/',
+          publishedAt: '1956-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-10-08',
+        datePrecision: 'DAY',
+        reason: 'After immunosuppression (azathioprine and steroids, later ciclosporin) extended the technique to non-twin donors, kidney transplantation became established standard therapy for end-stage renal disease, and on 8 October 1990 Murray was awarded the Nobel Prize in Physiology or Medicine for his discoveries concerning organ transplantation. The highest institutional honor in medicine ratified the 1954 operation as the founding case of a now-routine clinical practice.',
+        source: {
+          externalId: 'src:nobel-murray-transplantation-1990',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1990 — Joseph E. Murray, Facts. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1990/murray/facts/',
+          publishedAt: '1990-10-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dublin EFM trial — routine electronic fetal monitoring contested — 1985 ──
+  {
+    externalId: 'trajectory:dublin-trial-electronic-fetal-monitoring-1985',
+    text: 'The Dublin randomised controlled trial (MacDonald, Grant, Sheridan-Pereira, Boylan and Chalmers), published in the American Journal of Obstetrics & Gynecology in 1985, found that routine continuous electronic fetal heart-rate monitoring in labour roughly halved neonatal seizures but did not reduce perinatal death or one-year neurological disability versus intermittent auscultation, while increasing operative deliveries — contradicting the basis on which EFM had become standard intrapartum care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After continuous electronic fetal monitoring was introduced into clinical practice in the early 1970s — largely on the strength of animal experiments and observational data and the expectation that it would prevent intrapartum hypoxic injury and cerebral palsy — it diffused rapidly through US and UK labour wards, so that by 1978 roughly two-thirds of American births were electronically monitored. Routine EFM became the de facto institutional standard of intrapartum care before any randomized evidence of benefit existed.',
+        source: {
+          externalId: 'src:efm-half-century-bioethics-2017',
+          name: 'Sartwelle TP, Johnston JC, Arda B. A half century of electronic fetal monitoring and bioethics: silence speaks louder than words. Matern Health Neonatol Perinatol. 2017;3:21.',
+          url: 'https://mhnpjournal.biomedcentral.com/articles/10.1186/s40748-017-0060-2',
+          publishedAt: '2017-11-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-07',
+        datePrecision: 'MONTH',
+        reason: 'MacDonald and colleagues reported the Dublin trial, randomizing 12,964 women to continuous EFM (with fetal scalp pH) versus intermittent auscultation. Continuous EFM approximately halved neonatal seizures but produced no significant reduction in perinatal mortality or in neurological abnormality at one year, while identifying more fetuses for intervention — contradicting the assumption that routine EFM improved hard outcomes. Together with the earlier Haverkamp trials and subsequent Cochrane reviews, this opened a durable controversy over routine intrapartum EFM that remains unresolved despite its continued near-universal use.',
+        source: {
+          externalId: 'src:macdonald-dublin-efm-ajog-1985',
+          name: 'MacDonald D, Grant A, Sheridan-Pereira M, Boylan P, Chalmers I. The Dublin randomized controlled trial of intrapartum fetal heart rate monitoring. Am J Obstet Gynecol. 1985;152(5):524-539.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3893132/',
+          publishedAt: '1985-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
