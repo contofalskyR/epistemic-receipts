@@ -54837,6 +54837,408 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — supplemental
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Caliphate of Córdoba proclaimed (al-Andalus) ─────────────────────────────
+  {
+    externalId: 'trajectory:cordoba-caliphate-proclaimed-929',
+    text: 'On 16 January 929 CE, Abd al-Rahman III adopted the title of Caliph (Amir al-Mu\'minin), proclaiming the Caliphate of Córdoba in al-Andalus.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0929-01-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0929-01-16',
+        datePrecision: 'DAY',
+        reason: 'The Umayyad emir of Córdoba, Abd al-Rahman III, formally assumes the caliphal title Amir al-Mu\'minin ("Commander of the Faithful") and the regnal name al-Nasir, repudiating the authority of the Abbasid caliph of Baghdad and the rival Fatimid caliphate. The proclamation is announced in a chancery letter dated Thursday, 2 Dhū al-Ḥijja 316 AH (16 January 929) and preserved by the Andalusi historian Ibn Hayyan in his Muqtabis, drawing on near-contemporary court records.',
+        source: {
+          externalId: 'src:ibn-hayyan-muqtabis-caliphate-929',
+          name: 'Caliphate of Córdoba proclaimed by Abd al-Rahman III, 16 January 929 — chancery letter dated 2 Dhū al-Ḥijja 316 AH, preserved in Ibn Hayyan\'s Muqtabis.',
+          url: 'https://en.wikipedia.org/wiki/Abd_al-Rahman_III',
+          publishedAt: '1075-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The proclamation is corroborated across Andalusi sources — Ibn Hayyan\'s Muqtabis, the anonymous Crónica anónima de Abd al-Rahman III, and Ibn Idhari\'s al-Bayan al-Mughrib — and is treated by historians as the founding act of the Córdoba caliphate, which lasted until its dissolution in 1031. Numismatic evidence (gold dinars struck with the caliphal title) confirms the change of status.',
+        source: {
+          externalId: 'src:cordoba-caliphate-scholarship',
+          name: 'Caliphate of Córdoba — established 929 by Abd al-Rahman III, dissolved 1031.',
+          url: 'https://en.wikipedia.org/wiki/Caliphate_of_C%C3%B3rdoba',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Clontarf (Ireland / Viking Age) ────────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-clontarf-1014',
+    text: 'High King Brian Boru defeated a Norse–Leinster coalition at the Battle of Clontarf on 23 April 1014 (Good Friday) but was killed in the fighting.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1014-04-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1014-04-23',
+        datePrecision: 'DAY',
+        reason: 'On Good Friday, the army of Brian Boru, High King of Ireland, defeats the forces of Sigtrygg Silkbeard of Dublin, the Leinstermen, and Norse allies under Sigurd of Orkney and Brodir on the plain of Clontarf near Dublin. Brian himself is killed in his tent, along with his son Murchad and grandson Toirdelbach. The near-contemporary Annals of Ulster and Annals of Inisfallen record the battle and its casualties.',
+        source: {
+          externalId: 'src:annals-ulster-clontarf-1014',
+          name: 'Annals of Ulster, s.a. 1014, on the battle of Clontarf and the death of Brian Boru. (near-contemporary Irish annal)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Clontarf',
+          publishedAt: '1014-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and outcome are attested by the Annals of Ulster and Annals of Inisfallen (the nearest-contemporary records), elaborated in the 12th-century Cogadh Gáedhel re Gallaibh, and noted in Norse tradition (Njáls saga). Historians treat the battle of 23 April 1014 and Brian Boru\'s death as settled, debating only its later mythologization, not its occurrence.',
+        source: {
+          externalId: 'src:clontarf-scholarship',
+          name: 'Battle of Clontarf — 23 April 1014; death of Brian Boru.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Clontarf',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Wat Tyler at Smithfield (Peasants' Revolt) ──────────────────────
+  {
+    externalId: 'trajectory:wat-tyler-smithfield-1381',
+    text: 'Wat Tyler, leader of the English Peasants\' Revolt, was killed during a confrontation with the royal party at Smithfield on 15 June 1381.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1381-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1381-06-15',
+        datePrecision: 'DAY',
+        reason: 'At a parley with the fourteen-year-old King Richard II outside the walls at Smithfield, the rebel leader Wat Tyler is wounded by the Lord Mayor of London William Walworth and then killed by the royal squire Ralph Standish, collapsing the Peasants\' Revolt. The events are recorded by eyewitness-derived contemporary chronicles, chiefly the Anonimalle Chronicle, together with Thomas Walsingham, Henry Knighton, and Froissart.',
+        source: {
+          externalId: 'src:anonimalle-chronicle-smithfield-1381',
+          name: 'The Anonimalle Chronicle, account of the Smithfield meeting and death of Wat Tyler, 15 June 1381. (contemporary, court-derived)',
+          url: 'https://en.wikipedia.org/wiki/Peasants%27_Revolt',
+          publishedAt: '1381-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Smithfield confrontation of 15 June 1381 and Tyler\'s death are attested by multiple independent chronicles (Anonimalle, Walsingham, Knighton, Froissart). Though all surviving accounts are hostile to the rebels and differ on detail, historians treat the date, the meeting, and Tyler\'s killing as settled fact.',
+        source: {
+          externalId: 'src:peasants-revolt-scholarship',
+          name: 'Peasants\' Revolt — Smithfield meeting and death of Wat Tyler, 15 June 1381.',
+          url: 'https://en.wikipedia.org/wiki/Peasants%27_Revolt',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yue Fei executed and posthumously exonerated (Song China) ────────────────
+  {
+    externalId: 'trajectory:yue-fei-executed-exonerated-1142',
+    text: 'The Southern Song general Yue Fei, executed on charges of treason on 28 January 1142, was posthumously exonerated and rehabilitated in 1162.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1142-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1142-01-28',
+        datePrecision: 'DAY',
+        reason: 'The Southern Song court, under chancellor Qin Hui, has the celebrated anti-Jin general Yue Fei imprisoned and put to death on a charge of treason that was never substantiated. When pressed for evidence, Qin Hui is said to have answered "莫須有" (mòxūyǒu, "perhaps there is") — a phrase that entered Chinese as a byword for a trumped-up charge. Yue Fei dies in prison on the 29th day of the 12th lunar month of Shaoxing 11 (28 January 1142).',
+        source: {
+          externalId: 'src:song-shi-yue-fei-execution',
+          name: 'History of Song (Song Shi), ch. 365, Biography of Yue Fei, incorporating Yue Ke\'s near-contemporary Eguo Jintuo Zubian. (verdict and execution of 1142)',
+          url: 'https://en.wikipedia.org/wiki/Yue_Fei',
+          publishedAt: '1203-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1162-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Twenty years after the execution, Emperor Xiaozong of Song formally dissolves the unjust charges against Yue Fei, rehabilitates his honours and rank, and orders his reburial with ceremony — an explicit institutional reversal of the 1142 treason verdict. Yue Fei is subsequently venerated as a national hero, while Qin Hui is condemned as a traitor.',
+        source: {
+          externalId: 'src:yue-fei-rehabilitation-1162',
+          name: 'Yue Fei — posthumous exoneration and rehabilitation by Emperor Xiaozong of Song, 1162.',
+          url: 'https://en.wikipedia.org/wiki/Yue_Fei',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): Renaissance cartography, Scientific Revolution,
+  // Ottoman Empire, Pacific exploration — verified additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Ortelius publishes the Theatrum Orbis Terrarum (first modern atlas) ──────
+  {
+    externalId: 'trajectory:ortelius-theatrum-atlas-1570',
+    text: 'On 20 May 1570, Abraham Ortelius published the Theatrum Orbis Terrarum at Antwerp, generally regarded as the first true modern atlas.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1570-05-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1570-05-20',
+        datePrecision: 'DAY',
+        reason: 'Gilles Coppens de Diest at Antwerp printed Ortelius\'s collection of 53 uniformly engraved and systematically arranged maps with descriptive text under the title Theatrum Orbis Terrarum, gathering the best available cartography of the age into a single bound reference work.',
+        source: {
+          externalId: 'src:ortelius-theatrum-1570',
+          name: 'Abraham Ortelius, Theatrum Orbis Terrarum (Antwerp: Gilles Coppens de Diest, 20 May 1570), first edition.',
+          url: 'https://en.wikipedia.org/wiki/Theatrum_Orbis_Terrarum',
+          publishedAt: '1570-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1612-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Theatrum ran through dozens of editions and translations into seven languages by 1612, becoming the standard atlas of late-Renaissance Europe. Surviving first-edition copies in major libraries and an unbroken cartographic-history scholarship establish its date, contents, and status as the first modern atlas beyond dispute.',
+        source: {
+          externalId: 'src:ortelius-atlas-history',
+          name: 'Theatrum Orbis Terrarum — editions and reception in the history of cartography.',
+          url: 'https://www.loc.gov/item/2021668086/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kepler completes the Rudolphine Tables ──────────────────────────────────
+  {
+    externalId: 'trajectory:kepler-rudolphine-tables-1627',
+    text: 'In September 1627 Johannes Kepler completed and printed the Rudolphine Tables at Ulm, the most accurate astronomical tables yet produced, derived from Tycho Brahe\'s observations and Kepler\'s laws of planetary motion.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1627-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1627-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The first edition of a thousand copies was finished in September 1627 in time for the Frankfurt autumn book fair. The tables gave planetary and stellar positions accurate to roughly one arc minute, incorporating corrections for atmospheric refraction and logarithmic computation aids.',
+        source: {
+          externalId: 'src:kepler-rudolphine-1627',
+          name: 'Johannes Kepler, Tabulae Rudolphinae (Ulm, 1627), first edition.',
+          url: 'https://en.wikipedia.org/wiki/Rudolphine_Tables',
+          publishedAt: '1627-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1631-11-07',
+        datePrecision: 'DAY',
+        reason: 'Pierre Gassendi observed the transit of Mercury across the Sun on 7 November 1631, an event predicted by Kepler from the Rudolphine Tables; the tables also predicted the 1639 transit of Venus. The successful predictions confirmed the tables\' accuracy and the heliocentric, elliptical model behind them.',
+        source: {
+          externalId: 'src:gassendi-mercury-transit-1631',
+          name: 'Pierre Gassendi, Mercurius in Sole visus (Paris, 1632) — first observed transit of Mercury, predicted from the Rudolphine Tables.',
+          url: 'https://en.wikipedia.org/wiki/Transit_of_Mercury',
+          publishedAt: '1632-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Galileo's Dialogue Concerning the Two Chief World Systems published ──────
+  {
+    externalId: 'trajectory:galileo-dialogue-published-1632',
+    text: 'In February 1632 Galileo Galilei published the Dialogue Concerning the Two Chief World Systems at Florence, arguing for the Copernican heliocentric model; the Grand Duke of Tuscany received the first printed copy on 22 February 1632.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1632-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1632-02-22',
+        datePrecision: 'DAY',
+        reason: 'Printed in Florence under a formal license from the Inquisition, the Dialogo compared the Ptolemaic and Copernican world systems through three interlocutors. Ferdinando II de\' Medici, Grand Duke of Tuscany, received the first printed copy on 22 February 1632, marking public circulation of the work.',
+        source: {
+          externalId: 'src:galileo-dialogo-1632',
+          name: 'Galileo Galilei, Dialogo sopra i due massimi sistemi del mondo (Florence: G. B. Landini, 1632), first edition.',
+          url: 'https://en.wikipedia.org/wiki/Dialogue_Concerning_the_Two_Chief_World_Systems',
+          publishedAt: '1632-02-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1633-06-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 June 1633 the Roman Inquisition condemned Galileo, banned the Dialogue, and placed it on the Index of Forbidden Books, where it remained until 1835 — formally contesting the heliocentric claim the book defended even as the work circulated across Europe.',
+        source: {
+          externalId: 'src:galileo-dialogo-banned-1633',
+          name: 'Sentence of the Roman Inquisition against Galileo, 22 June 1633, banning the Dialogo and placing it on the Index.',
+          url: 'https://en.wikipedia.org/wiki/Galileo_affair',
+          publishedAt: '1633-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1835-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Catholic Church removed the Dialogue and other heliocentric works from the Index in 1835, by which time the heliocentric model defended in the book had long been the settled scientific consensus. Surviving 1632 first editions and the complete trial records establish the work\'s authorship, content, and date.',
+        source: {
+          externalId: 'src:index-heliocentric-removed-1835',
+          name: 'Removal of heliocentric works (including Galileo\'s Dialogo) from the Index Librorum Prohibitorum, 1835.',
+          url: 'https://en.wikipedia.org/wiki/Galileo_affair',
+          publishedAt: '1835-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ottoman capture of Candia ends the Cretan War ───────────────────────────
+  {
+    externalId: 'trajectory:ottoman-capture-candia-1669',
+    text: 'On 27 September 1669 the Ottoman Empire captured Candia (Heraklion) from the Republic of Venice, ending the 21-year Siege of Candia and the Cretan War and bringing Crete under Ottoman rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1669-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1669-09-27',
+        datePrecision: 'DAY',
+        reason: 'With his garrison reduced to fewer than 4,000 effective men, the Venetian commander Francesco Morosini surrendered Candia to Grand Vizier Köprülü Fazıl Ahmed Pasha on negotiated terms, allowing the garrison and remaining population safe evacuation. One of the longest sieges in history ended, transferring Crete to Ottoman control.',
+        source: {
+          externalId: 'src:siege-candia-surrender-1669',
+          name: 'Surrender of Candia to the Ottoman Empire, 27 September 1669 — end of the Cretan War (1645–1669).',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Candia',
+          publishedAt: '1669-09-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1670-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Venetian, Ottoman, and other European chronicles of the war record the capitulation consistently; Crete remained under Ottoman rule until 1898. The date and outcome of the surrender are uncontested in the historiography of the Ottoman–Venetian wars.',
+        source: {
+          externalId: 'src:cretan-war-historiography',
+          name: 'Cretan War (1645–1669) — historiography of the Ottoman conquest of Crete.',
+          url: 'https://en.wikipedia.org/wiki/Cretan_War_(1645%E2%80%931669)',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Roggeveen reaches Easter Island ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:roggeveen-easter-island-1722',
+    text: 'On 5 April 1722 (Easter Sunday) the Dutch navigator Jacob Roggeveen made the first recorded European contact with Easter Island (Rapa Nui), which he named for the day of discovery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1722-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1722-04-05',
+        datePrecision: 'DAY',
+        reason: 'Sailing for the Dutch West India Company in search of the hypothesized southern continent, Roggeveen sighted and landed at the island on Easter Sunday, 5 April 1722. His expedition\'s logs recorded the island\'s inhabitants and its monumental stone statues (moai), the first European description of Rapa Nui.',
+        source: {
+          externalId: 'src:roggeveen-log-1722',
+          name: 'Jacob Roggeveen, expedition journal, 5 April 1722 — first recorded European contact with Easter Island.',
+          url: 'https://en.wikipedia.org/wiki/Easter_Island',
+          publishedAt: '1722-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1903-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Roggeveen\'s journal was published and corroborated by the independent account of his officer Carl Friedrich Behrens, and the date of first European contact is uncontested in the historiography of Pacific exploration. The 5 April 1722 landfall is the fixed reference point for the start of recorded European knowledge of Rapa Nui.',
+        source: {
+          externalId: 'src:roggeveen-behrens-account',
+          name: 'Carl Friedrich Behrens, Der wohlversuchte Süd-Länder (1738) — corroborating account of Roggeveen\'s 1722 voyage.',
+          url: 'https://en.wikipedia.org/wiki/Jacob_Roggeveen',
+          publishedAt: '1738-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
