@@ -453,6 +453,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Liu Bang enthroned as Emperor Gaozu — founding of the Han dynasty (China) ─
+  {
+    externalId: 'trajectory:liu-bang-han-founding-202bce',
+    text: 'Liu Bang accepted the imperial title and was enthroned as Emperor Gao (Gaozu) of Han on the south bank of the Si River on the jiawu day — conventionally dated 28 February 202 BCE — founding the Han dynasty after his victory over Xiang Yu.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0202-02-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0202-02-28',
+        datePrecision: 'DAY',
+        reason: 'After the defeat and death of Xiang Yu, the assembled lords and generals petition the King of Han to take the supreme title; he declines and then accepts. The Records of the Grand Historian record: "甲午，乃即皇帝位汜水之陽" — "On the jiawu day he ascended the imperial throne on the south bank of the Si River." The Han court enters the accession as a dated event, establishing the Han dynasty.',
+        source: {
+          externalId: 'src:shiji-gaozu-accession',
+          name: 'Sima Qian. Records of the Grand Historian (史記), Basic Annals of Emperor Gaozu (高祖本紀): "甲午，乃即皇帝位汜水之陽". (c. 91 BCE, from Han court records)',
+          url: 'https://ctext.org/shiji/gao-zu-ben-ji',
+          publishedAt: '0091-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Book of Han fixes the accession to the jiawu day of the second month of Gaozu\'s fifth year; converting the sexagenary day and the Han lunar month into the proleptic Julian calendar yields 28 February 202 BCE. Homer Dubs\'s critical translation of the "History of the Former Han Dynasty" establishes the conversion, and the date is the accepted anchor for the start of the Han.',
+        source: {
+          externalId: 'src:dubs-han-gaozu-accession',
+          name: 'Dubs HH. The History of the Former Han Dynasty by Pan Ku, vol. 1 (Annals of Emperor Gaozu); cf. Wikipedia "Emperor Gaozu of Han" — jiawu day = 28 February 202 BCE.',
+          url: 'https://en.wikipedia.org/wiki/Emperor_Gaozu_of_Han',
+          publishedAt: '1938-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cao Pi accepts the Han abdication — founding of Cao Wei (China) ──────────
+  {
+    externalId: 'trajectory:cao-pi-wei-founding-220',
+    text: 'Emperor Xian of Han abdicated in favour of Cao Pi, who ascended the imperial throne and proclaimed the Wei dynasty on the gengwu day of the tenth month of 220 CE — conventionally 11 December 220 — ending more than four centuries of Han rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0220-12-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0220-12-11',
+        datePrecision: 'DAY',
+        reason: 'After Emperor Xian issues the abdication edict and Cao Pi thrice declines in the ritual manner, an altar is raised at Fanyang and Cao Pi ascends it to receive the imperial seal. The Annals of Emperor Wen record the change of the reign title from Yankang to Huangchu (改延康為黃初) on the gengwu day of the tenth month — the dated foundation of the Wei dynasty in place of the Han.',
+        source: {
+          externalId: 'src:sanguozhi-wendi-accession',
+          name: 'Chen Shou. Records of the Three Kingdoms (三國志), Book of Wei 2, Annals of Emperor Wen (文帝紀) — Cao Pi receives the abdication and changes Yankang to Huangchu. (c. 280s CE)',
+          url: 'https://ctext.org/sanguozhi/2',
+          publishedAt: '0285-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Rafe de Crespigny\'s biographical dictionary of the Later Han and Three Kingdoms converts the records to the Julian calendar, placing Emperor Xian\'s abdication on 25 November 220 and Cao Pi\'s formal accession on 11 December 220. The end of the Han and the founding of Cao Wei in 220 is settled in the historiography; the date is uncontested.',
+        source: {
+          externalId: 'src:decrespigny-three-kingdoms-220',
+          name: 'de Crespigny R. A Biographical Dictionary of Later Han to the Three Kingdoms (23–220 AD). Brill, 2007; cf. Wikipedia "Cao Pi" — abdication 25 Nov, accession 11 Dec 220.',
+          url: 'https://en.wikipedia.org/wiki/Cao_Pi',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Queen Himiko's embassy to Wei — first dated record of a ruler in Japan ───
+  {
+    externalId: 'trajectory:himiko-wei-embassy-238',
+    text: 'In the sixth month of 238 CE, Queen Himiko of Wa (Yamatai) dispatched the envoy Nashonmi to the Wei commandery of Daifang seeking audience with the emperor; the Wei court\'s rescript that year granted her the title "Queen of Wa Friendly to Wei" and a gold seal with purple ribbon — the earliest dated documentary record of a named ruler in Japan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0238-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0238-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The "Account of the Wa People" in the Records of Wei states that in the sixth month of 238 CE (the Jingchu reign period) the Queen of Wa sent the grandee Nashonmi and other officials to the prefecture [Daifang], asking permission to proceed to the emperor\'s court and present tribute. The Wei emperor\'s rescript confers on Himiko the title "Queen of Wa Friendly to Wei" together with "the gold seal with purple ribbon" — a dated entry in the official chronicle of the Cao Wei court.',
+        source: {
+          externalId: 'src:weizhi-wajinden-himiko',
+          name: 'Chen Shou. Records of the Three Kingdoms (三國志), Records of Wei, "Account of the Wa People" (魏志倭人傳), embassy of 238 CE. Translation: R. Tsunoda, Sources of Japanese Tradition.',
+          url: 'https://people.willamette.edu/~rloftus/Asia%20201/AS%20201%20WeiChrons.html',
+          publishedAt: '0297-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historiography treats the 238 embassy recorded in the Wei Zhi as the earliest firmly dated event involving a named ruler in the Japanese archipelago — the Sanguozhi being a near-contemporaneous Chinese official source compiled c. 297 CE, decades before the legendary early chronology of the Nihon Shoki. Himiko and the Yamatai embassy are established as historical, even as the location of Yamatai remains debated.',
+        source: {
+          externalId: 'src:wikipedia-himiko-embassy',
+          name: 'Wikipedia, "Himiko" — 238 CE embassy to Wei emperor Cao Rui, gold seal and title "Queen of Wa Friendly to Wei" recorded in the Wei Zhi.',
+          url: 'https://en.wikipedia.org/wiki/Himiko',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Lunar eclipse of the Sicilian Expedition (Greece) ───────────────────────
   {
     externalId: 'trajectory:sicilian-expedition-eclipse-413bce',
