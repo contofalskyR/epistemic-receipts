@@ -17372,6 +17372,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH / CONTRACEPTION / VACCINES ERA (1997–2006)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fen-phen valvular heart disease — Connolly 1997 ────────────────────────
+  {
+    externalId: 'trajectory:fen-phen-valvular-heart-disease-1997',
+    text: "The fenfluramine-phentermine ('fen-phen') weight-loss drug combination causes valvular heart disease, as first documented by Connolly and colleagues at the Mayo Clinic in 24 women, leading the FDA to request withdrawal of fenfluramine and dexfenfluramine from the U.S. market in September 1997.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: 'Connolly et al. published a case series in the New England Journal of Medicine reporting valvular heart disease in 24 women with no prior cardiac history who had taken fenfluramine-phentermine, with echocardiography showing unusual valvular morphology and regurgitation resembling carcinoid/ergotamine-induced disease. This converted scattered post-market clinical observations into a peer-reviewed recorded safety signal against a then-widely-prescribed combination.',
+        source: {
+          externalId: 'src:connolly-nejm-fen-phen-valvular-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997 Aug 28;337(9):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: 'On September 15, 1997, after FDA analysis found roughly 30% of evaluated patients had abnormal echocardiograms, the FDA requested that Wyeth-Ayerst and Interneuron voluntarily withdraw fenfluramine (Pondimin) and dexfenfluramine (Redux) from the market. The withdrawal of approval was later formalized in the Federal Register, institutionally settling the causal link between the drugs and valvular heart disease.',
+        source: {
+          externalId: 'src:fed-register-fenfluramine-withdrawal-2007',
+          name: 'Food and Drug Administration. Indevus Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application (dexfenfluramine/fenfluramine). Federal Register. 2007 Jan 30.',
+          url: 'https://www.federalregister.gov/documents/2007/01/30/E7-1414/indevus-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application',
+          publishedAt: '2007-01-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Depo-Provera bone density black box warning — FDA 2004 ─────────────────
+  {
+    externalId: 'trajectory:depo-provera-dmpa-bone-density-black-box-2004',
+    text: 'Prolonged use of depot medroxyprogesterone acetate (Depo-Provera, DMPA) causes significant, possibly irreversible loss of bone mineral density, prompting the FDA to add a boxed (\'black box\') warning to the label in November 2004.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-17',
+        datePrecision: 'DAY',
+        reason: 'Following a joint FDA/Pfizer review of long-term bone data, the FDA added a boxed warning to Depo-Provera Contraceptive Injection stating that prolonged use may cause significant, possibly irreversible bone mineral density loss and recommending against use beyond two years unless other methods are inadequate. This institutional action settled the BMD-loss safety claim into the strongest regulatory warning tier.',
+        source: {
+          externalId: 'src:mdedge-depo-provera-black-box-2005',
+          name: 'Depo-Provera Receives a Black Box Warning for Bone Mineral Density Loss. MDedge (Ob.Gyn. News). 2005.',
+          url: 'https://www.mdedge.com/rheumatology/article/43341/osteoarthritis/depo-provera-receives-black-box-warning-bone-mineral',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In Committee Opinion No. 602, the American College of Obstetricians and Gynecologists concluded that BMD loss with DMPA largely recovers after discontinuation and that the black box warning should not prevent or limit DMPA use, including the two-year cap. WHO and others reached similar positions, contesting the regulatory interpretation embedded in the FDA warning.',
+        source: {
+          externalId: 'src:acog-co602-dmpa-bone-effects-2014',
+          name: 'American College of Obstetricians and Gynecologists. Committee Opinion No. 602: Depot Medroxyprogesterone Acetate and Bone Effects. June 2014.',
+          url: 'https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2014/06/depot-medroxyprogesterone-acetate-and-bone-effects',
+          publishedAt: '2014-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ortho Evra patch estrogen exposure / VTE label — FDA 2005 ──────────────
+  {
+    externalId: 'trajectory:ortho-evra-contraceptive-patch-estrogen-vte-label-2005',
+    text: 'The Ortho Evra transdermal contraceptive patch (norelgestromin/ethinyl estradiol) exposes users to about 60% higher steady-state estrogen than a 35-µg oral contraceptive, prompting an FDA bolded label warning about possible elevated thrombotic risk in November 2005, though subsequent epidemiologic studies disagreed on whether real-world VTE risk is increased.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-11-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-11-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved updated Ortho Evra labeling warning that pharmacokinetic data showed roughly 60% higher steady-state ethinyl estradiol exposure than a 35-µg oral contraceptive, and that the resulting thrombotic risk should be weighed before use. This recorded a regulator-endorsed safety signal that the patch may differ from pills in clot risk.',
+        source: {
+          externalId: 'src:npr-fda-ortho-evra-label-2005',
+          name: 'FDA Orders Label For Contraceptive Patch. NPR / Associated Press. 2005 Nov 11.',
+          url: 'https://www.npr.org/2005/11/11/5009580/fda-orders-label-for-contraceptive-patch',
+          publishedAt: '2005-11-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Cole et al. published a cohort study in Obstetrics & Gynecology finding no statistically significant increase in venous thromboembolism, myocardial infarction, or stroke among patch users versus norgestimate-containing oral-contraceptive users, directly conflicting with case-control analyses (e.g., Jick) reporting roughly doubled VTE risk. The contradictory epidemiologic evidence left the patch\'s true clot risk contested.',
+        source: {
+          externalId: 'src:cole-obstet-gynecol-ortho-evra-vte-2007',
+          name: 'Cole JA, Norman H, Doherty M, Walker AM. Venous thromboembolism, myocardial infarction, and stroke among transdermal contraceptive system users. Obstet Gynecol. 2007 Feb;109(2):339-346.',
+          url: 'https://www.sjsu.edu/faculty/gerstman/eks/Cole2007.pdf',
+          publishedAt: '2007-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gardasil HPV vaccine FDA approval — 2006 ───────────────────────────────
+  {
+    externalId: 'trajectory:gardasil-hpv-vaccine-fda-approval-2006',
+    text: 'The FDA approved Gardasil (quadrivalent human papillomavirus vaccine against HPV types 6, 11, 16, and 18) on June 8, 2006, the first vaccine licensed to prevent cervical cancer and precancers, for girls and women aged 9–26.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-06-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed Merck\'s Gardasil as safe and effective for preventing infection and disease caused by HPV types 6, 11, 16, and 18 in females aged 9–26, making it the first vaccine indicated to prevent cervical cancer, precancerous genital lesions, and genital warts. This established a regulatory claim that a vaccine could prevent a major women\'s cancer.',
+        source: {
+          externalId: 'src:fda-gardasil-approval-2006',
+          name: 'U.S. Food and Drug Administration. GARDASIL (Human Papillomavirus Quadrivalent Vaccine) — Approval (June 8, 2006).',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/gardasil',
+          publishedAt: '2006-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-29',
+        datePrecision: 'DAY',
+        reason: 'On June 29, 2006, the CDC Advisory Committee on Immunization Practices recommended routine HPV vaccination of girls aged 11–12 (with catch-up to 26), moving Gardasil from a licensed product to a nationally recommended standard of preventive care and institutionally settling its place in the U.S. immunization schedule.',
+        source: {
+          externalId: 'src:drugs-com-gardasil-history-2006',
+          name: 'Gardasil FDA Approval History (incl. ACIP recommendation). Drugs.com.',
+          url: 'https://www.drugs.com/history/gardasil.html',
+          publishedAt: '2006-06-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
