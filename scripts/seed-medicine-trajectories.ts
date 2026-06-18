@@ -13641,6 +13641,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HORMONE DISCOVERY ERA (1902–1957)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Bayliss & Starling secretin / first hormone — 1902 ─────────────────────
+  {
+    externalId: 'trajectory:bayliss-starling-secretin-first-hormone-1902',
+    text: 'William Bayliss and Ernest Starling reported in The Journal of Physiology in 1902 that a chemical substance they named secretin, released from the duodenal mucosa into the bloodstream by acid, stimulates pancreatic secretion — the first demonstration that a blood-borne chemical messenger (later termed a hormone) coordinates a bodily function.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1902-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-09-12',
+        datePrecision: 'DAY',
+        reason: 'Bayliss and Starling published \'The mechanism of pancreatic secretion\' in The Journal of Physiology, showing that injecting an extract of acid-treated duodenal mucosa into the bloodstream of a dog with severed pancreatic nerves still produced a flow of pancreatic juice. They named the active agent \'secretin\' and concluded that a chemical carried by the blood, not a nervous reflex, drives pancreatic secretion. This recorded in the expert literature the first instance of chemical (humoral) control of a distant organ.',
+        source: {
+          externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325–353.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1540572/',
+          publishedAt: '1902-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In his 1905 Croonian Lectures to the Royal College of Physicians, Starling generalized the secretin finding into a unifying principle, coining the word \'hormone\' (from the Greek for \'I arouse to activity\') for blood-borne chemical messengers produced in one organ to act on another. The conceptual generalization, rapidly adopted by physiologists, settled secretin\'s status as the founding example of hormonal control and established endocrinology as a discipline.',
+        source: {
+          externalId: 'src:henderson-secretin-hormonal-control-review',
+          name: 'Henderson J. Ernest Starling and \'Hormones\': an historical commentary / Secretin and the exposition of hormonal control. J Endocrinol / J R Soc Med (historical review documenting the 1902 discovery and 1905 Croonian Lectures coinage of \'hormone\').',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1665254/',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Paulescu pancreine / insulin priority — 1921 ────────────────────────────
+  {
+    externalId: 'trajectory:paulescu-pancreine-insulin-priority-1921',
+    text: 'Nicolae Paulescu reported in the Archives Internationales de Physiologie on 31 August 1921 that an aqueous pancreatic extract he called \'pancréine\' markedly lowered blood glucose, glycosuria, and ketonemia when injected into diabetic dogs — a claim to priority in discovering the antidiabetic pancreatic hormone that remains contested against the Toronto group\'s later isolation of insulin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1921-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1921-08-31',
+        datePrecision: 'DAY',
+        reason: 'Paulescu published \'Recherche sur le rôle du pancréas dans l\'assimilation nutritive\' in the Archives Internationales de Physiologie, presenting for the first time the quantitative effect of an intravenous pancreatic extract on glycemia, glycosuria, acetonemia, and acetonuria in diabetic dogs — months before the Toronto group\'s first dog experiments. This recorded in the expert literature the claim that a pancreatic internal secretion could reverse diabetic derangement, and Paulescu secured a Romanian patent on the manufacture of \'pancréine\' in April 1922.',
+        source: {
+          externalId: 'src:paulescu-role-pancreas-arch-int-physiol-1921',
+          name: 'Paulescu NC. Recherche sur le rôle du pancréas dans l\'assimilation nutritive. Arch Int Physiol. 1921;17:85–109.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8919497/',
+          publishedAt: '1921-08-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1923-10-25',
+        datePrecision: 'DAY',
+        reason: 'When the 1923 Nobel Prize in Physiology or Medicine was awarded to Banting and Macleod for the discovery of insulin, Paulescu wrote to the Nobel Committee asserting priority on the basis of his August 1921 publication; the claim was rejected. The dispute — fueled by Banting and Best\'s citation of Paulescu\'s earlier work and by the difference between Paulescu\'s crude pancréine and the clinically usable Toronto extract — left his priority permanently contested rather than settled, a controversy still actively debated in the historical literature a century later.',
+        source: {
+          externalId: 'src:bentia-paulescu-centenary-acta-endocrinol-2021',
+          name: 'Benția D, Saceleanu MV, Marinescu AA, Ciurea AV. Centenary of Insulin Discovery (1921–2021): Nicolae Paulescu\'s Original Contributions. Acta Endocrinol (Buchar). 2021;17(3):406–411.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8919497/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Allen & Doisy ovarian hormone / estrogen — 1923 ────────────────────────
+  {
+    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
+    text: 'Edgar Allen and Edward Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid, free of corpus luteum and other tissue, produces estrus when injected into spayed mice and rats — the first demonstration of a specific ovarian hormone (estrogen) and a reproducible bioassay for it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-09-08',
+        datePrecision: 'DAY',
+        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, showing that follicular-fluid extract induced cornification of the vaginal epithelium (estrus) in ovariectomized rodents — the Allen-Doisy test. This recorded in the expert literature the claim that the ovarian follicle secretes a specific chemical hormone governing the estrous cycle, providing the assay that made estrogen chemistry possible.',
+        source: {
+          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
+          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819–821. (Landmark reprint: PMID 6355545.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
+          publishedAt: '1923-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1929 Doisy (and independently Adolf Butenandt) isolated the ovarian hormone in pure crystalline form — estrone (theelin) — using the Allen-Doisy bioassay to track purification, converting the 1923 functional claim into a defined chemical molecule. The crystalline isolation, later recognized by Butenandt\'s 1939 Nobel Prize in Chemistry for sex-hormone work, settled estrogen as a chemically identified hormone and founded steroid endocrinology.',
+        source: {
+          externalId: 'src:history-estrogen-therapy-review-pmc',
+          name: 'The History of Estrogen Therapy (review documenting the 1923 Allen-Doisy discovery and 1929 crystalline isolation of estrone). PMC7334883.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7334883/',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cushing pituitary basophilism / Cushing's disease — 1932 ───────────────
+  {
+    externalId: 'trajectory:cushing-pituitary-basophilism-1932',
+    text: 'Harvey Cushing reported in the Bulletin of the Johns Hopkins Hospital in 1932 that a constellation of obesity, hypertension, glucose intolerance, and other signs (\'pituitary basophilism\') is caused by basophil adenomas of the anterior pituitary, establishing a discrete pituitary-driven endocrine syndrome later named Cushing\'s disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cushing published \'The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism)\' in the Bulletin of the Johns Hopkins Hospital (1932;50:137–195), gathering twelve patients with a shared clinical picture and proposing that pituitary basophil adenomas were the cause. This recorded in the expert literature the claim that a specific pituitary lesion produces a defined metabolic/endocrine syndrome, distinguishing it from generic obesity or adrenal disorders.',
+        source: {
+          externalId: 'src:cushing-basophil-adenomas-pituitary-bjhh-1932',
+          name: 'Cushing H. The basophil adenomas of the pituitary body and their clinical manifestations (pituitary basophilism). Bull Johns Hopkins Hosp. 1932;50:137–195. (Landmark reprint: PMID 16353601.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16353601/',
+          publishedAt: '1932-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The isolation and characterization of the pituitary\'s adrenocorticotropic hormone (ACTH) in the early 1940s supplied the mechanistic basis for Cushing\'s syndrome — ACTH-secreting pituitary adenomas driving adrenal cortisol excess — confirming that the clinical picture Cushing described is mediated by a pituitary corticotropic hormone. The entity was institutionalized under the eponym Cushing\'s disease and remains a settled, standard diagnosis in endocrinology.',
+        source: {
+          externalId: 'src:cushing-hench-pituitary-basophilism-history-scielo',
+          name: 'Harvey Cushing and Philip Hench: pituitary basophilism meets cortisone excess (historical review of the establishment of Cushing\'s disease as a pituitary-ACTH syndrome). Arq Bras Endocrinol Metabol.',
+          url: 'https://www.scielo.br/j/abem/a/QVr8CgXvvbsDf3RDNB79z8P/?lang=en',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sakel insulin coma therapy for schizophrenia — 1933 / reversed 1957 ────
+  {
+    externalId: 'trajectory:sakel-insulin-coma-therapy-schizophrenia-1933',
+    text: 'Manfred Sakel announced in 1933 that deliberately inducing hypoglycemic coma with large insulin doses (\'insulin shock therapy\') produced lasting remission in schizophrenia, reporting recovery in as many as 88% of patients — a claim that became standard psychiatric practice before a controlled trial showed it offered no specific benefit.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1933-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Sakel, having observed that accidental insulin overdose calmed agitated patients, made his results public in 1933 (with fuller reports in the Wiener klinische Wochenschrift in 1934), claiming that controlled insulin-induced hypoglycemic coma produced remission in schizophrenia. This recorded in the expert literature the claim that a metabolic intervention with insulin could treat a major psychiatric illness.',
+        source: {
+          externalId: 'src:sakel-insulin-coma-therapy-history-pmc',
+          name: 'Freudenthal R, Moncrieff J. \'A landmark in psychiatric progress\'? The role of evidence in the rise and fall of insulin coma therapy (documenting Sakel\'s 1933 introduction and ~88% improvement claim). Hist Psychiatry. 2022. PMC8886299.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8886299/',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1937-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Insulin coma therapy spread rapidly through psychiatric hospitals across Europe and North America in the late 1930s and 1940s, with dedicated \'insulin units\' established as standard infrastructure and the method endorsed at international meetings (notably the 1937 Münsingen conference on the new shock therapies). Institutional adoption made insulin coma a settled, mainstream treatment for schizophrenia for roughly two decades.',
+        source: {
+          externalId: 'src:insulin-shock-therapy-decline-britannica',
+          name: 'Insulin shock therapy: description, uses, effects, and decline (documenting widespread institutional adoption in the 1930s–1950s). Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/science/insulin-shock-therapy',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-03-23',
+        datePrecision: 'DAY',
+        reason: 'Brian Ackner, Arthur Harris, and A. J. Oldham published a randomized controlled trial in The Lancet on 23 March 1957 comparing insulin coma with barbiturate-induced unconsciousness in schizophrenia and found no difference in outcome — showing insulin\'s apparent benefit was attributable to nonspecific factors and patient selection, not the hypoglycemic coma. This rigorous trial (among the first RCTs in psychiatry) reversed the claim, and insulin coma therapy was abandoned as neuroleptic drugs took its place.',
+        source: {
+          externalId: 'src:ackner-insulin-treatment-schizophrenia-lancet-1957',
+          name: 'Ackner B, Harris A, Oldham AJ. Insulin treatment of schizophrenia; a controlled study. Lancet. 1957 Mar 23;272(6969):607–611. (PMID 13407078.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13407078/',
+          publishedAt: '1957-03-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
