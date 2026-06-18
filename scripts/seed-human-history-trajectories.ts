@@ -20753,6 +20753,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Kedukan Bukit inscription — earliest dated record of Srivijaya ──────────
+  {
+    externalId: 'trajectory:kedukan-bukit-inscription-683',
+    text: 'The Kedukan Bukit inscription, dated 1 May 683 CE (605 Śaka), is the oldest dated text in the Old Malay language; it commemorates a sacred journey (siddhayatra) and military expedition undertaken by Dapunta Hyang, and is the earliest contemporaneous record of the Srivijaya thalassocracy of Sumatra.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0683-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0683-05-01',
+        datePrecision: 'DAY',
+        reason: 'A small stone bearing ten lines of Old Malay in Pallava script records that Dapunta Hyang set out by boat to obtain siddhayatra, gathered an army of some 20,000, and brought victory and prosperity to Srivijaya, closing with the date 605 Śaka (1 May 683 CE). The stone is itself the contemporaneous primary act of record — the founding epigraphic trace of the Srivijaya polity and of the written Malay language.',
+        source: {
+          externalId: 'src:kedukan-bukit-inscription',
+          name: 'Kedukan Bukit inscription, 605 Śaka (1 May 683 CE), Old Malay in Pallava script (contemporaneous Srivijaya royal commemoration).',
+          url: 'https://en.wikipedia.org/wiki/Kedukan_Bukit_inscription',
+          publishedAt: '0683-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The stone was found at Kedukan Bukit near Palembang by C.J. Batenburg on 29 November 1920 and read and dated by George Cœdès, whose 1930 study "Les inscriptions malaises de Çrivijaya" established the Srivijaya identification and the 683 CE date. The reading and dating are settled in the epigraphic literature, and the inscription is held in the National Museum of Indonesia.',
+        source: {
+          externalId: 'src:coedes-inscriptions-malaises-srivijaya-1930',
+          name: 'Cœdès G. "Les inscriptions malaises de Çrivijaya." Bulletin de l\'École française d\'Extrême-Orient 30 (1930): 29–80.',
+          url: 'https://en.wikipedia.org/wiki/Kedukan_Bukit_inscription',
+          publishedAt: '1930-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Talang Tuo inscription — foundation of a Srivijaya public park ───────────
+  {
+    externalId: 'trajectory:talang-tuo-inscription-684',
+    text: 'The Talang Tuo inscription, dated 23 March 684 CE (606 Śaka), records the foundation of the Śrīksetra public park by Dapunta Hyang Sri Jayanasa of Srivijaya for the welfare of all living beings, accompanied by Mahāyāna Buddhist prayers; it is among the earliest dated texts in the Old Malay language.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0684-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0684-03-23',
+        datePrecision: 'DAY',
+        reason: 'Fourteen lines of Old Malay in Pallava script record that on 606 Śaka (23 March 684 CE) the ruler Sri Jayanasa established the bountiful Śrīksetra garden, with extended Buddhist blessings invoking welfare for all plants, animals, and subjects. The stone is the contemporaneous primary record of an official act of public endowment by the Srivijaya court at Palembang.',
+        source: {
+          externalId: 'src:talang-tuo-inscription',
+          name: 'Talang Tuo inscription, 606 Śaka (23 March 684 CE), Old Malay in Pallava script (contemporaneous Srivijaya royal endowment).',
+          url: 'https://en.wikipedia.org/wiki/Talang_Tuo_inscription',
+          publishedAt: '0684-03-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Found by Louis Constant Westenenk at Bukit Seguntang near Palembang on 17 November 1920, the inscription was read and dated by George Cœdès in his 1930 corpus of Srivijaya Malay inscriptions. The date and content are settled in the epigraphic literature; the stone is preserved in the National Museum of Indonesia (inv. D.145).',
+        source: {
+          externalId: 'src:coedes-talang-tuo-1930',
+          name: 'Cœdès G. "Les inscriptions malaises de Çrivijaya." Bulletin de l\'École française d\'Extrême-Orient 30 (1930): 29–80.',
+          url: 'https://en.wikipedia.org/wiki/Talang_Tuo_inscription',
+          publishedAt: '1930-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Canggal inscription — founding record of the Mataram kingdom of Java ─────
+  {
+    externalId: 'trajectory:canggal-inscription-732',
+    text: 'The Canggal inscription, dated to the thirteenth day of the month of Kārttika, 654 Śaka (6 October 732 CE), records King Sanjaya\'s erection of a Shiva liṅga on a hill in Central Java and proclaims him universal ruler; it is the founding epigraphic record of the Mataram (Medang) kingdom of Java.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0732-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0732-10-06',
+        datePrecision: 'DAY',
+        reason: 'A Sanskrit inscription in Pallava script records that on the thirteenth day of Kārttika, 654 Śaka (6 October 732 CE), King Sanjaya installed a liṅga of Shiva on a hill and proclaimed himself a universal ruler, narrating his succession after King Sanna through Sanna\'s sister Sannaha. The stele is the contemporaneous primary record of the establishment of the Mataram kingdom in Central Java.',
+        source: {
+          externalId: 'src:canggal-inscription',
+          name: 'Canggal (Cangal) inscription, 654 Śaka (6 October 732 CE), Sanskrit in Pallava script (contemporaneous Mataram royal foundation).',
+          url: 'https://en.wikipedia.org/wiki/Canggal_inscription',
+          publishedAt: '0732-10-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Read by epigraphers including J.G. de Casparis, the inscription\'s Śaka date and its identification of Sanjaya as founder of the Mataram line are settled in the scholarship of early Javanese history; it anchors the chronology of the Sanjaya dynasty and the Hindu polity that preceded the Borobudur-era Śailendras.',
+        source: {
+          externalId: 'src:de-casparis-prasasti-indonesia-1956',
+          name: 'de Casparis J.G. Prasasti Indonesia II: Selected Inscriptions from the 7th to the 9th Century A.D. Bandung: Masa Baru, 1956.',
+          url: 'https://en.wikipedia.org/wiki/Canggal_inscription',
+          publishedAt: '1956-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Laguna Copperplate — earliest dated document from the Philippines ────────
+  {
+    externalId: 'trajectory:laguna-copperplate-inscription-900',
+    text: 'The Laguna Copperplate Inscription, dated 21 April 900 CE (822 Śaka), is the earliest known calendar-dated written document found in the Philippines; inscribed in Old Malay using the Kawi script, it certifies the acquittal of a gold debt owed by the family of Namwaran.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0900-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0900-04-21',
+        datePrecision: 'DAY',
+        reason: 'A thin copper plate inscribed in Old Malay with Kawi script records that in 822 Śaka, the month of Vaiśākha, the fourth day of the waning moon, on a Monday (21 April 900 CE), an official released the children of Namwaran from a debt of 1 kati and 8 suwarna of gold. The plate is the contemporaneous primary instrument of the transaction and the earliest dated evidence of literacy and statecraft in the pre-Hispanic Philippines.',
+        source: {
+          externalId: 'src:laguna-copperplate-inscription',
+          name: 'Laguna Copperplate Inscription, 822 Śaka (21 April 900 CE), Old Malay in Kawi script (contemporaneous debt acquittal, Manila Bay region).',
+          url: 'https://en.wikipedia.org/wiki/Laguna_Copperplate_Inscription',
+          publishedAt: '0900-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The plate, recovered near the mouth of the Lumbang River in Laguna in 1987, was deciphered and dated by Antoon Postma, whose 1992 study in Philippine Studies fixed the 900 CE date and translated the text. The reading is settled in the scholarship; the artifact is held by the National Museum of the Philippines.',
+        source: {
+          externalId: 'src:postma-laguna-copperplate-1992',
+          name: 'Postma A. "The Laguna Copper-Plate Inscription: Text and Commentary." Philippine Studies 40, no. 2 (1992): 183–203.',
+          url: 'https://en.wikipedia.org/wiki/Laguna_Copperplate_Inscription',
+          publishedAt: '1992-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sdok Kok Thom inscription — charter of the Khmer devarāja cult ───────────
+  {
+    externalId: 'trajectory:sdok-kok-thom-inscription-1053',
+    text: 'The Sdok Kok Thom inscription, dated 8 February 1053 CE, is a 340-line Sanskrit and Old Khmer stele recording the history of the devarāja royal cult and the priestly family that served the Khmer kings, tracing the cult to the consecration of Jayavarman II as universal monarch in 802 CE — the traditional founding of the Khmer Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1053-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1053-02-08',
+        datePrecision: 'DAY',
+        reason: 'Carved on a gray sandstone stele in both Sanskrit and Old Khmer and dated 8 February 1053 CE, the inscription recounts the lineage of priests of the devarāja ("god-king") cult, attributing its institution to the brahmin Hiraṇyadāman under Jayavarman II, whom it names as founder of the Khmer realm in the early ninth century. The stele is the contemporaneous primary charter of the cult and the principal source for the empire\'s traditional 802 CE foundation.',
+        source: {
+          externalId: 'src:sdok-kok-thom-inscription',
+          name: 'Sdok Kok Thom (Sdŏk Kăk Thoṃ) stele inscription, dated 8 February 1053 CE, Sanskrit and Old Khmer (contemporaneous Khmer temple charter).',
+          url: 'https://en.wikipedia.org/wiki/Sdok_Kak_Thom',
+          publishedAt: '1053-02-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The stele was edited and translated by George Cœdès and Pierre Dupont in their 1943 study of the Sdŏk Kăk Thoṃ, Phnom Sandak, and Práh Vihār steles, establishing the 1053 date and the narrative of the devarāja cult; it remains the foundational source for the chronology of the early Khmer Empire and is settled in Angkorian scholarship.',
+        source: {
+          externalId: 'src:coedes-dupont-sdok-kak-thom-1943',
+          name: 'Cœdès G., Dupont P. "Les stèles de Sdŏk Kăk Thoṃ, Phnom Sandak et Práh Vihār." Bulletin de l\'École française d\'Extrême-Orient 43 (1943): 56–154.',
+          url: 'https://en.wikipedia.org/wiki/Sdok_Kak_Thom',
+          publishedAt: '1943-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Battle of Las Navas de Tolosa ───────────────────────────────────────────
   {
     externalId: 'trajectory:battle-las-navas-de-tolosa-1212',
