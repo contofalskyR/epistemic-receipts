@@ -60197,6 +60197,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CENTRAL & INNER ASIA — MODERN EPISTEMIC EVENTS ABOUT STEPPE/SILK-ROAD CULTURES (1990–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Genghis Khan "star-cluster" Y-chromosome lineage identified ──────────────
+  {
+    externalId: 'trajectory:genghis-khan-star-cluster-2003',
+    text: 'A Y-chromosome "star-cluster" lineage carried by roughly 8% of men across a large swathe of Asia — about 16 million men, ~0.5% of the world\'s total — was shown by the genetic study published 17 January 2003 to have spread out of Mongolia about 1,000 years ago, leading the researchers to propose it descends from the male line of Genghis Khan and his close kin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-01-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-17',
+        datePrecision: 'DAY',
+        reason: 'Zerjal et al., "The Genetic Legacy of the Mongols," appears in the American Journal of Human Genetics (72(3):717–721). Sampling 16 populations from Central Asia to the Pacific, the authors identify a single Y-chromosomal lineage with a "star-cluster" microsatellite signature present in ~8% of the men sampled, with a coalescence age and geographic spread matching the extent of the Mongol Empire at Genghis Khan\'s death (1227). They propose social selection via his male-line descendants.',
+        source: {
+          externalId: 'src:zerjal-mongol-y-2003',
+          name: 'Zerjal T. et al. "The Genetic Legacy of the Mongols." Am J Hum Genet 72(3):717–721 (17 Jan 2003). DOI 10.1086/367774.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1180246/',
+          publishedAt: '2003-01-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Balaresque et al. (European Journal of Human Genetics 23:1413–1422), surveying 5,321 Y-chromosomes from 127 Asian populations, define eleven distinct descent clusters of high male reproductive success rather than one, placing the "star cluster" among several Eurasian nomadic founder lineages. The existence, dating, and Mongolia origin of the lineage are confirmed, but the specific attribution to Genghis Khan himself — never tied to any verified remains — remains an unproven hypothesis.',
+        source: {
+          externalId: 'src:balaresque-descent-clusters-2015',
+          name: 'Balaresque P. et al. "Y-chromosome descent clusters and male differential reproductive success: young lineage expansions dominate Asian pastoral nomadic populations." Eur J Hum Genet 23:1413–1422 (2015). PMID 25585703.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25585703/',
+          publishedAt: '2015-01-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tarim Basin mummies shown to be autochthonous, not migrants ──────────────
+  {
+    externalId: 'trajectory:tarim-mummies-genomic-origins-2021',
+    text: 'Genome-wide ancient-DNA analysis published 27 October 2021 established that the Bronze Age mummies of the Tarim Basin (Xinjiang) were a genetically isolated, local population descended from Ancient North Eurasians, overturning long-running hypotheses that their "Western" appearance reflected migration of Indo-European/Tocharian speakers or Afanasievo steppe pastoralists.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-02-17',
+        datePrecision: 'DAY',
+        reason: 'Li et al. (BMC Biology 8:15) report mtDNA and Y-chromosome data from the Xiaohe cemetery showing both West Eurasian (H, K; Y-haplogroup R1a1a) and East Eurasian (C) lineages, arguing a West–East admixed population had settled the Tarim Basin by the early Bronze Age. The result fuels the prevailing view that the Tarim peoples carried a substantial western/migrant genetic contribution, the origins of the mummies remaining actively contested.',
+        source: {
+          externalId: 'src:li-tarim-admixture-2010',
+          name: 'Li C. et al. "Evidence that a West–East admixed population lived in the Tarim Basin as early as the early Bronze Age." BMC Biology 8:15 (17 Feb 2010).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2838831/',
+          publishedAt: '2010-02-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-10-27',
+        datePrecision: 'DAY',
+        reason: 'Zhang et al., "The genomic origins of the Bronze Age Tarim Basin mummies" (Nature 599:256–261), present genome-wide data from the earliest Tarim individuals and find they carry only local ancestry — a mixture of Ancient North Eurasian and ancient Northeast Asian gene pools — with no detectable Afanasievo or Indo-European migrant input. The mummies\' Western physical features trace to the deep Pleistocene ANE pool, resolving the origins question in favour of an autochthonous, genetically isolated population.',
+        source: {
+          externalId: 'src:zhang-tarim-genomes-2021',
+          name: 'Zhang F. et al. "The genomic origins of the Bronze Age Tarim Basin mummies." Nature 599:256–261 (27 Oct 2021).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8580821/',
+          publishedAt: '2021-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── UNESCO inscribes the Chang'an–Tianshan Silk Road corridor ────────────────
+  {
+    externalId: 'trajectory:silk-roads-changan-tianshan-unesco-2014',
+    text: 'On 22 June 2014 the UNESCO World Heritage Committee inscribed "Silk Roads: the Routes Network of Chang\'an–Tianshan Corridor" — 33 sites across China, Kazakhstan and Kyrgyzstan along some 5,000 km of the ancient Silk Road — on the World Heritage List, the first transnational World Heritage inscription of the Central Asian Silk Road network.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-06-22',
+        datePrecision: 'DAY',
+        reason: 'At its 38th session in Doha, Qatar, the World Heritage Committee adopted Decision 38 COM 8B.24, inscribing the serial transnational property jointly nominated by China, Kazakhstan and Kyrgyzstan: 22 sites in China, 8 in Kazakhstan and 3 in Kyrgyzstan — capitals, trading settlements, Buddhist cave temples, beacon towers and passes spanning Central China to the Zhetysu region. The inscription formally fixes the outstanding universal value and the constituent sites of the corridor in the international institutional record.',
+        source: {
+          externalId: 'src:unesco-silk-roads-changan-tianshan-2014',
+          name: 'UNESCO World Heritage Centre. "Silk Roads: the Routes Network of Chang\'an-Tianshan Corridor" (inscribed 22 June 2014, 38th session; Decision 38 COM 8B.24).',
+          url: 'https://whc.unesco.org/en/list/1442/',
+          publishedAt: '2014-06-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── UNESCO inscribes Samarkand, the Timurid capital ──────────────────────────
+  {
+    externalId: 'trajectory:samarkand-unesco-world-heritage-2001',
+    text: 'On 16 December 2001 the UNESCO World Heritage Committee inscribed "Samarkand – Crossroad of Cultures," the Timurid-era capital and Silk Road city in Uzbekistan, on the World Heritage List, recognising its ensemble of monuments — the Registan, Bibi-Khanym Mosque, Shah-i-Zinda and the Gur-e-Amir — as of outstanding universal value.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2001-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-12-16',
+        datePrecision: 'DAY',
+        reason: 'At its 25th session in Helsinki, Finland, the World Heritage Committee inscribed the historic town of Samarkand under criteria (i), (ii) and (iv). The most significant phase of the city\'s development was the Timurid period (14th–15th centuries), when Timur made it his capital; the inscription records the monuments of that era — the Registan, Bibi-Khanym Mosque, the Shah-i-Zinda necropolis, the Gur-e-Amir and Ulugh Beg\'s observatory — as world heritage in the international institutional record.',
+        source: {
+          externalId: 'src:unesco-samarkand-2001',
+          name: 'UNESCO World Heritage Centre. "Samarkand – Crossroad of Cultures" (Uzbekistan, inscribed 16 December 2001, 25th session).',
+          url: 'https://whc.unesco.org/en/list/603/',
+          publishedAt: '2001-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
