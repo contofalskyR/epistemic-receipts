@@ -64070,6 +64070,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — CENTRAL & INNER ASIA
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Soviet first hydrogen-design test (RDS-6s, "Joe-4") at Semipalatinsk ─────
+  {
+    externalId: 'trajectory:soviet-first-hydrogen-test-rds6s-1953',
+    text: 'On 12 August 1953 the Soviet Union detonated RDS-6s ("Joe-4"), its first thermonuclear-fuel ("hydrogen bomb") device, at the Semipalatinsk test site in Kazakhstan; whether it constituted a "true" staged hydrogen bomb is disputed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-08-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1953-08-12',
+        datePrecision: 'DAY',
+        reason: 'RDS-6s, the layered "Sloika" (puff-pastry) design developed under Andrei Sakharov and Vitaly Ginzburg, is detonated at the Semipalatinsk test site with a yield of roughly 400 kilotons. It is the first Soviet device to draw a significant fraction of its energy from fusion of thermonuclear fuel (lithium-6 deuteride). The test is conducted in secrecy and not publicly announced by the USSR.',
+        source: {
+          externalId: 'src:rds-6s-joe4-test-1953',
+          name: '"RDS-6s." Wikipedia — first Soviet thermonuclear-fuel test ("Joe-4"), detonated 12 August 1953 at the Semipalatinsk test site, ~400 kt yield.',
+          url: 'https://en.wikipedia.org/wiki/RDS-6s',
+          publishedAt: '1953-08-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1953-08-20',
+        datePrecision: 'DAY',
+        reason: 'US air-sampling aircraft collect radioactive debris from the test, and analysis confirms a Soviet thermonuclear-fuel detonation; the event is publicly acknowledged. That a major Soviet hydrogen-design device was tested on 12 August 1953 — barely nine months after the US "Ivy Mike" shot — is settled and uncontested.',
+        source: {
+          externalId: 'src:rds-6s-us-detection-1953',
+          name: '"RDS-6s." Wikipedia — US fallout analysis identifies the Soviet thermonuclear-fuel test of August 1953.',
+          url: 'https://en.wikipedia.org/wiki/RDS-6s',
+          publishedAt: '1953-08-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-11-22',
+        datePrecision: 'DAY',
+        reason: 'Whether RDS-6s qualifies as a "true" hydrogen bomb is contested. Its single-stage "Sloika" design was not a scalable staged (Teller–Ulam) thermonuclear weapon; American analysts judged it closer to a boosted-fission device. Soviet physicists themselves regarded the Sloika as a "dead end," and the USSR\'s first genuinely staged thermonuclear weapon, RDS-37, was not tested until 22 November 1955. The detonation of 12 August 1953 is undisputed; only its classification as a "real" H-bomb remains debated.',
+        source: {
+          externalId: 'src:rds-37-true-thermonuclear-1955',
+          name: '"RDS-6s" / "RDS-37." Wikipedia — Sloika design judged a dead end; first true staged Soviet thermonuclear weapon (RDS-37) tested 22 November 1955.',
+          url: 'https://en.wikipedia.org/wiki/RDS-37',
+          publishedAt: '1955-11-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── China's first nuclear test (596) at Lop Nur, Xinjiang ────────────────────
+  {
+    externalId: 'trajectory:china-first-nuclear-test-596-1964',
+    text: 'On 16 October 1964 China detonated its first nuclear device (test "596") at the Lop Nur test site in Xinjiang, becoming the fifth nuclear-weapons state.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-10-16',
+        datePrecision: 'DAY',
+        reason: 'At 15:00 local time China detonates a uranium-235 implosion device, code-named "596," atop a tower at the Lop Nur Test Ground in Xinjiang, with a yield of about 22 kilotons. The Chinese government announces the test the same day and issues a statement pledging no first use of nuclear weapons.',
+        source: {
+          externalId: 'src:china-596-test-1964',
+          name: '"596 (nuclear test)." Wikipedia — China\'s first nuclear test, 16 October 1964 at 15:00, Lop Nur, ~22 kt U-235 implosion device.',
+          url: 'https://en.wikipedia.org/wiki/596_(nuclear_test)',
+          publishedAt: '1964-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1964-10-16',
+        datePrecision: 'DAY',
+        reason: 'US detection assets and global seismic and fallout monitoring independently confirm the explosion; the United States acknowledges the test the same day. That China conducted its first nuclear test on 16 October 1964 at Lop Nur — making it the fifth declared nuclear power after the US, USSR, UK and France — is settled and uncontested.',
+        source: {
+          externalId: 'src:china-596-fifth-power-1964',
+          name: '"596 (nuclear test)." Wikipedia — China becomes the fifth nuclear-weapons state; test independently confirmed.',
+          url: 'https://en.wikipedia.org/wiki/596_(nuclear_test)',
+          publishedAt: '1964-10-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tashkent Declaration ends the 1965 Indo-Pakistani War ────────────────────
+  {
+    externalId: 'trajectory:tashkent-declaration-1966',
+    text: 'On 10 January 1966, in Tashkent (Uzbek SSR, Soviet Union), Indian Prime Minister Lal Bahadur Shastri and Pakistani President Ayub Khan signed the Tashkent Declaration, a Soviet-mediated peace agreement ending the Indo-Pakistani War of 1965.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1966-01-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1966-01-10',
+        datePrecision: 'DAY',
+        reason: 'After negotiations from 4 to 10 January 1966 brokered by Soviet Premier Alexei Kosygin in Tashkent, Shastri and Ayub Khan sign the Tashkent Declaration. Both sides agree to withdraw their forces to pre-conflict positions by 25 February 1966, to restore diplomatic relations, and to settle disputes peacefully. The signing is reported worldwide; Shastri dies of a heart attack in Tashkent hours later, on 11 January 1966.',
+        source: {
+          externalId: 'src:tashkent-declaration-1966',
+          name: '"Tashkent Declaration." Wikipedia — peace agreement signed 10 January 1966 in Tashkent between India and Pakistan, mediated by the USSR.',
+          url: 'https://en.wikipedia.org/wiki/Tashkent_Declaration',
+          publishedAt: '1966-01-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-02-25',
+        datePrecision: 'DAY',
+        reason: 'The agreed troop withdrawals to pre-war lines are completed by 25 February 1966 as stipulated. That the Tashkent Declaration was signed on 10 January 1966 and formally ended the 1965 war is settled in the diplomatic record, even as historians debate its longer-term political consequences for both states.',
+        source: {
+          externalId: 'src:tashkent-declaration-withdrawal-1966',
+          name: '"Tashkent Declaration." Wikipedia — agreed withdrawal of forces to pre-conflict positions by 25 February 1966.',
+          url: 'https://en.wikipedia.org/wiki/Tashkent_Declaration',
+          publishedAt: '1966-02-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 1959 Tibetan uprising and the Dalai Lama's flight from Lhasa ─────────────
+  {
+    externalId: 'trajectory:tibetan-uprising-dalai-lama-flight-1959',
+    text: 'The 1959 Tibetan uprising began on 10 March 1959 in Lhasa, and the 14th Dalai Lama secretly fled the city on the night of 17 March 1959, escaping to India where he established a government-in-exile.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1959-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1959-03-10',
+        datePrecision: 'DAY',
+        reason: 'On 10 March 1959, fearing the People\'s Republic of China intended to detain the Dalai Lama, tens of thousands of Tibetans surround his summer palace, the Norbulingka, in Lhasa in a mass protest that escalates into an armed uprising against Chinese rule.',
+        source: {
+          externalId: 'src:1959-tibetan-uprising',
+          name: '"1959 Tibetan uprising." Wikipedia — uprising began 10 March 1959 in Lhasa with protests around the Norbulingka.',
+          url: 'https://en.wikipedia.org/wiki/1959_Tibetan_uprising',
+          publishedAt: '1959-03-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1959-03-31',
+        datePrecision: 'DAY',
+        reason: 'After artillery shells strike near the Norbulingka, the Dalai Lama slips out of Lhasa disguised on the night of 17 March 1959 with a small party, crosses the Himalayas, and reaches the Indian border, entering India on 31 March 1959. The PLA suppresses the uprising in Lhasa within days. That the uprising began on 10 March and that the Dalai Lama fled on 17 March 1959 is settled and corroborated by contemporaneous international press, Indian government records, and the Dalai Lama\'s own accounts.',
+        source: {
+          externalId: 'src:dalai-lama-flight-india-1959',
+          name: '"1959 Tibetan uprising." Wikipedia — Dalai Lama secretly left Lhasa on the night of 17 March 1959 and reached India.',
+          url: 'https://en.wikipedia.org/wiki/1959_Tibetan_uprising',
+          publishedAt: '1959-03-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
