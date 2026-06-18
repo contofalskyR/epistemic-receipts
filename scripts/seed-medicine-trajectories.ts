@@ -2248,6 +2248,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE & ORPHAN DRUG ERA (1983–2016)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Orphan Drug Act — regulatory framework for rare diseases 1983 ────────────
+  {
+    externalId: 'trajectory:orphan-drug-act-1983',
+    text: 'On January 4, 1983, U.S. President Ronald Reagan signed the Orphan Drug Act (Public Law 97-414), establishing federal incentives — tax credits, research grants, and seven years of marketing exclusivity — to make development of drugs for rare diseases commercially viable.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1983-01-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-01-04',
+        datePrecision: 'DAY',
+        reason: 'Reagan signed H.R. 5238 (sponsored by Rep. Henry Waxman), enacting Public Law 97-414 after voice-vote passage in both chambers in December 1982. The Act created a statutory category of \'orphan\' drugs and a federal policy claim that drugs for rare conditions deserve special development incentives — a new institutional fact in U.S. drug regulation.',
+        source: {
+          externalId: 'src:orphan-drug-act-pl-97-414-1983',
+          name: 'U.S. Congress. Orphan Drug Act, Public Law 97-414, 96 Stat. 2049. January 4, 1983.',
+          url: 'https://www.fda.gov/media/99546/download',
+          publishedAt: '1983-01-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-10-30',
+        datePrecision: 'DAY',
+        reason: 'The 1984 amendment (Public Law 98-551) replaced the original subjective \'no reasonable expectation of cost recovery\' test with an objective prevalence definition — a disease affecting fewer than 200,000 persons in the United States. This made the orphan designation administrable and durable; over subsequent decades hundreds of designations and approvals (including the first enzyme replacement therapies) validated the framework as settled regulatory infrastructure.',
+        source: {
+          externalId: 'src:orphan-drug-act-purpose-plos-medicine-2017',
+          name: 'Sarpatwari A, Kesselheim AS. What Is the Purpose of the Orphan Drug Act? PLoS Med. 2017;14(2):e1002191.',
+          url: 'https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002191',
+          publishedAt: '2017-02-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Alglucerase (Ceredase) — first enzyme replacement therapy 1991 ────────────
+  {
+    externalId: 'trajectory:alglucerase-ceredase-first-ert-gaucher-1991',
+    text: 'Macrophage-targeted glucocerebrosidase (alglucerase, Ceredase) is an effective enzyme replacement therapy for type 1 Gaucher disease, a claim established by Barton and Brady\'s National Institutes of Health trials and confirmed by the FDA\'s April 1991 approval — the first enzyme replacement therapy and first treatment for a lysosomal storage disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1990-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Barton, Furbish, Murray, Garfield, and Brady reported in PNAS that weekly intravenous infusions of mannose-terminated (macrophage-targeted) human placental glucocerebrosidase produced sustained clinical improvement — rising hemoglobin and platelets — in a single type 1 Gaucher patient. After two decades in which enzyme replacement was only a theoretical strategy, this recorded the first durable therapeutic response and the proof-of-concept that targeting the enzyme to macrophages overcame prior failures.',
+        source: {
+          externalId: 'src:barton-glucocerebrosidase-pnas-1990',
+          name: 'Barton NW, Furbish FS, Murray GJ, Garfield M, Brady RO. Therapeutic response to intravenous infusions of glucocerebrosidase in a patient with Gaucher disease. Proc Natl Acad Sci USA. 1990;87(5):1913-1916.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2308952/',
+          publishedAt: '1990-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Barton et al.\'s 12-patient trial (N Engl J Med, May 23, 1991) demonstrated objective clinical improvement — increased hemoglobin, reduced spleen size, improved biomarkers — providing the pivotal evidence behind the FDA\'s April 1991 approval of alglucerase (Ceredase). This was the first enzyme replacement therapy ever approved and the first treatment for any lysosomal storage disorder, establishing ERT as a viable therapeutic paradigm later cemented by recombinant imiglucerase (Cerezyme) in 1994.',
+        source: {
+          externalId: 'src:barton-glucocerebrosidase-nejm-1991',
+          name: 'Barton NW, Brady RO, Dambrosia JM, et al. Replacement therapy for inherited enzyme deficiency — macrophage-targeted glucocerebrosidase for Gaucher\'s disease. N Engl J Med. 1991;324(21):1464-1470.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2023606/',
+          publishedAt: '1991-05-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nusinersen (Spinraza) — first SMA treatment 2016 ─────────────────────────
+  {
+    externalId: 'trajectory:nusinersen-spinraza-first-sma-treatment-2016',
+    text: 'On December 23, 2016, the U.S. FDA approved nusinersen (Spinraza), an intrathecal SMN2-splicing antisense oligonucleotide, as the first drug to treat spinal muscular atrophy in pediatric and adult patients — a previously untreatable leading genetic cause of infant death.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-23',
+        datePrecision: 'DAY',
+        reason: 'Granted under priority review and fast track, the FDA approved Spinraza on December 23, 2016 based on a prespecified interim analysis of the ENDEAR trial, in which 41% of treated infants achieved a motor-milestone response versus 0% of sham controls. The approval established the first-ever effective therapy for SMA, converting a uniformly fatal or progressively disabling motor-neuron disease into a treatable one and validating antisense splice-modulation as a clinical modality.',
+        source: {
+          externalId: 'src:fda-spinraza-nusinersen-label-2016',
+          name: 'U.S. FDA. SPINRAZA (nusinersen) injection, for intrathecal use — Prescribing Information (original approval). December 2016.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2016/209531lbl.pdf',
+          publishedAt: '2016-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-02',
+        datePrecision: 'DAY',
+        reason: 'Full publication of the ENDEAR phase 3 trial in the New England Journal of Medicine reported a 51% reduction in the risk of death or permanent ventilation and significant motor-function gains, with the trial halted early for efficacy. Peer-reviewed confirmation entrenched nusinersen\'s benefit in the literature and helped catalyze SMA newborn-screening programs and subsequent approvals (onasemnogene abeparvovec 2019, risdiplam 2020).',
+        source: {
+          externalId: 'src:finkel-endear-nusinersen-nejm-2017',
+          name: 'Finkel RS, Mercuri E, Darras BT, et al. Nusinersen versus Sham Control in Infantile-Onset Spinal Muscular Atrophy. N Engl J Med. 2017;377(18):1723-1732.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29091570/',
+          publishedAt: '2017-11-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Eteplirsen (Exondys 51) — accelerated approval over committee objection 2016 ─
+  {
+    externalId: 'trajectory:eteplirsen-exondys51-accelerated-approval-2016',
+    text: 'On September 19, 2016, the U.S. FDA granted accelerated approval to eteplirsen (Exondys 51) for Duchenne muscular dystrophy amenable to exon 51 skipping, on the basis that a small increase in dystrophin (a surrogate endpoint) was reasonably likely to predict clinical benefit — a determination made over the objection of the agency\'s own advisory committee.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-09-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-09-19',
+        datePrecision: 'DAY',
+        reason: 'FDA approved eteplirsen via the accelerated-approval pathway based on a 12-boy study showing a small rise in muscle dystrophin, a surrogate the agency judged \'reasonably likely\' to predict benefit. The approval letter mandated a confirmatory 2-year randomized controlled trial, and the decision overrode an April 2016 advisory-committee vote against approval and internal scientific dissent — recording the efficacy claim only conditionally.',
+        source: {
+          externalId: 'src:fda-eteplirsen-exondys51-approval-letter-2016',
+          name: 'U.S. FDA. NDA 206488 Accelerated Approval Letter — Exondys 51 (eteplirsen) Injection. September 19, 2016.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2016/206488Orig1s000ltr.pdf',
+          publishedAt: '2016-09-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The approval became a touchstone for debate over accelerated-approval evidentiary standards: critics argued it rested on a dozen patients, an open-label design, and a dystrophin surrogate of unproven clinical relevance, while intense patient-advocate participation was credited with shifting the decision. The claim that eteplirsen produces meaningful clinical benefit remained unconfirmed and openly contested in the regulatory and clinical literature.',
+        source: {
+          externalId: 'src:fdli-eteplirsen-patient-participation-2017',
+          name: 'Food and Drug Law Institute. The Role of Patient Participation in Drug Approvals: Lessons from the Accelerated Approval of Eteplirsen. FDLI. August 2017.',
+          url: 'https://www.fdli.org/2017/08/role-patient-participation-drug-approvals-lessons-accelerated-approval-eteplirsen/',
+          publishedAt: '2017-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
