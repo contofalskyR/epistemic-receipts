@@ -17101,6 +17101,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY ENDOCRINOLOGY & DIABETES (1902–1930)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Bayliss & Starling — secretin, first hormone — 1902 ────────────────────
+  {
+    externalId: 'trajectory:bayliss-starling-secretin-hormone-1902',
+    text: 'William Bayliss and Ernest Starling reported in the Journal of Physiology on 12 September 1902 that acid entering the duodenum triggers pancreatic secretion via a blood-borne chemical messenger they named secretin — produced even when all relevant nerves are cut — establishing the first hormone and the concept of chemical (endocrine) regulation of metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1902-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-09-12',
+        datePrecision: 'DAY',
+        reason: 'Bayliss and Starling published \'The mechanism of pancreatic secretion\' in the Journal of Physiology, showing that acid instilled into a denervated loop of duodenum still provoked pancreatic flow, and that injecting an extract of duodenal mucosa reproduced the effect. This recorded in the expert literature the claim that a chemical substance carried in the blood — not a nerve reflex — controls a digestive secretion, the first demonstration of hormonal signaling.',
+        source: {
+          externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325–353.',
+          url: 'https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1902.sp000920',
+          publishedAt: '1902-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-06-20',
+        datePrecision: 'MONTH',
+        reason: 'In his Croonian Lectures of June 1905 Starling generalized the secretin finding and coined the word \'hormone\' for blood-borne chemical messengers, founding endocrinology as a discipline. The rapid acceptance and extension of the concept across the scientific community settled secretin and chemical messengers as the established model of internal regulation, the framework within which insulin, thyroxine and the other metabolic hormones were subsequently sought.',
+        source: {
+          externalId: 'src:modlin-bayliss-starling-endocrinology-fphys-2010',
+          name: 'Modlin IM, Kidd M, et al. Integrating the Gastrointestinal Sciences (history of secretin and the birth of endocrinology). Front Physiol. 2010;1:19.',
+          url: 'https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2010.00019/full',
+          publishedAt: '2010-04-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Allen starvation diet for diabetes — 1919, REVERSED by insulin 1923 ────
+  {
+    externalId: 'trajectory:allen-starvation-diet-diabetes-1919',
+    text: 'Frederick M. Allen, Edgar Stillman, and Reginald Fitz reported in the Rockefeller Institute monograph \'Total Dietary Regulation in the Treatment of Diabetes\' (15 October 1919) that strict caloric undernutrition — the \'starvation\' or Allen diet — was the most effective means of prolonging the lives of patients with severe diabetes, a claim that became the leading standard of care until it was rendered obsolete by insulin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-10-15',
+        datePrecision: 'DAY',
+        reason: 'Allen, Stillman, and Fitz published the Rockefeller Institute monograph documenting 76 diabetic patients managed by aggressive caloric restriction and fasting, reporting that undernutrition controlled glycosuria and prolonged survival in severe diabetes. This recorded in the expert literature the claim that strict dietary undernutrition was the best available therapy for a then-uniformly-fatal disease.',
+        source: {
+          externalId: 'src:allen-total-dietary-regulation-1919',
+          name: 'Allen FM, Stillman E, Fitz R. Total Dietary Regulation in the Treatment of Diabetes. Monographs of the Rockefeller Institute for Medical Research, No. 11. 1919.',
+          url: 'https://archive.org/details/b32819766',
+          publishedAt: '1919-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Allen undernutrition regimen was adopted as the dominant clinical standard for serious diabetes around 1915–1921, used at leading centers including Elliott Joslin\'s Boston practice, with no competing therapy able to extend life. Its position as the accepted standard of care settled the claim that dietary undernutrition was the best management for severe diabetes.',
+        source: {
+          externalId: 'src:rockefeller-centennial-dietary-therapy-diabetes',
+          name: 'Rockefeller University. An Effective Dietary Therapy for Diabetes Before the Discovery of Insulin (centennial history of the Allen diet).',
+          url: 'https://centennial.rucares.org/index.php?page=Dietary_Therapy_Diabetes',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The clinical demonstration of insulin (January 1922) and its rapid commercial scale-up through 1923 made caloric undernutrition obsolete: patients could now be fed adequately and metabolically controlled with hormone replacement. The starvation diet — which had sometimes brought patients to the edge of inanition — was abandoned as the standard of care, surviving only as historical context for diabetes management.',
+        source: {
+          externalId: 'src:allen-starvation-diet-pioneer-history',
+          name: 'Diabetes.co.uk. Frederick Madison Allen and the starvation diet (history; superseded by insulin).',
+          url: 'https://www.diabetes.co.uk/pioneers/frederick-madison-allen.html',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Abel crystalline insulin — 1926 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:abel-crystalline-insulin-1926',
+    text: 'John Jacob Abel reported in the Proceedings of the National Academy of Sciences on 15 February 1926 that insulin could be obtained in pure crystalline form, establishing that the antidiabetic hormone is a definite, crystallizable chemical compound (a protein) rather than an ill-defined physiological extract.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-02-15',
+        datePrecision: 'DAY',
+        reason: 'Abel published \'Crystalline Insulin\' in PNAS, reporting that he had crystallized insulin and that the crystals retained full hypoglycemic activity. Against the then-influential view (held by Willstätter and others) that hormones and enzymes were not themselves proteins, this recorded in the expert literature the claim that insulin is a discrete crystallizable protein, moving it from a standardized biological extract toward a defined chemical entity.',
+        source: {
+          externalId: 'src:abel-crystalline-insulin-pnas-1926',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132–136.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1084434',
+          publishedAt: '1926-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Abel\'s crystallization was reproduced and extended — D. A. Scott showed in 1934 that crystalline insulin is a zinc-containing protein, and crystallization became the basis of standardized commercial insulin — and Frederick Sanger\'s complete determination of insulin\'s amino-acid sequence (1951–1955) proved definitively that insulin is a protein with a fixed structure. This settled, as established biochemical fact, the claim that insulin is a discrete crystallizable protein.',
+        source: {
+          externalId: 'src:insulin-formulation-century-pmc-2021',
+          name: 'Hua QX, et al. Structural principles of insulin formulation and analog design: A century of innovation (review tracing Abel 1926 crystallization to defined protein structure). Mol Metab. 2021;52:101245.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8513154/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Houssay — pituitary counter-regulation of diabetes — 1930 ──────────────
+  {
+    externalId: 'trajectory:houssay-pituitary-diabetes-1930',
+    text: 'Bernardo Houssay and Alfredo Biasotti reported in 1930 (Revista de la Sociedad Argentina de Biología) that removal of the anterior pituitary markedly attenuates pancreatic diabetes in hypophysectomized dogs and toads, while injecting anterior-pituitary extract aggravates it, establishing that an anterior-pituitary hormone opposes insulin in the control of carbohydrate metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Houssay and Biasotti published their work on pancreatic diabetes in hypophysectomized dogs (\'La diabetes pancreática de los perros hipofisoprivos\', Rev Soc Argent Biol 1930;6:251–296; German version Pflügers Archiv 1931;227:664), demonstrating that the anterior pituitary conditions the severity of diabetes and that its extract is diabetogenic. This recorded in the expert literature the claim that carbohydrate metabolism is governed not only by insulin but by a counter-regulatory anterior-pituitary hormone.',
+        source: {
+          externalId: 'src:houssay-nobel-lecture-1947',
+          name: 'Houssay BA. The role of the hypophysis in carbohydrate metabolism and in diabetes. Nobel Lecture, 11 December 1947.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/houssay/lecture/',
+          publishedAt: '1947-12-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-10-23',
+        datePrecision: 'MONTH',
+        reason: 'The Nobel Assembly awarded Houssay the 1947 Nobel Prize in Physiology or Medicine \'for his discovery of the part played by the hormone of the anterior pituitary lobe in the metabolism of sugar\' (shared with Carl and Gerty Cori). The award institutionally ratified the counter-regulatory role of the anterior pituitary as settled physiological fact, central to the modern understanding of diabetes and glucose homeostasis.',
+        source: {
+          externalId: 'src:houssay-nobel-facts-1947',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1947 — Bernardo Houssay.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1947/houssay/facts/',
+          publishedAt: '1947-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
