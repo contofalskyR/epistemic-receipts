@@ -10536,6 +10536,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Tafamidis (Vyndaqel/Vyndamax) approved for ATTR cardiomyopathy — ATTR-ACT 2018 / FDA 2019 ─────────────────────────
+  {
+    externalId: 'trajectory:tafamidis-vyndaqel-attr-cardiomyopathy-2019',
+    text: 'Tafamidis (Vyndaqel/Vyndamax), an oral transthyretin stabilizer, reduces all-cause mortality and cardiovascular hospitalizations in transthyretin amyloid cardiomyopathy — a claim established by the ATTR-ACT trial published in the New England Journal of Medicine on 13 September 2018 and settled by the U.S. FDA\'s approval of 3 May 2019, the first approved treatment for ATTR cardiomyopathy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-09-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-13',
+        datePrecision: 'DAY',
+        reason: 'Maurer and colleagues published the ATTR-ACT trial in NEJM, a phase 3 double-blind placebo-controlled study of 441 patients showing that tafamidis significantly reduced the hierarchical combination of all-cause mortality and cardiovascular-related hospitalizations over 30 months and slowed functional and quality-of-life decline. This recorded the first controlled evidence that stabilizing the transthyretin tetramer could alter the course of ATTR cardiomyopathy, a previously untreatable and fatal cause of heart failure.',
+        source: {
+          externalId: 'src:maurer-attr-act-tafamidis-nejm-2018',
+          name: 'Maurer MS, Schwartz JH, Gundapaneni B, et al. Tafamidis Treatment for Patients with Transthyretin Amyloid Cardiomyopathy. N Engl J Med. 2018;379(11):1007-1016. PMID 30145929.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30145929/',
+          publishedAt: '2018-09-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-05-03',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved Vyndaqel (tafamidis meglumine) and Vyndamax (tafamidis), the first treatments approved for cardiomyopathy caused by transthyretin-mediated amyloidosis in adults, on the basis of the ATTR-ACT mortality and hospitalization data. The approval institutionally settled transthyretin stabilization as the standard of care for ATTR-CM and established the first regulatory finding of efficacy for a disease previously managed only supportively.',
+        source: {
+          externalId: 'src:fda-tafamidis-attr-cm-approval-2019',
+          name: 'U.S. FDA. FDA approves new treatments for heart disease caused by a serious rare disease, transthyretin-mediated amyloidosis. May 3, 2019.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-new-treatments-for-heart-disease-caused-by-a-serious-rare-disease-transthyretinmediated-amyloidosis-300844228.html',
+          publishedAt: '2019-05-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cerliponase alfa (Brineura) approved for CLN2 Batten disease — ICV ERT first 2017 ──────────────────────────────────
+  {
+    externalId: 'trajectory:cerliponase-alfa-brineura-cln2-batten-2017',
+    text: 'Intracerebroventricular cerliponase alfa (Brineura), a recombinant human tripeptidyl peptidase 1, slows the loss of motor and language function in CLN2 disease (a form of Batten disease) — a claim settled by the U.S. FDA\'s approval of 27 April 2017, the first treatment for any neuronal ceroid lipofuscinosis and the first enzyme replacement therapy delivered directly into the cerebrospinal fluid, with confirmatory data published in the New England Journal of Medicine in 2018.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-04-27',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved Brineura (cerliponase alfa, BioMarin) to slow the loss of ambulation in symptomatic pediatric patients 3 years and older with late-infantile CLN2 disease (TPP1 deficiency), comparing treated children against a natural-history control cohort. As the first approved therapy for any neuronal ceroid lipofuscinosis and the first ICV-delivered enzyme replacement therapy, the approval recorded a new regulatory finding that direct intra-CSF enzyme delivery could slow a uniformly fatal pediatric neurodegenerative disease.',
+        source: {
+          externalId: 'src:fda-brineura-cerliponase-approval-2017',
+          name: 'BioMarin / U.S. FDA. FDA Approves Brineura (cerliponase alfa) for the Treatment of CLN2 Disease, a Form of Batten Disease. April 27, 2017.',
+          url: 'https://www.biomarin.com/news/press-releases/fda-approves-brineura-cerliponase-alfa-for-the-treatment-of-cln2-disease-a-form-of-batten-disease-and-ultra-rare-pediatric-brain-disorder-in-children/',
+          publishedAt: '2017-04-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-05-17',
+        datePrecision: 'DAY',
+        reason: 'Schulz and colleagues published the pivotal study in NEJM, showing that intraventricular cerliponase alfa produced a markedly slower rate of motor-language decline (0.27 points per 48 weeks) than untreated historical controls (2.12 points). Peer-reviewed confirmation entrenched the efficacy claim in the literature and cemented ICV enzyme replacement as the standard of care for CLN2 disease.',
+        source: {
+          externalId: 'src:schulz-cerliponase-cln2-nejm-2018',
+          name: 'Schulz A, Ajayi T, Specchio N, et al. Study of Intraventricular Cerliponase Alfa for CLN2 Disease. N Engl J Med. 2018;378(20):1898-1907. PMID 29688815.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29688815/',
+          publishedAt: '2018-05-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Givosiran (Givlaari) approved for acute hepatic porphyria — ENVISION 2019/2020 ───────────────────────────────────
+  {
+    externalId: 'trajectory:givosiran-givlaari-acute-hepatic-porphyria-2019',
+    text: 'Givosiran (Givlaari), a GalNAc-conjugated subcutaneous RNAi therapeutic silencing hepatic ALAS1, reduces porphyria attacks in acute hepatic porphyria — a claim settled by the U.S. FDA\'s approval of 20 November 2019, the first approved treatment for acute hepatic porphyria, with the ENVISION phase 3 trial published in the New England Journal of Medicine in 2020.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-11-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-11-20',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved Givlaari (givosiran, Alnylam) for adults with acute hepatic porphyria on the basis of the ENVISION trial, in which treated patients experienced 70% fewer porphyria attacks than placebo. As the first approved therapy for acute hepatic porphyria and the first GalNAc-conjugated RNAi drug, the approval recorded a new regulatory finding that silencing the rate-limiting heme-synthesis enzyme could control a disabling, previously untreatable metabolic disease.',
+        source: {
+          externalId: 'src:fda-givosiran-ahp-approval-2019',
+          name: 'U.S. FDA. FDA approves givosiran for acute hepatic porphyria. November 20, 2019.',
+          url: 'https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-givosiran-acute-hepatic-porphyria',
+          publishedAt: '2019-11-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-06-11',
+        datePrecision: 'DAY',
+        reason: 'Balwani and colleagues published the full ENVISION phase 3 trial in NEJM, reporting that givosiran lowered the annualized rate of porphyria attacks (mean 1.9 vs 6.5 over six months) and reduced urinary aminolevulinic acid in acute intermittent porphyria. Peer-reviewed confirmation entrenched RNAi silencing of ALAS1 as an effective, disease-modifying treatment and validated GalNAc-conjugated subcutaneous siRNA as a clinical modality distinct from the lipid-nanoparticle patisiran.',
+        source: {
+          externalId: 'src:balwani-envision-givosiran-nejm-2020',
+          name: 'Balwani M, Sardh E, Ventura P, et al. Phase 3 Trial of RNAi Therapeutic Givosiran for Acute Intermittent Porphyria. N Engl J Med. 2020;382(24):2289-2301. PMID 32268022.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32268022/',
+          publishedAt: '2020-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Migalastat (Galafold) oral chaperone approved for Fabry disease — FACETS 2016 / FDA 2018 ──────────────────────────
+  {
+    externalId: 'trajectory:migalastat-galafold-fabry-oral-chaperone-2018',
+    text: 'Oral migalastat (Galafold), a pharmacologic chaperone that stabilizes amenable mutant alpha-galactosidase A, is an effective alternative to infused enzyme replacement in Fabry disease — a claim first evidenced in the FACETS trial published in the New England Journal of Medicine on 11 August 2016 and settled by the U.S. FDA\'s accelerated approval of 10 August 2018, the first oral treatment for Fabry disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-08-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-08-11',
+        datePrecision: 'DAY',
+        reason: 'Germain and colleagues published the FACETS trial in NEJM, a randomized study showing that the oral pharmacologic chaperone migalastat reduced kidney interstitial-capillary globotriaosylceramide inclusions in patients with Fabry disease carrying amenable GLA mutations. This recorded the first controlled evidence that a small-molecule chaperone could substitute for intravenous enzyme replacement by stabilizing the patient\'s own residual mutant enzyme.',
+        source: {
+          externalId: 'src:germain-facets-migalastat-nejm-2016',
+          name: 'Germain DP, Hughes DA, Nicholls K, et al. Treatment of Fabry\'s Disease with the Pharmacologic Chaperone Migalastat. N Engl J Med. 2016;375(6):545-555. PMID 27509102.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27509102/',
+          publishedAt: '2016-08-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-08-10',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA granted accelerated approval to Galafold (migalastat, NDA 208623) for adults with Fabry disease whose GLA mutation is determined to be amenable, the first oral drug approved for Fabry and the first new U.S. Fabry treatment in over 15 years. The approval institutionally settled chaperone therapy as an alternative to lifelong infused enzyme replacement (agalsidase) for the amenable-mutation subset.',
+        source: {
+          externalId: 'src:fda-galafold-migalastat-appletter-2018',
+          name: 'U.S. FDA. Galafold (migalastat) NDA 208623 Approval Letter. August 10, 2018.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2018/208623Orig1s000ltr.PDF',
+          publishedAt: '2018-08-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
