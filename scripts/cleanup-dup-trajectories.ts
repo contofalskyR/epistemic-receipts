@@ -1,9 +1,8 @@
 // One-off cleanup: remove orphan duplicate records created by an erroneous
-// run of seed-human-history-trajectories.ts that re-added four modern-era events
-// (Chandrayaan-1 lunar water, WHO Wuhan cluster notification, AlphaFold CASP14,
-// programmable CRISPR-Cas9) already present in the DB under different externalIds.
-// (The Chang'e-4 entry collided on an existing externalId and is restored by
-// re-running the reverted seed, which is idempotent.)
+// run of seed-human-history-trajectories.ts that re-added two modern-era SE Asia
+// events already present in the DB under different externalIds:
+//   - Homo luzonensis 2019 (already: trajectory:homo-luzonensis-philippines-2019)
+//   - Khmer Rouge ECCC genocide verdict 2018 (already: trajectory:khmer-rouge-genocide-eccc-2018)
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 
@@ -11,22 +10,16 @@ const prisma = new PrismaClient()
 
 // New duplicate claims that did NOT exist before the bad run.
 const ORPHAN_CLAIMS = [
-  'trajectory:chandrayaan1-moon-water-2009',
-  'trajectory:who-wuhan-pneumonia-cluster-2019',
-  'trajectory:alphafold-casp14-protein-folding-2020',
-  'trajectory:crispr-cas9-programmable-2012',
+  'trajectory:homo-luzonensis-discovery-2019',
+  'trajectory:khmer-rouge-genocide-verdict-2018',
 ]
 
 // Sources created exclusively by the bad run.
+// NOTE: src:detroit-luzonensis-nature-2019 is SHARED with the surviving
+// luzonensis entry — it is intentionally NOT listed here.
 const ORPHAN_SOURCES = [
-  'src:pieters-m3-moon-water-science-2009',
-  'src:li-moon-ice-pnas-2018',
-  'src:who-don-wuhan-pneumonia-2020',
-  'src:zhou-sarscov2-bat-origin-nature-2020',
-  'src:deepmind-alphafold-casp14-2020',
-  'src:jumper-alphafold-nature-2021',
-  'src:jinek-crispr-cas9-science-2012',
-  'src:cong-crispr-mammalian-science-2013',
+  'src:eccc-genocide-verdict-amnesty-2018',
+  'src:eccc-appeal-upheld-un-2022',
 ]
 
 async function main() {

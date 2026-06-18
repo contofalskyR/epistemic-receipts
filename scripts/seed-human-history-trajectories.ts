@@ -23884,6 +23884,75 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Mount Pinatubo erupts as forecast, Philippines ─────────────────────────
+  {
+    externalId: 'trajectory:mount-pinatubo-eruption-1991',
+    text: 'On 15 June 1991 Mount Pinatubo in the Philippines produced the second-largest volcanic eruption of the 20th century; forecasts by PHIVOLCS and the U.S. Geological Survey prompted evacuations that saved thousands of lives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-06-01',
+        datePrecision: 'MONTH',
+        reason: 'After a long-dormant Pinatubo reawakened with phreatic explosions in April 1991, scientists from the Philippine Institute of Volcanology and Seismology (PHIVOLCS) and the U.S. Geological Survey monitored escalating seismicity and gas emission and forecast an imminent major eruption, issuing graduated alerts that prompted the evacuation of tens of thousands of people from the surrounding area in early-to-mid June.',
+        source: {
+          externalId: 'src:usgs-pinatubo-fs113-97',
+          name: 'Newhall C, et al. "The Cataclysmic 1991 Eruption of Mount Pinatubo, Philippines." USGS Fact Sheet 113-97.',
+          url: 'https://pubs.usgs.gov/fs/1997/fs113-97/',
+          publishedAt: '1997-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-06-15',
+        datePrecision: 'DAY',
+        reason: 'The climactic eruption occurred on 15 June 1991, ejecting cubic kilometres of ash and gas and collapsing the summit into a caldera — the second-largest volcanic eruption of the century and by far the largest to affect a densely populated area. The eruption confirmed the forecasts, and the timely evacuations are credited by the USGS with saving at least 5,000 lives.',
+        source: {
+          externalId: 'src:usgs-pinatubo-climactic-1991',
+          name: 'Newhall C, et al. "The Cataclysmic 1991 Eruption of Mount Pinatubo, Philippines." USGS Fact Sheet 113-97 (climactic eruption of 15 June 1991).',
+          url: 'https://pubs.usgs.gov/fs/1997/fs113-97/',
+          publishedAt: '1997-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Suharto resigns, ending Indonesia's New Order ──────────────────────────
+  {
+    externalId: 'trajectory:suharto-resignation-1998',
+    text: 'On 21 May 1998 President Suharto resigned after 32 years in power, ending Indonesia\'s New Order regime amid the Asian financial crisis and mass protests; Vice President B. J. Habibie was immediately sworn in.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1998-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-05-21',
+        datePrecision: 'DAY',
+        reason: 'At 9 a.m. Western Indonesia Time, in the Credential Room of Merdeka Palace in Jakarta, Suharto read a short statement declaring his resignation as President of the Republic of Indonesia, ending 32 years of authoritarian New Order rule that had begun in 1966. Vice President B. J. Habibie was immediately sworn in to serve out the term. The televised announcement followed weeks of deadly riots and student occupation of the parliament.',
+        source: {
+          externalId: 'src:suharto-resignation-1998',
+          name: 'Fall of Suharto — resignation announcement of 21 May 1998 (contemporaneous reporting compiled by Wikipedia, with the constitutional text of the statement).',
+          url: 'https://en.wikipedia.org/wiki/Fall_of_Suharto',
+          publishedAt: '1998-05-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Thailand floats the baht — onset of the Asian financial crisis ──────────
   {
     externalId: 'trajectory:thai-baht-float-1997',
@@ -59391,6 +59460,90 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://pubmed.ncbi.nlm.nih.gov/2668443/',
           publishedAt: '1989-07-01',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Disaster of Yongjia — Xiongnu Han-Zhao sack of Luoyang ───────────────────
+  {
+    externalId: 'trajectory:disaster-of-yongjia-311',
+    text: 'The Xiongnu-led Han-Zhao army stormed and sacked the Western Jin capital of Luoyang on 13 July 311, capturing Emperor Huai, massacring some 30,000 people and burning the palaces — the catastrophe known as the Disaster of Yongjia, in which an Inner Asian steppe power broke Jin rule over northern China.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0311-07-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0311-07-13',
+        datePrecision: 'DAY',
+        reason: 'After Liu Cong, ruler of the Xiongnu-founded Han-Zhao state, dispatched a coalition under Huyan Yan, Wang Mi, Liu Yao and the Jie general Shi Le, the attackers breached the Xuanyang Gate of Luoyang on 13 July 311 and the following day put some 30,000 people to the sword, seized Emperor Huai, plundered and burned the palaces, and dug up the imperial mausoleums. The Jin court annals register the fall of the capital and the capture of the emperor — the defining catastrophe of the Yongjia era.',
+        source: {
+          externalId: 'src:jinshu-yongjia-luoyang-311',
+          name: 'Fang Xuanling et al. Book of Jin (Jin Shu), annals of Emperor Huai (Yongjia era); with the Zizhi Tongjian account of the fall of Luoyang, 13–14 July 311. (court annals drawing on Jin records)',
+          url: 'https://en.wikipedia.org/wiki/Disaster_of_Yongjia',
+          publishedAt: '0648-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1907-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Chinese annalistic account is independently corroborated by a contemporaneous Central Asian source: the Sogdian Ancient Letter II, written about 313 by the merchant Nanai-vandak and recovered by Aurel Stein in 1907 at a watchtower west of Dunhuang, reports from the other end of the Silk Road the famine, the flight of the emperor from Luoyang, and the sack of Luoyang and Ye by the Huns. The convergence of Jin court records and an outside merchant-network witness settles the date and reality of the catastrophe in modern scholarship.',
+        source: {
+          externalId: 'src:sogdian-letter-corroborates-yongjia',
+          name: 'Sogdian Ancient Letter II (Nanai-vandak to Samarkand, c. 313 CE), reporting the sack of Luoyang — The Sogdians, Smithsonian Freer|Sackler digital exhibition.',
+          url: 'https://sogdians.si.edu/ancient-letters/',
+          publishedAt: '0313-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sogdian Ancient Letter II — a Silk Road merchant's lost dispatch ─────────
+  {
+    externalId: 'trajectory:sogdian-ancient-letter-ii-313',
+    text: 'Around 313 CE a Sogdian merchant named Nanai-vandak, writing from the Gansu corridor to his partners in Samarkand, reported the famine in China, the flight of the Jin emperor from Luoyang, and the sack of Luoyang and Ye by the Huns; the letter, lost in a confiscated mailbag at a watchtower west of Dunhuang, was recovered by Aurel Stein in 1907 and became the earliest substantial Sogdian text and a contemporaneous Central Asian witness to the fall of Western Jin.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0313-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0313-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Nanai-vandak, a Sogdian trader based in western China, wrote in Sogdian to his "home office" in Samarkand, more than 2,000 miles west, relaying news of disaster: a famine, the emperor abandoning Luoyang, and the destruction of Luoyang and Ye by the Huns (the Xiongnu Han-Zhao). The dispatch never reached Sogdiana — it ended up in an abandoned or confiscated mailbag at a watchtower of the Jade Gate frontier west of Dunhuang, preserving a merchant network\'s real-time report of events at the eastern end of the Silk Road.',
+        source: {
+          externalId: 'src:sogdian-ancient-letter-ii-smithsonian',
+          name: 'The Sogdians: Ancient Letters (Sogdian Ancient Letter II, Nanai-vandak). Smithsonian Freer Gallery of Art and Arthur M. Sackler Gallery digital exhibition.',
+          url: 'https://sogdians.si.edu/ancient-letters/',
+          publishedAt: '0313-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Stein recovered the letters in 1907, their decipherment and dating became a problem in Central Asian philology. W.B. Henning\'s 1948 study, refined by Nicholas Sims-Williams and colleagues, fixed Letter II to about 312–313 CE by matching the events it reports — the flight of the emperor and the sack of Luoyang — to the Chinese-recorded Disaster of Yongjia of 311. The correlation settled both the letter\'s date and its status as the earliest substantial Sogdian text and a contemporaneous foreign witness to the fall of Western Jin.',
+        source: {
+          externalId: 'src:sogdian-letters-dating-silkroad',
+          name: 'Scholarship on the dating of the Sogdian Ancient Letters (W.B. Henning 1948; N. Sims-Williams), fixing Letter II to c. 312–313 CE via the sack of Luoyang — University of Washington Silk Road Seattle, "The Sogdian Ancient Letters."',
+          url: 'https://depts.washington.edu/silkroad/texts/sogdlet.html',
+          publishedAt: '2002-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
