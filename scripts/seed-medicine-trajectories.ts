@@ -15211,6 +15211,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHIATRY & NEUROLOGY ERA (1958–1986)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1. Haloperidol — first butyrophenone antipsychotic — Janssen 1958 ────────
+  {
+    externalId: 'trajectory:haloperidol-first-butyrophenone-antipsychotic-1958',
+    text: 'Haloperidol, the first butyrophenone antipsychotic, synthesized at Janssen Pharmaceutica on 11 February 1958 and shown within weeks to control psychotic agitation and hallucinations, is an effective high-potency neuroleptic for schizophrenia and acute psychosis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1958-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-02-11',
+        datePrecision: 'DAY',
+        reason: 'Haloperidol (compound R 1625) was synthesized by Bert Hermans in Paul Janssen\'s laboratory in Beerse, Belgium, and within about seven weeks was administered to psychiatric patients, with Belgian clinicians (notably at Liège under Divry, Bobon and Collard) reporting that it rapidly controlled psychomotor excitation and hallucinations. The first clinical reports of 1958–1959 recorded the claim that a structurally novel non-phenothiazine compound could specifically treat psychosis, opening the butyrophenone class.',
+        source: {
+          externalId: 'src:lopez-munoz-haloperidol-discovery-2009',
+          name: 'López-Muñoz F, Alamo C. The consolidation of neuroleptic therapy: Janssen, the discovery of haloperidol and its introduction into clinical practice. Brain Res Bull. 2009;79(2):130-141.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19186209/',
+          publishedAt: '2009-04-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-04-12',
+        datePrecision: 'DAY',
+        reason: 'After rapid international clinical adoption through the early 1960s, the U.S. FDA approved haloperidol on 12 April 1967, marketed by McNeil Laboratories as Haldol. Regulatory approval and worldwide use as a high-potency reference antipsychotic settled haloperidol\'s neuroleptic efficacy as established medical practice, a status it retains (it remains on the WHO Model List of Essential Medicines).',
+        source: {
+          externalId: 'src:lopez-munoz-haloperidol-discovery-2009',
+          name: 'López-Muñoz F, Alamo C. The consolidation of neuroleptic therapy: Janssen, the discovery of haloperidol and its introduction into clinical practice. Brain Res Bull. 2009;79(2):130-141.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19186209/',
+          publishedAt: '2009-04-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 2. Rosenhan — "On being sane in insane places" — Science 1973 ────────────
+  {
+    externalId: 'trajectory:rosenhan-on-being-sane-insane-places-1973',
+    text: 'David L. Rosenhan reported in Science on 19 January 1973 that eight healthy pseudopatients who feigned a single hallucination were all admitted to psychiatric hospitals and could not be reliably distinguished from genuinely ill patients, concluding that \'we cannot distinguish the sane from the insane in psychiatric hospitals.\'',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-01-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-01-19',
+        datePrecision: 'DAY',
+        reason: 'Rosenhan published \'On being sane in insane places\' in Science, describing how pseudopatients gained admission to 12 hospitals with a feigned symptom and were detained 7–52 days. The study recorded into the top-tier literature the claim that psychiatric diagnosis lacked reliability and validity, becoming one of the most influential critiques of psychiatry and contributing to the impetus for operationalized diagnosis in DSM-III.',
+        source: {
+          externalId: 'src:rosenhan-being-sane-science-1973',
+          name: 'Rosenhan DL. On being sane in insane places. Science. 1973;179(4070):250-258.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4683124/',
+          publishedAt: '1973-01-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Journalist Susannah Cahalan\'s archival investigation, published as \'The Great Pretender\' in November 2019, found that Rosenhan appears to have misrepresented and probably fabricated key data — exaggerating symptom reports, excluding a pseudopatient (Harry Lando) whose hospital experience was positive, and leaving no verifiable evidence that six of the eight claimed pseudopatients existed. The findings, widely discussed in the psychiatric and scientific press, placed the validity of one of psychiatry\'s most cited studies into active dispute.',
+        source: {
+          externalId: 'src:cahalan-great-pretender-2019',
+          name: 'Cahalan S. The Great Pretender: The Undercover Mission That Changed Our Understanding of Madness. Grand Central Publishing; 2019. (Reviewed: Psychiatric Times, reassessing Rosenhan\'s data.)',
+          url: 'https://www.psychiatrictimes.com/view/great-pretender-undercover-mission-changed-our-understanding-madness',
+          publishedAt: '2019-11-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 3. DSM-III — operationalized psychiatric diagnosis — APA 1980 ─────────────
+  {
+    externalId: 'trajectory:dsm-iii-operationalized-psychiatric-diagnosis-1980',
+    text: 'The American Psychiatric Association published the third edition of the Diagnostic and Statistical Manual of Mental Disorders (DSM-III) in 1980, replacing psychoanalytic/etiological definitions with explicit operationalized diagnostic criteria, a multiaxial system, and an approach neutral as to causation — re-grounding American psychiatric diagnosis on descriptive, reliability-tested categories.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1980-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Under the leadership of Robert Spitzer\'s task force (work begun 1974), DSM-III abandoned the psychodynamic framework and term \'neurosis\' in favor of explicit inclusion/exclusion criteria for each disorder, a move described as a \'fateful turning point\' that re-medicalized American psychiatry. Adopted immediately as the institutional standard for clinical practice, research, and reimbursement and carried forward into DSM-III-R, IV, and 5, it settled operationalized descriptive diagnosis as the governing paradigm of psychiatric nosology.',
+        source: {
+          externalId: 'src:kawa-giordano-dsm-historicity-2012',
+          name: 'Kawa S, Giordano J. A brief historicity of the Diagnostic and Statistical Manual of Mental Disorders: Issues and implications for the future of psychiatric canon and practice. Philos Ethics Humanit Med. 2012;7:2.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3282636/',
+          publishedAt: '2012-01-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 4. MPTP-induced parkinsonism — Langston et al. Science 1983 ──────────────
+  {
+    externalId: 'trajectory:mptp-induced-parkinsonism-langston-1983',
+    text: 'J. William Langston and colleagues reported in Science on 25 February 1983 that four people who injected an illicit meperidine analog contaminated with MPTP developed marked, irreversible parkinsonism, establishing that a synthetic neurotoxin can selectively destroy substantia nigra dopaminergic neurons and cause Parkinson\'s disease in humans.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-02-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-02-25',
+        datePrecision: 'DAY',
+        reason: 'Langston, Ballard, Tetrud, and Irwin published \'Chronic Parkinsonism in humans due to a product of meperidine-analog synthesis\' in Science, identifying MPTP as the agent that produced acute, levodopa-responsive parkinsonism in young drug users (the \'frozen addicts\'). The report recorded the claim that a specific environmental toxin could reproduce idiopathic Parkinson\'s disease, reorienting research toward a toxic/oxidative pathogenesis.',
+        source: {
+          externalId: 'src:langston-mptp-parkinsonism-science-1983',
+          name: 'Langston JW, Ballard P, Tetrud JW, Irwin I. Chronic Parkinsonism in humans due to a product of meperidine-analog synthesis. Science. 1983;219(4587):979-980.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6823561/',
+          publishedAt: '1983-02-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-07-15',
+        datePrecision: 'DAY',
+        reason: 'Burns and colleagues at the NIH reproduced the syndrome in rhesus monkeys, showing MPTP selectively destroys dopaminergic neurons of the substantia nigra pars compacta and yields a levodopa-reversible parkinsonian disorder (PNAS, July 1983). The MPTP primate model was rapidly adopted as the premier experimental model of Parkinson\'s disease, settling MPTP-induced nigral toxicity as established fact and the standard platform for therapeutic testing.',
+        source: {
+          externalId: 'src:burns-mptp-primate-model-pnas-1983',
+          name: 'Burns RS, Chiueh CC, Markey SP, Ebert MH, Jacobowitz DM, Kopin IJ. A primate model of parkinsonism: selective destruction of dopaminergic neurons in the pars compacta of the substantia nigra by N-methyl-4-phenyl-1,2,3,6-tetrahydropyridine. Proc Natl Acad Sci USA. 1983;80(14):4546-4550.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6192438/',
+          publishedAt: '1983-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 5. Tacrine/THA for Alzheimer's — Summers NEJM 1986 ──────────────────────
+  {
+    externalId: 'trajectory:tacrine-tha-alzheimers-summers-1986',
+    text: 'William Summers and colleagues reported in the New England Journal of Medicine on 13 November 1986 that oral tetrahydroaminoacridine (THA, tacrine), a centrally acting anticholinesterase, produced dramatic cognitive improvement in patients with Alzheimer-type senile dementia — the first claim of a drug meaningfully treating Alzheimer\'s disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-11-13',
+        datePrecision: 'DAY',
+        reason: 'Summers, Majovski, Marsh, Tachiki, and Kling published \'Oral tetrahydroaminoacridine in long-term treatment of senile dementia, Alzheimer type\' in NEJM, reporting striking improvements on cognitive measures with no serious adverse effects. As an apparent confirmation of the cholinergic hypothesis of Alzheimer\'s, the paper recorded the first claim of an effective Alzheimer\'s therapy and triggered intense clinical and commercial interest in tacrine.',
+        source: {
+          externalId: 'src:summers-tacrine-tha-nejm-1986',
+          name: 'Summers WK, Majovski LV, Marsh GM, Tachiki K, Kling A. Oral tetrahydroaminoacridine in long-term treatment of senile dementia, Alzheimer type. N Engl J Med. 1986;315(20):1241-1245.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2430180/',
+          publishedAt: '1986-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-10-29',
+        datePrecision: 'DAY',
+        reason: 'Summers\'s methods and the magnitude of his claimed benefit were challenged amid FDA and academic scrutiny, and the Tacrine Collaborative Study Group\'s double-blind, placebo-controlled multicenter trial (Davis, Thal, et al., NEJM, 29 October 1992) found only a small statistically significant slowing of cognitive decline — far short of the dramatic improvement originally reported, and not detectable on clinicians\' global assessments. The modest, hepatotoxicity-limited effect (tacrine was approved as Cognex in 1993 but later withdrawn) left Summers\'s original strong claim in lasting dispute.',
+        source: {
+          externalId: 'src:davis-thal-tacrine-multicenter-nejm-1992',
+          name: 'Davis KL, Thal LJ, Gamzu ER, et al. (Tacrine Collaborative Study Group). A double-blind, placebo-controlled multicenter study of tacrine for Alzheimer\'s disease. N Engl J Med. 1992;327(18):1253-1259.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1406817/',
+          publishedAt: '1992-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
