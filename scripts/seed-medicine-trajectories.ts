@@ -17705,6 +17705,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL PROCEDURES ERA (1950–2000)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Starzl — first successful liver transplantation 1967 ────────────────────
+  {
+    externalId: 'trajectory:starzl-first-successful-liver-transplantation-1967',
+    text: 'Thomas E. Starzl and colleagues reported in Annals of Surgery in 1968 the first human orthotopic liver transplants achieving prolonged survival — beginning with a recipient operated on 23 July 1967 — establishing that an irreversibly diseased human liver could be replaced by a cadaveric homograft.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-07-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-09-01',
+        datePrecision: 'MONTH',
+        reason: 'After a string of fatal attempts beginning in 1963, Starzl\'s group at Colorado reported the first orthotopic human liver transplants with prolonged survival, the index child having been transplanted on 23 July 1967. The paper recorded in the surgical literature the claim that hepatic replacement was technically achievable and could yield survivors, opening liver transplantation as a research program rather than a uniformly lethal experiment.',
+        source: {
+          externalId: 'src:starzl-orthotopic-human-liver-annals-1968',
+          name: 'Starzl TE, Groth CG, Brettschneider L, Penn I, Fulginiti VA, Moon JB, Blanchard H, Martin AJ Jr, Porter KA. Orthotopic homotransplantation of the human liver. Ann Surg. 1968;168(3):392-415.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4877589/',
+          publishedAt: '1968-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-06-23',
+        datePrecision: 'DAY',
+        reason: 'Following the introduction of ciclosporin, which sharply improved graft and patient survival, the NIH Consensus Development Conference on Liver Transplantation (20–23 June 1983) concluded that liver transplantation had become a clinical service and was no longer merely an experimental procedure. The institutional declaration settled the claim that liver replacement was a legitimate, deliverable therapy.',
+        source: {
+          externalId: 'src:nih-consensus-liver-transplantation-1983',
+          name: 'National Institutes of Health Consensus Development Conference Statement: Liver Transplantation — June 20–23, 1983. Hepatology. 1984;4(1 Suppl):107S-110S.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6363254/',
+          publishedAt: '1983-06-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mühe — first laparoscopic cholecystectomy 1985 ──────────────────────────
+  {
+    externalId: 'trajectory:muhe-first-laparoscopic-cholecystectomy-1985',
+    text: 'Erich Mühe performed the first laparoscopic cholecystectomy on 12 September 1985 in Böblingen, Germany, removing a diseased gallbladder endoscopically with his purpose-built \'Galloscope,\' establishing that cholecystectomy need not require a large open abdominal incision.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-09-12',
+        datePrecision: 'DAY',
+        reason: 'Mühe, having designed an operative laparoscope (the \'Galloscope\') capable of maintaining pneumoperitoneum and delivering the gallbladder, performed the first laparoscopic cholecystectomy on 12 September 1985. When he reported it to the German Surgical Society in 1986 the claim was dismissed, but the procedure recorded the possibility that major abdominal organ removal could be done through small endoscopic ports.',
+        source: {
+          externalId: 'src:litynski-muhe-first-laparoscopic-cholecystectomy-jsls-1998',
+          name: 'Litynski GS. Erich Mühe and the rejection of laparoscopic cholecystectomy (1985): a surgeon ahead of his time. J Soc Laparoendosc Surg (JSLS). 1998;2(4):341-346.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10036125/',
+          publishedAt: '1998-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-09-16',
+        datePrecision: 'DAY',
+        reason: 'After explosive worldwide uptake of the technique from 1989 onward, the NIH Consensus Development Conference on Gallstones and Laparoscopic Cholecystectomy (14–16 September 1992) concluded that laparoscopic cholecystectomy provides a safe and effective treatment and had become the procedure of choice for most patients with symptomatic gallstones. The institutional consensus settled the claim and helped launch the broader minimally invasive surgery era.',
+        source: {
+          externalId: 'src:nih-consensus-gallstones-laparoscopic-cholecystectomy-jama-1993',
+          name: 'NIH Consensus Development Panel. Gallstones and Laparoscopic Cholecystectomy. NIH Consensus Conference. JAMA. 1993;269(8):1018-1024.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8480870/',
+          publishedAt: '1993-02-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Eastcott — carotid endarterectomy for stroke prevention 1954 ─────────────
+  {
+    externalId: 'trajectory:eastcott-carotid-endarterectomy-stroke-prevention-1954',
+    text: 'Henry Eastcott, George Pickering, and Charles Rob reported in The Lancet on 13 November 1954 the first successful reconstruction of a stenosed internal carotid artery in a patient with recurrent transient hemiplegic attacks, establishing surgery on the carotid bifurcation as a means of preventing stroke.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1954-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-11-13',
+        datePrecision: 'DAY',
+        reason: 'Eastcott, Pickering, and Rob described resecting and re-anastomosing the diseased carotid bifurcation in a woman with recurrent transient attacks of hemiplegia, who then became symptom-free. The case recorded in the literature the claim that surgically removing carotid atheroma could prevent recurrent cerebral ischemia and stroke, founding the operation of carotid endarterectomy.',
+        source: {
+          externalId: 'src:eastcott-pickering-rob-carotid-lancet-1954',
+          name: 'Eastcott HHG, Pickering GW, Rob CG. Reconstruction of internal carotid artery in a patient with intermittent attacks of hemiplegia. Lancet. 1954;267(6846):994-996.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13213095/',
+          publishedAt: '1954-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-08-15',
+        datePrecision: 'DAY',
+        reason: 'Carotid endarterectomy had spread for decades without randomized proof of benefit, and its value was openly doubted after the failure of EC-IC bypass (1985) and reports of inappropriate overuse. The NASCET trial, reported in NEJM on 15 August 1991, was stopped early after showing that endarterectomy markedly reduced ipsilateral stroke in symptomatic patients with 70–99% stenosis, settling the claim for that defined population on rigorous trial evidence.',
+        source: {
+          externalId: 'src:nascet-symptomatic-carotid-endarterectomy-nejm-1991',
+          name: 'North American Symptomatic Carotid Endarterectomy Trial Collaborators. Beneficial effect of carotid endarterectomy in symptomatic patients with high-grade carotid stenosis. N Engl J Med. 1991;325(7):445-453.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1852179/',
+          publishedAt: '1991-08-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Smithwick — splanchnicectomy for hypertension 1953 (reversed) ────────────
+  {
+    externalId: 'trajectory:smithwick-splanchnicectomy-hypertension-1953',
+    text: 'Reginald Smithwick and John Thompson reported in JAMA in 1953 that thoracolumbar splanchnicectomy (surgical sympathectomy) roughly halved mortality in patients with severe essential hypertension, establishing radical sympathetic-nerve surgery as a treatment for high blood pressure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1953-08-22',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-08-22',
+        datePrecision: 'MONTH',
+        reason: 'Smithwick and Thompson reported outcomes in 1,266 splanchnicectomy cases, finding that the operation approximately halved mortality compared with conventionally managed severe hypertensives. In an era before effective oral antihypertensives, this large series cemented radical sympathetic surgery as an accepted, mainstream treatment for severe and malignant hypertension.',
+        source: {
+          externalId: 'src:smithwick-thompson-splanchnicectomy-jama-1953',
+          name: 'Smithwick RH, Thompson JE. Splanchnicectomy for essential hypertension; results in 1,266 cases. J Am Med Assoc. 1953;152(16):1501-1504.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13061307/',
+          publishedAt: '1953-08-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'During the 1960s radical surgical sympathectomy and splanchnicectomy were abandoned, both because they caused severe morbidity (postural hypotension, syncope, sexual dysfunction, mobility disturbance) and because effective, far less morbid oral antihypertensive drugs — thiazides, ganglion blockers, and later agents, whose mortality benefit was confirmed by the VA Cooperative trials — became the standard of care. A morbid operation was thus reversed out of practice by pharmacology.',
+        source: {
+          externalId: 'src:castro-torres-katholi-renal-denervation-ijh-2013',
+          name: 'Castro Torres Y, Katholi RE. Renal Denervation for Treating Resistant Hypertension: Current Evidence and Future Insights from a Global Perspective. Int J Hypertens. 2013;2013:783163.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3863475/',
+          publishedAt: '2013-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
