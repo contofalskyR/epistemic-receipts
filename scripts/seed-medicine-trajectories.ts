@@ -15597,6 +15597,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS ERA (2010–2021)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Reformulated OxyContin abuse-deterrent claim — 2010 ────────────────────
+  {
+    externalId: 'trajectory:reformulated-oxycontin-abuse-deterrent-2010',
+    text: 'Purdue Pharma introduced a reformulated, crush-resistant \'abuse-deterrent\' OxyContin to the U.S. market on August 9, 2010, on the premise that the new physical-chemical barrier formulation would meaningfully reduce opioid abuse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2010-08-09',
+        datePrecision: 'DAY',
+        reason: 'Purdue replaced the original controlled-release OxyContin with a reformulated version (NDA 022272) engineered to resist crushing and dissolving, introducing it to the market on August 9, 2010 with the premise that abuse via snorting and injection would fall. The abuse-deterrence premise entered the record as a marketed pharmaceutical claim, later institutionally endorsed when the FDA approved abuse-deterrent labeling in April 2013.',
+        source: {
+          externalId: 'src:cicero-oxycontin-adf-nejm-2012',
+          name: 'Cicero TJ, Ellis MS, Surratt HL. Effect of abuse-deterrent formulation of OxyContin. N Engl J Med. 2012 Jul 12;367(2):187-189.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMc1204141',
+          publishedAt: '2012-07-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-12',
+        datePrecision: 'DAY',
+        reason: 'Cicero, Ellis, and Surratt reported in NEJM that after the reformulation the selection of OxyContin as a primary drug of abuse fell from 35.6% to 12.8% among assessed opioid users, but heroin use nearly doubled — direct evidence that abuse-deterrent reformulation displaced users to other opioids rather than reducing opioid abuse overall. The claim that the reformulation reduced opioid harm was thrown into question.',
+        source: {
+          externalId: 'src:cicero-oxycontin-adf-nejm-2012',
+          name: 'Cicero TJ, Ellis MS, Surratt HL. Effect of abuse-deterrent formulation of OxyContin. N Engl J Med. 2012 Jul 12;367(2):187-189.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMc1204141',
+          publishedAt: '2012-07-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Alpert, Powell, and Pacula published causal econometric evidence in the American Economic Journal: Economic Policy that states with the highest pre-2010 OxyContin misuse experienced the largest increases in heroin deaths after the reformulation, concluding the reformulation was a major driver of the heroin epidemic with little net reduction in overall opioid deaths. This deepened the contestation: even granting that direct OxyContin abuse fell, the FDA\'s April 2013 abuse-deterrent labeling endorsement diverged from accumulating evidence that the reformulation produced net public-health harm.',
+        source: {
+          externalId: 'src:alpert-powell-pacula-adf-aej-2018',
+          name: 'Alpert A, Powell D, Pacula RL. Supply-Side Drug Policy in the Presence of Substitutes: Evidence from the Introduction of Abuse-Deterrent Opioids. American Economic Journal: Economic Policy. 2018;10(4):1-35.',
+          url: 'https://www.aeaweb.org/articles?id=10.1257/pol.20170082',
+          publishedAt: '2018-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA Zohydro ER approval over advisory committee — 2013 ──────────────────
+  {
+    externalId: 'trajectory:fda-zohydro-er-approval-over-advisory-committee-2013',
+    text: 'The FDA approved Zogenix\'s Zohydro ER (single-entity extended-release hydrocodone, NDA 202880) on October 25, 2013 — the first pure hydrocodone product and first ER/LA opioid without an abuse-deterrent formulation — over its own advisory committee\'s 11-to-2 recommendation against approval.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-10-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s Center for Drug Evaluation and Research approved NDA 202880 for Zohydro ER, determining its benefits outweighed its risks for around-the-clock long-term pain, despite a December 2012 advisory committee vote of 11-2 against approval and despite the absence of abuse-deterrent technology. The agency institutionally ratified the drug\'s benefit-risk profile against its expert panel\'s recommendation.',
+        source: {
+          externalId: 'src:fda-zohydro-summary-review-2013',
+          name: 'FDA Center for Drug Evaluation and Research. Summary Review, NDA 202880 (Zohydro ER, hydrocodone bitartrate extended-release capsules).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/202880orig1s000sumr.pdf',
+          publishedAt: '2013-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-12-01',
+        datePrecision: 'MONTH',
+        reason: 'A bipartisan coalition of state attorneys general — including Nevada Attorney General Catherine Cortez Masto — petitioned the FDA in December 2013 to reconsider the Zohydro ER approval, citing its potency and lack of abuse-deterrent formulation amid the opioid epidemic. The opposition escalated when Massachusetts Governor Deval Patrick declared a public health emergency and moved to ban the drug in March 2014, putting the FDA\'s benefit-risk determination into open institutional dispute.',
+        source: {
+          externalId: 'src:nv-ag-zohydro-reexamine-2013',
+          name: 'Nevada Office of the Attorney General. Attorney General Masto Asks FDA to Reexamine Approval for Zohydro ER. Press release, 2013.',
+          url: 'https://ag.nv.gov/News/PR/2013/Miscellaneous/Attorney_General_Masto_Asks_FDA_to_Reexamine_Approval_for_Zohydro_ER',
+          publishedAt: '2013-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA Opana ER market withdrawal — 2017 ───────────────────────────────────
+  {
+    externalId: 'trajectory:fda-opana-er-market-withdrawal-2017',
+    text: 'The FDA requested on June 8, 2017 that Endo Pharmaceuticals remove its reformulated Opana ER (oxymorphone hydrochloride extended-release, NDA 201655) from the U.S. market — the first time the agency moved to pull a currently marketed opioid for public-health consequences of abuse — after the reformulation shifted abuse from snorting to injection and was tied to an HIV and hepatitis C outbreak.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Endo\'s reformulated, crush-resistant Opana ER (NDA 201655) on December 9, 2011, intended by the sponsor to resist abuse by snorting and injection. The agency permitted the product to market but declined to grant abuse-deterrent labeling, finding the data did not show the reformulation could be expected to meaningfully reduce abuse — so the abuse-resistance premise entered the record already qualified.',
+        source: {
+          externalId: 'src:endo-opana-reformulation-2011',
+          name: 'Endo Pharmaceuticals. Endo Announces FDA Approval of a New Formulation of Opana ER Designed To Be Crush-Resistant. Press release, December 12, 2011.',
+          url: 'https://investor.endo.com/2011-12-12-Endo-Announces-FDA-Approval-of-a-New-Formulation-of-Opana-R-ER-Designed-To-Be-Crush-Resistant',
+          publishedAt: '2011-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-14',
+        datePrecision: 'DAY',
+        reason: 'At a joint meeting of the FDA\'s Drug Safety and Risk Management and Anesthetic and Analgesic Drug Products Advisory Committees in March 2017, independent experts voted 18-8 that the benefits of reformulated Opana ER no longer outweighed its risks. Post-marketing data showed the reformulation had shifted abuse from nasal insufflation to injection, associated with a serious HIV and hepatitis C outbreak in Scott County, Indiana, directly contesting the product\'s continued benefit-risk justification.',
+        source: {
+          externalId: 'src:fda-opana-oxymorphone-info-2017',
+          name: 'FDA. Oxymorphone (marketed as Opana ER) Information.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/oxymorphone-marketed-opana-er-information',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA formally requested on June 8, 2017 that Endo remove reformulated Opana ER from the market — the agency\'s first-ever request to withdraw a currently marketed opioid because of the public-health consequences of its abuse. Endo announced voluntary withdrawal on July 6, 2017, and the FDA formally withdrew approval of NDA 201655 in the Federal Register on December 23, 2020, completing the reversal of the product\'s approval.',
+        source: {
+          externalId: 'src:fr-opana-er-nda-withdrawal-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg. 85(247), Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DSM-5 opioid use disorder reclassification — 2013 ───────────────────────
+  {
+    externalId: 'trajectory:dsm5-opioid-use-disorder-reclassification-2013',
+    text: 'The American Psychiatric Association published DSM-5 on May 18, 2013, replacing the separate DSM-IV diagnoses of opioid abuse and opioid dependence with a single \'opioid use disorder\' rated on a mild-to-severe continuum, adding craving as a criterion and dropping the legal-problems criterion.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-05-18',
+        datePrecision: 'DAY',
+        reason: 'The APA released the fifth edition of the Diagnostic and Statistical Manual of Mental Disorders at its annual meeting on May 18, 2013, merging the previously hierarchical \'abuse\' and \'dependence\' categories into one \'opioid use disorder\' diagnosed by at least two of eleven criteria across a severity gradient. The change reflected psychometric evidence that abuse and dependence criteria formed a single dimension, and deliberately removed \'dependence\' terminology to separate addiction from ordinary physiologic tolerance.',
+        source: {
+          externalId: 'src:apa-dsm5-substance-use-disorder-2013',
+          name: 'American Psychiatric Association. Substance-Related and Addictive Disorders (DSM-5 fact sheet). 2013.',
+          url: 'https://www.psychiatry.org/file%20library/psychiatrists/practice/dsm/apa_dsm-5-substance-use-disorder.pdf',
+          publishedAt: '2013-05-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-05-18',
+        datePrecision: 'DAY',
+        reason: 'The DSM-5 opioid use disorder framework was rapidly adopted as the standard nosology across U.S. clinical practice, federal surveillance (the National Survey on Drug Use and Health revised its substance-use-disorder measures to the DSM-5 model), payer coverage, and addiction-medicine guidelines, and was crosswalked to ICD coding. The single severity-graded diagnosis became the institutionally settled definition of opioid addiction, displacing the abuse/dependence dichotomy.',
+        source: {
+          externalId: 'src:apa-dsm5-substance-use-disorder-2013',
+          name: 'American Psychiatric Association. Substance-Related and Addictive Disorders (DSM-5 fact sheet). 2013.',
+          url: 'https://www.psychiatry.org/file%20library/psychiatrists/practice/dsm/apa_dsm-5-substance-use-disorder.pdf',
+          publishedAt: '2013-05-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Purdue Pharma federal guilty plea — 2020 ────────────────────────────────
+  {
+    externalId: 'trajectory:purdue-pharma-federal-guilty-plea-2020',
+    text: 'The U.S. Department of Justice announced on October 21, 2020 a global resolution under which Purdue Pharma agreed to plead guilty to three federal felonies — one count of conspiracy to defraud the United States and violate the Food, Drug, and Cosmetic Act and two counts of conspiracy to violate the federal Anti-Kickback Statute — admitting criminal conduct in its OxyContin marketing as part of an $8.3 billion resolution.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2020-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '2020-10-21',
+        datePrecision: 'DAY',
+        reason: 'The DOJ announced a global resolution of its criminal and civil investigations into Purdue Pharma on October 21, 2020, under which the company agreed to plead guilty to a three-count felony information admitting it conspired to defraud the United States and to pay illegal kickbacks while promoting OxyContin. The agreement — totaling roughly $8.3 billion in criminal fines, forfeiture, and civil liability — recorded a federal criminal admission far broader than Purdue\'s 2007 misdemeanor misbranding plea.',
+        source: {
+          externalId: 'src:doj-purdue-pleads-guilty-2020',
+          name: 'U.S. Department of Justice. Opioid Manufacturer Purdue Pharma Pleads Guilty to Fraud and Kickback Conspiracies. Press release, October 21, 2020.',
+          url: 'https://www.justice.gov/archives/opa/pr/opioid-manufacturer-purdue-pharma-pleads-guilty-fraud-and-kickback-conspiracies',
+          publishedAt: '2020-10-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2021-11-17',
+        datePrecision: 'DAY',
+        reason: 'Purdue Pharma formally entered its guilty plea to the three federal felonies in November 2020 and was sentenced in the U.S. District Court for the District of New Jersey on November 17, 2021, finalizing the criminal judgment for fraud and kickback conspiracies. The company\'s federal criminal liability for its OxyContin conduct became a settled judicial finding of record.',
+        source: {
+          externalId: 'src:doj-purdue-sentenced-2021',
+          name: 'U.S. Department of Justice. Opioid Manufacturer Purdue Pharma Sentenced for Fraud and Kickback Conspiracies. Press release, November 17, 2021.',
+          url: 'https://www.justice.gov/opa/pr/opioid-manufacturer-purdue-pharma-sentenced-fraud-and-kickback-conspiracies',
+          publishedAt: '2021-11-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
