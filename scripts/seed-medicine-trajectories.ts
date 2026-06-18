@@ -3008,6 +3008,239 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SHAM-CONTROLLED SURGERY ERA (2002–2017)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Arthroscopic knee surgery for osteoarthritis reversed — 2002 ─────────────
+  {
+    externalId: 'trajectory:arthroscopic-knee-surgery-osteoarthritis-reversal-2002',
+    text: 'Arthroscopic lavage and débridement relieve pain and improve function in osteoarthritis of the knee — a widely practiced procedure shown by a sham-controlled trial in 2002 to work no better than placebo surgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1980s and 1990s arthroscopic lavage and débridement became one of the most commonly performed orthopedic operations for knee osteoarthritis, supported by uncontrolled case series reporting symptomatic relief; hundreds of thousands of these procedures were done annually in the United States on the belief that flushing debris and smoothing cartilage reduced pain.',
+        source: {
+          externalId: 'src:moseley-arthroscopy-pilot-am-j-knee-surg-1996',
+          name: 'Moseley JB, Wray NP, Kuykendall D, Willis K, Landon G. Arthroscopic treatment of osteoarthritis of the knee: a prospective, randomized, placebo-controlled trial. Results of a pilot study. Am J Sports Med. 1996;24(1):28-34.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8638750/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-11',
+        datePrecision: 'DAY',
+        reason: 'Moseley and colleagues randomized 180 patients to arthroscopic débridement, arthroscopic lavage, or a placebo operation (skin incisions with a simulated procedure), with patients and outcome assessors blinded. Over 24 months neither surgical group reported less pain or better function than the placebo group, demonstrating that the apparent benefit was a placebo response and providing the first rigorous evidence that the operation was ineffective for knee osteoarthritis.',
+        source: {
+          externalId: 'src:moseley-arthroscopy-sham-nejm-2002',
+          name: 'Moseley JB, O\'Malley K, Petersen NJ, Menke TJ, Brody BA, et al. A controlled trial of arthroscopic surgery for osteoarthritis of the knee. N Engl J Med. 2002;347(2):81-88.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12110735/',
+          publishedAt: '2002-07-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-09-11',
+        datePrecision: 'DAY',
+        reason: 'Kirkley and colleagues independently randomized patients with moderate-to-severe knee osteoarthritis to arthroscopic surgery plus optimized medical and physical therapy versus optimized therapy alone, finding no additional benefit from surgery at two years. The confirmatory trial entrenched the reversal in the literature and underpinned subsequent guideline recommendations against the procedure for osteoarthritis.',
+        source: {
+          externalId: 'src:kirkley-arthroscopy-nejm-2008',
+          name: 'Kirkley A, Birmingham TB, Litchfield RB, Giffin JR, Willits KR, et al. A randomized trial of arthroscopic surgery for osteoarthritis of the knee. N Engl J Med. 2008;359(11):1097-1107.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18784099/',
+          publishedAt: '2008-09-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vertebroplasty sham-controlled trials — 2009 ────────────────────────────
+  {
+    externalId: 'trajectory:vertebroplasty-osteoporotic-fracture-sham-trials-2009',
+    text: 'Percutaneous vertebroplasty — injecting bone cement into fractured vertebrae — relieves pain from osteoporotic vertebral compression fractures, a claim contradicted by two sham-controlled trials published together in August 2009.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-01',
+        datePrecision: 'MONTH',
+        reason: 'After the technique\'s introduction in France in 1987, US uncontrolled case series in the late 1990s reported rapid and dramatic pain relief from injecting polymethylmethacrylate cement into osteoporotic vertebral compression fractures. Reports such as Jensen and colleagues\' 1997 series drove rapid adoption of vertebroplasty as a standard interventional treatment on the basis of before-after observational data.',
+        source: {
+          externalId: 'src:jensen-vertebroplasty-ajnr-1997',
+          name: 'Jensen ME, Evans AJ, Mathis JM, Kallmes DF, Cloft HJ, Dion JE. Percutaneous polymethylmethacrylate vertebroplasty in the treatment of osteoporotic vertebral body compression fractures: technical aspects. AJNR Am J Neuroradiol. 1997;18(10):1897-1904.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9403451/',
+          publishedAt: '1997-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-06',
+        datePrecision: 'DAY',
+        reason: 'In the same issue of the New England Journal of Medicine, Buchbinder and colleagues and Kallmes and colleagues each reported multicenter, double-blind trials randomizing patients to vertebroplasty or a sham procedure (needle placement without cement injection). Neither trial found a significant advantage for vertebroplasty in pain or disability at any time point, indicating the observed benefit was largely a placebo effect and throwing the procedure\'s efficacy into ongoing dispute.',
+        source: {
+          externalId: 'src:buchbinder-vertebroplasty-sham-nejm-2009',
+          name: 'Buchbinder R, Osborne RH, Ebeling PR, Wark JD, Mitchell P, et al. A randomized trial of vertebroplasty for painful osteoporotic vertebral fractures. N Engl J Med. 2009;361(6):557-568.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19657121/',
+          publishedAt: '2009-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ORBITA trial — PCI for stable angina challenged — 2017 ──────────────────
+  {
+    externalId: 'trajectory:orbita-pci-stable-angina-placebo-2017',
+    text: 'Percutaneous coronary intervention (stenting) relieves angina symptoms in patients with stable coronary disease beyond the effect of medical therapy — a long-assumed benefit that the placebo-controlled ORBITA trial failed to confirm in 2017.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-09-16',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-09-16',
+        datePrecision: 'YEAR',
+        reason: 'Following Andreas Grüntzig\'s first coronary balloon angioplasty in 1977, percutaneous coronary intervention became standard for symptomatic relief of stable angina, with unblinded trials and routine practice attributing patients\' reduced angina to the mechanical opening of stenosed arteries. The symptom benefit of PCI in stable angina was widely treated as established despite the absence of placebo-controlled evidence.',
+        source: {
+          externalId: 'src:gruentzig-angioplasty-lancet-1978',
+          name: 'Grüntzig A. Transluminal dilatation of coronary-artery stenosis. Lancet. 1978;1(8058):263.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/74678/',
+          publishedAt: '1978-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-02',
+        datePrecision: 'DAY',
+        reason: 'Al-Lamee and colleagues ran ORBITA, the first blinded, placebo-controlled trial of PCI for stable angina, randomizing 200 patients on optimal medical therapy to stenting or a sham catheterization procedure. PCI did not improve exercise time significantly more than placebo, undermining the assumption that the symptomatic benefit of stenting in stable angina is mechanical rather than a placebo response and opening sustained debate over the procedure\'s indications.',
+        source: {
+          externalId: 'src:al-lamee-orbita-lancet-2018',
+          name: 'Al-Lamee R, Thompson DT, Dehbi HM, Sen S, Tang K, et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial. Lancet. 2018;391(10115):31-40.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29103656/',
+          publishedAt: '2018-01-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GLP-1 / GENE THERAPY ERA (2021–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Semaglutide (Wegovy) FDA approval for obesity — 2021 ────────────────────
+  {
+    externalId: 'trajectory:semaglutide-wegovy-obesity-approval-2021',
+    text: 'Once-weekly semaglutide 2.4 mg (Wegovy), a GLP-1 receptor agonist, produces large and sustained weight loss in adults with obesity or overweight — established by the STEP 1 trial and approved by the FDA for chronic weight management on June 4, 2021.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-02-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-02-10',
+        datePrecision: 'DAY',
+        reason: 'Wilding and colleagues published the STEP 1 trial, a 68-week randomized, double-blind, placebo-controlled study of once-weekly semaglutide 2.4 mg in 1,961 adults with overweight or obesity. Mean body-weight change was −14.9% with semaglutide versus −2.4% with placebo, a magnitude of weight loss not previously achieved with pharmacotherapy and approaching that of bariatric surgery, recording GLP-1 agonism as a major new obesity treatment.',
+        source: {
+          externalId: 'src:wilding-step1-semaglutide-nejm-2021',
+          name: 'Wilding JPH, Batterham RL, Calanna S, Davies M, Van Gaal LF, et al. Once-Weekly Semaglutide in Adults with Overweight or Obesity. N Engl J Med. 2021;384(11):989-1002.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33567185/',
+          publishedAt: '2021-02-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-06-04',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Wegovy (semaglutide 2.4 mg) injection (NDA 215256) for chronic weight management in adults with obesity or with overweight and at least one weight-related comorbidity — the first new obesity drug approved since 2014. The institutional approval converted the trial evidence into an authorized indication and launched the GLP-1 obesity-drug era that reshaped the field.',
+        source: {
+          externalId: 'src:fda-wegovy-approval-letter-2021',
+          name: 'U.S. Food and Drug Administration. Wegovy (semaglutide) injection — NDA 215256 approval letter. June 4, 2021.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2021/215256Orig1s000ltr.pdf',
+          publishedAt: '2021-06-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Casgevy — first CRISPR gene therapy FDA approval — 2023 ─────────────────
+  {
+    externalId: 'trajectory:casgevy-crispr-gene-therapy-sickle-cell-2023',
+    text: 'Ex vivo CRISPR-Cas9 editing of the BCL11A enhancer in a patient\'s own hematopoietic stem cells raises fetal hemoglobin and eliminates vaso-occlusive crises in sickle cell disease — first reported in 2021 and approved by the FDA as Casgevy, the first CRISPR-based therapy, on December 8, 2023.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-12-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-12-05',
+        datePrecision: 'DAY',
+        reason: 'Frangoul and colleagues reported the first two patients — one with transfusion-dependent β-thalassemia and one with sickle cell disease — treated with CTX001 (later exagamglogene autotemcel), autologous CD34+ cells edited with CRISPR-Cas9 to disrupt the BCL11A erythroid enhancer and reactivate fetal hemoglobin. Both achieved transfusion independence and elimination of vaso-occlusive episodes, recording the first clinical proof that CRISPR genome editing could treat a genetic disease.',
+        source: {
+          externalId: 'src:frangoul-crispr-sickle-thalassemia-nejm-2021',
+          name: 'Frangoul H, Altshuler D, Cappellini MD, Chen YS, Domm J, et al. CRISPR-Cas9 Gene Editing for Sickle Cell Disease and β-Thalassemia. N Engl J Med. 2021;384(3):252-260.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33283989/',
+          publishedAt: '2020-12-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-12-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Casgevy (exagamglogene autotemcel) for sickle cell disease in patients 12 and older with recurrent vaso-occlusive crises — the first FDA-approved therapy using CRISPR/Cas9 genome editing — alongside the gene-addition therapy Lyfgenia. In the supporting trial, 29 of 44 evaluable patients (93.5%) were free of severe vaso-occlusive crises for at least 12 consecutive months, settling CRISPR editing as a regulator-sanctioned medical treatment.',
+        source: {
+          externalId: 'src:fda-casgevy-sickle-cell-approval-2023',
+          name: 'U.S. Food and Drug Administration. FDA Approves First Gene Therapies to Treat Patients with Sickle Cell Disease. December 8, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease',
+          publishedAt: '2023-12-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Reye syndrome — aspirin in children reversed by Surgeon General 1982 ─────
   {
     externalId: 'trajectory:reye-syndrome-aspirin-children-surgeon-general-1982',
