@@ -1075,6 +1075,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR EVIDENCE ERA (1967–1994)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 22. VA Hypertension Trial — first RCT proving BP treatment prevents harm ──
+  {
+    externalId: 'trajectory:va-hypertension-treatment-benefit-1967',
+    text: 'In 1967 the Veterans Administration Cooperative Study Group on Antihypertensive Agents reported that drug treatment of severe hypertension (diastolic 115–129 mm Hg) sharply reduced morbid cardiovascular events, the first randomized proof that lowering blood pressure prevents harm.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-12-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-12-11',
+        datePrecision: 'DAY',
+        reason: 'The VA Cooperative Study Group published the first randomized controlled trial showing that antihypertensive drug therapy in men with severe diastolic hypertension (115–129 mm Hg) markedly reduced strokes, heart failure, and death versus placebo — so decisively that the severe-hypertension arm was halted early. This put the claim that treating high blood pressure prevents cardiovascular events on the scientific record for the first time.',
+        source: {
+          externalId: 'src:va-coop-hypertension-severe-jama-1967',
+          name: 'Veterans Administration Cooperative Study Group on Antihypertensive Agents. Effects of treatment on morbidity in hypertension. Results in patients with diastolic blood pressures averaging 115 through 129 mm Hg. JAMA. 1967;202(11):1028-1034.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4862069/',
+          publishedAt: '1967-12-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-08-17',
+        datePrecision: 'DAY',
+        reason: 'The VA Cooperative Study Group\'s second report extended the benefit to the far larger population with moderate hypertension (diastolic 90–114 mm Hg), showing treatment roughly halved morbid events, with the largest effect on stroke. This generalized the treatment benefit from rare severe cases to common moderate hypertension, settling antihypertensive therapy as standard preventive care and launching routine blood-pressure screening.',
+        source: {
+          externalId: 'src:va-coop-hypertension-moderate-jama-1970',
+          name: 'Veterans Administration Cooperative Study Group on Antihypertensive Agents. Effects of treatment on morbidity in hypertension. II. Results in patients with diastolic blood pressure averaging 90 through 114 mm Hg. JAMA. 1970;213(7):1143-1152.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/356138',
+          publishedAt: '1970-08-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 23. BHAT propranolol post-MI — beta-blocker mortality benefit 1982 ────────
+  {
+    externalId: 'trajectory:bhat-propranolol-post-mi-1982',
+    text: 'On 26 March 1982 the Beta-Blocker Heart Attack Trial (BHAT) reported that propranolol given to survivors of acute myocardial infarction reduced total mortality (7.2% vs 9.8% on placebo), establishing beta-blockade as standard secondary prevention after heart attack.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-03-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-03-26',
+        datePrecision: 'DAY',
+        reason: 'The NHLBI-sponsored multicenter, randomized, double-blind, placebo-controlled BHAT was stopped early when propranolol was found to significantly lower total mortality, cardiovascular mortality, and sudden cardiac death in post-infarction patients over an average 24-month follow-up. The result converted long-term beta-blockade after MI into evidence-based standard therapy, a status it retains.',
+        source: {
+          externalId: 'src:bhat-propranolol-jama-1982',
+          name: 'Beta-Blocker Heart Attack Trial Research Group. A randomized trial of propranolol in patients with acute myocardial infarction. I. Mortality results. JAMA. 1982;247(12):1707-1714.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7038157/',
+          publishedAt: '1982-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 24. ISIS-2 aspirin in acute MI — settled 1988 ────────────────────────────
+  {
+    externalId: 'trajectory:isis2-aspirin-acute-mi-1988',
+    text: 'On 13 August 1988 the ISIS-2 trial reported that oral aspirin given during suspected acute myocardial infarction reduced vascular mortality by about 23% alone and 42% combined with streptokinase, establishing aspirin as standard acute treatment for heart attack.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-08-13',
+        datePrecision: 'DAY',
+        reason: 'The ISIS-2 Collaborative Group\'s randomized trial in 17,187 patients showed that one month of low-dose aspirin during suspected acute MI produced a highly significant reduction in vascular death, additive to streptokinase, with a combined 42% odds reduction. The large, unambiguous result immediately settled aspirin as a standard, inexpensive component of acute MI care worldwide.',
+        source: {
+          externalId: 'src:isis2-aspirin-streptokinase-lancet-1988',
+          name: 'ISIS-2 (Second International Study of Infarct Survival) Collaborative Group. Randomised trial of intravenous streptokinase, oral aspirin, both, or neither among 17,187 cases of suspected acute myocardial infarction: ISIS-2. Lancet. 1988;2(8607):349-360.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2899772/',
+          publishedAt: '1988-08-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 25. CAST antiarrhythmic reversal — surrogate endpoint lethal 1989 ─────────
+  {
+    externalId: 'trajectory:cast-antiarrhythmic-suppression-reversal-1989',
+    text: 'The accepted hypothesis that suppressing asymptomatic ventricular ectopy after myocardial infarction with class IC antiarrhythmic drugs (encainide, flecainide) would reduce sudden death was overturned on 10 August 1989 when the CAST trial found these drugs more than doubled mortality versus placebo.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1985-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-08-10',
+        datePrecision: 'DAY',
+        reason: 'By the mid-1980s, suppressing post-MI ventricular premature beats with class IC antiarrhythmics (encainide, flecainide) was widely practiced on the well-accepted theory that fewer ectopic beats would mean fewer fatal arrhythmias. The CAST preliminary report found total mortality of 7.7% on active drug versus 3.0% on placebo (relative risk 2.5), forcing early termination of those arms and reversing the suppression hypothesis — a landmark demonstration that a plausible surrogate-endpoint rationale can be lethal.',
+        source: {
+          externalId: 'src:cast-encainide-flecainide-nejm-1989',
+          name: 'Cardiac Arrhythmia Suppression Trial (CAST) Investigators. Preliminary report: effect of encainide and flecainide on mortality in a randomized trial of arrhythmia suppression after myocardial infarction. N Engl J Med. 1989;321(6):406-412.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2473403/',
+          publishedAt: '1989-08-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 26. Lovastatin / 4S — first statin approval → survival benefit 1994 ───────
+  {
+    externalId: 'trajectory:lovastatin-first-statin-approval-1987',
+    text: 'On 31 August 1987 the U.S. FDA approved lovastatin (Mevacor, Merck, NDA 19-643), the first HMG-CoA reductase inhibitor (statin), establishing that this drug class safely and effectively lowers blood cholesterol.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1987-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-08-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved lovastatin as the first statin, accepting trial evidence that HMG-CoA reductase inhibition lowers LDL cholesterol. This established the drug class as a safe, effective lipid-lowering therapy on the regulatory record, but a hard-outcome benefit (reduced mortality) had not yet been demonstrated in a randomized endpoint trial.',
+        source: {
+          externalId: 'src:fda-mevacor-lovastatin-approval-1987',
+          name: 'FDA. Determination That MEVACOR (Lovastatin) Tablets, 20 mg and 40 mg, Were Not Withdrawn From Sale for Reasons of Safety or Effectiveness (documenting original approval under NDA 19-643 on 31 Aug 1987). Federal Register, 21 Jan 2016.',
+          url: 'https://www.federalregister.gov/documents/2016/01/21/2016-01096/determination-that-mevacor-lovastatin-tablets-20-milligrams-and-40-milligrams-were-not-withdrawn',
+          publishedAt: '2016-01-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-11-19',
+        datePrecision: 'DAY',
+        reason: 'The Scandinavian Simvastatin Survival Study (4S), a randomized placebo-controlled trial in 4,444 coronary heart disease patients, reported a 30% relative reduction in all-cause mortality (relative risk 0.70, 95% CI 0.58–0.85, p=0.0003) with a statin. This converted the statin class from a cholesterol-lowering agent of presumed benefit into a therapy with proven survival benefit, settling statins as standard secondary-prevention treatment.',
+        source: {
+          externalId: 'src:4s-simvastatin-lancet-1994',
+          name: 'Scandinavian Simvastatin Survival Study Group. Randomised trial of cholesterol lowering in 4444 patients with coronary heart disease: the Scandinavian Simvastatin Survival Study (4S). Lancet. 1994;344(8934):1383-1389.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7968073/',
+          publishedAt: '1994-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
