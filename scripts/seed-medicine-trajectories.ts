@@ -10023,6 +10023,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID POLICY & PALLIATIVE CARE ERA (1970–2007)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Controlled Substances Act — drug scheduling — 1970 ──────────────────────
+  {
+    externalId: 'trajectory:controlled-substances-act-drug-scheduling-1970',
+    text: 'The U.S. Controlled Substances Act, enacted October 27, 1970 as Title II of the Comprehensive Drug Abuse Prevention and Control Act (Pub. L. 91-513), reclassified narcotics into five schedules by abuse potential, accepted medical use, and safety — placing heroin in Schedule I (no accepted medical use) and medical opioids such as morphine and oxycodone in Schedule II.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1970-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-10-27',
+        datePrecision: 'DAY',
+        reason: 'President Nixon signed the Comprehensive Drug Abuse Prevention and Control Act of 1970 on October 27, 1970; its Title II (the Controlled Substances Act) replaced the tax-based Harrison Narcotics regime with a five-schedule framework codified at 21 U.S.C. § 812, sorting drugs by abuse potential, accepted medical use, and safety. Heroin was placed in Schedule I (deemed to have no accepted medical use), while morphine, oxycodone, and other therapeutic opioids were placed in Schedule II. The Act institutionally fixed federal judgments about the medical legitimacy and danger of each opioid, the regulatory baseline that all later opioid-prescribing and addiction-treatment law was built upon.',
+        source: {
+          externalId: 'src:controlled-substances-act-21usc812',
+          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970, Pub. L. 91-513, 84 Stat. 1236 (Oct. 27, 1970); Controlled Substances Act, 21 U.S.C. § 812 (Schedules of controlled substances).',
+          url: 'https://uscode.house.gov/view.xhtml?req=(title:21%20section:812%20edition:prelim)',
+          publishedAt: '1970-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Naloxone (Narcan) — opioid antagonist approval — 1971 ───────────────────
+  {
+    externalId: 'trajectory:naloxone-narcan-opioid-antagonist-approval-1971',
+    text: 'The FDA approved naloxone (Narcan injection, NDA 016636) in 1971 as a pure opioid antagonist for the complete or partial reversal of opioid-induced respiratory depression and the treatment of suspected opioid overdose — establishing the first specific opioid antidote without agonist activity of its own.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1971-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Naloxone, synthesized in the early 1960s by Jack Fishman and Mozes Lewenstein, was approved by the FDA in 1971 (Narcan injection, NDA 016636) for intravenous, intramuscular, and subcutaneous use to reverse opioid depression and treat suspected opioid overdose. Unlike the earlier mixed agonist-antagonist nalorphine, naloxone is a pure antagonist with no opioid effect of its own, making it a clean and reliable antidote. FDA approval established naloxone as the standard pharmacologic reversal agent for opioid toxicity, the foundation for every later overdose-rescue formulation.',
+        source: {
+          externalId: 'src:naloxone-fda-1971-approval',
+          name: 'Harm Reduction Therapeutics. Naloxone (history) — naloxone first approved by the FDA in 1971 for emergency treatment of known or suspected opioid overdose; corroborated by FDA review NDA 016636 (Narcan).',
+          url: 'https://www.harmreductiontherapeutics.org/naloxone/',
+          publishedAt: '1971-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Twycross — oral morphine for terminal cancer pain — 1977 ────────────────
+  {
+    externalId: 'trajectory:twycross-oral-morphine-terminal-cancer-1977',
+    text: 'Robert Twycross reported in the journal Pain in 1977, from a controlled trial of 699 terminal-cancer patients, that oral morphine and oral diamorphine (heroin) have essentially identical analgesic actions and side effects once dose-adjusted (diamorphine being about 1.5 times more potent) — establishing regularly dosed oral morphine, not diamorphine or the Brompton cocktail, as the strong analgesic of choice for terminal cancer pain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Twycross published a controlled trial in which 699 terminal-cancer patients received regular oral diamorphine or morphine, with 146 crossing over after about two weeks at a 1.5:1 potency ratio. He found additional-medication needs, survival, pain control, and side effects closely similar between the two drugs, concluding that oral morphine could fully replace diamorphine. The paper entered the palliative-care literature as the evidence dissolving the long-standing British belief that diamorphine was uniquely effective for the dying, and it underpinned the hospice movement\'s shift to regular oral morphine.',
+        source: {
+          externalId: 'src:twycross-diamorphine-morphine-pain-1977',
+          name: 'Twycross RG. Choice of strong analgesic in terminal cancer: diamorphine or morphine? Pain. 1977 Apr;3(2):93-104.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/69290/',
+          publishedAt: '1977-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-10-17',
+        datePrecision: 'DAY',
+        reason: 'The Cochrane systematic review \'Oral morphine for cancer pain\' (Wiffen & McQuay, 2007) aggregated 54 studies and confirmed that oral morphine is an effective analgesic for cancer pain with a well-characterized, manageable side-effect profile, formalizing the expert-literature consensus. Combined with oral morphine\'s incorporation into the WHO analgesic ladder, the systematic-review evidence settled regularly dosed oral morphine as the reference strong opioid for cancer pain worldwide.',
+        source: {
+          externalId: 'src:wiffen-oral-morphine-cochrane-2007',
+          name: 'Wiffen PJ, McQuay HJ. Oral morphine for cancer pain. Cochrane Database of Systematic Reviews. 2007;(4):CD003868.',
+          url: 'https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003868.pub2/full',
+          publishedAt: '2007-10-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO analgesic ladder — cancer pain — 1986 ───────────────────────────────
+  {
+    externalId: 'trajectory:who-analgesic-ladder-cancer-pain-1986',
+    text: 'The World Health Organization published the three-step analgesic ladder in its 1986 monograph \'Cancer Pain Relief,\' establishing a stepwise protocol — non-opioids, then weak opioids, then strong opioids such as morphine — as the global standard method for cancer pain management.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1986-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following a 1982 WHO expert consultation, the WHO published \'Cancer Pain Relief\' in 1986, setting out the three-step analgesic ladder that matched analgesic potency to pain intensity and explicitly endorsed strong oral opioids for severe cancer pain. The small monograph, later translated into more than 20 languages, recorded a new global premise: that most cancer pain could be controlled with inexpensive, orally administered, stepwise pharmacotherapy.',
+        source: {
+          externalId: 'src:who-cancer-pain-relief-1986',
+          name: 'World Health Organization. Cancer Pain Relief. Geneva: WHO; 1986 (three-step analgesic ladder), as documented in Anekar AA, Cascella M. WHO Analgesic Ladder. StatPearls.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK554435/',
+          publishedAt: '1986-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Validation studies through the late 1980s and 1990s reported that the WHO ladder achieved adequate pain relief in roughly 70-90% of cancer patients, and WHO issued an expanded second edition in 1996; national cancer-pain guidelines worldwide adopted the ladder as their organizing framework. Institutional endorsement and reproduced effectiveness settled the ladder as the established standard of cancer pain care, even as its later extension to chronic non-cancer pain became contested.',
+        source: {
+          externalId: 'src:who-ladder-effectiveness-review-pmc4965221',
+          name: 'Integrative review of the effectiveness of the WHO cancer pain relief guidelines (documenting 70-90% adequate relief and global adoption). PMC4965221.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4965221/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
