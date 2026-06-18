@@ -6489,6 +6489,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENE THERAPY & RARE DISEASE ERA (1995–2007)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1. Jesse Gelsinger gene-therapy death — 1999 ───────────────────────────
+  {
+    externalId: 'trajectory:gelsinger-otc-gene-therapy-death-1999',
+    text: 'On 17 September 1999, 18-year-old Jesse Gelsinger died of a fatal systemic inflammatory response 98 hours after receiving an adenoviral vector carrying the ornithine transcarbamylase (OTC) gene at the University of Pennsylvania, the first death directly attributed to a gene-therapy vector.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-09-17',
+        datePrecision: 'DAY',
+        reason: 'Jesse Gelsinger, a patient with partial OTC deficiency enrolled in a University of Pennsylvania phase I gene-therapy study, died 98 hours after hepatic-artery infusion of a high-dose adenovirus type 5 vector. The death was reported to the FDA and NIH, triggering federal investigation that halted the Penn Institute for Human Gene Therapy\'s trials and exposed undisclosed adverse events and conflicts of interest. It marked the first recorded human death caused directly by a gene-therapy vector.',
+        source: {
+          externalId: 'src:raper-gelsinger-otc-2003',
+          name: 'Raper SE, Chirmule N, Lee FS, Wivel NA, Bagg A, Gao GP, Wilson JM, Batshaw ML. Fatal systemic inflammatory response syndrome in an ornithine transcarbamylase deficient patient following adenoviral gene transfer. Mol Genet Metab. 2003;80(1-2):148-158.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14567964/',
+          publishedAt: '2003-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Raper and colleagues published the detailed clinical and pathophysiological analysis of Gelsinger\'s death, establishing that a dose-dependent innate immune (systemic inflammatory) response to the adenoviral vector, not the transgene, caused disseminated intravascular coagulation and multi-organ failure. The peer-reviewed account settled the causal mechanism and reframed adenoviral vector immunotoxicity as a central safety constraint for the gene-therapy field.',
+        source: {
+          externalId: 'src:raper-gelsinger-otc-2003-analysis',
+          name: 'Raper SE, et al. Fatal systemic inflammatory response syndrome in an ornithine transcarbamylase deficient patient following adenoviral gene transfer. Mol Genet Metab. 2003;80(1-2):148-158.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/S1096719203001690',
+          publishedAt: '2003-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 2. Riluzole — first ALS drug approval — 1995 ──────────────────────────
+  {
+    externalId: 'trajectory:riluzole-first-als-drug-approval-1995',
+    text: 'On 12 December 1995 the U.S. FDA approved riluzole (Rilutek, NDA 20-599) for amyotrophic lateral sclerosis, the first drug shown to prolong survival in ALS and the first disease-modifying therapy approved for the orphan disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1994-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-03-03',
+        datePrecision: 'DAY',
+        reason: 'Bensimon, Lacomblez and Meininger published a randomized, double-blind, placebo-controlled trial in 155 ALS patients showing that riluzole, a glutamate-release inhibitor, lengthened survival (time to death or tracheostomy) versus placebo. This was the first controlled evidence that any drug could alter the course of ALS, recording a candidate disease-modifying effect for a previously untreatable fatal motor neuron disease.',
+        source: {
+          externalId: 'src:bensimon-riluzole-als-nejm-1994',
+          name: 'Bensimon G, Lacomblez L, Meininger V. A controlled trial of riluzole in amyotrophic lateral sclerosis. ALS/Riluzole Study Group. N Engl J Med. 1994;330(9):585-591.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8302340/',
+          publishedAt: '1994-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved riluzole as an orphan drug for ALS on the basis of two controlled trials in which time to tracheostomy or death was longer with riluzole than placebo. The approval established riluzole as the regulatory standard of care and the first survival-prolonging ALS therapy, a status it retained for over two decades despite the survival benefit being modest (a few months).',
+        source: {
+          externalId: 'src:fda-rilutek-riluzole-nda-20599',
+          name: 'FDA. Rilutek (riluzole) — Drugs@FDA, NDA 020599 (original approval 12 Dec 1995).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2009/020599Orig1s013.pdf',
+          publishedAt: '1995-12-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 3. Eculizumab (Soliris) — first PNH therapy — 2007 ────────────────────
+  {
+    externalId: 'trajectory:eculizumab-soliris-first-pnh-therapy-2007',
+    text: 'On 16 March 2007 the U.S. FDA granted accelerated approval to eculizumab (Soliris, BLA 125166), an anti-C5 complement inhibitor, as the first therapy for paroxysmal nocturnal hemoglobinuria (PNH), establishing terminal complement blockade as effective treatment for the orphan hemolytic disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-09-21',
+        datePrecision: 'DAY',
+        reason: 'The TRIUMPH trial (Hillmen et al.) randomized 87 transfusion-dependent PNH patients to eculizumab or placebo for 26 weeks; hemoglobin stabilization without transfusion was achieved in 49% on eculizumab versus none on placebo, with reduced hemolysis. This provided the first controlled evidence that monoclonal blockade of complement protein C5 could control intravascular hemolysis in PNH.',
+        source: {
+          externalId: 'src:hillmen-triumph-eculizumab-nejm-2006',
+          name: 'Hillmen P, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233-1243.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16990386/',
+          publishedAt: '2006-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted Soliris accelerated orphan-drug approval to reduce hemolysis in PNH, the first approved therapy for the disease and the first terminal-complement inhibitor. The approval settled complement C5 blockade as the standard of care for PNH and inaugurated the complement-inhibitor drug class; Soliris later became emblematic of ultra-high orphan-drug pricing.',
+        source: {
+          externalId: 'src:fda-soliris-eculizumab-label-2007',
+          name: 'FDA. Soliris (eculizumab) prescribing information, BLA 125166 (approved 16 Mar 2007).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/125166lbl.pdf',
+          publishedAt: '2007-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 4. Alglucosidase alfa (Myozyme) — first Pompe ERT — 2006 ──────────────
+  {
+    externalId: 'trajectory:alglucosidase-alfa-myozyme-first-pompe-ert-2006',
+    text: 'On 28 April 2006 the U.S. FDA approved alglucosidase alfa (Myozyme, Genzyme, BLA 125141), recombinant human acid alpha-glucosidase, as the first enzyme replacement therapy for Pompe disease (GAA deficiency).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-04-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-04-28',
+        datePrecision: 'DAY',
+        reason: 'Pivotal trial data in infantile-onset Pompe disease showed that recombinant acid alpha-glucosidase prolonged ventilator-free survival in a uniformly fatal disorder, supporting Myozyme as the first disease-specific treatment for Pompe disease. The clinical evidence recorded enzyme replacement as effective against the underlying glycogen-storage defect.',
+        source: {
+          externalId: 'src:myozyme-alglucosidase-history',
+          name: 'Drugs.com. Myozyme (alglucosidase alfa) FDA Approval History.',
+          url: 'https://www.drugs.com/history/myozyme.html',
+          publishedAt: '2006-04-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Myozyme as the first treatment for Pompe disease, an orphan lysosomal storage disorder, establishing enzyme replacement with recombinant GAA as the standard of care. The approval extended the Gaucher/Fabry/MPS enzyme-replacement paradigm to glycogen-storage disease and set the regulatory baseline against which later formulations (Lumizyme, Nexviazyme) were measured.',
+        source: {
+          externalId: 'src:fda-myozyme-alglucosidase-alfa-2006',
+          name: 'FDA / Genzyme. Myozyme (alglucosidase alfa) approval, BLA 125141 (approved 28 Apr 2006).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2006/125141lbl.pdf',
+          publishedAt: '2006-04-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 5. Laronidase (Aldurazyme) — first MPS ERT — 2003 ────────────────────
+  {
+    externalId: 'trajectory:laronidase-aldurazyme-first-mps-ert-2003',
+    text: 'On 30 April 2003 the U.S. FDA approved laronidase (Aldurazyme, BioMarin/Genzyme), recombinant human alpha-L-iduronidase, as the first enzyme replacement therapy for mucopolysaccharidosis I (Hurler, Hurler-Scheie, and Scheie syndromes).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-01-18',
+        datePrecision: 'DAY',
+        reason: 'Kakkis et al. reported that 52 weeks of recombinant human alpha-L-iduronidase in 10 MPS I patients reduced lysosomal glycosaminoglycan storage (hepatomegaly, urinary GAG) and improved clinical measures such as growth, joint mobility, and apnea. This was the first evidence that enzyme replacement could ameliorate a mucopolysaccharidosis, recording laronidase as a candidate therapy for MPS I.',
+        source: {
+          externalId: 'src:kakkis-mps1-ert-nejm-2001',
+          name: 'Kakkis ED, et al. Enzyme-replacement therapy in mucopolysaccharidosis I. N Engl J Med. 2001;344(3):182-188.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11172140/',
+          publishedAt: '2001-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-30',
+        datePrecision: 'DAY',
+        reason: 'Following a randomized placebo-controlled confirmatory trial, the FDA approved Aldurazyme as an orphan drug with priority review for MPS I, the first enzyme replacement therapy approved for any mucopolysaccharidosis. The approval settled enzyme replacement as the standard of care for MPS I and opened the path to subsequent MPS therapies (galsulfase for MPS VI, idursulfase for MPS II).',
+        source: {
+          externalId: 'src:fda-aldurazyme-laronidase-2003',
+          name: 'FDA. Aldurazyme (laronidase) approval, BLA 125058 (approved 30 Apr 2003).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/125058s246lbl.pdf',
+          publishedAt: '2003-04-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
