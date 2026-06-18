@@ -14783,6 +14783,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CONTEMPORARY CARDIOLOGY & NOVEL THERAPEUTICS ERA (2009–2021)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ACCORD-BP intensive blood pressure in diabetes — no benefit 2010 ────────
+  {
+    externalId: 'trajectory:accord-bp-intensive-blood-pressure-diabetes-no-benefit-2010',
+    text: 'On 14 March 2010 the ACCORD Blood Pressure trial reported that targeting systolic blood pressure below 120 mm Hg, rather than below 140 mm Hg, did not significantly reduce major cardiovascular events in high-risk patients with type 2 diabetes, contradicting the prevailing \'lower-is-better\' premise for blood-pressure targets in diabetics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-03-14',
+        datePrecision: 'DAY',
+        reason: 'The ACCORD Study Group randomized 4,733 high-risk type 2 diabetics to intensive (<120 mm Hg) versus standard (<140 mm Hg) systolic blood-pressure targets and found no significant reduction in the primary composite of nonfatal MI, nonfatal stroke, or cardiovascular death (1.87%/yr vs 2.09%/yr). Intensive control reduced total stroke but caused significantly more serious treatment-related adverse events. The result placed on record that aggressive BP lowering in diabetics offered no net cardiovascular benefit, tempering the lower-is-better assumption.',
+        source: {
+          externalId: 'src:accord-bp-intensive-diabetes-nejm-2010',
+          name: 'ACCORD Study Group; Cushman WC, Evans GW, Byington RP, et al. Effects of intensive blood-pressure control in type 2 diabetes mellitus. N Engl J Med. 2010;362(17):1575-1585.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1001286',
+          publishedAt: '2010-03-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-09',
+        datePrecision: 'DAY',
+        reason: 'The SPRINT trial reported that an intensive systolic target below 120 mm Hg reduced major cardiovascular events and all-cause mortality in high-risk non-diabetic adults — the opposite direction from ACCORD-BP. The contradiction reopened debate over whether ACCORD-BP\'s null result reflected a true absence of benefit in diabetics, the trial\'s factorial design and lower power, or differences in study populations, leaving the question of optimal BP targets in diabetes genuinely contested.',
+        source: {
+          externalId: 'src:sprint-intensive-bp-nejm-2015',
+          name: 'SPRINT Research Group; Wright JT Jr, Williamson JD, Whelton PK, et al. A randomized trial of intensive versus standard blood-pressure control. N Engl J Med. 2015;373(22):2103-2116.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1511939',
+          publishedAt: '2015-11-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACC/AHA 2013 cholesterol guideline abandons LDL targets ─────────────────
+  {
+    externalId: 'trajectory:acc-aha-2013-cholesterol-guideline-abandons-ldl-targets-2013',
+    text: 'On 12 November 2013 the ACC/AHA blood-cholesterol guideline (Stone et al.) abandoned specific LDL-cholesterol treatment targets, stating there was insufficient randomized-trial evidence to support titrating therapy to numeric LDL goals, and instead recommended fixed-intensity statin therapy guided by the new Pooled Cohort Equations for atherosclerotic cardiovascular risk.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-11-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-11-12',
+        datePrecision: 'DAY',
+        reason: 'The ACC/AHA Task Force on Practice Guidelines, published in Circulation and JACC, replaced the decades-old \'treat-to-LDL-target\' paradigm of NCEP ATP III with four statin-benefit groups and high- versus moderate-intensity statin dosing, declaring that the Expert Panel found no RCT evidence supporting titration to specific LDL or non-HDL targets. This institutionally settled a risk-based, fixed-dose statin strategy into U.S. clinical practice and introduced the Pooled Cohort Equations for risk estimation.',
+        source: {
+          externalId: 'src:stone-acc-aha-cholesterol-guideline-circulation-2013',
+          name: 'Stone NJ, Robinson JG, Lichtenstein AH, et al. 2013 ACC/AHA Guideline on the Treatment of Blood Cholesterol to Reduce Atherosclerotic Cardiovascular Risk in Adults. Circulation. 2014;129(25 Suppl 2):S1-S45 (published online 12 Nov 2013).',
+          url: 'https://www.ahajournals.org/doi/10.1161/01.cir.0000437738.63853.7a',
+          publishedAt: '2013-11-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-11-10',
+        datePrecision: 'DAY',
+        reason: 'The 2018 AHA/ACC/multisociety cholesterol guideline (Grundy, Stone, et al.) partially reversed the no-targets stance by reintroducing explicit LDL-cholesterol thresholds (e.g., an LDL ≥70 mg/dL trigger for adding non-statin therapy in very-high-risk patients), drawing on IMPROVE-IT and PCSK9-inhibitor outcome trials. The reintroduction of numeric thresholds contested the 2013 guideline\'s central claim that LDL targets should be abandoned, leaving the role of treat-to-target a live dispute.',
+        source: {
+          externalId: 'src:grundy-acc-aha-cholesterol-guideline-circulation-2018',
+          name: 'Grundy SM, Stone NJ, Bailey AL, et al. 2018 AHA/ACC/Multisociety Guideline on the Management of Blood Cholesterol. Circulation. 2019;139(25):e1082-e1143 (published online 10 Nov 2018).',
+          url: 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000000625',
+          publishedAt: '2018-11-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DAPA-HF dapagliflozin SGLT2 heart failure — 2019 ───────────────────────
+  {
+    externalId: 'trajectory:dapa-hf-dapagliflozin-sglt2-heart-failure-2019',
+    text: 'On 19 September 2019 the DAPA-HF trial reported that the SGLT2 inhibitor dapagliflozin reduced worsening heart failure and cardiovascular death in patients with heart failure and reduced ejection fraction regardless of diabetes status, repurposing a diabetes drug class into a heart-failure therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-09-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-09-19',
+        datePrecision: 'DAY',
+        reason: 'McMurray, Solomon, and colleagues randomized 4,744 patients with HFrEF (with and without type 2 diabetes) and found dapagliflozin reduced the primary composite of worsening heart failure or cardiovascular death by 26% versus placebo. Presented at the European Society of Cardiology Congress and published in NEJM, the result recorded the first clear cardiovascular-outcome benefit of an SGLT2 inhibitor in non-diabetic heart-failure patients, establishing a new pharmacologic pillar of HFrEF therapy.',
+        source: {
+          externalId: 'src:mcmurray-dapa-hf-nejm-2019',
+          name: 'McMurray JJV, Solomon SD, Inzucchi SE, et al. Dapagliflozin in patients with heart failure and reduced ejection fraction (DAPA-HF). N Engl J Med. 2019;381(21):1995-2008.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1911303',
+          publishedAt: '2019-09-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-05-05',
+        datePrecision: 'DAY',
+        reason: 'On the basis of DAPA-HF, the FDA approved dapagliflozin (Farxiga) to reduce the risk of cardiovascular death and heart-failure hospitalization in adults with HFrEF regardless of diabetes status — the first SGLT2 inhibitor approved for a heart-failure indication. The approval institutionally settled SGLT2 inhibition as standard guideline-directed HFrEF therapy and drove rapid incorporation into subsequent heart-failure guidelines.',
+        source: {
+          externalId: 'src:fda-dapagliflozin-hfref-astrazeneca-2020',
+          name: 'AstraZeneca. Farxiga approved in the US for the treatment of heart failure in patients with heart failure with reduced ejection fraction. Press release, 5 May 2020.',
+          url: 'https://www.astrazeneca.com/media-centre/press-releases/2020/farxiga-approved-in-the-us-for-the-treatment-of-heart-failure-in-patients-with-heart-failure-with-reduced-ejection-fraction.html',
+          publishedAt: '2020-05-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dabigatran / Pradaxa — first direct oral anticoagulant 2010 ─────────────
+  {
+    externalId: 'trajectory:dabigatran-pradaxa-first-direct-oral-anticoagulant-2010',
+    text: 'On 19 October 2010 the FDA approved dabigatran (Pradaxa) for stroke prevention in non-valvular atrial fibrillation, the first new oral anticoagulant alternative to warfarin in over fifty years, on the strength of the RE-LY trial showing it was superior to warfarin at the 150 mg dose for preventing stroke.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-30',
+        datePrecision: 'DAY',
+        reason: 'The RE-LY trial (Connolly et al.) randomized 18,113 atrial-fibrillation patients to dabigatran or dose-adjusted warfarin and found that dabigatran 150 mg twice daily reduced stroke and systemic embolism versus warfarin without increasing major bleeding, while the 110 mg dose was non-inferior with less bleeding. Published in NEJM, the result recorded for the first time that a fixed-dose oral direct thrombin inhibitor requiring no INR monitoring could match or beat warfarin, challenging warfarin\'s half-century monopoly.',
+        source: {
+          externalId: 'src:connolly-rely-dabigatran-nejm-2009',
+          name: 'Connolly SJ, Ezekowitz MD, Yusuf S, et al. Dabigatran versus warfarin in patients with atrial fibrillation (RE-LY). N Engl J Med. 2009;361(12):1139-1151.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa0905561',
+          publishedAt: '2009-08-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Boehringer Ingelheim\'s dabigatran etexilate (Pradaxa, NDA 022512) for reducing stroke and systemic embolism in non-valvular atrial fibrillation, the first oral anticoagulant approved as a warfarin alternative in more than fifty years, after a unanimous advisory-committee recommendation. The approval institutionally settled direct oral anticoagulants into clinical practice and opened the class that rivaroxaban and apixaban would join, eventually displacing warfarin as the preferred agent for most AF patients.',
+        source: {
+          externalId: 'src:fda-dabigatran-pradaxa-approval-boehringer-2010',
+          name: 'Boehringer Ingelheim. FDA Approves Pradaxa (dabigatran etexilate), Marking a Major Milestone to Reduce the Risk of Stroke in Patients with Non-Valvular Atrial Fibrillation. Press release, 19 October 2010.',
+          url: 'https://www.boehringer-ingelheim.com/us/media/press-releases/fda-approves-pradaxa-marking-major-milestone-reduce-risk-stroke-patients-non-valvular-atrial',
+          publishedAt: '2010-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Inclisiran / Leqvio — first siRNA cholesterol drug 2021 ─────────────────
+  {
+    externalId: 'trajectory:inclisiran-leqvio-first-sirna-cholesterol-drug-2021',
+    text: 'On 22 December 2021 the FDA approved inclisiran (Leqvio), the first small-interfering-RNA therapy to lower LDL cholesterol, which silences hepatic PCSK9 production and achieves sustained ~50% LDL reductions with only two subcutaneous doses per year, on the basis of the ORION-10 and ORION-11 phase 3 trials.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-03-18',
+        datePrecision: 'DAY',
+        reason: 'The ORION-10 and ORION-11 phase 3 trials (Ray et al.), published in NEJM, found that inclisiran, an siRNA conjugate directing degradation of PCSK9 messenger RNA, lowered LDL cholesterol by roughly 50% versus placebo at day 510 with dosing only twice yearly. The trials recorded a proof of concept that RNA-interference therapeutics could deliver durable, infrequently dosed LDL lowering, distinct from monoclonal-antibody PCSK9 inhibitors.',
+        source: {
+          externalId: 'src:ray-orion-10-11-inclisiran-nejm-2020',
+          name: 'Ray KK, Wright RS, Kallend D, et al. Two phase 3 trials of inclisiran in patients with elevated LDL cholesterol (ORION-10 and ORION-11). N Engl J Med. 2020;382(16):1507-1519.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1912387',
+          publishedAt: '2020-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-12-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Novartis\'s inclisiran (Leqvio) as an adjunct to diet and maximally tolerated statin therapy for adults with clinical atherosclerotic cardiovascular disease or heterozygous familial hypercholesterolemia needing additional LDL lowering — the first-in-class siRNA cholesterol drug. The approval institutionally settled RNA-interference as a delivered therapeutic modality in cardiovascular medicine and introduced a twice-yearly LDL-lowering option into clinical practice.',
+        source: {
+          externalId: 'src:fda-inclisiran-leqvio-approval-novartis-2021',
+          name: 'Novartis. FDA approves Novartis Leqvio (inclisiran), first-in-class siRNA to lower cholesterol and keep it low with two doses a year. Press release, 22 December 2021.',
+          url: 'https://www.novartis.com/news/media-releases/fda-approves-novartis-leqvio-inclisiran-first-class-sirna-lower-cholesterol-and-keep-it-low-two-doses-year',
+          publishedAt: '2021-12-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
