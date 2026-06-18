@@ -49985,6 +49985,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — NON-WESTERN SCIENCE & SPACE
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sahelanthropus tchadensis ("Toumaï") — earliest claimed hominin ─────────
+  {
+    externalId: 'trajectory:sahelanthropus-toumai-2002',
+    text: 'On 11 July 2002 a team led by Michel Brunet announced Sahelanthropus tchadensis ("Toumaï"), a roughly 6–7-million-year-old cranium from the Djurab Desert of northern Chad, claimed to be the oldest known member of the human lineage — a hominin status that remains contested.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-07-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-11',
+        datePrecision: 'DAY',
+        reason: 'A nearly complete cranium (nicknamed "Toumaï") recovered in 2001 at Toros-Menalla in Chad\'s Djurab Desert by the Mission Paléoanthropologique Franco-Tchadienne is described by Michel Brunet and colleagues in Nature on 11 July 2002. Dated to roughly 6–7 million years, it is presented as the oldest known hominin and placed close to the divergence of the human and chimpanzee lineages — pushing the African hominin record back near the molecular split date.',
+        source: {
+          externalId: 'src:brunet-sahelanthropus-nature-2002',
+          name: 'Brunet M., et al. "A new hominid from the Upper Miocene of Chad, Central Africa." Nature 418, 145–151 (11 July 2002).',
+          url: 'https://www.nature.com/articles/nature00879',
+          publishedAt: '2002-07-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-08-24',
+        datePrecision: 'DAY',
+        reason: 'The hominin status of Sahelanthropus is disputed from the outset (Wolpoff and colleagues argue in 2002 it may be an ape near the gorilla line) and the debate over whether it was bipedal continues. A 2022 analysis of the postcranial femur and ulna (Macchiarelli, Bergeret-Medina et al., Journal of Human Evolution) argues the limb bones are more consistent with a quadrupedal ape than an upright walker, directly challenging the bipedalism claim and keeping the species\' place on the human lineage unresolved.',
+        source: {
+          externalId: 'src:wikipedia-sahelanthropus-contested',
+          name: 'Sahelanthropus — disputed hominin status and contested bipedalism (overview of 2002–2022 debate).',
+          url: 'https://en.wikipedia.org/wiki/Sahelanthropus',
+          publishedAt: '2022-08-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── STAP cells — fabricated "acid-bath" pluripotency claim (Japan) ──────────
+  {
+    externalId: 'trajectory:stap-cells-retracted-2014',
+    text: 'The claim that ordinary mouse cells could be reprogrammed into embryonic-like "STAP" stem cells simply by exposure to mild stress such as an acid bath — published from Japan\'s RIKEN institute on 30 January 2014 — was found to rest on fabricated data and was retracted on 2 July 2014.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-01-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-30',
+        datePrecision: 'DAY',
+        reason: 'Two papers led by Haruko Obokata of the RIKEN Center for Developmental Biology in Kobe appear in Nature on 30 January 2014, reporting "stimulus-triggered acquisition of pluripotency" (STAP): the apparent conversion of differentiated mouse cells into pluripotent stem cells by brief sub-lethal stress such as a weak acid bath. The results are hailed as a startlingly simple route to stem cells and draw immediate worldwide attention.',
+        source: {
+          externalId: 'src:obokata-stap-nature-2014',
+          name: 'Obokata H., et al. "Stimulus-triggered fate conversion of somatic cells into pluripotency." Nature 505, 641–647 (30 January 2014).',
+          url: 'https://www.nature.com/articles/nature12968',
+          publishedAt: '2014-01-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-02',
+        datePrecision: 'DAY',
+        reason: 'After other laboratories failed to reproduce the results and image irregularities were spotted, RIKEN opened an investigation; its 1 April 2014 final report concluded that Obokata had committed research misconduct by falsifying data. Both Nature papers were retracted on 2 July 2014, and a subsequent RIKEN verification effort failed to generate any STAP cells. The acid-bath pluripotency claim was thereby reversed and abandoned as a genuine phenomenon.',
+        source: {
+          externalId: 'src:stap-retraction-2014',
+          name: 'Retraction Watch — "STAP stem cell papers officially retracted," 2 July 2014 (Nature 511, 112); RIKEN research-misconduct findings against Obokata.',
+          url: 'https://retractionwatch.com/2014/07/02/stap-stem-cell-papers-officially-retracted-as-nature-argues-peer-review-couldnt-have-detected-fatal-problems/',
+          publishedAt: '2014-07-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Emirates Mars Mission "Hope" — first Arab interplanetary mission ────────
+  {
+    externalId: 'trajectory:emirates-mars-hope-orbit-2021',
+    text: 'On 9 February 2021 the United Arab Emirates\' "Hope" (Al-Amal) probe successfully entered orbit around Mars, making the UAE the first Arab nation — and the fifth space power overall — to reach the planet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-02-09',
+        datePrecision: 'DAY',
+        reason: 'Built and operated by the Mohammed bin Rashid Space Centre and launched on a Japanese H-IIA rocket in July 2020, the Hope orbiter executes its 27-minute Mars Orbit Insertion burn on 9 February 2021, slowing into a capture orbit. Mission control in Dubai confirms the signal, making the UAE the first West Asian, Arab, or Muslim-majority country to reach Mars and only the fifth space agency to do so.',
+        source: {
+          externalId: 'src:emirates-mars-mission-orbit-2021',
+          name: 'Emirates Mars Mission — "Hope" probe Mars Orbit Insertion, 9 February 2021 (Mohammed bin Rashid Space Centre).',
+          url: 'https://en.wikipedia.org/wiki/Emirates_Mars_Mission',
+          publishedAt: '2021-02-09',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-04-14',
+        datePrecision: 'MONTH',
+        reason: 'Within weeks the orbiter reaches its science orbit and begins returning data and full-disk imagery of Mars, including global views of its atmosphere and weather. The successful insertion and subsequent operational science phase confirm the mission as the first Arab interplanetary success, an uncontested matter of public and institutional record.',
+        source: {
+          externalId: 'src:space-emm-hope-mars-orbit-2021',
+          name: 'Space.com — "Welcome to Mars! UAE\'s Hope probe enters orbit around Red Planet," 9 February 2021.',
+          url: 'https://www.space.com/uae-hope-mars-mission-orbit-insertion-success',
+          publishedAt: '2021-02-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── South Korea's Nuri (KSLV-II) reaches orbit independently ────────────────
+  {
+    externalId: 'trajectory:south-korea-nuri-orbit-2022',
+    text: 'On 21 June 2022 South Korea\'s domestically developed Nuri (KSLV-II) rocket placed satellites into a 700 km Sun-synchronous orbit on its second flight, making South Korea the seventh nation able to launch a one-tonne-class payload to orbit with an indigenous vehicle.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-06-21',
+        datePrecision: 'DAY',
+        reason: 'The Korea Aerospace Research Institute (KARI) launches Nuri from the Naro Space Center on its second attempt; unlike the October 2021 flight, whose third stage shut down early and failed to achieve stable orbit, this flight delivers a performance-verification satellite and CubeSats into a 700 km Sun-synchronous orbit. KARI confirms successful satellite separation and contact, establishing South Korea\'s independent orbital launch capability with a fully indigenous rocket.',
+        source: {
+          externalId: 'src:kari-nuri-second-launch-2022',
+          name: 'Nuri (KSLV-II) — second launch reaches orbit, 21 June 2022 (Korea Aerospace Research Institute).',
+          url: 'https://en.wikipedia.org/wiki/Nuri_(rocket)',
+          publishedAt: '2022-06-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-05-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 May 2023 Nuri conducts its third flight, its first fully operational mission, successfully deploying the NEXTSat-2 primary satellite and several commercial CubeSats. The repeat success confirms Nuri as a reliable operational launch vehicle and settles South Korea\'s status as an independent space-launch nation.',
+        source: {
+          externalId: 'src:kari-nuri-third-launch-2023',
+          name: 'Nuri third launch (first operational flight) deploys NEXTSat-2, 25 May 2023 (KARI).',
+          url: 'https://en.wikipedia.org/wiki/Nuri_(rocket)',
+          publishedAt: '2023-05-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
