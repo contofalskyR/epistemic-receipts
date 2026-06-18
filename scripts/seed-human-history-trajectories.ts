@@ -38048,6 +38048,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Pliska — Khan Krum destroys Nikephoros I — 26 July 811 ─────────
+  {
+    externalId: 'trajectory:battle-pliska-811',
+    text: 'On 26 July 811 the Bulgarian Khan Krum ambushed and annihilated the Byzantine army in the Varbitsa Pass, killing Emperor Nikephoros I — the first Roman/Byzantine emperor to die in battle against a foreign enemy since Valens in 378.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0811-07-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0811-07-26',
+        datePrecision: 'DAY',
+        reason: 'After sacking the Bulgarian capital of Pliska, Nikephoros I led his army into the mountain passes of the Balkan range, where Krum had blockaded the defiles with wooden palisades. The trapped Byzantine army was destroyed; the emperor was killed, and Krum is reported to have lined his skull with silver to make a drinking cup. The near-contemporary chronicler Theophanes the Confessor records the catastrophe, as does the anonymous Scriptor Incertus.',
+        source: {
+          externalId: 'src:theophanes-pliska-811',
+          name: 'Theophanes the Confessor, Chronographia, and the anonymous Scriptor Incertus, accounts of the destruction of Nikephoros I in the Balkan passes, 26 July 811. (early 9th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Pliska',
+          publishedAt: '0814-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Byzantine (Theophanes, Zonaras), Bulgarian, and Syriac (Michael the Syrian) traditions agree on the date, the emperor\'s death, and the scale of the disaster. Modern scholarship treats Pliska as a securely dated catastrophe that deterred Byzantine campaigning north of the Balkans for over a century, debating troop numbers and the route, not the event itself.',
+        source: {
+          externalId: 'src:battle-pliska-scholarship',
+          name: 'Modern scholarship on the Battle of Pliska (Varbitsa Pass) and the death of Nikephoros I.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Pliska',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Neva — Alexander Nevsky defeats the Swedes — 15 July 1240 ──
+  {
+    externalId: 'trajectory:battle-of-the-neva-1240',
+    text: 'On 15 July 1240 Prince Alexander Yaroslavich of Novgorod defeated a Swedish force at the confluence of the Neva and Izhora rivers — the victory that earned him the epithet "Nevsky."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1240-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1240-07-15',
+        datePrecision: 'DAY',
+        reason: 'The Novgorod First Chronicle records that the 19-year-old Prince Alexander led a small force against a Swedish host that had landed at the mouth of the Izhora intending to advance on Ladoga and Novgorod, routing them with reportedly minimal Novgorodian losses. The episode is elaborated in the hagiographic Life of Alexander Nevsky, and the victory becomes the basis of his enduring byname.',
+        source: {
+          externalId: 'src:novgorod-first-chronicle-neva',
+          name: 'Novgorod First Chronicle, entry for 6748 (1240), account of the Battle of the Neva; with the Life of Alexander Nevsky. (13th–14th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Neva',
+          publishedAt: '1240-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'That Alexander defeated a Swedish raiding force on the Neva on 15 July 1240 is accepted on the strength of the Novgorod chronicle. Because no Swedish source mentions the clash, modern historians debate its scale — whether a major invasion or a border skirmish later magnified for political and religious purposes — but the occurrence, date, and Novgorodian victory remain the settled core of the record.',
+        source: {
+          externalId: 'src:battle-neva-scholarship',
+          name: 'Modern scholarship on the Battle of the Neva and the question of its scale (Swedish silence in the sources).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Neva',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mongol sack of Kiev — fall of the Rus' mother-city — 6 December 1240 ─────
+  {
+    externalId: 'trajectory:mongol-sack-of-kiev-1240',
+    text: 'On 6 December 1240 the Mongol army under Batu Khan stormed and sacked Kiev after a nine-day siege, devastating the chief city of the Rus\' and confirming the subjection of the Rus\' principalities to Mongol suzerainty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1240-12-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1240-12-06',
+        datePrecision: 'DAY',
+        reason: 'After bombardment that began on 28 November, the Mongols breached Kiev\'s walls on 6 December 1240 and overwhelmed the defenders in street fighting; the city was sacked and its population slaughtered or enslaved. The Galician–Volhynian Chronicle (preserved in the Hypatian Codex) gives the fullest account, and the fall is also entered in the Laurentian and Novgorod chronicles.',
+        source: {
+          externalId: 'src:galician-volhynian-chronicle-kiev-1240',
+          name: 'Galician–Volhynian Chronicle (Hypatian Codex), detailed account of the siege and sack of Kiev, 6 December 1240; corroborated by the Laurentian and Novgorod First chronicles. (13th century)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Kiev_(1240)',
+          publishedAt: '1290-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and outcome of the sack are uncontested in modern scholarship on the Mongol invasion of the Rus\'. The fall of Kiev marked the collapse of the old Rurikid order centred on the city and the absorption of the Rus\' lands into the tributary system of the Golden Horde; the archaeological destruction layer in Kiev corroborates the chronicle accounts.',
+        source: {
+          externalId: 'src:sack-of-kiev-scholarship',
+          name: 'Modern scholarship on the 1240 Mongol siege of Kiev (incl. A. Maiorov, 2016) and the establishment of Mongol suzerainty over the Rus\'.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Kiev_(1240)',
+          publishedAt: '2016-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Union of Krewo — Lithuania joined to Poland — 14 August 1385 ─────────────
+  {
+    externalId: 'trajectory:union-of-krewo-1385',
+    text: 'On 14 August 1385 Grand Duke Jogaila of Lithuania issued the Act of Krewo, pledging to convert to Catholicism, marry Queen Jadwiga of Poland, and attach the Lithuanian and Ruthenian lands to the Polish Crown — the founding instrument of the Polish–Lithuanian union.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1385-08-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1385-08-14',
+        datePrecision: 'DAY',
+        reason: 'At Kreva Castle, Jogaila set out in a sealed Latin document his prenuptial promises to a Polish delegation: baptism for himself and his pagan Lithuanian subjects, marriage to the eleven-year-old Queen Jadwiga, and the union of his domains with Poland. He was baptised as Władysław in February 1386, married Jadwiga on 18 February, and was crowned King of Poland on 4 March 1386, enacting the terms.',
+        source: {
+          externalId: 'src:act-of-krewo-1385',
+          name: 'Act of Krewo (Union of Krewo), sealed instrument of Jogaila and his brothers, 14 August 1385 (original preserved in the Kraków Cathedral Chapter archive).',
+          url: 'https://en.wikipedia.org/wiki/Union_of_Krewo',
+          publishedAt: '1385-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1835-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The original 560-word document was unknown to historians until its rediscovery in 1835 in the archive of the Kraków Cathedral Chapter, fixing the text, seals, and date beyond dispute. Modern scholarship debates how literally to read the verb "applicare" (whether Krewo created a full incorporation or a looser dynastic union), but the act, its date, and its role in launching the centuries-long Polish–Lithuanian union are settled.',
+        source: {
+          externalId: 'src:union-of-krewo-scholarship',
+          name: 'Modern scholarship on the Act of Krewo, its 1835 rediscovery, and the historiographical debate over "applicare."',
+          url: 'https://en.wikipedia.org/wiki/Union_of_Krewo',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Nicopolis — last great crusade crushed — 25 September 1396 ─────
+  {
+    externalId: 'trajectory:battle-of-nicopolis-1396',
+    text: 'On 25 September 1396 the Ottoman army of Sultan Bayezid I destroyed a multinational crusader force besieging Nicopolis on the Danube, ending the last large-scale crusade and sealing Ottoman dominance over the Balkans.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1396-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1396-09-25',
+        datePrecision: 'DAY',
+        reason: 'A crusader army of Hungarians, French, Burgundians and other Western knights under Sigismund of Hungary and John the Fearless besieged the Ottoman fortress of Nicopolis; a premature charge by the French knights was enveloped and routed by Bayezid I, who then massacred many prisoners. The Bavarian Johann Schiltberger, captured on the field at sixteen, left an eyewitness account, and Jean Froissart recorded the catastrophe in his Chronicles.',
+        source: {
+          externalId: 'src:schiltberger-nicopolis-1396',
+          name: 'Johann Schiltberger, Reisebuch (eyewitness account of his capture at Nicopolis, 25 September 1396); with Jean Froissart, Chronicles. (early 15th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Nicopolis',
+          publishedAt: '1396-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Western, Ottoman, and Byzantine sources agree on the date, the crusader defeat, and the slaughter of prisoners. Modern historiography treats Nicopolis as the securely dated end of organised Western crusading against the Ottomans and a confirmation of Ottoman control of the Balkans — the Second Bulgarian state having effectively ended — debating tactics and numbers, not the outcome.',
+        source: {
+          externalId: 'src:battle-nicopolis-scholarship',
+          name: 'Modern scholarship on the Battle of Nicopolis (1396) and the collapse of the crusade.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Nicopolis',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Battle of Mühlberg — 24 April 1547 ──────────────────────────────────────
   {
     externalId: 'trajectory:battle-muhlberg-1547',

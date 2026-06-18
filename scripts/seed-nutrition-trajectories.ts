@@ -480,6 +480,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SUGAR SCIENCE ERA (1964–2016)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 9. Sugar industry–funded 1967 NEJM review — reversed 2016 ──────────────
+  {
+    externalId: 'trajectory:sugar-industry-funded-1967-nejm-review-1967',
+    text: 'The 1967 New England Journal of Medicine review by Harvard nutritionists Robert McGandy, D. Mark Hegsted, and Fredrick Stare concluded on July 27, 1967 that dietary fat and cholesterol — not sugar — were the primary dietary causes of coronary heart disease, a review later revealed in 2016 to have been secretly funded and editorially steered by the Sugar Research Foundation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1967-07-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-07-27',
+        datePrecision: 'DAY',
+        reason: 'McGandy RB, Hegsted DM, and Stare FJ publish a two-part literature review, \'Dietary Fats, Carbohydrates and Atherosclerotic Vascular Disease,\' in the NEJM (July 27 and August 3, 1967), concluding that the practical significance of dietary carbohydrate (sugar) was minimal compared with dietary fat and cholesterol in atherosclerosis. The review minimized epidemiological and animal evidence implicating sucrose and directed attention to fat as the dietary culprit. It became an authoritative reference shaping subsequent diet-heart consensus.',
+        source: {
+          externalId: 'src:mcgandy-hegsted-stare-nejm-1967',
+          name: 'McGandy RB, Hegsted DM, Stare FJ. Dietary Fats, Carbohydrates and Atherosclerotic Vascular Disease. New England Journal of Medicine. 1967;277(4):186–192.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5339699/',
+          publishedAt: '1967-07-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1977-01-14',
+        datePrecision: 'DAY',
+        reason: 'D. Mark Hegsted, co-author of the 1967 review, served as a principal scientific drafter of the Senate Select Committee\'s Dietary Goals for the United States (the McGovern Report), released January 14, 1977. The report embedded the fat-and-cholesterol focus while treating sugar as a comparatively minor concern, institutionalizing the 1967 review\'s framing into federal dietary policy. The fat-centric, sugar-minimizing paradigm became settled consensus guiding U.S. guidelines for decades.',
+        source: {
+          externalId: 'src:mcgovern-dietary-goals-1977',
+          name: 'U.S. Senate Select Committee on Nutrition and Human Needs. Dietary Goals for the United States. 1977. (First edition released January 14, 1977.)',
+          url: 'https://naldc.nal.usda.gov/catalog/1759572',
+          publishedAt: '1977-01-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-09-12',
+        datePrecision: 'DAY',
+        reason: 'Kearns, Schmidt, and Glantz publish \'Sugar Industry and Coronary Heart Disease Research: A Historical Analysis of Internal Industry Documents\' in JAMA Internal Medicine (online September 12, 2016), showing the Sugar Research Foundation paid Harvard researchers (Project 226), set the review\'s objectives, supplied articles, and reviewed drafts of the 1967 NEJM review — without disclosing its funding or role. The exposé discredits the review\'s conclusions as industry-shaped, reversing its standing as objective science.',
+        source: {
+          externalId: 'src:kearns-sugar-industry-jama-2016',
+          name: 'Kearns CE, Schmidt LA, Glantz SA. Sugar Industry and Coronary Heart Disease Research: A Historical Analysis of Internal Industry Documents. JAMA Internal Medicine. 2016;176(11):1680–1685.',
+          url: 'https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2548255',
+          publishedAt: '2016-09-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 10. Yudkin sugar–heart disease hypothesis — 1964 ────────────────────────
+  {
+    externalId: 'trajectory:yudkin-sugar-heart-disease-hypothesis-1964',
+    text: 'John Yudkin argued in July 1964 in The Lancet that dietary sucrose, rather than fat, was the principal dietary determinant of coronary heart disease and diabetes — a hypothesis marginalized for decades and later revived.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Yudkin publishes \'Dietary Fat and Dietary Sugar in Relation to Ischaemic Heart-Disease and Diabetes\' in The Lancet (1964), reporting stronger correlations of sugar than fat intake with coronary mortality and proposing sucrose as the key dietary cause of heart disease and diabetes. The paper, building on his 1957 ecological correlations, frames the sugar hypothesis as a direct rival to Keys\'s diet-heart (saturated fat) paradigm.',
+        source: {
+          externalId: 'src:yudkin-lancet-sugar-1964',
+          name: 'Yudkin J, Roddy J. Dietary Fat and Dietary Sugar in Relation to Ischaemic Heart-Disease and Diabetes. The Lancet. 1964;2(7349):4–5.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14149218/',
+          publishedAt: '1964-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1970s the saturated-fat diet-heart paradigm (championed by Ancel Keys and institutionalized in the 1977 Dietary Goals) became dominant, while Yudkin\'s sugar hypothesis was publicly dismissed as alarmist; his 1972 book \'Pure, White and Deadly\' was attacked and his work sidelined. Later analysis showed the Sugar Research Foundation had actively helped downplay sugar\'s risks, contributing to the marginalization. By the early 1980s the sugar-CHD hypothesis was effectively abandoned by the mainstream nutrition establishment.',
+        source: {
+          externalId: 'src:yudkin-hypothesis-review-frontiers-2024',
+          name: 'Review: John Yudkin\'s hypothesis — sugar is a major dietary culprit in the development of cardiovascular disease. Frontiers in Nutrition. 2024;11:1407108.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11257042/',
+          publishedAt: '2024-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'ABANDONED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-09-12',
+        datePrecision: 'DAY',
+        reason: 'The 2016 Kearns/Glantz exposé of sugar-industry funding behind the 1967 NEJM review, together with accumulating metabolic evidence advanced by researchers such as Robert Lustig, reframed Yudkin\'s earlier dismissal as partly engineered and reopened serious scientific debate over sugar\'s causal role in cardiovascular and metabolic disease. The hypothesis returned to active contestation in the expert literature rather than settled rejection.',
+        source: {
+          externalId: 'src:kearns-sugar-industry-jama-2016',
+          name: 'Kearns CE, Schmidt LA, Glantz SA. Sugar Industry and Coronary Heart Disease Research: A Historical Analysis of Internal Industry Documents. JAMA Internal Medicine. 2016;176(11):1680–1685.',
+          url: 'https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2548255',
+          publishedAt: '2016-09-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 11. HFCS–obesity hypothesis — 2004 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:hfcs-obesity-hypothesis-2004',
+    text: 'Bray, Nielsen, and Popkin proposed in April 2004 in the American Journal of Clinical Nutrition that the sharp rise in high-fructose corn syrup consumption in beverages played a causal role in the U.S. obesity epidemic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Bray GA, Nielsen SJ, and Popkin BM publish \'Consumption of high-fructose corn syrup in beverages may play a role in the epidemic of obesity\' in AJCN (2004;79(4):537–543), noting that the temporal rise in HFCS use since the 1970s paralleled rising obesity and hypothesizing that fructose\'s distinct metabolism (failure to stimulate insulin/leptin) promoted excess energy intake. The paper launched a sustained scientific and public debate singling out HFCS as uniquely obesogenic.',
+        source: {
+          externalId: 'src:bray-hfcs-obesity-ajcn-2004',
+          name: 'Bray GA, Nielsen SJ, Popkin BM. Consumption of high-fructose corn syrup in beverages may play a role in the epidemic of obesity. American Journal of Clinical Nutrition. 2004;79(4):537–543.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15051594/',
+          publishedAt: '2004-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-02-21',
+        datePrecision: 'DAY',
+        reason: 'Sievenpiper et al. publish a systematic review and meta-analysis of controlled feeding trials in Annals of Internal Medicine (February 21, 2012) finding that fructose does not cause weight gain when isocalorically substituted for other carbohydrates, supporting the view that HFCS is metabolically equivalent to sucrose and not uniquely obesogenic. This and the American Medical Association\'s 2008 assessment placed the HFCS-specific obesity claim into active contestation over mechanism and causality.',
+        source: {
+          externalId: 'src:sievenpiper-fructose-meta-annals-2012',
+          name: 'Sievenpiper JL et al. Effect of fructose on body weight in controlled feeding trials: a systematic review and meta-analysis. Annals of Internal Medicine. 2012;156(4):291–304.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22351714/',
+          publishedAt: '2012-02-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 12. WHO free sugars guideline — 2015 ────────────────────────────────────
+  {
+    externalId: 'trajectory:who-free-sugars-guideline-2015',
+    text: 'The World Health Organization issued a guideline on March 4, 2015 strongly recommending that adults and children reduce free sugars intake to less than 10% of total energy, with a conditional recommendation to reduce intake below 5%.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-03-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-03-04',
+        datePrecision: 'DAY',
+        reason: 'WHO publishes \'Guideline: Sugars intake for adults and children\' (March 4, 2015), issuing a strong recommendation to limit free sugars to under 10% of total energy intake and a conditional recommendation for a further reduction to below 5%, based on systematic reviews linking free sugars to body weight and dental caries. This established a quantitative global public-health target specifically for sugar for the first time at WHO level.',
+        source: {
+          externalId: 'src:who-sugars-guideline-2015',
+          name: 'World Health Organization. Guideline: Sugars intake for adults and children. Geneva: WHO. 4 March 2015.',
+          url: 'https://www.who.int/publications/i/item/9789241549028',
+          publishedAt: '2015-03-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-01-07',
+        datePrecision: 'DAY',
+        reason: 'The 2015–2020 Dietary Guidelines for Americans (released January 7, 2016) for the first time set a quantitative cap on added sugars — less than 10% of daily calories — aligning U.S. federal policy with the WHO free-sugars recommendation. The convergence of WHO and national guidelines established the under-10% sugar limit as settled institutional nutrition policy across major bodies.',
+        source: {
+          externalId: 'src:dga-2015-2020-added-sugars',
+          name: 'U.S. Department of Health and Human Services and USDA. 2015–2020 Dietary Guidelines for Americans, 8th Edition. January 2016.',
+          url: 'https://health.gov/our-work/nutrition-physical-activity/dietary-guidelines/previous-dietary-guidelines/2015',
+          publishedAt: '2016-01-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
@@ -493,7 +695,6 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
       ingestedBy: 'seed:nutrition-trajectories',
       deleted: false,
@@ -503,7 +704,6 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
     },
   })
