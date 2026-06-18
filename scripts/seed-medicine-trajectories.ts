@@ -16257,6 +16257,159 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Epoprostenol / Flolan — first PPH therapy (1995) ───────────────────────
+  {
+    externalId: 'trajectory:epoprostenol-flolan-first-pph-therapy-1995',
+    text: 'Continuous intravenous epoprostenol (prostacyclin, Flolan), approved by the U.S. FDA in December 1995 under NDA 20-444, is an effective treatment that improves survival in primary pulmonary hypertension — the first drug ever approved for the previously untreatable orphan disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-01',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved continuous intravenous epoprostenol (Flolan, Burroughs-Wellcome, NDA 20-444) for primary pulmonary hypertension, the first medical treatment ever approved for a disease that had been a progressive, uniformly fatal disorder with no pharmacologic therapy. The approval placed on the regulatory record the claim that infused prostacyclin alters the course of PPH, before the pivotal trial had appeared in print.',
+        source: {
+          externalId: 'src:fda-epoprostenol-pph-approval-elliott-2025',
+          name: 'Elliott G. FDA Approval of Epoprostenol to Treat Primary Pulmonary Hypertension. Pulm Circ. 2025 (documents FDA approval of epoprostenol/Flolan under NDA 20-444 in December 1995 as the first drug for PPH).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12351391/',
+          publishedAt: '2025-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-02-01',
+        datePrecision: 'DAY',
+        reason: 'Barst and the Primary Pulmonary Hypertension Study Group published a randomized comparison of continuous IV epoprostenol versus conventional therapy in the New England Journal of Medicine, reporting symptomatic and hemodynamic improvement and improved survival — all eight deaths during the 12-week trial occurred in the conventional-therapy group. This was the first controlled evidence that any therapy improved survival in PPH, settling infused prostacyclin as the standard of care for severe disease.',
+        source: {
+          externalId: 'src:barst-epoprostenol-pph-nejm-1996',
+          name: 'Barst RJ, Rubin LJ, Long WA, et al. A comparison of continuous intravenous epoprostenol (prostacyclin) with conventional therapy for primary pulmonary hypertension. N Engl J Med. 1996;334(5):296-301.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8532025/',
+          publishedAt: '1996-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Miglustat / Zavesca — first substrate-reduction therapy Gaucher (2003) ──
+  {
+    externalId: 'trajectory:miglustat-zavesca-first-substrate-reduction-gaucher-2003',
+    text: 'Oral miglustat (OGT 918 / N-butyldeoxynojirimycin, Zavesca), an inhibitor of glucosylceramide synthase, treats type 1 Gaucher disease by reducing glycosphingolipid substrate biosynthesis — a claim first evidenced by Cox et al. in The Lancet on 29 April 2000 and established by the FDA\'s approval of 31 July 2003 (NDA 21-348), the first oral therapy and first substrate-reduction therapy for any lysosomal storage disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-04-29',
+        datePrecision: 'DAY',
+        reason: 'Cox and colleagues reported a one-year open-label study of 28 adults with type 1 Gaucher disease who could not or would not receive enzyme replacement, showing that the oral glucosylceramide-synthase inhibitor OGT 918 (miglustat) reduced substrate biosynthesis and improved organomegaly and hematologic features. This recorded in the expert literature the proof of concept that reducing the synthesis of the offending substrate — rather than replacing the deficient enzyme — could treat a lysosomal storage disease.',
+        source: {
+          externalId: 'src:cox-miglustat-ogt918-gaucher-lancet-2000',
+          name: 'Cox T, Lachmann R, Hollak C, et al. Novel oral treatment of Gaucher\'s disease with N-butyldeoxynojirimycin (OGT 918) to decrease substrate biosynthesis. Lancet. 2000;355(9214):1481-1485.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10801168/',
+          publishedAt: '2000-04-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-07-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Zavesca (miglustat, Actelion, NDA 21-348) as monotherapy for adults with mild-to-moderate type 1 Gaucher disease for whom enzyme replacement therapy is not an option. As the first oral drug and the first substrate-reduction therapy approved for any lysosomal storage disorder, the approval settled the substrate-reduction strategy as an accepted therapeutic paradigm distinct from enzyme replacement.',
+        source: {
+          externalId: 'src:fda-zavesca-miglustat-approval-2003',
+          name: 'U.S. Food and Drug Administration. Drug Approval Package: Zavesca (miglustat), NDA 21-348, approved 31 July 2003.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2003/21-348_zavesca_approv.pdf',
+          publishedAt: '2003-07-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rilonacept / Arcalyst — first CAPS treatment (2008) ────────────────────
+  {
+    externalId: 'trajectory:rilonacept-arcalyst-first-caps-treatment-2008',
+    text: 'Rilonacept (Arcalyst), a long-acting interleukin-1 blocker (\'IL-1 Trap\'), is an effective treatment for cryopyrin-associated periodic syndromes (CAPS) — including familial cold autoinflammatory syndrome and Muckle-Wells syndrome — a claim established by the U.S. FDA\'s approval on 27 February 2008 (BLA 125249), the first therapy ever approved for CAPS.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Arcalyst (rilonacept, Regeneron, BLA 125249), an interleukin-1 blocker, for CAPS — including familial cold autoinflammatory syndrome and Muckle-Wells syndrome — in adults and children 12 and older, on the basis of a randomized controlled trial showing marked reduction in symptom scores versus placebo. As the first therapy ever approved for these rare inherited autoinflammatory disorders, the approval established interleukin-1 blockade as effective treatment for CAPS and inaugurated the IL-1-targeted therapeutic class for autoinflammatory disease.',
+        source: {
+          externalId: 'src:fda-arcalyst-rilonacept-label-2008',
+          name: 'U.S. Food and Drug Administration. Arcalyst (rilonacept) prescribing information, BLA 125249 (approved 27 February 2008).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/125249lbl.pdf',
+          publishedAt: '2008-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cysteamine / Cystagon — first cystinosis treatment (1994) ──────────────
+  {
+    externalId: 'trajectory:cysteamine-cystagon-first-cystinosis-treatment-1994',
+    text: 'Oral cysteamine (Cystagon), an aminothiol that depletes intralysosomal cystine, slows renal and systemic deterioration in nephropathic cystinosis — a claim first evidenced by Thoene et al. in the Journal of Clinical Investigation in July 1976 and established by the U.S. FDA\'s approval on 15 August 1994, the first drug treatment approved for the orphan lysosomal disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1976-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Thoene, Oshima, Crawhall, Olson and Schneider reported that aminothiols — notably cysteamine — rapidly depleted the abnormally elevated free-cystine pool of cystinotic fibroblasts (over 90% in one hour) and lowered leukocyte cystine in a patient with nephropathic cystinosis treated intravenously and orally. This recorded in the expert literature the mechanistic claim that cysteamine could deplete intracellular cystine in vivo, the rationale for all subsequent cystine-depleting therapy.',
+        source: {
+          externalId: 'src:thoene-cysteamine-cystinosis-jci-1976',
+          name: 'Thoene JG, Oshima RG, Crawhall JC, Olson DL, Schneider JA. Cystinosis. Intracellular cystine depletion by aminothiols in vitro and in vivo. J Clin Invest. 1976;58(1):180-189.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC333169/',
+          publishedAt: '1976-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-08-15',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Cystagon (cysteamine bitartrate, Mylan), previously granted orphan designation in 1991, for the management of nephropathic cystinosis in adults and children. As the first drug treatment approved for the disease, the approval settled cystine-depleting cysteamine therapy as the institutional standard of care for slowing renal and extrarenal organ damage in cystinosis.',
+        source: {
+          externalId: 'src:elmonem-cystinosis-review-cystagon-2016',
+          name: 'Elmonem MA, Veys KR, Soliman NA, et al. Cystinosis: a review. Orphanet J Rare Dis. 2016;11:47 (documents FDA approval of Cystagon/cysteamine bitartrate in 1994 as the first treatment for nephropathic cystinosis).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4841061/',
+          publishedAt: '2016-04-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
