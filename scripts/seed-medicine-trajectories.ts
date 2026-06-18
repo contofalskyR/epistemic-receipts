@@ -888,6 +888,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS ERA (1980–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 18. Porter-Jick NEJM letter — addiction rare in hospitalized patients 1980 ─
+  {
+    externalId: 'trajectory:porter-jick-opioid-addiction-rare-1980',
+    text: 'Jane Porter and Hershel Jick reported in a five-sentence letter to the New England Journal of Medicine on January 10, 1980, that among 11,882 hospitalized patients given at least one narcotic, only four cases of addiction occurred, concluding that addiction is rare in medical patients treated with narcotics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-01-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-10',
+        datePrecision: 'DAY',
+        reason: 'Porter and Jick published a brief letter in NEJM reporting that of 11,882 hospitalized patients receiving narcotics, only four became addicted. The observation was a narrow finding about supervised inpatient administration, but it entered the record as a citable datum on opioid addiction risk.',
+        source: {
+          externalId: 'src:porter-jick-nejm-1980',
+          name: 'Porter J, Jick H. Addiction rare in patients treated with narcotics. N Engl J Med. 1980 Jan 10;302(2):123.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7350425/',
+          publishedAt: '1980-01-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-06-01',
+        datePrecision: 'DAY',
+        reason: 'Leung and colleagues published a bibliometric analysis in NEJM showing the 1980 letter had been cited 608 times, with 72.2% citing it as evidence that addiction is rare during opioid treatment and 80.8% omitting that it described only hospitalized patients. The analysis established that the letter had been systematically miscited to justify outpatient opioid prescribing, reversing the generalized claim it had been made to support.',
+        source: {
+          externalId: 'src:leung-1980-letter-nejm-2017',
+          name: 'Leung PTM, Macdonald EM, Stanbrook MB, Dhalla IA, Juurlink DN. A 1980 Letter on the Risk of Opioid Addiction. N Engl J Med. 2017 Jun 1;376(22):2194-2195.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28564561/',
+          publishedAt: '2017-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 19. OxyContin reduced abuse liability — FDA approval 1995 → reversed 2013 ─
+  {
+    externalId: 'trajectory:oxycontin-reduced-abuse-liability-1995',
+    text: 'The FDA approved Purdue Pharma\'s OxyContin (controlled-release oxycodone, NDA 20-553) on December 12, 1995, with labeling stating that the delayed absorption afforded by the controlled-release formulation was believed to reduce the abuse liability of the drug.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-12-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s Center for Drug Evaluation and Research approved NDA 20-553 for OxyContin and permitted label language asserting that the controlled-release formulation\'s delayed absorption was believed to reduce abuse liability. The claim was institutionally ratified without clinical studies designed to test abuse potential, becoming a settled marketing premise.',
+        source: {
+          externalId: 'src:fda-oxycontin-nda-20553-1995',
+          name: 'FDA. NDA 20-553, OxyContin (oxycodone HCl controlled-release), Center for Drug Evaluation and Research application materials.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/96/020553s002.pdf',
+          publishedAt: '1995-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-07-25',
+        datePrecision: 'MONTH',
+        reason: 'Amid mounting reports of OxyContin abuse, diversion, and overdose deaths, the FDA required Purdue to add a boxed warning and strengthen the labeling in July 2001, the agency\'s first major corrective action. The reduced-abuse-liability premise was now formally in question.',
+        source: {
+          externalId: 'src:fda-oxycontin-labeling-supplement-2002',
+          name: 'FDA. NDA 20-553/S-024, OxyContin approved labeling supplement (boxed warning).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2002/020553_S024_OXYCONTIN_AP.pdf',
+          publishedAt: '2002-01-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2007-05-10',
+        datePrecision: 'DAY',
+        reason: 'Purdue Frederick Company pleaded guilty in the U.S. District Court for the Western District of Virginia to felony misbranding of OxyContin, and three executives pleaded guilty to misdemeanor misbranding, paying $634.5 million. Purdue admitted it had fraudulently marketed OxyContin as less addictive and less subject to abuse with no supporting research, a judicial finding that the original abuse-liability claim was false.',
+        source: {
+          externalId: 'src:usao-wdva-purdue-plea-2007',
+          name: 'U.S. Attorney\'s Office, Western District of Virginia. The Purdue Frederick Company Inc. and Top Executives Plead Guilty to Misbranding OxyContin. News release, May 10, 2007.',
+          url: 'https://media.defense.gov/2007/May/10/2001711223/-1/-1/1/purduefrederick1.pdf',
+          publishedAt: '2007-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-04-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA published a determination that the original OXYCONTIN products covered by NDA 20-553 were withdrawn from sale for reasons of safety or effectiveness, after Purdue conceded that no labeling or REMS could create a positive risk/benefit ratio for the original formulation. The premise that the controlled-release design reduced abuse liability was institutionally repudiated.',
+        source: {
+          externalId: 'src:fda-fr-oxycontin-withdrawn-2013',
+          name: 'FDA. Determination That the OXYCONTIN (Oxycodone Hydrochloride) Drug Products Covered by NDA 20-553 Were Withdrawn From Sale for Reasons of Safety or Effectiveness. Fed. Reg. 78(75):23273, Apr. 18, 2013.',
+          url: 'https://www.federalregister.gov/documents/2013/04/18/2013-09092/determination-that-the-oxycontin-oxycodone-hydrochloride-drug-products-covered-by-new-drug',
+          publishedAt: '2013-04-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 20. CDC 2016 opioid prescribing guideline — settled, then contested 2022 ──
+  {
+    externalId: 'trajectory:cdc-opioid-prescribing-guideline-2016',
+    text: 'The CDC issued its Guideline for Prescribing Opioids for Chronic Pain on March 18, 2016, recommending nonopioid therapy as first-line for chronic pain and establishing dosage thresholds (caution above 50 morphine-milligram-equivalents/day, avoidance of 90 MME/day) for primary care prescribers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-18',
+        datePrecision: 'DAY',
+        reason: 'The CDC published its Guideline for Prescribing Opioids for Chronic Pain in MMWR Recommendations and Reports, recommending nonopioid first-line therapy, immediate-release over long-acting opioids, and specific MME dosage thresholds. The guideline became the dominant institutional standard, rapidly adopted by states, payers, and pharmacies.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2016',
+          name: 'Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recomm Rep. 2016;65(1):1-49.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm',
+          publishedAt: '2016-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-03',
+        datePrecision: 'DAY',
+        reason: 'The CDC published a revised 2022 Clinical Practice Guideline that superseded the 2016 guideline, removing the rigid MME dosage thresholds and duration limits after evidence that they had been widely misapplied — producing abrupt tapering, untreated pain, and patient harm. The specific numeric prescribing thresholds of the 2016 guideline were walked back rather than reaffirmed.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2022',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022;71(3):1-95.',
+          url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
+          publishedAt: '2022-11-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 21. DEA hydrocodone rescheduling — Schedule III → Schedule II 2014 ────────
+  {
+    externalId: 'trajectory:dea-hydrocodone-schedule-ii-2014',
+    text: 'The DEA published a final rule on August 22, 2014, rescheduling hydrocodone combination products from Schedule III to Schedule II of the Controlled Substances Act, effective October 6, 2014, on the determination that they have a high potential for abuse that may lead to severe psychological or physical dependence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-08-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-08-22',
+        datePrecision: 'DAY',
+        reason: 'Following an HHS scientific and medical evaluation concluding that adding nonnarcotic substances like acetaminophen does not diminish hydrocodone\'s abuse potential, the DEA published a final rule moving hydrocodone combination products from Schedule III to the more restrictive Schedule II, effective October 6, 2014. The reclassification formally upgraded the abuse-and-dependence assessment of the most-prescribed opioid class in the United States.',
+        source: {
+          externalId: 'src:dea-fr-hydrocodone-rescheduling-2014',
+          name: 'DEA. Schedules of Controlled Substances: Rescheduling of Hydrocodone Combination Products From Schedule III to Schedule II. Final rule. Fed. Reg. 79(163):49661, Aug. 22, 2014.',
+          url: 'https://www.federalregister.gov/documents/2014/08/22/2014-19922/schedules-of-controlled-substances-rescheduling-of-hydrocodone-combination-products-from-schedule',
+          publishedAt: '2014-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
