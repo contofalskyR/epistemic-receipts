@@ -59559,6 +59559,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Shimbra Kure — opening of the Ethiopian–Adal War (1529) ────────
+  {
+    externalId: 'trajectory:battle-of-shimbra-kure-1529',
+    text: 'On 9 March 1529, at Shimbra Kure, the army of Imam Ahmad ibn Ibrahim al-Ghazi ("Gran") of the Adal Sultanate defeated the much larger host of Emperor Lebna Dengel (Dawit II) of Ethiopia — the opening pitched battle of the Ethiopian–Adal War (the Futuh al-Habasa) that would go on to overrun most of the Christian highlands.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1529-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1529-03-09',
+        datePrecision: 'DAY',
+        reason: 'The Adal army of Imam Ahmad, smaller but disciplined and partly equipped with firearms, met the vast Ethiopian levy of Emperor Lebna Dengel at Shimbra Kure ("the chickpea field"). Despite heavy Muslim losses, the Adal forces broke the Ethiopian lines and won the field, though Ahmad withdrew from the highlands for nearly two years afterwards. The battle was recorded in detail by the contemporary Arab chronicler Shihab al-Din Ahmad (Arab Faqih) in the Futuh al-Habasa.',
+        source: {
+          externalId: 'src:shimbra-kure-futuh-al-habasa',
+          name: 'Shihab al-Din Ahmad ibn Abd al-Qader (Arab Faqih), Futuh al-Habasa (c. 1559) — contemporary Arabic chronicle of the Adal conquest, recording the battle of Shimbra Kure.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Shimbra_Kure',
+          publishedAt: '1559-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Futuh al-Habasa of Arab Faqih, corroborated by the Geʿez royal chronicles and Portuguese accounts of the war, fixes Shimbra Kure as the first major engagement of the conflict. Modern historiography of the Ethiopian–Adal War treats the 1529 battle as the conventional opening of the conquest that nearly destroyed the Christian Solomonic state, a settled judgment with debate confined to the precise day and the size of the armies.',
+        source: {
+          externalId: 'src:shimbra-kure-wikipedia',
+          name: 'Battle of Shimbra Kure (9 March 1529) — Adal Sultanate vs. Ethiopian Empire.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Shimbra_Kure',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Wofla — death of Cristóvão da Gama in Ethiopia (1542) ──────────
+  {
+    externalId: 'trajectory:battle-of-wofla-1542',
+    text: 'On 28 August 1542, at Wofla near Lake Ashenge, the Adal–Ottoman army of Imam Ahmad ibn Ibrahim al-Ghazi defeated the Portuguese musketeer expedition aiding Ethiopia; its commander Cristóvão da Gama was captured and personally executed by the Imam — a major Adal victory that preceded the Ethiopian recovery and Ahmad\'s own death the following year.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1542-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1542-08-28',
+        datePrecision: 'DAY',
+        reason: 'Reinforced by Ottoman musketeers and artillery, Imam Ahmad attacked the camp of the Portuguese expedition led by Cristóvão da Gama (son of Vasco da Gama) at Wofla. The Portuguese formation was overwhelmed; da Gama was wounded, captured, and brought before the Imam, who tortured and executed him within hours. The defeat and his death were recorded by the Portuguese eyewitness Miguel de Castanhoso, who survived the battle.',
+        source: {
+          externalId: 'src:wofla-castanhoso-1564',
+          name: 'Miguel de Castanhoso, account of Dom Cristóvão da Gama\'s expedition to Ethiopia (written c. 1564) — eyewitness narrative of the defeat at Wofla and the capture and execution of da Gama.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Wofla',
+          publishedAt: '1564-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Castanhoso\'s eyewitness narrative, the account of João Bermudes, and the Geʿez chronicles independently record the defeat at Wofla and the execution of Cristóvão da Gama in August 1542. Modern historiography of the Ethiopian–Adal War treats Wofla as the nadir of the Portuguese-Ethiopian cause before the decisive recovery at Wayna Daga (February 1543) — a settled point with debate confined to the exact location and day.',
+        source: {
+          externalId: 'src:wofla-wikipedia',
+          name: 'Battle of Wofla (28 August 1542) — Adal Sultanate & Ottoman Empire vs. Portugal & Ethiopian Empire.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Wofla',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Death of Queen Njinga of Ndongo and Matamba (1663) ──────────────────────
+  {
+    externalId: 'trajectory:njinga-death-1663',
+    text: 'On 17 December 1663, Queen Njinga (Ana de Sousa) of Ndongo and Matamba — who had resisted Portuguese expansion in Angola for nearly four decades through war, diplomacy, and shifting alliances — died at her court in Matamba; her life and death were documented in detail by the Capuchin missionary Giovanni Antonio Cavazzi, who resided at her court and presided at her funeral.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1663-12-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1663-12-17',
+        datePrecision: 'DAY',
+        reason: 'After a throat infection that spread to her lungs left her bedridden from October 1663, Njinga died in her sleep on the morning of 17 December 1663, aged about eighty. The Capuchin missionaries Giovanni Antonio Cavazzi and Antonio Gaeta, who had lived at her court since 1658, attended her final illness; Cavazzi presided at her funeral and recorded the events in his contemporary manuscript, the basis of his Istorica descrizione de\' tre regni Congo, Matamba et Angola (1687).',
+        source: {
+          externalId: 'src:njinga-cavazzi-1687',
+          name: 'Giovanni Antonio Cavazzi da Montecuccolo, Istorica descrizione de\' tre regni Congo, Matamba et Angola (1687) — eyewitness Capuchin account of Queen Njinga\'s court, final illness, and death on 17 December 1663.',
+          url: 'https://en.wikipedia.org/wiki/Ana_Nzinga',
+          publishedAt: '1687-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The eyewitness Capuchin records of Cavazzi and Gaeta, together with Portuguese colonial correspondence from Angola, fix the date and circumstances of Njinga\'s death. Modern historiography of seventeenth-century Angola — including the biographies by John K. Thornton and Linda Heywood — treats her death on 17 December 1663 and her decades-long resistance to Portuguese conquest as settled fact.',
+        source: {
+          externalId: 'src:njinga-wikipedia',
+          name: 'Njinga of Ndongo and Matamba — death on 17 December 1663 (per Cavazzi and modern biographies).',
+          url: 'https://en.wikipedia.org/wiki/Ana_Nzinga',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Fort Jesus — Omani capture of Mombasa (1698) ────────────────────
+  {
+    externalId: 'trajectory:fall-of-fort-jesus-mombasa-1698',
+    text: 'On 13 December 1698, after a siege of nearly three years, the Omani forces of Sultan Saif bin Sultan stormed and captured Fort Jesus at Mombasa from its decimated Portuguese garrison, ending nearly two centuries of Portuguese dominance over the northern Swahili coast.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1698-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1698-12-13',
+        datePrecision: 'DAY',
+        reason: 'Omani forces had blockaded and besieged Fort Jesus since 1696. By December 1698 the Portuguese garrison had been reduced by disease, starvation, and desertion to a handful of defenders. The final Omani assault on 13 December 1698 overran the fort, killing or capturing the survivors. The fall ended Portuguese control of Mombasa and the Swahili coast north of Cape Delgado, and was reported in Portuguese, Omani, and Swahili accounts.',
+        source: {
+          externalId: 'src:fort-jesus-1698-fall',
+          name: 'Fall of Fort Jesus, Mombasa, 13 December 1698 — Omani capture ending the siege of 1696–1698 (Portuguese and Swahili contemporary accounts).',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Fort_Jesus',
+          publishedAt: '1698-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Portuguese records of the Estado da Índia and Omani and Swahili chronicles fix the date and the outcome of the siege. Modern historiography of the East African coast treats the 1698 fall of Fort Jesus as the decisive end of Portuguese hegemony on the northern Swahili coast and the beginning of Omani Arab ascendancy — a settled landmark in Indian Ocean history.',
+        source: {
+          externalId: 'src:fort-jesus-wikipedia',
+          name: 'Fort Jesus, Mombasa — captured by the Omanis on 13 December 1698 after the siege of 1696–1698.',
+          url: 'https://en.wikipedia.org/wiki/Fort_Jesus',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Accademia dei Lincei founded (1603) ─────────────────────────────────────
   {
     externalId: 'trajectory:accademia-dei-lincei-founded-1603',
