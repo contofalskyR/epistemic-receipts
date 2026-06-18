@@ -6009,6 +6009,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Treaty of Küçük Kaynarca — Ottoman defeat by Russia ──────────────────────
+  {
+    externalId: 'trajectory:kucuk-kaynarca-1774',
+    text: 'The Treaty of Küçük Kaynarca, signed on 21 July 1774, ended the Russo-Turkish War of 1768–1774, forcing the Ottoman Empire to recognize the independence of the Crimean Khanate and to grant Russia Black Sea ports and a claimed protectorate over Ottoman Orthodox Christians.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1774-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1774-07-21',
+        datePrecision: 'DAY',
+        reason: 'Field-Marshal Count Pyotr Rumyantsev for Russia and Grand Vizier Muhsinzade Mehmed Pasha for the Ottoman Empire sign the peace treaty in the village of Küçük Kaynarca (modern Kaynardzha, Bulgaria). The signed instrument records Ottoman recognition of Crimean independence, cession of Black Sea ports including Kerch and Yenikale, and Russian commercial and religious rights — the first major Ottoman territorial concessions to a Christian power by treaty.',
+        source: {
+          externalId: 'src:kucuk-kaynarca-treaty-1774',
+          name: 'Treaty of Küçük Kaynarca (21 July 1774), Russian Empire and Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_K%C3%BC%C3%A7%C3%BCk_Kaynarca',
+          publishedAt: '1774-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Diplomatic historians treat the treaty as a settled turning point marking the start of the Ottoman Empire\'s long territorial retreat and the rise of Russia as a Black Sea power; the contested "protectorate over Orthodox Christians" clause is cited as a pretext Russia later invoked, including in the run-up to the Crimean War. The text and its provisions are preserved in standard treaty collections.',
+        source: {
+          externalId: 'src:kucuk-kaynarca-historiography',
+          name: 'Davison RH. "\'Russian Skill and Turkish Imbecility\': The Treaty of Kuchuk Kainardji Reconsidered." Slavic Review 35:3 (1976), 463–483.',
+          url: 'https://www.jstor.org/stable/2495124',
+          publishedAt: '1976-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Massacre of the Citadel — Muhammad Ali destroys the Mamluks ──────────────
+  {
+    externalId: 'trajectory:cairo-citadel-massacre-1811',
+    text: 'On 1 March 1811, Muhammad Ali Pasha lured the Mamluk beys to a ceremony at the Cairo Citadel and had them trapped and shot in the narrow passageway, killing nearly all of approximately 470 Mamluk leaders and breaking their power in Egypt.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1811-03-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1811-03-01',
+        datePrecision: 'DAY',
+        reason: 'Muhammad Ali invites the Mamluk beys to the Citadel to celebrate the investiture of his son Tusun as commander of an expedition against the Wahhabis in Arabia. As the procession descends the steep walled road, the gates are closed and troops open fire from the heights; very few of the roughly 470 Mamluks escape. The Egyptian chronicler al-Jabarti records the event contemporaneously in his Ajaib al-Athar.',
+        source: {
+          externalId: 'src:citadel-massacre-1811',
+          name: 'Massacre of the Citadel, Cairo (1 March 1811).',
+          url: 'https://en.wikipedia.org/wiki/Massacre_of_the_Citadel',
+          publishedAt: '1811-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The massacre is treated by historians of modern Egypt as the decisive consolidation of Muhammad Ali\'s autocratic rule, eliminating the Mamluk military caste that had dominated Egypt for centuries and clearing the way for his reforms. The date and circumstances, corroborated by al-Jabarti and European observers in Cairo, are settled in the historiography of the period.',
+        source: {
+          externalId: 'src:muhammad-ali-egypt-historiography',
+          name: 'Fahmy K. All the Pasha\'s Men: Mehmed Ali, His Army and the Making of Modern Egypt. Cambridge University Press, 1997.',
+          url: 'https://en.wikipedia.org/wiki/Muhammad_Ali_of_Egypt',
+          publishedAt: '1997-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Auspicious Incident — abolition of the Janissaries ───────────────────
+  {
+    externalId: 'trajectory:auspicious-incident-1826',
+    text: 'On 15 June 1826, Sultan Mahmud II suppressed the revolting Janissary corps in Constantinople — bombarding their barracks and killing thousands — and abolished the centuries-old institution, an event known as the Auspicious Incident (Vaka-i Hayriye).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1826-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1826-06-15',
+        datePrecision: 'DAY',
+        reason: 'When Mahmud II announces a new European-style infantry, the Janissaries revolt as anticipated. The Sultan unfurls the Holy Banner of the Prophet to rally loyal troops and the population, and artillery sets the Janissary barracks ablaze, killing thousands. The corps is formally abolished and replaced by the Asakir-i Mansure-i Muhammediye. Ottoman chronicles and contemporary dispatches record the date and the suppression.',
+        source: {
+          externalId: 'src:auspicious-incident-1826',
+          name: 'The Auspicious Incident (Vaka-i Hayriye), abolition of the Janissaries (15 June 1826).',
+          url: 'https://en.wikipedia.org/wiki/Auspicious_Incident',
+          publishedAt: '1826-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians treat the destruction of the Janissaries as a settled prerequisite for the Ottoman military and administrative reforms of the nineteenth century, removing the chief armed obstacle to centralization and clearing the path to the Tanzimat. The event and its 1826 date are uncontested across Ottoman historiography.',
+        source: {
+          externalId: 'src:janissary-abolition-historiography',
+          name: 'Shaw SJ, Shaw EK. History of the Ottoman Empire and Modern Turkey, Vol. 2. Cambridge University Press, 1977.',
+          url: 'https://en.wikipedia.org/wiki/Janissaries',
+          publishedAt: '1977-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // PHYSICS REVOLUTION / TOTALITARIANISM / HOLOCAUST / ATOMIC AGE (1900–1950)
   // ═══════════════════════════════════════════════════════════════════════════════
