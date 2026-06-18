@@ -3669,6 +3669,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANTIBIOTIC RESISTANCE & EMERGING PATHOGENS ERA (1997–2000)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── N+5. VISA — vancomycin-intermediate S. aureus 1997 ──────────────────────
+  {
+    externalId: 'trajectory:visa-vancomycin-intermediate-saureus-1997',
+    text: 'In 1997, Staphylococcus aureus strains with reduced (intermediate) susceptibility to vancomycin emerged independently in Japan and the United States, breaching the antibiotic widely regarded as the last reliable treatment for methicillin-resistant S. aureus (MRSA).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-08-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-08-22',
+        datePrecision: 'DAY',
+        reason: 'The CDC reported in MMWR the first U.S. clinical isolate of S. aureus with reduced susceptibility to vancomycin (VISA; vancomycin MIC=8 µg/mL), from a Michigan dialysis patient. This was the first formal institutional recognition in the United States that the glycopeptide of last resort against MRSA was beginning to fail, converting a long-feared theoretical risk into a documented clinical fact.',
+        source: {
+          externalId: 'src:cdc-mmwr-visa-us-1997',
+          name: 'CDC. Staphylococcus aureus with Reduced Susceptibility to Vancomycin — United States, 1997. MMWR Morb Mortal Wkly Rep. 1997 Aug 22;46(33):765-766.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00049042.htm',
+          publishedAt: '1997-08-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-12-06',
+        datePrecision: 'DAY',
+        reason: 'Kotaro Hiramatsu and colleagues reported in The Lancet that S. aureus strains heterogeneously resistant to vancomycin were already disseminated across Japanese hospitals (20% of MRSA isolates at one university hospital), following their earlier isolation of strain Mu50. The combination of independent Japanese and U.S. findings established VISA as a real, spreading phenomenon rather than an isolated curiosity, settling reduced vancomycin susceptibility in S. aureus as an established clinical reality.',
+        source: {
+          externalId: 'src:hiramatsu-lancet-visa-1997',
+          name: 'Hiramatsu K, Aritaka N, Hanaki H, et al. Dissemination in Japanese hospitals of strains of Staphylococcus aureus heterogeneously resistant to vancomycin. Lancet. 1997 Dec 6;350(9092):1670-1673.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9400512/',
+          publishedAt: '1997-12-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+6. Trovafloxacin (Trovan) hepatotoxicity — approved 1997, restricted 1999 ─
+  {
+    externalId: 'trajectory:trovafloxacin-trovan-hepatotoxicity-1999',
+    text: 'The broad-spectrum fluoroquinolone antibiotic trovafloxacin (Trovan), FDA-approved on December 18, 1997 for numerous serious infections, was sharply restricted by the FDA on June 9, 1999 after post-marketing surveillance linked it to severe idiosyncratic liver injury, and was withdrawn from major markets later that year.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-12-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved trovafloxacin tablets (NDA 20-759) and the IV prodrug alatrofloxacin (NDA 20-760) for once-daily treatment of a wide range of serious infections including nosocomial and community-acquired pneumonia and intra-abdominal infections. Phase III trials established efficacy, and Trovan was institutionally settled as a safe, effective broad-spectrum antibiotic and launched by Pfizer in February 1998.',
+        source: {
+          externalId: 'src:fda-trovan-approval-1997',
+          name: 'FDA. Drug Approval Package: Trovan (trovafloxacin mesylate) / alatrofloxacin, NDA 020759/020760. Approved December 18, 1997.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/97/020760a.cfm',
+          publishedAt: '1997-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-06-09',
+        datePrecision: 'DAY',
+        reason: 'Following more than 100 post-marketing reports of acute liver injury — including 14 cases of acute liver failure with deaths and transplants — the FDA issued a public health advisory restricting trovafloxacin to inpatient use for life- or limb-threatening infections only. The drug\'s safety profile, presumed settled at approval, was reversed by spontaneous adverse-event surveillance; marketing authorization was suspended in Europe in 1999 and the FDA withdrew it in 2000.',
+        source: {
+          externalId: 'src:jama-trovan-advisory-1999',
+          name: 'Nightingale SL (From the Food and Drug Administration). Trovafloxacin Public Health Advisory. JAMA. 1999;282(8):722.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/1842429',
+          publishedAt: '1999-08-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+7. Prevnar PCV7 — first pneumococcal conjugate vaccine for infants 2000 ──
+  {
+    externalId: 'trajectory:prevnar-pcv7-pneumococcal-conjugate-vaccine-2000',
+    text: 'The 7-valent pneumococcal conjugate vaccine (Prevnar/PCV7) was shown in the Northern California Kaiser Permanente trial to be ~97% efficacious against invasive pneumococcal disease in infants, and the FDA licensed it in February 2000 as the first pneumococcal vaccine effective in children under two years of age.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The double-blind Northern California Kaiser Permanente Efficacy Trial, enrolling 37,868 infants, reported in an interim analysis that the heptavalent CRM197 pneumococcal conjugate vaccine prevented invasive disease caused by vaccine serotypes with ~97% efficacy, prompting early termination of the controlled phase. For the first time, a pneumococcal vaccine was shown to protect children under two, the group at highest risk and unresponsive to the older polysaccharide vaccine.',
+        source: {
+          externalId: 'src:black-kaiser-pcv7-pediatric-research-1999',
+          name: 'Black S, Shinefield H, et al. Efficacy of Heptavalent Conjugate Pneumococcal Vaccine in 7,000 Infants and Children: Results of the Northern California Kaiser Permanente Efficacy Trial. Pediatric Research. 1999;45:147A.',
+          url: 'https://www.nature.com/articles/pr19991046',
+          publishedAt: '1999-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-02-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed Prevnar (Wyeth Lederle) for active immunization of infants and toddlers against invasive pneumococcal disease, and the pivotal trial was published in full (Black et al., Pediatr Infect Dis J, March 2000) showing 97.4% efficacy against vaccine-serotype invasive disease. ACIP subsequently recommended universal infant vaccination, settling PCV7 as standard pediatric immunization.',
+        source: {
+          externalId: 'src:fda-prevnar-pcv7-license-2000',
+          name: 'FDA. Pneumococcal 7-valent Conjugate Vaccine (Diphtheria CRM197 Protein) — Prevnar. Licensed February 2000.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/pneumococcal-7-valent-conjugate-vaccine-diphtheria-crm197-protein',
+          publishedAt: '2000-02-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+8. H5N1 avian influenza direct human infection — 1997 ─────────────────
+  {
+    externalId: 'trajectory:h5n1-avian-influenza-human-infection-1997',
+    text: 'In 1997, a purely avian influenza A(H5N1) virus was isolated from a 3-year-old boy in Hong Kong who died of respiratory failure — the first documented instance of this wholly avian subtype directly infecting and killing humans, overturning the assumption that avian influenza viruses required reassortment in an intermediate host to infect people.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-12-19',
+        datePrecision: 'DAY',
+        reason: 'After the index virus was identified as subtype H5N1 in August 1997 by laboratories in Atlanta, Rotterdam, and London, the CDC reported in MMWR a cluster of human H5N1 infections in Hong Kong (May–December 1997), with multiple deaths. This formally documented that an avian influenza subtype was infecting humans directly from poultry — a recognized emerging public-health threat.',
+        source: {
+          externalId: 'src:cdc-mmwr-h5n1-hongkong-1997',
+          name: 'CDC. Isolation of Avian Influenza A(H5N1) Viruses from Humans — Hong Kong, May–December 1997. MMWR Morb Mortal Wkly Rep. 1997 Dec 19;46(50):1204-1207.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9414153/',
+          publishedAt: '1997-12-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-01-16',
+        datePrecision: 'DAY',
+        reason: 'Subbarao and colleagues published in Science the full molecular characterization of A/Hong Kong/156/97, demonstrating that all eight gene segments were of avian origin with no human-virus reassortment. This settled the previously contested possibility that a wholly avian influenza virus could cross directly into humans and cause fatal disease, reshaping pandemic-preparedness science.',
+        source: {
+          externalId: 'src:subbarao-science-h5n1-1998',
+          name: 'Subbarao K, Klimov A, Katz J, et al. Characterization of an avian influenza A (H5N1) virus isolated from a child with a fatal respiratory illness. Science. 1998 Jan 16;279(5349):393-396.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9430591/',
+          publishedAt: '1998-01-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
