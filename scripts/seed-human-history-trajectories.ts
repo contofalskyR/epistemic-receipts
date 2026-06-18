@@ -63840,6 +63840,236 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — Southeast Asia
+  // added 2026-06-18
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sumpah Pemuda (Youth Pledge) — Indonesian nationalist declaration ───────
+  {
+    externalId: 'trajectory:sumpah-pemuda-1928',
+    text: 'On 28 October 1928 the Second Indonesian Youth Congress in Batavia (Jakarta) proclaimed the Sumpah Pemuda (Youth Pledge), affirming one motherland, one nation, and one unifying language — Indonesian (Bahasa Indonesia) — across the Dutch East Indies.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1928-10-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1928-10-28',
+        datePrecision: 'DAY',
+        reason: 'At the closing session of the Second Youth Congress, delegates from regional youth organizations across the Dutch East Indies adopted a three-part resolution proclaiming one motherland (Indonesia), one nation (the Indonesian nation), and the upholding of a single language of unity (Indonesian). W. R. Supratman first performed the song "Indonesia Raya" at the same congress. The proclamation was recorded contemporaneously and reported in the nationalist press.',
+        source: {
+          externalId: 'src:sumpah-pemuda-youth-pledge-1928',
+          name: 'Youth Pledge (Sumpah Pemuda), Second Indonesian Youth Congress, 28 October 1928 (Wikipedia, "Youth Pledge").',
+          url: 'https://en.wikipedia.org/wiki/Youth_Pledge',
+          publishedAt: '1928-10-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-12-16',
+        datePrecision: 'DAY',
+        reason: 'The date and content of the Youth Pledge are an undisputed part of Indonesia\'s national record; 28 October is commemorated annually as Sumpah Pemuda Day, formally designated a national day by Presidential Decree No. 316 of 1959, and the pledge is taught as the foundational moment of unified Indonesian nationalism and the adoption of Bahasa Indonesia.',
+        source: {
+          externalId: 'src:sumpah-pemuda-national-day',
+          name: 'Sumpah Pemuda Day — annual commemoration of the 28 October 1928 Youth Pledge (Wikipedia, "Youth Pledge").',
+          url: 'https://en.wikipedia.org/wiki/Youth_Pledge',
+          publishedAt: '1959-12-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Burma separated from British India ──────────────────────────────────────
+  {
+    externalId: 'trajectory:burma-separated-from-india-1937',
+    text: 'On 1 April 1937, under the Government of Burma Act 1935, Britain separated Burma from British India and constituted it as a separately administered Crown colony with its own constitution and partly elected legislature.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1937-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1937-04-01',
+        datePrecision: 'DAY',
+        reason: 'The Government of Burma Act 1935 came into force on 1 April 1937, detaching Burma from the British Indian administration that had governed it as a province since 1886. Burma received a new constitution providing for a fully elected assembly and a cabinet led by a premier (Ba Maw becoming the first), with defence, foreign affairs and currency reserved to the British Governor. The change took effect as a matter of statute and official gazette record.',
+        source: {
+          externalId: 'src:government-of-burma-act-1937',
+          name: 'Separation of Burma from British India, 1 April 1937, under the Government of Burma Act 1935 (Wikipedia, "British rule in Burma").',
+          url: 'https://en.wikipedia.org/wiki/British_rule_in_Burma',
+          publishedAt: '1937-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-04-01',
+        datePrecision: 'DAY',
+        reason: 'The separation is an undisputed constitutional fact documented in British statute, the colonial gazette and contemporary administration records; it is treated in the historiography as a defining stage in Burma\'s path from Indian province to the self-governing colony that would gain full independence in January 1948.',
+        source: {
+          externalId: 'src:burma-separation-historiography',
+          name: 'Historiographical record of the 1 April 1937 separation of Burma under the Government of Burma Act 1935 (Wikipedia, "British rule in Burma").',
+          url: 'https://en.wikipedia.org/wiki/British_rule_in_Burma',
+          publishedAt: '1937-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Singapore — British surrender to Japan ──────────────────────────
+  {
+    externalId: 'trajectory:fall-of-singapore-1942',
+    text: 'On 15 February 1942, Lieutenant-General Arthur Percival surrendered British Commonwealth forces at Singapore to General Tomoyuki Yamashita of the Imperial Japanese Army — the largest capitulation in British military history.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1942-02-15',
+        datePrecision: 'DAY',
+        reason: 'After the Japanese assault on Singapore (8–15 February 1942) and the collapse of the island\'s water supply, Lt-Gen Percival met his senior commanders on the morning of 15 February and, deciding further resistance was untenable, formally surrendered to Gen Yamashita at the Ford Motor Factory in Bukit Timah shortly after 17:15. About 80,000 British, Australian and Indian troops became prisoners of war. The surrender was reported worldwide immediately and announced in Parliament by Winston Churchill.',
+        source: {
+          externalId: 'src:fall-of-singapore-surrender-1942',
+          name: 'British surrender of Singapore to Japan, 15 February 1942 (Wikipedia, "Fall of Singapore").',
+          url: 'https://en.wikipedia.org/wiki/Fall_of_Singapore',
+          publishedAt: '1942-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-02-15',
+        datePrecision: 'DAY',
+        reason: 'The date, the surrendering and accepting commanders, and the scale of the capitulation are corroborated by both British and Japanese military records, the signed surrender document, photographs of the Ford Factory meeting, and contemporaneous newsreels. The event is settled in the historiography of the Pacific War as the fall of Britain\'s "Gibraltar of the East."',
+        source: {
+          externalId: 'src:fall-of-singapore-historiography',
+          name: 'Historiographical and documentary record of the 15 February 1942 surrender at the Ford Motor Factory (Wikipedia, "Fall of Singapore").',
+          url: 'https://en.wikipedia.org/wiki/Fall_of_Singapore',
+          publishedAt: '1942-02-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bataan Death March — concealed atrocity later judged a war crime ─────────
+  {
+    externalId: 'trajectory:bataan-death-march-1942',
+    text: 'Following the surrender of Bataan in the Philippines on 9 April 1942, the Imperial Japanese Army forcibly marched roughly 60,000–80,000 American and Filipino prisoners of war some 100 km under brutal conditions, killing thousands — an atrocity later judged a war crime, for which General Masaharu Homma was convicted and executed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-04-09',
+        datePrecision: 'DAY',
+        reason: 'After Major-General Edward King surrendered the Bataan peninsula to Japanese forces on 9 April 1942, the captured American and Filipino prisoners were forced to march from Mariveles toward Camp O\'Donnell. Beatings, bayonetings, beheadings, denial of food and water, and summary executions killed thousands en route. Survivors and a few escapees recorded the events, though the full scale was initially concealed by Japanese authorities.',
+        source: {
+          externalId: 'src:bataan-death-march-1942',
+          name: 'Bataan Death March following the surrender of Bataan, 9 April 1942 (Wikipedia, "Bataan Death March").',
+          url: 'https://en.wikipedia.org/wiki/Bataan_Death_March',
+          publishedAt: '1942-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1946-02-11',
+        datePrecision: 'DAY',
+        reason: 'A U.S. military commission in Manila tried Lt-Gen Masaharu Homma, commander of the Japanese forces in the Philippines, for permitting troops under his command to commit the Bataan atrocities. The trial ran from January 1946; he was found guilty, sentenced to death on 11 February 1946, and executed by firing squad on 3 April 1946. The march was formally adjudicated a Japanese war crime, settling the factual and legal record.',
+        source: {
+          externalId: 'src:homma-war-crimes-trial-1946',
+          name: 'War crimes trial and execution of Gen Masaharu Homma for the Bataan Death March, 1946 (Wikipedia, "Bataan Death March").',
+          url: 'https://en.wikipedia.org/wiki/Bataan_Death_March',
+          publishedAt: '1946-02-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Aung San — Burmese independence leader killed ──────────
+  {
+    externalId: 'trajectory:aung-san-assassination-1947',
+    text: 'On 19 July 1947, Aung San, the leader of Burma\'s pre-independence Executive Council, and six fellow cabinet ministers were assassinated by armed gunmen at the Secretariat in Rangoon; the rival politician U Saw was convicted of organizing the plot and hanged.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1947-07-19',
+        datePrecision: 'DAY',
+        reason: 'A little after 10:30 am on 19 July 1947, a jeep carrying gunmen in military fatigues drove into the courtyard of the Secretariat Building in Rangoon, where the Executive Council was meeting. The gunmen burst into the council chamber and shot dead Aung San and six other ministers (plus a cabinet secretary and a bodyguard). The killings were reported immediately and threw Burma\'s independence transition into crisis.',
+        source: {
+          externalId: 'src:aung-san-assassination-1947',
+          name: 'Assassination of Aung San and cabinet ministers at the Secretariat, Rangoon, 19 July 1947 (Wikipedia, "Aung San").',
+          url: 'https://en.wikipedia.org/wiki/Aung_San',
+          publishedAt: '1947-07-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1948-05-08',
+        datePrecision: 'DAY',
+        reason: 'U Saw, a former premier and political rival of Aung San, was arrested the same day; weapons were recovered from a lake on his property. He and his co-conspirators were tried before a special tribunal, convicted of the murders, and U Saw was hanged at Insein Prison on 8 May 1948. The judicial proceedings established U Saw\'s responsibility for organizing the assassination as the legally settled account.',
+        source: {
+          externalId: 'src:u-saw-conviction-aung-san-1948',
+          name: 'Trial, conviction and execution of U Saw for the assassination of Aung San, 1947–1948 (Wikipedia, "Aung San").',
+          url: 'https://en.wikipedia.org/wiki/Aung_San',
+          publishedAt: '1948-05-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-01-04',
+        datePrecision: 'DAY',
+        reason: 'The assassination and U Saw\'s culpability remain settled in the historiography, though peripheral questions of possible wider involvement persist. Aung San is commemorated in Burma/Myanmar as the architect of independence (achieved 4 January 1948) and the founding hero of the nation; 19 July is observed annually as Martyrs\' Day.',
+        source: {
+          externalId: 'src:aung-san-martyrs-day',
+          name: 'Martyrs\' Day commemoration and historiographical record of the 19 July 1947 assassination (Wikipedia, "Aung San").',
+          url: 'https://en.wikipedia.org/wiki/Aung_San',
+          publishedAt: '1948-01-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
