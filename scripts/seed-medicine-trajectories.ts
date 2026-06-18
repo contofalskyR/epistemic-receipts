@@ -10906,6 +10906,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED THERAPY ERA (2000–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Trastuzumab adjuvant HER2+ early breast cancer — 2005 ───────────────────
+  {
+    externalId: 'trajectory:trastuzumab-adjuvant-her2-early-breast-cancer-2005',
+    text: 'On 20 October 2005 the New England Journal of Medicine published the joint analysis of the NSABP B-31 and NCCTG N9831 trials showing that adding adjuvant trastuzumab to chemotherapy after surgery cut recurrence by roughly half in women with operable HER2-positive breast cancer.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-10-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-20',
+        datePrecision: 'DAY',
+        reason: 'Romond and colleagues reported a combined interim analysis of two large adjuvant trials (3,752 patients) in which trastuzumab added to doxorubicin/cyclophosphamide/paclitaxel reduced the risk of recurrence by about 52% (hazard ratio 0.48) and death by 33%. Published alongside the HERA trial in the same NEJM issue, it extended HER2-targeted therapy from metastatic to curative-intent early-stage disease and was hailed as practice-changing.',
+        source: {
+          externalId: 'src:romond-nejm-trastuzumab-adjuvant-2005',
+          name: 'Romond EH, Perez EA, Bryant J, et al. Trastuzumab plus adjuvant chemotherapy for operable HER2-positive breast cancer. N Engl J Med. 2005;353(16):1673-1684.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16236738/',
+          publishedAt: '2005-10-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-11-16',
+        datePrecision: 'MONTH',
+        reason: 'In November 2006 the FDA approved trastuzumab for the adjuvant treatment of HER2-overexpressing, node-positive early breast cancer based on the pooled NSABP B-31/NCCTG N9831 data. The institutional approval converted the trial finding into standard of care, making HER2 testing and adjuvant trastuzumab routine for early HER2-positive breast cancer.',
+        source: {
+          externalId: 'src:fda-herceptin-adjuvant-approval-2006',
+          name: 'Genentech/FDA. Herceptin (trastuzumab) approved for adjuvant treatment of HER2-positive node-positive breast cancer. November 2006.',
+          url: 'https://www.cancernetwork.com/view/fda-approves-new-adjuvant-indication-herceptin',
+          publishedAt: '2006-11-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bevacizumab first angiogenesis inhibitor colorectal — 2004 ──────────────
+  {
+    externalId: 'trajectory:bevacizumab-first-angiogenesis-inhibitor-colorectal-2004',
+    text: 'On 26 February 2004 the FDA approved bevacizumab (Avastin) as first-line treatment for metastatic colorectal cancer, the first anti-angiogenic agent shown to extend survival and validation of Folkman\'s tumor-angiogenesis hypothesis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-02-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved bevacizumab, a monoclonal antibody against VEGF, as the first approved agent targeting tumor angiogenesis. Approval rested on a randomized trial showing addition of bevacizumab to IFL chemotherapy extended median survival from 15.6 to 20.3 months. This clinically confirmed Judah Folkman\'s long-contested hypothesis that blocking blood-vessel formation could treat cancer.',
+        source: {
+          externalId: 'src:fda-bevacizumab-colorectal-2004',
+          name: 'FDA Approves First Angiogenesis Inhibitor to Treat Colorectal Cancer. U.S. FDA / ScienceDaily. 27 February 2004.',
+          url: 'https://www.sciencedaily.com/releases/2004/02/040227071334.htm',
+          publishedAt: '2004-02-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-06-03',
+        datePrecision: 'DAY',
+        reason: 'Hurwitz and colleagues published the pivotal phase III trial in NEJM, reporting that adding bevacizumab to irinotecan/fluorouracil/leucovorin produced a statistically significant and clinically meaningful survival improvement in metastatic colorectal cancer. The peer-reviewed publication cemented the regulatory approval in the expert literature.',
+        source: {
+          externalId: 'src:hurwitz-nejm-bevacizumab-2004',
+          name: 'Hurwitz H, Fehrenbacher L, Novotny W, et al. Bevacizumab plus irinotecan, fluorouracil, and leucovorin for metastatic colorectal cancer. N Engl J Med. 2004;350(23):2335-2342.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15175435/',
+          publishedAt: '2004-06-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── KRAS mutation predicts cetuximab resistance colorectal — 2008 ────────────
+  {
+    externalId: 'trajectory:kras-mutation-predicts-cetuximab-resistance-colorectal-2008',
+    text: 'On 23 October 2008 the New England Journal of Medicine reported that patients with KRAS-mutated metastatic colorectal tumors derive no benefit from the EGFR antibody cetuximab, whereas wild-type KRAS patients do — establishing KRAS as a predictive biomarker for anti-EGFR therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'Karapetis and colleagues analyzed tumor KRAS status in the NCIC CTG CO.17 trial and found cetuximab improved overall and progression-free survival only in wild-type KRAS tumors, with no benefit (and possible harm) in mutated KRAS. Together with the panitumumab analyses, this overturned the prior practice of giving EGFR antibodies to unselected colorectal patients and launched routine predictive biomarker testing in solid tumors.',
+        source: {
+          externalId: 'src:karapetis-nejm-kras-cetuximab-2008',
+          name: 'Karapetis CS, Khambata-Ford S, Jonker DJ, et al. K-ras mutations and benefit from cetuximab in advanced colorectal cancer. N Engl J Med. 2008;359(17):1757-1765.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18946061/',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-02-02',
+        datePrecision: 'DAY',
+        reason: 'ASCO issued a Provisional Clinical Opinion in the Journal of Clinical Oncology recommending that all metastatic colorectal cancer patients considered for cetuximab or panitumumab be tested for KRAS mutations, and that patients with codon 12/13 mutations not receive these antibodies. The FDA subsequently updated both drug labels to restrict use to wild-type KRAS, institutionalizing biomarker-guided prescribing.',
+        source: {
+          externalId: 'src:asco-pco-kras-2009',
+          name: 'Allegra CJ, Jessup JM, Somerfield MR, et al. ASCO Provisional Clinical Opinion: testing for KRAS gene mutations in patients with metastatic colorectal carcinoma. J Clin Oncol. 2009;27(12):2091-2096.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2790641/',
+          publishedAt: '2009-02-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bortezomib first proteasome inhibitor myeloma — 2003 ────────────────────
+  {
+    externalId: 'trajectory:bortezomib-first-proteasome-inhibitor-myeloma-2003',
+    text: 'On 13 May 2003 the FDA granted accelerated approval to bortezomib (Velcade) for relapsed/refractory multiple myeloma, the first proteasome inhibitor and a new mechanistic class of anticancer drug.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-06-26',
+        datePrecision: 'DAY',
+        reason: 'Richardson and colleagues published the SUMMIT phase II study in NEJM, reporting a 35% response rate and 16-month median survival in 202 patients with myeloma refractory to their most recent therapy. The trial established proteasome inhibition as a viable anticancer strategy and defined a wholly new drug class.',
+        source: {
+          externalId: 'src:richardson-nejm-bortezomib-2003',
+          name: 'Richardson PG, Barlogie B, Berenson J, et al. A phase 2 study of bortezomib in relapsed, refractory myeloma. N Engl J Med. 2003;348(26):2609-2617.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12826635/',
+          publishedAt: '2003-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-13',
+        datePrecision: 'DAY',
+        reason: 'On the basis of the phase II response-rate data, the FDA granted accelerated approval just four months after submission, making bortezomib the first proteasome inhibitor approved for any cancer. The approval inaugurated a new therapeutic class that became a backbone of multiple myeloma treatment.',
+        source: {
+          externalId: 'src:fda-bortezomib-approval-2003',
+          name: 'Kane RC, Bross PF, Farrell AT, Pazdur R. Velcade: U.S. FDA approval for the treatment of multiple myeloma progressing on prior therapy. Oncologist. 2003;8(6):508-513.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
+          publishedAt: '2003-05-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ATRA differentiation therapy acute promyelocytic leukemia — 1995 ─────────
+  {
+    externalId: 'trajectory:atra-differentiation-therapy-acute-promyelocytic-leukemia-1995',
+    text: 'All-trans retinoic acid (ATRA), first reported by Huang and colleagues in 1988 to induce remission in acute promyelocytic leukemia by differentiating rather than killing leukemic cells, was approved by the FDA on 22 November 1995 and confirmed by randomized intergroup trials, transforming APL from the most fatal acute leukemia into the most curable.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1988-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-11-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved oral tretinoin (Vesanoid/ATRA) for induction of remission in acute promyelocytic leukemia, validating differentiation therapy — forcing malignant cells to mature rather than killing them — as a genuine anticancer mechanism. This converted the earlier Chinese and French clinical observations into a sanctioned therapy.',
+        source: {
+          externalId: 'src:fda-vesanoid-label-atra',
+          name: 'FDA. Vesanoid (tretinoin) capsules prescribing information / approval (NDA 020438), approved 22 November 1995.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/020438s007s008lbl.pdf',
+          publishedAt: '1995-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-10-09',
+        datePrecision: 'DAY',
+        reason: 'Tallman and colleagues published the North American Intergroup randomized trial in NEJM, showing that ATRA for induction or maintenance significantly improved disease-free and overall survival versus chemotherapy alone in APL. The trial settled ATRA (with chemotherapy) as standard first-line therapy and established APL as the prototype of curable, molecularly targeted differentiation therapy.',
+        source: {
+          externalId: 'src:tallman-nejm-atra-apl-1997',
+          name: 'Tallman MS, Andersen JW, Schiffer CA, et al. All-trans-retinoic acid in acute promyelocytic leukemia. N Engl J Med. 1997;337(15):1021-1028.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9321529/',
+          publishedAt: '1997-10-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
