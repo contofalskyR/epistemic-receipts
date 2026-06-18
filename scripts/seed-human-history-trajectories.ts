@@ -10033,6 +10033,216 @@ const TRAJECTORIES: Trajectory[] = [
   // COLD WAR & POSTWAR (1950–1990): space race, civil rights, Vietnam, environment, computing
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Explorer 1 — discovery of the Van Allen radiation belts ────────────────
+  {
+    externalId: 'trajectory:explorer-1-van-allen-belts-1958',
+    text: 'Explorer 1, the first United States satellite, was launched on January 31, 1958; the anomalous behavior of its cosmic-ray detector led to the discovery of Earth\'s belts of trapped charged particles, the Van Allen radiation belts.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-01-31',
+        datePrecision: 'DAY',
+        reason: 'A Juno I (Jupiter-C) rocket launches from Cape Canaveral and places Explorer 1 into orbit — the first U.S. satellite, following the Soviet Sputniks and a failed Vanguard attempt. Its science payload, designed by University of Iowa physicist James Van Allen, includes a Geiger–Müller cosmic-ray detector and a miniature tape recorder, which begin returning count-rate data immediately.',
+        source: {
+          externalId: 'src:nasa-explorer-1-1958',
+          name: 'NASA. "Explorer 1: America\'s First Satellite" — launched January 31, 1958; Van Allen cosmic-ray detection package.',
+          url: 'https://science.nasa.gov/mission/explorer-1/',
+          publishedAt: '1958-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Explorer 1\'s Geiger counter unexpectedly fell silent at high altitudes — interpreted by Van Allen and colleagues as saturation by intense radiation rather than an absence of it. Data from Explorer 3 (launched March 26, 1958) confirmed the pattern, and Van Allen announced the discovery of Earth\'s trapped-radiation belts on May 1, 1958. Later spacecraft mapped the belts in detail, making them settled space-physics fact now bearing his name.',
+        source: {
+          externalId: 'src:nasa-van-allen-belts-1958',
+          name: 'NASA. Explorer 1 mission — Geiger counter data and the discovery of the Van Allen radiation belts.',
+          url: 'https://science.nasa.gov/mission/explorer-1/',
+          publishedAt: '1958-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Luna 3 — first photographs of the far side of the Moon ─────────────────
+  {
+    externalId: 'trajectory:luna-3-far-side-moon-1959',
+    text: 'The Soviet probe Luna 3, launched October 4, 1959, returned the first photographs of the far side of the Moon — a hemisphere never before seen by humans — beginning on October 7, 1959.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-10-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-10-07',
+        datePrecision: 'DAY',
+        reason: 'After swinging around the Moon, Luna 3 took its first image of the sunlit far side at about 03:30 UT on October 7, 1959, from roughly 63,500 km. A total of 29 photographs covering about 70% of the far side were developed onboard, scanned, and radioed back to Earth over the following days, revealing a hemisphere humanity had never observed.',
+        source: {
+          externalId: 'src:nasa-luna-3-far-side-1959',
+          name: 'NASA. "First Photo of the Lunar Far Side" — Luna 3, first images of the Moon\'s far side, October 1959.',
+          url: 'https://science.nasa.gov/resource/first-photo-of-the-lunar-far-side/',
+          publishedAt: '1959-10-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Luna 3 images showed the far side to be densely cratered and almost devoid of the dark maria that dominate the near side. The Soviet Academy of Sciences published an atlas of the far side in 1960, with newly named features (e.g., Mare Moscoviense, Tsiolkovskiy crater); subsequent missions (Zond 3, Lunar Orbiter) confirmed and refined the picture, settling the near-side/far-side asymmetry as basic lunar science.',
+        source: {
+          externalId: 'src:astronomy-luna-3-1959',
+          name: 'Astronomy.com. "Oct. 7, 1959: The first photos of the Moon\'s farside are taken" (Luna 3).',
+          url: 'https://www.astronomy.com/today-in-the-history-of-astronomy/oct-7-1959-the-first-photos-of-the-moons-farside-are-taken/',
+          publishedAt: '1959-10-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Selma "Bloody Sunday" — voting-rights march attacked ───────────────────
+  {
+    externalId: 'trajectory:selma-bloody-sunday-1965',
+    text: 'On March 7, 1965 ("Bloody Sunday"), Alabama state troopers and possemen attacked some 600 voting-rights marchers with clubs and tear gas at the Edmund Pettus Bridge in Selma, Alabama; televised images of the assault galvanized national support for federal voting-rights legislation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-03-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1965-03-07',
+        datePrecision: 'DAY',
+        reason: 'About 600 marchers led by Hosea Williams (SCLC) and John Lewis (SNCC) set out from Selma toward Montgomery and were stopped at the Edmund Pettus Bridge by roughly 150 state troopers, deputies, and possemen who advanced with clubs, bullwhips, and tear gas. Fifty-eight people were treated for injuries; John Lewis suffered a skull fracture. Television networks broadcast the footage nationwide that evening.',
+        source: {
+          externalId: 'src:archives-selma-eyewitness-1965',
+          name: 'U.S. National Archives. "March from Selma to Montgomery, \'Bloody Sunday,\' 1965" (eyewitness testimony of John Lewis).',
+          url: 'https://www.archives.gov/exhibits/eyewitness/html.php?section=2',
+          publishedAt: '1965-03-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-08-06',
+        datePrecision: 'DAY',
+        reason: 'Federal Judge Frank M. Johnson Jr. ruled (March 17, 1965) that the marchers had a constitutional right to march, and on March 21 some 3,200 demonstrators set out from Selma under federalized National Guard protection. The attack at Selma is cited by the National Archives as decisive in persuading President Johnson and Congress to enact the Voting Rights Act, signed August 6, 1965.',
+        source: {
+          externalId: 'src:archives-voting-rights-act-selma-1965',
+          name: 'U.S. National Archives. "Voting Rights Act (1965)" — the attack on marchers at Selma prompted national voting-rights legislation.',
+          url: 'https://www.archives.gov/milestone-documents/voting-rights-act',
+          publishedAt: '1965-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First Earth Day — the environmental movement goes national ─────────────
+  {
+    externalId: 'trajectory:first-earth-day-1970',
+    text: 'The first Earth Day, organized by U.S. Senator Gaylord Nelson and coordinated by Denis Hayes, was held on April 22, 1970, with an estimated 20 million Americans participating in demonstrations and teach-ins across the country.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1970-04-22',
+        datePrecision: 'DAY',
+        reason: 'Inspired by anti-war teach-ins, Senator Gaylord Nelson (D-WI) called for a national day of environmental education; organizers chose Wednesday, April 22, when more students were on campus. An estimated 20 million Americans demonstrated at 2,000 college campuses, 10,000 schools, and hundreds of communities, making it one of the largest grassroots events in U.S. history.',
+        source: {
+          externalId: 'src:senate-first-earth-day-1970',
+          name: 'U.S. Senate. "Gaylord Nelson Promotes the First Earth Day" — April 22, 1970.',
+          url: 'https://www.senate.gov/artandhistory/history/minute/Gaylord_Nelson_Promotes_the_First_Earth_Day.htm',
+          publishedAt: '1970-04-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-12-02',
+        datePrecision: 'DAY',
+        reason: 'Earth Day\'s scale forced environmental protection onto the national agenda. In December 1970 Congress authorized the U.S. Environmental Protection Agency (established December 2, 1970), and the era\'s major environmental statutes — the Clean Air Act amendments (1970), Clean Water Act (1972), and Endangered Species Act (1973) — followed. Earth Day became an enduring annual institution.',
+        source: {
+          externalId: 'src:epa-earth-day-history-1970',
+          name: 'U.S. EPA. "EPA History: Earth Day" — first Earth Day spurred creation of the EPA in December 1970.',
+          url: 'https://www.epa.gov/history/epa-history-earth-day',
+          publishedAt: '1970-12-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Asilomar Conference — scientists self-regulate recombinant DNA ─────────
+  {
+    externalId: 'trajectory:asilomar-recombinant-dna-1975',
+    text: 'At the Asilomar Conference (February 24–27, 1975), molecular biologists adopted voluntary safety guidelines and biological-containment conditions for resuming recombinant DNA research — the first time scientists collectively imposed a self-regulatory framework on their own emerging field.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1975-02-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-02-27',
+        datePrecision: 'DAY',
+        reason: 'About 140 scientists, lawyers, and journalists met at the Asilomar conference grounds in California to address the hazards of gene-splicing, following a self-imposed 1974 moratorium. They agreed that most recombinant DNA work could resume under matched physical and biological containment. The summary statement (Berg, Baltimore, Brenner, Roblin, and Singer) was published in PNAS in June 1975.',
+        source: {
+          externalId: 'src:asilomar-summary-pnas-1975',
+          name: 'Berg P, Baltimore D, Brenner S, Roblin RO, Singer MF. "Summary statement of the Asilomar conference on recombinant DNA molecules." PNAS 72(6), June 1975.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC432675/',
+          publishedAt: '1975-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-06-23',
+        datePrecision: 'DAY',
+        reason: 'The Asilomar principles were codified into formal federal policy when the National Institutes of Health issued the first "Guidelines for Research Involving Recombinant DNA Molecules" in June 1976, establishing containment requirements and the Recombinant DNA Advisory Committee. The episode became the textbook precedent for scientific self-governance of a new technology.',
+        source: {
+          externalId: 'src:nih-recombinant-dna-guidelines-1976',
+          name: 'Development of the NIH Guidelines for Recombinant DNA Research (NIH Guidelines first issued June 1976).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1424456/',
+          publishedAt: '1976-06-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Sputnik 1 — first artificial Earth satellite ───────────────────────────
   {
     externalId: 'trajectory:sputnik-1-first-satellite-1957',
