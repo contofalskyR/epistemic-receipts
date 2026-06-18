@@ -8970,6 +8970,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Seljuk capture of Baghdad — Tughril Beg, end of Buyid domination ─────────
+  {
+    externalId: 'trajectory:seljuk-capture-baghdad-1055',
+    text: 'The Seljuk sultan Tughril Beg entered Baghdad on 18 December 1055 (25 Ramadan 447 AH), ending a century of Shia Buyid domination of the Abbasid caliphate and installing the Sunni Seljuks as protectors of the caliph.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1055-12-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1055-12-18',
+        datePrecision: 'DAY',
+        reason: 'Acting under a commission from the Abbasid caliph al-Qa\'im, Tughril Beg marches into Baghdad on 25 Ramadan 447 AH and removes the Buyid amir al-Malik al-Rahim, ending the Buyids\' control of the caliphal capital. Contemporary and near-contemporary Baghdad chroniclers — Ibn al-Jawzi drawing on local records — note the Seljuk entry and the khutba pronounced in Tughril\'s name.',
+        source: {
+          externalId: 'src:ibn-al-jawzi-tughril-baghdad-1055',
+          name: 'Ibn al-Jawzi. al-Muntazam fi Tarikh al-Muluk wa\'l-Umam, account of Tughril Beg\'s entry into Baghdad in 447 AH. (12th c., drawing on Baghdad records)',
+          url: 'https://en.wikipedia.org/wiki/Tughril',
+          publishedAt: '1055-12-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1058-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Tughril is the first Seljuk ruler to style himself Sultan and Protector of the Abbasid Caliphate; the caliph formally invests him, and Iraq remains under Seljuk control until 1135. The transfer of temporal power from the Shia Buyids to the Sunni Seljuks in 1055 is uncontested in modern scholarship as the inauguration of the Great Seljuk protectorate over the caliphate.',
+        source: {
+          externalId: 'src:seljuk-protectorate-scholarship-1055',
+          name: 'Standard scholarship on the Seljuk capture of Baghdad and the Sunni protectorate over the Abbasid Caliphate.',
+          url: 'https://en.wikipedia.org/wiki/Seljuk_Empire',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Nizam al-Mulk — first prominent Nizari Assassin killing ──
+  {
+    externalId: 'trajectory:assassination-nizam-al-mulk-1092',
+    text: 'The Seljuk vizier Nizam al-Mulk was stabbed to death by a Nizari Assassin disguised as a Sufi near Nahavand on 14 October 1092 (10 Ramadan 485 AH), the first prominent victim of Hasan-i Sabbah\'s campaign of political murder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1092-10-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1092-10-14',
+        datePrecision: 'DAY',
+        reason: 'As he was carried on his litter near Nahavand on the way from Isfahan to Baghdad, the vizier Nizam al-Mulk — author of the Siyasatnama and architect of the Nizamiyya madrasas — is stabbed by a fida\'i sent by Hasan-i Sabbah, the killer having approached in the guise of a Sufi petitioner. Arabic and Persian chroniclers record the killing and the date of 10 Ramadan 485 AH.',
+        source: {
+          externalId: 'src:nizam-al-mulk-assassination-1092',
+          name: 'Near-contemporary chronicle tradition (Ibn al-Athir; the Nizari accounts preserved by Juvayni and Rashid al-Din) on the assassination of Nizam al-Mulk, 10 Ramadan 485 AH.',
+          url: 'https://en.wikipedia.org/wiki/Nizam_al-Mulk',
+          publishedAt: '1092-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1100-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The murder of the most powerful administrator of the Seljuk empire inaugurates the Nizari Ismaili (Assassin) strategy of targeted political killing directed from Alamut, which Hasan-i Sabbah had seized two years earlier. The death of Nizam al-Mulk in October 1092 — followed within weeks by that of Sultan Malik-Shah — is settled in modern scholarship as the opening of the Assassins\' two-century campaign.',
+        source: {
+          externalId: 'src:hassan-sabbah-assassins-scholarship',
+          name: 'Standard scholarship on Hasan-i Sabbah and the Nizari Assassins (Daftary, The Ismailis).',
+          url: 'https://en.wikipedia.org/wiki/Hassan-i_Sabbah',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Edessa — first Crusader state destroyed, triggers Second Crusade ──
+  {
+    externalId: 'trajectory:fall-of-edessa-1144',
+    text: 'The crusader County of Edessa fell to Imad al-Din Zengi on 24 December 1144 — the first of the Crusader states to be destroyed — prompting Pope Eugene III to call the Second Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1144-12-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1144-12-24',
+        datePrecision: 'DAY',
+        reason: 'After a four-week siege, Zengi\'s army breaches the walls of Edessa on 24 December 1144 and the city is taken (the citadel surrendering on the 26th). The Damascus chronicler Ibn al-Qalanisi records the capture, and Zengi\'s court poet Ibn al-Qaysarani celebrates the victory in a panegyric; the Armenian and Latin accounts of Matthew of Edessa\'s continuator and William of Tyre describe the storming of the city.',
+        source: {
+          externalId: 'src:ibn-al-qalanisi-edessa-1144',
+          name: 'Ibn al-Qalanisi. Dhayl Tarikh Dimashq (The Damascus Chronicle of the Crusaders), account of Zengi\'s capture of Edessa. (mid-12th c., contemporaneous)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Edessa_(1144)',
+          publishedAt: '1144-12-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1145-12-01',
+        datePrecision: 'DAY',
+        reason: 'News of the loss of the first Crusader state reaches the West and prompts Pope Eugene III to issue the bull Quantum praedecessores on 1 December 1145, summoning the Second Crusade. The fall of Edessa on 24 December 1144 and its role as the trigger of the Second Crusade are settled and uncontested in modern historiography.',
+        source: {
+          externalId: 'src:second-crusade-edessa-scholarship',
+          name: 'Standard scholarship on the fall of Edessa and the origins of the Second Crusade (papal bull Quantum praedecessores, 1 December 1145).',
+          url: 'https://en.wikipedia.org/wiki/Second_Crusade',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Abolition of the Fatimid Caliphate — Saladin restores Sunni allegiance ────
+  {
+    externalId: 'trajectory:fatimid-caliphate-abolished-1171',
+    text: 'On 10 September 1171 the Friday sermon in Cairo was proclaimed in the name of the Sunni Abbasid caliph al-Mustadi instead of the Fatimid al-Adid; al-Adid died three days later, ending the two-century Ismaili Shia Fatimid Caliphate and returning Egypt to Sunni allegiance under Saladin.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1171-09-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1171-09-10',
+        datePrecision: 'DAY',
+        reason: 'On the first Friday of Muharram 567 AH, the Shafi\'i jurist Najm al-Din al-Khabushani publicly pronounces the khutba in Cairo in the name of the Sunni Abbasid caliph al-Mustadi, dropping the name of the dying Fatimid caliph al-Adid — the act by which Saladin formally extinguishes Fatimid sovereignty. Arabic chroniclers of the period record the proclamation.',
+        source: {
+          externalId: 'src:fatimid-khutba-abolition-1171',
+          name: 'Near-contemporary chronicle tradition (Ibn al-Athir; Abu Shama) on the Cairo khutba of 10 September 1171 ending Fatimid suzerainty.',
+          url: 'https://en.wikipedia.org/wiki/Al-Adid',
+          publishedAt: '1171-09-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1171-09-13',
+        datePrecision: 'DAY',
+        reason: 'The death of the twenty-year-old al-Adid on 13 September 1171 seals the demise of the Fatimid Caliphate; Saladin assumes effective rule of Egypt as the nominal vassal of the Abbasid caliph, and no Fatimid succession follows. The end of the 200-year Ismaili Shia caliphate and the return of Egypt to Sunni allegiance are settled and uncontested in modern scholarship.',
+        source: {
+          externalId: 'src:fatimid-end-scholarship-1171',
+          name: 'Standard scholarship on the abolition of the Fatimid Caliphate by Saladin in 1171.',
+          url: 'https://en.wikipedia.org/wiki/Fatimid_Caliphate',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── John of Worcester draws sunspots — earliest dated sunspot drawing ────────
   {
     externalId: 'trajectory:john-worcester-sunspot-1128',
