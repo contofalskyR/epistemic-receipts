@@ -12209,6 +12209,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRICS & NEONATOLOGY ERA (1971–1989)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Jones–Smith fetal alcohol syndrome — Lancet 1973 ────────────────────────
+  {
+    externalId: 'trajectory:jones-smith-fetal-alcohol-syndrome-1973',
+    text: 'Kenneth Jones, David Smith, and colleagues reported in The Lancet on 9 June 1973 that the offspring of chronic alcoholic mothers share a distinct pattern of craniofacial, limb, and cardiovascular malformation with prenatal growth deficiency and developmental delay, the first documented association between maternal alcoholism and a recognizable birth-defect syndrome (later named fetal alcohol syndrome).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-06-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-06-09',
+        datePrecision: 'DAY',
+        reason: 'Jones, Smith, Ulleland, and Streissguth at the University of Washington described eight unrelated children of chronic alcoholic mothers who showed a consistent pattern of malformation, the first report in the literature linking maternal alcoholism to aberrant morphogenesis. A companion Lancet paper later that year coined the term \'fetal alcohol syndrome,\' converting alcohol from a presumed-benign exposure in pregnancy into a recorded teratogen.',
+        source: {
+          externalId: 'src:jones-smith-fas-lancet-1973',
+          name: 'Jones KL, Smith DW, Ulleland CN, Streissguth AP. Pattern of malformation in offspring of chronic alcoholic mothers. Lancet. 1973;1(7815):1267-1271.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4126070/',
+          publishedAt: '1973-06-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-05-01',
+        datePrecision: 'MONTH',
+        reason: 'In May 1981 the U.S. Surgeon General issued the first federal public-health advisory on alcohol and pregnancy, advising women who are pregnant or considering pregnancy not to drink alcoholic beverages. The advisory, published in the FDA Drug Bulletin, institutionalized fetal alcohol syndrome as an established, preventable cause of birth defects.',
+        source: {
+          externalId: 'src:surgeon-general-alcohol-pregnancy-1981',
+          name: 'Surgeon General\'s Advisory on Alcohol and Pregnancy. FDA Drug Bulletin. 1981;11:9-10.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7250574/',
+          publishedAt: '1981-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hexachlorophene newborn neurotoxicity — FDA 1972 ────────────────────────
+  {
+    externalId: 'trajectory:hexachlorophene-newborn-neurotoxicity-1972',
+    text: 'Hexachlorophene (pHisoHex), routinely used since the 1950s to bathe newborns for staphylococcal prophylaxis, was recognized in 1972 to cause vacuolar spongiform brain lesions (myelinopathy) in infants, prompting the FDA in September 1972 to reclassify it as prescription-only and end its routine use in newborn nurseries.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1972-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Acting on animal neurotoxicity data and the contemporaneous Morhange talc disaster in France (in which baby powder contaminated with hexachlorophene killed 36 infants), the FDA in September 1972 reclassified hexachlorophene products as prescription-only (\'Rx only\') and warned against routine total-body bathing of newborns. The action reversed a decade of standard nursery practice that had presumed the antiseptic safe.',
+        source: {
+          externalId: 'src:fda-hexachlorophene-21cfr-250-250',
+          name: 'FDA. 21 CFR 250.250 — Hexachlorophene, as a component of drug and cosmetic products. (1972 restriction codified).',
+          url: 'https://www.ecfr.gov/current/title-21/chapter-I/subchapter-C/part-250/subpart-D/section-250.250',
+          publishedAt: '1972-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Powell, Swarner, Gluck, and Lampert reported in the Journal of Pediatrics in June 1973 that seven of 69 premature infants examined at autopsy had spongiform myelinopathy of the brainstem, with multiple hexachlorophene exposures, prematurity, and broken skin as common factors—matching the lesions produced experimentally in animals. The clinicopathologic confirmation settled hexachlorophene as a proven infant neurotoxin.',
+        source: {
+          externalId: 'src:powell-hexachlorophene-myelinopathy-jpediatr-1973',
+          name: 'Powell H, Swarner O, Gluck L, Lampert P. Hexachlorophene myelinopathy in premature infants. J Pediatr. 1973;82(6):976-981.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4702917/',
+          publishedAt: '1973-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP routine circumcision policy reversal — 1971/1989 ────────────────────
+  {
+    externalId: 'trajectory:aap-routine-circumcision-policy-reversal-1989',
+    text: 'The American Academy of Pediatrics stated in 1971 that there are no valid medical indications for routine neonatal circumcision, a position it reversed in 1989 when its Task Force on Circumcision concluded that newborn circumcision has potential medical benefits.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1971-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The AAP Committee on Fetus and Newborn declared in the 1971 edition of its Standards and Recommendations for Hospital Care of Newborn Infants that there are no valid medical indications for circumcision in the neonatal period. The statement established the professional consensus that routine newborn circumcision was medically unjustified.',
+        source: {
+          externalId: 'src:aap-standards-newborn-circumcision-1971',
+          name: 'American Academy of Pediatrics, Committee on Fetus and Newborn. Standards and Recommendations for Hospital Care of Newborn Infants, 5th ed. Evanston, IL: AAP; 1971.',
+          url: 'https://www.cirp.org/library/statements/aap/',
+          publishedAt: '1971-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The AAP Task Force on Circumcision reported in Pediatrics in August 1989 that newborn circumcision has potential medical benefits and advantages, citing associations with reduced urinary tract infection, penile cancer, and sexually transmitted disease. The report explicitly reversed the academy\'s earlier \'no valid medical indication\' stance, restoring circumcision to a position of recognized possible benefit.',
+        source: {
+          externalId: 'src:aap-task-force-circumcision-1989',
+          name: 'American Academy of Pediatrics, Task Force on Circumcision. Report of the Task Force on Circumcision. Pediatrics. 1989;84(2):388-391.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2664697/',
+          publishedAt: '1989-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dussault congenital hypothyroidism newborn screening — 1973/1975 ────────
+  {
+    externalId: 'trajectory:dussault-congenital-hypothyroidism-newborn-screening-1973',
+    text: 'Jean Dussault and Claude Laberge developed in Quebec in 1973 a radioimmunoassay measuring thyroxine (T4) in dried blood-spot filter-paper specimens, demonstrating that congenital hypothyroidism—a leading preventable cause of intellectual disability—could be detected by mass newborn screening, with results from 47,000 infants reported in 1975.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Dussault and colleagues reported in the Journal of Pediatrics in May 1975 the first large-scale mass screening program for neonatal hypothyroidism, measuring T4 on the same dried blood spots already collected for PKU screening and detecting congenital hypothyroidism in roughly one of every 7,000 Quebec newborns. The report demonstrated that a previously undetectable cause of preventable mental retardation could be caught at birth.',
+        source: {
+          externalId: 'src:dussault-neonatal-hypothyroidism-screening-jpediatr-1975',
+          name: 'Dussault JH, Coulombe P, Laberge C, Letarte J, Guyda H, Khoury K. Preliminary report on a mass screening program for neonatal hypothyroidism. J Pediatr. 1975;86(5):670-674.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1133648/',
+          publishedAt: '1975-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years the Dussault dried-blood-spot T4 method was adopted across North American and European newborn-screening programs, becoming a routine universal test added to existing PKU panels by the late 1970s. Congenital hypothyroidism screening is now established worldwide as a standard of newborn care.',
+        source: {
+          externalId: 'src:newborn-screening-congenital-hypothyroidism-review-2025',
+          name: 'Newborn screening for primary congenital hypothyroidism: past, present and future. Eur Thyroid J. 2025;14(2):e240358.',
+          url: 'https://etj.bioscientifica.com/view/journals/etj/14/2/ETJ-24-0358.xml',
+          publishedAt: '2025-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
