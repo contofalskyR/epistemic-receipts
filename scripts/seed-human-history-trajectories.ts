@@ -51434,6 +51434,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750): East Asia, Scientific Revolution & financial revolution
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Sekigahara — Tokugawa supremacy ───────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-sekigahara-1600',
+    text: 'On 21 October 1600 the Eastern Army of Tokugawa Ieyasu defeated the Western Army coalition led by Ishida Mitsunari at Sekigahara, the decisive battle that established Tokugawa supremacy and led to the founding of the Tokugawa shogunate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1600-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1600-10-21',
+        datePrecision: 'DAY',
+        reason: 'In a single day of fighting on the misty plain of Sekigahara, the defection of Kobayakawa Hideaki to Ieyasu\'s side collapses the Western Army; Ishida Mitsunari is routed and later captured and executed. Ieyasu records the victory the same day in a letter to Date Masamune, and the eyewitness chronicler Ōta Gyūichi describes the gunfire and the press of "friends and foes" — contemporaneous accounts fixing the date and outcome.',
+        source: {
+          externalId: 'src:ieyasu-letter-sekigahara-1600',
+          name: 'Letter of Tokugawa Ieyasu to Date Masamune, dated 21 October 1600, describing the battle; with the eyewitness chronicle of Ōta Gyūichi. (contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Sekigahara',
+          publishedAt: '1600-10-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1603-03-24',
+        datePrecision: 'DAY',
+        reason: 'On 24 March 1603 the Emperor formally appoints Ieyasu sei-i taishōgun, institutionalising the supremacy won at Sekigahara and founding the Tokugawa shogunate that would rule Japan for some 260 years until the Meiji Restoration of 1868. The battle, its date, and its consequence are corroborated across Japanese chronicles and treated as settled history.',
+        source: {
+          externalId: 'src:tokugawa-shogunate-1603',
+          name: 'Tokugawa Ieyasu appointed shōgun, 24 March 1603 — founding of the Tokugawa shogunate; scholarly synthesis of the Sekigahara campaign.',
+          url: 'https://en.wikipedia.org/wiki/Tokugawa_shogunate',
+          publishedAt: '1603-03-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Myeongnyang — Yi Sun-sin's thirteen ships ─────────────────────
+  {
+    externalId: 'trajectory:battle-of-myeongnyang-1597',
+    text: 'On 26 October 1597 the Joseon admiral Yi Sun-sin, with only 13 warships, defeated a Japanese fleet of well over a hundred vessels in the narrow Myeongnyang Strait, halting the Japanese naval advance during the second invasion of the Imjin War.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1597-10-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1597-10-26',
+        datePrecision: 'DAY',
+        reason: 'Exploiting the fierce tidal currents of the Myeongnyang Strait, Yi Sun-sin\'s 13 panokseon engage a Japanese fleet of roughly 120–133 warships, sinking or crippling some 31 enemy vessels and wounding the commander Tōdō Takatora while losing no ships of his own. Yi records the engagement in his own hand in his war diary (Nanjung Ilgi) during that very campaign — "My flagship was alone facing the enemy formation."',
+        source: {
+          externalId: 'src:nanjung-ilgi-myeongnyang-1597',
+          name: 'Yi Sun-sin. Nanjung Ilgi (War Diary), entry for the 16th day of the 9th lunar month, 1597 — eyewitness account of the Battle of Myeongnyang. (contemporary, 1592–1598)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Myeongnyang',
+          publishedAt: '1597-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-06-18',
+        datePrecision: 'DAY',
+        reason: 'Yi\'s war diary survives as South Korea\'s National Treasure No. 76 and was inscribed on UNESCO\'s Memory of the World Register in 2013, securing the manuscript as an authenticated contemporaneous record. Together with the Veritable Records of the Joseon Dynasty and Japanese accounts, it fixes the date and the lopsided outcome of Myeongnyang as settled history.',
+        source: {
+          externalId: 'src:nanjung-ilgi-unesco-mow-2013',
+          name: 'Nanjung Ilgi: War Diary of Admiral Yi Sun-sin — Korea National Treasure No. 76, inscribed on the UNESCO Memory of the World Register (2013).',
+          url: 'https://en.wikipedia.org/wiki/Nanjung_ilgi',
+          publishedAt: '2013-06-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Boyne — William III defeats James II ──────────────────────
+  {
+    externalId: 'trajectory:battle-of-the-boyne-1690',
+    text: 'On 1 July 1690 (Old Style; 11 July New Style) the Williamite army of King William III defeated the Jacobite forces of the deposed James II at the River Boyne near Drogheda in Ireland, a decisive engagement that secured the Glorious Revolution settlement and Protestant ascendancy in Ireland.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1690-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1690-07-01',
+        datePrecision: 'DAY',
+        reason: 'William\'s army of some 36,000 forces a crossing of the Boyne against James\'s 23,500 Jacobites near Oldbridge; the Jacobite line breaks and James flees the field, abandoning Dublin and sailing for France within days. William\'s Dutch secretary Constantijn Huygens Jr. records a detailed eyewitness account of the battle and its aftermath in his journal.',
+        source: {
+          externalId: 'src:huygens-journal-boyne-1690',
+          name: 'Constantijn Huygens Jr., journal — contemporaneous eyewitness account of the Battle of the Boyne, 1 July 1690 (OS). (secretary to William III)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Boyne',
+          publishedAt: '1690-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1691-10-03',
+        datePrecision: 'DAY',
+        reason: 'The Jacobite cause in Ireland collapsed with the Treaty of Limerick on 3 October 1691, confirming the Williamite victory begun at the Boyne. The date, combatants, and outcome of the battle are corroborated by Williamite and Jacobite accounts alike and are settled history, commemorated annually (under the New Style date of 12 July) in Northern Ireland.',
+        source: {
+          externalId: 'src:boyne-settled-scholarship',
+          name: 'Battle of the Boyne — scholarly synthesis of Williamite and Jacobite accounts; aftermath through the Treaty of Limerick (3 October 1691).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Boyne',
+          publishedAt: '1691-10-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bank of England chartered — birth of the modern central bank ────────────
+  {
+    externalId: 'trajectory:bank-of-england-founded-1694',
+    text: 'The Bank of England was established in 1694 — authorised by the Tonnage Act given royal assent on 25 April 1694 and incorporated by Royal Charter on 27 July 1694 under William III and Mary II — becoming the model for modern central banking.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1694-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1694-04-25',
+        datePrecision: 'DAY',
+        reason: 'The Tonnage Act 1694 (sometimes called the Bank of England Act 1694), given royal assent on 25 April 1694 and commencing 1 June 1694, authorises raising £1.5 million for the war against France from subscribers who are to be incorporated as a bank. The scheme had been proposed by William Paterson and was steered through Parliament by Charles Montagu; the enabling statute survives on the statute roll.',
+        source: {
+          externalId: 'src:tonnage-act-1694',
+          name: 'Tonnage Act 1694 (Bank of England Act 1694) — royal assent 25 April 1694, commencement 1 June 1694.',
+          url: 'https://en.wikipedia.org/wiki/Tonnage_Act_1694',
+          publishedAt: '1694-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1694-07-27',
+        datePrecision: 'DAY',
+        reason: 'William III and Mary II grant the Royal Charter of the Governor and Company of the Bank of England on 27 July 1694; the £1.2 million subscription is filled within days and the Bank begins operations the same summer. The charter is a surviving founding legal instrument, and the Bank has operated continuously ever since — its founding date, charter, and statutory authority documented in the original records and uncontested.',
+        source: {
+          externalId: 'src:bank-of-england-charter-1694',
+          name: 'Royal Charter of the Bank of England, 27 July 1694 — incorporation of the Governor and Company of the Bank of England.',
+          url: 'https://en.wikipedia.org/wiki/Bank_of_England',
+          publishedAt: '1694-07-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
