@@ -61423,6 +61423,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SUB-SAHARAN AFRICA — MODERN EPISTEMIC EVENTS (1990–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Australopithecus sediba described from Malapa, South Africa (2010) ───────
+  {
+    externalId: 'trajectory:australopithecus-sediba-malapa-2010',
+    text: 'On 9 April 2010 a team led by Lee Berger described Australopithecus sediba, a new hominin species from roughly 1.98-million-year-old fossils found at the Malapa site in the Cradle of Humankind, South Africa — putting a previously unknown species into the scientific record.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-04-09',
+        datePrecision: 'DAY',
+        reason: 'Berger et al. publish "Australopithecus sediba: A New Species of Homo-Like Australopith from South Africa" in Science (vol. 328, issue 5975), naming the species from the holotype MH1 (a juvenile male) and paratype MH2 recovered from the Malapa cave, discovered in August 2008 by Berger\'s young son Matthew. The paper documents a mosaic of australopith and Homo-like features.',
+        source: {
+          externalId: 'src:berger-sediba-science-2010',
+          name: 'Berger LR, et al. "Australopithecus sediba: A New Species of Homo-Like Australopith from South Africa." Science 2010;328(5975):195–204 (published 9 April 2010).',
+          url: 'https://en.wikipedia.org/wiki/Australopithecus_sediba',
+          publishedAt: '2010-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-09-09',
+        datePrecision: 'DAY',
+        reason: 'A coordinated set of five papers in Science (9 September 2011) refines the dating of the Malapa sediments to about 1.977 million years ago and describes the hand, foot, pelvis and endocast of A. sediba in detail, establishing the species as a well-characterised, securely dated taxon in the human-evolution literature.',
+        source: {
+          externalId: 'src:sediba-science-2011-suite',
+          name: 'Science special set on Australopithecus sediba (dating, hand, foot, pelvis, brain), 9 September 2011.',
+          url: 'https://en.wikipedia.org/wiki/Australopithecus_sediba',
+          publishedAt: '2011-09-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── South Sudan becomes an independent state (2011) ──────────────────────────
+  {
+    externalId: 'trajectory:south-sudan-independence-2011',
+    text: 'South Sudan formally became an independent sovereign state on 9 July 2011, seceding from Sudan following an internationally monitored referendum in January 2011 in which 98.83% of voters chose separation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2011-01-15',
+        datePrecision: 'DAY',
+        reason: 'The self-determination referendum mandated by the 2005 Comprehensive Peace Agreement is held 9–15 January 2011 across Southern Sudan and the diaspora. The official result, certified by the Southern Sudan Referendum Commission, records 98.83% in favour of independence, establishing the popular mandate for secession.',
+        source: {
+          externalId: 'src:south-sudan-referendum-2011',
+          name: 'South Sudanese independence referendum, 9–15 January 2011 — 98.83% for separation (overview).',
+          url: 'https://en.wikipedia.org/wiki/2011_South_Sudanese_independence_referendum',
+          publishedAt: '2011-02-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-07-14',
+        datePrecision: 'DAY',
+        reason: 'South Sudan declares independence at Juba on 9 July 2011, becoming Africa\'s 54th state. On 14 July 2011 the United Nations General Assembly admits South Sudan as the organisation\'s 193rd member state (Resolution 65/308), settling its sovereign status in the international institutional record.',
+        source: {
+          externalId: 'src:south-sudan-un-admission-2011',
+          name: 'South Sudan — independence 9 July 2011; admitted to the UN as the 193rd member on 14 July 2011.',
+          url: 'https://en.wikipedia.org/wiki/South_Sudan',
+          publishedAt: '2011-07-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Charles Taylor convicted by the Special Court for Sierra Leone (2012) ────
+  {
+    externalId: 'trajectory:charles-taylor-conviction-2012',
+    text: 'On 26 April 2012 the Special Court for Sierra Leone convicted former Liberian president Charles Taylor on all eleven counts of war crimes and crimes against humanity for aiding and abetting atrocities in Sierra Leone\'s civil war — the first conviction of a former head of state by an international tribunal since Nuremberg.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-04-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '2012-04-26',
+        datePrecision: 'DAY',
+        reason: 'Trial Chamber II of the Special Court for Sierra Leone, sitting in The Hague, finds Charles Taylor guilty on all eleven counts — including acts of terrorism, murder, rape, sexual slavery, conscription of child soldiers, enslavement and pillage — for aiding and abetting and planning crimes committed by the RUF/AFRC during the Sierra Leone civil war.',
+        source: {
+          externalId: 'src:taylor-verdict-2012',
+          name: 'Charles Taylor convicted by the Special Court for Sierra Leone, 26 April 2012, on all 11 counts (overview).',
+          url: 'https://en.wikipedia.org/wiki/Charles_Taylor_(Liberian_politician)',
+          publishedAt: '2012-04-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2013-09-26',
+        datePrecision: 'DAY',
+        reason: 'The Court sentences Taylor to 50 years\' imprisonment on 30 May 2012. On 26 September 2013 the Appeals Chamber upholds the conviction and sentence, exhausting appeals and rendering the judgment final. Taylor is transferred to the United Kingdom to serve his sentence, settling the matter judicially.',
+        source: {
+          externalId: 'src:taylor-appeal-2013',
+          name: 'Special Court for Sierra Leone Appeals Chamber upholds Taylor\'s conviction and 50-year sentence, 26 September 2013.',
+          url: 'https://en.wikipedia.org/wiki/Charles_Taylor_(Liberian_politician)',
+          publishedAt: '2013-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hissène Habré convicted by the Extraordinary African Chambers (2016) ────
+  {
+    externalId: 'trajectory:hissene-habre-conviction-2016',
+    text: 'On 30 May 2016 the Extraordinary African Chambers in Dakar, Senegal, convicted former Chadian president Hissène Habré of crimes against humanity, war crimes and torture and sentenced him to life imprisonment — the first time an African Union-backed court convicted a former head of state, and the first time one country\'s courts tried the former ruler of another for crimes against humanity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '2016-05-30',
+        datePrecision: 'DAY',
+        reason: 'The Extraordinary African Chambers, a special tribunal created within the Senegalese justice system under an African Union mandate, finds Hissène Habré guilty of crimes against humanity, war crimes, torture, rape and sexual slavery committed during his 1982–1990 rule, and sentences him to life imprisonment.',
+        source: {
+          externalId: 'src:habre-verdict-2016',
+          name: 'Hissène Habré convicted by the Extraordinary African Chambers, Dakar, 30 May 2016 (overview).',
+          url: 'https://en.wikipedia.org/wiki/Hiss%C3%A8ne_Habr%C3%A9',
+          publishedAt: '2016-05-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2017-04-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 April 2017 the Chambers\' appeals court upholds the conviction and the life sentence (while adjusting one charge), making the judgment final. The outcome stands as a landmark in international and African justice, settling Habré\'s criminal responsibility.',
+        source: {
+          externalId: 'src:habre-appeal-2017',
+          name: 'Extraordinary African Chambers appeals court upholds Habré\'s conviction and life sentence, 27 April 2017.',
+          url: 'https://en.wikipedia.org/wiki/Hiss%C3%A8ne_Habr%C3%A9',
+          publishedAt: '2017-04-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ahmad al-Faqi al-Mahdi convicted by the ICC for Timbuktu destruction (2016)
+  {
+    externalId: 'trajectory:al-mahdi-icc-timbuktu-conviction-2016',
+    text: 'On 27 September 2016 the International Criminal Court convicted Ahmad al-Faqi al-Mahdi of the war crime of intentionally directing attacks against historic and religious monuments in Timbuktu, Mali, in 2012 — the ICC\'s first conviction for the destruction of cultural heritage.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-09-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '2016-09-27',
+        datePrecision: 'DAY',
+        reason: 'ICC Trial Chamber VIII finds Ahmad al-Faqi al-Mahdi guilty, on his own admission, of the war crime of intentionally directing attacks against nine mausoleums and a mosque doorway in Timbuktu in June–July 2012, and sentences him to nine years\' imprisonment. It is the first ICC case centred on the destruction of cultural and religious heritage.',
+        source: {
+          externalId: 'src:al-mahdi-icc-judgment-2016',
+          name: 'ICC Trial Chamber VIII convicts Ahmad al-Faqi al-Mahdi for attacks on Timbuktu monuments, 27 September 2016 (nine-year sentence).',
+          url: 'https://en.wikipedia.org/wiki/Ahmad_al-Faqi_al-Mahdi',
+          publishedAt: '2016-09-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2017-08-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 August 2017 the ICC issues a reparations order assessing al-Mahdi\'s liability for the harm caused at €2.7 million, building on the unappealed conviction. The judgment is widely cited as a precedent that deliberate destruction of cultural heritage is an internationally prosecutable crime, settling the legal record.',
+        source: {
+          externalId: 'src:al-mahdi-icc-reparations-2017',
+          name: 'ICC reparations order in the al-Mahdi case, 17 August 2017 (€2.7 million liability for Timbuktu heritage destruction).',
+          url: 'https://en.wikipedia.org/wiki/Ahmad_al-Faqi_al-Mahdi',
+          publishedAt: '2017-08-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
