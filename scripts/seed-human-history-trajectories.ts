@@ -52937,6 +52937,265 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL ERA (1750–1900) — added 2026-06-17
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── French National Convention abolishes slavery (1794) ─────────────────────
+  {
+    externalId: 'trajectory:france-abolishes-slavery-1794',
+    text: 'On 4 February 1794 (16 Pluviôse Year II) the French National Convention abolished slavery in all French colonies — the first general abolition by a major colonial power.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1794-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1794-02-04',
+        datePrecision: 'DAY',
+        reason: 'The Convention decreed that "slavery of the Blacks is abolished in all the colonies; consequently all men, without distinction of colour, domiciled in the colonies, are French citizens and shall enjoy all the rights guaranteed by the constitution." The decree extended to the colonies the principle that revolutionary France would tolerate no slavery on its soil.',
+        source: {
+          externalId: 'src:france-1794-decree',
+          name: 'Decree of 16 Pluviôse Year II (Law of 4 February 1794) — Convention nationale, abolition of slavery in the French colonies.',
+          url: 'https://en.wikipedia.org/wiki/Law_of_4_February_1794',
+          publishedAt: '1794-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1802-05-20',
+        datePrecision: 'DAY',
+        reason: 'Napoleon Bonaparte reinstated slavery and the slave trade in the French colonies by the Law of 20 May 1802, nullifying the 1794 abolition in the sugar-growing colonies and triggering renewed conflict in Saint-Domingue. The 1794 abolition would not be permanently restored in France until the decree of 27 April 1848.',
+        source: {
+          externalId: 'src:france-1802-reinstatement',
+          name: 'Abolition of slavery in France — reinstatement by the Law of 20 May 1802 under Napoleon; permanent abolition only in 1848.',
+          url: 'https://en.wikipedia.org/wiki/Abolition_of_slavery_in_France',
+          publishedAt: '1802-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians treat the sequence as settled: the 1794 decree, its 1802 reversal by Napoleon, and the definitive 1848 abolition are documented in the Convention\'s own records and in the surviving texts of both laws. The 1794 act is conventionally cited as the first general emancipation enacted by a major slaveholding power.',
+        source: {
+          externalId: 'src:france-abolition-history',
+          name: 'Abolition of slavery in France — historical synthesis of the 1794 / 1802 / 1848 sequence (Wikipedia, with primary-source citations).',
+          url: 'https://en.wikipedia.org/wiki/Abolition_of_slavery_in_France',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mayer's statement of the conservation of energy (1842) ───────────────────
+  {
+    externalId: 'trajectory:mayer-conservation-of-energy-1842',
+    text: 'In May 1842 Julius Robert von Mayer published the first quantitative statement of the conservation of energy and the mechanical equivalent of heat, in "Bemerkungen über die Kräfte der unbelebten Natur."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1842-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1842-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Mayer\'s paper in Liebig\'s Annalen der Chemie und Pharmacie argued that "forces" (energy) are indestructible and convertible, and gave a numerical value for the mechanical equivalent of heat — the first published statement of the principle in its modern form.',
+        source: {
+          externalId: 'src:mayer-1842-paper',
+          name: 'J. R. Mayer, "Bemerkungen über die Kräfte der unbelebten Natur," Annalen der Chemie und Pharmacie, vol. 42 (May 1842).',
+          url: 'https://en.wikipedia.org/wiki/Julius_von_Mayer',
+          publishedAt: '1842-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mayer\'s priority was initially neglected; the physics community largely attributed the discovery of the mechanical equivalent of heat to James Prescott Joule (whose paddle-wheel experiments began in 1843), and Hermann von Helmholtz\'s 1847 treatise became the standard reference. Both Joule and Mayer met resistance, and a priority dispute over conservation of energy developed.',
+        source: {
+          externalId: 'src:conservation-energy-priority',
+          name: 'Conservation of energy — priority among Mayer (1842), Joule (1843), and Helmholtz (1847); Mayer\'s precedence initially overlooked.',
+          url: 'https://en.wikipedia.org/wiki/Conservation_of_energy',
+          publishedAt: '1847-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1871-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Mayer\'s contribution was revived by John Tyndall (1862) and he received the Royal Society\'s Copley Medal in 1871; the history of science now credits Mayer, Joule, and Helmholtz jointly with establishing energy conservation, with Mayer recognised for the earliest published statement.',
+        source: {
+          externalId: 'src:mayer-copley-recognition',
+          name: 'Julius von Mayer — later recognition, Copley Medal 1871, and shared credit for the conservation of energy.',
+          url: 'https://en.wikipedia.org/wiki/Julius_von_Mayer',
+          publishedAt: '1871-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lyell's Principles of Geology and uniformitarianism (1830) ───────────────
+  {
+    externalId: 'trajectory:lyell-principles-of-geology-1830',
+    text: 'Charles Lyell published the first volume of Principles of Geology in January 1830, advancing uniformitarianism — that the Earth was shaped by slow, still-operating natural processes over immense time.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1830-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1830-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Published by John Murray, the first volume argued — extending James Hutton — that the same gradual geological forces observable today, acting over vast spans, account for the Earth\'s present surface. Its subtitle framed the programme: "an attempt to explain the former changes of the Earth\'s surface by reference to causes now in operation."',
+        source: {
+          externalId: 'src:lyell-principles-vol1',
+          name: 'Charles Lyell, Principles of Geology, vol. 1 (John Murray, January 1830).',
+          url: 'https://en.wikipedia.org/wiki/Principles_of_Geology',
+          publishedAt: '1830-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1832-01-01',
+        datePrecision: 'YEAR',
+        reason: 'William Whewell, reviewing the book, coined the terms "uniformitarianism" and "catastrophism" to mark the dispute. Catastrophists held that the Earth had been shaped by sudden violent events; the gradualist programme was actively contested through the 1830s–1850s.',
+        source: {
+          externalId: 'src:uniformitarianism-catastrophism-debate',
+          name: 'Uniformitarianism vs catastrophism — Whewell\'s 1832 coinage of both terms in review of Lyell.',
+          url: 'https://en.wikipedia.org/wiki/Uniformitarianism',
+          publishedAt: '1832-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Deep time and the principle that present processes are the key to the past became foundational to modern geology — Lyell\'s book directly shaped Darwin. Modern geology has moderated strict gradualism (recognising occasional catastrophic events), but the core uniformitarian framework is settled.',
+        source: {
+          externalId: 'src:uniformitarianism-modern-status',
+          name: 'Uniformitarianism — its establishment as the foundation of modern geology and later refinement.',
+          url: 'https://en.wikipedia.org/wiki/Uniformitarianism',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pasteur: fermentation caused by living microorganisms (1857) ─────────────
+  {
+    externalId: 'trajectory:pasteur-lactic-fermentation-1857',
+    text: 'In his 1857 "Mémoire sur la fermentation appelée lactique," Louis Pasteur demonstrated that lactic fermentation is caused by a living microorganism — a foundational step toward the germ theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1857-11-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1857-11-30',
+        datePrecision: 'DAY',
+        reason: 'Pasteur, presenting first to the Société des Sciences de Lille (August 1857) and then in the Comptes rendus de l\'Académie des sciences (vol. 45, pp. 913–916), isolated and cultivated the "lactic yeast" responsible for souring, arguing that — like the alcoholic ferment — a specific living organism drives lactic fermentation, against the prevailing purely chemical view.',
+        source: {
+          externalId: 'src:pasteur-lactic-1857-memoir',
+          name: 'L. Pasteur, "Mémoire sur la fermentation appelée lactique," Comptes rendus de l\'Académie des sciences, t. 45 (1857), pp. 913–916.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2229983/',
+          publishedAt: '1857-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The microbial theory of fermentation became universally accepted and, together with Pasteur\'s later refutation of spontaneous generation, anchored the germ theory of disease that transformed medicine and biology. The 1857 memoir is conventionally cited as Pasteur\'s first statement of a specific role for microorganisms in chemical processes.',
+        source: {
+          externalId: 'src:fermentation-theory-settled',
+          name: 'Fermentation theory — Pasteur\'s 1857 demonstration that fermentation is caused by living microorganisms, foundational to germ theory.',
+          url: 'https://en.wikipedia.org/wiki/Fermentation_theory',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Adwa: Ethiopia defeats Italy (1896) ────────────────────────────
+  {
+    externalId: 'trajectory:battle-of-adwa-1896',
+    text: 'On 1 March 1896 at Adwa, the Ethiopian army under Emperor Menelik II decisively defeated invading Italian forces, securing Ethiopia\'s independence and halting Italian colonial ambitions.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1896-03-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1896-03-01',
+        datePrecision: 'DAY',
+        reason: 'Menelik II\'s forces routed General Oreste Baratieri\'s Italian and colonial army in the mountains near Adwa, inflicting thousands of casualties and taking thousands of prisoners — the most significant defeat of a European colonial power by an African state during the Scramble for Africa.',
+        source: {
+          externalId: 'src:adwa-battle-record',
+          name: 'Battle of Adwa, 1 March 1896 — Ethiopian Empire (Menelik II) vs Kingdom of Italy (Baratieri).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Adwa',
+          publishedAt: '1896-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1896-10-26',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of Addis Ababa (26 October 1896) compelled Italy to abrogate the Treaty of Wuchale and recognise Ethiopia\'s full sovereignty and independence. The outcome — and Ethiopia\'s status as the African state to preserve independence by military victory during the colonial partition — is settled in the historiography.',
+        source: {
+          externalId: 'src:adwa-treaty-addis-ababa',
+          name: 'Battle of Adwa — aftermath: Treaty of Addis Ababa (1896) recognising Ethiopian independence.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Adwa',
+          publishedAt: '1896-10-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
