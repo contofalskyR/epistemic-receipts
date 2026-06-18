@@ -7680,6 +7680,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Tinchebrai — Henry I reunites Normandy and England (1106) ──────
+  {
+    externalId: 'trajectory:battle-of-tinchebrai-1106',
+    text: 'On 28 September 1106, King Henry I of England defeated and captured his elder brother Robert Curthose, Duke of Normandy, at the Battle of Tinchebrai, bringing the Duchy of Normandy back under the rule of the English crown.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1106-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1106-09-28',
+        datePrecision: 'DAY',
+        reason: 'Forty years after the Norman Conquest, the sons of William the Conqueror contend for Normandy. Henry I of England besieges Tinchebrai and, on 28 September 1106, gives battle to his brother Robert Curthose. Henry dismounts most of his knights to stiffen his infantry; the duke\'s line breaks, Robert is taken prisoner, and Normandy passes to Henry. The outcome is reported at once in letters and in the Anglo-Norman chronicles.',
+        source: {
+          externalId: 'src:tinchebrai-contemporary-account-1106',
+          name: 'A Contemporary Account of the Battle of Tinchebrai, 28 September 1106 (letter edited by H. W. C. Davis, English Historical Review 24, 1909); corroborated by the Anglo-Saxon Chronicle and Orderic Vitalis.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Tinchebray',
+          publishedAt: '1106-09-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A surviving contemporary letter, the Anglo-Saxon Chronicle, and Orderic Vitalis independently agree on the date, the capture of Robert Curthose, and Henry\'s acquisition of Normandy. Robert spent the rest of his life in captivity, dying in 1134. Historians treat 28 September 1106 as the securely dated reunification of the Anglo-Norman realm under Henry I, debating its governance rather than the fact.',
+        source: {
+          externalId: 'src:tinchebrai-scholarship',
+          name: 'The Battle of Tinchebrai (28 September 1106) and the reunification of England and Normandy under Henry I. Standard Anglo-Norman scholarship.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Tinchebray',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Legnano — Lombard League defeats Barbarossa (1176) ─────────────
+  {
+    externalId: 'trajectory:battle-of-legnano-1176',
+    text: 'On 29 May 1176, the cavalry and infantry of the Lombard League defeated the imperial army of Emperor Frederick I Barbarossa at the Battle of Legnano, ending his fifth Italian campaign and forcing the diplomacy that led to the Peace of Constance (1183).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1176-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1176-05-29',
+        datePrecision: 'DAY',
+        reason: 'The communes of northern Italy, allied as the Lombard League against the emperor\'s claims over their cities, meet Frederick Barbarossa\'s army near Legnano on 29 May 1176. The League\'s infantry, rallying around the carroccio battle-wagon, withstands the imperial cavalry and routs it; Frederick is unhorsed and briefly believed dead. Milanese and imperial chronicles record the engagement and the emperor\'s defeat.',
+        source: {
+          externalId: 'src:legnano-milanese-chronicles-1176',
+          name: 'Contemporary Milanese chronicles (Gesta Federici I imperatoris in Lombardia) and Boso\'s Life of Alexander III recording the Battle of Legnano, 29 May 1176.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Legnano',
+          publishedAt: '1176-05-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1183-06-25',
+        datePrecision: 'DAY',
+        reason: 'Having lost the support of the German princes after Legnano, Frederick turned to negotiation: reconciliation with Pope Alexander III at the Treaty of Venice (1177) and, on 25 June 1183, the Peace of Constance, in which the emperor recognized the Lombard League and granted the cities self-government over administration, fortifications, courts, and the levy. The treaty enacted as binding law the autonomy the battle had won, settling the outcome of the conflict.',
+        source: {
+          externalId: 'src:peace-of-constance-1183',
+          name: 'Peace of Constance, 25 June 1183, recognizing the Lombard League and the regalian rights of the northern Italian communes. (diplomatic instrument)',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Constance',
+          publishedAt: '1183-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Myriokephalon — Byzantine bid for Anatolia checked (1176) ──────
+  {
+    externalId: 'trajectory:battle-of-myriokephalon-1176',
+    text: 'On 17 September 1176, the army of Emperor Manuel I Komnenos was ambushed and badly mauled by the Seljuk Sultanate of Rum under Kilij Arslan II at Myriokephalon in the Tzivritze pass, ending the Byzantine effort to reconquer the Anatolian interior.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1176-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1176-09-17',
+        datePrecision: 'DAY',
+        reason: 'Marching on the Seljuk capital of Iconium, Manuel I Komnenos leads a large Byzantine army into the narrow Tzivritze pass near the ruined fort of Myriokephalon on 17 September 1176, where the Turks ambush the strung-out column and destroy much of the baggage train and a large part of the force. Manuel, comparing his plight to that of Romanos Diogenes at Manzikert, sends word ahead to Constantinople; Niketas Choniates records the disaster in his Historia.',
+        source: {
+          externalId: 'src:choniates-myriokephalon-1176',
+          name: 'Niketas Choniates, Historia, contemporary Byzantine account of the ambush at Myriokephalon, 17 September 1176; with Emperor Manuel I\'s own dispatch to Constantinople.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Myriokephalon',
+          publishedAt: '1176-09-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Byzantine and Seljuk sources agree on the date, place, and outcome of the ambush, though Manuel sought to present the result as less than catastrophic. Modern historiography treats 17 September 1176 as the securely dated end of Byzantine ambitions to recover the central Anatolian plateau — debating whether it was as decisive as Manzikert while accepting the engagement and its strategic effect.',
+        source: {
+          externalId: 'src:myriokephalon-scholarship',
+          name: 'The Battle of Myriokephalon (17 September 1176) as the close of Byzantine reconquest of interior Anatolia. Standard Komnenian-era scholarship.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Myriokephalon',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Benevento — collapse of Hohenstaufen rule in Italy (1266) ──────
+  {
+    externalId: 'trajectory:battle-of-benevento-1266',
+    text: 'On 26 February 1266, Charles I of Anjou defeated and killed King Manfred of Sicily at the Battle of Benevento, destroying Manfred\'s army and bringing about the collapse of Hohenstaufen rule in southern Italy and Sicily.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1266-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1266-02-26',
+        datePrecision: 'DAY',
+        reason: 'Invested with the Kingdom of Sicily by the papacy, Charles of Anjou meets the Hohenstaufen king Manfred near Benevento on 26 February 1266. Manfred\'s German knights are overwhelmed once the gaps in their armour are exploited, his army is destroyed, and Manfred himself is killed in the field. The battle and the king\'s death are recorded in contemporary Italian chronicles.',
+        source: {
+          externalId: 'src:benevento-nuova-cronica-1266',
+          name: 'Giovanni Villani, Nuova Cronica, and the account of Andrew of Hungary recording the Battle of Benevento and the death of Manfred, 26 February 1266.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Benevento',
+          publishedAt: '1266-02-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Contemporary chronicles agree on the date, Manfred\'s death, and Charles\'s subsequent near-unopposed conquest of the Kingdom of Sicily. Historians treat 26 February 1266 as the securely dated end of Hohenstaufen power in Italy and the founding of Angevin rule in the south, debating its consequences for the later Sicilian Vespers rather than the event itself.',
+        source: {
+          externalId: 'src:benevento-scholarship',
+          name: 'The Battle of Benevento (26 February 1266) and the collapse of Hohenstaufen rule in Italy. Standard scholarship on the Angevin conquest of Sicily.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Benevento',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Solar eclipse of 968 — Leo the Deacon's first description of the corona ───
   {
     externalId: 'trajectory:leo-deacon-corona-968',
