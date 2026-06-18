@@ -17502,48 +17502,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Gardasil HPV vaccine FDA approval — 2006 ───────────────────────────────
-  {
-    externalId: 'trajectory:gardasil-hpv-vaccine-fda-approval-2006',
-    text: 'The FDA approved Gardasil (quadrivalent human papillomavirus vaccine against HPV types 6, 11, 16, and 18) on June 8, 2006, the first vaccine licensed to prevent cervical cancer and precancers, for girls and women aged 9–26.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '2006-06-08',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2006-06-08',
-        datePrecision: 'DAY',
-        reason: 'The FDA licensed Merck\'s Gardasil as safe and effective for preventing infection and disease caused by HPV types 6, 11, 16, and 18 in females aged 9–26, making it the first vaccine indicated to prevent cervical cancer, precancerous genital lesions, and genital warts. This established a regulatory claim that a vaccine could prevent a major women\'s cancer.',
-        source: {
-          externalId: 'src:fda-gardasil-approval-2006',
-          name: 'U.S. Food and Drug Administration. GARDASIL (Human Papillomavirus Quadrivalent Vaccine) — Approval (June 8, 2006).',
-          url: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/gardasil',
-          publishedAt: '2006-06-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2006-06-29',
-        datePrecision: 'DAY',
-        reason: 'On June 29, 2006, the CDC Advisory Committee on Immunization Practices recommended routine HPV vaccination of girls aged 11–12 (with catch-up to 26), moving Gardasil from a licensed product to a nationally recommended standard of preventive care and institutionally settling its place in the U.S. immunization schedule.',
-        source: {
-          externalId: 'src:drugs-com-gardasil-history-2006',
-          name: 'Gardasil FDA Approval History (incl. ACIP recommendation). Drugs.com.',
-          url: 'https://www.drugs.com/history/gardasil.html',
-          publishedAt: '2006-06-29',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
