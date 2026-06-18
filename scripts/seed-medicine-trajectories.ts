@@ -1244,6 +1244,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINE REVERSAL & ANTIMICROBIAL RESISTANCE ERA (2000–2012)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 27. LYMErix Lyme vaccine withdrawal — 2002 ──────────────────────────────
+  {
+    externalId: 'trajectory:lymerix-lyme-vaccine-2002',
+    text: "GlaxoSmithKline's LYMErix, the first FDA-approved human Lyme disease vaccine (recombinant OspA, ~76% efficacy), was voluntarily withdrawn from the U.S. market in February 2002 amid unproven safety fears and declining sales despite no established causal harm.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-07-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-07-23',
+        datePrecision: 'DAY',
+        reason: 'Steere et al. published a 10,936-subject randomized trial in the NEJM showing the recombinant OspA Lyme vaccine prevented roughly 76% of definite Lyme disease cases after three doses. This established the efficacy of the first human Lyme vaccine, which the FDA approved on 21 December 1998.',
+        source: {
+          externalId: 'src:steere-ospa-lyme-vaccine-nejm-1998',
+          name: 'Steere AC, Sikand VK, Meurice F, et al. Vaccination against Lyme disease with recombinant Borrelia burgdorferi outer-surface lipoprotein A with adjuvant. N Engl J Med. 1998;339(4):209-215.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9673298/',
+          publishedAt: '1998-07-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2001-01-31',
+        datePrecision: 'MONTH',
+        reason: 'Reports of arthritis and autoimmune adverse events, a hypothesized OspA molecular-mimicry mechanism, class-action litigation, and intense media coverage drove an FDA VRBPAC review in early 2001. Public confidence in the vaccine\'s safety collapsed even though regulators found no confirmed causal link.',
+        source: {
+          externalId: 'src:nigrovic-lyme-vaccine-cautionary-tale-2007',
+          name: 'Nigrovic LE, Thompson KM. The Lyme vaccine: a cautionary tale. Epidemiol Infect. 2007;135(1):1-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16893489/',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2002-02-26',
+        datePrecision: 'MONTH',
+        reason: 'GlaxoSmithKline voluntarily withdrew LYMErix in February 2002, about three years after approval, citing declining sales amid fears of side effects. A safe and effective vaccine was removed from the market by litigation and risk-communication failure rather than by scientific refutation — a widely cited cautionary tale.',
+        source: {
+          externalId: 'src:nigrovic-lyme-vaccine-withdrawal-2007',
+          name: 'Nigrovic LE, Thompson KM. The Lyme vaccine: a cautionary tale. Epidemiol Infect. 2007;135(1):1-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16893489/',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 28. Step Study Merck Ad5 HIV vaccine failure — 2007 ─────────────────────
+  {
+    externalId: 'trajectory:step-merck-ad5-hiv-vaccine-failure-2007',
+    text: "Merck's MRKAd5 HIV-1 gag/pol/nef T-cell vaccine — the leading cell-mediated-immunity HIV vaccine candidate, tested in the Step Study — failed to prevent infection or reduce viral load and was associated with increased HIV acquisition in some men, prompting the data monitoring board to halt immunizations on 21 September 2007.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-09-21',
+        datePrecision: 'DAY',
+        reason: "After a planned interim analysis showed futility, the Step Study's Data and Safety Monitoring Board recommended halting vaccinations on 21 September 2007. The result put on record that the field's leading T-cell-based HIV vaccine concept had failed and might even raise infection risk.",
+        source: {
+          externalId: 'src:buchbinder-step-study-lancet-2008',
+          name: 'Buchbinder SP, Mehrotra DV, Duerr A, et al. Efficacy assessment of a cell-mediated immunity HIV-1 vaccine (the Step Study): a double-blind, randomised, placebo-controlled, test-of-concept trial. Lancet. 2008;372(9653):1881-1893.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19012954/',
+          publishedAt: '2008-11-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-11-29',
+        datePrecision: 'DAY',
+        reason: 'Buchbinder et al. published the full Step Study results in the Lancet, confirming the vaccine neither prevented HIV-1 infection nor lowered viral load, and showed increased acquisition among Ad5-seropositive and uncircumcised men. The cell-mediated-immunity vaccine paradigm was abandoned, redirecting HIV vaccine research toward antibody-based approaches.',
+        source: {
+          externalId: 'src:buchbinder-step-study-results-lancet-2008',
+          name: 'Buchbinder SP, Mehrotra DV, Duerr A, et al. Efficacy assessment of a cell-mediated immunity HIV-1 vaccine (the Step Study). Lancet. 2008;372(9653):1881-1893.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19012954/',
+          publishedAt: '2008-11-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 29. Artemisinin resistance in P. falciparum — 2009 ───────────────────────
+  {
+    externalId: 'trajectory:artemisinin-resistance-falciparum-2009',
+    text: 'Plasmodium falciparum malaria in western Cambodia showed reduced in vivo susceptibility to artemisinins (markedly delayed parasite clearance), the first clinical evidence of emerging artemisinin resistance, reported by Dondorp et al. in the NEJM on 30 July 2009.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-07-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-07-30',
+        datePrecision: 'DAY',
+        reason: 'Dondorp et al. documented a median parasite clearance time of 84 hours in Pailin, western Cambodia, versus 48 hours in northwestern Thailand, demonstrating that the frontline antimalarial class was losing potency. This recorded the first robust clinical signal of artemisinin resistance in the parasite responsible for most malaria deaths.',
+        source: {
+          externalId: 'src:dondorp-artemisinin-resistance-nejm-2009',
+          name: 'Dondorp AM, Nosten F, Yi P, et al. Artemisinin resistance in Plasmodium falciparum malaria. N Engl J Med. 2009;361(5):455-467.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19641202/',
+          publishedAt: '2009-07-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-02',
+        datePrecision: 'DAY',
+        reason: 'Ariey et al. identified mutations in the kelch13 (K13-propeller) gene as a molecular marker of artemisinin resistance, with mutant alleles clustering in resistant Cambodian provinces. This pinned the mechanism, enabled global genomic surveillance, and settled artemisinin resistance as an established, spreading phenomenon rather than a regional anomaly.',
+        source: {
+          externalId: 'src:ariey-k13-artemisinin-marker-nature-2014',
+          name: 'Ariey F, Witkowski B, Amaratunga C, et al. A molecular marker of artemisinin-resistant Plasmodium falciparum malaria. Nature. 2014;505(7481):50-55.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24352242/',
+          publishedAt: '2014-01-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 30. NDM-1 carbapenem resistance emergence — 2009 ─────────────────────────
+  {
+    externalId: 'trajectory:ndm-1-carbapenem-resistance-emergence-2009',
+    text: 'A novel carbapenem-resistance gene, blaNDM-1 (New Delhi metallo-β-lactamase), conferring near-pan-resistance in Enterobacteriaceae, was first characterized by Yong et al. in 2009 and shown by Kumarasamy et al. in 2010 to be spreading internationally from the Indian subcontinent.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Yong et al. characterized the new metallo-β-lactamase gene blaNDM-1 in a Klebsiella pneumoniae ST14 isolate from a Swedish patient who had acquired a urinary infection in New Delhi. This recorded the first description of a resistance mechanism that disabled carbapenems, the last-line β-lactams.',
+        source: {
+          externalId: 'src:yong-ndm-1-characterization-aac-2009',
+          name: 'Yong D, Toleman MA, Giske CG, et al. Characterization of a new metallo-beta-lactamase gene, bla(NDM-1)... in Klebsiella pneumoniae sequence type 14 from India. Antimicrob Agents Chemother. 2009;53(12):5046-5054.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19770275/',
+          publishedAt: '2009-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-08-11',
+        datePrecision: 'DAY',
+        reason: 'Kumarasamy et al. reported 180 NDM-1-positive isolates across Chennai, Haryana, and the UK — resistant to all antibiotics except tigecycline and colistin — and warned NDM-1 had great potential to become a worldwide public health problem. The multinational epidemiology settled NDM-1 as an established, globally spreading resistance threat and triggered international surveillance.',
+        source: {
+          externalId: 'src:kumarasamy-ndm-1-emergence-lancet-id-2010',
+          name: 'Kumarasamy KK, Toleman MA, Walsh TR, et al. Emergence of a new antibiotic resistance mechanism in India, Pakistan, and the UK: a molecular, biological, and epidemiological study. Lancet Infect Dis. 2010;10(9):597-602.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20705517/',
+          publishedAt: '2010-08-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 31. Pandemrix H1N1 vaccine narcolepsy association — 2010 ─────────────────
+  {
+    externalId: 'trajectory:pandemrix-h1n1-vaccine-narcolepsy-2010',
+    text: 'The AS03-adjuvanted 2009 pandemic influenza A(H1N1) vaccine Pandemrix was found to be associated with a sharp increase in childhood narcolepsy — a safety signal raised in Finland and Sweden in August 2010 and confirmed by Nohynek et al. in 2012.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-08-27',
+        datePrecision: 'DAY',
+        reason: "After clusters of new childhood narcolepsy cases in Finland and Sweden, Finland's National Institute for Health and Welfare (THL) recommended suspending Pandemrix, and on 27 August 2010 the European Medicines Agency initiated an Article 20 review of a possible Pandemrix–narcolepsy link. The post-marketing safety signal was formally recorded.",
+        source: {
+          externalId: 'src:ema-pandemrix-narcolepsy-review-2010',
+          name: 'European Medicines Agency. European Medicines Agency reviews further data on narcolepsy and possible association with Pandemrix (review initiated 27 August 2010). 2011.',
+          url: 'https://www.ema.europa.eu/en/news/european-medicines-agency-reviews-further-data-narcolepsy-possible-association-pandemrix',
+          publishedAt: '2011-02-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-28',
+        datePrecision: 'DAY',
+        reason: 'Nohynek et al. published a retrospective cohort of all Finnish children showing an abrupt rise in narcolepsy incidence among 4–19-year-olds vaccinated with Pandemrix (roughly a 12-fold increased risk), with no increase in other age groups. The epidemiological association became widely accepted, later attributed to an autoimmune molecular-mimicry mechanism, and Pandemrix use was restricted.',
+        source: {
+          externalId: 'src:nohynek-pandemrix-narcolepsy-plosone-2012',
+          name: 'Nohynek H, Jokinen J, Partinen M, et al. AS03 adjuvanted AH1N1 vaccine associated with an abrupt increase in the incidence of childhood narcolepsy in Finland. PLoS One. 2012;7(3):e33536.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22470453/',
+          publishedAt: '2012-03-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
