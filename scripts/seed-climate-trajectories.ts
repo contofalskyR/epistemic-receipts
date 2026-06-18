@@ -462,6 +462,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OZONE SCIENCE (1930–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 10. Chapman cycle — stratospheric ozone photochemistry — 1930 ───────────
+  {
+    externalId: 'trajectory:chapman-ozone-photochemistry-1930',
+    text: 'Sydney Chapman published in 1930 the first quantitative photochemical theory of how the stratospheric ozone layer forms and is maintained — solar ultraviolet splitting molecular oxygen into atoms that recombine into ozone — the mechanism still known as the Chapman cycle.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Chapman published \'A theory of upper atmospheric ozone\' in the Memoirs of the Royal Meteorological Society (vol. 3, no. 26, pp. 103–125), developing the first quantitative photochemical model of ozone equilibrium in the upper atmosphere. It explained the existence and altitude distribution of the ozone layer as a pure-oxygen photochemical balance, a theoretical claim grounded in the Dobson-era column measurements then accumulating.',
+        source: {
+          externalId: 'src:chapman-ozone-theory-1930',
+          name: 'Chapman S. A theory of upper atmospheric ozone. Memoirs of the Royal Meteorological Society. 1930;3(26):103–125.',
+          url: 'https://www.rmets.org/sites/default/files/papers/chapman-memoirs.pdf',
+          publishedAt: '1930-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-04-01',
+        datePrecision: 'MONTH',
+        reason: 'By 1970 the Chapman mechanism was the universally accepted foundation of stratospheric ozone chemistry: Crutzen\'s NOx work and, later, the Molina–Rowland ClOx work were explicitly framed as catalytic loss terms supplementing the Chapman production cycle, which had been found to overpredict ozone. The Chapman cycle remained settled as the foundational production mechanism even as catalytic destruction cycles were added to reconcile theory with the lower observed ozone.',
+        source: {
+          externalId: 'src:crutzen-nox-ozone-qjrms-1970',
+          name: 'Crutzen PJ. The influence of nitrogen oxides on the atmospheric ozone content. Quarterly Journal of the Royal Meteorological Society. 1970;96(408):320–325.',
+          url: 'https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.49709640815',
+          publishedAt: '1970-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 11. Crutzen NOx catalytic ozone destruction — 1970 ─────────────────────
+  {
+    externalId: 'trajectory:crutzen-nox-ozone-destruction-1970',
+    text: 'Paul Crutzen published in April 1970 the finding that catalytic cycles involving nitric oxide and nitrogen dioxide (NOx) are a dominant sink controlling stratospheric ozone, the first identification of a catalytic ozone-destruction mechanism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Crutzen published \'The influence of nitrogen oxides on the atmospheric ozone content\' in the Quarterly Journal of the Royal Meteorological Society, showing that NO and NO2 act as a catalytic chain destroying odd oxygen and reconciling the Chapman theory\'s overprediction with observed ozone. This was the first demonstration that trace catalysts, not just the pure-oxygen Chapman cycle, govern stratospheric ozone, and it laid the conceptual groundwork for the later halogen-catalysis discoveries.',
+        source: {
+          externalId: 'src:crutzen-nox-ozone-qjrms-1970',
+          name: 'Crutzen PJ. The influence of nitrogen oxides on the atmospheric ozone content. Quarterly Journal of the Royal Meteorological Society. 1970;96(408):320–325.',
+          url: 'https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.49709640815',
+          publishedAt: '1970-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10-11',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences awarded the 1995 Nobel Prize in Chemistry to Crutzen, Molina, and Rowland \'for their work in atmospheric chemistry, particularly concerning the formation and decomposition of ozone,\' with Crutzen specifically cited for the NOx catalytic mechanism. The award ratified catalytic ozone destruction as settled science, with Crutzen\'s 1970 NOx result recognized as the founding case of the catalytic paradigm.',
+        source: {
+          externalId: 'src:nobel-chemistry-1995-crutzen',
+          name: 'The Nobel Prize in Chemistry 1995: Paul J. Crutzen, Mario J. Molina, F. Sherwood Rowland. Royal Swedish Academy of Sciences. 11 October 1995.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1995/summary/',
+          publishedAt: '1995-10-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 12. Vienna Convention for the Protection of the Ozone Layer — 1985 ─────
+  {
+    externalId: 'trajectory:vienna-convention-ozone-layer-1985',
+    text: 'On 22 March 1985 governments adopted the Vienna Convention for the Protection of the Ozone Layer, the first global framework treaty committing nations to cooperate on research and monitoring of stratospheric ozone depletion ahead of binding controls.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1985-03-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-03-22',
+        datePrecision: 'DAY',
+        reason: 'Under UNEP auspices, 20 nations adopted and opened for signature the Vienna Convention in Vienna, Austria. As a precautionary framework convention it created no binding emissions controls but obligated parties to cooperate on systematic observation, research, and information exchange on ozone-modifying substances — the institutional scaffolding adopted two months before the Antarctic ozone hole was publicly reported.',
+        source: {
+          externalId: 'src:vienna-convention-text-1985',
+          name: 'United Nations Environment Programme. Vienna Convention for the Protection of the Ozone Layer. Adopted 22 March 1985.',
+          url: 'https://treaties.un.org/doc/Treaties/1988/09/19880922%2003-14%20AM/Ch_XXVII_02p.pdf',
+          publishedAt: '1985-03-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-09-22',
+        datePrecision: 'DAY',
+        reason: 'The Vienna Convention entered into force on 22 September 1988 after the twentieth instrument of ratification, becoming binding international law and the legal parent instrument of the 1987 Montreal Protocol. It subsequently achieved universal ratification, institutionally settling the framework for coordinated international action on ozone protection.',
+        source: {
+          externalId: 'src:unep-vienna-convention-introduction',
+          name: 'Ozone Secretariat, UNEP. Vienna Convention for the Protection of the Ozone Layer — Introduction (entry into force 22 September 1988).',
+          url: 'https://ozone.unep.org/treaties/vienna-convention/introduction',
+          publishedAt: '1988-09-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 13. Antarctic ozone healing emergence — 2016 ────────────────────────────
+  {
+    externalId: 'trajectory:antarctic-ozone-healing-emergence-2016',
+    text: 'Susan Solomon and colleagues reported in Science on 30 June 2016 the first detection of statistically significant healing of the Antarctic ozone hole — a September ozone-column recovery of more than 4 million square kilometres since 2000 — attributable to declining stratospheric chlorine under the Montreal Protocol.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-06-30',
+        datePrecision: 'DAY',
+        reason: 'Solomon, Ivy, Kinnison, Mills, Neely, and Schmidt published \'Emergence of healing in the Antarctic ozone layer\' in Science, using fingerprinting of September ozone, temperature, and aerosol trends to show the ozone hole had begun to shrink and that the recovery was chemically attributable to declining chlorine from the Montreal Protocol rather than meteorological variability. This was the first peer-reviewed claim that healing had emerged from the noise.',
+        source: {
+          externalId: 'src:solomon-ozone-healing-science-2016',
+          name: 'Solomon S, Ivy DJ, Kinnison D, Mills MJ, Neely RR III, Schmidt A. Emergence of healing in the Antarctic ozone layer. Science. 2016;353(6296):269–274.',
+          url: 'https://www.science.org/doi/10.1126/science.aae0061',
+          publishedAt: '2016-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-09',
+        datePrecision: 'DAY',
+        reason: 'The WMO/UNEP Scientific Assessment Panel\'s 2022 report, released 9 January 2023, officially confirmed that the ozone layer is on track to recover to 1980 levels — around 2066 over Antarctica — institutionally endorsing the emergence-of-healing finding as established. The expert detection of 2016 became the consensus institutional position on Montreal Protocol-driven recovery.',
+        source: {
+          externalId: 'src:wmo-ozone-assessment-2022',
+          name: 'WMO/UNEP. Scientific Assessment of Ozone Depletion: 2022. GAW Report No. 278. 9 January 2023.',
+          url: 'https://ozone.unep.org/science/assessment/sap',
+          publishedAt: '2023-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 14. Montzka CFC-11 unexpected emissions — 2018 ──────────────────────────
+  {
+    externalId: 'trajectory:cfc11-unexpected-emissions-2018',
+    text: 'Stephen Montzka and colleagues reported in Nature on 16 May 2018 that the atmospheric decline of ozone-depleting CFC-11 had slowed by about 50% after 2012, implying unreported new production in violation of the Montreal Protocol.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-05-16',
+        datePrecision: 'DAY',
+        reason: 'Montzka et al. published \'An unexpected and persistent increase in global emissions of ozone-depleting CFC-11\' in Nature, showing that the steady post-Montreal decline in atmospheric CFC-11 had slowed sharply after 2012. The finding contested the settled assumption of full Montreal Protocol compliance, indicating roughly 13 Gg/yr of new unreported emissions from an unidentified source.',
+        source: {
+          externalId: 'src:montzka-cfc11-nature-2018',
+          name: 'Montzka SA, et al. An unexpected and persistent increase in global emissions of ozone-depleting CFC-11. Nature. 2018;557(7705):413–417.',
+          url: 'https://www.nature.com/articles/s41586-018-0106-2',
+          publishedAt: '2018-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-05-23',
+        datePrecision: 'DAY',
+        reason: 'Rigby et al. published \'Increase in CFC-11 emissions from eastern China based on atmospheric observations\' in Nature, using regional monitoring stations to localize 40–60% of the global rise to the eastern Chinese provinces of Shandong and Hebei. By identifying the source and confirming new production of the banned compound, the study resolved the anomaly and re-settled the picture as an enforcement failure, prompting Chinese crackdowns and a subsequent renewed emissions decline.',
+        source: {
+          externalId: 'src:rigby-cfc11-china-nature-2019',
+          name: 'Rigby M, Park S, Saito T, et al. Increase in CFC-11 emissions from eastern China based on atmospheric observations. Nature. 2019;569(7757):546–550.',
+          url: 'https://www.nature.com/articles/s41586-019-1193-4',
+          publishedAt: '2019-05-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
@@ -477,6 +691,7 @@ async function upsertTrajectory(t: Trajectory) {
       claimEmergedPrecision: t.claimEmergedPrecision,
       currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
+      ingestedBy: 'seed:climate-trajectories',
       deleted: false,
     },
     update: {

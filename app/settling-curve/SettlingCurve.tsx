@@ -49,6 +49,7 @@ interface Transition {
 interface TrajectoryListItem {
   id: string;
   claim: string;
+  domain?: string;
   era?: string;
   communities?: Community[];
   transitionCount?: number;
@@ -187,6 +188,7 @@ function SettlingCurveInner() {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("ALL");
   const [eraFilter, setEraFilter] = useState<string>("ALL");
+  const [domainFilter, setDomainFilter] = useState<string>("ALL");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
@@ -242,9 +244,10 @@ function SettlingCurveInner() {
       if (q && !item.claim.toLowerCase().includes(q)) return false;
       if (!matchesStatusFilter(item, statusFilter)) return false;
       if (eraFilter !== "ALL" && (item.era ?? "Unknown") !== eraFilter) return false;
+      if (domainFilter !== "ALL" && (item.domain ?? "history") !== domainFilter) return false;
       return true;
     });
-  }, [list, query, statusFilter, eraFilter]);
+  }, [list, query, statusFilter, eraFilter, domainFilter]);
 
   const activeItem = list.find((l) => l.id === activeId) || null;
   const title = activeItem?.claim ?? traj?.claim ?? "";
@@ -502,6 +505,36 @@ function SettlingCurveInner() {
                   }}
                 >
                   {f.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {[
+              { key: "ALL", label: "All domains", emoji: "" },
+              { key: "history", label: "History", emoji: "🌊" },
+              { key: "medicine", label: "Medicine", emoji: "💊" },
+              { key: "astronomy", label: "Astronomy", emoji: "🔭" },
+              { key: "climate", label: "Climate", emoji: "🌍" },
+              { key: "nutrition", label: "Nutrition", emoji: "🥗" },
+            ].filter((d) => d.key === "ALL" || list.some((x) => (x.domain ?? "history") === d.key)).map((d) => {
+              const on = domainFilter === d.key;
+              return (
+                <button
+                  key={d.key}
+                  type="button"
+                  onClick={() => setDomainFilter(d.key)}
+                  className="rounded-full px-2.5 py-1"
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: "0.04em",
+                    background: on ? "#38bdf822" : "transparent",
+                    border: `1px solid ${on ? "#38bdf8" : C.panelEdge}`,
+                    color: on ? "#38bdf8" : C.mut,
+                  }}
+                >
+                  {d.emoji ? `${d.emoji} ${d.label}` : d.label}
                 </button>
               );
             })}

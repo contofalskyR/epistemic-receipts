@@ -495,6 +495,7 @@ async function upsertTrajectory(t: Trajectory) {
       claimEmergedPrecision: t.claimEmergedPrecision,
       currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
+      ingestedBy: 'seed:nutrition-trajectories',
       deleted: false,
     },
     update: {

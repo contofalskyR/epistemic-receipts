@@ -3,6 +3,15 @@ import { prisma } from "@/lib/prisma";
 
 export const revalidate = 600;
 
+function classifyDomain(ingestedBy: string | null): string {
+  if (!ingestedBy) return "history";
+  if (ingestedBy.includes("medicine")) return "medicine";
+  if (ingestedBy.includes("astronomy")) return "astronomy";
+  if (ingestedBy.includes("climate")) return "climate";
+  if (ingestedBy.includes("nutrition")) return "nutrition";
+  return "history";
+}
+
 function classifyEra(emergedAt: Date | null): string {
   if (!emergedAt) return "Unknown";
   const y = emergedAt.getFullYear();
@@ -23,6 +32,7 @@ export async function GET() {
       externalId: true,
       text: true,
       claimEmergedAt: true,
+      ingestedBy: true,
       statusHistory: {
         orderBy: { occurredAt: "asc" },
         select: { community: true, toAxis: true, occurredAt: true },
@@ -40,6 +50,7 @@ export async function GET() {
       id: c.externalId!.replace(/^trajectory:/, ""),
       claimId: c.id,
       claim: c.text,
+      domain: classifyDomain(c.ingestedBy),
       era: classifyEra(c.claimEmergedAt),
       communities: [...new Set(c.statusHistory.map((s) => s.community))],
       transitionCount: c.statusHistory.length,
