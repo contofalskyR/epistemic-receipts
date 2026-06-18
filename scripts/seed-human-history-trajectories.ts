@@ -50643,6 +50643,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Chrysopolis — Constantine becomes sole emperor (324 CE) ────────
+  {
+    externalId: 'trajectory:battle-of-chrysopolis-324',
+    text: 'On 18 September 324 CE Constantine I defeated Licinius at Chrysopolis on the Asiatic shore of the Bosphorus opposite Byzantium, ending the civil wars of the Tetrarchy and making Constantine the sole ruler of the Roman Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0324-09-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0324-09-18',
+        datePrecision: 'DAY',
+        reason: 'After his defeat at Adrianople and the loss of the Hellespont fleet, Licinius withdrew across the Bosphorus to Chrysopolis (modern Üsküdar), where Constantine\'s army crushed him in a final pitched battle. Licinius surrendered shortly afterward and was later executed. The bishop Eusebius of Caesarea, a contemporary, recorded the victory in his Life of Constantine and Ecclesiastical History as the moment that left Constantine in possession of the whole empire.',
+        source: {
+          externalId: 'src:eusebius-vita-constantini-chrysopolis',
+          name: 'Eusebius of Caesarea, Life of Constantine (Vita Constantini), Book 2, on the final defeat of Licinius. (c. 339 CE)',
+          url: 'https://www.newadvent.org/fathers/25022.htm',
+          publishedAt: '0339-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle on 18 September 324, Constantine\'s decisive victory, and his consequent sole rule are independently attested by the pagan historian Zosimus, the Origo Constantini (Anonymus Valesianus), and Eusebius. Modern scholarship treats the date and outcome as settled; within months Constantine refounded Byzantium as Constantinople.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-chrysopolis',
+          name: 'Wikipedia, "Battle of Chrysopolis" — fought 18 September 324; Constantine becomes sole Roman emperor.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Chrysopolis',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Mursa Major — bloodiest Roman civil-war battle (351 CE) ─────────
+  {
+    externalId: 'trajectory:battle-of-mursa-major-351',
+    text: 'On 28 September 351 CE the army of Emperor Constantius II defeated the usurper Magnentius at Mursa in Pannonia (modern Osijek, Croatia), in one of the bloodiest battles of Roman history, with tens of thousands killed on both sides.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0351-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0351-09-28',
+        datePrecision: 'DAY',
+        reason: 'Constantius II, marching west to suppress the usurpation of Magnentius, met him near Mursa on the Drava. Constantius\'s heavy cavalry and mounted archers broke Magnentius\'s right wing in a daylong battle that left both armies devastated. Contemporary and near-contemporary writers — the breviarist Eutropius and the historian Zosimus — recorded the enormous slaughter, Eutropius lamenting that the losses could instead have won foreign triumphs.',
+        source: {
+          externalId: 'src:eutropius-breviarium-mursa',
+          name: 'Eutropius, Breviarium ab Urbe Condita 10.12, on the battle of Mursa against Magnentius. (c. 369 CE)',
+          url: 'https://www.thelatinlibrary.com/eutropius/eutropius10.shtml',
+          publishedAt: '0369-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date of 28 September 351, Constantius\'s costly victory, and the exceptional casualties (commonly given as roughly 30,000 on each side) are settled across the ancient sources and modern scholarship, which treat Mursa as a strategically crippling pyrrhic victory that weakened Rome\'s frontier defenses.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-mursa-major',
+          name: 'Wikipedia, "Battle of Mursa Major" — fought 28 September 351; Constantius II defeats Magnentius.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mursa_Major',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Codex Theodosianus — first official codification of Roman law (438 CE) ────
+  {
+    externalId: 'trajectory:codex-theodosianus-438',
+    text: 'On 15 February 438 CE the emperor Theodosius II promulgated the Codex Theodosianus at Constantinople — the first officially sanctioned compilation of Roman imperial law — which took binding force throughout the empire on 1 January 439.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0438-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0438-02-15',
+        datePrecision: 'DAY',
+        reason: 'Theodosius II, having appointed a commission in 429 to gather the general constitutions issued since Constantine, promulgated the completed sixteen-book code by the constitution of 15 February 438. The Gesta Senatus Romani de Theodosiano Publicando — the minutes of the Roman Senate session of 25 December 438 acclaiming the code — survives as a contemporary record of its reception in the West.',
+        source: {
+          externalId: 'src:gesta-senatus-theodosianus',
+          name: 'Gesta Senatus Romani de Theodosiano Publicando — minutes of the Senate session acclaiming the Code (25 December 438), prefixed to the Codex Theodosianus.',
+          url: 'https://en.wikipedia.org/wiki/Codex_Theodosianus',
+          publishedAt: '0438-12-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'That the Codex Theodosianus was promulgated on 15 February 438 and took effect on 1 January 439 in both halves of the empire is settled fact, fixed by the code\'s own prefatory constitutions and Senate records. The Codex is the principal surviving source for late-Roman law before Justinian and a foundation of modern legal history.',
+        source: {
+          externalId: 'src:wikipedia-codex-theodosianus',
+          name: 'Wikipedia, "Codex Theodosianus" — published 15 February 438, in force 1 January 439.',
+          url: 'https://en.wikipedia.org/wiki/Codex_Theodosianus',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Council of Chalcedon — defines two natures of Christ (451 CE) ─────────────
+  {
+    externalId: 'trajectory:council-of-chalcedon-451',
+    text: 'The Council of Chalcedon, the Fourth Ecumenical Council, opened on 8 October 451 CE at Chalcedon in Bithynia (across the Bosphorus from Constantinople) and adopted the Chalcedonian Definition that Christ is acknowledged "in two natures, without confusion, change, division, or separation" — repudiating the Second Council of Ephesus of 449.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0451-10-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0449-08-08',
+        datePrecision: 'MONTH',
+        reason: 'At the Second Council of Ephesus in August 449, convened by Theodosius II and presided over by Dioscorus of Alexandria, the archimandrite Eutyches was rehabilitated and Flavian of Constantinople deposed and beaten, settling the imperial church toward a single-nature (miaphysite) Christology. Pope Leo I denounced the proceedings as a Latrocinium, a "Robber Synod."',
+        source: {
+          externalId: 'src:wikipedia-second-council-ephesus-449',
+          name: 'Wikipedia, "Second Council of Ephesus" — August 449, the "Robber Council" that rehabilitated Eutyches.',
+          url: 'https://en.wikipedia.org/wiki/Second_Council_of_Ephesus',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0451-10-08',
+        datePrecision: 'DAY',
+        reason: 'After the death of Theodosius II, the emperor Marcian convened a new council expressly to set aside the 449 synod. Opening on 8 October 451, the more than 500 assembled bishops condemned Dioscorus, rehabilitated Flavian, and adopted the Tome of Leo and the Chalcedonian Definition of two natures in one person — directly reversing the Christological settlement of the Robber Council. The acts of the council survive in detail.',
+        source: {
+          externalId: 'src:acts-council-chalcedon-451',
+          name: 'The Acts and Definition of the Council of Chalcedon (451), including the Tome of Leo and the thirty canons.',
+          url: 'https://www.newadvent.org/fathers/3811.htm',
+          publishedAt: '0451-10-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Chalcedonian Definition became the Christological standard of Catholic, Eastern Orthodox, and most Protestant churches, while the non-Chalcedonian (Oriental Orthodox) churches rejected it — a schism that endures. The council, its 451 date, and its dyophysite definition are settled history; only its theological reception remained divided.',
+        source: {
+          externalId: 'src:wikipedia-council-of-chalcedon',
+          name: 'Wikipedia, "Council of Chalcedon" — 8 October to 1 November 451; Chalcedonian Definition of two natures.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Chalcedon',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — additional curves
   // ═══════════════════════════════════════════════════════════════════════════════
