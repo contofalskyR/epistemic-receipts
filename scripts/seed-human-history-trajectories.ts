@@ -25858,6 +25858,216 @@ const TRAJECTORIES: Trajectory[] = [
   // COLD WAR & POSTWAR (1950–1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── 1953 Iranian coup: covert US/CIA role denied then acknowledged ──────────
+  {
+    externalId: 'trajectory:iran-1953-coup-cia-role-acknowledged',
+    text: 'The covert role of the United States (CIA) and Britain (SIS) in the 19 August 1953 coup d\'état that overthrew Iranian Prime Minister Mohammad Mossadegh — long officially denied — was formally acknowledged when the CIA released internal documents in August 2013.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1953-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1953-08-19',
+        datePrecision: 'DAY',
+        reason: 'After a first attempt failed on 15–16 August 1953, royalist officers and crowds, organized with CIA (Operation TPAJAX) and British SIS support, overthrew Prime Minister Mohammad Mossadegh on 19 August 1953 and restored the authority of Shah Mohammad Reza Pahlavi. The fall of the government and Mossadegh\'s arrest were reported worldwide as they happened; the foreign covert hand behind the crowds was rumored but officially denied for decades.',
+        source: {
+          externalId: 'src:nyt-mossadegh-overthrow-1953',
+          name: 'Contemporary press coverage of the overthrow of Mossadegh, 19–20 August 1953 (Wikipedia, "1953 Iranian coup d\'état" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/1953_Iranian_coup_d%27%C3%A9tat',
+          publishedAt: '1953-08-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-08-19',
+        datePrecision: 'DAY',
+        reason: 'On the 60th anniversary in August 2013, the CIA released internal histories — obtained and published by the National Security Archive — in which the agency explicitly described the 1953 coup as "carried out under CIA direction" and "as an act of U.S. foreign policy." This was the first official U.S. acknowledgment of the covert role, settling as documented fact what had previously been denied or treated as speculation.',
+        source: {
+          externalId: 'src:nsarchive-cia-1953-coup-2013',
+          name: 'National Security Archive, "CIA Confirms Role in 1953 Iran Coup" (Electronic Briefing Book No. 435), 19 August 2013 — releasing the CIA internal history of TPAJAX.',
+          url: 'https://nsarchive2.gwu.edu/NSAEBB/NSAEBB435/',
+          publishedAt: '2013-08-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nasser nationalizes the Suez Canal Company (1956) ───────────────────────
+  {
+    externalId: 'trajectory:suez-canal-nationalization-1956',
+    text: 'Egyptian President Gamal Abdel Nasser announced the nationalization of the Suez Canal Company in a speech at Alexandria on 26 July 1956, placing the waterway under Egyptian state control and triggering the Suez Crisis.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1956-07-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1956-07-26',
+        datePrecision: 'DAY',
+        reason: 'In a speech broadcast from Alexandria on 26 July 1956 — using the codeword "de Lesseps" to cue Egyptian forces to seize the canal installations — Nasser declared the Compagnie universelle du canal maritime de Suez nationalized, with its assets and revenues passing to the Egyptian state. The decree and the speech were transmitted live by radio and reported immediately across the world.',
+        source: {
+          externalId: 'src:nasser-suez-speech-1956',
+          name: 'Gamal Abdel Nasser, speech announcing nationalization of the Suez Canal Company, Alexandria, 26 July 1956 (Wikipedia, "Suez Crisis" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Suez_Crisis',
+          publishedAt: '1956-07-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-04-24',
+        datePrecision: 'DAY',
+        reason: 'Despite the Anglo-French-Israeli military intervention of late 1956, the nationalization stood: after the withdrawal of foreign forces, Egypt\'s control of the canal became permanent, formalized in the Egyptian declaration on the Suez Canal of 24 April 1957 registered with the United Nations. Egyptian operation of the waterway has been the settled legal and practical reality ever since.',
+        source: {
+          externalId: 'src:egypt-suez-declaration-1957',
+          name: 'Declaration of the Government of Egypt on the Suez Canal and the arrangements for its operation, 24 April 1957 (United Nations Treaty Series; Wikipedia, "Suez Crisis").',
+          url: 'https://en.wikipedia.org/wiki/Suez_Crisis',
+          publishedAt: '1957-04-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── OPEC founded at the Baghdad Conference (1960) ───────────────────────────
+  {
+    externalId: 'trajectory:opec-founded-baghdad-1960',
+    text: 'The Organization of the Petroleum Exporting Countries (OPEC) was founded at the Baghdad Conference on 14 September 1960 by Iran, Iraq, Kuwait, Saudi Arabia, and Venezuela.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1960-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-09-14',
+        datePrecision: 'DAY',
+        reason: 'Government representatives of Iran, Iraq, Kuwait, Saudi Arabia, and Venezuela, meeting in Baghdad on 10–14 September 1960 in response to oil-company price cuts, agreed to form a permanent organization to coordinate petroleum policies and concluded the conference on 14 September with the founding of OPEC. The founding resolution of the conference is preserved as a primary record by the organization.',
+        source: {
+          externalId: 'src:opec-baghdad-conference-1960',
+          name: 'Resolution of the Baghdad Conference, 10–14 September 1960 (founding of OPEC); Wikipedia, "OPEC" — synthesis of the founding record.',
+          url: 'https://en.wikipedia.org/wiki/OPEC',
+          publishedAt: '1960-09-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-11-06',
+        datePrecision: 'DAY',
+        reason: 'OPEC was registered with the United Nations Secretariat on 6 November 1962 (UN Resolution No. 6363), establishing it as a recognized intergovernmental organization. Its continuous existence, expansion to additional members, and central role in world oil markets are uncontested matters of record; the founding date and original five members are settled fact.',
+        source: {
+          externalId: 'src:opec-un-registration-1962',
+          name: 'OPEC UN registration record (UN Resolution No. 6363, 6 November 1962); Wikipedia, "OPEC".',
+          url: 'https://en.wikipedia.org/wiki/OPEC',
+          publishedAt: '1962-11-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Six-Day War opens; Egyptian false victory broadcasts reversed (1967) ────
+  {
+    externalId: 'trajectory:six-day-war-egyptian-victory-claims-reversed-1967',
+    text: 'Egyptian state radio\'s claims of victory on the opening day of the Six-Day War — including that 70+ Israeli aircraft had been shot down on 5 June 1967 — were false: Israel\'s surprise air strike (Operation Focus) had destroyed most of the Egyptian air force on the ground that morning, a reality that became undeniable within days.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-06-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1967-06-05',
+        datePrecision: 'DAY',
+        reason: 'On the morning of 5 June 1967 Egyptian state-run radio and the "Voice of the Arabs" broadcast claims of an Egyptian victory, asserting that dozens of Israeli aircraft had been shot down. These reports were carried across the Arab world and treated as the established account of the war\'s opening as Jordan and Syria entered the fighting on the strength of them.',
+        source: {
+          externalId: 'src:six-day-war-egyptian-broadcasts-1967',
+          name: 'Contemporary accounts of Egyptian "Voice of the Arabs" victory broadcasts, 5 June 1967 (Wikipedia, "Six-Day War" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Six-Day_War',
+          publishedAt: '1967-06-05',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-06-10',
+        datePrecision: 'DAY',
+        reason: 'In Operation Focus, beginning at 7:45 Israeli time on 5 June 1967, the Israeli Air Force destroyed roughly 300 Egyptian aircraft, most on the ground, for the loss of about 19 of its own — crippling Egyptian air power before noon. As Israeli ground forces overran Sinai and the war ended on 10 June with a decisive Israeli victory, the Egyptian victory broadcasts were exposed as propaganda and the documented record was reversed.',
+        source: {
+          externalId: 'src:operation-focus-six-day-war',
+          name: 'Documentation of Operation Focus and Egyptian air-force losses, 5 June 1967 (Wikipedia, "Six-Day War"; period air-loss tallies).',
+          url: 'https://en.wikipedia.org/wiki/Six-Day_War',
+          publishedAt: '1967-06-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Seizure of the Grand Mosque in Mecca; false attribution reversed (1979) ─
+  {
+    externalId: 'trajectory:grand-mosque-seizure-mecca-1979',
+    text: 'Armed militants led by Juhayman al-Otaybi seized the Grand Mosque in Mecca on 20 November 1979 and held it for two weeks; an initial false attribution of the attack to the United States and Israel was reversed once the captured Saudi-led Salafist insurgents were identified.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1979-11-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1979-11-20',
+        datePrecision: 'DAY',
+        reason: 'In the early morning of 20 November 1979 (1 Muharram 1400 AH), several hundred armed militants led by Juhayman al-Otaybi seized the Grand Mosque (al-Masjid al-Haram) in Mecca, declared al-Otaybi\'s brother-in-law Muhammad al-Qahtani to be the Mahdi, and took pilgrims hostage. The seizure of Islam\'s holiest site was reported worldwide and confirmed by the Saudi government as it unfolded.',
+        source: {
+          externalId: 'src:grand-mosque-seizure-1979',
+          name: 'Contemporary reporting on the seizure of the Grand Mosque, Mecca, 20 November 1979 (Wikipedia, "Grand Mosque seizure" — synthesis of period news accounts).',
+          url: 'https://en.wikipedia.org/wiki/Grand_Mosque_seizure',
+          publishedAt: '1979-11-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-12-04',
+        datePrecision: 'DAY',
+        reason: 'Iran\'s Ayatollah Khomeini publicly blamed "American imperialism and international Zionism" for the seizure, an accusation that helped incite the burning of the U.S. embassy in Islamabad on 21 November 1979. That attribution collapsed: Saudi forces retook the mosque by 4 December 1979, capturing surviving militants who were unambiguously identified as Saudi-led Salafist insurgents. Sixty-three were tried and publicly executed in January 1980, settling the perpetrators\' identity as documented fact.',
+        source: {
+          externalId: 'src:grand-mosque-retaking-1979',
+          name: 'Records of the retaking of the Grand Mosque (by 4 December 1979) and the trial and execution of captured militants, January 1980 (Wikipedia, "Grand Mosque seizure").',
+          url: 'https://en.wikipedia.org/wiki/Grand_Mosque_seizure',
+          publishedAt: '1979-12-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── U-2 incident: cover story reversed (1960) ──────────────────────────────
   {
     externalId: 'trajectory:u2-incident-cover-story-1960',
