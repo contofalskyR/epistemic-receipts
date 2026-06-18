@@ -975,6 +975,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Lunar eclipse predicted before the Battle of Pydna ──────────────────────
+  {
+    externalId: 'trajectory:pydna-eclipse-168bce',
+    text: 'A total lunar eclipse on the night before the Battle of Pydna — foretold and explained to the Roman army by the tribune Gaius Sulpicius Gallus — has been dated to the night of June 21, 168 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0168-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0168-06-21',
+        datePrecision: 'DAY',
+        reason: 'On the eve of the decisive battle against Perseus of Macedon, the military tribune Gaius Sulpicius Gallus was brought before an assembly of the army by the commander Lucius Aemilius Paulus and foretold an eclipse of the moon, explaining it as a natural celestial event rather than an omen. The legions were calmed; the Macedonians, taking the darkness as a portent of their king\'s fall, were dismayed. Pliny records the episode as the first Roman publication explaining the cause of eclipses.',
+        source: {
+          externalId: 'src:pliny-hn-2-53-sulpicius-gallus',
+          name: 'Pliny the Elder. Natural History, 2.53. (c. 77 CE)',
+          url: 'https://www.attalus.org/pliny/hn2a.html',
+          publishedAt: '0077-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation identifies a total lunar eclipse on the night of 21 June 168 BCE (Julian), catalogued in NASA\'s Five Millennium Catalog of Lunar Eclipses (eclipse no. 04406), visible from Macedonia. The eclipse fixes the date of the Battle of Pydna to 22 June 168 BCE and serves as a chronological anchor for the Third Macedonian War.',
+        source: {
+          externalId: 'src:nasa-lunar-eclipse-canon-168bce',
+          name: 'Espenak F, Meeus J. Five Millennium Catalog of Lunar Eclipses: −1999 to +3000 — total eclipse of 21 June 168 BCE (no. 04406).',
+          url: 'https://eclipse.gsfc.nasa.gov/LEcat5/LE-0199--0100.html',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Solar eclipse witnessed by Agathocles at sea ────────────────────────────
+  {
+    externalId: 'trajectory:agathocles-eclipse-310bce',
+    text: 'A total solar eclipse seen at sea by Agathocles of Syracuse and his fleet during their crossing to Africa — recorded by Diodorus Siculus as turning day into utter darkness with the stars visible — has been dated to August 15, 310 BCE.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0310-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0310-08-15',
+        datePrecision: 'DAY',
+        reason: 'After slipping through the Carthaginian blockade off Syracuse and putting out to sea for Libya, Agathocles\' fleet experienced, on the following day, "such an eclipse of the sun that utter darkness set in and the stars were seen everywhere." The soldiers, dismayed, took the sudden darkening as an evil portent for the expedition. Diodorus preserves the observation in his universal history.',
+        source: {
+          externalId: 'src:diodorus-20-5-agathocles-eclipse',
+          name: 'Diodorus Siculus. Library of History, 20.5. (c. 30 BCE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/20A*.html',
+          publishedAt: '0030-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The only total solar eclipse matching the era and the central-Mediterranean geography of Agathocles\' voyage is that of 15 August 310 BCE (Julian), catalogued in NASA\'s Five Millennium Canon of Solar Eclipses (eclipse no. 04039). The retrocalculated date fixes the chronology of Agathocles\' African expedition and remains a standard ancient-history dating anchor.',
+        source: {
+          externalId: 'src:nasa-solar-eclipse-canon-310bce',
+          name: 'Espenak F, Meeus J. Five Millennium Canon of Solar Eclipses: −1999 to +3000 — total eclipse of 15 August 310 BCE (no. 04039).',
+          url: 'https://eclipse.gsfc.nasa.gov/SEcat5/SE-0399--0300.html',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Babylonian cuneiform record of Halley's Comet ───────────────────────────
+  {
+    externalId: 'trajectory:babylonian-halley-164bce',
+    text: 'A Babylonian astronomical diary records a comet appearing first in the eastern then the western sky in the autumn of 164 BCE — identified in 1985 as an observation of Halley\'s Comet, the earliest known cuneiform record of the comet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0164-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0164-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The Babylonian scribes of the Esagila temple, maintaining the astronomical diaries that systematically logged celestial events, entered an observation for the second half of Seleucid year 148 (164–163 BCE): "The comet which previously had appeared in the east in the path of Anu in the area of Pleiades and Taurus, to the west … and passed along in the path of Ea." The record is preserved on a clay tablet now held in the British Museum (BM 41462).',
+        source: {
+          externalId: 'src:penn-expedition-babylonian-halley',
+          name: 'Babylonian astronomical diary for Seleucid year 148 (164 BCE), BM 41462 — cuneiform observation of a comet (Halley).',
+          url: 'https://www.penn.museum/sites/expedition/halleys-comet/',
+          publishedAt: '0164-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Stephenson, Yau and Hunger, publishing in Nature, identified the comet described on the Babylonian tablets at both the 164 BCE and 87 BCE apparitions as Halley\'s Comet, matching the cuneiform observations to the comet\'s retrocalculated orbit. The 164 BCE entry confirms the apparition forward from the Chinese record of 240 BCE and refines the comet\'s ancient orbital history.',
+        source: {
+          externalId: 'src:stephenson-1985-babylonian-halley',
+          name: 'Stephenson FR, Yau KKC, Hunger H. Records of Halley\'s comet on Babylonian tablets. Nature 314, 587–592 (1985).',
+          url: 'https://www.nature.com/articles/314587a0',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zhang Heng's seismoscope detects the Longxi earthquake ──────────────────
+  {
+    externalId: 'trajectory:zhang-heng-seismoscope-134ce',
+    text: 'Zhang Heng\'s bronze seismoscope in the Han capital Luoyang registered an earthquake felt by no one in the city; a messenger later confirmed a quake some 500 km to the northwest in Longxi, the earliest instrumental detection of a distant earthquake (Longxi earthquake dated to December 13, 134 CE).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0134-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0134-12-13',
+        datePrecision: 'DAY',
+        reason: 'On one occasion one of the dragons of Zhang Heng\'s seismoscope dropped its bronze ball, indicating a tremor to the west, though no shock had been felt by anyone in Luoyang. Because the capital sensed nothing, observers at the court initially doubted the instrument. The episode is recorded in the official biography of Zhang Heng in the Book of Later Han.',
+        source: {
+          externalId: 'src:hou-hanshu-zhang-heng-seismoscope',
+          name: 'Fan Ye. Book of Later Han (Hou Hanshu), Biography of Zhang Heng. (compiled 5th c. CE, recording events of 134 CE)',
+          url: 'https://en.wikipedia.org/wiki/Zhang_Heng',
+          publishedAt: '0445-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0134-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Several days after the seismoscope was triggered, a messenger arrived from the west reporting that an earthquake had struck Longxi (modern Gansu), in exactly the direction the device had indicated. The Han court was compelled to acknowledge the instrument\'s reliability, marking the first time a mechanical device detected a distant, locally imperceptible earthquake.',
+        source: {
+          externalId: 'src:zhang-heng-longxi-confirmation',
+          name: 'Book of Later Han — messenger from Longxi confirms the earthquake registered by Zhang Heng\'s seismoscope.',
+          url: 'https://en.wikipedia.org/wiki/Zhang_Heng',
+          publishedAt: '0445-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Textual research on the historical records dates the Longxi earthquake detected by the seismoscope to 13 December 134 CE, with an estimated magnitude near 7. Modern seismology recognises Zhang Heng\'s instrument as the earliest known device to register the occurrence and direction of a distant earthquake.',
+        source: {
+          externalId: 'src:earthquake-science-2006-longxi',
+          name: 'Feng R, et al. ZHANG Heng\'s Seismometer and Longxi earthquake in AD 134. Earthquake Science 19(6):704–709 (2006).',
+          url: 'https://link.springer.com/article/10.1007/s11589-006-0704-1',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -7355,6 +7538,147 @@ const TRAJECTORIES: Trajectory[] = [
   // ═══════════════════════════════════════════════════════════════════════════════
   // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE)
   // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Synod of Sutri — three rival popes set aside (1046) ─────────────────────
+  {
+    externalId: 'trajectory:synod-of-sutri-1046',
+    text: 'At the Synod of Sutri, convened by King Henry III of Germany on 20 December 1046, the three rival claimants to the papacy were set aside — Sylvester III and Gregory VI deposed and the claim of Benedict IX rejected — ending the contested papacy; Suidger of Bamberg was enthroned as Pope Clement II on Christmas Day, 25 December 1046.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1046-12-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1046-12-20',
+        datePrecision: 'DAY',
+        reason: 'With three men claiming the papal throne, the German king Henry III convenes a synod at Sutri on 20 December 1046. The assembly sits in judgment: Sylvester III is stripped of sacerdotal rank, Gregory VI resigns confessing the simony that had vitiated his election, and the claim of Benedict IX is dismissed, leaving the see vacant. On 24 December the proceedings move to Rome, where Henry has Suidger, bishop of Bamberg, chosen as pope; he is enthroned on Christmas Day 1046 as Clement II and crowns Henry emperor the same day.',
+        source: {
+          externalId: 'src:annales-romani-sutri-1046',
+          name: 'Annales Romani, recording Henry III\'s judgment of the three papal claimants at Sutri and the enthronement of Clement II, December 1046. (contemporary Roman annals)',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Sutri',
+          publishedAt: '1046-12-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent witnesses — the Annales Romani, Bonizo of Sutri, and later reform chroniclers — agree on the deposition of the rival claimants and the accession of Clement II. Medieval scholarship treats December 1046 as the securely dated end of the contested Tusculan papacy and the start of the imperially backed reform papacy, debating its significance rather than the event itself.',
+        source: {
+          externalId: 'src:sutri-clement-ii-scholarship',
+          name: 'Synod of Sutri and the accession of Clement II (December 1046). Standard scholarship on the eleventh-century reform papacy.',
+          url: 'https://en.wikipedia.org/wiki/Council_of_Sutri',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Canonization of Francis of Assisi (1228) ────────────────────────────────
+  {
+    externalId: 'trajectory:canonization-francis-assisi-1228',
+    text: 'Pope Gregory IX solemnly canonized Francis of Assisi as a saint at Assisi on 16 July 1228, less than two years after Francis died on the evening of 3 October 1226.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1226-10-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1226-10-03',
+        datePrecision: 'DAY',
+        reason: 'Francis dies at the Porziuncula near Assisi on the evening of Saturday 3 October 1226. Reports of the stigmata he was said to have received on Monte La Verna and of cures at his tomb spread rapidly; his brothers and the townspeople of Assisi testify to his sanctity. Thomas of Celano, commissioned by the pope, gathers these accounts into the Vita prima within two years.',
+        source: {
+          externalId: 'src:celano-vita-prima-francis',
+          name: 'Thomas of Celano. Vita prima sancti Francisci, the first life of Francis of Assisi, commissioned by Gregory IX. (c. 1228–1229, near-contemporaneous)',
+          url: 'https://en.wikipedia.org/wiki/Francis_of_Assisi',
+          publishedAt: '1228-07-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1228-07-16',
+        datePrecision: 'DAY',
+        reason: 'Pope Gregory IX — who as Cardinal Hugolino had known Francis personally and protected his order — declares him a saint at Assisi on 16 July 1228 by the bull Mira circa nos, and lays the foundation stone of the Basilica of St. Francis the following day. The formal canonization settles Francis\'s status within the universal Church barely twenty-one months after his death, one of the swiftest in medieval practice.',
+        source: {
+          externalId: 'src:gregory-ix-canonization-francis',
+          name: 'Canonization of Francis of Assisi by Pope Gregory IX at Assisi (bull Mira circa nos), 16 July 1228. (papal act)',
+          url: 'https://en.wikipedia.org/wiki/Francis_of_Assisi',
+          publishedAt: '1228-07-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Arrest and suppression of the Knights Templar (1307–1312) ───────────────
+  {
+    externalId: 'trajectory:templars-arrest-suppression-1307',
+    text: 'At dawn on Friday 13 October 1307, King Philip IV of France ordered the simultaneous arrest of the Knights Templar throughout the realm on charges of heresy; Pope Clement V suppressed the order by the bull Vox in excelso on 22 March 1312, and Grand Master Jacques de Molay was burned at the stake in Paris on 18 March 1314.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1307-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1307-10-13',
+        datePrecision: 'DAY',
+        reason: 'Heavily in debt to the order and coveting its wealth, Philip IV has Grand Master Jacques de Molay and scores of French Templars seized in a coordinated dawn operation on Friday 13 October 1307. Confessions of heresy, idolatry, and obscene initiation rites are extracted under torture and entered into the records of the royal officers and the Inquisition.',
+        source: {
+          externalId: 'src:templar-arrest-trial-records-1307',
+          name: 'Royal arrest order of Philip IV and the inquisitorial trial records of the Knights Templar, beginning 13 October 1307. (contemporary judicial documents)',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '1307-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1312-03-22',
+        datePrecision: 'DAY',
+        reason: 'At the Council of Vienne, Pope Clement V — reluctant to convict the order outright but yielding to relentless French pressure — dissolves it administratively by the bull Vox in excelso on 22 March 1312, transferring most of its property to the Knights Hospitaller. The suppression of the order is enacted as binding fact; Jacques de Molay is burned at the stake in Paris on 18 March 1314.',
+        source: {
+          externalId: 'src:vox-in-excelso-1312',
+          name: 'Pope Clement V. Bull Vox in excelso, dissolving the order of the Knights Templar at the Council of Vienne, 22 March 1312. (papal act)',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '1312-03-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Chinon Parchment — a record of papal proceedings at Chinon on 17–20 August 1308, rediscovered in the Vatican archives by Barbara Frale in 2001 and published in 2007 (Processus contra Templarios) — shows that Clement V had absolved de Molay and the other Templar leaders of heresy in 1308. Modern scholarship establishes that the order was suppressed for reasons of political expedience rather than proven guilt, while the dates of the arrest, the suppression, and de Molay\'s execution remain settled.',
+        source: {
+          externalId: 'src:chinon-parchment-templars',
+          name: 'Chinon Parchment (papal proceedings, 17–20 August 1308), rediscovered by Barbara Frale 2001 and published by the Vatican as Processus contra Templarios, 2007.',
+          url: 'https://en.wikipedia.org/wiki/Chinon_Parchment',
+          publishedAt: '2007-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
 
   // ── Solar eclipse of 968 — Leo the Deacon's first description of the corona ───
   {
