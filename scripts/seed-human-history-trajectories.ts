@@ -66164,6 +66164,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Great Smog of London and the revised death toll (1952) ──────────────────
+  {
+    externalId: 'trajectory:great-smog-london-1952',
+    text: 'A severe pollution fog (the "Great Smog") settled over London from 5 to 9 December 1952; initially estimated to have caused about 4,000 deaths, the toll was later revised upward to roughly 12,000.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-12-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1952-12-05',
+        datePrecision: 'DAY',
+        reason: 'A cold anticyclone and windless conditions trapped coal-smoke pollution over London from Friday 5 December to Tuesday 9 December 1952, reducing visibility to a few metres and halting transport. The event was reported in the contemporaneous press and recorded by meteorological and public-health authorities, who within weeks estimated that up to 4,000 people had died as a direct result and around 100,000 more were made ill.',
+        source: {
+          externalId: 'src:great-smog-1952-event',
+          name: 'Great Smog of London, 5–9 December 1952 — initial estimate of ~4,000 deaths (Wikipedia, "Great Smog of London" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Great_Smog_of_London',
+          publishedAt: '1952-12-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Later epidemiological analysis of mortality that persisted for months after the smog raised the estimated death toll to roughly 12,000, far above the original figure. The smog\'s scale and lethality, together with the subsequent Clean Air Act 1956, are settled in the public-health and environmental record as a turning point in air-pollution regulation, even as the precise total remains an estimate.',
+        source: {
+          externalId: 'src:great-smog-1952-revised-toll',
+          name: 'Revised death-toll estimate (~12,000) and the Clean Air Act 1956 (Wikipedia, "Great Smog of London").',
+          url: 'https://en.wikipedia.org/wiki/Great_Smog_of_London',
+          publishedAt: '2004-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Profumo affair: a denial to Parliament reversed (1963) ──────────────
+  {
+    externalId: 'trajectory:profumo-affair-1963',
+    text: 'On 22 March 1963 British War Secretary John Profumo told the House of Commons there had been "no impropriety whatsoever" in his acquaintance with Christine Keeler; on 4–5 June 1963 he admitted he had lied and resigned.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-03-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-03-22',
+        datePrecision: 'DAY',
+        reason: 'Amid rumours linking him to Christine Keeler — who was also involved with a Soviet naval attaché — Profumo made a personal statement to the House of Commons on 22 March 1963 denying any impropriety and threatening libel actions against those repeating the allegations. The statement is recorded verbatim in Hansard and was reported as the government\'s official position.',
+        source: {
+          externalId: 'src:profumo-1963-commons-denial',
+          name: 'John Profumo\'s personal statement to the House of Commons, 22 March 1963 (Wikipedia, "Profumo affair" — synthesis of the Hansard record).',
+          url: 'https://en.wikipedia.org/wiki/Profumo_affair',
+          publishedAt: '1963-03-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-06-05',
+        datePrecision: 'DAY',
+        reason: 'On 4 June 1963 Profumo confessed that his statement to the Commons had been a lie and resigned from the government; the resignation and his admission were made public the following day through the published exchange of letters with Prime Minister Harold Macmillan. The denial was thereby reversed by his own admission, and Lord Denning\'s official inquiry report of 26 September 1963 documented the affair as settled fact.',
+        source: {
+          externalId: 'src:profumo-1963-resignation',
+          name: 'Profumo admits lying and resigns, 4–5 June 1963; Denning Report 26 September 1963 (Wikipedia, "Profumo affair").',
+          url: 'https://en.wikipedia.org/wiki/Profumo_affair',
+          publishedAt: '1963-06-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gargamelle detects weak neutral currents at CERN (1973) ─────────────────
+  {
+    externalId: 'trajectory:gargamelle-neutral-currents-1973',
+    text: 'On 19 July 1973 the Gargamelle collaboration at CERN announced the discovery of weak neutral currents, the first experimental confirmation of a key prediction of electroweak theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-07-19',
+        datePrecision: 'DAY',
+        reason: 'Analysing neutrino interactions in the Gargamelle bubble chamber at CERN, the collaboration identified events with no outgoing charged lepton — the signature of a weak neutral current — including a single clean muon-neutrino–electron scattering event. The result was presented at a CERN seminar on 19 July 1973 and published shortly afterward, providing the first direct evidence for the neutral current predicted by the Glashow–Salam–Weinberg electroweak theory.',
+        source: {
+          externalId: 'src:gargamelle-1973-announcement',
+          name: 'Gargamelle collaboration announces weak neutral currents, CERN seminar 19 July 1973 (Wikipedia, "Gargamelle" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Gargamelle',
+          publishedAt: '1973-07-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-10-15',
+        datePrecision: 'DAY',
+        reason: 'The Gargamelle result was independently confirmed by the HPWF experiment at Fermilab and became the foundation of the Standard Model; Sheldon Glashow, Abdus Salam, and Steven Weinberg shared the 1979 Nobel Prize in Physics for the electroweak theory the neutral current confirmed. The Gargamelle Collaboration later received the 2009 EPS High Energy and Particle Physics Prize for the observation, which is settled and uncontested.',
+        source: {
+          externalId: 'src:neutral-current-electroweak-nobel-1979',
+          name: 'Weak neutral current as confirmation of electroweak theory; 1979 Nobel Prize in Physics (Wikipedia, "Neutral current").',
+          url: 'https://en.wikipedia.org/wiki/Neutral_current',
+          publishedAt: '1979-10-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aberfan disaster and the Tribunal's finding against the NCB (1966) ───────
+  {
+    externalId: 'trajectory:aberfan-disaster-1966',
+    text: 'On 21 October 1966 a colliery spoil tip slid down onto the village of Aberfan, Wales, engulfing Pantglas Junior School and killing 144 people, including 116 children; an official tribunal blamed the National Coal Board.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1966-10-21',
+        datePrecision: 'DAY',
+        reason: 'At about 9:15 on the morning of 21 October 1966, after heavy rain, waterlogged colliery spoil from Tip No. 7 above Aberfan liquefied and slid down the mountainside, burying Pantglas Junior School and nearby houses. The collapse killed 144 people — 116 of them children, mostly pupils at the school. The disaster and its toll were documented immediately by rescuers, photographers, and the national and international press.',
+        source: {
+          externalId: 'src:aberfan-1966-event',
+          name: 'Aberfan disaster, 21 October 1966 — spoil tip engulfs Pantglas Junior School, killing 144 (Wikipedia, "Aberfan disaster" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Aberfan_disaster',
+          publishedAt: '1966-10-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-08-03',
+        datePrecision: 'DAY',
+        reason: 'The Tribunal of Inquiry chaired by Lord Justice Edmund Davies published its report on 3 August 1967, concluding that "blame for the disaster rests upon the National Coal Board" and that the disaster "could and should have been prevented," attributing it to ignorance, ineptitude, and a failure of communications rather than wickedness. The finding of responsibility became the settled official record, and led to the Mines and Quarries (Tips) Act 1969.',
+        source: {
+          externalId: 'src:aberfan-1967-tribunal',
+          name: 'Report of the Tribunal of Inquiry into the Aberfan disaster, published 3 August 1967 — blame on the National Coal Board (Wikipedia, "Aberfan disaster").',
+          url: 'https://en.wikipedia.org/wiki/Aberfan_disaster',
+          publishedAt: '1967-08-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Radiocarbon dating settles the age of the Shroud of Turin (1988) ────────
+  {
+    externalId: 'trajectory:shroud-turin-radiocarbon-1988',
+    text: 'In 1988 three independent laboratories radiocarbon-dated the Shroud of Turin to AD 1260–1390 (95% confidence); the result, announced 13 October 1988 and published in Nature on 16 February 1989, established the cloth as medieval.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-04-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-04-21',
+        datePrecision: 'DAY',
+        reason: 'Long venerated by some as the burial cloth of Jesus and dismissed by others as a medieval artefact, the Shroud\'s age was a contested question for centuries. On 21 April 1988 a single sample was cut from the cloth in Turin Cathedral and divided among three laboratories — the University of Oxford, the University of Arizona, and ETH Zürich — for blind accelerator mass spectrometry radiocarbon dating.',
+        source: {
+          externalId: 'src:shroud-1988-sampling',
+          name: 'Sampling of the Shroud of Turin, 21 April 1988, for radiocarbon dating by three laboratories (Wikipedia, "Radiocarbon dating of the Shroud of Turin").',
+          url: 'https://en.wikipedia.org/wiki/Radiocarbon_dating_of_the_Shroud_of_Turin',
+          publishedAt: '1988-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-02-16',
+        datePrecision: 'DAY',
+        reason: 'On 13 October 1988 Cardinal Anastasio Ballestrero announced at a Turin press conference that the three laboratories had dated the cloth to AD 1260–1390 with 95% confidence. The peer-reviewed results were published in Nature on 16 February 1989, establishing in the scientific record that the Shroud is a medieval object dating from roughly 1260–1390, not a first-century burial cloth.',
+        source: {
+          externalId: 'src:shroud-1989-nature',
+          name: 'Damon P.E. et al., "Radiocarbon Dating of the Shroud of Turin," Nature 337, 611–615, 16 February 1989; results announced 13 October 1988 (Wikipedia, "Radiocarbon dating of the Shroud of Turin").',
+          url: 'https://en.wikipedia.org/wiki/Radiocarbon_dating_of_the_Shroud_of_Turin',
+          publishedAt: '1989-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MODERN ERA (1990–present) — EAST ASIA (China, Japan, Korea)
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -68790,6 +69000,178 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://en.wikipedia.org/wiki/Australopithecus_anamensis',
           publishedAt: '2019-08-28',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — EAST ASIA ADDENDUM
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── "Archaeoraptor" exposed as a forged dinosaur–bird chimera (China) ────────
+  {
+    externalId: 'trajectory:archaeoraptor-forgery-exposed-2000',
+    text: 'A fossil from Liaoning, China, unveiled by National Geographic in November 1999 as "Archaeoraptor," a missing link between dinosaurs and birds, was exposed as a forged composite assembled from at least two different animals.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1999-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The November 1999 issue of National Geographic presents "Archaeoraptor liaoningensis," a feathered fossil smuggled out of Liaoning Province, China, as a "true missing link" between non-avian dinosaurs and birds. The specimen is displayed publicly at the National Geographic Society and announced to a worldwide audience as evidence bridging the dinosaur–bird transition.',
+        source: {
+          externalId: 'src:archaeoraptor-natgeo-1999',
+          name: 'Archaeoraptor — National Geographic 196(5), November 1999 ("Feathers for T. rex?"); fossil presented as a dinosaur–bird missing link.',
+          url: 'https://en.wikipedia.org/wiki/Archaeoraptor',
+          publishedAt: '1999-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-02-03',
+        datePrecision: 'DAY',
+        reason: 'Chinese palaeontologist Xu Xing recognised in late 1999 that the specimen\'s tail matched a dromaeosaur (Microraptor) he was studying, and on 20 December 1999 emailed the team that the fossil was a fake. National Geographic publicly acknowledged on 3 February 2000 that the fossil "might be a composite," and subsequent study showed it was assembled from the bird Yanornis (body) and the dromaeosaur Microraptor (tail) plus other fragments. The "missing link" claim was reversed and the specimen catalogued as a forgery, even as the genuine Liaoning feathered-dinosaur fossils it was built from remained scientifically important.',
+        source: {
+          externalId: 'src:archaeoraptor-exposed-2000',
+          name: 'Archaeoraptor exposed as a composite forgery — Xu Xing identification (20 December 1999); National Geographic acknowledgement (3 February 2000).',
+          url: 'https://en.wikipedia.org/wiki/Archaeoraptor',
+          publishedAt: '2000-02-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ROKS Cheonan sinking attributed to a North Korean torpedo (Korea) ────────
+  {
+    externalId: 'trajectory:roks-cheonan-sinking-2010',
+    text: 'The South Korean navy corvette ROKS Cheonan broke apart and sank in the Yellow Sea on 26 March 2010 with the loss of 46 sailors; a multinational investigation concluded on 20 May 2010 that it was sunk by a North Korean torpedo.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-03-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-03-26',
+        datePrecision: 'DAY',
+        reason: 'At about 21:22 local time on 26 March 2010 an underwater explosion split the 1,200-tonne corvette ROKS Cheonan in two near Baengnyeong Island in the Yellow Sea; the ship sank within minutes and 46 of the 104 crew were killed. The sinking was recorded contemporaneously by the South Korean military and naval rescue operations, but the cause was initially unknown and openly disputed.',
+        source: {
+          externalId: 'src:roks-cheonan-sinking-2010',
+          name: 'ROKS Cheonan sinking, 26 March 2010 — 46 killed in an explosion near Baengnyeong Island (Wikipedia, synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking',
+          publishedAt: '2010-03-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-05-20',
+        datePrecision: 'DAY',
+        reason: 'A Joint Civilian-Military Investigation Group with experts from South Korea, the United States, the United Kingdom, Canada, Australia, and Sweden released its findings on 20 May 2010, concluding that the Cheonan was sunk by a CHT-02D torpedo fired by a North Korean submarine, citing recovered torpedo fragments and a non-contact underwater explosion signature. North Korea denied responsibility and China and Russia declined to endorse the finding, leaving the attribution internationally contested despite its acceptance by South Korea and its allies.',
+        source: {
+          externalId: 'src:cheonan-jig-report-2010',
+          name: 'Joint Civilian-Military Investigation Group report on the sinking of ROKS Cheonan, 20 May 2010 (North Korean CHT-02D torpedo attribution).',
+          url: 'https://en.wikipedia.org/wiki/ROKS_Cheonan_sinking',
+          publishedAt: '2010-05-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Micius satellite distributes entangled photons over 1,200 km (China) ─────
+  {
+    externalId: 'trajectory:micius-satellite-entanglement-2017',
+    text: 'China\'s Micius (QUESS) satellite demonstrated the distribution of quantum-entangled photon pairs between two ground stations more than 1,200 km apart, setting a record for entanglement distribution and verifying Bell inequality violation over that distance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-08-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-08-16',
+        datePrecision: 'DAY',
+        reason: 'The Quantum Experiments at Space Scale (QUESS) satellite "Micius," led by Pan Jianwei of the University of Science and Technology of China, was launched on a Long March 2D from the Jiuquan Satellite Launch Center on 16 August 2016 (17:40 UTC) — the world\'s first dedicated quantum-communications satellite. Whether entanglement could survive transmission from orbit through the atmosphere to widely separated ground stations was an open experimental question.',
+        source: {
+          externalId: 'src:micius-quess-launch-2016',
+          name: 'Quantum Experiments at Space Scale (QUESS / Micius) — launched 16 August 2016, first quantum-communications satellite.',
+          url: 'https://en.wikipedia.org/wiki/Micius_(satellite)',
+          publishedAt: '2016-08-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-06-16',
+        datePrecision: 'DAY',
+        reason: 'Yin et al. reported in Science on 16 June 2017 that Micius had distributed entangled photon pairs to the ground observatories at Delingha and Lijiang/Nanshan, separated by 1,203 km, observing a violation of Bell\'s inequality (S = 2.37 ± 0.09) that confirmed the entanglement survived satellite-to-ground transmission. The result, peer-reviewed and independently recognised, settled that satellite-based entanglement distribution over continental distances is achievable.',
+        source: {
+          externalId: 'src:yin-micius-entanglement-science-2017',
+          name: 'Yin J., et al. "Satellite-based entanglement distribution over 1200 kilometers." Science 356, 1140–1144 (16 June 2017).',
+          url: 'https://en.wikipedia.org/wiki/Micius_(satellite)',
+          publishedAt: '2017-06-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Xiahe mandible identified as Denisovan by paleoproteomics (China) ────────
+  {
+    externalId: 'trajectory:xiahe-denisovan-mandible-2019',
+    text: 'A hominin mandible from Baishiya Karst Cave on the Tibetan Plateau (Xiahe County, Gansu, China) was identified as Denisovan through ancient-protein analysis, reported in Nature on 1 May 2019 — the first confirmed Denisovan fossil found outside Denisova Cave.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-05-01',
+        datePrecision: 'DAY',
+        reason: 'Chen, Welker, Hublin et al. published "A late Middle Pleistocene Denisovan mandible from the Tibetan Plateau" in Nature on 1 May 2019. Because no DNA could be recovered, the team used palaeoproteomic analysis of ancient proteins in the molar dentine, which placed the specimen phylogenetically with the Denisovans of Denisova Cave; uranium-series dating put the fossil at least 160,000 years old. It was the first Denisovan identified entirely from protein evidence and the first found outside the Siberian cave.',
+        source: {
+          externalId: 'src:chen-xiahe-denisovan-nature-2019',
+          name: 'Chen F., et al. "A late Middle Pleistocene Denisovan mandible from the Tibetan Plateau." Nature 569, 409–412 (published 1 May 2019).',
+          url: 'https://en.wikipedia.org/wiki/Xiahe_mandible',
+          publishedAt: '2019-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-30',
+        datePrecision: 'DAY',
+        reason: 'The Denisovan attribution was corroborated when Zhang et al. reported in Science (30 October 2020) the recovery of Denisovan mitochondrial DNA from sediments inside Baishiya Karst Cave, independently confirming a long Denisovan presence at the site and reinforcing the protein-based identification of the Xiahe mandible. The find is treated in the literature as settling that Denisovans occupied the high Tibetan Plateau.',
+        source: {
+          externalId: 'src:zhang-baishiya-denisovan-dna-2020',
+          name: 'Zhang D., et al. "Denisovan DNA in Late Pleistocene sediments from Baishiya Karst Cave on the Tibetan Plateau." Science 370, 584–587 (30 October 2020).',
+          url: 'https://en.wikipedia.org/wiki/Baishiya_Karst_Cave',
+          publishedAt: '2020-10-30',
+          methodologyType: 'derivative',
         },
       },
     ],
