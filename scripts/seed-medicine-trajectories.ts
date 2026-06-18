@@ -14187,6 +14187,224 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — continued
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Phenytoin — first rationally screened anticonvulsant — Merritt & Putnam 1938
+  {
+    externalId: 'trajectory:merritt-putnam-phenytoin-nonsedative-anticonvulsant-1938',
+    text: 'H. Houston Merritt and Tracy J. Putnam reported in JAMA on 17 September 1938 that sodium diphenyl hydantoinate (phenytoin/Dilantin) controlled grand mal and psychomotor seizures in patients without the sedation caused by bromides and barbiturates, the first anticonvulsant identified by systematic animal screening rather than by chance observation of sedative effect.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1938-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-09-17',
+        datePrecision: 'DAY',
+        reason: 'Merritt and Putnam reported clinical results in a series of patients with epilepsy whose seizures were unresponsive to prior treatment, finding grand mal attacks relieved in 58% and greatly reduced in a further 27%, with control achieved without the sedation that limited bromides and phenobarbital. The work recorded both a new effective drug and a new discovery method: phenytoin had been selected by screening compounds against electrically induced convulsions in cats, the first rationally screened anticonvulsant.',
+        source: {
+          externalId: 'src:merritt-putnam-jama-1938',
+          name: 'Merritt HH, Putnam TJ. Sodium diphenyl hydantoinate in the treatment of convulsive disorders. JAMA. 1938;111(12):1068-1073 (reprinted JAMA. 1984;251(8):1062-1067).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6363736/',
+          publishedAt: '1938-09-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-02-24',
+        datePrecision: 'DAY',
+        reason: 'Phenytoin became and remained a first-line anticonvulsant, and the electroshock-screening paradigm it pioneered became the template for anticonvulsant drug discovery. JAMA marked this settled, canonical status by republishing the 1938 report as a \'Landmark Article\' in 1984, recognizing it as foundational to modern epilepsy therapy.',
+        source: {
+          externalId: 'src:merritt-putnam-jama-landmark-1984',
+          name: 'Merritt HH, Putnam TJ. Landmark article Sept 17, 1938: Sodium diphenyl hydantoinate in the treatment of convulsive disorders. JAMA. 1984;251(8):1062-1067.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6363736/',
+          publishedAt: '1984-02-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Curare in anesthesia — Griffith & Johnson 1942 ─────────────────────────
+  {
+    externalId: 'trajectory:griffith-johnson-curare-general-anesthesia-1942',
+    text: 'Harold R. Griffith and G. Enid Johnson reported in Anesthesiology in July 1942 that the curare extract Intocostrin produced safe, controllable skeletal-muscle relaxation in 25 patients undergoing general anesthesia, beginning with an appendectomy on 23 January 1942, establishing deliberate neuromuscular blockade as a component of surgical anesthesia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-07-01',
+        datePrecision: 'DAY',
+        reason: 'Griffith and Johnson administered the standardized curare extract Intocostrin to a 20-year-old patient during cyclopropane anesthesia for appendectomy on 23 January 1942 and reproduced controllable muscle relaxation in 25 patients, publishing the series in Anesthesiology in July 1942. The report recorded for the first time that a paralytic agent long feared as \'arrow poison\' could be used deliberately and reversibly to provide surgical relaxation without deep anesthesia.',
+        source: {
+          externalId: 'src:griffith-johnson-anesthesiology-1942',
+          name: 'Griffith HR, Johnson GE. The use of curare in general anesthesia. Anesthesiology. 1942;3(4):418-420.',
+          url: 'https://journals.lww.com/anesthesiology/citation/1942/07000/the_use_of_curare_in_general_anesthesia.6.aspx',
+          publishedAt: '1942-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Neuromuscular blockade was rapidly adopted worldwide and became one of the three pillars of balanced anesthesia (hypnosis, analgesia, relaxation), enabling abdominal and thoracic surgery without dangerously deep anesthesia. On the 75th anniversary of Griffith and Johnson\'s report, the Canadian Journal of Anesthesia published a historical tribute documenting how the 1942 demonstration transformed anesthetic practice into a permanent standard.',
+        source: {
+          externalId: 'src:cja-griffith-curare-tribute-2017',
+          name: 'Raghavendra T, et al. Harold Griffith\'s legacy: a tribute on the 75th anniversary of the introduction of curare into anesthetic practice. Can J Anaesth. 2017;64(5):559-568.',
+          url: 'https://link.springer.com/article/10.1007/s12630-017-0864-6',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (2010–present) — regulatory & rare disease
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── FDA Breakthrough Therapy designation — FDASIA 2012 ─────────────────────
+  {
+    externalId: 'trajectory:fda-breakthrough-therapy-designation-fdasia-2012',
+    text: 'The Food and Drug Administration Safety and Innovation Act, signed into law on 9 July 2012, created in Section 902 the Breakthrough Therapy designation, requiring the FDA to expedite development and review of drugs for serious or life-threatening conditions when preliminary clinical evidence indicates substantial improvement over existing therapies on a clinically significant endpoint.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-09',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted FDASIA (S.3187, Public Law 112-144), whose Section 902 amended Section 506 of the Federal Food, Drug, and Cosmetic Act to establish the Breakthrough Therapy designation. The provision codified a new expedited pathway intended to accelerate drugs—frequently for rare and serious diseases—that show early evidence of substantial clinical advantage, recording a statutory commitment that did not yet have operational proof.',
+        source: {
+          externalId: 'src:fdasia-s3187-pl112-144',
+          name: 'Food and Drug Administration Safety and Innovation Act, Pub. L. No. 112-144, §902 (S.3187, 112th Congress). Signed July 9, 2012.',
+          url: 'https://www.congress.gov/bill/112th-congress/senate-bill/3187',
+          publishedAt: '2012-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-11-01',
+        datePrecision: 'DAY',
+        reason: 'On 1 November 2013 the FDA approved obinutuzumab (Gazyva) for chronic lymphocytic leukemia, the first drug carrying a Breakthrough Therapy designation to reach approval, demonstrating that the statutory pathway functioned operationally. The designation thereafter became an entrenched, heavily used FDA mechanism granted to hundreds of therapies, settling it as a permanent feature of US drug regulation.',
+        source: {
+          externalId: 'src:gazyva-first-breakthrough-approval-2013',
+          name: 'Gazyva (obinutuzumab) FDA Approval History — first Breakthrough Therapy-designated drug approved, November 1, 2013. Drugs.com.',
+          url: 'https://www.drugs.com/history/gazyva.html',
+          publishedAt: '2013-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Elosulfase alfa (Vimizim) — first Morquio A treatment — 2014 ───────────
+  {
+    externalId: 'trajectory:elosulfase-alfa-vimizim-first-morquio-a-treatment-2014',
+    text: 'The FDA approved elosulfase alfa (Vimizim) on 14 February 2014 as the first treatment for mucopolysaccharidosis type IVA (Morquio A syndrome), a rare lysosomal storage disorder caused by deficiency of N-acetylgalactosamine-6-sulfatase (GALNS), establishing the first enzyme replacement therapy targeting the disease\'s underlying cause.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-02-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-05-10',
+        datePrecision: 'DAY',
+        reason: 'Hendriksz and colleagues reported the pivotal MOR-004 phase 3 randomized, double-blind, placebo-controlled trial showing that weekly elosulfase alfa significantly improved the 6-minute walk distance in patients with Morquio A relative to placebo over 24 weeks. The trial recorded the first controlled clinical evidence that enzyme replacement could improve endurance in a disease previously treated only with supportive and surgical care.',
+        source: {
+          externalId: 'src:hendriksz-elosulfase-jimd-2014',
+          name: 'Hendriksz CJ, et al. Efficacy and safety of enzyme replacement therapy with BMN 110 (elosulfase alfa) for Morquio A syndrome (mucopolysaccharidosis IVA): a phase 3 randomised placebo-controlled study. J Inherit Metab Dis. 2014;37(6):979-990.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24810369/',
+          publishedAt: '2014-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-02-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved elosulfase alfa (Vimizim, BioMarin, BLA 125460) as the first treatment for Morquio A syndrome, and it became the first drug ever to receive a Rare Pediatric Disease Priority Review Voucher. The approval institutionally settled GALNS enzyme replacement as the standard disease-modifying therapy for a condition that previously had no approved treatment beyond supportive care.',
+        source: {
+          externalId: 'src:sanford-elosulfase-first-approval-2014',
+          name: 'Sanford M, Lo JH. Elosulfase alfa: first global approval (US FDA approval 14 February 2014 for MPS IVA). Drugs. 2014;74(6):713-718.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24700469/',
+          publishedAt: '2014-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Asfotase alfa (Strensiq) — first hypophosphatasia treatment — 2015 ──────
+  {
+    externalId: 'trajectory:asfotase-alfa-strensiq-first-hypophosphatasia-treatment-2015',
+    text: 'The FDA approved asfotase alfa (Strensiq) on 23 October 2015 as the first treatment for perinatal-, infantile-, and juvenile-onset hypophosphatasia, a rare inherited deficiency of tissue-nonspecific alkaline phosphatase, making it the first bone-targeted enzyme replacement therapy for the disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-08',
+        datePrecision: 'DAY',
+        reason: 'Whyte and colleagues reported in the New England Journal of Medicine that bone-targeted recombinant human TNSALP (ENB-0040, later asfotase alfa) improved skeletal radiographs and pulmonary and physical function in infants and young children with life-threatening hypophosphatasia, a disease that until then had no disease-modifying therapy. The trial recorded the first clinical evidence that enzyme replacement could reverse the skeletal manifestations of HPP.',
+        source: {
+          externalId: 'src:whyte-asfotase-nejm-2012',
+          name: 'Whyte MP, et al. Enzyme-replacement therapy in life-threatening hypophosphatasia. N Engl J Med. 2012;366(10):904-913.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22397652/',
+          publishedAt: '2012-03-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-10-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved asfotase alfa (Strensiq, Alexion, BLA 125513) for perinatal/infantile- and juvenile-onset hypophosphatasia, the first-ever approved treatment for the condition, following approvals in Japan (July 2015) and the EU (August 2015). The approval institutionally settled bone-targeted enzyme replacement as the standard of care for a disease previously managed only with supportive measures.',
+        source: {
+          externalId: 'src:scott-asfotase-first-approval-2016',
+          name: 'Scott LJ. Asfotase alfa: enzyme replacement for the treatment of bone disease in hypophosphatasia (first US FDA approval 23 October 2015). BioDrugs. 2016;30(1):41-48.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27376160/',
+          publishedAt: '2016-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
