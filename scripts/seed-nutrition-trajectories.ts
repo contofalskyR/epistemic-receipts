@@ -640,7 +640,300 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 12. WHO free sugars guideline — 2015 ────────────────────────────────────
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VITAMIN SUPPLEMENT ERA (1970–2013)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 12. Beta-carotene supplements — lung cancer reversal — 1981 ─────────────
+  {
+    externalId: 'trajectory:beta-carotene-supplements-lung-cancer-reversal-1981',
+    text: 'The hypothesis that beta-carotene supplementation reduces human cancer risk, proposed by Richard Peto and colleagues in Nature on March 19, 1981, was reversed when the ATBC (1994) and CARET (1996) randomized trials found that beta-carotene supplements significantly increased lung cancer incidence and mortality in smokers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-03-19',
+        datePrecision: 'DAY',
+        reason: 'Peto, Doll, Buckley, and Sporn publish \'Can dietary beta-carotene materially reduce human cancer rates?\' in Nature (March 19, 1981), noting that cancer rates were inversely correlated with dietary beta-carotene intake and proposing that beta-carotene might be a protective anti-cancer agent worth testing in controlled trials. The paper launched the antioxidant cancer-prevention paradigm and motivated large-scale supplementation trials in high-risk populations.',
+        source: {
+          externalId: 'src:peto-beta-carotene-nature-1981',
+          name: 'Peto R, Doll R, Buckley JD, Sporn MB. Can dietary beta-carotene materially reduce human cancer rates? Nature. 1981;290(5803):201–208.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7010181/',
+          publishedAt: '1981-03-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-04-14',
+        datePrecision: 'DAY',
+        reason: 'The Alpha-Tocopherol, Beta Carotene (ATBC) Cancer Prevention Study Group publishes its results in the NEJM (April 14, 1994). In 29,133 Finnish male smokers randomized to beta-carotene, vitamin E, both, or placebo, the beta-carotene arm showed an 18% higher incidence of lung cancer and higher total mortality — the opposite of the predicted protective effect. The unexpected harm directly contradicted the Peto hypothesis and threw the antioxidant-prevention paradigm into contestation.',
+        source: {
+          externalId: 'src:atbc-beta-carotene-nejm-1994',
+          name: 'The Alpha-Tocopherol, Beta Carotene Cancer Prevention Study Group. The effect of vitamin E and beta carotene on the incidence of lung cancer and other cancers in male smokers. New England Journal of Medicine. 1994;330(15):1029–1035.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8127329/',
+          publishedAt: '1994-04-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-05-02',
+        datePrecision: 'DAY',
+        reason: 'Omenn et al. publish the Beta-Carotene and Retinol Efficacy Trial (CARET) in the NEJM (May 2, 1996). Among 18,314 smokers, former smokers, and asbestos-exposed workers given beta-carotene plus retinol, the active group had a 28% higher lung cancer incidence (RR 1.28) and 46% higher lung cancer mortality, prompting early termination of the trial. CARET independently confirmed ATBC\'s harm signal, reversing the beta-carotene cancer-prevention hypothesis and establishing that beta-carotene supplements harm high-risk smokers.',
+        source: {
+          externalId: 'src:caret-beta-carotene-nejm-1996',
+          name: 'Omenn GS, Goodman GE, Thornquist MD, et al. Effects of a combination of beta carotene and vitamin A on lung cancer and cardiovascular disease. New England Journal of Medicine. 1996;334(18):1150–1155.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8602180/',
+          publishedAt: '1996-05-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 13. Vitamin E supplements — cardiovascular mortality reversal — 1993 ─────
+  {
+    externalId: 'trajectory:vitamin-e-supplements-cardiovascular-mortality-reversal-1993',
+    text: 'The belief that vitamin E supplementation reduces coronary heart disease risk — based on large observational cohorts such as Stampfer et al. (NEJM, May 20, 1993) — was reversed when a 2005 meta-analysis found that high-dose vitamin E increased all-cause mortality and the HOPE-TOO randomized trial (2005) found no cardiovascular benefit and increased heart failure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-05-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-05-20',
+        datePrecision: 'DAY',
+        reason: 'Stampfer et al. publish \'Vitamin E consumption and the risk of coronary disease in women\' in the NEJM (May 20, 1993), reporting from the Nurses\' Health Study that women in the highest fifth of vitamin E intake had a relative risk of major coronary disease of 0.66, with the benefit strongest among long-term supplement users (RR 0.59). Together with a parallel male cohort, this observational evidence drove widespread adoption of vitamin E supplements for cardioprotection and shaped a decade of antioxidant enthusiasm.',
+        source: {
+          externalId: 'src:stampfer-vitamin-e-nejm-1993',
+          name: 'Stampfer MJ, Hennekens CH, Manson JE, Colditz GA, Rosner B, Willett WC. Vitamin E consumption and the risk of coronary disease in women. New England Journal of Medicine. 1993;328(20):1444–1449.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8479463/',
+          publishedAt: '1993-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-04',
+        datePrecision: 'DAY',
+        reason: 'Miller et al. publish \'Meta-analysis: high-dosage vitamin E supplementation may increase all-cause mortality\' in the Annals of Internal Medicine (January 4, 2005). Pooling 19 randomized trials with 135,967 participants, they found a dose-dependent increase in mortality above 150 IU/day, concluding that high-dose (≥400 IU/d) vitamin E should be avoided. The finding directly contradicted the observational benefit, placing the cardioprotection claim into active contestation.',
+        source: {
+          externalId: 'src:miller-vitamin-e-meta-annals-2005',
+          name: 'Miller ER 3rd, Pastor-Barriuso R, Dalal D, Riemersma RA, Appel LJ, Guallar E. Meta-analysis: high-dosage vitamin E supplementation may increase all-cause mortality. Annals of Internal Medicine. 2005;142(1):37–46.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15537682/',
+          publishedAt: '2005-01-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-16',
+        datePrecision: 'DAY',
+        reason: 'Lonn et al. publish the HOPE/HOPE-TOO randomized controlled trial in JAMA (March 16, 2005). In over 9,500 patients with vascular disease or diabetes followed a median of 7 years, long-term vitamin E supplementation prevented neither cancer nor major cardiovascular events and significantly increased the risk of heart failure (RR 1.13). The largest long-term RCT to date confirmed the absence of benefit and the signal of harm, reversing the vitamin E cardioprotection hypothesis.',
+        source: {
+          externalId: 'src:lonn-hope-too-vitamin-e-jama-2005',
+          name: 'Lonn E, Bosch J, Yusuf S, et al. (HOPE and HOPE-TOO Trial Investigators). Effects of long-term vitamin E supplementation on cardiovascular events and cancer: a randomized controlled trial. JAMA. 2005;293(11):1338–1347.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15769967/',
+          publishedAt: '2005-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 14. Folic acid — neural tube defect prevention — 1991 ───────────────────
+  {
+    externalId: 'trajectory:folic-acid-neural-tube-defect-prevention-1991',
+    text: 'The claim that periconceptional folic acid supplementation prevents neural tube defects, established by the MRC Vitamin Study (Lancet, July 20, 1991), settled into US public health policy through the 1992 Public Health Service recommendation and the FDA\'s 1996 mandate to fortify enriched grain products.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-07-20',
+        datePrecision: 'DAY',
+        reason: 'The MRC Vitamin Study Research Group publishes \'Prevention of neural tube defects: results of the Medical Research Council Vitamin Study\' in The Lancet (July 20, 1991). The randomized, double-blind, multi-country trial of 1,817 high-risk women showed that folic acid supplementation produced a 72% protective effect against NTD recurrence (RR 0.28), while other vitamins gave no benefit. This was the first definitive randomized evidence that folic acid specifically prevents neural tube defects.',
+        source: {
+          externalId: 'src:mrc-vitamin-study-lancet-1991',
+          name: 'MRC Vitamin Study Research Group. Prevention of neural tube defects: results of the Medical Research Council Vitamin Study. The Lancet. 1991;338(8760):131–137.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1677062/',
+          publishedAt: '1991-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-09-11',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Public Health Service issues its recommendation (MMWR 1992;41(RR-14), September 11, 1992) that all women of childbearing age capable of becoming pregnant consume 0.4 mg (400 µg) of folic acid daily to reduce the risk of NTD-affected pregnancies. The recommendation translated the MRC trial finding into binding national public-health guidance, marking institutional settlement of the folic-acid–NTD claim.',
+        source: {
+          externalId: 'src:phs-folic-acid-mmwr-1992',
+          name: 'Centers for Disease Control and Prevention. Recommendations for the Use of Folic Acid to Reduce the Number of Cases of Spina Bifida and Other Neural Tube Defects. MMWR Recommendations and Reports. 1992;41(RR-14):1–7.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00019479.htm',
+          publishedAt: '1992-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-03-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA issues its final rule, \'Food Standards: Amendment of Standards of Identity for Enriched Grain Products to Require Addition of Folic Acid\' (61 FR 8781, March 5, 1996), mandating folic acid fortification of enriched bread, flour, cornmeal, rice, and pasta at 140 µg per 100 g, with compliance required by January 1, 1998. The mandate moved the claim from voluntary recommendation to enforceable nationwide fortification, reinforcing its settled status; NTD rates subsequently fell measurably across the US population.',
+        source: {
+          externalId: 'src:fda-folic-acid-fortification-rule-1996',
+          name: 'U.S. Food and Drug Administration. Food Standards: Amendment of Standards of Identity for Enriched Grain Products to Require Addition of Folic Acid. Final Rule. 61 FR 8781. March 5, 1996.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-1996-03-05/html/96-5014.htm',
+          publishedAt: '1996-03-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 15. Pauling vitamin C — common cold reversal — 1970 ─────────────────────
+  {
+    externalId: 'trajectory:pauling-vitamin-c-common-cold-1970',
+    text: 'Linus Pauling\'s claim, advanced in 1970, that gram-scale doses of vitamin C prevent and reduce the common cold was contested by controlled trials in the mid-1970s and ultimately reversed for the prevention claim by the 2013 Cochrane systematic review, which found routine supplementation does not reduce cold incidence in the general population.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1970-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Two-time Nobel laureate Linus Pauling publishes \'Evolution and the need for ascorbic acid\' in PNAS (December 1970), arguing that humans require far more vitamin C than dietary guidelines assume (roughly 2.3 g/day), and in the same year his popular book \'Vitamin C and the Common Cold\' claims that gram-scale daily doses prevent and ameliorate colds. Pauling\'s stature drove enormous public uptake of vitamin C megadosing and made the cold-prevention claim a widely held belief.',
+        source: {
+          externalId: 'src:pauling-ascorbic-acid-pnas-1970',
+          name: 'Pauling L. Evolution and the need for ascorbic acid. Proceedings of the National Academy of Sciences USA. 1970;67(4):1643–1648.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5275366/',
+          publishedAt: '1970-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-03-10',
+        datePrecision: 'DAY',
+        reason: 'Dykes and Meier publish \'Ascorbic acid and the common cold: evaluation of its efficacy and toxicity\' in JAMA (March 10, 1975), reviewing the controlled-trial evidence and concluding that \'no clear, reproducible pattern of efficacy has emerged,\' and cautioning against unrestricted megadose use. This and contemporaneous NIH-era double-blind trials placed Pauling\'s prevention claim into active contestation, against the prevailing public enthusiasm.',
+        source: {
+          externalId: 'src:dykes-meier-vitamin-c-jama-1975',
+          name: 'Dykes MHM, Meier P. Ascorbic acid and the common cold: evaluation of its efficacy and toxicity. JAMA. 1975;231(10):1073–1079.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1089817/',
+          publishedAt: '1975-03-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-31',
+        datePrecision: 'DAY',
+        reason: 'Hemilä and Chalker publish the updated Cochrane systematic review \'Vitamin C for preventing and treating the common cold\' (January 31, 2013), pooling decades of randomized trials and concluding that \'the failure of vitamin C supplementation to reduce the incidence of colds in the general population indicates that routine vitamin C supplementation is not justified.\' This definitively reversed Pauling\'s central prevention claim, though the review noted modest reductions in cold duration and a benefit under extreme physical stress.',
+        source: {
+          externalId: 'src:hemila-cochrane-vitamin-c-cold-2013',
+          name: 'Hemilä H, Chalker E. Vitamin C for preventing and treating the common cold. Cochrane Database of Systematic Reviews. 2013;(1):CD000980.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23440782/',
+          publishedAt: '2013-01-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // PRE-MODERN NUTRITIONAL SCIENCE (continued)
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  // ── 16. Goldberger — pellagra dietary deficiency — 1914 ─────────────────────
+  {
+    externalId: 'trajectory:goldberger-pellagra-dietary-deficiency-1914',
+    text: 'Joseph Goldberger established in 1914 that pellagra is a dietary deficiency disease rather than an infection, a finding confirmed by his human dietary-induction experiments and settled at the molecular level in 1937 when nicotinic acid (niacin) was identified as the pellagra-preventive factor.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-06-26',
+        datePrecision: 'DAY',
+        reason: 'Joseph Goldberger publishes \'The etiology of pellagra: the significance of certain epidemiological observations with respect thereto\' in Public Health Reports (June 26, 1914). Observing that pellagra struck inmates and orphans but spared institutional staff who ate better, he argued the disease was caused by a deficient diet rather than an infectious agent — directly challenging the prevailing germ-theory consensus that pellagra was communicable.',
+        source: {
+          externalId: 'src:goldberger-etiology-pellagra-phr-1914',
+          name: 'Goldberger J. The etiology of pellagra: the significance of certain epidemiological observations with respect thereto. Public Health Reports. 1914;29(26):1683–1686.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/808825/',
+          publishedAt: '1914-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Goldberger and Wheeler experimentally induce pellagra in eleven healthy volunteer convicts at Mississippi\'s Rankin State Prison Farm by restricting them to a corn-based diet deficient in meat, milk, and vegetables (experiment 1915; published in the Hygienic Laboratory Bulletin No. 120, 1920). Producing the disease at will by diet alone — having earlier failed to transmit it as an infection — causally confirmed the deficiency etiology and settled the dietary-cause claim in the expert literature.',
+        source: {
+          externalId: 'src:goldberger-wheeler-rankin-experiment-1920',
+          name: 'Goldberger J, Wheeler GA. Experimental production of pellagra in human subjects by means of diet. Hygienic Laboratory Bulletin No. 120. 1920. (Reviewed in James Lind Library.)',
+          url: 'https://www.jameslindlibrary.org/articles/joseph-goldbergers-research-on-the-prevention-of-pellagra/',
+          publishedAt: '1920-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Conrad Elvehjem and colleagues at the University of Wisconsin demonstrate in 1937 that nicotinic acid (niacin) cures canine black tongue, the dog analogue of pellagra, identifying niacin as the anti-pellagra factor. This completed the causal chain begun by Goldberger: the dietary deficiency he had identified epidemiologically was now pinned to a specific missing micronutrient, settling pellagra as a niacin-deficiency disease at the molecular level.',
+        source: {
+          externalId: 'src:elvehjem-nicotinic-acid-pellagra-1937',
+          name: 'Simoni RD, Hill RL, Vaughan M. Copper as an essential nutrient and nicotinic acid as the anti-black tongue (pellagra) factor: the work of Conrad Arnold Elvehjem. Journal of Biological Chemistry. 2002;277(34):e22. (Historical account of Elvehjem et al., 1937.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12185207/',
+          publishedAt: '2002-08-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 17. WHO free sugars guideline — 2015 ────────────────────────────────────
   {
     externalId: 'trajectory:who-free-sugars-guideline-2015',
     text: 'The World Health Organization issued a guideline on March 4, 2015 strongly recommending that adults and children reduce free sugars intake to less than 10% of total energy, with a conditional recommendation to reduce intake below 5%.',
