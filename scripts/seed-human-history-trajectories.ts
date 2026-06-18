@@ -13791,6 +13791,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Galápagos Islands enter the European record ─────────────────────────────
+  {
+    externalId: 'trajectory:galapagos-discovered-berlanga-1535',
+    text: 'On 10 March 1535 the Dominican friar Fray Tomás de Berlanga, Bishop of Panama, sighted the Galápagos Islands after his ship was carried off course en route to Peru — the first recorded European discovery of the archipelago.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1535-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1535-03-10',
+        datePrecision: 'DAY',
+        reason: 'Sailing from Panama to Peru on a mission for Charles V, Berlanga\'s becalmed vessel is dragged westward by the currents until the crew sights uncharted islands teeming with giant tortoises, marine iguanas, and tame birds. Berlanga sets the discovery down in a letter to the Emperor Charles V, the first written account of the islands and their strange fauna.',
+        source: {
+          externalId: 'src:berlanga-letter-charles-v-1535',
+          name: 'Tomás de Berlanga. Letter to Charles V reporting the discovery of the Galápagos Islands, 1535 (written from Puerto Viejo after the voyage).',
+          url: 'https://en.wikipedia.org/wiki/Tom%C3%A1s_de_Berlanga',
+          publishedAt: '1535-04-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1570-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The islands pass into the geographic record: they appear as "Insulae de los Galopegos" on Abraham Ortelius\'s 1570 world map and in Gerardus Mercator\'s atlas, fixing their existence and approximate position. The discovery and its date are corroborated by later Spanish accounts and remain undisputed.',
+        source: {
+          externalId: 'src:ortelius-galapagos-map-1570',
+          name: 'Galápagos Islands shown as "Insulae de los Galopegos" on Ortelius\'s Typus Orbis Terrarum, 1570; discovery history per the Galápagos Islands record.',
+          url: 'https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands',
+          publishedAt: '1570-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── William Gilbert: the Earth is a great magnet ────────────────────────────
+  {
+    externalId: 'trajectory:gilbert-de-magnete-1600',
+    text: 'In 1600 William Gilbert published De Magnete, arguing from experiment that the Earth itself is a giant magnet (magnus magnes ipse est globus terrestris) — the first systematic experimental treatise on magnetism and terrestrial magnetism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1600-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1600-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Gilbert, physician to Queen Elizabeth I, publishes De Magnete in London. Using a spherical lodestone (the "terrella") as a model Earth, he shows that a compass needle dips and points as it would on a magnetic globe, concluding that the Earth is itself a magnet — explaining magnetic declination and inclination without recourse to celestial lodestone mountains or the pole star.',
+        source: {
+          externalId: 'src:gilbert-de-magnete-1600',
+          name: 'Gilbert W. De Magnete, Magneticisque Corporibus, et de Magno Magnete Tellure. London: Peter Short, 1600.',
+          url: 'https://en.wikipedia.org/wiki/De_Magnete',
+          publishedAt: '1600-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1635-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Gilbert\'s experimental method and his thesis that terrestrial magnetism is intrinsic to the Earth are adopted by later natural philosophers — Kepler invokes magnetic attraction in his celestial physics, and Henry Gellibrand\'s 1635 demonstration that magnetic declination changes over time confirms the Earth\'s magnetism as a real, measurable planetary property. Earth\'s status as a magnet is settled science.',
+        source: {
+          externalId: 'src:gellibrand-secular-variation-1635',
+          name: 'Gellibrand H. A Discourse Mathematical on the Variation of the Magneticall Needle, London, 1635 (discovery of secular variation, confirming Gilbert\'s terrestrial magnetism).',
+          url: 'https://en.wikipedia.org/wiki/Henry_Gellibrand',
+          publishedAt: '1635-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Napier publishes logarithms ─────────────────────────────────────────────
+  {
+    externalId: 'trajectory:napier-logarithms-1614',
+    text: 'In 1614 John Napier published Mirifici Logarithmorum Canonis Descriptio, introducing logarithms and the first printed tables — a computational tool that reduced multiplication and division to addition and subtraction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1614-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1614-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After two decades of calculation, the Scottish laird John Napier publishes in Edinburgh his "Description of the Wonderful Canon of Logarithms," with tables of logarithms of sines and an account of their use. The work gives natural philosophers and astronomers a means to replace laborious multiplications with table look-ups and additions.',
+        source: {
+          externalId: 'src:napier-descriptio-1614',
+          name: 'Napier J. Mirifici Logarithmorum Canonis Descriptio. Edinburgh, 1614. (first publication of logarithms and tables)',
+          url: 'https://en.wikipedia.org/wiki/Mirifici_Logarithmorum_Canonis_Descriptio',
+          publishedAt: '1614-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1624-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Logarithms are adopted almost immediately: Henry Briggs visits Napier and, in his Arithmetica Logarithmica (1624), publishes base-10 ("common") logarithms to 14 places for tens of thousands of numbers. Kepler uses logarithms in the Rudolphine Tables (1627). The technique becomes a permanent fixture of mathematics, navigation, and astronomy until the electronic era.',
+        source: {
+          externalId: 'src:briggs-arithmetica-logarithmica-1624',
+          name: 'Briggs H. Arithmetica Logarithmica. London, 1624. (common base-10 logarithm tables establishing the method)',
+          url: 'https://en.wikipedia.org/wiki/Henry_Briggs_(mathematician)',
+          publishedAt: '1624-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Coronation of Shah Jahan ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:coronation-shah-jahan-1628',
+    text: 'On 14 February 1628 Prince Khurram was crowned Mughal emperor at Agra Fort under the regnal name Shah Jahan, after the death of his father Jahangir and the elimination of rival claimants.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1628-02-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1628-02-14',
+        datePrecision: 'DAY',
+        reason: 'Following Jahangir\'s death in October 1627 and a brief war of succession, Khurram ascends the throne at Agra and assumes the title Shah Jahan ("King of the World"). His accession is documented in the official court chronicle, the Padshahnama, commissioned to record his reign in word and illustration.',
+        source: {
+          externalId: 'src:padshahnama-accession-1628',
+          name: 'Lahori A-H. Padshahnama (official chronicle of Shah Jahan\'s reign), recording his accession at Agra in 1628.',
+          url: 'https://en.wikipedia.org/wiki/Shah_Jahan',
+          publishedAt: '1648-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1658-07-31',
+        datePrecision: 'DAY',
+        reason: 'Shah Jahan reigns for three decades — the era of the Taj Mahal — until he is deposed and imprisoned by his son Aurangzeb on 31 July 1658. The reign is independently attested by European travellers at his court (François Bernier, Niccolao Manucci) and by the rival chronicles of the succession war, leaving the date and fact of his accession undisputed.',
+        source: {
+          externalId: 'src:bernier-travels-mogul-1670',
+          name: 'Bernier F. Travels in the Mogul Empire, AD 1656–1668 (eyewitness account of Shah Jahan\'s court and deposition).',
+          url: 'https://en.wikipedia.org/wiki/Shah_Jahan',
+          publishedAt: '1670-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hennig Brand isolates phosphorus ────────────────────────────────────────
+  {
+    externalId: 'trajectory:brand-phosphorus-1669',
+    text: 'Around 1669 the Hamburg alchemist Hennig Brand isolated phosphorus from boiled-down urine — the first chemical element discovered by a known individual in recorded history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1669-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1669-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Searching for the philosophers\' stone, Brand heats residues from large quantities of evaporated urine until a white, waxy substance distils over that glows in the dark and bursts into flame — "cold fire." He keeps the preparation secret, but the existence of a new luminous substance is recorded among German alchemists.',
+        source: {
+          externalId: 'src:brand-phosphorus-discovery-1669',
+          name: 'Hennig Brand\'s isolation of phosphorus from urine, c. 1669; documented through Johann Daniel Kraft and later Leibniz\'s Historia inventionis phosphori (1710).',
+          url: 'https://en.wikipedia.org/wiki/Hennig_Brand',
+          publishedAt: '1669-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1680-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Brand sells his recipe and demonstrates the glowing substance; the secret spreads. Johann Kunckel independently reproduces phosphorus in 1678 and Robert Boyle in 1680, Boyle depositing a sealed account of his method with the Royal Society. Phosphorus enters chemistry as a reproducible substance — eventually recognised as element 15 — its discovery firmly attributed to Brand.',
+        source: {
+          externalId: 'src:boyle-phosphorus-royal-society-1680',
+          name: 'Robert Boyle\'s independent preparation of phosphorus, 1680, lodged with the Royal Society; confirming Brand\'s discovery as reproducible.',
+          url: 'https://en.wikipedia.org/wiki/Phosphorus',
+          publishedAt: '1680-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // INDUSTRIAL & COLONIAL ERA (1750–1900)
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -53813,6 +54023,250 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://iopscience.iop.org/article/10.3847/2041-8213/aae07d',
           publishedAt: '2018-09-25',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE batch — added 2026-06-18 (Byzantine / Europe / Tang)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Consecration of Hagia Sophia (Justinian, Constantinople) ────────────────
+  {
+    externalId: 'trajectory:hagia-sophia-consecration-537',
+    text: 'Emperor Justinian I consecrated the Great Church of Hagia Sophia in Constantinople on 27 December 537, less than six years after construction began.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0537-12-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0537-12-27',
+        datePrecision: 'DAY',
+        reason: 'Justinian and Patriarch Menas inaugurate the rebuilt Church of Holy Wisdom on 27 December 537, five years and ten months after the start of construction following the Nika riots. The court historian Procopius, writing within Justinian\'s reign, devotes the opening of his Buildings (De Aedificiis, Book I) to the church, describing its vast suspended dome "as if not resting upon solid masonry, but covering the space with its golden dome suspended from heaven."',
+        source: {
+          externalId: 'src:procopius-buildings-hagia-sophia',
+          name: 'Procopius. Buildings (De Aedificiis), Book I.1, on the Church of Hagia Sophia. (c. 554–560 CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html',
+          publishedAt: '0554-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0562-12-24',
+        datePrecision: 'DAY',
+        reason: 'After the original eastern semi-dome collapsed in the earthquake of 558, the church was rebuilt by Isidore the Younger with a steeper dome and rededicated on 24 December 562 under Patriarch Eutychius. The poet Paul the Silentiary delivered an ekphrasis (Descriptio Sanctae Sophiae) at the rededication — a detailed contemporaneous description that, together with Procopius, fixes the building sequence and its dedication dates in the historical record.',
+        source: {
+          externalId: 'src:hagia-sophia-rededication-562',
+          name: 'Hagia Sophia — historical and architectural record: Justinianic church consecrated 537, dome rebuilt and rededicated 24 December 562 (Paul the Silentiary ekphrasis).',
+          url: 'https://en.wikipedia.org/wiki/Hagia_Sophia',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Total solar eclipse of 968 — Leo the Deacon describes the corona ─────────
+  {
+    externalId: 'trajectory:leo-deacon-corona-eclipse-968',
+    text: 'During the total solar eclipse of 22 December 968, the Byzantine historian Leo the Deacon, observing from Constantinople, recorded the earliest unambiguous description of the solar corona.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0968-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0968-12-22',
+        datePrecision: 'DAY',
+        reason: 'Leo the Deacon, then a young student at Constantinople, witnesses totality and writes in his History that "darkness covered the earth and all the brightest stars shone forth, and it was possible to see the disk of the Sun, dull and unlit, and a dim and feeble glow like a narrow band shining in a circle around the edge of the disk." This is the first description that can be unambiguously identified as the solar corona, tied to a precisely datable eclipse.',
+        source: {
+          externalId: 'src:leo-deacon-history-corona-968',
+          name: 'Leo the Deacon. History, account of the solar eclipse of 22 December 968 — first explicit mention of the solar corona. (late 10th century; via HAO/UCAR Solar Physics Historical Timeline)',
+          url: 'https://www2.hao.ucar.edu/Education/solar-physics-historical-timeline-0-1599',
+          publishedAt: '0992-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern orbital computation of lunar and solar positions confirms a total solar eclipse occurred on 22 December 968 with the path of totality crossing the eastern Mediterranean, validating Leo the Deacon\'s eyewitness account; the "feeble glow round the edge of the disk" is identified as the Sun\'s outer atmosphere, the corona, visible only during totality.',
+        source: {
+          externalId: 'src:nasa-eclipse-968-1222',
+          name: 'NASA Five Millennium Catalog of Solar Eclipses — Total Solar Eclipse of 968 December 22.',
+          url: 'https://eclipse.gsfc.nasa.gov/SEsearch/SEsearchmap.php?Ecl=09681222',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet 837 CE apparition — closest recorded approach ─────────────
+  {
+    externalId: 'trajectory:halley-comet-837-apparition',
+    text: 'During its 837 CE apparition, Halley\'s Comet passed about 0.03 AU from Earth — its closest recorded approach — and was documented by astronomers in Tang China, Japan, the Byzantine Empire, the Middle East, and Carolingian Europe.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0837-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0837-04-11',
+        datePrecision: 'DAY',
+        reason: 'During the spring of 837 the comet approaches to roughly 0.03 AU (about 4.5 million km) — by far the closest passage of Halley\'s Comet recorded in history — displaying an enormous tail. Tang court astronomers record the "broom star," with independent contemporaneous notices surviving from Japan, the Byzantine Empire, the Islamic world, and the Frankish annals, where the apparition alarmed Emperor Louis the Pious.',
+        source: {
+          externalId: 'src:halley-837-apparition-record',
+          name: 'Halley\'s Comet — 837 CE apparition: closest recorded approach (~0.03 AU), recorded by astronomers in China, Japan, the Byzantine Empire, the Middle East, and Europe.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on Edmond Halley\'s 1705 demonstration of the comet\'s periodicity, Yeomans and Kiang integrate the comet\'s orbit backward across two millennia and reconcile every recorded apparition — including 837 CE — with comet 1P/Halley, establishing the identity of the medieval "guest star" records with the periodic comet and dating the 837 perihelion and close approach.',
+        source: {
+          externalId: 'src:yeomans-kiang-halley-1981',
+          name: 'Yeomans DK, Kiang T. The long-term motion of comet Halley. Monthly Notices of the Royal Astronomical Society 1981;197:633–646.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1981MNRAS.197..633Y/abstract',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of Thomas Becket (Canterbury) ─────────────────────────────
+  {
+    externalId: 'trajectory:becket-assassination-1170',
+    text: 'Archbishop Thomas Becket was murdered by four knights of Henry II inside Canterbury Cathedral on 29 December 1170; he was canonized as a martyr by Pope Alexander III on 21 February 1173.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1170-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1170-12-29',
+        datePrecision: 'DAY',
+        reason: 'Four knights of Henry II — Reginald FitzUrse, Hugh de Morville, William de Tracy, and Richard le Breton — strike down Archbishop Thomas Becket near the altar of Canterbury Cathedral. The clerk Edward Grim, who tried to shield Becket and had his own arm cut by the same blow, records the murder in his Vita Sancti Thomae, one of several eyewitness and near-contemporary accounts.',
+        source: {
+          externalId: 'src:edward-grim-becket-murder',
+          name: 'Edward Grim. Vita S. Thomae, Cantuariensis Archiepiscopi et Martyris — eyewitness account of the murder of Thomas Becket, 29 December 1170. (c. 1180; Fordham Medieval Sourcebook)',
+          url: 'https://sourcebooks.fordham.edu/source/grim-becket.asp',
+          publishedAt: '1180-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1173-02-21',
+        datePrecision: 'DAY',
+        reason: 'Amid rapid and widespread veneration across Europe, Pope Alexander III canonizes Becket as a saint and martyr on 21 February 1173, little more than two years after the murder — formally settling Becket\'s status as martyr and the murder as established fact within the Church.',
+        source: {
+          externalId: 'src:becket-canonization-1173',
+          name: 'Canonization of Thomas Becket by Pope Alexander III, 21 February 1173 — historical record.',
+          url: 'https://en.wikipedia.org/wiki/Thomas_Becket',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1174-07-12',
+        datePrecision: 'DAY',
+        reason: 'Henry II performs public penance at Becket\'s tomb in Canterbury on 12 July 1174, submitting to scourging by the monks and acknowledging his role in provoking the murder — a public royal act that further consolidates the established account of the assassination and its responsibility.',
+        source: {
+          externalId: 'src:henry-ii-penance-1174',
+          name: 'Henry II\'s public penance at Canterbury, 12 July 1174 — historical record.',
+          url: 'https://en.wikipedia.org/wiki/Thomas_Becket',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mass arrest of the Knights Templar (Philip IV of France) ────────────────
+  {
+    externalId: 'trajectory:templars-arrest-1307',
+    text: 'On Friday 13 October 1307, King Philip IV of France ordered the simultaneous arrest of the Knights Templar across France; the order was dissolved by Pope Clement V in 1312 and Grand Master Jacques de Molay was burned at the stake on 18 March 1314.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1307-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1307-10-13',
+        datePrecision: 'DAY',
+        reason: 'At dawn on Friday 13 October 1307, acting on sealed orders issued in September, King Philip IV has Grand Master Jacques de Molay and scores of French Templars arrested simultaneously and charged with heresy. The coordinated arrests are recorded in royal and papal documents and contemporary French chronicles.',
+        source: {
+          externalId: 'src:templars-arrest-1307-record',
+          name: 'Mass arrest of the Knights Templar in France ordered by Philip IV, 13 October 1307 — historical record.',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1312-03-22',
+        datePrecision: 'DAY',
+        reason: 'At the Council of Vienne, Pope Clement V issues the bull Vox in excelso on 22 March 1312, officially suppressing the Order of the Temple; its properties are transferred to the Hospitallers by the bull Ad providam. The dissolution settles the fate of the order in canon law.',
+        source: {
+          externalId: 'src:vox-in-excelso-1312',
+          name: 'Papal bull Vox in excelso (Pope Clement V, Council of Vienne) dissolving the Knights Templar, 22 March 1312 — historical record.',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1314-03-18',
+        datePrecision: 'DAY',
+        reason: 'Declared a relapsed heretic after retracting his confession, Grand Master Jacques de Molay is burned at the stake on an island in the Seine in Paris on 18 March 1314, marking the definitive end of the order\'s leadership.',
+        source: {
+          externalId: 'src:jacques-de-molay-execution-1314',
+          name: 'Execution of Jacques de Molay, Grand Master of the Knights Templar, in Paris, 18 March 1314 — historical record.',
+          url: 'https://en.wikipedia.org/wiki/Knights_Templar',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
