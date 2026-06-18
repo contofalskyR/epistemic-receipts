@@ -4156,6 +4156,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS ERA (1965–2018)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dole & Nyswander methadone maintenance 1965 ────────────────────────────
+  {
+    externalId: 'trajectory:methadone-maintenance-heroin-addiction-1965',
+    text: 'Vincent Dole and Marie Nyswander reported in JAMA on August 23, 1965, that daily oral methadone hydrochloride, administered in a stabilizing maintenance regimen, blocks heroin craving and allows people with heroin addiction to function normally — establishing addiction as a treatable medical condition rather than a purely behavioral failing.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1965-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-08-23',
+        datePrecision: 'DAY',
+        reason: 'Dole and Nyswander published their clinical trial of methadone hydrochloride in JAMA, reporting that maintenance dosing relieved narcotic hunger and allowed previously addicted patients to resume work and social function. The paper reframed heroin addiction as a metabolic medical disorder amenable to pharmacologic maintenance, entering the literature as the founding evidence for methadone maintenance treatment.',
+        source: {
+          externalId: 'src:dole-nyswander-methadone-jama-1965',
+          name: 'Dole VP, Nyswander M. A medical treatment for diacetylmorphine (heroin) addiction. A clinical trial with methadone hydrochloride. JAMA. 1965 Aug 23;193:646-50.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14321530/',
+          publishedAt: '1965-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-15',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued final methadone regulations on December 15, 1972 (37 FR 26790), formally authorizing methadone maintenance treatment programs and creating a closed distribution system for the drug\'s use in treating opiate addiction. Federal recognition and licensing of maintenance programs institutionally ratified the Dole-Nyswander claim, making methadone maintenance an established standard of addiction treatment.',
+        source: {
+          externalId: 'src:iom-federal-regulation-methadone-1972',
+          name: 'Institute of Medicine. Federal Regulation of Methadone Treatment (documenting FDA final methadone regulations, 37 FR 26790, Dec. 15, 1972). National Academies Press; 1995.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK232105/',
+          publishedAt: '1972-12-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Portenoy & Foley opioids for chronic non-cancer pain 1986 ──────────────
+  {
+    externalId: 'trajectory:portenoy-foley-opioids-chronic-noncancer-pain-1986',
+    text: 'Russell Portenoy and Kathleen Foley reported in the journal Pain in 1986, on the basis of 38 cases, that chronic opioid therapy can be a safe, effective, and humane treatment for selected patients with non-malignant pain, with addiction rarely developing in those without a prior substance-abuse history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Portenoy and Foley published a case series of 38 patients on long-term opioids for non-malignant pain, concluding that most needed only modest stable doses and that addiction was rare in patients without prior abuse histories. The paper became one of the most influential citations underpinning the liberalization of opioid prescribing for chronic non-cancer pain through the 1990s and 2000s.',
+        source: {
+          externalId: 'src:portenoy-foley-pain-1986',
+          name: 'Portenoy RK, Foley KM. Chronic use of opioid analgesics in non-malignant pain: report of 38 cases. Pain. 1986;25(2):171-186.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2873550/',
+          publishedAt: '1986-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-03-06',
+        datePrecision: 'DAY',
+        reason: 'Krebs and colleagues published the SPACE randomized clinical trial in JAMA on March 6, 2018, finding that opioid therapy was not superior to non-opioid medications for pain-related function over 12 months in chronic back or hip/knee osteoarthritis pain, while opioids produced more adverse effects. The rigorous randomized evidence directly contradicted the premise that opioids are a uniquely effective and benign option for chronic non-cancer pain, overturning the claim the 1986 report had helped establish.',
+        source: {
+          externalId: 'src:krebs-space-trial-jama-2018',
+          name: 'Krebs EE, Gravely A, Nugent S, et al. Effect of Opioid vs Nonopioid Medications on Pain-Related Function in Patients With Chronic Back Pain or Hip or Knee Osteoarthritis Pain: The SPACE Randomized Clinical Trial. JAMA. 2018;319(9):872-882.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29509867/',
+          publishedAt: '2018-03-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pain as the fifth vital sign 1996 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:pain-fifth-vital-sign-1996',
+    text: 'The American Pain Society introduced \'pain as the fifth vital sign\' in 1996, the doctrine that pain should be routinely measured and treated alongside temperature, pulse, respiration, and blood pressure — a standard subsequently adopted across U.S. health care and later judged to have driven opioid overprescribing.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The American Pain Society introduced the phrase \'pain as the fifth vital sign\' in 1996, arguing that systematic pain assessment at every clinical encounter would correct the undertreatment of pain. The slogan entered professional discourse as a quality-of-care reform.',
+        source: {
+          externalId: 'src:joint-commission-opioid-blame-pmc-2018',
+          name: 'Baker DW. History of The Joint Commission\'s Pain Standards: Lessons for Today\'s Prescription Opioid Epidemic / commentary documenting APS 1996 introduction of \'pain as the fifth vital sign.\' PMC6139759.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6139759/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Veterans Health Administration issued its \'Pain as the 5th Vital Sign\' directive (March 1, 1999) and published the implementing toolkit in October 2000, mandating numeric pain scores at clinical encounters; the Joint Commission\'s 2001 pain-management standards extended routine pain assessment across accredited U.S. hospitals. Institutional adoption made the doctrine an enforced standard of care nationwide.',
+        source: {
+          externalId: 'src:va-pain-fifth-vital-sign-toolkit-2000',
+          name: 'Veterans Health Administration, National Pain Management Coordinating Committee. Pain as the 5th Vital Sign Toolkit (Revised Edition). October 2000.',
+          url: 'https://www.va.gov/painmanagement/docs/toolkit.pdf',
+          publishedAt: '2000-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Mularski and colleagues reported in the Journal of General Internal Medicine that routinely measuring pain as the fifth vital sign did not improve the quality of pain management in a VA study, providing empirical evidence that the assessment mandate failed to deliver its intended benefit and first calling the doctrine into question.',
+        source: {
+          externalId: 'src:mularski-fifth-vital-sign-jgim-2006',
+          name: 'Mularski RA, White-Chu F, Overbay D, Miller L, Asch SM, Ganzini L. Measuring pain as the 5th vital sign does not improve quality of pain management. J Gen Intern Med. 2006 Jun;21(6):607-612.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1924634/',
+          publishedAt: '2006-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In June 2016 the American Medical Association House of Delegates adopted a recommendation that \'pain as the fifth vital sign\' be removed from professional standards and usage, concluding that the initiative had contributed to the opioid epidemic by encouraging overprescribing. The formal repudiation by organized medicine reversed the doctrine that had been institutional standard for over a decade.',
+        source: {
+          externalId: 'src:ama-drops-pain-fifth-vital-sign-2016',
+          name: 'American Medical Association House of Delegates action, June 2016: \'Pain is not a vital sign—let\'s not treat it as one, AMA says.\' The DO (American Osteopathic Association), July 2016.',
+          url: 'https://thedo.osteopathic.org/2016/07/pain-is-not-a-vital-sign-lets-not-treat-it-as-one-ama-says/',
+          publishedAt: '2016-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Buprenorphine office-based opioid treatment 2002 ───────────────────────
+  {
+    externalId: 'trajectory:buprenorphine-office-based-opioid-treatment-2002',
+    text: 'The FDA approved buprenorphine (Subutex) and buprenorphine/naloxone (Suboxone) sublingual tablets for the treatment of opioid dependence on October 8, 2002, the first opioid-dependence medications eligible for prescribing in office-based settings under the Drug Addiction Treatment Act of 2000.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-10-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-10-17',
+        datePrecision: 'DAY',
+        reason: 'The Drug Addiction Treatment Act of 2000 (Title XXXV of the Children\'s Health Act, Pub. L. 106-310), signed October 17, 2000, authorized qualified physicians to prescribe Schedule III-V narcotics for opioid-dependence treatment in office-based settings, breaking from the closed methadone-clinic model. The law recorded a new institutional premise: that opioid addiction could be treated in routine medical practice.',
+        source: {
+          externalId: 'src:buprenorphine-fda-history-pmc-2023',
+          name: 'Campbell ND, et al. History of the discovery, development, and FDA-approval of buprenorphine medications for the treatment of opioid use disorder (documenting DATA 2000, Pub. L. 106-310). PMC10040330.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10040330/',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-10-08',
+        datePrecision: 'DAY',
+        reason: 'On October 8, 2002, the FDA approved Subutex (buprenorphine) and Suboxone (buprenorphine/naloxone) sublingual tablets for opioid dependence — the first and only Schedule III-V medications eligible for office-based use under DATA 2000. Regulatory approval ratified buprenorphine maintenance as an established treatment, expanding medication-assisted treatment beyond the methadone-clinic system.',
+        source: {
+          externalId: 'src:dea-buprenorphine-drug-info',
+          name: 'U.S. Drug Enforcement Administration. Buprenorphine (Trade Names: Buprenex, Suboxone, Subutex) drug information sheet (FDA approval for opioid dependence, October 8, 2002).',
+          url: 'https://www.deadiversion.usdoj.gov/drug_chem_info/buprenorphine.pdf',
+          publishedAt: '2002-10-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
