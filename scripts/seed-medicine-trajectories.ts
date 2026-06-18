@@ -4358,6 +4358,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC & GENE THERAPY ERA (2015–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Zolgensma FDA approval — gene therapy for SMA 2019 ─────────────────────
+  {
+    externalId: 'trajectory:zolgensma-onasemnogene-gene-therapy-sma-2019',
+    text: 'On 24 May 2019 the US FDA approved Zolgensma (onasemnogene abeparvovec-xioi), a one-time intravenous AAV9 gene-replacement therapy, for children under 2 years of age with spinal muscular atrophy, establishing it as a clinically effective single-dose treatment addressing the genetic root cause of SMA.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-05-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved onasemnogene abeparvovec for SMA patients under 2, the first systemic gene-replacement therapy for a pediatric genetic disease and (at ~$2.1M) the most expensive drug ever. The approval converted a one-time gene delivery from experimental claim to an established regulatory standard of care, validating in-vivo AAV gene therapy as a pediatric treatment modality alongside the antisense drug nusinersen.',
+        source: {
+          externalId: 'src:novartis-zolgensma-fda-approval-2019',
+          name: 'Novartis (AveXis). AveXis receives FDA approval for Zolgensma, the first and only gene therapy for pediatric patients with spinal muscular atrophy (SMA). Media release. 24 May 2019.',
+          url: 'https://www.novartis.com/news/media-releases/avexis-receives-fda-approval-zolgensma-first-and-only-gene-therapy-pediatric-patients-spinal-muscular-atrophy-sma',
+          publishedAt: '2019-05-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hanna-Attisha Flint childhood blood lead elevation 2015 ─────────────────
+  {
+    externalId: 'trajectory:hanna-attisha-flint-childhood-blood-lead-2015',
+    text: 'On 24 September 2015 pediatrician Mona Hanna-Attisha presented (and subsequently published in the American Journal of Public Health, February 2016) analysis showing the proportion of Flint, Michigan children under 5 with elevated blood lead levels rose from 2.4% to 4.9% after the city switched to corrosive Flint River water in 2014.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Hanna-Attisha and colleagues published a peer-reviewed spatial analysis in the American Journal of Public Health demonstrating a near-doubling of pediatric elevated blood lead incidence (and a tripling in high-water-lead neighborhoods) after the 2014 source switch. The publication converted an initially state-dismissed clinical alarm into a documented epidemiological finding, contradicting Michigan officials who had publicly denied any lead problem.',
+        source: {
+          externalId: 'src:hanna-attisha-flint-ajph-2016',
+          name: 'Hanna-Attisha M, LaChance J, Sadler RC, Champney Schnepp A. Elevated Blood Lead Levels in Children Associated With the Flint Drinking Water Crisis: A Spatial Analysis of Risk and Public Health Response. Am J Public Health. 2016;106(2):283-290. PMID 26691115.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4985856/',
+          publishedAt: '2016-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-06-24',
+        datePrecision: 'DAY',
+        reason: 'The CDC published its own MMWR analysis confirming that blood lead levels among Flint children rose during the period of Flint River water use and declined after the switch back to Detroit water, institutionally ratifying Hanna-Attisha\'s finding. Federal confirmation cemented the Flint pediatric lead exposure as established public-health fact and a reference case for childhood environmental lead policy.',
+        source: {
+          externalId: 'src:cdc-mmwr-flint-blood-lead-2016',
+          name: 'Kennedy C, Yard E, Dignam T, et al. Blood Lead Levels Among Children Aged <6 Years — Flint, Michigan, 2013–2016. MMWR Morb Mortal Wkly Rep. 2016;65(25):650-654.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/wr/mm6525e1.htm',
+          publishedAt: '2016-06-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nirsevimab (Beyfortus) FDA approval — infant RSV prevention 2023 ────────
+  {
+    externalId: 'trajectory:nirsevimab-beyfortus-infant-rsv-prevention-2023',
+    text: 'On 17 July 2023 the US FDA approved Beyfortus (nirsevimab-alip), a single-dose long-acting monoclonal antibody, for the prevention of RSV lower respiratory tract disease in all newborns and infants entering their first RSV season, establishing passive immunization against RSV as a routine infant preventive.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-07-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved nirsevimab for prevention of RSV lower respiratory tract disease in infants in their first RSV season and in vulnerable children up to 24 months, based on trials showing roughly 70–75% reduction in medically attended RSV. The approval recorded the first broadly indicated immunization-style product protecting all infants (not just high-risk preterm babies, as the older antibody palivizumab did) against the leading cause of infant hospitalization.',
+        source: {
+          externalId: 'src:sanofi-beyfortus-fda-approval-2023',
+          name: 'Sanofi. Press Release: FDA approves Beyfortus (nirsevimab-alip) to protect infants against RSV disease. 17 July 2023.',
+          url: 'https://www.news.sanofi.us/2023-07-17-FDA-approves-Beyfortus-TM-nirsevimab-alip-to-protect-infants-against-RSV-disease',
+          publishedAt: '2023-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-08-03',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s Advisory Committee on Immunization Practices recommended nirsevimab for all infants younger than 8 months entering their first RSV season and for certain high-risk children 8–19 months, incorporating it into the childhood immunization schedule and the Vaccines for Children program. ACIP adoption moved nirsevimab from an approved product to a universally recommended element of routine infant preventive care.',
+        source: {
+          externalId: 'src:cdc-mmwr-nirsevimab-acip-2023',
+          name: 'Jones JM, Fleming-Dutra KE, Prill MM, et al. Use of Nirsevimab for the Prevention of RSV Disease Among Infants and Young Children: Recommendations of the ACIP — United States, 2023. MMWR Morb Mortal Wkly Rep. 2023;72(34):920-925.',
+          url: 'https://www.cdc.gov/mmwr/volumes/72/wr/mm7234a4.htm',
+          publishedAt: '2023-08-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA EUA Pfizer COVID vaccine — children 5–11 2021 ───────────────────────
+  {
+    externalId: 'trajectory:fda-eua-pfizer-covid-vaccine-children-5-11-2021',
+    text: 'On 29 October 2021 the US FDA authorized emergency use of the Pfizer-BioNTech COVID-19 vaccine, at a 10-µg two-dose regimen, for children 5 through 11 years of age — the first COVID-19 vaccine made available to US elementary-school-age children, with reported efficacy of 90.7%.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-10-29',
+        datePrecision: 'DAY',
+        reason: 'Following an overwhelmingly favorable advisory committee vote, the FDA issued an Emergency Use Authorization extending the Pfizer-BioNTech vaccine to children 5–11 at a reduced 10-µg dose, citing 90.7% efficacy in a ~3,100-child trial. Days later the CDC/ACIP recommended it, settling pediatric COVID-19 vaccination as authorized institutional practice even as it remained publicly contested over uptake and necessity in low-risk children.',
+        source: {
+          externalId: 'src:fda-eua-covid-vaccine-children-5-11-2021',
+          name: 'US FDA. FDA Authorizes Pfizer-BioNTech COVID-19 Vaccine for Emergency Use in Children 5 through 11 Years of Age. Press announcement. 29 October 2021.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-authorizes-pfizer-biontech-covid-19-vaccine-emergency-use-children-5-through-11-years-age',
+          publishedAt: '2021-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
