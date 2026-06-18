@@ -54272,6 +54272,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR PHYSICS REVOLUTION (1900–1950) — supplemental
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Kamerlingh Onnes first liquefies helium ─────────────────────────────────
+  {
+    externalId: 'trajectory:onnes-liquefies-helium-1908',
+    text: 'On July 10, 1908, Heike Kamerlingh Onnes became the first person to liquefy helium, reaching about 4.2 K and later near 1.5 K — the lowest temperature recorded on Earth at the time.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1908-07-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1908-07-10',
+        datePrecision: 'DAY',
+        reason: 'At the Leiden cryogenic laboratory Kamerlingh Onnes, using cascade pre-cooling and the Hampson–Linde cycle exploiting the Joule–Thomson effect, condensed helium to a liquid at its boiling point (−269 °C, 4.2 K). The achievement was recorded in the Communications from the Physical Laboratory of the University of Leiden, opening the field of low-temperature physics.',
+        source: {
+          externalId: 'src:onnes-helium-liquefaction',
+          name: 'Heike Kamerlingh Onnes — first liquefaction of helium, 10 July 1908 (Leiden).',
+          url: 'https://en.wikipedia.org/wiki/Heike_Kamerlingh_Onnes',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The result was reproduced and extended (Onnes reached near 1.5 K by pumping on the liquid) and underpinned his 1911 discovery of superconductivity. The Royal Swedish Academy of Sciences awarded Kamerlingh Onnes the 1913 Nobel Prize in Physics explicitly for "his investigations on the properties of matter at low temperatures which led, inter alia, to the production of liquid helium," ratifying the result.',
+        source: {
+          externalId: 'src:onnes-nobel-1913',
+          name: 'Nobel Prize in Physics 1913 awarded to Heike Kamerlingh Onnes for low-temperature investigations leading to liquid helium.',
+          url: 'https://en.wikipedia.org/wiki/Heike_Kamerlingh_Onnes',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Johannes Stark discovers the Stark effect ───────────────────────────────
+  {
+    externalId: 'trajectory:stark-effect-1913',
+    text: 'In October 1913, Johannes Stark discovered that an external electric field splits and shifts atomic spectral lines (the Stark effect), observing the splitting of hydrogen lines in canal rays.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-10-01',
+        datePrecision: 'MONTH',
+        reason: 'After a failed 1906 attempt, Stark — by lowering the conductivity of the luminous gas to sustain a strong field — examined the spectrum of canal rays in hydrogen behind a perforated cathode and observed the hydrogen lines split into symmetric components in the electric field. He recorded the moment: "One afternoon soon after courses resumed in October, I began recording the canal rays in a mixture of hydrogen and helium."',
+        source: {
+          externalId: 'src:stark-discovery-encyclopedia',
+          name: 'Johannes Stark — discovery of the electric-field splitting of spectral lines, October 1913 (Dictionary of Scientific Biography).',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/stark-johannes',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Stark published the full results in "Beobachtungen über den Effekt des elektrischen Feldes auf Spektrallinien" (Annalen der Physik, 4th ser., 43, 1914). The effect — an electric-field analogue of the Zeeman effect — became a key test of the developing quantum theory of the atom, and the Royal Swedish Academy of Sciences awarded Stark the 1919 Nobel Prize in Physics for the discovery.',
+        source: {
+          externalId: 'src:stark-effect-wikipedia',
+          name: 'Stark effect — discovery by Johannes Stark (1913), Nobel Prize in Physics 1919.',
+          url: 'https://en.wikipedia.org/wiki/Stark_effect',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First day of the Battle of the Somme ────────────────────────────────────
+  {
+    externalId: 'trajectory:first-day-somme-1916',
+    text: 'On July 1, 1916, the first day of the Battle of the Somme, the British Army suffered about 57,470 casualties (some 19,240 killed) — the bloodiest single day in its history.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1916-07-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1916-07-01',
+        datePrecision: 'DAY',
+        reason: 'Following a preliminary bombardment of over 1.5 million shells, the British Fourth and Third Armies attacked German lines astride the Somme. Casualty returns compiled by the Adjutant-General\'s office recorded roughly 57,470 British casualties on the first day, of which about 19,240 were fatal, against meagre territorial gains.',
+        source: {
+          externalId: 'src:first-day-somme-casualties',
+          name: 'First day on the Somme, 1 July 1916 — British casualties c. 57,470 (19,240 killed).',
+          url: 'https://en.wikipedia.org/wiki/First_day_on_the_Somme',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The casualty figures were confirmed in the British Official History (Military Operations: France and Belgium, 1916, vol. I, ed. J. E. Edmonds) drawing on unit war diaries and Adjutant-General returns. The first day of the Somme remains the bloodiest single day in the history of the British Army, a figure that has been a settled source of national grief and historiographical debate ever since.',
+        source: {
+          externalId: 'src:somme-official-history',
+          name: 'British Official History of the First World War — Somme casualty records, confirmed in modern scholarship.',
+          url: 'https://en.wikipedia.org/wiki/First_day_on_the_Somme',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Saint-Germain-en-Laye dissolves Austria-Hungary ───────────────
+  {
+    externalId: 'trajectory:treaty-saint-germain-1919',
+    text: 'On September 10, 1919, the Treaty of Saint-Germain-en-Laye was signed, formally dissolving the Austro-Hungarian Empire and reducing Austria to a small republic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1919-09-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1919-09-10',
+        datePrecision: 'DAY',
+        reason: 'Allied and Associated Powers and the new Republic of Austria signed the treaty at Saint-Germain-en-Laye. It declared the Austro-Hungarian Empire dissolved, required Austria to recognise the independence of Hungary, Czechoslovakia, Poland and the Kingdom of Serbs, Croats and Slovenes, stripped over 60% of Austria\'s prewar territory, barred union with Germany (Article 88), and limited its army to 30,000 volunteers.',
+        source: {
+          externalId: 'src:treaty-saint-germain-signing',
+          name: 'Treaty of Saint-Germain-en-Laye, signed 10 September 1919.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Saint-Germain-en-Laye_(1919)',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-07-16',
+        datePrecision: 'DAY',
+        reason: 'The treaty entered into force on 16 July 1920 after ratification by Austria and three of the Principal Allied Powers, making the dissolution of Austria-Hungary and the new map of Central Europe legally binding. The successor states it recognised — Austria, Hungary, Czechoslovakia, Poland and Yugoslavia — became established facts of the interwar order.',
+        source: {
+          externalId: 'src:treaty-saint-germain-force',
+          name: 'Treaty of Saint-Germain-en-Laye entered into force 16 July 1920.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Saint-Germain-en-Laye_(1919)',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lawrence & Livingston operate the first cyclotron ───────────────────────
+  {
+    externalId: 'trajectory:lawrence-first-cyclotron-1931',
+    text: 'On January 2, 1931, Ernest Lawrence and M. Stanley Livingston operated the first working cyclotron — a 4.5-inch (11 cm) machine that accelerated protons to about 80 keV.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-02',
+        datePrecision: 'DAY',
+        reason: 'At the University of California, Berkeley, graduate student M. Stanley Livingston built the first functioning cyclotron from Ernest Lawrence\'s concept of resonant magnetic acceleration. The 4.5-inch device became operational on 2 January 1931, accelerating protons to roughly 80 keV and demonstrating that ions could be repeatedly accelerated to high energies without high voltages.',
+        source: {
+          externalId: 'src:first-cyclotron-operational',
+          name: 'Cyclotron — first working cyclotron operational 2 January 1931 (Lawrence and Livingston, UC Berkeley).',
+          url: 'https://en.wikipedia.org/wiki/Cyclotron',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lawrence first described the principle in Science (1930) and patented the device in 1932; successively larger cyclotrons at the Radiation Laboratory turned it into the foundational instrument of nuclear and particle physics and of radioisotope production. The Royal Swedish Academy of Sciences awarded Lawrence the 1939 Nobel Prize in Physics for the invention and development of the cyclotron.',
+        source: {
+          externalId: 'src:lawrence-nobel-1939',
+          name: 'Nobel Prize in Physics 1939 awarded to Ernest Lawrence for the invention and development of the cyclotron.',
+          url: 'https://en.wikipedia.org/wiki/Cyclotron',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
