@@ -17502,6 +17502,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CELL & GENE THERAPY / PRECISION PEDIATRICS ERA (2017–2021)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Tisagenlecleucel (Kymriah) — first CAR T-cell therapy, FDA 2017 ─────────
+  {
+    externalId: 'trajectory:tisagenlecleucel-kymriah-first-car-t-pediatric-all-2017',
+    text: 'On 30 August 2017 the U.S. FDA approved tisagenlecleucel (Kymriah, Novartis) for patients up to 25 years of age with B-cell precursor acute lymphoblastic leukemia that is refractory or in second or later relapse — the first chimeric antigen receptor (CAR) T-cell therapy and the first gene-transfer-based therapy ever approved in the United States.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-08-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted regular approval to tisagenlecleucel on the basis of a single-arm pediatric/young-adult cohort showing an overall remission rate of 81% with all responders achieving minimal residual disease negativity. As the first approved CAR T-cell and first gene-transfer therapy, the decision institutionally settled autologous CD19-directed cell therapy as an approvable treatment modality and established a regulatory beachhead for the cell-and-gene-therapy era in pediatrics.',
+        source: {
+          externalId: 'src:fda-tisagenlecleucel-kymriah-approval-2017',
+          name: 'U.S. FDA. FDA approves tisagenlecleucel for B-cell ALL and tocilizumab for cytokine release syndrome. August 30, 2017.',
+          url: 'https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tisagenlecleucel-b-cell-all-and-tocilizumab-cytokine-release-syndrome',
+          publishedAt: '2017-08-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-02-01',
+        datePrecision: 'DAY',
+        reason: 'Maude and colleagues published the full results of the global phase 2 ELIANA trial in the New England Journal of Medicine, reporting an 81% overall remission rate within 3 months and event-free survival of 73% at 6 months in relapsed/refractory pediatric and young-adult B-ALL. Peer-reviewed publication entrenched the efficacy claim in the expert literature and confirmed the durability underpinning the prior regulatory approval.',
+        source: {
+          externalId: 'src:maude-eliana-tisagenlecleucel-nejm-2018',
+          name: 'Maude SL, Laetsch TW, Buechner J, et al. Tisagenlecleucel in Children and Young Adults with B-Cell Lymphoblastic Leukemia. N Engl J Med. 2018;378(5):439-448. PMID 29385370.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29385370/',
+          publishedAt: '2018-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Elexacaftor/tezacaftor/ivacaftor (Trikafta) — cystic fibrosis, FDA 2019 ─
+  {
+    externalId: 'trajectory:elexacaftor-tezacaftor-ivacaftor-trikafta-cf-2019',
+    text: 'On 21 October 2019 the U.S. FDA approved the triple combination elexacaftor/tezacaftor/ivacaftor (Trikafta, Vertex) for cystic fibrosis patients aged 12 and older carrying at least one F508del CFTR mutation — extending CFTR-modulator therapy to roughly 90% of the CF population, the large majority of whom are children and young adults.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-10-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Trikafta several months ahead of its goal date, the first triple-combination CFTR modulator and the first therapy effective for patients with a single F508del allele. Where ivacaftor (2012) reached only a small gating-mutation subgroup, Trikafta extended molecular-cause-directed treatment to an estimated 90% of CF patients, institutionally settling triple modulation as the new standard of care for the predominantly pediatric-onset disease.',
+        source: {
+          externalId: 'src:vertex-trikafta-fda-approval-2019',
+          name: 'Vertex Pharmaceuticals. FDA Approves TRIKAFTA (elexacaftor/tezacaftor/ivacaftor and ivacaftor) to Treat the Underlying Cause of Cystic Fibrosis in People Ages 12 and Older Who Have at Least One F508del Mutation. October 21, 2019.',
+          url: 'https://investors.vrtx.com/news-releases/news-release-details/fda-approves-trikafta-elexacaftortezacaftorivacaftor-and',
+          publishedAt: '2019-10-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-11-07',
+        datePrecision: 'DAY',
+        reason: 'Middleton and colleagues published the pivotal phase 3 trial in the New England Journal of Medicine, showing that elexacaftor-tezacaftor-ivacaftor raised percent-predicted FEV1 by 13.8 points at 4 weeks versus placebo and sharply reduced pulmonary exacerbations in patients with the F508del-minimal-function genotype. The peer-reviewed result confirmed in the expert literature the efficacy claim underlying the regulatory approval.',
+        source: {
+          externalId: 'src:middleton-trikafta-f508del-nejm-2019',
+          name: 'Middleton PG, Mall MA, Dřevínek P, et al. Elexacaftor-Tezacaftor-Ivacaftor for Cystic Fibrosis with a Single Phe508del Allele. N Engl J Med. 2019;381(19):1809-1819. PMID 31697873.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31697873/',
+          publishedAt: '2019-11-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Setmelanotide (Imcivree) — monogenic obesity, FDA 2020 ──────────────────
+  {
+    externalId: 'trajectory:setmelanotide-imcivree-monogenic-obesity-2020',
+    text: 'On 27 November 2020 the U.S. FDA approved setmelanotide (Imcivree, Rhythm Pharmaceuticals), an MC4-receptor agonist, for chronic weight management in patients 6 years and older with obesity due to POMC, PCSK1, or LEPR deficiency — the first therapy directed at the genetic root cause of monogenic obesity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-11-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-30',
+        datePrecision: 'DAY',
+        reason: 'Clément and colleagues published two phase 3 single-arm trials in Lancet Diabetes & Endocrinology showing that setmelanotide produced clinically meaningful weight loss and reduced hunger in individuals with severe obesity from POMC/PCSK1 or LEPR deficiency. The results recorded the first prospective trial evidence that restoring melanocortin-4 pathway signaling can treat obesity driven by defined upstream genetic lesions.',
+        source: {
+          externalId: 'src:clement-setmelanotide-lancet-de-2020',
+          name: 'Clément K, van den Akker E, Argente J, et al. Efficacy and safety of setmelanotide, an MC4R agonist, in individuals with severe obesity due to LEPR or POMC deficiency: single-arm, open-label, multicentre, phase 3 trials. Lancet Diabetes Endocrinol. 2020;8(12):960-970. PMID 33137293.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33137293/',
+          publishedAt: '2020-10-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-11-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved setmelanotide as the first-ever treatment for obesity caused by these three rare genetic conditions, establishing a regulatory finding of efficacy and safety for a precision-medicine approach targeting the molecular cause of obesity rather than its symptoms. The approval institutionalized genotype-directed pharmacotherapy for pediatric monogenic obesity.',
+        source: {
+          externalId: 'src:fda-setmelanotide-imcivree-approval-2020',
+          name: 'U.S. FDA. FDA approves first treatment for weight management for people with certain rare genetic conditions. November 27, 2020.',
+          url: 'https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-first-treatment-weight-management-people-certain-rare-genetic-conditions',
+          publishedAt: '2020-11-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Liraglutide 3.0 mg (Saxenda) — adolescent obesity, FDA 2020 ─────────────
+  {
+    externalId: 'trajectory:liraglutide-saxenda-adolescent-obesity-2020',
+    text: 'On 4 December 2020 the U.S. FDA approved liraglutide 3.0 mg (Saxenda, Novo Nordisk) for chronic weight management in adolescents aged 12–17 with obesity — the first GLP-1 receptor agonist and the first drug in more than a decade approved to treat pediatric obesity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-03-31',
+        datePrecision: 'DAY',
+        reason: 'Kelly and colleagues published a randomized, double-blind, placebo-controlled trial in the New England Journal of Medicine showing that liraglutide plus lifestyle therapy produced significantly greater reduction in BMI standard-deviation score than placebo in adolescents with obesity. The trial recorded the first high-quality randomized evidence that a GLP-1 receptor agonist is effective for pediatric obesity.',
+        source: {
+          externalId: 'src:kelly-liraglutide-adolescents-nejm-2020',
+          name: 'Kelly AS, Auerbach P, Barrientos-Perez M, et al. A Randomized, Controlled Trial of Liraglutide for Adolescents with Obesity. N Engl J Med. 2020;382(22):2117-2128. PMID 32233338.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32233338/',
+          publishedAt: '2020-03-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-12-04',
+        datePrecision: 'DAY',
+        reason: 'The FDA extended the Saxenda label to adolescents aged 12–17 on the basis of the 56-week randomized trial, making liraglutide the first GLP-1 agonist approved for pediatric obesity and the first new pharmacotherapy for the indication in over a decade. The decision institutionally settled GLP-1 incretin pharmacotherapy as an approvable option in children, presaging the later semaglutide pediatric approvals.',
+        source: {
+          externalId: 'src:novo-saxenda-adolescent-fda-approval-2020',
+          name: 'Novo Nordisk. FDA approves Saxenda (liraglutide) for the treatment of obesity in adolescents aged 12-17. December 4, 2020.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-saxenda-for-the-treatment-of-obesity-in-adolescents-aged-12-17-301186800.html',
+          publishedAt: '2020-12-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
