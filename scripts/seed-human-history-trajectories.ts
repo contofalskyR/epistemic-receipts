@@ -59006,6 +59006,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — Sub-Saharan Africa: Ethiopia / Abyssinia
+  // added 2026-06-18
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Coronation of Haile Selassie I as Emperor of Ethiopia ───────────────────
+  {
+    externalId: 'trajectory:haile-selassie-coronation-1930',
+    text: 'Ras Tafari Makonnen was crowned Haile Selassie I, Emperor of Ethiopia, at the Cathedral of St. George in Addis Ababa on 2 November 1930.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1930-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1930-11-02',
+        datePrecision: 'DAY',
+        reason: 'Following the death of Empress Zewditu in April 1930, Ras Tafari Makonnen is crowned Negusa Nagast (King of Kings) at the Cathedral of St. George in Addis Ababa, taking the throne name Haile Selassie I. The ceremony is attended by foreign delegations from Britain, France, Italy, the United States, Japan and other powers, and is covered by the international press and newsreels.',
+        source: {
+          externalId: 'src:haile-selassie-coronation-1930',
+          name: 'Contemporary press and newsreel coverage of the coronation of Haile Selassie I, 2 November 1930 (Wikipedia, "Haile Selassie").',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie',
+          publishedAt: '1930-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-11-02',
+        datePrecision: 'DAY',
+        reason: 'The accession is recognized by the foreign legations present and reported worldwide; Haile Selassie\'s reign as the constitutionally crowned emperor (he promulgated Ethiopia\'s first written constitution in 1931) is an undisputed matter of historical record, corroborated by photographs, diplomatic dispatches and the Ethiopian state record.',
+        source: {
+          externalId: 'src:haile-selassie-reign-record',
+          name: 'Diplomatic and journalistic record of the 1930 coronation and the 1931 Ethiopian constitution (Wikipedia, "Haile Selassie").',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie',
+          publishedAt: '1931-07-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Italy invades Ethiopia; League names Italy the aggressor ────────────────
+  {
+    externalId: 'trajectory:italy-invades-ethiopia-1935',
+    text: 'Italy invaded the Ethiopian Empire without a declaration of war on 3 October 1935, opening the Second Italo-Ethiopian War; the League of Nations condemned Italy as the aggressor and voted economic sanctions, which entered into force on 18 November 1935.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1935-10-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1935-10-03',
+        datePrecision: 'DAY',
+        reason: 'At 5:00 am on 3 October 1935, Italian forces under General Emilio De Bono crossed the Mareb River from Eritrea into Ethiopia without a formal declaration of war, beginning the invasion. The crossing and the opening of hostilities are reported immediately by international correspondents on both sides of the front.',
+        source: {
+          externalId: 'src:second-italo-ethiopian-war-invasion',
+          name: 'Accounts of the Italian invasion of Ethiopia, 3 October 1935 (Wikipedia, "Second Italo-Ethiopian War").',
+          url: 'https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War',
+          publishedAt: '1935-10-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-11-18',
+        datePrecision: 'DAY',
+        reason: 'The League of Nations found Italy in violation of Article 16 of the Covenant by resorting to war, and economic sanctions against Italy entered into force on 18 November 1935 — the first time the League invoked collective sanctions against a member state. The determination of Italian aggression and the imposition of sanctions are documented in the League\'s official records.',
+        source: {
+          externalId: 'src:league-sanctions-italy-1935',
+          name: 'League of Nations sanctions against Italy, in force 18 November 1935 (Wikipedia, "Abyssinia Crisis").',
+          url: 'https://en.wikipedia.org/wiki/Abyssinia_Crisis',
+          publishedAt: '1935-11-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Haile Selassie's appeal to the League of Nations ────────────────────────
+  {
+    externalId: 'trajectory:haile-selassie-league-appeal-1936',
+    text: 'On 30 June 1936 Emperor Haile Selassie addressed the Assembly of the League of Nations in Geneva, denouncing Italy\'s conquest of Ethiopia and its use of poison gas and warning that collective security itself was at stake.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1936-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1936-06-30',
+        datePrecision: 'DAY',
+        reason: 'Having gone into exile after Italian forces entered Addis Ababa, Haile Selassie appears in person before the League Assembly in Geneva — the first head of state to do so — and delivers an appeal in Amharic. He details Italy\'s aerial spraying of mustard gas over Ethiopian troops, civilians, livestock and rivers, and declares "It is us today. It will be you tomorrow." The speech is recorded in the League\'s minutes and reported worldwide.',
+        source: {
+          externalId: 'src:haile-selassie-league-speech-1936',
+          name: 'Haile Selassie I, address to the Assembly of the League of Nations, Geneva, 30 June 1936 (Wikipedia, "Haile Selassie\'s speech to the League of Nations (1936)").',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie%27s_speech_to_the_League_of_Nations_(1936)',
+          publishedAt: '1936-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-07-04',
+        datePrecision: 'DAY',
+        reason: 'The Assembly rejects the Ethiopian proposal of non-recognition of the Italian conquest (23 against, 1 in favour, 25 abstentions), and on 4 July 1936 the League voted to lift its sanctions against Italy, effective 15 July — outcomes recorded in the League\'s proceedings. The fact and content of the appeal, and the League\'s failure to act, are an undisputed and much-cited part of the historical record.',
+        source: {
+          externalId: 'src:league-lifts-italy-sanctions-1936',
+          name: 'League of Nations Assembly vote rejecting non-recognition and lifting sanctions, July 1936 (Wikipedia, "Haile Selassie\'s speech to the League of Nations (1936)").',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie%27s_speech_to_the_League_of_Nations_(1936)',
+          publishedAt: '1936-07-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Liberation of Addis Ababa; Italian conquest reversed ────────────────────
+  {
+    externalId: 'trajectory:addis-ababa-liberation-1941',
+    text: 'Mussolini\'s proclamation of an Italian Empire annexing Ethiopia (9 May 1936) was reversed when Haile Selassie re-entered Addis Ababa on 5 May 1941 — five years to the day after Italian forces had taken the capital — restoring Ethiopian sovereignty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1936-05-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-05-09',
+        datePrecision: 'DAY',
+        reason: 'After Marshal Pietro Badoglio entered Addis Ababa on 5 May 1936, Mussolini proclaimed the founding of the Italian Empire from the balcony of the Palazzo Venezia on 9 May 1936, annexing Ethiopia into Italian East Africa with the Italian king as emperor. Italy treated the annexation as accomplished fact and administered the territory as a colony.',
+        source: {
+          externalId: 'src:mussolini-italian-empire-1936',
+          name: 'Mussolini\'s proclamation of the Italian Empire, 9 May 1936 (Wikipedia, "Second Italo-Ethiopian War").',
+          url: 'https://en.wikipedia.org/wiki/Second_Italo-Ethiopian_War',
+          publishedAt: '1936-05-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1941-05-05',
+        datePrecision: 'DAY',
+        reason: 'During the East African Campaign of the Second World War, British, Commonwealth and Ethiopian Patriot forces drove out the Italians. Haile Selassie, who had crossed back into Ethiopia on 18 January 1941, entered Addis Ababa on 5 May 1941 — exactly five years after the Italians had taken it — and addressed his people. The Italian East African Empire collapsed and Ethiopian sovereignty was restored, reversing the 1936 annexation.',
+        source: {
+          externalId: 'src:haile-selassie-returns-addis-1941',
+          name: 'Haile Selassie\'s return to Addis Ababa, 5 May 1941 (Wikipedia, "Haile Selassie").',
+          url: 'https://en.wikipedia.org/wiki/Haile_Selassie',
+          publishedAt: '1941-05-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
