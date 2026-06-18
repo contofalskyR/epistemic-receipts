@@ -7509,6 +7509,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Takamine — first pure hormone isolated (adrenaline) 1901 ───────────────
+  {
+    externalId: 'trajectory:takamine-adrenaline-isolation-1901',
+    text: 'Jokichi Takamine announced in 1901 that he had isolated the active blood-pressure-raising principle of the adrenal (suprarenal) gland in pure, stable, crystalline form — which he named Adrenalin — the first hormone to be isolated from animal tissue in pure form.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1901-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on Oliver and Schäfer\'s 1895 demonstration (J Physiol) that adrenal extract raises blood pressure and on Abel\'s impure \'epinephrin\' (1897–1899), Takamine — aided by Keizo Uenaka — crystallized the pure active base in 1900 and announced and published the isolation in 1901 (Am J Pharm 1901;73:523–535). Thomas Aldrich at Parke, Davis independently confirmed the crystalline substance in the American Journal of Physiology (1901;5:457–461), recording in the expert literature the claim that a single isolable molecule is the active hormone of the adrenal gland.',
+        source: {
+          externalId: 'src:litfl-adrenaline-epinephrine-history',
+          name: 'Adrenaline or epinephrine? (LITFL Eponymictionary — dated history of Oliver & Schäfer 1895, Abel 1897–99, Takamine 1900–01 crystalline Adrenalin, Aldrich Am J Physiol 1901;5:457–461, Parke-Davis commercialization).',
+          url: 'https://litfl.com/epinephrine-or-adrenaline/',
+          publishedAt: '1901-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1901-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Parke, Davis & Co. commercialized Takamine\'s crystalline substance under the trademark \'Adrenalin\' beginning in 1901, and independent confirmation by Aldrich plus rapid clinical use as a vasopressor and local hemostatic established adrenaline as the first pure hormone in routine medical use. Its isolation became the proof-of-concept that the body\'s internal secretions are discrete, isolable chemical compounds, founding the field of endocrine chemistry.',
+        source: {
+          externalId: 'src:litfl-adrenaline-epinephrine-history',
+          name: 'Adrenaline or epinephrine? (LITFL Eponymictionary — dated history of Oliver & Schäfer 1895, Abel 1897–99, Takamine 1900–01 crystalline Adrenalin, Aldrich Am J Physiol 1901;5:457–461, Parke-Davis commercialization).',
+          url: 'https://litfl.com/epinephrine-or-adrenaline/',
+          publishedAt: '1901-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Banting–Best insulin — clinical treatment 1922 ───────────────────────
+  {
+    externalId: 'trajectory:banting-best-insulin-clinical-treatment-1922',
+    text: 'Frederick Banting, Charles Best, James Collip and colleagues reported in the Canadian Medical Association Journal in March 1922 that injection of a pancreatic extract (insulin) into diabetic patients — beginning with 14-year-old Leonard Thompson on 11 January 1922 — abolished glycosuria and ketosis and reversed the metabolic derangement of diabetes mellitus, establishing insulin as an effective treatment for human diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1922-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After the first administration of Banting–Best pancreatic extract to Leonard Thompson on 11 January 1922 and a markedly more effective dose of Collip\'s purified extract on 23 January, the Toronto group published \'Pancreatic Extracts in the Treatment of Diabetes Mellitus\' in the Canadian Medical Association Journal (1922;12:141–146), reporting that the extract reduced blood and urine sugar and cleared ketonuria in seven diabetic patients. This recorded in the expert literature the claim that an injectable pancreatic internal secretion could treat human diabetes.',
+        source: {
+          externalId: 'src:banting-best-pancreatic-extracts-cmaj-1922',
+          name: 'Banting FG, Best CH, Collip JB, Campbell WR, Fletcher AA. Pancreatic Extracts in the Treatment of Diabetes Mellitus. Can Med Assoc J. 1922;12(3):141–146. (PMID 20314060; PMC1524425.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1524425/',
+          publishedAt: '1922-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1923-10-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 October 1923 the Karolinska Institute awarded Frederick Banting and John Macleod the Nobel Prize in Physiology or Medicine for the discovery of insulin, barely 18 months after the first clinical report; by then Eli Lilly was mass-producing insulin in the United States and Connaught Laboratories in Canada, and the drug was being used worldwide. This institutional recognition and rapid clinical adoption settled the claim that insulin is an effective treatment for diabetes — a status it has never lost.',
+        source: {
+          externalId: 'src:nobel-medicine-1923-insulin',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1923 — Frederick G. Banting and John J. R. Macleod \'for the discovery of insulin\'.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1923/summary/',
+          publishedAt: '1923-10-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Abel — crystalline insulin as discrete protein 1926 ──────────────────
+  {
+    externalId: 'trajectory:abel-crystalline-insulin-protein-1926',
+    text: 'John Jacob Abel reported in the Proceedings of the National Academy of Sciences in February 1926 that he had obtained insulin in pure crystalline form, demonstrating that the antidiabetic hormone is a discrete crystallizable protein rather than an ill-defined colloidal extract.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Abel published \'Crystalline Insulin\' in PNAS (1926;12(2):132–136), describing reproducible preparation of crystalline insulin and arguing that the hormone itself was a protein. This recorded the claim that insulin is a definite crystallizable protein molecule, against the then-prevailing colloid-chemistry view (Willstätter and others) that the active principle might be a small molecule merely adsorbed onto an inert protein carrier.',
+        source: {
+          externalId: 'src:abel-crystalline-insulin-pnas-1926',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci U S A. 1926;12(2):132–136. (PMC1253372.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1253372/',
+          publishedAt: '1926-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Abel\'s protein claim was contested through the 1920s–30s but was decisively confirmed when Frederick Sanger completed the full amino-acid sequence of bovine insulin (1951–1955), proving it to be a defined 51-residue, two-chain polypeptide — the first protein ever sequenced. Sanger\'s work definitively settled that insulin is itself a protein, vindicating Abel\'s crystallization, and earned the 1958 Nobel Prize in Chemistry.',
+        source: {
+          externalId: 'src:insulin-pacesetter-nobel-history-pmc8513142',
+          name: 'Insulin: A pacesetter for the shape of modern biomedical science and the Nobel Prize. (historical review covering Abel\'s 1926 crystallization and Sanger\'s 1951–55 sequencing). PMC8513142.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8513142/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── David–Laqueur — testosterone isolated and named 1935 ────────────────
+  {
+    externalId: 'trajectory:testosterone-first-isolation-synthesis-1935',
+    text: 'Karoly Gyula David, Elisabeth Dingemanse, Janos Freud and Ernst Laqueur (Organon, Amsterdam) reported in Hoppe-Seyler\'s Zeitschrift für physiologische Chemie in May 1935 that they had isolated the principal crystalline male sex hormone from testicular tissue, naming it testosterone; it was chemically synthesized the same year by Adolf Butenandt and Leopold Ruzicka.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-05-01',
+        datePrecision: 'MONTH',
+        reason: 'David and colleagues in Laqueur\'s Organon laboratory published \'Über krystallinisches männliches Hormon aus Hoden (Testosteron), wirksamer als aus Harn oder aus Cholesterin bereitetes Androsteron\' in Hoppe-Seyler\'s Z Physiol Chem (1935;233:281), the first description of the isolation of crystalline testosterone and the source of its name. This recorded in the expert literature the claim that testosterone is the principal hormone of the testis.',
+        source: {
+          externalId: 'src:david-laqueur-testosteron-hoppe-seyler-1935',
+          name: 'David KG, Dingemanse E, Freud J, Laqueur E. Über krystallinisches männliches Hormon aus Hoden (Testosteron)... Hoppe-Seyler\'s Z Physiol Chem. 1935;233(5–6):281–282. (DOI 10.1515/bchm2.1935.233.5-6.281.)',
+          url: 'https://doi.org/10.1515/bchm2.1935.233.5-6.281',
+          publishedAt: '1935-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within months of the isolation, Butenandt (working from cholesterol/dehydroandrosterone) and Ruzicka independently achieved the chemical synthesis of testosterone in 1935, making it reproducibly available and proving its structure. The 1939 Nobel Prize in Chemistry, awarded to Butenandt for his work on the sex hormones and to Ruzicka for work on polymethylenes and higher terpenes, institutionally ratified the chemistry of the sex steroids and settled testosterone\'s identity as the chief androgenic hormone.',
+        source: {
+          externalId: 'src:nobel-chemistry-1939-butenandt-ruzicka',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1939 — Adolf Butenandt (work on sex hormones) and Leopold Ruzicka (polymethylenes and higher terpenes).',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/summary/',
+          publishedAt: '1939-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Brexpiprazole — first FDA-approved drug for Alzheimer's agitation 2023 ───
   {
     externalId: 'trajectory:brexpiprazole-alzheimers-agitation-approval-2023',
