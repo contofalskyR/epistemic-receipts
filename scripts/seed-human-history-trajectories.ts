@@ -52722,6 +52722,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — additional verified curves (Scientific Revolution,
+  // Mughal India, Ottoman-era West Africa, Dutch Golden Age commerce)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Tondibi — fall of the Songhai Empire (1591) ───────────────────
+  {
+    externalId: 'trajectory:battle-of-tondibi-1591',
+    text: 'On 13 March 1591, a Saadi Moroccan expeditionary force under Judar Pasha, armed with arquebuses and cannon, decisively defeated the cavalry army of Askia Ishaq II of the Songhai Empire at Tondibi near Gao, precipitating the collapse of Songhai as a regional power.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1591-03-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1591-03-13',
+        datePrecision: 'DAY',
+        reason: 'After crossing the Sahara, the Moroccan force of several thousand musketeers met the far larger Songhai host at Tondibi on the Niger. The Songhai cavalry and a herd of cattle driven at the Moroccan lines broke before sustained gunpowder fire. The Askia withdrew and the cities of Gao, Timbuktu, and Djenné were occupied and looted, ending Songhai as an effective state. The clash was witnessed and reported across the Niger Bend.',
+        source: {
+          externalId: 'src:tondibi-tarikh-al-sudan',
+          name: 'al-Saʿdī, Taʾrīkh al-Sūdān (c. 1655) — Timbuktu chronicle recording the Moroccan invasion and the battle at Tondibi, 1591.',
+          url: 'https://en.wikipedia.org/wiki/Tarikh_al-Sudan',
+          publishedAt: '1655-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Two near-contemporary Timbuktu chronicles — the Taʾrīkh al-Sūdān of al-Saʿdī and the Taʾrīkh al-Fattāsh — independently record the Moroccan invasion, the date of the battle, and the fall of the Songhai capitals. Modern historiography of the western Sudan treats the battle and its consequences as settled, with Tondibi marking a conventional end-point of the Songhai Empire and an early demonstration of firearms decisively overcoming a sub-Saharan cavalry power.',
+        source: {
+          externalId: 'src:tondibi-wikipedia',
+          name: 'Battle of Tondibi (13 March 1591) — Saadi Morocco vs. Songhai Empire.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Tondibi',
+          publishedAt: '1999-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Accademia dei Lincei founded (1603) ─────────────────────────────────────
+  {
+    externalId: 'trajectory:accademia-dei-lincei-founded-1603',
+    text: 'On 17 August 1603 in Rome, Prince Federico Cesi and three companions founded the Accademia dei Lincei, the first academy dedicated to the experimental study of nature; Galileo Galilei was admitted as its sixth member on 25 April 1611.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1603-08-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1603-08-17',
+        datePrecision: 'DAY',
+        reason: 'The eighteen-year-old Federico Cesi, together with the physician Johannes van Heeck and fellow students Francesco Stelluti and Anastasio de Filiis, formally constituted the Accademia dei Lincei ("Academy of the Lynx-Eyed") in Rome, pledging to investigate nature directly rather than through Aristotelian authority. The founding act and date are preserved in the academy\'s records.',
+        source: {
+          externalId: 'src:lincei-founding-1603',
+          name: 'Accademia dei Lincei — founded 17 August 1603 by Federico Cesi in Rome.',
+          url: 'https://en.wikipedia.org/wiki/Accademia_dei_Lincei',
+          publishedAt: '1603-08-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1611-04-25',
+        datePrecision: 'DAY',
+        reason: 'The academy gained lasting significance when Galileo Galilei was inducted on 25 April 1611 and the Lincei went on to publish his Istoria e dimostrazioni intorno alle macchie solari (1613) and Il Saggiatore (1623), thereafter signing himself "Linceo." Historians of science treat the 1603 founding date and the Lincei\'s role as the prototype of the modern scientific society — preceding the Royal Society (1660) and the Académie des sciences (1666) — as settled fact.',
+        source: {
+          externalId: 'src:lincei-first-scientific-society',
+          name: 'Federico Cesi founds the Accademia dei Lincei, the first scientific society (1603) — History of Information.',
+          url: 'https://www.historyofinformation.com/detail.php?id=2724',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bank of Amsterdam (Wisselbank) founded (1609) ───────────────────────────
+  {
+    externalId: 'trajectory:bank-of-amsterdam-founded-1609',
+    text: 'The Amsterdamse Wisselbank (Bank of Amsterdam) was established on 31 January 1609 under the guarantee of the city of Amsterdam, becoming the first public bank to offer deposit accounts not directly convertible to coin and an early model for later central banking.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1609-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1609-01-31',
+        datePrecision: 'DAY',
+        reason: 'To impose order on a chaotic coinage of many circulating currencies, the Amsterdam city government chartered the Wisselbank on 31 January 1609. Merchants were required to settle large bills of exchange through accounts at the bank, whose deposits were denominated in a stable "bank money" backed by the city. The founding ordinance and the bank\'s ledgers record the establishment.',
+        source: {
+          externalId: 'src:bank-amsterdam-1609-founding',
+          name: 'Bank of Amsterdam (Amsterdamse Wisselbank) — established 31 January 1609 under the guarantee of the city of Amsterdam.',
+          url: 'https://en.wikipedia.org/wiki/Bank_of_Amsterdam',
+          publishedAt: '1609-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Economic historians treat the 1609 founding of the Wisselbank as a settled landmark in monetary history: it provided a stable unit of account that underpinned Amsterdam\'s role as the hub of seventeenth-century European trade and has been described as a forerunner of the modern central bank. Adam Smith discussed it in The Wealth of Nations (1776); the founding date and the bank\'s operation are documented in its surviving records and in later scholarship.',
+        source: {
+          externalId: 'src:bank-amsterdam-fed-study',
+          name: 'Quinn & Roberds, "The Bank of Amsterdam through the Lens of Monetary Competition" — Federal Reserve Bank of Atlanta working paper on the 1609 Wisselbank.',
+          url: 'https://www.atlantafed.org/research/publications/wp/2014/05',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pascal–Fermat correspondence founds probability theory (1654) ───────────
+  {
+    externalId: 'trajectory:pascal-fermat-probability-1654',
+    text: 'In their 1654 correspondence on the "problem of points" — including Blaise Pascal\'s letter to Pierre de Fermat dated 29 July 1654 — Pascal and Fermat established the method of dividing stakes by enumerating the equally likely ways an interrupted game could conclude, laying the mathematical foundation of probability theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1654-07-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1654-07-29',
+        datePrecision: 'DAY',
+        reason: 'Prompted by a gambling question posed by the Chevalier de Méré, Pascal and Fermat exchanged a series of letters during the summer of 1654 over how to fairly divide the stakes of an interrupted game of chance. In his letter of 29 July 1654 Pascal acknowledged the perfect agreement between his combinatorial method and Fermat\'s enumeration of future cases. The surviving letters constitute the first systematic treatment of expectation and probability.',
+        source: {
+          externalId: 'src:pascal-fermat-letters-1654',
+          name: 'The Pascal–Fermat correspondence of 1654 (Pascal to Fermat, 29 July 1654) — translated letters, Pulskamp edition.',
+          url: 'https://www.probabilityandfinance.com/pulskamp/Problem_of_points/points.html',
+          publishedAt: '1654-07-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Pascal and Fermat are universally credited as joint founders of probability theory; their 1654 solution to the problem of points — dividing the stakes according to the possible future continuations rather than the games already played — is the conventional starting point of the discipline, soon formalised by Huygens (1657). The dating and significance of the correspondence are settled in the history of mathematics.',
+        source: {
+          externalId: 'src:pascal-fermat-aps-2009',
+          name: 'American Physical Society, "July 1654: Pascal\'s Letters to Fermat on the \'Problem of Points\'" (APS News, July 2009).',
+          url: 'https://www.aps.org/apsnews/2009/07/pascal-letters-fermat-points',
+          publishedAt: '2009-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Martyrdom of Guru Tegh Bahadur (1675) ───────────────────────────────────
+  {
+    externalId: 'trajectory:guru-tegh-bahadur-martyrdom-1675',
+    text: 'Guru Tegh Bahadur, the ninth Guru of the Sikhs, was publicly beheaded in Chandni Chowk, Delhi, on 11 November 1675 on the orders of the Mughal emperor Aurangzeb.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1675-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1675-11-11',
+        datePrecision: 'DAY',
+        reason: 'After being arrested and brought to Delhi, Guru Tegh Bahadur was executed in the public market square of Chandni Chowk near the Red Fort on the orders of Aurangzeb. The execution, traditionally linked to the Guru\'s defence of Kashmiri Hindus against forced conversion, became a foundational event in Sikh history and in the subsequent militarisation of the community under his son Guru Gobind Singh.',
+        source: {
+          externalId: 'src:tegh-bahadur-bachittar-natak',
+          name: 'Guru Gobind Singh, Bachittar Natak (late 17th c.) — earliest Sikh account of the martyrdom of Guru Tegh Bahadur at Delhi, 1675.',
+          url: 'https://en.wikipedia.org/wiki/Guru_Tegh_Bahadur',
+          publishedAt: '1690-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Both Sikh tradition (beginning with Guru Gobind Singh\'s Bachittar Natak) and later Persian Mughal sources record the execution of Guru Tegh Bahadur at Delhi under Aurangzeb, though they differ on its justification. Historians treat the event and its date as settled; the site is commemorated by the Gurdwara Sis Ganj Sahib in Chandni Chowk, and the martyrdom is observed annually in the Sikh calendar.',
+        source: {
+          externalId: 'src:tegh-bahadur-britannica',
+          name: 'Guru Tegh Bahadur — ninth Sikh Guru, executed at Delhi on the orders of Aurangzeb, 1675 (Encyclopædia Britannica).',
+          url: 'https://www.britannica.com/biography/Tegh-Bahadur',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
