@@ -14661,6 +14661,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Boyle's law — pressure and volume of a gas ──────────────────────────────
+  {
+    externalId: 'trajectory:boyle-law-1662',
+    text: 'In 1662 Robert Boyle published the inverse relationship between the pressure and the volume of a gas held at constant temperature — now known as Boyle\'s law — in the appendix to the second edition of New Experiments Physico-Mechanical, Touching the Spring of the Air.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1662-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1662-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Defending his vacuum experiments against the Jesuit Franciscus Linus and against Thomas Hobbes, Boyle (assisted by Robert Hooke) reports measurements made with a J-shaped mercury tube showing that the volume of a trapped body of air varies inversely with the pressure applied to it. The result appears in "A Defence of the Doctrine Touching the Spring and Weight of the Air," the appendix to the 1662 second edition of his New Experiments.',
+        source: {
+          externalId: 'src:boyle-spring-of-air-1662',
+          name: 'Boyle R. New Experiments Physico-Mechanical, Touching the Spring of the Air, and its Effects (2nd ed., with "A Defence of the Doctrine... Against the Objections of Franciscus Linus"). Oxford, 1662.',
+          url: 'https://en.wikipedia.org/wiki/Boyle%27s_law',
+          publishedAt: '1662-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1676-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The French physicist Edme Mariotte independently confirms the pressure–volume relationship (with the explicit constant-temperature condition) and publishes it in 1679, after which it is known on the Continent as Mariotte\'s law. The relation is later absorbed into the combined gas law and the kinetic theory of gases, becoming a permanent quantitative fixture of physics and chemistry.',
+        source: {
+          externalId: 'src:mariotte-confirmation-boyle-law',
+          name: 'Boyle\'s law — independent confirmation by Edme Mariotte (1679) and incorporation into the combined gas law.',
+          url: 'https://en.wikipedia.org/wiki/Boyle%27s_law',
+          publishedAt: '1679-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Galileo, Two New Sciences — law of falling bodies ───────────────────────
+  {
+    externalId: 'trajectory:galileo-two-new-sciences-1638',
+    text: 'In 1638 Galileo Galilei published Discorsi e dimostrazioni matematiche intorno a due nuove scienze (Two New Sciences) in Leiden, setting out the mathematical laws of uniformly accelerated motion — that distance fallen is proportional to the square of the elapsed time — and the science of the strength of materials.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1638-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1638-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Under house arrest following his 1633 condemnation by the Roman Inquisition, Galileo has the manuscript carried out of Italy and printed by the Elzevir press in Leiden, beyond the reach of the Inquisition\'s ban on his works. Cast as a dialogue, the book derives the times-squared law of free fall, uniformly accelerated motion, the parabolic path of projectiles, and the scaling laws governing the strength of beams.',
+        source: {
+          externalId: 'src:galileo-discorsi-1638',
+          name: 'Galilei G. Discorsi e dimostrazioni matematiche, intorno a due nuove scienze. Leiden: Lodewijk Elzevir, 1638.',
+          url: 'https://en.wikipedia.org/wiki/Two_New_Sciences',
+          publishedAt: '1638-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Galileo\'s kinematics of uniformly accelerated motion is incorporated into the framework of classical mechanics built by Christiaan Huygens and codified in Isaac Newton\'s Principia (1687), where it follows from the laws of motion and constant gravitational acceleration. The law of falling bodies has remained settled physics ever since.',
+        source: {
+          externalId: 'src:two-new-sciences-legacy-mechanics',
+          name: 'Two New Sciences — foundational role in classical kinematics absorbed into Newtonian mechanics (Principia, 1687).',
+          url: 'https://en.wikipedia.org/wiki/Two_New_Sciences',
+          publishedAt: '1687-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jean Picard measures the Earth ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:picard-mesure-de-la-terre-1671',
+    text: 'Between 1669 and 1670 Jean Picard measured the length of one degree of meridian arc by triangulation between Sourdon (near Amiens) and Malvoisine (near Paris), deriving an Earth radius of about 6,329 km — published in 1671 as Mesure de la Terre and later used by Newton to confirm universal gravitation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1671-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1671-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Using a quadrant fitted with telescopic crosswires — an instrumental advance that made his survey roughly an order of magnitude more accurate than Tycho Brahe\'s — Picard triangulates thirteen stations along the Paris meridian and obtains 110.46 km per degree of latitude, implying an Earth radius about 0.4% from the modern value. He publishes the result through the Académie royale des sciences as Mesure de la Terre.',
+        source: {
+          externalId: 'src:picard-mesure-de-la-terre-1671',
+          name: 'Picard J. Mesure de la Terre. Paris: Académie royale des sciences, 1671. (degree of meridian arc by telescopic triangulation)',
+          url: 'https://en.wikipedia.org/wiki/Jean_Picard',
+          publishedAt: '1671-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Isaac Newton uses Picard\'s improved value for the Earth\'s radius in the Principia (1687) to compare the centripetal acceleration of the Moon in its orbit with the acceleration of gravity at the Earth\'s surface; the agreement confirms the inverse-square law of universal gravitation. Picard\'s figure becomes the standard size of the Earth for the following decades.',
+        source: {
+          externalId: 'src:picard-radius-newton-gravitation',
+          name: 'Jean Picard — meridian measurement used by Isaac Newton in the Principia (1687) to verify the inverse-square law of gravitation.',
+          url: 'https://en.wikipedia.org/wiki/Jean_Picard',
+          publishedAt: '1687-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's southern star catalogue ────────────────────────────────────────
+  {
+    externalId: 'trajectory:halley-southern-star-catalogue-1679',
+    text: 'Edmond Halley sailed to the island of Saint Helena in 1676–1678 and produced the first telescopic catalogue of the southern sky, recording 341 southern stars invisible from Europe, published in 1679 as Catalogus Stellarum Australium.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1679-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1679-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Leaving Oxford without a degree, the 20-year-old Halley sets up an observatory on Saint Helena with a sextant carrying telescopic sights and, over 1676–1678, fixes the positions of 341 stars of the far-southern sky that never rise above the European horizon. On his return he publishes Catalogus Stellarum Australium (1679) — the first telescopic catalogue of the southern stars — along with a map of the new constellations.',
+        source: {
+          externalId: 'src:halley-catalogus-australium-1679',
+          name: 'Halley E. Catalogus Stellarum Australium. London, 1679. (positions of 341 southern stars observed from Saint Helena)',
+          url: 'https://en.wikipedia.org/wiki/Edmond_Halley',
+          publishedAt: '1679-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1678-11-30',
+        datePrecision: 'DAY',
+        reason: 'On the strength of the southern catalogue the Royal Society elects Halley a Fellow on 30 November 1678, at the age of 22, and John Flamsteed hails him as "the southern Tycho." The southern stellar positions are taken up by subsequent star atlases and stand as the authoritative telescopic record of the far-southern sky until the Abbé de Lacaille\'s Cape expedition of 1751–1753.',
+        source: {
+          externalId: 'src:halley-royal-society-fellow-1678',
+          name: 'Edmond Halley — elected Fellow of the Royal Society, 30 November 1678, on the basis of his southern star catalogue.',
+          url: 'https://en.wikipedia.org/wiki/Edmond_Halley',
+          publishedAt: '1678-11-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Coronation of Shah Jahan ────────────────────────────────────────────────
   {
     externalId: 'trajectory:coronation-shah-jahan-1628',
