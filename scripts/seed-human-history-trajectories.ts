@@ -10121,6 +10121,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Lin Zexu destroys confiscated opium at Humen ───────────────────────────
+  {
+    externalId: 'trajectory:humen-opium-destruction-1839',
+    text: 'On 3 June 1839, Imperial Commissioner Lin Zexu began the public destruction of roughly 1,000 tons of opium confiscated from British traders at Humen (Bocca Tigris) on the Pearl River — a 23-day operation that became the immediate trigger of the First Opium War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1839-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1839-06-03',
+        datePrecision: 'DAY',
+        reason: 'Acting under the Daoguang Emperor\'s anti-opium edict, Lin Zexu has approximately 1,000 long tons (about 1,016 tonnes) of seized opium dissolved in trenches with salt and lime and flushed into the sea at Humen, beginning 3 June 1839 and continuing for 23 days. The act is recorded contemporaneously in Lin\'s own diary and in Qing court memorials, and witnessed by foreign observers including the missionary Elijah Bridgman.',
+        source: {
+          externalId: 'src:humen-opium-destruction-1839',
+          name: 'Destruction of opium at Humen, begun 3 June 1839 under Imperial Commissioner Lin Zexu (Qing dynasty).',
+          url: 'https://en.wikipedia.org/wiki/Destruction_of_opium_at_Humen',
+          publishedAt: '1839-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1842-08-29',
+        datePrecision: 'DAY',
+        reason: 'Britain responds with an expeditionary force in 1840; the war ends with the Treaty of Nanking (29 August 1842). The Humen destruction is treated across Chinese and Western historiography as the precipitating event of the First Opium War, and 3 June is commemorated in China; the date, scale, and consequence are settled.',
+        source: {
+          externalId: 'src:first-opium-war-humen',
+          name: 'First Opium War — the Humen opium destruction as casus belli, leading to the Treaty of Nanking (1842).',
+          url: 'https://en.wikipedia.org/wiki/First_Opium_War',
+          publishedAt: '1842-08-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Japan–Korea Treaty of Ganghwa — opening of Korea ───────────────────────
+  {
+    externalId: 'trajectory:ganghwa-treaty-1876',
+    text: 'The Japan–Korea Treaty of Ganghwa, signed on 26 February 1876, opened the ports of Busan, Wonsan, and Incheon to Japanese trade and declared Korea (Joseon) an independent state, ending its centuries-old tributary relationship with Qing China.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1876-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1876-02-26',
+        datePrecision: 'DAY',
+        reason: 'After the Ganghwa Island incident of 1875, Japan dispatches a fleet and forces the Joseon court to negotiate. The twelve-article treaty signed on Ganghwa Island opens three ports, grants Japanese subjects extraterritorial rights, and in Article 1 declares Joseon "an independent state enjoying the same sovereign rights as does Japan" — language designed to sever Korea from the Qing tributary system.',
+        source: {
+          externalId: 'src:ganghwa-treaty-1876',
+          name: 'Japan–Korea Treaty of 1876 (Treaty of Ganghwa), signed 26 February 1876 between the Empire of Japan and Joseon Korea.',
+          url: 'https://en.wikipedia.org/wiki/Japan%E2%80%93Korea_Treaty_of_1876',
+          publishedAt: '1876-02-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1910-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The treaty is recognised across East Asian historiography as the first of the "unequal treaties" imposed on Korea and the opening move in Japan\'s eventual annexation of Korea in 1910. The signing date and its role in dismantling the Sino-Korean tributary order are settled facts.',
+        source: {
+          externalId: 'src:ganghwa-unequal-treaty',
+          name: 'Treaty of Ganghwa as the first unequal treaty opening Korea and beginning Japanese ascendancy on the peninsula.',
+          url: 'https://en.wikipedia.org/wiki/Joseon',
+          publishedAt: '1910-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Huế (Patenôtre) — French protectorate over Vietnam ────────────
+  {
+    externalId: 'trajectory:treaty-of-hue-1884',
+    text: 'The Treaty of Huế (the Patenôtre Treaty), signed on 6 June 1884, established a French protectorate over the Vietnamese regions of Annam and Tonkin, formalising the basis of French colonial rule over the Nguyễn dynasty for the next seven decades.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1884-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1884-06-06',
+        datePrecision: 'DAY',
+        reason: 'Negotiated by Jules Patenôtre, France\'s minister to China, the treaty restates the harsher Harmand Treaty of 1883 in softened form. Article 1 has the court of Annam recognise and accept the protectorate of France, with France representing Annam in all external relations — placing central and northern Vietnam under French control while leaving Cochinchina a colony.',
+        source: {
+          externalId: 'src:treaty-of-hue-1884',
+          name: 'Treaty of Huế (Patenôtre Treaty), signed 6 June 1884 between France and the Nguyễn dynasty of Đại Nam.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Hu%E1%BA%BF_(1884)',
+          publishedAt: '1884-06-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1887-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The protectorate is consolidated in 1887 with the creation of French Indochina, uniting Tonkin, Annam, and Cochinchina under a Governor-General. Historians treat the 1884 Patenôtre Treaty as the legal foundation of French rule in Vietnam until the Élysée Accords of 1949; its date and effect are settled.',
+        source: {
+          externalId: 'src:french-indochina-1887',
+          name: 'French Indochina — established 1887, consolidating the protectorates set by the 1884 Treaty of Huế.',
+          url: 'https://en.wikipedia.org/wiki/French_Indochina',
+          publishedAt: '1887-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Promulgation of the Meiji Constitution ─────────────────────────────────
+  {
+    externalId: 'trajectory:meiji-constitution-1889',
+    text: 'On 11 February 1889 Emperor Meiji promulgated the Constitution of the Empire of Japan (the Meiji Constitution), establishing Japan as the first Asian state with a modern written constitution and a bicameral Imperial Diet.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1889-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1889-02-11',
+        datePrecision: 'DAY',
+        reason: 'In a ceremony at the Imperial Palace on 11 February 1889 (chosen as the mythical National Foundation Day), the Emperor grants the constitution to his subjects as a gift of the sovereign. Drafted under Itō Hirobumi on a Prussian model, it vests sovereignty in the Emperor while creating an elected House of Representatives, a House of Peers, and a cabinet.',
+        source: {
+          externalId: 'src:meiji-constitution-1889',
+          name: 'Constitution of the Empire of Japan (Meiji Constitution), promulgated 11 February 1889 by Emperor Meiji.',
+          url: 'https://en.wikipedia.org/wiki/Meiji_Constitution',
+          publishedAt: '1889-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1890-11-29',
+        datePrecision: 'DAY',
+        reason: 'The constitution comes into effect on 29 November 1890 with the convening of the first Imperial Diet. It remains in force until superseded by the post-war Constitution of Japan in 1947. Its promulgation date and status as Japan\'s — and Asia\'s — first modern constitution are settled across legal and political history.',
+        source: {
+          externalId: 'src:meiji-constitution-effect-1890',
+          name: 'Meiji Constitution takes effect 29 November 1890 with the opening of the first Imperial Diet.',
+          url: 'https://en.wikipedia.org/wiki/Imperial_Diet_(Japan)',
+          publishedAt: '1890-11-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Richard Owen establishes the Dinosauria ─────────────────────────────────
   {
     externalId: 'trajectory:owen-coins-dinosauria-1842',
