@@ -12540,6 +12540,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Baekgang — Tang-Silla destroy the Yamato-Baekje fleet ─────────
+  {
+    externalId: 'trajectory:battle-of-baekgang-663',
+    text: 'On 4–5 October 663, a combined Tang and Silla naval force destroyed the fleet of Yamato Japan and the Baekje restoration army at the Battle of Baekgang (Hakusukinoe) on the Geum River, ending Japanese intervention on the Korean peninsula for nearly a millennium.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0663-10-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0663-10-04',
+        datePrecision: 'DAY',
+        reason: 'Over two days at the mouth of the Baengma/Geum River, a smaller Tang-Silla fleet defeated the much larger Yamato-Baekje force in four engagements, burning some 400 Japanese ships. The defeat extinguished the Baekje restoration movement. The battle was recorded contemporaneously in the Japanese court chronicle Nihon Shoki (compiled 720) and corroborated by the Chinese Old Book of Tang and the Korean Samguk Sagi.',
+        source: {
+          externalId: 'src:nihon-shoki-baekgang',
+          name: 'Nihon Shoki (Chronicles of Japan, 720 CE), Book 27, account of the destruction of the Japanese fleet at Baekgang in the eighth month of 663.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Baekgang',
+          publishedAt: '0720-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The independent convergence of Japanese (Nihon Shoki), Chinese (Old and New Books of Tang), and Korean (Samguk Sagi) records establishes the battle, its outcome, and its 663 date as settled fact. Modern scholarship treats Baekgang as the decisive event that ended the Baekje kingdom and Yamato\'s peninsular ambitions and prompted Japan\'s defensive reforms.',
+        source: {
+          externalId: 'src:britannica-baekgang',
+          name: 'Three Kingdoms period / Baekje. Encyclopædia Britannica (synthesis of the Tang-Silla conquest of Baekje and the 663 naval defeat of Yamato Japan).',
+          url: 'https://www.britannica.com/place/Korea/The-Three-Kingdoms',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wu Zetian proclaims the Zhou dynasty — China's only female emperor ──────
+  {
+    externalId: 'trajectory:wu-zetian-proclaims-zhou-690',
+    text: 'On 16 October 690, Wu Zetian proclaimed the Zhou dynasty and took the throne as Emperor (Huangdi), becoming the only woman in Chinese history to rule in her own name as sovereign emperor.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0690-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0690-10-16',
+        datePrecision: 'DAY',
+        reason: 'Having ruled for decades as empress consort and then as dowager regent, Wu Zhao accepted the throne after orchestrated petitions, renamed the dynasty from Tang to Zhou, and moved the capital to Luoyang. The accession was entered in the official court records and preserved in the Old Book of Tang, the New Book of Tang, and Sima Guang\'s chronicle Zizhi Tongjian.',
+        source: {
+          externalId: 'src:zizhi-tongjian-wu-zetian',
+          name: 'Zizhi Tongjian (Comprehensive Mirror in Aid of Governance, 1084), juan 204, recording Wu Zetian\'s assumption of the imperial title and the founding of the Zhou in the ninth month of Tianshou 1 (690).',
+          url: 'https://en.wikipedia.org/wiki/Wu_Zetian',
+          publishedAt: '1084-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The convergence of the dynastic histories and the Zizhi Tongjian establishes Wu Zetian\'s 690 proclamation as settled fact; her reign as sovereign emperor (690–705) is uncontested in Chinese historiography, even as later Confucian historians condemned its legitimacy.',
+        source: {
+          externalId: 'src:britannica-wu-zetian',
+          name: 'Wuhou (Wu Zetian), empress of the Tang dynasty. Encyclopædia Britannica (scholarly synthesis of her rise and the Zhou interregnum).',
+          url: 'https://www.britannica.com/biography/Wuhou',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Gwiju — Goryeo annihilates the Khitan Liao army ───────────────
+  {
+    externalId: 'trajectory:battle-of-gwiju-1019',
+    text: 'On 10 March 1019, Goryeo forces under General Gang Gam-chan annihilated a retreating Khitan Liao invasion army at Gwiju, ending the Goryeo–Khitan Wars and securing decades of peace on the Korean peninsula.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1019-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1019-03-10',
+        datePrecision: 'DAY',
+        reason: 'As the Liao army under Xiao Paiya withdrew after failing to take the Goryeo capital, Gang Gam-chan\'s forces encircled and destroyed it near Gwiju (Kuju), reportedly leaving only a few thousand of some 100,000 Khitan troops to return. The victory was recorded in the official Korean dynastic history Goryeosa and corroborated by the Chinese History of Liao (Liao Shi).',
+        source: {
+          externalId: 'src:goryeosa-gwiju',
+          name: 'Goryeosa (History of Goryeo, completed 1451), biography of Gang Gam-chan, recording the destruction of the Khitan army at Gwiju in 1019. (compiled from Goryeo court records)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Gwiju',
+          publishedAt: '1451-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The agreement of the Korean Goryeosa and the Chinese Liao Shi accounts establishes the Goryeo victory at Gwiju and the resulting peace as settled fact; the Liao never again invaded Goryeo, and the battle is treated in modern scholarship as one of the decisive engagements of medieval Korean history.',
+        source: {
+          externalId: 'src:cambridge-goryeo-khitan',
+          name: 'The Cambridge History of China, Vol. 6: Alien Regimes and Border States, on the Liao campaigns against Goryeo and the 1019 defeat at Gwiju.',
+          url: 'https://en.wikipedia.org/wiki/Goryeo%E2%80%93Khitan_War',
+          publishedAt: '1994-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Dan-no-ura — fall of the Taira and death of Emperor Antoku ────
+  {
+    externalId: 'trajectory:battle-of-dan-no-ura-1185',
+    text: 'On 25 April 1185, Minamoto no Yoshitsune\'s fleet destroyed the Taira clan in the naval Battle of Dan-no-ura in the Kanmon Straits, ending the Genpei War; the child Emperor Antoku drowned and the imperial sword Kusanagi was lost to the sea.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1185-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1185-04-25',
+        datePrecision: 'DAY',
+        reason: 'In the tidal straits between Honshu and Kyushu the Minamoto fleet overwhelmed the Taira after the defection of the general Taguchi Shigeyoshi. The six-year-old Emperor Antoku was drowned by his grandmother to avoid capture, and one of the three Imperial Regalia, the sword Kusanagi, was lost. The battle was chronicled in the shogunal record Azuma Kagami and the war epic The Tale of the Heike.',
+        source: {
+          externalId: 'src:azuma-kagami-dan-no-ura',
+          name: 'Azuma Kagami (Mirror of the East, late 13th c.) and The Tale of the Heike, accounts of the Battle of Dan-no-ura on the 24th day of the 3rd month, Genryaku 2 (25 April 1185).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Dan-no-ura',
+          publishedAt: '1300-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Genpei War\'s conclusion at Dan-no-ura, the death of Antoku, and the subsequent establishment of the Kamakura shogunate under Minamoto no Yoritomo are settled facts of Japanese history, corroborated across the Azuma Kagami, the Heike narratives, and court diaries of the period.',
+        source: {
+          externalId: 'src:britannica-dan-no-ura',
+          name: 'Battle of Dan-no-ura / Genpei War. Encyclopædia Britannica (synthesis of the 1185 naval battle and the founding of the Kamakura shogunate).',
+          url: 'https://www.britannica.com/event/Gempei-War',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // EARLY MODERN (1400–1750): Scientific Revolution, Reformation, New World
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -55978,6 +56146,235 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://en.wikipedia.org/wiki/Jacob_Roggeveen',
           publishedAt: '1738-01-01',
           methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — Pacific, Oceania & North America exploration
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Mendaña sights the Solomon Islands — discovered, then "lost" ─────────────
+  {
+    externalId: 'trajectory:mendana-solomon-islands-1568',
+    text: 'On 7 February 1568 the Spanish expedition of Álvaro de Mendaña de Neira made the first recorded European sighting of the Solomon Islands (Santa Isabel); the islands were then so mislocated on charts that they could not be relocated for nearly 200 years.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1568-02-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1568-02-07',
+        datePrecision: 'DAY',
+        reason: 'Sailing from Callao in search of the southern continent and the legendary islands of King Solomon, Mendaña\'s ships sighted land on 7 February 1568 — Santa Isabel — and over the following months charted Guadalcanal, Malaita and San Cristóbal. The voyage\'s pilot Hernán Gallego and chronicler Pedro Sarmiento de Gamboa recorded the discovery, the first European contact with the archipelago.',
+        source: {
+          externalId: 'src:mendana-solomon-1568',
+          name: 'Álvaro de Mendaña de Neira, first voyage of 1567–1569 — discovery of the Solomon Islands (7 February 1568).',
+          url: 'https://en.wikipedia.org/wiki/%C3%81lvaro_de_Menda%C3%B1a_de_Neira',
+          publishedAt: '1568-02-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1595-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Without a means to measure longitude, the islands\' charted position was grossly wrong. Mendaña\'s own 1595 return voyage failed to refind them, and for generations the "Islands of Solomon" drifted across maps or were doubted to exist at all. The Solomons were not securely sighted again by Europeans until Carteret reached Santa Cruz and Malaita in 1767, leaving their reality and location contested.',
+        source: {
+          externalId: 'src:carteret-solomon-1767',
+          name: 'Philip Carteret, voyage of HMS Swallow, 1767 — re-sighting of the Solomon Islands after nearly two centuries.',
+          url: 'https://en.wikipedia.org/wiki/Solomon_Islands',
+          publishedAt: '1767-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Hakluyt Society\'s publication and translation of the original Spanish narratives of Mendaña\'s voyages by Lord Amherst of Hackney and Basil Thomson (1901) matched the 1568 descriptions to the modern archipelago, settling that Mendaña\'s "Solomon Islands" are the islands that still bear the name and fixing the 7 February 1568 discovery in the historiography of Pacific exploration.',
+        source: {
+          externalId: 'src:amherst-thomson-mendana-1901',
+          name: 'Lord Amherst of Hackney & Basil Thomson (eds.), The Discovery of the Solomon Islands by Álvaro de Mendaña in 1568, Hakluyt Society (London, 1901).',
+          url: 'https://en.wikipedia.org/wiki/%C3%81lvaro_de_Menda%C3%B1a_de_Neira',
+          publishedAt: '1901-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mendaña reaches the Marquesas — first European contact with E. Polynesia ─
+  {
+    externalId: 'trajectory:mendana-marquesas-1595',
+    text: 'On 21 July 1595 the expedition of Álvaro de Mendaña made the first documented European contact with the Marquesas Islands (landing at Fatu Hiva, which he named Santa Magdalena), the first recorded European encounter with eastern Polynesia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1595-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1595-07-21',
+        datePrecision: 'DAY',
+        reason: 'On his second Pacific voyage, Mendaña sighted the southern Marquesas on 21 July 1595 and named the group Las Marquesas de Mendoza after the viceroy\'s wife. The chief pilot Pedro Fernandes de Queirós recorded the islands and the encounter with hundreds of Marquesans who paddled out in canoes — the first European description of eastern Polynesia and its people.',
+        source: {
+          externalId: 'src:queiros-marquesas-1595',
+          name: 'Pedro Fernandes de Queirós, narrative of Mendaña\'s second voyage, 1595 — discovery of the Marquesas Islands (21 July 1595).',
+          url: 'https://en.wikipedia.org/wiki/Marquesas_Islands',
+          publishedAt: '1595-07-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1904-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Hakluyt Society\'s edition of Queirós\'s voyages (translated by Sir Clements Markham, 1904) established the 21 July 1595 landfall at Fatu Hiva as the first recorded European contact with the Marquesas, a date uncontested in the historiography of Pacific exploration.',
+        source: {
+          externalId: 'src:markham-queiros-1904',
+          name: 'Sir Clements Markham (ed.), The Voyages of Pedro Fernandez de Quiros, 1595 to 1606, Hakluyt Society (London, 1904).',
+          url: 'https://en.wikipedia.org/wiki/Marquesas_Islands',
+          publishedAt: '1904-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Queirós at Espíritu Santo — claims to have found Terra Australis ─────────
+  {
+    externalId: 'trajectory:queiros-espiritu-santo-1606',
+    text: 'On 1–2 May 1606 Pedro Fernandes de Queirós landed at Espíritu Santo (modern Vanuatu) and named it "La Austrialia del Espíritu Santo," claiming he had discovered the great southern continent Terra Australis — a claim later shown to be false.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1606-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1606-05-01',
+        datePrecision: 'DAY',
+        reason: 'Leading a Spanish expedition in search of the hypothesized southern continent, Queirós entered a great bay on 1–2 May 1606, naming it Bahía de San Felipe y Santiago and the land "La Austrialia del Espíritu Santo." Convinced he had reached Terra Australis, he founded a short-lived settlement, New Jerusalem, and recorded the discovery as that of the southern continent.',
+        source: {
+          externalId: 'src:queiros-espiritu-santo-1606',
+          name: 'Pedro Fernandes de Queirós, account of the 1605–1606 voyage — landing at Espíritu Santo (1–2 May 1606).',
+          url: 'https://en.wikipedia.org/wiki/Espiritu_Santo',
+          publishedAt: '1606-05-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1768-01-01',
+        datePrecision: 'YEAR',
+        reason: 'When Louis-Antoine de Bougainville reached the same archipelago in 1768 he sailed around it, proving Espíritu Santo was an island and not the edge of a continent; James Cook charted and named the New Hebrides in 1774. Queirós\'s claim to have found Terra Australis was definitively reversed — the southern continent he reported did not exist there.',
+        source: {
+          externalId: 'src:bougainville-new-hebrides-1768',
+          name: 'Louis-Antoine de Bougainville, Voyage autour du monde (1771) — 1768 circumnavigation of the islands Queirós took for Terra Australis.',
+          url: 'https://en.wikipedia.org/wiki/Espiritu_Santo',
+          publishedAt: '1771-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cabrillo enters San Diego Bay — first European on the California coast ───
+  {
+    externalId: 'trajectory:cabrillo-san-diego-1542',
+    text: 'On 28 September 1542 the expedition of Juan Rodríguez Cabrillo entered San Diego Bay (which he named San Miguel), the first recorded European landing on the coast of present-day California.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1542-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1542-09-28',
+        datePrecision: 'DAY',
+        reason: 'Sailing north from the port of Navidad in New Spain to explore the Pacific coast, Cabrillo entered a "closed and very good port" on 28 September 1542 and named it San Miguel. The expedition\'s log, summarized in a relación preserved in the Spanish archives, records the date, the harbour, and the encounter with the Indigenous Kumeyaay people.',
+        source: {
+          externalId: 'src:cabrillo-relacion-1542',
+          name: 'Relación of the Cabrillo voyage, 1542–1543 — entry into San Diego Bay (28 September 1542), Archivo General de Indias.',
+          url: 'https://en.wikipedia.org/wiki/Juan_Rodr%C3%ADguez_Cabrillo',
+          publishedAt: '1543-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Henry R. Wagner\'s scholarly translation and analysis of the Cabrillo relación (Spanish Voyages to the Northwest Coast of America, 1929) fixed the 28 September 1542 entry into San Diego Bay as the first documented European arrival on the California coast — a date uncontested in California historiography and commemorated at Cabrillo National Monument.',
+        source: {
+          externalId: 'src:wagner-cabrillo-1929',
+          name: 'Henry R. Wagner, Spanish Voyages to the Northwest Coast of America in the Sixteenth Century (San Francisco, 1929).',
+          url: 'https://en.wikipedia.org/wiki/Juan_Rodr%C3%ADguez_Cabrillo',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Champlain's battle at Lake Champlain — firearms enter Iroquois warfare ───
+  {
+    externalId: 'trajectory:champlain-lake-champlain-battle-1609',
+    text: 'On 30 July 1609, near Lake Champlain, Samuel de Champlain and his Algonquin, Montagnais and Huron allies fought a band of Mohawk (Haudenosaunee); Champlain\'s arquebus fire — the first recorded use of firearms against the Iroquois — decided the battle.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1609-07-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1609-07-30',
+        datePrecision: 'DAY',
+        reason: 'Accompanying his Indigenous allies south from the St. Lawrence, Champlain encountered a Mohawk war party near the lake that now bears his name. At dawn on 30 July 1609 he fired his arquebus, loaded with several balls, killing two Mohawk chiefs with a single shot and routing the rest. Champlain recorded the date, the engagement and a drawing of it in his own account.',
+        source: {
+          externalId: 'src:champlain-voyages-1609',
+          name: 'Samuel de Champlain, Les Voyages du Sieur de Champlain (Paris, 1613) — account of the battle near Lake Champlain, 30 July 1609.',
+          url: 'https://en.wikipedia.org/wiki/Samuel_de_Champlain',
+          publishedAt: '1613-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Champlain Society\'s critical edition of Champlain\'s Works (H.P. Biggar, gen. ed., 1922–1936), with parallel French text and English translation, established the 30 July 1609 battle as the first documented use of European firearms against the Iroquois — an event uncontested in the historiography of New France and Haudenosaunee history.',
+        source: {
+          externalId: 'src:biggar-champlain-works-1922',
+          name: 'H.P. Biggar (gen. ed.), The Works of Samuel de Champlain, Champlain Society (Toronto, 1922–1936).',
+          url: 'https://en.wikipedia.org/wiki/Samuel_de_Champlain',
+          publishedAt: '1922-01-01',
+          methodologyType: 'derivative',
         },
       },
     ],
