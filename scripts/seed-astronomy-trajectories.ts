@@ -876,6 +876,222 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PARTICLE PHYSICS — ANTIMATTER & SYMMETRY (1932–1998)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 20. Anderson discovers the positron — 1932 ──────────────────────────────
+  {
+    externalId: 'trajectory:anderson-positron-discovery-1932',
+    text: 'Carl D. Anderson discovered the positron — a positively charged particle with the mass of an electron, the first known antimatter particle — from cloud-chamber photographs of cosmic-ray tracks, reporting the definitive result in \'The Positive Electron\' in Physical Review on 15 March 1933.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-08-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-03-15',
+        datePrecision: 'DAY',
+        reason: 'Anderson first noted anomalous positive tracks in a 2 August 1932 cloud-chamber photograph and announced them in a brief Science note in September 1932, but the definitive discovery paper, \'The Positive Electron,\' appeared in Physical Review vol. 43 (pp. 491–494) on 15 March 1933. From 15 positive tracks too lightly ionizing to be protons, he concluded the particles carried unit positive charge with mass comparable to the electron\'s, naming them positrons. The result supplied the first experimental instance of antimatter, matching Dirac\'s 1928–1931 relativistic prediction of a positive electron.',
+        source: {
+          externalId: 'src:anderson-positive-electron-1933',
+          name: 'Anderson CD. The Positive Electron. Physical Review. 1933;43(6):491–494.',
+          url: 'https://doi.org/10.1103/PhysRev.43.491',
+          publishedAt: '1933-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1936-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Patrick Blackett and Giuseppe Occhialini independently confirmed the positron in 1933 (Proc. Roy. Soc. A 139:699), showing positron–electron pairs in cosmic-ray showers and explicitly linking them to Dirac\'s hole theory. Anderson was awarded the Nobel Prize in Physics in 1936 \'for his discovery of the positron,\' institutionally settling antimatter as a real, observed feature of nature and confirming relativistic quantum theory\'s prediction of antiparticles.',
+        source: {
+          externalId: 'src:nobel-physics-1936-anderson',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physics 1936 (Victor F. Hess, Carl D. Anderson). The Royal Swedish Academy of Sciences. 1936.',
+          url: 'https://www.nobelprize.org/prizes/physics/1936/summary/',
+          publishedAt: '1936-11-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 21. Chamberlain & Segrè observe the antiproton — 1955 ───────────────────
+  {
+    externalId: 'trajectory:chamberlain-segre-antiproton-1955',
+    text: 'Owen Chamberlain, Emilio Segrè, Clyde Wiegand, and Thomas Ypsilantis observed the antiproton — the negatively charged antiparticle of the proton — at the Berkeley Bevatron, reporting the discovery in \'Observation of Antiprotons\' in Physical Review on 1 November 1955.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1955-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-11-01',
+        datePrecision: 'DAY',
+        reason: 'Using the 6.2 GeV Bevatron — built with enough energy to produce proton–antiproton pairs — the Berkeley team selected negative particles of proton mass with a magnetic-spectrometer-plus-velocity (Čerenkov and time-of-flight) system and published \'Observation of Antiprotons\' in Physical Review vol. 100 (pp. 947–950), dated 1 November 1955. The detection confirmed that the proton, like the electron, has a charge-conjugate antiparticle, extending Dirac\'s antimatter framework to baryons.',
+        source: {
+          externalId: 'src:chamberlain-antiprotons-1955',
+          name: 'Chamberlain O, Segrè E, Wiegand C, Ypsilantis T. Observation of Antiprotons. Physical Review. 1955;100(3):947–950.',
+          url: 'https://doi.org/10.1103/PhysRev.100.947',
+          publishedAt: '1955-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Antiproton annihilation events were promptly confirmed in emulsion and propane bubble-chamber studies at Berkeley (1956), and the antineutron was found in 1956. Chamberlain and Segrè were awarded the Nobel Prize in Physics in 1959 \'for their discovery of the antiproton,\' institutionally settling the existence of antibaryons and the general principle that every charged particle has an antiparticle.',
+        source: {
+          externalId: 'src:nobel-physics-1959-antiproton',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physics 1959 (Emilio Segrè, Owen Chamberlain). The Royal Swedish Academy of Sciences. 1959.',
+          url: 'https://www.nobelprize.org/prizes/physics/1959/summary/',
+          publishedAt: '1959-10-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 22. Wu — parity violation in beta decay — 1957 ──────────────────────────
+  {
+    externalId: 'trajectory:wu-parity-violation-1957',
+    text: 'Chien-Shiung Wu and collaborators demonstrated that parity is not conserved in the weak interaction by observing an asymmetric angular distribution of electrons emitted from beta decay of polarized cobalt-60 nuclei, reporting the result in Physical Review on 15 February 1957.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-01-15',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-02-15',
+        datePrecision: 'DAY',
+        reason: 'Following Lee and Yang\'s 1956 proposal (Phys. Rev. 104:254) that parity conservation had never been tested in the weak interaction, Wu — with Ambler, Hayward, Hoppes, and Hudson at the U.S. National Bureau of Standards — cooled cobalt-60 to ~0.01 K to polarize the nuclei and found beta electrons emitted preferentially opposite to the nuclear spin. Published as \'Experimental Test of Parity Conservation in Beta Decay\' (Phys. Rev. 105:1413–1415, 15 February 1957), the asymmetry showed the weak interaction distinguishes left from right, overturning the assumed mirror symmetry of physical law.',
+        source: {
+          externalId: 'src:wu-parity-beta-decay-1957',
+          name: 'Wu CS, Ambler E, Hayward RW, Hoppes DD, Hudson RP. Experimental Test of Parity Conservation in Beta Decay. Physical Review. 1957;105(4):1413–1415.',
+          url: 'https://doi.org/10.1103/PhysRev.105.1413',
+          publishedAt: '1957-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Garwin, Lederman, and Weinrich independently confirmed parity violation in pion-muon decay in the same Physical Review issue (105:1415), and the result was rapidly accepted. Lee and Yang were awarded the 1957 Nobel Prize in Physics \'for their penetrating investigation of the so-called parity laws\' — among the fastest Nobel recognitions ever — institutionally settling parity non-conservation as a fundamental property of the weak force.',
+        source: {
+          externalId: 'src:nobel-physics-1957-parity',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physics 1957 (Chen Ning Yang, Tsung-Dao Lee). The Royal Swedish Academy of Sciences. 1957.',
+          url: 'https://www.nobelprize.org/prizes/physics/1957/summary/',
+          publishedAt: '1957-10-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 23. November Revolution — J/ψ and the charm quark — 1974 ────────────────
+  {
+    externalId: 'trajectory:november-revolution-jpsi-charm-1974',
+    text: 'Two teams led by Samuel Ting (Brookhaven) and Burton Richter (SLAC) simultaneously discovered the J/ψ particle, a narrow resonance at ~3.1 GeV revealing a bound state of a fourth (charm) quark, reported in back-to-back Physical Review Letters papers on 2 December 1974 — the \'November Revolution\' of particle physics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-12-02',
+        datePrecision: 'DAY',
+        reason: 'Ting\'s group at Brookhaven (seeing the \'J\' in proton-beryllium collisions) and Richter\'s group at SLAC\'s SPEAR (seeing the \'ψ\' as a sharp resonance in electron-positron annihilation) announced their findings simultaneously on 11 November 1974 and published back-to-back in Physical Review Letters vol. 33 on 2 December 1974: Aubert et al. (pp. 1404–1406) and Augustin et al. (pp. 1406–1408). The anomalously narrow width of the 3.1 GeV state implied a new conserved quantum number, interpreted as charm — the fourth quark predicted by the GIM mechanism — providing decisive evidence for the quark model.',
+        source: {
+          externalId: 'src:aubert-heavy-particle-j-1974',
+          name: 'Aubert JJ, Becker U, Biggs PJ, et al. Experimental Observation of a Heavy Particle J. Physical Review Letters. 1974;33(23):1404–1406.',
+          url: 'https://doi.org/10.1103/PhysRevLett.33.1404',
+          publishedAt: '1974-12-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The discovery of charmed mesons (D mesons) in 1976 confirmed the charm interpretation, and Richter and Ting were awarded the 1976 Nobel Prize in Physics \'for their pioneering work in the discovery of a heavy elementary particle of a new kind.\' The award — given just two years after the discovery — institutionally settled the existence of the charm quark and validated the four-quark electroweak Standard Model.',
+        source: {
+          externalId: 'src:nobel-physics-1976-jpsi',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physics 1976 (Burton Richter, Samuel C. C. Ting). The Royal Swedish Academy of Sciences. 1976.',
+          url: 'https://www.nobelprize.org/prizes/physics/1976/summary/',
+          publishedAt: '1976-10-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 24. Super-Kamiokande — neutrino oscillations — 1998 ─────────────────────
+  {
+    externalId: 'trajectory:superkamiokande-neutrino-oscillation-1998',
+    text: 'The Super-Kamiokande Collaboration reported evidence that atmospheric neutrinos oscillate between flavors — a zenith-angle-dependent deficit of muon neutrinos requiring neutrinos to have nonzero mass — in \'Evidence for Oscillation of Atmospheric Neutrinos\' in Physical Review Letters in 1998.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-06-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-24',
+        datePrecision: 'DAY',
+        reason: 'Takaaki Kajita announced the result at the Neutrino \'98 conference in Takayama, Japan, on 5 June 1998; the paper (Fukuda et al., Phys. Rev. Lett. 81:1562, submitted 1 July, published 24 August 1998) reported a zenith-angle-dependent deficit of muon neutrinos from a 535-day Super-Kamiokande exposure. The data fit two-flavor νμ↔ντ oscillations, which require neutrinos to have nonzero mass — the first compelling evidence that neutrinos are massive, contradicting the massless-neutrino assumption of the Standard Model.',
+        source: {
+          externalId: 'src:fukuda-atmospheric-neutrino-oscillation-1998',
+          name: 'Fukuda Y, et al. (Super-Kamiokande Collaboration). Evidence for Oscillation of Atmospheric Neutrinos. Physical Review Letters. 1998;81(8):1562–1567.',
+          url: 'https://doi.org/10.1103/PhysRevLett.81.1562',
+          publishedAt: '1998-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-10-06',
+        datePrecision: 'DAY',
+        reason: 'The Sudbury Neutrino Observatory\'s 2001–2002 measurement of solar neutrino flavor change independently confirmed oscillation and resolved the solar neutrino problem. Takaaki Kajita (Super-Kamiokande) and Arthur McDonald (SNO) were awarded the Nobel Prize in Physics on 6 October 2015 \'for the discovery of neutrino oscillations, which shows that neutrinos have mass,\' institutionally settling that neutrinos are massive and requiring an extension of the Standard Model.',
+        source: {
+          externalId: 'src:nobel-physics-2015-neutrino-oscillations',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physics 2015 (Takaaki Kajita, Arthur B. McDonald). The Royal Swedish Academy of Sciences. October 6, 2015.',
+          url: 'https://www.nobelprize.org/prizes/physics/2015/summary/',
+          publishedAt: '2015-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
