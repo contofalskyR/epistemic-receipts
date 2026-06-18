@@ -1719,6 +1719,147 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── El Baúl Stela 1 — earliest Long Count date in Guatemala (Pacific slope) ───
+  {
+    externalId: 'trajectory:el-baul-stela-1-37ce',
+    text: 'Stela 1 at El Baúl, in the Cotzumalhuapa zone on the Pacific piedmont of Guatemala, bears the Long Count date 7.19.15.7.12 (6 March 37 CE in the GMT correlation) — the earliest legible Long Count date carved on any monument in Guatemala.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0037-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0037-03-06',
+        datePrecision: 'DAY',
+        reason: 'Carvers at El Baúl inscribe a Long Count date beside a standing figure in an elaborate headdress facing a column of glyphs, fixing a single day in the bar-and-dot count that runs from the 3114 BCE era base — a contemporaneous primary record from the Pacific piedmont, predating every dated monument in the Maya lowlands.',
+        source: {
+          externalId: 'src:el-baul-stela-1-monument',
+          name: 'El Baúl Stela 1, bearing Long Count date 7.19.15.7.12 (37 CE), Cotzumalhuapa zone, Pacific slope, Guatemala.',
+          url: 'https://en.wikipedia.org/wiki/Cotzumalhuapa',
+          publishedAt: '0037-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The leading coefficient of the date is eroded, leaving several competing readings (7.18.9.7.12, 7.18.14.8.12, 7.19.7.8.12, or 7.19.15.7.12), but all place the inscription in the range 11–37 CE. The conventional reading 7.19.15.7.12 fixes it at 37 CE, establishing Stela 1 in Mesoamerican epigraphy as the earliest legible Long Count date in Guatemala — older than any dated monument of the Maya lowlands and second only to the Chiapa de Corzo and Tres Zapotes monuments of the Gulf and Chiapas.',
+        source: {
+          externalId: 'src:el-baul-stela-1-longcount',
+          name: 'Mesoamerican Long Count calendar — El Baúl Stela 1, 7.19.15.7.12 (37 CE), earliest legible Long Count date in Guatemala.',
+          url: 'https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar',
+          publishedAt: '1923-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Uaxactun Stela 9 — long held as the oldest dated Maya lowland monument ────
+  {
+    externalId: 'trajectory:uaxactun-stela-9-328',
+    text: 'Stela 9 at Uaxactun bears the Long Count date 8.14.10.13.15 (11 April 328 CE in the GMT correlation); for forty-three years after its 1916 discovery it stood as the oldest known contemporaneously dated large monument of the Maya lowlands, until superseded by Tikal Stela 29 in 1959.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0328-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0328-04-11',
+        datePrecision: 'DAY',
+        reason: 'Maya carvers at Uaxactun inscribe the Long Count date 8.14.10.13.15 on a stela, fixing a single day in the bar-and-dot count — a contemporaneous primary record of the central Petén, carrying the first Baktun-8 date ever found on a Maya stela.',
+        source: {
+          externalId: 'src:uaxactun-stela-9-monument',
+          name: 'Uaxactun Stela 9, bearing Long Count date 8.14.10.13.15 (328 CE), central Petén, Guatemala.',
+          url: 'https://en.wikipedia.org/wiki/Uaxactun',
+          publishedAt: '0328-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1916-05-05',
+        datePrecision: 'DAY',
+        reason: 'Sylvanus G. Morley rediscovered the site on 5 May 1916 during the Carnegie Institution\'s Second Central American Expedition and named it "Uaxactun" — Yucatec waxak ("eight") + tun ("stone") — for the Baktun-8 date on Stela 9. Read through the Goodman–Martínez–Thompson correlation, its date 8.14.10.13.15 fixed the monument at 328 CE, and for the next forty-three years it remained the oldest known contemporaneously dated large monument of the Maya lowlands.',
+        source: {
+          externalId: 'src:uaxactun-stela-9-morley-1916',
+          name: 'Penn Museum Expedition — "Tikal Stela 29": Uaxactun Stela 9 as the oldest known dated lowland Maya monument for forty-three years.',
+          url: 'https://www.penn.museum/sites/expedition/tikal-stela-29/',
+          publishedAt: '1916-05-05',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1959 University of Pennsylvania archaeologists at Tikal uncovered Stela 29 (8.12.14.8.15, 292 CE), which predated Uaxactun Stela 9 by thirty-six years and displaced it as the oldest known dated lowland Maya monument. Stela 9\'s own date remained unchallenged; only its standing as the earliest known example was revised — a routine refinement of the lowland Maya chronology.',
+        source: {
+          externalId: 'src:uaxactun-stela-9-superseded-1959',
+          name: 'Penn Museum Expedition — "Tikal Stela 29": Stela 29 predates Stela 9 at Uaxactun by thirty-six years.',
+          url: 'https://www.penn.museum/sites/expedition/tikal-stela-29/',
+          publishedAt: '1959-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cerro de las Mesas Stela 6 — one of the latest epi-Olmec Long Count dates ─
+  {
+    externalId: 'trajectory:cerro-de-las-mesas-stela-6-468',
+    text: 'Stela 6 at Cerro de las Mesas, in the Mixtequilla of Veracruz, bears the Long Count date 9.1.12.14.10 (April 468 CE), one of the latest known examples of the epi-Olmec (Isthmian) script and among the last monuments to use the Long Count on the Gulf Coast.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0468-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0468-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Carvers at Cerro de las Mesas inscribe the Long Count date 9.1.12.14.10 at the lower left of a stela, with a short epi-Olmec text above it — fixing a day in the bar-and-dot count and recording one of the latest surviving uses of the Isthmian script on the Gulf Coast.',
+        source: {
+          externalId: 'src:cerro-de-las-mesas-stela-6-monument',
+          name: 'Cerro de las Mesas Stela 6, bearing Long Count date 9.1.12.14.10 (April 468 CE), Mixtequilla, Veracruz.',
+          url: 'https://en.wikipedia.org/wiki/Cerro_de_las_Mesas',
+          publishedAt: '0468-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Matthew Stirling\'s 1941 Smithsonian–National Geographic excavations at Cerro de las Mesas documented and read the dated monuments, among them Stela 6 and Stela 8. Read through the standard correlation, Stela 6\'s date 9.1.12.14.10 resolves to 468 CE, establishing it in Mesoamerican epigraphy as one of the few and latest epi-Olmec script texts and a marker of the Long Count\'s persistence on the Gulf Coast into the Early Classic.',
+        source: {
+          externalId: 'src:cerro-de-las-mesas-stela-6-reading',
+          name: 'Cerro de las Mesas — Stela 6, Long Count 9.1.12.14.10 (468 CE), one of the latest epi-Olmec/Isthmian script texts.',
+          url: 'https://en.wikipedia.org/wiki/Cerro_de_las_Mesas',
+          publishedAt: '1941-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Teotihuacan entrada at Tikal — arrival of Siyaj K'ak' (Maya, 378 CE) ──────
   {
     externalId: 'trajectory:tikal-entrada-siyaj-kak-378',
