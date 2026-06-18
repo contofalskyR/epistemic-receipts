@@ -63111,6 +63111,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Junagadh rock inscription of Rudradaman I — repair of the Sudarshana dam ──
+  {
+    externalId: 'trajectory:junagadh-rudradaman-sudarshana-dam-150',
+    text: 'The Junagadh rock inscription of the Western Satrap Rudradaman I records that on the first day of the dark fortnight of Mārgashīrsha in the year 72 (Śaka 72, c. 150 CE) a violent storm breached the embankment of the Sudarshana Lake near Girnar, and that Rudradaman afterwards restored the dam from his own treasury without levying a tax; it is the earliest substantial inscription in classical Sanskrit.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0150-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0150-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Carved on the same Girnar boulder that bears Ashoka\'s edicts, Rudradaman\'s long Sanskrit prose inscription dates the disaster to the first of the dark half of Mārgashīrsha, year 72, when a storm tore a breach four hundred and twenty cubits long through the dam of the Sudarshana Lake (a reservoir originally built under the Mauryas). It records that the satrap rebuilt the embankment three times stronger from his own funds, sparing his subjects forced labour and taxation. The stone is the contemporaneous official record of the event and the earliest dated long inscription in classical Sanskrit.',
+        source: {
+          externalId: 'src:junagadh-rudradaman-inscription',
+          name: 'Junagadh rock inscription of Rudradaman I, year 72 (Śaka 72, c. 150 CE), Sanskrit on the Girnar rock (contemporaneous Western Satrap record of the Sudarshana dam breach and repair).',
+          url: 'https://en.wikipedia.org/wiki/Junagadh_rock_inscription_of_Rudradaman',
+          publishedAt: '0150-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906-01-01',
+        datePrecision: 'YEAR',
+        reason: 'First read by Bhau Daji in the 1860s and definitively edited by Eugen Hultzsch and F. Kielhorn in Epigraphia Indica, the inscription\'s date, language, and account are settled in Indian epigraphy. It anchors the early history of classical Sanskrit prose and is corroborated materially by the Junagadh inscription of Skandagupta, which records a second breach and repair of the same Sudarshana reservoir three centuries later.',
+        source: {
+          externalId: 'src:kielhorn-junagadh-rudradaman',
+          name: 'Kielhorn F. / Hultzsch E. critical edition of the Junagadh rock inscription of Rudradaman, Epigraphia Indica vol. VIII (1905–06).',
+          url: 'https://en.wikipedia.org/wiki/Junagadh_rock_inscription_of_Rudradaman',
+          publishedAt: '1906-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Udayagiri Sanakanika cave inscription — dated Gupta cave dedication ───────
+  {
+    externalId: 'trajectory:udayagiri-sanakanika-inscription-402',
+    text: 'An inscription in the Udayagiri caves near Vidisha records that on the eleventh day of the bright fortnight of Āshādha in the year 82 of the Gupta era (26 June 402 CE) a feudatory Mahārāja of the Sanakānīka clan, a subordinate of Chandragupta II, dedicated a Vaishnava cave shrine during the emperor\'s campaign of conquest.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0402-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0402-06-26',
+        datePrecision: 'DAY',
+        reason: 'A short Sanskrit inscription in Gupta Brāhmī, cut at Cave 6 of the Udayagiri group, records that in Gupta year 82, on the eleventh lunar day of the bright half of Āshādha, a Mahārāja of the Sanakānīka family — a vassal of "the Mahārājādhirāja, the glorious Chandragupta (II)" — made a religious dedication while the emperor was engaged in conquering the earth. Scholars convert the date to 26 June 402 CE, close to the summer solstice when the rising sun lights the adjacent Varāha relief. The stone is the contemporaneous record of the act and a fixed point for Gupta chronology.',
+        source: {
+          externalId: 'src:udayagiri-sanakanika-inscription',
+          name: 'Sanakānīka cave inscription of the time of Chandragupta II, Gupta year 82 (11th of bright half of Āshādha = 26 June 402 CE), Udayagiri Cave 6 (contemporaneous Gupta-era dedication).',
+          url: 'https://en.wikipedia.org/wiki/Udayagiri_Caves',
+          publishedAt: '0402-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Edited by John Faithfull Fleet in Inscriptions of the Early Gupta Kings (Corpus Inscriptionum Indicarum, vol. III, 1888), the inscription\'s Gupta-era date and its naming of Chandragupta II are settled in the scholarship. Because it dates a feudatory\'s act to the reign of Chandragupta II, it is a standard datum for fixing the Gupta era epoch (319/320 CE) and the chronology of the early-fifth-century empire.',
+        source: {
+          externalId: 'src:fleet-udayagiri-sanakanika',
+          name: 'Fleet J.F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888), Sanakānīka inscription no. 3.',
+          url: 'https://en.wikipedia.org/wiki/Udayagiri_Caves',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sanchi inscription of Chandragupta II — dated Buddhist endowment ──────────
+  {
+    externalId: 'trajectory:sanchi-chandragupta-ii-inscription-412',
+    text: 'A pillar-railing inscription at the Great Stupa of Sanchi records that on the fourth day of the month Bhādrapada in the year 93 of the Gupta era (c. 412 CE), in the reign of Chandragupta II, a man named Āmrakārdava endowed the Buddhist community of the Kākanādaboṭa monastery with the village of Īshvaravāsaka and twenty-five dīnāras, the interest to feed monks and keep lamps burning in perpetuity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0412-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0412-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Incised on the railing beside the eastern gateway of the centuries-old Great Stupa, the Sanskrit inscription dates itself to "the year 90 (and) 3, the month Bhādrapada, the day 4" in the reign of Chandragupta II and records the perpetual endowment by Āmrakārdava — a gift of a village and money whose interest was to feed mendicants and maintain lamps for the Buddhist saṃgha at Kākanādaboṭa (Sanchi). The stone is the contemporaneous primary record of the foundation.',
+        source: {
+          externalId: 'src:sanchi-chandragupta-ii-inscription',
+          name: 'Sanchi stone inscription of Chandragupta II, Gupta year 93, Bhādrapada day 4 (c. 412 CE), Sanskrit on the Great Stupa railing (contemporaneous Gupta-era endowment).',
+          url: 'https://en.wikipedia.org/wiki/Sanchi_inscription_of_Chandragupta_II',
+          publishedAt: '0412-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After early notice in the time of James Prinsep, the inscription was edited by John Faithfull Fleet in Inscriptions of the Early Gupta Kings (Corpus Inscriptionum Indicarum, vol. III, 1888). Its Gupta-era date and the identification of Chandragupta II are settled in the literature, and it documents continuing patronage of a Buddhist site already some five centuries old when the gift was made.',
+        source: {
+          externalId: 'src:fleet-sanchi-chandragupta-ii',
+          name: 'Fleet J.F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888), Sanchi inscription of Chandragupta II.',
+          url: 'https://en.wikipedia.org/wiki/Sanchi_inscription_of_Chandragupta_II',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mandasor silk-weavers' inscription — Sun temple built and restored ────────
+  {
+    externalId: 'trajectory:mandasor-silk-weavers-sun-temple-437',
+    text: 'The Mandasor (Dasapura) stone inscription records that a guild of silk-weavers who had migrated from the Lāṭa country built a temple of the Sun (Sūrya) on the thirteenth day of the bright fortnight of the month Sahasya in the Mālava year 493 (c. 437 CE), and that the guild later restored the decayed temple in the year 529 (c. 473 CE), when the eulogy was composed by the poet Vatsabhaṭṭi.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0437-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0437-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The inscription narrates that a community of silk-weavers (paṭṭavāya) emigrated from the Lāṭa country to Dasapura (modern Mandsaur) and, during the reign of the Gupta emperor Kumāragupta I and his governor Bandhuvarman, erected a temple of the Sun. It dates the foundation precisely: when 493 years of the Mālava reckoning had elapsed, on the thirteenth lunar day of the bright half of the month Sahasya (c. 437 CE). The dated stone records both the act and the social history of the guild.',
+        source: {
+          externalId: 'src:mandasor-silk-weavers-inscription',
+          name: 'Mandasor stone inscription of the silk-weavers, Mālava year 493 (Sahasya bright 13, c. 437 CE), Sanskrit eulogy by Vatsabhaṭṭi (contemporaneous Gupta-era guild record).',
+          url: 'https://siddham.network/inscription/in00040/?section=translation',
+          publishedAt: '0437-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0473-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The same inscription records that part of the temple later fell into disrepair and that the guild, "by their own efforts and for their own fame," restored it; this renovation, and the composition of the surviving eulogy by Vatsabhaṭṭi, is dated to the second lunar day of the bright half of the month Tapasya in the Mālava year 529 (c. 473 CE). The extant engraved stone dates from this restoration and is the contemporaneous record of both events.',
+        source: {
+          externalId: 'src:mandasor-silk-weavers-restoration',
+          name: 'Mandasor stone inscription of the silk-weavers, restoration dated Mālava year 529 (Tapasya bright 2, c. 473 CE), composed by Vatsabhaṭṭi.',
+          url: 'https://siddham.network/inscription/in00040/?section=translation',
+          publishedAt: '0473-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Fleet sent copyists to Mandsaur in 1884, the inscription was edited in Inscriptions of the Early Gupta Kings (Corpus Inscriptionum Indicarum, vol. III, 1888). Its two Mālava-era dates and its account of the silk-weavers\' guild are settled in the scholarship; the stone is now in the Gwalior museum and is a standard source for the economic and religious history of Gupta-era central India.',
+        source: {
+          externalId: 'src:fleet-mandasor-silk-weavers',
+          name: 'Fleet J.F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888), Mandasor inscription of the silk-weavers no. 18.',
+          url: 'https://siddham.network/inscription/in00040/',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
