@@ -8175,6 +8175,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // BIOLOGICS & GENE THERAPY ERA (1990–2020)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Adagen — first enzyme replacement therapy & first PEGylated protein drug 1990 ──
+  {
+    externalId: 'trajectory:pegademase-adagen-first-enzyme-replacement-therapy-1990',
+    text: 'On 21 March 1990 the U.S. FDA approved Adagen (pegademase bovine, NDA 019818) for enzyme replacement therapy in adenosine deaminase (ADA) deficiency causing severe combined immunodeficiency, the first enzyme replacement therapy — and first PEGylated protein drug — ever approved, predating Ceredase (alglucerase, 1991).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1987-03-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-03-05',
+        datePrecision: 'DAY',
+        reason: 'Michael S. Hershfield and colleagues reported in the New England Journal of Medicine that polyethylene glycol-modified bovine adenosine deaminase (PEG-ADA) corrected the metabolic abnormalities and restored immune function in two children with ADA-deficient SCID. This established in the expert literature that systemic replacement of a deficient enzyme could be a viable therapeutic strategy for an inherited metabolic immunodeficiency.',
+        source: {
+          externalId: 'src:hershfield-peg-ada-nejm-1987',
+          name: 'Hershfield MS, Buckley RH, Greenberg ML, et al. Treatment of adenosine deaminase deficiency with polyethylene glycol-modified adenosine deaminase. N Engl J Med. 1987;316(10):589-596.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3807953/',
+          publishedAt: '1987-03-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-03-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Adagen (pegademase bovine, NDA 019818, sponsor Enzon) for ADA deficiency in patients with SCID who are not candidates for or have failed bone marrow transplantation. As the first enzyme replacement therapy and first PEGylated therapeutic protein ever licensed, the approval institutionally settled enzyme replacement as a regulatory and clinical category and opened the path to subsequent ERTs (alglucerase 1991, laronidase, agalsidase).',
+        source: {
+          externalId: 'src:fda-adagen-label-019818',
+          name: 'U.S. Food and Drug Administration. ADAGEN (pegademase bovine) Injection — Prescribing Information (NDA 019818). Original approval 21 March 1990.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/019818s053lbl.pdf',
+          publishedAt: '1990-03-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Luxturna — first in vivo gene therapy for inherited disease 2017 ─────────
+  {
+    externalId: 'trajectory:voretigene-neparvovec-luxturna-first-inherited-disease-gene-therapy-2017',
+    text: 'On 19 December 2017 the U.S. FDA approved Luxturna (voretigene neparvovec-rzyl, Spark Therapeutics) for biallelic RPE65 mutation-associated retinal dystrophy, the first directly administered (in vivo) gene therapy approved in the United States to target a disease caused by mutations in a specific gene.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-07-14',
+        datePrecision: 'DAY',
+        reason: 'Stephen Russell and colleagues published in The Lancet a randomised, controlled, open-label phase 3 trial showing that a one-time subretinal injection of voretigene neparvovec (AAV2-hRPE65v2) significantly improved functional vision on a multi-luminance mobility test in patients with RPE65-mediated inherited retinal dystrophy. This recorded the first phase 3 evidence that subretinal gene replacement could durably restore vision in an inherited blinding disease.',
+        source: {
+          externalId: 'src:russell-voretigene-phase3-lancet-2017',
+          name: 'Russell S, Bennett J, Wellman JA, et al. Efficacy and safety of voretigene neparvovec (AAV2-hRPE65v2) in patients with RPE65-mediated inherited retinal dystrophy: a randomised, controlled, open-label, phase 3 trial. Lancet. 2017;390(10097):849-860.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28712537/',
+          publishedAt: '2017-07-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-12-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Luxturna for patients with confirmed biallelic RPE65 mutation-associated retinal dystrophy with viable retinal cells. The agency described it as the first directly administered gene therapy approved in the U.S. that targets a disease caused by mutations in a specific gene, institutionally settling in vivo gene replacement as an approvable therapeutic modality for inherited disease.',
+        source: {
+          externalId: 'src:fda-luxturna-product-page-2017',
+          name: 'U.S. Food and Drug Administration. LUXTURNA (voretigene neparvovec-rzyl) — Cellular & Gene Therapy Products. Approved 19 December 2017.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/luxturna',
+          publishedAt: '2017-12-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Onpattro — first RNAi / siRNA therapeutic 2018 ──────────────────────────
+  {
+    externalId: 'trajectory:patisiran-onpattro-first-rnai-sirna-therapeutic-2018',
+    text: 'On 10 August 2018 the U.S. FDA approved Onpattro (patisiran, Alnylam) for the polyneuropathy of hereditary transthyretin-mediated (hATTR) amyloidosis, the first-ever approved RNA interference (siRNA) therapeutic and the first approved treatment for that indication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-07-05',
+        datePrecision: 'DAY',
+        reason: 'David Adams and colleagues published the APOLLO trial in the New England Journal of Medicine, showing that patisiran — a lipid-nanoparticle-delivered small interfering RNA that silences hepatic transthyretin production — significantly improved the modified Neuropathy Impairment Score (mNIS+7) and quality of life versus placebo in hATTR amyloidosis with polyneuropathy. This recorded the first phase 3 proof that an RNAi therapeutic could alter the course of a human genetic disease.',
+        source: {
+          externalId: 'src:adams-apollo-patisiran-nejm-2018',
+          name: 'Adams D, Gonzalez-Duarte A, O\'Riordan WD, et al. Patisiran, an RNAi Therapeutic, for Hereditary Transthyretin Amyloidosis. N Engl J Med. 2018;379(1):11-21.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29972753/',
+          publishedAt: '2018-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-08-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Onpattro (patisiran, NDA 210922) for the polyneuropathy of hATTR amyloidosis in adults, granting it Priority Review, Fast Track, Breakthrough Therapy, and Orphan Drug designations. As the first-of-its-kind RNAi therapeutic, the approval institutionally settled gene silencing by siRNA as a clinically validated and approvable drug class.',
+        source: {
+          externalId: 'src:fda-onpattro-label-210922',
+          name: 'U.S. Food and Drug Administration. ONPATTRO (patisiran) lipid complex injection — Prescribing Information (NDA 210922). Initial U.S. Approval 10 August 2018.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2018/210922s000lbl.pdf',
+          publishedAt: '2018-08-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dicumarol — first oral anticoagulant — Campbell & Link 1941 ─────────────
+  {
+    externalId: 'trajectory:campbell-link-dicumarol-first-oral-anticoagulant-1941',
+    text: 'In 1941 Harold A. Campbell and Karl Paul Link reported the isolation and crystallization of dicumarol, the hemorrhagic agent of spoiled sweet clover, identifying the first orally active anticoagulant drug and founding the coumarin class that culminated in warfarin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Campbell and Link published in the Journal of Biological Chemistry the isolation and crystallization of the hemorrhagic agent responsible for cattle deaths from spoiled sweet clover hay, later named dicumarol (3,3\'-methylenebis-(4-hydroxycoumarin)). This recorded in the literature the structure of the first orally active anticoagulant, converting a veterinary toxicology puzzle into a defined therapeutic compound.',
+        source: {
+          externalId: 'src:campbell-link-dicumarol-jbc-1941',
+          name: 'Campbell HA, Link KP. Studies on the hemorrhagic sweet clover disease. IV. The isolation and crystallization of the hemorrhagic agent. J Biol Chem. 1941;138:21-33. (documented in JBC Reflections: Hemorrhagic Sweet Clover Disease, Dicumarol, and Warfarin: the Work of Karl Paul Link.)',
+          url: 'https://www.jbc.org/article/S0021-9258(19)62862-0/fulltext',
+          publishedAt: '1941-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1954-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Dicumarol entered clinical anticoagulant use in the early 1940s, and warfarin — the more potent synthetic coumarin Link\'s laboratory developed from the same chemistry — was approved for human clinical use in 1954. The adoption of oral coumarin anticoagulants institutionally settled oral anticoagulation as standard therapy for thromboembolic disease, a status the class still holds.',
+        source: {
+          externalId: 'src:acs-invention-of-warfarin-landmark',
+          name: 'American Chemical Society. The Invention of Warfarin — National Historic Chemical Landmarks.',
+          url: 'https://www.acs.org/education/whatischemistry/landmarks/warfarin.html',
+          publishedAt: '2017-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────

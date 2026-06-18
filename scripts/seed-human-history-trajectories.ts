@@ -64257,6 +64257,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — EASTERN EUROPE & RUSSIA
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── August Coup against Gorbachev (GKChP) ───────────────────────────────────
+  {
+    externalId: 'trajectory:august-coup-soviet-1991',
+    text: 'Hardline Communist officials calling themselves the State Committee on the State of Emergency (GKChP) attempted to seize power in the Soviet Union, detaining President Mikhail Gorbachev at his Crimean dacha and declaring a state of emergency on 19 August 1991; the coup collapsed by 21 August 1991.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1991-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1991-08-19',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 19 August 1991 the eight-member GKChP, including Vice President Gennady Yanayev, KGB chairman Vladimir Kryuchkov, and Defence Minister Dmitry Yazov, announces over state radio and television that Gorbachev is unable to perform his duties for "health reasons" and that Yanayev has assumed the presidency. Tanks roll into Moscow. The seizure is broadcast live and reported worldwide as it unfolds.',
+        source: {
+          externalId: 'src:gkchp-statement-1991',
+          name: '1991 Soviet coup d\'état attempt — GKChP statements and the state of emergency declared 19 August 1991 (Wikipedia, synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/1991_Soviet_coup_d%27%C3%A9tat_attempt',
+          publishedAt: '1991-08-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1991-08-21',
+        datePrecision: 'DAY',
+        reason: 'Russian President Boris Yeltsin defies the coup from atop a tank outside the White House (Russian parliament); mass crowds and key military units refuse to back the plotters. By 21 August the GKChP collapses, Gorbachev returns to Moscow, and the plotters are arrested (Interior Minister Boris Pugo shoots himself). The failure and its three-day chronology are corroborated by contemporaneous international press, television footage, and subsequent prosecutions.',
+        source: {
+          externalId: 'src:august-coup-collapse-1991',
+          name: 'Collapse of the August Coup, 21 August 1991 — Yeltsin\'s resistance and the plotters\' arrest (Wikipedia, "1991 Soviet coup d\'état attempt").',
+          url: 'https://en.wikipedia.org/wiki/1991_Soviet_coup_d%27%C3%A9tat_attempt',
+          publishedAt: '1991-08-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kursk submarine disaster — collision narrative reversed ─────────────────
+  {
+    externalId: 'trajectory:kursk-submarine-disaster-2000',
+    text: 'The Russian nuclear submarine Kursk (K-141) sank in the Barents Sea on 12 August 2000 with the loss of all 118 crew; an internal torpedo explosion, not a foreign collision, was confirmed as the cause by the official Russian investigation in 2002.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-08-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2000-08-12',
+        datePrecision: 'DAY',
+        reason: 'During the "Summer-X" naval exercise on 12 August 2000, two explosions tear through the Kursk, which sinks to the floor of the Barents Sea. All 118 personnel aboard are killed. The loss of the submarine and the failure of the rescue effort are reported worldwide over the following days as the Russian Navy struggles to respond.',
+        source: {
+          externalId: 'src:kursk-sinking-2000',
+          name: 'Russian submarine Kursk (K-141) — sinking on 12 August 2000, loss of all 118 crew (Wikipedia, synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Russian_submarine_Kursk_(K-141)',
+          publishedAt: '2000-08-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-08-01',
+        datePrecision: 'MONTH',
+        reason: 'In the immediate aftermath, senior Russian Navy officials publicly suggested the Kursk had collided with a foreign (NATO) submarine, an account widely disseminated by Russian officials and contested by Western navies, which denied any vessel was involved. The true cause was disputed against a backdrop of official secrecy and a delayed, mishandled rescue operation.',
+        source: {
+          externalId: 'src:kursk-collision-claim-2000',
+          name: 'Russian submarine Kursk (K-141) — initial Russian Navy claims of a collision with a foreign submarine (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Russian_submarine_Kursk_(K-141)',
+          publishedAt: '2000-08-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-01',
+        datePrecision: 'MONTH',
+        reason: 'After the hull was raised in 2001, the official Russian government investigation concluded in 2002 that a high-test-peroxide (HTP) leak in a Type 65 practice torpedo caused an initial explosion that detonated the warheads of other torpedoes roughly two minutes later — an internal accident, not a collision. The conclusion is documented in the government report and corroborated by forensic examination of the recovered wreck, settling the cause.',
+        source: {
+          externalId: 'src:kursk-official-report-2002',
+          name: 'Russian submarine Kursk (K-141) — 2002 Russian government inquiry attributing the disaster to a Type 65 torpedo HTP explosion (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Russian_submarine_Kursk_(K-141)',
+          publishedAt: '2002-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Russian annexation of Crimea (2014) ─────────────────────────────────────
+  {
+    externalId: 'trajectory:russian-annexation-crimea-2014',
+    text: 'The Russian Federation annexed the Crimean Peninsula from Ukraine, with President Vladimir Putin signing the treaty of accession on 18 March 2014 following a disputed referendum on 16 March 2014; the international community overwhelmingly rejected the annexation as a violation of Ukraine\'s territorial integrity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-03-18',
+        datePrecision: 'DAY',
+        reason: 'Two days after a referendum held in Crimea under Russian military occupation reported overwhelming support for joining Russia, Vladimir Putin and the Crimean leadership sign a treaty in the Kremlin incorporating the Republic of Crimea and the federal city of Sevastopol into the Russian Federation. Russia treats the annexation as an accomplished fact and begins administering the territory; the signing is broadcast and reported worldwide.',
+        source: {
+          externalId: 'src:crimea-accession-treaty-2014',
+          name: 'Annexation of Crimea by the Russian Federation — accession treaty signed by Putin on 18 March 2014 (Wikipedia, synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Annexation_of_Crimea_by_the_Russian_Federation',
+          publishedAt: '2014-03-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-03-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 March 2014 the United Nations General Assembly adopts Resolution 68/262 ("Territorial integrity of Ukraine") by 100 votes to 11, with 58 abstentions, affirming Ukraine\'s internationally recognised borders and declaring the Crimean referendum invalid. The overwhelming majority of states refuse to recognise the annexation; the status of Crimea remains internationally contested, with Russia\'s control de facto but unrecognised in international law.',
+        source: {
+          externalId: 'src:un-ga-resolution-68-262-2014',
+          name: 'UN General Assembly Resolution 68/262, "Territorial integrity of Ukraine," adopted 27 March 2014 declaring the Crimean referendum invalid.',
+          url: 'https://en.wikipedia.org/wiki/United_Nations_General_Assembly_Resolution_68/262',
+          publishedAt: '2014-03-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Malaysia Airlines Flight 17 shot down over Donbas ───────────────────────
+  {
+    externalId: 'trajectory:mh17-shot-down-2014',
+    text: 'Malaysia Airlines Flight 17 was destroyed in flight over Donetsk Oblast, eastern Ukraine, on 17 July 2014, killing all 298 people aboard; investigations established it was downed by a Russian-supplied Buk surface-to-air missile fired from separatist-held territory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2014-07-17',
+        datePrecision: 'DAY',
+        reason: 'A Boeing 777 flying from Amsterdam to Kuala Lumpur breaks up in mid-air over Hrabove in Donetsk Oblast, scattering wreckage and bodies across separatist-controlled farmland. All 298 people aboard — 283 passengers and 15 crew — are killed. The crash is reported worldwide within hours, with the wreckage site filmed by journalists and residents.',
+        source: {
+          externalId: 'src:mh17-crash-2014',
+          name: 'Malaysia Airlines Flight 17 — destroyed over Donetsk Oblast on 17 July 2014, all 298 aboard killed (Wikipedia, synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17',
+          publishedAt: '2014-07-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2014-07-18',
+        datePrecision: 'DAY',
+        reason: 'In the days after the crash, Russian officials and state media advance multiple competing accounts — variously blaming a Ukrainian fighter jet or a Ukrainian Buk battery — while Ukraine and Western governments attribute the downing to a missile fired from separatist-held territory. The cause and responsibility are sharply disputed amid an information conflict.',
+        source: {
+          externalId: 'src:mh17-disputed-narratives-2014',
+          name: 'Malaysia Airlines Flight 17 — competing accounts of responsibility advanced in the aftermath (Wikipedia, "Malaysia Airlines Flight 17").',
+          url: 'https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17',
+          publishedAt: '2014-07-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-10-13',
+        datePrecision: 'DAY',
+        reason: 'The Dutch Safety Board\'s final report, published 13 October 2015, concludes that MH17 was struck by a 9N314M warhead carried on a 9M38-series Buk surface-to-air missile that detonated just above and to the left of the cockpit. The Joint Investigation Team subsequently (2016–2018) traced the Buk launcher to Russia\'s 53rd Anti-Aircraft Missile Brigade, and a Dutch court convicted three defendants on 17 November 2022 — settling the cause and origin of the missile.',
+        source: {
+          externalId: 'src:dutch-safety-board-mh17-2015',
+          name: 'Dutch Safety Board, "Crash of Malaysia Airlines flight MH17" — final report published 13 October 2015 (Buk 9M38 missile).',
+          url: 'https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17',
+          publishedAt: '2015-10-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kosovo declaration of independence ──────────────────────────────────────
+  {
+    externalId: 'trajectory:kosovo-independence-declaration-2008',
+    text: 'The Assembly of Kosovo unilaterally declared independence from Serbia on 17 February 2008; the International Court of Justice ruled in 2010 that the declaration did not violate international law.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2008-02-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-17',
+        datePrecision: 'DAY',
+        reason: 'Meeting in Pristina on 17 February 2008, members of the Assembly of Kosovo, together with President Fatmir Sejdiu and Prime Minister Hashim Thaçi, adopt a declaration proclaiming Kosovo "an independent and sovereign state." The session and its text are broadcast live and reported worldwide; the United States and several major European states recognise Kosovo within days.',
+        source: {
+          externalId: 'src:kosovo-declaration-2008',
+          name: '2008 Kosovo declaration of independence — adopted by the Assembly of Kosovo on 17 February 2008 (Wikipedia, synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence',
+          publishedAt: '2008-02-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2010-07-22',
+        datePrecision: 'DAY',
+        reason: 'Serbia rejected the declaration and, with Russia\'s backing, secured a UN General Assembly request for an advisory opinion. On 22 July 2010 the International Court of Justice held, 10 votes to 4, that the declaration of independence of 17 February 2008 "did not violate general international law." The ICJ opinion did not, however, settle Kosovo\'s statehood: Serbia, Russia, China, and many other states still do not recognise it, leaving its international status contested.',
+        source: {
+          externalId: 'src:icj-kosovo-opinion-2010',
+          name: 'International Court of Justice, Advisory Opinion on the Accordance with International Law of the Unilateral Declaration of Independence in Respect of Kosovo, 22 July 2010.',
+          url: 'https://en.wikipedia.org/wiki/2008_Kosovo_declaration_of_independence',
+          publishedAt: '2010-07-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
