@@ -56594,6 +56594,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Diu — Portuguese naval supremacy in the Indian Ocean ──────────
+  {
+    externalId: 'trajectory:battle-of-diu-1509',
+    text: 'On 3 February 1509 a Portuguese fleet under Viceroy Francisco de Almeida defeated a combined Mamluk, Gujarat Sultanate, and Calicut fleet off Diu, establishing Portuguese naval dominance over the western Indian Ocean.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1509-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1509-02-03',
+        datePrecision: 'DAY',
+        reason: 'Avenging his son Lourenço, killed at the Battle of Chaul in 1508, Almeida brings his fleet against the Mamluk-Gujarat-Calicut coalition in the harbour of Diu. The Portuguese gunnery routs the allied fleet: Mamluk ships are sunk or captured at the cost of a few hundred Portuguese casualties. The battle is recorded in the dispatches and chronicles of the Estado da Índia and breaks the attempt to expel the Portuguese from the Indian Ocean.',
+        source: {
+          externalId: 'src:battle-of-diu-1509-wikipedia',
+          name: 'Battle of Diu, 3 February 1509 — Portuguese fleet under Francisco de Almeida defeats the Mamluk-Gujarat-Calicut coalition.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Diu',
+          publishedAt: '1509-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1563-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The victory is recounted in the great Portuguese chronicles of Asia — Gaspar Correia\'s Lendas da Índia and João de Barros\'s Décadas da Ásia — and confirmed by the subsequent decades of Portuguese command of the sea routes. Diu is conventionally treated as the start of European naval dominance in Asian waters, an outcome and date that became fixed in the historical record.',
+        source: {
+          externalId: 'src:barros-decadas-diu-1563',
+          name: 'João de Barros. Décadas da Ásia, from 1552; Gaspar Correia, Lendas da Índia, c. 1563 — Portuguese chronicles of the Battle of Diu.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Diu',
+          publishedAt: '1563-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Portuguese conquest of Goa — capital of the Estado da Índia ─────────────
+  {
+    externalId: 'trajectory:portuguese-conquest-goa-1510',
+    text: 'On 25 November 1510 Afonso de Albuquerque stormed and definitively captured Goa from the Sultanate of Bijapur, making it the capital of Portuguese India for the next four and a half centuries.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1510-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1510-11-25',
+        datePrecision: 'DAY',
+        reason: 'Albuquerque had first taken Goa in February 1510 but was forced out by the monsoon-season counter-siege of the Bijapur forces. He returns and, on St Catherine\'s day, 25 November 1510, carries the city by a three-pronged assault. Albuquerque records the campaign in his own letters to King Manuel I, including a dispatch of 22 December 1510.',
+        source: {
+          externalId: 'src:albuquerque-letter-goa-1510',
+          name: 'Afonso de Albuquerque. Letters to King Manuel I of Portugal (incl. 22 December 1510) on the conquest of Goa.',
+          url: 'https://en.wikipedia.org/wiki/Portuguese_conquest_of_Goa',
+          publishedAt: '1510-12-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1557-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Brás de Albuquerque\'s Commentários do Grande Afonso de Albuquerque (1557) and Gaspar Correia\'s chronicles fix the date and course of the conquest. Goa became and remained the seat of the Portuguese viceroyalty in Asia until the Indian annexation of 1961, leaving the 1510 conquest an undisputed historical fact.',
+        source: {
+          externalId: 'src:comentarios-albuquerque-goa-1557',
+          name: 'Brás de Albuquerque. Comentários do Grande Afonso de Albuquerque, 1557 — account of the conquest of Goa.',
+          url: 'https://en.wikipedia.org/wiki/Portuguese_conquest_of_Goa',
+          publishedAt: '1557-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Haldighati — Maharana Pratap vs the Mughals ──────────────────
+  {
+    externalId: 'trajectory:battle-of-haldighati-1576',
+    text: 'On 18 June 1576 the army of Maharana Pratap of Mewar fought the Mughal force led by Raja Man Singh of Amber at the Haldighati pass; the Mughals held the field but Pratap escaped, sustaining Mewar\'s resistance to Akbar.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1576-06-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1576-06-18',
+        datePrecision: 'DAY',
+        reason: 'In the narrow defile of Haldighati near Gogunda, Pratap\'s smaller Rajput force clashes with Man Singh\'s Mughal army. The Mughals prevail tactically but Pratap, though wounded, breaks free and withdraws to the hills, continuing guerrilla resistance. The chronicler Abd al-Qadir Bada\'uni, who fought in the battle, records it as an eyewitness.',
+        source: {
+          externalId: 'src:badauni-haldighati-1576',
+          name: 'Abd al-Qadir Bada\'uni. Muntakhab al-Tawarikh — eyewitness account of the Battle of Haldighati (gives 21 June 1576).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Haldighati',
+          publishedAt: '1595-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1596-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Abu\'l-Fazl\'s official Akbarnama independently narrates the campaign and battle, corroborating Bada\'uni\'s eyewitness account. The two contemporary Mughal chronicles together fix Haldighati as a settled historical engagement, even as they differ by a few days on the exact date (18 vs 21 June 1576).',
+        source: {
+          externalId: 'src:akbarnama-haldighati-1596',
+          name: 'Abu\'l-Fazl ibn Mubarak. Akbarnama, c. 1590s — official Mughal account of the Haldighati campaign.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Haldighati',
+          publishedAt: '1596-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of the Khalsa — Guru Gobind Singh, Vaisakhi 1699 ──────────────
+  {
+    externalId: 'trajectory:founding-of-khalsa-1699',
+    text: 'On 13 April 1699, the day of Vaisakhi, Guru Gobind Singh founded the Khalsa at Anandpur Sahib, initiating the first five Sikhs (the Panj Pyare) and instituting the Khalsa order with its distinctive code and the names Singh and Kaur.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1699-04-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1699-04-13',
+        datePrecision: 'DAY',
+        reason: 'Summoning Sikhs to Anandpur Sahib on Vaisakhi, Guru Gobind Singh calls for volunteers willing to give their heads, initiates five of them as the Panj Pyare with amrit (sweetened water stirred with a double-edged sword), and is in turn initiated by them. The founding of the Khalsa transforms the Sikh community into a distinct, formally constituted order.',
+        source: {
+          externalId: 'src:khalsa-founding-1699-wikipedia',
+          name: 'Founding of the Khalsa by Guru Gobind Singh at Anandpur Sahib, Vaisakhi (13 April) 1699.',
+          url: 'https://en.wikipedia.org/wiki/Khalsa',
+          publishedAt: '1699-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1711-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The event is recorded in the near-contemporary verse chronicle Sri Gur Sobha, attributed to the court poet Sainapati and composed in the years after 1699, and is preserved in the living institutions of the Khalsa — its initiation rite, code of conduct, and the names Singh and Kaur — which have continued unbroken to the present, fixing the Vaisakhi 1699 founding as a settled fact.',
+        source: {
+          externalId: 'src:sri-gur-sobha-khalsa',
+          name: 'Sainapati. Sri Gur Sobha, early 18th century — near-contemporary account of the founding of the Khalsa.',
+          url: 'https://en.wikipedia.org/wiki/Khalsa',
+          publishedAt: '1711-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
