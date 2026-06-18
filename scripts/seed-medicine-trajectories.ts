@@ -11877,6 +11877,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID EPIDEMIC ERA (2011–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SPACE trial: opioids not superior for chronic pain — Krebs 2018 ─────────
+  {
+    externalId: 'trajectory:krebs-space-trial-opioids-not-superior-chronic-pain-2018',
+    text: 'Erin Krebs and colleagues reported in JAMA on March 6, 2018, that in the SPACE randomized clinical trial of 240 Veterans Affairs patients with chronic back pain or hip/knee osteoarthritis pain, opioid therapy was not superior to nonopioid medications for improving pain-related function over 12 months.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-03-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-03-06',
+        datePrecision: 'DAY',
+        reason: 'Krebs et al. published the SPACE trial in JAMA, the first pragmatic randomized trial directly comparing opioid to nonopioid medication regimens for chronic musculoskeletal pain over 12 months. It found opioids were not superior on pain-related function and produced worse pain intensity and more adverse effects, entering the literature as direct experimental evidence against the long-standing clinical premise that opioids are uniquely effective for chronic non-cancer pain.',
+        source: {
+          externalId: 'src:krebs-space-jama-2018',
+          name: 'Krebs EE, Gravely A, Nugent S, et al. Effect of Opioid vs Nonopioid Medications on Pain-Related Function in Patients With Chronic Back Pain or Hip or Knee Osteoarthritis Pain: The SPACE Randomized Clinical Trial. JAMA. 2018 Mar 6;319(9):872-882.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29509867/',
+          publishedAt: '2018-03-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-03',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s 2022 Clinical Practice Guideline for Prescribing Opioids for Pain cited SPACE among the evidence supporting nonopioid therapies as at least as effective as opioids for many chronic pain conditions, institutionally ratifying the trial\'s finding. The experimental result was thereby absorbed into national prescribing doctrine rather than remaining a contested single study.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2022-space',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022;71(3):1-95.',
+          url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
+          publishedAt: '2022-11-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Opana ER reformulation approved then removed — 2011–2020 ────────────────
+  {
+    externalId: 'trajectory:opana-er-reformulation-removed-abuse-2011',
+    text: 'The FDA approved Endo Pharmaceuticals\' reformulated Opana ER (oxymorphone hydrochloride extended-release, NDA 201655) on December 9, 2011, with physicochemical properties intended to resist crushing for abuse by snorting and injection — a benefit premise the agency repudiated on June 8, 2017, when it requested the drug\'s removal as the first marketed opioid pulled for the public-health consequences of abuse.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved reformulated Opana ER under NDA 201655, engineered to be resistant to physical and chemical manipulation for abuse. Although the FDA declined Endo\'s request for abuse-deterrent labeling, the product was marketed as a safer crush-resistant reformulation and replaced the original tablets, establishing the reformulation as a net-beneficial product.',
+        source: {
+          externalId: 'src:fr-opana-nda-201655-withdrawal-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg. 85(247), Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA requested that Endo remove reformulated Opana ER from the market, finding that the benefits no longer outweighed the risks. Postmarketing data showed the reformulation shifted abuse from nasal to injection, associated with an HIV and hepatitis C outbreak (Scott County, Indiana) and cases of thrombotic microangiopathy. It was the first time the agency sought removal of a currently marketed opioid for the public-health consequences of abuse, reversing the reformulation\'s net-benefit premise.',
+        source: {
+          externalId: 'src:fda-opana-removal-request-2017',
+          name: 'FDA. FDA requests removal of Opana ER for risks related to abuse. News announcement, June 8, 2017 (reproduced by HIV.gov).',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-12-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA formally withdrew approval of NDA 201655 for Opana ER in the Federal Register, completing the administrative reversal after Endo voluntarily ceased marketing in 2017. The product\'s regulatory existence was extinguished, confirming the repudiation of the reformulated drug\'s benefit-risk profile.',
+        source: {
+          externalId: 'src:fr-opana-nda-withdrawal-final-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg. 85(247), Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Zohydro ER approved over advisory committee 11-2 vote — 2013 ─────────────
+  {
+    externalId: 'trajectory:zohydro-er-fda-approval-over-advisory-committee-2013',
+    text: 'The FDA approved Zogenix\'s Zohydro ER (extended-release hydrocodone bitartrate, NDA 202880) on October 25, 2013 — the first single-entity, long-acting hydrocodone product without acetaminophen — over the 11-to-2 vote of its own Anesthetic and Analgesic Drug Products Advisory Committee against approval.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-10-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Zohydro ER as having a favorable benefit-risk profile for around-the-clock management of severe pain, overruling its own advisory committee, which had voted 11-2 against approval amid the prescription-opioid overdose epidemic. The approval institutionally established the drug as safe and effective despite expert-panel dissent.',
+        source: {
+          externalId: 'src:manchikanti-zohydro-pain-physician-2014',
+          name: 'Manchikanti L, Atluri S, Candido KD, et al. Zohydro approval by Food and Drug Administration: controversial or frightening? Pain Physician. 2014 Jul-Aug;17(4):E437-E450.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25054396/',
+          publishedAt: '2014-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Pain specialists publicly challenged the FDA\'s benefit-risk determination in Pain Physician, arguing that approving a high-dose, non-abuse-deterrent hydrocodone product against the advisory panel\'s 11-2 recommendation and amid an escalating overdose epidemic was unjustified. Combined with state and congressional opposition, the approval\'s safety premise became formally contested rather than settled.',
+        source: {
+          externalId: 'src:manchikanti-zohydro-contested-2014',
+          name: 'Manchikanti L, Atluri S, Candido KD, et al. Zohydro approval by Food and Drug Administration: controversial or frightening? Pain Physician. 2014 Jul-Aug;17(4):E437-E450.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25054396/',
+          publishedAt: '2014-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DATA-Waiver (X-waiver) eliminated — MAT Act 2022 ────────────────────────
+  {
+    externalId: 'trajectory:data-waiver-x-waiver-eliminated-mat-act-2022',
+    text: 'Section 1262 of the Consolidated Appropriations Act, 2023, signed December 29, 2022, eliminated the federal DATA-Waiver (\'X-waiver\') requirement, allowing any clinician with a Schedule III DEA registration to prescribe buprenorphine for opioid use disorder without the special waiver and patient caps that had governed office-based treatment since the Drug Addiction Treatment Act of 2000.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted the Mainstreaming Addiction Treatment (MAT) Act within the Consolidated Appropriations Act, 2023, removing the DATA-2000 waiver, the Notice of Intent, and per-prescriber patient caps for buprenorphine. The reversal repudiated two decades of gatekeeping premised on the idea that office-based opioid-dependence treatment required special restriction, reclassifying buprenorphine for OUD as an ordinary Schedule III prescribing activity.',
+        source: {
+          externalId: 'src:samhsa-mat-act-waiver-elimination',
+          name: 'SAMHSA. Waiver Elimination (MAT Act). Statutes, Regulations, and Guidelines.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act',
+          publishedAt: '2023-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The DEA operationalized the change in a Dear Registrant letter notifying practitioners that an X-waiver was no longer required to prescribe buprenorphine for opioid use disorder and that DATA-Waiver registration numbers would no longer be issued. The statutory reversal was thereby implemented across the federal controlled-substance registration system.',
+        source: {
+          externalId: 'src:dea-dear-registrant-x-waiver-2023',
+          name: 'DEA Diversion Control Division. Dear Registrant Letter on Elimination of the DATA-Waiver (X-Waiver) Requirement (A-23-0020).',
+          url: 'https://www.deadiversion.usdoj.gov/pubs/docs/A-23-0020-Dear-Registrant-Letter-Signed.pdf',
+          publishedAt: '2023-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pharmacy public-nuisance opioid verdict — MDL 2021 / Ohio Supreme Court 2024
+  {
+    externalId: 'trajectory:pharmacy-public-nuisance-opioid-verdict-mdl-2021',
+    text: 'A federal jury in the National Prescription Opiate Litigation (MDL 2804) found on November 23, 2021, that CVS, Walgreens, and Walmart had created a public nuisance by recklessly dispensing prescription opioids in Lake and Trumbull Counties, Ohio — the first trial verdict holding retail pharmacy chains liable for the opioid epidemic — a public-nuisance theory the Ohio Supreme Court later held barred by state product-liability law.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-11-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2021-11-23',
+        datePrecision: 'DAY',
+        reason: 'After a six-week trial in the federal opioid MDL before Judge Dan Aaron Polster, a jury found that CVS, Walgreens, and Walmart failed to maintain effective controls and created a public nuisance by oversupplying opioids in two Ohio counties. It was the first time pharmacy chains were held liable at trial for their role in the opioid crisis, establishing pharmacy dispensing conduct as a judicially cognizable public nuisance (Judge Polster later set abatement at $650.5 million).',
+        source: {
+          externalId: 'src:cnbc-pharmacy-opioid-verdict-2021',
+          name: 'CNBC. Jury holds CVS, Walgreens and Walmart responsible for role in opioid crisis. November 23, 2021.',
+          url: 'https://www.cnbc.com/2021/11/23/jury-holds-cvs-walgreens-and-walmart-responsible-for-role-in-opioid-crisis.html',
+          publishedAt: '2021-11-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-12-10',
+        datePrecision: 'DAY',
+        reason: 'Answering a certified question from the Sixth Circuit in In re National Prescription Opiate Litigation (2024-Ohio-5744), the Ohio Supreme Court held that all common-law public-nuisance claims arising from the sale of a product have been abrogated by the Ohio Product Liability Act. The ruling cut the legal foundation out from under the 2021 verdict and the $650.5 million judgment, repudiating the public-nuisance theory that had held the pharmacies liable.',
+        source: {
+          externalId: 'src:ohio-sct-opiate-nuisance-opla-2024',
+          name: 'Supreme Court of Ohio. In re National Prescription Opiate Litigation, 2024-Ohio-5744, 179 Ohio St.3d 74. Decided December 10, 2024.',
+          url: 'https://www.supremecourt.ohio.gov/rod/docs/pdf/0/2024/2024-ohio-5744.pdf',
+          publishedAt: '2024-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
