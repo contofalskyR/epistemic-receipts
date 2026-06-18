@@ -50492,6 +50492,250 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // INTERWAR & WWII ADDENDUM (1935–1941) — science, regulation, engineering
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Elixir Sulfanilamide disaster → Federal Food, Drug, and Cosmetic Act ─────
+  {
+    externalId: 'trajectory:elixir-sulfanilamide-disaster-1937',
+    text: 'The Elixir Sulfanilamide poisoning of autumn 1937 — caused by the use of toxic diethylene glycol as a solvent — killed over 100 Americans and led directly to the Federal Food, Drug, and Cosmetic Act, signed on 25 June 1938, which first required proof of drug safety before marketing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1937-10-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1937-10-11',
+        datePrecision: 'DAY',
+        reason: 'The S.E. Massengill Company began selling Elixir Sulfanilamide in September 1937, having dissolved the drug in diethylene glycol — a poisonous solvent — without any safety testing. On 11 October 1937 the American Medical Association received the first reports of deaths, prompting an emergency FDA inspection effort that traced and recovered the product. Roughly 107 people died, many of them children treated for sore throats.',
+        source: {
+          externalId: 'src:fda-sulfanilamide-disaster',
+          name: 'U.S. Food and Drug Administration. "Sulfanilamide Disaster." Histories of Product Regulation.',
+          url: 'https://www.fda.gov/about-fda/histories-product-regulation/sulfanilamide-disaster',
+          publishedAt: '1981-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1938-06-25',
+        datePrecision: 'DAY',
+        reason: 'Because the manufacturer had broken no federal safety law — the 1906 Pure Food and Drugs Act required no premarket testing — public outrage hastened final passage of the Federal Food, Drug, and Cosmetic Act, signed by President Roosevelt on 25 June 1938. The Act required manufacturers to demonstrate that new drugs were safe before marketing and remains the statutory basis of FDA regulation, settling the disaster as the founding case for modern drug-safety law.',
+        source: {
+          externalId: 'src:fda-1938-fdca',
+          name: 'U.S. Food and Drug Administration. "Part II: 1938, Food, Drug, Cosmetic Act."',
+          url: 'https://www.fda.gov/about-fda/changes-science-law-and-regulatory-authorities/part-ii-1938-food-drug-cosmetic-act',
+          publishedAt: '1938-06-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── First human treated with penicillin (Albert Alexander) ──────────────────
+  {
+    externalId: 'trajectory:penicillin-first-human-trial-1941',
+    text: 'On 12 February 1941, Oxford police constable Albert Alexander became the first person treated with injected penicillin by Howard Florey\'s team; he improved dramatically before relapsing and dying when the scarce supply ran out, demonstrating both penicillin\'s clinical efficacy and the urgent production problem.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-02-12',
+        datePrecision: 'DAY',
+        reason: 'Albert Alexander, a 43-year-old reserve constable, had developed an overwhelming Staphylococcus and Streptococcus infection from a facial wound. On 12 February 1941 Charles Fletcher, working under Florey and Chain at Oxford, injected him intravenously with purified penicillin. Within roughly 24 hours his temperature fell and the infection began to retreat — the first observed therapeutic effect of penicillin in a human.',
+        source: {
+          externalId: 'src:history-penicillin-alexander',
+          name: 'History of penicillin — first clinical trial; Albert Alexander treated 12 February 1941. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/History_of_penicillin',
+          publishedAt: '1941-02-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-08-16',
+        datePrecision: 'DAY',
+        reason: 'Penicillin supplies were exhausted by the fifth day, even after extraction from Alexander\'s urine, and he relapsed and died on 15 March 1941. The Oxford team reported his case and the other early human treatments in "Further Observations on Penicillin" (The Lancet, 16 August 1941), establishing penicillin\'s clinical efficacy in humans and framing mass production as the decisive remaining obstacle.',
+        source: {
+          externalId: 'src:lancet-further-observations-penicillin-1941',
+          name: 'Abraham EP, Chain E, Fletcher CM, Florey HW, Gardner AD, Heatley NG, Jennings MA. "Further Observations on Penicillin." The Lancet, 16 August 1941.',
+          url: 'https://www.ndorms.ox.ac.uk/files/news/19410816_florey_furtherobservationsonpenicillin_lancet.pdf',
+          publishedAt: '1941-08-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tacoma Narrows Bridge collapse — aeroelastic flutter ─────────────────────
+  {
+    externalId: 'trajectory:tacoma-narrows-collapse-1940',
+    text: 'The original Tacoma Narrows Bridge collapsed on 7 November 1940 when moderate winds induced self-exciting torsional oscillation of the deck; the cause was later established as wind-driven aeroelastic flutter rather than simple forced resonance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-11-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1940-11-07',
+        datePrecision: 'DAY',
+        reason: 'At about 11:00 a.m. on 7 November 1940, in a wind of roughly 40 mph, the four-month-old suspension bridge nicknamed "Galloping Gertie" twisted in violent torsional oscillations until the deck tore apart and fell into Puget Sound. The collapse was captured on film by Barney Elliott and Harbine Monroe and distributed worldwide; the only fatality was a dog left in a car on the span.',
+        source: {
+          externalId: 'src:tacoma-narrows-collapse-1940',
+          name: 'Tacoma Narrows Bridge (1940) — collapse on 7 November 1940. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Tacoma_Narrows_Bridge_(1940)',
+          publishedAt: '1940-11-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-03-28',
+        datePrecision: 'DAY',
+        reason: 'A federal investigation board (Ammann, von Kármán, Woodruff) reported on 28 March 1941 that the failure stemmed from aerodynamic instability of the unusually flexible, shallow deck. Yet for decades many undergraduate physics textbooks misattributed the collapse to ordinary forced mechanical resonance, leaving the precise mechanism contested between the engineering and physics-teaching literatures.',
+        source: {
+          externalId: 'src:tacoma-narrows-investigation-1941',
+          name: 'Tacoma Narrows Bridge (1940) — Ammann/von Kármán/Woodruff federal investigation report, 28 March 1941. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Tacoma_Narrows_Bridge_(1940)',
+          publishedAt: '1941-03-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-02-01',
+        datePrecision: 'MONTH',
+        reason: 'K. Yusuf Billah and Robert H. Scanlan, "Resonance, Tacoma Narrows bridge failure, and undergraduate physics textbooks" (American Journal of Physics 59, 118–124, February 1991), demonstrated that the collapse was caused by self-excited, negatively-damped aeroelastic flutter — not external forced resonance — settling the mechanism and correcting the long-standing textbook error.',
+        source: {
+          externalId: 'src:billah-scanlan-tacoma-1991',
+          name: 'Billah KY, Scanlan RH. "Resonance, Tacoma Narrows bridge failure, and undergraduate physics textbooks." Am. J. Phys. 59(2):118–124 (1991).',
+          url: 'https://ui.adsabs.harvard.edu/abs/1991AmJPh..59..118B/abstract',
+          publishedAt: '1991-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Daventry Experiment — first practical demonstration of radar ─────────────
+  {
+    externalId: 'trajectory:daventry-radar-experiment-1935',
+    text: 'On 26 February 1935 the Daventry Experiment demonstrated that a radio signal reflected off an aircraft could be detected on a receiver, giving the first practical proof of British radar.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-02-12',
+        datePrecision: 'DAY',
+        reason: 'Asked by the Tizard Committee whether a radio "death ray" was feasible, Robert Watson-Watt and Arnold Wilkins instead calculated that radio waves could not destroy aircraft but could detect them. Their secret memorandum "Detection and Location of Aircraft by Radio Methods" (mid-February 1935) proposed the idea as a feasibility claim requiring experimental test.',
+        source: {
+          externalId: 'src:daventry-memo-1935',
+          name: 'Daventry Experiment — Watson-Watt & Wilkins memorandum "Detection and Location of Aircraft by Radio Methods," February 1935. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Daventry_Experiment',
+          publishedAt: '1935-02-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-02-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 February 1935, using the BBC\'s shortwave transmitter at Borough Hill, Daventry, as the signal source and a receiver in a van near Upper Stowe, Wilkins observed clear deflections on a cathode-ray display as a Handley Page Heyford bomber flew through the beam on three passes. The successful detection turned the proposal into a recorded experimental result and secured funding for development.',
+        source: {
+          externalId: 'src:daventry-demonstration-1935',
+          name: 'Daventry Experiment — demonstration of 26 February 1935 detecting a Heyford bomber. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Daventry_Experiment',
+          publishedAt: '1935-02-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1940-09-15',
+        datePrecision: 'DAY',
+        reason: 'The principle was developed into the Chain Home network of coastal radar stations, operational from 1938. During the Battle of Britain — climactically on 15 September 1940 — Chain Home gave RAF Fighter Command early warning that proved decisive, settling radio detection of aircraft as an established, operational technology.',
+        source: {
+          externalId: 'src:chain-home-radar',
+          name: 'Chain Home — operational radar early-warning network derived from the Daventry Experiment. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Chain_Home',
+          publishedAt: '1940-09-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Konrad Zuse's Z3 — first working programmable digital computer ───────────
+  {
+    externalId: 'trajectory:zuse-z3-first-computer-1941',
+    text: 'Konrad Zuse\'s Z3, presented in Berlin on 12 May 1941, was the world\'s first working programmable, fully automatic digital computer, using binary floating-point arithmetic and a program read from punched film.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-05-12',
+        datePrecision: 'DAY',
+        reason: 'On 12 May 1941 Konrad Zuse presented the Z3 to an audience of scientists at the German Laboratory for Aviation (DVL) in Berlin. Built from about 2,600 relays, operating at 5–10 Hz with a 22-bit binary floating-point word and a program stored on punched film, it was the first machine to combine programmability, full automation, and binary digital arithmetic in working form.',
+        source: {
+          externalId: 'src:zuse-z3-presentation-1941',
+          name: 'Z3 (computer) — presented to scientists in Berlin, 12 May 1941. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Z3_(computer)',
+          publishedAt: '1941-05-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The original Z3 was destroyed in an Allied air raid in 1943, but a 1961 reconstruction and historical analysis confirmed its design. In 1998 Raúl Rojas ("How to Make Zuse\'s Z3 a Universal Computer," IEEE Annals of the History of Computing) proved the Z3 was in principle Turing-complete, cementing the scholarly consensus that it was the first working programmable, fully automatic digital computer.',
+        source: {
+          externalId: 'src:rojas-z3-universal-1998',
+          name: 'Rojas R. "How to Make Zuse\'s Z3 a Universal Computer." IEEE Annals of the History of Computing 20(3):51–54 (1998).',
+          url: 'https://www.semanticscholar.org/paper/How-to-Make-Zuse\'s-Z3-a-Universal-Computer-Rojas/8f10576e61754165a4ada51bd965f71090c2ebd4',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // COLD WAR & POSTWAR (1950–1990)
   // ═══════════════════════════════════════════════════════════════════════════════
 
