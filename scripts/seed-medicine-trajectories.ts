@@ -12106,6 +12106,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ONCOLOGY & WOMEN'S HEALTH ERA (1894–1996)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Halsted radical mastectomy — 1894 → 1985 ────────────────────────────────
+  {
+    externalId: 'trajectory:halsted-radical-mastectomy-breast-cancer-1894',
+    text: 'William Halsted reported in Annals of Surgery in 1894 that radical mastectomy — en bloc removal of the breast, underlying chest muscles, and axillary lymph nodes — produced very low local recurrence and was the proper curative operation for breast cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1894-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Halsted reported that among ~50 breast-cancer operations at Johns Hopkins only a few suffered local recurrence, versus rates as high as 60–85% reported by contemporaries. Grounded in the theory that breast cancer spreads orderly outward through contiguous tissue and lymphatics, the radical mastectomy was rapidly adopted as the standard curative operation and dominated breast-cancer surgery for roughly seventy years.',
+        source: {
+          externalId: 'src:halsted-cancer-breast-annals-surgery-1894',
+          name: 'Halsted WS. The Results of Operations for the Cure of Cancer of the Breast Performed at the Johns Hopkins Hospital from June, 1889, to January, 1894. Ann Surg. 1894;20(5):497–555.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17860107/',
+          publishedAt: '1894-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-03-14',
+        datePrecision: 'DAY',
+        reason: 'Bernard Fisher and the NSABP B-06 randomized trial reported in the New England Journal of Medicine that breast-conserving lumpectomy plus radiation gave survival equivalent to total mastectomy for early breast cancer, with no benefit from removing more tissue. This randomized evidence overturned the Halstedian premise that more radical surgery cures more cancer, ending radical mastectomy as standard care and inaugurating the era of breast conservation.',
+        source: {
+          externalId: 'src:fisher-nsabp-b06-mastectomy-lumpectomy-nejm-1985',
+          name: 'Fisher B, Bauer M, Margolese R, et al. Five-year results of a randomized clinical trial comparing total mastectomy and segmental mastectomy with or without radiation in the treatment of breast cancer. N Engl J Med. 1985;312(11):665–673.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/nejm198503143121101',
+          publishedAt: '1985-03-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Papanicolaou Pap smear — 1941 → 1951 ───────────────────────────────────
+  {
+    externalId: 'trajectory:papanicolaou-pap-smear-cervical-cancer-1941',
+    text: 'George Papanicolaou and Herbert Traut reported in the American Journal of Obstetrics and Gynecology in 1941 that exfoliated cells collected in a vaginal smear could detect carcinoma of the uterine cervix, including pre-symptomatic disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou and Traut published \'The diagnostic value of vaginal smears in carcinoma of the uterus\' in the American Journal of Obstetrics and Gynecology, demonstrating that microscopic examination of exfoliated cervico-vaginal cells could identify uterine carcinoma. After Papanicolaou\'s largely ignored 1928 announcement, this paper (consolidated in the 1943 Commonwealth Fund monograph) recorded in the expert literature the claim that a simple cytologic smear could detect cervical cancer before symptoms.',
+        source: {
+          externalId: 'src:papanicolaou-traut-vaginal-smears-ajog-1941',
+          name: 'Papanicolaou GN, Traut HF. The diagnostic value of vaginal smears in carcinoma of the uterus. Am J Obstet Gynecol. 1941;42:193–206.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9111103/',
+          publishedAt: '1941-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1950s the American Cancer Society and the National Cancer Institute endorsed and promoted Papanicolaou (\'Pap\') testing, and professional cytology bodies (the Inter-Society Cytology Council, founded 1951, forerunner of the American Society of Cytopathology) organized around the method. This institutional adoption settled cervical cytology as the standard population screening tool for cervical cancer, which it remained for decades and which drove a large decline in cervical-cancer mortality.',
+        source: {
+          externalId: 'src:statpearls-pap-hpv-cervical-screening-history',
+          name: 'Cooper DB, Dunton CJ. Preventing Cervical Cancer: Best Practices in Pap and HPV Testing (history of Pap test adoption). StatPearls, NCBI Bookshelf.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK470165/',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Progesterone isolation — 1934 → 1935 ────────────────────────────────────
+  {
+    externalId: 'trajectory:progesterone-isolation-corpus-luteum-hormone-1934',
+    text: 'Willard Allen and Oskar Wintersteiner reported in Science in 1934 the isolation of a pure crystalline hormone of the corpus luteum, later named progesterone, establishing the pregnancy-maintaining ovarian hormone as a single defined steroid.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1934-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1934 four independent teams (Allen & Wintersteiner in the US; Butenandt & Westphal, Slotta et al., and Hartmann & Wettstein in Europe) crystallized the corpus-luteum hormone responsible for maintaining pregnancy. Allen and Wintersteiner\'s Science report of \'crystalline progestin\' recorded the claim that the long-sought progestational principle was a single pure steroid that could be isolated and characterized.',
+        source: {
+          externalId: 'src:ninety-years-progesterone-review-2020',
+          name: 'Taraborrelli S. Ninety years of progesterone: the \'other\' ovarian hormone (review documenting the 1934 isolation by Allen & Wintersteiner and three European teams). PMC.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7354701/',
+          publishedAt: '2020-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1935-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1935 an international agreement standardized the name \'progesterone\' for the corpus-luteum hormone (as recorded in Nature), resolving competing names assigned by the rival 1934 isolation teams; the steroid\'s structure was concurrently established by Butenandt. The nomenclature and structural consensus institutionally settled the identity of progesterone as a defined hormone, underpinning all later progestational and contraceptive chemistry.',
+        source: {
+          externalId: 'src:nomenclature-corpus-luteum-hormone-nature-1935',
+          name: 'Nomenclature of Corpus Luteum Hormone. Nature. 1935;136:303.',
+          url: 'https://www.nature.com/articles/136303a0',
+          publishedAt: '1935-08-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ziel & Finkle unopposed estrogen / endometrial cancer — 1975 → 1996 ────
+  {
+    externalId: 'trajectory:ziel-finkle-unopposed-estrogen-endometrial-cancer-1975',
+    text: 'Harry Ziel and William Finkle reported in the New England Journal of Medicine on 4 December 1975 that postmenopausal women using conjugated estrogens had a roughly 7.6-fold increased risk of endometrial carcinoma, rising with duration of use.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-12-04',
+        datePrecision: 'DAY',
+        reason: 'Ziel and Finkle published a case-control study (94 endometrial-carcinoma cases) finding conjugated-estrogen use in 57% of cases versus 15% of controls, a risk ratio of 7.6 that climbed to 13.9 with seven or more years of exposure. Together with a companion paper by Smith et al. in the same issue, this recorded the claim that unopposed estrogen replacement is a cause of endometrial cancer, challenging the prevailing assumption that estrogen therapy was benign.',
+        source: {
+          externalId: 'src:ziel-finkle-endometrial-carcinoma-nejm-1975',
+          name: 'Ziel HK, Finkle WD. Increased risk of endometrial carcinoma among users of conjugated estrogens. N Engl J Med. 1975;293(23):1167–1170.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/171569/',
+          publishedAt: '1975-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-11-16',
+        datePrecision: 'DAY',
+        reason: 'Ralph Horwitz and Alvan Feinstein argued in the New England Journal of Medicine that the estrogen–endometrial-cancer association was inflated by detection bias: women on estrogen bleed more, prompting more diagnostic curettage and detection of cancer. Using an \'alternative\' control group of women who had all undergone curettage or hysterectomy, the odds ratio fell from ~12 to 1.7. This methodological challenge threw the causal claim into active dispute.',
+        source: {
+          externalId: 'src:horwitz-feinstein-detection-bias-nejm-1978',
+          name: 'Horwitz RI, Feinstein AR. Alternative analytic methods for case-control studies of estrogens and endometrial cancer. N Engl J Med. 1978;299(20):1089–1094.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/703785/',
+          publishedAt: '1978-11-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-02-07',
+        datePrecision: 'DAY',
+        reason: 'The randomized, placebo-controlled PEPI trial reported in JAMA that 62% of postmenopausal women given unopposed conjugated equine estrogen developed endometrial hyperplasia over three years versus 2% on placebo, while adding a progestin nearly abolished the excess. Randomized evidence immune to the detection-bias critique confirmed that unopposed estrogen is an endometrial carcinogen, settling the causal claim and entrenching combined estrogen–progestin regimens for women with a uterus.',
+        source: {
+          externalId: 'src:pepi-endometrial-histology-jama-1996',
+          name: 'Writing Group for the PEPI Trial. Effects of hormone replacement therapy on endometrial histology in postmenopausal women: the Postmenopausal Estrogen/Progestin Interventions (PEPI) Trial. JAMA. 1996;275(5):370–375.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8569016/',
+          publishedAt: '1996-02-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
