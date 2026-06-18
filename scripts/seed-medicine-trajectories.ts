@@ -9364,6 +9364,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR — STATINS, HYPERTENSION & ANTICOAGULATION ERA
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 4S simvastatin — first statin survival benefit 1994 ─────────────────────
+  {
+    externalId: 'trajectory:4s-simvastatin-survival-chd-1994',
+    text: 'On 19 November 1994 the Scandinavian Simvastatin Survival Study (4S) reported that simvastatin reduced all-cause mortality by 30% in 4,444 patients with coronary heart disease and elevated cholesterol, the first randomized trial to show that a statin saves lives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-11-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-11-19',
+        datePrecision: 'DAY',
+        reason: 'The 4S investigators reported in The Lancet that, over a median 5.4 years, simvastatin cut the relative risk of death to 0.70 (87.6% vs 91.3% survival), reduced major coronary events by 34%, and lowered revascularization by 37% in CHD patients. Earlier cholesterol trials (LRC-CPPT, clofibrate) had shown event reductions but never a survival benefit; 4S was the first to demonstrate that lipid lowering with a statin reduces total mortality, putting statin survival benefit on the experimental record.',
+        source: {
+          externalId: 'src:4s-simvastatin-lancet-1994',
+          name: 'Scandinavian Simvastatin Survival Study Group. Randomised trial of cholesterol lowering in 4444 patients with coronary heart disease: the Scandinavian Simvastatin Survival Study (4S). Lancet. 1994;344(8934):1383-1389.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7968073/',
+          publishedAt: '1994-11-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-05-16',
+        datePrecision: 'DAY',
+        reason: 'The NCEP Adult Treatment Panel III guideline, drawing on 4S and subsequent statin outcome trials, made LDL-lowering with statins the centerpiece of coronary risk management and codified aggressive LDL targets for patients with established CHD. By embedding statin therapy in national guidelines, the institutional community settled simvastatin\'s survival benefit as standard secondary-prevention practice.',
+        source: {
+          externalId: 'src:ncep-atp-iii-jama-2001',
+          name: 'Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. Executive Summary of the Third Report of the NCEP Expert Panel (Adult Treatment Panel III). JAMA. 2001;285(19):2486-2497.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11368702/',
+          publishedAt: '2001-05-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WOSCOPS pravastatin — first statin primary prevention 1995 ──────────────
+  {
+    externalId: 'trajectory:woscops-pravastatin-primary-prevention-1995',
+    text: 'On 16 November 1995 the West of Scotland Coronary Prevention Study (WOSCOPS) reported that pravastatin reduced coronary events by 31% in 6,595 hypercholesterolemic men with no prior myocardial infarction, the first statin trial to prove benefit in primary prevention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-11-16',
+        datePrecision: 'DAY',
+        reason: 'WOSCOPS, reported in the New England Journal of Medicine, randomized 6,595 men aged 45–64 with high cholesterol but no history of myocardial infarction to pravastatin or placebo and found a 31% reduction in nonfatal MI or coronary death over 4.9 years, with a 22% reduction in all-cause mortality. Where 4S had proven benefit in patients with existing disease, WOSCOPS extended the statin claim to apparently healthy high-cholesterol men, establishing statins for primary prevention in the literature.',
+        source: {
+          externalId: 'src:woscops-pravastatin-nejm-1995',
+          name: 'Shepherd J, Cobbe SM, Ford I, et al. Prevention of coronary heart disease with pravastatin in men with hypercholesterolemia. West of Scotland Coronary Prevention Study Group. N Engl J Med. 1995;333(20):1301-1307.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7566020/',
+          publishedAt: '1995-11-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-05-16',
+        datePrecision: 'DAY',
+        reason: 'The NCEP ATP III guideline incorporated primary-prevention statin trials such as WOSCOPS and AFCAPS/TexCAPS into a global-risk framework that recommended statin therapy for higher-risk individuals without established CHD. This institutionalized statins for primary prevention, settling the WOSCOPS claim into routine preventive cardiology.',
+        source: {
+          externalId: 'src:ncep-atp-iii-jama-2001',
+          name: 'Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. Executive Summary of the Third Report of the NCEP Expert Panel (Adult Treatment Panel III). JAMA. 2001;285(19):2486-2497.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11368702/',
+          publishedAt: '2001-05-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SHEP — isolated systolic hypertension in elderly treatable 1991 ──────────
+  {
+    externalId: 'trajectory:shep-isolated-systolic-hypertension-elderly-1991',
+    text: 'On 26 June 1991 the Systolic Hypertension in the Elderly Program (SHEP) reported that treating isolated systolic hypertension in adults aged 60 and older with low-dose chlorthalidone reduced stroke by 36%, establishing that isolated systolic hypertension is a treatable condition.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-06-26',
+        datePrecision: 'DAY',
+        reason: 'SHEP, a randomized double-blind placebo-controlled trial of 4,736 participants aged 60+ with systolic BP 160–219 mmHg and diastolic <90 mmHg, reported in JAMA that stepped-care treatment beginning with low-dose chlorthalidone cut total stroke by 36% over ~4.5 years. Isolated systolic hypertension in the elderly had previously been regarded by many clinicians as a benign or untreatable consequence of aging; SHEP put on record that treating it prevents stroke.',
+        source: {
+          externalId: 'src:shep-isolated-systolic-jama-1991',
+          name: 'SHEP Cooperative Research Group. Prevention of stroke by antihypertensive drug treatment in older persons with isolated systolic hypertension. Final results of the Systolic Hypertension in the Elderly Program (SHEP). JAMA. 1991;265(24):3255-3264.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2046107/',
+          publishedAt: '1991-06-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AFASAK warfarin — anticoagulation for stroke prevention in AF 1989 ───────
+  {
+    externalId: 'trajectory:afasak-warfarin-atrial-fibrillation-stroke-1989',
+    text: 'On 28 January 1989 the Copenhagen AFASAK study reported that warfarin anticoagulation prevented thromboembolic stroke in chronic non-rheumatic atrial fibrillation, the first randomized trial to establish anticoagulation for stroke prevention in atrial fibrillation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-01-28',
+        datePrecision: 'DAY',
+        reason: 'AFASAK randomized 1,007 patients with chronic atrial fibrillation to warfarin, aspirin, or placebo and found 5 thromboembolic events on warfarin versus 20 on aspirin and 21 on placebo, reported in The Lancet by Petersen and colleagues. It was the first placebo-controlled randomized trial to demonstrate that anticoagulation prevents stroke in non-rheumatic atrial fibrillation, opening the field of AF anticoagulation later confirmed by SPAF, BAATAF, and pooled analyses.',
+        source: {
+          externalId: 'src:afasak-warfarin-lancet-1989',
+          name: 'Petersen P, Boysen G, Godtfredsen J, Andersen ED, Andersen B. Placebo-controlled, randomised trial of warfarin and aspirin for prevention of thromboembolic complications in chronic atrial fibrillation. The Copenhagen AFASAK study. Lancet. 1989;1(8631):175-179.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2563096/',
+          publishedAt: '1989-01-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Coronary Drug Project high-dose estrogen — reversed in men 1970 ──────────
+  {
+    externalId: 'trajectory:coronary-drug-project-high-dose-estrogen-discontinued-1970',
+    text: 'On 16 November 1970 the Coronary Drug Project reported that high-dose conjugated estrogen (5.0 mg/day) given to men after myocardial infarction increased cardiovascular harm rather than protecting them, leading the trial to discontinue its high-dose estrogen and high-dose dextrothyroxine arms.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-11-16',
+        datePrecision: 'DAY',
+        reason: 'The Coronary Drug Project, a large randomized secondary-prevention trial in men with prior myocardial infarction, had included a high-dose conjugated-estrogen arm on the hypothesis that estrogen\'s apparent cardioprotection in women might benefit men. The 16 November 1970 JAMA report announced that the 5.0 mg/day estrogen group showed excess non-fatal reinfarction, thromboembolism, and a trend to higher mortality, and that this arm—together with high-dose dextrothyroxine—was being discontinued. The trial reversed the estrogen-cardioprotection hypothesis in men through pre-specified randomized surveillance, an early demonstration of a trial stopping a harmful arm.',
+        source: {
+          externalId: 'src:coronary-drug-project-initial-findings-jama-1970',
+          name: 'The Coronary Drug Project Research Group. The Coronary Drug Project. Initial findings leading to modifications of its research protocol. JAMA. 1970;214(7):1303-1313.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4320008/',
+          publishedAt: '1970-11-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── WHO Surgical Safety Checklist — 2009 ────────────────────────────────────
   {
     externalId: 'trajectory:who-surgical-safety-checklist-2009',

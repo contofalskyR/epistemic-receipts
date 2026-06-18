@@ -3974,6 +3974,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Tello reaches the Paracas Necropolis (Wari Kayan) ───────────────────────
+  {
+    externalId: 'trajectory:tello-paracas-necropolis-1925',
+    text: 'Peruvian archaeologist Julio C. Tello first reached the burial ground at Wari Kayan (Cerro Colorado) on the Paracas Peninsula, Peru, on 26 July 1925, and on 25 October 1927 his team uncovered the first of hundreds of textile-wrapped mummy bundles — revealing the previously unknown Paracas culture.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-07-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-07-26',
+        datePrecision: 'DAY',
+        reason: 'Pursuing a lead from ancient textiles he had bought at Pisco in 1915, Tello was guided by a local huaquero to the cemetery at Cerro Colorado and first visited the site on 26 July 1925, beginning the stratigraphic excavation of a major coastal necropolis. On 25 October 1927 he and Toribio Mejía Xesspe uncovered the first of the conical mummy bundles, recording the find under the auspices of San Marcos University and Peru\'s National Museum.',
+        source: {
+          externalId: 'src:tello-paracas-wikipedia',
+          name: 'Julio C. Tello — first visit to Wari Kayan (Cerro Colorado) on 26 July 1925; first mummy bundles uncovered 25 October 1927.',
+          url: 'https://en.wikipedia.org/wiki/Julio_C._Tello',
+          publishedAt: '1925-07-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Excavating roughly 429 mummy bundles wrapped in some of the finest embroidered textiles of pre-Columbian America, Tello used the stratigraphy of the cemetery to establish Paracas as a distinct society predating the Inca. The find and its attribution were published and corroborated by subsequent excavation; the Paracas culture (c. 800 BCE–100 CE) is settled in Andean archaeology.',
+        source: {
+          externalId: 'src:wari-kayan-paracas',
+          name: 'Wari Kayan necropolis, Paracas Peninsula — Tello and Mejía Xesspe excavations, 1925–1928.',
+          url: 'https://en.wikipedia.org/wiki/Wari_Kayan',
+          publishedAt: '1929-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lindbergh aerial survey of Maya ruins ───────────────────────────────────
+  {
+    externalId: 'trajectory:lindbergh-aerial-maya-survey-1929',
+    text: 'Charles and Anne Morrow Lindbergh, flying with Carnegie Institution archaeologist Alfred V. Kidder, conducted the first aerial photographic survey of Maya ruins over the Yucatán, Petén, and British Honduras on 6–10 October 1929, identifying five previously unrecorded sites and plotting others from the air.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-10-06',
+        datePrecision: 'DAY',
+        reason: 'Over five days, 6–10 October 1929, Lindbergh piloted a Sikorsky S-38 flying boat low over the jungle of northeast Guatemala, British Honduras and Yucatán while Anne Morrow Lindbergh photographed the canopy and Alfred Kidder observed from the air, identifying five Maya ruins and confirming sites previously reported but never plotted — the first use of aircraft to reconnoitre Maya archaeology.',
+        source: {
+          externalId: 'src:penn-museum-lindbergh-aerial-1929',
+          name: 'Penn Museum, "Archaeology Takes Wing" — Lindbergh and Kidder aerial survey of Maya ruins, 6–10 October 1929.',
+          url: 'https://www.penn.museum/sites/expedition/archaeology-takes-wing/',
+          publishedAt: '1929-10-06',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The success of the 1929 flight directly inspired Percy Madeira\'s more extensive 1930 University Museum aerial expedition, whose positions were checked against the "Lindbergh–Carnegie Institution flight of 1929." Aerial reconnaissance became an established method of Maya archaeology, and the Lindbergh photographs remained the only aerial record of the region in near-pristine condition until the 1960s.',
+        source: {
+          externalId: 'src:penn-journal-lindbergh-1930',
+          name: 'The Museum Journal, "An Aerial Expedition to Central America" — references the Lindbergh-Carnegie Institution flight of 1929.',
+          url: 'https://www.penn.museum/sites/journal/9316/',
+          publishedAt: '1930-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kosok recognizes the Nazca lines as deliberate geoglyphs ────────────────
+  {
+    externalId: 'trajectory:kosok-nazca-lines-1941',
+    text: 'Studying ancient coastal irrigation in Peru, historian Paul Kosok recognized in June 1941 that the Nazca desert markings formed a vast network of deliberate human-made lines and giant figures — one aligning with the June-solstice sunset — bringing the geoglyphs to scientific attention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-06-01',
+        datePrecision: 'MONTH',
+        reason: 'While surveying pre-Columbian irrigation works on the pampa near Nazca, Kosok realized the surface markings were a coordinated network of straight lines and large animal figures rather than old canals, and observed a line pointing to the setting sun on the southern winter solstice in June 1941 — leading him to call the desert "the largest astronomy book in the world" and to record the geoglyphs as deliberate human constructions.',
+        source: {
+          externalId: 'src:kosok-nazca-wikipedia',
+          name: 'Paul Kosok — field studies of the Nazca lines, 1940–1941; solstice alignment and recognition of the lines as deliberate constructions.',
+          url: 'https://en.wikipedia.org/wiki/Paul_Kosok',
+          publishedAt: '1941-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-01-01',
+        datePrecision: 'YEAR',
+        reason: 'From 1946 the mathematician Maria Reiche mapped and measured the lines over decades, and later survey, excavation and dating established them as deliberate geoglyphs made by the Nazca culture (c. 200 BCE–500 CE). The human-made origin and Nazca attribution are settled, even as Kosok\'s specific astronomical-calendar interpretation was later judged unsupported by Gerald Hawkins and Anthony Aveni.',
+        source: {
+          externalId: 'src:nazca-lines-wikipedia',
+          name: 'Nazca lines — Nazca-culture geoglyphs (c. 200 BCE–500 CE); Reiche\'s mapping from 1946; astronomical-calendar theory later disputed by Hawkins and Aveni.',
+          url: 'https://en.wikipedia.org/wiki/Nazca_lines',
+          publishedAt: '1946-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 14. Archduke Franz Ferdinand assassinated ───────────────────────────────
   {
     externalId: 'trajectory:franz-ferdinand-assassination-1914',
