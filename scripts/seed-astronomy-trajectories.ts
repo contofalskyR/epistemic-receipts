@@ -1554,6 +1554,223 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PARTICLE PHYSICS — STANDARD MODEL COMPLETIONS (1956–1995)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 35. Cowan & Reines — first neutrino detection — 1956 ────────────────────
+  {
+    externalId: 'trajectory:cowan-reines-neutrino-detection-1956',
+    text: 'Clyde Cowan, Frederick Reines, and collaborators reported the first direct experimental detection of the (anti)neutrino via inverse beta decay in a liquid scintillator beside the Savannah River reactor, publishing \'Detection of the Free Neutrino: a Confirmation\' in Science on 20 July 1956.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1956-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-07-20',
+        datePrecision: 'DAY',
+        reason: 'Cowan, Reines, Harrison, Kruse, and McGuire used the intense antineutrino flux from a fission reactor at Savannah River, detecting inverse beta decay (ν̄ + p → n + e⁺) through the delayed coincidence of positron annihilation gammas and neutron capture in a cadmium-loaded liquid scintillator. Published in Science vol. 124 (pp. 103–104, 20 July 1956), the result gave the first direct observation of the neutrino — a particle Pauli had postulated in 1930 and long thought undetectable — converting it from a theoretical bookkeeping device into an empirically established particle.',
+        source: {
+          externalId: 'src:cowan-reines-neutrino-science-1956',
+          name: 'Cowan CL Jr, Reines F, Harrison FB, Kruse HW, McGuire AD. Detection of the Free Neutrino: a Confirmation. Science. 1956;124(3212):103–104.',
+          url: 'https://www.science.org/doi/10.1126/science.124.3212.103',
+          publishedAt: '1956-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-10',
+        datePrecision: 'DAY',
+        reason: 'The detection was reproduced and refined over subsequent decades, and the neutrino became foundational to weak-interaction physics and the Standard Model. Frederick Reines was awarded the Nobel Prize in Physics on 10 December 1995 \'for the detection of the neutrino,\' institutionally settling the existence of the neutrino as a directly observed particle (Cowan having died in 1974 and being ineligible).',
+        source: {
+          externalId: 'src:nobel-physics-1995-reines-neutrino',
+          name: 'The Nobel Prize in Physics 1995. Nobel Foundation. Frederick Reines, \'for the detection of the neutrino.\'',
+          url: 'https://www.nobelprize.org/prizes/physics/1995/summary/',
+          publishedAt: '1995-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 36. Cronin & Fitch — CP violation — 1964 ────────────────────────────────
+  {
+    externalId: 'trajectory:cronin-fitch-cp-violation-1964',
+    text: 'James Christenson, James Cronin, Val Fitch, and René Turlay reported evidence that the long-lived neutral kaon decays into two pions — demonstrating violation of CP symmetry in the weak interaction — in \'Evidence for the 2π Decay of the K₂⁰ Meson\' in Physical Review Letters on 27 July 1964.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-07-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-07-27',
+        datePrecision: 'DAY',
+        reason: 'Using a separated neutral kaon beam at Brookhaven\'s Alternating Gradient Synchrotron, the team observed that the long-lived K₂⁰ — forbidden from decaying to two pions if CP were conserved — nonetheless produced about 45 two-pion decays in 22,700 events (a branching ratio ~2×10⁻³). Published in Physical Review Letters vol. 13 (pp. 138–140, 27 July 1964), the result showed that the combined charge-conjugation–parity symmetry is violated by the weak interaction, an unexpected asymmetry between matter and antimatter.',
+        source: {
+          externalId: 'src:christenson-cronin-fitch-cp-1964',
+          name: 'Christenson JH, Cronin JW, Fitch VL, Turlay R. Evidence for the 2π Decay of the K₂⁰ Meson. Physical Review Letters. 1964;13(4):138–140.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1964PhRvL..13..138C/abstract',
+          publishedAt: '1964-07-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-12-10',
+        datePrecision: 'DAY',
+        reason: 'CP violation was confirmed by subsequent kaon experiments and became a cornerstone of particle physics, motivating Sakharov\'s conditions for baryogenesis and the Kobayashi–Maskawa three-generation quark model. James Cronin and Val Fitch were awarded the Nobel Prize in Physics on 10 December 1980 \'for the discovery of violations of fundamental symmetry principles in the decay of neutral K-mesons,\' institutionally settling CP violation as a real feature of nature.',
+        source: {
+          externalId: 'src:nobel-physics-1980-cp-violation',
+          name: 'The Nobel Prize in Physics 1980. Nobel Foundation. James Cronin and Val Fitch, \'for the discovery of violations of fundamental symmetry principles in the decay of neutral K-mesons.\'',
+          url: 'https://www.nobelprize.org/prizes/physics/1980/summary/',
+          publishedAt: '1980-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 37. Perl — tau lepton discovery — 1975 ──────────────────────────────────
+  {
+    externalId: 'trajectory:perl-tau-lepton-1975',
+    text: 'Martin Perl and the SLAC-LBL Mark I collaboration reported anomalous electron–muon events in e⁺e⁻ annihilation interpretable as the production and decay of a new heavy charged lepton (the tau) in \'Evidence for Anomalous Lepton Production in e⁺e⁻ Annihilation\' in Physical Review Letters on 1 December 1975.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-12-01',
+        datePrecision: 'DAY',
+        reason: 'Sifting ~35,000 events from the Mark I detector at SLAC\'s SPEAR e⁺e⁻ collider, Perl\'s group found 24 events of the form e⁺e⁻ → e±μ∓ + missing energy that could not be explained by known particles. Published in Physical Review Letters vol. 35 (pp. 1489–1492, 1 December 1975), they interpreted these as pair-production of a new charged lepton of mass ~1.8 GeV — the tau — though the cautious \'anomalous lepton production\' framing reflected that the interpretation was not yet firmly established.',
+        source: {
+          externalId: 'src:perl-anomalous-lepton-1975',
+          name: 'Perl ML, et al. Evidence for Anomalous Lepton Production in e⁺-e⁻ Annihilation. Physical Review Letters. 1975;35(22):1489–1492.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1975PhRvL..35.1489P/abstract',
+          publishedAt: '1975-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-10',
+        datePrecision: 'DAY',
+        reason: 'Confirming experiments at DESY (PLUTO, DASP) and further SPEAR data established the new particle as a third-generation charged lepton, the tau, by the late 1970s. Martin Perl was awarded the Nobel Prize in Physics on 10 December 1995 \'for the discovery of the tau lepton,\' institutionally settling the existence of a third lepton generation and reshaping the structure of the Standard Model.',
+        source: {
+          externalId: 'src:nobel-physics-1995-perl-tau',
+          name: 'The Nobel Prize in Physics 1995. Nobel Foundation. Martin L. Perl, \'for the discovery of the tau lepton.\'',
+          url: 'https://www.nobelprize.org/prizes/physics/1995/summary/',
+          publishedAt: '1995-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 38. UA1 — W boson discovery — 1983 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:ua1-w-boson-1983',
+    text: 'The UA1 collaboration at CERN reported observation of isolated high-transverse-energy electrons with associated missing energy at the SPS proton–antiproton collider — the discovery of the W boson, mediator of the weak force — in Physics Letters B on 24 February 1983.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-02-24',
+        datePrecision: 'DAY',
+        reason: 'Using the Super Proton Synchrotron converted to a proton–antiproton collider at √s = 540 GeV (enabled by Simon van der Meer\'s stochastic cooling), Carlo Rubbia\'s UA1 team identified six events with an isolated high-pT electron balanced by large missing transverse energy — the signature of W → eν decay from a particle of mass ~80 GeV/c². Published in Physics Letters B vol. 122 (pp. 103–116, 24 February 1983), the result was the first direct observation of the W boson predicted by the Glashow–Weinberg–Salam electroweak theory.',
+        source: {
+          externalId: 'src:ua1-w-boson-plb-1983',
+          name: 'Arnison G, et al. (UA1 Collaboration). Experimental observation of isolated large transverse energy electrons with associated missing energy at √s = 540 GeV. Physics Letters B. 1983;122(1):103–116.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/0370269383911772',
+          publishedAt: '1983-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-12-10',
+        datePrecision: 'DAY',
+        reason: 'The W discovery was corroborated by the UA2 experiment and followed within months by UA1/UA2 observation of the neutral Z boson, jointly confirming the electroweak unification. Carlo Rubbia and Simon van der Meer were awarded the Nobel Prize in Physics on 10 December 1984 — barely a year after publication — \'for their decisive contributions to the large project which led to the discovery of the field particles W and Z, communicators of weak interaction,\' institutionally settling the experimental basis of the electroweak Standard Model.',
+        source: {
+          externalId: 'src:nobel-physics-1984-w-z-bosons',
+          name: 'The Nobel Prize in Physics 1984. Nobel Foundation. Carlo Rubbia and Simon van der Meer, \'for their decisive contributions to the large project, which led to the discovery of the field particles W and Z.\'',
+          url: 'https://www.nobelprize.org/prizes/physics/1984/summary/',
+          publishedAt: '1984-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 39. CDF & D0 — top quark observation — 1995 ─────────────────────────────
+  {
+    externalId: 'trajectory:cdf-d0-top-quark-1995',
+    text: 'The CDF collaboration at Fermilab\'s Tevatron reported observation of top quark production in proton–antiproton collisions — completing the third quark generation of the Standard Model — in Physical Review Letters on 3 April 1995, simultaneously with an independent D0 observation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-04-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-04-03',
+        datePrecision: 'DAY',
+        reason: 'Using p̄p collisions at √s = 1.8 TeV at the Tevatron, the CDF collaboration identified top–antitop pair production in lepton-plus-jets and dilepton channels with b-quark tagging, measuring a top mass of ~176 GeV/c² at 4.8σ significance. Published in Physical Review Letters vol. 74 (pp. 2626–2631, 3 April 1995), the result was the first observation of the top quark — the long-sought sixth quark whose existence was required by the three-generation quark structure and electroweak consistency.',
+        source: {
+          externalId: 'src:cdf-top-quark-prl-1995',
+          name: 'Abe F, et al. (CDF Collaboration). Observation of Top Quark Production in p̄p Collisions with the Collider Detector at Fermilab. Physical Review Letters. 1995;74(14):2626–2631.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1995PhRvL..74.2626A/abstract',
+          publishedAt: '1995-04-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-04-03',
+        datePrecision: 'DAY',
+        reason: 'The D0 collaboration published an independent observation of the top quark in the same issue of Physical Review Letters (vol. 74, pp. 2632–2637), reporting a consistent top mass at comparable significance. The simultaneous, mutually corroborating observations by two independent detectors settled the existence of the top quark essentially at announcement, completing the Standard Model\'s fermion content.',
+        source: {
+          externalId: 'src:d0-top-quark-prl-1995',
+          name: 'Abachi S, et al. (D0 Collaboration). Observation of the Top Quark. Physical Review Letters. 1995;74(14):2632–2637.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1995PhRvL..74.2632A/abstract',
+          publishedAt: '1995-04-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
