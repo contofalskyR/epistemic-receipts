@@ -12797,6 +12797,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CANCER BIOLOGY & ONCOLOGY FOUNDATIONS (1896–1966)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1. Beatson oophorectomy — hormone-dependent breast cancer 1896 ───────────
+  {
+    externalId: 'trajectory:beatson-oophorectomy-breast-cancer-hormone-dependence-1896',
+    text: 'George Beatson reported in The Lancet in July 1896 that removing the ovaries (oophorectomy) caused regression of advanced inoperable breast cancer in premenopausal women, the first demonstration that a cancer\'s growth depends on an endocrine (ovarian) influence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1896-07-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-07-11',
+        datePrecision: 'DAY',
+        reason: 'Beatson, a Glasgow surgeon, reasoning from the ovarian control of lactation, removed the ovaries in women with inoperable breast cancer and observed marked tumor regression in a responding case (a remission lasting some 42 months). Published in The Lancet, this recorded the claim that breast cancer can be hormonally dependent and controlled by ablating an endocrine organ — decades before estrogen or its receptor were known.',
+        source: {
+          externalId: 'src:beatson-inoperable-carcinoma-mamma-lancet-1896',
+          name: 'Beatson GT. On the Treatment of Inoperable Cases of Carcinoma of the Mamma: Suggestions for a New Method of Treatment, with Illustrative Cases. Lancet. 1896;148(3802):104–107; (3803):162–165.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(01)72384-7/fulltext',
+          publishedAt: '1896-07-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1966-12-10',
+        datePrecision: 'DAY',
+        reason: 'Ovarian ablation became accepted as standard treatment for premenopausal advanced breast cancer by the 1960s, and the broader principle that hormone manipulation can control cancer was vindicated when Charles Huggins shared the 1966 Nobel Prize for endocrine therapy of cancer — work that began from Beatson\'s insight. The hormone-dependence claim was further mechanistically settled by the later identification of the estrogen receptor, making endocrine therapy a permanent pillar of oncology.',
+        source: {
+          externalId: 'src:ovarian-ablation-breast-cancer-lancet-oncol-2007',
+          name: 'Ovarian ablation as a non-surgical treatment for breast cancer. Lancet Oncology. 2007;8(8):700. (reviews Beatson\'s legacy and the establishment of ovarian ablation as standard treatment)',
+          url: 'https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(07)70412-6/abstract',
+          publishedAt: '2007-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 2. Rous sarcoma virus — filterable tumor agent 1911 ──────────────────────
+  {
+    externalId: 'trajectory:rous-sarcoma-virus-filterable-tumor-agent-1911',
+    text: 'Peyton Rous reported in the Journal of Experimental Medicine in April 1911 that a malignant sarcoma of the domestic fowl could be transmitted to healthy chickens by a cell-free filtrate of the tumor, establishing that a sub-microscopic transmissible agent (a virus) could cause cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1911-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1911-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Rous, at the Rockefeller Institute, showed that a spindle-cell sarcoma in Plymouth Rock hens could be propagated in new birds using a Berkefeld-filtered, cell-free tumor extract that excluded both tumor cells and bacteria. This recorded in the expert literature the radical claim that cancer could be caused by a filterable infectious agent. The finding was widely doubted for decades because it was thought to be a peculiarity of birds with no bearing on mammalian or human cancer.',
+        source: {
+          externalId: 'src:rous-fowl-sarcoma-jem-1911',
+          name: 'Rous P. A Sarcoma of the Fowl Transmissible by an Agent Separable from the Tumor Cells. J Exp Med. 1911;13(4):397–411.',
+          url: 'https://rupress.org/jem/article/13/4/397/6143/A-SARCOMA-OF-THE-FOWL-TRANSMISSIBLE-BY-AN-AGENT',
+          publishedAt: '1911-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1966-12-10',
+        datePrecision: 'DAY',
+        reason: 'After tumor viruses were repeatedly confirmed in mammals and the molecular mechanism of viral oncogenesis began to be understood, the Nobel Assembly awarded Peyton Rous the 1966 Nobel Prize in Physiology or Medicine \'for his discovery of tumour-inducing viruses,\' 55 years after his original report. The award marked institutional acceptance of the once-dismissed claim that viruses can cause cancer, vindicating the 1911 finding.',
+        source: {
+          externalId: 'src:nobel-medicine-rous-1966',
+          name: 'The Nobel Prize in Physiology or Medicine 1966 — Peyton Rous (shared with Charles B. Huggins). Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1966/summary/',
+          publishedAt: '1966-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 3. Fibiger Spiroptera worm causes cancer 1913 (reversed) ─────────────────
+  {
+    externalId: 'trajectory:fibiger-spiroptera-worm-causes-cancer-1913',
+    text: 'Johannes Fibiger claimed in 1913 that the nematode worm Spiroptera (Gongylonema neoplasticum) causes carcinoma of the stomach in rats, a hypothesis institutionally endorsed by the 1926 Nobel Prize and later overturned as the lesions were shown to be vitamin-A-deficiency changes, not worm-induced cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Fibiger published experiments reporting that rats fed cockroaches infected with a nematode he called Spiroptera developed papillomatous and carcinomatous tumors of the stomach, asserting the first deliberate experimental induction of cancer by a defined parasitic cause. This recorded in the literature the claim that a worm could cause cancer.',
+        source: {
+          externalId: 'src:fibiger-spiroptera-krebsforschung-1913',
+          name: 'Fibiger J. Untersuchungen über eine Nematode (Spiroptera sp. n.) und deren Fähigkeit, papillomatöse und carcinomatöse Geschwulstbildungen im Magen der Ratte hervorzurufen. Zeitschrift für Krebsforschung. 1913;13:217–280. (history in Wikipedia: Johannes Fibiger)',
+          url: 'https://en.wikipedia.org/wiki/Johannes_Fibiger',
+          publishedAt: '1913-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1927-12-10',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Assembly awarded Fibiger the 1926 Nobel Prize in Physiology or Medicine (reserved in 1926 and conferred in 1927) \'for his discovery of the Spiroptera carcinoma,\' the highest institutional endorsement available. The award treated the worm-causes-stomach-cancer claim as established fact and made it canonical in textbooks of the period.',
+        source: {
+          externalId: 'src:nobel-medicine-fibiger-1926',
+          name: 'The Nobel Prize in Physiology or Medicine 1926 — Johannes Andreas Grib Fibiger, \'for his discovery of the Spiroptera carcinoma.\' Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1926/fibiger/facts/',
+          publishedAt: '1927-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Controlled experiments — culminating in Hitchcock and Bell\'s 1952 study — showed that the nematode is not carcinogenic and that the gastric lesions Fibiger observed were largely vitamin-A-deficiency-driven metaplasia and benign papillomas, not true invasive carcinomas. Historical reanalysis confirmed Fibiger had mistaken non-malignant lesions for cancer, overturning the prize-winning claim; it is now the canonical example of a \'wrong\' Nobel Prize.',
+        source: {
+          externalId: 'src:fibiger-wrong-nobel-annals-1992',
+          name: 'Stolt CM, et al. Johannes Fibiger and His Nobel Prize for the Hypothesis That a Worm Causes Stomach Cancer. Ann Intern Med. 1992;116(9):765–769. (documents 1952 disproof and vitamin-A explanation)',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-116-9-765',
+          publishedAt: '1992-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 4. Yamagiwa–Ichikawa coal-tar chemical carcinogenesis 1915 ───────────────
+  {
+    externalId: 'trajectory:yamagiwa-ichikawa-coal-tar-chemical-carcinogenesis-1915',
+    text: 'Katsusaburo Yamagiwa and Koichi Ichikawa reported in 1915 that repeatedly painting coal tar on the inner ears of rabbits induced squamous-cell carcinoma, providing the first experimental proof that a chemical agent can cause cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Yamagiwa and Ichikawa of Tokyo Imperial University, after months of repeated coal-tar application to rabbit ears, observed progression from papillomas to true squamous-cell carcinoma and published the first report of \'Experimental study on the pathogenesis of epithelial tumors\' (in German, Mitteilungen of the Medical Faculty, 1915; English translation in the Journal of Cancer Research, 1918). This recorded the claim that cancer could be artificially produced by a chemical, transforming Percivall Pott\'s epidemiologic observation into reproducible laboratory science.',
+        source: {
+          externalId: 'src:yamagiwa-ichikawa-epithelial-tumors-1915',
+          name: 'Yamagiwa K, Ichikawa K. Experimental study on the pathogenesis of epithelial tumors (I report), 1915; English: Experimental study of the pathogenesis of carcinoma. J Cancer Res. 1918;3:1–29. (reproduced/summarized in Nakayama, Cancer Sci. 2015, PMC4317818)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4317818/',
+          publishedAt: '1915-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The coal-tar result was reproduced internationally (e.g., the rabbit-ear and mouse-skin models of the 1920s) and culminated in Cook, Hewett and Hieger\'s 1933 isolation of a pure carcinogenic hydrocarbon (benzo[a]pyrene) from coal tar, identifying a single defined chemical sufficient to cause cancer. Reproducibility and chemical identification settled experimental chemical carcinogenesis as a foundational discipline of oncology.',
+        source: {
+          externalId: 'src:yamagiwa-origins-chemical-carcinogenesis-jsis',
+          name: 'Yamagiwa and the Origins of Chemical Carcinogenesis. Univ. of Washington Jackson School of International Studies. (documents reproduction and the foundational status of experimental chemical carcinogenesis)',
+          url: 'https://jsis.washington.edu/archive/5379.html',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 5. Boveri chromosome somatic-mutation theory of cancer 1914 ──────────────
+  {
+    externalId: 'trajectory:boveri-chromosome-somatic-mutation-theory-cancer-1914',
+    text: 'Theodor Boveri proposed in his 1914 monograph \'Zur Frage der Entstehung maligner Tumoren\' that malignant tumors arise as clonal outgrowths of a single cell carrying an abnormal chromosome constitution, anticipating somatic-mutation, oncogene, and tumor-suppressor concepts of cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Drawing on his sea-urchin work showing that abnormal chromosome combinations disrupt cell development, Boveri argued that a tumor is the clonal progeny of one cell with an aberrant chromosome complement, and presciently posited factors that promote and others that inhibit division (anticipating oncogenes and tumor suppressors). This recorded the chromosomal/somatic-mutation theory of cancer origin in the scientific literature.',
+        source: {
+          externalId: 'src:boveri-malignant-tumours-jcs-1914',
+          name: 'Boveri T. Zur Frage der Entstehung maligner Tumoren. Jena: Gustav Fischer; 1914. (Concerning the Origin of Malignant Tumours, trans./annot. H. Harris, J Cell Sci 2008;121 Suppl 1.)',
+          url: 'https://doi.org/10.1242/jcs.025759',
+          publishedAt: '1914-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Late-20th-century cancer genetics — the demonstration of clonal somatic mutation, cellular oncogenes, tumor-suppressor genes, and aneuploidy in tumors — confirmed Boveri\'s core predictions, and Henry Harris\'s authoritative 2008 translation and reassessment recognized the 1914 monograph as a foundational, vindicated statement of how cancer originates. The somatic-mutation theory Boveri sketched is now the settled framework of molecular oncology.',
+        source: {
+          externalId: 'src:harris-boveri-reassessment-jcs-2008',
+          name: 'Harris H. Concerning the Origin of Malignant Tumours by Theodor Boveri — translation and commentary. J Cell Sci. 2008;121(Suppl 1):1–84.',
+          url: 'https://doi.org/10.1242/jcs.025759',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
