@@ -3413,6 +3413,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR EPIDEMIOLOGY & THERAPEUTICS ERA (1961–1998)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── N+5. Framingham risk-factor concept — 1961 → settled 1998 ───────────────
+  {
+    externalId: 'trajectory:framingham-risk-factor-concept-1961',
+    text: 'In July 1961 William Kannel and colleagues of the Framingham Heart Study reported that elevated serum cholesterol, high blood pressure, and electrocardiographic left ventricular hypertrophy were \'factors of risk\' predicting the development of coronary heart disease, introducing the risk-factor concept into cardiovascular medicine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1961-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1961-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In the Annals of Internal Medicine, Kannel et al. analyzed six-year follow-up of the Framingham cohort and reported that serum cholesterol, blood pressure, and ECG-LVH each independently predicted coronary heart disease, coining the phrase \'factors of risk.\' This put on the scientific record the then-novel claim that future heart disease could be statistically forecast from measurable antecedent characteristics, shifting cardiovascular thinking from acute events toward prospective prediction.',
+        source: {
+          externalId: 'src:kannel-factors-of-risk-framingham-annintmed-1961',
+          name: 'Kannel WB, Dawber TR, Kagan A, Revotskie N, Stokes J 3rd. Factors of risk in the development of coronary heart disease--six year follow-up experience. The Framingham Study. Ann Intern Med. 1961;55:33-50.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13751193/',
+          publishedAt: '1961-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-05-12',
+        datePrecision: 'DAY',
+        reason: 'Wilson et al. published the Framingham multivariable risk functions in Circulation, converting the qualitative risk-factor concept into validated sex-specific scoring algorithms that estimate an individual\'s 10-year coronary heart disease probability from cholesterol, blood pressure, age, diabetes, and smoking. Adopted into NCEP ATP III and successor prevention guidelines, this operationalized the 1961 claim as settled, routine clinical practice.',
+        source: {
+          externalId: 'src:wilson-framingham-risk-score-circulation-1998',
+          name: 'Wilson PWF, D\'Agostino RB, Levy D, Belanger AM, Silbershatz H, Kannel WB. Prediction of coronary heart disease using risk factor categories. Circulation. 1998;97(18):1837-1847.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9603539/',
+          publishedAt: '1998-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+6. Captopril — first ACE inhibitor FDA approval 1981 → SAVE trial 1992 ─
+  {
+    externalId: 'trajectory:captopril-first-ace-inhibitor-approval-1981',
+    text: 'On 6 April 1981 the U.S. FDA approved captopril (Capoten, E.R. Squibb, NDA 18-343), the first orally active angiotensin-converting-enzyme (ACE) inhibitor, establishing a rationally designed new drug class for treating hypertension.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1981-04-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-04-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved captopril under NDA 18-343, accepting evidence that inhibiting angiotensin-converting enzyme lowers blood pressure. Designed by Ondetti, Rubin, and Cushman at Squibb from the structure of the ACE active site, it was the first ACE inhibitor and a landmark of rational drug design, but its initial indication was limited to hypertension and a hard mortality benefit had not yet been demonstrated.',
+        source: {
+          externalId: 'src:fda-drugsfda-captopril-capoten-nda18343',
+          name: 'FDA. Drugs@FDA record for CAPOTEN (captopril), NDA 018343, original approval (ORIG-1) dated 6 April 1981 (openFDA drugsfda endpoint).',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=application_number:NDA018343&limit=1',
+          publishedAt: '1981-04-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-09-03',
+        datePrecision: 'DAY',
+        reason: 'The SAVE trial (Pfeffer et al., NEJM) randomized 2,231 post-myocardial-infarction patients with left ventricular dysfunction and found captopril significantly reduced all-cause mortality and cardiovascular events. This demonstrated a hard survival benefit beyond blood-pressure lowering, settling ACE inhibition as evidence-based standard therapy for post-MI and heart-failure patients, a status the class retains.',
+        source: {
+          externalId: 'src:save-captopril-pfeffer-nejm-1992',
+          name: 'Pfeffer MA, Braunwald E, Moyé LA, et al. Effect of captopril on mortality and morbidity in patients with left ventricular dysfunction after myocardial infarction. Results of the Survival and Ventricular Enlargement Trial. N Engl J Med. 1992;327(10):669-677.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1386652/',
+          publishedAt: '1992-09-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+7. LRC-CPPT — first RCT proof cholesterol lowering prevents CHD 1984 ───
+  {
+    externalId: 'trajectory:lrc-cppt-cholesterol-lowering-prevents-chd-1984',
+    text: 'On 20 January 1984 the Lipid Research Clinics Coronary Primary Prevention Trial reported that lowering blood cholesterol with cholestyramine reduced the incidence of coronary heart disease in hypercholesterolemic men, the first randomized proof that reducing cholesterol prevents heart disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1984-01-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-01-20',
+        datePrecision: 'DAY',
+        reason: 'The LRC-CPPT, a multicenter randomized double-blind trial in 3,806 asymptomatic men with primary hypercholesterolemia, reported in JAMA that the bile-acid sequestrant cholestyramine lowered LDL cholesterol and cut definite coronary death and nonfatal myocardial infarction by 19% versus placebo. This was the first randomized demonstration that lowering cholesterol itself reduces coronary events, putting the long-debated \'lipid hypothesis\' on the experimental record.',
+        source: {
+          externalId: 'src:lrc-cppt-results-jama-1984',
+          name: 'Lipid Research Clinics Program. The Lipid Research Clinics Coronary Primary Prevention Trial results. I. Reduction in incidence of coronary heart disease. JAMA. 1984;251(3):351-364.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6361299/',
+          publishedAt: '1984-01-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-04-12',
+        datePrecision: 'DAY',
+        reason: 'An NIH Consensus Development Conference, drawing heavily on the LRC-CPPT, concluded that lowering elevated blood cholesterol reduces the risk of coronary heart disease and recommended population-wide cholesterol detection and treatment. Published in JAMA, the statement launched the National Cholesterol Education Program, institutionally settling cholesterol reduction as a national cardiovascular-prevention strategy.',
+        source: {
+          externalId: 'src:nih-consensus-lowering-cholesterol-jama-1985',
+          name: 'Consensus Conference. Lowering blood cholesterol to prevent heart disease. JAMA. 1985;253(14):2080-2086.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3974099/',
+          publishedAt: '1985-04-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+8. GISSI — first large-trial proof thrombolysis saves lives in MI 1986 ──
+  {
+    externalId: 'trajectory:gissi-streptokinase-thrombolysis-acute-mi-1986',
+    text: 'On 22 February 1986 the Italian GISSI trial reported that intravenous streptokinase given during acute myocardial infarction reduced 21-day mortality by about 18%, the first large-scale proof that thrombolytic therapy saves lives in heart attack.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-02-22',
+        datePrecision: 'DAY',
+        reason: 'The GISSI Collaborative Group\'s randomized trial in 11,806 patients, published in the Lancet, showed that intravenous streptokinase within 12 hours of acute MI significantly reduced in-hospital mortality, with the largest benefit when given early. This recorded the first unambiguous large-trial evidence that dissolving the coronary thrombus — not merely managing the infarct — reduces death, validating the thrombolytic/\'open-artery\' strategy.',
+        source: {
+          externalId: 'src:gissi-streptokinase-lancet-1986',
+          name: 'Gruppo Italiano per lo Studio della Streptochinasi nell\'Infarto Miocardico (GISSI). Effectiveness of intravenous thrombolytic treatment in acute myocardial infarction. Lancet. 1986;1(8478):397-402.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2868337/',
+          publishedAt: '1986-02-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-08-13',
+        datePrecision: 'DAY',
+        reason: 'The ISIS-2 trial confirmed and extended GISSI, showing streptokinase and aspirin each reduced vascular mortality in suspected acute MI and were additive together. The convergent results from two very large randomized trials settled thrombolysis as standard global treatment for acute myocardial infarction throughout the pre-angioplasty era.',
+        source: {
+          externalId: 'src:isis2-aspirin-streptokinase-lancet-1988-gissi-confirm',
+          name: 'ISIS-2 (Second International Study of Infarct Survival) Collaborative Group. Randomised trial of intravenous streptokinase, oral aspirin, both, or neither among 17,187 cases of suspected acute myocardial infarction: ISIS-2. Lancet. 1988;2(8607):349-360.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2899772/',
+          publishedAt: '1988-08-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── N+9. Physicians' Health Study — aspirin primary prevention 1988 → contested 2018 ─
+  {
+    externalId: 'trajectory:physicians-health-study-aspirin-primary-prevention-1988',
+    text: 'On 28 January 1988 the Physicians\' Health Study reported that low-dose aspirin (325 mg every other day) reduced the risk of a first myocardial infarction by 44% in healthy middle-aged men, establishing aspirin for the primary prevention of heart attack.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-28',
+        datePrecision: 'DAY',
+        reason: 'The Steering Committee of the Physicians\' Health Study Research Group published a preliminary report in the NEJM after the aspirin arm of the 22,071-physician randomized trial was stopped early: aspirin produced a 44% reduction in first myocardial infarction. This recorded the claim that aspirin could prevent a first heart attack in apparently healthy people, distinct from its established use in treating acute events.',
+        source: {
+          externalId: 'src:physicians-health-study-aspirin-nejm-1988',
+          name: 'Steering Committee of the Physicians\' Health Study Research Group. Preliminary report: findings from the aspirin component of the ongoing Physicians\' Health Study. N Engl J Med. 1988;318(4):262-264.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3275899/',
+          publishedAt: '1988-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-10-18',
+        datePrecision: 'DAY',
+        reason: 'The ASPREE trial (McNeil et al., NEJM) randomized 19,114 healthy older adults and found that low-dose aspirin did not reduce cardiovascular events while significantly increasing major hemorrhage, echoing the contemporaneous ARRIVE results. Together these contested routine aspirin for primary prevention, prompting guidelines (including 2019 ACC/AHA) to walk back broad recommendations — though aspirin\'s benefit in secondary prevention and acute MI remained settled.',
+        source: {
+          externalId: 'src:aspree-aspirin-healthy-elderly-nejm-2018',
+          name: 'McNeil JJ, Wolfe R, Woods RL, et al. Effect of aspirin on cardiovascular events and bleeding in the healthy elderly. N Engl J Med. 2018;379(16):1509-1518.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30221597/',
+          publishedAt: '2018-10-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── N+4. Papanicolaou vaginal smear — first cancer screening test 1943 ────────
   {
     externalId: 'trajectory:papanicolaou-vaginal-smear-cancer-screening-1943',
