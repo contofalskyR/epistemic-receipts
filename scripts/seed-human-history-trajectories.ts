@@ -56250,6 +56250,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — additional curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Thomas Becket murdered in Canterbury Cathedral, then canonized ───────────
+  {
+    externalId: 'trajectory:becket-murder-canonization-1170',
+    text: 'Archbishop Thomas Becket was murdered by four knights of King Henry II inside Canterbury Cathedral on 29 December 1170; little more than two years later, on 21 February 1173, Pope Alexander III canonized him as a saint.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1170-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1170-12-29',
+        datePrecision: 'DAY',
+        reason: 'Four knights — Reginald FitzUrse, Hugh de Morville, William de Tracy and Richard le Breton — arrived at Canterbury on 29 December 1170 and cut down Becket in his own cathedral near the hour of vespers. The clerk Edward Grim, who was present and wounded shielding the archbishop, left an eyewitness account, and the killing was reported across Latin Christendom within weeks as a sacrilegious shock.',
+        source: {
+          externalId: 'src:edward-grim-becket-1170',
+          name: 'Edward Grim, Vita S. Thomae, eyewitness account of the murder of Thomas Becket in Canterbury Cathedral, 29 December 1170. (c. 1171–1172)',
+          url: 'https://en.wikipedia.org/wiki/Thomas_Becket',
+          publishedAt: '1171-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1173-02-21',
+        datePrecision: 'DAY',
+        reason: 'Following reports of miracles at his tomb and a swift cult, Pope Alexander III formally canonized Becket as a saint at St Peter\'s Church in Segni on 21 February 1173 — one of the most rapid canonizations of the medieval period. Henry II did public penance at the shrine in 1174, settling the institutional verdict that Becket had died a martyr.',
+        source: {
+          externalId: 'src:becket-canonization-1173',
+          name: 'Canonization of Thomas Becket by Pope Alexander III, 21 February 1173. Wikipedia, "Thomas Becket".',
+          url: 'https://en.wikipedia.org/wiki/Thomas_Becket',
+          publishedAt: '1173-02-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Earliest dated reference to eyeglasses — Giordano da Pisa's sermon ───────
+  {
+    externalId: 'trajectory:eyeglasses-first-attestation-1306',
+    text: 'In a sermon delivered in Florence on 23 February 1306, the Dominican friar Giordano da Pisa stated that the art of making eyeglasses had been discovered "not yet twenty years" earlier — the earliest securely dated documentary attestation of spectacles.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1306-02-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1306-02-23',
+        datePrecision: 'DAY',
+        reason: 'Preaching in Santa Maria Novella in Florence on 23 February 1306, Giordano da Pisa told his congregation: "It is not yet twenty years since there was found the art of making eyeglasses, which make for good vision... and it is so short a time that this new art, never before extant, was discovered." He added that he had spoken with the man who first made them. A reportatio (verbatim transcription) of the sermon preserves the statement and its date.',
+        source: {
+          externalId: 'src:giordano-pisa-sermon-1306',
+          name: 'Giordano da Pisa, sermon preached in Florence, 23 February 1306, attesting the recent invention of eyeglasses. Wikipedia, "Glasses".',
+          url: 'https://en.wikipedia.org/wiki/Glasses',
+          publishedAt: '1306-02-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of optics and technology (notably Edward Rosen\'s studies of the invention of eyeglasses) treat Giordano\'s 1306 sermon, corroborated by a roughly contemporary note about the friar Alessandro della Spina of Pisa, as fixing the invention of spectacles to northern Italy in the 1280s–1290s. The dating and the priority of the documentary record are settled in the scholarship.',
+        source: {
+          externalId: 'src:rosen-eyeglasses-invention',
+          name: 'Edward Rosen, "The Invention of Eyeglasses," Journal of the History of Medicine and Allied Sciences (1956), establishing the 1306 sermon as the earliest dated attestation.',
+          url: 'https://en.wikipedia.org/wiki/Glasses',
+          publishedAt: '1956-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ragusa imposes the first documented quarantine ──────────────────────────
+  {
+    externalId: 'trajectory:ragusa-quarantine-1377',
+    text: 'On 27 July 1377 the Major Council of the Republic of Ragusa (modern Dubrovnik) enacted a law requiring arrivals from plague-stricken areas to spend thirty days (a "trentino") in isolation at Cavtat or on the islet of Mrkan before entering the city — the first documented institutional quarantine.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1377-07-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1377-07-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 July 1377 the Major Council (Consilium Maius) of Ragusa passed the ordinance "Veniens de locis pestiferis non intret Ragusium nec districtum" — whoever comes from plague-infested places shall not enter Ragusa or its district unless they first spend thirty days in isolation at Cavtat or on the islet of Mrkan. The decree was entered into the city\'s statute book, the Liber viridis (Green Book), fixing the act on the legal record.',
+        source: {
+          externalId: 'src:ragusa-trentino-1377',
+          name: 'Ordinance of the Major Council of Ragusa, 27 July 1377, recorded in the Liber viridis ("Veniens de locis pestiferis non intret Ragusium nec districtum"). Wikipedia, "Quarantine".',
+          url: 'https://en.wikipedia.org/wiki/Quarantine',
+          publishedAt: '1377-07-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of medicine recognise the Ragusan 1377 trentino as the first formal quarantine institution — a model later extended to forty days (quarantena) and adopted by Venice and other Mediterranean ports. The dating and the priority of the Ragusan measure are established in the public-health history literature.',
+        source: {
+          externalId: 'src:quarantine-history-ragusa',
+          name: 'Tognotti E. "Lessons from the History of Quarantine, from Plague to Influenza A." Emerging Infectious Diseases 19(2):254–259 (2013), on the 1377 Ragusan origin of quarantine.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7133622/',
+          publishedAt: '2013-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Blackfriars "Earthquake Synod" condemns Wycliffe's teachings ─────────────
+  {
+    externalId: 'trajectory:blackfriars-synod-wycliffe-1382',
+    text: 'A synod convened by Archbishop William Courtenay at the Blackfriars in London on 17 May 1382 condemned twenty-four propositions drawn from the teaching of John Wycliffe — ten as heretical and fourteen as erroneous; an earthquake during its sitting on 21 May gave it the name the "Earthquake Synod."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1382-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1382-05-21',
+        datePrecision: 'DAY',
+        reason: 'Archbishop Courtenay assembled eight bishops and numerous doctors, monks and friars at the Dominican priory (Blackfriars) in London from 17 May 1382 to examine Wycliffe\'s doctrines. As the synod sat, the Dover Straits earthquake shook London around 15:00 on 21 May 1382 — which Courtenay read as a favourable sign of the earth purging itself of error. The assembly declared ten of twenty-four propositions heretical (chiefly Wycliffe\'s denial of transubstantiation) and fourteen erroneous.',
+        source: {
+          externalId: 'src:earthquake-synod-1382',
+          name: 'Earthquake Synod (Blackfriars Synod), London, 17–21 May 1382 — condemnation of 24 Wycliffite propositions under Archbishop William Courtenay. Wikipedia, "Earthquake Synod".',
+          url: 'https://en.wikipedia.org/wiki/Earthquake_Synod',
+          publishedAt: '1382-05-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1415-07-06',
+        datePrecision: 'DAY',
+        reason: 'The condemnation of Wycliffe\'s teaching hardened over the following decades: the Council of Constance condemned his writings and ordered his remains exhumed and burned, and his follower Jan Hus was burned at Constance on 6 July 1415 for related doctrines. The institutional verdict against the Wycliffite propositions first set at Blackfriars in 1382 was thereby reaffirmed at the level of a general council.',
+        source: {
+          externalId: 'src:constance-wycliffe-condemnation',
+          name: 'Council of Constance condemnation of John Wycliffe\'s articles (1415), reaffirming the Blackfriars condemnation. Wikipedia, "Earthquake Synod".',
+          url: 'https://en.wikipedia.org/wiki/Earthquake_Synod',
+          publishedAt: '1415-07-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
