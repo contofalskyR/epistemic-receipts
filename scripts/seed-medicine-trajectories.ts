@@ -5911,6 +5911,171 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── DEA tramadol Schedule IV — 2014 ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:dea-tramadol-schedule-iv-2014',
+    text: 'The U.S. Drug Enforcement Administration published a final rule on July 2, 2014 placing tramadol into Schedule IV of the Controlled Substances Act effective August 18, 2014, formally reclassifying as a controlled substance with abuse potential a drug that had been marketed and prescribed in the United States since 1995 as a uniquely low-risk, non-scheduled opioid analgesic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-02',
+        datePrecision: 'DAY',
+        reason: 'After accumulating reports of dependence, withdrawal, and abuse, the DEA — following an HHS scientific and medical evaluation — published a final rule (79 FR 37623) placing tramadol into Schedule IV, effective August 18, 2014. The action overturned the long-standing institutional premise, in place since tramadol\'s 1995 U.S. launch as an unscheduled analgesic, that the drug carried negligible abuse liability, formally recognizing it as a controlled substance with potential for psychological and physical dependence.',
+        source: {
+          externalId: 'src:dea-tramadol-schedule-iv-fr-2014',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Placement of Tramadol Into Schedule IV. Final rule. Fed. Reg. 79(127):37623-37630, July 2, 2014.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25016619/',
+          publishedAt: '2014-07-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oklahoma J&J opioid public-nuisance verdict — 2019 (REVERSED) ────────────
+  {
+    externalId: 'trajectory:oklahoma-johnson-johnson-opioid-nuisance-2019',
+    text: 'On August 26, 2019, Cleveland County District Court Judge Thad Balkman ruled in State of Oklahoma ex rel. Hunter v. Johnson & Johnson that the company\'s misleading opioid marketing had created a public nuisance fueling the state\'s opioid epidemic, ordering a $572.1 million abatement payment (later corrected to $465 million) — the first court verdict holding an opioid manufacturer liable under public nuisance law.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-08-26',
+        datePrecision: 'DAY',
+        reason: 'Following the first state opioid trial to reach verdict, Judge Balkman found that Johnson & Johnson and its Janssen subsidiary had run a deceptive marketing campaign convincing Oklahoma prescribers that opioids were safe and effective for chronic non-malignant pain, thereby creating a public nuisance, and ordered a $572.1 million abatement plan (amended to $465 million in November 2019 to correct a math error). The ruling judicially established product-marketing-as-public-nuisance as a viable theory of manufacturer liability for the epidemic.',
+        source: {
+          externalId: 'src:balkman-oklahoma-jj-opioid-ruling-2019',
+          name: 'Cleveland County District Court (Judge Thad Balkman). State of Oklahoma ex rel. Hunter v. Purdue Pharma / Johnson & Johnson, Findings of Fact and Conclusions of Law, CJ-2017-816, Aug. 26, 2019.',
+          url: 'https://nondoc.com/2019/08/26/read-the-full-johnson-johnson-opioid-ruling-from-judge-thad-balkman/',
+          publishedAt: '2019-08-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2021-11-09',
+        datePrecision: 'DAY',
+        reason: 'The Oklahoma Supreme Court, in a 5-1 decision (2021 OK 54), vacated the verdict and held that the state\'s public nuisance statute does not extend to the manufacturing, marketing, and selling of products, warning that doing so would convert product-liability actions into unbounded public nuisance claims. The reversal repudiated the legal theory the 2019 ruling had established and became a leading precedent cutting off public-nuisance opioid suits against manufacturers nationwide.',
+        source: {
+          externalId: 'src:okla-supreme-court-jj-opioid-2021-ok-54',
+          name: 'Oklahoma Supreme Court. State of Oklahoma ex rel. Hunter v. Johnson & Johnson, 2021 OK 54, No. 118,474, Nov. 9, 2021.',
+          url: 'https://law.justia.com/cases/oklahoma/supreme-court/2021/118474.html',
+          publishedAt: '2021-11-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Purdue Sackler nonconsensual bankruptcy release — 2021 (REVERSED) ────────
+  {
+    externalId: 'trajectory:purdue-sackler-nonconsensual-release-2021',
+    text: 'Purdue Pharma\'s Chapter 11 reorganization plan, confirmed by the U.S. Bankruptcy Court on September 1, 2021, granted the Sackler family nonconsensual third-party releases extinguishing victims\' civil opioid claims against them in exchange for roughly $6 billion — a settlement structure affirmed by the Second Circuit before the U.S. Supreme Court held it unauthorized.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2021-09-01',
+        datePrecision: 'DAY',
+        reason: 'Bankruptcy Judge Robert Drain confirmed Purdue\'s plan over the objection of thousands of creditors, including eight states and the District of Columbia, ratifying nonconsensual releases that barred opioid victims from suing the Sackler family in return for the family\'s ~$6 billion contribution. The U.S. Court of Appeals for the Second Circuit affirmed the plan on May 30, 2023, settling at the appellate level the premise that a Chapter 11 plan could discharge claims against non-debtor third parties without claimant consent.',
+        source: {
+          externalId: 'src:crs-purdue-third-party-release-2024',
+          name: 'Congressional Research Service. Harrington v. Purdue Pharma: Supreme Court Holds That a Chapter 11 Reorganization Plan Cannot Include a Nonconsensual Release of Claims Against Non-Debtors. LSB11201, 2024.',
+          url: 'https://www.congress.gov/crs-product/LSB11201',
+          publishedAt: '2024-07-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-06-27',
+        datePrecision: 'DAY',
+        reason: 'In Harrington v. Purdue Pharma L.P. the U.S. Supreme Court, 5-4 (Gorsuch, J.), held that the Bankruptcy Code does not authorize a release and injunction that, as part of a Chapter 11 plan, effectively discharge claims against a non-debtor without the affected claimants\' consent. The decision invalidated the Sackler releases and the settlement built on them, reversing the Second Circuit and unwinding the central legal mechanism by which the Sacklers had sought to extinguish opioid liability through Purdue\'s bankruptcy.',
+        source: {
+          externalId: 'src:scotus-harrington-purdue-2024',
+          name: 'Supreme Court of the United States. Harrington v. Purdue Pharma L.P., No. 23-124, 603 U.S. ___ (June 27, 2024).',
+          url: 'https://www.supremecourt.gov/opinions/23pdf/23-124_8nk0.pdf',
+          publishedAt: '2024-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA OTC naloxone (Narcan) approval — 2023 ────────────────────────────────
+  {
+    externalId: 'trajectory:fda-otc-naloxone-narcan-2023',
+    text: 'The U.S. Food and Drug Administration approved Narcan (4 mg naloxone hydrochloride nasal spray) for over-the-counter, nonprescription use on March 29, 2023 — the first opioid-overdose-reversal product cleared for sale without a prescription, reclassifying the overdose antidote from a prescription-gated drug to a consumer good available in retail stores.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-29',
+        datePrecision: 'DAY',
+        reason: 'After its advisory committee voted unanimously in February 2023 that the benefits of nonprescription access outweighed the risks, the FDA approved Narcan 4 mg naloxone nasal spray — first approved as a prescription drug in 2015 — for over-the-counter use, allowing direct retail sale in drug stores, convenience stores, and online. The decision institutionally settled the judgment that laypersons can safely use naloxone to reverse opioid overdose without clinical gatekeeping, a reversal of the decades-long premise that the antidote required prescription control.',
+        source: {
+          externalId: 'src:fda-otc-naloxone-narcan-2023',
+          name: 'U.S. Food and Drug Administration. FDA Approves First Over-the-Counter Naloxone Nasal Spray. News release, March 29, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray',
+          publishedAt: '2023-03-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DSM-5 substance use disorder reclassification — 2013 ─────────────────────
+  {
+    externalId: 'trajectory:dsm5-substance-use-disorder-reclassification-2013',
+    text: 'On May 18, 2013 the American Psychiatric Association released the DSM-5, which abolished the separate DSM-IV diagnoses of \'substance abuse\' and \'substance dependence\' and merged them into a single \'substance use disorder\' graded on a mild–moderate–severe severity continuum — reclassifying addiction, including opioid use disorder, as a unitary spectrum condition.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-05-18',
+        datePrecision: 'DAY',
+        reason: 'Released at the APA annual meeting, DSM-5 eliminated the dichotomous abuse/dependence categories — which research (summarized by Hasin and colleagues in the American Journal of Psychiatry) had shown did not reflect a true diagnostic boundary and which conflated physiological dependence with addiction — and replaced them with one \'substance use disorder\' diagnosis requiring two or more of eleven criteria, dropping legal-problems and adding craving, scored by severity. The reclassification became the institutional standard for diagnosing addiction, including opioid use disorder, across U.S. clinical, research, and payer systems.',
+        source: {
+          externalId: 'src:apa-dsm5-substance-use-disorder-2013',
+          name: 'American Psychiatric Association. Substance-Related and Addictive Disorders (DSM-5 fact sheet documenting merger of abuse and dependence into substance use disorder). 2013.',
+          url: 'https://www.psychiatry.org/file%20library/psychiatrists/practice/dsm/apa_dsm-5-substance-use-disorder.pdf',
+          publishedAt: '2013-05-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── ACCORD trial — intensive glucose lowering mortality — 2008 ───────────────
   {
     externalId: 'trajectory:accord-intensive-glucose-lowering-mortality-2008',
