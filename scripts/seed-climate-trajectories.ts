@@ -849,7 +849,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── 19. Nerem — sea-level rise acceleration detected — 2018 ─────────────────
+  // ── 19. Dobson — atmospheric ozone spectrophotometry — 1926 ────────────────
+  {
+    externalId: 'trajectory:dobson-ozone-spectrophotometry-1926',
+    text: 'G. M. B. Dobson and D. N. Harrison reported in 1926, in the Proceedings of the Royal Society A, the first systematic spectrophotometric measurements of the atmospheric ozone column, showing that total ozone varies markedly day-to-day, seasonally, and with latitude.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-01-14',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-14',
+        datePrecision: 'MONTH',
+        reason: 'Dobson and Harrison published \'Measurements of the amount of ozone in the earth\'s atmosphere and its relation to other geophysical conditions\' (Proc. R. Soc. A 110:660–693), reporting results from a custom spectrophotometer operated at Oxford since 1924. They demonstrated that total-column ozone was measurable from the ground and fluctuated far more than previously supposed, establishing the empirical baseline against which all later ozone depletion would be detected.',
+        source: {
+          externalId: 'src:dobson-harrison-rspa-1926',
+          name: 'Dobson GMB, Harrison DN. Measurements of the amount of ozone in the earth\'s atmosphere and its relation to other geophysical conditions. Proceedings of the Royal Society A. 1926;110(756):660–693.',
+          url: 'https://royalsocietypublishing.org/doi/10.1098/rspa.1926.0040',
+          publishedAt: '1926-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-07-01',
+        datePrecision: 'YEAR',
+        reason: 'During the International Geophysical Year (1957–58), Dobson\'s instrument design and calibration were adopted as the world standard and a coordinated global ozone-monitoring network (later the WMO Global Ozone Observing System) was established, with the total-ozone unit named the \'Dobson Unit\' in his honour. Systematic spectrophotometric measurement of the ozone column became the institutionalized standard, creating the continuous record (including the Halley Bay series) that made the 1985 ozone hole detectable.',
+        source: {
+          externalId: 'src:dobson-forty-years-applied-optics-1968',
+          name: 'Dobson GMB. Forty years\' research on atmospheric ozone at Oxford: a history. Applied Optics. 1968;7(3):387–405.',
+          url: 'https://opg.optica.org/ao/abstract.cfm?uri=ao-7-3-387',
+          publishedAt: '1968-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 20. Stolarski & Cicerone — chlorine as catalytic ozone sink — 1974 ──────
+  {
+    externalId: 'trajectory:stolarski-cicerone-chlorine-ozone-sink-1974',
+    text: 'Richard Stolarski and Ralph Cicerone proposed in April 1974, in the Canadian Journal of Chemistry, that chlorine atoms could act as an efficient catalytic sink destroying stratospheric ozone (the ClOx cycle), independently of any specific chlorine source.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-04-15',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-04-15',
+        datePrecision: 'MONTH',
+        reason: 'Stolarski and Cicerone published \'Stratospheric Chlorine: a Possible Sink for Ozone\' (Can. J. Chem. 52(8):1610–1615), devising a photochemical scheme in which ClOx catalytic cycles destroy odd oxygen far more efficiently per atom than the NOx cycles already known. This was the first identification of chlorine as a potent catalytic ozone sink — published months before Molina and Rowland linked that mechanism specifically to chlorofluorocarbons.',
+        source: {
+          externalId: 'src:stolarski-cicerone-cjc-1974',
+          name: 'Stolarski RS, Cicerone RJ. Stratospheric chlorine: a possible sink for ozone. Canadian Journal of Chemistry. 1974;52(8):1610–1615.',
+          url: 'https://cdnsciencepub.com/doi/10.1139/v74-233',
+          publishedAt: '1974-04-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-09-22',
+        datePrecision: 'MONTH',
+        reason: 'In-situ ER-2 aircraft flights during the Airborne Antarctic Ozone Experiment (August–September 1987) measured a sharp inverse correlation between chlorine monoxide (ClO) and ozone inside the Antarctic vortex, demonstrating that halogen-catalyzed recombination was destroying ozone in real time. This \'smoking gun\' confirmed the chlorine catalytic-sink mechanism proposed in 1974 and settled chlorine catalysis as established stratospheric chemistry (later ratified by the 1995 Nobel Prize in Chemistry).',
+        source: {
+          externalId: 'src:anderson-clo-ozone-jgr-1989',
+          name: 'Anderson JG, Brune WH, Proffitt MH. Ozone destruction by chlorine radicals within the Antarctic vortex: the spatial and temporal evolution of ClO–O3 anticorrelation based on in situ ER-2 data. Journal of Geophysical Research. 1989;94(D9):11465–11479.',
+          url: 'https://ntrs.nasa.gov/citations/19890066536',
+          publishedAt: '1989-08-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 21. Solomon — PSC heterogeneous chemistry & Antarctic ozone — 1986 ──────
+  {
+    externalId: 'trajectory:solomon-psc-antarctic-ozone-1986',
+    text: 'Susan Solomon, Rolando Garcia, F. Sherwood Rowland, and Donald Wuebbles proposed in June 1986, in Nature, that heterogeneous reactions on polar stratospheric cloud surfaces (HCl + ClONO2) drive the springtime Antarctic ozone hole, explaining why the depletion is unique to Antarctica.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-06-19',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-06-19',
+        datePrecision: 'MONTH',
+        reason: 'Solomon, Garcia, Rowland, and Wuebbles published \'On the depletion of Antarctic ozone\' (Nature 321:755–758), showing that homogeneous gas-phase chemistry as then understood could not explain the observed springtime losses, and proposing that the high frequency of polar stratospheric clouds over Antarctica provides reaction surfaces for heterogeneous HCl + ClONO2 chemistry that liberates ozone-destroying chlorine. This supplied the mechanism explaining the geographic specificity of the Farman ozone hole.',
+        source: {
+          externalId: 'src:solomon-antarctic-ozone-nature-1986',
+          name: 'Solomon S, Garcia RR, Rowland FS, Wuebbles DJ. On the depletion of Antarctic ozone. Nature. 1986;321(6072):755–758.',
+          url: 'https://www.nature.com/articles/321755a0',
+          publishedAt: '1986-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-09-22',
+        datePrecision: 'MONTH',
+        reason: 'The Airborne Antarctic Ozone Experiment (August–October 1987) measured greatly elevated ClO and a ClO–ozone anticorrelation inside the vortex, and subsequent laboratory studies confirmed that the HCl + ClONO2 reaction proceeds rapidly on polar stratospheric cloud surfaces. The heterogeneous-chemistry mechanism Solomon proposed became the accepted explanation for Antarctic ozone loss, displacing competing dynamical and solar-cycle hypotheses.',
+        source: {
+          externalId: 'src:noaa-aaoe-overview-1987',
+          name: 'NOAA Chemical Sciences Laboratory. The Airborne Antarctic Ozone Experiment (AAOE) — Research Overview (ER-2/DC-8 mission, Punta Arenas, 1987).',
+          url: 'https://csl.noaa.gov/projects/aaoe/overview.html',
+          publishedAt: '1987-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 22. US EPA/FDA/CPSC — CFC aerosol ban — 1978 ────────────────────────────
+  {
+    externalId: 'trajectory:epa-cfc-aerosol-ban-1978',
+    text: 'On 17 March 1978 the US FDA, EPA, and CPSC issued federal rules banning chlorofluorocarbons as propellants in non-essential aerosol products, the first major national regulatory action treating CFC-driven ozone depletion as established enough to compel a ban.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1978-03-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1977-05-11',
+        datePrecision: 'MONTH',
+        reason: 'Acting on the Molina–Rowland chlorine-ozone hypothesis, the Consumer Product Safety Commission, FDA, and EPA jointly announced in 1977 a phaseout of \'non-essential\' chlorofluorocarbon uses in spray products. This was a precautionary regulatory commitment adopted nearly a decade before international consensus and before the ozone hole was discovered.',
+        source: {
+          externalId: 'src:cpsc-fda-epa-cfc-phaseout-1977',
+          name: 'U.S. Consumer Product Safety Commission. CPSC/FDA/EPA Announce Phase Out of Chlorofluorocarbons. News release, 1977.',
+          url: 'https://www.cpsc.gov/Newsroom/News-Releases/1977/CPSCFDAEPA-Announce-Phase-Out-Of-Chlorofluorocarbons',
+          publishedAt: '1977-05-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-10-15',
+        datePrecision: 'DAY',
+        reason: 'The federal rule issued 17 March 1978 (43 FR 11301) took binding effect on 15 October 1978, when manufacturers could no longer produce CFCs for most aerosol uses; manufacturing of CFC spray products ended 15 December 1978 and interstate shipment ended 15 April 1979. The United States thereby made ozone-protective CFC restriction enforceable national law years ahead of the 1985 Vienna Convention and 1987 Montreal Protocol.',
+        source: {
+          externalId: 'src:epa-cfc-aerosol-ban-1978',
+          name: 'U.S. EPA. Government Ban on Fluorocarbon Gases in Aerosol Products Begins October 15 [1978]. EPA press release (FDA/EPA/CPSC rule, 43 FR 11301, 17 March 1978).',
+          url: 'https://www.epa.gov/archive/epa/aboutepa/government-ban-fluorocarbon-gases-aerosol-products-begins-october-15-1978.html',
+          publishedAt: '1978-10-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 23. Nerem — sea-level rise acceleration detected — 2018 ─────────────────
   {
     externalId: 'trajectory:nerem-sea-level-acceleration-detected-2018',
     text: 'R. Steven Nerem and colleagues reported in PNAS on 12 February 2018 that 25 years of satellite altimetry revealed a statistically significant climate-change-driven acceleration of global mean sea-level rise of 0.084 mm/yr², the first detection of acceleration in the precise altimeter record.',
