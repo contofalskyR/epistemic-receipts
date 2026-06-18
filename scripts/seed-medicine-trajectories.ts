@@ -14405,6 +14405,212 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INFECTION CONTROL & ANTISEPSIS (1847–1867)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Semmelweis handwashing / puerperal fever — 1847 ────────────────────────
+  {
+    externalId: 'trajectory:semmelweis-handwashing-puerperal-fever-1847',
+    text: 'Ignaz Semmelweis demonstrated at the Vienna General Hospital First Obstetrical Clinic that requiring physicians to wash their hands in a chlorinated-lime solution before examining maternity patients sharply reduced deaths from puerperal (childbed) fever, an intervention he instituted in May 1847.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1847-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1848-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After his colleague Jakob Kolletschka died in March 1847 from a wound sustained during an autopsy and showed the same pathology as women dying of puerperal fever, Semmelweis inferred that \'cadaverous particles\' carried on physicians\' hands caused the disease and ordered chlorinated-lime handwashing; monthly maternal mortality in the doctors\' clinic fell from roughly 18% to under 2%. His findings were communicated to the Vienna medical community and published in editorials by Ferdinand von Hebra in the journal of the Vienna Medical Society in 1847–1848, recording the claim in the expert literature.',
+        source: {
+          externalId: 'src:best-neuhauser-semmelweis-qshc-2004',
+          name: 'Best M, Neuhauser D. Ignaz Semmelweis and the birth of infection control. Qual Saf Health Care. 2004;13(3):233-234.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1743827/',
+          publishedAt: '2004-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1861-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Semmelweis published his definitive treatise \'Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers\' in 1861, but his doctrine was widely rejected and disputed across the European medical establishment. Lacking the germ theory of disease, contemporaries could not accept a mechanism by which invisible particles caused infection, and the claim that physicians themselves transmitted lethal disease was professionally unwelcome; his work met hostile reviews and the practice was not adopted in his lifetime.',
+        source: {
+          externalId: 'src:semmelweis-aetiologie-kindbettfieber-1861',
+          name: 'Semmelweis IP. Die Ätiologie, der Begriff und die Prophylaxis des Kindbettfiebers. Pest, Wien und Leipzig: C. A. Hartleben\'s Verlags-Expedition; 1861.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1743827/',
+          publishedAt: '1861-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The germ theory of disease developed by Louis Pasteur and the antiseptic surgery of Joseph Lister supplied the causal mechanism Semmelweis had lacked; Pasteur identified streptococci in puerperal-fever cases at the Académie de médecine in 1879, vindicating Semmelweis\'s empirical observation. By the late nineteenth century handwashing and antisepsis had become accepted standards of obstetric and surgical practice, settling the claim posthumously.',
+        source: {
+          externalId: 'src:best-neuhauser-semmelweis-qshc-2004',
+          name: 'Best M, Neuhauser D. Ignaz Semmelweis and the birth of infection control. Qual Saf Health Care. 2004;13(3):233-234.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1743827/',
+          publishedAt: '2004-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lister antiseptic surgery — 1867 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:lister-antiseptic-surgery-1867',
+    text: 'Joseph Lister announced in 1867 that applying carbolic acid (phenol) to wounds and the surgical field—an \'antiseptic principle\' grounded in Pasteur\'s germ theory—prevents wound suppuration and sepsis, after he reported a dramatic fall in mortality among compound-fracture and amputation patients at the Glasgow Royal Infirmary.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1867-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1867-09-21',
+        datePrecision: 'DAY',
+        reason: 'Following his Lancet series \'On a New Method of Treating Compound Fracture, Abscess, etc.\' earlier in 1867, Lister read \'On the Antiseptic Principle in the Practice of Surgery\' before the British Medical Association in Dublin on 9 August 1867, published in the British Medical Journal on 21 September 1867. He generalized his clinical results into a principle—that wound putrefaction is caused by airborne germs and can be prevented by carbolic-acid antisepsis—recording the claim in the expert literature.',
+        source: {
+          externalId: 'src:lister-antiseptic-principle-bmj-1867',
+          name: 'Lister J. On the Antiseptic Principle in the Practice of Surgery. Br Med J. 1867;2(351):246-248.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1841140/',
+          publishedAt: '1867-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Initially resisted in Britain, Listerian antisepsis was rapidly adopted by German surgeons (Volkmann, Nussbaum, von Bergmann) after Lister\'s mid-1870s Continental tours, where falling postoperative mortality validated the method. Reinforced by the consolidating germ theory of Pasteur and Koch, antiseptic—and soon aseptic—surgery became the accepted international standard by the early 1880s, settling the claim that microbial contamination causes surgical sepsis and can be prevented.',
+        source: {
+          externalId: 'src:antiseptic-principle-adoption-wikipedia',
+          name: 'Antiseptic Principle of the Practice of Surgery (Joseph Lister, 1867) — adoption and legacy. Wikipedia.',
+          url: 'https://en.wikipedia.org/wiki/Antiseptic_Principle_of_the_Practice_of_Surgery',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL TRANSPLANTATION ERA (1954–1967)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Murray first kidney transplant — 1954 ──────────────────────────────────
+  {
+    externalId: 'trajectory:murray-first-kidney-transplant-1954',
+    text: 'On 23 December 1954 Joseph E. Murray and colleagues at the Peter Bent Brigham Hospital in Boston performed the first successful human kidney transplant, transferring a kidney between identical twins Ronald and Richard Herrick, demonstrating that a transplanted organ could function and sustain life when donor and recipient were genetically identical (avoiding rejection).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1954-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-28',
+        datePrecision: 'DAY',
+        reason: 'Merrill, Murray, Harrison, and Guild reported the case in JAMA on 28 January 1956, describing a kidney transplanted from a healthy man to his identical twin suffering from chronic glomerulonephritis; the graft functioned without rejection and the recipient recovered. Because the donor and recipient were monozygotic twins, the result isolated the problem of immunologic rejection and recorded the claim that human organ transplantation was technically and physiologically feasible.',
+        source: {
+          externalId: 'src:merrill-murray-kidney-twins-jama-1956',
+          name: 'Merrill JP, Murray JE, Harrison JH, Guild WR. Successful homotransplantation of the human kidney between identical twins. J Am Med Assoc. 1956;160(4):277-282.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13278189/',
+          publishedAt: '1956-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-10-08',
+        datePrecision: 'DAY',
+        reason: 'With the development of immunosuppression (azathioprine and corticosteroids in the 1960s, then ciclosporin from 1983), kidney transplantation between non-identical donors became routine, life-saving therapy. In October 1990 Joseph E. Murray shared the Nobel Prize in Physiology or Medicine with E. Donnall Thomas \'for their discoveries concerning organ and cell transplantation in the treatment of human disease,\' institutionally ratifying transplantation as established medicine.',
+        source: {
+          externalId: 'src:nobel-murray-thomas-transplantation-1990',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1990 — Joseph E. Murray, E. Donnall Thomas, Facts. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1990/murray/facts/',
+          publishedAt: '1990-10-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Barnard first heart transplant — 1967 ──────────────────────────────────
+  {
+    externalId: 'trajectory:barnard-first-heart-transplant-1967',
+    text: 'On 3 December 1967 Christiaan Barnard performed the first human-to-human heart transplant at Groote Schuur Hospital in Cape Town, replacing the irreparably damaged heart of 54-year-old Louis Washkansky with a donor heart; the patient survived 18 days, establishing that orthotopic cardiac transplantation in humans was technically achievable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-12-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-12-30',
+        datePrecision: 'DAY',
+        reason: 'Barnard published \'The operation. A human cardiac transplant: an interim report of a successful operation performed at Groote Schuur Hospital, Cape Town\' in the South African Medical Journal on 30 December 1967, describing the transplant of a cadaver heart into a 54-year-old man with end-stage ischemic heart disease. The report recorded the claim that the human heart could be surgically transplanted and resume function in a recipient.',
+        source: {
+          externalId: 'src:barnard-cardiac-transplant-samj-1967',
+          name: 'Barnard CN. The operation. A human cardiac transplant: an interim report of a successful operation performed at Groote Schuur Hospital, Cape Town. S Afr Med J. 1967;41(48):1271-1274.',
+          url: 'https://scielo.org.za/scielo.php?script=sci_arttext&pid=S0256-95742017001200004',
+          publishedAt: '1967-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Barnard\'s operation triggered a global heart-transplant boom in 1968, with roughly a hundred procedures performed worldwide, but most recipients died within weeks from acute rejection and infection. By 1970–1971 dismal survival led the great majority of centers to abandon the operation, and the medical community openly questioned whether cardiac transplantation was clinically or ethically justifiable—throwing the procedure\'s viability into serious dispute.',
+        source: {
+          externalId: 'src:groote-schuur-heart-transplant-history-pmc',
+          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31-35.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4200566/',
+          publishedAt: '2009-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The introduction of the immunosuppressant ciclosporin—approved by the FDA in November 1983—transformed transplant survival by controlling rejection, while persistent programs (notably Stanford under Shumway) demonstrated steadily improving outcomes. Heart transplantation was re-established as a standard, life-extending therapy for selected patients with end-stage heart failure, settling the claim that human cardiac transplantation is a viable treatment.',
+        source: {
+          externalId: 'src:groote-schuur-heart-transplant-history-pmc',
+          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31-35.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4200566/',
+          publishedAt: '2009-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
