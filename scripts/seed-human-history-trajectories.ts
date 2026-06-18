@@ -37127,6 +37127,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Salyut 1: world's first space station ────────────────────────────────────
+  {
+    externalId: 'trajectory:salyut-1-first-space-station-1971',
+    text: 'On April 19, 1971, the Soviet Union launched Salyut 1 (DOS-1) into low Earth orbit from Baikonur, the world’s first space station.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1971-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-04-19',
+        datePrecision: 'DAY',
+        reason: 'A Proton rocket lifted off from Pad 81 at Baikonur and placed the cylindrical, roughly 20-metre Salyut station into orbit, reaching orbital altitude about nine minutes after liftoff and deploying its solar arrays and antennas. The launch was announced by the Soviet Union and tracked internationally, establishing the first crewable orbital outpost.',
+        source: {
+          externalId: 'src:nasa-salyut-50-years',
+          name: 'NASA History — "50 Years Ago: Launch of Salyut, the World’s First Space Station" (Salyut launched 19 April 1971).',
+          url: 'https://www.nasa.gov/missions/station/50-years-ago-launch-of-salyut-the-worlds-first-space-station/',
+          publishedAt: '1971-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-06-07',
+        datePrecision: 'DAY',
+        reason: 'Salyut 1 was occupied when the Soyuz 11 crew successfully hard-docked and entered the station on 7 June 1971, spending 23 days aboard — confirming it as a functioning, habitable space station. The launch date, crews, and mission record are documented in NASA and Soviet sources and are uncontested.',
+        source: {
+          externalId: 'src:nasa-salyut-50-years-2',
+          name: 'NASA History — "50 Years Ago: Launch of Salyut, the World’s First Space Station" (Soyuz 11 crew aboard for 23 days).',
+          url: 'https://www.nasa.gov/missions/station/50-years-ago-launch-of-salyut-the-worlds-first-space-station/',
+          publishedAt: '1971-06-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pioneer 11: first spacecraft to fly by Saturn ────────────────────────────
+  {
+    externalId: 'trajectory:pioneer-11-saturn-flyby-1979',
+    text: 'Pioneer 11, launched April 6, 1973, became the first spacecraft to fly past Saturn, making its closest approach on September 1, 1979, at about 13,000 miles from the planet.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-09-01',
+        datePrecision: 'DAY',
+        reason: 'After becoming the second spacecraft to cross the asteroid belt and flying past Jupiter in 1974, Pioneer 11 made its closest approach to Saturn on 1 September 1979, passing roughly 13,000 miles above the cloud tops, returning the first close-up data on Saturn and discovering a new ring and additional moons.',
+        source: {
+          externalId: 'src:nasa-pioneer-11',
+          name: 'NASA Science — "Pioneer 11" mission profile (launched 6 April 1973; first spacecraft to fly by Saturn, closest approach 1 September 1979).',
+          url: 'https://science.nasa.gov/mission/pioneer-11/',
+          publishedAt: '1979-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Saturn encounter data were published and analyzed, fixing Pioneer 11 as the first probe to reach Saturn and scouting the path later followed by the Voyagers. The mission, its dates, and its results are documented in NASA mission records and remain uncontested.',
+        source: {
+          externalId: 'src:nasa-pioneer-11-2',
+          name: 'NASA Science — "Pioneer 11" mission record (Saturn flyby September 1979).',
+          url: 'https://science.nasa.gov/mission/pioneer-11/',
+          publishedAt: '1980-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cowan–Reines: experimental detection of the neutrino ──────────────────────
+  {
+    externalId: 'trajectory:cowan-reines-neutrino-detection-1956',
+    text: 'In June 1956, Clyde Cowan and Frederick Reines experimentally detected the free (anti)neutrino at the Savannah River nuclear reactor, confirming the particle Wolfgang Pauli had hypothesized in 1930.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1956-06-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-06-14',
+        datePrecision: 'DAY',
+        reason: 'Using a target of about 400 litres of water and cadmium chloride at the Savannah River Plant in South Carolina, Cowan and Reines observed the delayed-coincidence signature of inverse beta decay (a positron followed by neutron capture) from reactor antineutrinos. On 14 June 1956 they sent a telegram to Pauli announcing they had definitely detected neutrinos from fission fragments; Pauli replied, "Thanks for message. Everything comes to him who knows how to wait."',
+        source: {
+          externalId: 'src:neutrino-history-discovery',
+          name: 'Neutrino History (IN2P3) — "Experimental discovery" (Reines–Cowan detection at Savannah River, 1956; telegram to Pauli 14 June 1956).',
+          url: 'https://neutrino-history.in2p3.fr/experimental-discovery/',
+          publishedAt: '1956-06-14',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-07-20',
+        datePrecision: 'DAY',
+        reason: 'The result was published in Science on 20 July 1956 ("Detection of the Free Neutrino: a Confirmation," Cowan, Reines, Harrison, Kruse, and McGuire), reporting a signal well above background. The discovery was independently accepted by the physics community and is uncontested.',
+        source: {
+          externalId: 'src:cowan-reines-science-1956',
+          name: 'Cowan C.L., Reines F., Harrison F.B., Kruse H.W., McGuire A.D. "Detection of the Free Neutrino: a Confirmation." Science 124(3212):103–104, 20 July 1956.',
+          url: 'https://doi.org/10.1126/science.124.3212.103',
+          publishedAt: '1956-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10-11',
+        datePrecision: 'DAY',
+        reason: 'Frederick Reines was awarded a share of the 1995 Nobel Prize in Physics for the detection of the neutrino (Cowan having died in 1974), formally ratifying the 1956 result as a settled foundation of particle physics.',
+        source: {
+          externalId: 'src:nobel-physics-1995-reines',
+          name: 'Nobel Prize in Physics 1995 — awarded to Frederick Reines "for the detection of the neutrino."',
+          url: 'https://www.nobelprize.org/prizes/physics/1995/summary/',
+          publishedAt: '1995-10-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First clinical CT scan ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:first-ct-scan-1971',
+    text: 'On October 1, 1971, the first clinical computed-tomography (CT) scan was performed at Atkinson Morley Hospital in London on a patient with a suspected brain tumour, using Godfrey Hounsfield’s EMI scanner.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-10-01',
+        datePrecision: 'DAY',
+        reason: 'A full-sized prototype scanner developed by Godfrey Hounsfield at EMI was installed at Atkinson Morley Hospital, and on 1 October 1971 the team led by neuroradiologist James Ambrose scanned its first patient, a middle-aged woman with signs of a brain tumour. The reconstructed image revealed a cystic mass in her left frontal lobe — the first time soft-tissue brain anatomy and pathology were imaged non-invasively in a living patient.',
+        source: {
+          externalId: 'src:conversation-first-ct-scan',
+          name: 'The Conversation — "50 years ago, the first CT scan let doctors see inside a living skull" (first patient scanned at Atkinson Morley Hospital, 1 October 1971).',
+          url: 'https://theconversation.com/50-years-ago-the-first-ct-scan-let-doctors-see-inside-a-living-skull-thanks-to-an-eccentric-engineer-at-the-beatles-record-company-149907',
+          publishedAt: '1971-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-10-12',
+        datePrecision: 'DAY',
+        reason: 'CT imaging was rapidly adopted worldwide and Godfrey Hounsfield shared the 1979 Nobel Prize in Physiology or Medicine with Allan Cormack "for the development of computer assisted tomography," ratifying the technique as a foundational, uncontested medical technology.',
+        source: {
+          externalId: 'src:nobel-medicine-1979-ct',
+          name: 'Nobel Prize in Physiology or Medicine 1979 — awarded to Allan M. Cormack and Godfrey N. Hounsfield "for the development of computer assisted tomography."',
+          url: 'https://www.nobelprize.org/prizes/medicine/1979/summary/',
+          publishedAt: '1979-10-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Birmingham Children's Crusade ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:birmingham-childrens-crusade-1963',
+    text: 'On May 2–3, 1963, during the Birmingham Children’s Crusade in Alabama, police under Bull Connor used high-pressure fire hoses and attack dogs against marching schoolchildren and arrested hundreds, scenes photographed and broadcast nationally.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1963-05-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1963-05-03',
+        datePrecision: 'DAY',
+        reason: 'On 2 May 1963 more than a thousand Black students left school and marched from the 16th Street Baptist Church toward downtown Birmingham; hundreds were arrested. On 3 May, with the jails full, Public Safety Commissioner Bull Connor ordered police to use high-pressure water cannons and attack dogs against the young demonstrators. Associated Press photographer Bill Hudson and others captured the scenes, which appeared in newspapers and on television and triggered outrage worldwide.',
+        source: {
+          externalId: 'src:encyclopedia-alabama-childrens-crusade',
+          name: 'Encyclopedia of Alabama — "Children’s Crusade" (Birmingham, 2–3 May 1963; fire hoses and dogs ordered by Bull Connor; mass arrests).',
+          url: 'https://encyclopediaofalabama.org/article/childrens-crusade/',
+          publishedAt: '1963-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-05-10',
+        datePrecision: 'DAY',
+        reason: 'The national and international reaction helped force the 10 May 1963 Birmingham settlement to desegregate downtown businesses and pressured the Kennedy administration toward federal civil-rights legislation. The events, dates, and images are documented in contemporaneous press coverage and historical scholarship and are uncontested.',
+        source: {
+          externalId: 'src:npr-childrens-crusade-60',
+          name: 'NPR — "60 years since ‘The Children’s Crusade’ changed Birmingham and the nation" (May 2023).',
+          url: 'https://www.npr.org/2023/05/31/1179125099/birmingham-childrens-crusade-civil-rights-60th-anniversary',
+          publishedAt: '1963-05-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MODERN ERA (1990–present) — additional verified curves, non-Western priority
   // ═══════════════════════════════════════════════════════════════════════════════
