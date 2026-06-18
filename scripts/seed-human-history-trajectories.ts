@@ -3277,6 +3277,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Manzikert — Seljuk capture of a Byzantine emperor ──────────────
+  {
+    externalId: 'trajectory:battle-of-manzikert-1071',
+    text: 'At the Battle of Manzikert on 26 August 1071, the Seljuk sultan Alp Arslan defeated the Byzantine army and captured Emperor Romanos IV Diogenes, opening Anatolia to Turkish settlement.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1071-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1071-08-26',
+        datePrecision: 'DAY',
+        reason: 'Near the fortress of Manzikert (Malazgirt) on the eastern frontier, the Seljuk forces of Alp Arslan rout the Byzantine field army; the emperor Romanos IV is taken prisoner and brought before the sultan — the first capture of a reigning Roman/Byzantine emperor in battle by a Muslim ruler. The Byzantine official Michael Attaleiates, attached to the imperial campaign, records the defeat in his Historia within a decade of the event.',
+        source: {
+          externalId: 'src:attaleiates-historia-manzikert',
+          name: 'Michael Attaleiates. Historia, account of the Manzikert campaign of 1071. (c. 1080, by a Byzantine official attached to the imperial army)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Manzikert',
+          publishedAt: '1080-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and outcome are independently corroborated across the Byzantine tradition (John Skylitzes, Nikephoros Bryennios, Anna Komnena), the Armenian Matthew of Edessa, and the Arabic and Persian historians (Ibn al-Athir, Sibt ibn al-Jawzi). Modern scholarship treats the Seljuk victory of 26 August 1071 and the capture of Romanos IV as settled fact and a turning point in Anatolian history.',
+        source: {
+          externalId: 'src:manzikert-encyclopedic',
+          name: 'Battle of Manzikert (1071) — synthesis of the Byzantine, Armenian, and Islamic sources on the Seljuk victory and the capture of Romanos IV.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Manzikert',
+          publishedAt: '1953-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Hattin — Saladin destroys the Crusader army ────────────────────
+  {
+    externalId: 'trajectory:battle-of-hattin-1187',
+    text: 'On 4 July 1187, Saladin annihilated the field army of the Kingdom of Jerusalem at the Horns of Hattin in Galilee, capturing King Guy of Lusignan and the relic of the True Cross.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1187-07-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1187-07-04',
+        datePrecision: 'DAY',
+        reason: 'After luring the thirst-stricken Crusader army onto the waterless plateau below the Horns of Hattin, Saladin\'s Ayyubid forces destroy it, capturing King Guy, Reynald of Châtillon, and the True Cross. Imad al-Din al-Isfahani, Saladin\'s own secretary, was present on the campaign and recorded the battle; the chronicler Ibn al-Athir preserved the eyewitness testimony of Saladin\'s teenage son al-Afdal.',
+        source: {
+          externalId: 'src:imad-al-din-hattin',
+          name: 'Imad al-Din al-Isfahani, al-Fath al-qussi fi al-fath al-qudsi; and Ibn al-Athir, al-Kamil fi al-Tarikh — contemporary Arabic accounts of the battle of Hattin. (late 12th – early 13th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hattin',
+          publishedAt: '1193-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The defeat is independently attested by the Latin sources (the chronicle of Ernoul, the Libellus de expugnatione Terrae Sanctae) as well as the Arabic historians. Within months Saladin took Jerusalem (2 October 1187), an event that triggered the Third Crusade — corroborating the scale of the disaster. The date and outcome of Hattin are settled across Crusader and Islamic historiography.',
+        source: {
+          externalId: 'src:hattin-encyclopedic',
+          name: 'Battle of Hattin (4 July 1187) — synthesis of the Latin and Arabic primary sources on Saladin\'s destruction of the Crusader army.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Hattin',
+          publishedAt: '1935-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mongol sack of Baghdad — end of the Abbasid Caliphate ────────────────────
+  {
+    externalId: 'trajectory:mongol-sack-baghdad-1258',
+    text: 'Baghdad surrendered to the Mongol army of Hulagu Khan on 10 February 1258, and the last Abbasid caliph al-Musta\'sim was executed on 20 February 1258, ending the five-century Abbasid Caliphate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1258-02-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1258-02-10',
+        datePrecision: 'DAY',
+        reason: 'After a siege of the round city, the caliph al-Musta\'sim surrenders on 10 February 1258; the Mongols sack Baghdad over the following days, and the caliph — to avoid spilling royal blood — is wrapped in a carpet and trampled to death on 20 February. The polymath Nasir al-Din al-Tusi, who had joined Hulagu\'s entourage, was present and documented the fall, including the negotiations with the caliph.',
+        source: {
+          externalId: 'src:tusi-baghdad-1258',
+          name: 'Nasir al-Din al-Tusi, account of the fall of Baghdad (1258); preserved in the Mongol-era Persian historical tradition (Rashid al-Din, Jami al-Tawarikh). (13th–early 14th century)',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Baghdad_(1258)',
+          publishedAt: '1310-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The fall of Baghdad is independently attested by the Persian historian Rashid al-Din, the Armenian Kirakos Gandzaketsi, the Syriac Bar Hebraeus, and the Arabic Ibn al-Tiqtaqa. The extinction of the Abbasid line at Baghdad in February 1258 — and the cultural devastation of the city — is settled fact across the Islamic, Christian, and modern historiographical traditions.',
+        source: {
+          externalId: 'src:fall-baghdad-encyclopedic',
+          name: 'Siege of Baghdad (1258) — synthesis of the Persian, Arabic, Armenian, and Syriac sources on the Mongol conquest and the end of the Abbasid Caliphate.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Baghdad_(1258)',
+          publishedAt: '1968-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ain Jalut — the first lasting check on the Mongols ─────────────
+  {
+    externalId: 'trajectory:battle-of-ain-jalut-1260',
+    text: 'At the Battle of Ain Jalut on 3 September 1260, the Mamluk army of Egypt under Sultan Qutuz and Baybars defeated the Mongol force led by Kitbuqa, the first decisive and lasting halt to Mongol westward expansion.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1260-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1260-09-03',
+        datePrecision: 'DAY',
+        reason: 'In the Jezreel Valley at Ayn Jalut (the "Spring of Goliath"), the Mamluk army that had marched out of Egypt defeats and kills the Mongol commander Kitbuqa, ending the Ilkhanid advance into Syria and Palestine. The Syrian chronicler al-Yunini records the engagement in his continuation of Sibt ibn al-Jawzi\'s history (Dhayl Mirat al-Zaman) on the authority of contemporaries.',
+        source: {
+          externalId: 'src:al-yunini-ain-jalut',
+          name: 'Qutb al-Din al-Yunini. Dhayl Mirat al-Zaman, account of the battle of Ayn Jalut (3 September 1260). (late 13th century)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '1290-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and outcome are corroborated by the Mamluk historiographical tradition (al-Maqrizi, Ibn al-Athir\'s successors) and by the Persian Ilkhanid historian Rashid al-Din, who records Kitbuqa\'s defeat. Modern scholarship treats Ayn Jalut on 3 September 1260 as a settled fact and a strategic turning point — the first time the Mongols were permanently driven back from conquered territory.',
+        source: {
+          externalId: 'src:ain-jalut-encyclopedic',
+          name: 'Battle of Ain Jalut (3 September 1260) — synthesis of the Mamluk Arabic and Persian Ilkhanid sources on the Mongol defeat.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ain_Jalut',
+          publishedAt: '1995-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // EARLY MODERN (1500–1800)
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -69171,6 +69339,137 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Zhang D., et al. "Denisovan DNA in Late Pleistocene sediments from Baishiya Karst Cave on the Tibetan Plateau." Science 370, 584–587 (30 October 2020).',
           url: 'https://en.wikipedia.org/wiki/Baishiya_Karst_Cave',
           publishedAt: '2020-10-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL (pre-500 CE) — South Asia (Gupta epigraphy & the chronology of ancient India)
+  // added 2026-06-18
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── William Jones identifies Sandracottus with Chandragupta Maurya ───────────
+  {
+    externalId: 'trajectory:jones-sandracottus-chandragupta-maurya-1793',
+    text: 'In his Tenth Anniversary Discourse to the Asiatick Society of Bengal, delivered on 28 February 1793, Sir William Jones identified the "Sandracottus" who concluded a treaty with Seleucus Nicator in the Greek accounts with the Indian king Chandragupta (Chandragupta Maurya) — the synchronism that for the first time anchored ancient Indian history to an absolute date and became known as the "sheet anchor of Indian chronology."',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1793-02-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1793-02-28',
+        datePrecision: 'DAY',
+        reason: 'Reading his discourse "On Asiatick History, Civil and Natural" to the Asiatick Society on 28 February 1793, Jones argued that the Chandragupta who, "from a military adventurer," made himself sovereign of upper Hindustan and fixed his capital at Pataliputra was "no other than that very Sandracottus who concluded a treaty with Seleucus Nicator." Because Seleucus and his envoy Megasthenes are fixed in Greek chronology, the equation supplied the first absolute date for an Indian ruler. The address was printed in the Asiatick Researches, the contemporaneous record of the claim.',
+        source: {
+          externalId: 'src:jones-tenth-discourse-1793',
+          name: 'Jones, William. "The Tenth Anniversary Discourse: On Asiatick History, Civil and Natural" (delivered 28 February 1793; published in Asiatick Researches, vol. IV).',
+          url: 'http://www.eliohs.unifi.it/testi/700/jones/Jones_Discourse_10.html',
+          publishedAt: '1793-02-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1837-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Jones\'s synchronism was corroborated and made the backbone of Indian chronology once James Prinsep deciphered the Brahmi script and read the Ashokan edicts (1837), confirming the historical reality of the Mauryan dynasty that Chandragupta founded. Subsequent scholarship treats the Sandracottus = Chandragupta Maurya equation as established — historian Sushma Jansari notes it was "of vital importance," enabling Indian and Graeco-Roman records to be synchronised for the first time, and Chandragupta\'s reign is conventionally called "the sheet anchor of Indian chronology."',
+        source: {
+          externalId: 'src:sandrokottos-sheet-anchor-chronology',
+          name: 'Sandrokottos — identification with Chandragupta Maurya by Sir William Jones (1793) and its role as "the sheet anchor of Indian chronology."',
+          url: 'https://en.wikipedia.org/wiki/Sandrokottos',
+          publishedAt: '1837-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lakulisa Mathura pillar inscription — dated Pashupata guru lineage ────────
+  {
+    externalId: 'trajectory:lakulisa-mathura-pillar-uditacharya-380',
+    text: 'The Lakulisa Mathura pillar inscription records that on the fifth lunar day of the bright fortnight of (the first) Āṣāḍha in the year 61 of the Gupta era (380 CE), in the reign of Chandragupta II, the Pāśupata Śaiva teacher Uditācārya — tenth in succession from Bhagavat Kuśika and fourth from Bhagavat Parāśara — installed two lingas named Upamiteśvara and Kapileśvara in a guru shrine at Mathura; it is among the earliest dated epigraphic records of the Pāśupata Śaiva lineage.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0380-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0380-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Sanskrit inscription in early Gupta Brāhmī dates itself to the fifth of the bright half of the first Āṣāḍha in Gupta year 61 (380 CE) and records that Uditācārya, "tenth from the Bhagavat Kuśika, fourth from the Bhagavat Parāśara," set up two lingas — Upamiteśvara and Kapileśvara — in a temple of the gurus during the reign of Chandragupta II, "the good son of the Mahārāja Rājādhirāja, the illustrious Samudragupta." The stone is the contemporaneous record of the dedication and a fixed datum for the early history of the Pāśupata sect founded by Lakulīśa.',
+        source: {
+          externalId: 'src:lakulisa-mathura-pillar-inscription',
+          name: 'Lakulīśa Mathura pillar inscription of the time of Chandragupta II, Gupta year 61 (Āṣāḍha bright 5, 380 CE), Sanskrit (contemporaneous Pāśupata Śaiva guru dedication of the lingas Upamiteśvara and Kapileśvara).',
+          url: 'https://en.wikipedia.org/wiki/Lakulisa_Mathura_Pillar_Inscription',
+          publishedAt: '0380-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-01',
+        datePrecision: 'YEAR',
+        reason: 'D. R. Bhandarkar produced the first reconstructed text and translation, publishing the inscription in Epigraphia Indica vol. XXI (1931–32). Its Gupta-era date, its naming of Chandragupta II, and its Pāśupata guru genealogy back to Kuśika (a disciple of Lakulīśa) are settled in the scholarship of Gupta-period epigraphy and the history of Śaivism, where it stands as one of the earliest securely dated records of the Pāśupata teacher-succession.',
+        source: {
+          externalId: 'src:bhandarkar-lakulisa-mathura-inscription',
+          name: 'Bhandarkar, D. R. Edition of the Lakulīśa Mathura pillar inscription of Chandragupta II, Epigraphia Indica vol. XXI (1931–32).',
+          url: 'https://en.wikipedia.org/wiki/Lakulisa_Mathura_Pillar_Inscription',
+          publishedAt: '1932-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kahaum stone pillar inscription of Skandagupta — five Jina images ─────────
+  {
+    externalId: 'trajectory:kahaum-pillar-skandagupta-jinas-460',
+    text: 'The Kahaum stone pillar inscription records that in the month of Jyeshtha of the year 141 of the Gupta era (460 CE), in the reign of Skandagupta, a man named Madra, son of Rudrasoma, erected a stone pillar bearing five images of the Jain Tīrthaṅkaras (Ādikartṛs) — Ṛṣabhanātha, Śāntinātha, Neminātha, Pārśvanātha and Mahāvīra — for the welfare of all beings; the monolithic pillar still stands.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0460-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0460-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Sanskrit inscription on the red-sandstone pillar at Kahaum dates itself to the month of Jyeshtha in the Gupta year 141 (460 CE), during the peaceful reign of Skandagupta, and records that Madra, "son of Rudrasoma, of great intellect and fame," set up the pillar with five stone images of the first makers of the Jain path (Ādikartṛs). The standing pillar, carved with the five Jinas, is the contemporaneous primary record of the dedication and a fixed point in Skandagupta\'s reign.',
+        source: {
+          externalId: 'src:kahaum-pillar-skandagupta-inscription',
+          name: 'Kahaum stone pillar inscription of the time of Skandagupta, Gupta year 141 (Jyeshtha, 460 CE), Sanskrit (contemporaneous Jain dedication of a pillar bearing five Tīrthaṅkara images by Madra son of Rudrasoma).',
+          url: 'https://en.wikipedia.org/wiki/Kahaum_pillar',
+          publishedAt: '0460-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The inscription was edited by John Faithfull Fleet in Inscriptions of the Early Gupta Kings (Corpus Inscriptionum Indicarum, vol. III, 1888) and revisited in D. R. Bhandarkar\'s revised edition (1981). Its Gupta-era date and its naming of Skandagupta are settled in the scholarship, where it is a standard datum for Skandagupta\'s chronology and an early dated witness to Jain image-worship in northern India.',
+        source: {
+          externalId: 'src:fleet-kahaum-pillar-inscription',
+          name: 'Fleet, J. F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888), Kahaum pillar inscription of Skandagupta.',
+          url: 'https://en.wikipedia.org/wiki/Kahaum_pillar',
+          publishedAt: '1888-01-01',
           methodologyType: 'derivative',
         },
       },
