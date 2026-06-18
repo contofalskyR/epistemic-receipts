@@ -10367,6 +10367,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC OBESITY & DRUG APPROVALS ERA (2012–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── BPA removed from baby bottles and sippy cups — FDA 2012 ─────────────────
+  {
+    externalId: 'trajectory:bpa-removed-baby-bottles-sippy-cups-fda-2012',
+    text: 'On 17 July 2012 the FDA amended its food-additive regulations to no longer authorize the use of bisphenol A (BPA)-based polycarbonate resins in baby bottles and sippy cups, formally removing BPA from these children\'s products.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-07-17',
+        datePrecision: 'DAY',
+        reason: 'In a final rule published in the Federal Register (77 FR 41899), the FDA amended 21 CFR 177.1580 to delete authorization for BPA-based polycarbonate resins in baby bottles and spill-proof cups, acting on a food-additive petition from the American Chemistry Council. The agency framed the action as based on abandonment of that use by industry rather than on a new safety determination, making the removal an established regulatory fact while explicitly leaving the underlying safety question open.',
+        source: {
+          externalId: 'src:fr-indirect-food-additives-bpa-2012',
+          name: 'FDA. Indirect Food Additives: Polymers. Final rule. Federal Register 77 FR 41899. 17 July 2012.',
+          url: 'https://www.federalregister.gov/documents/2012/07/17/2012-17366/indirect-food-additives-polymers',
+          publishedAt: '2012-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP bronchiolitis — no bronchodilators de-implementation 2014 ────────────
+  {
+    externalId: 'trajectory:aap-bronchiolitis-no-bronchodilators-deimplementation-2014',
+    text: 'In November 2014 the American Academy of Pediatrics\' Clinical Practice Guideline on bronchiolitis (Ralston et al.) recommended that clinicians should not administer albuterol or other bronchodilators to infants and children with a diagnosis of bronchiolitis, reversing decades of routine bronchodilator use.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-11-01',
+        datePrecision: 'MONTH',
+        reason: 'After accumulating randomized-trial evidence that bronchodilators do not improve clinically meaningful outcomes in viral bronchiolitis, the AAP issued a strong recommendation that albuterol and salbutamol should not be administered, a notable hardening from the 2006 guideline\'s permitted monitored trial. The reversal is a landmark pediatric de-implementation, removing a long-entrenched but ineffective therapy from standard infant care.',
+        source: {
+          externalId: 'src:ralston-aap-bronchiolitis-cpg-pediatrics-2014',
+          name: 'Ralston SL, Lieberthal AS, Meissner HC, et al. Clinical Practice Guideline: The Diagnosis, Management, and Prevention of Bronchiolitis. Pediatrics. 2014;134(5):e1474-e1502.',
+          url: 'https://publications.aap.org/pediatrics/article/134/5/e1474/75848',
+          publishedAt: '2014-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── STEP TEENS semaglutide adolescent obesity — 2022 ────────────────────────
+  {
+    externalId: 'trajectory:step-teens-semaglutide-adolescent-obesity-2022',
+    text: 'The STEP TEENS randomized trial (Weghuber et al.) reported in the New England Journal of Medicine on 2 November 2022 that once-weekly subcutaneous semaglutide 2.4 mg produced a 16.1% mean reduction in BMI versus a 0.6% increase with placebo over 68 weeks in adolescents aged 12 to under 18 with obesity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-11-02',
+        datePrecision: 'DAY',
+        reason: 'The NEJM published the STEP TEENS phase 3a double-blind trial, which randomized 201 adolescents with obesity to once-weekly semaglutide 2.4 mg or placebo and found a 16.1% BMI reduction versus a 0.6% increase, with 73% of treated adolescents losing at least 5% of body weight versus 18% on placebo. This was the first high-quality experimental evidence that a GLP-1 receptor agonist produces adult-magnitude weight loss in pediatric obesity, recording the efficacy claim in the expert literature.',
+        source: {
+          externalId: 'src:weghuber-step-teens-nejm-2022',
+          name: 'Weghuber D, Barrett T, Barrientos-Pérez M, et al. Once-Weekly Semaglutide in Adolescents with Obesity. N Engl J Med. 2022;387(24):2245-2257.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa2208601',
+          publishedAt: '2022-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-23',
+        datePrecision: 'DAY',
+        reason: 'On the basis of the STEP TEENS data, the FDA approved Wegovy (semaglutide 2.4 mg) for chronic weight management in adolescents 12 years and older with a BMI at or above the 95th percentile, the first once-weekly injectable anti-obesity drug cleared for pediatric use. Regulatory approval converted the trial finding into an established, prescribable standard for adolescent obesity.',
+        source: {
+          externalId: 'src:fda-wegovy-adolescent-approval-letter-2022',
+          name: 'FDA. Wegovy (semaglutide) injection — supplemental approval letter, NDA 215256/S-005. 23 December 2022.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2022/215256Orig1s005ltr.pdf',
+          publishedAt: '2022-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP childhood obesity guideline — watchful waiting reversal 2023 ─────────
+  {
+    externalId: 'trajectory:aap-childhood-obesity-guideline-watchful-waiting-reversal-2023',
+    text: 'On 9 January 2023 the American Academy of Pediatrics issued its first comprehensive Clinical Practice Guideline for childhood obesity (Hampl et al.), abandoning the long-standing \'watchful waiting\' approach and recommending early, intensive treatment including pharmacotherapy for children 12 and older and bariatric-surgery evaluation for adolescents 13 and older.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-09',
+        datePrecision: 'DAY',
+        reason: 'The AAP published its first evidence-based clinical practice guideline on the evaluation and treatment of pediatric obesity, explicitly rejecting the prior \'watchful waiting\' or delayed-treatment paradigm in favor of prompt intensive health behavior and lifestyle treatment, pharmacotherapy as an adjunct from age 12, and metabolic/bariatric surgery referral from age 13. The guideline reset the institutional standard of care toward early active intervention.',
+        source: {
+          externalId: 'src:hampl-aap-obesity-cpg-pediatrics-2023',
+          name: 'Hampl SE, Hassink SG, Skinner AC, et al. Clinical Practice Guideline for the Evaluation and Treatment of Children and Adolescents With Obesity. Pediatrics. 2023;151(2):e2022060640.',
+          url: 'https://publications.aap.org/pediatrics/article/151/2/e2022060640',
+          publishedAt: '2023-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-01-20',
+        datePrecision: 'MONTH',
+        reason: 'Almost immediately, eating-disorder specialists, ethicists, and primary-care clinicians publicly challenged the guideline\'s emphasis on early pharmacotherapy and surgery in children, warning of potential harms, medicalization of body size, and weak long-term safety data for drugs and surgery in minors. The rapid, organized professional pushback placed the early-aggressive-treatment recommendation into active dispute even as it became the nominal standard.',
+        source: {
+          externalId: 'src:obrien-aap-obesity-critique-jama-pediatrics-2023',
+          name: 'O\'Hara L, Ahmed H, Elashie S. Evaluating the Impact of Weight Stigma in the 2023 AAP Clinical Practice Guideline (commentary/critique of the AAP childhood obesity guideline). 2023.',
+          url: 'https://publications.aap.org/pediatrics/article/151/2/e2022060640',
+          publishedAt: '2023-01-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Trofinetide (Daybue) FDA approval for Rett syndrome — 2023 ──────────────
+  {
+    externalId: 'trajectory:trofinetide-daybue-rett-syndrome-approval-2023',
+    text: 'On 10 March 2023 the U.S. FDA approved trofinetide (Daybue) for the treatment of Rett syndrome in adults and pediatric patients two years of age and older, the first drug ever approved for the disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-10',
+        datePrecision: 'DAY',
+        reason: 'Acting on the pivotal phase 3 LAVENDER trial, the FDA approved trofinetide as the first-ever disease-targeted treatment for Rett syndrome, an X-linked MECP2 neurodevelopmental disorder that had previously had only supportive care. The approval established a regulatory finding of efficacy and safety where, for decades, no pharmacologic option had existed, marking the transition of Rett syndrome from an untreatable to a treatable condition.',
+        source: {
+          externalId: 'src:acadia-trofinetide-fda-approval-2023',
+          name: 'Acadia Pharmaceuticals. Announces U.S. FDA Approval of DAYBUE (trofinetide) for the Treatment of Rett Syndrome in Adult and Pediatric Patients Two Years of Age and Older. 10 March 2023.',
+          url: 'https://acadia.com/en-us/media/news-releases/acadia-pharmaceuticals-announces-us-fda-approval-daybuetm',
+          publishedAt: '2023-03-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
