@@ -55712,6 +55712,231 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── TIROS-1 — first operational weather satellite ───────────────────────────
+  {
+    externalId: 'trajectory:tiros-1-first-weather-satellite-1960',
+    text: 'On 1 April 1960 NASA launched TIROS-1, the first operational weather satellite, which returned television images of Earth\'s cloud cover from orbit and demonstrated that meteorological observation from space was viable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-04-01',
+        datePrecision: 'DAY',
+        reason: 'TIROS-1 (Television Infrared Observation Satellite) launched from Cape Canaveral at 11:40 UTC on 1 April 1960. Within hours it began transmitting television images of Earth\'s cloud systems, the first practical demonstration that satellites could observe weather from orbit. NASA and the U.S. Weather Bureau tracked and archived the imagery in real time.',
+        source: {
+          externalId: 'src:tiros-1-1960',
+          name: 'TIROS-1 — first operational weather satellite, launched 1 April 1960. Wikipedia, "TIROS-1".',
+          url: 'https://en.wikipedia.org/wiki/TIROS-1',
+          publishedAt: '1960-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-06-15',
+        datePrecision: 'DAY',
+        reason: 'Over its 78-day operating life (ending with a power failure on 15 June 1960) TIROS-1 returned about 23,000 images, roughly 19,000 of them usable for weather analysis, including the first multi-day orbital tracking of a developing storm off Bermuda. The success directly launched the operational TIROS/ESSA satellite series, settling the proposition that orbital meteorology was both feasible and useful.',
+        source: {
+          externalId: 'src:tiros-1-program-legacy',
+          name: 'TIROS-1 mission results — ~23,000 images, founding of the operational weather-satellite program. Wikipedia, "TIROS-1".',
+          url: 'https://en.wikipedia.org/wiki/TIROS-1',
+          publishedAt: '1960-06-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ranger 7 — first US close-up images of the lunar surface ────────────────
+  {
+    externalId: 'trajectory:ranger-7-first-lunar-closeups-1964',
+    text: 'On 31 July 1964 NASA\'s Ranger 7 transmitted the first close-up photographs of the Moon\'s surface before impacting it, returning over 4,300 images and resolving long-standing uncertainty about the nature of the lunar terrain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-07-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-07-31',
+        datePrecision: 'DAY',
+        reason: 'Launched 28 July 1964, Ranger 7 impacted the Moon on 31 July 1964 in the region between Mare Nubium and Oceanus Procellarum (later named Mare Cognitum). During the final 17 minutes of flight its cameras transmitted 4,308 photographs of excellent quality, the last at about 0.5 m resolution — the first NASA probe to successfully return close-up lunar imagery after years of failures. JPL received and archived the images live.',
+        source: {
+          externalId: 'src:ranger-7-1964',
+          name: 'Ranger 7 — first NASA spacecraft to return close-up lunar images; impact 31 July 1964, 4,308 photographs. Wikipedia, "Ranger 7".',
+          url: 'https://en.wikipedia.org/wiki/Ranger_7',
+          publishedAt: '1964-07-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The Ranger 7 images, far sharper than any Earth-based telescopic view, showed a cratered but solid surface and provided evidence that the lunar regolith could bear the weight of a landing craft — a key input to the Surveyor and Apollo programs. Independent analysis by JPL and the wider lunar-science community established the imagery as the settled baseline for lunar surface studies.',
+        source: {
+          externalId: 'src:ranger-7-legacy',
+          name: 'Ranger 7 imagery and its role in Surveyor/Apollo landing-site assessment. Wikipedia, "Ranger 7".',
+          url: 'https://en.wikipedia.org/wiki/Ranger_7',
+          publishedAt: '1964-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Torrey Canyon oil spill — first major supertanker disaster ──────────────
+  {
+    externalId: 'trajectory:torrey-canyon-oil-spill-1967',
+    text: 'On 18 March 1967 the supertanker SS Torrey Canyon ran aground on Pollard\'s Rock off Cornwall, spilling an estimated 25–36 million gallons of crude oil — the first major oil-tanker disaster and a catalyst for modern marine-pollution law.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1967-03-18',
+        datePrecision: 'DAY',
+        reason: 'A navigational error drove the fully laden Torrey Canyon onto Pollard\'s Rock on the Seven Stones reef on 18 March 1967. The grounding and the spreading slick — eventually fouling about 120 miles of Cornish and 50 miles of French coast and killing roughly 15,000 seabirds — were covered contemporaneously by the press; the Royal Navy bombed the wreck on 28 March 1967 in an attempt to burn off the oil.',
+        source: {
+          externalId: 'src:torrey-canyon-1967',
+          name: 'Torrey Canyon oil spill — grounding 18 March 1967 off Cornwall, ~25–36 million gallons of crude. Wikipedia, "Torrey Canyon oil spill".',
+          url: 'https://en.wikipedia.org/wiki/Torrey_Canyon_oil_spill',
+          publishedAt: '1967-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1969-11-29',
+        datePrecision: 'DAY',
+        reason: 'The disaster exposed the absence of an international regime for tanker pollution and liability. It led directly to the 1969 International Convention on Civil Liability for Oil Pollution Damage (adopted 29 November 1969) and the related intervention convention, establishing the settled legal framework under which coastal states could act against and recover from polluting shipowners.',
+        source: {
+          externalId: 'src:torrey-canyon-clc-1969',
+          name: 'Torrey Canyon disaster as catalyst for the 1969 Civil Liability Convention on oil pollution. Wikipedia, "Torrey Canyon oil spill".',
+          url: 'https://en.wikipedia.org/wiki/Torrey_Canyon_oil_spill',
+          publishedAt: '1969-11-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wilderness Act — statutory definition of wilderness ─────────────────────
+  {
+    externalId: 'trajectory:wilderness-act-1964',
+    text: 'On 3 September 1964 President Lyndon B. Johnson signed the Wilderness Act, creating the U.S. National Wilderness Preservation System and a statutory legal definition of wilderness, with an initial 9.1 million acres of protected federal land.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1964-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-09-03',
+        datePrecision: 'DAY',
+        reason: 'After eight years and 66 drafts by author Howard Zahniser, the Wilderness Act passed Congress and was signed by President Johnson in the White House Rose Garden on 3 September 1964, with Interior Secretary Stewart Udall and Senator Frank Church present. It defined wilderness in law as "an area where the earth and its community of life are untrammeled by man" and immediately designated about 9.1 million acres.',
+        source: {
+          externalId: 'src:wilderness-act-1964',
+          name: 'Wilderness Act signed 3 September 1964 by President Johnson; created the National Wilderness Preservation System. Wikipedia, "Wilderness Act".',
+          url: 'https://en.wikipedia.org/wiki/Wilderness_Act',
+          publishedAt: '1964-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1964-09-03',
+        datePrecision: 'YEAR',
+        reason: 'The Act\'s statutory definition and the National Wilderness Preservation System became the durable, settled framework for U.S. wilderness protection, expanded by Congress over subsequent decades to more than 100 million acres and repeatedly applied by federal agencies and courts without challenge to its core definition.',
+        source: {
+          externalId: 'src:wilderness-act-system',
+          name: 'National Wilderness Preservation System established by the 1964 Wilderness Act and its later expansion. Wikipedia, "Wilderness Act".',
+          url: 'https://en.wikipedia.org/wiki/Wilderness_Act',
+          publishedAt: '1964-09-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Omega-minus baryon — predicted then observed ────────────────────────────
+  {
+    externalId: 'trajectory:omega-minus-baryon-1964',
+    text: 'The Ω− baryon, a particle composed of three strange quarks, was predicted in 1962 by Murray Gell-Mann (and independently Yuval Ne\'eman) from the Eightfold Way and observed at Brookhaven National Laboratory in early 1964, confirming the quark-model classification of hadrons.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-07-01',
+        datePrecision: 'MONTH',
+        reason: 'At the 1962 International Conference on High Energy Physics at CERN, Gell-Mann (and independently Ne\'eman) used the SU(3) "Eightfold Way" symmetry to predict an undiscovered strangeness −3 baryon — the Ω− — specifying its mass, charge, and decay products. Its existence was a sharp, falsifiable prediction of the new classification scheme and remained unconfirmed and debated for over a year.',
+        source: {
+          externalId: 'src:omega-minus-prediction-1962',
+          name: 'Gell-Mann/Ne\'eman 1962 prediction of the Ω− from the Eightfold Way. Wikipedia, "Omega baryon".',
+          url: 'https://en.wikipedia.org/wiki/Omega_baryon',
+          publishedAt: '1962-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-02-24',
+        datePrecision: 'MONTH',
+        reason: 'Using the 80-inch hydrogen bubble chamber at Brookhaven\'s Alternating Gradient Synchrotron, Nicholas Samios, Vanderbilt Barnes and colleagues recorded an event (photographed on 31 January 1964) showing a particle with strangeness −3 at the predicted mass. The discovery was published as Barnes et al., "Observation of a Hyperon with Strangeness Minus Three," Physical Review Letters 12, 204 (February 1964).',
+        source: {
+          externalId: 'src:omega-minus-discovery-1964',
+          name: 'Barnes et al., "Observation of a Hyperon with Strangeness Minus Three," Phys. Rev. Lett. 12, 204 (1964). Wikipedia, "Omega baryon".',
+          url: 'https://en.wikipedia.org/wiki/Omega_baryon',
+          publishedAt: '1964-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-02-24',
+        datePrecision: 'YEAR',
+        reason: 'Because the Ω− had been predicted in detail before it was seen, its observation at the expected mass was treated as a decisive triumph for the SU(3)/quark classification of hadrons and was rapidly accepted by the particle-physics community. Its measured properties have been confirmed many times since, making the existence of the Ω− settled physics.',
+        source: {
+          externalId: 'src:omega-minus-quark-model',
+          name: 'Ω− discovery as confirmation of the Eightfold Way / quark model. Wikipedia, "Omega baryon".',
+          url: 'https://en.wikipedia.org/wiki/Omega_baryon',
+          publishedAt: '1964-02-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
