@@ -68,8 +68,12 @@ const CATEGORIES: { label: string; patterns: RegExp[] }[] = [
     patterns: [/council.of|council.clermont|council.ephesus|council.trent|council.nicea|council.florence|synod|canonization|schism|crusade|heresy|edict.of.nantes|edict.of.thessalonica|edict.of.worms|augsburg.confession|blackfriars|disputation|reformation|protestant|papal|pope|decree.of.canopus|decet.romanum|condemnation.of|cadaver.synod|aquinas|francis.assisi|huguenot/i],
   },
   {
+    label: 'pharmacology/regulatory',
+    patterns: [/fda.approv|fda.withdraw|fda.recall|nda.approv|kefauver|thalidomide|oxycontin|vioxx|rofecoxib|hrt.reversal|hormone.replacement|statins?|atorvastatin|simvastatin|lovastatin|metformin|insulin.approv|azidothymidine|azt.approv|ssri|prozac|fluoxetine|zidovudine|drug.approv|drug.withdrawal|post.market|adverse.event|clinical.trial|phase.[123]|randomized.controlled|rct|placebo.controlled|double.blind|accelerated.approv|breakthrough.therapy|orphan.drug|boxed.warning|black.box|glp.1|semaglutide|wegovy|ozempic|eliquis|humira|keytruda|gleevec|imatinib|herceptin|trastuzumab|revlimid|lenalidomide|adderall|ritalin|opioid.crisis|purdue|prescription.opioid|naloxone|narcan|methadone|buprenorphine|fen.phen|fenfluramine|cisapride|propulsid|baycol|cerivastatin|troglitazone|rezulin|avandia|rosiglitazone|mifepristone|roe.fda|birth.control.approv|oral.contraceptive.approv|dca|isotretinoin|accutane|paxil|seroxat|bextra|valdecoxib|celebrex|cox.2/i],
+  },
+  {
     label: 'medicine/health',
-    patterns: [/vaccine|pandemic|influenza|polio|cancer|aids|hiv|plague|cholera|smallpox|tuberculosis|germ.theory|surgery|transplant|anesthesia|antibiotic|penicillin|sulfonamide|antitoxin|epidemic|ether.anesthesia|blood.transfusion|thalidomide|opioid|gene.therapy|mrna|covid|covaxin|delta.variant|ebola|sars|elixir.sulfanilamide|behring|barnard|pasteur|lister|semmelweis|jenner|snow.cholera|pfizer|moderna|oxford/i],
+    patterns: [/vaccine|pandemic|influenza|polio|cancer|aids|hiv|plague|cholera|smallpox|tuberculosis|germ.theory|surgery|transplant|anesthesia|antibiotic|penicillin|sulfonamide|antitoxin|epidemic|ether.anesthesia|blood.transfusion|gene.therapy|mrna|covid|covaxin|delta.variant|ebola|sars|elixir.sulfanilamide|behring|barnard|pasteur|lister|semmelweis|jenner|snow.cholera|pfizer|moderna|oxford|lobotomy|dialysis|chemotherapy|radiation.therapy|mammograph|pap.smear|mri.scanner|ct.scan|x.ray.discovery|smoking.cancer|doll.hill|framingham/i],
   },
   {
     label: 'biology/genetics',

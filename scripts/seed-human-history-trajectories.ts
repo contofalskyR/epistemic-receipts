@@ -57461,6 +57461,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — Pre-Columbian & colonial Americas archaeology
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Discovery of Pakal's tomb beneath the Temple of the Inscriptions ─────────
+  {
+    externalId: 'trajectory:pakal-tomb-palenque-1952',
+    text: 'In November 1952 the Mexican archaeologist Alberto Ruz Lhuillier opened the sealed crypt deep beneath the Temple of the Inscriptions at Palenque, revealing the carved sarcophagus and intact royal burial of the Maya king K\'inich Janaab\' Pakal — the first such tomb found within a Mesoamerican pyramid.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-11-01',
+        datePrecision: 'MONTH',
+        reason: 'After four field seasons clearing a rubble-filled hidden stairway he had detected in 1948, Ruz had a large triangular stone slab lifted in November 1952 and entered a burial vault some 25 metres below the temple floor, exposing a five-tonne limestone sarcophagus with an elaborately carved lid and a jade-adorned skeleton. Ruz documented the find for the Instituto Nacional de Antropología e Historia, establishing it in the archaeological record.',
+        source: {
+          externalId: 'src:ruz-pakal-tomb-1952',
+          name: 'Alberto Ruz Lhuillier and the discovery of Pakal\'s tomb beneath the Temple of the Inscriptions, Palenque, November 1952 (HistoricalMX, Mexican history digital archive).',
+          url: 'https://historicalmx.org/items/show/116',
+          publishedAt: '1952-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The decipherment of the Maya inscriptions on the sarcophagus and in the temple — advanced at the Palenque Mesa Redonda conferences from 1973 by epigraphers including Floyd Lounsbury, Linda Schele, and Peter Mathews — read out the occupant\'s name and life dates, identifying him as the ruler K\'inich Janaab\' Pakal (603–683 CE). The tomb\'s identity and significance became settled in Maya archaeology and epigraphy.',
+        source: {
+          externalId: 'src:temple-inscriptions-pakal-id',
+          name: 'Temple of the Inscriptions, Palenque — tomb of K\'inich Janaab\' Pakal, occupant identified via decipherment of its glyphic texts (Wikipedia, "Temple of the Inscriptions").',
+          url: 'https://en.wikipedia.org/wiki/Temple_of_the_Inscriptions',
+          publishedAt: '1973-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Coyolxauhqui monolith and rediscovery of the Templo Mayor ────────────────
+  {
+    externalId: 'trajectory:coyolxauhqui-templo-mayor-1978',
+    text: 'On 21 February 1978 electrical-utility workers digging in downtown Mexico City struck the massive carved stone disk of the Mexica goddess Coyolxauhqui, a find that pinpointed and triggered the full-scale excavation of the Templo Mayor, the principal temple of Aztec Tenochtitlan.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-02-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-02-21',
+        datePrecision: 'DAY',
+        reason: 'Workers for the Comisión Federal de Electricidad excavating behind the Metropolitan Cathedral uncovered a 3.25-metre carved monolith depicting the dismembered moon goddess Coyolxauhqui. The Instituto Nacional de Antropología e Historia recognized it as a sculpture from the Templo Mayor and recorded the find, halting utility work at the site.',
+        source: {
+          externalId: 'src:coyolxauhqui-discovery-1978',
+          name: 'Coyolxauhqui monolith uncovered by electrical workers, 21 February 1978, leading to the Templo Mayor excavation (Wikipedia, "Templo Mayor").',
+          url: 'https://en.wikipedia.org/wiki/Templo_Mayor',
+          publishedAt: '1978-02-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The find launched the Proyecto Templo Mayor under Eduardo Matos Moctezuma (1978–1982), which demolished overlying colonial structures, exposed the temple\'s superimposed construction stages and thousands of buried offerings, and fixed the exact location of the Great Temple of Tenochtitlan — long known from colonial texts but never precisely identified — settling its site and plan.',
+        source: {
+          externalId: 'src:proyecto-templo-mayor-matos',
+          name: 'Proyecto Templo Mayor (1978–1982) directed by Eduardo Matos Moctezuma, which excavated and established the site of the Aztec Great Temple (Wikipedia, "Templo Mayor").',
+          url: 'https://en.wikipedia.org/wiki/Templo_Mayor',
+          publishedAt: '1982-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of the royal Moche tombs of Sipán ──────────────────────────────
+  {
+    externalId: 'trajectory:lord-of-sipan-1987',
+    text: 'In February 1987, after looters tunnelled into the Huaca Rajada pyramids at Sipán in northern Peru, the archaeologist Walter Alva launched a rescue excavation that uncovered the intact royal tomb of a Moche lord (the "Lord of Sipán") — the richest unlooted pre-Columbian burial found in the Americas.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-02-01',
+        datePrecision: 'MONTH',
+        reason: 'In February 1987 huaqueros led by Ernil Bernal looted gold objects from one of the Huaca Rajada mounds; alerted by police, Walter Alva of the Brüning Museum secured the site and began a scientific excavation that revealed an undisturbed Moche burial chamber with a richly outfitted principal occupant, recording the discovery for archaeology.',
+        source: {
+          externalId: 'src:huaca-rajada-sipan-1987',
+          name: 'Looting and rescue excavation of the Lord of Sipán tomb at Huaca Rajada, February 1987 (Wikipedia, "Huaca Rajada").',
+          url: 'https://en.wikipedia.org/wiki/Huaca_Rajada',
+          publishedAt: '1987-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Continued excavation of further intact royal tombs at Sipán through 1990, with detailed publication by Alva and Christopher Donnan, established the burials as a securely dated, undisturbed Moche elite cemetery (c. 3rd century CE). The find transformed understanding of Moche political and religious organization and is settled in Andean archaeology.',
+        source: {
+          externalId: 'src:lord-of-sipan-settled',
+          name: 'Lord of Sipán — royal Moche tombs excavated 1987–1990 by Walter Alva and Christopher Donnan (Wikipedia, "Lord of Sipán").',
+          url: 'https://en.wikipedia.org/wiki/Lord_of_Sip%C3%A1n',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Vinland Map — claimed pre-Columbian Norse map, exposed as a forgery ──
+  {
+    externalId: 'trajectory:vinland-map-1965',
+    text: 'The Vinland Map, unveiled by Yale University on 11 October 1965, was presented as an authentic ~15th-century world map depicting Norse knowledge of "Vinland" in North America — purported cartographic evidence of pre-Columbian European contact with the Americas — but was later proven to be a 20th-century forgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-10-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-10-11',
+        datePrecision: 'DAY',
+        reason: 'On the day before Columbus Day 1965 Yale unveiled the map and published the scholarly volume "The Vinland Map and the Tartar Relation," presenting it as a genuine medieval document showing a landmass ("Vinlanda Insula") in the western Atlantic — apparently the earliest map to depict the New World, drawn before Columbus\'s voyage.',
+        source: {
+          externalId: 'src:vinland-map-unveiled-1965',
+          name: 'Vinland Map unveiled by Yale University, 11 October 1965, and published as an authentic pre-Columbian map (Wikipedia, "Vinland Map").',
+          url: 'https://en.wikipedia.org/wiki/Vinland_Map',
+          publishedAt: '1965-10-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Microanalysis by Walter McCrone\'s laboratory, published in the Geographical Journal in 1974, found that the map\'s ink contained anatase (titanium dioxide) in a rounded crystalline form manufactured only since the 1920s, indicating a modern pigment. The map\'s authenticity became seriously contested among scholars and conservators.',
+        source: {
+          externalId: 'src:mccrone-vinland-anatase-1974',
+          name: 'Walter & Lucy McCrone, analysis finding modern anatase in the Vinland Map ink, Geographical Journal, 1974 (Wikipedia, "Vinland Map").',
+          url: 'https://en.wikipedia.org/wiki/Vinland_Map',
+          publishedAt: '1974-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-09-01',
+        datePrecision: 'DAY',
+        reason: 'On 1 September 2021 Yale announced the results of a comprehensive materials analysis: the ink throughout the map contained a modern titanium compound, and the map reproduced errors traceable to a printed 1782 facsimile, leading curator Raymond Clemens to state the map was "beyond a doubt" a forgery rather than a medieval product. The institution that had championed it formally repudiated the document.',
+        source: {
+          externalId: 'src:yale-vinland-map-fake-2021',
+          name: 'Yale University, "Analysis unlocks secret of the Vinland Map — it\'s a fake," YaleNews, 1 September 2021.',
+          url: 'https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake',
+          publishedAt: '2021-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
