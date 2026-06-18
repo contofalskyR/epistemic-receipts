@@ -6993,6 +6993,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR PHARMACOLOGY ERA (1964–1991)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── WHO clofibrate primary prevention reversal — 1978 ──────────────────────
+  {
+    externalId: 'trajectory:who-clofibrate-primary-prevention-reversal-1978',
+    text: 'The WHO Cooperative Trial reported (British Heart Journal, October 1978) that clofibrate, the first widely used cholesterol-lowering drug, reduced ischaemic heart disease incidence by about 20% in hypercholesterolaemic men but increased total mortality — a finding the 1980 mortality follow-up confirmed as a 25% excess of deaths, discrediting clofibrate for primary prevention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Committee of Principal Investigators published the primary report of the WHO Cooperative Trial in 15,745 men, documenting a ~20% reduction in non-fatal ischaemic heart disease with clofibrate but simultaneously flagging a statistically significant increase in non-cardiovascular and total mortality in the treated group. This was the first large randomized primary-prevention trial of a lipid-lowering drug, and it recorded the efficacy signal and the mortality alarm together.',
+        source: {
+          externalId: 'src:who-clofibrate-bhj-1978',
+          name: 'Committee of Principal Investigators. A co-operative trial in the primary prevention of ischaemic heart disease using clofibrate. Br Heart J. 1978;40(10):1069-1118.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/361054/',
+          publishedAt: '1978-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-08-23',
+        datePrecision: 'DAY',
+        reason: 'The Committee\'s mortality follow-up in The Lancet reported 25% more deaths in the clofibrate group than in the high-cholesterol control group (p<0.01), with the excess persisting even after participants stopped the drug. The net-harm verdict overturned the case for clofibrate in primary prevention; clofibrate was subsequently abandoned for cholesterol lowering and the trial became a landmark warning that surrogate (cholesterol) improvement does not guarantee mortality benefit.',
+        source: {
+          externalId: 'src:who-clofibrate-mortality-lancet-1980',
+          name: 'Committee of Principal Investigators. WHO cooperative trial on primary prevention of ischaemic heart disease using clofibrate to lower serum cholesterol: mortality follow-up. Lancet. 1980;2(8191):379-385.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6105515/',
+          publishedAt: '1980-08-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CONSENSUS enalapril heart failure mortality — 1987 ─────────────────────
+  {
+    externalId: 'trajectory:consensus-enalapril-heart-failure-mortality-1987',
+    text: 'The CONSENSUS trial reported in the New England Journal of Medicine on 4 June 1987 that the ACE inhibitor enalapril reduced six-month mortality by 40% in patients with severe (NYHA class IV) congestive heart failure, the first demonstration that any drug reduces mortality in heart failure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-06-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-06-04',
+        datePrecision: 'DAY',
+        reason: 'The Cooperative North Scandinavian Enalapril Survival Study (CONSENSUS) was stopped early after enalapril added to standard therapy cut six-month mortality from 44% to 26% (a 40% relative reduction) in severe heart failure. This was the first randomized evidence that a pharmacologic agent prolongs survival in heart failure, shifting ACE inhibition from a blood-pressure-lowering use to a survival therapy.',
+        source: {
+          externalId: 'src:consensus-enalapril-nejm-1987',
+          name: 'CONSENSUS Trial Study Group. Effects of enalapril on mortality in severe congestive heart failure. Results of the Cooperative North Scandinavian Enalapril Survival Study (CONSENSUS). N Engl J Med. 1987;316(23):1429-1435.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2883575/',
+          publishedAt: '1987-06-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-08-01',
+        datePrecision: 'DAY',
+        reason: 'The SOLVD treatment trial extended the survival benefit of enalapril to the much larger population of patients with mild-to-moderate heart failure and reduced ejection fraction, showing a 16% mortality reduction over ~41 months. Together with CONSENSUS, this established ACE inhibition as a cornerstone of heart-failure therapy and it was incorporated into clinical guidelines worldwide.',
+        source: {
+          externalId: 'src:solvd-enalapril-nejm-1991',
+          name: 'The SOLVD Investigators. Effect of enalapril on survival in patients with reduced left ventricular ejection fractions and congestive heart failure. N Engl J Med. 1991;325(5):293-302.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2057034/',
+          publishedAt: '1991-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Black propranolol first beta-blocker — 1964 ────────────────────────────
+  {
+    externalId: 'trajectory:black-propranolol-first-beta-blocker-1964',
+    text: 'Black and colleagues reported in The Lancet on 16 May 1964 the first clinically effective beta-adrenergic receptor antagonist, propranolol, demonstrating relief of angina and founding the beta-blocker drug class.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-05-16',
+        datePrecision: 'DAY',
+        reason: 'James Black\'s team at ICI reported propranolol, a beta-receptor antagonist roughly ten times more potent and free of the toxicity that had doomed the earlier compound pronethalol, and showed it relieved angina pectoris. The paper introduced rational receptor-targeted drug design to cardiovascular medicine and recorded the founding evidence for the beta-blocker class.',
+        source: {
+          externalId: 'src:black-propranolol-lancet-1964',
+          name: 'Black JW, Crowther AF, Shanks RG, Smith LH, Dornhorst AC. A new adrenergic beta-receptor antagonist. Lancet. 1964;1(7342):1080-1081.',
+          url: 'https://doi.org/10.1016/s0140-6736(64)91275-9',
+          publishedAt: '1964-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-10-01',
+        datePrecision: 'MONTH',
+        reason: 'James W. Black was awarded a share of the 1988 Nobel Prize in Physiology or Medicine for discoveries of important principles in drug treatment, with propranolol and the beta-blocker concept cited as the foundational achievement. By then beta-blockers were entrenched in the treatment of angina, hypertension, and post-myocardial-infarction secondary prevention, marking the institutional settling of the class.',
+        source: {
+          externalId: 'src:nobel-medicine-1988-black',
+          name: 'Nobel Prize in Physiology or Medicine 1988 (James W. Black, Gertrude B. Elion, George H. Hitchings). NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1988/summary/',
+          publishedAt: '1988-10-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── MRFIT multifactor intervention null result — 1982 ──────────────────────
+  {
+    externalId: 'trajectory:mrfit-multifactor-intervention-null-1982',
+    text: 'The Multiple Risk Factor Intervention Trial (MRFIT) reported in JAMA on 24 September 1982 that six years of intensive intervention on smoking, blood pressure, and serum cholesterol in 12,866 high-risk men produced no statistically significant reduction in coronary heart disease or all-cause mortality versus usual care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-09-24',
+        datePrecision: 'DAY',
+        reason: 'MRFIT, one of the largest and most expensive prevention trials of its era, found that special multifactor intervention did not significantly lower coronary or total mortality at seven years (CHD death 17.9 vs 19.3 per 1000), an unexpected null that challenged the assumption that aggressive coordinated risk-factor modification would deliver clear mortality benefit. Investigators attributed the result partly to greater-than-expected risk-factor improvement in the usual-care group and raised concern about the antihypertensive (diuretic) regimen in some subgroups.',
+        source: {
+          externalId: 'src:mrfit-jama-1982',
+          name: 'Multiple Risk Factor Intervention Trial Research Group. Multiple Risk Factor Intervention Trial: risk factor changes and mortality results. JAMA. 1982;248(12):1465-1477.',
+          url: 'https://biolincc.nhlbi.nih.gov/studies/mrfit/',
+          publishedAt: '1982-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The 16-year mortality follow-up in Circulation found lower coronary (11.4%), cardiovascular, and total mortality rates in the special-intervention group, suggesting a delayed and modest benefit that the original 7-year analysis had been too short and underpowered to detect. The reinterpretation left the value of coordinated multifactor primary-prevention intervention genuinely contested rather than cleanly refuted.',
+        source: {
+          externalId: 'src:mrfit-16yr-circulation-1996',
+          name: 'Multiple Risk Factor Intervention Trial Research Group. Mortality after 16 years for participants randomized to the Multiple Risk Factor Intervention Trial. Circulation. 1996;94(5):946-951.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8790030/',
+          publishedAt: '1996-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
