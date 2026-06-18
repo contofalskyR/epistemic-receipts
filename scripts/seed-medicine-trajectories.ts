@@ -1847,6 +1847,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH / POST-MARKET REVERSAL ERA (1992–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 40. WHI estrogen-plus-progestin HRT reversal — 2002 ─────────────────────
+  {
+    externalId: 'trajectory:whi-estrogen-progestin-hrt-reversal-2002',
+    text: 'The claim that combined estrogen-plus-progestin hormone replacement therapy was a safe long-term treatment that protected postmenopausal women against coronary heart disease and other chronic conditions was reversed when the Women\'s Health Initiative randomized trial, reported in JAMA on 17 July 2002, found that the therapy increased rather than reduced cardiovascular and breast-cancer risk.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-12',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-12',
+        datePrecision: 'MONTH',
+        reason: 'The American College of Physicians issued \'Guidelines for counseling postmenopausal women about preventive hormone therapy\' (Ann Intern Med 1992;117:1038-41), recommending preventive hormone therapy — chiefly for coronary disease prevention — for postmenopausal women. Drawing on observational data such as the Nurses\' Health Study, this codified as institutional standard the claim that long-term HRT was cardioprotective and broadly beneficial.',
+        source: {
+          externalId: 'src:acp-hrt-counseling-guideline-1992',
+          name: 'American College of Physicians. Guidelines for counseling postmenopausal women about preventive hormone therapy. Ann Intern Med. 1992;117(12):1038-1041.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1443972/',
+          publishedAt: '1992-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-17',
+        datePrecision: 'DAY',
+        reason: 'The Writing Group for the Women\'s Health Initiative Investigators reported the principal results of the estrogen-plus-progestin (Prempro) randomized controlled trial in 16,608 healthy postmenopausal women. The data and safety monitoring board had stopped the trial early (mean 5.2 years) because invasive breast cancer crossed the stopping boundary and the global index showed risks exceeding benefits, with increased coronary heart disease, stroke, and pulmonary embolism. The first large RCT directly contradicted the observational consensus that combined HRT was protective.',
+        source: {
+          externalId: 'src:whi-estrogen-progestin-jama-2002',
+          name: 'Writing Group for the Women\'s Health Initiative Investigators. Risks and Benefits of Estrogen Plus Progestin in Healthy Postmenopausal Women: Principal Results From the Women\'s Health Initiative Randomized Controlled Trial. JAMA. 2002;288(3):321-333.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/195120',
+          publishedAt: '2002-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-11',
+        datePrecision: 'MONTH',
+        reason: 'The American College of Physicians published revised recommendations, \'Postmenopausal Hormone Replacement Therapy for Primary Prevention of Chronic Conditions\' (Ann Intern Med 2002;137:834-839), retracting its earlier endorsement of HRT for chronic-disease prevention in light of the WHI results. The body that had institutionalized the preventive claim in 1992 formally withdrew it, ratifying the reversal at the guideline level.',
+        source: {
+          externalId: 'src:acp-hrt-prevention-reversal-2002',
+          name: 'American College of Physicians. Postmenopausal Hormone Replacement Therapy for Primary Prevention of Chronic Conditions: Recommendations and Rationale. Ann Intern Med. 2002;137(10):834-839.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-137-10-200211190-00013',
+          publishedAt: '2002-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 41. Vioxx (rofecoxib) voluntary withdrawal — 2004 ───────────────────────
+  {
+    externalId: 'trajectory:vioxx-rofecoxib-withdrawal-2004',
+    text: 'The claim that rofecoxib (Vioxx), the COX-2-selective NSAID approved by the FDA in May 1999, was a safe anti-inflammatory drug for arthritis and chronic pain was reversed when Merck voluntarily withdrew it from the worldwide market on 30 September 2004 after a trial showed increased cardiovascular risk.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-05',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-05',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved rofecoxib (Vioxx), a cyclooxygenase-2-selective NSAID, for relief of osteoarthritis signs and symptoms, acute pain in adults, and menstrual pain; rheumatoid-arthritis indications followed. Regulatory approval established the drug as a safe, effective analgesic, and it went on to generate more than 84 million prescriptions, with over 2 million people taking it at the time of withdrawal.',
+        source: {
+          externalId: 'src:fda-vioxx-withdrawal-news-2004',
+          name: 'U.S. Food and Drug Administration. FDA Issues Public Health Advisory on Vioxx as its Manufacturer Voluntarily Withdraws the Product (P04-95; documents May 1999 approval). 30 September 2004.',
+          url: 'https://info.groupbenefits.org/docs/OGBforms/News/2004/FDAwithdrawsVioxx.pdf',
+          publishedAt: '2004-09-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2004-09-30',
+        datePrecision: 'DAY',
+        reason: 'Merck announced a voluntary worldwide withdrawal of Vioxx after halting the APPROVe (Adenomatous Polyp Prevention on Vioxx) trial, which showed an increased relative risk of confirmed cardiovascular events such as heart attack and stroke beginning after 18 months of treatment. The largest voluntary drug recall in history, it repudiated the drug\'s safety premise through manufacturer action and became a defining case in post-market surveillance.',
+        source: {
+          externalId: 'src:merck-vioxx-voluntary-withdrawal-2004',
+          name: 'Merck & Co., Inc. Merck Announces Voluntary Worldwide Withdrawal of VIOXX. 30 September 2004.',
+          url: 'https://info.groupbenefits.org/docs/OGBforms/News/2004/MerckAnnouncement.pdf',
+          publishedAt: '2004-09-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 42. Tamoxifen breast-cancer prevention — NSABP P-1 1998 ─────────────────
+  {
+    externalId: 'trajectory:tamoxifen-breast-cancer-prevention-1998',
+    text: 'Fisher and the National Surgical Adjuvant Breast and Bowel Project (NSABP) P-1 investigators reported in the Journal of the National Cancer Institute on 16 September 1998 that tamoxifen reduced the incidence of invasive breast cancer by about 49% in women at increased risk, establishing the first drug shown to prevent breast cancer in healthy high-risk women.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-09-16',
+        datePrecision: 'DAY',
+        reason: 'Fisher et al. reported the NSABP Breast Cancer Prevention Trial (P-1), a randomized placebo-controlled trial in 13,388 women at increased risk, finding that five years of tamoxifen reduced invasive breast cancer incidence by approximately 49%. This recorded in the expert literature the novel claim that breast cancer could be prevented pharmacologically in healthy high-risk women, while also documenting increased risks of endometrial cancer and thromboembolism.',
+        source: {
+          externalId: 'src:nsabp-p1-tamoxifen-jnci-1998',
+          name: 'Fisher B, Costantino JP, Wickerham DL, et al. Tamoxifen for prevention of breast cancer: report of the National Surgical Adjuvant Breast and Bowel Project P-1 Study. J Natl Cancer Inst. 1998;90(18):1371-1388.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9747868/',
+          publishedAt: '1998-09-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-10',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved tamoxifen (Nolvadex) to reduce the incidence of breast cancer in women at high risk, based on the NSABP P-1 results — the first regulatory approval of a drug for breast cancer chemoprevention. The approval institutionally settled the claim that tamoxifen reduces breast cancer risk, while the labeled serious harms (uterine cancer, thromboembolism, stroke) kept its use risk-stratified rather than universal.',
+        source: {
+          externalId: 'src:fda-tamoxifen-nolvadex-label-1998',
+          name: 'U.S. Food and Drug Administration. NOLVADEX (tamoxifen citrate) approved labeling, NDA 17-970 (breast cancer risk reduction indication). 1998.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/1998/17970.pdf',
+          publishedAt: '1998-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 43. Million Women Study — HRT and breast cancer 2003 ─────────────────────
+  {
+    externalId: 'trajectory:million-women-study-hrt-breast-cancer-2003',
+    text: 'Beral and the Million Women Study collaborators reported in The Lancet on 9 August 2003 that current use of hormone replacement therapy — especially estrogen-progestin combinations — substantially increases the incidence and mortality of breast cancer, based on observational follow-up of over one million UK women.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-08-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-08-09',
+        datePrecision: 'DAY',
+        reason: 'The Million Women Study, a prospective cohort of more than one million UK women aged 50–64, reported that current HRT users had significantly elevated breast cancer incidence and mortality, with estrogen-progestin combinations carrying substantially greater risk than estrogen-only preparations. Arriving a year after the WHI trial, the largest observational dataset on the question converged with the RCT, recording the HRT–breast-cancer link in the expert literature with high statistical power.',
+        source: {
+          externalId: 'src:million-women-study-lancet-2003',
+          name: 'Million Women Study Collaborators (Beral V, et al.). Breast cancer and hormone-replacement therapy in the Million Women Study. Lancet. 2003;362(9382):419-427.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(03)14596-5/fulltext',
+          publishedAt: '2003-08-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-08',
+        datePrecision: 'MONTH',
+        reason: 'The UK Committee on Safety of Medicines and the Medicines and Healthcare products Regulatory Agency (MHRA) revised HRT advice in response to the study, requiring prescribers to inform patients of the breast-cancer risk of prolonged therapy and to review treatment annually. The regulatory action settled the breast-cancer risk as established prescribing guidance and helped drive a sharp decline in HRT use.',
+        source: {
+          externalId: 'src:mhra-hrt-breast-cancer-advice-2003',
+          name: 'MHRA/Committee on Safety of Medicines advises vigilance after study links HRT with increased risk of breast cancer. The Pharmaceutical Journal. August 2003.',
+          url: 'https://pharmaceutical-journal.com/article/news/mhra-advises-vigilance-after-study-links-hrt-with-increased-risk-of-breast-cancer',
+          publishedAt: '2003-08-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 44. USPSTF mammography screening revision — 2009 ─────────────────────────
+  {
+    externalId: 'trajectory:uspstf-mammography-screening-revision-2009',
+    text: 'The U.S. Preventive Services Task Force recommended on 17 November 2009 against routine screening mammography for average-risk women aged 40–49 and advised biennial rather than annual screening for women aged 50–74, revising the prior standard of routine screening from age 40.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-11-17',
+        datePrecision: 'DAY',
+        reason: 'The USPSTF published its updated breast cancer screening recommendation statement (Ann Intern Med 2009;151:716-726), grading routine screening for women 40–49 as not recommended (individualized decision) and recommending biennial screening for women 50–74, citing the balance of benefits against false positives and overdiagnosis. This recorded a formal institutional reversal of the earlier recommendation to screen from age 40.',
+        source: {
+          externalId: 'src:uspstf-breast-cancer-screening-2009',
+          name: 'U.S. Preventive Services Task Force. Screening for Breast Cancer: U.S. Preventive Services Task Force Recommendation Statement. Ann Intern Med. 2009;151(10):716-726.',
+          url: 'https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening-2009',
+          publishedAt: '2009-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2009-12',
+        datePrecision: 'MONTH',
+        reason: 'The recommendation drew immediate, sustained opposition from the American Cancer Society, the American College of Radiology, and the American College of Obstetricians and Gynecologists, which retained their age-40 annual-screening guidelines. The backlash was severe enough that the U.S. Senate amended pending health-reform legislation to disregard the 2009 USPSTF guidance, and the Affordable Care Act specifically excluded it so insurers would continue covering screening from age 40 — leaving the recommendation institutionally contested rather than adopted.',
+        source: {
+          externalId: 'src:uspstf-mammography-agency-response-2009',
+          name: 'Major Cancer Agencies Respond to USPSTF\'s New Mammography Guidelines. Cancer Network / ONCOLOGY. November 2009.',
+          url: 'https://www.cancernetwork.com/view/major-cancer-agencies-respond-uspstfs-new-mammography-guidelines',
+          publishedAt: '2009-11-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',
