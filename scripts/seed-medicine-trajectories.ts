@@ -6703,6 +6703,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL PROCEDURE REVERSALS (1990–2020)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── LACC trial: minimally invasive radical hysterectomy reversal 2018 ────────
+  {
+    externalId: 'trajectory:lacc-minimally-invasive-radical-hysterectomy-reversal-2018',
+    text: 'The LACC trial (Ramirez et al., New England Journal of Medicine, 31 October 2018) established that minimally invasive (laparoscopic/robotic) radical hysterectomy for early-stage cervical cancer produced significantly lower disease-free and overall survival than open abdominal surgery, reversing the prevailing belief that the minimally invasive approach was oncologically equivalent.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: "Following the introduction of laparoscopic radical hysterectomy in the early 1990s and the clearance and rapid uptake of robotic surgical systems in the mid-2000s, minimally invasive radical hysterectomy was widely adopted as standard for early-stage cervical cancer on the strength of retrospective series suggesting equivalent oncologic outcomes with less surgical morbidity. As the LACC investigators document, the approach 'has been widely adopted' largely on the basis of this non-randomized evidence.",
+        source: {
+          externalId: 'src:ramirez-lacc-nejm-2018-adoption',
+          name: 'Ramirez PT, et al. Minimally Invasive versus Abdominal Radical Hysterectomy for Cervical Cancer. N Engl J Med. 2018;379(20):1895–1904 (background documenting prior adoption from retrospective data).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30380365/',
+          publishedAt: '2018-10-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-10-31',
+        datePrecision: 'DAY',
+        reason: 'The randomized LACC trial (631 women) was stopped early when minimally invasive radical hysterectomy showed markedly worse outcomes than open surgery: 4.5-year disease-free survival 86.0% vs 96.5% and 3-year overall survival 93.8% vs 99.0%. The unexpected result contradicted the retrospective evidence base, prompting NCCN and professional societies to revise guidance toward open surgery and overturning a settled surgical preference.',
+        source: {
+          externalId: 'src:ramirez-lacc-nejm-2018',
+          name: 'Ramirez PT, Frumovitz M, Pareja R, et al. Minimally Invasive versus Abdominal Radical Hysterectomy for Cervical Cancer. N Engl J Med. 2018;379(20):1895–1904.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30380365/',
+          publishedAt: '2018-10-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Routine episiotomy reversal 2005 ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:routine-episiotomy-reversal-2005',
+    text: 'The JAMA systematic review by Hartmann et al. (4 May 2005) concluded that routine episiotomy provides none of the maternal benefits long ascribed to it and is associated with worse outcomes, reversing the early-20th-century obstetric doctrine — promoted by DeLee from 1920 — that prophylactic episiotomy should be performed routinely in vaginal birth.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1920-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Joseph DeLee advocated prophylactic episiotomy in 1920, routine episiotomy became entrenched standard obstetric practice through the mid-20th century, performed in a majority of US vaginal deliveries on the belief that the controlled surgical incision prevented severe perineal tearing and protected pelvic-floor function. The Hartmann review documents that the procedure became one of the most common surgical interventions in obstetrics without supporting randomized evidence.',
+        source: {
+          externalId: 'src:hartmann-episiotomy-jama-2005-history',
+          name: 'Hartmann K, et al. Outcomes of routine episiotomy: a systematic review. JAMA. 2005;293(17):2141–2148 (documenting historical routine use).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15870418/',
+          publishedAt: '2005-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-05-04',
+        datePrecision: 'DAY',
+        reason: "The systematic review of randomized and observational evidence found that routine episiotomy did not reduce severe perineal trauma, improve healing, or protect pelvic-floor function, and that outcomes 'can be considered worse since some proportion of women who would have had lesser injury instead had a surgical incision.' The conclusion that 'evidence does not support maternal benefits traditionally ascribed to routine episiotomy' was rapidly codified by ACOG Practice Bulletin No. 71 (2006), which recommended restricted rather than routine use.",
+        source: {
+          externalId: 'src:hartmann-episiotomy-jama-2005',
+          name: 'Hartmann K, Viswanathan M, Palmieri R, Gartlehner G, Thorp J Jr, Lohr KN. Outcomes of routine episiotomy: a systematic review. JAMA. 2005;293(17):2141–2148.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15870418/',
+          publishedAt: '2005-05-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pulmonary artery catheter reversal 1996–2005 ──────────────────────────────
+  {
+    externalId: 'trajectory:pulmonary-artery-catheter-reversal-1996',
+    text: 'Connors et al. (JAMA, 18 September 1996) reported that pulmonary artery (Swan-Ganz) catheterization in the first 24 hours of ICU care was associated with increased 30-day mortality and resource use in critically ill patients, contesting — and ultimately, with the PAC-Man randomized trial (Lancet, 2005), reversing — the long-settled belief that routine right-heart catheterization improves outcomes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Swan and Ganz introduced the balloon-flotation pulmonary artery catheter in 1970, bedside right-heart catheterization was adopted across intensive care and cardiac units worldwide as a routine tool for hemodynamic monitoring, on the assumption that the physiologic data it provided guided better therapy and improved survival. By the early 1990s it was one of the most widely used invasive monitoring procedures in critical care, with little randomized evidence of benefit.',
+        source: {
+          externalId: 'src:connors-pac-jama-1996-context',
+          name: 'Connors AF Jr, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients. JAMA. 1996;276(11):889–897 (documenting widespread prior use).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8782638/',
+          publishedAt: '1996-09-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-09-18',
+        datePrecision: 'DAY',
+        reason: "The SUPPORT prospective cohort study (5,735 critically ill patients) found that receiving a pulmonary artery catheter was associated with increased 30-day mortality (roughly 24% higher risk), greater costs, and longer ICU stays, with no patient subgroup identified as benefiting. The finding that 'RHC was associated with increased mortality and increased utilization of resources' overturned the presumption of benefit and triggered calls for a moratorium and for randomized trials.",
+        source: {
+          externalId: 'src:connors-pac-jama-1996',
+          name: 'Connors AF Jr, Speroff T, Dawson NV, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients (SUPPORT). JAMA. 1996;276(11):889–897.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8782638/',
+          publishedAt: '1996-09-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-08-06',
+        datePrecision: 'DAY',
+        reason: 'The PAC-Man randomized controlled trial (Harvey et al., 1,041 patients across 65 UK ICUs) found no difference in hospital mortality between management with or without a pulmonary artery catheter, providing definitive evidence that routine PAC use conferred no survival benefit. Combined with concurrent negative trials (e.g., ESCAPE), the result drove a sharp and sustained decline in PAC use, abandoning the procedure as routine critical-care practice.',
+        source: {
+          externalId: 'src:harvey-pacman-lancet-2005',
+          name: 'Harvey S, Harrison DA, Singer M, et al. Assessment of the clinical effectiveness of pulmonary artery catheters in management of patients in intensive care (PAC-Man): a randomised controlled trial. Lancet. 2005;366(9484):472–477.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(05)67061-4/abstract',
+          publishedAt: '2005-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA power morcellation uterine fibroids reversal 2014 ────────────────────
+  {
+    externalId: 'trajectory:fda-power-morcellation-uterine-fibroids-reversal-2014',
+    text: 'On 17 April 2014 the US FDA issued a safety communication discouraging laparoscopic power morcellation for uterine fibroids — estimating roughly 1 in 350 women undergoing hysterectomy/myomectomy for presumed fibroids harbors an unsuspected uterine sarcoma that morcellation can disseminate — reversing the prior status of power morcellation as a routinely safe minimally invasive technique.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After electric power morcellators were cleared for marketing in the mid-1990s, laparoscopic power morcellation became a common technique in gynecologic surgery, enabling minimally invasive removal of large fibroid uteri through small incisions and widely regarded as a safe, morbidity-reducing alternative to open surgery. It was incorporated into routine hysterectomy and myomectomy practice without systematic assessment of occult-malignancy dissemination risk.',
+        source: {
+          externalId: 'src:gao-morcellation-17-231-background',
+          name: 'U.S. Government Accountability Office. Medical Devices: Cancer Risk Led FDA to Warn Against Certain Uses of Power Morcellators and Recommend New Labeling. GAO-17-231. 2017 (background on prior use).',
+          url: 'https://www.gao.gov/products/gao-17-231',
+          publishedAt: '2017-02-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-04-17',
+        datePrecision: 'DAY',
+        reason: "The FDA's April 2014 safety communication discouraged laparoscopic power morcellation for fibroids after reassessing the prevalence of unsuspected uterine sarcoma (~1 in 350) and the risk that morcellation spreads such cancer through the abdomen and pelvis, worsening survival. The warning prompted Johnson & Johnson/Ethicon, the largest manufacturer, to withdraw its morcellators from the market in mid-2014 and threw a routine surgical technique into open dispute.",
+        source: {
+          externalId: 'src:gao-morcellation-17-231-april2014',
+          name: 'U.S. GAO. Medical Devices: Cancer Risk Led FDA to Warn Against Certain Uses of Power Morcellators. GAO-17-231. 2017 (documenting the April 2014 FDA reassessment and safety communication).',
+          url: 'https://www.gao.gov/products/gao-17-231',
+          publishedAt: '2017-02-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-11-24',
+        datePrecision: 'DAY',
+        reason: 'In its updated November 2014 safety communication the FDA recommended a boxed warning and declared power morcellators contraindicated for removing uterine tissue suspected of containing malignancy and in peri-/postmenopausal women or candidates for en bloc removal; all manufacturers adopted the labeling. Routine intraperitoneal power morcellation was effectively abandoned in favor of contained morcellation or alternative approaches, completing the reversal.',
+        source: {
+          externalId: 'src:gao-morcellation-17-231-nov2014',
+          name: 'U.S. GAO. Medical Devices: Cancer Risk Led FDA to Warn Against Certain Uses of Power Morcellators and Recommend New Labeling. GAO-17-231. 2017 (documenting the November 2014 boxed warning and contraindications).',
+          url: 'https://www.gao.gov/products/gao-17-231',
+          publishedAt: '2017-02-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
