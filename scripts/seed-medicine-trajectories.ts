@@ -3800,6 +3800,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY & NEURO ERA (2021–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Zuranolone (Zurzuvae) — first oral PPD treatment 2023 ───────────────────
+  {
+    externalId: 'trajectory:zuranolone-zurzuvae-postpartum-depression-approval-2023',
+    text: 'On August 4, 2023, the FDA approved zuranolone (Zurzuvae), a neuroactive-steroid GABA-A modulator, as the first oral treatment for postpartum depression, while simultaneously issuing a Complete Response Letter declining approval for major depressive disorder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-08-04',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved zuranolone as the first oral, 14-day course for postpartum depression, establishing institutional acceptance of a rapid-acting neurosteroid antidepressant for that narrow indication. On the same day, the agency issued a Complete Response Letter for the broader major-depressive-disorder application, finding the evidence insufficient. The split decision is epistemically significant: the same molecule\'s efficacy was institutionally settled for PPD but rejected for general depression, illustrating indication-specific evidentiary thresholds.',
+        source: {
+          externalId: 'src:fda-zurzuvae-approval-2023',
+          name: 'U.S. Food and Drug Administration. FDA Approves First Oral Treatment for Postpartum Depression. August 4, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-oral-treatment-postpartum-depression',
+          publishedAt: '2023-08-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Serotonin theory of depression — umbrella review 2022 ───────────────────
+  {
+    externalId: 'trajectory:serotonin-theory-depression-umbrella-review-2022',
+    text: 'On July 20, 2022, Moncrieff and colleagues published a systematic umbrella review in Molecular Psychiatry concluding there is no consistent evidence that depression is caused by low serotonin, directly challenging the \'chemical imbalance\' rationale long used to explain SSRI antidepressants.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-07-20',
+        datePrecision: 'DAY',
+        reason: 'Moncrieff et al. synthesized the major strands of serotonin-depression research (CSF metabolites, receptor and transporter imaging, tryptophan-depletion studies, gene–environment interactions) and concluded none provided consistent support for the low-serotonin hypothesis. This formally recorded into the peer-reviewed literature a systematic refutation of the popular chemical-imbalance account that had underpinned public messaging about SSRIs since the 1990s.',
+        source: {
+          externalId: 'src:moncrieff-serotonin-umbrella-review-2022',
+          name: 'Moncrieff J, Cooper RE, Stockmann T, Amendola S, Hengartner MP, Horowitz MA. The serotonin theory of depression: a systematic umbrella review of the evidence. Molecular Psychiatry. 2023;28(8):3243-3256.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35854107/',
+          publishedAt: '2022-07-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Psilocybin COMP360 phase 2b trial — treatment-resistant depression 2022 ──
+  {
+    externalId: 'trajectory:psilocybin-treatment-resistant-depression-trial-2022',
+    text: 'On November 3, 2022, Goodwin and colleagues published in the New England Journal of Medicine the COMP360 phase 2b trial showing that a single 25-mg dose of synthetic psilocybin, with psychological support, significantly reduced depression scores at three weeks in treatment-resistant depression.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-11-03',
+        datePrecision: 'DAY',
+        reason: 'This was the largest randomized, controlled, dose-ranging trial of psilocybin for treatment-resistant depression to date, recording into the top-tier literature evidence that a single high dose produced rapid antidepressant effects superior to a 1-mg comparator. It also documented durability limits and adverse events (suicidal ideation in some participants), marking psilocybin\'s transition from fringe/exploratory to a recorded, evidence-backed therapeutic candidate without yet establishing settled efficacy or approval.',
+        source: {
+          externalId: 'src:goodwin-psilocybin-trd-nejm-2022',
+          name: 'Goodwin GM, Aaronson ST, Alvarez O, et al. Single-Dose Psilocybin for a Treatment-Resistant Episode of Major Depression. N Engl J Med. 2022;387(18):1637-1648.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36322843/',
+          publishedAt: '2022-11-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MDMA-assisted therapy for PTSD — phase 3 → FDA rejection 2024 ───────────
+  {
+    externalId: 'trajectory:mdma-assisted-therapy-ptsd-fda-rejection-2024',
+    text: 'Positive phase 3 evidence that MDMA-assisted therapy treats severe PTSD (Mitchell et al., Nature Medicine, 2021) was institutionally rejected when the FDA issued a Complete Response Letter to Lykos Therapeutics on August 8, 2024, declining approval and requiring an additional phase 3 trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-05-10',
+        datePrecision: 'DAY',
+        reason: 'The MAPP1 randomized, double-blind, placebo-controlled phase 3 trial reported that MDMA-assisted therapy significantly reduced PTSD symptoms versus placebo with therapy in patients with severe PTSD. Published online in Nature Medicine, it recorded the first phase 3-level evidence for a psychedelic-assisted psychotherapy, positioning MDMA for an anticipated regulatory approval.',
+        source: {
+          externalId: 'src:mitchell-mdma-ptsd-phase3-natmed-2021',
+          name: 'Mitchell JM, Bogenschutz M, Lilienstein A, et al. MDMA-assisted therapy for severe PTSD: a randomized, double-blind, placebo-controlled phase 3 study. Nat Med. 2021;27(6):1025-1033.',
+          url: 'https://doi.org/10.1038/s41591-021-01336-3',
+          publishedAt: '2021-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-08-08',
+        datePrecision: 'DAY',
+        reason: 'After an FDA advisory committee voted in June 2024 that the data did not show the treatment was effective and that benefits did not outweigh risks, the FDA issued a Complete Response Letter declining approval and requiring an additional phase 3 study. The agency cited functional unblinding, inadequate safety/abuse-event reporting, and trial-conduct and ethical concerns, institutionally contesting an efficacy claim that the published literature had treated as established.',
+        source: {
+          externalId: 'src:fda-crl-lykos-mdma-2024',
+          name: 'U.S. Food and Drug Administration. Complete Response Letter, NDA 215455 (midomafetamine capsules), to Lykos Therapeutics. August 8, 2024.',
+          url: 'https://download.open.fda.gov/crl/CRL_NDA215455_20240808.pdf',
+          publishedAt: '2024-08-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── N+8. H5N1 avian influenza direct human infection — 1997 ─────────────────
   {
     externalId: 'trajectory:h5n1-avian-influenza-human-infection-1997',
