@@ -50521,6 +50521,178 @@ const TRAJECTORIES: Trajectory[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR (1900–1950) — South Asia: additional verified curves
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Indus Valley Civilisation revealed at Mohenjo-daro and Harappa ───────────
+  {
+    externalId: 'trajectory:indus-valley-civilisation-announced-1924',
+    text: 'On 24 September 1924 John Marshall, Director-General of the Archaeological Survey of India, publicly announced in the Illustrated London News the discovery of a previously unknown Bronze Age civilisation in the Indus plains, identified from the finds at Mohenjo-daro and Harappa.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1924-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1924-09-24',
+        datePrecision: 'DAY',
+        reason: 'In the Illustrated London News of 24 September 1924 Marshall set out a "tentative but conspicuous public intimation" that the seals and structures excavated by R. D. Banerji at Mohenjo-daro and by Daya Ram Sahni at Harappa belonged to a hitherto unrecorded civilisation, writing that archaeologists appeared "on the threshold of such a discovery in the plains of the Indus." The announcement converted scattered field finds into a publicly recorded claim of a lost civilisation.',
+        source: {
+          externalId: 'src:indus-valley-marshall-announcement-1924',
+          name: 'Indus Valley Civilisation — John Marshall\'s announcement in the Illustrated London News, 24 September 1924.',
+          url: 'https://en.wikipedia.org/wiki/Indus_Valley_Civilisation',
+          publishedAt: '1924-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1924-10',
+        datePrecision: 'MONTH',
+        reason: 'Within a week the Assyriologist A. H. Sayce noted in the Illustrated London News that Indus seals resembled examples from Bronze Age Mesopotamia and Elam, and C. J. Gadd and Sidney Smith of the British Museum confirmed the parallels, giving the first secure indication that the civilisation was contemporary with early Sumer. Large-scale excavations under Marshall (published 1931) and, decades later, radiocarbon dating settled the Harappan culture as a third-millennium-BCE civilisation, an undisputed fact of archaeology.',
+        source: {
+          externalId: 'src:indus-valley-sayce-confirmation-1924',
+          name: 'Indus Valley Civilisation — Mesopotamian seal parallels noted by A. H. Sayce and confirmed by Gadd and Smith, establishing the antiquity of the Harappan culture.',
+          url: 'https://en.wikipedia.org/wiki/Mohenjo-daro',
+          publishedAt: '1924-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bose–Einstein statistics derived at the University of Dhaka ──────────────
+  {
+    externalId: 'trajectory:bose-einstein-statistics-1924',
+    text: 'In June 1924 Satyendra Nath Bose, a Reader in physics at the University of Dhaka in British India, derived Planck\'s radiation law purely from the statistics of light quanta and sent the manuscript to Albert Einstein, founding what became Bose–Einstein statistics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1924-06',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1924-06',
+        datePrecision: 'MONTH',
+        reason: 'After the Philosophical Magazine rejected his paper, Bose mailed his manuscript "Planck\'s Law and the Hypothesis of Light Quanta" to Einstein in June 1924 with the words "I have ventured to send you the accompanying article for your perusal and opinion." The derivation counted photon states without classical distinguishability, recording a new method of quantum counting that reproduced Planck\'s law from first principles.',
+        source: {
+          externalId: 'src:bose-letter-einstein-1924',
+          name: 'Satyendra Nath Bose — derivation of Planck\'s law and letter to Einstein, University of Dhaka, June 1924.',
+          url: 'https://en.wikipedia.org/wiki/Satyendra_Nath_Bose',
+          publishedAt: '1924-06-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1924-07',
+        datePrecision: 'MONTH',
+        reason: 'Einstein personally translated the paper into German and arranged its publication as "Plancks Gesetz und Lichtquantenhypothese" in Zeitschrift für Physik (vol. 26, pp. 178–181, 1924), then extended the method to material particles in his own papers of 1924–1925, predicting Bose–Einstein condensation. The statistics became foundational quantum physics and were experimentally confirmed by the 1995 creation of a Bose–Einstein condensate, leaving the result settled.',
+        source: {
+          externalId: 'src:bose-einstein-statistics-published-1924',
+          name: 'Bose–Einstein statistics — publication in Zeitschrift für Physik (1924) and Einstein\'s extension to the ideal quantum gas.',
+          url: 'https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_statistics',
+          publishedAt: '1924-07-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Declaration of Purna Swaraj (complete independence) at Lahore ────────────
+  {
+    externalId: 'trajectory:purna-swaraj-declaration-1930',
+    text: 'At midnight on 31 December 1929 the Indian National Congress, meeting at Lahore, adopted the Purna Swaraj resolution demanding complete independence; Jawaharlal Nehru hoisted the tricolour on the banks of the Ravi, and the declaration was promulgated on 26 January 1930.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1929-12-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1929-12-31',
+        datePrecision: 'DAY',
+        reason: 'At its Lahore session in December 1929 the Congress, under its new president Jawaharlal Nehru, passed a resolution declaring Purna Swaraj (complete self-rule) the goal of the national movement, superseding the earlier demand for dominion status. At midnight on New Year\'s Eve Nehru hoisted the tricolour flag on the banks of the Ravi at Lahore, an act recorded in the contemporaneous Indian press.',
+        source: {
+          externalId: 'src:purna-swaraj-lahore-1929',
+          name: 'Purna Swaraj — Lahore Congress resolution and flag-hoisting on the Ravi, 31 December 1929.',
+          url: 'https://en.wikipedia.org/wiki/Purna_Swaraj',
+          publishedAt: '1929-12-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-01-26',
+        datePrecision: 'DAY',
+        reason: 'The Declaration of Independence was officially promulgated on 26 January 1930, and the Congress called on Indians across the country to observe that day as Independence Day, with public readings of the pledge. The date became a fixed landmark of the freedom movement and was later chosen as the day the Constitution of India took effect, making it Republic Day; the adoption of Purna Swaraj is settled historical fact.',
+        source: {
+          externalId: 'src:purna-swaraj-promulgated-1930',
+          name: 'Purna Swaraj — promulgation of the Declaration of Independence and observance of Independence Day, 26 January 1930.',
+          url: 'https://en.wikipedia.org/wiki/Purna_Swaraj',
+          publishedAt: '1930-01-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Adoption of the Constitution of India ───────────────────────────────────
+  {
+    externalId: 'trajectory:constitution-of-india-adopted-1949',
+    text: 'The Constitution of India was adopted by the Constituent Assembly on 26 November 1949 and came into effect on 26 January 1950, establishing India as a sovereign democratic republic.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1949-11-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1949-11-26',
+        datePrecision: 'DAY',
+        reason: 'After nearly three years of drafting under the chairmanship of B. R. Ambedkar\'s drafting committee, the Constituent Assembly passed and adopted the Constitution of India on 26 November 1949 — a date now observed as Constitution Day (Samvidhan Divas). The adoption was a recorded institutional act of the Assembly, whose debates were contemporaneously transcribed.',
+        source: {
+          externalId: 'src:constitution-india-adopted-1949',
+          name: 'Constitution of India — adoption by the Constituent Assembly, 26 November 1949.',
+          url: 'https://en.wikipedia.org/wiki/Constitution_of_India',
+          publishedAt: '1949-11-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1950-01-26',
+        datePrecision: 'DAY',
+        reason: 'Members signed the engrossed copies in Hindi and English on 24 January 1950, and the Constitution came into force on 26 January 1950, dissolving the dominion and inaugurating the Republic of India with Rajendra Prasad as its first President. The date and effect of the Constitution are uncontested constitutional fact, commemorated annually as Republic Day.',
+        source: {
+          externalId: 'src:constitution-india-effective-1950',
+          name: 'Constitution of India — signing (24 January 1950) and commencement on 26 January 1950 as Republic Day.',
+          url: 'https://en.wikipedia.org/wiki/Constitution_of_India',
+          publishedAt: '1950-01-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
   // COLD WAR & POSTWAR (1950–1990) — additional verified curves
   // ═══════════════════════════════════════════════════════════════════════════════
 

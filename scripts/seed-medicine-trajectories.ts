@@ -4936,6 +4936,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SCREENING / REGULATORY / SAFETY REASSESSMENTS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── PSA prostate-cancer screening — ERSPC/PLCO 2009 ──────────────────────────
+  {
+    externalId: 'trajectory:psa-prostate-screening-mortality-contested-2009',
+    text: 'On 18 March 2009 the New England Journal of Medicine published the European (ERSPC) and U.S. (PLCO) randomized trials, whose conflicting mortality results undermined the prevailing consensus that routine population-wide PSA-based prostate-cancer screening reduces prostate-cancer mortality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-03-18',
+        datePrecision: 'DAY',
+        reason: 'Two large RCTs published simultaneously gave incompatible answers: ERSPC found a 20% relative reduction in prostate-cancer mortality but at the cost of needing to screen 1,410 men and treat 48 extra cases to prevent one death, while PLCO found no significant mortality difference. Together they replaced the prior practice consensus with genuine scientific uncertainty about screening\'s net benefit, foregrounding overdiagnosis and overtreatment.',
+        source: {
+          externalId: 'src:schroder-erspc-nejm-2009',
+          name: 'Schröder FH, Hugosson J, Roobol MJ, et al. Screening and prostate-cancer mortality in a randomized European study. N Engl J Med. 2009;360(13):1320-1328.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19297566/',
+          publishedAt: '2009-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-05',
+        datePrecision: 'MONTH',
+        reason: 'Drawing on the 2009 trial evidence, the U.S. Preventive Services Task Force issued a Grade D recommendation against PSA-based screening for men of all ages, concluding the harms outweighed the benefits. This institutionalized the reversal of routine-screening advice; the Task Force later softened the position to Grade C (shared decision-making for men 55–69) in 2018, leaving the question genuinely contested rather than fully settled.',
+        source: {
+          externalId: 'src:uspstf-prostate-screening-2012',
+          name: 'U.S. Preventive Services Task Force. Recommendation: Prostate Cancer Screening (2012 Grade D recommendation).',
+          url: 'https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/prostate-cancer-screening',
+          publishedAt: '2012-05-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gemtuzumab/Mylotarg accelerated-approval reversal — 2000/2010 ───────────
+  {
+    externalId: 'trajectory:gemtuzumab-mylotarg-accelerated-approval-reversal-2000',
+    text: 'On 17 May 2000 the FDA granted accelerated approval to Mylotarg (gemtuzumab ozogamicin)—the first antibody-drug conjugate—for CD33-positive acute myeloid leukemia in first relapse, on the basis of surrogate response-rate endpoints rather than survival.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-05-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved gemtuzumab ozogamicin under Subpart H accelerated approval based on a 30% overall response rate in single-arm studies, with a confirmatory post-marketing trial required to verify clinical benefit. As the first marketed antibody-drug conjugate, it recorded a provisional regulatory claim of efficacy pending verification.',
+        source: {
+          externalId: 'src:fda-approval-summary-mylotarg-2018',
+          name: 'Norsworthy KJ, et al. FDA Approval Summary: Mylotarg for Treatment of Relapsed or Refractory CD33-Positive Acute Myeloid Leukemia. Oncologist. 2018;23(9):1103-1108.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6192608/',
+          publishedAt: '2018-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-06',
+        datePrecision: 'MONTH',
+        reason: 'The required confirmatory trial SWOG S0106 failed to demonstrate clinical benefit and showed a higher rate of fatal induction toxicity in the gemtuzumab arm (5.7% vs 1.4%). At the FDA\'s 21 May 2010 request, the manufacturer voluntarily withdrew the drug in June 2010 (NDA withdrawal effective 15 October 2010), a textbook accelerated-approval reversal; a fractionated lower-dose regimen was later re-approved in 2017.',
+        source: {
+          externalId: 'src:fed-register-mylotarg-withdrawal-2011',
+          name: 'Wyeth Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for MYLOTARG. Federal Register, 28 Nov 2011.',
+          url: 'https://www.federalregister.gov/documents/2011/11/28/2011-30473/wyeth-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-mylotarg',
+          publishedAt: '2011-11-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA pediatric antidepressant black-box suicidality warning — 2004 ────────
+  {
+    externalId: 'trajectory:fda-pediatric-antidepressant-black-box-suicidality-2004',
+    text: 'In October 2004 the FDA directed the manufacturers of all antidepressants to add a boxed (\'black box\') warning stating that the drugs increase the risk of suicidal thinking and behavior in children and adolescents, based on a pooled analysis of 24 placebo-controlled trials showing a 4% versus 2% risk.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-15',
+        datePrecision: 'DAY',
+        reason: 'Following a September 2004 advisory-committee review of an FDA meta-analysis of 24 pediatric trials (~4,400 patients) finding roughly double the rate of suicidality on drug versus placebo, the FDA mandated the most serious labeling warning across the entire antidepressant class and required patient MedGuides. This established, as institutional fact, the claim that antidepressants raise pediatric suicidality risk.',
+        source: {
+          externalId: 'src:fda-antidepressant-suicidality-warning-2004',
+          name: 'FDA. Suicidality in Children and Adolescents Being Treated With Antidepressant Medications (boxed warning directive, Oct 2004).',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/suicidality-children-and-adolescents-being-treated-antidepressant-medications',
+          publishedAt: '2004-10-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-06-18',
+        datePrecision: 'DAY',
+        reason: 'A quasi-experimental BMJ study by Lu et al. reported that the warning and its media coverage were followed by reduced antidepressant treatment of young people and an increase in psychotropic drug poisonings (a suicide-attempt proxy), arguing the warning caused net harm. The finding—vigorously disputed by other researchers who found no contemporaneous rise in completed suicides—reopened debate over whether the warning\'s benefits outweigh its harms.',
+        source: {
+          externalId: 'src:lu-bmj-black-box-2014',
+          name: 'Lu CY, Zhang F, Lakoma MD, et al. Changes in antidepressant use by young people and suicidal behavior after FDA warnings and media coverage: quasi-experimental study. BMJ. 2014;348:g3596.',
+          url: 'https://www.bmj.com/content/348/bmj.g3596',
+          publishedAt: '2014-06-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NLST low-dose CT lung-cancer screening — 2010 ────────────────────────────
+  {
+    externalId: 'trajectory:nlst-low-dose-ct-lung-cancer-screening-2010',
+    text: 'On 4 November 2010 the U.S. National Cancer Institute announced that the National Lung Screening Trial (NLST) had found low-dose CT screening reduced lung-cancer mortality by about 20% relative to chest X-ray in high-risk smokers, establishing the first screening modality proven to lower lung-cancer death.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-11-04',
+        datePrecision: 'DAY',
+        reason: 'After the data and safety monitoring board found a statistically significant 20.3% reduction in lung-cancer mortality among 53,454 heavy smokers screened with low-dose helical CT versus chest radiography, the NCI director accepted its recommendation and publicly announced the interim result, recording for the first time that any lung-cancer screening method reduces mortality.',
+        source: {
+          externalId: 'src:nci-nlst-announcement-2010',
+          name: 'National Cancer Institute. National Lung Screening Trial (NLST) — results announced 4 Nov 2010.',
+          url: 'https://www.cancer.gov/types/lung/research/nlst',
+          publishedAt: '2010-11-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-08-04',
+        datePrecision: 'DAY',
+        reason: 'The full peer-reviewed results were published in the New England Journal of Medicine (online 29 June 2011; print 4 August 2011), reporting a 20.0% relative reduction in lung-cancer mortality. This peer-reviewed publication settled the empirical claim and became the evidentiary basis for the 2013 USPSTF Grade B recommendation endorsing low-dose CT screening for high-risk smokers.',
+        source: {
+          externalId: 'src:nlst-nejm-2011',
+          name: 'National Lung Screening Trial Research Team. Reduced Lung-Cancer Mortality with Low-Dose Computed Tomographic Screening. N Engl J Med. 2011;365(5):395-409. doi:10.1056/NEJMoa1102873.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21714641/',
+          publishedAt: '2011-08-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
