@@ -5510,6 +5510,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY ERA (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Chlorpromazine first antipsychotic — Delay & Deniker 1952 ───────────────
+  {
+    externalId: 'trajectory:chlorpromazine-first-antipsychotic-1952',
+    text: 'On 25 May 1952, Jean Delay and Pierre Deniker reported that chlorpromazine (4560 RP) alone controlled psychotic agitation, hallucinations, and delusions in psychiatric patients — acting as a specific antipsychotic rather than a mere sedative.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-05-25',
+        datePrecision: 'DAY',
+        reason: 'After clinical trials began at Sainte-Anne Hospital under Deniker on 24 March 1952, Delay and Deniker presented their first findings on 25 May 1952 and published a rapid series of papers in the Annales Médico-Psychologiques, reporting that chlorpromazine at ~75 mg/day controlled psychotic excitation and improved thinking and emotional behavior without simple sedation. This recorded the first claim that a drug could specifically treat psychosis, founding modern psychopharmacology.',
+        source: {
+          externalId: 'src:ban-fifty-years-chlorpromazine-2007',
+          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495–500.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2655089/',
+          publishedAt: '2007-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Chlorpromazine was adopted internationally within two years and in 1957 Henri Laborit, Jean Delay, Pierre Deniker, and Heinz Lehmann received the Albert Lasker Clinical Medical Research Award for introducing antipsychotic medication. The award, alongside the drug\'s worldwide clinical use and its displacement of lobotomy, ratified chlorpromazine\'s antipsychotic efficacy as settled medical knowledge.',
+        source: {
+          externalId: 'src:ban-fifty-years-chlorpromazine-2007',
+          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495–500.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2655089/',
+          publishedAt: '2007-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Imipramine first tricyclic antidepressant — Kuhn 1957 ───────────────────
+  {
+    externalId: 'trajectory:imipramine-first-tricyclic-antidepressant-1957',
+    text: 'On 31 August 1957, Swiss psychiatrist Roland Kuhn reported in the Schweizerische Medizinische Wochenschrift that the iminodibenzyl compound G22355 (imipramine) relieved depressive states, establishing the first antidepressant drug.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-08-31',
+        datePrecision: 'DAY',
+        reason: 'Kuhn, testing Geigy\'s antihistamine-like compound G22355 in roughly 100 patients, observed that it did not help psychosis but lifted mood in depressed patients, and published \'Über die Behandlung depressiver Zustände mit einem Iminodibenzylderivat (G 22355)\'. This recorded the first claim that a drug could specifically treat depression, launching the tricyclic antidepressant era.',
+        source: {
+          externalId: 'src:kuhn-imipramine-g22355-1957',
+          name: 'Kuhn R. Über die Behandlung depressiver Zustände mit einem Iminodibenzylderivat (G 22355). Schweiz Med Wochenschr. 1957;87(35–36):1135–40.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13467194/',
+          publishedAt: '1957-08-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Geigy marketed imipramine as Tofranil (Europe 1958, United States 1959), and tricyclic antidepressants rapidly became the mainstay of pharmacological depression treatment for the next three decades. Clinical adoption and regulatory marketing settled imipramine\'s antidepressant efficacy as established practice.',
+        source: {
+          externalId: 'src:wikipedia-imipramine',
+          name: 'Imipramine. Wikipedia (history and medical use sections).',
+          url: 'https://en.wikipedia.org/wiki/Imipramine',
+          publishedAt: '2026-06-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Levodopa chronic treatment for Parkinson's — Cotzias 1969 ───────────────
+  {
+    externalId: 'trajectory:levodopa-chronic-treatment-parkinsons-1969',
+    text: 'On 13 February 1969, George Cotzias and colleagues reported in the New England Journal of Medicine that gradually escalated high-dose oral L-dopa (levodopa) produced sustained, often dramatic improvement in patients with Parkinson\'s disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-02-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-02-13',
+        datePrecision: 'DAY',
+        reason: 'Building on his 1967 report of high-dose DL-dopa, Cotzias published \'Modification of Parkinsonism — Chronic Treatment with L-Dopa,\' showing that slowly increased oral levodopa improved 28 patients (marked or dramatic benefit in 20) sustained up to two years. This recorded the claim that replenishing dopamine precursor could reverse parkinsonian disability, overturning therapeutic nihilism about Parkinson\'s disease.',
+        source: {
+          externalId: 'src:cotzias-modification-parkinsonism-ldopa-1969',
+          name: 'Cotzias GC, Papavasiliou PS, Gellene R. Modification of Parkinsonism — chronic treatment with L-dopa. N Engl J Med. 1969;280(7):337–45.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4178641/',
+          publishedAt: '1969-02-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cotzias\'s work won the 1969 Lasker Prize, and levodopa was first marketed in 1970 by Roche as Larodopa, becoming the standard first-line treatment for Parkinson\'s disease — a status it retains today. Regulatory approval and universal clinical adoption settled levodopa\'s efficacy.',
+        source: {
+          externalId: 'src:wikipedia-levodopa',
+          name: 'Levodopa. Wikipedia (history and medical use sections).',
+          url: 'https://en.wikipedia.org/wiki/Levodopa',
+          publishedAt: '2026-06-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fluoxetine (Prozac) first SSRI FDA approval — 1987 ──────────────────────
+  {
+    externalId: 'trajectory:fluoxetine-prozac-first-ssri-approval-1987',
+    text: 'On 29 December 1987, the U.S. FDA approved Eli Lilly\'s fluoxetine hydrochloride (Prozac, NDA 018936) for major depression — the first selective serotonin reuptake inhibitor (SSRI) marketed in the United States.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1987-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-12-29',
+        datePrecision: 'DAY',
+        reason: 'After four years of FDA review, fluoxetine was approved under NDA 018936 as a safe and effective antidepressant with a more favorable side-effect profile than tricyclics and MAOIs. As the first SSRI on the U.S. market, its approval institutionally settled the serotonin-selective approach to depression and launched the modern antidepressant era.',
+        source: {
+          externalId: 'src:openfda-prozac-nda018936',
+          name: 'U.S. FDA. Drugs@FDA application NDA 018936 (PROZAC / fluoxetine hydrochloride, Eli Lilly), original approval 1987-12-29. openFDA drug/drugsfda API.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=openfda.application_number:NDA018936&limit=1',
+          publishedAt: '1987-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Benzodiazepine dependence reversal — 1981 ───────────────────────────────
+  {
+    externalId: 'trajectory:benzodiazepine-dependence-reversal-1981',
+    text: 'Benzodiazepines such as chlordiazepoxide (Librium, 1960) and diazepam (Valium, 1963) were marketed and accepted as safe, non-addictive anxiolytics suitable for long-term use — a claim reversed after physical dependence at therapeutic doses was demonstrated.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Promoted as safer than barbiturates and free of meaningful addiction risk, benzodiazepines became the most prescribed class of drugs in the world by 1977, with long-term use for anxiety and insomnia regarded as routine and safe. Market dominance and prescribing norms settled the non-addictive claim in practice.',
+        source: {
+          externalId: 'src:wikipedia-benzodiazepine-history',
+          name: 'Benzodiazepine. Wikipedia (history and dependence sections).',
+          url: 'https://en.wikipedia.org/wiki/Benzodiazepine',
+          publishedAt: '2026-06-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-09-05',
+        datePrecision: 'DAY',
+        reason: 'Petursson and Lader published \'Withdrawal from long-term benzodiazepine treatment\' in the BMJ, documenting a reproducible withdrawal syndrome on gradual discontinuation in patients taking therapeutic doses. This established that benzodiazepines produce genuine physical dependence even when used as prescribed, directly contesting the non-addictive claim.',
+        source: {
+          externalId: 'src:petursson-lader-benzodiazepine-withdrawal-1981',
+          name: 'Petursson H, Lader MH. Withdrawal from long-term benzodiazepine treatment. Br Med J (Clin Res Ed). 1981;283(6292):643–5.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6114776/',
+          publishedAt: '1981-09-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The UK Committee on Safety of Medicines issued guidance (Current Problems No. 21) restricting benzodiazepines to short-term use of 2–4 weeks for anxiety or insomnia that is severe and disabling, citing dependence and withdrawal. This regulatory reversal overturned the prior standard of safe long-term prescribing.',
+        source: {
+          externalId: 'src:wikipedia-benzodiazepine-csm-1988',
+          name: 'Benzodiazepine. Wikipedia (Committee on Safety of Medicines 1988 guidance).',
+          url: 'https://en.wikipedia.org/wiki/Benzodiazepine',
+          publishedAt: '2026-06-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
