@@ -2076,6 +2076,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC SAFETY ERA (1992–2017)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 45. AAP supine sleep / Back to Sleep — SIDS 1992 ─────────────────────────
+  {
+    externalId: 'trajectory:aap-supine-sleep-sids-1992',
+    text: 'The American Academy of Pediatrics Task Force on Infant Positioning and SIDS recommended in June 1992 that healthy infants be placed on their side or back (non-prone) when put down to sleep, on the basis that the prone sleeping position is associated with an increased risk of sudden infant death syndrome — reversing the prevailing advice to place infants prone.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The AAP Task Force on Infant Positioning and SIDS published its first policy statement, \'Positioning and SIDS,\' in Pediatrics, recommending non-prone (side or back) sleep for healthy infants after reviewing epidemiologic evidence associating prone sleep with SIDS. This formalized as institutional guidance a reversal of decades of advice (including Dr. Spock\'s) to place babies prone, marking the entry of the supine-sleep claim into the official record.',
+        source: {
+          externalId: 'src:aap-positioning-sids-pediatrics-1992',
+          name: 'American Academy of Pediatrics Task Force on Infant Positioning and SIDS. Positioning and SIDS. Pediatrics. 1992;89(6 Pt 1):1120-1126.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1503575/',
+          publishedAt: '1992-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-10-17',
+        datePrecision: 'DAY',
+        reason: 'After the 1994 \'Back to Sleep\' campaign and a roughly 50% decline in U.S. SIDS rates, the AAP reaffirmed and expanded supine sleep into a comprehensive safe-sleep policy statement, by which point back sleeping was established standard of care worldwide. The accumulated mortality decline and international institutional adoption settled the once-novel claim that prone sleeping is dangerous.',
+        source: {
+          externalId: 'src:aap-safe-infant-sleep-pediatrics-2011',
+          name: 'AAP Task Force on Sudden Infant Death Syndrome. SIDS and Other Sleep-Related Infant Deaths: Expansion of Recommendations for a Safe Infant Sleeping Environment. Pediatrics. 2011;128(5):1030-1039.',
+          url: 'https://publications.aap.org/pediatrics/article/128/5/1030/30941/SIDS-and-Other-Sleep-Related-Infant-Deaths',
+          publishedAt: '2011-10-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 46. LEAP early peanut introduction — 2015 ────────────────────────────────
+  {
+    externalId: 'trajectory:leap-early-peanut-introduction-2015',
+    text: 'The LEAP randomized controlled trial (Du Toit et al.) reported in the New England Journal of Medicine on 23 February 2015 that early introduction of dietary peanut to high-risk infants reduced the development of peanut allergy by roughly 80% compared with peanut avoidance, contradicting the prior guidance that allergen avoidance in infancy prevents food allergy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-02-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-02-23',
+        datePrecision: 'DAY',
+        reason: 'The NIAID-funded LEAP trial randomized 640 high-risk infants to peanut consumption or avoidance and found peanut allergy at 60 months in 13.7% of avoiders versus 1.9% of consumers (negative-skin-test stratum). This was the first high-quality experimental evidence that early allergen exposure, not avoidance, prevents peanut allergy — directly inverting the avoidance paradigm embodied in earlier AAP guidance.',
+        source: {
+          externalId: 'src:dutoit-leap-nejm-2015',
+          name: 'Du Toit G, Roberts G, Sayre PH, et al. Randomized Trial of Peanut Consumption in Infants at Risk for Peanut Allergy. N Engl J Med. 2015;372(9):803-813.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25705822/',
+          publishedAt: '2015-02-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-01-01',
+        datePrecision: 'MONTH',
+        reason: 'A NIAID-sponsored expert panel issued Addendum Guidelines for the Prevention of Peanut Allergy recommending introduction of age-appropriate peanut-containing foods as early as 4–6 months in high-risk infants, codifying the LEAP finding into U.S. national clinical guidance. The translation of a single trial into formal prevention guidelines settled early peanut introduction as standard practice.',
+        source: {
+          externalId: 'src:niaid-peanut-addendum-guidelines-jaci-2017',
+          name: 'Togias A, Cooper SF, Acebal ML, et al. Addendum Guidelines for the Prevention of Peanut Allergy in the United States: Report of the NIAID-Sponsored Expert Panel. J Allergy Clin Immunol. 2017;139(1):29-44.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5226648/',
+          publishedAt: '2017-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 47. CDC childhood blood lead reference value 5 µg/dL — 2012 ──────────────
+  {
+    externalId: 'trajectory:cdc-blood-lead-reference-value-2012',
+    text: 'The CDC adopted a childhood blood lead reference value of 5 µg/dL in 2012 (formally reported in MMWR on 5 April 2013), replacing the 10 µg/dL \'level of concern\' in place since 1991, on the determination that no safe blood lead level in children has been identified.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-04-05',
+        datePrecision: 'DAY',
+        reason: 'Accepting its Advisory Committee on Childhood Lead Poisoning Prevention recommendation, the CDC replaced the static 10 µg/dL \'level of concern\' with a population-based upper reference interval of 5 µg/dL (the 97.5th percentile of NHANES blood lead distributions). MMWR formally reported the new reference value, recording institutionally the principle that there is no identified safe blood lead level for children.',
+        source: {
+          externalId: 'src:cdc-mmwr-blood-lead-5-ugdl-2013',
+          name: 'CDC. Blood Lead Levels in Children Aged 1–5 Years — United States, 1999–2010. MMWR Morb Mortal Wkly Rep. 2013;62(13):245-248.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6213a3.htm',
+          publishedAt: '2013-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-10-28',
+        datePrecision: 'DAY',
+        reason: 'The CDC updated the blood lead reference value downward from 5 µg/dL to 3.5 µg/dL based on 2015–2018 NHANES data, applying the same NHANES-percentile methodology adopted in 2012. The continued use and tightening of the reference-value framework cemented the no-safe-level approach as settled federal policy rather than a one-time revision.',
+        source: {
+          externalId: 'src:cdc-mmwr-blood-lead-3-5-ugdl-2021',
+          name: 'Ruckart PZ, Jones RL, Courtney JG, et al. Update of the Blood Lead Reference Value — United States, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(43):1509-1512.',
+          url: 'https://www.cdc.gov/mmwr/volumes/70/wr/mm7043a4.htm',
+          publishedAt: '2021-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 48. Codeine contraindicated in children — FDA 2013–2017 ──────────────────
+  {
+    externalId: 'trajectory:codeine-contraindicated-children-2013',
+    text: 'The FDA determined that codeine is unsafe for pain management in young children — issuing a Boxed Warning and contraindication against codeine use after tonsillectomy/adenoidectomy on 20 February 2013 following reports of deaths in ultra-rapid CYP2D6 metabolizers, and extending the contraindication to all children younger than 12 on 20 April 2017.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-02-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-02-20',
+        datePrecision: 'DAY',
+        reason: 'After reviewing reports of child deaths and severe respiratory depression in codeine-treated children — linked to inherited CYP2D6 ultra-rapid metabolism that converts codeine to toxic morphine levels — the FDA added a Boxed Warning and contraindicated codeine for pain after tonsillectomy/adenoidectomy. This recorded the reversal of codeine\'s long-standing status as a routine pediatric analgesic.',
+        source: {
+          externalId: 'src:fda-codeine-boxed-warning-children-2013',
+          name: 'FDA. Drug Safety Communication: Safety review update of codeine use in children; new Boxed Warning and Contraindication on use after tonsillectomy and/or adenoidectomy. February 20, 2013.',
+          url: 'https://www.fda.gov/files/drugs/published/FDA-Drug-Safety-Communication--Safety-review-update-of-codeine-use-in-children--new-Boxed-Warning-and-Contraindication-on-use-after-tonsillectomy-and-or-adenoidectomy-(pdf).pdf',
+          publishedAt: '2013-02-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-04-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA broadened the action into a full contraindication of codeine for pain and cough in all children younger than 12, and of tramadol in the same group, with added warnings for adolescents 12–18 with obesity or sleep apnea. Generalizing the restriction beyond the surgical setting to all young children settled codeine\'s contraindication in pediatrics as established regulatory fact.',
+        source: {
+          externalId: 'src:aap-pediatrics-codeine-2017-dsc-impact-2022',
+          name: 'Chua KP, Shrime MG, Conti RM, et al. Impact of the 2017 FDA Drug Safety Communication on Codeine and Tramadol Dispensing to Children. Pediatrics. 2022;150(5):e2021055887.',
+          url: 'https://publications.aap.org/pediatrics/article/150/5/e2021055887/189746/Impact-of-the-2017-FDA-Drug-Safety-Communication',
+          publishedAt: '2022-10-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── 13. Esketamine (Spravato) for TRD — approved, efficacy contested ─────────
   {
     externalId: 'trajectory:esketamine-spravato-trd-approval-2019',

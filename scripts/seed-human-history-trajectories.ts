@@ -59179,6 +59179,223 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990): Pre-Columbian & colonial Americas scholarship
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Knorozov's phonetic decipherment of the Maya script ──────────────────────
+  {
+    externalId: 'trajectory:knorozov-maya-phonetic-1952',
+    text: 'In 1952 the Soviet linguist Yuri Knorozov published "Ancient Writing of Central America," arguing that the Maya script was partly phonetic (a syllabary) rather than purely ideographic — a claim fiercely rejected at the time but later vindicated as the foundation of Maya decipherment.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-01-01',
+    claimEmergedPrecision: 'QUARTER',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-01-01',
+        datePrecision: 'QUARTER',
+        reason: 'Knorozov published "Drevnyaya pis\'mennost\' Tsentral\'noy Ameriki" (Ancient Writing of Central America) in the journal Sovetskaya Etnografiya (issue no. 3, 1952), proposing that Maya glyphs encoded sounds as a syllabary, drawing on Diego de Landa\'s colonial-era "alphabet." The thesis entered the scholarly record as a concrete, testable decipherment method.',
+        source: {
+          externalId: 'src:knorozov-1952-sovetskaya-etnografiya',
+          name: 'Yuri Knorozov, "Ancient Writing of Central America," Sovetskaya Etnografiya no. 3 (1952) (Wikipedia, "Yuri Knorozov").',
+          url: 'https://en.wikipedia.org/wiki/Yuri_Knorozov',
+          publishedAt: '1952-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1953-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The dominant Mayanist J. Eric S. Thompson led fierce opposition to the phonetic approach, insisting Maya writing was logographic and ideographic; his stature meant few scholars dared endorse Knorozov publicly. The phonetic thesis was actively contested for over two decades, also entangled with Cold War academic suspicion of Soviet scholarship.',
+        source: {
+          externalId: 'src:thompson-anti-phonetic-opposition',
+          name: 'J. Eric S. Thompson\'s opposition to Knorozov\'s phonetic decipherment of Maya script (Wikipedia, "Yuri Knorozov").',
+          url: 'https://en.wikipedia.org/wiki/Yuri_Knorozov',
+          publishedAt: '1953-01-01',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Thompson\'s death in 1975, epigraphers building on Knorozov\'s syllabic method — together with Tatiana Proskouriakoff\'s historical readings — rapidly deciphered Maya texts, confirming the script as a mixed logosyllabic system. Knorozov\'s core insight became the settled consensus of Maya epigraphy, and he was honoured by Mexico and Guatemala for it.',
+        source: {
+          externalId: 'src:maya-decipherment-vindicates-knorozov',
+          name: 'Vindication of Knorozov\'s phonetic approach as the basis of modern Maya decipherment (Wikipedia, "Yuri Knorozov").',
+          url: 'https://en.wikipedia.org/wiki/Yuri_Knorozov',
+          publishedAt: '1975-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Proskouriakoff shows Maya inscriptions record dynastic history ───────────
+  {
+    externalId: 'trajectory:proskouriakoff-piedras-negras-1960',
+    text: 'In April 1960 Tatiana Proskouriakoff published "Historical Implications of a Pattern of Dates at Piedras Negras, Guatemala," demonstrating that Classic Maya stelae recorded the birth, accession, and death dates of real rulers — overturning the view that the inscriptions were purely calendrical and astronomical.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Proskouriakoff\'s paper in American Antiquity (vol. 25, no. 4, April 1960, pp. 454–475) showed that dates on the Piedras Negras stelae clustered into lifespans of a sequence of seven rulers spanning some two centuries, with recurring glyphs marking birth and accession. This established that the monuments documented dynastic history, not solely calendar and astronomy.',
+        source: {
+          externalId: 'src:proskouriakoff-piedras-negras-1960',
+          name: 'Tatiana Proskouriakoff, "Historical Implications of a Pattern of Dates at Piedras Negras, Guatemala," American Antiquity 25(4):454–475 (April 1960) (Wikipedia, "Tatiana Proskouriakoff").',
+          url: 'https://en.wikipedia.org/wiki/Tatiana_Proskouriakoff',
+          publishedAt: '1960-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Combined with Knorozov\'s phonetic method, Proskouriakoff\'s historical approach was confirmed and extended across other Maya sites (Yaxchilan, Palenque, Copán), allowing epigraphers to reconstruct named dynasties and reigns. The understanding that Maya inscriptions are historical records became the settled foundation of Maya studies.',
+        source: {
+          externalId: 'src:maya-historical-decipherment-settled',
+          name: 'Confirmation and extension of Proskouriakoff\'s historical reading of Maya inscriptions in Maya epigraphy (Wikipedia, "Maya script").',
+          url: 'https://en.wikipedia.org/wiki/Maya_script',
+          publishedAt: '1975-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── The Grolier Codex — contested Maya book confirmed authentic ──────────────
+  {
+    externalId: 'trajectory:grolier-codex-1971',
+    text: 'A Maya screenfold manuscript first shown publicly at the Grolier Club in New York on 20 April 1971 — the "Grolier Codex" — was long suspected of being a modern forgery before scientific analysis in 2018 confirmed it as authentic, making it the oldest surviving book of the Americas.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-04-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-04-20',
+        datePrecision: 'DAY',
+        reason: 'The codex was exhibited publicly for the first time in "The Maya Scribe and His World," an exhibition organized by Michael D. Coe at the Grolier Club in New York City (20 April – 5 June 1971). Coe presented the eleven-page fragment, depicting Venus deities, as a genuine pre-conquest Maya book and published a facsimile in 1973.',
+        source: {
+          externalId: 'src:grolier-club-exhibition-1971',
+          name: 'Grolier Codex first exhibited at "The Maya Scribe and His World," Grolier Club, New York, 20 April – 5 June 1971 (Wikipedia, "Maya Codex of Mexico").',
+          url: 'https://en.wikipedia.org/wiki/Maya_Codex_of_Mexico',
+          publishedAt: '1971-04-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Because the codex lacked documented provenance (reportedly looted and sold from a private Mexican collection), prominent scholars including J. Eric S. Thompson cast doubt on its authenticity from 1975, arguing it could be a clever modern fake assembled on genuine ancient bark paper. Its status remained contested for decades.',
+        source: {
+          externalId: 'src:grolier-codex-authenticity-doubts',
+          name: 'Doubts over the authenticity of the Grolier Codex raised by J. Eric S. Thompson and others (Wikipedia, "Maya Codex of Mexico").',
+          url: 'https://en.wikipedia.org/wiki/Maya_Codex_of_Mexico',
+          publishedAt: '1975-01-01',
+          methodologyType: 'opinion',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-08-01',
+        datePrecision: 'MONTH',
+        reason: 'A comprehensive materials study, and a 2018 re-examination by Mexico\'s Instituto Nacional de Antropología e Historia, used radiocarbon dating and pigment analysis (including authentic Maya Blue) to date the manuscript to 1021–1154 CE, confirming it as genuine. INAH formally declared it authentic and renamed it the "Códice Maya de México," recognizing it as the oldest known book of the Americas.',
+        source: {
+          externalId: 'src:codice-maya-mexico-authenticated-2018',
+          name: 'INAH authentication and renaming of the Grolier Codex as the "Códice Maya de México," August 2018 (Wikipedia, "Maya Codex of Mexico").',
+          url: 'https://en.wikipedia.org/wiki/Maya_Codex_of_Mexico',
+          publishedAt: '2018-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Forensic identification of Francisco Pizarro's true remains ──────────────
+  {
+    externalId: 'trajectory:pizarro-remains-identified-1984',
+    text: 'In 1984 a forensic team identified the skeletal remains found in a lead box in Lima Cathedral in 1977 — bearing sword and stab wounds matching the assassination of Francisco Pizarro on 26 June 1541 — as the conquistador\'s authentic remains, reversing the near-century-long display of a different mummified body as Pizarro.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1541-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1891-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pizarro was killed by rivals in Lima on 26 June 1541. In 1891, in preparation for the quatercentenary of Columbus, authorities exhumed a mummified body in Lima Cathedral, identified it as Pizarro, and placed it in a glass sarcophagus for public veneration — the accepted identification for nearly a century.',
+        source: {
+          externalId: 'src:pizarro-mummy-displayed-1891',
+          name: 'Mummified body displayed as Francisco Pizarro in Lima Cathedral from 1891 (Wikipedia, "Francisco Pizarro").',
+          url: 'https://en.wikipedia.org/wiki/Francisco_Pizarro',
+          publishedAt: '1891-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1977 workers cleaning a crypt beneath the cathedral altar found, in a sealed niche, a lead box inscribed as containing the head of Francisco Pizarro along with additional skeletal remains. The existence of a second candidate body — with an inscription naming Pizarro — placed the long-accepted identification of the displayed mummy in doubt.',
+        source: {
+          externalId: 'src:pizarro-lead-box-1977',
+          name: 'Discovery of a lead box inscribed with Pizarro\'s name and skeletal remains in Lima Cathedral, 1977 (Wikipedia, "Francisco Pizarro").',
+          url: 'https://en.wikipedia.org/wiki/Francisco_Pizarro',
+          publishedAt: '1977-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1984 a forensic team led by anthropologist William R. Maples (with Robert Benfer and Hugo Ludeña) examined both sets of remains and concluded the skull in the lead box, marked by multiple sword and stab wounds to the head and neck and defensive wounds, was the true Pizarro — while the long-displayed mummy was someone else. The findings, published in the Journal of Forensic Sciences in 1989, settled the identification, and the authentic remains were enshrined in 1985.',
+        source: {
+          externalId: 'src:maples-pizarro-forensic-1989',
+          name: 'Maples WR, Gatliff BP, Ludeña H, Benfer R, Goza W. "The death and mortal remains of Francisco Pizarro." J Forensic Sci. 1989 Jul;34(4):1021–36.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2668443/',
+          publishedAt: '1989-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
