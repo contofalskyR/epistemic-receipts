@@ -52508,6 +52508,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL & ISLAMIC GOLDEN AGE (500–1400 CE) — supplemental batch
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Battle of Karbala — death of Husayn ibn Ali (10 Muharram 61 AH) ──────────
+  {
+    externalId: 'trajectory:battle-of-karbala-680',
+    text: 'Husayn ibn Ali, grandson of the Prophet Muhammad, was killed with most of his relatives and companions at the Battle of Karbala on 10 Muharram 61 AH (10 October 680 CE).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0680-10-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0680-10-10',
+        datePrecision: 'DAY',
+        reason: 'After refusing to pledge allegiance to the Umayyad caliph Yazid I, Husayn ibn Ali and a small party of roughly seventy were surrounded by the army of the governor of Kufa on the plain of Karbala and, after being cut off from the Euphrates and suffering thirst, were killed on the tenth day of Muharram. The events were transmitted within a generation: Abu Mikhnaf (d. 774) compiled his Kitab Maqtal al-Husayn from people who knew eyewitnesses, and the Christian chronicler Theophilus of Edessa (fl. 775–785) independently records the death of Husayn and most of his men in battle.',
+        source: {
+          externalId: 'src:karbala-husayn-680',
+          name: 'Battle of Karbala — Husayn ibn Ali killed on 10 Muharram 61 AH (10 October 680 CE); earliest narrative via Abu Mikhnaf, preserved in al-Tabari and al-Baladhuri.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Karbala',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '0680-10-10',
+        datePrecision: 'DAY',
+        reason: 'The date 10 Muharram became fixed in Islamic memory as Ashura, mourned annually by Shia Muslims in a ten-day commemoration culminating on the tenth of Muharram. The killing of Husayn at Karbala on that day is one of the most thoroughly transmitted events of early Islamic history; neither its occurrence nor its date is disputed across Sunni and Shia traditions, only its theological and political significance.',
+        source: {
+          externalId: 'src:husayn-ashura-680',
+          name: 'Husayn ibn Ali — killed at Karbala 10 Muharram 61 AH; the day commemorated as Ashura.',
+          url: 'https://en.wikipedia.org/wiki/Husayn_ibn_Ali',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Halley's Comet 837 apparition — closest recorded approach to Earth ───────
+  {
+    externalId: 'trajectory:halley-comet-837-apparition',
+    text: "Halley's Comet made its closest recorded approach to Earth in the spring of 837 CE, passing roughly 0.03–0.04 AU away around 10 April 837 and observed across China, Japan, the Byzantine Empire, the Middle East and western Europe.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0837-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0837-04-10',
+        datePrecision: 'DAY',
+        reason: "Having reached perihelion on 28 February 837, the comet swept past Earth at by far its closest recorded distance — roughly 0.03 astronomical units — in early April, its tail reported to stretch some 60 degrees across the sky and its head shining as bright as Venus. Tang-dynasty astronomers logged it in the imperial annals (Kaicheng era), Japanese and Middle-Eastern observers recorded it, and in the Carolingian west the apparition is described in the Astronomer's Life of Louis the Pious, who treated it as an omen and devoted himself to prayer.",
+        source: {
+          externalId: 'src:halley-837-apparition',
+          name: "Halley's Comet — 837 CE apparition, closest recorded approach to Earth (~0.03 AU), perihelion 28 February 837; recorded in China, Japan, Byzantium, the Middle East and Germany.",
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: "Modern backward integration of the comet's orbit ties the scattered 837 records to a single object and confirms both the identification with 1P/Halley and the exceptional 837 close approach. The 837 apparition is now a standard data point in the comet's reconstructed apparition list spanning 240 BCE to the present, retrospectively settling that the Tang, Japanese, Byzantine, Arab and Carolingian sightings were all of Halley.",
+        source: {
+          externalId: 'src:halley-orbit-837-identification',
+          name: "Halley's Comet — apparition list (240 BCE–present) from orbital reconstruction; 837 CE identified as the closest approach.",
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1986-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Coronation of Otto I — beginning of the Holy Roman Empire ────────────────
+  {
+    externalId: 'trajectory:otto-i-imperial-coronation-962',
+    text: 'On 2 February 962, Otto I (Otto the Great), King of the Germans, was crowned emperor by Pope John XII in Rome — the act conventionally taken as the founding of the Holy Roman Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0962-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0962-02-02',
+        datePrecision: 'DAY',
+        reason: 'Following the example of Charlemagne in 800, Otto I was anointed and crowned emperor by Pope John XII in St Peter\'s, Rome, on 2 February 962, renewing a Western imperial title that had been vacant since 924. The event was recorded by contemporaries close to the Ottonian court, including Widukind of Corvey in his Res Gestae Saxonicae and Liutprand of Cremona, who served Otto and chronicled the Roman expedition.',
+        source: {
+          externalId: 'src:otto-i-coronation-962',
+          name: 'Otto the Great — crowned emperor by Pope John XII in Rome, 2 February 962; contemporary accounts by Widukind of Corvey and Liutprand of Cremona.',
+          url: 'https://en.wikipedia.org/wiki/Otto_the_Great',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians treat 2 February 962 as a fixed date and conventionally mark it as the beginning of the Holy Roman Empire, the institution that bound the German kingship to the imperial title and to the papacy for the following eight centuries. The coronation itself is undisputed; debate concerns only how to periodise the empire it inaugurated.',
+        source: {
+          externalId: 'src:hre-founding-962',
+          name: 'Holy Roman Empire — Otto I crowned emperor by Pope John XII, 2 February 962, taken as the empire\'s beginning.',
+          url: 'https://en.wikipedia.org/wiki/Holy_Roman_Empire',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Road to Canossa — Henry IV's penance before Gregory VII (Jan 1077) ───────
+  {
+    externalId: 'trajectory:road-to-canossa-1077',
+    text: 'During the Investiture Controversy, the excommunicated King Henry IV did penance before Pope Gregory VII at the castle of Canossa and was absolved on 28 January 1077, after waiting at the gate from 25 January.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1077-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1077-01-28',
+        datePrecision: 'DAY',
+        reason: 'After Gregory VII excommunicated and deposed him in the dispute over lay investiture of bishops, Henry IV crossed the Alps in winter and presented himself at Countess Matilda\'s fortress of Canossa. According to Lampert of Hersfeld he waited three days (25–27 January) in penitential dress before being admitted, and on 28 January 1077 the pope lifted the excommunication. Gregory VII described the absolution himself in a letter to the German princes written shortly afterward.',
+        source: {
+          externalId: 'src:canossa-1077-penance',
+          name: 'Road to Canossa — Henry IV absolved by Gregory VII on 28 January 1077; contemporary accounts by Lampert of Hersfeld and Gregory VII\'s own letter to the German princes.',
+          url: 'https://en.wikipedia.org/wiki/Road_to_Canossa',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'YEAR',
+        reason: 'That Henry IV came to Canossa and was reconciled with Gregory VII on 28 January 1077 is documented in mutually corroborating contemporary sources — Lampert of Hersfeld and the surviving letters of Gregory and Henry — and is not in dispute. What historians continue to debate is its meaning: whether the episode was a humiliating defeat for the emperor (the proverbial "walk to Canossa") or a tactical victory that split his opponents, and whether Henry\'s penance was sincere.',
+        source: {
+          externalId: 'src:canossa-1077-significance',
+          name: 'Road to Canossa — reconciliation of 28 January 1077; scholarly debate over its significance (humiliation vs. masterstroke).',
+          url: 'https://en.wikipedia.org/wiki/Road_to_Canossa',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Condemnation of 1277 — Tempier censures 219 propositions at Paris ────────
+  {
+    externalId: 'trajectory:condemnation-of-1277-paris',
+    text: 'On 7 March 1277, Bishop Étienne Tempier of Paris condemned 219 philosophical and theological propositions — many drawn from Aristotelian and Averroist teaching — and forbade their instruction at the University of Paris under penalty of excommunication.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1277-03-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1277-03-07',
+        datePrecision: 'DAY',
+        reason: 'Acting roughly six weeks after Pope John XXI instructed him (18 January 1277) to investigate complaints from theologians, Étienne Tempier, Bishop of Paris, issued a syllabus condemning 219 errors disputed in the faculty of arts — propositions on the eternity of the world, the unicity of the human intellect, astral determinism, and limits on divine omnipotence, several traceable to Siger of Brabant and Boethius of Dacia. Anyone teaching or even listening to them faced excommunication unless they reported to the bishop within seven days. The censure was formally promulgated and entered the records of the University of Paris.',
+        source: {
+          externalId: 'src:tempier-condemnation-1277',
+          name: 'Condemnation of 1277 — Bishop Étienne Tempier prohibits 219 propositions at the University of Paris, 7 March 1277.',
+          url: 'https://en.wikipedia.org/wiki/Condemnations_of_1210%E2%80%931277',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The syllabus survives and has been critically edited (Mandonnet; Hissette; Piché), fixing both its text and the date of 7 March 1277. Historians of philosophy treat the condemnation as a settled documentary fact and a landmark in the medieval faith–reason debate; Pierre Duhem famously argued it spurred later science by loosening the grip of Aristotelian necessitarianism — a thesis still contested even though the event and its date are not. In 1325, after Aquinas\'s canonization, the Bishop of Paris revoked the censure insofar as it touched Thomas Aquinas\'s teaching, but left the 1277 act otherwise intact.',
+        source: {
+          externalId: 'src:sep-condemnation-1277',
+          name: 'Stanford Encyclopedia of Philosophy. "Condemnation of 1277" (Bishop Tempier, 7 March 1277).',
+          url: 'https://plato.stanford.edu/entries/condemnation/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
