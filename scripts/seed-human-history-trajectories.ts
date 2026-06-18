@@ -9784,6 +9784,21 @@ const TRAJECTORIES: Trajectory[] = [
       },
       {
         fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1875-08-27',
+        datePrecision: 'MONTH',
+        reason: 'Paul-Émile Lecoq de Boisbaudran discovers gallium by spectroscopy in sphalerite ore from the Pyrenees and announces it to the French Academy of Sciences (Comptes Rendus) in 1875. Its properties — atomic weight ~69.7 and, after Mendeleev pointed out the discrepancy, a remeasured density of ~5.9 g/cm³ — match Mendeleev\'s 1869 prediction for the missing "eka-aluminium" almost exactly. This is the first of Mendeleev\'s gap-element predictions to be confirmed, converting the periodic law from a suggestive ordering into a demonstrably predictive instrument and beginning its acceptance.',
+        source: {
+          externalId: 'src:boisbaudran-gallium-1875',
+          name: 'Lecoq de Boisbaudran PE. Caractères chimiques et spectroscopiques d\'un nouveau métal, le gallium. Comptes Rendus de l\'Académie des Sciences 1875;81:493.',
+          url: 'https://en.wikipedia.org/wiki/Gallium',
+          publishedAt: '1875-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
         toAxis: 'SETTLED',
         community: 'EXPERT_LITERATURE',
         occurredAt: '1886-01-01',
@@ -55931,6 +55946,178 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Ω− discovery as confirmation of the Eightfold Way / quark model. Wikipedia, "Omega baryon".',
           url: 'https://en.wikipedia.org/wiki/Omega_baryon',
           publishedAt: '1964-02-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — non-Western perspectives prioritized
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ICTR Akayesu judgment — first genocide conviction by an international court ─
+  {
+    externalId: 'trajectory:ictr-akayesu-genocide-conviction-1998',
+    text: 'On 2 September 1998 the International Criminal Tribunal for Rwanda convicted Jean-Paul Akayesu of genocide — the first conviction for genocide by an international court under the 1948 Genocide Convention, and the first to recognize rape as an act of genocide.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1998-09-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1998-09-02',
+        datePrecision: 'DAY',
+        reason: 'Trial Chamber I of the ICTR, sitting in Arusha, Tanzania, found Jean-Paul Akayesu — the former bourgmestre of Taba commune — guilty of genocide and crimes against humanity for acts committed during the 1994 Rwandan genocide. The judgment was the first time an international tribunal interpreted and applied the 1948 Genocide Convention, and it held that rape and sexual violence could constitute acts of genocide when committed with intent to destroy a protected group.',
+        source: {
+          externalId: 'src:ictr-akayesu-judgment-1998',
+          name: 'Prosecutor v. Jean-Paul Akayesu (ICTR-96-4-T), Judgement, 2 September 1998. Wikipedia, "Akayesu".',
+          url: 'https://en.wikipedia.org/wiki/Akayesu',
+          publishedAt: '1998-09-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1998-10-02',
+        datePrecision: 'DAY',
+        reason: 'On 2 October 1998 the Tribunal sentenced Akayesu to life imprisonment. The conviction was upheld on appeal (1 June 2001), and the Akayesu definition of genocide and of rape as a genocidal act has since been cited as binding precedent in international criminal law, making the judgment a settled landmark.',
+        source: {
+          externalId: 'src:ictr-akayesu-sentence-1998',
+          name: 'Prosecutor v. Akayesu — life sentence (2 October 1998), appeal dismissed 1 June 2001. Wikipedia, "Akayesu".',
+          url: 'https://en.wikipedia.org/wiki/Akayesu',
+          publishedAt: '1998-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chandrayaan-1 / M3 — water molecules detected on the lunar surface ─────────
+  {
+    externalId: 'trajectory:chandrayaan-1-lunar-water-2009',
+    text: 'In September 2009, data from the Moon Mineralogy Mapper aboard India\'s Chandrayaan-1 orbiter revealed widespread hydroxyl and water molecules bound in the Moon\'s surface soil, overturning the long-held view that the lunar surface was essentially dry.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-09-24',
+        datePrecision: 'DAY',
+        reason: 'On 24 September 2009 Science published Pieters et al., "Character and Spatial Distribution of OH/H2O on the Surface of the Moon," reporting that NASA\'s Moon Mineralogy Mapper (M3) instrument aboard ISRO\'s Chandrayaan-1 had detected a 3-micron absorption feature indicating hydroxyl and water bound across much of the lunar surface, strongest at high latitudes. NASA announced the finding on 24–25 September 2009 alongside corroborating data from Cassini and Deep Impact.',
+        source: {
+          externalId: 'src:pieters-m3-lunar-water-2009',
+          name: 'Pieters CM et al. "Character and Spatial Distribution of OH/H2O on the Surface of the Moon." Science 326:568–572 (24 Sept 2009). Wikipedia, "Lunar water".',
+          url: 'https://en.wikipedia.org/wiki/Lunar_water',
+          publishedAt: '2009-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-08-20',
+        datePrecision: 'DAY',
+        reason: 'The M3 result was corroborated by independent missions and later analyses: LCROSS\'s 2009 impact into Cabeus crater confirmed water ice in a permanently shadowed region, and in 2018 a re-analysis of M3 data (Li et al., PNAS, 20 August 2018) provided direct near-infrared evidence of exposed water ice at the lunar poles. The presence of water on the Moon is now settled and underpins mission planning for Artemis and other programs.',
+        source: {
+          externalId: 'src:m3-polar-ice-confirmation-2018',
+          name: 'Li S et al. "Direct evidence of surface exposed water ice in the lunar polar regions." PNAS 115:8907–8912 (2018). Wikipedia, "Lunar water".',
+          url: 'https://en.wikipedia.org/wiki/Lunar_water',
+          publishedAt: '2018-08-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO South-East Asia Region (incl. India) certified polio-free ─────────────
+  {
+    externalId: 'trajectory:who-searo-india-polio-free-2014',
+    text: 'On 27 March 2014 the World Health Organization certified its South-East Asia Region — including India, long considered the country where eradication would be hardest — as free of wild poliovirus, after India recorded its last case on 13 January 2011.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-03-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-01-13',
+        datePrecision: 'DAY',
+        reason: 'India reported its last case of wild poliovirus on 13 January 2011 — an 18-month-old girl in Howrah, West Bengal. The case marked the start of the surveillance window required before certification, with no further wild poliovirus detected anywhere in the WHO South-East Asia Region over the following three years.',
+        source: {
+          externalId: 'src:india-last-polio-case-2011',
+          name: 'Last wild poliovirus case in India reported 13 January 2011. Wikipedia, "Polio eradication".',
+          url: 'https://en.wikipedia.org/wiki/Polio_eradication',
+          publishedAt: '2011-01-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-03-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 March 2014 the WHO Regional Certification Commission declared the entire South-East Asia Region — eleven countries including India — free of wild poliovirus transmission. The certification followed three years with no detected wild poliovirus and removed India from the list of polio-endemic countries, an outcome many epidemiologists had earlier doubted was achievable.',
+        source: {
+          externalId: 'src:searo-polio-free-2014',
+          name: 'WHO South-East Asia Region certified polio-free, 27 March 2014. Wikipedia, "Polio eradication".',
+          url: 'https://en.wikipedia.org/wiki/Polio_eradication',
+          publishedAt: '2014-03-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chang'e 4 — first soft landing on the far side of the Moon ────────────────
+  {
+    externalId: 'trajectory:change-4-far-side-landing-2019',
+    text: 'On 3 January 2019 China\'s Chang\'e 4 spacecraft made the first soft landing on the far side of the Moon, touching down in Von Kármán crater and deploying the Yutu-2 rover.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-01-03',
+        datePrecision: 'DAY',
+        reason: 'Chang\'e 4, launched by the China National Space Administration in December 2018, touched down at 02:26 UTC on 3 January 2019 in the Von Kármán crater within the South Pole–Aitken basin — the first spacecraft ever to soft-land on the lunar far side, which is never visible from Earth and requires a relay satellite (Queqiao) for communication. The Yutu-2 rover was deployed hours later and returned surface imagery.',
+        source: {
+          externalId: 'src:change-4-landing-2019',
+          name: 'Chang\'e 4 soft landing on the lunar far side, 3 January 2019. Wikipedia, "Chang\'e 4".',
+          url: 'https://en.wikipedia.org/wiki/Chang%27e_4',
+          publishedAt: '2019-01-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-05-15',
+        datePrecision: 'DAY',
+        reason: 'The mission\'s success and its scientific returns were confirmed in peer-reviewed literature — including a 15 May 2019 Nature paper (Li et al.) reporting Yutu-2 spectrometer detections of mantle-derived material on the far-side surface. The far-side landing is documented in mission telemetry, returned imagery, and international tracking, making it a settled record of spaceflight history.',
+        source: {
+          externalId: 'src:change-4-yutu2-science-2019',
+          name: 'Li C et al. "Chang\'E-4 initial spectroscopic identification of lunar far-side mantle-derived materials." Nature 569:378–382 (15 May 2019). Wikipedia, "Chang\'e 4".',
+          url: 'https://en.wikipedia.org/wiki/Chang%27e_4',
+          publishedAt: '2019-05-15',
           methodologyType: 'derivative',
         },
       },
