@@ -7719,6 +7719,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID REGULATION & POLICY
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Controlled Substances Act — drug scheduling 1970 ───────────────────────
+  {
+    externalId: 'trajectory:controlled-substances-act-drug-scheduling-1970',
+    text: 'The Controlled Substances Act, enacted October 27, 1970 as Title II of the Comprehensive Drug Abuse Prevention and Control Act (Pub. L. 91-513) and signed by President Richard Nixon, created five federal drug schedules classifying narcotics and other substances by abuse potential, accepted medical use, and dependence liability — placing heroin in Schedule I and medical opioids such as morphine and oxycodone in Schedule II.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1970-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-10-27',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted the Comprehensive Drug Abuse Prevention and Control Act of 1970, whose Title II (the Controlled Substances Act) replaced the patchwork of earlier narcotics statutes with a single federal scheduling framework administered by the Attorney General and HEW/FDA. The schedules became the institutional foundation for all subsequent U.S. opioid classification and rescheduling decisions, fixing the regulatory premise that a drug\'s legal status follows from a graded assessment of abuse potential and medical utility.',
+        source: {
+          externalId: 'src:csa-pub-l-91-513-1970',
+          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970 (Controlled Substances Act, Title II). Pub. L. 91-513, 84 Stat. 1236, Oct. 27, 1970.',
+          url: 'https://www.govinfo.gov/content/pkg/STATUTE-84/pdf/STATUTE-84-Pg1236.pdf',
+          publishedAt: '1970-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CDC prescription opioid overdose epidemic — 2011 ───────────────────────
+  {
+    externalId: 'trajectory:cdc-prescription-opioid-overdose-epidemic-2011',
+    text: 'The CDC reported in its November 4, 2011 MMWR Vital Signs that prescription opioid pain relievers were involved in 14,800 overdose deaths in 2008 — 73.8% of all prescription-drug overdose deaths and more than heroin and cocaine combined — and that opioid sales had quadrupled from 1999 to 2010, formally characterizing prescription-opioid overdose death as a U.S. epidemic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-11-04',
+        datePrecision: 'DAY',
+        reason: 'CDC\'s Vital Signs surveillance report quantified the parallel rise in opioid prescribing and overdose deaths from 1999 to 2008–2010 and stated that death from opioid pain relievers had become an epidemic in the United States. The report placed on the official public-health record the empirical claim that the prescribing of medical opioids — not illicit narcotics — was the principal driver of the overdose surge.',
+        source: {
+          externalId: 'src:cdc-vital-signs-opr-overdose-mmwr-2011',
+          name: 'CDC. Vital Signs: Overdoses of Prescription Opioid Pain Relievers — United States, 1999–2008. MMWR Morb Mortal Wkly Rep. 2011;60(43):1487-1492.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6043a4.htm',
+          publishedAt: '2011-11-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-18',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s 2016 Guideline for Prescribing Opioids for Chronic Pain was premised explicitly on the now-accepted finding that prescription-opioid prescribing had driven the overdose epidemic, and tied national prescribing policy to it. The epidemic characterization first recorded in 2011 had become the settled institutional basis for federal, state, and payer action.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2016-epidemic-ratification',
+          name: 'Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recomm Rep. 2016;65(1):1-49.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm',
+          publishedAt: '2016-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vivitrol / naltrexone injectable — opioid dependence approval 2010 ─────
+  {
+    externalId: 'trajectory:vivitrol-naltrexone-opioid-dependence-2010',
+    text: 'The FDA approved Vivitrol (naltrexone for extended-release injectable suspension, NDA 21-897) on October 12, 2010 for the prevention of relapse to opioid dependence following opioid detoxification — the first non-narcotic, non-agonist, once-monthly injectable approved for opioid-use-disorder maintenance, establishing a receptor-blockade alternative to the agonist treatments methadone and buprenorphine.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-10-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-12',
+        datePrecision: 'DAY',
+        reason: 'On the basis of a randomized placebo-controlled trial in opioid-dependent patients, the FDA approved extended-release injectable naltrexone (Vivitrol) for prevention of relapse after detoxification — its first opioid indication, having previously been approved only for alcohol dependence. The approval institutionally ratified opioid-receptor antagonism, rather than agonist substitution, as an established medication-assisted-treatment modality, broadening the recognized pharmacologic options for opioid use disorder.',
+        source: {
+          externalId: 'src:alkermes-vivitrol-fda-opioid-approval-2010',
+          name: 'Alkermes, Inc. Alkermes Announces FDA Approval of VIVITROL for Prevention of Relapse to Opioid Dependence. News release, October 12, 2010.',
+          url: 'https://investor.alkermes.com/news-releases/news-release-details/alkermes-announces-fda-approval-vivitrolr-prevention-relapse',
+          publishedAt: '2010-10-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MAT Act / X-waiver elimination — 2022 ──────────────────────────────────
+  {
+    externalId: 'trajectory:mat-act-x-waiver-elimination-2022',
+    text: 'Section 1262 of the Consolidated Appropriations Act, 2023 (the Mainstreaming Addiction Treatment / MAT Act), enacted December 29, 2022, eliminated the DATA-2000 \'X-waiver\' requirement, allowing any clinician holding a standard Schedule III DEA registration to prescribe buprenorphine for opioid use disorder without a special waiver, training certification, or cap on patient numbers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'Congress repealed the special-registration regime that the Drug Addiction Treatment Act of 2000 had imposed on office-based buprenorphine prescribing, removing the X-waiver, its eight-hour training prerequisite, and patient caps. The change reversed the long-settled institutional premise — established by DATA 2000 — that buprenorphine treatment for opioid use disorder required a gatekeeping credential distinct from ordinary controlled-substance prescribing authority, folding it into standard medical practice. The DEA subsequently notified all registrants that X-waiver registration numbers were no longer required.',
+        source: {
+          externalId: 'src:caa-2023-mat-act-x-waiver-pmc-2023',
+          name: 'Frank D, Krawczyk N, Cerdá M, et al. Will the End of the X-Waiver Expand Access to Buprenorphine Treatment? Achieving the Full Potential of the 2023 Consolidated Appropriations Act. (documenting Section 1262 repeal of the DATA-2000 waiver). PMC10719867. 2023.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10719867/',
+          publishedAt: '2023-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
