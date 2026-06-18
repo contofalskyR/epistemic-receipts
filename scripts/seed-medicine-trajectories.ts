@@ -16410,6 +16410,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── CSAW arthroscopic subacromial decompression — Neer 1972 / Beard 2018 ──
+  {
+    externalId: 'trajectory:csaw-subacromial-decompression-shoulder-pain-2018',
+    text: 'Arthroscopic subacromial decompression relieves subacromial (impingement) shoulder pain by removing the anterior acromion and coracoacromial ligament — a long-standard operation that the placebo-controlled CSAW trial (Beard et al., The Lancet, 2018) found no more effective than diagnostic arthroscopy alone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Charles Neer\'s preliminary report introduced anterior acromioplasty for chronic impingement syndrome, attributing rotator-cuff disability to mechanical impingement by the anterior acromion and coracoacromial ligament and proposing surgical decompression as the remedy. The rationale was rapidly accepted and, after arthroscopic techniques emerged, subacromial decompression became one of the most commonly performed shoulder operations worldwide on the basis of uncontrolled case series.',
+        source: {
+          externalId: 'src:neer-anterior-acromioplasty-jbjs-1972',
+          name: 'Neer CS 2nd. Anterior acromioplasty for the chronic impingement syndrome in the shoulder: a preliminary report. J Bone Joint Surg Am. 1972;54(1):41-50.',
+          url: 'https://journals.lww.com/jbjsjournal/abstract/1972/54010/anterior_acromioplasty_for_the_chronic_impingement.3.aspx',
+          publishedAt: '1972-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-02-17',
+        datePrecision: 'DAY',
+        reason: 'Beard, Carr, and colleagues ran CSAW, a multicentre, placebo-controlled, three-group randomised surgical trial comparing arthroscopic subacromial decompression, investigational (diagnostic) arthroscopy only, and no treatment. Decompression produced no clinically important benefit over arthroscopy alone, and both surgical arms exceeded no treatment only marginally — indicating the operation\'s apparent benefit was largely placebo and surgical attention, throwing the value of a high-volume procedure into ongoing dispute.',
+        source: {
+          externalId: 'src:beard-csaw-lancet-2018',
+          name: 'Beard DJ, Rees JL, Cook JA, et al. Arthroscopic subacromial decompression for subacromial shoulder pain (CSAW): a multicentre, pragmatic, parallel group, placebo-controlled, three-group, randomised surgical trial. Lancet. 2018;391(10118):329-338.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29169668/',
+          publishedAt: '2018-02-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IABP-SHOCK II intra-aortic balloon pump — Thiele 2012 ──────────────────
+  {
+    externalId: 'trajectory:iabp-shock-ii-cardiogenic-shock-reversal-2012',
+    text: 'Intra-aortic balloon counterpulsation reduces mortality in patients with cardiogenic shock complicating acute myocardial infarction — a long-held guideline-endorsed belief that the randomised IABP-SHOCK II trial (Thiele et al., New England Journal of Medicine, 2012) refuted.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-08-26',
+        datePrecision: 'DAY',
+        reason: 'After Kantrowitz\'s 1968 first clinical use, the intra-aortic balloon pump became standard hemodynamic support for cardiogenic shock and carried a Class I guideline recommendation for decades. Thiele and the IABP-SHOCK II investigators randomised 600 patients with cardiogenic shock complicating MI (all undergoing early revascularisation) to balloon counterpulsation or control and found no difference in 30-day mortality (39.7% vs 41.3%), contradicting the assumption that mechanical counterpulsation improves survival.',
+        source: {
+          externalId: 'src:thiele-iabp-shock-ii-nejm-2012',
+          name: 'Thiele H, Zeymer U, Neumann FJ, et al. Intraaortic balloon support for myocardial infarction with cardiogenic shock. N Engl J Med. 2012;367(14):1287-1296.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22920912/',
+          publishedAt: '2012-08-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Following IABP-SHOCK II, the European Society of Cardiology\'s 2012 guidelines for the management of ST-elevation myocardial infarction downgraded routine intra-aortic balloon counterpulsation in cardiogenic shock from a Class I recommendation to Class III (no longer recommended). The reversal of a flagship device therapy by the major institutional guideline body drove a sustained decline in IABP use for this indication.',
+        source: {
+          externalId: 'src:esc-stemi-guidelines-2012',
+          name: 'Steg PG, James SK, Atar D, et al. ESC Guidelines for the management of acute myocardial infarction in patients presenting with ST-segment elevation. Eur Heart J. 2012;33(20):2569-2619.',
+          url: 'https://academic.oup.com/eurheartj/article/33/20/2569/441080',
+          publishedAt: '2012-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── MSLT-II completion lymph-node dissection melanoma — Faries 2017 ─────────
+  {
+    externalId: 'trajectory:mslt-ii-completion-lymph-node-dissection-melanoma-reversal-2017',
+    text: 'Immediate completion lymph-node dissection after a positive sentinel node improves melanoma-specific survival — the standard-of-care rationale that the randomised MSLT-II trial (Faries et al., New England Journal of Medicine, 8 June 2017) showed conferred no survival benefit over nodal observation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-09-28',
+        datePrecision: 'DAY',
+        reason: 'Morton and the Multicenter Selective Lymphadenectomy Trial (MSLT-I) group established sentinel-node biopsy as a staging standard and reported that patients with positive sentinel nodes who underwent immediate completion lymphadenectomy had better outcomes than those whose nodes were removed only after later clinical recurrence. This entrenched immediate completion lymph-node dissection as the default operation for any sentinel-node-positive melanoma.',
+        source: {
+          externalId: 'src:morton-mslt-i-nejm-2006',
+          name: 'Morton DL, Thompson JF, Cochran AJ, et al. Sentinel-node biopsy or nodal observation in melanoma. N Engl J Med. 2006;355(13):1307-1317.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17005948/',
+          publishedAt: '2006-09-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'Faries and the MSLT-II investigators randomised patients with sentinel-node metastasis to immediate completion lymph-node dissection or nodal observation with ultrasound surveillance. Completion dissection provided no improvement in melanoma-specific survival while substantially increasing lymphedema, demonstrating that routine immediate node dissection after a positive sentinel node is unnecessary and reversing a decade-long surgical standard; guidelines rapidly de-escalated the recommendation.',
+        source: {
+          externalId: 'src:faries-mslt-ii-nejm-2017',
+          name: 'Faries MB, Thompson JF, Cochran AJ, et al. Completion dissection or observation for sentinel-node metastasis in melanoma. N Engl J Med. 2017;376(23):2211-2222.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28591523/',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACOSOG Z0011 axillary dissection de-escalation — Giuliano 2011 ──────────
+  {
+    externalId: 'trajectory:acosog-z0011-axillary-dissection-de-escalation-2011',
+    text: 'Completion axillary lymph-node dissection is necessary for women with sentinel-node-positive invasive breast cancer — a Halstedian surgical doctrine that the ACOSOG Z0011 randomised trial (Giuliano et al., JAMA, 9 February 2011) overturned by showing no survival difference versus sentinel-node biopsy alone in patients undergoing breast-conserving therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1894-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-02-09',
+        datePrecision: 'DAY',
+        reason: 'Building on a century of Halstedian doctrine that node-positive breast cancer required complete axillary clearance, Giuliano and the ACOSOG Z0011 investigators randomised women with one or two positive sentinel nodes undergoing lumpectomy, whole-breast radiation, and systemic therapy to completion axillary dissection or no further axillary surgery. Five-year overall survival was equivalent (91.8% vs 92.5%), demonstrating that completion axillary dissection could be safely omitted in this population and reversing a long-settled surgical requirement.',
+        source: {
+          externalId: 'src:giuliano-z0011-jama-2011',
+          name: 'Giuliano AE, Hunt KK, Ballman KV, et al. Axillary dissection vs no axillary dissection in women with invasive breast cancer and sentinel node metastasis: a randomized clinical trial. JAMA. 2011;305(6):569-575.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21304082/',
+          publishedAt: '2011-02-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Society of Clinical Oncology\'s 2014 update of its sentinel-lymph-node-biopsy guideline incorporated the Z0011 findings, recommending against completion axillary dissection for women with one or two positive sentinel nodes undergoing breast-conserving surgery with planned whole-breast radiation. Institutional adoption converted the trial result into standard de-escalated practice across breast surgery.',
+        source: {
+          externalId: 'src:lyman-asco-sln-guideline-2014',
+          name: 'Lyman GH, Temin S, Edge SB, et al. Sentinel lymph node biopsy for patients with early-stage breast cancer: American Society of Clinical Oncology clinical practice guideline update. J Clin Oncol. 2014;32(13):1365-1383.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24663048/',
+          publishedAt: '2014-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
