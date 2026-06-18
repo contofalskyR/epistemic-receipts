@@ -5337,6 +5337,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA / VACCINE SAFETY (pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Abraham & Chain penicillinase resistance — 1940 ─────────────────────────
+  {
+    externalId: 'trajectory:abraham-chain-penicillinase-resistance-1940',
+    text: 'Edward Abraham and Ernst Chain reported in Nature on 28 December 1940 that certain bacteria produce an enzyme (later named penicillinase, a β-lactamase) able to destroy penicillin, identifying the first known mechanism of bacterial resistance to the antibiotic — described before penicillin had entered clinical use.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-12-28',
+        datePrecision: 'DAY',
+        reason: 'In a one-page Nature note, Abraham and Chain reported that extracts of certain coli-group bacteria contained an enzyme that inactivated penicillin, explaining why those organisms were unaffected by it. This was the first documented bacterial mechanism for destroying penicillin, recording the existence of antibiotic resistance in the literature even before penicillin was used to treat patients.',
+        source: {
+          externalId: 'src:abraham-chain-penicillinase-nature-1940',
+          name: 'Abraham EP, Chain E. An enzyme from bacteria able to destroy penicillin. Nature. 1940;146(3713):837.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3055168/',
+          publishedAt: '1940-12-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-10-23',
+        datePrecision: 'DAY',
+        reason: 'Mary Barber and Mary Rozwadowska-Dowzenko reported in the Lancet that the majority of Staphylococcus aureus strains causing hospital infections had become penicillin-resistant within a few years of the drug\'s introduction. This converted the in-vitro enzyme observation of 1940 into a settled clinical reality: penicillinase-producing resistance had emerged and spread as a routine therapeutic problem.',
+        source: {
+          externalId: 'src:barber-penicillin-resistant-staph-lancet-1948',
+          name: 'Barber M, Rozwadowska-Dowzenko M. Infection by penicillin-resistant staphylococci. Lancet. 1948;2(6530):641-644.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18890505/',
+          publishedAt: '1948-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MRC streptomycin tuberculosis RCT — 1948 ────────────────────────────────
+  {
+    externalId: 'trajectory:mrc-streptomycin-tuberculosis-trial-1948',
+    text: 'The Medical Research Council reported in the BMJ on 30 October 1948 that streptomycin plus bed rest produced significantly better survival and radiological improvement than bed rest alone in acute progressive pulmonary tuberculosis — the first published clinical trial to use concealed random-number allocation, designed by Austin Bradford Hill.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-10-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-10-30',
+        datePrecision: 'DAY',
+        reason: 'The MRC Streptomycin in Tuberculosis Trials Committee published results of 107 patients randomly allocated by a concealed schedule of random numbers to streptomycin-plus-bed-rest or bed-rest-alone, finding markedly lower mortality and better chest-radiograph outcomes with streptomycin. The paper recorded both the efficacy of streptomycin in tuberculosis and the new methodology of randomized concealed allocation that became the template for the modern controlled trial.',
+        source: {
+          externalId: 'src:mrc-streptomycin-tuberculosis-bmj-1948',
+          name: 'Medical Research Council. Streptomycin treatment of pulmonary tuberculosis: a Medical Research Council investigation. BMJ. 1948;2(4582):769-782.',
+          url: 'https://www.jameslindlibrary.org/medical-research-council-1948b/',
+          publishedAt: '1948-10-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-11-04',
+        datePrecision: 'DAY',
+        reason: 'A follow-up MRC randomized trial showed that combining streptomycin with para-aminosalicylic acid (PAS) sharply reduced the emergence of streptomycin-resistant tubercle bacilli that had crippled streptomycin monotherapy in the 1948 trial. This settled combination chemotherapy as the standard of TB care and entrenched the randomized controlled trial as the accepted method for establishing drug efficacy.',
+        source: {
+          externalId: 'src:mrc-streptomycin-pas-bmj-1950',
+          name: 'Medical Research Council. Treatment of pulmonary tuberculosis with streptomycin and para-amino-salicylic acid: a Medical Research Council investigation. BMJ. 1950;2(4688):1073-1085.',
+          url: 'https://www.jameslindlibrary.org/medical-research-council-1950/',
+          publishedAt: '1950-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Theiler 17D yellow fever vaccine — 1937 ─────────────────────────────────
+  {
+    externalId: 'trajectory:theiler-17d-yellow-fever-vaccine-1937',
+    text: 'Max Theiler and Hugh Smith reported in the Journal of Experimental Medicine in 1937 that the 17D strain of yellow fever virus, attenuated by serial passage in chick-embryo tissue, safely immunized humans against yellow fever — the first effective live attenuated yellow fever vaccine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Theiler and Smith reported that the 17D strain, derived from the virulent Asibi virus by repeated passage in mouse and then chick-embryo tissue, had lost neurotropism and viscerotropism yet still induced protective antibodies when given to human volunteers. This recorded the first laboratory-attenuated yellow fever virus shown to immunize people safely.',
+        source: {
+          externalId: 'src:theiler-smith-17d-jem-1937',
+          name: 'Theiler M, Smith HH. The use of yellow fever virus modified by in vitro cultivation for human immunization. J Exp Med. 1937;65(6):787-800.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2118520/',
+          publishedAt: '1937-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-12-10',
+        datePrecision: 'DAY',
+        reason: 'After large-scale 17D field vaccination began in Brazil in 1938 and the vaccine was distributed in the millions of doses, Max Theiler received the Nobel Prize in Physiology or Medicine on 10 December 1951 for his discoveries concerning yellow fever and its control — the only Nobel Prize ever awarded for the development of a virus vaccine, ratifying 17D as established preventive medicine.',
+        source: {
+          externalId: 'src:theiler-nobel-1951',
+          name: 'The Nobel Prize in Physiology or Medicine 1951 — Max Theiler, \'for his discoveries concerning yellow fever and how to combat it.\' Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1951/theiler/facts/',
+          publishedAt: '1951-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lübeck BCG vaccine disaster — 1930 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:lubeck-bcg-vaccine-disaster-1930',
+    text: 'The Lübeck disaster of 1930 — in which 251 newborns received oral BCG doses accidentally contaminated with virulent Mycobacterium tuberculosis, killing at least 72 — initially cast doubt on the safety of the BCG tuberculosis vaccine, but a German government inquiry and a 1932 criminal trial established that the deaths were caused by local laboratory contamination rather than the BCG strain, which was exonerated.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1930-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1930-04-01',
+        datePrecision: 'MONTH',
+        reason: 'After 251 Lübeck infants were vaccinated with BCG in early 1930, dozens fell ill with tuberculosis and many died, provoking public alarm and a medical controversy over whether the BCG vaccine itself was dangerous, including the hypothesis that the attenuated strain had reverted to full virulence. The deaths placed the safety of BCG — in use since 1921 — into open dispute.',
+        source: {
+          externalId: 'src:lubeck-bcg-plos-pathogens-2016',
+          name: 'Tuberculosis in Newborns: The Lessons of the \'Lübeck Disaster\' (1929–1933). PLOS Pathogens. 2016;12(1):e1005271.',
+          url: 'https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1005271',
+          publishedAt: '2016-01-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1932-02-06',
+        datePrecision: 'MONTH',
+        reason: 'The official inquiry led by Robert Koch Institute investigators and the subsequent Lübeck criminal trial concluded that the vaccine had been accidentally contaminated with a virulent human tubercle strain stored in the same laboratory, disproving the reversion hypothesis and exonerating the BCG strain itself; laboratory officials were convicted. This settled that the catastrophe was a manufacturing failure, preserving BCG as a usable vaccine.',
+        source: {
+          externalId: 'src:nakayama-lubeck-bcg-trial-2025',
+          name: 'Nakayama DK. A Novel Microbe, Immunization Deaths, and Vaccination on Trial: BCG and the Lübeck Disaster of 1930. The American Surgeon. 2025.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/39788567/',
+          publishedAt: '2025-01-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
