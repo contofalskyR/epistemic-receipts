@@ -1059,6 +1059,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── 24. Hays, Imbrie & Shackleton — orbital pacing of ice ages — 1976 ───────
+  {
+    externalId: 'trajectory:hays-imbrie-shackleton-pacemaker-ice-ages-1976',
+    text: 'James Hays, John Imbrie, and Nicholas Shackleton reported in Science on 10 December 1976 that oxygen-isotope and microfossil records from Southern Ocean deep-sea sediment cores show climatic variance concentrated at the ~23,000-, ~42,000-, and ~100,000-year periods of Earth\'s orbital cycles, establishing orbital variation as the \'pacemaker\' of the Pleistocene ice ages.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-12-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-12-10',
+        datePrecision: 'DAY',
+        reason: 'Hays, Imbrie, and Shackleton published \'Variations in the Earth\'s Orbit: Pacemaker of the Ice Ages\' in Science (194:1121–1132), using two Indian Ocean cores (RC11-120, E49-18) to extract a 450,000-year record of δ¹⁸O, radiolarian assemblages, and sea-surface temperature. Spectral analysis showed climate variance concentrated at the precession (~23 kyr), obliquity (~42 kyr), and eccentricity (~100 kyr) frequencies predicted by Milankovitch, converting a long-contested astronomical theory into a quantitatively testable, data-grounded claim about the ocean-ice system\'s response to orbital forcing.',
+        source: {
+          externalId: 'src:hays-imbrie-shackleton-pacemaker-science-1976',
+          name: 'Hays JD, Imbrie J, Shackleton NJ. Variations in the Earth\'s orbit: pacemaker of the ice ages. Science. 1976;194(4270):1121–1132.',
+          url: 'https://www.science.org/doi/10.1126/science.194.4270.1121',
+          publishedAt: '1976-12-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The SPECMAP project\'s Imbrie et al. (1984) study, \'The orbital theory of Pleistocene climate: support from a revised chronology of the marine δ¹⁸O record,\' stacked five planktonic-foraminifer isotope records and orbitally tuned them, demonstrating that the amplitude and phase of the marine ice-volume signal track orbital insolation across the late Pleistocene. By independently corroborating the 1976 spectral result with a global stacked chronology, it moved orbital pacing of the ice ages from a striking single-core finding to the accepted foundation of Quaternary climate chronology.',
+        source: {
+          externalId: 'src:imbrie-specmap-orbital-theory-1984',
+          name: 'Imbrie J, Hays JD, Martinson DG, et al. The orbital theory of Pleistocene climate: support from a revised chronology of the marine δ¹⁸O record. In: Berger A, et al., eds. Milankovitch and Climate, Part 1. Dordrecht: D. Reidel; 1984:269–305.',
+          url: 'https://epic.awi.de/41839/1/Imbrie-etal_1984.pdf',
+          publishedAt: '1984-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 25. Manabe & Wetherald — climate sensitivity radiative-convective model — 1967 ─
+  {
+    externalId: 'trajectory:manabe-wetherald-climate-sensitivity-1967',
+    text: 'Syukuro Manabe and Richard Wetherald reported in May 1967, in the Journal of the Atmospheric Sciences, the first physically realistic radiative-convective model calculation showing that doubling atmospheric CO₂ would warm Earth\'s surface by about 2.4°C while cooling the stratosphere, with water-vapor feedback roughly doubling the sensitivity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Manabe and Wetherald published \'Thermal Equilibrium of the Atmosphere with a Given Distribution of Relative Humidity\' in the Journal of the Atmospheric Sciences (24(3):241–259). Their one-dimensional radiative-convective model held relative humidity (rather than absolute humidity) fixed, correctly captured CO₂, ozone, and water-vapor spectroscopy plus convective adjustment, and found ~2.36°C surface warming for doubled CO₂ with stratospheric cooling. It was the first calculation to treat the key physical feedbacks credibly, transforming Arrhenius-era estimates into a modern, mechanistic climate-sensitivity result.',
+        source: {
+          externalId: 'src:manabe-wetherald-jas-1967',
+          name: 'Manabe S, Wetherald RT. Thermal equilibrium of the atmosphere with a given distribution of relative humidity. Journal of the Atmospheric Sciences. 1967;24(3):241–259.',
+          url: 'https://journals.ametsoc.org/view/journals/atsc/24/3/1520-0469_1967_024_0241_teotaw_2_0_co_2.xml',
+          publishedAt: '1967-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The U.S. National Academy of Sciences \'Charney Report\' (Carbon Dioxide and Climate: A Scientific Assessment, 1979) evaluated the leading general-circulation models — including Manabe\'s — and concluded that doubling CO₂ would most probably warm the globe by 1.5–4.5°C. By adopting a formal climate-sensitivity range anchored on the radiative-convective and GCM approach Manabe and Wetherald pioneered, the assessment institutionally settled their result as the basis of climate projection.',
+        source: {
+          externalId: 'src:charney-report-1979',
+          name: 'Charney JG et al. Carbon Dioxide and Climate: A Scientific Assessment. National Academy of Sciences. 1979.',
+          url: 'https://nap.nationalacademies.org/catalog/12181/carbon-dioxide-and-climate-a-scientific-assessment',
+          publishedAt: '1979-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 26. Likens & Bormann — acid rain as North American regional problem — 1974 ──
+  {
+    externalId: 'trajectory:likens-bormann-acid-rain-1974',
+    text: 'Gene Likens and F. Herbert Bormann reported in Science on 14 June 1974 that precipitation across the northeastern United States had become strongly acidic (averaging about pH 4, with individual storms as low as pH 2.1), establishing acid rain as a serious regional environmental problem in North America.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-06-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-06-14',
+        datePrecision: 'DAY',
+        reason: 'Likens and Bormann published \'Acid Rain: A Serious Regional Environmental Problem\' in Science (184(4142):1176–1179), drawing on Hubbard Brook Experimental Forest precipitation chemistry to show that rain and snow over most of the northeastern U.S. averaged near pH 4 and had apparently acidified over the prior two decades, plausibly linked to fossil-fuel SO₂ and NOx emissions dispersed by tall stacks. It brought European acid-deposition findings to North America and framed acid rain as a measurable, large-scale regional phenomenon.',
+        source: {
+          externalId: 'src:likens-bormann-acid-rain-science-1974',
+          name: 'Likens GE, Bormann FH. Acid rain: a serious regional environmental problem. Science. 1974;184(4142):1176–1179.',
+          url: 'https://www.science.org/doi/10.1126/science.184.4142.1176',
+          publishedAt: '1974-06-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-11-15',
+        datePrecision: 'DAY',
+        reason: 'Title IV of the Clean Air Act Amendments of 1990, signed 15 November 1990, created the Acid Rain Program — the world\'s first large-scale pollutant cap-and-trade system — mandating a 10-million-ton cut in annual SO₂ emissions below 1980 levels from fossil-fuel power plants. Federal statutory action accepting acid deposition as a causally established, regulable harm institutionally settled the Likens–Bormann finding, sixteen years after its publication.',
+        source: {
+          externalId: 'src:caaa-1990-title-iv-acid-rain',
+          name: 'U.S. EPA. 1990 Clean Air Act Amendment Summary: Title IV (Acid Deposition Control / Acid Rain Program).',
+          url: 'https://www.epa.gov/clean-air-act-overview/1990-clean-air-act-amendment-summary-title-iv',
+          publishedAt: '1990-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 27. Hansen Senate greenhouse testimony — 1988 ────────────────────────────
+  {
+    externalId: 'trajectory:hansen-senate-greenhouse-testimony-1988',
+    text: 'On 23 June 1988 NASA scientist James Hansen testified to the U.S. Senate Committee on Energy and Natural Resources that global warming had reached a level where its cause-and-effect link to the greenhouse effect could be ascribed with about 99% confidence, declaring that \'the greenhouse effect has been detected and it is changing our climate now.\'',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1988-06-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1988-06-23',
+        datePrecision: 'DAY',
+        reason: 'At a hearing organized by Senator Tim Wirth, Hansen, director of the NASA Goddard Institute for Space Studies, testified that 1988 was the warmest year in the instrumental record, that there was a ~99% probability the warming was anthropogenic rather than natural variability, and that greenhouse warming was already detectable. Front-page coverage (notably the New York Times) carried the detection claim from expert literature into the public and policy record, making it the canonical moment global warming entered mainstream U.S. political consciousness.',
+        source: {
+          externalId: 'src:hansen-senate-testimony-1988',
+          name: 'Statement of Dr. James Hansen, Director, NASA GISS. Greenhouse Effect and Global Climate Change: Hearings Before the Committee on Energy and Natural Resources, U.S. Senate, 100th Cong. (June 23, 1988). S. HRG. 100-461.',
+          url: 'https://www.sealevel.info/1988_Hansen_Senate_Testimony.html',
+          publishedAt: '1988-06-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-01',
+        datePrecision: 'MONTH',
+        reason: 'The IPCC Second Assessment Report, finalized at the Madrid plenary in late 1995, concluded that \'the balance of evidence suggests a discernible human influence on global climate\' — the first intergovernmental endorsement of detected anthropogenic warming, supported by climate-fingerprinting studies. Reversing the 1990 First Assessment Report\'s judgment that detection was \'not likely for a decade or more,\' it institutionally settled the detection claim Hansen had asserted in 1988.',
+        source: {
+          externalId: 'src:ipcc-sar-discernible-human-influence-1995',
+          name: 'IPCC. Climate Change 1995: The Science of Climate Change (Second Assessment Report, WGI Summary for Policymakers). 1995.',
+          url: 'https://archive.ipcc.ch/pdf/climate-changes-1995/ipcc-2nd-assessment/2nd-assessment-en.pdf',
+          publishedAt: '1995-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 28. Gornitz, Lebedeff & Hansen — global sea-level trend — 1982 ───────────
+  {
+    externalId: 'trajectory:gornitz-lebedeff-hansen-sea-level-trend-1982',
+    text: 'Vivien Gornitz, Sergej Lebedeff, and James Hansen reported in Science on 26 March 1982 that worldwide tide-gauge records show global mean sea level rose about 12 centimetres over the past century, correlated with rising global surface air temperature and attributable largely to thermal expansion of the upper ocean.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-03-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-03-26',
+        datePrecision: 'DAY',
+        reason: 'Gornitz, Lebedeff, and Hansen published \'Global Sea Level Trend in the Past Century\' in Science (215(4540):1611–1614), compiling tide-gauge stations worldwide to derive a ~12 cm twentieth-century rise that correlated strongly with the global temperature trend. They attributed much of it to thermal expansion of the upper ocean with weaker indirect evidence of ice-sheet melt, producing the first modern observational estimate linking sea-level rise to greenhouse warming and seeding the first statistical projections of future rise.',
+        source: {
+          externalId: 'src:gornitz-lebedeff-hansen-sea-level-science-1982',
+          name: 'Gornitz V, Lebedeff S, Hansen J. Global sea level trend in the past century. Science. 1982;215(4540):1611–1614.',
+          url: 'https://www.giss.nasa.gov/pubs/abs/go05100g.html',
+          publishedAt: '1982-03-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The IPCC First Assessment Report (WGI, 1990) concluded that global mean sea level had risen roughly 10–20 cm over the previous 100 years and projected continued rise driven by thermal expansion and glacier melt under greenhouse warming. By adopting a century-scale observational sea-level rise consistent with the Gornitz–Lebedeff–Hansen estimate, the first intergovernmental assessment elevated the tide-gauge finding from a single study to settled institutional baseline.',
+        source: {
+          externalId: 'src:ipcc-far-sea-level-1990',
+          name: 'IPCC. Climate Change: The IPCC Scientific Assessment (First Assessment Report, WGI). Cambridge University Press. 1990.',
+          url: 'https://www.ipcc.ch/report/ar1/wg1/',
+          publishedAt: '1990-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
