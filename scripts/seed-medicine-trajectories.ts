@@ -47,7 +47,7 @@ interface Trajectory {
   claimType: 'EMPIRICAL' | 'INSTITUTIONAL' | 'INTERPRETIVE' | 'HYBRID'
   claimEmergedAt: string
   claimEmergedPrecision: DatePrecision
-  currentAxis: 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE'
+  currentAxis: FactStatus
   transitions: Transition[]
 }
 
@@ -175,6 +175,254 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINE SAFETY & EFFICACY ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 4. Wakefield MMR-autism fraud — 1998–2010 ───────────────────────────────
+  {
+    externalId: 'trajectory:wakefield-mmr-autism-1998',
+    text: 'Andrew Wakefield and colleagues reported in The Lancet on 28 February 1998 that MMR vaccination was temporally associated with the onset of behavioural (autistic) regression and non-specific colitis in 12 children, suggesting a possible link between the MMR vaccine and pervasive developmental disorder.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-02-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-02-28',
+        datePrecision: 'DAY',
+        reason: 'The Lancet published Wakefield et al.\'s case series of 12 children describing ileal-lymphoid-nodular hyperplasia and developmental regression following MMR vaccination. The paper itself only hypothesised a link, but a press conference at which Wakefield called for suspension of the combined vaccine turned the hypothesis into a widely recorded public-health claim.',
+        source: {
+          externalId: 'src:wakefield-lancet-1998',
+          name: 'Wakefield AJ, Murch SH, Anthony A, et al. Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children. Lancet. 1998;351(9103):637-641.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9683237/',
+          publishedAt: '1998-02-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-11-07',
+        datePrecision: 'DAY',
+        reason: 'Madsen et al. published a population-based cohort study of all 537,303 children born in Denmark 1991–1998 in the New England Journal of Medicine, finding no increased risk of autism among MMR-vaccinated children. This and subsequent large epidemiological studies failed to replicate any MMR–autism association, placing the original claim in serious dispute.',
+        source: {
+          externalId: 'src:madsen-nejm-mmr-2002',
+          name: 'Madsen KM, Hviid A, Vestergaard M, et al. A population-based study of measles, mumps, and rubella vaccination and autism. N Engl J Med. 2002;347(19):1477-1482.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12421889/',
+          publishedAt: '2002-11-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-02-02',
+        datePrecision: 'DAY',
+        reason: 'Following the UK General Medical Council\'s Fitness to Practise Panel finding (28 January 2010) that key claims in the paper were false and that the research was conducted unethically, The Lancet fully retracted the 1998 article. The retraction formally erased the study from the scientific record, completing the reversal of the MMR–autism claim.',
+        source: {
+          externalId: 'src:lancet-retraction-wakefield-2010',
+          name: 'The Editors of The Lancet. Retraction—Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children. Lancet. 2010;375(9713):445.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20137807/',
+          publishedAt: '2010-02-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 5. RotaShield rotavirus vaccine withdrawal — 1998–1999 ──────────────────
+  {
+    externalId: 'trajectory:rotashield-rotavirus-withdrawal-1999',
+    text: 'RotaShield (RRV-TV), the first licensed rotavirus vaccine, was approved by the FDA on 31 August 1998 and recommended for routine infant immunization in the United States as a safe and effective vaccine.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-08-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed Wyeth-Lederle\'s RotaShield, and the Advisory Committee on Immunization Practices subsequently recommended it for routine administration to infants at 2, 4, and 6 months. The claim that an effective, acceptably safe rotavirus vaccine existed was institutionally settled in U.S. immunization policy.',
+        source: {
+          externalId: 'src:cdc-mmwr-rotashield-postpone-1999',
+          name: 'CDC. Intussusception among recipients of rotavirus vaccine—United States, 1998-1999. MMWR Morb Mortal Wkly Rep. 1999;48(27):577-581.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4827a1.htm',
+          publishedAt: '1999-07-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-07-16',
+        datePrecision: 'DAY',
+        reason: 'Post-marketing surveillance via the Vaccine Adverse Event Reporting System detected 15 cases of intussusception, 80% within one week of vaccination. CDC recommended postponing further RotaShield administration pending investigation, converting the settled safety claim into an active safety signal — a textbook post-market surveillance contestation.',
+        source: {
+          externalId: 'src:cdc-mmwr-rotashield-intussusception-1999',
+          name: 'CDC. Intussusception among recipients of rotavirus vaccine—United States, 1998-1999. MMWR Morb Mortal Wkly Rep. 1999;48(27):577-581.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4827a1.htm',
+          publishedAt: '1999-07-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-10-22',
+        datePrecision: 'DAY',
+        reason: 'After analysis confirmed a significantly increased risk of intussusception in the 1–2 weeks following vaccination, ACIP withdrew its recommendation on 22 October 1999 and the manufacturer withdrew RotaShield from the market. It was the first vaccine pulled in the U.S. primarily on the basis of a post-licensure safety signal.',
+        source: {
+          externalId: 'src:cdc-mmwr-rotashield-withdraw-1999',
+          name: 'CDC. Withdrawal of rotavirus vaccine recommendation. MMWR Morb Mortal Wkly Rep. 1999;48(43):1007.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4843a5.htm',
+          publishedAt: '1999-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 6. HAART triple therapy for HIV — 1997–1998 ─────────────────────────────
+  {
+    externalId: 'trajectory:haart-triple-therapy-hiv-1997',
+    text: 'A randomized controlled trial reported on 11 September 1997 that adding the protease inhibitor indinavir to two nucleoside analogues (triple combination antiretroviral therapy) roughly halved progression to AIDS or death in patients with advanced HIV infection.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-09-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-09-11',
+        datePrecision: 'DAY',
+        reason: 'Hammer et al. published the AIDS Clinical Trials Group 320 trial in the New England Journal of Medicine, showing that triple therapy with indinavir plus zidovudine and lamivudine reduced progression to AIDS or death to 6% versus 11% with dual nucleosides (P=0.001). This provided the first definitive randomized evidence that protease-inhibitor-based combination therapy altered the course of HIV disease.',
+        source: {
+          externalId: 'src:hammer-actg320-nejm-1997',
+          name: 'Hammer SM, Squires KE, Hughes MD, et al. A controlled trial of two nucleoside analogues plus indinavir in persons with HIV infection and CD4 cell counts of 200 per cubic millimeter or less. N Engl J Med. 1997;337(11):725-733.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9287227/',
+          publishedAt: '1997-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-03-26',
+        datePrecision: 'DAY',
+        reason: 'Palella et al. documented in the New England Journal of Medicine that mortality among patients with advanced HIV fell from 29.4 to 8.8 per 100 person-years between 1995 and 1997 as combination antiretroviral therapy was adopted. This population-level confirmation settled triple therapy as the standard of care for HIV.',
+        source: {
+          externalId: 'src:palella-nejm-haart-1998',
+          name: 'Palella FJ Jr, Delaney KM, Moorman AC, et al. Declining morbidity and mortality among patients with advanced human immunodeficiency virus infection. N Engl J Med. 1998;338(13):853-860.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9516219/',
+          publishedAt: '1998-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 7. First VRSA — vancomycin-resistant S. aureus 2002 ─────────────────────
+  {
+    externalId: 'trajectory:first-vrsa-antibiotic-resistance-2002',
+    text: 'The CDC reported on 5 July 2002 the first documented human infection caused by fully vancomycin-resistant Staphylococcus aureus (VRSA), isolated from a Michigan patient and carrying the vanA resistance gene.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-05',
+        datePrecision: 'DAY',
+        reason: 'CDC\'s MMWR reported VRSA isolated from a catheter exit site of a 40-year-old Michigan dialysis patient, confirmed by CDC to be resistant to vancomycin (MIC ≥128 µg/mL). The long-feared transfer of high-level glycopeptide resistance into S. aureus — previously only theoretical and demonstrated in vitro — was now an observed clinical fact.',
+        source: {
+          externalId: 'src:cdc-mmwr-vrsa-2002',
+          name: 'CDC. Staphylococcus aureus resistant to vancomycin—United States, 2002. MMWR Morb Mortal Wkly Rep. 2002;51(26):565-567.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5126a1.htm',
+          publishedAt: '2002-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-03',
+        datePrecision: 'DAY',
+        reason: 'Chang et al. published the full molecular characterization in the New England Journal of Medicine, confirming the vanA gene had transferred to S. aureus, likely from co-infecting vancomycin-resistant Enterococcus. Independent genetic confirmation in a peer-reviewed journal settled the emergence of VRSA as established science.',
+        source: {
+          externalId: 'src:chang-nejm-vrsa-2003',
+          name: 'Chang S, Sievert DM, Hageman JC, et al. Infection with vancomycin-resistant Staphylococcus aureus containing the vanA resistance gene. N Engl J Med. 2003;348(14):1342-1347.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12700376/',
+          publishedAt: '2003-04-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 8. Gardasil HPV vaccine approval — 2006–2007 ───────────────────────────
+  {
+    externalId: 'trajectory:gardasil-hpv-vaccine-approval-2006',
+    text: 'The FDA approved Gardasil, the first quadrivalent human papillomavirus (HPV types 6, 11, 16, 18) vaccine, on 8 June 2006 to prevent cervical cancer and precancerous cervical lesions in females.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed Merck\'s Gardasil for females aged 9–26 based on the FUTURE clinical trial program, formally recording the claim that vaccination against oncogenic HPV types could prevent cervical cancer precursors. It was the first vaccine specifically licensed to prevent a cancer in women.',
+        source: {
+          externalId: 'src:fda-gardasil-approval-2006',
+          name: 'U.S. Food and Drug Administration. Gardasil — Product Approval Information (Licensing Action), June 8, 2006.',
+          url: 'https://wayback.archive-it.org/7993/20170111233922/http://www.fda.gov/BiologicsBloodVaccines/Vaccines/ApprovedProducts/ucm094042.htm',
+          publishedAt: '2006-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-10',
+        datePrecision: 'DAY',
+        reason: 'The FUTURE II Study Group published in the New England Journal of Medicine that the quadrivalent vaccine was 98% efficacious against HPV-16/18-related high-grade cervical lesions (CIN 2/3) in the per-protocol population. Large-scale randomized efficacy data settled the vaccine\'s protective claim across the expert community.',
+        source: {
+          externalId: 'src:future-ii-nejm-gardasil-2007',
+          name: 'FUTURE II Study Group. Quadrivalent vaccine against human papillomavirus to prevent high-grade cervical lesions. N Engl J Med. 2007;356(19):1915-1927.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17494925/',
+          publishedAt: '2007-05-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // THALIDOMIDE ERA (pre-1950 → clinical trials era)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
   // ── 3. Thalidomide — approved, reversed, partially rehabilitated ───────────
   {
     externalId: 'trajectory:thalidomide-teratogenicity-1961',
@@ -245,16 +493,16 @@ async function upsertTrajectory(t: Trajectory) {
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
-      deleted: false,
+      currentStatus: 'DISPUTED',
+      ingestedBy: 'seed:medicine-trajectories',
+      autoApproved: true,
     },
     update: {
       text: t.text,
       claimType: t.claimType,
       claimEmergedAt: new Date(t.claimEmergedAt),
       claimEmergedPrecision: t.claimEmergedPrecision,
-      currentAxis: t.currentAxis,
       epistemicAxis: t.currentAxis,
     },
   })
@@ -270,6 +518,7 @@ async function upsertTrajectory(t: Trajectory) {
         url: tr.source.url,
         publishedAt: new Date(tr.source.publishedAt),
         methodologyType: tr.source.methodologyType,
+        ingestedBy: 'seed:medicine-trajectories',
       },
       update: {
         name: tr.source.name,
