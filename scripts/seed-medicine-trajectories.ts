@@ -11334,6 +11334,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GERM THEORY & INFECTIOUS DISEASE ERA (1885–1933)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pasteur rabies vaccine — Joseph Meister 1885 ────────────────────────────
+  {
+    externalId: 'trajectory:pasteur-rabies-vaccine-joseph-meister-1885',
+    text: 'Louis Pasteur demonstrated that a post-exposure series of attenuated spinal-cord inoculations could prevent rabies in a bitten human, first treating nine-year-old Joseph Meister beginning July 6, 1885.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1885-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1885-10-26',
+        datePrecision: 'DAY',
+        reason: 'Having treated Joseph Meister (bitten 14 times by a rabid dog) from July 6, 1885 with 13 progressively more virulent injections of dried rabbit spinal cord, Pasteur reported the boy\'s survival to the Académie des sciences on October 26, 1885 in \'Méthode pour prévenir la rage après morsure.\' This was the first recorded demonstration of post-exposure immunoprophylaxis in a human and the birth of the modern era of vaccination beyond Jenner\'s cowpox.',
+        source: {
+          externalId: 'src:pasteur-rage-cr-acad-sci-1885',
+          name: 'Pasteur L. Méthode pour prévenir la rage après morsure. Comptes rendus hebdomadaires des séances de l\'Académie des sciences. 1885;101:765–774.',
+          url: 'https://www.pasteur.fr/en/research-journal/news/history-first-rabies-vaccination-1885',
+          publishedAt: '1885-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1888-11-14',
+        datePrecision: 'DAY',
+        reason: 'After Pasteur reported in March 1886 that of some 350 bitten patients treated only one had died, public subscription funded the Institut Pasteur, inaugurated November 14, 1888, as a dedicated rabies-treatment and research institution. Institutional establishment and the worldwide replication of Pasteur clinics settled post-exposure rabies vaccination as accepted practice.',
+        source: {
+          externalId: 'src:institut-pasteur-founding-1888',
+          name: 'Institut Pasteur. The final years 1877–1887 and the founding of the Institut Pasteur (inaugurated 14 November 1888).',
+          url: 'https://www.pasteur.fr/en/institut-pasteur/history/troisieme-epoque-1877-1887',
+          publishedAt: '1888-11-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Behring & Kitasato diphtheria/tetanus antitoxin — 1890 ─────────────────
+  {
+    externalId: 'trajectory:behring-kitasato-diphtheria-tetanus-antitoxin-1890',
+    text: 'Emil von Behring and Kitasato Shibasaburō demonstrated that serum from animals immunized against tetanus and diphtheria toxin could transfer protection to other animals, founding serum therapy (antitoxin), published December 1890.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1890-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-12-04',
+        datePrecision: 'DAY',
+        reason: 'In the December 4, 1890 issue of the Deutsche Medizinische Wochenschrift, Behring and Kitasato reported that blood serum from animals rendered immune to tetanus toxin could neutralize the toxin and protect naive animals; Behring extended the finding to diphtheria one week later. This first demonstrated humoral (antitoxin) immunity and launched serum therapy as a recordable therapeutic principle.',
+        source: {
+          externalId: 'src:behring-kitasato-dmw-1890',
+          name: 'von Behring E, Kitasato S. Ueber das Zustandekommen der Diphtherie-Immunität und der Tetanus-Immunität bei Thieren. Deutsche Medizinische Wochenschrift. 1890;16(49):1113–1114.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1901/behring/article/',
+          publishedAt: '1890-12-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1901-12-10',
+        datePrecision: 'DAY',
+        reason: 'After Émile Roux\'s 1894 clinical confirmation and the rapid worldwide adoption of diphtheria antitoxin (sharply cutting case-fatality), Behring received the inaugural Nobel Prize in Physiology or Medicine on December 10, 1901 \'for his work on serum therapy, especially its application against diphtheria.\' The award marked institutional settlement of antitoxin therapy as established medicine.',
+        source: {
+          externalId: 'src:nobel-behring-1901',
+          name: 'The Nobel Prize in Physiology or Medicine 1901: Emil Adolf von Behring — \'for his work on serum therapy, especially its application against diphtheria.\'',
+          url: 'https://www.nobelprize.org/prizes/medicine/1901/behring/article/',
+          publishedAt: '1901-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Walter Reed yellow fever mosquito vector — 1900 ─────────────────────────
+  {
+    externalId: 'trajectory:walter-reed-yellow-fever-mosquito-vector-1900',
+    text: 'The U.S. Army Yellow Fever Commission led by Walter Reed demonstrated that yellow fever is transmitted by the Aedes aegypti mosquito rather than by fomites or filth, reported in a preliminary note read October 23, 1900.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1900-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-10-23',
+        datePrecision: 'DAY',
+        reason: 'Reed, Carroll, Agramonte, and Lazear, testing Carlos Finlay\'s mosquito hypothesis in Cuba, found that volunteers developed yellow fever only after bites from mosquitoes that had fed on patients 12+ days earlier. Their preliminary note was read to the American Public Health Association on October 23, 1900 and published days later, recording the mosquito-vector claim against the entrenched fomite/filth theory.',
+        source: {
+          externalId: 'src:reed-etiology-yellow-fever-preliminary-1900',
+          name: 'Reed W, Carroll J, Agramonte A, Lazear JW. The etiology of yellow fever: a preliminary note. Philadelphia Medical Journal. 1900 Oct 27;6:790–796.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30327122/',
+          publishedAt: '1900-10-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1901-02-16',
+        datePrecision: 'DAY',
+        reason: 'Controlled experiments at Camp Lazear (with screened huts isolating mosquito bites from contaminated fomites) confirmed the vector, published as \'an additional note\' in JAMA on February 16, 1901. William Gorgas\'s mosquito-control campaign in Havana in 1901 then eliminated yellow fever from the city, operationally validating the theory and settling it as the basis for vector control (and later the Panama Canal sanitation).',
+        source: {
+          externalId: 'src:reed-etiology-yellow-fever-additional-1901',
+          name: 'Reed W, Carroll J, Agramonte A. The etiology of yellow fever: an additional note. JAMA. 1901;36(7):431–440.',
+          url: 'https://armyhistory.org/major-walter-reed-and-the-eradication-of-yellow-fever/',
+          publishedAt: '1901-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Goldberger pellagra dietary not infectious — 1914 ───────────────────────
+  {
+    externalId: 'trajectory:goldberger-pellagra-dietary-not-infectious-1914',
+    text: 'Joseph Goldberger of the U.S. Public Health Service concluded that pellagra is a disease of dietary deficiency rather than a communicable infection, reported in Public Health Reports on June 26, 1914.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1914-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1914-06-26',
+        datePrecision: 'DAY',
+        reason: 'In \'The etiology of pellagra,\' Goldberger argued from epidemiological observation (the disease struck inmates and patients but spared staff at the same institutions) that pellagra was dietary, not infectious — directly contradicting the prevailing infectious-disease consensus championed by the Thompson-McFadden Commission. The claim entered the literature as a hypothesis against the dominant germ-theory view.',
+        source: {
+          externalId: 'src:goldberger-etiology-pellagra-1914',
+          name: 'Goldberger J. The etiology of pellagra. The significance of certain epidemiological observations with respect thereto. Public Health Reports. 1914;29(26):1683–1686. (PMID 808825)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1437745/',
+          publishedAt: '1914-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Goldberger and Wheeler induced pellagra in eleven previously healthy Mississippi convict volunteers fed a restricted corn-based diet (announced via Public Health Reports in late 1915), providing experimental causal proof that diet — not contagion — produces the disease. The controlled induction shifted expert opinion away from the infectious theory; the dietary etiology was definitively mechanized when Elvehjem identified nicotinic acid (niacin) as the missing factor in 1937.',
+        source: {
+          externalId: 'src:harkness-prisoners-pellagra-1996',
+          name: 'Harkness JM. Prisoners and pellagra. Public Health Reports. 1996;111(5):463–467 (documenting Goldberger\'s 1915 convict-diet experiment at Rankin Prison Farm).',
+          url: 'https://stacks.cdc.gov/view/cdc/64410',
+          publishedAt: '1996-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Smith, Andrewes & Laidlaw influenza virus isolation — 1933 ──────────────
+  {
+    externalId: 'trajectory:smith-andrewes-laidlaw-influenza-virus-isolation-1933',
+    text: 'Wilson Smith, Christopher Andrewes, and Patrick Laidlaw isolated a filterable virus from human influenza patients and transmitted it to ferrets, establishing that influenza is caused by a virus, published in The Lancet on July 8, 1933.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-07-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-07-08',
+        datePrecision: 'DAY',
+        reason: 'Filtering bacteria from throat washings of influenza patients and instilling the cell-free filtrate into ferrets reproduced influenza, demonstrating a filterable viral agent. Published in The Lancet (\'A virus obtained from influenza patients\'), the result overturned the decades-old belief — dating to Pfeiffer\'s 1892 \'Bacillus influenzae\' — that influenza was a bacterial disease, recording its true viral etiology.',
+        source: {
+          externalId: 'src:smith-andrewes-laidlaw-lancet-1933',
+          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. The Lancet. 1933;222(5732):66–68.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S0140673600785412',
+          publishedAt: '1933-07-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The viral etiology was rapidly replicated, the virus was propagated in embryonated hens\' eggs (Burnet, 1936), and influenza B was identified (Francis, 1940). This culminated in the first inactivated influenza vaccine licensed for U.S. military use in 1945, institutionally settling influenza as a vaccine-preventable viral disease and definitively closing out the bacterial theory.',
+        source: {
+          externalId: 'src:who-history-influenza-vaccination',
+          name: 'World Health Organization. History of influenza vaccination.',
+          url: 'https://www.who.int/news-room/spotlight/history-of-vaccination/history-of-influenza-vaccination',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
