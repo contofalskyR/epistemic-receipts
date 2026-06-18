@@ -9406,60 +9406,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Vertebroplasty sham reversal — 2009 ─────────────────────────────────────
-  {
-    externalId: 'trajectory:vertebroplasty-osteoporotic-fracture-sham-reversal-2009',
-    text: 'Percutaneous vertebroplasty—injecting bone cement into fractured vertebrae—relieves pain from osteoporotic vertebral compression fractures, a belief contradicted by two blinded sham-controlled trials published together in the New England Journal of Medicine on 6 August 2009 that found no benefit over a placebo procedure.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1987-01-01',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'CONTESTED',
-    transitions: [
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'CONTESTED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2009-08-06',
-        datePrecision: 'DAY',
-        reason: 'Vertebroplasty, introduced in France in the late 1980s, had become widely adopted on the strength of uncontrolled before-and-after pain reports. Buchbinder and colleagues, and a parallel trial by Kallmes and colleagues, randomized patients to real vertebroplasty versus a sham procedure (anesthetic without cement) and found no significant difference in pain or function at any timepoint. The dual NEJM publications threw the procedure\'s symptomatic rationale into serious contention.',
-        source: {
-          externalId: 'src:buchbinder-vertebroplasty-nejm-2009',
-          name: 'Buchbinder R, Osborne RH, Ebeling PR, et al. A randomized trial of vertebroplasty for painful osteoporotic vertebral fractures. N Engl J Med. 2009;361(6):557-568.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/19657121/',
-          publishedAt: '2009-08-06',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── ORBITA PCI stable angina placebo — 2017 ─────────────────────────────────
-  {
-    externalId: 'trajectory:orbita-pci-stable-angina-placebo-2017',
-    text: 'Percutaneous coronary intervention (coronary stenting) relieves angina in stable single-vessel coronary disease beyond the effect of a placebo procedure—a longstanding rationale for elective PCI that was contested by the blinded sham-controlled ORBITA trial, published online in The Lancet on 2 November 2017.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1977-09-16',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'CONTESTED',
-    transitions: [
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'CONTESTED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2017-11-02',
-        datePrecision: 'DAY',
-        reason: 'Since Andreas Grüntzig\'s first coronary angioplasty in 1977, mechanical revascularization was widely presumed to relieve stable angina, and elective PCI for symptom control became routine. Al-Lamee and colleagues conducted ORBITA, the first blinded placebo (sham PCI)-controlled trial in 200 patients with severe single-vessel stenosis on optimized medical therapy, and found PCI did not improve exercise time more than the placebo procedure (difference 16.6 s, p=0.20). The result challenged the symptomatic justification for elective PCI in stable disease.',
-        source: {
-          externalId: 'src:allamee-orbita-lancet-2018',
-          name: 'Al-Lamee R, Thompson D, Dehbi HM, et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial. Lancet. 2018;391(10115):31-40.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/29103656/',
-          publishedAt: '2017-11-02',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
