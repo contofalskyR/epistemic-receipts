@@ -17288,48 +17288,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Controlled Substances Act drug scheduling — Nixon 1970 ─────────────────
-  {
-    externalId: 'trajectory:controlled-substances-act-drug-scheduling-1970',
-    text: 'The U.S. Comprehensive Drug Abuse Prevention and Control Act of 1970 (Public Law 91-513), signed by President Nixon on October 27, 1970, created the Controlled Substances Act and its five-schedule system, classifying heroin in Schedule I as having high abuse potential and no accepted medical use while placing morphine, opium, and oxycodone in Schedule II as abuse-prone drugs with accepted medical uses.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1970-10-27',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1970-10-27',
-        datePrecision: 'DAY',
-        reason: 'President Nixon signed the Comprehensive Drug Abuse Prevention and Control Act of 1970 (Pub. L. 91-513, 84 Stat. 1236), whose Title II — the Controlled Substances Act — replaced the prior patchwork of federal narcotics laws with a single statutory scheme ranking drugs across five schedules by abuse potential and accepted medical use. Heroin was placed in Schedule I (no accepted medical use), morphine and oxycodone in Schedule II. The Act institutionally fixed the federal classification of opioids\' abuse liability and medical status into binding law.',
-        source: {
-          externalId: 'src:csa-public-law-91-513-1970',
-          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970, Pub. L. No. 91-513, 84 Stat. 1236 (approved Oct. 27, 1970).',
-          url: 'https://www.govinfo.gov/content/pkg/STATUTE-84/pdf/STATUTE-84-Pg1236.pdf',
-          publishedAt: '1970-10-27',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2024-01-01',
-        datePrecision: 'YEAR',
-        reason: 'More than five decades after enactment, the schedule placements remain codified at 21 U.S.C. § 812, with heroin still in Schedule I and morphine, opium, and oxycodone in Schedule II despite repeated rescheduling petitions. The durability of the original classification confirms the 1970 scheduling judgment as settled federal law rather than a transitional measure.',
-        source: {
-          externalId: 'src:21-usc-812-schedules',
-          name: '21 U.S.C. § 812 — Schedules of controlled substances (codified Controlled Substances Act schedules).',
-          url: 'https://www.law.cornell.edu/uscode/text/21/812',
-          publishedAt: '2024-01-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── WHO drug dependence terminology — 1964 ─────────────────────────────────
   {
     externalId: 'trajectory:who-drug-dependence-terminology-1964',
