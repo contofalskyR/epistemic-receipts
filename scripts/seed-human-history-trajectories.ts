@@ -57106,6 +57106,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900) — Islamic world & Middle East
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Discovery of the Rosetta Stone ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:rosetta-stone-discovery-1799',
+    text: 'A trilingual inscribed slab — later named the Rosetta Stone — was unearthed by French soldiers refortifying Fort Julien near Rosetta (Rashid), Egypt, in mid-July 1799, and reported to the Institut d\'Égypte in Cairo on 19 July 1799.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1799-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1799-07-19',
+        datePrecision: 'DAY',
+        reason: 'During Napoleon\'s Egyptian campaign, soldiers under Colonel d\'Hautpoul strengthening the defences of Fort Julien uncovered a granodiorite slab bearing an inscription in three scripts. Lieutenant Pierre-François Bouchard recognized its significance, and the find was announced to the savants of the Institut d\'Égypte in Cairo on 19 July 1799, entering the scholarly record.',
+        source: {
+          externalId: 'src:rosetta-stone-discovery',
+          name: 'Rosetta Stone — discovery near Rosetta, mid-July 1799, announced to the Institut d\'Égypte on 19 July 1799 (Wikipedia, "Rosetta Stone").',
+          url: 'https://en.wikipedia.org/wiki/Rosetta_Stone',
+          publishedAt: '1799-07-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1822-09-27',
+        datePrecision: 'DAY',
+        reason: 'The stone\'s three parallel texts (hieroglyphic, Demotic, Greek) became the key that let Jean-François Champollion crack the hieroglyphic writing system, announced in his Lettre à M. Dacier of 27 September 1822 — settling the identity and value of the artifact as the foundation of modern Egyptology.',
+        source: {
+          externalId: 'src:champollion-lettre-dacier-1822',
+          name: 'Jean-François Champollion, Lettre à M. Dacier, read to the Académie des inscriptions, 27 September 1822 (Wikipedia, "Rosetta Stone").',
+          url: 'https://en.wikipedia.org/wiki/Rosetta_Stone',
+          publishedAt: '1822-09-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Edict of Gülhane — opening of the Tanzimat ──────────────────────────────
+  {
+    externalId: 'trajectory:edict-of-gulhane-1839',
+    text: 'On 3 November 1839 the Ottoman statesman Mustafa Reşid Pasha publicly read the Hatt-ı Şerif of Gülhane in the rose garden of Topkapı Palace, an imperial edict of Sultan Abdülmecid I guaranteeing the life, honour, and property of all subjects regardless of religion and inaugurating the Tanzimat reform era.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1839-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1839-11-03',
+        datePrecision: 'DAY',
+        reason: 'Mustafa Reşid Pasha read the edict aloud before the sultan, foreign diplomats, and dignitaries assembled at Gülhane. It promised security of life, honour, and property for all Ottoman subjects, an end to tax-farming with proportional taxation, regularized conscription, and public trials — committing the state in writing to a new legal order.',
+        source: {
+          externalId: 'src:gulhane-edict-1839',
+          name: 'Edict of Gülhane (Hatt-ı Şerif of Gülhane), proclaimed 3 November 1839 by Sultan Abdülmecid I (Wikipedia, "Edict of Gülhane").',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_G%C3%BClhane',
+          publishedAt: '1839-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1856-02-18',
+        datePrecision: 'DAY',
+        reason: 'The Gülhane principles were entrenched and extended by the Hatt-ı Hümayun reform edict of 18 February 1856, which reaffirmed equality before the law for all subjects and drove the legal, administrative, and educational reforms of the Tanzimat — establishing the edict of 1839 as the settled founding charter of Ottoman modernization.',
+        source: {
+          externalId: 'src:tanzimat-reform-era',
+          name: 'Tanzimat reform era (1839–1876), opened by the Edict of Gülhane and extended by the Hatt-ı Hümayun of 1856 (Wikipedia, "Tanzimat").',
+          url: 'https://en.wikipedia.org/wiki/Tanzimat',
+          publishedAt: '1856-02-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Declaration of the Báb — founding of the Bábí religion ───────────────────
+  {
+    externalId: 'trajectory:declaration-of-the-bab-1844',
+    text: 'On the evening of 22 May 1844, in his house in Shiraz, the young merchant Siyyid Ali Muhammad declared to Mullá Husayn that he was the Báb ("the Gate"), the promised one of Shi\'a expectation — the founding event of the Bábí religion and the antecedent of the Bahá\'í Faith.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1844-05-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1844-05-22',
+        datePrecision: 'DAY',
+        reason: 'Mullá Husayn, a Shaykhí seeker searching for the promised Qá\'im, was received at the Báb\'s home on the night of 22 May 1844. The Báb claimed the station and, that night, rapidly composed the Qayyúmu\'l-Asmá\', a commentary on the Surah of Joseph — recognized as his first revealed work and the moment the Bábí movement began.',
+        source: {
+          externalId: 'src:declaration-of-the-bab-1844',
+          name: 'Declaration of the Báb to Mullá Husayn, evening of 22 May 1844, Shiraz (Wikipedia, "Báb").',
+          url: 'https://en.wikipedia.org/wiki/B%C3%A1b',
+          publishedAt: '1844-05-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1844-05-22',
+        datePrecision: 'DAY',
+        reason: 'The date is settled as the religion\'s foundational anniversary: it is commemorated annually as a Bahá\'í Holy Day (the Declaration of the Báb) on which work is suspended, and 1844 is reckoned as year 1 of the Badí\' calendar — fixing the event as the canonical start of the Bábí-Bahá\'í era.',
+        source: {
+          externalId: 'src:declaration-of-the-bab-holy-day',
+          name: 'Declaration of the Báb — Bahá\'í Holy Day and start of the Badí\' calendar (Wikipedia, "Declaration of the Báb").',
+          url: 'https://en.wikipedia.org/wiki/Declaration_of_the_B%C3%A1b',
+          publishedAt: '1850-07-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First Ottoman Constitution (Kanûn-ı Esâsî) ──────────────────────────────
+  {
+    externalId: 'trajectory:first-ottoman-constitution-1876',
+    text: 'On 23 December 1876 Sultan Abdülhamid II promulgated the Kanûn-ı Esâsî, the first written constitution of the Ottoman Empire, establishing a parliament and the constitutional order of the First Constitutional Era.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1876-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1876-12-23',
+        datePrecision: 'DAY',
+        reason: 'Drafted under the lead of the reformist grand vizier Midhat Pasha and the Young Ottomans, the constitution was signed by the newly enthroned Abdülhamid II and proclaimed on 23 December 1876, creating a bicameral General Assembly and codifying subjects\' rights — the empire\'s first basic law.',
+        source: {
+          externalId: 'src:ottoman-constitution-1876',
+          name: 'Ottoman constitution of 1876 (Kanûn-ı Esâsî), promulgated 23 December 1876 under Abdülhamid II (Wikipedia, "Ottoman constitution of 1876").',
+          url: 'https://en.wikipedia.org/wiki/Ottoman_constitution_of_1876',
+          publishedAt: '1876-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1878-02-14',
+        datePrecision: 'DAY',
+        reason: 'After the disastrous Russo-Turkish War, Abdülhamid II suspended the constitution and prorogued the parliament on 14 February 1878, ruling autocratically for three decades. The constitutional order was not restored until the Young Turk Revolution of July 1908 — reversing the 1876 settlement for thirty years.',
+        source: {
+          externalId: 'src:ottoman-constitution-suspended-1878',
+          name: 'Suspension of the Ottoman constitution and parliament by Abdülhamid II, 1878 (Wikipedia, "Ottoman constitution of 1876").',
+          url: 'https://en.wikipedia.org/wiki/Ottoman_constitution_of_1876',
+          publishedAt: '1878-02-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
