@@ -3283,6 +3283,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA — PRE-1950 (continued)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── N+1. Nitrogen mustard — first chemotherapy agent 1946 ────────────────────
+  {
+    externalId: 'trajectory:nitrogen-mustard-first-chemotherapy-1946',
+    text: 'Goodman, Wintrobe, Dameshek, Gilman and colleagues reported on 21 September 1946 in JAMA that the alkylating agent nitrogen mustard (methyl-bis(beta-chloroethyl)amine hydrochloride) produces objective tumor regression in Hodgkin\'s disease, lymphosarcoma, and the leukemias, establishing the first effective chemical agent against cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1946-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-09-21',
+        datePrecision: 'DAY',
+        reason: 'Goodman, Wintrobe, Dameshek, Gilman and colleagues published the declassified results of wartime work begun in 1942, reporting that nitrogen mustard caused dramatic, if temporary, regression of lymphomas and leukemias in 67 patients. This was the first published demonstration that a systemic chemical could shrink human tumors, founding the field of cancer chemotherapy.',
+        source: {
+          externalId: 'src:goodman-nitrogen-mustard-jama-1946',
+          name: 'Goodman LS, Wintrobe MM, Dameshek W, Goodman MJ, Gilman A, McLennan MT. Nitrogen mustard therapy: use of methyl-bis(beta-chloroethyl)amine hydrochloride and tris(beta-chloroethyl)amine hydrochloride for Hodgkin\'s disease, lymphosarcoma, leukemia and certain allied and miscellaneous disorders. JAMA. 1946;132:126-132.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6368885/',
+          publishedAt: '1946-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1949-03-15',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved mechlorethamine (Mustargen) on 15 March 1949 for the palliative treatment of Hodgkin\'s disease, lymphosarcoma, and leukemias, making it the first chemotherapy agent ever approved by the agency. Regulatory approval converted the experimental wartime finding into an institutionally sanctioned therapy and anchored the legitimacy of cytotoxic cancer drugs.',
+        source: {
+          externalId: 'src:mustargen-first-fda-chemo-mdedge',
+          name: 'First FDA-Approved Chemo Agent Turns 60. MDedge / Federal Practitioner. 2009 (documenting 15 March 1949 FDA approval of mechlorethamine, Mustargen).',
+          url: 'https://www.mdedge.com/internalmedicine/article/15283/oncology/first-fda-approved-chemo-agent-turns-60',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── N+2. Farber aminopterin — first drug-induced leukemia remission 1948 ──────
+  {
+    externalId: 'trajectory:farber-aminopterin-leukemia-remission-1948',
+    text: 'Sidney Farber and colleagues reported on 3 June 1948 in the New England Journal of Medicine that the folic-acid antagonist aminopterin (4-aminopteroyl-glutamic acid) produced temporary clinical and hematologic remissions in children with acute leukemia, the first demonstration of drug-induced remission in childhood leukemia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-06-03',
+        datePrecision: 'DAY',
+        reason: 'Farber, Diamond and co-workers treated 16 children with acute leukemia using the antifolate aminopterin and documented temporary remissions — with clinical, blood-count, and bone-marrow improvement — in ten of them. Against the prevailing view that childhood leukemia was wholly untreatable, the paper recorded the first evidence that a chemical could reverse the disease, even transiently.',
+        source: {
+          externalId: 'src:farber-aminopterin-nejm-1948',
+          name: 'Farber S, Diamond LK, Mercer RD, Sylvester RF, Wolff JA. Temporary remissions in acute leukemia in children produced by folic acid antagonist, 4-aminopteroyl-glutamic acid (aminopterin). N Engl J Med. 1948;238(23):787-793.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18860765/',
+          publishedAt: '1948-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the following decade Farber\'s transient remissions were extended into durable cures: by the mid-1960s methotrexate-containing combination regimens at St. Jude and the NCI produced the first long-term survivors of childhood acute lymphoblastic leukemia. Reproducible, curative results settled the once-radical claim that drugs could control and cure leukemia, retrospectively validating the 1948 finding as the birth of chemotherapy.',
+        source: {
+          externalId: 'src:ash-curing-pediatric-all-history',
+          name: 'American Society of Hematology. Curing Pediatric Acute Lymphocytic Leukemia (50 Years in Hematology history).',
+          url: 'https://www.hematology.org/about/history/50-years/curing-pediatric-all',
+          publishedAt: '2008-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── N+3. Huggins — hormonal control of prostate cancer 1941 ──────────────────
+  {
+    externalId: 'trajectory:huggins-hormonal-prostate-cancer-1941',
+    text: 'Charles Huggins and Clarence Hodges reported in 1941 in Cancer Research that castration or estrogen administration lowers serum acid phosphatase and causes regression of metastatic prostate carcinoma while androgen injection accelerates it, establishing that a cancer can be controlled by hormonal manipulation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Huggins and Hodges used serum acid and alkaline phosphatase as tumor markers to show that removing androgenic stimulation (by castration or estrogen) shrank metastatic prostate cancer, while androgen injection worsened it. This was the first demonstration that a malignant tumor depended on hormones and could be therapeutically controlled by altering the endocrine environment — founding hormonal (endocrine) cancer therapy.',
+        source: {
+          externalId: 'src:huggins-hodges-prostate-cancer-1941',
+          name: 'Huggins C, Hodges CV. Studies on prostatic cancer. I. The effect of castration, of estrogen and of androgen injection on serum phosphatases in metastatic carcinoma of the prostate. Cancer Res. 1941;1(4):293-297.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12050481/',
+          publishedAt: '1941-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1966-12-10',
+        datePrecision: 'DAY',
+        reason: 'Huggins received the 1966 Nobel Prize in Physiology or Medicine for his discoveries concerning the hormonal treatment of prostatic cancer. The award marked institutional acceptance that androgen deprivation is a foundational, durable principle of oncology — androgen-deprivation therapy remains the backbone of advanced prostate cancer treatment to this day.',
+        source: {
+          externalId: 'src:huggins-nobel-historical-review-2024',
+          name: 'Benadada N, et al. Charles Brenton Huggins: a historical review of the Nobel laureate\'s pioneering discoveries. Cancer. 2024;130(?):(documenting the 1966 Nobel Prize for hormonal treatment of prostatic cancer).',
+          url: 'https://acsjournals.onlinelibrary.wiley.com/doi/full/10.1002/cncr.35173',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── N+4. Papanicolaou vaginal smear — first cancer screening test 1943 ────────
+  {
+    externalId: 'trajectory:papanicolaou-vaginal-smear-cancer-screening-1943',
+    text: 'George Papanicolaou and Herbert Traut published in 1943 the monograph \'Diagnosis of Uterine Cancer by the Vaginal Smear\', establishing that exfoliative cytology of a vaginal/cervical smear can detect uterine cancer and its precursors before symptoms appear.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1943-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After several years of collaborative study, Papanicolaou and Traut published a Commonwealth Fund monograph correlating cytologic smear findings with 179 cases of uterine cancer, demonstrating that malignant and premalignant cervical cells could be identified microscopically. This recorded the claim that a simple smear could diagnose uterine cancer cytologically, launching the modern era of cytopathology and population cancer screening.',
+        source: {
+          externalId: 'src:papanicolaou-traut-vaginal-smear-1943',
+          name: 'Papanicolaou GN, Traut HF. Diagnosis of Uterine Cancer by the Vaginal Smear. New York: The Commonwealth Fund; 1943.',
+          url: 'https://wellcomecollection.org/works/ccycn3cz',
+          publishedAt: '1943-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'During the 1950s the American Cancer Society and National Cancer Institute endorsed and promoted the Papanicolaou (Pap) test, driving its adoption as routine cervical cancer screening by the 1960s. Institutional endorsement and mass population screening — followed by dramatic declines in cervical cancer mortality — settled the smear as the first widely successful cancer screening test.',
+        source: {
+          externalId: 'src:history-cervical-screening-pap-jogc',
+          name: 'The History of Cervical Screening I: The Pap Test. Journal of Obstetrics and Gynaecology Canada (documenting ACS/NCI endorsement and adoption of Pap screening through the 1950s-60s).',
+          url: 'https://www.jogc.com/article/S0849-5831(16)31416-1/pdf',
+          publishedAt: '2016-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
