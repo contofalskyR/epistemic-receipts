@@ -17835,6 +17835,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MICROBIOLOGY & VIROLOGY (1896–1941)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1. D'Hérelle bacteriophage discovery 1917 ──────────────────────────────
+  {
+    externalId: 'trajectory:dherelle-bacteriophage-discovery-1917',
+    text: 'Félix d\'Hérelle reported to the French Académie des Sciences on 10 September 1917 that an invisible, filterable microbe antagonistic to the dysentery bacillus lyses bacterial cultures, an agent he named the bacteriophage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1917-09-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1917-09-10',
+        datePrecision: 'DAY',
+        reason: 'D\'Hérelle\'s note \'Sur un microbe invisible antagoniste des bacilles dysentériques,\' presented to the Académie des Sciences through Émile Roux, described a filterable agent from convalescent dysentery patients that produced clear lytic zones (plaques) and dissolved cultures of Shigella. He coined the term \'bacteriophage,\' recording the existence of bacteria-specific viruses and founding the study of phages and phage therapy.',
+        source: {
+          externalId: 'src:dherelle-cras-bacteriophage-1917',
+          name: 'd\'Hérelle F. Sur un microbe invisible antagoniste des bacilles dysentériques. Comptes Rendus de l\'Académie des Sciences. 1917;165:373–375.',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/herelle-f',
+          publishedAt: '1917-09-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1921-01-01',
+        datePrecision: 'YEAR',
+        reason: 'D\'Hérelle consolidated the field with his monograph \'Le Bactériophage: son rôle dans l\'immunité\' (Paris: Masson, 1921), establishing bacteriophage research as a discipline and the plaque assay as a quantitative method. Phages were later directly visualized by electron microscopy in 1940, but the reproducible plaque phenomenon had by the early 1920s settled the existence of bacterial viruses within the expert community.',
+        source: {
+          externalId: 'src:dherelle-bacteriophage-monograph-1921',
+          name: 'd\'Hérelle F. Le Bactériophage: son rôle dans l\'immunité. Paris: Masson et Cie; 1921. (biographical account, Dictionary of Scientific Biography)',
+          url: 'https://www.encyclopedia.com/science/dictionaries-thesauruses-pictures-and-press-releases/herelle-f',
+          publishedAt: '1921-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 2. Nicolle — typhus body-louse vector 1909 ─────────────────────────────
+  {
+    externalId: 'trajectory:nicolle-typhus-body-louse-1909',
+    text: 'Charles Nicolle established in 1909 at the Pasteur Institute of Tunis that epidemic typhus is transmitted between humans by the body louse, demonstrated by transferring infection and lice between primates.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1909-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Reasoning that typhus disappeared once patients were stripped and bathed on hospital admission, Nicolle infected a chimpanzee, transferred its body lice to a healthy macaque, and reproduced the disease, then confirmed the result by repetition. He reported the experimental louse-borne transmission to the Académie des Sciences (C R Acad Sci 1909;149:486–489), recording the vector of epidemic typhus and the rationale for delousing as disease control.',
+        source: {
+          externalId: 'src:nicolle-typhus-louse-cras-1909',
+          name: 'Nicolle C, Comte C, Conseil E. Transmission expérimentale du typhus exanthématique par le pou du corps. Comptes Rendus de l\'Académie des Sciences. 1909;149:486–489.',
+          url: 'https://en.wikipedia.org/wiki/Charles_Nicolle',
+          publishedAt: '1909-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1928-12-10',
+        datePrecision: 'DAY',
+        reason: 'Nicolle was awarded the 1928 Nobel Prize in Physiology or Medicine \'for his identification of lice as the transmitter of epidemic typhus,\' institutionally ratifying the louse-vector finding that had already underpinned mass delousing campaigns controlling typhus epidemics in WWI and would do so again in WWII.',
+        source: {
+          externalId: 'src:nicolle-nobel-1928',
+          name: 'Nobel Prize in Physiology or Medicine 1928 — Charles Jules Henri Nicolle (for work on typhus). (biographical record)',
+          url: 'https://en.wikipedia.org/wiki/Charles_Nicolle',
+          publishedAt: '1928-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 3. First human penicillin — Albert Alexander 1941 ──────────────────────
+  {
+    externalId: 'trajectory:first-human-penicillin-albert-alexander-1941',
+    text: 'The Oxford team led by Howard Florey first demonstrated penicillin\'s systemic therapeutic effect in a human by treating police constable Albert Alexander beginning 12 February 1941, reported in The Lancet in 1941.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1941-08-16',
+        datePrecision: 'DAY',
+        reason: 'Abraham, Chain, Fletcher, Florey, Gardner, Heatley, and Jennings published \'Further observations on penicillin\' (Lancet 1941;238:177–188), reporting the first series of patients given purified penicillin. Albert Alexander, dying of mixed staphylococcal/streptococcal sepsis, became afebrile with resolving abscesses within days of his 12 February 1941 dose, then relapsed and died on 15 March 1941 once the tiny supply ran out. This recorded the first human evidence of systemic efficacy and proved the bottleneck was production, not biology — distinct from Fleming\'s 1928 discovery and the 1940 mouse-protection paper already in the dataset.',
+        source: {
+          externalId: 'src:abraham-further-observations-penicillin-lancet-1941',
+          name: 'Abraham EP, Chain E, Fletcher CM, Florey HW, Gardner AD, Heatley NG, Jennings MA. Further observations on penicillin. Lancet. 1941;238(6155):177–188.',
+          url: 'https://hekint.org/2024/08/01/albert-alexander-unsung-hero-of-penicillin/',
+          publishedAt: '1941-08-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The dramatic human responses in the Oxford cases drove the U.S./U.K. wartime mass-production program (deep-tank fermentation, War Production Board allocation), and confirmatory clinical use in military casualties in 1943–1944 settled penicillin as an effective and producible human antibiotic, transitioning it from a laboratory curiosity to standard care.',
+        source: {
+          externalId: 'src:penicillin-human-scaleup-hektoen-2024',
+          name: 'Saxon W. Albert Alexander: unsung hero of penicillin. Hektoen International. 1 August 2024. (historical account of the first human treatment and subsequent scale-up)',
+          url: 'https://hekint.org/2024/08/01/albert-alexander-unsung-hero-of-penicillin/',
+          publishedAt: '2024-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 4. Almroth Wright — typhoid vaccine priority 1896 ──────────────────────
+  {
+    externalId: 'trajectory:almroth-wright-typhoid-vaccine-1896',
+    text: 'Almroth Wright introduced anti-typhoid inoculation using heat-killed typhoid bacilli, publishing his \'Typhoid Vaccination\' note in September 1896 and claiming priority for human typhoid vaccination.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1896-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Wright, professor of pathology at the Army Medical School at Netley, published a short note titled \'Typhoid Vaccination\' in September 1896 describing inoculation with heat-killed typhoid bacilli, after testing it on himself and then on soldiers. This recorded the claim that a killed-bacterial vaccine could protect against typhoid fever.',
+        source: {
+          externalId: 'src:wright-pfeiffer-typhoid-priority-2021',
+          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074–2079.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33726955/',
+          publishedAt: '2021-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1897-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Richard Pfeiffer (with Wilhelm Kolle) at Koch\'s Berlin institute published typhoid vaccination results in November 1896, and Wright published a January 1897 paper explicitly claiming precedence. Wright conceded his work began only after speaking with Pfeiffer; modern historical analysis concludes Pfeiffer, not Wright, gave the first account of human typhoid vaccination — leaving the priority of the claim contested even as the vaccine concept advanced.',
+        source: {
+          externalId: 'src:wright-pfeiffer-typhoid-priority-2021-dispute',
+          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074–2079.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33726955/',
+          publishedAt: '2021-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1914-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The British Army approved typhoid vaccination at the outbreak of the First World War in 1914; the resulting mass inoculation of troops was followed by a sharp fall in typhoid incidence and deaths compared with earlier campaigns (e.g., the Boer War), institutionally settling the efficacy of killed typhoid vaccine and cementing Wright\'s reputation as its champion.',
+        source: {
+          externalId: 'src:wright-typhoid-army-adoption-1914',
+          name: 'Lorentz B, et al. Richard Pfeiffer\'s typhoid vaccine and Almroth Wright\'s claim to priority. Vaccine. 2021;39(15):2074–2079. (British Army 1914 approval of typhoid vaccination)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33726955/',
+          publishedAt: '2021-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Smithwick — splanchnicectomy for hypertension 1953 (reversed) ────────────
   {
     externalId: 'trajectory:smithwick-splanchnicectomy-hypertension-1953',
