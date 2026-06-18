@@ -1288,6 +1288,189 @@ const TRAJECTORIES: Trajectory[] = [
   // MEDIEVAL (500–1500)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── K'inich Janaab' Pakal accedes at Palenque (Maya, Mesoamerica) ────────────
+  {
+    externalId: 'trajectory:pakal-accession-palenque-615',
+    text: 'K\'inich Janaab\' Pakal acceded to the throne of the Maya city of Palenque on 9.9.2.4.8 in the Long Count (27 July 615 CE), aged twelve — a dynastic event recorded contemporaneously in the hieroglyphic inscriptions of his own court.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0615-07-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0615-07-27',
+        datePrecision: 'DAY',
+        reason: 'Maya scribes at Palenque carve Pakal\'s accession into the dynastic record in the Long Count — the day 9.9.2.4.8, 5 Lamat 1 Mol — on monuments commissioned during and after his reign, including the Oval Palace Tablet (which shows his mother Sak K\'uk\' handing him the crown) and the texts of his funerary Temple of the Inscriptions. The date is fixed to the day in a calendar accurate to a single solar day.',
+        source: {
+          externalId: 'src:palenque-pakal-accession-inscriptions',
+          name: 'Palenque inscriptions of K\'inich Janaab\' Pakal (Oval Palace Tablet; Temple of the Inscriptions; sarcophagus texts), recording accession 9.9.2.4.8 (615 CE).',
+          url: 'https://en.wikipedia.org/wiki/K%27inich_Janaab_Pakal',
+          publishedAt: '0615-07-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'For centuries the Maya script was unreadable and its date-laden texts were assumed to be purely calendrical or religious. The Goodman–Martínez–Thompson correlation pinned the Maya count to the Julian/Gregorian calendar, and Tatiana Proskouriakoff\'s 1960 demonstration that the inscriptions record real dynastic history — births, accessions, deaths of named rulers — turned Pakal\'s carved accession date into a readable historical fact, now settled in Maya epigraphy.',
+        source: {
+          externalId: 'src:proskouriakoff-historical-pattern-1960',
+          name: 'Proskouriakoff T. "Historical Implications of a Pattern of Dates at Piedras Negras, Guatemala." American Antiquity 25(4):454–475 (1960).',
+          url: 'https://www.jstor.org/stable/276633',
+          publishedAt: '1960-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tōdai-ji Great Buddha eye-opening ceremony (Nara, Japan) ─────────────────
+  {
+    externalId: 'trajectory:todaiji-great-buddha-eye-opening-752',
+    text: 'The eye-opening (kaigen) consecration of the Great Buddha (Daibutsu) at Tōdai-ji in Nara was held on the ninth day of the fourth month of 752 CE (9 April 752), the Indian monk Bodhisena painting in the bronze statue\'s eyes before an assembly of thousands.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0752-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0752-04-09',
+        datePrecision: 'DAY',
+        reason: 'The retired Emperor Shōmu, the reigning Empress Kōken, and a reported ten thousand monks gather as Bodhisena, brush in hand, opens the eyes of the great gilt-bronze Vairocana. The official court chronicle records the day, calling it "the most glorious event seen in this land since Buddhism arrived in the east."',
+        source: {
+          externalId: 'src:shoku-nihongi-daibutsu-kaigen-752',
+          name: 'Shoku Nihongi (続日本紀), entry for the eye-opening ceremony of the Tōdai-ji Great Buddha, Tenpyō-shōhō 4 (752 CE). (compiled 797)',
+          url: 'https://en.wikipedia.org/wiki/T%C5%8Ddai-ji',
+          publishedAt: '0752-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0797-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Shoku Nihongi, the official chronicle completed in 797, preserves the dated account; the bronze Daibutsu itself survives at Tōdai-ji, and the very brush Bodhisena used to paint the eyes — together with the silk cords held by participants and other ritual regalia from the ceremony — is preserved in the Shōsōin imperial repository. The 752 date is uncontested in Japanese historiography.',
+        source: {
+          externalId: 'src:nippon-daibutsu-kaigen-shosoin',
+          name: 'Nippon.com, "Vairocana, the Great Buddha of Tōdaiji, Nara" — 752 eye-opening ceremony and the Shōsōin-held kaigen brush.',
+          url: 'https://www.nippon.com/en/japan-topics/b10923/',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jōgan Sanriku earthquake and tsunami (Pacific coast, Japan) ──────────────
+  {
+    externalId: 'trajectory:jogan-sanriku-earthquake-869',
+    text: 'A great earthquake and tsunami struck the Sanriku coast of northeastern Japan on 9 July 869 CE (the Jōgan earthquake), the sea sweeping over the Sendai plain and drowning about 1,000 people — recorded contemporaneously in the official chronicle Nihon Sandai Jitsuroku.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0869-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0869-07-09',
+        datePrecision: 'DAY',
+        reason: 'The chronicle entry for the 26th day of the 5th month of Jōgan 11 records violent shaking under which people "lay down and could not stand up," followed by the sea suddenly rising so that "the huge waves attacked the land," inundating the country around the Mutsu provincial capital and drowning roughly 1,000.',
+        source: {
+          externalId: 'src:nihon-sandai-jitsuroku-jogan-869',
+          name: 'Nihon Sandai Jitsuroku (日本三代実録), entry on the Jōgan earthquake of Jōgan 11 (869 CE). (compiled 901)',
+          url: 'https://en.wikipedia.org/wiki/869_Sanriku_earthquake',
+          publishedAt: '0869-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Paleotsunami research led by Minoura and colleagues traces a continuous sand sheet across the Sendai plain matching the chronicle\'s account, confirming that an enormous tsunami reached several kilometres inland in 869 and warning that such events recur on a roughly thousand-year cycle.',
+        source: {
+          externalId: 'src:minoura-jogan-tsunami-deposits-2001',
+          name: 'Minoura K et al. "The 869 Jōgan tsunami deposit and recurrence interval of large-scale tsunami on the Pacific coast of northeast Japan." Journal of Natural Disaster Science 23(2):83–88 (2001).',
+          url: 'https://www.jsnds.org/jnds/23_2_3.pdf',
+          publishedAt: '2001-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '2011-03-11',
+        datePrecision: 'DAY',
+        reason: 'The 2011 Tōhoku earthquake and tsunami inundated the same Sendai plain, leaving deposits that extended even farther inland than the 869 sand sheet. Because the plain\'s topography had changed little, the comparison implied the two events were of comparable size, revising the Jōgan magnitude upward toward ~M9 and dramatically vindicating the paleotsunami forecasts that had been based on the 869 record.',
+        source: {
+          externalId: 'src:jogan-tohoku-comparison-2011',
+          name: '869 Sanriku earthquake — paleotsunami deposits and comparison with the 2011 Tōhoku event.',
+          url: 'https://en.wikipedia.org/wiki/869_Sanriku_earthquake',
+          publishedAt: '2011-03-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ninna Nankai earthquake (Nankai Trough, Pacific Japan) ───────────────────
+  {
+    externalId: 'trajectory:ninna-nankai-earthquake-887',
+    text: 'A great earthquake struck Japan on 22 August 887 CE (the Ninna earthquake), collapsing buildings in the capital and sending a tsunami onto the coast — recorded contemporaneously in the official chronicle Nihon Sandai Jitsuroku and later placed in the recurrence sequence of great Nankai Trough megathrust earthquakes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0887-08-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0887-08-22',
+        datePrecision: 'DAY',
+        reason: 'The chronicle records that during the hour of the monkey on the day corresponding to 22 August 887 the ground shook violently, official and private buildings in the capital collapsed and crushed many, and on the coast the sea rose and drowned countless people — a dated account of a great quake felt across central and western Japan.',
+        source: {
+          externalId: 'src:nihon-sandai-jitsuroku-ninna-887',
+          name: 'Nihon Sandai Jitsuroku (日本三代実録), entry on the Ninna earthquake of Ninna 3 (887 CE), 22 August 887. (compiled 901)',
+          url: 'https://www.wikidata.org/wiki/Q11376331',
+          publishedAt: '0887-08-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historical seismology reads the 887 Ninna earthquake as one of the great megathrust ruptures of the Nankai Trough, the dated chronicle account anchoring the documented sequence (887, 1361, 1498, 1605, 1707, 1854, 1946) from which the trough\'s ~100–200-year recurrence interval is estimated; debate continues over whether the 887 rupture spanned the full Nankai–Tōnankai segment, but its occurrence and date are settled.',
+        source: {
+          externalId: 'src:ishibashi-historical-seismology-2004',
+          name: 'Ishibashi K. "Status of historical seismology in Japan." Annals of Geophysics 47(2/3):339–368 (2004).',
+          url: 'https://www.annalsofgeophysics.eu/index.php/annals/article/view/3305',
+          publishedAt: '2004-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Diamond Sutra — earliest dated printed book (Tang China) ─────────────────
   {
     externalId: 'trajectory:diamond-sutra-printed-868',
