@@ -11047,21 +11047,6 @@ const TRAJECTORIES: Trajectory[] = [
     transitions: [
       {
         fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2003-06-26',
-        datePrecision: 'DAY',
-        reason: 'Richardson and colleagues published the SUMMIT phase II study in NEJM, reporting a 35% response rate and 16-month median survival in 202 patients with myeloma refractory to their most recent therapy. The trial established proteasome inhibition as a viable anticancer strategy and defined a wholly new drug class.',
-        source: {
-          externalId: 'src:richardson-nejm-bortezomib-2003',
-          name: 'Richardson PG, Barlogie B, Berenson J, et al. A phase 2 study of bortezomib in relapsed, refractory myeloma. N Engl J Med. 2003;348(26):2609-2617.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/12826635/',
-          publishedAt: '2003-06-26',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
         toAxis: 'SETTLED',
         community: 'INSTITUTIONAL',
         occurredAt: '2003-05-13',
@@ -11073,6 +11058,21 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
           publishedAt: '2003-05-13',
           methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-06-26',
+        datePrecision: 'DAY',
+        reason: 'Richardson and colleagues published the SUMMIT phase II study in NEJM, reporting a 35% response rate and 16-month median survival in 202 patients with myeloma refractory to their most recent therapy. The trial established proteasome inhibition as a viable anticancer strategy and defined a wholly new drug class.',
+        source: {
+          externalId: 'src:richardson-nejm-bortezomib-2003',
+          name: 'Richardson PG, Barlogie B, Berenson J, et al. A phase 2 study of bortezomib in relapsed, refractory myeloma. N Engl J Med. 2003;348(26):2609-2617.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12826635/',
+          publishedAt: '2003-06-26',
+          methodologyType: 'primary',
         },
       },
     ],
