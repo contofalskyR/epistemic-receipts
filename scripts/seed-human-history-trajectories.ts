@@ -66709,6 +66709,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SOUTH ASIA — LATE COLONIAL & INDEPENDENCE (1900–1950) — added run
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Delhi Durbar 1911 — capital moved, Bengal partition annulled ─────────────
+  {
+    externalId: 'trajectory:delhi-durbar-capital-bengal-1911',
+    text: 'On 12 December 1911, at the Delhi Durbar held to mark the coronation of King-Emperor George V, the King announced the transfer of British India\'s capital from Calcutta to Delhi and the annulment of the 1905 partition of Bengal, reuniting the province.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1911-12-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1911-12-12',
+        datePrecision: 'DAY',
+        reason: 'Before an assembly of Indian princes and tens of thousands of spectators at the Coronation Durbar in Delhi, George V proclaimed from the royal pavilion that the seat of the Government of India would move from Calcutta to Delhi and that the deeply unpopular 1905 partition of Bengal would be annulled. The twin announcements were telegraphed and reported worldwide the same day.',
+        source: {
+          externalId: 'src:delhi-durbar-1911-announcement',
+          name: 'Delhi Durbar of 12 December 1911 — King-Emperor George V announces the move of the capital to Delhi and the annulment of the partition of Bengal (Wikipedia, "Delhi Durbar").',
+          url: 'https://en.wikipedia.org/wiki/Delhi_Durbar',
+          publishedAt: '1911-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1912-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The announcements were given administrative effect: a reunited Bengal Presidency was reconstituted and the new province of Bihar and Orissa created from 1 April 1912, and construction of New Delhi began as the new imperial capital (formally inaugurated in 1931). The date and substance of the Durbar proclamations are uncontested fixed points in the history of British India.',
+        source: {
+          externalId: 'src:delhi-durbar-1911-effect',
+          name: 'Reconstitution of Bengal and creation of Bihar and Orissa (1912) and the building of New Delhi following the 1911 Durbar (Wikipedia, "Delhi Durbar").',
+          url: 'https://en.wikipedia.org/wiki/Delhi_Durbar',
+          publishedAt: '1912-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lahore Resolution — the formal demand later called Pakistan ──────────────
+  {
+    externalId: 'trajectory:lahore-resolution-1940',
+    text: 'On 23 March 1940, at its annual session in Lahore, the All-India Muslim League adopted the Lahore Resolution, formally demanding that the Muslim-majority north-western and eastern zones of British India be grouped into autonomous "independent states" — the demand that became the basis for the creation of Pakistan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1940-03-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1940-03-23',
+        datePrecision: 'DAY',
+        reason: 'Moved by A. K. Fazlul Huq, the Prime Minister of Bengal, and adopted by the Muslim League\'s general session at Minto Park, Lahore, the resolution declared that areas where Muslims were numerically a majority should constitute independent states. It was reported in the contemporary press and quickly nicknamed the "Pakistan Resolution."',
+        source: {
+          externalId: 'src:lahore-resolution-1940-text',
+          name: 'Lahore Resolution adopted by the All-India Muslim League, 23 March 1940 (Wikipedia, "Lahore Resolution").',
+          url: 'https://en.wikipedia.org/wiki/Lahore_Resolution',
+          publishedAt: '1940-03-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1947-08-14',
+        datePrecision: 'DAY',
+        reason: 'The demand articulated in 1940 was realized when the Dominion of Pakistan came into being on 14 August 1947. Historians treat the Lahore Resolution as the foundational document of the Pakistan Movement; its date and content are settled, and 23 March is commemorated in Pakistan as Pakistan Day.',
+        source: {
+          externalId: 'src:lahore-resolution-1940-legacy',
+          name: 'Lahore Resolution as the basis of the Pakistan Movement, realized in the creation of Pakistan on 14 August 1947 (Wikipedia, "Lahore Resolution").',
+          url: 'https://en.wikipedia.org/wiki/Lahore_Resolution',
+          publishedAt: '1947-08-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Quit India Resolution — Gandhi's "Do or Die" and mass arrests ───────────
+  {
+    externalId: 'trajectory:quit-india-resolution-1942',
+    text: 'On 8 August 1942, the All India Congress Committee passed the Quit India Resolution at its Bombay session, demanding an immediate end to British rule; Gandhi delivered his "Do or Die" speech at Gowalia Tank Maidan, and the British arrested the Congress leadership within hours.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-08-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1942-08-08',
+        datePrecision: 'DAY',
+        reason: 'At the Gowalia Tank Maidan in Bombay the AICC adopted the Quit India Resolution calling for the immediate withdrawal of British power, and Gandhi delivered his "Do or Die" address. The session and speech were witnessed by thousands and reported contemporaneously.',
+        source: {
+          externalId: 'src:quit-india-resolution-1942-aicc',
+          name: 'Quit India Resolution passed by the All India Congress Committee, Bombay, 8 August 1942, and Gandhi\'s "Do or Die" speech (Wikipedia, "Quit India Movement").',
+          url: 'https://en.wikipedia.org/wiki/Quit_India_Movement',
+          publishedAt: '1942-08-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-08-09',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 9 August 1942 the colonial government arrested Gandhi and almost the entire Congress leadership without trial under Operation Zero Hour, banning the Congress and detaining its leaders for the duration of the war. The launch of the movement and the mass arrests are settled, documented history.',
+        source: {
+          externalId: 'src:quit-india-arrests-1942',
+          name: 'Arrest of Gandhi and the Congress leadership on 9 August 1942 following the Quit India Resolution (Wikipedia, "Quit India Movement").',
+          url: 'https://en.wikipedia.org/wiki/Quit_India_Movement',
+          publishedAt: '1942-08-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Direct Action Day — the Great Calcutta Killings ─────────────────────────
+  {
+    externalId: 'trajectory:direct-action-day-calcutta-1946',
+    text: 'On 16 August 1946, "Direct Action Day" called by the All-India Muslim League under Muhammad Ali Jinnah to press for a separate Muslim state triggered mass communal violence in Calcutta — the "Great Calcutta Killings" — leaving several thousand dead within days.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1946-08-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1946-08-16',
+        datePrecision: 'DAY',
+        reason: 'The Muslim League called a general strike and rallies in support of its demand for Pakistan; in Calcutta the day descended into large-scale Hindu–Muslim rioting, arson, and killing. Newspapers, police records, and eyewitnesses reported the violence as it unfolded.',
+        source: {
+          externalId: 'src:direct-action-day-1946-account',
+          name: 'Direct Action Day called by the Muslim League, 16 August 1946, and the ensuing communal violence in Calcutta (Wikipedia, "Direct Action Day").',
+          url: 'https://en.wikipedia.org/wiki/Direct_Action_Day',
+          publishedAt: '1946-08-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1946-08-20',
+        datePrecision: 'MONTH',
+        reason: 'Over roughly 72 hours the violence killed an estimated 4,000–10,000 people and injured tens of thousands. The episode is recognized in the historiography of partition as a decisive turning point that hardened communal positions; its date and broad scale are settled history.',
+        source: {
+          externalId: 'src:great-calcutta-killings-1946',
+          name: 'Scale and consequences of the Great Calcutta Killings following Direct Action Day, August 1946 (Wikipedia, "Direct Action Day").',
+          url: 'https://en.wikipedia.org/wiki/Direct_Action_Day',
+          publishedAt: '1946-08-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Independence of Ceylon (Sri Lanka) — 4 February 1948 ────────────────────
+  {
+    externalId: 'trajectory:ceylon-independence-1948',
+    text: 'Ceylon (now Sri Lanka) became an independent dominion within the British Commonwealth on 4 February 1948 under the Ceylon Independence Act 1947, ending nearly 150 years of British colonial rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1948-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1948-02-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 February 1948 an amended constitution took effect and the Dominion of Ceylon came into being, with D. S. Senanayake as its first prime minister. Independence celebrations and the transfer of power were reported contemporaneously across the Commonwealth.',
+        source: {
+          externalId: 'src:ceylon-independence-1948-day',
+          name: 'Dominion of Ceylon — independence achieved 4 February 1948 under the Ceylon Independence Act 1947 (Wikipedia, "Dominion of Ceylon").',
+          url: 'https://en.wikipedia.org/wiki/Dominion_of_Ceylon',
+          publishedAt: '1948-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-02-04',
+        datePrecision: 'DAY',
+        reason: 'The independence was grounded in UK statute (the Ceylon Independence Act 1947) and confirmed by Ceylon\'s admission to the United Nations and the Commonwealth; the date stands as the uncontested founding of the independent Ceylonese (later Sri Lankan) state, commemorated annually as National Day.',
+        source: {
+          externalId: 'src:ceylon-independence-1948-statute',
+          name: 'Legal basis of Ceylon\'s independence in the Ceylon Independence Act 1947 and recognition of the Dominion of Ceylon (Wikipedia, "Dominion of Ceylon").',
+          url: 'https://en.wikipedia.org/wiki/Dominion_of_Ceylon',
+          publishedAt: '1948-02-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
