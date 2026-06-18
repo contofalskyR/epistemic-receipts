@@ -56934,6 +56934,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN SOUTH ASIA (Mughal, Sur, Sikh, Ceylon) — added run
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Compilation and installation of the Adi Granth — Guru Arjan, 1604 ───────
+  {
+    externalId: 'trajectory:adi-granth-installation-1604',
+    text: 'The fifth Sikh Guru, Arjan, completed the compilation of the Adi Granth — the first canonical scripture of Sikhism — and had it ceremonially installed inside the Harmandir Sahib (Golden Temple) at Amritsar on 1 September 1604, with Baba Buddha appointed its first granthi.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1604-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1604-09-01',
+        datePrecision: 'DAY',
+        reason: 'Guru Arjan, with his scribe Bhai Gurdas, completes the compilation of the hymns of the first five Gurus and selected bhagats into a single bound volume (completed 29 August 1604) and has it carried in procession and installed in the newly built Harmandir Sahib at Amritsar on 1 September 1604, appointing the aged Baba Buddha as the first granthi. A fixed written canon supersedes a previously oral and dispersed body of hymns.',
+        source: {
+          externalId: 'src:adi-granth-installation-1604-wikipedia',
+          name: 'Compilation of the Adi Granth by Guru Arjan and its installation at the Harmandir Sahib, 1 September 1604 (Wikipedia, "Adi Granth").',
+          url: 'https://en.wikipedia.org/wiki/Adi_Granth',
+          publishedAt: '1604-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1708-10-07',
+        datePrecision: 'DAY',
+        reason: 'The text is settled as the permanent authority of the Sikh faith when the tenth Guru, Gobind Singh, shortly before his death at Nanded in October 1708, declares the scripture (expanded as the Guru Granth Sahib) to be the eternal Guru of the Sikhs, ending the line of human Gurus. The original manuscript (the Kartarpur bir) survives and the canon has been transmitted unaltered, fixing the 1604 compilation as a settled historical fact.',
+        source: {
+          externalId: 'src:guru-granth-sahib-eternal-guru-1708',
+          name: 'Guru Gobind Singh declares the Guru Granth Sahib the eternal Guru of the Sikhs at Nanded, October 1708 (Wikipedia, "Guru Granth Sahib").',
+          url: 'https://en.wikipedia.org/wiki/Guru_Granth_Sahib',
+          publishedAt: '1708-10-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Chausa — Sher Shah Suri defeats Humayun ───────────────────────
+  {
+    externalId: 'trajectory:battle-of-chausa-1539',
+    text: 'On 26 June 1539 the Afghan ruler Sher Shah Suri defeated the Mughal emperor Humayun at the Battle of Chausa, near Buxar on the Ganges, inflicting the first major reverse on Mughal power in India and beginning the rise of the Sur Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1539-06-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1539-06-26',
+        datePrecision: 'DAY',
+        reason: 'After a prolonged standoff in Bihar, Sher Shah\'s Afghan army launches a surprise attack on Humayun\'s encamped Mughal force at Chausa, routing it; thousands drown in the Ganges and Humayun himself barely escapes by swimming the river. The defeat is recorded in the Indo-Persian chronicles of the Sur and Mughal courts.',
+        source: {
+          externalId: 'src:battle-of-chausa-1539-wikipedia',
+          name: 'Battle of Chausa, 26 June 1539 — Sher Shah Suri\'s defeat of Humayun (Wikipedia, "Battle of Chausa").',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Chausa',
+          publishedAt: '1539-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Chausa\'s outcome is corroborated by the Tarikh-i Sher Shahi, by Gulbadan Begum\'s Humayun-nama, and by the Akbarnama, all agreeing that the defeat — followed by the decisive rout at Kannauj in 1540 — drove Humayun into a fifteen-year exile and established Sur rule; historians treat the date and result as settled.',
+        source: {
+          externalId: 'src:chausa-1539-mughal-chronicles',
+          name: 'Indo-Persian chronicles of Sher Shah Suri and Humayun (Tarikh-i Sher Shahi; Humayun-nama; Akbarnama) on the Battle of Chausa.',
+          url: 'https://en.wikipedia.org/wiki/Sher_Shah_Suri',
+          publishedAt: '1590-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Chittorgarh to Akbar ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:fall-of-chittorgarh-1568',
+    text: 'On 23 February 1568 the Mughal emperor Akbar captured the Rajput fortress of Chittorgarh after a four-month siege; the defenders made a final stand and the women performed jauhar, after which Akbar ordered a general massacre of the fort\'s inhabitants.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1568-02-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1568-02-23',
+        datePrecision: 'DAY',
+        reason: 'After a siege begun in October 1567, Akbar\'s forces breach Chittorgarh. The Rajput commander Jaimal is killed by a musket shot fired by Akbar on the night of 22 February; the next morning, 23 February 1568, the garrison makes its final stand as the women commit jauhar, and Akbar orders the slaughter of the surviving population. The siege and storming are recorded contemporaneously at the Mughal court.',
+        source: {
+          externalId: 'src:siege-of-chittorgarh-1568-wikipedia',
+          name: 'Siege of Chittorgarh (1567–1568) — fall of the fort to Akbar on 23 February 1568 (Wikipedia).',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Chittorgarh_(1567%E2%80%931568)',
+          publishedAt: '1568-02-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1590-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The capture is documented in Abu\'l-Fazl\'s Akbarnama (c. 1590–95), and Akbar himself commemorated the valour of the defenders by erecting stone statues of Jaimal and Patta on elephants at the gate of Agra Fort, fixing the event as a settled fact of the consolidation of Mughal power over Rajasthan.',
+        source: {
+          externalId: 'src:akbarnama-chittorgarh-1568',
+          name: 'Abu\'l-Fazl, Akbarnama (c. 1590–95) — official Mughal chronicle recording the siege and fall of Chittorgarh.',
+          url: 'https://en.wikipedia.org/wiki/Akbarnama',
+          publishedAt: '1590-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dutch capture of Colombo from the Portuguese (Ceylon) ───────────────────
+  {
+    externalId: 'trajectory:dutch-capture-colombo-1656',
+    text: 'On 12 May 1656 the Portuguese garrison of Colombo surrendered to the forces of the Dutch East India Company (VOC), allied with King Rajasinghe II of Kandy, ending Portuguese rule over the city and beginning the Dutch colonial period in Ceylon.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1656-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1656-05-12',
+        datePrecision: 'DAY',
+        reason: 'After a siege of nearly seven months begun in October 1655 — during which the VOC commander Gerard Hulft was killed by a musket shot in April 1656 — the starving Portuguese garrison, reduced to a few dozen survivors, capitulates on 12 May 1656. The capture is recorded in the VOC\'s own dispatches and siege journals.',
+        source: {
+          externalId: 'src:capture-colombo-1656-dailynews',
+          name: '"Colombo City Capitulates; Conquered or Conceded" — account of the Portuguese surrender of Colombo to the VOC on 12 May 1656 (Daily News, Sri Lanka, 2016).',
+          url: 'http://archives1.dailynews.lk/2016/05/16/features/81786',
+          publishedAt: '1656-05-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1658-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The transfer is settled institutionally: the VOC expels the Portuguese from their remaining strongholds (Jaffna falls in 1658) and governs the maritime provinces of Ceylon as Dutch Ceylon for 140 years until the British conquest of 1796, an administration documented in continuous VOC records.',
+        source: {
+          externalId: 'src:dutch-ceylon-voc-era',
+          name: 'Dutch Ceylon — VOC administration of the maritime provinces from 1656 to 1796 (Wikipedia, "Dutch Ceylon").',
+          url: 'https://en.wikipedia.org/wiki/Dutch_Ceylon',
+          publishedAt: '1658-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
