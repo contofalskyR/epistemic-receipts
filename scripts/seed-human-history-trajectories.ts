@@ -59549,6 +59549,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Demolition of Taqi al-Din's Istanbul observatory (Ottoman) ──────────────
+  {
+    externalId: 'trajectory:istanbul-observatory-demolished-1580',
+    text: 'The Istanbul observatory built for the astronomer Taqi al-Din ibn Ma\'ruf under Sultan Murad III — one of the largest of the early-modern world, from which Taqi al-Din observed the Great Comet of 1577 — was demolished on the order of the Sultan on 22 January 1580, barely three years after its founding.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1580-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1580-01-22',
+        datePrecision: 'DAY',
+        reason: 'Founded around 1577 with the patronage of Murad III, the Dar al-Rasad al-Jadid was equipped with large mural quadrants and sextants and staffed by some sixteen observers; from it Taqi al-Din observed the Great Comet of 1577 and read it for the Sultan. When the comet was followed by plague and military reverses, the chief astronomer\'s rivals among the ulama turned the omen against him, and Murad III ordered the observatory razed. It was demolished on 22 January 1580. The episode is recorded in contemporary Ottoman chronicles and depicted in the illustrated court manuscript Şehinşahname (c. 1581).',
+        source: {
+          externalId: 'src:istanbul-observatory-taqi-al-din-wikipedia',
+          name: 'Constantinople observatory of Taqi ad-Din — founded c. 1577 under Murad III, demolished 22 January 1580; site of Taqi al-Din\'s observation of the Great Comet of 1577. (Ottoman chronicles; illustrated Şehinşahname, c. 1581)',
+          url: 'https://en.wikipedia.org/wiki/Constantinople_observatory_of_Taqi_ad-Din',
+          publishedAt: '1581-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Historians of Islamic science — above all Aydın Sayılı in The Observatory in Islam (1960) — reconstruct the foundation, instruments, and abrupt destruction of the Istanbul observatory from Ottoman archival and chronicle sources, treating its razing in January 1580 as the close of the last great observatory of the classical Islamic tradition before the European observatories of the seventeenth century. The date and the fact of the demolition are settled.',
+        source: {
+          externalId: 'src:istanbul-observatory-sayili-scholarship',
+          name: 'Sayılı A. The Observatory in Islam and Its Place in the General History of the Observatory. Ankara: Turkish Historical Society, 1960 — reconstruction of the Istanbul observatory of Taqi al-Din and its 1580 destruction.',
+          url: 'https://en.wikipedia.org/wiki/Taqi_ad-Din_Muhammad_ibn_Ma%27ruf',
+          publishedAt: '1960-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Regicide of Osman II — first Ottoman sultan killed by his soldiers ───────
+  {
+    externalId: 'trajectory:regicide-osman-ii-1622',
+    text: 'On 20 May 1622, the deposed Ottoman sultan Osman II ("Genç Osman") was strangled at the Yedikule fortress in Constantinople after a Janissary revolt — the first time a reigning Ottoman sultan was overthrown and killed by his own soldiers.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1622-05-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1622-05-20',
+        datePrecision: 'DAY',
+        reason: 'The young sultan Osman II, having alienated the Janissaries by cutting their pay, closing their coffee houses, and planning a new provincial army to replace them, was seized in a revolt on 18–19 May 1622, deposed in favour of his uncle Mustafa I, and imprisoned at the Seven Towers (Yedikule), where he was strangled on 20 May 1622. The events were recorded by contemporary eyewitness writers, including Hüseyin Tugi, whose account (the Musibetname / Tugi Tarihi) was written within months of the regicide.',
+        source: {
+          externalId: 'src:osman-ii-regicide-wikipedia',
+          name: 'Osman II — deposed and strangled at Yedikule on 20 May 1622, the first Ottoman sultan executed by the Janissaries. (Contemporary account of Hüseyin Tugi, Musibetname/Tugi Tarihi, c. 1622)',
+          url: 'https://en.wikipedia.org/wiki/Osman_II',
+          publishedAt: '1622-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ottoman historiography treats the killing of Osman II as a constitutional watershed — the moment the sultan ceased to be sacrosanct and the army and ulama asserted a right to depose rulers. Baki Tezcan\'s The Second Ottoman Empire (2010) analyses the regicide and its 20 May 1622 date as a fixed turning point in the limitation of dynastic absolutism; the event and date are uncontested.',
+        source: {
+          externalId: 'src:osman-ii-tezcan-scholarship',
+          name: 'Tezcan B. The Second Ottoman Empire: Political and Social Transformation in the Early Modern World. Cambridge University Press, 2010 — analysis of the 1622 regicide of Osman II.',
+          url: 'https://www.cambridge.org/core/books/second-ottoman-empire/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First book printed by the Müteferrika press (Ottoman) ───────────────────
+  {
+    externalId: 'trajectory:muteferrika-first-printed-book-1729',
+    text: 'On 31 January 1729 (1 Rajab 1141 AH), İbrahim Müteferrika completed the printing of the Vankulu Lügati (Kitab-ı Lügat-ı Vankulu), an Arabic–Turkish dictionary — the first book printed with movable Arabic type in the Muslim Ottoman world.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1729-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1729-01-31',
+        datePrecision: 'DAY',
+        reason: 'After İbrahim Müteferrika obtained a firman from Sultan Ahmed III and a fetva from the Şeyhülislam in 1727 permitting the printing of non-religious books, his Dârü\'t-Tıbâ\'ati\'l-Âmire press issued its first work: the two-volume Vankulu Lügati, Mehmed Vankulu\'s Turkish rendering of al-Jawhari\'s Arabic Sihah dictionary. The first volume\'s colophon is dated 1 Rajab 1141 AH (31 January 1729); the edition ran to about 1,000 copies. It was the first book printed by Muslims using movable Arabic type within the Ottoman Empire.',
+        source: {
+          externalId: 'src:muteferrika-vankulu-lugati-colophon',
+          name: 'Vankulu Lügati (Kitab-ı Lügat-ı Vankulu), printed by İbrahim Müteferrika, first volume colophon dated 1 Rajab 1141 AH / 31 January 1729 — the first book printed with Arabic movable type in the Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Ibrahim_Muteferrika',
+          publishedAt: '1729-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Surviving copies of the 1729 Vankulu Lügati are held in major collections, and historians of printing treat it as the first product of Ottoman Muslim typography, dating the start of indigenous Ottoman printing to Müteferrika\'s press and the completion of this dictionary on 31 January 1729. The dating and primacy of the edition are settled in the history of the book.',
+        source: {
+          externalId: 'src:muteferrika-press-scholarship',
+          name: 'Scholarship on the Müteferrika press and the 1729 Vankulu Lügati as the first Ottoman Muslim printed book — history of printing in the Ottoman Empire.',
+          url: 'https://www.historyofinformation.com/detail.php?entryid=474',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
