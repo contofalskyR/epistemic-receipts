@@ -53650,6 +53650,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Agrippa's occultation of the Pleiades — precession check (92 CE) ─────────
+  {
+    externalId: 'trajectory:agrippa-pleiades-occultation-92ce',
+    text: 'The Bithynian astronomer Agrippa observed the Moon occult the southern part of the Pleiades on November 29, 92 CE — an observation later used to confirm the precession of the equinoxes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0092-11-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0092-11-29',
+        datePrecision: 'DAY',
+        reason: 'In the twelfth year of the reign of Domitian, on the seventh day of the Bithynian month Metrous, Agrippa records the Moon occulting the southernmost part of the Pleiades cluster. The observation is logged with the intent of checking whether stellar positions had shifted since earlier Greek records — a direct test of the precession of the equinoxes discovered by Hipparchus two centuries earlier.',
+        source: {
+          externalId: 'src:ptolemy-almagest-agrippa-92',
+          name: 'Ptolemy. Almagest VII.3 (c. 150 CE), recording Agrippa\'s occultation observation of 29 November 92 CE.',
+          url: 'https://en.wikipedia.org/wiki/Agrippa_(astronomer)',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy incorporates Agrippa\'s observation, alongside Timocharis\' third-century-BCE and Menelaus\' 98 CE occultations, as a fixed dated point in the Almagest demonstrating that the longitudes of the fixed stars increase steadily over time. The accumulated occultation record establishes precession as a real, measurable celestial motion.',
+        source: {
+          externalId: 'src:almagest-precession-agrippa',
+          name: 'Ptolemy. Almagest VII.3 — use of Agrippa\'s occultation in establishing precession of the equinoxes.',
+          url: 'https://en.wikipedia.org/wiki/Axial_precession',
+          publishedAt: '0150-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Menelaus' occultations of Spica and β Scorpii — precession (98 CE) ───────
+  {
+    externalId: 'trajectory:menelaus-occultations-rome-98ce',
+    text: 'Menelaus of Alexandria observed the Moon occult the stars Spica and Beta Scorpii from Rome in January 98 CE — observations later used by Ptolemy to confirm the precession of the equinoxes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0098-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0098-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Observing from Rome in January of the year 98 CE, Menelaus of Alexandria records the Moon occulting the bright star Spica (Alpha Virginis) and, a few nights apart, Beta Scorpii. The timed positions of the Moon relative to these stars are logged precisely enough to compare against earlier Greek star positions.',
+        source: {
+          externalId: 'src:ptolemy-almagest-menelaus-98',
+          name: 'Ptolemy. Almagest VII.3 (c. 150 CE), recording Menelaus\' occultation observations of January 98 CE in Rome.',
+          url: 'https://en.wikipedia.org/wiki/Menelaus_of_Alexandria',
+          publishedAt: '0150-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0150-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ptolemy uses Menelaus\' two occultations, separated from Timocharis\' early-third-century-BCE observations by roughly four centuries, to measure the rate at which stellar longitudes increase. The comparison confirms Hipparchus\' precession of the equinoxes and yields a rate of about one degree per century.',
+        source: {
+          externalId: 'src:almagest-precession-menelaus',
+          name: 'Ptolemy. Almagest VII.3 — Menelaus\' Rome occultations applied to the measurement of precession.',
+          url: 'https://en.wikipedia.org/wiki/Axial_precession',
+          publishedAt: '0150-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── SN 393 — Chinese guest star in the tail of Scorpius ──────────────────────
+  {
+    externalId: 'trajectory:sn393-guest-star-songshu-393ce',
+    text: 'Chinese astronomers recorded a "guest star" in the asterism Wei (the tail of Scorpius) in the second lunar month of 393 CE, which remained visible for about eight months — a probable supernova (SN 393).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0393-02-27',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0393-02-27',
+        datePrecision: 'MONTH',
+        reason: 'The court astronomers of the Eastern Jin log a guest star (客星) appearing within the asterism Wei — the bowl-shaped tail of the modern constellation Scorpius — in the second lunar month of the 18th year of the Taiyuan reign period of Emperor Xiaowu. The entry, preserved in the Treatise on Astronomy of the Book of Song, notes the star remained visible until the ninth lunar month, fading after roughly eight months.',
+        source: {
+          externalId: 'src:songshu-guest-star-393',
+          name: 'Book of Song (宋書), Treatise on Astronomy (天文志), record of the guest star of Taiyuan 18, compiled by Shen Yue (488 CE) from Jin bureau records.',
+          url: 'https://en.wikipedia.org/wiki/SN_393',
+          publishedAt: '0393-02-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The eight-month naked-eye visibility and estimated peak brightness (apparent magnitude near −1) fit a supernova rather than a comet or nova. Modern astronomers identify the ROSAT-discovered shell supernova remnant RX J1713.7-3946 (G347.3-0.5), at the recorded position in the Scorpius tail and with an age consistent with ~393 CE, as the leading remnant of the event.',
+        source: {
+          externalId: 'src:rxj1713-sn393-connection',
+          name: 'Wang Z-R. The SN 393 — SNR RX J1713.7-3946 (G347.3-0.5) connection (2011), reviewing the identification of the 393 CE guest star remnant.',
+          url: 'https://arxiv.org/abs/1112.0593',
+          publishedAt: '2011-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── SN 386 — Chinese guest star in Nandou (Sagittarius) ──────────────────────
+  {
+    externalId: 'trajectory:sn386-guest-star-jinshu-386ce',
+    text: 'Chinese astronomers recorded a "guest star" in the asterism Nandou (the Southern Dipper, in Sagittarius) in 386 CE; whether it was a supernova or nova, and which modern remnant it produced, remains contested (SN 386).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0386-04-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0386-04-17',
+        datePrecision: 'MONTH',
+        reason: 'The astronomical treatise of the Book of Jin (晉書) logs a guest star (客星) appearing in the asterism Nandou — the Southern Dipper, part of the modern constellation Sagittarius — in the 11th year of the Taiyuan reign period of Emperor Xiaowu of Jin. The star remained visible until the sixth lunar month (13 July – 10 August 386 CE), roughly three months in total.',
+        source: {
+          externalId: 'src:jinshu-guest-star-386',
+          name: 'Book of Jin (晉書), Treatise on Astronomy (天文志), record of the guest star in Nandou, Taiyuan 11 (386 CE).',
+          url: 'https://en.wikipedia.org/wiki/SN_386',
+          publishedAt: '0386-04-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-25',
+        datePrecision: 'DAY',
+        reason: 'The event was long associated with the symmetric shell supernova remnant SNR G11.2-0.3, but the heavy interstellar absorption toward G11.2-0.3 would have made the explosion too faint for naked-eye detection, undermining that identification. Zhou et al. argue the young remnant G7.7-3.7 is a better match, implying a low-luminosity Type IIP supernova; other authors suggest the short ~3-month visibility is more consistent with a classical nova. The nature and remnant of the 386 CE guest star remain unresolved.',
+        source: {
+          externalId: 'src:g77-sn386-zhou-2018',
+          name: 'Zhou P. et al. G7.7-3.7: A Young Supernova Remnant Probably Associated with the Guest Star in 386 CE (SN 386). ApJL 865:L6, 2018.',
+          url: 'https://iopscience.iop.org/article/10.3847/2041-8213/aae07d',
+          publishedAt: '2018-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
