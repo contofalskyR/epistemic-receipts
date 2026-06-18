@@ -73,6 +73,8 @@ Your job:
    - DISCARD any trajectory where you cannot verify at least one source URL
    Only proceed to step 3 with trajectories that passed source verification.
 
+CRITICAL: Only perform steps 3-5 below. Do NOT run any loop scripts, cron jobs, or start background processes. Do NOT execute loop-settling-curve-*.sh or any variant. Stop after step 5.
+
 3. For each verified trajectory, read scripts/seed-human-history-trajectories.ts to understand the format, then add it following EXACTLY the same structure as existing ones. Run:
    cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-human-history-trajectories.ts
 

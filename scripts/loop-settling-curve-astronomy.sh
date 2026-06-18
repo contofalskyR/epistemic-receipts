@@ -235,6 +235,8 @@ PROJECT: /Users/robclaw/Projects/epistemic-receipts
 ORIGINAL SPEC: ${JSON_SPEC}
 ISSUES FOUND: ${REVIEW_DETAIL}
 
+CRITICAL: Only perform the 5 steps below. Do NOT run any loop scripts, cron jobs, or start background processes. Do NOT execute loop-settling-curve-*.sh or any variant. Stop after step 5.
+
 1. Read scripts/seed-astronomy-trajectories.ts and find the affected entries (listed in ISSUES FOUND).
 2. Fix each issue in place — correct the field values to match the spec and the reviewer's feedback.
 3. Re-run: cd /Users/robclaw/Projects/epistemic-receipts && npx dotenv-cli -e .env.local -- npx tsx scripts/seed-astronomy-trajectories.ts
