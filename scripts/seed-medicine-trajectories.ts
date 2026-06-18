@@ -9981,90 +9981,6 @@ const TRAJECTORIES: Trajectory[] = [
   // ENDOCRINE / NUTRITION ERA (1891–1949)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Murray thyroid extract for myxoedema — 1891 ────────────────────────────
-  {
-    externalId: 'trajectory:murray-thyroid-extract-myxoedema-1891',
-    text: 'George R. Murray reported in the British Medical Journal on 10 October 1891 that hypodermic injections of an extract of sheep thyroid gland relieved the symptoms of myxoedema, establishing thyroid replacement as an effective treatment for hypothyroidism.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1891-10-10',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1891-10-10',
-        datePrecision: 'DAY',
-        reason: 'Murray published \'Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep,\' describing a 46-year-old myxoedematous woman injected subcutaneously with sheep thyroid extract twice weekly from 13 April 1891, who improved dramatically over three months. This recorded in the expert literature the claim that replacing a missing thyroid secretion could reverse hypothyroid disease — among the first demonstrations of hormone replacement therapy.',
-        source: {
-          externalId: 'src:murray-myxoedema-bmj-1891',
-          name: 'Murray GR. Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep. British Medical Journal. 1891;2(1606):796–797.',
-          url: 'https://www.jameslindlibrary.org/articles/the-discovery-of-thyroid-replacement-therapy/',
-          publishedAt: '1891-10-10',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1892-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Within a year the result was reproduced across Britain and Europe, and Edward Fox and Hector Mackenzie independently showed in 1892 that orally administered thyroid gland was equally effective, making the treatment cheap and practical. Thyroid replacement was rapidly and permanently adopted as standard care for myxoedema, settling the therapeutic claim.',
-        source: {
-          externalId: 'src:thyroid-replacement-discovery-review',
-          name: 'The discovery of thyroid replacement therapy. Part 1: In the beginning. J R Soc Med / PMC review of Murray, Fox, and Mackenzie 1891–1892.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3014555/',
-          publishedAt: '2011-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
-  // ── Kendall isolates thyroxine — 1915; Harington & Barger synthesise — 1927 ─
-  {
-    externalId: 'trajectory:kendall-harington-thyroxine-1915',
-    text: 'Edward C. Kendall announced on 19 June 1915 that he had isolated in crystalline form the iodine-containing active principle of the thyroid gland (thyroxine), and Charles Harington and George Barger determined its true chemical structure and achieved its total synthesis in 1927.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1915-06-19',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1915-06-19',
-        datePrecision: 'DAY',
-        reason: 'Kendall, working at the Mayo Clinic, published \'The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity\' in JAMA, reporting a crystalline iodine-rich compound that increased pulse, metabolism, and nervous irritability in dogs and humans. The existence and physiologic activity of the thyroid hormone were recorded, though Kendall\'s proposed structure (a di-iodo-di-hydroxy-indole) was incorrect.',
-        source: {
-          externalId: 'src:kendall-thyroxine-jama-1915',
-          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042–2043.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
-          publishedAt: '1915-06-19',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1927-01-01',
-        datePrecision: 'MONTH',
-        reason: 'Harington and Barger published \'Chemistry of Thyroxine: Constitution and Synthesis of Thyroxine\' in the Biochemical Journal, correcting Kendall\'s erroneous structure (establishing thyroxine as a tetraiodo derivative of thyronine) and reporting its total chemical synthesis. Synthesizing the molecule and matching it to the natural hormone settled the chemical identity of the first hormone to be obtained in pure crystalline form.',
-        source: {
-          externalId: 'src:harington-barger-thyroxine-biochemj-1927',
-          name: 'Harington CR, Barger G. Chemistry of Thyroxine III: Constitution and Synthesis of Thyroxine. Biochemical Journal. 1927;21(1):169–183.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1251886/',
-          publishedAt: '1927-01-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Marine & Kimball — iodine prevents goiter — 1920 ───────────────────────
   {
     externalId: 'trajectory:marine-kimball-iodine-goiter-1920',
@@ -10102,48 +10018,6 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://www.jameslindlibrary.org/marine-d-kimball-op-1920/',
           publishedAt: '1920-06-01',
           methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Hench & Kendall — cortisone for rheumatoid arthritis — 1949 ────────────
-  {
-    externalId: 'trajectory:hench-kendall-cortisone-rheumatoid-1949',
-    text: 'Philip Hench and Edward Kendall reported on 13 April 1949 that the adrenal-cortex hormone compound E (cortisone) produced dramatic clinical improvement in patients with rheumatoid arthritis, the first demonstration that an adrenal steroid hormone could suppress inflammatory disease.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1949-04-13',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1949-04-13',
-        datePrecision: 'DAY',
-        reason: 'At a Mayo Clinic staff meeting and in the Proceedings of the Staff Meetings of the Mayo Clinic, Hench, Kendall, Slocumb, and Polley reported that compound E (17-hydroxy-11-dehydrocorticosterone, later cortisone) and pituitary ACTH produced striking remission in severely disabled rheumatoid-arthritis patients, the first of whom was injected on 21 September 1948. This recorded the claim that an adrenocortical hormone could control inflammatory joint disease.',
-        source: {
-          externalId: 'src:hench-kendall-cortisone-mayo-1949',
-          name: 'Hench PS, Kendall EC, Slocumb CH, Polley HF. The effect of a hormone of the adrenal cortex (17-hydroxy-11-dehydrocorticosterone; compound E) and of pituitary adrenocorticotropic hormone on rheumatoid arthritis. Proceedings of the Staff Meetings of the Mayo Clinic. 1949;24(8):181–197.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/18118071/',
-          publishedAt: '1949-04-13',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1950-10-01',
-        datePrecision: 'MONTH',
-        reason: 'The 1950 Nobel Prize in Physiology or Medicine was awarded to Edward Kendall, Philip Hench, and Tadeus Reichstein for discoveries relating to the hormones of the adrenal cortex, their structure and biological effects — institutionally ratifying the finding that adrenal corticosteroids exert powerful anti-inflammatory effects. Corticosteroid anti-inflammatory therapy remains a settled foundation of medicine.',
-        source: {
-          externalId: 'src:nobel-medicine-1950-cortisone',
-          name: 'The Nobel Prize in Physiology or Medicine 1950 — Edward C. Kendall, Tadeus Reichstein, Philip S. Hench. (Nobel Foundation)',
-          url: 'https://www.nobelprize.org/prizes/medicine/1950/summary/',
-          publishedAt: '1950-10-26',
-          methodologyType: 'derivative',
         },
       },
     ],
