@@ -8661,6 +8661,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & MATERNAL MEDICINE
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Colebrook & Kenny — Prontosil for puerperal fever — 1936 ────────────────
+  {
+    externalId: 'trajectory:colebrook-kenny-prontosil-puerperal-fever-1936',
+    text: 'Leonard Colebrook and Méave Kenny reported in The Lancet on 5 December 1936 that treatment with Prontosil (the sulphonamide releasing sulfanilamide) dramatically reduced mortality from puerperal fever caused by haemolytic streptococci, cutting the case-fatality rate among treated women from about 25% to under 5%.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-12-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-12-05',
+        datePrecision: 'DAY',
+        reason: 'Working for the Medical Research Council\'s Therapeutic Trials Committee at Queen Charlotte\'s Hospital, Colebrook and Kenny published \'Treatment with prontosil of puerperal infections due to haemolytic streptococci\' in The Lancet, reporting 8 deaths among 64 Prontosil-treated cases (4.7%) versus 19 of 76 (25%) in the preceding untreated series. This recorded the first clinical evidence that a synthetic chemotherapeutic agent could cure an established bacterial infection and slash maternal mortality from childbed fever.',
+        source: {
+          externalId: 'src:colebrook-kenny-prontosil-puerperal-lancet-1936',
+          name: 'Colebrook L, Kenny M. Treatment of human puerperal infections, and of experimental infections in mice, with prontosil. Lancet. 1936;228(5884):1279–1286; and Treatment with prontosil of puerperal infections due to haemolytic streptococci. Lancet. 1936;228(5887):1319–1322.',
+          url: 'https://embryo.asu.edu/pages/leonard-colebrooks-use-sulfonamides-treatment-puerperal-fever-1935-1937',
+          publishedAt: '1936-12-05',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-12-01',
+        datePrecision: 'YEAR',
+        reason: 'Colebrook and A. W. Purdie published a larger confirmatory two-part series in The Lancet, \'Treatment of 106 cases of puerperal fever by sulphanilamide,\' showing that sulfanilamide itself (the active moiety of Prontosil) produced equally dramatic results in a larger cohort. The independent, scaled-up confirmation settled within the expert community the claim that sulphonamide chemotherapy is effective treatment for puerperal streptococcal sepsis, ushering in the steep fall in maternal mortality recorded across Britain in the late 1930s.',
+        source: {
+          externalId: 'src:colebrook-purdie-106-cases-sulphanilamide-lancet-1937',
+          name: 'Colebrook L, Purdie AW. Treatment of 106 cases of puerperal fever by sulphanilamide (streptocide). Lancet. 1937;2:1237–1242 & 1291–1294.',
+          url: 'https://www.jameslindlibrary.org/colebrook-l-purdie-aw-1937/',
+          publishedAt: '1937-12-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lucy Wills — pregnancy macrocytic anaemia / folate — 1931 ───────────────
+  {
+    externalId: 'trajectory:lucy-wills-pregnancy-macrocytic-anaemia-1931',
+    text: 'Lucy Wills reported in the British Medical Journal on 20 June 1931 that the macrocytic (\'pernicious\') anaemia of pregnancy in Bombay was cured by a heat-stable, water-soluble dietary factor present in yeast extract (Marmite) but absent from the purified liver extracts that cure true pernicious anaemia — identifying a distinct anti-anaemic nutrient later named the \'Wills factor.\'',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-06-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-06-20',
+        datePrecision: 'DAY',
+        reason: 'Wills published \'Treatment of "Pernicious Anaemia of Pregnancy" and "Tropical Anaemia"\' in the BMJ, showing that pregnant women in Bombay with severe macrocytic anaemia who failed to respond to purified liver extract (the antipernicious/B12 factor) nonetheless recovered when given crude yeast extract. This recorded the claim that a previously unrecognised dietary haemopoietic factor — heat-stable and water-soluble — was responsible for the macrocytic anaemia of pregnancy.',
+        source: {
+          externalId: 'src:wills-pernicious-anaemia-pregnancy-bmj-1931',
+          name: 'Wills L. Treatment of \'pernicious anaemia of pregnancy\' and \'tropical anaemia\' with special reference to yeast extract as a curative agent. Br Med J. 1931;1(3676):1059–1064.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2314785/',
+          publishedAt: '1931-06-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the 1940s the \'Wills factor\' was chemically characterised, isolated, and synthesised as folic acid (pteroylglutamic acid), and folic acid was shown to cure the megaloblastic anaemia of pregnancy and tropical macrocytic anaemia. This identification settled Wills\'s claim that her dietary factor was a discrete vitamin distinct from B12, establishing folate as a foundational nutrient of maternal and fetal health.',
+        source: {
+          externalId: 'src:james-lind-library-lucy-wills-folate',
+          name: 'Bastian H. Lucy Wills (1888–1964): the life and research of an adventurous independent woman. James Lind Library / J R Coll Physicians Edinb. 2008;38(1):89–91.',
+          url: 'https://www.jameslindlibrary.org/articles/lucy-wills-1888-1964-the-life-and-research-of-an-adventurous-independent-woman/',
+          publishedAt: '2008-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── HIP trial — mammography screening reduces breast cancer mortality — 1971 ─
+  {
+    externalId: 'trajectory:hip-mammography-screening-reduces-breast-cancer-mortality-1971',
+    text: 'Sam Shapiro, Philip Strax, and Louis Venet reported in JAMA on 15 March 1971 that the Health Insurance Plan of Greater New York (HIP) randomized trial showed periodic screening with mammography plus clinical breast examination reduced breast cancer mortality by roughly one third in women aged 40–64.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-03-15',
+        datePrecision: 'DAY',
+        reason: 'Shapiro, Strax, and Venet published the HIP results in JAMA, the first randomized controlled trial evidence that inviting women to periodic mammographic screening lowered breast cancer mortality — about 30% fewer breast cancer deaths in the screened group at follow-up. This recorded the claim that early radiographic detection of breast cancer could prevent deaths, launching the modern breast-screening era.',
+        source: {
+          externalId: 'src:shapiro-hip-mammography-mortality-jama-1971',
+          name: 'Shapiro S, Strax P, Venet L. Periodic breast cancer screening in reducing mortality from breast cancer. JAMA. 1971;215(11):1777–1785.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5107709/',
+          publishedAt: '1971-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-04-13',
+        datePrecision: 'DAY',
+        reason: 'László Tabár and colleagues published the Swedish Two-County randomized trial in The Lancet, reporting a 31% reduction in breast cancer mortality among women invited to mammographic screening across 134,867 participants. This large, independent confirmation of the HIP finding settled, within the expert community, the claim that population mammographic screening reduces breast cancer mortality and underpinned national screening programs.',
+        source: {
+          externalId: 'src:tabar-swedish-two-county-mammography-lancet-1985',
+          name: 'Tabár L, Fagerberg CJ, Gad A, et al. Reduction in mortality from breast cancer after mass screening with mammography. Randomised trial from the Breast Cancer Screening Working Group of the Swedish National Board of Health and Welfare. Lancet. 1985;1(8433):829–832.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2858707/',
+          publishedAt: '1985-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── RhoGAM / Rho(D) immune globulin — prevents Rh disease of newborn — 1964 ─
+  {
+    externalId: 'trajectory:rho-d-immune-globulin-rhogam-prevents-rh-disease-1964',
+    text: 'Vincent Freda, John Gorman, and William Pollack reported in Transfusion in early 1964 that an anti-Rh (anti-D) gamma-globulin preparation, given to Rh-negative individuals after exposure to Rh-positive blood, prevented Rh sensitization — the basis for RhoGAM, which prevents haemolytic disease of the fetus and newborn.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Freda (obstetrician), Gorman (pathologist), and Pollack (Ortho research scientist) published \'Successful prevention of experimental Rh sensitization in man with an anti-Rh gamma2-globulin antibody preparation: a preliminary report\' in Transfusion. In Rh-negative male volunteers repeatedly challenged with Rh-positive blood, those given the anti-Rh globulin did not form anti-Rh antibodies while controls became sensitized. This recorded the claim that passive anti-D immunoprophylaxis could prevent maternal Rh isoimmunization.',
+        source: {
+          externalId: 'src:freda-gorman-pollack-rh-sensitization-transfusion-1964',
+          name: 'Freda VJ, Gorman JG, Pollack W. Successful prevention of experimental Rh sensitization in man with an anti-Rh gamma2-globulin antibody preparation: a preliminary report. Transfusion. 1964;4(1):26–32.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14105934/',
+          publishedAt: '1964-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-04-01',
+        datePrecision: 'MONTH',
+        reason: 'After multicentre clinical trials in Rh-negative mothers (including the 1966 Science report) confirmed efficacy, the U.S. FDA licensed RhoGAM (Rho[D] immune globulin, produced by Ortho) in April 1968; the first dose was administered on 29 May 1968. This institutional approval settled the claim that postpartum anti-D prophylaxis prevents Rh haemolytic disease of the newborn, after which Rh-disease deaths fell precipitously.',
+        source: {
+          externalId: 'src:columbia-rhogam-at-50-fda-1968',
+          name: 'Columbia University Irving Medical Center. RhoGAM at 50: A Columbia Drug Still Saving Lives of Newborns. 2018.',
+          url: 'https://www.cuimc.columbia.edu/news/rhogam-50-columbia-drug-still-saving-lives-newborns',
+          publishedAt: '2018-05-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Sipuleucel-T (Provenge) — first therapeutic cancer vaccine — 2010 ───────
   {
     externalId: 'trajectory:sipuleucel-t-provenge-first-cancer-vaccine-2010',
