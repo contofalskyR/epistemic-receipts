@@ -14512,48 +14512,6 @@ const TRAJECTORIES: Trajectory[] = [
   // SURGICAL TRANSPLANTATION ERA (1954–1967)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Murray first kidney transplant — 1954 ──────────────────────────────────
-  {
-    externalId: 'trajectory:murray-first-kidney-transplant-1954',
-    text: 'On 23 December 1954 Joseph E. Murray and colleagues at the Peter Bent Brigham Hospital in Boston performed the first successful human kidney transplant, transferring a kidney between identical twins Ronald and Richard Herrick, demonstrating that a transplanted organ could function and sustain life when donor and recipient were genetically identical (avoiding rejection).',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1954-12-23',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1956-01-28',
-        datePrecision: 'DAY',
-        reason: 'Merrill, Murray, Harrison, and Guild reported the case in JAMA on 28 January 1956, describing a kidney transplanted from a healthy man to his identical twin suffering from chronic glomerulonephritis; the graft functioned without rejection and the recipient recovered. Because the donor and recipient were monozygotic twins, the result isolated the problem of immunologic rejection and recorded the claim that human organ transplantation was technically and physiologically feasible.',
-        source: {
-          externalId: 'src:merrill-murray-kidney-twins-jama-1956',
-          name: 'Merrill JP, Murray JE, Harrison JH, Guild WR. Successful homotransplantation of the human kidney between identical twins. J Am Med Assoc. 1956;160(4):277-282.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/13278189/',
-          publishedAt: '1956-01-28',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1990-10-08',
-        datePrecision: 'DAY',
-        reason: 'With the development of immunosuppression (azathioprine and corticosteroids in the 1960s, then ciclosporin from 1983), kidney transplantation between non-identical donors became routine, life-saving therapy. In October 1990 Joseph E. Murray shared the Nobel Prize in Physiology or Medicine with E. Donnall Thomas \'for their discoveries concerning organ and cell transplantation in the treatment of human disease,\' institutionally ratifying transplantation as established medicine.',
-        source: {
-          externalId: 'src:nobel-murray-thomas-transplantation-1990',
-          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1990 — Joseph E. Murray, E. Donnall Thomas, Facts. NobelPrize.org.',
-          url: 'https://www.nobelprize.org/prizes/medicine/1990/murray/facts/',
-          publishedAt: '1990-10-08',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Barnard first heart transplant — 1967 ──────────────────────────────────
   {
     externalId: 'trajectory:barnard-first-heart-transplant-1967',
