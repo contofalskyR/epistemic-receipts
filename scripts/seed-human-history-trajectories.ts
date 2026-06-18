@@ -62683,6 +62683,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990) — WESTERN EUROPE & THE MEDITERRANEAN
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Treaty of Rome signed — founding of the EEC (1957) ──────────────────────
+  {
+    externalId: 'trajectory:treaty-of-rome-eec-1957',
+    text: 'The Treaty of Rome establishing the European Economic Community was signed on 25 March 1957 at the Palazzo dei Conservatori on the Capitoline Hill in Rome by Belgium, France, Italy, Luxembourg, the Netherlands, and West Germany.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1957-03-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-03-25',
+        datePrecision: 'DAY',
+        reason: 'Plenipotentiaries of the six member states of the European Coal and Steel Community signed the Treaty establishing the European Economic Community (alongside the Euratom Treaty) at the Palazzo dei Conservatori in Rome on 25 March 1957, creating a common market and customs union. The signing ceremony was filmed and reported worldwide; the signed instrument is preserved as a primary diplomatic record.',
+        source: {
+          externalId: 'src:treaty-of-rome-1957-signing',
+          name: 'Treaty establishing the European Economic Community, signed Rome, 25 March 1957 (Wikipedia, "Treaty of Rome" — synthesis of the signing record).',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Rome',
+          publishedAt: '1957-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-01-01',
+        datePrecision: 'DAY',
+        reason: 'After ratification by all six signatories, the Treaty of Rome entered into force on 1 January 1958, establishing the EEC institutions. Its existence, signing date, and original six members are uncontested matters of record and the foundational instrument of what became the European Union; the date is treated as settled fact in legal and historical scholarship.',
+        source: {
+          externalId: 'src:treaty-of-rome-1958-entry-into-force',
+          name: 'Treaty of Rome — entry into force 1 January 1958 establishing the EEC (Wikipedia, "Treaty of Rome").',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Rome',
+          publishedAt: '1958-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Athens Polytechnic uprising crushed by the junta (1973) ─────────────────
+  {
+    externalId: 'trajectory:athens-polytechnic-uprising-1973',
+    text: 'The student occupation of the Athens Polytechnic against the Greek military junta was crushed in the early hours of 17 November 1973 when an army tank crashed through the school\'s main gate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1973-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1973-11-17',
+        datePrecision: 'DAY',
+        reason: 'Beginning on 14 November 1973, students occupied the Athens Polytechnic and ran a clandestine radio station broadcasting "Edo Polytechneio" ("This is the Polytechnic") in defiance of the Papadopoulos regime. In the early morning of 17 November an AMX-30 tank crashed through the gate, ending the occupation; the events and the regime\'s suppression were witnessed by thousands and reported by foreign correspondents in Athens.',
+        source: {
+          externalId: 'src:athens-polytechnic-1973-event',
+          name: 'Athens Polytechnic uprising, 14–17 November 1973 — tank breaches the gate (Wikipedia, "Athens Polytechnic uprising" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Athens_Polytechnic_uprising',
+          publishedAt: '1973-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1974-07-24',
+        datePrecision: 'DAY',
+        reason: 'After the fall of the junta and the restoration of democracy (Metapolitefsi) on 24 July 1974, 17 November was established as a national day of commemoration in Greece, and the uprising is universally recognized as a defining moment in the collapse of the Colonels\' regime. The date and the tank assault on the gate are settled and uncontested, though the exact death toll remains historically debated.',
+        source: {
+          externalId: 'src:athens-polytechnic-1974-metapolitefsi',
+          name: 'Metapolitefsi and commemoration of 17 November (Wikipedia, "Athens Polytechnic uprising").',
+          url: 'https://en.wikipedia.org/wiki/Athens_Polytechnic_uprising',
+          publishedAt: '1974-07-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Carnation Revolution overthrows the Estado Novo (1974) ──────────────────
+  {
+    externalId: 'trajectory:carnation-revolution-portugal-1974',
+    text: 'The Carnation Revolution, a military coup by the Armed Forces Movement (MFA), overthrew Portugal\'s Estado Novo dictatorship on 25 April 1974, ending nearly five decades of authoritarian rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1974-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1974-04-25',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 25 April 1974, the broadcast of the song "Grândola, Vila Morena" on Rádio Renascença signalled MFA units to seize key points in Lisbon. The coup unfolded over roughly 19 hours; Prime Minister Marcelo Caetano surrendered, and crowds placed carnations in soldiers\' rifle barrels. The events were broadcast live by radio and filmed, and reported worldwide as they happened.',
+        source: {
+          externalId: 'src:carnation-revolution-1974-event',
+          name: 'Carnation Revolution, 25 April 1974 — MFA coup overthrows the Estado Novo (Wikipedia, "Carnation Revolution" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Carnation_Revolution',
+          publishedAt: '1974-04-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-04-25',
+        datePrecision: 'DAY',
+        reason: 'The revolution led to decolonization and a transition to democracy formalized by a new constitution and the first free legislative elections on 25 April 1975, with the constitution taking effect and elected government following in 1976. 25 April is a national holiday in Portugal ("Freedom Day"); the date and outcome of the revolution are settled and uncontested historical fact.',
+        source: {
+          externalId: 'src:carnation-revolution-1976-democracy',
+          name: 'Portuguese transition to democracy and "Freedom Day" commemoration (Wikipedia, "Carnation Revolution").',
+          url: 'https://en.wikipedia.org/wiki/Carnation_Revolution',
+          publishedAt: '1976-04-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aldo Moro kidnapped and murdered by the Red Brigades (1978) ─────────────
+  {
+    externalId: 'trajectory:aldo-moro-kidnapping-murder-1978',
+    text: 'Former Italian Prime Minister Aldo Moro was kidnapped by the Red Brigades in Via Mario Fani, Rome, on 16 March 1978, and his body was found in the boot of a car in Via Michelangelo Caetani, Rome, on 9 May 1978.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1978-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1978-03-16',
+        datePrecision: 'DAY',
+        reason: 'On the morning of 16 March 1978 — the day the new Andreotti cabinet was to face a confidence vote — the Red Brigades ambushed Moro\'s car in Via Mario Fani in Rome, killing his five-man escort and abducting him. The attack was reported within hours and dominated Italian and international news throughout the 54-day captivity, during which the Brigades issued communiqués and photographs of Moro.',
+        source: {
+          externalId: 'src:aldo-moro-kidnapping-1978-event',
+          name: 'Kidnapping of Aldo Moro, Via Fani, Rome, 16 March 1978 (Wikipedia, "Kidnapping and murder of Aldo Moro" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Kidnapping_and_murder_of_Aldo_Moro',
+          publishedAt: '1978-03-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1978-05-09',
+        datePrecision: 'DAY',
+        reason: 'On 9 May 1978 Moro\'s body was discovered in the boot of a red Renault 4 in Via Michelangelo Caetani in central Rome, after negotiations for his release collapsed. Subsequent Italian trials convicted Red Brigades members for the kidnapping and murder, and the dates and core facts of the abduction and killing are settled in the judicial and historical record, even as questions about wider complicity continued to be debated.',
+        source: {
+          externalId: 'src:aldo-moro-death-1978-discovery',
+          name: 'Discovery of Aldo Moro\'s body, Via Caetani, Rome, 9 May 1978 (Wikipedia, "Kidnapping and murder of Aldo Moro").',
+          url: 'https://en.wikipedia.org/wiki/Kidnapping_and_murder_of_Aldo_Moro',
+          publishedAt: '1978-05-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 23-F: Tejero's attempted coup in Spain fails (1981) ─────────────────────
+  {
+    externalId: 'trajectory:spain-23f-coup-attempt-1981',
+    text: 'On 23 February 1981, Civil Guard Lieutenant-Colonel Antonio Tejero led armed officers into Spain\'s Congress of Deputies and held it hostage in an attempted coup (23-F), which collapsed after King Juan Carlos I publicly opposed it.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1981-02-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1981-02-23',
+        datePrecision: 'DAY',
+        reason: 'On the evening of 23 February 1981, during the investiture vote for Leopoldo Calvo-Sotelo, some 200 armed Civil Guards under Antonio Tejero stormed the Cortes and fired into the chamber, holding the deputies hostage. State television cameras were recording and one feed continued covertly, while Cadena SER radio broadcast live — capturing the assault as it happened, the "night of the transistor radios."',
+        source: {
+          externalId: 'src:spain-23f-1981-event',
+          name: '23-F coup attempt, Congress of Deputies, Madrid, 23 February 1981 (Wikipedia, "23-F" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/23-F',
+          publishedAt: '1981-02-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1982-06-03',
+        datePrecision: 'DAY',
+        reason: 'King Juan Carlos I delivered a televised address in the early hours of 24 February 1981 rejecting the coup; the conspirators surrendered the next morning. A military tribunal (Campamento trial) later convicted Tejero, General Milans del Bosch, and others, with verdicts handed down in 1982. The failed coup\'s date, televised record, and outcome are settled fact, widely seen as the last serious Francoist attempt against Spanish democracy.',
+        source: {
+          externalId: 'src:spain-23f-1982-trial',
+          name: 'Trial and convictions for the 23-F coup attempt; King Juan Carlos I\'s televised address (Wikipedia, "23-F").',
+          url: 'https://en.wikipedia.org/wiki/23-F',
+          publishedAt: '1982-06-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
