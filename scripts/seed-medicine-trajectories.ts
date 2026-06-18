@@ -14569,6 +14569,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED THERAPY & PERSONALIZED MEDICINE ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Imatinib / BCR-ABL targeted therapy — Druker 2001 ──────────────────────
+  {
+    externalId: 'trajectory:imatinib-cml-targeted-therapy-2001',
+    text: 'Druker and colleagues reported in the New England Journal of Medicine on 5 April 2001 that the BCR-ABL tyrosine kinase inhibitor imatinib (STI571, Gleevec) produced complete hematologic responses in 53 of 54 chronic-phase chronic myeloid leukemia patients who had failed interferon, establishing the first molecularly targeted small-molecule therapy directed at the specific oncogenic kinase driving a cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-04-05',
+        datePrecision: 'DAY',
+        reason: 'Druker et al. published the phase 1 trial of STI571 (imatinib) in chronic myeloid leukemia, reporting complete hematologic responses in 53 of 54 chronic-phase patients at daily doses of 300 mg or more, with cytogenetic responses and minimal toxicity. This recorded in the expert literature the claim that selectively inhibiting the BCR-ABL fusion kinase could control CML — proof of principle for rational, target-driven cancer drug design.',
+        source: {
+          externalId: 'src:druker-imatinib-cml-nejm-2001',
+          name: 'Druker BJ, Talpaz M, Resta DJ, et al. Efficacy and safety of a specific inhibitor of the BCR-ABL tyrosine kinase in chronic myeloid leukemia. N Engl J Med. 2001;344(14):1031-1037.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11287972/',
+          publishedAt: '2001-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-05-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to imatinib mesylate (Gleevec, Novartis) for chronic myeloid leukemia roughly ten weeks after the new drug application was submitted — among the fastest oncology approvals on record. Regulatory adoption settled imatinib as standard therapy and validated the targeted-kinase-inhibitor paradigm as a clinically and institutionally accepted approach to cancer treatment.',
+        source: {
+          externalId: 'src:fda-imatinib-cml-approval-summary-2002',
+          name: 'Cohen MH, Williams G, Johnson JR, et al. Approval summary for imatinib mesylate capsules in the treatment of chronic myelogenous leukemia. Clin Cancer Res. 2002;8(5):935-942. (Documents FDA accelerated approval 10 May 2001.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12006504/',
+          publishedAt: '2002-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Trastuzumab / HER2 breast cancer — FDA approval 1998 ───────────────────
+  {
+    externalId: 'trajectory:trastuzumab-her2-breast-cancer-1998',
+    text: 'The U.S. FDA approved trastuzumab (Herceptin, Genentech) on 25 September 1998 for HER2-overexpressing metastatic breast cancer, establishing the first therapeutic monoclonal antibody directed at a defined molecular target in a solid tumor and co-approved with a companion diagnostic (HercepTest) used to select patients.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-09-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved trastuzumab for HER2-overexpressing metastatic breast cancer, alongside the HercepTest companion assay used to identify eligible patients. The approval recorded on the regulatory record the claim that an antibody against the HER2 receptor benefits the molecularly defined subset of breast-cancer patients, and inaugurated the drug-with-companion-diagnostic co-development model.',
+        source: {
+          externalId: 'src:fda-trastuzumab-approval-letter-1998',
+          name: 'U.S. Food and Drug Administration. Trastuzumab (Herceptin), Genentech — approval letter, BLA/STN 98-0369 (approved 25 September 1998).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/1998/trasgen092598l.pdf',
+          publishedAt: '1998-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-03-15',
+        datePrecision: 'DAY',
+        reason: 'Slamon et al. published the pivotal randomized trial in the New England Journal of Medicine, showing that adding trastuzumab to chemotherapy in HER2-positive metastatic breast cancer prolonged time to disease progression (median 7.4 vs 4.6 months) and improved overall survival. The peer-reviewed survival benefit settled in the expert literature the efficacy claim underlying the 1998 approval and confirmed HER2-targeted therapy as standard of care.',
+        source: {
+          externalId: 'src:slamon-trastuzumab-nejm-2001',
+          name: 'Slamon DJ, Leyland-Jones B, Shak S, et al. Use of chemotherapy plus a monoclonal antibody against HER2 for metastatic breast cancer that overexpresses HER2. N Engl J Med. 2001;344(11):783-792.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11248153/',
+          publishedAt: '2001-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PSA screening / prostate mortality — contested 2009 ────────────────────
+  {
+    externalId: 'trajectory:psa-screening-prostate-mortality-contested-2009',
+    text: 'The claim that PSA-based screening reduces prostate-cancer mortality and warrants routine use in older men — institutionalized after the FDA cleared the PSA blood test for prostate-cancer detection in August 1994 — was thrown into contestation on 18 March 2009 when two large randomized trials, the U.S. PLCO and the European ERSPC, published in the New England Journal of Medicine reported, respectively, no mortality benefit and only a small benefit offset by substantial overdiagnosis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1994-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved the Tandem PSA assay (Hybritech) for use with digital rectal examination to aid detection of prostate cancer in men aged 50 and older. Combined with professional-society endorsement of annual testing, this drove rapid, widespread adoption of PSA screening in U.S. practice, settling in clinical routine the assumption that early PSA-based detection reduces prostate-cancer deaths — a claim never yet tested in a randomized mortality trial.',
+        source: {
+          externalId: 'src:fda-psa-tandem-screening-clearance-1994',
+          name: 'Research Corporation Technologies. Prostate-Specific Antigen Blood Test for Prostate Cancer (documents FDA approval of the Tandem PSA test for prostate-cancer detection, August 1994).',
+          url: 'https://rctech.com/technologies/psa-blood-test-for-prostate-cancer/',
+          publishedAt: '1994-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-03-18',
+        datePrecision: 'DAY',
+        reason: 'Two long-awaited randomized trials appeared together in the NEJM: the U.S. PLCO trial (Andriole et al.) found no significant prostate-cancer mortality difference between screened and usual-care groups, while the European ERSPC trial (Schröder et al.) found a 20% relative mortality reduction but estimated that 1,410 men would need screening and 48 additional cancers treated to prevent one death, with high overdiagnosis. The conflicting and at-best-marginal results directly challenged the settled assumption of net benefit and moved routine PSA screening into open expert contestation, foreshadowing the USPSTF\'s 2012 recommendation against it.',
+        source: {
+          externalId: 'src:erspc-schroder-psa-screening-nejm-2009',
+          name: 'Schröder FH, Hugosson J, Roobol MJ, et al. Screening and prostate-cancer mortality in a randomized European study (ERSPC). N Engl J Med. 2009;360(13):1320-1328. (Companion: Andriole GL, et al. PLCO. N Engl J Med. 2009;360(13):1310-1319, PMID 19297565.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19297566/',
+          publishedAt: '2009-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gefitinib / NSCLC accelerated approval — contested 2005 ────────────────
+  {
+    externalId: 'trajectory:gefitinib-nsclc-accelerated-approval-contested-2005',
+    text: 'The claim that gefitinib (Iressa, AstraZeneca) — granted FDA accelerated approval on 5 May 2003 for advanced non-small-cell lung cancer after chemotherapy failure on the basis of tumor-response rates — provided clinical benefit in the broad refractory NSCLC population was overturned when the ISEL trial, published in The Lancet on 29 October 2005, found no significant survival benefit versus placebo, prompting the FDA to restrict the drug\'s labeling in June 2005 to patients already benefiting.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to gefitinib as monotherapy for locally advanced or metastatic NSCLC after failure of platinum- and docetaxel-based chemotherapy, relying on objective tumor-response rate as a surrogate endpoint rather than a survival benefit. The approval recorded on the regulatory record the conditional claim that gefitinib helps refractory lung-cancer patients, pending confirmatory survival data.',
+        source: {
+          externalId: 'src:fda-gefitinib-approval-summary-2003',
+          name: 'Cohen MH, Williams GA, Sridhara R, et al. FDA drug approval summary: gefitinib (ZD1839) (Iressa) tablets. Oncologist. 2003;8(4):303-306. (Documents accelerated approval 5 May 2003.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12897327/',
+          publishedAt: '2003-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-29',
+        datePrecision: 'DAY',
+        reason: 'Thatcher and colleagues published the ISEL (Iressa Survival Evaluation in Lung Cancer) trial — 1,692 refractory NSCLC patients randomized to gefitinib or placebo — reporting no statistically significant improvement in overall survival in either co-primary population, with benefit confined to subgroups such as never-smokers and patients of Asian origin. The negative confirmatory trial undercut the surrogate-based 2003 approval; on its topline results the FDA had already restricted the label in June 2005 to patients currently or previously benefiting, effectively closing access to new patients. (Gefitinib was later re-approved in 2015 for the narrower EGFR-mutation-positive population.)',
+        source: {
+          externalId: 'src:isel-thatcher-gefitinib-lancet-2005',
+          name: 'Thatcher N, Chang A, Parikh P, et al. Gefitinib plus best supportive care in previously treated patients with refractory advanced non-small-cell lung cancer: results from a randomised, placebo-controlled, multicentre study (ISEL). Lancet. 2005;366(9496):1527-1537.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16257339/',
+          publishedAt: '2005-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bevacizumab / breast cancer accelerated approval — contested 2010 ───────
+  {
+    externalId: 'trajectory:bevacizumab-breast-cancer-accelerated-approval-contested-2010',
+    text: 'The claim that adding bevacizumab (Avastin, Genentech) to paclitaxel benefits patients with HER2-negative metastatic breast cancer — granted FDA accelerated approval on 22 February 2008 on the basis of a progression-free-survival gain in the E2100 trial — was contested when confirmatory trials failed to show an overall-survival benefit, leading the FDA to issue a notice on 16 December 2010 proposing to withdraw the breast-cancer indication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s Center for Drug Evaluation and Research granted accelerated approval for bevacizumab plus paclitaxel in HER2-negative metastatic breast cancer, based on the single E2100 trial\'s progression-free-survival advantage (about 5.5 months) despite no overall-survival benefit and a December 2007 ODAC vote against approval. The decision recorded on the regulatory record the contested claim that bevacizumab benefits metastatic breast cancer, conditioned on confirmatory trials.',
+        source: {
+          externalId: 'src:fda-bevacizumab-breast-decision-2008-approval',
+          name: 'U.S. Food and Drug Administration. Proposal to Withdraw Approval of the Breast Cancer Indication for Avastin (bevacizumab) — Commissioner\'s decision (documents accelerated approval 22 February 2008 based on E2100).',
+          url: 'https://www.fda.gov/media/79525/download',
+          publishedAt: '2011-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-12-16',
+        datePrecision: 'DAY',
+        reason: 'After Genentech\'s confirmatory trials (AVADO, RIBBON-1) showed only small progression-free-survival gains and no overall-survival benefit, and after a July 2010 ODAC vote recommending withdrawal, CDER determined the trials failed to verify clinical benefit and issued a notice of opportunity for a hearing proposing to withdraw the breast-cancer indication. The action placed the 2008 claim into formal regulatory dispute; the indication was ultimately revoked effective 18 November 2011, a landmark test of the accelerated-approval confirmatory-evidence framework.',
+        source: {
+          externalId: 'src:fda-bevacizumab-breast-withdrawal-fr-2012',
+          name: 'U.S. Food and Drug Administration. Final Decision on Withdrawal of Breast Cancer Indication for AVASTIN (Bevacizumab) Following Public Hearing. Federal Register. 2012;77(38):11631 (27 Feb 2012); documents 16 December 2010 notice of opportunity for hearing.',
+          url: 'https://www.federalregister.gov/documents/2012/02/27/2012-4424/final-decision-on-withdrawal-of-breast-cancer-indication-for-avastin-bevacizumab-following-public',
+          publishedAt: '2012-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
