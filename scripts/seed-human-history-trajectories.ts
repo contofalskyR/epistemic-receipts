@@ -47165,6 +47165,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Ghijduvan — Uzbeks expel Babur and the Safavids from Transoxiana ─
+  {
+    externalId: 'trajectory:battle-of-ghijduvan-1512',
+    text: 'On 12 November 1512 the Uzbek army under Ubaydullah Khan destroyed the Safavid–Timurid force at the Battle of Ghijduvan (Ghazdewan), killing the Safavid commander Najm-e Sani and routing Babur — the defeat that ended Babur\'s ambitions in Central Asia and turned him decisively toward India.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1512-11-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1512-11-12',
+        datePrecision: 'DAY',
+        reason: 'After Babur, allied with the Safavid Qizilbash, had briefly retaken Samarkand and Bukhara, the Uzbek Shaybanids under Ubaydullah Sultan trap the over-extended Safavid army at Ghijduvan, north-east of Bukhara; the Safavid vizier-general Najm-e Sani (Amir Yar Ahmad Khuzani) is captured and killed, and Babur, his Persian backers shattered, flees to Hisar. The disaster permanently restores Uzbek control over Transoxiana and forecloses Babur\'s hope of recovering his ancestral Timurid homeland. Babur records the campaign in his own memoir, the Baburnama.',
+        source: {
+          externalId: 'src:battle-ghijduvan-1512-wikipedia',
+          name: 'Battle of Ghazdewan (Ghijduvan), 12 November 1512 — Ubaydullah Khan\'s Uzbeks destroy the Safavid–Timurid army, killing Najm-e Sani and routing Babur.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ghazdewan',
+          publishedAt: '1512-11-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1530-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Babur\'s own Baburnama, the Safavid history Habib al-siyar of Khwandamir, and later Central Asian chronicles independently record the Uzbek victory at Ghijduvan and the death of Najm-e Sani. Modern scholarship treats the November 1512 defeat as the settled endpoint of Babur\'s Central Asian career and the consolidation of Shaybanid Uzbek rule over Transoxiana that lasted into the following century.',
+        source: {
+          externalId: 'src:battle-ghijduvan-1512-scholarship',
+          name: 'Modern scholarship on the Battle of Ghijduvan and the end of Babur\'s Transoxianan ambitions (after Erskine, History of India under Báber and Humáyun).',
+          url: 'https://en.wikipedia.org/wiki/Ubaydullah_Khan',
+          publishedAt: '1530-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Kazan — Muscovy conquers the Tatar khanate of the Volga ──────────
+  {
+    externalId: 'trajectory:fall-of-kazan-1552',
+    text: 'On 2 October 1552 the army of Tsar Ivan IV stormed and captured Kazan after a six-week siege, capturing Khan Yadegar Mokhammad and extinguishing the Kazan Khanate — the first of the Golden Horde\'s Tatar successor states to be annexed by Muscovy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1552-10-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1552-10-02',
+        datePrecision: 'DAY',
+        reason: 'After a siege begun in late August 1552, Ivan IV\'s engineers — directed by the foreign master Razmysl — drive mines beneath the walls and detonate gunpowder charges near the Nogai and Atalıq gates on 2 October; the breach is stormed and the city falls in fierce street fighting, with Khan Yadegar Mokhammad taken alive. The conquest ends the independent Kazan Khanate, a Mongol-Tatar successor of the Golden Horde, and opens the Volga to Russian expansion. The siege is narrated in the contemporary Kazan Chronicle (Kazanskaya Istoriya) and the Muscovite chronicle tradition.',
+        source: {
+          externalId: 'src:fall-of-kazan-1552-wikipedia',
+          name: 'Siege of Kazan, 2 October 1552 — Ivan IV captures the Kazan Khanate and Khan Yadegar Mokhammad, recorded in the Kazan Chronicle.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Kazan',
+          publishedAt: '1552-10-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1600-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Kazan Chronicle, the Nikon and other Russian chronicles, and the commemorative building of St Basil\'s Cathedral in Moscow (begun 1555 to mark the victory) corroborate the date and outcome of the conquest. Modern scholarship treats the 2 October 1552 fall of Kazan as settled — the decisive step in Muscovy\'s absorption of the Tatar khanates and the foundation of the multi-ethnic Russian state east of the Volga.',
+        source: {
+          externalId: 'src:fall-of-kazan-1552-scholarship',
+          name: 'Modern scholarship on the Russian conquest of the Kazan Khanate under Ivan IV.',
+          url: 'https://en.wikipedia.org/wiki/Khanate_of_Kazan',
+          publishedAt: '1600-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ulan Butung — first Qing–Dzungar clash under Kangxi ────────────
+  {
+    externalId: 'trajectory:battle-of-ulan-butung-1690',
+    text: 'On 3 September 1690 a Qing army sent by the Kangxi Emperor fought Galdan Boshugtu Khan\'s Dzungar Mongols at the Battle of Ulan Butung, north of the Great Wall — the first major engagement of the Qing–Dzungar wars, in which the Dzungars repelled the assault behind a wall of hobbled camels before withdrawing westward.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1690-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1690-09-03',
+        datePrecision: 'DAY',
+        reason: 'Galdan\'s Dzungars, having advanced deep into Inner Mongolia within striking distance of Beijing, form a defensive line of hobbled camels (the "camel wall") at Ulan Butung; the Qing army under Prince Fuquan, with artillery, fails to break it and suffers heavy losses, but Galdan, short of supplies and fearing encirclement, negotiates a truce and retreats. Though tactically inconclusive, the clash opens the protracted Qing–Dzungar war and is recorded in the Qing Veritable Records and the dispatches of the Jesuit Jean-François Gerbillon, who accompanied the campaign.',
+        source: {
+          externalId: 'src:battle-ulan-butung-1690-wikipedia',
+          name: 'Battle of Ulan Butung, 3 September 1690 — first major engagement between the Kangxi Emperor\'s Qing forces and Galdan\'s Dzungars.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ulan_Butung',
+          publishedAt: '1690-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1700-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Qing Veritable Records, the Jesuit campaign accounts, and modern scholarship (notably Perdue\'s China Marches West) confirm the date and the inconclusive outcome of Ulan Butung, the opening battle of the wars that culminated in the Qing victory at Jao Modo in 1696 and the eventual destruction of the Dzungar Khanate in the 1750s.',
+        source: {
+          externalId: 'src:battle-ulan-butung-1690-scholarship',
+          name: 'Modern scholarship on the Battle of Ulan Butung and the opening of the Qing–Dzungar wars.',
+          url: 'https://en.wikipedia.org/wiki/Dzungar%E2%80%93Qing_Wars',
+          publishedAt: '1700-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Kyakhta — Russo-Qing border and trade across Mongolia ──────────
+  {
+    externalId: 'trajectory:treaty-of-kyakhta-1727',
+    text: 'On 23 August 1727 the Russian Empire and Qing China concluded the Treaty of Kyakhta, fixing the northern border of Mongolia and regulating overland caravan trade between the two empires — the settlement that governed Russo-Qing relations for over a century after the Treaty of Nerchinsk.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1727-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1727-08-23',
+        datePrecision: 'DAY',
+        reason: 'Negotiated by the Russian envoy Sava Vladislavich-Raguzinsky and the Qing official Tulishen, the Treaty of Kyakhta delimits the border across the Khalkha-Mongol frontier — 63 boundary markers running east to the Argun and 24 west to the Shabin-Dabag — and regulates trade, allowing a Russian caravan to Beijing every three years and permanent border markets at Kyakhta and Tsurukhaitu where Russian furs are exchanged for Chinese tea. It extends and completes the boundary settlement begun at Nerchinsk in 1689, and is concluded in signed multilingual texts.',
+        source: {
+          externalId: 'src:treaty-kyakhta-1727-wikipedia',
+          name: 'Treaty of Kyakhta, signed 23 August 1727 — Russo-Qing border across Mongolia and regulation of the caravan and border trade.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Kyakhta_(1727)',
+          publishedAt: '1727-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1768-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Kyakhta settlement\'s signed texts survive in the Russian and Chinese archives, and its border and trade provisions — supplemented by the 1768 amendment — governed Russo-Qing relations until the unequal treaties of the 1850s–60s redrew the frontier. The date, parties, and terms are settled in modern diplomatic history as the framework that made Kyakhta the principal channel of the Russia–China overland tea and fur trade.',
+        source: {
+          externalId: 'src:treaty-kyakhta-1727-scholarship',
+          name: 'Modern scholarship on the Treaty of Kyakhta and the Russo-Qing border and trade regime in Inner Asia.',
+          url: 'https://en.wikipedia.org/wiki/Kyakhta_trade',
+          publishedAt: '1768-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Cortés meets Moctezuma II at Tenochtitlan ───────────────────────────────
   {
     externalId: 'trajectory:cortes-meets-moctezuma-1519',
