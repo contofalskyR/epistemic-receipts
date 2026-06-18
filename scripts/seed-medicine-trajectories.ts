@@ -13729,48 +13729,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Allen & Doisy ovarian hormone / estrogen — 1923 ────────────────────────
-  {
-    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
-    text: 'Edgar Allen and Edward Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid, free of corpus luteum and other tissue, produces estrus when injected into spayed mice and rats — the first demonstration of a specific ovarian hormone (estrogen) and a reproducible bioassay for it.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1923-09-08',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1923-09-08',
-        datePrecision: 'DAY',
-        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, showing that follicular-fluid extract induced cornification of the vaginal epithelium (estrus) in ovariectomized rodents — the Allen-Doisy test. This recorded in the expert literature the claim that the ovarian follicle secretes a specific chemical hormone governing the estrous cycle, providing the assay that made estrogen chemistry possible.',
-        source: {
-          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
-          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819–821. (Landmark reprint: PMID 6355545.)',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
-          publishedAt: '1923-09-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1929-01-01',
-        datePrecision: 'YEAR',
-        reason: 'In 1929 Doisy (and independently Adolf Butenandt) isolated the ovarian hormone in pure crystalline form — estrone (theelin) — using the Allen-Doisy bioassay to track purification, converting the 1923 functional claim into a defined chemical molecule. The crystalline isolation, later recognized by Butenandt\'s 1939 Nobel Prize in Chemistry for sex-hormone work, settled estrogen as a chemically identified hormone and founded steroid endocrinology.',
-        source: {
-          externalId: 'src:history-estrogen-therapy-review-pmc',
-          name: 'The History of Estrogen Therapy (review documenting the 1923 Allen-Doisy discovery and 1929 crystalline isolation of estrone). PMC7334883.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7334883/',
-          publishedAt: '2020-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Cushing pituitary basophilism / Cushing's disease — 1932 ───────────────
   {
     externalId: 'trajectory:cushing-pituitary-basophilism-1932',
