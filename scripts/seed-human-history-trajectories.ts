@@ -27625,6 +27625,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── 14 July Revolution: Iraqi monarchy overthrown (1958) ───────────────────
+  {
+    externalId: 'trajectory:iraqi-14-july-revolution-1958',
+    text: 'On 14 July 1958 a military coup by the Free Officers overthrew the Hashemite monarchy of Iraq; King Faisal II, Crown Prince Abd al-Ilah, and Prime Minister Nuri al-Said were killed, and the Iraqi Republic was proclaimed.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1958-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1958-07-14',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 14 July 1958, army units led by Abd al-Karim Qasim and Abd al-Salam Arif seized Baghdad. King Faisal II, the regent Crown Prince Abd al-Ilah, and members of the royal family were shot in the courtyard of the al-Rihab Palace; Prime Minister Nuri al-Said was killed the next day. A new republic headed by a Revolutionary Council was proclaimed over Baghdad radio that morning. The overthrow of the monarchy was broadcast immediately and reported worldwide.',
+        source: {
+          externalId: 'src:iraqi-14-july-revolution-1958',
+          name: 'Contemporary accounts of the 14 July 1958 Iraqi coup and the killing of King Faisal II (Wikipedia, "14 July Revolution" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/14_July_Revolution',
+          publishedAt: '1958-07-14',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1959-03-24',
+        datePrecision: 'DAY',
+        reason: 'The republic consolidated and won international recognition; the new government reoriented Iraqi policy away from the West, and on 24 March 1959 Iraq formally withdrew from the Baghdad Pact. The permanent end of the Hashemite monarchy and the establishment of the Iraqi Republic are uncontested matters of record.',
+        source: {
+          externalId: 'src:iraq-withdraws-baghdad-pact-1959',
+          name: 'Records of Iraq\'s withdrawal from the Baghdad Pact, 24 March 1959, following the establishment of the republic (Wikipedia, "14 July Revolution"; "Baghdad Pact").',
+          url: 'https://en.wikipedia.org/wiki/14_July_Revolution',
+          publishedAt: '1959-03-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yom Kippur War: Israel's "concept" surprised and reversed (1973) ───────
+  {
+    externalId: 'trajectory:yom-kippur-war-surprise-1973',
+    text: 'On 6 October 1973 Egypt and Syria launched a coordinated surprise attack on Israeli positions in Sinai and the Golan Heights, shattering the prevailing Israeli intelligence assessment (ha-Konceptzia, "the Concept") that the Arab states would not go to war.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1973-10-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-10-05',
+        datePrecision: 'DAY',
+        reason: 'In the months before October 1973, the dominant Israeli military-intelligence (Aman) assessment — known as ha-Konceptzia, "the Concept" — held that Egypt would not launch a war until it could neutralize the Israeli Air Force, and that Syria would not attack without Egypt. Even as Egyptian and Syrian forces massed along the frontiers, this assessment was treated as the established basis for keeping Israel\'s reserves un-mobilized into early October 1973.',
+        source: {
+          externalId: 'src:yom-kippur-concept-1973',
+          name: 'Accounts of the Israeli intelligence assessment ("the Concept") preceding the October 1973 war (Wikipedia, "Yom Kippur War" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Yom_Kippur_War',
+          publishedAt: '1973-10-05',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1974-04-01',
+        datePrecision: 'DAY',
+        reason: 'At about 14:00 on 6 October 1973 — Yom Kippur — Egyptian forces crossed the Suez Canal and Syrian forces attacked the Golan Heights, achieving near-total strategic surprise. The Israeli "Concept" was decisively falsified. The Agranat Commission of inquiry, whose first interim report was published on 1 April 1974, found grave failures in the intelligence assessment and led to the dismissal of the Director of Military Intelligence and other senior officers, settling as documented fact that the prewar assessment had been a catastrophic error.',
+        source: {
+          externalId: 'src:agranat-commission-1974',
+          name: 'Agranat Commission interim report on the intelligence failures of the Yom Kippur War, 1 April 1974 (Wikipedia, "Yom Kippur War"; "Agranat Commission").',
+          url: 'https://en.wikipedia.org/wiki/Agranat_Commission',
+          publishedAt: '1974-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Camp David Accords signed (1978) ───────────────────────────────────────
+  {
+    externalId: 'trajectory:camp-david-accords-1978',
+    text: 'On 17 September 1978 Egyptian President Anwar Sadat and Israeli Prime Minister Menachem Begin signed the Camp David Accords at the White House, witnessed by U.S. President Jimmy Carter, establishing the framework for the 1979 Egypt–Israel peace treaty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1978-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-09-17',
+        datePrecision: 'DAY',
+        reason: 'After thirteen days of secret negotiations at the Camp David presidential retreat, Sadat and Begin signed two framework agreements at the White House on 17 September 1978: "A Framework for Peace in the Middle East" and "A Framework for the Conclusion of a Peace Treaty between Egypt and Israel," with President Jimmy Carter as witness. The signing was broadcast and reported worldwide.',
+        source: {
+          externalId: 'src:camp-david-accords-signing-1978',
+          name: 'Contemporary record of the Camp David Accords signed at the White House, 17 September 1978 (Wikipedia, "Camp David Accords" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Camp_David_Accords',
+          publishedAt: '1978-09-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-03-26',
+        datePrecision: 'DAY',
+        reason: 'The second framework led directly to the Egypt–Israel Peace Treaty, signed in Washington on 26 March 1979, under which Israel withdrew from the Sinai Peninsula and the two states established diplomatic relations. The treaty has held continuously since, making Egypt the first Arab state to recognize Israel; the accords and their consequences are settled historical fact. Sadat and Begin were jointly awarded the 1978 Nobel Peace Prize.',
+        source: {
+          externalId: 'src:egypt-israel-peace-treaty-1979',
+          name: 'Record of the Egypt–Israel Peace Treaty signed 26 March 1979, flowing from the Camp David Accords (Wikipedia, "Egypt–Israel peace treaty").',
+          url: 'https://en.wikipedia.org/wiki/Egypt%E2%80%93Israel_peace_treaty',
+          publishedAt: '1979-03-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Iranian Islamic Republic referendum (1979) ─────────────────────────────
+  {
+    externalId: 'trajectory:iran-islamic-republic-referendum-1979',
+    text: 'In a national referendum held on 30–31 March 1979, Iranian voters overwhelmingly approved replacing the monarchy with an Islamic Republic; Ayatollah Khomeini proclaimed the Islamic Republic of Iran on 1 April 1979.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1979-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-03-31',
+        datePrecision: 'DAY',
+        reason: 'Following the fall of the Pahlavi monarchy in February 1979, a referendum was held on 30–31 March 1979 asking Iranians whether the country should become an Islamic Republic. The official result was an overwhelming "yes" (reported as more than 98% in favor). The conduct and result of the referendum were announced by the new government and reported internationally as they occurred.',
+        source: {
+          externalId: 'src:iran-islamic-republic-referendum-1979',
+          name: 'Contemporary record of the 30–31 March 1979 Iranian referendum on the Islamic Republic (Wikipedia, "1979 Iranian Islamic Republic referendum" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/1979_Iranian_Islamic_Republic_referendum',
+          publishedAt: '1979-03-31',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-04-01',
+        datePrecision: 'DAY',
+        reason: 'On 1 April 1979 Ayatollah Ruhollah Khomeini declared the establishment of the Islamic Republic of Iran. A new constitution establishing the office of Supreme Leader (velayat-e faqih) was approved in a further referendum in December 1979. The founding of the Islamic Republic on this date is an uncontested matter of record and remains the constitutional basis of the Iranian state.',
+        source: {
+          externalId: 'src:khomeini-proclaims-islamic-republic-1979',
+          name: 'Record of Ayatollah Khomeini\'s proclamation of the Islamic Republic of Iran, 1 April 1979 (Wikipedia, "Iranian Revolution"; "1979 Iranian Islamic Republic referendum").',
+          url: 'https://en.wikipedia.org/wiki/Iranian_Revolution',
+          publishedAt: '1979-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Iran–Iraq War begins (1980) ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:iran-iraq-war-begins-1980',
+    text: 'On 22 September 1980 Iraq launched a full-scale invasion of Iran, opening with surprise air strikes on ten Iranian airfields and beginning the eight-year Iran–Iraq War.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1980-09-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 September 1980 the Iraqi Air Force launched surprise air strikes on ten Iranian airfields, and Iraqi ground forces invaded across the Iran–Iraq frontier the following day along a 644-kilometre front. The outbreak of open war between the two states was reported worldwide as it began.',
+        source: {
+          externalId: 'src:iran-iraq-war-begins-1980',
+          name: 'Contemporary reporting on the Iraqi invasion of Iran, 22 September 1980 (Wikipedia, "Iran–Iraq War" — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War',
+          publishedAt: '1980-09-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-08-20',
+        datePrecision: 'DAY',
+        reason: 'The war ground on for nearly eight years until a ceasefire under UN Security Council Resolution 598 took effect on 20 August 1988. The conflict — one of the longest conventional wars of the 20th century — and its 22 September 1980 starting date are settled, uncontested matters of historical record.',
+        source: {
+          externalId: 'src:iran-iraq-war-ceasefire-1988',
+          name: 'Record of the UN-brokered ceasefire (Resolution 598) ending the Iran–Iraq War, effective 20 August 1988 (Wikipedia, "Iran–Iraq War").',
+          url: 'https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War',
+          publishedAt: '1988-08-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── U-2 incident: cover story reversed (1960) ──────────────────────────────
   {
     externalId: 'trajectory:u2-incident-cover-story-1960',
