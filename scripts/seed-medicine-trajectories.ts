@@ -14000,6 +14000,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA — PEDIATRIC & EMERGENCY MEDICINE (2011–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Palforzia peanut OIT FDA approval 2020 ──────────────────────────────────
+  {
+    externalId: 'trajectory:palforzia-peanut-oral-immunotherapy-2020',
+    text: 'AR101 (Palforzia), a standardized peanut-protein oral immunotherapy, desensitizes peanut-allergic children aged 4–17 and was approved by the FDA on 31 January 2020 as the first drug ever approved to treat a food allergy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-11-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-22',
+        datePrecision: 'DAY',
+        reason: 'The phase 3 PALISADE trial, published in the New England Journal of Medicine, randomized 496 peanut-allergic participants and found that 67.2% of children aged 4–17 receiving AR101 could tolerate ≥600 mg of peanut protein versus 4.0% on placebo. This recorded the first large randomized evidence that a standardized oral immunotherapy product could reliably desensitize peanut-allergic children, while showing no benefit in adults.',
+        source: {
+          externalId: 'src:palisade-ar101-nejm-2018',
+          name: 'PALISADE Group of Clinical Investigators; Vickery BP, et al. AR101 Oral Immunotherapy for Peanut Allergy. N Engl J Med. 2018;379(21):1991-2001.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30449234/',
+          publishedAt: '2018-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-04-25',
+        datePrecision: 'DAY',
+        reason: 'The PACE systematic review and meta-analysis in The Lancet pooled 12 trials and found that peanut oral immunotherapy, despite achieving desensitization, more than tripled the risk of anaphylaxis (risk ratio 3.12) and increased adrenaline use compared with avoidance or placebo. The high-certainty finding contested the net clinical benefit of OIT in the very interval before regulatory approval, arguing current protocols caused more allergic reactions than they prevented.',
+        source: {
+          externalId: 'src:chu-pace-oit-lancet-2019',
+          name: 'Chu DK, Wood RA, French S, et al. Oral immunotherapy for peanut allergy (PACE): a systematic review and meta-analysis of efficacy and safety. Lancet. 2019;393(10187):2222-2232.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31030987/',
+          publishedAt: '2019-04-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-01-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Palforzia (peanut allergen powder-dnfp) for peanut-allergic patients aged 4–17, the first approved treatment for any food allergy, dispensed under a risk-mitigation (REMS) program because of the anaphylaxis risk. The approval settled the product as authorized institutional practice—accepting the desensitization benefit while structurally managing the safety signal the meta-analysis had raised.',
+        source: {
+          externalId: 'src:fda-palforzia-approval-2020',
+          name: 'U.S. Food and Drug Administration. Palforzia [Peanut (Arachis hypogaea) Allergen Powder-dnfp] — first treatment for peanut allergy. Approved January 31, 2020.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/allergenics/palforzia',
+          publishedAt: '2020-01-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FEAST fluid bolus mortality African children 2011 ───────────────────────
+  {
+    externalId: 'trajectory:feast-fluid-bolus-mortality-african-children-2011',
+    text: 'The FEAST randomized trial reported on 26 May 2011 that rapid intravenous fluid boluses increased 48-hour mortality in African children with severe febrile illness and impaired perfusion, contradicting the long-standing resuscitation doctrine that aggressive early fluid expansion saves lives in shock.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-05-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-05-26',
+        datePrecision: 'DAY',
+        reason: 'The FEAST trial (3,141 children at six East African centers), published in the New England Journal of Medicine, found 48-hour mortality of 10.5–10.6% with saline or albumin boluses versus 7.3% with no bolus—a 45% relative increase in death. This recorded the first large randomized evidence that bolus fluid resuscitation, a near-universal element of pediatric emergency care, actively increased mortality in this population.',
+        source: {
+          externalId: 'src:maitland-feast-nejm-2011',
+          name: 'Maitland K, Kiguli S, Opoka RO, et al. Mortality after Fluid Bolus in African Children with Severe Infection. N Engl J Med. 2011;364(26):2483-2495.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21615299/',
+          publishedAt: '2011-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-01-15',
+        datePrecision: 'MONTH',
+        reason: 'Despite FEAST, the WHO\'s 2013 pediatric guidance retained the recommendation to give rapid 20 mL/kg crystalloid boluses for childhood shock. The FEAST investigators publicly contested this in the BMJ, arguing the WHO had failed to incorporate high-quality randomized evidence per its own GRADE process and was endangering children—leaving the bolus question institutionally unsettled even as the trial result stood in the literature.',
+        source: {
+          externalId: 'src:kiguli-who-missing-feast-bmj-2014',
+          name: 'Kiguli S, Akech SO, Mtove G, et al. WHO guidelines on fluid resuscitation in children: missing the FEAST data. BMJ. 2014;348:f7003.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24423891/',
+          publishedAt: '2014-01-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── CCHD pulse-oximetry newborn screening RUSP 2011 ────────────────────────
+  {
+    externalId: 'trajectory:cchd-pulse-oximetry-newborn-screening-rusp-2011',
+    text: 'On 21 September 2011 the U.S. Secretary of Health and Human Services adopted the recommendation to add pulse-oximetry screening for critical congenital heart disease to the Recommended Uniform Screening Panel, establishing universal point-of-care CCHD screening of newborns.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-09-21',
+        datePrecision: 'DAY',
+        reason: 'Acting on the Secretary\'s Advisory Committee on Heritable Disorders in Newborns and Children, HHS Secretary Kathleen Sebelius recommended adding CCHD to the RUSP, and the American Academy of Pediatrics formally endorsed the recommendation. This recorded pulse oximetry—previously a screening question debated in the literature—as a nationally recommended newborn screen, with implementation strategies (Kemper et al.) issued the same year.',
+        source: {
+          externalId: 'src:mahle-aap-cchd-endorsement-pediatrics-2012',
+          name: 'Mahle WT, Martin GR, Beekman RH, Morrow WR; Section on Cardiology and Cardiac Surgery. Endorsement of Health and Human Services Recommendation for Pulse Oximetry Screening for Critical Congenital Heart Disease. Pediatrics. 2012;129(1):190-192.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22201143/',
+          publishedAt: '2011-12-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-12-31',
+        datePrecision: 'YEAR',
+        reason: 'By the end of 2018 all 50 U.S. states and the District of Columbia had implemented mandated or universal newborn CCHD pulse-oximetry screening, as documented in the CDC\'s MMWR review of actions taken from 2011–2018. The transition from a federal recommendation to near-complete legislative and operational uptake nationwide settled CCHD pulse-oximetry screening as standard newborn care.',
+        source: {
+          externalId: 'src:cdc-mmwr-cchd-screening-actions-2019',
+          name: 'Glidewell J, Olney RS, Hinton C, et al. Actions in Support of Newborn Screening for Critical Congenital Heart Disease — United States, 2011–2018. MMWR Morb Mortal Wkly Rep. 2019;68(5):107-111.',
+          url: 'https://www.cdc.gov/mmwr/volumes/68/wr/mm6805a3.htm',
+          publishedAt: '2019-02-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── TODAY trial youth-onset type 2 diabetes metformin failure 2012 ──────────
+  {
+    externalId: 'trajectory:today-youth-onset-type2-diabetes-metformin-failure-2012',
+    text: 'The TODAY trial reported on 29 April 2012 that metformin monotherapy failed to maintain glycemic control in roughly half of youth with type 2 diabetes within about four years, establishing that pediatric-onset type 2 diabetes is more aggressive and treatment-resistant than adult-onset disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-04-29',
+        datePrecision: 'DAY',
+        reason: 'The NIH-funded TODAY trial (699 youth, the first major randomized comparison of treatments for pediatric type 2 diabetes), published in the New England Journal of Medicine, found that metformin alone failed in 51.7% of participants over a mean 3.9 years, with metformin-plus-lifestyle no better. This recorded the unexpected finding that youth-onset type 2 diabetes loses glycemic control far faster than adult disease, undercutting the assumption that pediatric T2D could be managed like the adult form.',
+        source: {
+          externalId: 'src:today-glycemic-control-nejm-2012',
+          name: 'TODAY Study Group; Zeitler P, Hirst K, Pyle L, et al. A Clinical Trial to Maintain Glycemic Control in Youth with Type 2 Diabetes. N Engl J Med. 2012;366(24):2247-2256.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22540912/',
+          publishedAt: '2012-06-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-07-29',
+        datePrecision: 'DAY',
+        reason: 'The TODAY2 long-term follow-up in the New England Journal of Medicine reported that by a mean of 13 years from diagnosis, 60.1% of the youth-onset cohort had at least one diabetes complication and 28.4% had two or more—rates exceeding those for adult type 2 or pediatric type 1 diabetes. The decade-long confirmation settled youth-onset type 2 diabetes as a distinctly aggressive, high-complication phenotype rather than an early form of typical adult disease.',
+        source: {
+          externalId: 'src:today2-long-term-complications-nejm-2021',
+          name: 'TODAY Study Group. Long-Term Complications in Youth-Onset Type 2 Diabetes. N Engl J Med. 2021;385(5):416-426.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34320286/',
+          publishedAt: '2021-07-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
