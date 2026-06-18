@@ -90,7 +90,7 @@ TITLES:none
 CONSIDERED:[events you tried]
 REASONING:[why all candidates failed — URL dead, already in DB, not precisely dateable, etc.]"
 
-  OUTPUT=$(claude --print --permission-mode bypassPermissions --max-turns 30 "$PROMPT" 2>&1) || true
+  OUTPUT=$(claude --model claude-opus-4-8 --print --permission-mode bypassPermissions --max-turns 30 "$PROMPT" 2>&1) || true
   echo "$OUTPUT" >> "$LOG"
 
   ADDED=$(echo "$OUTPUT" | grep "^ADDED:" | tail -1 | sed 's/^ADDED://' | tr -d ' ')

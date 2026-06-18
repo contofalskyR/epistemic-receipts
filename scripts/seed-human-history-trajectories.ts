@@ -56762,6 +56762,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL EAST ASIA (Tang China, Yuan China, Japan, Vietnam) — added run
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Nestorian (Xi'an) Stele erected in Tang Chang'an ───────────────────────
+  {
+    externalId: 'trajectory:nestorian-stele-erected-781',
+    text: 'A stone stele recording roughly 150 years of the Church of the East (Jingjiao) in Tang China was erected at Chang\'an on the 7th day of the first month of the second year of the Jianzhong era (4 February 781 CE), documenting the religion\'s arrival in 635 CE.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0781-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0781-02-04',
+        datePrecision: 'DAY',
+        reason: 'A limestone stele titled the "Memorial of the Propagation in China of the Luminous Religion from Daqin" is inscribed and erected at Chang\'an, bearing a precise date in the Jianzhong reign of Emperor Dezong. Its some 1,800 Chinese characters, with a Syriac dating colophon, narrate the arrival of the monk Aluoben in 635 CE and the religion\'s imperial patronage. The stele is itself the contemporaneous primary record.',
+        source: {
+          externalId: 'src:nestorian-stele-inscription-781',
+          name: 'Nestorian Stele ("Memorial of the Propagation in China of the Luminous Religion from Daqin"), erected 4 February 781, Chang\'an. Now in the Forest of Steles, Xi\'an.',
+          url: 'https://en.wikipedia.org/wiki/Nestorian_Stele',
+          publishedAt: '0781-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1625-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Buried during the anti-Buddhist persecutions of the 9th century, the stele was rediscovered near Xi\'an around 1625 and studied by Jesuit missionaries and Chinese scholars, who authenticated its 781 dating and its account of early Christianity in China. The physical monument, now preserved in the Forest of Steles museum, makes the 781 erection an undisputed, materially attested fact.',
+        source: {
+          externalId: 'src:nestorian-stele-rediscovery-1625',
+          name: 'Rediscovery and authentication of the Nestorian Stele near Xi\'an, c. 1625; preserved in the Stele Forest (Beilin) Museum.',
+          url: 'https://en.wikipedia.org/wiki/Nestorian_Stele',
+          publishedAt: '1625-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kublai Khan proclaims the dynastic name "Great Yuan" ───────────────────
+  {
+    externalId: 'trajectory:kublai-proclaims-great-yuan-1271',
+    text: 'On 5 November 1271, Kublai Khan issued the edict "Proclamation of the Dynastic Name," adopting "Great Yuan" (Da Yuan) as the name of his empire and formally establishing the Yuan dynasty over China.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1271-11-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1271-11-05',
+        datePrecision: 'DAY',
+        reason: 'Kublai promulgates the "Jianguo hao zhao" (Proclamation of the Dynastic Name), drawn from the phrase "qian yuan" in the Book of Changes, declaring his realm "Great Yuan." The edict transforms the Mongol Great Khanate\'s Chinese domain into a Chinese-style dynasty with a formal reign-name, recorded in the imperial chancery.',
+        source: {
+          externalId: 'src:yuan-dynastic-name-edict-1271',
+          name: 'Kublai Khan\'s Proclamation of the Dynastic Name ("Great Yuan"), 5 November 1271 — establishment of the Yuan dynasty.',
+          url: 'https://en.wikipedia.org/wiki/Yuan_dynasty',
+          publishedAt: '1271-11-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1370-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Yuanshi (History of Yuan, completed 1370 under the succeeding Ming dynasty), compiled from Yuan veritable records, documents the adoption of the dynastic name and the date of the edict. Modern sinology treats the 1271 proclamation as the conventional founding of the Yuan dynasty, an uncontested institutional fact.',
+        source: {
+          externalId: 'src:yuanshi-dynastic-name',
+          name: 'Yuanshi (History of Yuan, 1370), Basic Annals of Shizu (Kublai), on the adoption of the dynastic name "Great Yuan."',
+          url: 'https://en.wikipedia.org/wiki/Yuan_dynasty',
+          publishedAt: '1370-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Minamoto no Yoritomo appointed Sei-i Taishogun ─────────────────────────
+  {
+    externalId: 'trajectory:yoritomo-appointed-shogun-1192',
+    text: 'Minamoto no Yoritomo was appointed Sei-i Taishogun (shogun) on the 12th day of the seventh month of Kenkyu 3 (conventionally 21 August 1192), formally inaugurating the Kamakura shogunate and centuries of warrior government in Japan.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1192-08-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1192-08-21',
+        datePrecision: 'DAY',
+        reason: 'Following his victory in the Genpei War and the death of Retired Emperor Go-Shirakawa, Yoritomo receives the imperial appointment as Sei-i Taishogun ("barbarian-subduing great general") from the court in Kyoto. The title formalises the military government he had built at Kamakura, recorded in court and shogunal documents under the Kenkyu reign date.',
+        source: {
+          externalId: 'src:yoritomo-shogun-appointment-1192',
+          name: 'Appointment of Minamoto no Yoritomo as Sei-i Taishogun, 12th day 7th month Kenkyu 3 (21 August 1192).',
+          url: 'https://en.wikipedia.org/wiki/Minamoto_no_Yoritomo',
+          publishedAt: '1192-08-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1300-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The appointment is recorded in the Azuma Kagami, the official chronicle of the Kamakura shogunate compiled in the late 13th century from shogunal records. Modern historiography treats Yoritomo\'s 1192 appointment as the conventional founding of the Kamakura shogunate, a settled institutional fact, even as scholars debate whether effective shogunal power dates from earlier in the 1180s.',
+        source: {
+          externalId: 'src:azuma-kagami-yoritomo-shogun',
+          name: 'Azuma Kagami (Mirror of the East), late 13th-century chronicle of the Kamakura shogunate, on Yoritomo\'s appointment as shogun.',
+          url: 'https://en.wikipedia.org/wiki/Azuma_Kagami',
+          publishedAt: '1300-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Bach Dang — Dai Viet destroys the Yuan fleet ─────────────────
+  {
+    externalId: 'trajectory:battle-of-bach-dang-1288',
+    text: 'On 9 April 1288, Dai Viet forces under Prince Tran Quoc Tuan (Tran Hung Dao) destroyed a Mongol-Yuan fleet on the Bach Dang River by impaling it on iron-tipped stakes at low tide, ending the third Mongol invasion of Vietnam.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1288-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1288-04-09',
+        datePrecision: 'DAY',
+        reason: 'Repeating a tactic used against the Southern Han in 938, the Dai Viet commander Tran Quoc Tuan has wooden stakes with iron tips driven into the bed of the Bach Dang River. Luring the retreating Yuan fleet of Omar (Umar) over them at high tide, his forces attack as the ebb tide impales and traps the ships, destroying the fleet and ending Kublai Khan\'s third invasion of Vietnam.',
+        source: {
+          externalId: 'src:battle-bach-dang-1288-wikipedia',
+          name: 'Battle of Bach Dang (1288), 9 April 1288 — Dai Viet under Tran Hung Dao destroys the Yuan fleet on the Bach Dang River.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)',
+          publishedAt: '1288-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1479-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle is recorded in the Dai Viet su ky toan thu (Complete Annals of Dai Viet), compiled in 1479 from earlier Tran-era chronicles, and corroborated by the Chinese Yuanshi account of the failed campaign. Archaeological excavation of the wooden stakes at Bach Dang confirms the trap, fixing the 1288 victory as a settled, materially attested event.',
+        source: {
+          externalId: 'src:dai-viet-su-ky-bach-dang-1288',
+          name: 'Dai Viet su ky toan thu (Complete Annals of Dai Viet, 1479), on the Battle of Bach Dang of 1288.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_B%E1%BA%A1ch_%C4%90%E1%BA%B1ng_(1288)',
+          publishedAt: '1479-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
