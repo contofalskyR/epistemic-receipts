@@ -15841,6 +15841,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY & REPRODUCTIVE MEDICINE ERA (pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Allen-Doisy ovarian hormone / estrogen — 1923 ──────────────────────────
+  {
+    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
+    text: 'Edgar Allen and Edward A. Doisy reported in JAMA on 8 September 1923 that the ovarian follicle contains a specific hormone that they localized, extracted, and partially purified, establishing the existence of the female sex hormone later named estrogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-09-08',
+        datePrecision: 'DAY',
+        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, showing that ovarian follicular fluid contained an active substance that induced estrus in ovariectomized rodents. The accompanying bioassay (the Allen-Doisy test) gave the field its first reproducible quantitative measure of estrogenic activity, recording in the expert literature the claim that a discrete ovarian hormone existed.',
+        source: {
+          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
+          name: 'Allen E, Doisy EA. An ovarian hormone. Preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819-821.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
+          publishedAt: '1923-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By 1929 the hypothesized ovarian hormone had been isolated in crystalline form (Doisy in the United States and Butenandt in Germany independently crystallized the estrogen later named estrone from pregnancy urine), and its chemical structure was characterized over the following years. Moving the substance from a bioassay-defined activity to a defined molecule settled estrogen\'s existence and identity as established endocrinology.',
+        source: {
+          externalId: 'src:history-estrogen-therapy-pmc-2020',
+          name: 'Tata JR / review: The History of Estrogen Therapy (covering crystalline isolation of estrone, 1929). PMC7334883.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7334883/',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Premarin conjugated estrogens FDA approval — 1942 ──────────────────────
+  {
+    externalId: 'trajectory:premarin-conjugated-estrogens-fda-1942',
+    text: 'The U.S. Food and Drug Administration approved Wyeth-Ayerst\'s Premarin (conjugated equine estrogens, NDA 4-782) in 1942 for the treatment of menopausal symptoms — the first widely used hormone-replacement product, approved before U.S. law required drugs to be chemically characterized or proven efficacious.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '1941-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Conjugated equine estrogens extracted from pregnant mares\' urine were introduced as Premarin in Canada in 1941, recording in the marketplace the claim that an orally active natural-source estrogen preparation could relieve menopausal symptoms. The product followed the line of earlier estrogen extracts (Emmenin) but was cheaper and more potent.',
+        source: {
+          externalId: 'src:stefanick-estrogens-progestins-history-2005',
+          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(Suppl 12B):64-73.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
+          publishedAt: '2005-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved marketing of conjugated equine estrogens (Premarin) in 1942 for treatment of menopausal symptoms, institutionally ratifying the claim that estrogen replacement was a safe and effective therapy. The approval predated the 1962 Kefauver-Harris efficacy requirement and the modern chemical-characterization standard, so it settled the menopausal-symptom indication on the safety-and-marketing standard of its era; Premarin went on to become one of the most prescribed drugs in the United States.',
+        source: {
+          externalId: 'src:stefanick-premarin-fda-1942-approval',
+          name: 'Stefanick ML. Estrogens and progestins: background and history... Am J Med. 2005;118(Suppl 12B):64-73 (\'the FDA approved marketing of ... conjugated equine estrogens (CEE) in 1942\').',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
+          publishedAt: '2005-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Papanicolaou vaginal smear / cervical cancer screening — 1928 ───────────
+  {
+    externalId: 'trajectory:papanicolaou-vaginal-smear-cervical-cancer-1928',
+    text: 'George N. Papanicolaou announced at the Third Race Betterment Conference in Battle Creek, Michigan in January 1928 that cancerous and precancerous cells of the uterine cervix could be detected in exfoliated vaginal-smear cytology — the basis of the Pap test for cervical cancer screening.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-02',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-02',
+        datePrecision: 'MONTH',
+        reason: 'Papanicolaou presented \'New Cancer Diagnosis\' at the Third Race Betterment Conference (Jan 2-6, 1928) and published it in the Proceedings, proposing that malignant cervical cells could be identified in vaginal smears. The claim was recorded but greeted with skepticism, as contemporaries held that biopsy and tissue histology were the only valid means of diagnosing cancer.',
+        source: {
+          externalId: 'src:papanicolaou-new-cancer-diagnosis-1928',
+          name: 'Papanicolaou GN. New Cancer Diagnosis. Proceedings of the Third Race Betterment Conference, Battle Creek, Michigan, Jan 2-6, 1928:528-534. (Reprinted/cataloged, PMID 4196138.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4196138/',
+          publishedAt: '1928-01-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Papanicolaou and gynecologic pathologist Herbert F. Traut published the monograph \'Diagnosis of Uterine Cancer by the Vaginal Smear\' (Commonwealth Fund, 1943), correlating smear cytology with the menstrual cycle and presenting 179 uterine-cancer cases. The work established exfoliative cytology as a valid diagnostic method and is regarded as the beginning of modern clinical cytopathology, settling the screening claim in the expert community and driving subsequent mass adoption.',
+        source: {
+          externalId: 'src:papanicolaou-traut-uterine-cancer-monograph-1943',
+          name: 'Papanicolaou GN, Traut HF. Diagnosis of Uterine Cancer by the Vaginal Smear. New York: The Commonwealth Fund; 1943.',
+          url: 'https://wellcomecollection.org/works/ccycn3cz',
+          publishedAt: '1943-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Marker degradation / progesterone from diosgenin — 1940 ────────────────
+  {
+    externalId: 'trajectory:marker-degradation-progesterone-diosgenin-1940',
+    text: 'Russell E. Marker reported in the Journal of the American Chemical Society in 1940 a practical chemical route (the \'Marker degradation\') converting the plant steroid diosgenin into progesterone, making the hormone cheaply available and laying the chemical foundation for the steroid pharmaceutical industry and, ultimately, the oral contraceptive.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1940-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In a 1940 series of JACS papers, including \'Sterols. C. Diosgenin,\' Marker and co-workers established the structure of the steroidal sapogenin side chain and described the transformations converting diosgenin into progesterone. This recorded in the chemical literature the claim that an abundant plant sterol could be degraded to a human sex hormone, an alternative to scarce animal-organ extraction.',
+        source: {
+          externalId: 'src:marker-sterols-c-diosgenin-jacs-1940',
+          name: 'Marker RE, Tsukamoto T, Turner DL. Sterols. C. Diosgenin. J Am Chem Soc. 1940;62(9):2525-2532.',
+          url: 'https://pubs.acs.org/doi/10.1021/ja01866a072',
+          publishedAt: '1940-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1943 Marker processed roughly 10 tons of Mexican yam (Dioscorea) tubers to produce about 3 kg of progesterone — then the largest single quantity ever made — and in early 1944 co-founded Syntex in Mexico City to manufacture it. Industrial-scale production collapsed the price of progesterone and proved the degradation scalable, settling it as the commercial basis of the steroid hormone industry.',
+        source: {
+          externalId: 'src:marker-degradation-syntex-bulk-production',
+          name: 'Marker degradation — bulk progesterone production (1943) and founding of Syntex (1944). Documenting primary JACS work; Seeman JI, The Chemical Record 2023;23 and ACS National Historic Chemical Landmark.',
+          url: 'https://en.wikipedia.org/wiki/Marker_degradation',
+          publishedAt: '1944-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
