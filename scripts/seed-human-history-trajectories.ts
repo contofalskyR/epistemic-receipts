@@ -15671,6 +15671,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── The Memphis Decree (Rosetta Stone) promulgated ──────────────────────────
+  {
+    externalId: 'trajectory:memphis-decree-issued-196bce',
+    text: 'A synod of Egyptian priests assembled at Memphis issued a trilingual decree honouring the boy-king Ptolemy V Epiphanes on 27 March 196 BCE — the text later inscribed on the Rosetta Stone in hieroglyphic, Demotic, and Greek.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0196-03-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0196-03-27',
+        datePrecision: 'DAY',
+        reason: 'On the anniversary of Ptolemy V\'s accession, a council of priests gathered at Memphis decrees divine honours for the nine-year-old king in return for his benefactions to the temples, and orders that the decree be carved on a hard-stone stele in the sacred (hieroglyphic), native (Demotic), and Greek scripts and set up in every first-, second-, and third-rank temple. The stele itself dates the act: "4 Xandikos" in the Macedonian calendar, "18 Mekhir" in the Egyptian — 27 March 196 BCE.',
+        source: {
+          externalId: 'src:rosetta-stone-memphis-decree',
+          name: 'The Memphis Decree (Rosetta Stone), British Museum EA 24 — trilingual priestly decree of Ptolemy V dated 4 Xandikos / 18 Mekhir = 27 March 196 BCE.',
+          url: 'https://en.wikipedia.org/wiki/Rosetta_Stone',
+          publishedAt: '0196-03-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1822-09-27',
+        datePrecision: 'DAY',
+        reason: 'Knowledge of the hieroglyphic and Demotic scripts was lost for over fourteen centuries, leaving only the Greek version legible. Jean-François Champollion\'s decipherment of the hieroglyphs in 1822 made all three versions readable and confirmed that they record the same Ptolemaic decree, fixing both its content and its date. The promulgation of the Memphis Decree on 27 March 196 BCE is settled in modern Egyptology.',
+        source: {
+          externalId: 'src:rosetta-stone-decipherment-confirmation',
+          name: 'Rosetta Stone — trilingual decree of Ptolemy V (196 BCE); content and date confirmed by Champollion\'s 1822 decipherment.',
+          url: 'https://en.wikipedia.org/wiki/Rosetta_Stone',
+          publishedAt: '1822-09-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Plutarch records the solar corona during a total eclipse ─────────────────
+  {
+    externalId: 'trajectory:plutarch-corona-eclipse-71ce',
+    text: 'The Greek philosopher Plutarch recorded a total solar eclipse — identified with the eclipse of 20 March 71 CE — during which a ring of light remained around the darkened Sun and stars shone out, the earliest known written description of the solar corona.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '0071-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0071-03-20',
+        datePrecision: 'DAY',
+        reason: 'In the dialogue De facie quae in orbe lunae apparet, Plutarch has a speaker describe a recent eclipse that "beginning just after noonday, made many stars shine out from many parts of the sky," and observes that even when the Moon covers the Sun entirely "a kind of light is visible about the rim which keeps the shadow from being profound and absolute." This is the first surviving written account of the solar corona.',
+        source: {
+          externalId: 'src:plutarch-de-facie-corona',
+          name: 'Plutarch. De facie quae in orbe lunae apparet, 931D–E (section 19). (c. 90–120 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:2008.01.0357:section%3D19',
+          publishedAt: '0100-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Astronomical retrocalculation of total solar eclipses visible from Plutarch\'s native Greece narrows the candidates, and the eclipse of 20 March 71 CE — whose path of totality crossed central Greece in the early afternoon — matches Plutarch\'s details of midday darkness, visible stars, and a luminous rim. Historians of astronomy credit the passage as the earliest description of the corona.',
+        source: {
+          externalId: 'src:plutarch-eclipse-71ce-identification',
+          name: 'Plutarch witnesses an eclipse, 20 March 71 CE — first written description of the solar corona (history of astronomy).',
+          url: 'https://www.astronomy.com/today-in-the-history-of-astronomy/march-20-71-c-e-plutarch-witnesses-an-eclipse/',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Assassination of the emperor Domitian ───────────────────────────────────
+  {
+    externalId: 'trajectory:domitian-assassination-96ce',
+    text: 'The Roman emperor Domitian was assassinated in his bedchamber on the Palatine on 18 September 96 CE by a group of court conspirators led by his steward Stephanus, ending the Flavian dynasty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0096-09-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0096-09-18',
+        datePrecision: 'DAY',
+        reason: 'Stephanus, a steward under prosecution for embezzlement, conceals a dagger in a bandaged arm and stabs Domitian in the groin on the pretext of delivering a report; chamberlains, a guardsman, and gladiators then fall on the emperor and stab him in seven places. The Senate, long terrorised by Domitian, the same day proclaims the elderly senator Nerva emperor and votes the dead man\'s memory damned (damnatio memoriae).',
+        source: {
+          externalId: 'src:suetonius-domitian-17',
+          name: 'Suetonius. Lives of the Caesars, Domitian 16–17 — narrative of the conspiracy and murder. (c. 121 CE)',
+          url: 'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0132%3Alife%3Ddom.%3Achapter%3D17',
+          publishedAt: '0121-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '0229-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Three independent sources — Suetonius (Domitian 17), Cassius Dio (67.15–17), and the chronographic tradition — record the conspiracy, the role of Stephanus, and the immediate accession of Nerva, and fix the date to 18 September 96 CE. The occurrence and dating of the assassination are settled.',
+        source: {
+          externalId: 'src:cassius-dio-67-domitian',
+          name: 'Cassius Dio. Roman History, 67.15–18 — the murder of Domitian and accession of Nerva. (c. 229 CE)',
+          url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/67*.html',
+          publishedAt: '0229-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── The Great Fire of Rome ──────────────────────────────────────────────────
   {
     externalId: 'trajectory:great-fire-rome-64ce',
