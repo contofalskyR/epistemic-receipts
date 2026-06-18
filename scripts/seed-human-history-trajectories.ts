@@ -55239,6 +55239,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── James Watt's separate-condenser steam engine patent ─────────────────────
+  {
+    externalId: 'trajectory:watt-steam-engine-patent-1769',
+    text: 'On 5 January 1769 James Watt was granted British Patent No. 913 for "A New Invented Method of Lessening the Consumption of Steam and Fuel in Fire-Engines" — the separate condenser that made the steam engine efficient enough to power the Industrial Revolution.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1769-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1769-01-05',
+        datePrecision: 'DAY',
+        reason: 'Watt was granted Patent No. 913 on 5 January 1769, protecting his method of condensing steam in a vessel separate from the working cylinder. The grant entered the British patent rolls, creating the legal record of the invention before the full specification was filed.',
+        source: {
+          externalId: 'src:watt-patent-913-1769',
+          name: 'James Watt, British Patent No. 913, "Steam Engines, &c." (specification, A.D. 1769) — facsimile of the enrolled patent.',
+          url: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/James_Watt_Patent_1769_No_913.pdf',
+          publishedAt: '1769-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1769-04-29',
+        datePrecision: 'DAY',
+        reason: 'Watt enrolled his full written specification on 29 April 1769, fixing the definitive legal text of Patent No. 913. The separate condenser is uncontested in the historiography of technology as the decisive efficiency improvement over Newcomen\'s engine, burning roughly two-thirds less coal.',
+        source: {
+          externalId: 'src:science-museum-watt-condenser',
+          name: 'Science Museum (London), "James Watt and the separate condenser" — institutional account of Patent No. 913.',
+          url: 'https://blog.sciencemuseum.org.uk/james-watt-and-the-separate-condenser/',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wilberforce's first abolition speech in the Commons ─────────────────────
+  {
+    externalId: 'trajectory:wilberforce-first-abolition-speech-1789',
+    text: 'On 12 May 1789 William Wilberforce delivered his first major abolition speech in the House of Commons, moving twelve resolutions condemning the Atlantic slave trade — opening the parliamentary campaign that culminated in the Slave Trade Act of 1807.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1789-05-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1789-05-12',
+        datePrecision: 'DAY',
+        reason: 'Drawing on Thomas Clarkson\'s evidence, Wilberforce described the conditions of the Middle Passage and moved twelve resolutions against the slave trade. The speech was entered into the parliamentary record and reproduced in the contemporary press, putting abolition on the legislative agenda.',
+        source: {
+          externalId: 'src:wilberforce-1789-speech-wikisource',
+          name: 'William Wilberforce, "On the Horrors of the Slave Trade," House of Commons, 12 May 1789 (transcribed text).',
+          url: 'https://en.wikisource.org/wiki/On_the_Horrors_of_the_Slave_Trade',
+          publishedAt: '1789-05-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1789-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date, text, and twelve resolutions are documented in the Parliamentary History and in abolition historiography. The speech is uncontested as the formal opening of Wilberforce\'s annual abolition campaign in Parliament.',
+        source: {
+          externalId: 'src:brycchan-carey-wilberforce-1789',
+          name: 'Brycchan Carey, "William Wilberforce\'s 1789 Abolition Speech" — scholarly transcription and commentary.',
+          url: 'https://brycchancarey.com/abolition/wilberforce2.htm',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Liverpool & Manchester Railway opens; first railway passenger fatality ──
+  {
+    externalId: 'trajectory:liverpool-manchester-railway-1830',
+    text: 'On 15 September 1830 the Liverpool and Manchester Railway — the first inter-city railway worked solely by locomotives — opened, and during the ceremony MP William Huskisson was struck by the locomotive Rocket, becoming the first widely reported railway passenger fatality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1830-09-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1830-09-15',
+        datePrecision: 'DAY',
+        reason: 'At the Parkside stop on the opening day, Huskisson alighted from the Duke of Wellington\'s train and was run over by Stephenson\'s Rocket; he died that evening. The opening and his death were reported immediately and extensively in the contemporary press.',
+        source: {
+          externalId: 'src:huskisson-railway-fatality-wikipedia',
+          name: 'William Huskisson — opening of the Liverpool and Manchester Railway and his death, 15 September 1830.',
+          url: 'https://en.wikipedia.org/wiki/William_Huskisson',
+          publishedAt: '1830-09-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1830-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date and circumstances of the opening and of Huskisson\'s death are uncontested in railway history; the event is the standard reference point for the start of the modern passenger-railway era and for the first widely publicised railway fatality.',
+        source: {
+          externalId: 'src:history-today-first-fatalities',
+          name: 'History Today, "First Fatalities" — account of the Liverpool & Manchester Railway opening and Huskisson\'s death.',
+          url: 'https://www.historytoday.com/first-fatalities',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Little Bighorn ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:little-bighorn-1876',
+    text: 'On 25–26 June 1876 a combined Lakota, Northern Cheyenne, and Arapaho force decisively defeated the US 7th Cavalry at the Little Bighorn River in Montana Territory, killing Lt. Col. George Armstrong Custer and over 260 of his men.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1876-06-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1876-06-25',
+        datePrecision: 'DAY',
+        reason: 'Custer\'s immediate command was annihilated on 25 June 1876; the surviving Reno–Benteen battalions held a defensive position into 26 June. News reached the eastern United States in early July and was reported as a national shock during the centennial celebrations.',
+        source: {
+          externalId: 'src:nps-little-bighorn',
+          name: 'National Park Service, Little Bighorn Battlefield National Monument — history and culture.',
+          url: 'https://www.nps.gov/libi/learn/historyculture/index.htm',
+          publishedAt: '1876-06-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1876-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The outcome is corroborated by US Army casualty rolls, the Reno Court of Inquiry testimony (1879), Lakota and Cheyenne oral accounts, and the burial record of the dead. No source disputes the date or the destruction of Custer\'s command.',
+        source: {
+          externalId: 'src:little-bighorn-wikipedia',
+          name: 'Battle of the Little Bighorn — combatants, date (25–26 June 1876), and outcome.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Little_Bighorn',
+          publishedAt: '1879-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After a 1983 grass fire exposed the battlefield, systematic archaeological survey (1984–85) mapped fired cartridge cases and human remains, reconstructing troop movements and physically corroborating the literary and oral accounts of the battle.',
+        source: {
+          externalId: 'src:little-bighorn-archaeology',
+          name: 'Battlefield archaeology of the Little Bighorn (1984–85 surveys) — physical corroboration of the battle.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Little_Bighorn',
+          publishedAt: '1985-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Wounded Knee Massacre ───────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:wounded-knee-massacre-1890',
+    text: 'On 29 December 1890 US 7th Cavalry troops killed some 250–300 Lakota — mostly Spotted Elk\'s (Big Foot\'s) band of Miniconjou — at Wounded Knee Creek on the Pine Ridge Reservation, South Dakota.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1890-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1890-12-29',
+        datePrecision: 'DAY',
+        reason: 'During a disarmament of Spotted Elk\'s band, a shot triggered indiscriminate firing, including Hotchkiss guns turned on fleeing people. The killings were reported within days by the Army and the press, and initially framed as the "Battle of Wounded Knee."',
+        source: {
+          externalId: 'src:wounded-knee-wikipedia',
+          name: 'Wounded Knee Massacre — date (29 December 1890), location, perpetrators, and death toll.',
+          url: 'https://en.wikipedia.org/wiki/Wounded_Knee_Massacre',
+          publishedAt: '1890-12-30',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1891-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The death toll and circumstances are corroborated by the Army\'s own investigation, the burial party\'s records, survivor testimony collected by the Office of Indian Affairs, and ethnographer James Mooney\'s 1896 study for the Bureau of American Ethnology.',
+        source: {
+          externalId: 'src:mooney-ghost-dance-1896',
+          name: 'James Mooney, "The Ghost-Dance Religion and the Sioux Outbreak of 1890" (Bureau of American Ethnology, 1896).',
+          url: 'https://en.wikipedia.org/wiki/Wounded_Knee_Massacre',
+          publishedAt: '1896-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-01-01',
+        datePrecision: 'YEAR',
+        reason: 'On the centennial, the 101st US Congress passed a concurrent resolution expressing "deep regret" for the killings at Wounded Knee, formally acknowledging the event as a massacre rather than a battle and reinforcing the settled factual record.',
+        source: {
+          externalId: 'src:wounded-knee-congress-1990',
+          name: 'U.S. Congress, concurrent resolution expressing regret for the Wounded Knee Massacre (1990).',
+          url: 'https://en.wikipedia.org/wiki/Wounded_Knee_Massacre',
+          publishedAt: '1990-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
