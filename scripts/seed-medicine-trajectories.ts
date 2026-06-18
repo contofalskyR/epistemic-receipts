@@ -6118,6 +6118,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & HORMONES ERA (1894–1960)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Allen–Doisy ovarian hormone / estrogen — 1923 ───────────────────────────
+  {
+    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
+    text: 'Edgar Allen and Edward A. Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid produced characteristic estrus changes in spayed test animals, establishing the existence of a specific ovarian hormone (later named estrogen) and a quantitative bioassay (the Allen–Doisy test) for it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-09-08',
+        datePrecision: 'DAY',
+        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA (1923;81:819–821), showing that follicular-fluid extract induced cornification of the vaginal epithelium and estrus in ovariectomized rodents. This recorded in the expert literature the claim that the ovary secretes a discrete chemical hormone and provided the first reproducible bioassay to detect and measure it, founding the field of estrogen endocrinology.',
+        source: {
+          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
+          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819–821. (Landmark article reproduced JAMA. 1983;250(19):2681–2683.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
+          publishedAt: '1923-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Doisy, working with Clement Veler and Sidney Thayer, isolated pure crystalline estrone (\'theelin\') from pregnancy urine (announced at the 13th International Physiological Congress, Boston, August 1929; published as \'The preparation of the crystalline follicular ovarian hormone: theelin,\' J Biol Chem 1930;87:357–371), with Adolf Butenandt crystallizing the same compound independently. Reducing the bioassay-defined hormone to a defined, weighable chemical substance settled the claim that the ovarian hormone was a single isolable molecule and made standardized estrogen therapy and synthesis possible.',
+        source: {
+          externalId: 'src:doisy-crystalline-theelin-jbc-1930',
+          name: 'Doisy EA, Veler CD, Thayer S. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87:357–371.',
+          url: 'https://www.jbc.org/article/S0021-9258(19)66427-6/pdf',
+          publishedAt: '1930-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Halsted radical mastectomy — 1894 → 2002 ────────────────────────────────
+  {
+    externalId: 'trajectory:halsted-radical-mastectomy-breast-cancer-1894',
+    text: 'William Stewart Halsted reported in Annals of Surgery in 1894 that en bloc removal of the entire breast, underlying pectoral muscles, and axillary lymph nodes (the radical mastectomy) reduced local recurrence of breast cancer to roughly 6% in 50 cases at Johns Hopkins, establishing the claim that maximally wide anatomical resection was necessary to cure breast cancer.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1894-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1894-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Halsted published \'The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894\' (Annals of Surgery 1894;20:497–555), reporting local-recurrence rates of about 6% versus the 51–82% of leading European surgeons. The dramatic results rapidly established the radical mastectomy as the unquestioned standard of care for breast cancer for the better part of a century, embodying the doctrine that cancer spreads by contiguous local extension and is cured by ever-wider resection.',
+        source: {
+          externalId: 'src:halsted-radical-mastectomy-annals-1894',
+          name: 'Halsted WS. The results of operations for the cure of cancer of the breast performed at the Johns Hopkins Hospital from June, 1889, to January, 1894. Ann Surg. 1894;20(5):497–555.',
+          url: 'https://embryo.asu.edu/pages/results-operations-cure-cancer-breast-performed-johns-hopkins-hospital-june-1889-january-1894',
+          publishedAt: '1894-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-08-22',
+        datePrecision: 'DAY',
+        reason: 'Fisher and the NSABP reported 25-year follow-up of the randomized B-04 trial (NEJM 2002;347:567–575), which had compared radical mastectomy with total mastectomy with or without radiation: there was no significant difference in disease-free survival, distant-disease-free survival, or overall survival. The trial directly refuted the Halstedian rationale that wider en bloc resection improves cure, confirming that outcomes are governed by occult micrometastatic spread, and the disfiguring radical mastectomy was abandoned in favor of less extensive surgery.',
+        source: {
+          externalId: 'src:fisher-nsabp-b04-25yr-nejm-2002',
+          name: 'Fisher B, Jeong J-H, Anderson S, Bryant J, Fisher ER, Wolmark N. Twenty-five-year follow-up of a randomized trial comparing radical mastectomy, total mastectomy, and total mastectomy followed by irradiation. N Engl J Med. 2002;347(8):567–575.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12192016/',
+          publishedAt: '2002-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Premarin conjugated estrogens for menopause — 1942 → 2004 ───────────────
+  {
+    externalId: 'trajectory:premarin-conjugated-estrogens-menopause-1942',
+    text: 'The U.S. Food and Drug Administration approved Premarin (conjugated equine estrogens, Wyeth-Ayerst) in 1942 for the treatment of menopausal symptoms such as hot flashes, establishing it as a safe and effective hormone therapy for menopausal women.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1942-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1942 the FDA approved conjugated equine estrogens (Premarin), extracted from the urine of pregnant mares, for relief of menopausal symptoms — one of the first products cleared under the 1938 Federal Food, Drug, and Cosmetic Act\'s new safety-review regime. Institutional approval settled the claim that conjugated estrogen replacement was a safe, effective treatment for menopause, and Premarin went on to become one of the most prescribed drugs in the United States.',
+        source: {
+          externalId: 'src:stefanick-estrogens-history-amjmed-2005',
+          name: 'Stefanick ML. Estrogens and progestins: background and history, trends in use, and guidelines and regimens approved by the US Food and Drug Administration. Am J Med. 2005;118(12 Suppl 2):64–73.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16414329/',
+          publishedAt: '2005-12-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-14',
+        datePrecision: 'DAY',
+        reason: 'The Women\'s Health Initiative reported the estrogen-alone arm (conjugated equine estrogen — i.e., Premarin — in 10,739 women with prior hysterectomy; JAMA 2004;291:1701–1712); the NIH had stopped the trial early on 29 February 2004 because CEE increased the risk of stroke (hazard ratio 1.39) without reducing coronary heart disease. The first large randomized trial of Premarin itself overturned the assumption of net cardiovascular benefit and threw the long-settled safety premise of conjugated-estrogen therapy into dispute, sharply curtailing its use.',
+        source: {
+          externalId: 'src:whi-estrogen-alone-cee-jama-2004',
+          name: 'Women\'s Health Initiative Steering Committee. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701–1712.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
+          publishedAt: '2004-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Enovid oral contraceptive FDA approval — 1960 → 1968 ────────────────────
+  {
+    externalId: 'trajectory:enovid-oral-contraceptive-fda-approval-1960',
+    text: 'The U.S. Food and Drug Administration approved Enovid (mestranol/norethynodrel, G.D. Searle) for use as an oral contraceptive in 1960, establishing the first hormonal birth-control pill as a safe and effective means of preventing pregnancy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1960-06-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-06-23',
+        datePrecision: 'DAY',
+        reason: 'After G.D. Searle filed in 1959 to market Enovid (already sold since 1957 for menstrual disorders) for contraception, the FDA announced its decision to approve on 11 May 1960 and the clearance to market Enovid as an oral contraceptive took effect on 23 June 1960. The first regulatory approval of a hormonal contraceptive institutionally settled the claim that an oral steroid could safely and effectively prevent pregnancy, launching the modern era of the birth-control pill.',
+        source: {
+          externalId: 'src:planned-parenthood-pill-history-enovid-1960',
+          name: 'Planned Parenthood Federation of America. Birth Control — A History of the Pill (fact sheet documenting FDA approval of Enovid, 1960).',
+          url: 'https://www.plannedparenthood.org/files/1514/3518/7100/Pill_History_FactSheet.pdf',
+          publishedAt: '2015-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-04-27',
+        datePrecision: 'DAY',
+        reason: 'Inman and Vessey reported in the BMJ (1968;2(5599):193–199) a controlled investigation of deaths from pulmonary, coronary, and cerebral thrombosis and embolism in women of childbearing age, demonstrating a significant association between oral-contraceptive use and fatal thromboembolism. This and parallel UK studies converted the pill\'s settled safety profile into an active safety controversy, prompting U.S. Senate (Nelson Pill) hearings, the first patient package insert, and a shift to lower-dose formulations; high-estrogen Enovid was eventually withdrawn in 1988.',
+        source: {
+          externalId: 'src:inman-vessey-oc-thromboembolism-bmj-1968',
+          name: 'Inman WHW, Vessey MP. Investigation of deaths from pulmonary, coronary, and cerebral thrombosis and embolism in women of child-bearing age. Br Med J. 1968;2(5599):193–199.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1985904/',
+          publishedAt: '1968-04-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
