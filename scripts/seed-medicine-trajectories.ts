@@ -9119,6 +9119,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ORPHAN DRUGS, RARE DISEASE THERAPY & POST-MARKET REVERSALS (2001–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sapropterin / Kuvan — first PKU drug 2007 ───────────────────────────────
+  {
+    externalId: 'trajectory:sapropterin-kuvan-first-pku-drug-2007',
+    text: 'On 13 December 2007 the U.S. FDA approved sapropterin dihydrochloride (Kuvan, BioMarin, NDA 022181), a synthetic form of the cofactor tetrahydrobiopterin (6R-BH4), as the first drug therapy for phenylketonuria (PKU), establishing pharmacologic reduction of blood phenylalanine in BH4-responsive patients as effective adjunct to the long-standing dietary-only management of the inborn error of metabolism.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-08-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-08-11',
+        datePrecision: 'DAY',
+        reason: 'Levy and colleagues published a phase III randomised placebo-controlled trial in The Lancet showing that sapropterin (6R-BH4) significantly reduced blood phenylalanine concentrations in BH4-responsive PKU patients versus placebo. This provided the first controlled evidence that a drug, rather than dietary protein restriction alone, could lower phenylalanine in PKU, recording the efficacy claim in the peer-reviewed literature.',
+        source: {
+          externalId: 'src:levy-sapropterin-pku-lancet-2007',
+          name: 'Levy HL, Milanowski A, Chakrapani A, et al. Efficacy of sapropterin dihydrochloride (tetrahydrobiopterin, 6R-BH4) for reduction of phenylalanine concentration in patients with phenylketonuria: a phase III randomised placebo-controlled study. Lancet. 2007 Aug 11;370(9586):504-510.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17693179/',
+          publishedAt: '2007-08-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-12-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kuvan as the first specific drug therapy for PKU, to reduce blood phenylalanine in patients with BH4-responsive hyperphenylalaninemia in conjunction with a phenylalanine-restricted diet. The approval settled, as institutional fact, that pharmacologic cofactor supplementation is a recognized treatment for an inborn error of metabolism previously managed only by diet, and opened the modern era of PKU drug therapy.',
+        source: {
+          externalId: 'src:biomarin-fda-kuvan-approval-2007',
+          name: 'BioMarin Pharmaceutical. BioMarin Announces FDA Approval for Kuvan (sapropterin dihydrochloride) — first drug therapy approved for phenylketonuria (PKU). 13 December 2007.',
+          url: 'https://www.biomarin.com/news/press-releases/biomarin-announces-fda-approval-for-kuvan/',
+          publishedAt: '2007-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Galsulfase / Naglazyme — first MPS VI ERT 2005 ─────────────────────────
+  {
+    externalId: 'trajectory:galsulfase-naglazyme-first-mps-vi-ert-2005',
+    text: 'On 31 May 2005 the U.S. FDA approved galsulfase (Naglazyme, BioMarin, BLA 125117), a recombinant human N-acetylgalactosamine 4-sulfatase (arylsulfatase B), as the first specific treatment for mucopolysaccharidosis VI (Maroteaux-Lamy syndrome), establishing enzyme replacement therapy as effective for the orphan lysosomal storage disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-05-31',
+        datePrecision: 'DAY',
+        reason: 'Following a randomized placebo-controlled phase 3 trial showing improved endurance (walking and stair-climbing capacity) and reduced urinary glycosaminoglycans, the FDA granted Naglazyme orphan-drug approval as the first therapy for MPS VI, a deficiency of N-acetylgalactosamine 4-sulfatase. The approval settled weekly enzyme infusion as the standard of care for a previously untreatable lysosomal storage disease, extending the ERT paradigm established for Gaucher and MPS I to MPS VI.',
+        source: {
+          externalId: 'src:fda-naglazyme-galsulfase-label-2005',
+          name: 'FDA. Naglazyme (galsulfase) prescribing information / original product label, BLA 125117 (approved 31 May 2005).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/125117_0000_lbl.pdf',
+          publishedAt: '2005-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Idursulfase / Elaprase — first MPS II ERT 2006 ──────────────────────────
+  {
+    externalId: 'trajectory:idursulfase-elaprase-first-mps-ii-ert-2006',
+    text: 'On 24 July 2006 the U.S. FDA approved idursulfase (Elaprase, Shire, BLA 125151), a recombinant human iduronate-2-sulfatase, as the first treatment for mucopolysaccharidosis II (Hunter syndrome), establishing enzyme replacement therapy as effective for the X-linked orphan lysosomal storage disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-07-24',
+        datePrecision: 'DAY',
+        reason: 'On the basis of a phase II/III randomized study (Muenzer et al., 96 patients) showing significant improvement in a composite endpoint of six-minute walk distance and pulmonary function on weekly idursulfase versus placebo, the FDA approved Elaprase as the first and only specific therapy for Hunter syndrome (MPS II), caused by iduronate-2-sulfatase deficiency. The approval settled weekly enzyme infusion as the standard of care for a previously untreatable disease.',
+        source: {
+          externalId: 'src:muenzer-idursulfase-mps-ii-genetmed-2006',
+          name: 'Muenzer J, Wraith JE, Beck M, et al. A phase II/III clinical study of enzyme replacement therapy with idursulfase in mucopolysaccharidosis II (Hunter syndrome). Genet Med. 2006 Aug;8(8):465-473.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16912578/',
+          publishedAt: '2006-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Drotrecogin alfa (Xigris) — sepsis approval reversal 2001/2011 ──────────
+  {
+    externalId: 'trajectory:drotrecogin-xigris-sepsis-approval-reversal-2001',
+    text: 'Drotrecogin alfa (activated) (Xigris, Eli Lilly), a recombinant human activated protein C, was approved by the U.S. FDA on 21 November 2001 as the first drug to reduce mortality in adults with severe sepsis at high risk of death — a claim Lilly reversed on 25 October 2011 by withdrawing the drug worldwide after the confirmatory PROWESS-SHOCK trial found no survival benefit.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-03-08',
+        datePrecision: 'DAY',
+        reason: 'The PROWESS trial (Bernard et al., NEJM) reported that recombinant human activated protein C reduced 28-day all-cause mortality in severe sepsis by an absolute 6.1% (relative reduction ~19%) versus placebo, and was stopped early for efficacy. This recorded in the literature the first apparently effective pharmacologic therapy for a syndrome with no specific treatment.',
+        source: {
+          externalId: 'src:bernard-prowess-apc-sepsis-nejm-2001',
+          name: 'Bernard GR, Vincent JL, Laterre PF, et al. Efficacy and safety of recombinant human activated protein C for severe sepsis. N Engl J Med. 2001 Mar 8;344(10):699-709.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11236773/',
+          publishedAt: '2001-03-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-11-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Xigris to reduce mortality in adults with severe sepsis at high risk of death, the first drug ever approved for sepsis. The approval — granted by a narrow advisory-committee margin and based on a single pivotal trial — institutionally settled activated protein C as a treatment and made it the standard of care in many ICUs despite ongoing debate over its bleeding risk and the strength of the evidence.',
+        source: {
+          externalId: 'src:fda-xigris-drotrecogin-withdrawal-communication-2011',
+          name: 'FDA. Drug Safety Communication: Voluntary market withdrawal of Xigris [drotrecogin alfa (activated)] due to failure to show a survival benefit (documenting the Nov 2001 approval and Oct 2011 withdrawal). 25 October 2011.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-voluntary-market-withdrawal-xigris-drotrecogin-alfa-activated-due',
+          publishedAt: '2011-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-10-25',
+        datePrecision: 'DAY',
+        reason: 'After the FDA-required confirmatory PROWESS-SHOCK trial showed no statistically significant reduction in 28-day mortality in septic shock, Eli Lilly withdrew Xigris from all markets worldwide. The withdrawal reversed the decade-old claim that activated protein C improves sepsis survival and became a landmark post-market surveillance case of an early-stopped single-trial approval overturned by a rigorous confirmatory study.',
+        source: {
+          externalId: 'src:lilly-xigris-worldwide-withdrawal-2011',
+          name: 'Eli Lilly and Company. Lilly Announces Withdrawal of Xigris Following Recent Clinical Trial Results (PROWESS-SHOCK). 25 October 2011.',
+          url: 'https://investor.lilly.com/news-releases/news-release-details/lilly-announces-withdrawal-xigrisr-following-recent-clinical',
+          publishedAt: '2011-10-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nitisinone / Orfadin — first tyrosinemia treatment 2002 ─────────────────
+  {
+    externalId: 'trajectory:nitisinone-orfadin-first-tyrosinemia-treatment-2002',
+    text: 'On 18 January 2002 the U.S. FDA approved nitisinone (Orfadin, Swedish Orphan/NDA 021232), an inhibitor of 4-hydroxyphenylpyruvate dioxygenase repurposed from a herbicide compound, as the first drug treatment for hereditary tyrosinemia type 1 — a previously fatal pediatric metabolic disease managed only by diet or liver transplantation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-10-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-10-03',
+        datePrecision: 'DAY',
+        reason: 'Lindstedt and colleagues reported in The Lancet that NTBC (nitisinone), an inhibitor of 4-hydroxyphenylpyruvate dioxygenase, reduced toxic tyrosine-pathway metabolites and produced clinical improvement in five children with hereditary tyrosinemia type 1. This recorded the first evidence that pharmacologic blockade upstream of the deficient enzyme could halt the disease, offering an alternative to liver transplantation.',
+        source: {
+          externalId: 'src:lindstedt-ntbc-tyrosinemia-lancet-1992',
+          name: 'Lindstedt S, Holme E, Lock EA, Hjalmarson O, Strandvik B. Treatment of hereditary tyrosinaemia type I by inhibition of 4-hydroxyphenylpyruvate dioxygenase. Lancet. 1992 Oct 3;340(8823):813-817.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1383656/',
+          publishedAt: '1992-10-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-01-18',
+        datePrecision: 'DAY',
+        reason: 'On the basis of a study of more than 180 patients showing roughly 88% four-year survival in early-treated infants versus ~29% historically with diet alone, the FDA approved Orfadin as the first drug for hereditary tyrosinemia type 1. The approval settled nitisinone plus dietary restriction as the standard of care, transforming a once-fatal disease into a manageable condition and exemplifying mechanism-based orphan-drug repurposing.',
+        source: {
+          externalId: 'src:fda-orfadin-nitisinone-label-2002',
+          name: 'FDA. Orfadin (nitisinone) capsules prescribing information / original label, NDA 021232 (approved 18 January 2002).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2002/21232lbl.pdf',
+          publishedAt: '2002-01-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
