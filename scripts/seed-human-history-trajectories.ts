@@ -56826,6 +56826,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── King Afonso I of Kongo protests the Atlantic slave trade (1526) ──────────
+  {
+    externalId: 'trajectory:afonso-kongo-slave-trade-letter-1526',
+    text: 'On 6 July 1526, King Afonso I (Nzinga Mbemba) of Kongo wrote to King João III of Portugal protesting that Portuguese and São Tomé merchants were kidnapping and enslaving his free subjects — including nobles and members of his own family — and "completely depopulating" his kingdom; it is among the earliest documented African royal protests against the Atlantic slave trade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1526-07-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1526-07-06',
+        datePrecision: 'DAY',
+        reason: 'Writing in Portuguese to King João III, Afonso I complains that the merchants licensed under the Kongo–Portugal trade were seizing free Kongolese — "children of this country, sons of our nobles and vassals, even people of our own family" — and shipping them into slavery, with the result that "so great is the corruption and licentiousness that our country is being completely depopulated." He asks the king to send only priests and teachers, not goods, and states it is his will that there be no trade or transport of slaves in his realm. The letter was written at Kongo on the sixth day of July 1526 and dispatched to Lisbon.',
+        source: {
+          externalId: 'src:nzinga-mbemba-letter-1526',
+          name: 'Letter of Nzinga Mbemba (Afonso I) of Kongo to King João III of Portugal, 6 July 1526 — excerpt and translation.',
+          url: 'https://worldhistorycommons.org/excerpt-letter-nzinga-mbemba-portuguese-king-joao-iii',
+          publishedAt: '1526-07-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The original letters survive in the Portuguese royal archive (Arquivo Nacional da Torre do Tombo) and were published in full by António Brásio in the Monumenta Missionaria Africana (from 1952). Modern historiography of the Kingdom of Kongo and the early Atlantic slave trade treats Afonso\'s 1526 correspondence as an authentic and much-cited documentary record, with debate confined to its interpretation rather than its existence or date.',
+        source: {
+          externalId: 'src:afonso-kongo-wikipedia',
+          name: 'Afonso I of Kongo — 1526 correspondence with João III of Portugal protesting the slave trade.',
+          url: 'https://en.wikipedia.org/wiki/Afonso_I_of_Kongo',
+          publishedAt: '2020-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Wayna Daga — death of Imam Ahmad ends the Adal conquest (1543) ─
+  {
+    externalId: 'trajectory:battle-of-wayna-daga-1543',
+    text: 'On 21 February 1543, at Wayna Daga near Lake Tana, the combined Ethiopian army of Emperor Gelawdewos and a Portuguese musketeer contingent defeated the Adal–Ottoman forces of Imam Ahmad ibn Ibrahim al-Ghazi ("Gran"), who was killed in the battle — breaking the Muslim conquest that had overrun most of the Christian Ethiopian highlands.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1543-02-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1543-02-21',
+        datePrecision: 'DAY',
+        reason: 'After the Adal–Ottoman conquest had overrun much of highland Ethiopia, Emperor Gelawdewos, reinforced by the surviving Portuguese arquebusiers brought by Cristóvão da Gama, met Imam Ahmad\'s army at Wayna Daga. Imam Ahmad was shot and killed during the engagement and his forces broke, ending the conquest. The clash and the Imam\'s death were recorded by the Portuguese eyewitness Miguel de Castanhoso and in the royal chronicle of Gelawdewos.',
+        source: {
+          externalId: 'src:castanhoso-wayna-daga-1564',
+          name: 'Miguel de Castanhoso, account of Dom Cristóvão da Gama\'s expedition to Ethiopia (written c. 1564) — eyewitness narrative including the battle of Wayna Daga and the death of Imam Ahmad.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Wayna_Daga',
+          publishedAt: '1564-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Portuguese eyewitness account of Castanhoso and the Geʿez royal chronicle of Gelawdewos independently record the battle and the death of Imam Ahmad in early 1543. Modern historiography of the Ethiopian–Adal War (Futuh al-Habasa period) treats Wayna Daga and the Imam\'s death as the decisive turning point that ended the conquest and preserved the Christian Solomonic state, a settled point with debate confined to the precise day and the identity of who fired the fatal shot.',
+        source: {
+          externalId: 'src:wayna-daga-wikipedia',
+          name: 'Battle of Wayna Daga (21 February 1543) — Ethiopian Empire & Portugal vs. Adal Sultanate & Ottoman Empire.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Wayna_Daga',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Susenyos I restores the Orthodox faith, ending Catholic Ethiopia (1632) ──
+  {
+    externalId: 'trajectory:susenyos-restores-orthodoxy-1632',
+    text: 'On 14 June 1632, Emperor Susenyos I of Ethiopia — who had converted to Roman Catholicism and made it the state religion under Jesuit influence — issued a proclamation restoring freedom to follow the Ethiopian Orthodox (Tewahedo) faith, reversing the Catholic establishment; he abdicated in favour of his son Fasilides, who expelled the Jesuits.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1622-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1622-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Under the influence of the Jesuit missionary Pedro Páez, Emperor Susenyos publicly converted to Roman Catholicism in 1622, and with the arrival of the Catholic Patriarch Afonso Mendes (1626) Catholicism was imposed as the state religion of Ethiopia — Latin rites, rebaptism, and the Roman calendar were enforced over the ancient Alexandrian (Tewahedo) usages, provoking widespread revolts.',
+        source: {
+          externalId: 'src:susenyos-catholic-conversion-1622',
+          name: 'Susenyos I of Ethiopia — public conversion to Catholicism (1622) and the Jesuit mission of Pedro Páez and Patriarch Afonso Mendes.',
+          url: 'https://en.wikipedia.org/wiki/Susenyos_I',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1632-06-14',
+        datePrecision: 'DAY',
+        reason: 'Worn down by years of rebellion and bloodshed over the imposed Latin rite, Susenyos issued a proclamation on 14 June 1632 declaring that those who wished could follow the Catholic faith but no one would be compelled, effectively restoring the Ethiopian Orthodox Church. He soon abdicated in favour of his son Fasilides, who expelled the Jesuits and barred Catholic missionaries — permanently reversing the Catholic establishment. The reversal is documented in the Jesuit accounts (Manuel de Almeida) and the Geʿez royal chronicle of Susenyos.',
+        source: {
+          externalId: 'src:susenyos-orthodox-restoration-1632',
+          name: 'Susenyos I of Ethiopia — proclamation of 14 June 1632 restoring the Orthodox faith and subsequent abdication.',
+          url: 'https://en.wikipedia.org/wiki/Susenyos_I',
+          publishedAt: '2015-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Mbwila — death of António I and the unravelling of Kongo (1665) ─
+  {
+    externalId: 'trajectory:battle-of-mbwila-1665',
+    text: 'On 29 October 1665, at Mbwila (Ambuila), a Portuguese-led force under Luís Lopes de Sequeira defeated the army of the Kingdom of Kongo; King António I was killed and beheaded, his crown and sceptre were sent to Lisbon, and the lack of an heir plunged Kongo into a half-century of civil war and decentralization.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1665-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1665-10-29',
+        datePrecision: 'DAY',
+        reason: 'A Portuguese expeditionary force from Angola, with African allies and firearms, met the Kongolese royal army at Mbwila. After the Kongolese attacks failed against the Portuguese formation, King António I was killed in the final assault and beheaded; the crown and sceptre of Kongo were taken as trophies to Lisbon. The battle and the king\'s death were reported immediately in Portuguese dispatches and Capuchin missionary accounts.',
+        source: {
+          externalId: 'src:mbwila-1665-account',
+          name: 'Battle of Mbwila (Ambuila), 29 October 1665 — Portuguese and Capuchin contemporary accounts of the defeat and death of King António I of Kongo.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mbwila',
+          publishedAt: '1665-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Contemporary Portuguese records and the Capuchin chronicles (e.g., António Cavazzi) fix the date, the defeat, and the death of António I. Modern historiography of the Kingdom of Kongo treats Mbwila as a decisive turning point: the absence of an immediate heir triggered the Kongo Civil War, fragmenting the once-centralized kingdom — a settled judgment in the scholarship.',
+        source: {
+          externalId: 'src:mbwila-wikipedia',
+          name: 'Battle of Mbwila (29 October 1665) — Portugal vs. Kingdom of Kongo.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mbwila',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Accademia dei Lincei founded (1603) ─────────────────────────────────────
   {
     externalId: 'trajectory:accademia-dei-lincei-founded-1603',
