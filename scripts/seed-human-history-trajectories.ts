@@ -53227,6 +53227,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Edict of Serdica — Galerius ends the Great Persecution, 30 April 311 CE ──
+  {
+    externalId: 'trajectory:edict-of-serdica-311',
+    text: 'On 30 April 311 CE the emperor Galerius — issuing from Serdica (modern Sofia) and posting the text at Nicomedia — proclaimed the Edict of Toleration, ending the Diocletianic Great Persecution and for the first time granting Christians legal permission "again to be Christians and to re-establish their places of assembly."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0311-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0311-04-30',
+        datePrecision: 'DAY',
+        reason: 'Mortally ill, Galerius reversed the persecution he had helped launch in 303, conceding that the attempt to force Christians back to the old rites had failed. Lactantius, a contemporary resident at the imperial court, transcribed the edict in full and dated its promulgation precisely: "This edict was promulgated at Nicomedia on the day preceding the kalends of May, in the eighth consulship of Galerius" — i.e. 30 April 311.',
+        source: {
+          externalId: 'src:lactantius-mort-pers-34',
+          name: 'Lactantius, De Mortibus Persecutorum 34 (the edict of Galerius). (c. 315 CE)',
+          url: 'https://www.newadvent.org/fathers/0705.htm',
+          publishedAt: '0315-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The edict is independently preserved by Eusebius (Ecclesiastical History 8.17) in a Greek version alongside Lactantius\'s Latin, and modern scholarship treats it as the first imperial act legalising Christianity — two years before the better-known Edict of Milan. The event, its content, and the 30 April 311 date are settled across the sources.',
+        source: {
+          externalId: 'src:wikipedia-edict-of-serdica',
+          name: 'Wikipedia, "Edict of Serdica" — Galerius, issued at Serdica, published at Nicomedia 30 April 311; sources Lactantius and Eusebius.',
+          url: 'https://en.wikipedia.org/wiki/Edict_of_Serdica',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Adrianople (324) — Constantine defeats Licinius in Thrace ──────
+  {
+    externalId: 'trajectory:battle-of-adrianople-324',
+    text: 'On 3 July 324 CE Constantine I defeated his co-emperor Licinius at Adrianople in Thrace, the decisive land victory of their second civil war that — completed at Chrysopolis that September — left Constantine sole ruler of the Roman Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0324-07-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0324-07-03',
+        datePrecision: 'DAY',
+        reason: 'Licinius had fortified a strong position on the Hebrus near Adrianople; Constantine forced the river and broke his army, driving the survivors toward Byzantium. The pagan historian Zosimus, drawing on earlier sources, preserves the fullest tactical narrative of the Constantine–Licinius campaign in his New History, Book 2.',
+        source: {
+          externalId: 'src:zosimus-2-adrianople-324',
+          name: 'Zosimus, New History (Historia Nova), Book 2 (the war between Constantine and Licinius). (c. 500 CE)',
+          url: 'https://www.tertullian.org/fathers/zosimus02_book2.htm',
+          publishedAt: '0500-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date of 3 July 324 is preserved by the near-contemporary breviarist Eutropius and is undisputed in modern scholarship; the battle and Constantine\'s victory are treated as a documented hinge between the divided Tetrarchic empire and Constantine\'s sole rule.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-adrianople-324',
+          name: 'Wikipedia, "Battle of Adrianople (324)" — fought in Thrace on 3 July 324, citing Eutropius.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Adrianople_(324)',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Mursa Major — Constantius II defeats Magnentius, 28 Sept 351 CE ─
+  {
+    externalId: 'trajectory:battle-of-mursa-major-351',
+    text: 'On 28 September 351 CE the eastern emperor Constantius II defeated the usurper Magnentius at Mursa in Pannonia (modern Osijek, Croatia) in one of the bloodiest battles of the century — a Roman-on-Roman slaughter contemporaries judged a disaster that left the frontier dangerously weakened.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0351-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0351-09-28',
+        datePrecision: 'DAY',
+        reason: 'The armies met on the plain before Mursa and fought into the night before Magnentius\'s line broke; Zosimus calls it a battle "such as had not occurred before in the course of this war." Contemporaries dwelt on the scale of the casualties — tens of thousands of Roman soldiers lost on both sides — as a self-inflicted wound to imperial strength.',
+        source: {
+          externalId: 'src:zosimus-2-mursa-351',
+          name: 'Zosimus, New History (Historia Nova), Book 2 (the battle before Mursa). (c. 500 CE)',
+          url: 'https://www.tertullian.org/fathers/zosimus02_book2.htm',
+          publishedAt: '0500-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date of 28 September 351, Constantius\'s victory, and the catastrophic loss of life are corroborated by Eutropius and other late-Roman writers and are settled in modern scholarship, which treats Mursa as one of the most costly battles in Roman military history.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-mursa-major',
+          name: 'Wikipedia, "Battle of Mursa Major" — 28 September 351, Constantius II vs Magnentius at Mursa (Osijek).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Mursa_Major',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Theodosius I proclaimed Augustus at Sirmium — 19 January 379 CE ──────────
+  {
+    externalId: 'trajectory:theodosius-proclaimed-augustus-379',
+    text: 'On 19 January 379 CE the western emperor Gratian proclaimed Theodosius Augustus at Sirmium in Illyricum (modern Sremska Mitrovica, Serbia), giving the eastern empire a new senior ruler in the wake of the disaster at Adrianople.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0379-01-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0379-01-19',
+        datePrecision: 'DAY',
+        reason: 'With the eastern field army shattered and the emperor Valens dead at Adrianople five months earlier, Gratian elevated the Spanish-born general Theodosius to share the purple. The church historian Socrates Scholasticus records the act: "Having therefore proclaimed him emperor at Sirmium, a city of Illyricum, in the consulate of Ausonius and Olybrius... he divided with him the care of managing the war against the barbarians."',
+        source: {
+          externalId: 'src:socrates-he-5-2-theodosius',
+          name: 'Socrates Scholasticus, Ecclesiastical History 5.2 (the proclamation of Theodosius at Sirmium). (c. 440 CE)',
+          url: 'https://www.newadvent.org/fathers/26015.htm',
+          publishedAt: '0440-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The proclamation at Sirmium is dated to 19 January 379 by the contemporary Consularia Constantinopolitana and accepted in modern scholarship (Socrates gives 16 January). The accession of Theodosius — last ruler of a united empire — is a documented institutional fact.',
+        source: {
+          externalId: 'src:wikipedia-theodosius-i',
+          name: 'Wikipedia, "Theodosius I" — invested with the purple at Sirmium on 19 January 379.',
+          url: 'https://en.wikipedia.org/wiki/Theodosius_I',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Codex Theodosianus — first official codification of Roman law (438 CE) ────
   {
     externalId: 'trajectory:codex-theodosianus-438',
