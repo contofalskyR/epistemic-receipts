@@ -742,7 +742,7 @@ const TRAJECTORIES: Trajectory[] = [
         source: {
           externalId: 'src:caldeira-wickett-ocean-ph-nature-2003',
           name: 'Caldeira K, Wickett ME. Anthropogenic carbon and ocean pH. Nature. 2003;425(6956):365.',
-          url: 'https://www.pnas.org/doi/pdf/10.1073/pnas.1717312115',
+          url: 'https://www.nature.com/articles/425365a',
           publishedAt: '2003-09-25',
           methodologyType: 'primary',
         },
