@@ -11548,6 +11548,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY ERA (1949–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Lithium for mania — Cade 1949 ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:cade-lithium-mania-1949',
+    text: 'On 3 September 1949, Australian psychiatrist John Cade reported in the Medical Journal of Australia that lithium salts calmed and often resolved psychotic excitement in patients with mania, introducing the first effective pharmacological treatment for manic illness.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-09-03',
+        datePrecision: 'DAY',
+        reason: 'Cade, working at Bundoora Repatriation Mental Hospital in Melbourne, treated ten manic patients with lithium citrate and carbonate and observed that several previously chronic, agitated patients became calm enough for discharge. His paper \'Lithium salts in the treatment of psychotic excitement\' recorded the first claim that a simple ion could specifically treat a major psychiatric illness, predating chlorpromazine and helping launch psychopharmacology.',
+        source: {
+          externalId: 'src:cade-lithium-psychotic-excitement-1949',
+          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349–52. (Reprinted Bull World Health Organ. 2000;78(4):518–20.)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2560740/',
+          publishedAt: '1949-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-04-06',
+        datePrecision: 'DAY',
+        reason: 'After Mogens Schou\'s controlled trials in the 1950s–60s confirmed lithium\'s antimanic and prophylactic efficacy, the U.S. FDA approved lithium carbonate for acute mania on 6 April 1970 (and for maintenance therapy in 1974). Regulatory approval and global clinical adoption settled lithium as the standard mood-stabilizing treatment for bipolar disorder, a status it retains.',
+        source: {
+          externalId: 'src:wikipedia-lithium-medication-history',
+          name: 'Lithium (medication). Wikipedia (history and medical use sections).',
+          url: 'https://en.wikipedia.org/wiki/Lithium_(medication)',
+          publishedAt: '2026-06-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Iproniazid first MAOI antidepressant — 1957 ──────────────────────────────
+  {
+    externalId: 'trajectory:iproniazid-first-maoi-antidepressant-1957',
+    text: 'In December 1957, Harry Loomer, John Saunders, and Nathan Kline reported in Psychiatric Research Reports that the antitubercular drug iproniazid (Marsilid), a monoamine oxidase inhibitor, acted as a \'psychic energizer\' that lifted mood in depressed patients — establishing the first MAOI antidepressant, a claim later reversed for iproniazid itself.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Loomer, Saunders, and Kline published \'A clinical and pharmacodynamic evaluation of iproniazid as a psychic energizer,\' reporting that iproniazid energized rather than sedated withdrawn, depressed patients. This recorded the first claim that monoamine oxidase inhibition could treat depression, founding the MAOI antidepressant class alongside Kuhn\'s contemporaneous tricyclic work.',
+        source: {
+          externalId: 'src:loomer-saunders-kline-iproniazid-1957',
+          name: 'Loomer HP, Saunders JC, Kline NS. A clinical and pharmacodynamic evaluation of iproniazid as a psychic energizer. Psychiatr Res Rep Am Psychiatr Assoc. 1957;8:129–41.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13542681/',
+          publishedAt: '1957-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '1961-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Iproniazid was widely prescribed as an antidepressant after 1957, but mounting reports of severe, sometimes fatal hepatotoxicity (drug-induced hepatitis) led to its withdrawal from the U.S. market in 1961. While MAO inhibition as an antidepressant principle survived in safer successors, the specific claim that iproniazid was an acceptable antidepressant was reversed on safety grounds.',
+        source: {
+          externalId: 'src:lopez-munoz-history-antidepressants-2009',
+          name: 'López-Muñoz F, Alamo C. Monoaminergic neurotransmission: the history of the discovery of antidepressants from 1950s until today. Curr Pharm Des. 2009;15(14):1563–86.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3136031/',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── APA removes homosexuality from DSM — 1952 & 1973 ────────────────────────
+  {
+    externalId: 'trajectory:apa-homosexuality-removed-dsm-1973',
+    text: 'Homosexuality, classified as a sociopathic personality disturbance and mental disorder in DSM-I (1952) and DSM-II (1968), was a psychiatric claim reversed when the American Psychiatric Association\'s Board of Trustees voted on 15 December 1973 to remove homosexuality per se from the diagnostic manual.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1952-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The American Psychiatric Association\'s first Diagnostic and Statistical Manual (DSM-I, 1952) listed homosexuality as a \'sociopathic personality disturbance,\' carried forward in DSM-II (1968). This institutionally settled the classification of homosexuality as a mental disorder within mainstream American psychiatry.',
+        source: {
+          externalId: 'src:drescher-out-of-dsm-2015',
+          name: 'Drescher J. Out of DSM: Depathologizing Homosexuality. Behav Sci (Basel). 2015;5(4):565–75.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4695779/',
+          publishedAt: '2015-12-04',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-12-15',
+        datePrecision: 'DAY',
+        reason: 'After activist pressure and Robert Spitzer\'s review of the evidence that homosexuality met no clinical criterion for disorder in well-functioning individuals, the APA Board of Trustees voted on 15 December 1973 to delete homosexuality from DSM-II, replacing it with \'sexual orientation disturbance\' (a referendum of the membership upheld the decision in 1974). This reversed a two-decade institutional classification and is a landmark instance of medical depathologization.',
+        source: {
+          externalId: 'src:pace-spitzer-depathologization-2024',
+          name: 'Pace G. R. Spitzer and the depathologization of homosexuality: some considerations on the 50th anniversary. (PMC) 2024.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11083874/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Clozapine for treatment-resistant schizophrenia — 1988 ──────────────────
+  {
+    externalId: 'trajectory:clozapine-treatment-resistant-schizophrenia-1988',
+    text: 'On publication in September 1988 (Archives of General Psychiatry), John Kane and colleagues reported that clozapine was significantly more effective than chlorpromazine in treatment-resistant schizophrenia, establishing clozapine\'s unique efficacy and reviving a drug withdrawn after agranulocytosis deaths.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Clozapine had been largely abandoned after a 1975 cluster of fatal agranulocytosis cases in Finland. Kane, Honigfeld, Singer, and Meltzer\'s double-blind multicenter trial of 268 treatment-resistant patients found 30% responded to clozapine versus 4% to chlorpromazine, recording the claim that clozapine had unique efficacy where other antipsychotics failed and justifying its use under hematologic monitoring.',
+        source: {
+          externalId: 'src:kane-clozapine-treatment-resistant-1988',
+          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789–96.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3046553/',
+          publishedAt: '1988-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-09-26',
+        datePrecision: 'DAY',
+        reason: 'On 26 September 1989 the U.S. FDA approved clozapine (Clozaril, NDA 019758) for treatment-resistant schizophrenia, conditioned on mandatory weekly white-blood-cell monitoring to detect agranulocytosis. The approval institutionally settled clozapine as the benchmark agent for refractory schizophrenia and established the model of risk-managed reintroduction of a previously withdrawn drug.',
+        source: {
+          externalId: 'src:fda-clozaril-nda019758-1989',
+          name: 'U.S. FDA. CLOZARIL (clozapine) NDA 019758, original approval 26 September 1989. Drugs@FDA / FDA label history.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/019758s084lbl.pdf',
+          publishedAt: '1989-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
