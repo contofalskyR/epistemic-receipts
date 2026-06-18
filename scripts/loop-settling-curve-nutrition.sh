@@ -169,6 +169,8 @@ SEED FILE TO ADD TO: scripts/seed-nutrition-trajectories.ts
 VERIFIED JSON SPEC:
 ${JSON_SPEC}
 
+CRITICAL: Only perform the 5 steps below. Do NOT run any loop scripts, cron jobs, or start background processes. Do NOT execute loop-settling-curve-*.sh or any variant. Stop after step 5.
+
 Your job:
 1. Read scripts/seed-nutrition-trajectories.ts to understand the exact TypeScript format.
 2. Append each trajectory from the JSON spec to the TRAJECTORIES array, following EXACTLY the same structure. Preserve all existing entries.
