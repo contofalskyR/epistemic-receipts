@@ -50481,6 +50481,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN ADDENDUM (1400–1750): Reformation / New World / Ottoman / Mughal
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Calvin publishes the Institutes of the Christian Religion ───────────────
+  {
+    externalId: 'trajectory:calvin-institutes-1536',
+    text: 'John Calvin published the first edition of the Institutio Christianae Religionis (Institutes of the Christian Religion) in Basel in March 1536, providing the systematic theology of the Reformed branch of Protestantism.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1536-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1536-03-01',
+        datePrecision: 'MONTH',
+        reason: 'The first Latin edition, a compact six-chapter catechetical work printed in Basel by Thomas Platter and Balthasar Lasius, appears in March 1536 with a prefatory letter addressed to King Francis I of France defending the persecuted French evangelicals. The printed book is the contemporaneous primary record.',
+        source: {
+          externalId: 'src:calvin-institutes-1536-firstedition',
+          name: 'Calvin J. Institutio Christianae Religionis. Basel: Platter & Lasius, March 1536.',
+          url: 'https://en.wikipedia.org/wiki/Institutes_of_the_Christian_Religion',
+          publishedAt: '1536-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1559-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Calvin repeatedly revises and expands the work across editions culminating in the definitive 1559 Latin edition (four books, eighty chapters). The Institutes becomes the foundational systematic statement of Reformed (Calvinist) theology, transmitted in the complete English translation tradition; its authorship, date, and place of first publication are undisputed in the scholarly record.',
+        source: {
+          externalId: 'src:calvin-institutes-ccel',
+          name: 'Calvin J. Institutes of the Christian Religion (Beveridge translation of the 1559 edition). Christian Classics Ethereal Library.',
+          url: 'https://www.ccel.org/ccel/calvin/institutes.titlepage.html',
+          publishedAt: '1559-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First European sighting of the Grand Canyon (Cárdenas) ──────────────────
+  {
+    externalId: 'trajectory:grand-canyon-cardenas-1540',
+    text: 'García López de Cárdenas, dispatched by the Coronado expedition, became the first European to sight the Grand Canyon of the Colorado River in September 1540.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1540-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1540-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Sent from Cíbola in September 1540 to find a great river reported by the Hopi, Cárdenas and his party reach the South Rim of the Grand Canyon. Three soldiers attempt a descent but cannot reach the river, misjudging the scale (rocks they took for man-height proved "bigger than the great tower of Seville"). A chronicler accompanying the party records the encounter for the expedition.',
+        source: {
+          externalId: 'src:cardenas-grand-canyon-1540',
+          name: 'García López de Cárdenas, Coronado expedition, September 1540 (first European sighting of the Grand Canyon).',
+          url: 'https://en.wikipedia.org/wiki/Garc%C3%ADa_L%C3%B3pez_de_C%C3%A1rdenas',
+          publishedAt: '1540-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1896-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Pedro de Castañeda de Nájera, a soldier on the Coronado expedition, wrote the surviving narrative of the journey including the Cárdenas detachment\'s discovery; translated and published by George Parker Winship in the U.S. Bureau of American Ethnology\'s 1896 report. The account is the accepted basis for the established fact that Europeans first saw the canyon in 1540, after which no Europeans returned for over two centuries.',
+        source: {
+          externalId: 'src:castaneda-journey-coronado-winship',
+          name: 'Castañeda de Nájera P. The Journey of Coronado, 1540–1542 (ed. & tr. G. P. Winship).',
+          url: 'https://archive.org/details/journeyofcoronad00wins',
+          publishedAt: '1896-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fall of Famagusta — Ottoman conquest of Cyprus completed ────────────────
+  {
+    externalId: 'trajectory:fall-of-famagusta-1571',
+    text: 'Famagusta, the last Venetian stronghold on Cyprus, surrendered to Ottoman forces under Lala Mustafa Pasha on August 5, 1571, completing the Ottoman conquest of Cyprus; the Venetian commander Marcantonio Bragadin was flayed alive on August 17, 1571.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1571-08-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1571-08-05',
+        datePrecision: 'DAY',
+        reason: 'After an eleven-month siege (begun September 1570) and the exhaustion of the garrison\'s powder, Bragadin negotiates an honourable capitulation and Famagusta surrenders on August 5, 1571. Within days Lala Mustafa Pasha reneges on the terms; on August 17 Bragadin is mutilated and flayed alive. Nestore Martinengo, an officer who escaped, gives a contemporaneous eyewitness account.',
+        source: {
+          externalId: 'src:martinengo-famagusta-1572',
+          name: 'Martinengo N. Relatione (account of the siege of Famagusta), 1572, in Cobham C.D. (tr.), Excerpta Cypria (Cambridge, 1908).',
+          url: 'https://archive.org/details/excerptacypriam00cobhgoog',
+          publishedAt: '1572-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1573-03-07',
+        datePrecision: 'DAY',
+        reason: 'The Republic of Venice formally cedes Cyprus to the Ottoman Empire in the peace treaty of March 7, 1573, recognizing the island\'s loss. The fall of Famagusta and the death of Bragadin are uncontested in the historical record, corroborated by multiple contemporary narratives and by the propaganda value the events held for the Holy League before Lepanto (October 7, 1571).',
+        source: {
+          externalId: 'src:siege-of-famagusta-record',
+          name: 'Siege of Famagusta (1570–1571) and Venetian–Ottoman peace of 1573 — consolidated historical record.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Famagusta',
+          publishedAt: '1573-03-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Execution of Guru Arjan under the Mughal emperor Jahangir ───────────────
+  {
+    externalId: 'trajectory:guru-arjan-martyrdom-1606',
+    text: 'Guru Arjan, the fifth Sikh Guru, died in Mughal custody at Lahore on May 30, 1606, on the orders of the emperor Jahangir — the first martyrdom of a Sikh Guru.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1606-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1606-05-30',
+        datePrecision: 'DAY',
+        reason: 'Jahangir records in his own memoir (the Tuzuk-i-Jahangiri) that he ordered Guru Arjan brought before him, his property confiscated, and the Guru executed — having decided to "put an end to this vain affair." The emperor\'s autobiography is a contemporaneous primary record of the order; the Sikh tradition dates the death to May 30, 1606 at Lahore.',
+        source: {
+          externalId: 'src:jahangir-memoir-arjan',
+          name: 'Jahangir. Tuzuk-i-Jahangiri (Memoirs of Jahangir), tr. A. Rogers, ed. H. Beveridge (Royal Asiatic Society, 1909).',
+          url: 'https://archive.org/details/tuzukijahangirio00jahauoft',
+          publishedAt: '1609-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1617-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Jesuit missionary Jerome Xavier, present in Lahore, independently recorded that the Sikhs sought to commute the sentence to a fine and that the Guru was tormented and died. Mughal responsibility for Arjan\'s death in custody is uncontested in the scholarly record; only the exact method (execution, death under torture, or drowning in the Ravi) remains debated.',
+        source: {
+          externalId: 'src:guru-arjan-martyrdom-record',
+          name: 'Guru Arjan (d. 30 May 1606): Mughal sources (Jahangir) and the contemporaneous Jesuit account of Jerome Xavier — consolidated record.',
+          url: 'https://en.wikipedia.org/wiki/Guru_Arjan',
+          publishedAt: '1617-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
