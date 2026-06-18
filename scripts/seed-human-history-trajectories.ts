@@ -62897,6 +62897,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — EAST ASIA (China, Japan, Korea)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Great Hanshin (Kobe) earthquake ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:great-hanshin-kobe-earthquake-1995',
+    text: 'On 17 January 1995 at 05:46 JST a magnitude-6.9 (Mw) earthquake struck the Hanshin–Awaji region of Japan, devastating the city of Kobe and killing more than 6,000 people — the deadliest earthquake to hit Japan since 1923.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-01-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-01-17',
+        datePrecision: 'DAY',
+        reason: 'At 05:46:52 JST seismometers of the Japan Meteorological Agency and the global seismic network recorded a large shallow earthquake (focal depth ~16 km) beneath the Akashi Strait near Awaji Island. JMA assigned a magnitude of 7.3 (Mjma; 6.9 Mw) and the event was immediately registered as the Hyogo-ken Nanbu earthquake, with the maximum JMA seismic intensity of 7 recorded in Kobe for the first time.',
+        source: {
+          externalId: 'src:kobe-1995-wikipedia',
+          name: 'Great Hanshin earthquake, 17 January 1995 (Wikipedia — synthesis of the contemporaneous JMA and seismological record).',
+          url: 'https://en.wikipedia.org/wiki/Great_Hanshin_earthquake',
+          publishedAt: '1995-01-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-17',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Geological Survey and Japanese seismological and engineering bodies documented the rupture along the Nojima and associated faults, the strong-motion records, and the collapse of more than 100,000 buildings and elevated expressway sections. The death toll (ultimately 6,434), the date, and the magnitude are settled in the instrumental and scientific record, and the disaster reshaped Japanese seismic building codes.',
+        source: {
+          externalId: 'src:kobe-1995-usgs',
+          name: 'U.S. Geological Survey. "The 1995 Hanshin-Awaji (Kobe), Japan, Earthquake."',
+          url: 'https://www.usgs.gov/publications/1995-hanshin-awaji-kobe-japan-earthquake',
+          publishedAt: '1995-01-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tokyo subway sarin attack ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:tokyo-subway-sarin-attack-1995',
+    text: 'On the morning of 20 March 1995 members of the Aum Shinrikyo cult released the nerve agent sarin on five Tokyo subway trains, killing 13 people and injuring thousands — the deadliest chemical attack on Japanese soil and a defining case of domestic chemical terrorism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-03-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-03-20',
+        datePrecision: 'DAY',
+        reason: 'During the morning rush hour, coordinated releases of a liquid agent on the Marunouchi, Hibiya, and Chiyoda lines sickened commuters and station staff with pinpoint pupils, respiratory distress, and convulsions. By mid-morning Japan\'s Forensic Science Laboratory identified the agent as sarin, drawing on lessons from the June 1994 Matsumoto sarin incident; emergency rooms across Tokyo, led by St. Luke\'s International Hospital, treated thousands of casualties the same day.',
+        source: {
+          externalId: 'src:tokyo-sarin-1995-wikipedia',
+          name: 'Tokyo subway sarin attack, 20 March 1995 (Wikipedia — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Tokyo_subway_sarin_attack',
+          publishedAt: '1995-03-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1995-03-20',
+        datePrecision: 'DAY',
+        reason: 'Police raids on Aum Shinrikyo facilities recovered chemical-precursor stockpiles, and members confessed; subsequent Japanese court trials convicted cult leader Shoko Asahara and numerous members, with Asahara and twelve others ultimately executed in 2018. Peer-reviewed medical literature documented the sarin casualties in detail. That a sarin attack by Aum Shinrikyo occurred on the Tokyo subway on 20 March 1995 is settled fact in the judicial and scientific record.',
+        source: {
+          externalId: 'src:tokyo-sarin-1995-pmc',
+          name: 'Okumura T et al. "Deliberate chemical attack: revisiting the lessons of the Tokyo subway attack" (PMC4123182).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4123182/',
+          publishedAt: '2005-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Transfer of Macau to China ──────────────────────────────────────────────
+  {
+    externalId: 'trajectory:macau-handover-china-1999',
+    text: 'At midnight on 20 December 1999 Portugal transferred sovereignty over Macau to the People\'s Republic of China, ending 442 years of Portuguese administration and establishing the Macau Special Administrative Region under "one country, two systems."',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1999-12-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-04-13',
+        datePrecision: 'DAY',
+        reason: 'On 13 April 1987 the Prime Ministers of China and Portugal signed the Sino-Portuguese Joint Declaration in Beijing, agreeing that the People\'s Republic of China would resume the exercise of sovereignty over Macau on 20 December 1999 and that Macau would be governed as a Special Administrative Region with a high degree of autonomy. The treaty was registered with the United Nations.',
+        source: {
+          externalId: 'src:macau-joint-declaration-unts-1987',
+          name: 'Joint Declaration of the Government of the PRC and the Government of Portugal on the Question of Macao, 13 April 1987. UN Treaty Series Vol. 1498, No. I-25805.',
+          url: 'https://treaties.un.org/doc/Publication/UNTS/Volume%201498/volume-1498-I-25805-English.pdf',
+          publishedAt: '1987-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-12-20',
+        datePrecision: 'DAY',
+        reason: 'At a midnight handover ceremony on 19–20 December 1999, the Portuguese flag was lowered and the PRC and Macau SAR flags raised; Edmund Ho was installed as the first Chief Executive and the Basic Law of the Macau SAR took effect. The transfer of sovereignty on 20 December 1999 is a settled fact of the international record, mirroring the 1997 handover of Hong Kong.',
+        source: {
+          externalId: 'src:macau-handover-1999-wikipedia',
+          name: 'Transfer of sovereignty over Macau, 20 December 1999 (Wikipedia — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Transfer_of_sovereignty_over_Macau',
+          publishedAt: '1999-12-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First inter-Korean summit and the June 15 Joint Declaration ─────────────
+  {
+    externalId: 'trajectory:first-inter-korean-summit-2000',
+    text: 'From 13 to 15 June 2000, South Korean President Kim Dae-jung and North Korean leader Kim Jong-il held the first inter-Korean summit in Pyongyang, signing the South–North Joint Declaration on 15 June 2000 — the first agreement between the two heads of the divided Korean states.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-06-15',
+        datePrecision: 'DAY',
+        reason: 'Kim Dae-jung travelled to Pyongyang on 13 June 2000 for the first summit between the leaders of South and North Korea since the 1945 division. On 15 June the two leaders signed the South–North Joint Declaration, committing to work toward reunification, reunions of separated families, and economic cooperation. The text was deposited with the United Nations.',
+        source: {
+          externalId: 'src:inter-korean-joint-declaration-un-2000',
+          name: 'South-North Joint Declaration, 15 June 2000 (UN Peacemaker peace-agreements database).',
+          url: 'https://peacemaker.un.org/en/node/9208',
+          publishedAt: '2000-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-12-10',
+        datePrecision: 'DAY',
+        reason: 'The summit was broadcast worldwide and led to the first round of reunions of families separated by the Korean War in August 2000; Kim Dae-jung received the Nobel Peace Prize on 10 December 2000 in part for the reconciliation effort. That the first inter-Korean summit took place on 13–15 June 2000 and produced the June 15 Joint Declaration is a settled fact of the diplomatic record.',
+        source: {
+          externalId: 'src:inter-korean-summit-2000-wikipedia',
+          name: '2000 inter-Korean summit, 13–15 June 2000 (Wikipedia — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/2000_inter-Korean_summit',
+          publishedAt: '2000-06-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── North Korea's first nuclear test ────────────────────────────────────────
+  {
+    externalId: 'trajectory:dprk-first-nuclear-test-2006',
+    text: 'On 9 October 2006 North Korea conducted its first nuclear test, an underground detonation at the Punggye-ri site that was detected seismically worldwide and confirmed as a nuclear explosion two weeks later by the detection of radioactive xenon-133.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-10-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-09',
+        datePrecision: 'DAY',
+        reason: 'At 01:35:28 UTC on 9 October 2006, more than twenty seismic stations of the CTBTO\'s International Monitoring System and the U.S. Geological Survey detected a magnitude ~4.3 event at the Punggye-ri test site in Kilju County. North Korea\'s state news agency (KCNA) announced the same day that it had successfully conducted an underground nuclear test. The very small estimated yield (well under one kiloton) raised the question of whether it was a full success or a partial "fizzle."',
+        source: {
+          externalId: 'src:dprk-2006-test-wikipedia',
+          name: '2006 North Korean nuclear test, 9 October 2006 (Wikipedia — synthesis of the contemporaneous USGS/CTBTO record).',
+          url: 'https://en.wikipedia.org/wiki/2006_North_Korean_nuclear_test',
+          publishedAt: '2006-10-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-10-23',
+        datePrecision: 'DAY',
+        reason: 'About two weeks after the event, the CTBTO\'s radionuclide station at Yellowknife, Canada — some 7,500 km away — detected trace concentrations of the noble gas xenon-133, and atmospheric transport modelling traced the release to the North Korean test location, confirming the explosion\'s nuclear nature. Combined with the seismic record, this established beyond dispute that a nuclear test occurred on 9 October 2006; only the precise yield remains debated.',
+        source: {
+          externalId: 'src:dprk-2006-test-ctbto',
+          name: 'CTBTO. "2006 DPRK Announced Nuclear Test" (seismic and xenon-133 radionuclide detection).',
+          url: 'https://www.ctbto.org/our-work/detecting-nuclear-tests/2006-dprk-nuclear-test',
+          publishedAt: '2006-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
