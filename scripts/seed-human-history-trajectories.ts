@@ -59675,6 +59675,204 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Treaty of Wuchale: the Article XVII translation discrepancy (1889) ───────
+  {
+    externalId: 'trajectory:treaty-of-wuchale-article-17-1889',
+    text: 'The Treaty of Wuchale, signed by Menelik II of Ethiopia and Italy on 2 May 1889, contained an Article XVII whose Amharic text made Italian mediation of Ethiopia\'s foreign relations optional while the Italian text made it mandatory — a discrepancy Italy used to claim a protectorate, which Ethiopia rejected and ultimately overturned by force.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1889-05-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1889-05-02',
+        datePrecision: 'DAY',
+        reason: 'King Menelik II of Shewa (soon Emperor of Ethiopia) and Count Pietro Antonelli for Italy sign the Treaty of Wuchale on 2 May 1889 in bilingual Amharic and Italian texts. Article XVII is recorded in both languages, fixing the wording that would later be disputed.',
+        source: {
+          externalId: 'src:treaty-of-wuchale-1889',
+          name: 'Treaty of Wuchale (Wichale), 2 May 1889 — Menelik II of Ethiopia and the Kingdom of Italy.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Wuchale',
+          publishedAt: '1889-05-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1889-10-01',
+        datePrecision: 'MONTH',
+        reason: 'When Italy notifies the European powers in October 1889 that Article XVII establishes an Italian protectorate over Ethiopia, Menelik discovers the divergence between the two versions: the Amharic text says Ethiopia "may" use Italy for foreign relations, the Italian text says it "must." Menelik rejects the Italian reading, opening a formal dispute over the treaty\'s meaning.',
+        source: {
+          externalId: 'src:wuchale-article-17-discrepancy',
+          name: 'The Article XVII translation discrepancy and Italy\'s protectorate claim, 1889 (Treaty of Wuchale).',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Wuchale',
+          publishedAt: '1889-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1896-10-26',
+        datePrecision: 'DAY',
+        reason: 'Menelik denounces the treaty in 1893, and after Italy invades, the Ethiopian victory at Adwa (1 March 1896) is sealed by the Treaty of Addis Ababa of 26 October 1896, which abrogates the Treaty of Wuchale entirely and obliges Italy to recognise Ethiopia\'s full sovereignty — overturning the protectorate that Italy had read into Article XVII.',
+        source: {
+          externalId: 'src:wuchale-abrogation-addis-ababa-1896',
+          name: 'Treaty of Addis Ababa (26 October 1896) abrogating the Treaty of Wuchale and recognising Ethiopian independence.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Wuchale',
+          publishedAt: '1896-10-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Karl Mauch records Great Zimbabwe and misattributes its builders (1871) ──
+  {
+    externalId: 'trajectory:mauch-great-zimbabwe-1871',
+    text: 'When the German explorer Karl Mauch reached the Great Zimbabwe ruins on 11 September 1871, he recorded them for European audiences but attributed their construction to ancient foreign builders — the Queen of Sheba and Phoenicians serving King Solomon — a non-African origin theory that 20th-century archaeology decisively reversed in favour of a Shona (Bantu) origin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1871-09-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1871-09-11',
+        datePrecision: 'DAY',
+        reason: 'After obtaining permission from the VaKaranga chief Chipfunhu Mugabe on 5 September, Karl Mauch, Adam Render and a guide visit the Great Zimbabwe ruins on 11 September 1871. Mauch records the site in his diary and reports, claiming a wooden lintel was Lebanese cedar and linking the ruins to Ophir, King Solomon and the Queen of Sheba — asserting a non-African origin.',
+        source: {
+          externalId: 'src:mauch-great-zimbabwe-1871',
+          name: 'Karl Mauch reaches Great Zimbabwe, 11 September 1871, and attributes the ruins to the Queen of Sheba / Phoenicians (Zimbabwe Field Guide; Karl Mauch).',
+          url: 'https://zimfieldguide.com/masvingo/karl-mauch-explorer-and-geologist-and-man-who-claimed-be-first-european-visit-great',
+          publishedAt: '1871-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1906-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The first scientific excavations at the site, by David Randall-MacIver in 1905–1906, reject the claims of Mauch and others, concluding that all available evidence pointed to construction by the ancestors of the Shona people. The foreign-origin theory passes from settled European assumption into active scholarly dispute.',
+        source: {
+          externalId: 'src:randall-maciver-great-zimbabwe-1906',
+          name: 'David Randall-MacIver\'s 1905–1906 excavations concluding a Shona origin for Great Zimbabwe.',
+          url: 'https://en.wikipedia.org/wiki/Great_Zimbabwe',
+          publishedAt: '1906-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Gertrude Caton-Thompson\'s stratigraphic investigation in 1929 finds nothing inconsistent with a Bantu (African) origin, confirming Randall-MacIver. Archaeological consensus on the African origin of Great Zimbabwe has held since the 1950s, fully reversing Mauch\'s attribution.',
+        source: {
+          externalId: 'src:caton-thompson-great-zimbabwe-1929',
+          name: 'Gertrude Caton-Thompson\'s 1929 investigation confirming the Bantu (Shona) origin of Great Zimbabwe.',
+          url: 'https://en.wikipedia.org/wiki/Great_Zimbabwe',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── René Caillié reaches Timbuktu and dispels the golden-city legend (1828) ──
+  {
+    externalId: 'trajectory:caillie-timbuktu-1828',
+    text: 'On 20 April 1828 René Caillié entered Timbuktu and became the first European to reach the fabled city and return alive to describe it — recording a modest town of earthen houses rather than the legendary city of gold, a finding later corroborated and settled by subsequent expeditions.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1828-04-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1828-04-20',
+        datePrecision: 'DAY',
+        reason: 'Travelling in disguise, René Caillié reaches Timbuktu on 20 April 1828 and stays about two weeks. He records that the city "presented, at first view, nothing but a mass of ill looking houses, built of earth," contradicting the European myth of a city of gold. He returns to France, wins the Société de Géographie\'s 9,000-franc prize, and publishes his account in 1830.',
+        source: {
+          externalId: 'src:caillie-timbuktu-1828',
+          name: 'René Caillié reaches Timbuktu, 20 April 1828, first European to return alive; Journal d\'un voyage à Temboctou (1830).',
+          url: 'https://en.wikipedia.org/wiki/Ren%C3%A9_Cailli%C3%A9',
+          publishedAt: '1830-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1853-09-07',
+        datePrecision: 'DAY',
+        reason: 'Heinrich Barth, a trained historian, independently reaches Timbuktu on 7 September 1853 and produces a detailed scholarly account of the city and the western Sudan, corroborating Caillié\'s description of a modest earthen town. The actual character of Timbuktu — distinct from its golden legend — becomes settled European geographical knowledge.',
+        source: {
+          externalId: 'src:barth-timbuktu-confirms-caillie-1853',
+          name: 'Heinrich Barth\'s 1853 visit to Timbuktu corroborating Caillié\'s account (Heinrich Barth).',
+          url: 'https://en.wikipedia.org/wiki/Heinrich_Barth',
+          publishedAt: '1853-09-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Heinrich Barth documents the western/central Sudan from Timbuktu (1853) ──
+  {
+    externalId: 'trajectory:barth-timbuktu-1853',
+    text: 'On 7 September 1853 the German scholar-explorer Heinrich Barth reached Timbuktu, where during a months-long stay under the protection of Ahmad al-Bakkai al-Kunti he produced the first rigorous European documentation of the western and central Sudan, including its peoples, polities and written chronicles — work that put the region\'s geography and history on a scholarly footing.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1853-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1853-09-07',
+        datePrecision: 'DAY',
+        reason: 'Barth arrives at Timbuktu on 7 September 1853 as part of his 1850–1855 expedition, establishing close relations with African scholars and rulers including Ahmad al-Bakkai al-Kunti, who shelters him. He compiles careful observations of the city and the surrounding Sudanic societies that he later publishes.',
+        source: {
+          externalId: 'src:barth-reaches-timbuktu-1853',
+          name: 'Heinrich Barth reaches Timbuktu, 7 September 1853, during his 1850–1855 expedition (Heinrich Barth).',
+          url: 'https://en.wikipedia.org/wiki/Heinrich_Barth',
+          publishedAt: '1853-09-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1857-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Barth\'s five-volume Travels and Discoveries in North and Central Africa (1857–1858) becomes a foundational scholarly source on the region, the first to treat its oral traditions and Arabic chronicles seriously for historical research. His documentation of the western/central Sudan is recognised as authoritative and remains a standard reference.',
+        source: {
+          externalId: 'src:barth-travels-discoveries-1857',
+          name: 'Heinrich Barth, Travels and Discoveries in North and Central Africa (1857–1858), foundational documentation of the Sudan.',
+          url: 'https://en.wikipedia.org/wiki/Heinrich_Barth',
+          publishedAt: '1857-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
