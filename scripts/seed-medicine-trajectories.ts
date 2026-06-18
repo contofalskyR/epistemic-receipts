@@ -10027,33 +10027,6 @@ const TRAJECTORIES: Trajectory[] = [
   // OPIOID POLICY & PALLIATIVE CARE ERA (1970–2007)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Controlled Substances Act — drug scheduling — 1970 ──────────────────────
-  {
-    externalId: 'trajectory:controlled-substances-act-drug-scheduling-1970',
-    text: 'The U.S. Controlled Substances Act, enacted October 27, 1970 as Title II of the Comprehensive Drug Abuse Prevention and Control Act (Pub. L. 91-513), reclassified narcotics into five schedules by abuse potential, accepted medical use, and safety — placing heroin in Schedule I (no accepted medical use) and medical opioids such as morphine and oxycodone in Schedule II.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '1970-10-27',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1970-10-27',
-        datePrecision: 'DAY',
-        reason: 'President Nixon signed the Comprehensive Drug Abuse Prevention and Control Act of 1970 on October 27, 1970; its Title II (the Controlled Substances Act) replaced the tax-based Harrison Narcotics regime with a five-schedule framework codified at 21 U.S.C. § 812, sorting drugs by abuse potential, accepted medical use, and safety. Heroin was placed in Schedule I (deemed to have no accepted medical use), while morphine, oxycodone, and other therapeutic opioids were placed in Schedule II. The Act institutionally fixed federal judgments about the medical legitimacy and danger of each opioid, the regulatory baseline that all later opioid-prescribing and addiction-treatment law was built upon.',
-        source: {
-          externalId: 'src:controlled-substances-act-21usc812',
-          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970, Pub. L. 91-513, 84 Stat. 1236 (Oct. 27, 1970); Controlled Substances Act, 21 U.S.C. § 812 (Schedules of controlled substances).',
-          url: 'https://uscode.house.gov/view.xhtml?req=(title:21%20section:812%20edition:prelim)',
-          publishedAt: '1970-10-27',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Naloxone (Narcan) — opioid antagonist approval — 1971 ───────────────────
   {
     externalId: 'trajectory:naloxone-narcan-opioid-antagonist-approval-1971',
