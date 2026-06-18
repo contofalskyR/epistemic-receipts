@@ -10704,6 +10704,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIAC SURGERY & REPRODUCTIVE MEDICINE ERA (1958–1983)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Barnard first human heart transplant — 1967 ─────────────────────────────
+  {
+    externalId: 'trajectory:barnard-first-human-heart-transplant-1967',
+    text: 'Christiaan Barnard and his team at Groote Schuur Hospital, Cape Town performed the world\'s first human-to-human orthotopic heart transplant on 3 December 1967, demonstrating that a transplanted human heart could sustain a living recipient.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1967-12-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-12-03',
+        datePrecision: 'DAY',
+        reason: 'Barnard transplanted the heart of accident victim Denise Darvall into 53-year-old Louis Washkansky during the night of 2/3 December 1967 and published his interim report in the South African Medical Journal weeks later. Washkansky survived 18 days before dying of pneumonia under immunosuppression, but the operation recorded the first evidence that human cardiac transplantation was technically feasible and could sustain a recipient.',
+        source: {
+          externalId: 'src:barnard-human-cardiac-transplant-samj-1967',
+          name: 'Barnard CN. A human cardiac transplant: an interim report of a successful operation performed at Groote Schuur Hospital, Cape Town. S Afr Med J. 1967 Dec 30;41(48):1271–1274.',
+          url: 'http://www.samj.org.za/index.php/samj/article/view/12165',
+          publishedAt: '1967-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After roughly 100 heart transplants were performed worldwide in 1968 amid global excitement, dismal survival driven by uncontrollable acute rejection led most centers to abandon the operation by 1970–1971, leaving only a handful of programs (notably Shumway\'s at Stanford) active. The therapeutic legitimacy of cardiac transplantation became widely doubted, amounting to a near-global moratorium.',
+        source: {
+          externalId: 'src:gsh-cardiac-transplant-history-2014',
+          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31–35.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4200566/',
+          publishedAt: '2009-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-01-01',
+        datePrecision: 'YEAR',
+        reason: 'FDA approval of the calcineurin-inhibitor immunosuppressant cyclosporine in 1983 transformed graft survival and triggered a worldwide resurgence of heart transplantation, which became the established standard of care for selected patients with end-stage heart failure. The procedure Barnard pioneered was thereby re-legitimized institutionally after its near-abandonment.',
+        source: {
+          externalId: 'src:gsh-cardiac-transplant-resurgence-2014',
+          name: 'Brink JG, Hassoulas J. The first human heart transplant and further advances in cardiac transplantation at Groote Schuur Hospital and the University of Cape Town. Cardiovasc J Afr. 2009;20(1):31–35.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4200566/',
+          publishedAt: '2009-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Grüntzig first coronary angioplasty — 1977 ──────────────────────────────
+  {
+    externalId: 'trajectory:gruentzig-first-coronary-angioplasty-1977',
+    text: 'Andreas Grüntzig performed the first percutaneous transluminal coronary angioplasty (balloon dilatation of a coronary-artery stenosis) on a conscious patient at University Hospital Zurich on 16 September 1977, establishing catheter-based treatment of coronary artery disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1977-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-09-16',
+        datePrecision: 'DAY',
+        reason: 'Grüntzig dilated a stenosed left anterior descending coronary artery in an awake patient using a balloon-tipped catheter, then reported his first cases in The Lancet in February 1978. This recorded the first evidence that coronary stenoses could be opened percutaneously without open-heart surgery, founding the field of interventional cardiology.',
+        source: {
+          externalId: 'src:gruentzig-transluminal-dilatation-lancet-1978',
+          name: 'Grüntzig A. Transluminal dilatation of coronary-artery stenosis. Lancet. 1978 Feb 4;1(8058):263.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/74678/',
+          publishedAt: '1978-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the NHLBI PTCA Registry (begun 1979) and rapid global diffusion in the early 1980s, balloon angioplasty was adopted as standard therapy for coronary artery disease at major centers worldwide. Institutional uptake and accumulating outcome data settled catheter-based revascularization as an accepted alternative to bypass surgery for suitable lesions.',
+        source: {
+          externalId: 'src:emory-gruentzig-birth-of-a-field-2024',
+          name: 'King SB 3rd. The Emory-Gruentzig Days — Birth of a New Field. J Soc Cardiovasc Angiogr Interv. 2024;3(8):102127.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11330937/',
+          publishedAt: '2024-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First implantable cardiac pacemaker — 1958 ──────────────────────────────
+  {
+    externalId: 'trajectory:first-implantable-cardiac-pacemaker-1958',
+    text: 'On 8 October 1958 Åke Senning and Rune Elmqvist implanted the first fully implantable cardiac pacemaker in patient Arne Larsson at the Karolinska Hospital, Stockholm, establishing implantable electrical pacing as a treatment for life-threatening heart block.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1958-10-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-10-08',
+        datePrecision: 'DAY',
+        reason: 'Senning surgically implanted a pacemaker designed by Elmqvist into Arne Larsson, who suffered Stokes-Adams attacks from complete heart block. The first device failed after about three hours and was replaced the next morning, but the operation recorded the first evidence that a self-contained pacemaker could be implanted in the body to drive the heart.',
+        source: {
+          externalId: 'src:nielsen-d-day-implantable-pacemaker-2008',
+          name: 'Nielsen JC. 8 October 1958, D Day for the implantable pacemaker. Neth Heart J. 2008;16(Suppl 1):S3–S4.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2572009/',
+          publishedAt: '2008-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Transistorized, longer-lived implantable pacemakers were developed and commercialized from 1960 (notably the Chardack–Greatbatch device manufactured by Medtronic), and implantable pacing was rapidly adopted internationally as standard therapy for symptomatic bradyarrhythmia and heart block. Arne Larsson himself lived to 86 on a succession of 26 pacemakers, exemplifying the technology\'s establishment.',
+        source: {
+          externalId: 'src:elema-schoenander-first-pacemaker-implants',
+          name: 'Elema-Schoenander and the Very First Human Implants of a Pacemaker in Sweden (1958) and Uruguay (1960). The World of Implantable Devices.',
+          url: 'https://www.implantable-device.com/2012/01/23/elema-schoenander-and-the-very-first-human-implants-of-a-pacemaker-in-sweden-1958-and-uruguay-1960/',
+          publishedAt: '2012-01-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Steptoe & Edwards first IVF birth — 1978 ────────────────────────────────
+  {
+    externalId: 'trajectory:steptoe-edwards-first-ivf-birth-1978',
+    text: 'Patrick Steptoe and Robert Edwards achieved the first human birth following in vitro fertilization — Louise Brown, born 25 July 1978 in Oldham, England — reported in The Lancet on 12 August 1978, demonstrating that human conception outside the body could yield a healthy live birth.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1978-07-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-08-12',
+        datePrecision: 'DAY',
+        reason: 'Steptoe and Edwards published a brief Lancet letter announcing the live birth of a healthy girl after fertilizing a human egg in vitro and transferring the resulting embryo to the mother\'s uterus. This recorded the first evidence that in vitro fertilization and embryo transfer could produce a normal human live birth.',
+        source: {
+          externalId: 'src:steptoe-edwards-birth-reimplantation-lancet-1978',
+          name: 'Steptoe PC, Edwards RG. Birth after the reimplantation of a human embryo. Lancet. 1978 Aug 12;2(8085):366.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/79723/',
+          publishedAt: '1978-08-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The birth provoked intense ethical, religious, and scientific controversy: some scientists doubted that the child was truly conceived in vitro or feared developmental abnormalities, while religious authorities and bioethicists questioned the morality of laboratory conception. The legitimacy and safety of IVF were widely contested in the immediate aftermath.',
+        source: {
+          externalId: 'src:ivf-british-press-1978-contested',
+          name: 'Johnson MH. \'The men who made the breakthrough\': How the British press represented Patrick Steptoe and Robert Edwards in 1978. Reprod Biomed Soc Online. 2018;6:39–50.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5952836/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-04',
+        datePrecision: 'DAY',
+        reason: 'After the opening of the Bourn Hall Clinic (1980) and the worldwide growth of IVF into a routine, millions-of-births fertility treatment, the Nobel Assembly awarded Robert Edwards the 2010 Nobel Prize in Physiology or Medicine \'for the development of in vitro fertilization.\' The highest institutional honor in medicine ratified IVF\'s scientific and therapeutic legitimacy.',
+        source: {
+          externalId: 'src:nobel-edwards-ivf-2010',
+          name: 'Nobel Assembly at Karolinska Institutet. The Nobel Prize in Physiology or Medicine 2010 — Robert G. Edwards. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/2010/press-release/',
+          publishedAt: '2010-10-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
