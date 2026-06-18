@@ -57648,6 +57648,238 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): Southeast Asia
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Mahendraparvata revealed by airborne lidar (Khmer Empire) ───────────────
+  {
+    externalId: 'trajectory:mahendraparvata-lidar-2013',
+    text: 'A large, planned ninth-century Khmer city — Mahendraparvata, the early capital founded by Jayavarman II — lay hidden beneath the forest of Phnom Kulen in Cambodia, its street grid, hydraulic network, and temples revealed by airborne lidar in 2012–2013.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'OPEN',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Khmer inscriptions record that Jayavarman II declared himself chakravartin (universal monarch) atop Mahendraparvata around 802 CE, founding the Khmer Empire, but the city itself was known only from a handful of forest temples on Phnom Kulen; its layout and extent were unmapped and effectively unknown beneath dense vegetation. In April 2012 a helicopter-borne lidar survey scanned the massif to test whether an urban landscape survived under the canopy.',
+        source: {
+          externalId: 'src:mahendraparvata-wikipedia',
+          name: 'Mahendraparvata — lidar survey of Phnom Kulen by Damian Evans and Jean-Baptiste Chevance (Wikipedia, "Mahendraparvata").',
+          url: 'https://en.wikipedia.org/wiki/Mahendraparvata',
+          publishedAt: '2012-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'OPEN',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In June 2013 the team led by Damian Evans (University of Sydney) and Jean-Baptiste Chevance announced that the lidar data revealed an elaborate grid-like network of boulevards, dykes, ponds, and dozens of previously unknown temples — a coherent, planned city. The findings were published in PNAS as "Uncovering archaeological landscapes at Angkor using lidar," establishing Mahendraparvata as a mapped urban site on the public scientific record.',
+        source: {
+          externalId: 'src:evans-angkor-lidar-pnas-2013',
+          name: 'Evans DH, et al. "Uncovering archaeological landscapes at Angkor using lidar." PNAS 110(31):12595–12600 (2013).',
+          url: 'https://doi.org/10.1073/pnas.1306539110',
+          publishedAt: '2013-07-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-06-01',
+        datePrecision: 'MONTH',
+        reason: 'A much larger 2015 lidar campaign (the Cambodian Archaeological Lidar Initiative), published by Evans in the Journal of Archaeological Science in June 2016, confirmed and extended the picture — mapping the full extent of Mahendraparvata and the urban sprawl around Angkor and reinforcing that the Khmer capital was among the most extensive low-density cities of the preindustrial world. The existence and layout of Mahendraparvata is now settled archaeological fact.',
+        source: {
+          externalId: 'src:evans-cali-jas-2016',
+          name: 'Evans DH. "Airborne laser scanning as a method for exploring long-term socio-ecological dynamics in Cambodia." Journal of Archaeological Science 74:164–175 (2016).',
+          url: 'https://en.wikipedia.org/wiki/Mahendraparvata',
+          publishedAt: '2016-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 1990 Myanmar election — NLD landslide annulled by the junta ──────────────
+  {
+    externalId: 'trajectory:myanmar-1990-election-nld',
+    text: 'In Myanmar\'s general election of 27 May 1990, Aung San Suu Kyi\'s National League for Democracy won 392 of 492 contested seats (about 80%); the ruling military junta (SLORC) annulled the result and refused to transfer power.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1990-05-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1990-05-27',
+        datePrecision: 'DAY',
+        reason: 'Myanmar held its first multiparty election in three decades on 27 May 1990. Despite Aung San Suu Kyi being under house arrest, her National League for Democracy won a landslide — 392 of the 492 contested seats — a result reported worldwide and not disputed as to the vote count itself.',
+        source: {
+          externalId: 'src:myanmar-1990-election-wikipedia',
+          name: '1990 Myanmar general election — NLD wins 392 of 492 seats (Wikipedia, "1990 Myanmar general election").',
+          url: 'https://en.wikipedia.org/wiki/1990_Myanmar_general_election',
+          publishedAt: '1990-05-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-07-27',
+        datePrecision: 'DAY',
+        reason: 'Surprised by the outcome, the State Law and Order Restoration Council issued Declaration 1/90 on 27 July 1990, recasting the election as choosing a body to draft a constitution rather than a governing parliament, refusing to convene the assembly and to transfer power. The legitimacy and meaning of the result was thereby officially contested and suppressed by the state.',
+        source: {
+          externalId: 'src:slorc-declaration-1-90',
+          name: 'SLORC Declaration No. 1/90 (27 July 1990) refusing to seat the elected parliament (Wikipedia, "1990 Myanmar general election").',
+          url: 'https://en.wikipedia.org/wiki/1990_Myanmar_general_election',
+          publishedAt: '1990-07-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-01-01',
+        datePrecision: 'YEAR',
+        reason: 'That the NLD won the 1990 election decisively and that the junta refused to honour it is settled historical fact, universally cited and reinforced when the NLD re-entered electoral politics and won power in the 2015 election. The military formally annulled the 1990 results in 2010 ahead of a new vote, but the historical record of the 1990 mandate is uncontested.',
+        source: {
+          externalId: 'src:myanmar-1990-aftermath-wikipedia',
+          name: '1990 Myanmar general election — aftermath and annulment of results (Wikipedia, "1990 Myanmar general election").',
+          url: 'https://en.wikipedia.org/wiki/1990_Myanmar_general_election',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── South China Sea arbitration — Philippines v China ───────────────────────
+  {
+    externalId: 'trajectory:south-china-sea-arbitration-2016',
+    text: 'China\'s claim to "historic rights" within the nine-dash line in the South China Sea has no lawful basis under UNCLOS — ruled by the Permanent Court of Arbitration tribunal in Philippines v China on 12 July 2016.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-01-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2013-01-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 January 2013 the Philippines initiated compulsory arbitration under Annex VII of UNCLOS, challenging the legality of China\'s nine-dash-line claim. China refused to participate, declared the tribunal had no jurisdiction, and rejected the proceedings — making the legal validity of the nine-dash line a formally contested question.',
+        source: {
+          externalId: 'src:scs-arbitration-wikipedia-init',
+          name: 'South China Sea Arbitration — Philippines initiates Annex VII arbitration, 22 January 2013 (Wikipedia, "South China Sea Arbitration").',
+          url: 'https://en.wikipedia.org/wiki/South_China_Sea_Arbitration',
+          publishedAt: '2013-01-22',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2016-07-12',
+        datePrecision: 'DAY',
+        reason: 'On 12 July 2016 the five-member tribunal at the Permanent Court of Arbitration ruled unanimously that China\'s claims to historic rights within the nine-dash line were "contrary to the Convention and without lawful effect" to the extent they exceeded UNCLOS entitlements, and that several features China occupied generated no exclusive economic zone. Under UNCLOS Article 296 the award is final and legally binding on the parties.',
+        source: {
+          externalId: 'src:scs-arbitration-award-2016',
+          name: 'PCA award in The South China Sea Arbitration (Philippines v China), 12 July 2016 (Wikipedia, "South China Sea Arbitration").',
+          url: 'https://en.wikipedia.org/wiki/South_China_Sea_Arbitration',
+          publishedAt: '2016-07-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2016-07-12',
+        datePrecision: 'DAY',
+        reason: 'China\'s Ministry of Foreign Affairs immediately declared the award "null and void" with "no binding force," and Beijing continued island-building and patrols within the nine-dash line. Though legally settled, the dispute remains contested in practice because the losing state refuses to comply, with no enforcement mechanism — leaving real-world maritime entitlements unresolved.',
+        source: {
+          externalId: 'src:scs-arbitration-china-rejection-2016',
+          name: 'China declares the South China Sea arbitration award null and void, 12 July 2016 (Wikipedia, "South China Sea Arbitration").',
+          url: 'https://en.wikipedia.org/wiki/South_China_Sea_Arbitration',
+          publishedAt: '2016-07-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Khmer Rouge genocide judicially established (ECCC Case 002/02) ───────────
+  {
+    externalId: 'trajectory:khmer-rouge-genocide-eccc-2018',
+    text: 'The Khmer Rouge committed genocide against the Cham Muslim and ethnic Vietnamese minorities of Cambodia (1975–1979) — judicially established for the first time by the Extraordinary Chambers in the Courts of Cambodia in its Case 002/02 judgment of 16 November 2018.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1979-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1979-01-07',
+        datePrecision: 'DAY',
+        reason: 'After Vietnamese forces ousted the Khmer Rouge and captured Phnom Penh on 7 January 1979, the scale of the regime\'s killings — roughly 1.7–2.2 million dead — was exposed through mass graves and the meticulous interrogation records of the Tuol Sleng (S-21) prison. The atrocities were recorded contemporaneously and broadly, including the targeting of the Cham and Vietnamese minorities.',
+        source: {
+          externalId: 'src:khmer-rouge-tribunal-wikipedia-bg',
+          name: 'Khmer Rouge Tribunal — background on the 1975–1979 atrocities (Wikipedia, "Khmer Rouge Tribunal").',
+          url: 'https://en.wikipedia.org/wiki/Khmer_Rouge_Tribunal',
+          publishedAt: '1979-01-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-08-07',
+        datePrecision: 'DAY',
+        reason: 'Whether the Khmer Rouge killings legally constituted "genocide" was long contested, because the 1948 Genocide Convention protects national, ethnic, racial, and religious groups but not political groups, and most victims were Khmer killed for perceived political reasons. The ECCC\'s first judgment in Case 002/01 (7 August 2014) convicted Nuon Chea and Khieu Samphan of crimes against humanity but did not rule on genocide, leaving the legal characterization open.',
+        source: {
+          externalId: 'src:eccc-case-002-01-2014',
+          name: 'ECCC Case 002/01 judgment, 7 August 2014 (crimes against humanity; no genocide finding) (Wikipedia, "Khmer Rouge Tribunal").',
+          url: 'https://en.wikipedia.org/wiki/Khmer_Rouge_Tribunal',
+          publishedAt: '2014-08-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2018-11-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 November 2018, in Case 002/02, the ECCC Trial Chamber found Nuon Chea and Khieu Samphan guilty of genocide against the ethnic Vietnamese, and Nuon Chea additionally of genocide against the Cham Muslims — the first judicial determination that the Khmer Rouge committed genocide. Khieu Samphan\'s conviction was upheld on appeal on 22 September 2022, settling the legal question.',
+        source: {
+          externalId: 'src:eccc-case-002-02-genocide-2018',
+          name: 'ECCC Case 002/02 judgment finding genocide, 16 November 2018 (Wikipedia, "Khmer Rouge Tribunal").',
+          url: 'https://en.wikipedia.org/wiki/Khmer_Rouge_Tribunal',
+          publishedAt: '2018-11-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
