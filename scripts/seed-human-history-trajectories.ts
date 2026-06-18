@@ -51606,6 +51606,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900) — science, germ theory, naming the deep past
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Buckland names Megalosaurus — first scientifically named dinosaur ───────
+  {
+    externalId: 'trajectory:buckland-megalosaurus-1824',
+    text: 'On 20 February 1824 William Buckland read a description of Megalosaurus to the Geological Society of London — the first non-avian dinosaur to be given a valid scientific name.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1824-02-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1824-02-20',
+        datePrecision: 'DAY',
+        reason: 'At a meeting of the Geological Society of London on 20 February 1824, Buckland reads his "Notice on the Megalosaurus or great Fossil Lizard of Stonesfield," describing giant fossil bones — including a partial lower jaw with teeth — recovered from the Stonesfield slate near Oxford. He estimates the animal at more than forty feet long and assigns it the name Megalosaurus, "great lizard." The paper is published in the Society\'s Transactions later that year, constituting valid publication of the name.',
+        source: {
+          externalId: 'src:buckland-megalosaurus-1824',
+          name: 'Buckland W. Notice on the Megalosaurus or great Fossil Lizard of Stonesfield. Transactions of the Geological Society of London 1824;s2-1(2):390–396.',
+          url: 'https://en.wikipedia.org/wiki/Megalosaurus',
+          publishedAt: '1824-02-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1842-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Megalosaurus becomes one of the three founding genera Richard Owen uses in 1842 to define the Dinosauria. Its priority as the first validly named non-avian dinosaur is uncontested in vertebrate palaeontology; the genus name remains in use and the Stonesfield material is preserved in the Oxford University Museum of Natural History.',
+        source: {
+          externalId: 'src:owen-dinosauria-report-1842',
+          name: 'Owen R. Report on British Fossil Reptiles, Part II. Report of the British Association for the Advancement of Science, 1842.',
+          url: 'https://en.wikipedia.org/wiki/Dinosauria',
+          publishedAt: '1842-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Paris — Britain recognises US independence ────────────────────
+  {
+    externalId: 'trajectory:treaty-of-paris-1783',
+    text: 'On 3 September 1783 Great Britain and the United States signed the Treaty of Paris, whose first article acknowledged the United States to be free, sovereign and independent states, formally ending the American Revolutionary War.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1783-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1783-09-03',
+        datePrecision: 'DAY',
+        reason: 'British and American commissioners — including John Adams, Benjamin Franklin and John Jay — sign the definitive treaty of peace at Paris. Article 1 has King George III acknowledge the thirteen named states "to be free sovereign and independent states" and relinquish all claims to their government and territorial rights. The signed instrument is a surviving primary document held in the US National Archives.',
+        source: {
+          externalId: 'src:treaty-of-paris-avalon-1783',
+          name: 'The Definitive Treaty of Peace 1783 (Treaty of Paris), signed 3 September 1783. Avalon Project, Yale Law School.',
+          url: 'https://avalon.law.yale.edu/18th_century/paris.asp',
+          publishedAt: '1783-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1784-05-12',
+        datePrecision: 'DAY',
+        reason: 'The Confederation Congress ratifies the treaty on 14 January 1784 and ratifications are exchanged with Britain at Paris on 12 May 1784, bringing the treaty into force. The independence and boundaries it established became the uncontested legal foundation of the United States as a sovereign nation.',
+        source: {
+          externalId: 'src:treaty-of-paris-natarchives-1784',
+          name: 'Treaty of Paris (1783) — ratification and entry into force. US National Archives, Milestone Documents.',
+          url: 'https://www.archives.gov/milestone-documents/treaty-of-paris',
+          publishedAt: '1784-05-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lassell discovers Triton — Neptune's largest moon ──────────────────────
+  {
+    externalId: 'trajectory:lassell-triton-1846',
+    text: 'On 10 October 1846 the English astronomer William Lassell discovered Triton, the largest moon of Neptune, just seventeen days after Neptune itself was found.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1846-10-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-10-10',
+        datePrecision: 'DAY',
+        reason: 'Using a 24-inch (61 cm) equatorially mounted reflecting telescope of his own construction at Starfield near Liverpool, Lassell observes a point of light near the newly discovered planet Neptune on 10 October 1846. Within days he confirms it shares Neptune\'s motion across the sky and is therefore a satellite. He announces the find in the Monthly Notices of the Royal Astronomical Society.',
+        source: {
+          externalId: 'src:lassell-triton-mnras-1846',
+          name: 'Lassell W. Observations of the new planet and its satellite. Monthly Notices of the Royal Astronomical Society 1846;7:157.',
+          url: 'https://en.wikipedia.org/wiki/Triton_(moon)',
+          publishedAt: '1846-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1847-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent astronomers confirm the satellite\'s existence and orbit around Neptune; it is later named Triton. Its discovery has never been disputed, and its retrograde orbit and physical character were directly confirmed by Voyager 2\'s flyby in 1989.',
+        source: {
+          externalId: 'src:triton-confirmation',
+          name: 'Triton (moon) — discovery confirmation and orbital characterisation.',
+          url: 'https://en.wikipedia.org/wiki/Triton_(moon)',
+          publishedAt: '1847-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ramsay & Travers discover krypton — a new noble gas ────────────────────
+  {
+    externalId: 'trajectory:ramsay-travers-krypton-1898',
+    text: 'On the afternoon of 30 May 1898, William Ramsay and Morris Travers isolated krypton from the residue of evaporated liquid air, identifying it spectroscopically as a previously unknown noble gas.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1898-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-05-30',
+        datePrecision: 'DAY',
+        reason: 'Working at University College London, Ramsay and Travers slowly evaporate a large quantity of liquid air and examine the least volatile fraction. On the afternoon of 30 May 1898 they obtain about 25 cm³ of a residual gas whose spectrum shows bright yellow and green lines unlike any known element; they name it krypton ("the hidden one"). Within weeks the same procedure yields neon (June 1898) and xenon (July 1898), completing the noble-gas group below argon and helium.',
+        source: {
+          externalId: 'src:rsc-krypton-discovery-1898',
+          name: 'Krypton — element history (isolated on the afternoon of 30 May 1898 by Ramsay and Travers). Royal Society of Chemistry, Periodic Table.',
+          url: 'https://periodic-table.rsc.org/element/36/krypton',
+          publishedAt: '1898-05-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1904-12-10',
+        datePrecision: 'DAY',
+        reason: 'The discovery of the noble gases is independently confirmed and incorporated into the periodic table as a new group. William Ramsay is awarded the 1904 Nobel Prize in Chemistry "in recognition of his services in the discovery of the inert gaseous elements in air, and his determination of their place in the periodic system."',
+        source: {
+          externalId: 'src:ramsay-nobel-1904',
+          name: 'The Nobel Prize in Chemistry 1904 — William Ramsay, for the discovery of the inert gaseous elements.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1904/summary/',
+          publishedAt: '1904-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of viruses — tobacco mosaic, Ivanovsky to Beijerinck ─────────
+  {
+    externalId: 'trajectory:tobacco-mosaic-virus-discovery-1898',
+    text: 'The tobacco mosaic disease was shown to be caused by an infectious agent smaller than any bacterium: Dmitri Ivanovsky demonstrated its filterability in 1892, and in 1898 Martinus Beijerinck named it a "contagium vivum fluidum" — the founding concept of a virus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1892-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1892-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Dmitri Ivanovsky reports to the Imperial Academy of Sciences in St Petersburg that sap from tobacco plants affected by mosaic disease remains infectious after passing through a Chamberland porcelain filter fine enough to retain all known bacteria. This is the first concrete evidence of a non-bacterial infectious agent, though Ivanovsky himself suspected a toxin or an undetected bacterium.',
+        source: {
+          externalId: 'src:ivanovsky-tobacco-1892',
+          name: 'Ivanovsky D. Über die Mosaikkrankheit der Tabakspflanze (1892) — filterable infectious sap of the tobacco mosaic disease.',
+          url: 'https://en.wikipedia.org/wiki/Tobacco_mosaic_virus',
+          publishedAt: '1892-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1898-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Working independently, Martinus Beijerinck repeats the filtration experiments and shows the agent multiplies only inside living, dividing plant tissue and diffuses through agar — behaviour unlike any bacterium. He concludes it is a "contagium vivum fluidum" (a contagious living fluid) and adopts the term virus, establishing a new category of sub-microscopic infectious agent. The concept is confirmed and generalised as further filterable agents (foot-and-mouth disease, 1898; yellow fever, 1901) are identified.',
+        source: {
+          externalId: 'src:beijerinck-contagium-1898',
+          name: 'Beijerinck MW. Über ein Contagium vivum fluidum als Ursache der Fleckenkrankheit der Tabaksblätter (1898).',
+          url: 'https://en.wikipedia.org/wiki/Martinus_Beijerinck',
+          publishedAt: '1898-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
