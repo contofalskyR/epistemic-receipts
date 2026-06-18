@@ -13454,6 +13454,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PRECISION MEDICINE & NOVEL MECHANISMS ERA (2020–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Relyvrio (AMX0035) ALS — CENTAUR 2020 / FDA approval 2022 / withdrawal 2024
+  {
+    externalId: 'trajectory:relyvrio-amx0035-als-approval-withdrawal-2022',
+    text: 'Sodium phenylbutyrate–taurursodiol (AMX0035, marketed as Relyvrio/Albrioza, Amylyx) slows the loss of physical function in amyotrophic lateral sclerosis, as reported in the phase 2 CENTAUR trial on 3 September 2020 and ratified by FDA approval on 29 September 2022.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-03',
+        datePrecision: 'DAY',
+        reason: 'Paganoni and colleagues published the 24-week, randomized, placebo-controlled phase 2 CENTAUR trial in the New England Journal of Medicine, reporting a 2.32-point difference favoring AMX0035 on the ALSFRS-R functional scale, with a later survival analysis suggesting prolonged survival. The result recorded into the top-tier literature the claim that a sodium phenylbutyrate–taurursodiol combination could slow ALS progression, on the strength of a single modest-sized phase 2 study.',
+        source: {
+          externalId: 'src:paganoni-centaur-amx0035-nejm-2020',
+          name: 'Paganoni S, Macklin EA, Hendrix S, et al. Trial of Sodium Phenylbutyrate–Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32877582/',
+          publishedAt: '2020-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-09-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Relyvrio for adults with ALS on the basis of the single phase 2 CENTAUR trial, after an advisory committee reversed an initial negative vote — an unusual approval given persistent doubts about whether one mid-sized trial established efficacy. The clearance institutionally ratified AMX0035 as a treatment for a uniformly fatal disease, with Amylyx publicly committing to confirm benefit in the ongoing phase 3 PHOENIX trial.',
+        source: {
+          externalId: 'src:amylyx-relyvrio-fda-approval-2022',
+          name: 'Amylyx Pharmaceuticals. Amylyx Pharmaceuticals Announces FDA Approval of RELYVRIO for the Treatment of ALS. September 29, 2022.',
+          url: 'https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-fda-approval-of-relyvriotm-for-the-treatment-of-als',
+          publishedAt: '2022-09-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-04-04',
+        datePrecision: 'DAY',
+        reason: 'After the confirmatory phase 3 PHOENIX trial failed to meet its primary or secondary endpoints (topline announced 8 March 2024), Amylyx announced on 4 April 2024 that it would voluntarily discontinue marketing of Relyvrio/Albrioza and remove the drug from the U.S. and Canadian markets. The withdrawal — a rare voluntary pull of an approved drug after a negative confirmatory trial — reversed the efficacy claim and became a touchstone case against approving drugs on thin single-trial evidence.',
+        source: {
+          externalId: 'src:amylyx-relyvrio-market-withdrawal-2024',
+          name: 'Amylyx Pharmaceuticals. Amylyx Pharmaceuticals Announces Formal Intention to Remove RELYVRIO/ALBRIOZA from the Market; Provides Updates on Access to Therapy, Pipeline, Corporate Restructuring, and Strategy. April 4, 2024.',
+          url: 'https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-formal-intention-to-remove-relyvrior/albriozatm-from-the-market-provides-updates-on-access-to-therapy-pipeline-corporate-restructuring-and-strategy',
+          publishedAt: '2024-04-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tofersen (Qalsody) SOD1-ALS — VALOR 2022 / FDA accelerated approval 2023
+  {
+    externalId: 'trajectory:tofersen-qalsody-sod1-als-accelerated-approval-2022',
+    text: 'Tofersen (Qalsody, Biogen/Ionis), an intrathecal antisense oligonucleotide that lowers synthesis of the SOD1 protein, reduces plasma neurofilament light chain in SOD1-mutation ALS, as reported in the VALOR trial on 22 September 2022 and ratified by FDA accelerated approval on 25 April 2023 — the first therapy targeting a genetic cause of ALS.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-09-22',
+        datePrecision: 'DAY',
+        reason: 'Miller and colleagues published the phase 3 VALOR trial in the New England Journal of Medicine, reporting that tofersen did NOT meet its primary clinical endpoint (ALSFRS-R change at 28 weeks) but did produce substantial reductions in SOD1 protein and in plasma neurofilament light chain, a biomarker of neurodegeneration. The paper recorded a mixed claim into the literature: a clear biomarker effect without demonstrated clinical benefit, framing neurofilament as a candidate surrogate endpoint.',
+        source: {
+          externalId: 'src:miller-valor-tofersen-nejm-2022',
+          name: 'Miller TM, Cudkowicz ME, Genge A, et al. Trial of Antisense Oligonucleotide Tofersen for SOD1 ALS. N Engl J Med. 2022;387(12):1099-1110.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36129998/',
+          publishedAt: '2022-09-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-04-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to tofersen for SOD1-ALS based solely on the reduction in plasma neurofilament light chain, after its advisory committee voted 9-0 in March 2023 that the biomarker change was reasonably likely to predict clinical benefit despite the failed primary clinical endpoint. This was the first ALS approval to rest on a biomarker surrogate and the first therapy targeting a genetic cause of the disease, with the phase 3 ATLAS study designated as the confirmatory trial.',
+        source: {
+          externalId: 'src:biogen-qalsody-tofersen-fda-accelerated-approval-2023',
+          name: 'Biogen. FDA Grants Accelerated Approval for QALSODY (tofersen) for SOD1-ALS, a Major Scientific Advancement as the First Treatment to Target a Genetic Cause of ALS. April 25, 2023.',
+          url: 'https://investors.biogen.com/news-releases/news-release-details/fda-grants-accelerated-approval-qalsodytm-tofersen-sod1-als',
+          publishedAt: '2023-04-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Xanomeline–trospium (KarXT / Cobenfy) schizophrenia — EMERGENT-2 2023 / FDA approval 2024
+  {
+    externalId: 'trajectory:xanomeline-trospium-karxt-cobenfy-schizophrenia-approval-2023',
+    text: 'Xanomeline–trospium (KarXT, marketed as Cobenfy, Karuna/Bristol Myers Squibb), a dual M1/M4 muscarinic-receptor agonist paired with a peripheral muscarinic antagonist and acting without dopamine D2 blockade, reduces schizophrenia symptoms, as shown in the phase 3 EMERGENT-2 trial published 13 December 2023 and ratified by FDA approval on 26 September 2024 — the first antipsychotic with a fundamentally new mechanism in decades.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2023-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-12-13',
+        datePrecision: 'DAY',
+        reason: 'Kaul and colleagues published the randomized, double-blind, placebo-controlled phase 3 EMERGENT-2 trial in The Lancet, reporting that KarXT significantly reduced PANSS total scores at five weeks in acutely psychotic adults with schizophrenia and was generally well tolerated, without the weight gain and movement effects tied to dopamine antagonists. The trial recorded pivotal evidence that muscarinic agonism, with no D2 blockade, could treat schizophrenia — challenging the seventy-year dopamine-centric paradigm of antipsychotic action.',
+        source: {
+          externalId: 'src:kaul-emergent2-karxt-lancet-2024',
+          name: 'Kaul I, Sawchak S, Correll CU, et al. Efficacy and safety of the muscarinic receptor agonist KarXT (xanomeline–trospium) in schizophrenia (EMERGENT-2) in the USA: results from a randomised, double-blind, placebo-controlled, flexible-dose phase 3 trial. Lancet. 2024;403(10422):160-170.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38104575/',
+          publishedAt: '2023-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-09-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Cobenfy (xanomeline and trospium chloride) for schizophrenia in adults, the first new pharmacological class for the disorder in decades and the first antipsychotic to act through cholinergic (M1/M4) rather than dopamine receptors. The approval institutionally settled the claim that muscarinic agonism is a viable antipsychotic mechanism, opening a non-dopaminergic therapeutic pathway after a half-century in which every approved antipsychotic blocked D2 receptors.',
+        source: {
+          externalId: 'src:bms-cobenfy-karxt-fda-approval-2024',
+          name: 'Bristol Myers Squibb. U.S. Food and Drug Administration Approves Bristol Myers Squibb\'s COBENFY (xanomeline and trospium chloride), a First-In-Class Muscarinic Agonist for the Treatment of Schizophrenia in Adults. September 26, 2024.',
+          url: 'https://news.bms.com/news/details/2024/U.S.-Food-and-Drug-Administration-Approves-Bristol-Myers-Squibbs-COBENFY-xanomeline-and-trospium-chloride-a-First-In-Class-Muscarinic-Agonist-for-the-Treatment-of-Schizophrenia-in-Adults/default.aspx',
+          publishedAt: '2024-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dextromethorphan–bupropion (AXS-05 / Auvelity) MDD — GEMINI 2022 / FDA approval 2022
+  {
+    externalId: 'trajectory:dextromethorphan-bupropion-auvelity-mdd-approval-2022',
+    text: 'Dextromethorphan–bupropion (AXS-05, marketed as Auvelity, Axsome), an oral combination of an NMDA-receptor antagonist/sigma-1 agonist with a metabolic enhancer, is a rapid-acting treatment for major depressive disorder, as shown in the phase 3 GEMINI trial published 30 May 2022 and ratified by FDA approval on 18 August 2022.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-05-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-05-30',
+        datePrecision: 'DAY',
+        reason: 'Iosifescu and colleagues published the phase 3 GEMINI trial in the Journal of Clinical Psychiatry, reporting that once-daily dextromethorphan–bupropion produced rapid, statistically significant reductions in MADRS depression scores versus placebo, with separation as early as one week. The trial recorded into the literature the claim that an oral glutamatergic (NMDA-antagonist) agent could rapidly treat major depression, a mechanism distinct from the monoamine reuptake basis of conventional oral antidepressants.',
+        source: {
+          externalId: 'src:iosifescu-gemini-axs05-jcp-2022',
+          name: 'Iosifescu DV, Jones A, O\'Gorman C, et al. Efficacy and Safety of AXS-05 (Dextromethorphan-Bupropion) in Patients With Major Depressive Disorder: A Phase 3 Randomized Clinical Trial (GEMINI). J Clin Psychiatry. 2022;83(4):21m14345.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35649167/',
+          publishedAt: '2022-05-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-08-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Auvelity (dextromethorphan–bupropion extended-release) for major depressive disorder in adults, the first oral antidepressant to act through an NMDA-receptor-antagonist mechanism and, per the manufacturer, the first new oral antidepressant mechanism cleared in more than sixty years. The approval institutionally established a rapid-acting oral glutamatergic option for general MDD, extending to the broad outpatient population the mechanism that esketamine had previously reached only for treatment-resistant depression under a restricted REMS.',
+        source: {
+          externalId: 'src:auvelity-axs05-fda-approval-history-2022',
+          name: 'Drugs.com. Auvelity (dextromethorphan and bupropion) FDA Approval History. Approval date August 18, 2022.',
+          url: 'https://www.drugs.com/history/auvelity.html',
+          publishedAt: '2022-08-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
