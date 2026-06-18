@@ -66495,6 +66495,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INDUSTRIAL & COLONIAL (1750–1900): East Asia — China, Japan, Korea
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Treaty of Nanking — end of the First Opium War, 29 August 1842 ───────────
+  {
+    externalId: 'trajectory:treaty-of-nanking-1842',
+    text: 'The Treaty of Nanking, signed aboard HMS Cornwallis on the Yangtze at Nanjing on 29 August 1842, ended the First Opium War between Great Britain and Qing China, ceding Hong Kong Island, opening five treaty ports, and imposing an indemnity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1842-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1842-08-29',
+        datePrecision: 'DAY',
+        reason: 'After British forces threatened Nanjing, the Qing plenipotentiaries Keying (Qiying), Yilibu, and Niu Jian signed the treaty with the British envoy Sir Henry Pottinger aboard HMS Cornwallis. The Qing ceded Hong Kong Island in perpetuity, opened Canton, Amoy, Foochow, Ningpo and Shanghai to British trade and residence, abolished the Cohong monopoly, and agreed to pay 21 million silver dollars. The signed treaty text is a contemporaneous instrument of state — the first of the "unequal treaties."',
+        source: {
+          externalId: 'src:wikipedia-treaty-of-nanking',
+          name: 'Treaty of Nanking — signed aboard HMS Cornwallis at Nanjing, 29 August 1842, ending the First Opium War.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nanking',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1843-06-26',
+        datePrecision: 'DAY',
+        reason: 'The treaty was ratified by the Daoguang Emperor and Queen Victoria and the instruments of ratification were exchanged at Hong Kong on 26 June 1843, bringing it into force. The date, signatories, and terms are uncontested fixed reference points in the historiography of the Opium Wars and the opening of China; the treaty governed Anglo-Chinese relations until superseded by later treaties.',
+        source: {
+          externalId: 'src:britannica-treaty-of-nanjing',
+          name: 'Treaty of Nanjing — terms, ratification (26 June 1843), and place in the Opium War settlement.',
+          url: 'https://www.britannica.com/event/Treaty-of-Nanjing',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Convention of Kanagawa — opening of Japan, 31 March 1854 ─────────────────
+  {
+    externalId: 'trajectory:convention-of-kanagawa-1854',
+    text: 'The Convention of Kanagawa, signed on 31 March 1854 between Commodore Matthew C. Perry of the United States and the Tokugawa shogunate, opened the ports of Shimoda and Hakodate to American vessels and ended Japan\'s roughly 220-year policy of national seclusion (sakoku).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1854-03-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1854-03-31',
+        datePrecision: 'DAY',
+        reason: 'Returning to Edo Bay in 1854 with a larger squadron after his 1853 ultimatum, Commodore Perry compelled the shogunate to negotiate. The signed convention opened Shimoda and Hakodate to American ships for provisioning, guaranteed protection for shipwrecked American sailors, and permitted a US consul to reside at Shimoda. The bilingual signed treaty is a contemporaneous instrument of state ending sakoku.',
+        source: {
+          externalId: 'src:wikipedia-convention-of-kanagawa',
+          name: 'Convention of Kanagawa — signed 31 March 1854 between the United States and the Tokugawa shogunate, opening Shimoda and Hakodate.',
+          url: 'https://en.wikipedia.org/wiki/Convention_of_Kanagawa',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The convention is established in the historiography as the treaty that ended Japanese seclusion and precipitated the "unequal treaties" with other Western powers and the internal crisis that culminated in the Meiji Restoration. The date and terms are uncontested fixed reference points.',
+        source: {
+          externalId: 'src:britannica-treaty-of-kanagawa',
+          name: 'Treaty of Kanagawa — opening of Japan, 1854; place in the end of sakoku.',
+          url: 'https://www.britannica.com/event/Treaty-of-Kanagawa',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Meiji Restoration proclaimed — Ōsei Fukko, 3 January 1868 ────────────────
+  {
+    externalId: 'trajectory:meiji-restoration-proclamation-1868',
+    text: 'On 3 January 1868, the young Emperor Meiji issued the decree of the Restoration of Imperial Rule (Ōsei Fukko no Daigōrei), abolishing the Tokugawa shogunate and declaring direct imperial government — the formal start of the Meiji Restoration.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1868-01-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1868-01-03',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 3 January 1868, domain forces from Satsuma and Chōshū seized the gates of the Kyoto Imperial Palace, and a court council issued the decree restoring direct imperial rule, abolishing the shogunate and the offices of regent and kampaku. The decree is a contemporaneous instrument of state; the coup precipitated the Boshin War between the new imperial government and Tokugawa loyalists.',
+        source: {
+          externalId: 'src:wikipedia-meiji-restoration',
+          name: 'Meiji Restoration — decree of the Restoration of Imperial Rule (Ōsei Fukko no Daigōrei), 3 January 1868.',
+          url: 'https://en.wikipedia.org/wiki/Meiji_Restoration',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 3 January 1868 proclamation is the settled reference point in modern Japanese historiography for the formal restoration of imperial authority and the beginning of the Meiji era\'s rapid modernization. The date and the chain of events (palace coup, decree, Boshin War) are uncontested.',
+        source: {
+          externalId: 'src:britannica-meiji-restoration',
+          name: 'Meiji Restoration — restoration of imperial rule and the end of the Tokugawa shogunate, 1868.',
+          url: 'https://www.britannica.com/event/Meiji-Restoration',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Japan–Korea Treaty of 1876 (Treaty of Ganghwa), 26 February 1876 ─────────
+  {
+    externalId: 'trajectory:japan-korea-treaty-ganghwa-1876',
+    text: 'The Japan–Korea Treaty of Amity (Treaty of Ganghwa), signed on 26 February 1876, was imposed on Joseon Korea by Japan through gunboat diplomacy; it opened three Korean ports to Japanese trade, granted Japanese extraterritoriality, and ended Korea\'s status as a Qing tributary state.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1876-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1876-02-26',
+        datePrecision: 'DAY',
+        reason: 'Following the Ganghwa Island incident of 1875, Japan dispatched a naval force to compel Joseon Korea to negotiate. The signed treaty declared Korea an independent state (severing the tributary fiction with Qing China), opened Busan and two further ports (Incheon and Wonsan) to Japanese trade, and granted Japanese nationals extraterritorial legal rights. The bilingual signed treaty is a contemporaneous instrument of state — Korea\'s first "unequal treaty."',
+        source: {
+          externalId: 'src:wikipedia-japan-korea-treaty-1876',
+          name: 'Japan–Korea Treaty of 1876 (Treaty of Ganghwa) — signed 26 February 1876, opening Korea to Japanese trade.',
+          url: 'https://en.wikipedia.org/wiki/Japan%E2%80%93Korea_Treaty_of_1876',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The treaty is the settled reference point in the historiography of Korea\'s opening and the erosion of Qing suzerainty, beginning the process that led through the Sino-Japanese War (1894–95) to Japanese protectorate (1905) and annexation (1910). Its date and terms are uncontested.',
+        source: {
+          externalId: 'src:britannica-ganghwa-treaty',
+          name: 'Treaty of Ganghwa — opening of Korea and the end of its tributary status, 1876.',
+          url: 'https://www.britannica.com/place/Korea/The-opening-of-Korea',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Shimonoseki — end of the First Sino-Japanese War, 17 April 1895 ─
+  {
+    externalId: 'trajectory:treaty-of-shimonoseki-1895',
+    text: 'The Treaty of Shimonoseki, signed on 17 April 1895, ended the First Sino-Japanese War: Qing China recognized the full independence of Korea, ceded Taiwan, the Penghu Islands, and the Liaodong Peninsula to Japan, and agreed to a large indemnity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1895-04-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1895-04-17',
+        datePrecision: 'DAY',
+        reason: 'After Japan\'s decisive victories on land and at sea, the Qing plenipotentiary Li Hongzhang and Japan\'s Itō Hirobumi and Mutsu Munemitsu signed the treaty at Shimonoseki. China recognized Korea\'s full independence, ceded Taiwan, the Pescadores (Penghu), and the Liaodong Peninsula, opened four cities to Japanese trade, and agreed to pay 200 million taels. The signed treaty is a contemporaneous instrument of state marking Japan\'s emergence as an imperial power.',
+        source: {
+          externalId: 'src:wikipedia-treaty-of-shimonoseki',
+          name: 'Treaty of Shimonoseki — signed 17 April 1895, ending the First Sino-Japanese War.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Shimonoseki',
+          publishedAt: '2010-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-05-08',
+        datePrecision: 'DAY',
+        reason: 'The treaty was ratified and instruments exchanged on 8 May 1895, bringing it into force. Although the Triple Intervention of Russia, Germany, and France soon forced Japan to retrocede the Liaodong Peninsula, the date, signatories, and core terms (Korean independence, cession of Taiwan and Penghu, indemnity) are uncontested fixed reference points in East Asian history.',
+        source: {
+          externalId: 'src:britannica-treaty-of-shimonoseki',
+          name: 'Treaty of Shimonoseki — terms and ratification ending the Sino-Japanese War, 1895.',
+          url: 'https://www.britannica.com/event/Treaty-of-Shimonoseki',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
