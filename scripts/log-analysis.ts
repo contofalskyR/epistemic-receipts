@@ -102,6 +102,15 @@ const REJECTION_PATTERNS: { label: string; re: RegExp }[] = [
   { label: 'saturation',        re: /saturated|exhausted|extremely.dense|already.*dense|no.more.candidates|ran.out|no.valid.candidates|fully.covered|vein.*exhausted/i },
 ]
 
+// Medicine era normalizer (4 eras from loop-settling-curve-medicine.sh)
+function normalizeMedEra(era: string): string {
+  if (/drug.discover|pre.1950|natural.compound|early.synthetic|insulin|sulfonamide/i.test(era)) return 'drug-discovery'
+  if (/clinical.trial|1950.+1990|rct|kefauver|thalidomide|aids|statin/i.test(era)) return 'clinical-trials'
+  if (/post.market|1990.+2010|vioxx|ssri|statin.long|hormone.replacement/i.test(era)) return 'post-market'
+  if (/regulatory.reversal|precision.medicine|2010|opioid.epidemic|gene.therapy|covid|glp/i.test(era)) return 'regulatory-reversal'
+  return 'unknown'
+}
+
 // ─── Parse log ────────────────────────────────────────────────────────────────
 const raw = readFileSync('/tmp/settling-curve-loop.log', 'utf8')
 const lines = raw.split('\n')
@@ -356,6 +365,73 @@ findings.push(
   `Astronomy/space dominates ancient/classical (eclipses, novas, comets). The model defaults to dateable astronomical events when other primary sources are sparse.`
 )
 
+// ─── Medicine JSONL analysis ───────────────────────────────────────────────────
+const MED_JSONL = '/Users/robclaw/Projects/epistemic-receipts/logs/medicine-decisions.jsonl'
+const medEras = ['drug-discovery', 'clinical-trials', 'post-market', 'regulatory-reversal']
+
+let medicineStats: Record<string, unknown> = { status: 'no-data' }
+
+try {
+  const medRaw = readFileSync(MED_JSONL, 'utf8')
+  const medRuns = medRaw.split('\n').filter(Boolean).map((l) => {
+    try { return JSON.parse(l) } catch { return null }
+  }).filter(Boolean)
+
+  console.log(`Parsed ${medRuns.length} medicine runs`)
+
+  const medPerEra: Record<string, {
+    runs: number; total_added: number; total_candidates: number
+    avg_novelty_rate: number; domain_dist: Record<string, number>
+    saturation_curve: number[]; review_issues: number
+  }> = {}
+
+  for (const era of medEras) {
+    const eraRuns = medRuns.filter((r: Record<string, unknown>) => normalizeMedEra(r.era as string) === era)
+    const domainDist: Record<string, number> = {}
+    let reviewIssues = 0
+    for (const r of eraRuns as Array<Record<string, unknown>>) {
+      const dom = (r.domain as string || '').replace(/\s*\(.*/, '').trim()
+      if (dom) domainDist[dom] = (domainDist[dom] || 0) + 1
+      if ((r.review as string || '').startsWith('issues:') || (r.review as string || '').startsWith('fix')) reviewIssues++
+    }
+    const totalAdded = (eraRuns as Array<Record<string, unknown>>).reduce((a, r) => a + (Number(r.added) || 0), 0)
+    const totalCandidates = (eraRuns as Array<Record<string, unknown>>).reduce((a, r) => a + (Number(r.candidates) || 0), 0)
+    const noveltyRates = (eraRuns as Array<Record<string, unknown>>)
+      .map((r) => parseFloat(r.novelty_rate as string || '0')).filter((v) => !isNaN(v))
+    medPerEra[era] = {
+      runs: eraRuns.length,
+      total_added: totalAdded,
+      total_candidates: totalCandidates,
+      avg_novelty_rate: noveltyRates.length > 0 ? +(noveltyRates.reduce((a, b) => a + b, 0) / noveltyRates.length).toFixed(3) : 0,
+      domain_dist: domainDist,
+      saturation_curve: (eraRuns as Array<Record<string, unknown>>).map((r) => Number(r.added) || 0),
+      review_issues: reviewIssues,
+    }
+  }
+
+  // MI: I(medicine_era ; productivity)
+  const joint_med_era_prod = new Map<string, Map<string, number>>()
+  for (const r of medRuns as Array<Record<string, unknown>>) {
+    const era = normalizeMedEra(r.era as string)
+    const n = Number(r.added) || 0
+    const bucket = n === 0 ? 'zero' : n <= 2 ? 'low(1-2)' : n <= 4 ? 'mid(3-4)' : 'high(5+)'
+    if (!joint_med_era_prod.has(era)) joint_med_era_prod.set(era, new Map())
+    joint_med_era_prod.get(era)!.set(bucket, (joint_med_era_prod.get(era)!.get(bucket) || 0) + 1)
+  }
+  const mi_med_era_prod = mutualInformation(joint_med_era_prod)
+
+  const medTotal = medRuns.reduce((a: number, r: Record<string, unknown>) => a + (Number(r.added) || 0), 0)
+
+  medicineStats = {
+    total_runs: medRuns.length,
+    total_added: medTotal,
+    'I(era;productivity)': { mi: mi_med_era_prod.mi, normalized: mi_med_era_prod.normalized, n: mi_med_era_prod.n },
+    per_era: medPerEra,
+  }
+} catch {
+  medicineStats = { status: 'no-data-yet', note: 'medicine-decisions.jsonl not found or empty — run medicine loop first' }
+}
+
 const report = {
   generated: '2026-06-18',
   total_runs: totalRuns,
@@ -388,6 +464,7 @@ const report = {
   bias_matrix: biasMatrix,
   era_topic_mi_matrix: mi_era_topic.matrix,
   top_findings: findings,
+  medicine_analysis: medicineStats,
 }
 
 writeFileSync('/Users/robclaw/Projects/epistemic-receipts/logs/log-analysis-report.json', JSON.stringify(report, null, 2))
