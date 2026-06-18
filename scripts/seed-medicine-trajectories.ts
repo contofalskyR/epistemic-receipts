@@ -15410,6 +15410,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY / PHARMACOVIGILANCE ERA (1997–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Levothyroxine / Synthroid bioequivalence suppression 1997 ───────────────
+  {
+    externalId: 'trajectory:levothyroxine-synthroid-bioequivalence-suppression-1997',
+    text: 'Dong and colleagues reported in JAMA on 16 April 1997 that brand-name Synthroid and three competing brand and generic levothyroxine sodium preparations were bioequivalent and interchangeable in treating hypothyroidism, contradicting the long-marketed claim that Synthroid was uniquely reliable and not substitutable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-04-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-04-16',
+        datePrecision: 'DAY',
+        reason: 'Betty Dong\'s randomized four-way crossover trial, completed around 1990 under a Boots Pharmaceuticals (later Knoll) research contract, found Synthroid bioequivalent to cheaper rivals. The manufacturer invoked a contract veto clause and suppressed publication for roughly seven years; the study finally appeared in JAMA on 16 April 1997, making the bioequivalence finding part of the peer-reviewed record and exposing industry suppression of inconvenient data.',
+        source: {
+          externalId: 'src:dong-levothyroxine-bioequivalence-jama-1997',
+          name: 'Dong BJ, Hauck WW, Gambertoglio JG, et al. Bioequivalence of generic and brand-name levothyroxine products in the treatment of hypothyroidism. JAMA. 1997;277(15):1205-1213.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9103344/',
+          publishedAt: '1997-04-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-08-14',
+        datePrecision: 'DAY',
+        reason: 'In a Federal Register notice of 14 August 1997 (62 FR 43535), the FDA declared orally administered levothyroxine sodium a \'new drug\' requiring approved New Drug Applications, forcing manufacturers into a formal potency-and-bioequivalence review regime. The ensuing NDA approvals and Orange Book AB-ratings institutionally settled levothyroxine products as regulated, comparable, and substitutable preparations.',
+        source: {
+          externalId: 'src:fda-levothyroxine-new-drug-fr-1997',
+          name: 'U.S. Food and Drug Administration. Prescription Drug Products; Levothyroxine Sodium. Federal Register, 62 FR 43535. 14 August 1997.',
+          url: 'https://www.federalregister.gov/documents/1997/08/14/97-21575/prescription-drug-products-levothyroxine-sodium',
+          publishedAt: '1997-08-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Insulin glargine / Lantus cancer signal 2009 ────────────────────────────
+  {
+    externalId: 'trajectory:insulin-glargine-lantus-cancer-signal-2009',
+    text: 'A cluster of four observational studies and an editorial published together in Diabetologia online on 26 June 2009 — led by Hemkens et al.\'s German cohort of ~127,000 insulin-treated patients — reported a dose-dependent association between the long-acting analogue insulin glargine (Lantus) and increased cancer incidence, casting doubt on the established safety of the most widely used basal insulin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-04-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-04-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Sanofi/Aventis\'s insulin glargine (Lantus, NDA 21-081) in April 2000 as a once-daily basal insulin for type 1 and type 2 diabetes, establishing it on the regulatory record as a safe and effective therapy; it became the world\'s best-selling insulin over the following decade.',
+        source: {
+          externalId: 'src:fda-lantus-glargine-approval-2000',
+          name: 'U.S. Food and Drug Administration. Drug Approval Package: Lantus (Insulin Glargine [rDNA Origin]) NDA 21-081. April 2000.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2000/21081_lantus.cfm',
+          publishedAt: '2000-04-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-06-26',
+        datePrecision: 'DAY',
+        reason: 'Diabetologia took the unusual step of fast-tracking and publishing four studies (German, Swedish, Scottish, and UK) plus a Smith-and-Gale editorial simultaneously online on 26 June 2009. Hemkens et al.\'s retrospective German cohort found a statistically significant dose-dependent excess of malignancy among glargine users versus human insulin, generating a worldwide safety scare and regulatory reviews by the FDA and EMA over whether glargine\'s mitogenic IGF-1 receptor affinity raised cancer risk.',
+        source: {
+          externalId: 'src:hemkens-glargine-malignancy-diabetologia-2009',
+          name: 'Hemkens LG, Grouven U, Bender R, et al. Risk of malignancies in patients with diabetes treated with human insulin or insulin analogues: a cohort study. Diabetologia. 2009;52(9):1732-1744.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19565214/',
+          publishedAt: '2009-06-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-06-11',
+        datePrecision: 'DAY',
+        reason: 'The ORIGIN randomized controlled trial (12,537 patients, median 6.2 years), reported by Gerstein and colleagues in the New England Journal of Medicine online on 11 June 2012, found insulin glargine had a neutral effect on cancer (hazard ratio ~1.00) and on cardiovascular outcomes, providing the randomized evidence the 2009 observational signal lacked and largely re-settling glargine\'s safety profile.',
+        source: {
+          externalId: 'src:origin-glargine-outcomes-nejm-2012',
+          name: 'ORIGIN Trial Investigators (Gerstein HC, et al.). Basal insulin and cardiovascular and other outcomes in dysglycemia. N Engl J Med. 2012;367(4):319-328.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22686416/',
+          publishedAt: '2012-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Muraglitazar / Pargluva cardiovascular risk 2005 ────────────────────────
+  {
+    externalId: 'trajectory:muraglitazar-pargluva-cardiovascular-risk-2005',
+    text: 'Nissen, Wolski, and Topol reported in JAMA (online 20 October 2005) that the first dual PPAR-alpha/gamma agonist muraglitazar (Pargluva, Bristol-Myers Squibb/Merck) more than doubled the combined risk of death, myocardial infarction, stroke, and heart failure in type 2 diabetes trials, overturning the FDA advisory committee\'s 9 September 2005 recommendation to approve the drug.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-09-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-09-09',
+        datePrecision: 'DAY',
+        reason: 'On 9 September 2005 the FDA\'s Endocrinologic and Metabolic Drugs Advisory Committee voted that muraglitazar was approvable for glycemic control in type 2 diabetes, placing the first-in-class dual PPAR agonist on track for U.S. marketing as a safe and effective glucose-lowering drug.',
+        source: {
+          externalId: 'src:nissen-muraglitazar-advisory-jama-2005',
+          name: 'Nissen SE, Wolski K, Topol EJ. Effect of muraglitazar on death and major adverse cardiovascular events in patients with type 2 diabetes mellitus. JAMA. 2005;294(20):2581-2586 (documenting the 9 Sept 2005 advisory committee recommendation).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16239637/',
+          publishedAt: '2005-11-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-20',
+        datePrecision: 'DAY',
+        reason: 'Days after the advisory vote, Nissen and colleagues published a rapid pooled meta-analysis (online 20 October 2005) finding muraglitazar caused excess death/MI/stroke (RR 2.23) and, with heart failure and TIA included, RR 2.62 versus controls. The analysis triggered an FDA request for cardiovascular safety data, and Bristol-Myers Squibb and Merck abandoned development of muraglitazar in 2006 without it ever reaching market — a landmark case of post-hoc meta-analysis killing an already-recommended drug.',
+        source: {
+          externalId: 'src:nissen-muraglitazar-cv-risk-jama-2005',
+          name: 'Nissen SE, Wolski K, Topol EJ. Effect of muraglitazar on death and major adverse cardiovascular events in patients with type 2 diabetes mellitus. JAMA. 2005;294(20):2581-2586.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16239637/',
+          publishedAt: '2005-11-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rimonabant / Acomplia psychiatric withdrawal 2008 ───────────────────────
+  {
+    externalId: 'trajectory:rimonabant-acomplia-psychiatric-withdrawal-2008',
+    text: 'Rimonabant (Acomplia, Sanofi-Aventis), the first selective cannabinoid CB1 receptor antagonist and granted EU marketing authorisation on 19 June 2006 as an anti-obesity drug, had that authorisation suspended after the European Medicines Agency concluded on 23 October 2008 that it roughly doubled the risk of serious psychiatric disorders and that its benefits no longer outweighed its risks.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-19',
+        datePrecision: 'DAY',
+        reason: 'On 19 June 2006 the European Commission granted Acomplia (rimonabant) a marketing authorisation valid across the EU as an adjunct to diet and exercise for obese and overweight patients with risk factors, establishing the novel endocannabinoid-blocking mechanism as an approved weight-loss therapy. (The FDA\'s advisory committee declined to recommend approval in June 2007 and it was never marketed in the U.S.)',
+        source: {
+          externalId: 'src:ema-acomplia-rimonabant-epar',
+          name: 'European Medicines Agency. Acomplia (rimonabant) — European Public Assessment Report. Marketing authorisation granted 19 June 2006.',
+          url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/acomplia',
+          publishedAt: '2006-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'At its 20-23 October 2008 meeting the EMA\'s CHMP concluded, on the basis of post-marketing reports and ongoing trials showing an approximate doubling of serious psychiatric disorders (including depression and suicidality), that rimonabant\'s benefits no longer outweighed its risks and recommended EU-wide suspension on 23 October 2008. Marketing was suspended on 13 November 2008 and Sanofi-Aventis withdrew the authorisation, ending the CB1-antagonist obesity drug class.',
+        source: {
+          externalId: 'src:ema-acomplia-suspension-press-2008',
+          name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia. Press release, 23 October 2008.',
+          url: 'https://www.ema.europa.eu/en/news/european-medicines-agency-recommends-suspension-marketing-authorisation-acomplia',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
