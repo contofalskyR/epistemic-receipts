@@ -49756,6 +49756,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // COLD WAR & POSTWAR (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Wu experiment: parity violation in the weak interaction ─────────────────
+  {
+    externalId: 'trajectory:wu-parity-violation-1957',
+    text: 'Experiments in late 1956 and early 1957, led by Chien-Shiung Wu at the U.S. National Bureau of Standards, demonstrated that parity (mirror symmetry) is not conserved in the weak interaction: beta particles from polarized cobalt-60 are emitted preferentially opposite to the direction of nuclear spin, overturning the long-assumed law of conservation of parity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1956-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-10-01',
+        datePrecision: 'DAY',
+        reason: 'Conservation of parity had been treated as a self-evident law of physics. On 1 October 1956 Tsung-Dao Lee and Chen-Ning Yang published "Question of Parity Conservation in Weak Interactions" (Physical Review 104, 254), pointing out that parity conservation had never actually been tested for the weak interaction and proposing concrete experiments — including measuring the angular distribution of beta particles from oriented nuclei — to settle it.',
+        source: {
+          externalId: 'src:lee-yang-parity-1956',
+          name: 'Wu experiment — background; Lee & Yang, "Question of Parity Conservation in Weak Interactions," Phys. Rev. 104, 254 (1 Oct 1956). Wikipedia, "Wu experiment".',
+          url: 'https://en.wikipedia.org/wiki/Wu_experiment',
+          publishedAt: '1956-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-02-15',
+        datePrecision: 'DAY',
+        reason: 'Wu and her collaborators at the National Bureau of Standards cooled cobalt-60 to near absolute zero and aligned the nuclei in a magnetic field, observing in late December 1956 a clear asymmetry: electrons were emitted preferentially opposite the nuclear spin. The result, published as "Experimental Test of Parity Conservation in Beta Decay" (Phys. Rev. 105, 1413, 15 Feb 1957), was confirmed within days by Garwin, Lederman, and Weinrich in pion–muon decay, settling that parity is violated by the weak force.',
+        source: {
+          externalId: 'src:wu-parity-physrev-1957',
+          name: 'Wu, Ambler, Hayward, Hoppes, Hudson. "Experimental Test of Parity Conservation in Beta Decay." Physical Review 105, 1413–1415 (15 Feb 1957).',
+          url: 'https://journals.aps.org/pr/abstract/10.1103/PhysRev.105.1413',
+          publishedAt: '1957-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-12-10',
+        datePrecision: 'DAY',
+        reason: 'On 10 December 1957 Lee and Yang received the Nobel Prize in Physics "for their penetrating investigation of the so-called parity laws," awarded barely a year after their proposal and Wu\'s confirmation — an unusually rapid institutional ratification. Parity non-conservation in the weak interaction has remained a settled foundation of the Standard Model.',
+        source: {
+          externalId: 'src:nobel-physics-1957-parity',
+          name: 'The Nobel Prize in Physics 1957 — Chen Ning Yang and Tsung-Dao Lee (parity laws). Wikipedia, "Nobel Prize in Physics".',
+          url: 'https://en.wikipedia.org/wiki/Wu_experiment',
+          publishedAt: '1957-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── James Meredith integrates the University of Mississippi ──────────────────
+  {
+    externalId: 'trajectory:james-meredith-ole-miss-1962',
+    text: 'On 1 October 1962, James Meredith became the first African American student to enroll at the University of Mississippi, registering and attending his first class after a federal-court order and the deployment of federal marshals and troops ended two days of rioting in Oxford.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'JUDICIAL',
+        occurredAt: '1962-09-10',
+        datePrecision: 'DAY',
+        reason: 'After Meredith\'s applications were repeatedly rejected, the U.S. Court of Appeals for the Fifth Circuit ruled he had been denied admission solely because of race. On 10 September 1962 Justice Hugo Black, acting for the Supreme Court, vacated a stay and ordered the university to admit him, establishing the legal fact of his right to enroll over the resistance of Governor Ross Barnett.',
+        source: {
+          externalId: 'src:meredith-fifth-circuit-1962',
+          name: 'Ole Miss riot of 1962 — legal background (Meredith v. Fair; Justice Black order, Sept 1962). Wikipedia, "Ole Miss riot of 1962".',
+          url: 'https://en.wikipedia.org/wiki/Ole_Miss_riot_of_1962',
+          publishedAt: '1962-09-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-10-01',
+        datePrecision: 'DAY',
+        reason: 'On the night of 30 September 1962 a riot erupted on campus as Meredith, escorted by federal marshals, was housed in a dormitory; two civilians (journalist Paul Guihard and bystander Ray Gunter) were killed before President Kennedy federalized the National Guard and sent the Army to restore order. On the morning of 1 October 1962 Meredith registered and attended his first class, in American colonial history — the first integration of a public educational facility in Mississippi, recorded contemporaneously by national press and federal authorities.',
+        source: {
+          externalId: 'src:meredith-registration-1962',
+          name: 'Ole Miss riot of 1962 — Meredith registers and attends first class, 1 October 1962. Wikipedia, "Ole Miss riot of 1962".',
+          url: 'https://en.wikipedia.org/wiki/Ole_Miss_riot_of_1962',
+          publishedAt: '1962-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ed White: first American spacewalk ──────────────────────────────────────
+  {
+    externalId: 'trajectory:ed-white-first-american-spacewalk-1965',
+    text: 'On 3 June 1965, astronaut Edward H. White II became the first American to perform a spacewalk (extravehicular activity), spending about 23 minutes outside the Gemini IV spacecraft tethered by a 25-foot umbilical line while James McDivitt remained inside.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-06-03',
+        datePrecision: 'DAY',
+        reason: 'During the third orbit of the four-day Gemini IV mission, White opened the hatch at about 3:45 p.m. EDT on 3 June 1965 and pushed himself out using a hand-held maneuvering oxygen gun, beginning his EVA over the Pacific near Hawaii and ending it about 23 minutes later over the Gulf of Mexico. The event was tracked by NASA in real time and documented in mission telemetry and the iconic photographs McDivitt took from inside the capsule.',
+        source: {
+          externalId: 'src:nasa-ed-white-spacewalk-1965',
+          name: 'NASA. "June 3, 1965 — America\'s First Spacewalk" (Edward H. White II, Gemini IV).',
+          url: 'https://www.nasa.gov/image-article/june-3-1965-americas-first-spacewalk/',
+          publishedAt: '1965-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-06-07',
+        datePrecision: 'DAY',
+        reason: 'After Gemini IV splashed down on 7 June 1965, NASA\'s mission reports confirmed the EVA\'s duration, timeline, and equipment, establishing White as the first American (and second human, after the Soviet Union\'s Alexei Leonov on 18 March 1965) to walk in space. The fact has remained a fixed, undisputed entry in the spaceflight record.',
+        source: {
+          externalId: 'src:nasa-gemini-4-record-1965',
+          name: 'NASA / Smithsonian National Air and Space Museum — Gemini IV and Edward White\'s first American spacewalk.',
+          url: 'https://airandspace.si.edu/multimedia-gallery/edward-whites-first-spacewalk',
+          publishedAt: '1965-06-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Discovery of split genes / RNA splicing (introns) ───────────────────────
+  {
+    externalId: 'trajectory:split-genes-rna-splicing-1977',
+    text: 'In 1977, the laboratories of Phillip Sharp and Richard Roberts independently discovered that eukaryotic (adenovirus) genes are "split" — protein-coding sequences are interrupted by non-coding introns that are excised from the messenger RNA by splicing — overturning the assumption that a gene is a continuous stretch of DNA colinear with its protein.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Studying adenovirus-2 messenger RNA, the groups of Sharp (with Susan Berget and Claire Moore) and Roberts (with Louise Chow, Richard Gelinas, and Thomas Broker) used electron microscopy of RNA–DNA hybrids to show that a single mRNA was assembled from segments encoded at separated points on the genome. The findings — presented at the Cold Spring Harbor Symposium in mid-1977 — were published in PNAS ("Spliced segments at the 5\' terminus of adenovirus 2 late mRNA," August 1977) and in Cell ("An amazing sequence arrangement...," September 1977).',
+        source: {
+          externalId: 'src:berget-sharp-splicing-1977',
+          name: 'Introns / split genes discovered independently by Sharp and Roberts in 1977 (Berget, Moore & Sharp, PNAS Aug 1977; Chow et al., Cell Sep 1977). Wikipedia, "Intron".',
+          url: 'https://en.wikipedia.org/wiki/Intron',
+          publishedAt: '1977-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-10-11',
+        datePrecision: 'DAY',
+        reason: 'Split genes were quickly found to be the norm rather than the exception in eukaryotes, and RNA splicing became a central concept in molecular biology. On 11 October 1993 Roberts and Sharp were awarded the Nobel Prize in Physiology or Medicine "for their discoveries of split genes," ratifying the result\'s settled status across the field.',
+        source: {
+          externalId: 'src:nobel-medicine-1993-split-genes',
+          name: 'The Nobel Prize in Physiology or Medicine 1993 — Richard J. Roberts and Phillip A. Sharp, "for their discoveries of split genes." Wikipedia, "Intron".',
+          url: 'https://en.wikipedia.org/wiki/Intron',
+          publishedAt: '1993-10-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First federally approved human gene therapy ─────────────────────────────
+  {
+    externalId: 'trajectory:first-human-gene-therapy-1990',
+    text: 'On 14 September 1990, a team at the NIH Clinical Center performed the first federally approved human gene therapy, infusing genetically corrected T cells carrying a normal adenosine deaminase (ADA) gene into four-year-old Ashanthi DeSilva to treat her ADA-deficiency severe combined immunodeficiency (ADA-SCID).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-09-14',
+        datePrecision: 'DAY',
+        reason: 'After approval by the NIH Recombinant DNA Advisory Committee and the FDA in mid-1990, a team led by W. French Anderson, R. Michael Blaese, and Kenneth Culver isolated T lymphocytes from Ashanthi DeSilva, exposed them to a retrovirus carrying a normal ADA gene, and reinfused the corrected cells on 14 September 1990 at the NIH Clinical Center — the first sanctioned attempt to treat a human disease by inserting a functioning gene.',
+        source: {
+          externalId: 'src:nih-first-gene-therapy-1990',
+          name: 'NIH Clinical Center. "The personal side of experimental gene therapy" — first gene therapy, Ashanthi DeSilva, 14 September 1990.',
+          url: 'https://www.cc.nih.gov/news/2016/apr/first-gene-therapy',
+          publishedAt: '1990-09-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-10-20',
+        datePrecision: 'DAY',
+        reason: 'Follow-up results published in Science in October 1995 reported that gene-corrected T cells persisted and ADA gene expression was sustained in DeSilva, establishing the trial as the first human gene therapy and a proof of principle. Interpretation of its therapeutic benefit remained debated — DeSilva also continued to receive PEG-ADA enzyme replacement — but the milestone status of the 14 September 1990 procedure itself is settled and uncontested.',
+        source: {
+          externalId: 'src:nhgri-gene-therapy-results-1995',
+          name: 'National Human Genome Research Institute / NIH — results from the first human gene therapy clinical trial (Blaese et al., Science 1995).',
+          url: 'https://www.genome.gov/10000521/1995-release-first-human-gene-therapy-results',
+          publishedAt: '1995-10-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
