@@ -9318,6 +9318,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL PROCEDURES ERA
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Morton ether anesthesia — 1846 ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:morton-ether-surgical-anesthesia-1846',
+    text: 'Inhaled diethyl ether renders patients insensible to pain during surgical operations, as publicly demonstrated by William T. G. Morton at the Massachusetts General Hospital on 16 October 1846 and first reported in the medical literature by Henry J. Bigelow.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1846-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1846-11-18',
+        datePrecision: 'DAY',
+        reason: 'After Morton\'s 16 October 1846 demonstration in which surgeon John Collins Warren removed a neck tumor from a patient rendered insensible by ether, Henry J. Bigelow published the first medical account, \'Insensibility during Surgical Operations Produced by Inhalation,\' in the Boston Medical and Surgical Journal. The paper recorded into the formal literature the claim that inhaled ether abolishes surgical pain, the founding document of surgical anesthesia.',
+        source: {
+          externalId: 'src:bigelow-insensibility-inhalation-1846',
+          name: 'Bigelow HJ. Insensibility during Surgical Operations Produced by Inhalation. Boston Medical and Surgical Journal. 1846;35(16):309-317.',
+          url: 'https://archive.org/details/39002011124139.med.yale.edu',
+          publishedAt: '1846-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1847-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within weeks of Bigelow\'s report the demonstration was reproduced internationally—Robert Liston operated under ether in London on 21 December 1846—and inhalational anesthesia was rapidly adopted as standard surgical practice across Europe and North America during 1847. Surgical anesthesia became a permanent, uncontested fixture of operative medicine, the most consequential American medical contribution of the nineteenth century.',
+        source: {
+          externalId: 'src:bigelow-insensibility-pmc-reprint-2023',
+          name: 'Bigelow HJ. Insensibility during Surgical Operations Produced by Inhalation (historical reprint and commentary). PMC. 2023.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10424980/',
+          publishedAt: '2023-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO Surgical Safety Checklist — 2009 ────────────────────────────────────
+  {
+    externalId: 'trajectory:who-surgical-safety-checklist-2009',
+    text: 'Use of the WHO 19-item Surgical Safety Checklist before, during, and after operations reduces postoperative death and complications, as shown by Haynes and colleagues in an eight-hospital global study published in the New England Journal of Medicine on 14 January 2009.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-01-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-14',
+        datePrecision: 'DAY',
+        reason: 'Atul Gawande\'s Safe Surgery Saves Lives Study Group reported that introducing the WHO checklist across eight hospitals in eight countries cut the inpatient death rate from 1.5% to 0.8% and major complications from 11.0% to 7.0% among roughly 7,700 non-cardiac surgical patients. The NEJM paper recorded the first large-scale evidence that a simple structured checklist reduces surgical morbidity and mortality.',
+        source: {
+          externalId: 'src:haynes-who-checklist-nejm-2009',
+          name: 'Haynes AB, Weiser TG, Berry WR, et al. A surgical safety checklist to reduce morbidity and mortality in a global population. N Engl J Med. 2009;360(5):491-499.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19144931/',
+          publishedAt: '2009-01-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-04-03',
+        datePrecision: 'DAY',
+        reason: 'The World Health Organization published \'WHO Guidelines for Safe Surgery: Safe Surgery Saves Lives\' on 3 April 2009, formalizing the checklist as a global safety standard under its Second Global Patient Safety Challenge. National health systems, including England\'s NHS, subsequently mandated the checklist, settling it as routine institutional practice in operating theatres worldwide.',
+        source: {
+          externalId: 'src:who-guidelines-safe-surgery-2009',
+          name: 'World Health Organization. WHO Guidelines for Safe Surgery 2009: Safe Surgery Saves Lives. Geneva: WHO; 2009.',
+          url: 'https://www.who.int/teams/integrated-health-services/patient-safety/research/safe-surgery',
+          publishedAt: '2009-04-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vertebroplasty sham reversal — 2009 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:vertebroplasty-osteoporotic-fracture-sham-reversal-2009',
+    text: 'Percutaneous vertebroplasty—injecting bone cement into fractured vertebrae—relieves pain from osteoporotic vertebral compression fractures, a belief contradicted by two blinded sham-controlled trials published together in the New England Journal of Medicine on 6 August 2009 that found no benefit over a placebo procedure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-06',
+        datePrecision: 'DAY',
+        reason: 'Vertebroplasty, introduced in France in the late 1980s, had become widely adopted on the strength of uncontrolled before-and-after pain reports. Buchbinder and colleagues, and a parallel trial by Kallmes and colleagues, randomized patients to real vertebroplasty versus a sham procedure (anesthetic without cement) and found no significant difference in pain or function at any timepoint. The dual NEJM publications threw the procedure\'s symptomatic rationale into serious contention.',
+        source: {
+          externalId: 'src:buchbinder-vertebroplasty-nejm-2009',
+          name: 'Buchbinder R, Osborne RH, Ebeling PR, et al. A randomized trial of vertebroplasty for painful osteoporotic vertebral fractures. N Engl J Med. 2009;361(6):557-568.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19657121/',
+          publishedAt: '2009-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ORBITA PCI stable angina placebo — 2017 ─────────────────────────────────
+  {
+    externalId: 'trajectory:orbita-pci-stable-angina-placebo-2017',
+    text: 'Percutaneous coronary intervention (coronary stenting) relieves angina in stable single-vessel coronary disease beyond the effect of a placebo procedure—a longstanding rationale for elective PCI that was contested by the blinded sham-controlled ORBITA trial, published online in The Lancet on 2 November 2017.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-02',
+        datePrecision: 'DAY',
+        reason: 'Since Andreas Grüntzig\'s first coronary angioplasty in 1977, mechanical revascularization was widely presumed to relieve stable angina, and elective PCI for symptom control became routine. Al-Lamee and colleagues conducted ORBITA, the first blinded placebo (sham PCI)-controlled trial in 200 patients with severe single-vessel stenosis on optimized medical therapy, and found PCI did not improve exercise time more than the placebo procedure (difference 16.6 s, p=0.20). The result challenged the symptomatic justification for elective PCI in stable disease.',
+        source: {
+          externalId: 'src:allamee-orbita-lancet-2018',
+          name: 'Al-Lamee R, Thompson D, Dehbi HM, et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial. Lancet. 2018;391(10115):31-40.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29103656/',
+          publishedAt: '2017-11-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
