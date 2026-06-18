@@ -45272,6 +45272,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Tumu — Oirat Mongols capture the Ming emperor ──────────────────
+  {
+    externalId: 'trajectory:battle-of-tumu-1449',
+    text: 'On 1 September 1449 the Oirat Mongol leader Esen Taishi annihilated the main Ming field army at Tumu Fortress and captured the reigning Ming emperor (the Zhengtong Emperor, Zhu Qizhen) — the only Chinese emperor of the dynasty taken alive by a foreign enemy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1449-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1449-09-01',
+        datePrecision: 'DAY',
+        reason: 'Led on campaign by the eunuch Wang Zhen, the huge but mismanaged Ming army is trapped without water at the Tumu post station near Huailai and destroyed by Esen\'s Oirat (Western Mongol) cavalry; Wang Zhen is killed and the young Zhengtong Emperor is taken prisoner. Rather than kill him, Esen holds the emperor as a hostage and advances on Beijing, where the court enthrones the emperor\'s brother. The disaster is entered immediately into the Ming court record (the Veritable Records, Ming Shilu).',
+        source: {
+          externalId: 'src:tumu-crisis-1449-wikipedia',
+          name: 'Tumu Crisis, 1 September 1449 — Esen Taishi of the Oirat Mongols destroys the Ming army at Tumu and captures the Zhengtong Emperor. Recorded in the Ming Veritable Records (Ming Shilu).',
+          url: 'https://en.wikipedia.org/wiki/Tumu_Crisis',
+          publishedAt: '1449-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1739-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Ming Veritable Records and the official History of Ming (Ming Shi, completed 1739) independently record the catastrophe, the capture, and the subsequent defence of Beijing by Yu Qian. Modern scholarship treats the date, the destruction of the army, and the unprecedented capture of a reigning Ming emperor as settled, debating only the casualty figures and Wang Zhen\'s exact role.',
+        source: {
+          externalId: 'src:tumu-crisis-1449-scholarship',
+          name: 'Modern scholarship on the Tumu Crisis, the Oirat ascendancy under Esen, and the 1449 capture of the Zhengtong Emperor.',
+          url: 'https://en.wikipedia.org/wiki/Tumu_Crisis',
+          publishedAt: '1739-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Merv — death of Muhammad Shaybani Khan ─────────────────────────
+  {
+    externalId: 'trajectory:battle-of-merv-1510',
+    text: 'On 2 December 1510 the Safavid shah Ismail I defeated and killed the Uzbek Shaybanid ruler Muhammad Shaybani Khan at the Battle of Merv, ending Shaybanid expansion into Khorasan and fixing the long Safavid–Uzbek frontier across Central Asia.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1510-12-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1510-12-02',
+        datePrecision: 'DAY',
+        reason: 'Shah Ismail I lures the Uzbek army out of Merv with a feigned retreat and crushes it; Muhammad Shaybani Khan — conqueror of the Timurid lands of Transoxiana — is caught and killed trying to escape. Ismail has the khan\'s skull gilded and made into a jewelled drinking cup, and sends his hand to a rival ruler, materially advertising the victory. The battle and the khan\'s death are recorded in contemporary Safavid and Central Asian chronicles.',
+        source: {
+          externalId: 'src:battle-of-merv-1510-wikipedia',
+          name: 'Battle of Merv, 2 December 1510 — Shah Ismail I defeats and kills Muhammad Shaybani Khan, ending Uzbek expansion into Khorasan.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Merv',
+          publishedAt: '1510-12-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1530-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Safavid court histories (the Habib al-siyar of Khwandamir), Central Asian sources, and Babur\'s own memoir (the Baburnama), which records how the death of Shaybani Khan let Babur briefly retake Samarkand, independently confirm the Safavid victory and the khan\'s death at Merv. Modern scholarship treats the December 1510 date and the outcome as settled, recognising it as the battle that fixed the Safavid–Uzbek border along the Amu Darya.',
+        source: {
+          externalId: 'src:battle-of-merv-1510-scholarship',
+          name: 'Modern scholarship on the Battle of Merv and the Safavid–Shaybanid struggle for Khorasan and Transoxiana.',
+          url: 'https://en.wikipedia.org/wiki/Muhammad_Shaybani',
+          publishedAt: '1530-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yermak takes Qashliq — Russian conquest of the Siberian Khanate ──────────
+  {
+    externalId: 'trajectory:yermak-takes-qashliq-1582',
+    text: 'In late October 1582 the Cossack ataman Yermak Timofeyevich defeated the forces of Khan Kuchum at the Battle of Chuvash Cape on the Irtysh and entered the abandoned capital Qashliq (Isker) on 26 October, beginning the Russian conquest of the Siberian Khanate and of Siberia itself.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1582-10-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1582-10-26',
+        datePrecision: 'DAY',
+        reason: 'Yermak\'s small Cossack band, armed with firearms, fights the decisive Battle of Chuvash Cape against the Siberian Tatar army of Kuchum\'s nephew Mehmet-kul beginning 23 October 1582; after three days the Tatars are routed and Kuchum abandons his fortified capital, which Yermak enters on 26 October. The conquest is recorded in the Siberian chronicle tradition (the Yesipov and Remezov chronicles) drawing on the testimony of Yermak\'s surviving companions.',
+        source: {
+          externalId: 'src:yermak-qashliq-1582-wikipedia',
+          name: 'Yermak Timofeyevich and the Battle of Chuvash Cape, October 1582 — capture of Qashliq (Isker) and the start of the Russian conquest of the Siberian Khanate.',
+          url: 'https://en.wikipedia.org/wiki/Yermak_Timofeyevich',
+          publishedAt: '1582-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1700-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Siberian chronicles, the Stroganov family records, and Muscovite state documents confirm Yermak\'s 1582 campaign and the fall of Qashliq, the foundational act of Russia\'s expansion across Siberia. Modern scholarship treats the autumn 1582 capture of Kuchum\'s capital as settled, while debating the precise day and the exact size of Yermak\'s force.',
+        source: {
+          externalId: 'src:yermak-qashliq-1582-scholarship',
+          name: 'Modern scholarship on Yermak\'s conquest of the Siberian Khanate and the founding of Russian Siberia.',
+          url: 'https://en.wikipedia.org/wiki/Khanate_of_Sibir',
+          publishedAt: '1700-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Nerchinsk — first Russo-Qing border treaty ─────────────────────
+  {
+    externalId: 'trajectory:treaty-of-nerchinsk-1689',
+    text: 'On 6 September 1689 (27 August Old Style) the Tsardom of Russia and Qing China signed the Treaty of Nerchinsk — the first treaty between the two empires — halting Russian expansion down the Amur and fixing the Inner Asian border along the Argun and Stanovoy ranges.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1689-09-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1689-09-06',
+        datePrecision: 'DAY',
+        reason: 'After negotiations at the Amur frontier town of Nerchinsk, mediated in Latin by the Jesuits Jean-François Gerbillon and Tomás Pereira attached to the Qing embassy, Russia abandons the Amur fortress of Albazin and agrees a boundary along the Argun River and the Stanovoy (Outer Khingan) watershed. The treaty is concluded in parallel Latin, Russian, and Manchu texts, each side keeping signed and sealed copies — the first equal treaty the Qing concluded with a European power.',
+        source: {
+          externalId: 'src:treaty-nerchinsk-1689-wikipedia',
+          name: 'Treaty of Nerchinsk, signed 27 August 1689 OS / 6 September 1689 NS — first treaty between the Tsardom of Russia and Qing China, with authoritative Latin, Russian and Manchu texts.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nerchinsk',
+          publishedAt: '1689-09-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1727-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The treaty\'s signed multilingual texts survive in both Russian and Chinese archives, and its terms governed the Russo-Qing border for nearly two centuries, supplemented by the Treaty of Kyakhta in 1727 and only revised by the unequal treaties of the 1850s–60s. The date, the participants, and the boundary are settled in modern diplomatic history.',
+        source: {
+          externalId: 'src:treaty-nerchinsk-1689-scholarship',
+          name: 'Modern scholarship on the Treaty of Nerchinsk and the Russo-Qing border settlement in Inner Asia.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Nerchinsk',
+          publishedAt: '1727-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Jao Modo — Qing destruction of Galdan's Dzungars ───────────────
+  {
+    externalId: 'trajectory:battle-of-jao-modo-1696',
+    text: 'On 12 June 1696 a Qing army personally led by the Kangxi Emperor destroyed the Dzungar Mongol army of Galdan Boshugtu Khan at the Battle of Jao Modo near present-day Ulaanbaatar, breaking Dzungar power over the Khalkha Mongols and bringing Outer Mongolia under Qing rule.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1696-06-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1696-06-12',
+        datePrecision: 'DAY',
+        reason: 'Converging in three columns on the Kerulen and Tula rivers, the Qing forces under Kangxi corner Galdan\'s outnumbered Dzungars on the upper Terelj at Jao Modo (Zuunmod); Qing musketry and artillery shatter the Mongol army, killing Galdan\'s wife Anu and several thousand of his men, though Galdan himself escapes westward (he dies in 1697). Kangxi, who led the central army in person, records the campaign in his own letters and the event enters the Qing Veritable Records.',
+        source: {
+          externalId: 'src:battle-jao-modo-1696-wikipedia',
+          name: 'Battle of Jao Modo, 12 June 1696 — the Kangxi Emperor\'s Qing army destroys Galdan Boshugtu Khan\'s Dzungar force, recorded in the Qing Veritable Records and Kangxi\'s own correspondence.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Jao_Modo',
+          publishedAt: '1696-06-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1739-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Qing Veritable Records, Kangxi\'s personal campaign letters, and the official histories independently confirm the date, the Qing victory, and the collapse of Galdan\'s power that followed. Modern scholarship treats Jao Modo as the settled turning point that secured Qing dominance over Khalkha (Outer) Mongolia and opened the long Qing–Dzungar wars that ended with the conquest of the Dzungar Khanate in the 1750s.',
+        source: {
+          externalId: 'src:battle-jao-modo-1696-scholarship',
+          name: 'Modern scholarship on the Battle of Jao Modo and the Qing–Dzungar wars under the Kangxi Emperor.',
+          url: 'https://en.wikipedia.org/wiki/Dzungar%E2%80%93Qing_Wars',
+          publishedAt: '1739-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Cortés meets Moctezuma II at Tenochtitlan ───────────────────────────────
   {
     externalId: 'trajectory:cortes-meets-moctezuma-1519',
