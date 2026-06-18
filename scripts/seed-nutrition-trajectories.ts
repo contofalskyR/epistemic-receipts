@@ -1409,6 +1409,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ADDED SUGAR POLICY ERA (2014–2020)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 27. Sugar Research Foundation — Project 259 suppression — 2017 ──────────
+  {
+    externalId: 'trajectory:sugar-industry-project-259-suppression-2017',
+    text: 'Cristin Kearns, Dorie Apollonio, and Stanton Glantz revealed on November 21, 2017 in PLOS Biology that the Sugar Research Foundation funded, then terminated and never published, Project 259 (1967–1971) after its preliminary results suggested that sucrose, compared with starch, raised blood triglycerides and elevated beta-glucuronidase — an enzyme then linked to bladder cancer.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-11-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Sugar Research Foundation (later International Sugar Research Foundation) internally documented that Project 259 — \'Dietary Carbohydrate and Blood Lipids in Germ-Free Rats,\' run by W.F.R. Pover at the University of Birmingham — found sucrose raised serum triglycerides and beta-glucuronidase relative to starch. After the August 1970 progress report, the Foundation\'s research vice-president John Hickson valued the project at \'nil,\' denied continuation funding, and the adverse findings were never published. The result was recorded only in the industry\'s internal files.',
+        source: {
+          externalId: 'src:kearns-project-259-plos-biology-2017',
+          name: 'Kearns CE, Apollonio D, Glantz SA. Sugar industry sponsorship of germ-free rodent studies linking sucrose to hyperlipidemia and cancer: An historical analysis of internal documents. PLOS Biology. 2017;15(11):e2003460.',
+          url: 'https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2003460',
+          publishedAt: '2017-11-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-21',
+        datePrecision: 'DAY',
+        reason: 'Kearns, Apollonio, and Glantz publish the internal Sugar Research Foundation correspondence and Project 259 reports in PLOS Biology, establishing as documented historical fact that the industry suppressed early evidence that sucrose may be more metabolically harmful and potentially carcinogenic than starch. Drawing on primary internal documents, the analysis is widely accepted and corroborates the same authors\' 2016 JAMA Internal Medicine exposé of the 1967 NEJM review, settling the suppression as an accepted episode in the history of nutrition science.',
+        source: {
+          externalId: 'src:kearns-project-259-plos-biology-2017',
+          name: 'Kearns CE, Apollonio D, Glantz SA. Sugar industry sponsorship of germ-free rodent studies linking sucrose to hyperlipidemia and cancer: An historical analysis of internal documents. PLOS Biology. 2017;15(11):e2003460.',
+          url: 'https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2003460',
+          publishedAt: '2017-11-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 28. Mexico sugar-sweetened beverage tax — 2014 ──────────────────────────
+  {
+    externalId: 'trajectory:mexico-sugar-sweetened-beverage-tax-2014',
+    text: 'Mexico imposed a 1-peso-per-liter excise tax on sugar-sweetened beverages effective January 1, 2014 — the first large national soda tax justified on obesity and diabetes grounds — and a 2016 BMJ evaluation found it cut taxed-beverage purchases by about 6% over the first year, rising to a 12% reduction by December 2014.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-01-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-01-01',
+        datePrecision: 'DAY',
+        reason: 'Mexico\'s federal government implements a 1-peso-per-liter (roughly 10%) excise tax on non-alcoholic sugar-sweetened beverages on January 1, 2014, as part of a fiscal-reform package aimed at the country\'s obesity and type 2 diabetes epidemics. It is the first sugar-sweetened beverage tax adopted at national scale by a large middle-income country, converting the contested metabolic hypothesis that sugary-drink consumption drives obesity into a concrete population-level policy lever.',
+        source: {
+          externalId: 'src:colchero-mexico-ssb-tax-bmj-2016',
+          name: 'Colchero MA, Popkin BM, Rivera JA, Ng SW. Beverage purchases from stores in Mexico under the excise tax on sugar sweetened beverages: observational study. BMJ. 2016;352:h6704.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26738745/',
+          publishedAt: '2016-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-01-06',
+        datePrecision: 'DAY',
+        reason: 'Colchero, Popkin, Rivera, and Ng publish an observational analysis of store-purchase data in BMJ (January 6, 2016) showing that, relative to a counterfactual based on pre-tax trends, purchases of taxed sugar-sweetened beverages fell an average of 6% across 2014 and reached a 12% reduction by December, with the largest declines among low-income households, while untaxed-beverage purchases rose 4%. The result provides the first rigorous empirical evidence that a soda tax measurably reduces consumption, and is later reinforced by two-year follow-up data, settling SSB taxation as an effective demand-reduction tool now endorsed by the WHO.',
+        source: {
+          externalId: 'src:colchero-mexico-ssb-tax-bmj-2016',
+          name: 'Colchero MA, Popkin BM, Rivera JA, Ng SW. Beverage purchases from stores in Mexico under the excise tax on sugar sweetened beverages: observational study. BMJ. 2016;352:h6704.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26738745/',
+          publishedAt: '2016-01-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 29. FDA added sugars label — 2016 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:fda-added-sugars-label-2016',
+    text: 'The U.S. Food and Drug Administration\'s final rule revising the Nutrition Facts label, published May 27, 2016, required for the first time a separate \'Added Sugars\' line and established a Daily Value of 10% of calories, formally recognizing added sugar as a distinct nutrient of public-health concern.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-05-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-05-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA publishes its final rule \'Food Labeling: Revision of the Nutrition and Supplement Facts Labels\' in the Federal Register (81 FR 33742, May 27, 2016), mandating a mandatory \'Added Sugars\' declaration in grams and as a percent Daily Value, with the DV set at 50 g (10% of a 2,000-calorie diet). The rule marks the first time U.S. food labeling distinguishes added sugars from naturally occurring sugars, codifying added sugar as a separately regulated nutrient.',
+        source: {
+          externalId: 'src:fda-nutrition-facts-final-rule-2016',
+          name: 'Food and Drug Administration. Food Labeling: Revision of the Nutrition and Supplement Facts Labels. Final rule. Federal Register. 2016;81(103):33742–33999.',
+          url: 'https://www.federalregister.gov/documents/2016/05/27/2016-11867/food-labeling-revision-of-the-nutrition-and-supplement-facts-labels',
+          publishedAt: '2016-05-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-01-01',
+        datePrecision: 'DAY',
+        reason: 'After the FDA extended the original July 2018 compliance deadline, the Added Sugars declaration became mandatory on January 1, 2020 for manufacturers with $10 million or more in annual food sales (and January 1, 2021 for smaller manufacturers), making the added-sugar line a standard, enforceable feature across the U.S. packaged-food supply. The labeling requirement is now fully in force and uncontested, settling added sugar as an institutionally recognized nutrient.',
+        source: {
+          externalId: 'src:fda-changes-nutrition-facts-label-compliance',
+          name: 'Food and Drug Administration. Changes to the Nutrition Facts Label (compliance dates). FDA.gov.',
+          url: 'https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/changes-nutrition-facts-label',
+          publishedAt: '2020-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 30. Dietary Guidelines added sugar limit — 2016 ─────────────────────────
+  {
+    externalId: 'trajectory:dietary-guidelines-added-sugar-limit-2016',
+    text: 'The 2015–2020 Dietary Guidelines for Americans (8th edition), released January 7, 2016 by USDA and HHS, set for the first time a specific quantitative limit on added sugars — less than 10% of daily calories — while simultaneously dropping the longstanding upper limit on total dietary fat.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-01-07',
+        datePrecision: 'DAY',
+        reason: 'USDA and HHS release the 8th edition of the Dietary Guidelines for Americans on January 7, 2016, recommending that Americans consume less than 10% of daily calories from added sugars — the first numeric cap on added sugar in the guidelines\' history — and removing the cap on total fat that had anchored federal advice since 1980. The shift relocates the primary dietary target from fat toward added sugar, marking institutional adoption of the sugar-focused reframing.',
+        source: {
+          externalId: 'src:dga-2015-2020-eighth-edition',
+          name: 'U.S. Department of Agriculture and U.S. Department of Health and Human Services. Dietary Guidelines for Americans 2015–2020, 8th Edition. December 2015 (released January 7, 2016).',
+          url: 'https://health.gov/our-work/nutrition-physical-activity/dietary-guidelines/previous-dietary-guidelines/2015',
+          publishedAt: '2016-01-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-12-29',
+        datePrecision: 'DAY',
+        reason: 'The 2020–2025 Dietary Guidelines for Americans, issued December 29, 2020, retain the less-than-10%-of-calories added-sugar limit (after USDA and HHS declined to adopt the advisory committee\'s proposed stricter 6% cap), confirming the added-sugar ceiling as durable federal policy across two guideline cycles. The continuity settles the added-sugar limit as established institutional consensus rather than a one-time recommendation.',
+        source: {
+          externalId: 'src:dga-2020-2025-added-sugar-retained',
+          name: 'U.S. Department of Agriculture and U.S. Department of Health and Human Services. Dietary Guidelines for Americans 2020–2025, 9th Edition. December 2020.',
+          url: 'https://www.dietaryguidelines.gov/sites/default/files/2021-03/Dietary_Guidelines_for_Americans-2020-2025.pdf',
+          publishedAt: '2020-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 17. WHO free sugars guideline — 2015 ────────────────────────────────────
   {
     externalId: 'trajectory:who-free-sugars-guideline-2015',
