@@ -676,6 +676,221 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OCEAN & CRYOSPHERE SCIENCE (1978–present)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 15. Mercer — West Antarctic Ice Sheet collapse risk — 1978 ───────────────
+  {
+    externalId: 'trajectory:mercer-west-antarctic-ice-sheet-disaster-1978',
+    text: 'John Mercer warned in Nature on 26 January 1978 that CO₂ greenhouse warming could trigger rapid, irreversible deglaciation of the marine-based West Antarctic Ice Sheet and a roughly 5-metre sea-level rise — the first identification of WAIS collapse as a specific climate threat.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-01-26',
+        datePrecision: 'DAY',
+        reason: "Mercer published 'West Antarctic ice sheet and CO2 greenhouse effect: a threat of disaster' in Nature (271:321–325), arguing that because the WAIS rests on a bed far below sea level it is uniquely vulnerable: a polar warming signal could initiate self-sustaining grounding-line retreat and collapse, raising global sea level by ~5 m. The hypothesis was widely regarded as alarmist and remained contested for decades.",
+        source: {
+          externalId: 'src:mercer-wais-disaster-nature-1978',
+          name: 'Mercer JH. West Antarctic ice sheet and CO2 greenhouse effect: a threat of disaster. Nature. 1978;271(5643):321–325.',
+          url: 'https://ui.adsabs.harvard.edu/abs/1978Natur.271..321M/abstract',
+          publishedAt: '1978-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-05-16',
+        datePrecision: 'DAY',
+        reason: "Joughin, Smith, and Medley published 'Marine ice sheet collapse potentially under way for the Thwaites Glacier Basin, West Antarctica' in Science (344:735–738) on 16 May 2014, combining a numerical model with observed glacier geometry to conclude that early-stage collapse of the Amundsen Sea sector had begun and that eventual collapse was likely irreversible. Alongside Rignot et al.'s companion observational study, it vindicated Mercer's marine-ice-sheet-instability mechanism, moving the once-fringe warning to mainstream scientific acceptance.",
+        source: {
+          externalId: 'src:joughin-thwaites-collapse-science-2014',
+          name: 'Joughin I, Smith BE, Medley B. Marine ice sheet collapse potentially under way for the Thwaites Glacier Basin, West Antarctica. Science. 2014;344(6185):735–738.',
+          url: 'https://www.science.org/doi/10.1126/science.1249055',
+          publishedAt: '2014-05-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 16. Caldeira & Wickett — ocean acidification coined — 2003 ──────────────
+  {
+    externalId: 'trajectory:ocean-acidification-caldeira-wickett-2003',
+    text: "Ken Caldeira and Michael Wickett reported in Nature on 25 September 2003 that ocean absorption of fossil-fuel CO₂ would drive a surface-seawater pH decline larger and faster than any in the past 300 million years, coining the modern framing of 'ocean acidification.'",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-09-25',
+        datePrecision: 'DAY',
+        reason: "Caldeira and Wickett published the brief communication 'Anthropogenic carbon and ocean pH' in Nature (425:365), using an ocean carbon-cycle model to show that continued fossil-fuel CO₂ uptake could lower surface ocean pH by ~0.5 units by 2100 — a rate of chemical change unprecedented over hundreds of millennia and exceeding anything in the geological record short of bolide impacts. The paper crystallized ocean acidification as a distinct anthropogenic threat separate from warming.",
+        source: {
+          externalId: 'src:caldeira-wickett-ocean-ph-nature-2003',
+          name: 'Caldeira K, Wickett ME. Anthropogenic carbon and ocean pH. Nature. 2003;425(6956):365.',
+          url: 'https://www.pnas.org/doi/pdf/10.1073/pnas.1717312115',
+          publishedAt: '2003-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-06-30',
+        datePrecision: 'DAY',
+        reason: "The Royal Society published the policy document 'Ocean acidification due to increasing atmospheric carbon dioxide' (Policy Document 12/05) on 30 June 2005, the first major national-academy assessment to adopt the term and conclude that oceans had already fallen ~0.1 pH units and faced irreversible damage absent CO₂ cuts. A learned-society consensus assessment co-authored by Caldeira and leading marine scientists, it moved the 2003 finding from a single model result to institutionally endorsed science.",
+        source: {
+          externalId: 'src:royal-society-ocean-acidification-2005',
+          name: 'Royal Society. Ocean acidification due to increasing atmospheric carbon dioxide. Policy Document 12/05. 30 June 2005.',
+          url: 'https://royalsociety.org/-/media/policy/publications/2005/9634.pdf',
+          publishedAt: '2005-06-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 17. Stroeve — Arctic sea ice faster than forecast — 2007 ────────────────
+  {
+    externalId: 'trajectory:arctic-sea-ice-faster-than-forecast-2007',
+    text: 'Julienne Stroeve and colleagues reported in Geophysical Research Letters on 1 May 2007 that observed September Arctic sea-ice decline was outpacing the projections of nearly all IPCC AR4 climate models, establishing that real-world Arctic ice loss was faster than forecast.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-01',
+        datePrecision: 'DAY',
+        reason: "Stroeve, Holland, Meier, Scambos, and Serreze published 'Arctic sea ice decline: Faster than forecast' in GRL (34:L09501), comparing the 1953–2006 observed September ice-extent trend against the IPCC AR4 multi-model ensemble and finding that none or very few model runs declined as fast as observations. The result documented that models were under-predicting the pace of Arctic ice loss — a claim that reframed the Arctic as warming faster than expected.",
+        source: {
+          externalId: 'src:stroeve-arctic-faster-grl-2007',
+          name: 'Stroeve J, Holland MM, Meier W, Scambos T, Serreze M. Arctic sea ice decline: Faster than forecast. Geophysical Research Letters. 2007;34:L09501.',
+          url: 'https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007GL029703',
+          publishedAt: '2007-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-09-19',
+        datePrecision: 'DAY',
+        reason: "On 19 September 2012 the U.S. National Snow and Ice Data Center announced that Arctic sea ice had reached a record seasonal minimum of 3.41 million km², shattering the prior 2007 record by 760,000 km² and confirming the accelerated downward trend Stroeve had flagged. The authoritative cryosphere monitoring body's record-low declaration moved the 'faster than forecast' finding from a single study to the established institutional baseline for Arctic change.",
+        source: {
+          externalId: 'src:nsidc-arctic-record-minimum-2012',
+          name: 'National Snow and Ice Data Center. Arctic sea ice extent settles at record seasonal minimum. 19 September 2012.',
+          url: 'https://nsidc.org/sea-ice-today/analyses/arctic-sea-ice-extent-settles-record-seasonal-minimum',
+          publishedAt: '2012-09-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 18. Hoegh-Guldberg — coral bleaching projection — 1999 ──────────────────
+  {
+    externalId: 'trajectory:hoegh-guldberg-coral-bleaching-projection-1999',
+    text: 'Ove Hoegh-Guldberg projected in Marine and Freshwater Research in 1999 that rising sea-surface temperatures would make mass coral bleaching an annual-to-frequent event within decades, threatening the survival of the world\'s coral reefs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-01-01',
+        datePrecision: 'YEAR',
+        reason: "Hoegh-Guldberg published 'Climate change, coral bleaching and the future of the world's coral reefs' in Marine and Freshwater Research (50:839–866), synthesizing the thermal-tolerance physiology of corals and their zooxanthellae with SST projections to forecast that bleaching events would become near-annual in many regions within 30–50 years. The projection was influential but criticized by some reef scientists as overly pessimistic, leaving it contested for over a decade.",
+        source: {
+          externalId: 'src:hoegh-guldberg-coral-bleaching-mfr-1999',
+          name: 'Hoegh-Guldberg O. Climate change, coral bleaching and the future of the world\'s coral reefs. Marine and Freshwater Research. 1999;50(8):839–866.',
+          url: 'https://www.publish.csiro.au/mf/mf99078',
+          publishedAt: '1999-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-03-16',
+        datePrecision: 'DAY',
+        reason: "Hughes and colleagues published 'Global warming and recurrent mass bleaching of corals' in Nature (543:373–377) on 16 March 2017, documenting the record 2015–2016 pan-tropical bleaching — the third global event — and showing that past bleaching and local protection afforded little resistance to extreme heat. The empirical record of recurrent, temperature-driven mass bleaching on the Great Barrier Reef vindicated Hoegh-Guldberg's once-contested projection, settling it as observed reality.",
+        source: {
+          externalId: 'src:hughes-recurrent-bleaching-nature-2017',
+          name: 'Hughes TP, et al. Global warming and recurrent mass bleaching of corals. Nature. 2017;543(7645):373–377.',
+          url: 'https://www.nature.com/articles/nature21707',
+          publishedAt: '2017-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 19. Nerem — sea-level rise acceleration detected — 2018 ─────────────────
+  {
+    externalId: 'trajectory:nerem-sea-level-acceleration-detected-2018',
+    text: 'R. Steven Nerem and colleagues reported in PNAS on 12 February 2018 that 25 years of satellite altimetry revealed a statistically significant climate-change-driven acceleration of global mean sea-level rise of 0.084 mm/yr², the first detection of acceleration in the precise altimeter record.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-02-12',
+        datePrecision: 'DAY',
+        reason: "Nerem, Beckley, Fasullo, Hamlington, Masters, and Mitchum published 'Climate-change–driven accelerated sea-level rise detected in the altimeter era' in PNAS (115(9):2022–2025), using TOPEX/Poseidon and the Jason series and correcting for volcanic and ENSO variability to isolate an acceleration of 0.084 ± 0.025 mm/yr², implying ~65 cm of rise by 2100. It was the first detection of the long-predicted acceleration within the high-precision satellite record.",
+        source: {
+          externalId: 'src:nerem-sea-level-acceleration-pnas-2018',
+          name: 'Nerem RS, Beckley BD, Fasullo JT, Hamlington BD, Masters D, Mitchum GT. Climate-change–driven accelerated sea-level rise detected in the altimeter era. PNAS. 2018;115(9):2022–2025.',
+          url: 'https://www.pnas.org/doi/10.1073/pnas.1717312115',
+          publishedAt: '2018-02-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-09-25',
+        datePrecision: 'DAY',
+        reason: 'The IPCC Special Report on the Ocean and Cryosphere in a Changing Climate (SROCC), approved at IPCC-51 in Monaco and released on 25 September 2019, concluded with high confidence that the previously predicted acceleration of sea-level rise is now observed, citing a 2006–2015 rate of 3.6 mm/yr unprecedented over the prior century. The intergovernmental assessment elevated the altimeter-era detection from a single study to settled institutional consensus.',
+        source: {
+          externalId: 'src:ipcc-srocc-sea-level-2019',
+          name: 'IPCC. Special Report on the Ocean and Cryosphere in a Changing Climate (SROCC), Summary for Policymakers. 25 September 2019.',
+          url: 'https://www.ipcc.ch/srocc/',
+          publishedAt: '2019-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
