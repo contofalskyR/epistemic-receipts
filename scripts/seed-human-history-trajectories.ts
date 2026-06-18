@@ -22268,6 +22268,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Shivagrha inscription — founding record of the Prambanan temple ─────────
+  {
+    externalId: 'trajectory:shivagrha-inscription-prambanan-856',
+    text: 'The Shivagrha inscription, dated 778 Śaka (12 November 856 CE), records the completion and inauguration of the great Shiva temple compound Śivagṛha (Prambanan) in Central Java together with a public works project diverting the Opak River around the temple grounds; issued under Dyah Lokapāla (Rakai Kayuwangi) at the close of Rakai Pikatan\'s reign, it is the contemporaneous founding record of the Mataram-era Prambanan complex.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0856-11-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0856-11-12',
+        datePrecision: 'DAY',
+        reason: 'The stone records the date in a chronogram — the Śaka year denoted by "eight, mountains and monks" (778), in the bright half of the month Mārgaśīrṣa, the eleventh lunar day, on a Thursday (12 November 856 CE) — and describes the dedication of the Shiva temple compound and the engineering work to redirect the Opak River away from the sanctuary. The inscription is the contemporaneous primary record of the Prambanan complex\'s inauguration.',
+        source: {
+          externalId: 'src:shivagrha-inscription-856',
+          name: 'Shivagrha (Śivagṛha) inscription, 778 Śaka (12 November 856 CE), Old Javanese (contemporaneous dedication of the Prambanan Shiva temple, Central Java).',
+          url: 'https://en.wikipedia.org/wiki/Shivagrha_inscription',
+          publishedAt: '0856-11-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The inscription was read and dated by J.G. de Casparis in his Prasasti Indonesia II (1956), which established the 856 CE date and the identification of Śivagṛha with the Prambanan temple compound. The reading and dating are settled in the scholarship of early Javanese history.',
+        source: {
+          externalId: 'src:de-casparis-prasasti-indonesia-ii-1956',
+          name: 'de Casparis J.G. Prasasti Indonesia II: Selected Inscriptions from the 7th to the 9th Century A.D. Bandung: Masa Baru, 1956.',
+          url: 'https://en.wikipedia.org/wiki/Shivagrha_inscription',
+          publishedAt: '1956-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mantyasih inscription — king list of the Mataram kingdom of Java ─────────
+  {
+    externalId: 'trajectory:mantyasih-inscription-907',
+    text: 'The Mantyasih (Kedu) inscription, dated 11 April 907 CE (829 Śaka), issued by King Balitung of the Mataram (Medang) kingdom of Central Java, grants the village of Mantyasih the status of tax-free sīma land and ritually invokes a list of deified former kings of Mataram as witnesses; it is the principal contemporaneous record of the early Mataram royal genealogy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0907-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0907-04-11',
+        datePrecision: 'DAY',
+        reason: 'The charter records that on 11 April 907 CE King Balitung awarded Mantyasih village as sīma to a group of officials and, in the demarcation ceremony, invoked a sequence of named former kings of Mataram as deified witnesses and guarantors. Modern knowledge of the names of the 8th- and 9th-century rulers of the Mataram kingdom derives chiefly from this contemporaneous royal document.',
+        source: {
+          externalId: 'src:mantyasih-inscription-907',
+          name: 'Mantyasih (Kedu) inscription of King Balitung, 11 April 907 CE (829 Śaka), Old Javanese (contemporaneous sīma charter and Mataram king list, Central Java).',
+          url: 'https://en.wikipedia.org/wiki/Mantyasih_inscription',
+          publishedAt: '0907-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The inscription was catalogued and edited by J.L.A. Brandes in the Oud-Javaansche Oorkonden (published posthumously in 1913) and subsequently used by epigraphers to reconstruct the Mataram dynastic chronology; the king list and the 907 CE date are settled in the scholarship of early Javanese history.',
+        source: {
+          externalId: 'src:brandes-oud-javaansche-oorkonden-1913',
+          name: 'Brandes J.L.A. Oud-Javaansche Oorkonden (ed. N.J. Krom). Verhandelingen van het Bataviaasch Genootschap 60, 1913.',
+          url: 'https://en.wikipedia.org/wiki/Mantyasih_inscription',
+          publishedAt: '1913-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Banteay Srei foundation stele — consecration of Tribhuvanamaheśvara ──────
+  {
+    externalId: 'trajectory:banteay-srei-consecration-967',
+    text: 'The foundation stele of Banteay Srei records the consecration of the temple\'s principal deity — Shiva as Tribhuvanamaheśvara, "Great Lord of the Threefold World" — on 22 April 967 CE; built by the royal counsellor Yajñavarāha during the reign of the Khmer kings Rajendravarman II and Jayavarman V, it is among the most precisely dated monuments of the Khmer Empire.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0967-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0967-04-22',
+        datePrecision: 'DAY',
+        reason: 'Stanza XLIV of the founding stela records the installation of the liṅga of Tribhuvanamaheśvara on a date corresponding to 22 April 967 CE. The stele, in Sanskrit and Old Khmer, praises the founder Yajñavarāha and is the contemporaneous primary record of the temple\'s dedication; the temple was originally named after this deity (Īśvarapura).',
+        source: {
+          externalId: 'src:banteay-srei-foundation-stele-967',
+          name: 'Banteay Srei (Īśvarapura) foundation stele, 22 April 967 CE, Sanskrit and Old Khmer (contemporaneous consecration of Tribhuvanamaheśvara, Angkor).',
+          url: 'https://en.wikipedia.org/wiki/Banteay_Srei',
+          publishedAt: '0967-04-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The temple and its inscriptions were studied by Louis Finot, Henri Parmentier and Victor Goloubew, whose 1926 monograph Le temple d\'Içvarapura (Bantãy Srĕi) established the 967 CE foundation date and the attribution to Yajñavarāha. The date and identification are settled in Angkorian scholarship.',
+        source: {
+          externalId: 'src:finot-parmentier-banteay-srei-1926',
+          name: 'Finot L., Parmentier H., Goloubew V. Le temple d\'Içvarapura (Bantãy Srĕi, Cambodge). Mémoires archéologiques de l\'EFEO, 1926.',
+          url: 'https://en.wikipedia.org/wiki/Banteay_Srei',
+          publishedAt: '1926-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of Majapahit — coronation of Kertarajasa Jayawardhana ──────────
+  {
+    externalId: 'trajectory:majapahit-founding-kertarajasa-1293',
+    text: 'On 10 November 1293 (15 Kārttika 1215 Śaka) Raden Wijaya was enthroned as the first king of Majapahit under the regnal name Kertarajasa Jayawardhana, founding the empire that would come to dominate the Indonesian archipelago; his reign is documented by the contemporaneous Kudadu (Gunung Butak) copperplate charter he issued in 1294.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1293-11-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1294-09-11',
+        datePrecision: 'DAY',
+        reason: 'The Kudadu (Gunung Butak) copperplate charter, dated 1216 Śaka (11 September 1294 CE) and issued by Kertarajasa Jayawardhana himself, grants tax-free status to the people of Kudadu for sheltering him — then still named Nararya Sanggramawijaya — when he fled the forces of Jayakatwang who had overthrown King Kertanagara of Singhasari. It is the earliest contemporaneous documentation of the founding king of Majapahit and his accession.',
+        source: {
+          externalId: 'src:kudadu-gunung-butak-charter-1294',
+          name: 'Kudadu (Gunung Butak) copperplate charter of Kertarajasa Jayawardhana, 1216 Śaka (11 September 1294 CE), Old Javanese (contemporaneous royal sīma grant, Majapahit).',
+          url: 'https://en.wikipedia.org/wiki/Majapahit',
+          publishedAt: '1294-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern historiography fixes the foundation of Majapahit to the coronation of 10 November 1293 by reconciling the contemporaneous charters (Kudadu, 1294) with the later court traditions of the Pararaton and Mpu Prapañca\'s Nāgarakṛtāgama (1365). George Cœdès\'s The Indianized States of Southeast Asia (Eng. ed. 1968) treats the date and the founding narrative as established.',
+        source: {
+          externalId: 'src:coedes-indianized-states-1968',
+          name: 'Cœdès G. The Indianized States of Southeast Asia. Honolulu: East-West Center Press, 1968 (founding of Majapahit, 1293).',
+          url: 'https://en.wikipedia.org/wiki/Majapahit',
+          publishedAt: '1968-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Battle of Las Navas de Tolosa ───────────────────────────────────────────
   {
     externalId: 'trajectory:battle-las-navas-de-tolosa-1212',
