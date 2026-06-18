@@ -13026,6 +13026,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANTITHROMBOTIC & VASODILATOR ERA (1979–1994)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── AFASAK — warfarin prevents stroke in atrial fibrillation 1989 ───────────
+  {
+    externalId: 'trajectory:afasak-warfarin-atrial-fibrillation-stroke-1989',
+    text: 'The Copenhagen AFASAK trial reported in The Lancet on 28 January 1989 that low-dose warfarin anticoagulation significantly reduced thromboembolic complications and vascular mortality versus aspirin and placebo in patients with chronic nonrheumatic atrial fibrillation, the first randomized proof that oral anticoagulation prevents stroke in atrial fibrillation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-01-28',
+        datePrecision: 'DAY',
+        reason: 'Petersen and colleagues reported the placebo-controlled AFASAK trial of 1,007 patients with chronic atrial fibrillation: 5 thromboembolic events on warfarin versus 20 on aspirin and 21 on placebo. This was the first randomized controlled trial to demonstrate that warfarin prevents stroke in nonvalvular atrial fibrillation, opening the modern era of anticoagulation for the arrhythmia.',
+        source: {
+          externalId: 'src:afasak-warfarin-lancet-1989',
+          name: 'Petersen P, Boysen G, Godtfredsen J, Andersen ED, Andersen B. Placebo-controlled, randomised trial of warfarin and aspirin for prevention of thromboembolic complications in chronic atrial fibrillation. The Copenhagen AFASAK study. Lancet. 1989;1(8631):175-179.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2563096/',
+          publishedAt: '1989-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-07-11',
+        datePrecision: 'DAY',
+        reason: 'The Atrial Fibrillation Investigators pooled individual-patient data from five randomized trials (AFASAK, SPAF, BAATAF, CAFA, SPINAF), confirming that adjusted-dose warfarin reduced stroke risk by about 68% with low bleeding rates. The consistent cross-trial effect settled anticoagulation as standard stroke prophylaxis in atrial fibrillation and shaped subsequent guidelines.',
+        source: {
+          externalId: 'src:afi-pooled-antithrombotic-af-archintmed-1994',
+          name: 'Atrial Fibrillation Investigators. Risk factors for stroke and efficacy of antithrombotic therapy in atrial fibrillation. Analysis of pooled data from five randomized controlled trials. Arch Intern Med. 1994;154(13):1449-1457.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8018000/',
+          publishedAt: '1994-07-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── V-HeFT I — hydralazine/isosorbide reduces mortality in heart failure 1986 ─
+  {
+    externalId: 'trajectory:vheft-hydralazine-isosorbide-heart-failure-mortality-1986',
+    text: 'The first Vasodilator-Heart Failure Trial (V-HeFT I), reported in the New England Journal of Medicine on 12 June 1986, found that adding hydralazine plus isosorbide dinitrate to standard therapy reduced mortality in chronic congestive heart failure (about a 34% risk reduction at two years), the first demonstration that a vasodilator regimen prolongs survival in heart failure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-06-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-06-12',
+        datePrecision: 'DAY',
+        reason: 'Cohn and colleagues reported the Veterans Administration Cooperative V-HeFT I trial, in which hydralazine plus isosorbide dinitrate added to digoxin and diuretics reduced mortality versus placebo and versus prazosin. This was the first trial to show that any pharmacologic regimen reduces mortality in chronic heart failure, establishing the vasodilator/afterload-reduction paradigm.',
+        source: {
+          externalId: 'src:vheft1-cohn-nejm-1986',
+          name: 'Cohn JN, Archibald DG, Ziesche S, et al. Effect of vasodilator therapy on mortality in chronic congestive heart failure. Results of a Veterans Administration Cooperative Study (V-HeFT). N Engl J Med. 1986;314(24):1547-1552.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3520315/',
+          publishedAt: '1986-06-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-11-11',
+        datePrecision: 'DAY',
+        reason: 'Although ACE inhibitors later became first-line and V-HeFT II (1991) showed enalapril superior overall, the A-HeFT trial confirmed and revived the hydralazine-isosorbide regimen by showing a 43% mortality reduction in self-identified Black patients with advanced heart failure, leading to FDA approval of the fixed-dose combination (BiDil) in 2005 and settling the regimen\'s place in guideline therapy.',
+        source: {
+          externalId: 'src:aheft-taylor-nejm-2004',
+          name: 'Taylor AL, Ziesche S, Yancy C, et al. Combination of isosorbide dinitrate and hydralazine in blacks with heart failure. N Engl J Med. 2004;351(20):2049-2057.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15533851/',
+          publishedAt: '2004-11-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── NCEP ATP-I — national cholesterol treatment guidelines 1988 ─────────────
+  {
+    externalId: 'trajectory:ncep-atp1-cholesterol-treatment-guidelines-1988',
+    text: 'On its publication in Archives of Internal Medicine in January 1988, the first National Cholesterol Education Program (NCEP) Adult Treatment Panel report established national clinical guidelines defining blood-cholesterol thresholds (desirable <200 mg/dL, borderline-high 200–239, high ≥240) and LDL-based criteria for diet and drug treatment in adults, institutionalizing population-wide cholesterol detection and management.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1988-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-01-01',
+        datePrecision: 'MONTH',
+        reason: 'The NCEP Adult Treatment Panel I report translated the 1984 LRC-CPPT and 1985 NIH Consensus findings into operational national guidelines, setting standardized cholesterol cut points and LDL-driven treatment thresholds for U.S. clinicians. It established cholesterol measurement and lowering as routine institutional practice, a framework that successive ATP updates (1993, 2001) extended rather than overturned.',
+        source: {
+          externalId: 'src:ncep-atp1-archintmed-1988',
+          name: 'Expert Panel. Report of the National Cholesterol Education Program Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. Arch Intern Med. 1988;148(1):36-69.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3422148/',
+          publishedAt: '1988-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── HDFP — mild hypertension treatment reduces mortality 1979 ───────────────
+  {
+    externalId: 'trajectory:hdfp-mild-hypertension-treatment-benefit-1979',
+    text: 'The Hypertension Detection and Follow-up Program reported in JAMA on 7 December 1979 that systematic stepped-care antihypertensive treatment reduced five-year all-cause mortality by 17% overall and by 20% in the mild-hypertension subgroup (entry diastolic 90–104 mm Hg) versus referred community care, extending the proven benefit of blood-pressure lowering to mild hypertension.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-12-07',
+        datePrecision: 'DAY',
+        reason: 'Earlier VA Cooperative trials had proven benefit only for severe and moderate hypertension; the HDFP, randomizing 10,940 participants to stepped care versus referred care, showed that treating even mild hypertension reduced mortality. This established the case for community-wide detection and treatment of mild hypertension and drove the broadening of antihypertensive treatment thresholds in subsequent JNC guidelines.',
+        source: {
+          externalId: 'src:hdfp-five-year-jama-1979',
+          name: 'Hypertension Detection and Follow-up Program Cooperative Group. Five-year findings of the hypertension detection and follow-up program. I. Reduction in mortality of persons with high blood pressure, including mild hypertension. JAMA. 1979;242(23):2562-2571.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/490882/',
+          publishedAt: '1979-12-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alteplase (tPA) — TIMI Phase I and FDA approval 1985/1987 ───────────────
+  {
+    externalId: 'trajectory:alteplase-tpa-first-approval-acute-mi-1987',
+    text: 'Recombinant tissue plasminogen activator (alteplase, Activase, Genentech) was shown in the TIMI Phase I trial (NEJM, 4 April 1985) to open occluded coronary arteries more often than streptokinase and was approved by the FDA on 13 November 1987 as the first recombinant thrombolytic for acute myocardial infarction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1985-04-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-04-04',
+        datePrecision: 'DAY',
+        reason: 'The TIMI Study Group reported that intravenous recombinant tPA achieved coronary artery reperfusion in roughly twice as many patients as streptokinase, and the streptokinase-versus-tPA comparison phase was stopped early because of tPA\'s superior recanalization. This angiographic evidence established tPA as a clot-selective thrombolytic and the basis for its development in acute MI.',
+        source: {
+          externalId: 'src:timi-phase1-nejm-1985',
+          name: 'TIMI Study Group. The Thrombolysis in Myocardial Infarction (TIMI) trial. Phase I findings. N Engl J Med. 1985;312(14):932-936.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4038784/',
+          publishedAt: '1985-04-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-11-13',
+        datePrecision: 'DAY',
+        reason: 'After the FDA\'s Cardiovascular and Renal Drugs Advisory Committee declined to recommend approval in May 1987 citing the lack of mortality data and reliance on the angiographic patency surrogate, the agency approved Activase (alteplase) on 13 November 1987 once additional trial data were submitted. The approval institutionalized recombinant tPA for acute MI and exemplified the controversy over surrogate-endpoint drug approvals.',
+        source: {
+          externalId: 'src:ninds-tpa-alteplase-activase-approval',
+          name: 'National Institute of Neurological Disorders and Stroke. Tissue Plasminogen Activator for Acute Ischemic Stroke (Alteplase, Activase) — NINDS Contributions to Approved Therapies.',
+          url: 'https://www.ninds.nih.gov/about-ninds/what-we-do/impact/ninds-contributions-approved-therapies/tissue-plasminogen-activator-acute-ischemic-stroke-alteplase-activaser',
+          publishedAt: '1987-11-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
