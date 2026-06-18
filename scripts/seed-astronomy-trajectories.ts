@@ -48,7 +48,7 @@ interface Trajectory {
   claimType: 'EMPIRICAL' | 'INSTITUTIONAL' | 'INTERPRETIVE' | 'HYBRID'
   claimEmergedAt: string
   claimEmergedPrecision: DatePrecision
-  currentAxis: 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE'
+  currentAxis: 'RECORDED' | 'SETTLED' | 'CONTESTED' | 'OPEN' | 'UNRESOLVABLE' | 'REVERSED'
   transitions: Transition[]
 }
 
@@ -1317,6 +1317,237 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Hirata K, Kajita T, Koshiba M, et al. Observation of a neutrino burst from the supernova SN1987A. Physical Review Letters 1987;58(14):1490–1493.',
           url: 'https://doi.org/10.1103/PhysRevLett.58.1490',
           publishedAt: '1987-04-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PRECISION COSMOLOGY (1981–2019)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 30. Guth — inflationary universe — 1981 ─────────────────────────────────
+  {
+    externalId: 'trajectory:guth-inflationary-universe-1981',
+    text: 'Alan Guth proposed in a paper published in Physical Review D on 15 January 1981 that a brief epoch of exponential (\'inflationary\') expansion in the very early universe would simultaneously solve the horizon and flatness problems of standard Big Bang cosmology.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1981-01-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01-15',
+        datePrecision: 'DAY',
+        reason: 'Guth published \'Inflationary universe: A possible solution to the horizon and flatness problems\' (Physical Review D 23:347), proposing that supercooling through a phase transition in the early universe drives a huge exponential expansion. This naturally explains why the universe is so homogeneous (horizon problem) and so nearly spatially flat (flatness problem), recording inflation as a theoretical mechanism (Guth\'s original model had a graceful-exit flaw soon repaired by Linde and Albrecht–Steinhardt).',
+        source: {
+          externalId: 'src:guth-inflation-prd-1981',
+          name: 'Guth AH. Inflationary universe: A possible solution to the horizon and flatness problems. Physical Review D. 1981;23(2):347–356.',
+          url: 'https://link.aps.org/doi/10.1103/PhysRevD.23.347',
+          publishedAt: '1981-01-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-02-11',
+        datePrecision: 'DAY',
+        reason: 'WMAP\'s first-year results (11 February 2003) and later Planck data confirmed core generic predictions of inflation — a spatially flat universe and a nearly, but not exactly, scale-invariant spectrum of adiabatic, Gaussian primordial perturbations (spectral index ns ≈ 0.96 < 1). These measurements made inflation the dominant paradigm for the early universe, though it remains contested at the margins by critics (Steinhardt, Ijjas) and lacks a definitive primordial-gravitational-wave (B-mode) detection.',
+        source: {
+          externalId: 'src:spergel-wmap-inflation-evidence-2003',
+          name: 'Spergel DN, Verde L, Peiris HV, et al. First-Year WMAP Observations: Determination of Cosmological Parameters. The Astrophysical Journal Supplement Series. 2003;148(1):175–194.',
+          url: 'https://ui.adsabs.harvard.edu/abs/2003ApJS..148..175S/abstract',
+          publishedAt: '2003-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 31. WMAP — precision cosmology — 2003 ───────────────────────────────────
+  {
+    externalId: 'trajectory:wmap-precision-cosmology-2003',
+    text: 'NASA\'s Wilkinson Microwave Anisotropy Probe (WMAP) team, releasing its first-year results on 11 February 2003 (Spergel et al., ApJS), measured the cosmic microwave background fluctuations precisely enough to fix the universe\'s age at 13.7 billion years and its composition as ~4% ordinary matter, ~23% dark matter, and ~73% dark energy in a spatially flat ΛCDM model.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-02-11',
+        datePrecision: 'DAY',
+        reason: 'On 11 February 2003 NASA publicly released WMAP\'s first-year data, and the cosmological-parameters paper (Spergel et al., submitted to ApJS as arXiv astro-ph/0302209) reported the first high-precision determination of the CMB temperature power spectrum. It pinned the universe\'s age to 13.7 ± 0.2 Gyr and the energy budget to ~4%/23%/73% baryons/dark matter/dark energy in a flat, near-scale-invariant ΛCDM model, inaugurating the era of \'precision cosmology\' and recording the standard cosmological model as a quantitative measurement.',
+        source: {
+          externalId: 'src:spergel-wmap-first-year-2003',
+          name: 'Spergel DN, Verde L, Peiris HV, et al. First-Year Wilkinson Microwave Anisotropy Probe (WMAP) Observations: Determination of Cosmological Parameters. The Astrophysical Journal Supplement Series. 2003;148(1):175–194.',
+          url: 'https://iopscience.iop.org/article/10.1086/377226',
+          publishedAt: '2003-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-03-21',
+        datePrecision: 'DAY',
+        reason: 'The European Space Agency\'s Planck mission released its first cosmological results on 21 March 2013 (Planck 2013 results XVI, A&A 571:A16), independently confirming WMAP\'s flat six-parameter ΛCDM picture at far higher precision and refining the same energy budget. Successive WMAP nine-year and Planck data releases agreed within errors, settling the WMAP-defined concordance model as the accepted foundation of modern cosmology.',
+        source: {
+          externalId: 'src:planck-2013-xvi-confirms-wmap',
+          name: 'Planck Collaboration (Ade PAR, et al.). Planck 2013 results. XVI. Cosmological parameters. Astronomy & Astrophysics. 2014;571:A16.',
+          url: 'https://ui.adsabs.harvard.edu/abs/2014A&A...571A..16P/abstract',
+          publishedAt: '2013-03-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 32. Bullet Cluster — direct proof of dark matter — 2006 ─────────────────
+  {
+    externalId: 'trajectory:bullet-cluster-dark-matter-proof-2006',
+    text: 'Douglas Clowe and collaborators reported in August 2006 that in the merging galaxy cluster 1E 0657-558 (the \'Bullet Cluster\') the gravitational mass measured by weak lensing is spatially offset from the dominant baryonic component (the X-ray-emitting gas), which they presented as a direct empirical proof of the existence of dark matter independent of the assumed law of gravity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-08-19',
+        datePrecision: 'DAY',
+        reason: 'Clowe et al. posted \'A Direct Empirical Proof of the Existence of Dark Matter\' (arXiv astro-ph/0608407, 19 August 2006; published ApJ 648:L109). In the post-merger Bullet Cluster the two galaxy/dark-matter clumps had passed through each other while the collisional X-ray gas — the bulk of the baryonic mass — was decelerated and lagged behind. Weak gravitational lensing located the mass peaks on the galaxies, not the gas, recording for the first time a model-independent spatial separation of mass from visible baryons.',
+        source: {
+          externalId: 'src:clowe-bullet-cluster-2006',
+          name: 'Clowe D, Bradač M, Gonzalez AH, et al. A Direct Empirical Proof of the Existence of Dark Matter. The Astrophysical Journal. 2006;648(2):L109–L113.',
+          url: 'https://iopscience.iop.org/article/10.1086/508162',
+          publishedAt: '2006-08-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-03-21',
+        datePrecision: 'DAY',
+        reason: 'The Bullet Cluster offset was reproduced in other merging-cluster systems (e.g. MACS J0025.4-1222) and became the canonical observational counter to modified-gravity (MOND) alternatives, since it shows lensing mass detached from baryons. Combined with the independent CMB determination of a dark-matter density of ~26% by Planck (21 March 2013), particulate dark matter as a dominant mass component became settled in the standard cosmological model.',
+        source: {
+          externalId: 'src:planck-2013-xvi-dm-density',
+          name: 'Planck Collaboration (Ade PAR, et al.). Planck 2013 results. XVI. Cosmological parameters. Astronomy & Astrophysics. 2014;571:A16.',
+          url: 'https://www.aanda.org/articles/aa/abs/2014/11/aa21591-13/aa21591-13.html',
+          publishedAt: '2013-03-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 33. Planck — Hubble tension — 2013 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:planck-hubble-tension-2013',
+    text: 'The Planck collaboration\'s first cosmological release on 21 March 2013 measured the Hubble constant from the CMB as H0 = 67.3 ± 1.2 km/s/Mpc, a value in significant tension with local distance-ladder measurements (~73 km/s/Mpc), opening the still-unresolved \'Hubble tension.\'',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-03-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-03-21',
+        datePrecision: 'DAY',
+        reason: 'Planck 2013 results XVI (A&A 571:A16), released 21 March 2013, derived H0 = 67.3 ± 1.2 km/s/Mpc by fitting the CMB temperature power spectrum within flat ΛCDM. The paper explicitly noted this CMB-inferred value was in tension with direct local measurements of the expansion rate, recording a discrepancy that had previously been within error bars as a quantitatively sharp anomaly.',
+        source: {
+          externalId: 'src:planck-2013-xvi-h0-2013',
+          name: 'Planck Collaboration (Ade PAR, et al.). Planck 2013 results. XVI. Cosmological parameters. Astronomy & Astrophysics. 2014;571:A16.',
+          url: 'https://ui.adsabs.harvard.edu/abs/2014A&A...571A..16P/abstract',
+          publishedAt: '2013-03-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-03-18',
+        datePrecision: 'DAY',
+        reason: 'As both measurements improved, the gap hardened rather than closing: the SH0ES team (Riess et al., ApJ 876:85, 18 March 2019) measured H0 = 74.0 ± 1.4 km/s/Mpc from Cepheid-calibrated Type Ia supernovae, a >4σ discrepancy with the Planck CMB value that later exceeded 5σ. The Hubble tension became a leading open problem in cosmology, contested between unrecognized systematics and possible new physics beyond ΛCDM, and remains unresolved.',
+        source: {
+          externalId: 'src:riess-sh0es-hubble-tension-2019',
+          name: 'Riess AG, Casertano S, Yuan W, et al. Large Magellanic Cloud Cepheid Standards Provide a 1% Foundation for the Determination of the Hubble Constant and Stronger Evidence for Physics beyond ΛCDM. The Astrophysical Journal. 2019;876(1):85.',
+          url: 'https://ui.adsabs.harvard.edu/abs/2019ApJ...876...85R/abstract',
+          publishedAt: '2019-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 34. BICEP2 — primordial B-modes claimed then reversed — 2014 ─────────────
+  {
+    externalId: 'trajectory:bicep2-primordial-bmodes-2014',
+    text: 'The BICEP2 collaboration announced on 17 March 2014 the detection of degree-scale B-mode polarization in the cosmic microwave background at a tensor-to-scalar ratio r ≈ 0.2, claimed as the first direct evidence of primordial gravitational waves from cosmic inflation; the claim was reversed in 2015 when a joint analysis with Planck attributed the signal to Galactic dust.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-03-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-03-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 March 2014 the BICEP2 team announced, and later published in Physical Review Letters (112:241101), a detection of degree-scale CMB B-mode polarization with r = 0.20 (+0.07/−0.05), interpreting it as the imprint of inflationary gravitational waves. Hailed as a potential Nobel-level confirmation of inflation, the result was recorded into the literature as a claimed primordial signal at a single 150 GHz frequency.',
+        source: {
+          externalId: 'src:bicep2-detection-prl-2014',
+          name: 'BICEP2 Collaboration (Ade PAR, et al.). Detection of B-Mode Polarization at Degree Angular Scales by BICEP2. Physical Review Letters. 2014;112(24):241101.',
+          url: 'https://link.aps.org/doi/10.1103/PhysRevLett.112.241101',
+          publishedAt: '2014-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-09-22',
+        datePrecision: 'DAY',
+        reason: 'In September 2014 the Planck collaboration released a measurement of polarized thermal dust emission across the sky (arXiv:1409.5738) showing that the BICEP2 observing field contained substantially more polarized dust than the team had assumed by extrapolation. Independent analyses (Flauger, Hill & Spergel; Mortonson & Seljak) concluded the dust foreground could account for much or all of the signal, throwing the primordial interpretation into open dispute.',
+        source: {
+          externalId: 'src:planck-dust-polarization-2014',
+          name: 'Planck Collaboration (Adam R, et al.). Planck intermediate results. XXX. The angular power spectrum of polarized dust emission at intermediate and high Galactic latitudes. Astronomy & Astrophysics. 2016;586:A133. (arXiv:1409.5738, 22 Sep 2014)',
+          url: 'https://arxiv.org/abs/1409.5738',
+          publishedAt: '2014-09-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-30',
+        datePrecision: 'DAY',
+        reason: 'A joint analysis of BICEP2/Keck Array and Planck data (Physical Review Letters 114:101301), announced by ESA on 30 January 2015, used Planck\'s multi-frequency maps to subtract the dust foreground and found no statistically significant evidence of primordial gravitational waves, setting an upper limit r0.05 < 0.12. The original detection was retracted as a foreground artifact, reversing the 2014 claim.',
+        source: {
+          externalId: 'src:bicep2-keck-planck-joint-2015',
+          name: 'BICEP2/Keck and Planck Collaborations (Ade PAR, et al.). Joint Analysis of BICEP2/Keck Array and Planck Data. Physical Review Letters. 2015;114(10):101301.',
+          url: 'https://link.aps.org/doi/10.1103/PhysRevLett.114.101301',
+          publishedAt: '2015-03-09',
           methodologyType: 'primary',
         },
       },
