@@ -58106,6 +58106,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Battle of Pratapgad — Shivaji kills Afzal Khan ──────────────────────────
+  {
+    externalId: 'trajectory:battle-of-pratapgad-1659',
+    text: 'On 10 November 1659, at a parley in the foothills of Pratapgad fort, the Maratha leader Shivaji killed the Bijapur Sultanate general Afzal Khan and his forces routed the Bijapuri army — the first major Maratha victory over a major regional power.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1659-11-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1659-11-10',
+        datePrecision: 'DAY',
+        reason: 'Sent by Bijapur to subdue the rebellious Shivaji, Afzal Khan agreed to meet him in a tent below Pratapgad. In the encounter Khan struck first but Shivaji, wearing concealed armour, killed him with hidden bagh nakh (tiger claws); a pre-positioned Maratha army then routed the leaderless Bijapuri force, seizing its baggage, elephants and horses. The episode is recorded in near-contemporary Maratha sources including the dated Jedhe Shakavali chronology and the Sanskrit court epic Shivabharat.',
+        source: {
+          externalId: 'src:battle-of-pratapgad-1659-wikipedia',
+          name: 'Battle of Pratapgad, 10 November 1659 — Shivaji kills Afzal Khan of Bijapur (Wikipedia, "Battle of Pratapgad").',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Pratapgad',
+          publishedAt: '1659-11-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1697-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The event is independently attested across the partisan divide — by Shivaji\'s own chroniclers (Krishnaji Anant Sabhasad\'s bakhar, c. 1697) and by the Adil Shahi court history Tarikh-e-Ali — which agree on the killing of Afzal Khan and the Maratha victory, differing only in moral framing. Historians treat the date and outcome as settled.',
+        source: {
+          externalId: 'src:pratapgad-1659-chronicles',
+          name: 'Krishnaji Anant Sabhasad, Sabhasad Bakhar (c. 1697) and the Adil Shahi Tarikh-e-Ali, corroborating the death of Afzal Khan at Pratapgad.',
+          url: 'https://en.wikipedia.org/wiki/Afzal_Khan_(general)',
+          publishedAt: '1697-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Shivaji's escape from Mughal detention at Agra ──────────────────────────
+  {
+    externalId: 'trajectory:shivaji-escape-agra-1666',
+    text: 'On 17 August 1666 Shivaji escaped from Mughal detention at Agra, where Aurangzeb had confined him after a slighted audience in May 1666, and made his way back to the Deccan — a reversal that reignited the Maratha challenge to Mughal authority.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1666-08-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1666-08-17',
+        datePrecision: 'DAY',
+        reason: 'Having come to Agra under safe conduct following the Treaty of Purandar (1665), Shivaji was affronted at Aurangzeb\'s court and placed under guard. In August 1666 he slipped his confinement — by tradition concealed in baskets of sweets carried out for distribution — and travelled in disguise back to Maharashtra. His detention and disappearance are recorded contemporaneously in Mughal court newsletters (akhbarat) and in English East India Company factory correspondence reporting his flight.',
+        source: {
+          externalId: 'src:shivaji-escape-agra-1666-wikipedia',
+          name: 'Shivaji — escape from Agra, 17 August 1666, following confinement by Aurangzeb (Wikipedia, "Shivaji").',
+          url: 'https://en.wikipedia.org/wiki/Shivaji',
+          publishedAt: '1666-08-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1697-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The escape is corroborated by Mughal chronicles and by Maratha tradition (Sabhasad bakhar), and its consequences are documented: within three years Shivaji had resumed warfare against the Mughals, sacked Surat a second time (1670), and was crowned Chhatrapati at Raigad in 1674. Historians treat the fact of the flight from Agra in August 1666 as settled, even where the basket detail is regarded as embellishment.',
+        source: {
+          externalId: 'src:shivaji-agra-escape-scholarship',
+          name: 'Scholarly accounts of Shivaji\'s confinement at and escape from Agra (1666) and its aftermath.',
+          url: 'https://en.wikipedia.org/wiki/Maratha_Empire',
+          publishedAt: '1697-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Job Charnock establishes the EIC settlement at Sutanuti (Calcutta) ───────
+  {
+    externalId: 'trajectory:calcutta-founding-charnock-1690',
+    text: 'On 24 August 1690 Job Charnock of the English East India Company established a permanent trading settlement at Sutanuti on the Hooghly river — long held as the conventional founding date of Calcutta (Kolkata), a status that was formally challenged in 2003.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1690-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1690-08-24',
+        datePrecision: 'DAY',
+        reason: 'After conflict with Mughal authorities at Hooghly and a withdrawal to Hijili, Charnock returned with imperial permission and, on 24 August 1690, re-established the Company\'s headquarters at Sutanuti — one of the villages (with Kalikata and Govindapur) that grew into Calcutta. The act is recorded in the East India Company\'s own consultation books and factory records.',
+        source: {
+          externalId: 'src:job-charnock-sutanuti-1690',
+          name: 'Job Charnock — establishment of the English East India Company settlement at Sutanuti, 24 August 1690 (Wikipedia, "Job Charnock").',
+          url: 'https://en.wikipedia.org/wiki/Job_Charnock',
+          publishedAt: '1690-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1890-01-01',
+        datePrecision: 'YEAR',
+        reason: 'For more than two centuries the colonial and municipal record fixed 24 August 1690 as the city\'s birthday and Charnock as its founder; the date was commemorated in official histories and civic anniversaries, and Charnock\'s mausoleum in St John\'s churchyard treated as the city\'s foundation relic.',
+        source: {
+          externalId: 'src:calcutta-foundation-charnock-tradition',
+          name: 'Calcutta/Kolkata — traditional founding attributed to Job Charnock on 24 August 1690 (Wikipedia, "Kolkata").',
+          url: 'https://en.wikipedia.org/wiki/Kolkata',
+          publishedAt: '1890-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2003-05-16',
+        datePrecision: 'DAY',
+        reason: 'Acting on an expert committee\'s report, the Calcutta High Court ruled in 2003 that Charnock should not be regarded as the founder of the city and that Calcutta had no verifiable foundation day, noting a settled, civilised trading society on the site long before 1690 (with literary references to Kalikata dating to the 1490s and 1590s). The conventional founding date and founder were formally set aside.',
+        source: {
+          externalId: 'src:calcutta-high-court-2003-founder-ruling',
+          name: 'Calcutta High Court ruling (2003) holding that Job Charnock was not the founder of Calcutta and that the city has no foundation day (Wikipedia, "Job Charnock").',
+          url: 'https://en.wikipedia.org/wiki/Job_Charnock',
+          publishedAt: '2003-05-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Colachel — Travancore defeats the Dutch VOC ───────────────────
+  {
+    externalId: 'trajectory:battle-of-colachel-1741',
+    text: 'On 10 August 1741 the forces of the kingdom of Travancore under Marthanda Varma defeated the Dutch East India Company (VOC) at Colachel, capturing the commander Eustachius De Lannoy and checking Dutch territorial expansion on the Malabar coast.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1741-08-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1741-08-10',
+        datePrecision: 'DAY',
+        reason: 'During the Travancore–Dutch War, Marthanda Varma\'s army besieged the VOC garrison at Colachel; a cannon shot is said to have ignited the Dutch powder store, forcing a surrender in which some 24–28 Dutch officers, including the captain Eustachius De Lannoy, were taken prisoner. The engagement is documented in the VOC\'s own records (which date the surrender to 7 August 1741) and in the Travancore court chronicles.',
+        source: {
+          externalId: 'src:battle-of-colachel-1741-wikipedia',
+          name: 'Battle of Colachel, 10 August 1741 — Travancore under Marthanda Varma defeats the Dutch VOC; De Lannoy captured (Wikipedia, "Battle of Colachel").',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Colachel',
+          publishedAt: '1741-08-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1760-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The defeat is corroborated materially and institutionally: the captured De Lannoy entered Travancore service and modernised its army, the VOC abandoned its ambitions of conquest in the region, and the outcome is treated by historians (e.g. A. P. Ibrahim Kunju) as a decisive and settled reverse for Dutch power in India — debated only as to the exact calendar date (7 vs 31 July / 10 August 1741).',
+        source: {
+          externalId: 'src:colachel-de-lannoy-aftermath',
+          name: 'Eustachius De Lannoy — capture at Colachel (1741) and subsequent service modernising the Travancore army (Wikipedia, "Eustachius De Lannoy").',
+          url: 'https://en.wikipedia.org/wiki/Eustachius_De_Lannoy',
+          publishedAt: '1760-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // INDUSTRIAL & COLONIAL (1750–1900) — Islamic world & Middle East
   // ═══════════════════════════════════════════════════════════════════════════════
