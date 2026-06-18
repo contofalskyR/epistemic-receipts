@@ -9575,6 +9575,194 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HIV/AIDS TREATMENT ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ACTG 076 — zidovudine cuts perinatal HIV transmission 1994 ─────────────
+  {
+    externalId: 'trajectory:actg076-zidovudine-perinatal-hiv-transmission-1994',
+    text: 'The AIDS Clinical Trials Group Protocol 076, whose interim results were announced in February 1994 and published in full by Connor and colleagues in the New England Journal of Medicine on 3 November 1994, established that giving zidovudine to HIV-infected pregnant women and their newborns reduces the risk of mother-to-child HIV transmission by approximately two-thirds (67.5%).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-02',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-02',
+        datePrecision: 'MONTH',
+        reason: 'An interim analysis of the placebo-controlled ACTG 076 trial showed so large a reduction in perinatal HIV transmission that the Data and Safety Monitoring Board halted the study early in February 1994. The finding — a 67.5% relative reduction (25.5% transmission on placebo vs 8.3% on zidovudine) — was published in full by Connor et al. in the NEJM later that year, recording in the expert literature the first proven pharmacologic means of preventing mother-to-child HIV transmission.',
+        source: {
+          externalId: 'src:connor-actg076-nejm-1994',
+          name: 'Connor EM, Sperling RS, Gelber R, et al. Reduction of maternal-infant transmission of human immunodeficiency virus type 1 with zidovudine treatment. N Engl J Med. 1994;331(18):1173-1180.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7935654/',
+          publishedAt: '1994-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-08-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 August 1994 the U.S. Public Health Service Task Force issued formal recommendations adopting the full ACTG 076 zidovudine regimen (antepartum oral, intrapartum intravenous, and six weeks of neonatal dosing) as the standard of care to reduce perinatal HIV transmission. Institutional codification within months of the trial converted the empirical finding into mandated clinical practice across the United States.',
+        source: {
+          externalId: 'src:phs-zidovudine-perinatal-mmwr-rr11-1994',
+          name: 'CDC. Recommendations of the U.S. Public Health Service Task Force on the Use of Zidovudine to Reduce Perinatal Transmission of Human Immunodeficiency Virus. MMWR Recomm Rep. 1994;43(RR-11):1-20.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00032271.htm',
+          publishedAt: '1994-08-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Concorde — early zidovudine monotherapy for asymptomatic HIV reversed 1994 ─
+  {
+    externalId: 'trajectory:concorde-zidovudine-asymptomatic-hiv-reversal-1994',
+    text: 'The claim that early zidovudine monotherapy benefits people with asymptomatic HIV infection — established by ACTG 019 (Volberding et al., NEJM, 5 April 1990) and used to expand zidovudine\'s label to asymptomatic patients — was reversed when the Concorde trial, reported in The Lancet on 9 April 1994, found that immediate zidovudine gave no survival or clinical-progression benefit over deferred treatment.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-04-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-04-05',
+        datePrecision: 'DAY',
+        reason: 'Volberding et al. reported the ACTG 019 placebo-controlled trial in the NEJM, concluding that zidovudine was \'safe and effective\' in asymptomatic HIV-infected persons with fewer than 500 CD4 cells, significantly delaying progression to AIDS. The result, which underpinned the FDA\'s expansion of zidovudine to asymptomatic infection, settled early antiretroviral monotherapy as the standard of care for early HIV.',
+        source: {
+          externalId: 'src:volberding-actg019-nejm-1990',
+          name: 'Volberding PA, Lagakos SW, Koch MA, et al. Zidovudine in asymptomatic human immunodeficiency virus infection. A controlled trial in persons with fewer than 500 CD4-positive cells per cubic millimeter. N Engl J Med. 1990;322(14):941-949.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1969115/',
+          publishedAt: '1990-04-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-04-09',
+        datePrecision: 'DAY',
+        reason: 'The Concorde trial, a 1,749-patient double-blind MRC/ANRS study with a median 3.3 years of follow-up, found no significant difference in survival or disease progression between immediate and deferred zidovudine in symptom-free HIV infection, despite an early transient rise in CD4 counts. The result overturned the rationale for early monotherapy, discrediting CD4 surrogate-endpoint reasoning and reshaping HIV treatment strategy until combination therapy emerged.',
+        source: {
+          externalId: 'src:concorde-lancet-1994',
+          name: 'Concorde Coordinating Committee. Concorde: MRC/ANRS randomised double-blind controlled trial of immediate and deferred zidovudine in symptom-free HIV infection. Lancet. 1994;343(8902):871-881.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7908356/',
+          publishedAt: '1994-04-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EMERGING INFECTIOUS DISEASE ERA (2000–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── US measles elimination declared — CDC expert panel March 2000 ──────────
+  {
+    externalId: 'trajectory:us-measles-elimination-declared-2000',
+    text: 'Endemic measles transmission was declared eliminated in the United States following a March 16–17, 2000 expert panel convened by the CDC, which concluded that sustained two-dose MMR vaccination coverage had interrupted year-round indigenous measles circulation — the first elimination of an endemic vaccine-preventable disease in a large industrialized nation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-03',
+        datePrecision: 'MONTH',
+        reason: 'A CDC-convened expert panel reviewing surveillance and molecular-epidemiology data concluded at its 16–17 March 2000 meeting that measles was no longer endemic in the United States — defined as the absence of continuous year-round transmission for 12 months under adequate surveillance — with virtually all remaining cases traceable to importation. The summary published by Katz and Hinman documents this institutional determination, settling measles elimination as official U.S. public-health status and validating the two-dose vaccination strategy adopted after the 1989–1991 resurgence.',
+        source: {
+          externalId: 'src:katz-hinman-measles-elimination-jid-2004',
+          name: 'Katz SL, Hinman AR. Summary and conclusions: measles elimination meeting, 16-17 March 2000. J Infect Dis. 2004;189(Suppl 1):S43-S47.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15106088/',
+          publishedAt: '2004-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SARS-CoV identified as cause of SARS — Drosten/Fouchier 2003 ───────────
+  {
+    externalId: 'trajectory:sars-novel-coronavirus-identification-2003',
+    text: 'A previously unknown coronavirus (SARS-CoV) was identified as the cause of severe acute respiratory syndrome — first reported by Drosten and colleagues in the New England Journal of Medicine (online 10 April 2003) and confirmed as the etiologic agent by Fouchier and colleagues fulfilling Koch\'s postulates in Nature on 15 May 2003.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-10',
+        datePrecision: 'DAY',
+        reason: 'Drosten et al. reported the isolation, cell-culture growth, and partial sequencing of a novel coronavirus from SARS patients, distinct from all previously known human and animal coronaviruses, and developed a PCR assay detecting it in respiratory specimens. Published as part of WHO\'s collaborative laboratory network response to the unfolding outbreak, this recorded in the expert literature the candidate causative agent of an emerging epidemic disease within weeks of the global alert.',
+        source: {
+          externalId: 'src:drosten-sars-coronavirus-nejm-2003',
+          name: 'Drosten C, Günther S, Preiser W, et al. Identification of a novel coronavirus in patients with severe acute respiratory syndrome. N Engl J Med. 2003;348(20):1967-1976.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12690091/',
+          publishedAt: '2003-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-05-15',
+        datePrecision: 'DAY',
+        reason: 'Fouchier et al. experimentally infected cynomolgus macaques with the new coronavirus, reproducing SARS pathology and thereby fulfilling Koch\'s postulates — establishing the virus not merely as an association but as the proven etiologic agent. Coupled with WHO\'s mid-April announcement naming the coronavirus as the cause of SARS, this settled the etiology of the first novel epidemic of the 21st century and reshaped global pandemic-preparedness science.',
+        source: {
+          externalId: 'src:fouchier-sars-kochs-postulates-nature-2003',
+          name: 'Fouchier RAM, Kuiken T, Schutten M, et al. Aetiology: Koch\'s postulates fulfilled for SARS virus. Nature. 2003;423(6937):240.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12748632/',
+          publishedAt: '2003-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO H1N1 pandemic phase-6 declaration — 11 June 2009 ───────────────────
+  {
+    externalId: 'trajectory:who-2009-h1n1-pandemic-declaration',
+    text: 'On 11 June 2009 WHO Director-General Margaret Chan raised the influenza pandemic alert from phase 5 to phase 6, formally declaring the 2009 influenza A(H1N1) virus a global pandemic — the first pandemic so declared under the modern WHO alert framework and the first influenza pandemic since 1968.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-06-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-06-11',
+        datePrecision: 'DAY',
+        reason: 'Following the fourth meeting of the Emergency Committee convened under the International Health Regulations, the WHO Director-General concluded that the scientific criteria for an influenza pandemic had been met — sustained community-level transmission of a novel A(H1N1) virus in multiple WHO regions — and raised the alert to phase 6. The declaration triggered national pandemic response plans, vaccine procurement, and antiviral stockpiling worldwide, settling the institutional recognition that a pandemic was underway.',
+        source: {
+          externalId: 'src:who-h1n1-phase6-statement-2009',
+          name: 'WHO. Statement to the press by WHO Director-General Dr Margaret Chan following the fourth meeting of the Emergency Committee (raising pandemic alert to phase 6). 11 June 2009.',
+          url: 'https://www.who.int/news/item/11-06-2009-director-general-statement-following-the-fourth-meeting-of-the-emergency-committee',
+          publishedAt: '2009-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
