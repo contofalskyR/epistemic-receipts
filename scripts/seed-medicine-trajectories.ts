@@ -6290,6 +6290,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC & NEONATAL MEDICINE ERA (1958–1991)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Cremer phototherapy neonatal jaundice 1958 ─────────────────────────────
+  {
+    externalId: 'trajectory:cremer-phototherapy-neonatal-jaundice-1958',
+    text: 'Richard Cremer, P.W. Perryman, and D.H. Richards reported in The Lancet on 24 May 1958 that exposure to light lowered serum bilirubin in jaundiced newborns, the first description of phototherapy for neonatal hyperbilirubinaemia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-05-24',
+        datePrecision: 'DAY',
+        reason: 'Following a ward nurse\'s observation that sunlit infants were less jaundiced and that serum left in light lost its yellow color, Cremer and colleagues at Rochford General Hospital showed that controlled light exposure reduced hyperbilirubinaemia in newborns. The Lancet report identified light as a physical treatment for neonatal jaundice — a condition that could otherwise progress to bilirubin encephalopathy (kernicterus).',
+        source: {
+          externalId: 'src:cremer-lancet-phototherapy-1958',
+          name: 'Cremer RJ, Perryman PW, Richards DH. Influence of light on the hyperbilirubinaemia of infants. Lancet. 1958;1(7030):1094-1097.',
+          url: 'https://doi.org/10.1016/S0140-6736(58)91849-X',
+          publishedAt: '1958-05-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Cremer\'s finding was largely neglected for about a decade until controlled trials in the United States — notably Lucey and colleagues (Pediatrics, 1968) — confirmed that phototherapy prevented and treated hyperbilirubinaemia of prematurity. Phototherapy then entered routine neonatal practice worldwide, becoming the standard first-line treatment that has spared millions of infants from kernicterus and exchange transfusion.',
+        source: {
+          externalId: 'src:sixty-years-phototherapy-review-2019',
+          name: 'Maisels MJ. Sixty years of phototherapy for neonatal jaundice — from serendipitous observation to standardized treatment and rescue for millions. J Perinatol. 2019;39:1316-1320.',
+          url: 'https://www.nature.com/articles/s41372-019-0439-1',
+          publishedAt: '2019-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── RhoGAM Rh immune globulin HDN prevention 1968 ──────────────────────────
+  {
+    externalId: 'trajectory:rhogam-rh-immune-globulin-hdn-prevention-1968',
+    text: 'On 29 May 1968 U.S. regulators approved Rh₀(D) immune globulin (RhoGAM), developed by Freda, Gorman, and Pollack at Columbia, for postpartum administration to Rh-negative mothers to prevent Rh sensitization and hemolytic disease of the fetus and newborn.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1968-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1968-05-29',
+        datePrecision: 'DAY',
+        reason: 'After clinical trials by Freda, Gorman, and Pollack (and independently Clarke\'s Liverpool group) showed that anti-D immunoglobulin given after delivery prevented maternal sensitization, the Division of Biologics Standards (forerunner of the FDA) approved RhoGAM on 29 May 1968. The approval converted an experimental immunoprophylaxis into licensed standard obstetric care; with routine use, hemolytic disease of the newborn — which had killed roughly 10,000 U.S. infants a year — fell dramatically, and the team received the 1980 Lasker Award.',
+        source: {
+          externalId: 'src:columbia-rhogam-at-50-2018',
+          name: 'Columbia University Vagelos College of Physicians and Surgeons. RhoGAM at 50: A Drug Still Saving Lives of Newborns. Columbia Medicine Magazine, Spring/Summer 2018.',
+          url: 'https://www.vagelos.columbia.edu/about-us/columbia-medicine-magazine/archives/spring-summer-2018/vp-s-news/rhogam-50-drug-still-saving-lives-newborns',
+          publishedAt: '2018-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Needleman subclinical lead neurotoxicity children 1979 ─────────────────
+  {
+    externalId: 'trajectory:needleman-subclinical-lead-neurotoxicity-children-1979',
+    text: 'Herbert Needleman and colleagues reported in the New England Journal of Medicine on 29 March 1979 that children with elevated dentine lead levels but no clinical lead poisoning showed measurable IQ deficits and classroom-behavior impairments, establishing the concept of subclinical lead neurotoxicity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-03-29',
+        datePrecision: 'DAY',
+        reason: 'Needleman et al. published a controlled study in NEJM comparing children with high versus low dentine (tooth) lead, finding significantly lower full-scale IQ on the WISC-R and dose-related deficits in attention and classroom behavior, at exposures below the clinical poisoning threshold. The paper introduced the idea that lead harms children\'s neurodevelopment with no overt symptoms, shifting the question from acute poisoning to population-level subclinical injury.',
+        source: {
+          externalId: 'src:needleman-nejm-dentine-lead-1979',
+          name: 'Needleman HL, Gunnoe C, Leviton A, Reed R, Peresie H, Maher C, Barrett P. Deficits in psychologic and classroom performance of children with elevated dentine lead levels. N Engl J Med. 1979;300(13):689-695.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/763299/',
+          publishedAt: '1979-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The CDC\'s 1991 statement Preventing Lead Poisoning in Young Children lowered the blood-lead level of concern from 25 to 10 µg/dL and called for near-universal screening of 1–6-year-olds, citing the accumulated evidence of harm at low levels that Needleman\'s work anchored. Although Needleman personally faced a scientific-misconduct inquiry (1990–1994) from which he was ultimately exonerated, his core finding was independently replicated, and the subclinical-neurotoxicity claim became the basis of U.S. lead policy.',
+        source: {
+          externalId: 'src:cdc-preventing-lead-poisoning-1991',
+          name: 'Centers for Disease Control. Preventing Lead Poisoning in Young Children: A Statement by the Centers for Disease Control. October 1991.',
+          url: 'https://stacks.cdc.gov/view/cdc/147840/cdc_147840_DS1.pdf',
+          publishedAt: '1991-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fujiwara surfactant replacement RDS 1980 ────────────────────────────────
+  {
+    externalId: 'trajectory:fujiwara-surfactant-replacement-rds-1980',
+    text: 'Tetsuro Fujiwara and colleagues reported in The Lancet on 12 January 1980 that endotracheal instillation of a modified bovine surfactant rapidly improved oxygenation in ten preterm infants with severe hyaline-membrane disease, demonstrating the first successful surfactant-replacement therapy for neonatal respiratory distress syndrome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-01-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-12',
+        datePrecision: 'DAY',
+        reason: 'Building on Avery and Mead\'s 1959 finding that hyaline-membrane disease reflects surfactant deficiency, Fujiwara\'s team gave a bolus of modified bovine (\'artificial\') surfactant to ten severely ill preterm infants and observed rapid improvement in oxygenation, reduced ventilator pressures, and resolution of radiographic changes, with no apparent harm. This first clinical demonstration that the deficiency could be directly replaced reframed RDS from a supportive-care problem to a treatable one.',
+        source: {
+          externalId: 'src:fujiwara-lancet-surfactant-1980',
+          name: 'Fujiwara T, Maeta H, Chida S, Morita T, Watabe Y, Abe T. Artificial surfactant therapy in hyaline-membrane disease. Lancet. 1980;1(8159):55-59.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6101413/',
+          publishedAt: '1980-01-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'A decade of randomized controlled trials confirmed that exogenous surfactant reduced neonatal mortality and pneumothorax in preterm RDS, culminating in the FDA\'s August 1990 approval of the first surfactant product (Exosurf Neonatal, colfosceril) and rapid clinical adoption. Surfactant replacement became standard neonatal-intensive-care practice and a documented driver of falling infant mortality.',
+        source: {
+          externalId: 'src:surfactant-evolution-review-2017',
+          name: 'Halliday HL. The evolution of surfactant therapy for respiratory distress syndrome: past, present and future. Pediatr Res. 2017;81:240-248.',
+          url: 'https://www.nature.com/articles/pr2016203',
+          publishedAt: '2016-12-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── National Childhood Vaccine Injury Act 1986 ──────────────────────────────
+  {
+    externalId: 'trajectory:national-childhood-vaccine-injury-act-1986',
+    text: 'On 14 November 1986 the United States enacted the National Childhood Vaccine Injury Act (Public Law 99-660), creating a no-fault federal compensation program and a Vaccine Injury Table for children injured by mandated childhood vaccines.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1986-11-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-11-14',
+        datePrecision: 'DAY',
+        reason: 'Amid a wave of DTP-vaccine injury lawsuits that threatened vaccine supply, Congress enacted the National Childhood Vaccine Injury Act as part of Public Law 99-660, signed 14 November 1986. The Act institutionalized the position that certain childhood vaccines can rarely cause serious injury warranting compensation, replacing tort litigation with a no-fault system funded by a per-dose excise tax and a defined Vaccine Injury Table.',
+        source: {
+          externalId: 'src:pl-99-660-statute-1986',
+          name: 'Public Law 99-660, Nov. 14, 1986, 100 Stat. 3743 (Title III — National Childhood Vaccine Injury Act of 1986). U.S. Statutes at Large.',
+          url: 'https://www.congress.gov/99/statute/STATUTE-100/STATUTE-100-Pg3743.pdf',
+          publishedAt: '1986-11-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-10-01',
+        datePrecision: 'DAY',
+        reason: 'The Vaccine Injury Compensation Program became operational on 1 October 1988, with the Court of Federal Claims and special masters beginning to adjudicate petitions under the Vaccine Injury Table. The no-fault program became the settled, exclusive first route for childhood-vaccine injury claims and has stabilized U.S. vaccine supply and liability for decades.',
+        source: {
+          externalId: 'src:ncvia-national-vaccine-plan-iom',
+          name: 'Institute of Medicine. 1986 National Childhood Vaccine Injury Act (Public Law 99-660), in Priorities for the National Vaccine Plan. National Academies Press, 2010.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK220067/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
