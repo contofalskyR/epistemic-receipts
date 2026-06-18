@@ -12553,6 +12553,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DEVICE & PROCEDURE REVERSAL ERA (2010–2025)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Renal denervation for resistant hypertension — SYMPLICITY HTN-3 2014 ────
+  {
+    externalId: 'trajectory:symplicity-htn3-renal-denervation-reversal-2014',
+    text: 'Catheter-based renal sympathetic denervation lowers blood pressure in patients with treatment-resistant hypertension — a claim advanced by the unblinded SYMPLICITY HTN-1 cohort study (Krum et al., The Lancet, 11 April 2009) and refuted by the blinded, sham-controlled SYMPLICITY HTN-3 trial (Bhatt et al., NEJM, 10 April 2014).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-04-11',
+        datePrecision: 'DAY',
+        reason: 'Krum, Schlaich, and colleagues published the SYMPLICITY HTN-1 multicentre, non-randomised proof-of-principle cohort study in The Lancet, reporting that percutaneous radiofrequency renal sympathetic denervation in 45 patients with resistant hypertension produced office blood-pressure falls of about 27/17 mm Hg at 12 months. This first clinical evidence launched intense enthusiasm for a device-based cure of resistant hypertension, reinforced by the unblinded randomised SYMPLICITY HTN-2 trial in 2010.',
+        source: {
+          externalId: 'src:krum-symplicity-htn1-lancet-2009',
+          name: 'Krum H, Schlaich M, Whitbourn R, et al. Catheter-based renal sympathetic denervation for resistant hypertension: a multicentre safety and proof-of-principle cohort study. Lancet. 2009;373(9671):1275–1281.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(09)60566-3/abstract',
+          publishedAt: '2009-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-04-10',
+        datePrecision: 'DAY',
+        reason: 'Bhatt and the SYMPLICITY HTN-3 investigators published the first blinded, sham-controlled randomised trial of renal denervation in the New England Journal of Medicine. With patients and assessors blinded and a sham (renal angiography only) control arm, denervation produced only a 2.39 mm Hg greater office systolic reduction at 6 months — failing the 5 mm Hg superiority margin and showing no significant benefit. The blinding exposed the earlier open-label results as largely placebo and regression effects, collapsing clinical enthusiasm and halting device programs.',
+        source: {
+          externalId: 'src:bhatt-symplicity-htn3-nejm-2014',
+          name: 'Bhatt DL, Kandzari DE, O\'Neill WW, et al. A controlled trial of renal denervation for resistant hypertension. N Engl J Med. 2014;370(15):1393–1401.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24678939/',
+          publishedAt: '2014-04-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-11-17',
+        datePrecision: 'DAY',
+        reason: 'After a second generation of properly sham-controlled trials (the SPYRAL HTN-OFF MED and ON MED programs) showed modest but real blood-pressure reductions, the FDA approved Medtronic\'s Symplicity Spyral renal denervation system on 17 November 2023 — days after approving ReCor Medical\'s Paradise ultrasound system — as an adjunctive treatment for hypertension. The approvals, granted over a divided advisory-committee vote, partially rehabilitated a procedure declared dead in 2014, leaving its true clinical value genuinely contested rather than settled.',
+        source: {
+          externalId: 'src:medtronic-symplicity-spyral-fda-2023',
+          name: 'Medtronic. Medtronic announces FDA approval of minimally invasive device to treat hypertension. Press release, 17 November 2023.',
+          url: 'https://news.medtronic.com/2023-11-17-Medtronic-announces-FDA-approval-of-minimally-invasive-device-to-treat-hypertension',
+          publishedAt: '2023-11-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA transvaginal mesh for pelvic organ prolapse — withdrawal 2019 ────────
+  {
+    externalId: 'trajectory:fda-transvaginal-mesh-pop-withdrawal-2019',
+    text: 'Surgical mesh implanted transvaginally is a safe and effective option for repair of pelvic organ prolapse — a premise behind 510(k)-cleared mesh kits marketed from the early 2000s that the FDA reversed on 16 April 2019 by ordering all such devices off the U.S. market.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Beginning in the early 2000s, manufacturers brought transvaginal surgical-mesh "kits" for pelvic organ prolapse (POP) to market through the FDA 510(k) pathway, cleared as substantially equivalent to predicate devices without independent premarket safety or efficacy trials. The devices were rapidly adopted as a standard surgical option for POP repair on the assumption that permanent mesh reinforcement improved durability over native-tissue repair.',
+        source: {
+          externalId: 'src:fda-urogyn-mesh-activities',
+          name: 'U.S. Food and Drug Administration. FDA\'s Activities: Urogynecologic Surgical Mesh. Regulatory history of transvaginal mesh for pelvic organ prolapse.',
+          url: 'https://www.fda.gov/medical-devices/urogynecologic-surgical-mesh-implants/fdas-activities-urogynecologic-surgical-mesh',
+          publishedAt: '2019-04-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-20',
+        datePrecision: 'MONTH',
+        reason: 'In October 2008 the FDA issued a Public Health Notification alerting clinicians and patients to serious adverse events — mesh erosion, pain, infection, organ perforation, and dyspareunia — associated with transvaginal placement of surgical mesh for POP and stress urinary incontinence. A July 2011 Safety Communication escalated the warning, finding that complications were "not rare" and that transvaginal mesh for POP had not been shown to be more effective than non-mesh repair, formally putting the safety/efficacy claim in dispute.',
+        source: {
+          externalId: 'src:fda-mesh-2011-safety-communication',
+          name: 'U.S. Food and Drug Administration. Urogynecologic Surgical Mesh: Update on the Safety and Effectiveness of Transvaginal Placement for Pelvic Organ Prolapse. Safety Communication, 13 July 2011 (following the October 2008 Public Health Notification).',
+          url: 'https://www.fda.gov/media/81123/download',
+          publishedAt: '2011-07-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-04-16',
+        datePrecision: 'DAY',
+        reason: 'Having reclassified transvaginal POP mesh from Class II to Class III (high-risk) in 2016 and required premarket approval applications, the FDA on 16 April 2019 ordered the two remaining manufacturers — Boston Scientific (Uphold Lite, Xenform) and Coloplast (Restorelle DirectFix Anterior) — to stop selling and distributing the devices immediately, finding they had failed to demonstrate reasonable assurance of safety and effectiveness or any long-term benefit over native-tissue repair. The action effectively withdrew the entire device class from the U.S. market.',
+        source: {
+          externalId: 'src:fda-mesh-stop-selling-2019',
+          name: 'U.S. Food and Drug Administration. FDA takes action to protect women\'s health, orders manufacturers of surgical mesh intended for transvaginal repair of pelvic organ prolapse to stop selling all devices. Press announcement, 16 April 2019.',
+          url: 'https://www.prnewswire.com/news-releases/fda-takes-action-to-protect-womens-health-orders-manufacturers-of-surgical-mesh-intended-for-transvaginal-repair-of-pelvic-organ-prolapse-to-stop-selling-all-devices-300833010.html',
+          publishedAt: '2019-04-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Arthroscopic partial meniscectomy for degenerative tear — Sihvonen 2013 ──
+  {
+    externalId: 'trajectory:sihvonen-arthroscopic-meniscectomy-degenerative-tear-reversal-2013',
+    text: 'Arthroscopic partial meniscectomy relieves symptoms in patients with a degenerative meniscal tear — a rationale behind one of the most common orthopedic operations that a blinded sham-controlled trial (Sihvonen et al., NEJM, 26 December 2013) showed worked no better than placebo surgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1990s and 2000s arthroscopic partial meniscectomy (APM) for degenerative meniscal tears became one of the most frequently performed orthopedic procedures — on the order of 700,000 operations per year in the United States — justified by uncontrolled case series and the intuitive rationale that trimming the torn meniscus relieves mechanical knee symptoms. The practice was standard of care without placebo-controlled validation.',
+        source: {
+          externalId: 'src:sihvonen-apm-background-nejm-2013',
+          name: 'Sihvonen R, Paavola M, Malmivaara A, et al. Arthroscopic partial meniscectomy versus sham surgery for a degenerative meniscal tear (background: APM among the most common orthopedic procedures). N Engl J Med. 2013;369(26):2515–2524.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24369076/',
+          publishedAt: '2013-12-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-12-26',
+        datePrecision: 'DAY',
+        reason: 'Sihvonen and the Finnish Degenerative Meniscal Lesion Study Group randomised 146 patients with a degenerative medial meniscal tear and no knee osteoarthritis to arthroscopic partial meniscectomy or a sham arthroscopic procedure, with patients and assessors blinded. At 12 months the two groups showed equivalent improvements in pain and function, demonstrating that the apparent benefit of APM for degenerative tears was a placebo response and providing rigorous evidence that the operation is ineffective for this indication — a finding reinforced by the trial group\'s later multi-year follow-ups.',
+        source: {
+          externalId: 'src:sihvonen-apm-sham-nejm-2013',
+          name: 'Sihvonen R, Paavola M, Malmivaara A, et al. Arthroscopic partial meniscectomy versus sham surgery for a degenerative meniscal tear. N Engl J Med. 2013;369(26):2515–2524.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24369076/',
+          publishedAt: '2013-12-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MR CLEAN endovascular thrombectomy for acute ischemic stroke — 2015 ──────
+  {
+    externalId: 'trajectory:mr-clean-endovascular-thrombectomy-stroke-2015',
+    text: 'Endovascular (intra-arterial) thrombectomy added to standard care improves functional outcomes in acute ischemic stroke from proximal anterior-circulation large-vessel occlusion — a claim established by the MR CLEAN randomized trial (Berkhemer et al., NEJM, online 17 December 2014 / print 1 January 2015) after three 2013 trials had found no benefit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-01-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-01',
+        datePrecision: 'DAY',
+        reason: 'Berkhemer and the MR CLEAN investigators randomised 500 patients with acute anterior-circulation large-vessel-occlusion stroke to intra-arterial treatment (mostly retrievable-stent thrombectomy) within 6 hours plus usual care versus usual care alone. Endovascular treatment produced a significant shift toward functional independence on the modified Rankin scale at 90 days (32.6% vs 19.1% achieving mRS 0–2). This was the first positive randomised evidence, overturning the pessimism created by the 2013 IMS III, SYNTHESIS Expansion, and MR RESCUE trials, which had shown no benefit using mostly older devices.',
+        source: {
+          externalId: 'src:berkhemer-mr-clean-nejm-2015',
+          name: 'Berkhemer OA, Fransen PSS, Beumer D, et al. A randomized trial of intraarterial treatment for acute ischemic stroke (MR CLEAN). N Engl J Med. 2015;372(1):11–20.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25517348/',
+          publishedAt: '2015-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In the first half of 2015 four further randomised trials (ESCAPE, EXTEND-IA, SWIFT PRIME, and REVASCAT) were stopped early after interim analyses showed consistent, large benefits of stent-retriever thrombectomy, replicating MR CLEAN. The HERMES collaboration pooled the trials and confirmed a robust treatment effect, and within the year endovascular thrombectomy was incorporated into AHA/ASA and international stroke guidelines as standard care — settling the claim across the expert community.',
+        source: {
+          externalId: 'src:hermes-thrombectomy-meta-lancet-2016',
+          name: 'Goyal M, Menon BK, van Zwam WH, et al. (HERMES collaborators). Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials. Lancet. 2016;387(10029):1723–1731.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26898852/',
+          publishedAt: '2016-04-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── PARTNER cohort B TAVR for inoperable aortic stenosis — 2010–2011 ─────────
+  {
+    externalId: 'trajectory:partner-tavr-inoperable-aortic-stenosis-2010',
+    text: 'Transcatheter aortic-valve implantation reduces mortality versus standard therapy in patients with severe symptomatic aortic stenosis who cannot undergo open surgery — established by the PARTNER cohort B trial (Leon et al., NEJM, 21 October 2010) and confirmed by FDA approval of the Edwards Sapien valve on 2 November 2011.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-10-21',
+        datePrecision: 'DAY',
+        reason: 'Leon and the PARTNER investigators published cohort B, the first randomised trial of transcatheter aortic-valve implantation (TAVI) versus standard therapy (including balloon valvuloplasty) in patients with severe aortic stenosis deemed unsuitable for surgery. At one year, all-cause mortality was 30.7% with TAVI versus 50.7% with standard therapy (hazard ratio 0.55), the first rigorous evidence that a catheter-delivered valve could prolong life in inoperable patients, despite higher early stroke and vascular-complication rates.',
+        source: {
+          externalId: 'src:leon-partner-cohort-b-nejm-2010',
+          name: 'Leon MB, Smith CR, Mack M, et al. Transcatheter aortic-valve implantation for aortic stenosis in patients who cannot undergo surgery (PARTNER cohort B). N Engl J Med. 2010;363(17):1597–1607.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20961243/',
+          publishedAt: '2010-10-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-11-02',
+        datePrecision: 'DAY',
+        reason: 'On 2 November 2011 the FDA approved the Edwards Sapien transcatheter heart valve for transfemoral delivery in patients with severe symptomatic aortic stenosis judged unsuitable for open surgery — the first commercial approval of a transcatheter aortic valve in the United States, based on the PARTNER pivotal study. Regulatory approval institutionalized TAVI as standard therapy for inoperable aortic stenosis, after which the indication progressively expanded to high-, intermediate-, and low-surgical-risk patients.',
+        source: {
+          externalId: 'src:edwards-sapien-fda-approval-2011',
+          name: 'U.S. FDA / Edwards Lifesciences. FDA approval of the Edwards Sapien transcatheter aortic heart valve for inoperable severe symptomatic aortic stenosis, 2 November 2011 (TCTMD report).',
+          url: 'https://www.tctmd.com/news/fda-approves-sapien-transcatheter-valve-inoperable-aortic-stenosis',
+          publishedAt: '2011-11-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
