@@ -65155,6 +65155,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Coronation of Ismail I — founding of the Safavid dynasty and Twelver Shi'ism ─
+  {
+    externalId: 'trajectory:ismail-i-coronation-tabriz-1501',
+    text: 'On 22 December 1501 (1 Jumada al-Thani 907 AH), immediately after defeating the Aq Qoyunlu at the Battle of Sharur, Ismail I was enthroned as Shah at Tabriz, founding the Safavid dynasty and proclaiming Twelver Shi\'ism the official and compulsory religion of Iran — a transformation that defines Iranian religious identity to this day.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1501-12-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1501-12-22',
+        datePrecision: 'DAY',
+        reason: 'After the fourteen-year-old Ismail crushes the Aq Qoyunlu ruler Alvand at Sharur, his Qizilbash followers enter Tabriz and proclaim him Shah; he orders the Friday sermon and coinage in the name of the Twelve Imams and enforces Twelver Shi\'ism as the state creed. The Safavid court historian Qasem Beg Hayati Tabrizi records, on the testimony of witnesses, that the enthronement took place on 1 Jumada al-Thani 907 / 22 December 1501.',
+        source: {
+          externalId: 'src:hayati-tabrizi-ismail-enthronement-1501',
+          name: 'Qasem Beg Hayati Tabrizi, Safavid chronicle recording Ismail I\'s enthronement at Tabriz on 1 Jumada al-Thani 907 / 22 December 1501 (on the testimony of witnesses).',
+          url: 'https://en.wikipedia.org/wiki/Ismail_I',
+          publishedAt: '1554-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The conversion of Iran to Twelver Shi\'ism under Ismail I — imported clerics from the Arab lands, the persecution of Sunni opposition, and the durable confessional split with the Sunni Ottomans — is treated as a settled turning point in Iranian and Islamic history. Modern scholarship (Roger Savory, Iran Under the Safavids, 1980) reconstructs the founding of the dynasty and the 1501 enthronement at Tabriz from the Safavid chronicles.',
+        source: {
+          externalId: 'src:savory-safavid-founding-scholarship',
+          name: 'Roger Savory, Iran Under the Safavids, Cambridge University Press, 1980; Encyclopædia Iranica, "Esmāʿīl I Ṣafawī".',
+          url: 'https://www.iranicaonline.org/articles/esmail-i-safavi',
+          publishedAt: '1980-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Capture of Baghdad by Murad IV — Ottoman reconquest of Iraq ──────────────
+  {
+    externalId: 'trajectory:murad-iv-capture-baghdad-1638',
+    text: 'On 25 December 1638, after a forty-day siege led in person by Sultan Murad IV, the Ottoman army stormed and captured Baghdad from the Safavids, restoring Ottoman control of Mesopotamia that would last until the twentieth century.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1638-12-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1638-12-25',
+        datePrecision: 'DAY',
+        reason: 'Murad IV, marching east at the head of the imperial army, invests Baghdad on 15 November 1638; the Safavid garrison under Bektash Khan holds out for forty days before the walls are breached and the city falls on 25 December, followed by a massacre of much of the garrison and populace. Ottoman campaign registers and the eyewitness travel account of Evliya Çelebi record the siege and its date.',
+        source: {
+          externalId: 'src:evliya-celebi-baghdad-1638',
+          name: 'Evliya Çelebi, Seyahatname (Book of Travels), eyewitness account of Murad IV\'s 1638 Baghdad campaign; with Ottoman campaign registers.',
+          url: 'https://en.wikipedia.org/wiki/Capture_of_Baghdad_(1638)',
+          publishedAt: '1638-12-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1639-05-17',
+        datePrecision: 'DAY',
+        reason: 'The conquest is institutionally sealed by the Treaty of Zuhab (Qasr-e Shirin) of 17 May 1639, in which the Safavids formally cede Mesopotamia and recognise Ottoman possession of Baghdad; the resulting frontier proves durable, and Ottoman Iraq endures until the First World War. The fall of Baghdad in December 1638 is settled in Ottoman and Safavid historiography.',
+        source: {
+          externalId: 'src:zuhab-confirms-baghdad-1639',
+          name: 'Treaty of Zuhab (Qasr-e Shirin), 17 May 1639, confirming Ottoman possession of Baghdad and Mesopotamia.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Zuhab',
+          publishedAt: '1639-05-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Gulnabad — collapse of Safavid Persia ─────────────────────────
+  {
+    externalId: 'trajectory:battle-of-gulnabad-1722',
+    text: 'On 8 March 1722 the Hotaki Afghan army of Mahmud Hotak routed the much larger Safavid royal army at Gulnabad outside Isfahan; the defeat opened the road to the capital and led within months to the surrender of Shah Sultan Husayn and the effective fall of the Safavid dynasty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1722-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1722-03-08',
+        datePrecision: 'DAY',
+        reason: 'A Hotaki Afghan force of perhaps 20,000 under Mahmud Hotak defeats the disorganised Safavid army on the plain of Gulnabad east of Isfahan, inflicting thousands of casualties. The battle was witnessed and recorded by European observers in Persia, including members of the Dutch East India Company and the Polish Jesuit Tadeusz Krusiński, whose contemporary account of the Afghan invasion circulated widely in Europe.',
+        source: {
+          externalId: 'src:krusinski-gulnabad-1722',
+          name: 'Tadeusz Krusiński, contemporary account of the Afghan invasion of Persia and the Battle of Gulnabad (The History of the Revolution of Persia), early 18th century (eyewitness in Isfahan).',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Gulnabad',
+          publishedAt: '1728-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1722-10-23',
+        datePrecision: 'DAY',
+        reason: 'After a six-month siege, Shah Sultan Husayn rides out of starving Isfahan and abdicates in favour of Mahmud Hotak on 23 October 1722, formally surrendering the capital and ending effective Safavid rule. The collapse of the dynasty triggered by Gulnabad is settled history, corroborated by European eyewitnesses and later Persian chronicles alike.',
+        source: {
+          externalId: 'src:fall-of-isfahan-1722',
+          name: 'Contemporary European and Persian accounts of the siege and surrender of Isfahan and the abdication of Shah Sultan Husayn, 23 October 1722.',
+          url: 'https://en.wikipedia.org/wiki/Siege_of_Isfahan',
+          publishedAt: '1740-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Coronation of Nader Shah at Mughan — founding of the Afsharid dynasty ────
+  {
+    externalId: 'trajectory:nader-shah-coronation-mughan-1736',
+    text: 'On 8 March 1736, on the Mughan plain, Nader was crowned Shah of Iran before a great assembly (qoroltai) of the nobility and the military and religious elite, founding the Afsharid dynasty and formally ending the rule of the Safavids he had served as warlord and regent.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1736-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1736-03-08',
+        datePrecision: 'DAY',
+        reason: 'Having driven the Afghans and Ottomans from Persia in the name of the puppet Safavid Shah Abbas III, Nader summons a vast assembly to the Mughan plain and is acclaimed Shah on 8 March 1736 — a date his astrologers had chosen as especially favourable — on conditions including the abandonment of state-enforced Twelver Shi\'ism. His court historian Mirza Mahdi Khan Astarabadi records the coronation in the Tarikh-e Naderi.',
+        source: {
+          externalId: 'src:tarikh-e-naderi-mughan-coronation',
+          name: 'Mirza Mahdi Khan Astarabadi, Tarikh-e Naderi (history of Nader Shah), account of the coronation on the Mughan plain, 8 March 1736 (court historian).',
+          url: 'https://en.wikipedia.org/wiki/Nader_Shah',
+          publishedAt: '1757-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Mughan assembly and Nader\'s coronation, ending the Safavid dynasty and founding the Afsharid line, are treated as a settled, securely dated turning point in Iranian history; modern scholarship (Michael Axworthy, The Sword of Persia, 2006) reconstructs the event from the court chronicles and European reports. Debate concerns Nader\'s religious policy and motives, not the fact or date of the coronation.',
+        source: {
+          externalId: 'src:axworthy-nader-shah-2006',
+          name: 'Michael Axworthy, The Sword of Persia: Nader Shah, from Tribal Warrior to Conquering Tyrant, I.B. Tauris, 2006.',
+          url: 'https://en.wikipedia.org/wiki/Nader_Shah',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
