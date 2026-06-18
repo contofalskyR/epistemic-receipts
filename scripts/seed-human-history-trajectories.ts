@@ -67133,6 +67133,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present) — SUB-SAHARAN AFRICA
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eritrean independence referendum (1993) ──────────────────────────────────
+  {
+    externalId: 'trajectory:eritrea-independence-referendum-1993',
+    text: 'Eritrea voted overwhelmingly for independence from Ethiopia in an internationally monitored referendum held 23–25 April 1993, with 99.83% in favour, leading to formal statehood and UN membership in May 1993 and ending Africa\'s longest war of independence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1993-04-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1993-04-27',
+        datePrecision: 'DAY',
+        reason: 'The UN-observed referendum is held over three days, 23–25 April 1993, two years after the EPLF\'s 1991 military victory ended a 30-year liberation war. Provisional results announced on 27 April record 99.83% in favour of independence on a turnout of 93.93%, establishing the popular mandate for Eritrean statehood.',
+        source: {
+          externalId: 'src:eritrea-referendum-1993',
+          name: '1993 Eritrean independence referendum, 23–25 April 1993 — 99.83% yes (Wikipedia, "1993 Eritrean independence referendum").',
+          url: 'https://en.wikipedia.org/wiki/1993_Eritrean_independence_referendum',
+          publishedAt: '1993-04-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-05-28',
+        datePrecision: 'DAY',
+        reason: 'Eritrea formally declares independence on 24 May 1993 and is admitted to the United Nations as its 182nd member state on 28 May 1993, settling its sovereign status in the international institutional record as Africa\'s newest state at the time.',
+        source: {
+          externalId: 'src:eritrea-un-admission-1993',
+          name: 'Eritrea — independence declared 24 May 1993; admitted to the UN on 28 May 1993 (Wikipedia, "Eritrea").',
+          url: 'https://en.wikipedia.org/wiki/Eritrea',
+          publishedAt: '1993-05-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── African Union launched, replacing the OAU (2002) ─────────────────────────
+  {
+    externalId: 'trajectory:african-union-launched-2002',
+    text: 'The African Union was officially launched on 9 July 2002 in Durban, South Africa, replacing the Organisation of African Unity (founded 1963) with a continental body modelled in part on the European Union, with Thabo Mbeki as its first chairperson.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2002-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-09',
+        datePrecision: 'DAY',
+        reason: 'At the inaugural summit in Durban on 9 July 2002, African heads of state formally dissolve the Organisation of African Unity and constitute the African Union under its Constitutive Act (adopted at Lomé in 2000, in force May 2001). South African President Thabo Mbeki is elected the AU\'s first chairperson, and the launch is reported contemporaneously across the continent and internationally.',
+        source: {
+          externalId: 'src:african-union-launch-2002',
+          name: 'African Union launched 9 July 2002 in Durban, South Africa, replacing the OAU; Thabo Mbeki first chairperson (Wikipedia, "African Union").',
+          url: 'https://en.wikipedia.org/wiki/African_Union',
+          publishedAt: '2002-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-10',
+        datePrecision: 'DAY',
+        reason: 'The first Assembly of the African Union proceeds in Durban (9–10 July 2002), establishing the AU\'s organs and leadership and giving the new body operational standing recognised by member states and external partners, settling the institutional succession from the OAU.',
+        source: {
+          externalId: 'src:african-union-durban-summit-2002',
+          name: 'Inaugural Assembly of the African Union, Durban, 9–10 July 2002 (Wikipedia, "African Union").',
+          url: 'https://en.wikipedia.org/wiki/African_Union',
+          publishedAt: '2002-07-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── "Ardi" — Ardipithecus ramidus described (2009) ───────────────────────────
+  {
+    externalId: 'trajectory:ardipithecus-ramidus-ardi-2009',
+    text: 'On 2 October 2009 a team led by Tim White published a coordinated set of papers in Science describing "Ardi," a 4.4-million-year-old partial skeleton of Ardipithecus ramidus from the Middle Awash region of Ethiopia — the most complete early hominin skeleton then known, reshaping understanding of the human–chimpanzee last common ancestor.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-10-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-10-02',
+        datePrecision: 'DAY',
+        reason: 'Science (vol. 326, issue 5949) devotes a special issue on 2 October 2009 to eleven papers analysing the ARA-VP-6/500 skeleton ("Ardi"), excavated at Aramis in the Middle Awash beginning in 1994 and dated to 4.4 million years ago. The team led by Tim White argues the last common ancestor of humans and chimpanzees did not resemble a modern chimpanzee, putting a detailed early-hominin anatomy into the scientific record.',
+        source: {
+          externalId: 'src:white-ardipithecus-science-2009',
+          name: 'White TD, et al. "Ardipithecus ramidus and the Paleobiology of Early Hominids." Science 2009;326(5949) special issue (published 2 October 2009).',
+          url: 'https://en.wikipedia.org/wiki/Ardipithecus_ramidus',
+          publishedAt: '2009-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ethiopia–Eritrea Joint Declaration of Peace and Friendship (2018) ────────
+  {
+    externalId: 'trajectory:ethiopia-eritrea-peace-declaration-2018',
+    text: 'On 9 July 2018 Ethiopian Prime Minister Abiy Ahmed and Eritrean President Isaias Afwerki signed a Joint Declaration of Peace and Friendship in Asmara, formally declaring an end to the state of war between the two countries that had persisted since the 1998–2000 border war and the ensuing two-decade "no war, no peace" stalemate.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2018-07-09',
+        datePrecision: 'DAY',
+        reason: 'Following Abiy Ahmed\'s June 2018 announcement that Ethiopia would fully accept the 2002 Eritrea–Ethiopia Boundary Commission ruling, the two leaders meet in Asmara on 8 July and on 9 July 2018 sign the Joint Declaration of Peace and Friendship, declaring that the state of war between Ethiopia and Eritrea has ended and that diplomatic, trade, transport and communication links will reopen. The reconciliation is reported worldwide.',
+        source: {
+          externalId: 'src:ethiopia-eritrea-joint-declaration-2018',
+          name: 'Joint Declaration of Peace and Friendship signed by Abiy Ahmed and Isaias Afwerki, Asmara, 9 July 2018 (Wikipedia, "Abiy Ahmed").',
+          url: 'https://en.wikipedia.org/wiki/Abiy_Ahmed',
+          publishedAt: '2018-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-10-11',
+        datePrecision: 'DAY',
+        reason: 'The rapprochement is ratified internationally when the Norwegian Nobel Committee awards Abiy Ahmed the 2019 Nobel Peace Prize on 11 October 2019, citing "his decisive initiative to resolve the border conflict with neighbouring Eritrea," cementing the peace declaration\'s standing in the institutional and public record.',
+        source: {
+          externalId: 'src:abiy-nobel-peace-2019',
+          name: 'Nobel Peace Prize 2019 awarded to Abiy Ahmed for resolving the conflict with Eritrea, announced 11 October 2019 (nobelprize.org).',
+          url: 'https://www.nobelprize.org/prizes/peace/2019/summary/',
+          publishedAt: '2019-10-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── First cranium of Australopithecus anamensis described (2019) ─────────────
+  {
+    externalId: 'trajectory:australopithecus-anamensis-mrd-cranium-2019',
+    text: 'On 28 August 2019 a team led by Yohannes Haile-Selassie published in Nature the MRD-VP-1/1 cranium from Woranso-Mille, Ethiopia — the first nearly complete skull of Australopithecus anamensis, dated to about 3.8 million years ago — putting a face to a hominin previously known mainly from jaws and teeth and complicating the linear A. anamensis-to-A. afarensis model.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-08-28',
+        datePrecision: 'DAY',
+        reason: 'Haile-Selassie et al. publish "A 3.8-million-year-old hominin cranium from Woranso-Mille, Ethiopia" in Nature (28 August 2019), describing the MRD-VP-1/1 skull found in 2016 by Afar herder Ali Bereino. The cranium gives A. anamensis its first known face, and a companion dating paper fixes its age at about 3.8 million years, putting the species\' morphology firmly into the scientific record.',
+        source: {
+          externalId: 'src:haile-selassie-anamensis-nature-2019',
+          name: 'Haile-Selassie Y, et al. "A 3.8-million-year-old hominin cranium from Woranso-Mille, Ethiopia." Nature 2019;573:214–219 (published 28 August 2019).',
+          url: 'https://en.wikipedia.org/wiki/Australopithecus_anamensis',
+          publishedAt: '2019-08-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
