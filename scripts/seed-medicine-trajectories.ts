@@ -16013,6 +16013,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC & NEONATAL PHARMACOLOGY / VACCINE POLICY (1956–1986)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sulfonamide kernicterus in premature infants — Silverman 1956 ────────────
+  {
+    externalId: 'trajectory:silverman-sulfisoxazole-kernicterus-premature-1956',
+    text: 'William A. Silverman and colleagues reported in Pediatrics in October 1956 a controlled trial in which premature infants given prophylactic penicillin/sulfisoxazole had markedly higher mortality and kernicterus than infants given oxytetracycline, establishing that a sulfonamide safe in adults is lethal to neonates by displacing bilirubin from albumin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1956-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Silverman, Andersen, Blanc, and Crozier randomly allotted 193 low-birth-weight infants to two prophylactic antibacterial regimens and found that the penicillin/sulfisoxazole group had roughly double the 28-day mortality (63.2% vs 27.8%) and a higher incidence of kernicterus. The unexpected lethality of a routine sulfonamide recorded a new and counterintuitive empirical signal about neonatal drug handling.',
+        source: {
+          externalId: 'src:silverman-kernicterus-antibacterial-regimens-pediatrics-1956',
+          name: 'Silverman WA, Andersen DH, Blanc WA, Crozier DN. A difference in mortality rate and incidence of kernicterus among premature infants allotted to two prophylactic antibacterial regimens. Pediatrics. 1956;18(4):614-624.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13370229/',
+          publishedAt: '1956-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: "G. B. Odell's work on the dissociation of bilirubin from albumin supplied the mechanism: sulfonamides compete with bilirubin for albumin binding sites, raising free unconjugated bilirubin and driving it into the neonatal brain. This settled the Silverman finding into the textbook rule that sulfonamides are contraindicated in the newborn and that neonatal pharmacology differs categorically from that of adults.",
+        source: {
+          externalId: 'src:odell-bilirubin-albumin-dissociation-jpediatr-1959',
+          name: 'Odell GB. The dissociation of bilirubin from albumin and its clinical implications. J Pediatr. 1959;55(3):268-279.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/S0022347659802237',
+          publishedAt: '1959-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Low-level lead neurotoxicity in children — Needleman 1979 ───────────────
+  {
+    externalId: 'trajectory:needleman-low-level-lead-cognitive-deficits-1979',
+    text: 'Herbert Needleman and colleagues reported in the New England Journal of Medicine on 29 March 1979 that children with elevated dentine lead levels but no clinical lead poisoning scored significantly lower on IQ, attention, and classroom performance, establishing that subclinical low-dose lead exposure causes measurable neurocognitive harm in children.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-03-29',
+        datePrecision: 'DAY',
+        reason: 'Needleman, Gunnoe, Leviton and colleagues compared 58 children with high versus 100 with low shed-tooth (dentine) lead and found the high-lead group scored significantly worse on the WISC-R, on auditory/speech measures, and on teacher-rated classroom behavior. This recorded the claim that lead is neurotoxic at exposures well below the overt-poisoning threshold then considered safe.',
+        source: {
+          externalId: 'src:needleman-dentine-lead-deficits-nejm-1979',
+          name: 'Needleman HL, Gunnoe C, Leviton A, et al. Deficits in psychologic and classroom performance of children with elevated dentine lead levels. N Engl J Med. 1979;300(13):689-695.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM197903293001301',
+          publishedAt: '1979-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-11',
+        datePrecision: 'DAY',
+        reason: "Needleman's 11-year follow-up of the original cohort, published in NEJM in January 1990, found that childhood lead exposure persistently predicted reading disability, lower class standing, and school dropout into young adulthood. The durability of the effect — surviving a high-profile scientific-misconduct challenge from which Needleman was cleared in 1992 — consolidated low-level lead neurotoxicity as settled fact and underpinned regulatory removal of lead from gasoline and paint.",
+        source: {
+          externalId: 'src:needleman-lead-11year-followup-nejm-1990',
+          name: 'Needleman HL, Schell A, Bellinger D, Leviton A, Allred EN. The long-term effects of exposure to low doses of lead in childhood: an 11-year follow-up report. N Engl J Med. 1990;322(2):83-88.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199001113220203',
+          publishedAt: '1990-01-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pertussis vaccine encephalopathy claim — Kulenkampff 1974 (reversed) ─────
+  {
+    externalId: 'trajectory:kulenkampff-pertussis-vaccine-encephalopathy-1974',
+    text: 'Madeleine Kulenkampff and colleagues reported in Archives of Disease in Childhood in January 1974 a series of 36 children with encephalopathy temporally linked to whole-cell pertussis (triple) vaccine, asserting that the vaccine can cause permanent brain damage — a claim later overturned by controlled epidemiology and litigation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Kulenkampff, Schwartzman, and Wilson described 36 children referred to Great Ormond Street between 1961 and 1972 with neurological complications after pertussis inoculation, noting clustering within 24 hours as suggestive of causation. The case series recorded the hypothesis that whole-cell pertussis vaccine causes encephalopathy and permanent neurological injury.',
+        source: {
+          externalId: 'src:kulenkampff-pertussis-neurological-adc-1974',
+          name: 'Kulenkampff M, Schwartzman JS, Wilson J. Neurological complications of pertussis inoculation. Arch Dis Child. 1974;49(1):46-49.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4818092/',
+          publishedAt: '1974-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Kulenkampff report fueled a UK television documentary and intense press coverage in 1974, and pertussis vaccine coverage in England and Wales collapsed from roughly 80% to about 30%. The claim moved from a clinical case series into a public-health crisis, triggering major whooping-cough epidemics in 1977–79 and 1982 with tens of thousands of cases.',
+        source: {
+          externalId: 'src:iom-pertussis-rubella-brief-chronology-1991',
+          name: 'Institute of Medicine. Pertussis and Rubella Vaccines: A Brief Chronology. In: Adverse Effects of Pertussis and Rubella Vaccines. Washington, DC: National Academy Press; 1991.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234365/',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-11-06',
+        datePrecision: 'DAY',
+        reason: 'The 10-year follow-up of the National Childhood Encephalopathy Study (Miller et al., BMJ 1993) found no evidence that pertussis vaccine causes permanent brain damage and concluded benefits outweighed any rare risk; the UK High Court had already rejected vaccine-causation in Loveday v Renton (1988). Re-analysis showed more than half the original Kulenkampff cases were not attributable to the vaccine, reversing the strong causal claim.',
+        source: {
+          externalId: 'src:miller-nces-pertussis-neurological-bmj-1993',
+          name: 'Miller D, Madge N, Diamond J, Wadsworth J, Ross E. Pertussis immunisation and serious acute neurological illnesses in children. BMJ. 1993;307(6913):1171-1176.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1679309/',
+          publishedAt: '1993-11-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hexachlorophene infant neurotoxicity — FDA restriction 1972 ──────────────
+  {
+    externalId: 'trajectory:hexachlorophene-infant-neurotoxicity-fda-restriction-1972',
+    text: 'After 36 infant deaths in France from hexachlorophene-contaminated baby talc and accumulating neuropathology evidence, the U.S. FDA restricted hexachlorophene (pHisoHex) to prescription use in December 1972, establishing that routine whole-body antiseptic bathing of newborns causes vacuolar brain-stem encephalopathy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1972-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1972 a manufacturing error left Morhange baby talc in France contaminated with 6.3% hexachlorophene, poisoning 204 children and killing 36 with a percutaneous encephalopathy — a disaster later definitively investigated by Martin-Bouyer and colleagues. Combined with animal CNS-toxicity data, this recorded the empirical signal that hexachlorophene, long used as a routine nursery antiseptic, is neurotoxic to infants.',
+        source: {
+          externalId: 'src:martin-bouyer-hexachlorophene-france-lancet-1982',
+          name: 'Martin-Bouyer G, Lebreton R, Toga M, Stolley PD, Lockhart J. Outbreak of accidental hexachlorophene poisoning in France. Lancet. 1982;1(8263):91-95.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6119504/',
+          publishedAt: '1982-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-01',
+        datePrecision: 'MONTH',
+        reason: 'In December 1972 the FDA withdrew over-the-counter hexachlorophene products and restricted 3% pHisoHex to prescription surgical-scrub use, ending routine newborn bathing in the agent. The blind clinicopathologic study of 248 children by Shuman, Leech, and Alvord (Pediatrics 1974) then confirmed a dose-related vacuolar encephalopathy of the brain-stem reticular formation in premature infants bathed in undiluted pHisoHex, cementing the reversal of a settled nursery practice.',
+        source: {
+          externalId: 'src:shuman-hexachlorophene-neurotoxicity-pediatrics-1974',
+          name: 'Shuman RM, Leech RW, Alvord EC Jr. Neurotoxicity of hexachlorophene in the human: I. A clinicopathologic study of 248 children. Pediatrics. 1974;54(6):689-695.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4431666/',
+          publishedAt: '1974-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── National Childhood Vaccine Injury Act — 1986 ─────────────────────────────
+  {
+    externalId: 'trajectory:ncvia-vaccine-injury-compensation-1986',
+    text: 'President Ronald Reagan signed the National Childhood Vaccine Injury Act (Title III of Public Law 99-660) into law on 14 November 1986, creating a federal no-fault Vaccine Injury Compensation Program that replaced tort litigation for childhood-vaccine injuries and stabilized the U.S. vaccine supply.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1986-11-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-11-14',
+        datePrecision: 'DAY',
+        reason: 'Amid a wave of DTP-injury lawsuits that had driven manufacturers from the market and threatened vaccine supply, Congress enacted and Reagan signed the National Childhood Vaccine Injury Act (Title III, PL 99-660), establishing a no-fault compensation framework, a Vaccine Injury Table, and mandatory adverse-event reporting. This recorded the institutional decision to remove childhood-vaccine injury claims from the ordinary tort system.',
+        source: {
+          externalId: 'src:ncvia-hr5546-congress-1986',
+          name: 'National Childhood Vaccine Injury Act of 1986, H.R. 5546, 99th Congress (Title III of Pub. L. 99-660).',
+          url: 'https://www.congress.gov/bill/99th-congress/house-bill/5546',
+          publishedAt: '1986-11-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1988-10-01',
+        datePrecision: 'MONTH',
+        reason: "The Vaccine Injury Compensation Program became operational in October 1988, with petitions filed in the U.S. Court of Federal Claims and adjudicated by special masters, funded by an excise tax on vaccine doses. The program's launch settled the no-fault scheme as the working forum for vaccine-injury claims and is credited with restabilizing the childhood-vaccine supply.",
+        source: {
+          externalId: 'src:iom-ncvia-1986-national-vaccine-plan-2010',
+          name: 'Institute of Medicine. 1986 National Childhood Vaccine Injury Act (Public Law 99-660). In: Priorities for the National Vaccine Plan. Washington, DC: National Academies Press; 2010.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK220067/',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2011-02-22',
+        datePrecision: 'DAY',
+        reason: 'In Bruesewitz v. Wyeth, the U.S. Supreme Court held 6-2 that the NCVIA preempts state-law design-defect claims against vaccine manufacturers, making the VICP the exclusive remedy for such injuries. The ruling judicially cemented the 1986 framework, confirming that the no-fault program had displaced the tort system as Congress intended.',
+        source: {
+          externalId: 'src:bruesewitz-v-wyeth-scotus-2011',
+          name: 'Bruesewitz v. Wyeth LLC, 562 U.S. 223 (2011), No. 09-152.',
+          url: 'https://www.supremecourt.gov/opinions/10pdf/09-152.pdf',
+          publishedAt: '2011-02-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
