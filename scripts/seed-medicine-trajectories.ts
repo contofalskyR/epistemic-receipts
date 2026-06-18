@@ -13828,6 +13828,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & PREVENTION ERA (1992–2007)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── STAR trial — raloxifene vs tamoxifen breast cancer prevention 2006 ──────
+  {
+    externalId: 'trajectory:star-trial-raloxifene-tamoxifen-breast-cancer-prevention-2006',
+    text: 'The NSABP Study of Tamoxifen and Raloxifene (STAR/P-2) trial established that raloxifene is as effective as tamoxifen in reducing the risk of invasive breast cancer in high-risk postmenopausal women, with a lower risk of thromboembolic events and cataracts, as reported by Vogel et al. on 21 June 2006.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-06-21',
+        datePrecision: 'DAY',
+        reason: 'Vogel and colleagues published the STAR (NSABP P-2) randomized double-blind trial of nearly 20,000 high-risk postmenopausal women in JAMA, concluding that raloxifene was as effective as tamoxifen at reducing invasive breast cancer while causing fewer thromboembolic events and cataracts. This recorded into the literature the first head-to-head evidence that a second selective estrogen receptor modulator could be used for chemoprevention, expanding options beyond tamoxifen (NSABP P-1, 1998).',
+        source: {
+          externalId: 'src:vogel-star-p2-jama-2006',
+          name: 'Vogel VG, Costantino JP, Wickerham DL, et al. Effects of tamoxifen vs raloxifene on the risk of developing invasive breast cancer and other disease outcomes: the NSABP Study of Tamoxifen and Raloxifene (STAR) P-2 trial. JAMA. 2006;295(23):2727-2741.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16754727/',
+          publishedAt: '2006-06-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-09-14',
+        datePrecision: 'DAY',
+        reason: 'Following a July 2007 Oncologic Drugs Advisory Committee recommendation, the FDA approved raloxifene (Evista, Eli Lilly) in September 2007 for reducing the risk of invasive breast cancer in postmenopausal women with osteoporosis and in those at high risk. The regulatory approval institutionally ratified the STAR finding, making raloxifene the first SERM approved for breast cancer risk reduction alongside tamoxifen.',
+        source: {
+          externalId: 'src:fda-odac-evista-raloxifene-2007',
+          name: 'U.S. Food and Drug Administration. Oncologic Drugs Advisory Committee; Notice of Meeting (review of EVISTA/raloxifene hydrochloride for reduction in risk of invasive breast cancer in postmenopausal women). Federal Register. 14 June 2007.',
+          url: 'https://www.federalregister.gov/documents/2007/06/14/E7-11496/oncologic-drugs-advisory-committee-notice-of-meeting',
+          publishedAt: '2007-06-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHIMS — estrogen plus progestin dementia risk 2003 ───────────────────────
+  {
+    externalId: 'trajectory:whims-estrogen-progestin-dementia-risk-2003',
+    text: 'The Women\'s Health Initiative Memory Study (WHIMS) established that estrogen plus progestin therapy approximately doubles the risk of probable dementia in postmenopausal women aged 65 and older, as reported by Shumaker et al. on 28 May 2003.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-05-28',
+        datePrecision: 'DAY',
+        reason: 'Shumaker and the WHIMS investigators published a randomized, placebo-controlled trial of 4,532 women aged 65+ in JAMA, finding that combined conjugated equine estrogen plus medroxyprogesterone roughly doubled the hazard of probable dementia (HR 2.05) without preventing mild cognitive impairment. This directly contradicted prior observational suggestions (e.g., Nurses\' Health Study) that estrogen was cognitively protective, recording a reversal of the menopausal-hormone neuroprotection hypothesis.',
+        source: {
+          externalId: 'src:shumaker-whims-dementia-jama-2003',
+          name: 'Shumaker SA, Legault C, Rapp SR, et al. Estrogen plus progestin and the incidence of dementia and mild cognitive impairment in postmenopausal women: the Women\'s Health Initiative Memory Study: a randomized controlled trial. JAMA. 2003;289(20):2651-2662.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12771112/',
+          publishedAt: '2003-05-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-06-23',
+        datePrecision: 'DAY',
+        reason: 'The WHIMS estrogen-alone arm (conjugated equine estrogens without progestin) published in JAMA confirmed an adverse effect on global cognitive function and an increased risk of dementia/MCI, demonstrating the harm was not limited to the progestin component. The convergence of both hormone arms settled the conclusion that systemic menopausal hormone therapy does not protect, and can harm, cognition in older women.',
+        source: {
+          externalId: 'src:espeland-whims-estrogen-alone-jama-2004',
+          name: 'Espeland MA, Rapp SR, Shumaker SA, et al. Conjugated equine estrogens and global cognitive function in postmenopausal women: Women\'s Health Initiative Memory Study. JAMA. 2004;291(24):2959-2968.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15213207/',
+          publishedAt: '2004-06-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Phenylpropanolamine — hemorrhagic stroke risk 2000 ───────────────────────
+  {
+    externalId: 'trajectory:phenylpropanolamine-hemorrhagic-stroke-2000',
+    text: 'Phenylpropanolamine, an ingredient in over-the-counter decongestants and appetite suppressants, is an independent risk factor for hemorrhagic stroke—particularly in women using it for weight loss—as established by the Yale Hemorrhagic Stroke Project (Kernan et al.) reported on 21 December 2000.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-12-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-12-21',
+        datePrecision: 'DAY',
+        reason: 'Kernan et al. published the FDA-commissioned Hemorrhagic Stroke Project, a case-control study of 702 patients and 1,376 controls, in the New England Journal of Medicine, finding phenylpropanolamine an independent risk factor for hemorrhagic stroke—with a striking adjusted odds ratio of 16.6 among women taking appetite suppressants. The FDA had already issued a public health advisory on 6 November 2000 based on the study\'s pre-publication report and requested manufacturers voluntarily stop marketing PPA products.',
+        source: {
+          externalId: 'src:kernan-ppa-hemorrhagic-stroke-nejm-2000',
+          name: 'Kernan WN, Viscoli CM, Brass LM, et al. Phenylpropanolamine and the risk of hemorrhagic stroke. N Engl J Med. 2000;343(25):1826-1832.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11117973/',
+          publishedAt: '2000-12-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-12-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA published a tentative final monograph proposing to reclassify phenylpropanolamine as a nonmonograph (Category II) ingredient—not generally recognized as safe and effective—for over-the-counter use, formalizing the removal initiated by the 2000 advisory. This institutionally settled that PPA\'s stroke risk outweighed its benefit, completing the drug\'s exit from the U.S. market.',
+        source: {
+          externalId: 'src:fda-ppa-tentative-final-monograph-2005',
+          name: 'U.S. Food and Drug Administration. Phenylpropanolamine-Containing Drug Products for Over-the-Counter Human Use; Tentative Final Monograph. Federal Register. 22 December 2005.',
+          url: 'https://www.federalregister.gov/documents/2005/12/22/E5-7646/phenylpropanolamine-containing-drug-products-for-over-the-counter-human-use-tentative-final',
+          publishedAt: '2005-12-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHI calcium + vitamin D fracture prevention contested 2006 ───────────────
+  {
+    externalId: 'trajectory:whi-calcium-vitamin-d-fracture-prevention-contested-2006',
+    text: 'Routine daily calcium plus vitamin D supplementation prevents fractures in healthy postmenopausal women—a claim established by the Chapuy DECALYOS trial in 1992 and substantially narrowed when the Women\'s Health Initiative found no significant reduction in hip fractures (Jackson et al., 16 February 2006).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-12-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-12-03',
+        datePrecision: 'DAY',
+        reason: 'Chapuy et al. published the DECALYOS trial in the New England Journal of Medicine, reporting that vitamin D3 plus calcium reduced hip fractures by 43% and nonvertebral fractures by 32% in elderly women. The result established the widely adopted belief that calcium-plus-vitamin-D supplementation prevents fractures, underpinning decades of guideline recommendations for postmenopausal women.',
+        source: {
+          externalId: 'src:chapuy-decalyos-vitd-calcium-nejm-1992',
+          name: 'Chapuy MC, Arlot ME, Duboeuf F, et al. Vitamin D3 and calcium to prevent hip fractures in elderly women. N Engl J Med. 1992;327(23):1637-1642.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1331788/',
+          publishedAt: '1992-12-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-02-16',
+        datePrecision: 'DAY',
+        reason: 'The Women\'s Health Initiative randomized 36,282 generally healthy postmenopausal women to calcium carbonate plus vitamin D3 (400 IU) or placebo (Jackson et al., NEJM), finding only a small bone-density gain, no statistically significant reduction in hip fracture, and a 17% increase in kidney stones. The large null result contested the routine-supplementation paradigm built on Chapuy\'s frail-elderly population, narrowing the prevention claim and prompting guideline bodies to qualify their recommendations.',
+        source: {
+          externalId: 'src:jackson-whi-calcium-vitd-nejm-2006',
+          name: 'Jackson RD, LaCroix AZ, Gass M, et al. Calcium plus vitamin D supplementation and the risk of fractures. N Engl J Med. 2006;354(7):669-683.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16481635/',
+          publishedAt: '2006-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
