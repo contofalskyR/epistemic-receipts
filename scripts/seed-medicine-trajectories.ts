@@ -3969,6 +3969,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY & DIABETES ERA (pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── von Mering & Minkowski pancreatectomy → diabetes 1889 ──────────────────
+  {
+    externalId: 'trajectory:minkowski-von-mering-pancreatectomy-diabetes-1889',
+    text: 'Joseph von Mering and Oskar Minkowski reported in 1889–1890 (Archiv für experimentelle Pathologie und Pharmakologie) that total surgical removal of the pancreas in dogs produces severe, fatal diabetes with glycosuria, establishing that the pancreas governs carbohydrate metabolism and is the seat of the lesion in diabetes mellitus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1889-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After their 1889 experiments at Strassburg in which total pancreatectomy in dogs was followed within hours by glycosuria exceeding 10% and rapidly fatal diabetes, von Mering and Minkowski published their full report \'Diabetes mellitus nach Pankreasexstirpation\' in the Archiv für experimentelle Pathologie und Pharmakologie (1890;26:371–387), emphasizing that no other organ was damaged. This recorded in the expert literature the claim that the pancreas controls blood sugar and that its loss causes diabetes — the experimental foundation for the search for an internal pancreatic secretion.',
+        source: {
+          externalId: 'src:von-mering-minkowski-pankreasexstirpation-1890',
+          name: 'von Mering J, Minkowski O. Diabetes mellitus nach Pankreasexstirpation. Archiv für experimentelle Pathologie und Pharmakologie. 1890;26:371–387.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9581824/',
+          publishedAt: '1890-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The pancreatic origin of diabetes, hypothesized from the 1889–1890 pancreatectomy work, was confirmed when Banting, Best, Collip and Macleod isolated insulin from pancreatic tissue in 1921–1922 and reversed diabetes in dogs and humans, directly demonstrating the internal secretion whose loss von Mering and Minkowski\'s experiment had implied. This settled the pancreatic-secretion model of diabetes as established physiological fact, a status it has retained.',
+        source: {
+          externalId: 'src:minkowski-gley-cradle-antidiabetic-review-2022',
+          name: 'European research, the cradle of the discovery of the antidiabetic hormone: the pioneer roles and the relevance of Oskar Minkowski and Eugène Gley. (historical review). PMC9581824.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9581824/',
+          publishedAt: '2022-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Janbon & Loubatières sulfonamide hypoglycemia 1942 ─────────────────────
+  {
+    externalId: 'trajectory:janbon-loubatieres-sulfonamide-hypoglycemia-1942',
+    text: 'Marcel Janbon and Auguste Loubatières in 1942 at Montpellier reported that the sulfonamide 2254 RP (an antibacterial used for typhoid fever) causes severe, prolonged hypoglycemia that requires an intact pancreas and acts by stimulating insulin secretion, establishing that a synthetic oral drug could lower blood sugar through the pancreas — the discovery underlying the sulfonylurea class of oral antidiabetics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1942-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1942-06-13',
+        datePrecision: 'DAY',
+        reason: 'In March 1942 Janbon attributed several deaths among typhoid patients treated with the new sulfonamide 2254 RP (VK 57) to severe prolonged hypoglycemia, and asked the physiologist Loubatières to investigate. On 13 June 1942 Loubatières observed in conscious fasting dogs that repeated oral 2254 RP produced a progressive, marked, long-lasting fall in blood glucose, and went on to show the effect required an intact pancreas and reflected stimulated insulin secretion. This recorded in the expert literature the claim that a synthetic sulfonamide could lower blood sugar via the pancreatic beta cells.',
+        source: {
+          externalId: 'src:janbon-2254rp-hypoglycemia-montpellier-1942',
+          name: 'Janbon M, Chaptal J, Vedel A, Schaap J. Accidents hypoglycémiques graves par un sulfamidothiodiazol (le VK 57 ou 2254 RP). Montpellier Médical. 1942;441:21–22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34656290/',
+          publishedAt: '1942-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1942 observation became the basis of the sulfonylurea drug class: carbutamide and then tolbutamide were introduced in Germany in 1955–1956 as the first oral antidiabetic drugs marketed for type 2 diabetes, with Loubatières\' pancreatic-stimulation mechanism providing the rationale. Clinical adoption of oral sulfonylureas worldwide settled the claim that sulfonamide-derived compounds lower blood glucose through insulin secretion.',
+        source: {
+          externalId: 'src:lavabre-bertrand-hypoglycaemic-sulphonamides-therapie-2021',
+          name: 'Lavabre-Bertrand T, Faillie JL. The discovery of hypoglycaemic sulphonamides – Montpellier, 1942. Therapie. 2021;76(6):559–566.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34656290/',
+          publishedAt: '2021-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Synthalin — first synthetic oral antidiabetic 1926 (REVERSED) ──────────
+  {
+    externalId: 'trajectory:synthalin-guanidine-oral-antidiabetic-1926',
+    text: 'Ernst Frank and colleagues reported in 1926 that Synthalin (a decamethylene-diguanide), marketed by Schering AG, was an orally active synthetic drug with insulin-like glucose-lowering activity in diabetics — the first synthetic oral antidiabetic — a claim later reversed when the drug was withdrawn for hepatic and renal toxicity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on observations that guanidine derivatives lower blood glucose, Frank, Nothmann and Wagner — working in Oskar Minkowski\'s Breslau (Wroclaw) clinic — reported in 1926 that the synthetic guanidine compound Synthalin produced insulin-like hypoglycemic effects when given by mouth to normal and diabetic subjects. This recorded the claim that an orally active synthetic drug could substitute for injected insulin in managing diabetes.',
+        source: {
+          externalId: 'src:frank-nothmann-wagner-synthalin-klinwochenschr-1926',
+          name: 'Frank E, Nothmann M, Wagner A. Über synthetisch dargestellte Körper mit insulinartiger Wirkung auf den normalen und diabetischen Organismus. Klin Wochenschr. 1926;5:2100–2107.',
+          url: 'https://en.wikipedia.org/wiki/Synthalin',
+          publishedAt: '1926-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Schering AG of Berlin marketed Synthalin A across Europe as a commercial oral antidiabetic with insulin-like properties, and it entered clinical use for diabetics who could not or would not take injected insulin. Commercial sale and clinical adoption established Synthalin, at the market and bedside level, as an accepted oral treatment for diabetes.',
+        source: {
+          externalId: 'src:synthalin-marketing-schering-wikipedia',
+          name: 'Synthalin. (history of Schering AG marketing as the first synthetic oral antidiabetic). Wikipedia, with cited sources.',
+          url: 'https://en.wikipedia.org/wiki/Synthalin',
+          publishedAt: '1927-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Synthalin proved toxic to the liver and kidneys, with cases of fatal hepatic damage and acidosis, and — as purified injectable insulin became widely available — it was withdrawn from the market by the early 1940s. The reversal retired the first synthetic oral antidiabetic on safety grounds, leaving the field to insulin until the sulfonylureas and biguanides emerged after 1950.',
+        source: {
+          externalId: 'src:synthalin-withdrawal-toxicity-wikipedia',
+          name: 'Synthalin. (withdrawal from market in the early 1940s due to hepatic and renal toxicity). Wikipedia, with cited sources.',
+          url: 'https://en.wikipedia.org/wiki/Synthalin',
+          publishedAt: '1940-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hagedorn protamine insulin prolonged action 1936 ───────────────────────
+  {
+    externalId: 'trajectory:hagedorn-protamine-insulin-prolonged-action-1936',
+    text: 'Hans Christian Hagedorn and colleagues reported in JAMA on 18 January 1936 that adding protamine (from trout sperm) to insulin produces \'protamine insulinate,\' a suspension whose glucose-lowering action is markedly prolonged, establishing the first clinically useful long-/intermediate-acting insulin and the principle of engineered insulin delivery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-01-18',
+        datePrecision: 'DAY',
+        reason: 'Hagedorn, Jensen, Krarup and Wodstrup published \'Protamine insulinate\' in JAMA (1936;106:177–180), showing that combining insulin with protamine slowed its absorption and prolonged its hypoglycemic effect, after earlier attempts using gum arabic, oils, lecithin and vasoconstrictors had failed. This recorded the claim that insulin\'s duration of action could be deliberately extended by formulation, freeing diabetics from multiple daily injections.',
+        source: {
+          externalId: 'src:hagedorn-protamine-insulinate-jama-1936',
+          name: 'Hagedorn HC, Jensen BN, Krarup NB, Wodstrup I. Protamine insulinate. JAMA. 1936;106:177–180. (Landmark reprint: JAMA. 1984;251(3):389–392; PMID 6361301.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6361301/',
+          publishedAt: '1936-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1946-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Hagedorn\'s protamine principle was refined into a stable neutral isophane formulation — NPH (Neutral Protamine Hagedorn) insulin — developed by Nordisk in 1946, which became the standard intermediate-acting insulin used worldwide for decades. Widespread clinical adoption of protamine-based insulins settled the claim that formulation can engineer insulin\'s duration of action.',
+        source: {
+          externalId: 'src:nph-insulin-prolonged-effect-review',
+          name: 'Insulin Preparations with Prolonged Effect (review of protamine/NPH insulin development from Hagedorn 1936 to NPH 1946). Diabetes Technol Ther. 2011.',
+          url: 'https://www.liebertpub.com/doi/10.1089/dia.2011.0068',
+          publishedAt: '2011-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
