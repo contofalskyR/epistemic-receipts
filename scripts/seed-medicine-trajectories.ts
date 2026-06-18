@@ -16914,6 +16914,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE & NEUROMODULATION ERA (2019–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Omaveloxolone / Skyclarys — first treatment for Friedreich's ataxia 2023 ──
+  {
+    externalId: 'trajectory:omaveloxolone-skyclarys-friedreich-ataxia-approval-2023',
+    text: 'On 28 February 2023 the U.S. FDA approved omaveloxolone (Skyclarys, Reata Pharmaceuticals), an oral Nrf2 activator, for the treatment of Friedreich\'s ataxia in patients aged 16 and older — the first drug ever approved for this inherited mitochondrial neurodegenerative disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Lynch and colleagues published the MOXIe Part 2 trial in Annals of Neurology, the first randomized, double-blind, placebo-controlled study to show that omaveloxolone significantly improved neurological function on the modified Friedreich Ataxia Rating Scale versus placebo at 48 weeks. This recorded into the peer-reviewed literature the first credible claim of a disease-modifying pharmacologic effect in Friedreich\'s ataxia, a progressive disorder that until then had only supportive care.',
+        source: {
+          externalId: 'src:lynch-moxie-omaveloxolone-annneurol-2021',
+          name: 'Lynch DR, Chin MP, Delatycki MB, et al. Safety and Efficacy of Omaveloxolone in Friedreich Ataxia (MOXIe Study). Ann Neurol. 2021;89(2):212-225.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33068037/',
+          publishedAt: '2021-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-02-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved omaveloxolone (Skyclarys) as the first and only drug indicated for Friedreich\'s ataxia in patients 16 and older, on the basis of the MOXIe trial and a propensity-matched delayed-start analysis. The approval institutionally established that a previously untreatable, life-shortening neurodegenerative disease caused by frataxin deficiency had an effective pharmacologic treatment, converting decades of supportive-only management into a regulatory standard of care.',
+        source: {
+          externalId: 'src:mda-skyclarys-fda-approval-2023',
+          name: 'Muscular Dystrophy Association. MDA Celebrates FDA Approval of Skyclarys, First Ever Treatment for Friedreich\'s Ataxia from Reata Pharmaceuticals. 28 February 2023.',
+          url: 'https://www.mda.org/press-releases/mda-celebrates-fda-approval-of-skyclarys-first-ever-treatment-for-friedreichs-ataxia-from-reata-pharmaceuticals',
+          publishedAt: '2023-02-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Stanford Neuromodulation Therapy (SNT/SAINT) accelerated TMS depression 2022 ──
+  {
+    externalId: 'trajectory:saint-snt-accelerated-tms-depression-2022',
+    text: 'Stanford Neuromodulation Therapy (SNT, formerly SAINT) — an accelerated, high-dose, fMRI-guided intermittent theta-burst transcranial magnetic stimulation protocol delivered over five days — is an effective rapid treatment for treatment-resistant major depression, as shown in a double-blind randomized sham-controlled trial published in the American Journal of Psychiatry on 29 October 2021 and cleared by the U.S. FDA in September 2022.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-10-29',
+        datePrecision: 'DAY',
+        reason: 'Cole and colleagues published the SNT (formerly SAINT) double-blind, randomized, sham-controlled trial in the American Journal of Psychiatry, reporting that the accelerated 5-day, functional-connectivity-targeted intermittent theta-burst protocol produced remission in roughly 79% of treatment-resistant depression patients versus about 13% with sham. This recorded the claim that a compressed, individualized iTBS course could rapidly remit severe depression, far faster than the conventional six-week daily rTMS schedule.',
+        source: {
+          externalId: 'src:cole-snt-saint-rct-ajp-2022',
+          name: 'Cole EJ, Phillips AL, Bentzley BS, et al. Stanford Neuromodulation Therapy (SNT): A Double-Blind Randomized Controlled Trial. Am J Psychiatry. 2022;179(2):132-141.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34711062/',
+          publishedAt: '2021-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-09-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted 510(k) clearance to Magnus Medical to commercialize the SAINT/SNT protocol for treatment-resistant major depression, the first rapid-acting, fMRI-guided accelerated TMS system cleared in the United States. The clearance institutionally ratified the compressed, imaging-targeted iTBS approach as a marketable therapeutic device, moving it from an investigational trial protocol to an authorized clinical treatment.',
+        source: {
+          externalId: 'src:bbrf-fda-clears-saint-tms-2022',
+          name: 'Brain & Behavior Research Foundation. FDA Clears SAINT Rapid-Acting Brain Stimulation Approach for Those Suffering From Resistant Major Depression. September 2022.',
+          url: 'https://bbrfoundation.org/content/fda-clears-saint-rapid-acting-brain-stimulation-approach-those-suffering-resistant-major',
+          publishedAt: '2022-09-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Simufilam / Cassava Sciences — Alzheimer's efficacy claim reversed 2024 ──
+  {
+    externalId: 'trajectory:simufilam-cassava-alzheimers-efficacy-reversal-2024',
+    text: 'Cassava Sciences\' simufilam, a small molecule the company claimed stabilizes an altered form of the scaffolding protein filamin A, improves cognition in patients with mild-to-moderate Alzheimer\'s disease — a claim promoted from 2020–2021 that the U.S. SEC charged as misleading on 26 September 2024 and that collapsed when the Phase 3 ReThink-ALZ trial failed every endpoint on 25 November 2024.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-07-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2021-07-01',
+        datePrecision: 'YEAR',
+        reason: 'Through 2020 and 2021 Cassava Sciences publicly reported that simufilam, said to revert an altered conformation of filamin A, improved cognition in mild-to-moderate Alzheimer\'s disease. The claims drove a steep rise in the company\'s market value and were advanced as justification for moving the drug into two confirmatory Phase 3 trials, recording the efficacy claim into the investor-facing and clinical record despite early skepticism.',
+        source: {
+          externalId: 'src:alzforum-simufilam-therapeutic-timeline',
+          name: 'ALZFORUM. Therapeutics: Simufilam (PTI-125) — development timeline and trial record.',
+          url: 'https://www.alzforum.org/therapeutics/simufilam',
+          publishedAt: '2021-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-09-26',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Securities and Exchange Commission charged Cassava Sciences and two former executives with misleading investors about the company\'s 2020 Phase 2b simufilam trial, alleging it announced significant cognitive improvement that the full patient data did not support and concealed a key consultant\'s role; Cassava agreed to a $40 million penalty. The federal securities regulator\'s enforcement action placed the simufilam efficacy claims into formal, official dispute.',
+        source: {
+          externalId: 'src:sec-cassava-simufilam-charges-2024',
+          name: 'U.S. Securities and Exchange Commission. SEC Charges Cassava Sciences, Two Former Executives for Misleading Claims About Alzheimer\'s Clinical Trial. Press release 2024-151. 26 September 2024.',
+          url: 'https://www.sec.gov/newsroom/press-releases/2024-151',
+          publishedAt: '2024-09-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-11-25',
+        datePrecision: 'DAY',
+        reason: 'Cassava announced that its Phase 3 ReThink-ALZ trial — the first of two confirmatory studies — showed simufilam did not change any co-primary, secondary, or exploratory endpoint versus placebo over 52 weeks. The company halted the parallel ReFocus-ALZ trial and, after that study also failed (reported 25 March 2025), discontinued the Alzheimer\'s program. The rigorous controlled trials empirically refuted the cognition-improvement claim, reversing it.',
+        source: {
+          externalId: 'src:cassava-refocus-rethink-phase3-failure-2024',
+          name: 'Cassava Sciences, Inc. Cassava Sciences Topline Phase 3 Data Did Not Meet Co-Primary Endpoints. GlobeNewswire. 25 November 2024.',
+          url: 'https://www.globenewswire.com/news-release/2024/11/25/2986578/8339/en/Cassava-Sciences-Topline-Phase-3-Data-Did-Not-Meet-Co-Primary-Endpoints.html',
+          publishedAt: '2024-11-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Inebilizumab / Uplizna — first anti-CD19 therapy for NMOSD 2020 ──────────
+  {
+    externalId: 'trajectory:inebilizumab-uplizna-nmosd-approval-2020',
+    text: 'On 11 June 2020 the U.S. FDA approved inebilizumab (Uplizna, Viela Bio), a humanized anti-CD19 B-cell-depleting monoclonal antibody, for anti-aquaporin-4-antibody-positive neuromyelitis optica spectrum disorder (NMOSD), establishing the first anti-CD19 therapy for the disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-09-05',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-09-05',
+        datePrecision: 'MONTH',
+        reason: 'Cree and colleagues published the phase 2/3 N-MOmentum randomized, double-blind, placebo-controlled trial in The Lancet, reporting that inebilizumab sharply reduced NMOSD attack risk, with about 89% of anti-AQP4-antibody-positive patients relapse-free versus 58% on placebo, leading the trial to be stopped early for efficacy. This recorded into the literature the claim that targeted depletion of CD19+ B cells could prevent the severe, often blinding and paralyzing relapses of NMOSD.',
+        source: {
+          externalId: 'src:cree-nmomentum-inebilizumab-lancet-2019',
+          name: 'Cree BAC, Bennett JL, Kim HJ, et al. Inebilizumab for the treatment of neuromyelitis optica spectrum disorder (N-MOmentum): a double-blind, randomised placebo-controlled phase 2/3 trial. Lancet. 2019;394(10206):1352-1363.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31495497/',
+          publishedAt: '2019-09-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-06-11',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved inebilizumab (Uplizna) for adults with anti-AQP4-antibody-positive NMOSD, the first anti-CD19 B-cell-depleting therapy for the disorder. The approval institutionally established a distinct disease-modifying mechanism for a rare autoimmune CNS disease that before 2019 had no FDA-approved treatment and had historically been misclassified as a severe variant of multiple sclerosis until the aquaporin-4 antibody defined it as a separate entity.',
+        source: {
+          externalId: 'src:viela-uplizna-fda-approval-2020',
+          name: 'Viela Bio. Viela Bio Announces U.S. FDA Approval of UPLIZNA (inebilizumab-cdon) for the Treatment of Neuromyelitis Optica Spectrum Disorder (NMOSD). GlobeNewswire. 11 June 2020.',
+          url: 'https://www.globenewswire.com/news-release/2020/06/11/2047190/0/en/viela-bio-announces-u-s-fda-approval-of-uplizna-inebilizumab-cdon-for-the-treatment-of-neuromyelitis-optica-spectrum-disorder-nmosd.html',
+          publishedAt: '2020-06-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
