@@ -55483,6 +55483,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI/WWII & INTERWAR (1900–1950) — supplemental
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Nazi book burnings (10 May 1933) ────────────────────────────────────────
+  {
+    externalId: 'trajectory:nazi-book-burnings-1933',
+    text: 'On 10 May 1933, pro-Nazi student groups staged coordinated public book burnings in more than 20 German university towns, destroying tens of thousands of "un-German" works in a state-endorsed assault on recorded knowledge.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1933-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1933-05-10',
+        datePrecision: 'DAY',
+        reason: 'The Deutsche Studentenschaft\'s "Campaign against the Un-German Spirit" culminates on the night of 10 May 1933 in simultaneous bonfires across more than 20 university cities. At Berlin\'s Opernplatz, students burn roughly 20,000 volumes by Jewish, pacifist, communist, and dissenting authors while Propaganda Minister Joseph Goebbels addresses the crowd. The events are staged for the press, photographed, filmed, and broadcast — recorded openly as state-sanctioned acts.',
+        source: {
+          externalId: 'src:ushmm-book-burning',
+          name: 'United States Holocaust Memorial Museum — "Book Burning" (Holocaust Encyclopedia).',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/book-burning',
+          publishedAt: '1933-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Contemporaneous newsreel footage, press photographs from the Opernplatz, the published "blacklists" (Schwarze Listen) of banned authors compiled by librarian Wolfgang Herrmann, and the texts of Goebbels\'s speech survive in archives. The event\'s date, scope, and organizers are documented beyond dispute and form a fixed reference point in Holocaust and intellectual history.',
+        source: {
+          externalId: 'src:ushmm-book-burning-record',
+          name: 'United States Holocaust Memorial Museum — "Book Burning," documentary record (newsreels, blacklists, Goebbels speech).',
+          url: 'https://encyclopedia.ushmm.org/content/en/article/book-burning',
+          publishedAt: '1945-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Streptomycin — first antibiotic against tuberculosis (1943–44) ──────────
+  {
+    externalId: 'trajectory:streptomycin-discovery-1943',
+    text: 'Streptomycin, the first antibiotic effective against tuberculosis, was isolated in the autumn of 1943 by Albert Schatz in Selman Waksman\'s laboratory at Rutgers University and reported in January 1944.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Working in Waksman\'s soil-microbiology lab at Rutgers, graduate student Albert Schatz isolates the actinomycete Streptomyces griseus and the antibiotic it produces in the autumn of 1943. The discovery is published as Schatz, Bugie & Waksman, "Streptomycin, a substance exhibiting antibiotic activity against gram-positive and gram-negative bacteria," in the Proceedings of the Society for Experimental Biology and Medicine in January 1944.',
+        source: {
+          externalId: 'src:rutgers-waksman-streptomycin',
+          name: 'Rutgers School of Environmental and Biological Sciences — "Streptomycin & the Legacy of Dr. Selman Waksman" (Waksman Museum).',
+          url: 'https://sebs.rutgers.edu/waksman-museum/streptomycin',
+          publishedAt: '1944-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Streptomycin\'s activity against Mycobacterium tuberculosis is confirmed in 1944 and validated by the 1948 British Medical Research Council randomized controlled trial — one of the first modern clinical trials. Selman Waksman is awarded the 1952 Nobel Prize in Physiology or Medicine for the discovery, settling streptomycin\'s status as the first effective anti-tuberculosis agent.',
+        source: {
+          externalId: 'src:nobel-waksman-1952',
+          name: 'The Nobel Prize in Physiology or Medicine 1952 — Selman A. Waksman, "for his discovery of streptomycin, the first antibiotic effective against tuberculosis."',
+          url: 'https://www.nobelprize.org/prizes/medicine/1952/summary/',
+          publishedAt: '1952-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fermi discovers slow (thermal) neutrons (October 1934) ──────────────────
+  {
+    externalId: 'trajectory:fermi-slow-neutrons-1934',
+    text: 'In October 1934, Enrico Fermi\'s Rome group discovered that passing neutrons through hydrogen-rich materials such as paraffin or water dramatically increases the induced radioactivity they produce — the effect of slow (thermal) neutrons.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1934-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-10-22',
+        datePrecision: 'DAY',
+        reason: 'On 22 October 1934, while studying neutron-induced radioactivity in silver, Fermi and his collaborators (Amaldi, D\'Agostino, Pontecorvo, Rasetti, Segrè) find that interposing paraffin between the neutron source and the target greatly enhances the activation. Fermi correctly reasons that collisions with hydrogen nuclei slow the neutrons, increasing their capture probability. The group submits a note to La Ricerca Scientifica within days.',
+        source: {
+          externalId: 'src:fermi-slow-neutrons-ricerca-1934',
+          name: 'Fermi E. et al. "Azione di sostanze idrogenate sulla radioattività provocata da neutroni." La Ricerca Scientifica (1934).',
+          url: 'https://en.wikipedia.org/wiki/Neutron_temperature',
+          publishedAt: '1934-10-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-12-10',
+        datePrecision: 'DAY',
+        reason: 'The slow-neutron effect is rapidly reproduced and becomes foundational to neutron physics, underpinning later nuclear fission and reactor design. Fermi is awarded the 1938 Nobel Prize in Physics, citing his demonstrations of "new radioactive elements produced by neutron irradiation, and ... the selective power of slow neutrons."',
+        source: {
+          externalId: 'src:nobel-fermi-1938',
+          name: 'The Nobel Prize in Physics 1938 — Enrico Fermi (slow-neutron nuclear reactions).',
+          url: 'https://www.nobelprize.org/prizes/physics/1938/summary/',
+          publishedAt: '1938-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ENIAC unveiled — first general-purpose electronic computer (1946) ───────
+  {
+    externalId: 'trajectory:eniac-unveiled-1946',
+    text: 'ENIAC, the first programmable, general-purpose electronic digital computer, was publicly unveiled at the University of Pennsylvania on 15 February 1946.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1946-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1946-02-15',
+        datePrecision: 'DAY',
+        reason: 'Built in secret during the war for Army ballistics calculations by J. Presper Eckert and John Mauchly at Penn\'s Moore School of Electrical Engineering, ENIAC is announced to the press on the evening of 14 February 1946 and formally dedicated the following day, 15 February 1946. Demonstrations show the 30-ton, ~18,000-vacuum-tube machine computing roughly a thousand times faster than electromechanical predecessors. The unveiling is covered in the national press.',
+        source: {
+          externalId: 'src:eniac-britannica',
+          name: 'Encyclopædia Britannica — "ENIAC" (announced Feb 1946, University of Pennsylvania).',
+          url: 'https://en.wikipedia.org/wiki/ENIAC',
+          publishedAt: '1946-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'ENIAC\'s status as the first general-purpose, Turing-complete electronic digital computer is documented in the surviving machine (parts preserved at the Smithsonian and Penn), the published engineering reports, and decades of computing-history scholarship. Penn marked ENIAC\'s 50th anniversary in 1996 by re-creating it on a single chip, reaffirming the settled record of its 1946 unveiling.',
+        source: {
+          externalId: 'src:eniac-on-a-chip-1996',
+          name: 'University of Pennsylvania — "ENIAC-on-a-Chip" 50th anniversary project (1996).',
+          url: 'https://www.seas.upenn.edu/about/history-heritage/eniac/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Alpher–Bethe–Gamow paper — Big Bang nucleosynthesis (1 April 1948) ──────
+  {
+    externalId: 'trajectory:alpher-bethe-gamow-1948',
+    text: 'The Alpher–Bethe–Gamow paper, "The Origin of Chemical Elements," published in Physical Review on 1 April 1948, was the first quantitative theory deriving the cosmic abundances of light elements from nucleosynthesis in a hot early universe.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1948-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-04-01',
+        datePrecision: 'DAY',
+        reason: 'Ralph Alpher and George Gamow propose that the light elements were built up by successive neutron captures in the hot, dense early universe. Gamow adds Hans Bethe\'s name to the author list as a pun on the first three Greek letters. The paper appears in Physical Review vol. 73, p. 803, on 1 April 1948, establishing the framework of Big Bang nucleosynthesis.',
+        source: {
+          externalId: 'src:alpher-bethe-gamow-prd-1948',
+          name: 'Alpher RA, Bethe H, Gamow G. "The Origin of Chemical Elements." Physical Review 73, 803 (1 April 1948).',
+          url: 'https://en.wikipedia.org/wiki/Alpher%E2%80%93Bethe%E2%80%93Gamow_paper',
+          publishedAt: '1948-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The theory correctly predicts the relative abundances of hydrogen and helium but stalls at the mass-5 and mass-8 gaps, where no stable nucleus exists, so it cannot account for elements heavier than helium. Through the 1950s, stellar nucleosynthesis (Hoyle; Burbidge, Burbidge, Fowler & Hoyle 1957) is shown to produce the heavy elements, contesting the paper\'s original scope.',
+        source: {
+          externalId: 'src:b2fh-1957',
+          name: 'Burbidge EM, Burbidge GR, Fowler WA, Hoyle F. "Synthesis of the Elements in Stars." Reviews of Modern Physics 29, 547 (1957).',
+          url: 'https://en.wikipedia.org/wiki/B2FH_paper',
+          publishedAt: '1957-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The 1964–65 discovery of the cosmic microwave background by Penzias and Wilson confirms the hot-early-universe premise of the Alpher–Gamow model, and measured primordial hydrogen, deuterium, helium, and lithium abundances match Big Bang nucleosynthesis predictions. The paper\'s core claim — that the light elements are relics of the early universe — becomes settled cosmology, with heavy elements correctly assigned to stars.',
+        source: {
+          externalId: 'src:penzias-wilson-cmb-1965',
+          name: 'Penzias AA, Wilson RW. "A Measurement of Excess Antenna Temperature at 4080 Mc/s." Astrophysical Journal 142, 419 (1965).',
+          url: 'https://en.wikipedia.org/wiki/Big_Bang_nucleosynthesis',
+          publishedAt: '1965-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
