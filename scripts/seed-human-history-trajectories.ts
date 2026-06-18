@@ -66323,6 +66323,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY MODERN (1400–1750) — Western Europe & the Mediterranean (verified run)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Establishment of the Spanish Inquisition ────────────────────────────────
+  {
+    externalId: 'trajectory:spanish-inquisition-established-1478',
+    text: 'Pope Sixtus IV issued the bull Exigit sincerae devotionis affectus on 1 November 1478, authorising the Catholic Monarchs of Castile and Aragon to appoint inquisitors and establishing the Spanish Inquisition.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1478-11-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1478-11-01',
+        datePrecision: 'DAY',
+        reason: 'At the petition of Ferdinand and Isabella, Sixtus IV grants the bull Exigit sincerae devotionis affectus, empowering the Castilian crown to name two or three priests as inquisitors to investigate baptised conversos suspected of secretly practising Judaism. The bull is the founding charter of a crown-controlled inquisition distinct from the existing papal one; its text survives in the papal registers.',
+        source: {
+          externalId: 'src:exigit-sincerae-devotionis-1478',
+          name: 'Pope Sixtus IV. Bull Exigit sincerae devotionis affectus authorising the Spanish Inquisition, 1 November 1478.',
+          url: 'https://en.wikipedia.org/wiki/Spanish_Inquisition',
+          publishedAt: '1478-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The first inquisitors were appointed in 1480 and the tribunal operated until its abolition in 1834; its archives, the surviving bull text, and modern scholarship (notably Henry Kamen\'s revisionist history) establish the date and fact of the institution\'s creation. Debate concerns the scale and motives of the Inquisition, not whether the 1478 bull established it.',
+        source: {
+          externalId: 'src:kamen-spanish-inquisition-1998',
+          name: 'Kamen H. The Spanish Inquisition: A Historical Revision. Yale University Press, 1998.',
+          url: 'https://www.britannica.com/topic/Spanish-Inquisition',
+          publishedAt: '1998-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pedro Álvares Cabral reaches Brazil ─────────────────────────────────────
+  {
+    externalId: 'trajectory:cabral-reaches-brazil-1500',
+    text: 'Pedro Álvares Cabral\'s Portuguese fleet sighted and anchored off the coast of Brazil on 22 April 1500, the first documented European landfall on the future Brazilian coast.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1500-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1500-04-22',
+        datePrecision: 'DAY',
+        reason: 'En route to India, Cabral\'s fleet bears west across the Atlantic and on the afternoon of Wednesday 22 April 1500 anchors near a hill Cabral names Monte Pascoal. The fleet\'s scribe, Pêro Vaz de Caminha, records the landfall and the first encounter with the Indigenous inhabitants in a letter to King Manuel I, the earliest written document of Brazilian history; the original is preserved in the Arquivo Nacional da Torre do Tombo in Lisbon.',
+        source: {
+          externalId: 'src:caminha-letter-1500',
+          name: 'Pêro Vaz de Caminha. Carta a el-rei D. Manuel I sobre o achamento do Brasil, 1 May 1500 (Arquivo Nacional da Torre do Tombo, Lisbon).',
+          url: 'https://en.wikipedia.org/wiki/Carta_de_Pero_Vaz_de_Caminha',
+          publishedAt: '1500-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1500-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Caminha\'s eyewitness letter is corroborated by other voyage accounts and by King Manuel I\'s own letter of July 1500 announcing the discovery to Ferdinand and Isabella. The date 22 April 1500 is fixed in Portuguese and Brazilian historiography; Cabral\'s claim of the territory for Portugal anchored the Tordesillas line in South America and is uncontested as a dated event.',
+        source: {
+          externalId: 'src:cabral-voyage-britannica',
+          name: 'Pedro Álvares Cabral — voyage of 1500 and the landfall on the Brazilian coast. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/biography/Pedro-Alvares-Cabral',
+          publishedAt: '1500-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Founding of the Royal Society ───────────────────────────────────────────
+  {
+    externalId: 'trajectory:royal-society-founded-1660',
+    text: 'The Royal Society of London was founded on 28 November 1660, when twelve men meeting after a lecture by Christopher Wren at Gresham College resolved to establish a college for the promotion of experimental natural philosophy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1660-11-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1660-11-28',
+        datePrecision: 'DAY',
+        reason: 'Following Christopher Wren\'s astronomy lecture at Gresham College, a group of twelve — including Robert Boyle, John Wilkins, and Christopher Wren — resolve to found "a Colledge for the Promoting of Physico-Mathematicall Experimentall Learning." The resolution and the names of those present are entered in the Society\'s first journal book, the founding record of the institution.',
+        source: {
+          externalId: 'src:royal-society-founding-1660',
+          name: 'Royal Society — founding meeting of 28 November 1660 (Society history and original journal book).',
+          url: 'https://royalsociety.org/about-us/history/',
+          publishedAt: '1660-11-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1662-07-15',
+        datePrecision: 'DAY',
+        reason: 'King Charles II grants the Society its first royal charter on 15 July 1662, giving it legal incorporation as "The Royal Society"; a second, fuller charter follows in 1663 with the motto Nullius in verba. The chartered institution has operated continuously since, and its founding date and circumstances are settled fact documented in its own preserved records.',
+        source: {
+          externalId: 'src:royal-society-charter-1662',
+          name: 'First Royal Charter granted to the Royal Society by Charles II, 15 July 1662.',
+          url: 'https://en.wikipedia.org/wiki/Royal_Society',
+          publishedAt: '1662-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Peace of Utrecht ────────────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:peace-of-utrecht-1713',
+    text: 'The principal treaties of the Peace of Utrecht were signed on 11 April 1713, ending most of the War of the Spanish Succession: Philip V kept the Spanish throne while renouncing the French succession, and Spain ceded Gibraltar and Menorca to Great Britain.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1713-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1713-04-11',
+        datePrecision: 'DAY',
+        reason: 'A series of separate peace treaties between France and, respectively, Great Britain, the Dutch Republic, Savoy, Prussia, and Portugal are signed at Utrecht on 11 April 1713. They confirm Louis XIV\'s grandson Philip V as king of Spain on condition he renounce any claim to the French crown, and transfer Gibraltar and Menorca to Britain along with the Asiento slave-trade contract. The signed treaty texts survive in the contracting states\' archives.',
+        source: {
+          externalId: 'src:peace-of-utrecht-treaties-1713',
+          name: 'Treaties of Utrecht signed 11 April 1713 (official treaty texts ending the War of the Spanish Succession).',
+          url: 'https://en.wikipedia.org/wiki/Peace_of_Utrecht',
+          publishedAt: '1713-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Utrecht settlement, completed by the treaties of Rastatt and Baden in 1714, reshaped the European state system around the principle of the balance of power. Its date, signatories, and core terms — Bourbon Spain separated from France, Gibraltar British — are established institutional facts; historiographical debate concerns its significance, not its occurrence.',
+        source: {
+          externalId: 'src:utrecht-britannica',
+          name: 'Peace of Utrecht (1713–14) — terms and settlement of the War of the Spanish Succession. Encyclopædia Britannica.',
+          url: 'https://www.britannica.com/event/Peace-of-Utrecht',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────

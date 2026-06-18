@@ -10138,6 +10138,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG SAFETY & SCREENING ERA (1971–2004)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── DES transplacental carcinogenesis — Herbst 1971 ─────────────────────────
+  {
+    externalId: 'trajectory:des-clear-cell-adenocarcinoma-daughters-1971',
+    text: 'Herbst, Ulfelder, and Poskanzer reported in the New England Journal of Medicine on 22 April 1971 that in-utero exposure to diethylstilbestrol (DES) taken by pregnant women caused clear-cell adenocarcinoma of the vagina in their adolescent and young-adult daughters — the first demonstrated instance of transplacental chemical carcinogenesis in humans.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-04-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-04-22',
+        datePrecision: 'DAY',
+        reason: 'Herbst and colleagues conducted a matched case-control study of eight young women aged 15–22 with clear-cell adenocarcinoma of the vagina at one Boston hospital and found that seven of the eight mothers had taken stilbestrol (DES) during the relevant pregnancy versus none of the matched controls. This established prenatal DES as a transplacental carcinogen, overturning the assumption that the placenta protected the fetus from a maternal drug\'s cancer risk.',
+        source: {
+          externalId: 'src:herbst-nejm-des-vaginal-adenocarcinoma-1971',
+          name: 'Herbst AL, Ulfelder H, Poskanzer DC. Adenocarcinoma of the vagina: association of maternal stilbestrol therapy with tumor appearance in young women. N Engl J Med. 1971 Apr 22;284(15):878-881.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5549830/',
+          publishedAt: '1971-04-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1971-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Within months of the Herbst report, the U.S. FDA issued a Drug Bulletin in November 1971 declaring diethylstilbestrol contraindicated in pregnancy. The regulator\'s adoption of the literature finding converted an emerging case-control signal into settled institutional policy and effectively ended obstetric use of DES in the United States.',
+        source: {
+          externalId: 'src:fda-drug-bulletin-des-contraindicated-pregnancy-1971',
+          name: 'U.S. Food and Drug Administration. Diethylstilbestrol Contraindicated in Pregnancy. FDA Drug Bulletin, November 1971 (reprinted in PMC).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1518220/',
+          publishedAt: '1971-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nurses' Health Study estrogen cardioprotection — Stampfer 1991 ──────────
+  {
+    externalId: 'trajectory:nurses-health-study-estrogen-cardioprotection-1991',
+    text: 'Stampfer and colleagues reported in the New England Journal of Medicine on 12 September 1991, from ten-year follow-up of the Nurses\' Health Study cohort, that current postmenopausal estrogen use was associated with roughly a 44% reduction in coronary heart disease, establishing the observational claim that hormone therapy protects women\'s hearts.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-09-12',
+        datePrecision: 'DAY',
+        reason: 'The Nurses\' Health Study prospective cohort (48,470 postmenopausal women) reported a relative risk of 0.56 for major coronary disease and reduced cardiovascular mortality among current estrogen users. This was the most influential observational evidence for the cardioprotective hypothesis and shaped a generation of preventive prescribing.',
+        source: {
+          externalId: 'src:stampfer-nejm-nhs-estrogen-cvd-1991',
+          name: 'Stampfer MJ, Colditz GA, Willett WC, Manson JE, Rosner B, Speizer FE, Hennekens CH. Postmenopausal estrogen therapy and cardiovascular disease: ten-year follow-up from the Nurses\' Health Study. N Engl J Med. 1991 Sep 12;325(11):756-762.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1870648/',
+          publishedAt: '1991-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-12-15',
+        datePrecision: 'MONTH',
+        reason: 'The American College of Physicians published clinical guidelines recommending that postmenopausal women consider preventive hormone therapy, citing the pooled observational coronary benefit. A major professional society endorsing HRT for chronic-disease prevention moved the cardioprotection claim from literature finding to settled standard of care.',
+        source: {
+          externalId: 'src:acp-guidelines-preventive-hormone-therapy-1992',
+          name: 'American College of Physicians. Guidelines for counseling postmenopausal women about preventive hormone therapy. Ann Intern Med. 1992 Dec 15;117(12):1038-1041.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1443972/',
+          publishedAt: '1992-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-17',
+        datePrecision: 'DAY',
+        reason: 'The Women\'s Health Initiative randomized controlled trial found that combined estrogen-plus-progestin therapy increased rather than reduced coronary heart disease, stroke, and breast cancer, halting the trial early. The RCT directly contradicted the Nurses\' Health Study observational claim and is the canonical example of confounding-by-healthy-user bias overturning a cohort-based consensus.',
+        source: {
+          externalId: 'src:whi-jama-estrogen-progestin-2002',
+          name: 'Writing Group for the Women\'s Health Initiative Investigators (Rossouw JE, et al). Risks and benefits of estrogen plus progestin in healthy postmenopausal women: principal results from the Women\'s Health Initiative randomized controlled trial. JAMA. 2002 Jul 17;288(3):321-333.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12117397/',
+          publishedAt: '2002-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fen-phen valvulopathy and withdrawal — 1996–1997 ────────────────────────
+  {
+    externalId: 'trajectory:fenfluramine-dexfenfluramine-valvulopathy-withdrawal-1997',
+    text: 'Dexfenfluramine (Redux), approved by the U.S. FDA on 29 April 1996, and fenfluramine (Pondimin) were marketed as safe appetite suppressants until Connolly and colleagues reported fen-phen-associated valvular heart disease and the FDA requested both drugs\' withdrawal on 15 September 1997.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-04-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved dexfenfluramine (Redux) — the first new anti-obesity drug in over two decades — as a safe and effective appetite suppressant, and it was widely co-prescribed with phentermine as \'fen-phen\', filling about 1.2 million prescriptions within five months. Regulatory approval and mass prescribing made the safety claim settled.',
+        source: {
+          externalId: 'src:upi-fda-approves-redux-1996',
+          name: 'United Press International. FDA approves new anti-fat drug (dexfenfluramine/Redux). UPI Archives. 29 April 1996.',
+          url: 'https://www.upi.com/Archives/1996/04/29/FDA-approves-new-anti-fat-drug/7225830750400/',
+          publishedAt: '1996-04-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: 'Connolly and Mayo Clinic colleagues reported 24 women who developed unusual valvular heart disease after fenfluramine-phentermine therapy, with histopathology identical to carcinoid or ergotamine-induced valve disease. The case series transformed the approved appetite suppressants into a contested safety signal and prompted an FDA public health advisory.',
+        source: {
+          externalId: 'src:connolly-nejm-fenphen-valvulopathy-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, Hensrud DD, Edwards BS, Edwards WD, Schaff HV. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997 Aug 28;337(9):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: 'On 15 September 1997 the FDA requested that Wyeth-Ayerst and Interneuron voluntarily withdraw fenfluramine (Pondimin) and dexfenfluramine (Redux) from the U.S. market, citing the high incidence of cardiac valvular abnormalities. The withdrawal reversed the drugs\' approved-safe status barely 17 months after Redux\'s approval and became a landmark post-market surveillance failure.',
+        source: {
+          externalId: 'src:fda-fenfluramine-dexfenfluramine-withdrawal-1997',
+          name: 'U.S. FDA. FDA Announces Withdrawal of Fenfluramine and Dexfenfluramine (Fen-Phen). 15 September 1997 (documented and cited in Wikipedia, Dexfenfluramine).',
+          url: 'https://en.wikipedia.org/wiki/Dexfenfluramine',
+          publishedAt: '1997-09-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── FDA antidepressant pediatric suicidality black-box warning — 2004 ───────
+  {
+    externalId: 'trajectory:fda-antidepressant-pediatric-suicidality-black-box-2004',
+    text: 'On 15 October 2004 the U.S. FDA ordered manufacturers to add a boxed (\'black box\') warning to all antidepressant medications, stating that the drugs were associated with an increased risk of suicidal thinking and behavior in children and adolescents.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2004-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-09-14',
+        datePrecision: 'DAY',
+        reason: 'An FDA-commissioned pooled analysis of 24 short-term placebo-controlled pediatric trials (over 4,400 patients) found suicidality in about 4% of those on antidepressants versus 2% on placebo. A joint meeting of the Psychopharmacologic Drugs and Pediatric Advisory Committees on 13–14 September 2004 voted to recommend a boxed warning, recording the causal-link concern at expert level.',
+        source: {
+          externalId: 'src:leslie-pediatrics-fda-antidepressant-deliberations-2005',
+          name: 'Leslie LK, Newman TB, Chesney PJ, Perrin JM. The Food and Drug Administration\'s deliberations on antidepressant use in pediatric patients. Pediatrics. 2005 Jul;116(1):195-204.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1550709/',
+          publishedAt: '2005-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-15',
+        datePrecision: 'DAY',
+        reason: 'On 15 October 2004 the FDA ordered pharmaceutical companies to add a boxed warning — its strongest measure short of removing a drug — to all antidepressant labeling and patient information, plus a MedGuide for every prescription. This converted the advisory committee\'s recommendation into binding regulatory policy and durably reframed pediatric antidepressant prescribing.',
+        source: {
+          externalId: 'src:leslie-pediatrics-fda-blackbox-order-2004',
+          name: 'Leslie LK, Newman TB, Chesney PJ, Perrin JM. The Food and Drug Administration\'s deliberations on antidepressant use in pediatric patients. Pediatrics. 2005 Jul;116(1):195-204 (documenting the 15 October 2004 FDA black-box order).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1550709/',
+          publishedAt: '2005-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cochrane mammography screening contested — Gøtzsche 2000 ────────────────
+  {
+    externalId: 'trajectory:cochrane-mammography-screening-unjustified-2000',
+    text: 'Gøtzsche and Olsen reported in The Lancet on 8 January 2000 that a systematic review of the randomized trials of screening mammography found no reliable evidence that it reduces breast-cancer or overall mortality, concluding that breast-cancer screening with mammography is unjustified.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-01-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-08',
+        datePrecision: 'DAY',
+        reason: 'Gøtzsche and Olsen of the Nordic Cochrane Centre re-analyzed the eight randomized mammography-screening trials, judged six methodologically flawed by baseline imbalance, and found that the two adequately randomized trials showed no significant mortality reduction. Publicly declaring routine screening \'unjustified\' moved a benefit long treated as settled into open scientific contestation and triggered a sustained international debate.',
+        source: {
+          externalId: 'src:gotzsche-olsen-lancet-mammography-2000',
+          name: 'Gøtzsche PC, Olsen O. Is screening for breast cancer with mammography justifiable? Lancet. 2000 Jan 8;355(9198):129-134.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10675181/',
+          publishedAt: '2000-01-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
