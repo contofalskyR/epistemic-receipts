@@ -3188,6 +3188,132 @@ const TRAJECTORIES: Trajectory[] = [
   // WORLD WAR ERA (1914–1945)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Hiram Bingham reaches Machu Picchu ──────────────────────────────────────
+  {
+    externalId: 'trajectory:bingham-machu-picchu-1911',
+    text: 'Yale explorer Hiram Bingham was guided to the Inca site of Machu Picchu on 24 July 1911, bringing the ruins to scientific and worldwide attention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1911-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1911-07-24',
+        datePrecision: 'DAY',
+        reason: 'Local farmers already knew the site, and Agustín Lizárraga had visited in 1902, but on 24 July 1911 Bingham was led across the Urubamba River and up to the ruins by a local boy. Bingham recorded the date in his field diary and photographed the terraces and structures, the first systematic documentation. He published the find in The Geographical Journal in December 1911.',
+        source: {
+          externalId: 'src:bingham-geographical-journal-1911',
+          name: 'Bingham H. "The Ruins of Machu Picchu." (initial report; full account in National Geographic Magazine, April 1913).',
+          url: 'https://en.wikipedia.org/wiki/Machu_Picchu',
+          publishedAt: '1911-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-04-01',
+        datePrecision: 'MONTH',
+        reason: 'The National Geographic Society devoted the entire April 1913 issue to Bingham\'s Machu Picchu expedition, and subsequent Yale Peruvian Expeditions (1912, 1914–15) excavated and mapped the site. The existence, location, and Inca origin of the site are corroborated beyond dispute by repeated excavation; scholarship now debates its function, not its discovery.',
+        source: {
+          externalId: 'src:natgeo-machu-picchu-1913',
+          name: 'Bingham H. "In the Wonderland of Peru." National Geographic Magazine, vol. 24, April 1913.',
+          url: 'https://en.wikipedia.org/wiki/Hiram_Bingham_III',
+          publishedAt: '1913-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alfonso Caso opens Tomb 7 at Monte Albán ────────────────────────────────
+  {
+    externalId: 'trajectory:caso-tomb-7-monte-alban-1932',
+    text: 'Mexican archaeologist Alfonso Caso opened Tomb 7 at Monte Albán, Oaxaca, on 9 January 1932, uncovering more than 600 objects of gold, turquoise, jade, pearl and carved bone — the richest funerary treasure found in the Americas.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932-01-09',
+        datePrecision: 'DAY',
+        reason: 'During the first season of his Monte Albán project, Caso and his team (including Juan Valenzuela and Eulalia Guzmán) entered Tomb 7 and found a reused Zapotec tomb containing a Mixtec offering of over 600 pieces. Caso documented the contents in situ; the find was reported in the press and in National Geographic Magazine in 1932.',
+        source: {
+          externalId: 'src:imer-tumba-7-monte-alban',
+          name: 'IMER. "9 de enero de 1932: Alfonso Caso descubre la tumba 7 de Monte Albán."',
+          url: 'https://www.imer.mx/9-de-enero-de-1932-alfonso-caso-descubre-la-tumba-7-de-monte-alban/',
+          publishedAt: '1932-01-09',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Caso published the full catalogue of the offering in El tesoro de Monte Albán (1969), and the objects are conserved and displayed in the Museo de las Culturas de Oaxaca (Santo Domingo) and the Museo Nacional de Antropología. The date, contents, and Mixtec attribution of the find are settled in the archaeological literature.',
+        source: {
+          externalId: 'src:caso-tesoro-monte-alban-1969',
+          name: 'Caso A. El tesoro de Monte Albán. Memorias del INAH III. Mexico City: INAH, 1969.',
+          url: 'https://en.wikipedia.org/wiki/Monte_Alb%C3%A1n',
+          publishedAt: '1969-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bonampak murals revealed ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:bonampak-murals-1946',
+    text: 'In May 1946 photographer Giles Healey was shown the painted murals of Bonampak, Chiapas, whose vivid battle, capture and sacrifice scenes overturned the prevailing view of the Classic Maya as a peaceful, non-warlike people.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1946-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-05-01',
+        datePrecision: 'MONTH',
+        reason: 'After Lacandon Maya led Carlos Frey and John Bourne to the site in February 1946, Giles Healey was the first outsider shown the three-room temple (Structure 1) and its near-complete murals in May 1946. Healey photographed the paintings, the first documentary record of the polychrome program dated to c. AD 790.',
+        source: {
+          externalId: 'src:healey-bonampak-1946',
+          name: 'Giles Healey, photographic documentation of the Bonampak murals, May 1946 (subsequently published with Carnegie Institution of Washington studies).',
+          url: 'https://en.wikipedia.org/wiki/Bonampak',
+          publishedAt: '1946-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Carnegie Institution copyists (Antonio Tejeda, Agustín Villagra) and scholars including Karl Ruppert, J. Eric S. Thompson and Tatiana Proskouriakoff produced full reproductions and analyses of the murals, confirming the warfare and sacrifice scenes. The murals are now a settled fixture of Maya scholarship and forced revision of the earlier "peaceful Maya" model.',
+        source: {
+          externalId: 'src:ruppert-bonampak-carnegie-1955',
+          name: 'Ruppert K, Thompson JES, Proskouriakoff T. Bonampak, Chiapas, Mexico. Carnegie Institution of Washington Publication 602, 1955.',
+          url: 'https://en.wikipedia.org/wiki/Giles_Healey',
+          publishedAt: '1955-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 14. Archduke Franz Ferdinand assassinated ───────────────────────────────
   {
     externalId: 'trajectory:franz-ferdinand-assassination-1914',
