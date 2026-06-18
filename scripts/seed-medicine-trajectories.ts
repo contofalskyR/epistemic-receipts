@@ -5108,6 +5108,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR MEDICINE ERA (2010–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SPRINT intensive BP control — 2015 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:sprint-intensive-bp-control-2015',
+    text: 'On 9 November 2015 the SPRINT trial reported that targeting a systolic blood pressure below 120 mm Hg, rather than below 140 mm Hg, reduced fatal and nonfatal major cardiovascular events and all-cause mortality in high-risk non-diabetic adults, evidence that subsequently drove the redefinition of hypertension at 130/80 mm Hg.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-11-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-09',
+        datePrecision: 'DAY',
+        reason: 'The NIH-sponsored SPRINT trial (9,361 high-risk non-diabetic adults) was stopped early when intensive systolic control to <120 mm Hg reduced the primary composite cardiovascular endpoint (hazard ratio 0.75) and all-cause mortality (hazard ratio 0.73) versus the standard <140 mm Hg target. This put on the scientific record the claim that a substantially lower blood-pressure target prevents cardiovascular events and death, challenging the long-standing 140/90 treatment threshold.',
+        source: {
+          externalId: 'src:sprint-intensive-bp-nejm-2015',
+          name: 'SPRINT Research Group; Wright JT Jr, Williamson JD, Whelton PK, et al. A randomized trial of intensive versus standard blood-pressure control. N Engl J Med. 2015;373(22):2103-2116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26551272/',
+          publishedAt: '2015-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-11-13',
+        datePrecision: 'DAY',
+        reason: 'The 2017 ACC/AHA multi-society high-blood-pressure guideline (Whelton, Carey, et al.), drawing heavily on SPRINT, redefined hypertension downward from 140/90 to 130/80 mm Hg and recommended lower treatment targets. This institutionally settled the lower-threshold claim into clinical practice, reclassifying roughly 46% of U.S. adults as hypertensive overnight.',
+        source: {
+          externalId: 'src:acc-aha-2017-hypertension-guideline',
+          name: 'Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. Hypertension. 2018;71(6):e13-e115.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29133356/',
+          publishedAt: '2017-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Evolocumab PCSK9 / FOURIER CV outcomes — 2015–2017 ─────────────────────
+  {
+    externalId: 'trajectory:evolocumab-pcsk9-fourier-cv-outcomes-2017',
+    text: 'PCSK9 inhibition with evolocumab, approved by the FDA on 27 August 2015 as an LDL-cholesterol-lowering adjunct to statins, was proven on 17 March 2017 by the FOURIER trial to reduce cardiovascular events in patients with established atherosclerotic disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-08-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved evolocumab (Repatha, Amgen) as an adjunct to diet and maximally tolerated statins for patients needing further LDL lowering, accepting evidence that PCSK9 inhibition dramatically reduces LDL cholesterol. The approval rested on a surrogate (LDL) endpoint; whether this large LDL reduction translated into fewer hard cardiovascular events remained unproven and openly debated.',
+        source: {
+          externalId: 'src:amgen-fda-repatha-approval-2015',
+          name: 'Amgen. FDA Approves Amgen\'s New Cholesterol-Lowering Medication Repatha (evolocumab). Press release, 27 August 2015.',
+          url: 'https://www.amgen.com/newsroom/press-releases/2015/08/fda-approves-amgens-new-cholesterollowering-medication-repatha-evolocumab',
+          publishedAt: '2015-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-03-17',
+        datePrecision: 'DAY',
+        reason: 'The FOURIER trial (27,564 patients with atherosclerotic disease on statins) showed that adding evolocumab lowered median LDL to 30 mg/dL and reduced the primary composite cardiovascular endpoint by 15% (hazard ratio 0.85) over 2.2 years. The first hard-outcome trial of a PCSK9 inhibitor, it converted the LDL surrogate into a demonstrated cardiovascular benefit and validated the \'lower-is-better\' LDL hypothesis at extreme low levels.',
+        source: {
+          externalId: 'src:fourier-evolocumab-nejm-2017',
+          name: 'Sabatine MS, Giugliano RP, Keech AC, et al. Evolocumab and clinical outcomes in patients with cardiovascular disease. N Engl J Med. 2017;376(18):1713-1722.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28304224/',
+          publishedAt: '2017-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Niacin add-on to statin reversed — 1975–2014 ───────────────────────────
+  {
+    externalId: 'trajectory:niacin-add-on-statin-reversed-2014',
+    text: 'The claim that niacin — shown by the 1975 Coronary Drug Project to reduce nonfatal myocardial infarction — confers additional cardiovascular benefit when added to statin therapy was reversed when the AIM-HIGH (2011) and HPS2-THRIVE (2014) trials found no reduction in events despite favorable changes in HDL and triglycerides.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-01-27',
+        datePrecision: 'DAY',
+        reason: 'The Coronary Drug Project, a large randomized secondary-prevention trial, reported in JAMA that niacin reduced nonfatal myocardial infarction in men with prior MI (a long-term mortality benefit was later seen on follow-up). This recorded niacin as an evidence-based lipid-modifying cardiovascular therapy, a status it held for decades on the strength of its HDL-raising and triglyceride-lowering effects.',
+        source: {
+          externalId: 'src:coronary-drug-project-niacin-jama-1975',
+          name: 'Coronary Drug Project Research Group. Clofibrate and niacin in coronary heart disease. JAMA. 1975;231(4):360-381.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1088963/',
+          publishedAt: '1975-01-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-12-15',
+        datePrecision: 'DAY',
+        reason: 'The NHLBI AIM-HIGH trial was stopped early for futility: adding extended-release niacin to intensive statin therapy in patients with low HDL produced no incremental clinical benefit over 36 months despite significantly improving HDL and triglycerides. This directly contested the assumption that niacin\'s lipid effects add cardiovascular protection in the statin era.',
+        source: {
+          externalId: 'src:aim-high-niacin-nejm-2011',
+          name: 'AIM-HIGH Investigators; Boden WE, Probstfield JL, Anderson T, et al. Niacin in patients with low HDL cholesterol levels receiving intensive statin therapy. N Engl J Med. 2011;365(24):2255-2267.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22085343/',
+          publishedAt: '2011-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-07-17',
+        datePrecision: 'DAY',
+        reason: 'The much larger HPS2-THRIVE trial (25,673 patients, 3.9-year follow-up) confirmed that extended-release niacin/laropiprant added to statins produced no significant reduction in major vascular events while causing significant excess harms (new diabetes, infections, bleeding, gastrointestinal effects). The convergent null result reversed niacin\'s standing as a beneficial add-on therapy and led to withdrawal of niacin/laropiprant and downgrading of niacin in guidelines.',
+        source: {
+          externalId: 'src:hps2-thrive-niacin-nejm-2014',
+          name: 'HPS2-THRIVE Collaborative Group; Landray MJ, Haynes R, Hopewell JC, et al. Effects of extended-release niacin with laropiprant in high-risk patients. N Engl J Med. 2014;371(3):203-212.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25014686/',
+          publishedAt: '2014-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Apixaban vs warfarin ARISTOTLE — 2011–2012 ─────────────────────────────
+  {
+    externalId: 'trajectory:apixaban-vs-warfarin-aristotle-2011',
+    text: 'On 27 August 2011 the ARISTOTLE trial reported that the direct oral anticoagulant apixaban was superior to warfarin in patients with atrial fibrillation, reducing stroke or systemic embolism, major bleeding, and all-cause mortality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-08-27',
+        datePrecision: 'DAY',
+        reason: 'The ARISTOTLE trial (18,201 patients with atrial fibrillation) found apixaban superior to dose-adjusted warfarin, reducing stroke or systemic embolism by 21%, major bleeding by 31%, and all-cause mortality, without the need for INR monitoring. This recorded the claim that a fixed-dose direct factor Xa inhibitor could outperform the decades-old warfarin standard for stroke prevention in AF.',
+        source: {
+          externalId: 'src:aristotle-apixaban-nejm-2011',
+          name: 'Granger CB, Alexander JH, McMurray JJV, et al. Apixaban versus warfarin in patients with atrial fibrillation. N Engl J Med. 2011;365(11):981-992.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21870978/',
+          publishedAt: '2011-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-12-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved apixaban (Eliquis, Bristol-Myers Squibb/Pfizer; NDA 202155) to reduce the risk of stroke and systemic embolism in non-valvular atrial fibrillation, on the basis of ARISTOTLE. Together with the approvals of dabigatran and rivaroxaban, this institutionally settled direct oral anticoagulants as standard alternatives to warfarin, which subsequent guidelines came to prefer for most AF patients.',
+        source: {
+          externalId: 'src:fda-eliquis-apixaban-label-2012',
+          name: 'FDA. ELIQUIS (apixaban) Prescribing Information, NDA 202155 (initial U.S. approval 28 December 2012).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/202155s000lbl.pdf',
+          publishedAt: '2012-12-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Semaglutide SELECT CV outcomes in obesity — 2023–2024 ──────────────────
+  {
+    externalId: 'trajectory:semaglutide-select-cv-outcomes-obesity-2023',
+    text: 'On 11 November 2023 the SELECT trial reported that weekly subcutaneous semaglutide 2.4 mg reduced major adverse cardiovascular events by about 20% in overweight or obese adults with established cardiovascular disease but without diabetes, a finding the FDA adopted as a labeled cardiovascular indication on 8 March 2024.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-11-11',
+        datePrecision: 'DAY',
+        reason: 'The SELECT trial (17,604 adults with prior cardiovascular disease and overweight/obesity but no diabetes) found that semaglutide reduced the primary composite of cardiovascular death, nonfatal MI, or nonfatal stroke from 8.0% to 6.5% (hazard ratio 0.80). This recorded for the first time that a GLP-1 receptor agonist prescribed for obesity, independent of diabetes, prevents hard cardiovascular events — extending the GLP-1 evidence base from glycemic control to cardiovascular prevention.',
+        source: {
+          externalId: 'src:select-semaglutide-nejm-2023',
+          name: 'Lincoff AM, Brown-Frandsen K, Colhoun HM, et al. Semaglutide and cardiovascular outcomes in obesity without diabetes (SELECT). N Engl J Med. 2023;389(24):2221-2232.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/37952131/',
+          publishedAt: '2023-11-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-03-08',
+        datePrecision: 'DAY',
+        reason: 'On the basis of SELECT, the FDA expanded the Wegovy (semaglutide 2.4 mg) label to include reducing the risk of cardiovascular death, nonfatal myocardial infarction, and nonfatal stroke in adults with cardiovascular disease and overweight or obesity — the first drug approved for cardiovascular risk reduction specifically in overweight/obese patients. The institutional act settled the claim and reframed obesity pharmacotherapy as cardiovascular prevention.',
+        source: {
+          externalId: 'src:fda-wegovy-cv-indication-2024',
+          name: 'Novo Nordisk. Wegovy receives FDA approval for cardiovascular risk reduction in adults with known heart disease and overweight or obesity. Press release, 8 March 2024.',
+          url: 'https://www.prnewswire.com/news-releases/wegovy-receives-fda-approval-for-cardiovascular-risk-reduction-in-adults-with-known-heart-disease-and-overweight-or-obesity-302084454.html',
+          publishedAt: '2024-03-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
