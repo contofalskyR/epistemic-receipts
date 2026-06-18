@@ -1227,6 +1227,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── 29. Molina & Rowland — CFC-to-ozone-destruction hypothesis — 1974 ────────
+  {
+    externalId: 'trajectory:molina-rowland-cfc-ozone-1974',
+    text: 'Mario Molina and F. Sherwood Rowland reported on 28 June 1974, in Nature, that chlorofluoromethanes (CFCs) drifting into the stratosphere would be photodissociated by ultraviolet light, releasing chlorine atoms that catalytically destroy ozone, predicting significant depletion of the ozone layer from continued CFC release.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-06-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-06-28',
+        datePrecision: 'DAY',
+        reason: 'Molina and Rowland published \'Stratospheric sink for chlorofluoromethanes: chlorine atom-catalysed destruction of ozone\' in Nature (249:810–812). They showed that inert CFCs accumulate in the atmosphere for 40–150 years, eventually reach the stratosphere, and there release chlorine atoms that catalytically destroy ozone. This was the first identification of CFCs specifically as the source feeding chlorine catalysis, transforming the abstract chlorine-sink chemistry into a concrete, policy-relevant threat tied to a named industrial product.',
+        source: {
+          externalId: 'src:molina-rowland-nature-1974',
+          name: 'Molina MJ, Rowland FS. Stratospheric sink for chlorofluoromethanes: chlorine atom-catalysed destruction of ozone. Nature. 1974;249(5460):810–812.',
+          url: 'https://www.nature.com/articles/249810a0',
+          publishedAt: '1974-06-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10-11',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences awarded the 1995 Nobel Prize in Chemistry to Crutzen, Molina, and Rowland \'for their work in atmospheric chemistry, particularly concerning the formation and decomposition of ozone.\' Following the 1985 ozone hole, the 1986 Solomon heterogeneous-chemistry mechanism, and direct in-situ ClO–ozone measurements, the Nobel ratified the Molina–Rowland CFC-to-ozone-destruction hypothesis as settled science.',
+        source: {
+          externalId: 'src:nobel-chemistry-1995-ozone',
+          name: 'The Nobel Prize in Chemistry 1995: Paul J. Crutzen, Mario J. Molina, F. Sherwood Rowland. Royal Swedish Academy of Sciences. 11 October 1995.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1995/summary/',
+          publishedAt: '1995-10-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 30. Lovelock — CFC global atmospheric detection — 1973 ──────────────────
+  {
+    externalId: 'trajectory:lovelock-cfc-global-detection-1973',
+    text: 'James Lovelock, Robert Maggs, and Robert Wade reported in January 1973, in Nature, that chlorofluorocarbons (CCl₃F and CCl₂F₂) were detectable by electron-capture gas chromatography in air over the Atlantic far from any source, establishing that these inert industrial gases were accumulating and globally distributed throughout the atmosphere.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-01',
+        datePrecision: 'MONTH',
+        reason: 'Lovelock, Maggs, and Wade published \'Halogenated Hydrocarbons in and over the Atlantic\' in Nature (241:194–196), reporting electron-capture detector measurements of CFC-11 and CFC-12 in remote marine air during an Atlantic cruise on RRS Shackleton. The finding that chemically inert CFCs were measurable everywhere — even far from industrial sources — empirically established their atmospheric persistence and global accumulation, the observational premise that Molina and Rowland built their depletion theory on the following year.',
+        source: {
+          externalId: 'src:lovelock-maggs-wade-nature-1973',
+          name: 'Lovelock JE, Maggs RJ, Wade RJ. Halogenated Hydrocarbons in and over the Atlantic. Nature. 1973;241(5386):194–196.',
+          url: 'https://www.nature.com/articles/241194a0',
+          publishedAt: '1973-01-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978',
+        datePrecision: 'YEAR',
+        reason: 'The global accumulation of CFCs that Lovelock first detected became the foundation of permanent institutional monitoring: NOAA\'s Halocarbons program (begun 1977–78, now LOGOS/HATS) and the ALE/GAGE/AGAGE network established continuous, calibrated global measurement of CFC abundances. The atmospheric persistence and steadily rising global background of CFCs is now a routinely tracked, settled empirical fact underpinning Montreal Protocol compliance assessments.',
+        source: {
+          externalId: 'src:noaa-gml-halocarbons',
+          name: 'NOAA Global Monitoring Laboratory. Halocarbons and other Atmospheric Trace Species (HATS/LOGOS) — global flask and in-situ monitoring of CFCs and ozone-depleting substances.',
+          url: 'https://gml.noaa.gov/hats/',
+          publishedAt: '2024-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 31. Stolarski et al. — Nimbus-7 satellite ozone-hole confirmation — 1986 ─
+  {
+    externalId: 'trajectory:stolarski-nimbus7-ozone-hole-confirmation-1986',
+    text: 'Richard Stolarski, Arlin Krueger, and colleagues reported in August 1986, in Nature, that reprocessed Nimbus-7 satellite TOMS and SBUV measurements independently confirmed the springtime Antarctic ozone decline reported by Farman and showed the depletion to be a large, continent-scale regional phenomenon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-08',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-08',
+        datePrecision: 'MONTH',
+        reason: 'Stolarski, Krueger, Schoeberl, McPeters, Newman, and Alpert published \'Nimbus 7 satellite measurements of the springtime Antarctic ozone decrease\' in Nature (322:808–811). After NASA\'s automated algorithm had originally flagged the record-low Antarctic values as erroneous and discarded them, the data were reprocessed and confirmed the Halley Bay ground-based decline, mapping the depletion\'s full spatial extent across the Antarctic continent. This satellite confirmation removed doubt that the Farman result was a local instrument artifact.',
+        source: {
+          externalId: 'src:stolarski-nimbus7-nature-1986',
+          name: 'Stolarski RS, Krueger AJ, Schoeberl MR, McPeters RD, Newman PA, Alpert JC. Nimbus 7 satellite measurements of the springtime Antarctic ozone decrease. Nature. 1986;322(6082):808–811.',
+          url: 'https://www.nature.com/articles/322808a0',
+          publishedAt: '1986-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-09-16',
+        datePrecision: 'DAY',
+        reason: 'Ground-based (Farman), satellite (Nimbus-7 TOMS/SBUV), and in-situ aircraft (Airborne Antarctic Ozone Experiment, 1987) measurements converged on a confirmed, large-scale Antarctic ozone hole. This multi-platform observational consensus underpinned the signing of the Montreal Protocol on 16 September 1987, institutionally settling the reality and severity of Antarctic ozone depletion as the basis for binding international controls.',
+        source: {
+          externalId: 'src:montreal-protocol-unep-1987',
+          name: 'United Nations Environment Programme. Montreal Protocol on Substances that Deplete the Ozone Layer. Adopted 16 September 1987.',
+          url: 'https://ozone.unep.org/treaties/montreal-protocol',
+          publishedAt: '1987-09-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 32. London Amendment to the Montreal Protocol — 1990 ────────────────────
+  {
+    externalId: 'trajectory:london-amendment-montreal-protocol-1990',
+    text: 'On 29 June 1990 the parties to the Montreal Protocol adopted the London Amendment, accelerating ozone-depleting-substance controls by mandating a total phaseout of all CFCs, halons, carbon tetrachloride and methyl chloroform, and establishing the Multilateral Fund to finance compliance by developing countries.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1990-06-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-06-29',
+        datePrecision: 'DAY',
+        reason: 'At the Second Meeting of the Parties in London (27–29 June 1990), governments adopted the first amendment to the Montreal Protocol, replacing the original partial CFC cuts with a complete phaseout of all fully halogenated CFCs, halons, carbon tetrachloride, and methyl chloroform (new Annex B), and creating the Multilateral Fund to cover the incremental costs of developing-country compliance. The amendment marked the shift from the 1987 Protocol\'s modest reductions to total elimination, responding to the strengthened ozone-hole evidence.',
+        source: {
+          externalId: 'src:london-amendment-unep-1990',
+          name: 'United Nations Environment Programme, Ozone Secretariat. The London Amendment (1990): the amendment to the Montreal Protocol agreed by the Second Meeting of the Parties (London, 27–29 June 1990).',
+          url: 'https://ozone.unep.org/treaties/montreal-protocol/amendments/london-amendment-1990-amendment-montreal-protocol-agreed',
+          publishedAt: '1990-06-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-08-10',
+        datePrecision: 'DAY',
+        reason: 'The London Amendment entered into force on 10 August 1992 after the required ratifications, making the total-phaseout schedule and Multilateral Fund binding international law. Its near-universal ratification institutionally settled the strengthened control regime, and the Multilateral Fund went on to support more than 8,600 developing-country projects, cementing the amendment as a working pillar of the ozone treaty system.',
+        source: {
+          externalId: 'src:london-amendment-eif-unep',
+          name: 'UNEP Ozone Secretariat. London Amendment to the Montreal Protocol — entry into force 10 August 1992; Multilateral Fund established.',
+          url: 'https://ozone.unep.org/treaties/montreal-protocol/amendments/london-amendment-1990-amendment-montreal-protocol-agreed',
+          publishedAt: '1992-08-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── 28. Gornitz, Lebedeff & Hansen — global sea-level trend — 1982 ───────────
   {
     externalId: 'trajectory:gornitz-lebedeff-hansen-sea-level-trend-1982',
