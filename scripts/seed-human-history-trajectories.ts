@@ -64669,6 +64669,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL (500–1400 CE) — Western Europe & Mediterranean (additional curves)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Coronation of Hugh Capet — founding of the Capetian dynasty (987) ───────
+  {
+    externalId: 'trajectory:hugh-capet-coronation-987',
+    text: 'Hugh Capet was crowned rex Francorum (King of the Franks) on 3 July 987, founding the Capetian dynasty that would rule France in the direct line until 1328 and in cadet branches for centuries after.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0987-07-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0987-07-03',
+        datePrecision: 'DAY',
+        reason: 'After the last Carolingian king Louis V dies without an heir in May 987, an assembly of nobles convened at Senlis by Archbishop Adalberon of Reims sets aside the claim of the Carolingian Charles of Lorraine and elects Hugh Capet, Duke of the Franks. Hugh is anointed and crowned king and on 3 July 987 the act is recorded as accomplished — a change of ruling house enacted by election and coronation rather than hereditary succession.',
+        source: {
+          externalId: 'src:richer-historiae-hugh-capet',
+          name: 'Richer of Reims. Historiae, recording the death of Louis V, the assembly at Senlis, and the election and coronation of Hugh Capet in 987. (contemporary account, late 10th c.)',
+          url: 'https://en.wikipedia.org/wiki/Hugh_Capet',
+          publishedAt: '0998-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Contemporary witnesses — Richer of Reims, the letters of Gerbert of Aurillac (later Pope Sylvester II), and later chroniclers — agree that the Carolingian line in West Francia ended in 987 and that Hugh founded a new royal house. Modern scholarship treats July 987 as the securely dated origin of the Capetian dynasty, debating its causes and significance rather than the fact of the accession.',
+        source: {
+          externalId: 'src:capetian-foundation-scholarship',
+          name: 'Coronation of Hugh Capet and the founding of the Capetian dynasty (987). Standard scholarship on the end of the West Frankish Carolingians.',
+          url: 'https://en.wikipedia.org/wiki/Hugh_Capet',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Civitate — Normans capture Pope Leo IX (1053) ─────────────────
+  {
+    externalId: 'trajectory:battle-of-civitate-1053',
+    text: 'On 18 June 1053 a Norman army under Humphrey and Robert Guiscard de Hauteville defeated a papal coalition at Civitate in southern Italy and took Pope Leo IX prisoner, the only time a reigning pope was captured in battle by the Normans.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1053-06-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1053-06-18',
+        datePrecision: 'DAY',
+        reason: 'Alarmed by Norman expansion in southern Italy, Pope Leo IX leads an army of Swabian, Italian, and Lombard troops against them. On 18 June 1053 the outnumbered but disciplined Norman cavalry routs the papal coalition near Civitate on the Fortore. The Swabian guard is annihilated and the pope, sheltering in the town, is handed over to the victors, who kneel before him yet hold him captive at Benevento for some nine months.',
+        source: {
+          externalId: 'src:william-apulia-gesta-civitate',
+          name: 'William of Apulia. Gesta Roberti Wiscardi, recording the Norman victory at Civitate and the capture of Pope Leo IX, June 1053. (near-contemporary verse chronicle, late 11th c.)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Civitate',
+          publishedAt: '1099-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent sources — William of Apulia, Amatus of Montecassino, and Leo of Ostia — agree on the Norman victory and the capture of Leo IX. Modern scholarship treats 18 June 1053 as a securely dated turning point that confirmed Norman control of southern Italy and reshaped relations between the papacy and the Normans.',
+        source: {
+          externalId: 'src:civitate-scholarship',
+          name: 'Battle of Civitate and the capture of Pope Leo IX (18 June 1053). Standard scholarship on the Norman conquest of southern Italy.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Civitate',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Muret — Albigensian Crusade, death of Peter II of Aragon (1213) ─
+  {
+    externalId: 'trajectory:battle-of-muret-1213',
+    text: 'On 12 September 1213 the crusader army of Simon de Montfort defeated a much larger Toulousain-Aragonese force at Muret near Toulouse and killed King Peter II of Aragon, the decisive battle of the Albigensian Crusade.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1213-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1213-09-12',
+        datePrecision: 'DAY',
+        reason: 'King Peter II of Aragon, allied with Count Raymond VI of Toulouse, besieges the small crusader-held town of Muret. On 12 September 1213 Simon de Montfort sallies out with a far smaller mounted force, breaks the disordered allied army, and Peter II is killed in the fighting. The southern coalition collapses, opening Languedoc to crusader and ultimately Capetian control.',
+        source: {
+          externalId: 'src:vaux-de-cernay-muret-1213',
+          name: 'Peter of Vaux-de-Cernay. Historia Albigensis, recording the Battle of Muret and the death of King Peter II of Aragon, 12 September 1213. (contemporary eyewitness chronicle)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Muret',
+          publishedAt: '1218-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Both the pro-crusade Historia Albigensis of Peter of Vaux-de-Cernay and the Occitan Canso de la crozada agree on the date, the crushing defeat of the larger army, and the death of Peter II of Aragon. Modern scholarship treats 12 September 1213 as the securely dated turning point of the Albigensian Crusade.',
+        source: {
+          externalId: 'src:muret-scholarship',
+          name: 'Battle of Muret and the death of Peter II of Aragon (12 September 1213). Standard scholarship on the Albigensian Crusade.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Muret',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of the Golden Spurs (Courtrai) — Flemish militia rout French knights (1302) ─
+  {
+    externalId: 'trajectory:battle-golden-spurs-courtrai-1302',
+    text: 'On 11 July 1302 the urban militias of Flanders annihilated the mounted French royal army of Count Robert II of Artois at the Battle of the Golden Spurs near Kortrijk (Courtrai), one of the first medieval battles in which disciplined infantry decisively defeated heavy cavalry.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1302-07-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1302-07-11',
+        datePrecision: 'DAY',
+        reason: 'Following the popular Bruges Matins revolt against French occupation, a French royal army marches into Flanders. On 11 July 1302 the pike-armed Flemish civic militias, drawn up behind marshy ditches outside Kortrijk, withstand and then destroy the charging French cavalry. Robert II of Artois and a great part of the French chivalry are killed; some five hundred pairs of gilded spurs stripped from the dead are hung in a church, giving the battle its name.',
+        source: {
+          externalId: 'src:annales-gandenses-courtrai-1302',
+          name: 'Annales Gandenses (Annals of Ghent), recording the Flemish victory over the French army at Kortrijk, 11 July 1302. (contemporary Flemish chronicle)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Golden_Spurs',
+          publishedAt: '1310-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Flemish and French chronicles agree on the date and the magnitude of the French defeat. Modern military historians treat 11 July 1302 as a securely dated and influential demonstration that well-positioned infantry could break heavy cavalry, debating its tactical lessons rather than the outcome.',
+        source: {
+          externalId: 'src:golden-spurs-scholarship',
+          name: 'Battle of the Golden Spurs at Kortrijk/Courtrai (11 July 1302). Standard scholarship on infantry versus cavalry in medieval warfare.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_the_Golden_Spurs',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Fontenoy — decisive battle of the Carolingian civil war (841) ─
+  {
+    externalId: 'trajectory:battle-of-fontenoy-841',
+    text: 'On 25 June 841 the armies of Charles the Bald and Louis the German defeated their brother Emperor Lothair I and Pepin II of Aquitaine at Fontenoy, the decisive and exceptionally bloody battle of the Carolingian civil war that led to the partition of the empire at Verdun in 843.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0841-06-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '0841-06-25',
+        datePrecision: 'DAY',
+        reason: 'After the death of Louis the Pious, his sons fall into open war over the inheritance of the Carolingian Empire. On 25 June 841 the combined forces of Charles the Bald and Louis the German meet Lothair I and Pepin II at Fontenoy-en-Puisaye. The slaughter is so heavy that contemporaries record it as fratricidal catastrophe; the eyewitness Angelbert, who fought on Lothair\'s side, composed a lament on the carnage of the field.',
+        source: {
+          externalId: 'src:angelbert-versus-fontenoy-841',
+          name: 'Angelbert. Versus de bella quae fuit acta Fontaneto, an eyewitness verse lament on the Battle of Fontenoy, 25 June 841. (contemporary)',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Fontenoy_(841)',
+          publishedAt: '0841-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1900-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The battle is recorded by the eyewitness poet Angelbert and by Nithard, a grandson of Charlemagne who fought for Charles the Bald and wrote his Histories during the war. Their accounts, together with the Annals of St-Bertin and Fulda, fix 25 June 841 as the securely dated decisive engagement that paved the way to the Treaty of Verdun.',
+        source: {
+          externalId: 'src:fontenoy-scholarship',
+          name: 'Battle of Fontenoy (25 June 841) and the Carolingian civil war. Standard scholarship, drawing on Nithard\'s Histories and the contemporary annals.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Fontenoy_(841)',
+          publishedAt: '1900-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
