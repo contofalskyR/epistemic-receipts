@@ -53196,6 +53196,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WWI / WWII & INTERWAR ADDENDA (1900–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Einstein explains the photoelectric effect — light quanta ──────────────
+  {
+    externalId: 'trajectory:einstein-photoelectric-effect-1905',
+    text: 'In a paper completed on 17 March 1905, Albert Einstein proposed that light energy is carried in discrete quanta, and used this hypothesis to explain the photoelectric effect — the work for which he was later awarded the Nobel Prize.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1905-03-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-06-09',
+        datePrecision: 'DAY',
+        reason: 'Einstein\'s paper "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt" (On a Heuristic Viewpoint Concerning the Production and Transformation of Light), dated 17 March 1905, is received by Annalen der Physik on 18 March and published 9 June 1905. He proposes that light consists of discrete energy quanta and predicts that the maximum kinetic energy of emitted photoelectrons rises linearly with frequency, independent of intensity — a quantitative, testable claim radically at odds with classical wave theory.',
+        source: {
+          externalId: 'src:einstein-light-quanta-1905',
+          name: 'Einstein A. Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt. Annalen der Physik 1905;17:132–148.',
+          url: 'https://en.wikipedia.org/wiki/Photoelectric_effect',
+          publishedAt: '1905-06-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1916-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert A. Millikan, who initially set out to disprove the light-quantum hypothesis, completes a decade of precise photoelectric measurements that fully confirm Einstein\'s linear energy–frequency relation and yield an accurate value of Planck\'s constant. The experimental verification removes the last doubts about the quantitative law, even as the underlying particle picture of light remained debated.',
+        source: {
+          externalId: 'src:millikan-photoelectric-verification-1916',
+          name: 'Millikan RA. A Direct Photoelectric Determination of Planck\'s "h". Physical Review 1916;7:355–388.',
+          url: 'https://en.wikipedia.org/wiki/Photoelectric_effect',
+          publishedAt: '1916-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1922-11-09',
+        datePrecision: 'DAY',
+        reason: 'The Royal Swedish Academy of Sciences awards Einstein the 1921 Nobel Prize in Physics (announced 9 November 1922) "for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect," formally enshrining the result as established physics and a cornerstone of the quantum theory of light.',
+        source: {
+          externalId: 'src:einstein-nobel-photoelectric-1921',
+          name: 'The Nobel Prize in Physics 1921 — Albert Einstein, for his discovery of the law of the photoelectric effect.',
+          url: 'https://en.wikipedia.org/wiki/Photoelectric_effect',
+          publishedAt: '1922-11-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Red Sunday — arrest of Armenian intellectuals begins the genocide ──────
+  {
+    externalId: 'trajectory:armenian-intellectuals-deportation-1915',
+    text: 'On the night of 24–25 April 1915, Ottoman authorities arrested several hundred Armenian intellectuals and community leaders in Constantinople and deported them, the act commemorated as the start of the Armenian Genocide.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1915-04-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1915-04-24',
+        datePrecision: 'DAY',
+        reason: 'In a first wave on the night of 24–25 April 1915, between 235 and 270 Armenian leaders of Constantinople — clergymen, physicians, editors, journalists, lawyers, teachers and politicians — are arrested on the orders of Interior Minister Talaat Pasha and deported toward Ankara; subsequent waves bring the total to roughly 2,345 notables. Most were subsequently killed. The arrests were reported contemporaneously, including by U.S. Ambassador Henry Morgenthau.',
+        source: {
+          externalId: 'src:armenian-deportation-april-1915',
+          name: 'Deportation of Armenian intellectuals on 24 April 1915 — first-wave arrests in Constantinople under Talaat Pasha.',
+          url: 'https://en.wikipedia.org/wiki/Deportation_of_Armenian_intellectuals_on_24_April_1915',
+          publishedAt: '1915-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'PUBLIC',
+        occurredAt: '1919-04-24',
+        datePrecision: 'DAY',
+        reason: 'The first public commemoration of the deportations is held in Istanbul in 1919. The date 24 April becomes the official Armenian Genocide Remembrance Day, observed annually by Armenian communities worldwide and as a national memorial day in Armenia — establishing 24 April 1915 as the fixed, securely dated marker of the genocide\'s onset.',
+        source: {
+          externalId: 'src:armenian-remembrance-day',
+          name: 'Armenian Genocide Remembrance Day — 24 April, marking the deportation of Armenian intellectuals from Constantinople.',
+          url: 'https://en.wikipedia.org/wiki/Deportation_of_Armenian_intellectuals_on_24_April_1915',
+          publishedAt: '1919-04-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Treaty of Lausanne supersedes the unratified Treaty of Sèvres ──────────
+  {
+    externalId: 'trajectory:treaty-of-lausanne-1923',
+    text: 'On 24 July 1923 the Allied powers and the new Turkish state signed the Treaty of Lausanne, which fixed the modern borders of the Republic of Turkey and superseded the unratified Treaty of Sèvres (1920).',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1923-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1920-08-10',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of Sèvres, signed 10 August 1920 between the Allies and the Ottoman government, partitioned Ottoman territory, placed much of Anatolia under foreign and Greek/Armenian control, and internationalised the Straits. It was rejected by the Turkish National Movement under Mustafa Kemal and never ratified, becoming a dead letter as the Turkish War of Independence reversed Allied gains on the ground.',
+        source: {
+          externalId: 'src:treaty-of-sevres-1920',
+          name: 'Treaty of Sèvres (10 August 1920) — partition of Ottoman territory; unratified and rejected by the Turkish National Movement.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_S%C3%A8vres',
+          publishedAt: '1920-08-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1923-07-24',
+        datePrecision: 'DAY',
+        reason: 'Following Turkish victory in the War of Independence, a new conference at Lausanne replaces the Sèvres settlement entirely. The Treaty of Lausanne, signed 24 July 1923, recognises the sovereignty of the Republic of Turkey, fixes its borders in Anatolia and Eastern Thrace, returns the Straits region, and ends Allied claims to partition — formally overturning the Treaty of Sèvres.',
+        source: {
+          externalId: 'src:treaty-of-lausanne-1923',
+          name: 'Treaty of Lausanne, signed 24 July 1923 — established the borders of the Republic of Turkey, superseding the Treaty of Sèvres.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Lausanne',
+          publishedAt: '1923-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1924-08-06',
+        datePrecision: 'DAY',
+        reason: 'The Treaty of Lausanne enters into force on 6 August 1924 after ratification by the signatories. The borders it set have remained the recognised, uncontested international frontiers of the Republic of Turkey ever since, making Lausanne — not Sèvres — the settled legal foundation of the modern Turkish state.',
+        source: {
+          externalId: 'src:lausanne-entry-into-force-1924',
+          name: 'Treaty of Lausanne — ratification and entry into force, 6 August 1924.',
+          url: 'https://en.wikipedia.org/wiki/Treaty_of_Lausanne',
+          publishedAt: '1924-08-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Manhattan Engineer District formally established ───────────────────────
+  {
+    externalId: 'trajectory:manhattan-engineer-district-1942',
+    text: 'On 13 August 1942 the U.S. Army Corps of Engineers formally created the Manhattan Engineer District, the military organisation that directed the American effort to build an atomic bomb.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-08-13',
+        datePrecision: 'DAY',
+        reason: 'Chief of Engineers Major General Eugene Reybold officially establishes a new engineer district to manage the atomic-bomb project. Headquartered initially in New York City, it is named the Manhattan Engineer District (MED), giving the project its enduring cover name. The order is a documented War Department administrative act; Colonel (soon Brigadier General) Leslie Groves takes command in September 1942.',
+        source: {
+          externalId: 'src:manhattan-district-created-1942',
+          name: 'Manhattan District — formally created by the U.S. Army Corps of Engineers on 13 August 1942.',
+          url: 'https://en.wikipedia.org/wiki/Manhattan_District',
+          publishedAt: '1942-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-07-16',
+        datePrecision: 'DAY',
+        reason: 'The Manhattan Engineer District grew into a vast enterprise spanning Oak Ridge, Hanford and Los Alamos, employing well over 100,000 people. Its success is demonstrated when the Trinity test detonates the first nuclear weapon on 16 July 1945, confirming in retrospect that the district established in August 1942 was the organisational vehicle that delivered the atomic bomb.',
+        source: {
+          externalId: 'src:manhattan-project-trinity-confirmation',
+          name: 'Manhattan Project — organisational history of the Manhattan Engineer District through the Trinity test, 16 July 1945.',
+          url: 'https://en.wikipedia.org/wiki/Manhattan_Project',
+          publishedAt: '1945-07-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Potsdam Conference sets the terms of the postwar order ─────────────────
+  {
+    externalId: 'trajectory:potsdam-conference-1945',
+    text: 'From 17 July to 2 August 1945 the leaders of the United States, the United Kingdom and the Soviet Union met at Potsdam to settle the administration of defeated Germany and the postwar order, and issued the Potsdam Declaration demanding Japan\'s surrender.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1945-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-07-17',
+        datePrecision: 'DAY',
+        reason: 'The "Big Three" — U.S. President Harry Truman, Soviet leader Joseph Stalin and British Prime Minister Winston Churchill (replaced mid-conference by Clement Attlee after the UK election) — convene at Cecilienhof Palace near Berlin. Over sixteen days they negotiate the four-zone occupation and demilitarisation of Germany, denazification, German reparations, the provisional Oder–Neisse line and Polish border changes, and establish a Council of Foreign Ministers. It is the only wartime conference of the three powers held after Germany\'s surrender.',
+        source: {
+          externalId: 'src:potsdam-conference-state-dept',
+          name: 'The Potsdam Conference, 1945. U.S. Department of State, Office of the Historian, Milestones 1937–1945.',
+          url: 'https://history.state.gov/milestones/1937-1945/potsdam-conf',
+          publishedAt: '1945-08-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-08-02',
+        datePrecision: 'DAY',
+        reason: 'The conference closes on 2 August 1945 with the signed Potsdam Agreement (Protocol of the Proceedings), the documented and enduring blueprint for occupied Germany and the postwar territorial settlement in Central Europe. The separately issued Potsdam Declaration of 26 July 1945 set the surrender terms for Japan, which Japan accepted on 15 August 1945. The conference\'s decisions are a fixed part of the historical record.',
+        source: {
+          externalId: 'src:potsdam-agreement-protocol-1945',
+          name: 'Protocol of the Proceedings of the Berlin (Potsdam) Conference, 2 August 1945.',
+          url: 'https://en.wikipedia.org/wiki/Potsdam_Conference',
+          publishedAt: '1945-08-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
