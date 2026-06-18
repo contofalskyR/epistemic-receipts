@@ -56422,6 +56422,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDIEVAL EAST ASIA (500–1400 CE) — China, Korea, Japan
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Jikji — earliest extant book printed with movable metal type (Goryeo Korea) ─
+  {
+    externalId: 'trajectory:jikji-movable-metal-type-1377',
+    text: 'The Jikji, a Korean Buddhist anthology printed at Heungdeok Temple in Cheongju in the seventh lunar month of 1377, is the world\'s oldest extant book produced with movable metal type — 78 years before the Gutenberg Bible.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1377-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1377-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The second (lower) volume of the Jikji is printed from cast metal type by the priests Seoksan and Daldam, students of the monk Baegun, with support from the priestess Myodeok. Its colophon records that it was "published by metal type at Heungdeok Temple" in the third year of King U (the seventh lunar month of 1377), documenting both the method and the date of manufacture.',
+        source: {
+          externalId: 'src:jikji-colophon-1377',
+          name: 'Jikji (Baegun hwasang chorok buljo jikji simche yojeol), colophon dated to the reign of King U, 1377. Bibliothèque nationale de France, Manuscrit Coréen 109.',
+          url: 'https://en.wikipedia.org/wiki/Jikji',
+          publishedAt: '1377-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-09-04',
+        datePrecision: 'DAY',
+        reason: 'UNESCO inscribes the Jikji on its Memory of the World Register, formally recognising the surviving lower volume held at the Bibliothèque nationale de France as the world\'s oldest extant book printed with movable metal type, predating Gutenberg\'s Bible by some 78 years. The dated colophon establishes the precedence as settled documentary record.',
+        source: {
+          externalId: 'src:unesco-jikji-memory-world-2001',
+          name: 'UNESCO Memory of the World Register — "Baegun hwasang chorok buljo jikji simche yojeol" (Jikji), inscribed 2001.',
+          url: 'https://www.unesco.org/en/memory-world/baegun-hwasang-chorok-buljo-jikji-simche-yojeol-vol-ii-anthology-great-buddhist-priests-zen',
+          publishedAt: '2001-09-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Yamen — end of the Song dynasty (China) ───────────────────────
+  {
+    externalId: 'trajectory:battle-of-yamen-song-end-1279',
+    text: 'At the naval Battle of Yamen on 19 March 1279, the Mongol Yuan fleet destroyed the last Southern Song forces; the chancellor Lu Xiufu leapt into the sea carrying the boy-emperor Zhao Bing, ending the Song dynasty.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1279-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1279-03-19',
+        datePrecision: 'DAY',
+        reason: 'In the waters off Yamen in the Pearl River Delta, the Yuan fleet under Zhang Hongfan defeats the encircled Song fleet. With the position hopeless, the chancellor Lu Xiufu carries the eight-year-old emperor Zhao Bing onto his back and jumps into the sea; both drown. The Southern Song court is extinguished and the Yuan dynasty completes its conquest of China.',
+        source: {
+          externalId: 'src:song-shi-yamen-1279',
+          name: 'History of Song (Song Shi), compiled 1343–1345 under Toqto\'a, account of the Battle of Yamen and the death of Zhao Bing.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Yamen',
+          publishedAt: '1345-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1370-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The event is independently recorded in the History of Yuan (Yuan Shi), compiled 1370 under Song Lian, as well as the History of Song. The two official dynastic histories agree that the battle ended the Song line, and the date and outcome have remained the settled consensus of Chinese historiography as the close of the Song dynasty.',
+        source: {
+          externalId: 'src:yuan-shi-yamen-1279',
+          name: 'History of Yuan (Yuan Shi), compiled 1370 under Song Lian, record of the conquest of the Southern Song.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Yamen',
+          publishedAt: '1370-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 1303 Hongdong (Zhaocheng) earthquake — Shanxi, Yuan China ────────────────
+  {
+    externalId: 'trajectory:hongdong-earthquake-1303',
+    text: 'A catastrophic earthquake struck the Hongdong–Zhaocheng area of Shanxi, Yuan China, on 25 September 1303, killing on the order of 200,000 people — one of the earliest very large earthquakes with detailed contemporaneous documentation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1303-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1303-09-25',
+        datePrecision: 'DAY',
+        reason: 'A massive earthquake levels towns across central Shanxi; Yuan administrative records and local stone inscriptions report that every major temple and school building in the affected counties collapsed, with death tolls variously recorded as 170,000, 200,000, or more. The disaster is logged in the dynastic record and in surviving steles erected near the epicentre.',
+        source: {
+          externalId: 'src:yuan-shi-hongdong-1303',
+          name: 'History of Yuan (Yuan Shi) and contemporary stone inscriptions, records of the Zhaocheng/Hongdong earthquake of 1303. Wikipedia, "1303 Hongdong earthquake".',
+          url: 'https://en.wikipedia.org/wiki/1303_Hongdong_earthquake',
+          publishedAt: '1303-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Modern seismologists reconstruct the event from the historical damage distribution, assigning a magnitude on the order of Mw 8.0 and, in a 2018 reassessment, revising the epicentre to near Xiamenzhen, southwest of Lingshi County. The Hongdong earthquake is established as the first major earthquake whose intensity field can be mapped from detailed historical records, a benchmark for Chinese historical seismology.',
+        source: {
+          externalId: 'src:hongdong-seismology-2018',
+          name: 'Modern seismological reassessment of the 1303 Hongdong earthquake (magnitude ~Mw 8.0; 2018 epicentre revision). Wikipedia, "1303 Hongdong earthquake".',
+          url: 'https://en.wikipedia.org/wiki/1303_Hongdong_earthquake',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Bun'ei — first Mongol invasion of Japan (Kamakura Japan) ───────
+  {
+    externalId: 'trajectory:battle-of-bunei-mongol-invasion-1274',
+    text: 'On 19 November 1274, a Mongol-led Yuan invasion fleet landed at Hakata Bay in Kyushu (the Battle of Bun\'ei), the first of two Mongol attempts to conquer Japan, before withdrawing after a single day of fighting and a storm.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1274-11-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1274-11-19',
+        datePrecision: 'DAY',
+        reason: 'A Yuan expeditionary force of roughly 30,000–40,000 Mongol, Korean, Chinese, and Jurchen troops lands at Hakata Bay and clashes with the defending samurai of the Kamakura shogunate. After heavy fighting the invaders re-embark, and a storm damages the fleet, forcing the abandonment of the campaign — the first Mongol invasion of Japan.',
+        source: {
+          externalId: 'src:bunei-hakata-1274',
+          name: 'Battle of Bun\'ei (first Mongol invasion of Japan), 19 November 1274. Wikipedia, "Battle of Bun\'ei".',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Bun%27ei',
+          publishedAt: '1274-11-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1293-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The invasion is depicted in the Mōko Shūrai Ekotoba ("Illustrated Account of the Mongol Invasion"), a narrative picture scroll painted between about 1275 and 1293 at the commission of the samurai Takezaki Suenaga, who fought in the campaign. The contemporaneous pictorial and textual record establishes the 1274 attack as a settled event distinct from the second invasion of 1281.',
+        source: {
+          externalId: 'src:moko-shurai-ekotoba-1293',
+          name: 'Mōko Shūrai Ekotoba (Illustrated Account of the Mongol Invasion), picture scroll commissioned by Takezaki Suenaga, c. 1275–1293.',
+          url: 'https://en.wikipedia.org/wiki/M%C5%8Dko_Sh%C5%ABrai_Ekotoba',
+          publishedAt: '1293-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
