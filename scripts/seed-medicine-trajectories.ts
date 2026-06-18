@@ -8018,6 +8018,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINE SAFETY & POLICY (2010s–2020s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Dengvaxia serostatus reversal — 2015–2017 ───────────────────────────────
+  {
+    externalId: 'trajectory:dengvaxia-dengue-vaccine-serostatus-reversal-2017',
+    text: 'Sanofi Pasteur\'s dengue vaccine Dengvaxia (CYD-TDV), licensed for children on the basis of ~60% efficacy and deployed in the Philippines\' mass school-based immunization program, was found on 29 November 2017 to increase the risk of severe dengue and hospitalization in recipients who had not been previously infected with dengue.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-01-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-08',
+        datePrecision: 'DAY',
+        reason: 'Villar et al. published the CYD15 phase 3 randomized trial in the New England Journal of Medicine, reporting 60.8% vaccine efficacy against virologically confirmed dengue in children aged 9–16 across five Latin American countries. This efficacy result, alongside the parallel Asian trial, was the empirical basis for licensure in roughly 20 countries and for the Philippines launching the world\'s first public dengue immunization program for schoolchildren in 2016.',
+        source: {
+          externalId: 'src:villar-nejm-dengvaxia-2015',
+          name: 'Villar L, Dayan GH, Arredondo-García JL, et al. Efficacy of a Tetravalent Dengue Vaccine in Children in Latin America. N Engl J Med. 2015;372(2):113-123.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1411037',
+          publishedAt: '2015-01-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-29',
+        datePrecision: 'DAY',
+        reason: 'On 29 November 2017 Sanofi announced that a new analysis stratified by baseline serostatus showed Dengvaxia increased the risk of severe dengue and hospitalization in dengue-naïve (seronegative) recipients. The reanalysis, formally published by Sridhar et al. in NEJM in 2018, prompted the WHO to restrict the vaccine to seropositive persons and the Philippines to suspend its program, reversing the prior basis for routine pediatric vaccination.',
+        source: {
+          externalId: 'src:sridhar-nejm-dengue-serostatus-2018',
+          name: 'Sridhar S, Luedtke A, Langevin E, et al. Effect of Dengue Serostatus on Dengue Vaccine Safety and Efficacy. N Engl J Med. 2018;379(4):327-340.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29897841/',
+          publishedAt: '2018-07-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NTP fluoride child IQ — 2024–2025 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:ntp-fluoride-child-iq-2024',
+    text: 'The U.S. National Toxicology Program concluded on 21 August 2024, with moderate confidence, that higher fluoride exposure — drinking water above 1.5 mg/L — is associated with lower IQ in children.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2024-08-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-08-21',
+        datePrecision: 'DAY',
+        reason: 'After years of internal review and litigation, the NTP released its state-of-the-science monograph concluding with moderate confidence that fluoride exposure above 1.5 mg/L is associated with lower child IQ, while stating there were insufficient data to assess the 0.7 mg/L level used in U.S. community water fluoridation. A U.S. federal agency formally recording a neurodevelopmental fluoride signal marked a transition from contested journal literature to an institutional finding.',
+        source: {
+          externalId: 'src:ntp-fluoride-monograph-2024',
+          name: 'National Toxicology Program. NTP Monograph on the State of the Science Concerning Fluoride Exposure and Neurodevelopment and Cognition: A Systematic Review. NIEHS. 21 August 2024.',
+          url: 'https://ntp.niehs.nih.gov/research/assessments/noncancer/completed/fluoride',
+          publishedAt: '2024-08-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2025-01-06',
+        datePrecision: 'DAY',
+        reason: 'The NTP authors published a peer-reviewed meta-analysis of 74 studies in JAMA Pediatrics reporting a statistically significant inverse association between fluoride exposure and child IQ. It was published alongside an editorial (\'Caution Needed in Interpreting the Evidence Base on Fluoride and IQ\') and intense methodological dispute over reliance on high-exposure foreign studies and the unresolved applicability to U.S. fluoridation levels, leaving the claim openly contested.',
+        source: {
+          externalId: 'src:taylor-jama-pediatrics-fluoride-iq-2025',
+          name: 'Taylor KW, Eftim SE, Sibrizzi CA, et al. Fluoride Exposure and Children\'s IQ Scores: A Systematic Review and Meta-Analysis. JAMA Pediatr. 2025;179(3):282-292.',
+          url: 'https://jamanetwork.com/journals/jamapediatrics/fullarticle/2828425',
+          publishedAt: '2025-01-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACIP Tdap every pregnancy — 2012 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:acip-tdap-every-pregnancy-2012',
+    text: 'On 24 October 2012 the U.S. Advisory Committee on Immunization Practices recommended a dose of Tdap during every pregnancy (27–36 weeks\' gestation), regardless of prior vaccination, to transfer maternal antibodies that protect newborns from pertussis before their own vaccinations begin.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2012-10-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-10-24',
+        datePrecision: 'DAY',
+        reason: 'Responding to resurgent infant pertussis deaths, ACIP voted to recommend Tdap during every pregnancy regardless of prior receipt — superseding its 2011 recommendation that exempted previously vaccinated women — on the rationale that placental transfer of maternal antipertussis antibodies protects infants during the vulnerable first two months. The recommendation, published in MMWR on 22 February 2013, established maternal immunization as standard U.S. obstetric practice and was subsequently shown effective at preventing infant pertussis.',
+        source: {
+          externalId: 'src:acip-tdap-pregnancy-mmwr-2013',
+          name: 'Advisory Committee on Immunization Practices (ACIP). Updated Recommendations for Use of Tetanus Toxoid, Reduced Diphtheria Toxoid, and Acellular Pertussis Vaccine (Tdap) in Pregnant Women — ACIP, 2012. MMWR Morb Mortal Wkly Rep. 2013;62(7):131-135.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23425962/',
+          publishedAt: '2013-02-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Acetaminophen in pregnancy & neurodevelopment — 2021–2024 ───────────────
+  {
+    externalId: 'trajectory:acetaminophen-pregnancy-neurodevelopment-2021',
+    text: 'An international consensus statement led by Ann Bauer published on 23 September 2021 in Nature Reviews Endocrinology asserted that prenatal acetaminophen (paracetamol) exposure may increase the risk of neurodevelopmental disorders such as autism and ADHD, calling for precautionary restriction of its use in pregnancy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-09-23',
+        datePrecision: 'DAY',
+        reason: 'A consensus statement signed by 91 scientists and clinicians synthesized observational evidence linking prenatal acetaminophen exposure to neurodevelopmental and urogenital disorders and recommended that pregnant individuals forego the drug unless medically indicated. The statement formally elevated a scattered observational signal into a recorded precautionary position, drawing an immediate dissenting commentary in the same journal warning against causal inference.',
+        source: {
+          externalId: 'src:bauer-nat-rev-endocrinol-paracetamol-2021',
+          name: 'Bauer AZ, Swan SH, Kriebel D, et al. Paracetamol use during pregnancy — a call for precautionary action. Nat Rev Endocrinol. 2021;17(12):757-766.',
+          url: 'https://www.nature.com/articles/s41574-021-00553-7',
+          publishedAt: '2021-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-04-09',
+        datePrecision: 'DAY',
+        reason: 'Ahlqvist et al. published a Swedish nationwide study of 2.48 million children in JAMA, finding that an initial association between prenatal acetaminophen and autism, ADHD, and intellectual disability disappeared in sibling-control analyses that adjust for familial confounding. The largest and methodologically strongest study to date undercut the causal interpretation, leaving the field contested between precautionary advocates and bodies such as ACOG that affirm acetaminophen as the safest analgesic in pregnancy.',
+        source: {
+          externalId: 'src:ahlqvist-jama-acetaminophen-2024',
+          name: 'Ahlqvist VH, Sjöqvist H, Dalman C, et al. Acetaminophen Use During Pregnancy and Children\'s Risk of Autism, ADHD, and Intellectual Disability. JAMA. 2024;331(14):1205-1214.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/2817406',
+          publishedAt: '2024-04-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
