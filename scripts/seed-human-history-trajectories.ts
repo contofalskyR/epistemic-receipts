@@ -6231,6 +6231,216 @@ const TRAJECTORIES: Trajectory[] = [
   // INDUSTRIAL & COLONIAL (1750–1900)
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ── Execution of Túpac Amaru II — Cusco, 18 May 1781 ─────────────────────────
+  {
+    externalId: 'trajectory:tupac-amaru-ii-execution-1781',
+    text: 'José Gabriel Condorcanqui (Túpac Amaru II), leader of the great Andean rebellion against Spanish colonial rule, was executed in the Plaza de Armas of Cusco on 18 May 1781.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1781-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1781-05-18',
+        datePrecision: 'DAY',
+        reason: 'After his rebellion (begun 4 November 1780 with the seizure of corregidor Antonio de Arriaga) was defeated and he was captured at Langui, the visitador José Antonio de Areche orders Túpac Amaru II executed in the main square of Cusco. He is forced to witness the killing of his wife Micaela Bastidas and son Hipólito; an attempt to quarter him with four horses fails and he is beheaded. The sentence and execution are recorded contemporaneously in Spanish colonial trial and administrative documents.',
+        source: {
+          externalId: 'src:areche-sentencia-tupac-amaru-1781',
+          name: 'Sentencia pronunciada por el visitador José Antonio de Areche contra José Gabriel Túpac Amaru, Cusco, 15–18 May 1781 (colonial trial record).',
+          url: 'https://es.wikisource.org/wiki/Sentencia_contra_T%C3%BApac_Amaru_II',
+          publishedAt: '1781-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The date, place, and manner of the execution are corroborated across the surviving trial dossier, royal correspondence, and the work of modern historians of the Túpac Amaru rebellion (e.g., Lewin, Walker). No source disputes the event; it is a fixed reference point of late-colonial Andean history.',
+        source: {
+          externalId: 'src:wikipedia-tupac-amaru-ii',
+          name: 'Túpac Amaru II — execution in the Plaza de Armas of Cusco, 18 May 1781.',
+          url: 'https://en.wikipedia.org/wiki/T%C3%BApac_Amaru_II',
+          publishedAt: '2003-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cry of Dolores — start of the Mexican War of Independence, 16 Sept 1810 ───
+  {
+    externalId: 'trajectory:cry-of-dolores-1810',
+    text: 'On 16 September 1810, the parish priest Miguel Hidalgo y Costilla issued the "Grito de Dolores" in the town of Dolores, calling the population to arms and igniting the Mexican War of Independence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1810-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '1810-09-16',
+        datePrecision: 'DAY',
+        reason: 'In the early hours of 16 September 1810, with the Querétaro conspiracy discovered, Hidalgo rings the church bell at Dolores and calls his congregation to rise against the Spanish colonial government. While the exact wording of the speech is disputed and reconstructed differently by historians, the event and its date are recorded in contemporaneous accounts and in the insurgents\' own subsequent proclamations.',
+        source: {
+          externalId: 'src:wikipedia-cry-of-dolores',
+          name: 'Cry of Dolores (Grito de Dolores) — Miguel Hidalgo, Dolores, 16 September 1810.',
+          url: 'https://en.wikipedia.org/wiki/Cry_of_Dolores',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1825-09-16',
+        datePrecision: 'DAY',
+        reason: 'After independence, 16 September is enshrined as Mexico\'s national independence day, commemorated annually with a ceremonial re-enactment of the Grito by the head of state. The date is fixed in Mexican law and historiography as the start of the independence movement, irrespective of debate over Hidalgo\'s precise words.',
+        source: {
+          externalId: 'src:wikipedia-mexican-independence-day',
+          name: 'Mexican War of Independence — commencement on 16 September 1810; date observed as Mexican Independence Day.',
+          url: 'https://en.wikipedia.org/wiki/Mexican_War_of_Independence',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Argentine Declaration of Independence — Tucumán, 9 July 1816 ──────────────
+  {
+    externalId: 'trajectory:argentine-independence-1816',
+    text: 'On 9 July 1816, the Congress of Tucumán meeting in San Miguel de Tucumán declared the independence of the United Provinces of South America (Argentina) from the Spanish crown.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1816-07-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1816-07-09',
+        datePrecision: 'DAY',
+        reason: 'Twenty-nine delegates of the Congress of Tucumán, with Francisco Narciso de Laprida presiding, vote and sign the Act of Independence declaring the United Provinces free of Spanish and all foreign domination. The declaration, drafted by Juan José Paso, is the founding instrument of Argentine sovereignty and was translated into Quechua and Aymara for the Andean population.',
+        source: {
+          externalId: 'src:acta-independencia-argentina-1816',
+          name: 'Acta de la Independencia de las Provincias Unidas en Sud América, Congreso de Tucumán, 9 July 1816.',
+          url: 'https://es.wikisource.org/wiki/Acta_de_la_Independencia_Argentina',
+          publishedAt: '1816-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-07-09',
+        datePrecision: 'DAY',
+        reason: 'The original Act was lost but a contemporaneous copy is preserved in the General Archive of the Argentine Nation, and 9 July is the national independence holiday. The date, place, and signatories are uncontested across Argentine historiography and official record.',
+        source: {
+          externalId: 'src:wikipedia-argentine-declaration-independence',
+          name: 'Argentine Declaration of Independence — Congress of Tucumán, 9 July 1816.',
+          url: 'https://en.wikipedia.org/wiki/Argentine_Declaration_of_Independence',
+          publishedAt: '2016-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cry of Ipiranga — independence of Brazil, 7 September 1822 ────────────────
+  {
+    externalId: 'trajectory:cry-of-ipiranga-1822',
+    text: 'On 7 September 1822, Prince Regent Pedro declared the independence of Brazil from Portugal at the Ipiranga brook near São Paulo (the "Grito do Ipiranga").',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1822-09-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1822-09-07',
+        datePrecision: 'DAY',
+        reason: 'After receiving letters from Lisbon and from the regent Maria Leopoldina and the Council of Ministers urging a break, Pedro proclaims Brazilian independence on the bank of the Ipiranga brook, ending 322 years of Portuguese colonial rule. He is acclaimed Emperor Pedro I of Brazil shortly afterward.',
+        source: {
+          externalId: 'src:wikipedia-cry-of-ipiranga',
+          name: 'Cry of Ipiranga (Grito do Ipiranga) — Pedro I declares Brazilian independence, 7 September 1822.',
+          url: 'https://en.wikipedia.org/wiki/Cry_of_Ipiranga',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1822-12-01',
+        datePrecision: 'DAY',
+        reason: 'Pedro is formally acclaimed and crowned the first Emperor of Brazil on 1 December 1822, and 7 September is established as Brazil\'s Independence Day. The date and event are fixed in Brazilian law and historiography and are uncontested.',
+        source: {
+          externalId: 'src:wikipedia-independence-of-brazil',
+          name: 'Independence of Brazil — declared 7 September 1822; Pedro I acclaimed Emperor 12 October / crowned 1 December 1822.',
+          url: 'https://en.wikipedia.org/wiki/Independence_of_Brazil',
+          publishedAt: '2010-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Battle of Ayacucho — end of Spanish rule in South America, 9 Dec 1824 ─────
+  {
+    externalId: 'trajectory:battle-of-ayacucho-1824',
+    text: 'On 9 December 1824, patriot forces under Antonio José de Sucre defeated the Spanish royalist army at the Battle of Ayacucho, capturing Viceroy José de la Serna and effectively ending Spanish rule in continental South America.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1824-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1824-12-09',
+        datePrecision: 'DAY',
+        reason: 'On the plain of Ayacucho, the United Liberation Army of Peru and Gran Colombia under Sucre routs the royalist forces of the Viceroyalty of Peru; Viceroy de la Serna is wounded and captured, and his deputy José de Canterac signs the Capitulation of Ayacucho the same day, surrendering the remaining royalist army. Sucre\'s battle report and the signed capitulation are contemporaneous primary records.',
+        source: {
+          externalId: 'src:capitulacion-ayacucho-1824',
+          name: 'Capitulación de Ayacucho, signed by José de Canterac and Antonio José de Sucre, 9 December 1824.',
+          url: 'https://es.wikisource.org/wiki/Capitulaci%C3%B3n_de_Ayacucho',
+          publishedAt: '1824-12-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Ayacucho is uniformly recognized as the decisive battle that secured the independence of Peru and ensured it for the rest of Spanish South America (though Callao and Chiloé held out into 1826). The date, outcome, and significance are settled across Latin American historiography.',
+        source: {
+          externalId: 'src:wikipedia-battle-of-ayacucho',
+          name: 'Battle of Ayacucho — decisive patriot victory, 9 December 1824.',
+          url: 'https://en.wikipedia.org/wiki/Battle_of_Ayacucho',
+          publishedAt: '2000-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Discovery of Neptune — prediction confirmed by observation ───────────────
   {
     externalId: 'trajectory:neptune-discovery-1846',
