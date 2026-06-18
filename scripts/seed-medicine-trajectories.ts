@@ -4500,6 +4500,228 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CHEMOTHERAPY ERA (pre-1950) / EARLY PHARMACOLOGY
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Ehrlich & Hata — Salvarsan / arsphenamine 1910 ──────────────────────────
+  {
+    externalId: 'trajectory:ehrlich-hata-salvarsan-syphilis-1910',
+    text: 'Paul Ehrlich and Sahachiro Hata announced on 19 April 1910 at the Congress for Internal Medicine in Wiesbaden that arsphenamine (compound \'606\', marketed as Salvarsan) cures experimental and human syphilis caused by Treponema pallidum, establishing the first deliberately designed effective chemotherapeutic agent — the original \'magic bullet\'.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1910-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1910-04-19',
+        datePrecision: 'DAY',
+        reason: 'At the Wiesbaden Congress for Internal Medicine, Ehrlich and Hata reported that arsenical compound 606 (arsphenamine) eradicated spirochaetes in animals and early human syphilis cases. This was the first agent rationally selected from a chemical screen to kill a specific pathogen without killing the host, founding the discipline of chemotherapy.',
+        source: {
+          externalId: 'src:williams-arsphenamine-magic-bullet-jrsm-2009',
+          name: 'Williams KJ. The introduction of \'chemotherapy\' using arsphenamine — the first magic bullet. J R Soc Med. 2009;102(8):343–348. (PMC2726818)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2726818/',
+          publishedAt: '2009-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1910-12-31',
+        datePrecision: 'YEAR',
+        reason: 'Hoechst marketed Salvarsan from 1910; by the end of that year roughly 65,000 doses had been administered to more than 20,000 patients worldwide, and it rapidly became the standard treatment for syphilis until penicillin superseded it in the 1940s. Rapid clinical and commercial adoption settled the efficacy claim across the medical community.',
+        source: {
+          externalId: 'src:bosch-rosich-ehrlich-pharmacology-2008',
+          name: 'Bosch F, Rosich L. The contributions of Paul Ehrlich to pharmacology: a tribute on the occasion of the centenary of his Nobel Prize. Pharmacology. 2008;82(3):171–179. (PMC2790789)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2790789/',
+          publishedAt: '2008-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Minot & Murphy — liver therapy pernicious anemia 1926 ───────────────────
+  {
+    externalId: 'trajectory:minot-murphy-liver-therapy-pernicious-anemia-1926',
+    text: 'George Minot and William Murphy reported in JAMA on 14 August 1926 that a special diet rich in liver produces prompt remission in patients with pernicious anemia, converting a previously uniformly fatal disease into a treatable one.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-08-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-08-14',
+        datePrecision: 'DAY',
+        reason: 'Minot and Murphy reported that feeding large quantities of liver induced reticulocyte responses and clinical remission in 45 consecutive patients with pernicious anemia. This was the first effective therapy for a disease that had been invariably fatal, and it later led to the isolation of vitamin B12.',
+        source: {
+          externalId: 'src:minot-murphy-liver-pernicious-anemia-jama-1926',
+          name: 'Minot GR, Murphy WP. Treatment of pernicious anemia by a special diet. JAMA. 1926;87(7):470–476. (Full-text reprint: Yale J Biol Med. 2001;74(5):341–353, PMC2588744)',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2588744/',
+          publishedAt: '1926-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-12-10',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Prize in Physiology or Medicine 1934 was awarded jointly to George Whipple, George Minot, and William Murphy for their discoveries concerning liver therapy in anemias. The award marked institutional acceptance that dietary/liver therapy was a genuine cure for pernicious anemia.',
+        source: {
+          externalId: 'src:nobel-medicine-1934-liver-therapy',
+          name: 'The Nobel Prize in Physiology or Medicine 1934 — George H. Whipple, George R. Minot, William P. Murphy, \'for their discoveries concerning liver therapy in cases of anaemia.\' Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1934/summary/',
+          publishedAt: '1934-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENZYME REPLACEMENT THERAPY ERA (2000s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Laronidase / Aldurazyme — first MPS I treatment 2003 ────────────────────
+  {
+    externalId: 'trajectory:laronidase-aldurazyme-first-mps-i-treatment-2003',
+    text: 'Recombinant human alpha-L-iduronidase (laronidase, Aldurazyme) is an effective enzyme replacement therapy for mucopolysaccharidosis I (Hurler/Hurler-Scheie/Scheie disease) — a claim first evidenced in Kakkis et al.\'s NEJM trial of 18 January 2001 and settled by the FDA\'s approval of 30 April 2003, the first treatment ever approved for MPS I.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-01-18',
+        datePrecision: 'DAY',
+        reason: 'Kakkis and colleagues reported a 52-week study of 10 patients showing that recombinant human alpha-L-iduronidase reduced hepatic lysosomal glycosaminoglycan storage and ameliorated clinical manifestations of MPS I. This provided the first human evidence that enzyme replacement could treat this lysosomal storage disorder.',
+        source: {
+          externalId: 'src:kakkis-rhidu-mps-i-nejm-2001',
+          name: 'Kakkis ED, Muenzer J, Tiller GE, et al. Enzyme-replacement therapy in mucopolysaccharidosis I. N Engl J Med. 2001;344(3):182–188. PMID 11172140.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11172140/',
+          publishedAt: '2001-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Aldurazyme (laronidase, BLA 125058) on 30 April 2003 with priority review and seven-year orphan-drug exclusivity — the first drug ever approved to treat MPS I. The phase 3 randomized trial (Wraith et al., J Pediatr 2004;144:581–588) subsequently confirmed improved respiratory function and physical capacity.',
+        source: {
+          externalId: 'src:fda-aldurazyme-bla-125058-2003',
+          name: 'U.S. FDA, Drugs@FDA. Aldurazyme (laronidase), BLA 125058. Approved April 30, 2003.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125058',
+          publishedAt: '2003-04-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Agalsidase beta / Fabrazyme — first Fabry ERT 2003 ──────────────────────
+  {
+    externalId: 'trajectory:agalsidase-beta-fabrazyme-first-fabry-ert-2003',
+    text: 'Recombinant human alpha-galactosidase A (agalsidase beta, Fabrazyme) clears globotriaosylceramide deposits in Fabry disease — a claim first evidenced in Eng et al.\'s placebo-controlled NEJM trial of 5 July 2001 and settled by the FDA\'s accelerated approval of 24 April 2003, the first enzyme replacement therapy approved for Fabry disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-07-05',
+        datePrecision: 'DAY',
+        reason: 'Eng and the International Collaborative Fabry Disease Study Group reported a double-blind, placebo-controlled trial in 58 patients showing that agalsidase beta cleared microvascular endothelial deposits of globotriaosylceramide from the kidneys, heart, and skin in 69% of treated patients versus none on placebo. This was the first controlled evidence that ERT could reverse the underlying lipid storage in Fabry disease.',
+        source: {
+          externalId: 'src:eng-agalsidase-fabry-nejm-2001',
+          name: 'Eng CM, Guffon N, Wilcox WR, et al. Safety and efficacy of recombinant human alpha-galactosidase A replacement therapy in Fabry\'s disease. N Engl J Med. 2001;345(1):9–16. PMID 11439963.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11439963/',
+          publishedAt: '2001-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-04-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated (conditional) approval to Fabrazyme (agalsidase beta, BLA 103979) on 24 April 2003 — the first ERT approved in the U.S. for Fabry disease — based on the surrogate endpoint of cleared endothelial Gb3 deposits. Full approval followed in 2021 after confirmatory clinical-benefit data.',
+        source: {
+          externalId: 'src:fda-fabrazyme-bla-103979-2003',
+          name: 'U.S. FDA, Drugs@FDA. Fabrazyme (agalsidase beta), BLA 103979. Accelerated approval April 24, 2003.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=103979',
+          publishedAt: '2003-04-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PRECISION MEDICINE ERA (2010s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Ivacaftor / Kalydeco — first CFTR modulator 2012 ────────────────────────
+  {
+    externalId: 'trajectory:ivacaftor-kalydeco-first-cftr-modulator-2012',
+    text: 'Ivacaftor (Kalydeco), a CFTR potentiator, improves lung function in cystic fibrosis patients carrying the G551D gating mutation — a claim first evidenced in Ramsey et al.\'s NEJM trial of 3 November 2011 and settled by the FDA\'s approval of 31 January 2012, the first drug to treat the underlying molecular cause of cystic fibrosis.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-03',
+        datePrecision: 'DAY',
+        reason: 'Ramsey and colleagues reported a randomized, double-blind, placebo-controlled trial showing that ivacaftor, a small-molecule potentiator of the defective CFTR protein, improved FEV1 by 10.6 percentage points through 24 weeks in patients aged 12 and older with the G551D mutation. This was the first demonstration that a drug could correct the function of the mutant CFTR channel rather than merely treat symptoms.',
+        source: {
+          externalId: 'src:ramsey-ivacaftor-g551d-nejm-2011',
+          name: 'Ramsey BW, Davies J, McElvaney NG, et al. A CFTR potentiator in patients with cystic fibrosis and the G551D mutation. N Engl J Med. 2011;365(18):1663–1672. PMID 22047557.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22047557/',
+          publishedAt: '2011-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kalydeco (ivacaftor, NDA 203188) on 31 January 2012 for cystic fibrosis patients aged 6 and older with the G551D-CFTR mutation — roughly three months after submission, one of the fastest approvals on record. It was the first approved CFTR modulator and the first agent to address the underlying cause of CF rather than its complications.',
+        source: {
+          externalId: 'src:fda-kalydeco-nda-203188-2012',
+          name: 'U.S. FDA, Drugs@FDA. Kalydeco (ivacaftor), NDA 203188. Approved January 31, 2012.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=203188',
+          publishedAt: '2012-01-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
