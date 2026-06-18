@@ -52278,6 +52278,236 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (1990–present): genomics, epidemics, climate, and AI
+  // (non-Western perspectives prioritized)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── First public release of the SARS-CoV-2 genome ───────────────────────────
+  {
+    externalId: 'trajectory:sars-cov-2-genome-release-2020',
+    text: 'On 11 January 2020 the first complete genome sequence of the novel coronavirus (SARS-CoV-2) from the Wuhan outbreak was released publicly, posted to virological.org by Edward Holmes on behalf of a consortium led by Yong-Zhen Zhang of Fudan University, Shanghai.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-01-11',
+        datePrecision: 'DAY',
+        reason: 'A coronavirus genome sequenced from a respiratory-disease case in the Wuhan outbreak was posted openly to the virological.org forum by Edward C. Holmes (University of Sydney) on behalf of the team led by Professor Yong-Zhen Zhang (Fudan University, Shanghai), with the invitation to "download, share, use, and analyze this data." The sequence was deposited in GenBank as accession MN908947. The open release — days after the cluster of cases was first reported — let laboratories worldwide immediately begin developing PCR diagnostics and vaccine candidates.',
+        source: {
+          externalId: 'src:virological-2019ncov-genome-2020',
+          name: 'Holmes E.C. (on behalf of Zhang Y.-Z. consortium). "Novel 2019 coronavirus genome." virological.org, 11 January 2020. GenBank MN908947.',
+          url: 'https://virological.org/t/novel-2019-coronavirus-genome/319',
+          publishedAt: '2020-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-02-03',
+        datePrecision: 'DAY',
+        reason: 'Wu F., Zhao S., Zhang Y.-Z. and colleagues published the peer-reviewed characterization of the genome in Nature ("A new coronavirus associated with human respiratory disease in China"), confirming a novel betacoronavirus most closely related to bat SARS-like coronaviruses. Independent groups (including Zhou P. et al. in the same Nature issue) reported concordant sequences, settling the identity of the new pathogen and its sequence within weeks of the initial release.',
+        source: {
+          externalId: 'src:wu-zhang-new-coronavirus-nature-2020',
+          name: 'Wu F. et al. "A new coronavirus associated with human respiratory disease in China." Nature 579, 265–269 (2020). PMID: 32015508.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32015508/',
+          publishedAt: '2020-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO global alert on SARS (atypical pneumonia) ───────────────────────────
+  {
+    externalId: 'trajectory:who-sars-global-alert-2003',
+    text: 'On 12 March 2003 the World Health Organization issued a global alert about cases of a severe atypical pneumonia (later named SARS) spreading among health-care workers in Viet Nam, Hong Kong, and Guangdong province, China.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2003-03-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-12',
+        datePrecision: 'DAY',
+        reason: 'WHO issued a global alert reporting outbreaks of a severe form of pneumonia affecting hospital staff in Hanoi (Viet Nam), Hong Kong SAR, and Guangdong province, China — including roughly 20 ill staff in one Hanoi hospital and 23 affected health-care workers in Hong Kong. The alert recommended isolation and barrier nursing while the cause remained unknown, formally recording the emergence of what would be named Severe Acute Respiratory Syndrome (SARS) and triggering an unprecedented coordinated international investigation.',
+        source: {
+          externalId: 'src:who-sars-global-alert-2003',
+          name: 'World Health Organization. "WHO issues a global alert about cases of atypical pneumonia." Geneva, 12 March 2003.',
+          url: 'https://www.who.int/news/item/12-03-2003-who-issues-a-global-alert-about-cases-of-atypical-pneumonia',
+          publishedAt: '2003-03-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-05-15',
+        datePrecision: 'DAY',
+        reason: 'A novel coronavirus was identified as the causative agent of SARS by the WHO collaborative laboratory network. Ksiazek T.G. et al. and Drosten C. et al. published the identification in the New England Journal of Medicine, establishing the etiology of the disease only weeks after the alert. The peer-reviewed identification of SARS-CoV settled the causal question that the March alert had left open.',
+        source: {
+          externalId: 'src:ksiazek-novel-coronavirus-sars-nejm-2003',
+          name: 'Ksiazek T.G. et al. "A Novel Coronavirus Associated with Severe Acute Respiratory Syndrome." N Engl J Med 348, 1953–1966 (2003). PMID: 12690091.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12690091/',
+          publishedAt: '2003-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── He Jiankui announces the first CRISPR gene-edited babies ─────────────────
+  {
+    externalId: 'trajectory:he-jiankui-crispr-babies-2018',
+    text: 'On 25–26 November 2018 Chinese scientist He Jiankui announced the birth of the first human babies (twin girls) with CRISPR-edited genomes, claiming he had disabled the CCR5 gene to confer HIV resistance.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2018-11-26',
+        datePrecision: 'DAY',
+        reason: 'MIT Technology Review (Antonio Regalado) revealed on 25 November 2018 that He Jiankui\'s team at the Southern University of Science and Technology in Shenzhen had been recruiting couples to create gene-edited babies; He confirmed the claim the same day via a series of YouTube videos and to the Associated Press, stating that twin girls with CRISPR-edited CCR5 genes had been born. The announcement put the claim on the public record ahead of any peer-reviewed publication.',
+        source: {
+          externalId: 'src:regalado-crispr-babies-mit-techreview-2018',
+          name: 'Regalado A. "EXCLUSIVE: Chinese scientists are creating CRISPR babies." MIT Technology Review, 25 November 2018.',
+          url: 'https://www.technologyreview.com/2018/11/25/138962/exclusive-chinese-scientists-are-creating-crispr-babies/',
+          publishedAt: '2018-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-29',
+        datePrecision: 'DAY',
+        reason: 'At the Second International Summit on Human Genome Editing in Hong Kong (27–29 November 2018), where He presented his work, the organizing committee — chaired by Nobel laureate David Baltimore — issued a statement condemning the procedure as "irresponsible," citing an inadequate medical indication, a poorly designed protocol, and a failure to meet ethical standards. With no peer-reviewed data released, the scientific community treated both the claim\'s validity and its conduct as deeply contested.',
+        source: {
+          externalId: 'src:he-jiankui-affair-summit-2018',
+          name: '"He Jiankui affair" — Second International Summit on Human Genome Editing organizing committee statement, Hong Kong, 29 November 2018.',
+          url: 'https://en.wikipedia.org/wiki/He_Jiankui_affair',
+          publishedAt: '2018-11-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-12-30',
+        datePrecision: 'DAY',
+        reason: 'A Shenzhen court found He Jiankui guilty of the illegal practice of medicine, sentencing him to three years in prison and a fine of 3 million yuan; two collaborators received lesser sentences. The conviction followed a Guangdong provincial investigation that confirmed the gene editing had been conducted and that the children had been born — officially settling the factual reality of the births while affirming the work was illegal and unethical.',
+        source: {
+          externalId: 'src:he-jiankui-conviction-2019',
+          name: '"He Jiankui affair" — Shenzhen Nanshan District People\'s Court verdict, 30 December 2019 (Xinhua reporting).',
+          url: 'https://en.wikipedia.org/wiki/He_Jiankui_affair',
+          publishedAt: '2019-12-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── AlphaGo defeats Lee Sedol ───────────────────────────────────────────────
+  {
+    externalId: 'trajectory:alphago-defeats-lee-sedol-2016',
+    text: 'Between 9 and 15 March 2016 in Seoul, DeepMind\'s AlphaGo defeated Lee Sedol, one of the world\'s top Go players, by four games to one — the first time a computer program beat a top human professional at Go in a full match without handicap.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2016-03-15',
+        datePrecision: 'DAY',
+        reason: 'In a five-game match held 9–15 March 2016 in Seoul, South Korea, and watched by over 200 million people worldwide, AlphaGo defeated Lee Sedol — winner of 18 world titles — by four games to one, Lee taking only the fourth game (13 March). The result was officially recorded; the Korea Baduk Association subsequently awarded AlphaGo an honorary 9-dan ranking. The match was widely regarded as a milestone reached roughly a decade earlier than experts had predicted.',
+        source: {
+          externalId: 'src:alphago-vs-lee-sedol-2016',
+          name: '"AlphaGo versus Lee Sedol" — five-game match, Seoul, 9–15 March 2016 (final score 4–1).',
+          url: 'https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol',
+          publishedAt: '2016-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-10-18',
+        datePrecision: 'DAY',
+        reason: 'Silver D. et al. published "Mastering the game of Go without human knowledge" in Nature, documenting AlphaGo Zero — a successor that learned solely from self-play and decisively surpassed the version that beat Lee Sedol. The peer-reviewed account settled, within the expert literature, that superhuman Go play by machine learning was a robust and reproducible result rather than a one-off exhibition.',
+        source: {
+          externalId: 'src:silver-alphago-zero-nature-2017',
+          name: 'Silver D. et al. "Mastering the game of Go without human knowledge." Nature 550, 354–359 (2017). PMID: 29052630.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29052630/',
+          publishedAt: '2017-10-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── The Paris Agreement on climate change ───────────────────────────────────
+  {
+    externalId: 'trajectory:paris-agreement-adopted-2015',
+    text: 'On 12 December 2015 the Paris Agreement on climate change was adopted by 195 Parties at the UN Climate Change Conference (COP21) in Paris, committing signatories to limit global warming to well below 2°C above pre-industrial levels.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-12-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-12-12',
+        datePrecision: 'DAY',
+        reason: 'After two weeks of negotiations at COP21, 195 Parties to the UN Framework Convention on Climate Change adopted the Paris Agreement, a legally binding international treaty setting the long-term goal of holding the global average temperature rise to well below 2°C — and pursuing efforts to limit it to 1.5°C — above pre-industrial levels, through nationally determined contributions. The adoption formally recorded the first universal, legally binding global climate accord.',
+        source: {
+          externalId: 'src:unfccc-paris-agreement-adopted-2015',
+          name: 'UNFCCC. "The Paris Agreement" — adopted by 195 Parties at COP21, Paris, 12 December 2015.',
+          url: 'https://unfccc.int/process-and-meetings/the-paris-agreement',
+          publishedAt: '2015-12-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-11-04',
+        datePrecision: 'DAY',
+        reason: 'The Paris Agreement entered into force on 4 November 2016, 30 days after the threshold of ratification by at least 55 Parties accounting for at least 55% of global greenhouse-gas emissions was met. Entry into force converted the adopted text into binding international law, settling its operative status under the UNFCCC.',
+        source: {
+          externalId: 'src:unfccc-paris-agreement-in-force-2016',
+          name: 'UNFCCC. "The Paris Agreement" — entry into force, 4 November 2016.',
+          url: 'https://unfccc.int/process-and-meetings/the-paris-agreement',
+          publishedAt: '2016-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Upsert logic (identical to seed-historical-trajectories.ts) ────────────
