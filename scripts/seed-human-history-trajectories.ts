@@ -15505,6 +15505,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Super-Kamiokande announces evidence that neutrinos have mass ────────────
+  {
+    externalId: 'trajectory:super-kamiokande-neutrino-oscillation-1998',
+    text: 'The Super-Kamiokande collaboration announced the first compelling evidence for atmospheric neutrino oscillation — and thus that neutrinos have mass — at the Neutrino \'98 conference in Takayama, Japan, on 5 June 1998.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-06-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-06-05',
+        datePrecision: 'DAY',
+        reason: 'At the XVIIIth International Conference on Neutrino Physics and Astrophysics (Neutrino \'98) in Takayama, Japan, Takaaki Kajita presented Super-Kamiokande data showing a zenith-angle-dependent deficit of atmospheric muon neutrinos. The deficit was interpreted as evidence that muon neutrinos oscillate into another flavour during flight — which is possible only if neutrinos have non-zero mass, contradicting the Standard Model assumption of massless neutrinos. The result was submitted as Fukuda et al. to Physical Review Letters on 3 July 1998.',
+        source: {
+          externalId: 'src:super-k-atmospheric-oscillation-1998',
+          name: 'Fukuda Y. et al. (Super-Kamiokande Collaboration). "Evidence for oscillation of atmospheric neutrinos." Phys. Rev. Lett. 81:1562–1567 (1998).',
+          url: 'https://arxiv.org/abs/hep-ex/9807003',
+          publishedAt: '1998-07-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-10-06',
+        datePrecision: 'DAY',
+        reason: 'Independent corroboration followed from the Sudbury Neutrino Observatory (2001–2002), which resolved the solar neutrino problem by showing flavour change, and from accelerator and reactor experiments (K2K, KamLAND, MINOS). On 6 October 2015 the Nobel Prize in Physics was awarded jointly to Takaaki Kajita and Arthur B. McDonald "for the discovery of neutrino oscillations, which shows that neutrinos have mass." That neutrinos oscillate and carry mass is settled and uncontested.',
+        source: {
+          externalId: 'src:nobel-physics-2015-neutrino-mass',
+          name: 'Nobel Prize in Physics 2015 — Takaaki Kajita and Arthur B. McDonald, for the discovery of neutrino oscillations.',
+          url: 'https://en.wikipedia.org/wiki/Nobel_Prize_in_Physics',
+          publishedAt: '2015-10-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Yamanaka reports induced pluripotent stem cells from mouse fibroblasts ──
+  {
+    externalId: 'trajectory:yamanaka-ips-cells-2006',
+    text: 'Shinya Yamanaka\'s laboratory reported that mature mouse fibroblasts could be reprogrammed into induced pluripotent stem cells (iPSCs) using four defined transcription factors, published in Cell on 25 August 2006.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-08-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-08-25',
+        datePrecision: 'DAY',
+        reason: 'Kazutoshi Takahashi and Shinya Yamanaka of Kyoto University published "Induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors" in Cell (126:663–676). They showed that introducing just four transcription factors — Oct3/4, Sox2, c-Myc, and Klf4 — could reprogram ordinary mouse fibroblasts into embryonic-stem-cell-like pluripotent cells, a result so surprising it was initially met with scepticism.',
+        source: {
+          externalId: 'src:takahashi-yamanaka-ips-2006',
+          name: 'Takahashi K, Yamanaka S. "Induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors." Cell 126(4):663–676 (2006). PMID 16904174.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16904174/',
+          publishedAt: '2006-08-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-10-08',
+        datePrecision: 'DAY',
+        reason: 'The method was rapidly reproduced by laboratories worldwide, and in November 2007 Yamanaka\'s group and (independently) James Thomson\'s group reported the generation of human iPSCs. On 8 October 2012 the Nobel Prize in Physiology or Medicine was awarded to Shinya Yamanaka and John B. Gurdon "for the discovery that mature cells can be reprogrammed to become pluripotent." The reprogramming result is settled and foundational to regenerative medicine.',
+        source: {
+          externalId: 'src:nobel-medicine-2012-ips-cells',
+          name: 'Induced pluripotent stem cell — human iPSCs (2007) and 2012 Nobel Prize in Physiology or Medicine (Yamanaka and Gurdon).',
+          url: 'https://en.wikipedia.org/wiki/Induced_pluripotent_stem_cell',
+          publishedAt: '2012-10-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sinking of the MV Sewol ferry ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:sewol-ferry-sinking-2014',
+    text: 'The South Korean ferry MV Sewol capsized and sank off Jindo on 16 April 2014, killing 304 of the 476 people aboard — most of them students from Danwon High School.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-04-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'PUBLIC',
+        occurredAt: '2014-04-16',
+        datePrecision: 'DAY',
+        reason: 'On the morning of 16 April 2014 the Incheon-to-Jeju ferry MV Sewol made a sharp turn, listed, capsized and sank in the waters off Jindo. The disaster unfolded on live national television as the coast guard struggled to rescue passengers; 304 of the 476 people aboard died, including roughly 250 students from Danwon High School on a school trip. The event was recorded contemporaneously by broadcasters, the coast guard, and survivors.',
+        source: {
+          externalId: 'src:sewol-sinking-2014',
+          name: 'Sinking of MV Sewol, 16 April 2014 (Wikipedia — synthesis of the contemporaneous record).',
+          url: 'https://en.wikipedia.org/wiki/Sinking_of_MV_Sewol',
+          publishedAt: '2014-04-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2015-04-28',
+        datePrecision: 'DAY',
+        reason: 'On 28 April 2015 the Gwangju High Court convicted Captain Lee Joon-seok of murder for abandoning passengers and sentenced him to life imprisonment, increasing the lower court\'s sentence; the South Korean Supreme Court upheld the verdict on 12 November 2015. The death toll and the captain\'s culpability for the sinking are settled in the judicial record.',
+        source: {
+          externalId: 'src:sewol-captain-conviction-2015',
+          name: 'Sinking of MV Sewol — Captain Lee Joon-seok convicted of murder (28 April 2015), upheld by Supreme Court (12 November 2015).',
+          url: 'https://en.wikipedia.org/wiki/Sinking_of_MV_Sewol',
+          publishedAt: '2015-04-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Impeachment and removal of President Park Geun-hye ──────────────────────
+  {
+    externalId: 'trajectory:park-geun-hye-impeachment-2017',
+    text: 'South Korean President Park Geun-hye was removed from office after the Constitutional Court unanimously upheld her impeachment on 10 March 2017 — the first South Korean president ousted by impeachment.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-09',
+        datePrecision: 'DAY',
+        reason: 'On 9 December 2016 the National Assembly voted 234–56 to impeach President Park Geun-hye over the Choi Soon-sil influence-peddling and corruption scandal. Her presidential powers were immediately suspended and transferred to the prime minister, pending review by the Constitutional Court. Whether the impeachment would be upheld — and Park permanently removed — remained an open question.',
+        source: {
+          externalId: 'src:park-assembly-impeachment-vote-2016',
+          name: 'Impeachment of Park Geun-hye — National Assembly vote, 9 December 2016 (234–56).',
+          url: 'https://en.wikipedia.org/wiki/Impeachment_of_Park_Geun-hye',
+          publishedAt: '2016-12-09',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2017-03-10',
+        datePrecision: 'DAY',
+        reason: 'On 10 March 2017 the Constitutional Court of Korea ruled unanimously (8–0) to uphold the National Assembly\'s impeachment, immediately removing Park Geun-hye from the presidency. She became the first democratically elected South Korean president to be ousted by impeachment; she was later criminally convicted and imprisoned. The removal and its date are settled on the public and judicial record.',
+        source: {
+          externalId: 'src:park-constitutional-court-removal-2017',
+          name: 'Impeachment of Park Geun-hye — Constitutional Court unanimous ruling upholding removal, 10 March 2017.',
+          url: 'https://en.wikipedia.org/wiki/Impeachment_of_Park_Geun-hye',
+          publishedAt: '2017-03-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Hwang Woo-suk's cloned human stem-cell results exposed as fabricated ────
   {
     externalId: 'trajectory:hwang-woosuk-stem-cell-fraud-2006',
@@ -66050,6 +66218,95 @@ const TRAJECTORIES: Trajectory[] = [
           externalId: 'src:fleet-mandasor-silk-weavers',
           name: 'Fleet J.F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888), Mandasor inscription of the silk-weavers no. 18.',
           url: 'https://siddham.network/inscription/in00040/',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANCIENT & CLASSICAL (pre-500 CE) — South Asia (Gupta & Aulikara epigraphy)
+  // added 2026-06-18
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gangadhar stone inscription of Viśvavarman — Vishnu temple and shrine of the Mothers ──
+  {
+    externalId: 'trajectory:gangadhar-vishvavarman-mothers-shrine-423',
+    text: 'The Gangadhar stone inscription records that Mayūrākṣaka, counsellor of the Aulikara king Viśvavarman, built a temple of Vishnu and an adjoining shrine of the Divine Mothers (Mātṛkas) at Gangadhar in the Mālava year 480, on the bright thirteenth of the month Kārttika (423 CE); the eulogy contains the earliest known datable use of the word ḍākinī.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0423-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0423-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Sanskrit inscription dates itself precisely — when 480 years of the Mālava reckoning had elapsed, on the thirteenth lunar day of the bright half of the month Kārttika (423 CE) — and records that Mayūrākṣaka, the counsellor of the Aulikara ruler Viśvavarman (son of Naravarman), caused to be built a shrine of the god Vishnu together with a terrifying temple of the Mothers (Mātṛkas) filled with ḍākinīs. The dated stone is the contemporaneous primary record of the foundation and the earliest securely dated occurrence of the term ḍākinī in Indian religious history.',
+        source: {
+          externalId: 'src:gangadhar-vishvavarman-inscription',
+          name: 'Gangadhar stone inscription of Viśvavarman, Mālava year 480 (Kārttika bright 13, 423 CE), Sanskrit (contemporaneous Aulikara record of a Vishnu temple and shrine of the Mātṛkas).',
+          url: 'https://en.wikipedia.org/wiki/Gangadhar_Stone_Inscription_of_Vi%C5%9Bvavarman',
+          publishedAt: '0423-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The inscription was edited and published by John Faithfull Fleet in Inscriptions of the Early Gupta Kings (Corpus Inscriptionum Indicarum, vol. III, 1888) and later re-edited by D. C. Sircar. Its Mālava-era date, its account of the temple foundation under Viśvavarman, and its noted first use of ḍākinī are settled in the scholarship of Gupta-period epigraphy and the history of the Mātṛkā and Tantric cults.',
+        source: {
+          externalId: 'src:fleet-sircar-gangadhar-inscription',
+          name: 'Fleet J.F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888); re-edited by D. C. Sircar — Gangadhar inscription of Viśvavarman.',
+          url: 'https://en.wikipedia.org/wiki/Gangadhar_Stone_Inscription_of_Vi%C5%9Bvavarman',
+          publishedAt: '1888-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Eran pillar inscription of Budhagupta — flagstaff of Janārdana ───────────
+  {
+    externalId: 'trajectory:eran-pillar-budhagupta-484',
+    text: 'The Eran pillar inscription of the Gupta emperor Budhagupta records that the brothers Mātṛviṣṇu (a mahārāja) and Dhanyaviṣṇu raised a flagstaff (dhvaja-stambha) in honour of the god Janārdana (Vishnu) at Eran in the month of Āṣāḍha of the Gupta year 165 (484 CE); the monolithic Garuda pillar still stands and is among the few precisely dated monuments fixing Budhagupta\'s reign.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '0484-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '0484-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Sanskrit inscription on the red-sandstone pillar dates itself to the month of Āṣāḍha (the twelfth lunar day of the bright fortnight) in the Gupta year 165 — saṁ 100 60 5, 484 CE — during the reign of Budhagupta, and states that the dhvaja-stambha of the blessed Janārdana was erected by Mātṛviṣṇu and his brother Dhanyaviṣṇu for the merit of their parents. The standing pillar, capped by a double Garuda figure, is the contemporaneous primary record of the dedication.',
+        source: {
+          externalId: 'src:eran-pillar-budhagupta-inscription',
+          name: 'Eran pillar inscription of the time of Budhagupta, Gupta year 165 (Āṣāḍha, 484 CE), Sanskrit (contemporaneous Gupta-era Vaishnava dedication of a dhvaja-stambha of Janārdana).',
+          url: 'https://en.wikipedia.org/wiki/Eran',
+          publishedAt: '0484-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1888-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The inscription was edited by John Faithfull Fleet in Inscriptions of the Early Gupta Kings (Corpus Inscriptionum Indicarum, vol. III, 1888) and is treated in later Gupta epigraphy. Its date and reading are settled; because few of Budhagupta\'s records are precisely dated, the Eran pillar is a standard fixed point for his reign, and the pillar itself survives in situ at Eran in Madhya Pradesh.',
+        source: {
+          externalId: 'src:fleet-eran-budhagupta-inscription',
+          name: 'Fleet J.F. Inscriptions of the Early Gupta Kings and Their Successors (Corpus Inscriptionum Indicarum vol. III, 1888) — Eran pillar inscription of Budhagupta.',
+          url: 'https://en.wikipedia.org/wiki/Eran',
           publishedAt: '1888-01-01',
           methodologyType: 'derivative',
         },
