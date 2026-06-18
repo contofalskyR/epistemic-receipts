@@ -50552,6 +50552,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Discovery of the W boson at CERN ────────────────────────────────────────
+  {
+    externalId: 'trajectory:w-boson-discovery-cern-1983',
+    text: 'In January 1983 the UA1 and UA2 collaborations at CERN\'s Super Proton Synchrotron announced the discovery of the W boson, the charged carrier of the weak nuclear force, confirming a central prediction of the electroweak unification theory.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-01-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-01-25',
+        datePrecision: 'DAY',
+        reason: 'The electroweak theory of Glashow, Salam, and Weinberg predicted massive W and Z bosons, but they had never been directly observed. Using Simon van der Meer\'s stochastic-cooling technique to produce intense proton–antiproton collisions in the Super Proton Synchrotron, the UA1 collaboration led by Carlo Rubbia identified isolated high-transverse-energy electrons consistent with W decay and announced the discovery at a CERN seminar in late January 1983, published as "Experimental observation of isolated large transverse energy electrons with associated missing energy" (Physics Letters B 122, 103).',
+        source: {
+          externalId: 'src:w-boson-discovery-1983',
+          name: 'Discovery of the W boson by UA1/UA2 at the CERN SPS, January 1983 (UA1, Phys. Lett. B 122, 103). Wikipedia, "W and Z bosons".',
+          url: 'https://en.wikipedia.org/wiki/W_and_Z_bosons',
+          publishedAt: '1983-01-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-05-01',
+        datePrecision: 'MONTH',
+        reason: 'A few months later, in May 1983, the same collaborations observed the neutral Z boson, completing the set of weak-force carriers predicted by electroweak theory and matching the predicted masses. The mutual confirmation of W and Z by two independent detectors (UA1 and UA2) at the expected masses established the discovery as settled and validated the Standard Model\'s electroweak sector.',
+        source: {
+          externalId: 'src:z-boson-discovery-1983',
+          name: 'Discovery of the Z boson by UA1/UA2 at CERN, May 1983, completing the electroweak triad. Wikipedia, "W and Z bosons".',
+          url: 'https://en.wikipedia.org/wiki/W_and_Z_bosons',
+          publishedAt: '1983-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-10-17',
+        datePrecision: 'DAY',
+        reason: 'On 17 October 1984 Carlo Rubbia and Simon van der Meer were awarded the Nobel Prize in Physics "for their decisive contributions to the large project, which led to the discovery of the field particles W and Z, communicators of weak interaction" — an unusually rapid award barely eighteen months after the announcement, ratifying the discovery\'s settled status.',
+        source: {
+          externalId: 'src:nobel-physics-1984-w-z',
+          name: 'The Nobel Prize in Physics 1984 — Carlo Rubbia and Simon van der Meer (W and Z bosons). Wikipedia, "W and Z bosons".',
+          url: 'https://en.wikipedia.org/wiki/W_and_Z_bosons',
+          publishedAt: '1984-10-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Apollo 17 — final crewed Moon landing ───────────────────────────────────
+  {
+    externalId: 'trajectory:apollo-17-last-moon-landing-1972',
+    text: 'On 11 December 1972, the Apollo 17 lunar module Challenger landed in the Taurus–Littrow valley, carrying Eugene Cernan and Harrison Schmitt — the sixth and, as of the present, the last crewed landing on the Moon.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-12-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-11',
+        datePrecision: 'DAY',
+        reason: 'Apollo 17 launched on 7 December 1972 at 12:33 a.m. EST in the only night launch of the program. On 11 December 1972 the lunar module Challenger set down in the Taurus–Littrow valley; Cernan and Schmitt — the first professional geologist on the Moon — conducted three EVAs over about 75 hours on the surface, all tracked by NASA in real time and broadcast live, while Ronald Evans orbited in the command module.',
+        source: {
+          externalId: 'src:nasa-apollo-17-1972',
+          name: 'NASA. "Apollo 17" mission overview — launch 7 Dec 1972, landing 11 Dec 1972, splashdown 19 Dec 1972.',
+          url: 'https://www.nasa.gov/mission/apollo-17/',
+          publishedAt: '1972-12-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-19',
+        datePrecision: 'DAY',
+        reason: 'Cernan re-entered the lunar module on 14 December 1972 as the last person to walk on the Moon, and Apollo 17 splashed down in the Pacific on 19 December 1972 carrying about 110 kg of lunar samples. NASA mission reports documented the timeline and returns; with no crewed flight beyond low Earth orbit since, Apollo 17 has remained the settled, undisputed record of humanity\'s most recent crewed Moon landing.',
+        source: {
+          externalId: 'src:apollo-17-last-landing-record',
+          name: 'Apollo 17 — last crewed Moon landing; splashdown 19 Dec 1972; Cernan last to walk on the Moon. Wikipedia, "Apollo 17".',
+          url: 'https://en.wikipedia.org/wiki/Apollo_17',
+          publishedAt: '1972-12-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Luna 16 — first robotic lunar sample return ─────────────────────────────
+  {
+    externalId: 'trajectory:luna-16-robotic-sample-return-1970',
+    text: 'In September 1970 the Soviet Luna 16 probe accomplished the first fully automatic recovery of soil samples from the Moon, returning 101 grams of lunar regolith from Mare Fecunditatis to Earth without a human crew.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-09-24',
+        datePrecision: 'DAY',
+        reason: 'Luna 16 launched on 12 September 1970 and soft-landed on Mare Fecunditatis on 20 September 1970. Its drill collected 101 grams of regolith into a return capsule, which lifted off from the lunar surface and returned to Earth, landing in Kazakhstan on 24 September 1970 — the first robotic sample return from another celestial body, announced contemporaneously by the Soviet Union and tracked by Western observers.',
+        source: {
+          externalId: 'src:luna-16-mission-1970',
+          name: 'Luna 16 — first automatic lunar sample return; launch 12 Sep 1970, landing 20 Sep 1970, Earth return 24 Sep 1970. Wikipedia, "Luna 16".',
+          url: 'https://en.wikipedia.org/wiki/Luna_16',
+          publishedAt: '1970-09-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-06-10',
+        datePrecision: 'DAY',
+        reason: 'The returned material was distributed to laboratories for analysis, and on 10 June 1971 a portion of the Luna 16 sample was exchanged with NASA for Apollo material, allowing independent Western verification of its lunar origin and composition. Cross-checked analysis of the regolith settled the achievement as a fixed entry in the spaceflight record.',
+        source: {
+          externalId: 'src:luna-16-sample-exchange-1971',
+          name: 'Luna 16 lunar sample exchanged with NASA on 10 June 1971; independent analysis. Wikipedia, "Luna 16".',
+          url: 'https://en.wikipedia.org/wiki/Luna_16',
+          publishedAt: '1971-06-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── IBM System/360 announced — the compatible computer family ────────────────
+  {
+    externalId: 'trajectory:ibm-system-360-announced-1964',
+    text: 'On 7 April 1964, IBM announced the System/360, the first family of computers spanning a range of sizes and performance levels while sharing a single instruction-set architecture, so that software written for one model would run on the others.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1964-04-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-04-07',
+        datePrecision: 'DAY',
+        reason: 'In a simultaneous press event at 63 locations on 7 April 1964, IBM unveiled the System/360 — initially six processor models and dozens of peripherals — built around a common architecture that separated the instruction set from its hardware implementation. The announcement, backed by a multi-billion-dollar development gamble, was documented contemporaneously in IBM press releases and the technical and business press.',
+        source: {
+          externalId: 'src:ibm-system-360-announce-1964',
+          name: 'IBM System/360 announced 7 April 1964 — first compatible family of computers. Wikipedia, "IBM System/360".',
+          url: 'https://en.wikipedia.org/wiki/IBM_System/360',
+          publishedAt: '1964-04-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1965-04-01',
+        datePrecision: 'MONTH',
+        reason: 'First System/360 units shipped in 1965, and the line\'s commercial dominance — and the wide adoption of its instruction-set architecture, which persists in IBM\'s mainframe lineage to the present — established the announcement as a settled turning point in computing history. The concept of a binary-compatible computer family became the industry norm.',
+        source: {
+          externalId: 'src:ibm-system-360-impact',
+          name: 'IBM System/360 — first deliveries 1965, lasting influence of the compatible-family architecture. Wikipedia, "IBM System/360".',
+          url: 'https://en.wikipedia.org/wiki/IBM_System/360',
+          publishedAt: '1965-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // MODERN ERA (1990–present) — NON-WESTERN SCIENCE & SPACE
   // ═══════════════════════════════════════════════════════════════════════════════
