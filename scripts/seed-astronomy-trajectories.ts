@@ -1092,6 +1092,237 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CLASSICAL ERA ASTRONOMY (1572–1759)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 25. Tycho Brahe — De Nova Stella — 1572 ────────────────────────────────
+  {
+    externalId: 'trajectory:tycho-nova-stella-1572',
+    text: 'Tycho Brahe observed a brilliant new star in the constellation Cassiopeia beginning 11 November 1572 and, by detecting no diurnal parallax, demonstrated in De Nova Stella (1573) that it lay far beyond the Moon among the fixed stars, contradicting the Aristotelian doctrine that the celestial realm was unchanging.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1572-11-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1572-11-11',
+        datePrecision: 'DAY',
+        reason: 'Tycho Brahe first saw the \'stella nova\' in Cassiopeia on the night of 11 November 1572 and tracked it for some 18 months. His careful sextant measurements showed the object exhibited no measurable parallax against the fixed stars, meaning it was vastly more distant than the Moon. Published in De Nova Stella (1573), this directly refuted the Aristotelian principle that no change could occur in the supralunary heavens.',
+        source: {
+          externalId: 'src:tycho-de-nova-stella-1572',
+          name: 'American Physical Society. November 11, 1572: Tycho Brahe Spots a Supernova. APS News, This Month in Physics History.',
+          url: 'https://www.aps.org/apsnews/2019/11/tycho-brahe-spots-supernova',
+          publishedAt: '1573-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-12-04',
+        datePrecision: 'DAY',
+        reason: 'Krause and collaborators obtained an optical spectrum of Tycho\'s 1572 supernova from a scattered-light echo more than four centuries after the explosion, published in Nature. The spectrum near maximum brightness identified SN 1572 as a normal Type Ia supernova, physically explaining Tycho\'s \'new star\' and confirming the historical event as a Galactic supernova.',
+        source: {
+          externalId: 'src:krause-tycho-light-echo-2008',
+          name: 'Krause O, Tanaka M, Usuda T, et al. Tycho Brahe\'s 1572 supernova as a standard type Ia as revealed by its light-echo spectrum. Nature 2008;456:617–619.',
+          url: 'https://www.nature.com/articles/nature07608',
+          publishedAt: '2008-12-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 26. Newton — Principia & universal gravitation — 1687 ───────────────────
+  {
+    externalId: 'trajectory:newton-principia-universal-gravitation-1687',
+    text: 'Isaac Newton published Philosophiæ Naturalis Principia Mathematica in July 1687, establishing the law of universal gravitation and the three laws of motion, and demonstrating that a single inverse-square gravitational force governs both terrestrial falling bodies and the orbits of planets and comets.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1687-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1687-07-05',
+        datePrecision: 'DAY',
+        reason: 'Newton\'s Principia was completed and published in the summer of 1687 under the imprimatur of Royal Society President Samuel Pepys (dated 5 July 1686 on the title page); Halley, who financed and oversaw printing, reported the book complete in July 1687. It set out the laws of motion and universal gravitation as a unified mathematical framework, but the radical claim of action-at-a-distance gravity required empirical vindication before broad acceptance.',
+        source: {
+          externalId: 'src:newton-principia-1687',
+          name: 'Newton I. Philosophiæ Naturalis Principia Mathematica. London: Royal Society; 1687.',
+          url: 'https://archive.org/details/philosophiaenatu00newt_0',
+          publishedAt: '1687-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1758-12-25',
+        datePrecision: 'DAY',
+        reason: 'The recovery of the comet Halley had predicted using Newtonian gravitation — first sighted on 25 December 1758 and reaching perihelion in March 1759 as computed — provided a dramatic, falsifiable confirmation that Newton\'s inverse-square law governed cometary as well as planetary motion. Together with the success of Clairaut\'s perturbation calculations, this established universal gravitation as the accepted framework of celestial mechanics.',
+        source: {
+          externalId: 'src:halley-return-newton-vindication-1759',
+          name: 'Ridpath I. The orbit of Halley\'s Comet — the 1758–59 return and the vindication of Newtonian gravitation.',
+          url: 'http://www.ianridpath.com/halley/halley5a.html',
+          publishedAt: '1759-03-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 27. Halley — comet return prediction — 1705 ─────────────────────────────
+  {
+    externalId: 'trajectory:halley-comet-return-prediction-1705',
+    text: 'Edmond Halley predicted in his 1705 Synopsis Astronomiae Cometicae that the comets seen in 1531, 1607, and 1682 were a single periodic body that would return around 1758, a forecast confirmed when the comet was recovered on 25 December 1758 — the first successful prediction of a comet\'s return.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1705-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1705-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Applying Newton\'s law of universal gravitation to 24 historical comet orbits, Halley argued in the Synopsis Astronomiae Cometicae (published in Latin and in the Royal Society\'s Philosophical Transactions, 1705) that the comets of 1531, 1607, and 1682 were the same object on a closed ~76-year orbit, and predicted its return near 1758. It was a bold, testable claim that remained unverified during his lifetime.',
+        source: {
+          externalId: 'src:halley-synopsis-cometicae-1705',
+          name: 'Halley E. Astronomiae Cometicae Synopsis (A Synopsis of the Astronomy of Comets). Philosophical Transactions of the Royal Society. 1705.',
+          url: 'https://library.si.edu/digital-library/book/synopsisofastron00hall',
+          publishedAt: '1705-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1758-12-25',
+        datePrecision: 'DAY',
+        reason: 'The amateur astronomer Johann Georg Palitzsch recovered the comet on Christmas Day, 25 December 1758, and it reached perihelion on 13 March 1759 — close to the date refined by Clairaut, Lalande, and Lepaute, who accounted for Jupiter\'s and Saturn\'s perturbations. The return, sixteen years after Halley\'s death, confirmed the prediction and established that comets are periodic members of the Solar System bound by gravity.',
+        source: {
+          externalId: 'src:halley-comet-recovery-1758',
+          name: 'Halley\'s Comet — 1758–59 predicted return, recovered by J. G. Palitzsch on 25 December 1758, perihelion 13 March 1759.',
+          url: 'https://en.wikipedia.org/wiki/Halley%27s_Comet',
+          publishedAt: '1759-03-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 28. Chandrasekhar — white dwarf mass limit — 1931 ───────────────────────
+  {
+    externalId: 'trajectory:chandrasekhar-white-dwarf-mass-limit-1931',
+    text: 'Subrahmanyan Chandrasekhar derived in a 1931 Astrophysical Journal paper that a white dwarf supported by relativistically degenerate electrons has a maximum possible mass (now ~1.4 solar masses), above which it cannot resist gravitational collapse.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1931-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In \'The Maximum Mass of Ideal White Dwarfs\' (Astrophysical Journal 74:81, 1931), Chandrasekhar combined special-relativistic electron degeneracy with the equation of hydrostatic equilibrium to show that an ideal white dwarf has a finite limiting mass. The result implied that sufficiently massive stellar remnants could not exist as stable white dwarfs — a startling theoretical conclusion.',
+        source: {
+          externalId: 'src:chandrasekhar-maximum-mass-1931',
+          name: 'Chandrasekhar S. The Maximum Mass of Ideal White Dwarfs. Astrophysical Journal 1931;74:81–82.',
+          url: 'https://articles.adsabs.harvard.edu/pdf/1931ApJ....74...81C',
+          publishedAt: '1931-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-01-11',
+        datePrecision: 'DAY',
+        reason: 'At the Royal Astronomical Society meeting of 11 January 1935, Arthur Eddington publicly ridiculed Chandrasekhar\'s limiting-mass result, arguing that relativistic degeneracy was a misapplication and that \'there should be a law of Nature to prevent a star from behaving in this absurd way.\' Eddington\'s authority cast the limit into dispute within the astrophysical community for years.',
+        source: {
+          externalId: 'src:eddington-relativistic-degeneracy-1935',
+          name: 'Eddington AS. On \'Relativistic Degeneracy\' (remarks at RAS meeting, 11 January 1935). Monthly Notices of the Royal Astronomical Society 1935;95:194–206.',
+          url: 'https://academic.oup.com/mnras/article/95/3/194/2935092',
+          publishedAt: '1935-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-10-19',
+        datePrecision: 'DAY',
+        reason: 'After decades in which neutron-star and supernova theory vindicated the existence of a mass limit, the Royal Swedish Academy of Sciences awarded Chandrasekhar the 1983 Nobel Prize in Physics for his theoretical studies of the structure and evolution of stars. The award institutionally certified the Chandrasekhar limit, by then a cornerstone of stellar astrophysics and Type Ia supernova theory.',
+        source: {
+          externalId: 'src:nobel-physics-1983-chandrasekhar',
+          name: 'The Nobel Prize in Physics 1983 — Subrahmanyan Chandrasekhar. Royal Swedish Academy of Sciences.',
+          url: 'https://www.nobelprize.org/prizes/physics/1983/summary/',
+          publishedAt: '1983-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 29. SN1987A — neutrino burst confirms core-collapse — 1987 ───────────────
+  {
+    externalId: 'trajectory:sn1987a-neutrino-core-collapse-1987',
+    text: 'Supernova 1987A was discovered in the Large Magellanic Cloud on 24 February 1987 — the nearest naked-eye supernova since Kepler\'s of 1604 — and the near-simultaneous detection of a burst of neutrinos on 23 February 1987 gave the first direct empirical confirmation of the core-collapse supernova mechanism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-02-24',
+        datePrecision: 'DAY',
+        reason: 'Ian Shelton at Las Campanas Observatory (and independently Albert Jones) discovered a bright new star in the Large Magellanic Cloud, announced in IAU Circular 4316 on 24 February 1987. SN 1987A was the brightest and nearest supernova observed since 1604, immediately becoming the most intensively studied supernova in history and a unique test of stellar-collapse theory.',
+        source: {
+          externalId: 'src:iau-circular-4316-sn1987a',
+          name: 'Kunkel W, Madore B, Shelton I, et al. Supernova 1987A in the Large Magellanic Cloud. IAU Circular No. 4316. 1987 Feb 24.',
+          url: 'http://www.cbat.eps.harvard.edu/iauc/04300/04316.html',
+          publishedAt: '1987-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-04-06',
+        datePrecision: 'DAY',
+        reason: 'The Kamiokande-II detector recorded a burst of 11 neutrino events (with ~8 more at IMB) on 23 February 1987, hours before the optical discovery, reported by Hirata et al. in Physical Review Letters. The detection of ~10^58 neutrinos carrying the expected ~3×10^53 erg confirmed that the supernova was driven by gravitational core collapse of a massive star to a neutron star — the first observation of neutrinos from a supernova and a direct validation of core-collapse theory.',
+        source: {
+          externalId: 'src:hirata-kamiokande-sn1987a-neutrinos-1987',
+          name: 'Hirata K, Kajita T, Koshiba M, et al. Observation of a neutrino burst from the supernova SN1987A. Physical Review Letters 1987;58(14):1490–1493.',
+          url: 'https://doi.org/10.1103/PhysRevLett.58.1490',
+          publishedAt: '1987-04-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to medicine script) ───────────────────────────────────
