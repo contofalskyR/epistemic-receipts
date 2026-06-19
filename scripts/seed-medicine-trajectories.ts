@@ -20531,6 +20531,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY 2000s TARGETED ONCOLOGY ERA (2000–2004)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gemtuzumab/Mylotarg — first ADC, accelerated approval then withdrawal ────
+  {
+    externalId: 'trajectory:gemtuzumab-mylotarg-first-adc-withdrawal-2010',
+    text: 'On 17 May 2000 the FDA granted accelerated approval to gemtuzumab ozogamicin (Mylotarg), the first antibody-drug conjugate ever marketed, for relapsed CD33-positive acute myeloid leukemia; the original approval was withdrawn in 2010 after a confirmatory trial showed no benefit and excess toxicity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-05-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to gemtuzumab ozogamicin (Mylotarg, Wyeth/Celltech), the first antibody-drug conjugate to reach market, for CD33-positive relapsed AML in patients over 60 unfit for cytotoxic chemotherapy. Approval rested on a surrogate endpoint (response rate) from single-arm studies, with a postmarketing confirmatory trial required. It marked the institutional debut of the targeted ADC modality in oncology.',
+        source: {
+          externalId: 'src:fr-mylotarg-withdrawal-2011',
+          name: 'U.S. FDA. Wyeth Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for MYLOTARG. Federal Register. 28 November 2011.',
+          url: 'https://www.federalregister.gov/documents/2011/11/28/2011-30473/wyeth-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-mylotarg',
+          publishedAt: '2011-11-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-06-21',
+        datePrecision: 'DAY',
+        reason: 'After the required confirmatory phase 3 trial SWOG S0106 was stopped early — adding gemtuzumab to standard induction chemotherapy produced no survival benefit and a higher fatal induction-toxicity rate (5.7% vs 1.4%) — the FDA requested withdrawal, and Pfizer announced on 21 June 2010 that it would discontinue Mylotarg and withdraw the NDA (effective October 2010). The first marketed ADC was thus pulled when postmarket evidence failed to verify its accelerated-approval surrogate. (A lower-dose regimen was later re-approved in 2017.)',
+        source: {
+          externalId: 'src:fr-mylotarg-withdrawal-2011-b',
+          name: 'U.S. FDA. Wyeth Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for MYLOTARG. Federal Register. 28 November 2011.',
+          url: 'https://www.federalregister.gov/documents/2011/11/28/2011-30473/wyeth-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-mylotarg',
+          publishedAt: '2011-11-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ATAC trial — anastrozole superior to tamoxifen adjuvant breast 2002 ──────
+  {
+    externalId: 'trajectory:atac-anastrozole-superior-tamoxifen-adjuvant-breast-2002',
+    text: 'On 22 June 2002 the ATAC trial reported in The Lancet that the aromatase inhibitor anastrozole improved disease-free survival over tamoxifen as adjuvant therapy for postmenopausal women with hormone-receptor-positive early breast cancer, displacing tamoxifen\'s two-decade status as the gold-standard adjuvant endocrine therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-06-22',
+        datePrecision: 'DAY',
+        reason: 'The ATAC Trialists\' Group (Baum et al.) published first results of the randomized trial in >9,000 postmenopausal women: 3-year disease-free survival was 89.4% with anastrozole vs 87.4% with tamoxifen, with fewer endometrial cancers and thromboembolic events. This was the first large trial to show an aromatase inhibitor outperforming tamoxifen, challenging tamoxifen\'s long-standing primacy.',
+        source: {
+          externalId: 'src:atac-baum-lancet-2002',
+          name: 'Baum M, Budzar AU, Cuzick J, et al; ATAC Trialists\' Group. Anastrozole alone or in combination with tamoxifen versus tamoxifen alone for adjuvant treatment of postmenopausal women with early breast cancer: first results of the ATAC randomised trial. Lancet. 2002;359(9324):2131-2139.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12090977/',
+          publishedAt: '2002-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-09-05',
+        datePrecision: 'DAY',
+        reason: 'On 5 September 2002 the FDA, acting on the ATAC data, granted accelerated approval (converted to regular approval 16 September 2005) of anastrozole (Arimidex) for adjuvant treatment of postmenopausal hormone-receptor-positive early breast cancer. Regulatory adoption institutionalized aromatase inhibitors as a standard adjuvant option, settling the shift away from tamoxifen monotherapy in this population.',
+        source: {
+          externalId: 'src:atac-baum-lancet-2002-basis',
+          name: 'Baum M, Budzar AU, Cuzick J, et al; ATAC Trialists\' Group. Anastrozole alone or in combination with tamoxifen versus tamoxifen alone for adjuvant treatment of postmenopausal women with early breast cancer: first results of the ATAC randomised trial. Lancet. 2002;359(9324):2131-2139.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12090977/',
+          publishedAt: '2002-06-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PCPT — finasteride prostate cancer prevention, high-grade signal 2003 ────
+  {
+    externalId: 'trajectory:pcpt-finasteride-prostate-cancer-prevention-highgrade-2003',
+    text: 'On 17 July 2003 the Prostate Cancer Prevention Trial reported in NEJM that finasteride reduced 7-year prostate cancer prevalence by about 25% in men over 55, but the same trial found a higher rate of high-grade (Gleason ≥7) tumors in the finasteride arm, leaving chemoprevention contested rather than adopted.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-07-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-07-17',
+        datePrecision: 'DAY',
+        reason: 'Thompson et al. published the PCPT (18,882 men randomized to finasteride or placebo), reporting a ~25% relative reduction in prostate cancer prevalence over seven years. This established the first large-scale randomized evidence that a 5-alpha-reductase inhibitor could lower prostate cancer incidence.',
+        source: {
+          externalId: 'src:pcpt-thompson-nejm-2003',
+          name: 'Thompson IM, Goodman PJ, Tangen CM, et al. The influence of finasteride on the development of prostate cancer. N Engl J Med. 2003;349(3):215-224.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12824459/',
+          publishedAt: '2003-07-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-07-17',
+        datePrecision: 'DAY',
+        reason: 'The same PCPT report found a higher proportion of high-grade (Gleason 7-10) tumors among finasteride recipients, raising the concern that the drug might promote aggressive disease or unmask it. This high-grade signal — debated for years and central to the FDA\'s later refusal to add a chemoprevention indication — kept finasteride prostate-cancer prevention contested rather than settling into practice.',
+        source: {
+          externalId: 'src:pcpt-thompson-nejm-2003-highgrade',
+          name: 'Thompson IM, Goodman PJ, Tangen CM, et al. The influence of finasteride on the development of prostate cancer. N Engl J Med. 2003;349(3):215-224.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12824459/',
+          publishedAt: '2003-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bortezomib/Velcade — first proteasome inhibitor in oncology 2003 ─────────
+  {
+    externalId: 'trajectory:bortezomib-velcade-first-proteasome-inhibitor-myeloma-2003',
+    text: 'On 13 May 2003 the FDA granted accelerated approval to bortezomib (Velcade), the first proteasome inhibitor used in oncology, for relapsed and refractory multiple myeloma, with the pivotal SUMMIT phase 2 trial published in NEJM on 26 June 2003 reporting a 35% response rate.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to bortezomib (Velcade, Millennium), the first proteasome inhibitor approved for any cancer, for multiple myeloma after at least two prior therapies. Approval rested on a surrogate response-rate endpoint from two phase 2 studies, provisionally recording a wholly new drug class and mechanism (26S proteasome inhibition) in oncology.',
+        source: {
+          externalId: 'src:kane-bortezomib-fda-oncologist-2003',
+          name: 'Kane RC, Bross PF, Farrell AT, Pazdur R. Velcade: U.S. FDA approval for the treatment of multiple myeloma progressing on prior therapy. The Oncologist. 2003;8(6):508-513.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
+          publishedAt: '2003-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-06-26',
+        datePrecision: 'DAY',
+        reason: 'Richardson et al. published the pivotal SUMMIT phase 2 trial in NEJM: among 193 evaluable patients with heavily pretreated, refractory myeloma, bortezomib produced a 35% response rate with median overall survival of 16 months. Peer-reviewed demonstration of meaningful activity in otherwise treatment-resistant disease cemented the proteasome inhibitor as a durable standard-of-care class (later confirmed by the APEX phase 3 trial).',
+        source: {
+          externalId: 'src:richardson-summit-bortezomib-nejm-2003',
+          name: 'Richardson PG, Barlogie B, Berenson J, et al. A phase 2 study of bortezomib in relapsed, refractory myeloma. N Engl J Med. 2003;348(26):2609-2617.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12826635/',
+          publishedAt: '2003-06-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MOSAIC trial — FOLFOX adjuvant standard for colon cancer 2004 ────────────
+  {
+    externalId: 'trajectory:mosaic-oxaliplatin-adjuvant-colon-cancer-2004',
+    text: 'On 3 June 2004 the MOSAIC trial reported in NEJM that adding oxaliplatin to fluorouracil/leucovorin (FOLFOX) improved disease-free survival as adjuvant therapy for resected stage III colon cancer, establishing FOLFOX as the new adjuvant standard and prompting FDA approval on 4 November 2004.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-06-03',
+        datePrecision: 'DAY',
+        reason: 'André et al. published the MOSAIC trial (2,246 patients with resected stage II/III colon cancer) in NEJM, showing that adding oxaliplatin to infusional 5-FU/leucovorin significantly improved disease-free survival over 5-FU/LV alone. It was the first randomized evidence that oxaliplatin-based adjuvant chemotherapy reduced recurrence after curative colon-cancer resection.',
+        source: {
+          externalId: 'src:mosaic-andre-nejm-2004',
+          name: 'André T, Boni C, Mounedji-Boudiaf L, et al; MOSAIC Investigators. Oxaliplatin, fluorouracil, and leucovorin as adjuvant treatment for colon cancer. N Engl J Med. 2004;350(23):2343-2351.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15175436/',
+          publishedAt: '2004-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 November 2004 the FDA, acting on MOSAIC, approved oxaliplatin (Eloxatin) in combination with infusional 5-FU/LV for adjuvant treatment of stage III colon cancer after complete resection of the primary tumor. Regulatory adoption made FOLFOX the institutional standard of adjuvant care for node-positive colon cancer, settling the prior fluoropyrimidine-only paradigm.',
+        source: {
+          externalId: 'src:mosaic-andre-nejm-2004-basis',
+          name: 'André T, Boni C, Mounedji-Boudiaf L, et al; MOSAIC Investigators. Oxaliplatin, fluorouracil, and leucovorin as adjuvant treatment for colon cancer. N Engl J Med. 2004;350(23):2343-2351.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15175436/',
+          publishedAt: '2004-06-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Eculizumab/Soliris — first complement inhibitor, PNH 2007 ───────────────
   {
     externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
