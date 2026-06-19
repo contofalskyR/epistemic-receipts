@@ -25502,6 +25502,136 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID ANALGESICS — REVERSAL ARCS (1957–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Propoxyphene (Darvon) — safe analgesic reversed cardiac-risk withdrawal 2010 ──
+  {
+    externalId: 'trajectory:propoxyphene-darvon-cardiac-withdrawal-1957',
+    text: 'The FDA approved propoxyphene (Darvon) in 1957 as a safe and effective opioid analgesic, and it became one of the most widely prescribed pain relievers in the United States until November 19, 2010, when the FDA recommended against its continued use and requested its market withdrawal after clinical data showed it causes dangerous cardiac electrical changes even at therapeutic doses.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1957-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved propoxyphene in 1957 as a safe and effective analgesic for mild-to-moderate pain. Marketed as Darvon and in combination products such as Darvocet, it became one of the most commonly prescribed pain medications in the United States, with an estimated 10 million patients using it, establishing it as a settled standard analgesic for over five decades.',
+        source: {
+          externalId: 'src:fda-dsc-propoxyphene-2010',
+          name: 'FDA. Drug Safety Communication: FDA recommends against the continued use of propoxyphene (documenting 1957 approval and widespread use). November 19, 2010.',
+          url: 'https://wayback.archive-it.org/7993/20170111014006/http://www.fda.gov/Drugs/DrugSafety/ucm234338.htm',
+          publishedAt: '2010-11-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-11-19',
+        datePrecision: 'DAY',
+        reason: 'On November 19, 2010, the FDA recommended against the continued prescribing and use of propoxyphene and asked manufacturer Xanodyne to withdraw it from the U.S. market, after a required clinical study showed that even at recommended doses the drug causes significant changes to the heart\'s electrical activity (prolonged PR, widened QRS, prolonged QT) that raise the risk of fatal arrhythmias. The agency concluded the limited pain benefit no longer outweighed the cardiac risk, reversing the 53-year-old premise that propoxyphene was a safe analgesic.',
+        source: {
+          externalId: 'src:fda-dsc-propoxyphene-withdrawal-2010',
+          name: 'FDA. Drug Safety Communication: FDA recommends against the continued use of propoxyphene. November 19, 2010.',
+          url: 'https://wayback.archive-it.org/7993/20170111014006/http://www.fda.gov/Drugs/DrugSafety/ucm234338.htm',
+          publishedAt: '2010-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Palladone (extended-release hydromorphone) — alcohol dose-dumping 2004→2005 ──
+  {
+    externalId: 'trajectory:palladone-hydromorphone-alcohol-dose-dumping-2004',
+    text: 'The FDA approved Purdue Pharma\'s Palladone (extended-release hydromorphone hydrochloride) in September 2004 as a safe once-daily opioid for chronic pain, then in July 2005 asked Purdue to suspend its sale after a pharmacokinetic study showed that co-ingestion with alcohol could rupture the extended-release mechanism and cause potentially fatal \'dose dumping\' of the full opioid load.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-09-01',
+        datePrecision: 'MONTH',
+        reason: 'In September 2004 the FDA approved Palladone, an extended-release formulation of hydromorphone intended to provide steady once-daily analgesia for patients requiring around-the-clock opioid therapy; it was launched in the U.S. in January 2005. Approval institutionally established the controlled-release product as a safe and effective option for chronic pain.',
+        source: {
+          externalId: 'src:fda-palladone-healthcare-professionals-2005',
+          name: 'FDA. Information for Healthcare Professionals: Hydromorphone Hydrochloride Extended-Release Capsules (marketed as Palladone) (documenting approval and 2005 suspension). 2005.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/information-healthcare-professionals-hydromorphone-hydrochloride-extended-release-capsules-marketed',
+          publishedAt: '2005-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In July 2005 Purdue Pharma suspended sales and marketing of Palladone at the FDA\'s request after a company study found that taking a 12-mg capsule with 8 ounces of 80-proof alcohol produced peak hydromorphone levels roughly six times higher than with water (16-fold in one subject), a potentially fatal alcohol-induced dose-dumping effect. The FDA concluded the overall risk-benefit profile was unfavorable, reversing the approval premise that the extended-release formulation safely controlled drug release.',
+        source: {
+          externalId: 'src:fda-palladone-suspension-2005',
+          name: 'FDA. Information for Healthcare Professionals: Hydromorphone Hydrochloride Extended-Release Capsules (marketed as Palladone). 2005.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/information-healthcare-professionals-hydromorphone-hydrochloride-extended-release-capsules-marketed',
+          publishedAt: '2005-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pentazocine (Talwin) — low-abuse non-narcotic reversed Schedule IV 1967→1979 ──
+  {
+    externalId: 'trajectory:pentazocine-talwin-low-abuse-reclassified-1967',
+    text: 'Pentazocine (Talwin) received FDA approval in June 1967 and was marketed as a non-narcotic analgesic with low dependence liability, left unscheduled under the Controlled Substances Act, until the DEA placed it into Schedule IV in a final rule published January 10, 1979 (44 Fed. Reg. 2169), effective February 9, 1979, after an epidemic of intravenous \'T\'s and blues\' abuse demonstrated significant abuse and dependence potential.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1967-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved pentazocine (Talwin) in June 1967, and it was promoted as a non-narcotic analgesic carrying low risk of abuse and dependence relative to morphine; it was not placed in any Controlled Substances Act schedule at launch. The premise of a strong analgesic effectively free of meaningful addiction liability entered the record and shaped prescribing.',
+        source: {
+          externalId: 'src:pentazocine-approval-record-1967',
+          name: 'Pentazocine regulatory and scheduling history (documenting June 1967 FDA approval, initial unscheduled status, and 44 Fed. Reg. 2169 Schedule IV placement), citing NY Times \'Pain-Killing Drug Approved By F.D.A.\', June 27, 1967.',
+          url: 'https://en.wikipedia.org/wiki/Pentazocine',
+          publishedAt: '1967-06-27',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-01-10',
+        datePrecision: 'DAY',
+        reason: 'After an epidemic of intravenous abuse of \'T\'s and blues\' (pentazocine tablets crushed and injected with the antihistamine tripelennamine) spread through cities such as St. Louis in the late 1970s, the DEA published a final rule on January 10, 1979 (44 Fed. Reg. 2169) placing pentazocine into Schedule IV of the Controlled Substances Act, effective February 9, 1979. The federal scheduling formally reversed the launch-era premise that pentazocine was a low-abuse, non-controlled analgesic; the manufacturer subsequently reformulated the oral tablet with naloxone (Talwin Nx) to deter injection.',
+        source: {
+          externalId: 'src:pentazocine-schedule-iv-1979',
+          name: 'DEA. Schedules of Controlled Substances: pentazocine placed in Schedule IV. Final rule. 44 Fed. Reg. 2169, Jan. 10, 1979 (effective Feb. 9, 1979), as documented with citation.',
+          url: 'https://en.wikipedia.org/wiki/Pentazocine',
+          publishedAt: '1979-01-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
