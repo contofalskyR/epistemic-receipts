@@ -30958,6 +30958,136 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PAIN NEUROSCIENCE & OPIOID PHARMACOLOGY (1965–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gate control theory of pain — Melzack & Wall 1965 ──────────────────────
+  {
+    externalId: 'trajectory:gate-control-theory-pain-1965',
+    text: 'Ronald Melzack and Patrick Wall proposed in Science on November 19, 1965, that pain transmission is modulated by a \'gate\' mechanism in the spinal cord dorsal horn, where large-fibre (non-painful) input can inhibit and small-fibre (painful) input can facilitate the onward transmission of nociceptive signals to the brain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-11-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-11-19',
+        datePrecision: 'DAY',
+        reason: 'Melzack and Wall published \'Pain mechanisms: a new theory\' in Science (150:971–979), replacing the prevailing specificity/intensity models with a neural-circuit account in which non-painful afferent activity could \'close the gate\' on pain transmission. It entered the literature as the first physiological framework explaining how psychological, sensory, and cognitive factors could all modulate a single pain signal.',
+        source: {
+          externalId: 'src:melzack-wall-gate-control-science-1965',
+          name: 'Melzack R, Wall PD. Pain mechanisms: a new theory. Science. 1965 Nov 19;150(3699):971-979.',
+          url: 'https://www.science.org/doi/10.1126/science.150.3699.971',
+          publishedAt: '1965-11-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-01',
+        datePrecision: 'MONTH',
+        reason: 'On the theory\'s 50th anniversary, Mendell\'s review in Pain Research and Management documented that gate control had \'stood the test of time,\' accumulating over 8,800 citations and underpinning entire treatment modalities (TENS, spinal-cord stimulation, neuromodulation) and the modern conception of pain as a modulated, multidimensional experience. Although the original detailed circuitry was refined, the conceptual framework became the settled foundation of pain neuroscience.',
+        source: {
+          externalId: 'src:gate-control-50th-anniversary-prm-2015',
+          name: 'Mendell LM. Constructing and deconstructing the gate theory of pain. (Golden anniversary review of Melzack & Wall\'s gate control theory.) Pain Res Manag. 2015 Nov-Dec;20(6).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4676495/',
+          publishedAt: '2015-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pentazocine 'non-addicting' claim reversed — DEA Schedule IV 1979 ──────
+  {
+    externalId: 'trajectory:pentazocine-talwin-nonaddicting-claim-reversed-1979',
+    text: 'When the FDA approved pentazocine (Talwin) in 1967, it was marketed and described in the medical literature as a potent \'non-addicting\' analgesic with negligible abuse potential, a claim the DEA formally reversed by placing pentazocine into Schedule IV of the Controlled Substances Act effective February 9, 1979.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1967-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Following the drug\'s 1967 FDA approval, contemporaneous clinical literature (e.g., Annals of Internal Medicine\'s \'Pentazocine—A Nonaddicting Analgesic\') presented pentazocine, a mixed agonist-antagonist, as an effective analgesic free of the addiction liability of morphine, and it was marketed in the US as a non-narcotic exempt from controlled-substance scheduling. This became the accepted clinical position for over a decade.',
+        source: {
+          externalId: 'src:pentazocine-nonaddicting-annals-1967',
+          name: 'Pentazocine—A Nonaddicting Analgesic. Ann Intern Med. 1967;67(5):1114.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-67-5-1114',
+          publishedAt: '1967-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-02-09',
+        datePrecision: 'DAY',
+        reason: 'After a widespread \'Ts and blues\' abuse epidemic (pentazocine combined with the antihistamine tripelennamine, used as a heroin substitute), the DEA published a final rule in the Federal Register on January 10, 1979, placing pentazocine and its salts under Schedule IV controls effective February 9, 1979. The scheduling formally repudiated the original \'non-addicting\' claim by recognizing documented abuse, dependence, and withdrawal.',
+        source: {
+          externalId: 'src:dea-pentazocine-schedule-iv-fr-1979',
+          name: 'Drug Enforcement Administration. Pentazocine; Placement in Schedule IV. Federal Register. 1979 Jan 10;44(7).',
+          url: 'https://tile.loc.gov/storage-services/service/ll/fedreg/fr044/fr044007/fr044007.pdf',
+          publishedAt: '1979-01-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MS Contin controlled-release morphine FDA approval — 1987 ───────────────
+  {
+    externalId: 'trajectory:ms-contin-controlled-release-morphine-approval-1987',
+    text: 'The FDA approved Purdue Frederick\'s MS Contin (morphine sulfate controlled-release tablets, NDA 19-516) on May 29, 1987, the first extended-release oral opioid in the US, establishing the controlled-release formulation paradigm later used for OxyContin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1987-05-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Pharmacokinetic studies of controlled-release oral morphine sulfate in cancer pain (e.g., the controlled-release morphine pharmacokinetic correlation work indexed as PMID 3585450) established that a sustained-release oral opioid could deliver stable analgesia with twice-daily dosing, providing the evidentiary basis for a novel extended-release formulation.',
+        source: {
+          externalId: 'src:controlled-release-morphine-pk-cancer-pain-1987',
+          name: 'Controlled-release oral morphine sulfate in the treatment of cancer pain with pharmacokinetic correlation. (PMID 3585450). 1987.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3585450/',
+          publishedAt: '1987-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-05-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved MS Contin (NDA 19-516) as the first extended-release oral morphine product, institutionally validating sustained-release opioid delivery for chronic and cancer pain. The approval created the regulatory and formulation template Purdue would later extend to OxyContin in 1995, making it a pivotal node in the pharmacology of the opioid era.',
+        source: {
+          externalId: 'src:fda-ms-contin-nda-19516-2013ltr',
+          name: 'FDA. MS CONTIN (morphine sulfate controlled-release) Tablets, NDA 019516 — approval correspondence referencing original 1987 approval. accessdata.fda.gov.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2013/019516Orig1s038ltr.pdf',
+          publishedAt: '1987-05-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
