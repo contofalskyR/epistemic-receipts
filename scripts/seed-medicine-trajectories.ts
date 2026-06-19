@@ -37758,6 +37758,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY ERA (1954–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Meprobamate (Miltown) — first minor tranquilizer 1955 ───────────────────
+  {
+    externalId: 'trajectory:meprobamate-miltown-first-minor-tranquilizer-1955',
+    text: 'Frank Berger reported in December 1954 that meprobamate (marketed as Miltown in 1955) was a safe interneuronal-blocking tranquilizer for anxiety; it became the first blockbuster psychotropic drug before its dependence potential led to Schedule IV control in 1970.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1954-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Berger characterized meprobamate as a new interneuronal blocking agent producing muscular relaxation and sedation while sparing autonomic function, presenting it as a safe anxiolytic. This recorded the pharmacological basis for the first \'minor tranquilizer\' and launched the modern anxiolytic-prescribing era.',
+        source: {
+          externalId: 'src:berger-meprobamate-jpet-1954',
+          name: 'Berger FM. The pharmacological properties of 2-methyl-2-n-propyl-1,3-propanediol dicarbamate (Miltown), a new interneuronal blocking agent. J Pharmacol Exp Ther. 1954 Dec;112(4):413-23.',
+          url: 'https://jpet.aspetjournals.org/article/S0022-3565(25)11477-8/abstract',
+          publishedAt: '1954-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1957-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After FDA approval and the 1955 launch as Miltown, meprobamate became the best-selling prescription drug in the United States by 1957, achieving cultural and medical ubiquity as the prototype of the \'wonder drug\' tranquilizer. Widespread clinical adoption settled it as the standard treatment for anxiety and tension.',
+        source: {
+          externalId: 'src:lopez-munoz-berger-anxiolytics-ajp-2008',
+          name: 'López-Muñoz F, Álamo C, García-García P. The Dawn of Anxiolytics: Frank M. Berger, 1913-2008. Am J Psychiatry. 2008;165(9):1109-1110.',
+          url: 'https://psychiatryonline.org/doi/10.1176/appi.ajp.2008.08040552',
+          publishedAt: '2008-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-10-27',
+        datePrecision: 'DAY',
+        reason: 'Mounting evidence of tolerance, withdrawal, and abuse undercut the original \'safe, non-addictive\' framing; meprobamate was placed under federal abuse controls in the late 1960s and classified as a Schedule IV controlled substance under the Comprehensive Drug Abuse Prevention and Control Act of 1970. The reclassification formally contested the drug\'s safety claim and signaled the decline of meprobamate prescribing.',
+        source: {
+          externalId: 'src:csa-21usc812-schedule-iv-1970',
+          name: 'Comprehensive Drug Abuse Prevention and Control Act of 1970, 21 U.S.C. § 812 (Schedule IV lists meprobamate).',
+          url: 'https://www.law.cornell.edu/uscode/text/21/812',
+          publishedAt: '1970-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chlordiazepoxide (Librium) — first benzodiazepine approved 1960 ─────────
+  {
+    externalId: 'trajectory:chlordiazepoxide-librium-first-benzodiazepine-1960',
+    text: 'The FDA approved chlordiazepoxide (Librium) on 24 February 1960 as the first benzodiazepine, an anxiolytic promoted as more effective and safer than the barbiturates it would largely displace.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1960-02-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-02-24',
+        datePrecision: 'DAY',
+        reason: 'Leo Sternbach\'s serendipitously discovered compound, after pharmacological characterization by Lowell Randall, was approved by the FDA and marketed by Hoffmann-La Roche as Librium, the first of the benzodiazepine class. Approval recorded the arrival of a new family of anxiolytics framed as lacking the respiratory depression and lethal-overdose risk of barbiturates.',
+        source: {
+          externalId: 'src:wick-history-benzodiazepines-2013',
+          name: 'Wick JY. The history of benzodiazepines. Consult Pharm. 2013 Sep;28(9):538-48.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24007886/',
+          publishedAt: '2013-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-11-05',
+        datePrecision: 'DAY',
+        reason: 'Tobin and Lewis reported in JAMA that chlordiazepoxide relieved anxiety and tension in chronically anxious patients with minimal side effects, providing the first major clinical validation of the drug. Together with rapid market dominance, this settled benzodiazepines as the standard anxiolytics, displacing meprobamate and the barbiturates over the 1960s.',
+        source: {
+          externalId: 'src:tobin-lewis-chlordiazepoxide-jama-1960',
+          name: 'Tobin JM, Lewis NDC. New psychotherapeutic agent, chlordiazepoxide: use in treatment of anxiety states and related symptoms. JAMA. 1960 Nov 5;174(10):1242-9.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/331020',
+          publishedAt: '1960-11-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Schildkraut catecholamine hypothesis of depression 1965 ─────────────────
+  {
+    externalId: 'trajectory:schildkraut-catecholamine-hypothesis-depression-1965',
+    text: 'Joseph J. Schildkraut proposed in the American Journal of Psychiatry in November 1965 that some depressions are associated with an absolute or relative deficiency of catecholamines, particularly norepinephrine, at central adrenergic receptor sites.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Schildkraut synthesized pharmacological evidence (reserpine-induced depression, the antidepressant action of MAOIs and tricyclics on monoamines) into the first comprehensive biochemical theory of mood disorders. The paper recorded the catecholamine deficiency hypothesis, founding the biogenic-amine / \'chemical imbalance\' framework that organized depression research and antidepressant development for the following decades.',
+        source: {
+          externalId: 'src:schildkraut-catecholamine-ajp-1965',
+          name: 'Schildkraut JJ. The catecholamine hypothesis of affective disorders: a review of supporting evidence. Am J Psychiatry. 1965 Nov;122(5):509-22.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5319766/',
+          publishedAt: '1965-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── L-tryptophan / eosinophilia-myalgia syndrome 1989 ───────────────────────
+  {
+    externalId: 'trajectory:l-tryptophan-eosinophilia-myalgia-syndrome-1989',
+    text: 'U.S. public-health authorities established in November 1989 that ingestion of L-tryptophan dietary supplements caused eosinophilia-myalgia syndrome (EMS), an epidemic ultimately affecting over 1,500 people with at least 30 deaths.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-11-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-11-24',
+        datePrecision: 'DAY',
+        reason: 'Following clusters first detected in New Mexico in late October 1989, the CDC\'s MMWR reported the initial cases of a syndrome of severe myalgia and marked eosinophilia among users of L-tryptophan-containing products across four states. The report recorded a previously unrecognized association between a widely sold over-the-counter supplement (taken for insomnia, depression, and PMS) and a new, sometimes fatal illness, prompting the FDA\'s nationwide recall.',
+        source: {
+          externalId: 'src:cdc-mmwr-ems-tryptophan-1989',
+          name: 'CDC. Eosinophilia-myalgia syndrome and L-tryptophan-containing products--New Mexico, Minnesota, Oregon, and New York, 1989. MMWR Morb Mortal Wkly Rep. 1989 Nov 24;38(46):785-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2509891/',
+          publishedAt: '1989-11-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-08-09',
+        datePrecision: 'DAY',
+        reason: 'Belongia and colleagues reported a case-control investigation in the New England Journal of Medicine showing that 29 of 30 case patients (97%) had consumed L-tryptophan traced to a single manufacturer (Showa Denko K.K.), implicating a manufacturing contaminant rather than tryptophan itself. The study settled the causal link epidemiologically and pinned the outbreak to a specific contaminated production source.',
+        source: {
+          externalId: 'src:belongia-ems-tryptophan-nejm-1990',
+          name: 'Belongia EA, et al. An investigation of the cause of the eosinophilia-myalgia syndrome associated with tryptophan use. N Engl J Med. 1990 Aug 9;323(6):357-65.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199008093230601',
+          publishedAt: '1990-08-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
