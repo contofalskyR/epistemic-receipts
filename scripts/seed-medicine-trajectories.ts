@@ -34983,48 +34983,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── FDA Opana ER market withdrawal — abuse-deterrent failure 2017 ────────────
-  {
-    externalId: 'trajectory:fda-opana-er-market-withdrawal-abuse-2017',
-    text: 'Endo Pharmaceuticals\' reformulated Opana ER (oxymorphone hydrochloride extended-release), redesigned in 2012 to resist crushing and marketed as abuse-deterrent, was determined by the FDA in 2017 to have benefits no longer outweighing its risks, leading the agency on June 8, 2017 to request its removal — the first time the FDA sought withdrawal of a marketed opioid because of the public-health consequences of abuse.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2012-01-01',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'REVERSED',
-    transitions: [
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'CONTESTED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2017-03-01',
-        datePrecision: 'MONTH',
-        reason: 'A joint FDA advisory committee of independent experts voted 18 to 8 in March 2017 that the benefits of reformulated Opana ER for severe pain no longer outweighed its risks, citing postmarketing data showing the 2012 reformulation had shifted abuse from snorting to injection. The vote moved a previously approved, marketed opioid into formal regulatory contestation.',
-        source: {
-          externalId: 'src:fda-opana-er-removal-statement-2017',
-          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (FDA News Release / Statement by Commissioner Scott Gottlieb). June 8, 2017.',
-          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
-          publishedAt: '2017-06-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'CONTESTED',
-        toAxis: 'REVERSED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2017-06-08',
-        datePrecision: 'DAY',
-        reason: 'On June 8, 2017, the FDA formally requested that Endo remove reformulated Opana ER from the market — the agency\'s first such action against a marketed opioid for abuse-related public-health harm, including injection-linked HIV and hepatitis C outbreaks and thrombotic microangiopathy. Endo agreed to voluntarily withdraw the product on July 6, 2017, reversing the abuse-deterrent reformulation premise on which the drug had been marketed.',
-        source: {
-          externalId: 'src:fda-opana-er-removal-statement-2017',
-          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (FDA News Release / Statement by Commissioner Scott Gottlieb). June 8, 2017.',
-          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
-          publishedAt: '2017-06-08',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Ruan v. United States — prescriber mens rea 2022 ────────────────────────
   {
     externalId: 'trajectory:ruan-united-states-prescriber-mens-rea-2022',
