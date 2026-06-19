@@ -31531,6 +31531,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENE THERAPY & RARE DISEASE ERA (2019–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hemgenix — first hemophilia B gene therapy, FDA 2022 ────────────────────
+  {
+    externalId: 'trajectory:hemgenix-etranacogene-first-hemophilia-b-gene-therapy-2022',
+    text: 'On 22 November 2022 the U.S. FDA approved Hemgenix (etranacogene dezaparvovec-drlb, CSL/uniQure), a one-time AAV5 vector delivering the hyperactive Padua factor IX variant, as the first gene therapy for adults with hemophilia B, establishing single-dose gene transfer as an approved, durable means of raising endogenous factor IX and reducing bleeding.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-11-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Hemgenix for adults with hemophilia B who use factor IX prophylaxis or have had life-threatening or repeated spontaneous bleeding, the first gene therapy ever licensed for the disease. Approval rested on the HOPE-B trial in which a single infusion reduced the annualized bleeding rate by 54% and let 94% of patients discontinue prophylaxis, recording the regulatory finding that one-time AAV-delivered factor IX gene transfer is an effective therapeutic modality.',
+        source: {
+          externalId: 'src:fda-hemgenix-approval-letter-2022',
+          name: 'U.S. FDA. Approval Letter — HEMGENIX (etranacogene dezaparvovec-drlb), STN 125756. November 22, 2022.',
+          url: 'https://www.fda.gov/media/163466/download',
+          publishedAt: '2022-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-02-23',
+        datePrecision: 'DAY',
+        reason: 'Pipe and colleagues published the full HOPE-B phase 3 trial in the New England Journal of Medicine, reporting sustained factor IX activity and a 64% reduction in annualized bleeding versus the lead-in prophylaxis period after a single dose of etranacogene dezaparvovec. Peer-reviewed confirmation entrenched the durability and efficacy claim and validated AAV5 gene transfer of the Padua factor IX variant as a settled clinical approach to hemophilia B.',
+        source: {
+          externalId: 'src:pipe-hope-b-etranacogene-nejm-2023',
+          name: 'Pipe SW, Leebeek FWG, Recht M, et al. Gene Therapy with Etranacogene Dezaparvovec for Hemophilia B. N Engl J Med. 2023;388(8):706-718.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJMoa2211644',
+          publishedAt: '2023-02-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Zynteglo — first beta-thalassemia cell-based gene therapy, FDA 2022 ─────
+  {
+    externalId: 'trajectory:zynteglo-betibeglogene-first-beta-thalassemia-gene-therapy-2022',
+    text: 'On 17 August 2022 the U.S. FDA approved Zynteglo (betibeglogene autotemcel, bluebird bio), autologous CD34+ cells transduced with the BB305 lentiviral vector encoding the βA-T87Q-globin gene, as the first cell-based gene therapy for adults and children with transfusion-dependent beta-thalassemia, establishing one-time gene addition as a means of achieving transfusion independence.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-02-03',
+        datePrecision: 'DAY',
+        reason: 'Locatelli and colleagues published the pooled phase 3 HGB-207 (Northstar-2) and HGB-212 (Northstar-3) results in the New England Journal of Medicine, showing that a single infusion of betibeglogene autotemcel produced transfusion independence in the great majority of treated patients with non-β0/β0 transfusion-dependent beta-thalassemia. The trials recorded the first phase 3 evidence that lentiviral β-globin gene addition could free patients from chronic red-cell transfusions.',
+        source: {
+          externalId: 'src:locatelli-betibeglogene-nejm-2022',
+          name: 'Locatelli F, Thompson AA, Kwiatkowski JL, et al. Betibeglogene Autotemcel Gene Therapy for Non-β0/β0 Genotype β-Thalassemia. N Engl J Med. 2022;386(5):415-427.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJMoa2113206',
+          publishedAt: '2022-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-08-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Zynteglo as the first cell-based gene therapy for transfusion-dependent beta-thalassemia in adult and pediatric patients, noting that 89% of evaluable patients (including the most severe genotypes) achieved transfusion independence. Granted Priority Review, Breakthrough Therapy, Orphan, and a rare pediatric disease voucher, the approval institutionally settled one-time autologous β-globin gene addition as a standard-of-care option, displacing lifelong transfusion-and-chelation management for eligible patients.',
+        source: {
+          externalId: 'src:fda-zynteglo-product-page-2022',
+          name: 'U.S. FDA. FDA Approves First Cell-Based Gene Therapy to Treat Adult and Pediatric Patients with Beta-thalassemia Who Require Regular Blood Transfusions (ZYNTEGLO). August 17, 2022.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/zynteglo',
+          publishedAt: '2022-08-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oxlumo (lumasiran) — first primary hyperoxaluria type 1 treatment, FDA 2020
+  {
+    externalId: 'trajectory:lumasiran-oxlumo-first-primary-hyperoxaluria-treatment-2020',
+    text: 'On 23 November 2020 the U.S. FDA approved Oxlumo (lumasiran, Alnylam), a GalNAc-conjugated subcutaneous RNAi therapeutic silencing hepatic glycolate oxidase (HAO1), as the first treatment for primary hyperoxaluria type 1, establishing oxalate-precursor suppression as an effective approach to an ultra-rare disease that previously had no disease-directed therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-11-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-11-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Oxlumo as the first-ever therapy for primary hyperoxaluria type 1, an ultra-rare genetic disease in which hepatic oxalate overproduction causes recurrent kidney stones, nephrocalcinosis, kidney failure, and systemic oxalosis. By silencing HAO1 (glycolate oxidase) upstream of oxalate synthesis, lumasiran recorded the regulatory finding that RNAi-mediated substrate reduction could lower the toxic metabolite responsible for the disease in both pediatric and adult patients.',
+        source: {
+          externalId: 'src:alnylam-oxlumo-fda-approval-2020',
+          name: 'Alnylam Pharmaceuticals. Alnylam Announces U.S. FDA Approval of OXLUMO (lumasiran), the First and Only Treatment Approved for Primary Hyperoxaluria Type 1. November 23, 2020.',
+          url: 'https://investors.alnylam.com/press-release?id=25271',
+          publishedAt: '2020-11-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-04-01',
+        datePrecision: 'DAY',
+        reason: 'Garrelfs and colleagues published the phase 3 ILLUMINATE-A trial in the New England Journal of Medicine, reporting that lumasiran reduced 24-hour urinary oxalate excretion by a placebo-adjusted ~53% over six months, with most treated patients reaching normal or near-normal levels. The randomized, placebo-controlled, peer-reviewed evidence settled RNAi silencing of glycolate oxidase as an effective disease-modifying treatment for primary hyperoxaluria type 1.',
+        source: {
+          externalId: 'src:garrelfs-illuminate-a-lumasiran-nejm-2021',
+          name: 'Garrelfs SF, Frishberg Y, Hulton SA, et al. Lumasiran, an RNAi Therapeutic for Primary Hyperoxaluria Type 1. N Engl J Med. 2021;384(13):1216-1226.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJMoa2021712',
+          publishedAt: '2021-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Crizanlizumab (Adakveo) — sickle cell vaso-occlusive crises, 2017–2023 ──
+  {
+    externalId: 'trajectory:crizanlizumab-adakveo-sickle-cell-vaso-occlusive-2019',
+    text: 'Crizanlizumab (Adakveo, Novartis), a monoclonal antibody blocking P-selectin, reduces the frequency of vaso-occlusive pain crises in sickle cell disease — a claim first recorded in the phase 2 SUSTAIN trial, settled by the U.S. FDA\'s approval of 15 November 2019, and then contested after the confirmatory phase 3 STAND trial failed and European regulators moved to revoke its authorization in 2023.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-02-02',
+        datePrecision: 'DAY',
+        reason: 'Ataga and colleagues published the phase 2, placebo-controlled SUSTAIN trial in the New England Journal of Medicine, reporting that high-dose crizanlizumab lowered the median annual rate of sickle cell pain crises by about 45% versus placebo. The trial recorded the first controlled clinical evidence that blocking P-selectin — a driver of the vaso-occlusive process — could reduce crisis frequency.',
+        source: {
+          externalId: 'src:ataga-sustain-crizanlizumab-nejm-2017',
+          name: 'Ataga KI, Kutlar A, Kanter J, et al. Crizanlizumab for the Prevention of Pain Crises in Sickle Cell Disease. N Engl J Med. 2017;376(5):429-439.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJMoa1611770',
+          publishedAt: '2017-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-11-15',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Adakveo to reduce the frequency of vaso-occlusive crises in patients aged 16 and older with sickle cell disease, the first P-selectin inhibitor for the indication, on the basis of the SUSTAIN data. The approval institutionally settled P-selectin blockade as an accepted crisis-prevention therapy and brought a new mechanistic class to a disease with few disease-modifying options.',
+        source: {
+          externalId: 'src:novartis-adakveo-fda-approval-2019',
+          name: 'Novartis. New Novartis medicine Adakveo (crizanlizumab) approved by FDA to reduce frequency of pain crises in individuals living with sickle cell disease. November 15, 2019.',
+          url: 'https://www.novartis.com/news/media-releases/new-novartis-medicine-adakveo-crizanlizumab-approved-fda-reduce-frequency-pain-crises-individuals-living-sickle-cell-disease',
+          publishedAt: '2019-11-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-05-26',
+        datePrecision: 'DAY',
+        reason: 'After the larger confirmatory phase 3 STAND trial showed no significant benefit of crizanlizumab over placebo on vaso-occlusive crises, the EMA\'s Committee for Medicinal Products for Human Use recommended revoking Adakveo\'s conditional marketing authorization (a recommendation the European Commission adopted in August 2023). The failed confirmatory trial directly contradicted the surrogate-supported efficacy claim, reopening as contested a finding that had been treated as settled — even as the drug remained on the U.S. market.',
+        source: {
+          externalId: 'src:ema-adakveo-revocation-2023',
+          name: 'European Medicines Agency. EMA recommends revocation of authorisation for sickle cell disease medicine Adakveo. May 26, 2023.',
+          url: 'https://www.ema.europa.eu/en/news/revocation-authorisation-sickle-cell-disease-medicine-adakveo',
+          publishedAt: '2023-05-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
