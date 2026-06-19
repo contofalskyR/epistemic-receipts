@@ -32956,48 +32956,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Physicians' Health Study — aspirin primary prevention 1988 ──────────────
-  {
-    externalId: 'trajectory:physicians-health-study-aspirin-primary-prevention-1988',
-    text: 'On 28 January 1988 the Steering Committee of the Physicians\' Health Study reported in the New England Journal of Medicine that low-dose aspirin (325 mg every other day) reduced the risk of a first myocardial infarction in healthy men, establishing aspirin for the primary prevention of heart attack.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1988-01-28',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1988-01-28',
-        datePrecision: 'DAY',
-        reason: 'The Steering Committee published a preliminary report after the data-monitoring board stopped the aspirin arm of the randomized, double-blind, placebo-controlled trial in 22,071 male physicians early. Aspirin produced a 44% reduction in the risk of a first myocardial infarction (relative risk 0.56, P<0.00001). This put on the scientific record the then-novel claim that aspirin could prevent a first heart attack in apparently healthy people, distinct from its already-known value in treating acute infarction.',
-        source: {
-          externalId: 'src:phs-aspirin-preliminary-nejm-1988',
-          name: 'Steering Committee of the Physicians\' Health Study Research Group. Preliminary report: findings from the aspirin component of the ongoing Physicians\' Health Study. N Engl J Med. 1988;318(4):262-264.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/3275899/',
-          publishedAt: '1988-01-28',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1989-07-20',
-        datePrecision: 'DAY',
-        reason: 'The full final report of the aspirin component, published in the New England Journal of Medicine, confirmed the 44% reduction in first myocardial infarction over an average 60.2 months of follow-up. The robust, large-scale randomized result settled aspirin as evidence-based primary prevention and was rapidly incorporated into cardiovascular prevention guidance for at-risk adults.',
-        source: {
-          externalId: 'src:phs-aspirin-final-nejm-1989',
-          name: 'Steering Committee of the Physicians\' Health Study Research Group. Final report on the aspirin component of the ongoing Physicians\' Health Study. N Engl J Med. 1989;321(3):129-135.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/2664509/',
-          publishedAt: '1989-07-20',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── AFASAK — warfarin atrial fibrillation stroke prevention 1989 ─────────────
   {
     externalId: 'trajectory:afasak-warfarin-atrial-fibrillation-stroke-prevention-1989',
