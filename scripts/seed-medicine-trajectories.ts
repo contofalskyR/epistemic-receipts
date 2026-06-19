@@ -18366,6 +18366,186 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── HHS opioid public health emergency — Trump/Hargan 2017 ─────────────────
+  {
+    externalId: 'trajectory:hhs-opioid-public-health-emergency-2017',
+    text: 'Acting U.S. Health and Human Services Secretary Eric D. Hargan, at President Donald Trump\'s direction, determined on October 26, 2017, under section 319 of the Public Health Service Act, that a nationwide public health emergency exists as a result of the consequences of the opioid crisis.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-10-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-10-26',
+        datePrecision: 'DAY',
+        reason: 'President Trump announced the opioid crisis as a national public health emergency and directed HHS to act; Acting Secretary Hargan formally determined under PHSA section 319 that a public health emergency existed nationwide. This was the first time the federal government invoked the public-health-emergency authority for the opioid epidemic, institutionally settling the crisis as a recognized national emergency and triggering renewals every 90 days thereafter.',
+        source: {
+          externalId: 'src:hhs-aspr-opioid-phe-determination-2017',
+          name: 'U.S. Department of Health and Human Services, Office of the Assistant Secretary for Preparedness and Response (ASPR). Determination that a Public Health Emergency Exists as a Result of the Consequences of the Opioid Crisis. October 26, 2017.',
+          url: 'https://aspr.hhs.gov/legal/PHE/Pages/opioids.aspx',
+          publishedAt: '2017-10-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA Dsuvia (sufentanil) approval — 2018 ─────────────────────────────────
+  {
+    externalId: 'trajectory:fda-dsuvia-sufentanil-approval-2018',
+    text: 'The FDA approved AcelRx Pharmaceuticals\' Dsuvia (sufentanil sublingual tablet, 30 mcg) on November 2, 2018, for the management of acute pain in adults in certified medically supervised healthcare settings, judging its benefits to outweigh its risks despite its extreme potency.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-11-02',
+        datePrecision: 'DAY',
+        reason: 'FDA\'s Center for Drug Evaluation and Research approved Dsuvia, a sublingual sufentanil tablet roughly 5–10 times more potent than fentanyl, after its Anesthetic and Analgesic Drug Products Advisory Committee voted 10-3 in favor, with the agency citing military battlefield-analgesia interest and tight distribution restrictions. The approval institutionally ratified the benefit-risk profile of a highly potent new opioid in the midst of the overdose epidemic.',
+        source: {
+          externalId: 'src:acelrx-dsuvia-fda-approval-8k-2018',
+          name: 'AcelRx Pharmaceuticals, Inc. Press release: AcelRx announces FDA approval of DSUVIA. Filed as Exhibit 99.1 to Form 8-K, U.S. SEC EDGAR. November 2, 2018.',
+          url: 'https://www.sec.gov/Archives/edgar/data/1427925/000143774918019403/ex_127679.htm',
+          publishedAt: '2018-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2018-11-02',
+        datePrecision: 'DAY',
+        reason: 'The advisory committee chair, Dr. Raeford Brown, who was absent from the vote, had publicly opposed the application, and Senator Edward Markey and four public-health advocacy groups blasted the approval as reckless given the absence of abuse-deterrent features and the ongoing opioid crisis. The benefit-risk determination became openly contested by clinicians, legislators, and the panel\'s own chair immediately upon approval.',
+        source: {
+          externalId: 'src:markey-dsuvia-opposition-2018',
+          name: 'Office of U.S. Senator Edward J. Markey. Press release: Senator Markey Blasts FDA Decision to Approve New Supercharged Opioid Dsuvia. November 2, 2018.',
+          url: 'https://www.markey.senate.gov/news/press-releases/senator-markey-blasts-fda-decision-to-approve-new-supercharged-opioid-dsuvia',
+          publishedAt: '2018-11-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── McKinsey opioid consulting liability — 2021/2024 ────────────────────────
+  {
+    externalId: 'trajectory:mckinsey-opioid-consulting-liability-2021',
+    text: 'McKinsey & Company\'s liability for advising Purdue Pharma to \'turbocharge\' OxyContin sales was first recorded in a $573 million civil settlement with 47 states announced February 4, 2021, and was settled as criminal responsibility on December 13, 2024, when the U.S. Department of Justice secured a $650 million resolution and a deferred prosecution agreement.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-02-04',
+        datePrecision: 'DAY',
+        reason: 'A coalition of attorneys general from 47 states, D.C., and five territories announced a $573 million settlement with McKinsey to resolve investigations into the firm\'s decade of consulting work helping opioid manufacturers, including advising Purdue Pharma to \'turbocharge\' OxyContin sales. It was the first multistate opioid settlement to deliver substantial payment to states, recording McKinsey\'s civil liability for the marketing conduct.',
+        source: {
+          externalId: 'src:ca-ag-mckinsey-573m-settlement-2021',
+          name: 'California Department of Justice, Office of the Attorney General. Attorney General Becerra Announces $573 Million Nationwide Settlement with McKinsey & Company for its Role in the Opioid Epidemic. February 4, 2021.',
+          url: 'https://oag.ca.gov/news/press-releases/attorney-general-becerra-announces-573-million-nationwide-settlement-mckinsey',
+          publishedAt: '2021-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-12-13',
+        datePrecision: 'DAY',
+        reason: 'The DOJ announced a $650 million resolution of criminal and civil investigations into McKinsey\'s work with Purdue, via a five-year deferred prosecution agreement in which McKinsey acknowledged aiding and abetting the misbranding of prescription drugs, and charged former senior partner Martin Elling with obstruction of justice for destroying records. It was the first time a management consulting firm was held criminally responsible for advice resulting in a client\'s crime, settling McKinsey\'s culpability at the criminal level.',
+        source: {
+          externalId: 'src:doj-mckinsey-650m-resolution-2024',
+          name: 'U.S. Department of Justice, Office of Public Affairs. Justice Department Announces Resolution of Criminal and Civil Investigations into McKinsey & Company\'s Work with Purdue Pharma L.P.; Former McKinsey Senior Partner Charged with Obstruction of Justice. December 13, 2024.',
+          url: 'https://www.justice.gov/archives/opa/pr/justice-department-announces-resolution-criminal-and-civil-investigations-mckinsey-companys',
+          publishedAt: '2024-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── National opioid distributor settlement — 2021/2022 ──────────────────────
+  {
+    externalId: 'trajectory:national-opioid-distributor-settlement-2022',
+    text: 'The \'big three\' drug distributors — McKesson, Cardinal Health, and AmerisourceBergen — together with Johnson & Johnson formally committed on February 25, 2022, to a roughly $26 billion settlement resolving thousands of state and local claims that they fueled the opioid epidemic, after a framework was first proposed in July 2021.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-07-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2021-07-21',
+        datePrecision: 'DAY',
+        reason: 'State attorneys general announced a proposed ~$26 billion framework under which the three largest U.S. drug distributors would pay about $21 billion over 18 years and Johnson & Johnson about $5 billion over nine years, contingent on sufficient state and local sign-on. The proposal recorded a negotiated industry-wide financial accounting for distribution and marketing conduct, but remained conditional pending participation thresholds.',
+        source: {
+          externalId: 'src:npr-26b-distributor-opioid-framework-2021',
+          name: 'NPR. States are near a $26 billion opioid settlement with drug distributors. July 20, 2021.',
+          url: 'https://www.npr.org/2021/07/20/1018288961/new-york-1-billion-opioid-deal-us-drug-wholesalers',
+          publishedAt: '2021-07-20',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '2022-02-25',
+        datePrecision: 'DAY',
+        reason: 'After enough states and subdivisions joined, the distributors and Johnson & Johnson formally committed to the ~$26 billion agreement; defendants began releasing funds to a national administrator on April 2, 2022, with about 70% earmarked for opioid remediation. The formal commitment settled the largest industry-wide financial resolution of the opioid epidemic outside of bankruptcy.',
+        source: {
+          externalId: 'src:mi-ag-26b-opioid-agreement-committed-2022',
+          name: 'Michigan Department of Attorney General. Drug Distributors, Johnson & Johnson Formally Commit to $26 Billion Opioid Agreement. February 25, 2022.',
+          url: 'https://www.michigan.gov/ag/news/press-releases/2022/02/25/drug-distributors-johnson-and-johnson-formally-commit-to-26b-opioid-agreement',
+          publishedAt: '2022-02-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA OxyContin pediatric approval — 2015 ─────────────────────────────────
+  {
+    externalId: 'trajectory:fda-oxycontin-pediatric-approval-2015',
+    text: 'The FDA approved a labeling supplement on August 13, 2015, permitting OxyContin (extended-release oxycodone, Purdue Pharma, NDA 022272) for opioid-tolerant pediatric patients aged 11 to 16 with pain severe enough to require daily, around-the-clock, long-term opioid treatment.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-08-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved a prior-approval supplement to NDA 022272 extending OxyContin\'s labeling to opioid-tolerant children aged 11–16, based on an open-label trial in pediatric patients, with the agency reasoning that it was filling a knowledge gap for off-label prescribing already occurring. The approval institutionally established a pediatric indication for the most notorious branded opioid, prompting immediate public and political backlash that nonetheless did not reverse the label.',
+        source: {
+          externalId: 'src:fda-oxycontin-pediatric-approval-letter-2015',
+          name: 'U.S. FDA Center for Drug Evaluation and Research. Approval letter, NDA 022272/S-027 (OxyContin extended-release tablets, pediatric labeling supplement), Purdue Pharma. August 13, 2015.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2015/022272Orig1s027ltr.pdf',
+          publishedAt: '2015-08-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Exubera inhaled insulin — FDA approval 2006 / market withdrawal 2007 ────
   {
     externalId: 'trajectory:exubera-inhaled-insulin-2006',
