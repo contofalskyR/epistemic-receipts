@@ -27422,6 +27422,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ORPHAN / LYSOSOMAL STORAGE DISEASE DRUG APPROVALS (1992–2007)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Nitisinone / Orfadin — hereditary tyrosinemia type 1, 1992 ──────────────
+  {
+    externalId: 'trajectory:nitisinone-orfadin-hereditary-tyrosinemia-1992',
+    text: 'Nitisinone (NTBC), an inhibitor of 4-hydroxyphenylpyruvate dioxygenase, blocks the formation of toxic metabolites in hereditary tyrosinemia type 1 and prevents the disease\'s hepatic and renal complications — a claim first evidenced by Lindstedt and colleagues in The Lancet in October 1992 and settled by the FDA\'s approval of Orfadin on 18 January 2002, the first drug for the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-10',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-10',
+        datePrecision: 'MONTH',
+        reason: 'Lindstedt, Holme, Lock, Hjalmarson, and Strandvik reported in The Lancet that oral NTBC (0.1–0.6 mg/kg/day) drove plasma succinylacetone to the detection limit and normalized liver function in children with hereditary tyrosinemia type 1, with no side-effects observed. Until then the only effective treatment was liver transplantation; this recorded the proof-of-concept that pharmacologically inhibiting an upstream enzyme could halt the disease.',
+        source: {
+          externalId: 'src:lindstedt-ntbc-tyrosinemia-lancet-1992',
+          name: 'Lindstedt S, Holme E, Lock EA, Hjalmarson O, Strandvik B. Treatment of hereditary tyrosinaemia type I by inhibition of 4-hydroxyphenylpyruvate dioxygenase. Lancet. 1992;340(8823):813-817. PMID 1383656.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1383656/',
+          publishedAt: '1992-10-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-01-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Orfadin (nitisinone, NDA 21-232) as an adjunct to dietary tyrosine/phenylalanine restriction for hereditary tyrosinemia type 1, the first drug ever approved for the disease. The review drew on a study of more than 180 patients in which infants diagnosed before two months of age had a 4-year survival of 88% on nitisinone plus diet versus a historical 29% on diet alone, institutionally settling the 1992 claim.',
+        source: {
+          externalId: 'src:fda-orfadin-nitisinone-nda-21232-2002',
+          name: 'U.S. FDA, Drugs@FDA. Drug Approval Package: Orfadin (nitisinone) Capsules, NDA 21-232. Approved January 18, 2002.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2002/21-232_Orfadin.cfm',
+          publishedAt: '2002-01-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Miglustat / Zavesca — oral substrate reduction, Gaucher disease, 2000 ───
+  {
+    externalId: 'trajectory:miglustat-zavesca-oral-substrate-reduction-gaucher-2000',
+    text: 'Miglustat (N-butyldeoxynojirimycin, OGT 918), an oral inhibitor of glucosylceramide synthase, reduces glycolipid substrate biosynthesis and shrinks the liver and spleen in type 1 Gaucher disease — a substrate-reduction strategy first evidenced by Cox and colleagues in The Lancet on 29 April 2000 and settled by the FDA\'s approval of Zavesca on 31 July 2003, the first oral treatment for Gaucher disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-04',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-04',
+        datePrecision: 'MONTH',
+        reason: 'Cox et al. reported in The Lancet an open-label trial in 28 adults with type 1 Gaucher disease who were unable or unwilling to receive intravenous enzyme therapy; over 12 months of oral OGT 918 (100 mg three times daily) mean liver and spleen volumes fell 12% and 19%. This recorded the first human proof that reducing substrate biosynthesis — rather than replacing the missing enzyme — could treat a lysosomal storage disorder, establishing a distinct therapeutic paradigm.',
+        source: {
+          externalId: 'src:cox-miglustat-gaucher-lancet-2000',
+          name: 'Cox T, Lachmann R, Hollak C, et al. Novel oral treatment of Gaucher\'s disease with N-butyldeoxynojirimycin (OGT 918) to decrease substrate biosynthesis. Lancet. 2000;355(9214):1481-1485. PMID 10801168.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10801168/',
+          publishedAt: '2000-04-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-07-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Zavesca (miglustat, NDA 21-348) for mild-to-moderate type 1 Gaucher disease in patients for whom enzyme replacement therapy is unsuitable, the first oral therapy for the disease and the first approved substrate-reduction agent. The approval institutionally ratified glucosylceramide-synthase inhibition as a legitimate mechanism, complementing the established enzyme-replacement paradigm.',
+        source: {
+          externalId: 'src:fda-zavesca-miglustat-nda-21348-2003',
+          name: 'U.S. FDA, Drugs@FDA. Drug Approval Package: Zavesca (miglustat) Capsules, NDA 21-348. Approved July 31, 2003.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2003/21-348_Zavesca.cfm',
+          publishedAt: '2003-07-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Galsulfase / Naglazyme — first MPS VI treatment, 2005 ───────────────────
+  {
+    externalId: 'trajectory:galsulfase-naglazyme-first-mps-vi-treatment-2005',
+    text: 'Recombinant human N-acetylgalactosamine-4-sulfatase (galsulfase, Naglazyme) is an effective enzyme replacement therapy for mucopolysaccharidosis VI (Maroteaux-Lamy syndrome) — a claim first evidenced in Harmatz et al.\'s phase 1/2 trial in the Journal of Pediatrics in May 2004 and settled by the FDA\'s approval of 31 May 2005, the first treatment ever approved for MPS VI.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-05',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-05',
+        datePrecision: 'MONTH',
+        reason: 'Harmatz, Whitley, Hopwood, and colleagues reported an ongoing randomized, double-blind phase 1/2 study comparing high- and low-dose weekly infusions of recombinant human arylsulfatase B in children with MPS VI, showing reduced urinary glycosaminoglycans and improved endurance. This recorded the first human evidence that enzyme replacement could ameliorate this lysosomal storage disorder.',
+        source: {
+          externalId: 'src:harmatz-galsulfase-mps-vi-jpeds-2004',
+          name: 'Harmatz P, Whitley CB, Waber L, et al. Enzyme replacement therapy in mucopolysaccharidosis VI (Maroteaux-Lamy syndrome). J Pediatr. 2004;144(5):574-580. PMID 15126989.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15126989/',
+          publishedAt: '2004-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-05-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Naglazyme (galsulfase, BLA 125117) with orphan-drug exclusivity as the first drug ever approved for MPS VI, a disease affecting an estimated ~1,100 individuals. The pivotal phase 3 randomized placebo-controlled trial (Harmatz et al., J Pediatr 2006;148:533-539) subsequently confirmed a ~92-meter gain in the 12-minute walk test and significant urinary-GAG reduction, cementing the claim in the literature.',
+        source: {
+          externalId: 'src:fda-naglazyme-galsulfase-bla-125117-2005',
+          name: 'U.S. FDA, Drugs@FDA. Naglazyme (galsulfase), BLA 125117. Approved May 31, 2005.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/125117_0000_lbl.pdf',
+          publishedAt: '2005-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Idursulfase / Elaprase — first Hunter syndrome treatment, 2006 ───────────
+  {
+    externalId: 'trajectory:idursulfase-elaprase-first-hunter-syndrome-treatment-2006',
+    text: 'Recombinant human iduronate-2-sulfatase (idursulfase, Elaprase) is an effective enzyme replacement therapy for Hunter syndrome (mucopolysaccharidosis II) — established by the FDA\'s approval of 24 July 2006, the first treatment ever approved for the disease, and confirmed by Muenzer et al.\'s phase II/III trial in Genetics in Medicine in August 2006.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-07-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-07-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Elaprase (idursulfase, BLA 125151), the first enzyme replacement therapy and first treatment of any kind for Hunter syndrome, on the basis of a randomized, double-blind, placebo-controlled trial in 96 patients showing improved six-minute walk distance and forced vital capacity. The approval converted a previously untreatable X-linked lysosomal storage disease into a treatable one.',
+        source: {
+          externalId: 'src:fda-elaprase-idursulfase-bla-125151-2006',
+          name: 'U.S. FDA, Drugs@FDA. Elaprase (idursulfase), BLA 125151. Approved July 24, 2006.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2013/125151Orig1s152,s184ltr.pdf',
+          publishedAt: '2006-07-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-08',
+        datePrecision: 'MONTH',
+        reason: 'Muenzer and colleagues published the pivotal randomized phase II/III trial in Genetics in Medicine, reporting that weekly idursulfase produced a 37-meter improvement in six-minute walk distance and a 160 mL increase in forced vital capacity versus placebo in 96 patients. Peer-reviewed publication confirmed in the expert literature the efficacy claim the FDA had approved weeks earlier, while documenting infusion reactions and antibody formation in 47% of patients.',
+        source: {
+          externalId: 'src:muenzer-idursulfase-hunter-genetmed-2006',
+          name: 'Muenzer J, Wraith JE, Beck M, et al. A phase II/III clinical study of enzyme replacement therapy with idursulfase in mucopolysaccharidosis II (Hunter syndrome). Genet Med. 2006;8(8):465-473. PMID 16912578.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16912578/',
+          publishedAt: '2006-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sapropterin / Kuvan — first PKU drug, 2007 ──────────────────────────────
+  {
+    externalId: 'trajectory:sapropterin-kuvan-first-pku-drug-2007',
+    text: 'Sapropterin dihydrochloride (synthetic tetrahydrobiopterin/6R-BH4, Kuvan) lowers blood phenylalanine in BH4-responsive phenylketonuria — a claim first evidenced in Levy et al.\'s phase 3 placebo-controlled trial in The Lancet in August 2007 and settled by the FDA\'s approval of Kuvan on 13 December 2007, the first drug therapy ever approved for PKU.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-08',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-08',
+        datePrecision: 'MONTH',
+        reason: 'Levy and colleagues reported a phase 3 randomized placebo-controlled trial in The Lancet showing that sapropterin reduced mean blood phenylalanine by 236 µmol/L versus a 3 µmol/L rise on placebo, with 44% of treated patients achieving a ≥30% reduction. After four decades in which dietary phenylalanine restriction was the only management, this recorded the first controlled evidence that an oral pharmacologic cofactor could lower phenylalanine in a subset of patients.',
+        source: {
+          externalId: 'src:levy-sapropterin-pku-lancet-2007',
+          name: 'Levy HL, Milanowski A, Chakrapani A, et al. Efficacy of sapropterin dihydrochloride (tetrahydrobiopterin, 6R-BH4) for reduction of phenylalanine concentration in patients with phenylketonuria: a phase III randomised placebo-controlled study. Lancet. 2007;370(9586):504-510. PMID 17693179.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17693179/',
+          publishedAt: '2007-08-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-12-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kuvan (sapropterin dihydrochloride, NDA 022181) to reduce blood phenylalanine in BH4-responsive PKU as an adjunct to a phenylalanine-restricted diet — the first drug therapy ever approved for phenylketonuria. The approval institutionally settled the claim that a pharmacologic agent could supplement dietary management of the disease, moving PKU treatment beyond diet alone for the first time.',
+        source: {
+          externalId: 'src:fda-kuvan-sapropterin-nda-022181-2007',
+          name: 'U.S. FDA, Drugs@FDA. Kuvan (sapropterin dihydrochloride) Tablets, NDA 022181. Approved December 13, 2007.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/022181lbl.pdf',
+          publishedAt: '2007-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
