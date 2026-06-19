@@ -22578,48 +22578,6 @@ const TRAJECTORIES: Trajectory[] = [
   // ENDOCRINOLOGY / METABOLIC DISEASE ERA (1891–1950)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Murray thyroid extract relieves myxoedema — 1891 ────────────────────────
-  {
-    externalId: 'trajectory:murray-thyroid-extract-myxoedema-1891',
-    text: 'George Redmayne Murray reported in the British Medical Journal on 10 October 1891 that hypodermic injections of an extract of sheep thyroid gland relieved the symptoms of myxoedema, the first successful use of hormone replacement therapy.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1891-10-10',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1891-10-10',
-        datePrecision: 'DAY',
-        reason: 'Murray published \'Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep\' in the BMJ, describing a 46-year-old woman with myxoedema whom he began injecting with glycerine extract of sheep thyroid on 13 April 1891 and who improved dramatically. This recorded in the expert literature the first deliberate, successful replacement of a missing internal secretion — the founding demonstration of endocrine replacement therapy.',
-        source: {
-          externalId: 'src:murray-myxoedema-thyroid-bmj-1891',
-          name: 'Murray GR. Note on the treatment of myxoedema by hypodermic injections of an extract of the thyroid gland of a sheep. BMJ. 1891 Oct 10;2(1606):796–797.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2273741/',
-          publishedAt: '1891-10-10',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1920-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Thyroid replacement was rapidly reproduced and adopted; oral desiccated thyroid replaced injections and became the standard treatment for hypothyroidism, and Murray\'s original patient survived 28 years on continuous thyroid therapy (reported by him in 1920). The principle that an orally or parenterally supplied thyroid preparation corrects myxoedema became and remains settled endocrine practice.',
-        source: {
-          externalId: 'src:lindholm-laurberg-thyroid-replacement-history-2011',
-          name: 'Lindholm J, Laurberg P. Hypothyroidism and thyroid substitution: historical aspects (The discovery of thyroid replacement therapy). J Thyroid Res. 2011;2011:809341.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3014555/',
-          publishedAt: '2011-05-26',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Kendall isolates thyroxine — 1915 ───────────────────────────────────────
   {
     externalId: 'trajectory:kendall-thyroxine-isolation-1915',
@@ -22654,51 +22612,9 @@ const TRAJECTORIES: Trajectory[] = [
         source: {
           externalId: 'src:harington-barger-thyroxine-synthesis-biochemj-1927',
           name: 'Harington CR, Barger G. Chemistry of thyroxine. III. Constitution and synthesis of thyroxine. Biochem J. 1927;21(1):169–183.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/16743801/',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1251886/',
           publishedAt: '1927-01-01',
           methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Marine–Kimball iodine prevents goiter — 1920 ────────────────────────────
-  {
-    externalId: 'trajectory:marine-kimball-iodine-prevents-goiter-1920',
-    text: 'David Marine and Oliver Kimball reported in the Archives of Internal Medicine in 1920 that periodic sodium iodide supplementation prevented endemic goiter in Akron, Ohio schoolgirls — goiter developed or worsened in 0.2% of treated girls versus about 14% of untreated controls.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '1920-01-01',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1920-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Marine and Kimball published \'The prevention of simple goiter in man\' in the Archives of Internal Medicine, reporting their controlled Akron trial (begun 1917) in which ~2,190 schoolgirls given sodium iodide twice yearly were compared with ~2,305 untreated controls. The near-total suppression of new goiter in the treated group recorded in the expert literature the claim that iodine deficiency causes, and iodine supplementation prevents, endemic goiter.',
-        source: {
-          externalId: 'src:marine-kimball-prevention-goiter-1920',
-          name: 'Marine D, Kimball OP. The prevention of simple goiter in man. Arch Intern Med. 1920;25(6):661–672.',
-          url: 'https://jn.nutrition.org/article/S0022-3166(22)10117-3/fulltext',
-          publishedAt: '1920-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1924-05-01',
-        datePrecision: 'DAY',
-        reason: 'Acting on Marine\'s findings, Michigan public-health authorities and salt producers introduced iodized table salt, which first appeared on grocery shelves across the state on 1 May 1924; Morton Salt began national distribution of iodized salt later that year. This institutional and market adoption — and the subsequent collapse of Michigan goiter prevalence from 38.6% to 1.4% by 1951 — settled iodine prophylaxis as standard public-health practice.',
-        source: {
-          externalId: 'src:iodized-salt-centennial-healio-2024',
-          name: 'Healio / Endocrine News. Iodized salt: celebrating the centennial of a major US public health triumph. 13 Feb 2024.',
-          url: 'https://www.healio.com/news/endocrinology/20240213/iodized-salt-celebrating-the-centennial-of-a-major-us-public-health-triumph',
-          publishedAt: '2024-02-13',
-          methodologyType: 'derivative',
         },
       },
     ],
