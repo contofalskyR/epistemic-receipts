@@ -22837,48 +22837,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Cerivastatin (Baycol) withdrawal rhabdomyolysis 2001 ────────────────────
-  {
-    externalId: 'trajectory:cerivastatin-baycol-withdrawal-2001',
-    text: 'Cerivastatin (Baycol), the HMG-CoA reductase inhibitor approved by the FDA in September 1997, was voluntarily withdrawn worldwide by Bayer on 8 August 2001 after reports of fatal rhabdomyolysis — including 31 US deaths — reversing the claim that it was a safe cholesterol-lowering statin.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '1997-09',
-    claimEmergedPrecision: 'MONTH',
-    currentAxis: 'REVERSED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1997-09',
-        datePrecision: 'MONTH',
-        reason: 'The FDA approved cerivastatin (Baycol), a synthetic HMG-CoA reductase inhibitor marketed by Bayer, in September 1997, establishing it on the regulatory record as a safe and effective statin for lowering cholesterol. It joined a drug class whose survival benefit had been settled by the 1994 Scandinavian Simvastatin Survival Study and became widely prescribed.',
-        source: {
-          externalId: 'src:public-citizen-baycol-approval-2001',
-          name: 'Public Citizen Health Research Group. Cholesterol-Lowering Drug Cerivastatin (BAYCOL) Removed from the Market (documenting September 1997 FDA approval). Worst Pills, Best Pills News, 2001.',
-          url: 'https://www.worstpills.org/newsletters/view/100',
-          publishedAt: '2001-10-01',
-          methodologyType: 'derivative',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'REVERSED',
-        community: 'MARKET',
-        occurredAt: '2001-08-08',
-        datePrecision: 'DAY',
-        reason: 'Bayer announced on 8 August 2001 the voluntary worldwide withdrawal of Baycol after the FDA had received reports of 31 US deaths from severe rhabdomyolysis — a rate roughly ten times that of other statins, most frequently at the 0.8 mg dose and in combination with gemfibrozil. In an FDA Talk Paper the agency concurred with and supported the withdrawal, reversing the drug\'s safety premise through manufacturer and regulatory action and becoming a landmark post-market surveillance case.',
-        source: {
-          externalId: 'src:fda-baycol-withdrawal-2001',
-          name: 'U.S. Food and Drug Administration. Talk Paper T01-34: Bayer Voluntarily Withdraws Baycol (cerivastatin), 8 August 2001 (documented by Public Citizen Health Research Group).',
-          url: 'https://www.worstpills.org/newsletters/view/100',
-          publishedAt: '2001-08-08',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
