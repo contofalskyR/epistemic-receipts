@@ -25834,6 +25834,179 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE / PRECISION MEDICINE ERA (2000–2015) — Enzyme replacement, complement inhibition, CFTR modulation, cofactor therapy
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Alglucosidase alfa (Myozyme) — first ERT for Pompe disease 2006 ─────────
+  {
+    externalId: 'trajectory:alglucosidase-alfa-myozyme-pompe-first-ert-2006',
+    text: 'Recombinant human acid alpha-glucosidase (alglucosidase alfa, Myozyme) is an effective enzyme replacement therapy for Pompe disease, a claim established in expert literature by the Amalfitano and Kishnani infantile-onset trials and settled institutionally by the FDA\'s April 28, 2006 approval — the first treatment for a uniformly fatal lysosomal storage disease of cardiac and skeletal muscle.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Amalfitano, Kishnani, Chen and colleagues reported in Genetics in Medicine the first phase I/II clinical trial of recombinant human acid alpha-glucosidase (rhGAA) infused intravenously in three infants with infantile-onset Pompe disease, documenting reduced glycogen, improved cardiac and skeletal muscle function, and survival in a disease previously fatal by one year. This recorded the first human evidence that enzyme replacement could reach and correct muscle — extending the ERT paradigm beyond the reticuloendothelial system targeted by Gaucher therapy.',
+        source: {
+          externalId: 'src:amalfitano-rhgaa-pompe-phase12-genetmed-2001',
+          name: 'Amalfitano A, Bengur AR, Morse RP, et al. Recombinant human acid alpha-glucosidase enzyme therapy for infantile glycogen storage disease type II: results of a phase I/II clinical trial. Genet Med. 2001;3(2):132-138.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11286229/',
+          publishedAt: '2001-03-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Myozyme (alglucosidase alfa) on April 28, 2006 for Pompe disease, based on the open-label pivotal trial later published by Kishnani et al. in Neurology (2007;68:99-109) showing markedly improved ventilator-free survival in infantile-onset patients. The approval institutionally established rhGAA as standard therapy for a previously untreatable, uniformly fatal disorder and validated muscle-targeted enzyme replacement.',
+        source: {
+          externalId: 'src:kishnani-rhgaa-infantile-pompe-neurology-2007',
+          name: 'Kishnani PS, Corzo D, Nicolino M, et al. Recombinant human acid alpha-glucosidase: major clinical benefits in infantile-onset Pompe disease. Neurology. 2007;68(2):99-109.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17151339/',
+          publishedAt: '2007-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Eculizumab (Soliris) — first complement inhibitor, first PNH therapy 2007 ─
+  {
+    externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
+    text: 'Eculizumab (Soliris), a humanized monoclonal antibody that blocks terminal complement protein C5, reduces intravascular hemolysis and transfusion dependence in paroxysmal nocturnal hemoglobinuria, a claim established by the TRIUMPH trial (Hillmen et al., NEJM, September 21, 2006) and settled by the FDA\'s March 16, 2007 approval — the first complement inhibitor and first therapy for PNH.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-09-21',
+        datePrecision: 'DAY',
+        reason: 'Hillmen and colleagues published the TRIUMPH trial in the New England Journal of Medicine — a randomized, double-blind, placebo-controlled study of 87 transfusion-dependent PNH patients in which eculizumab reduced median LDH-area-under-curve hemolysis by 85.8% and stabilized hemoglobin without transfusion in 49% of treated patients versus none on placebo. This recorded the first controlled evidence that blocking terminal complement could halt the hemolysis driving PNH.',
+        source: {
+          externalId: 'src:hillmen-eculizumab-triumph-nejm-2006',
+          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233-1243.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa061648',
+          publishedAt: '2006-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Soliris (eculizumab) for all patients with PNH on March 16, 2007, on the basis of TRIUMPH and the supportive SHEPHERD study. It was the first complement inhibitor approved for any disease and the first therapy for PNH, institutionally establishing terminal-complement blockade as a treatment paradigm later extended to atypical HUS and myasthenia gravis.',
+        source: {
+          externalId: 'src:alexion-fda-soliris-pnh-approval-2007',
+          name: 'Alexion Pharmaceuticals. FDA Approves Alexion\'s Soliris (eculizumab) for All Patients With PNH. Press release. March 16, 2007.',
+          url: 'https://media.alexion.com/news-releases/news-release-details/fda-approves-alexions-soliristm-all-patients-pnh',
+          publishedAt: '2007-03-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ivacaftor (Kalydeco) — first CFTR potentiator, G551D mutation 2012 ──────
+  {
+    externalId: 'trajectory:ivacaftor-kalydeco-cftr-potentiator-g551d-2012',
+    text: 'Ivacaftor (Kalydeco, VX-770), an oral CFTR potentiator, improves lung function in cystic fibrosis patients carrying the G551D gating mutation, a claim established by the STRIVE trial (Ramsey et al., NEJM, November 3, 2011) and settled by the FDA\'s January 31, 2012 approval — the first drug to treat the underlying molecular cause of cystic fibrosis rather than its symptoms.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-03',
+        datePrecision: 'DAY',
+        reason: 'Ramsey, Davies, McElvaney and colleagues published the phase 3 STRIVE trial in the New England Journal of Medicine — 161 CF patients aged 12+ with at least one G551D allele — showing ivacaftor produced a 10.6-percentage-point absolute improvement in percent-predicted FEV1, reduced pulmonary exacerbations, lowered sweat chloride, and increased weight versus placebo. This recorded the first controlled evidence that pharmacologically restoring defective CFTR channel gating yields clinical benefit, validating mutation-specific precision therapy in CF.',
+        source: {
+          externalId: 'src:ramsey-ivacaftor-strive-nejm-2011',
+          name: 'Ramsey BW, Davies J, McElvaney NG, et al. A CFTR potentiator in patients with cystic fibrosis and the G551D mutation. N Engl J Med. 2011;365(18):1663-1672.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22047557/',
+          publishedAt: '2011-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kalydeco (ivacaftor) on January 31, 2012 under priority review for CF patients aged 6+ with the G551D mutation (~4% of CF patients), roughly three months after the STRIVE publication. It was the first drug to target the underlying CFTR defect rather than downstream symptoms, institutionally establishing genotype-directed CFTR modulation — the foundation of subsequent combination modulators (Orkambi, Trikafta).',
+        source: {
+          externalId: 'src:vertex-fda-kalydeco-ivacaftor-approval-2012',
+          name: 'Vertex Pharmaceuticals. FDA Approves KALYDECO (ivacaftor), the First Medicine to Treat the Underlying Cause of Cystic Fibrosis. Press release. January 31, 2012.',
+          url: 'https://investors.vrtx.com/news-releases/news-release-details/fda-approves-kalydecotm-ivacaftor-first-medicine-treat',
+          publishedAt: '2012-01-31',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sapropterin (Kuvan) — first drug for PKU 2007 ────────────────────────────
+  {
+    externalId: 'trajectory:sapropterin-kuvan-pku-first-drug-2007',
+    text: 'Sapropterin dihydrochloride (Kuvan), a synthetic form of the cofactor tetrahydrobiopterin, lowers blood phenylalanine in BH4-responsive phenylketonuria patients, a claim established by Levy et al.\'s phase III trial (Lancet, August 11, 2007) and settled by the FDA\'s December 13, 2007 approval — the first drug ever approved for PKU, a disorder previously managed only by dietary phenylalanine restriction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-08-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-08-11',
+        datePrecision: 'DAY',
+        reason: 'Levy, Milanowski, Chakrapani and colleagues published a phase III randomized, double-blind, placebo-controlled trial in The Lancet showing that oral sapropterin dihydrochloride (6R-BH4) significantly reduced blood phenylalanine concentrations in BH4-responsive PKU patients versus placebo. This recorded the first controlled evidence that a pharmacologic cofactor could augment residual phenylalanine hydroxylase activity, offering a treatment beyond lifelong dietary restriction.',
+        source: {
+          externalId: 'src:levy-sapropterin-pku-phase3-lancet-2007',
+          name: 'Levy HL, Milanowski A, Chakrapani A, et al. Efficacy of sapropterin dihydrochloride (tetrahydrobiopterin, 6R-BH4) for reduction of phenylalanine concentration in patients with phenylketonuria: a phase III randomised placebo-controlled study. Lancet. 2007;370(9586):504-510.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17693179/',
+          publishedAt: '2007-08-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-12-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kuvan (sapropterin dihydrochloride) on December 13, 2007 to reduce blood phenylalanine in BH4-responsive patients with hyperphenylalaninemia due to PKU. It was the first drug ever approved for PKU — complementing the Guthrie newborn-screening program established in 1963 — and institutionally established pharmacologic cofactor therapy as an adjunct to the phenylalanine-restricted diet.',
+        source: {
+          externalId: 'src:biomarin-fda-kuvan-sapropterin-approval-2007',
+          name: 'BioMarin Pharmaceutical. BioMarin Announces FDA Approval for Kuvan. Press release. December 13, 2007.',
+          url: 'https://www.biomarin.com/news/press-releases/biomarin-announces-fda-approval-for-kuvan/',
+          publishedAt: '2007-12-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
