@@ -35152,6 +35152,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SIDS & PEDIATRIC PHARMACOLOGY (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Silverman sulfisoxazole kernicterus — 1956 ──────────────────────────────
+  {
+    externalId: 'trajectory:silverman-sulfisoxazole-kernicterus-neonates-1956',
+    text: 'William Silverman and colleagues reported in Pediatrics in October 1956 that premature infants given prophylactic penicillin-plus-sulfisoxazole died at a significantly higher rate and developed far more kernicterus than infants given oxytetracycline, demonstrating that sulfisoxazole — a drug safe in adults — is dangerous to jaundiced neonates.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1956-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-10-01',
+        datePrecision: 'MONTH',
+        reason: 'In a randomized comparison of two antibacterial prophylaxis regimens in 193 low-birth-weight infants, Silverman found unexpectedly higher mortality and kernicterus in the penicillin/sulfisoxazole group. The trial was an early demonstration that a controlled experiment could uncover a drug hazard invisible to clinical impression, and that neonatal drug response differs fundamentally from adults\'.',
+        source: {
+          externalId: 'src:silverman-kernicterus-sulfisoxazole-pediatrics-1956',
+          name: 'Silverman WA, Andersen DH, Blanc WA, Crozier DN. A difference in mortality rate and incidence of kernicterus among premature infants allotted to two prophylactic antibacterial regimens. Pediatrics. 1956 Oct;18(4):614-624.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13370229/',
+          publishedAt: '1956-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The mechanism was established when sulfisoxazole was shown to displace bilirubin from serum albumin, raising free bilirubin and driving it into the neonatal brain. Sulfonamides became contraindicated in newborns, and the episode became a foundational lesson in pediatric pharmacology — that drug dosing and safety must be studied specifically in infants rather than extrapolated from adults.',
+        source: {
+          externalId: 'src:silverman-lessons-newborn-trials-james-lind-library',
+          name: 'Silverman WA. Personal reflections on lessons learned from randomized trials involving newborn infants, 1951 to 1967. The James Lind Library.',
+          url: 'https://www.jameslindlibrary.org/articles/personal-reflections-on-lessons-learned-from-randomized-trials-involving-newborn-infants-1951-to-1967/',
+          publishedAt: '2004-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Beckwith SIDS definition — Seattle 1969 ─────────────────────────────────
+  {
+    externalId: 'trajectory:beckwith-sids-definition-seattle-1969',
+    text: 'At the Second International Conference on Causes of Sudden Death in Infants in Seattle in 1969, pediatric pathologist J. Bruce Beckwith proposed and the conference adopted the term and definition \'sudden infant death syndrome\' — the sudden death of an infant unexpected by history and unexplained by thorough postmortem examination — establishing SIDS as a distinct diagnostic entity.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1969-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Beckwith coined and defined SIDS at the 1969 Seattle conference, converting a heterogeneous category of unexplained infant deaths (\'cot death\', presumed suffocation) into a named, postmortem-defined diagnostic syndrome. The exclusionary definition gave clinicians, pathologists, and bereaved families a recognized cause of death and a research target.',
+        source: {
+          externalId: 'src:sids-overview-definition-ncbi-bookshelf',
+          name: 'Sudden Infant Death Syndrome: An Overview (history of the 1969 Seattle definition). NCBI Bookshelf, NBK513399.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK513399/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The diagnostic category was institutionalized when the US National Center for Health Statistics created a distinct SIDS code (ICD-8 795.0, later ICD-9 798.0) in 1973, making SIDS an officially classifiable cause of death on death certificates and in vital statistics — reinforced by the federal Sudden Infant Death Syndrome Act of 1974 funding SIDS research and family support.',
+        source: {
+          externalId: 'src:sids-epidemiology-diagnostic-shift-ncbi-bookshelf',
+          name: 'The Epidemiology of Sudden Infant Death Syndrome and Sudden Unexpected Infant Deaths: Diagnostic Shift and Other Temporal Changes. NCBI Bookshelf, NBK513373.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK513373/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Steinschneider apnea-SIDS hypothesis — 1972 ─────────────────────────────
+  {
+    externalId: 'trajectory:steinschneider-apnea-sids-hypothesis-1972',
+    text: 'Alfred Steinschneider reported in Pediatrics in October 1972 that prolonged sleep apnea is a precursor of sudden infant death syndrome (SIDS), proposing that infants with apneic episodes — including two siblings in one family who later died — are at risk and that home apnea monitoring could prevent SIDS deaths.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Steinschneider published clinical and laboratory observations of infants with prolonged apnea, two of whom (siblings in the index \'H\' family) subsequently died and were attributed to SIDS, framing apnea as the physiological pathway to SIDS. The paper became one of the most-cited in SIDS research and launched the home apnea-monitor industry and the \'near-miss SIDS\' concept.',
+        source: {
+          externalId: 'src:steinschneider-apnea-sids-pediatrics-1972',
+          name: 'Steinschneider A. Prolonged apnea and the sudden infant death syndrome: clinical and laboratory observations. Pediatrics. 1972 Oct;50(4):646-654.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4342142/',
+          publishedAt: '1972-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1995-04-22',
+        datePrecision: 'DAY',
+        reason: 'The apnea-as-SIDS-precursor hypothesis collapsed when the index \'H\' family infants were shown not to have died of SIDS at all: their mother, Waneta Hoyt, was convicted on 22 April 1995 of smothering five of her children whose deaths Steinschneider had reported as natural. Combined with epidemiological failure to link apnea to SIDS and the later CHIME finding that monitoring did not prevent SIDS, the apnea hypothesis was discredited.',
+        source: {
+          externalId: 'src:hoyt-steinschneider-death-of-innocents-wapo-1997',
+          name: 'Firstman R, Talan J. The Death of Innocents (reviewed: \'Turning a Blind Eye to Mad Science\'). The Washington Post. 17 Nov 1997.',
+          url: 'https://www.washingtonpost.com/archive/lifestyle/1997/11/17/turning-a-blind-eye-to-mad-science/742c92b4-acfa-47c8-8295-bbf2dc6f6c67/',
+          publishedAt: '1997-11-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kulenkampff pertussis vaccine encephalopathy — 1974 ─────────────────────
+  {
+    externalId: 'trajectory:kulenkampff-pertussis-vaccine-encephalopathy-1974',
+    text: 'Kulenkampff, Schwartzman and Wilson reported in Archives of Disease in Childhood in January 1974 that whole-cell pertussis (triple/DTP) vaccination causes serious permanent neurological complications, describing 36 children seen over 11 years whose brain damage clustered in the 24 hours after inoculation, suggesting a causal rather than coincidental relationship.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1974-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1974-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Kulenkampff and colleagues reported a case series of 36 children with neurological complications they attributed to pertussis vaccination, the temporal clustering implying causation. Amplified by press coverage and pressure groups, the claim triggered the 1970s UK whooping-cough vaccine scare: pertussis coverage fell from ~80% to ~30% (as low as 9% in some areas), followed by major epidemics.',
+        source: {
+          externalId: 'src:kulenkampff-pertussis-neurological-adc-1974',
+          name: 'Kulenkampff M, Schwartzman JS, Wilson J. Neurological complications of pertussis inoculation. Arch Dis Child. 1974 Jan;49(1):46-49.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4818092/',
+          publishedAt: '1974-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Berkovic and colleagues showed in Lancet Neurology that 11 of 14 children with alleged \'vaccine encephalopathy\' carried de-novo SCN1A sodium-channel mutations causing Dravet syndrome (severe myoclonic epilepsy of infancy), a genetic disease whose onset merely coincided with vaccination timing. With the earlier National Childhood Encephalopathy Study reanalysis and IOM reviews finding no evidence of permanent vaccine-caused brain damage, the causal claim was overturned.',
+        source: {
+          externalId: 'src:berkovic-scn1a-vaccine-encephalopathy-lancetneurol-2006',
+          name: 'Berkovic SF, Harkin L, McMahon JM, et al. De-novo mutations of the sodium channel gene SCN1A in alleged vaccine encephalopathy: a retrospective study. Lancet Neurol. 2006 Jun;5(6):488-492.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16713920/',
+          publishedAt: '2006-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hib polysaccharide vaccine ineffective in infants — 1985 ────────────────
+  {
+    externalId: 'trajectory:hib-polysaccharide-vaccine-ineffective-infants-1985',
+    text: 'The plain Haemophilus influenzae type b polysaccharide vaccine (HbPV), licensed by the FDA in 1985 as the first vaccine against invasive Hib disease in children, was claimed to be a safe and effective means of preventing Hib meningitis and was recommended for routine use in young children.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1985-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA licensed the pure capsular polysaccharide (PRP) Hib vaccine in 1985, the first licensed product against Haemophilus influenzae type b — then the leading cause of bacterial meningitis in young US children — and ACIP recommended it for routine childhood immunization, treating it as an established preventive tool.',
+        source: {
+          externalId: 'src:cdc-pinkbook-hib-chapter8',
+          name: 'CDC. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book), Chapter 8: Haemophilus influenzae.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-8-haemophilus-influenzae.html',
+          publishedAt: '2021-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-01',
+        datePrecision: 'YEAR',
+        reason: 'As a T-independent antigen, the plain polysaccharide vaccine proved to have no protective efficacy in children under 18 months and only variable efficacy at 2 years — exactly the ages at highest Hib risk — with some studies suggesting a transient post-vaccination increase in disease. It was superseded by the first protein-conjugate Hib vaccine (PRP-D/ProHIBiT, licensed 1987) and abandoned, with conjugates becoming standard.',
+        source: {
+          externalId: 'src:hib-vaccine-adverse-events-ncbi-bookshelf',
+          name: 'Haemophilus influenzae Type b Vaccines. In: Adverse Events Associated with Childhood Vaccines. NCBI Bookshelf, NBK236299.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK236299/',
+          publishedAt: '1994-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── Knaus–Ogino ovulation timing / rhythm method — 1929 ────────────────────
   {
     externalId: 'trajectory:knaus-ogino-ovulation-timing-rhythm-method-1929',
