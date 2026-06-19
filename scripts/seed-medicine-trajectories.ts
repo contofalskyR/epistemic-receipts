@@ -32998,6 +32998,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINE SAFETY & HIV MEDICINE (2003–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── MMRV ProQuad — febrile seizure preferential recommendation reversal 2008 ─
+  {
+    externalId: 'trajectory:mmrv-proquad-febrile-seizure-preferential-recommendation-reversal-2008',
+    text: 'In 2006 the CDC\'s Advisory Committee on Immunization Practices recommended the combination measles-mumps-rubella-varicella vaccine (MMRV, ProQuad), licensed in September 2005, preferentially over separate MMR and varicella injections for young children.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After FDA licensure of MMRV (ProQuad) in September 2005, ACIP—consistent with its 2006 general recommendations favoring combination vaccines—expressed a preference for MMRV over separate MMR plus varicella injections to reduce the number of shots. This institutionalized MMRV as the default for the first childhood dose.',
+        source: {
+          externalId: 'src:mmwr-rr5903a1-mmrv-acip-2010',
+          name: 'CDC. Use of Combination Measles, Mumps, Rubella, and Varicella Vaccine: Recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep. 2010;59(RR-3):1-12.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/rr5903a1.htm',
+          publishedAt: '2010-05-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Postlicensure Vaccine Safety Datalink surveillance found that the first MMRV dose roughly doubled the risk of febrile seizures 7–10 days after vaccination versus separate MMR+varicella (relative risk ~2). In February 2008 ACIP withdrew its preference for MMRV, and in June 2009 finalized a recommendation that separate injections be used by default for the first dose. The empirical signal was later confirmed by Klein et al. (Pediatrics 2010).',
+        source: {
+          externalId: 'src:klein-mmrv-febrile-seizures-pediatrics-2010',
+          name: 'Klein NP, Fireman B, Yih WK, et al. Measles-mumps-rubella-varicella combination vaccine and the risk of febrile seizures. Pediatrics. 2010;126(1):e1-e8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20587679/',
+          publishedAt: '2010-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Influenza vaccine elderly mortality — healthy-vaccinee bias 2007 ──────────
+  {
+    externalId: 'trajectory:influenza-vaccine-elderly-mortality-benefit-healthy-vaccinee-bias-2007',
+    text: 'Observational cohort studies, prominently Nichol et al. in NEJM on 3 April 2003, indicated that influenza vaccination roughly halves all-cause winter mortality among community-dwelling adults aged 65 and older.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-04-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-04-03',
+        datePrecision: 'DAY',
+        reason: 'Nichol and colleagues, pooling data from three managed-care organizations, reported that influenza vaccination in the elderly was associated with a ~48–50% reduction in all-cause mortality during influenza season. This large effect estimate became the standard justification for universal elderly influenza vaccination policy.',
+        source: {
+          externalId: 'src:nichol-influenza-elderly-mortality-nejm-2003',
+          name: 'Nichol KL, Nordin J, Mullooly J, et al. Influenza vaccination and reduction in hospitalizations for cardiac disease and stroke among the elderly. N Engl J Med. 2003;348(14):1322-1332.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12672859/',
+          publishedAt: '2003-04-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Simonsen, Jackson, and colleagues argued that a ~50% all-cause mortality reduction was biologically implausible—it exceeded total winter influenza-attributable mortality—and arose from healthy-vaccinee selection bias in cohort studies, since vaccinated elders were measurably healthier even outside influenza season. They estimated the true mortality benefit could be no greater than ~5–10%, reopening a debate that remains unresolved.',
+        source: {
+          externalId: 'src:simonsen-influenza-elderly-controversy-lancet-id-2007',
+          name: 'Simonsen L, Taylor RJ, Viboud C, Miller MA, Jackson LA. Mortality benefits of influenza vaccination in elderly people: an ongoing controversy. Lancet Infect Dis. 2007;7(10):658-666.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17897608/',
+          publishedAt: '2007-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Menactra MCV4 — meningococcal conjugate GBS signal resolved 2012 ─────────
+  {
+    externalId: 'trajectory:menactra-mcv4-meningococcal-conjugate-gbs-signal-2005',
+    text: 'The FDA licensed Menactra (MCV4), the first quadrivalent meningococcal conjugate vaccine, on 14 January 2005, and ACIP recommended routine vaccination of adolescents.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-01-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-01-14',
+        datePrecision: 'DAY',
+        reason: 'On 14 January 2005 the FDA licensed Menactra (MCV4, Sanofi Pasteur) on the basis of non-inferior safety and immunogenicity versus the polysaccharide vaccine Menomune. In February 2005 ACIP recommended routine MCV4 vaccination at the 11–12-year preadolescent visit, establishing conjugate meningococcal vaccination as standard adolescent practice.',
+        source: {
+          externalId: 'src:mmwr-gbs-menactra-2005',
+          name: 'CDC. Guillain-Barré Syndrome Among Recipients of Menactra Meningococcal Conjugate Vaccine—United States, June–July 2005. MMWR Morb Mortal Wkly Rep. 2005;54(40):1023-1025.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16224452/',
+          publishedAt: '2005-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-10-14',
+        datePrecision: 'MONTH',
+        reason: 'Following VAERS reports of Guillain-Barré syndrome occurring within weeks of MCV4 vaccination in adolescents, the FDA and CDC issued a joint advisory and the package insert was updated to note a possible association, with a prior history of GBS added as a precaution/contraindication. This raised an active post-market safety question about the newly recommended vaccine.',
+        source: {
+          externalId: 'src:mmwr-gbs-menactra-junejuly-2005',
+          name: 'CDC. Guillain-Barré Syndrome Among Recipients of Menactra Meningococcal Conjugate Vaccine—United States, June–July 2005. MMWR Morb Mortal Wkly Rep. 2005;54(40):1023-1025.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16224452/',
+          publishedAt: '2005-10-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-01',
+        datePrecision: 'MONTH',
+        reason: 'A controlled study across five U.S. health plans covering more than 1.4 million MCV4 doses found no confirmed GBS cases within six weeks of vaccination and concluded MCV4 was not associated with an increased GBS risk (upper confidence bound ~1.5 cases per million doses). The safety signal was not borne out; meningococcal conjugate vaccination remained routinely recommended.',
+        source: {
+          externalId: 'src:velentgas-mcv4-gbs-risk-pds-2012',
+          name: 'Velentgas P, Amato AA, Bohn RL, et al. Risk of Guillain-Barré syndrome after meningococcal conjugate vaccination. Pharmacoepidemiol Drug Saf. 2012;21(12):1350-1358.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22807266/',
+          publishedAt: '2012-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Berlin Patient — CCR5 Δ32 stem-cell HIV cure 2009 ────────────────────────
+  {
+    externalId: 'trajectory:berlin-patient-ccr5-delta32-stem-cell-hiv-cure-2009',
+    text: 'Hütter and colleagues reported in NEJM on 12 February 2009 that an HIV-positive leukemia patient (the \'Berlin Patient\') maintained undetectable HIV without antiretroviral therapy after a stem-cell transplant from a CCR5-Δ32/Δ32 homozygous donor.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-02-12',
+        datePrecision: 'DAY',
+        reason: 'Hütter et al. reported a single HIV-1-infected patient with acute myeloid leukemia who received allogeneic stem cells from a donor homozygous for the CCR5-Δ32 deletion (the co-receptor HIV uses to enter cells). The patient showed no viral rebound 20 months after transplant and ART discontinuation—the first credible case suggesting HIV could be functionally eliminated.',
+        source: {
+          externalId: 'src:hutter-ccr5-stem-cell-hiv-nejm-2009',
+          name: 'Hütter G, Nowak D, Mossner M, et al. Long-term control of HIV by CCR5 Delta32/Delta32 stem-cell transplantation. N Engl J Med. 2009;360(7):692-698.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa0802905',
+          publishedAt: '2009-02-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Allers et al. provided detailed virological and immunological follow-up showing systemic and gut-mucosal CD4+ T-cell reconstitution with donor-derived CCR5-negative cells and no sign of HIV, concluding that cure of HIV infection had been achieved. This converted the isolated case report into accepted proof-of-principle that HIV cure is possible, later reinforced by the replicated \'London Patient\' (2019).',
+        source: {
+          externalId: 'src:allers-cure-hiv-ccr5-blood-2011',
+          name: 'Allers K, Hütter G, Hofmann J, et al. Evidence for the cure of HIV infection by CCR5Δ32/Δ32 stem cell transplantation. Blood. 2011;117(10):2791-2799.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21148083/',
+          publishedAt: '2011-03-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CAPRISA 004 — tenofovir gel microbicide HIV prevention 2010 ───────────────
+  {
+    externalId: 'trajectory:caprisa-004-tenofovir-gel-microbicide-hiv-prevention-2010',
+    text: 'The CAPRISA 004 trial, published in Science on 19 July 2010, reported that 1% tenofovir vaginal gel reduced HIV acquisition in South African women by 39% overall (54% with high adherence)—the first evidence that a microbicide could prevent HIV.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-19',
+        datePrecision: 'DAY',
+        reason: 'Abdool Karim et al. reported the first randomized evidence that a topical antiretroviral microbicide could reduce HIV acquisition: pericoital 1% tenofovir gel cut HIV incidence by 39% overall and 54% among adherent users. Science named it a top breakthrough of 2010 and it was widely seen as proof of concept for the microbicide field.',
+        source: {
+          externalId: 'src:abdool-karim-caprisa004-tenofovir-gel-science-2010',
+          name: 'Abdool Karim Q, Abdool Karim SS, Frohlich JA, et al. Effectiveness and safety of tenofovir gel, an antiretroviral microbicide, for the prevention of HIV infection in women. Science. 2010;329(5996):1168-1174.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20643915/',
+          publishedAt: '2010-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Confirmatory trials failed to reproduce the CAPRISA 004 result. The VOICE trial (Marrazzo et al., NEJM 2015) found daily tenofovir gel provided no significant overall protection, with very low product adherence, and the FACTS 001 trial reported at CROI 2015 likewise showed no efficacy. Tenofovir vaginal gel was never licensed for HIV prevention and the coitally-dosed microbicide approach was effectively abandoned.',
+        source: {
+          externalId: 'src:marrazzo-voice-tenofovir-prep-nejm-2015',
+          name: 'Marrazzo JM, Ramjee G, Richardson BA, et al. Tenofovir-based preexposure prophylaxis for HIV infection among African women. N Engl J Med. 2015;372(6):509-518.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25651245/',
+          publishedAt: '2015-02-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
