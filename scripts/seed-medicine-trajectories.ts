@@ -18863,6 +18863,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL TRIALS ERA (2000s–2020s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Radical prostatectomy vs observation — SPCG-4 / PIVOT ───────────────────
+  {
+    externalId: 'trajectory:pivot-radical-prostatectomy-localized-prostate-cancer-2012',
+    text: 'Radical prostatectomy reduces all-cause and prostate-cancer mortality in men with clinically localized prostate cancer compared with conservative observation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-09-12',
+        datePrecision: 'DAY',
+        reason: 'The Scandinavian SPCG-4 randomized trial (Holmberg et al.) reported that radical prostatectomy significantly reduced prostate-cancer-specific mortality versus watchful waiting (4.6% vs 8.9% cancer deaths), giving the first randomized evidence that surgery extended survival in early prostate cancer. This recorded the claim that operating on localized disease saves lives, and it anchored radical prostatectomy as the standard curative treatment in the emerging PSA-screening era.',
+        source: {
+          externalId: 'src:holmberg-spcg4-prostatectomy-watchful-waiting-nejm-2002',
+          name: 'Holmberg L, Bill-Axelson A, Helgesen F, et al. A randomized trial comparing radical prostatectomy with watchful waiting in early prostate cancer. N Engl J Med. 2002;347(11):781-789.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12226148/',
+          publishedAt: '2002-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-19',
+        datePrecision: 'DAY',
+        reason: 'The U.S. PIVOT trial (Wilt et al.) randomized 731 men with mostly PSA-screen-detected localized prostate cancer to radical prostatectomy or observation and found that over ~10 years surgery did not significantly reduce all-cause (47.0% vs 49.9%) or prostate-cancer mortality. Because most modern, screen-detected localized cancers are indolent, the central claim that surgery prolongs survival was thrown into serious dispute, accelerating the shift toward active surveillance for low-risk disease.',
+        source: {
+          externalId: 'src:wilt-pivot-prostatectomy-observation-nejm-2012',
+          name: 'Wilt TJ, Brawer MK, Jones KM, et al. (PIVOT Study Group). Radical prostatectomy versus observation for localized prostate cancer. N Engl J Med. 2012;367(3):203-213.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22808955/',
+          publishedAt: '2012-07-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Antibiotics vs appendectomy for uncomplicated appendicitis — APPAC / CODA
+  {
+    externalId: 'trajectory:antibiotics-alternative-appendectomy-uncomplicated-appendicitis-2015',
+    text: 'Antibiotic therapy is a safe and effective alternative to appendectomy for uncomplicated acute appendicitis, challenging the century-old surgical doctrine that appendicitis requires operation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-06-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-06-16',
+        datePrecision: 'DAY',
+        reason: 'The Finnish APPAC trial (Salminen et al.) randomized 530 patients with CT-confirmed uncomplicated appendicitis to antibiotics or appendectomy; about 73% of antibiotic-treated patients avoided surgery within one year. Although the trial did not meet its prespecified noninferiority margin, it recorded into the literature the previously heretical claim that most uncomplicated appendicitis can resolve without an operation, directly contesting the McBurney-era dogma that appendicitis is a surgical emergency.',
+        source: {
+          externalId: 'src:salminen-appac-antibiotics-appendectomy-jama-2015',
+          name: 'Salminen P, Paajanen H, Rautio T, et al. Antibiotic therapy vs appendectomy for treatment of uncomplicated acute appendicitis: the APPAC randomized clinical trial. JAMA. 2015;313(23):2340-2348.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26080338/',
+          publishedAt: '2015-06-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-05',
+        datePrecision: 'DAY',
+        reason: 'The U.S. CODA trial (Flum et al.) randomized 1,552 adults with appendicitis (including ~one-third with an appendicolith) and found antibiotics noninferior to appendectomy on a 30-day general health-status measure, yet nearly half of antibiotic-treated patients underwent appendectomy within a year. By confirming antibiotics as a defensible option while documenting high crossover to surgery, CODA left the optimal first-line treatment genuinely contested rather than settled, and guidelines now present antibiotics as one acceptable choice alongside surgery.',
+        source: {
+          externalId: 'src:flum-coda-antibiotics-appendectomy-nejm-2020',
+          name: 'CODA Collaborative (Flum DR, et al.). A randomized trial comparing antibiotics with appendectomy for appendicitis. N Engl J Med. 2020;383(20):1907-1919.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33017106/',
+          publishedAt: '2020-10-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bariatric surgery for type 2 diabetes — STAMPEDE ────────────────────────
+  {
+    externalId: 'trajectory:stampede-bariatric-surgery-diabetes-remission-2012',
+    text: 'Bariatric (metabolic) surgery achieves superior glycemic control and durable diabetes remission compared with intensive medical therapy in obese patients with type 2 diabetes, establishing surgery as a treatment for diabetes rather than only for weight.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-03-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-26',
+        datePrecision: 'DAY',
+        reason: 'The STAMPEDE trial (Schauer et al.) randomized obese patients with uncontrolled type 2 diabetes to intensive medical therapy alone or medical therapy plus Roux-en-Y gastric bypass or sleeve gastrectomy; at 12 months 42% (bypass) and 37% (sleeve) reached the HbA1c ≤6.0% endpoint versus only 12% with medical therapy. The result recorded the claim that operating on the gut directly treats diabetes, reframing bariatric procedures as metabolic surgery.',
+        source: {
+          externalId: 'src:schauer-stampede-bariatric-diabetes-nejm-2012',
+          name: 'Schauer PR, Kashyap SR, Wolski K, et al. Bariatric surgery versus intensive medical therapy in obese patients with diabetes. N Engl J Med. 2012;366(17):1567-1576.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22449319/',
+          publishedAt: '2012-03-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-02-16',
+        datePrecision: 'DAY',
+        reason: 'The STAMPEDE 5-year outcomes (Schauer et al.) confirmed that the glycemic, weight, lipid, and medication-use advantages of metabolic surgery persisted at five years (HbA1c endpoint met by 29% bypass and 23% sleeve vs 5% medical). The demonstrated durability cemented metabolic surgery as an evidence-based diabetes treatment, consistent with its endorsement in joint diabetes-organization guidelines for selected patients.',
+        source: {
+          externalId: 'src:schauer-stampede-5year-bariatric-diabetes-nejm-2017',
+          name: 'Schauer PR, Bhatt DL, Kirwan JP, et al. Bariatric surgery versus intensive medical therapy for diabetes — 5-year outcomes. N Engl J Med. 2017;376(7):641-651.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28199805/',
+          publishedAt: '2017-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Therapeutic hypothermia after cardiac arrest — HACA / TTM / TTM2 ────────
+  {
+    externalId: 'trajectory:therapeutic-hypothermia-cardiac-arrest-reversal-2013',
+    text: 'Therapeutic hypothermia (cooling comatose survivors to 32–34°C) after out-of-hospital cardiac arrest improves neurological outcome and survival compared with normothermia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-02-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-02-21',
+        datePrecision: 'DAY',
+        reason: 'The HACA (Hypothermia After Cardiac Arrest) trial reported that cooling comatose post-arrest patients to 32–34°C for 24 hours increased favorable neurologic outcome (55% vs 39%) and reduced mortality versus normothermia. Together with a concurrent Australian trial, it recorded the claim that induced hypothermia protects the brain after cardiac arrest.',
+        source: {
+          externalId: 'src:haca-hypothermia-cardiac-arrest-nejm-2002',
+          name: 'Hypothermia After Cardiac Arrest Study Group. Mild therapeutic hypothermia to improve the neurologic outcome after cardiac arrest. N Engl J Med. 2002;346(8):549-556.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11856793/',
+          publishedAt: '2002-02-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-07-08',
+        datePrecision: 'DAY',
+        reason: 'The International Liaison Committee on Resuscitation (ILCOR) Advanced Life Support Task Force issued an advisory statement recommending that unconscious adults with restored circulation after out-of-hospital ventricular-fibrillation arrest be cooled to 32–34°C for 12–24 hours. Adoption by ILCOR and subsequent AHA/ERC guidelines settled targeted hypothermia as the global standard of post-resuscitation care.',
+        source: {
+          externalId: 'src:nolan-ilcor-hypothermia-advisory-circulation-2003',
+          name: 'Nolan JP, Morley PT, Vanden Hoek TL, et al. Therapeutic hypothermia after cardiac arrest: an advisory statement by the Advanced Life Support Task Force of the International Liaison Committee on Resuscitation. Circulation. 2003;108(1):118-121.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12847056/',
+          publishedAt: '2003-07-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-11-17',
+        datePrecision: 'DAY',
+        reason: 'The TTM trial (Nielsen et al.) randomized 950 out-of-hospital arrest survivors to a target of 33°C versus 36°C and found no difference in mortality (50% vs 48%) or neurologic outcome. By showing that strict fever avoidance at 36°C worked as well as deep cooling, the trial cast doubt on the specific benefit of 32–34°C hypothermia that had become standard, moving the claim into active contest.',
+        source: {
+          externalId: 'src:nielsen-ttm-33-vs-36-cardiac-arrest-nejm-2013',
+          name: 'Nielsen N, Wetterslev J, Cronberg T, et al. (TTM Trial Investigators). Targeted temperature management at 33°C versus 36°C after cardiac arrest. N Engl J Med. 2013;369(23):2197-2206.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24237006/',
+          publishedAt: '2013-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-06-17',
+        datePrecision: 'DAY',
+        reason: 'The TTM2 trial (Dankiewicz et al.) randomized 1,850 patients to hypothermia at 33°C versus normothermia with active fever prevention and found no reduction in 6-month death (50% vs 48%) or disability. The large, definitive negative result reversed routine deep cooling: resuscitation guidelines moved to recommend only active fever prevention (keeping temperature ≤37.5°C) rather than induced 32–34°C hypothermia.',
+        source: {
+          externalId: 'src:dankiewicz-ttm2-hypothermia-normothermia-nejm-2021',
+          name: 'Dankiewicz J, Cronberg T, Lilja G, et al. (TTM2 Trial Investigators). Hypothermia versus normothermia after out-of-hospital cardiac arrest. N Engl J Med. 2021;384(24):2283-2294.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34133859/',
+          publishedAt: '2021-06-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Decompressive craniectomy for diffuse TBI — DECRA / RESCUEicp ───────────
+  {
+    externalId: 'trajectory:decra-decompressive-craniectomy-diffuse-tbi-2011',
+    text: 'Early bifrontotemporoparietal decompressive craniectomy improves functional outcomes in adults with severe diffuse traumatic brain injury and refractory intracranial hypertension.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-03-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-03-25',
+        datePrecision: 'DAY',
+        reason: 'The DECRA trial (Cooper et al.) randomized adults with severe diffuse TBI and refractory raised intracranial pressure to early decompressive craniectomy or standard care. Craniectomy lowered intracranial pressure and shortened ICU stay but produced worse 6-month functional outcomes on the Extended Glasgow Outcome Scale, recording the counterintuitive claim that a long-practiced life-saving operation could leave survivors more disabled and contradicting the assumption that relieving pressure improves recovery.',
+        source: {
+          externalId: 'src:cooper-decra-decompressive-craniectomy-tbi-nejm-2011',
+          name: 'Cooper DJ, Rosenfeld JV, Murray L, et al. (DECRA Trial Investigators). Decompressive craniectomy in diffuse traumatic brain injury. N Engl J Med. 2011;364(16):1493-1502.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21434843/',
+          publishedAt: '2011-03-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-09-22',
+        datePrecision: 'DAY',
+        reason: 'The RESCUEicp trial (Hutchinson et al.) tested craniectomy as a last-tier therapy for sustained refractory intracranial hypertension and found it roughly halved mortality at six months but produced correspondingly higher rates of vegetative state and severe disability among survivors. The opposing trade-off — more lives saved at the cost of worse disability — left the net value of the operation genuinely contested rather than abandoned, and guidelines now frame it as a salvage option with carefully weighed risks.',
+        source: {
+          externalId: 'src:hutchinson-rescueicp-craniectomy-intracranial-hypertension-nejm-2016',
+          name: 'Hutchinson PJ, Kolias AG, Timofeev IS, et al. (RESCUEicp Trial Collaborators). Trial of decompressive craniectomy for traumatic intracranial hypertension. N Engl J Med. 2016;375(12):1119-1130.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27602507/',
+          publishedAt: '2016-09-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
