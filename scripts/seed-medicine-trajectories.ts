@@ -36554,6 +36554,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── BRCA1 positional cloning — Miki et al. 1994 ────────────────────────────
+  {
+    externalId: 'trajectory:brca1-positional-cloning-breast-ovarian-cancer-1994',
+    text: 'On 7 October 1994 Miki and colleagues at the University of Utah and Myriad Genetics reported in Science the positional cloning of BRCA1, a chromosome 17q-linked gene whose germline mutations strongly predispose carriers to hereditary breast and ovarian cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-10-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-10-07',
+        datePrecision: 'DAY',
+        reason: 'After Hall and King\'s 1990 linkage of familial early-onset breast cancer to chromosome 17q21, Miki et al. used positional cloning to identify a strong candidate for the BRCA1 gene and detected probable predisposing germline mutations in five of eight high-risk kindreds. The paper recorded in the expert literature the claim that a single identifiable gene mediated a large share of inherited breast and ovarian cancer susceptibility.',
+        source: {
+          externalId: 'src:miki-brca1-science-1994',
+          name: 'Miki Y, Swensen J, Shattuck-Eidens D, et al. A strong candidate for the breast and ovarian cancer susceptibility gene BRCA1. Science. 1994;266(5182):66-71.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7545954/',
+          publishedAt: '1994-10-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Friedman et al. independently confirmed BRCA1 by analysing germline mutations across ten additional breast/ovarian cancer families, demonstrating that the Miki candidate gene carried disease-segregating loss-of-function mutations. This rapid replication, followed by the launch of clinical BRCA1 mutation testing, settled the gene\'s identity and its causal role in hereditary breast and ovarian cancer.',
+        source: {
+          externalId: 'src:friedman-brca1-confirmation-natgenet-1994',
+          name: 'Friedman LS, Ostermeyer EA, Szabo CI, et al. Confirmation of BRCA1 by analysis of germline mutations linked to breast and ovarian cancer in ten families. Nat Genet. 1994;8(4):399-404.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7894493/',
+          publishedAt: '1994-12-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NIH Consensus: mammography for women 40–49 — 1997 ──────────────────────
+  {
+    externalId: 'trajectory:nih-consensus-mammography-women-40-49-1997',
+    text: 'On 23 January 1997 the NIH Consensus Development Panel on Breast Cancer Screening for Women Ages 40-49 concluded that the available evidence did not warrant a universal recommendation of screening mammography for women in their forties, issuing split majority and minority reports.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-01-23',
+        datePrecision: 'DAY',
+        reason: 'A non-federal, 12-member NIH/NCI consensus panel reviewed the trial evidence and concluded that data did not support a blanket recommendation of mammography for all women aged 40-49, advising that each woman decide individually; two panelists filed a dissenting minority report. The statement formally recorded, at the highest institutional level, that the net benefit of screening women in their forties was unproven.',
+        source: {
+          externalId: 'src:nih-consensus-mammography-40-49-jnci-1997',
+          name: 'National Institutes of Health Consensus Development Panel. National Institutes of Health Consensus Development Conference Statement: Breast Cancer Screening for Women Ages 40-49, January 21-23, 1997. J Natl Cancer Inst. 1997;89(14):1015-1026.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9230883/',
+          publishedAt: '1997-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-03-27',
+        datePrecision: 'DAY',
+        reason: 'The panel\'s conclusion provoked an immediate backlash: the U.S. Senate passed a resolution on 4 February 1997 urging the NCI to recommend screening for women in their forties, and on 27 March 1997 the National Cancer Advisory Board overrode the consensus panel by recommending routine mammography every one to two years for women aged 40 and older. The rapid institutional reversal left the underlying question of screening benefit in the forties openly contested, a dispute later reopened by the 2009 USPSTF revision.',
+        source: {
+          externalId: 'src:nci-ncab-mammography-40s-guideline-change-review',
+          name: 'Kopans DB. Mammography Screening of Women in Their 40s: Impact of Changes in Screening Guidelines (review documenting the 4 Feb 1997 Senate resolution and the 27 Mar 1997 National Cancer Advisory Board recommendation). PMC3086941.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3086941/',
+          publishedAt: '1997-03-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Million Women Study: HRT and ovarian cancer — Beral et al. 2007 ────────
+  {
+    externalId: 'trajectory:million-women-study-hrt-ovarian-cancer-2007',
+    text: 'On 19 May 2007 Beral and the Million Women Study collaborators reported in the Lancet that current use of hormone replacement therapy was associated with an increased risk of incident and fatal ovarian cancer (relative risk about 1.2), the first large prospective evidence linking HRT to ovarian cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-05-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-19',
+        datePrecision: 'DAY',
+        reason: 'Following nearly 949,000 postmenopausal UK women for an average of 5.3 years, the Million Women Study found that current HRT users had a significantly elevated risk of developing (RR 1.20) and dying from ovarian cancer, estimating roughly one extra case per 2,500 users over five years. The prospective cohort recorded the claim — distinct from the study\'s 2003 breast cancer finding — that menopausal hormone therapy raised ovarian cancer risk.',
+        source: {
+          externalId: 'src:beral-mws-ovarian-cancer-lancet-2007',
+          name: 'Beral V, Bull D, Green J, Reeves G (Million Women Study Collaborators). Ovarian cancer and hormone replacement therapy in the Million Women Study. Lancet. 2007;369(9574):1703-1710.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17512855/',
+          publishedAt: '2007-05-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-02-13',
+        datePrecision: 'DAY',
+        reason: 'An individual-participant meta-analysis of 52 epidemiological studies by the Collaborative Group on Epidemiological Studies of Ovarian Cancer found that even fewer than five years of HRT use significantly increased ovarian cancer risk and concluded the association was probably causal. Pooling the prospective evidence settled the expert consensus that menopausal hormone therapy is a genuine, if small, ovarian cancer risk factor.',
+        source: {
+          externalId: 'src:collaborative-group-hrt-ovarian-meta-lancet-2015',
+          name: 'Collaborative Group on Epidemiological Studies of Ovarian Cancer. Menopausal hormone use and ovarian cancer risk: individual participant meta-analysis of 52 epidemiological studies. Lancet. 2015;385(9980):1835-1842.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25684585/',
+          publishedAt: '2015-02-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
