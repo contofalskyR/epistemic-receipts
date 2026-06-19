@@ -32826,6 +32826,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY & LIPID SCIENCE (1977–1991)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HDL as protective factor — Framingham 1977 ──────────────────────────────
+  {
+    externalId: 'trajectory:hdl-protective-factor-coronary-heart-disease-framingham-1977',
+    text: 'In May 1977 Gordon and colleagues of the Framingham Study reported in the American Journal of Medicine that high-density lipoprotein (HDL) cholesterol is inversely associated with coronary heart disease, establishing HDL as a protective factor and introducing the \'good cholesterol\' concept.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1977-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1977-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Analyzing the Framingham cohort, Gordon, Castelli, Hjortland, Kannel, and Dawber reported that HDL-cholesterol concentration was strongly and inversely related to the incidence of coronary heart disease, independent of other lipids. This put on the scientific record the claim that a lipoprotein fraction could be protective rather than atherogenic, reframing cholesterol from a single risk number into distinct harmful (LDL) and protective (HDL) components.',
+        source: {
+          externalId: 'src:gordon-hdl-framingham-amjmed-1977',
+          name: 'Gordon T, Castelli WP, Hjortland MC, Kannel WB, Dawber TR. High density lipoprotein as a protective factor against coronary heart disease. The Framingham Study. Am J Med. 1977;62(5):707-714.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/193398/',
+          publishedAt: '1977-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-06-16',
+        datePrecision: 'DAY',
+        reason: 'The National Cholesterol Education Program\'s Second Adult Treatment Panel (ATP II) report, published in JAMA, formally incorporated HDL cholesterol as a measured factor in cardiovascular risk assessment, with low HDL designated a positive risk factor and high HDL a negative (protective) one. This institutionalized the inverse HDL–CHD association into routine clinical risk stratification, settling HDL\'s status as a recognized protective marker.',
+        source: {
+          externalId: 'src:ncep-atp2-jama-1993',
+          name: 'Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults. Summary of the second report of the National Cholesterol Education Program (NCEP) Expert Panel (Adult Treatment Panel II). JAMA. 1993;269(23):3015-3023.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8501844/',
+          publishedAt: '1993-06-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── WHO clofibrate trial — excess mortality 1978 ────────────────────────────
+  {
+    externalId: 'trajectory:who-clofibrate-trial-excess-mortality-1978',
+    text: 'In October 1978 the WHO cooperative cardiovascular trial reported in the British Heart Journal that clofibrate, although it lowered serum cholesterol and reduced non-fatal ischaemic heart disease, was associated with a significant excess of total mortality, reversing confidence that any cholesterol-lowering drug is therefore beneficial.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The Committee of Principal Investigators reported that in 10,000+ men, clofibrate lowered cholesterol and cut non-fatal myocardial infarction, yet the treated group had about 25% more deaths than the high-cholesterol control group, driven by a wide variety of non-cardiovascular causes. This contested the simple lipid hypothesis — that lowering cholesterol by any means must be beneficial — and became a landmark warning that a drug can improve a surrogate endpoint while increasing total mortality.',
+        source: {
+          externalId: 'src:who-clofibrate-brheartj-1978',
+          name: 'Committee of Principal Investigators. A co-operative trial in the primary prevention of ischaemic heart disease using clofibrate. Br Heart J. 1978;40(10):1069-1118.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/361054/',
+          publishedAt: '1978-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-09-15',
+        datePrecision: 'MONTH',
+        reason: 'The final mortality follow-up, published in The Lancet, confirmed that the excess all-cause mortality in the clofibrate group persisted, settling the conclusion that clofibrate increased death despite lowering cholesterol. The drug was withdrawn or restricted for primary prevention in several countries, and the trial permanently cemented total mortality, not cholesterol change, as the standard of proof for preventive cardiology.',
+        source: {
+          externalId: 'src:who-clofibrate-final-followup-lancet-1984',
+          name: 'Committee of Principal Investigators. WHO cooperative trial on primary prevention of ischaemic heart disease with clofibrate to lower serum cholesterol: final mortality follow-up. Lancet. 1984;2(8403):600-604.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6147641/',
+          publishedAt: '1984-09-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DeWood — coronary thrombosis causes acute MI 1980 ───────────────────────
+  {
+    externalId: 'trajectory:dewood-coronary-thrombosis-causes-acute-mi-1980',
+    text: 'On 16 October 1980 DeWood and colleagues reported in the New England Journal of Medicine that total coronary occlusion (thrombosis) is present in the great majority of patients during the early hours of acute transmural myocardial infarction, establishing that a coronary thrombus causes heart attack rather than merely resulting from it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-10-16',
+        datePrecision: 'DAY',
+        reason: 'Through coronary arteriography in 322 patients studied within hours of symptom onset, DeWood et al. found total coronary occlusion in 87% of those evaluated within four hours, with the prevalence falling over the first 24 hours as thrombi lysed. This directly contradicted the prevailing 1970s pathology view that intracoronary thrombosis was a consequence, not the cause, of myocardial infarction, putting the causal-thrombus claim on the record with in-vivo angiographic evidence.',
+        source: {
+          externalId: 'src:dewood-coronary-occlusion-nejm-1980',
+          name: 'DeWood MA, Spores J, Notske R, Mouser LT, Burroughs R, Golden MS, Lang HT. Prevalence of total coronary occlusion during the early hours of transmural myocardial infarction. N Engl J Med. 1980;303(16):897-902.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7412821/',
+          publishedAt: '1980-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-02-22',
+        datePrecision: 'DAY',
+        reason: 'The GISSI trial\'s demonstration that intravenous streptokinase reduced mortality in acute MI confirmed the thrombotic mechanism by showing that dissolving the clot saved lives. The success of thrombolysis settled the coronary-thrombosis-causes-infarction paradigm and reoriented acute cardiac care toward rapid reperfusion, the foundation of modern heart-attack treatment.',
+        source: {
+          externalId: 'src:gissi-streptokinase-lancet-1986',
+          name: 'Gruppo Italiano per lo Studio della Streptochinasi nell\'Infarto Miocardico (GISSI). Effectiveness of intravenous thrombolytic treatment in acute myocardial infarction. Lancet. 1986;1(8478):397-402.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2868337/',
+          publishedAt: '1986-02-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Physicians' Health Study — aspirin primary prevention 1988 ──────────────
+  {
+    externalId: 'trajectory:physicians-health-study-aspirin-primary-prevention-1988',
+    text: 'On 28 January 1988 the Steering Committee of the Physicians\' Health Study reported in the New England Journal of Medicine that low-dose aspirin (325 mg every other day) reduced the risk of a first myocardial infarction in healthy men, establishing aspirin for the primary prevention of heart attack.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-28',
+        datePrecision: 'DAY',
+        reason: 'The Steering Committee published a preliminary report after the data-monitoring board stopped the aspirin arm of the randomized, double-blind, placebo-controlled trial in 22,071 male physicians early. Aspirin produced a 44% reduction in the risk of a first myocardial infarction (relative risk 0.56, P<0.00001). This put on the scientific record the then-novel claim that aspirin could prevent a first heart attack in apparently healthy people, distinct from its already-known value in treating acute infarction.',
+        source: {
+          externalId: 'src:phs-aspirin-preliminary-nejm-1988',
+          name: 'Steering Committee of the Physicians\' Health Study Research Group. Preliminary report: findings from the aspirin component of the ongoing Physicians\' Health Study. N Engl J Med. 1988;318(4):262-264.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3275899/',
+          publishedAt: '1988-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-07-20',
+        datePrecision: 'DAY',
+        reason: 'The full final report of the aspirin component, published in the New England Journal of Medicine, confirmed the 44% reduction in first myocardial infarction over an average 60.2 months of follow-up. The robust, large-scale randomized result settled aspirin as evidence-based primary prevention and was rapidly incorporated into cardiovascular prevention guidance for at-risk adults.',
+        source: {
+          externalId: 'src:phs-aspirin-final-nejm-1989',
+          name: 'Steering Committee of the Physicians\' Health Study Research Group. Final report on the aspirin component of the ongoing Physicians\' Health Study. N Engl J Med. 1989;321(3):129-135.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2664509/',
+          publishedAt: '1989-07-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AFASAK — warfarin atrial fibrillation stroke prevention 1989 ─────────────
+  {
+    externalId: 'trajectory:afasak-warfarin-atrial-fibrillation-stroke-prevention-1989',
+    text: 'On 28 January 1989 the Copenhagen AFASAK study reported in The Lancet that warfarin anticoagulation prevented thromboembolic stroke in patients with chronic non-rheumatic atrial fibrillation, the first randomized proof that anticoagulation reduces stroke in atrial fibrillation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-01-28',
+        datePrecision: 'DAY',
+        reason: 'Petersen and colleagues randomized 1,007 outpatients with chronic non-rheumatic atrial fibrillation to warfarin, aspirin, or placebo and found that the incidence of thromboembolic complications and vascular mortality was significantly lower in the warfarin group. This was the first randomized controlled trial to demonstrate that oral anticoagulation prevents stroke in atrial fibrillation, putting the claim on the experimental record after decades of uncertainty about treating this common arrhythmia.',
+        source: {
+          externalId: 'src:afasak-petersen-lancet-1989',
+          name: 'Petersen P, Boysen G, Godtfredsen J, Andersen ED, Andersen B. Placebo-controlled, randomised trial of warfarin and aspirin for prevention of thromboembolic complications in chronic atrial fibrillation. The Copenhagen AFASAK study. Lancet. 1989;1(8631):175-179.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2563096/',
+          publishedAt: '1989-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-11-18',
+        datePrecision: 'DAY',
+        reason: 'The Stroke Prevention in Atrial Fibrillation (SPAF) trial and the converging results of multiple early-1990s anticoagulation trials confirmed a roughly two-thirds reduction in stroke with warfarin, replicating AFASAK across independent cohorts. The convergent randomized evidence settled anticoagulation as standard stroke-prevention therapy for non-valvular atrial fibrillation, a status that remains foundational to current practice.',
+        source: {
+          externalId: 'src:spaf-investigators-circulation-1991',
+          name: 'Stroke Prevention in Atrial Fibrillation Investigators. Stroke Prevention in Atrial Fibrillation Study. Final results. Circulation. 1991;84(2):527-539.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1860198/',
+          publishedAt: '1991-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
