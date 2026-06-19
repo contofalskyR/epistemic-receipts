@@ -28577,6 +28577,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CHILD SAFETY & ENVIRONMENTAL HEALTH ERA (2010–2025)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── CPSC drop-side crib ban 2010 ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:cpsc-drop-side-crib-ban-2010',
+    text: 'On December 15, 2010, the U.S. Consumer Product Safety Commission voted unanimously to adopt mandatory federal crib safety standards (16 CFR Part 1219) that prohibit the manufacture and sale of traditional drop-side rail cribs, a design sold for decades and linked to dozens of infant suffocation and strangulation deaths.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2010-12-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-12-15',
+        datePrecision: 'DAY',
+        reason: 'The CPSC voted unanimously to approve new mandatory standards for full-size and non-full-size cribs that stop the manufacture and sale of traditional drop-side cribs, strengthen mattress supports and hardware, and require more rigorous testing. The vote formally reversed the long-standing market acceptance of the drop-side design after the design was tied to numerous infant deaths and millions of recalled units.',
+        source: {
+          externalId: 'src:cpsc-news-release-crib-standards-2010',
+          name: 'U.S. Consumer Product Safety Commission. CPSC Approves Strong New Crib Safety Standards To Ensure a Safe Sleep for Babies and Toddlers. December 15, 2010.',
+          url: 'https://www.cpsc.gov/Newsroom/News-Releases/2011/CPSC-Approves-Strong-New-Crib-Safety-Standards-To-Ensure-a-Safe-Sleep-for-Babies-and-Toddlers',
+          publishedAt: '2010-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-06-28',
+        datePrecision: 'DAY',
+        reason: 'The final rule (75 FR 81765, published December 28, 2010) took legal effect on June 28, 2011, requiring all cribs manufactured, sold, or placed into U.S. commerce to comply, with a December 28, 2012 deadline for child care facilities and hotels. From this date drop-side cribs were effectively eliminated from the U.S. market, settling the institutional reversal.',
+        source: {
+          externalId: 'src:fr-crib-safety-standards-final-rule-2010',
+          name: 'U.S. Consumer Product Safety Commission. Safety Standards for Full-Size Baby Cribs and Non-Full-Size Baby Cribs; Final Rule. 75 FR 81765. December 28, 2010.',
+          url: 'https://www.federalregister.gov/documents/2010/12/28/2010-32178/safety-standards-for-full-size-baby-cribs-and-non-full-size-baby-cribs-final-rule',
+          publishedAt: '2010-12-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WanaBana cinnamon applesauce lead poisoning 2023 ────────────────────────
+  {
+    externalId: 'trajectory:wanabana-cinnamon-applesauce-lead-poisoning-2023',
+    text: 'Beginning in October 2023, U.S. health authorities established that WanaBana and related brand cinnamon-apple puree pouches were contaminated with extremely high levels of lead from lead chromate-adulterated Ecuadorian cinnamon, causing a nationwide outbreak of childhood lead poisoning that ultimately reached roughly 500 cases across 44 states.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2023-10-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-10-28',
+        datePrecision: 'DAY',
+        reason: 'North Carolina\'s routine childhood blood-lead screening identified four children with elevated blood lead levels in June–August 2023, and environmental investigation traced the exposure to WanaBana Apple Cinnamon Fruit Puree pouches testing at 1.9–3.0 ppm lead. The FDA issued a public health advisory on October 28, 2023, followed by a voluntary recall on October 30, recording a novel dietary lead exposure source in young children.',
+        source: {
+          externalId: 'src:fda-cinnamon-applesauce-lead-investigation-2023',
+          name: 'U.S. Food and Drug Administration. Investigation of Elevated Lead & Chromium Levels: Cinnamon Applesauce Pouches (November 2023).',
+          url: 'https://www.fda.gov/food/outbreaks-foodborne-illness/investigation-elevated-lead-chromium-levels-cinnamon-applesauce-pouches-november-2023',
+          publishedAt: '2023-10-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-07-18',
+        datePrecision: 'DAY',
+        reason: 'On January 5, 2024 the FDA identified the contamination source as Ecuadorian cinnamon adulterated with lead chromate, and the CDC\'s MMWR report of July 18, 2024 documented the full outbreak, establishing causation, scale (~500 children nationwide), and the role of routine lead screening. The published surveillance settled the outbreak as a confirmed adulteration event.',
+        source: {
+          externalId: 'src:cdc-mmwr-applesauce-lead-nc-2024',
+          name: 'Centers for Disease Control and Prevention. Childhood Lead Exposure Linked to Apple Cinnamon Fruit Puree Pouches — North Carolina, June 2023–January 2024. MMWR Morb Mortal Wkly Rep. 2024;73(28):630–633.',
+          url: 'https://www.cdc.gov/mmwr/volumes/73/wr/mm7328a2.htm',
+          publishedAt: '2024-07-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA lead action levels for baby food 2025 ───────────────────────────────
+  {
+    externalId: 'trajectory:fda-lead-action-levels-baby-food-2025',
+    text: 'On January 6, 2025, the FDA issued final guidance under its Closer to Zero initiative establishing the first federal action levels for lead in processed foods intended for babies and young children under two — 10 ppb for most fruits, vegetables, mixtures, yogurts, and single-ingredient meats, and 20 ppb for single-ingredient root vegetables and dry infant cereals.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2025-01-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-24',
+        datePrecision: 'MONTH',
+        reason: 'As part of the Closer to Zero action plan launched in 2021, the FDA issued draft guidance in January 2023 proposing action levels for lead in processed baby food. This recorded the agency\'s intent to set, for the first time, dietary lead benchmarks specifically for foods for children under two.',
+        source: {
+          externalId: 'src:fda-closer-to-zero-baby-food-contaminants',
+          name: 'U.S. Food and Drug Administration. Closer to Zero: Reducing Childhood Exposure to Contaminants from Foods.',
+          url: 'https://www.fda.gov/food/environmental-contaminants-food/closer-zero-reducing-childhood-exposure-contaminants-foods',
+          publishedAt: '2023-01-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-01-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA finalized the guidance on January 6, 2025 (notice of availability published in the Federal Register January 7, 2025), confirming action levels of 10 ppb for most processed baby foods and 20 ppb for root vegetables and dry infant cereals. These are the first federal benchmarks for lead in baby food and define when the FDA may consider a product adulterated, settling a long-pending child-exposure limit.',
+        source: {
+          externalId: 'src:fr-fda-lead-action-levels-baby-food-2025',
+          name: 'U.S. Food and Drug Administration. Action Levels for Lead in Processed Food Intended for Babies and Young Children; Guidance for Industry; Availability. Federal Register. January 7, 2025.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-2025-01-07/html/2024-31534.htm',
+          publishedAt: '2025-01-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SMA newborn screening RUSP addition 2018 ────────────────────────────────
+  {
+    externalId: 'trajectory:sma-newborn-screening-rusp-2018',
+    text: 'On July 2, 2018, HHS Secretary Alex Azar added spinal muscular atrophy (SMA) to the federal Recommended Uniform Screening Panel, making universal presymptomatic newborn screening for SMA the national standard following the 2016 approval of the first effective treatment, nusinersen.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-02-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-02-08',
+        datePrecision: 'DAY',
+        reason: 'After reviewing the evidence at its February 8, 2018 meeting, the Advisory Committee on Heritable Disorders in Newborns and Children (ACHDNC) recommended adding SMA to the RUSP, formalized in a March 8, 2018 letter from chair Joseph A. Bocchini Jr. This recorded expert consensus that the arrival of nusinersen made presymptomatic detection clinically actionable.',
+        source: {
+          externalId: 'src:achdnc-sma-rusp-recommendation-2018',
+          name: 'Advisory Committee on Heritable Disorders in Newborns and Children (HRSA). Recommendation to add Spinal Muscular Atrophy to the Recommended Uniform Screening Panel. February 8, 2018.',
+          url: 'https://www.hrsa.gov/advisory-committees/heritable-disorders/rusp',
+          publishedAt: '2018-02-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-07-02',
+        datePrecision: 'DAY',
+        reason: 'HHS Secretary Alex Azar accepted the committee\'s recommendation and added SMA to the RUSP on July 2, 2018, making it the 35th core condition recommended for all U.S. newborns. States subsequently implemented SMA newborn screening, enabling presymptomatic treatment that markedly improves outcomes and settling SMA screening as the national standard.',
+        source: {
+          externalId: 'src:cure-sma-azar-rusp-addition-2018',
+          name: 'Cure SMA. HHS Secretary, Alex Azar, Recommends Nationwide Newborn Screening for SMA. July 2018.',
+          url: 'https://www.curesma.org/hhs-secretary-recommends-nationwide-newborn-screening-for-sma/',
+          publishedAt: '2018-07-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
