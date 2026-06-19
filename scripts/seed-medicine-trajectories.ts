@@ -30396,6 +30396,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR PHARMACOLOGY — BETA-BLOCKERS, STATINS & LIPID CLASSIFICATION (1967–1987)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fredrickson-Levy-Lees hyperlipoproteinemia classification 1967 ─────────
+  {
+    externalId: 'trajectory:fredrickson-hyperlipoproteinemia-classification-1967',
+    text: 'Donald Fredrickson, Robert Levy, and Robert Lees published a lipoprotein-based phenotypic classification of hyperlipoproteinemia (types I–V) in the New England Journal of Medicine beginning 5 January 1967, which the World Health Organization adopted as an international standard in 1970.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1967-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-01-05',
+        datePrecision: 'DAY',
+        reason: 'Fredrickson, Levy, and Lees published a five-part NEJM review introducing a systematic phenotyping of lipid disorders by lipoprotein pattern (electrophoresis plus cholesterol/triglyceride measurement), dividing hyperlipidemias into types I–V. This reframed diffuse \'high blood fat\' descriptions into a recorded diagnostic framework linking lipoprotein abnormalities to clinical disease.',
+        source: {
+          externalId: 'src:fredrickson-fat-transport-nejm-1967',
+          name: 'Fredrickson DS, Levy RI, Lees RS. Fat transport in lipoproteins—an integrated approach to mechanisms and disorders. N Engl J Med. 1967 Jan 5;276(1):34-42 (contd.).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5333081/',
+          publishedAt: '1967-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'A WHO memorandum authored by Beaumont, Carlson, Cooper, Fejfar, Fredrickson, and Strasser adopted and formalized the lipoprotein-based classification of hyperlipidaemias for international use in the Bulletin of the World Health Organization. WHO endorsement settled the Fredrickson typology as the standard nomenclature used in clinical practice and trials for decades.',
+        source: {
+          externalId: 'src:who-classification-hyperlipidaemias-1970',
+          name: 'Beaumont JL, Carlson LA, Cooper GR, Fejfar Z, Fredrickson DS, Strasser T. Classification of hyperlipidaemias and hyperlipoproteinaemias. Bull World Health Organ. 1970;43(6):891-915.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4930042/',
+          publishedAt: '1970-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Anturane (sulfinpyrazone) sudden-death claim reversed by FDA 1980 ──────
+  {
+    externalId: 'trajectory:anturane-sulfinpyrazone-sudden-death-reversal-1980',
+    text: 'The Anturane Reinfarction Trial Research Group claimed in NEJM (1978, final report 1980) that the uricosuric drug sulfinpyrazone (Anturane) reduced sudden cardiac death after myocardial infarction by 43%, a claim the FDA publicly rejected on methodological grounds in December 1980.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1978-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1978-02-09',
+        datePrecision: 'DAY',
+        reason: 'The Anturane Reinfarction Trial Research Group reported in NEJM that sulfinpyrazone reduced cardiac death in the first months after myocardial infarction, generating intense interest in the platelet-active drug as post-MI prophylaxis. The result was recorded as a promising trial finding and was reinforced by the group\'s January 1980 final report, which claimed a 43% reduction in sudden death (p=0.041).',
+        source: {
+          externalId: 'src:anturane-nejm-1978',
+          name: 'Anturane Reinfarction Trial Research Group. Sulfinpyrazone in the prevention of cardiac death after myocardial infarction. The Anturane Reinfarction Trial. N Engl J Med. 1978 Feb 9;298(6):289-95.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/340942/',
+          publishedAt: '1978-02-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-12-18',
+        datePrecision: 'DAY',
+        reason: 'Robert Temple and Gordon Pledger of the FDA published a detailed critique in NEJM showing the trial\'s apparent benefit depended on post-hoc reclassification and exclusion of deaths into \'analyzable\' and \'non-analyzable\' categories; with all randomized deaths counted, the effect was not significant. The FDA refused to approve sulfinpyrazone for this indication, and the case became a landmark in the methodology of cause-of-death classification and subgroup analysis in clinical trials.',
+        source: {
+          externalId: 'src:temple-pledger-fda-anturane-nejm-1980',
+          name: 'Temple R, Pledger GW. The FDA\'s critique of the Anturane Reinfarction Trial. N Engl J Med. 1980 Dec 18;303(25):1488-92.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7432418/',
+          publishedAt: '1980-12-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── BHAT propranolol post-MI secondary prevention 1982 ────────────────────
+  {
+    externalId: 'trajectory:bhat-propranolol-post-mi-secondary-prevention-1982',
+    text: 'The Beta-Blocker Heart Attack Trial Research Group reported on 26 March 1982 that long-term propranolol reduced all-cause mortality in survivors of acute myocardial infarction (7.2% vs 9.8% over an average 24-month follow-up), establishing beta-blockade as standard post-infarction secondary prevention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-04-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-04-02',
+        datePrecision: 'DAY',
+        reason: 'The Norwegian Multicenter Study Group reported in NEJM that timolol reduced cumulative mortality and reinfarction in post-MI patients, with the sudden-death rate falling from 13.9% (placebo) to 7.7% (timolol) over 33 months (p=0.0001). This was the first adequately powered, double-blind RCT to show that a beta-blocker started after infarction prolongs survival, converting a long-debated hypothesis into recorded trial evidence.',
+        source: {
+          externalId: 'src:norwegian-timolol-nejm-1981',
+          name: 'The Norwegian Multicenter Study Group. Timolol-induced reduction in mortality and reinfarction in patients surviving acute myocardial infarction. N Engl J Med. 1981 Apr 2;304(14):801-7.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7010157/',
+          publishedAt: '1981-04-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-03-26',
+        datePrecision: 'DAY',
+        reason: 'The NHLBI-sponsored Beta-Blocker Heart Attack Trial (BHAT), a 3,837-patient double-blind placebo-controlled RCT, was stopped nine months early because propranolol reduced total mortality (7.2% vs 9.8%) and arteriosclerotic-heart-disease mortality (6.2% vs 8.5%). The large US trial confirming the Norwegian result settled beta-blockers as routine secondary prevention after myocardial infarction, a recommendation that persisted in guidelines for decades.',
+        source: {
+          externalId: 'src:bhat-mortality-jama-1982',
+          name: 'Beta-Blocker Heart Attack Trial Research Group. A randomized trial of propranolol in patients with acute myocardial infarction. I. Mortality results. JAMA. 1982 Mar 26;247(12):1707-14.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7038157/',
+          publishedAt: '1982-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Endo compactin first statin discovery 1976 ────────────────────────────
+  {
+    externalId: 'trajectory:endo-compactin-first-statin-discovery-1976',
+    text: 'Akira Endo, Masao Kuroda, and Yoshio Tsujita reported in the Journal of Antibiotics (December 1976) the isolation of ML-236A/B/C (compactin/mevastatin) from Penicillium citrinum as the first competitive inhibitors of HMG-CoA reductase, founding the statin class of cholesterol-lowering drugs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Endo and colleagues, screening fungal metabolites for cholesterol-synthesis inhibitors, isolated ML-236B (compactin) from Penicillium citrinum and reported it as a potent competitive inhibitor of HMG-CoA reductase, the rate-limiting enzyme of cholesterol biosynthesis. This was the first recorded statin and established the pharmacological strategy of enzyme inhibition to lower LDL cholesterol.',
+        source: {
+          externalId: 'src:endo-ml236-jantibiot-1976',
+          name: 'Endo A, Kuroda M, Tsujita Y. ML-236A, ML-236B, and ML-236C, new inhibitors of cholesterogenesis produced by Penicillium citrinum. J Antibiot (Tokyo). 1976 Dec;29(12):1346-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1010803/',
+          publishedAt: '1976-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The pharmacological principle Endo recorded was validated when the FDA approved lovastatin (Mevacor), a structurally related fungal HMG-CoA reductase inhibitor, in 1987 as the first marketed statin, after compactin\'s own development had been halted. Statins subsequently became among the most prescribed drugs worldwide, settling Endo\'s reductase-inhibition strategy as a foundation of cardiovascular medicine.',
+        source: {
+          externalId: 'src:endo-birth-of-statins-natmed-2008',
+          name: 'Endo A. A gift from nature: the birth of the statins. Nat Med. 2008 Oct;14(10):1050-2.',
+          url: 'https://www.nature.com/articles/nm1008-1050',
+          publishedAt: '2008-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
