@@ -23830,6 +23830,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EARLY DIAGNOSTICS & PRE-ANTIBIOTIC CHEMOTHERAPY ERA (1913–1938)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Schick test — diphtheria susceptibility 1913 ────────────────────────────
+  {
+    externalId: 'trajectory:schick-test-diphtheria-susceptibility-1913',
+    text: 'Béla Schick introduced in 1913 an intradermal diphtheria-toxin skin test ('Schick test') that identifies individuals lacking protective antitoxin and therefore susceptible to diphtheria, providing the means to target immunization.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1913-12-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1913-12-01',
+        datePrecision: 'YEAR',
+        reason: 'Schick published his description of the intracutaneous diphtheria-toxin reaction in the Münchener Medizinische Wochenschrift, showing that a localized erythematous skin response to a minute injected dose of toxin marks the absence of circulating antitoxin and hence susceptibility to diphtheria. This recorded the first practical method to distinguish immune from non-immune individuals and to identify who needed prophylaxis.',
+        source: {
+          externalId: 'src:schick-diphtherietoxin-hautreaktion-mmw-1913',
+          name: 'Schick B. Die Diphtherietoxin-Hautreaktion des Menschen als Vorprobe der prophylaktischen Diphtherieheilseruminjektion. Münchener Medizinische Wochenschrift. 1913;60:2608–2610.',
+          url: 'https://en.wikipedia.org/wiki/Schick_test',
+          publishedAt: '1913-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1924-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Public-health authorities adopted the Schick test as the screening backbone of mass diphtheria-immunization programs in the 1920s, most prominently the New York City campaigns associated with William H. Park, which Schick-tested and then immunized hundreds of thousands of schoolchildren with toxin–antitoxin. Institutional uptake settled the test\'s validity as a routine diagnostic and made population-scale diphtheria control feasible.',
+        source: {
+          externalId: 'src:schick-introduces-test-diphtheria-ebsco',
+          name: 'Schick Introduces a Test for Diphtheria. EBSCO Research Starters: History.',
+          url: 'https://www.ebsco.com/research-starters/history/schick-introduces-test-diphtheria',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dick test — scarlet fever streptococcal etiology 1924 ───────────────────
+  {
+    externalId: 'trajectory:dick-test-scarlet-fever-streptococcal-etiology-1924',
+    text: 'George F. Dick and Gladys H. Dick reported in JAMA on 26 January 1924 that an erythrogenic-toxin-producing hemolytic streptococcus is the cause of scarlet fever and introduced an intradermal skin test (the 'Dick test') for susceptibility, having reproduced the disease by inoculating human volunteers with the organism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1924-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1924-01-26',
+        datePrecision: 'DAY',
+        reason: 'In the 26 January 1924 issue of JAMA the Dicks published companion papers — \'The etiology of scarlet fever\' and \'A skin test for susceptibility to scarlet fever\' — establishing that a hemolytic streptococcus elaborating a soluble erythrogenic toxin causes scarlet fever (satisfying Koch\'s postulates via volunteer inoculation) and that an intradermal injection of the toxin reveals who lacks immunity. This recorded both the bacterial etiology and a practical susceptibility test.',
+        source: {
+          externalId: 'src:dick-skin-test-etiology-jama-1924',
+          name: 'Dick GF, Dick GH. A skin test for susceptibility to scarlet fever; The etiology of scarlet fever. JAMA. 1924;82(4):265–266, 301–302.',
+          url: 'https://www.britannica.com/science/Dick-test',
+          publishedAt: '1924-01-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the later 1920s the streptococcal etiology was confirmed by independent workers and underpinned the production of scarlet-fever antitoxin and toxin immunization, settling within the medical community the claim that a toxigenic hemolytic streptococcus causes scarlet fever. The Dick skin test itself later fell out of use as antibiotics made susceptibility screening unnecessary, but the streptococcal cause it established remained correct.',
+        source: {
+          externalId: 'src:gladys-dick-eponym-litfl',
+          name: 'Gladys Dick (1881–1963). LITFL Medical Eponym Library.',
+          url: 'https://litfl.com/gladys-dick/',
+          publishedAt: '2021-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── BCG — first human tuberculosis vaccination 1921 ─────────────────────────
+  {
+    externalId: 'trajectory:bcg-first-human-tuberculosis-vaccination-1921',
+    text: 'The first human administration of Bacille Calmette–Guérin (BCG), Calmette and Guérin\'s attenuated Mycobacterium bovis strain, was given orally to a newborn at high risk of tuberculosis at the Charité in Paris in July 1921, inaugurating human tuberculosis vaccination.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1921-07-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1921-07-18',
+        datePrecision: 'DAY',
+        reason: 'After Calmette and Guérin had attenuated a bovine tubercle bacillus through some 230 serial passages over 1908–1920, the physician Benjamin Weill-Hallé administered the BCG strain by mouth to a newborn whose mother had died of tuberculosis; the infant remained well. This recorded the first use of a live attenuated vaccine against human tuberculosis.',
+        source: {
+          externalId: 'src:pasteur-bcg-first-vaccination-centenary',
+          name: 'Institut Pasteur. BCG vaccine: the first tuberculosis vaccination took place a century ago.',
+          url: 'https://www.pasteur.fr/en/home/research-journal/news/bcg-vaccine-first-tuberculosis-vaccination-took-place-century-ago',
+          publishedAt: '2021-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By 1924 some 664 infants had been vaccinated with few adverse effects, and in 1928 the League of Nations Health Organization endorsed BCG, after which national programs adopted it widely; BCG went on to become the most administered vaccine in the world. Institutional endorsement and global uptake settled BCG as accepted TB prophylaxis — its safety later challenged by the 1930 Lübeck disaster (a separate trajectory), which investigation attributed to contamination of a batch rather than the vaccine strain.',
+        source: {
+          externalId: 'src:bcg-turns-100-historical-review-2021',
+          name: 'Lange C et al. BCG turns 100: its nontraditional uses against viruses, cancer, and immunologic diseases. (PMC8159679), 2021.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8159679/',
+          publishedAt: '2021-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Domagk — Prontosil first sulfonamide antibacterial 1935 ─────────────────
+  {
+    externalId: 'trajectory:domagk-prontosil-first-sulfonamide-antibacterial-1935',
+    text: 'Gerhard Domagk reported in the Deutsche Medizinische Wochenschrift in February 1935 that the azo dye Prontosil (sulfamidochrysoidine) protected mice against lethal streptococcal infection and cured streptococcal disease in patients — the first effective systemic antibacterial drug, launching the sulfonamide chemotherapy era.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-02-15',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-02-15',
+        datePrecision: 'MONTH',
+        reason: 'Domagk published \'Ein Beitrag zur Chemotherapie der bakteriellen Infektionen\' in the Deutsche Medizinische Wochenschrift (vol. 61, pp. 250–253), disclosing experiments — begun in 1932 at Bayer but withheld for years — in which Prontosil rescued mice from otherwise fatal streptococcal sepsis. This recorded the first demonstration that a synthetic compound could cure an established systemic bacterial infection in vivo.',
+        source: {
+          externalId: 'src:domagk-chemotherapie-bakteriellen-infektionen-dmw-1935',
+          name: 'Domagk G. Ein Beitrag zur Chemotherapie der bakteriellen Infektionen. Deutsche Medizinische Wochenschrift. 1935;61(7):250–253.',
+          url: 'https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0028-1129486',
+          publishedAt: '1935-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-10-26',
+        datePrecision: 'MONTH',
+        reason: 'After the Trefouël group at the Pasteur Institute showed in 1935 that the active moiety was sulfanilamide and clinicians (notably Colebrook in puerperal fever) confirmed dramatic cures, the Karolinska Institutet awarded Domagk the 1939 Nobel Prize in Physiology or Medicine \'for the discovery of the antibacterial effects of Prontosil.\' This institutional recognition settled sulfonamide chemotherapy as a validated medical advance and the founding of antibacterial drug therapy.',
+        source: {
+          externalId: 'src:nobel-medicine-1939-domagk',
+          name: 'The Nobel Prize in Physiology or Medicine 1939: Gerhard Domagk. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1939/domagk/facts/',
+          publishedAt: '1939-10-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sulfapyridine M&B 693 — lobar pneumonia 1938 ────────────────────────────
+  {
+    externalId: 'trajectory:sulfapyridine-mb693-lobar-pneumonia-1938',
+    text: 'Evans and Gaisford reported in The Lancet in July 1938 that sulfapyridine (M&B 693) treatment of 100 patients with lobar pneumonia at Dudley Road Hospital, Birmingham, cut mortality from about 78% to about 8% — the first chemotherapeutic cure for pneumococcal pneumonia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1938-07-02',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-07-02',
+        datePrecision: 'MONTH',
+        reason: 'Following Lionel Whitby\'s demonstration that the new sulfonamide sulfapyridine acted specifically against the pneumococcus, G. M. Evans and Wilfrid Gaisford published \'Treatment of pneumonia with 2-(p-aminobenzenesulphonamido)pyridine\' in The Lancet (1938;ii:14–19), reporting a fall in lobar-pneumonia mortality from roughly 78% to 8% in 100 treated patients. This recorded the first effective drug treatment for pneumococcal lobar pneumonia, then a leading cause of death.',
+        source: {
+          externalId: 'src:evans-gaisford-sulfapyridine-pneumonia-lancet-1938',
+          name: 'Evans GM, Gaisford WF. Treatment of pneumonia with 2-(p-aminobenzenesulphonamido)pyridine. Lancet. 1938;2:14–19. (James Lind Library record.)',
+          url: 'https://www.jameslindlibrary.org/evans-gm-gaisford-wf-1938/',
+          publishedAt: '1938-07-02',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The Evans–Gaisford result triggered rapid, widespread confirmatory trials; sulfapyridine went on the market in October 1938 (May & Baker licensing Merck for US manufacture) and was quickly accepted as standard therapy for pneumococcal pneumonia, settling its place in clinical practice before being superseded by less toxic sulfonamides and then penicillin.',
+        source: {
+          externalId: 'src:sulfonamides-introduction-revisited-annals-1991',
+          name: 'Lesch JE. Scientific Evidence versus Therapeutic Demand: The Introduction of the Sulfonamides Revisited. Annals of Internal Medicine. 1991;115(4):315–320.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-115-4-315',
+          publishedAt: '1991-08-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
