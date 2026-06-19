@@ -21728,6 +21728,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CLINICAL TRIALS ERA (1968–1997) — PEDIATRICS, IMMUNOLOGY & VACCINES
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Nalin/Cash ORT — Lancet 1968 ────────────────────────────────────────────
+  {
+    externalId: 'trajectory:nalin-cash-oral-rehydration-therapy-1968',
+    text: 'Nalin, Cash, and colleagues reported in The Lancet on 17 August 1968 that an oral glucose–electrolyte solution, exploiting glucose-coupled sodium absorption in the intact gut, maintained hydration in cholera patients and cut intravenous fluid requirements by about 80%, establishing oral rehydration therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-08-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-08-17',
+        datePrecision: 'DAY',
+        reason: 'Nalin, Cash, Islam, Molla, and Phillips published a controlled study in Dhaka showing that an oral glucose–salt solution sustained cholera patients and reduced intravenous fluid needs by ~80% versus IV-only controls. The result demonstrated that glucose-driven sodium co-transport remains intact during secretory diarrhea, providing the physiological basis for treating dehydration by mouth.',
+        source: {
+          externalId: 'src:nalin-cash-oral-maintenance-cholera-lancet-1968',
+          name: 'Nalin DR, Cash RA, Islam R, Molla M, Phillips RA. Oral maintenance therapy for cholera in adults. Lancet. 1968 Aug 17;2(7564):370-373.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4173788/',
+          publishedAt: '1968-08-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1978 WHO and UNICEF launched the global Programme for Control of Diarrhoeal Diseases built around a single standardized oral rehydration salts formulation, scaling ORT as the frontline treatment for childhood diarrhea — then the leading cause of death in children under five. A Lancet editorial that year called the discovery potentially the most important medical advance of the century, and institutional adoption made oral rehydration the global standard of care.',
+        source: {
+          externalId: 'src:ort-50-years-review-2018',
+          name: 'Ruxin J review context; Santosham M et al. 50 years of oral rehydration therapy: the solution is still simple. Lancet. 2018;392(10147):536-538.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30152375/',
+          publishedAt: '2018-08-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pinkel Total Therapy childhood ALL cure — JAMA 1971 ─────────────────────
+  {
+    externalId: 'trajectory:pinkel-total-therapy-childhood-all-cure-1971',
+    text: 'Pinkel, Aur, Simone, and colleagues at St. Jude reported in 1971 (JAMA, 26 April 1971) that \'Total Therapy\' — multidrug chemotherapy plus presymptomatic CNS prophylaxis with cranial irradiation and intrathecal methotrexate — produced durable disease-free survival in roughly half of children with acute lymphocytic leukemia, establishing that the previously near-uniformly fatal disease was curable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-04-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-04-26',
+        datePrecision: 'DAY',
+        reason: 'The St. Jude Total Therapy V results showed about 50% long-term, disease-free survival — versus roughly 4% with prior regimens — by combining intensive combination chemotherapy with CNS-directed prophylaxis to eliminate the meningeal sanctuary site of relapse. Pinkel\'s group explicitly argued that childhood ALL could no longer be regarded as incurable, introducing the word \'cure\' to a leukemia diagnosis.',
+        source: {
+          externalId: 'src:pinkel-total-therapy-five-year-jama-1971',
+          name: 'Aur RJA, Simone JV, Hustu HO, Pinkel D, et al. Five-year follow-up of \'total therapy\' of childhood lymphocytic leukemia. JAMA. 1971 Apr 26;216(4):648-652.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5279904/',
+          publishedAt: '1971-04-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-10-28',
+        datePrecision: 'DAY',
+        reason: 'By 1993 the St. Jude 30-year experience (Pui and colleagues, NEJM) documented cure rates above 70% with risk-adapted multiagent protocols derived from the Total Therapy paradigm, and cooperative-group regimens worldwide had adopted CNS prophylaxis as standard. Childhood ALL had become the paradigmatic curable disseminated cancer, settling the 1971 claim.',
+        source: {
+          externalId: 'src:pui-st-jude-30-years-all-nejm-1993',
+          name: 'Pui CH, Crist WM, et al. Treatment of acute lymphoblastic leukemia — 30 years\' experience at St. Jude Children\'s Research Hospital. N Engl J Med. 1993 Oct 28;329(18):1289-1295.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199310283291801',
+          publishedAt: '1993-10-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Liggins/Howie antenatal corticosteroids RDS — Pediatrics 1972 ───────────
+  {
+    externalId: 'trajectory:liggins-howie-antenatal-corticosteroids-rds-1972',
+    text: 'Liggins and Howie reported in Pediatrics (October 1972) a randomized placebo-controlled trial showing that betamethasone given to mothers before preterm delivery reduced neonatal respiratory distress syndrome and early neonatal mortality, establishing antenatal corticosteroids for fetal lung maturation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Liggins and Howie\'s controlled trial of 282 women showed antenatal betamethasone cut RDS from about 26% to 9% and early neonatal mortality from about 15% to 3% in treated preterm infants, following Liggins\' earlier observation of lung maturation in steroid-exposed preterm lambs. It was the first human evidence that a maternal drug could accelerate fetal lung maturity.',
+        source: {
+          externalId: 'src:liggins-howie-antepartum-glucocorticoid-pediatrics-1972',
+          name: 'Liggins GC, Howie RN. A controlled trial of antepartum glucocorticoid treatment for prevention of the respiratory distress syndrome in premature infants. Pediatrics. 1972 Oct;50(4):515-525.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4561295/',
+          publishedAt: '1972-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-03-02',
+        datePrecision: 'DAY',
+        reason: 'After two decades of slow uptake, the NIH Consensus Development Conference (28 February–2 March 1994) reviewed the accumulated trial evidence and recommended antenatal corticosteroids for all pregnant women at 24–34 weeks at risk of preterm delivery. The consensus statement converted a long-underused finding into a binding standard of perinatal care.',
+        source: {
+          externalId: 'src:nih-consensus-antenatal-corticosteroids-1994',
+          name: 'NIH Consensus Development Panel. Effect of corticosteroids for fetal maturation on perinatal outcomes. NIH Consens Statement. 1994 Feb 28-Mar 2;12(2):1-24.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7728157/',
+          publishedAt: '1994-03-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Newburger IVIG Kawasaki coronary aneurysm prevention — NEJM 1986 ────────
+  {
+    externalId: 'trajectory:newburger-ivig-kawasaki-coronary-aneurysm-1986',
+    text: 'Newburger and colleagues reported in the New England Journal of Medicine on 7 August 1986 a multicenter randomized trial showing that high-dose intravenous gamma globulin plus aspirin reduced coronary-artery abnormalities in acute Kawasaki disease from 23% to 8% versus aspirin alone, establishing IVIG as the first effective treatment preventing coronary aneurysms.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-08-07',
+        datePrecision: 'DAY',
+        reason: 'The US Multicenter Kawasaki Disease Study randomized 168 children and found coronary-artery abnormalities at two weeks in 23% of the aspirin-only group versus 8% of the gamma-globulin group. It was the first controlled evidence that immunomodulation in the acute phase could prevent the disease\'s principal complication, coronary aneurysms.',
+        source: {
+          externalId: 'src:newburger-ivig-kawasaki-nejm-1986',
+          name: 'Newburger JW, Takahashi M, Burns JC, et al. The treatment of Kawasaki syndrome with intravenous gamma globulin. N Engl J Med. 1986 Aug 7;315(6):341-347.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2426590/',
+          publishedAt: '1986-08-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-06-06',
+        datePrecision: 'DAY',
+        reason: 'Newburger\'s 1991 follow-up trial showed a single 2 g/kg IVIG infusion was more effective than the original four-day regimen at reducing coronary abnormalities, defining the modern standard regimen. This fixed IVIG plus aspirin as the consensus first-line therapy adopted in subsequent AHA/AAP guidelines.',
+        source: {
+          externalId: 'src:newburger-single-infusion-kawasaki-nejm-1991',
+          name: 'Newburger JW, Takahashi M, Beiser AS, et al. A single intravenous infusion of gamma globulin as compared with four infusions in the treatment of acute Kawasaki syndrome. N Engl J Med. 1991 Jun 6;324(23):1633-1639.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1709446/',
+          publishedAt: '1991-06-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sato acellular pertussis vaccine Japan — Lancet 1984 ────────────────────
+  {
+    externalId: 'trajectory:sato-acellular-pertussis-vaccine-japan-1981',
+    text: 'Following Yuji Sato\'s development of a component (acellular) pertussis vaccine based on purified pertussis toxoid and filamentous haemagglutinin, Japan replaced whole-cell pertussis vaccine in its national childhood immunization program in late 1981, with the development reported by Sato et al. in The Lancet on 21 January 1984.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1981-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-01-21',
+        datePrecision: 'DAY',
+        reason: 'Sato, Kimura, and Fukumi documented in The Lancet the development of an acellular pertussis vaccine containing mainly pertussis toxoid and filamentous haemagglutinin, designed in response to whole-cell vaccine reactogenicity and the associated drop in vaccine uptake in Japan. It provided the first published evidence that a less-reactogenic component vaccine could protect against pertussis.',
+        source: {
+          externalId: 'src:sato-pertussis-component-vaccine-lancet-1984',
+          name: 'Sato Y, Kimura M, Fukumi H. Development of a pertussis component vaccine in Japan. Lancet. 1984 Jan 21;1(8369):122-126.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6140441/',
+          publishedAt: '1984-01-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After large efficacy trials in the 1990s confirmed acellular vaccines protect against pertussis with fewer reactions, US ACIP and the FDA adopted DTaP for the full infant series (1996–1997), and Japan\'s 23-year national-program experience confirmed sustained safety and efficacy. Acellular pertussis became the settled standard for childhood immunization schedules across high-income countries.',
+        source: {
+          externalId: 'src:kuno-sakai-acellular-pertussis-23-years-japan-2004',
+          name: 'Kuno-Sakai H, Kimura M. Safety and efficacy of acellular pertussis vaccine in Japan, evaluated by 23 years of its use for routine immunization. Pediatr Int. 2004 Dec;46(6):650-655.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15660862/',
+          publishedAt: '2004-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
