@@ -27796,6 +27796,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Krumbhaar mustard gas bone marrow aplasia 1919 ─────────────────────────
+  {
+    externalId: 'trajectory:krumbhaar-mustard-gas-bone-marrow-aplasia-1919',
+    text: 'E.B. and Helen Krumbhaar reported in September 1919 that sulfur mustard (yellow cross) gas selectively destroys bone marrow and lymphoid tissue, producing profound leukopenia and marrow aplasia in fatal poisoning cases.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1919-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1919-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Edward B. Krumbhaar and Helen D. Krumbhaar published autopsy findings from 75 mustard-gas casualties of World War I, documenting that the agent\'s first systemic effect was exhaustion of leukocyte-forming centers and severe bone-marrow aplasia. This was the first careful pathological demonstration that an alkylating war gas is selectively cytotoxic to rapidly dividing hematopoietic and lymphoid tissue — the empirical seed from which nitrogen-mustard chemotherapy would later grow.',
+        source: {
+          externalId: 'src:krumbhaar-jmedres-1919',
+          name: 'Krumbhaar EB, Krumbhaar HD. The Blood and Bone Marrow in Yellow Cross Gas (Mustard Gas) Poisoning: Changes Produced in the Bone Marrow of Fatal Cases. J Med Res. 1919;40(3):497–508.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2104437/',
+          publishedAt: '1919-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The selective lympho- and myelotoxicity Krumbhaar documented became the accepted mechanistic rationale for using nitrogen mustard against lymphoma, validated when Goodman, Gilman, and colleagues published the clinical chemotherapy results in 1946. The observation that alkylating agents preferentially injure dividing hematopoietic tissue passed from an isolated wartime toxicology report into settled pharmacological doctrine.',
+        source: {
+          externalId: 'src:gilman-goodman-nitrogen-mustard-1946',
+          name: 'Goodman LS, Wintrobe MM, Dameshek W, et al. Nitrogen mustard therapy. JAMA. 1946;132(3):126–132.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20997191/',
+          publishedAt: '1946-09-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lawrence radiophosphorus P-32 leukemia polycythemia 1936 ───────────────
+  {
+    externalId: 'trajectory:lawrence-radiophosphorus-p32-leukemia-polycythemia-1936',
+    text: 'John H. Lawrence first administered cyclotron-produced phosphorus-32 to a leukemia patient on 24 December 1936 at Berkeley and reported it as a new treatment for leukemia and polycythemia vera — the first therapeutic use of an artificially produced radioisotope in a human.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-12-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-07-01',
+        datePrecision: 'MONTH',
+        reason: 'After first administering radiophosphorus to a 28-year-old chronic-leukemia patient on Christmas Eve 1936 and treating polycythemia vera patients from 1937 at Berkeley\'s Donner Laboratory, Lawrence published the consolidated method in Radiology in 1940. This formally recorded the claim that a cyclotron-made radioisotope, given systemically, could control myeloproliferative disease — the founding therapeutic demonstration of nuclear medicine.',
+        source: {
+          externalId: 'src:lawrence-radiology-1940',
+          name: 'Lawrence JH. Nuclear Physics and Therapy: Preliminary Report on a New Method for the Treatment of Leukemia and Polycythemia. Radiology. 1940;35(1):51–60.',
+          url: 'https://pubs.rsna.org/doi/10.1148/35.1.51',
+          publishedAt: '1940-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Within a decade radiophosphorus was reviewed and adopted as an established therapeutic agent, becoming a long-standing standard treatment for polycythemia vera that remains in selected use today. The claim that systemic P-32 controls myeloproliferative disorders moved from a Berkeley novelty to settled hematologic practice.',
+        source: {
+          externalId: 'src:lawrence-radiophosphorus-annals-1946',
+          name: 'Lawrence JH. Radioactive Phosphorus as a Therapeutic Agent. Ann Intern Med. 1946;25(4):742.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-25-4-742',
+          publishedAt: '1946-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Haddow synthetic oestrogens advanced cancer 1944 ───────────────────────
+  {
+    externalId: 'trajectory:haddow-synthetic-oestrogens-advanced-cancer-1944',
+    text: 'Alexander Haddow and colleagues reported in the British Medical Journal on 23 September 1944 that high-dose synthetic oestrogens produce objective regression of advanced breast carcinoma — establishing the first chemical (drug) treatment to induce remission in any cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-09-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-09-23',
+        datePrecision: 'DAY',
+        reason: 'Haddow, Watkinson, Paterson, and Koller reported that synthetic oestrogens (stilboestrol and triphenylethylene derivatives) given at high dose produced measurable regression of advanced malignant disease, with about one in three breast-cancer patients responding when treated well after menopause. It was the first demonstration that an administered chemical compound could induce objective remission of a human cancer.',
+        source: {
+          externalId: 'src:haddow-bmj-1944',
+          name: 'Haddow A, Watkinson JM, Paterson E, Koller PC. Influence of Synthetic Oestrogens upon Advanced Malignant Disease. Br Med J. 1944;2(4368):393–398.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2286289/',
+          publishedAt: '1944-09-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'High-dose oestrogen therapy became an accepted endocrine treatment for postmenopausal advanced breast cancer through the 1950s and 1960s and remained a recognized standard until the antiestrogen tamoxifen later supplanted it. Haddow\'s finding that hormones could be used as cancer drugs was absorbed into the foundations of clinical endocrine oncology.',
+        source: {
+          externalId: 'src:jordan-haddow-historical-review',
+          name: 'Jordan VC. The new biology of estrogen-induced apoptosis applied to treat and prevent breast cancer (historical account of Haddow 1944). Endocr Relat Cancer. 2014;21(6):R287–R299.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25339261/',
+          publishedAt: '2014-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Seidlin radioiodine metastatic thyroid cancer 1946 ─────────────────────
+  {
+    externalId: 'trajectory:seidlin-radioiodine-metastatic-thyroid-cancer-1946',
+    text: 'Samuel Seidlin, Leonidas Marinelli, and Eleanor Oshry reported in JAMA on 7 December 1946 the first successful treatment of metastatic thyroid adenocarcinoma using radioactive iodine (I-131), which concentrated in and functionally ablated distant functioning metastases.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1946-12-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-12-07',
+        datePrecision: 'DAY',
+        reason: 'Seidlin (Montefiore Hospital) with physicists Marinelli and Oshry documented a patient whose functioning thyroid-cancer metastases avidly took up radioiodine, allowing targeted internal radiation and dramatic clinical improvement. It was the first report that a systemically administered radioisotope could selectively treat metastatic solid-tumor cancer, launching radioiodine theranostics for thyroid carcinoma.',
+        source: {
+          externalId: 'src:seidlin-jama-1946',
+          name: 'Seidlin SM, Marinelli LD, Oshry E. Radioactive Iodine Therapy: Effect on Functioning Metastases of Adenocarcinoma of the Thyroid. JAMA. 1946;132(14):838–847.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2118413/',
+          publishedAt: '1946-12-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Radioiodine (I-131) ablation and treatment of differentiated thyroid carcinoma became and remains the institutional standard of care worldwide, codified in endocrine and nuclear-medicine guidelines. Seidlin\'s case report transitioned from a single demonstration to the definitive systemic therapy for metastatic differentiated thyroid cancer.',
+        source: {
+          externalId: 'src:radioiodine-living-history-2022',
+          name: 'Radioactive Iodine: A Living History (historical review of Seidlin et al. 1946 and the establishment of I-131 thyroid cancer therapy). Thyroid. 2022.',
+          url: 'https://www.liebertpub.com/doi/10.1089/thy.2022.0344',
+          publishedAt: '2022-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
