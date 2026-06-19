@@ -18634,6 +18634,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE / ORPHAN DRUG ERA (1996–2025)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sodium phenylbutyrate (Buphenyl) — urea cycle disorders, FDA 1996 ───────
+  {
+    externalId: 'trajectory:sodium-phenylbutyrate-buphenyl-urea-cycle-disorders-1996',
+    text: 'On 30 April 1996 the U.S. FDA approved Buphenyl (sodium phenylbutyrate), an oral nitrogen-scavenging ammonia-lowering agent, as adjunctive therapy for the chronic management of the inborn urea cycle disorders (CPS, OTC, and argininosuccinate-synthetase deficiency).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-04-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Buphenyl powder (NDA 020573) as an orphan drug for urea cycle disorders, providing the first marketed oral alternative-pathway nitrogen scavenger building on Saul Brusilow\'s phenylacetate/benzoate work. This converted an investigational metabolic-rescue regimen into a labeled chronic therapy for a group of rare, life-threatening genetic enzyme deficiencies.',
+        source: {
+          externalId: 'src:fda-buphenyl-approval-package-1996',
+          name: 'U.S. Food and Drug Administration. Buphenyl (sodium phenylbutyrate) Drug Approval Package, NDA 020573/020572. April–May 1996.',
+          url: 'https://archive.org/details/buphenyl-us-fda-drug-approval-package',
+          publishedAt: '1996-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-31',
+        datePrecision: 'DAY',
+        reason: 'Enns and colleagues, reporting the U.S. urea-cycle-disorders longitudinal cohort in the New England Journal of Medicine, documented that treatment with phenylacetate/phenylbutyrate and benzoate substantially improved survival of hyperammonemic crises across enzyme subtypes. The study established alternative-pathway nitrogen scavenging as the durable standard of care, settling its therapeutic value.',
+        source: {
+          externalId: 'src:enns-nejm-urea-cycle-survival-2007',
+          name: 'Enns GM, Berry SA, Berry GT, Rhead WJ, Brusilow SW, Hamosh A. Survival after treatment with phenylacetate and benzoate for urea-cycle disorders. N Engl J Med. 2007;356(22):2282-92.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17538087/',
+          publishedAt: '2007-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pegvisomant (Somavert) — acromegaly GH receptor antagonist, FDA 2003 ───
+  {
+    externalId: 'trajectory:pegvisomant-somavert-acromegaly-gh-receptor-antagonist-2003',
+    text: 'Pegvisomant (Somavert), the first growth hormone receptor antagonist, was shown in a randomized NEJM trial (20 April 2000) to normalize IGF-1 in acromegaly and was FDA-approved for the disease on 25 March 2003.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-04-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-04-20',
+        datePrecision: 'DAY',
+        reason: 'Trainer and colleagues published a randomized, double-blind, placebo-controlled trial of 112 acromegaly patients in the New England Journal of Medicine showing pegvisomant dose-dependently normalized serum IGF-1 and improved symptoms by blocking the GH receptor rather than suppressing GH secretion. This was the first clinical proof of a wholly new pharmacologic class — a GH receptor antagonist — for a rare endocrine tumor disorder.',
+        source: {
+          externalId: 'src:trainer-nejm-pegvisomant-2000',
+          name: 'Trainer PJ, Drake WM, Katznelson L, et al. Treatment of acromegaly with the growth hormone-receptor antagonist pegvisomant. N Engl J Med. 2000;342(16):1171-7.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10770982/',
+          publishedAt: '2000-04-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-03-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Somavert (pegvisomant, NDA 021106) for acromegaly patients with inadequate response to surgery, radiation, or other medical therapy, making it the first and only GH-receptor-antagonist drug. Regulatory approval settled the agent as an established second-line therapy for a rare disease defined by GH/IGF-1 excess.',
+        source: {
+          externalId: 'src:fda-somavert-approval-package-2003',
+          name: 'U.S. Food and Drug Administration. Somavert (pegvisomant) Drug Approval Package, NDA 021106. 2003.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2003/021106_somavert.cfm',
+          publishedAt: '2003-03-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Teduglutide (Gattex) — short bowel syndrome GLP-2, FDA 2012 ─────────────
+  {
+    externalId: 'trajectory:teduglutide-gattex-short-bowel-syndrome-glp2-2012',
+    text: 'Teduglutide (Gattex), a recombinant GLP-2 analog, was shown in the phase 3 STEPS trial (2012) to reduce parenteral-support dependence in short bowel syndrome and was FDA-approved for the indication on 21 December 2012.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The pivotal phase 3 STEPS trial (Jeppesen et al., Gastroenterology) reported that 24 weeks of teduglutide, a degradation-resistant GLP-2 analog, produced a clinical response (≥20% reduction in parenteral support) in 63% of patients versus 30% on placebo. This established a first-in-class intestinotrophic growth factor that addresses the underlying intestinal-absorption deficit in short bowel syndrome rather than merely supplementing nutrition.',
+        source: {
+          externalId: 'src:jeppesen-steps-teduglutide-2012',
+          name: 'Jeppesen PB, Pertkiewicz M, Messing B, et al. Teduglutide reduces need for parenteral support among patients with short bowel syndrome with intestinal failure. Gastroenterology. 2012;143(6):1473-1481.e3.',
+          url: 'https://www.gastrojournal.org/article/S0016-5085(12)01316-9/fulltext',
+          publishedAt: '2012-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-12-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Gattex (teduglutide, NDA 203441) for adults with short bowel syndrome dependent on parenteral support, after a unanimous advisory-committee recommendation. Approval established the first long-term growth-factor therapy aimed at reducing or eliminating chronic intravenous feeding in this rare malabsorptive condition, with a mandated long-term post-marketing colorectal-cancer surveillance study.',
+        source: {
+          externalId: 'src:fda-gattex-approval-package-2012',
+          name: 'U.S. Food and Drug Administration. Gattex (teduglutide [rDNA origin]) Approval Package, NDA 203441. 21 December 2012.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/203441Orig1s000Approv.pdf',
+          publishedAt: '2012-12-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Metreleptin (Myalept) — leptin replacement for lipodystrophy, FDA 2014 ──
+  {
+    externalId: 'trajectory:metreleptin-myalept-leptin-replacement-lipodystrophy-2014',
+    text: 'Leptin-replacement therapy (later marketed as metreleptin/Myalept) was shown in a 2002 NEJM trial to reverse the metabolic complications of generalized lipodystrophy, and the FDA approved metreleptin for the condition on 24 February 2014.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-02-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-02-21',
+        datePrecision: 'DAY',
+        reason: 'Oral and colleagues reported in the New England Journal of Medicine that recombinant leptin markedly lowered triglycerides and HbA1c and reduced liver volume in patients with severe lipodystrophy and leptin deficiency. This demonstrated that, unlike in common obesity where leptin failed, leptin replacement works precisely in the leptin-deficient state of lipodystrophy — defining the niche where the hormone is genuinely therapeutic.',
+        source: {
+          externalId: 'src:oral-nejm-leptin-lipodystrophy-2002',
+          name: 'Oral EA, Simha V, Ruiz E, et al. Leptin-replacement therapy for lipodystrophy. N Engl J Med. 2002;346(8):570-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11856796/',
+          publishedAt: '2002-02-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-02-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Myalept (metreleptin, BLA 125390) as replacement therapy for the complications of leptin deficiency in patients with congenital or acquired generalized lipodystrophy — the first and only approved treatment for the condition. Approval institutionally settled leptin replacement as standard care for this ultra-rare metabolic disease, more than a decade after the proof-of-concept trial.',
+        source: {
+          externalId: 'src:fda-myalept-label-2014',
+          name: 'U.S. Food and Drug Administration. MYALEPT (metreleptin) for injection — Prescribing Information, BLA 125390. 24 February 2014.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/125390s004lbl.pdf',
+          publishedAt: '2014-02-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ataluren (Translarna) — nonsense-mutation Duchenne, EMA 2014 → non-renewal 2025 ──
+  {
+    externalId: 'trajectory:ataluren-translarna-nonsense-duchenne-non-renewal-2014',
+    text: 'Ataluren (Translarna), a nonsense-mutation read-through agent, received EMA conditional marketing authorisation for nonsense-mutation Duchenne muscular dystrophy on 31 July 2014, but its efficacy was never confirmed and the authorisation was ultimately not renewed.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-07-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-31',
+        datePrecision: 'DAY',
+        reason: 'The European Commission, following a positive CHMP opinion, granted Translarna (ataluren) a conditional marketing authorisation for ambulatory patients aged 5+ with nonsense-mutation Duchenne muscular dystrophy. The conditional basis explicitly acknowledged incomplete efficacy data — the first approved therapy purporting to make ribosomes read through premature stop codons, contingent on confirmatory trials.',
+        source: {
+          externalId: 'src:ema-translarna-epar-2014',
+          name: 'European Medicines Agency. Translarna (ataluren): European public assessment report (EPAR) — conditional marketing authorisation. 31 July 2014.',
+          url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/translarna',
+          publishedAt: '2014-07-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-09-15',
+        datePrecision: 'MONTH',
+        reason: 'After confirmatory studies (including Study 041) failed to demonstrate efficacy, the EMA\'s CHMP issued a negative opinion recommending non-renewal of Translarna\'s authorisation, concluding the medicine\'s effectiveness had not been confirmed. The recommendation placed the original read-through efficacy claim formally in dispute at the regulatory level.',
+        source: {
+          externalId: 'src:ema-translarna-non-renewal-2023',
+          name: 'European Medicines Agency. EMA recommends non-renewal of authorisation of Duchenne muscular dystrophy medicine Translarna. 15 September 2023.',
+          url: 'https://www.ema.europa.eu/en/news/ema-recommends-non-renewal-authorisation-duchenne-muscular-dystrophy-medicine-translarna',
+          publishedAt: '2023-09-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-03-28',
+        datePrecision: 'DAY',
+        reason: 'After CHMP re-examinations in 2024 upheld the negative opinion, the European Commission issued a binding decision not to renew Translarna\'s conditional marketing authorisation, withdrawing it across the EU. This reversed the 2014 efficacy claim outright — a decade-long natural experiment in which conditional approval on incomplete data ended in withdrawal once confirmatory benefit could not be shown.',
+        source: {
+          externalId: 'src:ec-translarna-non-renewal-2025',
+          name: 'Action Duchenne. European Commission Confirms Decision Not to Renew the Market Authorisation for Translarna (Ataluren). 28 March 2025.',
+          url: 'https://www.actionduchenne.org/european-commission-confirms-decision-not-to-renew-the-market-authorisation-for-translarna-ataluren/',
+          publishedAt: '2025-03-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
