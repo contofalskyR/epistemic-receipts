@@ -27075,6 +27075,166 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & OBSTETRICS
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Toxic shock syndrome / Rely tampon withdrawal 1980 ──────────────────────
+  {
+    externalId: 'trajectory:tampon-toxic-shock-syndrome-rely-1980',
+    text: 'The U.S. Centers for Disease Control reported in June 1980 that toxic shock syndrome was epidemiologically associated with tampon use in menstruating women — and specifically with Procter & Gamble\'s high-absorbency Rely tampon — leading to Rely\'s withdrawal from the market on 22 September 1980.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-06-01',
+        datePrecision: 'MONTH',
+        reason: 'After a cluster of staphylococcal toxic shock syndrome cases was first reported in MMWR in May 1980, CDC case-control investigations (CDC-1) found that nearly all cases occurred in menstruating women using tampons, recording in the public-health literature the claim that tampon use was a risk factor for menstrual TSS. This converted an undefined febrile syndrome into a recognized, product-associated hazard.',
+        source: {
+          externalId: 'src:cdc-mmwr-toxic-shock-1980',
+          name: 'U.S. Centers for Disease Control. Defining Moments in MMWR History: Toxic-Shock Syndrome, 1980 (documenting the 1980 MMWR reports linking TSS to tampon use).',
+          url: 'https://tools.cdc.gov/podcasts/media/pdf/DefiningMoments_ToxicShock.pdf',
+          publishedAt: '1980-06-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1980-09-22',
+        datePrecision: 'DAY',
+        reason: 'After CDC\'s second study (CDC-2) specifically implicated the Rely brand, Procter & Gamble recalled Rely on 22 September 1980 and entered a consent agreement with the FDA to notify consumers and remove the product. The withdrawal — and the subsequent decline in high-absorbency tampon use accompanied by a marked drop in menstrual TSS incidence — institutionally ratified the tampon–TSS causal claim and drove later federal tampon absorbency labeling standards.',
+        source: {
+          externalId: 'src:vostral-rely-toxic-shock-yjbm-2011',
+          name: 'Vostral SL. Rely and Toxic Shock Syndrome: A Technological Health Crisis. Yale J Biol Med. 2011;84(4):447-459.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3238331/',
+          publishedAt: '2011-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bendectin / doxylamine–pyridoxine pregnancy safety 1956–2013 ────────────
+  {
+    externalId: 'trajectory:bendectin-doxylamine-pyridoxine-pregnancy-safety-1956',
+    text: 'The claim that the doxylamine–pyridoxine combination (marketed as Bendectin, later Diclegis) is a safe and effective treatment for nausea and vomiting of pregnancy was established with U.S. approval in 1956, thrown into public and legal dispute by birth-defect litigation that drove its withdrawal in 1983, and ultimately vindicated and re-approved by the FDA on 8 April 2013.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1956-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1956-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Merrell\'s Bendectin (originally doxylamine, pyridoxine, and dicyclomine) was approved in the United States in 1956 and became the most widely used drug for nausea and vomiting of pregnancy, taken by an estimated 30 million women worldwide. Institutional approval and decades of routine obstetric use settled the claim that the combination was a safe symptomatic therapy in pregnancy.',
+        source: {
+          externalId: 'src:koren-diclegis-bendectin-history-jptcp-2013',
+          name: 'Koren G. The return to the USA of the doxylamine-pyridoxine delayed release combination (Diclegis) for morning sickness — a new morning for American women. J Popul Ther Clin Pharmacol. 2013;20(2):e161-e163.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23863487/',
+          publishedAt: '2013-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1983-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Beginning in the late 1970s, hundreds of lawsuits alleged that Bendectin caused limb-reduction and other birth defects, generating intense media coverage despite a lack of confirmatory epidemiologic evidence. Unable to sustain the cost of litigation, Merrell Dow voluntarily withdrew Bendectin from the U.S. market in June 1983 — a market and reputational reversal driven by tort exposure rather than by demonstrated teratogenicity, leaving the safety claim in active public dispute and the U.S. without any approved morning-sickness drug.',
+        source: {
+          externalId: 'src:nejm-doxylamine-pyridoxine-pregnancy-2013',
+          name: 'FDA Approval of Doxylamine–Pyridoxine Therapy for Use in Pregnancy. N Engl J Med. 2013;368(16):1466-1467 (recounting the 1983 withdrawal amid litigation).',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMp1316042',
+          publishedAt: '2013-04-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1993-06-28',
+        datePrecision: 'DAY',
+        reason: 'In Daubert v. Merrell Dow Pharmaceuticals, Inc. (509 U.S. 579), a Bendectin birth-defect suit, the U.S. Supreme Court on 28 June 1993 set the modern standard for admitting scientific expert testimony; on remand the plaintiffs\' teratogenicity evidence was excluded as scientifically unreliable, consistent with the by-then large epidemiologic literature finding no increased risk of malformations. The case both vindicated Bendectin\'s safety in the legal record and reshaped the evidentiary treatment of scientific claims in U.S. courts.',
+        source: {
+          externalId: 'src:daubert-v-merrell-dow-1993',
+          name: 'Daubert v. Merrell Dow Pharmaceuticals, Inc., 509 U.S. 579 (1993).',
+          url: 'https://supreme.justia.com/cases/federal/us/509/579/',
+          publishedAt: '1993-06-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-04-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Diclegis (delayed-release doxylamine succinate/pyridoxine hydrochloride, NDA 021876) on 8 April 2013 for nausea and vomiting of pregnancy unresponsive to conservative management, designating it Pregnancy Category A — the strongest evidence of fetal safety — and making it the first morning-sickness drug approved in the U.S. in more than 30 years. The regulator formally re-established the same combination\'s safety and efficacy claim that litigation had driven from the market, closing the arc.',
+        source: {
+          externalId: 'src:nejm-diclegis-fda-approval-2013',
+          name: 'FDA Approval of Doxylamine–Pyridoxine Therapy for Use in Pregnancy. N Engl J Med. 2013;368(16):1466-1467 (documenting the 8 April 2013 Diclegis approval, Pregnancy Category A).',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMp1316042',
+          publishedAt: '2013-04-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Magnesium sulphate / eclampsia anticonvulsant 1995 ──────────────────────
+  {
+    externalId: 'trajectory:magnesium-sulphate-eclampsia-anticonvulsant-1995',
+    text: 'The Collaborative Eclampsia Trial reported in The Lancet in 1995 that magnesium sulphate is superior to diazepam and phenytoin for preventing recurrent convulsions in women with eclampsia, establishing it as the anticonvulsant of choice for the obstetric emergency.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Eclampsia Trial Collaborative Group randomized 1,687 women with eclampsia across an international multicentre trial and found that magnesium sulphate reduced recurrent convulsions by 52% versus diazepam and 67% versus phenytoin, with fewer maternal complications. Against a global practice in which diazepam and phenytoin were widely used, the trial recorded in the expert literature compelling evidence that magnesium sulphate was the superior anticonvulsant for eclampsia.',
+        source: {
+          externalId: 'src:collaborative-eclampsia-trial-lancet-1995',
+          name: 'Eclampsia Trial Collaborative Group. Which anticonvulsant for women with eclampsia? Evidence from the Collaborative Eclampsia Trial. Lancet. 1995;345(8963):1455-1463.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7769899/',
+          publishedAt: '1995-06-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-06-01',
+        datePrecision: 'MONTH',
+        reason: 'The Magpie Trial randomized over 10,000 women with pre-eclampsia and reported in The Lancet in 2002 that magnesium sulphate more than halved the risk of progressing to eclampsia, extending the magnesium evidence from treatment to prevention. Convergent large-trial data drove adoption of magnesium sulphate as the standard agent in obstetric guidelines and the WHO Model List of Essential Medicines, settling its role as the anticonvulsant of choice for eclampsia and pre-eclampsia.',
+        source: {
+          externalId: 'src:magpie-trial-lancet-2002',
+          name: 'Magpie Trial Collaborative Group. Do women with pre-eclampsia, and their babies, benefit from magnesium sulphate? The Magpie Trial: a randomised placebo-controlled trial. Lancet. 2002;359(9321):1877-1890.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12057549/',
+          publishedAt: '2002-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
