@@ -15845,48 +15845,6 @@ const TRAJECTORIES: Trajectory[] = [
   // ENDOCRINOLOGY & REPRODUCTIVE MEDICINE ERA (pre-1950)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Allen-Doisy ovarian hormone / estrogen — 1923 ──────────────────────────
-  {
-    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
-    text: 'Edgar Allen and Edward A. Doisy reported in JAMA on 8 September 1923 that the ovarian follicle contains a specific hormone that they localized, extracted, and partially purified, establishing the existence of the female sex hormone later named estrogen.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1923-09-08',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1923-09-08',
-        datePrecision: 'DAY',
-        reason: 'Allen and Doisy published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, showing that ovarian follicular fluid contained an active substance that induced estrus in ovariectomized rodents. The accompanying bioassay (the Allen-Doisy test) gave the field its first reproducible quantitative measure of estrogenic activity, recording in the expert literature the claim that a discrete ovarian hormone existed.',
-        source: {
-          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
-          name: 'Allen E, Doisy EA. An ovarian hormone. Preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819-821.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
-          publishedAt: '1923-09-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1929-01-01',
-        datePrecision: 'YEAR',
-        reason: 'By 1929 the hypothesized ovarian hormone had been isolated in crystalline form (Doisy in the United States and Butenandt in Germany independently crystallized the estrogen later named estrone from pregnancy urine), and its chemical structure was characterized over the following years. Moving the substance from a bioassay-defined activity to a defined molecule settled estrogen\'s existence and identity as established endocrinology.',
-        source: {
-          externalId: 'src:history-estrogen-therapy-pmc-2020',
-          name: 'Tata JR / review: The History of Estrogen Therapy (covering crystalline isolation of estrone, 1929). PMC7334883.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7334883/',
-          publishedAt: '2020-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Premarin conjugated estrogens FDA approval — 1942 ──────────────────────
   {
     externalId: 'trajectory:premarin-conjugated-estrogens-fda-1942',
@@ -18628,75 +18586,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Papanicolaou GN, Traut HF. Diagnosis of Uterine Cancer by the Vaginal Smear. New York: The Commonwealth Fund; 1943.',
           url: 'https://wellcomecollection.org/works/ccycn3cz',
           publishedAt: '1943-01-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Allen & Doisy — ovarian hormone / estrogen bioassay 1923–1929 ───────────
-  {
-    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
-    text: 'Edgar Allen and Edward Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid (\'an ovarian hormone\') induced estrus in spayed rodents, providing the first experimental demonstration and bioassay of the hormone later named estrogen.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1923-09-08',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1923-09-08',
-        datePrecision: 'DAY',
-        reason: 'Allen and Doisy at Washington University in St. Louis published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, demonstrating that follicular extracts produced estrus in spayed animals and establishing the Allen–Doisy bioassay. This recorded the existence of an ovarian internal secretion (estrogen) and gave researchers a quantitative test to detect it, the methodological foundation of reproductive endocrinology.',
-        source: {
-          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
-          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819–821.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
-          publishedAt: '1923-09-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1929',
-        datePrecision: 'YEAR',
-        reason: 'In 1929 Doisy (with Veler and Thayer) crystallized estrone in pure form in St. Louis, presented at the 13th International Physiological Congress in Boston, while Adolf Butenandt independently isolated the same crystalline estrogen from pregnant-women\'s urine in Germany. The convergent isolation of the pure compound by two laboratories settled the existence and chemical identity of the ovarian estrogen, transforming the 1923 bioassay claim into established chemistry and earning Butenandt a share of the 1939 Nobel Prize.',
-        source: {
-          externalId: 'src:history-of-estrogen-purification-endocrinology-2019',
-          name: 'Kuhl H, et al. History of Estrogen: Its Purification, Structure, Synthesis, Biologic Actions, and Clinical Implications. Endocrinology. 2019;160(3):605–625.',
-          url: 'https://academic.oup.com/endo/article/160/3/605/5250672',
-          publishedAt: '2019-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
-  // ── Premarin / conjugated estrogens — FDA approval 1942 ─────────────────────
-  {
-    externalId: 'trajectory:premarin-conjugated-estrogens-menopause-1942',
-    text: 'The U.S. Food and Drug Administration permitted the new drug application for Premarin (conjugated equine estrogens) to become effective in 1942 for the treatment of menopausal symptoms, establishing the first widely marketed estrogen replacement therapy.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '1942',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1942',
-        datePrecision: 'YEAR',
-        reason: 'Under the 1938 Federal Food, Drug, and Cosmetic Act\'s new-drug provisions, the FDA allowed Ayerst\'s Premarin NDA to become effective in 1942 on the basis of chemistry and clinical investigations showing it was safe for menopausal symptoms — predating the requirement that drugs be well-characterized chemically. This institutionally established conjugated equine estrogens as a recognized treatment for menopause; the symptomatic (vasomotor) indication has remained settled even after later trials reversed separate claims of chronic-disease prevention.',
-        source: {
-          externalId: 'src:fda-premarin-1942-federal-register-1997',
-          name: 'Food and Drug Administration. Conjugated Estrogens; Notice [Premarin first permitted effective 1942]. Federal Register, Vol. 62, No. 152, August 7, 1997.',
-          url: 'https://www.govinfo.gov/content/pkg/FR-1997-08-07/html/97-20792.htm',
-          publishedAt: '1997-08-07',
           methodologyType: 'primary',
         },
       },
