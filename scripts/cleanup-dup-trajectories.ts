@@ -1,8 +1,8 @@
 // One-off cleanup: remove orphan duplicate records created by an erroneous
-// run of seed-human-history-trajectories.ts that re-added two modern-era SE Asia
+// run of seed-human-history-trajectories.ts that re-added two ancient-Rome
 // events already present in the DB under different externalIds:
-//   - Homo luzonensis 2019 (already: trajectory:homo-luzonensis-philippines-2019)
-//   - Khmer Rouge ECCC genocide verdict 2018 (already: trajectory:khmer-rouge-genocide-eccc-2018)
+//   - Battle of Adrianople 378 CE (already: trajectory:battle-of-adrianople-378)
+//   - Battle of the Frigidus 394 CE (already: trajectory:battle-of-frigidus-394)
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 
@@ -10,16 +10,16 @@ const prisma = new PrismaClient()
 
 // New duplicate claims that did NOT exist before the bad run.
 const ORPHAN_CLAIMS = [
-  'trajectory:homo-luzonensis-discovery-2019',
-  'trajectory:khmer-rouge-genocide-verdict-2018',
+  'trajectory:battle-of-adrianople-378ce',
+  'trajectory:battle-of-the-frigidus-394ce',
 ]
 
 // Sources created exclusively by the bad run.
-// NOTE: src:detroit-luzonensis-nature-2019 is SHARED with the surviving
-// luzonensis entry — it is intentionally NOT listed here.
 const ORPHAN_SOURCES = [
-  'src:eccc-genocide-verdict-amnesty-2018',
-  'src:eccc-appeal-upheld-un-2022',
+  'src:ammianus-adrianople-378',
+  'src:adrianople-scholarship',
+  'src:frigidus-contemporary-394',
+  'src:frigidus-scholarship',
 ]
 
 async function main() {
