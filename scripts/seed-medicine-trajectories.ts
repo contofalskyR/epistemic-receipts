@@ -30197,6 +30197,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PROCEDURES REVERSED BY RANDOMIZED TRIALS (1988–2017)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── High-dose chemo + autologous BMT for breast cancer — reversed 2000 ──────
+  {
+    externalId: 'trajectory:high-dose-chemo-autologous-transplant-breast-cancer-1988',
+    text: 'William P. Peters and colleagues reported in the Journal of Clinical Oncology in September 1988 that high-dose combination alkylating-agent chemotherapy with autologous bone marrow support produced rapid, frequent complete responses in metastatic breast cancer, advancing the claim that dose-intensive chemotherapy with marrow/stem-cell rescue improves outcomes in breast cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Peters and colleagues at Duke reported a phase II study of single high-dose cyclophosphamide/cisplatin/carmustine with autologous bone marrow support as initial therapy for metastatic breast cancer, finding a 54% complete-response rate and 73% overall response — far above conventional chemotherapy. The report recorded into the literature the dose-intensity rationale that drove an estimated 30,000+ U.S. women to receive high-dose chemotherapy with bone marrow or peripheral stem-cell transplantation through the 1990s, often outside randomized trials.',
+        source: {
+          externalId: 'src:peters-hdc-bmt-breast-cancer-jco-1988',
+          name: 'Peters WP, Shpall EJ, Jones RB, et al. High-dose combination alkylating agents with bone marrow support as initial treatment for metastatic breast cancer. J Clin Oncol. 1988;6(9):1368-1376.',
+          url: 'https://ascopubs.org/doi/10.1200/JCO.1988.6.9.1368',
+          publishedAt: '1988-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-04-13',
+        datePrecision: 'DAY',
+        reason: 'Stadtmauer and the Philadelphia Bone Marrow Transplant Group published a randomized trial in the New England Journal of Medicine finding that high-dose chemotherapy plus autologous stem-cell transplantation conferred no survival advantage over conventional-dose chemotherapy for metastatic breast cancer. Reported alongside other negative randomized trials and the May 2000 ASCO revelation that Werner Bezwoda\'s lone positive trial was fraudulent, the evidence collapsed the practice and ended routine use of transplantation for breast cancer, a textbook case of an adopted procedure reversed by controlled evidence.',
+        source: {
+          externalId: 'src:stadtmauer-philadelphia-bmt-breast-cancer-nejm-2000',
+          name: 'Stadtmauer EA, O\'Neill A, Goldstein LJ, et al. Conventional-dose chemotherapy compared with high-dose chemotherapy plus autologous hematopoietic stem-cell transplantation for metastatic breast cancer. N Engl J Med. 2000;342(15):1069-1076.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM200004133421501',
+          publishedAt: '2000-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Carotid endarterectomy for symptomatic stenosis — NASCET 1991 ───────────
+  {
+    externalId: 'trajectory:carotid-endarterectomy-symptomatic-stenosis-nascet-1991',
+    text: 'The North American Symptomatic Carotid Endarterectomy Trial (NASCET) established that carotid endarterectomy added to medical therapy substantially reduces the risk of ipsilateral stroke in patients with symptomatic high-grade (70–99%) internal-carotid stenosis, first announced by an NINDS clinical alert in February 1991 after the trial was stopped early for clear benefit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1991-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The Stroke and Trauma Division of the National Institute of Neurological Disorders and Stroke (NINDS) issued an unusual clinical alert announcing that NASCET had been halted early for the high-grade-stenosis stratum because surgery was clearly superior, and urging clinicians to consider carotid endarterectomy for symptomatic patients with 70–99% stenosis. The federal alert recorded the efficacy claim ahead of full publication, an institutional action reflecting the strength and urgency of the interim result.',
+        source: {
+          externalId: 'src:ninds-nascet-clinical-alert-1991',
+          name: 'NINDS Stroke and Trauma Division. Clinical alert: benefit of carotid endarterectomy for patients with high-grade stenosis of the internal carotid artery. North American Symptomatic Carotid Endarterectomy Trial (NASCET) investigators. Stroke. 1991;22(6):816-817.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2057984/',
+          publishedAt: '1991-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-08-15',
+        datePrecision: 'DAY',
+        reason: 'The full NASCET results in the New England Journal of Medicine reported that endarterectomy reduced the two-year risk of any ipsilateral stroke by an absolute 17 percentage points (from 26% to 9%) in patients with 70–99% symptomatic stenosis. The peer-reviewed, multicenter randomized evidence settled carotid endarterectomy as the standard of care for symptomatic high-grade stenosis and was rapidly codified into AHA and neurology practice guidelines.',
+        source: {
+          externalId: 'src:nascet-beneficial-effect-nejm-1991',
+          name: 'North American Symptomatic Carotid Endarterectomy Trial Collaborators. Beneficial effect of carotid endarterectomy in symptomatic patients with high-grade carotid stenosis. N Engl J Med. 1991;325(7):445-453.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199108153250701',
+          publishedAt: '1991-08-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Radical prostatectomy for localized prostate cancer — PIVOT 2012 ────────
+  {
+    externalId: 'trajectory:radical-prostatectomy-localized-prostate-cancer-pivot-2012',
+    text: 'Radical prostatectomy reduces all-cause and prostate-cancer mortality in men with clinically localized prostate cancer — a claim supported by the Scandinavian SPCG-4 trial in 2002 but contested for PSA-screen-detected disease by the U.S. PIVOT trial (Wilt et al.) reported in the New England Journal of Medicine on 19 July 2012.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-09-12',
+        datePrecision: 'DAY',
+        reason: 'Holmberg, Bill-Axelson, and the Scandinavian Prostate Cancer Group (SPCG-4) reported the first randomized trial comparing radical prostatectomy with watchful waiting in early prostate cancer, finding that surgery reduced disease-specific mortality (later confirmed as a ~6 percentage-point absolute reduction at 15 years). This recorded into the literature the claim that surgically removing the prostate prolongs survival in localized disease, supporting radical prostatectomy as curative standard care.',
+        source: {
+          externalId: 'src:spcg4-holmberg-radical-prostatectomy-nejm-2002',
+          name: 'Holmberg L, Bill-Axelson A, Helgesen F, et al. A randomized trial comparing radical prostatectomy with watchful waiting in early prostate cancer. N Engl J Med. 2002;347(11):781-789.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa012794',
+          publishedAt: '2002-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-19',
+        datePrecision: 'DAY',
+        reason: 'Wilt and the PIVOT investigators randomized 731 U.S. men with predominantly PSA-screen-detected localized prostate cancer to radical prostatectomy or observation and found surgery did not significantly reduce all-cause or prostate-cancer mortality, with absolute differences under 3% over ~10 years. Because PIVOT\'s screening-era population differed from SPCG-4\'s clinically detected cancers, the result did not overturn the surgical claim outright but threw the benefit of radical prostatectomy for screen-detected localized disease into sustained dispute, fueling the shift toward active surveillance.',
+        source: {
+          externalId: 'src:pivot-wilt-radical-prostatectomy-observation-nejm-2012',
+          name: 'Wilt TJ, Brawer MK, Jones KM, et al. Radical prostatectomy versus observation for localized prostate cancer. N Engl J Med. 2012;367(3):203-213.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1113162',
+          publishedAt: '2012-07-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PFO closure for cryptogenic stroke — contested 2012, settled 2017 ───────
+  {
+    externalId: 'trajectory:pfo-closure-cryptogenic-stroke-2012',
+    text: 'Percutaneous device closure of a patent foramen ovale (PFO) prevents recurrent stroke in patients with cryptogenic ischemic stroke — a claim a widely adopted procedure rested on observationally, refuted by the first randomized trial CLOSURE I in 2012 and then revived by the long-term RESPECT trial and concurrent trials in 2017.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-15',
+        datePrecision: 'DAY',
+        reason: 'Through the 2000s, transcatheter PFO closure had spread on the strength of observational series in patients with cryptogenic stroke and a PFO. CLOSURE I (Furlan et al.), the first randomized controlled trial, found that device closure with the STARFlex implant did not reduce recurrent stroke or TIA versus medical therapy and carried procedural risks, contesting a procedure that had been performed for years without randomized support.',
+        source: {
+          externalId: 'src:closure1-furlan-pfo-cryptogenic-stroke-nejm-2012',
+          name: 'Furlan AJ, Reisman M, Massaro J, et al. Closure or medical therapy for cryptogenic stroke with patent foramen ovale. N Engl J Med. 2012;366(11):991-999.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1009639',
+          publishedAt: '2012-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-09-14',
+        datePrecision: 'DAY',
+        reason: 'Saver and the RESPECT investigators reported long-term follow-up (median 5.9 years) showing PFO closure with the Amplatzer device reduced recurrent ischemic stroke by about 45% versus medical therapy, published in the same New England Journal of Medicine issue as the positive CLOSE and Gore REDUCE trials. The convergent randomized evidence — using better devices and better-selected patients than CLOSURE I — settled PFO closure as effective secondary stroke prevention for selected younger patients with cryptogenic stroke, and was subsequently endorsed by AHA/ASA guidance, a notable reversal-and-revival arc.',
+        source: {
+          externalId: 'src:respect-saver-pfo-closure-longterm-nejm-2017',
+          name: 'Saver JL, Carroll JD, Thaler DE, et al. Long-term outcomes of patent foramen ovale closure or medical therapy after stroke (RESPECT). N Engl J Med. 2017;377(11):1022-1032.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1610057',
+          publishedAt: '2017-09-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Defibrotide (Defitelio) — first hepatic VOD treatment 2016 ─────────────
   {
     externalId: 'trajectory:defibrotide-defitelio-first-hepatic-vod-treatment-2016',
