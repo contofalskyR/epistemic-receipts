@@ -28707,6 +28707,145 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE / FIRST-IN-CLASS ERT & TARGETED THERAPY ERA (2015–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Sebelipase alfa (Kanuma) — first LAL deficiency ERT 2015 ─────────────────
+  {
+    externalId: 'trajectory:sebelipase-alfa-kanuma-first-lal-deficiency-ert-2015',
+    text: 'On 8 December 2015 the U.S. FDA approved sebelipase alfa (Kanuma), establishing the first treatment for lysosomal acid lipase (LAL) deficiency, a rare and often fatal genetic enzyme disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-12-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-12-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved sebelipase alfa, a recombinant human LAL enzyme produced in the egg whites of genetically engineered chickens, as the first therapy for LAL deficiency (Wolman disease and cholesteryl ester storage disease). In the infantile cohort, 6 of 9 treated infants survived to 12 months versus none of 21 historical controls, converting a uniformly fatal ultra-rare disease into a treatable one and settling enzyme replacement as the standard of care.',
+        source: {
+          externalId: 'src:fda-kanuma-lal-deficiency-2015',
+          name: 'U.S. Food and Drug Administration. FDA approves first drug to treat a rare enzyme disorder in pediatric and adult patients (Kanuma/sebelipase alfa). 8 December 2015.',
+          url: 'https://www.fda.gov/media/96970/download',
+          publishedAt: '2015-12-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Selumetinib (Koselugo) — first NF1 plexiform neurofibroma therapy 2020 ───
+  {
+    externalId: 'trajectory:selumetinib-koselugo-first-nf1-plexiform-neurofibroma-2020',
+    text: 'On 10 April 2020 the U.S. FDA approved selumetinib (Koselugo) for pediatric patients with neurofibromatosis type 1 who have symptomatic, inoperable plexiform neurofibromas, the first medicine ever approved anywhere for NF1-associated plexiform neurofibromas.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-04-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-04-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved the MEK inhibitor selumetinib for children aged 2 and older with NF1 and symptomatic, inoperable plexiform neurofibromas, based on the NCI-sponsored Phase 2 SPRINT trial showing durable tumor shrinkage. It was the first targeted pharmacologic therapy for a previously surgery-only rare genetic tumor condition, establishing medical therapy as a settled option for inoperable NF1 plexiform neurofibromas.',
+        source: {
+          externalId: 'src:astrazeneca-koselugo-nf1-2020',
+          name: 'AstraZeneca. Koselugo (selumetinib) approved in US for paediatric patients with neurofibromatosis type 1 plexiform neurofibromas. 13 April 2020.',
+          url: 'https://www.astrazeneca.com/media-centre/press-releases/2020/koselugo-selumetinib-approved-in-us-for-paediatric-patients-with-neurofibromatosis-type-1-plexiform-neurofibromas.html',
+          publishedAt: '2020-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lonafarnib (Zokinvy) — first progeria treatment 2020 ─────────────────────
+  {
+    externalId: 'trajectory:lonafarnib-zokinvy-first-progeria-treatment-2020',
+    text: 'On 20 November 2020 the U.S. FDA approved lonafarnib (Zokinvy), the first treatment for Hutchinson-Gilford progeria syndrome and certain processing-deficient progeroid laminopathies, to reduce the risk of death.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-11-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-11-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved the oral farnesyltransferase inhibitor lonafarnib as the first-ever therapy for progeria, a fatal ultra-rare premature-aging disease, based on cohort data showing a mean survival benefit of roughly 2.5 years versus untreated patients. The approval settled the long-open question of whether progeria was pharmacologically treatable, converting a uniformly fatal childhood disease into one with a mortality-reducing intervention.',
+        source: {
+          externalId: 'src:fda-zokinvy-progeria-2020',
+          name: 'U.S. Food and Drug Administration (via PR Newswire). FDA Approves First Treatment for Hutchinson-Gilford Progeria Syndrome and Some Progeroid Laminopathies. 20 November 2020.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-first-treatment-for-hutchinson-gilford-progeria-syndrome-and-some-progeroid-laminopathies-301178337.html',
+          publishedAt: '2020-11-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fosdenopterin (Nulibry) — first MoCD type A treatment 2021 ───────────────
+  {
+    externalId: 'trajectory:fosdenopterin-nulibry-first-mocd-a-treatment-2021',
+    text: 'On 26 February 2021 the U.S. FDA approved fosdenopterin (Nulibry), the first treatment to reduce the risk of death in patients with molybdenum cofactor deficiency type A, an ultra-rare lethal metabolic disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-02-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved fosdenopterin, a substrate-replacement therapy supplying cyclic pyranopterin monophosphate (cPMP), as the first treatment for MoCD type A, a disorder that typically causes intractable neonatal seizures, brain injury, and early death. Treated patients had an 84% three-year survival versus 55% for matched untreated controls, settling that this previously untreatable ultra-rare disease could be pharmacologically managed.',
+        source: {
+          externalId: 'src:bridgebio-nulibry-mocd-2021',
+          name: 'BridgeBio Pharma / Origin Biosciences. BridgeBio Pharma and Affiliate Origin Biosciences Announce FDA Approval of NULIBRY (fosdenopterin), the First and Only Approved Therapy for MoCD Type A. 26 February 2021.',
+          url: 'https://www.contemporarypediatrics.com/view/fda-approves-first-treatment-for-molybdenum-cofactor-deficiency-type-a',
+          publishedAt: '2021-02-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Olipudase alfa (Xenpozyme) — first ASMD/Niemann-Pick ERT 2022 ─────────────
+  {
+    externalId: 'trajectory:olipudase-alfa-xenpozyme-first-asmd-niemann-pick-ert-2022',
+    text: 'On 31 August 2022 the U.S. FDA approved olipudase alfa (Xenpozyme), the first disease-specific treatment for the non-CNS manifestations of acid sphingomyelinase deficiency (ASMD, historically Niemann-Pick disease types A/B and B).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-08-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved olipudase alfa, a recombinant sphingomyelin-specific enzyme replacement therapy, as the first therapy indicated specifically for ASMD, a progressive ultra-rare lysosomal storage disease affecting fewer than ~120 diagnosed U.S. patients. Pivotal trials showed significant improvements in lung function and spleen/liver volume, settling enzyme replacement as the standard of care for the non-CNS manifestations of a previously untreatable disease.',
+        source: {
+          externalId: 'src:sanofi-xenpozyme-asmd-2022',
+          name: 'Sanofi. Xenpozyme (olipudase alfa-rpcp) approved by FDA as first disease-specific treatment for ASMD (non-CNS manifestations). 31 August 2022.',
+          url: 'https://www.sanofi.com/en/media-room/press-releases/2022/2022-08-31-18-30-00-2507978',
+          publishedAt: '2022-08-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
