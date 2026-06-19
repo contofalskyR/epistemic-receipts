@@ -21942,6 +21942,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ORPHAN DRUG & ENZYME REPLACEMENT THERAPY ERA (1994–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Imiglucerase (Cerezyme) — first recombinant ERT for Gaucher disease 1994 ─
+  {
+    externalId: 'trajectory:imiglucerase-cerezyme-first-recombinant-ert-gaucher-1994',
+    text: "Genzyme's Cerezyme (imiglucerase), a recombinant human glucocerebrosidase, received FDA approval on 23 May 1994 as the first recombinant enzyme replacement therapy for type 1 Gaucher disease, succeeding the human-placenta-derived alglucerase (Ceredase).",
+    claimType: 'HYBRID',
+    claimEmergedAt: '1994-05-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-05-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Cerezyme (imiglucerase) under BLA 020367, making recombinant glucocerebrosidase produced in CHO cells the new standard enzyme source for Gaucher disease. This freed the only effective therapy from dependence on pooled human placentas, removing a critical supply ceiling and biocontamination risk.',
+        source: {
+          externalId: 'src:fda-purplebook-cerezyme-020367',
+          name: 'FDA. Purple Book entry, Cerezyme (imiglucerase), BLA 020367, Genzyme Corporation, original approval 23 May 1994.',
+          url: 'https://purplebooksearch.fda.gov/productdetails?query=020367',
+          publishedAt: '1994-05-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Grabowski and colleagues published a double-blind randomized trial in Annals of Internal Medicine showing that recombinant imiglucerase and natural alglucerase were therapeutically equivalent in safety and efficacy for type 1 Gaucher disease. This settled the question of whether the recombinant product matched the placenta-derived enzyme, cementing imiglucerase as the field standard.',
+        source: {
+          externalId: 'src:grabowski-imiglucerase-equivalence-annals-1995',
+          name: 'Grabowski GA, Barton NW, Pastores G, et al. Enzyme therapy in type 1 Gaucher disease: comparative efficacy of mannose-terminated glucocerebrosidase from natural and recombinant sources. Ann Intern Med. 1995;122(1):33-39.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-122-1-199501010-00005',
+          publishedAt: '1995-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Genzyme Allston Vesivirus contamination — orphan-drug supply failure 2009 ─
+  {
+    externalId: 'trajectory:genzyme-allston-vesivirus-orphan-drug-shortage-2009',
+    text: 'A Vesivirus 2117 contamination forced Genzyme to shut its sole Allston, Massachusetts manufacturing plant in June 2009, halting production of Cerezyme and Fabrazyme — the only approved enzyme therapies for Gaucher and Fabry disease — and triggering worldwide patient rationing that exposed the fragility of single-source orphan-drug supply.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-06-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'MARKET',
+        occurredAt: '2009-06-16',
+        datePrecision: 'DAY',
+        reason: 'Genzyme disclosed that a Vesivirus 2117 contamination of its Allston bioreactors required a plant shutdown for sanitization, interrupting supply of Cerezyme and Fabrazyme to roughly 8,000 patients worldwide. Because each disease had no alternative supplier, patients were placed on rationed or skipped doses, recording the first acute supply failure of a monopoly orphan biologic.',
+        source: {
+          externalId: 'src:boston-globe-genzyme-halt-2009',
+          name: 'Boston Globe. Genzyme temporarily halts production on 2 key drugs. 17 June 2009.',
+          url: 'http://archive.boston.com/business/healthcare/articles/2009/06/17/genzyme_temporarily_halts_production_on_2_key_drugs/',
+          publishedAt: '2009-06-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2010-05-24',
+        datePrecision: 'DAY',
+        reason: 'Genzyme signed a consent decree of permanent injunction filed in the U.S. District Court for the District of Massachusetts, agreeing to disgorge $175 million in past profits and to remediate current-good-manufacturing-practice violations at Allston under FDA oversight. The decree judicially established that the shortage stemmed from documented manufacturing-quality failures, settling the episode as a regulatory finding rather than mere mischance.',
+        source: {
+          externalId: 'src:genzyme-fda-consent-decree-2010',
+          name: 'United States v. Genzyme Corp. Consent Decree of Permanent Injunction (D. Mass.); Genzyme Corp. SEC filing exhibit, 24 May 2010.',
+          url: 'https://www.sec.gov/Archives/edgar/data/732485/000110465910030445/a10-9595_15ex99d1.htm',
+          publishedAt: '2010-05-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Canakinumab (Ilaris) — first IL-1β monoclonal for CAPS 2009 ───────────────
+  {
+    externalId: 'trajectory:canakinumab-ilaris-first-caps-il1b-monoclonal-2009',
+    text: "Novartis's Ilaris (canakinumab), a fully human anti-interleukin-1β monoclonal antibody, received FDA approval on 17 June 2009 for cryopyrin-associated periodic syndromes (CAPS), following a randomized-withdrawal trial published in the New England Journal of Medicine on 4 June 2009.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-06-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-06-04',
+        datePrecision: 'DAY',
+        reason: 'Lachmann and colleagues published a three-part randomized-withdrawal trial in NEJM in which 34 of 35 CAPS patients had a complete response to canakinumab and all patients kept on the drug remained in remission while 81% of those switched to placebo flared. This recorded the first controlled evidence that selective IL-1β neutralization controls cryopyrin-driven autoinflammation.',
+        source: {
+          externalId: 'src:lachmann-canakinumab-caps-nejm-2009',
+          name: 'Lachmann HJ, Koné-Paut I, Kuemmerle-Deschner JB, et al. Use of canakinumab in the cryopyrin-associated periodic syndrome. N Engl J Med. 2009;360(23):2416-2425.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa0810787',
+          publishedAt: '2009-06-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-06-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Ilaris (canakinumab) under BLA 125319 for CAPS, including Familial Cold Autoinflammatory Syndrome and Muckle-Wells syndrome, in patients aged four and older. It became an institutionally endorsed targeted therapy for an ultra-rare autoinflammatory disorder, validating IL-1β as a druggable orphan-disease target.',
+        source: {
+          externalId: 'src:novartis-ilaris-fda-approval-8k-2009',
+          name: 'Novartis AG. Form 6-K filing reporting FDA approval of Ilaris (canakinumab) for CAPS, 17 June 2009.',
+          url: 'https://www.sec.gov/Archives/edgar/data/1114448/000110465909038953/a09-16406_16k.htm',
+          publishedAt: '2009-06-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pegloticase (Krystexxa) — first uricase for refractory gout 2010 ──────────
+  {
+    externalId: 'trajectory:pegloticase-krystexxa-refractory-gout-uricase-2010',
+    text: "Savient's Krystexxa (pegloticase), a PEGylated recombinant porcine-like uricase, received FDA approval on 14 September 2010 as the first treatment for chronic gout refractory to conventional urate-lowering therapy.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-09-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Krystexxa (pegloticase) under BLA 125293 for chronic gout in adults refractory to conventional therapy, the first agent to enzymatically convert uric acid to soluble allantoin for this orphan-designated indication. It recorded a new mechanistic class for patients who had exhausted xanthine-oxidase inhibitors.',
+        source: {
+          externalId: 'src:fda-krystexxa-approval-letter-2010',
+          name: 'FDA. Approval letter, Krystexxa (pegloticase) injection, BLA 125293, 14 September 2010.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2010/125293s000ltr.pdf',
+          publishedAt: '2010-09-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-08-17',
+        datePrecision: 'DAY',
+        reason: 'Sundy and colleagues published two replicate randomized, placebo-controlled trials in JAMA confirming that biweekly pegloticase achieved sustained serum-urate lowering below 6.0 mg/dL in a substantial fraction of treatment-failure gout patients. The peer-reviewed evidence settled pegloticase\'s efficacy while also documenting its high rate of infusion reactions and immunogenicity.',
+        source: {
+          externalId: 'src:sundy-pegloticase-jama-2011',
+          name: 'Sundy JS, Baraf HSB, Yood RA, et al. Efficacy and tolerability of pegloticase for the treatment of chronic gout in patients refractory to conventional treatment: two randomized controlled trials. JAMA. 2011;306(7):711-720.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21846852/',
+          publishedAt: '2011-08-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Velaglucerase alfa (VPRIV) — second Gaucher ERT breaks Genzyme monopoly 2010
+  {
+    externalId: 'trajectory:velaglucerase-vpriv-second-gaucher-ert-2010',
+    text: "Shire's VPRIV (velaglucerase alfa), a human-fibroblast-expressed glucocerebrosidase, received FDA priority-review approval on 26 February 2010 as the second enzyme replacement therapy for type 1 Gaucher disease, ending Genzyme's monopoly amid the Cerezyme shortage caused by the 2009 Allston-plant contamination.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-02-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-02-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted priority review and approved VPRIV (velaglucerase alfa) under BLA 022575 for long-term treatment of pediatric and adult type 1 Gaucher disease. The approval, expedited during the Cerezyme supply crisis, recorded the first competing source of Gaucher enzyme therapy and broke the single-supplier dependence that the 2009 contamination had exposed.',
+        source: {
+          externalId: 'src:shire-vpriv-fda-approval-2010',
+          name: 'Shire plc. Shire Announces FDA Approval of VPRIV (velaglucerase alfa for injection) for the Treatment of Type 1 Gaucher Disease. PR Newswire, 26 February 2010.',
+          url: 'https://www.prnewswire.com/news-releases/shire-announces-fda-approval-of-vprivtm-velaglucerase-alfa-for-injection-for-the-treatment-of-type-1-gaucher-disease-85566732.html',
+          publishedAt: '2010-02-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Peer-reviewed phase III data and clinical reviews established velaglucerase alfa as a safe and effective enzyme replacement therapy comparable to imiglucerase for type 1 Gaucher disease. This settled velaglucerase as a durable alternative rather than an emergency stopgap, normalizing a multi-supplier market for the disease.',
+        source: {
+          externalId: 'src:velaglucerase-gaucher-review-pmc-2011',
+          name: 'Elstein D, Zimran A. Velaglucerase alfa in the treatment of Gaucher disease type 1. Clin Investig (Lond)/PMC review. 2011.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3172711/',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
