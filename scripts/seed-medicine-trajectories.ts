@@ -35423,6 +35423,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // POST-MARKET SURVEILLANCE & DRUG SAFETY (1993–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Cisapride (Propulsid) cardiac withdrawal — 2000 ────────────────────────
+  {
+    externalId: 'trajectory:cisapride-propulsid-cardiac-withdrawal-2000',
+    text: 'Cisapride (Propulsid, Janssen), a gastrointestinal prokinetic approved by the FDA in July 1993 as a safe and effective treatment for nocturnal heartburn from GERD, had its safety claim reversed when, after 341 reports of serious cardiac arrhythmias including 80 deaths linked to QT-interval prolongation, Janssen announced on 23 March 2000 its withdrawal from the routine U.S. market effective 14 July 2000.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1993-07',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-07',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved cisapride (Propulsid, NDA 20-210) in July 1993 for nocturnal heartburn due to gastroesophageal reflux disease. Approval institutionally established the prokinetic as a safe and effective therapy, and it became a widely prescribed GI drug through the 1990s.',
+        source: {
+          externalId: 'src:fda-propulsid-cisapride-nda-020210-1993',
+          name: 'U.S. Food and Drug Administration, Drugs@FDA. Propulsid (cisapride monohydrate), NDA 020210. Approved July 1993.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=020210',
+          publishedAt: '1993-07-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-03-23',
+        datePrecision: 'DAY',
+        reason: 'After accumulating post-marketing reports of QT prolongation and fatal ventricular arrhythmias (torsades de pointes) — 341 serious cardiac events and 80 deaths between approval and December 1999, mostly in patients with risk factors or interacting drugs — Janssen announced on 23 March 2000 the withdrawal of cisapride from the routine U.S. market effective 14 July 2000, restricting it to a limited-access investigational program. This reversed the drug\'s safety profile and became a landmark post-market surveillance and drug-interaction case.',
+        source: {
+          externalId: 'src:cmaj-lessons-from-cisapride-2001',
+          name: 'Lessons from cisapride [editorial]. CMAJ (Can Med Assoc J). 2001 May 1;164(9):1269.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC80999/',
+          publishedAt: '2001-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Natalizumab (Tysabri) PML withdrawal & reinstatement — 2004–2006 ───────
+  {
+    externalId: 'trajectory:natalizumab-tysabri-pml-withdrawal-reinstatement-2005',
+    text: 'Natalizumab (Tysabri, Biogen Idec/Elan), an alpha-4-integrin monoclonal antibody granted accelerated FDA approval on 23 November 2004 as a safe and effective treatment for relapsing multiple sclerosis, was voluntarily withdrawn from the market on 28 February 2005 after cases of progressive multifocal leukoencephalopathy (PML), then returned to the U.S. market on 5 June 2006 under the restricted TOUCH risk-management program.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-11-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-11-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to natalizumab (Tysabri, BLA 125104) for relapsing forms of multiple sclerosis on 23 November 2004, on the strength of interim AFFIRM/SENTINEL trial data showing marked reductions in relapse rate. Approval institutionally settled the first alpha-4-integrin antibody as an effective MS therapy.',
+        source: {
+          externalId: 'src:fda-tysabri-natalizumab-bla-125104-2004',
+          name: 'U.S. Food and Drug Administration, Drugs@FDA. Tysabri (natalizumab), BLA 125104. Approved November 23, 2004.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125104',
+          publishedAt: '2004-11-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2005-02-28',
+        datePrecision: 'DAY',
+        reason: 'Roughly three months after launch, Biogen Idec and Elan voluntarily suspended marketing of natalizumab and halted all clinical trials on 28 February 2005 after two patients (later three) developed progressive multifocal leukoencephalopathy, a frequently fatal JC-virus brain infection. The withdrawal reversed the drug\'s settled safety claim and became a defining post-market surveillance event for biologics.',
+        source: {
+          externalId: 'src:jci-tysabri-comeback-pml-2008',
+          name: 'Bonetta L. The comeback kid: TYSABRI now FDA approved for Crohn disease. J Clin Invest. 2008;118(3):825 (publisher note); documents 2004 approval, 2005 PML withdrawal and 2006 return.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2254986/',
+          publishedAt: '2008-03-03',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-05',
+        datePrecision: 'DAY',
+        reason: 'Following a March 2006 FDA advisory committee recommendation, the FDA allowed natalizumab back onto the U.S. market on 5 June 2006 as monotherapy for relapsing MS, accessible only through the mandatory TOUCH prescribing/registration program. The reinstatement re-settled the drug under a formal risk-management framework, establishing the modern REMS model of conditional re-approval after a safety signal.',
+        source: {
+          externalId: 'src:nature-biotech-tysabri-back-on-market-2006',
+          name: 'Tysabri back on market. Nat Biotechnol. 2006;24(8):874.',
+          url: 'https://www.nature.com/articles/nbt0806-874',
+          publishedAt: '2006-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Deferiprone (L1 / Ferriprox) thalassemia efficacy contested — 1995–2011
+  {
+    externalId: 'trajectory:deferiprone-l1-thalassemia-efficacy-contested-2011',
+    text: 'Oral deferiprone (L1, later Ferriprox) is an effective iron-chelation therapy for transfusional iron overload in thalassemia major — a claim first recorded by Olivieri and colleagues in the New England Journal of Medicine on 6 April 1995, contested by the same group\'s NEJM report of 13 August 1998 finding loss of efficacy and possible worsening hepatic fibrosis, and ultimately settled by the FDA\'s accelerated approval of Ferriprox on 14 October 2011 as second-line therapy for thalassemia iron overload.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-04-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-04-06',
+        datePrecision: 'DAY',
+        reason: 'Olivieri, Brittenham and colleagues reported in NEJM that oral deferiprone (L1) induced sustained decreases in body iron to concentrations compatible with avoiding iron-overload complications in thalassemia major, recording in the expert literature the first long-term evidence that an orally active iron chelator could substitute for parenteral deferoxamine in a transfusion-dependent orphan disease.',
+        source: {
+          externalId: 'src:olivieri-deferiprone-thalassemia-nejm-1995',
+          name: 'Olivieri NF, Brittenham GM, Matsui D, et al. Iron-chelation therapy with oral deferiprone in patients with thalassemia major. N Engl J Med. 1995;332(14):918-922. PMID 7877649.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7877649/',
+          publishedAt: '1995-04-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-13',
+        datePrecision: 'DAY',
+        reason: 'Olivieri et al. reported longer-term follow-up in NEJM finding that deferiprone did not adequately control body iron burden in many patients and that five deferiprone-treated patients showed progression of hepatic fibrosis versus none on deferoxamine. The paper directly contested the drug\'s efficacy and safety and triggered the landmark Olivieri–Apotex academic-freedom dispute over suppression of trial data.',
+        source: {
+          externalId: 'src:olivieri-deferiprone-fibrosis-nejm-1998',
+          name: 'Olivieri NF, Brittenham GM, McLaren CE, et al. Long-term safety and effectiveness of iron-chelation therapy with deferiprone for thalassemia major. N Engl J Med. 1998;339(7):417-423. PMID 9700174.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9700174/',
+          publishedAt: '1998-08-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-10-14',
+        datePrecision: 'DAY',
+        reason: 'After more than a decade of controversy and additional efficacy/safety data not confirming the hepatic-fibrosis concern, the FDA granted accelerated approval to Ferriprox (deferiprone) on 14 October 2011 for transfusional iron overload in thalassemia patients when deferoxamine is inadequate — the first U.S. approval of an oral iron chelator for this orphan indication (orphan designation 2001), institutionally settling deferiprone as a second-line therapy.',
+        source: {
+          externalId: 'src:fda-ferriprox-deferiprone-approval-2011',
+          name: 'U.S. Food and Drug Administration, Drugs@FDA. Ferriprox (deferiprone), NDA 021825. Accelerated approval October 14, 2011.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021825',
+          publishedAt: '2011-10-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vigabatrin (Sabril) infantile spasms U.S. approval — 2009 ───────────────
+  {
+    externalId: 'trajectory:vigabatrin-sabril-infantile-spasms-approval-2009',
+    text: 'Vigabatrin (Sabril), an irreversible GABA-transaminase inhibitor available in dozens of countries since the late 1980s but long blocked in the United States over retinal toxicity, was approved by the FDA on 21 August 2009 as monotherapy for infantile spasms in children one month to two years and as adjunctive therapy for refractory complex partial seizures, dispensed only under a REMS with a boxed warning for permanent vision loss.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-08-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-08-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Sabril (vigabatrin) on 21 August 2009, ending roughly two decades during which the drug — widely used abroad — had been withheld from the U.S. market because of irreversible peripheral visual-field constriction. Approval institutionally settled vigabatrin as an effective treatment for infantile spasms (an orphan pediatric epilepsy) and for refractory complex partial seizures, conditioned on a boxed warning and a Risk Evaluation and Mitigation Strategy mandating periodic vision monitoring.',
+        source: {
+          externalId: 'src:tolman-vigabatrin-review-2009',
+          name: 'Tolman JA, Faulkner MA. Vigabatrin: a comprehensive review of drug properties including clinical updates following recent FDA approval. Expert Opin Pharmacother. 2009;10(18):3077-3089. PMID 19954276.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19954276/',
+          publishedAt: '2009-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
