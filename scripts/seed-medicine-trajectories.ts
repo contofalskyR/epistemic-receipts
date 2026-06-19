@@ -21129,6 +21129,147 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Lithium prophylaxis — Baastrup & Schou 1967 → Blackwell & Shepherd challenge 1968 → Baastrup discontinuation RCT 1970 ──
+  {
+    externalId: 'trajectory:lithium-prophylaxis-therapeutic-myth-1967',
+    text: 'Poul Christian Baastrup and Mogens Schou reported in Archives of General Psychiatry in February 1967 that continuous lithium treatment prevents recurrences of manic-depressive and recurrent depressive illness, establishing lithium as a prophylactic mood stabilizer rather than merely a treatment for acute mania.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Baastrup and Schou published \'Lithium as a prophylactic agent: its effect against recurrent depressions and manic-depressive psychosis,\' reporting that long-term lithium reduced relapse frequency from roughly every 8 months to near zero in 88 patients followed open-label. This recorded a new and distinct claim — that lithium could prevent future episodes of affective illness, not just calm acute mania — into the expert literature.',
+        source: {
+          externalId: 'src:baastrup-schou-lithium-prophylactic-1967',
+          name: 'Baastrup PC, Schou M. Lithium as a prophylactic agent. Its effect against recurrent depressions and manic-depressive psychosis. Arch Gen Psychiatry. 1967;16(2):162-72.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6019331/',
+          publishedAt: '1967-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-05-04',
+        datePrecision: 'DAY',
+        reason: 'Barry Blackwell and Michael Shepherd published \'Prophylactic lithium: another therapeutic myth?\' in The Lancet, arguing that the Baastrup–Schou evidence rested on uncontrolled, retrospective observation vulnerable to selection bias and regression to the mean, and demanding a randomized double-blind trial before the prophylaxis claim could be accepted. The critique placed the claim into active expert dispute and framed it as potentially another in a long line of unproven psychiatric treatments.',
+        source: {
+          externalId: 'src:blackwell-shepherd-lithium-myth-1968',
+          name: 'Blackwell B, Shepherd M. Prophylactic lithium: another therapeutic myth? An examination of the evidence to date. Lancet. 1968;1(7549):968-71.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4171596/',
+          publishedAt: '1968-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Responding directly to the \'therapeutic myth\' challenge, Baastrup, Poulsen, Schou, Thomsen, and Amdisen published a double-blind placebo-controlled discontinuation trial in The Lancet showing that 0 of 45 lithium-maintained patients relapsed over the study period while 21 of 39 placebo-switched patients did. This rigorous design met the critics\' own evidentiary standard and settled lithium prophylaxis as established, evidence-based practice for recurrent affective disorder.',
+        source: {
+          externalId: 'src:baastrup-discontinuation-trial-1970',
+          name: 'Baastrup PC, Poulsen JC, Schou M, Thomsen K, Amdisen A. Prophylactic lithium: double blind discontinuation in manic-depressive and recurrent-depressive disorders. Lancet. 1970;2(7668):326-30.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4194439/',
+          publishedAt: '1970-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tardive dyskinesia from neuroleptics — Crane 1968 → APA Task Force 1980 ──
+  {
+    externalId: 'trajectory:tardive-dyskinesia-neuroleptic-harm-1968',
+    text: 'George E. Crane reported in the American Journal of Psychiatry in 1968 that prolonged treatment with major neuroleptics (antipsychotics) causes tardive dyskinesia, a frequently persistent and irreversible movement disorder — establishing that the antipsychotics that had displaced lobotomy carried a serious, often permanent neurological harm.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Crane published \'Tardive dyskinesia in patients treated with major neuroleptics: a review of the literature,\' synthesizing roughly 21 reports covering about 500 patients and arguing that the late-onset oro-facial and limb movement disorder was a real, drug-induced, and often irreversible consequence of long-term neuroleptic exposure. The review recorded into the mainstream literature the claim that antipsychotics — then widely regarded as a safe revolution in psychiatry — produced a distinct iatrogenic neurological syndrome, a claim many clinicians had been reluctant to accept.',
+        source: {
+          externalId: 'src:crane-tardive-dyskinesia-review-1968',
+          name: 'Crane GE. Tardive dyskinesia in patients treated with major neuroleptics: a review of the literature. Am J Psychiatry. 1968;124(8 Suppl):40-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4865731/',
+          publishedAt: '1968-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Psychiatric Association\'s Task Force on Late Neurological Effects of Antipsychotic Drugs published its report in the American Journal of Psychiatry, concluding that tardive dyskinesia is a genuine drug-induced disorder occurring in at least 10–20% of patients on prolonged neuroleptics and higher among the elderly, and issuing prevention and monitoring guidance. The profession\'s premier body institutionally ratified the causal claim, settling tardive dyskinesia as an accepted hazard of antipsychotic treatment.',
+        source: {
+          externalId: 'src:apa-task-force-tardive-dyskinesia-1980',
+          name: 'Task Force on Late Neurological Effects of Antipsychotic Drugs. Tardive dyskinesia: summary of a Task Force Report of the American Psychiatric Association. Am J Psychiatry. 1980;137(10):1163-72.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6106389/',
+          publishedAt: '1980-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MAOI tyramine cheese reaction — Blackwell 1963 → Blackwell et al. 1967 ──
+  {
+    externalId: 'trajectory:maoi-tyramine-cheese-reaction-1963',
+    text: 'Barry Blackwell reported in The Lancet on 26 October 1963 that monoamine-oxidase-inhibitor antidepressants cause dangerous hypertensive crises when patients eat tyramine-rich foods such as cheese — identifying the food–drug interaction (the \'cheese reaction\') that would constrain MAOI use thereafter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-10-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-10-26',
+        datePrecision: 'DAY',
+        reason: 'Blackwell, then a registrar at the Maudsley Hospital, published a Lancet letter linking severe throbbing-headache hypertensive attacks in patients on MAOIs (chiefly tranylcypromine/Parnate) to dietary cheese, against initial skepticism from his seniors. This recorded the first clinical claim that a specific food–drug interaction, not the drug alone, produced the crises — converting scattered anecdotal \'headache\' reports into a defined, mechanistic safety signal for an entire antidepressant class.',
+        source: {
+          externalId: 'src:blackwell-maoi-hypertensive-crisis-1963',
+          name: 'Blackwell B. Hypertensive crisis due to monoamine-oxidase inhibitors. Lancet. 1963;2(7313):849-50.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14056007/',
+          publishedAt: '1963-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Blackwell, Marley, Price, and Taylor published a detailed clinical and pharmacological study in the British Journal of Psychiatry establishing that the pressor amine tyramine, normally degraded by monoamine oxidase, accumulates when the enzyme is inhibited and triggers the hypertensive crises, with cheese and other fermented foods as the principal sources. Confirming the mechanism settled the cheese-reaction claim and made tyramine-restricted diets standard practice for MAOI prescribing.',
+        source: {
+          externalId: 'src:blackwell-marley-maoi-foodstuffs-1967',
+          name: 'Blackwell B, Marley E, Price J, Taylor D. Hypertensive interactions between monoamine oxidase inhibitors and foodstuffs. Br J Psychiatry. 1967;113(497):349-65.',
+          url: 'https://www.cambridge.org/core/journals/the-british-journal-of-psychiatry/article/abs/hypertensive-interactions-between-monoamine-oxidase-inhibitors-and-foodstuffs/0C88C9F94899557DCFE74D3C1C74CF18',
+          publishedAt: '1967-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
