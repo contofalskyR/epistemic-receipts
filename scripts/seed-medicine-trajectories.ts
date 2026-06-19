@@ -29917,6 +29917,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINE ERA (1960s) / NEONATAL MEDICINE (1970s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Live attenuated measles vaccine licensure 1963 ────────────────────────
+  {
+    externalId: 'trajectory:live-attenuated-measles-vaccine-licensure-1963',
+    text: 'John F. Enders, Samuel L. Katz, and colleagues demonstrated that a live attenuated Edmonston-B measles virus could safely and effectively immunize children, and the United States licensed it as the first live measles vaccine (Rubeovax) in 1963.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1960-07-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-07-28',
+        datePrecision: 'DAY',
+        reason: 'Enders, Katz and colleagues published the multi-part \'Studies on an attenuated measles-virus vaccine\' series in the New England Journal of Medicine, reporting the development of the Edmonston-B strain and field trials in institutionalized children showing it produced protective antibody with attenuated illness. This recorded in the expert literature the first credible claim that measles—then causing several million U.S. cases annually—could be prevented by a live attenuated vaccine.',
+        source: {
+          externalId: 'src:enders-katz-attenuated-measles-vaccine-nejm-1960',
+          name: 'Enders JF, Katz SL, Milovanovic MV, Holloway A. Studies on an attenuated measles-virus vaccine. I. Development and preparation of the vaccine; technics for assay of effects of vaccination. N Engl J Med. 1960;263(4):153-159.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13820246/',
+          publishedAt: '1960-07-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1963 the United States licensed the live attenuated Edmonston-B measles vaccine (marketed by Merck as Rubeovax), making it the first live measles vaccine available for routine childhood immunization. The institutional licensure converted the trial evidence into a sanctioned public-health tool and launched the mass measles-vaccination programs that drove U.S. cases down by more than 90% within a decade.',
+        source: {
+          externalId: 'src:cdc-pinkbook-measles-vaccine-1963',
+          name: 'CDC. Epidemiology and Prevention of Vaccine-Preventable Diseases (Pink Book), Chapter 13: Measles — measles vaccine licensure history.',
+          url: 'https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-13-measles.html',
+          publishedAt: '1963-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Live attenuated rubella vaccine licensure 1969 ────────────────────────
+  {
+    externalId: 'trajectory:live-attenuated-rubella-vaccine-licensure-1969',
+    text: 'Harry M. Meyer and Paul D. Parkman developed a live attenuated rubella virus vaccine shown in clinical trials to immunize children, and the United States licensed the first rubella vaccine (Meruvax) in June 1969 to prevent congenital rubella syndrome.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1966-09-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-09-15',
+        datePrecision: 'DAY',
+        reason: 'Meyer, Parkman and Panos reported in the New England Journal of Medicine the production of an experimental live attenuated rubella vaccine (HPV-77) and its first clinical trial in children, demonstrating seroconversion with attenuated reactogenicity. Published in the aftermath of the 1964–65 U.S. rubella epidemic that caused roughly 20,000 cases of congenital rubella syndrome, the report recorded the claim that maternal-fetal rubella damage could be prevented by vaccinating children.',
+        source: {
+          externalId: 'src:meyer-parkman-attenuated-rubella-vaccine-nejm-1966',
+          name: 'Meyer HM Jr, Parkman PD, Panos TC. Attenuated rubella virus. II. Production of an experimental live-virus vaccine and clinical trial. N Engl J Med. 1966;275(11):575-580.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5331945/',
+          publishedAt: '1966-09-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1969-06-09',
+        datePrecision: 'DAY',
+        reason: 'In June 1969 the United States licensed the first rubella vaccine (Meruvax, HPV-77 strain), institutionalizing routine childhood rubella immunization with the explicit aim of interrupting transmission to pregnant women. The licensure settled the prevention claim into national policy; congenital rubella syndrome, which had blinded and deafened thousands of infants, was subsequently driven toward elimination in the United States.',
+        source: {
+          externalId: 'src:smithsonian-mmr-rubella-meruvax-1969',
+          name: 'National Museum of American History (Smithsonian). Measles, Mumps, and Rubella Vaccines — Meruvax rubella vaccine licensure, 1969.',
+          url: 'https://americanhistory.si.edu/collections/object-groups/antibody-initiative/mmr',
+          publishedAt: '1969-06-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Jeryl Lynn mumps vaccine licensure 1967 ───────────────────────────────
+  {
+    externalId: 'trajectory:jeryl-lynn-mumps-vaccine-licensure-1967',
+    text: 'Maurice R. Hilleman and colleagues demonstrated in a field evaluation that the live attenuated Jeryl Lynn strain mumps vaccine protected children, and the United States licensed it (Mumpsvax) in December 1967 as the first effective mumps vaccine.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1967-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-02-02',
+        datePrecision: 'DAY',
+        reason: 'Hilleman and colleagues reported in the New England Journal of Medicine a controlled field evaluation of the live attenuated Jeryl Lynn strain mumps vaccine—derived from the virus cultured from Hilleman\'s own daughter—finding protective efficacy on the order of 95% with minimal clinical reaction. This recorded the claim that mumps, then a leading cause of acquired childhood deafness and viral meningitis, was vaccine-preventable.',
+        source: {
+          externalId: 'src:hilleman-jeryl-lynn-mumps-field-evaluation-nejm-1967',
+          name: 'Hilleman MR, Weibel RE, Buynak EB, Stokes J Jr, Whitman JE Jr. Live, attenuated mumps-virus vaccine. IV. Protective efficacy as measured in a field evaluation. N Engl J Med. 1967;276(5):252-258.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6016061/',
+          publishedAt: '1967-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-12-01',
+        datePrecision: 'MONTH',
+        reason: 'In December 1967 the United States licensed the Jeryl Lynn mumps vaccine (Mumpsvax, Merck), the first effective mumps vaccine, for routine childhood use. The licensure settled mumps prevention as a sanctioned medical practice; the Jeryl Lynn strain remains the mumps component of the combined MMR vaccine to the present day, and U.S. mumps incidence fell by more than 99% from prevaccine levels.',
+        source: {
+          externalId: 'src:smithsonian-mmr-mumps-mumpsvax-1967',
+          name: 'National Museum of American History (Smithsonian). Measles, Mumps, and Rubella Vaccines — Mumpsvax (Jeryl Lynn) licensure, 1967.',
+          url: 'https://americanhistory.si.edu/collections/object-groups/antibody-initiative/mmr',
+          publishedAt: '1967-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gregory CPAP for neonatal RDS 1971 ───────────────────────────────────
+  {
+    externalId: 'trajectory:gregory-cpap-neonatal-rds-1971',
+    text: 'George A. Gregory and colleagues reported in the New England Journal of Medicine on 17 June 1971 that continuous positive airway pressure (CPAP) sharply improved survival in newborns with idiopathic respiratory distress syndrome (hyaline membrane disease).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1971-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1971-06-17',
+        datePrecision: 'DAY',
+        reason: 'Gregory, Kitterman, Phibbs, Tooley and Hamilton reported that applying continuous positive airway pressure to the airways of newborns with idiopathic respiratory distress syndrome prevented alveolar collapse and markedly improved oxygenation and survival in a then-frequently fatal condition. This recorded the foundational claim that distending pressure—rather than the high-pressure mechanical ventilation that often injured premature lungs—could treat surfactant-deficient neonatal lungs.',
+        source: {
+          externalId: 'src:gregory-cpap-rds-nejm-1971',
+          name: 'Gregory GA, Kitterman JA, Phibbs RH, Tooley WH, Hamilton WK. Treatment of the idiopathic respiratory-distress syndrome with continuous positive airway pressure. N Engl J Med. 1971;284(24):1333-1340.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4930602/',
+          publishedAt: '1971-06-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-02-14',
+        datePrecision: 'DAY',
+        reason: 'Decades of neonatal practice and the multicenter randomized COIN trial (Morley et al.) established CPAP begun at birth as a primary respiratory support for very preterm infants, with outcomes comparable or superior to immediate intubation and ventilation and less barotrauma. The accumulated evidence and large RCT confirmation settled CPAP as a cornerstone of modern neonatal intensive care, validating Gregory\'s original claim.',
+        source: {
+          externalId: 'src:morley-coin-cpap-intubation-nejm-2008',
+          name: 'Morley CJ, Davis PG, Doyle LW, Brion LP, Hascoet JM, Carlin JB; COIN Trial Investigators. Nasal CPAP or intubation at birth for very preterm infants. N Engl J Med. 2008;358(7):700-708.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18272893/',
+          publishedAt: '2008-02-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
