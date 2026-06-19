@@ -26903,6 +26903,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID EPIDEMIC ERA (2000–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── OxyContin reformulation → heroin substitution — Cicero 2012 ─────────────
+  {
+    externalId: 'trajectory:oxycontin-reformulation-heroin-substitution-2012',
+    text: 'Theodore Cicero and colleagues reported in the New England Journal of Medicine on 12 July 2012 that the August 2010 abuse-deterrent reformulation of OxyContin reduced abuse of the drug itself but drove opioid-dependent users to substitute other opioids, principally heroin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2012-07-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-07-12',
+        datePrecision: 'DAY',
+        reason: 'Cicero, Ellis, and Surratt published a research letter in NEJM drawing on quarterly survey data from 2,566 opioid-dependent patients entering treatment between July 2009 and March 2012. They found that after the abuse-deterrent OxyContin reformulation, selection of OxyContin as a primary drug of abuse fell from 35.6% to 12.8% while heroin use nearly doubled, recording for the first time that the reformulation had displaced rather than eliminated opioid abuse.',
+        source: {
+          externalId: 'src:cicero-oxycontin-reformulation-nejm-2012',
+          name: 'Cicero TJ, Ellis MS, Surratt HL. Effect of Abuse-Deterrent Formulation of OxyContin. N Engl J Med. 2012 Jul 12;367(2):187-189.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22784140/',
+          publishedAt: '2012-07-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-03-01',
+        datePrecision: 'MONTH',
+        reason: 'Evans, Lieber, and Power\'s quasi-experimental study (NBER Working Paper 24475, later Review of Economics and Statistics 2019) used the abrupt 2010 reformulation as a natural experiment and concluded it directly ignited the heroin overdose epidemic, with each percentage-point drop in OxyContin misuse offset by rising heroin deaths. This econometric confirmation entrenched the substitution finding as established, reframing abuse-deterrent formulations as a partial-equilibrium intervention with iatrogenic spillover.',
+        source: {
+          externalId: 'src:evans-lieber-power-oxycontin-heroin-nber-2018',
+          name: 'Evans WN, Lieber EMJ, Power P. How the Reformulation of OxyContin Ignited the Heroin Epidemic. NBER Working Paper 24475. 2018. (Rev Econ Stat. 2019;101(1):1-15.)',
+          url: 'https://www.nber.org/papers/w24475',
+          publishedAt: '2018-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── OTC naloxone / Narcan approval — FDA 2023 ───────────────────────────────
+  {
+    externalId: 'trajectory:otc-naloxone-narcan-approval-2023',
+    text: 'The U.S. FDA approved Narcan (naloxone hydrochloride 4 mg nasal spray) for over-the-counter, nonprescription use on 29 March 2023, making it the first opioid-overdose reversal medication cleared for sale in the United States without a prescription.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-02-15',
+        datePrecision: 'DAY',
+        reason: 'A joint meeting of the FDA\'s Nonprescription Drugs Advisory Committee and the Anesthetic and Analgesic Drug Products Advisory Committee voted unanimously in February 2023 to recommend that Narcan nasal spray be approved for marketing without a prescription. The unanimous expert recommendation established the scientific and label-comprehension case that lay users could safely use naloxone for emergency opioid overdose reversal.',
+        source: {
+          externalId: 'src:fda-otc-naloxone-narcan-approval-2023',
+          name: 'U.S. FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray. Press announcement, March 29, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray',
+          publishedAt: '2023-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Narcan 4 mg naloxone nasal spray for over-the-counter use, allowing it to be sold directly to consumers in drug, convenience, and grocery stores and online. The action institutionally settled naloxone as a consumer-accessible safety product rather than a prescription-gated drug, formally repudiating the prior premise that overdose-reversal medication required clinician control.',
+        source: {
+          externalId: 'src:fda-otc-naloxone-narcan-approval-2023b',
+          name: 'U.S. FDA. FDA Approves First Over-the-Counter Naloxone Nasal Spray. Press announcement, March 29, 2023.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-over-counter-naloxone-nasal-spray',
+          publishedAt: '2023-03-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Opana ER market removal — FDA 2017 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:opana-er-market-removal-2017',
+    text: 'The U.S. FDA requested on 8 June 2017 that Endo Pharmaceuticals remove reformulated Opana ER (oxymorphone hydrochloride extended-release) from the market — the first time the agency had ever sought withdrawal of a currently marketed opioid because of the public-health consequences of its abuse.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-14',
+        datePrecision: 'DAY',
+        reason: 'A joint meeting of the FDA\'s Drug Safety and Risk Management and Anesthetic and Analgesic Drug Products advisory committees voted 18-8 in March 2017 that the benefits of reformulated Opana ER no longer outweighed its risks. The vote was driven by postmarketing data showing the 2012 crush-resistant reformulation had shifted abuse from snorting to injection, linked to a serious HIV and hepatitis C outbreak and cases of thrombotic microangiopathy, putting the drug\'s risk-benefit standing into formal dispute.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-2017',
+          name: 'U.S. FDA. FDA Requests Removal of Opana ER for Risks Related to Abuse. Press announcement, June 8, 2017 (reproduced by HIV.gov).',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA formally requested that Endo remove Opana ER from the market, stating it was the first time the agency had taken steps to remove a currently marketed opioid pain medication for the public-health consequences of abuse; Endo voluntarily withdrew the product on 6 July 2017. The action reversed Opana ER\'s status as an appropriately marketed opioid analgesic on safety grounds.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-2017b',
+          name: 'U.S. FDA. FDA Requests Removal of Opana ER for Risks Related to Abuse. Press announcement, June 8, 2017 (reproduced by HIV.gov).',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MAT Act / X-waiver elimination — 2022 ───────────────────────────────────
+  {
+    externalId: 'trajectory:mat-act-buprenorphine-xwaiver-elimination-2022',
+    text: 'The Mainstreaming Addiction Treatment (MAT) Act, enacted as Section 1262 of the Consolidated Appropriations Act, 2023 signed on 29 December 2022, eliminated the federal DATA-2000 \'X-waiver\' that had for over two decades restricted which clinicians could prescribe buprenorphine for opioid use disorder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-10-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-10-17',
+        datePrecision: 'DAY',
+        reason: 'The Drug Addiction Treatment Act of 2000 (DATA 2000) created a special DEA \'X\' waiver and per-clinician patient caps as the legal condition for office-based prescribing of buprenorphine for opioid use disorder. For 22 years this waiver was the settled regulatory architecture governing access to opioid-agonist addiction treatment in the United States.',
+        source: {
+          externalId: 'src:samhsa-mat-act-xwaiver',
+          name: 'SAMHSA. Waiver Elimination (MAT Act). Statutes, Regulations, and Guidelines.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act',
+          publishedAt: '2023-01-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'The MAT Act, signed into law within the Consolidated Appropriations Act, 2023, repealed the DATA-2000 waiver entirely: any clinician with a standard DEA registration including Schedule III authority may now prescribe buprenorphine for opioid use disorder, with no patient caps. SAMHSA and the DEA issued implementing guidance on 12 January 2023, reversing the long-settled premise that addiction-treatment prescribing required special federal authorization.',
+        source: {
+          externalId: 'src:samhsa-mat-act-xwaiver-elimination',
+          name: 'SAMHSA. Waiver Elimination (MAT Act). Statutes, Regulations, and Guidelines.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act',
+          publishedAt: '2023-01-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DSM-5 substance use disorder reclassification — APA 2013 ────────────────
+  {
+    externalId: 'trajectory:dsm5-substance-use-disorder-reclassification-2013',
+    text: 'The American Psychiatric Association\'s DSM-5, released on 18 May 2013, reclassified addiction by merging the separate DSM-IV diagnoses of substance \'abuse\' and substance \'dependence\' into a single \'substance use disorder\' graded on a mild–moderate–severe continuum of 11 criteria.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-05-18',
+        datePrecision: 'DAY',
+        reason: 'The APA published DSM-5, collapsing the previously distinct categories of substance abuse and substance dependence into one substance use disorder diagnosed by meeting 2 or more of 11 criteria and rated mild, moderate, or severe. The revision dropped the \'recurrent legal problems\' criterion, added \'craving,\' and abandoned the abuse/dependence dichotomy that had been criticized for conflating physical dependence with addiction, institutionally resetting how addiction is diagnosed and counted.',
+        source: {
+          externalId: 'src:apa-dsm5-substance-use-disorder-2013',
+          name: 'American Psychiatric Association. Substance-Related and Addictive Disorders. DSM-5 Fact Sheet. 2013.',
+          url: 'https://www.psychiatry.org/file%20library/psychiatrists/practice/dsm/apa_dsm-5-substance-use-disorder.pdf',
+          publishedAt: '2013-05-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
