@@ -22574,6 +22574,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY / METABOLIC DISEASE ERA (1891–1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Murray thyroid extract relieves myxoedema — 1891 ────────────────────────
+  {
+    externalId: 'trajectory:murray-thyroid-extract-myxoedema-1891',
+    text: 'George Redmayne Murray reported in the British Medical Journal on 10 October 1891 that hypodermic injections of an extract of sheep thyroid gland relieved the symptoms of myxoedema, the first successful use of hormone replacement therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1891-10-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1891-10-10',
+        datePrecision: 'DAY',
+        reason: 'Murray published \'Note on the Treatment of Myxoedema by Hypodermic Injections of an Extract of the Thyroid Gland of a Sheep\' in the BMJ, describing a 46-year-old woman with myxoedema whom he began injecting with glycerine extract of sheep thyroid on 13 April 1891 and who improved dramatically. This recorded in the expert literature the first deliberate, successful replacement of a missing internal secretion — the founding demonstration of endocrine replacement therapy.',
+        source: {
+          externalId: 'src:murray-myxoedema-thyroid-bmj-1891',
+          name: 'Murray GR. Note on the treatment of myxoedema by hypodermic injections of an extract of the thyroid gland of a sheep. BMJ. 1891 Oct 10;2(1606):796–797.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2273741/',
+          publishedAt: '1891-10-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Thyroid replacement was rapidly reproduced and adopted; oral desiccated thyroid replaced injections and became the standard treatment for hypothyroidism, and Murray\'s original patient survived 28 years on continuous thyroid therapy (reported by him in 1920). The principle that an orally or parenterally supplied thyroid preparation corrects myxoedema became and remains settled endocrine practice.',
+        source: {
+          externalId: 'src:lindholm-laurberg-thyroid-replacement-history-2011',
+          name: 'Lindholm J, Laurberg P. Hypothyroidism and thyroid substitution: historical aspects (The discovery of thyroid replacement therapy). J Thyroid Res. 2011;2011:809341.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3014555/',
+          publishedAt: '2011-05-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kendall isolates thyroxine — 1915 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:kendall-thyroxine-isolation-1915',
+    text: 'Edward C. Kendall announced in JAMA on 19 June 1915 that he had isolated, in crystalline form, the iodine-containing active compound of the thyroid gland (later named thyroxine), which he had first crystallized on 25 December 1914 at the Mayo Clinic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1915-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1915-06-19',
+        datePrecision: 'DAY',
+        reason: 'Kendall published \'The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity\' in JAMA, reporting a pure crystalline substance (~60% iodine) extracted from thousands of pounds of hog thyroid that reproduced thyroid physiologic activity. This recorded in the expert literature the claim that the thyroid\'s active principle was a single isolable iodinated compound rather than a diffuse \'colloid\' property.',
+        source: {
+          externalId: 'src:kendall-thyroxine-isolation-jama-1915',
+          name: 'Kendall EC. The isolation in crystalline form of the compound containing iodin, which occurs in the thyroid: its chemical nature and physiologic activity. JAMA. 1915;64(25):2042–2043.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6352971/',
+          publishedAt: '1915-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1927-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Charles Harington and George Barger determined the correct structure of thyroxine and achieved its total chemical synthesis, published in the Biochemical Journal in 1927 (correcting Kendall\'s originally proposed formula). Synthesis of an identical, fully active molecule settled the identity and constitution of the thyroid hormone, converting Kendall\'s isolation claim into established chemistry and the basis of synthetic levothyroxine.',
+        source: {
+          externalId: 'src:harington-barger-thyroxine-synthesis-biochemj-1927',
+          name: 'Harington CR, Barger G. Chemistry of thyroxine. III. Constitution and synthesis of thyroxine. Biochem J. 1927;21(1):169–183.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16743801/',
+          publishedAt: '1927-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Marine–Kimball iodine prevents goiter — 1920 ────────────────────────────
+  {
+    externalId: 'trajectory:marine-kimball-iodine-prevents-goiter-1920',
+    text: 'David Marine and Oliver Kimball reported in the Archives of Internal Medicine in 1920 that periodic sodium iodide supplementation prevented endemic goiter in Akron, Ohio schoolgirls — goiter developed or worsened in 0.2% of treated girls versus about 14% of untreated controls.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1920-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1920-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marine and Kimball published \'The prevention of simple goiter in man\' in the Archives of Internal Medicine, reporting their controlled Akron trial (begun 1917) in which ~2,190 schoolgirls given sodium iodide twice yearly were compared with ~2,305 untreated controls. The near-total suppression of new goiter in the treated group recorded in the expert literature the claim that iodine deficiency causes, and iodine supplementation prevents, endemic goiter.',
+        source: {
+          externalId: 'src:marine-kimball-prevention-goiter-1920',
+          name: 'Marine D, Kimball OP. The prevention of simple goiter in man. Arch Intern Med. 1920;25(6):661–672.',
+          url: 'https://jn.nutrition.org/article/S0022-3166(22)10117-3/fulltext',
+          publishedAt: '1920-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1924-05-01',
+        datePrecision: 'DAY',
+        reason: 'Acting on Marine\'s findings, Michigan public-health authorities and salt producers introduced iodized table salt, which first appeared on grocery shelves across the state on 1 May 1924; Morton Salt began national distribution of iodized salt later that year. This institutional and market adoption — and the subsequent collapse of Michigan goiter prevalence from 38.6% to 1.4% by 1951 — settled iodine prophylaxis as standard public-health practice.',
+        source: {
+          externalId: 'src:iodized-salt-centennial-healio-2024',
+          name: 'Healio / Endocrine News. Iodized salt: celebrating the centennial of a major US public health triumph. 13 Feb 2024.',
+          url: 'https://www.healio.com/news/endocrinology/20240213/iodized-salt-celebrating-the-centennial-of-a-major-us-public-health-triumph',
+          publishedAt: '2024-02-13',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hagedorn protamine insulin — 1936 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:hagedorn-protamine-insulin-1936',
+    text: 'Hans Christian Hagedorn and colleagues reported in JAMA on 18 January 1936 that adding protamine to insulin (protamine insulinate) markedly prolonged its blood-glucose-lowering action, producing the first clinically useful protracted-action insulin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-01-18',
+        datePrecision: 'DAY',
+        reason: 'Hagedorn, Jensen, Krarup, and Wodstrup published \'Protamine insulinate\' in JAMA, showing that combining insulin with protamine (from fish milt) at neutral pH slowed its absorption and extended its duration of action. This recorded in the expert literature the claim that insulin\'s pharmacokinetics could be deliberately engineered, freeing diabetics from multiple daily soluble-insulin injections.',
+        source: {
+          externalId: 'src:hagedorn-protamine-insulinate-jama-1936',
+          name: 'Hagedorn HC, Jensen BN, Krarup NB, Wodstrup I. Protamine insulinate. JAMA. 1936 Jan 18;106(3):177–180. (Landmark reprint PMID 6361301.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6361301/',
+          publishedAt: '1936-01-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1950-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Protamine-based protracted insulins were rapidly adopted and refined into protamine zinc insulin and then the stable, crystalline Neutral Protamine Hagedorn (NPH) insulin developed at Nordisk (introduced around 1950), which became one of the most widely used intermediate-acting insulins worldwide for the rest of the century. The protraction principle Hagedorn established became settled, foundational diabetes pharmacology.',
+        source: {
+          externalId: 'src:owens-protracted-insulin-history-2011',
+          name: 'Owens DR. Insulin preparations with prolonged effect. Diabetes Technol Ther. 2011;13(Suppl 1):S5–S14.',
+          url: 'https://doi.org/10.1089/dia.2011.0068',
+          publishedAt: '2011-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
