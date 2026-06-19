@@ -35064,6 +35064,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & REPRODUCTIVE MEDICINE (1928–1931)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aschheim–Zondek pregnancy test — 1928 ──────────────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting a woman\'s urine into sexually immature mice provoked ovarian maturation and hemorrhagic follicles only when she was pregnant, establishing the first reliable biological test for early pregnancy (the Aschheim–Zondek reaction) by detecting a pregnancy hormone excreted in the urine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Aschheim and Zondek published in Klinische Wochenschrift that the urine of pregnant women contains a hormone (later identified as human chorionic gonadotropin) that triggers follicular maturation, luteinization and hemorrhagic follicles when injected into immature female mice, whereas non-pregnant urine produces no change. This recorded the first hormone-based diagnostic test for pregnancy, reported as roughly 98% accurate, replacing inference from symptoms with a laboratory assay.',
+        source: {
+          externalId: 'src:aschheim-zondek-schwangerschaftsdiagnose-harn-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7(28):1404–1411.',
+          url: 'https://doi.org/10.1007/BF01749963',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Independent investigators worldwide validated the reaction within a few years; Rupp\'s 1931 examination of the Aschheim–Zondek test in the Medical Journal of Australia confirmed its diagnostic reliability, and the assay became the routine laboratory pregnancy diagnostic of the 1930s. Replication and clinical adoption settled the claim that a urinary pregnancy hormone exists and can be assayed, the conceptual foundation of all later immunoassay pregnancy tests.',
+        source: {
+          externalId: 'src:rupp-examination-aschheim-zondek-mja-1931',
+          name: 'Rupp. An Examination of the Aschheim–Zondek Test for Pregnancy. Med J Aust. 1931;1(13).',
+          url: 'https://onlinelibrary.wiley.com/doi/abs/10.5694/j.1326-5377.1931.tb119293.x',
+          publishedAt: '1931-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Frank premenstrual tension — 1931 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:frank-premenstrual-tension-hormonal-1931',
+    text: 'Robert T. Frank reported in the Archives of Neurology and Psychiatry in November 1931 (\'The Hormonal Causes of Premenstrual Tension\') that recurring premenstrual physical and psychological symptoms in women constitute a definable clinical syndrome of hormonal origin, the first systematic medical description of what became premenstrual syndrome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Frank described a series of women with cyclic premenstrual irritability, tension, fatigue and pain, and attributed the syndrome to an excess of circulating ovarian hormone (estrogen) and resulting fluid retention. This recorded in the medical literature the claim that premenstrual symptoms are a genuine hormonally driven clinical disorder rather than a psychological or imaginary complaint, naming \'premenstrual tension\' as a medical entity.',
+        source: {
+          externalId: 'src:frank-hormonal-causes-premenstrual-tension-1931',
+          name: 'Frank RT. The Hormonal Causes of Premenstrual Tension. Arch Neurol Psychiatry. 1931;26(5):1053–1057.',
+          url: 'https://doi.org/10.1001/archneurpsyc.1931.02230110151009',
+          publishedAt: '1931-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-05-18',
+        datePrecision: 'DAY',
+        reason: 'The American Psychiatric Association formally recognized premenstrual dysphoric disorder (PMDD) as a diagnosis in DSM-5, released 18 May 2013, institutionalizing the cyclic premenstrual syndrome Frank first described as a validated clinical entity with defined criteria. Modern understanding attributes the syndrome to an abnormal central-nervous-system response to normal ovarian-hormone cycling rather than to Frank\'s specific estrogen-excess mechanism, but his core claim — that premenstrual symptoms form a real, hormonally timed disorder — is now settled.',
+        source: {
+          externalId: 'src:apa-dsm5-pmdd-2013',
+          name: 'American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5): Premenstrual Dysphoric Disorder. Arlington, VA: APA; 2013.',
+          url: 'https://www.psychiatry.org/psychiatrists/practice/dsm',
+          publishedAt: '2013-05-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Warren mammography — 1930 ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:stafford-warren-mammography-breast-1930',
+    text: 'Stafford L. Warren reported in the American Journal of Roentgenology in 1930 (\'A Roentgenologic Study of the Breast\') that a stereoscopic X-ray technique could detect breast cancer in living patients without surgery, correctly identifying malignancy in 54 of 58 cancer cases and founding in vivo mammography.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Warren published a stereoscopic roentgenographic technique, imaging patients lying on their side with one arm raised, that revealed tissue-density differences distinguishing malignant from normal breast tissue, correctly diagnosing cancer in 54 of 58 affected patients. This recorded the claim that breast cancer could be detected radiographically in the living patient without surgical biopsy, sparking international interest in X-ray imaging of the breast.',
+        source: {
+          externalId: 'src:warren-roentgenologic-study-breast-1930',
+          name: 'Warren SL. A Roentgenologic Study of the Breast. Am J Roentgenol Radium Ther. 1930;24:113–124. (documented via Embryo Project Encyclopedia)',
+          url: 'https://embryo.asu.edu/pages/stafford-leak-warren-1896-1981',
+          publishedAt: '1930-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Robert L. Egan published a standardized, high-resolution, low-kilovoltage mammographic technique in Radiology in 1960 that produced consistent, reproducible breast images across institutions, demonstrated in a large tumor-institution series. Reproducibility and subsequent adoption by the radiologic community settled mammography as a reliable clinical breast-imaging modality, transforming Warren\'s exploratory technique into established practice.',
+        source: {
+          externalId: 'src:egan-experience-mammography-radiology-1960',
+          name: 'Egan RL. Experience with Mammography in a Tumor Institution: Evaluation of 1,000 Studies. Radiology. 1960;75(6):894–900.',
+          url: 'https://doi.org/10.1148/75.6.894',
+          publishedAt: '1960-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Knaus–Ogino ovulation timing / rhythm method — 1929 ────────────────────
+  {
+    externalId: 'trajectory:knaus-ogino-ovulation-timing-rhythm-method-1929',
+    text: 'Working independently, Kyusaku Ogino and Hermann Knaus established by the late 1920s (Knaus, Zentralblatt für Gynäkologie, 1929) that ovulation occurs at a fixed interval of roughly 14 days before the next menstruation, defining a predictable fertile window and providing the physiological basis for the calendar \'rhythm\' method of family planning.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Building on Ogino\'s observations published in Japan from 1924, Knaus published experimental studies of ovulation in regularly menstruating women in Zentralblatt für Gynäkologie (1929), concluding that ovulation occurs at a fixed interval before the next menses (Knaus held exactly 14 days; Ogino 12–16). The convergent independent findings recorded the claim that the fertile period of the menstrual cycle is predictable, overturning the older belief that conception could occur at any time.',
+        source: {
+          externalId: 'src:knaus-ogino-ovulation-timing-1929',
+          name: 'Knaus H. Eine neue Methode zur Bestimmung des Ovulationstermines. Zentralbl Gynäkol. 1929;53:2193–2203. (Knaus–Ogino method; documented with Ogino\'s 1924 priority)',
+          url: 'https://en.wikipedia.org/wiki/Knaus-Ogino_method',
+          publishedAt: '1929-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-10-29',
+        datePrecision: 'DAY',
+        reason: 'The ovulation-timing finding was quickly applied to contraception by Smulders (1930) and popularized by Leo Latz, and on 29 October 1951 Pope Pius XII, in his Address to Italian Catholic Midwives, explicitly sanctioned periodic abstinence (the rhythm method) as a permissible means of regulating births. Endorsement by the Catholic Church made the calendar method a globally promoted family-planning practice, settling the claim that the fertile window could be timed and used to avoid pregnancy.',
+        source: {
+          externalId: 'src:pius-xii-address-midwives-1951',
+          name: 'Pope Pius XII. Address to the Italian Catholic Union of Midwives (sanctioning periodic continence / the rhythm method). 29 October 1951.',
+          url: 'https://www.papalencyclicals.net/pius12/p12midwives.htm',
+          publishedAt: '1951-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Large efficacy reviews established that calendar-based fertility-awareness methods have high typical-use failure rates — Trussell\'s 2011 synthesis put first-year typical-use failure for calendar rhythm at roughly 24% — far worse than modern hormonal or long-acting contraception. While the underlying physiology (ovulation ~14 days before menses) remains correct, the claim that the calendar rhythm method reliably prevents pregnancy is contested, and medical bodies recommend more effective methods.',
+        source: {
+          externalId: 'src:trussell-contraceptive-failure-us-2011',
+          name: 'Trussell J. Contraceptive failure in the United States. Contraception. 2011;83(5):397–404.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21477680/',
+          publishedAt: '2011-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
