@@ -26692,7 +26692,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Clomipramine / Anafranil first OCD drug — 1989 ──────────────────────────
+  // ── Clomipramine / Anafranil first OCD drug — 1989 ─────────────────────────────
   {
     externalId: 'trajectory:clomipramine-anafranil-first-ocd-drug-1989',
     text: 'The U.S. FDA approved clomipramine (Anafranil, NDA 019906) in December 1989 as the first drug indicated for obsessive-compulsive disorder, establishing OCD as a pharmacologically treatable condition.',
@@ -26713,6 +26713,190 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'U.S. Food and Drug Administration. ANAFRANIL (clomipramine hydrochloride) Prescribing Information, NDA 019906 (originally approved 1989 for obsessive-compulsive disorder).',
           url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/019906s34lbl.pdf',
           publishedAt: '1989-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES & ENDOCRINOLOGY (1998–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── UKPDS 33 — intensive glucose control in type 2 diabetes — 1998 ───────────
+  {
+    externalId: 'trajectory:ukpds33-intensive-glucose-control-type2-diabetes-1998',
+    text: 'The UK Prospective Diabetes Study group reported in The Lancet on 12 September 1998 (UKPDS 33) that intensive blood-glucose control with sulphonylureas or insulin substantially reduces the risk of microvascular complications in patients with type 2 diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-09-12',
+        datePrecision: 'DAY',
+        reason: 'The UKPDS group published UKPDS 33, a randomized trial of ~3,867 newly diagnosed type 2 diabetes patients followed a median 10 years, showing intensive glucose control (target FPG <6 mmol/L) reduced any diabetes-related endpoint by 12% and microvascular complications by 25% versus conventional treatment, though macrovascular disease was not significantly reduced. This recorded in the literature the first large RCT evidence that the DCCT principle — tight glycemic control prevents microvascular damage — extends from type 1 to the far more common type 2 diabetes.',
+        source: {
+          externalId: 'src:ukpds33-lancet-1998',
+          name: 'UK Prospective Diabetes Study (UKPDS) Group. Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). Lancet. 1998 Sep 12;352(9131):837-853. PMID 9742976.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9742976/',
+          publishedAt: '1998-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-10-09',
+        datePrecision: 'DAY',
+        reason: 'Holman and colleagues reported the UKPDS 10-year post-trial follow-up in the NEJM, finding a \'legacy effect\': despite early loss of between-group glycemic differences, the intensive-control cohort retained reduced microvascular risk and showed emergent reductions in myocardial infarction and all-cause mortality. The durable benefit settled intensive early glycemic control as standard of care for type 2 diabetes and anchored the A1c targets adopted in ADA and international guidelines.',
+        source: {
+          externalId: 'src:holman-ukpds-10yr-followup-nejm-2008',
+          name: 'Holman RR, Paul SK, Bethel MA, Matthews DR, Neil HAW. 10-year follow-up of intensive glucose control in type 2 diabetes. N Engl J Med. 2008 Oct 9;359(15):1577-1589. PMID 18784090.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18784090/',
+          publishedAt: '2008-10-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Finnish DPS — lifestyle prevents type 2 diabetes — 2001 ─────────────────
+  {
+    externalId: 'trajectory:finnish-diabetes-prevention-study-lifestyle-2001',
+    text: 'Tuomilehto and the Finnish Diabetes Prevention Study group reported in the New England Journal of Medicine on 3 May 2001 that lifestyle intervention in people with impaired glucose tolerance reduces the incidence of type 2 diabetes by 58%, establishing that type 2 diabetes is preventable.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-05-03',
+        datePrecision: 'DAY',
+        reason: 'The Finnish DPS randomized 522 middle-aged overweight subjects with impaired glucose tolerance to individualized lifestyle counseling (weight loss, reduced fat, increased fiber and activity) or control, reporting a 58% relative reduction in diabetes incidence (cumulative 4-year incidence 11% vs 23%). This was the first adequately powered RCT to record that progression from prediabetes to type 2 diabetes can be prevented by behavioral means, reframing diabetes as a preventable rather than inevitable condition.',
+        source: {
+          externalId: 'src:tuomilehto-finnish-dps-nejm-2001',
+          name: 'Tuomilehto J, Lindström J, Eriksson JG, et al. Prevention of type 2 diabetes mellitus by changes in lifestyle among subjects with impaired glucose tolerance. N Engl J Med. 2001 May 3;344(18):1343-1350. PMID 11333990.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11333990/',
+          publishedAt: '2001-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-02-07',
+        datePrecision: 'DAY',
+        reason: 'The larger U.S. Diabetes Prevention Program (3,234 participants) independently replicated the Finnish result in the NEJM, finding lifestyle intervention reduced diabetes incidence by 58% — nearly identical to the Finnish figure — and outperformed metformin. The convergence of two large RCTs across populations settled the preventability of type 2 diabetes and drove its incorporation into ADA prevention guidance.',
+        source: {
+          externalId: 'src:dpp-research-group-nejm-2002',
+          name: 'Diabetes Prevention Program Research Group. Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin. N Engl J Med. 2002 Feb 7;346(6):393-403. PMID 11832527.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11832527/',
+          publishedAt: '2002-02-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NIH/NHLBI BMI 25 overweight threshold — 1998 ────────────────────────────
+  {
+    externalId: 'trajectory:nih-nhlbi-obesity-guideline-bmi-overweight-1998',
+    text: 'The NIH/NHLBI Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults, released 17 June 1998, defined overweight as a body mass index of 25.0 and above, aligning U.S. criteria with WHO cutoffs and reclassifying tens of millions of Americans as overweight overnight.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1998-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-06-17',
+        datePrecision: 'DAY',
+        reason: 'The NHLBI expert panel, in the first federal evidence-based obesity guidelines, lowered the U.S. overweight threshold from BMI ~27 to BMI 25.0 (obesity ≥30), adopting the WHO classification. The definitional change instantly reclassified roughly 29 million additional Americans as overweight without any change in their health, institutionalizing BMI 25 as the diagnostic boundary used in clinical practice, research, and public-health surveillance thereafter.',
+        source: {
+          externalId: 'src:nhlbi-obesity-clinical-guidelines-1998',
+          name: 'National Heart, Lung, and Blood Institute / NIH Expert Panel. Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults — The Evidence Report. Obes Res. 1998 Sep;6(Suppl 2):51S-209S. PMID 9813653.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9813653/',
+          publishedAt: '1998-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sitagliptin / Januvia — first DPP-4 inhibitor FDA approval — 2006 ────────
+  {
+    externalId: 'trajectory:sitagliptin-januvia-first-dpp4-inhibitor-approval-2006',
+    text: 'The U.S. FDA approved sitagliptin (Januvia, NDA 021995) on 16 October 2006 as the first dipeptidyl peptidase-4 (DPP-4) inhibitor for type 2 diabetes, establishing oral incretin enhancement via DPP-4 inhibition as a validated drug class.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-10-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Merck\'s sitagliptin as the first-in-class DPP-4 inhibitor, which raises endogenous incretin (GLP-1/GIP) levels by blocking their degradation, improving glucose-dependent insulin secretion with low hypoglycemia risk and weight neutrality. The approval institutionalized oral DPP-4 inhibition as a distinct therapeutic class — complementary to the injectable GLP-1 agonists — and seeded a family of \'gliptins\' that became core to type 2 diabetes management.',
+        source: {
+          externalId: 'src:fda-januvia-approval-history-2006',
+          name: 'U.S. Food and Drug Administration. Januvia (sitagliptin phosphate) FDA Approval History, NDA 021995, approved 16 October 2006.',
+          url: 'https://www.drugs.com/history/januvia.html',
+          publishedAt: '2006-10-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PROactive — pioglitazone macrovascular outcomes — 2005 ──────────────────
+  {
+    externalId: 'trajectory:proactive-pioglitazone-macrovascular-prevention-2005',
+    text: 'Dormandy and the PROactive investigators reported in The Lancet on 8 October 2005 that pioglitazone reduced the secondary composite of all-cause death, myocardial infarction, and stroke in high-risk type 2 diabetes patients, while the primary broad macrovascular endpoint was not statistically significant and heart-failure hospitalizations rose.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-10-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-08',
+        datePrecision: 'DAY',
+        reason: 'PROactive randomized 5,238 type 2 diabetes patients with established macrovascular disease to pioglitazone or placebo. The primary composite endpoint (a broad cluster of cardiovascular events) was not significantly reduced (HR 0.90, p=0.095), but the main secondary endpoint of death/MI/stroke fell 16%, alongside a near-doubling of heart-failure hospitalizations. The split result recorded a genuinely contested claim — the first cardiovascular-outcomes signal for a thiazolidinedione, read as cardioprotective by proponents and as a failed primary endpoint by skeptics.',
+        source: {
+          externalId: 'src:dormandy-proactive-lancet-2005',
+          name: 'Dormandy JA, Charbonnel B, Eckland DJA, et al. Secondary prevention of macrovascular events in patients with type 2 diabetes in the PROactive Study (PROspective pioglitAzone Clinical Trial In macroVascular Events): a randomised controlled trial. Lancet. 2005 Oct 8;366(9493):1279-1289. PMID 16214598.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16214598/',
+          publishedAt: '2005-10-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-09-12',
+        datePrecision: 'DAY',
+        reason: 'Nissen and Wolski published a meta-analysis in JAMA pooling 19 trials and the PROactive data, concluding pioglitazone was associated with reduced ischemic cardiovascular events but a significantly increased risk of serious heart failure. Coming months after the same authors\' rosiglitazone-MI meta-analysis, this kept the cardiovascular benefit-versus-heart-failure tradeoff of the thiazolidinedione class openly contested, the state in which pioglitazone (unlike withdrawn rosiglitazone) remained on the market.',
+        source: {
+          externalId: 'src:nissen-wolski-pioglitazone-meta-jama-2007',
+          name: 'Lincoff AM, Wolski K, Nicholls SJ, Nissen SE. Pioglitazone and risk of cardiovascular events in patients with type 2 diabetes mellitus: a meta-analysis of randomized trials. JAMA. 2007 Sep 12;298(10):1180-1188. PMID 17848652.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17848652/',
+          publishedAt: '2007-09-12',
           methodologyType: 'primary',
         },
       },
