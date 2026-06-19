@@ -23181,6 +23181,182 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIAC RESUSCITATION & SURGICAL ERA (1956–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Zoll external defibrillation — 1956 ────────────────────────────────────
+  {
+    externalId: 'trajectory:zoll-external-defibrillation-ventricular-fibrillation-1956',
+    text: 'Paul Zoll and colleagues reported in the New England Journal of Medicine on 19 April 1956 that ventricular fibrillation in man could be terminated by an externally applied electric countershock delivered across the closed chest, without opening the thorax.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1956-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-04-19',
+        datePrecision: 'DAY',
+        reason: 'Zoll, Linenthal, Gibson, Paul, and Norman reported the first successful termination of ventricular fibrillation in human patients using an externally applied alternating-current countershock across the intact chest wall. This recorded in the literature the claim that lethal ventricular fibrillation could be reversed non-invasively, ending the prior requirement to open the chest for direct cardiac defibrillation (Beck\'s open-chest method).',
+        source: {
+          externalId: 'src:zoll-external-countershock-nejm-1956',
+          name: 'Zoll PM, Linenthal AJ, Gibson W, Paul MH, Norman LR. Termination of ventricular fibrillation in man by externally applied electric countershock. N Engl J Med. 1956;254(16):727-732.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13309666/',
+          publishedAt: '1956-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-08-05',
+        datePrecision: 'DAY',
+        reason: 'Pantridge and Geddes reported the world\'s first mobile coronary care unit, carrying a portable defibrillator that resuscitated patients in ventricular fibrillation outside the hospital. Demonstrating that closed-chest defibrillation could be delivered in the field and save lives settled external electrical defibrillation as the cornerstone of resuscitation and modern emergency cardiac care.',
+        source: {
+          externalId: 'src:pantridge-geddes-mobile-ccu-lancet-1967',
+          name: 'Pantridge JF, Geddes JS. A mobile intensive-care unit in the management of myocardial infarction. Lancet. 1967;2(7510):271-273.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4165912/',
+          publishedAt: '1967-08-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Jarvik-7 total artificial heart permanent replacement — 1982 ────────────
+  {
+    externalId: 'trajectory:jarvik7-total-artificial-heart-permanent-replacement-1982',
+    text: 'On 2 December 1982 William DeVries implanted the Jarvik-7 pneumatic total artificial heart in Barney Clark at the University of Utah, the first attempt to permanently replace a human heart with a mechanical device, reported by DeVries and colleagues in the New England Journal of Medicine in 1984.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1982-12-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-12-02',
+        datePrecision: 'DAY',
+        reason: 'DeVries implanted the Jarvik-7 total artificial heart in retired dentist Barney Clark, who survived 112 days on the device; the team reported the case in the New England Journal of Medicine in 1984 as their first experience with a total artificial heart in a human being. This recorded the claim that a mechanical pump could serve as a permanent replacement for the failing human heart.',
+        source: {
+          externalId: 'src:devries-total-artificial-heart-nejm-1984',
+          name: 'DeVries WC, Anderson JL, Joyce LD, Anderson FL, Hammond EH, Jarvik RK, Kolff WJ. Clinical use of the total artificial heart. N Engl J Med. 1984;310(5):273-278.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6690950/',
+          publishedAt: '1984-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-01-11',
+        datePrecision: 'DAY',
+        reason: 'Barney Clark and subsequent recipients (notably William Schroeder) suffered strokes, infections, bleeding, and multi-organ failure, discrediting the device as a permanent therapy. On 11 January 1990 the FDA withdrew approval for the Jarvik-7, notifying manufacturer Symbion of deficiencies in manufacturing quality control, site monitoring, and adverse-event reporting; the total artificial heart was abandoned as a permanent replacement and survived only, in later descendants, as a temporary bridge to transplantation.',
+        source: {
+          externalId: 'src:fda-recalls-jarvik-artificial-heart-upi-1990',
+          name: 'United Press International. FDA recalls Jarvik artificial heart. UPI Archives. 11 January 1990.',
+          url: 'https://www.upi.com/Archives/1990/01/11/FDA-recalls-Jarvik-artificial-heart/5275632034000/',
+          publishedAt: '1990-01-11',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPHTHALMIC SURGERY ERA (1967–1996)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Kelman phacoemulsification cataract surgery — 1967 ─────────────────────
+  {
+    externalId: 'trajectory:kelman-phacoemulsification-cataract-surgery-1967',
+    text: 'Charles D. Kelman reported in the American Journal of Ophthalmology in July 1967 a new technique, phaco-emulsification, that uses an ultrasonic probe to emulsify and aspirate the cataractous lens through a small (2-3 mm) incision rather than the large incision of conventional cataract extraction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Kelman published his preliminary report describing ultrasonic emulsification and aspiration of the lens through a small incision, recording the claim that cataracts could be removed without the large limbal incision and prolonged convalescence of intracapsular and extracapsular extraction. The technique was initially met with profound skepticism and resistance from the ophthalmic establishment.',
+        source: {
+          externalId: 'src:kelman-phacoemulsification-ajo-1967',
+          name: 'Kelman CD. Phaco-emulsification and aspiration. A new technique of cataract removal. A preliminary report. Am J Ophthalmol. 1967;64(1):23-35.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6028631/',
+          publishedAt: '1967-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After roughly two decades of slow uptake, improvements in instrumentation and foldable intraocular lenses made phacoemulsification the dominant cataract-extraction technique in the developed world; practice-pattern surveys of cataract surgeons document phaco surpassing extracapsular extraction as the majority technique in the United States by the mid-1990s, settling small-incision phacoemulsification as the standard of care.',
+        source: {
+          externalId: 'src:kelman-father-phacoemulsification-review-2024',
+          name: 'Charles Kelman: The Father of Phacoemulsification. Cureus / PMC review documenting the adoption of phacoemulsification as the global standard for cataract surgery. 2024.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38975537/',
+          publishedAt: '2024-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── PERK radial keratotomy myopia correction — 1985 ────────────────────────
+  {
+    externalId: 'trajectory:perk-radial-keratotomy-myopia-correction-1985',
+    text: 'The nine-center Prospective Evaluation of Radial Keratotomy (PERK) study, reported by Waring and colleagues in Ophthalmology in February 1985, found that a standardized radial keratotomy technique reduced myopia to within ±1.00 diopter of emmetropia in 60% of eyes one year after surgery, validating incisional refractive surgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1985-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The NEI-sponsored PERK study reported its one-year results in 435 patients with physiologic myopia, finding myopia reduced in all eyes and 60% within ±1.00 D of emmetropia. This provided the first rigorous, standardized multicenter evidence that radial keratotomy could surgically reduce myopia, recording the claim that incisional corneal surgery was an effective refractive procedure as the operation spread rapidly in U.S. practice.',
+        source: {
+          externalId: 'src:perk-one-year-ophthalmology-1985',
+          name: 'Waring GO 3rd, Lynn MJ, Gelender H, et al. Results of the prospective evaluation of radial keratotomy (PERK) study one year after surgery. Ophthalmology. 1985;92(2):177-198.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3885128/',
+          publishedAt: '1985-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The PERK 10-year results found that the refractive error of 43% of eyes had shifted in the hyperopic direction by 1.00 D or more, a progressive change continuing throughout the decade. This revealed long-term refractive instability of radial keratotomy and, together with the emergence of excimer-laser photorefractive keratectomy and LASIK, contested RK\'s durability and led to its abandonment as the preferred refractive procedure.',
+        source: {
+          externalId: 'src:perk-ten-year-archophthalmol-1994',
+          name: 'Waring GO 3rd, Lynn MJ, McDonnell PJ. Results of the prospective evaluation of radial keratotomy (PERK) study 10 years after surgery. Arch Ophthalmol. 1994;112(10):1298-1308.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7945032/',
+          publishedAt: '1994-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
