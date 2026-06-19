@@ -28225,7 +28225,7 @@ const TRAJECTORIES: Trajectory[] = [
         fromAxis: 'RECORDED',
         toAxis: 'SETTLED',
         community: 'INSTITUTIONAL',
-        occurredAt: '1930-01-01',
+        occurredAt: '1931-01-01',
         datePrecision: 'YEAR',
         reason: "Within months the Swingle-Pfiffner extract ('cortin') was applied clinically and became the first preparation to rescue patients in Addisonian crisis, entering medical practice and being reported in JAMA as 'Addison's Disease Treated with Suprarenal Cortical Hormone (Swingle-Pfiffner).' The demonstration that the adrenal cortex secretes a life-essential hormone was rapidly adopted, settling the principle even as the crude extract was later superseded by purified DOCA and cortisone.",
         source: {
