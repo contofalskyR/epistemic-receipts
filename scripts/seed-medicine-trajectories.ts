@@ -29791,48 +29791,6 @@ const TRAJECTORIES: Trajectory[] = [
   // WOMEN'S HEALTH / REPRODUCTIVE ENDOCRINOLOGY (1928–2000)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Aschheim-Zondek pregnancy test 1928 ─────────────────────────────────────
-  {
-    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
-    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that subcutaneous injection of a woman\'s urine into immature female mice induces ovarian follicular maturation, luteinization, and hemorrhage (the \'A-Z reaction\') only during pregnancy, giving the first reliable biological test for early pregnancy through detection of a urinary hormone (later identified as hCG).',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1928-01-01',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1928-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Aschheim and Zondek published \'Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons\' in Klinische Wochenschrift, showing that pregnant women\'s urine injected into immature mice produced characteristic ovarian changes absent with non-pregnant urine. This recorded in the expert literature the claim that a hormone excreted in urine signals pregnancy, supplying the first dependable, objective pregnancy test before any hormone could be chemically measured.',
-        source: {
-          externalId: 'src:aschheim-zondek-schwangerschaftsdiagnose-klin-wochenschr-1928',
-          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7(34):1404-1411.',
-          url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
-          publishedAt: '1928-01-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1931-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Within a few years the A-Z reaction was independently examined and validated — for example by Rupp\'s 1931 evaluation in the Medical Journal of Australia — and adopted as routine clinical pregnancy diagnosis across Europe and the English-speaking world. Independent confirmation and laboratory uptake settled the bioassay as the diagnostic standard, which it remained until immunological hCG assays superseded the live-animal method.',
-        source: {
-          externalId: 'src:rupp-aschheim-zondek-examination-mja-1931',
-          name: 'Rupp J. An Examination of the Aschheim-Zondek Test for Pregnancy. Med J Aust. 1931;1(13):441-445.',
-          url: 'https://onlinelibrary.wiley.com/doi/abs/10.5694/j.1326-5377.1931.tb119293.x',
-          publishedAt: '1931-01-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Frank premenstrual tension 1931 ─────────────────────────────────────────
   {
     externalId: 'trajectory:frank-premenstrual-tension-1931',
