@@ -20347,6 +20347,224 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Salvarsan — first targeted chemotherapy 1910 ────────────────────────────
+  {
+    externalId: 'trajectory:ehrlich-hata-salvarsan-arsphenamine-syphilis-1910',
+    text: 'Paul Ehrlich and Sahachiro Hata announced in April 1910 that arsphenamine (compound 606, marketed as Salvarsan) cures syphilis, establishing the first targeted chemotherapeutic agent and inaugurating the chemotherapy era.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1910-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1910-04-19',
+        datePrecision: 'DAY',
+        reason: 'At the 27th Congress for Internal Medicine in Wiesbaden, Ehrlich and Hata reported that the arsenical compound dioxydiamidoarsenobenzol (compound 606, arsphenamine) cured Treponema pallidum infection in animals and patients, the work growing from Hata\'s 31 August 1909 demonstration of cure in syphilitic rabbits. It was the first chemical deliberately synthesized and screened to selectively kill a pathogen, Ehrlich\'s \'magic bullet.\'',
+        source: {
+          externalId: 'src:jll-arsphenamine-magic-bullet',
+          name: 'Gradmann C. The introduction of \'chemotherapy\' using arsphenamine — the first magic bullet. The James Lind Library, 2010. (documenting Ehrlich P, Hata S. Die experimentelle Chemotherapie der Spirillosen, Berlin: Julius Springer, 1910.)',
+          url: 'https://www.jameslindlibrary.org/articles/the-introduction-of-chemotherapy-using-arsphenamine-the-first-magic-bullet/',
+          publishedAt: '1910-04-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1910-12-31',
+        datePrecision: 'YEAR',
+        reason: 'Salvarsan was manufactured at scale by Hoechst and distributed worldwide within months; by the end of 1910 some 65,000 doses had been administered to over 20,000 patients, an unprecedented pre-marketing deployment. It became the standard treatment for syphilis for three decades until superseded by penicillin in the 1940s, settling arsphenamine\'s therapeutic efficacy.',
+        source: {
+          externalId: 'src:cen-salvarsan-history-2005',
+          name: 'Chemical & Engineering News (American Chemical Society). Salvarsan. C&EN 2005;83(25).',
+          url: 'https://cen.acs.org/articles/83/i25/Salvarsan.html',
+          publishedAt: '2005-06-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Liver therapy / pernicious anemia — Minot & Murphy 1926 ────────────────
+  {
+    externalId: 'trajectory:minot-murphy-liver-therapy-pernicious-anemia-1926',
+    text: 'George Minot and William Murphy reported in August 1926 that a diet rich in liver controls pernicious anemia, converting a uniformly fatal disease into a treatable one.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-08-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-08-14',
+        datePrecision: 'DAY',
+        reason: 'Minot and Murphy published in JAMA the results of feeding large quantities of liver to 45 pernicious anemia patients, reporting prompt and sustained reticulocyte responses and clinical recovery. Building on Whipple\'s anemic-dog work, it was the first effective treatment for a disease that had been invariably fatal.',
+        source: {
+          externalId: 'src:minot-murphy-pernicious-anemia-jama-1926',
+          name: 'Minot GR, Murphy WP. Treatment of Pernicious Anemia by a Special Diet. JAMA. 1926;87(7):470–476.',
+          url: 'https://doi.org/10.1001/jama.1926.02680070016005',
+          publishedAt: '1926-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1934-12-10',
+        datePrecision: 'DAY',
+        reason: 'The 1934 Nobel Prize in Physiology or Medicine was awarded jointly to George Whipple, George Minot, and William Murphy for their discoveries concerning liver therapy in cases of anemia, institutionally ratifying liver therapy as the established treatment for pernicious anemia. The work directly laid the groundwork for the isolation of vitamin B12 in 1948.',
+        source: {
+          externalId: 'src:nobel-1934-liver-anemia',
+          name: 'The Nobel Prize in Physiology or Medicine 1934 — George H. Whipple, George R. Minot, William P. Murphy. (Nobel Foundation)',
+          url: 'https://www.nobelprize.org/prizes/medicine/1934/minot/lecture/',
+          publishedAt: '1934-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RARE DISEASE / ORPHAN DRUG ERA (2000s–2010s) — additions
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Eculizumab/Soliris — first complement inhibitor, PNH 2007 ───────────────
+  {
+    externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
+    text: 'Eculizumab (Soliris), the first terminal complement (C5) inhibitor, was shown in the TRIUMPH trial (NEJM, September 2006) and approved by the FDA on 16 March 2007 to be the first effective therapy for paroxysmal nocturnal hemoglobinuria.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-09-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-09-21',
+        datePrecision: 'DAY',
+        reason: 'The randomized, double-blind, placebo-controlled TRIUMPH trial of 87 transfusion-dependent PNH patients (Hillmen et al., NEJM) showed eculizumab stabilized hemoglobin in 49% versus 0% on placebo and produced transfusion independence in 51% versus 0%. It was the first demonstration that pharmacologic terminal-complement blockade controls intravascular hemolysis in PNH.',
+        source: {
+          externalId: 'src:hillmen-triumph-eculizumab-nejm-2006',
+          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233–1243.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16990386/',
+          publishedAt: '2006-09-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Soliris (BLA 125166) for paroxysmal nocturnal hemoglobinuria, the first approved therapy for PNH and the first complement-inhibitor drug. The approval established C5 inhibition as a validated therapeutic mechanism, later extended to atypical hemolytic uremic syndrome and other complement-mediated diseases.',
+        source: {
+          externalId: 'src:fda-soliris-eculizumab-approval-2007',
+          name: 'U.S. FDA. Soliris (eculizumab) FDA Approval History — original approval for paroxysmal nocturnal hemoglobinuria, 16 March 2007.',
+          url: 'https://www.drugs.com/history/soliris.html',
+          publishedAt: '2007-03-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Alglucosidase alfa/Myozyme — first Pompe ERT 2006 ───────────────────────
+  {
+    externalId: 'trajectory:alglucosidase-alfa-myozyme-first-pompe-ert-2006',
+    text: 'Alglucosidase alfa (Myozyme), recombinant human acid alpha-glucosidase, was approved by the FDA on 28 April 2006 as the first enzyme replacement therapy and first disease-specific treatment for Pompe disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-04-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Myozyme (alglucosidase alfa, Genzyme) for Pompe disease, a deficiency of lysosomal acid alpha-glucosidase that is fatal in its infantile form, making it the first approved treatment for the disorder and the first ERT for a glycogen storage disease. Approval rested on trial data showing markedly improved ventilator-free survival in infantile-onset patients.',
+        source: {
+          externalId: 'src:fda-myozyme-alglucosidase-approval-2006',
+          name: 'U.S. FDA. Myozyme (alglucosidase alfa) FDA Approval History — original approval for Pompe disease, 28 April 2006.',
+          url: 'https://www.drugs.com/history/myozyme.html',
+          publishedAt: '2006-04-28',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-09',
+        datePrecision: 'DAY',
+        reason: 'The pivotal trial (Kishnani et al., Neurology) reported that recombinant human acid alpha-glucosidase markedly reduced the risk of death and of invasive ventilation in infantile-onset Pompe disease compared with an untreated historical cohort, concluding the enzyme is safe and effective. Peer-reviewed publication confirmed the efficacy underlying the FDA approval and settled ERT as the standard of care for Pompe disease.',
+        source: {
+          externalId: 'src:kishnani-rhgaa-pompe-neurology-2007',
+          name: 'Kishnani PS, Corzo D, Nicolino M, et al. Recombinant human acid alpha-glucosidase: major clinical benefits in infantile-onset Pompe disease. Neurology. 2007;68(2):99–109.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17151339/',
+          publishedAt: '2007-01-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Voretigene neparvovec/Luxturna — first inherited-disease gene therapy 2017
+  {
+    externalId: 'trajectory:voretigene-neparvovec-luxturna-first-inherited-disease-gene-therapy-2017',
+    text: 'Voretigene neparvovec (Luxturna), an AAV2 gene therapy delivering a functional RPE65 gene, was approved by the FDA on 19 December 2017 as the first gene therapy approved in the U.S. for an inherited genetic disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-07-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-07-13',
+        datePrecision: 'DAY',
+        reason: 'The first randomized, controlled, phase 3 trial of a gene therapy (Russell et al., Lancet) reported that subretinal voretigene neparvovec significantly improved functional vision (multi-luminance mobility testing) in patients with biallelic RPE65-mediated inherited retinal dystrophy, with benefit sustained at one year. It provided the controlled efficacy evidence that an in vivo gene-replacement therapy can treat an inherited disease.',
+        source: {
+          externalId: 'src:russell-voretigene-phase3-lancet-2017',
+          name: 'Russell S, Bennett J, Wellman JA, et al. Efficacy and safety of voretigene neparvovec (AAV2-hRPE65v2) in patients with RPE65-mediated inherited retinal dystrophy: a randomised, controlled, open-label, phase 3 trial. Lancet. 2017;390(10097):849–860.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5726391/',
+          publishedAt: '2017-07-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-12-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Luxturna for confirmed biallelic RPE65 mutation-associated retinal dystrophy, the first FDA-approved gene therapy for a genetic disease, the first directly administered (in vivo) gene therapy approved in the U.S., and the first AAV-vector gene therapy. It established in vivo gene replacement as a validated, regulated therapeutic modality for inherited disease.',
+        source: {
+          externalId: 'src:fda-luxturna-gene-therapy-approval-2017',
+          name: 'U.S. FDA. FDA approves novel gene therapy to treat patients with a rare form of inherited vision loss. FDA News Release, 19 December 2017.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-novel-gene-therapy-treat-patients-rare-form-inherited-vision-loss',
+          publishedAt: '2017-12-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
