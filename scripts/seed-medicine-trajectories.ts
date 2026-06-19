@@ -24924,6 +24924,171 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── NETT: Lung-Volume-Reduction Surgery for Emphysema (2003) ───────────────
+  {
+    externalId: 'trajectory:nett-lung-volume-reduction-surgery-emphysema-2003',
+    text: 'The National Emphysema Treatment Trial (NETT), published in the New England Journal of Medicine on 22 May 2003, established that lung-volume-reduction surgery confers no overall survival benefit over medical therapy for severe emphysema and benefits only a narrow subgroup with upper-lobe-predominant disease and low exercise capacity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-10-11',
+        datePrecision: 'DAY',
+        reason: 'After lung-volume-reduction surgery was revived in the mid-1990s and adopted with enthusiasm for severe emphysema, the NETT Research Group reported in NEJM that a high-risk subgroup (FEV1 ≤20% predicted with homogeneous emphysema or very low diffusing capacity) had significantly higher 30-day mortality after surgery, prompting the data safety board to halt randomization of these patients. This was the first hard evidence that the procedure could kill the patients it was meant to help.',
+        source: {
+          externalId: 'src:nett-high-risk-nejm-2001',
+          name: 'National Emphysema Treatment Trial Research Group. Patients at High Risk of Death after Lung-Volume-Reduction Surgery. N Engl J Med. 2001;345(15):1075-1083.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11596586/',
+          publishedAt: '2001-10-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-05-22',
+        datePrecision: 'DAY',
+        reason: 'Fishman and colleagues published the full NETT results in NEJM: among 1,218 randomized patients, lung-volume-reduction surgery produced no overall survival benefit versus medical therapy, with a survival advantage confined to patients with upper-lobe-predominant emphysema and low baseline exercise capacity. The trial definitively characterized who does and does not benefit, settling the efficacy question and relegating the procedure to a narrow, evidence-defined indication.',
+        source: {
+          externalId: 'src:fishman-nett-nejm-2003',
+          name: 'Fishman A, Martinez F, Naunheim K, et al. A Randomized Trial Comparing Lung-Volume-Reduction Surgery with Medical Therapy for Severe Emphysema. N Engl J Med. 2003;348(21):2059-2073.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12759479/',
+          publishedAt: '2003-05-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── COST: Laparoscopic Colectomy for Colon Cancer (2004) ───────────────────
+  {
+    externalId: 'trajectory:cost-laparoscopic-colectomy-colon-cancer-2004',
+    text: 'The Clinical Outcomes of Surgical Therapy (COST) Study Group trial, published in the New England Journal of Medicine on 13 May 2004, established that laparoscopically assisted colectomy is oncologically equivalent to open colectomy for colon cancer, overturning fears that the minimally invasive approach caused port-site tumor recurrence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-05-13',
+        datePrecision: 'DAY',
+        reason: 'Laparoscopic colectomy was introduced in 1991 but adoption for cancer stalled in the mid-1990s amid alarming case reports of port-site tumor recurrence, leaving its oncologic safety in doubt. The COST trial randomized 872 patients across 48 institutions and found no significant difference in cancer recurrence, overall survival, or disease-free survival between laparoscopic and open colectomy, establishing the minimally invasive approach as oncologically sound and laying the doubt to rest.',
+        source: {
+          externalId: 'src:cost-laparoscopic-colectomy-nejm-2004',
+          name: 'Clinical Outcomes of Surgical Therapy Study Group (Nelson H, et al.). A Comparison of Laparoscopically Assisted and Open Colectomy for Colon Cancer. N Engl J Med. 2004;350(20):2050-2059.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15141043/',
+          publishedAt: '2004-05-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MGTX: Thymectomy for Myasthenia Gravis (2016) ─────────────────────────
+  {
+    externalId: 'trajectory:mgtx-thymectomy-myasthenia-gravis-2016',
+    text: 'The MGTX randomized trial, published in the New England Journal of Medicine on 11 August 2016, established that thymectomy plus prednisone is superior to prednisone alone in nonthymomatous myasthenia gravis, providing the first randomized confirmation of a surgical practice used since the 1940s.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-08-11',
+        datePrecision: 'DAY',
+        reason: 'Thymectomy had been performed for myasthenia gravis since Blalock\'s reports in the early 1940s but rested entirely on observational evidence, leaving a roughly 75-year controversy over whether the operation actually helped. The international, rater-blinded MGTX trial randomized 126 patients and showed that thymectomy combined with alternate-day prednisone produced better clinical scores, lower steroid and immunosuppressant requirements, and fewer hospitalizations over three years, finally establishing the procedure\'s benefit on randomized evidence.',
+        source: {
+          externalId: 'src:wolfe-mgtx-thymectomy-nejm-2016',
+          name: 'Wolfe GI, Kaminski HJ, Aban IB, et al. Randomized Trial of Thymectomy in Myasthenia Gravis. N Engl J Med. 2016;375(6):511-522.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27509100/',
+          publishedAt: '2016-08-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chlorhexidine-Alcohol Surgical-Site Antisepsis (2010) ──────────────────
+  {
+    externalId: 'trajectory:chlorhexidine-alcohol-surgical-site-antisepsis-2010',
+    text: 'Darouiche and colleagues, in the New England Journal of Medicine on 7 January 2010, established that preoperative skin preparation with chlorhexidine-alcohol significantly reduces surgical-site infections compared with povidone-iodine, reshaping antiseptic-surgery practice.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-01-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-07',
+        datePrecision: 'DAY',
+        reason: 'Povidone-iodine had been the conventional surgical skin antiseptic for decades, but no large randomized trial had compared it head-to-head with chlorhexidine-alcohol. Darouiche and colleagues randomized 849 patients undergoing clean-contaminated surgery and found chlorhexidine-alcohol reduced overall surgical-site infections by about 40% (9.5% vs 16.1%), establishing it as the superior skin-prep agent and driving its adoption into subsequent CDC and WHO surgical guidelines.',
+        source: {
+          externalId: 'src:darouiche-chlorhexidine-nejm-2010',
+          name: 'Darouiche RO, Wall MJ Jr, Itani KMF, et al. Chlorhexidine-Alcohol versus Povidone-Iodine for Surgical-Site Antisepsis. N Engl J Med. 2010;362(1):18-26.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20054046/',
+          publishedAt: '2010-01-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PFO Closure for Cryptogenic Stroke (2017) ──────────────────────────────
+  {
+    externalId: 'trajectory:pfo-closure-cryptogenic-stroke-2017',
+    text: 'Three randomized trials published together in the New England Journal of Medicine on 14 September 2017 (REDUCE, CLOSE, and long-term RESPECT) established that percutaneous patent foramen ovale (PFO) closure reduces recurrent stroke versus medical therapy in selected cryptogenic-stroke patients, reversing the negative verdict of the 2012 CLOSURE I trial.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-15',
+        datePrecision: 'DAY',
+        reason: 'Device-based PFO closure had spread since around 2000 on observational enthusiasm for preventing recurrent cryptogenic stroke. The first major randomized trial, CLOSURE I, published in NEJM, found that closure offered no significant benefit over medical therapy (primary endpoint 5.5% vs 6.8%, HR 0.78, P=0.37) and increased atrial fibrillation, casting serious doubt on the procedure.',
+        source: {
+          externalId: 'src:furlan-closure-i-nejm-2012',
+          name: 'Furlan AJ, Reisman M, Massaro J, et al. Closure or Medical Therapy for Cryptogenic Stroke with Patent Foramen Ovale. N Engl J Med. 2012;366(11):991-999.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22417252/',
+          publishedAt: '2012-03-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-09-14',
+        datePrecision: 'DAY',
+        reason: 'Three randomized trials published simultaneously in NEJM — Gore REDUCE, CLOSE, and the long-term extension of RESPECT — each showed that PFO closure significantly lowered recurrent ischemic stroke compared with antiplatelet or medical therapy in carefully selected patients, at the cost of more device-related atrial fibrillation. The convergent results reversed the earlier negative verdict and re-established closure as effective for appropriately selected cryptogenic-stroke patients, supporting the FDA\'s 2016 reapproval of the Amplatzer PFO Occluder.',
+        source: {
+          externalId: 'src:sondergaard-reduce-pfo-nejm-2017',
+          name: 'Søndergaard L, Kasner SE, Rhodes JF, et al. Patent Foramen Ovale Closure or Antiplatelet Therapy for Cryptogenic Stroke (Gore REDUCE). N Engl J Med. 2017;377(11):1033-1042.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28902580/',
+          publishedAt: '2017-09-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
