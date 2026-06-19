@@ -37930,6 +37930,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS & NON-OPIOID ANALGESIA ERA (2014–2025)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── AAN position paper: opioids for chronic noncancer pain — risks outweigh benefits 2014 ─
+  {
+    externalId: 'trajectory:aan-opioids-chronic-noncancer-pain-risks-outweigh-2014',
+    text: 'The American Academy of Neurology concluded in a position paper published in Neurology on September 30, 2014 (Franklin GM) that for chronic noncancer pain conditions such as headache, fibromyalgia, and chronic low back pain, the risks of long-term opioid therapy—overdose, addiction, and serious adverse effects—likely outweigh the benefits.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2014-09-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-09-30',
+        datePrecision: 'DAY',
+        reason: 'The American Academy of Neurology issued a formal evidence-based position paper concluding that long-term opioid therapy for chronic noncancer pain likely causes more harm than benefit for common conditions, marking the first major U.S. medical specialty society to repudiate the liberal-prescribing consensus that had followed the 1980s–1990s pain-treatment movement. It recorded, in the expert literature, a reversal of the Portenoy–Foley-era position that opioids could be safely used for chronic noncancer pain.',
+        source: {
+          externalId: 'src:franklin-aan-opioids-chronic-pain-neurology-2014',
+          name: 'Franklin GM; American Academy of Neurology. Opioids for chronic noncancer pain: a position paper of the American Academy of Neurology. Neurology. 2014 Sep 30;83(14):1277-1284.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25846999/',
+          publishedAt: '2014-09-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-18',
+        datePrecision: 'DAY',
+        reason: 'The CDC published its Guideline for Prescribing Opioids for Chronic Pain, formally codifying that for most chronic noncancer pain the benefits of long-term opioids do not outweigh the risks and recommending nonopioid therapy as preferred. The federal guideline institutionalized the conclusion the AAN had reached in the expert literature, settling it as the basis for national clinical-practice and regulatory expectations.',
+        source: {
+          externalId: 'src:cdc-opioid-prescribing-guideline-mmwr-2016',
+          name: 'Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016. MMWR Recomm Rep. 2016 Mar 18;65(1):1-49.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm',
+          publishedAt: '2016-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Surgeon General "Turn the Tide" letter to clinicians 2016 ───────────────
+  {
+    externalId: 'trajectory:surgeon-general-turn-the-tide-opioid-letter-2016',
+    text: 'U.S. Surgeon General Vivek H. Murthy sent a personal letter to roughly 2.3 million American clinicians in August 2016 (the \'Turn the Tide\' campaign) urging them to curb opioid overprescribing, follow the CDC opioid guideline, and treat addiction as a chronic illness rather than a moral failing—the first time a U.S. Surgeon General directly appealed to the nation\'s prescribers about a public health crisis.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-08-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-08-25',
+        datePrecision: 'DAY',
+        reason: 'The Surgeon General launched the \'Turn the Tide Rx\' campaign and mailed an unprecedented direct letter to every practicing physician in the United States, enclosing a pocket card summarizing the CDC opioid prescribing guideline and asking clinicians to pledge to prescribe more cautiously, screen for opioid use disorder, and reframe addiction as a treatable chronic disease. The act institutionally committed the federal public-health establishment to reversing the overprescribing norm and marked the first time the office mobilized the entire clinician workforce around a single prescribing crisis.',
+        source: {
+          externalId: 'src:surgeon-general-turn-the-tide-letter-2016',
+          name: 'Murthy VH, U.S. Surgeon General. Letter to America\'s clinicians (\'Turn the Tide Rx\' campaign). U.S. Public Health Service. August 2016.',
+          url: 'https://dph.illinois.gov/content/dam/soi/en/web/idph/files/publications/publications-ohp-surgeon-general-opioid-letter-111816.pdf',
+          publishedAt: '2016-08-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oliceridine (OLINVYK) — biased opioid agonist approval & contested mechanism 2020 ─
+  {
+    externalId: 'trajectory:oliceridine-olinvyk-biased-opioid-agonist-2020',
+    text: 'The FDA approved Trevena\'s oliceridine (OLINVYK) on August 7, 2020 as the first G-protein-biased mu-opioid receptor agonist, marketed on the rationale that preferential G-protein over beta-arrestin signaling would yield analgesia with fewer opioid-related adverse effects.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-07',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved oliceridine (OLINVYK), a novel IV mu-opioid agonist, for moderate-to-severe acute pain requiring an IV opioid where alternatives are inadequate, following an earlier 2018 Complete Response Letter. Trevena marketed it as the first \'biased\' opioid agonist whose preferential G-protein signaling was theorized to reduce respiratory depression and other opioid harms, recording the safer-opioid hypothesis as an approved product even though the FDA label did not assert superiority over conventional opioids.',
+        source: {
+          externalId: 'src:trevena-olinvyk-fda-approval-8k-2020',
+          name: 'Trevena, Inc. Trevena Announces FDA Approval of OLINVYK (oliceridine) Injection. Form 8-K Exhibit 99.1, U.S. SEC EDGAR. August 2020.',
+          url: 'https://www.sec.gov/Archives/edgar/data/1429560/000110465920092325/tm2027070d1_ex99-1.htm',
+          publishedAt: '2020-08-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2025-09-01',
+        datePrecision: 'MONTH',
+        reason: 'A review in the Journal of Opioid Management examined the accumulated pharmacology and concluded that the drug\'s purported mechanism—biased G-protein agonism—remains contested, with subsequent research (building on Gillis et al., Science Signaling 2020, which showed these compounds behave as low-intrinsic-efficacy partial agonists rather than true \'biased\' ligands) calling into question whether oliceridine is genuinely biased or merely a partial agonist. The expert literature thus disputes the central safety rationale on which the drug was developed and approved.',
+        source: {
+          externalId: 'src:prommer-oliceridine-contested-mechanism-2025',
+          name: 'Prommer EE. Oliceridine: examining the clinical evidence, pharmacology, and contested mechanism of action of the first FDA-approved biased opioid agonist. J Opioid Manag. 2025 Sep-Oct;21(5):377-387.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/41123260/',
+          publishedAt: '2025-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Suzetrigine (JOURNAVX) — NaV1.8 inhibitor FDA approval 2025 ─────────────
+  {
+    externalId: 'trajectory:suzetrigine-journavx-nonopioid-nav18-acute-pain-2025',
+    text: 'Vertex Pharmaceuticals established that selective inhibition of the NaV1.8 voltage-gated sodium channel relieves moderate-to-severe acute pain in humans without opioid action, a claim institutionally ratified when the FDA approved suzetrigine (JOURNAVX) on January 30, 2025 as the first new-class non-opioid oral analgesic in over two decades.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-01-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-01-30',
+        datePrecision: 'DAY',
+        reason: 'Vertex announced positive results from its pivotal Phase 3 program for VX-548 (suzetrigine), a selective NaV1.8 inhibitor, in moderate-to-severe acute pain after abdominoplasty and bunionectomy, with both trials meeting the primary SPID48 endpoint versus placebo (P<0.0001 and P=0.0002). The data recorded, for the first time in a confirmatory trial program, that targeting a peripheral sodium channel could produce clinically meaningful analgesia without an opioid mechanism, validating a long-pursued non-addictive analgesic target.',
+        source: {
+          externalId: 'src:vertex-vx548-phase3-acute-pain-2024',
+          name: 'Vertex Pharmaceuticals. Vertex Announces Positive Results From the VX-548 Phase 3 Program for the Treatment of Moderate-to-Severe Acute Pain. Press release. January 30, 2024.',
+          url: 'https://news.vrtx.com/news-releases/news-release-details/vertex-announces-positive-results-vx-548-phase-3-program',
+          publishedAt: '2024-01-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-01-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved suzetrigine (JOURNAVX) 50 mg oral tablets for moderate-to-severe acute pain in adults, granted under Breakthrough Therapy and Fast Track designations, making it the first-in-class selective NaV1.8 inhibitor and the first non-opioid analgesic in a new mechanistic class approved in more than 20 years. The approval institutionally settled the claim that NaV1.8 blockade is a viable, non-opioid route to acute-pain control and positioned it as a scheduled-substance-free alternative amid the opioid epidemic.',
+        source: {
+          externalId: 'src:vertex-journavx-fda-approval-2025',
+          name: 'Vertex Pharmaceuticals. Vertex Announces FDA Approval of JOURNAVX (suzetrigine), a First-in-Class Treatment for Adults With Moderate-to-Severe Acute Pain. Press release. January 30, 2025.',
+          url: 'https://news.vrtx.com/news-releases/news-release-details/vertex-announces-fda-approval-journavxtm-suzetrigine-first-class',
+          publishedAt: '2025-01-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
