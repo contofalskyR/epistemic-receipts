@@ -32277,6 +32277,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID EPIDEMIC / REGULATORY (2014–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── DEA reclassifies hydrocodone combinations to Schedule II — 2014 ─────────
+  {
+    externalId: 'trajectory:dea-hydrocodone-combination-schedule-ii-reclassification-2014',
+    text: 'On August 22, 2014, the DEA published a final rule rescheduling hydrocodone combination products (e.g., Vicodin) from Schedule III to the more restrictive Schedule II of the Controlled Substances Act, effective October 6, 2014, formally reclassifying these widely prescribed opioids as having a higher abuse and dependence liability.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-08-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-08-22',
+        datePrecision: 'DAY',
+        reason: 'After an FDA recommendation and years of debate, the DEA issued a final rule moving hydrocodone combination products from Schedule III to Schedule II, the tier reserved for drugs with high abuse potential. The reclassification imposed Schedule II controls—no refills, written prescriptions, tighter storage and dispensing—on the most commonly prescribed opioid in the United States, codifying a higher institutional assessment of their addiction risk amid the prescription opioid epidemic.',
+        source: {
+          externalId: 'src:dea-hydrocodone-rescheduling-final-rule-2014',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Rescheduling of Hydrocodone Combination Products From Schedule III to Schedule II. Final rule. Fed Regist. 2014 Aug 22;79(163):49661–49682.',
+          url: 'https://www.federalregister.gov/documents/2014/08/22/2014-19922/schedules-of-controlled-substances-rescheduling-of-hydrocodone-combination-products-from-schedule',
+          publishedAt: '2014-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA requests Opana ER market removal — oxymorphone injection-abuse — 2017
+  {
+    externalId: 'trajectory:fda-opana-er-market-removal-oxymorphone-2017',
+    text: 'On June 8, 2017, the FDA requested that Endo Pharmaceuticals remove reformulated Opana ER (oxymorphone hydrochloride extended-release) from the market—the first time the agency sought removal of a currently marketed opioid analgesic over the public-health consequences of abuse—after postmarketing data showed a shift to injection abuse linked to outbreaks of HIV, hepatitis C, and thrombotic microangiopathy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved reformulated Opana ER (NDA 201655), a crush-resistant formulation Endo positioned as resistant to physical and chemical manipulation for abuse by snorting or injecting. The approval established the regulatory position that the drug\'s benefits as a marketed opioid analgesic outweighed its risks.',
+        source: {
+          externalId: 'src:fda-opana-er-reformulated-approval-2011',
+          name: 'Drugs.com. Opana (oxymorphone) FDA Approval History — reformulated OPANA ER (NDA 201655) approved December 9, 2011.',
+          url: 'https://www.drugs.com/history/opana.html',
+          publishedAt: '2011-12-09',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'Following an 18–8 March 2017 advisory committee vote that the benefits of reformulated Opana ER no longer outweighed its risks, the FDA formally requested its removal from the market—its first such action against a marketed opioid on abuse grounds—because the reformulation had shifted abuse from nasal to injection routes, fueling HIV and hepatitis C outbreaks. Endo agreed to withdraw the product roughly a month later, and FDA finalized withdrawal of the approval in 2020.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-request-2017',
+          name: 'U.S. FDA. FDA Requests Removal of Opana ER for Risks Related to Abuse (FDA Newsroom press announcement). June 8, 2017.',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CDC 2022 opioid guideline rejects rigid dose thresholds — 2022 ──────────
+  {
+    externalId: 'trajectory:cdc-2022-opioid-guideline-replaces-rigid-thresholds-2022',
+    text: 'On November 4, 2022, the CDC published its Clinical Practice Guideline for Prescribing Opioids for Pain, replacing the 2016 guideline and explicitly stating that fixed dose thresholds such as 90 MME/day should not be applied as absolute limits, warning that rigid threshold-based policies are inconsistent with the guideline and have contributed to patient harm.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-04',
+        datePrecision: 'DAY',
+        reason: 'The CDC issued a revised opioid prescribing guideline in MMWR Recommendations and Reports that superseded its influential 2016 guideline. It moved specific dosage figures out of the recommendation statements into implementation considerations and stated that policies treating thresholds like 90 MME as hard limits "are not consistent with the 2016 CDC Opioid Prescribing Guideline and have contributed to patient harm." This reversed the rigid-threshold interpretation that had driven forced tapering and abrupt discontinuation across payers, pharmacies, and state laws.',
+        source: {
+          externalId: 'src:cdc-mmwr-opioid-guideline-2022',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022 Nov 4;71(3):1–95.',
+          url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
+          publishedAt: '2022-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SCOTUS strikes Sackler nonconsensual bankruptcy releases — 2024 ─────────
+  {
+    externalId: 'trajectory:scotus-harrington-purdue-sackler-release-struck-2024',
+    text: 'On June 27, 2024, the U.S. Supreme Court held 5–4 in Harrington v. Purdue Pharma L.P. that the Bankruptcy Code does not authorize a Chapter 11 plan to release and enjoin claims against the Sackler family—non-debtors who had not filed for bankruptcy—without the consent of the opioid victims holding those claims, undoing the third-party releases that had been approved below.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2024-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-06-27',
+        datePrecision: 'DAY',
+        reason: 'Writing for the majority, Justice Gorsuch held that Section 1123(b)(6) does not give a bankruptcy court power to discharge a non-debtor\'s liabilities without affected claimants\' consent, reversing the Second Circuit\'s approval of Purdue\'s plan. This struck down the nonconsensual Sackler liability releases that had been the centerpiece of the bankruptcy settlement, reversing the prior judicial position and sending the plan back for renegotiation.',
+        source: {
+          externalId: 'src:scotus-harrington-purdue-pharma-2024',
+          name: 'Harrington v. Purdue Pharma L.P., 603 U.S. ___ (2024), No. 23-124 (decided June 27, 2024).',
+          url: 'https://www.supremecourt.gov/opinions/23pdf/23-124_8nk0.pdf',
+          publishedAt: '2024-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
