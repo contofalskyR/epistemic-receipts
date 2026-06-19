@@ -34951,6 +34951,161 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS ERA — LAW, POLICY & GUIDELINE CORRECTIONS (2007–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Purdue Frederick misbranding guilty plea — 2007 ─────────────────────────
+  {
+    externalId: 'trajectory:purdue-frederick-oxycontin-misbranding-guilty-plea-2007',
+    text: 'On May 10, 2007, The Purdue Frederick Company and three of its executives pleaded guilty in U.S. District Court for the Western District of Virginia to misbranding OxyContin, admitting that from 1996 the company fraudulently marketed the drug as less addictive, less subject to abuse, and less likely to cause withdrawal than other opioids, and agreed to pay a total of $634.5 million in penalties.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2007-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2007-05-10',
+        datePrecision: 'DAY',
+        reason: 'Purdue Frederick and executives Michael Friedman, Howard Udell, and Paul Goldenheim pleaded guilty to misbranding OxyContin \'with intent to defraud and mislead.\' The plea entered into the judicial record a formal admission that the foundational 1995-era marketing claim — that OxyContin\'s controlled-release form carried reduced abuse liability — had been knowingly false, converting a contested marketing assertion into an adjudicated criminal fact a full decade before the 2020 federal felony resolution.',
+        source: {
+          externalId: 'src:senate-judiciary-oxycontin-criminal-settlement-2007',
+          name: 'U.S. Senate Committee on the Judiciary. Evaluating the Propriety and Adequacy of the OxyContin Criminal Settlement (Hearing, testimony of U.S. Attorney John L. Brownlee). 110th Cong., S. Hrg. 110-884. 2007.',
+          url: 'https://www.govinfo.gov/content/pkg/CHRG-110shrg40884/html/CHRG-110shrg40884.htm',
+          publishedAt: '2007-07-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA Opana ER market withdrawal — abuse-deterrent failure 2017 ────────────
+  {
+    externalId: 'trajectory:fda-opana-er-market-withdrawal-abuse-2017',
+    text: 'Endo Pharmaceuticals\' reformulated Opana ER (oxymorphone hydrochloride extended-release), redesigned in 2012 to resist crushing and marketed as abuse-deterrent, was determined by the FDA in 2017 to have benefits no longer outweighing its risks, leading the agency on June 8, 2017 to request its removal — the first time the FDA sought withdrawal of a marketed opioid because of the public-health consequences of abuse.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-01',
+        datePrecision: 'MONTH',
+        reason: 'A joint FDA advisory committee of independent experts voted 18 to 8 in March 2017 that the benefits of reformulated Opana ER for severe pain no longer outweighed its risks, citing postmarketing data showing the 2012 reformulation had shifted abuse from snorting to injection. The vote moved a previously approved, marketed opioid into formal regulatory contestation.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-statement-2017',
+          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (FDA News Release / Statement by Commissioner Scott Gottlieb). June 8, 2017.',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'On June 8, 2017, the FDA formally requested that Endo remove reformulated Opana ER from the market — the agency\'s first such action against a marketed opioid for abuse-related public-health harm, including injection-linked HIV and hepatitis C outbreaks and thrombotic microangiopathy. Endo agreed to voluntarily withdraw the product on July 6, 2017, reversing the abuse-deterrent reformulation premise on which the drug had been marketed.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-statement-2017',
+          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (FDA News Release / Statement by Commissioner Scott Gottlieb). June 8, 2017.',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ruan v. United States — prescriber mens rea 2022 ────────────────────────
+  {
+    externalId: 'trajectory:ruan-united-states-prescriber-mens-rea-2022',
+    text: 'On June 27, 2022, the U.S. Supreme Court held unanimously in Ruan v. United States that the \'knowingly or intentionally\' mens rea of 21 U.S.C. § 841 applies to the statute\'s \'except as authorized\' clause, so that to convict a physician of unlawful opioid prescribing the government must prove the prescriber knew or intended that the prescription was not authorized.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2022-06-27',
+        datePrecision: 'DAY',
+        reason: 'Writing for the Court in the consolidated cases of Dr. Xiulu Ruan and Dr. Shakeel Kahn, Justice Breyer established a strong subjective scienter requirement, displacing the \'objectively reasonable prescriber\' standard several circuits had used. The ruling reset the legal threshold for criminalizing prescribers during the opioid epidemic, requiring proof of a doctor\'s knowing or intentional departure from authorized medical practice rather than mere objective unreasonableness.',
+        source: {
+          externalId: 'src:scotus-ruan-v-united-states-opinion-2022',
+          name: 'Ruan v. United States, 597 U.S. 450 (2022), No. 20-1410. Supreme Court of the United States. Decided June 27, 2022.',
+          url: 'https://www.supremecourt.gov/opinions/21pdf/20-1410_1an2.pdf',
+          publishedAt: '2022-06-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CDC 2022 revised opioid clinical practice guideline ──────────────────────
+  {
+    externalId: 'trajectory:cdc-revised-opioid-clinical-practice-guideline-2022',
+    text: 'On November 4, 2022, the CDC published its Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022, updating the 2016 guideline by removing the specific 50 and 90 morphine-milligram-equivalent dosage thresholds, extending recommendations to acute and subacute pain, and explicitly cautioning against rigid application of dose limits and abrupt opioid tapering.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-11-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-04',
+        datePrecision: 'DAY',
+        reason: 'Authored by Dowell, Ragan, Jones, Baldwin, and Chou and published in MMWR Recommendations and Reports (Vol. 71, No. 3, pp. 1-95), the 2022 guideline replaced the fixed dose-threshold framing of the 2016 guideline that payers, states, and regulators had widely misapplied as hard limits — a misapplication linked to forced tapers and abandonment of stable patients. It marks an institutional self-correction: the same agency that set the original thresholds formally walked them back toward individualized clinical judgment.',
+        source: {
+          externalId: 'src:cdc-mmwr-opioid-guideline-2022',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022;71(3):1-95. doi:10.15585/mmwr.rr7103a1.',
+          url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
+          publishedAt: '2022-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── X-waiver elimination — MAT Act 2022 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:x-waiver-elimination-mat-act-2022',
+    text: 'The Mainstreaming Addiction Treatment (MAT) Act, enacted within the Consolidated Appropriations Act of 2023 signed December 29, 2022, eliminated the Drug Addiction Treatment Act of 2000 \'X-waiver\' requirement and its patient caps, so that any clinician holding a standard DEA registration with Schedule III authority may prescribe buprenorphine for opioid use disorder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-10-17',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'The DATA 2000 framework that since 2002 had gated office-based buprenorphine prescribing behind a special DEA \'X-waiver\' and federal patient-count caps was repealed by the MAT Act when President Biden signed the Consolidated Appropriations Act of 2023. The reversal dismantled the central regulatory compromise of the 2002 office-based opioid-treatment regime, reframing buprenorphine for opioid use disorder as an ordinary prescribing decision rather than a specially licensed activity.',
+        source: {
+          externalId: 'src:samhsa-mat-act-waiver-elimination-2023',
+          name: 'Substance Abuse and Mental Health Services Administration (SAMHSA). Removal of DATA Waiver (X-Waiver) Requirement — Section 1262 of the Consolidated Appropriations Act, 2023 (MAT Act). 2023.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/resources/mat-act',
+          publishedAt: '2023-01-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
