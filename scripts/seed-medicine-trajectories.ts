@@ -35973,63 +35973,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Telithromycin (Ketek) hepatotoxicity reversal — 2007 ─────────────────────
-  {
-    externalId: 'trajectory:telithromycin-ketek-hepatotoxicity-reversal-2007',
-    text: 'The FDA approved the first ketolide antibiotic telithromycin (Ketek) on 1 April 2004 for respiratory infections; after published reports of severe hepatotoxicity, the FDA added a boxed warning and removed two of its three indications (acute sinusitis and acute bacterial exacerbations of chronic bronchitis) in February 2007.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2004-04-01',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'REVERSED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2004-04-01',
-        datePrecision: 'DAY',
-        reason: 'The FDA approved telithromycin (Ketek), the first ketolide antibiotic, for community-acquired pneumonia, acute bacterial sinusitis, and acute exacerbations of chronic bronchitis. The approval was later criticized for relying in part on a safety study (Study 3014) marred by fraud.',
-        source: {
-          externalId: 'src:fda-ketek-label-2007',
-          name: 'FDA. KETEK (telithromycin) Tablets prescribing information, NDA 21-144/S-012.',
-          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/021144s012lbl.pdf',
-          publishedAt: '2007-02-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'CONTESTED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2006-03-21',
-        datePrecision: 'DAY',
-        reason: 'Clay et al. published three case reports of severe telithromycin hepatotoxicity (including fatal and transplant-requiring acute liver failure) in Annals of Internal Medicine, released online in January 2006. The series catalyzed FDA safety review and a bolded hepatotoxicity warning in June 2006.',
-        source: {
-          externalId: 'src:clay-annals-telithromycin-hepatotoxicity-2006',
-          name: 'Clay KD, Hanson JS, Pope SD, Rissmiller RW, Purdum PP 3rd, Banks PM. Brief communication: severe hepatotoxicity of telithromycin: three case reports and literature review. Ann Intern Med. 2006 Mar 21;144(6):415-420.',
-          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-144-6-200503210-00121',
-          publishedAt: '2006-03-21',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'CONTESTED',
-        toAxis: 'REVERSED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2007-02-12',
-        datePrecision: 'MONTH',
-        reason: 'Following a December 2006 advisory committee, the FDA added a boxed warning and Medication Guide and withdrew two of Ketek\'s three indications (acute bacterial sinusitis and acute exacerbations of chronic bronchitis), leaving only community-acquired pneumonia. The action reversed most of the drug\'s original utility claim on safety grounds.',
-        source: {
-          externalId: 'src:fda-ketek-label-indications-removed-2007',
-          name: 'FDA. KETEK (telithromycin) revised label with boxed warning and removed indications, NDA 21-144/S-012, Rev. February 2007.',
-          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/021144s012lbl.pdf',
-          publishedAt: '2007-02-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── RotaTeq rotavirus vaccine safety restored — 2006 ─────────────────────────
   {
     externalId: 'trajectory:rotateq-rotavirus-vaccine-safety-restored-2006',
