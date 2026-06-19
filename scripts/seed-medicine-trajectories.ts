@@ -27075,33 +27075,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── DSM-5 substance use disorder reclassification — APA 2013 ────────────────
-  {
-    externalId: 'trajectory:dsm5-substance-use-disorder-reclassification-2013',
-    text: 'The American Psychiatric Association\'s DSM-5, released on 18 May 2013, reclassified addiction by merging the separate DSM-IV diagnoses of substance \'abuse\' and substance \'dependence\' into a single \'substance use disorder\' graded on a mild–moderate–severe continuum of 11 criteria.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '2013-05-18',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2013-05-18',
-        datePrecision: 'DAY',
-        reason: 'The APA published DSM-5, collapsing the previously distinct categories of substance abuse and substance dependence into one substance use disorder diagnosed by meeting 2 or more of 11 criteria and rated mild, moderate, or severe. The revision dropped the \'recurrent legal problems\' criterion, added \'craving,\' and abandoned the abuse/dependence dichotomy that had been criticized for conflating physical dependence with addiction, institutionally resetting how addiction is diagnosed and counted.',
-        source: {
-          externalId: 'src:apa-dsm5-substance-use-disorder-2013',
-          name: 'American Psychiatric Association. Substance-Related and Addictive Disorders. DSM-5 Fact Sheet. 2013.',
-          url: 'https://www.psychiatry.org/file%20library/psychiatrists/practice/dsm/apa_dsm-5-substance-use-disorder.pdf',
-          publishedAt: '2013-05-18',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
