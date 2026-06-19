@@ -25632,6 +25632,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (2010–present) — SMA / Vaccines / Newborn screening / Environmental
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Risdiplam (Evrysdi) — first oral SMA treatment 2020 ────────────────────
+  {
+    externalId: 'trajectory:risdiplam-evrysdi-first-oral-sma-treatment-2020',
+    text: 'On 7 August 2020 the U.S. FDA approved risdiplam (Evrysdi), a small-molecule SMN2 splicing modifier taken by mouth, for spinal muscular atrophy in adults and children two months and older — the first orally administered, at-home treatment for SMA, following the intrathecal antisense oligonucleotide nusinersen (2016) and the intravenous gene therapy onasemnogene abeparvovec (2019).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-08-07',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved risdiplam (Evrysdi, Genentech/Roche; developed with PTC Therapeutics and the SMA Foundation) for SMA across types 1–3 in patients aged two months and older, based on the FIREFISH (infantile-onset) and SUNFISH (later-onset) trials. As an orally/feeding-tube-administered daily liquid, it recorded a new institutional finding that SMN2 splicing could be modulated systemically by a small molecule, removing the need for repeated intrathecal injection (nusinersen) or one-time AAV gene therapy (onasemnogene) and broadening access to SMA disease-modifying treatment.',
+        source: {
+          externalId: 'src:roche-evrysdi-risdiplam-fda-approval-2020',
+          name: 'Roche. FDA approves Roche\'s Evrysdi (risdiplam) for treatment of spinal muscular atrophy (SMA) in adults and children 2 months and older. Press release. 10 August 2020 (FDA approval 7 August 2020).',
+          url: 'https://www.roche.com/media/releases/med-cor-2020-08-10b',
+          publishedAt: '2020-08-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-07-29',
+        datePrecision: 'DAY',
+        reason: 'Full publication of the FIREFISH Part 1 results in the New England Journal of Medicine reported that infants with type 1 SMA treated with risdiplam achieved motor milestones — including sitting without support — never seen in the untreated natural history of the disease, against historical controls. Peer-reviewed confirmation of clinically meaningful motor gains entrenched oral risdiplam\'s efficacy in the expert literature and cemented its place alongside nusinersen and onasemnogene as standard SMA therapy.',
+        source: {
+          externalId: 'src:darras-firefish-risdiplam-nejm-2021',
+          name: 'Darras BT, Masson R, Mazurkiewicz-Bełdzińska M, et al. Risdiplam-Treated Infants with Type 1 Spinal Muscular Atrophy versus Historical Controls. N Engl J Med. 2021;385(5):427-435. PMID 34320287.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34320287/',
+          publishedAt: '2021-07-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── LAIV / FluMist — ACIP not-recommended reversal 2016 ────────────────────
+  {
+    externalId: 'trajectory:laiv-flumist-acip-not-recommended-reversal-2016',
+    text: 'The U.S. Advisory Committee on Immunization Practices recommended that the live attenuated influenza vaccine (LAIV, FluMist) NOT be used during the 2016–17 season because post-marketing studies found it ineffective against influenza A(H1N1)pdm09 — withdrawing a nasal-spray vaccine that had been a routinely recommended childhood option (and, in 2014, preferentially recommended for healthy children) — before reinstating it as an acceptable option in February 2018 after the vaccine\'s H1N1 component was reformulated.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-06-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed FluMist, the first live attenuated, intranasally administered influenza vaccine, for healthy persons aged 5–49 years, recording the institutional judgment that a needle-free live vaccine was a safe and effective influenza-prevention option. Its use was later expanded to children aged 2–4 (2007).',
+        source: {
+          externalId: 'src:flumist-fda-approval-history-2003',
+          name: 'Drugs.com. FluMist (Influenza Virus Vaccine, Live, Intranasal) FDA Approval History (first approved 17 June 2003).',
+          url: 'https://www.drugs.com/history/flumist.html',
+          publishedAt: '2003-06-17',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-06',
+        datePrecision: 'MONTH',
+        reason: 'After an evidence review concluded LAIV had superior efficacy to inactivated vaccine in young children, ACIP issued a preferential recommendation that LAIV be used, when immediately available, for healthy children aged 2 through 8 years for the 2014–15 season. This elevated the nasal-spray vaccine to the preferred pediatric influenza vaccine, marking its high-water mark as settled childhood-schedule practice.',
+        source: {
+          externalId: 'src:acip-laiv-preferential-children-mmwr-2014',
+          name: 'Grohskopf LA, et al. Prevention and Control of Seasonal Influenza with Vaccines: Recommendations of the ACIP — United States, 2014–15 Influenza Season. MMWR Recomm Rep. 2014 (LAIV preferential recommendation for healthy children 2–8).',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6332a3.htm',
+          publishedAt: '2014-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-08-26',
+        datePrecision: 'DAY',
+        reason: 'After U.S. Flu Vaccine Effectiveness Network data from 2013–14 and 2015–16 showed LAIV4 provided little or no protection against influenza A(H1N1)pdm09 — while inactivated vaccine did — ACIP voted in June 2016 to make the interim recommendation that LAIV4 not be used, formalized in MMWR on 26 August 2016. The reversal stripped the routinely recommended status from the nasal-spray vaccine and threw its effectiveness into active dispute, collapsing FluMist\'s U.S. market the following seasons.',
+        source: {
+          externalId: 'src:acip-laiv-not-recommended-mmwr-2016',
+          name: 'Grohskopf LA, Sokolow LZ, Broder KR, et al. Prevention and Control of Seasonal Influenza with Vaccines — Recommendations of the ACIP, United States, 2016–17 Influenza Season. MMWR Recomm Rep. 2016;65(5):1-54.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6505a1.htm',
+          publishedAt: '2016-08-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-02-21',
+        datePrecision: 'DAY',
+        reason: 'After the manufacturer replaced the poorly performing H1N1 vaccine strain (A/Slovenia) and presented new replication and shedding data, ACIP voted on 21 February 2018 to reinstate LAIV4 as an acceptable influenza-vaccination option for the 2018–19 season, ending the two-season do-not-use recommendation. The restoration — published in MMWR — re-settled the nasal-spray vaccine within the childhood and adult schedules, an unusual case of a withdrawn vaccine recommendation being reversed on the strength of a reformulation.',
+        source: {
+          externalId: 'src:acip-laiv-reinstated-mmwr-2018',
+          name: 'Grohskopf LA, et al. Update: ACIP Recommendations for the Use of Quadrivalent Live Attenuated Influenza Vaccine (LAIV4) — United States, 2018–19 Influenza Season. MMWR Morb Mortal Wkly Rep. 2018;67(22):643-645. PMID 29879095.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29879095/',
+          publishedAt: '2018-06-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SCID newborn screening — RUSP addition 2010 ────────────────────────────
+  {
+    externalId: 'trajectory:scid-newborn-screening-rusp-addition-2010',
+    text: 'On 21 May 2010 U.S. HHS Secretary Kathleen Sebelius added severe combined immunodeficiency (SCID) to the federal Recommended Uniform Screening Panel (RUSP) — the first condition ever added to the panel after its 2005 creation — establishing population-wide newborn screening for SCID (via the TREC assay) so that affected \'bubble-boy\' infants could be identified and treated before life-threatening infections.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2010-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-05-21',
+        datePrecision: 'DAY',
+        reason: 'Accepting the January 2010 unanimous recommendation of the Secretary\'s Advisory Committee on Heritable Disorders in Newborns and Children, HHS Secretary Sebelius added SCID to the RUSP — the first nominated condition added since the panel was established — recording the federal judgment that SCID met newborn-screening criteria because the T-cell receptor excision circle (TREC) assay could detect it presymptomatically and early hematopoietic stem-cell transplant is curative. This converted SCID screening from a research/pilot activity (Wisconsin began statewide in 2008) into nationally recommended policy.',
+        source: {
+          externalId: 'src:hhs-sebelius-scid-rusp-addition-2010',
+          name: 'U.S. Department of Health and Human Services. Secretary of Health and Human Services Announces Addition of SCID to National Newborn Screening Standards. 21 May 2010.',
+          url: 'https://www.prnewswire.com/news-releases/secretary-of-health-and-human-services-announces-addition-of-scid-to-national-newborn-screening-standards-94866289.html',
+          publishedAt: '2010-05-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-08-20',
+        datePrecision: 'DAY',
+        reason: 'Kwan and colleagues reported in JAMA the pooled experience of 11 U.S. newborn-screening programs that had tested more than 3 million infants by TREC assay, establishing a population incidence of SCID of about 1 in 58,000 and showing 87% survival among detected cases. This large multi-program confirmation that universal TREC screening reliably identifies SCID early enough for curative treatment settled the screen\'s validity and supported its adoption by every U.S. state (achieved nationwide by December 2018).',
+        source: {
+          externalId: 'src:kwan-scid-newborn-screening-jama-2014',
+          name: 'Kwan A, Abraham RS, Currier R, et al. Newborn screening for severe combined immunodeficiency in 11 screening programs in the United States. JAMA. 2014;312(7):729-738. PMID 25138334.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25138334/',
+          publishedAt: '2014-08-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EPA leaded avgas endangerment finding 2023 ─────────────────────────────
+  {
+    externalId: 'trajectory:epa-leaded-avgas-endangerment-finding-2023',
+    text: 'On 18 October 2023 the U.S. EPA issued a final determination under the Clean Air Act that lead emissions from piston-engine aircraft operating on leaded aviation gasoline cause or contribute to air pollution that may reasonably be anticipated to endanger public health and welfare — the federal recognition that the now-dominant remaining source of airborne lead, decades after leaded automobile gasoline was banned, poses a recognized risk to children living near general-aviation airports.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-10-17',
+        datePrecision: 'DAY',
+        reason: 'EPA published in the Federal Register a proposed endangerment finding that lead emissions from aircraft burning leaded fuel cause or contribute to air pollution endangering public health and welfare, citing that piston-engine aircraft had become the largest remaining source of lead emissions to U.S. air and that no safe level of childhood lead exposure exists. The proposal recorded, for formal comment, the scientific case linking leaded avgas to neurodevelopmental risk in children near airports.',
+        source: {
+          externalId: 'src:epa-proposed-leaded-avgas-endangerment-fr-2022',
+          name: 'U.S. EPA. Proposed Finding That Lead Emissions From Aircraft Engines That Operate on Leaded Fuel Cause or Contribute to Air Pollution That May Reasonably Be Anticipated To Endanger Public Health and Welfare. 87 FR 62753, 17 October 2022.',
+          url: 'https://www.federalregister.gov/documents/2022/10/17/2022-22223/proposed-finding-that-lead-emissions-from-aircraft-engines-that-operate-on-leaded-fuel-cause-or',
+          publishedAt: '2022-10-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-10-18',
+        datePrecision: 'DAY',
+        reason: 'After reviewing public comment, EPA Administrator Michael Regan signed the final endangerment finding on 18 October 2023 (published in the Federal Register on 20 October 2023), legally determining that aircraft lead emissions endanger public health and welfare. Under the Clean Air Act this finding obligates the FAA to set fuel-composition standards, settling as federal fact that leaded avgas — the source of roughly 70% of U.S. airborne lead — is a recognized hazard to children, and triggering the regulatory pathway toward an unleaded-avgas transition.',
+        source: {
+          externalId: 'src:epa-final-leaded-avgas-endangerment-fr-2023',
+          name: 'U.S. EPA. Finding That Lead Emissions From Aircraft Engines That Operate on Leaded Fuel Cause or Contribute to Air Pollution That May Reasonably Be Anticipated To Endanger Public Health and Welfare. 88 FR 72050, 20 October 2023 (signed 18 October 2023).',
+          url: 'https://www.epa.gov/newsreleases/epa-determines-lead-emissions-aircraft-engines-cause-or-contribute-air-pollution',
+          publishedAt: '2023-10-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
