@@ -32404,6 +32404,129 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── rasburicase/Elitek — first enzymatic tumor-lysis uricase 2002 ───────────
+  {
+    externalId: 'trajectory:rasburicase-elitek-first-tumor-lysis-uricase-2002',
+    text: 'On 12 July 2002 the U.S. FDA approved rasburicase (Elitek, NDA/BLA 103950), a recombinant urate-oxidase enzyme, for the initial management of plasma uric acid levels in pediatric patients with leukemia, lymphoma, and solid tumors receiving anti-cancer therapy expected to cause tumor lysis — the first enzymatic therapy approved to prevent and treat the hyperuricemia of tumor lysis syndrome.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-05-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-05-15',
+        datePrecision: 'DAY',
+        reason: 'Goldman and colleagues published a multicenter randomized trial in Blood comparing rasburicase with allopurinol in children with leukemia or lymphoma at high risk for tumor lysis, reporting a 2.6-fold lower uric-acid exposure (AUC) and an 86% versus 12% reduction in plasma uric acid four hours after the first dose. This recorded the first controlled evidence that enzymatically degrading uric acid to allantoin controls hyperuricemia faster than blocking its synthesis.',
+        source: {
+          externalId: 'src:goldman-rasburicase-allopurinol-blood-2001',
+          name: 'Goldman SC, Holcenberg JS, Finklestein JZ, et al. A randomized comparison between rasburicase and allopurinol in children with lymphoma or leukemia at high risk for tumor lysis. Blood. 2001;97(10):2998-3003. PMID 11342423.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11342423/',
+          publishedAt: '2001-05-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-07-12',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Elitek (rasburicase, Sanofi-Synthelabo) for the initial management of plasma uric acid in pediatric cancer patients at risk of tumor lysis, the first recombinant uricolytic agent licensed for the indication. The approval settled enzymatic uric-acid degradation as a recognized standard for preventing tumor-lysis hyperuricemia; the indication was later extended to adults in 2009.',
+        source: {
+          externalId: 'src:fda-elitek-rasburicase-label-2002',
+          name: 'U.S. FDA. Elitek (rasburicase) prescribing information / original product label, BLA 103950 (approved 12 July 2002).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2002/rasbsan071202LB.pdf',
+          publishedAt: '2002-07-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── mecasermin/Increlex — first IGF-1 deficiency therapy 2005 ───────────────
+  {
+    externalId: 'trajectory:mecasermin-increlex-first-igf1-deficiency-therapy-2005',
+    text: 'On 30 August 2005 the U.S. FDA approved mecasermin (Increlex, Tercica, NDA 021839), a recombinant human insulin-like growth factor-1 (rhIGF-1), for long-term treatment of growth failure in children with severe primary IGF-1 deficiency or with growth-hormone gene deletion who have developed neutralizing antibodies to growth hormone — the first IGF-1 replacement therapy for the orphan growth-hormone-resistant disorder.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2005-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-08-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Increlex as an orphan drug for severe primary IGF-1 deficiency — a growth-hormone-resistant state with low IGF-1 despite normal or elevated growth hormone, affecting roughly 6,000 U.S. children — establishing that direct replacement of the downstream effector hormone IGF-1, rather than growth hormone, was the validated treatment for children whose tissues cannot respond to GH. The approval settled rhIGF-1 as the recognized therapy for a condition for which conventional GH therapy is ineffective.',
+        source: {
+          externalId: 'src:fda-increlex-mecasermin-approval-2005',
+          name: 'U.S. FDA / Drugs.com. Increlex (mecasermin) FDA Approval History — original approval for severe primary IGF-1 deficiency, NDA 021839, 30 August 2005.',
+          url: 'https://www.drugs.com/history/increlex.html',
+          publishedAt: '2005-08-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ecallantide/Kalbitor — first kallikrein inhibitor acute HAE 2009 ─────────
+  {
+    externalId: 'trajectory:ecallantide-kalbitor-first-kallikrein-inhibitor-acute-hae-2009',
+    text: 'On 1 December 2009 the U.S. FDA approved ecallantide (Kalbitor, Dyax, BLA 125277), a recombinant plasma-kallikrein inhibitor, for the treatment of acute attacks of hereditary angioedema in patients 16 years and older — the first plasma-kallikrein inhibitor and the first targeted on-demand therapy for acute HAE attacks approved on the bradykinin-pathway mechanism.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2009-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-12-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kalbitor for acute HAE attacks on the basis of the randomized, double-blind, placebo-controlled EDEMA3 and EDEMA4 trials (168 patients) showing greater symptom-severity reduction versus placebo; the EDEMA4 pivotal trial was subsequently published in NEJM (Cicardi M et al. 2010;363(6):523-531, PMID 20818887). As the first plasma-kallikrein inhibitor, it established direct kallikrein blockade — reducing bradykinin generation — as a validated on-demand mechanism for acute HAE, distinct from the C1-inhibitor replacement (Cinryze) used for prophylaxis. A boxed warning for anaphylaxis (3.9% of trial patients) accompanied the approval.',
+        source: {
+          externalId: 'src:fda-kalbitor-ecallantide-approval-2009',
+          name: 'U.S. FDA / Drugs.com. Kalbitor (ecallantide) FDA Approval History — original approval for acute attacks of hereditary angioedema, BLA 125277, 1 December 2009.',
+          url: 'https://www.drugs.com/history/kalbitor.html',
+          publishedAt: '2009-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── carglumic acid/Carbaglu — first NAGS-deficiency therapy 2010 ─────────────
+  {
+    externalId: 'trajectory:carglumic-acid-carbaglu-first-nags-deficiency-therapy-2010',
+    text: 'On 18 March 2010 the U.S. FDA approved carglumic acid (Carbaglu, Orphan Europe, NDA 022562), a synthetic structural analogue of N-acetylglutamate, as the first treatment for acute and chronic hyperammonemia due to N-acetylglutamate synthase (NAGS) deficiency — a rare inborn urea-cycle disorder previously without a specific therapy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2010-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-03-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Carbaglu as adjunctive therapy for acute hyperammonemia and as maintenance therapy for chronic hyperammonemia in NAGS deficiency, the first drug approved for the disorder. Carglumic acid substitutes for the missing endogenous activator N-acetylglutamate, restoring carbamoyl-phosphate-synthetase-1 activity and the first step of the urea cycle; the approval settled pharmacologic cofactor replacement as the standard of care for an ultra-rare metabolic enzyme deficiency that causes life-threatening ammonia accumulation.',
+        source: {
+          externalId: 'src:fda-carbaglu-carglumic-acid-medical-review-2010',
+          name: 'U.S. FDA, Center for Drug Evaluation and Research. Carbaglu (carglumic acid) Medical Review, NDA 022562. Approved 18 March 2010.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2010/022562s000medr.pdf',
+          publishedAt: '2010-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
