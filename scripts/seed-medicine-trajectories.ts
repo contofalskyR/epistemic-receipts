@@ -33877,6 +33877,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Golodirsen (Vyondys 53) FDA Rejection-then-Reversal 2019 ────────────────
+  {
+    externalId: 'trajectory:golodirsen-vyondys53-accelerated-approval-reversal-2019',
+    text: 'The U.S. FDA reversed its own August 2019 Complete Response Letter rejecting golodirsen and, on 12 December 2019, granted accelerated approval to golodirsen (Vyondys 53) for Duchenne muscular dystrophy in patients amenable to exon 53 skipping, on the basis of a dystrophin-production surrogate endpoint.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-08-19',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-08-19',
+        datePrecision: 'MONTH',
+        reason: "The FDA's Office of Drug Evaluation issued a Complete Response Letter rejecting Sarepta's golodirsen New Drug Application, citing the risk of intravenous infusion-port infections and the potential for renal toxicity seen in animals. The regulator thereby contested the drug's approvability, an unusual public rejection of a Duchenne therapy after the contested 2016 eteplirsen approval.",
+        source: {
+          externalId: 'src:sarepta-golodirsen-complete-response-letter-2019',
+          name: 'Sarepta Therapeutics. Sarepta Therapeutics Receives Complete Response Letter from the US Food and Drug Administration for Golodirsen New Drug Application. Press release. 19 August 2019.',
+          url: 'https://investorrelations.sarepta.com/news-releases/news-release-details/sarepta-therapeutics-receives-complete-response-letter-us-food',
+          publishedAt: '2019-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-12',
+        datePrecision: 'DAY',
+        reason: "After Sarepta filed a formal dispute resolution request, the FDA's Office of New Drugs re-evaluated the matters raised in the Complete Response Letter and reversed the decision, granting golodirsen accelerated approval based on an increase in dystrophin in skeletal muscle as a surrogate reasonably likely to predict clinical benefit. The reversal within four months made golodirsen a notable case of a regulator overturning its own rejection of a rare-disease drug.",
+        source: {
+          externalId: 'src:sarepta-vyondys53-golodirsen-fda-approval-2019',
+          name: 'Sarepta Therapeutics. Sarepta Therapeutics Announces FDA Approval of VYONDYS 53 (golodirsen) Injection for the Treatment of Duchenne Muscular Dystrophy (DMD) in Patients Amenable to Skipping Exon 53. Press release. 12 December 2019.',
+          url: 'https://www.globenewswire.com/news-release/2019/12/12/1960215/0/en/Sarepta-Therapeutics-Announces-FDA-Approval-of-VYONDYS-53-golodirsen-Injection-for-the-Treatment-of-Duchenne-Muscular-Dystrophy-DMD-in-Patients-Amenable-to-Skipping-Exon-53.html',
+          publishedAt: '2019-12-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mipomersen (Kynamro) FDA approval / EMA refusal / market withdrawal 2013 ─
+  {
+    externalId: 'trajectory:mipomersen-kynamro-fda-approval-ema-refusal-withdrawal-2013',
+    text: 'On 29 January 2013 the U.S. FDA approved mipomersen (Kynamro), the first systemically administered antisense oligonucleotide drug, as an adjunct treatment for homozygous familial hypercholesterolemia, even though the European Medicines Agency\'s CHMP had recommended refusal weeks earlier; the drug was later withdrawn from the U.S. market in 2018.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-01-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-01-29',
+        datePrecision: 'DAY',
+        reason: "The FDA approved mipomersen sodium as an orphan drug for HoFH to lower LDL-C, apolipoprotein B, total cholesterol, and non-HDL-C, carrying a boxed warning for hepatotoxicity. The approval came weeks after the EMA's CHMP recommended refusal over hepatic and cardiovascular safety, producing a transatlantic regulatory split over the same evidence and establishing antisense oligonucleotides as a systemic drug class in the U.S.",
+        source: {
+          externalId: 'src:ionis-genzyme-kynamro-mipomersen-fda-approval-2013',
+          name: 'Genzyme and Isis Pharmaceuticals. Genzyme and Isis Announce FDA Approval of KYNAMRO (mipomersen sodium) Injection for the Treatment of Homozygous Familial Hypercholesterolemia. Press release. 29 January 2013.',
+          url: 'https://ir.ionis.com/news-releases/news-release-details/genzyme-and-isis-announce-fda-approval-kynamrotm-mipomersen',
+          publishedAt: '2013-01-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2018-05-31',
+        datePrecision: 'DAY',
+        reason: 'Kastle Therapeutics, which had acquired the drug from Ionis/Genzyme, discontinued sales of Kynamro and the product ceased to be manufactured or clinically available, with withdrawal of the approval subsequently requested. Limited uptake against a competing oral agent (lomitapide) plus the hepatotoxicity burden ended the drug\'s market life, reversing its U.S. clinical availability.',
+        source: {
+          externalId: 'src:kynamro-mipomersen-sales-discontinued-2018',
+          name: 'United Federation of Pharmacists / Kastle Therapeutics. Kynamro Sales Discontinued (notice of discontinuation of mipomersen sodium). 2018.',
+          url: 'http://www.ufp.us.com/index.php?id=909&co=1&newsitem=1',
+          publishedAt: '2018-05-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lomitapide (Juxtapid) first oral MTP inhibitor for HoFH 2012 ─────────────
+  {
+    externalId: 'trajectory:lomitapide-juxtapid-first-oral-mtp-inhibitor-hofh-2012',
+    text: 'On 21 December 2012 the U.S. FDA approved lomitapide (Juxtapid), the first oral microsomal triglyceride transfer protein (MTP) inhibitor, as an adjunct to diet and other lipid-lowering treatments to reduce LDL-C in adults with homozygous familial hypercholesterolemia, with a boxed warning for hepatotoxicity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-11-02',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-11-02',
+        datePrecision: 'MONTH',
+        reason: 'Cuchel and colleagues reported a single-arm, open-label phase 3 trial in The Lancet showing that lomitapide reduced mean LDL-C by roughly half in adults with HoFH on top of existing lipid-lowering therapy. The trial provided the first prospective efficacy evidence that pharmacologic MTP inhibition could lower LDL-C in a disease largely refractory to statins.',
+        source: {
+          externalId: 'src:cuchel-lomitapide-hofh-lancet-2013',
+          name: 'Cuchel M, Meagher EA, du Toit Theron H, et al. Efficacy and safety of a microsomal triglyceride transfer protein inhibitor in patients with homozygous familial hypercholesterolaemia: a single-arm, open-label, phase 3 study. Lancet. 2013;381(9860):40–46.',
+          url: 'https://doi.org/10.1016/S0140-6736(12)61731-0',
+          publishedAt: '2012-11-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-12-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved lomitapide capsules for HoFH as the first oral MTP inhibitor, restricted by a Risk Evaluation and Mitigation Strategy and a boxed warning for hepatotoxicity and hepatic steatosis. The approval institutionalized a novel mechanism for an ultra-rare lipid disorder and, alongside mipomersen approved five weeks later, gave HoFH its first two targeted oral/injectable adjuncts.',
+        source: {
+          externalId: 'src:aegerion-juxtapid-lomitapide-fda-approval-2012',
+          name: 'Aegerion Pharmaceuticals, Inc. FDA Approves Aegerion Pharmaceuticals\' JUXTAPID (lomitapide) Capsules for Homozygous Familial Hypercholesterolemia. Form 8-K exhibit 99.1, SEC. December 2012.',
+          url: 'https://www.sec.gov/Archives/edgar/data/0001338042/000119312512515829/d459023dex991.htm',
+          publishedAt: '2012-12-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Deflazacort (Emflaza) first corticosteroid approved for DMD 2017 ──────────
+  {
+    externalId: 'trajectory:deflazacort-emflaza-first-dmd-corticosteroid-2017',
+    text: 'On 9 February 2017 the U.S. FDA approved deflazacort (Emflaza) for patients aged five years and older with Duchenne muscular dystrophy, the first corticosteroid formally approved for DMD in the United States, formalizing decades of off-label glucocorticoid use; the approval immediately drew controversy when Marathon Pharmaceuticals set a U.S. list price near $89,000 per year for a drug available abroad for about $1,000–1,200.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-10-19',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-10-19',
+        datePrecision: 'MONTH',
+        reason: 'Griggs and colleagues published in Neurology a randomized, double-blind trial (conducted in the 1990s) showing deflazacort and prednisone improved muscle strength versus placebo in boys with DMD, with deflazacort associated with less weight gain. The delayed publication of this pivotal evidence supplied the formal trial basis for a corticosteroid long used off-label in DMD.',
+        source: {
+          externalId: 'src:griggs-deflazacort-prednisone-dmd-neurology-2016',
+          name: 'Griggs RC, Miller JP, Greenberg CR, et al. Efficacy and safety of deflazacort vs prednisone and placebo for Duchenne muscular dystrophy. Neurology. 2016;87(20):2123–2131.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27566742/',
+          publishedAt: '2016-10-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-02-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved deflazacort as the first corticosteroid indicated for DMD, converting longstanding off-label practice into a labeled standard of care. The approval became a touchstone in the U.S. drug-pricing debate after the manufacturer\'s ~$89,000/year price for a decades-old, internationally inexpensive drug prompted congressional criticism, a delayed launch, and the rapid sale of the product to PTC Therapeutics.',
+        source: {
+          externalId: 'src:fda-deflazacort-emflaza-dmd-approval-2017',
+          name: 'U.S. Food and Drug Administration. FDA approves drug to treat Duchenne muscular dystrophy (Emflaza/deflazacort). Press release. 9 February 2017.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-drug-to-treat-duchenne-muscular-dystrophy-300405176.html',
+          publishedAt: '2017-02-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── AAP Fruit Juice Under 12 Months 2017 ────────────────────────────────────
   {
     externalId: 'trajectory:aap-fruit-juice-12-months-2017',
