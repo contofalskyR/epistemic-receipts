@@ -22298,6 +22298,129 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Fluoroquinolone-resistant gonorrhea CDC reversal — 2007 ─────────────────
+  {
+    externalId: 'trajectory:fluoroquinolone-resistant-gonorrhea-cdc-reversal-2007',
+    text: 'On 13 April 2007 the U.S. CDC announced that fluoroquinolones (ciprofloxacin, ofloxacin, levofloxacin) were no longer recommended for treating gonorrhea, after Gonococcal Isolate Surveillance Project data showed quinolone-resistant Neisseria gonorrhoeae had risen to 6.7% among heterosexual men in early 2006, leaving cephalosporins as the only recommended treatment class.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1993-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-04-13',
+        datePrecision: 'DAY',
+        reason: 'CDC had recommended oral fluoroquinolones as first-line therapy for gonorrhea since 1993. Citing GISP surveillance showing quinolone-resistant N. gonorrhoeae had reached 6.7% among heterosexual men (an 11-fold rise from 0.6% in 2001, above the 5% threshold for changing guidelines), CDC formally removed the entire fluoroquinolone class from its gonorrhea treatment recommendations. This post-market resistance surveillance signal reversed a 14-year-old standard of care and left cephalosporins as the sole recommended class.',
+        source: {
+          externalId: 'src:cdc-mmwr-fluoroquinolone-gonorrhea-2007',
+          name: 'CDC. Update to CDC\'s Sexually Transmitted Diseases Treatment Guidelines, 2006: Fluoroquinolones No Longer Recommended for Treatment of Gonococcal Infections. MMWR Morb Mortal Wkly Rep. 2007 Apr 13;56(14):332-336.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5614a3.htm',
+          publishedAt: '2007-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nipah virus — novel paramyxovirus identification 1999 ───────────────────
+  {
+    externalId: 'trajectory:nipah-virus-novel-paramyxovirus-identification-1999',
+    text: 'In March 1999 Malaysian virologists isolated a previously unknown paramyxovirus — named Nipah virus after the village Kampung Sungai Nipah — as the cause of a fatal encephalitis outbreak among pig farmers in Malaysia and Singapore (265 cases, 105 deaths in 1998–1999), identifying an entirely new emerging zoonotic pathogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-04-30',
+        datePrecision: 'DAY',
+        reason: 'After University of Malaya virologists isolated a syncytium-forming virus from the cerebrospinal fluid of fatal encephalitis cases in early March 1999, CDC\'s MMWR recorded the outbreak as caused by a newly recognized paramyxovirus, Nipah virus, distinct from Japanese encephalitis virus to which the cases had initially been attributed. This entered into the formal public-health record the claim that a novel zoonotic agent transmitted from pigs was responsible.',
+        source: {
+          externalId: 'src:cdc-mmwr-nipah-outbreak-1999',
+          name: 'CDC. Update: Outbreak of Nipah Virus — Malaysia and Singapore, 1999. MMWR Morb Mortal Wkly Rep. 1999 Apr 30;48(16):335-337.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10366143/',
+          publishedAt: '1999-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-05-26',
+        datePrecision: 'DAY',
+        reason: 'Chua and colleagues characterized and classified the agent in Science, establishing Nipah virus as a recently emergent deadly paramyxovirus closely related to Hendra virus (the two later forming the new genus Henipavirus). This molecular and virological characterization settled the new pathogen\'s identity and taxonomic placement in the expert literature.',
+        source: {
+          externalId: 'src:chua-nipah-science-2000',
+          name: 'Chua KB, Bellini WJ, Rota PA, et al. Nipah virus: a recently emergent deadly paramyxovirus. Science. 2000 May 26;288(5470):1432-1435.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10827955/',
+          publishedAt: '2000-05-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Monkeypox — first Western Hemisphere outbreak 2003 ──────────────────────
+  {
+    externalId: 'trajectory:monkeypox-first-western-hemisphere-outbreak-2003',
+    text: 'In June 2003 the CDC reported the first human monkeypox cases ever recorded in the Western Hemisphere — a multistate U.S. outbreak centered in Illinois, Indiana, and Wisconsin traced to pet prairie dogs co-housed with Gambian pouched rats and other rodents imported from Ghana, ultimately involving about 70 human cases.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-06',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-06-13',
+        datePrecision: 'DAY',
+        reason: 'CDC\'s MMWR documented laboratory-confirmed human monkeypox in Midwestern states, the first time human monkeypox was recognized outside Africa, after a three-year-old index patient bitten by a sick pet prairie dog was diagnosed in May 2003. Tracing the chain to a shipment of African rodents recorded the unprecedented introduction of a known African orthopoxvirus into North America via the exotic-pet trade.',
+        source: {
+          externalId: 'src:cdc-mmwr-monkeypox-2003',
+          name: 'CDC. Multistate Outbreak of Monkeypox — Illinois, Indiana, and Wisconsin, 2003. MMWR Morb Mortal Wkly Rep. 2003 Jun 13;52(23):537-540.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5223a1.htm',
+          publishedAt: '2003-06-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Varivax varicella vaccine — FDA licensure 1995 ──────────────────────────
+  {
+    externalId: 'trajectory:varivax-varicella-vaccine-approval-1995',
+    text: 'On 17 March 1995 the FDA licensed Merck\'s Varivax, the first live attenuated varicella (chickenpox) vaccine approved in the United States, for healthy individuals 12 months of age and older.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-03-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-03-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed Merck\'s Oka/Merck-strain live varicella vaccine for routine use in healthy children and adults, institutionally certifying that a live attenuated vaccine could safely prevent chickenpox. Licensure (followed by ACIP\'s 1996 recommendation for universal childhood vaccination) settled varicella as a vaccine-preventable disease in the United States and drove the subsequent large declines in chickenpox incidence and hospitalizations.',
+        source: {
+          externalId: 'src:fda-varivax-package-insert-1995',
+          name: 'FDA. Varivax (Varicella Virus Vaccine Live, Oka/Merck) — package insert / licensure. Merck & Co. Approved March 17, 1995.',
+          url: 'https://www.fda.gov/media/76000/download',
+          publishedAt: '1995-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
