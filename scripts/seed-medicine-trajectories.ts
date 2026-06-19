@@ -26520,6 +26520,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUROLOGY / PSYCHIATRY ERA (1964–1989)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Klein imipramine delineates panic anxiety — 1964 ────────────────────────
+  {
+    externalId: 'trajectory:klein-imipramine-delineates-panic-anxiety-1964',
+    text: 'Donald F. Klein reported in Psychopharmacologia on 8 June 1964 that imipramine selectively blocks acute panic attacks while leaving chronic anticipatory anxiety largely unaffected, delineating panic anxiety as a distinct, drug-responsive syndrome separate from generalized anxiety.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-06-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-06-08',
+        datePrecision: 'DAY',
+        reason: 'Klein published \'Delineation of Two Drug-Responsive Anxiety Syndromes\', observing that imipramine abolished episodic panic attacks but not generalized anticipatory anxiety in hospitalized patients. This pharmacological dissection recorded, for the first time, the claim that panic is a discrete biological entity distinguishable from ordinary anxiety, seeding the later nosological split.',
+        source: {
+          externalId: 'src:klein-1964-two-drug-responsive-anxiety-syndromes',
+          name: 'Klein DF. Delineation of two drug-responsive anxiety syndromes. Psychopharmacologia. 1964;5:397-408.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14194683/',
+          publishedAt: '1964-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-11-11',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved alprazolam (Xanax) for panic disorder with or without agoraphobia, the first drug specifically indicated for panic disorder in the United States. Regulatory recognition of panic disorder as a distinct, pharmacologically treatable diagnosis (already codified in DSM-III in 1980) institutionally settled Klein\'s claim that panic anxiety is a separable, drug-responsive syndrome.',
+        source: {
+          externalId: 'src:fda-xanax-alprazolam-label-nda018276',
+          name: 'U.S. Food and Drug Administration. XANAX (alprazolam) Prescribing Information, NDA 018276 (panic disorder indication approved 11 Nov 1990).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/018276s059lbl.pdf',
+          publishedAt: '1990-11-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Carbamazepine for manic-depressive illness — 1980 ───────────────────────
+  {
+    externalId: 'trajectory:carbamazepine-manic-depressive-illness-1980',
+    text: 'James C. Ballenger and Robert M. Post reported in the American Journal of Psychiatry in July 1980 that the anticonvulsant carbamazepine is an effective treatment for manic-depressive (bipolar) illness, introducing anticonvulsant mood stabilization to Western psychiatry.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Ballenger and Post published a controlled study at the U.S. NIMH reporting that carbamazepine produced antimanic and prophylactic mood-stabilizing effects in manic-depressive patients, building on earlier Japanese work by Okuma. The paper recorded in the Western literature the claim that an anticonvulsant could treat bipolar illness, opening the anticonvulsant mood-stabilizer class.',
+        source: {
+          externalId: 'src:ballenger-post-1980-carbamazepine-manic-depressive',
+          name: 'Ballenger JC, Post RM. Carbamazepine in manic-depressive illness: a new treatment. Am J Psychiatry. 1980;137(7):782-790.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7386656/',
+          publishedAt: '1980-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-12-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved extended-release carbamazepine (Equetro, NDA 021710) for the treatment of acute manic and mixed episodes of bipolar I disorder. Regulatory approval after pivotal placebo-controlled trials institutionally ratified the carbamazepine-for-bipolar claim first recorded in 1980, settling it as an accepted mood-stabilizer indication.',
+        source: {
+          externalId: 'src:equetro-fda-approval-history-2004',
+          name: 'Drugs.com / FDA. Equetro (carbamazepine extended-release) FDA Approval History — approved 10 December 2004 for acute mania/mixed episodes of bipolar I disorder (NDA 021710).',
+          url: 'https://www.drugs.com/history/equetro.html',
+          publishedAt: '2004-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gusella Huntington disease DNA linkage — 1983 ───────────────────────────
+  {
+    externalId: 'trajectory:gusella-huntington-disease-dna-linkage-1983',
+    text: 'James F. Gusella and colleagues reported in Nature on 17 November 1983 that an anonymous polymorphic DNA marker (G8/D4S10) is genetically linked to the Huntington\'s disease gene, localizing it to chromosome 4 — the first inherited human disease mapped by linkage to an anonymous DNA marker.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-11-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-11-17',
+        datePrecision: 'DAY',
+        reason: 'Gusella et al. demonstrated tight genetic linkage between the G8 (D4S10) RFLP marker and Huntington\'s disease in two large pedigrees, placing the HD locus on the short arm of chromosome 4. This recorded the founding proof-of-principle for positional cloning of disease genes using anonymous DNA polymorphisms, launching the era of human linkage mapping.',
+        source: {
+          externalId: 'src:gusella-1983-huntington-dna-marker',
+          name: 'Gusella JF, Wexler NS, Conneally PM, et al. A polymorphic DNA marker genetically linked to Huntington\'s disease. Nature. 1983;306(5940):234-238.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6316146/',
+          publishedAt: '1983-11-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-03-26',
+        datePrecision: 'DAY',
+        reason: 'The Huntington\'s Disease Collaborative Research Group identified the HD gene (IT15, encoding huntingtin) and showed it carries an expanded, unstable CAG trinucleotide repeat on chromosome 4 — the exact locus predicted by the 1983 linkage. Cloning the causal gene confirmed and settled the chromosome-4 localization a decade after the marker was found.',
+        source: {
+          externalId: 'src:hdcrg-1993-huntingtin-cag-repeat',
+          name: 'The Huntington\'s Disease Collaborative Research Group. A novel gene containing a trinucleotide repeat that is expanded and unstable on Huntington\'s disease chromosomes. Cell. 1993;72(6):971-983.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8458085/',
+          publishedAt: '1993-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Glenner & Wong beta-amyloid protein Alzheimer's — 1984 ──────────────────
+  {
+    externalId: 'trajectory:glenner-wong-beta-amyloid-protein-alzheimers-1984',
+    text: 'George G. Glenner and Caine W. Wong reported in Biochemical and Biophysical Research Communications on 16 May 1984 the purification and partial amino-acid sequencing of a novel ~4-kDa cerebrovascular amyloid protein (later named amyloid-beta) from Alzheimer\'s disease brain, identifying the molecular constituent of cerebral amyloid.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1984-05-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-05-16',
+        datePrecision: 'DAY',
+        reason: 'Glenner and Wong isolated and sequenced the first 24 residues of the amyloid protein from meningeal vessels of Alzheimer\'s and Down syndrome brains, defining a discrete, reproducible molecular species. This recorded the chemical identity of the amyloid that fills AD plaques and vessels, the molecular substrate on which all subsequent amyloid research was built.',
+        source: {
+          externalId: 'src:glenner-wong-1984-cerebrovascular-amyloid',
+          name: 'Glenner GG, Wong CW. Alzheimer\'s disease: initial report of the purification and characterization of a novel cerebrovascular amyloid protein. Biochem Biophys Res Commun. 1984;120(3):885-890.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6375662/',
+          publishedAt: '1984-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-04-10',
+        datePrecision: 'DAY',
+        reason: 'John Hardy and Gerald Higgins articulated the \'amyloid cascade hypothesis\' in Science, placing deposition of the amyloid-beta protein at the apex of Alzheimer\'s pathogenesis. The framework, built directly on Glenner and Wong\'s protein identification, became the dominant organizing theory of the field, settling Aβ\'s identity as the central plaque constituent (even as the cascade\'s therapeutic implications remain contested).',
+        source: {
+          externalId: 'src:hardy-higgins-1992-amyloid-cascade',
+          name: 'Hardy JA, Higgins GA. Alzheimer\'s disease: the amyloid cascade hypothesis. Science. 1992;256(5054):184-185.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1566067/',
+          publishedAt: '1992-04-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Clomipramine / Anafranil first OCD drug — 1989 ──────────────────────────
+  {
+    externalId: 'trajectory:clomipramine-anafranil-first-ocd-drug-1989',
+    text: 'The U.S. FDA approved clomipramine (Anafranil, NDA 019906) in December 1989 as the first drug indicated for obsessive-compulsive disorder, establishing OCD as a pharmacologically treatable condition.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1989-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-12-29',
+        datePrecision: 'DAY',
+        reason: 'On the basis of multicenter placebo-controlled trials showing clomipramine reduced obsessive-compulsive symptoms, the FDA approved Anafranil for OCD — the first agent ever indicated for the disorder in the United States. Approval simultaneously recorded and institutionally settled the claim that OCD is a serotonergically modifiable, drug-responsive condition rather than a purely psychodynamic one, reframing OCD treatment and prefiguring the SSRI OCD indications of the 1990s.',
+        source: {
+          externalId: 'src:fda-anafranil-clomipramine-label-nda019906',
+          name: 'U.S. Food and Drug Administration. ANAFRANIL (clomipramine hydrochloride) Prescribing Information, NDA 019906 (originally approved 1989 for obsessive-compulsive disorder).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/019906s34lbl.pdf',
+          publishedAt: '1989-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
