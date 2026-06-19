@@ -18075,7 +18075,7 @@ const TRAJECTORIES: Trajectory[] = [
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1954-04-01',
     claimEmergedPrecision: 'MONTH',
-    currentAxis: 'REVERSED',
+    currentAxis: 'ABANDONED',
     transitions: [
       {
         fromAxis: null,
