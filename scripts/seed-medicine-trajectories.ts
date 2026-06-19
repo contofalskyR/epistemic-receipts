@@ -23009,6 +23009,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SICKLE CELL & ALS DISEASE-MODIFYING THERAPY ERA (1994–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Voxelotor/Oxbryta — accelerated approval 2019 → withdrawal 2024 ─────────
+  {
+    externalId: 'trajectory:voxelotor-oxbryta-sickle-cell-accelerated-approval-2019',
+    text: 'On November 25, 2019, the U.S. FDA granted accelerated approval to voxelotor (Oxbryta), a hemoglobin-S polymerization inhibitor, for sickle cell disease in patients aged 12 and older, on the basis of a hemoglobin-increase surrogate endpoint from the Phase 3 HOPE trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-11-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-11-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to voxelotor for sickle cell disease based on the HOPE trial, in which 51.1% of treated patients achieved a >1 g/dL hemoglobin rise at 24 weeks versus 6.5% on placebo. Approval rested on hemoglobin elevation as a surrogate endpoint rather than demonstrated reduction in clinical events, establishing the institutional claim that the drug benefited patients pending confirmatory study.',
+        source: {
+          externalId: 'src:gbt-voxelotor-fda-accelerated-approval-2019',
+          name: 'Global Blood Therapeutics. FDA Approves Oxbryta (Voxelotor), the First Medicine Specifically Targeting the Root Cause of Sickle Cell Disease. Press release. November 25, 2019.',
+          url: 'https://www.globenewswire.com/news-release/2019/11/25/1952236/0/en/FDA-Approves-Oxbryta-Voxelotor-the-First-Medicine-Specifically-Targeting-the-Root-Cause-of-Sickle-Cell-Disease.html',
+          publishedAt: '2019-11-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2024-09-25',
+        datePrecision: 'DAY',
+        reason: 'Pfizer voluntarily withdrew all lots of Oxbryta from worldwide markets and discontinued all active clinical trials, stating the totality of data showed the benefit no longer outweighed the risk. Post-marketing and trial data revealed an imbalance in vaso-occlusive crises and fatal events (eight deaths on voxelotor versus two on placebo in one study), overturning the surrogate-endpoint-based clinical benefit claim and becoming a case study in accelerated-approval surrogate-endpoint risk.',
+        source: {
+          externalId: 'src:pfizer-oxbryta-worldwide-withdrawal-2024',
+          name: 'Pfizer. Pfizer Voluntarily Withdraws All Lots of Sickle Cell Disease Treatment OXBRYTA (voxelotor) From Worldwide Markets. Press release. September 25, 2024.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer-voluntarily-withdraws-all-lots-sickle-cell-disease',
+          publishedAt: '2024-09-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Glybera — first Western gene therapy approval 2012 → abandonment 2017 ───
+  {
+    externalId: 'trajectory:glybera-alipogene-tiparvovec-first-western-gene-therapy-2012',
+    text: 'On October 25, 2012, the European Commission granted marketing authorisation to Glybera (alipogene tiparvovec), an AAV gene therapy for familial lipoprotein lipase deficiency, making it the first gene therapy approved for clinical use in the Western world.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-10-25',
+        datePrecision: 'DAY',
+        reason: 'After multiple prior negative CHMP opinions and a re-examination, the European Commission granted Glybera EU marketing authorisation for adults with familial lipoprotein lipase deficiency suffering severe or multiple pancreatitis attacks despite dietary fat restriction. It was the first commercially approved human gene therapy in the Western world, establishing the institutional claim that an in vivo AAV gene therapy could be a licensed medicine.',
+        source: {
+          externalId: 'src:ema-glybera-epar-authorisation-2012',
+          name: 'European Medicines Agency. Glybera (alipogene tiparvovec) — EPAR. Marketing authorisation granted 25 October 2012.',
+          url: 'https://www.ema.europa.eu/en/medicines/human/EPAR/glybera',
+          publishedAt: '2012-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'MARKET',
+        occurredAt: '2017-10-28',
+        datePrecision: 'DAY',
+        reason: 'The marketing authorisation for Glybera expired on 28 October 2017 after the holder, uniQure, declined to apply for renewal, citing lack of demand; the therapy had been administered commercially only once at a ~€1 million price. The world\'s first approved gene therapy was withdrawn from the market not on safety or efficacy reversal but on commercial non-viability, marking the abandonment of the product despite its retained regulatory record.',
+        source: {
+          externalId: 'src:ema-glybera-no-longer-authorised-2017',
+          name: 'European Medicines Agency. Glybera: Medicinal product no longer authorised — EPAR product information note. Authorisation expired 28 October 2017.',
+          url: 'https://www.ema.europa.eu/en/documents/product-information/glybera-epar-product-information_en.pdf',
+          publishedAt: '2017-10-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hydroxyurea/Droxia — first sickle cell RCT 1995 → FDA approval 1998 ─────
+  {
+    externalId: 'trajectory:hydroxyurea-msh-trial-sickle-cell-droxia-1995',
+    text: 'On May 18, 1995, the Multicenter Study of Hydroxyurea (Charache et al., NEJM) reported that hydroxyurea significantly reduced the frequency of painful crises in adults with severe sickle cell anemia, the first randomized evidence of a disease-modifying drug for the condition.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-05-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-05-18',
+        datePrecision: 'DAY',
+        reason: 'The double-blind, placebo-controlled Multicenter Study of Hydroxyurea in Sickle Cell Anemia (299 adults with ≥3 crises/year) was stopped early after a mean 21-month follow-up because hydroxyurea-treated patients had significantly lower annual crisis rates than placebo. This was the first RCT to demonstrate that a drug could modify the clinical course of sickle cell anemia, recording the empirical claim in the literature.',
+        source: {
+          externalId: 'src:charache-msh-hydroxyurea-nejm-1995',
+          name: 'Charache S, Terrin ML, Moore RD, et al. Effect of Hydroxyurea on the Frequency of Painful Crises in Sickle Cell Anemia. N Engl J Med. 1995;332(20):1317-1322.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199505183322001',
+          publishedAt: '1995-05-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-03-04',
+        datePrecision: 'DAY',
+        reason: 'On March 4, 1998, the FDA approved Droxia (hydroxyurea, Bristol-Myers Squibb) for adults with sickle cell anemia who had at least three painful crises in the prior year, supported directly by the MSH trial. This made hydroxyurea the first FDA-approved disease-modifying therapy for sickle cell disease, converting the trial finding into settled regulatory practice.',
+        source: {
+          externalId: 'src:lancet-fda-first-sickle-cell-drug-1998',
+          name: 'US FDA approves first drug for sickle-cell anaemia. The Lancet. 1998;351(9105):809 (news). FDA approval of Droxia, 4 March 1998.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(05)78941-8/abstract',
+          publishedAt: '1998-03-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Riluzole/Rilutek — first ALS survival drug 1994 → FDA approval 1995 ─────
+  {
+    externalId: 'trajectory:riluzole-rilutek-first-als-drug-1994',
+    text: 'On March 3, 1994, a controlled trial by Bensimon, Lacomblez and Meininger (NEJM) reported that riluzole prolonged survival in amyotrophic lateral sclerosis, providing the first evidence of a survival-modifying drug for the disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-03-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-03-03',
+        datePrecision: 'DAY',
+        reason: 'Bensimon and colleagues published a prospective, double-blind, placebo-controlled trial of riluzole in 155 ALS patients, finding longer tracheostomy-free survival in the treated group, with the effect most pronounced in bulbar-onset disease. This was the first controlled evidence that any drug could extend survival in ALS, recording the empirical claim in the literature.',
+        source: {
+          externalId: 'src:bensimon-riluzole-als-nejm-1994',
+          name: 'Bensimon G, Lacomblez L, Meininger V. A Controlled Trial of Riluzole in Amyotrophic Lateral Sclerosis. N Engl J Med. 1994;330(9):585-591.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199403033300901',
+          publishedAt: '1994-03-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-12-12',
+        datePrecision: 'DAY',
+        reason: 'On December 12, 1995, the FDA approved Rilutek (riluzole) as an orphan drug for ALS, on the basis of two controlled trials showing longer time to tracheostomy or death versus placebo. It was the first drug approved anywhere for ALS, settling riluzole as standard-of-care and the institutional benchmark against which subsequent ALS therapies were measured.',
+        source: {
+          externalId: 'src:fda-rilutek-riluzole-als-approval-1995',
+          name: 'U.S. FDA. Rilutek (riluzole) — Drugs@FDA, NDA 020599, original approval 12 December 1995 for amyotrophic lateral sclerosis.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2009/020599Orig1s013.pdf',
+          publishedAt: '1995-12-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
