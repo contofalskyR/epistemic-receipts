@@ -26348,6 +26348,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIORENAL / CARDIOLOGY ERA (2009–2021)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 6. Finerenone FIDELIO-DKD — nonsteroidal MRA cardiorenal 2021 ───────────
+  {
+    externalId: 'trajectory:finerenone-fidelio-dkd-nonsteroidal-mra-cardiorenal-2021',
+    text: 'Finerenone (Kerendia), a nonsteroidal selective mineralocorticoid receptor antagonist, reduces kidney-failure progression and cardiovascular events in patients with chronic kidney disease associated with type 2 diabetes — a claim established by the FIDELIO-DKD trial reported by George Bakris and colleagues in the New England Journal of Medicine on 3 December 2020 and ratified by U.S. FDA approval on 9 July 2021.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-10-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-10-23',
+        datePrecision: 'DAY',
+        reason: 'Bakris, Agarwal, Anker, Pitt, Ruilope, Rossing and the FIDELIO-DKD investigators reported a randomized, placebo-controlled trial of 5,734 patients with CKD and type 2 diabetes in which finerenone reduced the composite kidney endpoint by 18% (hazard ratio 0.82) and cardiovascular events by 14% (hazard ratio 0.86) over a median 2.6 years. Presented at ASN Kidney Week and published online on 23 October 2020 (print 3 December 2020), this recorded in the expert literature the claim that a nonsteroidal MRA confers cardiorenal protection distinct from blood-pressure and glycemic control.',
+        source: {
+          externalId: 'src:bakris-fidelio-dkd-finerenone-nejm-2020',
+          name: 'Bakris GL, Agarwal R, Anker SD, et al. Effect of finerenone on chronic kidney disease outcomes in type 2 diabetes. N Engl J Med. 2020;383(23):2219-2229.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33264825/',
+          publishedAt: '2020-12-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-07-09',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved finerenone (Kerendia) to reduce the risk of sustained eGFR decline, end-stage kidney disease, cardiovascular death, nonfatal myocardial infarction, and heart-failure hospitalization in adults with CKD associated with type 2 diabetes. The approval, based on FIDELIO-DKD, institutionally settled the nonsteroidal MRA as a distinct, evidence-based cardiorenal therapy class beyond steroidal agents like spironolactone and eplerenone.',
+        source: {
+          externalId: 'src:fda-kerendia-finerenone-approval-2021',
+          name: 'U.S. Food and Drug Administration. FDA approves drug to reduce risk of serious kidney and heart complications in adults with chronic kidney disease associated with type 2 diabetes. 9 July 2021.',
+          url: 'https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-drug-reduce-risk-serious-kidney-and-heart-complications-adults-chronic-kidney-disease',
+          publishedAt: '2021-07-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 7. Bococizumab SPIRE — PCSK9 immunogenicity abandoned 2016 ──────────────
+  {
+    externalId: 'trajectory:bococizumab-spire-pcsk9-immunogenicity-abandoned-2016',
+    text: 'Bococizumab, Pfizer\'s humanized monoclonal-antibody PCSK9 inhibitor, was a viable LDL-lowering and cardiovascular-event-reducing therapy — a claim recorded after the Ballantyne phase-2b dose-ranging study (American Journal of Cardiology, 1 May 2015) but abandoned when Pfizer discontinued the entire global program on 1 November 2016 because anti-drug antibodies caused attenuation of LDL lowering over time.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'ABANDONED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-05-01',
+        datePrecision: 'DAY',
+        reason: 'Ballantyne and colleagues published a randomized, placebo-controlled, dose-ranging phase-2b study in 354 statin-treated subjects showing bococizumab produced substantial LDL-cholesterol reductions across twice-monthly and monthly subcutaneous regimens. This recorded bococizumab in the expert literature as a pharmacologically effective PCSK9 inhibitor and the basis for Pfizer\'s large SPIRE cardiovascular-outcomes program, paralleling the fully human antibodies evolocumab and alirocumab.',
+        source: {
+          externalId: 'src:ballantyne-bococizumab-phase2-ajc-2015',
+          name: 'Ballantyne CM, Neutel J, Cropp A, et al. Results of bococizumab, a monoclonal antibody against proprotein convertase subtilisin/kexin type 9, from a randomized, placebo-controlled, dose-ranging study in statin-treated subjects with hypercholesterolemia. Am J Cardiol. 2015;115(9):1212-1221.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25784512/',
+          publishedAt: '2015-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'MARKET',
+        occurredAt: '2016-11-01',
+        datePrecision: 'DAY',
+        reason: 'Pfizer announced discontinuation of the entire global bococizumab clinical-development program, citing an emerging profile of unanticipated attenuation of LDL lowering over time, a higher degree of immunogenicity (anti-drug antibodies), and more injection-site reactions than other agents in the class. The later-published SPIRE outcomes trial (Ridker et al., NEJM, 20 April 2017) confirmed a cardiovascular benefit in the higher-risk cohort (hazard ratio 0.79) yet the immunogenicity of the humanized — rather than fully human — antibody ended the program, a defining lesson in monoclonal-antibody drug design.',
+        source: {
+          externalId: 'src:pfizer-bococizumab-discontinuation-2016',
+          name: 'Pfizer Inc. Pfizer Discontinues Global Development of Bococizumab, Its Investigational PCSK9 Inhibitor. Press release, 1 November 2016.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer_discontinues_global_development_of_bococizumab_its_investigational_pcsk9_inhibitor',
+          publishedAt: '2016-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 8. Ticagrelor PLATO / Brilinta US subgroup FDA 2011 ─────────────────────
+  {
+    externalId: 'trajectory:ticagrelor-plato-brilinta-us-subgroup-fda-2011',
+    text: 'Ticagrelor (Brilinta), a reversible oral P2Y12 inhibitor, is superior to clopidogrel for preventing death, myocardial infarction, and stroke in acute coronary syndromes — a claim recorded by the PLATO trial (Wallentin et al., New England Journal of Medicine, 10 September 2009) and settled for U.S. practice when the FDA approved it on 20 July 2011 after resolving an anomalous lack of benefit among U.S.-enrolled patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-30',
+        datePrecision: 'DAY',
+        reason: 'Wallentin and the PLATO investigators reported a double-blind randomized trial in 18,624 acute-coronary-syndrome patients in which ticagrelor reduced the composite of vascular death, myocardial infarction, or stroke at 12 months versus clopidogrel (9.8% vs 11.7%; hazard ratio 0.84, p<0.001) without increasing overall major bleeding. Presented at the ESC Congress on 30 August 2009 and published in the NEJM on 10 September 2009, this recorded a new antiplatelet superior to the long-standing standard.',
+        source: {
+          externalId: 'src:wallentin-plato-ticagrelor-nejm-2009',
+          name: 'Wallentin L, Becker RC, Budaj A, et al. Ticagrelor versus clopidogrel in patients with acute coronary syndromes. N Engl J Med. 2009;361(11):1045-1057.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19717846/',
+          publishedAt: '2009-09-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-07-20',
+        datePrecision: 'DAY',
+        reason: 'After an extended review centered on a paradoxical absence of benefit in the U.S.-enrolled PLATO subgroup, the FDA approved ticagrelor (Brilinta) with a boxed warning attributing the regional anomaly to high maintenance doses of concomitant aspirin and directing that aspirin be kept at 75–100 mg/day. The approval institutionally settled ticagrelor for U.S. acute-coronary-syndrome care while making the aspirin-dose interaction a formal labeling requirement — a notable case of regulatory resolution of a geographic-subgroup signal.',
+        source: {
+          externalId: 'src:fda-brilinta-ticagrelor-approval-2011',
+          name: 'Brilinta (ticagrelor) FDA Approval History (documenting FDA approval 20 July 2011 with boxed warning on bleeding and aspirin maintenance dose). Drugs.com.',
+          url: 'https://www.drugs.com/history/brilinta.html',
+          publishedAt: '2011-07-20',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── 9. Vericiguat VICTORIA — sGC stimulator HFrEF 2021 ──────────────────────
+  {
+    externalId: 'trajectory:vericiguat-victoria-sgc-stimulator-hfref-2021',
+    text: 'Vericiguat (Verquvo), a soluble guanylate cyclase stimulator, reduces cardiovascular death and heart-failure hospitalization in high-risk patients with worsening heart failure and reduced ejection fraction — a claim established by the VICTORIA trial (Armstrong et al., New England Journal of Medicine, online 28 March 2020) and ratified by U.S. FDA approval of the first sGC stimulator for heart failure on 19 January 2021.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-03-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-03-28',
+        datePrecision: 'DAY',
+        reason: 'Armstrong and the VICTORIA investigators reported a double-blind randomized trial in 5,050 patients with chronic HFrEF (ejection fraction <45%) after a recent worsening event, finding that vericiguat reduced the composite of cardiovascular death or first heart-failure hospitalization versus placebo on top of guideline therapy (hazard ratio 0.90). Presented at the virtual ACC 2020 meeting and published online 28 March 2020, it recorded a novel disease pathway — sGC–cGMP stimulation — as therapeutically actionable in advanced heart failure.',
+        source: {
+          externalId: 'src:armstrong-victoria-vericiguat-nejm-2020',
+          name: 'Armstrong PW, Pieske B, Anstrom KJ, et al. Vericiguat in patients with heart failure and reduced ejection fraction. N Engl J Med. 2020;382(20):1883-1893.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32222134/',
+          publishedAt: '2020-05-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-01-19',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved vericiguat (Verquvo) to reduce the risk of cardiovascular death and heart-failure hospitalization in adults with symptomatic chronic heart failure and ejection fraction below 45% following a recent hospitalization or need for outpatient IV diuretics. As the first soluble guanylate cyclase stimulator approved for heart failure, the action institutionally settled a new mechanistic class for the high-risk worsening-HFrEF population that prior therapies had inadequately addressed.',
+        source: {
+          externalId: 'src:fda-verquvo-vericiguat-approval-2021',
+          name: 'Bayer/Merck. U.S. FDA approves vericiguat (Verquvo) for patients with symptomatic chronic heart failure. Press release, January 2021.',
+          url: 'https://www.bayer.com/media/en-us/us-fda-approves-vericiguat-for-patients-with-symptomatic-chronic-heart-failure/',
+          publishedAt: '2021-01-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
