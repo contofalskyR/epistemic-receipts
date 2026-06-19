@@ -23837,7 +23837,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Schick test — diphtheria susceptibility 1913 ────────────────────────────
   {
     externalId: 'trajectory:schick-test-diphtheria-susceptibility-1913',
-    text: 'Béla Schick introduced in 1913 an intradermal diphtheria-toxin skin test ('Schick test') that identifies individuals lacking protective antitoxin and therefore susceptible to diphtheria, providing the means to target immunization.',
+    text: 'Béla Schick introduced in 1913 an intradermal diphtheria-toxin skin test (\'Schick test\') that identifies individuals lacking protective antitoxin and therefore susceptible to diphtheria, providing the means to target immunization.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1913-12-01',
     claimEmergedPrecision: 'YEAR',
@@ -23879,7 +23879,7 @@ const TRAJECTORIES: Trajectory[] = [
   // ── Dick test — scarlet fever streptococcal etiology 1924 ───────────────────
   {
     externalId: 'trajectory:dick-test-scarlet-fever-streptococcal-etiology-1924',
-    text: 'George F. Dick and Gladys H. Dick reported in JAMA on 26 January 1924 that an erythrogenic-toxin-producing hemolytic streptococcus is the cause of scarlet fever and introduced an intradermal skin test (the 'Dick test') for susceptibility, having reproduced the disease by inoculating human volunteers with the organism.',
+    text: 'George F. Dick and Gladys H. Dick reported in JAMA on 26 January 1924 that an erythrogenic-toxin-producing hemolytic streptococcus is the cause of scarlet fever and introduced an intradermal skin test (the \'Dick test\') for susceptibility, having reproduced the disease by inoculating human volunteers with the organism.',
     claimType: 'EMPIRICAL',
     claimEmergedAt: '1924-01-26',
     claimEmergedPrecision: 'DAY',
@@ -24547,6 +24547,377 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Substance Abuse and Mental Health Services Administration. Medications for the Treatment of Opioid Use Disorder. Final rule, 42 CFR Part 8. 89 Fed. Reg. 7528, February 2, 2024.',
           url: 'https://www.samhsa.gov/substance-use/treatment/opioid-treatment-program/42-cfr-part-8',
           publishedAt: '2024-02-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC PHARMACOLOGY / NEWBORN SCREENING / ENVIRONMENTAL HEALTH
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Chloramphenicol gray baby syndrome — Burns 1959 ──────────────────────────
+  {
+    externalId: 'trajectory:chloramphenicol-gray-baby-neonatal-dosing-1959',
+    text: 'In December 1959 Burns, Hodgman, and Cass reported in the New England Journal of Medicine that premature and newborn infants given conventional weight-scaled doses of chloramphenicol developed fatal circulatory collapse (\'gray baby syndrome\'), establishing that neonates cannot metabolize the drug at adult-equivalent rates and require markedly reduced, age-adjusted dosing.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1959-12-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959-12-24',
+        datePrecision: 'DAY',
+        reason: 'Burns, Hodgman, and Cass documented fatal circulatory collapse in premature infants receiving chloramphenicol at then-standard doses, the clinical entity that became known as gray baby syndrome. The report rapidly and durably established a foundational principle of pediatric pharmacology — that neonates\' immature hepatic glucuronidation and renal clearance make full adult-scaled dosing toxic — and drove permanent adoption of reduced neonatal dosing. It is a canonical example of weight-based extrapolation from adults failing in the newborn.',
+        source: {
+          externalId: 'src:burns-chloramphenicol-collapse-nejm-1959',
+          name: 'Burns LE, Hodgman JE, Cass AB. Fatal Circulatory Collapse in Premature Infants Receiving Chloramphenicol. N Engl J Med. 1959;261(26):1318-1321.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/NEJM195912242612604',
+          publishedAt: '1959-12-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Guthrie PKU newborn screening — 1963 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:guthrie-pku-newborn-screening-1963',
+    text: 'In 1963 Robert Guthrie and Ada Susi published in Pediatrics a simple bacterial-inhibition (heel-prick filter-paper) assay for detecting elevated blood phenylalanine in newborns, enabling presymptomatic mass screening for phenylketonuria and inaugurating population-wide newborn metabolic screening.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1963-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Guthrie and Susi described a Bacillus subtilis inhibition assay run on dried whole-blood spots collected by heel-prick onto filter paper, allowing cheap, high-throughput semiquantitative phenylalanine measurement in newborns. The paper put on record that an inborn error of metabolism could be detected before symptoms appeared and treated by diet, converting PKU from an untreatable cause of intellectual disability into a screenable, manageable condition.',
+        source: {
+          externalId: 'src:guthrie-susi-pku-pediatrics-1963',
+          name: 'Guthrie R, Susi A. A simple phenylalanine method for detecting phenylketonuria in large populations of newborn infants. Pediatrics. 1963;32:338-343.',
+          url: 'https://publications.aap.org/pediatrics/article/102/Supplement_1/236/28104/A-Simple-Phenylalanine-Method-for-Detecting',
+          publishedAt: '1963-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1965-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following Massachusetts\' pioneering mandatory screening law (1963), U.S. states rapidly enacted statutory newborn PKU screening, and within a few years the Guthrie test was applied to the great majority of American newborns and adopted internationally. State-mandated universal newborn screening cemented the Guthrie assay as standard public-health practice and the template onto which later metabolic and genetic newborn screens were added.',
+        source: {
+          externalId: 'src:aap-guthrie-pku-pediatrics-commentary-1998',
+          name: 'Pediatrics. Commentary reprint: A Simple Phenylalanine Method for Detecting Phenylketonuria in Large Populations of Newborn Infants. Pediatrics. 1998;102(Suppl 1):236-237.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9651440/',
+          publishedAt: '1998-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aspirin Reye's syndrome pediatric reversal — 1980 ────────────────────────
+  {
+    externalId: 'trajectory:aspirin-reye-syndrome-pediatric-reversal-1980',
+    text: 'In December 1980 Starko and colleagues reported in Pediatrics a statistically significant association between salicylate (aspirin) use and Reye\'s syndrome in children with antecedent viral illness; by 1986 the U.S. FDA mandated Reye-syndrome warning labels on aspirin, reversing aspirin\'s long-standing status as a routine pediatric antipyretic.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1980-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Starko, Ray, Dominguez, Stromberg, and Woodall published a case-control study finding that children who developed Reye\'s syndrome after a viral prodrome had significantly higher salicylate exposure than controls, with a dose-response relationship. The paper placed on record the hypothesis that aspirin, then a standard children\'s fever and pain remedy, was implicated in a frequently fatal encephalopathy with fatty liver — a claim initially contested by the aspirin industry.',
+        source: {
+          externalId: 'src:starko-reye-salicylate-pediatrics-1980',
+          name: 'Starko KM, Ray CG, Dominguez LB, Stromberg WL, Woodall DF. Reye\'s syndrome and salicylate use. Pediatrics. 1980;66(6):859-864.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9729163/',
+          publishedAt: '1980-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-03-07',
+        datePrecision: 'DAY',
+        reason: 'After Public Health Service case-control studies confirmed the association and a 1982 Surgeon General advisory, the FDA required a Reye\'s syndrome warning on all oral and rectal over-the-counter aspirin and salicylate products, announced in March 1986 with mandatory compliance that year. The regulatory action institutionalized the reversal of aspirin as a routine pediatric antipyretic; U.S. pediatric Reye\'s syndrome cases subsequently collapsed to near-zero, confirming the original claim.',
+        source: {
+          externalId: 'src:fda-aspirin-reye-warning-labeling-rule',
+          name: 'U.S. Food and Drug Administration. Labeling for Oral and Rectal OTC Drug Products Containing Aspirin and Nonaspirin Salicylates; Reye\'s Syndrome Warning (codifying mandatory warning first required 1986). Final rule.',
+          url: 'https://www.federalregister.gov/documents/2003/04/17/03-9382/labeling-for-oral-and-rectal-over-the-counter-drug-products-containing-aspirin-and-nonaspirin',
+          publishedAt: '2003-04-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Needleman low-level lead child cognition — 1979 ──────────────────────────
+  {
+    externalId: 'trajectory:needleman-low-level-lead-child-cognition-1979',
+    text: 'On 29 March 1979 Needleman and colleagues reported in the New England Journal of Medicine that children with elevated dentine (tooth) lead levels but no clinical lead poisoning scored significantly lower on IQ and showed more attention and classroom deficits in a dose-related fashion, establishing that subclinical, \'asymptomatic\' lead exposure impairs childhood neurodevelopment.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-03-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1979-03-29',
+        datePrecision: 'DAY',
+        reason: 'Needleman, Gunnoe, Leviton and colleagues compared 58 children with high versus 100 with low dentine lead and found significantly lower Wechsler IQ, verbal, and attention scores, with teacher-rated maladaptive classroom behavior rising in a dose-related fashion across 2,146 children, after controlling for 39 confounders. The study recorded the then-novel claim that lead causes measurable cognitive harm below the threshold for clinical plumbism, challenging the prevailing \'level of concern\' framework.',
+        source: {
+          externalId: 'src:needleman-dentine-lead-nejm-1979',
+          name: 'Needleman HL, Gunnoe C, Leviton A, et al. Deficits in psychologic and classroom performance of children with elevated dentine lead levels. N Engl J Med. 1979;300(13):689-695.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/763299/',
+          publishedAt: '1979-03-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-01-11',
+        datePrecision: 'DAY',
+        reason: 'An 11-year prospective follow-up of the original cohort, published in NEJM in January 1990, found that childhood dentine lead predicted higher rates of reading disability, lower class standing, and school dropout into young adulthood, demonstrating persistence of the deficits. The longitudinal confirmation, alongside converging studies, settled the no-safe-threshold understanding of childhood lead neurotoxicity that subsequently drove regulatory tightening of blood-lead limits.',
+        source: {
+          externalId: 'src:needleman-lead-11yr-followup-nejm-1990',
+          name: 'Needleman HL, Schell A, Bellinger D, Leviton A, Allred EN. The long-term effects of exposure to low doses of lead in childhood: an 11-year follow-up report. N Engl J Med. 1990;322(2):83-88.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199001113220203',
+          publishedAt: '1990-01-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG WITHDRAWALS & FIRST-IN-CLASS (2005–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Valdecoxib (Bextra) COX-2 withdrawal — 2001–2005 ─────────────────────────
+  {
+    externalId: 'trajectory:valdecoxib-bextra-cox2-withdrawal-2005',
+    text: 'The COX-2 selective inhibitor valdecoxib (Bextra), approved by the FDA on 16 November 2001 for osteoarthritis, rheumatoid arthritis, and primary dysmenorrhea, was withdrawn from the US market on 7 April 2005 after post-marketing evidence showed its cardiovascular and serious-skin-reaction risks outweighed its benefits.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2001-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2001-11-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved valdecoxib (Bextra), a second-generation COX-2 selective NSAID marketed by Pharmacia/Pfizer, as a safe and effective treatment for arthritis pain and dysmenorrhea. Approval established valdecoxib as a routine prescription analgesic alongside rofecoxib and celecoxib.',
+        source: {
+          externalId: 'src:cmaj-cotter-wooltorton-valdecoxib-2005',
+          name: 'Cotter J, Wooltorton E. New restrictions on celecoxib (Celebrex) use and the withdrawal of valdecoxib (Bextra). CMAJ. 2005 May 10;172(10):1299.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC557099/',
+          publishedAt: '2005-05-10',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-04-07',
+        datePrecision: 'DAY',
+        reason: 'At the FDA\'s request, Pfizer suspended sales and marketing of valdecoxib (Bextra). The action — the second COX-2 inhibitor pulled after rofecoxib (Vioxx) in September 2004 — cited a lack of long-term cardiovascular safety data, increased cardiovascular events in coronary-artery-bypass-graft trials, and a disproportionately high rate of life-threatening skin reactions (Stevens-Johnson syndrome, toxic epidermal necrolysis). It marked the FDA\'s post-Vioxx reassessment of the entire COX-2 class.',
+        source: {
+          externalId: 'src:cmaj-valdecoxib-withdrawal-2005',
+          name: 'Cotter J, Wooltorton E. New restrictions on celecoxib (Celebrex) use and the withdrawal of valdecoxib (Bextra). CMAJ. 2005 May 10;172(10):1299.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC557099/',
+          publishedAt: '2005-05-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Pergolide (Permax) dopamine-agonist valvulopathy withdrawal — 2007 ────────
+  {
+    externalId: 'trajectory:pergolide-dopamine-agonist-valvulopathy-withdrawal-2007',
+    text: 'Two cohort studies published in the New England Journal of Medicine on 4 January 2007 found that the ergot-derived dopamine agonist pergolide (Permax), used for Parkinson\'s disease, roughly quintupled the risk of cardiac-valve regurgitation, a post-marketing safety signal that led to pergolide\'s voluntary withdrawal from the US market at FDA request on 29 March 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2007-01-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-04',
+        datePrecision: 'DAY',
+        reason: 'Schade et al. reported a population-based cohort study in NEJM showing pergolide use carried an incidence-rate ratio of 7.1 (and cabergoline 4.9) for newly diagnosed cardiac-valve regurgitation; a companion echocardiographic study by Zanettini et al. appeared in the same issue. The findings established a robust serotonin-5-HT2B-mediated valvulopathy signal in the literature, echoing the earlier fen-phen valvular disease story.',
+        source: {
+          externalId: 'src:nejm-schade-dopamine-agonist-valve-2007',
+          name: 'Schade R, Andersohn F, Suissa S, Haverkamp W, Garbe E. Dopamine agonists and the risk of cardiac-valve regurgitation. N Engl J Med. 2007 Jan 4;356(1):29-38.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17202453/',
+          publishedAt: '2007-01-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA announced that pergolide (Permax, approved 1988) was being voluntarily withdrawn from the US market by its manufacturers (Valeant and generic makers Par and Teva) because of the valvular heart disease risk. The agency had added a valvulopathy label warning in 2003; the 2007 NEJM evidence converted a known signal into a market-removal decision.',
+        source: {
+          externalId: 'src:fda-pergolide-withdrawal-2007',
+          name: 'U.S. FDA / AVMA News. FDA announces voluntary withdrawal of pergolide products. 29 March 2007.',
+          url: 'https://www.avma.org/javma-news/2007-06-01/fda-announces-voluntary-withdrawal-pergolide',
+          publishedAt: '2007-03-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Aprotinin (Trasylol) cardiac surgery mortality — 2006–2007 ───────────────
+  {
+    externalId: 'trajectory:aprotinin-trasylol-cardiac-surgery-mortality-2007',
+    text: 'An observational study by Mangano et al. in the New England Journal of Medicine on 26 January 2006 reported that the antifibrinolytic aprotinin (Trasylol), widely used to limit bleeding in cardiac surgery, was associated with increased renal failure, myocardial infarction, and stroke — contradicting its established safety profile and culminating in worldwide marketing suspension on 5 November 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-01-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-26',
+        datePrecision: 'DAY',
+        reason: 'Mangano, Tudor, and Dietzel published an observational study of 4,374 cardiac surgery patients in NEJM showing that aprotinin (approved 1993, in routine use to reduce transfusion) was associated with a doubling of renal failure requiring dialysis and elevated myocardial infarction and stroke risk versus aminocaproic acid or tranexamic acid. The paper turned a long-assumed-safe hemostatic agent into a contested one.',
+        source: {
+          externalId: 'src:nejm-mangano-aprotinin-2006',
+          name: 'Mangano DT, Tudor IC, Dietzel C. The risk associated with aprotinin in cardiac surgery. N Engl J Med. 2006 Jan 26;354(4):353-365.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16436767/',
+          publishedAt: '2006-01-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-11-05',
+        datePrecision: 'DAY',
+        reason: 'Bayer, in consultation with the FDA and other regulators, temporarily suspended worldwide marketing of aprotinin (Trasylol) after the randomized Canadian BART trial was stopped early for higher mortality in the aprotinin arm (about a 50% relative increase at 30 days versus tranexamic acid or aminocaproic acid). The randomized confirmation of the earlier observational signal moved aprotinin from contested to effectively removed; it was later (2008) formally pulled.',
+        source: {
+          externalId: 'src:bayer-trasylol-suspension-2007',
+          name: 'Bayer. Bayer Temporarily Suspends Global Trasylol (aprotinin injection) Marketing. Press release, 5 November 2007.',
+          url: 'https://www.fiercebiotech.com/biotech/press-release-bayer-temporarily-suspends-global-trasylol-marketing',
+          publishedAt: '2007-11-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Romiplostim (Nplate) first TPO-receptor agonist — 2008 ───────────────────
+  {
+    externalId: 'trajectory:romiplostim-nplate-first-tpo-receptor-agonist-itp-2008',
+    text: 'Romiplostim (Nplate), the first thrombopoietin-receptor agonist, was approved by the FDA on 22 August 2008 for chronic immune (idiopathic) thrombocytopenic purpura in adults refractory to corticosteroids, immunoglobulins, or splenectomy — validating TPO-receptor stimulation as a platelet-raising strategy for a rare disease after earlier recombinant-TPO programs had failed on immunogenicity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-02-02',
+        datePrecision: 'DAY',
+        reason: 'Kuter et al. published two parallel double-blind randomized controlled trials in The Lancet showing that subcutaneous romiplostim (AMG 531) produced durable platelet responses in splenectomized and non-splenectomized patients with chronic ITP versus placebo over 24 weeks. The trials established the first peptibody TPO-receptor agonist as an efficacious option in a rare bleeding disorder.',
+        source: {
+          externalId: 'src:lancet-kuter-romiplostim-itp-2008',
+          name: 'Kuter DJ, Bussel JB, Lyons RM, et al. Efficacy of romiplostim in patients with chronic immune thrombocytopenic purpura: a double-blind randomised controlled trial. Lancet. 2008 Feb 2;371(9610):395-403.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18242413/',
+          publishedAt: '2008-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-08-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved romiplostim (Nplate, Amgen) for thrombocytopenia in chronic ITP patients with insufficient response to standard therapy — the first thrombopoietin-receptor agonist to reach market. Approval institutionalized TPO-receptor agonism as a therapeutic class (followed months later by oral eltrombopag) and reframed refractory ITP management around platelet production rather than only immunosuppression.',
+        source: {
+          externalId: 'src:fda-nplate-romiplostim-label-2008',
+          name: 'U.S. FDA. Nplate (romiplostim) Prescribing Information, FDA version dated 08-22-2008. BLA 125268.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2008/125268lbl.pdf',
+          publishedAt: '2008-08-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Deferasirox (Exjade) first oral iron chelator — 2005–2006 ────────────────
+  {
+    externalId: 'trajectory:deferasirox-exjade-first-oral-iron-chelator-2005',
+    text: 'Deferasirox (Exjade), the first once-daily oral iron chelator, received accelerated FDA approval on 2 November 2005 for chronic transfusional iron overload, offering an oral alternative to overnight subcutaneous deferoxamine for patients with thalassemia, sickle cell disease, and other transfusion-dependent anemias.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-11-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-11-02',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to deferasirox (Exjade, Novartis) — the first oral iron chelator worldwide — for chronic iron overload from blood transfusions in patients aged 2 and older, after a unanimous positive Blood Products Advisory Committee vote. Accelerated approval recorded the drug as available while confirmatory phase 3 outcome data were still maturing, supplanting burdensome 8–12 hour nightly deferoxamine infusions for a rare transfusion-dependent population.',
+        source: {
+          externalId: 'src:novartis-exjade-fda-approval-2005',
+          name: 'Novartis. Exjade, a breakthrough once-daily oral iron chelator, receives first approval worldwide in the US. Press release, 3 November 2005.',
+          url: 'https://www.globenewswire.com/us/news-release/2005/11/03/1839893/0/en/Exjade-a-breakthrough-once-daily-oral-iron-chelator-receives-first-approval-worldwide-in-the-US.html',
+          publishedAt: '2005-11-03',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-05-01',
+        datePrecision: 'DAY',
+        reason: 'Cappellini et al. published the pivotal phase 3 trial in Blood comparing deferasirox with deferoxamine in 586 beta-thalassemia patients, showing dose-dependent reductions in liver iron concentration and serum ferritin at higher iron burdens. Despite a missed primary endpoint in the overall population (attributed to under-dosing at low liver-iron levels), the data established deferasirox as an effective oral chelator and standard-of-care alternative, consolidating its provisional approval into settled clinical use.',
+        source: {
+          externalId: 'src:blood-cappellini-deferasirox-phase3-2006',
+          name: 'Cappellini MD, Cohen A, Piga A, et al. A phase 3 study of deferasirox (ICL670), a once-daily oral iron chelator, in patients with beta-thalassemia. Blood. 2006 May 1;107(9):3455-3462.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16352812/',
+          publishedAt: '2006-05-01',
           methodologyType: 'primary',
         },
       },
