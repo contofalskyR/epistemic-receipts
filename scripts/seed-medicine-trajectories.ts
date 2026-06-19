@@ -18064,6 +18064,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY & NEUROLOGY (1954–1989)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Reserpine as antipsychotic — Kline 1954 ────────────────────────────────
+  {
+    externalId: 'trajectory:reserpine-antipsychotic-1954',
+    text: 'In 1954, Nathan S. Kline reported in the Annals of the New York Academy of Sciences that the Rauwolfia serpentina alkaloid reserpine calmed agitation and improved psychotic and anxious patients, introducing one of the first effective tranquilizing drugs for psychosis in Western psychiatry.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1954-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Kline, director of research at Rockland State Hospital, convinced Ciba to supply reserpine and published \'Use of Rauwolfia serpentina Benth. in neuropsychiatric conditions,\' reporting that the alkaloid reduced agitation and psychotic symptoms in hospitalized patients. Presented to the New York Academy of Sciences, the paper recorded one of the first claims that a drug could specifically tranquilize psychotic patients, arriving in parallel with chlorpromazine and helping launch the psychopharmacology era.',
+        source: {
+          externalId: 'src:kline-rauwolfia-serpentina-nyas-1954',
+          name: 'Kline NS. Use of Rauwolfia serpentina Benth. in neuropsychiatric conditions. Ann N Y Acad Sci. 1954;59(1):107-132.',
+          url: 'https://nyaspubs.onlinelibrary.wiley.com/doi/10.1111/j.1749-6632.1954.tb45922.x',
+          publishedAt: '1954-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the late 1950s and 1960s reserpine was displaced as a psychiatric agent by the faster-acting, more effective phenothiazine neuroleptics, and its propensity to induce depression — sometimes severe and suicidal — made it unsuitable for psychiatric use. The reserpine-depression observation itself became a cornerstone of the monoamine hypothesis of depression, but as an antipsychotic the drug was abandoned in clinical practice, surviving mainly as an antihypertensive.',
+        source: {
+          externalId: 'src:junkes-kline-psychopharmacology-legacy-2026',
+          name: 'Junkes L, Shader RI, Nardi AE. Nathan S. Kline: From the first treatments of psychosis and depression, a 70-year legacy of a pioneer of psychopharmacology. J Psychopharmacol. 2026.',
+          url: 'https://journals.sagepub.com/doi/10.1177/02698811261436582',
+          publishedAt: '2026-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Zimeldine — first marketed SSRI, withdrawn 1983 ────────────────────────
+  {
+    externalId: 'trajectory:zimeldine-first-marketed-ssri-withdrawn-1983',
+    text: 'Zimeldine (Zelmid), developed by Arvid Carlsson at Astra and first marketed in Europe in 1982 as the first selective serotonin reuptake inhibitor antidepressant, was a drug accepted as a safe and effective antidepressant — a claim reversed when it was withdrawn worldwide in 1983 after it was found to cause Guillain-Barré syndrome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1982-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Zimeldine, the first SSRI to reach the market, received regulatory approval and was launched commercially in Europe in 1982 as a serotonin-selective antidepressant with a side-effect profile expected to be more favorable than the tricyclics. Its marketing institutionally accepted serotonin-selective reuptake inhibition as a viable antidepressant mechanism, predating fluoxetine\'s 1987 U.S. approval.',
+        source: {
+          externalId: 'src:ncats-inxight-zimeldine',
+          name: 'NCATS Inxight Drugs. ZIMELDINE — drug record (approval 1982, withdrawn 1983).',
+          url: 'https://drugs.ncats.io/drug/3J928617DW',
+          publishedAt: '1982-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Within about a year and a half of launch, a cluster of Guillain-Barré syndrome cases linked to zimeldine emerged; Fagius and colleagues documented a roughly 25-fold increased risk of the syndrome among treated patients. The safety signal led the manufacturer to withdraw zimeldine from markets worldwide in September 1983, reversing the claim that it was an acceptably safe antidepressant despite its efficacy.',
+        source: {
+          externalId: 'src:fagius-zimeldine-guillain-barre-jnnp-1985',
+          name: 'Fagius J, Osterman PO, Sidén A, Wiholm BE. Guillain-Barré syndrome following zimeldine treatment. J Neurol Neurosurg Psychiatry. 1985;48(1):65-69.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3156214/',
+          publishedAt: '1985-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Amantadine for Parkinson's — Schwab 1969 ───────────────────────────────
+  {
+    externalId: 'trajectory:amantadine-parkinsons-discovery-1969',
+    text: 'On 19 May 1969, Robert Schwab and colleagues reported in JAMA that the antiviral drug amantadine, noticed serendipitously to relieve a patient\'s Parkinson symptoms, produced symptomatic improvement in tremor, rigidity, and akinesia in roughly two-thirds of Parkinson\'s disease patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-05-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-05-19',
+        datePrecision: 'DAY',
+        reason: 'After a Parkinson\'s patient reported that her motor symptoms improved while taking the influenza prophylactic amantadine, Schwab, England, Poskanzer, and Young ran the first clinical trial and published \'Amantadine in the treatment of Parkinson\'s disease\' in JAMA, reporting symptomatic benefit in about two-thirds of patients. This recorded the serendipitous claim that an antiviral could treat parkinsonism, opening a new symptomatic therapy distinct from levodopa.',
+        source: {
+          externalId: 'src:schwab-amantadine-parkinsons-jama-1969',
+          name: 'Schwab RS, England AC Jr, Poskanzer DC, Young RR. Amantadine in the treatment of Parkinson\'s disease. JAMA. 1969;208(7):1168-1170.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5818715/',
+          publishedAt: '1969-05-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1973-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following confirmatory trials, amantadine (Symmetrel) was approved and adopted as an established symptomatic treatment for Parkinson\'s disease in the early 1970s, and it remains in clinical use today — including a later role for levodopa-induced dyskinesia. Regulatory acceptance and durable clinical use settled amantadine\'s antiparkinsonian efficacy.',
+        source: {
+          externalId: 'src:vijiaratnam-amantadine-lancet-neurology-2021',
+          name: 'Vijiaratnam N, Foltynie T. Amantadine in the treatment of Parkinson\'s disease and other movement disorders. Lancet Neurol. 2021;20(12):1048-1056.',
+          url: 'https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(21)00249-0/abstract',
+          publishedAt: '2021-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Deprenyl / DATATOP neuroprotection — Parkinson Study Group 1989 ────────
+  {
+    externalId: 'trajectory:deprenyl-datatop-parkinsons-neuroprotection-1989',
+    text: 'On 16 November 1989, the Parkinson Study Group reported in the New England Journal of Medicine that the DATATOP trial showed deprenyl (selegiline) significantly delayed the need for levodopa in early, untreated Parkinson\'s disease, a result widely interpreted as evidence that the drug might slow disease progression (be neuroprotective).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-11-16',
+        datePrecision: 'DAY',
+        reason: 'The Parkinson Study Group published the DATATOP results, finding that deprenyl 10 mg/day roughly halved the rate at which early Parkinson\'s patients reached disability warranting levodopa (97 vs 176 reaching the endpoint). Because the MAO-B inhibitor was hypothesized to reduce oxidative neuronal damage, the delay was widely recorded into the literature as possible evidence of a disease-modifying, neuroprotective effect.',
+        source: {
+          externalId: 'src:psg-deprenyl-datatop-nejm-1989',
+          name: 'Parkinson Study Group. Effect of deprenyl on the progression of disability in early Parkinson\'s disease. N Engl J Med. 1989;321(20):1364-1371.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2509910/',
+          publishedAt: '1989-11-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Extended DATATOP follow-up showed that early deprenyl did not reduce later levodopa-related motor complications or extend survival, and analyses argued the delay in needing levodopa reflected a transient symptomatic (antiparkinsonian) effect rather than true neuroprotection. The inability to separate symptomatic from disease-modifying benefit left deprenyl\'s neuroprotection claim in active dispute, where the question of whether any agent slows Parkinson\'s progression remains unresolved.',
+        source: {
+          externalId: 'src:psg-datatop-deprenyl-symptomatic-ann-neurol-1996',
+          name: 'Parkinson Study Group. Impact of deprenyl and tocopherol treatment on Parkinson\'s disease in DATATOP patients requiring levodopa. Ann Neurol. 1996;39(1):37-45.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8572664/',
+          publishedAt: '1996-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
