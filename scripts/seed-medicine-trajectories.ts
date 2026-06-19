@@ -36879,6 +36879,159 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Cerliponase alfa (Brineura) — first CLN2 Batten ERT FDA approval 2017 ────
+  {
+    externalId: 'trajectory:cerliponase-alfa-brineura-first-cln2-batten-ert-2017',
+    text: 'On April 27, 2017, the U.S. FDA approved cerliponase alfa (Brineura), an intracerebroventricular recombinant tripeptidyl peptidase-1 enzyme, as the first treatment to slow loss of ambulation in children with CLN2 disease (late-infantile neuronal ceroid lipofuscinosis type 2), a previously untreatable ultra-rare fatal pediatric brain disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-04-27',
+        datePrecision: 'DAY',
+        reason: 'On the strength of open-label Study 190/201 — in which intraventricular enzyme infusions slowed the characteristic motor-language decline relative to a natural-history cohort — the FDA approved Brineura as the first therapy for CLN2 disease, a uniformly fatal lysosomal storage disorder affecting roughly one in a million children. The approval established enzyme replacement delivered directly into the cerebrospinal fluid as a viable strategy for a neurodegenerative orphan disease, a route ERT had never before taken. The pivotal data were later peer-reviewed (Schulz et al., N Engl J Med, May 17, 2018), confirming the durability of the benefit.',
+        source: {
+          externalId: 'src:biomarin-brineura-fda-approval-2017',
+          name: 'BioMarin Pharmaceutical Inc. FDA Approves Brineura (cerliponase alfa) for the Treatment of CLN2 Disease, a Form of Batten Disease. Press release. April 27, 2017.',
+          url: 'https://www.biomarin.com/news/press-releases/fda-approves-brineura-cerliponase-alfa-for-the-treatment-of-cln2-disease-a-form-of-batten-disease-and-ultra-rare-pediatric-brain-disorder-in-children/',
+          publishedAt: '2017-04-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Asfotase alfa (Strensiq) — first hypophosphatasia ERT 2015 ───────────────
+  {
+    externalId: 'trajectory:asfotase-alfa-strensiq-first-hypophosphatasia-ert-2015',
+    text: 'Asfotase alfa (Strensiq), a bone-targeted recombinant tissue-nonspecific alkaline phosphatase, is an effective enzyme replacement therapy for life-threatening perinatal- and infantile-onset hypophosphatasia — a claim recorded by Whyte and colleagues in the New England Journal of Medicine on March 8, 2012, and settled by the FDA\'s October 23, 2015 approval as the first treatment for hypophosphatasia.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-03-08',
+        datePrecision: 'DAY',
+        reason: 'Whyte et al. reported in the New England Journal of Medicine that asfotase alfa — engineered with a bone-targeting deca-aspartate tail to deliver alkaline phosphatase to the skeleton — produced radiographic healing of rickets, improved respiratory function, and improved survival in infants and young children with life-threatening hypophosphatasia, a disorder previously managed only supportively. This recorded the first evidence that replacing the deficient mineralization enzyme could reverse the skeletal and respiratory failure of severe HPP.',
+        source: {
+          externalId: 'src:whyte-asfotase-hypophosphatasia-nejm-2012',
+          name: 'Whyte MP, Greenberg CR, Salman NJ, et al. Enzyme-replacement therapy in life-threatening hypophosphatasia. N Engl J Med. 2012;366(10):904-913.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1106173',
+          publishedAt: '2012-03-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-10-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved asfotase alfa (Strensiq, Alexion) for perinatal-, infantile-, and juvenile-onset hypophosphatasia, the first approved treatment for HPP in the United States. The approval institutionalized the claim that targeted enzyme replacement corrects the underlying defect of a rare inborn error of bone metabolism, extending the ERT paradigm from soft-tissue lysosomal storage disorders to a mineralization disorder of the skeleton.',
+        source: {
+          externalId: 'src:fda-strensiq-asfotase-approval-2015',
+          name: 'U.S. Food and Drug Administration. Strensiq (asfotase alfa) Approval History. BLA 125513; approved October 23, 2015.',
+          url: 'https://www.drugs.com/history/strensiq.html',
+          publishedAt: '2015-10-23',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Taliglucerase alfa (Elelyso) — first plant-cell ERT FDA approval 2012 ────
+  {
+    externalId: 'trajectory:taliglucerase-alfa-elelyso-first-plant-cell-ert-2012',
+    text: 'Taliglucerase alfa (Elelyso), recombinant glucocerebrosidase produced in carrot plant-root cells, is an effective enzyme replacement therapy for type 1 Gaucher disease — a claim recorded by Zimran and colleagues\' pivotal phase 3 trial in Blood (2011) and settled by the FDA\'s May 1, 2012 approval, making it the first plant-cell-expressed recombinant therapeutic protein approved for human use.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Zimran et al. reported the pivotal phase 3, double-blind, randomized trial of taliglucerase alfa in treatment-naïve type 1 Gaucher patients, showing significant reductions in spleen and liver volume and improvements in hemoglobin and platelets — demonstrating that a recombinant lysosomal enzyme manufactured in plant cells, rather than mammalian (CHO) cells, was clinically effective. This recorded proof that a wholly new biomanufacturing platform could produce a therapeutically active human enzyme.',
+        source: {
+          externalId: 'src:zimran-taliglucerase-pivotal-blood-2011',
+          name: 'Zimran A, Brill-Almon E, Chertkoff R, et al. Pivotal trial with plant cell-expressed recombinant glucocerebrosidase, taliglucerase alfa, a novel enzyme replacement therapy for Gaucher disease. Blood. 2011;118(22):5767-5773.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21900191/',
+          publishedAt: '2011-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-05-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved taliglucerase alfa (Elelyso, Protalix/Pfizer) for type 1 Gaucher disease — the first FDA-approved recombinant therapeutic protein expressed in plant cells. Beyond adding a third Gaucher ERT to the market, the approval institutionally validated plant-cell bioreactors as a manufacturing route for biologics, a development with significance for orphan-drug supply security after the 2009 Genzyme Cerezyme shortage exposed the fragility of single-source mammalian-cell production.',
+        source: {
+          externalId: 'src:pfizer-protalix-elelyso-fda-approval-2012',
+          name: 'Pfizer and Protalix BioTherapeutics Announce FDA Approval of ELELYSO (taliglucerase alfa) for the Treatment of Gaucher Disease. Press release. May 1, 2012.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer_and_protalix_biotherapeutics_announce_fda_approval_of_elelyso_taliglucerase_alfa_for_the_treatment_of_gaucher_disease',
+          publishedAt: '2012-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Faget promin sulfone — first effective leprosy therapy 1943 ───────────────
+  {
+    externalId: 'trajectory:faget-promin-sulfone-leprosy-first-effective-therapy-1943',
+    text: 'Faget and colleagues at the U.S. National Leprosarium (Carville, Louisiana) reported in Public Health Reports in 1943 that the sulfone drug promin arrested the progression of leprosy (Hansen\'s disease) — the first chemotherapeutic agent ever shown to be effective against a disease that had been incurable throughout recorded history.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Faget, Pogge, Johansen, Dinan, and Eccles reported in Public Health Reports that intravenous promin — a sulfone originally synthesized as an antitubercular agent — produced clinical and bacteriological improvement in leprosy patients at Carville, controlling the disease for the first time in medical history. This recorded the founding observation of the sulfone era and the first credible claim that leprosy, long regarded as untreatable, was chemically curable.',
+        source: {
+          externalId: 'src:faget-promin-leprosy-phr-1943',
+          name: 'Faget GH, Pogge RC, Johansen FA, Dinan JF, Eccles CG. The Promin treatment of leprosy: a progress report. Public Health Reports. 1943;58(48):1729-1741.',
+          url: 'https://wellcomecollection.org/works/ym6suhbn',
+          publishedAt: '1943-11-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-01-28',
+        datePrecision: 'DAY',
+        reason: 'Lowe reported in The Lancet that the parent sulfone diaminodiphenyl sulfone (dapsone, DDS) could be given safely by mouth with results equal to injectable promin, converting sulfone therapy into a cheap, oral, mass-deployable treatment. This settled sulfones as the global standard of care for leprosy — the backbone of WHO multidrug therapy decades later — cementing the 1943 claim that Hansen\'s disease is a chemically curable infection.',
+        source: {
+          externalId: 'src:lowe-dapsone-oral-leprosy-lancet-1950',
+          name: 'Lowe J. Treatment of leprosy with diamino-diphenyl sulphone by mouth. Lancet. 1950;255(6604):145-150.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15401496/',
+          publishedAt: '1950-01-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
