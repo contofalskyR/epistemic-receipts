@@ -18993,6 +18993,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Coley's toxins — erysipelas/bacterial inoculation for cancer — 1893 ─────
+  {
+    externalId: 'trajectory:coley-toxins-erysipelas-cancer-immunotherapy-1893',
+    text: 'William B. Coley reported in May 1893 in The American Journal of the Medical Sciences that repeated inoculation of erysipelas (and later mixed bacterial toxins) produced objective regression of inoperable sarcomas, the first deliberate attempt to treat cancer by provoking an immune response.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1893-05',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1893-05',
+        datePrecision: 'MONTH',
+        reason: 'Coley, a New York bone-sarcoma surgeon, deliberately induced erysipelas infections in cancer patients after observing tumor regression following accidental infection, and reported ten cases with objective tumor shrinkage. The paper recorded the radical claim that a cancer could be made to regress by stimulating the body\'s reaction to bacterial products — the conceptual origin of cancer immunotherapy.',
+        source: {
+          externalId: 'src:coley-erysipelas-malignant-tumors-ajms-1893',
+          name: 'Coley WB. The treatment of malignant tumors by repeated inoculations of erysipelas: with a report of ten original cases. Am J Med Sci. 1893;105(5):487–511.',
+          url: 'https://archive.org/details/b30587979',
+          publishedAt: '1893-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962',
+        datePrecision: 'YEAR',
+        reason: 'Coley\'s toxins were displaced by radiation therapy and emerging chemotherapy, their inconsistent preparations and poorly documented results drew sustained skepticism, Parke-Davis ceased manufacture in 1952, and in 1962 the FDA refused to recognize Coley\'s Toxins as a proven drug — making their use for cancer treatment illegal. The original efficacy claim was institutionally rejected by mainstream oncology, even as the underlying immunotherapeutic principle was vindicated decades later.',
+        source: {
+          externalId: 'src:mccarthy-coley-toxins-sarcomas-iowa-orthop-2006',
+          name: 'McCarthy EF. The toxins of William B. Coley and the treatment of bone and soft-tissue sarcomas. Iowa Orthop J. 2006;26:154–158.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1888599/',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lacassagne — estrogen causes mammary carcinoma in mice — 1932 ────────────
+  {
+    externalId: 'trajectory:lacassagne-estrogen-mammary-carcinogenesis-1932',
+    text: 'Antoine Lacassagne reported in 1932 in Comptes Rendus de la Société de Biologie that injecting folliculin (estrone) into male mice induced mammary carcinomas, the first experimental demonstration that a hormone can cause cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1932',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1932',
+        datePrecision: 'YEAR',
+        reason: 'Lacassagne, at the Institut du Radium in Paris, administered repeated folliculin (estrone) injections to male mice of a high-tumor strain and produced mammary carcinomas, recording the claim that an exogenous sex hormone is itself carcinogenic. This extended carcinogenesis beyond coal-tar chemicals to endogenous hormones and laid the experimental basis for later concern about estrogenic drugs (DES, oral contraceptives, HRT).',
+        source: {
+          externalId: 'src:lacassagne-folliculine-mammary-cancer-cr-soc-biol-1932',
+          name: 'Lacassagne A. Apparition de cancers de la mamelle chez la souris mâle soumise à des injections de folliculine. C R Séances Soc Biol Fil. 1932;195:632–638.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234352/',
+          publishedAt: '1932-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1959',
+        datePrecision: 'YEAR',
+        reason: 'Lacassagne\'s finding was reproduced across multiple mouse and rat strains over the following decades, and by the late 1950s it was well established in the literature that exogenous estrogens cause mammary cancer in susceptible animals. The hormone-causes-cancer principle became a settled foundation of oncologic endocrinology, underpinning regulatory concern over estrogenic drugs and the later identification of the estrogen receptor.',
+        source: {
+          externalId: 'src:iom-sex-steroid-mammary-cancer-nbk234352',
+          name: 'Animal Models of Sex Steroid Hormones and Mammary Cancer. In: Oral Contraceptives and Breast Cancer. National Academies Press; NCBI Bookshelf NBK234352. (documents Lacassagne 1932 and the late-1950s consensus)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234352/',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Bittner milk factor — mouse mammary tumor virus — 1936 ──────────────────
+  {
+    externalId: 'trajectory:bittner-milk-factor-mammary-tumor-virus-1936',
+    text: 'John J. Bittner reported in Science in 1936 that a tumor-inducing \'milk factor\' transmitted through the mother\'s milk determines mammary-tumor incidence in mice, extending viral/transmissible oncogenesis from birds to a common mammalian cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1936-08',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1936-08',
+        datePrecision: 'MONTH',
+        reason: 'Bittner, at the Jackson Laboratory, used foster-nursing experiments to show that newborn mice of a low-tumor strain nursed by high-tumor-strain mothers acquired high mammary-tumor incidence, demonstrating an extra-chromosomal agent transmitted in milk that he termed the \'milk factor.\' This recorded the claim that a transmissible (later viral) agent causes a common mammalian cancer, extending Rous\'s avian finding into mammals.',
+        source: {
+          externalId: 'src:bittner-milk-factor-nursing-science-1936',
+          name: 'Bittner JJ. Some possible effects of nursing on the mammary gland tumor incidence in mice. Science. 1936;84(2172):162.',
+          url: 'https://en.wikipedia.org/wiki/Mouse_mammary_tumor_virus',
+          publishedAt: '1936-08-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949',
+        datePrecision: 'YEAR',
+        reason: 'The milk factor was reproducibly confirmed by adoptive-nursing experiments and visualized as virus particles in mouse milk by electron microscopy, establishing it as an infectious agent — the Bittner virus, later characterized as the retrovirus mouse mammary tumor virus (MMTV). The transmissible-virus explanation of mouse mammary cancer became settled within the expert literature.',
+        source: {
+          externalId: 'src:mmtv-history-review-pmc-2022',
+          name: 'Mouse Mammary Tumor Virus (MMTV) and MMTV-like Viruses: An In-depth Look at a Controversial Issue. (review documenting Bittner\'s milk factor and its identification as the MMTV retrovirus). PMC9147501. 2022.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9147501/',
+          publishedAt: '2022-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Urethane for multiple myeloma — controlled trial reversal — 1947/1966 ───
+  {
+    externalId: 'trajectory:urethane-multiple-myeloma-chemotherapy-1947',
+    text: 'Following reports beginning in 1946–1947 (Lancet), oral urethane (ethyl carbamate) was adopted as one of the earliest systemic chemotherapeutic agents for multiple myeloma, a use overturned in 1966 when a controlled trial showed it was no better than flavored placebo.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947',
+        datePrecision: 'YEAR',
+        reason: 'Building on Haddow\'s finding that carbamate esters retarded experimental rat tumors and Paterson\'s observation that urethane lowered leukocyte counts, clinicians reported urethane producing apparent benefit in multiple myeloma. Urethane was taken up as a standard oral chemotherapeutic for myeloma through the 1950s on the basis of uncontrolled case reports — recording the claim that the agent was effective therapy.',
+        source: {
+          externalId: 'src:urethane-stilbamidine-myeloma-lancet-1947',
+          name: 'Urethane and stilbamidine in multiple myeloma: report on two cases. Lancet. 1947;249(6457):820–821.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/S0140673647903759',
+          publishedAt: '1947-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966',
+        datePrecision: 'YEAR',
+        reason: 'Holland and colleagues randomized 83 multiple-myeloma patients to coded urethane versus a cherry-and-cola-flavored placebo syrup and found no difference in objective improvement or survival, with recognizable benefits nearly equally distributed between arms. This landmark double-blind controlled trial overturned two decades of presumed efficacy, ended urethane\'s use in myeloma, and became an early demonstration that randomized comparison can refute an established cancer therapy.',
+        source: {
+          externalId: 'src:holland-urethane-myeloma-controlled-trial-blood-1966',
+          name: 'Holland JF, Hosley H, Scharlau C, Carbone PP, Frei E, Brindley CO, et al. A controlled trial of urethane treatment in multiple myeloma. Blood. 1966;27(3):328–342.',
+          url: 'https://doi.org/10.1182/blood.V27.3.328.328',
+          publishedAt: '1966-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Therapeutic hypothermia after cardiac arrest — HACA / TTM / TTM2 ────────
   {
     externalId: 'trajectory:therapeutic-hypothermia-cardiac-arrest-reversal-2013',
