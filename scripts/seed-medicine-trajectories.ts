@@ -32017,6 +32017,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHIATRIC TREATMENTS & NEUROSCIENCE (1933–1982)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Insulin coma therapy for schizophrenia — Sakel 1933 / Ackner 1957 ────────
+  {
+    externalId: 'trajectory:insulin-coma-therapy-schizophrenia-1933',
+    text: 'Manfred Sakel\'s insulin coma (insulin shock) therapy, introduced in 1933, is an effective specific treatment for schizophrenia — a claim reversed after a 1957 controlled trial showed that unconsciousness, not insulin, accounted for any apparent benefit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Manfred Sakel reported that deliberately inducing hypoglycemic comas with insulin produced remissions in schizophrenic patients, recording the claim that insulin coma was a specific somatic cure for schizophrenia. The technique spread rapidly from Vienna and became one of the first physical treatments for psychosis.',
+        source: {
+          externalId: 'src:jones-insulin-coma-therapy-2000',
+          name: 'Jones K. Insulin coma therapy in schizophrenia. J R Soc Med. 2000;93(3):147-149.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1297956/',
+          publishedAt: '2000-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the 1940s and early 1950s insulin coma therapy became an institutionally entrenched standard of care, with dedicated insulin units staffed by specially trained nurses established in psychiatric hospitals across Britain, the United States, and Europe. Widespread clinical adoption settled the claim that insulin coma was a legitimate, effective schizophrenia treatment.',
+        source: {
+          externalId: 'src:jones-insulin-coma-therapy-2000',
+          name: 'Jones K. Insulin coma therapy in schizophrenia. J R Soc Med. 2000;93(3):147-149.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1297956/',
+          publishedAt: '2000-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-03-23',
+        datePrecision: 'DAY',
+        reason: 'Ackner, Harris, and Oldham published a controlled study in The Lancet comparing insulin coma against control patients rendered unconscious by barbiturates, finding no advantage for insulin — the benefit attributed to the treatment was not specific to insulin. The trial, building on Harold Bourne\'s 1953 \'The insulin myth,\' discredited a therapy used on hundreds of thousands of patients, and insulin coma was rapidly abandoned as chlorpromazine offered a safer alternative.',
+        source: {
+          externalId: 'src:ackner-insulin-treatment-schizophrenia-1957',
+          name: 'Ackner B, Harris A, Oldham AJ. Insulin treatment of schizophrenia; a controlled study. Lancet. 1957;272(6969):607-611.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13407078/',
+          publishedAt: '1957-03-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Imipramine pharmacologically delineates panic disorder — Klein 1964 ───────
+  {
+    externalId: 'trajectory:imipramine-panic-disorder-delineation-1964',
+    text: 'Donald F. Klein reported in 1964 (Psychopharmacologia) that imipramine selectively blocks acute panic attacks while leaving chronic anticipatory anxiety unaffected, pharmacologically dissecting panic from generalized anxiety and establishing panic as a distinct clinical syndrome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1964-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Klein published \'Delineation of two drug-responsive anxiety syndromes,\' reporting that imipramine abolished spontaneous panic episodes in patients but did not relieve their chronic background anxiety, whereas the reverse held for other agents. This \'pharmacological dissection\' recorded the claim that panic attacks constitute a biologically distinct disorder separable from generalized anxiety — a then-novel use of drug response to carve out a diagnostic category.',
+        source: {
+          externalId: 'src:klein-two-drug-responsive-anxiety-syndromes-1964',
+          name: 'Klein DF. Delineation of two drug-responsive anxiety syndromes. Psychopharmacologia. 1964;5:397-408.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14194683/',
+          publishedAt: '1964-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The American Psychiatric Association\'s DSM-III (1980) introduced Panic Disorder as a discrete diagnostic category separate from generalized anxiety, directly reflecting Klein\'s pharmacological-dissection argument. Institutional adoption of the panic/anxiety split into the governing nosology — carried forward into DSM-III-R, IV, and 5 — settled the claim that panic is a distinct, drug-responsive disorder.',
+        source: {
+          externalId: 'src:crocq-history-of-anxiety-2015',
+          name: 'Crocq MA. A history of anxiety: from Hippocrates to DSM. Dialogues Clin Neurosci. 2015;17(3):319-325.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4610616/',
+          publishedAt: '2015-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Cholinergic hypothesis of Alzheimer's — Bartus et al. 1982 ───────────────
+  {
+    externalId: 'trajectory:cholinergic-hypothesis-alzheimers-1982',
+    text: 'Raymond T. Bartus and colleagues proposed in Science on 30 July 1982 the cholinergic hypothesis — that degeneration of forebrain cholinergic neurons is the principal cause of the memory loss in geriatric and Alzheimer-type dementia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-07-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-07-30',
+        datePrecision: 'DAY',
+        reason: 'Bartus, Dean, Beer, and Lippa published \'The cholinergic hypothesis of geriatric memory dysfunction\' in Science, synthesizing evidence that loss of cholinergic function underlies age- and Alzheimer-related memory decline. The paper recorded a unifying causal hypothesis that became the dominant framework for Alzheimer\'s drug development and the rationale for cholinesterase-inhibitor therapy.',
+        source: {
+          externalId: 'src:bartus-cholinergic-hypothesis-1982',
+          name: 'Bartus RT, Dean RL 3rd, Beer B, Lippa AS. The cholinergic hypothesis of geriatric memory dysfunction. Science. 1982;217(4558):408-414.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7046051/',
+          publishedAt: '1982-07-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Over subsequent decades the amyloid-cascade and tau hypotheses displaced the cholinergic hypothesis as the primary causal account of Alzheimer\'s, and cholinesterase inhibitors proved only modestly and symptomatically effective rather than disease-modifying. Hampel and colleagues\' 2018 Brain review re-examined the hypothesis, reframing cholinergic degeneration as one component of a multifactorial pathology and reflecting active dispute over its causal primacy.',
+        source: {
+          externalId: 'src:hampel-cholinergic-system-alzheimers-2018',
+          name: 'Hampel H, Mesulam MM, Cuello AC, et al. The cholinergic system in the pathophysiology and treatment of Alzheimer\'s disease. Brain. 2018;141(7):1917-1933.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29850777/',
+          publishedAt: '2018-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── MAOI tyramine cheese reaction — Blackwell 1963 ───────────────────────────
+  {
+    externalId: 'trajectory:maoi-tyramine-cheese-reaction-1963',
+    text: 'Barry Blackwell reported in The Lancet in October 1963 that the dangerous, sometimes fatal hypertensive crises seen in patients taking monoamine-oxidase-inhibitor antidepressants are caused by dietary tyramine — the \'cheese reaction.\'',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1963-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Blackwell, then a trainee, published \'Hypertensive crisis due to monoamine-oxidase inhibitors,\' linking the previously mysterious and occasionally fatal hypertensive attacks in MAOI-treated patients to tyramine-rich foods such as aged cheese. The letter recorded the claim that an antidepressant\'s most lethal adverse effect arose from a drug–food interaction, against initial skepticism from the drugs\' proponents.',
+        source: {
+          externalId: 'src:blackwell-hypertensive-crisis-maoi-1963',
+          name: 'Blackwell B. Hypertensive crisis due to monoamine-oxidase inhibitors. Lancet. 1963;2(7313):849-850.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14056007/',
+          publishedAt: '1963-10-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Blackwell, Marley, Price, and Taylor experimentally confirmed the mechanism in \'Hypertensive interactions between monoamine oxidase inhibitors and foodstuffs\' (Br J Psychiatry, 1967), demonstrating the pressor effect of dietary tyramine during MAO inhibition. Mandatory dietary tyramine restriction became permanent standard clinical practice and a defining limitation of MAOI therapy, settling the cheese-reaction claim.',
+        source: {
+          externalId: 'src:blackwell-marley-maoi-foodstuffs-1967',
+          name: 'Blackwell B, Marley E, Price J, Taylor D. Hypertensive interactions between monoamine oxidase inhibitors and foodstuffs. Br J Psychiatry. 1967;113(497):349-365.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6034391/',
+          publishedAt: '1967-04-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
