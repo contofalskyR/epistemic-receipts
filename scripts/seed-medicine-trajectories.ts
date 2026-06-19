@@ -36072,6 +36072,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ALZHEIMER'S DISEASE / NEUROIMAGING / NEURODEGENERATION (2011–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gantenerumab GRADUATE failure — Roche/Bateman 2022–2023 ─────────────────
+  {
+    externalId: 'trajectory:gantenerumab-graduate-alzheimers-failure-2022',
+    text: 'Gantenerumab, Roche\'s anti-amyloid-β monoclonal antibody, slows cognitive and functional decline in people with early Alzheimer\'s disease — the central efficacy claim tested by the phase 3 GRADUATE I and II trials.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2022-11-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-14',
+        datePrecision: 'DAY',
+        reason: 'Roche announced that the phase 3 GRADUATE I and II trials did not meet their primary endpoint of slowing clinical decline (CDR-SB), with only an 8% and 6% non-significant relative reduction versus placebo. The company attributed the result partly to lower-than-expected amyloid removal, leaving open whether the failure reflected the drug\'s potency or the amyloid hypothesis itself — placing the efficacy claim in active dispute just two weeks before lecanemab\'s contrasting CLARITY AD success was presented.',
+        source: {
+          externalId: 'src:roche-gantenerumab-graduate-topline-2022',
+          name: 'Roche. Roche provides update on phase III GRADUATE programme evaluating gantenerumab in early Alzheimer\'s disease. November 14, 2022.',
+          url: 'https://www.roche.com/media/releases/med-cor-2022-11-14',
+          publishedAt: '2022-11-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-11-16',
+        datePrecision: 'DAY',
+        reason: 'Bateman et al. published the full GRADUATE I and II results in the New England Journal of Medicine, confirming that gantenerumab lowered amyloid plaque burden but produced no significant slowing of clinical decline (CDR-SB difference -0.31, P=0.10; and -0.19, P=0.30). The peer-reviewed data refuted gantenerumab\'s efficacy claim and crystallized the biomarker–clinical disconnect, ending the program.',
+        source: {
+          externalId: 'src:bateman-gantenerumab-graduate-nejm-2023',
+          name: 'Bateman RJ, Smith J, Donohue MC, et al. Two Phase 3 Trials of Gantenerumab in Early Alzheimer\'s Disease. N Engl J Med. 2023;389(20):1862-1876.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/37966285/',
+          publishedAt: '2023-11-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Florbetapir/Amyvid amyloid-PET FDA approval — Clark/Lilly 2011–2012 ────
+  {
+    externalId: 'trajectory:florbetapir-amyvid-amyloid-pet-imaging-2012',
+    text: 'Florbetapir F-18 (Amyvid) positron-emission-tomography imaging accurately detects β-amyloid neuritic plaques in the living human brain, validated against autopsy by Clark and colleagues (JAMA, 19 January 2011) and approved by the FDA on 6 April 2012 as the first amyloid imaging agent.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-01-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-01-19',
+        datePrecision: 'DAY',
+        reason: 'Clark et al. published a prospective study in JAMA showing that antemortem florbetapir-PET imaging predicted the presence of β-amyloid at autopsy with 96% agreement between PET interpretation and postmortem pathology. This recorded the first rigorous in vivo–to–neuropathology validation that a PET tracer could visualize Alzheimer\'s amyloid burden in living patients, making a previously autopsy-only pathology measurable during life.',
+        source: {
+          externalId: 'src:clark-florbetapir-pet-autopsy-jama-2011',
+          name: 'Clark CM, Schneider JA, Bedell BJ, et al. Use of florbetapir-PET for imaging beta-amyloid pathology. JAMA. 2011;305(3):275-283.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21245183/',
+          publishedAt: '2011-01-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-04-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Amyvid (florbetapir F-18 injection) as the first radioactive diagnostic agent for PET imaging of β-amyloid neuritic plaques in patients being evaluated for Alzheimer\'s disease and other causes of cognitive decline. Regulatory approval institutionally settled florbetapir-PET as a validated clinical tool for visualizing amyloid pathology in life, founding the field of amyloid imaging that later underpinned anti-amyloid drug trials.',
+        source: {
+          externalId: 'src:lilly-fda-approves-amyvid-florbetapir-2012',
+          name: 'Eli Lilly and Company. FDA Approves Amyvid (Florbetapir F 18 Injection) for Use in Patients Being Evaluated for Alzheimer\'s Disease and Other Causes of Cognitive Decline. April 6, 2012.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-amyvid-florbetapir-f-18-injection-for-use-in-patients-being-evaluated-for-alzheimers-disease-and-other-causes-of-cognitive-decline-146638165.html',
+          publishedAt: '2012-04-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Flortaucipir/Tauvid tau-PET FDA approval — 2020 ────────────────────────
+  {
+    externalId: 'trajectory:flortaucipir-tauvid-tau-pet-imaging-2020',
+    text: 'Flortaucipir F-18 (Tauvid) positron-emission-tomography imaging estimates the density and distribution of aggregated tau neurofibrillary tangles in the brain, approved by the FDA on 28 May 2020 as the first drug to image tau pathology in patients being evaluated for Alzheimer\'s disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-05-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-05-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Tauvid (flortaucipir F-18) for PET imaging of the brain to estimate the density and distribution of aggregated tau neurofibrillary tangles in adults with cognitive impairment being evaluated for Alzheimer\'s disease — the first approved agent for imaging tau, the pathology that correlates more closely with cognitive decline than amyloid. The approval, supported by autopsy-validation studies of tracer signal against neuropathologic tau staging, institutionally established in vivo tau imaging as a validated diagnostic and complemented the amyloid imaging established by florbetapir in 2012.',
+        source: {
+          externalId: 'src:jnm-fda-approval-flortaucipir-tauvid-2020',
+          name: 'Jia X, et al. Brain Tau Imaging: Food and Drug Administration Approval of 18F-Flortaucipir Injection. J Nucl Med. 2020;61(10):1411-1412.',
+          url: 'https://jnm.snmjournals.org/content/61/10/1411',
+          publishedAt: '2020-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tominersen GENERATION HD1 halt — Roche/Tabrizi 2019–2021 ────────────────
+  {
+    externalId: 'trajectory:tominersen-huntingtin-lowering-generation-hd1-halt-2021',
+    text: 'Tominersen (IONIS-HTTRx/RG6042), an intrathecal antisense oligonucleotide that lowers mutant huntingtin, provides clinical benefit in manifest Huntington\'s disease — a hope established by CSF biomarker lowering in 2019 and then overturned when its phase 3 trial was halted in 2021.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-06-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-06-13',
+        datePrecision: 'DAY',
+        reason: 'Tabrizi et al. published the phase 1–2a trial in the New England Journal of Medicine showing that intrathecal tominersen produced dose-dependent reductions of mutant huntingtin in cerebrospinal fluid in patients with early Huntington\'s disease. This recorded the first human proof of concept that the disease-causing protein could be pharmacologically lowered, raising strong expectations that huntingtin-lowering would yield clinical benefit.',
+        source: {
+          externalId: 'src:tabrizi-tominersen-htt-lowering-nejm-2019',
+          name: 'Tabrizi SJ, Leavitt BR, Landwehrmeyer GB, et al. Targeting Huntingtin Expression in Patients with Huntington\'s Disease. N Engl J Med. 2019;380(24):2307-2316.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31059641/',
+          publishedAt: '2019-06-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-03-22',
+        datePrecision: 'DAY',
+        reason: 'Roche announced it was halting dosing in the phase 3 GENERATION HD1 trial (791 participants) on the recommendation of the independent data monitoring committee, based on an overall benefit/risk assessment rather than a new safety signal. The decision overturned the expectation that lowering huntingtin necessarily slows manifest Huntington\'s disease; later reanalysis suggested younger, earlier-stage patients with less frequent dosing might benefit, prompting a new phase 2 trial and leaving the huntingtin-lowering thesis contested rather than abandoned.',
+        source: {
+          externalId: 'src:roche-tominersen-generation-hd1-update-2021',
+          name: 'Roche. Roche provides update on tominersen programme in manifest Huntington\'s disease. March 22, 2021.',
+          url: 'https://www.roche.com/media/releases/med-cor-2021-03-22b',
+          publishedAt: '2021-03-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Wunderink antipsychotic dose-reduction first-episode psychosis — 2013 ───
+  {
+    externalId: 'trajectory:wunderink-antipsychotic-dose-reduction-first-episode-psychosis-2013',
+    text: 'Early guided antipsychotic dose reduction or discontinuation in remitted first-episode psychosis yields higher long-term functional recovery than continued maintenance treatment, as reported by Wunderink and colleagues at 7-year follow-up in JAMA Psychiatry on 3 July 2013.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-07-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-07-03',
+        datePrecision: 'DAY',
+        reason: 'Wunderink et al. published the 7-year follow-up of a randomized trial in which remitted first-episode psychosis patients assigned to early dose reduction/discontinuation achieved roughly double the recovery rate of those on maintenance treatment (40.4% vs 17.6%; OR 3.49, P=0.01), driven by better functional rather than symptomatic outcomes. The finding directly challenged the settled psychiatric dogma that indefinite maintenance antipsychotic treatment optimizes long-term outcomes, opening a sustained dispute over de-prescribing that later trials (e.g., RADAR) continued to contest rather than resolve.',
+        source: {
+          externalId: 'src:wunderink-dose-reduction-fep-jama-psychiatry-2013',
+          name: 'Wunderink L, Nieboer RM, Wiersma D, Sytema S, Nienhuis FJ. Recovery in remitted first-episode psychosis at 7 years of follow-up of an early dose reduction/discontinuation or maintenance treatment strategy. JAMA Psychiatry. 2013;70(9):913-920.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23824214/',
+          publishedAt: '2013-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
