@@ -22837,6 +22837,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // GENE THERAPY & PEDIATRIC SAFETY ERA (2018–PRESENT)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SMA newborn screening RUSP addition — 2018 ──────────────────────────────
+  {
+    externalId: 'trajectory:sma-newborn-screening-rusp-addition-2018',
+    text: 'On 2 July 2018 HHS Secretary Alex Azar added spinal muscular atrophy (SMA) to the federal Recommended Uniform Screening Panel (RUSP), establishing universal newborn screening for SMA as the recommended U.S. standard so affected infants could be identified and treated presymptomatically.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-03-08',
+        datePrecision: 'DAY',
+        reason: 'After reviewing the evidence at its 8 February 2018 meeting, the Advisory Committee on Heritable Disorders in Newborns and Children formally recommended, in an 8 March 2018 letter to the HHS Secretary, that SMA be added to the RUSP — citing the newly available disease-modifying therapy (nusinersen) whose benefit depends on early treatment. This recorded the case that presymptomatic detection of SMA had become actionable.',
+        source: {
+          externalId: 'src:achdnc-sma-rusp-recommendation-2018',
+          name: 'Advisory Committee on Heritable Disorders in Newborns and Children (HRSA). Recommendation to add spinal muscular atrophy to the RUSP. March 8, 2018.',
+          url: 'https://www.curesma.org/hhs-secretary-recommends-nationwide-newborn-screening-for-sma/',
+          publishedAt: '2018-03-08',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-07-02',
+        datePrecision: 'DAY',
+        reason: 'HHS Secretary Alex Azar accepted the committee\'s recommendation and added SMA to the RUSP on 2 July 2018, making it the 35th core condition recommended for screening in every U.S. newborn and requesting a two-year implementation report. Federal adoption settled universal SMA newborn screening as national policy, driving state-by-state rollout that reached all states within a few years.',
+        source: {
+          externalId: 'src:hhs-azar-sma-rusp-addition-2018',
+          name: 'U.S. Department of Health and Human Services (HRSA). Secretary Azar adds spinal muscular atrophy to the Recommended Uniform Screening Panel. July 2, 2018.',
+          url: 'https://www.hrsa.gov/sites/default/files/hrsa/advisory-committees/heritable-disorders/reports-recommendations/sma-nbs-implementation-report.pdf',
+          publishedAt: '2018-07-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Skysona/elivaldogene CALD gene therapy — 2022 ──────────────────────────
+  {
+    externalId: 'trajectory:skysona-elivaldogene-cald-gene-therapy-2022',
+    text: 'On 16 September 2022 the U.S. FDA granted accelerated approval to elivaldogene autotemcel (Skysona), an ex vivo lentiviral gene therapy, to slow neurologic progression in boys aged 4–17 with early active cerebral adrenoleukodystrophy (CALD), based on 24-month major-functional-disability-free survival.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-09-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-09-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to Skysona for early active CALD, a rare fatal neurodegenerative disorder of boys, on the surrogate endpoint of major-functional-disability-free survival at 24 months — the first one-time gene therapy for the condition. The approval already carried a Warning for the risk of hematologic malignancy seen in the lentiviral-vector clinical program, recording both an efficacy claim and a latent safety signal.',
+        source: {
+          externalId: 'src:bluebird-skysona-fda-approval-2022',
+          name: 'bluebird bio. bluebird bio Receives FDA Accelerated Approval for SKYSONA Gene Therapy for Early Active Cerebral Adrenoleukodystrophy (CALD). September 16, 2022.',
+          url: 'https://www.businesswire.com/news/home/20220916005595/en/',
+          publishedAt: '2022-09-16',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-11-01',
+        datePrecision: 'MONTH',
+        reason: 'In November 2024 the FDA issued a safety communication reporting additional life-threatening hematologic malignancies (myelodysplastic syndrome and acute myeloid leukemia) after Skysona, with cases rising to 10 of 67 trial participants (15%) versus 3 of 67 (4%) at approval, and urged clinicians to consider matched-donor stem-cell transplant first. The FDA strengthened the Boxed Warning (labeling changes approved 7 August 2025), contesting the therapy\'s risk-benefit balance against the very transplant standard it was meant to replace.',
+        source: {
+          externalId: 'src:fda-skysona-hematologic-malignancy-2024',
+          name: 'U.S. Food and Drug Administration. FDA Investigating Serious Risk of Hematologic Malignancy Following Treatment with Skysona (elivaldogene autotemcel). 2024.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/fda-investigating-serious-risk-hematologic-malignancy-following-skysona-elivaldogene-autotemcel',
+          publishedAt: '2024-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Safe Sleep for Babies Act / inclined sleeper ban — 2022 ─────────────────
+  {
+    externalId: 'trajectory:safe-sleep-for-babies-act-inclined-sleeper-ban-2022',
+    text: 'Inclined infant sleepers (e.g., the Fisher-Price Rock \'n Play), marketed since 2009 as safe sleep aids, were reversed from accepted products to federally banned hazardous products: recalled by the CPSC on 12 April 2019 after dozens of infant deaths and statutorily banned by the Safe Sleep for Babies Act, signed into law (Public Law 117-126) on 16 May 2022.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-04-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-04-12',
+        datePrecision: 'DAY',
+        reason: 'On 12 April 2019 Fisher-Price, acting with the U.S. Consumer Product Safety Commission, recalled all 4.7 million Rock \'n Play inclined sleepers after more than 30 infant deaths from infants rolling while unrestrained — directly contradicting a decade of marketing the product as a safe place for babies to sleep. The recall was the first official record that inclined sleep positioning, contrary to supine-sleep SIDS guidance, was killing infants.',
+        source: {
+          externalId: 'src:cpsc-fisher-price-rock-n-play-recall-2019',
+          name: 'U.S. Consumer Product Safety Commission / Fisher-Price. Rock \'n Play Sleeper recall (4.7 million units). April 12, 2019.',
+          url: 'https://www.kcur.org/2019-04-12/fisher-price-recalls-rock-n-play-baby-sleeper-tied-to-infant-deaths',
+          publishedAt: '2019-04-12',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-05-16',
+        datePrecision: 'DAY',
+        reason: 'President Biden signed the Safe Sleep for Babies Act of 2021 (H.R. 3182, Public Law 117-126) on 16 May 2022, making it unlawful to manufacture, sell, or distribute inclined sleepers for infants and crib bumpers, deeming them banned hazardous products under the Consumer Product Safety Act (effective 12 November 2022). Federal statute permanently settled the reversal, converting a voluntary recall into a binding nationwide prohibition aligned with safe-sleep guidance.',
+        source: {
+          externalId: 'src:safe-sleep-for-babies-act-plaw-117-126-2022',
+          name: '117th Congress. Safe Sleep for Babies Act of 2021, Public Law 117-126. Signed May 16, 2022.',
+          url: 'https://www.govinfo.gov/app/details/PLAW-117publ126',
+          publishedAt: '2022-05-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Elevidys/delandistrogene DMD gene therapy — 2023 ────────────────────────
+  {
+    externalId: 'trajectory:elevidys-delandistrogene-dmd-gene-therapy-2023',
+    text: 'On 22 June 2023 the U.S. FDA granted accelerated approval to delandistrogene moxeparvovec-rokl (Elevidys), an AAV micro-dystrophin gene therapy, for ambulatory boys aged 4–5 years with Duchenne muscular dystrophy, on the surrogate basis of micro-dystrophin expression and over the reservations of the agency\'s own review staff.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-06-22',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s CBER granted accelerated approval to Elevidys for ambulatory DMD patients aged 4 through 5, accepting micro-dystrophin protein expression as a surrogate \'reasonably likely to predict clinical benefit.\' The decision was made over internal disagreement from FDA review staff who found the surrogate unproven, placing the first AAV gene therapy for Duchenne onto the regulatory record on contested evidentiary grounds.',
+        source: {
+          externalId: 'src:hoy-delandistrogene-first-approval-drugs-2023',
+          name: 'Hoy SM. Delandistrogene Moxeparvovec: First Approval. Drugs. 2023;83(14):1323-1329.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/37566211/',
+          publishedAt: '2023-08-11',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-06-20',
+        datePrecision: 'DAY',
+        reason: 'The required confirmatory trial (EMBARK / Study 301) failed to show a statistically significant difference from placebo on its primary endpoint (North Star Ambulatory Assessment), directly undercutting the clinical-benefit premise of the 2023 approval. Despite the missed endpoint, on 20 June 2024 the FDA expanded the label to all DMD patients aged 4 and older — granting traditional approval for ambulatory and accelerated approval for non-ambulatory patients — an institutional broadening that experts criticized as proceeding against the confirmatory evidence, leaving the therapy\'s benefit contested.',
+        source: {
+          externalId: 'src:fda-elevidys-expanded-approval-2024',
+          name: 'U.S. Food and Drug Administration. ELEVIDYS (delandistrogene moxeparvovec-rokl) — expanded approval to DMD patients aged 4 and older. June 20, 2024.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/tissue-tissue-products/elevidys',
+          publishedAt: '2024-06-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
