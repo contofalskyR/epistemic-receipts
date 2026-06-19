@@ -29203,48 +29203,6 @@ const TRAJECTORIES: Trajectory[] = [
   // CARDIOLOGY & PHARMACOLOGY ERA (1975–2017)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── SPRINT intensive blood-pressure control — NEJM 2015 / ACC-AHA 2017 ───────
-  {
-    externalId: 'trajectory:sprint-intensive-bp-control-2015',
-    text: 'The SPRINT trial reported on 9 November 2015 that treating high-risk non-diabetic adults to a systolic blood-pressure target below 120 mm Hg, rather than below 140 mm Hg, significantly reduced major cardiovascular events and all-cause mortality.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2015-11-09',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2015-11-09',
-        datePrecision: 'DAY',
-        reason: 'The NIH-sponsored SPRINT trial (9,361 high-risk adults without diabetes) was stopped early for benefit and its primary results were presented at the AHA Scientific Sessions and published online in the New England Journal of Medicine. Intensive control (target <120 mm Hg) cut the composite of major cardiovascular events by about 25% and all-cause mortality by about 27% versus standard control (<140 mm Hg), overturning the prevailing assumption that a <140 mm Hg target was sufficient and putting a more aggressive target on the evidentiary record.',
-        source: {
-          externalId: 'src:sprint-nejm-2015',
-          name: 'SPRINT Research Group. A Randomized Trial of Intensive versus Standard Blood-Pressure Control. N Engl J Med. 2015;373(22):2103-2116.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/26551272/',
-          publishedAt: '2015-11-09',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2017-11-13',
-        datePrecision: 'DAY',
-        reason: 'The 2017 ACC/AHA High Blood Pressure Clinical Practice Guideline (Whelton et al.), citing SPRINT and ACCORD, lowered the definition of hypertension and the general treatment target from 140/90 to 130/80 mm Hg and eliminated the \'prehypertension\' category. By embedding the intensive-control evidence into the diagnostic threshold used across U.S. practice, the major cardiology and medical societies institutionally adopted the SPRINT-era position.',
-        source: {
-          externalId: 'src:acc-aha-hypertension-guideline-2017',
-          name: 'Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. J Am Coll Cardiol. 2018;71(19):e127-e248 (published online 13 Nov 2017).',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/29133356/',
-          publishedAt: '2017-11-13',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Aspirin primary prevention reversal — PHS 1989 → ASPREE 2018 → ACC/AHA 2019 ─
   {
     externalId: 'trajectory:aspirin-primary-prevention-reversal-2018',
@@ -29380,48 +29338,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Boehringer Ingelheim / FDA. FDA Approves Pradaxa (dabigatran etexilate) for Stroke Prevention in Non-Valvular Atrial Fibrillation. 19 Oct 2010.',
           url: 'https://www.drugs.com/history/pradaxa.html',
           publishedAt: '2010-10-19',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── PCSK9 evolocumab cardiovascular outcomes — FDA 2015 / FOURIER 2017 ───────
-  {
-    externalId: 'trajectory:pcsk9-evolocumab-cv-outcomes-2017',
-    text: 'Inhibiting PCSK9 with evolocumab on top of statin therapy, driving LDL cholesterol to historically low levels (median ~30 mg/dL), reduces major cardiovascular events.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2015-08-27',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2015-08-27',
-        datePrecision: 'DAY',
-        reason: 'On 27 August 2015 the FDA approved evolocumab (Repatha), a monoclonal-antibody PCSK9 inhibitor, as an adjunct to diet and maximally tolerated statins for familial hypercholesterolemia and atherosclerotic disease — on the basis of dramatic LDL-cholesterol lowering (a surrogate endpoint), with cardiovascular-outcome benefit not yet demonstrated. This recorded the claim that PCSK9 inhibition\'s deep LDL reduction was reasonably likely to translate into clinical benefit.',
-        source: {
-          externalId: 'src:fda-repatha-evolocumab-approval-2015',
-          name: 'Amgen / FDA. FDA Approves Amgen\'s New Cholesterol-Lowering Medication Repatha (evolocumab). 27 Aug 2015.',
-          url: 'https://www.amgen.com/newsroom/press-releases/2015/08/fda-approves-amgens-new-cholesterollowering-medication-repatha-evolocumab',
-          publishedAt: '2015-08-27',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2017-03-17',
-        datePrecision: 'DAY',
-        reason: 'The FOURIER trial (27,564 statin-treated patients with atherosclerotic disease) — the first cardiovascular-outcomes trial of a PCSK9 inhibitor — reported that evolocumab lowered LDL to a median of 30 mg/dL and reduced the primary composite cardiovascular endpoint by 15% and the harder MI/stroke/CV-death endpoint by 20%, with no safety signal at very low LDL. This converted the surrogate-based approval into demonstrated clinical benefit and validated the \'lower-is-better\' LDL hypothesis below previously studied levels.',
-        source: {
-          externalId: 'src:fourier-evolocumab-nejm-2017',
-          name: 'Sabatine MS, Giugliano RP, Keech AC, et al. Evolocumab and Clinical Outcomes in Patients with Cardiovascular Disease. N Engl J Med. 2017;376(18):1713-1722.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/28304224/',
-          publishedAt: '2017-03-17',
           methodologyType: 'primary',
         },
       },
