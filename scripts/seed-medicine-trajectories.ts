@@ -36680,6 +36680,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEONATOLOGY, PEDIATRIC SAFETY, PUBLIC HEALTH & VACCINES (2000s–2020s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Neonatal therapeutic hypothermia for HIE — Shankaran/NICHD 2005 ──────────
+  {
+    externalId: 'trajectory:neonatal-therapeutic-hypothermia-hie-2005',
+    text: 'A landmark NICHD Neonatal Research Network randomized trial reported on 13 October 2005 that whole-body therapeutic hypothermia (cooling to 33.5°C for 72 hours) reduces death or major neurodevelopmental disability in term newborns with moderate-to-severe hypoxic-ischemic encephalopathy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-10-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-13',
+        datePrecision: 'DAY',
+        reason: 'Shankaran and colleagues for the NICHD Neonatal Research Network published the first large multicenter RCT (n=205) showing whole-body cooling cut death or moderate/severe disability from 62% to 44% in newborns with hypoxic-ischemic encephalopathy. This produced the first high-quality evidence that a neuroprotective intervention could alter outcomes after perinatal asphyxia, previously managed only supportively.',
+        source: {
+          externalId: 'src:shankaran-nichd-whole-body-hypothermia-nejm-2005',
+          name: 'Shankaran S, Laptook AR, Ehrenkranz RA, et al. Whole-body hypothermia for neonates with hypoxic-ischemic encephalopathy. N Engl J Med. 2005;353(15):1574-84.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16221780/',
+          publishedAt: '2005-10-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-10-01',
+        datePrecision: 'DAY',
+        reason: 'The TOBY trial (Azzopardi et al., n=325) confirmed that moderate hypothermia increased survival without neurologic abnormality and reduced cerebral palsy among survivors. Together with the NICHD and CoolCap trials, this established therapeutic hypothermia as the standard of care for neonatal encephalopathy in high-income settings, subsequently incorporated into neonatal resuscitation guidelines.',
+        source: {
+          externalId: 'src:azzopardi-toby-moderate-hypothermia-nejm-2009',
+          name: 'Azzopardi DV, Strohm B, Edwards AD, et al. (TOBY Study Group). Moderate hypothermia to treat perinatal asphyxial encephalopathy. N Engl J Med. 2009;361(14):1349-58.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19797281/',
+          publishedAt: '2009-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-08-03',
+        datePrecision: 'DAY',
+        reason: 'The HELIX randomized trial in India, Sri Lanka and Bangladesh (Thayyil et al., n=408) found hypothermia did not reduce death or disability (50% vs 47%) and significantly increased mortality (42% vs 31%) in low- and middle-income countries. The authors concluded hypothermia should not be offered there, showing the established benefit does not generalize across settings and qualifying a previously universal claim.',
+        source: {
+          externalId: 'src:thayyil-helix-hypothermia-lmic-lancet-global-health-2021',
+          name: 'Thayyil S, Pant S, Montaldo P, et al. Hypothermia for moderate or severe neonatal encephalopathy in low-income and middle-income countries (HELIX): a randomised controlled trial. Lancet Glob Health. 2021;9(9):e1273-e1285.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34358491/',
+          publishedAt: '2021-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA OTC benzocaine teething reversal — 2011–2018 ─────────────────────────
+  {
+    externalId: 'trajectory:fda-otc-benzocaine-teething-reversal-2018',
+    text: 'The U.S. FDA determined that over-the-counter benzocaine oral products are unsafe for infant teething — first warning on 7 April 2011 that they can cause life-threatening methemoglobinemia and announcing on 23 May 2018 that they should no longer be marketed for children younger than two years given the serious risk and lack of proven benefit.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-04-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-04-07',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Drug Safety Communication on 7 April 2011 warning that OTC benzocaine gels and liquids (Orajel, Baby Orajel, Anbesol and store brands) used for teething pain were associated with methemoglobinemia, predominantly in children under two. The safety signal entered the regulatory record but the products remained on the market with cautionary labeling.',
+        source: {
+          externalId: 'src:aap-news-benzocaine-methemoglobinemia-2011',
+          name: 'American Academy of Pediatrics. Benzocaine products can cause rare, sometimes fatal condition (reporting FDA Drug Safety Communication of April 7, 2011). AAP News. 2011;32(5):26.',
+          url: 'https://publications.aap.org/aapnews/article-pdf/32/5/26/861294/2011325-26a.pdf',
+          publishedAt: '2011-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-23',
+        datePrecision: 'DAY',
+        reason: 'On 23 May 2018, citing more than 400 reported cases of benzocaine-associated methemoglobinemia since 1971 and no demonstrated benefit, the FDA took action that OTC benzocaine oral products should no longer be marketed for teething in infants and children under two, sending letters demanding manufacturers stop selling them or face removal. This converted the prior advisory into a definitive regulatory determination that an accepted OTC remedy was unsafe.',
+        source: {
+          externalId: 'src:fda-benzocaine-teething-action-press-2018',
+          name: 'U.S. Food and Drug Administration. FDA takes action against the use of OTC benzocaine teething products due to serious safety risk, lack of benefit. FDA News Release. 23 May 2018.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-takes-action-against-use-otc-benzocaine-teething-products-due-serious-safety-risk-lack-benefit',
+          publishedAt: '2018-05-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PHS fluoride optimal 0.7 mg/L recommendation — 2015 ─────────────────────
+  {
+    externalId: 'trajectory:phs-fluoride-optimal-0-7-recommendation-2015',
+    text: 'The U.S. Public Health Service issued its final recommendation on 27 April 2015 for a single optimal community water fluoride concentration of 0.7 mg/L, lowering and replacing the 1962 recommended range of 0.7–1.2 mg/L in order to reduce the risk of dental fluorosis in children while continuing to prevent tooth decay.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-04-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-04-27',
+        datePrecision: 'DAY',
+        reason: 'HHS released the final PHS recommendation on 27 April 2015 (published in the Federal Register 1 May 2015), setting a single optimal fluoride level of 0.7 mg/L and replacing the 1962 range of 0.7–1.2 mg/L. The downward revision responded to rising childhood dental fluorosis and increased fluoride exposure from other sources such as toothpaste, formally lowering the accepted target after more than five decades.',
+        source: {
+          externalId: 'src:phs-fluoride-0-7-federal-register-2015',
+          name: 'U.S. Department of Health and Human Services. Public Health Service Recommendation for Fluoride Concentration in Drinking Water for the Prevention of Dental Caries. Federal Register. 80(83):24936-24938. 1 May 2015.',
+          url: 'https://www.federalregister.gov/documents/2015/05/01/2015-10201/public-health-service-recommendation-for-fluoride-concentration-in-drinking-water-for-prevention-of',
+          publishedAt: '2015-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kebilidi / eladocagene — first intracerebral gene therapy FDA approval 2024
+  {
+    externalId: 'trajectory:kebilidi-eladocagene-aadc-brain-gene-therapy-2024',
+    text: 'On 13 November 2024 the U.S. FDA granted accelerated approval to eladocagene exuparvovec-tneq (Kebilidi) for aromatic L-amino acid decarboxylase (AADC) deficiency, making it the first gene therapy in the United States administered by direct infusion into the brain and the first approved treatment for this pediatric neurometabolic disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-11-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Kebilidi (PTC Therapeutics), an AAV2 gene therapy delivered by stereotactic neurosurgical infusion into the putamen, for adult and pediatric AADC deficiency — a rare inherited disorder causing severe developmental and motor impairment. Effectiveness rested on attainment of new motor milestones versus an untreated natural-history cohort, and the approval established direct intracerebral gene therapy as a regulated therapeutic modality for the first time in the United States.',
+        source: {
+          externalId: 'src:fda-kebilidi-eladocagene-sbra-2024',
+          name: 'U.S. Food and Drug Administration, Center for Biologics Evaluation and Research. Summary Basis for Regulatory Action — Kebilidi (eladocagene exuparvovec-tneq). 13 November 2024.',
+          url: 'https://www.fda.gov/media/184353/download',
+          publishedAt: '2024-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MenB Bexsero accelerated approval + ACIP Category B — 2015 ──────────────
+  {
+    externalId: 'trajectory:menb-bexsero-accelerated-approval-category-b-2015',
+    text: 'Bexsero, a serogroup B meningococcal vaccine, received FDA accelerated approval on 23 January 2015 for ages 10–25 on the basis of immunogenicity (serum bactericidal antibody) rather than clinical efficacy, after which the ACIP on 23 October 2015 gave it only a Category B \'individual clinical decision-making\' recommendation for healthy adolescents aged 16–23 rather than a routine recommendation.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2015-01-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-01-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to Bexsero on 23 January 2015 for individuals aged 10 through 25, based on the vaccine\'s ability to elicit bactericidal antibodies against representative serogroup B strains rather than demonstrated clinical protection. The licensure recorded MenB vaccination as available, but on a surrogate-endpoint basis that left its population value unresolved.',
+        source: {
+          externalId: 'src:fda-bexsero-clinical-review-memo-2015',
+          name: 'U.S. Food and Drug Administration. Bexsero (Meningococcal Group B Vaccine) — Clinical Review Memorandum / approval materials. FDA. 23 January 2015.',
+          url: 'https://www.fda.gov/media/116060/download',
+          publishedAt: '2015-01-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-10-23',
+        datePrecision: 'DAY',
+        reason: 'The ACIP (MacNeil et al., MMWR 23 October 2015) recommended that MenB vaccine \'may be administered\' to healthy adolescents and young adults aged 16–23 (preferred 16–18) — a Category B recommendation for individual clinical decision-making rather than routine universal use. This deliberately settled MenB into a permissive, non-routine schedule status, distinct from the Category A recommendation for those at increased risk, reflecting unresolved cost-effectiveness and strain-coverage questions.',
+        source: {
+          externalId: 'src:macneil-menb-adolescents-acip-mmwr-2015',
+          name: 'MacNeil JR, Rubin L, Folaranmi T, et al. Use of Serogroup B Meningococcal Vaccines in Adolescents and Young Adults: Recommendations of the Advisory Committee on Immunization Practices, 2015. MMWR Morb Mortal Wkly Rep. 2015;64(41):1171-1176.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6441a3.htm',
+          publishedAt: '2015-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
