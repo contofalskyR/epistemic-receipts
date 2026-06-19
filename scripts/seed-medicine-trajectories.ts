@@ -30484,6 +30484,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANTIMICROBIAL RESISTANCE ERA (1997–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── VISA / vancomycin-intermediate S. aureus — Hiramatsu 1997 ───────────────
+  {
+    externalId: 'trajectory:visa-vancomycin-intermediate-s-aureus-1997',
+    text: 'Hiramatsu and colleagues reported in The Lancet on 6 December 1997 that Staphylococcus aureus strains with reduced (intermediate) susceptibility to vancomycin (VISA; e.g. strain Mu50, MIC 8 µg/mL) had emerged and disseminated in Japanese hospitals, breaching vancomycin\'s standing as a uniformly reliable last-line therapy against MRSA.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-12-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-12-06',
+        datePrecision: 'DAY',
+        reason: 'Hiramatsu et al. characterized S. aureus strains Mu3 (heteroresistant) and Mu50 (intermediate, vancomycin MIC 8 µg/mL) with abnormally thickened cell walls, and documented their dissemination across Japanese hospitals. This was the first peer-reviewed demonstration that S. aureus could acquire clinically meaningful resistance to vancomycin, the drug long treated as the reliable fallback for MRSA.',
+        source: {
+          externalId: 'src:hiramatsu-lancet-visa-1997',
+          name: 'Hiramatsu K, Aritaka N, Hanaki H, et al. Dissemination in Japanese hospitals of strains of Staphylococcus aureus heterogeneously resistant to vancomycin. Lancet. 1997;350(9092):1670-1673.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(97)07324-8/abstract',
+          publishedAt: '1997-12-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-02-18',
+        datePrecision: 'DAY',
+        reason: 'The CDC-convened Glycopeptide-Intermediate Staphylococcus aureus Working Group published full clinical and microbiological characterization of the first US VISA cases (Michigan and New Jersey, 1997) in the New England Journal of Medicine. Independent confirmation outside Japan by a national reference-laboratory consortium settled the emergence of vancomycin-intermediate S. aureus as established fact and triggered revised surveillance and breakpoint guidance.',
+        source: {
+          externalId: 'src:gisa-working-group-nejm-1999',
+          name: 'Smith TL, Pearson ML, Wilcox KR, et al; Glycopeptide-Intermediate Staphylococcus aureus Working Group. Emergence of vancomycin resistance in Staphylococcus aureus. N Engl J Med. 1999;340(7):493-501.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199902183400701',
+          publishedAt: '1999-02-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── XDR-TB emergence — Tugela Ferry 2006 ────────────────────────────────────
+  {
+    externalId: 'trajectory:xdr-tb-emergence-tugela-ferry-2006',
+    text: 'CDC, in collaboration with WHO, defined and reported on 24 March 2006 the worldwide emergence of extensively drug-resistant tuberculosis (XDR-TB) — Mycobacterium tuberculosis resistant to isoniazid, rifampin, and major classes of second-line drugs — establishing a near-untreatable form of TB as a documented global reality.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-03-24',
+        datePrecision: 'DAY',
+        reason: 'A CDC/WHO survey of an international network of supranational TB reference laboratories (2000–2004 isolates) coined the term \'XDR-TB\' and quantified its global distribution. The MMWR report formally placed on the institutional record that strains resistant to first-line drugs plus the main second-line classes had emerged on every populated continent, leaving few or no effective treatment options.',
+        source: {
+          externalId: 'src:cdc-mmwr-xdr-tb-worldwide-2006',
+          name: 'CDC. Emergence of Mycobacterium tuberculosis with extensive resistance to second-line drugs—worldwide, 2000-2004. MMWR Morb Mortal Wkly Rep. 2006;55(11):301-305.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5511a2.htm',
+          publishedAt: '2006-03-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-11-04',
+        datePrecision: 'DAY',
+        reason: 'Gandhi et al. reported the Tugela Ferry, KwaZulu-Natal outbreak in The Lancet: of 53 XDR-TB patients, 52 (98%) died at a median of 16 days from diagnosis, and all tested patients were HIV co-infected. The study demonstrated that XDR-TB was not a laboratory curiosity but a lethal, rapidly fatal clinical reality fuelled by HIV, settling XDR-TB as a recognized global health emergency and prompting an emergency WHO response.',
+        source: {
+          externalId: 'src:gandhi-lancet-xdr-tb-tugela-ferry-2006',
+          name: 'Gandhi NR, Moll A, Sturm AW, et al. Extensively drug-resistant tuberculosis as a cause of death in patients co-infected with tuberculosis and HIV in a rural area of South Africa. Lancet. 2006;368(9547):1575-1580.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17084757/',
+          publishedAt: '2006-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── KPC carbapenemase emergence — Yigit 2001 ────────────────────────────────
+  {
+    externalId: 'trajectory:kpc-carbapenemase-emergence-klebsiella-2001',
+    text: 'Yigit and colleagues reported in Antimicrobial Agents and Chemotherapy in April 2001 the first characterization of a plasmid-borne carbapenem-hydrolyzing β-lactamase, KPC-1, in a carbapenem-resistant Klebsiella pneumoniae isolate, demonstrating transmissible enzymatic resistance to carbapenems, the last-line β-lactams.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Yigit et al. characterized KPC-1, a novel Ambler class A carbapenem-hydrolyzing β-lactamase carried on a transferable ~50-kb plasmid, from a carbapenem-resistant K. pneumoniae isolate (collected in North Carolina in 1996). This recorded the first description of plasmid-mediated, horizontally transmissible carbapenem resistance in Enterobacteriaceae — a mechanism capable of spreading across strains and species.',
+        source: {
+          externalId: 'src:yigit-aac-kpc-1-2001',
+          name: 'Yigit H, Queenan AM, Anderson GJ, et al. Novel carbapenem-hydrolyzing β-lactamase, KPC-1, from a carbapenem-resistant strain of Klebsiella pneumoniae. Antimicrob Agents Chemother. 2001;45(4):1151-1161.',
+          url: 'https://journals.asm.org/doi/10.1128/aac.45.4.1151-1161.2001',
+          publishedAt: '2001-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a decade KPC-producing Enterobacteriaceae spread from a single isolate to clonal endemicity in the northeastern United States and internationally (notably ST258), driving public-health alerts and reviews documenting KPC as a dominant carbapenemase. The transition from a single characterized enzyme to a recognized global driver of carbapenem-resistant Enterobacteriaceae settled KPC-mediated resistance as established epidemiological fact.',
+        source: {
+          externalId: 'src:arnold-kpc-emergence-review-2011',
+          name: 'Arnold RS, Thom KA, Sharma S, et al. Emergence of Klebsiella pneumoniae carbapenemase (KPC)-producing bacteria. South Med J. 2011;104(1):40-45.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3075864/',
+          publishedAt: '2011-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Male circumcision HIV prevention RCTs — Auvert 2005 / Bailey & Gray 2007 ─
+  {
+    externalId: 'trajectory:male-circumcision-hiv-prevention-2005',
+    text: 'Three randomized controlled trials in sub-Saharan Africa (Auvert et al., Orange Farm, South Africa, 2005; Bailey et al., Kisumu, Kenya, and Gray et al., Rakai, Uganda, 2007) established that voluntary medical male circumcision reduces female-to-male heterosexual HIV acquisition by roughly 50–60%, leading WHO and UNAIDS to recommend it as an HIV prevention intervention on 28 March 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The Auvert et al. ANRS-1265 trial in Orange Farm, South Africa — the first RCT of male circumcision for HIV prevention — was stopped early by its data safety monitoring board after showing roughly 60% protection against HIV acquisition. Published in PLoS Medicine, it converted decades of observational and ecological hypotheses about circumcision and HIV into a recorded experimental finding.',
+        source: {
+          externalId: 'src:auvert-plosmed-anrs1265-circumcision-2005',
+          name: 'Auvert B, Taljaard D, Lagarde E, et al. Randomized, controlled intervention trial of male circumcision for reduction of HIV infection risk: the ANRS 1265 Trial. PLoS Med. 2005;2(11):e298.',
+          url: 'https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020298',
+          publishedAt: '2005-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-02-24',
+        datePrecision: 'DAY',
+        reason: 'Two further large RCTs — Bailey et al. in Kisumu, Kenya and Gray et al. in Rakai, Uganda — were both halted early by their monitoring boards after independently replicating the protective effect (~53% and ~51% efficacy). Published back-to-back in The Lancet, this triple-replicated randomized evidence settled the protective effect of male circumcision against heterosexually acquired HIV across the expert community.',
+        source: {
+          externalId: 'src:bailey-gray-lancet-circumcision-rcts-2007',
+          name: 'Bailey RC, Moses S, Parker CB, et al. Male circumcision for HIV prevention in young men in Kisumu, Kenya: a randomised controlled trial. Lancet. 2007;369(9562):643-656. (companion: Gray RH et al. Rakai, Uganda. Lancet. 2007;369(9562):657-666.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17321310/',
+          publishedAt: '2007-02-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-28',
+        datePrecision: 'DAY',
+        reason: 'Following an international expert consultation in Montreux (6–8 March 2007) reviewing the three RCTs, WHO and UNAIDS jointly announced that male circumcision should be recognized as an additional important intervention to reduce heterosexually acquired HIV infection in men. This converted the settled scientific finding into formal global health policy, launching voluntary medical male circumcision programmes across high-prevalence African countries.',
+        source: {
+          externalId: 'src:who-unaids-male-circumcision-recommendation-2007',
+          name: 'WHO and UNAIDS. New data on male circumcision and HIV prevention: policy and programme implications — recommendations from expert consultation, 28 March 2007.',
+          url: 'https://www.who.int/news/item/28-03-2007-who-and-unaids-announce-recommendations-from-expert-consultation-on-male-circumcision-for-hiv-prevention',
+          publishedAt: '2007-03-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
