@@ -30572,6 +30572,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN TARGETED THERAPIES & REGULATORY (2013–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Erenumab (Aimovig) — first CGRP antibody approved for migraine prevention 2018 ──
+  {
+    externalId: 'trajectory:erenumab-aimovig-first-cgrp-migraine-prevention-2018',
+    text: 'Erenumab (Aimovig), the first monoclonal antibody targeting the calcitonin gene-related peptide (CGRP) receptor, was shown in the STRIVE trial to reduce monthly migraine days versus placebo and was approved by the FDA on 17 May 2018 as the first preventive therapy developed specifically for migraine.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-11-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-30',
+        datePrecision: 'DAY',
+        reason: 'The pivotal phase 3 STRIVE trial, published in the New England Journal of Medicine, reported that erenumab at 70 mg and 140 mg reduced monthly migraine days by about 1.9 days more than placebo over six months, with roughly twice as many patients achieving ≥50% reduction. This established the first robust randomized evidence that pharmacologically blocking the CGRP receptor prevents migraine, validating a mechanistic target pursued for decades.',
+        source: {
+          externalId: 'src:goadsby-strive-erenumab-nejm-2017',
+          name: 'Goadsby PJ, Reuter U, Hallström Y, et al. A Controlled Trial of Erenumab for Episodic Migraine. N Engl J Med. 2017;377(22):2123-2132.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29171821/',
+          publishedAt: '2017-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Aimovig (erenumab-aooe) for the preventive treatment of migraine in adults, the first-in-class CGRP-pathway antibody and the first drug developed specifically for migraine prevention. Regulatory approval converted the trial-level efficacy claim into an established, prescribable standard and launched an entire validated drug class (CGRP antibodies and small-molecule gepants).',
+        source: {
+          externalId: 'src:amgen-fda-approves-aimovig-erenumab-2018',
+          name: 'Amgen/Novartis. FDA Approves Aimovig (erenumab-aooe), A Novel Treatment Developed Specifically For Migraine Prevention. May 17, 2018.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-aimovig-erenumab-aooe-a-novel-treatment-developed-specifically-for-migraine-prevention-300650778.html',
+          publishedAt: '2018-05-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Edaravone (Radicava) — first new ALS drug in 22 years, EU rejection 2017–2019 ──
+  {
+    externalId: 'trajectory:edaravone-radicava-als-approval-2017',
+    text: 'Edaravone (Radicava), a free-radical scavenger, was approved by the FDA on 5 May 2017 as the first new treatment for amyotrophic lateral sclerosis in 22 years on the basis of a trial in a narrowly defined ALS subpopulation, but European regulators declined to accept the same evidence.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-05-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-05-05',
+        datePrecision: 'DAY',
+        reason: 'After an earlier broad ALS trial failed, a confirmatory phase 3 trial (Study MCI186-19) in a post-hoc-defined early, well-preserved subpopulation showed edaravone slowed ALSFRS-R functional decline by 2.49 points over 24 weeks (p=0.0013), and the FDA approved Radicava as the first new ALS drug since riluzole (1995). This settled, for US regulators, that edaravone slows functional decline in a defined ALS population.',
+        source: {
+          externalId: 'src:writing-group-edaravone-als-lancet-neurol-2017',
+          name: 'Writing Group, Edaravone (MCI-186) ALS 19 Study Group. Safety and efficacy of edaravone in well defined patients with amyotrophic lateral sclerosis: a randomised, double-blind, placebo-controlled trial. Lancet Neurol. 2017;16(7):505-512.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28522181/',
+          publishedAt: '2017-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-05-24',
+        datePrecision: 'DAY',
+        reason: "Mitsubishi Tanabe withdrew its EU marketing authorisation application after the EMA's CHMP concluded the evidence was insufficient: the single pivotal study was small, showed no benefit on survival, breathing or muscle strength, and had baseline imbalances favoring the edaravone arm. The same evidence FDA accepted was judged inadequate by European regulators, leaving edaravone's clinical efficacy in open international dispute.",
+        source: {
+          externalId: 'src:ema-withdrawal-radicava-edaravone-2019',
+          name: 'European Medicines Agency. Questions and answers on the withdrawal of the marketing authorisation application for Radicava (edaravone). May 2019.',
+          url: 'https://www.ema.europa.eu/en/documents/medicine-qa/questions-and-answers-withdrawal-marketing-authorisation-application-radicava-edaravone_en.pdf',
+          publishedAt: '2019-05-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Solanezumab — anti-amyloid failure across symptomatic and prevention trials 2018–2023 ──
+  {
+    externalId: 'trajectory:solanezumab-anti-amyloid-failure-abandoned-2023',
+    text: "Solanezumab, Eli Lilly's anti-amyloid-β monoclonal antibody and one of the longest-pursued Alzheimer's candidates, failed to slow cognitive decline in the EXPEDITION3 (2018) and A4 prevention (2023) phase 3 trials, and Lilly discontinued its development on 8 March 2023.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-01-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-25',
+        datePrecision: 'DAY',
+        reason: 'After ambiguous earlier trials (EXPEDITION1/2) whose pooled secondary analysis had hinted at slowing in mild patients, the dedicated EXPEDITION3 trial in mild Alzheimer\'s dementia missed its primary endpoint, with no significant difference in ADAS-cog14 at week 80 (P=0.10). The hope that targeting soluble amyloid-β monomers yields clinical benefit was wounded but not killed, as the preclinical-prevention A4 trial was still ongoing.',
+        source: {
+          externalId: 'src:honig-expedition3-solanezumab-nejm-2018',
+          name: 'Honig LS, Vellas B, Woodward M, et al. Trial of Solanezumab for Mild Dementia Due to Alzheimer\'s Disease. N Engl J Med. 2018;378(4):321-330.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29365294/',
+          publishedAt: '2018-01-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-08',
+        datePrecision: 'DAY',
+        reason: "Lilly announced that the A4 secondary-prevention trial in cognitively unimpaired older adults with brain amyloid showed solanezumab did not slow cognitive decline or reduce progression and did not clear amyloid plaque, and the company ended the drug's development. The definitive failure across symptomatic and preclinical stages refuted solanezumab's efficacy and reinforced that binding soluble amyloid monomers without removing plaque confers no clinical benefit.",
+        source: {
+          externalId: 'src:lilly-a4-solanezumab-discontinuation-2023',
+          name: 'Eli Lilly and Company. Lilly Provides Update on A4 Study of Solanezumab for Preclinical Alzheimer\'s Disease. March 8, 2023.',
+          url: 'https://investor.lilly.com/news-releases/news-release-details/lilly-provides-update-a4-study-solanezumab-preclinical',
+          publishedAt: '2023-03-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pitolisant (Wakix) — first non-scheduled narcolepsy drug 2019 ──────────
+  {
+    externalId: 'trajectory:pitolisant-wakix-non-scheduled-narcolepsy-2019',
+    text: 'Pitolisant (Wakix), a first-in-class histamine H3-receptor inverse agonist, was shown in the HARMONY I trial to reduce excessive daytime sleepiness in narcolepsy and was approved by the FDA on 14 August 2019 as the first narcolepsy drug not classified as a DEA-controlled substance.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The randomized, double-blind HARMONY I trial reported that pitolisant reduced Epworth Sleepiness Scale scores significantly more than placebo (−5.8 vs −3.4) in narcolepsy, though it did not meet non-inferiority versus modafinil. This established the first controlled evidence that an H3-receptor inverse agonist, enhancing brain histamine release, treats narcoleptic excessive daytime sleepiness through a non-stimulant mechanism.',
+        source: {
+          externalId: 'src:dauvilliers-harmony1-pitolisant-lancet-neurol-2013',
+          name: 'Dauvilliers Y, Bassetti C, Lammers GJ, et al. Pitolisant versus placebo or modafinil in patients with narcolepsy: a double-blind, randomised trial. Lancet Neurol. 2013;12(11):1068-1075.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24107292/',
+          publishedAt: '2013-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-08-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Wakix (pitolisant) for excessive daytime sleepiness in adults with narcolepsy, the first-in-class H3 inverse agonist and the first narcolepsy therapy the DEA did not schedule as a controlled substance. Approval established pitolisant as a recognized treatment and broke the long reliance on scheduled stimulants and sodium oxybate for narcolepsy.',
+        source: {
+          externalId: 'src:wakix-pitolisant-fda-approval-history-2019',
+          name: 'Drugs.com. Wakix (pitolisant) FDA Approval History. Approved August 14, 2019.',
+          url: 'https://www.drugs.com/history/wakix.html',
+          publishedAt: '2019-08-14',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
