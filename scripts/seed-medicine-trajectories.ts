@@ -21560,48 +21560,6 @@ const TRAJECTORIES: Trajectory[] = [
   // WOMEN'S HEALTH & OBSTETRICS (drug discovery era, pre-1950)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Aschheim–Zondek biological pregnancy test — 1928 ────────────────────────
-  {
-    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
-    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting a woman\'s urine subcutaneously into immature female mice induced ovarian follicular maturation and corpora hemorrhagica only when the woman was pregnant, providing the first reliable biological test for pregnancy (the A–Z test) by detecting a urinary gonadotropic substance later identified as human chorionic gonadotropin.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1928-01-01',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1928-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Aschheim and Zondek demonstrated that urine from pregnant women, injected into sexually immature mice, produced characteristic ovarian changes (follicular maturation, luteinization, hemorrhagic follicles) absent with non-pregnant urine, and that this gonadotropic activity appeared very early in pregnancy. This recorded the first hormonally based, reproducible diagnostic test for pregnancy, founding endocrine pregnancy testing and the bioassay tradition that preceded immunoassays.',
-        source: {
-          externalId: 'src:aschheim-zondek-klinische-wochenschrift-1928',
-          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klinische Wochenschrift. 1928;7:1404–1411, 1453–1457.',
-          url: 'https://embryo.asu.edu/pages/aschheim-zondek-test-pregnancy',
-          publishedAt: '1928-01-01',
-          methodologyType: 'derivative',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1933-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Through the early 1930s the Aschheim–Zondek reaction was taken up across European and British clinical laboratories as the routine confirmatory test for early pregnancy and for diagnosing conditions such as ectopic pregnancy and trophoblastic tumours, with reported accuracy near 98–99%. Its diffusion into organized laboratory diagnostic services settled the test as the accepted clinical standard for pregnancy detection before its later replacement by faster amphibian and immunological assays.',
-        source: {
-          externalId: 'src:olszynko-gryn-az-reaction-laboratory-services-1930s',
-          name: 'Olszynko-Gryn J. The demand for pregnancy testing: The Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47:233–247.',
-          url: 'https://www.sciencedirect.com/science/article/pii/S1369848613001763',
-          publishedAt: '2014-09-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Ergometrine isolated — Dudley & Moir 1935 ───────────────────────────────
   {
     externalId: 'trajectory:ergometrine-ergot-postpartum-hemorrhage-1935',
