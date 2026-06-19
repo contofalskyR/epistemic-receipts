@@ -19630,6 +19630,208 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA (2013–2024) — Neurology / ALS / Psychiatry
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Relyvrio (AMX0035) ALS — approved 2022, withdrawn 2024 ──────────────────
+  {
+    externalId: 'trajectory:relyvrio-amx0035-als-efficacy-2020',
+    text: 'Sodium phenylbutyrate–taurursodiol (AMX0035, marketed as Relyvrio) slows functional decline in amyotrophic lateral sclerosis, a claim first reported in the phase 2 CENTAUR trial (NEJM, 3 September 2020) and used to obtain FDA approval on 29 September 2022.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-03',
+        datePrecision: 'DAY',
+        reason: 'Paganoni and colleagues reported the phase 2 CENTAUR randomized controlled trial (137 patients) in the New England Journal of Medicine, finding that AMX0035 significantly slowed ALSFRS-R functional decline versus placebo over 24 weeks. This recorded the first controlled-trial evidence that the sodium phenylbutyrate–taurursodiol combination could alter ALS progression.',
+        source: {
+          externalId: 'src:paganoni-centaur-amx0035-nejm-2020',
+          name: 'Paganoni S, et al. Trial of Sodium Phenylbutyrate–Taurursodiol for Amyotrophic Lateral Sclerosis. N Engl J Med. 2020;383(10):919-930.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32877582/',
+          publishedAt: '2020-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-09-29',
+        datePrecision: 'DAY',
+        reason: 'After an unusual process in which an FDA advisory committee initially voted against approval and was then reconvened for a rare second vote in favor, the FDA approved Relyvrio for ALS on 29 September 2022, citing unmet need and supplementary CENTAUR analyses. Amylyx publicly pledged to withdraw the drug voluntarily if its confirmatory phase 3 trial failed, institutionally settling the efficacy claim despite acknowledged uncertainty.',
+        source: {
+          externalId: 'src:amylyx-relyvrio-fda-approval-2022',
+          name: 'Amylyx Pharmaceuticals. Amylyx Pharmaceuticals Announces FDA Approval of RELYVRIO for the Treatment of ALS. 29 September 2022.',
+          url: 'https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-fda-approval-of-relyvriotm-for-the-treatment-of-als',
+          publishedAt: '2022-09-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-04-04',
+        datePrecision: 'DAY',
+        reason: 'The large confirmatory phase 3 PHOENIX trial failed to meet its primary endpoint or any secondary endpoint, showing no difference from placebo on ALSFRS-R decline, survival, or lung function. Honoring its earlier pledge, Amylyx announced on 4 April 2024 its intention to remove Relyvrio/Albrioza from the market, reversing the efficacy claim the FDA had accepted in 2022.',
+        source: {
+          externalId: 'src:amylyx-relyvrio-market-withdrawal-2024',
+          name: 'Amylyx Pharmaceuticals. Amylyx Pharmaceuticals Announces Formal Intention to Remove RELYVRIO/ALBRIOZA from the Market. 4 April 2024.',
+          url: 'https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-formal-intention-to-remove-relyvrior/albriozatm-from-the-market-provides-updates-on-access-to-therapy-pipeline-corporate-restructuring-and-strategy',
+          publishedAt: '2024-04-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MDMA-assisted therapy for PTSD — FDA rejection 2024 ─────────────────────
+  {
+    externalId: 'trajectory:mdma-assisted-therapy-ptsd-fda-rejection-2021',
+    text: 'MDMA-assisted therapy is a safe and effective treatment for severe PTSD, a claim reported in the phase 3 MAPP1 trial (Nature Medicine, 10 May 2021) and submitted to the FDA by Lykos Therapeutics for approval.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-05-10',
+        datePrecision: 'DAY',
+        reason: 'Mitchell and colleagues published the first phase 3 randomized, double-blind, placebo-controlled trial of MDMA-assisted therapy for severe PTSD (90 participants) in Nature Medicine, reporting a large, significant reduction in CAPS-5 scores versus placebo plus therapy (P < 0.0001). This recorded pivotal-trial evidence supporting MDMA-assisted therapy as a potential breakthrough PTSD treatment.',
+        source: {
+          externalId: 'src:mitchell-mdma-ptsd-phase3-natmed-2021',
+          name: 'Mitchell JM, et al. MDMA-assisted therapy for severe PTSD: a randomized, double-blind, placebo-controlled phase 3 study. Nat Med. 2021;27(6):1025-1033.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/33972795/',
+          publishedAt: '2021-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-08-09',
+        datePrecision: 'DAY',
+        reason: 'On 4 June 2024 an FDA Psychopharmacologic Drugs Advisory Committee voted 2–9 that MDMA-assisted therapy was not shown effective and 1–10 that its benefits did not outweigh risks, citing concerns about functional unblinding, trial conduct, and data reliability. On 9 August 2024 the FDA issued a Complete Response Letter to Lykos declining approval and requiring an additional phase 3 trial, placing the efficacy and safety claim into active institutional contestation.',
+        source: {
+          externalId: 'src:lykos-mdma-ptsd-crl-2024',
+          name: 'Lykos Therapeutics. Lykos Therapeutics Announces Complete Response Letter for Midomafetamine Capsules for PTSD. 9 August 2024.',
+          url: 'https://www.prnewswire.com/news-releases/lykos-therapeutics-announces-complete-response-letter-for-midomafetamine-capsules-for-ptsd-302219182.html',
+          publishedAt: '2024-08-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pimavanserin (Nuplazid) Parkinson's psychosis — safety contestation 2018 ─
+  {
+    externalId: 'trajectory:pimavanserin-nuplazid-parkinsons-psychosis-2013',
+    text: 'Pimavanserin (Nuplazid), a selective 5-HT2A inverse agonist, safely reduces hallucinations and delusions in Parkinson\'s disease psychosis without worsening motor function, as shown in a phase 3 trial (Lancet, online 1 November 2013) and approved by the FDA on 29 April 2016 as the first drug for this indication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-11-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-11-01',
+        datePrecision: 'DAY',
+        reason: 'Cummings and colleagues reported a phase 3 randomized placebo-controlled trial in The Lancet showing pimavanserin, a selective serotonin 5-HT2A inverse agonist, significantly reduced psychotic symptoms (SAPS-PD) in Parkinson\'s disease psychosis without impairing motor function. This recorded the first pivotal evidence for a non-dopaminergic antipsychotic targeted at Parkinson\'s psychosis.',
+        source: {
+          externalId: 'src:cummings-pimavanserin-pdp-lancet-2014',
+          name: 'Cummings J, et al. Pimavanserin for patients with Parkinson\'s disease psychosis: a randomised, placebo-controlled phase 3 trial. Lancet. 2014;383(9916):533-540.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24183563/',
+          publishedAt: '2013-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-04-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Nuplazid (pimavanserin) on 29 April 2016 as the first drug approved to treat hallucinations and delusions associated with Parkinson\'s disease psychosis, following Breakthrough Therapy designation. The approval institutionally settled the claim that a 5-HT2A inverse agonist could treat Parkinson\'s psychosis without dopaminergic blockade.',
+        source: {
+          externalId: 'src:acadia-nuplazid-fda-approval-2016',
+          name: 'Acadia Pharmaceuticals. FDA Approves ACADIA Pharmaceuticals\' NUPLAZID (pimavanserin) — The First Drug Approved for the Treatment of Hallucinations and Delusions Associated with Parkinson\'s Disease Psychosis. 29 April 2016.',
+          url: 'https://ir.acadia-pharm.com/news-releases/news-release-details/fda-approves-acadia-pharmaceuticals-nuplazidtm-pimavanserin',
+          publishedAt: '2016-04-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-09-20',
+        datePrecision: 'DAY',
+        reason: 'Post-marketing reports of deaths and serious adverse events (highlighted by ISMP QuarterWatch and a CNN investigation in April 2018) prompted the FDA to conduct a formal safety review. On 20 September 2018 the FDA announced it found no new or unexpected safety risks and reaffirmed that benefits outweigh risks, but the mortality signal and the drug\'s boxed dementia-related warning left the safety claim genuinely contested in the literature.',
+        source: {
+          externalId: 'src:fda-pimavanserin-safety-review-2018',
+          name: 'U.S. FDA. FDA analysis finds no new or unexpected safety risks associated with Nuplazid (pimavanserin), a medication to treat the hallucinations and delusions of Parkinson\'s disease psychosis. 20 September 2018.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-analysis-finds-no-new-or-unexpected-safety-risks-associated-nuplazid-pimavanserin-medication',
+          publishedAt: '2018-09-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tofersen (Qalsody) SOD1-ALS biomarker accelerated approval 2023 ─────────
+  {
+    externalId: 'trajectory:tofersen-qalsody-sod1-als-biomarker-approval-2022',
+    text: 'Tofersen (Qalsody), an antisense oligonucleotide that lowers SOD1 protein, benefits patients with SOD1-mutant ALS — a claim the FDA accepted via accelerated approval on 25 April 2023 based on neurofilament biomarker reduction even though the phase 3 VALOR trial missed its clinical primary endpoint.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-09-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-09-22',
+        datePrecision: 'DAY',
+        reason: 'Miller and colleagues published the phase 3 VALOR trial in the New England Journal of Medicine, reporting that tofersen substantially lowered plasma SOD1 and neurofilament light chain in SOD1-ALS but did not meet its primary clinical endpoint (ALSFRS-R decline), showing only non-significant trends toward benefit. This recorded both a strong biomarker effect and an unmet clinical endpoint, framing the central interpretive tension.',
+        source: {
+          externalId: 'src:miller-tofersen-valor-nejm-2022',
+          name: 'Miller TM, et al. Trial of Antisense Oligonucleotide Tofersen for SOD1 ALS. N Engl J Med. 2022;387(12):1099-1110.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36129998/',
+          publishedAt: '2022-09-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-04-25',
+        datePrecision: 'DAY',
+        reason: 'On 25 April 2023 the FDA granted accelerated approval to Qalsody (tofersen) for SOD1-ALS, explicitly basing approval on the reduction in plasma neurofilament light chain as a surrogate reasonably likely to predict clinical benefit, despite the failed VALOR primary endpoint. It became the first therapy to target a genetic cause of ALS, with the confirmatory ATLAS trial pending — institutionally settling the claim on a biomarker rationale.',
+        source: {
+          externalId: 'src:fda-qalsody-tofersen-approval-2023',
+          name: 'U.S. FDA / CDER. Approval Package for QALSODY (tofersen), NDA 215887. 25 April 2023.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/215887Orig1s000Approv.pdf',
+          publishedAt: '2023-04-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
