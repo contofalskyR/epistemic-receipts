@@ -20206,6 +20206,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── mRNA COVID-19 vaccine myocarditis in adolescent males — ACIP/CDC 2021 ──
+  {
+    externalId: 'trajectory:mrna-covid-vaccine-myocarditis-adolescent-males-2021',
+    text: 'Following reports to VAERS, the CDC Advisory Committee on Immunization Practices concluded in June 2021 that mRNA COVID-19 vaccines (Pfizer-BioNTech and Moderna) cause a small excess risk of myocarditis and pericarditis, concentrated in adolescent and young adult males after the second dose, while affirming that vaccination benefits outweigh this risk.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2021-06-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-07-09',
+        datePrecision: 'DAY',
+        reason: 'After an emergency ACIP review on 23–25 June 2021 of VAERS and Vaccine Safety Datalink data, CDC published an MMWR update documenting a likely causal association between mRNA COVID-19 vaccination and myocarditis, with observed-to-expected excess cases concentrated in males aged 12–29 after dose two (about 40.6 cases per million second doses in males 12–29 vs background). This formally recorded a real vaccine-attributable cardiac adverse event for the first time, even as ACIP reaffirmed that benefits outweigh risks.',
+        source: {
+          externalId: 'src:gargano-mmwr-myocarditis-mrna-2021',
+          name: 'Gargano JW, Wallace M, Hadler SC, et al. Use of mRNA COVID-19 Vaccine After Reports of Myocarditis Among Vaccine Recipients: Update from the Advisory Committee on Immunization Practices — United States, June 2021. MMWR Morb Mortal Wkly Rep. 2021;70(27):977-982.',
+          url: 'https://www.cdc.gov/mmwr/volumes/70/wr/mm7027e2.htm',
+          publishedAt: '2021-07-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-08-06',
+        datePrecision: 'DAY',
+        reason: 'CDC published a dedicated MMWR analysis of adolescent (12–17 year) safety surveillance confirming that myocarditis was the most frequently reported serious adverse event, occurring disproportionately in adolescent males after the second dose. Coupled with the FDA\'s addition of a myocarditis/pericarditis warning to the Pfizer-BioNTech and Moderna fact sheets, the pediatric-specific signal became an institutionally settled, labeled adverse effect rather than a provisional surveillance flag.',
+        source: {
+          externalId: 'src:hause-mmwr-adolescent-vaccine-safety-2021',
+          name: 'Hause AM, Gee J, Baggs J, et al. COVID-19 Vaccine Safety in Adolescents Aged 12–17 Years — United States, December 14, 2020–July 16, 2021. MMWR Morb Mortal Wkly Rep. 2021;70(31):1053-1058.',
+          url: 'https://www.cdc.gov/mmwr/volumes/70/wr/mm7031e1.htm',
+          publishedAt: '2021-08-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP Clinical Practice Guideline for childhood obesity — 2023 ─────────────
+  {
+    externalId: 'trajectory:aap-childhood-obesity-cpg-2023',
+    text: 'The American Academy of Pediatrics issued its first Clinical Practice Guideline for childhood obesity on 9 January 2023, recommending that clinicians treat children and adolescents with obesity promptly and intensively — including pharmacotherapy for those aged 12 and older and metabolic/bariatric surgery referral for those 13 and older — explicitly abandoning the prior \'watchful waiting\' paradigm.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2023-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-01-09',
+        datePrecision: 'DAY',
+        reason: 'The AAP published its first-ever graded Clinical Practice Guideline on pediatric obesity in Pediatrics, recommending early, intensive, evidence-based treatment and formally repudiating watchful waiting and the expectation that children outgrow obesity. By endorsing pharmacotherapy (≥12 years) and bariatric surgery referral (≥13 years) as standard options, the leading U.S. pediatric body institutionally settled obesity as a chronic disease warranting active medical treatment in childhood.',
+        source: {
+          externalId: 'src:hampl-aap-obesity-cpg-pediatrics-2023',
+          name: 'Hampl SE, Hassink SG, Skinner AC, et al. Clinical Practice Guideline for the Evaluation and Treatment of Children and Adolescents With Obesity. Pediatrics. 2023;151(2):e2022060640.',
+          url: 'https://publications.aap.org/pediatrics/article/151/2/e2022060640/190443/Clinical-Practice-Guideline-for-the-Evaluation-and',
+          publishedAt: '2023-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The aggressive treatment recommendations drew sustained public and professional criticism, including concern that early pharmacotherapy and surgery referrals could increase eating-disorder risk and medicalize childhood. The American Academy of Family Physicians published an editorial scrutinizing the strength and applicability of the evidence base, marking the guideline\'s recommendations as contested even as they remained the standing institutional standard.',
+        source: {
+          externalId: 'src:aafp-editorial-aap-obesity-guideline-2023',
+          name: 'Lin KW. Breaking Down the AAP Guideline on Childhood Obesity. Am Fam Physician. 2023;108(4):editorial.',
+          url: 'https://www.aafp.org/pubs/afp/issues/2023/1000/editorial-aap-guideline-childhood-obesity.html',
+          publishedAt: '2023-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Abrysvo maternal RSV vaccine FDA approval — 2023 ────────────────────────
+  {
+    externalId: 'trajectory:abrysvo-maternal-rsv-vaccine-pregnancy-2023',
+    text: 'On 21 August 2023 the US FDA approved Abrysvo (RSVpreF), Pfizer\'s bivalent prefusion-F vaccine, for administration to pregnant individuals at 32–36 weeks of gestation to protect their infants from severe RSV lower respiratory tract disease in the first six months of life — the first vaccine approved for maternal immunization against RSV.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-04-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-04-20',
+        datePrecision: 'DAY',
+        reason: 'The MATISSE phase 3 trial, published in the New England Journal of Medicine, reported that maternal RSVpreF vaccination conferred roughly 82% efficacy against severe medically attended RSV lower respiratory illness in infants within 90 days of birth and about 69% at 180 days. This recorded in the expert literature that active maternal immunization could passively protect newborns against RSV, a mechanism distinct from infant monoclonal-antibody prophylaxis.',
+        source: {
+          externalId: 'src:kampmann-matisse-rsvpref-nejm-2023',
+          name: 'Kampmann B, Madhi SA, Munjal I, et al. Bivalent Prefusion F Vaccine in Pregnancy to Prevent RSV Illness in Infants. N Engl J Med. 2023;388(16):1451-1464.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa2216480',
+          publishedAt: '2023-04-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-08-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Abrysvo for maternal use, but restricted administration to weeks 32–36 of gestation specifically to mitigate a numerical imbalance of preterm births observed in the trial (5.7% vaccine vs 4.7% placebo) — a safety signal that had earlier prompted GSK to halt its competing maternal RSV vaccine program. The approval institutionally settled maternal RSV immunization as authorized practice while explicitly bounding it against the contested preterm-birth risk; CDC/ACIP recommended it in September 2023.',
+        source: {
+          externalId: 'src:pfizer-abrysvo-maternal-fda-approval-2023',
+          name: 'Pfizer. U.S. FDA Approves ABRYSVO, Pfizer\'s Vaccine for the Prevention of RSV in Infants Through Active Immunization of Pregnant Individuals 32–36 Weeks of Gestational Age. Press release. 21 August 2023.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/us-fda-approves-abrysvotm-pfizers-vaccine-prevention-0',
+          publishedAt: '2023-08-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Trofinetide / Daybue — first treatment for Rett syndrome — 2023 ──────────
+  {
+    externalId: 'trajectory:trofinetide-daybue-rett-syndrome-first-treatment-2023',
+    text: 'On 10 March 2023 the US FDA approved trofinetide (Daybue) for the treatment of Rett syndrome in adults and pediatric patients two years of age and older, the first drug ever approved for this rare X-linked neurodevelopmental disorder that predominantly affects girls.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-12-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-12-06',
+        datePrecision: 'DAY',
+        reason: 'The phase 3 LAVENDER trial of trofinetide in girls and women with Rett syndrome met both co-primary endpoints, showing statistically significant improvement versus placebo on the Rett Syndrome Behaviour Questionnaire and the Clinical Global Impression–Improvement scale. The result, later published in Nature Medicine, recorded the first controlled evidence that a pharmacologic agent could modify the core features of Rett syndrome, previously managed only symptomatically.',
+        source: {
+          externalId: 'src:neul-lavender-trofinetide-natmed-2023',
+          name: 'Neul JL, Percy AK, Benke TA, et al. Trofinetide for the treatment of Rett syndrome: a randomized phase 3 study (LAVENDER). Nat Med. 2023;29(6):1468-1475.',
+          url: 'https://www.nature.com/articles/s41591-023-02398-1',
+          publishedAt: '2023-04-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-03-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved trofinetide (Daybue) for Rett syndrome in patients aged two and older, making it the first and only therapy ever authorized for the disorder. The approval converted the LAVENDER efficacy finding into established regulatory standard of care for a condition that had had no disease-directed drug, validating IGF-1-pathway modulation as a clinical approach despite high rates of diarrhea-related discontinuation later seen in real-world use.',
+        source: {
+          externalId: 'src:acadia-daybue-trofinetide-fda-approval-2023',
+          name: 'Acadia Pharmaceuticals. Acadia Pharmaceuticals Announces U.S. FDA Approval of DAYBUE (trofinetide) for the Treatment of Rett Syndrome in Adult and Pediatric Patients Two Years of Age and Older. Press release. 10 March 2023.',
+          url: 'https://acadia.com/en-us/media/news-releases/acadia-pharmaceuticals-announces-us-fda-approval-daybuetm',
+          publishedAt: '2023-03-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
