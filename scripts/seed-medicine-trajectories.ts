@@ -19832,6 +19832,136 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY ERA (1939–1951)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Astwood thiouracil antithyroid drug 1943 ────────────────────────────────
+  {
+    externalId: 'trajectory:astwood-thiouracil-antithyroid-drug-1943',
+    text: 'Edwin B. Astwood reported in JAMA on 8 May 1943 that thiourea and thiouracil, given orally, suppressed thyroid hormone production and controlled hyperthyroidism in patients, establishing the first effective antithyroid drugs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1943-05-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943-05-08',
+        datePrecision: 'DAY',
+        reason: 'Astwood published \'Treatment of Hyperthyroidism with Thiourea and Thiouracil\' in JAMA (1943;122(2):78–81), reporting that after establishing the approximate dose, hyperthyroid patients showed clear clinical and metabolic improvement on the orally administered compounds. Following his work on goitrogens that blocked thyroid hormone synthesis, this recorded in the expert literature the claim that a chemical agent could pharmacologically inhibit the overactive thyroid, opening the era of medical (non-surgical, non-radioactive) therapy for hyperthyroidism.',
+        source: {
+          externalId: 'src:astwood-thiourea-thiouracil-jama-1943',
+          name: 'Astwood EB. Treatment of Hyperthyroidism with Thiourea and Thiouracil. JAMA. 1943;122(2):78–81. (Landmark reprint: JAMA. 1984;251(13):1743–6; PMID 6422063.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6422063/',
+          publishedAt: '1943-05-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years the antithyroid drugs were refined into the safer congeners propylthiouracil and methimazole, which were adopted internationally as standard first-line medical therapy for Graves\' hyperthyroidism. The thionamide class established by Astwood remains in routine clinical use in essentially the same way to the present day, institutionally settling the claim that hyperthyroidism can be controlled pharmacologically.',
+        source: {
+          externalId: 'src:sawin-cooper-origin-antithyroid-drugs-thyroid-2023',
+          name: 'Sawin CT, Cooper DS. The Origin of Antithyroid Drugs. Thyroid. 2023;33(8):885–893.',
+          url: 'https://www.liebertpub.com/doi/10.1089/thy.2022.0410',
+          publishedAt: '2023-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Hertz & Roberts radioiodine for hyperthyroidism 1941 ───────────────────
+  {
+    externalId: 'trajectory:hertz-roberts-radioiodine-hyperthyroidism-1941',
+    text: 'Saul Hertz and physicist Arthur Roberts administered the first therapeutic dose of radioactive iodine to a hyperthyroid patient at Massachusetts General Hospital on 31 March 1941, and reported in JAMA in 1946 that radioiodine effectively treated hyperthyroidism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1941-03-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1946-05-11',
+        datePrecision: 'DAY',
+        reason: 'After preclinical work in rabbits with Arthur Roberts and the first patient treatment on 31 March 1941, Hertz and Roberts published \'Radioactive Iodine in the Study of Thyroid Physiology. VII. The Use of Radioactive Iodine Therapy in Hyperthyroidism\' (JAMA 1946;131(2):81–86), reporting 29 hyperthyroid patients treated 1941–1943. This recorded in the expert literature the claim that an isotope selectively concentrated by the thyroid could be used to ablate overactive thyroid tissue, founding therapeutic nuclear medicine.',
+        source: {
+          externalId: 'src:hertz-roberts-radioiodine-hyperthyroidism-1946',
+          name: 'Hertz S, Roberts A. Radioactive Iodine in the Study of Thyroid Physiology. VII. The Use of Radioactive Iodine Therapy in Hyperthyroidism. JAMA. 1946;131(2):81–86. (Documented in: American Chemical Society National Historic Chemical Landmark, \'Saul Hertz and the Medical Uses of Radioiodine.\')',
+          url: 'https://www.acs.org/education/whatischemistry/landmarks/medical-uses-of-radioiodine.html',
+          publishedAt: '1946-05-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-01-01',
+        datePrecision: 'YEAR',
+        reason: 'With reactor-produced I-131 made widely available through the U.S. Atomic Energy Commission after 1946 and the parallel demonstration of radioiodine ablation of functioning thyroid-cancer metastases (Seidlin, Marinelli, Oshry, JAMA 1946), radioactive iodine became an established standard treatment for hyperthyroidism and differentiated thyroid carcinoma by the early 1950s, a status it retains. This institutionally settled the claim that radioiodine is a definitive therapy for thyroid overactivity.',
+        source: {
+          externalId: 'src:fahey-radionuclide-therapy-eighty-years-2021',
+          name: 'Fahey FH, Grant FD, Thrall JH. Celebrating eighty years of radionuclide therapy and the work of Saul Hertz. J Appl Clin Med Phys. 2021;22(2):7–11. (PMC7856499.)',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7856499/',
+          publishedAt: '2021-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Thorn DOCA Addison's disease 1939 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:thorn-doca-addisons-disease-1939',
+    text: 'George W. Thorn and colleagues reported in 1939 (Bulletin of the Johns Hopkins Hospital) that the synthetic adrenal-cortex hormone desoxycorticosterone acetate (DOCA), implanted as subcutaneous pellets, corrected the sodium/potassium disturbance of Addison\'s disease, giving the first effective synthetic hormone replacement for adrenal insufficiency.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following Steiger and Reichstein\'s 1937 chemical synthesis of desoxycorticosterone, Thorn, Howard, Emerson, and Firor published \'Treatment of Addison\'s Disease with Desoxycorticosterone Acetate, a Synthetic Adrenal Cortical Hormone (Preliminary Report)\' (Bull Johns Hopkins Hosp. 1939;64:339–364), implanting DOCA pellets in patients with Addison\'s disease and showing normalization of serum sodium and potassium and restored plasma volume. This recorded the claim that a single laboratory-synthesized steroid could replace the salt-retaining function of the adrenal cortex.',
+        source: {
+          externalId: 'src:thorn-doca-addisons-historical-vignette-jcem-1998',
+          name: 'Thorn GW, Howard RP, Emerson K Jr, Firor WM. Treatment of Addison\'s Disease with Desoxycorticosterone Acetate. Bull Johns Hopkins Hosp. 1939;64:339–364. (Reviewed in: Loriaux DL. Early Investigations on the Use of Deoxycorticosterone in Addison\'s Disease: A Historical Vignette. J Clin Endocrinol Metab. 1998;83(5):1428.)',
+          url: 'https://academic.oup.com/jcem/article/83/5/1428/2865134',
+          publishedAt: '1998-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By 1942 Thorn and colleagues had evaluated DOCA therapy in well over a hundred Addison\'s-disease patients, and DOCA—often combined with salt and adrenal cortical extract—became the standard maintenance treatment for adrenal insufficiency through the 1940s, establishing mineralocorticoid replacement as durable life-saving therapy. (DOCA was later supplemented by cortisone in 1949 and superseded by oral fludrocortisone in the 1950s, but the underlying claim that synthetic adrenal hormone replacement corrects Addison\'s disease became permanently settled.)',
+        source: {
+          externalId: 'src:thorn-doca-158-patients-clinical-evaluation-1942',
+          name: 'Thorn GW, Dorrance SS, Day E. Addison\'s Disease: Evaluation of Synthetic Desoxycorticosterone Acetate Therapy in 158 Patients. Ann Intern Med. 1942;16(6):1053–1096.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-16-6-1053',
+          publishedAt: '1942-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
