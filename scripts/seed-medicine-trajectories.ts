@@ -19962,6 +19962,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH / REPRODUCTIVE MEDICINE ERA (1991–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Folic acid prevents neural tube defects — MRC 1991 ─────────────────────
+  {
+    externalId: 'trajectory:folic-acid-neural-tube-defect-prevention-1991',
+    text: 'The MRC Vitamin Study Research Group reported in The Lancet on 20 July 1991 that periconceptional folic acid supplementation prevented about 72% of recurrent neural tube defects (relative risk 0.28) in a randomized trial, establishing folic acid as a preventive of spina bifida and anencephaly.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-07-20',
+        datePrecision: 'DAY',
+        reason: 'The MRC Vitamin Study Research Group published a double-blind randomized trial of 1,817 high-risk women across 33 centers in seven countries, finding that 4 mg/day folic acid reduced recurrent neural tube defects by 72% (RR 0.28) while other vitamins showed no benefit. This was the first randomized-controlled evidence that a single nutrient given before and in early pregnancy could prevent a major congenital malformation, recording the folate–NTD causal claim in the expert literature.',
+        source: {
+          externalId: 'src:mrc-vitamin-study-folic-acid-ntd-1991',
+          name: 'MRC Vitamin Study Research Group. Prevention of neural tube defects: results of the Medical Research Council Vitamin Study. Lancet. 1991;338(8760):131-137.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1677062/',
+          publishedAt: '1991-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-03-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a final rule (61 FR 8781) amending the standards of identity for enriched grain products to require the addition of folic acid, with mandatory compliance by 1 January 1998. By translating the randomized-trial finding into a population-wide mandatory fortification program, the regulator institutionally settled the claim that folic acid prevents neural tube defects; U.S. NTD rates subsequently fell by roughly a quarter to a third.',
+        source: {
+          externalId: 'src:fda-folic-acid-fortification-final-rule-1996',
+          name: 'U.S. Food and Drug Administration. Food Standards: Amendment of Standards of Identity for Enriched Grain Products to Require Addition of Folic Acid; Final Rule. 61 FR 8781. 5 March 1996.',
+          url: 'https://www.federalregister.gov/documents/1996/03/05/96-5014/food-standards-amendment-of-standards-of-identity-for-enriched-grain-products-to-require-addition-of',
+          publishedAt: '1996-03-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Mifepristone / Mifeprex medical abortion approval — FDA 2000 ────────────
+  {
+    externalId: 'trajectory:mifepristone-mifeprex-medical-abortion-approval-2000',
+    text: 'The FDA approved Mifeprex (mifepristone), NDA 20-687, on 28 September 2000 for the medical termination of early intrauterine pregnancy, establishing the first drug approved in the United States for nonsurgical abortion.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-09-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-09-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Mifeprex (mifepristone) 200 mg under 21 CFR 314 Subpart H restricted-distribution rules for termination of pregnancy through 49 days\' gestation, following a regulatory review begun with the Population Council\'s 1996 application. The approval institutionally recorded the claim that mifepristone followed by misoprostol is a safe and effective nonsurgical alternative to surgical abortion in the United States.',
+        source: {
+          externalId: 'src:gao-mifeprex-approval-oversight-2008',
+          name: 'U.S. Government Accountability Office. Food and Drug Administration: Approval and Oversight of the Drug Mifeprex. GAO-08-751. September 2008.',
+          url: 'https://www.gao.gov/products/gao-08-751',
+          publishedAt: '2008-09-23',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-07-19',
+        datePrecision: 'MONTH',
+        reason: 'After a cluster of deaths from serious bacterial infection (notably Clostridium sordellii) and sepsis in women who had taken mifepristone, the FDA revised the Mifeprex labeling to add a boxed warning about fatal infection and bleeding and issued provider communications. The post-market safety signal contested the drug\'s safety profile as approved, putting its risk characterization under active regulatory scrutiny.',
+        source: {
+          externalId: 'src:fda-mifeprex-boxed-warning-label-2005',
+          name: 'U.S. Food and Drug Administration. MIFEPREX (mifepristone) Tablets — approved labeling with boxed warning on serious infection and sepsis, NDA 020687/S-010. 2005.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2004/020687s010-lbl.pdf',
+          publishedAt: '2005-07-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved a revised Mifeprex label that affirmed the drug\'s safety and efficacy, extended the approved gestational limit from 49 to 70 days, and updated the REMS dosing and provider requirements based on accumulated evidence. Having reviewed more than fifteen years of post-market data (the rare fatal infections were not shown to be causally drug-induced), the regulator settled mifepristone as established standard medical-abortion care.',
+        source: {
+          externalId: 'src:fda-mifepristone-qa-label-update-2016',
+          name: 'U.S. Food and Drug Administration. Questions and Answers on Mifepristone for Medical Termination of Pregnancy Through Ten Weeks Gestation. (Documents 30 March 2016 label revision.)',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/questions-and-answers-mifepristone-medical-termination-pregnancy-through-ten-weeks-gestation',
+          publishedAt: '2016-03-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Alendronate / Fosamax atypical femur fracture signal — 2010 ─────────────
+  {
+    externalId: 'trajectory:alendronate-fosamax-atypical-femur-fracture-2010',
+    text: 'Alendronate (Fosamax), the nitrogen-containing oral bisphosphonate approved by the FDA on 29 September 1995 as a long-term treatment for postmenopausal osteoporosis, had its long-term safety contested in 2010 when prolonged bisphosphonate use was linked to atypical subtrochanteric and diaphyseal femur fractures.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-09-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved alendronate (Fosamax) for postmenopausal osteoporosis, supported by Liberman et al.\'s three-year randomized trial in the New England Journal of Medicine showing increased bone mineral density and roughly halved vertebral fracture incidence. Approval plus pivotal RCT evidence settled alendronate as a safe, effective long-term antiresorptive therapy, and it became one of the most widely prescribed drugs for older women.',
+        source: {
+          externalId: 'src:liberman-alendronate-nejm-1995',
+          name: 'Liberman UA, Weiss SR, Bröll J, et al. Effect of oral alendronate on bone mineral density and the incidence of fractures in postmenopausal osteoporosis. N Engl J Med. 1995;333(22):1437-1443.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7477143/',
+          publishedAt: '1995-11-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-09-14',
+        datePrecision: 'DAY',
+        reason: 'A task force of the American Society for Bone and Mineral Research (Shane et al.) published a report defining atypical subtrochanteric and diaphyseal femoral fractures and concluding they were associated with long-term bisphosphonate use, while urging continued treatment for patients at high osteoporotic-fracture risk. Coupled with the FDA\'s October 2010 safety communication and mandatory label change adding a limitation-of-use/duration warning to all oral bisphosphonates, the long-term safety of the once-settled therapy became formally contested.',
+        source: {
+          externalId: 'src:asbmr-atypical-femur-fracture-task-force-2010',
+          name: 'Shane E, Burr D, Ebeling PR, et al. Atypical subtrochanteric and diaphyseal femoral fractures: report of a task force of the American Society for Bone and Mineral Research. J Bone Miner Res. 2010;25(11):2267-2294.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1002/jbmr.253',
+          publishedAt: '2010-09-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Paroxetine / Paxil pregnancy cardiac malformation warning — 2005 ─────────
+  {
+    externalId: 'trajectory:paroxetine-pregnancy-cardiac-malformation-2005',
+    text: 'GlaxoSmithKline and the FDA warned in December 2005 that first-trimester exposure to paroxetine (Paxil) was associated with an increased risk of congenital cardiac malformations, prompting reclassification of the antidepressant from pregnancy category C to category D.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-12-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-12-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Public Health Advisory and, with GlaxoSmithKline, changed paroxetine\'s pregnancy category from C to D after preliminary analyses of two epidemiologic studies (a Swedish national registry and a U.S. insurance-claims dataset) showed roughly a 1.5–2-fold higher rate of cardiac malformations—chiefly atrial and ventricular septal defects—with first-trimester exposure. This recorded paroxetine first-trimester cardiac teratogenicity as an institutionally endorsed safety claim.',
+        source: {
+          externalId: 'src:fda-paroxetine-pregnancy-advisory-2005',
+          name: 'U.S. Food and Drug Administration. Public Health Advisory: Paroxetine. 8 December 2005.',
+          url: 'https://wayback.archive-it.org/7993/20170112033310/http://www.fda.gov/Drugs/DrugSafety/PostmarketDrugSafetyInformationforPatientsandProviders/ucm051731.htm',
+          publishedAt: '2005-12-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-06-19',
+        datePrecision: 'DAY',
+        reason: 'Huybrechts and colleagues published a cohort of 949,504 pregnancies in the New England Journal of Medicine finding that, after adjustment for depression and other confounders, antidepressant use in the first trimester—including paroxetine—was not associated with a significantly increased risk of cardiac malformations. The large confounding-adjusted analysis directly challenged the 2005 signal, leaving paroxetine\'s first-trimester cardiac risk a contested rather than settled claim.',
+        source: {
+          externalId: 'src:huybrechts-antidepressants-cardiac-defects-nejm-2014',
+          name: 'Huybrechts KF, Palmsten K, Avorn J, et al. Antidepressant use in pregnancy and the risk of cardiac defects. N Engl J Med. 2014;370(25):2397-2407.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1312828',
+          publishedAt: '2014-06-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Plan B emergency contraception OTC access — FDA 2006 ────────────────────
+  {
+    externalId: 'trajectory:plan-b-emergency-contraception-otc-access-2006',
+    text: 'Levonorgestrel emergency contraception (Plan B), approved by the FDA as prescription-only on 28 July 1999, was approved for over-the-counter sale to women aged 18 and older on 24 August 2006 after a contested multi-year regulatory process.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1999-07-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-07-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Plan B (levonorgestrel 0.75 mg, two-dose) as a prescription-only dedicated emergency contraceptive, recording the institutional position that postcoital levonorgestrel is a safe and effective means of preventing pregnancy after unprotected intercourse. Access, however, remained gated behind a prescription.',
+        source: {
+          externalId: 'src:nhlp-plan-b-fda-approval-timeline',
+          name: 'National Health Law Program. FDA\'s Approval of Plan B: Women Still Have No Sure Access to Over-the-Counter Emergency Contraception. 2006.',
+          url: 'https://healthlaw.org/resource/fdas-approval-of-plan-b-women-still-have-no-sure-access-to-over-the-counter-emergency-contraception/',
+          publishedAt: '2006-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-05-06',
+        datePrecision: 'DAY',
+        reason: 'After the FDA\'s Nonprescription Drugs and Reproductive Health joint advisory committees voted 23–4 in December 2003 that Plan B was safe and effective for over-the-counter use, FDA leadership issued a \'not approvable\' letter rejecting the OTC switch. The override of the agency\'s own scientific panels was widely criticized as political interference, making the safety-for-OTC claim institutionally contested even though the expert bodies had endorsed it.',
+        source: {
+          externalId: 'src:nhlp-plan-b-otc-rejection-2004',
+          name: 'National Health Law Program. FDA\'s Approval of Plan B (documenting the 23–4 advisory vote of December 2003 and the May 2004 not-approvable letter). 2006.',
+          url: 'https://healthlaw.org/resource/fdas-approval-of-plan-b-women-still-have-no-sure-access-to-over-the-counter-emergency-contraception/',
+          publishedAt: '2006-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-08-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA, under acting commissioner Andrew von Eschenbach, approved over-the-counter sale of Plan B to women aged 18 and older (retaining prescription status for those 17 and under, dispensed from behind the pharmacy counter). The decision ratified at the regulatory level that levonorgestrel emergency contraception is safe for nonprescription use, settling the central access question; a later 2013 action removed the age restriction entirely.',
+        source: {
+          externalId: 'src:bmj-fda-approves-plan-b-2006',
+          name: 'Tanne JH. FDA finally approves Plan B emergency contraceptive for over-the-counter sale. BMJ. 2006;333(7566):461.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1557972/',
+          publishedAt: '2006-09-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
