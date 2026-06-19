@@ -30744,6 +30744,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY FOUNDATIONS (1895–1958)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Secretin and the first hormone — Bayliss & Starling 1902 ───────────────
+  {
+    externalId: 'trajectory:bayliss-starling-secretin-first-hormone-1902',
+    text: 'William Bayliss and Ernest Starling reported in the Journal of Physiology in 1902 that acid entering the duodenum triggers pancreatic secretion via a chemical messenger (\'secretin\') carried in the bloodstream rather than by nerves, the first demonstration of a hormone and the founding of endocrinology.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1902-01-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1902-01-16',
+        datePrecision: 'DAY',
+        reason: 'In an experiment on 16 January 1902, Bayliss and Starling showed that introducing acid into a denervated loop of duodenum still evoked pancreatic secretion, and that an extract of duodenal mucosa injected into the blood reproduced the effect, proving the signal was a blood-borne chemical they named secretin. Published as \'The mechanism of pancreatic secretion\' (J Physiol 1902;28:325-353), this recorded in the expert literature the first evidence that a chemical messenger, not a nerve, coordinates a bodily function.',
+        source: {
+          externalId: 'src:bayliss-starling-pancreatic-secretion-jphysiol-1902',
+          name: 'Bayliss WM, Starling EH. The mechanism of pancreatic secretion. J Physiol. 1902;28(5):325-353. (PMID 16992627; PMC1540572.)',
+          url: 'https://physoc.onlinelibrary.wiley.com/doi/10.1113/jphysiol.1902.sp000920',
+          publishedAt: '1902-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1905-06-20',
+        datePrecision: 'MONTH',
+        reason: 'In his Croonian Lectures of June 1905 (\'The chemical correlation of the functions of the body\', Lancet 1905), Starling generalized the secretin finding and coined the word \'hormone\' for blood-borne chemical messengers, framing a whole class of internal secretions. The naming and conceptual generalization, rapidly adopted by physiologists, settled the chemical-messenger model as the organizing principle of the new science of endocrinology.',
+        source: {
+          externalId: 'src:starling-hormone-croonian-lancet-1905',
+          name: 'Starling EH. The Croonian Lectures on the chemical correlation of the functions of the body. Lancet. 1905;166(4275):339-341 et seq. (coinage of the term \'hormone\').',
+          url: 'https://en.wikipedia.org/wiki/Hormone',
+          publishedAt: '1905-08-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Adrenalin isolated in pure form — Takamine 1901 ────────────────────────
+  {
+    externalId: 'trajectory:adrenaline-suprarenal-active-principle-isolated-1901',
+    text: 'The pressor active principle of the adrenal medulla, shown by George Oliver and Edward Schäfer in 1894-1895 to sharply raise blood pressure, was isolated in pure crystalline form as \'adrenalin\' by Jokichi Takamine in 1901, the first hormone obtained in pure chemical form.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1895-07-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1895-07-18',
+        datePrecision: 'DAY',
+        reason: 'Oliver and Schäfer published \'The physiological effects of extracts of the suprarenal capsules\' (J Physiol 1895;18:230-276), reporting that intravenous suprarenal extract produced a dramatic rise in arterial blood pressure and vasoconstriction. This recorded the claim that the adrenal gland contains a powerful, physiologically active chemical principle, before that principle had been identified.',
+        source: {
+          externalId: 'src:oliver-schafer-suprarenal-extracts-jphysiol-1895',
+          name: 'Oliver G, Schäfer EA. The physiological effects of extracts of the suprarenal capsules. J Physiol. 1895;18(3):230-276. (PMC1514629.)',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1514629/',
+          publishedAt: '1895-07-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1901-07-01',
+        datePrecision: 'YEAR',
+        reason: 'Jokichi Takamine (with Thomas Aldrich confirming structure) reported in 1901 the isolation of the suprarenal pressor principle in pure crystalline form, naming it \'adrenalin\' (Am J Pharm 1901;73:523-531). As the first hormone ever obtained pure, it moved the adrenal active principle from crude extract to a defined molecule and was immediately commercialized (Parke-Davis Adrenalin), settling the chemical identity of the adrenal-medullary hormone.',
+        source: {
+          externalId: 'src:takamine-adrenalin-isolation-1901',
+          name: 'Takamine J. Adrenalin, the active principle of the suprarenal glands and its mode of preparation. Am J Pharm. 1901;73:523-531.',
+          url: 'https://www.britannica.com/biography/Jokichi-Takamine',
+          publishedAt: '1901-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Crystalline insulin is a protein — Abel 1926 / Sanger 1958 ─────────────
+  {
+    externalId: 'trajectory:abel-crystalline-insulin-protein-1926',
+    text: 'John Jacob Abel reported in the Proceedings of the National Academy of Sciences on 15 February 1926 that insulin could be obtained in pure crystalline form, establishing that the antidiabetic pancreatic hormone is a protein.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-02-15',
+        datePrecision: 'DAY',
+        reason: 'Abel published \'Crystalline Insulin\' (PNAS 1926;12(2):132-136), reporting the first crystallization of insulin, only the second protein ever crystallized after urease. The result recorded the claim that insulin is a discrete, purifiable crystalline substance of protein character, transforming it from a clinically effective extract of unknown composition into a defined chemical entity.',
+        source: {
+          externalId: 'src:abel-crystalline-insulin-pnas-1926',
+          name: 'Abel JJ. Crystalline Insulin. Proc Natl Acad Sci USA. 1926;12(2):132-136. (PMID 16587069.)',
+          url: 'https://www.pnas.org/doi/abs/10.1073/pnas.12.2.132',
+          publishedAt: '1926-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-12-10',
+        datePrecision: 'DAY',
+        reason: 'Doubts persisted for years over whether insulin was truly a protein or a small active molecule adsorbed onto protein. Frederick Sanger\'s complete amino-acid sequence of insulin (Biochem J, 1951-1955) proved it is entirely a protein with a defined structure, for which he received the 1958 Nobel Prize in Chemistry. The award institutionally settled the protein nature and exact structure of insulin that Abel\'s crystallization had first implied.',
+        source: {
+          externalId: 'src:sanger-insulin-structure-nobel-1958',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1958 — Frederick Sanger, \'for his work on the structure of proteins, especially that of insulin\'.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1958/sanger/facts/',
+          publishedAt: '1958-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Estrone isolated — Doisy 1929 / Butenandt Nobel 1939 ───────────────────
+  {
+    externalId: 'trajectory:doisy-estrone-first-crystalline-estrogen-1929',
+    text: 'Edward Doisy and colleagues isolated the first estrogen in pure crystalline form (estrone, then called theelin) from pregnancy urine in 1929, giving the female sex hormone a defined chemical identity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Building on the Allen-Doisy ovarian-hormone bioassay of 1923, Doisy with Clement Veler and Sidney Thayer obtained crystalline estrone (theelin) from pregnancy urine, announced at the 13th International Physiological Congress in Boston in August 1929 and published as \'The preparation of the crystalline follicular ovarian hormone: theelin\' (J Biol Chem 1930;87:357-371). This recorded the claim that the female sex hormone is a specific isolable crystalline compound rather than a diffuse ovarian activity.',
+        source: {
+          externalId: 'src:veler-thayer-doisy-theelin-jbc-1930',
+          name: 'Veler CD, Thayer S, Doisy EA. The preparation of the crystalline follicular ovarian hormone: theelin. J Biol Chem. 1930;87:357-371. (JBC Classics reflection.)',
+          url: 'https://www.jbc.org/article/S0021-9258(19)66427-6/fulltext',
+          publishedAt: '1930-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'Adolf Butenandt independently isolated estrone in 1929 and determined its chemical structure, work on sex hormones for which he was awarded the 1939 Nobel Prize in Chemistry. The structural determination and the Nobel recognition settled the identity and chemistry of estrone as the first characterized estrogen, anchoring the field of steroid sex-hormone biochemistry.',
+        source: {
+          externalId: 'src:butenandt-sex-hormones-nobel-1939',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1939 — Adolf Butenandt, \'for his work on sex hormones\'.',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/butenandt/facts/',
+          publishedAt: '1939-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Testosterone isolated and synthesized — 1935 / Nobel 1939 ──────────────
+  {
+    externalId: 'trajectory:testosterone-isolation-synthesis-1935',
+    text: 'Testosterone, the principal male sex hormone, was isolated in crystalline form from bull testes by David, Dingemanse, Freud and Laqueur of Organon in May 1935 and chemically synthesized months later by Butenandt and by Ruzicka, establishing its identity as the major androgen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Karoly Gyula David, Elisabeth Dingemanse, Janos Freud and Ernst Laqueur of the Organon laboratory in Oss reported the isolation of a crystalline male hormone from testes and coined the name \'testosterone\' (\'Über krystallinisches männliches Hormon aus Hoden (Testosteron)\', Hoppe-Seyler\'s Z Physiol Chem 1935;233:281-282). This recorded the claim that the testicular androgen is a specific, more potent crystalline compound distinct from urinary androsterone.',
+        source: {
+          externalId: 'src:david-laqueur-testosterone-isolation-1935',
+          name: 'David K, Dingemanse E, Freud J, Laqueur E. Über krystallinisches männliches Hormon aus Hoden (Testosteron). Hoppe-Seyler\'s Z Physiol Chem. 1935;233:281-282.',
+          url: 'https://en.wikipedia.org/wiki/Testosterone',
+          publishedAt: '1935-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-12-10',
+        datePrecision: 'DAY',
+        reason: 'In August 1935 Adolf Butenandt (with Hanisch) and Leopold Ruzicka (with Wettstein) independently achieved the chemical synthesis of testosterone from cholesterol/sterol precursors, confirming its structure and making it reproducibly available. Their steroid-hormone work was recognized with the 1939 Nobel Prize in Chemistry, institutionally settling testosterone\'s structure and status as the principal androgen.',
+        source: {
+          externalId: 'src:butenandt-ruzicka-nobel-chemistry-1939',
+          name: 'Nobel Prize Committee. The Nobel Prize in Chemistry 1939 — Adolf Butenandt and Leopold Ruzicka (sex hormones / polymethylenes and higher terpenes).',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/summary/',
+          publishedAt: '1939-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
