@@ -32627,6 +32627,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OCCUPATIONAL & ENVIRONMENTAL ONCOLOGY (1775–1947)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pott chimney-sweeps scrotal cancer — 1775 ──────────────────────────────
+  {
+    externalId: 'trajectory:pott-chimney-sweeps-scrotal-cancer-1775',
+    text: "Percivall Pott reported in 1775 in 'Chirurgical Observations' that the high incidence of scrotal cancer ('soot wart') among London chimney sweeps was caused by chronic occupational exposure to soot lodged in the skin, the first identification of an environmental/occupational carcinogen.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1775-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1775-01-01',
+        datePrecision: 'YEAR',
+        reason: "Pott, a surgeon at St Bartholomew's Hospital, observed an unusually high rate of scrotal carcinoma in men who had worked as chimney sweeps since boyhood and attributed it to soot retained in the rugae of the scrotum, writing that 'the disease, in these people, seems to derive its origin from a lodgment of soot.' This recorded in the surgical literature the first causal link between a specific environmental exposure and a human cancer, founding occupational carcinogenesis.",
+        source: {
+          externalId: 'src:pott-chirurgical-observations-scrotum-1775',
+          name: 'Pott P. Chirurgical Observations Relative to the Cataract, the Polypus of the Nose, the Cancer of the Scrotum, the Different Kinds of Ruptures, and the Mortification of the Toes and Feet. London: Hawes, Clarke and Collins; 1775. pp. 63–68. (documented and quoted in: Chimney sweeps\' carcinoma, Wikipedia)',
+          url: "https://en.wikipedia.org/wiki/Chimney_sweeps%27_carcinoma",
+          publishedAt: '1775-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: "Pott's epidemiologic inference was converted into reproducible laboratory science when Yamagiwa and Ichikawa induced carcinoma by painting coal tar on rabbit ears (1915) and Cook, Hewett and Hieger isolated benzo[a]pyrene — a carcinogenic polycyclic aromatic hydrocarbon present in soot — as a defined chemical sufficient to cause cancer (1933). The identification of the actual soot-borne carcinogen settled Pott's claim that soot exposure causes scrotal cancer, now textbook occupational oncology.",
+        source: {
+          externalId: 'src:carcinogenesis-mechanisms-iarc-nbk570326',
+          name: 'Mechanisms of carcinogenesis: from initiation and promotion to the hallmarks. In: Tumour Site Concordance and Mechanisms of Carcinogenesis (IARC Scientific Publication No. 165). NCBI Bookshelf NBK570326. (documents soot/PAH carcinogenesis from Pott through chemical identification)',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK570326/',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lane-Claypon breast-cancer case-control study — 1926 ───────────────────
+  {
+    externalId: 'trajectory:lane-claypon-breast-cancer-case-control-study-1926',
+    text: 'Janet Lane-Claypon reported in 1926, in a Ministry of Health study comparing 500 breast-cancer patients with 500 controls, that reproductive factors (low fertility, late or no childbearing, and reduced breastfeeding) are associated with increased breast-cancer risk — the first major case-control study and the first epidemiologic evidence that low fertility raises breast-cancer risk.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1926-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1926-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Lane-Claypon, working for the British Ministry of Health, designed a retrospective comparison of 500 hospital breast-cancer cases and 500 matched controls in London and Glasgow, using a structured questionnaire and contingency-table analysis to identify reproductive antecedents of breast cancer. This recorded both the first systematic case-control study in epidemiology and the first quantitative evidence linking low fertility and reproductive history to breast-cancer risk.',
+        source: {
+          externalId: 'src:lane-claypon-cancer-breast-1926',
+          name: 'Lane-Claypon JE. A Further Report on Cancer of the Breast, with Special Reference to its Associated Antecedent Conditions. Reports on Public Health and Medical Subjects No. 32. London: Ministry of Health/HMSO; 1926.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20498604/',
+          publishedAt: '1926-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-01',
+        datePrecision: 'MONTH',
+        reason: "Press and Pharoah re-analyzed Lane-Claypon's original 1926 data (and its 1931 US replication by Wainwright) with modern statistical methods and confirmed that her reproductive risk-factor findings were valid, while historians of epidemiology recognized the study as the foundational case-control design. Reproductive and hormonal factors are now established breast-cancer risk determinants, settling both the methodological and the etiologic claims.",
+        source: {
+          externalId: 'src:press-pharoah-lane-claypon-reanalysis-epidemiology-2010',
+          name: 'Press DJ, Pharoah P. Risk factors for breast cancer: a reanalysis of two case-control studies from 1926 and 1931. Epidemiology. 2010;21(4):566–572.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20498604/',
+          publishedAt: '2010-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Berenblum–Shubik two-stage carcinogenesis — 1947 ──────────────────────
+  {
+    externalId: 'trajectory:berenblum-shubik-two-stage-carcinogenesis-1947',
+    text: "Isaac Berenblum and Philippe Shubik reported in the British Journal of Cancer in December 1947 that chemical carcinogenesis in mouse skin proceeds in two separable stages — irreversible 'initiation' by a carcinogen followed by 'promotion' by a non-carcinogenic irritant (croton oil) — establishing the initiation–promotion (multistage) model of cancer.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1947-12-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1947-12-01',
+        datePrecision: 'MONTH',
+        reason: 'Berenblum and Shubik showed quantitatively that a single sub-carcinogenic dose of a polycyclic aromatic hydrocarbon followed by repeated application of croton oil produced tumors, whereas either alone did not, and that the initiating effect persisted over time. This recorded the claim that carcinogenesis is a multistep process with mechanistically distinct initiation and promotion phases — a foundational concept of experimental oncology, first presented at the Fourth International Cancer Congress (St. Louis) in September 1947.',
+        source: {
+          externalId: 'src:berenblum-shubik-two-stage-bjc-1947',
+          name: "Berenblum I, Shubik P. A new, quantitative, approach to the study of the stages of chemical carcinogenesis in the mouse's skin. Br J Cancer. 1947;1(4):383–391.",
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2007527/',
+          publishedAt: '1947-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-01-01',
+        datePrecision: 'YEAR',
+        reason: "The initiation–promotion paradigm was reproduced across species and tissues, mechanistically tied to DNA-damaging initiators and tumor-promoting agents (e.g., phorbol esters), and incorporated into standard carcinogen-testing protocols and IARC frameworks for evaluating carcinogenic mechanisms. Multistage carcinogenesis became the settled organizing principle of chemical carcinogenesis and a direct conceptual ancestor of the modern 'hallmarks of cancer.'",
+        source: {
+          externalId: 'src:multistage-carcinogenesis-iarc-nbk570326',
+          name: 'Mechanisms of carcinogenesis: from initiation and promotion to the hallmarks. In: Tumour Site Concordance and Mechanisms of Carcinogenesis (IARC Scientific Publication No. 165). NCBI Bookshelf NBK570326.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK570326/',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Shope rabbit papillomavirus — first mammalian DNA tumor virus 1933 ─────
+  {
+    externalId: 'trajectory:shope-rabbit-papillomavirus-mammalian-tumor-virus-1933',
+    text: 'Richard E. Shope reported in the Journal of Experimental Medicine on 31 October 1933 that infectious papillomas of wild cottontail rabbits are caused by a filterable virus transmissible by cell-free extract, the first demonstration of a DNA tumor virus in a mammal.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-10-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-10-31',
+        datePrecision: 'DAY',
+        reason: "Shope, at the Rockefeller Institute, showed that cutaneous papillomas of wild rabbits could be transmitted to healthy wild and domestic rabbits by a Berkefeld-filtered, cell-free extract, and that the agent was heat-stable and neutralizable by immune serum — properties of a filterable virus. This recorded the radical claim that a mammalian tumor could be caused by a virus, extending Rous's avian sarcoma finding into mammals and identifying what is now recognized as a papillomavirus.",
+        source: {
+          externalId: 'src:shope-infectious-papillomatosis-rabbits-jem-1933',
+          name: 'Shope RE, Hurst EW. Infectious papillomatosis of rabbits: with a note on the histopathology. J Exp Med. 1933;58(5):607–624. doi:10.1084/jem.58.5.607.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2132321/',
+          publishedAt: '1933-10-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-01-01',
+        datePrecision: 'YEAR',
+        reason: "Peyton Rous and J. W. Beard demonstrated in 1935 that Shope's virus-induced rabbit papillomas progress to invasive squamous-cell carcinoma, proving that a virus can drive a benign mammalian tumor to malignancy. The Shope papillomavirus became the foundational model of viral oncogenesis by DNA tumor viruses, a lineage ultimately vindicated by the human papillomavirus–cervical cancer link and now-settled papillomavirus oncology.",
+        source: {
+          externalId: 'src:rabbit-papillomavirus-model-review-pmc6501911',
+          name: 'The rabbit papillomavirus model: a valuable tool to study viral–host interactions. (review documenting Shope 1933 and Rous & Beard\'s 1935 demonstration of carcinoma progression). PMC6501911.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6501911/',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── MOMS — Prenatal myelomeningocele repair settled 2011 ─────────────────────
   {
     externalId: 'trajectory:moms-prenatal-myelomeningocele-repair-2011',
