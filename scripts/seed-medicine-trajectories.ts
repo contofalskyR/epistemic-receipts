@@ -25089,6 +25089,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INFECTIOUS DISEASE / VIROLOGY (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── KSHV/HHV-8 — Kaposi's sarcoma etiology — Chang & Moore 1994 ─────────────
+  {
+    externalId: 'trajectory:kshv-hhv8-kaposi-sarcoma-discovery-1994',
+    text: 'Yuan Chang, Patrick Moore, and colleagues reported in Science on 16 December 1994 the identification of herpesvirus-like DNA sequences — a novel human herpesvirus (KSHV/HHV-8) — in over 90% of AIDS-associated Kaposi\'s sarcoma lesions, implicating an infectious agent as the cause of Kaposi\'s sarcoma.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-12-16',
+        datePrecision: 'DAY',
+        reason: 'Using representational difference analysis, Chang and Moore isolated herpesvirus-like sequences present in >90% of AIDS-KS tissues but absent from most non-lesional tissue, defining a new gammaherpesvirus (later KSHV/HHV-8). This put on record the hypothesis that the most common AIDS-associated malignancy was driven by a transmissible viral agent rather than HIV directly or non-infectious causes.',
+        source: {
+          externalId: 'src:chang-kshv-science-1994',
+          name: 'Chang Y, Cesarman E, Pessin MS, Lee F, Culpepper J, Knowles DM, Moore PS. Identification of herpesvirus-like DNA sequences in AIDS-associated Kaposi\'s sarcoma. Science. 1994;266(5192):1865-1869.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7997879/',
+          publishedAt: '1994-12-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-04-01',
+        datePrecision: 'MONTH',
+        reason: 'After fifteen years of seroepidemiological, molecular, and pathological evidence linking KSHV to all epidemiological forms of Kaposi\'s sarcoma (plus primary effusion lymphoma and multicentric Castleman disease), the WHO International Agency for Research on Cancer Monograph Working Group classified Kaposi sarcoma herpesvirus (HHV-8) as a Group 1 human carcinogen. This formally settled KSHV as the established etiologic agent of Kaposi\'s sarcoma.',
+        source: {
+          externalId: 'src:iarc-bouvard-carcinogens-partb-2009',
+          name: 'Bouvard V, Baan R, Straif K, et al. (WHO IARC Monograph Working Group). A review of human carcinogens—Part B: biological agents. Lancet Oncol. 2009;10(4):321-322.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19350698/',
+          publishedAt: '2009-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── GBS intrapartum antibiotic prophylaxis — CDC consensus 1996 ─────────────
+  {
+    externalId: 'trajectory:gbs-intrapartum-antibiotic-prophylaxis-1996',
+    text: 'The CDC issued its first consensus recommendations on 31 May 1996 for preventing early-onset neonatal group B streptococcal (GBS) disease through intrapartum antibiotic prophylaxis, offering clinicians either a screening-based or a risk-based strategy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-05-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-05-31',
+        datePrecision: 'DAY',
+        reason: 'After years of debate over how to prevent early-onset GBS sepsis (then a leading cause of neonatal infection and death), CDC, ACOG, and AAP jointly endorsed intrapartum antibiotic prophylaxis and recommended clinicians adopt one of two strategies — antenatal culture screening at 35–37 weeks or an obstetric risk-factor approach. This recorded intrapartum prophylaxis as official policy but left the choice of strategy unresolved.',
+        source: {
+          externalId: 'src:cdc-mmwr-gbs-1996-rr7',
+          name: 'CDC. Prevention of perinatal group B streptococcal disease: a public health perspective. MMWR Recomm Rep. 1996;45(RR-7):1-24.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/00043277.htm',
+          publishedAt: '1996-05-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-25',
+        datePrecision: 'DAY',
+        reason: 'Schrag et al. published a multistate population-based cohort of >600,000 births in the New England Journal of Medicine showing that universal antenatal screening prevented substantially more early-onset GBS disease than the risk-based approach (adjusted relative risk 0.46). This evidence directly drove CDC\'s August 2002 revised guidelines recommending universal culture-based screening, settling screening as the standard of care.',
+        source: {
+          externalId: 'src:schrag-gbs-nejm-2002',
+          name: 'Schrag SJ, Zell ER, Lynfield R, et al. A population-based comparison of strategies to prevent early-onset group B streptococcal disease in neonates. N Engl J Med. 2002;347(4):233-239.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12140298/',
+          publishedAt: '2002-07-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hib conjugate vaccine in infants — decline confirmed 1993 ───────────────
+  {
+    externalId: 'trajectory:hib-conjugate-vaccine-infants-decline-1990',
+    text: 'Haemophilus influenzae type b (Hib) conjugate vaccines, licensed for U.S. infants as young as two months in October 1990, were shown to have driven a >70–80% decline in invasive childhood Hib disease within two years, succeeding where the earlier polysaccharide vaccine had failed in infants.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1990-10',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-10',
+        datePrecision: 'MONTH',
+        reason: 'Hib conjugate vaccines (which couple the type b polysaccharide to a carrier protein to elicit a T-cell-dependent response in infants) were licensed in the U.S. for children as young as two months in October 1990 and recommended for routine infant immunization. This recorded the claim that conjugation could overcome the failure of the plain polysaccharide vaccine in the youngest, highest-risk children.',
+        source: {
+          externalId: 'src:adams-hib-jama-1993-licensure',
+          name: 'Adams WG, Deaver KA, Cochi SL, et al. Decline of childhood Haemophilus influenzae type b (Hib) disease in the Hib vaccine era. JAMA. 1993;269(2):221-226.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8417239/',
+          publishedAt: '1993-01-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-01-13',
+        datePrecision: 'DAY',
+        reason: 'Adams et al. reported in JAMA that age-specific Hib disease incidence among U.S. children under five fell 71% (from 37 to 11 per 100,000) between 1989 and 1991, with Hib meningitis down 82% since 1985, coinciding with conjugate-vaccine uptake. The dramatic population-level decline settled the effectiveness of infant Hib conjugate immunization and reversed the prior verdict that no Hib vaccine worked in infants.',
+        source: {
+          externalId: 'src:adams-hib-jama-1993-decline',
+          name: 'Adams WG, Deaver KA, Cochi SL, Plikaytis BD, Zell ER, Broome CV, Wenger JD. Decline of childhood Haemophilus influenzae type b (Hib) disease in the Hib vaccine era. JAMA. 1993;269(2):221-226.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8417239/',
+          publishedAt: '1993-01-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Linezolid — first oxazolidinone antibiotic — FDA 2000 ───────────────────
+  {
+    externalId: 'trajectory:linezolid-first-oxazolidinone-antibiotic-2000',
+    text: 'The FDA approved linezolid (Zyvox) on 18 April 2000, the first antibiotic of the oxazolidinone class — the first genuinely new antibiotic class in over three decades — and the first new agent in over 40 years specifically active against MRSA, with activity also against vancomycin-resistant enterococci.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-04-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-04-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved linezolid (Zyvox), the first marketed oxazolidinone, for infections including vancomycin-resistant Enterococcus faecium bloodstream infection and MRSA skin and respiratory infections. Because it acted on a novel target (the 50S ribosomal subunit at an early step of protein synthesis) with a wholly synthetic structure, it was hailed as the first new antibiotic class in over 30 years and a durable new weapon against multidrug-resistant gram-positive bacteria.',
+        source: {
+          externalId: 'src:fda-zyvox-linezolid-approval-2000',
+          name: 'U.S. Food and Drug Administration. FDA approval of Zyvox (linezolid) — first oxazolidinone antibiotic, approved April 18, 2000. FDA Consumer Updates, 2000.',
+          url: 'https://permanent.access.gpo.gov/lps1609/www.fda.gov/fdac/departs/2000/400_upd.html',
+          publishedAt: '2000-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-04-14',
+        datePrecision: 'DAY',
+        reason: 'Within a year of launch, Gonzales et al. reported in The Lancet five patients with vancomycin-resistant E. faecium that became resistant to linezolid during therapy, three associated with treatment failure. The rapid emergence of clinical resistance to a brand-new class undercut the hope that oxazolidinones would be resistance-proof and opened a continuing contestation over the drug\'s durability — later compounded by transferable cfr/optrA-mediated resistance.',
+        source: {
+          externalId: 'src:gonzales-linezolid-resistance-lancet-2001',
+          name: 'Gonzales RD, Schreckenberger PC, Graham MB, Kelkar S, DenBesten K, Quinn JP. Infections due to vancomycin-resistant Enterococcus faecium resistant to linezolid. Lancet. 2001;357(9263):1179.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11323048/',
+          publishedAt: '2001-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── OPV → IPV switch — VAPP elimination — ACIP 2000 ────────────────────────
+  {
+    externalId: 'trajectory:opv-to-ipv-switch-vapp-2000',
+    text: 'Effective 1 January 2000, the U.S. ACIP reversed nearly four decades of oral poliovirus vaccine (OPV) policy and recommended an exclusive inactivated poliovirus vaccine (IPV) schedule, because with wild poliovirus eliminated the only remaining indigenous U.S. polio cases were vaccine-associated paralytic poliomyelitis (VAPP) caused by OPV itself.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1962',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962',
+        datePrecision: 'YEAR',
+        reason: 'Following licensure of Sabin\'s live attenuated oral poliovirus vaccine, OPV became the recommended vaccine for routine U.S. childhood immunization, favored for its ease of administration, intestinal immunity, and secondary spread. For decades the settled position was that OPV\'s benefits clearly outweighed its small risk of vaccine-associated paralysis.',
+        source: {
+          externalId: 'src:cdc-mmwr-polio-rr5-2000-history',
+          name: 'CDC. Poliomyelitis prevention in the United States: updated recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep. 2000;49(RR-5):1-22.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/rr4905a1.htm',
+          publishedAt: '2000-05-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-01-01',
+        datePrecision: 'DAY',
+        reason: 'After the Western Hemisphere was certified free of wild poliovirus (1994) and the only indigenous U.S. cases were the roughly 8–10 annual VAPP cases caused by OPV, ACIP voted on 17 June 1999 to recommend an exclusive IPV schedule, effective 1 January 2000. A vaccine that had been standard for nearly 40 years was abandoned in the U.S. because, once the disease it prevented disappeared domestically, its own residual harm exceeded its benefit — a textbook post-elimination risk-benefit reversal.',
+        source: {
+          externalId: 'src:cdc-mmwr-polio-rr5-2000-reversal',
+          name: 'CDC. Poliomyelitis prevention in the United States: updated recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep. 2000;49(RR-5):1-22.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/rr4905a1.htm',
+          publishedAt: '2000-05-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
