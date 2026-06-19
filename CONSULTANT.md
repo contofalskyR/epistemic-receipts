@@ -307,6 +307,15 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-19 — Clickable topic drill-downs on /analysis/representation
+- **Commit:** a319d12 — feat: add clickable topic drill-downs to /analysis/representation
+- **Files changed:**
+  - `app/analysis/representation/page.tsx` — replaced static topic table with `<TopicDrillTable>`
+  - `app/analysis/representation/TopicDrillDown.tsx` (new) — client component with accordion rows; lazy-fetches drill-down on click; color-codes gap (>40pp red, >25pp amber, >15pp yellow, ≤15pp gray)
+  - `app/api/representation/topic/[slug]/route.ts` (new) — GET route returning `{ rows: TopicDrillRow[] }` for a given topic slug, sorted by gap descending; revalidate=600
+- **Why:** The by-topic aggregate table was read-only; drill-downs expose every (state, year) cell behind each topic without blowing up the initial page load.
+- **No migrations, no new dependencies.**
+
 ### 2026-06-17 03:52 EDT — Split-panel UI rebuild for /settling-curve — sidebar with search/filter/era groups, right panel chart-first, mobile drawer
 - **Commit:** settling-curve: split-panel UI with sidebar search + status/era filters
 - **Files changed:**
