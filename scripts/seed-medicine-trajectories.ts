@@ -25881,48 +25881,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Eculizumab (Soliris) — first complement inhibitor, first PNH therapy 2007 ─
-  {
-    externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
-    text: 'Eculizumab (Soliris), a humanized monoclonal antibody that blocks terminal complement protein C5, reduces intravascular hemolysis and transfusion dependence in paroxysmal nocturnal hemoglobinuria, a claim established by the TRIUMPH trial (Hillmen et al., NEJM, September 21, 2006) and settled by the FDA\'s March 16, 2007 approval — the first complement inhibitor and first therapy for PNH.',
-    claimType: 'HYBRID',
-    claimEmergedAt: '2006-09-21',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2006-09-21',
-        datePrecision: 'DAY',
-        reason: 'Hillmen and colleagues published the TRIUMPH trial in the New England Journal of Medicine — a randomized, double-blind, placebo-controlled study of 87 transfusion-dependent PNH patients in which eculizumab reduced median LDH-area-under-curve hemolysis by 85.8% and stabilized hemoglobin without transfusion in 49% of treated patients versus none on placebo. This recorded the first controlled evidence that blocking terminal complement could halt the hemolysis driving PNH.',
-        source: {
-          externalId: 'src:hillmen-eculizumab-triumph-nejm-2006',
-          name: 'Hillmen P, Young NS, Schubert J, et al. The complement inhibitor eculizumab in paroxysmal nocturnal hemoglobinuria. N Engl J Med. 2006;355(12):1233-1243.',
-          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa061648',
-          publishedAt: '2006-09-21',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2007-03-16',
-        datePrecision: 'DAY',
-        reason: 'The FDA approved Soliris (eculizumab) for all patients with PNH on March 16, 2007, on the basis of TRIUMPH and the supportive SHEPHERD study. It was the first complement inhibitor approved for any disease and the first therapy for PNH, institutionally establishing terminal-complement blockade as a treatment paradigm later extended to atypical HUS and myasthenia gravis.',
-        source: {
-          externalId: 'src:alexion-fda-soliris-pnh-approval-2007',
-          name: 'Alexion Pharmaceuticals. FDA Approves Alexion\'s Soliris (eculizumab) for All Patients With PNH. Press release. March 16, 2007.',
-          url: 'https://media.alexion.com/news-releases/news-release-details/fda-approves-alexions-soliristm-all-patients-pnh',
-          publishedAt: '2007-03-16',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Ivacaftor (Kalydeco) — first CFTR potentiator, G551D mutation 2012 ──────
   {
     externalId: 'trajectory:ivacaftor-kalydeco-cftr-potentiator-g551d-2012',
