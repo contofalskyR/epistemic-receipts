@@ -20787,6 +20787,176 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MODERN ERA — INFLAMMATION, HEART FAILURE & SGLT2 (2014–2023)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── PARADIGM-HF — sacubitril/valsartan superior to enalapril in HFrEF 2014 ──
+  {
+    externalId: 'trajectory:paradigm-hf-sacubitril-valsartan-2014',
+    text: 'On 30 August 2014 the PARADIGM-HF trial reported that the angiotensin receptor–neprilysin inhibitor sacubitril/valsartan was superior to the ACE inhibitor enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction, a finding the FDA adopted on 7 July 2015 by approving Entresto.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-08-30',
+        datePrecision: 'DAY',
+        reason: 'John McMurray, Milton Packer and colleagues reported in the New England Journal of Medicine (online 30 August 2014) that LCZ696 (sacubitril/valsartan) reduced the composite of cardiovascular death or heart-failure hospitalization (21.8% vs 26.5%, HR 0.80) and all-cause mortality versus enalapril in 8,442 HFrEF patients; the trial was stopped early for benefit. It established a first-in-class drug superior to the long-standing ACE-inhibitor standard.',
+        source: {
+          externalId: 'src:mcmurray-paradigm-hf-nejm-2014',
+          name: 'McMurray JJV, Packer M, Desai AS, et al. Angiotensin-Neprilysin Inhibition versus Enalapril in Heart Failure. N Engl J Med. 2014;371(11):993-1004.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25176015/',
+          publishedAt: '2014-08-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-07-07',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved sacubitril/valsartan (Entresto, Novartis) to reduce the risk of cardiovascular death and hospitalization in chronic heart failure with reduced ejection fraction, the first angiotensin receptor–neprilysin inhibitor approved. The approval, granted under fast-track review on the strength of PARADIGM-HF, made ARNI therapy a guideline-endorsed pillar of HFrEF treatment.',
+        source: {
+          externalId: 'src:fda-entresto-sacubitril-valsartan-approval-2015',
+          name: 'Entresto (sacubitril and valsartan) FDA Approval History. Drugs.com. 2015.',
+          url: 'https://www.drugs.com/history/entresto.html',
+          publishedAt: '2015-07-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── EMPA-REG OUTCOME — empagliflozin reduces CV mortality 2015 ──────────────
+  {
+    externalId: 'trajectory:empa-reg-outcome-empagliflozin-cv-mortality-2015',
+    text: 'On 17 September 2015 the EMPA-REG OUTCOME trial reported that the SGLT2 inhibitor empagliflozin reduced cardiovascular death and all-cause mortality in patients with type 2 diabetes and established cardiovascular disease, the first glucose-lowering drug shown to reduce cardiovascular mortality and the finding that opened the cardiovascular repurposing of the SGLT2 inhibitor class.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-09-17',
+        datePrecision: 'DAY',
+        reason: 'Bernard Zinman and colleagues reported in the New England Journal of Medicine (online 17 September 2015) that empagliflozin reduced cardiovascular death (3.7% vs 5.9%, a 38% relative reduction) and all-cause mortality versus placebo when added to standard care in 7,020 high-risk type 2 diabetes patients. It was the first diabetes drug to demonstrate a reduction in cardiovascular mortality, reframing SGLT2 inhibitors as cardiovascular rather than purely glycemic agents.',
+        source: {
+          externalId: 'src:zinman-empa-reg-outcome-nejm-2015',
+          name: 'Zinman B, Wanner C, Lachin JM, et al. Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes. N Engl J Med. 2015;373(22):2117-2128.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26378978/',
+          publishedAt: '2015-09-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CANTOS — canakinumab anti-inflammatory, reduces atherosclerotic events 2017
+  {
+    externalId: 'trajectory:cantos-canakinumab-inflammation-atherosclerosis-2017',
+    text: 'On 27 August 2017 the CANTOS trial reported that canakinumab, a monoclonal antibody targeting interleukin-1β, reduced recurrent cardiovascular events independent of any change in lipid levels in patients with prior myocardial infarction and elevated C-reactive protein, the first clinical proof that anti-inflammatory therapy alone lowers atherosclerotic risk.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-08-27',
+        datePrecision: 'DAY',
+        reason: 'Paul Ridker and colleagues reported in the New England Journal of Medicine that canakinumab 150 mg every three months reduced the primary cardiovascular endpoint (HR 0.85) versus placebo in 10,061 post-MI patients with residual inflammatory risk, with no effect on LDL cholesterol. This was the first randomized validation of the inflammatory hypothesis of atherosclerosis, demonstrating that lowering inflammation without altering lipids reduces cardiovascular events.',
+        source: {
+          externalId: 'src:ridker-cantos-canakinumab-nejm-2017',
+          name: 'Ridker PM, Everett BM, Thuren T, et al. Antiinflammatory Therapy with Canakinumab for Atherosclerotic Disease. N Engl J Med. 2017;377(12):1119-1131.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28845751/',
+          publishedAt: '2017-08-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── COLCOT — colchicine post-MI → FDA approves Lodoco 2023 ──────────────────
+  {
+    externalId: 'trajectory:colcot-colchicine-post-mi-2019',
+    text: 'On 16 November 2019 the COLCOT trial reported that low-dose colchicine (0.5 mg daily) significantly reduced ischemic cardiovascular events after recent myocardial infarction, a finding that led the FDA on 16 June 2023 to approve colchicine (Lodoco) as the first anti-inflammatory drug indicated for cardiovascular disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-11-16',
+        datePrecision: 'DAY',
+        reason: 'Jean-Claude Tardif and colleagues reported in the New England Journal of Medicine (published online 16 November 2019) that low-dose colchicine reduced the composite of cardiovascular death, cardiac arrest, MI, stroke, and urgent revascularization versus placebo in 4,745 patients within 30 days of an MI. Building on CANTOS, it showed an inexpensive, widely available oral anti-inflammatory could reduce cardiovascular events.',
+        source: {
+          externalId: 'src:tardif-colcot-colchicine-nejm-2019',
+          name: 'Tardif JC, Kouz S, Waters DD, et al. Efficacy and Safety of Low-Dose Colchicine after Myocardial Infarction. N Engl J Med. 2019;381(26):2497-2505.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31733140/',
+          publishedAt: '2019-11-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-06-16',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved colchicine 0.5 mg tablets (Lodoco, AGEPHA Pharma) to reduce the risk of cardiovascular events in adults with established atherosclerotic disease, the first anti-inflammatory drug ever approved for cardiovascular disease. The approval institutionalized the inflammation-targeting paradigm advanced by CANTOS and COLCOT.',
+        source: {
+          externalId: 'src:fda-lodoco-colchicine-approval-2023',
+          name: 'Lodoco (colchicine) FDA Approval History. Drugs.com. 2023.',
+          url: 'https://www.drugs.com/history/lodoco.html',
+          publishedAt: '2023-06-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── ISCHEMIA — invasive vs conservative strategy stable CAD 2020 ─────────────
+  {
+    externalId: 'trajectory:ischemia-invasive-vs-conservative-stable-cad-2020',
+    text: 'On 30 March 2020 the ISCHEMIA trial reported that in patients with stable coronary disease and moderate-to-severe ischemia, an initial invasive strategy of routine angiography and revascularization did not reduce cardiovascular events or death compared with optimal medical therapy alone, contesting the long-held premise that revascularizing ischemia-producing stenoses improves hard outcomes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-03-30',
+        datePrecision: 'DAY',
+        reason: 'David Maron, Judith Hochman and colleagues reported in the New England Journal of Medicine (online 30 March 2020) that among 5,179 patients with stable CAD and moderate-to-severe ischemia, an initial invasive strategy produced no reduction in the primary composite of cardiovascular death, MI, or hospitalization versus a conservative medical strategy over a median 3.2 years. Extending the COURAGE and ORBITA findings to high-ischemia patients, it undercut the rationale for routine revascularization in stable disease.',
+        source: {
+          externalId: 'src:maron-ischemia-invasive-conservative-nejm-2020',
+          name: 'Maron DJ, Hochman JS, Reynolds HR, et al. Initial Invasive or Conservative Strategy for Stable Coronary Disease. N Engl J Med. 2020;382(15):1395-1407.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32227755/',
+          publishedAt: '2020-03-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
