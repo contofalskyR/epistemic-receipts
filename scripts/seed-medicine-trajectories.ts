@@ -20397,6 +20397,140 @@ const TRAJECTORIES: Trajectory[] = [
   // RARE DISEASE / ORPHAN DRUG ERA (2000s–2010s) — additions
   // ═══════════════════════════════════════════════════════════════════════════════
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIAC SURGERY / DEVICE ERA (1960s–1990s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Favaloro CABG — first saphenous-vein coronary bypass 1968 ───────────────
+  {
+    externalId: 'trajectory:favaloro-first-saphenous-vein-cabg-1968',
+    text: 'René Favaloro at the Cleveland Clinic reported in The Annals of Thoracic Surgery in 1968 that severe segmental coronary artery occlusion could be bypassed by interposing an autologous saphenous vein graft, establishing the reproducible operative technique of coronary artery bypass grafting (CABG).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following his first saphenous-vein coronary bypass operation in May 1967, Favaloro published \'Saphenous vein autograft replacement of severe segmental coronary artery occlusion: operative technique\' in Ann Thorac Surg (1968;5:334–339), describing a standardized, angiographically confirmed method of revascularizing occluded coronary arteries. This recorded in the surgical literature the claim that direct coronary bypass was a feasible, reproducible operation — the founding document of modern CABG.',
+        source: {
+          externalId: 'src:favaloro-saphenous-vein-cabg-ats-1968',
+          name: 'Favaloro RG. Saphenous vein autograft replacement of severe segmental coronary artery occlusion: operative technique. Ann Thorac Surg. 1968;5(4):334–339. (50th-anniversary landmark commentary, PMID 25639386.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25639386/',
+          publishedAt: '1968-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within two years Favaloro and his Cleveland Clinic group had performed more than 1,000 cases, and saphenous-vein aortocoronary bypass diffused rapidly through cardiac surgery worldwide to become the dominant surgical treatment for coronary artery disease. By the early 1970s CABG was an established standard operation, a status it retains; later trials such as CASS (1983) contested its survival benefit only in lower-risk stable subgroups, not the technique itself.',
+        source: {
+          externalId: 'src:cabg-50th-anniversary-review-jtcvs-2018',
+          name: 'Head SJ, et al. The father of coronary artery bypass grafting: René Favaloro and the 50th anniversary of coronary artery bypass grafting. J Thorac Cardiovasc Surg. 2018.',
+          url: 'https://www.jtcvs.org/article/S0022-5223(18)30710-4/fulltext',
+          publishedAt: '2018-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mirowski ICD — first implantable defibrillator 1980 ─────────────────────
+  {
+    externalId: 'trajectory:mirowski-first-implantable-defibrillator-1980',
+    text: 'Michel Mirowski and colleagues reported in the New England Journal of Medicine on 7 August 1980 that an automatic implantable defibrillator had successfully terminated malignant ventricular arrhythmias in human patients, the first demonstration of the implantable cardioverter-defibrillator (ICD) in human beings.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-08-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-08-07',
+        datePrecision: 'DAY',
+        reason: 'After the first human implant in February 1980 at Johns Hopkins, Mirowski, Reid, Mower and colleagues published \'Termination of malignant ventricular arrhythmias with an implanted automatic defibrillator in human beings\' (NEJM 1980;303:322–324), documenting that an implanted device could automatically sense and defibrillate life-threatening arrhythmias. This recorded the claim that a permanently implantable defibrillator was feasible in patients, overcoming a decade of skepticism that such a device was practical or safe.',
+        source: {
+          externalId: 'src:mirowski-implantable-defibrillator-nejm-1980',
+          name: 'Mirowski M, Reid PR, Mower MM, et al. Termination of malignant ventricular arrhythmias with an implanted automatic defibrillator in human beings. N Engl J Med. 1980;303(7):322–324.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM198008073030607',
+          publishedAt: '1980-08-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-12-26',
+        datePrecision: 'DAY',
+        reason: 'Moss and colleagues reported MADIT (NEJM 1996;335:1933–1940), the first randomized controlled trial showing that prophylactic ICD implantation reduced mortality in high-risk coronary patients versus conventional therapy. This converted the ICD from a feasible device into an evidence-based, guideline-endorsed standard for prevention of sudden cardiac death, a status reinforced by AVID and MADIT-II and durable to the present.',
+        source: {
+          externalId: 'src:moss-madit-implantable-defibrillator-nejm-1996',
+          name: 'Moss AJ, Hall WJ, Cannom DS, et al. Improved survival with an implanted defibrillator in patients with coronary disease at high risk for ventricular arrhythmia (MADIT). N Engl J Med. 1996;335(26):1933–1940.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199612263352601',
+          publishedAt: '1996-12-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SHAM-CONTROLLED REVERSAL ERA (1990s–2000s)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Fetal dopamine grafts for Parkinson's — sham-trial reversal 2001 ─────────
+  {
+    externalId: 'trajectory:fetal-dopamine-graft-parkinsons-sham-reversal-2001',
+    text: 'Transplantation of human fetal mesencephalic dopamine neurons into the striatum produces sustained motor improvement in Parkinson\'s disease — a claim advanced by open-label grafting reports from 1990 and contradicted in 2001 by the first double-blind, sham-surgery-controlled trial, which found no overall benefit and disabling graft-induced (\'runaway\') dyskinesias.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-02-02',
+        datePrecision: 'DAY',
+        reason: 'Lindvall and colleagues reported \'Grafts of fetal dopamine neurons survive and improve motor function in Parkinson\'s disease\' (Science 1990;247:574–577), showing that fetal mesencephalic dopamine neurons stereotactically implanted into the putamen survived, restored fluorodopa uptake on PET, and gave marked, sustained symptomatic relief in a severely affected patient. This recorded the open-label claim that fetal-cell grafting could be a restorative procedural therapy for Parkinson\'s disease, launching a wave of optimism and further transplant series.',
+        source: {
+          externalId: 'src:lindvall-fetal-dopamine-graft-science-1990',
+          name: 'Lindvall O, Brundin P, Widner H, et al. Grafts of fetal dopamine neurons survive and improve motor function in Parkinson\'s disease. Science. 1990;247(4942):574–577.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2105529/',
+          publishedAt: '1990-02-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-03-08',
+        datePrecision: 'DAY',
+        reason: 'Freed and colleagues published the first prospective double-blind trial with sham (placebo) surgery (NEJM 2001;344:710–719), randomizing 40 patients to embryonic dopamine-neuron implantation or a sham burr-hole procedure. Despite graft survival, there was no significant benefit on the primary global rating, improvement was confined to younger patients, and 15% developed disabling off-medication dyskinesias attributed to the grafts. The placebo-controlled design overturned the open-label evidence base, putting fetal-cell transplantation for Parkinson\'s into durable scientific contestation.',
+        source: {
+          externalId: 'src:freed-embryonic-dopamine-transplant-nejm-2001',
+          name: 'Freed CR, Greene PE, Breeze RE, et al. Transplantation of embryonic dopamine neurons for severe Parkinson\'s disease. N Engl J Med. 2001;344(10):710–719.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11236774/',
+          publishedAt: '2001-03-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Eculizumab/Soliris — first complement inhibitor, PNH 2007 ───────────────
   {
     externalId: 'trajectory:eculizumab-soliris-pnh-first-complement-inhibitor-2007',
