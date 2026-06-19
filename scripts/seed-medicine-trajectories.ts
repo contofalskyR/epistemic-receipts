@@ -19443,6 +19443,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // VACCINES & INFECTIOUS DISEASE
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── RV144 Thai HIV vaccine — partial efficacy 2009 ──────────────────────────
+  {
+    externalId: 'trajectory:rv144-thai-hiv-vaccine-partial-efficacy-2009',
+    text: 'The RV144 ("Thai") trial reported on 24 September 2009 that a prime-boost regimen of ALVAC-HIV (vCP1521) followed by AIDSVAX B/E gp120 was 31.2% efficacious at preventing HIV-1 acquisition in Thai adults — the first demonstration that any vaccine could partially protect humans against HIV infection.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-09-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-10-20',
+        datePrecision: 'DAY',
+        reason: 'Rerks-Ngarm and colleagues published the full RV144 results in the New England Journal of Medicine (online 20 October 2009), reporting 31.2% vaccine efficacy in the modified intention-to-treat analysis (95% CI 1.1–52.1; P=0.04) among 16,402 volunteers. After two decades of failed candidates and the abandonment of the T-cell paradigm with the Step Study, this recorded in the expert literature the first statistically significant signal that a vaccine could reduce HIV acquisition, reviving the antibody-based prevention field.',
+        source: {
+          externalId: 'src:rerks-ngarm-rv144-nejm-2009',
+          name: 'Rerks-Ngarm S, Pitisuttithum P, Nitayaphan S, et al. Vaccination with ALVAC and AIDSVAX to prevent HIV-1 infection in Thailand. N Engl J Med. 2009;361(23):2209-2220.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19843557/',
+          publishedAt: '2009-10-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-02-03',
+        datePrecision: 'DAY',
+        reason: 'The NIH-sponsored HVTN 702 ("Uhambo") trial in South Africa — a redesigned ALVAC/bivalent gp120-MF59 regimen built directly on the RV144 concept — was stopped early on 3 February 2020 after the data and safety monitoring board found no efficacy (129 infections in vaccinees vs 123 in placebo). The failure to reproduce the modest RV144 signal in a high-incidence setting left the durability and generalizability of the 31.2% efficacy finding contested rather than confirmed.',
+        source: {
+          externalId: 'src:unaids-hvtn702-stopped-2020',
+          name: 'UNAIDS. HVTN 702 clinical trial of an HIV vaccine stopped. Press release, 4 February 2020.',
+          url: 'https://www.unaids.org/en/resources/presscentre/pressreleaseandstatementarchive/2020/february/20200204_vaccine',
+          publishedAt: '2020-02-04',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── HIVNET 012 single-dose nevirapine PMTCT — 1999 ─────────────────────────
+  {
+    externalId: 'trajectory:hivnet-012-single-dose-nevirapine-pmtct-1999',
+    text: 'The HIVNET 012 trial (Guay et al., The Lancet, 4 September 1999) reported that a single intrapartum maternal dose plus a single neonatal dose of nevirapine reduced mother-to-child HIV-1 transmission to 13.1% versus 25.1% with short-course zidovudine in a breastfeeding Ugandan population — an inexpensive regimen offering ~47% relative efficacy for resource-limited settings.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-09-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-09-04',
+        datePrecision: 'DAY',
+        reason: 'Guay and colleagues published HIVNET 012 in The Lancet, showing that a simple two-dose nevirapine regimen markedly outperformed short-course zidovudine for preventing perinatal HIV transmission at a cost of a few dollars per mother-infant pair. This recorded a transformative claim for sub-Saharan Africa: that effective prevention of mother-to-child transmission was achievable without the complex multi-week ACTG 076 zidovudine protocol, and single-dose nevirapine was rapidly scaled across low-income programs.',
+        source: {
+          externalId: 'src:guay-hivnet012-lancet-1999',
+          name: 'Guay LA, Musoke P, Fleming T, et al. Intrapartum and neonatal single-dose nevirapine compared with zidovudine for prevention of mother-to-child transmission of HIV-1 in Kampala, Uganda: HIVNET 012 randomised trial. Lancet. 1999;354(9181):795-802.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10485720/',
+          publishedAt: '1999-09-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-07-15',
+        datePrecision: 'DAY',
+        reason: 'Jourdain et al. reported in the New England Journal of Medicine that women given intrapartum single-dose nevirapine developed NNRTI resistance mutations (K103N, Y181C, G190A) in ~32% of cases and were significantly less likely to achieve viral suppression on subsequent nevirapine-based ART (49% vs 68%; P=0.03). This showed the cheap, settled PMTCT regimen compromised the mother\'s own future treatment, prompting WHO to recommend against single-dose nevirapine alone and move toward combination antiretroviral prophylaxis — contesting the original simple-regimen claim.',
+        source: {
+          externalId: 'src:jourdain-nevirapine-resistance-nejm-2004',
+          name: 'Jourdain G, Ngo-Giang-Huong N, Le Coeur S, et al. Intrapartum exposure to nevirapine and subsequent maternal responses to nevirapine-based antiretroviral therapy. N Engl J Med. 2004;351(3):229-240.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15247339/',
+          publishedAt: '2004-07-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rotarix PCV1 contamination scare — 2008/2010 ───────────────────────────
+  {
+    externalId: 'trajectory:rotarix-porcine-circovirus-contamination-2010',
+    text: 'Rotarix, GlaxoSmithKline\'s oral live-attenuated rotavirus vaccine licensed by the FDA on 3 April 2008, was found in 2010 by deep sequencing to contain DNA from porcine circovirus type 1 (PCV1), prompting the FDA on 22 March 2010 to recommend suspending its use before re-affirming its safety on 14 May 2010.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-04-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-04-03',
+        datePrecision: 'DAY',
+        reason: 'The FDA licensed Rotarix (RIX4414) on 3 April 2008 as a safe and effective live oral rotavirus vaccine for infants, and ACIP recommended it on the routine immunization schedule. The vaccine\'s purity and safety were institutionally settled and it entered widespread global use against a leading cause of childhood gastroenteritis death.',
+        source: {
+          externalId: 'src:fda-rotarix-approval-2008',
+          name: 'U.S. Food and Drug Administration. Rotarix (Rotavirus Vaccine, Live, Oral) — Product Approval Information. April 3, 2008.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/rotarix',
+          publishedAt: '2008-04-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-03-22',
+        datePrecision: 'DAY',
+        reason: 'An academic group using a novel metagenomic deep-sequencing and microarray approach (Victoria, Delwart, et al.) detected porcine circovirus type 1 DNA in Rotarix, in its working cell bank, and in the viral seed. After GSK confirmed the finding, the FDA on 22 March 2010 recommended that clinicians suspend Rotarix use. A new detection technology had found an adventitious agent invisible to all standard release assays, abruptly destabilizing a settled vaccine\'s purity claim.',
+        source: {
+          externalId: 'src:victoria-pcv1-rotarix-jvirol-2010',
+          name: 'Victoria JG, Wang C, Jones MS, et al. Viral nucleic acids in live-attenuated vaccines: detection of minority variants and an adventitious virus. J Virol. 2010;84(12):6033-6040.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20375174/',
+          publishedAt: '2010-04-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-05-14',
+        datePrecision: 'DAY',
+        reason: 'Following a 7 May 2010 VRBPAC advisory committee review, the FDA announced on 14 May 2010 that PCV1 (a nonpathogenic pig virus not known to infect humans) posed no safety risk and that clinicians should resume Rotarix use, with all available evidence supporting its safety and effectiveness. Institutional review re-settled the vaccine\'s safety, illustrating that a sensitive new assay can surface a finding that proves clinically inconsequential.',
+        source: {
+          externalId: 'src:fda-rotarix-resume-2010',
+          name: 'U.S. Food and Drug Administration. Update on Recommendations for the Use of Rotavirus Vaccines. May 14, 2010.',
+          url: 'https://cybercemetery.unt.edu/oilspill/20121019155743mp_/http://www.fda.gov/BiologicsBloodVaccines/Vaccines/ApprovedProducts/ucm205539.htm',
+          publishedAt: '2010-05-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hepatitis B vaccine MS scare — France 1998 ──────────────────────────────
+  {
+    externalId: 'trajectory:hepatitis-b-vaccine-multiple-sclerosis-scare-1998',
+    text: 'The claim that hepatitis B vaccination triggers or causes multiple sclerosis and central-nervous-system demyelination drove the French government, under Health Secretary Bernard Kouchner, to suspend its school-based adolescent hepatitis B immunization program on 1 October 1998 — a safety claim later refuted by large epidemiological studies.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-10-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-10-01',
+        datePrecision: 'DAY',
+        reason: 'Amid accumulating case reports and pharmacovigilance signals linking hepatitis B vaccine to multiple sclerosis and demyelinating events, French Secretary of State for Health Bernard Kouchner suspended the routine school-based adolescent hepatitis B vaccination campaign on 1 October 1998 (while continuing to recommend it for infants and high-risk groups). The decision converted scattered anecdotal concern into a recorded, government-endorsed safety hypothesis and is widely cited as a landmark vaccine-confidence crisis.',
+        source: {
+          externalId: 'src:nm-french-hepb-vaccination-policy-1998',
+          name: 'Butler D. Public pressure alters French vaccination policy. Nat Med. 1998;4(11):1217.',
+          url: 'https://www.nature.com/articles/nm1198_1217',
+          publishedAt: '1998-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-02-01',
+        datePrecision: 'DAY',
+        reason: 'Two studies in the same 1 February 2001 issue of the New England Journal of Medicine refuted the hypothesis: Ascherio et al. (nested case-control in the Nurses\' Health Studies) found no association between hepatitis B vaccination and MS (multivariate RR 0.9, 95% CI 0.5–1.6), and Confavreux et al. found vaccination did not increase the short-term risk of MS relapse. The WHO Global Advisory Committee on Vaccine Safety subsequently concluded there is no causal relationship, leaving the safety claim refuted and the vaccine recommendation unchanged.',
+        source: {
+          externalId: 'src:ascherio-hepb-ms-nejm-2001',
+          name: 'Ascherio A, Zhang SM, Hernán MA, et al. Hepatitis B vaccination and the risk of multiple sclerosis. N Engl J Med. 2001;344(5):327-332.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11172163/',
+          publishedAt: '2001-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
