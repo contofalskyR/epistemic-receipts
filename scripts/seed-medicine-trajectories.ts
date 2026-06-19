@@ -35801,48 +35801,6 @@ const TRAJECTORIES: Trajectory[] = [
   // CANCER CHEMOTHERAPY & SCREENING ORIGINS (1941–1984)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Huggins & Hodges — hormonal therapy for prostate cancer, 1941 ──────────
-  {
-    externalId: 'trajectory:huggins-hormonal-therapy-prostate-cancer-1941',
-    text: 'Charles Huggins and Clarence Hodges reported in Cancer Research in April 1941 that castration or estrogen administration caused regression of metastatic prostate cancer, establishing the first hormonal (and arguably first targeted) therapy for any cancer.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1941-04-01',
-    claimEmergedPrecision: 'MONTH',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1941-04-01',
-        datePrecision: 'MONTH',
-        reason: 'Huggins and Hodges reported that surgical castration or estrogen injection lowered serum acid phosphatase and clinically improved men with metastatic carcinoma of the prostate, while androgen injection worsened it. This recorded in the expert literature the claim that prostate cancer is hormone-dependent and can be controlled by androgen deprivation — the founding observation of endocrine cancer therapy.',
-        source: {
-          externalId: 'src:huggins-hodges-prostatic-cancer-1941',
-          name: 'Huggins C, Hodges CV. Studies on prostatic cancer. I. The effect of castration, of estrogen and of androgen injection on serum phosphatases in metastatic carcinoma of the prostate. Cancer Res. 1941;1(4):293–297.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/12050481/',
-          publishedAt: '1941-04-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1966-10-01',
-        datePrecision: 'MONTH',
-        reason: 'The Nobel Assembly awarded Huggins the 1966 Nobel Prize in Physiology or Medicine \'for his discoveries concerning hormonal treatment of prostatic cancer.\' By then androgen-deprivation therapy was standard care for advanced prostate cancer worldwide, and the Nobel recognition institutionally ratified the hormone-dependence claim as settled.',
-        source: {
-          externalId: 'src:nobel-huggins-prostate-1966',
-          name: 'The Nobel Prize in Physiology or Medicine 1966 — Charles B. Huggins (Facts). Nobel Foundation.',
-          url: 'https://www.nobelprize.org/prizes/medicine/1966/huggins/facts/',
-          publishedAt: '1966-10-01',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
   // ── Papanicolaou & Traut — Pap smear cervical cancer screening, 1941 ───────
   {
     externalId: 'trajectory:papanicolaou-pap-smear-cervical-cancer-1941',
@@ -35922,48 +35880,6 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://pubmed.ncbi.nlm.nih.gov/13379512/',
           publishedAt: '1956-11-01',
           methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Goodman, Gilman et al. — nitrogen mustard chemotherapy, 1946 ────────────
-  {
-    externalId: 'trajectory:nitrogen-mustard-first-chemotherapy-1946',
-    text: 'Louis Goodman, Alfred Gilman, and colleagues reported in JAMA on 21 September 1946 that the alkylating agent nitrogen mustard (methyl-bis(beta-chloroethyl)amine) produced regression of Hodgkin\'s disease, lymphosarcoma, and leukemia, establishing that a systemic chemical could induce tumor regression — the origin of cancer chemotherapy.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1946-09-21',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1946-09-21',
-        datePrecision: 'DAY',
-        reason: 'Goodman, Wintrobe, Dameshek, Goodman, Gilman, and McLennan published in JAMA the results of wartime-classified clinical work (begun 1942–43) showing that nitrogen mustard, an alkylating agent derived from chemical-warfare research, produced objective regression of lymphoid malignancies. This recorded in the expert literature the novel claim that a systemically administered chemical could shrink tumors, founding the field of cancer chemotherapy.',
-        source: {
-          externalId: 'src:goodman-gilman-nitrogen-mustard-jama-1946',
-          name: 'Goodman LS, Wintrobe MM, Dameshek W, Goodman MJ, Gilman A, McLennan MT. Nitrogen mustard therapy. Use of methyl-bis(beta-chloroethyl)amine hydrochloride and tris(beta-chloroethyl)amine hydrochloride for Hodgkin\'s disease, lymphosarcoma, leukemia and certain allied and miscellaneous disorders. JAMA. 1946;132(3):126–132.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6368885/',
-          publishedAt: '1946-09-21',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1984-01-01',
-        datePrecision: 'YEAR',
-        reason: 'JAMA reprinted the 1946 paper as a designated \'Landmark article,\' formally recognizing it as the foundational document of cancer chemotherapy. By this point alkylating agents were entrenched standard therapy for lymphoid malignancies, and the literature treated the principle that systemic chemicals can induce durable tumor regression as settled doctrine.',
-        source: {
-          externalId: 'src:jama-landmark-nitrogen-mustard-reprint-1984',
-          name: 'Landmark article Sept. 21, 1946: Nitrogen mustard therapy... By Louis S. Goodman, Maxwell M. Wintrobe, William Dameshek, Morton J. Goodman, Alfred Gilman and Margaret T. McLennan. JAMA. 1984;251(17):2255–2261.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6368885/',
-          publishedAt: '1984-05-04',
-          methodologyType: 'derivative',
         },
       },
     ],
