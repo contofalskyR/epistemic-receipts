@@ -30089,6 +30089,141 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Taliglucerase alfa (Elelyso) — first plant-cell biologic 2012 ──────────
+  {
+    externalId: 'trajectory:taliglucerase-alfa-elelyso-first-plant-cell-biologic-2012',
+    text: 'On May 1, 2012, the U.S. FDA approved taliglucerase alfa (Elelyso), an enzyme replacement therapy for type 1 Gaucher disease and the first recombinant therapeutic protein produced in genetically engineered plant cells (Protalix\'s ProCellEx carrot-cell system) to be approved for human use.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-05-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-05-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved taliglucerase alfa for type 1 Gaucher disease on the basis of a nine-month, randomized, double-blind trial in 31 treatment-naive adults showing reductions in spleen volume and improvements in platelet counts and hemoglobin. Beyond the efficacy claim, the approval established the regulatory fact that a recombinant biologic expressed in plant (carrot) cells could meet U.S. quality and safety standards, validating a new biomanufacturing platform distinct from the mammalian-cell systems used for prior Gaucher ERTs.',
+        source: {
+          externalId: 'src:pfizer-protalix-elelyso-fda-approval-2012',
+          name: 'Pfizer and Protalix BioTherapeutics. Pfizer and Protalix BioTherapeutics Announce FDA Approval of ELELYSO (taliglucerase alfa) for the Treatment of Gaucher Disease. May 1, 2012.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer_and_protalix_biotherapeutics_announce_fda_approval_of_elelyso_taliglucerase_alfa_for_the_treatment_of_gaucher_disease',
+          publishedAt: '2012-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Eliglustat (Cerdelga) — first oral first-line Gaucher therapy 2014 ─────
+  {
+    externalId: 'trajectory:eliglustat-cerdelga-first-oral-first-line-gaucher-2014',
+    text: 'On August 19, 2014, the U.S. FDA approved eliglustat (Cerdelga), a glucosylceramide synthase inhibitor, as the first oral therapy indicated for first-line long-term treatment of adults with type 1 Gaucher disease, establishing an oral substrate-reduction alternative to intravenous enzyme replacement.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-08-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved eliglustat based on two phase 3 trials — ENGAGE in treatment-naive patients and ENCORE in patients switching from enzyme replacement therapy — showing control of spleen/liver volume, hemoglobin, and platelets. Unlike the earlier oral substrate-reduction agent miglustat (restricted to patients unsuitable for ERT), eliglustat was approved as a first-line option, recording the institutional claim that an oral small molecule could substitute for IV ERT as primary therapy in metabolically appropriate (CYP2D6-stratified) patients.',
+        source: {
+          externalId: 'src:genzyme-cerdelga-fda-approval-2014',
+          name: 'Genzyme (Sanofi). FDA Approves Genzyme\'s Cerdelga (eliglustat) Capsules. August 19, 2014.',
+          url: 'https://news.genzyme.com/press-release/fda-approves-genzymes-cerdelga-eliglustat-capsules',
+          publishedAt: '2014-08-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Burosumab (Crysvita) — first anti-FGF23 for XLH 2018 ──────────────────
+  {
+    externalId: 'trajectory:burosumab-crysvita-first-xlh-anti-fgf23-2018',
+    text: 'On April 17, 2018, the U.S. FDA approved burosumab-twza (Crysvita), an antibody against fibroblast growth factor 23 (FGF23), as the first treatment for X-linked hypophosphatemia (XLH), shifting therapy from symptomatic phosphate/vitamin-D replacement to a drug targeting the disease\'s underlying hormonal cause.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-04-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-04-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA, under a Breakthrough Therapy designation, approved burosumab for children and adults with XLH based on trials demonstrating normalization of serum phosphate, improved rickets healing in children, and improved osteomalacia. The approval recorded the claim that neutralizing excess FGF23 — the causal hormonal defect in XLH — was a safe and effective therapeutic strategy, displacing the prior standard of oral phosphate and active vitamin D, which treated symptoms rather than the mechanism.',
+        source: {
+          externalId: 'src:ultragenyx-kyowakirin-crysvita-fda-approval-2018',
+          name: 'Ultragenyx and Kyowa Kirin. Ultragenyx and Kyowa Kirin Announce FDA Approval of Crysvita (burosumab-twza) for the Treatment of Children and Adults with X-Linked Hypophosphatemia (XLH). April 17, 2018.',
+          url: 'https://ir.ultragenyx.com/news-releases/news-release-details/ultragenyx-and-kyowa-kirin-announce-fda-approval-crysvitar',
+          publishedAt: '2018-04-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pegvaliase (Palynziq) — first enzyme-substitution therapy for PKU 2018 ─
+  {
+    externalId: 'trajectory:pegvaliase-palynziq-first-pku-enzyme-substitution-2018',
+    text: 'On May 24, 2018, the U.S. FDA approved pegvaliase-pqpz (Palynziq), a PEGylated recombinant phenylalanine ammonia lyase, as the first enzyme-substitution therapy for adults with phenylketonuria (PKU), enabling pharmacologic degradation of phenylalanine rather than dietary restriction or cofactor enhancement.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-05-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved pegvaliase for adults with PKU and uncontrolled blood phenylalanine (>600 micromol/L) based on the PRISM-1 and PRISM-2 phase 3 program showing substantial reductions in blood phenylalanine. The approval established that a non-human (Anabaena variabilis) enzyme injected to metabolize phenylalanine was a viable mechanism, distinct from the earlier sapropterin (Kuvan), a tetrahydrobiopterin cofactor that only works in BH4-responsive patients — recording a new pharmacologic route to phenylalanine control independent of residual enzyme function.',
+        source: {
+          externalId: 'src:biomarin-palynziq-fda-approval-2018',
+          name: 'BioMarin. BioMarin Receives Standard Approval for Palynziq (pegvaliase-pqpz) Injection for Treatment of Adults with Phenylketonuria (PKU), a Rare Genetic Disease. May 24, 2018.',
+          url: 'https://investors.biomarin.com/2018-05-24-BioMarin-Receives-Standard-Approval-for-Palynziq-TM-pegvaliase-pqpz-Injection-for-Treatment-of-Adults-with-Phenylketonuria-PKU-a-Rare-Genetic-Disease',
+          publishedAt: '2018-05-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Defibrotide (Defitelio) — first hepatic VOD treatment 2016 ─────────────
+  {
+    externalId: 'trajectory:defibrotide-defitelio-first-hepatic-vod-treatment-2016',
+    text: 'On March 30, 2016, the U.S. FDA approved defibrotide sodium (Defitelio) as the first treatment for hepatic veno-occlusive disease (VOD, also called sinusoidal obstruction syndrome) with renal or pulmonary dysfunction following hematopoietic stem-cell transplantation, a previously untreatable and frequently fatal transplant complication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-03-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted priority review and approved defibrotide for severe hepatic VOD after stem-cell transplant based on 528 patients across two prospective trials and an expanded-access study, with roughly 38-45% of treated patients alive at day 100 versus historical controls. The approval recorded the first institutionally validated efficacy claim for any drug in severe VOD, converting a condition managed only supportively into one with an approved disease-directed therapy.',
+        source: {
+          externalId: 'src:jazz-defitelio-fda-approval-2016',
+          name: 'Jazz Pharmaceuticals. Jazz Pharmaceuticals Announces FDA Approval of Defitelio (defibrotide sodium) for the Treatment of Hepatic Veno-Occlusive Disease (VOD) with Renal or Pulmonary Dysfunction Following Hematopoietic Stem-Cell Transplantation (HSCT). March 30, 2016.',
+          url: 'https://investor.jazzpharma.com/news-releases/news-release-details/jazz-pharmaceuticals-announces-fda-approval-defitelior/',
+          publishedAt: '2016-03-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
