@@ -37032,6 +37032,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL / PROCEDURAL ERA (1958–1984)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Diagnostic obstetric ultrasound — Donald 1958 ──────────────────────────
+  {
+    externalId: 'trajectory:donald-obstetric-diagnostic-ultrasound-1958',
+    text: 'Ian Donald, John MacVicar, and engineer Tom Brown reported in The Lancet on 7 June 1958 that pulsed ultrasound could non-invasively image and differentiate abdominal and pelvic masses in living patients, founding diagnostic medical ultrasonography and obstetric ultrasound.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-06-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-06-07',
+        datePrecision: 'DAY',
+        reason: 'Donald, MacVicar, and Brown published "Investigation of abdominal masses by pulsed ultrasound" in The Lancet, adapting industrial flaw-detection sonar to distinguish cystic from solid masses in patients. This recorded the first systematic clinical demonstration that ultrasound could safely image soft-tissue and pregnant abdomens, launching obstetric ultrasonography.',
+        source: {
+          externalId: 'src:donald-abdominal-masses-pulsed-ultrasound-lancet-1958',
+          name: 'Donald I, MacVicar J, Brown TG. Investigation of abdominal masses by pulsed ultrasound. Lancet. 1958;1(7032):1188-95.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13550965/',
+          publishedAt: '1958-06-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Stuart Campbell published an improved ultrasonic method of fetal cephalometry (biparietal diameter measurement) in the Journal of Obstetrics and Gynaecology of the British Commonwealth, providing reproducible quantitative fetal biometry. The technique was rapidly adopted as routine obstetric practice for dating and growth assessment, settling ultrasound as an established clinical imaging modality.',
+        source: {
+          externalId: 'src:campbell-fetal-cephalometry-ultrasound-bjog-1968',
+          name: 'Campbell S. An improved method of fetal cephalometry by ultrasound. J Obstet Gynaecol Br Commonw. 1968;75(5):568-76.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5754625/',
+          publishedAt: '1968-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Total parenteral nutrition — Dudrick 1968 ──────────────────────────────
+  {
+    externalId: 'trajectory:dudrick-total-parenteral-nutrition-1968',
+    text: 'Stanley Dudrick and colleagues demonstrated in 1968 that intravenous total parenteral nutrition (TPN) alone can sustain normal growth, development, and positive nitrogen balance, establishing that patients with non-functioning gastrointestinal tracts can be fed entirely by vein.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Dudrick, Wilmore, Vars, and Rhoads published in Surgery the demonstration that long-term intravenous feeding produced normal growth, development, and positive nitrogen balance, first in beagle puppies and then in a human infant with intestinal atresia. This overturned the prevailing belief that adequate nutrition could not be delivered for prolonged periods through a peripheral or central vein, and recorded the first reproducible evidence that the gut could be bypassed entirely.',
+        source: {
+          externalId: 'src:dudrick-tpn-growth-development-surgery-1968',
+          name: 'Dudrick SJ, Wilmore DW, Vars HM, Rhoads JE. Long-term total parenteral nutrition with growth, development, and positive nitrogen balance. Surgery. 1968;64(1):134-42.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4968812/',
+          publishedAt: '1968-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the following decade TPN became standard of care for intestinal failure, short-bowel syndrome, and perioperative malnutrition; the American Society for Parenteral and Enteral Nutrition was founded in 1976 and dedicated commercial nutrient and lipid formulations and central-line protocols entered routine hospital practice. Dudrick\'s own historical account documents the transition from experimental technique to established therapy.',
+        source: {
+          externalId: 'src:dudrick-history-parenteral-nutrition-jacn-2009',
+          name: 'Dudrick SJ. History of parenteral nutrition. J Am Coll Nutr. 2009;28(3):243-51.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20150597/',
+          publishedAt: '2009-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Prenatal cytogenetic diagnosis — Steele & Breg 1966 ────────────────────
+  {
+    externalId: 'trajectory:steele-breg-amniocentesis-prenatal-diagnosis-1966',
+    text: 'Mark Steele and W. Roy Breg reported in The Lancet on 19 February 1966 that human cells cultured from amniotic fluid can be karyotyped, demonstrating that the fetal chromosome complement can be determined antenatally and founding prenatal cytogenetic diagnosis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-02-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-02-19',
+        datePrecision: 'DAY',
+        reason: 'Steele and Breg published "Chromosome analysis of human amniotic-fluid cells" in The Lancet, showing that desquamated fetal cells in amniotic fluid could be cultured and karyotyped. This recorded the first evidence that fetal chromosomal constitution and sex could be ascertained before birth, opening the field of prenatal genetic diagnosis.',
+        source: {
+          externalId: 'src:steele-breg-amniotic-fluid-chromosome-lancet-1966',
+          name: 'Steele MW, Breg WR Jr. Chromosome analysis of human amniotic-fluid cells. Lancet. 1966;1(7434):383-5.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4159775/',
+          publishedAt: '1966-02-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-09-27',
+        datePrecision: 'DAY',
+        reason: 'The NICHD National Registry for Amniocentesis Study Group published a prospective study of 1,040 subjects and 992 controls in JAMA showing midtrimester amniocentesis was 99.4% diagnostically accurate with no significant excess fetal loss. This multicenter safety-and-accuracy verdict settled amniocentesis as a safe, accurate, and routinely offered prenatal diagnostic procedure.',
+        source: {
+          externalId: 'src:nichd-midtrimester-amniocentesis-safety-jama-1976',
+          name: 'NICHD National Registry for Amniocentesis Study Group. Midtrimester amniocentesis for prenatal diagnosis. Safety and accuracy. JAMA. 1976;236(13):1471-6.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/989112/',
+          publishedAt: '1976-09-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Extracorporeal shock wave lithotripsy — Chaussy 1980 ───────────────────
+  {
+    externalId: 'trajectory:chaussy-extracorporeal-shock-wave-lithotripsy-1980',
+    text: 'Christian Chaussy and colleagues reported in The Lancet on 13 December 1980 that kidney stones can be disintegrated non-invasively in the body by externally generated focused shock waves (extracorporeal shock wave lithotripsy, ESWL), without surgical incision.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-12-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-12-13',
+        datePrecision: 'DAY',
+        reason: 'Chaussy, Brendel, and Schmiedt published the first report of extracorporeally induced destruction of kidney stones by shock waves in The Lancet, following the first successful human treatment with the Dornier prototype in February 1980. This recorded the first evidence that a major class of urological stone disease could be treated without open surgery or endoscopic instrumentation.',
+        source: {
+          externalId: 'src:chaussy-kidney-stones-shock-waves-lancet-1980',
+          name: 'Chaussy C, Brendel W, Schmiedt E. Extracorporeally induced destruction of kidney stones by shock waves. Lancet. 1980;2(8207):1265-8.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6108446/',
+          publishedAt: '1980-12-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-12-01',
+        datePrecision: 'MONTH',
+        reason: 'In December 1984 the U.S. Food and Drug Administration granted Dornier Systems marketing approval for the HM3 lithotripter, the first ESWL device approved in the United States, after reviewing West German and U.S. clinical trial data. ESWL rapidly displaced open surgery as first-line therapy for most upper urinary tract stones, settling the procedure as standard of care.',
+        source: {
+          externalId: 'src:fda-dornier-hm3-lithotripter-approval-1984',
+          name: 'Nightingale SL, Young FE. Marketing approval for the lithotripter. Isr J Med Sci. 1986;22(7-8):519-23.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3781809/',
+          publishedAt: '1986-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
