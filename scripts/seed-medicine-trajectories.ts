@@ -20930,6 +20930,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DRUG DISCOVERY ERA (pre-1950) — IMMUNOLOGY & VIROLOGY
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Koch tuberculin reversal 1890–1891 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:koch-tuberculin-tuberculosis-remedy-reversal-1890',
+    text: 'Robert Koch announced in November 1890 that his preparation tuberculin was a remedy capable of arresting and curing tuberculosis in living patients.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1890-11-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1890-11-14',
+        datePrecision: 'DAY',
+        reason: 'Koch published \'Weitere Mittheilungen über ein Heilmittel gegen Tuberculose\' in Deutsche Medizinische Wochenschrift on 14 November 1890, reporting that his secret remedy (later named tuberculin) arrested tuberculous disease in animals and, on more than a thousand human subjects, acted against the disease. The announcement was received as a probable cure and triggered a worldwide rush of patients and physicians to Berlin.',
+        source: {
+          externalId: 'src:hospital-koch-tuberculosis-1890',
+          name: 'Dr. Koch on Tuberculosis. The Hospital (London). 1890 Nov 22;9(216):113-114.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5213355/',
+          publishedAt: '1890-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1891-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By 1891 clinical experience and the official German report concluded that tuberculin failed to cure tuberculosis of internal organs and could provoke dangerous, sometimes fatal reactions; the much-publicized \'cure\' collapsed within months. The reversal damaged Koch\'s reputation, though tuberculin was later repurposed as a diagnostic skin test rather than a therapy.',
+        source: {
+          externalId: 'src:gradmann-koch-white-death-2006',
+          name: 'Gradmann C. Robert Koch and the white death: from tuberculosis to tuberculin. Microbes Infect. 2006;8(1):294-301.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16126424/',
+          publishedAt: '2006-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Heidelberger-Avery pneumococcus polysaccharide antigen 1923 ───────────────
+  {
+    externalId: 'trajectory:heidelberger-avery-pneumococcus-polysaccharide-antigen-1923',
+    text: 'Michael Heidelberger and Oswald Avery reported in 1923 that the type-specific \'soluble specific substance\' of pneumococcus, the determinant of its immunological specificity, was a capsular polysaccharide rather than a protein.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-07-01',
+        datePrecision: 'MONTH',
+        reason: 'In the first \'Soluble Specific Substance of Pneumococcus\' paper (J Exp Med, vol. 38), Heidelberger and Avery showed that the immunologically active, type-specific material of pneumococcus was a carbohydrate, overturning the assumption that only proteins could be antigens. This founded the field of immunochemistry and reframed how vaccine antigens were understood.',
+        source: {
+          externalId: 'src:heidelberger-avery-sss-pneumococcus-1923',
+          name: 'Heidelberger M, Avery OT. The soluble specific substance of pneumococcus. J Exp Med. 1923;38(1):73-79.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19868772/',
+          publishedAt: '1923-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the second and third papers (1923–1925) the authors extended the polysaccharide-antigen finding across pneumococcal types and quantified the type-specific reactions, and the carbohydrate basis of immunological specificity became accepted doctrine. The principle directly underwrote later pneumococcal polysaccharide vaccines.',
+        source: {
+          externalId: 'src:heidelberger-avery-sss-third-paper-1925',
+          name: 'Heidelberger M, Avery OT. The soluble specific substance of pneumococcus: third paper. J Exp Med. 1925;42(3):367-376.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19869085/',
+          publishedAt: '1925-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Woodruff-Goodpasture chick-embryo virus cultivation 1931 ─────────────────
+  {
+    externalId: 'trajectory:woodruff-goodpasture-chick-embryo-virus-cultivation-1931',
+    text: 'Alice Woodruff and Ernest Goodpasture reported in 1931 that fowl-pox virus could be propagated on the chorio-allantoic membrane of the developing chick embryo, establishing fertile hen\'s eggs as a medium for cultivating viruses.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Woodruff and Goodpasture demonstrated in the American Journal of Pathology that fowl-pox virus grew and produced characteristic lesions with inclusion bodies on the chick chorio-allantoic membrane, providing a sterile, living, easily produced substrate for virus propagation. This solved a central bottleneck in virology — growing viruses outside whole animals.',
+        source: {
+          externalId: 'src:woodruff-goodpasture-fowlpox-1931',
+          name: 'Woodruff AM, Goodpasture EW. The susceptibility of the chorio-allantoic membrane of chick embryos to infection with the fowl-pox virus. Am J Pathol. 1931;7(3):209-222.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2062632/',
+          publishedAt: '1931-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-10-16',
+        datePrecision: 'DAY',
+        reason: 'Goodpasture and colleagues generalized the method in Science (16 October 1931), cultivating vaccinia (cowpox) and other viruses on the chorio-allantoic membrane, showing the technique was not specific to fowl-pox. The egg-culture method was rapidly adopted and became the standard substrate for producing yellow fever, influenza, and other viral vaccines — a role hen\'s eggs still play.',
+        source: {
+          externalId: 'src:goodpasture-vaccine-viruses-cam-science-1931',
+          name: 'Goodpasture EW, Woodruff AM, Buddingh GJ. The cultivation of vaccine and other viruses in the chorio-allantoic membrane of chick embryos. Science. 1931;74(1919):371-372.',
+          url: 'https://www.science.org/doi/10.1126/science.74.1919.371',
+          publishedAt: '1931-10-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Enders-Weller-Robbins poliovirus tissue culture 1949 ─────────────────────
+  {
+    externalId: 'trajectory:enders-weller-robbins-poliovirus-tissue-culture-1949',
+    text: 'John Enders, Thomas Weller, and Frederick Robbins reported on 28 January 1949 that the Lansing strain of poliomyelitis virus could be grown in cultures of non-neural human embryonic tissue.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-01-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-01-28',
+        datePrecision: 'DAY',
+        reason: 'In Science (28 January 1949) Enders, Weller, and Robbins showed the Lansing poliovirus multiplied in cultures of human embryonic skin and muscle, refuting the prevailing belief that the virus could grow only in nervous tissue. This made it possible to grow poliovirus in quantity without monkeys and to assay it in vitro — the technical foundation of the polio vaccines.',
+        source: {
+          externalId: 'src:enders-weller-robbins-poliovirus-science-1949',
+          name: 'Enders JF, Weller TH, Robbins FC. Cultivation of the Lansing strain of poliomyelitis virus in cultures of various human embryonic tissues. Science. 1949;109(2822):85-87.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17794160/',
+          publishedAt: '1949-01-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1954-10-21',
+        datePrecision: 'DAY',
+        reason: 'The Karolinska Institutet awarded Enders, Weller, and Robbins the 1954 Nobel Prize in Physiology or Medicine for the tissue-culture cultivation of poliovirus, institutionally validating the method whose adoption had by then enabled Salk\'s 1954 field trial. Tissue culture became the universal basis of modern virology and vaccine production.',
+        source: {
+          externalId: 'src:nobel-1954-enders-weller-robbins',
+          name: 'The Nobel Prize in Physiology or Medicine 1954 — Enders, Weller, Robbins, for the cultivation of poliomyelitis viruses in tissue culture. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1954/summary/',
+          publishedAt: '1954-10-21',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── ISCHEMIA — invasive vs conservative strategy stable CAD 2020 ─────────────
   {
     externalId: 'trajectory:ischemia-invasive-vs-conservative-stable-cad-2020',
