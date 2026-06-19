@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { buildRepresentationAnalysis } from "@/lib/representationGap";
 import { RepresentationDumbbell } from "./RepresentationDumbbell";
+import { TopicDrillTable } from "./TopicDrillDown";
 
 export const revalidate = 600;
 
@@ -255,47 +256,7 @@ export default async function RepresentationPage() {
             for hawkish or socially-conservative topics.
           </p>
         </div>
-        <div className="rounded border border-gray-800 overflow-hidden">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="border-b border-gray-800 bg-gray-900/50">
-                <th className="px-3 py-2 text-left font-medium text-gray-500">Topic</th>
-                <th className="px-3 py-2 text-left font-medium text-gray-500">CCES proxy</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Rows</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Avg Yea %</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Avg support %</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Avg gap</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Dem gap</th>
-                <th className="px-3 py-2 text-right font-medium text-gray-500">Rep gap</th>
-                <th className="px-3 py-2 text-left font-medium text-gray-500">Worst cells</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topicSummaries.map((t, i) => (
-                <tr
-                  key={t.topicSlug}
-                  className={`border-b border-gray-800/50 last:border-0 ${i % 2 === 0 ? "" : "bg-gray-900/20"}`}
-                >
-                  <td className="px-3 py-2 text-gray-100 align-top font-mono">{t.topicSlug}</td>
-                  <td className="px-3 py-2 text-gray-400 align-top font-mono text-[11px]">{t.questionCode}</td>
-                  <td className="px-3 py-2 text-right text-gray-300 tabular-nums">{t.matchedRowCount}</td>
-                  <td className="px-3 py-2 text-right text-gray-300 tabular-nums">{pct(t.avgDelegationYeaPct)}</td>
-                  <td className="px-3 py-2 text-right text-gray-300 tabular-nums">{pct(t.avgConstituentSupportPct)}</td>
-                  <td className="px-3 py-2 text-right text-red-300 tabular-nums">{pct(t.avgGap)}</td>
-                  <td className="px-3 py-2 text-right text-blue-300 tabular-nums">{fmt(t.avgDemGap)}</td>
-                  <td className="px-3 py-2 text-right text-orange-300 tabular-nums">{fmt(t.avgRepGap)}</td>
-                  <td className="px-3 py-2 align-top text-[11px] text-gray-500">
-                    {t.topGapStates.map((s, j) => (
-                      <span key={`${s.state}-${j}`} className="font-mono mr-2">
-                        {s.state}&apos;{String(s.year).slice(-2)}:{s.gap.toFixed(0)}%
-                      </span>
-                    ))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <TopicDrillTable topicSummaries={topicSummaries} />
       </section>
 
       {/* === By decade === */}
