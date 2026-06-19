@@ -34783,6 +34783,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Teriparatide (Forteo) — first anabolic osteoporosis drug 2002 ──────────
+  {
+    externalId: 'trajectory:teriparatide-forteo-first-anabolic-osteoporosis-2002',
+    text: 'Teriparatide (Forteo), recombinant parathyroid hormone (1-34), is the first bone-forming (anabolic) osteoporosis drug shown to reduce vertebral and nonvertebral fractures — a claim established by Neer et al.\'s Fracture Prevention Trial in 2001 and ratified when the FDA approved it on 26 November 2002, carrying a boxed warning for the osteosarcoma seen in lifetime rat studies.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2001-05-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-05-10',
+        datePrecision: 'DAY',
+        reason: 'Neer and colleagues published the Fracture Prevention Trial in NEJM, randomizing 1,637 postmenopausal women with prior vertebral fractures to teriparatide or placebo and showing a 65% reduction in new vertebral fractures and 53% reduction in nonvertebral fragility fractures. This was the first demonstration that an anabolic agent that builds new bone — as opposed to antiresorptives like bisphosphonates that only slow loss — prevents fractures, recording a new therapeutic mechanism for osteoporosis.',
+        source: {
+          externalId: 'src:neer-teriparatide-nejm-2001',
+          name: 'Neer RM, Arnaud CD, Zanchetta JR, et al. Effect of parathyroid hormone (1-34) on fractures and bone mineral density in postmenopausal women with osteoporosis. N Engl J Med. 2001;344(19):1434-1441.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM200105103441904',
+          publishedAt: '2001-05-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-11-26',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved teriparatide (Forteo, NDA 021318) for postmenopausal women and men at high fracture risk, making it the first anabolic osteoporosis therapy on the U.S. market. Because a lifetime rat carcinogenicity study had shown dose-dependent osteosarcoma (the phase 3 trials were halted early for this signal), the approval carried a boxed warning and a two-year treatment limit — institutionalizing both the efficacy claim and its principal safety caveat.',
+        source: {
+          externalId: 'src:fda-forteo-label-2002',
+          name: 'U.S. Food and Drug Administration. FORTEO (teriparatide [rDNA origin] injection) label, NDA 021318. Approved 26 Nov 2002.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2004/21318s004lbl.pdf',
+          publishedAt: '2002-11-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA ephedra/ephedrine supplement ban 2004 ──────────────────────────────
+  {
+    externalId: 'trajectory:fda-ephedra-ephedrine-supplement-ban-2004',
+    text: 'The FDA declared dietary supplements containing ephedrine alkaloids (ephedra) adulterated because they present an unreasonable risk of illness or injury, banning their sale in the United States — a final rule issued 6 February 2004 and effective 12 April 2004, the first time the agency removed a dietary-supplement ingredient from the market under the 1994 DSHEA framework.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2003-03-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-03-26',
+        datePrecision: 'DAY',
+        reason: 'Shekelle and colleagues at RAND, under a federal contract, published a JAMA meta-analysis finding that ephedra and ephedrine produced only modest short-term weight loss (~0.9 kg/month over placebo) while being associated with a two- to three-fold increase in psychiatric, autonomic, gastrointestinal, and palpitation adverse events. This converted ephedra\'s marketed status as a safe over-the-counter weight-loss and performance supplement into a contested safety claim.',
+        source: {
+          externalId: 'src:shekelle-ephedra-jama-2003',
+          name: 'Shekelle PG, Hardy ML, Morton SC, et al. Efficacy and safety of ephedra and ephedrine for weight loss and athletic performance: a meta-analysis. JAMA. 2003;289(12):1537-1545.',
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/196247',
+          publishedAt: '2003-03-26',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-02-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a final rule declaring all dietary supplements containing ephedrine alkaloids adulterated under the Federal Food, Drug, and Cosmetic Act because they present an unreasonable risk, prohibiting their sale (effective 12 April 2004). It was the first time the FDA banned a dietary-supplement ingredient since DSHEA shifted the burden of proof to the agency in 1994, reversing ephedra\'s commercial legality.',
+        source: {
+          externalId: 'src:fda-ephedra-final-rule-2004',
+          name: 'U.S. Food and Drug Administration. Final Rule Declaring Dietary Supplements Containing Ephedrine Alkaloids Adulterated Because They Present an Unreasonable Risk. 69 Fed. Reg. 6788 (Feb. 11, 2004).',
+          url: 'https://www.federalregister.gov/documents/2004/02/11/04-2912/final-rule-declaring-dietary-supplements-containing-ephedrine-alkaloids-adulterated-because-they',
+          publishedAt: '2004-02-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cinacalcet (Sensipar) — first calcimimetic 2004 ────────────────────────
+  {
+    externalId: 'trajectory:cinacalcet-sensipar-first-calcimimetic-2004',
+    text: 'Cinacalcet (Sensipar), the first calcimimetic, lowers parathyroid hormone in secondary hyperparathyroidism of chronic kidney disease by allosterically sensitizing the calcium-sensing receptor — a claim established by Block et al.\'s twin randomized trials and ratified when the FDA approved it on 8 March 2004 as the first-in-class agent for this disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-03-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-03-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved cinacalcet (Sensipar) for secondary hyperparathyroidism in dialysis patients and for hypercalcemia of parathyroid carcinoma, the first drug in the calcimimetic class. The approval rested on twin double-blind randomized trials (later published by Block et al. in NEJM, April 2004) in which 43% of cinacalcet recipients reached target intact PTH versus 5% on placebo, settling cinacalcet\'s ability to control the biochemical markers of mineral-bone disorder.',
+        source: {
+          externalId: 'src:fda-sensipar-approval-2004',
+          name: 'U.S. Food and Drug Administration / Amgen. FDA Approves Sensipar (cinacalcet HCl), first-in-class calcimimetic, NDA 021688. Approved 8 Mar 2004.',
+          url: 'https://www.drugs.com/history/sensipar.html',
+          publishedAt: '2004-03-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-12-27',
+        datePrecision: 'DAY',
+        reason: 'The EVOLVE trial, the large randomized cardiovascular-outcomes study mandated to test whether cinacalcet\'s PTH-lowering translates into hard benefit, found no significant reduction in the composite of death and major cardiovascular events (48.2% vs 49.2%; HR 0.93, P=0.11) in 3,883 dialysis patients. This post-market surveillance result contested the assumption that correcting the biochemical surrogate improves clinical outcomes, illustrating the surrogate-versus-endpoint gap.',
+        source: {
+          externalId: 'src:evolve-cinacalcet-nejm-2012',
+          name: 'EVOLVE Trial Investigators (Chertow GM, et al.). Effect of cinacalcet on cardiovascular disease in patients undergoing dialysis. N Engl J Med. 2012;367(26):2482-2494.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23121374/',
+          publishedAt: '2012-12-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Thyrogen (recombinant TSH) — thyroid cancer follow-up 1998 ─────────────
+  {
+    externalId: 'trajectory:thyrogen-recombinant-tsh-thyroid-cancer-1998',
+    text: 'Recombinant human thyrotropin (thyrotropin alfa, Thyrogen) enables thyroglobulin testing and radioiodine scanning in differentiated thyroid-cancer follow-up without withdrawing thyroid hormone and inducing hypothyroidism — a claim established by Ladenson et al.\'s phase 3 comparison in 1997 and ratified when the FDA approved it on 30 November 1998 as the first recombinant TSH.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-09-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-09-25',
+        datePrecision: 'DAY',
+        reason: 'Ladenson and colleagues published an international phase 3 trial in NEJM showing that injected recombinant human thyrotropin stimulated radioiodine uptake and thyroglobulin release for whole-body scanning in thyroid-cancer patients without requiring the weeks of thyroid-hormone withdrawal that cause debilitating hypothyroidism. This recorded a way to monitor for recurrence while sparing patients iatrogenic hypothyroidism.',
+        source: {
+          externalId: 'src:ladenson-rhtsh-nejm-1997',
+          name: 'Ladenson PW, Braverman LE, Mazzaferri EL, et al. Comparison of administration of recombinant human thyrotropin with withdrawal of thyroid hormone for radioactive iodine scanning in patients with thyroid carcinoma. N Engl J Med. 1997;337(13):888-896.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199709253371304',
+          publishedAt: '1997-09-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-11-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Thyrogen (thyrotropin alfa) as an adjunctive diagnostic tool for serum thyroglobulin testing with or without radioiodine imaging in the follow-up of well-differentiated thyroid cancer, on the basis of two phase 3 trials in 358 patients. It was the first recombinant TSH, institutionalizing thyroid-hormone-withdrawal-free surveillance as standard practice.',
+        source: {
+          externalId: 'src:fda-thyrogen-approval-1998',
+          name: 'U.S. Food and Drug Administration. FDA Approves Thyrotropin Alfa (Thyrogen) for thyroid cancer follow-up, BLA. Approved 30 Nov 1998.',
+          url: 'https://www.cancernetwork.com/view/fda-approves-thyrotropin-alfa-use-thyroid-cancer-ablation',
+          publishedAt: '1998-11-30',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
