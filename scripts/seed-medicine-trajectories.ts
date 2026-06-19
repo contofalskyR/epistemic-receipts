@@ -33796,6 +33796,114 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── CDC Pediatric mTBI Guideline 2018 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:cdc-pediatric-mtbi-guideline-2018',
+    text: 'The U.S. Centers for Disease Control and Prevention issued its first evidence-based guideline on the diagnosis and management of mild traumatic brain injury (concussion) among children, released on 4 September 2018 (Lumba-Brown et al., JAMA Pediatrics), recommending against routine neuroimaging for diagnosis and endorsing a gradual return to activity rather than prolonged strict rest.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2018-09-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-09-04',
+        datePrecision: 'DAY',
+        reason: 'Drawing on a 25-year systematic review, the CDC\'s National Center for Injury Prevention and Control issued 19 sets of recommendations as the first comprehensive U.S. clinical guideline for pediatric mild TBI. It codified that routine head CT should not be used to diagnose mTBI (limiting radiation exposure) and replaced the prior \'cocoon therapy\' of prolonged rest with validated symptom scales and a gradual, monitored return to school and activity — settling concussion management on an evidence base rather than expert custom.',
+        source: {
+          externalId: 'src:lumba-brown-cdc-pediatric-mtbi-jama-2018',
+          name: 'Lumba-Brown A, Yeates KO, Sarmiento K, et al. Centers for Disease Control and Prevention Guideline on the Diagnosis and Management of Mild Traumatic Brain Injury Among Children. JAMA Pediatr. 2018;172(11):e182853.',
+          url: 'https://jamanetwork.com/journals/jamapediatrics/fullarticle/2698456',
+          publishedAt: '2018-09-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ACIP HPV Vaccine Males Routine Recommendation 2011 ──────────────────────
+  {
+    externalId: 'trajectory:acip-hpv-vaccine-males-routine-2011',
+    text: 'On 25 October 2011 the U.S. Advisory Committee on Immunization Practices voted to recommend routine quadrivalent HPV vaccination of boys aged 11–12 years (with catch-up through age 21), upgrading the earlier 2009 permissive guidance and extending cancer-preventing HPV immunization beyond females for the first time.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-12-23',
+        datePrecision: 'DAY',
+        reason: 'After its 25 October 2011 vote, ACIP published the recommendation in MMWR on 23 December 2011, moving HPV4 for males from a 2009 \'permissive\' (may be given) status to a routine recommendation at ages 11–12. This institutionalized male HPV vaccination into the U.S. childhood/adolescent immunization schedule to prevent anogenital and oropharyngeal cancers and warts and to reduce population transmission — settling boys\' HPV vaccination as standard pediatric practice.',
+        source: {
+          externalId: 'src:acip-hpv-males-mmwr-2011',
+          name: 'Centers for Disease Control and Prevention. Recommendations on the Use of Quadrivalent Human Papillomavirus Vaccine in Males — Advisory Committee on Immunization Practices (ACIP), 2011. MMWR Morb Mortal Wkly Rep. 2011;60(50):1705-1708.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6050a3.htm',
+          publishedAt: '2011-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Vitamin K Deficiency Bleeding Refusal — Tennessee 2013 ──────────────────
+  {
+    externalId: 'trajectory:vitamin-k-deficiency-bleeding-refusal-tennessee-2013',
+    text: 'The U.S. CDC reported in MMWR on 15 November 2013 that four Nashville infants — three with intracranial hemorrhage — developed late vitamin K deficiency bleeding after their parents declined the routine newborn vitamin K prophylaxis that had nearly eliminated the disease, documenting a refusal-driven resurgence of a preventable hemorrhagic condition.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2013-11-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2013-11-15',
+        datePrecision: 'DAY',
+        reason: 'Universal intramuscular vitamin K at birth had been standard U.S. practice since the AAP\'s 1961 recommendation, rendering late VKDB vanishingly rare. The 2013 MMWR documented four confirmed cases (plus a coagulopathic twin) at one children\'s hospital over seven months, all in infants of parents who refused prophylaxis — recording that the settled preventive standard was being eroded at the level of public acceptance, prompting the CDC and clinicians to reaffirm the recommendation. Parental refusal has persisted, keeping the practice\'s uptake contested.',
+        source: {
+          externalId: 'src:cdc-vkdb-tennessee-mmwr-2013',
+          name: 'Centers for Disease Control and Prevention. Notes from the Field: Late Vitamin K Deficiency Bleeding in Infants Whose Parents Declined Vitamin K Prophylaxis — Tennessee, 2013. MMWR Morb Mortal Wkly Rep. 2013;62(45):901-902.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6245a4.htm',
+          publishedAt: '2013-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP Fruit Juice Under 12 Months 2017 ────────────────────────────────────
+  {
+    externalId: 'trajectory:aap-fruit-juice-12-months-2017',
+    text: 'In a policy statement by Heyman and Abrams published in Pediatrics on 22 May 2017, the American Academy of Pediatrics recommended that fruit juice not be introduced to infants before 12 months of age, revising its long-standing prior guidance that had permitted juice after 6 months.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2017-05-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-05-22',
+        datePrecision: 'DAY',
+        reason: 'Citing fruit juice\'s high free-sugar content, lack of fiber and protein, dental-caries risk, and absence of nutritional advantage over whole fruit, the AAP raised its minimum-age threshold for any fruit juice from 6 months to 12 months — the first revision of this guidance in over a decade and a reversal of the permissive 6-month position. The statement settled the new recommendation into national pediatric nutrition guidance.',
+        source: {
+          externalId: 'src:aap-fruit-juice-pediatrics-2017',
+          name: 'Heyman MB, Abrams SA; AAP Section on Gastroenterology, Hepatology, and Nutrition; Committee on Nutrition. Fruit Juice in Infants, Children, and Adolescents: Current Recommendations. Pediatrics. 2017;139(6):e20170967.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28562300/',
+          publishedAt: '2017-05-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
