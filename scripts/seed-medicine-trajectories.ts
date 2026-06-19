@@ -22156,6 +22156,148 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY / LIPID HYPOTHESIS (1958–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Helsinki Heart Study — gemfibrozil primary prevention 1987 ──────────────
+  {
+    externalId: 'trajectory:helsinki-heart-study-gemfibrozil-primary-prevention-1987',
+    text: 'On 12 November 1987 the Helsinki Heart Study reported that the fibrate gemfibrozil reduced the incidence of coronary heart disease by 34% over five years in dyslipidemic middle-aged men with no prior heart disease, the first randomized proof that a non-bile-acid lipid-modifying drug prevents coronary events in primary prevention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-11-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-11-12',
+        datePrecision: 'DAY',
+        reason: 'Frick and colleagues reported the Helsinki Heart Study, a randomized double-blind primary-prevention trial in 4,081 asymptomatic middle-aged men with dyslipidemia, showing that gemfibrozil cut coronary heart disease incidence by 34% (27.3 vs 41.4 cardiac events per 1,000, P<0.02), the benefit emerging in the second year. Total mortality was not significantly changed (with slightly more non-cardiac deaths), but the trial recorded the first randomized evidence that a fibrate prevents coronary events in primary prevention, extending the lipid hypothesis beyond the bile-acid sequestrant cholestyramine of the LRC-CPPT.',
+        source: {
+          externalId: 'src:frick-helsinki-heart-study-gemfibrozil-nejm-1987',
+          name: 'Frick MH, Elo O, Haapa K, et al. Helsinki Heart Study: primary-prevention trial with gemfibrozil in middle-aged men with dyslipidemia. Safety of treatment, changes in risk factors, and incidence of coronary heart disease. N Engl J Med. 1987;317(20):1237-1245.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3313041/',
+          publishedAt: '1987-11-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── POSCH — partial ileal bypass cholesterol/CHD 1990 ───────────────────────
+  {
+    externalId: 'trajectory:posch-partial-ileal-bypass-cholesterol-chd-1990',
+    text: 'On 4 October 1990 the POSCH trial reported that lowering LDL cholesterol by partial ileal bypass surgery reduced coronary heart disease morbidity in post-myocardial-infarction patients with hypercholesterolemia, surgically confirming that cholesterol reduction itself — independent of any drug — prevents coronary disease progression.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-10-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-10-04',
+        datePrecision: 'DAY',
+        reason: 'Buchwald and colleagues reported the Program on the Surgical Control of the Hyperlipidemias (POSCH), a randomized trial in 838 survivors of a first myocardial infarction in which partial ileal bypass lowered LDL cholesterol by about 38% and significantly reduced the combined endpoint of coronary death plus confirmed nonfatal MI, along with less disease progression on angiography. Because the lipid lowering was achieved surgically rather than pharmacologically, the result strengthened causal inference for the lipid hypothesis by showing the benefit flowed from cholesterol reduction per se, independent of any drug\'s off-target effects.',
+        source: {
+          externalId: 'src:buchwald-posch-ileal-bypass-nejm-1990',
+          name: 'Buchwald H, Varco RL, Matts JP, et al. Effect of partial ileal bypass surgery on mortality and morbidity from coronary heart disease in patients with hypercholesterolemia. Report of the Program on the Surgical Control of the Hyperlipidemias (POSCH). N Engl J Med. 1990;323(14):946-955.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2205799/',
+          publishedAt: '1990-10-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lown synchronized DC cardioversion 1962 ─────────────────────────────────
+  {
+    externalId: 'trajectory:lown-synchronized-dc-cardioversion-1962',
+    text: 'On 3 November 1962 Bernard Lown and colleagues reported in JAMA a new method for terminating cardiac arrhythmias using a synchronized direct-current capacitor discharge, establishing DC cardioversion as a safe way to restore normal rhythm and superseding the more dangerous alternating-current technique.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1962-11-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-11-03',
+        datePrecision: 'DAY',
+        reason: 'Lown, Amarasingham, and Neuman introduced a synchronized capacitor (direct-current) discharge timed to the R wave of the electrocardiogram, which terminated ventricular and supraventricular arrhythmias without the high risk of provoking ventricular fibrillation that attended the prevailing alternating-current method. This recorded the claim that an electrical shock could safely and reproducibly reset cardiac rhythm.',
+        source: {
+          externalId: 'src:lown-synchronized-capacitor-discharge-jama-1962',
+          name: 'Lown B, Amarasingham R, Neuman J. New method for terminating cardiac arrhythmias. Use of synchronized capacitor discharge. JAMA. 1962;182(5):548-555.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13931298/',
+          publishedAt: '1962-11-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1963-08-15',
+        datePrecision: 'DAY',
+        reason: 'Lown and colleagues reported in the NEJM the \'cardioversion\' of 65 episodes of atrial fibrillation in 50 patients, coining the term and demonstrating reliable clinical restoration of sinus rhythm. Synchronized DC cardioversion and defibrillation were rapidly adopted and remain the universal standard for terminating life-threatening and sustained arrhythmias, settling the method into permanent practice.',
+        source: {
+          externalId: 'src:lown-cardioversion-atrial-fibrillation-nejm-1963',
+          name: 'Lown B, Perlroth MG, Kaidbey S, Abe T, Harken DE. \'Cardioversion\' of atrial fibrillation. A report on the treatment of 65 episodes in 50 patients. N Engl J Med. 1963;269:325-331.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13931297/',
+          publishedAt: '1963-08-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sones selective coronary arteriography 1958/1962 ────────────────────────
+  {
+    externalId: 'trajectory:sones-selective-coronary-arteriography-1958',
+    text: 'F. Mason Sones developed selective cine coronary arteriography at the Cleveland Clinic — first achieved by an inadvertent selective injection on 30 October 1958 and reported in 1962 — establishing direct radiographic visualization of the living coronary arteries and the diagnostic foundation for coronary bypass surgery and angioplasty.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-10-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1962-07-01',
+        datePrecision: 'MONTH',
+        reason: 'Sones and Shirey published \'Cine coronary arteriography\' (Modern Concepts of Cardiovascular Disease), describing the technique of selectively cannulating each coronary ostium and cine-filming the contrast-filled vessels — a method Sones had first realized when a catheter inadvertently injected the right coronary artery on 30 October 1958 without causing fatal arrhythmia. This recorded the first reliable means of imaging the living coronary tree, overturning the entrenched belief that direct coronary injection was prohibitively dangerous.',
+        source: {
+          externalId: 'src:sones-shirey-cine-coronary-arteriography-1962',
+          name: 'Sones FM Jr, Shirey EK. Cine coronary arteriography. Mod Concepts Cardiovasc Dis. 1962;31:735-738.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13915182/',
+          publishedAt: '1962-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Proudfit, Shirey, and Sones correlated selective cine coronary arteriography with clinical findings in 1,000 patients (Circulation), demonstrating the procedure\'s safety and diagnostic value at scale. Selective coronary angiography thereby became the established standard for diagnosing coronary artery disease and supplied the anatomic basis that made Favaloro\'s saphenous-vein bypass (1968) and Grüntzig\'s coronary angioplasty (1977) possible.',
+        source: {
+          externalId: 'src:proudfit-shirey-sones-1000-patients-circulation-1966',
+          name: 'Proudfit WL, Shirey EK, Sones FM Jr. Selective cine coronary arteriography. Correlation with clinical findings in 1,000 patients. Circulation. 1966;33(6):901-910.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5942973/',
+          publishedAt: '1966-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
