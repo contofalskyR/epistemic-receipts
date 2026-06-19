@@ -36256,6 +36256,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY & ORGANOTHERAPY (1889–1930)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Brown-Séquard testicular extract / organotherapy — 1889 (REVERSED) ──────
+  {
+    externalId: 'trajectory:brown-sequard-testicular-extract-organotherapy-1889',
+    text: 'The French physiologist Charles-Édouard Brown-Séquard reported to the Société de Biologie and in The Lancet on 20 July 1889 that subcutaneous injections of a fluid extracted from animal testicles had rejuvenated him — restoring physical strength, mental vigour, and stamina — the founding therapeutic claim of organotherapy and endocrine replacement.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1889-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1889-07-20',
+        datePrecision: 'DAY',
+        reason: 'Brown-Séquard, then aged 72, published \'The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals\' in The Lancet, reporting that ten self-administered injections of a watery extract of dog and guinea-pig testes increased his dynamometer-measured strength, urinary jet, and capacity for intellectual work. This recorded in the expert literature the claim that an internal secretion of the gonads could be replaced to restore vitality, launching the worldwide use of glandular (\'organotherapy\') extracts and seeding the concept of hormone replacement.',
+        source: {
+          externalId: 'src:brown-sequard-testicular-extract-lancet-1889',
+          name: 'Brown-Séquard CÉ. The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals. Lancet. 1889;134(3438):105–107.',
+          url: 'https://archive.org/details/Brown-sequardC.-e.TheEffectProducedOnManBySubcutaneousInjectionsOfA',
+          publishedAt: '1889-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-12-02',
+        datePrecision: 'MONTH',
+        reason: 'The rejuvenation claim was abandoned as a placebo effect: the aqueous extracts Brown-Séquard prepared contained essentially no absorbable androgen, and modern assays of testes extracts made by his method found testosterone concentrations roughly four orders of magnitude below any biologically effective dose. Cussons, Bhagat, Fletcher, and Walsh formalized this reanalysis in the Medical Journal of Australia in December 2002, concluding the reported benefits were a placebo response and overturning the original therapeutic claim while crediting the work for catalyzing endocrinology.',
+        source: {
+          externalId: 'src:cussons-brown-sequard-placebo-mja-2002',
+          name: 'Cussons AJ, Bhagat CI, Fletcher SJ, Walsh JP. Brown-Séquard revisited: a lesson from history on the placebo effect of androgen treatment. Med J Aust. 2002;177(11–12):678–679.',
+          url: 'https://www.mja.com.au/journal/2002/177/11/brown-sequard-revisited-lesson-history-placebo-effect-androgen-treatment',
+          publishedAt: '2002-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Plummer preoperative iodine for Graves' disease thyroidectomy — 1923 ────
+  {
+    externalId: 'trajectory:plummer-preoperative-iodine-exophthalmic-goiter-1923',
+    text: 'Henry S. Plummer reported in JAMA (published 30 June 1923, after presentation to the Association of American Physicians in May 1923) that a short, intensive preoperative course of iodine (compound solution of iodine / Lugol\'s solution) renders patients with exophthalmic goiter (Graves\' disease) safe for thyroidectomy, sharply reducing the previously high operative mortality of toxic-goiter surgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-06-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-06-30',
+        datePrecision: 'DAY',
+        reason: 'Plummer published \'Results of administering iodin to patients having exophthalmic goiter\' (JAMA 1923;80(26):1955–1956), reporting that iodine given for a few days before operation rapidly reduced the hypermetabolism and friability of the toxic thyroid, converting thyroidectomy in Graves\' disease from a high-mortality procedure to a relatively safe one. This recorded in the expert literature the counterintuitive claim that iodine — long thought only to exacerbate hyperthyroidism — could be used as deliberate short-term preoperative therapy, the effect later named \'Plummer\'s\' iodine block.',
+        source: {
+          externalId: 'src:plummer-iodine-exophthalmic-goiter-jama-1923',
+          name: 'Plummer HS. Results of administering iodin to patients having exophthalmic goiter. JAMA. 1923;80(26):1955–1956.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/36792929/',
+          publishedAt: '1923-06-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years preoperative Lugol\'s iodine had been universally adopted as standard preparation for thyroidectomy in hyperthyroidism, with contemporaneous reviews such as the 1930 Annals of Internal Medicine survey of iodine in exophthalmic goiter documenting that the value of short intensive iodine medication before surgery had become unquestioned. The practice settled into routine endocrine-surgical doctrine and remains in use a century later.',
+        source: {
+          externalId: 'src:annals-iodine-exophthalmic-goiter-1930',
+          name: 'The Use of Iodine in Exophthalmic Goiter. Ann Intern Med. 1930;4(2):117. (review documenting rapid adoption of Plummer\'s preoperative iodine)',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-4-2-117',
+          publishedAt: '1930-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Benedict's reagent for glycosuria — 1909 ────────────────────────────────
+  {
+    externalId: 'trajectory:benedict-reagent-reducing-sugars-glycosuria-1909',
+    text: 'Stanley R. Benedict reported in the Journal of Biological Chemistry in 1909 a stable, non-corrosive copper-carbonate-citrate reagent (\'Benedict\'s solution\') that detects reducing sugars, providing a practical colorimetric test for glucose in urine that became the standard clinical method for detecting and monitoring glycosuria in diabetics.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1909-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Benedict published \'A reagent for the detection of reducing sugars\' (J Biol Chem 1909;5:485–487), substituting sodium carbonate and citrate for the caustic hydroxide of Fehling\'s solution to yield a reagent that was stable on storage, less corrosive, and gave a clear cuprous-oxide colour reaction with glucose. This recorded in the expert literature a reliable, reproducible chemical test for reducing sugars suitable for routine clinical use.',
+        source: {
+          externalId: 'src:benedict-reagent-reducing-sugars-jbc-1909',
+          name: 'Benedict SR. A reagent for the detection of reducing sugars. J Biol Chem. 1909;5(5):485–487.',
+          url: 'https://www.jbc.org/article/S0021-9258(19)61050-1/fulltext',
+          publishedAt: '1909-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1911-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Benedict\'s qualitative reagent, followed by his 1911 quantitative version, displaced Fehling\'s solution as the standard laboratory and bedside test for urinary glucose and was adopted into clinical practice and pharmacopoeias worldwide, remaining the routine method for detecting and estimating glycosuria in diabetic patients for roughly six decades until enzymatic glucose-oxidase strips superseded it. This institutional adoption settled Benedict\'s reagent as the canonical glucose test of the pre-enzymatic era.',
+        source: {
+          externalId: 'src:benedict-solution-jbc-classics-retrospective',
+          name: 'Simoni RD, Hill RL, Kresge N. Benedict\'s Solution, a Reagent for Measuring Reducing Sugars: the Clinical Chemistry of Stanley R. Benedict. J Biol Chem. 2002;277(16):e5. (JBC Classics retrospective)',
+          url: 'https://www.jbc.org/article/S0021-9258(19)61050-1/fulltext',
+          publishedAt: '2002-04-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Stolz first synthetic hormone — adrenaline 1904 ─────────────────────────
+  {
+    externalId: 'trajectory:stolz-first-synthetic-hormone-adrenaline-1904',
+    text: 'The German chemist Friedrich Stolz at Farbwerke Hoechst reported in Berichte der deutschen chemischen Gesellschaft in 1904 the first laboratory synthesis of adrenaline (via the ketone adrenalone), producing the first artificially synthesized hormone and freeing the drug from dependence on animal adrenal-gland extraction.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1904-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1904-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Stolz published \'Über Adrenalin und Alkylaminoacetobrenzcatechin\' (Ber Dtsch Chem Ges 1904;37:4149–4154), describing the chemical synthesis of adrenalone, the ketone precursor of adrenaline, at Hoechst. Following the isolation of the adrenal active principle by Takamine and Abel (1901), this recorded the claim that the hormone could be built from defined organic precursors rather than extracted from glands — the first total synthesis of a hormone.',
+        source: {
+          externalId: 'src:stolz-adrenalin-synthesis-berichte-1904',
+          name: 'Stolz F. Über Adrenalin und Alkylaminoacetobrenzcatechin. Berichte der deutschen chemischen Gesellschaft. 1904;37(4):4149–4154.',
+          url: 'https://en.wikipedia.org/wiki/Friedrich_Stolz',
+          publishedAt: '1904-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1906-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Stolz converted adrenalone to racemic adrenaline (marketed as Suprarenin) in 1906, enabling large-scale industrial manufacture of synthetic epinephrine that supplanted glandular extracts. Synthetic adrenaline became an established, commercially produced drug and the canonical example of the first synthesized hormone, settling the claim that hormones are ordinary organic molecules reproducible by chemistry.',
+        source: {
+          externalId: 'src:first-hormone-adrenaline-trends-endo-2019',
+          name: 'The First Hormone: Adrenaline. Trends in Endocrinology & Metabolism. 2019;30(5):331–334. (historical review documenting Stolz\'s 1904 synthesis and 1906 production as the first synthetic hormone)',
+          url: 'https://www.cell.com/trends/endocrinology-metabolism/abstract/S1043-2760(19)30061-X',
+          publishedAt: '2019-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
