@@ -28109,6 +28109,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINE HISTORY ERA (1921–1931)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Evans & Long pituitary growth hormone — 1921 ────────────────────────────
+  {
+    externalId: 'trajectory:evans-long-pituitary-growth-hormone-1921',
+    text: 'Herbert Evans and Joseph Long reported in 1921 that intraperitoneal injection of an aqueous saline extract of bovine anterior pituitary accelerated body growth in rats (producing experimental gigantism), the first experimental demonstration of a growth-promoting hormone of the anterior pituitary.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1921-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1921-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Evans and Long reported in the Anatomical Record that intact, growth-plateaued female rats given an aqueous saline emulsion of bovine anterior pituitary lobes gained significantly more body weight than littermate controls. This recorded the first positive experimental evidence that the anterior pituitary secretes a growth-promoting factor, the conceptual origin of growth hormone.',
+        source: {
+          externalId: 'src:evans-long-anterior-pituitary-growth-1921',
+          name: 'Evans HM, Long JA. The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrous cycles of the rat. Anat Rec. 1921;21:62–63.',
+          url: 'https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2021.709936/full',
+          publishedAt: '1921-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1945-01-01',
+        datePrecision: 'YEAR',
+        reason: "Evans's group and others progressively purified the pituitary growth factor, and by the mid-1940s anterior-pituitary growth hormone was an established endocrine entity isolated in increasingly pure form, with growth-hormone physiology accepted in the literature. The 1921 demonstration is recognized as the founding observation of the hormone, settling the existence of a pituitary growth principle that later became recombinant growth-hormone therapy.",
+        source: {
+          externalId: 'src:human-growth-hormone-history-frontiers-2021',
+          name: 'Human Growth and Growth Hormone: From Antiquity to the Recombinant Age to the Future. Front Endocrinol. 2021;12:709936.',
+          url: 'https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2021.709936/full',
+          publishedAt: '2021-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Collip parathyroid hormone extract — JBC 1925 ───────────────────────────
+  {
+    externalId: 'trajectory:collip-parathyroid-hormone-extract-1925',
+    text: "James Bertram Collip reported in the Journal of Biological Chemistry in 1925 that a hot hydrochloric-acid extract of bovine parathyroid glands ('parathormone') would prevent or control the tetany of parathyroidectomy and regulate the level of blood calcium, establishing the parathyroid as an endocrine gland secreting a calcium-regulating hormone.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1925-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-02-01',
+        datePrecision: 'MONTH',
+        reason: "Collip published 'The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium' (J Biol Chem 1925;63:395–438), showing that an acid extract of parathyroid tissue relieved post-parathyroidectomy tetany in dogs while raising blood calcium. This recorded in the expert literature the first effective parathyroid hormone preparation and resolved the long-standing question of whether the parathyroids were an endocrine organ regulating calcium.",
+        source: {
+          externalId: 'src:collip-parathormone-jbc-1925',
+          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63:395–438.',
+          url: 'https://www.jbc.org/article/S0021-9258(18)85065-3/fulltext',
+          publishedAt: '1925-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-01-01',
+        datePrecision: 'YEAR',
+        reason: "Across the following decades Collip's parathormone became the foundation of parathyroid endocrinology: PTH was purified, sequenced, and ultimately developed into recombinant teriparatide therapy, with calcium homeostasis textbook physiology. Potts's 2005 'Parathyroid hormone: past and present' review documents how Collip's 1925 extract is recognized as the origin of an established hormone, confirming the claim as settled in the expert community.",
+        source: {
+          externalId: 'src:potts-parathyroid-hormone-past-present-joe-2005',
+          name: 'Potts JT. Parathyroid hormone: past and present. J Endocrinol. 2005;187(3):311–325.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3683213/',
+          publishedAt: '2005-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Swingle & Pfiffner adrenal cortex extract — Science 1930 ────────────────
+  {
+    externalId: 'trajectory:swingle-pfiffner-adrenal-cortex-extract-1930',
+    text: 'Wilbur Swingle and Joseph Pfiffner reported in Science on 21 March 1930 that an aqueous lipid extract of the suprarenal cortex maintained the life of bilaterally adrenalectomized cats, demonstrating that the adrenal cortex secretes a life-essential hormone and providing the first effective treatment for adrenal insufficiency (Addison\'s disease).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-03-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1930-03-21',
+        datePrecision: 'DAY',
+        reason: "Swingle and Pfiffner published 'An Aqueous Extract of the Suprarenal Cortex Which Maintains the Life of Bilaterally Adrenalectomized Cats' (Science 1930;71(1832):321–322), showing that adrenalectomized cats given the cortical extract survived far longer than untreated controls. This recorded the first life-sustaining adrenocortical preparation and established that the cortex, not the medulla, secretes the hormone essential to survival.",
+        source: {
+          externalId: 'src:swingle-pfiffner-cortical-extract-science-1930',
+          name: 'Swingle WW, Pfiffner JJ. An Aqueous Extract of the Suprarenal Cortex Which Maintains the Life of Bilaterally Adrenalectomized Cats. Science. 1930;71(1832):321–322.',
+          url: 'https://www.science.org/doi/10.1126/science.71.1832.321',
+          publishedAt: '1930-03-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1930-01-01',
+        datePrecision: 'YEAR',
+        reason: "Within months the Swingle-Pfiffner extract ('cortin') was applied clinically and became the first preparation to rescue patients in Addisonian crisis, entering medical practice and being reported in JAMA as 'Addison's Disease Treated with Suprarenal Cortical Hormone (Swingle-Pfiffner).' The demonstration that the adrenal cortex secretes a life-essential hormone was rapidly adopted, settling the principle even as the crude extract was later superseded by purified DOCA and cortisone.",
+        source: {
+          externalId: 'src:jama-addisons-swingle-pfiffner-cortical-hormone',
+          name: "Addison's Disease Treated with Suprarenal Cortical Hormone (Swingle-Pfiffner). JAMA. 1930s.",
+          url: 'https://jamanetwork.com/journals/jama/article-abstract/279529',
+          publishedAt: '1931-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Butenandt androsterone first crystalline androgen — 1931 ────────────────
+  {
+    externalId: 'trajectory:butenandt-androsterone-first-androgen-1931',
+    text: 'Adolf Butenandt, working with Kurt Tscherning, reported in 1931 the isolation of androsterone in pure crystalline form from male urine — the first crystalline androgen ever obtained — laying the chemical foundation for the male sex hormones.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Butenandt and Tscherning distilled roughly 15,000 litres of male urine to obtain about 15 mg of androsterone in pure crystalline form, defining its composition (C19H30O2). This recorded in the expert literature the first chemically isolated and characterized androgen, opening structural steroid chemistry of the male sex hormones.',
+        source: {
+          externalId: 'src:butenandt-androsterone-1931-nobel-bio',
+          name: 'Adolf Butenandt — Nobel Prize for Chemistry (biographical/historical account of the 1931 isolation of androsterone).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3498200/',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: "Butenandt's androgen and steroid-hormone chemistry was recognized with the 1939 Nobel Prize in Chemistry (shared with Leopold Ružička), institutionally settling the validity and significance of the crystalline androgen work. The structural framework established by androsterone underpinned the later isolation and synthesis of testosterone (1935) and the entire field of steroid endocrinology.",
+        source: {
+          externalId: 'src:nobel-chemistry-1939-butenandt-ruzicka',
+          name: 'The Nobel Prize in Chemistry 1939 — Adolf Butenandt and Leopold Ružička (for work on sex hormones / steroids).',
+          url: 'https://www.nobelprize.org/prizes/chemistry/1939/summary/',
+          publishedAt: '1939-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
