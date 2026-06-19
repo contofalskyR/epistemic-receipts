@@ -21556,6 +21556,136 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & OBSTETRICS (drug discovery era, pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aschheim–Zondek biological pregnancy test — 1928 ────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting a woman\'s urine subcutaneously into immature female mice induced ovarian follicular maturation and corpora hemorrhagica only when the woman was pregnant, providing the first reliable biological test for pregnancy (the A–Z test) by detecting a urinary gonadotropic substance later identified as human chorionic gonadotropin.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Aschheim and Zondek demonstrated that urine from pregnant women, injected into sexually immature mice, produced characteristic ovarian changes (follicular maturation, luteinization, hemorrhagic follicles) absent with non-pregnant urine, and that this gonadotropic activity appeared very early in pregnancy. This recorded the first hormonally based, reproducible diagnostic test for pregnancy, founding endocrine pregnancy testing and the bioassay tradition that preceded immunoassays.',
+        source: {
+          externalId: 'src:aschheim-zondek-klinische-wochenschrift-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klinische Wochenschrift. 1928;7:1404–1411, 1453–1457.',
+          url: 'https://embryo.asu.edu/pages/aschheim-zondek-test-pregnancy',
+          publishedAt: '1928-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the early 1930s the Aschheim–Zondek reaction was taken up across European and British clinical laboratories as the routine confirmatory test for early pregnancy and for diagnosing conditions such as ectopic pregnancy and trophoblastic tumours, with reported accuracy near 98–99%. Its diffusion into organized laboratory diagnostic services settled the test as the accepted clinical standard for pregnancy detection before its later replacement by faster amphibian and immunological assays.',
+        source: {
+          externalId: 'src:olszynko-gryn-az-reaction-laboratory-services-1930s',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: The Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47:233–247.',
+          url: 'https://www.sciencedirect.com/science/article/pii/S1369848613001763',
+          publishedAt: '2014-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ergometrine isolated — Dudley & Moir 1935 ───────────────────────────────
+  {
+    externalId: 'trajectory:ergometrine-ergot-postpartum-hemorrhage-1935',
+    text: 'Harold Ward Dudley and John Chassar Moir reported in the British Medical Journal in March 1935 that they had isolated ergometrine, the active alkaloid responsible for ergot\'s traditional rapid oxytocic effect on the uterus, providing the first pure, fast-acting, standardized agent to contract the uterus and control postpartum hemorrhage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1935-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1935-03-01',
+        datePrecision: 'MONTH',
+        reason: 'After Moir\'s 1932 observation that crude ergot extracts produced powerful uterine contractions not attributable to the known ergot alkaloids, Dudley and Moir isolated the responsible water-soluble alkaloid — a simpler structure than the previously known ergotoxine-group alkaloids — and named it ergometrine. This recorded the identification of a pure, quick-acting uterotonic, resolving a centuries-old puzzle about why ergot acted clinically and giving obstetrics its first standardized drug for postpartum hemorrhage.',
+        source: {
+          externalId: 'src:dudley-moir-ergometrine-bmj-1935',
+          name: 'Dudley HW, Moir C. The substance responsible for the traditional clinical effect of ergot. Br Med J. 1935;1(3871):520–523.',
+          url: 'https://doi.org/10.1136/bmj.1.3871.520',
+          publishedAt: '1935-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within two decades ergometrine (ergonovine) and its derivatives became established worldwide as standard uterotonic agents for the active management of the third stage of labour and the prevention and treatment of postpartum hemorrhage, as documented in Chassar Moir\'s 1955 review of the clinical use of ergot. Routine incorporation into obstetric practice and pharmacopoeias settled the drug\'s efficacy and role in reducing maternal hemorrhage death.',
+        source: {
+          externalId: 'src:moir-history-present-day-use-ergot-cmaj-1955',
+          name: 'Moir JC. The history and present-day use of ergot. Can Med Assoc J. 1955;72(10):727–734.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1825855/',
+          publishedAt: '1955-05-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rh factor / hemolytic disease of the newborn — Levine & Stetson 1939 ───
+  {
+    externalId: 'trajectory:rh-factor-hemolytic-disease-newborn-1939',
+    text: 'Philip Levine and Rufus E. Stetson reported in JAMA on 8 July 1939 that a woman who delivered a stillborn infant suffered a severe reaction to a transfusion of her ABO-compatible husband\'s blood, caused by a previously unrecognized maternal antibody — the observation that, after Karl Landsteiner and Alexander Wiener identified the rhesus (Rh) factor in 1940, established maternal–fetal Rh incompatibility as the cause of erythroblastosis fetalis (hemolytic disease of the newborn).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-07-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-07-08',
+        datePrecision: 'DAY',
+        reason: 'Levine and Stetson described a woman who, after delivering a macerated stillborn fetus, developed a hemolytic transfusion reaction to her husband\'s ABO-matched blood, implicating an atypical antibody she had formed against an antigen inherited by the fetus from the father. This recorded in the expert literature the first evidence that maternal sensitization to a paternally derived red-cell antigen could occur, the seed observation behind the entire concept of Rh disease.',
+        source: {
+          externalId: 'src:levine-stetson-intragroup-agglutination-jama-1939',
+          name: 'Levine P, Stetson RE. An unusual case of intra-group agglutination. JAMA. 1939;113(2):126–127. (Landmark Article reprint.)',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6366259/',
+          publishedAt: '1939-07-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Landsteiner and Wiener showed that immune sera raised against rhesus-monkey red cells agglutinated about 85% of human bloods, defining the rhesus (Rh) factor; combined with Levine\'s contemporaneous work linking maternal anti-Rh antibodies to fetal red-cell destruction, this identified Rh incompatibility as the mechanism of erythroblastosis fetalis. The convergence settled in the expert community the etiology of hemolytic disease of the newborn, opening the path to antenatal screening and, decades later, anti-D immunoprophylaxis.',
+        source: {
+          externalId: 'src:landsteiner-wiener-rhesus-factor-1940',
+          name: 'Landsteiner K, Wiener AS. An agglutinable factor in human blood recognized by immune sera for rhesus blood. Proc Soc Exp Biol Med. 1940;43(1):223–224.',
+          url: 'https://journals.sagepub.com/doi/abs/10.3181/00379727-43-11151',
+          publishedAt: '1940-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── FDA opioid rapid-tapering harm warning — 2019 ───────────────────────────
   {
     externalId: 'trajectory:fda-opioid-rapid-tapering-harm-warning-2019',
