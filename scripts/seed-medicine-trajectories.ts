@@ -29787,6 +29787,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH / REPRODUCTIVE ENDOCRINOLOGY (1928–2000)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aschheim-Zondek pregnancy test 1928 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that subcutaneous injection of a woman\'s urine into immature female mice induces ovarian follicular maturation, luteinization, and hemorrhage (the \'A-Z reaction\') only during pregnancy, giving the first reliable biological test for early pregnancy through detection of a urinary hormone (later identified as hCG).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Aschheim and Zondek published \'Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons\' in Klinische Wochenschrift, showing that pregnant women\'s urine injected into immature mice produced characteristic ovarian changes absent with non-pregnant urine. This recorded in the expert literature the claim that a hormone excreted in urine signals pregnancy, supplying the first dependable, objective pregnancy test before any hormone could be chemically measured.',
+        source: {
+          externalId: 'src:aschheim-zondek-schwangerschaftsdiagnose-klin-wochenschr-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7(34):1404-1411.',
+          url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years the A-Z reaction was independently examined and validated — for example by Rupp\'s 1931 evaluation in the Medical Journal of Australia — and adopted as routine clinical pregnancy diagnosis across Europe and the English-speaking world. Independent confirmation and laboratory uptake settled the bioassay as the diagnostic standard, which it remained until immunological hCG assays superseded the live-animal method.',
+        source: {
+          externalId: 'src:rupp-aschheim-zondek-examination-mja-1931',
+          name: 'Rupp J. An Examination of the Aschheim-Zondek Test for Pregnancy. Med J Aust. 1931;1(13):441-445.',
+          url: 'https://onlinelibrary.wiley.com/doi/abs/10.5694/j.1326-5377.1931.tb119293.x',
+          publishedAt: '1931-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Frank premenstrual tension 1931 ─────────────────────────────────────────
+  {
+    externalId: 'trajectory:frank-premenstrual-tension-1931',
+    text: 'Robert T. Frank reported in Archives of Neurology and Psychiatry in November 1931 that a recurring constellation of premenstrual irritability, tension, and somatic symptoms in women — \'premenstrual tension\' — has a hormonal cause, the first clinical delineation of what became premenstrual syndrome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1931-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Frank described a series of women disabled by cyclic premenstrual tension, irritability, and physical symptoms that resolved with the onset of menstruation, attributing the syndrome to a hormonal imbalance (he proposed an excess of circulating estrogen). This recorded in the expert literature the claim that premenstrual symptoms constitute a distinct, hormonally driven clinical entity rather than ordinary complaint, naming the condition for the first time.',
+        source: {
+          externalId: 'src:frank-premenstrual-tension-arch-neurol-psychiatry-1931',
+          name: 'Frank RT. The Hormonal Causes of Premenstrual Tension. Arch Neurol Psychiatry. 1931;26(5):1053-1057.',
+          url: 'https://jamanetwork.com/journals/archneurpsyc/fullarticle/645067',
+          publishedAt: '1931-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-07-06',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved Sarafem (fluoxetine hydrochloride) on 6 July 2000 as the first drug indicated for premenstrual dysphoric disorder, the severe form of the syndrome Frank first described. Regulatory approval of a treatment institutionally settled premenstrual disorder as a real, diagnosable, treatable condition — even as Frank\'s specific estrogen-excess etiology was superseded by models centered on progesterone/allopregnanolone sensitivity.',
+        source: {
+          externalId: 'src:fda-approves-sarafem-pmdd-2000',
+          name: 'FDA Approves Sarafem (Fluoxetine HCl) for Premenstrual Dysphoric Disorder. (announcement of FDA approval, NDA 018936). July 2000.',
+          url: 'https://www.pharmaceuticalonline.com/doc/fda-approves-sarafem-fluoxetine-hcl-for-preme-0001',
+          publishedAt: '2000-07-06',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Djerassi norethindrone oral progestin 1951 ───────────────────────────────
+  {
+    externalId: 'trajectory:djerassi-norethindrone-oral-progestin-1951',
+    text: 'Carl Djerassi, Luis Miramontes, and George Rosenkranz at Syntex synthesized norethindrone (19-nor-17α-ethynyltestosterone) on 15 October 1951 — the first orally active synthetic progestin potent enough to make a contraceptive pill feasible — a result published in the Journal of the American Chemical Society in 1954.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1951-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1954-08-20',
+        datePrecision: 'MONTH',
+        reason: 'Djerassi, Miramontes, Rosenkranz, and Sondheimer published \'Steroids. LIV. Synthesis of 19-Nor-17α-ethynyltestosterone and 19-Nor-17α-methyltestosterone\' in JACS, disclosing the compound first synthesized at Syntex on 15 October 1951 (patent filed 22 November 1951). This recorded in the chemical literature the synthesis of a progestin that, unlike injected natural progesterone, was highly potent when taken orally — the molecular foundation of the oral contraceptive.',
+        source: {
+          externalId: 'src:djerassi-norethindrone-steroids-liv-jacs-1954',
+          name: 'Djerassi C, Miramontes L, Rosenkranz G, Sondheimer F. Steroids. LIV. Synthesis of 19-Nor-17α-ethynyltestosterone and 19-Nor-17α-methyltestosterone. J Am Chem Soc. 1954;76(16):4092-4094.',
+          url: 'https://pubs.acs.org/doi/abs/10.1021/ja01645a010',
+          publishedAt: '1954-08-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1962-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Norethindrone was approved by the FDA in 1957 (as Parke-Davis\'s Norlutin for gynecologic disorders) and in 1962 as the oral contraceptive Ortho-Novum (with mestranol). Regulatory approval as a marketed therapeutic, and norethindrone\'s enduring status as a core progestin, institutionally settled the claim that the orally active synthetic progestin synthesized in 1951 was a safe, effective drug.',
+        source: {
+          externalId: 'src:origins-oral-contraception-mexican-scientists-norethindrone',
+          name: 'The origins of oral contraception: the role of Mexican scientists in developing the first synthetic oral contraceptive progestin (review documenting Syntex norethindrone synthesis and subsequent FDA approvals: Norlutin 1957, Ortho-Novum 1962).',
+          url: 'https://www.sciencedirect.com/science/article/pii/S003483762500484X',
+          publishedAt: '2025-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Corner-Allen corpus luteum progestin 1929 ────────────────────────────────
+  {
+    externalId: 'trajectory:corner-allen-corpus-luteum-progestin-1929',
+    text: 'George W. Corner and Willard M. Allen reported in the American Journal of Physiology in 1929 that extracts of the corpus luteum produce a specific progestational proliferation of the uterine lining in ovariectomized rabbits and can maintain early pregnancy after ovary removal, establishing the existence of a discrete corpus-luteum hormone (later progesterone).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Corner and Allen published \'Physiology of the Corpus Luteum II: Production of a Special Uterine Reaction (Progestational Proliferation) by Extracts of the Corpus Luteum\' in the American Journal of Physiology, showing extracts induced the progestational endometrium of early pregnancy and sustained pregnancy in ovariectomized rabbits. This recorded the functional existence of a distinct corpus-luteum hormone and provided the bioassay used to track it — distinct from, and prior to, its chemical isolation.',
+        source: {
+          externalId: 'src:corner-allen-corpus-luteum-progestational-ajp-1929',
+          name: 'Corner GW, Allen WM. Physiology of the Corpus Luteum II. Production of a Special Uterine Reaction (Progestational Proliferation) by Extracts of the Corpus Luteum. Am J Physiol. 1929;88(2):326-339.',
+          url: 'https://doi.org/10.1152/ajplegacy.1929.88.2.326',
+          publishedAt: '1929-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934-01-01',
+        datePrecision: 'YEAR',
+        reason: 'In 1934 the bioassay-defined corpus-luteum hormone was isolated as a pure crystalline steroid — Allen and Wintersteiner reporting crystalline progestin in Science — and an international agreement in 1935 fixed the name \'progesterone.\' Reducing Corner and Allen\'s functionally defined hormone to a single weighable molecule settled its identity as a discrete steroid and made standardized progestational therapy and synthesis possible.',
+        source: {
+          externalId: 'src:allen-wintersteiner-crystalline-progestin-science-1934',
+          name: 'Allen WM, Wintersteiner O. Crystalline Progestin. Science. 1934;80(2069):190-191.',
+          url: 'https://doi.org/10.1126/science.80.2069.190',
+          publishedAt: '1934-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
