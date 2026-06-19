@@ -165,6 +165,10 @@ const DOMAINS: Domain[] = [
 
 const CHANGELOG: { date: string; text: string }[] = [
   {
+    date: "JUNE 19, 2026",
+    text: "Link viewer modal: external links across the site now open in an inline VM-window-style overlay instead of jumping to a new tab. The modal embeds the destination in an iframe with a monospace URL bar, an 'Open in new tab ↗' escape hatch, Escape/backdrop dismiss, and a friendly fallback when a site refuses to be framed. Keeps audit trails one click away without losing the surrounding receipt context.",
+  },
+  {
     date: "JUNE 17, 2026",
     text: "/settling-curve redesigned as a split-panel browser. New left sidebar with search, status filters (Settled/Reversed/Contested), and era chips drives a grouped scrollable trajectory list; right panel keeps the gold AGENTIC LOOP audit banner pinned above the chart, surfaces a Key Interval card, and hosts the receipt detail. Mobile uses a slide-up drawer.",
   },

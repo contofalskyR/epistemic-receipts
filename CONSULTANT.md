@@ -307,6 +307,16 @@ Next candidates awaiting dry-run or approval: Pipeline 11 (ICD-11, needs API cre
 
 ## Changelog (coding agent entries go here)
 
+### 2026-06-19 — Link viewer modal (VM-window overlay for external links)
+- **Files changed:**
+  - `app/components/LinkViewer.tsx` (new) — VM-window-style modal: dark gray-950 chrome with traffic-light buttons, monospace truncated URL bar, `Open in new tab ↗` escape hatch, iframe body, Escape + backdrop dismiss, body-scroll lock, 10s load timeout that swaps to a friendly "EMBED BLOCKED" panel when X-Frame-Options/CSP refuses the frame. Full-screen on `<sm`, 85vw × 85vh centered panel on desktop. Subtle 140ms fade-in.
+  - `app/components/LinkViewerProvider.tsx` (new) — `'use client'` React context exposing `openLink(url)` and `useLinkViewer()`. Attaches a document-level click listener that intercepts left-clicks on `<a>` tags whose resolved origin differs from `window.location.origin` (covers `target="_blank"` and any http(s) external href). Passes through modifier-clicks, `mailto:`/`tel:`/`#`/`javascript:`, download anchors, and any `<a data-no-viewer>` escape hatch (used by the modal's own "open in new tab" button).
+  - `app/layout.tsx` — imports `LinkViewerProvider` and wraps it around `<Nav>`, `<main>`, `<FeedbackButton>`, and `<footer>`. Layout stays a Server Component; the provider is the `'use client'` boundary. Footer "last updated" bumped to June 19, 2026.
+  - `app/HomepageSections.tsx` — new top entry in `CHANGELOG`.
+- **Why:** External citation links were yanking users out of the site for every receipt audit. The modal keeps the surrounding case-study context one click away and gives users a clear "open in new tab" escape when needed.
+- **Constraints honored:** `globals.css` body/html background untouched (black-hole canvas unaffected). No auth changes. `app/layout.tsx` remained a Server Component — only the new provider carries the `'use client'` directive. iframe is unsandboxed (most third-party sites break under restrictive sandboxes); `referrerPolicy="no-referrer"` to avoid leaking internal paths.
+- **Behavior notes:** SettlingCurve marker anchors (lines 403, 725, 734) and any other in-app external `<a target="_blank">` are intercepted by the global listener — no per-component edits were needed. Anchors that should opt out (e.g., the modal's own "Open in new tab") set `data-no-viewer="1"`.
+
 ### 2026-06-19 — Clickable topic drill-downs on /analysis/representation
 - **Commit:** a319d12 — feat: add clickable topic drill-downs to /analysis/representation
 - **Files changed:**
