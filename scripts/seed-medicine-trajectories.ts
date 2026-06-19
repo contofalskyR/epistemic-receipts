@@ -37204,6 +37204,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ONCOLOGY / GENOMICS ERA (2000–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── MammaPrint 70-gene assay — first IVDMIA FDA clearance 2007 ──────────────
+  {
+    externalId: 'trajectory:mammaprint-70-gene-fda-clearance-2007',
+    text: "Agendia's MammaPrint 70-gene expression assay, validated by van 't Veer et al. in Nature on 31 January 2002, became the first In Vitro Diagnostic Multivariate Index Assay cleared by the FDA when it received de novo 510(k) clearance on 6 February 2007 to stratify breast-cancer distant-recurrence risk.",
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-01-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-01-31',
+        datePrecision: 'DAY',
+        reason: "Van 't Veer and colleagues used DNA microarray profiling of primary tumours from 117 young breast-cancer patients to identify a 70-gene signature strongly predictive of a short interval to distant metastasis. This was the first demonstration that tumour gene-expression profiling could outperform classical clinicopathologic risk factors, opening molecular prognostication as a research-grade claim.",
+        source: {
+          externalId: 'src:vantveer-70-gene-signature-nature-2002',
+          name: "van 't Veer LJ, Dai H, van de Vijver MJ, et al. Gene expression profiling predicts clinical outcome of breast cancer. Nature. 2002;415(6871):530-536.",
+          url: 'https://www.nature.com/articles/415530a',
+          publishedAt: '2002-01-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-02-06',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted MammaPrint de novo 510(k) Class II clearance, the first time a multi-gene expression assay (and the first IVDMIA) received FDA marketing authorization. The clearance converted a research signature into an institutionally sanctioned diagnostic, setting the regulatory template for genomic prognostic tests in oncology.',
+        source: {
+          externalId: 'src:fda-mammaprint-clearance-sciencedaily-2007',
+          name: 'FDA. Breast Cancer Recurrence Risk Test (MammaPrint) Cleared For Marketing (first IVDMIA). 6 February 2007.',
+          url: 'https://www.sciencedaily.com/releases/2007/02/070207214651.htm',
+          publishedAt: '2007-02-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dasatinib (Sprycel) — imatinib-resistant CML 2006 ──────────────────────
+  {
+    externalId: 'trajectory:dasatinib-sprycel-imatinib-resistant-cml-2006',
+    text: 'Dasatinib (Sprycel), reported by Talpaz et al. in NEJM on 15 June 2006 to induce major cytogenetic responses in imatinib-resistant chronic myeloid leukemia, received FDA accelerated approval on 28 June 2006, establishing that second-generation BCR-ABL inhibitors could overcome resistance to the first targeted therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-06-15',
+        datePrecision: 'DAY',
+        reason: 'Talpaz and colleagues reported a phase 1 trial showing dasatinib, a multi-targeted SRC/ABL kinase inhibitor ~325-fold more potent than imatinib, produced hematologic and cytogenetic responses across CML phases and Ph+ ALL in patients resistant to or intolerant of imatinib, while remaining inactive against the T315I gatekeeper mutation. This recorded the first clinical proof that a distinct molecule could rescue patients failing the pioneering targeted therapy.',
+        source: {
+          externalId: 'src:talpaz-dasatinib-imatinib-resistant-nejm-2006',
+          name: 'Talpaz M, Shah NP, Kantarjian H, et al. Dasatinib in imatinib-resistant Philadelphia chromosome-positive leukemias. N Engl J Med. 2006;354(24):2531-2541.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJMoa055229',
+          publishedAt: '2006-06-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted dasatinib accelerated approval for adults in all phases of CML with resistance or intolerance to prior therapy including imatinib, based on hematologic and cytogenetic response rates. Approval institutionalized the second-line targeted-therapy paradigm for resistant CML; the indication was converted to regular approval on 21 May 2009.',
+        source: {
+          externalId: 'src:brave-dasatinib-fda-approval-summary-ccr-2008',
+          name: 'Brave M, Goodman V, Kaminskas E, et al. Sprycel for chronic myeloid leukemia and Ph+ ALL resistant to or intolerant of imatinib mesylate (FDA approval summary). Clin Cancer Res. 2008;14(2):352-359.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18223208/',
+          publishedAt: '2008-01-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lapatinib (Tykerb) — HER2+ trastuzumab-refractory breast cancer 2007 ───
+  {
+    externalId: 'trajectory:lapatinib-tykerb-her2-trastuzumab-refractory-breast-2007',
+    text: 'Lapatinib (Tykerb), the first oral dual EGFR/HER2 tyrosine-kinase inhibitor, shown by Geyer et al. in NEJM on 28 December 2006 to nearly double time-to-progression when added to capecitabine in trastuzumab-refractory HER2-positive advanced breast cancer, received FDA approval on 13 March 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-12-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-12-28',
+        datePrecision: 'DAY',
+        reason: 'Geyer and colleagues reported a randomized phase 3 trial in which lapatinib plus capecitabine extended median time to progression to 8.4 months versus 4.4 months with capecitabine alone in HER2-positive breast cancer that had progressed after anthracycline, taxane, and trastuzumab. This established that an oral small-molecule HER2 kinase inhibitor could provide benefit after failure of the antibody trastuzumab, recording a new mechanistic option for HER2-driven disease.',
+        source: {
+          externalId: 'src:geyer-lapatinib-capecitabine-nejm-2006',
+          name: 'Geyer CE, Forster J, Lindquist D, et al. Lapatinib plus capecitabine for HER2-positive advanced breast cancer. N Engl J Med. 2006;355(26):2733-2743.',
+          url: 'https://www.nejm.org/doi/10.1056/NEJMoa064320',
+          publishedAt: '2006-12-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved lapatinib in combination with capecitabine for advanced or metastatic HER2-overexpressing breast cancer previously treated with an anthracycline, a taxane, and trastuzumab. Approval institutionalized oral HER2 kinase inhibition as a recognized post-trastuzumab standard, distinct from antibody-based HER2 blockade.',
+        source: {
+          externalId: 'src:fda-lapatinib-approval-summary-oncologist-2008',
+          name: 'Ryan Q, Ibrahim A, Cohen MH, et al. FDA drug approval summary: lapatinib in combination with capecitabine for previously treated metastatic breast cancer that overexpresses HER-2. Oncologist. 2008;13(10):1114-1119.',
+          url: 'https://academic.oup.com/oncolo/article/13/10/1114/6397425',
+          publishedAt: '2008-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ibritumomab tiuxetan (Zevalin) — first radioimmunotherapy 2002 ──────────
+  {
+    externalId: 'trajectory:ibritumomab-tiuxetan-zevalin-first-radioimmunotherapy-2002',
+    text: 'Yttrium-90 ibritumomab tiuxetan (Zevalin) became the first radioimmunotherapy ever approved by the FDA on 19 February 2002 for relapsed or refractory low-grade, follicular, or transformed B-cell non-Hodgkin lymphoma, after a randomized trial (Witzig et al., JCO 2002) showed it doubled response rates versus rituximab.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2002-02-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-02-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved ibritumomab tiuxetan, a CD20-targeting murine monoclonal antibody conjugated to the beta-emitter yttrium-90, for relapsed/refractory low-grade or follicular B-cell NHL — the first time a radioisotope-conjugated antibody (radioimmunotherapy) was approved for cancer. This institutionally validated targeted radiation delivery via antibody as a treatment modality.',
+        source: {
+          externalId: 'src:fda-zevalin-first-radioimmunotherapy-cancernetwork-2002',
+          name: 'FDA approves Zevalin (ibritumomab tiuxetan) — first radioimmunotherapy approved by FDA. CancerNetwork. February 2002.',
+          url: 'https://www.cancernetwork.com/view/first-radioimmunotherapy-approved-fda',
+          publishedAt: '2002-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-05-15',
+        datePrecision: 'DAY',
+        reason: 'Witzig et al. published the pivotal phase 3 randomized trial (n=143) showing single-dose 90Y-ibritumomab tiuxetan produced an 80% overall response rate versus 56% for rituximab (P=.002), with complete responses of 30% versus 16%. The peer-reviewed superiority data confirmed in the expert literature the efficacy claim on which the FDA approval had been based.',
+        source: {
+          externalId: 'src:witzig-ibritumomab-vs-rituximab-rct-jco-2002',
+          name: "Witzig TE, Gordon LI, Cabanillas F, et al. Randomized controlled trial of yttrium-90-labeled ibritumomab tiuxetan radioimmunotherapy versus rituximab immunotherapy for patients with relapsed or refractory low-grade, follicular, or transformed B-cell non-Hodgkin's lymphoma. J Clin Oncol. 2002;20(10):2453-2463.",
+          url: 'https://ascopubs.org/doi/10.1200/JCO.2002.11.076',
+          publishedAt: '2002-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
