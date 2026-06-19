@@ -27964,6 +27964,151 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY & INTERVENTIONAL CARDIOLOGY (1970–1996)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Swan-Ganz balloon-flotation catheter — Swan et al. NEJM 1970 ─────────────
+  {
+    externalId: 'trajectory:swan-ganz-balloon-flotation-catheter-1970',
+    text: 'On 27 August 1970 Swan, Ganz, and colleagues reported in the New England Journal of Medicine that a flow-directed balloon-tipped catheter could be advanced safely at the bedside into the pulmonary artery, establishing that cardiac filling pressures and output could be monitored in critically ill patients without fluoroscopy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1970-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-08-27',
+        datePrecision: 'DAY',
+        reason: 'Swan, Ganz, Forrester, Marcus, Diamond, and Chonette described a flow-directed, balloon-tipped catheter that the venous flow carries into the pulmonary artery, allowing bedside measurement of pulmonary-artery and wedge pressures and (with thermodilution) cardiac output without fluoroscopy. This put on the scientific record the claim that continuous hemodynamic monitoring of critically ill cardiac patients was feasible and safe outside the catheterization laboratory.',
+        source: {
+          externalId: 'src:swan-ganz-flow-directed-catheter-nejm-1970',
+          name: 'Swan HJC, Ganz W, Forrester J, Marcus H, Diamond G, Chonette D. Catheterization of the heart in man with use of a flow-directed balloon-tipped catheter. N Engl J Med. 1970;283(9):447-451.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5434111/',
+          publishedAt: '1970-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-12-16',
+        datePrecision: 'DAY',
+        reason: 'Forrester, Diamond, Chatterjee, and Swan published their two-part scheme for managing acute myocardial infarction by hemodynamic subsets defined from pulmonary-artery-catheter measurements of wedge pressure and cardiac index. By tying specific therapy to bedside catheter data, the Forrester classification entrenched the Swan-Ganz catheter as standard equipment in coronary and intensive care units, settling balloon-flotation pulmonary-artery catheterization as routine clinical practice through the 1970s and 1980s.',
+        source: {
+          externalId: 'src:forrester-hemodynamic-subsets-ami-nejm-1976',
+          name: 'Forrester JS, Diamond G, Chatterjee K, Swan HJC. Medical therapy of acute myocardial infarction by application of hemodynamic subsets (second of two parts). N Engl J Med. 1976;295(25):1404-1413.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/790194/',
+          publishedAt: '1976-12-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-09-18',
+        datePrecision: 'DAY',
+        reason: 'Connors and colleagues, using SUPPORT-study data on critically ill patients, found that right-heart (Swan-Ganz) catheterization in the first 24 hours was associated with increased 30-day mortality, longer ICU stays, and higher costs even after propensity adjustment. Published in JAMA with an accompanying call for a moratorium, the analysis contested the long-assumed benefit of routine pulmonary-artery catheterization and triggered randomized trials that found no survival advantage, sharply curtailing its use.',
+        source: {
+          externalId: 'src:connors-rhc-support-jama-1996',
+          name: 'Connors AF Jr, Speroff T, Dawson NV, et al. The effectiveness of right heart catheterization in the initial care of critically ill patients. JAMA. 1996;276(11):889-897.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8782638/',
+          publishedAt: '1996-09-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CLAS colestipol-niacin coronary regression — Blankenhorn JAMA 1987 ───────
+  {
+    externalId: 'trajectory:clas-colestipol-niacin-coronary-regression-1987',
+    text: 'On 19 June 1987 Blankenhorn and colleagues reported in JAMA that combined colestipol-niacin therapy slowed progression and produced angiographically demonstrable regression of coronary atherosclerosis and bypass-graft lesions in men, the first randomized angiographic evidence that lipid lowering can reverse human coronary disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-06-19',
+        datePrecision: 'DAY',
+        reason: 'The Cholesterol Lowering Atherosclerosis Study (CLAS), a randomized placebo-controlled angiographic trial in 162 nonsmoking men with prior coronary bypass surgery, found that colestipol plus niacin reduced lesion progression and produced regression in 16.2% of treated subjects versus 2.4% on placebo. This recorded for the first time, from quantitative serial angiography, the claim that aggressive lipid lowering not only halts but can reverse coronary atherosclerosis in humans.',
+        source: {
+          externalId: 'src:blankenhorn-clas-colestipol-niacin-jama-1987',
+          name: 'Blankenhorn DH, Nessim SA, Johnson RL, Sanmarco ME, Azen SP, Cashin-Hemphill L. Beneficial effects of combined colestipol-niacin therapy on coronary atherosclerosis and coronary venous bypass grafts. JAMA. 1987;257(23):3233-3240.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3295315/',
+          publishedAt: '1987-06-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-11-08',
+        datePrecision: 'DAY',
+        reason: 'Brown and colleagues\' Familial Atherosclerosis Treatment Study (FATS) independently confirmed angiographic coronary regression with intensive lipid lowering (lovastatin-colestipol or niacin-colestipol) in men with elevated apolipoprotein B, and showed fewer clinical cardiovascular events. The convergence of FATS with CLAS settled the regression hypothesis as an accepted mechanism, establishing serial angiography as proof that lowering LDL reverses atherosclerosis and underpinning the lipid-lowering treatment consensus later cemented by statin outcome trials.',
+        source: {
+          externalId: 'src:brown-fats-coronary-regression-nejm-1990',
+          name: 'Brown G, Albers JJ, Fisher LD, et al. Regression of coronary artery disease as a result of intensive lipid-lowering therapy in men with high levels of apolipoprotein B. N Engl J Med. 1990;323(19):1289-1298.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2215615/',
+          publishedAt: '1990-11-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sigwart coronary stent first-in-human — NEJM 1987 ───────────────────────
+  {
+    externalId: 'trajectory:sigwart-coronary-stent-first-in-human-1987',
+    text: 'On 19 March 1987 Sigwart and colleagues reported in the New England Journal of Medicine that implanting self-expanding stainless-steel mesh stents into coronary and peripheral arteries could prevent acute vessel closure and restenosis after balloon angioplasty, introducing intravascular stenting into clinical medicine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1987-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-03-19',
+        datePrecision: 'DAY',
+        reason: 'Sigwart, Puel, Mirkovitch, Joffre, and Kappenberger described the first human use of a self-expandable wire-mesh endovascular prosthesis to scaffold arteries after transluminal angioplasty, addressing the two major failures of balloon angioplasty: abrupt vessel closure and late restenosis. This put on the record the claim that a permanent intravascular implant could mechanically maintain arterial patency.',
+        source: {
+          externalId: 'src:sigwart-intravascular-stents-nejm-1987',
+          name: 'Sigwart U, Puel J, Mirkovitch V, Joffre F, Kappenberger L. Intravascular stents to prevent occlusion and restenosis after transluminal angioplasty. N Engl J Med. 1987;316(12):701-706.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2950322/',
+          publishedAt: '1987-03-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-08-25',
+        datePrecision: 'DAY',
+        reason: 'Serruys and colleagues\' BENESTENT randomized trial showed that elective balloon-expandable (Palmaz-Schatz) stent implantation produced better angiographic and clinical outcomes with less restenosis than balloon angioplasty alone in patients with stable angina. Published alongside the concordant STRESS trial in the NEJM and coinciding with FDA approval of the coronary stent, BENESTENT settled stenting as the standard percutaneous coronary revascularization technique.',
+        source: {
+          externalId: 'src:serruys-benestent-coronary-stent-nejm-1994',
+          name: 'Serruys PW, de Jaegere P, Kiemeneij F, et al. A comparison of balloon-expandable-stent implantation with balloon angioplasty in patients with coronary artery disease. N Engl J Med. 1994;331(8):489-495.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8041413/',
+          publishedAt: '1994-08-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
