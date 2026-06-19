@@ -34385,6 +34385,190 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOVASCULAR / GUIDELINES ERA (2014–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── PARADIGM-HF — sacubitril/valsartan HFrEF — McMurray 2014 / FDA 2015 ─────
+  {
+    externalId: 'trajectory:sacubitril-valsartan-paradigm-hf-2014',
+    text: 'The PARADIGM-HF trial reported on 30 August 2014 that sacubitril/valsartan (LCZ696), the first angiotensin receptor–neprilysin inhibitor, was superior to enalapril in reducing cardiovascular death and heart-failure hospitalization in patients with heart failure and reduced ejection fraction, establishing a new pharmacologic standard subsequently approved by the FDA on 7 July 2015.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-08-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-09-11',
+        datePrecision: 'DAY',
+        reason: 'McMurray and colleagues published PARADIGM-HF in NEJM (online 30 Aug 2014): in 8,442 HFrEF patients the trial was stopped early for overwhelming benefit, with LCZ696 cutting the primary composite of cardiovascular death or HF hospitalization to 21.8% versus 26.5% with the ACE-inhibitor enalapril (HR 0.80). This recorded the first evidence that neprilysin inhibition added to renin–angiotensin blockade improves survival in heart failure.',
+        source: {
+          externalId: 'src:paradigm-hf-sacubitril-valsartan-nejm-2014',
+          name: 'McMurray JJV, Packer M, Desai AS, et al. Angiotensin-Neprilysin Inhibition versus Enalapril in Heart Failure. N Engl J Med. 2014;371(11):993-1004.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25176015/',
+          publishedAt: '2014-09-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-07-07',
+        datePrecision: 'DAY',
+        reason: 'On the basis of PARADIGM-HF, the FDA approved Entresto (sacubitril/valsartan) to reduce the risk of cardiovascular death and hospitalization in chronic heart failure with reduced ejection fraction, making it the first-in-class ARNI on the market. Regulatory approval moved the trial finding into established, guideline-endorsed therapy.',
+        source: {
+          externalId: 'src:entresto-fda-approval-ahdb-2015',
+          name: 'Sanford M (Ricciardi R, ed.). Entresto (Sacubitril/Valsartan): First-in-Class Angiotensin Receptor Neprilysin Inhibitor FDA Approved for Patients with Heart Failure. Am Health Drug Benefits. 2015;8(6):330-334 (documents FDA approval 7 July 2015).',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4636283/',
+          publishedAt: '2015-07-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Niacin cardiovascular benefit abandoned — HPS2-THRIVE 2014 ───────────────
+  {
+    externalId: 'trajectory:niacin-cardiovascular-benefit-abandoned-2014',
+    text: 'The decades-old belief that niacin reduces cardiovascular events by raising HDL cholesterol was abandoned after the HPS2-THRIVE trial, published 17 July 2014, found that extended-release niacin/laropiprant added to statin therapy produced no reduction in major vascular events while causing significant excess harms.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1975-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-07-17',
+        datePrecision: 'DAY',
+        reason: 'The HPS2-THRIVE Collaborative Group reported in NEJM that adding extended-release niacin–laropiprant to effective statin therapy in 25,673 high-risk patients did not significantly reduce major vascular events (13.2% vs 13.7%) and significantly increased serious adverse events including diabetes disturbances, infections, and bleeding. Coming after AIM-HIGH (2011), this large outcomes trial ended niacin\'s role as a cardiovascular risk-reducing add-on, and Merck withdrew the niacin/laropiprant product Tredaptive.',
+        source: {
+          externalId: 'src:hps2-thrive-niacin-laropiprant-nejm-2014',
+          name: 'HPS2-THRIVE Collaborative Group; Landray MJ, Haynes R, Hopewell JC, et al. Effects of Extended-Release Niacin with Laropiprant in High-Risk Patients. N Engl J Med. 2014;371(3):203-212.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25014686/',
+          publishedAt: '2014-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SPRINT — intensive blood pressure control — 2015 ─────────────────────────
+  {
+    externalId: 'trajectory:sprint-intensive-blood-pressure-control-2015',
+    text: 'On 9 November 2015 the SPRINT trial reported in the New England Journal of Medicine that targeting systolic blood pressure below 120 mm Hg, rather than below 140 mm Hg, significantly reduced fatal and nonfatal major cardiovascular events and all-cause mortality in high-risk non-diabetic adults.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-11-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-09',
+        datePrecision: 'DAY',
+        reason: 'The SPRINT Research Group published the primary results of a randomized trial of 9,361 high-cardiovascular-risk adults without diabetes, stopped early after a median 3.26 years because intensive control (target <120 mm Hg) cut the primary composite endpoint by 25% and all-cause death by 27% versus standard control (<140 mm Hg). This placed on the scientific record, for the first time in a large RCT, that a lower systolic target prevents events beyond the long-standing 140 mm Hg threshold.',
+        source: {
+          externalId: 'src:sprint-intensive-bp-nejm-2015',
+          name: 'SPRINT Research Group; Wright JT Jr, Williamson JD, Whelton PK, et al. A Randomized Trial of Intensive versus Standard Blood-Pressure Control. N Engl J Med. 2015;373(22):2103-2116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26551272/',
+          publishedAt: '2015-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-11-13',
+        datePrecision: 'DAY',
+        reason: 'The 2017 ACC/AHA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure (Whelton et al.), citing SPRINT, redefined hypertension as ≥130/80 mm Hg (down from 140/90) and set a treatment goal of <130/80 for most adults. A multi-society guideline rewriting the diagnostic threshold institutionalized SPRINT\'s finding into standard cardiovascular practice.',
+        source: {
+          externalId: 'src:acc-aha-2017-hypertension-guideline',
+          name: 'Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. J Am Coll Cardiol. 2018;71(19):e127-e248.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29133356/',
+          publishedAt: '2017-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── ORBITA — PCI stable angina sham trial — 2018 ─────────────────────────────
+  {
+    externalId: 'trajectory:orbita-pci-stable-angina-sham-2018',
+    text: 'The ORBITA trial, published in The Lancet on 6 January 2018, found that percutaneous coronary intervention (stenting) in patients with stable angina and severe single-vessel stenosis produced no greater improvement in exercise time than a placebo (sham) procedure, challenging the long-held belief that stenting relieves angina in stable coronary disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1979-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-01-06',
+        datePrecision: 'DAY',
+        reason: 'Al-Lamee and colleagues reported the first blinded, sham-controlled trial of PCI for stable angina: 200 patients with severe stenosis randomized to PCI or a placebo procedure showed no significant between-group difference in the primary endpoint of exercise-time improvement. By controlling for the placebo effect of an invasive procedure, ORBITA put into serious dispute the decades-old assumption that stenting relieves angina in stable disease — a debate that the later ISCHEMIA trial (2020) extended.',
+        source: {
+          externalId: 'src:orbita-pci-stable-angina-lancet-2018',
+          name: 'Al-Lamee R, Thompson D, Dehbi HM, et al. Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial. Lancet. 2018;391(10115):31-40.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29103656/',
+          publishedAt: '2018-01-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aspirin primary prevention CVD reversal — ASPREE 2018 / USPSTF 2022 ──────
+  {
+    externalId: 'trajectory:aspirin-primary-prevention-cvd-reversal-2018',
+    text: 'The long-standing recommendation that low-dose aspirin be used for the primary prevention of cardiovascular disease was overturned after the ASPREE trial (16 September 2018) found no cardiovascular benefit and increased major bleeding in healthy older adults, leading the USPSTF on 26 April 2022 to recommend against initiating aspirin in adults 60 and older.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-03-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-16',
+        datePrecision: 'DAY',
+        reason: 'McNeil and colleagues published the ASPREE cardiovascular results in NEJM, reporting that among 19,114 healthy elderly participants, 100 mg daily aspirin over a median 4.7 years did not reduce major adverse cardiovascular events and significantly increased major hemorrhage. Together with ARRIVE and ASCEND the same year, this directly contradicted the prevailing primary-prevention recommendation and moved expert consensus into open dispute.',
+        source: {
+          externalId: 'src:aspree-aspirin-cv-events-nejm-2018',
+          name: 'McNeil JJ, Wolfe R, Woods RL, et al. Effect of Aspirin on Cardiovascular Events and Bleeding in the Healthy Elderly. N Engl J Med. 2018;379(16):1509-1518.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1805819',
+          publishedAt: '2018-09-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-04-26',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Preventive Services Task Force issued its final recommendation assigning a Grade D (recommend against initiating) to low-dose aspirin for primary CVD prevention in adults 60 and older, and a Grade C (individualized) for ages 40–59. A federal screening body reversing a prior endorsement formally retired aspirin as a routine primary-prevention measure.',
+        source: {
+          externalId: 'src:uspstf-aspirin-cvd-2022',
+          name: 'U.S. Preventive Services Task Force. Aspirin Use to Prevent Cardiovascular Disease: Preventive Medication. Final Recommendation Statement. 26 April 2022.',
+          url: 'https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/aspirin-to-prevent-cardiovascular-disease-preventive-medication',
+          publishedAt: '2022-04-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
