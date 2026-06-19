@@ -24216,6 +24216,343 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES, OBESITY & METABOLIC ERA (1992–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── DCCT intensive glycemic control type 1 diabetes — 1993 ─────────────────
+  {
+    externalId: 'trajectory:dcct-intensive-glycemic-control-type1-diabetes-1993',
+    text: 'The Diabetes Control and Complications Trial (DCCT) Research Group reported in the NEJM on 30 September 1993 that intensive insulin therapy aimed at near-normal blood glucose substantially reduced the development and progression of retinopathy, nephropathy, and neuropathy in type 1 diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-09-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-09-30',
+        datePrecision: 'DAY',
+        reason: 'The DCCT Research Group published the results of a randomized trial in 1,441 type 1 diabetes patients showing that intensive therapy reduced the risk of clinically meaningful retinopathy by roughly 76% and slowed nephropathy and neuropathy versus conventional therapy, at the cost of more hypoglycemia. The trial recorded in the expert literature the causal claim that tight glycemic control prevents microvascular complications, settling a long-running debate over the \'glucose hypothesis.\'',
+        source: {
+          externalId: 'src:dcct-nejm-1993',
+          name: 'The Diabetes Control and Complications Trial Research Group. The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus. N Engl J Med. 1993;329(14):977-986.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8366922/',
+          publishedAt: '1993-09-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Diabetes Association issued a position statement, \'Implications of the Diabetes Control and Complications Trial,\' translating the DCCT result into clinical policy and recommending intensive glycemic control as the standard of care for most patients with type 1 diabetes. The rapid institutional adoption settled intensive control as the durable treatment paradigm, later extended to type 2 diabetes and confirmed by long-term EDIC follow-up.',
+        source: {
+          externalId: 'src:ada-implications-dcct-1993',
+          name: 'American Diabetes Association. Implications of the Diabetes Control and Complications Trial. Diabetes Care. 1993;16(11):1517-1520.',
+          url: 'https://diabetesjournals.org/care/article/16/11/1517/17286/Implications-of-the-Diabetes-Control-and',
+          publishedAt: '1993-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fen-phen valvular heart disease reversal — 1997 ─────────────────────────
+  {
+    externalId: 'trajectory:fen-phen-valvular-heart-disease-reversal-1992',
+    text: 'The claim that the fenfluramine-phentermine (\'fen-phen\') combination was a safe, effective long-term pharmacotherapy for obesity was reversed in 1997 when Connolly et al. reported associated valvular heart disease (NEJM, 28 August 1997) and the FDA had fenfluramine and dexfenfluramine withdrawn from the market on 15 September 1997.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: 'Connolly and colleagues at the Mayo Clinic reported 24 women with no prior cardiac disease who developed unusual valvular heart disease (left- and right-sided regurgitation) after fenfluramine-phentermine treatment for obesity. The case series transformed an aggressively marketed and widely prescribed weight-loss regimen into a recognized safety signal, prompting an FDA public-health advisory.',
+        source: {
+          externalId: 'src:connolly-fenphen-valvular-nejm-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: 'Acting on echocardiographic data showing roughly 30% of evaluated patients had abnormal valve findings, the FDA asked manufacturers to voluntarily withdraw fenfluramine (Pondimin) and dexfenfluramine (Redux) from the U.S. market, stating they presented \'an unacceptable risk.\' Phentermine was not withdrawn. The action ended the fen-phen era and led to multibillion-dollar litigation against American Home Products/Wyeth.',
+        source: {
+          externalId: 'src:fda-fenfluramine-dexfenfluramine-withdrawal-1997',
+          name: 'U.S. Food and Drug Administration / HHS. FDA Announces Withdrawal of Fenfluramine and Dexfenfluramine (press release). 15 September 1997.',
+          url: 'https://archive.org/download/www.fda.gov/www.fda.gov/Drugs/DrugSafety/PostmarketDrugSafetyInformationforPatientsandProviders/ucm179871.htm',
+          publishedAt: '1997-09-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Troglitazone (Rezulin) hepatotoxicity withdrawal — 1997 ─────────────────
+  {
+    externalId: 'trajectory:troglitazone-rezulin-hepatotoxicity-withdrawal-1997',
+    text: 'The claim that troglitazone (Rezulin), the first thiazolidinedione insulin-sensitizer approved by the FDA on 29 January 1997 for type 2 diabetes, was a safe oral antidiabetic agent was reversed when the FDA had it withdrawn from the U.S. market on 21 March 2000 after reports of fatal hepatotoxicity.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-01-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-01-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved troglitazone (Rezulin), the first of the thiazolidinedione class, as an oral insulin-sensitizing treatment for type 2 diabetes. Regulatory approval institutionally established the drug as a safe, effective antidiabetic agent, and it was rapidly adopted as a novel mechanism distinct from sulfonylureas and metformin.',
+        source: {
+          externalId: 'src:livertox-troglitazone-nih',
+          name: 'Troglitazone. LiverTox: Clinical and Research Information on Drug-Induced Liver Injury. Bethesda (MD): National Institute of Diabetes and Digestive and Kidney Diseases (NIH). Bookshelf NBK548142.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK548142/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-03-21',
+        datePrecision: 'DAY',
+        reason: 'After accumulating reports of severe idiosyncratic liver injury, acute liver failure, deaths, and transplants, the FDA asked the manufacturer (Parke-Davis/Warner-Lambert) to remove Rezulin from the U.S. market, and the company complied. The withdrawal repudiated the drug\'s safety premise and became a defining post-market surveillance case for the thiazolidinedione class, sharpening scrutiny of its successors rosiglitazone and pioglitazone.',
+        source: {
+          externalId: 'src:livertox-troglitazone-withdrawal-nih',
+          name: 'Troglitazone (withdrawn from use in 2000 due to hepatotoxicity). LiverTox: Clinical and Research Information on Drug-Induced Liver Injury. NIH/NIDDK. Bookshelf NBK548142.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK548142/',
+          publishedAt: '2018-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rosiglitazone (Avandia) cardiovascular meta-analysis — 1999 ─────────────
+  {
+    externalId: 'trajectory:rosiglitazone-avandia-cardiovascular-meta-analysis-1999',
+    text: 'The claim that rosiglitazone (Avandia), the thiazolidinedione approved by the FDA on 25 May 1999 (NDA 21-071) for type 2 diabetes, was a safe antidiabetic drug was thrown into dispute when Nissen and Wolski\'s meta-analysis, published online in the NEJM on 21 May 2007, found it increased the risk of myocardial infarction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-05-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved rosiglitazone maleate (Avandia, NDA 21-071, GlaxoSmithKline) for glycemic control in type 2 diabetes on the basis of its HbA1c-lowering efficacy. Approval institutionally established it as a safe, effective oral antidiabetic, and it became one of the best-selling diabetes drugs worldwide.',
+        source: {
+          externalId: 'src:fda-drugsatfda-avandia-021071',
+          name: 'U.S. Food and Drug Administration. Drugs@FDA: Avandia (rosiglitazone maleate), NDA 021071, original approval 25 May 1999.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021071',
+          publishedAt: '1999-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-21',
+        datePrecision: 'DAY',
+        reason: 'Nissen and Wolski published a meta-analysis of 42 randomized trials in the NEJM finding that rosiglitazone was associated with a significant ~43% increase in the odds of myocardial infarction and a borderline increase in cardiovascular death. The analysis triggered congressional hearings, an FDA boxed warning, and (in 2010) severe REMS prescribing restrictions, placing the drug\'s cardiovascular safety into sustained dispute and making it a landmark in drug-safety meta-analysis.',
+        source: {
+          externalId: 'src:nissen-rosiglitazone-nejm-2007',
+          name: 'Nissen SE, Wolski K. Effect of rosiglitazone on the risk of myocardial infarction and death from cardiovascular causes. N Engl J Med. 2007;356(24):2457-2471.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17517853/',
+          publishedAt: '2007-05-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Rimonabant (Acomplia) psychiatric suspension — 2006 ─────────────────────
+  {
+    externalId: 'trajectory:rimonabant-acomplia-psychiatric-suspension-2006',
+    text: 'The claim that rimonabant (Acomplia), the first-in-class CB1 cannabinoid-receptor antagonist granted EU marketing authorisation on 19 June 2006 for obesity, was a safe weight-loss drug was reversed when the European Medicines Agency recommended suspension of its authorisation on 23 October 2008 over a doubled risk of psychiatric disorders.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-19',
+        datePrecision: 'DAY',
+        reason: 'The European Medicines Agency granted EU-wide marketing authorisation for Acomplia (rimonabant, Sanofi-Aventis), the first endocannabinoid CB1-receptor blocker, for the treatment of obese and overweight patients. The authorisation institutionally established the drug as a safe, effective weight-loss and metabolic therapy in Europe, even as the U.S. FDA declined to approve it.',
+        source: {
+          externalId: 'src:rimonabant-eu-authorisation-2006',
+          name: 'Rimonabant (Acomplia) — EU marketing authorisation granted 19 June 2006; subsequently suspended/withdrawn 2008-2009 (encyclopedic synthesis of EMA record).',
+          url: 'https://en.wikipedia.org/wiki/Rimonabant',
+          publishedAt: '2006-06-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'The EMA\'s Committee for Medicinal Products for Human Use concluded that the benefits of Acomplia no longer outweighed its risks, citing an approximate doubling of psychiatric disorders versus placebo and five suicides among trial patients between June and August 2008, and recommended suspension of the marketing authorisation across the EU. Marketing was suspended on 13 November 2008 and the authorisation voluntarily withdrawn thereafter, ending the CB1-antagonist obesity-drug program.',
+        source: {
+          externalId: 'src:chemistryworld-rimonabant-suspension-2008',
+          name: 'Europe suspends antiobesity drug (rimonabant/Acomplia EMEA suspension over psychiatric risk). Chemistry World. 24 October 2008.',
+          url: 'https://www.chemistryworld.com/news/europe-suspends-antiobesity-drug/3001553.article',
+          publishedAt: '2008-10-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── FDA acetaminophen 325 mg limit in prescription combination products — 2011 ─
+  {
+    externalId: 'trajectory:fda-acetaminophen-325mg-limit-rx-combination-2011',
+    text: 'The FDA announced on January 13, 2011 that it would require manufacturers to limit acetaminophen to no more than 325 mg per dosage unit in prescription combination products — predominantly acetaminophen-opioid analgesics such as Vicodin and Percocet — and to add a boxed warning for severe liver injury, reversing the prior regulatory tolerance of 500–750 mg of acetaminophen per tablet in these pain products.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2011-01-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-01-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Drug Safety Communication requiring all prescription acetaminophen combination products to contain no more than 325 mg of acetaminophen per dosage unit and to carry a new boxed warning for severe liver injury (acute liver failure), citing acetaminophen overdose from these combination opioid analgesics as a leading cause of drug-induced hepatotoxicity. The action, given a three-year reformulation window, repudiated the prior acceptance of higher per-unit acetaminophen doses in widely prescribed opioid pain products and set a new institutional safety ceiling.',
+        source: {
+          externalId: 'src:fda-dsc-acetaminophen-325mg-2011',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: Prescription Acetaminophen Products to be Limited to 325 mg Per Dosage Unit; Boxed Warning Will Highlight Potential for Severe Liver Failure. January 13, 2011.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-prescription-acetaminophen-products-be-limited-325-mg-dosage-unit',
+          publishedAt: '2011-01-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Insys / Kapoor Subsys racketeering conviction — 2019 ────────────────────
+  {
+    externalId: 'trajectory:insys-kapoor-subsys-racketeering-conviction-2019',
+    text: 'A federal jury in Boston convicted Insys Therapeutics founder John Kapoor and four former executives of racketeering (RICO) conspiracy on May 2, 2019 for orchestrating a nationwide scheme to bribe practitioners to prescribe Subsys, a sublingual fentanyl spray FDA-approved only for breakthrough cancer pain, to patients who often did not medically need it — the first conviction of top pharmaceutical executives for opioid-related marketing crimes.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-05',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Insys Therapeutics\' Subsys (fentanyl sublingual spray) for the management of breakthrough cancer pain in opioid-tolerant adults, and Insys announced the approval on January 5, 2012. The drug entered the record as a legitimately approved, narrowly indicated breakthrough-cancer-pain product, and its subsequent marketing and prescribing were presumed lawful pharmaceutical commerce.',
+        source: {
+          externalId: 'src:insys-subsys-fda-approval-2012',
+          name: 'INSYS Therapeutics, Inc. INSYS Therapeutics Announces FDA Approval of SUBSYS (fentanyl) Sublingual Spray. Press release, January 5, 2012.',
+          url: 'https://www.globenewswire.com/news-release/2012/01/05/1156117/0/en/INSYS-Therapeutics-Announces-FDA-Approval-of-SUBSYS-R-Fentanyl-Sublingual-Spray.html',
+          publishedAt: '2012-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-05-02',
+        datePrecision: 'DAY',
+        reason: 'A federal jury convicted John Kapoor and four former Insys executives (Richard Simon, Sunrise Lee, Joseph Rowan, Michael Gurry) of RICO conspiracy, finding they bribed practitioners — many running pain clinics — to prescribe Subsys from 2012 to 2015, often when medically unnecessary, and defrauded insurers to secure coverage. The U.S. Attorney called it the first successful prosecution of top pharmaceutical executives for crimes related to the illicit marketing and prescribing of opioids, judicially establishing that the company\'s promotion and resulting prescribing of the fentanyl product was criminal rather than legitimate.',
+        source: {
+          externalId: 'src:doj-insys-racketeering-conviction-2019',
+          name: 'U.S. Attorney\'s Office, District of Massachusetts. Founder and Four Executives of Insys Therapeutics Convicted of Racketeering Conspiracy. Press release, May 2, 2019.',
+          url: 'https://www.justice.gov/usao-ma/pr/founder-and-four-executives-insys-therapeutics-convicted-racketeering-conspiracy',
+          publishedAt: '2019-05-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA gabapentinoid respiratory depression warning — 2019 ─────────────────
+  {
+    externalId: 'trajectory:fda-gabapentinoid-respiratory-depression-warning-2019',
+    text: 'The FDA warned on December 19, 2019 that the gabapentinoids gabapentin (Neurontin) and pregabalin (Lyrica) can cause serious, life-threatening, and fatal respiratory depression — especially in older patients, those with compromised lung function, and those concurrently taking opioids or other CNS depressants — and required new respiratory-risk label warnings and manufacturer abuse-potential studies, contradicting the long-held clinical view that these non-opioid pain and seizure drugs carried negligible respiratory risk.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-19',
+        datePrecision: 'DAY',
+        reason: 'After reviewing case reports and clinical studies — including 49 reports of gabapentinoid-associated respiratory depression to the FDA from 2012 to 2017, of which 12 were fatal and all had at least one risk factor — the FDA issued a Drug Safety Communication establishing that gabapentin and pregabalin can produce serious respiratory depression, particularly when combined with opioids or other CNS depressants. The agency required new warnings in the prescribing information and ordered manufacturers to conduct clinical trials of the drugs\' abuse potential, institutionally overturning the prevailing assumption that gabapentinoids were respiratorily benign adjuncts safe to layer onto opioid pain regimens.',
+        source: {
+          externalId: 'src:fda-gabapentinoid-respiratory-warning-2019',
+          name: 'U.S. Food and Drug Administration. FDA warns about serious breathing problems with seizure and nerve pain medicines gabapentin (Neurontin, Gralise, Horizant) and pregabalin (Lyrica, Lyrica CR). December 19, 2019.',
+          url: 'https://www.fda.gov/drugs/fda-drug-safety-podcasts/fda-warns-about-serious-breathing-problems-seizure-and-nerve-pain-medicines-gabapentin-neurontin',
+          publishedAt: '2019-12-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── SAMHSA methadone OTP take-home final rule — 2024 ────────────────────────
+  {
+    externalId: 'trajectory:samhsa-methadone-otp-takehome-final-rule-2024',
+    text: 'SAMHSA published a final rule revising 42 CFR Part 8 on February 2, 2024 (effective April 2, 2024) that made permanent the COVID-era opioid-treatment-program flexibilities — including up to 28 days of take-home methadone and removal of rigid criteria for granting take-home doses — in the first substantive overhaul of federal methadone regulations in over two decades, reversing the long-standing premise that safe methadone maintenance required daily, in-clinic supervised dosing.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2024-02-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-02-02',
+        datePrecision: 'DAY',
+        reason: 'SAMHSA finalized revisions to the federal opioid-treatment-program regulations (42 CFR Part 8), codifying the take-home methadone and telehealth flexibilities first authorized as temporary measures during the COVID-19 public health emergency — allowing stable patients up to 28 days of take-home doses and eliminating the previous rigid time-in-treatment criteria for earning them. As the first significant update to these rules in over 20 years, it institutionally repudiated the decades-old restrictive model that treated methadone as too dangerous for substantial take-home dispensing and required daily attendance at a clinic, after pandemic-era experience showed expanded take-homes did not increase overdose harm.',
+        source: {
+          externalId: 'src:samhsa-42-cfr-part-8-final-rule-2024',
+          name: 'Substance Abuse and Mental Health Services Administration. Medications for the Treatment of Opioid Use Disorder. Final rule, 42 CFR Part 8. 89 Fed. Reg. 7528, February 2, 2024.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/opioid-treatment-program/42-cfr-part-8',
+          publishedAt: '2024-02-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
