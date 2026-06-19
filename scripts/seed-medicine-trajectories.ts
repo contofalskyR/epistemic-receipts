@@ -37376,6 +37376,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PCSK9 INHIBITOR / TAVR / PCI-vs-CABG / SGLT2 ERA (2016–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ODYSSEY OUTCOMES — alirocumab post-ACS mortality reduction 2018 ──────────
+  {
+    externalId: 'trajectory:odyssey-outcomes-alirocumab-mortality-post-acs-2018',
+    text: 'On 10 November 2018 the ODYSSEY OUTCOMES trial reported that the PCSK9 inhibitor alirocumab, added to high-intensity statin therapy in 18,924 patients after a recent acute coronary syndrome, reduced recurrent major adverse cardiovascular events (9.5% vs 11.1%) and was associated with lower all-cause mortality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-11-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-11-29',
+        datePrecision: 'DAY',
+        reason: 'Schwartz, Steg, and colleagues published the ODYSSEY OUTCOMES results in NEJM after presentation at the AHA Scientific Sessions on 10 November 2018. The trial recorded into the literature that alirocumab lowered recurrent ischemic events in post-ACS patients (HR 0.85) and showed a nominal all-cause mortality benefit, providing the second large cardiovascular-outcomes confirmation for the PCSK9-inhibitor class alongside evolocumab\'s FOURIER.',
+        source: {
+          externalId: 'src:schwartz-odyssey-outcomes-nejm-2018',
+          name: 'Schwartz GG, Steg PG, Szarek M, et al. Alirocumab and Cardiovascular Outcomes after Acute Coronary Syndrome. N Engl J Med. 2018;379(22):2097-2107.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30403574/',
+          publishedAt: '2018-11-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-04-26',
+        datePrecision: 'MONTH',
+        reason: 'On the strength of ODYSSEY OUTCOMES, the FDA approved an expanded indication for alirocumab (Praluent) to reduce the risk of myocardial infarction, stroke, and unstable angina requiring hospitalization in adults with established cardiovascular disease. Regulatory adoption of a hard-outcomes indication settled the claim that PCSK9 inhibition delivers clinical event reduction, not merely LDL lowering.',
+        source: {
+          externalId: 'src:schwartz-odyssey-outcomes-nejm-2018',
+          name: 'Schwartz GG, Steg PG, Szarek M, et al. Alirocumab and Cardiovascular Outcomes after Acute Coronary Syndrome. N Engl J Med. 2018;379(22):2097-2107.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30403574/',
+          publishedAt: '2018-11-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PARTNER 3 — TAVR superior to surgery in low-risk patients 2019 ──────────
+  {
+    externalId: 'trajectory:partner-3-tavr-low-risk-aortic-stenosis-2019',
+    text: 'On 16 March 2019 the PARTNER 3 trial reported that transcatheter aortic-valve replacement with a balloon-expandable valve was superior to surgery for the composite of death, stroke, or rehospitalization at one year in patients with severe aortic stenosis at low surgical risk.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-03-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-05-02',
+        datePrecision: 'DAY',
+        reason: 'Mack and colleagues published PARTNER 3 in NEJM after simultaneous presentation at ACC.19 on 16 March 2019. The trial recorded that TAVR met both noninferiority and superiority versus surgical aortic-valve replacement in low-risk patients, extending a technology previously validated only in inoperable and high/intermediate-risk populations to the largest, lowest-risk group of aortic-stenosis patients.',
+        source: {
+          externalId: 'src:mack-partner3-nejm-2019',
+          name: 'Mack MJ, Leon MB, Thourani VH, et al. Transcatheter Aortic-Valve Replacement with a Balloon-Expandable Valve in Low-Risk Patients. N Engl J Med. 2019;380(18):1695-1705.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30883058/',
+          publishedAt: '2019-05-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-08-16',
+        datePrecision: 'DAY',
+        reason: 'On 16 August 2019 the FDA expanded the approved indication for balloon-expandable transcatheter aortic-valve systems to include patients at low surgical risk, on the basis of PARTNER 3 and the Evolut Low Risk trial. The regulatory expansion settled TAVR as an alternative to open-heart surgery across the full aortic-stenosis risk spectrum, a reversal of the prior surgery-first standard.',
+        source: {
+          externalId: 'src:mack-partner3-nejm-2019',
+          name: 'Mack MJ, Leon MB, Thourani VH, et al. Transcatheter Aortic-Valve Replacement with a Balloon-Expandable Valve in Low-Risk Patients. N Engl J Med. 2019;380(18):1695-1705.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30883058/',
+          publishedAt: '2019-05-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EXCEL — PCI vs CABG left main, settled then contested 2016–2019 ─────────
+  {
+    externalId: 'trajectory:excel-left-main-pci-vs-cabg-contested-2019',
+    text: 'The EXCEL trial reported in 2016 that percutaneous coronary intervention with everolimus-eluting stents was noninferior to coronary-artery bypass grafting for left main coronary disease, a conclusion that became contested after five-year outcomes and a data-reporting controversy in 2019.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2016-10-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-12-08',
+        datePrecision: 'DAY',
+        reason: 'Stone and colleagues published the EXCEL three-year results in NEJM (presented at TCT 31 October 2016), reporting that PCI was noninferior to CABG for the composite of death, stroke, or myocardial infarction in left main disease. This recorded the claim that stenting was an acceptable alternative to bypass surgery for a lesion historically reserved for surgery.',
+        source: {
+          externalId: 'src:stone-excel-3yr-nejm-2016',
+          name: 'Stone GW, Sabik JF, Serruys PW, et al. Everolimus-Eluting Stents or Bypass Surgery for Left Main Coronary Artery Disease. N Engl J Med. 2016;375(23):2223-2235.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27797291/',
+          publishedAt: '2016-12-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-08-25',
+        datePrecision: 'DAY',
+        reason: 'The 2018 ESC/EACTS Guidelines on Myocardial Revascularization, presented at the ESC Congress on 25 August 2018, drew on EXCEL and NOBLE to give PCI a Class IIa recommendation for left main disease with low-to-intermediate anatomical complexity, institutionalizing stenting as an accepted equivalent to surgery for many left main patients.',
+        source: {
+          externalId: 'src:esc-eacts-revascularization-guidelines-2018',
+          name: 'Neumann FJ, Sousa-Uva M, Ahlsson A, et al. 2018 ESC/EACTS Guidelines on myocardial revascularization. Eur Heart J. 2019;40(2):87-165.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30165437/',
+          publishedAt: '2018-08-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-11-07',
+        datePrecision: 'DAY',
+        reason: 'The EXCEL five-year outcomes in NEJM showed the primary composite no longer clearly favored PCI and revealed numerically higher all-cause mortality with stenting; a December 2019 BBC Newsnight report alleged the investigators had withheld universal-definition MI data that would have favored CABG, prompting EACTS to withdraw its support for the left main portion of the 2018 guideline. The equivalence claim became actively contested.',
+        source: {
+          externalId: 'src:stone-excel-5yr-nejm-2019',
+          name: 'Stone GW, Kappetein AP, Sabik JF, et al. Five-Year Outcomes after PCI or CABG for Left Main Coronary Disease. N Engl J Med. 2019;381(19):1820-1830.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31562798/',
+          publishedAt: '2019-11-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EMPACT-MI — empagliflozin post-MI null result 2024 ──────────────────────
+  {
+    externalId: 'trajectory:empact-mi-empagliflozin-post-mi-null-2024',
+    text: 'On 6 April 2024 the EMPACT-MI trial reported that empagliflozin started in patients after acute myocardial infarction did not significantly reduce the composite of first hospitalization for heart failure or death from any cause.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2024-04-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-04-06',
+        datePrecision: 'DAY',
+        reason: 'Butler and colleagues presented EMPACT-MI at ACC.24 with simultaneous NEJM publication, reporting that in 6,522 patients with acute MI at risk for heart failure, empagliflozin did not significantly lower the composite of first heart-failure hospitalization or all-cause death (HR 0.90, not significant). This recorded a high-profile null result that checked the assumption that the heart-failure benefit of SGLT2 inhibitors (established in EMPEROR and DAPA-HF) would extend to broad post-MI use.',
+        source: {
+          externalId: 'src:butler-empact-mi-nejm-2024',
+          name: 'Butler J, Jones WS, Udell JA, et al. Empagliflozin after Acute Myocardial Infarction. N Engl J Med. 2024;390(16):1455-1466.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/38587237/',
+          publishedAt: '2024-04-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
