@@ -23357,6 +23357,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ══════════════════════════════════════════════════════════════════════════════
+  // ONCOLOGY ERA (2000–2006)
+  // ══════════════════════════════════════════════════════════════════════════════
+
+  // ── Temozolomide + radiotherapy for glioblastoma — Stupp 2005 ───────────────
+  {
+    externalId: 'trajectory:temozolomide-radiotherapy-glioblastoma-stupp-2005',
+    text: 'Roger Stupp and the EORTC/NCIC investigators reported on 10 March 2005 that adding temozolomide to radiotherapy for newly diagnosed glioblastoma extended median survival to 14.6 months (vs 12.1 with radiotherapy alone) and nearly tripled 2-year survival to 26.5% (vs 10.4%), establishing the chemoradiotherapy \'Stupp protocol\' as standard of care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-10',
+        datePrecision: 'DAY',
+        reason: 'The EORTC 26981/22981–NCIC CE.3 randomized phase III trial (573 patients) reported in NEJM that concomitant and adjuvant temozolomide added to radiotherapy produced a statistically significant survival benefit (hazard ratio for death 0.63) with minimal added toxicity. This was the first treatment in decades to improve survival in newly diagnosed glioblastoma, a uniformly fatal disease.',
+        source: {
+          externalId: 'src:stupp-temozolomide-glioblastoma-nejm-2005',
+          name: 'Stupp R, Mason WP, van den Bent MJ, et al. Radiotherapy plus concomitant and adjuvant temozolomide for glioblastoma. N Engl J Med. 2005;352(10):987-996.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15758009/',
+          publishedAt: '2005-03-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-03-15',
+        datePrecision: 'DAY',
+        reason: 'Five days after the NEJM publication, the FDA approved temozolomide (Temodar, NDA 021029 supplement 8, priority review) for newly diagnosed glioblastoma given concurrently with radiotherapy and then as maintenance. The regimen was rapidly adopted into NCCN and international guidelines as the global standard of care, a position it still holds.',
+        source: {
+          externalId: 'src:fda-temodar-glioblastoma-approval-2005',
+          name: 'U.S. FDA. Drugs@FDA, Temodar (temozolomide), NDA 021029, supplemental efficacy approval (glioblastoma). 15 Mar 2005.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=application_number:%22NDA021029%22',
+          publishedAt: '2005-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Letrozole extended adjuvant breast cancer — MA.17 2003 ──────────────────
+  {
+    externalId: 'trajectory:letrozole-ma17-extended-adjuvant-breast-cancer-2003',
+    text: 'Paul Goss and the NCIC CTG MA.17 investigators reported on 6 November 2003 that letrozole given after five years of tamoxifen reduced breast-cancer recurrence in postmenopausal women (4-year disease-free survival 93% vs 87% with placebo), prompting early termination of the trial and establishing extended adjuvant aromatase-inhibitor therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-11-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-11-06',
+        datePrecision: 'DAY',
+        reason: 'The double-blind MA.17 trial (5,187 women) was unblinded and stopped early at the first interim analysis when letrozole showed a highly significant reduction in recurrences and new contralateral cancers (132 vs 75 events, P≤0.001). The result extended endocrine therapy beyond the long-standing 5-year tamoxifen limit, addressing the persistent late-recurrence risk of hormone-receptor-positive breast cancer.',
+        source: {
+          externalId: 'src:goss-ma17-letrozole-nejm-2003',
+          name: 'Goss PE, Ingle JN, Martino S, et al. A randomized trial of letrozole in postmenopausal women after five years of tamoxifen therapy for early-stage breast cancer. N Engl J Med. 2003;349(19):1793-1802.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14551341/',
+          publishedAt: '2003-11-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-10-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved letrozole (Femara, NDA 020726 supplement 11, efficacy supplement) for extended adjuvant treatment of early breast cancer following five years of tamoxifen. Extended adjuvant aromatase-inhibitor therapy was incorporated into ASCO and NCCN guidelines, settling the question of whether endocrine therapy should continue past five years.',
+        source: {
+          externalId: 'src:fda-femara-extended-adjuvant-approval-2004',
+          name: 'U.S. FDA. Drugs@FDA, Femara (letrozole), NDA 020726, supplemental efficacy approval (extended adjuvant breast cancer). 29 Oct 2004.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=application_number:%22NDA020726%22',
+          publishedAt: '2004-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── High-dose chemotherapy / autologous transplant reversal — 2000 ───────────
+  {
+    externalId: 'trajectory:high-dose-chemotherapy-transplant-breast-cancer-reversal-2000',
+    text: 'Through the mid-1990s high-dose chemotherapy with autologous bone-marrow/stem-cell transplantation was widely used—and frequently insurer-mandated after litigation—for high-risk and metastatic breast cancer on the belief it improved survival; randomized trials reported in 2000 and the exposure of Werner Bezwoda\'s fabricated supporting data collapsed that belief and the practice was abandoned.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1996-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Driven by encouraging uncontrolled case series, Bezwoda\'s single positive randomized report (1995), intense patient demand, and high-profile coverage-denial lawsuits, high-dose chemotherapy with autologous transplant became a de facto standard for advanced breast cancer; tens of thousands of women were treated and many insurers were compelled to pay, entrenching it as practice ahead of definitive randomized evidence.',
+        source: {
+          externalId: 'src:stadtmauer-hdc-breast-cancer-prior-practice-nejm-2000',
+          name: 'Stadtmauer EA, O\'Neill A, Goldstein LJ, et al. Conventional-dose chemotherapy compared with high-dose chemotherapy plus autologous hematopoietic stem-cell transplantation for metastatic breast cancer. N Engl J Med. 2000;342(15):1069-1076 (introduction documenting prior widespread use).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10760307/',
+          publishedAt: '2000-04-13',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-03-18',
+        datePrecision: 'DAY',
+        reason: 'An on-site audit by Weiss and colleagues, published in The Lancet, found that Werner Bezwoda\'s randomized trial—the single positive RCT underpinning the practice—was fabricated: patients, records, and ethics approvals could not be verified. The collapse of the only supportive randomized evidence threw the entire rationale into question.',
+        source: {
+          externalId: 'src:weiss-bezwoda-onsite-review-lancet-2000',
+          name: 'Weiss RB, Rifkin RM, Stewart FM, et al. High-dose chemotherapy for high-risk primary breast cancer: an on-site review of the Bezwoda study. Lancet. 2000;355(9208):999-1003.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10768448/',
+          publishedAt: '2000-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-04-13',
+        datePrecision: 'DAY',
+        reason: 'The Philadelphia ECOG-coordinated randomized trial in NEJM found no survival advantage for high-dose chemotherapy with stem-cell rescue over conventional-dose chemotherapy in metastatic breast cancer (3-year survival 32% vs 38%). Together with other negative trials presented at ASCO 1999, this reversed the claim and the procedure was abandoned for breast cancer.',
+        source: {
+          externalId: 'src:stadtmauer-hdc-metastatic-breast-cancer-nejm-2000',
+          name: 'Stadtmauer EA, O\'Neill A, Goldstein LJ, et al. Conventional-dose chemotherapy compared with high-dose chemotherapy plus autologous hematopoietic stem-cell transplantation for metastatic breast cancer. N Engl J Med. 2000;342(15):1069-1076.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10760307/',
+          publishedAt: '2000-04-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Imatinib for GIST / KIT-targeted therapy — 2002 ────────────────────────
+  {
+    externalId: 'trajectory:imatinib-gist-kit-targeted-therapy-2002',
+    text: 'George Demetri and colleagues reported on 15 August 2002 that imatinib produced partial responses in 53.7% of patients with advanced, chemotherapy-resistant gastrointestinal stromal tumors, validating KIT-pathway inhibition and extending molecularly targeted therapy beyond chronic myeloid leukemia to a solid tumor.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-08-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-08-15',
+        datePrecision: 'DAY',
+        reason: 'The phase II trial in NEJM showed durable responses in a cancer that resisted all conventional chemotherapy, with 53.7% partial responses and 27.9% stable disease. By demonstrating that inhibiting KIT signal transduction controlled GIST, it proved the targeted-therapy paradigm pioneered in CML generalized to a KIT-driven solid tumor.',
+        source: {
+          externalId: 'src:demetri-imatinib-gist-nejm-2002',
+          name: 'Demetri GD, von Mehren M, Blanke CD, et al. Efficacy and safety of imatinib mesylate in advanced gastrointestinal stromal tumors. N Engl J Med. 2002;347(7):472-480.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12181401/',
+          publishedAt: '2002-08-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-02-01',
+        datePrecision: 'DAY',
+        reason: 'On the strength of the same trial data, the FDA had already granted imatinib (Gleevec, NDA 021335 supplement 1, priority review) accelerated approval for KIT-positive unresectable or metastatic GIST. Imatinib became first-line standard of care for advanced GIST and remains so, settling the disease\'s management around KIT-targeted therapy.',
+        source: {
+          externalId: 'src:fda-gleevec-gist-approval-2002',
+          name: 'U.S. FDA. Drugs@FDA, Gleevec (imatinib mesylate), NDA 021335, supplemental efficacy approval (GIST). 1 Feb 2002.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=application_number:%22NDA021335%22',
+          publishedAt: '2002-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cetuximab + radiotherapy for head and neck cancer — Bonner 2006 ─────────
+  {
+    externalId: 'trajectory:cetuximab-radiotherapy-head-neck-cancer-bonner-2006',
+    text: 'James Bonner and colleagues reported on 9 February 2006 that adding cetuximab to radiotherapy for locoregionally advanced head and neck squamous-cell carcinoma improved locoregional control and overall survival (median 49.0 vs 29.3 months with radiotherapy alone), the first targeted agent shown to improve survival in this disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-02-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-02-09',
+        datePrecision: 'DAY',
+        reason: 'The randomized phase III trial (424 patients) in NEJM showed that the anti-EGFR antibody cetuximab added to radiotherapy prolonged locoregional control and overall survival without increasing the mucosal toxicity of radiation. It established EGFR blockade as a survival-improving strategy in head and neck cancer, offering an alternative to concurrent platinum chemotherapy.',
+        source: {
+          externalId: 'src:bonner-cetuximab-radiotherapy-head-neck-nejm-2006',
+          name: 'Bonner JA, Harari PM, Giralt J, et al. Radiotherapy plus cetuximab for squamous-cell carcinoma of the head and neck. N Engl J Med. 2006;354(6):567-578.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16467544/',
+          publishedAt: '2006-02-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-03-01',
+        datePrecision: 'DAY',
+        reason: 'Three weeks after the trial publication, the FDA approved cetuximab (Erbitux, BLA 125084 supplement, priority review with orphan designation) in combination with radiation therapy for locally or regionally advanced head and neck cancer. The cetuximab–radiotherapy regimen entered NCCN guidelines as a standard option, particularly for cisplatin-ineligible patients.',
+        source: {
+          externalId: 'src:fda-erbitux-head-neck-approval-2006',
+          name: 'U.S. FDA. Drugs@FDA, Erbitux (cetuximab), BLA 125084, supplemental efficacy approval (head and neck cancer with radiotherapy). 1 Mar 2006.',
+          url: 'https://api.fda.gov/drug/drugsfda.json?search=application_number:%22BLA125084%22',
+          publishedAt: '2006-03-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
