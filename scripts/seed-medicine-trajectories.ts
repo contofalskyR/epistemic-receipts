@@ -29344,6 +29344,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUROSCIENCE & PRION BIOLOGY (1966–1997)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Kuru transmission to chimpanzees — Gajdusek 1966 ───────────────────────
+  {
+    externalId: 'trajectory:gajdusek-kuru-transmission-chimpanzees-1966',
+    text: 'Gajdusek, Gibbs & Alpers reported in Nature on 19 February 1966 the experimental transmission of a kuru-like neurodegenerative syndrome to chimpanzees, establishing kuru as a transmissible \'slow\' infection of the central nervous system.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1966-02-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-02-19',
+        datePrecision: 'DAY',
+        reason: 'Gajdusek, Gibbs, and Alpers published \'Experimental transmission of a Kuru-like syndrome to chimpanzees\' in Nature, showing that brain material from kuru victims among the Fore people of New Guinea produced a similar degenerative disease in inoculated chimpanzees after a long incubation. This recorded the first demonstration that a chronic human neurodegenerative disease could be experimentally transmitted, introducing the concept of slow-virus (later prion) infection.',
+        source: {
+          externalId: 'src:gajdusek-kuru-chimpanzees-nature-1966',
+          name: 'Gajdusek DC, Gibbs CJ, Alpers M. Experimental transmission of a Kuru-like syndrome to chimpanzees. Nature. 1966 Feb 19;209(5025):794-6.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5922150/',
+          publishedAt: '1966-02-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-10-14',
+        datePrecision: 'DAY',
+        reason: 'The Nobel Assembly awarded D. Carleton Gajdusek a share of the 1976 Nobel Prize in Physiology or Medicine (with Baruch Blumberg) for discoveries concerning new mechanisms for the origin and dissemination of infectious diseases, recognizing his demonstration of kuru\'s transmissibility. The award institutionally settled transmissible neurodegeneration as an established disease mechanism.',
+        source: {
+          externalId: 'src:nobel-gajdusek-blumberg-1976',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1976 — Baruch S. Blumberg and D. Carleton Gajdusek. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1976/summary/',
+          publishedAt: '1976-10-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Opiate receptor in nervous tissue — Pert & Snyder 1973 ─────────────────
+  {
+    externalId: 'trajectory:pert-snyder-opiate-receptor-nervous-tissue-1973',
+    text: 'Candace Pert & Solomon Snyder demonstrated in Science on 9 March 1973 a specific, stereospecific opiate receptor confined to mammalian nervous tissue, establishing that opiate drugs act through a discrete brain receptor rather than nonspecifically.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-03-09',
+        datePrecision: 'DAY',
+        reason: 'Pert and Snyder published \'Opiate receptor: demonstration in nervous tissue\' in Science, showing that tritiated naloxone binds specifically to a receptor of mammalian brain and that binding affinities of opiates and antagonists track their pharmacological potency. This recorded the existence of a discrete opiate receptor in the nervous system, raising the question of what endogenous molecule it served.',
+        source: {
+          externalId: 'src:pert-snyder-opiate-receptor-science-1973',
+          name: 'Pert CB, Snyder SH. Opiate receptor: demonstration in nervous tissue. Science. 1973 Mar 9;179(4077):1011-4.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4687585/',
+          publishedAt: '1973-03-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-12-18',
+        datePrecision: 'DAY',
+        reason: 'Hughes, Kosterlitz, and colleagues reported in Nature the identification of two pentapeptides (\'enkephalins\') from brain with potent opiate-agonist activity — the endogenous ligands of the receptor. Finding the receptor\'s natural ligands confirmed that the opiate receptor was a genuine physiological system, settling the receptor\'s biological reality and launching the field of endogenous opioids.',
+        source: {
+          externalId: 'src:hughes-kosterlitz-enkephalin-nature-1975',
+          name: 'Hughes J, Smith TW, Kosterlitz HW, Fothergill LA, Morgan BA, Morris HR. Identification of two related pentapeptides from the brain with potent opiate agonist activity. Nature. 1975 Dec 18;258(5536):577-80.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1207728/',
+          publishedAt: '1975-12-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── D2 receptor binding predicts antipsychotic potency — Creese et al. 1976 ─
+  {
+    externalId: 'trajectory:neuroleptic-d2-receptor-binding-antipsychotic-potency-1976',
+    text: 'Creese, Burt & Snyder reported in Science on 30 April 1976 that the clinical potencies of antipsychotic drugs correlate closely with their affinity for the dopamine (haloperidol-binding) receptor, supplying the receptor-level mechanism underpinning the dopamine hypothesis of schizophrenia.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1976-04-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-04-30',
+        datePrecision: 'DAY',
+        reason: 'Creese, Burt, and Snyder published \'Dopamine receptor binding predicts clinical and pharmacological potencies of antischizophrenic drugs\' in Science, showing that the clinical potencies of butyrophenones, phenothiazines, and related drugs correlate closely with their ability to inhibit tritiated-haloperidol binding. This recorded the first quantitative receptor-level explanation for how antipsychotics work.',
+        source: {
+          externalId: 'src:creese-burt-snyder-dopamine-receptor-science-1976',
+          name: 'Creese I, Burt DR, Snyder SH. Dopamine receptor binding predicts clinical and pharmacological potencies of antischizophrenic drugs. Science. 1976 Apr 30;192(4238):481-3.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3854/',
+          publishedAt: '1976-04-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-06-24',
+        datePrecision: 'DAY',
+        reason: 'Within two months, Seeman, Lee, Chau-Wong & Wong independently reported in Nature (\'Antipsychotic drug doses and neuroleptic/dopamine receptors\') the same dose–receptor-affinity correlation, converging on the conclusion that antipsychotic action is mediated by dopamine-receptor (D2) blockade. The rapid independent replication settled the dopamine-receptor mechanism as the unifying account of antipsychotic potency.',
+        source: {
+          externalId: 'src:seeman-neuroleptic-dopamine-receptors-nature-1976',
+          name: 'Seeman P, Lee T, Chau-Wong M, Wong K. Antipsychotic drug doses and neuroleptic/dopamine receptors. Nature. 1976 Jun 24;261(5562):717-9.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/945467/',
+          publishedAt: '1976-06-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Prion hypothesis — Prusiner 1982 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:prusiner-prion-hypothesis-scrapie-1982',
+    text: 'Stanley B. Prusiner proposed in Science on 9 April 1982 that scrapie is caused by a \'prion\' — a small proteinaceous infectious particle that replicates without nucleic acid — overturning the assumption that all transmissible agents carry a genome.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1982-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1982-04-09',
+        datePrecision: 'DAY',
+        reason: 'Prusiner published \'Novel proteinaceous infectious particles cause scrapie\' in Science, coining the term \'prion\' for an infectious agent he argued was composed principally of protein and resistant to procedures that destroy nucleic acids. The claim was recorded into the top-tier literature but was widely regarded as heretical because it contradicted the central dogma that infectivity requires a nucleic-acid genome.',
+        source: {
+          externalId: 'src:prusiner-prion-scrapie-science-1982',
+          name: 'Prusiner SB. Novel proteinaceous infectious particles cause scrapie. Science. 1982 Apr 9;216(4542):136-44.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6801762/',
+          publishedAt: '1982-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-10-06',
+        datePrecision: 'DAY',
+        reason: 'After fifteen years of accumulating biochemical and genetic evidence for the protein-only mechanism, the Nobel Assembly awarded Prusiner the 1997 Nobel Prize in Physiology or Medicine \'for his discovery of Prions — a new biological principle of infection.\' The highest institutional honor in medicine ratified the once-heretical prion hypothesis as established science.',
+        source: {
+          externalId: 'src:nobel-prusiner-prions-1997',
+          name: 'Nobel Prize Committee. The Nobel Prize in Physiology or Medicine 1997 — Stanley B. Prusiner, for his discovery of Prions. NobelPrize.org.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1997/prusiner/facts/',
+          publishedAt: '1997-10-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
