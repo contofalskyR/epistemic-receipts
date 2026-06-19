@@ -21270,6 +21270,334 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── DCCT — intensive insulin therapy reduces microvascular complications in type 1 diabetes 1993 ──
+  {
+    externalId: 'trajectory:dcct-intensive-insulin-type1-diabetes-1993',
+    text: 'The Diabetes Control and Complications Trial Research Group reported in the New England Journal of Medicine on 30 September 1993 that intensive insulin therapy aimed at near-normal blood glucose substantially reduces the development and progression of retinopathy, nephropathy, and neuropathy in type 1 (insulin-dependent) diabetes.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-09-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-09-30',
+        datePrecision: 'DAY',
+        reason: 'The DCCT, a randomized controlled trial in 1,441 type 1 diabetic patients followed for a mean 6.5 years, reported that intensive therapy reduced the risk of clinically meaningful retinopathy by roughly 76% in primary prevention and similarly cut nephropathy and neuropathy, at the cost of a roughly threefold increase in severe hypoglycemia. This recorded in the expert literature the long-debated \'glucose hypothesis\' — that tight glycemic control, not merely the presence of diabetes, drives microvascular complications.',
+        source: {
+          externalId: 'src:dcct-nejm-1993',
+          name: 'The Diabetes Control and Complications Trial Research Group. The effect of intensive treatment of diabetes on the development and progression of long-term complications in insulin-dependent diabetes mellitus. N Engl J Med. 1993;329(14):977–986.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8366922/',
+          publishedAt: '1993-09-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-11-01',
+        datePrecision: 'MONTH',
+        reason: 'The American Diabetes Association issued its position statement \'Implications of the Diabetes Control and Complications Trial\' (Diabetes Care, November 1993), recommending intensive therapy with the goal of near-normoglycemia for most patients with type 1 diabetes. The professional body that sets U.S. diabetes standards converted the trial result into formal standard of care, settling intensive glycemic control as the institutional treatment paradigm.',
+        source: {
+          externalId: 'src:ada-dcct-implications-1993',
+          name: 'American Diabetes Association. Implications of the Diabetes Control and Complications Trial. Diabetes Care. 1993;16(11):1517–1520.',
+          url: 'https://diabetesjournals.org/care/article/16/11/1517/17286/Implications-of-the-Diabetes-Control-and',
+          publishedAt: '1993-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rosiglitazone (Avandia) — FDA approval 1999 → Nissen cardiovascular meta-analysis 2007 ──
+  {
+    externalId: 'trajectory:rosiglitazone-avandia-cardiovascular-meta-analysis-2007',
+    text: 'The claim that rosiglitazone (Avandia), FDA-approved on 25 May 1999 as a safe thiazolidinedione for type 2 diabetes, was a cardiovascularly safe glucose-lowering drug was contested when Nissen and Wolski reported in the New England Journal of Medicine on 21 May 2007 that the drug was associated with a significant increase in the risk of myocardial infarction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1999-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-05-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved rosiglitazone (Avandia, SmithKline Beecham/GlaxoSmithKline) for type 2 diabetes on the basis of its glucose-lowering, insulin-sensitizing efficacy. Approval established it on the regulatory record as a safe and effective oral antidiabetic, and it became one of the best-selling diabetes drugs worldwide.',
+        source: {
+          externalId: 'src:fda-avandia-livertox',
+          name: 'LiverTox: Clinical and Research Information on Drug-Induced Liver Injury. Rosiglitazone (documents FDA approval 25 May 1999).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK548390/',
+          publishedAt: '1999-05-25',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-05-21',
+        datePrecision: 'DAY',
+        reason: 'Nissen and Wolski published a meta-analysis of 42 randomized trials in the NEJM finding that rosiglitazone was associated with a significant increase in myocardial infarction (odds ratio 1.43, 95% CI 1.03–1.98) and a borderline increase in cardiovascular death (OR 1.64). Drawing only on the manufacturer\'s own pooled trial data, the analysis directly challenged the cardiovascular safety of an approved blockbuster and triggered congressional hearings, an FDA boxed warning, and the eventual 2010 REMS prescribing restrictions — making the drug\'s safety institutionally contested.',
+        source: {
+          externalId: 'src:nissen-wolski-rosiglitazone-nejm-2007',
+          name: 'Nissen SE, Wolski K. Effect of rosiglitazone on the risk of myocardial infarction and death from cardiovascular causes. N Engl J Med. 2007;356(24):2457–2471.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17517853/',
+          publishedAt: '2007-05-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fenfluramine/dexfenfluramine (fen-phen) — Mayo valvulopathy report 1997 → FDA withdrawal 1997 ──
+  {
+    externalId: 'trajectory:fenfluramine-dexfenfluramine-valvulopathy-withdrawal-1997',
+    text: 'The claim that the appetite-suppressant fenfluramines — including dexfenfluramine (Redux), FDA-approved 29 April 1996, and fenfluramine (Pondimin) used in the \'fen-phen\' combination — were safe obesity treatments was reversed when, after a Mayo Clinic report of drug-associated valvular heart disease, the FDA requested their withdrawal from the U.S. market on 15 September 1997.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1996-04-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1996-04-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved dexfenfluramine (Redux) for obesity, the first new prescription weight-loss drug approved in the U.S. in decades; combined with older fenfluramine (Pondimin, approved 1973) plus phentermine in the popular off-label \'fen-phen\' regimen, these serotonergic appetite suppressants were established and heavily prescribed as safe obesity therapy.',
+        source: {
+          externalId: 'src:fenfluramine-overview-sciencedirect',
+          name: 'Fenfluramine/Phentermine — overview (documents Redux approval April 1996 and the fen-phen regimen). ScienceDirect Topics.',
+          url: 'https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/fenfluramine-phentermine',
+          publishedAt: '1996-04-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: 'Connolly and colleagues at the Mayo Clinic reported in the NEJM 24 women on fenfluramine-phentermine who developed unusual valvular morphology and regurgitation affecting both right- and left-sided heart valves, with histology resembling carcinoid or ergotamine-induced disease. The first case series linking these widely used diet drugs to a serious, previously unrecognized cardiac harm contested their safety in the expert literature.',
+        source: {
+          externalId: 'src:connolly-fenphen-valvulopathy-nejm-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581–588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: 'Citing the high incidence of cardiac valvular abnormalities (over 100 spontaneous reports by late September) and the Mayo findings, the FDA asked Wyeth-Ayerst and Interneuron to voluntarily withdraw dexfenfluramine (Redux) and fenfluramine (Pondimin), and the companies complied. The regulatory withdrawal repudiated the drugs\' safety and produced one of the largest U.S. mass-tort litigations.',
+        source: {
+          externalId: 'src:fda-fenfluramine-withdrawal-1997',
+          name: 'U.S. Food and Drug Administration. FDA announces withdrawal of fenfluramine (Pondimin) and dexfenfluramine (Redux). 15 September 1997.',
+          url: 'https://www.federalregister.gov/documents/2015/09/29/2015-24619/determination-that-pondimin-fenfluramine-hydrochloride-tablets-20-milligrams-and-60-milligrams-and',
+          publishedAt: '1997-09-15',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Rimonabant (Acomplia) — EU authorisation 2006 → EMA suspension 2008 ──
+  {
+    externalId: 'trajectory:rimonabant-acomplia-psychiatric-suspension-2008',
+    text: 'The claim that rimonabant (Acomplia), the first cannabinoid CB1-receptor antagonist for obesity, granted EU marketing authorisation on 19 June 2006, was a safe weight-loss and metabolic drug was reversed when the European Medicines Agency recommended suspension of its marketing authorisation on 23 October 2008 over a roughly doubled risk of serious psychiatric disorders.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-06-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-06-19',
+        datePrecision: 'DAY',
+        reason: 'The European Commission, acting on a positive EMEA/CHMP opinion, granted rimonabant (Acomplia, Sanofi-Aventis) EU marketing authorisation for obese or overweight patients, establishing the first-in-class CB1 endocannabinoid antagonist as an approved obesity and metabolic therapy; it was eventually marketed in 18 EU member states.',
+        source: {
+          externalId: 'src:ema-acomplia-suspension-qa-2008',
+          name: 'European Medicines Agency. Questions and answers on the recommendation to suspend the marketing authorisation of Acomplia (rimonabant) (documents 2006 EU authorisation and 2008 suspension). 2008.',
+          url: 'https://www.ema.europa.eu/en/documents/medicine-qa/questions-and-answers-recommendation-suspend-marketing-authorisation-acomplia-rimonabant_en.pdf',
+          publishedAt: '2006-06-19',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-06-13',
+        datePrecision: 'DAY',
+        reason: 'A U.S. FDA Endocrinologic and Metabolic Drugs Advisory Committee voted unanimously (14–0) against recommending approval of rimonabant, citing increased anxiety, depression, and suicidality signals; Sanofi-Aventis withdrew its U.S. application shortly after. The rejection by a major regulator\'s expert panel placed the drug\'s safety in active dispute even as it remained marketed in Europe.',
+        source: {
+          externalId: 'src:ema-acomplia-suspension-pressrelease-2008',
+          name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia (background on benefit-risk reassessment). 23 October 2008.',
+          url: 'https://www.ema.europa.eu/en/documents/press-release/european-medicines-agency-recommends-suspension-marketing-authorisation-acomplia_en.pdf',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-10-23',
+        datePrecision: 'DAY',
+        reason: 'The EMEA\'s CHMP concluded that the benefits of Acomplia no longer outweighed its risks — confirming an approximately twofold increase in psychiatric disorders, including serious depression and suicidality, in overweight/obese patients versus placebo — and recommended suspension of its marketing authorisation across the EU. The drug was withdrawn from the market, reversing the safety claim of the entire CB1-antagonist obesity class.',
+        source: {
+          externalId: 'src:ema-acomplia-suspension-2008',
+          name: 'European Medicines Agency. The European Medicines Agency recommends suspension of the marketing authorisation of Acomplia. Press release, 23 October 2008.',
+          url: 'https://www.ema.europa.eu/en/documents/press-release/european-medicines-agency-recommends-suspension-marketing-authorisation-acomplia_en.pdf',
+          publishedAt: '2008-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS REGULATORY ERA (2013–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── FDA ER/LA opioid class labeling — indication narrowed 2013–2014 ──────────
+  {
+    externalId: 'trajectory:fda-erla-opioid-class-labeling-narrowed-indication-2013',
+    text: 'The FDA announced on September 10, 2013 class-wide safety labeling changes for all extended-release and long-acting (ER/LA) opioid analgesics, narrowing their approved indication from \'moderate to severe\' pain to pain \'severe enough to require daily, around-the-clock, long-term opioid treatment and for which alternative treatments are inadequate,\' adding a boxed warning on neonatal opioid withdrawal syndrome, and mandating new postmarketing studies of misuse, addiction, hyperalgesia, overdose, and death.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-09-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-09-10',
+        datePrecision: 'DAY',
+        reason: 'The FDA announced class-wide safety labeling changes and new postmarketing requirements for all ER/LA opioids, formally narrowing the approved indication away from \'moderate\' pain and conceding that the broad indication granted at the drugs\' original approvals overstated their appropriate use. The agency\'s announcement entered the regulatory record as a partial walk-back of the expansive opioid indications established during the pain-treatment-expansion era.',
+        source: {
+          externalId: 'src:fda-erla-opioid-class-labeling-2013',
+          name: 'U.S. FDA. New Safety Measures Announced for Extended-release and Long-acting Opioids. Drug class information, announced September 10, 2013.',
+          url: 'https://www.fda.gov/drugs/information-drug-class/new-safety-measures-announced-extended-release-and-long-acting-opioids',
+          publishedAt: '2013-09-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-04-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA formally approved the class-wide ER/LA opioid labeling changes on April 16, 2014, making the narrowed \'severe enough to require daily, around-the-clock, long-term\' indication and the postmarketing study requirements binding across every product in the class. The narrower benefit-risk framing for long-acting opioids became the settled federal labeling standard, reversing the prior \'moderate to severe\' indication.',
+        source: {
+          externalId: 'src:fda-erla-opioid-class-labeling-2013',
+          name: 'U.S. FDA. New Safety Measures Announced for Extended-release and Long-acting Opioids (class-wide labeling changes approved April 16, 2014).',
+          url: 'https://www.fda.gov/drugs/information-drug-class/new-safety-measures-announced-extended-release-and-long-acting-opioids',
+          publishedAt: '2014-04-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA opioid–benzodiazepine boxed warning — 2016 ──────────────────────────
+  {
+    externalId: 'trajectory:fda-opioid-benzodiazepine-boxed-warning-2016',
+    text: 'The claim that concurrent use of opioids and benzodiazepines produces dangerous, potentially fatal respiratory depression was elevated from clinical-guidance caution to the FDA\'s strongest regulatory warning when the agency required class-wide boxed warnings and updated Medication Guides on nearly 400 opioid analgesic, prescription opioid cough, and benzodiazepine products on August 31, 2016.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2016-03-18',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s 2016 Guideline for Prescribing Opioids for Chronic Pain (Recommendation 11) advised clinicians to avoid prescribing opioids and benzodiazepines concurrently whenever possible, recording the combined-use danger in authoritative national guidance backed by pharmacoepidemiologic evidence that co-prescribing and concurrent-use overdose deaths had risen sharply. The interaction risk entered the institutional record as a formal prescribing caution.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2016',
+          name: 'Dowell D, Haegerich TM, Chou R. CDC Guideline for Prescribing Opioids for Chronic Pain — United States, 2016 (Recommendation 11, concurrent benzodiazepines). MMWR Recomm Rep. 2016;65(1):1-49.',
+          url: 'https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm',
+          publishedAt: '2016-03-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-08-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA announced on August 31, 2016 that it would require boxed warnings — its strongest warning — and new or revised Medication Guides on nearly 400 opioid analgesic, prescription opioid cough, and benzodiazepine products, citing evidence of serious sedation, respiratory depression, coma, and death from combined use. The boxed warning made the opioid–benzodiazepine interaction a settled, legally mandated element of the drug labels across both classes.',
+        source: {
+          externalId: 'src:fda-opioid-benzodiazepine-boxed-warning-2016',
+          name: 'U.S. FDA. New Safety Measures Announced for Opioid Analgesics, Prescription Opioid Cough Products, and Benzodiazepines. Drug class information, August 31, 2016.',
+          url: 'https://www.fda.gov/drugs/information-drug-class/new-safety-measures-announced-opioid-analgesics-prescription-opioid-cough-products-and',
+          publishedAt: '2016-08-31',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA opioid rapid-tapering harm warning — 2019 ───────────────────────────
+  {
+    externalId: 'trajectory:fda-opioid-rapid-tapering-harm-warning-2019',
+    text: 'The FDA issued a Drug Safety Communication on April 9, 2019 warning that abruptly discontinuing or rapidly tapering opioids in physically dependent patients causes serious harm — including uncontrolled pain, severe withdrawal, psychological distress, and suicide — and required label changes to guide gradual, individualized tapering, implicitly correcting the forced and rapid tapering that had spread after the 2016 CDC dosage thresholds.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-04-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-04-09',
+        datePrecision: 'DAY',
+        reason: 'After receiving reports of serious harm in opioid-dependent patients whose medicines were suddenly stopped or rapidly reduced, the FDA identified the harm in a Drug Safety Communication and required changes to outpatient opioid prescribing information to guide gradual, individualized tapering. The action recorded as an official federal safety signal that aggressive dose reduction — a practice that had proliferated as the 2016 CDC thresholds were misapplied as hard limits — was itself dangerous.',
+        source: {
+          externalId: 'src:fda-opioid-tapering-harm-dsc-2019',
+          name: 'U.S. FDA. FDA identifies harm reported from sudden discontinuation of opioid pain medicines and requires label changes to guide prescribers on gradual, individualized tapering. Drug Safety Communication, April 9, 2019.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-identifies-harm-reported-sudden-discontinuation-opioid-pain-medicines-and-requires-label-changes',
+          publishedAt: '2019-04-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-11-03',
+        datePrecision: 'DAY',
+        reason: 'The CDC\'s 2022 Clinical Practice Guideline removed the rigid morphine-milligram-equivalent thresholds and explicitly warned against abrupt or rapid tapering, citing evidence that inflexible dose reduction produced untreated pain, withdrawal, and patient harm. National institutional consensus thereby settled the claim that forced or rapid opioid tapering is harmful, ratifying the FDA\'s 2019 safety signal.',
+        source: {
+          externalId: 'src:cdc-opioid-guideline-mmwr-2022',
+          name: 'Dowell D, Ragan KR, Jones CM, Baldwin GT, Chou R. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022. MMWR Recomm Rep. 2022;71(3):1-95.',
+          url: 'https://www.cdc.gov/mmwr/volumes/71/rr/rr7103a1.htm',
+          publishedAt: '2022-11-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
