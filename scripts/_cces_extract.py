@@ -17,7 +17,8 @@ constituent signal:
 For every LegislativeVote topic slug (taxation, health, immigration, ...) we
 emit a ConstituentOpinion row whose supportPct = the share of constituents
 supporting the *liberal-coded* direction on that topic (typically
-liberal_pct, but uninsured_pct for health and union_pct for labor).
+liberal_pct, but dem_pct for party-coded topics like health, foreign_policy,
+appropriations, infrastructure; and union_pct for labor).
 
 Output: /tmp/cces/cces_aggregates.json — a list of {state, year, topicSlug,
 supportPct, sampleSize, questionCode, metadata} objects ready to be upserted
@@ -53,7 +54,7 @@ OUT_PATH = Path("/tmp/cces/cces_aggregates.json")
 TOPIC_DIRECTION: dict[str, str] = {
     "taxation": "liberal",
     "appropriations": "dem",
-    "foreign_policy": "liberal",
+    "foreign_policy": "dem",
     "military": "conservative",
     "banking_finance": "liberal",
     "labor": "union",
@@ -65,7 +66,7 @@ TOPIC_DIRECTION: dict[str, str] = {
     "tariff_trade": "liberal",
     "education": "liberal",
     "agriculture": "dem",
-    "health": "uninsured",
+    "health": "dem",
     "housing": "liberal",
     "native_affairs": "liberal",
     "postal": "dem",
