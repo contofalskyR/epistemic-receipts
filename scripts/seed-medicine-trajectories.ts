@@ -28846,6 +28846,145 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL EVIDENCE ERA (1984–2006)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Tonsillectomy RCT — Paradise 1984 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:paradise-tonsillectomy-recurrent-throat-infection-1984',
+    text: 'John L. Paradise and colleagues reported in the New England Journal of Medicine on 15 March 1984 that tonsillectomy reduced the frequency and severity of throat infections over the following two to three years in children severely affected by recurrent throat infection, providing the first randomized evidence of benefit and defining the stringent criteria for which children the operation is justified.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1984-03-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-03-15',
+        datePrecision: 'DAY',
+        reason: 'Tonsillectomy was for decades one of the most commonly performed operations in children, done in vast numbers without controlled evidence of benefit. Paradise and colleagues ran parallel randomized and nonrandomized trials in 187 severely affected children and showed that tonsillectomy significantly reduced throat infections in the following years, recording rigorous efficacy evidence while simultaneously confining the justified indication to a narrowly defined severely affected group (the \'Paradise criteria\') and undercutting the routine use of the operation in less-affected children.',
+        source: {
+          externalId: 'src:paradise-tonsillectomy-recurrent-throat-nejm-1984',
+          name: 'Paradise JL, Bluestone CD, Bachman RZ, et al. Efficacy of tonsillectomy for recurrent throat infection in severely affected children. Results of parallel randomized and nonrandomized clinical trials. N Engl J Med. 1984;310(11):674-683.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6700642/',
+          publishedAt: '1984-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Variceal band ligation superior to sclerotherapy — Stiegmann 1992 ──────
+  {
+    externalId: 'trajectory:variceal-band-ligation-superior-sclerotherapy-1992',
+    text: 'Gregory V. Stiegmann and colleagues reported in the New England Journal of Medicine on 4 June 1992 that endoscopic band ligation of bleeding esophageal varices produced fewer treatment-related complications and better survival than endoscopic sclerotherapy in patients with cirrhosis, overturning sclerotherapy as the standard endoscopic treatment for variceal hemorrhage.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1992-06-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1992-06-04',
+        datePrecision: 'DAY',
+        reason: 'Endoscopic sclerotherapy — injecting a sclerosant directly into bleeding varices — had become the established endoscopic treatment for variceal hemorrhage despite its esophageal ulceration, stricture, and perforation complications. Stiegmann and colleagues randomized 129 cirrhotic patients and found band ligation gave significantly fewer complications, lower rebleeding, and better survival, recording the evidence that displaced sclerotherapy and reoriented endoscopic management of esophageal varices toward banding.',
+        source: {
+          externalId: 'src:stiegmann-variceal-ligation-vs-sclerotherapy-nejm-1992',
+          name: 'Stiegmann GV, Goff JS, Michaletz-Onody PA, et al. Endoscopic sclerotherapy as compared with endoscopic ligation for bleeding esophageal varices. N Engl J Med. 1992;326(23):1527-1532.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1579136/',
+          publishedAt: '1992-06-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Inguinal hernia watchful waiting — Fitzgibbons 2006 ────────────────────
+  {
+    externalId: 'trajectory:inguinal-hernia-watchful-waiting-2006',
+    text: 'Robert J. Fitzgibbons and colleagues reported in JAMA on 18 January 2006 that watchful waiting is a safe and acceptable alternative to surgical repair in men with minimally symptomatic inguinal hernias, with very low rates of acute incarceration, challenging the long-standing surgical doctrine that all inguinal hernias should be repaired to prevent strangulation.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-01-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-18',
+        datePrecision: 'DAY',
+        reason: 'Surgical teaching held that inguinal hernias should be repaired on diagnosis because of the feared risk of incarceration and strangulation. Fitzgibbons and colleagues randomized 720 men with minimally symptomatic hernias to watchful waiting or repair and found that pain and function were similar and that acute incarceration requiring emergency surgery was rare (well under 1% per year), recording the first rigorous evidence that delaying repair in minimally symptomatic men is safe and overturning the reflexive \'every hernia must be fixed\' rationale.',
+        source: {
+          externalId: 'src:fitzgibbons-hernia-watchful-waiting-jama-2006',
+          name: 'Fitzgibbons RJ Jr, Giobbie-Hurder A, Gibbs JO, et al. Watchful waiting vs repair of inguinal hernia in minimally symptomatic men: a randomized clinical trial. JAMA. 2006;295(3):285-292.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16418463/',
+          publishedAt: '2006-01-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Term Breech Trial — planned cesarean — Hannah 2000 ─────────────────────
+  {
+    externalId: 'trajectory:term-breech-trial-planned-cesarean-2000',
+    text: 'Mary E. Hannah and the Term Breech Trial collaborators reported in The Lancet on 21 October 2000 that planned caesarean section significantly reduced perinatal and neonatal death and serious neonatal morbidity compared with planned vaginal birth for the term fetus in breech presentation, evidence that rapidly shifted obstetric practice worldwide toward planned cesarean for breech.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-10-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-10-21',
+        datePrecision: 'DAY',
+        reason: 'Mode of delivery for term breech presentation had long been debated without definitive randomized evidence. The international Term Breech Trial randomized 2,088 women across 121 centres and found that planned cesarean reduced the composite of perinatal/neonatal mortality and serious morbidity from 5.0% to 1.6%, recording trial-grade evidence favoring planned cesarean; the result was adopted with unusual speed by national obstetric bodies and nearly ended planned vaginal breech delivery in many countries, though later follow-up and observational cohorts (e.g., two-year outcomes, PREMODA) reopened debate.',
+        source: {
+          externalId: 'src:hannah-term-breech-trial-lancet-2000',
+          name: 'Hannah ME, Hannah WJ, Hewson SA, Hodnett ED, Saigal S, Willan AR. Planned caesarean section versus planned vaginal birth for breech presentation at term: a randomised multicentre trial. Lancet. 2000;356(9239):1375-1383.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11052579/',
+          publishedAt: '2000-10-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tympanostomy tubes no developmental benefit — Paradise 2001 ────────────
+  {
+    externalId: 'trajectory:tympanostomy-tubes-no-developmental-benefit-2001',
+    text: 'John L. Paradise and colleagues reported in the New England Journal of Medicine on 19 April 2001 that prompt insertion of tympanostomy tubes for persistent middle-ear effusion did not measurably improve speech, language, cognitive, or psychosocial development at three years of age compared with delayed insertion, undercutting the developmental rationale for aggressive ear-tube placement in young children.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-04-19',
+        datePrecision: 'DAY',
+        reason: 'Tympanostomy tube insertion became one of the most common pediatric operations, justified partly by the belief that promptly clearing persistent middle-ear effusion would protect children\'s speech and cognitive development. Paradise and colleagues randomized children with persistent effusion to early versus delayed tube insertion and found no measurable developmental advantage at age three, recording rigorous evidence against the developmental rationale and supporting a more conservative, watchful approach to ear-tube placement.',
+        source: {
+          externalId: 'src:paradise-tympanostomy-tubes-development-nejm-2001',
+          name: 'Paradise JL, Feldman HM, Campbell TF, et al. Effect of early or delayed insertion of tympanostomy tubes for persistent otitis media on developmental outcomes at the age of three years. N Engl J Med. 2001;344(16):1179-1187.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11309632/',
+          publishedAt: '2001-04-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
