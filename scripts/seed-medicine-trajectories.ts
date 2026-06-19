@@ -33441,6 +33441,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID SAFETY ERA (1983–2017)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Talwin Nx — pentazocine/naloxone abuse deterrence 1983 ─────────────────
+  {
+    externalId: 'trajectory:talwin-nx-pentazocine-naloxone-abuse-deterrence-1983',
+    text: 'Adding a sub-analgesic dose of oral naloxone (0.5 mg) to pentazocine tablets — marketed as Talwin Nx from 1983 — deters parenteral abuse of pentazocine (the injected \'T\'s and Blues\' epidemic) while preserving oral analgesic efficacy, because the naloxone is inactive when swallowed but blocks the opioid high if the tablet is dissolved and injected.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1983-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1983-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After an epidemic of intravenous \'T\'s and Blues\' abuse (pentazocine tablets crushed and injected with the antihistamine tripelennamine for a heroin-like high), the manufacturer and the FDA agreed in 1981 to reformulate the oral product. Talwin Nx, combining pentazocine with 0.5 mg of naloxone, was approved in late 1982 and introduced in 1983, replacing plain pentazocine tablets — recording the hypothesis that an orally inactive antagonist could selectively defeat injection abuse.',
+        source: {
+          externalId: 'src:jama-talwin-reformulation-1983',
+          name: 'Talwin 50 reformulated to avert \'T\'s and blues\' abuse. JAMA. 1983;249(2):174-175.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6827745/',
+          publishedAt: '1983-01-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1984-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Poklis documented a continuous decline in \'T\'s and Blues\' abuse following the 1983 reformulation, and surveillance data showed roughly 70–71% reductions in emergency-room and medical-examiner mentions of pentazocine per million prescriptions in the two years afterward. The epidemiological evidence confirmed that the naloxone-combination tablet had effectively suppressed parenteral abuse, establishing Talwin Nx as an early validated abuse-deterrent opioid formulation and a conceptual precursor to later abuse-deterrent designs.',
+        source: {
+          externalId: 'src:poklis-pentazocine-naloxone-decline-1984',
+          name: 'Poklis A. Decline in abuse of pentazocine/tripelennamine (T\'s and Blues) associated with the addition of naloxone to pentazocine tablets. Drug Alcohol Depend. 1984 Oct;14(2):135-140.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6510217/',
+          publishedAt: '1984-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Propoxyphene (Darvon) cardiotoxicity withdrawal 2010 ────────────────────
+  {
+    externalId: 'trajectory:propoxyphene-darvon-cardiotoxicity-withdrawal-2010',
+    text: 'Propoxyphene (Darvon/Darvocet), a mild opioid analgesic marketed in the United States since 1957 and prescribed to an estimated tens of millions of patients, was determined to cause dangerous cardiac electrical changes (prolonged PR, widened QRS, prolonged QT) even at therapeutic doses, leading the FDA to request its market withdrawal on November 19, 2010.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1957-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-01-30',
+        datePrecision: 'MONTH',
+        reason: 'An FDA Drug Safety and Risk Management Advisory Committee voted 14 to 12 against the continued marketing of propoxyphene products, citing overdose deaths and questions about the drug\'s cardiac effects. Rather than withdraw the drug, the FDA in mid-2009 permitted continued marketing but required a new boxed warning on fatal overdose risk and ordered the manufacturer to conduct a dedicated cardiac safety study. The decades-old assumption that propoxyphene was an acceptably safe analgesic was now formally in question.',
+        source: {
+          externalId: 'src:ajhp-propoxyphene-advisory-vote-2009',
+          name: 'Traynor K. Close vote by FDA advisers favors propoxyphene withdrawal. Am J Health Syst Pharm. 2009 Mar 15;66(6):518-520.',
+          url: 'https://academic.oup.com/ajhp/article-abstract/66/6/518/5130492',
+          publishedAt: '2009-03-15',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-11-19',
+        datePrecision: 'DAY',
+        reason: 'After reviewing results of the FDA-mandated cardiac study showing that propoxyphene at therapeutic doses produced significant changes to the heart\'s electrical activity, the FDA concluded the drug\'s risks outweighed its benefits and asked Xanodyne Pharmaceuticals to withdraw Darvon and Darvocet from the U.S. market; generic manufacturers followed. This ended more than five decades of marketing and repudiated the long-settled claim that propoxyphene was an acceptably safe analgesic.',
+        source: {
+          externalId: 'src:fda-propoxyphene-dsc-2010',
+          name: 'FDA. Drug Safety Communication: FDA recommends against the continued use of propoxyphene. November 19, 2010.',
+          url: 'https://www.fda.gov/Drugs/DrugSafety/ucm234338.htm',
+          publishedAt: '2010-11-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Zohydro ER — approval over advisory dissent 2013 ────────────────────────
+  {
+    externalId: 'trajectory:zohydro-er-approval-over-advisory-dissent-2013',
+    text: 'The FDA approved Zogenix\'s Zohydro ER (single-entity extended-release hydrocodone, NDA 202880) on October 25, 2013 — the first ER/LA opioid containing hydrocodone and the first without acetaminophen — over its own advisory committee, which had voted 11 to 2 against approval on abuse-potential grounds.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2013-10-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2013-10-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s Center for Drug Evaluation and Research approved Zohydro ER for around-the-clock management of severe pain, judging that the application met agency standards for efficacy and safety despite its Anesthetic and Analgesic Drug Products Advisory Committee having voted 11 to 2 against approval over concerns about abuse potential and the absence of abuse-deterrent properties. The approval entered the record as a contested regulatory judgment that diverged from expert advice.',
+        source: {
+          externalId: 'src:fda-zohydro-nda-202880-2013',
+          name: 'FDA. Drug Approval Package: Zohydro ER (hydrocodone bitartrate) extended-release capsules, NDA 202880, approved October 25, 2013.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/2013/202880Orig1s000TOC.cfm',
+          publishedAt: '2013-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '2014-03-27',
+        datePrecision: 'MONTH',
+        reason: 'A coalition of more than 40 health-care and consumer-safety organizations, members of Congress, and a near-unanimous group of state attorneys general petitioned the FDA to revoke the Zohydro ER approval, and in March 2014 Massachusetts Governor Deval Patrick declared a public-health emergency and banned the drug (an order later overturned in federal court). The sustained, multi-front opposition kept the FDA\'s benefit-risk judgment in open dispute rather than allowing it to settle.',
+        source: {
+          externalId: 'src:manchikanti-zohydro-pain-physician-2014',
+          name: 'Manchikanti L, Atluri S, Candido KD, et al. Zohydro approval by Food and Drug Administration: controversial or frightening? Pain Physician. 2014 Jul-Aug;17(4):E437-50.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25054396/',
+          publishedAt: '2014-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Opana ER reformulation — abuse-driven removal 2017 ──────────────────────
+  {
+    externalId: 'trajectory:opana-er-reformulation-abuse-removal-2017',
+    text: 'The FDA determined that the benefits of reformulated Opana ER (oxymorphone hydrochloride extended-release, Endo Pharmaceuticals), approved in 2006, no longer outweighed its risks, and on June 8, 2017, requested its removal from the market — the first time the agency ever sought removal of a currently marketed opioid because of the public-health consequences of abuse.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2006-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-14',
+        datePrecision: 'MONTH',
+        reason: 'At a March 2017 joint meeting of the FDA\'s Drug Safety and Risk Management and Anesthetic and Analgesic Drug Products Advisory Committees, independent experts voted 18 to 8 that the benefits of reformulated Opana ER no longer outweighed its risks. Postmarketing data showed the 2012 crush-resistant reformulation had shifted abuse from nasal insufflation to intravenous injection — abuse linked to a serious HIV and hepatitis C outbreak and to cases of thrombotic microangiopathy. The premise that the product was acceptably safe to market was now openly disputed.',
+        source: {
+          externalId: 'src:fda-opana-removal-announcement-2017',
+          name: 'FDA. FDA requests removal of Opana ER for risks related to abuse. News release, June 8, 2017.',
+          url: 'https://www.fda.gov/NewsEvents/Newsroom/PressAnnouncements/ucm562401.htm',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA formally requested that Endo voluntarily remove reformulated Opana ER from the market based on its determination that the drug\'s benefits no longer outweighed its risks — the agency\'s first-ever removal request for a marketed opioid on abuse grounds. Endo announced on July 6, 2017, that it would withdraw the product, and the FDA formally withdrew approval of the NDA, recorded in the Federal Register in December 2020.',
+        source: {
+          externalId: 'src:fr-opana-nda-withdrawal-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg. 85(247):83824, Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
