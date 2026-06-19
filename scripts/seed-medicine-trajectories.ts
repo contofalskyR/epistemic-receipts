@@ -35885,6 +35885,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ANTIBIOTIC RESISTANCE & VACCINE SAFETY (1999–2020)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── XDR-TB Tugela Ferry emergence — 2006 ─────────────────────────────────────
+  {
+    externalId: 'trajectory:xdr-tb-tugela-ferry-emergence-2006',
+    text: 'CDC and WHO reported on 24 March 2006 that extensively drug-resistant tuberculosis (XDR-TB) — MDR-TB with additional resistance to second-line drugs — had emerged worldwide, a threat made starkly lethal by the Tugela Ferry, South Africa outbreak in which 52 of 53 HIV co-infected XDR-TB patients died with a median survival of just 16 days.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-03-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-03-24',
+        datePrecision: 'DAY',
+        reason: 'A joint CDC/WHO survey of an international laboratory network found that 347 of 3,520 MDR-TB isolates (9.9%) met criteria for extensive drug resistance, formally defining and naming XDR-TB and warning of a future epidemic of virtually untreatable tuberculosis. This MMWR report first established XDR-TB as a recognized global surveillance category.',
+        source: {
+          externalId: 'src:cdc-mmwr-xdr-tb-emergence-2006',
+          name: 'CDC. Emergence of Mycobacterium tuberculosis with Extensive Resistance to Second-Line Drugs — Worldwide, 2000–2004. MMWR Morb Mortal Wkly Rep. 2006 Mar 24;55(11):301-305.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5511a2.htm',
+          publishedAt: '2006-03-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-11-04',
+        datePrecision: 'DAY',
+        reason: 'Gandhi et al. reported in The Lancet that in a rural KwaZulu-Natal hospital, 52 of 53 patients with XDR-TB co-infected with HIV died, with a median survival of 16 days from diagnosis. The Tugela Ferry data transformed XDR-TB from a surveillance abstraction into an established, urgently lethal clinical reality and triggered the global public-health response.',
+        source: {
+          externalId: 'src:gandhi-lancet-xdr-tb-tugela-ferry-2006',
+          name: 'Gandhi NR, Moll A, Sturm AW, et al. Extensively drug-resistant tuberculosis as a cause of death in patients co-infected with tuberculosis and HIV in a rural area of South Africa. Lancet. 2006 Nov 4;368(9547):1575-1580.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17084757/',
+          publishedAt: '2006-11-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Trovafloxacin (Trovan) hepatotoxicity restriction — 1999 ─────────────────
+  {
+    externalId: 'trajectory:trovafloxacin-trovan-hepatotoxicity-restriction-1999',
+    text: 'The FDA approved the broad-spectrum fluoroquinolone trovafloxacin (Trovan) in December 1997, then on 9 June 1999 issued a Public Health Advisory restricting it to life- or limb-threatening inpatient infections after at least 14 cases of acute liver failure (6 deaths) were strongly linked to the drug, with full market withdrawal following in 2000.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-12',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-12',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved trovafloxacin (Trovan) and its intravenous prodrug alatrofloxacin (Trovan-IV) as a broad-spectrum fluoroquinolone marketed by Pfizer for a wide range of community and hospital infections. It was launched in early 1998 with aggressive promotion as a flagship antibiotic.',
+        source: {
+          externalId: 'src:dailymed-trovan-label',
+          name: 'FDA/DailyMed. TROVAN (trovafloxacin mesylate) Tablets / TROVAN I.V. (alatrofloxacin mesylate injection) prescribing information.',
+          url: 'https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=da9b26bb-d2d7-4113-a0f9-c6c2280f4875&type=display',
+          publishedAt: '1998-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-06-09',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Public Health Advisory after concluding that 14 cases of acute liver failure (6 deaths) were strongly associated with Trovan, amid over 100 reports of symptomatic hepatotoxicity. Use was restricted to patients with serious, life- or limb-threatening infections beginning therapy in inpatient facilities, collapsing the drug\'s broad-use indication; the EU suspended marketing the next day and the US withdrew it in 2000.',
+        source: {
+          externalId: 'src:fda-advisory-trovan-1999',
+          name: 'FDA. Public Health Advisory: Trovan (trovafloxacin/alatrofloxacin mesylate) — risk of liver toxicity. June 9, 1999.',
+          url: 'https://www.pharmaceuticalonline.com/doc/fda-issues-advisory-on-antibiotic-trovan-and-0001',
+          publishedAt: '1999-06-09',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Telithromycin (Ketek) hepatotoxicity reversal — 2007 ─────────────────────
+  {
+    externalId: 'trajectory:telithromycin-ketek-hepatotoxicity-reversal-2007',
+    text: 'The FDA approved the first ketolide antibiotic telithromycin (Ketek) on 1 April 2004 for respiratory infections; after published reports of severe hepatotoxicity, the FDA added a boxed warning and removed two of its three indications (acute sinusitis and acute bacterial exacerbations of chronic bronchitis) in February 2007.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-04-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved telithromycin (Ketek), the first ketolide antibiotic, for community-acquired pneumonia, acute bacterial sinusitis, and acute exacerbations of chronic bronchitis. The approval was later criticized for relying in part on a safety study (Study 3014) marred by fraud.',
+        source: {
+          externalId: 'src:fda-ketek-label-2007',
+          name: 'FDA. KETEK (telithromycin) Tablets prescribing information, NDA 21-144/S-012.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/021144s012lbl.pdf',
+          publishedAt: '2007-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-03-21',
+        datePrecision: 'DAY',
+        reason: 'Clay et al. published three case reports of severe telithromycin hepatotoxicity (including fatal and transplant-requiring acute liver failure) in Annals of Internal Medicine, released online in January 2006. The series catalyzed FDA safety review and a bolded hepatotoxicity warning in June 2006.',
+        source: {
+          externalId: 'src:clay-annals-telithromycin-hepatotoxicity-2006',
+          name: 'Clay KD, Hanson JS, Pope SD, Rissmiller RW, Purdum PP 3rd, Banks PM. Brief communication: severe hepatotoxicity of telithromycin: three case reports and literature review. Ann Intern Med. 2006 Mar 21;144(6):415-420.',
+          url: 'https://www.acpjournals.org/doi/10.7326/0003-4819-144-6-200503210-00121',
+          publishedAt: '2006-03-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-02-12',
+        datePrecision: 'MONTH',
+        reason: 'Following a December 2006 advisory committee, the FDA added a boxed warning and Medication Guide and withdrew two of Ketek\'s three indications (acute bacterial sinusitis and acute exacerbations of chronic bronchitis), leaving only community-acquired pneumonia. The action reversed most of the drug\'s original utility claim on safety grounds.',
+        source: {
+          externalId: 'src:fda-ketek-label-indications-removed-2007',
+          name: 'FDA. KETEK (telithromycin) revised label with boxed warning and removed indications, NDA 21-144/S-012, Rev. February 2007.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/021144s012lbl.pdf',
+          publishedAt: '2007-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── RotaTeq rotavirus vaccine safety restored — 2006 ─────────────────────────
+  {
+    externalId: 'trajectory:rotateq-rotavirus-vaccine-safety-restored-2006',
+    text: 'After the 1999 RotaShield withdrawal for intussusception, the REST trial of roughly 68,000 infants (Vesikari et al., NEJM, 5 January 2006) found no increased intussusception risk for the pentavalent rotavirus vaccine RotaTeq, which the FDA approved on 3 February 2006, re-establishing routine rotavirus vaccination as safe.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-01-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-01-05',
+        datePrecision: 'DAY',
+        reason: 'The Rotavirus Efficacy and Safety Trial (REST) enrolled ~68,000 infants and found 13 intussusception cases in vaccine recipients versus 15 with placebo within one year, with high efficacy against severe rotavirus gastroenteritis. The result demonstrated that a rotavirus vaccine could avoid the intussusception signal that had doomed RotaShield.',
+        source: {
+          externalId: 'src:vesikari-nejm-rest-rotateq-2006',
+          name: 'Vesikari T, Matson DO, Dennehy P, et al. Safety and efficacy of a pentavalent human-bovine (WC3) reassortant rotavirus vaccine. N Engl J Med. 2006 Jan 5;354(1):23-33.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16394299/',
+          publishedAt: '2006-01-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-02-03',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved RotaTeq for prevention of rotavirus gastroenteritis in infants, and ACIP subsequently recommended routine infant immunization. Institutional adoption restored rotavirus vaccination as standard practice seven years after the RotaShield withdrawal.',
+        source: {
+          externalId: 'src:fda-rotateq-approval-2006',
+          name: 'FDA. RotaTeq (Rotavirus Vaccine, Live, Oral, Pentavalent) — approval and product information.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/rotateq',
+          publishedAt: '2006-02-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Zostavax zoster vaccine efficacy & supersession — 2005–2020 ──────────────
+  {
+    externalId: 'trajectory:zostavax-zoster-vaccine-efficacy-2006',
+    text: 'The Shingles Prevention Study (Oxman et al., NEJM, 2 June 2005) showed the live zoster vaccine reduced herpes zoster incidence by 51% in adults aged 60 and older, leading to FDA approval of Zostavax on 25 May 2006; Merck later discontinued US distribution on 18 November 2020 after the more effective recombinant vaccine Shingrix superseded it.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-06-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-06-02',
+        datePrecision: 'DAY',
+        reason: 'The Shingles Prevention Study, a randomized trial of 38,546 adults aged 60+, found the live attenuated Oka/Merck zoster vaccine reduced herpes zoster incidence by 51.3% and postherpetic neuralgia by 66.5%. It provided the first large-scale evidence that vaccination could prevent shingles in older adults.',
+        source: {
+          externalId: 'src:oxman-nejm-shingles-prevention-study-2005',
+          name: 'Oxman MN, Levin MJ, Johnson GR, et al. A vaccine to prevent herpes zoster and postherpetic neuralgia in older adults. N Engl J Med. 2005 Jun 2;352(22):2271-2284.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15930418/',
+          publishedAt: '2005-06-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-05-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Zostavax for the prevention of shingles in adults aged 60 and older, and ACIP went on to recommend routine zoster vaccination. The approval established live zoster vaccination as standard preventive practice for older adults.',
+        source: {
+          externalId: 'src:fda-zostavax-approval-2006',
+          name: 'FDA. Zostavax (Zoster Vaccine Live) — Questions and Answers / approval information.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/vaccines/zostavax-herpes-zoster-vaccine-questions-and-answers',
+          publishedAt: '2006-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'MARKET',
+        occurredAt: '2020-11-18',
+        datePrecision: 'DAY',
+        reason: 'Merck discontinued US distribution of Zostavax as of 18 November 2020 after the recombinant Shingrix vaccine, recommended preferentially by ACIP since 2018, proved substantially more effective and durable. The discontinuation reflected supersession rather than a safety or efficacy failure, but it ended Zostavax\'s role in US practice.',
+        source: {
+          externalId: 'src:drugs-zostavax-discontinuation-2020',
+          name: 'Drugs.com. Zostavax (zoster vaccine live) FDA Approval History — discontinuation of US distribution, November 18, 2020.',
+          url: 'https://www.drugs.com/history/zostavax.html',
+          publishedAt: '2020-11-18',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
