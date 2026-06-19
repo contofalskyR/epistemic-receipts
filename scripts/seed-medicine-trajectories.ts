@@ -18236,6 +18236,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CRITICAL CARE / ENDOCRINOLOGY (2001–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Intensive insulin therapy in ICU — Van den Berghe 2001 / NICE-SUGAR 2009 ─
+  {
+    externalId: 'trajectory:intensive-insulin-icu-glycemic-control-2001',
+    text: 'Greet Van den Berghe and colleagues reported in the New England Journal of Medicine on 8 November 2001 that intensive insulin therapy maintaining blood glucose at 80–110 mg/dL reduced mortality among critically ill surgical-ICU patients, establishing tight glycemic control as a life-saving intervention in intensive care.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2001-11-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-11-08',
+        datePrecision: 'DAY',
+        reason: 'Van den Berghe et al. published the single-center Leuven randomized trial of 1,548 ventilated surgical-ICU patients, reporting that intensive insulin therapy targeting normoglycemia (80–110 mg/dL) cut in-ICU mortality from 8.0% to 4.6%, with the largest benefit among patients staying longer than five days. This recorded in the expert literature the claim that tight glycemic control directly reduces mortality in critical illness, a finding rapidly incorporated into intensive-care and sepsis management.',
+        source: {
+          externalId: 'src:van-den-berghe-intensive-insulin-nejm-2001',
+          name: 'van den Berghe G, Wouters P, Weekers F, et al. Intensive insulin therapy in critically ill patients. N Engl J Med. 2001;345(19):1359-1367.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11794168/',
+          publishedAt: '2001-11-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-03-26',
+        datePrecision: 'DAY',
+        reason: 'The multinational NICE-SUGAR trial randomized 6,104 ICU patients and found that intensive glucose control (target 81–108 mg/dL) increased 90-day mortality versus a conventional target of 180 mg/dL or less (27.5% vs 24.9%), with far more severe hypoglycemia (6.8% vs 0.5%). The largest trial on the question directly contradicted the Leuven result, reversing the claim that tight glycemic control benefits the critically ill and prompting guideline bodies to abandon normoglycemia targets in the ICU.',
+        source: {
+          externalId: 'src:nice-sugar-glucose-control-nejm-2009',
+          name: 'NICE-SUGAR Study Investigators; Finfer S, Chittock DR, Su SY, et al. Intensive versus conventional glucose control in critically ill patients. N Engl J Med. 2009;360(13):1283-1297.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19318384/',
+          publishedAt: '2009-03-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Leptin therapy for common obesity — Friedman 1994 / Heymsfield 1999 ─────
+  {
+    externalId: 'trajectory:leptin-therapy-common-obesity-1994',
+    text: 'The positional cloning of the ob (obese) gene encoding leptin, reported by Zhang and Friedman in Nature on 1 December 1994, identified a fat-derived hormone signaling energy stores and raised the claim that leptin administration could treat common human obesity.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1994-12-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-12-01',
+        datePrecision: 'DAY',
+        reason: 'Zhang, Proenca, Maffei, Barone, Leopold, and Friedman reported the positional cloning of the mouse ob gene and its human homologue, identifying leptin as a circulating hormone whose deficiency causes massive obesity in ob/ob mice. The discovery recorded in the expert literature the model of leptin as the adiposity signal and generated the widely held expectation that recombinant leptin would be an effective treatment for common human obesity.',
+        source: {
+          externalId: 'src:zhang-friedman-leptin-ob-gene-nature-1994',
+          name: 'Zhang Y, Proenca R, Maffei M, Barone M, Leopold L, Friedman JM. Positional cloning of the mouse obese gene and its human homologue. Nature. 1994;372(6505):425-432.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7984236/',
+          publishedAt: '1994-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-10-27',
+        datePrecision: 'DAY',
+        reason: 'Heymsfield et al. published the first randomized dose-escalation trial of recombinant leptin in lean and obese adults in JAMA, finding only modest and highly variable weight loss that required very high subcutaneous doses and caused frequent injection-site reactions. Because most obese people have high, not low, leptin levels (leptin resistance), the trial contested the hope that leptin replacement would treat common obesity; leptin therapy was subsequently confined to rare congenital leptin deficiency and lipodystrophy rather than ordinary obesity.',
+        source: {
+          externalId: 'src:heymsfield-recombinant-leptin-jama-1999',
+          name: 'Heymsfield SB, Greenberg AS, Fujioka K, et al. Recombinant leptin for weight loss in obese and lean adults: a randomized, controlled, dose-escalation trial. JAMA. 1999;282(16):1568-1575.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10546697/',
+          publishedAt: '1999-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Diabetes Prevention Program — Knowler 2002 / DPPOS 2009 ─────────────────
+  {
+    externalId: 'trajectory:diabetes-prevention-program-lifestyle-metformin-2002',
+    text: 'The Diabetes Prevention Program reported in the New England Journal of Medicine on 7 February 2002 that intensive lifestyle intervention reduced the incidence of type 2 diabetes by 58% and metformin by 31% in high-risk adults, establishing that type 2 diabetes can be prevented or delayed.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-02-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-02-07',
+        datePrecision: 'DAY',
+        reason: 'Knowler and the DPP Research Group reported a randomized trial of 3,234 adults with impaired glucose tolerance, finding that a lifestyle program aimed at 7% weight loss reduced diabetes incidence by 58% and metformin by 31% versus placebo over a mean 2.8 years. This recorded in the expert literature the claim that progression from prediabetes to type 2 diabetes can be substantially prevented by behavioral intervention or an inexpensive generic drug.',
+        source: {
+          externalId: 'src:dpp-knowler-prevention-nejm-2002',
+          name: 'Diabetes Prevention Program Research Group; Knowler WC, Barrett-Connor E, Fowler SE, et al. Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin. N Engl J Med. 2002;346(6):393-403.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11832527/',
+          publishedAt: '2002-02-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-11-14',
+        datePrecision: 'DAY',
+        reason: 'The Diabetes Prevention Program Outcomes Study reported in The Lancet that the diabetes-prevention benefit persisted at 10 years — cumulative incidence remained 34% lower with lifestyle and 18% lower with metformin than placebo — demonstrating durable rather than transient effect. The confirmation of long-term efficacy settled diabetes prevention as established practice, subsequently codified in ADA Standards of Care for prediabetes management.',
+        source: {
+          externalId: 'src:dppos-10year-followup-lancet-2009',
+          name: 'Diabetes Prevention Program Research Group; Knowler WC, Fowler SE, Hamman RF, et al. 10-year follow-up of diabetes incidence and weight loss in the Diabetes Prevention Program Outcomes Study. Lancet. 2009;374(9702):1677-1686.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19878986/',
+          publishedAt: '2009-11-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Exubera inhaled insulin — FDA approval 2006 / market withdrawal 2007 ────
+  {
+    externalId: 'trajectory:exubera-inhaled-insulin-2006',
+    text: 'The FDA approved Pfizer\'s Exubera (inhaled human insulin) on 27 January 2006 as the first non-injectable insulin delivery system for type 1 and type 2 diabetes, a claim of commercial and clinical viability reversed when Pfizer withdrew the product worldwide on 18 October 2007 amid negligible sales.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2006-01-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-01-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Exubera, a rapid-acting inhaled powder formulation of recombinant human insulin, for adults with type 1 and type 2 diabetes — the first new route of insulin administration since the 1920s. Regulatory approval established the agent as a safe and effective alternative to injected mealtime insulin and was promoted as a potential blockbuster expected to expand insulin uptake among needle-averse patients.',
+        source: {
+          externalId: 'src:pfizer-nektar-exubera-fda-approval-2006',
+          name: 'Pfizer/Nektar Therapeutics. Pfizer Receives FDA Approval for Exubera, the First Inhaleable Form of Insulin for Controlling Type 1 and Type 2 Diabetes in Adults. 27 January 2006.',
+          url: 'https://ir.nektar.com/news-releases/news-release-details/pfizer-receives-fda-approval-exubera-first-inhaleable-form',
+          publishedAt: '2006-01-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2007-10-18',
+        datePrecision: 'DAY',
+        reason: 'Pfizer announced on 18 October 2007 that it would withdraw Exubera worldwide after the product generated only about $12 million in sales in the first nine months of 2007 against a projected $2 billion, taking a $2.8 billion charge. Bailey and Barnett noted in the BMJ that this was the first time a licensed product for a common chronic disease had been withdrawn so quickly for essentially economic reasons — clinicians and patients rejected the bulky inhaler and cumbersome dosing, reversing the premise that inhaled insulin was a viable therapy.',
+        source: {
+          externalId: 'src:bailey-barnett-exubera-withdrawal-bmj-2007',
+          name: 'Bailey CJ, Barnett AH. Why is Exubera being withdrawn? BMJ. 2007;335(7630):1156.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2099527/',
+          publishedAt: '2007-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
