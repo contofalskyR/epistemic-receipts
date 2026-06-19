@@ -28281,6 +28281,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // INTERNATIONAL DRUG CONTROL & OPIOID REGULATION
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Single Convention on Narcotic Drugs — 1961 ──────────────────────────────
+  {
+    externalId: 'trajectory:single-convention-narcotic-drugs-1961',
+    text: 'The Single Convention on Narcotic Drugs, adopted at New York on 30 March 1961, consolidated the earlier international drug-control treaties and placed narcotic substances — including opium, morphine, and their derivatives — under a unified international scheduling, licensing, and reporting regime administered by the UN.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1961-03-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1961-03-30',
+        datePrecision: 'DAY',
+        reason: 'A UN plenipotentiary conference of 73 states meeting in New York adopted and opened for signature the Single Convention on Narcotic Drugs on 30 March 1961, codifying a single international framework to replace nine prior narcotics treaties dating to 1912. The text recorded, but did not yet bind, a unified global control regime for opium and opioid derivatives.',
+        source: {
+          externalId: 'src:unodc-single-convention-1961',
+          name: 'United Nations. Single Convention on Narcotic Drugs, 1961. Done at New York, 30 March 1961. 520 UNTS 151.',
+          url: 'https://www.unodc.org/pdf/convention_1961_en.pdf',
+          publishedAt: '1961-03-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-12-13',
+        datePrecision: 'DAY',
+        reason: 'Having met the threshold of forty state ratifications, the Single Convention entered into force on 13 December 1964, making the international scheduling and licensing of narcotic drugs legally binding on its parties. The regime moved from a recorded text to operative international law that still governs opioid control today.',
+        source: {
+          externalId: 'src:unodc-single-convention-eif-1964',
+          name: 'United Nations Office on Drugs and Crime. Single Convention on Narcotic Drugs, 1961 (entry into force 13 December 1964).',
+          url: 'https://www.unodc.org/pdf/convention_1961_en.pdf',
+          publishedAt: '1964-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Narcotic Addict Treatment Act — 1974 ────────────────────────────────────
+  {
+    externalId: 'trajectory:narcotic-addict-treatment-act-1974',
+    text: 'The Narcotic Addict Treatment Act of 1974 (Pub. L. 93-281), signed into law on 14 May 1974, amended the Controlled Substances Act to require any practitioner dispensing narcotic drugs such as methadone for maintenance or detoxification treatment to obtain a separate annual federal (DEA) registration conditioned on meeting HHS-set treatment standards.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1974-05-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1974-05-14',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted and the President signed Pub. L. 93-281 on 14 May 1974, formally establishing the dual law-enforcement and public-health registration regime for opioid maintenance and detoxification programs. The statute settled the institutional premise that methadone treatment is a federally regulated medical activity requiring qualification and registration rather than ordinary prescribing.',
+        source: {
+          externalId: 'src:pl-93-281-nata-1974',
+          name: 'Narcotic Addict Treatment Act of 1974, Pub. L. 93-281, 88 Stat. 124 (May 14, 1974).',
+          url: 'https://www.congress.gov/93/statute/STATUTE-88/STATUTE-88-Pg124.pdf',
+          publishedAt: '1974-05-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Duragesic fentanyl transdermal patch FDA approval — 1990 ────────────────
+  {
+    externalId: 'trajectory:duragesic-fentanyl-transdermal-approval-1990',
+    text: 'The FDA approved Janssen/Alza\'s Duragesic (fentanyl transdermal system, NDA 19-813) in August 1990 — the first transdermal opioid analgesic — for the management of chronic pain in opioid-tolerant patients requiring continuous around-the-clock opioid therapy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1990-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-01',
+        datePrecision: 'MONTH',
+        reason: 'After a multi-year review the FDA approved Duragesic in August 1990 as the first opioid delivered through a skin patch changed every three days, ratifying the safety and efficacy of sustained transdermal fentanyl for chronic severe pain. The approval institutionally established a new opioid delivery modality that became a mainstay of cancer and chronic-pain management.',
+        source: {
+          externalId: 'src:fda-duragesic-fentanyl-transdermal-info',
+          name: 'U.S. Food and Drug Administration. Fentanyl Transdermal System (marketed as Duragesic) Information (NDA 19-813; first approved August 1990).',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/fentanyl-transdermal-system-marketed-duragesic-information',
+          publishedAt: '1990-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Naltrexone (Trexan) oral opioid-dependence approval — 1984 ──────────────
+  {
+    externalId: 'trajectory:naltrexone-trexan-opioid-dependence-approval-1984',
+    text: 'The FDA approved DuPont\'s Trexan (oral naltrexone) in 1984 to provide blockade of the effects of exogenous opioids as an adjunct to maintaining the opioid-free state in detoxified, formerly opioid-dependent patients — the first oral opioid antagonist approved for relapse prevention in addiction.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1984-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1984-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved oral naltrexone (Trexan) in 1984 for opioid-dependence relapse prevention, with the approval explicitly resting on the drug\'s mechanism of action (opioid-receptor blockade) rather than on clinical trials demonstrating maintenance of abstinence. This established pharmacological antagonist therapy as a recognized, distinct alternative to agonist maintenance such as methadone, and the molecule was later reformulated as ReVia (1995) and the depot Vivitrol (2010).',
+        source: {
+          externalId: 'src:ncbi-oral-naltrexone-1984',
+          name: 'Center for Substance Abuse Treatment. Incorporating Alcohol Pharmacotherapies Into Medical Practice, Ch. 4 — Oral Naltrexone. Rockville (MD): SAMHSA; TIP 49 (NBK64042).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK64042/',
+          publishedAt: '2009-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
