@@ -18588,6 +18588,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH & ENDOCRINOLOGY (pre-1950)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Pap smear / cervical cancer screening — Papanicolaou 1928–1943 ──────────
+  {
+    externalId: 'trajectory:papanicolaou-pap-smear-cervical-screening-1928',
+    text: 'George Papanicolaou\'s claim that uterine and cervical cancer could be detected in asymptomatic women by microscopic examination of exfoliated cells in a vaginal smear — first presented in January 1928 and established by his 1943 monograph with Herbert Traut — became the foundation of modern cervical cancer screening.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01',
+        datePrecision: 'MONTH',
+        reason: 'Papanicolaou presented \'New Cancer Diagnosis\' at the Third Race Betterment Conference in Battle Creek, Michigan (January 2–6, 1928), proposing that cancer of the uterus could be diagnosed from cells in a vaginal smear. The claim was met with skepticism because contemporaries held that biopsy and tissue histology were the only valid means of cancer diagnosis, and it had no clinical uptake for over a decade. This recorded the cytologic-screening hypothesis in the literature while leaving it unaccepted.',
+        source: {
+          externalId: 'src:papanicolaou-new-cancer-diagnosis-1928',
+          name: 'Papanicolaou GN. New Cancer Diagnosis. Proceedings of the Third Race Betterment Conference, Battle Creek, Michigan, January 2–6, 1928. Race Betterment Foundation; 1928:528–534.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4196138/',
+          publishedAt: '1928-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1943',
+        datePrecision: 'YEAR',
+        reason: 'After validating the technique on more than 3,000 women with Cornell pathologist Herbert Traut (reported in their 1941 American Journal of Obstetrics and Gynecology paper), Papanicolaou and Traut published the monograph \'Diagnosis of Uterine Cancer by the Vaginal Smear\' (Commonwealth Fund, 1943), systematizing cervical cytology across the menstrual cycle and 179 cancer cases. The monograph marked the beginning of modern cytopathology and converted the once-dismissed claim into accepted expert practice, launching the screening protocols that became routine.',
+        source: {
+          externalId: 'src:papanicolaou-traut-monograph-1943',
+          name: 'Papanicolaou GN, Traut HF. Diagnosis of Uterine Cancer by the Vaginal Smear. New York: The Commonwealth Fund; 1943.',
+          url: 'https://wellcomecollection.org/works/ccycn3cz',
+          publishedAt: '1943-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Allen & Doisy — ovarian hormone / estrogen bioassay 1923–1929 ───────────
+  {
+    externalId: 'trajectory:allen-doisy-ovarian-hormone-estrogen-1923',
+    text: 'Edgar Allen and Edward Doisy reported in JAMA on 8 September 1923 that an extract of ovarian follicular fluid (\'an ovarian hormone\') induced estrus in spayed rodents, providing the first experimental demonstration and bioassay of the hormone later named estrogen.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1923-09-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1923-09-08',
+        datePrecision: 'DAY',
+        reason: 'Allen and Doisy at Washington University in St. Louis published \'An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals\' in JAMA, demonstrating that follicular extracts produced estrus in spayed animals and establishing the Allen–Doisy bioassay. This recorded the existence of an ovarian internal secretion (estrogen) and gave researchers a quantitative test to detect it, the methodological foundation of reproductive endocrinology.',
+        source: {
+          externalId: 'src:allen-doisy-ovarian-hormone-jama-1923',
+          name: 'Allen E, Doisy EA. An ovarian hormone: preliminary report on its localization, extraction and partial purification, and action in test animals. JAMA. 1923;81(10):819–821.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6355545/',
+          publishedAt: '1923-09-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929',
+        datePrecision: 'YEAR',
+        reason: 'In 1929 Doisy (with Veler and Thayer) crystallized estrone in pure form in St. Louis, presented at the 13th International Physiological Congress in Boston, while Adolf Butenandt independently isolated the same crystalline estrogen from pregnant-women\'s urine in Germany. The convergent isolation of the pure compound by two laboratories settled the existence and chemical identity of the ovarian estrogen, transforming the 1923 bioassay claim into established chemistry and earning Butenandt a share of the 1939 Nobel Prize.',
+        source: {
+          externalId: 'src:history-of-estrogen-purification-endocrinology-2019',
+          name: 'Kuhl H, et al. History of Estrogen: Its Purification, Structure, Synthesis, Biologic Actions, and Clinical Implications. Endocrinology. 2019;160(3):605–625.',
+          url: 'https://academic.oup.com/endo/article/160/3/605/5250672',
+          publishedAt: '2019-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Premarin / conjugated estrogens — FDA approval 1942 ─────────────────────
+  {
+    externalId: 'trajectory:premarin-conjugated-estrogens-menopause-1942',
+    text: 'The U.S. Food and Drug Administration permitted the new drug application for Premarin (conjugated equine estrogens) to become effective in 1942 for the treatment of menopausal symptoms, establishing the first widely marketed estrogen replacement therapy.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1942',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1942',
+        datePrecision: 'YEAR',
+        reason: 'Under the 1938 Federal Food, Drug, and Cosmetic Act\'s new-drug provisions, the FDA allowed Ayerst\'s Premarin NDA to become effective in 1942 on the basis of chemistry and clinical investigations showing it was safe for menopausal symptoms — predating the requirement that drugs be well-characterized chemically. This institutionally established conjugated equine estrogens as a recognized treatment for menopause; the symptomatic (vasomotor) indication has remained settled even after later trials reversed separate claims of chronic-disease prevention.',
+        source: {
+          externalId: 'src:fda-premarin-1942-federal-register-1997',
+          name: 'Food and Drug Administration. Conjugated Estrogens; Notice [Premarin first permitted effective 1942]. Federal Register, Vol. 62, No. 152, August 7, 1997.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-1997-08-07/html/97-20792.htm',
+          publishedAt: '1997-08-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Corner & Allen — progesterone / corpus luteum 1929–1934 ─────────────────
+  {
+    externalId: 'trajectory:corner-allen-progesterone-corpus-luteum-1929',
+    text: 'George Corner and Willard Allen reported in the American Journal of Physiology in 1929 that extracts of the corpus luteum produced progestational changes in the rabbit uterus, demonstrating a second ovarian hormone — progesterone — which four independent groups then isolated in pure crystalline form in 1934.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929',
+        datePrecision: 'YEAR',
+        reason: 'Corner and Allen published \'Physiology of the corpus luteum\' in the American Journal of Physiology (1929;88:326–346), showing that corpus-luteum extracts induced progestational proliferation of the rabbit endometrium and could maintain pregnancy in castrated animals. This recorded in the literature the existence of a second ovarian hormone distinct from estrogen — the progestational hormone later named progesterone — central to the eventual development of the oral contraceptive.',
+        source: {
+          externalId: 'src:corner-allen-corpus-luteum-ajp-1929',
+          name: 'Corner GW, Allen WM. Physiology of the corpus luteum. II. Production of a special uterine reaction (progestational proliferation) by extracts of the corpus luteum. Am J Physiol. 1929;88(2):326–346.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16202759/',
+          publishedAt: '1929-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1934',
+        datePrecision: 'YEAR',
+        reason: 'In 1934, in a near-simultaneous race, four independent groups — including Adolf Butenandt in Germany and the teams of Slotta, of Hartmann and Wettstein in Switzerland, and of Wintersteiner and Allen in the U.S. — isolated pure crystalline progesterone and agreed on its identity. The convergent isolation settled the chemical existence of the corpus-luteum hormone, converting Corner and Allen\'s bioassay claim into established steroid chemistry.',
+        source: {
+          externalId: 'src:butenandt-progesterone-isolation-1934',
+          name: 'Butenandt A. Isolation of crystalline progesterone (1934); see \'Butenandt, Adolf,\' Encyclopedia.com / Complete Dictionary of Scientific Biography.',
+          url: 'https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/butenandt-adolf',
+          publishedAt: '1934-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
