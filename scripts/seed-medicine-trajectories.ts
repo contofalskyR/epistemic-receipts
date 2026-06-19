@@ -29516,6 +29516,201 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Rudman GH aging reversal — 1990 ────────────────────────────────────────
+  {
+    externalId: 'trajectory:rudman-growth-hormone-aging-reversal-1990',
+    text: 'Daniel Rudman and colleagues reported in the New England Journal of Medicine on 5 July 1990 that six months of human growth hormone administration to healthy men over 60 increased lean body mass by roughly 9% and reduced adipose tissue by roughly 14%, concluding that diminished growth-hormone secretion is partly responsible for the age-related decline in muscle and rise in body fat — a finding read as evidence that growth hormone could counteract human aging.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1990-07-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-07-05',
+        datePrecision: 'DAY',
+        reason: 'Rudman et al. published \'Effects of human growth hormone in men over 60 years old\' in NEJM, reporting that biosynthetic GH given to 12 healthy older men for six months produced an ~8.8% gain in lean body mass and ~14.4% loss of fat mass versus untreated controls. The paper recorded in the expert literature the claim that age-related body-composition decline reflects a treatable growth-hormone deficiency, and it became the scientific touchstone cited by a rapidly growing anti-aging GH industry.',
+        source: {
+          externalId: 'src:rudman-gh-elderly-nejm-1990',
+          name: 'Rudman D, Feller AG, Nagraj HS, et al. Effects of human growth hormone in men over 60 years old. N Engl J Med. 1990;323(1):1–6. PMID 2355952.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2355952/',
+          publishedAt: '1990-07-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-16',
+        datePrecision: 'DAY',
+        reason: 'Liu and colleagues published \'Systematic review: the safety and efficacy of growth hormone in the healthy elderly\' in Annals of Internal Medicine, pooling 31 controlled trials. They found only modest body-composition changes accompanied by significantly increased rates of soft-tissue edema, arthralgia, carpal tunnel syndrome, gynecomastia, and new-onset diabetes, concluding that \'GH cannot be recommended as an antiaging therapy.\' The synthesis directly contested the inference drawn from Rudman\'s 1990 study and aligned with the position that GH is not licensed and is illegal to distribute for anti-aging use in the U.S.',
+        source: {
+          externalId: 'src:liu-gh-healthy-elderly-aim-2007',
+          name: 'Liu H, Bravata DM, Olkin I, et al. Systematic review: the safety and efficacy of growth hormone in the healthy elderly. Ann Intern Med. 2007;146(2):104–115. PMID 17227934.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17227934/',
+          publishedAt: '2007-01-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Combination T4+T3 for hypothyroidism — 1999 ─────────────────────────────
+  {
+    externalId: 'trajectory:combination-t4-t3-hypothyroidism-1999',
+    text: 'Bunevicius and colleagues reported in the New England Journal of Medicine on 11 February 1999 that partially replacing levothyroxine (T4) with triiodothyronine (T3) improved mood and neuropsychological function in patients treated for hypothyroidism, suggesting that standard T4-only therapy left some patients suboptimally treated.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-02-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-02-11',
+        datePrecision: 'DAY',
+        reason: 'Bunevicius, Kazanavicius, Zalinkevicius, and Prange published \'Effects of thyroxine as compared with thyroxine plus triiodothyronine in patients with hypothyroidism\' in NEJM, a crossover trial in which substituting 12.5 µg T3 for 50 µg of a patient\'s T4 dose improved scores on 6 of 17 cognitive/mood tests and several mood scales. This recorded in the expert literature the claim that combination T4+T3 therapy was superior to levothyroxine monotherapy, energizing patient demand and clinical interest in adding liothyronine.',
+        source: {
+          externalId: 'src:bunevicius-t4-t3-nejm-1999',
+          name: 'Bunevicius R, Kazanavicius G, Zalinkevicius R, Prange AJ Jr. Effects of thyroxine as compared with thyroxine plus triiodothyronine in patients with hypothyroidism. N Engl J Med. 1999;340(6):424–429. PMID 9971866.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9971866/',
+          publishedAt: '1999-02-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-12-10',
+        datePrecision: 'DAY',
+        reason: 'Clyde, Harari, Getka, and Shakir published a randomized controlled trial, \'Combined levothyroxine plus liothyronine compared with levothyroxine alone in primary hypothyroidism,\' in JAMA, finding no advantage for combination therapy: quality-of-life change was statistically similar between groups, 12 of 13 neuropsychological tests showed no difference, and body weight, lipids, and symptoms were unchanged. This and subsequent failed replications contested the 1999 claim, and combination T4+T3 has not become recommended standard therapy.',
+        source: {
+          externalId: 'src:clyde-t4-t3-jama-2003',
+          name: 'Clyde PW, Harari AE, Getka EJ, Shakir KMM. Combined levothyroxine plus liothyronine compared with levothyroxine alone in primary hypothyroidism: a randomized controlled trial. JAMA. 2003;290(22):2952–2958. PMID 14665656.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14665656/',
+          publishedAt: '2003-12-10',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Orlistat / Xenical lipase inhibitor — 1999 ──────────────────────────────
+  {
+    externalId: 'trajectory:orlistat-xenical-lipase-inhibitor-obesity-1999',
+    text: 'Orlistat (Xenical), a gastrointestinal lipase inhibitor that blocks absorption of dietary fat, is a safe and effective pharmacotherapy for obesity — a claim established by the Sjöström et al. randomized trial of 18 July 1998 and ratified when the FDA approved it on 23 April 1999 as the first anti-obesity drug acting outside the central nervous system.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1998-07-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-07-18',
+        datePrecision: 'DAY',
+        reason: 'Sjöström and colleagues published a two-year multicentre randomized placebo-controlled trial in The Lancet showing that orlistat plus a calorie-restricted diet produced greater weight loss than placebo (10.2% vs 6.1% in year one) and reduced weight regain in year two. The trial recorded in the expert literature the claim that inhibiting intestinal lipase is a viable, non-CNS mechanism for treating obesity, distinguishing orlistat from the appetite-suppressant drugs then dominating the field.',
+        source: {
+          externalId: 'src:sjostrom-orlistat-lancet-1998',
+          name: 'Sjöström L, Rissanen A, Andersen T, et al. Randomised placebo-controlled trial of orlistat for weight loss and prevention of weight regain in obese patients. Lancet. 1998;352(9123):167–172. PMID 9683204.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9683204/',
+          publishedAt: '1998-07-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1999-04-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved orlistat (Xenical, NDA 020766; Hoffmann-La Roche) for obesity management including weight loss and maintenance with a reduced-calorie diet — the first approved anti-obesity agent whose mechanism is peripheral fat-absorption blockade rather than CNS neurotransmitter modulation. The approval institutionalized the lipase-inhibitor strategy; orlistat later became the first weight-loss drug sold over the counter (as Alli, 2007) and remains an approved therapy.',
+        source: {
+          externalId: 'src:fda-xenical-approval-letter-1999',
+          name: 'U.S. Food and Drug Administration. Xenical (orlistat) capsules — NDA 20-766 approval letter. April 23, 1999.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/nda/99/020766a_xenical_appltr.pdf',
+          publishedAt: '1999-04-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pramlintide / Symlin first amylin analog — 2005 ─────────────────────────
+  {
+    externalId: 'trajectory:pramlintide-symlin-first-amylin-analog-2005',
+    text: 'Pramlintide (Symlin), a synthetic analog of the beta-cell hormone amylin, improves glycemic and weight control as an adjunct to mealtime insulin — a claim established by Ratner et al.\'s one-year randomized trial in 2004 and ratified when the FDA approved it on 16 March 2005 as the first amylin-replacement therapy and the first new injectable antidiabetic drug class since insulin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Ratner and colleagues published a 52-week double-blind randomized controlled trial in Diabetic Medicine in which adding mealtime pramlintide to insulin in 651 patients with type 1 diabetes significantly lowered HbA1c (−0.29% to −0.34% vs −0.04% with placebo) without weight gain. The trial recorded in the expert literature the claim that replacing the co-secreted hormone amylin — which slows gastric emptying and suppresses glucagon — adds glycemic and weight benefit beyond insulin alone, validating amylin as a druggable target.',
+        source: {
+          externalId: 'src:ratner-pramlintide-diabetmed-2004',
+          name: 'Ratner RE, Dickey R, Fineman M, et al. Amylin replacement with pramlintide as an adjunct to insulin therapy improves long-term glycaemic and weight control in Type 1 diabetes mellitus: a 1-year, randomized controlled trial. Diabet Med. 2004;21(11):1204–1212. PMID 15498087.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15498087/',
+          publishedAt: '2004-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-03-16',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved pramlintide acetate (Symlin, NDA 21-332; Amylin Pharmaceuticals) as an adjunct to mealtime insulin for patients with type 1 or type 2 diabetes who fail to achieve target glucose control. The approval institutionalized the first amylinomimetic and the first genuinely new injectable antidiabetic mechanism since the introduction of insulin in the 1920s, opening the post-insulin hormone-replacement approach to diabetes management.',
+        source: {
+          externalId: 'src:fda-symlin-approval-2005',
+          name: 'U.S. Food and Drug Administration. Symlin (pramlintide acetate) injection — NDA 021332, Drugs@FDA approval record. March 16, 2005.',
+          url: 'https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=021332',
+          publishedAt: '2005-03-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── FDA cardiovascular outcomes guidance for diabetes drugs — 2008 ───────────
+  {
+    externalId: 'trajectory:fda-cardiovascular-outcomes-guidance-diabetes-2008',
+    text: 'The U.S. FDA issued guidance on 19 December 2008 requiring sponsors of new type 2 diabetes drugs to demonstrate that the therapy does not raise cardiovascular risk to an unacceptable degree, replacing the prior standard in which glucose-lowering (HbA1c) surrogate efficacy alone could support approval.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2008-12-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-12-19',
+        datePrecision: 'DAY',
+        reason: 'Following the rosiglitazone cardiovascular-safety controversy, the FDA announced in the Federal Register (73 FR 77724) the availability of its guidance \'Diabetes Mellitus — Evaluating Cardiovascular Risk in New Antidiabetic Therapies to Treat Type 2 Diabetes,\' recommending that sponsors rule out unacceptable cardiovascular risk, in practice mandating large dedicated cardiovascular outcomes trials (CVOTs). The Level 1 guidance reset the evidentiary standard for the entire drug class away from surrogate glucose endpoints toward demonstrated cardiovascular safety, shaping more than a dozen subsequent CVOTs for DPP-4 inhibitors, GLP-1 agonists, and SGLT2 inhibitors.',
+        source: {
+          externalId: 'src:fda-cv-guidance-fr-2008',
+          name: 'Food and Drug Administration. Guidance for Industry on Diabetes Mellitus—Evaluating Cardiovascular Risk in New Antidiabetic Therapies to Treat Type 2 Diabetes; Availability. Federal Register. 2008;73(245):77724–77725.',
+          url: 'https://www.govinfo.gov/content/pkg/FR-2008-12-19/html/E8-30086.htm',
+          publishedAt: '2008-12-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
