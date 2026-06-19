@@ -35610,6 +35610,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // REGULATORY REVERSALS & OTC ERA (2011–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Oral phenylephrine OTC decongestant — FDA advisory committee 2023 ───────
+  {
+    externalId: 'trajectory:oral-phenylephrine-decongestant-ineffective-2023',
+    text: 'On 12 September 2023 the FDA Nonprescription Drugs Advisory Committee voted unanimously (16–0) that the available scientific data do not support that the monograph dose of orally administered phenylephrine is effective as a nasal decongestant, overturning its long-standing over-the-counter status.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1976-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA\'s OTC Drug Review (Advisory Review Panel on Cold, Cough, Allergy, Bronchodilator and Antiasthmatic products) classified oral phenylephrine hydrochloride as Category I — generally recognized as safe and effective — as a nasal decongestant, embedding it in the OTC monograph. This institutionally settled oral phenylephrine as an effective decongestant, and after the 2006 Combat Methamphetamine Epidemic Act restricted pseudoephedrine, it became the dominant OTC oral decongestant in the United States.',
+        source: {
+          externalId: 'src:fda-ndac-phenylephrine-briefing-2023',
+          name: 'U.S. FDA. Nonprescription Drugs Advisory Committee Meeting: Oral Phenylephrine — Briefing Document and Meeting Materials. September 11–12, 2023.',
+          url: 'https://www.fda.gov/media/172701/download',
+          publishedAt: '2023-09-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-09-12',
+        datePrecision: 'DAY',
+        reason: 'After FDA scientists presented evidence that less than 1% of an oral dose reaches systemic circulation and that adequately powered trials showed no decongestant effect over placebo, the Nonprescription Drugs Advisory Committee voted 16–0 that monograph-dose oral phenylephrine is not effective as a nasal decongestant. The vote formally contested the efficacy of a ubiquitous OTC ingredient and led the FDA to issue a proposed order on 7 November 2024 to remove oral phenylephrine from the OTC monograph, leaving its regulatory status unresolved.',
+        source: {
+          externalId: 'src:fda-proposed-order-phenylephrine-fr-2024',
+          name: 'U.S. FDA. Amending Over-the-Counter Monograph M012: Cold, Cough, Allergy, Bronchodilator, and Antiasthmatic Drug Products (Proposed Order; oral phenylephrine not GRASE). Federal Register. November 8, 2024.',
+          url: 'https://www.federalregister.gov/documents/2024/11/08/2024-25910/amending-over-the-counter-monograph-m012-cold-cough-allergy-bronchodilator-and-antiasthmatic-drug',
+          publishedAt: '2024-11-08',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lorcaserin (Belviq) cancer withdrawal — 2020 ────────────────────────────
+  {
+    externalId: 'trajectory:lorcaserin-belviq-cancer-withdrawal-2020',
+    text: 'On 13 February 2020 the FDA requested that Eisai voluntarily withdraw the weight-loss drug lorcaserin (Belviq/Belviq XR) from the U.S. market after a postmarketing cardiovascular safety trial showed an increased incidence of cancer, reversing its 2012 approval as a safe chronic obesity treatment.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-06-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-06-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved lorcaserin (Belviq), a selective 5-HT2C serotonin receptor agonist, for chronic weight management in adults with obesity or overweight with a comorbidity — the first new prescription obesity drug approved in over a decade. The approval institutionally established lorcaserin as a safe and effective long-term anti-obesity agent and, as a condition of approval, required a postmarketing cardiovascular outcomes trial.',
+        source: {
+          externalId: 'src:fda-belviq-lorcaserin-approval-2012',
+          name: 'U.S. FDA. FDA approves Belviq to treat some overweight or obese adults. June 27, 2012.',
+          url: 'https://wayback.archive-it.org/7993/20170111141728/http://www.fda.gov/NewsEvents/Newsroom/PressAnnouncements/ucm309993.htm',
+          publishedAt: '2012-06-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-02-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s completed review of the CAMELLIA-TIMI 61 cardiovascular safety trial (>12,000 patients) found more cancers among lorcaserin recipients (7.7%) than placebo (7.1%), with excess pancreatic, colorectal, and lung cancers, and concluded the drug\'s risks outweighed its benefits. The agency requested voluntary market withdrawal; Eisai agreed the same day and waived its hearing, and the FDA formally withdrew approval of the Belviq and Belviq XR NDAs effective in September 2020.',
+        source: {
+          externalId: 'src:fda-dsc-lorcaserin-withdrawal-2020',
+          name: 'U.S. FDA. Drug Safety Communication: FDA requests the withdrawal of the weight-loss drug Belviq, Belviq XR (lorcaserin) from the market. February 13, 2020.',
+          url: 'https://www.fda.gov/media/135189/download',
+          publishedAt: '2020-02-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Hydroxychloroquine COVID-19 EUA revoked — 2020 ──────────────────────────
+  {
+    externalId: 'trajectory:hydroxychloroquine-covid-eua-revoked-2020',
+    text: 'On 15 June 2020 the FDA revoked the Emergency Use Authorization it had granted on 28 March 2020 for chloroquine phosphate and hydroxychloroquine sulfate to treat hospitalized COVID-19 patients, concluding the drugs were unlikely to be effective and that their risks outweighed their benefits.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-03-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-28',
+        datePrecision: 'DAY',
+        reason: 'Amid intense interest in repurposed antimalarials early in the pandemic, the FDA issued an Emergency Use Authorization permitting chloroquine phosphate and hydroxychloroquine sulfate from the Strategic National Stockpile to be used for certain hospitalized COVID-19 patients when a clinical trial was unavailable or infeasible. The EUA institutionally recorded — on an emergency, provisional basis — the claim that the drugs\' potential benefits might outweigh their risks in COVID-19.',
+        source: {
+          externalId: 'src:fda-hcq-cq-eua-letter-2020',
+          name: 'U.S. FDA. Emergency Use Authorization for chloroquine phosphate and hydroxychloroquine sulfate (Letter to BARDA). March 28, 2020.',
+          url: 'https://www.fda.gov/media/136534/download',
+          publishedAt: '2020-03-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-06-15',
+        datePrecision: 'DAY',
+        reason: 'Based on accumulating randomized and observational data showing no antiviral or clinical benefit, together with ongoing reports of serious cardiac adverse events (QT prolongation, arrhythmia), the FDA determined chloroquine and hydroxychloroquine were unlikely to be effective for COVID-19 and that the known and potential risks outweighed the benefits. BARDA requested revocation and the FDA revoked the EUA, a rare formal reversal of an emergency authorization during the pandemic.',
+        source: {
+          externalId: 'src:fda-hcq-cq-eua-revocation-fr-2020',
+          name: 'U.S. FDA. Authorizations and Revocation of Emergency Use of Drugs During the COVID-19 Pandemic (revocation of chloroquine/hydroxychloroquine EUA, June 15, 2020). Federal Register. September 11, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/09/11/2020-20041/authorizations-and-revocation-of-emergency-use-of-drugs-during-the-covid-19-pandemic-availability',
+          publishedAt: '2020-09-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Makena (hydroxyprogesterone caproate) accelerated approval withdrawn — 2023
+  {
+    externalId: 'trajectory:makena-hydroxyprogesterone-accelerated-approval-withdrawn-2023',
+    text: 'On 6 April 2023 the FDA Commissioner ordered the withdrawal of approval of Makena (hydroxyprogesterone caproate) and its generics for preventing recurrent preterm birth, after the confirmatory PROLONG trial failed to show benefit — making it one of the few drugs ever formally removed through the accelerated-approval withdrawal process.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-02-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-02-03',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to Makena (hydroxyprogesterone caproate injection) to reduce the risk of recurrent spontaneous preterm birth in women with a singleton pregnancy and a prior spontaneous preterm birth, based on the surrogate endpoint of reduced preterm delivery in the Meis et al. (2003) trial. It became the only FDA-approved drug for this indication, conditioned on a confirmatory trial.',
+        source: {
+          externalId: 'src:fda-makena-accelerated-approval-2011',
+          name: 'U.S. FDA. Center for Drug Evaluation and Research, Makena (hydroxyprogesterone caproate) NDA 021945 Approval Letter. February 3, 2011.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2011/021945s000ltr.pdf',
+          publishedAt: '2011-02-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-10-25',
+        datePrecision: 'DAY',
+        reason: 'The confirmatory PROLONG trial (Blackwell et al.), a large international randomized study, found that hydroxyprogesterone caproate did not reduce recurrent preterm birth or improve neonatal outcomes versus placebo, directly contradicting the surrogate-based evidence underlying accelerated approval. Publication of the null result threw the drug\'s efficacy into open dispute and prompted the FDA in October 2020 to propose withdrawing approval.',
+        source: {
+          externalId: 'src:blackwell-prolong-17ohpc-ajp-2020',
+          name: 'Blackwell SC, Gyamfi-Bannerman C, Biggio JR, et al. 17-OHPC to Prevent Recurrent Preterm Birth in Singleton Gestations (PROLONG Study). Am J Perinatol. 2020;37(2):127-136. (online October 25, 2019).',
+          url: 'https://www.thieme-connect.com/products/ejournals/abstract/10.1055/s-0039-3400227',
+          publishedAt: '2019-10-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-04-06',
+        datePrecision: 'DAY',
+        reason: 'Following a 2022 public advisory-committee hearing, the FDA Commissioner and Chief Scientist issued a final decision withdrawing approval of Makena and its generics, effective immediately, finding the evidence established neither a clinical benefit nor an effect on the surrogate endpoint that had supported accelerated approval. It was one of the rare instances of a drug formally removed via the accelerated-approval withdrawal mechanism, a landmark test of that pathway\'s enforcement.',
+        source: {
+          externalId: 'src:fda-makena-withdrawal-final-decision-fr-2023',
+          name: 'U.S. FDA. Final Decision on Withdrawal of MAKENA (Hydroxyprogesterone Caproate) and Eight Abbreviated New Drug Applications Following Public Hearing. Federal Register. May 15, 2023.',
+          url: 'https://www.federalregister.gov/documents/2023/05/15/2023-10264/final-decision-on-withdrawal-of-makena-hydroxyprogesterone-caproate-and-eight-abbreviated-new-drug',
+          publishedAt: '2023-05-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
