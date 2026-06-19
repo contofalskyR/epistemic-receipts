@@ -37548,6 +37548,216 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Theiler 17D yellow fever vaccine 1937 ───────────────────────────────────
+  {
+    externalId: 'trajectory:theiler-17d-yellow-fever-vaccine-1937',
+    text: 'Max Theiler and Hugh Smith reported in 1937 that the 17D strain of yellow fever virus, attenuated by serial in vitro passage in chick-embryo tissue, could safely immunize humans against yellow fever, establishing the first laboratory-derived live attenuated viral vaccine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1937-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1937-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Theiler and Smith of the Rockefeller Foundation published \'The use of yellow fever virus modified by in vitro cultivation for human immunization\' in the Journal of Experimental Medicine, reporting that the 17D strain — derived from the Asibi strain after ~176 tissue-culture passages — had lost viscerotropism and neurotropism yet still induced protective antibodies in human volunteers. This was the first attenuated viral vaccine produced deliberately in the laboratory rather than found in nature.',
+        source: {
+          externalId: 'src:theiler-smith-17d-jem-1937',
+          name: 'Theiler M, Smith HH. The use of yellow fever virus modified by in vitro cultivation for human immunization. J Exp Med. 1937;65(6):787–800.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10654001/',
+          publishedAt: '1937-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1951-10-01',
+        datePrecision: 'MONTH',
+        reason: 'After mass production and field use protected millions during the 1940s, the Karolinska Institute awarded Max Theiler the 1951 Nobel Prize in Physiology or Medicine \'for his discoveries concerning yellow fever and how to combat it\' — the only Nobel Prize ever given for the development of a vaccine. This ratified 17D as the definitive yellow fever vaccine, a status it still holds today.',
+        source: {
+          externalId: 'src:nobel-theiler-yellow-fever-1951',
+          name: 'The Nobel Prize in Physiology or Medicine 1951 — Max Theiler. Nobel Foundation.',
+          url: 'https://www.nobelprize.org/prizes/medicine/1951/theiler/facts/',
+          publishedAt: '1951-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kendrick–Eldering pertussis vaccine field trial 1939 ────────────────────
+  {
+    externalId: 'trajectory:kendrick-eldering-pertussis-vaccine-trial-1939',
+    text: 'Pearl Kendrick and Grace Eldering reported in 1939 that a whole-cell pertussis vaccine, evaluated in a controlled field trial of 5,815 children in Grand Rapids, Michigan, sharply reduced whooping cough incidence, providing the first rigorous evidence that pertussis immunization was effective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1939-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1939-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Kendrick and Eldering of the Michigan Department of Health published \'A study in active immunization against pertussis\' in the American Journal of Hygiene, reporting their 1934–1937 controlled field trial: vaccinated children had 2.3 pertussis attacks per 100 person-years versus 15.1 in the concurrent control group. Conducted with an explicit comparison group and person-years analysis, it was one of the earliest credibly controlled vaccine efficacy trials and recorded the claim that pertussis could be prevented by vaccination.',
+        source: {
+          externalId: 'src:kendrick-eldering-pertussis-ajh-1939',
+          name: 'Kendrick P, Eldering G. A study in active immunization against pertussis. Am J Hyg. 1939;29(Section B):133–153.',
+          url: 'https://academic.oup.com/aje/article/29-SectionB/3/133/89075',
+          publishedAt: '1939-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1948-01-01',
+        datePrecision: 'YEAR',
+        reason: 'On the strength of the Kendrick–Eldering data, whole-cell pertussis vaccine moved into routine American use and was combined with diphtheria and tetanus toxoids as the DTP vaccine licensed in 1948, becoming a standard component of infant immunization. The efficacy claim was thereby institutionally settled into national immunization practice.',
+        source: {
+          externalId: 'src:iom-pertussis-rubella-chronology',
+          name: 'Institute of Medicine. Pertussis and Rubella Vaccines: A Brief Chronology. In: Adverse Effects of Pertussis and Rubella Vaccines. National Academies Press; 1991.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK234365/',
+          publishedAt: '1991-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Smith–Andrewes–Laidlaw influenza A virus isolation 1933 ─────────────────
+  {
+    externalId: 'trajectory:influenza-a-virus-isolation-1933',
+    text: 'Wilson Smith, Christopher Andrewes, and Patrick Laidlaw reported in The Lancet on 8 July 1933 that they had transmitted human influenza to ferrets using filtered throat-washings, establishing that influenza is caused by a filterable virus rather than by Pfeiffer\'s bacillus.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1933-07-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1933-07-08',
+        datePrecision: 'DAY',
+        reason: 'Smith, Andrewes, and Laidlaw of the National Institute for Medical Research in London published \'A virus obtained from influenza patients,\' showing that ferrets developed influenza when inoculated intranasally with bacteria-free filtrates of patients\' throat-washings. This identified the influenza A virus and overturned the long-standing view, dating to Richard Pfeiffer\'s 1892 claim, that influenza was a bacterial disease.',
+        source: {
+          externalId: 'src:smith-andrewes-laidlaw-influenza-lancet-1933',
+          name: 'Smith W, Andrewes CH, Laidlaw PP. A virus obtained from influenza patients. Lancet. 1933;222(5732):66–68.',
+          url: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(00)78541-2/fulltext',
+          publishedAt: '1933-07-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The viral etiology of influenza became scientific consensus over the following years as the ferret model was reproduced internationally, human-to-ferret-to-human transmission was confirmed, and Thomas Francis isolated a serologically distinct influenza B virus in 1940 — establishing influenza as a family of viruses and providing the foundation on which the first influenza vaccines were built.',
+        source: {
+          externalId: 'src:who-history-influenza-vaccination',
+          name: 'World Health Organization. History of influenza vaccination. WHO Spotlight series.',
+          url: 'https://www.who.int/news-room/spotlight/history-of-vaccination/history-of-influenza-vaccination',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Lübeck BCG disaster / vaccine safety 1930 ───────────────────────────────
+  {
+    externalId: 'trajectory:lubeck-bcg-disaster-vaccine-safety-1930',
+    text: 'Investigation of the 1930 Lübeck disaster — in which 251 neonates received oral BCG and 72 died of tuberculosis — concluded that the deaths resulted from accidental contamination of the vaccine with virulent Mycobacterium tuberculosis, not from reversion of the BCG strain itself to virulence, exonerating BCG as a vaccine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1930-04-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'PUBLIC',
+        occurredAt: '1930-04-01',
+        datePrecision: 'MONTH',
+        reason: 'Beginning in April 1930, infants who had received the newly introduced oral BCG vaccine at Lübeck General Hospital began dying of tuberculosis; by year\'s end 72 of 251 vaccinated newborns had died and 173 more had developed TB. The catastrophe threw the safety of Calmette and Guérin\'s BCG vaccine into public and scientific doubt, halting BCG programs in Germany and elsewhere, with some alleging the attenuated strain had reverted to virulence.',
+        source: {
+          externalId: 'src:lubeck-disaster-plospathogens-2016',
+          name: 'Fox GJ, Orlova M, Schurr E. Tuberculosis in Newborns: The Lessons of the \'Lübeck Disaster\' (1929–1933). PLoS Pathog. 2016;12(1):e1005271.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4721647/',
+          publishedAt: '2016-01-07',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '1932-02-06',
+        datePrecision: 'DAY',
+        reason: 'Chief investigator Ludwig Lange and public-health expert A. Moegling combined clinical, microbiological, and epidemiological evidence to prove the BCG vials had been contaminated in the Lübeck laboratory with a virulent M. tuberculosis (Kiel) strain, conclusively disproving reversion. At the criminal trial concluding 6 February 1932, Georg Deycke and Ernst Altstaedt were convicted of negligent homicide, formally fixing responsibility on contamination and vindicating BCG, which remained in worldwide use.',
+        source: {
+          externalId: 'src:lubeck-bcg-vaccination-on-trial-2025',
+          name: 'Bonah C, et al. A Novel Microbe, Immunization Deaths, and Vaccination on Trial: BCG and the Lübeck Disaster of 1930. (PMID 39788567).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/39788567/',
+          publishedAt: '2025-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── U.S. Army inactivated influenza vaccine field trial 1944 ────────────────
+  {
+    externalId: 'trajectory:army-inactivated-influenza-vaccine-efficacy-1944',
+    text: 'The U.S. Army Commission on Influenza reported on 1 April 1944 that an inactivated influenza vaccine was effective in a large controlled field trial, providing the first rigorous human evidence that influenza could be prevented by vaccination.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1944-04-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-04-01',
+        datePrecision: 'DAY',
+        reason: 'The Commission on Influenza (whose members included Thomas Francis and Jonas Salk) published \'A Clinical Evaluation of Vaccination Against Influenza: Preliminary Report\' in JAMA, reporting that the inactivated vaccine markedly reduced influenza A attack rates among vaccinated U.S. Army personnel during the 1943–44 season. It was the first large controlled field trial to record efficacy of an influenza vaccine in humans.',
+        source: {
+          externalId: 'src:commission-influenza-vaccination-jama-1944',
+          name: 'Commission on Influenza. A Clinical Evaluation of Vaccination Against Influenza: Preliminary Report. JAMA. 1944;124(14):982–985.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/267441',
+          publishedAt: '1944-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1945-01-01',
+        datePrecision: 'YEAR',
+        reason: 'When a type B influenza epidemic struck in the fall of 1945, vaccinated soldiers were again substantially protected, confirming the 1944 result; the inactivated influenza vaccine was licensed for use in 1945, settling the claim that influenza vaccination was effective and inaugurating the era of routine influenza immunization.',
+        source: {
+          externalId: 'src:who-history-influenza-vaccination-1945',
+          name: 'World Health Organization. History of influenza vaccination (first vaccine licensed 1945). WHO Spotlight series.',
+          url: 'https://www.who.int/news-room/spotlight/history-of-vaccination/history-of-influenza-vaccination',
+          publishedAt: '2022-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
