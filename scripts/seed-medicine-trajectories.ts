@@ -34072,6 +34072,159 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Jejunoileal bypass for morbid obesity — Payne & DeWind 1969 ────────────
+  {
+    externalId: 'trajectory:jejunoileal-bypass-morbid-obesity-1969',
+    text: 'Jejunoileal bypass—surgically short-circuiting most of the small intestine to induce malabsorption—is a safe and effective operation for morbid obesity, as standardized and reported by J. Howard Payne and Loren T. DeWind in the American Journal of Surgery in August 1969.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1969-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Payne and DeWind reported a refined end-to-side jejunoileal bypass that produced large, durable weight loss in morbidly obese patients by deliberately inducing intestinal malabsorption. The paper recorded in the surgical literature the claim that short-circuiting the small bowel was an effective operative treatment for obesity, establishing the first widely reproduced bariatric procedure.',
+        source: {
+          externalId: 'src:payne-dewind-surgical-treatment-obesity-1969',
+          name: 'Payne JH, DeWind LT. Surgical treatment of obesity. Am J Surg. 1969;118(2):141-147.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5798387/',
+          publishedAt: '1969-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1974-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the early-to-mid 1970s jejunoileal bypass diffused rapidly across surgical centers to become the dominant bariatric operation in the United States, accepted as standard surgical therapy for intractable morbid obesity. Its widespread adoption is documented in Griffen and colleagues\' retrospective review of the procedure\'s rise and fall.',
+        source: {
+          externalId: 'src:griffen-decline-fall-jejunoileal-bypass-1983',
+          name: 'Griffen WO Jr, Bivins BA, Bell RM. The decline and fall of the jejunoileal bypass. Surg Gynecol Obstet. 1983;157(4):301-308.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6623319/',
+          publishedAt: '1983-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'ABANDONED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Griffen, Bivins, and Bell documented the \'decline and fall\' of the operation: accumulating severe complications—progressive hepatic dysfunction and cirrhosis, oxalate nephrolithiasis and renal failure, refractory electrolyte and protein-calorie derangement, intractable diarrhea, and arthralgia—led surgeons to abandon jejunoileal bypass in favor of gastric bypass. Though the procedure produced weight loss, its unacceptable harm profile reversed it out of practice, making it a textbook case of an adopted operation undone by long-term safety data.',
+        source: {
+          externalId: 'src:griffen-decline-fall-jejunoileal-bypass-1983',
+          name: 'Griffen WO Jr, Bivins BA, Bell RM. The decline and fall of the jejunoileal bypass. Surg Gynecol Obstet. 1983;157(4):301-308.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6623319/',
+          publishedAt: '1983-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IPPB for COPD — no benefit — IPPB Trial 1983 ───────────────────────────
+  {
+    externalId: 'trajectory:ippb-copd-no-benefit-1983',
+    text: 'Intermittent positive pressure breathing (IPPB)—delivering aerosolized bronchodilator under positive pressure—is an effective therapy for chronic obstructive pulmonary disease, a long-standing standard practice that the multicenter IPPB Trial, reported in Annals of Internal Medicine in November 1983, found conferred no benefit over a simple compressor nebulizer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1983-11-01',
+        datePrecision: 'MONTH',
+        reason: 'By the 1960s–70s IPPB had become a widely prescribed, costly mainstay of respiratory therapy for COPD, adopted on physiological reasoning rather than controlled outcome evidence. The IPPB Trial Group randomized 985 ambulatory COPD patients to IPPB versus a simple compressor nebulizer and, over roughly three years, found no significant difference in mortality, hospitalization, decline in lung function, or quality of life. The result refuted the presumed benefit of IPPB and collapsed its routine use, a landmark in the controlled evaluation of an entrenched procedural therapy.',
+        source: {
+          externalId: 'src:ippb-trial-copd-annals-1983',
+          name: 'Intermittent Positive Pressure Breathing Trial Group. Intermittent positive pressure breathing therapy of chronic obstructive pulmonary disease. A clinical trial. Ann Intern Med. 1983;99(5):612-620.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6357018/',
+          publishedAt: '1983-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Prophylactic portacaval shunt — no survival benefit — Jackson 1968 ──────
+  {
+    externalId: 'trajectory:prophylactic-portacaval-shunt-no-survival-1968',
+    text: 'Prophylactic portacaval shunt surgery, performed in cirrhotic patients with esophageal varices before any bleeding has occurred, prolongs survival—a claim reversed when the cooperative controlled trial reported by Jackson and colleagues in the American Journal of Surgery in January 1968 showed the operation prevented variceal hemorrhage but did not improve survival.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1960-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'MONTH',
+        reason: 'After portacaval anastomosis was advocated in the late 1950s and early 1960s as a prophylactic operation to prevent the first variceal hemorrhage and prolong life in cirrhotics, Jackson and colleagues conducted a controlled cooperative investigation with formal survival analysis. The prophylactic shunt reduced variceal bleeding but produced no survival benefit and was associated with more hepatic encephalopathy; corroborated by Conn\'s controlled series the following year, the result refuted the survival rationale and led to abandonment of the prophylactic operation.',
+        source: {
+          externalId: 'src:jackson-portacaval-shunt-survival-prophylactic-1968',
+          name: 'Jackson FC, Perrin EB, Smith AG, Dagradi AE, Nadal HM. A clinical investigation of the portacaval shunt. II. Survival analysis of the prophylactic operation. Am J Surg. 1968;115(1):22-42.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5299657/',
+          publishedAt: '1968-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IMA graft superiority — Loop et al. 1986 ────────────────────────────────
+  {
+    externalId: 'trajectory:internal-mammary-artery-graft-superiority-1986',
+    text: 'Using the internal-mammary-artery (IMA) rather than a saphenous-vein graft to the left anterior descending coronary artery confers better long-term survival and fewer late cardiac events in coronary bypass surgery, as reported by Floyd D. Loop and Cleveland Clinic colleagues in the New England Journal of Medicine on 2 January 1986.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-01-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-01-02',
+        datePrecision: 'DAY',
+        reason: 'Loop and colleagues compared 2,306 patients who received an IMA graft to the anterior descending artery with 3,625 who received only saphenous-vein grafts, finding that vein-only patients had about a 1.6-fold higher 10-year mortality plus more late myocardial infarction, hospitalization, and reoperation. The study recorded in the cardiac-surgery literature the claim that the IMA is a durably superior conduit, challenging reliance on vein grafts alone.',
+        source: {
+          externalId: 'src:loop-ima-graft-10yr-survival-nejm-1986',
+          name: 'Loop FD, Lytle BW, Cosgrove DM, et al. Influence of the internal-mammary-artery graft on 10-year survival and other cardiac events. N Engl J Med. 1986;314(1):1-6.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3484393/',
+          publishedAt: '1986-01-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-01',
+        datePrecision: 'MONTH',
+        reason: 'IMA-to-LAD grafting became standard surgical practice through the 1990s as confirmatory data accumulated, and was codified as a Class I recommendation in the 2011 ACCF/AHA Guideline for Coronary Artery Bypass Graft Surgery (executive summary, 2012), which directs that the left internal mammary artery be used to bypass the LAD when grafting is indicated. The professional-society guideline institutionally settled the superiority of arterial grafting of the LAD.',
+        source: {
+          externalId: 'src:accf-aha-cabg-guideline-exec-summary-2012',
+          name: 'Hillis LD, Smith PK, Anderson JL, et al. 2011 ACCF/AHA Guideline for Coronary Artery Bypass Graft Surgery: Executive Summary. J Thorac Cardiovasc Surg. 2012;143(1):4-34.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22172748/',
+          publishedAt: '2012-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
