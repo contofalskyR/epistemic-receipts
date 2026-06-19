@@ -31302,6 +31302,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRIC SAFETY & COVID ERA (2019–2026)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── MIS-C — CDC HAN-432 + Feldstein NEJM 2020 ──────────────────────────────
+  {
+    externalId: 'trajectory:mis-c-multisystem-inflammatory-syndrome-children-covid-2020',
+    text: 'Pediatric clinicians defined multisystem inflammatory syndrome in children (MIS-C), a novel hyperinflammatory condition temporally associated with SARS-CoV-2 infection, which the CDC made a standardized notifiable entity on 14 May 2020 and a U.S. multicenter cohort characterized in the New England Journal of Medicine on 29 June 2020.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2020-04-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-05-14',
+        datePrecision: 'DAY',
+        reason: 'Weeks after clinicians in the UK and Europe reported clusters of a Kawasaki-like hyperinflammatory illness in children with recent COVID-19, the CDC issued Health Advisory HAN-432 with a standardized case definition for Multisystem Inflammatory Syndrome in Children (MIS-C) and asked clinicians to report cases. This converted scattered clinical observations into a named, nationally tracked entity.',
+        source: {
+          externalId: 'src:cdc-han432-mis-c-case-definition-2020',
+          name: 'Centers for Disease Control and Prevention. Multisystem Inflammatory Syndrome in Children (MIS-C) Associated with Coronavirus Disease 2019 (COVID-19). CDC Health Advisory HAN-00432. May 14, 2020.',
+          url: 'https://emergency.cdc.gov/han/2020/han00432.asp',
+          publishedAt: '2020-05-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-06-29',
+        datePrecision: 'DAY',
+        reason: 'Feldstein and colleagues published a 186-patient multicenter cohort spanning 26 U.S. states in the New England Journal of Medicine, delineating MIS-C\'s clinical spectrum, organ involvement, and distinction from acute COVID-19 and classic Kawasaki disease. The characterization cemented MIS-C as an established, reproducible clinical entity in the expert literature.',
+        source: {
+          externalId: 'src:feldstein-mis-c-cohort-nejm-2020',
+          name: 'Feldstein LR, Rose EB, Horwitz SM, et al. Multisystem Inflammatory Syndrome in U.S. Children and Adolescents. N Engl J Med. 2020;383(4):334-346.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32598831/',
+          publishedAt: '2020-07-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── EVALI — vitamin E acetate vaping lung injury 2019 ──────────────────────
+  {
+    externalId: 'trajectory:evali-vitamin-e-acetate-vaping-lung-injury-2019',
+    text: 'U.S. public health investigators identified vitamin E acetate as a primary cause of e-cigarette or vaping product use-associated lung injury (EVALI), an outbreak concentrated in adolescents and young adults, with bronchoalveolar-lavage evidence reported by Blount and colleagues in the New England Journal of Medicine (online 20 December 2019).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2019-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-08-17',
+        datePrecision: 'DAY',
+        reason: 'After clusters of severe pulmonary illness in otherwise-healthy young people who vaped appeared in Illinois and Wisconsin during summer 2019, the CDC and FDA launched a coordinated multistate investigation into the outbreak. This formalized a previously unrecognized clinical syndrome as a tracked public-health emergency.',
+        source: {
+          externalId: 'src:cdc-evali-outbreak-investigation-2019',
+          name: 'Centers for Disease Control and Prevention. Outbreak of Lung Injury Associated with the Use of E-Cigarette, or Vaping, Products. CDC, 2019.',
+          url: 'https://www.cdc.gov/tobacco/basic_information/e-cigarettes/severe-lung-disease.html',
+          publishedAt: '2019-08-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2019-12-20',
+        datePrecision: 'DAY',
+        reason: 'Blount et al. detected vitamin E acetate in bronchoalveolar-lavage fluid from 48 of 51 EVALI patients and in none of the healthy comparison subjects, providing a direct biological link at the site of injury. The finding, published online in the New England Journal of Medicine, established vitamin E acetate (a THC-vaping-product additive) as the primary causal agent and shifted the etiology from open to settled.',
+        source: {
+          externalId: 'src:blount-vitamin-e-acetate-evali-nejm-2020',
+          name: 'Blount BC, Karwowski MP, Shields PG, et al. Vitamin E Acetate in Bronchoalveolar-Lavage Fluid Associated with EVALI. N Engl J Med. 2020;382(8):697-705.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31860793/',
+          publishedAt: '2020-02-20',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lenmeldy / MLD gene therapy — FDA approval 2024 ────────────────────────
+  {
+    externalId: 'trajectory:lenmeldy-atidarsagene-autotemcel-mld-gene-therapy-2024',
+    text: 'The FDA approved Lenmeldy (atidarsagene autotemcel), the first gene therapy for children with pre-symptomatic late-infantile, pre-symptomatic early-juvenile, or early-symptomatic early-juvenile metachromatic leukodystrophy (MLD), on 18 March 2024.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-01-22',
+        datePrecision: 'DAY',
+        reason: 'Fumagalli and colleagues published long-term results of the OTL-200 lentiviral hematopoietic stem-cell gene therapy in The Lancet, showing that autologous ARSA-gene-corrected cells preserved motor function and cognition in children with early-onset MLD versus the universally fatal natural history. The trial moved the therapeutic claim from hypothesis to documented clinical efficacy.',
+        source: {
+          externalId: 'src:fumagalli-otl200-mld-lancet-2022',
+          name: 'Fumagalli F, Calbi V, Natali Sora MG, et al. Lentiviral haematopoietic stem-cell gene therapy for early-onset metachromatic leukodystrophy: long-term results from a non-randomised, open-label, phase 1/2 trial and expanded access. Lancet. 2022;399(10322):372-383.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35093206/',
+          publishedAt: '2022-01-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-03-18',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Lenmeldy (atidarsagene autotemcel) as the first treatment of any kind for early-onset metachromatic leukodystrophy in the United States, a one-time autologous gene therapy. The approval institutionally settled a precision-medicine claim for a previously untreatable, fatal pediatric neurodegenerative disease.',
+        source: {
+          externalId: 'src:fda-approval-letter-lenmeldy-2024',
+          name: 'U.S. Food and Drug Administration. Approval Letter — LENMELDY (atidarsagene autotemcel), BLA STN 125803. March 18, 2024.',
+          url: 'https://www.fda.gov/media/177122/download',
+          publishedAt: '2024-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Montelukast (Singulair) boxed warning — neuropsychiatric 2020 ───────────
+  {
+    externalId: 'trajectory:montelukast-singulair-boxed-warning-neuropsychiatric-2020',
+    text: 'The FDA required a boxed warning for montelukast (Singulair), widely prescribed to children for asthma and allergic rhinitis, for serious neuropsychiatric side effects including suicidality, and advised restricting its use for allergic rhinitis, on 4 March 2020 — escalating a safety signal the agency had first flagged on 27 March 2008.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2008-03-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2008-03-27',
+        datePrecision: 'DAY',
+        reason: 'The FDA posted an Early Communication announcing an ongoing safety review of montelukast over possible associations with mood and behavior changes, suicidal thinking, and suicide. Label warnings were added in 2008-2009, but the agency did not require its strongest warning, leaving the harm signal acknowledged yet unsettled for over a decade.',
+        source: {
+          externalId: 'src:fda-dsc-montelukast-boxed-warning-2020',
+          name: 'U.S. Food and Drug Administration. FDA requires Boxed Warning about serious mental health side effects for asthma and allergy drug montelukast (Singulair); advises restricting use for allergic rhinitis. Drug Safety Communication, March 4, 2020.',
+          url: 'https://www.fda.gov/drugs/drug-safety-communications/fda-requires-boxed-warning-about-serious-mental-health-side-effects-asthma-and-allergy-drug',
+          publishedAt: '2020-03-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-03-04',
+        datePrecision: 'DAY',
+        reason: 'After re-reviewing accumulated reports (including 82 completed suicides) and convening outside experts, the FDA required a boxed warning — its strongest — for serious neuropsychiatric events and advised reserving montelukast for allergic rhinitis only when other therapies fail. The action institutionally settled that the drug\'s neuropsychiatric risk warranted the maximal warning, reversing the prior judgment that label text sufficed.',
+        source: {
+          externalId: 'src:fda-dsc-montelukast-boxed-warning-2020-settle',
+          name: 'U.S. Food and Drug Administration. FDA requires Boxed Warning about serious mental health side effects for asthma and allergy drug montelukast (Singulair); advises restricting use for allergic rhinitis. Drug Safety Communication, March 4, 2020.',
+          url: 'https://www.fda.gov/drugs/drug-safety-communications/fda-requires-boxed-warning-about-serious-mental-health-side-effects-asthma-and-allergy-drug',
+          publishedAt: '2020-03-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NEC / cow-milk formula litigation — Enfamil verdict & reversal 2024–2026
+  {
+    externalId: 'trajectory:nec-cow-milk-formula-litigation-enfamil-verdict-2024',
+    text: 'A St. Clair County, Illinois jury found Mead Johnson liable on 14 March 2024 for failing to warn that its cow\'s-milk-based Enfamil preterm formula caused necrotizing enterocolitis (NEC) in a premature infant, awarding $60 million — a causal claim that U.S. federal agencies (FDA, CDC, NIH) publicly disputed on 2 October 2024 and that an Illinois appellate court vacated on 12 June 2026.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2024-03-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2024-03-14',
+        datePrecision: 'DAY',
+        reason: 'In the first trial to reach verdict in the preterm-formula NEC litigation, a St. Clair County jury unanimously found Mead Johnson negligent and liable for failing to warn that its cow\'s-milk-based Enfamil formula caused fatal NEC in a premature infant, awarding $60 million. The verdict judicially established a specific causal claim that drug regulators and pediatric guidelines had not endorsed.',
+        source: {
+          externalId: 'src:insurance-journal-enfamil-nec-verdict-2024',
+          name: 'Insurance Journal. Reckitt Unit Hit With $60 Million Verdict in Enfamil Baby Formula Case. March 18, 2024.',
+          url: 'https://www.insurancejournal.com/news/national/2024/03/18/765365.htm',
+          publishedAt: '2024-03-18',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2024-10-02',
+        datePrecision: 'DAY',
+        reason: 'The FDA, CDC, and NIH issued a joint statement responding to the litigation, concluding there is no conclusive evidence that preterm infant formula causes NEC and that the strong evidence instead supports the absence of human milk as the risk factor. The federal scientific consensus directly contradicted the jury\'s causal finding, throwing the claim into contestation between the judicial and institutional communities.',
+        source: {
+          externalId: 'src:fda-cdc-nih-formula-nec-statement-2024',
+          name: 'U.S. Food and Drug Administration. FDA Roundup: October 11, 2024 (FDA-CDC-NIH consensus statement on preterm infants and necrotizing enterocolitis, October 2, 2024).',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-roundup-october-11-2024',
+          publishedAt: '2024-10-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2026-06-12',
+        datePrecision: 'DAY',
+        reason: 'A three-justice panel of the Illinois Fifth District Appellate Court vacated the $60 million verdict, finding the trial court applied an improper legal standard and permitted argument that biased the jury. The reversal undid the judicial establishment of the formula-causes-NEC claim, aligning the legal record more closely with the federal scientific position.',
+        source: {
+          externalId: 'src:reuters-mead-johnson-nec-verdict-overturned-2026',
+          name: 'Reuters. Infant-formula damages verdict against Mead Johnson overturned. June 12, 2026.',
+          url: 'https://finance.yahoo.com/healthcare/articles/infant-formula-damages-verdict-against-115855500.html',
+          publishedAt: '2026-06-12',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
