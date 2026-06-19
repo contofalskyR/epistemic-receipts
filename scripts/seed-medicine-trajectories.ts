@@ -25303,6 +25303,205 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // EVIDENCE-BASED PHARMACOLOGY & ORAL THERAPIES ERA (2010–2015)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Reboxetine ineffective antidepressant — Eyding et al. BMJ 2010 ──────────
+  {
+    externalId: 'trajectory:reboxetine-ineffective-antidepressant-2010',
+    text: 'Reboxetine, a selective noradrenaline-reuptake inhibitor marketed across Europe from the late 1990s as an effective antidepressant, is in fact, when published and unpublished trial data are combined, an ineffective and potentially harmful antidepressant — as established by Eyding and colleagues in the BMJ on 12 October 2010.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-10-12',
+        datePrecision: 'DAY',
+        reason: 'Eyding et al. published a systematic review and meta-analysis in the BMJ pooling 13 placebo- and SSRI-controlled trials of reboxetine (4,098 patients), 74% of whose data had never been published, and concluded reboxetine was \'overall an ineffective and potentially harmful antidepressant.\' They showed published data had overstated the benefit versus placebo by up to 115% and versus SSRIs by 23%, reversing the drug\'s established efficacy claim and becoming a landmark demonstration of how unpublished trial data can overturn a settled finding.',
+        source: {
+          externalId: 'src:eyding-reboxetine-bmj-2010',
+          name: 'Eyding D, Lelgemann M, Grouven U, et al. Reboxetine for acute treatment of major depression: systematic review and meta-analysis of published and unpublished placebo and selective serotonin reuptake inhibitor controlled trials. BMJ. 2010;341:c4737.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20940209/',
+          publishedAt: '2010-10-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fournier antidepressant severity-efficacy — JAMA 2010 ───────────────────
+  {
+    externalId: 'trajectory:fournier-antidepressant-severity-efficacy-2010',
+    text: 'Jay Fournier and colleagues reported in JAMA on 6 January 2010 that the benefit of antidepressant medication over placebo increases with the severity of depression and may be minimal or nonexistent, on average, in patients with mild or moderate depression.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-01-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-01-06',
+        datePrecision: 'DAY',
+        reason: 'Fournier et al. published a patient-level meta-analysis (six trials of paroxetine and imipramine) in JAMA finding that the magnitude of antidepressant benefit over placebo rose with baseline symptom severity and was \'minimal or nonexistent\' for mild-to-moderate depression while substantial for very severe depression. The paper recorded into the top-tier literature a quantified, severity-conditional challenge to routine antidepressant prescribing and was widely cited in subsequent debate over whether antidepressants work in milder illness.',
+        source: {
+          externalId: 'src:fournier-antidepressant-severity-jama-2010',
+          name: 'Fournier JC, DeRubeis RJ, Hollon SD, et al. Antidepressant drug effects and depression severity: a patient-level meta-analysis. JAMA. 2010;303(1):47-53.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20051569/',
+          publishedAt: '2010-01-06',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-04-07',
+        datePrecision: 'DAY',
+        reason: 'Cipriani et al. published a network meta-analysis of 522 trials (116,477 participants) in The Lancet concluding that all 21 antidepressants studied were more effective than placebo for adults with major depression, with the authors and accompanying commentary explicitly disputing the Fournier-style view that benefit is confined to the most severe patients. The two analyses — using different methods and far larger data — left the severity-dependence of antidepressant efficacy an actively contested question rather than a settled finding.',
+        source: {
+          externalId: 'src:cipriani-antidepressants-lancet-2018',
+          name: 'Cipriani A, Furukawa TA, Salanti G, et al. Comparative efficacy and acceptability of 21 antidepressant drugs for the acute treatment of adults with major depressive disorder: a systematic review and network meta-analysis. Lancet. 2018;391(10128):1357-1366.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29477251/',
+          publishedAt: '2018-04-07',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fingolimod (Gilenya) first oral MS therapy — FDA approval 2010 ──────────
+  {
+    externalId: 'trajectory:fingolimod-gilenya-first-oral-ms-2010',
+    text: 'Fingolimod (Gilenya, Novartis), an oral sphingosine-1-phosphate receptor modulator, reduces relapse rates and delays disability progression in relapsing multiple sclerosis, as shown by the FREEDOMS trial (NEJM, 4 February 2010) and ratified by FDA approval on 22 September 2010 as the first oral disease-modifying therapy for MS.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-02-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-02-04',
+        datePrecision: 'DAY',
+        reason: 'Kappos et al. published the 24-month, placebo-controlled FREEDOMS trial (1,272 patients) in the New England Journal of Medicine, showing oral fingolimod significantly improved annualized relapse rate, disability-progression risk, and MRI endpoints versus placebo. Together with the active-comparator TRANSFORMS trial, it recorded into the expert literature the first robust evidence that an oral agent could modify the course of relapsing MS, which had until then been treated only with injectable therapies.',
+        source: {
+          externalId: 'src:kappos-fingolimod-freedoms-nejm-2010',
+          name: 'Kappos L, Radue EW, O\'Connor P, et al. A placebo-controlled trial of oral fingolimod in relapsing multiple sclerosis. N Engl J Med. 2010;362(5):387-401.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20089952/',
+          publishedAt: '2010-02-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-09-22',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved fingolimod (Gilenya) as a first-line treatment for relapsing forms of multiple sclerosis, the first oral disease-modifying therapy ever cleared for the disease. The approval institutionally settled the claim that oral S1P-receptor modulation can reduce MS relapses and disability, opening the oral-DMT era and prompting the cardiac-monitoring (first-dose bradycardia) requirements that defined the class\'s risk profile.',
+        source: {
+          externalId: 'src:novartis-fda-gilenya-approval-2010',
+          name: 'Novartis. Novartis gains FDA approval for Gilenya, a novel first-line multiple sclerosis treatment shown to significantly reduce relapses and delay disability progression. September 22, 2010.',
+          url: 'https://www.novartis.com/us-en/news/media-releases/novartis-gains-fda-approval-gilenyatm-novel-first-line-multiple-sclerosis-treatment-shown-significantly-reduce-relapses-and-delay-disability-progression',
+          publishedAt: '2010-09-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dextromethorphan/quinidine (Nuedexta) for pseudobulbar affect — 2010 ────
+  {
+    externalId: 'trajectory:dextromethorphan-quinidine-pseudobulbar-affect-2010',
+    text: 'The combination of dextromethorphan and ultra-low-dose quinidine (AVP-923, marketed as Nuedexta by Avanir) effectively reduces pseudobulbar affect in patients with ALS or multiple sclerosis, as shown in the STAR trial (Annals of Neurology, 2010) and ratified by FDA approval on 29 October 2010 as the first treatment for pseudobulbar affect.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2010-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Pioro et al. published the STAR trial (Safety, Tolerability, and Efficacy Results trial of AVP-923 in PBA) in Annals of Neurology, a 12-week randomized, double-blind, placebo-controlled study showing the 20/10-mg dextromethorphan/quinidine combination significantly reduced pseudobulbar-affect episode rates and CNS-LS scores in patients with ALS or MS. The trial recorded into the literature the first definitive evidence supporting the low-quinidine formulation for a condition — sudden involuntary crying or laughing — that had no approved therapy.',
+        source: {
+          externalId: 'src:pioro-star-dmq-pba-annneurol-2010',
+          name: 'Pioro EP, Brooks BR, Cummings J, et al. Dextromethorphan plus ultra low-dose quinidine reduces pseudobulbar affect. Ann Neurol. 2010;68(5):693-702.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20839238/',
+          publishedAt: '2010-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Nuedexta (dextromethorphan hydrobromide/quinidine sulfate, NDA 021879, Avanir Pharmaceuticals) as the first and only treatment approved for pseudobulbar affect, validating both the clinical reality of PBA as a treatable neurological symptom and the sigma-1/NMDA mechanism of low-dose dextromethorphan made bioavailable by a CYP2D6-inhibiting microdose of quinidine. The approval institutionally settled the therapeutic claim for a previously unaddressed disorder of emotional expression in neurological disease.',
+        source: {
+          externalId: 'src:fda-nuedexta-label-2010',
+          name: 'U.S. FDA. NUEDEXTA (dextromethorphan hydrobromide and quinidine sulfate) capsules — Prescribing Information, NDA 021879. October 29, 2010.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2010/021879s000lbl.pdf',
+          publishedAt: '2010-10-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lisdexamfetamine (Vyvanse) for binge-eating disorder — FDA 2015 ─────────
+  {
+    externalId: 'trajectory:lisdexamfetamine-binge-eating-disorder-2015',
+    text: 'Lisdexamfetamine dimesylate (Vyvanse, Shire), a prodrug stimulant previously approved only for ADHD, is effective for moderate-to-severe binge-eating disorder in adults, as shown by McElroy et al. (JAMA Psychiatry, 2015) and ratified by FDA approval on 30 January 2015 as the first drug ever approved for binge-eating disorder.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-01-14',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-01-14',
+        datePrecision: 'MONTH',
+        reason: 'McElroy et al. published a randomized, double-blind, placebo-controlled trial in JAMA Psychiatry showing lisdexamfetamine at 50 and 70 mg/day significantly reduced binge-eating days per week and raised 4-week binge cessation rates (42–50% vs 21% placebo) in adults with moderate-to-severe binge-eating disorder. The trial recorded the first high-quality pharmacological evidence that a stimulant could treat a disorder of compulsive eating, distinct from its established ADHD indication.',
+        source: {
+          externalId: 'src:mcelroy-lisdexamfetamine-bed-jamapsych-2015',
+          name: 'McElroy SL, Hudson JI, Mitchell JE, et al. Efficacy and safety of lisdexamfetamine for treatment of adults with moderate to severe binge-eating disorder: a randomized clinical trial. JAMA Psychiatry. 2015;72(3):235-246.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25587645/',
+          publishedAt: '2015-01-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-01-30',
+        datePrecision: 'DAY',
+        reason: 'The FDA expanded the approved uses of Vyvanse to include moderate-to-severe binge-eating disorder in adults, making it the first FDA-approved medication for any eating disorder. The approval institutionally established binge-eating disorder — newly codified as a standalone diagnosis in DSM-5 (2013) — as a pharmacologically treatable condition, while attaching the Schedule II stimulant\'s boxed warning for abuse and dependence, which itself fueled debate over prescribing an addictive stimulant for a disorder of compulsive consumption.',
+        source: {
+          externalId: 'src:fda-vyvanse-bed-approval-2015',
+          name: 'U.S. FDA. FDA expands uses of Vyvanse to treat binge-eating disorder in adults. January 30, 2015.',
+          url: 'https://wayback.archive-it.org/7993/20170111081226/http://www.fda.gov/NewsEvents/Newsroom/PressAnnouncements/ucm432543.htm',
+          publishedAt: '2015-01-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
