@@ -31718,6 +31718,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL REVERSAL & IATROGENIC HARM (1950–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── EC/IC bypass surgery — reversed by RCT 1985 ────────────────────────────
+  {
+    externalId: 'trajectory:ec-ic-bypass-stroke-prevention-reversed-1985',
+    text: 'Extracranial-intracranial (superficial temporal artery to middle cerebral artery) arterial bypass surgery reduces the risk of ischemic stroke in patients with atherosclerotic carotid or middle cerebral artery occlusive disease, as demonstrated by the international randomized EC/IC Bypass Study reported in the New England Journal of Medicine on 7 November 1985 to NOT confer such benefit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-11-07',
+        datePrecision: 'DAY',
+        reason: 'After Yaşargil\'s 1967 microsurgical STA-MCA anastomosis, EC-IC bypass became widely accepted through the 1970s as prophylaxis against stroke in patients with carotid/MCA occlusive disease. The EC/IC Bypass Study Group\'s international randomized trial of 1,377 patients, published in NEJM, found that surgery did not reduce ischemic stroke and that early outcomes were worse in the surgical arm, refuting the established hypothesis and collapsing a common neurosurgical practice. It became a landmark example of an entrenched operation overturned by a rigorous RCT.',
+        source: {
+          externalId: 'src:ecic-bypass-study-nejm-1985',
+          name: 'EC/IC Bypass Study Group. Failure of extracranial-intracranial arterial bypass to reduce the risk of ischemic stroke. Results of an international randomized trial. N Engl J Med. 1985;313(19):1191-1200.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2865674/',
+          publishedAt: '1985-11-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── High-concentration oxygen in premature infants — reversed 1956 ──────────
+  {
+    externalId: 'trajectory:kinsey-oxygen-retrolental-fibroplasia-reversal-1956',
+    text: 'Routine administration of high-concentration, unrestricted supplemental oxygen to premature infants is safe — a practice reversed when the National Cooperative Study of Retrolental Fibroplasia, led by V. Everett Kinsey and reported in 1956, established that liberal oxygen exposure causes retrolental fibroplasia (retinopathy of prematurity).',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1945-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1956-10-01',
+        datePrecision: 'MONTH',
+        reason: 'From the mid-1940s, premature-infant units routinely supplied high ambient oxygen in incubators, believed beneficial and harmless, while a blinding epidemic of retrolental fibroplasia grew. Kinsey\'s large multicenter cooperative study, published in AMA Archives of Ophthalmology, demonstrated that routine high oxygen was the cause, settling the etiology and prompting abandonment of unrestricted oxygen in favor of restricted, monitored administration. It is a foundational case of a standard neonatal procedure shown to be iatrogenic.',
+        source: {
+          externalId: 'src:kinsey-retrolental-fibroplasia-oxygen-archophthalmol-1956',
+          name: 'Kinsey VE. Retrolental fibroplasia; cooperative study of retrolental fibroplasia and the use of oxygen. AMA Arch Ophthalmol. 1956;56(4):481-543.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13361620/',
+          publishedAt: '1956-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Electronic fetal monitoring — contested by Haverkamp 1976 ──────────────
+  {
+    externalId: 'trajectory:haverkamp-electronic-fetal-monitoring-no-benefit-1976',
+    text: 'Continuous electronic fetal heart-rate monitoring during labor improves neonatal outcomes compared with intermittent auscultation, justifying its routine use — a claim contested by the first randomized trial (Haverkamp et al., American Journal of Obstetrics and Gynecology, 1976), which found no improvement in infant outcomes but a markedly higher cesarean-section rate in the monitored group.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1968-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Hon\'s commercial fetal monitors appeared in the late 1960s, continuous electronic fetal monitoring was rapidly and widely adopted as routine intrapartum care on the assumption it reduced perinatal harm. Haverkamp\'s randomized trial of 483 high-risk laboring patients comparing electronic monitoring with auscultation found no difference in any infant outcome but a cesarean rate of 16.5% versus 6.8%, opening a long-running, still-unresolved controversy over whether routine EFM benefits patients while increasing operative delivery.',
+        source: {
+          externalId: 'src:haverkamp-continuous-fetal-monitoring-ajog-1976',
+          name: 'Haverkamp AD, Thompson HE, McFee JG, Cetrulo C. The evaluation of continuous fetal heart rate monitoring in high-risk pregnancy. Am J Obstet Gynecol. 1976;125(3):310-320.',
+          url: 'https://www.sciencedirect.com/science/article/abs/pii/0002937876905652',
+          publishedAt: '1976-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Childhood irradiation → thyroid cancer — Duffy & Fitzgerald 1950 ───────
+  {
+    externalId: 'trajectory:duffy-fitzgerald-childhood-thyroid-cancer-irradiation-1950',
+    text: 'Therapeutic X-ray irradiation given in infancy (notably for presumed thymic enlargement) is associated with the later development of thyroid cancer in childhood and adolescence, first reported by Duffy and Fitzgerald in 1950 from a series of 28 pediatric thyroid-cancer cases at Memorial Hospital, several of whom had received neck/thymus irradiation in infancy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1950-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1950-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Duffy and Fitzgerald\'s report of 28 thyroid cancers in patients aged 4–18 noted that a substantial subset had received X-ray irradiation in infancy, often for supposed thymic enlargement. This was the first published evidence raising the possibility that medical irradiation in childhood causes thyroid cancer, recording a harm signal against a then-common pediatric procedure (irradiation of the enlarged thymus).',
+        source: {
+          externalId: 'src:duffy-fitzgerald-thyroid-cancer-children-jcem-1950',
+          name: 'Duffy BJ Jr, Fitzgerald PJ. Cancer of the thyroid in children: a report of 28 cases. J Clin Endocrinol Metab. 1950;10(10):1296-1308.',
+          url: 'https://academic.oup.com/jcem/article-abstract/10/10/1296/2720017',
+          publishedAt: '1950-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1976-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over the following two decades, follow-up of irradiated cohorts confirmed the link and infant thymic/neck irradiation was abandoned. In 1976 the U.S. National Cancer Institute formally alerted physicians to irradiation-related thyroid cancer and recommended examination of people irradiated in childhood, marking institutional acceptance that childhood medical irradiation is an established cause of thyroid cancer.',
+        source: {
+          externalId: 'src:nci-irradiation-related-thyroid-cancer-cacjc-1976',
+          name: 'National Cancer Institute. Information for physicians on irradiation-related thyroid cancer. CA Cancer J Clin. 1976;26(3):150-159.',
+          url: 'https://acsjournals.onlinelibrary.wiley.com/doi/abs/10.3322/canjclin.26.3.150',
+          publishedAt: '1976-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
