@@ -32105,6 +32105,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // DIABETES & ENDOCRINE POST-MARKET SAFETY (1970–2017)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── UGDP tolbutamide cardiovascular mortality — 1970 ──────────────────────────
+  {
+    externalId: 'trajectory:ugdp-tolbutamide-cardiovascular-mortality-1970',
+    text: 'The University Group Diabetes Program reported in 1970 that the oral sulfonylurea tolbutamide was associated with an excess of cardiovascular mortality compared with diet alone or diet plus insulin in patients with adult-onset (type 2) diabetes, challenging the assumed safety of oral hypoglycemic agents.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1970-05-20',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1970-05-20',
+        datePrecision: 'MONTH',
+        reason: 'The UGDP — the first large randomized controlled trial in type 2 diabetes — reported in its mortality results paper (Diabetes 1970;19[Suppl 2]:789–830) that patients on a fixed dose of tolbutamide had roughly 2.5 times the cardiovascular mortality of diet-treated controls, leading the investigators to halt the tolbutamide arm. This recorded in the expert literature the alarming claim that a widely used oral antidiabetic agent might increase cardiac death, overturning the prevailing assumption that lowering blood glucose with sulfonylureas was straightforwardly beneficial.',
+        source: {
+          externalId: 'src:ugdp-mortality-results-diabetes-1970',
+          name: 'University Group Diabetes Program. A study of the effects of hypoglycemic agents on vascular complications in patients with adult-onset diabetes. II. Mortality results. Diabetes. 1970;19(Suppl 2):789–830.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4926376/',
+          publishedAt: '1970-05-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Over fierce objection from clinicians (notably the Committee for the Care of the Diabetic), the FDA mandated a class-wide \'Special Warning on Increased Risk of Cardiovascular Mortality\' on sulfonylurea labeling based on the UGDP finding; after years of litigation a Biometric Society review largely upheld the data, and the warning persists in modern sulfonylurea labels. The finding became institutionally entrenched yet scientifically contested — sulfonylureas remained in mainstream use — leaving the UGDP conclusion in a durable contested state rather than fully settled or reversed.',
+        source: {
+          externalId: 'src:fda-glucotrol-label-ugdp-special-warning-2013',
+          name: 'U.S. FDA. GLUCOTROL (glipizide) tablets prescribing information — \'Special Warning on Increased Risk of Cardiovascular Mortality\' (citing UGDP). NDA 017783.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/017783s025lbl.pdf',
+          publishedAt: '2013-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cadaveric pituitary hGH / CJD withdrawal — 1985 ──────────────────────────
+  {
+    externalId: 'trajectory:cadaveric-pituitary-hgh-cjd-withdrawal-1985',
+    text: 'Pituitary-derived (cadaveric) human growth hormone, distributed in the United States through the National Hormone and Pituitary Program since the 1960s as a safe and effective treatment for growth hormone deficiency, was shown in 1985 to transmit fatal Creutzfeldt–Jakob disease, prompting the NIH to halt its distribution.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1963-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1963-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The National Hormone and Pituitary Program (originally the National Pituitary Agency) was established to centrally collect human pituitary glands from cadavers, extract growth hormone, and distribute it to clinicians treating children with growth hormone deficiency. Over roughly two decades this institutionalized cadaveric hGH as the accepted standard therapy, with about 7,700 U.S. recipients, settling the claim that pituitary-derived hGH was a safe and effective treatment.',
+        source: {
+          externalId: 'src:niddk-nhpp-program-info',
+          name: 'NIDDK. National Hormone and Pituitary Program (NHPP): Information for People Treated with Pituitary Human Growth Hormone.',
+          url: 'https://www.niddk.nih.gov/health-information/endocrine-diseases/national-hormone-pituitary-program',
+          publishedAt: '1963-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1985-04-19',
+        datePrecision: 'DAY',
+        reason: 'After reports that three young men treated with NHPP pituitary hGH had died of Creutzfeldt–Jakob disease, the NIH on April 19, 1985 suspended distribution of human growth hormone and other cadaveric pituitary hormones, a decision documented in the CDC\'s MMWR report of June 1985. The recognition that the therapy could transmit a fatal prion disease reversed the safety claim and ended cadaveric hGH use; recombinant human growth hormone (Genentech\'s Protropin) was approved later that year as the replacement.',
+        source: {
+          externalId: 'src:cdc-mmwr-pituitary-hgh-cjd-1985',
+          name: 'CDC. Fatal Degenerative Neurologic Disease in Patients Who Received Pituitary-Derived Human Growth Hormone. MMWR Morb Mortal Wkly Rep. 1985;34(24):359–360, 365–366.',
+          url: 'https://www.cdc.gov/MMWr/preview/mmwrhtml/00000563.htm',
+          publishedAt: '1985-06-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Saxagliptin / SAVOR-TIMI 53 heart failure signal — 2013 ──────────────────
+  {
+    externalId: 'trajectory:saxagliptin-savor-timi-heart-failure-2013',
+    text: 'Saxagliptin (Onglyza), a DPP-4 inhibitor approved by the FDA on July 31, 2009 as a glucose-lowering drug presumed cardiovascularly safe, was found in the SAVOR-TIMI 53 trial published in 2013 to significantly increase hospitalization for heart failure.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-07-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2009-07-31',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved saxagliptin (Onglyza, NDA 022350) on July 31, 2009 for the treatment of type 2 diabetes. As with other incretin-based agents of the era, the drug entered practice with no signal of cardiovascular harm and an expectation — later formalized by the FDA\'s 2008 cardiovascular-safety guidance for diabetes drugs — that DPP-4 inhibitors were cardiovascularly neutral, settling its status as a safe glucose-lowering therapy.',
+        source: {
+          externalId: 'src:fda-onglyza-label-nda022350',
+          name: 'U.S. FDA. ONGLYZA (saxagliptin) tablets prescribing information. NDA 022350 (Initial U.S. Approval: 2009).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2015/022350s016lbl.pdf',
+          publishedAt: '2009-07-31',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-09-02',
+        datePrecision: 'DAY',
+        reason: 'The SAVOR-TIMI 53 randomized trial of 16,492 patients, published in the New England Journal of Medicine, found that saxagliptin did not change ischemic cardiovascular events but significantly increased hospitalization for heart failure (3.5% vs 2.8%; HR 1.27, 95% CI 1.07–1.51; P=0.007). This unexpected safety signal contested the presumption of cardiovascular neutrality for DPP-4 inhibitors and led the FDA in 2016 to add a heart-failure warning to saxagliptin and alogliptin labeling.',
+        source: {
+          externalId: 'src:scirica-savor-timi-53-nejm-2013',
+          name: 'Scirica BM, Bhatt DL, Braunwald E, et al. Saxagliptin and Cardiovascular Outcomes in Patients with Type 2 Diabetes Mellitus. N Engl J Med. 2013;369(14):1317–1326.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23992601/',
+          publishedAt: '2013-10-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── TRUST trial: levothyroxine no benefit in subclinical hypothyroidism — 2017 ──
+  {
+    externalId: 'trajectory:trust-levothyroxine-subclinical-hypothyroidism-no-benefit-2017',
+    text: 'The TRUST randomized trial, published in the New England Journal of Medicine on April 3, 2017, found that levothyroxine provided no benefit on hypothyroid symptoms or tiredness in older adults with subclinical hypothyroidism, contradicting the common practice of treating the condition with thyroid hormone.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-04-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-04-03',
+        datePrecision: 'DAY',
+        reason: 'Stott and colleagues reported the TRUST trial, a double-blind randomized placebo-controlled study of 737 adults aged 65 and older with persistent subclinical hypothyroidism, finding that levothyroxine produced no improvement in the co-primary outcomes of hypothyroid symptom score or tiredness score despite normalizing TSH. This recorded in the expert literature the claim that routinely treating subclinical hypothyroidism in older adults yields no symptomatic benefit, contradicting widespread prescribing practice.',
+        source: {
+          externalId: 'src:stott-trust-levothyroxine-nejm-2017',
+          name: 'Stott DJ, Rodondi N, Kearney PM, et al. Thyroid Hormone Therapy for Older Adults with Subclinical Hypothyroidism. N Engl J Med. 2017;376(26):2534–2544.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28402245/',
+          publishedAt: '2017-04-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-05-14',
+        datePrecision: 'DAY',
+        reason: 'A BMJ Rapid Recommendations panel, synthesizing 21 randomized trials in 2,192 participants (including TRUST), issued a strong recommendation against thyroid hormone treatment for nearly all adults with subclinical hypothyroidism, concluding it provides no clinically relevant benefit for quality of life or thyroid-related symptoms. This guideline action institutionally settled the no-benefit claim, shifting standard-of-care guidance away from routine levothyroxine for the condition.',
+        source: {
+          externalId: 'src:bekkering-bmj-subclinical-hypothyroid-guideline-2019',
+          name: 'Bekkering GE, Agoritsas T, Lytvyn L, et al. Thyroid hormones treatment for subclinical hypothyroidism: a clinical practice guideline. BMJ. 2019;365:l2006.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/31088853/',
+          publishedAt: '2019-05-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
