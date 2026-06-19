@@ -33613,6 +33613,189 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── HERS — HRT not cardioprotective 1998 ────────────────────────────────────
+  {
+    externalId: 'trajectory:hers-hrt-no-cardioprotection-1998',
+    text: 'Hulley and the Heart and Estrogen/progestin Replacement Study (HERS) investigators reported in JAMA on 19 August 1998 that four years of estrogen plus progestin did not reduce coronary events in postmenopausal women with established coronary disease and increased events during the first year, the first randomized trial to contradict the observational belief that hormone therapy was cardioprotective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-19',
+        datePrecision: 'DAY',
+        reason: 'Hulley et al. published the HERS randomized, blinded, placebo-controlled secondary-prevention trial in 2,763 postmenopausal women with established coronary disease, finding no overall difference in myocardial infarction or CHD death (relative hazard 0.99) and a significant excess of events in year one. This was the first randomized evidence to directly contradict the prevailing observational consensus, derived from cohorts like the Nurses\' Health Study, that hormone therapy protected the heart.',
+        source: {
+          externalId: 'src:hers-hulley-jama-1998',
+          name: 'Hulley S, Grady D, Bush T, et al. Randomized trial of estrogen plus progestin for secondary prevention of coronary heart disease in postmenopausal women (HERS). JAMA. 1998;280(7):605-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9718051/',
+          publishedAt: '1998-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-17',
+        datePrecision: 'DAY',
+        reason: 'The Women\'s Health Initiative estrogen-plus-progestin trial, an independent randomized study in 16,608 healthy postmenopausal women, was halted early because the therapy increased coronary heart disease, stroke, and pulmonary embolism rather than preventing them. By reproducing HERS\'s finding in a primary-prevention population, WHI settled the expert conclusion that combined hormone therapy is not cardioprotective and should not be initiated for that purpose.',
+        source: {
+          externalId: 'src:whi-estrogen-progestin-jama-2002',
+          name: 'Writing Group for the Women\'s Health Initiative Investigators. Risks and Benefits of Estrogen Plus Progestin in Healthy Postmenopausal Women: Principal Results From the Women\'s Health Initiative Randomized Controlled Trial. JAMA. 2002;288(3):321-333.',
+          url: 'https://jamanetwork.com/journals/jama/fullarticle/195120',
+          publishedAt: '2002-07-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Silicone breast implant systemic disease — moratorium 1992, reversed 2006 ─
+  {
+    externalId: 'trajectory:silicone-breast-implant-systemic-disease-1992',
+    text: 'The claim that silicone gel breast implants caused connective-tissue and autoimmune disease led FDA Commissioner David Kessler to impose a moratorium on their use on 6 January 1992; the systemic-disease link was subsequently found unsupported by evidence, and the FDA returned silicone implants to general market use on 17 November 2006.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1992-01-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-01-06',
+        datePrecision: 'DAY',
+        reason: 'FDA Commissioner David Kessler called for a voluntary moratorium on silicone gel breast implants, restricting them to controlled clinical studies, amid reports and litigation alleging they caused connective-tissue and autoimmune disease. The regulatory action recorded the safety concern as official policy even though, as Kessler himself acknowledged, the data were insufficient to establish either the safety or the harm of the devices.',
+        source: {
+          externalId: 'src:kessler-fda-silicone-implants-nejm-1992',
+          name: 'Kessler DA. The basis of the FDA\'s decision on breast implants. N Engl J Med. 1992;326(25):1713-1715.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1309171/',
+          publishedAt: '1992-06-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-06-21',
+        datePrecision: 'MONTH',
+        reason: 'The Institute of Medicine\'s congressionally requested report \'Safety of Silicone Breast Implants\', reviewing the published literature and ongoing studies, concluded there was no evidence that silicone breast implants caused systemic disease such as cancer or autoimmune illness, identifying local complications as the primary safety issue. The authoritative expert synthesis directly contested the disease rationale on which the 1992 restriction had rested.',
+        source: {
+          externalId: 'src:iom-safety-silicone-breast-implants-1999',
+          name: 'Institute of Medicine, Committee on the Safety of Silicone Breast Implants. Safety of Silicone Breast Implants. Washington, DC: National Academy Press; 1999.',
+          url: 'https://www.nationalacademies.org/publications/9602',
+          publishedAt: '1999-06-21',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-11-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Mentor\'s and Allergan\'s silicone gel-filled breast implants for general use in augmentation and reconstruction, fourteen years after the moratorium, conditioned on large post-approval safety studies. The approval reversed the effective ban and institutionally ratified that the systemic-disease claim underpinning the 1992 restriction had not been borne out.',
+        source: {
+          externalId: 'src:bmj-fda-silicone-implant-reapproval-2006',
+          name: 'Tanne JH. FDA approves silicone breast implants 14 years after their withdrawal. BMJ. 2006;333(7579):1139.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1676088/',
+          publishedAt: '2006-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Gøtzsche — mammography screening contested 2000 ─────────────────────────
+  {
+    externalId: 'trajectory:gotzsche-mammography-screening-contested-2000',
+    text: 'Olsen and Gøtzsche reported in The Lancet on 8 January 2000 that the randomized trials underpinning breast-cancer screening were methodologically flawed and provided no reliable evidence that screening mammography reduces mortality, challenging the settled rationale for population screening programs.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2000-01-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1985-04-13',
+        datePrecision: 'DAY',
+        reason: 'The Swedish Two-County randomized trial, led by Tabár and colleagues in 162,981 women, reported a 31% reduction in breast-cancer mortality in the group offered mammographic screening. This and the earlier HIP trial settled the expert and institutional consensus that population mammography saved lives, underpinning the screening programs and age-40 guidelines adopted across the 1980s and 1990s.',
+        source: {
+          externalId: 'src:tabar-swedish-two-county-lancet-1985',
+          name: 'Tabár L, Fagerberg CJG, Gad A, et al. Reduction in mortality from breast cancer after mass screening with mammography. Lancet. 1985;1(8433):829-832.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2858707/',
+          publishedAt: '1985-04-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-01-08',
+        datePrecision: 'DAY',
+        reason: 'Olsen and Gøtzsche, in a Cochrane-style reanalysis published in The Lancet, judged that only two of eight screening trials were adequately randomized and that these showed no significant effect on breast-cancer or total mortality, concluding that \'screening for breast cancer with mammography is unjustified\'. The critique reopened a question regarded as settled and triggered an enduring expert controversy over the magnitude of screening benefit and overdiagnosis.',
+        source: {
+          externalId: 'src:olsen-gotzsche-mammography-lancet-2000',
+          name: 'Gøtzsche PC, Olsen O. Is screening for breast cancer with mammography justifiable? Lancet. 2000;355(9198):129-134.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10675181/',
+          publishedAt: '2000-01-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ravdin — breast cancer incidence decline from HRT reduction 2007 ─────────
+  {
+    externalId: 'trajectory:ravdin-breast-cancer-incidence-decline-2007',
+    text: 'Ravdin and colleagues reported in the New England Journal of Medicine on 19 April 2007 that age-adjusted breast-cancer incidence in the United States fell about 8.6% between 2001 and 2004 — sharply in 2003 — temporally linked to the steep drop in hormone-replacement-therapy use after the 2002 Women\'s Health Initiative report, providing population-level evidence that combined HRT promotes breast cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-04-19',
+        datePrecision: 'DAY',
+        reason: 'Ravdin et al. analyzed SEER data and found a marked drop in breast-cancer incidence beginning in 2003, concentrated in estrogen-receptor-positive tumors and women aged 50 and older, that was temporally tied to the abrupt fall in HRT use after the 2002 WHI results. The finding recorded a national \'natural experiment\' suggesting that reducing combined hormone therapy rapidly lowered breast-cancer rates, strengthening the causal interpretation of the WHI trial.',
+        source: {
+          externalId: 'src:ravdin-breast-cancer-decline-nejm-2007',
+          name: 'Ravdin PM, Cronin KA, Howlader N, et al. The decrease in breast-cancer incidence in 2003 in the United States. N Engl J Med. 2007;356(16):1670-1674.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17442911/',
+          publishedAt: '2007-04-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-02-05',
+        datePrecision: 'DAY',
+        reason: 'Chlebowski and the WHI investigators showed within the randomized trial cohort that the elevated breast-cancer risk among estrogen-plus-progestin users declined rapidly within about two years of stopping therapy, tracking year-to-year reductions in hormone use and not explained by changes in mammography. By demonstrating the dose-down effect inside a randomized design, this converged with the Ravdin population data to settle the causal link between combined HRT and breast cancer.',
+        source: {
+          externalId: 'src:chlebowski-whi-breast-cancer-nejm-2009',
+          name: 'Chlebowski RT, Kuller LH, Prentice RL, et al. Breast cancer after use of estrogen plus progestin in postmenopausal women. N Engl J Med. 2009;360(6):573-587.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19196674/',
+          publishedAt: '2009-02-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
