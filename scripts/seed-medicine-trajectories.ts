@@ -32527,6 +32527,133 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL PRACTICE REVERSALS & CRITICAL-CARE BREAKTHROUGHS (2004–2013)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── CRASH — Corticosteroids for head injury reversed 2004 ───────────────────
+  {
+    externalId: 'trajectory:crash-corticosteroids-head-injury-reversal-2004',
+    text: 'The MRC CRASH trial (Roberts et al., The Lancet, 9 October 2004) found that intravenous methylprednisolone increased the risk of death within two weeks in adults with clinically significant head injury (21.1% vs 17.9%; relative risk 1.18), reversing the decades-old practice of giving corticosteroids to reduce cerebral oedema after traumatic brain injury.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1965-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-01-01',
+        datePrecision: 'YEAR',
+        reason: 'From the 1960s corticosteroids were administered to head-injured patients to reduce cerebral swelling, and over the following decades this became routine neurosurgical and intensive-care practice despite the absence of reliable randomized evidence of benefit; the CRASH investigators noted that corticosteroids had been used to treat head injury for more than 30 years. The practice established as standard care the belief that steroids improved outcome after traumatic brain injury.',
+        source: {
+          externalId: 'src:crash-corticosteroids-lancet-2004-background',
+          name: 'CRASH trial collaborators (Roberts I, et al.). Effect of intravenous corticosteroids on death within 14 days in 10008 adults with clinically significant head injury (MRC CRASH trial): randomised placebo-controlled trial. Lancet. 2004;364(9442):1321-1328 (background documenting prior routine use).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15474134/',
+          publishedAt: '2004-10-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-10-09',
+        datePrecision: 'DAY',
+        reason: 'The MRC CRASH trial randomized 10,008 adults with head injury to a 48-hour infusion of methylprednisolone or placebo and was stopped early when the data-monitoring committee found that corticosteroids raised all-cause death within two weeks (1052 [21.1%] vs 893 [17.9%]; relative risk 1.18). The result overturned more than 30 years of routine steroid use for traumatic brain injury, and corticosteroids were thereafter contraindicated in head-injury guidelines.',
+        source: {
+          externalId: 'src:crash-corticosteroids-lancet-2004',
+          name: 'CRASH trial collaborators (Roberts I, et al.). Effect of intravenous corticosteroids on death within 14 days in 10008 adults with clinically significant head injury (MRC CRASH trial): randomised placebo-controlled trial. Lancet. 2004;364(9442):1321-1328.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15474134/',
+          publishedAt: '2004-10-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CRASH-2 — Tranexamic acid for trauma haemorrhage settled 2010 ────────────
+  {
+    externalId: 'trajectory:crash-2-tranexamic-acid-trauma-haemorrhage-2010',
+    text: 'The CRASH-2 trial (CRASH-2 trial collaborators, The Lancet, 3 July 2010) showed that early tranexamic acid significantly reduced all-cause mortality (14.5% vs 16.0%; relative risk 0.91) and death due to bleeding in trauma patients with, or at risk of, significant haemorrhage, establishing an inexpensive antifibrinolytic as a survival-improving treatment in trauma.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-07-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-07-03',
+        datePrecision: 'DAY',
+        reason: 'The CRASH-2 collaborators randomized 20,211 adult trauma patients across 274 hospitals in 40 countries to tranexamic acid or placebo, finding that the drug reduced all-cause death (relative risk 0.91; p=0.0035) and death from bleeding (relative risk 0.85; p=0.0077) without increasing vascular occlusive events, with benefit greatest when given within the first hours of injury. The scale and rigor of the result rapidly converted tranexamic acid from an unproven option into standard early trauma care, subsequently incorporated into WHO essential-medicines listing, military practice, and international trauma-resuscitation guidelines.',
+        source: {
+          externalId: 'src:crash-2-tranexamic-acid-lancet-2010',
+          name: 'CRASH-2 trial collaborators (Shakur H, Roberts I, et al.). Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage (CRASH-2): a randomised, placebo-controlled trial. Lancet. 2010;376(9734):23-32.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20554319/',
+          publishedAt: '2010-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PROSEVA — Prone positioning for severe ARDS settled 2013 ─────────────────
+  {
+    externalId: 'trajectory:proseva-prone-positioning-severe-ards-2013',
+    text: 'The PROSEVA trial (Guérin et al., New England Journal of Medicine, 6 June 2013) showed that early, prolonged prone positioning of patients with severe acute respiratory distress syndrome roughly halved mortality (28-day mortality 16.0% prone vs 32.8% supine), establishing prone positioning as a survival-improving intervention after years of earlier trials that had shown no mortality benefit.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2013-06-06',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-06-06',
+        datePrecision: 'DAY',
+        reason: 'Guérin and colleagues randomized 466 patients with severe ARDS to at least 16-hour daily prone-positioning sessions or to remain supine, and found prone positioning markedly reduced 28-day mortality (16.0% vs 32.8%) and 90-day mortality (23.6% vs 41.0%). After a decade of underpowered or equivocal prone-positioning trials, PROSEVA provided the first clear randomized evidence of a mortality benefit, making prone positioning standard care for severe ARDS — a practice scaled up dramatically during the COVID-19 pandemic.',
+        source: {
+          externalId: 'src:guerin-proseva-prone-ards-nejm-2013',
+          name: 'Guérin C, Reignier J, Richard JC, et al. Prone positioning in severe acute respiratory distress syndrome. N Engl J Med. 2013;368(23):2159-2168.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23688302/',
+          publishedAt: '2013-06-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MOMS — Prenatal myelomeningocele repair settled 2011 ─────────────────────
+  {
+    externalId: 'trajectory:moms-prenatal-myelomeningocele-repair-2011',
+    text: 'The MOMS trial (Adzick et al., New England Journal of Medicine, 17 March 2011) established that prenatal (in-utero) surgical repair of myelomeningocele reduces the need for cerebrospinal-fluid shunting (40% vs 82%) and improves motor outcomes at 30 months compared with standard postnatal repair, at the cost of higher rates of prematurity and uterine dehiscence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2011-03-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-03-17',
+        datePrecision: 'DAY',
+        reason: 'The Management of Myelomeningocele Study randomized women carrying a fetus with spina bifida to prenatal or postnatal surgical repair and was stopped early for efficacy after 158 of a planned 200 patients were evaluated: prenatal repair roughly halved the shunt rate (40% vs 82%) and improved the composite mental-development and motor score and independent walking at 30 months, though it increased preterm delivery and uterine dehiscence. The trial converted fetal surgery for myelomeningocele from an experimental procedure into an established treatment option offered at specialized fetal-surgery centers and endorsed by maternal-fetal medicine societies.',
+        source: {
+          externalId: 'src:adzick-moms-myelomeningocele-nejm-2011',
+          name: 'Adzick NS, Thom EA, Spong CY, et al. (MOMS Investigators). A randomized trial of prenatal versus postnatal repair of myelomeningocele. N Engl J Med. 2011;364(11):993-1004.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21306277/',
+          publishedAt: '2011-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
