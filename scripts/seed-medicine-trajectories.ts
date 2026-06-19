@@ -31088,6 +31088,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // WOMEN'S HEALTH / PHARMACOVIGILANCE ERA (1995–2014)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HERS: HRT secondary prevention failure — 1998 ──────────────────────────
+  {
+    externalId: 'trajectory:hers-hrt-secondary-prevention-1998',
+    text: 'Hulley and the Heart and Estrogen/progestin Replacement Study (HERS) investigators reported in JAMA on 19 August 1998 that estrogen plus progestin did not reduce the rate of coronary heart disease events in postmenopausal women with established coronary disease — the first randomized trial to contradict the prevailing belief that hormone therapy was cardioprotective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-19',
+        datePrecision: 'DAY',
+        reason: 'Hulley et al. reported HERS, a randomized placebo-controlled trial in 2,763 postmenopausal women with established coronary disease, finding that conjugated equine estrogen plus medroxyprogesterone did not reduce overall CHD events despite favorable LDL/HDL changes, and produced a pattern of early excess events plus increased venous thromboembolism and gallbladder disease. This was the first RCT to directly contradict the observational consensus that HRT protected the heart, recording the secondary-prevention failure in the expert literature.',
+        source: {
+          externalId: 'src:hers-hulley-jama-1998',
+          name: 'Hulley S, Grady D, Bush T, et al. Randomized trial of estrogen plus progestin for secondary prevention of coronary heart disease in postmenopausal women (HERS). JAMA. 1998;280(7):605-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9718051/',
+          publishedAt: '1998-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-03',
+        datePrecision: 'DAY',
+        reason: 'Grady et al. reported HERS II, extending follow-up to 6.8 years, and confirmed that hormone therapy did not reduce cardiovascular events in women with coronary disease, eliminating the hypothesis that an early hazard would be offset by later benefit. Combined with the WHI primary-prevention reversal published two weeks later, this settled the conclusion that HRT should not be used for coronary prevention.',
+        source: {
+          externalId: 'src:hers2-grady-jama-2002',
+          name: 'Grady D, Herrington D, Bittner V, et al. Cardiovascular disease outcomes during 6.8 years of hormone therapy: Heart and Estrogen/progestin Replacement Study follow-up (HERS II). JAMA. 2002;288(1):49-57.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12090862/',
+          publishedAt: '2002-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHI estrogen-alone trial halted — 2004 ─────────────────────────────────
+  {
+    externalId: 'trajectory:whi-estrogen-alone-trial-2004',
+    text: 'The Women\'s Health Initiative estrogen-alone randomized trial, reported in JAMA on 14 April 2004, found that conjugated equine estrogen in postmenopausal women with prior hysterectomy increased the risk of stroke and did not reduce coronary heart disease, prompting the NIH to halt the trial early.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-03',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-03',
+        datePrecision: 'MONTH',
+        reason: 'After roughly 6.8 years, the NIH\'s National Heart, Lung, and Blood Institute directed the 10,739 hysterectomized participants in the WHI estrogen-alone (conjugated equine estrogen) arm to stop their study pills, having detected an increased risk of stroke and no protective effect on coronary heart disease. The sponsoring institution\'s decision to terminate the trial about a year early put the estrogen-alone safety signal on the official record.',
+        source: {
+          externalId: 'src:nhlbi-whi-estrogen-alone-halt-2004',
+          name: 'National Heart, Lung, and Blood Institute, NIH. Women\'s Health Initiative (WHI) — estrogen-alone study stopped early due to increased stroke risk (2004).',
+          url: 'https://www.nhlbi.nih.gov/science/womens-health-initiative-whi',
+          publishedAt: '2004-03-02',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-14',
+        datePrecision: 'DAY',
+        reason: 'Anderson and the WHI Steering Committee published the full estrogen-alone results in JAMA: conjugated equine estrogen increased stroke and provided no coronary benefit, while — unlike the combined estrogen-plus-progestin regimen — it did not increase invasive breast cancer (and suggested a possible reduction). The trial disentangled estrogen\'s risk profile from progestin\'s, settling that unopposed estrogen also fails as cardiovascular prevention and carries a clear stroke hazard.',
+        source: {
+          externalId: 'src:whi-estrogen-alone-anderson-jama-2004',
+          name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701-1712.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
+          publishedAt: '2004-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Third-generation OC VTE pill scare — 1995 ──────────────────────────────
+  {
+    externalId: 'trajectory:third-generation-oral-contraceptive-vte-pill-scare-1995',
+    text: 'In October 1995 the UK Committee on Safety of Medicines warned that combined oral contraceptives containing the third-generation progestagens desogestrel or gestodene carried about twice the risk of venous thromboembolism of older levonorgestrel pills — a warning that triggered the \'1995 pill scare\' and was later disputed by courts and re-analyses.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1995-10-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10-18',
+        datePrecision: 'DAY',
+        reason: 'Acting on three then-unpublished epidemiological studies, the UK Committee on Safety of Medicines issued an urgent warning to prescribers that desogestrel- and gestodene-containing combined oral contraceptives roughly doubled the risk of venous thromboembolism relative to second-generation levonorgestrel pills. The institutional warning recorded the third-generation VTE risk as official guidance and caused third-generation use to collapse from about 53% to 14% of pill users. The underlying evidence was published weeks later by the WHO Collaborative Study in The Lancet (16 December 1995).',
+        source: {
+          externalId: 'src:who-collaborative-progestagen-vte-lancet-1995',
+          name: 'World Health Organization Collaborative Study of Cardiovascular Disease and Steroid Hormone Contraception. Effect of different progestagens in low oestrogen oral contraceptives on venous thromboembolic disease. Lancet. 1995;346(8990):1582-1588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7500749/',
+          publishedAt: '1995-12-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'JUDICIAL',
+        occurredAt: '2002-07-29',
+        datePrecision: 'DAY',
+        reason: 'After years of dispute over confounding (healthy-user effect, prescriber bias, duration of use) in the 1995 studies, the English High Court dismissed a group product-liability action by 99 women, with Mr Justice Mackay ruling there was no probable increased relative risk of venous thromboembolism from third-generation versus second-generation pills sufficient to meet the legal threshold. The judicial finding, alongside later re-analyses, left the doubled-risk claim contested rather than settled.',
+        source: {
+          externalId: 'src:bmj-third-generation-pill-test-case-2002',
+          name: 'Dyer C. Judge dismisses test case on third generation pill. BMJ. 2002;325(7358):236.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1123767/',
+          publishedAt: '2002-08-03',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Fenfluramine valvular heart disease — 1997 ─────────────────────────────
+  {
+    externalId: 'trajectory:fenfluramine-valvular-heart-disease-1997',
+    text: 'Connolly and colleagues reported in the New England Journal of Medicine on 28 August 1997 that the appetite suppressants fenfluramine and dexfenfluramine (used for weight loss, frequently combined with phentermine as \'fen-phen\') were associated with valvular heart disease, leading the FDA to secure their withdrawal from the U.S. market on 15 September 1997.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-08-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-08-28',
+        datePrecision: 'DAY',
+        reason: 'Connolly et al. described 24 women with no prior cardiac disease who developed unusual mitral and aortic valve regurgitation with a characteristic glistening plaque-like leaflet morphology after taking fenfluramine-phentermine. This first peer-reviewed case series, published with an accompanying editorial and corroborating echocardiographic findings, recorded in the expert literature the claim that these widely used diet drugs cause valvular heart disease.',
+        source: {
+          externalId: 'src:connolly-fenfluramine-valvular-nejm-1997',
+          name: 'Connolly HM, Crary JL, McGoon MD, et al. Valvular heart disease associated with fenfluramine-phentermine. N Engl J Med. 1997;337(9):581-588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9271479/',
+          publishedAt: '1997-08-28',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09-15',
+        datePrecision: 'DAY',
+        reason: 'After preliminary FDA echocardiographic survey data showed roughly a third of asymptomatic users had abnormal valve findings, the FDA requested and Wyeth-Ayerst and Interneuron voluntarily withdrew fenfluramine (Pondimin) and dexfenfluramine (Redux) from the U.S. market. The withdrawal repudiated the drugs\' safety premise and became a landmark post-market surveillance action; formal withdrawal of the drug approvals was later finalized in the Federal Register.',
+        source: {
+          externalId: 'src:fda-dexfenfluramine-nda-withdrawal-fr-2007',
+          name: 'FDA. Indevus Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application (dexfenfluramine/Redux), documenting the September 1997 market withdrawal. Federal Register. 30 January 2007.',
+          url: 'https://www.federalregister.gov/documents/2007/01/30/E7-1414/indevus-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application',
+          publishedAt: '2007-01-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Paroxetine pregnancy cardiac malformations — 2005 ──────────────────────
+  {
+    externalId: 'trajectory:paroxetine-pregnancy-cardiac-malformations-2005',
+    text: 'The FDA issued a Public Health Advisory on 8 December 2005 announcing that paroxetine (Paxil) would be reclassified to Pregnancy Category D after epidemiological studies suggested first-trimester use increased the risk of cardiac malformations, chiefly atrial and ventricular septal defects.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-12-08',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-12-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Public Health Advisory and directed the manufacturer to change paroxetine\'s pregnancy classification from Category C to Category D, citing two preliminary epidemiological studies showing an approximately 1.5–2-fold increased risk of cardiac defects (mainly septal defects) with first-trimester exposure. This regulatory action recorded the paroxetine teratogenicity signal on the official record and prompted prescribing changes for women of childbearing age.',
+        source: {
+          externalId: 'src:fda-paroxetine-pregnancy-advisory-2005',
+          name: 'U.S. Food and Drug Administration. Public Health Advisory: Paroxetine. 8 December 2005.',
+          url: 'https://wayback.archive-it.org/7993/20170112033310/http:/www.fda.gov/Drugs/DrugSafety/PostmarketDrugSafetyInformationforPatientsandProviders/ucm051731.htm',
+          publishedAt: '2005-12-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-06-19',
+        datePrecision: 'DAY',
+        reason: 'Huybrechts et al. analyzed a population-based cohort of nearly one million pregnancies in the New England Journal of Medicine and found no substantial increase in cardiac malformations attributable to first-trimester antidepressant use, including paroxetine, once maternal depression and other confounders were controlled. The large, better-confounded study directly challenged the basis of the 2005 advisory, leaving the paroxetine cardiac-teratogenicity claim contested.',
+        source: {
+          externalId: 'src:huybrechts-antidepressant-cardiac-nejm-2014',
+          name: 'Huybrechts KF, Palmsten K, Avorn J, et al. Antidepressant use in pregnancy and the risk of cardiac defects. N Engl J Med. 2014;370(25):2397-2407.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24941178/',
+          publishedAt: '2014-06-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
