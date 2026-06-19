@@ -33185,7 +33185,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── CAPRISA 004 — tenofovir gel microbicide HIV prevention 2010 ───────────────
+  // ── CAPRISA 004 — tenofovir gel microbicide HIV prevention 2010 ──────────────
   {
     externalId: 'trajectory:caprisa-004-tenofovir-gel-microbicide-hiv-prevention-2010',
     text: 'The CAPRISA 004 trial, published in Science on 19 July 2010, reported that 1% tenofovir vaginal gel reduced HIV acquisition in South African women by 39% overall (54% with high adherence)—the first evidence that a microbicide could prevent HIV.',
@@ -33221,6 +33221,220 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Marrazzo JM, Ramjee G, Richardson BA, et al. Tenofovir-based preexposure prophylaxis for HIV infection among African women. N Engl J Med. 2015;372(6):509-518.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/25651245/',
           publishedAt: '2015-02-05',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUROLOGY, RARE DISEASE & FDA ACCELERATED APPROVALS (2011–2024)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Relyvrio (AMX0035) — ALS approval then voluntary withdrawal 2022–2024 ────
+  {
+    externalId: 'trajectory:relyvrio-amx0035-als-approval-reversal-2022',
+    text: 'The U.S. FDA approved Relyvrio (AMX0035; sodium phenylbutyrate and taurursodiol; Amylyx) on 29 September 2022 for amyotrophic lateral sclerosis (ALS), on the basis of a single 137-patient phase 2 trial (CENTAUR) showing slowed functional decline and a survival signal.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-09-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Relyvrio after an unusual sequence in which its Peripheral and Central Nervous System Drugs Advisory Committee first voted against approval (March 2022) and then reversed to a favorable vote (September 2022) under intense ALS-community pressure. Amylyx publicly committed to withdraw the drug if its ongoing confirmatory PHOENIX trial failed, entering the regulatory record on contested evidence from a single phase 2 study.',
+        source: {
+          externalId: 'src:amylyx-relyvrio-fda-approval-2022',
+          name: 'Amylyx Pharmaceuticals. Amylyx Pharmaceuticals Announces FDA Approval of RELYVRIO for the Treatment of ALS. September 29, 2022.',
+          url: 'https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-fda-approval-of-relyvriotm-for-the-treatment-of-als',
+          publishedAt: '2022-09-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2024-04-04',
+        datePrecision: 'DAY',
+        reason: 'After the global phase 3 PHOENIX trial (664 patients) failed both its primary and secondary endpoints, Amylyx announced on 4 April 2024 that it would voluntarily remove Relyvrio/Albrioza from the U.S. and Canadian markets and discontinue marketing authorizations, honoring its pre-approval pledge. A drug approved on a surrogate-laden phase 2 result was withdrawn by its own manufacturer once an adequately powered confirmatory trial showed no benefit.',
+        source: {
+          externalId: 'src:amylyx-relyvrio-market-removal-2024',
+          name: 'Amylyx Pharmaceuticals. Amylyx Pharmaceuticals Announces Formal Intention to Remove RELYVRIO/ALBRIOZA from the Market. April 4, 2024.',
+          url: 'https://www.amylyx.com/news/amylyx-pharmaceuticals-announces-formal-intention-to-remove-relyvrior/albriozatm-from-the-market-provides-updates-on-access-to-therapy-pipeline-corporate-restructuring-and-strategy',
+          publishedAt: '2024-04-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Citalopram QT dose restriction — FDA 2011 ───────────────────────────────
+  {
+    externalId: 'trajectory:fda-citalopram-qt-dose-restriction-2011',
+    text: 'The U.S. FDA warned on 24 August 2011 that citalopram (Celexa) causes dose-dependent QT-interval prolongation and should not be used at doses above 40 mg/day, withdrawing prior labeling support for the previously sanctioned 60 mg/day dose.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2011-08-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-08-24',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Drug Safety Communication stating that citalopram causes dose-dependent QT prolongation that can lead to torsades de pointes, capping the maximum recommended dose at 40 mg/day (20 mg/day in patients over 60 or with hepatic impairment). This reversed more than a decade of labeling and clinical practice that had permitted 60 mg/day for difficult-to-treat depression, formally entering a new safety boundary into the regulatory record.',
+        source: {
+          externalId: 'src:fda-dsc-citalopram-qt-2011',
+          name: 'U.S. Food and Drug Administration. FDA Drug Safety Communication: Abnormal heart rhythms associated with high doses of Celexa (citalopram hydrobromide). August 24, 2011.',
+          url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-abnormal-heart-rhythms-associated-high-doses-celexa-citalopram',
+          publishedAt: '2011-08-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2013-06-01',
+        datePrecision: 'MONTH',
+        reason: 'A large retrospective cohort study published in the American Journal of Psychiatry found no associated increase in cardiac mortality, ventricular arrhythmia, or all-cause mortality at citalopram doses above 40 mg/day, and warned that the warning could push patients toward undertreatment. The analysis directly challenged the evidentiary basis of the FDA\'s dose cap, leaving the clinical significance of the QT signal in active expert dispute.',
+        source: {
+          externalId: 'src:zivin-citalopram-fda-warning-ajp-2013',
+          name: 'Zivin K, et al. Evaluation of the FDA Warning Against Prescribing Citalopram at Doses Exceeding 40 mg. Am J Psychiatry. 2013;170(6):642-650.',
+          url: 'https://psychiatryonline.org/doi/10.1176/appi.ajp.2013.12030408',
+          publishedAt: '2013-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Valbenazine (Ingrezza) — first tardive dyskinesia treatment 2017 ─────────
+  {
+    externalId: 'trajectory:valbenazine-ingrezza-tardive-dyskinesia-approval-2017',
+    text: 'The U.S. FDA approved valbenazine (Ingrezza, Neurocrine), a selective VMAT2 inhibitor, on 11 April 2017 as the first drug indicated to treat tardive dyskinesia — an often-irreversible movement disorder caused by chronic antipsychotic use.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-04-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-04-11',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved valbenazine as the first and only treatment for tardive dyskinesia, based on the 6-week phase 3 KINECT-3 trial in which 80 mg/day produced a statistically significant reduction in Abnormal Involuntary Movement Scale scores versus placebo. After decades in which tardive dyskinesia was a recognized but untreatable iatrogenic harm of antipsychotics, a pharmacological remedy entered the regulatory record.',
+        source: {
+          externalId: 'src:neurocrine-ingrezza-fda-approval-2017',
+          name: 'Neurocrine Biosciences. Neurocrine Announces FDA Approval of INGREZZA (valbenazine) Capsules as the First and Only Approved Treatment for Adults with Tardive Dyskinesia. April 11, 2017.',
+          url: 'https://www.prnewswire.com/news-releases/neurocrine-announces-fda-approval-of-ingrezza-valbenazine-capsules-as-the-first-and-only-approved-treatment-for-adults-with-tardive-dyskinesia-td-with-multimedia-300438365.html',
+          publishedAt: '2017-04-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The pivotal KINECT-3 randomized controlled trial was published in the American Journal of Psychiatry, peer-reviewing the efficacy and tolerability data underpinning the approval and consolidating VMAT2 inhibition as the evidence-based standard of care for tardive dyskinesia. The flagship-journal publication of the positive pivotal RCT settled the efficacy claim in the psychiatric literature.',
+        source: {
+          externalId: 'src:hauser-kinect3-valbenazine-ajp-2017',
+          name: 'Hauser RA, et al. KINECT 3: A Phase 3 Randomized, Double-Blind, Placebo-Controlled Trial of Valbenazine for Tardive Dyskinesia. Am J Psychiatry. 2017;174(5):476-484.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28320223/',
+          publishedAt: '2017-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Eteplirsen (Exondys 51) — DMD accelerated approval on thin evidence 2016 ─
+  {
+    externalId: 'trajectory:eteplirsen-exondys51-duchenne-accelerated-approval-2016',
+    text: 'The U.S. FDA granted accelerated approval to eteplirsen (Exondys 51, Sarepta) on 19 September 2016 for Duchenne muscular dystrophy amenable to exon-51 skipping, concluding that small increases in the muscle protein dystrophin were reasonably likely to predict clinical benefit.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-09-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-09-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved eteplirsen as the first drug for Duchenne muscular dystrophy under the accelerated-approval pathway, over a negative advisory committee vote (April 2016) and the documented objections of its own review staff, on a dystrophin surrogate measured in a 12-boy study. The decision marked a high-profile instance of patient-advocacy pressure shaping a surrogate-based approval whose clinical benefit was explicitly unestablished.',
+        source: {
+          externalId: 'src:sarepta-exondys51-fda-approval-2016',
+          name: 'Sarepta Therapeutics. FDA grants accelerated approval to first drug for Duchenne muscular dystrophy (EXONDYS 51 / eteplirsen). September 19, 2016.',
+          url: 'https://www.prnewswire.com/news-releases/fda-grants-accelerated-approval-to-first-drug-for-duchenne-muscular-dystrophy-300330093.html',
+          publishedAt: '2016-09-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2023-08-01',
+        datePrecision: 'MONTH',
+        reason: 'An analysis in Annals of Internal Medicine documented that, years after approval, the relationship between truncated dystrophin and clinical outcomes remained unproven, mandated confirmatory trials were substantially delayed, and the eteplirsen precedent had propagated to further exon-skipping approvals on similarly thin evidence. The critique placed the original surrogate-to-benefit inference in sustained expert dispute.',
+        source: {
+          externalId: 'src:ann-intern-med-dmd-limited-evidence-2023',
+          name: 'The Regulatory Repercussions of Approving Muscular Dystrophy Medications on the Basis of Limited Evidence. Ann Intern Med. 2023. doi:10.7326/M23-1073.',
+          url: 'https://www.acpjournals.org/doi/abs/10.7326/M23-1073',
+          publishedAt: '2023-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Nusinersen (Spinraza) — first SMA treatment 2016 ────────────────────────
+  {
+    externalId: 'trajectory:nusinersen-spinraza-sma-approval-2016',
+    text: 'The U.S. FDA approved nusinersen (Spinraza, Biogen/Ionis), an antisense oligonucleotide that increases functional SMN protein, on 23 December 2016 as the first treatment for spinal muscular atrophy (SMA), a leading genetic cause of infant death.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2016-12-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-12-23',
+        datePrecision: 'DAY',
+        reason: 'Under priority review, the FDA approved nusinersen as the first-ever therapy for spinal muscular atrophy after a planned interim analysis of the ENDEAR trial showed 40% of treated infants achieving a motor-milestone response versus 0% of controls — so striking that the trial was stopped early. It established antisense splice-modulation as a viable precision-medicine mechanism for a previously untreatable fatal genetic disease.',
+        source: {
+          externalId: 'src:biogen-spinraza-fda-approval-2016',
+          name: 'Biogen. U.S. FDA Approves Biogen\'s SPINRAZA (nusinersen), The First Treatment for Spinal Muscular Atrophy. December 23, 2016.',
+          url: 'https://investors.biogen.com/news-releases/news-release-details/us-fda-approves-biogens-spinrazatm-nusinersen-first-treatment',
+          publishedAt: '2016-12-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-11-02',
+        datePrecision: 'DAY',
+        reason: 'The final ENDEAR results were published in the New England Journal of Medicine, confirming that nusinersen produced significant motor-milestone responses and a lower risk of death or permanent ventilation versus sham control in infantile-onset SMA. Peer-reviewed publication of the pivotal randomized trial in the field\'s flagship journal settled the efficacy claim and anchored SMA\'s transition to a treatable disease.',
+        source: {
+          externalId: 'src:finkel-endear-nusinersen-nejm-2017',
+          name: 'Finkel RS, Mercuri E, Darras BT, et al. Nusinersen versus Sham Control in Infantile-Onset Spinal Muscular Atrophy. N Engl J Med. 2017;377(18):1723-1732.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1702752',
+          publishedAt: '2017-11-02',
           methodologyType: 'primary',
         },
       },
