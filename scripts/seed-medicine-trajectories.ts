@@ -34183,6 +34183,166 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ONCOLOGY / TARGETED THERAPY (2003–2008)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ESA cancer mortality reversal — FDA boxed warning 2007 ──────────────────
+  {
+    externalId: 'trajectory:esa-cancer-anemia-mortality-reversal-2007',
+    text: 'The claim that erythropoiesis-stimulating agents (epoetin alfa and darbepoetin alfa), adopted as standard supportive care for chemotherapy-induced anemia after FDA approval in 1993, were safe in cancer patients and could be dosed to raise hemoglobin without harming cancer outcomes was reversed when randomized trials and meta-analyses showed they worsened tumor control and survival, prompting an FDA boxed warning in March 2007.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1993-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After FDA approval of epoetin alfa (Procrit/Epogen) for chemotherapy-induced anemia in 1993, and later darbepoetin alfa (Aranesp), erythropoiesis-stimulating agents became standard oncology supportive care to correct anemia and reduce red-cell transfusions, with influential advocacy for dosing to normalize hemoglobin and even suggestions of possible benefit on quality of life and outcomes. This settled the institutional assumption that ESAs were a safe, beneficial adjunct in anemic cancer patients.',
+        source: {
+          externalId: 'src:fda-esa-postmarket-information',
+          name: 'U.S. Food and Drug Administration. Information on Erythropoiesis-Stimulating Agents (ESA) Epoetin alfa (marketed as Procrit, Epogen), Darbepoetin alfa (marketed as Aranesp) — postmarket drug safety information documenting class approval history and the March 2007 boxed warning.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/information-erythropoiesis-stimulating-agents-esa-epoetin-alfa-marketed-procrit-epogen-darbepoetin',
+          publishedAt: '2007-03-09',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-10-18',
+        datePrecision: 'DAY',
+        reason: 'Henke and colleagues published a randomized, double-blind, placebo-controlled trial in The Lancet showing that epoetin beta, although it corrected anemia in head and neck cancer patients undergoing radiotherapy, produced poorer locoregional progression-free survival than placebo (adjusted relative risk 1.62; 95% CI 1.22–2.14; p=0.0008). The first major randomized signal that an ESA could impair cancer control directly contested the prevailing safety assumption in the expert literature.',
+        source: {
+          externalId: 'src:henke-epoetin-head-neck-lancet-2003',
+          name: 'Henke M, Laszig R, Rübe C, et al. Erythropoietin to treat head and neck cancer patients with anaemia undergoing radiotherapy: randomised, double-blind, placebo-controlled trial. Lancet. 2003;362(9392):1255-1260.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14575968/',
+          publishedAt: '2003-10-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-03-09',
+        datePrecision: 'MONTH',
+        reason: 'In March 2007 the FDA added a boxed warning to all ESAs (Procrit, Epogen, Aranesp), stating that the agents caused tumor progression and shortened survival in patients with breast, head and neck, lymphoid, and non-small-cell lung cancers when dosed to hemoglobin targets above 12 g/dL, and that ESAs were not indicated for anemic cancer patients not receiving chemotherapy because mortality was increased. The regulator reversed the broad safe-use claim, restricting ESAs to a narrow chemotherapy-anemia indication at the lowest effective dose.',
+        source: {
+          externalId: 'src:fda-esa-boxed-warning-2007',
+          name: 'U.S. Food and Drug Administration. Information on Erythropoiesis-Stimulating Agents (ESA): boxed warning on tumor progression and decreased survival in cancer patients. March 2007.',
+          url: 'https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/information-erythropoiesis-stimulating-agents-esa-epoetin-alfa-marketed-procrit-epogen-darbepoetin',
+          publishedAt: '2007-03-09',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-02-27',
+        datePrecision: 'DAY',
+        reason: 'Bennett and colleagues published in JAMA a meta-analysis of 51 randomized trials (13,611 cancer patients with survival data) finding that ESA administration was associated with increased mortality (hazard ratio 1.10; 95% CI 1.01–1.20) and increased venous thromboembolism. The pooled randomized evidence confirmed the reversal in the expert literature, hardening the conclusion that ESAs harm rather than help cancer patients.',
+        source: {
+          externalId: 'src:bennett-esa-mortality-jama-2008',
+          name: 'Bennett CL, Silver SM, Djulbegovic B, et al. Venous thromboembolism and mortality associated with recombinant erythropoietin and darbepoetin administration for the treatment of cancer-associated anemia. JAMA. 2008;299(8):914-924.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18314434/',
+          publishedAt: '2008-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sorafenib HCC — SHARP trial / FDA approval 2007 ─────────────────────────
+  {
+    externalId: 'trajectory:sorafenib-hepatocellular-carcinoma-sharp-2007',
+    text: 'Sorafenib (Nexavar), an oral multikinase inhibitor, extends overall survival in advanced hepatocellular carcinoma, as established by the SHARP trial and recognized by FDA approval on 16 November 2007 — the first systemic therapy ever shown to prolong survival in liver cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2007-11-16',
+        datePrecision: 'DAY',
+        reason: 'On the basis of the SHARP trial results (presented at ASCO in June 2007), the FDA approved sorafenib for unresectable hepatocellular carcinoma in November 2007, making it the first approved systemic therapy for liver cancer — a disease that had defied effective drug treatment for decades. Regulatory adoption established sorafenib as the new standard of care for advanced HCC.',
+        source: {
+          externalId: 'src:cancernetwork-sorafenib-first-liver-cancer-drug-2007',
+          name: 'CancerNetwork (ONCOLOGY). Sorafenib First FDA-Approved Drug for Liver Cancer. December 1, 2007.',
+          url: 'https://www.cancernetwork.com/view/sorafenib-first-fda-approved-drug-liver-cancer',
+          publishedAt: '2007-12-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-07-24',
+        datePrecision: 'DAY',
+        reason: 'Llovet and the SHARP Investigators published the full phase III trial in the New England Journal of Medicine, reporting that sorafenib improved median overall survival to 10.7 months versus 7.9 months with placebo (hazard ratio 0.69; p<0.001) in advanced hepatocellular carcinoma. The peer-reviewed survival result cemented in the expert literature the claim underlying the 2007 approval and anchored sorafenib as the reference systemic therapy for HCC for over a decade.',
+        source: {
+          externalId: 'src:llovet-sharp-sorafenib-nejm-2008',
+          name: 'Llovet JM, Ricci S, Mazzaferro V, et al; SHARP Investigators Study Group. Sorafenib in advanced hepatocellular carcinoma. N Engl J Med. 2008;359(4):378-390.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18650514/',
+          publishedAt: '2008-07-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Pemetrexed mesothelioma — Vogelzang 2003 / FDA 2004 ─────────────────────
+  {
+    externalId: 'trajectory:pemetrexed-malignant-pleural-mesothelioma-2004',
+    text: 'Pemetrexed (Alimta) in combination with cisplatin prolongs survival in malignant pleural mesothelioma, as reported by Vogelzang and colleagues in 2003 and recognized by FDA approval on 4 February 2004 — the first drug ever approved for this asbestos-related cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-07-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2003-07-15',
+        datePrecision: 'DAY',
+        reason: 'Vogelzang and colleagues published the pivotal phase III trial in the Journal of Clinical Oncology, showing that adding pemetrexed to cisplatin improved median overall survival to 12.1 months versus 9.3 months with cisplatin alone (p=0.020) in 448 patients with malignant pleural mesothelioma. This was the first randomized evidence of a survival benefit from systemic therapy in a cancer that had no effective treatment, recording the claim in the expert literature.',
+        source: {
+          externalId: 'src:vogelzang-pemetrexed-mesothelioma-jco-2003',
+          name: 'Vogelzang NJ, Rusthoven JJ, Symanowski J, et al. Phase III study of pemetrexed in combination with cisplatin versus cisplatin alone in patients with malignant pleural mesothelioma. J Clin Oncol. 2003;21(14):2636-2644.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12860938/',
+          publishedAt: '2003-07-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-02-04',
+        datePrecision: 'DAY',
+        reason: 'On 4 February 2004 the FDA approved pemetrexed in combination with cisplatin for malignant pleural mesothelioma that is unresectable or otherwise not curable by surgery — the first treatment for the disease shown to extend survival and the first drug ever approved for mesothelioma. Regulatory adoption settled pemetrexed-cisplatin as the standard of care for this otherwise untreatable cancer.',
+        source: {
+          externalId: 'src:hazarika-pemetrexed-fda-approval-oncologist-2004',
+          name: 'Hazarika M, White RM, Johnson JR, Pazdur R. FDA Drug Approval Summaries: Pemetrexed (Alimta). The Oncologist. 2004;9(5):482-488.',
+          url: 'https://academic.oup.com/oncolo/article-abstract/9/5/482/6387983',
+          publishedAt: '2004-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
   // ── IMA graft superiority — Loop et al. 1986 ────────────────────────────────
   {
     externalId: 'trajectory:internal-mammary-artery-graft-superiority-1986',
