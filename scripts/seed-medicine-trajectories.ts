@@ -32021,63 +32021,6 @@ const TRAJECTORIES: Trajectory[] = [
   // PSYCHIATRIC TREATMENTS & NEUROSCIENCE (1933–1982)
   // ═══════════════════════════════════════════════════════════════════════════════
 
-  // ── Insulin coma therapy for schizophrenia — Sakel 1933 / Ackner 1957 ────────
-  {
-    externalId: 'trajectory:insulin-coma-therapy-schizophrenia-1933',
-    text: 'Manfred Sakel\'s insulin coma (insulin shock) therapy, introduced in 1933, is an effective specific treatment for schizophrenia — a claim reversed after a 1957 controlled trial showed that unconsciousness, not insulin, accounted for any apparent benefit.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1933-01-01',
-    claimEmergedPrecision: 'YEAR',
-    currentAxis: 'REVERSED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1933-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Manfred Sakel reported that deliberately inducing hypoglycemic comas with insulin produced remissions in schizophrenic patients, recording the claim that insulin coma was a specific somatic cure for schizophrenia. The technique spread rapidly from Vienna and became one of the first physical treatments for psychosis.',
-        source: {
-          externalId: 'src:jones-insulin-coma-therapy-2000',
-          name: 'Jones K. Insulin coma therapy in schizophrenia. J R Soc Med. 2000;93(3):147-149.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1297956/',
-          publishedAt: '2000-03-01',
-          methodologyType: 'derivative',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '1944-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Through the 1940s and early 1950s insulin coma therapy became an institutionally entrenched standard of care, with dedicated insulin units staffed by specially trained nurses established in psychiatric hospitals across Britain, the United States, and Europe. Widespread clinical adoption settled the claim that insulin coma was a legitimate, effective schizophrenia treatment.',
-        source: {
-          externalId: 'src:jones-insulin-coma-therapy-2000',
-          name: 'Jones K. Insulin coma therapy in schizophrenia. J R Soc Med. 2000;93(3):147-149.',
-          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1297956/',
-          publishedAt: '2000-03-01',
-          methodologyType: 'derivative',
-        },
-      },
-      {
-        fromAxis: 'SETTLED',
-        toAxis: 'REVERSED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1957-03-23',
-        datePrecision: 'DAY',
-        reason: 'Ackner, Harris, and Oldham published a controlled study in The Lancet comparing insulin coma against control patients rendered unconscious by barbiturates, finding no advantage for insulin — the benefit attributed to the treatment was not specific to insulin. The trial, building on Harold Bourne\'s 1953 \'The insulin myth,\' discredited a therapy used on hundreds of thousands of patients, and insulin coma was rapidly abandoned as chlorpromazine offered a safer alternative.',
-        source: {
-          externalId: 'src:ackner-insulin-treatment-schizophrenia-1957',
-          name: 'Ackner B, Harris A, Oldham AJ. Insulin treatment of schizophrenia; a controlled study. Lancet. 1957;272(6969):607-611.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/13407078/',
-          publishedAt: '1957-03-23',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Imipramine pharmacologically delineates panic disorder — Klein 1964 ───────
   {
     externalId: 'trajectory:imipramine-panic-disorder-delineation-1964',
@@ -32157,48 +32100,6 @@ const TRAJECTORIES: Trajectory[] = [
           url: 'https://pubmed.ncbi.nlm.nih.gov/29850777/',
           publishedAt: '2018-07-01',
           methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
-  // ── MAOI tyramine cheese reaction — Blackwell 1963 ───────────────────────────
-  {
-    externalId: 'trajectory:maoi-tyramine-cheese-reaction-1963',
-    text: 'Barry Blackwell reported in The Lancet in October 1963 that the dangerous, sometimes fatal hypertensive crises seen in patients taking monoamine-oxidase-inhibitor antidepressants are caused by dietary tyramine — the \'cheese reaction.\'',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '1963-10-01',
-    claimEmergedPrecision: 'MONTH',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1963-10-01',
-        datePrecision: 'MONTH',
-        reason: 'Blackwell, then a trainee, published \'Hypertensive crisis due to monoamine-oxidase inhibitors,\' linking the previously mysterious and occasionally fatal hypertensive attacks in MAOI-treated patients to tyramine-rich foods such as aged cheese. The letter recorded the claim that an antidepressant\'s most lethal adverse effect arose from a drug–food interaction, against initial skepticism from the drugs\' proponents.',
-        source: {
-          externalId: 'src:blackwell-hypertensive-crisis-maoi-1963',
-          name: 'Blackwell B. Hypertensive crisis due to monoamine-oxidase inhibitors. Lancet. 1963;2(7313):849-850.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/14056007/',
-          publishedAt: '1963-10-26',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '1967-01-01',
-        datePrecision: 'YEAR',
-        reason: 'Blackwell, Marley, Price, and Taylor experimentally confirmed the mechanism in \'Hypertensive interactions between monoamine oxidase inhibitors and foodstuffs\' (Br J Psychiatry, 1967), demonstrating the pressor effect of dietary tyramine during MAO inhibition. Mandatory dietary tyramine restriction became permanent standard clinical practice and a defining limitation of MAOI therapy, settling the cheese-reaction claim.',
-        source: {
-          externalId: 'src:blackwell-marley-maoi-foodstuffs-1967',
-          name: 'Blackwell B, Marley E, Price J, Taylor D. Hypertensive interactions between monoamine oxidase inhibitors and foodstuffs. Br J Psychiatry. 1967;113(497):349-365.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/6034391/',
-          publishedAt: '1967-04-01',
-          methodologyType: 'primary',
         },
       },
     ],
