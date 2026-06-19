@@ -19275,6 +19275,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── DeWood coronary thrombosis as cause of acute MI — 1980 ────────────────
+  {
+    externalId: 'trajectory:dewood-coronary-thrombosis-cause-acute-mi-1980',
+    text: 'On 16 October 1980 DeWood and colleagues reported in the New England Journal of Medicine that coronary arteriography in the first hours of acute transmural myocardial infarction showed total occlusion in 87% of patients studied within four hours, establishing acute thrombotic coronary occlusion as the proximate cause of heart attack rather than a postmortem consequence.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-10-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-10-16',
+        datePrecision: 'DAY',
+        reason: 'DeWood and colleagues performed coronary arteriography in 322 patients during acute transmural MI and found total coronary occlusion in 110 of 126 (87%) studied within four hours of symptom onset, with the proportion falling to 65% by 12–24 hours. This first-in-life angiographic evidence recorded that an occlusive coronary thrombus is present at the moment of infarction, contradicting the then-influential view (e.g., among some pathologists) that intracoronary thrombus was a consequence, not the cause, of myocardial necrosis.',
+        source: {
+          externalId: 'src:dewood-total-coronary-occlusion-nejm-1980',
+          name: 'DeWood MA, Spores J, Notske R, et al. Prevalence of total coronary occlusion during the early hours of transmural myocardial infarction. N Engl J Med. 1980;303(16):897-902.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM198010163031601',
+          publishedAt: '1980-10-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-02-22',
+        datePrecision: 'DAY',
+        reason: 'The thrombotic-occlusion mechanism was settled when large randomized trials of clot-dissolving therapy succeeded: GISSI (1986) showed intravenous streptokinase given during acute MI cut mortality by about 18%, confirming that lysing the occluding thrombus alters outcome and therefore that the thrombus is causal. Convergent reperfusion evidence (later ISIS-2, 1988) cemented thrombosis as the accepted pathophysiology and the foundation of the thrombolytic and antiplatelet treatment era.',
+        source: {
+          externalId: 'src:gissi-streptokinase-lancet-1986-dewood-confirm',
+          name: 'Gruppo Italiano per lo Studio della Streptochinasi nell\'Infarto Miocardico (GISSI). Effectiveness of intravenous thrombolytic treatment in acute myocardial infarction. Lancet. 1986;1(8478):397-402.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2868337/',
+          publishedAt: '1986-02-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Practolol oculomucocutaneous syndrome reversal — 1975 ─────────────────
+  {
+    externalId: 'trajectory:practolol-oculomucocutaneous-syndrome-reversal-1975',
+    text: 'Practolol (Eraldin), the first cardioselective β1-adrenoceptor blocker, marketed by ICI in 1970 as a safe long-term treatment for angina and hypertension, was overturned as safe when it was found to cause a severe oculomucocutaneous syndrome (keratoconjunctivitis sicca with conjunctival scarring, rashes, and sclerosing peritonitis), reported in the British Medical Journal in 1975 and leading to its withdrawal.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1970-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Imperial Chemical Industries (ICI) introduced practolol (Eraldin) in 1970 as the first β1-selective (\'cardioselective\') beta-blocker, marketed and prescribed widely for angina and hypertension on the accepted premise that selective β1 blockade offered effective cardiovascular protection with an acceptable safety profile. The drug entered routine practice as an established therapy.',
+        source: {
+          externalId: 'src:practolol-overview-sciencedirect',
+          name: 'Practolol — pharmacology and clinical history overview. ScienceDirect Topics (Pharmacology, Toxicology and Pharmaceutical Science).',
+          url: 'https://www.sciencedirect.com/topics/pharmacology-toxicology-and-pharmaceutical-science/practolol',
+          publishedAt: '1970-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-03-15',
+        datePrecision: 'MONTH',
+        reason: 'Wright\'s British Medical Journal report documented keratoconjunctivitis sicca with conjunctival scarring, fibrosis and shrinkage in 27 patients, plus rashes, mucosal ulceration, sclerosing peritonitis, pleurisy and deafness, all linked to practolol — a delayed immunological toxicity invisible in pre-marketing trials. Together with the UK Committee on Safety of Medicines warning to doctors (January 1975), this reversed practolol\'s safety status and led to its withdrawal from general use; the episode became a landmark argument for systematic post-marketing surveillance (pharmacovigilance).',
+        source: {
+          externalId: 'src:wright-practolol-oculomucocutaneous-bmj-1975',
+          name: 'Wright P. Untoward effects associated with practolol administration: oculomucocutaneous syndrome. Br Med J. 1975;1(5958):595-598.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1125623/',
+          publishedAt: '1975-03-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Chlorothiazide (Diuril) first oral thiazide diuretic — 1958 ───────────
+  {
+    externalId: 'trajectory:chlorothiazide-diuril-first-oral-thiazide-1958',
+    text: 'Chlorothiazide (Diuril), introduced by Merck in 1958 as the first orally effective non-mercurial thiazide diuretic, established a new class of safe oral agents for treating edema and hypertension and became the foundational antihypertensive drug class of the modern era.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1958-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Early 1958 clinical evaluations, such as Herrmann and colleagues in the Texas State Journal of Medicine, reported that chlorothiazide (Diuril) was an effective orally administered non-mercurial diuretic, freeing diuretic therapy from the toxicity and injectable route of organic mercurials. This recorded the first benzothiadiazine (\'thiazide\') as a practical oral agent for fluid overload and, soon after, for blood-pressure reduction.',
+        source: {
+          externalId: 'src:herrmann-chlorothiazide-clinical-eval-1958',
+          name: 'Herrmann GR, Hejtmancik MR, Graham RN, Marburger RC. A new superior oral diuretic drug, chlorothiazide (diuril); clinical evaluation. Tex State J Med. 1958;54(9):639-645.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13580922/',
+          publishedAt: '1958-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Merck Sharp & Dohme\'s FDA-approved marketing of chlorothiazide (Diuril, NDA 11-870) in 1958 launched the thiazide class into routine practice; structural offshoots (hydrochlorothiazide 1959, chlorthalidone 1960) followed immediately. Thiazides became the standard first-line oral antihypertensive backbone, a status durably confirmed when the VA Cooperative hypertension trials (from 1967) proved that thiazide-based blood-pressure lowering prevents cardiovascular events.',
+        source: {
+          externalId: 'src:fda-diuril-chlorothiazide-nda011870-label',
+          name: 'FDA. DIURIL (chlorothiazide), NDA 11-870 — approved label (Drugs@FDA drug label document).',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2009/011870s040lbl.pdf',
+          publishedAt: '1958-01-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AMIS aspirin post-MI null result overturned — 1980/1988 ───────────────
+  {
+    externalId: 'trajectory:amis-aspirin-post-mi-null-overturned-1980',
+    text: 'On 15 February 1980 the NHLBI-sponsored Aspirin Myocardial Infarction Study (AMIS) reported in JAMA that regular aspirin did not significantly reduce total mortality among 4,524 survivors of myocardial infarction, a null result that cast doubt on aspirin for secondary prevention until it was overturned by the 1988 Antiplatelet Trialists\' Collaboration meta-analysis.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1980-02-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1980-02-15',
+        datePrecision: 'DAY',
+        reason: 'The AMIS Research Group\'s randomized, double-blind, placebo-controlled trial of 1 g/day aspirin in 4,524 patients with prior myocardial infarction found no statistically significant reduction in total mortality (and a slightly higher, non-significant rate on aspirin). This large individual trial recorded an apparently negative verdict on aspirin for chronic post-MI secondary prevention, contributing to genuine uncertainty about whether aspirin saved lives in coronary patients.',
+        source: {
+          externalId: 'src:amis-aspirin-mi-jama-1980',
+          name: 'Aspirin Myocardial Infarction Study Research Group. A randomized, controlled trial of aspirin in persons recovered from myocardial infarction. JAMA. 1980;243(7):661-669.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6985998/',
+          publishedAt: '1980-02-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-01-30',
+        datePrecision: 'MONTH',
+        reason: 'The Antiplatelet Trialists\' Collaboration pooled individual trials (including AMIS) and showed that prolonged antiplatelet treatment, chiefly aspirin, reduced vascular death, non-fatal myocardial infarction, and stroke by roughly a quarter in high-risk patients. By demonstrating that individual trials such as AMIS had been underpowered to detect a real benefit, the meta-analysis overturned AMIS\'s null conclusion and settled aspirin as standard secondary-prevention therapy — a landmark for meta-analysis in cardiology.',
+        source: {
+          externalId: 'src:antiplatelet-trialists-secondary-prevention-bmj-1988',
+          name: 'Antiplatelet Trialists\' Collaboration. Secondary prevention of vascular disease by prolonged antiplatelet treatment. Br Med J. 1988;296(6618):320-331.',
+          url: 'https://www.jameslindlibrary.org/antiplatelet-trialists-collaboration-1988/',
+          publishedAt: '1988-01-30',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
