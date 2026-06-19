@@ -29199,6 +29199,235 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY & PHARMACOLOGY ERA (1975–2017)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── SPRINT intensive blood-pressure control — NEJM 2015 / ACC-AHA 2017 ───────
+  {
+    externalId: 'trajectory:sprint-intensive-bp-control-2015',
+    text: 'The SPRINT trial reported on 9 November 2015 that treating high-risk non-diabetic adults to a systolic blood-pressure target below 120 mm Hg, rather than below 140 mm Hg, significantly reduced major cardiovascular events and all-cause mortality.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-11-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-11-09',
+        datePrecision: 'DAY',
+        reason: 'The NIH-sponsored SPRINT trial (9,361 high-risk adults without diabetes) was stopped early for benefit and its primary results were presented at the AHA Scientific Sessions and published online in the New England Journal of Medicine. Intensive control (target <120 mm Hg) cut the composite of major cardiovascular events by about 25% and all-cause mortality by about 27% versus standard control (<140 mm Hg), overturning the prevailing assumption that a <140 mm Hg target was sufficient and putting a more aggressive target on the evidentiary record.',
+        source: {
+          externalId: 'src:sprint-nejm-2015',
+          name: 'SPRINT Research Group. A Randomized Trial of Intensive versus Standard Blood-Pressure Control. N Engl J Med. 2015;373(22):2103-2116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26551272/',
+          publishedAt: '2015-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-11-13',
+        datePrecision: 'DAY',
+        reason: 'The 2017 ACC/AHA High Blood Pressure Clinical Practice Guideline (Whelton et al.), citing SPRINT and ACCORD, lowered the definition of hypertension and the general treatment target from 140/90 to 130/80 mm Hg and eliminated the \'prehypertension\' category. By embedding the intensive-control evidence into the diagnostic threshold used across U.S. practice, the major cardiology and medical societies institutionally adopted the SPRINT-era position.',
+        source: {
+          externalId: 'src:acc-aha-hypertension-guideline-2017',
+          name: 'Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. J Am Coll Cardiol. 2018;71(19):e127-e248 (published online 13 Nov 2017).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29133356/',
+          publishedAt: '2017-11-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aspirin primary prevention reversal — PHS 1989 → ASPREE 2018 → ACC/AHA 2019 ─
+  {
+    externalId: 'trajectory:aspirin-primary-prevention-reversal-2018',
+    text: 'Low-dose aspirin taken by adults without established cardiovascular disease confers a net benefit by preventing first heart attacks and other atherothrombotic events (primary prevention).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-07-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-07-20',
+        datePrecision: 'DAY',
+        reason: 'The final report of the aspirin component of the Physicians\' Health Study (22,071 healthy male physicians) found a 44% reduction in the risk of first myocardial infarction in the aspirin group, leading the data monitoring board to terminate that arm early. This established the long-dominant belief that low-dose aspirin is beneficial for primary cardiovascular prevention.',
+        source: {
+          externalId: 'src:physicians-health-study-aspirin-nejm-1989',
+          name: 'Steering Committee of the Physicians\' Health Study Research Group. Final Report on the Aspirin Component of the Ongoing Physicians\' Health Study. N Engl J Med. 1989;321(3):129-135.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/NEJM198907203210301',
+          publishedAt: '1989-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-09-16',
+        datePrecision: 'DAY',
+        reason: 'The ASPREE trial (19,114 healthy older adults) reported that 100 mg daily aspirin did not significantly reduce cardiovascular events but significantly increased major hemorrhage (8.6 vs 6.2 events per 1,000 person-years). Published alongside ARRIVE and ASCEND in 2018, ASPREE directly contradicted the net-benefit premise for primary prevention and made the long-held claim openly contested in the literature.',
+        source: {
+          externalId: 'src:aspree-cv-bleeding-nejm-2018',
+          name: 'McNeil JJ, Wolfe R, Woods RL, et al. Effect of Aspirin on Cardiovascular Events and Bleeding in the Healthy Elderly. N Engl J Med. 2018;379(16):1509-1518.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/30221597/',
+          publishedAt: '2018-09-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-03-17',
+        datePrecision: 'DAY',
+        reason: 'The 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease (Arnett et al.) downgraded aspirin, stating it should be used infrequently for primary prevention because of lack of net benefit (Class IIb only for select 40–70-year-olds at higher risk) and recommending against routine use in adults over 70 (Class III: Harm). The reversal of decades of guideline endorsement formally retired routine primary-prevention aspirin from standard cardiovascular practice.',
+        source: {
+          externalId: 'src:acc-aha-primary-prevention-guideline-2019',
+          name: 'Arnett DK, Blumenthal RS, Albert MA, et al. 2019 ACC/AHA Guideline on the Primary Prevention of Cardiovascular Disease. Circulation. 2019;140(11):e596-e646 (published online 17 Mar 2019).',
+          url: 'https://www.ahajournals.org/doi/10.1161/CIR.0000000000000678',
+          publishedAt: '2019-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Niacin add-on statin reversal — AIM-HIGH 2011 ───────────────────────────
+  {
+    externalId: 'trajectory:niacin-add-on-statin-reversal-2011',
+    text: 'Adding extended-release niacin to statin therapy to raise HDL cholesterol reduces cardiovascular events in patients with established disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1975-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1975-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The Coronary Drug Project (8,341 men with prior myocardial infarction) found that niacin significantly lowered the incidence of nonfatal myocardial infarction versus placebo, and a 1986 follow-up showed a long-term mortality benefit. This established niacin\'s cardioprotective reputation and, combined with the HDL hypothesis, underpinned the modern practice of adding niacin to statins to raise HDL.',
+        source: {
+          externalId: 'src:coronary-drug-project-jama-1975',
+          name: 'Coronary Drug Project Research Group. Clofibrate and Niacin in Coronary Heart Disease. JAMA. 1975;231(4):360-381.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1088963/',
+          publishedAt: '1975-01-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-15',
+        datePrecision: 'DAY',
+        reason: 'The NHLBI-sponsored AIM-HIGH trial was halted 18 months early (decision 25 April 2011) and published in November 2011: in statin-treated patients with low HDL, adding high-dose extended-release niacin produced no reduction in cardiovascular events (16.4% vs 16.2%) despite raising HDL, with a signal of increased ischemic stroke. This overturned the HDL-raising rationale for niacin add-on therapy; the larger HPS2-THRIVE trial (NEJM, 17 July 2014, 25,673 patients) confirmed no benefit and added harms, cementing the reversal.',
+        source: {
+          externalId: 'src:aim-high-niacin-nejm-2011',
+          name: 'AIM-HIGH Investigators (Boden WE, et al.). Niacin in Patients with Low HDL Cholesterol Levels Receiving Intensive Statin Therapy. N Engl J Med. 2011;365(24):2255-2267.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1107579',
+          publishedAt: '2011-11-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dabigatran first DOAC warfarin alternative — RE-LY 2009 / FDA 2010 ──────
+  {
+    externalId: 'trajectory:dabigatran-first-doac-warfarin-alternative-2010',
+    text: 'Dabigatran (Pradaxa), a fixed-dose oral direct thrombin inhibitor requiring no routine coagulation monitoring, is a safe and effective alternative to warfarin for stroke prevention in non-valvular atrial fibrillation.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-09-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-09-17',
+        datePrecision: 'DAY',
+        reason: 'The RE-LY trial (18,113 atrial-fibrillation patients) reported that dabigatran 150 mg twice daily reduced stroke and systemic embolism versus warfarin (1.11% vs 1.69% per year) without increasing major bleeding, all without the routine INR monitoring warfarin requires. This put the first credible oral alternative to warfarin in over 50 years onto the evidentiary record.',
+        source: {
+          externalId: 'src:re-ly-dabigatran-nejm-2009',
+          name: 'Connolly SJ, Ezekowitz MD, Yusuf S, et al. Dabigatran versus Warfarin in Patients with Atrial Fibrillation. N Engl J Med. 2009;361(12):1139-1151.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa0905561',
+          publishedAt: '2009-09-17',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-10-19',
+        datePrecision: 'DAY',
+        reason: 'On 19 October 2010 the FDA approved dabigatran (Pradaxa) for stroke prevention in non-valvular atrial fibrillation on the strength of RE-LY — the first direct oral anticoagulant (DOAC) approved as an alternative to warfarin. The approval launched the DOAC era, was rapidly followed by guideline incorporation and approvals of rivaroxaban and apixaban, and durably displaced warfarin as first-line therapy for most atrial-fibrillation patients.',
+        source: {
+          externalId: 'src:fda-pradaxa-dabigatran-approval-2010',
+          name: 'Boehringer Ingelheim / FDA. FDA Approves Pradaxa (dabigatran etexilate) for Stroke Prevention in Non-Valvular Atrial Fibrillation. 19 Oct 2010.',
+          url: 'https://www.drugs.com/history/pradaxa.html',
+          publishedAt: '2010-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── PCSK9 evolocumab cardiovascular outcomes — FDA 2015 / FOURIER 2017 ───────
+  {
+    externalId: 'trajectory:pcsk9-evolocumab-cv-outcomes-2017',
+    text: 'Inhibiting PCSK9 with evolocumab on top of statin therapy, driving LDL cholesterol to historically low levels (median ~30 mg/dL), reduces major cardiovascular events.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2015-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-08-27',
+        datePrecision: 'DAY',
+        reason: 'On 27 August 2015 the FDA approved evolocumab (Repatha), a monoclonal-antibody PCSK9 inhibitor, as an adjunct to diet and maximally tolerated statins for familial hypercholesterolemia and atherosclerotic disease — on the basis of dramatic LDL-cholesterol lowering (a surrogate endpoint), with cardiovascular-outcome benefit not yet demonstrated. This recorded the claim that PCSK9 inhibition\'s deep LDL reduction was reasonably likely to translate into clinical benefit.',
+        source: {
+          externalId: 'src:fda-repatha-evolocumab-approval-2015',
+          name: 'Amgen / FDA. FDA Approves Amgen\'s New Cholesterol-Lowering Medication Repatha (evolocumab). 27 Aug 2015.',
+          url: 'https://www.amgen.com/newsroom/press-releases/2015/08/fda-approves-amgens-new-cholesterollowering-medication-repatha-evolocumab',
+          publishedAt: '2015-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-03-17',
+        datePrecision: 'DAY',
+        reason: 'The FOURIER trial (27,564 statin-treated patients with atherosclerotic disease) — the first cardiovascular-outcomes trial of a PCSK9 inhibitor — reported that evolocumab lowered LDL to a median of 30 mg/dL and reduced the primary composite cardiovascular endpoint by 15% and the harder MI/stroke/CV-death endpoint by 20%, with no safety signal at very low LDL. This converted the surrogate-based approval into demonstrated clinical benefit and validated the \'lower-is-better\' LDL hypothesis below previously studied levels.',
+        source: {
+          externalId: 'src:fourier-evolocumab-nejm-2017',
+          name: 'Sabatine MS, Giugliano RP, Keech AC, et al. Evolocumab and Clinical Outcomes in Patients with Cardiovascular Disease. N Engl J Med. 2017;376(18):1713-1722.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28304224/',
+          publishedAt: '2017-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
