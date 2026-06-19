@@ -38087,6 +38087,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HORMONAL DIAGNOSTICS & SYNTHETIC STEROID ERA (1928–1960)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Aschheim–Zondek pregnancy test — 1928 ──────────────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that subcutaneous injection of a pregnant woman\'s urine into immature female mice produced ovarian follicle maturation, congestion, and hemorrhage, establishing the first reliable hormonal (Aschheim–Zondek) test for early pregnancy by detecting a pregnancy hormone (later identified as hCG) in urine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Aschheim and Zondek published \'Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons\' in Klinische Wochenschrift, showing that urine from pregnant women, injected into sexually immature mice, induced striking ovarian changes (follicular maturation, hemorrhagic corpora) absent with non-pregnant urine. This recorded in the expert literature the first reproducible hormonal bioassay for pregnancy and the demonstration that a gonad-stimulating hormone is excreted in pregnancy urine.',
+        source: {
+          externalId: 'src:aschheim-zondek-schwangerschaftsdiagnose-klinwschr-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klinische Wochenschrift. 1928;7:1404.',
+          url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The A–Z reaction was independently replicated (e.g., Rupp\'s 1931 examination in the Medical Journal of Australia) and rapidly adopted as a routine clinical laboratory service across Europe and the English-speaking world in the early 1930s, with reported accuracy around 98%. This widespread institutional adoption settled the claim that a urinary hormone bioassay could diagnose pregnancy, founding hormonal pregnancy diagnostics (later superseded but not contradicted by frog tests and immunoassays).',
+        source: {
+          externalId: 'src:olszynko-gryn-aschheim-zondek-demand-2014',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: The Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233–247.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24388014/',
+          publishedAt: '2014-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Inhoffen–Hohlweg ethinylestradiol synthesis — 1938 ─────────────────────
+  {
+    externalId: 'trajectory:inhoffen-hohlweg-ethinylestradiol-synthesis-1938',
+    text: 'Hans Herloff Inhoffen and Walter Hohlweg reported in Naturwissenschaften in 1938 the synthesis of 17α-ethinylestradiol at Schering in Berlin, establishing the first orally active synthetic steroidal estrogen — a compound that became, and remains, the estrogen used in nearly all combined oral contraceptives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1938-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1938-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Inhoffen and Hohlweg reported that adding an ethinyl group at C17 of estradiol produced an estrogen that retained potent activity when given by mouth, overcoming the rapid degradation that made natural estrogens orally ineffective. This recorded the first orally active steroidal estrogen, paralleling the same group\'s orally active progestin ethisterone and providing the chemical foundation for oral hormone therapy and combined oral contraceptives.',
+        source: {
+          externalId: 'src:inhoffen-hohlweg-ethinylestradiol-naturwissenschaften-1938',
+          name: 'Inhoffen HH, Hohlweg W. Neue per os-wirksame weibliche Keimdrüsenhormon-Derivate: 17-Aethinyl-oestradiol und Pregnen-in-on-3-ol-17. Naturwissenschaften. 1938;26(6):96.',
+          url: 'https://en.wikipedia.org/wiki/Ethinylestradiol',
+          publishedAt: '1938-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1970-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Following its 1943 introduction for medical use, ethinylestradiol displaced mestranol in combined oral contraceptives over the 1960s–1970s and became, in the words of modern pharmacology reviews, nearly the exclusive estrogen in birth-control pills worldwide. Its near-universal incorporation into approved combined oral contraceptives settled the claim that the synthetic compound is a safe, effective, orally active estrogen.',
+        source: {
+          externalId: 'src:ethinylestradiol-exclusive-oc-estrogen-review',
+          name: 'Ethinylestradiol — development, oral activity, and near-exclusive use as the estrogen in combined oral contraceptives (pharmacology reference review).',
+          url: 'https://en.wikipedia.org/wiki/Ethinylestradiol',
+          publishedAt: '2024-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Marker degradation / diosgenin → progesterone / Syntex 1944 ────────────
+  {
+    externalId: 'trajectory:marker-degradation-diosgenin-progesterone-syntex-1944',
+    text: 'Russell Marker reported in the Journal of the American Chemical Society in 1940 a chemical route (the \'Marker degradation\') converting the plant sapogenin diosgenin into progesterone, and in 1944 founded Syntex in Mexico City to mass-produce it from Mexican yam — collapsing the cost of progesterone and founding the steroid-hormone industry that later supplied oral contraceptives and cortisone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1940-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1940-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Marker published his work on diosgenin and the multi-step degradation that opens the sapogenin side chain to yield progesterone, establishing that an abundant plant steroid could be chemically converted into a scarce mammalian hormone. This recorded in the expert literature a practical synthetic route to progesterone independent of animal-organ extraction.',
+        source: {
+          externalId: 'src:marker-diosgenin-jacs-1940',
+          name: 'Marker RE, Tsukamoto T, Turner DL. Sterols. C. Diosgenin. J Am Chem Soc. 1940;62(9):2525–2532.',
+          url: 'https://www.acs.org/education/whatischemistry/landmarks/progesteronesynthesis.html',
+          publishedAt: '1940-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Having located diosgenin-rich Mexican yam (Dioscorea) and produced roughly 3 kg of progesterone — the largest single batch made to that date — Marker founded Syntex, S.A. in Mexico City in 1944 with Emeric Somlo and Federico Lehmann, driving the price of progesterone down by orders of magnitude. Industrial-scale production proved the route commercially and established the Mexican steroid-hormone industry, the supply base for later cortisone synthesis and oral contraceptives.',
+        source: {
+          externalId: 'src:acs-marker-degradation-landmark-1999',
+          name: 'American Chemical Society. The \'Marker Degradation\' and Creation of the Mexican Steroid Hormone Industry — National Historic Chemical Landmark.',
+          url: 'https://www.acs.org/education/whatischemistry/landmarks/progesteronesynthesis.html',
+          publishedAt: '1999-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Djerassi–Miramontes norethindrone synthesis — 15 Oct 1951 ──────────────
+  {
+    externalId: 'trajectory:djerassi-miramontes-norethindrone-synthesis-1951',
+    text: 'On 15 October 1951 Luis Miramontes, working under Carl Djerassi and George Rosenkranz at Syntex in Mexico City, completed the synthesis of norethindrone (19-nor-17α-ethynyltestosterone), the first highly potent orally active progestin, which became the progestational component of oral contraceptives.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1951-10-15',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1951-10-15',
+        datePrecision: 'DAY',
+        reason: 'Miramontes carried out the final ethynylation step yielding 19-nor-17α-ethynyltestosterone (norethindrone), recorded in his signed laboratory notebook dated 15 October 1951; the compound and process were claimed in U.S. Patent 2,744,122 (Djerassi, Miramontes, Rosenkranz; filed 1952, granted 1956) and published in J Am Chem Soc in 1954. This recorded the first orally active progestin substantially more potent than natural progesterone, the chemical key to a contraceptive pill.',
+        source: {
+          externalId: 'src:djerassi-miramontes-rosenkranz-norethindrone-patent-us2744122',
+          name: 'Djerassi C, Miramontes L, Rosenkranz G. Delta 4-19-nor-17alpha-ethinylandrosten-17beta-ol-3-one and process. U.S. Patent 2,744,122 (assignee Syntex S.A.); filed 12 Nov 1952, granted 1 May 1956.',
+          url: 'https://patents.google.com/patent/US2744122A/en',
+          publishedAt: '1956-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1960-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The FDA approved norethindrone first for menstrual disorders (marketed by Parke-Davis as Norlutin in 1957) and then in 1960 for use as an oral-contraceptive progestin, and norethindrone-containing pills (e.g., Ortho-Novum) entered widespread use. Regulatory approval and adoption settled the claim that the synthetic progestin is a safe and effective orally active progestational agent for contraception and gynecologic therapy.',
+        source: {
+          externalId: 'src:sciencehistory-djerassi-norethindrone-profile',
+          name: 'Science History Institute. Carl Djerassi (scientific biography) — synthesis of norethindrone (1951) and FDA approval as a menstrual therapy (1957) and oral contraceptive (1960).',
+          url: 'https://www.sciencehistory.org/education/scientific-biographies/carl-djerassi/',
+          publishedAt: '2017-12-05',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
