@@ -34527,7 +34527,7 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Aspirin primary prevention CVD reversal — ASPREE 2018 / USPSTF 2022 ──────
+  // ── Aspirin primary prevention CVD reversal — ASPREE 2018 / USPSTF 2022 ─────
   {
     externalId: 'trajectory:aspirin-primary-prevention-cvd-reversal-2018',
     text: 'The long-standing recommendation that low-dose aspirin be used for the primary prevention of cardiovascular disease was overturned after the ASPREE trial (16 September 2018) found no cardiovascular benefit and increased major bleeding in healthy older adults, leading the USPSTF on 26 April 2022 to recommend against initiating aspirin in adults 60 and older.',
@@ -34563,6 +34563,220 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'U.S. Preventive Services Task Force. Aspirin Use to Prevent Cardiovascular Disease: Preventive Medication. Final Recommendation Statement. 26 April 2022.',
           url: 'https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/aspirin-to-prevent-cardiovascular-disease-preventive-medication',
           publishedAt: '2022-04-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHOPHARMACOLOGY ORIGINS (1949–1988)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Cade — lithium for manic-depressive illness — 1949 ──────────────────────
+  {
+    externalId: 'trajectory:cade-lithium-psychotic-excitement-1949',
+    text: 'John Cade reported in the Medical Journal of Australia on 3 September 1949 that lithium salts produced marked calming and remission of symptoms in patients with mania (\'psychotic excitement\'), introducing lithium as a treatment for manic-depressive illness.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1949-09-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1949-09-03',
+        datePrecision: 'DAY',
+        reason: 'John Cade, working alone at a repatriation hospital in Victoria, reported in the Medical Journal of Australia that lithium carbonate and citrate calmed and in several cases fully remitted ten patients with chronic mania, including one long-institutionalized man discharged after lithium. The uncontrolled case series recorded the first modern claim that a simple ion could specifically treat a major psychiatric disorder, though it went largely unnoticed for years.',
+        source: {
+          externalId: 'src:cade-lithium-mja-1949',
+          name: 'Cade JFJ. Lithium salts in the treatment of psychotic excitement. Med J Aust. 1949;2(10):349-352.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2560740/',
+          publishedAt: '1949-09-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1970-04-06',
+        datePrecision: 'DAY',
+        reason: 'After controlled trials by Mogens Schou and others in the 1950s–60s validated lithium\'s antimanic and prophylactic effects, the U.S. Food and Drug Administration approved three new drug applications for lithium carbonate on 6 April 1970 for the control of manic episodes of manic-depressive illness, making the United States the 50th country to register the drug. Regulatory approval settled lithium as standard psychiatric therapy decades after Cade\'s report.',
+        source: {
+          externalId: 'src:tondo-lithium-prescribers-2019',
+          name: 'Tondo L, Alda M, Bauer M, et al. Clinical use of lithium salts: guide for users and prescribers. Int J Bipolar Disord. 2019;7:16.',
+          url: 'https://journalbipolardisorders.springeropen.com/articles/10.1186/s40345-019-0151-2',
+          publishedAt: '2019-07-22',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Delay & Deniker — chlorpromazine first antipsychotic — 1952 ─────────────
+  {
+    externalId: 'trajectory:chlorpromazine-first-antipsychotic-1952',
+    text: 'Jean Delay and Pierre Deniker reported in 1952 that chlorpromazine (RP4560) produced specific calming and antipsychotic effects in agitated and psychotic patients at Sainte-Anne Hospital in Paris, introducing the first antipsychotic drug and the \'neuroleptic\' class.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1952-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1952-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Beginning in May 1952, Delay and Deniker published a series of communications, including the influential \'38 cas de psychoses traitées par la cure prolongée et continue de 4560 RP\', reporting that chlorpromazine — synthesized at Rhône-Poulenc in December 1951 — extinguished hallucinations and agitation in psychotic patients. They coined the term \'neuroleptic\', recording the first claim of a drug with specific antipsychotic action.',
+        source: {
+          externalId: 'src:ban-fifty-years-chlorpromazine-2007',
+          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495-500.',
+          url: 'https://www.tandfonline.com/doi/pdf/10.2147/ndt.s12160195',
+          publishedAt: '2007-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1954-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Smith, Kline & French obtained U.S. FDA approval for chlorpromazine as Thorazine in 1954 (marketed mid-1954), shortly after its 1952 French launch. Rapid worldwide adoption and the drug\'s role in emptying psychiatric asylums settled chlorpromazine as the foundational antipsychotic and the start of psychopharmacology, displacing lobotomy and insulin-coma therapy.',
+        source: {
+          externalId: 'src:ban-chlorpromazine-thorazine-1954',
+          name: 'Ban TA. Fifty years chlorpromazine: a historical perspective. Neuropsychiatr Dis Treat. 2007;3(4):495-500 (US Thorazine approval, 1954).',
+          url: 'https://www.tandfonline.com/doi/pdf/10.2147/ndt.s12160195',
+          publishedAt: '2007-08-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kuhn — imipramine first tricyclic antidepressant — 1957 ─────────────────
+  {
+    externalId: 'trajectory:kuhn-imipramine-first-tricyclic-antidepressant-1957',
+    text: 'Roland Kuhn reported on 31 August 1957 in the Schweizerische Medizinische Wochenschrift that the compound G22355 (imipramine) relieved depressive states in patients, introducing the first tricyclic antidepressant.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-08-31',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1957-08-31',
+        datePrecision: 'DAY',
+        reason: 'Swiss psychiatrist Roland Kuhn, testing the antihistamine-derived compound G22355 (imipramine) at Münsterlingen, observed that it specifically lifted mood in depressed patients rather than acting as a sedative, and reported the finding in the Schweizerische Medizinische Wochenschrift on 31 August 1957. The observation recorded the first claim that a drug could selectively treat depression, founding the tricyclic antidepressant class.',
+        source: {
+          externalId: 'src:kuhn-clinical-discovery-imipramine-ajp-2015',
+          name: 'Kuhn R (trans./commentary). The Clinical Discovery of Imipramine. Am J Psychiatry. 2015;172(11):1043 (historical reprint of Kuhn 1957).',
+          url: 'https://psychiatryonline.org/doi/10.1176/appi.ajp.2015.14101336',
+          publishedAt: '2015-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-11-01',
+        datePrecision: 'MONTH',
+        reason: 'Kuhn published a confirmatory study of more than 500 patients in the American Journal of Psychiatry in 1958, and imipramine (Tofranil, Geigy) was rapidly adopted internationally as the prototype antidepressant. The convergence of expanded clinical data and worldwide uptake settled imipramine — and the tricyclic mechanism — as effective treatment for depression.',
+        source: {
+          externalId: 'src:kuhn-imipramine-depressive-states-ajp-1958',
+          name: 'Kuhn R. The treatment of depressive states with G 22355 (imipramine hydrochloride). Am J Psychiatry. 1958;115(5):459-464.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13583250/',
+          publishedAt: '1958-11-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Kane — clozapine treatment-resistant schizophrenia — 1988 ───────────────
+  {
+    externalId: 'trajectory:clozapine-treatment-resistant-schizophrenia-kane-1988',
+    text: 'Kane and colleagues reported in Archives of General Psychiatry in September 1988 that clozapine was significantly more effective than chlorpromazine in patients with treatment-resistant schizophrenia (30% vs 4% response), establishing clozapine\'s unique efficacy and rehabilitating a drug withdrawn in the 1970s over agranulocytosis deaths.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-09-01',
+        datePrecision: 'MONTH',
+        reason: 'Clozapine had been largely abandoned after a 1975 Finnish cluster of fatal agranulocytosis cases. Kane, Honigfeld, Singer and Meltzer ran a double-blind trial in 268 patients who had failed multiple neuroleptics, finding 30% of clozapine patients responded versus 4% on chlorpromazine, with gains in negative as well as positive symptoms. The result recorded the claim that clozapine had unique efficacy in treatment-resistant schizophrenia.',
+        source: {
+          externalId: 'src:kane-clozapine-archgenpsych-1988',
+          name: 'Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic. A double-blind comparison with chlorpromazine. Arch Gen Psychiatry. 1988;45(9):789-796.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3046553/',
+          publishedAt: '1988-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1989-09-26',
+        datePrecision: 'DAY',
+        reason: 'On the strength of the Kane trial, the FDA approved clozapine as Clozaril (NDA 19-758) in 1989, coupled with mandatory weekly white-blood-cell monitoring (the Clozaril Patient Management System) to manage agranulocytosis risk. Approval institutionally settled clozapine as the reference treatment for refractory schizophrenia — the first drug shown superior in that population — under a controlled-safety framework.',
+        source: {
+          externalId: 'src:fda-clozaril-nda-19758-1989',
+          name: 'U.S. FDA. Drugs@FDA: Clozaril (clozapine) tablets, NDA 019758, original approval 1989.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/019758s106lbl.pdf',
+          publishedAt: '1989-09-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cotzias — levodopa for Parkinson's disease — 1967 ───────────────────────
+  {
+    externalId: 'trajectory:cotzias-levodopa-parkinsons-disease-1967',
+    text: 'George Cotzias and colleagues reported in the New England Journal of Medicine on 16 February 1967 that high oral doses of DL-DOPA produced dramatic improvement in patients with Parkinson\'s disease, establishing dopamine-precursor replacement as effective therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1967-02-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1967-02-16',
+        datePrecision: 'DAY',
+        reason: 'George Cotzias, Melvin Van Woert and Lewis Schiffer reported in the New England Journal of Medicine that gradually escalated high oral doses of DL-DOPA markedly reduced rigidity, tremor and akinesia in patients with Parkinson\'s disease, overcoming the toxicity that had limited earlier low-dose trials. The paper recorded the claim that replacing the dopamine precursor could reverse Parkinsonian disability.',
+        source: {
+          externalId: 'src:cotzias-aromatic-amino-acids-nejm-1967',
+          name: 'Cotzias GC, Van Woert MH, Schiffer LM. Aromatic amino acids and modification of parkinsonism. N Engl J Med. 1967;276(7):374-379.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM196702162760703',
+          publishedAt: '1967-02-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1969-02-13',
+        datePrecision: 'DAY',
+        reason: 'Cotzias, Papavasiliou and Gellene reported in the New England Journal of Medicine in 1969 that chronic treatment with the levorotatory isomer levodopa sustained the benefit and identified the active enantiomer, confirming and extending the 1967 finding. The replicated, mechanism-clarifying result drove rapid worldwide adoption and U.S. approval of levodopa in 1970, settling dopamine-replacement as the cornerstone Parkinson\'s therapy.',
+        source: {
+          externalId: 'src:cotzias-chronic-ldopa-nejm-1969',
+          name: 'Cotzias GC, Papavasiliou PS, Gellene R. Modification of parkinsonism — chronic treatment with L-dopa. N Engl J Med. 1969;280(7):337-345.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM196902132800701',
+          publishedAt: '1969-02-13',
           methodologyType: 'primary',
         },
       },
