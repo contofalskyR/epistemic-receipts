@@ -23586,6 +23586,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ══════════════════════════════════════════════════════════════════════════════
+  // CARDIOLOGY — HYPOTHESIS REVERSALS & FIRST-IN-CLASS DRUGS (2007–2022)
+  // ══════════════════════════════════════════════════════════════════════════════
+
+  // ── CETP inhibition / HDL-raising hypothesis reversed — dal-OUTCOMES 2012 ───
+  {
+    externalId: 'trajectory:cetp-inhibition-hdl-raising-cardiovascular-hypothesis-reversed-2012',
+    text: 'The claim that pharmacologically raising HDL cholesterol by inhibiting cholesteryl ester transfer protein (CETP) reduces cardiovascular events — pursued across the torcetrapib, dalcetrapib, evacetrapib and anacetrapib programs — was decisively refuted, beginning when Gregory Schwartz and colleagues reported the futile dal-OUTCOMES trial on 5 November 2012.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-11-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-11-22',
+        datePrecision: 'DAY',
+        reason: 'Barter and colleagues reported the ILLUMINATE trial of torcetrapib in 15,067 high-risk patients in the New England Journal of Medicine. Torcetrapib raised HDL cholesterol by about 72% yet increased death and cardiovascular events (HR 1.58 for death), forcing early termination. Because investigators attributed the harm to off-target aldosterone and blood-pressure effects rather than to CETP inhibition itself, the underlying hypothesis that raising HDL via CETP inhibition is cardioprotective survived and motivated cleaner second-generation agents.',
+        source: {
+          externalId: 'src:barter-illuminate-torcetrapib-nejm-2007',
+          name: 'Barter PJ, Caulfield M, Eriksson M, et al. Effects of torcetrapib in patients at high risk for coronary events. N Engl J Med. 2007;357(21):2109-2122.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17984165/',
+          publishedAt: '2007-11-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-11-05',
+        datePrecision: 'DAY',
+        reason: 'Schwartz and the dal-OUTCOMES investigators reported a trial of dalcetrapib — a CETP inhibitor without torcetrapib\'s off-target blood-pressure effect — in 15,871 patients after acute coronary syndrome. Despite raising HDL cholesterol by roughly 30%, dalcetrapib produced no change in cardiovascular outcomes (HR 1.04) and the data-safety board stopped the trial for futility. This was the first clean demonstration that raising HDL through CETP inhibition does not reduce events, directly refuting the pharmacologic HDL hypothesis.',
+        source: {
+          externalId: 'src:schwartz-dal-outcomes-dalcetrapib-nejm-2012',
+          name: 'Schwartz GG, Olsson AG, Abt M, et al. Effects of dalcetrapib in patients with a recent acute coronary syndrome. N Engl J Med. 2012;367(22):2089-2099.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/23126252/',
+          publishedAt: '2012-11-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'ABANDONED',
+        community: 'MARKET',
+        occurredAt: '2017-08-28',
+        datePrecision: 'DAY',
+        reason: 'The REVEAL trial of anacetrapib (Bowman et al., NEJM) showed only a modest reduction in coronary events, which investigators attributed to the drug\'s LDL/non-HDL lowering rather than to its large HDL increase; Merck announced it would not seek regulatory approval. Combined with the earlier futility termination of evacetrapib (ACCELERATE), this ended commercial development of the class and confirmed abandonment of the HDL-raising-via-CETP cardioprotection rationale.',
+        source: {
+          externalId: 'src:reveal-anacetrapib-nejm-2017',
+          name: 'HPS3/TIMI55–REVEAL Collaborative Group; Bowman L, Hopewell JC, Chen F, et al. Effects of anacetrapib in patients with atherosclerotic vascular disease. N Engl J Med. 2017;377(13):1217-1227.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1706444',
+          publishedAt: '2017-08-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Andexanet alfa (Andexxa) factor Xa reversal — approved 2018, withdrawn 2025 ─
+  {
+    externalId: 'trajectory:andexanet-alfa-andexxa-factor-xa-reversal-agent-reversed-2025',
+    text: 'Andexanet alfa (Andexxa), the first specific reversal agent for factor Xa–inhibitor anticoagulants such as apixaban and rivaroxaban, restores hemostasis in life-threatening bleeding — a claim the U.S. FDA accepted under accelerated approval on 3 May 2018, contested by the ANNEXA-I trial in May 2024, and effectively reversed when AstraZeneca withdrew the product from the U.S. market on 22 December 2025.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2018-05-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-05-03',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted Portola Pharmaceuticals accelerated approval (STN BL 125586) for Andexxa, the first and only antidote for factor Xa–inhibitor anticoagulation in patients with life-threatening or uncontrolled bleeding. The approval, based on reversal of anti-factor Xa activity in healthy volunteers, institutionally established a specific reversal strategy for the DOAC class, paralleling idarucizumab for dabigatran.',
+        source: {
+          externalId: 'src:fda-andexxa-accelerated-approval-2018',
+          name: 'U.S. Food and Drug Administration. ANDEXXA (coagulation factor Xa (recombinant), inactivated-zhzo) — Accelerated Approval (STN BL 125586). 3 May 2018.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/andexxa',
+          publishedAt: '2018-05-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2024-05-16',
+        datePrecision: 'MONTH',
+        reason: 'The randomized ANNEXA-I trial (Connolly et al., NEJM) in factor Xa inhibitor–associated intracerebral hemorrhage found andexanet improved hemostatic efficacy (67.0% vs 53.1%) but nearly doubled 30-day thrombotic events (10.3% vs 5.6%) and sharply increased ischemic stroke (6.5% vs 1.5%) versus usual care. The first randomized clinical-outcome evidence undercut the assumption that improved hemostasis translated into net patient benefit, putting the drug\'s value in genuine dispute.',
+        source: {
+          externalId: 'src:connolly-annexa-i-andexanet-ich-nejm-2024',
+          name: 'Connolly SJ, Sharma M, Cohen AT, et al. Andexanet for factor Xa inhibitor–associated acute intracerebral hemorrhage (ANNEXA-I). N Engl J Med. 2024;390(19):1745-1755.',
+          url: 'https://www.nejm.org/doi/abs/10.1056/NEJMoa2313040',
+          publishedAt: '2024-05-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2025-12-22',
+        datePrecision: 'DAY',
+        reason: 'AstraZeneca withdrew Andexxa from the U.S. market effective 22 December 2025 after it could not reach agreement with the FDA on a path from accelerated to traditional approval. Following a 2024 advisory-committee review, the FDA had concluded that postmarketing data showing increased thrombosis (14.6% vs 6.9%) and thrombosis-related death (2.5% vs 0.9%) meant the product\'s risks outweighed its benefits, reversing the original efficacy claim.',
+        source: {
+          externalId: 'src:fda-andexxa-withdrawal-safety-communication-2025',
+          name: 'U.S. Food and Drug Administration. Update: Safety of Andexxa — AstraZeneca / FDA Safety Communication. 22 December 2025.',
+          url: 'https://www.fda.gov/vaccines-blood-biologics/safety-availability-biologics/update-safety-andexxa',
+          publishedAt: '2025-12-22',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Empagliflozin HFpEF — EMPEROR-Preserved 2021, FDA approval 2022 ─────────
+  {
+    externalId: 'trajectory:emperor-preserved-empagliflozin-hfpef-first-therapy-2021',
+    text: 'The SGLT2 inhibitor empagliflozin reduces the composite of cardiovascular death and heart-failure hospitalization in patients with heart failure and preserved ejection fraction (HFpEF) — established by the EMPEROR-Preserved trial reported by Stefan Anker and colleagues on 27 August 2021, the first drug to show clear benefit in HFpEF, and adopted by the FDA on 24 February 2022.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-08-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-08-27',
+        datePrecision: 'DAY',
+        reason: 'Anker and the EMPEROR-Preserved investigators reported in the New England Journal of Medicine that among 5,988 patients with heart failure and ejection fraction above 40%, empagliflozin reduced the primary composite of cardiovascular death or heart-failure hospitalization (13.8% vs 17.1%; HR 0.79), regardless of diabetes status. After decades of uniformly null HFpEF trials (CHARM-Preserved, I-PRESERVE, TOPCAT, PEP-CHF), this recorded the first clear evidence of an effective pharmacologic therapy for HFpEF.',
+        source: {
+          externalId: 'src:anker-emperor-preserved-empagliflozin-nejm-2021',
+          name: 'Anker SD, Butler J, Filippatos G, et al. Empagliflozin in heart failure with a preserved ejection fraction (EMPEROR-Preserved). N Engl J Med. 2021;385(16):1451-1461.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34459213/',
+          publishedAt: '2021-08-27',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-02-24',
+        datePrecision: 'DAY',
+        reason: 'On the strength of EMPEROR-Preserved, the FDA expanded the approval of empagliflozin (Jardiance) to reduce the risk of cardiovascular death and heart-failure hospitalization in adults with heart failure regardless of left ventricular ejection fraction, making it the first SGLT2 inhibitor — and effectively the first therapy of any class — approved for HFpEF. The approval institutionally settled SGLT2 inhibition as a guideline-relevant treatment across the full heart-failure ejection-fraction spectrum.',
+        source: {
+          externalId: 'src:fda-jardiance-hfpef-approval-2022',
+          name: 'Eli Lilly and Company / Boehringer Ingelheim. US FDA approves Jardiance (empagliflozin) to treat adults with heart failure regardless of left ventricular ejection fraction. Press release, 24 February 2022.',
+          url: 'https://investor.lilly.com/news-releases/news-release-details/us-fda-approves-jardiancer-empagliflozin-treat-adults-heart',
+          publishedAt: '2022-02-24',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Mavacamten (Camzyos) HCM cardiac myosin inhibitor — EXPLORER-HCM 2020 ───
+  {
+    externalId: 'trajectory:mavacamten-explorer-hcm-cardiac-myosin-inhibitor-2022',
+    text: 'Mavacamten (Camzyos), the first selective cardiac myosin inhibitor, improves exercise capacity and symptoms in obstructive hypertrophic cardiomyopathy by targeting the disease\'s underlying hypercontractility — a claim established by the EXPLORER-HCM trial reported by Iacopo Olivotto and colleagues on 29 August 2020 and adopted by the FDA on 28 April 2022.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2020-08-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-08-29',
+        datePrecision: 'DAY',
+        reason: 'Olivotto and the EXPLORER-HCM investigators reported in The Lancet a phase 3 trial in 251 patients showing that mavacamten, an allosteric inhibitor of cardiac myosin, was superior to placebo for the primary composite of peak oxygen consumption and NYHA-class improvement over 30 weeks. This recorded the first controlled evidence that directly reducing cardiac hypercontractility — rather than treating symptoms — could improve obstructive HCM, founding a new mechanistic drug class.',
+        source: {
+          externalId: 'src:olivotto-explorer-hcm-mavacamten-lancet-2020',
+          name: 'Olivotto I, Oreziak A, Barriales-Villa R, et al. Mavacamten for treatment of symptomatic obstructive hypertrophic cardiomyopathy (EXPLORER-HCM): a randomised, double-blind, placebo-controlled, phase 3 trial. Lancet. 2020;396(10253):759-769.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32871100/',
+          publishedAt: '2020-08-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-04-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Camzyos (mavacamten) for adults with symptomatic NYHA class II–III obstructive hypertrophic cardiomyopathy to improve functional capacity and symptoms, the first-in-class cardiac myosin inhibitor, on the basis of EXPLORER-HCM. The approval (with a REMS for the risk of heart failure) institutionally settled targeted reduction of cardiac contractility as an approved therapeutic strategy for obstructive HCM.',
+        source: {
+          externalId: 'src:bms-fda-camzyos-mavacamten-approval-2022',
+          name: 'Bristol Myers Squibb. U.S. FDA Approves Camzyos (mavacamten) for the Treatment of Adults With Symptomatic NYHA Class II-III Obstructive Hypertrophic Cardiomyopathy. Press release, 28 April 2022.',
+          url: 'https://www.drugs.com/history/camzyos.html',
+          publishedAt: '2022-04-28',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Dronedarone (Multaq) permanent AF — PALLAS reversal 2011 ─────────────────
+  {
+    externalId: 'trajectory:dronedarone-pallas-permanent-af-harm-reversal-2011',
+    text: 'Dronedarone (Multaq), approved in 2009 to reduce cardiovascular hospitalization in paroxysmal and persistent atrial fibrillation on the strength of the ATHENA trial, was expected to benefit patients with permanent atrial fibrillation as well — a claim reversed when the PALLAS trial reported on 14 November 2011 that dronedarone more than doubled cardiovascular death, stroke and heart failure in permanent AF, prompting a contraindication.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-02-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-02-12',
+        datePrecision: 'DAY',
+        reason: 'Hohnloser and the ATHENA investigators reported in the New England Journal of Medicine that dronedarone reduced the composite of cardiovascular hospitalization or death in 4,628 patients with paroxysmal or persistent atrial fibrillation. The result settled dronedarone\'s clinical benefit in non-permanent AF and underpinned its FDA approval (Multaq) on 1 July 2009, generating expectation that the benefit would extend to permanent AF.',
+        source: {
+          externalId: 'src:hohnloser-athena-dronedarone-nejm-2009',
+          name: 'Hohnloser SH, Crijns HJGM, van Eickels M, et al. Effect of dronedarone on cardiovascular events in atrial fibrillation (ATHENA). N Engl J Med. 2009;360(7):668-678.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19213680/',
+          publishedAt: '2009-02-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-11-14',
+        datePrecision: 'DAY',
+        reason: 'Connolly and the PALLAS investigators reported that in 3,236 patients with permanent atrial fibrillation at vascular risk, dronedarone roughly doubled cardiovascular death (21 vs 10; HR 2.11), stroke and heart-failure hospitalization, forcing early termination. The trial refuted the expectation that ATHENA\'s benefit extended to permanent AF and led the FDA and EMA to contraindicate dronedarone in permanent atrial fibrillation.',
+        source: {
+          externalId: 'src:connolly-pallas-dronedarone-nejm-2011',
+          name: 'Connolly SJ, Camm AJ, Halperin JL, et al. Dronedarone in high-risk permanent atrial fibrillation (PALLAS). N Engl J Med. 2011;365(24):2268-2276.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22082198/',
+          publishedAt: '2011-11-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
