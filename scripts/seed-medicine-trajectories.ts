@@ -26134,6 +26134,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // CHEMOPREVENTION REVERSALS / MODERN ONCOLOGY (1981–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── 1. Beta-carotene lung-cancer chemoprevention reversal — 1994/1996 ────────
+  {
+    externalId: 'trajectory:beta-carotene-lung-cancer-chemoprevention-reversal-1994',
+    text: 'Beta-carotene supplementation, hypothesized by Peto and colleagues in Nature on 19 March 1981 to reduce human cancer rates, was shown by the ATBC (1994) and CARET (1996) randomized trials to instead increase lung-cancer incidence and mortality in smokers.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-03-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-03-19',
+        datePrecision: 'DAY',
+        reason: 'Peto, Doll, Buckley and Sporn argued from inverse epidemiological correlations between blood retinol/dietary beta-carotene and cancer that dietary beta-carotene \'could materially reduce human cancer rates\' and proposed the hypothesis be tested in controlled trials. This recorded a plausible, widely adopted chemoprevention hypothesis that drove large public-health interest in antioxidant supplementation.',
+        source: {
+          externalId: 'src:peto-beta-carotene-hypothesis-nature-1981',
+          name: 'Peto R, Doll R, Buckley JD, Sporn MB. Can dietary beta-carotene materially reduce human cancer rates? Nature. 1981;290(5803):201-208.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7010181/',
+          publishedAt: '1981-03-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1994-04-14',
+        datePrecision: 'DAY',
+        reason: 'The Alpha-Tocopherol, Beta Carotene (ATBC) randomized trial of 29,133 male smokers unexpectedly found an 18% higher incidence of lung cancer and 8% higher total mortality among men receiving beta-carotene. This directly contradicted the prevention hypothesis and threw the antioxidant-chemoprevention paradigm into question, though investigators initially cautioned the harm signal might be a chance finding.',
+        source: {
+          externalId: 'src:atbc-beta-carotene-lung-cancer-nejm-1994',
+          name: 'The Alpha-Tocopherol, Beta Carotene Cancer Prevention Study Group. The effect of vitamin E and beta carotene on the incidence of lung cancer and other cancers in male smokers. N Engl J Med. 1994;330(15):1029-1035.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8127329/',
+          publishedAt: '1994-04-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-05-02',
+        datePrecision: 'DAY',
+        reason: 'The Beta-Carotene and Retinol Efficacy Trial (CARET) of 18,314 smokers and asbestos-exposed workers found a relative risk of lung cancer of 1.28 with beta-carotene plus vitamin A and was stopped 21 months early for harm. Confirming ATBC, CARET reversed the chemoprevention claim: beta-carotene supplementation became established as harmful rather than protective in high-risk smokers.',
+        source: {
+          externalId: 'src:caret-omenn-beta-carotene-nejm-1996',
+          name: 'Omenn GS, Goodman GE, Thornquist MD, et al. Effects of a combination of beta carotene and vitamin A on lung cancer and cardiovascular disease. N Engl J Med. 1996;334(18):1150-1155.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8602180/',
+          publishedAt: '1996-05-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 2. SELECT — selenium/vitamin E prostate-cancer prevention reversal — 2009/2011 ─
+  {
+    externalId: 'trajectory:select-selenium-vitamin-e-prostate-cancer-prevention-reversal-2009',
+    text: 'Selenium and vitamin E supplementation, suggested by the 1996 NPC trial to prevent prostate cancer, was found by the SELECT trial (2009) not to prevent prostate cancer and, on extended follow-up (2011), shown to significantly increase prostate-cancer risk with vitamin E.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1996-12-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1996-12-25',
+        datePrecision: 'DAY',
+        reason: 'Clark and colleagues\' Nutritional Prevention of Cancer (NPC) randomized trial of selenium supplementation in skin-cancer patients found, as a secondary endpoint, significant reductions in total cancer incidence and mortality including prostate cancer. Combined with vitamin E signals from ATBC, this recorded the hypothesis that selenium and vitamin E could prevent prostate cancer and directly motivated the large SELECT prevention trial.',
+        source: {
+          externalId: 'src:clark-npc-selenium-jama-1996',
+          name: 'Clark LC, Combs GF Jr, Turnbull BW, et al. Effects of selenium supplementation for cancer prevention in patients with carcinoma of the skin: a randomized controlled trial. JAMA. 1996;276(24):1957-1963.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8971064/',
+          publishedAt: '1996-12-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-07',
+        datePrecision: 'DAY',
+        reason: 'The SELECT trial randomized 35,533 men to selenium, vitamin E, both, or placebo and was halted early; Lippman et al. reported that neither agent, alone or combined, prevented prostate cancer, with a non-significant trend toward more prostate cancer with vitamin E. The definitive negative result undermined the prevention hypothesis and raised a possible harm signal, leaving the claim contested.',
+        source: {
+          externalId: 'src:lippman-select-jama-2009',
+          name: 'Lippman SM, Klein EA, Goodman PJ, et al. Effect of selenium and vitamin E on risk of prostate cancer and other cancers: the Selenium and Vitamin E Cancer Prevention Trial (SELECT). JAMA. 2009;301(1):39-51.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19066370/',
+          publishedAt: '2009-01-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2011-10-12',
+        datePrecision: 'DAY',
+        reason: 'With extended follow-up of the SELECT cohort, Klein et al. found vitamin E supplementation significantly increased prostate-cancer risk (hazard ratio 1.17; 99% CI 1.004-1.36; P=.008). The prevention claim was reversed into demonstrated harm, and the finding became a landmark cautionary case against routine antioxidant supplementation for cancer prevention.',
+        source: {
+          externalId: 'src:klein-select-vitamin-e-harm-jama-2011',
+          name: 'Klein EA, Thompson IM Jr, Tangen CM, et al. Vitamin E and the risk of prostate cancer: the Selenium and Vitamin E Cancer Prevention Trial (SELECT). JAMA. 2011;306(14):1549-1556.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21990298/',
+          publishedAt: '2011-10-12',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 3. Gemcitabine clinical benefit response in pancreatic cancer — 1997 ─────
+  {
+    externalId: 'trajectory:gemcitabine-clinical-benefit-response-pancreatic-cancer-1997',
+    text: 'Burris and colleagues reported in the Journal of Clinical Oncology in June 1997 that gemcitabine improved survival and a novel \'clinical benefit response\' endpoint versus fluorouracil in advanced pancreatic cancer, establishing gemcitabine as first-line standard and validating a patient-centered regulatory endpoint.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-06-01',
+        datePrecision: 'MONTH',
+        reason: 'In a randomized trial, gemcitabine produced clinical benefit response in 23.8% of patients versus 4.8% for 5-FU and modestly improved median survival (5.65 vs 4.41 months). The FDA had approved gemcitabine for advanced pancreatic cancer in 1996 partly on this novel composite \'clinical benefit response\' (pain, performance status, weight) — among the first times a patient-centered symptom endpoint, rather than tumor shrinkage, anchored an oncology approval. The published trial settled gemcitabine as the global first-line standard for over a decade.',
+        source: {
+          externalId: 'src:burris-gemcitabine-pancreatic-jco-1997',
+          name: 'Burris HA 3rd, Moore MJ, Andersen J, et al. Improvements in survival and clinical benefit with gemcitabine as first-line therapy for patients with advanced pancreas cancer: a randomized trial. J Clin Oncol. 1997;15(6):2403-2413.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9196156/',
+          publishedAt: '1997-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 4. Celecoxib colorectal chemoprevention cardiovascular reversal — 2005 ───
+  {
+    externalId: 'trajectory:celecoxib-colorectal-chemoprevention-cardiovascular-reversal-2005',
+    text: 'Celecoxib, shown by Steinbach et al. in 2000 to reduce colorectal polyps in familial adenomatous polyposis and promoted as a cancer-chemoprevention agent, was found by the APC trial (reported 2005) to cause dose-related cardiovascular harm, leading the chemoprevention use to be abandoned.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-06-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-06-29',
+        datePrecision: 'DAY',
+        reason: 'Steinbach et al. reported that celecoxib 400 mg twice daily reduced colorectal polyp number by 28% and polyp burden by 31% in familial adenomatous polyposis, the basis on which the FDA had granted celecoxib an FAP indication in 1999. This recorded the promise of selective COX-2 inhibitors as long-term colorectal-cancer chemoprevention agents and launched larger adenoma-prevention trials (APC, PreSAP).',
+        source: {
+          externalId: 'src:steinbach-celecoxib-fap-nejm-2000',
+          name: 'Steinbach G, Lynch PM, Phillips RKS, et al. The effect of celecoxib, a cyclooxygenase-2 inhibitor, in familial adenomatous polyposis. N Engl J Med. 2000;342(26):1946-1952.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10874062/',
+          publishedAt: '2000-06-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-17',
+        datePrecision: 'DAY',
+        reason: 'The Adenoma Prevention with Celecoxib (APC) trial was halted in December 2004 after the data safety monitoring board found a dose-related increase in serious cardiovascular events (hazard ratio 2.3 at 200 mg and 3.4 at 400 mg twice daily versus placebo). Reported by Solomon et al., the finding ended the use of celecoxib for colorectal-cancer chemoprevention despite proven anti-adenoma efficacy and prompted FDA cardiovascular boxed warnings across the NSAID/COX-2 class — a defining post-market safety reversal alongside the Vioxx withdrawal.',
+        source: {
+          externalId: 'src:solomon-celecoxib-apc-cv-nejm-2005',
+          name: 'Solomon SD, McMurray JJV, Pfeffer MA, et al. Cardiovascular risk associated with celecoxib in a clinical trial for colorectal adenoma prevention. N Engl J Med. 2005;352(11):1071-1080.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15713944/',
+          publishedAt: '2005-03-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── 5. Erlotinib BR.21 survival benefit in NSCLC — 2005 ─────────────────────
+  {
+    externalId: 'trajectory:erlotinib-br21-survival-nsclc-2005',
+    text: 'Shepherd and the NCIC CTG investigators reported in the New England Journal of Medicine on 14 July 2005 that the EGFR inhibitor erlotinib improved overall survival in previously treated, molecularly unselected non-small-cell lung cancer (6.7 vs 4.7 months; hazard ratio 0.70), the first EGFR tyrosine-kinase inhibitor to demonstrate a survival benefit.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-07-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-07-14',
+        datePrecision: 'DAY',
+        reason: 'The placebo-controlled phase III BR.21 trial showed erlotinib prolonged overall survival in unselected patients with NSCLC after chemotherapy failure (median 6.7 vs 4.7 months; HR 0.70; P<0.001), on the basis of which the FDA had approved erlotinib (Tarceva) on 18 November 2004. The result settled erlotinib as second/third-line standard of care and stood in pointed contrast to the contemporaneous failure of the related EGFR inhibitor gefitinib in the ISEL trial, sharpening the debate over which EGFR inhibitors and patients yield benefit.',
+        source: {
+          externalId: 'src:shepherd-erlotinib-br21-nejm-2005',
+          name: 'Shepherd FA, Rodrigues Pereira J, Ciuleanu T, et al. Erlotinib in previously treated non-small-cell lung cancer. N Engl J Med. 2005;353(2):123-132.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16014882/',
+          publishedAt: '2005-07-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
