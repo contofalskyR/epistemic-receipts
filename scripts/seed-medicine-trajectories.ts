@@ -22662,6 +22662,223 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HORMONE THERAPY & CARDIOVASCULAR ERA (1990–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HERS — HRT secondary prevention CHD reversed 1998–2002 ──────────────────
+  {
+    externalId: 'trajectory:hers-hrt-secondary-prevention-chd-1998',
+    text: 'Hulley and the Heart and Estrogen/progestin Replacement Study (HERS) Research Group reported in JAMA on 19 August 1998 that estrogen plus progestin did not reduce the rate of coronary heart disease events in postmenopausal women with established coronary disease, contradicting the prevailing observational belief that hormone therapy was cardioprotective.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1991-09-12',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1991-09-12',
+        datePrecision: 'DAY',
+        reason: 'Stampfer, Colditz, Willett and colleagues reported the ten-year follow-up of the Nurses\' Health Study in the New England Journal of Medicine, finding that current postmenopausal estrogen users had a relative risk of major coronary disease of 0.56 (95% CI 0.40–0.80) — roughly a 44% reduction. This large prospective cohort consolidated the observational consensus that postmenopausal hormone therapy protects the heart, the belief on which secondary-prevention prescribing in women with established coronary disease rested.',
+        source: {
+          externalId: 'src:stampfer-nurses-health-estrogen-chd-nejm-1991',
+          name: 'Stampfer MJ, Colditz GA, Willett WC, et al. Postmenopausal estrogen therapy and cardiovascular disease. Ten-year follow-up from the nurses\' health study. N Engl J Med. 1991;325(11):756-762.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/1870648/',
+          publishedAt: '1991-09-12',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1998-08-19',
+        datePrecision: 'DAY',
+        reason: 'The HERS Research Group reported the first large randomized, placebo-controlled trial of hormone therapy for secondary prevention — 2,763 postmenopausal women with established coronary disease followed an average of 4.1 years. Conjugated equine estrogen plus medroxyprogesterone acetate did not reduce overall CHD events, and there was a statistically significant increase in events during the first year. The trial directly contradicted the observational cardioprotection consensus and led the authors to advise against starting hormone therapy for secondary prevention.',
+        source: {
+          externalId: 'src:hers-hulley-jama-1998',
+          name: 'Hulley S, Grady D, Bush T, et al. Randomized trial of estrogen plus progestin for secondary prevention of coronary heart disease in postmenopausal women. Heart and Estrogen/progestin Replacement Study (HERS) Research Group. JAMA. 1998;280(7):605-613.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9718051/',
+          publishedAt: '1998-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-07-03',
+        datePrecision: 'DAY',
+        reason: 'Grady and colleagues reported the HERS II open-label follow-up extending observation to 6.8 years and found that hormone therapy did not reduce the risk of cardiovascular events; the favorable trend hinted at in later years of HERS did not materialize. The authors concluded that postmenopausal hormone therapy should not be used to reduce CHD risk in women with coronary disease, definitively overturning the secondary-prevention claim in the expert literature shortly before the WHI confirmed the result for primary prevention.',
+        source: {
+          externalId: 'src:hers2-grady-jama-2002',
+          name: 'Grady D, Herrington D, Bittner V, et al. Cardiovascular disease outcomes during 6.8 years of hormone therapy: Heart and Estrogen/progestin Replacement Study follow-up (HERS II). JAMA. 2002;288(1):49-57.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12090862/',
+          publishedAt: '2002-07-03',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHI estrogen-alone CEE stroke reversal 2004 ─────────────────────────────
+  {
+    externalId: 'trajectory:whi-estrogen-alone-cee-stroke-2004',
+    text: 'The Women\'s Health Initiative estrogen-alone trial — conjugated equine estrogen in postmenopausal women with prior hysterectomy — was halted early by the NIH on 2 March 2004 and reported in JAMA on 14 April 2004 to increase the risk of stroke while providing no protection against coronary heart disease, reversing the claim that unopposed estrogen was a safe chronic-disease-prevention therapy.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1998-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1998-01-01',
+        datePrecision: 'YEAR',
+        reason: 'When the WHI estrogen-alone arm enrolled hysterectomized women in the late 1990s, observational evidence (notably the Nurses\' Health Study) and prevailing practice held that unopposed conjugated equine estrogen protected postmenopausal women against coronary heart disease and other chronic conditions. This belief was the rationale for the randomized trial and reflected the institutionally accepted standard for estrogen-only hormone therapy.',
+        source: {
+          externalId: 'src:whi-estrogen-alone-anderson-jama-2004-rationale',
+          name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial (background and rationale). JAMA. 2004;291(14):1701-1712.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
+          publishedAt: '2004-04-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-03-02',
+        datePrecision: 'DAY',
+        reason: 'The NIH announced that it had directed participants in the WHI estrogen-alone study to stop taking study pills roughly a year early because the data showed an increased risk of stroke and no benefit for coronary heart disease, concluding such a stroke risk was unacceptable in healthy women in a prevention study. The sponsoring institution\'s decision to terminate its own trial placed the estrogen-only chronic-prevention claim into formal dispute before the full results were published.',
+        source: {
+          externalId: 'src:nih-whi-estrogen-alone-stop-2004',
+          name: 'National Institutes of Health (NHLBI). NIH Asks Participants in Women\'s Health Initiative Estrogen-Alone Study to Stop Study Pills, Begin Follow-up Phase. NIH News Release, 2 March 2004.',
+          url: 'https://www.eurekalert.org/news-releases/616334',
+          publishedAt: '2004-03-02',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-04-14',
+        datePrecision: 'DAY',
+        reason: 'Anderson and the WHI Steering Committee published the principal results of the conjugated-equine-estrogen trial in 10,739 hysterectomized women: estrogen alone significantly increased stroke (hazard ratio 1.39, 95% CI 1.10–1.77; an excess of 12 strokes per 10,000 person-years) and did not affect CHD incidence (HR 0.91, 95% CI 0.75–1.12). The investigators concluded that CEE should not be recommended for chronic disease prevention, completing the reversal in the expert literature for the estrogen-only regimen — distinct from the 2002 estrogen-plus-progestin reversal.',
+        source: {
+          externalId: 'src:whi-estrogen-alone-anderson-jama-2004',
+          name: 'Anderson GL, Limacher M, Assaf AR, et al. Effects of conjugated equine estrogen in postmenopausal women with hysterectomy: the Women\'s Health Initiative randomized controlled trial. JAMA. 2004;291(14):1701-1712.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15082697/',
+          publishedAt: '2004-04-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Third-generation oral contraceptives VTE risk settled 1995–2009 ─────────
+  {
+    externalId: 'trajectory:third-generation-oral-contraceptives-vte-1995',
+    text: 'In October 1995 the UK Committee on Safety of Medicines warned that combined oral contraceptives containing the third-generation progestogens desogestrel or gestodene carried about twice the risk of venous thromboembolism of older levonorgestrel-containing pills, a finding documented by the WHO Collaborative Study published in The Lancet on 16 December 1995.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1995-10',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1995-10',
+        datePrecision: 'MONTH',
+        reason: 'The UK Committee on Safety of Medicines, acting on three then-unpublished studies, advised prescribers that combined oral contraceptives containing gestodene or desogestrel were associated with roughly twice the risk of venous thromboembolism compared with older second-generation products. The warning — the \'1995 pill scare\' — was a regulatory action that recorded the higher-risk claim for third-generation pills and prompted large numbers of women to stop or switch their contraceptive.',
+        source: {
+          externalId: 'src:csm-1995-pill-scare-bmj-2000',
+          name: 'Farmer RDT, Williams TJ, Simpson EL, Nightingale AL. Effect of 1995 pill scare on rates of venous thromboembolism among women taking combined oral contraceptives: analysis of general practice research database. BMJ. 2000;321(7259):477-479 (documenting the October 1995 CSM advice).',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10948026/',
+          publishedAt: '2000-08-26',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1995-12-16',
+        datePrecision: 'DAY',
+        reason: 'The WHO Collaborative Study of Cardiovascular Disease and Steroid Hormone Contraception published its multinational hospital-based case-control results in The Lancet, finding venous-thromboembolism odds ratios of about 9.1 for desogestrel and gestodene users versus 3.5 for levonorgestrel users — an approximately 2.6-fold higher risk for third-generation pills. This put the regulatory warning\'s underlying data into the peer-reviewed expert literature, while the authors cautioned the secondary-objective finding required independent confirmation.',
+        source: {
+          externalId: 'src:who-collaborative-progestagens-vte-lancet-1995',
+          name: 'World Health Organization Collaborative Study of Cardiovascular Disease and Steroid Hormone Contraception. Effect of different progestagens in low oestrogen oral contraceptives on venous thromboembolic disease. Lancet. 1995;346(8990):1582-1588.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/7500749/',
+          publishedAt: '1995-12-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-08-13',
+        datePrecision: 'DAY',
+        reason: 'The MEGA case-control study, published in The BMJ, confirmed with much larger numbers that the venous-thrombosis risk depends on progestogen type, finding desogestrel-containing pills carried a substantially higher risk than levonorgestrel-containing pills (and quantifying the oestrogen-dose effect). Together with intervening cohort analyses, it settled the once-disputed third-generation VTE claim as established pharmacoepidemiology underpinning modern contraceptive prescribing guidance.',
+        source: {
+          externalId: 'src:mega-study-oc-vte-bmj-2009',
+          name: 'van Hylckama Vlieg A, Helmerhorst FM, Vandenbroucke JP, Doggen CJM, Rosendaal FR. The venous thrombotic risk of oral contraceptives, effects of oestrogen dose and progestogen type: results of the MEGA case-control study. BMJ. 2009;339:b2921.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19679614/',
+          publishedAt: '2009-08-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cerivastatin (Baycol) withdrawal rhabdomyolysis 2001 ────────────────────
+  {
+    externalId: 'trajectory:cerivastatin-baycol-withdrawal-2001',
+    text: 'Cerivastatin (Baycol), the HMG-CoA reductase inhibitor approved by the FDA in September 1997, was voluntarily withdrawn worldwide by Bayer on 8 August 2001 after reports of fatal rhabdomyolysis — including 31 US deaths — reversing the claim that it was a safe cholesterol-lowering statin.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1997-09',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-09',
+        datePrecision: 'MONTH',
+        reason: 'The FDA approved cerivastatin (Baycol), a synthetic HMG-CoA reductase inhibitor marketed by Bayer, in September 1997, establishing it on the regulatory record as a safe and effective statin for lowering cholesterol. It joined a drug class whose survival benefit had been settled by the 1994 Scandinavian Simvastatin Survival Study and became widely prescribed.',
+        source: {
+          externalId: 'src:public-citizen-baycol-approval-2001',
+          name: 'Public Citizen Health Research Group. Cholesterol-Lowering Drug Cerivastatin (BAYCOL) Removed from the Market (documenting September 1997 FDA approval). Worst Pills, Best Pills News, 2001.',
+          url: 'https://www.worstpills.org/newsletters/view/100',
+          publishedAt: '2001-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'MARKET',
+        occurredAt: '2001-08-08',
+        datePrecision: 'DAY',
+        reason: 'Bayer announced on 8 August 2001 the voluntary worldwide withdrawal of Baycol after the FDA had received reports of 31 US deaths from severe rhabdomyolysis — a rate roughly ten times that of other statins, most frequently at the 0.8 mg dose and in combination with gemfibrozil. In an FDA Talk Paper the agency concurred with and supported the withdrawal, reversing the drug\'s safety premise through manufacturer and regulatory action and becoming a landmark post-market surveillance case.',
+        source: {
+          externalId: 'src:fda-baycol-withdrawal-2001',
+          name: 'U.S. Food and Drug Administration. Talk Paper T01-34: Bayer Voluntarily Withdraws Baycol (cerivastatin), 8 August 2001 (documented by Public Citizen Health Research Group).',
+          url: 'https://www.worstpills.org/newsletters/view/100',
+          publishedAt: '2001-08-08',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
