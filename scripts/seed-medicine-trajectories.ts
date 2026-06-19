@@ -28707,48 +28707,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── SMA newborn screening RUSP addition 2018 ────────────────────────────────
-  {
-    externalId: 'trajectory:sma-newborn-screening-rusp-2018',
-    text: 'On July 2, 2018, HHS Secretary Alex Azar added spinal muscular atrophy (SMA) to the federal Recommended Uniform Screening Panel, making universal presymptomatic newborn screening for SMA the national standard following the 2016 approval of the first effective treatment, nusinersen.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '2018-02-08',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2018-02-08',
-        datePrecision: 'DAY',
-        reason: 'After reviewing the evidence at its February 8, 2018 meeting, the Advisory Committee on Heritable Disorders in Newborns and Children (ACHDNC) recommended adding SMA to the RUSP, formalized in a March 8, 2018 letter from chair Joseph A. Bocchini Jr. This recorded expert consensus that the arrival of nusinersen made presymptomatic detection clinically actionable.',
-        source: {
-          externalId: 'src:achdnc-sma-rusp-recommendation-2018',
-          name: 'Advisory Committee on Heritable Disorders in Newborns and Children (HRSA). Recommendation to add Spinal Muscular Atrophy to the Recommended Uniform Screening Panel. February 8, 2018.',
-          url: 'https://www.hrsa.gov/advisory-committees/heritable-disorders/rusp',
-          publishedAt: '2018-02-08',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2018-07-02',
-        datePrecision: 'DAY',
-        reason: 'HHS Secretary Alex Azar accepted the committee\'s recommendation and added SMA to the RUSP on July 2, 2018, making it the 35th core condition recommended for all U.S. newborns. States subsequently implemented SMA newborn screening, enabling presymptomatic treatment that markedly improves outcomes and settling SMA screening as the national standard.',
-        source: {
-          externalId: 'src:cure-sma-azar-rusp-addition-2018',
-          name: 'Cure SMA. HHS Secretary, Alex Azar, Recommends Nationwide Newborn Screening for SMA. July 2018.',
-          url: 'https://www.curesma.org/hhs-secretary-recommends-nationwide-newborn-screening-for-sma/',
-          publishedAt: '2018-07-02',
-          methodologyType: 'derivative',
-        },
-      },
-    ],
-  },
-
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
