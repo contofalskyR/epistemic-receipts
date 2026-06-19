@@ -28985,6 +28985,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED ONCOLOGY ERA (1988–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── ATRA differentiation therapy APL — Huang 1988 / Tallman 1997 ────────────
+  {
+    externalId: 'trajectory:atra-differentiation-therapy-apl-1988',
+    text: 'All-trans retinoic acid (tretinoin), a non-cytotoxic agent that induces terminal differentiation of malignant promyelocytes rather than killing them, produces complete remission in acute promyelocytic leukemia, first reported by Huang and colleagues in Blood in August 1988 and established as standard-of-care by the Tallman North American Intergroup trial in 1997.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1988-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1988-08-01',
+        datePrecision: 'MONTH',
+        reason: 'Huang, Ye, Chen and colleagues at Shanghai reported that 24 patients with acute promyelocytic leukemia treated with oral all-trans retinoic acid (45–100 mg/m²/day) all attained complete remission without bone-marrow hypoplasia. This recorded the radical claim that a malignancy could be controlled by forcing the leukemic cells to differentiate into mature granulocytes rather than by cytotoxic killing, founding differentiation therapy in oncology.',
+        source: {
+          externalId: 'src:huang-atra-apl-blood-1988',
+          name: 'Huang ME, Ye YC, Chen SR, et al. Use of all-trans retinoic acid in the treatment of acute promyelocytic leukemia. Blood. 1988;72(2):567-572.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3165295/',
+          publishedAt: '1988-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-10-09',
+        datePrecision: 'DAY',
+        reason: 'Tallman and the North American Intergroup published in the New England Journal of Medicine a randomized trial in 346 previously untreated APL patients showing that all-trans retinoic acid as induction and/or maintenance significantly improved disease-free and overall survival compared with chemotherapy alone. Following the FDA\'s 22 November 1995 approval of tretinoin (Vesanoid), this randomized confirmation settled ATRA-based differentiation therapy as the standard of care and validated the differentiation paradigm.',
+        source: {
+          externalId: 'src:tallman-atra-apl-nejm-1997',
+          name: 'Tallman MS, Andersen JW, Schiffer CA, et al. All-trans-retinoic acid in acute promyelocytic leukemia. N Engl J Med. 1997;337(15):1021-1028.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9321529/',
+          publishedAt: '1997-10-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Imatinib GIST targeted therapy — FDA 2002 / Demetri NEJM 2002 ──────────
+  {
+    externalId: 'trajectory:imatinib-gist-targeted-therapy-2002',
+    text: 'Imatinib mesylate (Gleevec), a KIT/PDGFRA tyrosine-kinase inhibitor, produces sustained objective responses in advanced KIT-positive gastrointestinal stromal tumor — a solid tumor previously refractory to chemotherapy — earning FDA accelerated approval on 1 February 2002 and confirmation by the Demetri pivotal trial published in August 2002.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-02-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-02-01',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to imatinib mesylate for metastatic and/or unresectable malignant KIT (CD117)-positive gastrointestinal stromal tumors, on the basis of objective response rate in the B2222 study. This recorded the claim that the targeted-therapy paradigm proven in chronic myeloid leukemia could extend to a chemotherapy-resistant solid tumor by inhibiting its driver kinase.',
+        source: {
+          externalId: 'src:dagher-imatinib-gist-fda-approval-ccr-2002',
+          name: 'Dagher R, Cohen M, Williams G, et al. (FDA Division of Oncology Drug Products). Approval summary: imatinib mesylate in the treatment of metastatic and/or unresectable malignant gastrointestinal stromal tumors. Clin Cancer Res. 2002;8(10):3034-3038.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12374669/',
+          publishedAt: '2002-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-08-15',
+        datePrecision: 'DAY',
+        reason: 'Demetri and colleagues published the pivotal open-label trial in the New England Journal of Medicine, reporting that imatinib induced a sustained partial response or stable disease in the majority of patients with advanced GIST, with KIT-pathway inhibition as the mechanism. Durable responses in a tumor with no prior effective systemic therapy settled imatinib as the standard of care for advanced GIST and entrenched targeted kinase inhibition as a transferable oncologic principle.',
+        source: {
+          externalId: 'src:demetri-imatinib-gist-nejm-2002',
+          name: 'Demetri GD, von Mehren M, Blanke CD, et al. Efficacy and safety of imatinib mesylate in advanced gastrointestinal stromal tumors. N Engl J Med. 2002;347(7):472-480.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12181401/',
+          publishedAt: '2002-08-15',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Bortezomib Velcade myeloma proteasome — FDA 2003 / APEX 2005 ────────────
+  {
+    externalId: 'trajectory:bortezomib-velcade-myeloma-proteasome-2003',
+    text: 'Bortezomib (Velcade), the first proteasome inhibitor, produces durable responses in relapsed and refractory multiple myeloma, earning FDA accelerated approval on 13 May 2003 on the surrogate of response rate and confirmed by the randomized APEX trial showing a survival advantage in 2005.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2003-05-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2003-05-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted accelerated approval to bortezomib for multiple myeloma in patients who had received at least two prior therapies and progressed on the last, based on the ~35% single-agent response rate in the SUMMIT phase 2 study (Richardson et al., N Engl J Med 2003). As the first proteasome inhibitor brought to market, the approval recorded a provisional claim of efficacy resting on a surrogate response endpoint pending confirmatory survival data.',
+        source: {
+          externalId: 'src:kane-bortezomib-fda-approval-oncologist-2003',
+          name: 'Kane RC, Bross PF, Farrell AT, Pazdur R. Velcade: U.S. FDA approval for the treatment of multiple myeloma progressing on prior therapy. Oncologist. 2003;8(6):508-513.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14657528/',
+          publishedAt: '2003-12-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-06-16',
+        datePrecision: 'DAY',
+        reason: 'Richardson and colleagues published the randomized phase 3 APEX trial (669 patients) in the New England Journal of Medicine, showing that bortezomib was superior to high-dose dexamethasone in response rate (38% vs 18%), time to progression, and survival (one-year survival 80% vs 66%). The confirmatory survival advantage converted the surrogate-based accelerated approval into full FDA approval (25 March 2005) and settled bortezomib as a backbone of myeloma therapy.',
+        source: {
+          externalId: 'src:richardson-apex-bortezomib-nejm-2005',
+          name: 'Richardson PG, Sonneveld P, Schuster MW, et al. Bortezomib or high-dose dexamethasone for relapsed multiple myeloma. N Engl J Med. 2005;352(24):2487-2498.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15958804/',
+          publishedAt: '2005-06-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oxaliplatin FOLFOX MOSAIC adjuvant colon — André 2004 / 2009 ────────────
+  {
+    externalId: 'trajectory:oxaliplatin-folfox-mosaic-adjuvant-colon-2004',
+    text: 'Adding oxaliplatin to fluorouracil–leucovorin (the FOLFOX regimen) improves disease-free and overall survival as adjuvant treatment for resected stage III colon cancer, as established by the MOSAIC trial first reported in the New England Journal of Medicine on 3 June 2004 and confirmed by six-year overall-survival data in 2009.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-06-03',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-06-03',
+        datePrecision: 'DAY',
+        reason: 'André and the MOSAIC investigators reported in the New England Journal of Medicine that adding oxaliplatin to infusional fluorouracil–leucovorin raised three-year disease-free survival from 72.9% to 78.2% in resected stage II/III colon cancer. This recorded the claim that oxaliplatin-based combination chemotherapy should replace fluorouracil–leucovorin alone as adjuvant therapy, on a disease-free-survival surrogate endpoint.',
+        source: {
+          externalId: 'src:andre-mosaic-folfox-nejm-2004',
+          name: 'André T, Boni C, Mounedji-Boudiaf L, et al. Oxaliplatin, fluorouracil, and leucovorin as adjuvant treatment for colon cancer. N Engl J Med. 2004;350(23):2343-2351.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15175436/',
+          publishedAt: '2004-06-03',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-07-01',
+        datePrecision: 'DAY',
+        reason: 'André and colleagues published the mature MOSAIC results in the Journal of Clinical Oncology, showing that FOLFOX significantly improved six-year overall survival in stage III disease (72.9% vs 68.7%; HR 0.80), confirming that the earlier disease-free-survival surrogate translated into a hard survival benefit. The conversion of a surrogate endpoint into demonstrated overall-survival gain settled FOLFOX as the global standard adjuvant regimen for stage III colon cancer.',
+        source: {
+          externalId: 'src:andre-mosaic-overall-survival-jco-2009',
+          name: 'André T, Boni C, Navarro M, et al. Improved overall survival with oxaliplatin, fluorouracil, and leucovorin as adjuvant treatment in stage II or III colon cancer in the MOSAIC trial. J Clin Oncol. 2009;27(19):3109-3116.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19451431/',
+          publishedAt: '2009-07-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Anastrozole ATAC aromatase inhibitor — Lancet 2002 / FDA 2002 ───────────
+  {
+    externalId: 'trajectory:anastrozole-atac-aromatase-inhibitor-2002',
+    text: 'The aromatase inhibitor anastrozole is superior to tamoxifen — the 30-year standard — as adjuvant endocrine therapy for postmenopausal women with hormone-receptor-positive early breast cancer, as first reported by the ATAC trial in The Lancet on 22 June 2002 and adopted by the FDA via the adjuvant approval of Arimidex on 5 September 2002.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-06-22',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-06-22',
+        datePrecision: 'DAY',
+        reason: 'The ATAC Trialists\' Group published the first results of the 9,366-woman randomized trial in The Lancet, finding that anastrozole produced superior disease-free survival to tamoxifen at a median 33 months (89.4% vs 87.4%) with fewer endometrial cancers and thromboembolic events. This recorded the claim that an aromatase inhibitor could displace tamoxifen, the long-standing standard of adjuvant endocrine therapy, in postmenopausal women.',
+        source: {
+          externalId: 'src:atac-anastrozole-tamoxifen-lancet-2002',
+          name: 'ATAC Trialists\' Group (Baum M, Budzar AU, Cuzick J, et al.). Anastrozole alone or in combination with tamoxifen versus tamoxifen alone for adjuvant treatment of postmenopausal women with early breast cancer: first results of the ATAC randomised trial. Lancet. 2002;359(9324):2131-2139.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12090977/',
+          publishedAt: '2002-06-22',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2002-09-05',
+        datePrecision: 'DAY',
+        reason: 'On the basis of the 31-month ATAC results, the FDA granted accelerated approval of Arimidex (anastrozole) for the adjuvant treatment of postmenopausal women with hormone-receptor-positive early breast cancer on 5 September 2002 (converted to full approval on 16 September 2005). Regulatory adoption institutionalized aromatase inhibitors into first-line adjuvant endocrine therapy, beginning the displacement of tamoxifen as the default for postmenopausal patients.',
+        source: {
+          externalId: 'src:fda-arimidex-adjuvant-approval-2002',
+          name: 'Arimidex Approved for Early-Stage Breast Cancer in Postmenopausal Patients (reporting FDA adjuvant approval of anastrozole, 5 September 2002, based on the ATAC trial). Cancer Network / ONCOLOGY. 2002.',
+          url: 'https://www.cancernetwork.com/view/arimidex-approved-early-stage-breast-cancer-postmenopausal-pts',
+          publishedAt: '2002-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
