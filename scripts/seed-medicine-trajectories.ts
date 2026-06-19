@@ -28408,6 +28408,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HRT SAFETY & BREAST CANCER ERA (2000–2009)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── HABITS trial — HRT breast-cancer recurrence 2004 ────────────────────────
+  {
+    externalId: 'trajectory:habits-trial-hrt-breast-cancer-recurrence-2004',
+    text: 'Hormone replacement therapy given to breast-cancer survivors to relieve menopausal symptoms significantly increases the risk of a new breast-cancer event, as established when the HABITS randomized trial was stopped early and reported by Holmberg and Anderson in The Lancet on 7 February 2004.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2004-02-07',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1997-05-01',
+        datePrecision: 'MONTH',
+        reason: 'The HABITS trial (\'Hormonal replacement therapy After Breast cancer—is it safe?\') was launched in Sweden in 1997 to test the open clinical premise that short-term HRT could be safely offered to breast-cancer survivors suffering severe vasomotor symptoms. The randomized design recorded the safety question as a formal, testable hypothesis at a time when many clinicians were prescribing HRT to survivors on the assumption of acceptable risk.',
+        source: {
+          externalId: 'src:holmberg-habits-lancet-2004',
+          name: 'Holmberg L, Anderson H; HABITS steering and data monitoring committees. HABITS (hormonal replacement therapy after breast cancer—is it safe?), a randomised comparison: trial stopped. Lancet. 2004;363(9407):453-455.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14962527/',
+          publishedAt: '2004-02-07',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-02-07',
+        datePrecision: 'DAY',
+        reason: 'After a median 2.1-year follow-up of 434 randomized women, the data monitoring committee found 26 new breast-cancer events in the HRT group versus 7 in the non-HRT group and halted the trial on 17 December 2003, concluding HRT posed \'an unacceptable risk\' to breast-cancer survivors. The early-stopped publication reversed the working premise that HRT could be given safely to this population and helped end routine HRT prescribing for survivors.',
+        source: {
+          externalId: 'src:holmberg-habits-lancet-2004',
+          name: 'Holmberg L, Anderson H; HABITS steering and data monitoring committees. HABITS (hormonal replacement therapy after breast cancer—is it safe?), a randomised comparison: trial stopped. Lancet. 2004;363(9407):453-455.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14962527/',
+          publishedAt: '2004-02-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ravdin — HRT breast-cancer incidence decline 2007 ───────────────────────
+  {
+    externalId: 'trajectory:ravdin-breast-cancer-incidence-decline-hrt-2007',
+    text: 'The sharp 6.7% drop in US breast-cancer incidence in 2003 was caused by the post-2002 collapse in hormone-replacement-therapy use following the Women\'s Health Initiative, as argued by Ravdin and colleagues in the New England Journal of Medicine on 19 April 2007 — population-level confirmation of the HRT–breast-cancer causal link.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-04-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-04-19',
+        datePrecision: 'DAY',
+        reason: 'Ravdin et al. reported that age-adjusted breast-cancer incidence in the US fell 6.7% in 2003 versus 2002, a decline confined to women aged 50+ and most pronounced in estrogen-receptor-positive tumors, temporally tracking the abrupt drop in HRT prescriptions after the 2002 WHI report. This ecological \'natural experiment\' converted the WHI\'s randomized-trial signal into a strongly settled population-level causal inference linking combined HRT to breast-cancer risk.',
+        source: {
+          externalId: 'src:ravdin-breast-cancer-incidence-nejm-2007',
+          name: 'Ravdin PM, Cronin KA, Howlader N, et al. The decrease in breast-cancer incidence in 2003 in the United States. N Engl J Med. 2007;356(16):1670-1674.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17442911/',
+          publishedAt: '2007-04-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DMIST — digital vs film mammography 2005 ────────────────────────────────
+  {
+    externalId: 'trajectory:dmist-digital-vs-film-mammography-2005',
+    text: 'Digital mammography is diagnostically superior to conventional film mammography for screening women under 50, premenopausal/perimenopausal women, and women with dense breasts (while equivalent overall), as established by the DMIST randomized trial reported by Pisano et al. in the New England Journal of Medicine on 27 October 2005.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-10-27',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-10-27',
+        datePrecision: 'DAY',
+        reason: 'The Digital Mammographic Imaging Screening Trial (DMIST), enrolling 49,528 asymptomatic women across 33 US and Canadian sites, found that digital and film mammography had similar overall diagnostic accuracy but that digital was significantly more accurate for women under 50, those with dense breasts, and pre-/perimenopausal women. The large head-to-head randomized comparison settled the subgroup-superiority question and underpinned the rapid transition of US screening practice from film to digital mammography.',
+        source: {
+          externalId: 'src:pisano-dmist-nejm-2005',
+          name: 'Pisano ED, Gatsonis C, Hendrick E, et al. Diagnostic performance of digital versus film mammography for breast-cancer screening. N Engl J Med. 2005;353(17):1773-1783.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16169887/',
+          publishedAt: '2005-10-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── NEJM Vioxx VIGOR Expression of Concern 2005 ─────────────────────────────
+  {
+    externalId: 'trajectory:nejm-vioxx-vigor-expression-of-concern-2005',
+    text: 'The 2000 VIGOR trial of rofecoxib (Vioxx) understated the drug\'s cardiovascular risk because three myocardial infarctions among rofecoxib patients were omitted before publication, as formally declared by the New England Journal of Medicine editors in an Expression of Concern on 29 December 2005.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2000-11-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2000-11-23',
+        datePrecision: 'DAY',
+        reason: 'Bombardier et al. published the VIGOR trial in the NEJM, reporting that rofecoxib caused fewer serious upper-gastrointestinal events than naproxen; the roughly five-fold excess of myocardial infarctions on rofecoxib was attributed to a presumed cardioprotective effect of naproxen rather than to harm from rofecoxib. This recorded a benign cardiovascular interpretation of the drug in the flagship literature.',
+        source: {
+          externalId: 'src:bombardier-vigor-nejm-2000',
+          name: 'Bombardier C, Laine L, Reicin A, et al. Comparison of upper gastrointestinal toxicity of rofecoxib and naproxen in patients with rheumatoid arthritis (VIGOR). N Engl J Med. 2000;343(21):1520-1528.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11087881/',
+          publishedAt: '2000-11-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-12-29',
+        datePrecision: 'DAY',
+        reason: 'NEJM editors Curfman, Morrissey, and Drazen published an Expression of Concern stating that the VIGOR authors had deleted three myocardial infarctions from the manuscript before publication, data that would have strengthened the cardiovascular safety signal. Issued over a year after Vioxx\'s September 2004 market withdrawal, the editorial repudiated the integrity of the trial\'s published cardiovascular representation and became a landmark case of post-market data-integrity reversal.',
+        source: {
+          externalId: 'src:curfman-vigor-expression-of-concern-nejm-2005',
+          name: 'Curfman GD, Morrissey S, Drazen JM. Expression of concern: Bombardier et al., \'Comparison of upper gastrointestinal toxicity of rofecoxib and naproxen...\' N Engl J Med 2000;343:1520-8. N Engl J Med. 2005;353(26):2813-2814.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/16339408/',
+          publishedAt: '2005-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── LIBERATE — tibolone breast-cancer recurrence 2009 ───────────────────────
+  {
+    externalId: 'trajectory:liberate-tibolone-breast-cancer-recurrence-2009',
+    text: 'Tibolone, a synthetic steroid used to treat menopausal vasomotor symptoms and prevent bone loss, increases the risk of breast-cancer recurrence in survivors, as established when the LIBERATE randomized trial (Kenemans et al.) was reported in The Lancet Oncology in February 2009, reversing the premise that it was a safe hormone-therapy alternative for this population.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2009-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The LIBERATE non-inferiority trial of 3,098 breast-cancer survivors with vasomotor symptoms found cancer recurrence in 15.2% of tibolone-treated women versus 10.7% on placebo (hazard ratio 1.40; 95% CI 1.14–1.70; p=0.001), prompting early termination. The result contradicted the working assumption that tibolone\'s tissue-selective profile made it a safe HRT alternative for survivors, reversing that premise in the expert literature alongside the earlier HABITS reversal for conventional HRT.',
+        source: {
+          externalId: 'src:kenemans-liberate-lancet-oncol-2009',
+          name: 'Kenemans P, Bundred NJ, Foidart JM, et al. Safety and efficacy of tibolone in breast-cancer patients with vasomotor symptoms: a double-blind, randomised, non-inferiority trial (LIBERATE). Lancet Oncol. 2009;10(2):135-146.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19167925/',
+          publishedAt: '2009-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
