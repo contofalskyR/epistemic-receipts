@@ -27235,6 +27235,193 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PEDIATRICS / CHILD HEALTH / PUBLIC HEALTH (1968–1995)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Steinschneider apnea-SIDS hypothesis 1972 → reversed by Hoyt conviction 1995 ──
+  {
+    externalId: 'trajectory:steinschneider-apnea-sids-hypothesis-1972',
+    text: 'Alfred Steinschneider reported in Pediatrics in October 1972 that prolonged sleep apnea was a physiological precursor of the sudden infant death syndrome and tended to cluster in families, proposing apnea monitoring to prevent infant deaths.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1972-10-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-10-01',
+        datePrecision: 'MONTH',
+        reason: 'Steinschneider described two infant siblings with recurrent prolonged apnea who later died unexpectedly, and three other family members who had died of SIDS, concluding that prolonged apnea is part of the SIDS pathway and that home monitoring of at-risk infants could prevent death. This recorded the \'apnea hypothesis\' of SIDS in the pediatric literature and seeded the home infant apnea-monitor industry.',
+        source: {
+          externalId: 'src:steinschneider-apnea-sids-pediatrics-1972',
+          name: 'Steinschneider A. Prolonged apnea and the sudden infant death syndrome: clinical and laboratory observations. Pediatrics. 1972;50(4):646-654.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4342142/',
+          publishedAt: '1972-10-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-09-29',
+        datePrecision: 'DAY',
+        reason: 'The NIH Consensus Development Conference on Infantile Apnea and Home Monitoring (Sept 29–Oct 1, 1986) endorsed home cardiorespiratory monitoring for defined high-risk infants—including those with severe idiopathic apparent life-threatening events and siblings of multiple SIDS victims—institutionalizing the apnea-as-SIDS-precursor framework and the monitoring practice it justified.',
+        source: {
+          externalId: 'src:nih-consensus-infantile-apnea-monitoring-1987',
+          name: 'National Institutes of Health Consensus Development Conference on Infantile Apnea and Home Monitoring, Sept 29 to Oct 1, 1986. Pediatrics. 1987;79(2):292-299.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3808807/',
+          publishedAt: '1987-02-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '1995-04-21',
+        datePrecision: 'DAY',
+        reason: 'Waneta Hoyt—the mother of the \'H.\' infants whose deaths anchored Steinschneider\'s 1972 paper—confessed to and in April 1995 was convicted of smothering all five of her children, exposing the foundational cases as homicides rather than familial apnea deaths. The conviction discredited the apnea hypothesis of SIDS, which subsequent research (and the prone-sleep/Back-to-Sleep paradigm) had already been undermining, and home apnea monitoring was abandoned as a SIDS-prevention strategy.',
+        source: {
+          externalId: 'src:hoyt-steinschneider-reversal-discover-2018',
+          name: 'Neuroskeptic. Waneta Hoyt: The Serial Killer Paper. Discover Magazine. Jan 16, 2018.',
+          url: 'https://www.discovermagazine.com/mind/waneta-hoyt-the-serial-killer-paper',
+          publishedAt: '2018-01-16',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Shirkey therapeutic orphans / pediatric drug labeling 1968 → FDA rule 1994 ──
+  {
+    externalId: 'trajectory:shirkey-therapeutic-orphans-pediatric-drugs-1968',
+    text: 'Pediatrician Harry C. Shirkey argued in a January 1968 Journal of Pediatrics editorial that because few drugs were tested in children, infants and children had become \'therapeutic orphans\'—prescribed medicines carrying disclaimers against pediatric use and dosed without evidence of safety or efficacy.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1968-01-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-01-01',
+        datePrecision: 'MONTH',
+        reason: 'Shirkey coined \'therapeutic orphans\' to name the systematic gap in pediatric drug evidence: manufacturers avoided the cost of studying drugs in children, so labels disclaimed pediatric use even as clinicians prescribed the drugs off-label without dosing or safety data. The editorial recorded the under-study of children as a defined, nameable problem in the medical literature.',
+        source: {
+          externalId: 'src:shirkey-therapeutic-orphans-jpediatr-1968',
+          name: 'Shirkey HC. Therapeutic orphans (editorial). J Pediatr. 1968;72(1):119-120.',
+          url: 'https://doi.org/10.1016/S0022-3476(68)80414-7',
+          publishedAt: '1968-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-12-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA\'s December 13, 1994 final rule revising the \'Pediatric use\' subsection of prescription-drug labeling (59 FR 64240) required sponsors to reexamine data and label drugs for pediatric populations, formally codifying the \'therapeutic orphans\' problem as a regulatory obligation. This institutional adoption—followed by FDAMA pediatric exclusivity (1997) and the Best Pharmaceuticals for Children / Pediatric Research Equity Acts—settled Shirkey\'s claim as accepted policy fact.',
+        source: {
+          externalId: 'src:fda-pediatric-use-labeling-rule-1994',
+          name: 'FDA. Specific Requirements on Content and Format of Labeling for Human Prescription Drugs; Revision of \'Pediatric Use\' Subsection in the Labeling; Final Rule. 59 FR 64240. December 13, 1994.',
+          url: 'https://www.federalregister.gov/documents/1994/12/13/94-30238/specific-requirements-on-content-and-format-of-labeling-for-human-prescription-drugs-revision-of',
+          publishedAt: '1994-12-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO Code of Marketing of Breast-milk Substitutes 1981 ──────────────────
+  {
+    externalId: 'trajectory:who-code-marketing-breast-milk-substitutes-1981',
+    text: 'On 21 May 1981 the 34th World Health Assembly adopted the International Code of Marketing of Breast-milk Substitutes (resolution WHA34.22, by a vote of 118 to 1), establishing the international norm that marketing of infant formula must be restricted to protect breastfeeding and infant health.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1981-05-21',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-05-21',
+        datePrecision: 'DAY',
+        reason: 'Responding to the Nestlé infant-formula controversy and evidence that aggressive formula marketing in developing countries increased infant morbidity and mortality, the World Health Assembly adopted the Code as a recommendation (WHA34.22), with the United States casting the sole dissenting vote. This recorded, as a formal WHO instrument, the claim that formula marketing must be regulated to safeguard infant feeding.',
+        source: {
+          externalId: 'src:who-code-breast-milk-substitutes-1981',
+          name: 'World Health Organization. International Code of Marketing of Breast-milk Substitutes. Geneva: WHO; 1981 (adopted by WHA resolution 34.22, 21 May 1981).',
+          url: 'https://www.who.int/publications/i/item/9241541601',
+          publishedAt: '1981-05-21',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1990-08-01',
+        datePrecision: 'DAY',
+        reason: 'At the WHO/UNICEF policymakers\' meeting in Florence, governments adopted the Innocenti Declaration (1 August 1990), committing all member states to give effect to the Code\'s principles and to enact national legislation by 1995. This reaffirmation—reinforced by the Baby-Friendly Hospital Initiative and the eventual enactment of Code-based law in scores of countries—settled the Code as the global standard governing breast-milk-substitute marketing.',
+        source: {
+          externalId: 'src:innocenti-declaration-breastfeeding-1990',
+          name: 'WHO/UNICEF. Innocenti Declaration on the Protection, Promotion and Support of Breastfeeding. Florence, 30 July–1 August 1990.',
+          url: 'https://worldbreastfeedingweek.org/2018/wp-content/uploads/2018/07/1990-Innocenti-Declaration.pdf',
+          publishedAt: '1990-08-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── CPSC lead paint ban 1977 ────────────────────────────────────────────────
+  {
+    externalId: 'trajectory:cpsc-lead-paint-ban-children-1977',
+    text: 'On 1 September 1977 the U.S. Consumer Product Safety Commission issued a final rule (16 CFR 1303, 42 FR 44199) banning paint and consumer products bearing paint with lead content above 0.06 percent as a hazard to children, after finding no level above that threshold could be shown safe.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1977-09-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1977-09-01',
+        datePrecision: 'DAY',
+        reason: 'Acting under the Consumer Product Safety Act and amid mounting evidence of childhood lead-paint poisoning, the CPSC declared residential and consumer paint exceeding 0.06% lead a \'banned hazardous product,\' explicitly because it could not establish that any higher level was safe for children who ingest paint chips and dust. The rule recorded a concrete regulatory exposure limit grounded in pediatric harm.',
+        source: {
+          externalId: 'src:cpsc-final-ban-lead-paint-1977',
+          name: 'U.S. Consumer Product Safety Commission. CPSC Announces Final Ban on Lead-Containing Paint. 42 FR 44199. September 1, 1977.',
+          url: 'https://www.cpsc.gov/Recalls/1977/cpsc-announces-final-ban-on-lead-containing-paint',
+          publishedAt: '1977-09-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1978-02-27',
+        datePrecision: 'DAY',
+        reason: 'The ban took legal effect for products manufactured after 27 February 1978 and was codified as 16 CFR 1303, becoming the enduring U.S. consumer lead-paint limit; the threshold was later tightened—not reversed—to 0.009% under the 2008 Consumer Product Safety Improvement Act. The durable, strengthening regulatory limit settled lead-in-paint restriction as established child-protection policy.',
+        source: {
+          externalId: 'src:cfr-16-1303-lead-paint-ban',
+          name: '16 CFR Part 1303 — Ban of Lead-Containing Paint and Certain Consumer Products Bearing Lead-Containing Paint (effective Feb 27, 1978; threshold lowered to 0.009% in 2009).',
+          url: 'https://www.ecfr.gov/current/title-16/chapter-II/subchapter-B/part-1303',
+          publishedAt: '1978-02-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
