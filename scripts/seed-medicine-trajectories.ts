@@ -29711,6 +29711,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID CRISIS ERA (2012–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Opana ER abuse-deterrent reformulation withdrawal 2017 ──────────────────
+  {
+    externalId: 'trajectory:opana-er-abuse-deterrent-withdrawal-2017',
+    text: 'Endo Pharmaceuticals\' reformulated extended-release oxymorphone Opana ER, marketed from 2012 as a crush-resistant formulation whose benefits outweighed its risks, was the subject of an FDA removal request on June 8, 2017 — the first time the agency ever sought to pull a currently marketed opioid from sale because of the public-health consequences of its abuse.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2012-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2012-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Endo introduced a reformulated Opana ER engineered to resist crushing and marketed as harder to abuse, and the product was sold as a net-beneficial extended-release opioid analgesic. The premise that the reformulation reduced abuse and that benefits outweighed risks became the settled basis for its continued marketing.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-2017',
+          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (reposted by HIV.gov). June 8, 2017.',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-03-01',
+        datePrecision: 'MONTH',
+        reason: 'An FDA advisory committee of independent experts voted 18-8 in March 2017 that the benefits of reformulated Opana ER no longer outweighed its risks, after postmarketing data showed abuse had shifted from nasal to injection use following reformulation. The injection abuse was linked to an HIV and hepatitis C outbreak and a serious blood disorder, putting the drug\'s risk-benefit premise formally in question.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-2017',
+          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (reposted by HIV.gov). June 8, 2017.',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2017-06-08',
+        datePrecision: 'DAY',
+        reason: 'The FDA formally requested that Endo voluntarily remove reformulated Opana ER from the market, concluding its benefits no longer outweighed its risks — the first time the agency had ever taken steps to remove a currently marketed opioid for the public-health consequences of abuse. Endo announced on July 6, 2017, that it would comply, repudiating the abuse-resistant, net-beneficial premise under which the product had been sold.',
+        source: {
+          externalId: 'src:fda-opana-er-removal-2017',
+          name: 'U.S. Food and Drug Administration. FDA requests removal of Opana ER for risks related to abuse (reposted by HIV.gov). June 8, 2017.',
+          url: 'https://www.hiv.gov/blog/fda-requests-removal-opana-er-risks-related-abuse',
+          publishedAt: '2017-06-08',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'REVERSED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-12-23',
+        datePrecision: 'DAY',
+        reason: 'The FDA published a Federal Register notice formally withdrawing approval of Endo\'s new drug application for Opana (oxymorphone hydrochloride) extended-release tablets, completing the institutional removal of the product begun with the 2017 request. The drug\'s regulatory standing was extinguished entirely.',
+        source: {
+          externalId: 'src:fda-opana-nda-withdrawal-fr-2020',
+          name: 'FDA. Endo Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for OPANA (Oxymorphone Hydrochloride) Extended-Release Tablets. Fed. Reg., Dec. 23, 2020.',
+          url: 'https://www.federalregister.gov/documents/2020/12/23/2020-28283/endo-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-opana-oxymorphone',
+          publishedAt: '2020-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Oklahoma v. Johnson & Johnson public-nuisance opioid verdict 2019 ────────
+  {
+    externalId: 'trajectory:oklahoma-v-johnson-opioid-public-nuisance-2019',
+    text: 'An Oklahoma district court held on August 26, 2019, that opioid manufacturer Johnson & Johnson was liable under the state\'s public nuisance law for its prescription-opioid marketing and ordered it to fund abatement (initially $572 million, later reduced to $465 million) — a liability theory the Oklahoma Supreme Court reversed on November 9, 2021.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2019-08-26',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'JUDICIAL',
+        occurredAt: '2019-08-26',
+        datePrecision: 'DAY',
+        reason: 'After a 33-day bench trial, Cleveland County District Judge Thad Balkman found that Johnson & Johnson\'s prescription-opioid marketing created a public nuisance and ordered it to pay for one year of the state\'s abatement plan, $572 million (later reduced to $465 million). It was the first opioid case to reach a trial verdict and established at the trial-court level that drug makers could be held liable under public nuisance law for marketing-driven harms.',
+        source: {
+          externalId: 'src:okla-v-jnj-2021-ok-54',
+          name: 'Oklahoma ex rel. Attorney General v. Johnson & Johnson, 2021 OK 54 (Okla. Nov. 9, 2021) (documenting the Aug. 26, 2019 district-court judgment and its reversal).',
+          url: 'https://law.justia.com/cases/oklahoma/supreme-court/2021/118474.html',
+          publishedAt: '2021-11-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'REVERSED',
+        community: 'JUDICIAL',
+        occurredAt: '2021-11-09',
+        datePrecision: 'DAY',
+        reason: 'The Oklahoma Supreme Court, 5-1, reversed the judgment in 2021 OK 54, holding that the state\'s public nuisance statute does not extend to the manufacturing, marketing, and selling of prescription opioids and that the district court had erred in applying it. The ruling repudiated the public-nuisance liability theory that the trial verdict had established and that other states had sought to replicate against opioid makers.',
+        source: {
+          externalId: 'src:okla-v-jnj-2021-ok-54',
+          name: 'Oklahoma ex rel. Attorney General v. Johnson & Johnson, 2021 OK 54 (Okla. Nov. 9, 2021).',
+          url: 'https://law.justia.com/cases/oklahoma/supreme-court/2021/118474.html',
+          publishedAt: '2021-11-09',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── DEA tramadol Schedule IV reclassification 2014 ──────────────────────────
+  {
+    externalId: 'trajectory:dea-tramadol-schedule-iv-2014',
+    text: 'The DEA published a final rule on July 2, 2014, placing tramadol into Schedule IV of the Controlled Substances Act effective August 18, 2014, reclassifying an analgesic that had been marketed in the United States since 1995 as federally uncontrolled into a substance with recognized potential for abuse and dependence.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-02',
+        datePrecision: 'DAY',
+        reason: 'Following a Department of Health and Human Services scientific and medical evaluation, the DEA published a final rule (79 FR 37623) placing tramadol into Schedule IV, effective August 18, 2014. The action reversed the long-standing regulatory premise that tramadol carried negligible abuse potential and required no scheduling, subjecting it for the first time to controlled-substance handling, prescribing, and recordkeeping controls.',
+        source: {
+          externalId: 'src:dea-tramadol-fr-2014',
+          name: 'DEA. Schedules of Controlled Substances: Placement of Tramadol Into Schedule IV. Final rule. Fed. Reg. 79(127):37623, July 2, 2014.',
+          url: 'https://www.federalregister.gov/documents/2014/07/02/2014-15548/schedules-of-controlled-substances-placement-of-tramadol-into-schedule-iv',
+          publishedAt: '2014-07-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── MAT Act X-waiver elimination 2022 ───────────────────────────────────────
+  {
+    externalId: 'trajectory:mat-act-x-waiver-elimination-2022',
+    text: 'Section 1262 of the Consolidated Appropriations Act, 2023 (the Mainstreaming Addiction Treatment Act), signed December 29, 2022, eliminated the DATA-2000 \'X-waiver\' requirement, so that any clinician with a DEA registration including Schedule III authority may prescribe buprenorphine for opioid use disorder with no patient caps.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-12-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-29',
+        datePrecision: 'DAY',
+        reason: 'Congress enacted the MAT Act as Section 1262 of the Consolidated Appropriations Act, 2023, removing the special waiver and patient-cap regime that the Drug Addiction Treatment Act of 2000 had imposed on office-based buprenorphine prescribing. The reform reversed two decades of restricted, waiver-gated access — the framework under which buprenorphine had originally been approved for office use in 2002 — establishing that any Schedule III-authorized prescriber may treat opioid use disorder with buprenorphine.',
+        source: {
+          externalId: 'src:samhsa-mat-act-waiver-elimination-2022',
+          name: 'SAMHSA. Waiver Elimination (MAT Act) — removal of the DATA-Waiver requirement under Section 1262 of the Consolidated Appropriations Act, 2023.',
+          url: 'https://www.samhsa.gov/substance-use/treatment/statutes-regulations-guidelines/mat-act',
+          publishedAt: '2022-12-29',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
