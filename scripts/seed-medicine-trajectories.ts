@@ -27510,48 +27510,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Galsulfase / Naglazyme — first MPS VI treatment, 2005 ───────────────────
-  {
-    externalId: 'trajectory:galsulfase-naglazyme-first-mps-vi-treatment-2005',
-    text: 'Recombinant human N-acetylgalactosamine-4-sulfatase (galsulfase, Naglazyme) is an effective enzyme replacement therapy for mucopolysaccharidosis VI (Maroteaux-Lamy syndrome) — a claim first evidenced in Harmatz et al.\'s phase 1/2 trial in the Journal of Pediatrics in May 2004 and settled by the FDA\'s approval of 31 May 2005, the first treatment ever approved for MPS VI.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2004-05',
-    claimEmergedPrecision: 'MONTH',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2004-05',
-        datePrecision: 'MONTH',
-        reason: 'Harmatz, Whitley, Hopwood, and colleagues reported an ongoing randomized, double-blind phase 1/2 study comparing high- and low-dose weekly infusions of recombinant human arylsulfatase B in children with MPS VI, showing reduced urinary glycosaminoglycans and improved endurance. This recorded the first human evidence that enzyme replacement could ameliorate this lysosomal storage disorder.',
-        source: {
-          externalId: 'src:harmatz-galsulfase-mps-vi-jpeds-2004',
-          name: 'Harmatz P, Whitley CB, Waber L, et al. Enzyme replacement therapy in mucopolysaccharidosis VI (Maroteaux-Lamy syndrome). J Pediatr. 2004;144(5):574-580. PMID 15126989.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/15126989/',
-          publishedAt: '2004-05-01',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2005-05-31',
-        datePrecision: 'DAY',
-        reason: 'The FDA approved Naglazyme (galsulfase, BLA 125117) with orphan-drug exclusivity as the first drug ever approved for MPS VI, a disease affecting an estimated ~1,100 individuals. The pivotal phase 3 randomized placebo-controlled trial (Harmatz et al., J Pediatr 2006;148:533-539) subsequently confirmed a ~92-meter gain in the 12-minute walk test and significant urinary-GAG reduction, cementing the claim in the literature.',
-        source: {
-          externalId: 'src:fda-naglazyme-galsulfase-bla-125117-2005',
-          name: 'U.S. FDA, Drugs@FDA. Naglazyme (galsulfase), BLA 125117. Approved May 31, 2005.',
-          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2005/125117_0000_lbl.pdf',
-          publishedAt: '2005-05-31',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Idursulfase / Elaprase — first Hunter syndrome treatment, 2006 ───────────
   {
     externalId: 'trajectory:idursulfase-elaprase-first-hunter-syndrome-treatment-2006',
@@ -27588,48 +27546,6 @@ const TRAJECTORIES: Trajectory[] = [
           name: 'Muenzer J, Wraith JE, Beck M, et al. A phase II/III clinical study of enzyme replacement therapy with idursulfase in mucopolysaccharidosis II (Hunter syndrome). Genet Med. 2006;8(8):465-473. PMID 16912578.',
           url: 'https://pubmed.ncbi.nlm.nih.gov/16912578/',
           publishedAt: '2006-08-01',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
-  // ── Sapropterin / Kuvan — first PKU drug, 2007 ──────────────────────────────
-  {
-    externalId: 'trajectory:sapropterin-kuvan-first-pku-drug-2007',
-    text: 'Sapropterin dihydrochloride (synthetic tetrahydrobiopterin/6R-BH4, Kuvan) lowers blood phenylalanine in BH4-responsive phenylketonuria — a claim first evidenced in Levy et al.\'s phase 3 placebo-controlled trial in The Lancet in August 2007 and settled by the FDA\'s approval of Kuvan on 13 December 2007, the first drug therapy ever approved for PKU.',
-    claimType: 'EMPIRICAL',
-    claimEmergedAt: '2007-08',
-    claimEmergedPrecision: 'MONTH',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'RECORDED',
-        community: 'EXPERT_LITERATURE',
-        occurredAt: '2007-08',
-        datePrecision: 'MONTH',
-        reason: 'Levy and colleagues reported a phase 3 randomized placebo-controlled trial in The Lancet showing that sapropterin reduced mean blood phenylalanine by 236 µmol/L versus a 3 µmol/L rise on placebo, with 44% of treated patients achieving a ≥30% reduction. After four decades in which dietary phenylalanine restriction was the only management, this recorded the first controlled evidence that an oral pharmacologic cofactor could lower phenylalanine in a subset of patients.',
-        source: {
-          externalId: 'src:levy-sapropterin-pku-lancet-2007',
-          name: 'Levy HL, Milanowski A, Chakrapani A, et al. Efficacy of sapropterin dihydrochloride (tetrahydrobiopterin, 6R-BH4) for reduction of phenylalanine concentration in patients with phenylketonuria: a phase III randomised placebo-controlled study. Lancet. 2007;370(9586):504-510. PMID 17693179.',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/17693179/',
-          publishedAt: '2007-08-11',
-          methodologyType: 'primary',
-        },
-      },
-      {
-        fromAxis: 'RECORDED',
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2007-12-13',
-        datePrecision: 'DAY',
-        reason: 'The FDA approved Kuvan (sapropterin dihydrochloride, NDA 022181) to reduce blood phenylalanine in BH4-responsive PKU as an adjunct to a phenylalanine-restricted diet — the first drug therapy ever approved for phenylketonuria. The approval institutionally settled the claim that a pharmacologic agent could supplement dietary management of the disease, moving PKU treatment beyond diet alone for the first time.',
-        source: {
-          externalId: 'src:fda-kuvan-sapropterin-nda-022181-2007',
-          name: 'U.S. FDA, Drugs@FDA. Kuvan (sapropterin dihydrochloride) Tablets, NDA 022181. Approved December 13, 2007.',
-          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2007/022181lbl.pdf',
-          publishedAt: '2007-12-13',
           methodologyType: 'primary',
         },
       },
