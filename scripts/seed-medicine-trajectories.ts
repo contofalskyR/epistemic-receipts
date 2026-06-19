@@ -24044,6 +24044,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // PSYCHIATRY & NEUROLOGY ERA (1958–1990)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Haloperidol — first butyrophenone antipsychotic 1958 ────────────────────
+  {
+    externalId: 'trajectory:haloperidol-first-butyrophenone-antipsychotic-1958',
+    text: 'On 28 October 1958, Belgian psychiatrists Paul Divry, Jean Bobon, and Jean Collard reported in Acta Neurologica Belgica that haloperidol (R 1625) — synthesized at Janssen Pharmaceutica on 11 February 1958 — controlled psychomotor agitation and psychotic symptoms, establishing the first butyrophenone antipsychotic.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1958-10-28',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-10-28',
+        datePrecision: 'DAY',
+        reason: 'After Paul Janssen\'s team synthesized haloperidol (R 1625) on 11 February 1958, the Liège psychiatric group of Divry, Bobon, and Collard administered it to agitated psychiatric patients and published the first clinical report (\'Le R 1625: nouvelle thérapeutique symptomatique de l\'agitation psychomotrice\') in Acta Neurologica Belgica, followed by a fuller 1959 study. This recorded in the expert literature the claim that a butyrophenone — chemically unrelated to the phenothiazine chlorpromazine — was a potent, specific antipsychotic.',
+        source: {
+          externalId: 'src:lopez-munoz-haloperidol-consolidation-2009',
+          name: 'López-Muñoz F, Alamo C. The consolidation of neuroleptic therapy: Janssen, the discovery of haloperidol and its introduction into clinical practice. Brain Res Bull. 2009;79(2):130-41.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19186209/',
+          publishedAt: '2009-04-29',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1967-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Haloperidol was marketed in Belgium as Haldol from October 1959, spread across Europe, and was approved by the U.S. FDA (Haldol, McNeil) in 1967. It became the most widely used antipsychotic worldwide for acute psychosis, mania, and schizophrenia and a WHO Essential Medicine, institutionally settling the butyrophenone class\'s antipsychotic efficacy.',
+        source: {
+          externalId: 'src:lopez-munoz-haloperidol-consolidation-2009',
+          name: 'López-Muñoz F, Alamo C. The consolidation of neuroleptic therapy: Janssen, the discovery of haloperidol and its introduction into clinical practice. Brain Res Bull. 2009;79(2):130-41.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19186209/',
+          publishedAt: '2009-04-29',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Tacrine / THA — first Alzheimer's drug claim 1986 ───────────────────────
+  {
+    externalId: 'trajectory:tacrine-summers-alzheimers-cholinergic-1986',
+    text: 'On 13 November 1986, William Summers and colleagues reported in the New England Journal of Medicine that oral tetrahydroaminoacridine (THA, tacrine), a centrally acting anticholinesterase, produced marked cognitive and functional improvement in patients with Alzheimer-type senile dementia — the first claim that a drug could meaningfully treat Alzheimer\'s disease.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-11-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-11-13',
+        datePrecision: 'DAY',
+        reason: 'Summers, Majovski, Marsh, Tachiki, and Kling reported in NEJM that 17 patients with moderate-to-severe Alzheimer\'s disease showed significant improvement on global assessment, orientation, and learning tests during open and double-blind crossover phases of oral THA. This recorded the first claim that augmenting central cholinergic activity could reverse Alzheimer\'s symptoms, operationalizing the cholinergic hypothesis of dementia.',
+        source: {
+          externalId: 'src:summers-tha-alzheimer-nejm-1986',
+          name: 'Summers WK, Majovski LV, Marsh GM, Tachiki K, Kling A. Oral tetrahydroaminoacridine in long-term treatment of senile dementia, Alzheimer type. N Engl J Med. 1986;315(20):1241-5.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2430180/',
+          publishedAt: '1986-11-13',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1990-02-24',
+        datePrecision: 'DAY',
+        reason: 'Summers\' dramatic results were immediately criticized for the small sample (n=17), inadequate controls, and methodological weakness, and the FDA investigated the work from 1986 to 1989. The larger French multicentre trial (Chatellier, Lacomblez et al., BMJ 1990) found that oral tacrine below 125 mg/day produced no meaningful cognitive improvement while inducing hepatitis in 9 of 67 patients, failing to replicate the benefit and reframing tacrine as a modest, hepatotoxic agent — leaving the original strong-efficacy claim contested.',
+        source: {
+          externalId: 'src:chatellier-tha-multicentre-bmj-1990',
+          name: 'Chatellier G, Lacomblez L; Groupe Français d\'Étude de la Tétrahydroaminoacridine. Tacrine (tetrahydroaminoacridine; THA) and lecithin in senile dementia of the Alzheimer type: a multicentre trial. BMJ. 1990;300(6723):495-9.',
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC1662308/',
+          publishedAt: '1990-02-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tardive dyskinesia — antipsychotic iatrogenic cost 1964/1980 ─────────────
+  {
+    externalId: 'trajectory:tardive-dyskinesia-antipsychotic-iatrogenic-1980',
+    text: 'The American Psychiatric Association Task Force on Late Neurological Effects of Antipsychotic Drugs reported in October 1980 that tardive dyskinesia — an often irreversible involuntary movement disorder — is a genuine complication of long-term antipsychotic treatment, occurring in at least 10–20% of at-risk patients.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1964-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1964-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Arild Faurbye and colleagues, in \'Neurological symptoms in pharmacotherapy of psychosis\' (Acta Psychiatrica Scandinavica), coined the term \'tardive dyskinesia\' for the persistent, delayed-onset involuntary movements appearing in patients on long-term neuroleptics. This recorded in the expert literature the contested claim that the new antipsychotics could cause a distinct, drug-induced movement disorder — a claim many clinicians initially resisted or attributed to underlying psychiatric illness.',
+        source: {
+          externalId: 'src:faurbye-neurological-symptoms-pharmacotherapy-1964',
+          name: 'Faurbye A, Rasch PJ, Petersen PB, Brandborg G, Pakkenberg H. Neurological symptoms in pharmacotherapy of psychosis. Acta Psychiatr Scand. 1964;40(1):10-27.',
+          url: 'https://onlinelibrary.wiley.com/doi/10.1111/j.1600-0447.1964.tb05731.x',
+          publishedAt: '1964-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1980-10-01',
+        datePrecision: 'MONTH',
+        reason: 'The APA Task Force on Late Neurological Effects of Antipsychotic Drugs published its summary report in the American Journal of Psychiatry, formally concluding that tardive dyskinesia is a real, prevalent (≥10–20% of at-risk patients), and often irreversible complication of prolonged antipsychotic use of unknown but dopamine-related pathophysiology with no satisfactory treatment. Ratification by organized American psychiatry settled the claim that the antipsychotics hailed as replacements for lobotomy carried a serious, sometimes permanent iatrogenic cost.',
+        source: {
+          externalId: 'src:apa-task-force-tardive-dyskinesia-1980',
+          name: 'Task Force on Late Neurological Effects of Antipsychotic Drugs. Tardive dyskinesia: summary of a Task Force Report of the American Psychiatric Association. Am J Psychiatry. 1980;137(10):1163-72.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/6106389/',
+          publishedAt: '1980-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Selegiline / deprenyl — Parkinson's neuroprotection DATATOP 1989 ─────────
+  {
+    externalId: 'trajectory:selegiline-deprenyl-parkinsons-neuroprotection-datatop-1989',
+    text: 'On 16 November 1989, the Parkinson Study Group reported in the New England Journal of Medicine (DATATOP trial) that deprenyl (selegiline) reduced by about 57% the risk of reaching disability requiring levodopa in early, untreated Parkinson\'s disease, a result widely interpreted as evidence that the drug slows disease progression (neuroprotection).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1989-11-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1989-11-16',
+        datePrecision: 'DAY',
+        reason: 'The Parkinson Study Group\'s DATATOP trial randomized untreated early-Parkinson\'s patients to deprenyl, tocopherol, both, or placebo and reported that deprenyl reduced the risk of reaching the disability endpoint (need for levodopa) by 57% (P < 10⁻¹⁰). Because deprenyl is an antioxidant MAO-B inhibitor, the result was recorded in the literature as the leading evidence that an agent could be neuroprotective and slow the underlying neurodegeneration of Parkinson\'s disease.',
+        source: {
+          externalId: 'src:parkinson-study-group-deprenyl-datatop-nejm-1989',
+          name: 'Parkinson Study Group. Effect of deprenyl on the progression of disability in early Parkinson\'s disease. N Engl J Med. 1989;321(20):1364-71.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2509910/',
+          publishedAt: '1989-11-16',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-01-21',
+        datePrecision: 'DAY',
+        reason: 'The Parkinson Study Group\'s follow-up report found no benefit of tocopherol and acknowledged that \'the action of deprenyl that accounts for its beneficial effects remains unclear\': early symptomatic improvement and worsening after withdrawal suggested deprenyl\'s delay of disability could reflect a mild dopaminergic symptomatic effect rather than true neuroprotection. The confound left the disease-modifying/neuroprotection interpretation contested, a debate that persisted through later trials.',
+        source: {
+          externalId: 'src:parkinson-study-group-tocopherol-deprenyl-nejm-1993',
+          name: 'Parkinson Study Group. Effects of tocopherol and deprenyl on the progression of disability in early Parkinson\'s disease. N Engl J Med. 1993;328(3):176-83.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8417384/',
+          publishedAt: '1993-01-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
