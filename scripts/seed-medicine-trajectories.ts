@@ -25965,6 +25965,175 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // HIV/AIDS TREATMENT ERA (1987)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── AZT / Zidovudine — first antiretroviral approved for AIDS 1987 ───────────
+  {
+    externalId: 'trajectory:azt-zidovudine-first-aids-treatment-1987',
+    text: 'Zidovudine (AZT), tested in a double-blind placebo-controlled trial reported by Fischl and colleagues, decreases mortality and opportunistic infections in patients with AIDS and AIDS-related complex, and was approved by the U.S. FDA as Retrovir on 19 March 1987 — the first antiretroviral drug licensed for HIV/AIDS.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1986-09-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The Phase II placebo-controlled trial of azidothymidine in AIDS and AIDS-related complex was halted early by its data safety monitoring board in September 1986 because AZT recipients had dramatically lower mortality (1 death versus 19 on placebo) and fewer opportunistic infections. The results, published by Fischl and colleagues in the New England Journal of Medicine on 23 July 1987, were the first controlled evidence that any drug could alter the course of AIDS.',
+        source: {
+          externalId: 'src:fischl-azt-aids-arc-nejm-1987',
+          name: 'Fischl MA, Richman DD, Grieco MH, et al. The efficacy of azidothymidine (AZT) in the treatment of patients with AIDS and AIDS-related complex. A double-blind, placebo-controlled trial. N Engl J Med. 1987;317(4):185–191.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3299089/',
+          publishedAt: '1987-07-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1987-03-19',
+        datePrecision: 'DAY',
+        reason: 'The U.S. Food and Drug Administration approved Burroughs Wellcome\'s Retrovir (zidovudine) on 19 March 1987 — at roughly 20 months one of the fastest approvals in the agency\'s history to that date — licensing the first antiretroviral drug for HIV/AIDS on the strength of the halted Phase II trial. Institutional approval settled the claim that AZT was an effective treatment for advanced HIV disease and made it the foundation of subsequent combination antiretroviral therapy.',
+        source: {
+          externalId: 'src:time-first-aids-drug-azt-1987',
+          name: 'Park A. The Story Behind the First AIDS Drug. TIME. 19 March 2017.',
+          url: 'https://time.com/4705809/first-aids-drug-azt/',
+          publishedAt: '2017-03-19',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RESEARCH ETHICS ERA (1964)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Declaration of Helsinki — WMA 1964 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:declaration-of-helsinki-research-ethics-1964',
+    text: 'The World Medical Association, at its 18th General Assembly in Helsinki in June 1964, adopted the Declaration of Helsinki, establishing ethical principles — including informed consent and independent review — governing medical research involving human subjects.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1964-06-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1964-06-01',
+        datePrecision: 'MONTH',
+        reason: 'Building on the Nuremberg Code, the World Medical Association adopted the Declaration of Helsinki at its 18th General Assembly in June 1964, codifying ethical principles for medical research involving human participants — voluntary informed consent, independent ethical review, and the primacy of the subject\'s welfare. It became, and remains after nine revisions, the foundational global standard governing the conduct of clinical trials, distinct from the 1947 Nuremberg Code in being a self-governing statement of the medical profession.',
+        source: {
+          externalId: 'src:wma-declaration-of-helsinki',
+          name: 'World Medical Association. WMA Declaration of Helsinki — Ethical Principles for Medical Research Involving Human Subjects. Adopted 18th WMA General Assembly, Helsinki, June 1964.',
+          url: 'https://www.wma.net/what-we-do/medical-ethics/declaration-of-helsinki/',
+          publishedAt: '1964-06-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // RENAL MEDICINE ERA (1960)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Scribner shunt — chronic hemodialysis 1960 ───────────────────────────────
+  {
+    externalId: 'trajectory:scribner-shunt-chronic-hemodialysis-1960',
+    text: 'The Teflon arteriovenous shunt devised by Belding Scribner, Wayne Quinton, and David Dillard, first implanted in patient Clyde Shields on 9 March 1960 at the University of Washington, established that permanent repeatable vascular access makes long-term maintenance hemodialysis possible, converting chronic end-stage kidney failure from a uniformly fatal condition into a treatable one.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1960-03-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1960-03-09',
+        datePrecision: 'DAY',
+        reason: 'On 9 March 1960 surgeon David Dillard implanted the first Scribner shunt — indwelling Teflon arterial and venous cannulas joined by an external loop between dialyses — in patient Clyde Shields, who survived 11 further years on dialysis. Quinton, Dillard, and Scribner reported the device in \'Cannulation of blood vessels for prolonged hemodialysis\' (Trans Am Soc Artif Intern Organs 1960;6:104–113), solving the central obstacle that had limited dialysis to single acute treatments.',
+        source: {
+          externalId: 'src:blagg-50th-anniversary-longterm-hemodialysis-2011',
+          name: 'Blagg CR. The 50th anniversary of long-term hemodialysis: University of Washington Hospital, March 9th, 1960. J Nephrol. 2011;24(Suppl 17):S84–S88.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21614785/',
+          publishedAt: '2011-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1966-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Within a few years of the shunt\'s introduction, chronic outpatient hemodialysis programs were established across the United States and worldwide and maintenance dialysis became the accepted standard of care for end-stage renal disease, later underwritten by national funding programs. The settling of repeatable hemodialysis as durable therapy is reflected in its scale — more than a million people are now alive on chronic dialysis traceable to the Scribner team\'s work.',
+        source: {
+          externalId: 'src:blagg-50th-anniversary-longterm-hemodialysis-2011',
+          name: 'Blagg CR. The 50th anniversary of long-term hemodialysis: University of Washington Hospital, March 9th, 1960. J Nephrol. 2011;24(Suppl 17):S84–S88.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/21614785/',
+          publishedAt: '2011-05-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // MEDICAL DEVICES / ENDOSCOPY ERA (1957–1961)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Hirschowitz fiberoptic endoscope — 1958 ──────────────────────────────────
+  {
+    externalId: 'trajectory:hirschowitz-fiberoptic-endoscope-1958',
+    text: 'Basil Hirschowitz demonstrated and, in Gastroenterology in 1958, reported the first flexible fiberoptic endoscope (the \'fiberscope\'), establishing that coherent glass-fiber bundles could transmit a clear image to directly visualize the interior of the stomach and duodenum.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1957-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1958-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After first passing his prototype instrument down his own throat in February 1957, Hirschowitz, with Curtiss, Peters, and Pollard, published \'Demonstration of a new gastroscope, the fiberscope\' (Gastroenterology 1958;35(1):50), reporting that a bundle of coated glass fibers could carry a coherent image out of the body. This recorded the first practical flexible fiberoptic endoscope, replacing the limited, hazardous semi-rigid gastroscopes then in use.',
+        source: {
+          externalId: 'src:hirschowitz-fiberscope-gastroenterology-1958',
+          name: 'Hirschowitz BI, Curtiss LE, Peters CW, Pollard HM. Demonstration of a new gastroscope, the fiberscope. Gastroenterology. 1958;35(1):50; discussion 51–53.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13562387/',
+          publishedAt: '1958-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'MARKET',
+        occurredAt: '1961-01-01',
+        datePrecision: 'YEAR',
+        reason: 'By 1961 Hirschowitz, working with American Cystoscope Makers Inc. (ACMI), produced the commercial Hirschowitz Gastroduodenal Fiberscope, and flexible fiberoptic endoscopy rapidly displaced rigid and semi-rigid gastroscopy as the standard means of examining the upper gastrointestinal tract — the direct ancestor of modern video endoscopy.',
+        source: {
+          externalId: 'src:edmonson-hirschowitz-fiberoptic-endoscopy-annals-2016',
+          name: 'Modlin IM, et al. Visceral Vistas: Basil Hirschowitz and the Birth of Fiberoptic Endoscopy. Ann Intern Med. 2016;165(3):214–218.',
+          url: 'https://www.acpjournals.org/doi/10.7326/M16-0025',
+          publishedAt: '2016-08-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
