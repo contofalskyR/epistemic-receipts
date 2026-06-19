@@ -31845,6 +31845,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // TARGETED ONCOLOGY — ACCELERATED APPROVAL ERA (2000–2010)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Gemtuzumab ozogamicin (Mylotarg) — first ADC, accelerated approval then withdrawal ──
+  {
+    externalId: 'trajectory:gemtuzumab-ozogamicin-mylotarg-withdrawal-2010',
+    text: 'On 17 May 2000 the US FDA granted accelerated approval to gemtuzumab ozogamicin (Mylotarg), the first antibody-drug conjugate, for CD33-positive acute myeloid leukemia in first relapse in patients 60 or older, on the basis of surrogate response-rate data from single-arm studies.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2000-05-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2000-05-17',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved gemtuzumab ozogamicin under its Subpart H accelerated-approval pathway, the first immunoconjugate (calicheamicin linked to an anti-CD33 antibody) cleared for any cancer. Approval rested on a 30% overall response rate in three pooled single-arm studies of 142 relapsed AML patients, a surrogate endpoint, with confirmatory benefit to be verified post-market. The claim of clinical benefit was therefore recorded but explicitly provisional.',
+        source: {
+          externalId: 'src:bross-mylotarg-approval-2001',
+          name: 'Bross PF, Beitz J, Chen G, et al. Approval Summary: Gemtuzumab Ozogamicin in Relapsed Acute Myeloid Leukemia. Clin Cancer Res. 2001;7(6):1490-1496.',
+          url: 'https://aacrjournals.org/clincancerres/article/7/6/1490/288816/Approval-SummaryGemtuzumab-Ozogamicin-in-Relapsed',
+          publishedAt: '2001-06-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2010-05-21',
+        datePrecision: 'DAY',
+        reason: 'The required confirmatory trial, SWOG S0106, was halted early when adding gemtuzumab to standard induction chemotherapy showed no improvement in survival and a higher rate of fatal induction toxicity. On 21 May 2010 the FDA requested that Wyeth/Pfizer voluntarily withdraw Mylotarg from the US market, and the drug was withdrawn effective October 2010. The post-market reversal made it a canonical example of accelerated approval failing to verify benefit.',
+        source: {
+          externalId: 'src:fda-mylotarg-withdrawal-federal-register-2011',
+          name: 'FDA. Wyeth Pharmaceuticals, Inc.; Withdrawal of Approval of a New Drug Application for MYLOTARG. Federal Register, 28 Nov 2011.',
+          url: 'https://www.federalregister.gov/documents/2011/11/28/2011-30473/wyeth-pharmaceuticals-inc-withdrawal-of-approval-of-a-new-drug-application-for-mylotarg',
+          publishedAt: '2011-11-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Temozolomide + radiotherapy for glioblastoma — Stupp protocol 2005 ──────
+  {
+    externalId: 'trajectory:temozolomide-radiotherapy-glioblastoma-stupp-2005',
+    text: 'On 10 March 2005 Stupp and colleagues reported in the New England Journal of Medicine that adding temozolomide to radiotherapy for newly diagnosed glioblastoma raised median survival from 12.1 to 14.6 months and two-year survival from 10.4% to 26.5%, establishing the first regimen in decades to extend glioblastoma survival.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2005-03-10',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2005-03-10',
+        datePrecision: 'DAY',
+        reason: 'The EORTC/NCIC phase III randomized trial of 573 patients showed that concomitant and adjuvant temozolomide added to radiotherapy significantly improved overall survival in newly diagnosed glioblastoma, a disease with no survival advance in a generation. The result was published in NEJM, recording the claim of clinical benefit in the peer-reviewed literature.',
+        source: {
+          externalId: 'src:stupp-temozolomide-nejm-2005',
+          name: 'Stupp R, Mason WP, van den Bent MJ, et al. Radiotherapy plus Concomitant and Adjuvant Temozolomide for Glioblastoma. N Engl J Med. 2005;352(10):987-996.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15758009/',
+          publishedAt: '2005-03-10',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-03-15',
+        datePrecision: 'DAY',
+        reason: 'Five days after publication, on 15 March 2005, the FDA approved temozolomide (Temodar) for newly diagnosed glioblastoma concomitant with radiotherapy and as maintenance therapy. The \'Stupp protocol\' was promptly adopted as the global standard of care, settling the claim institutionally.',
+        source: {
+          externalId: 'src:fda-temozolomide-approval-summary-2005',
+          name: 'Cohen MH, Johnson JR, Pazdur R. FDA Drug Approval Summary: Temozolomide Plus Radiation Therapy for the Treatment of Newly Diagnosed Glioblastoma Multiforme. Clin Cancer Res. 2005;11(19):6767-6771.',
+          url: 'https://aacrjournals.org/clincancerres/article/11/19/6767/190430/Food-and-Drug-Administration-Drug-Approval-Summary',
+          publishedAt: '2005-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Docetaxel (TAX327) — first survival benefit in castration-resistant prostate cancer 2004 ──
+  {
+    externalId: 'trajectory:docetaxel-tax327-castration-resistant-prostate-cancer-2004',
+    text: 'On 19 May 2004 the US FDA approved docetaxel (Taxotere) with prednisone for metastatic androgen-independent (castration-resistant) prostate cancer, based on the TAX327 trial showing a survival benefit — the first chemotherapy ever proven to extend life in this disease.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-05-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-05-19',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved docetaxel plus prednisone for hormone-refractory metastatic prostate cancer on the strength of the TAX327 phase III trial, the first agent shown to prolong survival in castration-resistant prostate cancer, overturning the prior view that chemotherapy was merely palliative in this setting. The regulatory action recorded the survival claim.',
+        source: {
+          externalId: 'src:fda-docetaxel-prostate-approval-summary-2004',
+          name: 'Dagher R, Li N, Abraham S, et al. Approval Summary: Docetaxel in Combination with Prednisone for the Treatment of Androgen-Independent Hormone-Refractory Prostate Cancer. Clin Cancer Res. 2004;10(24):8147-8151.',
+          url: 'https://aacrjournals.org/clincancerres/article/10/24/8147/168651/Approval-SummaryDocetaxel-in-Combination-with',
+          publishedAt: '2004-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2004-10-07',
+        datePrecision: 'DAY',
+        reason: 'Full publication of TAX327 in NEJM on 7 October 2004 reported median survival of 18.9 vs 16.5 months (HR 0.76, p=0.009) for three-weekly docetaxel versus mitoxantrone in 1,006 men, with improved pain, PSA and quality-of-life responses. The peer-reviewed result cemented docetaxel as the standard first-line chemotherapy for metastatic castration-resistant prostate cancer.',
+        source: {
+          externalId: 'src:tannock-tax327-nejm-2004',
+          name: 'Tannock IF, de Wit R, Berry WR, et al. Docetaxel plus Prednisone or Mitoxantrone plus Prednisone for Advanced Prostate Cancer. N Engl J Med. 2004;351(15):1502-1512.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/15470213/',
+          publishedAt: '2004-10-07',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Sorafenib (TARGET) — first targeted oral therapy for renal cell carcinoma 2005 ──
+  {
+    externalId: 'trajectory:sorafenib-target-renal-cell-carcinoma-2005',
+    text: 'On 20 December 2005 the US FDA approved sorafenib (Nexavar), an oral multikinase inhibitor, for advanced renal cell carcinoma — the first targeted oral therapy for kidney cancer, a disease with no effective systemic options for decades.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2005-12-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-12-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted regular approval to sorafenib for advanced renal cell carcinoma based on a planned interim analysis of the phase III TARGET trial showing substantially improved progression-free survival over placebo. It was the first oral targeted agent approved for RCC, breaking a long therapeutic impasse and opening the kinase-inhibitor era for kidney cancer.',
+        source: {
+          externalId: 'src:fda-sorafenib-rcc-approval-summary-2006',
+          name: 'Kane RC, Farrell AT, Saber H, et al. Sorafenib for the Treatment of Advanced Renal Cell Carcinoma. Clin Cancer Res. 2006;12(24):7271-7278.',
+          url: 'https://aacrjournals.org/clincancerres/article/12/24/7271/193008/Sorafenib-for-the-Treatment-of-Advanced-Renal-Cell',
+          publishedAt: '2006-12-15',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-11',
+        datePrecision: 'DAY',
+        reason: 'Full publication of the TARGET trial (903 patients) in NEJM on 11 January 2007 confirmed that sorafenib doubled median progression-free survival (5.5 vs 2.8 months) versus placebo in cytokine-refractory clear-cell RCC. The peer-reviewed result established sorafenib in the standard treatment armamentarium for advanced kidney cancer.',
+        source: {
+          externalId: 'src:escudier-target-nejm-2007',
+          name: 'Escudier B, Eisen T, Stadler WM, et al. Sorafenib in Advanced Clear-Cell Renal-Cell Carcinoma. N Engl J Med. 2007;356(2):125-134.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17215530/',
+          publishedAt: '2007-01-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
