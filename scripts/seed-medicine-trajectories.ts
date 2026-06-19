@@ -22421,6 +22421,159 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Cannabidiol / Epidiolex — FDA approval 2018 ─────────────────────────────
+  {
+    externalId: 'trajectory:cannabidiol-epidiolex-epilepsy-approval-2018',
+    text: 'Purified plant-derived cannabidiol (Epidiolex, GW Pharmaceuticals) is a safe and effective anticonvulsant for seizures associated with Dravet syndrome and Lennox-Gastaut syndrome, a claim established by randomized trials and ratified by FDA approval on 25 June 2018 — the first cannabis-derived medicine approved in the United States.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2017-05-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-05-25',
+        datePrecision: 'DAY',
+        reason: 'Devinsky and colleagues published in the New England Journal of Medicine the first randomized, double-blind, placebo-controlled trial of cannabidiol in Dravet syndrome, reporting that the median monthly convulsive-seizure frequency fell from 12.4 to 5.9 with cannabidiol versus a negligible change with placebo (P=0.01). This recorded into the expert literature the claim that a purified cannabis-plant cannabinoid had genuine, trial-grade anticonvulsant efficacy, displacing decades of anecdotal-only evidence for medical cannabis.',
+        source: {
+          externalId: 'src:devinsky-cannabidiol-dravet-nejm-2017',
+          name: 'Devinsky O, Cross JH, Laux L, et al. Trial of Cannabidiol for Drug-Resistant Seizures in the Dravet Syndrome. N Engl J Med. 2017;376(21):2011-2020.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28538134/',
+          publishedAt: '2017-05-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-06-25',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Epidiolex (cannabidiol) oral solution for seizures associated with Lennox-Gastaut and Dravet syndromes in patients two years and older — the first FDA-approved drug containing a purified substance derived from the marijuana plant. The approval institutionally settled that a cannabis-derived compound could meet the agency\'s standard evidentiary bar for safety and efficacy, separating a defined pharmaceutical from the unregulated CBD market.',
+        source: {
+          externalId: 'src:fda-epidiolex-approval-2018',
+          name: 'U.S. Food and Drug Administration. FDA approves first drug comprised of an active ingredient derived from marijuana to treat rare, severe forms of epilepsy. June 25, 2018.',
+          url: 'https://www.prnewswire.com/news-releases/fda-approves-first-drug-comprised-of-an-active-ingredient-derived-from-marijuana-to-treat-rare-severe-forms-of-epilepsy-300671667.html',
+          publishedAt: '2018-06-25',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2018-09-27',
+        datePrecision: 'DAY',
+        reason: 'The Drug Enforcement Administration placed Epidiolex in Schedule V of the Controlled Substances Act — its least restrictive schedule — carving the approved cannabidiol product out of cannabis\'s de facto Schedule I status. This legal reclassification ratified, at the federal scheduling level, that a defined CBD medicine carries low abuse potential and accepted medical use, a partial institutional reversal of marijuana\'s blanket prohibition (Epidiolex was fully descheduled in 2020).',
+        source: {
+          externalId: 'src:dea-epidiolex-schedule-v-2018',
+          name: 'U.S. Drug Enforcement Administration. FDA-approved drug Epidiolex placed in schedule V of Controlled Substance Act. September 27, 2018.',
+          url: 'https://www.dea.gov/press-releases/2018/09/27/fda-approved-drug-epidiolex-placed-schedule-v-controlled-substance-act',
+          publishedAt: '2018-09-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Gepirone / Exxua — FDA reversal 2023 ────────────────────────────────────
+  {
+    externalId: 'trajectory:gepirone-exxua-mdd-fda-reversal-2023',
+    text: 'Gepirone extended-release (Exxua, Fabre-Kramer), a first-in-class oral selective 5-HT1A receptor agonist, is a safe and effective treatment for major depressive disorder — a claim the FDA rejected via complete response letters in 2004, 2007, and 2015 before reversing itself and approving the same molecule on 28 September 2023.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2004-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2004-01-01',
+        datePrecision: 'YEAR',
+        reason: 'After Fabre-Kramer submitted gepirone ER for major depressive disorder, the FDA declined approval, issuing the first of three complete response letters (2004, followed by 2007 and 2015) on grounds that the antidepressant-efficacy evidence was insufficient. The sponsor\'s efficacy claim thus entered the regulatory record in a state of formal institutional dispute, where it remained for roughly two decades.',
+        source: {
+          externalId: 'src:pharmacytimes-gepirone-regulatory-history-2023',
+          name: 'Pharmacy Times. Exxua: A Lengthy Approval Under a Regulatory Lens. 2023.',
+          url: 'https://www.pharmacytimes.com/view/exxua-a-lengthy-approval-under-a-regulatory-lens',
+          publishedAt: '2023-10-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-09-28',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved gepirone ER (Exxua) for major depressive disorder in adults — the first and only oral selective 5-HT1A agonist antidepressant, mechanistically distinct from SSRIs. Approving the identical molecule it had thrice rejected over ~19 years, the agency reversed its own prior position, a rare documented case of an institutional efficacy verdict flipping without a new active ingredient.',
+        source: {
+          externalId: 'src:fda-exxua-gepirone-label-2023',
+          name: 'U.S. Food and Drug Administration. EXXUA (gepirone) extended-release tablets — Prescribing Information, NDA 021164 (initial U.S. approval 2023). September 28, 2023.',
+          url: 'https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/021164s000lbl.pdf',
+          publishedAt: '2023-09-28',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lumateperone / Caplyta — schizophrenia approval 2019 ────────────────────
+  {
+    externalId: 'trajectory:lumateperone-caplyta-schizophrenia-approval-2019',
+    text: 'Lumateperone (Caplyta, Intra-Cellular Therapies), a first-in-class antipsychotic acting synergistically across serotonergic, dopaminergic, and glutamatergic systems, is a safe and effective treatment for schizophrenia in adults, as established by two placebo-controlled phase 3 trials and ratified by FDA approval on 20 December 2019.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2019-12-20',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2019-12-20',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved lumateperone (Caplyta) for schizophrenia in adults (announced December 23, 2019), based on two placebo-controlled trials showing statistically significant separation from placebo on the PANSS total score, with a metabolic and motor side-effect profile similar to placebo in short-term studies. The approval institutionally established a mechanistically novel antipsychotic — combining 5-HT2A antagonism with presynaptic/postsynaptic dopaminergic modulation — as a settled treatment option distinct from conventional D2-blocking agents.',
+        source: {
+          externalId: 'src:intracellular-caplyta-lumateperone-approval-2019',
+          name: 'Intra-Cellular Therapies. FDA Approves Intra-Cellular Therapies\' Novel Antipsychotic, CAPLYTA (lumateperone) for the Treatment of Schizophrenia in Adults. December 23, 2019.',
+          url: 'https://www.globenewswire.com/news-release/2019/12/23/1963993/0/en/FDA-Approves-Intra-Cellular-Therapies-Novel-Antipsychotic-CAPLYTA-lumateperone-for-the-Treatment-of-Schizophrenia-in-Adults.html',
+          publishedAt: '2019-12-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Suvorexant / Belsomra — orexin-receptor antagonist approval 2014 ─────────
+  {
+    externalId: 'trajectory:suvorexant-belsomra-orexin-insomnia-approval-2014',
+    text: 'Suvorexant (Belsomra, Merck), the first dual orexin-receptor antagonist, is a safe and effective treatment for insomnia involving difficulties with sleep onset and/or maintenance, as ratified by FDA approval on 13 August 2014 — establishing orexin antagonism as a mechanistically new class of hypnotic distinct from GABAergic sedatives.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2014-08-13',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-08-13',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved suvorexant (Belsomra) for insomnia, the first drug to act by blocking orexin receptors — the wake-promoting neuropeptide system — rather than by potentiating GABA like benzodiazepines and z-drugs. The approval institutionally validated a new pharmacological target for sleep medicine, shifting the conceptual model of insomnia treatment from broad CNS sedation to selective suppression of the arousal system.',
+        source: {
+          externalId: 'src:merck-belsomra-suvorexant-approval-2014',
+          name: 'Merck. FDA Approves BELSOMRA (suvorexant) for the Treatment of Insomnia. August 13, 2014.',
+          url: 'https://www.merck.com/news/fda-approves-belsomra-suvorexant-for-the-treatment-of-insomnia/',
+          publishedAt: '2014-08-13',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
