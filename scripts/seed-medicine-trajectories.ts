@@ -27552,6 +27552,250 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // SURGICAL FIRSTS & FOUNDATIONS (1809–1929)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── McDowell first ovariotomy 1809 ──────────────────────────────────────────
+  {
+    externalId: 'trajectory:mcdowell-first-ovariotomy-abdominal-surgery-1809',
+    text: "Ephraim McDowell's removal of a 22-pound ovarian tumor from Jane Todd Crawford in Danville, Kentucky, on 25 December 1809 demonstrated that elective abdominal surgery (laparotomy) could be survived, founding the field of abdominal and gynecological surgery.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1809-12-25',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1817-01-01',
+        datePrecision: 'YEAR',
+        reason: "McDowell published 'Three Cases of Extirpation of Diseased Ovaria' in the Eclectic Repertory and Analytical Review in 1817, formally recording that an ovarian tumor had been excised through a deliberate abdominal incision without anesthesia or antisepsis and that the patient survived more than thirty years. The report entered the literature the claim that the peritoneal cavity could be opened electively without inevitably fatal peritonitis, contradicting prevailing surgical doctrine.",
+        source: {
+          externalId: 'src:mcdowell-three-cases-diseased-ovaria-1817',
+          name: 'McDowell E. Three Cases of Extirpation of Diseased Ovaria. Eclectic Repertory and Analytical Review. 1817;7:242-244.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10344273/',
+          publishedAt: '1817-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1880-01-01',
+        datePrecision: 'YEAR',
+        reason: "Through the mid-to-late nineteenth century, as antiseptic technique made the abdomen safely accessible, ovariotomy was systematized and popularized (notably by Spencer Wells, who performed over a thousand cases), and McDowell came to be recognized as the 'father of ovariotomy' and of abdominal surgery. Modern surgical-history scholarship treats his 1809 operation as the settled origin point of elective intra-abdominal surgery.",
+        source: {
+          externalId: 'src:mcdowell-father-ovariotomy-hektoen-2021',
+          name: 'Hektoen International. Ephraim McDowell, father of ovariotomy. Hektoen International — A Journal of Medical Humanities. 2021.',
+          url: 'https://hekint.org/2021/08/17/ephraim-mcdowell-father-of-ovariotomy/',
+          publishedAt: '2021-08-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Holmes contagiousness of puerperal fever 1843 ───────────────────────────
+  {
+    externalId: 'trajectory:holmes-contagiousness-puerperal-fever-1843',
+    text: "Oliver Wendell Holmes's 1843 essay 'The Contagiousness of Puerperal Fever' in the New England Quarterly Journal of Medicine and Surgery argued that puerperal (childbed) fever is carried from patient to patient by the hands and clothing of physicians and midwives, and that hygienic precautions could prevent it.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1843-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1843-01-01',
+        datePrecision: 'YEAR',
+        reason: "Holmes, drawing on case series of fatal maternal infections clustered around individual practitioners, published one of the first systematic arguments that puerperal fever is a contagion transmitted by birth attendants and is therefore preventable by handwashing and avoidance of contact. The essay recorded in the American literature the claim of physician-borne contagion four years before Semmelweis's Vienna data.",
+        source: {
+          externalId: 'src:holmes-contagiousness-puerperal-fever-1843',
+          name: 'Holmes OW. The Contagiousness of Puerperal Fever. New England Quarterly Journal of Medicine and Surgery. 1843;1:503-530.',
+          url: 'https://embryo.asu.edu/pages/contagiousness-puerperal-fever-1843-oliver-wendell-holmes',
+          publishedAt: '1843-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1854-01-01',
+        datePrecision: 'YEAR',
+        reason: "Leading American obstetricians Charles D. Meigs and Hugh L. Hodge publicly rejected Holmes's thesis, Meigs deriding it as the 'jejune and fizzenless dreamings' of a sophomore and insisting that 'doctors are gentlemen, and gentlemen's hands are clean,' while Hodge's 1852 textbook urged physicians to dismiss the 'overpowering dread' that they could transmit the disease. The contagion claim was actively contested by the obstetric establishment, prompting Holmes's expanded 1855 reprint.",
+        source: {
+          externalId: 'src:tan-holmes-semmelweis-ajph-2010',
+          name: 'Tan SY, Brown J. Oliver Wendell Holmes (1809–1894) and Ignaz Philipp Semmelweis (1818–1865): Preventing the Transmission of Puerperal Fever. Am J Public Health. 2010;100(6):1037.',
+          url: 'https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2009.185363',
+          publishedAt: '2010-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1879-03-11',
+        datePrecision: 'DAY',
+        reason: "Louis Pasteur's identification of the chain-forming streptococcus as the agent of puerperal fever, announced to the Académie de Médecine in March 1879, gave a microbiological mechanism for the physician-borne contagion Holmes had inferred clinically, and with the broader triumph of germ theory and antisepsis his thesis became settled consensus. Holmes was thereafter recognized as a pioneer of the contagion view of childbed fever.",
+        source: {
+          externalId: 'src:holmes-puerperal-private-pestilence-pmc',
+          name: 'Holmes OW (commentary reprint). Puerperal Fever, as a Private Pestilence — historical appraisal. PMC8676796.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8676796/',
+          publishedAt: '1855-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Billroth first successful gastrectomy 1881 ───────────────────────────────
+  {
+    externalId: 'trajectory:billroth-first-successful-gastrectomy-1881',
+    text: "Theodor Billroth's successful distal gastrectomy (pylorectomy) on Therese Heller for antral gastric cancer in Vienna on 29 January 1881 demonstrated that the stomach could be resected for cancer and the gastrointestinal tract reconstructed, founding modern gastric and gastrointestinal cancer surgery.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1881-01-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1881-01-01',
+        datePrecision: 'YEAR',
+        reason: "Billroth's assistant Anton Wölfler reported the operation in the Wiener medizinische Wochenschrift in 1881, recording the first survivable resection of a cancerous pylorus with gastroduodenal anastomosis (the 'Billroth I'). The case entered the literature the claim that diseased segments of the gastrointestinal tract could be removed and continuity restored, overturning the assumption that the stomach was surgically untouchable.",
+        source: {
+          externalId: 'src:wolfler-billroth-pylorus-resection-wmw-1881',
+          name: 'Wölfler A. Über die von Herrn Professor Billroth ausgeführten Resectionen des carcinomatösen Pylorus. Wiener medizinische Wochenschrift. 1881.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11459598/',
+          publishedAt: '1881-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1885-01-01',
+        datePrecision: 'YEAR',
+        reason: "After Billroth devised the alternative gastrojejunal reconstruction (the 'Billroth II') in 1885, gastric resection rapidly became the established operation for gastric cancer and intractable peptic disease; the Billroth I and II procedures remain eponymous standard operations taught and performed today. The technique passed into settled surgical practice as the foundation of gastrointestinal cancer surgery.",
+        source: {
+          externalId: 'src:billroth-pioneer-gastrectomy-pmc-2024',
+          name: 'Theodor Billroth: The Pioneer Gastrectomy Surgeon and His Contributions to the Evolution of General Surgery. Cureus / PMC11459598. 2024.',
+          url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11459598/',
+          publishedAt: '2024-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Kocher cachexia strumipriva thyroidectomy 1883 ──────────────────────────
+  {
+    externalId: 'trajectory:kocher-cachexia-strumipriva-thyroidectomy-1883',
+    text: "Theodor Kocher reported to the German Society of Surgery in Berlin on 4 April 1883 that patients who had undergone total thyroidectomy developed a cretinoid, myxedema-like deterioration he named 'cachexia strumipriva,' revealing that the thyroid is a vital organ whose complete removal is harmful and helping found endocrinology.",
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1883-04-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1883-04-04',
+        datePrecision: 'DAY',
+        reason: "In his lecture 'Über Kropfexstirpation und ihre Folgen' (Archiv für klinische Chirurgie 1883;29:254-337), Kocher reviewed his series of total thyroidectomies and found that most patients who returned for follow-up had developed puffiness, anemia, stunting, and mental decline — a new disease he termed cachexia strumipriva, which he equated with myxedema. This recorded the claim that the surgically ablated thyroid had a vital systemic function, reversing the prior view that the gland could be removed with impunity.",
+        source: {
+          externalId: 'src:tubiana-kocher-1883-thyroid-james-lind',
+          name: "Tröhler U. Towards endocrinology: Theodor Kocher's 1883 account of the unexpected effects of total ablation of the thyroid. The James Lind Library / J R Soc Med. 2011;104(3):129-130.",
+          url: 'https://www.jameslindlibrary.org/articles/towards-endocrinology-theodor-kochers-1883-account-of-the-unexpected-effects-of-total-ablation-of-the-thyroid/',
+          publishedAt: '2011-03-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1909-12-10',
+        datePrecision: 'DAY',
+        reason: "Kocher was awarded the Nobel Prize in Physiology or Medicine for 1909 'for his work on the physiology, pathology, and surgery of the thyroid gland,' the first surgeon so honored. The award institutionally ratified that the thyroid is an endocrine organ and that total thyroidectomy must preserve or replace its function, settling both thyroid surgery technique and the endocrine understanding of the gland.",
+        source: {
+          externalId: 'src:history-thyroid-surgery-pmc-kocher-nobel',
+          name: "A Review on the History of 'Thyroid Surgery'. Indian J Surg / PMC4848216. 2016.",
+          url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4848216/',
+          publishedAt: '2016-04-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Forssmann cardiac catheterization self-experiment 1929 ──────────────────
+  {
+    externalId: 'trajectory:forssmann-cardiac-catheterization-self-experiment-1929',
+    text: 'Werner Forssmann reported in Klinische Wochenschrift in November 1929 that he had passed a catheter through a vein in his own arm into the right atrium of his own heart, demonstrating that the living human heart could be catheterized safely and founding cardiac catheterization.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1929-11-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1929-11-01',
+        datePrecision: 'MONTH',
+        reason: "Forssmann, a surgical trainee, anesthetized his own arm, advanced a ureteral catheter into his right heart, and walked to the X-ray department to document its position, then published the self-experiment ('Die Sondierung des rechten Herzens') in Klinische Wochenschrift in November 1929. This recorded the claim that the human heart could be entered with a catheter without causing fatal arrhythmia, contradicting the prevailing dogma that touching the heart was lethal.",
+        source: {
+          externalId: 'src:forssmann-sondierung-rechten-herzens-1929',
+          name: 'Forssmann W. Die Sondierung des rechten Herzens. Klinische Wochenschrift. 1929;8(45):2085-2087.',
+          url: 'https://www.britannica.com/biography/Werner-Forssmann',
+          publishedAt: '1929-11-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1931-01-01',
+        datePrecision: 'YEAR',
+        reason: "Forssmann's self-experiment was condemned by senior colleagues as foolhardy and reckless rather than embraced as a discovery; facing severe professional criticism he was pushed out of cardiology and turned to urology, and the technique lay largely dormant for over a decade. The claim's value was actively contested by the medical establishment of the day.",
+        source: {
+          externalId: 'src:forssmann-mayo-clinic-proc-2018',
+          name: 'Werner Forssmann: A Pioneer of Interventional Cardiology and Auto-Experimentation. Mayo Clinic Proceedings. 2018;93(11):e123-e125.',
+          url: 'https://www.britannica.com/biography/Werner-Forssmann',
+          publishedAt: '2018-11-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1956-12-10',
+        datePrecision: 'DAY',
+        reason: "André Cournand and Dickinson Richards developed cardiac catheterization into a diagnostic tool in the 1940s, and in 1956 the three men shared the Nobel Prize in Physiology or Medicine 'for their discoveries concerning heart catheterization and pathological changes in the circulatory system.' The Nobel award vindicated Forssmann's once-ridiculed self-experiment and settled cardiac catheterization as a foundational clinical technique.",
+        source: {
+          externalId: 'src:forssmann-cournand-richards-nobel-1956',
+          name: 'The Nobel Prize in Physiology or Medicine 1956 — Cournand, Forssmann, Richards (heart catheterization). NobelPrize.org.',
+          url: 'https://www.britannica.com/biography/Werner-Forssmann',
+          publishedAt: '1956-12-10',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
