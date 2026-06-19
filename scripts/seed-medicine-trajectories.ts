@@ -36428,6 +36428,132 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Marks & Sachar undertreatment of pain / opioid addiction fear — 1973 ─────
+  {
+    externalId: 'trajectory:marks-sachar-undertreatment-narcotic-analgesics-1973',
+    text: 'Richard Marks and Edward Sachar reported in Annals of Internal Medicine in February 1973 that hospitalized medical patients are systematically undertreated with narcotic analgesics — most receiving doses too low and too infrequent for relief — because physicians overestimate the risk of producing addiction through therapeutic opioid use, which the authors found to be uncommon in patients treated for pain.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1973-02-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1973-02-01',
+        datePrecision: 'MONTH',
+        reason: 'Marks and Sachar published a study of narcotic analgesic use on the medical wards of a teaching hospital, finding that the majority of patients in pain were undermedicated and that physicians\' exaggerated fear of iatrogenic addiction was the principal driver of inadequate dosing. The paper recorded into the literature the twin claim that pain is routinely undertreated and that clinically significant addiction arising from supervised therapeutic opioid use is rare.',
+        source: {
+          externalId: 'src:marks-sachar-undertreatment-aim-1973',
+          name: 'Marks RM, Sachar EJ. Undertreatment of medical inpatients with narcotic analgesics. Ann Intern Med. 1973 Feb;78(2):173-181.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4683747/',
+          publishedAt: '1973-02-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1992-02-01',
+        datePrecision: 'MONTH',
+        reason: 'The U.S. Agency for Health Care Policy and Research issued Clinical Practice Guideline No. 1, Acute Pain Management (AHCPR Pub. No. 92-0032), in February 1992, built explicitly on the premise that acute pain is widely and unnecessarily undertreated and must be aggressively assessed and managed. Federal codification of the undertreatment thesis into a national clinical guideline institutionally settled the core Marks–Sachar finding, even as the corollary that therapeutic opioid use rarely causes addiction was later contested during the opioid epidemic.',
+        source: {
+          externalId: 'src:ahcpr-acute-pain-management-guideline-1992',
+          name: 'Agency for Health Care Policy and Research. Acute Pain Management: Operative or Medical Procedures and Trauma. Clinical Practice Guideline No. 1. AHCPR Pub. No. 92-0032. Rockville, MD; February 1992.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK52130/',
+          publishedAt: '1992-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Beecher "The Powerful Placebo" — 1955 ──────────────────────────────────
+  {
+    externalId: 'trajectory:beecher-powerful-placebo-1955',
+    text: 'Henry K. Beecher reported in JAMA on 24 December 1955, aggregating 15 studies of 1,082 patients (many of them analgesic and post-operative pain trials), that placebos produce satisfactory clinical relief in an average of roughly 35% of patients, establishing the placebo response as a powerful, quantifiable effect that controlled trials must be designed to account for.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1955-12-24',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1955-12-24',
+        datePrecision: 'DAY',
+        reason: 'Beecher, an anesthesiologist drawing heavily on pain and analgesic studies, published \'The Powerful Placebo\' in JAMA, quantifying an average placebo response rate of about 35% across pooled trials. The paper recorded the claim that placebos exert clinically meaningful effects, supplying a central rationale for placebo-controlled randomized trial design and shaping mid-century clinical-trial methodology and the interpretation of analgesic studies.',
+        source: {
+          externalId: 'src:beecher-powerful-placebo-jama-1955',
+          name: 'Beecher HK. The powerful placebo. J Am Med Assoc. 1955 Dec 24;159(17):1602-1606.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/13271123/',
+          publishedAt: '1955-12-24',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2001-05-24',
+        datePrecision: 'DAY',
+        reason: 'Asbjørn Hróbjartsson and Peter Gøtzsche published a systematic analysis in NEJM of 114 randomized trials that included both a placebo and a no-treatment arm, finding little evidence that placebos exert powerful clinical effects, with only a small benefit for subjective and pain outcomes. By isolating placebo from natural course and regression to the mean — confounders Beecher had not controlled — the analysis directly contested the \'powerful placebo\' claim and reopened debate over the magnitude of the placebo effect.',
+        source: {
+          externalId: 'src:hrobjartsson-gotzsche-placebo-powerless-nejm-2001',
+          name: 'Hróbjartsson A, Gøtzsche PC. Is the placebo powerless? An analysis of clinical trials comparing placebo with no treatment. N Engl J Med. 2001 May 24;344(21):1594-1602.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11372012/',
+          publishedAt: '2001-05-24',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IASP first international definition of pain — 1979 ─────────────────────
+  {
+    externalId: 'trajectory:iasp-first-definition-of-pain-1979',
+    text: 'The International Association for the Study of Pain, through its Subcommittee on Taxonomy, published in the journal Pain in 1979 the first internationally standardized definition of pain — \'an unpleasant sensory and emotional experience associated with actual or potential tissue damage, or described in terms of such damage\' — explicitly establishing that pain is a subjective experience not requiring a demonstrable noxious stimulus.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1979-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1979-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The IASP Subcommittee on Taxonomy published its list of pain terms in the Association\'s journal Pain in 1979, and the definition of pain it recommended was adopted by the IASP Council as the official standard. The definition decoupled pain from any obligatory physical stimulus and became the globally authoritative reference used across clinical practice, research, and policy, settling a single operational meaning of \'pain\' for the field.',
+        source: {
+          externalId: 'src:iasp-pain-terms-taxonomy-1979',
+          name: 'Pain terms: a list with definitions and notes on usage. Recommended by the IASP Subcommittee on Taxonomy. Pain. 1979;6(3):247-252.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/460932/',
+          publishedAt: '1979-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-07-16',
+        datePrecision: 'DAY',
+        reason: 'After 41 years, an IASP presidential task force led by Srinivasa Raja revised the definition to \'an unpleasant sensory and emotional experience associated with, or resembling that associated with, actual or potential tissue damage,\' a change unanimously accepted by the IASP Council and announced on 16 July 2020. The revision broadened the definition to better capture pain without identifiable tissue damage while retaining it as the field\'s authoritative standard — a refinement of the settled concept rather than its reversal.',
+        source: {
+          externalId: 'src:raja-revised-iasp-pain-definition-2020',
+          name: 'Raja SN, Carr DB, Cohen M, et al. The revised International Association for the Study of Pain definition of pain: concepts, challenges, and compromises. Pain. 2020 Sep;161(9):1976-1982.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32694387/',
+          publishedAt: '2020-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
