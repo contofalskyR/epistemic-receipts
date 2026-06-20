@@ -40199,6 +40199,220 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // IMMUNO-ONCOLOGY & TARGETED THERAPY ERA (1999–2011)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Thalidomide antitumor activity in refractory multiple myeloma — Singhal 1999
+  {
+    externalId: 'trajectory:thalidomide-refractory-multiple-myeloma-antitumor-activity-1999',
+    text: 'On 18 November 1999, Singhal and colleagues reported in the New England Journal of Medicine that thalidomide had antitumor activity in refractory multiple myeloma, inducing responses in 32% of 84 heavily pretreated patients and reviving the drug as an anticancer agent.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1999-11-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-11-18',
+        datePrecision: 'DAY',
+        reason: 'Singhal et al. reported that single-agent thalidomide produced a 32% response rate in 84 patients with advanced, refractory multiple myeloma, including durable responses after high-dose chemotherapy relapse. The finding recorded the first evidence that thalidomide—infamous for its teratogenicity four decades earlier—possessed clinically meaningful antimyeloma activity, launching the immunomodulatory drug class.',
+        source: {
+          externalId: 'src:singhal-thalidomide-myeloma-nejm-1999',
+          name: 'Singhal S, Mehta J, Desikan R, et al. Antitumor activity of thalidomide in refractory multiple myeloma. N Engl J Med. 1999;341(21):1565-1571.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10564685/',
+          publishedAt: '1999-11-18',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-05-26',
+        datePrecision: 'YEAR',
+        reason: 'In 2006 the U.S. FDA granted approval for thalidomide (Thalomid) in combination with dexamethasone for newly diagnosed multiple myeloma, institutionalizing the once-banned teratogen as a standard frontline myeloma therapy under the STEPS risk-management program. This completed thalidomide\'s regulatory rehabilitation as an oncology drug.',
+        source: {
+          externalId: 'src:fda-thalomid-myeloma-approval-2006',
+          name: 'U.S. FDA. Approval of thalidomide (Thalomid) with dexamethasone for newly diagnosed multiple myeloma. 2006.',
+          url: 'https://en.wikipedia.org/wiki/Thalidomide',
+          publishedAt: '2006-05-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── National Polyp Study — colonoscopic polypectomy prevents colorectal cancer — Winawer 1993
+  {
+    externalId: 'trajectory:national-polyp-study-colonoscopic-polypectomy-prevents-colorectal-cancer-1993',
+    text: 'On 30 December 1993, Winawer and the National Polyp Study Workgroup reported in the New England Journal of Medicine that colonoscopic removal of adenomatous polyps reduced colorectal cancer incidence by 76-90% relative to reference cohorts, establishing the empirical basis for colonoscopy-based colorectal cancer prevention.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1993-12-30',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1993-12-30',
+        datePrecision: 'DAY',
+        reason: 'The National Polyp Study reported that patients undergoing colonoscopic polypectomy had a 76-90% lower incidence of colorectal cancer than three reference populations, providing the first prospective evidence that detecting and removing adenomas interrupts the adenoma-carcinoma sequence. This recorded the foundational efficacy claim for colonoscopy as a cancer-prevention tool.',
+        source: {
+          externalId: 'src:winawer-national-polyp-study-nejm-1993',
+          name: 'Winawer SJ, Zauber AG, Ho MN, et al. Prevention of colorectal cancer by colonoscopic polypectomy. The National Polyp Study Workgroup. N Engl J Med. 1993;329(27):1977-1981.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/8247072/',
+          publishedAt: '1993-12-30',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2012-02-23',
+        datePrecision: 'DAY',
+        reason: 'Zauber et al. reported the National Polyp Study\'s long-term follow-up in NEJM, showing colonoscopic polypectomy was associated with a 53% reduction in colorectal cancer mortality over a median 15.8 years. By demonstrating a mortality—not merely incidence—benefit, this settled colonoscopic polypectomy as a validated means of preventing death from colorectal cancer.',
+        source: {
+          externalId: 'src:zauber-national-polyp-study-mortality-nejm-2012',
+          name: 'Zauber AG, Winawer SJ, O\'Brien MJ, et al. Colonoscopic polypectomy and long-term prevention of colorectal-cancer deaths. N Engl J Med. 2012;366(8):687-696.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/22356322/',
+          publishedAt: '2012-02-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Lenalidomide in del(5q) myelodysplastic syndrome — List 2006
+  {
+    externalId: 'trajectory:lenalidomide-myelodysplastic-syndrome-5q-deletion-2006',
+    text: 'On 5 October 2006, List and colleagues reported in the New England Journal of Medicine that lenalidomide reduced or eliminated transfusion dependence in 76% of patients with low/intermediate-risk myelodysplastic syndrome carrying the chromosome 5q deletion, with 67% achieving transfusion independence and cytogenetic remissions.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-10-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-10-05',
+        datePrecision: 'DAY',
+        reason: 'List et al. published the MDS-003 trial showing the thalidomide analog lenalidomide produced transfusion independence in 67% and complete cytogenetic remission in many patients with del(5q) myelodysplastic syndrome. This recorded the first targeted therapy matched to a specific cytogenetic lesion in MDS, demonstrating disease-modifying activity in a previously untreatable transfusion-dependent population.',
+        source: {
+          externalId: 'src:list-lenalidomide-mds-5q-nejm-2006',
+          name: 'List A, Dewald G, Bennett J, et al. Lenalidomide in the myelodysplastic syndrome with chromosome 5q deletion. N Engl J Med. 2006;355(14):1456-1465.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17021321/',
+          publishedAt: '2006-10-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2005-12-27',
+        datePrecision: 'MONTH',
+        reason: 'The U.S. FDA approved lenalidomide (Revlimid) in December 2005 for transfusion-dependent anemia in low- or intermediate-1-risk myelodysplastic syndrome with the 5q deletion, ahead of the full trial publication. Regulatory adoption institutionalized lenalidomide as standard therapy for del(5q) MDS and established the immunomodulatory drug class in this disease.',
+        source: {
+          externalId: 'src:fda-revlimid-mds-5q-approval-2005',
+          name: 'U.S. FDA. Approval of lenalidomide (Revlimid) for low/intermediate-1-risk MDS with 5q deletion. December 2005.',
+          url: 'https://en.wikipedia.org/wiki/Lenalidomide',
+          publishedAt: '2005-12-27',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Sunitinib superior to interferon alfa in metastatic renal-cell carcinoma — Motzer 2007
+  {
+    externalId: 'trajectory:sunitinib-superior-interferon-metastatic-renal-cell-carcinoma-2007',
+    text: 'On 11 January 2007, Motzer and colleagues reported in the New England Journal of Medicine that sunitinib more than doubled progression-free survival versus interferon alfa as first-line treatment for metastatic renal-cell carcinoma (11 vs 5 months) with a far higher response rate (31% vs 6%).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-01-11',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-01-11',
+        datePrecision: 'DAY',
+        reason: 'Motzer et al. published the phase 3 trial showing sunitinib, a multitargeted receptor tyrosine kinase inhibitor, doubled progression-free survival and raised objective response from 6% to 31% versus the prior standard interferon alfa in treatment-naive metastatic RCC. This recorded the displacement of cytokine therapy by VEGF-pathway targeted therapy as first-line treatment for advanced kidney cancer.',
+        source: {
+          externalId: 'src:motzer-sunitinib-rcc-nejm-2007',
+          name: 'Motzer RJ, Hutson TE, Tomczak P, et al. Sunitinib versus interferon alfa in metastatic renal-cell carcinoma. N Engl J Med. 2007;356(2):115-124.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17215529/',
+          publishedAt: '2007-01-11',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2006-01-26',
+        datePrecision: 'MONTH',
+        reason: 'The U.S. FDA approved sunitinib (Sutent) in January 2006 for advanced renal-cell carcinoma and imatinib-resistant gastrointestinal stromal tumor—the first cancer drug simultaneously approved for two indications. Regulatory adoption (initially on response-rate data, later confirmed by the Motzer phase 3 trial) institutionalized antiangiogenic TKIs as standard of care in metastatic kidney cancer.',
+        source: {
+          externalId: 'src:fda-sutent-sunitinib-approval-2006',
+          name: 'U.S. FDA. Approval of sunitinib malate (Sutent) for renal cell carcinoma and imatinib-resistant GIST. January 2006.',
+          url: 'https://en.wikipedia.org/wiki/Sunitinib',
+          publishedAt: '2006-01-26',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Ipilimumab first survival benefit in metastatic melanoma — Hodi 2010
+  {
+    externalId: 'trajectory:ipilimumab-first-survival-benefit-metastatic-melanoma-2010',
+    text: 'On 19 August 2010, Hodi and colleagues reported in the New England Journal of Medicine that ipilimumab, an anti-CTLA-4 monoclonal antibody, was the first agent to improve overall survival in patients with previously treated metastatic melanoma in a randomized phase 3 trial (median 10.0 vs 6.4 months; hazard ratio 0.68).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2010-08-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2010-08-19',
+        datePrecision: 'DAY',
+        reason: 'Hodi et al. published the phase 3 MDX010-20 trial in NEJM, showing ipilimumab (alone or with a gp100 vaccine) extended median overall survival to ~10 months versus 6.4 months for vaccine alone (HR 0.68, p<0.001). This was the first randomized trial in metastatic melanoma to demonstrate an overall survival benefit and the first proof that immune checkpoint blockade could prolong survival in a solid tumor.',
+        source: {
+          externalId: 'src:hodi-ipilimumab-melanoma-nejm-2010',
+          name: 'Hodi FS, O\'Day SJ, McDermott DF, et al. Improved survival with ipilimumab in patients with metastatic melanoma. N Engl J Med. 2010;363(8):711-723.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20525992/',
+          publishedAt: '2010-08-19',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2011-03-25',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved ipilimumab (Yervoy) for unresectable or metastatic melanoma on 25 March 2011, the first approval of an immune checkpoint inhibitor. Regulatory adoption institutionalized checkpoint blockade as a validated treatment modality and opened the immuno-oncology era.',
+        source: {
+          externalId: 'src:fda-yervoy-ipilimumab-approval-2011',
+          name: 'U.S. FDA. FDA approves new treatment for a type of late-stage skin cancer (Yervoy/ipilimumab). Press release. March 25, 2011.',
+          url: 'https://en.wikipedia.org/wiki/Ipilimumab',
+          publishedAt: '2011-03-25',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
