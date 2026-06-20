@@ -50411,33 +50411,6 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
-  // ── Mifeprex (mifepristone) FDA approval for medical abortion 2000 ───────────
-  {
-    externalId: 'trajectory:mifepristone-mifeprex-fda-approval-medical-abortion-2000',
-    text: 'On 28 September 2000 the U.S. FDA approved Mifeprex (mifepristone, NDA 020687) for the medical termination of intrauterine pregnancy through 49 days\' gestation, establishing a non-surgical abortion regimen in the United States after a decade of regulatory delay.',
-    claimType: 'INSTITUTIONAL',
-    claimEmergedAt: '2000-09-28',
-    claimEmergedPrecision: 'DAY',
-    currentAxis: 'SETTLED',
-    transitions: [
-      {
-        fromAxis: null,
-        toAxis: 'SETTLED',
-        community: 'INSTITUTIONAL',
-        occurredAt: '2000-09-28',
-        datePrecision: 'DAY',
-        reason: 'The FDA approved Mifeprex under the restricted-distribution provisions of 21 CFR 314 Subpart H, concluding that mifepristone followed by misoprostol was safe and effective for ending early pregnancy. The approval, issued after years of political and regulatory delay following European licensure, converted a contested reproductive-health intervention into an institutionally sanctioned standard of care in the United States.',
-        source: {
-          externalId: 'src:fda-mifeprex-approval-letter-2000',
-          name: 'U.S. Food and Drug Administration. Approval Letter, MIFEPREX (mifepristone) Tablets, NDA 20-687. September 28, 2000.',
-          url: 'https://webarchive.loc.gov/all/20011116012552/http:/www.fda.gov/cder/foi/appletter/2000/20687appltr.htm',
-          publishedAt: '2000-09-28',
-          methodologyType: 'primary',
-        },
-      },
-    ],
-  },
-
   // ── Shanghai Trial — breast self-examination has no mortality benefit 2002 ───
   {
     externalId: 'trajectory:shanghai-trial-breast-self-examination-no-mortality-benefit-2002',
