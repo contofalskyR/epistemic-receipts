@@ -46474,6 +46474,163 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // NEUROLOGY & PSYCHIATRY (1968–1987)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Harvard brain death criteria 1968 ──────────────────────────────────────
+  {
+    externalId: 'trajectory:harvard-irreversible-coma-brain-death-1968',
+    text: 'The Ad Hoc Committee of the Harvard Medical School reported in JAMA on 5 August 1968 that ‘irreversible coma’ — the permanent cessation of all brain function, including the brainstem — should serve as a new criterion for death, establishing neurological (brain) death as a definition of death distinct from cardiopulmonary criteria.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1968-08-05',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1968-08-05',
+        datePrecision: 'DAY',
+        reason: 'The Harvard committee, chaired by anesthesiologist Henry Beecher, published ‘A Definition of Irreversible Coma’ in JAMA, setting out clinical criteria (unreceptivity, no movements or breathing, no reflexes, flat EEG) for diagnosing a permanently nonfunctioning brain. It was the first formal medical proposal to define death by neurological rather than cardiopulmonary criteria, motivated partly by the new realities of mechanical ventilation and organ transplantation.',
+        source: {
+          externalId: 'src:harvard-irreversible-coma-jama-1968',
+          name: 'Ad Hoc Committee of the Harvard Medical School to Examine the Definition of Brain Death. A definition of irreversible coma. JAMA. 1968;205(6):337-340.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/5694976/',
+          publishedAt: '1968-08-05',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1981-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The President’s Commission for the Study of Ethical Problems in Medicine issued ‘Defining Death’ (July 1981) and, together with the AMA, ABA, and Uniform Law Commission, advanced the Uniform Determination of Death Act, which codified that death may be determined by irreversible cessation of all functions of the entire brain. Subsequently adopted by most US states, this gave the Harvard concept the force of uniform law, settling brain death as a medical-legal standard.',
+        source: {
+          externalId: 'src:uniform-determination-death-act-1981',
+          name: 'National Conference of Commissioners on Uniform State Laws. Uniform Determination of Death Act. 1981 (with President’s Commission, Defining Death, July 1981).',
+          url: 'https://en.wikipedia.org/wiki/Uniform_Determination_of_Death_Act',
+          publishedAt: '1981-07-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Persistent vegetative state — Jennett & Plum 1972 ──────────────────────
+  {
+    externalId: 'trajectory:jennett-plum-persistent-vegetative-state-1972',
+    text: 'Scottish neurosurgeon Bryan Jennett and American neurologist Fred Plum reported in The Lancet in April 1972 a clinical entity — the ‘persistent vegetative state’ — in which patients with severe brain damage recover wakefulness and sleep-wake cycles without any detectable awareness of self or environment, naming a condition previously lacking a coherent definition.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1972-04',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1972-04',
+        datePrecision: 'MONTH',
+        reason: 'Jennett and Plum published ‘Persistent vegetative state after brain damage: a syndrome in search of a name’ in The Lancet, coining the term to describe wakefulness without awareness following catastrophic brain injury. The paper distinguished the state from coma and brain death and gave clinicians a shared vocabulary for a condition increasingly produced by intensive-care survival, recording a new clinical entity in the neurological literature.',
+        source: {
+          externalId: 'src:jennett-plum-pvs-lancet-1972',
+          name: 'Jennett B, Plum F. Persistent vegetative state after brain damage. A syndrome in search of a name. Lancet. 1972;1(7753):734-737.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/4111204/',
+          publishedAt: '1972-04-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1994-05-26',
+        datePrecision: 'DAY',
+        reason: 'The Multi-Society Task Force on PVS published a two-part consensus statement in the New England Journal of Medicine establishing agreed diagnostic criteria, prognosis, and the one-month threshold defining the persistent vegetative state in adults and children. Endorsed by the major US neurology, neurosurgery, and pediatric bodies, it consolidated Jennett and Plum’s entity into a settled, professionally ratified diagnostic standard.',
+        source: {
+          externalId: 'src:multisociety-pvs-nejm-1994',
+          name: 'The Multi-Society Task Force on PVS. Medical aspects of the persistent vegetative state (first of two parts). N Engl J Med. 1994;330(21):1499-1508.',
+          url: 'https://www.nejm.org/doi/full/10.1056/NEJM199405263302107',
+          publishedAt: '1994-05-26',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Buspirone first non-benzodiazepine anxiolytic — FDA 1986 ───────────────
+  {
+    externalId: 'trajectory:buspirone-buspar-first-nonbenzodiazepine-anxiolytic-1986',
+    text: 'The U.S. FDA approved buspirone (BuSpar, Bristol-Myers, NDA 18-731) on 29 September 1986 for generalized anxiety, establishing it as the first non-benzodiazepine anxiolytic — a 5-HT1A partial agonist that relieves anxiety without the sedation, dependence, or abuse liability of the benzodiazepines.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '1986-09-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-09-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted marketing approval to buspirone for anxiety, the first novel anxiolytic class cleared in the United States since the benzodiazepines roughly thirty years earlier. Mechanistically unrelated to benzodiazepines, barbiturates, or other sedatives, its approval institutionally established that anxiety could be treated by a serotonergic agent lacking sedative and dependence-forming properties, occurring as benzodiazepine dependence concerns (recorded in the literature by 1981) were reshaping anxiolytic prescribing.',
+        source: {
+          externalId: 'src:fda-buspar-nda-18731-determination-2010',
+          name: 'FDA / Federal Register. Determination That BUSPAR (Buspirone Hydrochloride) Tablets Were Not Withdrawn for Reasons of Safety or Effectiveness (NDA 18-731, initially approved September 29, 1986). 75 FR 64340, Oct. 19, 2010.',
+          url: 'https://www.federalregister.gov/documents/2010/10/19/2010-26214/determination-that-buspar-buspirone-hydrochloride-tablets-10-milligrams-15-milligrams-and-30',
+          publishedAt: '2010-10-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Dexamethasone suppression test for melancholia — Carroll 1981 ──────────
+  {
+    externalId: 'trajectory:carroll-dexamethasone-suppression-test-melancholia-1981',
+    text: 'B. J. Carroll and colleagues reported in Archives of General Psychiatry in January 1981 that the overnight dexamethasone suppression test (DST) is a specific laboratory test for the diagnosis of melancholia, claiming a biological marker (cortisol non-suppression) could objectively identify endogenous depression — the first proposed biomarker in psychiatry.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1981-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1981-01',
+        datePrecision: 'MONTH',
+        reason: 'Carroll et al. published ‘A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility’ in 438 subjects, reporting ~67% sensitivity and ~96% specificity for melancholia and proposing the DST as the first objective laboratory diagnostic in psychiatry. The paper generated intense interest and hundreds of follow-on studies, recording into the literature the claim that depression had a measurable biological signature.',
+        source: {
+          externalId: 'src:carroll-dst-melancholia-archgenpsych-1981',
+          name: 'Carroll BJ, Feinberg M, Greden JF, et al. A specific laboratory test for the diagnosis of melancholia: standardization, validation, and clinical utility. Arch Gen Psychiatry. 1981;38(1):15-22.',
+          url: 'https://doi.org/10.1001/archpsyc.1981.01780260017001',
+          publishedAt: '1981-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1987-10',
+        datePrecision: 'MONTH',
+        reason: 'After replication studies repeatedly failed to reproduce the reported specificity, the APA Task Force on Laboratory Tests in Psychiatry published an overview in the American Journal of Psychiatry concluding that the DST lacked sufficient sensitivity and specificity for routine diagnostic use in depression. This authoritative reassessment overturned Carroll’s diagnostic-specificity claim, ending the DST’s status as a clinical diagnostic test for melancholia.',
+        source: {
+          externalId: 'src:apa-taskforce-dst-ajp-1987',
+          name: 'APA Task Force on Laboratory Tests in Psychiatry. The dexamethasone suppression test: an overview of its current status in psychiatry. Am J Psychiatry. 1987;144(10):1253-1262.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/3310667/',
+          publishedAt: '1987-10-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
