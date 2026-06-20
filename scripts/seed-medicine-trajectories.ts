@@ -51962,6 +51962,174 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Teprotumumab (Tepezza) — first thyroid eye disease drug 2020 ────────────
+  {
+    externalId: 'trajectory:teprotumumab-tepezza-first-thyroid-eye-disease-drug-2020',
+    text: 'On January 21, 2020, the U.S. FDA approved teprotumumab (Tepezza, Horizon), an IGF-1 receptor inhibitory antibody, as the first drug ever approved for thyroid eye disease (Graves\' orbitopathy), establishing a molecularly targeted medical therapy for a condition previously managed only with steroids, radiation, or surgery.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2017-05-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2017-05-04',
+        datePrecision: 'DAY',
+        reason: 'Terry J. Smith and colleagues published the first randomized, placebo-controlled trial of teprotumumab for thyroid-associated ophthalmopathy in the New England Journal of Medicine, reporting that 69% of treated patients met the primary response endpoint at week 24 versus 20% on placebo. The result recorded, in the expert literature, the novel claim that blocking the IGF-1 receptor reverses active orbital inflammation and proptosis — reframing an autoimmune eye disease as pharmacologically treatable.',
+        source: {
+          externalId: 'src:smith-teprotumumab-tao-nejm-2017',
+          name: 'Smith TJ, Kahaly GJ, Ezra DG, et al. Teprotumumab for Thyroid-Associated Ophthalmopathy. N Engl J Med. 2017;376(18):1748-1761.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/28467880/',
+          publishedAt: '2017-05-04',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2020-01-21',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Tepezza as the first-ever treatment for thyroid eye disease, granted after Fast Track, Breakthrough Therapy, and Orphan Drug designations and on the strength of the confirmatory phase 3 OPTIC trial (NEJM, Jan 23 2020), in which 83% of treated patients were proptosis responders versus 10% on placebo. The approval institutionalized IGF-1R blockade as the standard disease-modifying therapy and converted the empirical efficacy claim into a sanctioned medical fact.',
+        source: {
+          externalId: 'src:fda-tepezza-approval-thyroid-eye-disease-2020',
+          name: 'U.S. FDA. FDA approves first treatment for thyroid eye disease. Press announcement. January 21, 2020.',
+          url: 'https://www.fda.gov/news-events/press-announcements/fda-approves-first-treatment-thyroid-eye-disease',
+          publishedAt: '2020-01-21',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Strimvelis — first ex vivo gene therapy (ADA-SCID) EU approval 2016 ────
+  {
+    externalId: 'trajectory:strimvelis-first-ex-vivo-gene-therapy-ada-scid-2016',
+    text: 'On May 26, 2016, the European Commission granted marketing authorisation to Strimvelis (GSK), autologous CD34+ cells transduced with a retroviral vector carrying the adenosine deaminase gene, making it the first ex vivo autologous stem-cell gene therapy approved anywhere in the world, for ADA-SCID in children lacking a matched donor.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2009-01-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2009-01-29',
+        datePrecision: 'DAY',
+        reason: 'Alessandro Aiuti and colleagues (San Raffaele Telethon Institute) reported in the New England Journal of Medicine that 10 children with ADA-SCID treated with autologous ADA-gene-corrected CD34+ cells plus reduced-intensity busulfan conditioning all survived, with durable engraftment and immune reconstitution and most freed from enzyme-replacement therapy. The paper recorded the claim that ex vivo retroviral gene correction safely and durably treats a previously fatal inherited immunodeficiency.',
+        source: {
+          externalId: 'src:aiuti-ada-scid-gene-therapy-nejm-2009',
+          name: 'Aiuti A, Cattaneo F, Galimberti S, et al. Gene therapy for immunodeficiency due to adenosine deaminase deficiency. N Engl J Med. 2009;360(5):447-458.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/19179314/',
+          publishedAt: '2009-01-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-05-26',
+        datePrecision: 'DAY',
+        reason: 'Following a CHMP positive opinion (April 2016), the European Commission granted Strimvelis full marketing authorisation — the first ex vivo autologous stem-cell gene therapy and first corrective gene therapy for children approved by any regulator, based on 18 ADA-SCID children with 100% survival over a median ~7-year follow-up. The authorisation moved the gene-correction claim from clinical evidence to a sanctioned, marketable treatment, establishing the regulatory template for subsequent advanced therapy medicinal products.',
+        source: {
+          externalId: 'src:gsk-strimvelis-eu-marketing-authorisation-2016',
+          name: 'GlaxoSmithKline. Strimvelis receives European marketing authorisation to treat very rare disease, ADA-SCID. Press release. May 27, 2016.',
+          url: 'https://www.gsk.com/en-gb/media/press-releases/strimvelistm-receives-european-marketing-authorisation-to-treat-very-rare-disease-ada-scid/',
+          publishedAt: '2016-05-27',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Drisapersen (Kyndrisa) — FDA rejection, Duchenne exon-51 skipping 2016 ─
+  {
+    externalId: 'trajectory:drisapersen-kyndrisa-fda-rejection-duchenne-2016',
+    text: 'On January 14, 2016, the U.S. FDA issued a Complete Response Letter rejecting BioMarin\'s drisapersen (Kyndrisa), an antisense oligonucleotide for Duchenne muscular dystrophy amenable to exon-51 skipping, concluding the standard of substantial evidence of effectiveness had not been met; BioMarin subsequently ended the program.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2015-11',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'CONTESTED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-11',
+        datePrecision: 'MONTH',
+        reason: 'At the November 2015 FDA Peripheral and Central Nervous System Drugs Advisory Committee meeting, advisers were not persuaded that drisapersen produced a clinically meaningful benefit, citing inconsistent trial results (the pivotal phase 3 had missed its primary 6-minute-walk endpoint) and small, variable dystrophin increases. The first exon-skipping antisense candidate for DMD to reach formal FDA review thus entered open regulatory contest over whether its surrogate evidence demonstrated efficacy.',
+        source: {
+          externalId: 'src:biomarin-kyndrisa-crl-dmd-2016',
+          name: 'BioMarin. FDA Issues Complete Response Letter for Kyndrisa for Duchenne Muscular Dystrophy Amenable to Exon 51 Skipping. Press release. January 14, 2016.',
+          url: 'https://www.biomarin.com/news/press-releases/fda-issues-complete-response-letter-for-kyndrisatm-for-duchenne-muscular-dystrophy-amenable-to-exon-51-skipping/',
+          publishedAt: '2016-01-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'CONTESTED',
+        toAxis: 'ABANDONED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-01-14',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued a Complete Response Letter concluding that substantial evidence of effectiveness had not been met and that the application was not ready for approval. BioMarin then discontinued the drisapersen DMD program and withdrew its European marketing application, abandoning the efficacy claim — a rejection that stood in pointed contrast to the FDA\'s contested accelerated approval of the rival exon-51 drug eteplirsen eight months later.',
+        source: {
+          externalId: 'src:biomarin-kyndrisa-crl-rejection-2016',
+          name: 'BioMarin. FDA Issues Complete Response Letter for Kyndrisa for Duchenne Muscular Dystrophy Amenable to Exon 51 Skipping. Press release. January 14, 2016.',
+          url: 'https://www.biomarin.com/news/press-releases/fda-issues-complete-response-letter-for-kyndrisatm-for-duchenne-muscular-dystrophy-amenable-to-exon-51-skipping/',
+          publishedAt: '2016-01-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Fomepizole (Antizol) — first ethylene glycol antidote 1997 ─────────────
+  {
+    externalId: 'trajectory:fomepizole-antizol-first-ethylene-glycol-antidote-1997',
+    text: 'On December 4, 1997, the U.S. FDA approved fomepizole (Antizol, Orphan Medical), an alcohol-dehydrogenase inhibitor, as the first drug indicated as an antidote for ethylene glycol poisoning, providing an orphan-drug alternative to ethanol infusion and dialysis-dependent management.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1997-12-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1997-12-04',
+        datePrecision: 'DAY',
+        reason: 'The FDA granted marketing clearance to Antizol (fomepizole), developed by Orphan Medical under orphan-drug status, as the first approved antidote for suspected or confirmed ethylene glycol poisoning. The approval recorded, as an institutional fact, that competitive inhibition of alcohol dehydrogenase by 4-methylpyrazole prevents formation of toxic metabolites — offering a titratable, non-sedating alternative to intravenous ethanol.',
+        source: {
+          externalId: 'src:aafp-significant-fda-approvals-1997',
+          name: 'Significant FDA Approvals in 1997 (Antizol/fomepizole). Am Fam Physician. 1998;57(11):2865.',
+          url: 'https://www.aafp.org/pubs/afp/issues/1998/0601/p2865.html',
+          publishedAt: '1998-06-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1999-03-18',
+        datePrecision: 'DAY',
+        reason: 'Brent and colleagues published the prospective multicenter Methylpyrazole for Toxic Alcohols trial in the New England Journal of Medicine, reporting that intravenous fomepizole in 19 ethylene-glycol-poisoned patients normalized acid-base status and, given early, prevented renal injury without sedation or hypoglycemia. The peer-reviewed evidence (followed by a 2000 FDA methanol indication) settled fomepizole as the established first-line antidote for toxic alcohol poisoning.',
+        source: {
+          externalId: 'src:brent-fomepizole-ethylene-glycol-nejm-1999',
+          name: 'Brent J, McMartin K, Phillips S, et al. Fomepizole for the treatment of ethylene glycol poisoning. N Engl J Med. 1999;340(11):832-838.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/10080845/',
+          publishedAt: '1999-03-18',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
