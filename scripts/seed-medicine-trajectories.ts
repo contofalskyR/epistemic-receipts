@@ -53157,6 +53157,301 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // OPIOID / PAIN MANAGEMENT (1965–2022)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Methadone maintenance for heroin addiction — Dole & Nyswander 1965 ──────
+  {
+    externalId: 'trajectory:methadone-maintenance-heroin-addiction-1965',
+    text: 'Vincent Dole and Marie Nyswander reported in JAMA on August 23, 1965, that heroin addiction could be medically managed as a treatable metabolic disorder, with daily oral methadone hydrochloride stabilizing patients and blocking narcotic craving without intoxication.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1965-08-23',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1965-08-23',
+        datePrecision: 'DAY',
+        reason: 'Dole and Nyswander published the first clinical trial of methadone maintenance, reporting that 22 chronic heroin addicts stabilized on oral methadone lost their drug hunger and resumed functional lives. The paper recast addiction from a moral failing into a treatable medical condition and put pharmacological maintenance therapy on the scientific record for the first time.',
+        source: {
+          externalId: 'src:dole-nyswander-jama-1965',
+          name: 'Dole VP, Nyswander M. A Medical Treatment for Diacetylmorphine (Heroin) Addiction. A Clinical Trial With Methadone Hydrochloride. JAMA. 1965 Aug 23;193:646-650.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/14321530/',
+          publishedAt: '1965-08-23',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1972-12-15',
+        datePrecision: 'DAY',
+        reason: 'The FDA issued its final methadone regulations on December 15, 1972 (37 FR 26790), formally approving methadone for maintenance and detoxification treatment of opiate addiction and establishing a closed federal distribution system of registered treatment programs. The institutional ratification converted the Dole-Nyswander finding into the sanctioned standard of care for opioid dependence.',
+        source: {
+          externalId: 'src:iom-federal-regulation-methadone-1995',
+          name: 'Institute of Medicine. Federal Regulation of Methadone Treatment (documenting the FDA final methadone regulations, 37 Fed. Reg. 26790, Dec. 15, 1972). Washington, DC: National Academies Press; 1995.',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK232105/',
+          publishedAt: '1995-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Portenoy & Foley chronic opioids for non-malignant pain — reversed 1986–2015 ──
+  {
+    externalId: 'trajectory:portenoy-foley-chronic-opioids-nonmalignant-1986',
+    text: 'Russell Portenoy and Kathleen Foley reported in the journal Pain in May 1986, from a series of 38 patients, that chronic opioid maintenance therapy could be a safe and humane treatment for intractable non-malignant (non-cancer) pain in patients without a history of substance abuse.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1986-05-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1986-05-01',
+        datePrecision: 'MONTH',
+        reason: 'Portenoy and Foley published a retrospective report of 38 patients maintained on opioids for non-malignant pain, concluding that opioid therapy was a \'safe, salutary and more humane alternative\' for selected patients. The paper became a foundational citation legitimizing long-term opioid prescribing for chronic non-cancer pain, a use previously regarded as risky.',
+        source: {
+          externalId: 'src:portenoy-foley-pain-1986',
+          name: 'Portenoy RK, Foley KM. Chronic use of opioid analgesics in non-malignant pain: report of 38 cases. Pain. 1986 May;25(2):171-186.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/2873550/',
+          publishedAt: '1986-05-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2015-02-17',
+        datePrecision: 'DAY',
+        reason: 'Chou and colleagues published a systematic review for the NIH Pathways to Prevention Workshop in Annals of Internal Medicine concluding that evidence is insufficient to determine whether long-term opioid therapy improves chronic pain or function, while documenting a dose-dependent risk of serious harms including overdose and addiction. The review formally repudiated the evidentiary basis for the 1986 safe-for-chronic-non-cancer-pain claim, which Portenoy himself had by then publicly disavowed.',
+        source: {
+          externalId: 'src:chou-long-term-opioid-annals-2015',
+          name: 'Chou R, Turner JA, Devine EB, et al. The Effectiveness and Risks of Long-Term Opioid Therapy for Chronic Pain: A Systematic Review for a National Institutes of Health Pathways to Prevention Workshop. Ann Intern Med. 2015 Feb 17;162(4):276-286.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25581257/',
+          publishedAt: '2015-02-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WHO analgesic ladder for cancer pain — contested 1986–2022 ──────────────
+  {
+    externalId: 'trajectory:who-analgesic-ladder-cancer-pain-1986',
+    text: 'The World Health Organization published Cancer Pain Relief in 1986, introducing the three-step analgesic ladder that prescribed escalating from non-opioids to \'weak\' opioids to \'strong\' opioids to achieve adequate cancer pain control.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '1986-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1986-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The WHO published Cancer Pain Relief, codifying the three-step analgesic ladder as a global standard for cancer pain management; the booklet was translated into more than 20 languages and adopted internationally. The ladder, reportedly effective for 70–80% of cancer patients, became the dominant institutional framework for analgesic prescribing.',
+        source: {
+          externalId: 'src:who-cancer-pain-relief-1986',
+          name: 'World Health Organization. Cancer Pain Relief. Geneva: WHO; 1986 (three-step analgesic ladder; year confirmed via WHO Analgesic Ladder, StatPearls, NCBI Bookshelf).',
+          url: 'https://www.ncbi.nlm.nih.gov/books/NBK554435/',
+          publishedAt: '1986-01-01',
+          methodologyType: 'derivative',
+        },
+      },
+      {
+        fromAxis: 'SETTLED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-04-06',
+        datePrecision: 'DAY',
+        reason: 'Crush and colleagues argued in the British Journal of Anaesthesia that the 1986 ladder\'s weak-versus-strong opioid dichotomy had been inadvertently and deliberately misappropriated far beyond cancer pain, contributing to opioid-related harm and misuse. The paper, alongside parallel calls to abandon the ladder\'s second \'weak opioid\' step, placed the ladder\'s continued general applicability in active dispute.',
+        source: {
+          externalId: 'src:crush-who-ladder-misappropriation-bja-2022',
+          name: 'Crush J, Levy N, Knaggs RD, Lobo DN. Misappropriation of the 1986 WHO analgesic ladder: the pitfalls of labelling opioids as weak or strong. Br J Anaesth. 2022 Aug;129(2):137-142.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35397880/',
+          publishedAt: '2022-04-06',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── LIFT trial tibolone stroke risk — NEJM 2008 ────────────────────────────
+  {
+    externalId: 'trajectory:lift-tibolone-stroke-older-women-2008',
+    text: 'The LIFT trial (Cummings et al., New England Journal of Medicine, 14 August 2008) found that tibolone increased the risk of stroke roughly twofold in older postmenopausal women, prompting early termination of the trial in February 2006 despite reductions in vertebral fracture and invasive breast cancer.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2008-08-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2008-08-14',
+        datePrecision: 'DAY',
+        reason: 'The data and safety monitoring board stopped the Long-Term Intervention on Fractures with Tibolone (LIFT) trial in February 2006 after tibolone-treated women showed a relative stroke hazard of 2.19 (95% CI 1.14-4.23, P=0.02). The results, published in NEJM in 2008, recorded into the top-tier literature that tibolone — widely used in Europe as a menopausal hormone therapy and bone agent — raises stroke risk in older women even as it cut vertebral and nonvertebral fractures and invasive breast cancer, reframing its risk-benefit profile in this population.',
+        source: {
+          externalId: 'src:cummings-lift-tibolone-nejm-2008',
+          name: 'Cummings SR, Ettinger B, Delmas PD, et al; LIFT Trial Investigators. The effects of tibolone in older postmenopausal women. N Engl J Med. 2008;359(7):697-708.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/18703472/',
+          publishedAt: '2008-08-14',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── WISDOM trial HRT cardiovascular risk — BMJ 2007 ────────────────────────
+  {
+    externalId: 'trajectory:wisdom-hrt-cardiovascular-risk-rct-2007',
+    text: 'The WISDOM randomised controlled trial (Vickers et al., BMJ, 4 August 2007) found that combined oestrogen-progestogen hormone replacement therapy started years after menopause increased major cardiovascular and venous thromboembolic events, with the trial halted early after publication of the Women\'s Health Initiative results.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2007-08-04',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'RECORDED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2007-08-04',
+        datePrecision: 'DAY',
+        reason: 'WISDOM (Women\'s International Study of long Duration Oestrogen after Menopause), a UK Medical Research Council-funded RCT of HRT in older postmenopausal women, was terminated prematurely in 2002 after the WHI reported net harm. Its published results showed more major cardiovascular events (7 vs 0, P=0.016) and a sharply elevated venous thromboembolism hazard (HR 7.36) with combined HRT versus placebo, providing independent randomised confirmation that hormone therapy begun long after menopause is not cardioprotective but harmful.',
+        source: {
+          externalId: 'src:vickers-wisdom-hrt-bmj-2007',
+          name: 'Vickers MR, MacLennan AH, Lawton B, et al; WISDOM group. Main morbidities recorded in the women\'s international study of long duration oestrogen after menopause (WISDOM): a randomised controlled trial of hormone replacement therapy in postmenopausal women. BMJ. 2007;335(7613):239.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17626056/',
+          publishedAt: '2007-08-04',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── UK Age trial mammography from 40 — Lancet 2006 / Lancet Oncol 2020 ─────
+  {
+    externalId: 'trajectory:uk-age-trial-mammography-from-40-2006',
+    text: 'The UK Age trial (Moss et al., The Lancet, 9 December 2006) found that offering annual mammography to women from age 40 produced a 17% reduction in breast cancer mortality at 10 years that did not reach statistical significance; final results in 2020 showed a significant 25% reduction confined to the first 10 years that attenuated thereafter.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2006-12-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'CONTESTED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2006-12-09',
+        datePrecision: 'DAY',
+        reason: 'Moss and colleagues randomised 160,921 women aged 39-41 across 23 NHS units to annual mammography until age 48 or usual care. At 10 years breast cancer mortality was lower in the screened group (relative risk 0.83, 95% CI 0.66-1.04) but not statistically significant (P=0.11). This recorded the first dedicated randomised evidence on screening women in their forties and fed the long-running debate over the lower age limit for mammography.',
+        source: {
+          externalId: 'src:moss-uk-age-trial-mammography-lancet-2006',
+          name: 'Moss SM, Cuckle H, Evans A, Johns L, Waller M, Bobrow L; Trial Management Group. Effect of mammographic screening from age 40 years on breast cancer mortality at 10 years\' follow-up: a randomised controlled trial. Lancet. 2006;368(9552):2053-2060.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/17161727/',
+          publishedAt: '2006-12-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'CONTESTED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2020-09-01',
+        datePrecision: 'MONTH',
+        reason: 'The final results after a median 22.8 years of follow-up (Duffy et al., Lancet Oncology 2020) found a statistically significant 25% reduction in breast cancer mortality during the first ten years (relative rate 0.75) that did not persist afterwards (relative rate 0.98). The reanalysis reframed the originally null 2006 result as evidence of a real but time-limited early benefit, keeping the value of beginning screening at age 40 an actively contested question in guideline debates.',
+        source: {
+          externalId: 'src:duffy-uk-age-trial-final-lancet-oncol-2020',
+          name: 'Duffy SW, Vulkan D, Cuckle H, et al. Effect of mammographic screening from age 40 years on breast cancer mortality (UK Age trial): final results of a randomised, controlled trial. Lancet Oncol. 2020;21(9):1165-1172.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/32800099/',
+          publishedAt: '2020-09-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── IBIS-I tamoxifen breast cancer prevention — Lancet 2002 / Lancet Oncol 2015 ──
+  {
+    externalId: 'trajectory:ibis-i-tamoxifen-breast-cancer-prevention-2002',
+    text: 'The IBIS-I randomised prevention trial (Cuzick et al., The Lancet, 14 September 2002) found that five years of tamoxifen reduced breast cancer incidence by about a third in women at increased risk, though an early excess of thromboembolic events and deaths left the overall risk-benefit balance uncertain; extended follow-up to a median 16 years confirmed a durable preventive effect.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2002-09-14',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-09-14',
+        datePrecision: 'DAY',
+        reason: 'Cuzick and the International Breast Cancer Intervention Study investigators randomised 7,152 women aged 35-70 at increased risk to tamoxifen 20 mg/day or placebo and reported a 32% reduction in breast cancer (69 vs 101 cases; P=0.013) at median 50 months. Because the trial also showed increased thromboembolism (odds ratio 2.5) and unexpectedly more deaths (25 vs 11), the authors judged the net benefit unproven and explicitly called for longer follow-up before recommending preventive use.',
+        source: {
+          externalId: 'src:cuzick-ibis-i-tamoxifen-lancet-2002',
+          name: 'Cuzick J, Forbes J, Edwards R, et al; IBIS Investigators. First results from the International Breast Cancer Intervention Study (IBIS-I): a randomised prevention trial. Lancet. 2002;360(9336):817-824.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/12243915/',
+          publishedAt: '2002-09-14',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2014-12-11',
+        datePrecision: 'DAY',
+        reason: 'The extended follow-up to a median 16 years (Cuzick et al., Lancet Oncology 2015) showed the preventive effect persisted both during and well beyond the 5-year treatment period (overall HR 0.71; HR 0.69 after 10 years), was confined to ER-positive disease and DCIS, and the early mortality concern was not borne out. This established tamoxifen as an effective, durable chemopreventive agent for high-risk women and underpinned its endorsement in breast-cancer prevention guidelines.',
+        source: {
+          externalId: 'src:cuzick-ibis-i-longterm-lancet-oncol-2015',
+          name: 'Cuzick J, Sestak I, Cawthorn S, et al; IBIS-I Investigators. Tamoxifen for prevention of breast cancer: extended long-term follow-up of the IBIS-I breast cancer prevention trial. Lancet Oncol. 2015;16(1):67-75.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25497694/',
+          publishedAt: '2014-12-11',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Tramadol placed into Schedule IV — DEA 2014 ─────────────────────────────
+  {
+    externalId: 'trajectory:tramadol-schedule-iv-2014',
+    text: 'The DEA published a final rule in the Federal Register on July 2, 2014, placing tramadol into Schedule IV of the Controlled Substances Act effective August 18, 2014, on the determination that the previously unscheduled analgesic has an abuse potential warranting federal control.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-07-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-07-02',
+        datePrecision: 'DAY',
+        reason: 'After years of being marketed and prescribed in the United States as a non-scheduled opioid with low abuse liability, tramadol was placed by the DEA into Schedule IV of the Controlled Substances Act via final rule (79 FR 37623), effective August 18, 2014, subjecting it to registration, recordkeeping, security, and reporting controls. The reclassification formally overturned tramadol\'s long-standing regulatory status as an opioid presumed to carry minimal dependence risk.',
+        source: {
+          externalId: 'src:dea-tramadol-schedule-iv-fr-2014',
+          name: 'Drug Enforcement Administration. Schedules of Controlled Substances: Placement of Tramadol Into Schedule IV. Final rule. Fed. Reg. 79(127):37623-37630, July 2, 2014.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/25016619/',
+          publishedAt: '2014-07-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
