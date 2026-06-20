@@ -53425,6 +53425,156 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── FDA EUA COVID-19 vaccine children 6 months — 2022 ──────────────────────
+  {
+    externalId: 'trajectory:fda-eua-covid-vaccine-children-6-months-2022',
+    text: 'On 17 June 2022 the US FDA authorized emergency use of the Pfizer-BioNTech COVID-19 vaccine (three-dose regimen) for children 6 months through 4 years of age and the Moderna COVID-19 vaccine for children 6 months through 17 years, extending COVID-19 vaccination to the youngest US children and completing the pediatric age rollout.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2022-06-17',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-06-17',
+        datePrecision: 'DAY',
+        reason: 'Following a unanimous favorable vote of its Vaccines and Related Biological Products Advisory Committee, the FDA issued Emergency Use Authorizations extending the Pfizer-BioNTech (6 months through 4 years) and Moderna (6 months through 17 years) COVID-19 vaccines to infants and toddlers, the last and youngest age group to gain access. This settled COVID-19 vaccination across the entire pediatric age range as authorized institutional practice, even as uptake in this group remained publicly contested and low.',
+        source: {
+          externalId: 'src:fda-eua-covid-vaccine-children-6-months-2022',
+          name: 'US FDA. Coronavirus (COVID-19) Update: FDA Authorizes Moderna and Pfizer-BioNTech COVID-19 Vaccines for Children Down to 6 Months of Age. Press announcement. 17 June 2022.',
+          url: 'https://www.fda.gov/news-events/press-announcements/coronavirus-covid-19-update-fda-authorizes-moderna-and-pfizer-biontech-covid-19-vaccines-children',
+          publishedAt: '2022-06-17',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── AAP febrile infant clinical practice guideline — 2021 ──────────────────
+  {
+    externalId: 'trajectory:aap-febrile-infant-clinical-practice-guideline-2021',
+    text: 'On 19 July 2021 the American Academy of Pediatrics published its first clinical practice guideline for the evaluation and management of well-appearing febrile infants 8 to 60 days old, establishing evidence-based, age-stratified algorithms (8–21, 22–28, 29–60 days) for sepsis evaluation that unified the longstanding competing Rochester, Philadelphia, and Boston protocols.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2021-07-19',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-07-19',
+        datePrecision: 'DAY',
+        reason: 'The AAP Subcommittee on Febrile Infants (lead author Robert H. Pantell) published 21 key action statements and three management algorithms covering well-appearing term infants 8–60 days with fever ≥38.0°C, the Academy\'s first formal guideline on this decades-old clinical problem. By codifying inflammatory-marker-based risk stratification and restricting routine lumbar puncture to the youngest infants (8–21 days), it replaced a patchwork of institution-specific protocols (Rochester, Philadelphia, Boston) with a single evidence-based standard, settling the management of young febrile infants as institutional practice.',
+        source: {
+          externalId: 'src:pantell-febrile-infants-pediatrics-2021',
+          name: 'Pantell RH, Roberts KB, Adams WG, et al; Subcommittee on Febrile Infants. Evaluation and Management of Well-Appearing Febrile Infants 8 to 60 Days Old. Pediatrics. 2021 Aug;148(2):e2021052228.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34281996/',
+          publishedAt: '2021-07-19',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── X-ALD added to RUSP newborn screening — 2016 ──────────────────────────
+  {
+    externalId: 'trajectory:x-ald-newborn-screening-rusp-addition-2016',
+    text: 'On 16 February 2016 the US Secretary of Health and Human Services added X-linked adrenoleukodystrophy (X-ALD) to the federal Recommended Uniform Screening Panel (RUSP), endorsing universal newborn screening so that affected boys can be identified presymptomatically and monitored for the childhood cerebral form, which is treatable by hematopoietic stem-cell transplant only if caught early.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2016-02-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2016-02-16',
+        datePrecision: 'DAY',
+        reason: 'After the Advisory Committee on Heritable Disorders in Newborns and Children recommended its addition in September 2015 — supported by New York State pilot screening accuracy data and evidence that presymptomatic detection enables life-saving transplant for the cerebral form — the HHS Secretary added X-ALD to the RUSP. This converted X-ALD from an experimental single-state screen into the federally recommended standard for all state newborn-screening programs, settling presymptomatic identification as institutional practice.',
+        source: {
+          externalId: 'src:hrsa-rusp-x-ald-2016',
+          name: 'HRSA, Advisory Committee on Heritable Disorders in Newborns and Children. Recommended Uniform Screening Panel (RUSP) — X-linked adrenoleukodystrophy added 16 February 2016.',
+          url: 'https://www.hrsa.gov/advisory-committees/heritable-disorders/rusp',
+          publishedAt: '2016-02-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── R21/Matrix-M malaria vaccine WHO recommendation — 2023 ─────────────────
+  {
+    externalId: 'trajectory:r21-matrix-m-malaria-vaccine-who-recommendation-2023',
+    text: 'On 2 October 2023 the World Health Organization recommended the R21/Matrix-M malaria vaccine for the prevention of malaria in children, the second malaria vaccine WHO has recommended after RTS,S/AS01, offering a higher-efficacy, lower-cost, more scalable tool against a disease that kills nearly half a million African children annually.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2023-10-02',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2023-10-02',
+        datePrecision: 'DAY',
+        reason: 'On the advice of its Strategic Advisory Group of Experts on Immunization and Malaria Policy Advisory Group, WHO recommended the Oxford/Serum Institute of India R21/Matrix-M vaccine for routine use in children in malaria-endemic regions. As the second WHO-recommended malaria vaccine, it addressed the supply shortfall of RTS,S and was positioned as a vital additional tool, settling a second pediatric malaria vaccine into WHO immunization policy.',
+        source: {
+          externalId: 'src:who-r21-matrix-m-recommendation-2023',
+          name: 'World Health Organization. WHO recommends R21/Matrix-M vaccine for malaria prevention in updated advice on immunization. News release. 2 October 2023.',
+          url: 'https://www.who.int/news/item/02-10-2023-who-recommends-r21-matrix-m-vaccine-for-malaria-prevention-in-updated-advice-on-immunization',
+          publishedAt: '2023-10-02',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Trumenba — first serogroup B meningococcal vaccine FDA — 2014 ──────────
+  {
+    externalId: 'trajectory:trumenba-first-serogroup-b-meningococcal-vaccine-2014',
+    text: 'On 29 October 2014 the US FDA granted accelerated approval to Trumenba (MenB-FHbp), the first vaccine licensed in the United States against invasive meningococcal disease caused by Neisseria meningitidis serogroup B, for individuals 10 through 25 years of age.',
+    claimType: 'INSTITUTIONAL',
+    claimEmergedAt: '2014-10-29',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2014-10-29',
+        datePrecision: 'DAY',
+        reason: 'The FDA approved Trumenba under accelerated approval based on immune response (serum bactericidal activity against four representative serogroup B strains), making it the first US-licensed MenB vaccine and closing a longstanding gap after conjugate vaccines had controlled serogroups A, C, W, and Y. Because effectiveness against the diverse range of circulating serogroup B strains had not yet been confirmed, Pfizer was required to complete confirmatory studies, leaving the protective claim provisional.',
+        source: {
+          externalId: 'src:pfizer-trumenba-accelerated-approval-2014',
+          name: 'Pfizer. Pfizer Receives FDA Accelerated Approval for TRUMENBA (Meningococcal Group B Vaccine) for the Prevention of Invasive Meningococcal B Disease in Adolescents and Young Adults. Press release. 29 October 2014.',
+          url: 'https://www.pfizer.com/news/press-release/press-release-detail/pfizer_receives_fda_accelerated_approval_for_trumenba_meningococcal_group_b_vaccine_for_the_prevention_of_invasive_meningococcal_b_disease_in_adolescents_and_young_adults',
+          publishedAt: '2014-10-29',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2015-10-23',
+        datePrecision: 'DAY',
+        reason: 'The Advisory Committee on Immunization Practices incorporated MenB vaccines into US immunization policy: a Category A recommendation for persons aged ≥10 years at increased risk (complement deficiency, asplenia, microbiologists, outbreak settings) in June 2015, followed by a Category B / shared-clinical-decision-making recommendation that adolescents and young adults 16–23 years may be vaccinated. This placed serogroup B meningococcal vaccination into routine adolescent immunization practice, settling its institutional role.',
+        source: {
+          externalId: 'src:macneil-menb-acip-mmwr-2015',
+          name: 'MacNeil JR, Rubin L, Folaranmi T, et al. Use of Serogroup B Meningococcal Vaccines in Adolescents and Young Adults: Recommendations of the Advisory Committee on Immunization Practices, 2015. MMWR Morb Mortal Wkly Rep. 2015 Oct 23;64(41):1171-1176.',
+          url: 'https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6441a3.htm',
+          publishedAt: '2015-10-23',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
   // ── Tramadol placed into Schedule IV — DEA 2014 ─────────────────────────────
   {
     externalId: 'trajectory:tramadol-schedule-iv-2014',
