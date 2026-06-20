@@ -39204,6 +39204,178 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ═══════════════════════════════════════════════════════════════════════════════
+  // ENDOCRINOLOGY / ORGANOTHERAPY ERA (1889–1944)
+  // ═══════════════════════════════════════════════════════════════════════════════
+
+  // ── Brown-Séquard testicular extract rejuvenation — 1889 ───────────────────
+  {
+    externalId: 'trajectory:brown-sequard-testicular-extract-rejuvenation-1889',
+    text: 'Charles-Édouard Brown-Séquard announced to the Société de Biologie on 1 June 1889 (published in The Lancet, 20 July 1889) that subcutaneous self-injection of a watery extract of crushed dog and guinea-pig testicles had restored his physical vigor, strength, and mental energy, launching organotherapy (endocrine extract therapy).',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1889-06-01',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1889-07-20',
+        datePrecision: 'DAY',
+        reason: 'Brown-Séquard, then aged 72, published \'The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals\' in The Lancet, reporting that ten self-administered injections of testicular extract had markedly increased his physical strength, urinary force, and intellectual stamina. This recorded in the expert literature the claim that an extract of a glandular organ could replace a failing internal secretion and rejuvenate the body, and it triggered widespread use of testicular and other organ extracts across Europe and North America.',
+        source: {
+          externalId: 'src:brown-sequard-testicle-extract-lancet-1889',
+          name: 'Brown-Séquard CE. The effects produced on man by subcutaneous injections of a liquid obtained from the testicles of animals. Lancet. 1889;134(3438):105–107.',
+          url: 'https://www.usrf.org/news/TRT/Brown-Sequard,%20Lancet,%201889.pdf',
+          publishedAt: '1889-07-20',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2002-12-02',
+        datePrecision: 'YEAR',
+        reason: 'The specific rejuvenation claim was overturned: the reported effects were transient and unreproducible, and modern reappraisal established that the testosterone content of Brown-Séquard\'s aqueous extract was roughly four orders of magnitude below any biologically active dose, so the benefits he felt were a placebo response. Although the broader concept he launched — that glands secrete chemical messengers replaceable by extract — was vindicated by later endocrinology, his own claim of androgenic rejuvenation was reversed.',
+        source: {
+          externalId: 'src:cussons-brown-sequard-placebo-mja-2002',
+          name: 'Cussons AJ, Bhagat CI, Fletcher SJ, Walsh JP. Brown-Séquard revisited: a lesson from history on the placebo effect of androgen treatment. Med J Aust. 2002;177(11–12):678–679.',
+          url: 'https://www.mja.com.au/journal/2002/177/11/brown-sequard-revisited-lesson-history-placebo-effect-androgen-treatment',
+          publishedAt: '2002-12-02',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── MacCallum–Voegtlin parathyroid calcium tetany — 1909 ───────────────────
+  {
+    externalId: 'trajectory:macallum-voegtlin-parathyroid-calcium-tetany-1909',
+    text: 'William MacCallum and Carl Voegtlin reported in the Journal of Experimental Medicine on 9 January 1909 that tetany following removal of the parathyroid glands is caused by a fall in blood calcium and is promptly abolished by injecting calcium salts, establishing that the parathyroid glands govern calcium metabolism.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1909-01-09',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1909-01-09',
+        datePrecision: 'DAY',
+        reason: 'MacCallum and Voegtlin published \'On the relation of tetany to the parathyroid glands and to calcium metabolism\' in the Journal of Experimental Medicine, showing experimentally that parathyroidectomy lowers blood calcium and produces tetany, and that intravenous calcium injection promptly reverses the convulsive state. Building on their 1908 preliminary note (Bull Johns Hopkins Hosp 19:91–92), this recorded in the expert literature the claim that the parathyroid glands regulate calcium and that hypocalcemia, not the loss of a \'detoxifying\' organ, is the cause of post-thyroidectomy tetany.',
+        source: {
+          externalId: 'src:maccallum-voegtlin-parathyroid-tetany-jem-1909',
+          name: 'MacCallum WG, Voegtlin C. On the relation of tetany to the parathyroid glands and to calcium metabolism. J Exp Med. 1909;11(1):118–151.',
+          url: 'https://rupress.org/jem/article/11/1/118/2646/ON-THE-RELATION-OF-TETANY-TO-THE-PARATHYROID',
+          publishedAt: '1909-01-09',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1925-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The mechanism MacCallum and Voegtlin proposed was confirmed and made manipulable when James Collip in 1925 extracted an active parathyroid hormone that raised blood calcium and abolished parathyroidectomy tetany, directly demonstrating the hormonal control of calcium they had inferred. With the hormone isolated and calcium therapy established as the standard treatment for hypocalcemic tetany, the parathyroid–calcium regulatory model became settled physiology that underlies modern management of hypoparathyroidism and calcium disorders.',
+        source: {
+          externalId: 'src:collip-parathyroid-hormone-calcium-jbc-1925',
+          name: 'Collip JB. The extraction of a parathyroid hormone which will prevent or control parathyroid tetany and which regulates the level of blood calcium. J Biol Chem. 1925;63(2):395–438.',
+          url: 'https://www.jbc.org/article/S0021-9258(18)85016-1/fulltext',
+          publishedAt: '1925-02-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Evans–Long anterior pituitary growth hormone — 1921 ────────────────────
+  {
+    externalId: 'trajectory:evans-long-anterior-pituitary-growth-hormone-1921',
+    text: 'Herbert McLean Evans and Joseph Long reported to the Anatomical Record in 1921 that intraperitoneal injection of fresh anterior-pituitary tissue into normal rats produced excessive (giant) body growth, the first demonstration that the anterior pituitary contains a growth-promoting hormone.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1921-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1921-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Evans and Long published \'The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrus cycles of the rat\' (Anat Rec. 1921;21:62–63), showing that injections of bovine anterior-pituitary tissue caused normal rats to grow far beyond their expected size. This recorded in the expert literature the claim that the anterior lobe of the pituitary secretes a distinct factor controlling somatic growth, providing the experimental basis for the concept of a pituitary growth hormone and for the understanding of gigantism and acromegaly.',
+        source: {
+          externalId: 'src:evans-long-anterior-pituitary-growth-anatrec-1921',
+          name: 'Evans HM, Long JA. The effect of the anterior lobe administered intraperitoneally upon growth, maturity and oestrus cycles of the rat. Anat Rec. 1921;21(1):62–63. (Reviewed in: Tidblad A. The history, physiology and treatment safety of growth hormone. Acta Paediatr. 2022;111(2):215–224.)',
+          url: 'https://onlinelibrary.wiley.com/doi/full/10.1111/apa.15948',
+          publishedAt: '1921-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1944-01-01',
+        datePrecision: 'YEAR',
+        reason: 'The inferred growth factor was reduced to a defined substance when Choh Hao Li and Evans isolated pituitary growth hormone in pure form in 1944 (Science. 1944;99:183–184), confirming that a single anterior-pituitary protein drives somatic growth. With the hormone purified, characterized, and later used therapeutically for growth disorders, the existence and growth-controlling role of pituitary growth hormone became settled endocrinology — the same axis on which Houssay\'s 1947 Nobel-recognized work on anterior-pituitary control of metabolism rests.',
+        source: {
+          externalId: 'src:li-evans-isolation-pituitary-growth-hormone-science-1944',
+          name: 'Li CH, Evans HM. The isolation of pituitary growth hormone. Science. 1944;99(2566):183–184.',
+          url: 'https://www.science.org/doi/10.1126/science.99.2566.183',
+          publishedAt: '1944-02-25',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Aschheim–Zondek hormonal pregnancy test — 1928 ─────────────────────────
+  {
+    externalId: 'trajectory:aschheim-zondek-hormonal-pregnancy-test-1928',
+    text: 'Selmar Aschheim and Bernhard Zondek reported in Klinische Wochenschrift in 1928 that injecting the urine of pregnant women into immature female mice causes rapid ovarian maturation and hemorrhagic follicles, providing the first reliable biological test for pregnancy (the Aschheim–Zondek test) based on a pregnancy hormone — later identified as human chorionic gonadotropin — excreted in urine.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '1928-01-01',
+    claimEmergedPrecision: 'YEAR',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '1928-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Aschheim and Zondek published their finding (Klin Wochenschr. 1928;7:1404–1411, 1453–1457) that pregnancy urine contains a gonad-stimulating hormone whose subcutaneous injection into infantile mice produces characteristic ovarian changes within about 100 hours, allowing pregnancy to be diagnosed in the laboratory. This recorded in the expert literature the first practical hormone-based diagnostic assay in medicine, demonstrating that a circulating endocrine signal of pregnancy could be detected by a reproducible bioassay.',
+        source: {
+          externalId: 'src:aschheim-zondek-pregnancy-hormone-test-1928',
+          name: 'Aschheim S, Zondek B. Die Schwangerschaftsdiagnose aus dem Harn durch Nachweis des Hypophysenvorderlappenhormons. Klin Wochenschr. 1928;7:1404–1411, 1453–1457.',
+          url: 'https://embryology.med.unsw.edu.au/embryology/index.php/Paper_-_The_Aschheim-Zondek_hormone_test_for_pregnancy',
+          publishedAt: '1928-01-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '1933-01-01',
+        datePrecision: 'YEAR',
+        reason: 'Through the early 1930s the Aschheim–Zondek reaction was adopted as a routine clinical and laboratory service across Europe and North America, run by hospital and commercial laboratories as the standard objective pregnancy test and applied diagnostically beyond pregnancy (e.g., detecting hormone-secreting tumours). This institutional uptake settled the claim that a pregnancy hormone in urine could be reliably assayed; the underlying fact — detectable urinary hCG indicates pregnancy — remains the basis of every modern pregnancy test even though the mouse bioassay was later replaced by immunoassays.',
+        source: {
+          externalId: 'src:olszynko-gryn-aschheim-zondek-demand-2014',
+          name: 'Olszynko-Gryn J. The demand for pregnancy testing: the Aschheim–Zondek reaction, diagnostic versatility, and laboratory services in 1930s Britain. Stud Hist Philos Biol Biomed Sci. 2014;47 Pt B:233–247.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/24388014/',
+          publishedAt: '2014-09-01',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
