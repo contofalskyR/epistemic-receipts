@@ -45059,6 +45059,144 @@ const TRAJECTORIES: Trajectory[] = [
     ],
   },
 
+  // ── Efgartigimod (Vyvgart) — first FcRn antagonist, myasthenia gravis 2021 ──
+  {
+    externalId: 'trajectory:efgartigimod-vyvgart-first-fcrn-antagonist-myasthenia-2021',
+    text: 'Efgartigimod (Vyvgart), an antibody fragment that blocks the neonatal Fc receptor (FcRn) to accelerate IgG degradation, is a safe and effective treatment for anti-acetylcholine-receptor-antibody-positive generalized myasthenia gravis, validating FcRn blockade as a therapeutic mechanism — as established by the ADAPT phase 3 trial (Lancet Neurology, July 2021) and the FDA approval of 17 December 2021.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2021-07-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2021-07-01',
+        datePrecision: 'MONTH',
+        reason: 'The ADAPT multicentre, randomised, placebo-controlled phase 3 trial (Howard et al., Lancet Neurology) reported that 67.7% of AChR-Ab-positive generalized myasthenia gravis patients on efgartigimod were MG-ADL responders versus 29.7% on placebo. This was the first phase 3 demonstration that pharmacologically lowering circulating IgG via FcRn blockade produces clinical benefit in an autoantibody-mediated disease, recording a new mechanistic drug class in the expert literature.',
+        source: {
+          externalId: 'src:howard-adapt-efgartigimod-lancet-neurol-2021',
+          name: 'Howard JF Jr, Bril V, Vu T, et al; ADAPT Investigator Study Group. Safety, efficacy, and tolerability of efgartigimod in patients with generalised myasthenia gravis (ADAPT): a multicentre, randomised, placebo-controlled, phase 3 trial. Lancet Neurol. 2021;20(7):526-536.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/34146511/',
+          publishedAt: '2021-07-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2021-12-17',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved efgartigimod alfa-fcab (Vyvgart) for adults with AChR-antibody-positive generalized myasthenia gravis, the first-ever FcRn antagonist. The approval institutionally ratified a wholly new therapeutic mechanism — IgG-lowering via FcRn modulation — and opened a drug class that has since been extended to other autoantibody-mediated diseases.',
+        source: {
+          externalId: 'src:fda-efgartigimod-gmg-approval-2021',
+          name: 'Pharmacy Times. FDA Approves Efgartigimod Alfa-fcab for Generalized Myasthenia Gravis. December 17, 2021.',
+          url: 'https://www.pharmacytimes.com/view/fda-approves-efgartigimod-alfa-fcab-for-generalized-myasthenia-gravis',
+          publishedAt: '2021-12-17',
+          methodologyType: 'derivative',
+        },
+      },
+    ],
+  },
+
+  // ── Crenezumab ADAD prevention trial failure — amyloid hypothesis 2022 ──────
+  {
+    externalId: 'trajectory:crenezumab-autosomal-dominant-alzheimer-prevention-failure-2022',
+    text: 'The hypothesis that the anti-amyloid-beta antibody crenezumab can slow or prevent cognitive decline in cognitively unimpaired carriers of the PSEN1 E280A mutation destined to develop early-onset Alzheimer\'s disease — the first primary-prevention test of the amyloid hypothesis in a genetically determined population — was refuted when the Alzheimer\'s Prevention Initiative Autosomal-Dominant Alzheimer\'s Disease (API ADAD) Colombia trial missed both co-primary endpoints, announced 16 June 2022.',
+    claimType: 'EMPIRICAL',
+    claimEmergedAt: '2018-08-01',
+    claimEmergedPrecision: 'MONTH',
+    currentAxis: 'REVERSED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'RECORDED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2018-08-01',
+        datePrecision: 'MONTH',
+        reason: 'The published API ADAD Colombia trial protocol (Tariot et al.) formalized a testable prevention claim: that crenezumab administered to cognitively unimpaired PSEN1 E280A mutation carriers could slow or prevent the cognitive decline of autosomal-dominant Alzheimer\'s disease. This recorded the amyloid hypothesis as a falsifiable primary-prevention proposition in a genetically certain-to-progress cohort, the cleanest available test of amyloid causality.',
+        source: {
+          externalId: 'src:tariot-api-adad-protocol-2018',
+          name: 'Tariot PN, Lopera F, Langbaum JB, et al. The Alzheimer\'s Prevention Initiative Autosomal-Dominant Alzheimer\'s Disease Trial: a study of crenezumab versus placebo in preclinical PSEN1 E280A mutation carriers. Alzheimers Dement (N Y). 2018;4:150-160.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/29955659/',
+          publishedAt: '2018-08-01',
+          methodologyType: 'primary',
+        },
+      },
+      {
+        fromAxis: 'RECORDED',
+        toAxis: 'REVERSED',
+        community: 'EXPERT_LITERATURE',
+        occurredAt: '2022-06-16',
+        datePrecision: 'DAY',
+        reason: 'Roche/Genentech announced that the API ADAD Colombia trial did not meet either co-primary endpoint — neither the rate of change in cognitive abilities nor episodic memory function reached statistical significance in crenezumab-treated mutation carriers. As the first completed amyloid-targeted primary-prevention trial in autosomal-dominant Alzheimer\'s disease, the negative result undercut the strongest a priori test of the amyloid hypothesis and reversed the specific prevention claim.',
+        source: {
+          externalId: 'src:roche-api-adad-crenezumab-update-2022',
+          name: 'Roche. Roche provides update on Alzheimer\'s Prevention Initiative study evaluating crenezumab in autosomal dominant Alzheimer\'s disease. June 16, 2022.',
+          url: 'https://www.roche.com/media/releases/med-cor-2022-06-16',
+          publishedAt: '2022-06-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Ganaxolone (Ztalmy) — first approved drug for CDKL5 deficiency 2022 ─────
+  {
+    externalId: 'trajectory:ganaxolone-ztalmy-first-cdkl5-deficiency-seizure-drug-2022',
+    text: 'Ganaxolone (Ztalmy), a synthetic neuroactive-steroid positive allosteric modulator of GABA-A receptors, is an effective treatment for seizures associated with CDKL5 deficiency disorder — the first drug ever approved for this rare genetic developmental and epileptic encephalopathy — as established by the FDA approval of 18 March 2022 supported by the Marigold phase 3 trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-03-18',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-03-18',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved ganaxolone (Ztalmy) oral suspension for seizures associated with CDKL5 deficiency disorder in patients aged two and older — the first therapy specifically approved for this rare genetic epilepsy. The approval rested on the double-blind Marigold phase 3 trial, in which treated patients had a median 30.7% reduction in 28-day major motor seizure frequency versus 6.9% on placebo, converting a previously untreatable encephalopathy into one with a sanctioned therapy and validating exogenous neurosteroid GABA-A modulation for a genetic epilepsy.',
+        source: {
+          externalId: 'src:knight-marigold-ganaxolone-cdkl5-lancet-neurol-2022',
+          name: 'Knight EMP, Amin S, Bahi-Buisson N, et al; Marigold Trial Group. Safety and efficacy of ganaxolone in patients with CDKL5 deficiency disorder: results from the double-blind phase of a randomised, placebo-controlled, phase 3 trial. Lancet Neurol. 2022;21(5):417-427.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/35429480/',
+          publishedAt: '2022-05-01',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
+  // ── Cariprazine (Vraylar) — adjunctive MDD approval 2022 ────────────────────
+  {
+    externalId: 'trajectory:cariprazine-vraylar-adjunctive-major-depression-approval-2022',
+    text: 'Cariprazine (Vraylar), a dopamine D3-preferring D3/D2 partial-agonist antipsychotic, is an effective adjunct to antidepressants for major depressive disorder in adults with inadequate response to antidepressant monotherapy — as established by the FDA approval of 16 December 2022 supported by a positive phase 3 randomized placebo-controlled trial.',
+    claimType: 'HYBRID',
+    claimEmergedAt: '2022-12-16',
+    claimEmergedPrecision: 'DAY',
+    currentAxis: 'SETTLED',
+    transitions: [
+      {
+        fromAxis: null,
+        toAxis: 'SETTLED',
+        community: 'INSTITUTIONAL',
+        occurredAt: '2022-12-16',
+        datePrecision: 'DAY',
+        reason: 'The U.S. FDA approved cariprazine (Vraylar) as an adjunctive treatment to antidepressants for major depressive disorder, its fourth indication, based on a phase 3 randomized double-blind placebo-controlled trial (Sachs et al., Am J Psychiatry 2023;180(3):241-251) showing significant MADRS improvement at 1.5 mg/day over antidepressant-plus-placebo. The approval institutionally endorsed a D3-preferring dopaminergic partial agonist for depression augmentation, extending the move beyond the monoaminergic serotonin paradigm toward dopaminergic mechanisms in mood disorders.',
+        source: {
+          externalId: 'src:abbvie-vraylar-mdd-adjunct-approval-2022',
+          name: 'AbbVie. U.S. FDA Approves VRAYLAR (cariprazine) as an Adjunctive Treatment for Major Depressive Disorder. December 16, 2022.',
+          url: 'https://news.abbvie.com/2022-12-16-U-S-FDA-Approves-VRAYLAR-R-cariprazine-as-an-Adjunctive-Treatment-for-Major-Depressive-Disorder',
+          publishedAt: '2022-12-16',
+          methodologyType: 'primary',
+        },
+      },
+    ],
+  },
+
 ]
 
 // ── Seeder (identical to history script) ────────────────────────────────────
